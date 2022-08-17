@@ -1,0 +1,92 @@
+Storm star : A magic morning star that could release a version of chain lightning when it hit.
+Lefeber's Enchanter : A rod that imbued items with the ability to store spells.
+
+
+Schools:
+    Theoretical:
+        
+        Defense:
+            Magic Shield
+                perk: autocast magic shield before taking damage
+        Utility:
+            Blood Magic - Convert your health to mana, 4 AP
+
+    Elements:
+        Air
+            Offensive:
+                Shock
+                Wind Blade - Cutting attack that bleeds, hits 2 characters adjacent to the target
+                Lightning bolt - 100% chance to hit, can only be resisted
+                Chain Lightning - 100% chance to hit, can only be resisted
+            Defensive:
+                Gust - Knock enemy back, giving them baffled and that effect that makes moving harder
+                    perk: autocast gust before taking damage
+                    perk: gust stuns
+            Utility:
+                Haste
+            
+            
+            
+        Earth - Defense, Single Target Damage
+            Vile Clutch
+            Iron Shot
+            Crystal Spear
+        Fire - Aoe Damage, DAMAGE, burn
+            Combustion +20 to hit
+            Fireball
+            Flame Thrower +20 to hit
+            Sticky Flame
+            Flamestrike +30 to hit
+        Ice - Control
+            Ice Spear
+            Frost Nova
+            Simulacrum
+    Necromancy
+        Negative Energy Hand - Touch based spell that weakens the target and damages them.
+        Ray of Enfeeblement - Ranged spell with increased hit chance, that enfeebles the target.
+        
+        Drain Life - Draws health from the target to caster
+
+        Corpse Explosion - Target an undead except a necrosavant, and create an explosion based on the target's health
+        Reanimate - Reanimate a weiderganger
+        Summon Geist
+
+        Create Death Knight - Chooses a corpse on the floor to be a death knight. You can only have 1 death knight at a time
+
+        Decay
+        Death
+        
+    Hexes
+        Illusion
+        Charm
+    Holy
+        Resurrection
+    Eldritch
+
+    Prophecy (Vala):
+
+
+---
+
+Resolve = Will
+Ranged Attack = Aim
+Inteligence Trait = Calculation Capacity
+
+---
+
+book_item
+    fields:
+        traits
+        spells, contained
+
+Magic Matrix - Engrave a magic matrix allowing you to learn spells of a certain school
+Meditation - 
+
+Necronomicon
+
+camp:
+    no action = learn from spellbook
+    
+Champion variants of heroes
+
+Undead cannot be charmed
