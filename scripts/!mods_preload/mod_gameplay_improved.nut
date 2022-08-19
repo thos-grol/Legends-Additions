@@ -74,7 +74,7 @@ gt.gameplay_improved.count_role <- function (role)
 	return count;
 }
 
-gt.Const.FactionTrait <- {
+gt.Const.FactionTrait = {
 	None = 0,
 	Warmonger = 1,
 	Schemer = 2,
@@ -128,6 +128,18 @@ gt.Const.FactionTrait <- {
 			"scripts/factions/contracts/conquer_holy_site_action",
 			"scripts/factions/contracts/defend_holy_site_action",
 			"scripts/factions/contracts/intercept_raiding_parties_action",
+			"scripts/factions/contracts/legend_hunting_white_direwolf_action",
+			"scripts/factions/contracts/legend_hunting_stollwurms_action",
+			"scripts/factions/contracts/legend_hunting_rock_unholds_action",
+			"scripts/factions/contracts/legend_hunting_redback_webknechts_action",
+			"scripts/factions/contracts/legend_hunting_greenwood_schrats_action",
+			"scripts/factions/contracts/legend_hunting_demon_alps_action",
+			"scripts/factions/contracts/legend_hunting_coven_leader_action",
+			"scripts/factions/contracts/legend_hunting_skin_ghouls_action",
+			"scripts/factions/contracts/legend_bandit_army_action",
+			"scripts/factions/contracts/legend_barbarian_prisoner_action",
+			
+			//housekeeping
 			"scripts/factions/actions/defend_military_action",
 			"scripts/factions/actions/move_troops_action",
 			"scripts/factions/actions/patrol_roads_action",
@@ -140,56 +152,47 @@ gt.Const.FactionTrait <- {
 			"scripts/factions/actions/send_supplies_action",
 			"scripts/factions/actions/add_random_situation_action",
 			"scripts/factions/actions/send_military_army_action",
-			"scripts/factions/contracts/legend_hunting_white_direwolf_action",
-			"scripts/factions/contracts/legend_hunting_stollwurms_action",
-			"scripts/factions/contracts/legend_hunting_rock_unholds_action",
-			"scripts/factions/contracts/legend_hunting_redback_webknechts_action",
-			"scripts/factions/contracts/legend_hunting_greenwood_schrats_action",
-			"scripts/factions/contracts/legend_hunting_demon_alps_action",
-			"scripts/factions/contracts/legend_hunting_coven_leader_action",
-			"scripts/factions/contracts/legend_hunting_skin_ghouls_action",
-			"scripts/factions/contracts/legend_bandit_army_action",
-			"scripts/factions/contracts/legend_barbarian_prisoner_action",
 			"scripts/factions/actions/send_military_holysite_action"
 		],
 		[],
+		//FEATURE_2: Revamp more contracts
 		//Settlement
 		[
 			//general contracts
-			"scripts/contracts/contracts/gi_stolenitm_A",
+			"scripts/contracts/contracts/return_item_action",
 			// "scripts/factions/contracts/drive_away_bandits_action",
 			// "scripts/factions/contracts/drive_away_barbarians_action",
+			
 			// "scripts/factions/contracts/investigate_cemetery_action",
-			// "scripts/factions/contracts/item_delivery_action",
-			// "scripts/factions/contracts/money_delivery_action",
+			
+			
 			// "scripts/factions/contracts/escort_caravan_action",
+				//add chance for monsters to appear
+				//add weird occurences?
 
-			// //monster hunt
+			//monster hunt
 			// "scripts/factions/contracts/roaming_beasts_action",
+			
 			// "scripts/factions/contracts/obtain_item_action",
+				//create small/medium dungeon to explore
+
+			// "scripts/factions/contracts/defend_settlement_bandits_action",
+			// "scripts/factions/contracts/defend_settlement_greenskins_action",
+			
+			// "scripts/factions/contracts/restore_location_action",
+				//something is wrong...
+				//possible haunting - create anomaly
+			// "scripts/factions/contracts/discover_location_action",
+			
+			// "scripts/factions/contracts/legend_bandit_army_action",
+			// "scripts/factions/contracts/legend_barbarian_prisoner_action",
+			
 			// "scripts/factions/contracts/hunting_webknechts_action",
 			// "scripts/factions/contracts/hunting_alps_action",
 			// "scripts/factions/contracts/hunting_unholds_action",
 			// "scripts/factions/contracts/hunting_hexen_action",
 			// "scripts/factions/contracts/hunting_schrats_action",
 			// "scripts/factions/contracts/hunting_lindwurms_action",
-			// "scripts/factions/contracts/legend_hunting_white_direwolf_action",
-			// "scripts/factions/contracts/legend_hunting_stollwurms_action",
-			// "scripts/factions/contracts/legend_hunting_rock_unholds_action",
-			// "scripts/factions/contracts/legend_hunting_redback_webknechts_action",
-			// "scripts/factions/contracts/legend_hunting_greenwood_schrats_action",
-			// "scripts/factions/contracts/legend_hunting_demon_alps_action",
-			// "scripts/factions/contracts/legend_hunting_coven_leader_action",
-			// "scripts/factions/contracts/legend_hunting_skin_ghouls_action",
-
-			// "scripts/factions/contracts/defend_settlement_bandits_action",
-			// "scripts/factions/contracts/defend_settlement_greenskins_action",
-			
-			// "scripts/factions/contracts/restore_location_action",
-			// "scripts/factions/contracts/discover_location_action",
-			
-			// "scripts/factions/contracts/legend_bandit_army_action",
-			// "scripts/factions/contracts/legend_barbarian_prisoner_action",
 
 			//housekeeping
 			"scripts/factions/actions/send_caravan_action",
@@ -267,6 +270,8 @@ gt.Const.FactionTrait <- {
 			"scripts/factions/contracts/conquer_holy_site_action",
 			"scripts/factions/contracts/defend_holy_site_action",
 			"scripts/factions/contracts/hold_chokepoint_action",
+			
+			//housekeeping
 			"scripts/factions/actions/defend_citystate_action",
 			"scripts/factions/actions/send_ship_action",
 			"scripts/factions/actions/receive_ship_action",
@@ -291,40 +296,24 @@ gt.Const.FactionTrait <- {
 	]
 };
 
-gt.gameplay_improved.stolenitm_string <- {
-	strange_tome = "Strange Tome",
-	lindwurm_bones_item = "Lindwurm Bones",
-	unhold_bones_item = "Unhold Bones",
-	strange_eye = "Strange Eye",
-	ceremonial_staff = "Ceremonial Staff",
-	heirloom_sword = "Heirloom Sword",
-	legend_named_butchers_cleaver = "Heirloom Cleaver",
-	legend_named_sickle = "Heirloom Sickle",
-	legend_named_blacksmith_hammer = "Heirloom Hammer",
-	lockbox = "Lockbox"
-}
+gt.Const.Contracts.Return_Item <- {};
+gt.Const.Contracts.Return_Item.Pool <- [
+	//rare items
+	"strange_tome", //FEATURE_1: add possible magic notes/books
 
-gt.gameplay_improved.stolenitm_value <- {
-	strange_tome = 10000,
-	lindwurm_bones_item = 2200,
-	unhold_bones_item = 1125,
-	strange_eye = 1000,
-	ceremonial_staff = 2000,
-	heirloom_sword = 4000,
-	legend_named_butchers_cleaver = 1100,
-	legend_named_sickle = 4500,
-	legend_named_blacksmith_hammer = 5000,
-	lockbox = 1000
-}
-gt.gameplay_improved.stolenitm_item <- {
-	lindwurm_bones_item = "scripts/items/misc/lindwurm_bones_item",
-	unhold_bones_item = "scripts/items/misc/unhold_bones_item",
-	strange_eye = "scripts/items/misc/strange_eye_item",
-	legend_named_butchers_cleaver = "scripts/items/weapons/named/legend_named_butchers_cleaver",
-	legend_named_sickle = "scripts/items/weapons/named/legend_named_sickle",
-	legend_named_blacksmith_hammer = "scripts/items/weapons/named/legend_named_blacksmith_hammer",
-	ceremonial_staff = "scripts/items/weapons/named/legend_staff_ceremonial"
-}
+	//valuable items
+	"heirloom_sword",
+	"scripts/items/weapons/named/legend_named_blacksmith_hammer",
+	"scripts/items/weapons/named/legend_staff_ceremonial",
+	"scripts/items/misc/strange_eye_item", //FEATURE_3: Overhaul cultist holding strange eye in events
+	
+	//common items
+	"scripts/items/weapons/named/legend_named_butchers_cleaver",
+	"scripts/items/weapons/named/legend_named_sickle",
+	"scripts/items/misc/lindwurm_bones_item",
+	"scripts/items/misc/unhold_bones_item",
+	"lockbox"
+];
 
 gt.gameplay_improved.StaffNames <- [
 	"Deathdealer",
@@ -338,4 +327,28 @@ gt.gameplay_improved.StaffNames <- [
 	"Windcatcher",
 	"Swiftstrike"
 ];
+
+gt.Const.EntityType.Anatomist <- 166;
+gt.Const.Strings.EntityName.append("Anatomist");
+gt.Const.EntityIcon.append("background_70");
+
+gt.Const.World.Spawn.Troops.Anatomist <- {
+	ID = this.Const.EntityType.Anatomist,
+	Variant = 1,
+	Strength = 25,
+	Cost = 20,
+	Row = 3,
+	Script = "scripts/entity/tactical/enemies/anatomist",
+	NameList = this.Const.Strings.NecromancerNames,
+	TitleList = null
+}
+
+gt.Const.World.Spawn.Troops.BanditThugPotioned <- {
+	ID = this.Const.EntityType.BanditThug,
+	Variant = 0,
+	Strength = 16,
+	Cost = 11,
+	Row = 3,
+	Script = "scripts/entity/tactical/enemies/bandit_thug_potioned"
+}
 

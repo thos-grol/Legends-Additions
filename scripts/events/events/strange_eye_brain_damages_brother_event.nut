@@ -30,6 +30,7 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 
 				local injury = _event.m.Addict.addInjury([{
 					ID = "injury.brain_damage",
+					Threshold = 0.25,
 					Script = "injury_permanent/brain_damage_injury"
 				}]);
 				this.List.push({
@@ -85,7 +86,7 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 
 		this.m.Addict = canditates_brain_damage[this.Math.rand(0, canditates_brain_damage.len() - 1)];
 		this.m.Item = this.new("scripts/items/misc/strange_eye_item");
-		this.m.Score = canditates_brain_damage.len() * 50;
+		this.m.Score = canditates_brain_damage.len() * 100;
 	}
 
 	function onPrepare()
@@ -100,7 +101,7 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 		]);
 		_vars.push([
 			"item",
-			this.Const.Strings.getArticle(this.m.Item.getName()) + this.m.Item.getName()
+			"Strange Eye"
 		]);
 	}
 

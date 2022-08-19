@@ -238,7 +238,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 					id = 12,
 					type = "text",
 					icon = "ui/icons/fatigue.png",
-					text = "The Fatigue costs of the Rotation and Footwork skills are reduced by [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color]" + "\n[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Initiative"
+					text = "The Fatigue costs of the Rotation and Footwork skills are reduced by [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color]" + "\n[color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Initiative"
 				},
 				{
 					id = 12,
@@ -254,7 +254,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 		o.onUpdate = function(_properties)
 		{
 			onUpdate(_properties);
-			_properties.Initiative += 10;
+			_properties.Initiative += 5;
 		}
 	});
 
@@ -280,7 +280,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 					id = 11,
 					type = "text",
 					icon = "ui/icons/morale.png",
-					text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]5%[/color] of damage ignores armor when using bows or crossbows" + "\n[color=" + this.Const.UI.Color.PositiveValue + "]+15[/color] Ranged Skill"  + "\n[color=" + this.Const.UI.Color.PositiveValue + "]+15[/color] Ranged Defense"
+					text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] of damage ignores armor when using bows or crossbows" + "\n[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Ranged Skill"  + "\n[color=" + this.Const.UI.Color.PositiveValue + "]+15[/color] Ranged Defense"
 				},
 				{
 					id = 12,
@@ -296,62 +296,51 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 		o.onUpdate = function(_properties)
 		{
 			_properties.IsSharpshooter = true;
-			_properties.RangedSkill += 15;
+			_properties.RangedSkill += 10;
 			_properties.RangedDefense += 15;
 		}
 	});
 	
-	
-	//"Sympathetic Call"
-	//"There\'s something different about this character. Physically they seem unchanged, yet somehow a sense of dread precedes them. Any harm that they endure, on or off the battlefield, seems to affect another nearby. Useful in a fight, annoying in camp, and surely isolating in every day society.";
-	::mods_hookExactClass("skills/effects/hexe_potion_effect", function (o)
-	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+	//sharpshooter changes
+		::mods_hookExactClass("skills/actives/aimed_shot", function (o)
 		{
-			local ret = [
-				{
-					id = 1,
-					type = "title",
-					text = this.getName()
-				},
-				{
-					id = 2,
-					type = "description",
-					text = this.getDescription()
-				},
-				{
-					id = 11,
-					type = "text",
-					icon = "ui/icons/special.png",
-					text = "Reflect [color=" + this.Const.UI.Color.PositiveValue + "]150%[/color] of hitpoint damage received back at the attacker"
-				},
-				{
-					id = 12,
-					type = "hint",
-					icon = "ui/tooltips/warning.png",
-					text = "Further mutations may cause this character's genes to spiral out of control, crippling them"
-				}
-			];
-			return ret;
-		}
-
-		local onDamageReceived = ::mods_getMember(o, "onDamageReceived");
-		o.onDamageReceived = function(_properties)
-		{
-			if (_damageHitpoints > 0 && _attacker != null && _attacker.isAlive() && _attacker.getHitpoints() > 0 && _attacker.getID() != this.getContainer().getActor().getID() && !_attacker.getCurrentProperties().IsImmuneToDamageReflection)
+			local onAnySkillUsed = ::mods_getMember(o, "onAnySkillUsed");
+			o.onAnySkillUsed = function(_skill, _targetEntity, _properties)
 			{
-				local hitInfo = clone this.Const.Tactical.HitInfo;
-				hitInfo.DamageRegular = this.Math.floor(_damageHitpoints * 1.5);
-				hitInfo.DamageArmor = 0.0;
-				hitInfo.DamageDirect = 1.0;
-				hitInfo.BodyPart = this.Const.BodyPart.Body;
-				hitInfo.BodyDamageMult = 1.0;
-				hitInfo.FatalityChanceMult = 0.0;
-				_attacker.onDamageReceived(_attacker, null, hitInfo);
+				onAnySkillUsed( _skill, _targetEntity, _properties);
+				if (_skill == this && _properties.IsSharpshooter) _properties.DamageDirectMult += 0.1;
 			}
-		}
-	});
+		});
+
+		::mods_hookExactClass("skills/actives/quick_shot", function (o)
+		{
+			local onAnySkillUsed = ::mods_getMember(o, "onAnySkillUsed");
+			o.onAnySkillUsed = function(_skill, _targetEntity, _properties)
+			{
+				onAnySkillUsed( _skill, _targetEntity, _properties);
+				if (_skill == this && _properties.IsSharpshooter) _properties.DamageDirectMult += 0.1;
+			}
+		});
+
+		::mods_hookExactClass("skills/actives/shoot_bolt", function (o)
+		{
+			local onAnySkillUsed = ::mods_getMember(o, "onAnySkillUsed");
+			o.onAnySkillUsed = function(_skill, _targetEntity, _properties)
+			{
+				onAnySkillUsed( _skill, _targetEntity, _properties);
+				if (_skill == this && _properties.IsSharpshooter) _properties.DamageDirectMult += 0.1;
+			}
+		});
+
+		::mods_hookExactClass("skills/actives/shoot_stake", function (o)
+		{
+			local onAnySkillUsed = ::mods_getMember(o, "onAnySkillUsed");
+			o.onAnySkillUsed = function(_skill, _targetEntity, _properties)
+			{
+				onAnySkillUsed( _skill, _targetEntity, _properties);
+				if (_skill == this && _properties.IsSharpshooter) _properties.DamageDirectMult += 0.1;
+			}
+		});
 
 	//"Subdermal Stitching";
 	//"This character\'s skin and subdermal tissue has mutated and will rapidly stitch itself back together. The effect is most pronounced on small puncture wounds, where the flesh can seal the wound from all directions evenly.";
@@ -1888,6 +1877,4 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			
 		}
 	});
-
-	delete this.anatomists_expanded.hook_effects;
 };

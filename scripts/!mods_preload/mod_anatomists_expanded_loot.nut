@@ -11,8 +11,7 @@ this.getroottable().anatomists_expanded.doPotionDrop <- function (_killer, _skil
 				break;
 			}
 			
-			//TODO: revamp to count if anatomist trait exists
-			if (bro.getBackground().getID() == "background.anatomist")
+			if (bro.getSkills().hasSkill("trait.bloodline_researcher"))
 			{
 				count++;
 			}
@@ -349,6 +348,4 @@ this.getroottable().anatomists_expanded.hook_loot <- function ()
 			this.getroottable().anatomists_expanded.doPotionDrop(_killer, _skill, _tile, _fatalityType, chance, item);
 		}
 	});
-	
-	delete this.anatomists_expanded.hook_loot;
 };

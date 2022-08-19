@@ -6,9 +6,8 @@ this.legend_gladius_named <- this.inherit("scripts/items/weapons/named/named_wea
 		this.m.ID = "weapon.legend_gladius_named";
 		this.m.NameList = this.Const.Strings.SwordNames;
 		this.m.Description = "A straight blade of ancient origin. The grip and pomel are very plain, from a simpler time.";
-		//TODO: Make Named images
-		this.m.IconLarge = "weapons/melee/legend_gladius_01.png";
-		this.m.Icon = "weapons/melee/legend_gladius_01_70x70.png";
+		this.m.IconLarge = "weapons/melee/legend_gladius_01_named.png";
+		this.m.Icon = "weapons/melee/legend_gladius_named_01_70x70.png";
 		this.m.WeaponType = this.Const.Items.WeaponType.Sword;
 		this.m.SlotType = this.Const.ItemSlot.Mainhand;
 		this.m.ItemType = this.Const.Items.ItemType.Named | this.Const.Items.ItemType.Weapon | this.Const.Items.ItemType.MeleeWeapon | this.Const.Items.ItemType.OneHanded;

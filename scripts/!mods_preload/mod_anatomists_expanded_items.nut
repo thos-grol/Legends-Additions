@@ -255,16 +255,8 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             _actor.getSkills().removeByID("trait.night_blind");
             _actor.getSkills().removeByID("trait.frail");
 
-            //TODO: Create perfect body trait
-            _actor.getSkills().add(this.new("scripts/skills/traits/eagle_eyes_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/tough_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/strong_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/quick_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/dexterous_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/iron_lungs_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/athletic_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/iron_jaw_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/lucky_trait"));
+           
+            _actor.getSkills().add(this.new("scripts/skills/traits/perfect_body_trait"));
             
             _actor.getFlags().add("wurm");
             _actor.getFlags().add("wurm_8");
@@ -418,17 +410,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             _actor.getSkills().removeByID("trait.night_blind");
             _actor.getSkills().removeByID("trait.frail");
 
-            //TODO: Create perfect body trait
-            _actor.getSkills().add(this.new("scripts/skills/traits/eagle_eyes_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/tough_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/strong_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/quick_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/dexterous_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/iron_lungs_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/athletic_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/iron_jaw_trait"));
-            _actor.getSkills().add(this.new("scripts/skills/traits/lucky_trait"));
-            
+            _actor.getSkills().add(this.new("scripts/skills/traits/perfect_body_trait"));
 
             _actor.getFlags().add("wurm");
 
@@ -1725,13 +1707,13 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
                 id = 12,
                 type = "text",
                 icon = "ui/icons/special.png",
-                text = "Reactive Leg Muscles: The AP cost of Rotation and Footwork is reduced to [color=" + this.Const.UI.Color.PositiveValue + "]2[/color] and the Fatigue costs are reduced by [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color]." + "\n[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Initiative"
+                text = "Reactive Leg Muscles: The AP cost of Rotation and Footwork is reduced to [color=" + this.Const.UI.Color.PositiveValue + "]2[/color] and the Fatigue costs are reduced by [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color]." + "\n[color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Initiative"
             });
             result.push({
                 id = 12,
                 type = "text",
                 icon = "ui/icons/special.png",
-                text = "Mutated Cornea: An additional [color=" + this.Const.UI.Color.PositiveValue + "]5%[/color] of damage ignores armor when using bows or crossbows\n" + "[color=" + this.Const.UI.Color.PositiveValue + "]+20[/color] Ranged Skill"  + "\n[color=" + this.Const.UI.Color.PositiveValue + "]+20[/color] Ranged Defense"
+                text = "Mutated Cornea: An additional [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] of damage ignores armor when using bows or crossbows\n" + "[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Ranged Skill"  + "\n[color=" + this.Const.UI.Color.PositiveValue + "]+15[/color] Ranged Defense"
             });
             result.push({
                 id = 12,
@@ -2096,6 +2078,4 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return result;
         }
     });
-	
-	delete this.anatomists_expanded.hook_items;
 };

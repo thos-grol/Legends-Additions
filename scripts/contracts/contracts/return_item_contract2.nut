@@ -1,8 +1,7 @@
-local gt = this.getroottable();
-
-this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
+this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 	m = {
 		Target = null,
+		Loot = null,
 		IsPlayerAttacking = true
 	},
 	function create()
@@ -27,77 +26,102 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		local items = [
-			//rare items
-			"strange_tome", //TODO: add possible magic notes/books
-
-			//valuable items
-			"heirloom_sword",
-			"ceremonial_staff",
-			"strange_eye", //FEATURE_2: Overhaul cultist holding strange eye in events
-			"legend_named_butchers_cleaver",
-			"legend_named_sickle",
-			"legend_named_blacksmith_hammer",
-
-			//common items
-			"lindwurm_bones_item",
-			"unhold_bones_item",
-			"lockbox" //TODO: finish roll and screen
-		];
-		local t = this.Math.rand(1, 10);
-		local l = 0;
-		local r = 1;
-		if (t <= 1) //rare items
-		{
-			if (this.Math.rand(1, 100) <= 75) this.m.Flags.set("IsMercenary", true);
-		}
-		else if (t <= 3) //valuable items
-		{
-			if (this.Math.rand(1, 100) <= 40) this.m.Flags.set("IsMercenary", true);
-			l = 1;
-			r = 4;
-		}
-		else if (t <= 10) //common items
-		{
-			l = 5;
-			r = 5;
-		}
-
-		local r = this.Math.rand(l, r+1);
-		this.m.Flags.set("Actual Item", items[r]);
-		this.m.Flags.set("Item", gt.gameplay_improved.stolenitm_string[itemID]);
-
-		switch(items[r])
-		{
-			case "strange_tome":
-			case "ceremonial_staff":
-				if (this.Math.rand(1, 100) <= 50) this.m.Flags.set("IsNecromancer", true);
-				break;
-			case "lindwurm_bones_item":
-			case "unhold_bones_item":
-			case "lockbox":
-				if (this.Math.rand(1, 100) <= 15) this.m.Flags.set("IsAnatomist", true); //TODO: Create Screen
-				break;
-			case "strange_eye":
-				this.m.Flags.set("IsCultist", true);
-				break;
-		}
-
-		if (!this.m.Flags.get("IsMercenary")) this.Flags.set("IsBandits", true); //TODO: Create Screen
-
-		this.m.Payment.Pool = gt.gameplay_improved.stolenitm_value[this.m.Flags.get("Actual Item")] * 0.5 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
-
+		this.roll_item();
+		local value = this.m.Flags.get("IsLockbox") ? 1000 : this.m.Loot.getValue();
+		this.m.Payment.Pool = value * 0.6 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
 		if (this.Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
-		}
-		else
+		} else this.m.Payment.Completion = 1.0;
+		this.contract.start();
+	}
+
+	function roll_item()
+	{
+		//determine the possible items to roll in the contract and if there are mercenaries
+		local roll_tier = this.Math.rand(1, 10);
+		local roll_enemies = this.Math.rand(1, 100);
+		local range = [0, 1];
+		if (roll_tier <= 1 && this.getDifficulty() >= 3) //rare items
 		{
-			this.m.Payment.Completion = 1.0;
+			if (roll_enemies <= 75) this.m.Flags.set("IsMercenary", true);
+			range = [1, 5]; //FEATURE_1: Remove test code, adding placehoder numbers to skip books
+		}
+		else if (roll_tier <= 3 && this.getDifficulty() >= 1) //valuable items
+		{
+			if (roll_enemies <= 40) this.m.Flags.set("IsMercenary", true);
+			range = [1, 5];
+		}
+		else range = [5, 9]; //common items
+
+		//roll the item
+		local item_ID = this.Const.Contracts.Return_Item.Pool[this.Math.rand(range[0], range[1])];
+
+		//determine enemies
+		roll_enemies = this.Math.rand(1, 100);
+		switch(item_ID)
+		{
+			case "strange_tome":
+				if (roll_enemies <= 75) this.m.Flags.set("IsNecromancer", true);
+				break;
+			case "lockbox":
+				if (roll_enemies <= 15) this.m.Flags.set("IsAnatomist", true);
+				else if (roll_enemies <= 30) this.m.Flags.set("IsCultist", true);
+				break;
+			case "scripts/items/weapons/named/legend_staff_ceremonial":
+				if (roll_enemies <= 50) this.m.Flags.set("IsNecromancer", true);
+				break;
+			case "scripts/items/misc/lindwurm_bones_item":
+			case "scripts/items/misc/unhold_bones_item":
+				if (roll_enemies <= 75) this.m.Flags.set("IsAnatomist", true);
+				break;
+			case "scripts/items/misc/strange_eye_item":
+				this.m.Flags.set("IsCultist", true);
+				break;
 		}
 
-		this.contract.start();
+		//unpack the item
+		local is_rune = false;
+		switch(item_ID)
+		{
+			case "strange_tome":
+				//FEATURE_1: Fill in book rolls for strange tome after magic made
+				break;
+			case "lockbox":
+				this.m.Flags.set("IsLockbox", true);
+				local lst_lockbox = [
+					"scripts/items/misc/legend_ancient_scroll_item",
+					"scripts/items/accessory/legend_demon_banshee_trophy_item",
+					"scripts/items/accessory/berserker_mushrooms_item",
+					"scripts/items/loot/bead_necklace_item",
+					"scripts/items/accessory/ghoul_trophy_item",
+					"rune"
+				];
+				item_ID = lst_lockbox[this.Math.rand(0, lst_lockbox.len())];
+				is_rune = item_ID == "rune";
+				if (is_rune) item_ID = "scripts/items/rune_sigils/legend_vala_inscription_token";
+				break;
+			case "heirloom_sword":
+				local lst_swords = [
+					"scripts/items/weapons/ancient/ancient_sword",
+					"scripts/items/weapons/ancient/legend_gladius",
+					"scripts/items/weapons/named/ancient_sword_named",
+					"scripts/items/weapons/named/legend_gladius_named"
+				];
+				item_ID = lst_swords[this.Math.min(lst_swords.len() - 1, this.Math.rand(0, 101) / 25)];
+				break;
+		}
+
+		//create and set item parameters
+		this.m.Loot = this.new(item_ID);
+		if (is_rune)
+		{
+			local runes = [6,11,12,13];
+			this.m.Loot.setRuneVariant(runes[this.Math.rand(0, runes.len())]);
+			this.m.Loot.setRuneBonus(true);
+			this.m.Loot.updateRuneSigilToken();
+		}
 	}
 
 	function createStates()
@@ -123,7 +147,7 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				if (!this.m.Flags.get("IsNecromancer") && !this.m.Flags.get("IsAnatomist") && !this.m.Flags.get("IsCultist") && this.Math.rand(1, 100) <= 30
+				if (!this.Flags.get("IsNecromancer") && !this.Flags.get("IsAnatomist") && !this.Flags.get("IsCultist") && this.Math.rand(1, 100) <= 30)
 				{
 					this.Flags.set("IsCounterOffer", true);
 					this.Flags.set("Bribe", this.Contract.beautifyNumber(this.Contract.m.Payment.getOnCompletion() * this.Math.rand(200, 300) * 0.01));
@@ -137,8 +161,21 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 
 				local party;
 				local party_type;
-				//TODO: Party Selection Logic
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, this.Const.World.Spawn.BanditRaiders, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local difficulty_modifier = 1.0;
+				if (this.Flags.get("IsMercenary"))
+				{
+					party_type = this.Const.World.Spawn.Mercenaries;
+					if (this.getDifficulty() <= 2) difficulty_modifier = 0.75;
+				}
+				else if (this.Flags.get("IsCultist"))
+				{
+					party_type = this.Const.World.Spawn.Cultists;
+					difficulty_modifier = 1.5;
+
+				} 
+				else party_type = this.Const.World.Spawn.BanditRaiders;
+				
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, party_type, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * difficulty_modifier);
 
 				party.setDescription("A group of thieves.");
 				party.setFootprintType(this.Const.World.FootprintsType.Brigands);
@@ -146,9 +183,11 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 				party.getController().getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 				party.setFootprintSizeOverride(0.75);
 
-				local chance = 25 + gt.gameplay_improved.count_role("trait.tracker") * 10;
+				local chance = 25 + this.gameplay_improved.count_role("trait.tracker") * 10;
 				local r = this.Math.rand(1, 100);
-				
+				this.Flags.set("INVESTIGATION_CHANCE", chance);
+				this.Flags.set("INVESTIGATION_ROLL", r);
+
 				if (r <= chance)
 				{
 					this.Flags.set("Investigation", 2);
@@ -156,7 +195,7 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 				}
 				else
 				{
-					if (r <= chance)
+					if (r <= chance + 15)
 					{
 						local party2;
 						for (local i = 0 ; i < 3 ; i++) {
@@ -169,6 +208,9 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 
 							party2.die();
 						}
+
+						this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), this.Const.GenericFootprints, this.Const.World.FootprintsType.Brigands, 0.75);
+
 						this.Flags.set("Investigation", 1);
 					}
 					else
@@ -236,7 +278,6 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 					{
 						this.Contract.setScreen("BattleDone");
 						this.World.Contracts.showActiveContract();
-						this.Contract.setState("Return");
 					}
 				}
 				else if (this.World.getTime().Days - this.Flags.get("StartDay") >= 3 && this.Contract.m.Target.isHiddenToPlayer())
@@ -249,18 +290,32 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 
 			function onTargetAttacked( _dest, _isPlayerAttacking )
 			{
-				if (!this.Flags.get("IsAttackDialogTriggered"))
+				if (!this.Flags.get("IsAttackDialothisriggered"))
 				{
 					if (this.Flags.get("IsNecromancer"))
 					{
-						this.Flags.set("IsAttackDialogTriggered", true);
+						this.Flags.set("IsAttackDialothisriggered", true);
 						this.Contract.m.IsPlayerAttacking = _isPlayerAttacking;
 						this.Contract.setScreen("Necromancer");
 						this.World.Contracts.showActiveContract();
 					}
+					else if (this.Flags.get("IsCultist"))
+					{
+						this.Flags.set("IsAttackDialothisriggered", true);
+						this.Contract.m.IsPlayerAttacking = _isPlayerAttacking;
+						this.Contract.setScreen("Cultists");
+						this.World.Contracts.showActiveContract();
+					}
+					else if (this.Flags.get("IsAnatomist"))
+					{
+						this.Flags.set("IsAttackDialothisriggered", true);
+						this.Contract.m.IsPlayerAttacking = _isPlayerAttacking;
+						this.Contract.setScreen("Anatomist");
+						this.World.Contracts.showActiveContract();
+					}
 					else
 					{
-						this.Flags.set("IsAttackDialogTriggered", true);
+						this.Flags.set("IsAttackDialothisriggered", true);
 						this.Contract.m.IsPlayerAttacking = _isPlayerAttacking;
 						this.Contract.setScreen("Bandits");
 						this.World.Contracts.showActiveContract();
@@ -302,7 +357,7 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
-			Text = "[img]gfx/ui/events/event_20.png[/img]{%employer% restlessly walks back and forth while explaining what troubles him.%SPEECH_ON%There has been an audacious act of thievery! The despicable brigands stole my %itemLower% which is of immeasurable value to me. I implore you to hunt down those thieves and return that item to me.%SPEECH_OFF%He lowers his voice to an insisting tone.%SPEECH_ON%Not only will you get paid handsomely, but you would also set the worried minds of the good people of %townname% to rest!%SPEECH_OFF% | %employer%\'s reading one of many scrolls. He angrily tosses it onto a pile of others.%SPEECH_ON%The people of %townname% are rightfully furious. Do you know a brigand, possibly in league with other vagabonds, managed to steal my %itemLower% from us? That artifact is of immeasurable value to me! And... to the people, of course.%SPEECH_OFF%You shrug.%SPEECH_ON%And you want me to get it back for you?%SPEECH_OFF%The man points a finger.%SPEECH_ON%Precisely, smart sellsword! That is exactly what I want you to do. Follow the footprints of thievery and return to me the item which I... the town, rightfully owns!%SPEECH_OFF% | %employer%\'s turning an apple in hand. He seems frustrated with it, almost as if he wishes it were something else like a valuable trinket or perhaps just a tastier fruit.%SPEECH_ON%Have you ever lost something you loved?%SPEECH_OFF%You shrug and answer.%SPEECH_ON%There was this girl...%SPEECH_OFF%The man shakes his head.%SPEECH_ON%No, not some woman. More important. Because I have! Thieves stole my %itemLower%. How they managed to do get beyond my guards is, well, beyond me. But I know if I set you on them I\'ll be having what is rightfully mine back where it belongs. Isn\'t that right? Or have I been mislead as to the quality of your services?%SPEECH_OFF% | A dog is snoring at the feet of %employer%. He leans forward to gently pet the hound behind its ears.%SPEECH_ON%I hear you have a nose for finding people, sellsword. For... solving problems.%SPEECH_OFF%You nod. It is true, after all.%SPEECH_ON%Good... good... I have a task for you. A simple one. Something of great value to me has been stolen, my %itemLower%. I need you to track down those who stole it, kill them, obviously, and then bring back the item.%SPEECH_OFF% | A bird is perched on %employer%\'s window. The man, seated, points at it.%SPEECH_ON%I wonder if that\'s how they got in. The brigands, I mean. I think they must\'ve snuck through a window and then right back out. That\'s how they got away with my %itemLower%.%SPEECH_OFF%The man slowly rises and stalks across the room. He crouches, about ready to pounce on the bird, but the creature scatters before the man can so much as flinch.%SPEECH_ON%Damn.%SPEECH_OFF%He returns to his seat, wiping his hands as if he\'d worked up a sweat during his attempted avian ambush.%SPEECH_ON%My task is simple, sellsword. Bring my property back to me. Kill the brigands, too, if you wouldn\'t mind.%SPEECH_OFF% | Dust covers %employer%\'s table, but there is a spot oddly cleaner than the rest. He gestures to it.%SPEECH_ON%That\'s where my %itemLower% used to sit. If you couldn\'t tell, it\'s gone.%SPEECH_OFF%You nod. It does appear to be missing.%SPEECH_ON%The thieves who took it should be easy to track down. They\'re good thinkers in the night, those brigands, but they make mistakes aplenty during the day. Footprints, crowns ill-spent... you should be able to track them down with ease.%SPEECH_OFF%He looks at you with a stern eye.%SPEECH_ON%Do you understand, mercenary? I want you to get my property back. I want it placed right where it belongs. And... I want those thieves dead in the mud.%SPEECH_OFF%}",
+			Text = "[img]gfx/ui/events/event_20.png[/img]{%employer% restlessly walks back and forth while explaining what troubles him.%SPEECH_ON%There has been an audacious act of thievery! My %itemLower%, which is of immeasurable value to me, is missing. I implore you to hunt down those thieves and return that item to me.%SPEECH_OFF%He lowers his voice to an insisting tone.%SPEECH_ON%Not only will you get paid handsomely, but you would also set the worried minds of the good people of %townname% to rest!%SPEECH_OFF% | %employer%\'s reading one of many scrolls. He angrily tosses it onto a pile of others.%SPEECH_ON%The people of %townname% are rightfully furious. Do you know thieves have managed to steal my %itemLower% from us? That artifact is of immeasurable value to me! And... to the people, of course.%SPEECH_OFF%You shrug.%SPEECH_ON%And you want me to get it back for you?%SPEECH_OFF%The man points a finger.%SPEECH_ON%Precisely, smart sellsword! That is exactly what I want you to do. Follow the footprints of thievery and return to me the item which I... the town, rightfully owns!%SPEECH_OFF% | %employer%\'s turning an apple in hand. He seems frustrated with it, almost as if he wishes it were something else like a valuable trinket or perhaps just a tastier fruit.%SPEECH_ON%Have you ever lost something you loved?%SPEECH_OFF%You shrug and answer.%SPEECH_ON%There was this girl...%SPEECH_OFF%The man shakes his head.%SPEECH_ON%No, not some woman. More important. Because I have! Thieves stole my %itemLower%. How they managed to do get beyond my guards is, well, beyond me. But I know if I set you on them I\'ll be having what is rightfully mine back where it belongs. Isn\'t that right? Or have I been mislead as to the quality of your services?%SPEECH_OFF% | A dog is snoring at the feet of %employer%. He leans forward to gently pet the hound behind its ears.%SPEECH_ON%I hear you have a nose for finding people, sellsword. For... solving problems.%SPEECH_OFF%You nod. It is true, after all.%SPEECH_ON%Good... good... I have a task for you. A simple one. Something of great value to me has been stolen, my %itemLower%. I need you to track down those who stole it, kill them, obviously, and then bring back the item.%SPEECH_OFF% | A bird is perched on %employer%\'s window. The man, seated, points at it.%SPEECH_ON%I wonder if that\'s how they got in. The thieves, I mean. I think they must\'ve snuck through a window and then right back out. That\'s how they got away with my %itemLower%.%SPEECH_OFF%The man slowly rises and stalks across the room. He crouches, about ready to pounce on the bird, but the creature scatters before the man can so much as flinch.%SPEECH_ON%Damn.%SPEECH_OFF%He returns to his seat, wiping his hands as if he\'d worked up a sweat during his attempted avian ambush.%SPEECH_ON%My task is simple, sellsword. Bring my property back to me. Kill the thieves, too, if you wouldn\'t mind.%SPEECH_OFF% | Dust covers %employer%\'s table, but there is a spot oddly cleaner than the rest. He gestures to it.%SPEECH_ON%That\'s where my %itemLower% used to sit. If you couldn\'t tell, it\'s gone.%SPEECH_OFF%You nod. It does appear to be missing.%SPEECH_ON%The thieves who took it should be easy to track down. They\'re good thinkers in the night, those thieves, but they make mistakes aplenty during the day. Footprints, crowns ill-spent... you should be able to track them down with ease.%SPEECH_OFF%He looks at you with a stern eye.%SPEECH_ON%Do you understand, mercenary? I want you to get my property back. I want it placed right where it belongs. And... I want those thieves dead in the mud.%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			ShowEmployer = true,
@@ -334,7 +389,7 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 		this.m.Screens.push({
 			ID = "Investigation2",
 			Title = "Investigation",
-			Text = "[img]gfx/ui/events/event_20.png[/img]Having concluded the negotiations, you and your men investigate the scene of the crime, and the surroundings, as well as question the locals. You find a set of tracks that you are sure belongs to the thieves.",
+			Text = "[img]gfx/ui/events/event_20.png[/img]Having concluded the negotiations, you and your men investigate the scene of the crime, and the surroundings, as well as questioning the locals.",
 			Image = "",
 			List = [],
 			Options = [
@@ -346,12 +401,32 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 					}
 
 				}
-			]
+			],
+			function start()
+			{
+				this.List.push({
+					id = 10,
+					icon = "ui/icons/hitchance.png",
+					text = "[color=" + this.Const.UI.Color.PositiveEventValue + "]" + "The chance for even a perfect investigation was " + this.Flags.get("INVESTIGATION_CHANCE") + ". You rolled " + this.Flags.get("INVESTIGATION_ROLL") + "[/color]."
+				});
+
+				this.List.push({
+					id = 10,
+					icon = "ui/icons/bravery.png",
+					text = "[color=" + this.Const.UI.Color.PositiveEventValue + "]" + "You find some tracks and determine the group that must've carried away the item." + "[/color]."
+				});
+
+				this.List.push({
+					id = 10,
+					icon = "ui/icons/warning.png",
+					text = "Find more mercenaries with the tracker trait to improve investigation."
+				});
+			}
 		});
 		this.m.Screens.push({
 			ID = "Investigation1",
 			Title = "Investigation",
-			Text = "[img]gfx/ui/events/event_20.png[/img]Having concluded the negotiations, you and your men investigate the scene of the crime, and the surroundings, as well as question the locals. Unfortunately, it seems the thieves are just too good and have created multiple tracks and you are unsure which party is carrying the stolen item. \n\n(Hire more bros with the tracker trait to improve this outcome.)",
+			Text = "[img]gfx/ui/events/event_20.png[/img]Having concluded the negotiations, you and your men investigate the scene of the crime, and the surroundings, as well as questioning the locals.)",
 			Image = "",
 			List = [],
 			Options = [
@@ -363,12 +438,32 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 					}
 
 				}
-			]
+			],
+			function start()
+			{
+				this.List.push({
+					id = 10,
+					icon = "ui/icons/hitchance.png",
+					text = "[color=" + this.Const.UI.Color.NegativeEventValue + "]" + "The chance for even a partially successful investigation was " + (this.Flags.get("INVESTIGATION_CHANCE") + 15) + ". You rolled " + this.Flags.get("INVESTIGATION_ROLL") + "[/color]."
+				});
+
+				this.List.push({
+					id = 10,
+					icon = "ui/icons/bravery.png",
+					text = "[color=" + this.Const.UI.Color.NegativeEventValue + "]" + "You fail to find any tracks at all. Good luck catching the thieves!" + "[/color]."
+				});
+
+				this.List.push({
+					id = 10,
+					icon = "ui/icons/warning.png",
+					text = "Find more mercenaries with the tracker trait to improve investigation."
+				});
+			}
 		});
 		this.m.Screens.push({
 			ID = "Investigation0",
 			Title = "Investigation",
-			Text = "[img]gfx/ui/events/event_20.png[/img]Having concluded the negotiations, you and your men investigate the scene of the crime, and the surroundings, as well as question the locals. You fail to find any tracks at all. Good luck catching the thieves! \n\n(Hire more bros with the tracker trait to improve this outcome.)",
+			Text = "[img]gfx/ui/events/event_20.png[/img]Having concluded the negotiations, you and your men investigate the scene of the crime, and the surroundings, as well as questioning the locals.",
 			Image = "",
 			List = [],
 			Options = [
@@ -380,12 +475,32 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 					}
 
 				}
-			]
+			],
+			function start()
+			{
+				this.List.push({
+					id = 10,
+					icon = "ui/icons/hitchance.png",
+					text = "[color=" + this.Const.UI.Color.NegativeEventValue + "]" + "The chance for even a partially successful investigation was " + (this.Flags.get("INVESTIGATION_CHANCE") + 15) + ". You rolled " + this.Flags.get("INVESTIGATION_ROLL") + "[/color]."
+				});
+
+				this.List.push({
+					id = 10,
+					icon = "ui/icons/bravery.png",
+					text = "[color=" + this.Const.UI.Color.NegativeEventValue + "]" + "You fail to find any tracks at all. Good luck catching the thieves!" + "[/color]."
+				});
+
+				this.List.push({
+					id = 10,
+					icon = "ui/icons/warning.png",
+					text = "Find more mercenaries with the tracker trait to improve investigation."
+				});
+			}
 		});
 		this.m.Screens.push({
 			ID = "Bandits",
 			Title = "As you approach...",
-			Text = "[img]gfx/ui/events/event_80.png[/img]{Brigands! Just as your employer had thought. They look scared, presumably understanding that %employer%\'s well-paid wrath is about to descend upon them. | Ah, the thieves are quite human - a simple crew of vagabonds and brigands. They arm themselves as you order your men to attack. | You catch a group of brigands lugging your employer\'s property around. They seem shocked that you have found them here and no time is wasted trying to parlay - they arm themselves and you order the %companyname% to charge.}",
+			Text = "[img]gfx/ui/events/event_80.png[/img]You catch the group of thieves lugging your employer\'s property around. No time is wasted trying to parlay - they arm themselves and you order the %companyname% to charge.}",
 			Image = "",
 			List = [],
 			Options = [
@@ -413,6 +528,48 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 					{
 						this.Const.World.Common.addTroop(this.Contract.m.Target, {
 							Type = this.Const.World.Spawn.Troops.Necromancer
+						});
+						this.Contract.getActiveState().onTargetAttacked(this.Contract.m.Target, true);
+						return 0;
+					}
+
+				}
+			]
+		});
+		this.m.Screens.push({
+			ID = "Cultists",
+			Title = "As you approach...",
+			Text = "[img]gfx/ui/events/event_140.png[/img]{Up ahead, you see a bunch of men donned in strange masks and attire. Without a word, they silently draw their weapons and attack.}",
+			Image = "",
+			List = [],
+			Options = [
+				{
+					Text = "To Arms!",
+					function getResult()
+					{
+						this.Contract.getActiveState().onTargetAttacked(this.Contract.m.Target, true);
+						return 0;
+					}
+
+				}
+			]
+		});
+		this.m.Screens.push({
+			ID = "Anatomist",
+			Title = "As you approach...",
+			Text = "[img]gfx/ui/events/event_133.png[/img]{The thieves are here, just as expected, but they are handing the %itemLower% to anatomist and his bodyguard. Your presence, unsurprisingly, brings a halt to the transaction and both the thugs and the figure take up weapons.}",
+			Image = "",
+			List = [],
+			Options = [
+				{
+					Text = "To Arms!",
+					function getResult()
+					{
+						this.Const.World.Common.addTroop(this.Contract.m.Target, {
+							Type = this.Const.World.Spawn.Troops.Anatomist
+						});
+						this.Const.World.Common.addTroop(this.Contract.m.Target, {
+							Type = this.Const.World.Spawn.Troops.BanditThugPotioned
 						});
 						this.Contract.getActiveState().onTargetAttacked(this.Contract.m.Target, true);
 						return 0;
@@ -459,9 +616,10 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 					Text = "Good pay.",
 					function getResult()
 					{
+						local temp = this.Flags.get("IsLockbox") ? "lockbox" : this.Contract.m.Loot.getName();
 						this.World.Assets.addMoney(this.Flags.get("Bribe"));
 						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractBetrayal);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + this.Flags.get("Item"));
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + temp);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -484,57 +642,49 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 			Text = "[img]gfx/ui/events/event_22.png[/img]{The battle over, you retrieve the %itemLower% from the wasted clutches of your enemies and prepare to return to %employer%. He will surely be happy to see of your success! | Those who stole the %itemLower% are dead, and thankfully you were able to find the item itself. %employer% will be most pleased with your work here. | Well, you found those responsible for stealing the %itemLower% and put them to the sword. Now you just need to put the %itemLower% back into %employer%\'s hands and get your reward! | The battle is done and the %itemLower% was easy to find amongst the corpses of your enemies. You should probably return it to %employer% for your just reward!}",
 			Image = "",
 			List = [],
-			Options = [
+			Options = [],
+			function start()
+			{
+				if (!this.Flags.get("IsLockbox"))
 				{
+					this.List.push({
+						id = 10,
+						icon = "ui/items/" + this.Contract.m.Loot.getIcon(),
+						text = "What to do with " + this.Contract.m.Loot.getName() + "?"
+					});
+				}
+				
+				this.Options.push({
 					Text = "Let\'s take it for ourselves.",
 					function getResult()
 					{
+						//change reputation
+						this.updateAchievement("NeverTrustAMercenary", 1, 1);
 						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractBetrayal);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationAttacked, "Betrayed them and did not return the " + this.Flags.get("Item"));
-						this.World.Contracts.finishActiveContract(true);
+						local temp = this.Flags.get("IsLockbox") ? "lockbox" : this.Contract.m.Loot.getName();
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationBetrayal, "Betrayed them and did not return the " + temp);
 
 						//set flag for future ambush event
 						if (this.World.Statistics.getFlags().has("StolenItemRevenge")) this.World.Statistics.getFlags().increment("StolenItemRevenge");
 						else this.World.Statistics.getFlags().add("StolenItemRevenge", 1);
 						
-						local itemID = this.Flags.get("Actual Item");
-						switch(itemID)
-						{
-							case "strange_tome":
-								//TODO: Drop book items
-								//Necronomicon
-								break;
-							case "lockbox":
-								return "Lockbox";
-							case "heirloom_sword":
-								local r = this.Math.rand(1, 100);
-								if (r <= 25) this.World.Assets.getStash().add("scripts/items/weapons/ancient/ancient_sword");
-								else if (r <= 50) this.World.Assets.getStash().add("scripts/items/weapons/ancient/legend_gladius");
-								else if (r <= 75) this.World.Assets.getStash().add("scripts/items/weapons/named/ancient_sword_named");
-								else this.World.Assets.getStash().add("scripts/items/weapons/named/legend_gladius_named");
-								break;
-							default:
-								this.World.Assets.getStash().add(this.new(gt.gameplay_improved.stolenitm_item[itemID]));
-								break;
+						if (this.Flags.get("IsLockbox")) return "Lockbox";
+						this.World.Assets.getStash().add(this.Contract.m.Loot);
 
-						}
-						
+						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
-
-				},
-				{
+				});
+				this.Options.push({
 					Text = "Let\'s return the item.",
 					function getResult()
 					{
+						this.Contract.setState("Return");
 						return 0;
 					}
-
-				}
-			]
+				});
+			}
 		});
-		//TODO: check named item trading mod for advice on how to display item in screen
-		//Create lockbox screen and roll items
 		this.m.Screens.push({
 			ID = "Lockbox",
 			Title = "Opening the lockbox...",
@@ -546,16 +696,21 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 					Text = "Onwards.",
 					function getResult()
 					{
-						//rune
-						//ancient page
-						//gems
-						//coins
-						//useless trash you toss away
+						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
 
 				}
-			]
+			],
+			function start()
+			{
+				this.World.Assets.getStash().add(this.Contract.m.Loot);
+				this.List.push({
+					id = 10,
+					icon = "ui/items/" + this.Contract.m.Loot.getIcon(),
+					text = "You gain " + this.Contract.m.Loot.getName()
+				});
+			}
 		});
 		this.m.Screens.push({
 			ID = "Success1",
@@ -570,9 +725,11 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
+						
 						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Returned stolen " + this.Flags.get("Item"));
+						local temp = this.Flags.get("IsLockbox") ? "lockbox" : this.Contract.m.Loot.getName();
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Returned stolen " + temp);
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -603,7 +760,8 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + this.Flags.get("Item"));
+						local temp = this.Flags.get("IsLockbox") ? "lockbox" : this.Contract.m.Loot.getName();
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + temp);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -615,17 +773,18 @@ this.gi_stolenitm_C <- this.inherit("scripts/contracts/contract", {
 
 	function onPrepareVariables( _vars )
 	{
+		local test = this.m.Loot.getName();
 		_vars.push([
 			"direction",
 			this.m.Target == null || this.m.Target.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
 		]);
 		_vars.push([
 			"item",
-			this.m.Flags.get("Item")
+			this.m.Loot.getName()
 		]);
 		_vars.push([
 			"itemLower",
-			this.m.Flags.get("Item").tolower()
+			this.m.Loot.getName().tolower()
 		]);
 		_vars.push([
 			"bribe",

@@ -34,8 +34,6 @@ this.getroottable().anatomists_expanded.hook_mutations <- function ()
             return true;
 		}
 	});
-
-	delete this.anatomists_expanded.hook_mutations;
 };
 
 this.getroottable().anatomists_expanded.doInjuries <- function (_actor, _flag)

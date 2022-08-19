@@ -7,7 +7,7 @@ this.tracker_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		this.m.Name = "Tracker";
 		this.m.Icon = "ui/traits/trait_icon_63.png";
 		this.m.Description = "This character is skilled in tracking and can help in various scenarios.";
-		this.m.Order = 0;
+		this.m.Order = 1;
 		this.m.Type = this.m.Type;
 		this.m.Titles = [];
 		this.m.Excluded = [];
@@ -36,7 +36,7 @@ this.tracker_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Subterfuge. (Determines success of getting away with crimes.)"
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Subterfuge. (Determines success of getting away with crimes such as robbing caravans.)"
 			}
 		];
 	}

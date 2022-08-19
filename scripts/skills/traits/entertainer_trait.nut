@@ -7,7 +7,7 @@ this.entertainer_trait <- this.inherit("scripts/skills/traits/character_trait", 
 		this.m.Name = "Entertainer";
 		this.m.Icon = "ui/traits/trait_icon_63.png";
 		this.m.Description = "This character is skilled in entertaining and can help in various scenarios.";
-		this.m.Order = 0;
+		this.m.Order = 1;
 		this.m.Type = this.m.Type;
 		this.m.Titles = [];
 		this.m.Excluded = [];

@@ -22,6 +22,9 @@ this.getroottable().gameplay_improved.hook_backgrounds <- function ()
 				case "background.legend_qiyan":
 					this.getSkills().add(this.new("scripts/skills/traits/entertainer_trait"));
 					break;
+				case "background.anatomist":
+					this.getSkills().add(this.new("scripts/skills/traits/bloodline_researcher_trait"));
+					break;
 
 			}
 		}

@@ -407,6 +407,4 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 			this.m.DraftList.push("anatomist_background");
 		}
 	});
-	
-	delete this.anatomists_expanded.hook_scenario;
 };
