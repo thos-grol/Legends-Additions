@@ -10,7 +10,8 @@ gt.gameplay_improved <- {};
 		local addPlayerRelation = ::mods_getMember(o, "addPlayerRelation");
 		o.addPlayerRelation = function(_r, _reason = "")
 		{
-			if (_reason == "Attacked them" && !gt.gameplay_improved.roll_detection()) return;
+			local chance_detection = this.Math.max(5, 60 - this.Const.Contracts.chance_subterfuge();
+			if (_reason == "Attacked them" && this.Math.rand(1.0, 100.0) > chance_detection) return;
 			addPlayerRelation(_r, _reason);
 		}
 	});
@@ -20,7 +21,8 @@ gt.gameplay_improved <- {};
 		local addPlayerRelation = ::mods_getMember(o, "addPlayerRelation");
 		o.addPlayerRelation = function(_r, _reason = "")
 		{
-			if (_reason == "Attacked them" && !gt.gameplay_improved.roll_detection()) return;
+			local chance_detection = this.Math.max(5, 60 - this.Const.Contracts.chance_subterfuge();
+			if (_reason == "Attacked them" && this.Math.rand(1.0, 100.0) > chance_detection) return;
 			addPlayerRelation(_r, _reason);
 		}
 	});
@@ -30,49 +32,14 @@ gt.gameplay_improved <- {};
 		local addPlayerRelation = ::mods_getMember(o, "addPlayerRelation");
 		o.addPlayerRelation = function(_r, _reason = "")
 		{
-			if (_reason == "Attacked them" && !gt.gameplay_improved.roll_detection()) return;
+			local chance_detection = this.Math.max(5, 60 - this.Const.Contracts.chance_subterfuge();
+			if (_reason == "Attacked them" && this.Math.rand(1.0, 100.0) > chance_detection) return;
 			addPlayerRelation(_r, _reason);
 		}
 	});
 
 	gt.gameplay_improved.hook_backgrounds();
 });
-
-gt.gameplay_improved.roll_detection <- function ()
-{
-	local detection_chance = 60;
-	local roster = this.World.getPlayerRoster().getAll();
-	foreach( i, bro in roster )
-	{
-		if (i >= 25)
-		{
-			break;
-		}
-		if (bro.getSkills().hasSkill("trait.entertrainer")) detection_chance -= 5;
-		if (bro.getSkills().hasSkill("trait.tracker")) detection_chance -= 5;
-	}
-	detection_chance = this.Math.max(5, detection_chance);
-
-	local rand = this.Math.rand(1.0, 100.0);
-	this.logInfo("Rolling for detection: " + rand + " vs " + detection_chance)
-
-	return rand <= detection_chance;
-}
-
-gt.gameplay_improved.count_role <- function (role)
-{
-	local count = 0;
-	local roster = this.World.getPlayerRoster().getAll();
-	foreach( i, bro in roster )
-	{
-		if (i >= 25)
-		{
-			break;
-		}
-		if (bro.getSkills().hasSkill(role)) count++;
-	}
-	return count;
-}
 
 gt.Const.FactionTrait = {
 	None = 0,
@@ -295,6 +262,23 @@ gt.Const.FactionTrait = {
 		[]
 	]
 };
+
+gt.Const.Contracts.count_role <- function (role)
+{
+	local count = 0;
+	local roster = this.World.getPlayerRoster().getAll();
+	foreach( i, bro in roster )
+	{
+		if (i >= 25) break;
+		if (bro.getSkills().hasSkill(role)) count++;
+	}
+	return count;
+}
+
+gt.Const.Contracts.chance_subterfuge <- function ()
+{
+	return this.Const.Contracts.count_role("trait.entertrainer") * 5 + this.Const.Contracts.count_role("trait.tracker") * 5;
+}
 
 gt.Const.Contracts.Return_Item <- {};
 gt.Const.Contracts.Return_Item.Pool <- [

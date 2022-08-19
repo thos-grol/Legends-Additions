@@ -475,21 +475,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 					text = "Attacks do [color=" + this.Const.UI.Color.PositiveValue + "]+30%[/color] additional damage"
 				});
 			}
-			else
-			{
-				ret.push({
-					id = 11,
-					type = "text",
-					icon = "ui/icons/health.png",
-					text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 15 + "[/color] Hitpoints"
-				});
-				ret.push({
-					id = 11,
-					type = "text",
-					icon = "ui/icons/melee_skill.png",
-					text = "Attacks do [color=" + this.Const.UI.Color.PositiveValue + "]+15%[/color] additional damage"
-				});
-			}
 			
 			ret.push({
 				id = 12,
@@ -507,10 +492,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			{
 				_properties.Hitpoints += 30;
 				_properties.DamageTotalMult *= 1.30;
-			}
-			{
-				_properties.Hitpoints += 15;
-				_properties.DamageTotalMult *= 1.15;
 			}
 		}
 		::mods_addMember(o, "lindwurm_potion_effect", "onUpdate", onUpdate);

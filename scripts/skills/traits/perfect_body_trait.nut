@@ -95,5 +95,19 @@ this.perfect_body_trait <- this.inherit("scripts/skills/traits/character_trait",
 		_properties.ThresholdToReceiveInjuryMult *= 1.25;
 		_properties.RerollDefenseChance += 10;
 	}
+
+	function onAdded()
+	{
+		local _actor = this.m.Container;
+		_actor.getSkills().removeByID("trait.short_sighted");
+		_actor.getSkills().removeByID("trait.fat");
+		_actor.getSkills().removeByID("trait.bleeder");
+		_actor.getSkills().removeByID("trait.ailing");
+		_actor.getSkills().removeByID("trait.fragile");
+		_actor.getSkills().removeByID("trait.asthmatic");
+		_actor.getSkills().removeByID("trait.clubfooted");
+		_actor.getSkills().removeByID("trait.night_blind");
+		_actor.getSkills().removeByID("trait.frail");
+	}
 });
 

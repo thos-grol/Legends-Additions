@@ -243,31 +243,20 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
         local onUse = ::mods_getMember(o, "onUse");
 		o.onUse = function(_actor, _item = null)
         {
+            //TODO: Revamp
             this.getroottable().anatomists_expanded.doInjuries(_actor, "wurm");
-
-            _actor.getSkills().removeByID("trait.short_sighted");
-            _actor.getSkills().removeByID("trait.fat");
-            _actor.getSkills().removeByID("trait.bleeder");
-            _actor.getSkills().removeByID("trait.ailing");
-            _actor.getSkills().removeByID("trait.fragile");
-            _actor.getSkills().removeByID("trait.asthmatic");
-            _actor.getSkills().removeByID("trait.clubfooted");
-            _actor.getSkills().removeByID("trait.night_blind");
-            _actor.getSkills().removeByID("trait.frail");
-
-           
-            _actor.getSkills().add(this.new("scripts/skills/traits/perfect_body_trait"));
-            
             _actor.getFlags().add("wurm");
             _actor.getFlags().add("wurm_8");
-
-            _actor.getSkills().add(this.new("scripts/skills/effects/lindwurm_potion_effect"));
+            
             _actor.getSkills().add(this.new("scripts/skills/effects/orc_warrior_potion_effect"));
             _actor.getSkills().add(this.new("scripts/skills/effects/fallen_hero_potion_effect"));
 
-
             _actor.getBackground().addPerk(this.Const.Perks.PerkDefs.PTRFamilyPride, 1, false);
             _actor.getSkills().add(this.new("scripts/skills/perks/perk_ptr_family_pride"));
+
+            //previous potion already has
+            _actor.getSkills().add(this.new("scripts/skills/traits/perfect_body_trait"));
+            _actor.getSkills().add(this.new("scripts/skills/effects/lindwurm_potion_effect"));
 
             this.Sound.play("sounds/enemies/lindwurm_death_0" + this.Math.rand(1, 4) + ".wav", this.Const.Sound.Volume.Inventory);
             this.Sound.play("sounds/enemies/lindwurm_flee_0" + this.Math.rand(1, 3) + ".wav", this.Const.Sound.Volume.Inventory);
@@ -390,7 +379,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 		{
             create();
             this.m.Name = "Sequence 8: Lindwurm";
-		    this.m.Description = "Feel your blood boil! Or, more to the point, don\'t! With this tincture, the burning blood of a lindwurm will flow through decidedly human veins, with the lucky subject none the wiser. Until they start bleeding, of course. Amazingly, the lindwurm is already a sequence 8 creature from the start. By imbimbing this potion, it will perfect your physique... \n\nYou can drink potions of the same sequence without serious consequences, but you will still have to deal with the sickness.";
+		    this.m.Description = "Drawing inspiration from the dragon's blood bath of the myths, this potion will perfect the user's physique, removing any negative physical traits, and giving them the potential to be a hero of legends. They will gain potent acidic blood as well. \n\nYou can drink potions of the same sequence without serious consequences, but you will still have to deal with the sickness.";
             this.m.Icon = "consumables/potion_27.png";
             this.m.Value = 10000;
         }
@@ -399,25 +388,13 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 		o.onUse = function(_actor, _item = null)
         {
             this.getroottable().anatomists_expanded.doInjuries(_actor, "wurm");
-
-            _actor.getSkills().removeByID("trait.short_sighted");
-            _actor.getSkills().removeByID("trait.fat");
-            _actor.getSkills().removeByID("trait.bleeder");
-            _actor.getSkills().removeByID("trait.ailing");
-            _actor.getSkills().removeByID("trait.fragile");
-            _actor.getSkills().removeByID("trait.asthmatic");
-            _actor.getSkills().removeByID("trait.clubfooted");
-            _actor.getSkills().removeByID("trait.night_blind");
-            _actor.getSkills().removeByID("trait.frail");
-
-            _actor.getSkills().add(this.new("scripts/skills/traits/perfect_body_trait"));
-
             _actor.getFlags().add("wurm");
 
-            _actor.getSkills().add(this.new("scripts/skills/effects/lindwurm_potion_effect"));
-
+            _actor.getSkills().add(this.new("scripts/skills/traits/perfect_body_trait"));
+            
             _actor.getBackground().addPerk(this.Const.Perks.PerkDefs.PTRRisingStar, 0, false);
             _actor.getSkills().add(this.new("scripts/skills/perks/perk_ptr_rising_star"));
+           _actor.setVeteranPerks(2);
 
             this.Sound.play("sounds/enemies/lindwurm_death_0" + this.Math.rand(1, 4) + ".wav", this.Const.Sound.Volume.Inventory);
             this.Sound.play("sounds/enemies/lindwurm_flee_0" + this.Math.rand(1, 3) + ".wav", this.Const.Sound.Volume.Inventory);
@@ -468,7 +445,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Perfects your physique, removing negative traits and adding positive traits."
+				text = "Perfects your physique, removing negative traits and adding positive traits. This character also has improved veteran levels, from 5 to 2."
 			});
             result.push({
 				id = 11,
@@ -476,18 +453,6 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 				icon = "ui/icons/special.png",
 				text = "This character\'s blood burns with acid, damaging adjacent attackers whenever they deal hitpoint damage"
 			});
-            result.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/health.png",
-                text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 15 + "[/color] Hitpoints"
-            });
-            result.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/melee_skill.png",
-                text = "Attacks do [color=" + this.Const.UI.Color.PositiveValue + "]+15%[/color] additional damage"
-            });
             result.push({
                 id = 12,
                 type = "text",

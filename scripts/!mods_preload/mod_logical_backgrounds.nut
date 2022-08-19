@@ -53,7 +53,6 @@ gt.logical_backgrounds <- {};
 				case "Shepherd":
 				case "Shieldmaiden":
 					this.getSkills().add(this.new("scripts/skills/perks/perk_ptr_fruits_of_labor"));
-					this.getSkills().add(this.new("scripts/skills/perks/perk_ptr_wears_it_well"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_ptr_hale_and_hearty"));
 					break;
 
@@ -74,8 +73,6 @@ gt.logical_backgrounds <- {};
 				case "Crusader":
 					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_true_believer"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_prayer_of_faith"));
-					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_prayer_of_life"));
-					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_holyflame"));
 					break;
 				
 				case "Thief":
@@ -107,8 +104,6 @@ gt.logical_backgrounds <- {};
 					break;
 				
 				case "Brawler":
-					this.getSkills().add(this.new("scripts/skills/perks/perk_adrenalin"));
-					this.getSkills().add(this.new("scripts/skills/perks/perk_battle_flow"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_ptr_vigorous_assault"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_ptr_unstoppable"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_steel_brow"));
@@ -186,14 +181,17 @@ gt.logical_backgrounds <- {};
 			//profession skills
 			switch(background_name)
 			{
-				case "Militia":
-				case "Deserter":
 				case "Oathtaker":
 				case "Retired Soldier":
 					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_back_to_basics"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_rotation"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_ptr_vigilant"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_underdog"));
+					break;
+				case "Militia":
+				case "Deserter":
+					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_back_to_basics"));
+					this.getSkills().add(this.new("scripts/skills/perks/perk_rotation"));
 					break;
 				case "Assassin":
 				case "Hashassin":
@@ -418,9 +416,7 @@ gt.logical_backgrounds <- {};
 			{
 				case "Assassin":
 				case "Hashassin":
-				case "Master Archer":
 				case "Ranger":
-				case "Militia":
 				case "Gladiator":
 				case "Swordmaster":
 					this.getSkills().add(this.new("scripts/skills/perks/perk_dodge"));
@@ -428,7 +424,11 @@ gt.logical_backgrounds <- {};
 					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_freedom_of_movement"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_nimble"));
 					break
-
+				case "Master Archer":
+				case "Militia":
+					this.getSkills().add(this.new("scripts/skills/perks/perk_dodge"));
+					this.getSkills().add(this.new("scripts/skills/perks/perk_nimble"));
+					break
 				case "Sellsword":
 				case "Hedge Knight":
 					this.getSkills().add(this.new("scripts/skills/perks/perk_ptr_menacing"));
@@ -439,17 +439,20 @@ gt.logical_backgrounds <- {};
 			//med armor
 			switch(background_name)
 			{
-				case "Raider":
-				case "Nomad":
-				case "Sellsword":
-				case "Militia":
-				case "Deserter":
 				case "Retired Soldier":
 				case "Gladiator":
 					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_balance"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_perfect_fit"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_lithe"));
 					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_in_the_zone"));
+					break;
+				case "Sellsword":
+				case "Raider":
+				case "Nomad":
+				case "Deserter":
+				case "Militia":
+					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_balance"));
+					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_lithe"));
 					break;
 				case "Ranger":
 					this.getSkills().add(this.new("scripts/skills/perks/perk_legend_summon_falcon"));

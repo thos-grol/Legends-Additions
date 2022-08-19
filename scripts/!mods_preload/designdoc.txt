@@ -1,6 +1,3 @@
-//TODO: add in subterfuge in return item contract to fool employer
-//TODO: 
-
 Storm star : A magic morning star that could release a version of chain lightning when it hit.
 Lefeber's Enchanter : A rod that imbued items with the ability to store spells.
 
@@ -27,8 +24,6 @@ Schools:
                     perk: gust stuns
             Utility:
                 Haste
-            
-            
             
         Earth - Defense, Single Target Damage
             Vile Clutch
