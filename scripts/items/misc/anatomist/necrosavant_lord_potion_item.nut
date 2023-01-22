@@ -94,7 +94,7 @@ this.necrosavant_lord_potion_item <- this.inherit("scripts/items/misc/anatomist/
 
 	function onUse( _actor, _item = null )
 	{
-		    this.getroottable().anatomists_expanded.doInjuries(_actor, "vampire");
+		    this.getroottable().AE.doInjuries(_actor, "vampire");
 
 			_actor.getSkills().removeByID("trait.old");
 			_actor.getFlags().add("IsRejuvinated", true);

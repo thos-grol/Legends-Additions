@@ -94,7 +94,7 @@ this.demon_alp_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomi
 
 	function onUse( _actor, _item = null )
 	{
-		    this.getroottable().anatomists_expanded.doInjuries(_actor, "alp");
+		    this.getroottable().AE.doInjuries(_actor, "alp");
 
 			_actor.getFlags().add("alp");
 			_actor.getFlags().add("alp_8");

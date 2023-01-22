@@ -1,79 +1,77 @@
-this.getroottable().anatomists_expanded.hook_scenario <- function ()
+this.getroottable().AE.hook_scenario <- function ()
 {
 	::mods_hookExactClass("skills/backgrounds/anatomist_background", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
-			this.m.BackgroundDescription += "\n\nAfter a battle, anatomists have a chance to concoct a potion for each monster killed. The chance increases with each anatomist.";
-			this.m.HiringCost = 5000;
-			this.m.DailyCost = 35;
+			this.m.BackgroundDescription = "Part scientist and part surgeon, Anatomists are unaccustomed to battle but well served by steady hands. \n\nAfter a battle, each anatomists has a chance to concoct a potion for every monster killed.";
+			this.m.HiringCost = 6000;
+			this.m.DailyCost = 25;
 			this.m.Excluded.push("trait.greedy");
+
+			this.m.PerkGroupMultipliers <- [
+				[0.5, ::Const.Perks.LargeTree],
+				[0.5, ::Const.Perks.SturdyTree],
+				[6, ::Const.Perks.TalentedTree],
+				[0, ::Const.Perks.MediumArmorTree],
+				[0, ::Const.Perks.EntertainerClassTree],
+				[3, ::Const.Perks.HealerClassTree],
+				[0, ::Const.Perks.HoundmasterClassTree],
+				[0, ::Const.Perks.BowTree],
+				[0, ::Const.Perks.ThrowingTree],
+				[0, ::Const.Perks.CrossbowTree],
+				[0, ::Const.Perks.SlingTree],
+				[0, ::Const.Perks.RangedTree]
+			];
+
+			this.m.PerkTreeDynamic = {
+				Profession = [
+					::Const.Perks.ApothecaryProfessionTree
+				],
+				Enemy = [
+					::MSU.Class.WeightedContainer([
+						[6, ::Const.Perks.DirewolfTree],
+						[6, ::Const.Perks.GhoulTree],
+						[3, ::Const.Perks.LindwurmTree],
+						[6, ::Const.Perks.GoblinTree],
+						[6, ::Const.Perks.OrcTree],
+						[3, ::Const.Perks.UnholdTree],
+						[3, ::Const.Perks.AlpTree],
+						[3, ::Const.Perks.SchratTree],
+						[3, ::Const.Perks.VampireTree]					
+					])
+				]
+			};
 		}
-	});
-
-	::mods_hookNewObject("skills/backgrounds/anatomist_background", function (o)
-	{
-		o.m.PerkGroupMultipliers <- [
-			[0.5, this.Const.Perks.LargeTree],
-			[0.5, this.Const.Perks.SturdyTree],
-			[3, this.Const.Perks.TalentedTree],
-			[10, this.Const.Perks.LightArmorTree],
-			[0, this.Const.Perks.HeavyArmorTree],
-			[0, this.Const.Perks.MediumArmorTree],
-			[0, this.Const.Perks.EntertainerClassTree],
-			[3, this.Const.Perks.HealerClassTree],
-			[0, this.Const.Perks.HoundmasterClassTree],
-			[0, this.Const.Perks.BowTree],
-			[0.4, this.Const.Perks.CrossbowTree],
-			[0, this.Const.Perks.SlingTree],
-			[0, this.Const.Perks.RangedTree]
-		];
-
-		o.m.PerkTreeDynamic = {
-			Profession = [
-				::Const.Perks.ApothecaryProfessionTree
-			],
-			Enemy = [
-				::MSU.Class.WeightedContainer([
-					[3, ::Const.Perks.DirewolfTree],
-					[8, ::Const.Perks.GhoulTree],
-					[3, ::Const.Perks.LindwurmTree],
-					[8, ::Const.Perks.UnholdTree],
-					[3, ::Const.Perks.AlpTree],
-					[3, ::Const.Perks.SchratTree],
-					[5, ::Const.Perks.VampireTree]
-				])
-			]
-		};
 	});
 	
 	::mods_hookExactClass("scenarios/world/anatomists_scenario", function (o)
 	{
 		//Remove how the scenario does loot drops and move the logic somewhere else.
-		local onActorKilled = ::mods_getMember(o, "onActorKilled");
+		local onActorKilled = o.onActorKilled;
 		o.onActorKilled = function( _actor, _killer, _combatID )
 		{
 		}
 		
-		local onBattleWon = ::mods_getMember(o, "onBattleWon");
+		local onBattleWon = o.onBattleWon;
 		o.onBattleWon = function( _combatLoot )
 		{
 		}
 		
-		local onCombatFinished = ::mods_getMember(o, "onCombatFinished");
+		local onCombatFinished = o.onCombatFinished;
 		o.onCombatFinished = function()
 		{
 			return true;
 		}
 		
-		local onGetBackgroundTooltip = ::mods_getMember(o, "onGetBackgroundTooltip");
+		local onGetBackgroundTooltip = o.onGetBackgroundTooltip;
 		o.onGetBackgroundTooltip = function( _background, _tooltip )
 		{
 		}
 
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
@@ -81,7 +79,7 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 		}
 
 		//Modify the characters here and replace the function
-		local onSpawnAssets = ::mods_getMember(o, "onSpawnAssets");
+		local onSpawnAssets = o.onSpawnAssets;
 		o.onSpawnAssets = function()
 		{
 			local roster = this.World.getPlayerRoster();
@@ -101,7 +99,7 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 			]);
 			bros[0].setVeteranPerks(2);
 			bros[0].getBackground().m.DailyCost = 0;
-			bros[0].getBackground().m.RawDescription = "{Captain? Is it alright if I call you captain? Ah, of course it is. What? No, we were not calling you by another name. Yers is a smooth costard, good sir, and we would not be of such derring-do to refer to you as a sellsword who is as ordinary as any of our coetaneous clodpolls, or state that we were in some sense importuning commerce by conducting business with a man of your particular skills. No sir, we would not. We are not children of perdition, sir.}";
+			// bros[0].getBackground().m.RawDescription = "{Captain? Is it alright if I call you captain? Ah, of course it is. What? No, we were not calling you by another name. Yers is a smooth costard, good sir, and we would not be of such derring-do to refer to you as a sellsword who is as ordinary as any of our coetaneous clodpolls, or state that we were in some sense importuning commerce by conducting business with a man of your particular skills. No sir, we would not. We are not children of perdition, sir.}";
 			bros[0].getSprite("miniboss").setBrush("bust_miniboss_lone_wolf");
 			bros[0].setPlaceInFormation(3);
 			bros[0].m.Talents = [];
@@ -109,7 +107,7 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 			talents.resize(this.Const.Attributes.COUNT, 0);
 			talents[this.Const.Attributes.Bravery] = 3;
 			talents[this.Const.Attributes.MeleeSkill] = 2;
-			talents[this.Const.Attributes.RangedSkill] = 2;
+			talents[this.Const.Attributes.MeleeDefense] = 1;
 			local items = bros[0].getItems();
 			items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
 			items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
@@ -119,15 +117,17 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 			bros[0].getBackground().addPerk(this.Const.Perks.PerkDefs.HoldOut, 2, false);
 			bros[0].getSkills().add(this.new("scripts/skills/perks/perk_hold_out"));
 			bros[0].getSkills().add(this.new("scripts/skills/traits/player_character_trait"));
-
 			items.equip(this.new("scripts/items/helmets/undertaker_hat"));
 			items.equip(this.new("scripts/items/armor/undertaker_apron"));
+
+
+			
 			bros[1].setStartValuesEx([
 				"anatomist_background"
 			]);
 			bros[1].setVeteranPerks(2);
 			bros[1].getBackground().m.DailyCost = 0;
-			bros[1].getBackground().m.RawDescription = "{Despite others\' hesitancies, I\'ve no qualms calling you a javel, sir. You are, after all, a javel. A scapegrace. Some sellsword or another, yes? I think only a man who trucks cowardice would avoid calling you what you are. That someone disrespects your intelligence, thinking you yourself know not yourself. Even I see that in you accepting who you are, you are quite a good specimen. I mean, sellsword.}";
+			// bros[1].getBackground().m.RawDescription = "{Despite others\' hesitancies, I\'ve no qualms calling you a javel, sir. You are, after all, a javel. A scapegrace. Some sellsword or another, yes? I think only a man who trucks cowardice would avoid calling you what you are. That someone disrespects your intelligence, thinking you yourself know not yourself. Even I see that in you accepting who you are, you are quite a good specimen. I mean, sellsword.}";
 			bros[1].getSprite("miniboss").setBrush("bust_miniboss_lone_wolf");
 			bros[1].setPlaceInFormation(4);
 			bros[1].m.Talents = [];
@@ -149,12 +149,15 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 			items.equip(this.new("scripts/items/helmets/physician_mask"));
 			items.equip(this.new("scripts/items/armor/wanderers_coat"));
 			items.equip(this.new("scripts/items/weapons/dagger"));
+			
+			
+			
 			bros[2].setStartValuesEx([
 				"anatomist_background"
 			]);
 			bros[2].setVeteranPerks(2);
 			bros[2].getBackground().m.DailyCost = 0;
-			bros[2].getBackground().m.RawDescription = "{Though our quotidian dialogues are no doubt drollery, beneath the banausic surface I must admit I feel a touch of serotinous savagery lurking within you, coming to the fore as if my words be fire. Even our most desultory talks has me on edge, the way you stare at me with such hateful eyes. Well, know this, bounty hunter, I am no casuist, I speak in earnest. You are too fine a specimen-I mean captain to be lofting some sapskull\'s brickbats at. Understand?}";
+			// bros[2].getBackground().m.RawDescription = "{Though our quotidian dialogues are no doubt drollery, beneath the banausic surface I must admit I feel a touch of serotinous savagery lurking within you, coming to the fore as if my words be fire. Even our most desultory talks has me on edge, the way you stare at me with such hateful eyes. Well, know this, bounty hunter, I am no casuist, I speak in earnest. You are too fine a specimen-I mean captain to be lofting some sapskull\'s brickbats at. Understand?}";
 			bros[2].getSprite("miniboss").setBrush("bust_miniboss_lone_wolf");
 			bros[2].setPlaceInFormation(5);
 			bros[2].m.Talents = [];
@@ -172,12 +175,23 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 			bros[2].getBackground().addPerk(this.Const.Perks.PerkDefs.HoldOut, 2, false);
 			bros[2].getSkills().add(this.new("scripts/skills/perks/perk_hold_out"));
 			bros[2].getSkills().add(this.new("scripts/skills/traits/player_character_trait"));
+			
 
 			items.equip(this.new("scripts/items/helmets/masked_kettle_helmet"));
 			items.equip(this.new("scripts/items/armor/reinforced_leather_tunic"));
 			items.equip(this.new("scripts/items/weapons/militia_spear"));
 			this.World.Assets.getStash().add(this.new("scripts/items/supplies/smoked_ham_item"));
 			this.World.Assets.getStash().add(this.new("scripts/items/supplies/mead_item"));
+
+			//FIXME: Remove test code
+
+			bros[0].getSkills().add(this.new("scripts/skills/traits/tester_trait"));
+			bros[1].getSkills().add(this.new("scripts/skills/traits/tester_trait"));
+			bros[2].getSkills().add(this.new("scripts/skills/traits/tester_trait"));
+
+			// bros[0].getSkills().add(this.new("scripts/skills/actives/legend_demon_shadows_skill"));
+			// bros[1].getSkills().add(this.new("scripts/skills/actives/legend_demon_shadows_skill"));
+			// bros[2].getSkills().add(this.new("scripts/skills/actives/legend_demon_shadows_skill"));
 			// this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/research_notes_beasts_item"));
 			// this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/research_notes_greenskins_item"));
 			// this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/research_notes_undead_item"));
@@ -218,10 +232,9 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 	});
 
 	// comment out anatomists being unconfident
-	// update ancient priest potion effect
 	::mods_hookExactClass("entity/tactical/player", function(o)
 	{
-		local setMoraleState = ::mods_getMember(o, "setMoraleState");
+		local setMoraleState = o.setMoraleState;
 		o.setMoraleState = function( _m )
 		{
 			if (_m == this.Const.MoraleState.Confident && this.m.Skills.hasSkill("trait.insecure"))
@@ -247,7 +260,7 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 			this.actor.setMoraleState(_m);
 		}
 
-		local checkMorale = ::mods_getMember(o, "checkMorale");
+		local checkMorale = o.checkMorale;
 		o.checkMorale = function( _change, _difficulty, _type = this.Const.MoraleCheckType.Default, _showIconBeforeMoraleIcon = "", _noNewLine = false )
 		{
 			if (_change < 0 && this.m.Skills.hasSkill("effects.ancient_priest_potion"))
@@ -298,7 +311,7 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 
 	::mods_hookExactClass("entity/world/attached_location/herbalists_grove_location", function (o)
 	{
-		local onUpdateDraftList = ::mods_getMember(o, "onUpdateDraftList");
+		local onUpdateDraftList = o.onUpdateDraftList;
 		o.onUpdateDraftList = function( _list, _gender = null )
 		{
 			onUpdateDraftList(_list, _gender);
@@ -306,10 +319,62 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 		}
 	});
 
+	::mods_hookExactClass("entity/world/attached_location/stone_watchtower_location", function (o)
+	{
+		local onUpdateShopList = o.onUpdateShopList;
+		o.onUpdateShopList = function(_id, _list)
+		{
+			onUpdateShopList(_id, _list);
+			if (_id != "building.marketplace") return;
+			_list.push({
+				R = 90,
+				P = 1.0,
+				S = "misc/anatomist/orc_young_potion_item"
+			});
+			_list.push({
+				R = 90,
+				P = 1.0,
+				S = "misc/anatomist/webknecht_potion_item"
+			});
+			_list.push({
+				R = 90,
+				P = 1.0,
+				S = "misc/anatomist/direwolf_potion_item"
+			});
+		}
+	});
+
+	::mods_hookExactClass("entity/world/attached_location/stone_watchtower_oriental_location", function (o)
+	{
+		local onUpdateDraftList = o.onUpdateDraftList;
+		o.onUpdateDraftList = function( _list, _gender = null )
+		{
+			onUpdateDraftList(_list, _gender);
+			_list.push("anatomist_background");
+		}
+
+		local onUpdateShopList = o.onUpdateShopList;
+		o.onUpdateShopList = function(_id, _list)
+		{
+			onUpdateShopList(_id, _list);
+			if (_id != "building.marketplace") return;
+			_list.push({
+				R = 90,
+				P = 1.0,
+				S = "misc/anatomist/serpent_potion_item"
+			});
+			_list.push({
+				R = 90,
+				P = 1.0,
+				S = "misc/anatomist/orc_young_potion_item"
+			});
+		}
+	});
+
 	::mods_hookExactClass("entity/world/attached_location/pig_farm_location", function (o)
 	{
 		
-		local onUpdateDraftList = ::mods_getMember(o, "onUpdateDraftList");
+		local onUpdateDraftList = o.onUpdateDraftList;
 		o.onUpdateDraftList = function( _list, _gender = null )
 		{
 			onUpdateDraftList(_list, _gender);
@@ -320,7 +385,7 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 	::mods_hookExactClass("entity/world/settlements/buildings/taxidermist_building", function (o)
 	{
 		
-		local onUpdateDraftList = ::mods_getMember(o, "onUpdateDraftList");
+		local onUpdateDraftList = o.onUpdateDraftList;
 		o.onUpdateDraftList = function( _list, _gender = null )
 		{
 			onUpdateDraftList(_list, _gender);
@@ -328,7 +393,7 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 		}
 	});
 
-	this.getroottable().anatomists_expanded.addAnatomists <- function (list_of_lists)
+	this.getroottable().AE.addAnatomists <- function (list_of_lists)
 	{
 		foreach (lst in list_of_lists)
 		{
@@ -339,47 +404,47 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 
 	::mods_hookExactClass("entity/world/settlements/legends_coast_fort", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
-			this.getroottable().anatomists_expanded.addAnatomists(this.m.DraftLists);
+			this.getroottable().AE.addAnatomists(this.m.DraftLists);
 		}
 	});
 
 	::mods_hookExactClass("entity/world/settlements/legends_forest_fort", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
-			this.getroottable().anatomists_expanded.addAnatomists(this.m.DraftLists);
+			this.getroottable().AE.addAnatomists(this.m.DraftLists);
 		}
 	});
 
 	::mods_hookExactClass("entity/world/settlements/legends_snow_fort", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
-			this.getroottable().anatomists_expanded.addAnatomists(this.m.DraftLists);
+			this.getroottable().AE.addAnatomists(this.m.DraftLists);
 		}
 	});
 
 	::mods_hookExactClass("entity/world/settlements/legends_swamp_fort", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
-			this.getroottable().anatomists_expanded.addAnatomists(this.m.DraftLists);
+			this.getroottable().AE.addAnatomists(this.m.DraftLists);
 		}
 	});
 
 	::mods_hookExactClass("entity/world/settlements/large_coast_fort", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
@@ -390,7 +455,7 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 
 	::mods_hookExactClass("entity/world/settlements/large_forest_fort", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
@@ -400,7 +465,7 @@ this.getroottable().anatomists_expanded.hook_scenario <- function ()
 
 	::mods_hookExactClass("entity/world/settlements/large_snow_fort", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();

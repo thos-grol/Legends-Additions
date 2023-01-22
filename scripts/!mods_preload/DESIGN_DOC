@@ -1,3 +1,44 @@
+    Mana stat
+    Resolve = Will
+    Ranged Attack = Aim
+    Inteligence Trait  
+        Smart Trait - Above average intelligence
+        Bright Trait - Highly Intelligent
+        Genius Trait - Super Intelligent
+
+    magic modifiers:
+        learn time <- higher intelligence has a bigger chance to learn spells
+        
+        magic matrix <- determines what school of spells you can cast and learn
+        cast speed <- higher intelligence can decrease cast time
+        
+        mana <- the pool you cast spells from
+
+        will <- used in checks/conflicts. can determine success rate of spell
+            summoning ghosts/binding them to your will
+
+        the more perks you take in the school, the more knowledge you have. knowledge = power. 
+            power die + spell roll die = effect damage
+
+
+    
+            
+
+        //Unique Spells - Can take from hero's autobiography
+            Create Death Knight - Chooses a corpse on the floor to be a death knight. You can only have 1 death knight at a time
+            Negative Energy Fireball - 
+            Drain Life - Draws health from the target to caster
+                this.Const.Perks.PerkDefs.LegendSiphon
+            
+            
+
+//FEATURE_3: Overhaul Cultists
+
+//FEATURE_6: BOSS
+    Hexe Leader with Lindwurm Pet
+        Hex ties 2 brothers together, 3 turn duration
+        Illusionary root on all hexed enemies
+
 Storm star : A magic morning star that could release a version of chain lightning when it hit.
 Lefeber's Enchanter : A rod that imbued items with the ability to store spells.
 
@@ -39,20 +80,9 @@ Schools:
             Ice Spear
             Frost Nova
             Simulacrum
-    Necromancy
-        Negative Energy Hand - Touch based spell that weakens the target and damages them.
-        Ray of Enfeeblement - Ranged spell with increased hit chance, that enfeebles the target.
+   
+
         
-        Drain Life - Draws health from the target to caster
-
-        Corpse Explosion - Target an undead except a necrosavant, and create an explosion based on the target's health
-        Reanimate - Reanimate a weiderganger
-        Summon Geist
-
-        Create Death Knight - Chooses a corpse on the floor to be a death knight. You can only have 1 death knight at a time
-
-        Decay
-        Death
         
     Hexes
         Illusion
@@ -66,9 +96,7 @@ Schools:
 
 ---
 
-Resolve = Will
-Ranged Attack = Aim
-Inteligence Trait = Calculation Capacity
+
 
 ---
 

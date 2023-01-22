@@ -7,7 +7,7 @@ this.perfect_body_trait <- this.inherit("scripts/skills/traits/character_trait",
 		this.m.Name = "Perfect Body";
 		this.m.Icon = "ui/traits/trait_icon_21.png";
 		this.m.Description = "This character's body has been perfected with the lindwurm potion. All imperfections of the flesh have been removed.";
-		this.m.Order = 10;
+		this.m.Order = this.Const.SkillOrder.Trait - 10;
 		this.m.Type = this.m.Type;
 		this.m.Titles = [];
 		this.m.Excluded = [];
@@ -98,9 +98,8 @@ this.perfect_body_trait <- this.inherit("scripts/skills/traits/character_trait",
 
 	function onAdded()
 	{
-		local _actor = this.m.Container;
+		local _actor = this.getContainer().getActor();
 		_actor.getSkills().removeByID("trait.short_sighted");
-		_actor.getSkills().removeByID("trait.fat");
 		_actor.getSkills().removeByID("trait.bleeder");
 		_actor.getSkills().removeByID("trait.ailing");
 		_actor.getSkills().removeByID("trait.fragile");

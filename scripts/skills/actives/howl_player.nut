@@ -22,7 +22,7 @@ this.howl_player <- this.inherit("scripts/skills/skill", {
 		this.m.IsAttack = false;
 		this.m.IsIgnoredAsAOO = true;
 		this.m.ActionPointCost = 6;
-		this.m.FatigueCost = 20;
+		this.m.FatigueCost = 40;
 		this.m.MinRange = 0;
 		this.m.MaxRange = 0;
 	}
@@ -56,6 +56,7 @@ this.howl_player <- this.inherit("scripts/skills/skill", {
 		{
 			_actor.setMoraleState(this.Math.min(this.Const.MoraleState.Confident, _actor.getMoraleState() + 1))
 			_tag.Skill.spawnIcon("status_effect_06", _actor.getTile());
+			//TODO: Add killing frenzy effect to each bro
 		}
 	}
 

@@ -1,9 +1,9 @@
-this.getroottable().anatomists_expanded.hook_enemies <- function ()
+this.getroottable().AE.hook_enemies <- function ()
 {
 	//add potion code to actor class
 	::mods_hookExactClass("entity/tactical/actor", function (o)
 	{
-		local function add_potion(name, complete)
+		o.add_potion <- function(name, complete)
 		{
 			switch(name)
 			{
@@ -110,14 +110,14 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 			}
 			
 		}
-		::mods_addMember(o, "actor", "add_potion", add_potion);
+		
 	});
 
 	//////////////////////////////// AI ///////////////////////////////////////////
 
 	::mods_hookExactClass("ai/tactical/agents/bandit_melee_agent", function (o)
 	{
-		local onAddBehaviors = ::mods_getMember(o, "onAddBehaviors");
+		local onAddBehaviors = o.onAddBehaviors;
 		o.onAddBehaviors = function()
 		{
 			onAddBehaviors();
@@ -128,7 +128,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("ai/tactical/agents/bounty_hunter_melee_agent", function (o)
 	{
-		local onAddBehaviors = ::mods_getMember(o, "onAddBehaviors");
+		local onAddBehaviors = o.onAddBehaviors;
 		o.onAddBehaviors = function()
 		{
 			onAddBehaviors();
@@ -139,7 +139,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("ai/tactical/agents/military_melee_agent", function (o)
 	{
-		local onAddBehaviors = ::mods_getMember(o, "onAddBehaviors");
+		local onAddBehaviors = o.onAddBehaviors;
 		o.onAddBehaviors = function()
 		{
 			onAddBehaviors();
@@ -154,7 +154,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 	//bandits
 	::mods_hookExactClass("entity/tactical/enemies/legend_bandit_warlord", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -169,7 +169,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 			}
 		}
 
-		local assignRandomEquipment = ::mods_getMember(o, "assignRandomEquipment");
+		local assignRandomEquipment = o.assignRandomEquipment;
 		o.assignRandomEquipment = function()
 		{
 			assignRandomEquipment();
@@ -202,7 +202,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/enemies/bandit_leader", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -220,7 +220,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/enemies/legend_bandit_veteran", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -236,7 +236,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/humans/nomad_leader", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -247,7 +247,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/humans/executioner", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -258,7 +258,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/humans/desert_devil", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -269,7 +269,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/humans/barbarian_chosen", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -280,7 +280,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/humans/barbarian_champion", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -291,7 +291,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/humans/mercenary", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -306,7 +306,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/humans/knight", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -317,7 +317,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/humans/swordmaster", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -328,7 +328,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/humans/hedge_knight", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();
@@ -339,7 +339,7 @@ this.getroottable().anatomists_expanded.hook_enemies <- function ()
 
 	::mods_hookExactClass("entity/tactical/humans/master_archer", function (o)
 	{
-		local onInit = ::mods_getMember(o, "onInit");
+		local onInit = o.onInit;
 		o.onInit = function()
 		{
 			onInit();

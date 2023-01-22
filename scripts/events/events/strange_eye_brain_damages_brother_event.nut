@@ -7,10 +7,10 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 	{
 		this.m.ID = "event.strange_eye_brain_damages_brother";
 		this.m.Title = "During camp...";
-		this.m.Cooldown = 45.0 * this.World.getTime().SecondsPerDay;
+		this.m.Cooldown = 20.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/event_05.png[/img]{A loud cry startles all the men. They quickly find out the source is %addict% who has collapsed to the ground and is spasming. In his hand is the strange eye that your company has recently acquired. Moments later %addict% comes to. They seem to be alright, but not entirely there in the head, but they says that they've never felt better.",
+			Text = "[img]gfx/ui/events/event_05.png[/img]{A loud cry startles all the men. They quickly find out the source is %addict% who has collapsed to the ground and is spasming. In his hand is the strange eye that your company has recently acquired. Moments later %addict% comes to. They seem to be alright, but not entirely there in the head, but they say that they've never felt better.",
 			Image = "",
 			List = [],
 			Characters = [],

@@ -1,10 +1,9 @@
-this.getroottable().anatomists_expanded.hook_effects <- function ()
+this.getroottable().AE.hook_effects <- function ()
 {
 	//"Enhanced Eye Rods";
 	//"This character\'s eyes have mutated to respond faster and more drastically to low light environments. As a result, they have night vision nearly on par with their sight during the day.";
 	::mods_hookExactClass("skills/effects/alp_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -34,7 +33,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
+		local onUpdate = o.onUpdate;
 		o.onUpdate = function(_properties)
 		{
 			onUpdate(_properties);
@@ -46,7 +45,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"This character\'s body has mutated in such a way that their fight-or-flight response is altered. In high stress situations, their limbic system is simply refused resources for flight, making them effectively unbreakable in the battle line.";
 	::mods_hookExactClass("skills/effects/ancient_priest_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -76,19 +74,17 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local function onUpdate(_properties)
+		o.onUpdate <- function(_properties)
 		{
 			_properties.Bravery += 10;
 		}
 
-		::mods_addMember(o, "ancient_priest_potion_effect", "onUpdate", onUpdate);
 	});
 
 	//"Elasticized Sinew";
 	//"This character\'s muscles have mutated and respond differently to movement impulses. It is much less fatiguing to interrupt or stop mid-motion as a consequence, making it much easier to recover from errant or blocked attacks.";
 	::mods_hookExactClass("skills/effects/direwolf_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -118,11 +114,10 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local function onUpdate(_properties)
+		o.onUpdate <- function(_properties)
 		{
 			_properties.Stamina += 10;
 		}
-		::mods_addMember(o, "direwolf_potion_effect", "onUpdate", onUpdate);
 
 	});
 
@@ -130,7 +125,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"This character\'s body reacts to physical trauma, secreting a calciferous substance that causes their muscles to reflexively sieze and contract at points of impact to minimize muscle damage.";
 	::mods_hookExactClass("skills/effects/fallen_hero_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -160,7 +154,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
+		local onUpdate = o.onUpdate;
 		o.onUpdate = function(_properties)
 		{
 			onUpdate(_properties);
@@ -168,53 +162,10 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 		}
 	});
 
-
-	//"Kinetic Coating";
-	//"This character is able to secrete a substance that vibrates rapidly when stimulated. When applied to weapons, this creates a strong kinetic force that aids in armor penetration.";
-	::mods_hookExactClass("skills/effects/geist_potion_effect", function (o)
-	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
-		{
-			local ret = [
-				{
-					id = 1,
-					type = "title",
-					text = this.getName()
-				},
-				{
-					id = 2,
-					type = "description",
-					text = this.getDescription()
-				},
-				{
-					id = 11,
-					type = "text",
-					icon = "ui/icons/morale.png",
-					text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] of damage ignores armor when using melee weapons"
-				},
-				{
-					id = 12,
-					type = "hint",
-					icon = "ui/tooltips/warning.png",
-					text = "Further mutations may cause this character's genes to spiral out of control, crippling them"
-				}
-			];
-			return ret;
-		}
-
-		local onUpdate = ::mods_getMember(o, "onUpdate");
-		o.onUpdate = function(_properties)
-		{
-			_properties.DamageDirectMeleeAdd += 0.10;
-		}
-	});
-
 	//"Reactive Leg Muscles";
 	//"This character\'s legs have been mutated, allowing them to make swift, complex movements more smoothly and with greater rapidity. When at rest, the muscles can still occasionally be seen twitching underneath the skin.";
 	::mods_hookExactClass("skills/effects/goblin_grunt_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -250,7 +201,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
+		local onUpdate = o.onUpdate;
 		o.onUpdate = function(_properties)
 		{
 			onUpdate(_properties);
@@ -262,7 +213,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"This character\'s eyes have been permanently mutated and are now capable of detecting the subtlest movements of wind and air. While minor on its own, this allows them to better predict the trajectory of projectile attacks and better land hits on vulnerable parts of a target.";
 	::mods_hookExactClass("skills/effects/goblin_overseer_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -292,7 +242,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
 		o.onUpdate = function(_properties)
 		{
 			_properties.IsSharpshooter = true;
@@ -304,7 +253,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//sharpshooter changes
 		::mods_hookExactClass("skills/actives/aimed_shot", function (o)
 		{
-			local onAnySkillUsed = ::mods_getMember(o, "onAnySkillUsed");
+			local onAnySkillUsed = o.onAnySkillUsed;
 			o.onAnySkillUsed = function(_skill, _targetEntity, _properties)
 			{
 				onAnySkillUsed( _skill, _targetEntity, _properties);
@@ -314,7 +263,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 
 		::mods_hookExactClass("skills/actives/quick_shot", function (o)
 		{
-			local onAnySkillUsed = ::mods_getMember(o, "onAnySkillUsed");
+			local onAnySkillUsed = o.onAnySkillUsed;
 			o.onAnySkillUsed = function(_skill, _targetEntity, _properties)
 			{
 				onAnySkillUsed( _skill, _targetEntity, _properties);
@@ -324,7 +273,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 
 		::mods_hookExactClass("skills/actives/shoot_bolt", function (o)
 		{
-			local onAnySkillUsed = ::mods_getMember(o, "onAnySkillUsed");
+			local onAnySkillUsed = o.onAnySkillUsed;
 			o.onAnySkillUsed = function(_skill, _targetEntity, _properties)
 			{
 				onAnySkillUsed( _skill, _targetEntity, _properties);
@@ -334,7 +283,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 
 		::mods_hookExactClass("skills/actives/shoot_stake", function (o)
 		{
-			local onAnySkillUsed = ::mods_getMember(o, "onAnySkillUsed");
+			local onAnySkillUsed = o.onAnySkillUsed;
 			o.onAnySkillUsed = function(_skill, _targetEntity, _properties)
 			{
 				onAnySkillUsed( _skill, _targetEntity, _properties);
@@ -346,7 +295,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"This character\'s skin and subdermal tissue has mutated and will rapidly stitch itself back together. The effect is most pronounced on small puncture wounds, where the flesh can seal the wound from all directions evenly.";
 	::mods_hookExactClass("skills/effects/honor_guard_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -376,11 +324,10 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local function onUpdate(_properties)
+		o.onUpdate <- function(_properties)
 		{
 			_properties.Hitpoints += 10;
 		}
-		::mods_addMember(o, "honor_guard_potion_effect", "onUpdate", onUpdate);
 
 	});
 
@@ -388,7 +335,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"When this character\'s skin is broken, a substance is secreted that drastically quickens the blood clotting process in the area. Bleeding wounds are much less harmful as a result, although some blood loss still occurs.";
 	::mods_hookExactClass("skills/effects/hyena_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -424,11 +370,10 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local function onUpdate(_properties)
+		o.onUpdate <- function(_properties)
 		{
 			_properties.Hitpoints += 10;
 		}
-		::mods_addMember(o, "hyena_potion_effect", "onUpdate", onUpdate);
 
 	});
 
@@ -438,7 +383,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 
 	::mods_hookExactClass("skills/effects/lindwurm_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -460,21 +404,12 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 				text = "This character\'s blood burns with acid, damaging adjacent attackers whenever they deal hitpoint damage"
 			});
 
-			if (this.getContainer().getActor().getFlags().has("wurm_8"))
-			{
-				ret.push({
-					id = 11,
-					type = "text",
-					icon = "ui/icons/health.png",
-					text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 30 + "[/color] Hitpoints"
-				});
-				ret.push({
-					id = 11,
-					type = "text",
-					icon = "ui/icons/melee_skill.png",
-					text = "Attacks do [color=" + this.Const.UI.Color.PositiveValue + "]+30%[/color] additional damage"
-				});
-			}
+			ret.push({
+				id = 11,
+				type = "text",
+				icon = "ui/icons/health.png",
+				text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 30 + "[/color] Hitpoints"
+			});
 			
 			ret.push({
 				id = 12,
@@ -486,15 +421,46 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local function onUpdate(_properties)
+		o.onUpdate <- function(_properties)
 		{
-			if (this.getContainer().getActor().getFlags().has("wurm_8"))
+			_properties.Hitpoints += 30;
+		}
+
+		o.onDamageReceived = function(_attacker, _damageHitpoints, _damageArmor)
+		{
+			if (_damageHitpoints <= 5) return;
+			local _actor = this.getContainer().getActor();
+			local targets = [_attacker];
+
+			if (_damageHitpoints >= 50)
 			{
-				_properties.Hitpoints += 30;
-				_properties.DamageTotalMult *= 1.30;
+				targets = [];
+				local mytile = _tag.User.getTile();
+				local actors = this.Tactical.Entities.getAllInstances();
+
+				foreach( i in actors )
+				{
+					foreach( a in i )
+					{
+						if (a.getID() != _actor.getID() && a.getTile().getDistanceTo(mytile) < 3) targets.append(a);
+					}
+				}
+
+			}
+
+			foreach(target in targets)
+			{
+				if (target == null || !target.isAlive()) continue;
+				if (target.getTile().getDistanceTo(_actor.getTile()) >= 3) continue;
+				if (target.getFlags().has("lindwurm")) continue;
+				if (target.getFlags().has("body_immune_to_acid") && target.getFlags().has("head_immune_to_acid")) continue;
+
+				local poison = target.getSkills().getSkillByID("effects.lindwurm_acid");
+				if (poison == null) target.getSkills().add(this.new("scripts/skills/effects/lindwurm_acid_effect"));
+				else poison.resetTime();
+				this.spawnIcon("status_effect_78", target.getTile());
 			}
 		}
-		::mods_addMember(o, "lindwurm_potion_effect", "onUpdate", onUpdate);
 	});
 
 	//"Hyperactive Tissue Growth";
@@ -502,13 +468,12 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	::mods_hookExactClass("skills/effects/nachzehrer_potion_effect", function (o)
 	{
 		
-		local getDescription = ::mods_getMember(o, "getDescription");
+		local getDescription = o.getDescription;
 		o.getDescription = function()
 		{
 			return "This character\'s body has mutated to regrow skin and muscle tissue much more quickly than normal and they gain the speed of nachzehrer. Deep injuries heal much faster than normal as a result. They also seem to have developed a hunger for red meat, but that\'s probably unrelated.";
 		}
 		
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -564,7 +529,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local function onUpdate(_properties)
+		o.onUpdate <- function(_properties)
 		{
 			if (this.getContainer().getActor().getFlags().has("ghoul_8"))
 			{
@@ -576,13 +541,12 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			}
 			
 		}
-		::mods_addMember(o, "nachzehrer_potion_effect", "onUpdate", onUpdate);
 
 	});
 
 	::mods_hookExactClass("skills/actives/legend_gruesome_feast", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
@@ -591,7 +555,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			this.m.FatigueCost = 25;
 		}
 		
-		local onUse = ::mods_getMember(o, "onUse");
+		local onUse = o.onUse;
 		o.onUse = function(_user, _targetTile)
 		{
 			_targetTile = _user.getTile();
@@ -658,7 +622,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"This character\'s body has the incredible ability to incorporate different blood types - or indeed, blood from entirely different creatures - into itself. This grants them remarkable healing via absorption of blood through skin pores (or more dramatically by drinking it directly).";
 	::mods_hookExactClass("skills/effects/necrosavant_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -726,7 +689,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local function onUpdate(_properties)
+		o.onUpdate <- function(_properties)
 		{
 			if (this.getContainer().getActor().getFlags().has("vampire_8"))
 			{
@@ -740,9 +703,8 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			}
 			
 		}
-		::mods_addMember(o, "necrosavant_potion_effect", "onUpdate", onUpdate);
 
-		local lifesteal = ::mods_getMember(o, "lifesteal");
+		local lifesteal = o.lifesteal;
 		o.lifesteal = function( _damageInflictedHitpoints )
 		{
 			local actor = this.m.Container.getActor();
@@ -769,9 +731,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 
 	::mods_hookExactClass("skills/effects/ptr_swordmaster_scenario_avatar_effect", function (o)
 	{
-		local onUpdate = ::mods_getMember(o, "onUpdate");
 		o.onUpdate = function( _properties )
-		function onUpdate( _properties )
 		{
 			this.ptr_swordmaster_scenario_effect.onUpdate(_properties);
 				
@@ -795,7 +755,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			}
 		}
 
-		local getSkillMalus = ::mods_getMember(o, "getSkillMalus");
+		local getSkillMalus = o.getSkillMalus;
 		o.getSkillMalus = function()
 		{
 			local actor = this.getContainer().getActor();
@@ -809,7 +769,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return 0;
 		}
 
-		local onNewDay = ::mods_getMember(o, "onNewDay");
+		local onNewDay = o.onNewDay;
 		o.onNewDay = function()
 		{
 			if (this.World.getPlayerRoster().getAll().len() < 3)
@@ -889,20 +849,17 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 		}
 	});
 
-	
-
 	//"Hyperactive Glands";
 	//"This character\'s adrenaline and hormonal glands have mutated, causing a constant heightened emotional state. They can mostly keep this under control in camp, but in high-stress situations the effect is much stronger and fills them with an intense, unconsolable rage.";
 	::mods_hookExactClass("skills/effects/orc_berserker_potion_effect", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
 			this.m.Name = "Hyperactive Glands";
 		}
 		
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -937,14 +894,13 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"This character\'s limbic system has been altered with an additional substance that allows them to sustain particularly strenuous anaerobic activity for longer. Their skin seems vaguely greener than you remember, too, but you\'re sure that\'s a coincidence.";
 	::mods_hookExactClass("skills/effects/orc_warlord_potion_effect", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
 			this.m.Name = "Improved Limbic System";
 		}
 
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -974,7 +930,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
+		local onUpdate = o.onUpdate;
 		o.onUpdate = function(_properties)
 		{
 			onUpdate(_properties);
@@ -986,7 +942,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"This character\'s body has mutated to develop a number of redundant synapses, allowing them to maintain a degree of control over sight, hearing, and muscle control even when struck with debilitating blows.";
 	::mods_hookExactClass("skills/effects/orc_warrior_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -1031,7 +986,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
+		local onUpdate = o.onUpdate;
 		o.onUpdate = function(_properties)
 		{
 			onUpdate(_properties);
@@ -1050,20 +1005,19 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"This character\'s wrists have mutated in such a way that the they dampen the initial shock of opposing forces. In more practical terms, they reduce the protective qualities of an enemy\'s armor when struck. They can also make some pretty outlandish shadow puppets.";
 	::mods_hookExactClass("skills/effects/orc_young_potion_effect", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
 			this.m.Name = "Shock Absorbant Wrists";
 		}
 
-		local getDescription = ::mods_getMember(o, "getDescription");
+		local getDescription = o.getDescription;
 		o.getDescription = function()
 		{
 			return "This character\'s wrists have mutated in such a way that the they dampen the initial shock of opposing forces. In more practical terms, this lets them hit harder. They can also make some pretty outlandish shadow puppets.";
 		}
 
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -1108,7 +1062,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
 		o.onUpdate = function(_properties)
 		{
 			if (this.getContainer().getActor().getFlags().has("orc_8"))
@@ -1126,20 +1079,19 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"With the proper concoction, and implanting the heart of schrat into the body, the test subject can form a symbiosis with the heart, gaining the abilities and properties of a schrat.";
 	::mods_hookExactClass("skills/effects/schrat_potion_effect", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
 			this.m.Name = "Schrat Symbiosis";
 		}
 
-		local getDescription = ::mods_getMember(o, "getDescription");
+		local getDescription = o.getDescription;
 		o.getDescription = function()
 		{
 			return "With the proper concoction, and implanting the heart of schrat into the body, the test subject can form a symbiosis with the heart, gaining the abilities and properties of a schrat.";
 		}
 
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -1170,15 +1122,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 					text = "When taking damage more than or equal to 15% of your health, birth a minature greenwood schrat from your blood and surroundings to help you in combat."
 				});
 			}
-			else
-			{
-				ret.push({
-					id = 11,
-					type = "text",
-					icon = "ui/icons/special.png",
-					text = "When taking damage more than or equal to 15% of your health, birth a minature schrat from your blood and surroundings to help you in combat."
-				});
-			}
 
 			ret.push({
 				id = 11,
@@ -1197,7 +1140,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
 		o.onUpdate = function(_properties)
 		{
 			_properties.IsImmuneToKnockBackAndGrab = true;
@@ -1212,110 +1154,78 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			
 		}
 
-		local function onRemoved()
+		o.onRemoved <- function()
 		{
-			if (this.getContainer().getActor().getFlags().has("schrat_8"))
-			{
-				this.m.Container.removeByID("actives.uproot");
-			}
+			if (this.getContainer().getActor().getFlags().has("schrat_8")) this.m.Container.removeByID("actives.uproot");
 		}
-		::mods_addMember(o, "schrat_potion_effect", "onRemoved", onRemoved);
 
-		local function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
+		o.onBeforeDamageReceived <- function(_attacker, _skill, _hitInfo, _properties)
 		{
-			if (_skill == null)
-			{
-				return;
-			}
+			if (_skill == null) return;
 
 			switch(_hitInfo.DamageType)
 			{
-			case this.Const.Damage.DamageType.Piercing:
-				if (_skill == null) _properties.DamageReceivedRegularMult *= 0.25;
-				else if (_skill.isRanged())
-				{
-					local weapon = _skill.getItem();
-
-					if (weapon != null && weapon.isItemType(this.Const.Items.ItemType.Weapon))
+				case this.Const.Damage.DamageType.Piercing:
+					if (_skill == null) _properties.DamageReceivedRegularMult *= 0.25;
+					else if (_skill.isRanged())
 					{
-						if (weapon.isWeaponType(this.Const.Items.WeaponType.Bow) || weapon.isWeaponType(this.Const.Items.WeaponType.Crossbow))
-						{
-							_properties.DamageReceivedRegularMult *= 0.25;
-						}
-						else if (weapon.isWeaponType(this.Const.Items.WeaponType.Throwing))
-						{
-							_properties.DamageReceivedRegularMult *= 0.5;
-						}
-						else
-						{
-							_properties.DamageReceivedRegularMult *= 0.5;
-						}
-					}
-					else
-					{
-						_properties.DamageReceivedRegularMult *= 0.2;
-					}
-				}
-				break;
+						local weapon = _skill.getItem();
 
-			case this.Const.Damage.DamageType.Burning:
-				_properties.DamageReceivedRegularMult *= 1.33;
-				break;
+						if (weapon != null && weapon.isItemType(this.Const.Items.ItemType.Weapon))
+						{
+							if (weapon.isWeaponType(this.Const.Items.WeaponType.Bow) || weapon.isWeaponType(this.Const.Items.WeaponType.Crossbow)) _properties.DamageReceivedRegularMult *= 0.25;
+							else if (weapon.isWeaponType(this.Const.Items.WeaponType.Throwing)) _properties.DamageReceivedRegularMult *= 0.5;
+							else _properties.DamageReceivedRegularMult *= 0.5;
+						}
+						else _properties.DamageReceivedRegularMult *= 0.2;
+					}
+					break;
+
+				case this.Const.Damage.DamageType.Burning:
+					_properties.DamageReceivedRegularMult *= 1.33;
+					break;
 			}
 		}
-		::mods_addMember(o, "schrat_potion_effect", "onBeforeDamageReceived", onBeforeDamageReceived);
 
-		local function onDamageReceived( _attacker, _damageHitpoints, _damageArmor )
+		o.onDamageReceived <- function(_attacker, _damageHitpoints, _damageArmor)
 		{
 			local actor = this.getContainer().getActor();
-
-			if (_damageHitpoints >= actor.getHitpointsMax() * 0.25)
+			if (actor.getFlags().has("schrat_8") && _damageHitpoints >= actor.getHitpointsMax() * 0.25)
 			{
 				local candidates = [];
 				local myTile = actor.getTile();
 
 				for( local i = 0; i < 6; i = i )
 				{
-					if (!myTile.hasNextTile(i))
-					{
-					}
-					else
+					if (myTile.hasNextTile(i))
 					{
 						local nextTile = myTile.getNextTile(i);
-
-						if (nextTile.IsEmpty && this.Math.abs(myTile.Level - nextTile.Level) <= 1)
-						{
-							candidates.push(nextTile);
-						}
+						if (nextTile.IsEmpty && this.Math.abs(myTile.Level - nextTile.Level) <= 1) candidates.push(nextTile);
 					}
-
 					i = ++i;
 				}
 
 				if (candidates.len() != 0)
 				{
 					local spawnTile = candidates[this.Math.rand(0, candidates.len() - 1)];
-					local sapling = this.Tactical.spawnEntity("scripts/entity/tactical/enemies/schrat_small", spawnTile.Coords);
-					//local sapling = this.Tactical.spawnEntity("scripts/entity/tactical/enemies/legend_greenwood_schrat_small", spawnTile.Coords);
+					local sapling = this.Tactical.spawnEntity("scripts/entity/tactical/enemies/legend_greenwood_schrat_small", spawnTile.Coords);
 					sapling.setFaction(actor.getFaction() == this.Const.Faction.Player ? this.Const.Faction.PlayerAnimals : actor.getFaction());
 					sapling.riseFromGround();
 				}
 			}
 		}
-		::mods_addMember(o, "schrat_potion_effect", "onDamageReceived", onDamageReceived);
 
 	});
 
 	::mods_hookExactClass("skills/actives/uproot_skill", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
 			this.m.FatigueCost = 40;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
 		o.onUpdate = function(_properties)
 		{
 			local _actor = this.getContainer().getActor();
@@ -1333,20 +1243,19 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"This character has developed venom glands that allow them to produce poison strong enough to kill any man. Sadly they do not have the fangs of a snake or spider to deliver this venom and have to resort using piercing or cutting weapons to apply it.";
 	::mods_hookExactClass("skills/effects/serpent_potion_effect", function (o)
 	{
-		local create = ::mods_getMember(o, "create");
+		local create = o.create;
 		o.create = function()
 		{
 			create();
 			this.m.Name = "Venom Glands";
 		}
 
-		local getDescription = ::mods_getMember(o, "getDescription");
+		local getDescription = o.getDescription;
 		o.getDescription = function()
 		{
 			return "This character has developed venom glands that allow them to produce poison strong enough to kill any man. Sadly they do not have the fangs of a snake or spider to deliver this venom and have to resort using piercing or cutting weapons to apply it.";
 		}
 
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -1415,7 +1324,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
 		o.onUpdate = function(_properties)
 		{
 			if (this.getContainer().getActor().getFlags().has("spider_8"))
@@ -1431,7 +1339,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 
 		}
 
-		local function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
+		o.onTargetHit <- function(_skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor)
 		{
 			if (_targetEntity.getCurrentProperties().IsImmuneToPoison || _damageInflictedHitpoints < this.Const.Combat.PoisonEffectMinDamage || _targetEntity.getHitpoints() <= 0) return;
 
@@ -1470,14 +1378,13 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 
 			
 		}
-		::mods_addMember(o, "serpent_potion_effect", "onTargetHit", onTargetHit);
+		
 	});
 
 	//"Locking Joints";
 	//"This character\'s body has mutated such that they can lock their limbs into certain positions almost indefinitely, allowing them to brace against blows while barely breaking a sweat.";
 	::mods_hookExactClass("skills/effects/skeleton_warrior_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -1507,7 +1414,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
+		local onUpdate = o.onUpdate;
 		o.onUpdate = function(_properties)
 		{
 			onUpdate(_properties);
@@ -1520,7 +1427,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	//"This character\'s body has mutated to grow at an unnatural pace. In battle, this causes their wounds to close and heal within moments. Outside of battle, it causes unseemly growths, an unquenchable thirst, and disgustingly long finger nails. You once saw them lacerate both arms with a meat cleaver, screeching maniacally that it was \'the only way to keep it in check\'. Odd.";
 	::mods_hookExactClass("skills/effects/unhold_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local actor = this.getContainer().getActor();
@@ -1576,7 +1482,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onCombatFinished = ::mods_getMember(o, "onCombatFinished");
+		local onCombatFinished = o.onCombatFinished;
 		o.onCombatFinished = function()
 		{
 			local actor = this.getContainer().getActor();
@@ -1597,7 +1503,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			}
 		}
 
-		local onTurnStart = ::mods_getMember(o, "onTurnStart");
+		local onTurnStart = o.onTurnStart;
 		o.onTurnStart = function()
 		{
 			local actor = this.getContainer().getActor();
@@ -1659,15 +1565,11 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 
 		}
 	});
-
-	//"Mutated Circulatory System";
-	//"This character\'s body has mutated and propagates poisons and other hazardous substances through the bloodstream much more slowly, allowing them to be disposed of without serious health effects. Curiously, this doesn\'t seem to affect their ability to get drunk.";
 	
 	//"Subdermal Reactivity";
 	//"It\'s just a flesh wound! This character\'s subdermal flesh has mutated and automatically reacts to sudden trauma, lessening the chance to suffer injuries in battle.";
 	::mods_hookExactClass("skills/effects/wiederganger_potion_effect", function (o)
 	{
-		local getTooltip = ::mods_getMember(o, "getTooltip");
 		o.getTooltip = function()
 		{
 			local ret = [
@@ -1697,7 +1599,7 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 			return ret;
 		}
 
-		local onUpdate = ::mods_getMember(o, "onUpdate");
+		local onUpdate = o.onUpdate;
 		o.onUpdate = function(_properties)
 		{
 			onUpdate(_properties);
@@ -1705,85 +1607,9 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 		}
 	});
 
-	::mods_hookExactClass("skills/effects/ifrit_potion_effect", function (o)
-	{
-		
-		local m = {
-			HeadArmorBoost = 50,
-			HeadDamageTaken = 0,
-			BodyArmorBoost = 50,
-			BodyDamageTaken = 0
-		}
-
-		::mods_addMember(o, "ifrit_potion_effect", "m", m);
-		
-		local create = ::mods_getMember(o, "create");
-		o.create = function()
-		{
-			create();
-			this.m.Name = "Stone Skin";
-		}
-		
-		local getDescription = ::mods_getMember(o, "getDescription");
-		o.getDescription = function()
-		{
-			return "This character\'s skin has mutated and now forms hard, rock-like patches that are much hardier and difficult to puncture. When broken, these patches will gradually reform in what is apparently a rather painful, uncomfortable process. You should tell them to stop picking at that scab.";
-		}
-		
-		local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
-		{
-			local ret = [
-				{
-					id = 1,
-					type = "title",
-					text = this.getName()
-				},
-				{
-					id = 2,
-					type = "description",
-					text = this.getDescription()
-				},
-				{
-					id = 11,
-					type = "text",
-					icon = "ui/icons/armor_body.png",
-					text = "This character\'s skin is hard and stone-like, granting [color=" + this.Const.UI.Color.PositiveValue + "]50[/color] points of natural armor"
-				},
-				{
-					id = 12,
-					type = "hint",
-					icon = "ui/tooltips/warning.png",
-					text = "Further mutations may cause this character's genes to spiral out of control, crippling them"
-				}
-			];
-			return ret;
-		}
-	});
-
-	//goblin_shaman_potion_effect
-	//"Hyperactive Sweat Glands";
-	//"When in high stress situations, this character\'s mutated body produces a slimy, viscous substance and begins sweating it excessively. They\'ll have a much easier time escaping from any nets or traps in such a state. Just bring a towel.";
-
-	//"Auspice of the Mad God";
-	//"There\'s something wrong with this character. Fits of crazed laughter and muttered tirades aside, their body seems to, at random, reject changes visited upon it. In battle, this has the fortunate effect of letting them sometimes shrug off debilitating effects.";
-
-	//"Ascendant Flesh"
-	//"The character draws strength from some limitless source, with the health and durability of two men. You pretend to not notice the eviscerated corpses you sometimes find in their wake.";
-
-	//"Lorekeeper\'s Rib Bone";
-	//"This character has had part of the Lorekeeper\'s skeleton fused into their body, and as a result possesses the ability to rapidly recover when delivered seemingly fatal wounds. Now if they could just make it through the night without screaming in their sleep...";
-
-	//"Visions";
-	//"This character has strange visions of things that have been and things to come. While less than cheery around the campfire, it does seem to give them a certain ability to connect and internalize new experiences faster.";
-
-	//"Ghastly Aura";
-	//"This character has consumed a substance, now in their bloodstream, that emits a kinetic field. This field gets stronger as their health deteriorates, eventually emitting a blue shimmer and producing a noticable effect on any blows that they deal, or that are dealt to them. They also claim to hear a constant, almost imperceptible whisper when alone, but that\'s probably superstition.";
-
 	//bugfixes
 	::mods_hookExactClass("skills/racial/unhold_racial", function (o)
 	{
-		local onTurnStart = ::mods_getMember(o, "onTurnStart");
 		o.onTurnStart = function()
 		{
 			local actor = this.getContainer().getActor();
@@ -1816,7 +1642,6 @@ this.getroottable().anatomists_expanded.hook_effects <- function ()
 	
 	::mods_hookExactClass("skills/racial/legend_rock_unhold_racial", function (o)
 	{
-		local onTurnStart = ::mods_getMember(o, "onTurnStart");
 		o.onTurnStart = function()
 		{
 			local actor = this.getContainer().getActor();

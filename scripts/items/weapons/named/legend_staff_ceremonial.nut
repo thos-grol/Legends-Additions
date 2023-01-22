@@ -6,7 +6,7 @@ this.legend_staff_ceremonial <- this.inherit("scripts/items/weapons/named/named_
 	{
 		this.named_weapon.create();
 		this.m.ID = "weapon.legend_staff_vala";
-		this.m.NameList = gt.gameplay_improved.StaffNames;
+		this.m.NameList = gt.Const.Strings.StaffNames;
 		this.m.Description = "A beautiful staff with the distinctive twisted design of a vala.";
 		this.m.IconLarge = "weapons/melee/legend_staff_05_named.png";
 		this.m.Icon = "weapons/melee/legend_staff_05_named_70x70.png";

@@ -1,16 +1,18 @@
 local gt = this.getroottable();
-gt.gameplay_improved <- {};
+gt.GI <- {};
 
 ::mods_registerMod("mod_gameplay_improved", 1.00, "Gameplay Improved");
 ::mods_queue("mod_gameplay_improved", "mod_legends, >mod_legends_PTR, >mod_anatomists_expanded", function()
 {
+	gt.GI.hook_enemies();
+	
 	//Feature: undetected crime
 	::mods_hookExactClass("scripts/factions/city_state_faction", function (o)
 	{
-		local addPlayerRelation = ::mods_getMember(o, "addPlayerRelation");
+		local addPlayerRelation = o.addPlayerRelation;
 		o.addPlayerRelation = function(_r, _reason = "")
 		{
-			local chance_detection = this.Math.max(5, 60 - this.Const.Contracts.chance_subterfuge();
+			local chance_detection = this.Math.max(5, 60 - this.Const.Contracts.chance_subterfuge());
 			if (_reason == "Attacked them" && this.Math.rand(1.0, 100.0) > chance_detection) return;
 			addPlayerRelation(_r, _reason);
 		}
@@ -18,10 +20,10 @@ gt.gameplay_improved <- {};
 
 	::mods_hookExactClass("scripts/factions/noble_faction", function (o)
 	{
-		local addPlayerRelation = ::mods_getMember(o, "addPlayerRelation");
+		local addPlayerRelation = o.addPlayerRelation;
 		o.addPlayerRelation = function(_r, _reason = "")
 		{
-			local chance_detection = this.Math.max(5, 60 - this.Const.Contracts.chance_subterfuge();
+			local chance_detection = this.Math.max(5, 60 - this.Const.Contracts.chance_subterfuge());
 			if (_reason == "Attacked them" && this.Math.rand(1.0, 100.0) > chance_detection) return;
 			addPlayerRelation(_r, _reason);
 		}
@@ -29,16 +31,14 @@ gt.gameplay_improved <- {};
 
 	::mods_hookExactClass("scripts/factions/city_state_faction", function (o)
 	{
-		local addPlayerRelation = ::mods_getMember(o, "addPlayerRelation");
+		local addPlayerRelation = o.addPlayerRelation;
 		o.addPlayerRelation = function(_r, _reason = "")
 		{
-			local chance_detection = this.Math.max(5, 60 - this.Const.Contracts.chance_subterfuge();
+			local chance_detection = this.Math.max(5, 60 - this.Const.Contracts.chance_subterfuge());
 			if (_reason == "Attacked them" && this.Math.rand(1.0, 100.0) > chance_detection) return;
 			addPlayerRelation(_r, _reason);
 		}
 	});
-
-	gt.gameplay_improved.hook_backgrounds();
 });
 
 gt.Const.FactionTrait = {
@@ -125,41 +125,50 @@ gt.Const.FactionTrait = {
 		//FEATURE_2: Revamp more contracts
 		//Settlement
 		[
-			//general contracts
+		//general contracts
 			"scripts/contracts/contracts/return_item_action",
-			// "scripts/factions/contracts/drive_away_bandits_action",
-			// "scripts/factions/contracts/drive_away_barbarians_action",
+			"scripts/factions/contracts/drive_away_bandits_action",
+			"scripts/factions/contracts/drive_away_barbarians_action",
 			
-			// "scripts/factions/contracts/investigate_cemetery_action",
+			"scripts/factions/contracts/investigate_cemetery_action",
 			
 			
-			// "scripts/factions/contracts/escort_caravan_action",
-				//add chance for monsters to appear
-				//add weird occurences?
+			"scripts/factions/contracts/escort_caravan_action",
+				// add chance for monsters to appear
+				// add weird occurences?
+			"scripts/factions/contracts/legend_barbarian_prisoner_action",
+			// create elite prisoner action
 
-			//monster hunt
-			// "scripts/factions/contracts/roaming_beasts_action",
-			
-			// "scripts/factions/contracts/obtain_item_action",
-				//create small/medium dungeon to explore
+			// escort important person, protect them
+			// 	from assassins
+			// 	from mercenaries
 
-			// "scripts/factions/contracts/defend_settlement_bandits_action",
-			// "scripts/factions/contracts/defend_settlement_greenskins_action",
+			"scripts/factions/contracts/defend_settlement_bandits_action",
+			"scripts/factions/contracts/legend_bandit_army_action",
+			"scripts/factions/contracts/defend_settlement_greenskins_action",
 			
-			// "scripts/factions/contracts/restore_location_action",
+			"scripts/factions/contracts/restore_location_action",
 				//something is wrong...
 				//possible haunting - create anomaly
+			
+		//FEATURE_5: Dungeouns
 			// "scripts/factions/contracts/discover_location_action",
+				//Discover and scout dungeon to certain floor
+			// "scripts/factions/contracts/find_artifact_action",
+				//Discover minor dungeon and retrieve artefact
+			// "scripts/factions/contracts/obtain_item_action",
+				//create small/medium dungeon to explore
 			
-			// "scripts/factions/contracts/legend_bandit_army_action",
-			// "scripts/factions/contracts/legend_barbarian_prisoner_action",
+		//monster hunt
+			"scripts/factions/contracts/roaming_beasts_action",
+			"scripts/factions/contracts/hunting_webknechts_action",
+			"scripts/factions/contracts/hunting_alps_action",
+			"scripts/factions/contracts/hunting_unholds_action",
+			"scripts/factions/contracts/hunting_hexen_action",
+			"scripts/factions/contracts/hunting_schrats_action",
+			"scripts/factions/contracts/hunting_lindwurms_action",
+
 			
-			// "scripts/factions/contracts/hunting_webknechts_action",
-			// "scripts/factions/contracts/hunting_alps_action",
-			// "scripts/factions/contracts/hunting_unholds_action",
-			// "scripts/factions/contracts/hunting_hexen_action",
-			// "scripts/factions/contracts/hunting_schrats_action",
-			// "scripts/factions/contracts/hunting_lindwurms_action",
 
 			//housekeeping
 			"scripts/factions/actions/send_caravan_action",
@@ -226,14 +235,20 @@ gt.Const.FactionTrait = {
 		],
 		//City State
 		[
+			"scripts/factions/contracts/slave_uprising_action",
+
+
 			"scripts/factions/contracts/drive_away_nomads_action",
 			"scripts/factions/contracts/roaming_beasts_desert_action",
-			"scripts/factions/contracts/slave_uprising_action",
+			
 			"scripts/factions/contracts/item_delivery_action",
 			"scripts/factions/contracts/escort_caravan_action",
+
 			"scripts/factions/contracts/hunting_serpents_action",
 			"scripts/factions/contracts/hunting_sand_golems_action",
 			"scripts/factions/contracts/hunting_mummies_action",
+
+			//war
 			"scripts/factions/contracts/conquer_holy_site_action",
 			"scripts/factions/contracts/defend_holy_site_action",
 			"scripts/factions/contracts/hold_chokepoint_action",
@@ -283,23 +298,23 @@ gt.Const.Contracts.chance_subterfuge <- function ()
 gt.Const.Contracts.Return_Item <- {};
 gt.Const.Contracts.Return_Item.Pool <- [
 	//rare items
-	"strange_tome", //FEATURE_1: add possible magic notes/books
+	"strange_tome",
 
 	//valuable items
-	"heirloom_sword",
-	"scripts/items/weapons/named/legend_named_blacksmith_hammer",
 	"scripts/items/weapons/named/legend_staff_ceremonial",
 	"scripts/items/misc/strange_eye_item", //FEATURE_3: Overhaul cultist holding strange eye in events
+	"heirloom_sword",
+	"blacksmith_hammer",
+	"scripts/items/misc/lindwurm_bones_item",
 	
 	//common items
-	"scripts/items/weapons/named/legend_named_butchers_cleaver",
-	"scripts/items/weapons/named/legend_named_sickle",
-	"scripts/items/misc/lindwurm_bones_item",
+	"butchers_cleaver",
+	"sickle",
 	"scripts/items/misc/unhold_bones_item",
 	"lockbox"
 ];
 
-gt.gameplay_improved.StaffNames <- [
+gt.Const.Strings.StaffNames <- [
 	"Deathdealer",
 	"Mercy",
 	"Slayer",
@@ -311,28 +326,3 @@ gt.gameplay_improved.StaffNames <- [
 	"Windcatcher",
 	"Swiftstrike"
 ];
-
-gt.Const.EntityType.Anatomist <- 166;
-gt.Const.Strings.EntityName.append("Anatomist");
-gt.Const.EntityIcon.append("background_70");
-
-gt.Const.World.Spawn.Troops.Anatomist <- {
-	ID = this.Const.EntityType.Anatomist,
-	Variant = 1,
-	Strength = 25,
-	Cost = 20,
-	Row = 3,
-	Script = "scripts/entity/tactical/enemies/anatomist",
-	NameList = this.Const.Strings.NecromancerNames,
-	TitleList = null
-}
-
-gt.Const.World.Spawn.Troops.BanditThugPotioned <- {
-	ID = this.Const.EntityType.BanditThug,
-	Variant = 0,
-	Strength = 16,
-	Cost = 11,
-	Row = 3,
-	Script = "scripts/entity/tactical/enemies/bandit_thug_potioned"
-}
-

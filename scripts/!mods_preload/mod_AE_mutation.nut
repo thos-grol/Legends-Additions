@@ -1,9 +1,9 @@
-this.getroottable().anatomists_expanded.hook_mutations <- function ()
+this.getroottable().AE.hook_mutations <- function ()
 {
     //sickness logic
     ::mods_hookExactClass("items/misc/anatomist/anatomist_potion_item", function (o)
 	{
-		local onUse = ::mods_getMember(o, "onUse");
+		local onUse = o.onUse;
 		o.onUse = function( _actor, _item = null )
 		{
             if (!_actor.getFlags().has("SequencesUsed"))
@@ -36,7 +36,7 @@ this.getroottable().anatomists_expanded.hook_mutations <- function ()
 	});
 };
 
-this.getroottable().anatomists_expanded.doInjuries <- function (_actor, _flag)
+this.getroottable().AE.doInjuries <- function (_actor, _flag)
 {    
     local time = 0.0;
     if (("State" in this.World) && this.World.State != null && this.World.State.getCombatStartTime() != 0)

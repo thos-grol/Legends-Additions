@@ -94,7 +94,7 @@ this.white_direwolf_potion_item <- this.inherit("scripts/items/misc/anatomist/an
 
 	function onUse( _actor, _item = null )
 	{
-		    this.getroottable().anatomists_expanded.doInjuries(_actor, "werewolf");
+		    this.getroottable().AE.doInjuries(_actor, "werewolf");
 
 			_actor.getFlags().add("werewolf");
 			_actor.getFlags().add("werewolf_8");

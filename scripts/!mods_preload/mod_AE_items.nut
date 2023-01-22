@@ -1,8 +1,8 @@
-this.getroottable().anatomists_expanded.hook_items <- function ()
+this.getroottable().AE.hook_items <- function ()
 {
     ::mods_hookExactClass("items/misc/anatomist/ifrit_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -12,10 +12,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 15000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "schrat");
+            this.getroottable().AE.doInjuries(_actor, "schrat");
 
             _actor.getFlags().add("schrat");
             _actor.getFlags().add("schrat_8");
@@ -32,8 +31,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -117,7 +115,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 
     ::mods_hookExactClass("items/misc/anatomist/schrat_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -127,10 +125,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 10000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "schrat");
+            this.getroottable().AE.doInjuries(_actor, "schrat");
 
             _actor.getFlags().add("schrat");
 
@@ -145,8 +142,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -230,34 +226,27 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 
     ::mods_hookExactClass("items/misc/anatomist/orc_warrior_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
             this.m.Name = "Sequence 7: Stollwurm";
-		    this.m.Description = "This potion further improves upon the previous sequence\'s. In addition to further improving the physqique of the drinker, they mutate organs that allow them to better take blows and negative statuses. \n\nYou can drink potions of the same sequence without serious consequences, but you will still have to deal with the sickness.";
+		    this.m.Description = "This potion further improves upon the perfect body, granting the drinker dragon's might and acidic blood. \n\nYou can drink potions of the same sequence without serious consequences, but you will still have to deal with the sickness.";
             this.m.Icon = "consumables/potion_27.png";
             this.m.Value = 15000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            //TODO: Revamp
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "wurm");
+            this.getroottable().AE.doInjuries(_actor, "wurm");
             _actor.getFlags().add("wurm");
             _actor.getFlags().add("wurm_8");
             
-            _actor.getSkills().add(this.new("scripts/skills/effects/orc_warrior_potion_effect"));
-            _actor.getSkills().add(this.new("scripts/skills/effects/fallen_hero_potion_effect"));
-
-            _actor.getBackground().addPerk(this.Const.Perks.PerkDefs.PTRFamilyPride, 1, false);
-            _actor.getSkills().add(this.new("scripts/skills/perks/perk_ptr_family_pride"));
-
-            //previous potion already has
-            _actor.getSkills().add(this.new("scripts/skills/traits/perfect_body_trait"));
             _actor.getSkills().add(this.new("scripts/skills/effects/lindwurm_potion_effect"));
+            _actor.getSkills().add(this.new("scripts/skills/effects/orc_warrior_potion_effect"));
 
+            _actor.getSkills().add(this.new("scripts/skills/passives/dragons_might"));
+            
             this.Sound.play("sounds/enemies/lindwurm_death_0" + this.Math.rand(1, 4) + ".wav", this.Const.Sound.Volume.Inventory);
             this.Sound.play("sounds/enemies/lindwurm_flee_0" + this.Math.rand(1, 3) + ".wav", this.Const.Sound.Volume.Inventory);
             this.Sound.play("sounds/enemies/lindwurm_hurt_0" + this.Math.rand(1, 4) + ".wav", this.Const.Sound.Volume.Inventory);
@@ -265,8 +254,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -304,58 +292,28 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
                 });
             }
             result.push({
+                id = 12,
+                type = "text",
+                icon = "ui/icons/special.png",
+                text = "Dragon's Might: Weaker form of Dragon's Might with range of 1 tile."
+            });
+            result.push({
+                id = 11,
+                type = "text",
+                icon = "ui/icons/special.png",
+                text = "Attacks do +[color=" + this.Const.UI.Color.PositiveValue + "]" + 25 + "[/color]% damage."
+            });
+            result.push({
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Perfects your physique, removing negative traits and adding positive traits."
-			});
-            result.push({
-				id = 11,
-				type = "text",
-				icon = "ui/icons/special.png",
-				text = "This character\'s blood burns with acid, damaging adjacent attackers whenever they deal hitpoint damage"
+				text = "Acidic Blood: This character\'s blood is acidic, spraying and corroding those who harm them. This character\'s body becomes immune to lindwurm and stollwurm blood, but not their armor."
 			});
             result.push({
                 id = 11,
                 type = "text",
                 icon = "ui/icons/health.png",
-                text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 15 + "[/color] Hitpoints"
-            });
-            result.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/melee_skill.png",
-                text = "Attacks do [color=" + this.Const.UI.Color.PositiveValue + "]+15%[/color] additional damage"
-            });
-            result.push({
-                id = 12,
-                type = "text",
-                icon = "ui/icons/special.png",
-                text = "Sensory Redundancy: [color=" + this.Const.UI.Color.PositiveValue + "]33%[/color] chance to resist the Dazed, Staggered, Stunned, Distracted, and Withered status effects"
-            });
-            result.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/health.png",
-                text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 10 + "[/color] Hitpoints"
-            });
-            result.push({
-                id = 12,
-                type = "text",
-                icon = "ui/icons/special.png",
-                text = "Reactive Muscle Tissue: This character accumulates no Fatigue from enemy attacks, whether they hit or miss"
-            });
-            result.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/health.png",
-                text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 10 + "[/color] Hitpoints"
-            });
-            result.push({
-                id = 12,
-                type = "text",
-                icon = "ui/icons/special.png",
-                text = "Family Pride: Take pride in your bloodline. See the perk description for more."
+                text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 30 + "[/color] Hitpoints"
             });
             result.push({
                 id = 65,
@@ -374,20 +332,19 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 
     ::mods_hookExactClass("items/misc/anatomist/lindwurm_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
             this.m.Name = "Sequence 8: Lindwurm";
-		    this.m.Description = "Drawing inspiration from the dragon's blood bath of the myths, this potion will perfect the user's physique, removing any negative physical traits, and giving them the potential to be a hero of legends. They will gain potent acidic blood as well. \n\nYou can drink potions of the same sequence without serious consequences, but you will still have to deal with the sickness.";
+		    this.m.Description = "Drawing inspiration from the dragon's blood bath of the myths, this potion will perfect the user's physique making them immune to the acidic blood of lindwurms and stollwurms, removing any negative physical traits, and giving them the potential to be a hero of legends. \n\nYou can drink potions of the same sequence without serious consequences, but you will still have to deal with the sickness.";
             this.m.Icon = "consumables/potion_27.png";
             this.m.Value = 10000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "wurm");
+            this.getroottable().AE.doInjuries(_actor, "wurm");
             _actor.getFlags().add("wurm");
 
             _actor.getSkills().add(this.new("scripts/skills/traits/perfect_body_trait"));
@@ -403,8 +360,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -451,7 +407,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "This character\'s blood burns with acid, damaging adjacent attackers whenever they deal hitpoint damage"
+				text = "This character\'s body becomes immune to lindwurm and stollwurm blood, but not their armor."
 			});
             result.push({
                 id = 12,
@@ -476,7 +432,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
     
     ::mods_hookExactClass("items/misc/anatomist/fallen_hero_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -486,41 +442,16 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 10000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "ghoul");
-            
-            if (!_actor.getFlags().has("ghoul"))
-			{
-				_actor.getFlags().add("ghoul");
-			}
-
-            if (!_actor.getFlags().has("ghoul_8"))
-			{
-				_actor.getFlags().add("ghoul_8");
-			}
-
-            if (_actor.getSkills().getSkillByID("effects.nachzehrer_potion") == null)
-            {
-                _actor.getSkills().add(this.new("scripts/skills/effects/nachzehrer_potion_effect"));
-            }
-
-            if (_actor.getSkills().getSkillByID("effects.unhold_potion") == null)
-            {
-                _actor.getSkills().add(this.new("scripts/skills/effects/unhold_potion_effect"));
-            }
-            
-            if (_actor.getSkills().getSkillByID("effects.hyena_potion") == null)
-            {
-                _actor.getSkills().add(this.new("scripts/skills/effects/hyena_potion_effect"));
-            }
-
-            if (_actor.getSkills().getSkillByID("perk.legend_lacerate") == null)
-            {
-                _actor.getBackground().addPerk(this.Const.Perks.PerkDefs.LegendLacerate, 3, false);
-                _actor.getSkills().add(this.new("scripts/skills/perks/perk_legend_lacerate"));
-            }
+            this.getroottable().AE.doInjuries(_actor, "ghoul");
+            _actor.getFlags().add("ghoul");
+            _actor.getFlags().add("ghoul_8");
+            _actor.getSkills().add(this.new("scripts/skills/effects/nachzehrer_potion_effect"));
+            _actor.getSkills().add(this.new("scripts/skills/effects/unhold_potion_effect"));
+            _actor.getSkills().add(this.new("scripts/skills/effects/hyena_potion_effect"));
+            _actor.getBackground().addPerk(this.Const.Perks.PerkDefs.LegendLacerate, 3, false);
+            _actor.getSkills().add(this.new("scripts/skills/perks/perk_legend_lacerate"));
 
             this.Sound.play("sounds/enemies/ghoul_death_0" + this.Math.rand(1, 6) + ".wav", this.Const.Sound.Volume.Inventory);
             this.Sound.play("sounds/enemies/ghoul_flee_0" + this.Math.rand(1, 3) + ".wav", this.Const.Sound.Volume.Inventory);
@@ -529,8 +460,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -620,7 +550,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 
     ::mods_hookExactClass("items/misc/anatomist/nachzehrer_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -629,38 +559,20 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 5000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "ghoul");
+            this.getroottable().AE.doInjuries(_actor, "ghoul");
+            _actor.getFlags().add("ghoul");
+            _actor.getSkills().add(this.new("scripts/skills/effects/nachzehrer_potion_effect"));
             
-            if (!_actor.getFlags().has("ghoul"))
-			{
-				_actor.getFlags().add("ghoul");
-			}
+            _actor.getBackground().addPerk(this.Const.Perks.PerkDefs.LegendGruesomeFeast, 0, false);
+            _actor.getSkills().add(this.new("scripts/skills/perks/perk_legend_gruesome_feast"));
 
-            if (_actor.getSkills().getSkillByID("effects.nachzehrer_potion") == null)
-            {
-                _actor.getSkills().add(this.new("scripts/skills/effects/nachzehrer_potion_effect"));
-            }
+            _actor.getBackground().addPerk(this.Const.Perks.PerkDefs.LegendAlert, 1, false);
+            _actor.getSkills().add(this.new("scripts/skills/perks/perk_legend_alert"));
 
-            if (_actor.getSkills().getSkillByID("perk.legend_gruesome_feast") == null)
-            {
-                _actor.getBackground().addPerk(this.Const.Perks.PerkDefs.LegendGruesomeFeast, 0, false);
-                _actor.getSkills().add(this.new("scripts/skills/perks/perk_legend_gruesome_feast"));
-            }
-
-            if (_actor.getSkills().getSkillByID("perk.legend_alert") == null)
-            {
-                _actor.getBackground().addPerk(this.Const.Perks.PerkDefs.LegendAlert, 1, false);
-                _actor.getSkills().add(this.new("scripts/skills/perks/perk_legend_alert"));
-            }
-
-            if (_actor.getSkills().getSkillByID("perk.killing_frenzy") == null)
-            {
-                _actor.getBackground().addPerk(this.Const.Perks.PerkDefs.KillingFrenzy, 2, false);
-                _actor.getSkills().add(this.new("scripts/skills/perks/perk_killing_frenzy"));
-            }
+            _actor.getBackground().addPerk(this.Const.Perks.PerkDefs.KillingFrenzy, 2, false);
+            _actor.getSkills().add(this.new("scripts/skills/perks/perk_killing_frenzy"));
 
             this.Sound.play("sounds/enemies/ghoul_death_0" + this.Math.rand(1, 6) + ".wav", this.Const.Sound.Volume.Inventory);
             this.Sound.play("sounds/enemies/ghoul_flee_0" + this.Math.rand(1, 3) + ".wav", this.Const.Sound.Volume.Inventory);
@@ -669,8 +581,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -754,7 +665,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
     
     ::mods_hookExactClass("items/misc/anatomist/ancient_priest_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -764,10 +675,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 20000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "unhold");
+            this.getroottable().AE.doInjuries(_actor, "unhold");
 
             _actor.getSkills().removeByID("trait.tiny");
             _actor.getSkills().add(this.new("scripts/skills/traits/huge_trait"));
@@ -783,8 +693,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -862,7 +771,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 
     ::mods_hookExactClass("items/misc/anatomist/unhold_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -871,10 +780,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 10000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "unhold");
+            this.getroottable().AE.doInjuries(_actor, "unhold");
 
             _actor.getSkills().removeByID("trait.tiny");
             _actor.getSkills().add(this.new("scripts/skills/traits/huge_trait"));
@@ -895,8 +803,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -981,7 +888,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
     
     ::mods_hookExactClass("items/misc/anatomist/webknecht_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -990,10 +897,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 5000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "spider");
+            this.getroottable().AE.doInjuries(_actor, "spider");
 
             _actor.getFlags().add("spider");
             _actor.getSkills().add(this.new("scripts/skills/effects/serpent_potion_effect"));
@@ -1007,8 +913,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -1093,7 +998,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 
     ::mods_hookExactClass("items/misc/anatomist/wiederganger_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -1103,10 +1008,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Icon = "consumables/potion_31.png";
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "spider");
+            this.getroottable().AE.doInjuries(_actor, "spider");
 
             _actor.getFlags().add("spider");
             _actor.getFlags().add("spider_8");
@@ -1124,8 +1028,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -1210,7 +1113,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 
     ::mods_hookExactClass("items/misc/anatomist/serpent_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -1219,10 +1122,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 5000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "serpent");
+            this.getroottable().AE.doInjuries(_actor, "serpent");
 
             _actor.getFlags().add("serpent");
 
@@ -1242,8 +1144,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -1334,7 +1235,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
     
     ::mods_hookExactClass("items/misc/anatomist/orc_young_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -1343,10 +1244,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 7500;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "orc");
+            this.getroottable().AE.doInjuries(_actor, "orc");
 
             _actor.getSkills().removeByID("trait.tiny");
             _actor.getSkills().add(this.new("scripts/skills/traits/huge_trait"));
@@ -1369,8 +1269,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -1455,7 +1354,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 
     ::mods_hookExactClass("items/misc/anatomist/orc_warlord_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -1464,10 +1363,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 15000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "orc");
+            this.getroottable().AE.doInjuries(_actor, "orc");
 
             _actor.getSkills().removeByID("trait.tiny");
             _actor.getSkills().add(this.new("scripts/skills/traits/huge_trait"));
@@ -1485,8 +1383,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -1565,7 +1462,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
     
     ::mods_hookExactClass("items/misc/anatomist/goblin_grunt_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -1574,10 +1471,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 5000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "goblin");
+            this.getroottable().AE.doInjuries(_actor, "goblin");
 
             if (_actor.getSkills().hasSkill("trait.huge"))
             {
@@ -1623,8 +1519,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -1709,7 +1604,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 
     ::mods_hookExactClass("items/misc/anatomist/alp_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -1719,10 +1614,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 5000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "alp");
+            this.getroottable().AE.doInjuries(_actor, "alp");
 
             _actor.getFlags().add("alp");
             _actor.getSkills().add(this.new("scripts/skills/actives/nightmare_player"));
@@ -1739,8 +1633,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
         }
 
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -1819,7 +1712,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 
     ::mods_hookExactClass("items/misc/anatomist/direwolf_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -1828,10 +1721,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 5000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "werewolf");
+            this.getroottable().AE.doInjuries(_actor, "werewolf");
 
             _actor.getFlags().add("werewolf");
             _actor.getSkills().add(this.new("scripts/skills/racial/werewolf_player_racial"));
@@ -1849,8 +1741,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {
@@ -1930,7 +1821,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
 
     ::mods_hookExactClass("items/misc/anatomist/necrosavant_potion_item", function (o)
 	{
-        local create = ::mods_getMember(o, "create");
+        local create = o.create;
 		o.create = function()
 		{
             create();
@@ -1939,10 +1830,9 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             this.m.Value = 15000;
         }
 
-        local onUse = ::mods_getMember(o, "onUse");
-		o.onUse = function(_actor, _item = null)
+        o.onUse = function(_actor, _item = null)
         {
-            this.getroottable().anatomists_expanded.doInjuries(_actor, "vampire");
+            this.getroottable().AE.doInjuries(_actor, "vampire");
 
             _actor.getSkills().removeByID("trait.old");
             _actor.getFlags().add("IsRejuvinated", true);
@@ -1966,8 +1856,7 @@ this.getroottable().anatomists_expanded.hook_items <- function ()
             return this.anatomist_potion_item.onUse(_actor, _item);
         }
 
-        local getTooltip = ::mods_getMember(o, "getTooltip");
-		o.getTooltip = function()
+        o.getTooltip = function()
         {
             local result = [
                 {

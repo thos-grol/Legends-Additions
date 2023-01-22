@@ -30,7 +30,6 @@ this.player_levitate <- this.inherit("scripts/skills/skill", {
 		actor.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
 		actor.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
 		actor.m.LevelActionPointCost = this.Const.Movement.LevelDifferenceActionPointCost;
-		this.removeSelf();
 	}
 
 	function onCombatFinished()
@@ -39,7 +38,6 @@ this.player_levitate <- this.inherit("scripts/skills/skill", {
 		actor.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
 		actor.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
 		actor.m.LevelActionPointCost = this.Const.Movement.LevelDifferenceActionPointCost;
-		this.removeSelf();
 	}
 
 });
