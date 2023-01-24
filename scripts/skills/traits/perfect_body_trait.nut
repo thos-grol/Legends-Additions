@@ -6,8 +6,8 @@ this.perfect_body_trait <- this.inherit("scripts/skills/traits/character_trait",
 		this.m.ID = "trait.perfect_body";
 		this.m.Name = "Perfect Body";
 		this.m.Icon = "ui/traits/trait_icon_21.png";
-		this.m.Description = "This character's body has been perfected with the lindwurm potion. All imperfections of the flesh have been removed.";
-		this.m.Order = this.Const.SkillOrder.Trait - 10;
+		this.m.Description = "This character's body has been perfected.";
+		this.m.Order = ::Const.SkillOrder.Trait - 10;
 		this.m.Type = this.m.Type;
 		this.m.Titles = [];
 		this.m.Excluded = [];
@@ -30,55 +30,55 @@ this.perfect_body_trait <- this.inherit("scripts/skills/traits/character_trait",
 				id = 10,
 				type = "text",
 				icon = "ui/icons/vision.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+1[/color] Vision"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+1[/color] Vision"
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Hitpoints"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Hitpoints"
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Max Fatigue"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Max Fatigue"
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Initiative"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Initiative"
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Melee Skill"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5[/color] Melee Skill"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "The threshold to sustain injuries on getting hit is increased by [color=" + this.Const.UI.Color.PositiveValue + "]25%[/color]"
+				text = "The threshold to sustain injuries on getting hit is increased by [color=" + ::Const.UI.Color.PositiveValue + "]25%[/color]"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+3[/color] Fatigue Recovery per turn"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+3[/color] Fatigue Recovery per turn"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Builds up [color=" + this.Const.UI.Color.PositiveValue + "]2[/color] less fatigue for each tile travelled"
+				text = "Builds up [color=" + ::Const.UI.Color.PositiveValue + "]2[/color] less fatigue for each tile travelled"
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Has a [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] chance to have any attacker require two successful attack rolls in order to hit"
+				text = "Has a [color=" + ::Const.UI.Color.PositiveValue + "]10%[/color] chance to have any attacker require two successful attack rolls in order to hit"
 			}
 		];
 	}

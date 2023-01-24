@@ -35,7 +35,7 @@ this.return_item_action <- this.inherit("scripts/factions/faction_action", {
 
 	function onExecute( _faction )
 	{
-		local contract = this.new("scripts/contracts/contracts/return_item_contract2");
+		local contract = ::new("scripts/contracts/contracts/return_item_contract2");
 		contract.setFaction(_faction.getID());
 		contract.setEmployerID(_faction.getRandomCharacter().getID());
 		this.World.Contracts.addContract(contract);

@@ -13,8 +13,8 @@ this.negative_energy_hand <- this.inherit("scripts/skills/magic_skill", {
 		this.m.SoundOnUse = [
 			"sounds/enemies/ghastly_touch_01.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -91,16 +91,16 @@ this.negative_energy_hand <- this.inherit("scripts/skills/magic_skill", {
 		{
 			if (this.m.SoundOnUse.len() != 0)
 			{
-				this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.RacialEffect * 1.5, _targetEntity.getPos());
+				this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.5, _targetEntity.getPos());
 			}
 
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_targetEntity) + " has been drained.");
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_targetEntity) + " has been drained.");
 		}
 
 		local poison = _targetEntity.getSkills().getSkillByID("effects.drained_effect");
 		if (poison == null)
 		{
-			_targetEntity.getSkills().add(this.new("scripts/skills/effects/drained_effect"));
+			_targetEntity.getSkills().add(::new("scripts/skills/effects/drained_effect"));
 			poison = _targetEntity.getSkills().getSkillByID("effects.drained_effect");
 			poison.setActorID(this.getContainer().getActor().getID());
 		}

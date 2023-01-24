@@ -10,7 +10,7 @@ this.mana_pool_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		this.m.Name = "Mana Pool";
 		this.m.Icon = "ui/traits/effect_mc_02.png";
 		this.m.Description = "Represents this character's mana pool.";
-		this.m.Order = this.Const.SkillOrder.Trait - 10;
+		this.m.Order = ::Const.SkillOrder.Trait - 10;
 		this.m.Type = this.m.Type;
 		this.m.Titles = [];
 		this.m.Excluded = [];

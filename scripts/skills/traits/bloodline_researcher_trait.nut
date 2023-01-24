@@ -7,7 +7,7 @@ this.bloodline_researcher_trait <- this.inherit("scripts/skills/traits/character
 		this.m.Name = "Bloodline Researcher";
 		this.m.Icon = "ui/traits/trait_icon_84.png";
 		this.m.Description = "This character has the knowledge and skills to brew sequence potions from monster remains.";
-		this.m.Order = this.Const.SkillOrder.Background + 10;
+		this.m.Order = ::Const.SkillOrder.Background + 10;
 		this.m.Type = this.m.Type;
 		this.m.Titles = [];
 		this.m.Excluded = [];

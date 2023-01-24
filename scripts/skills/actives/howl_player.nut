@@ -11,8 +11,8 @@ this.howl_player <- this.inherit("scripts/skills/skill", {
 		this.m.SoundOnUse = [
 			"sounds/enemies/werewolf_howl.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active | this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active | ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsRemovedAfterBattle = false;
 		this.m.IsSerialized = true;
 		this.m.IsActive = true;
@@ -54,7 +54,7 @@ this.howl_player <- this.inherit("scripts/skills/skill", {
 		this.logInfo("Checking actor: " + _actor.getName());
 		if (_actor.getFaction() == _tag.Self.getFaction() && _actor.getFlags().has("werewolf"))
 		{
-			_actor.setMoraleState(this.Math.min(this.Const.MoraleState.Confident, _actor.getMoraleState() + 1))
+			_actor.setMoraleState(this.Math.min(::Const.MoraleState.Confident, _actor.getMoraleState() + 1))
 			_tag.Skill.spawnIcon("status_effect_06", _actor.getTile());
 			//TODO: Add killing frenzy effect to each bro
 		}

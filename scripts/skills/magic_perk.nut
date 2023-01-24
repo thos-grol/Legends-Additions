@@ -1,7 +1,7 @@
 this.magic_perk <- this.inherit("scripts/skills/skill", {
 	m = {
 		IsForceEnabled = false,
-		School = this.Const.Magic.Type.Neutral
+		School = ::Const.Magic.Type.Neutral
 	},
 	function create()
 	{
@@ -33,7 +33,7 @@ this.magic_perk <- this.inherit("scripts/skills/skill", {
 		local Flags = this.getContainer().getActor().getFlags();
 		if (!Flags.has("MATRIX_BASIC_HAS")) return false;
 		if (Flags.get("MATRIX_BASIC_TYPE") == this.getSchool()) return true;
-		if (this.getSchool() == this.Const.Magic.Type.Neutral) return true;
+		if (this.getSchool() == ::Const.Magic.Type.Neutral) return true;
 		
 		if (!Flags.has("MATRIX_SECONDARY_HAS")) return false;
 		if (Flags.get("MATRIX_SECONDARY_TYPE") == this.getSchool()) return true;

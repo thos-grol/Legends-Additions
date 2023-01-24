@@ -2,16 +2,16 @@ this.anatomist <- this.inherit("scripts/entity/tactical/human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Mercenary;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Mercenary.XP;
+		this.m.Type = ::Const.EntityType.Mercenary;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.Mercenary.XP;
 		this.m.Name = "Anatomist";
 		this.human.create();
-		this.m.Faces = this.Const.Faces.SmartMale;
-		this.m.Hairs = this.Const.Hair.TidyMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.Tidy;
-		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bounty_hunter_melee_agent");
+		this.m.Faces = ::Const.Faces.SmartMale;
+		this.m.Hairs = ::Const.Hair.TidyMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.Tidy;
+		this.m.AIAgent = ::new("scripts/ai/tactical/agents/bounty_hunter_melee_agent");
 		this.m.AIAgent.setActor(this);
 	}
 
@@ -19,27 +19,27 @@ this.anatomist <- this.inherit("scripts/entity/tactical/human", {
 	{
 		this.human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Mercenary);
+		b.setValues(::Const.Tactical.Actor.Mercenary);
 		b.IsSpecializedInSwords = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_miniboss_lone_wolf");
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_nimble"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_duelist"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_dodge"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_footwork"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_nimble"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_duelist"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_dodge"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_footwork"));
 
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_ptr_versatile_weapon"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_mastery_sword"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_ptr_kata"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_ptr_en_garde"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_versatile_weapon"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_sword"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_kata"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_en_garde"));
 
-		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
+		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Legendary)
 		{
-			this.getSkills().add(this.new("scripts/skills/perks/perk_ptr_exploit_opening"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_ptr_fluid_weapon"));
+			this.getSkills().add(::new("scripts/skills/perks/perk_ptr_exploit_opening"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_fluid_weapon"));
 		}
 
 		local roll = this.Math.rand(1.0, 100.0);
@@ -59,7 +59,7 @@ this.anatomist <- this.inherit("scripts/entity/tactical/human", {
 	{
 		local s = this.Math.maxf(0.5, 0.6 * this.Math.pow(0.01 * this.World.State.getPlayer().getStrength(), 0.9));
 		local d = this.Math.minf(0, s + this.Math.minf(1.0, this.World.getTime().Days * 0.01));
-		return d * this.Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
+		return d * ::Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
@@ -80,32 +80,32 @@ this.anatomist <- this.inherit("scripts/entity/tactical/human", {
 
 	function assignRandomEquipment()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Mainhand))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Mainhand))
 		{
 			local weapons = [
 				"weapons/arming_sword"
 			];
 
-			if (this.Const.DLC.Wildmen || this.Const.DLC.Desert)
+			if (::Const.DLC.Wildmen || ::Const.DLC.Desert)
 			{
 				weapons.extend([
 					"weapons/shamshir"
 				]);
 			}
 
-			this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+			this.m.Items.equip(::new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 		}
 
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Body))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Body))
 		{
-			if (this.Math.rand(1, 100) <= 50) this.m.Items.equip(this.new("scripts/items/armor/undertaker_apron"));
-			else this.m.Items.equip(this.new("scripts/items/armor/wanderers_coat"));
+			if (this.Math.rand(1, 100) <= 50) this.m.Items.equip(::new("scripts/items/armor/undertaker_apron"));
+			else this.m.Items.equip(::new("scripts/items/armor/wanderers_coat"));
 		}
 
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head) && this.Math.rand(1, 100) <= 90)
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head) && this.Math.rand(1, 100) <= 90)
 		{
-			if (this.Math.rand(1, 100) <= 50)  this.m.Items.equip(this.new("scripts/items/helmets/undertaker_hat"));
-			else this.m.Items.equip(this.new("scripts/items/helmets/physician_mask"));
+			if (this.Math.rand(1, 100) <= 50)  this.m.Items.equip(::new("scripts/items/helmets/undertaker_hat"));
+			else this.m.Items.equip(::new("scripts/items/helmets/physician_mask"));
 		}
 	}
 
@@ -118,7 +118,7 @@ this.anatomist <- this.inherit("scripts/entity/tactical/human", {
 			"weapons/named/named_sword"
 		];
 
-		if (this.Const.DLC.Wildmen || this.Const.DLC.Desert)
+		if (::Const.DLC.Wildmen || ::Const.DLC.Desert)
 		{
 			weapons.extend([
 				"weapons/named/named_sword",
@@ -128,11 +128,11 @@ this.anatomist <- this.inherit("scripts/entity/tactical/human", {
 
 		if (this.Math.rand(1, 100) <= 70)
 		{
-			this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+			this.m.Items.equip(::new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 		}
 
 		this.m.BaseProperties.DamageDirectMult *= 1.25;
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_relentless"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_relentless"));
 		return true;
 	}
 

@@ -14,8 +14,8 @@ this.reanimate <- this.inherit("scripts/skills/magic_skill", {
 			"sounds/enemies/necromancer_02.wav",
 			"sounds/enemies/necromancer_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -74,9 +74,9 @@ this.reanimate <- this.inherit("scripts/skills/magic_skill", {
 		local p = _tile.Properties.get("Corpse");
 		p.Faction = _user.getFaction();
 
-		if (p.Faction == this.Const.Faction.Player)
+		if (p.Faction == ::Const.Faction.Player)
 		{
-			p.Faction = this.Const.Faction.PlayerAnimals;
+			p.Faction = ::Const.Faction.PlayerAnimals;
 		}
 
 		local e = this.Tactical.Entities.onResurrect(p, true);
@@ -84,7 +84,7 @@ this.reanimate <- this.inherit("scripts/skills/magic_skill", {
 		if (e != null)
 		{
 			e.getSprite("socket").setBrush(_user.getSprite("socket").getBrush().Name);
-			e.getSkills().add(this.new("scripts/skills/passives/undead"));
+			e.getSkills().add(::new("scripts/skills/passives/undead"));
 		}
 	}
 
@@ -92,22 +92,22 @@ this.reanimate <- this.inherit("scripts/skills/magic_skill", {
 	{
 		if (_targetTile.IsVisibleForPlayer)
 		{
-			if (this.Const.Tactical.RaiseUndeadParticles.len() != 0)
+			if (::Const.Tactical.RaiseUndeadParticles.len() != 0)
 			{
-				for( local i = 0; i < this.Const.Tactical.RaiseUndeadParticles.len(); i = i )
+				for( local i = 0; i < ::Const.Tactical.RaiseUndeadParticles.len(); i = i )
 				{
-					this.Tactical.spawnParticleEffect(true, this.Const.Tactical.RaiseUndeadParticles[i].Brushes, _targetTile, this.Const.Tactical.RaiseUndeadParticles[i].Delay, this.Const.Tactical.RaiseUndeadParticles[i].Quantity, this.Const.Tactical.RaiseUndeadParticles[i].LifeTimeQuantity, this.Const.Tactical.RaiseUndeadParticles[i].SpawnRate, this.Const.Tactical.RaiseUndeadParticles[i].Stages);
+					this.Tactical.spawnParticleEffect(true, ::Const.Tactical.RaiseUndeadParticles[i].Brushes, _targetTile, ::Const.Tactical.RaiseUndeadParticles[i].Delay, ::Const.Tactical.RaiseUndeadParticles[i].Quantity, ::Const.Tactical.RaiseUndeadParticles[i].LifeTimeQuantity, ::Const.Tactical.RaiseUndeadParticles[i].SpawnRate, ::Const.Tactical.RaiseUndeadParticles[i].Stages);
 					i = ++i;
 				}
 			}
 
 			if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
 			{
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " uses Raise Undead");
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " uses Raise Undead");
 
 				if (this.m.SoundOnHit.len() != 0)
 				{
-					this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill * 1.2, _user.getPos());
+					this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill * 1.2, _user.getPos());
 				}
 			}
 		}

@@ -9,8 +9,8 @@ this.player_levitate <- this.inherit("scripts/skills/skill", {
 		this.m.IconMini = "perk_37_mini";
 		this.m.Overlay = "perk_37";
 		this.m.IsRemovedAfterBattle = false;
-		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.StatusEffect | ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -19,25 +19,25 @@ this.player_levitate <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		local actor = this.getContainer().getActor();
-		actor.m.ActionPointCosts = this.Const.LegendFlightMovementAPCost;
-		actor.m.FatigueCosts = this.Const.LegendFlightMovementFatigueCost;
+		actor.m.ActionPointCosts = ::Const.LegendFlightMovementAPCost;
+		actor.m.FatigueCosts = ::Const.LegendFlightMovementFatigueCost;
 		actor.m.LevelActionPointCost = 0;
 	}
 
 	function onTurnEnd()
 	{
 		local actor = this.getContainer().getActor();
-		actor.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		actor.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
-		actor.m.LevelActionPointCost = this.Const.Movement.LevelDifferenceActionPointCost;
+		actor.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		actor.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
+		actor.m.LevelActionPointCost = ::Const.Movement.LevelDifferenceActionPointCost;
 	}
 
 	function onCombatFinished()
 	{
 		local actor = this.getContainer().getActor();
-		actor.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		actor.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
-		actor.m.LevelActionPointCost = this.Const.Movement.LevelDifferenceActionPointCost;
+		actor.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		actor.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
+		actor.m.LevelActionPointCost = ::Const.Movement.LevelDifferenceActionPointCost;
 	}
 
 });

@@ -9,8 +9,8 @@ this.battle_meditation <- this.inherit("scripts/skills/skill", {
 		this.m.IconDisabled = "skills/active_legend_vala_chanting_sw.png";
 		this.m.Overlay = "perk_54_active";
 		this.m.SoundOnUse = [];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.BeforeLast;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.BeforeLast;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = false;
@@ -44,7 +44,7 @@ this.battle_meditation <- this.inherit("scripts/skills/skill", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Current Fatigue is reduced by [color=" + this.Const.UI.Color.PositiveValue + "]" + fatReduc + "%[/color] of maximum fatigue"
+				text = "Current Fatigue is reduced by [color=" + ::Const.UI.Color.PositiveValue + "]" + fatReduc + "%[/color] of maximum fatigue"
 			}
 		];
 		return ret;
@@ -93,8 +93,8 @@ this.battle_meditation <- this.inherit("scripts/skills/skill", {
 
 		if (!_user.isHiddenToPlayer())
 		{
-			_user.playSound(this.Const.Sound.ActorEvent.Fatigue, this.Const.Sound.Volume.Actor * _user.getSoundVolume(this.Const.Sound.ActorEvent.Fatigue));
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " recovers " + total + "mana.");
+			_user.playSound(::Const.Sound.ActorEvent.Fatigue, ::Const.Sound.Volume.Actor * _user.getSoundVolume(::Const.Sound.ActorEvent.Fatigue));
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " recovers " + total + "mana.");
 		}
 
 		return true;

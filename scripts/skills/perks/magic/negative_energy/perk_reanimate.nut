@@ -3,22 +3,22 @@ this.perk_reanimate <- this.inherit("scripts/skills/magic_perk", {
 	function create()
 	{
 		this.m.ID = "perk.negative_energy_hand";
-		this.m.Name = this.Const.Strings.PerkName.Reanimate;
-		this.m.Description = this.Const.Strings.PerkDescription.Reanimate;
+		this.m.Name = ::Const.Strings.PerkName.Reanimate;
+		this.m.Description = ::Const.Strings.PerkDescription.Reanimate;
 		this.m.Icon = "skills/active_26.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
-		this.m.School = this.Const.Magic.Type.NegativeEnergy;
+		this.m.School = ::Const.Magic.Type.NegativeEnergy;
 	}
 
 	function onAddedSuccessful()
 	{
 		if (!this.m.Container.hasSkill("actives.reanimate"))
 		{
-			this.m.Container.add(this.new("scripts/skills/actives/reanimate"));
+			this.m.Container.add(::new("scripts/skills/actives/reanimate"));
 		}
 	}
 

@@ -13,7 +13,7 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/poison_applied_01.wav",
 			"sounds/combat/poison_applied_02.wav"
 		];
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsStacking = true;
 		this.m.IsRemovedAfterBattle = true;
@@ -21,7 +21,7 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character has been sprayed with acidic blood, which is now slowly eating away at them for another [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] turn(s).";
+		return "This character has been sprayed with acidic blood, which is now slowly eating away at them for another [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] turn(s).";
 	}
 
 	function getTooltip()
@@ -46,14 +46,14 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 		if (!actor.getFlags().has("wurm") && (head_affected || body_affected))
 		{
 			local total = 0;
-			if (head_affected) total += (actor.getArmor(this.Const.BodyPart.Head)/actor.getArmorMax(this.Const.BodyPart.Head) < 0.5) ? 10 : 5;
-			if (body_affected) total += (actor.getArmor(this.Const.BodyPart.Body)/actor.getArmorMax(this.Const.BodyPart.Body) < 0.5) ? 20.0 : 10.0;
+			if (head_affected) total += (actor.getArmor(::Const.BodyPart.Head)/actor.getArmorMax(::Const.BodyPart.Head) < 0.5) ? 10 : 5;
+			if (body_affected) total += (actor.getArmor(::Const.BodyPart.Body)/actor.getArmorMax(::Const.BodyPart.Body) < 0.5) ? 20.0 : 10.0;
 			
 			ret.push({
 				id = 10,
 				type = "text",
 				icon = "ui/icons/damage_received.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + total + " health is corroded each turn."
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]" + total + " health is corroded each turn."
 			});
 		}
 
@@ -63,7 +63,7 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/armor_head.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]40 head armor is lost each turn"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]40 head armor is lost each turn"
 			});
 		}
 
@@ -73,7 +73,7 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/armor_body.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]40 body armor is lost each turn"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]40 body armor is lost each turn"
 			});
 		}
 
@@ -86,7 +86,7 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 
 		if (this.m.SoundOnUse.len() != 0)
 		{
-			this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.RacialEffect * 1.25, this.getContainer().getActor().getPos());
+			this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, this.getContainer().getActor().getPos());
 		}
 	}
 
@@ -103,12 +103,12 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 
 			if (head_affected)
 			{
-				local hitInfo = clone this.Const.Tactical.HitInfo;
+				local hitInfo = clone ::Const.Tactical.HitInfo;
 				if (actor.getFlags().has("wurm")) hitInfo.DamageRegular = 0;
-				else hitInfo.DamageRegular = (actor.getArmor(this.Const.BodyPart.Head)/actor.getArmorMax(this.Const.BodyPart.Head) < 0.5) ? 10.0 : 5.0;
-				hitInfo.DamageArmor = this.Math.min(actor.getArmor(this.Const.BodyPart.Head), 40.0);
+				else hitInfo.DamageRegular = (actor.getArmor(::Const.BodyPart.Head)/actor.getArmorMax(::Const.BodyPart.Head) < 0.5) ? 10.0 : 5.0;
+				hitInfo.DamageArmor = this.Math.min(actor.getArmor(::Const.BodyPart.Head), 40.0);
 				hitInfo.DamageDirect = 0.0;
-				hitInfo.BodyPart = this.Const.BodyPart.Head;
+				hitInfo.BodyPart = ::Const.BodyPart.Head;
 				hitInfo.BodyDamageMult = 1.0;
 				hitInfo.FatalityChanceMult = 0.0;
 
@@ -118,12 +118,12 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 
 			if (body_affected)
 			{
-				local hitInfo = clone this.Const.Tactical.HitInfo;
+				local hitInfo = clone ::Const.Tactical.HitInfo;
 				if (actor.getFlags().has("wurm")) hitInfo.DamageRegular = 0;
-				else hitInfo.DamageRegular = (actor.getArmor(this.Const.BodyPart.Body)/actor.getArmorMax(this.Const.BodyPart.Body) < 0.5) ? 20.0 : 10.0;
-				hitInfo.DamageArmor = this.Math.min(actor.getArmor(this.Const.BodyPart.Body), 40.0);
+				else hitInfo.DamageRegular = (actor.getArmor(::Const.BodyPart.Body)/actor.getArmorMax(::Const.BodyPart.Body) < 0.5) ? 20.0 : 10.0;
+				hitInfo.DamageArmor = this.Math.min(actor.getArmor(::Const.BodyPart.Body), 40.0);
 				hitInfo.DamageDirect = 0.0;
-				hitInfo.BodyPart = this.Const.BodyPart.Body;
+				hitInfo.BodyPart = ::Const.BodyPart.Body;
 				hitInfo.BodyDamageMult = 1.0;
 				hitInfo.FatalityChanceMult = 0.0;
 
@@ -135,12 +135,12 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 			{
 				if (this.m.SoundOnUse.len() != 0)
 				{
-					this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.RacialEffect * 1.2, actor.getPos());
+					this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.2, actor.getPos());
 				}
 
-				for( local i = 0; i < this.Const.Tactical.AcidParticles.len(); i = ++i )
+				for( local i = 0; i < ::Const.Tactical.AcidParticles.len(); i = ++i )
 				{
-					this.Tactical.spawnParticleEffect(true, this.Const.Tactical.AcidParticles[i].Brushes, this.getContainer().getActor().getTile(), this.Const.Tactical.AcidParticles[i].Delay, this.Const.Tactical.AcidParticles[i].Quantity, this.Const.Tactical.AcidParticles[i].LifeTimeQuantity, this.Const.Tactical.AcidParticles[i].SpawnRate, this.Const.Tactical.AcidParticles[i].Stages);
+					this.Tactical.spawnParticleEffect(true, ::Const.Tactical.AcidParticles[i].Brushes, this.getContainer().getActor().getTile(), ::Const.Tactical.AcidParticles[i].Delay, ::Const.Tactical.AcidParticles[i].Quantity, ::Const.Tactical.AcidParticles[i].LifeTimeQuantity, ::Const.Tactical.AcidParticles[i].SpawnRate, ::Const.Tactical.AcidParticles[i].Stages);
 				}
 			}
 
@@ -155,23 +155,23 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 
-		if (actor.getType() == this.Const.EntityType.Lindwurm || actor.getType() == this.Const.EntityType.LegendStollwurm) return;
+		if (actor.getType() == ::Const.EntityType.Lindwurm || actor.getType() == ::Const.EntityType.LegendStollwurm) return;
 
 		this.m.TurnsLeft = this.Math.max(1, 3 + actor.getCurrentProperties().NegativeStatusEffectDuration);
 
 		if (this.m.SoundOnUse.len() != 0)
 		{
-			this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
+			this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
 		}
 
-		for( local i = 0; i < this.Const.Tactical.AcidParticles.len(); i = ++i )
+		for( local i = 0; i < ::Const.Tactical.AcidParticles.len(); i = ++i )
 		{
-			this.Tactical.spawnParticleEffect(true, this.Const.Tactical.AcidParticles[i].Brushes, actor.getTile(), this.Const.Tactical.AcidParticles[i].Delay, this.Const.Tactical.AcidParticles[i].Quantity, this.Const.Tactical.AcidParticles[i].LifeTimeQuantity, this.Const.Tactical.AcidParticles[i].SpawnRate, this.Const.Tactical.AcidParticles[i].Stages);
+			this.Tactical.spawnParticleEffect(true, ::Const.Tactical.AcidParticles[i].Brushes, actor.getTile(), ::Const.Tactical.AcidParticles[i].Delay, ::Const.Tactical.AcidParticles[i].Quantity, ::Const.Tactical.AcidParticles[i].LifeTimeQuantity, ::Const.Tactical.AcidParticles[i].SpawnRate, ::Const.Tactical.AcidParticles[i].Stages);
 		}
 
 		if (!actor.isHiddenToPlayer())
 		{
-			this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(actor) + "\'s body has been sprayed with acid");
+			this.Tactical.EventLog.logEx(::Const.UI.getColorizedEntityName(actor) + "\'s body has been sprayed with acid");
 		}
 	}
 

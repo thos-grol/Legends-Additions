@@ -7,7 +7,7 @@ this.tester_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		this.m.Name = "Tester";
 		this.m.Icon = "ui/traits/trait_icon_63.png";
 		this.m.Description = "Increases attributes for testing.";
-		this.m.Order = this.Const.SkillOrder.Background + 10;
+		this.m.Order = ::Const.SkillOrder.Background + 10;
 		this.m.Type = this.m.Type;
 		this.m.Titles = [];
 		this.m.Excluded = [];

@@ -11,7 +11,7 @@ this.drained_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "skills/demon_hound_bite.png";
 		this.m.IconMini = "demon_hound_bite_effect";
 		this.m.Overlay = "demon_hound_bite_effect";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 	}
@@ -24,8 +24,8 @@ this.drained_effect <- this.inherit("scripts/skills/skill", {
 	function getDescription()
 	{
 		return "This character has been drained by negative energy and has: " 
-		+ "\n[color=" + this.Const.UI.Color.NegativeValue + "] -30% [/color]Fatigue recovery for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s)."
-		+ "\n[color=" + this.Const.UI.Color.NegativeValue + "] -" + (this.m.TurnsLeft * 10) + "% [/color]Max Health for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s).";
+		+ "\n[color=" + ::Const.UI.Color.NegativeValue + "] -30% [/color]Fatigue recovery for [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s)."
+		+ "\n[color=" + ::Const.UI.Color.NegativeValue + "] -" + (this.m.TurnsLeft * 10) + "% [/color]Max Health for [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s).";
 	}
 
 	function onUpdate( _properties )
@@ -45,13 +45,13 @@ this.drained_effect <- this.inherit("scripts/skills/skill", {
 	function resetTime()
 	{
 		this.m.TurnsLeft = this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
-		if (this.m.TurnsLeft >= 10) this.actor.kill(this.getAttacker(), this, this.Const.FatalityType.None, false);
+		if (this.m.TurnsLeft >= 10) this.actor.kill(this.getAttacker(), this, ::Const.FatalityType.None, false);
 	}
 
 	function incrementTime()
 	{
 		this.m.TurnsLeft += 1;
-		if (this.m.TurnsLeft >= 10) this.actor.kill(this.getAttacker(), this, this.Const.FatalityType.None, false);
+		if (this.m.TurnsLeft >= 10) this.actor.kill(this.getAttacker(), this, ::Const.FatalityType.None, false);
 	}
 
 	function getAttacker()

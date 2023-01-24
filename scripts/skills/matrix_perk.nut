@@ -1,7 +1,7 @@
 this.matrix_perk <- this.inherit("scripts/skills/skill", {
 	m = {
 		IsForceEnabled = false,
-		School = this.Const.Magic.Type.Neutral
+		School = ::Const.Magic.Type.Neutral
 	},
 	function create()
 	{

@@ -10,8 +10,8 @@ this.werewolf_player_racial <- this.inherit("scripts/skills/skill", {
 		this.m.IconMini = "";
 		this.m.Overlay = "status_effect_0";
 		this.m.IsRemovedAfterBattle = false;
-		this.m.Type = this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -32,7 +32,7 @@ this.werewolf_player_racial <- this.inherit("scripts/skills/skill", {
 		local healthMissing = _properties.Hitpoints - this.getContainer().getActor().getHitpoints();
 		local additionalDamage = this.Math.floor(healthMissing * 0.25);
 
-		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
+		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Legendary)
 		{
 			additionalDamage = this.Math.floor(healthMissing * 0.5);
 		}
@@ -49,7 +49,7 @@ this.werewolf_player_racial <- this.inherit("scripts/skills/skill", {
 		local healthMissing = this.getContainer().getActor().getHitpointsMax() - this.getContainer().getActor().getHitpoints();
 		local additionalDamage = this.Math.floor(healthMissing * 0.25);
 
-		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
+		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Legendary)
 		{
 			additionalDamage = this.Math.floor(healthMissing * 0.5);
 		}
@@ -69,7 +69,7 @@ this.werewolf_player_racial <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Attacks do [color=" + this.Const.UI.Color.NegativeValue + "]" + additionalDamage + "[/color] more damage"
+				text = "Attacks do [color=" + ::Const.UI.Color.NegativeValue + "]" + additionalDamage + "[/color] more damage"
 			}
 			
 		];
@@ -80,31 +80,31 @@ this.werewolf_player_racial <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 10 + "[/color] Hitpoints"
+				text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 10 + "[/color] Hitpoints"
 			});
 			ret.push({
 				id = 11,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 10 + "[/color] Fatigue"
+				text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 10 + "[/color] Fatigue"
 			});
 			ret.push({
 				id = 11,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 10 + "[/color] Initiative"
+				text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 10 + "[/color] Initiative"
 			});
 			ret.push({
 				id = 11,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 5 + "[/color] Melee Skill"
+				text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 5 + "[/color] Melee Skill"
 			});
 			ret.push({
 				id = 11,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 5 + "[/color] Melee Defense"
+				text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 5 + "[/color] Melee Defense"
 			});
 		}
 		
@@ -112,7 +112,7 @@ this.werewolf_player_racial <- this.inherit("scripts/skills/skill", {
 			id = 12,
 			type = "hint",
 			icon = "ui/tooltips/warning.png",
-			text = "Further mutations may cause this character's genes to spiral out of control, crippling them"
+			text = "Mutations of another sequence may cause this character's genes to spiral out of control, killing them in the process"
 		});
 
 

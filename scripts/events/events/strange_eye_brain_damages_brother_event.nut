@@ -45,12 +45,12 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/health.png",
-					text = _event.m.Addict.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+5[/color] Health"
+					text = _event.m.Addict.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+5[/color] Health"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/fatigue.png",
-					text = _event.m.Addict.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+5[/color] Fatigue"
+					text = _event.m.Addict.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+5[/color] Fatigue"
 				});
 			}
 
@@ -59,7 +59,7 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Unhold)
+		if (!::Const.DLC.Unhold)
 		{
 			return;
 		}
@@ -69,10 +69,10 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 
 		foreach( bro in brothers )
 		{
-			if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.ConvertedCultist) || bro.getBackground().isBackgroundType(this.Const.BackgroundType.Cultist)) continue;
+			if (bro.getBackground().isBackgroundType(::Const.BackgroundType.ConvertedCultist) || bro.getBackground().isBackgroundType(::Const.BackgroundType.Cultist)) continue;
 			if (bro.getSkills().hasSkill("injury.brain_damage")) continue;
 
-			local bags = bro.getItems().getAllItemsAtSlot(this.Const.ItemSlot.Bag);
+			local bags = bro.getItems().getAllItemsAtSlot(::Const.ItemSlot.Bag);
 			foreach(item in bags)
 			{
 				if (item.getID() == "misc.strange_eye")
@@ -85,7 +85,7 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 		if (canditates_brain_damage.len() == 0) return;
 
 		this.m.Addict = canditates_brain_damage[this.Math.rand(0, canditates_brain_damage.len() - 1)];
-		this.m.Item = this.new("scripts/items/misc/strange_eye_item");
+		this.m.Item = ::new("scripts/items/misc/strange_eye_item");
 		this.m.Score = canditates_brain_damage.len() * 100;
 	}
 

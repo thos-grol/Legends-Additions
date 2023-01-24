@@ -2,8 +2,8 @@ this.haunt <- this.inherit("scripts/skills/magic_skill", {
 	m = {},
 	function create()
 	{
-		//TODO: Haunt skill
-		//TODO: Haunt perk
+		//FEATURE_1: Haunt skill
+		//FEATURE_1: Haunt perk
 		this.magic_skill.create();
 		this.m.ID = "actives.haunt";
 		this.m.Name = "Haunt";
@@ -14,8 +14,8 @@ this.haunt <- this.inherit("scripts/skills/magic_skill", {
 		this.m.SoundOnUse = [
 			"sounds/enemies/ghastly_touch_01.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -77,14 +77,14 @@ this.haunt <- this.inherit("scripts/skills/magic_skill", {
 		local effect = _target.getSkills().getSkillByID("effects.anguish");
 		if (effect == null)
 		{
-			_target.getSkills().add(this.new("scripts/skills/effects/anguish_effect"));
+			_target.getSkills().add(::new("scripts/skills/effects/anguish_effect"));
 			effect = _target.getSkills().getSkillByID("effects.anguish");
 			local a = this.getContainer().getActor();
 			if (a.getSkills().hasSkill("perk.spreading_anguish")) effect.m.SpreadingAnguish = true;
 			if (a.getSkills().hasSkill("perk.torment_soul")) effect.m.TormentSoul = true;
 		}
 		effect.m.TurnsLeft = this.m.Duration;
-		//TODO: Haunt fx
+		//FEATURE_1: Haunt fx
 		
 		return true;
 	}

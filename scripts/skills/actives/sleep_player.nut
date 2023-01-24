@@ -24,8 +24,8 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 		];
 		this.m.IsUsingActorPitch = true;
 		this.m.IsSerialized = true;
-		this.m.Type = this.Const.SkillType.Active | this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active | ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.Delay = 600;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -51,13 +51,13 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 			id = 7,
 			type = "text",
 			icon = "ui/icons/vision.png",
-			text = "Has a range of [color=" + this.Const.UI.Color.PositiveValue + "]" + this.m.MaxRange + "[/color] tiles"
+			text = "Has a range of [color=" + ::Const.UI.Color.PositiveValue + "]" + this.m.MaxRange + "[/color] tiles"
 		});
 		ret.push({
 			id = 8,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Puts target to [color=" + this.Const.UI.Color.PositiveValue + "]Sleep[/color]"
+			text = "Puts target to [color=" + ::Const.UI.Color.PositiveValue + "]Sleep[/color]"
 		});
 		return ret;
 	}
@@ -94,7 +94,7 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 			return true;
 		}
 
-		local b = this.getContainer().getActor().getAIAgent().getBehavior(this.Const.AI.Behavior.ID.AttackDefault);
+		local b = this.getContainer().getActor().getAIAgent().getBehavior(::Const.AI.Behavior.ID.AttackDefault);
 		local targets = b.queryTargetsInMeleeRange(this.getMinRange(), this.getMaxRange());
 		local myTile = this.getContainer().getActor().getTile();
 
@@ -148,7 +148,7 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 			{
 				if (!_user.isHiddenToPlayer() && !target.isHiddenToPlayer())
 				{
-					this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(target) + " resists the urge to sleep thanks to his resolve (Chance: " + chance + ", Rolled: " + roll + ")");
+					this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(target) + " resists the urge to sleep thanks to his resolve (Chance: " + chance + ", Rolled: " + roll + ")");
 				}
 				continue;
 			}
@@ -161,7 +161,7 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 				{
 					if (!_user.isHiddenToPlayer() && !target.isHiddenToPlayer())
 					{
-						this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(target) + " resists the urge to sleep thanks to his resolve (Chance: " + chance + ", Rolled: " + roll + ")");
+						this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(target) + " resists the urge to sleep thanks to his resolve (Chance: " + chance + ", Rolled: " + roll + ")");
 					}
 					continue;
 				}
@@ -171,10 +171,10 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 
 			if (!_user.isHiddenToPlayer() && !target.isHiddenToPlayer())
 			{
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(target) + " falls to sleep (Chance: " + chance + ", Rolled: " + roll + ")");
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(target) + " falls to sleep (Chance: " + chance + ", Rolled: " + roll + ")");
 			}
 
-			local sleep = this.new("scripts/skills/effects/sleeping_effect");
+			local sleep = ::new("scripts/skills/effects/sleeping_effect");
 			target.getFlags().set("resist_sleep", 0);
 			target.getSkills().add(sleep);
 			sleep.m.TurnsLeft += hasMastery ? 1 : 0;
@@ -183,7 +183,7 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 
 	function isViableTarget( _user, _target )
 	{
-		if (_target.getCurrentProperties().MoraleCheckBraveryMult[this.Const.MoraleCheckType.MentalAttack] >= 1000.0)
+		if (_target.getCurrentProperties().MoraleCheckBraveryMult[::Const.MoraleCheckType.MentalAttack] >= 1000.0)
 		{
 			return false;
 		}
@@ -199,9 +199,9 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 		}
 
 		local invalid = [
-			this.Const.EntityType.Alp,
-			this.Const.EntityType.AlpShadow,
-			this.Const.EntityType.LegendDemonAlp
+			::Const.EntityType.Alp,
+			::Const.EntityType.AlpShadow,
+			::Const.EntityType.LegendDemonAlp
 		];
 		return invalid.find(_target.getType()) == null;
 	}
@@ -221,7 +221,7 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 		
 		local chance_defend = this.Math.floor((target.getBravery()/(chance_attack) - 0.25 + modifier_defender_morale) * 100);
 		chance_defend = this.Math.minf(100, this.Math.maxf(0, chance_defend)); //make sure chance is within bounds
-		chance_defend = target.getMoraleState() == this.Const.MoraleState.Ignore ? 0 : chance_defend;
+		chance_defend = target.getMoraleState() == ::Const.MoraleState.Ignore ? 0 : chance_defend;
 
 		return 100 - chance_defend;
 
@@ -248,7 +248,7 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 		
 		local chance_defend = this.Math.floor((target.getBravery()/(chance_attack) - 0.25 + modifier_defender_morale) * 100);
 		chance_defend = this.Math.minf(100, this.Math.maxf(0, chance_defend)); //make sure chance is within bounds
-		chance_defend = target.getMoraleState() == this.Const.MoraleState.Ignore ? 0 : chance_defend;
+		chance_defend = target.getMoraleState() == ::Const.MoraleState.Ignore ? 0 : chance_defend;
 
 		if (target.isNonCombatant())
 		{
@@ -286,7 +286,7 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 			return ret;
 		}
 
-		if (target.getMoraleState() == this.Const.MoraleState.Ignore)
+		if (target.getMoraleState() == ::Const.MoraleState.Ignore)
 		{
 			ret.push({
 				icon = "ui/icons/cancel.png",
@@ -325,14 +325,14 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 		ret.extend([
 			{
 				icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + target.getBravery() + "[/color]" + " / [color=" + this.Const.UI.Color.PositiveValue + "]" + chance_attack + "[/color] = " + "[color=" + this.Const.UI.Color.NegativeValue + "]" + calculated_chance + "[/color]%"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]" + target.getBravery() + "[/color]" + " / [color=" + ::Const.UI.Color.PositiveValue + "]" + chance_attack + "[/color] = " + "[color=" + ::Const.UI.Color.NegativeValue + "]" + calculated_chance + "[/color]%"
 			}
 		]);
 
 		ret.extend([
 			{
 				icon = "ui/tooltips/positive.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "] -25%[/color] (Base hit chance)"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "] -25%[/color] (Base hit chance)"
 			}
 		]);
 
@@ -341,7 +341,7 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 			ret.extend([
 				{
 					icon = "ui/tooltips/negative.png",
-					text = "+[color=" + this.Const.UI.Color.PositiveValue + "]" + 15 + "%[/color] (High Morale)"
+					text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 15 + "%[/color] (High Morale)"
 				}
 			]);
 		}
@@ -350,14 +350,14 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 			ret.extend([
 				{
 					icon = "ui/tooltips/positive.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + 15 + "%[/color] (Low Morale)"
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]" + 15 + "%[/color] (Low Morale)"
 				}
 			]);
 		}
 		ret.extend([
 			{
 				icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + chance_defend + "[/color]% chance to defend"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]" + chance_defend + "[/color]% chance to defend"
 			}
 		]);
 

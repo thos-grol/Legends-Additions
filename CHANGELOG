@@ -1,0 +1,21 @@
+=== 1.0.0 ==
+General
+    - Refactored AE and GI into Legends Additions
+    - Refactored code to match code style in ptr and use new msu stuff
+
+Major Features
+    - Chance for undetected crime (attacking people) increases the better more backgrounds you have for covering crimes up. It's unrealistic that intelligence networks in the past were so good.
+
+Potions
+    - AE: Improved drop rates for potions
+    - AE: Potions now refund perk points on perks that the bro already has
+    - AE: Having more than the allowed sequences will instantly kill the bro
+    - Nacho - Potion will add Gluttonous Trait to your bro, and will also remove spartan.
+    - Nacho - Gruesome feast will now heal the bro to full and remove his injuries after battle, this assumes that the bro will eat corpses to clean the battlefield
+    - Nacho - Hyperactive Tissue Growth -> Subdermal clotting. Hyperactive Tissue growth was made useless by gruesome feast, so it was replaced. Subdermal clotting now grants 15 hp, 15 ini for s9, 30hp, 30 ini for s8. Subermal Clotting - 50% bleed damage resistance, helps with hunting skin ghouls. Added synapse blockage to s8 potion.
+    
+    
+    
+
+Enemies
+    - lindwurms and stollwurms have dragons might aura, that will morale check all lesser beings within 10 hexes

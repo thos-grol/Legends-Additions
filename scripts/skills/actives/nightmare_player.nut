@@ -18,8 +18,8 @@ this.nightmare_player <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/dlc2/alp_nightmare_06.wav"
 		];
 		this.m.IsUsingActorPitch = true;
-		this.m.Type = this.Const.SkillType.Active | this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted + 1;
+		this.m.Type = ::Const.SkillType.Active | ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted + 1;
 		this.m.IsRemovedAfterBattle = false;
 		this.m.Delay = 400;
 		this.m.IsSerialized = true;
@@ -48,13 +48,13 @@ this.nightmare_player <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/regular_damage.png",
-				text = "Inflicts [color=" + this.Const.UI.Color.DamageValue + "]" + 15 + "[/color] - [color=" + this.Const.UI.Color.DamageValue + "]" + 35 + "[/color] mental damage to hitpoints"
+				text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]" + 15 + "[/color] - [color=" + ::Const.UI.Color.DamageValue + "]" + 35 + "[/color] mental damage to hitpoints"
 			},
 			{
 				id = 7,
 				type = "text",
 				icon = "ui/icons/vision.png",
-				text = "Has a range of [color=" + this.Const.UI.Color.PositiveValue + "]" + this.m.MaxRange + "[/color] tiles"
+				text = "Has a range of [color=" + ::Const.UI.Color.PositiveValue + "]" + this.m.MaxRange + "[/color] tiles"
 			},
 			{
 				id = 8,
@@ -83,7 +83,7 @@ this.nightmare_player <- this.inherit("scripts/skills/skill", {
 			return true;
 		}
 
-		local b = this.getContainer().getActor().getAIAgent().getBehavior(this.Const.AI.Behavior.ID.AttackDefault);
+		local b = this.getContainer().getActor().getAIAgent().getBehavior(::Const.AI.Behavior.ID.AttackDefault);
 		local myTile = this.getContainer().getActor().getTile();
 		local targets = b.queryTargetsInMeleeRange(this.getMinRange(), this.getMaxRange());
 		
@@ -137,10 +137,10 @@ this.nightmare_player <- this.inherit("scripts/skills/skill", {
 		local targetTile = _tag.TargetTile;
 		local user = _tag.User;
 		local target = targetTile.getEntity();
-		local hitInfo = clone this.Const.Tactical.HitInfo;
+		local hitInfo = clone ::Const.Tactical.HitInfo;
 		hitInfo.DamageRegular = this.Math.rand(this.getDamage(target, 15), this.getDamage(target, 35));
 		hitInfo.DamageDirect = 1.0;
-		hitInfo.BodyPart = this.Const.BodyPart.Body;
+		hitInfo.BodyPart = ::Const.BodyPart.Body;
 		hitInfo.BodyDamageMult = 1.0;
 		hitInfo.FatalityChanceMult = 0.0;
 		target.onDamageReceived(user, this, hitInfo);
@@ -201,14 +201,14 @@ this.nightmare_player <- this.inherit("scripts/skills/skill", {
 		ret.extend([
 			{
 				icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + chance_attack + "[/color]" + " / [color=" + this.Const.UI.Color.NegativeValue + "]" + target.getBravery() + "[/color] = " + diff_modifier + "x damage"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + chance_attack + "[/color]" + " / [color=" + ::Const.UI.Color.NegativeValue + "]" + target.getBravery() + "[/color] = " + diff_modifier + "x damage"
 			}
 		]);
 
 		ret.extend([
 			{
 				icon = "ui/icons/regular_damage.png",
-				text = "Inflicts [color=" + this.Const.UI.Color.DamageValue + "]" + this.getDamage(target, 10) + "[/color] - [color=" + this.Const.UI.Color.DamageValue + "]" + this.getDamage(target, 25) + "[/color] damage to hitpoints, ignoring armor."
+				text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]" + this.getDamage(target, 10) + "[/color] - [color=" + ::Const.UI.Color.DamageValue + "]" + this.getDamage(target, 25) + "[/color] damage to hitpoints, ignoring armor."
 			}
 		]);
 

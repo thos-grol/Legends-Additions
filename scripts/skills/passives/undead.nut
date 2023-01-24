@@ -7,8 +7,8 @@ this.undead <- this.inherit("scripts/skills/skill", {
 		this.m.Description = "The undead fear nothing. And blows that would slay the living mostly have no effect on them.";
 		this.m.Icon = "ui/perks/favoured_zombie_01.png";
 		this.m.IsRemovedAfterBattle = false;
-		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.StatusEffect | ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -36,7 +36,7 @@ this.undead <- this.inherit("scripts/skills/skill", {
 		];
 	}
 
-	o.onUpdate = function(_properties)
+	function onUpdate(_properties)
 	{
 		_properties.Hitpoints *= 2;
 	}

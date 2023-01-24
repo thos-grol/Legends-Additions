@@ -6,14 +6,14 @@ this.legend_staff_ceremonial <- this.inherit("scripts/items/weapons/named/named_
 	{
 		this.named_weapon.create();
 		this.m.ID = "weapon.legend_staff_vala";
-		this.m.NameList = gt.Const.Strings.StaffNames;
+		this.m.NameList = ::Const.Strings.StaffNames;
 		this.m.Description = "A beautiful staff with the distinctive twisted design of a vala.";
 		this.m.IconLarge = "weapons/melee/legend_staff_05_named.png";
 		this.m.Icon = "weapons/melee/legend_staff_05_named_70x70.png";
-		this.m.WeaponType = this.Const.Items.WeaponType.Staff | this.Const.Items.WeaponType.MagicStaff;
-		this.m.SlotType = this.Const.ItemSlot.Mainhand;
-		this.m.BlockedSlotType = this.Const.ItemSlot.Offhand;
-		this.m.ItemType = this.Const.Items.ItemType.Named | this.Const.Items.ItemType.Weapon | this.Const.Items.ItemType.MeleeWeapon | this.Const.Items.ItemType.TwoHanded | this.Const.Items.ItemType.Defensive;
+		this.m.WeaponType = ::Const.Items.WeaponType.Staff | ::Const.Items.WeaponType.MagicStaff;
+		this.m.SlotType = ::Const.ItemSlot.Mainhand;
+		this.m.BlockedSlotType = ::Const.ItemSlot.Offhand;
+		this.m.ItemType = ::Const.Items.ItemType.Named | ::Const.Items.ItemType.Weapon | ::Const.Items.ItemType.MeleeWeapon | ::Const.Items.ItemType.TwoHanded | ::Const.Items.ItemType.Defensive;
 		this.m.AddGenericSkill = true;
 		this.m.ShowQuiver = false;
 		this.m.ShowArmamentIcon = true;
@@ -36,11 +36,11 @@ this.legend_staff_ceremonial <- this.inherit("scripts/items/weapons/named/named_
 	function onEquip()
 	{
 		this.weapon.onEquip();
-		local s = this.new("scripts/skills/actives/legend_staff_bash");
+		local s = ::new("scripts/skills/actives/legend_staff_bash");
 		s.m.Icon = "skills/staff_bash_vala.png";
 		s.m.IconDisabled = "skills/staff_bash_vala_bw.png";
 		this.addSkill(s);
-		local t = this.new("scripts/skills/actives/legend_staff_knock_out");
+		local t = ::new("scripts/skills/actives/legend_staff_knock_out");
 		t.m.Icon = "skills/staff_knock_out_vala.png";
 		t.m.IconDisabled = "skills/staff_knock_out_vala_bw.png";
 		this.addSkill(t);

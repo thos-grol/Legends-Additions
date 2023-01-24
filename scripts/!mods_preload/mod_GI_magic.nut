@@ -1,5 +1,5 @@
 local gt = this.getroottable();
-gt.GI.hook_magic <- function ()
+::LA.hook_magic <- function ()
 {
     // ::mods_hookExactClass("scripts/skills/skill", function (o)
 	// {
@@ -12,9 +12,9 @@ gt.GI.hook_magic <- function ()
 	// });
 };
 
-gt.Const.Magic <- {};
+::Const.Magic <- {};
 
-gt.Const.Magic.Type <- {
+::Const.Magic.Type <- {
 	Neutral = 0,
     NegativeEnergy = 1,
 	Fire = 2,
@@ -27,71 +27,71 @@ local perkDefObjects = [
     {
         ID = "perk.legend_deathtouch",
         Script = "scripts/skills/perks/perk_legend_deathtouch",
-        Name = this.Const.Strings.PerkName.LegendDeathtouch,
-        Tooltip = this.Const.Strings.PerkDescription.LegendDeathtouch,
+        Name = ::Const.Strings.PerkName.LegendDeathtouch,
+        Tooltip = ::Const.Strings.PerkDescription.LegendDeathtouch,
         Icon = "ui/perks/deathtouch_circle.png",
         IconDisabled = "ui/perks/deathtouch_circle_bw.png",
         Const = "LegendDeathtouch"
     }
 ];
 
-//TODO: Add perks and icons to perk def objects
-//TODO: Verify perk/active icons
+//FEATURE_1: Add perks and icons to perk def objects
+//FEATURE_1: Verify perk/active icons
 
-gt.Const.Perks.addPerkDefObjects(perkDefObjects);
-gt.Const.Perks.updatePerkGroupTooltips();
+::Const.Perks.addPerkDefObjects(perkDefObjects);
+::Const.Perks.updatePerkGroupTooltips();
 
-gt.Const.Strings.PerkName.MatrixNegativeEnergy <- "Matrix: Negative Energy";
-gt.Const.Strings.PerkDescription.MatrixNegativeEnergy <- "Basic Magic Matrix. \nEngrave a magic matrix upon the soul to allow the casting of negative energy spells. \nYou can only take 1 basic matrix perk.\nNegative Energy: 1\nSpiritualism: 1";
+::Const.Strings.PerkName.MatrixNegativeEnergy <- "Matrix: Negative Energy";
+::Const.Strings.PerkDescription.MatrixNegativeEnergy <- "Basic Magic Matrix. \nEngrave a magic matrix upon the soul to allow the casting of negative energy spells. \nYou can only take 1 basic matrix perk.\nNegative Energy: 1\nSpiritualism: 1";
 
-gt.Const.Strings.PerkName.MatrixGehenna <- "Matrix: Gehenna";
-gt.Const.Strings.PerkDescription.MatrixGehenna <- "Advanced Magic Matrix. \nInspired by visions of a flaming hell, a genius necromancer created a magic matrix that allows the caster to cast negative energy and fire spells. \nCan repermutate and refund 'Matrix: Negative Energy'. Counts basic matrix perk.\nNegative Energy: 1\nSpiritualism: 1\nFire: 1";
+::Const.Strings.PerkName.MatrixGehenna <- "Matrix: Gehenna";
+::Const.Strings.PerkDescription.MatrixGehenna <- "Advanced Magic Matrix. \nInspired by visions of a flaming hell, a genius necromancer created a magic matrix that allows the caster to cast negative energy and fire spells. \nCan repermutate and refund 'Matrix: Negative Energy'. Counts basic matrix perk.\nNegative Energy: 1\nSpiritualism: 1\nFire: 1";
 
-gt.Const.Strings.PerkName.MeditiationBasic <- "Meditation Technique: Basic";
-gt.Const.Strings.PerkDescription.MeditiationBasic <- ". \nNegative Energy: 1";
+::Const.Strings.PerkName.MeditiationBasic <- "Meditation Technique: Basic";
+::Const.Strings.PerkDescription.MeditiationBasic <- ". \nNegative Energy: 1";
 
-gt.Const.Strings.PerkName.MeditiationUnderworldThoughts <- "Meditation Technique: Underworld Thoughts";
-gt.Const.Strings.PerkDescription.MeditiationUnderworldThoughts <- "Decrease the mana cost of Reanimate and Haunt by 1.";
+::Const.Strings.PerkName.MeditiationUnderworldThoughts <- "Meditation Technique: Underworld Thoughts";
+::Const.Strings.PerkDescription.MeditiationUnderworldThoughts <- "Decrease the mana cost of Reanimate and Haunt by 1.";
 
-gt.Const.Strings.PerkName.NegativeEnergyHand <- "Negative Energy Hand";
-gt.Const.Strings.PerkDescription.NegativeEnergyHand <- "Condense negative energy in your hand and touch, tearing at the soul of your victim for 25-35 damage ignoring armor and draining them.
+::Const.Strings.PerkName.NegativeEnergyHand <- "Negative Energy Hand";
+::Const.Strings.PerkDescription.NegativeEnergyHand <- "Condense negative energy in your hand and touch, tearing at the soul of your victim for 25-35 damage ignoring armor and draining them.
 \nDrain: duration, 3 turns base. -40% fatigue recovery, and -X% max health, X = duration 
 \nNegative Energy: 1
 \nSpiritualism: 1";
 
-    gt.Const.Strings.PerkName.PartialAstralProjection <- "Partial Astral Projection";
-    gt.Const.Strings.PerkDescription.PartialAstralProjection <- "Further mastery of spiritualism and negative energy allows the user to throw out their spirit hand 3 tiles. Negative energy hand now uses the highest attack (melee or ranged) skill for it's hit calculation. \n+5 min and max Negative Energy Hand damage.";
+    ::Const.Strings.PerkName.PartialAstralProjection <- "Partial Astral Projection";
+    ::Const.Strings.PerkDescription.PartialAstralProjection <- "Further mastery of spiritualism and negative energy allows the user to throw out their spirit hand 3 tiles. Negative energy hand now uses the highest attack (melee or ranged) skill for it's hit calculation. \n+5 min and max Negative Energy Hand damage.";
 
-gt.Const.Strings.PerkName.RayofEnfeeblement <- "Ray of Enfeeblement";
-gt.Const.Strings.PerkDescription.RayofEnfeeblement <- ". \nNegative Energy: 1";
+::Const.Strings.PerkName.RayofEnfeeblement <- "Ray of Enfeeblement";
+::Const.Strings.PerkDescription.RayofEnfeeblement <- ". \nNegative Energy: 1";
 
 
-gt.Const.Strings.PerkName.Reanimate <- "Reanimate";
-gt.Const.Strings.PerkDescription.Reanimate <- "Reanimates the dead as one of your servants. Those reanimated have their health doubled. \nNegative Energy: 1\nSpiritualism: 1";
+::Const.Strings.PerkName.Reanimate <- "Reanimate";
+::Const.Strings.PerkDescription.Reanimate <- "Reanimates the dead as one of your servants. Those reanimated have their health doubled. \nNegative Energy: 1\nSpiritualism: 1";
 
-gt.Const.Strings.PerkName.ControlUndead <- "Control Undead";
-gt.Const.Strings.PerkDescription.ControlUndead <- "Charm an undead. \nSpiritualism: 1";
+::Const.Strings.PerkName.ControlUndead <- "Control Undead";
+::Const.Strings.PerkDescription.ControlUndead <- "Charm an undead. \nSpiritualism: 1";
 
-gt.Const.Strings.PerkName.CorpseRot <- "Corpse Rot";
-gt.Const.Strings.PerkDescription.CorpseRot <- "Charm an undead. \nSpiritualism: 1";
+::Const.Strings.PerkName.CorpseRot <- "Corpse Rot";
+::Const.Strings.PerkDescription.CorpseRot <- "Charm an undead. \nSpiritualism: 1";
 
-gt.Const.Strings.PerkName.CorpseExplosion <- "Corpse Explosion";
-gt.Const.Strings.PerkDescription.CorpseExplosion <- "Target an undead (except necrosavant), and create an explosion based on the target's health. Chance: 0 if same faction, depends on will and magic skill if not.
+::Const.Strings.PerkName.CorpseExplosion <- "Corpse Explosion";
+::Const.Strings.PerkDescription.CorpseExplosion <- "Target an undead (except necrosavant), and create an explosion based on the target's health. Chance: 0 if same faction, depends on will and magic skill if not.
 \nNegative Energy: 1
 \nFire: 1";
 //LegendViolentDecomposition
 
-gt.Const.Strings.PerkName.Anguish <- "Anguish";
-gt.Const.Strings.PerkDescription.Anguish <- "Curse target with spiritual anguish where they bear part of the wounds they inflict.";
+::Const.Strings.PerkName.Anguish <- "Anguish";
+::Const.Strings.PerkDescription.Anguish <- "Curse target with spiritual anguish where they bear part of the wounds they inflict.";
 
-    gt.Const.Strings.PerkName.SpreadingAnguish <- "Spreading Anguish";
-    gt.Const.Strings.PerkDescription.SpreadingAnguish <- "Increase the duration of Anguish by 1. At the beginning of the turn, anguish has a chance to spread to all of the victim's allied neighbors. Anguish also spreads on the victim's death.";
+    ::Const.Strings.PerkName.SpreadingAnguish <- "Spreading Anguish";
+    ::Const.Strings.PerkDescription.SpreadingAnguish <- "Increase the duration of Anguish by 1. At the beginning of the turn, anguish has a chance to spread to all of the victim's allied neighbors. Anguish also spreads on the victim's death.";
 
-    gt.Const.Strings.PerkName.TormentSoul <- "Torment Soul";
-    gt.Const.Strings.PerkDescription.TormentSoul <- "Increases the damage conversion of anguish, but increases the cost. If a character with anguish dies, they have a chance of rising as a Geist.";
+    ::Const.Strings.PerkName.TormentSoul <- "Torment Soul";
+    ::Const.Strings.PerkDescription.TormentSoul <- "Increases the damage conversion of anguish, but increases the cost. If a character with anguish dies, they have a chance of rising as a Geist.";
 
-gt.Const.Strings.PerkName.Haunt <- "Haunt";
-gt.Const.Strings.PerkDescription.Haunt <- "Summons x Geists, depending on skill 1 to 6 monsters.";
+::Const.Strings.PerkName.Haunt <- "Haunt";
+::Const.Strings.PerkDescription.Haunt <- "Summons x Geists, depending on skill 1 to 6 monsters.";
 //Cooldown is duration of haunt.
 
 
@@ -110,7 +110,7 @@ gt.Const.Strings.PerkDescription.Haunt <- "Summons x Geists, depending on skill 
     // FEATURE_1: Black Lead Potion item & Recipe
     // Matrix: Negative Energy
     // Meditation Technique: Underworld Thoughts, taking this will refund any other meditation techniques
-        //TODO: Interchangable meditation techniques
+        //FEATURE_1: Interchangable meditation techniques
     // Negative Energy Hand
         // 	partial astral projection
     //Reanimate

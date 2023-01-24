@@ -11,25 +11,25 @@ this.anguish_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Name = "Anguish";
 		this.m.Description = "This character has been cursed with spiritual anguish. They take the damage they deal. If they don't deal more than 15 damage, they will be drained by their anguish.";
 		this.m.Icon = "skills/legend_vala_trance_malevolent.png";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 	}
 
 	function getDescription()
 	{
-		return "Affected for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s).";
+		return "Affected for [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s).";
 	}
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
 		if (_damageInflictedHitpoints >= 15) this.m.HitCounter += 1;
 		local actor = this.getContainer().getActor();
-		local hitInfo = clone this.Const.Tactical.HitInfo;
+		local hitInfo = clone ::Const.Tactical.HitInfo;
 		hitInfo.DamageRegular = _damageInflictedHitpoints;
 		if (this.m.TormentSoul) hitInfo.DamageRegular *= 1.5;
 		hitInfo.DamageDirect = 1.0;
-		hitInfo.BodyPart = this.Const.BodyPart.Body;
+		hitInfo.BodyPart = ::Const.BodyPart.Body;
 		hitInfo.BodyDamageMult = 1.0;
 		hitInfo.FatalityChanceMult = 0.0;
 		actor.onDamageReceived(actor, this, hitInfo);
@@ -43,7 +43,7 @@ this.anguish_effect <- this.inherit("scripts/skills/skill", {
 			local poison = _targetEntity.getSkills().getSkillByID("effects.drained_effect");
 			if (poison == null)
 			{
-				_targetEntity.getSkills().add(this.new("scripts/skills/effects/drained_effect"));
+				_targetEntity.getSkills().add(::new("scripts/skills/effects/drained_effect"));
 				poison = _targetEntity.getSkills().getSkillByID("effects.drained_effect");
 				poison.setActorID(this.getContainer().getActor().getID());
 			}
@@ -74,12 +74,12 @@ this.anguish_effect <- this.inherit("scripts/skills/skill", {
 						local HIT_CHANCE = getHitchance(target);
 						if (this.Math.rand(1, 100) > HIT_CHANCE) continue;
 
-						target.getSkills().add(this.new("scripts/skills/effects/anguish_effect"));
+						target.getSkills().add(::new("scripts/skills/effects/anguish_effect"));
 						effect = target.getSkills().getSkillByID("effects.anguish");
 						effect.m.SpreadingAnguish = true;
 						effect.m.TormentSoul = this.m.TormentSoul;
 						effect.m.TurnsLeft = this.m.Duration;
-						this.Tactical.EventLog.log("Anguish has spread to " + this.Const.UI.getColorizedEntityName(target) + ".");
+						this.Tactical.EventLog.log("Anguish has spread to " + ::Const.UI.getColorizedEntityName(target) + ".");
 					}
 				}
 			}

@@ -45,7 +45,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		else range = [6, 9]; //common items
 
 		//roll the item
-		local item_ID = this.Const.Contracts.Return_Item.Pool[this.Math.rand(range[0], range[1])];
+		local item_ID = ::Const.Contracts.Return_Item.Pool[this.Math.rand(range[0], range[1])];
 
 		//determine enemies
 		switch(item_ID)
@@ -122,7 +122,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		}
 
 		//create and set item parameters
-		this.m.Loot = this.new(item_ID);
+		this.m.Loot = ::new(item_ID);
 		if (is_rune)
 		{
 			local runes = [6,11,12,13];
@@ -133,7 +133,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		this.m.Flags.set("LOOT_NAME", this.m.Loot.m.Name);
 
 		local value = this.m.Flags.get("IsLockbox") ? 1000 : this.m.Loot.getValue();
-		this.m.Payment.Pool = value * 0.6 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = value * 0.6 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), ::Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
 		if (this.Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
@@ -152,7 +152,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 					"Return %item% to %townname%"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (this.Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -174,50 +174,50 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				}
 				
 				local playerTile = this.World.State.getPlayer().getTile();
-				local tile = this.Contract.getTileToSpawnLocation(playerTile, 5, 15, [this.Const.World.TerrainType.Mountains]);
+				local tile = this.Contract.getTileToSpawnLocation(playerTile, 5, 15, [::Const.World.TerrainType.Mountains]);
 
 				local party_type;
 				local difficulty_modifier = 1.0;
 				if (this.Flags.get("IsMercenary"))
 				{
-					party_type = this.Const.World.Spawn.Mercenaries;
+					party_type = ::Const.World.Spawn.Mercenaries;
 					difficulty_modifier = 0.75;
 				}
 				else if (this.Flags.get("IsCultist"))
 				{
-					party_type = this.Const.World.Spawn.Cultists;
+					party_type = ::Const.World.Spawn.Cultists;
 				} 
-				else party_type = this.Const.World.Spawn.BanditRaiders;
+				else party_type = ::Const.World.Spawn.BanditRaiders;
 				
-				local party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, party_type, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * difficulty_modifier);
+				local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, party_type, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * difficulty_modifier);
 
 				party.setDescription("A group of thieves.");
-				party.setFootprintType(this.Const.World.FootprintsType.Brigands);
+				party.setFootprintType(::Const.World.FootprintsType.Brigands);
 				party.setAttackableByAI(false);
-				party.getController().getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+				party.getController().getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 				party.setFootprintSizeOverride(0.75);
 
-				local INVESTIGATION_CHANCE = 25 + this.Const.Contracts.count_role("trait.tracker") * 10;
+				local INVESTIGATION_CHANCE = 25 + ::LA.get_tracking_chance();
 				local ROLL = this.Math.rand(1, 100);
 				this.Flags.set("INVESTIGATION_CHANCE", INVESTIGATION_CHANCE);
 				this.Flags.set("INVESTIGATION_ROLL", ROLL);
 
 				if (ROLL <= INVESTIGATION_CHANCE)
 				{
-					this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), this.Const.GenericFootprints, this.Const.World.FootprintsType.Brigands, 0.75);
+					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.GenericFootprints, ::Const.World.FootprintsType.Brigands, 0.75);
 					this.Flags.set("INVESTIGATION", 2);
 				}
 				else if (ROLL <= INVESTIGATION_CHANCE + 15)
 				{
-					this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), this.Const.GenericFootprints, this.Const.World.FootprintsType.Brigands, 0.75);
+					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.GenericFootprints, ::Const.World.FootprintsType.Brigands, 0.75);
 					this.Flags.set("INVESTIGATION", 1);
 					
 					//spawn fake parties, make footprints, then kill party
 					local party2;
 					for (local i = 0 ; i < 3 ; i++) {
-						tile = this.Contract.getTileToSpawnLocation(playerTile, 5, 15, [this.Const.World.TerrainType.Mountains]);
-						party2 = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, party_type, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-						this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party2.getTile(), this.Const.GenericFootprints, this.Const.World.FootprintsType.Brigands, 0.75);
+						tile = this.Contract.getTileToSpawnLocation(playerTile, 5, 15, [::Const.World.TerrainType.Mountains]);
+						party2 = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, party_type, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party2.getTile(), ::Const.GenericFootprints, ::Const.World.FootprintsType.Brigands, 0.75);
 						party2.die();
 					}
 				}
@@ -226,7 +226,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				this.Contract.m.Target = this.WeakTableRef(party);
 				party.getSprite("banner").setBrush("banner_bandits_0" + this.Math.rand(1, 6));
 				local c = party.getController();
-				local wait = this.new("scripts/ai/world/orders/wait_order");
+				local wait = ::new("scripts/ai/world/orders/wait_order");
 				wait.setTime(9000.0);
 				c.addOrder(wait);
 				this.Contract.setScreen("Overview");
@@ -322,8 +322,8 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -380,26 +380,26 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 						this.List.push({
 							id = 10,
 							icon = "ui/icons/hitchance.png",
-							text = "[color=" + this.Const.UI.Color.PositiveEventValue + "]" + "The chance for even a perfect investigation was " + this.Flags.get("INVESTIGATION_CHANCE") + ". You rolled " + this.Flags.get("INVESTIGATION_ROLL") + "[/color]."
+							text = "[color=" + ::Const.UI.Color.PositiveEventValue + "]" + "The chance for even a perfect investigation was " + this.Flags.get("INVESTIGATION_CHANCE") + ". You rolled " + this.Flags.get("INVESTIGATION_ROLL") + "[/color]."
 						});
 
 						this.List.push({
 							id = 10,
 							icon = "ui/icons/bravery.png",
-							text = "[color=" + this.Const.UI.Color.PositiveEventValue + "]" + "You find some tracks and determine the group that must've carried away the item." + "[/color]."
+							text = "[color=" + ::Const.UI.Color.PositiveEventValue + "]" + "You find some tracks and determine the group that must've carried away the item." + "[/color]."
 						});
 						break;
 					case 1: //Multiple Tracks
 						this.List.push({
 							id = 10,
 							icon = "ui/icons/hitchance.png",
-							text = "[color=" + this.Const.UI.Color.NegativeEventValue + "]" + "The chance for even a partially successful investigation was " + (this.Flags.get("INVESTIGATION_CHANCE") + 15) + ". You rolled " + this.Flags.get("INVESTIGATION_ROLL") + "[/color]."
+							text = "[color=" + ::Const.UI.Color.NegativeEventValue + "]" + "The chance for even a partially successful investigation was " + (this.Flags.get("INVESTIGATION_CHANCE") + 15) + ". You rolled " + this.Flags.get("INVESTIGATION_ROLL") + "[/color]."
 						});
 
 						this.List.push({
 							id = 10,
 							icon = "ui/icons/bravery.png",
-							text = "[color=" + this.Const.UI.Color.NegativeEventValue + "]" + "You find multiple tracks, but cannot determine which one belongs to the culprit. Good luck catching the thieves!" + "[/color]."
+							text = "[color=" + ::Const.UI.Color.NegativeEventValue + "]" + "You find multiple tracks, but cannot determine which one belongs to the culprit. Good luck catching the thieves!" + "[/color]."
 						});
 
 						break;
@@ -407,12 +407,12 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 						this.List.push({
 							id = 10,
 							icon = "ui/icons/hitchance.png",
-							text = "[color=" + this.Const.UI.Color.NegativeEventValue + "]" + "The chance for even a partially successful investigation was " + (this.Flags.get("INVESTIGATION_CHANCE") + 15) + ". You rolled " + this.Flags.get("INVESTIGATION_ROLL") + "[/color]."
+							text = "[color=" + ::Const.UI.Color.NegativeEventValue + "]" + "The chance for even a partially successful investigation was " + (this.Flags.get("INVESTIGATION_CHANCE") + 15) + ". You rolled " + this.Flags.get("INVESTIGATION_ROLL") + "[/color]."
 						});
 						this.List.push({
 							id = 10,
 							icon = "ui/icons/bravery.png",
-							text = "[color=" + this.Const.UI.Color.NegativeEventValue + "]" + "You fail to find any tracks at all. Good luck catching the thieves!" + "[/color]."
+							text = "[color=" + ::Const.UI.Color.NegativeEventValue + "]" + "You fail to find any tracks at all. Good luck catching the thieves!" + "[/color]."
 						});
 						break;
 				}
@@ -452,8 +452,8 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 					Text = "To Arms!",
 					function getResult()
 					{
-						this.Const.World.Common.addTroop(this.Contract.m.Target, {
-							Type = this.Const.World.Spawn.Troops.Necromancer
+						::Const.World.Common.addTroop(this.Contract.m.Target, {
+							Type = ::Const.World.Spawn.Troops.Necromancer
 						});
 						this.Contract.getActiveState().onTargetAttacked(this.Contract.m.Target, true);
 						return 0;
@@ -491,11 +491,11 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 					Text = "To Arms!",
 					function getResult()
 					{
-						this.Const.World.Common.addTroop(this.Contract.m.Target, {
-							Type = this.Const.World.Spawn.Troops.Anatomist
+						::Const.World.Common.addTroop(this.Contract.m.Target, {
+							Type = ::Const.World.Spawn.Troops.Anatomist
 						});
-						this.Const.World.Common.addTroop(this.Contract.m.Target, {
-							Type = this.Const.World.Spawn.Troops.BanditThugPotioned
+						::Const.World.Common.addTroop(this.Contract.m.Target, {
+							Type = ::Const.World.Spawn.Troops.BanditThugPotioned
 						});
 						this.Contract.getActiveState().onTargetAttacked(this.Contract.m.Target, true);
 						return 0;
@@ -541,7 +541,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 					Text = "Good pay.",
 					function getResult()
 					{
-						local SUBTERFUGE_CHANCE = 25 + this.Const.Contracts.chance_subterfuge();
+						local SUBTERFUGE_CHANCE = 25 + ::LA.get_subterfuge_chance();
 						local ROLL = this.Math.rand(1, 100);
 						this.Flags.set("SUBTERFUGE_CHANCE", SUBTERFUGE_CHANCE);
 						this.Flags.set("SUBTERFUGE_ROLL", ROLL);
@@ -549,13 +549,13 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 						if (ROLL > SUBTERFUGE_CHANCE)
 						{
 							this.World.Assets.addMoney(this.Flags.get("Bribe"));
-							this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractBetrayal);
-							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationBetrayal, "Stole " + temp);
+							this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractBetrayal);
+							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationBetrayal, "Stole " + temp);
 						}
 						else
 						{
-							this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + temp);
+							this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + temp);
 						}
 						
 						this.World.Contracts.finishActiveContract(true);
@@ -569,7 +569,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("Bribe") + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("Bribe") + "[/color] Crowns"
 				});
 			}
 
@@ -596,7 +596,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 					Text = "Let\'s take it for ourselves and try to cover it up.",
 					function getResult()
 					{
-						local SUBTERFUGE_CHANCE = 25 + this.Const.Contracts.chance_subterfuge();
+						local SUBTERFUGE_CHANCE = 25 + ::LA.get_subterfuge_chance();
 						local ROLL = this.Math.rand(1, 100);
 						this.Flags.set("SUBTERFUGE_CHANCE", SUBTERFUGE_CHANCE);
 						this.Flags.set("SUBTERFUGE_ROLL", ROLL);
@@ -605,8 +605,8 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 						{
 							//change reputation
 							this.updateAchievement("NeverTrustAMercenary", 1, 1);
-							this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractBetrayal);
-							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationBetrayal, "Stole " + temp);
+							this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractBetrayal);
+							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationBetrayal, "Stole " + temp);
 
 							//set flag for future ambush event
 							if (this.World.Statistics.getFlags().has("StolenItemRevenge")) this.World.Statistics.getFlags().increment("StolenItemRevenge");
@@ -614,8 +614,8 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 						}
 						else
 						{
-							this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + temp);
+							this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + temp);
 						}
 						
 						this.World.Assets.getStash().add(this.Contract.m.Loot);
@@ -680,7 +680,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				local SUBTERFUGE_CHANCE = this.Flags.get("SUBTERFUGE_CHANCE");
 				local SUBTERFUGE_ROLL = this.Flags.get("SUBTERFUGE_ROLL");
 				local ROLL_STATUS = SUBTERFUGE_ROLL <= SUBTERFUGE_CHANCE;
-				local color = ROLL_STATUS ? this.Const.UI.Color.PositiveEventValue : this.Const.UI.Color.NegativeEventValue;
+				local color = ROLL_STATUS ? ::Const.UI.Color.PositiveEventValue : ::Const.UI.Color.NegativeEventValue;
 
 				this.List.push({
 					id = 10,
@@ -726,10 +726,10 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
 						local temp = this.Flags.get("IsLockbox") ? "lockbox" : this.Flags.get("LOOT_NAME");
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Returned stolen " + temp);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Returned stolen " + temp);
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -741,7 +741,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -759,9 +759,9 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 					Text = "Damn this contract!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
 						local temp = this.Flags.get("IsLockbox") ? "lockbox" : this.Flags.get("LOOT_NAME");
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + temp);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + temp);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -775,7 +775,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 	{
 		_vars.push([
 			"direction",
-			this.m.Target == null || this.m.Target.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
+			this.m.Target == null || this.m.Target.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
 		]);
 		_vars.push([
 			"item",

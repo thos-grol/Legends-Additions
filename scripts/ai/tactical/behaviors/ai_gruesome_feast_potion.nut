@@ -10,8 +10,8 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 	},
 	function create()
 	{
-		this.m.ID = this.Const.AI.Behavior.ID.GruesomeFeast;
-		this.m.Order = this.Const.AI.Behavior.Order.GruesomeFeast;
+		this.m.ID = ::Const.AI.Behavior.ID.GruesomeFeast;
+		this.m.Order = ::Const.AI.Behavior.Order.GruesomeFeast;
 		this.m.IsThreaded = true;
 		this.behavior.create();
 	}
@@ -26,24 +26,24 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 		local time = this.Time.getExactTime();
 		local scoreMult = this.getProperties().BehaviorMult[this.m.ID];
 
-		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP)
+		if (_entity.getActionPoints() < ::Const.Movement.AutoEndTurnBelowAP)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (_entity.getCurrentProperties().IsRooted)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing)
+		if (_entity.getMoraleState() == ::Const.MoraleState.Fleeing)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (_entity.getHitpointsPct() >= 1.0)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		local skills = [];
@@ -60,7 +60,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (skills.len() == 0)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		this.m.Skill = skills[this.Math.rand(0, skills.len() - 1)];
@@ -79,7 +79,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (corpses.len() == 0)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		local allies = this.getAgent().getKnownAllies();
@@ -102,7 +102,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 					continue;
 				}
 
-				if (!c.IsEmpty && !(_entity.isAbleToWait() && c.IsOccupiedByActor && c.getEntity().getType() == this.Const.EntityType.Ghoul && c.getEntity().getMoraleState() == this.Const.MoraleState.Fleeing && !c.getEntity().isTurnDone() && c.getDistanceTo(myTile) == 1))
+				if (!c.IsEmpty && !(_entity.isAbleToWait() && c.IsOccupiedByActor && c.getEntity().getType() == ::Const.EntityType.Ghoul && c.getEntity().getMoraleState() == ::Const.MoraleState.Fleeing && !c.getEntity().isTurnDone() && c.getDistanceTo(myTile) == 1))
 				{
 					continue;
 				}
@@ -110,26 +110,26 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 				local score = 4.0;
 				local dist = c.getDistanceTo(myTile);
 
-				if (dist > this.Const.AI.Behavior.GruesomeFeastMaxDistance)
+				if (dist > ::Const.AI.Behavior.GruesomeFeastMaxDistance)
 				{
 					continue;
 				}
 
-				score = score - dist * this.Const.AI.Behavior.GruesomeFeastDistanceMult;
+				score = score - dist * ::Const.AI.Behavior.GruesomeFeastDistanceMult;
 
 				if (this.getAgent().getIntentions().IsDefendingPosition && dist > this.m.Skill.getMaxRange())
 				{
 					continue;
 				}
 
-				score = score - this.Const.AI.Behavior.GruesomeFeastWaitPenalty;
-				score = score - this.Const.AI.Behavior.GruesomeFeastSpearwallPenalty * this.querySpearwallValueForTile(_entity, c);
-				local mag = this.queryOpponentMagnitude(c, this.Const.AI.Behavior.GruesomeFeastMagnitudeMaxRange);
-				score = score - mag.Opponents * (1.0 - mag.AverageDistanceScore) * this.Math.maxf(0.5, 1.0 - mag.AverageEngaged) * this.Const.AI.Behavior.GruesomeFeastOpponentValue;
+				score = score - ::Const.AI.Behavior.GruesomeFeastWaitPenalty;
+				score = score - ::Const.AI.Behavior.GruesomeFeastSpearwallPenalty * this.querySpearwallValueForTile(_entity, c);
+				local mag = this.queryOpponentMagnitude(c, ::Const.AI.Behavior.GruesomeFeastMagnitudeMaxRange);
+				score = score - mag.Opponents * (1.0 - mag.AverageDistanceScore) * this.Math.maxf(0.5, 1.0 - mag.AverageEngaged) * ::Const.AI.Behavior.GruesomeFeastOpponentValue;
 
 				if (isInMelee && !c.isSameTileAs(myTile))
 				{
-					score = score - this.Const.AI.Behavior.GruesomeFeastLeaveZOC;
+					score = score - ::Const.AI.Behavior.GruesomeFeastLeaveZOC;
 				}
 
 				potentialCorpses.push({
@@ -141,7 +141,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 
 			if (potentialCorpses.len() == 0)
 			{
-				return this.Const.AI.Behavior.Score.Zero;
+				return ::Const.AI.Behavior.Score.Zero;
 			}
 
 			potentialCorpses.sort(this.onSortByScore);
@@ -160,7 +160,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 		{
 			n = ++n;
 
-			if (n > this.Const.AI.Behavior.GruesomeFeastMaxAttempts && bestTarget != null)
+			if (n > ::Const.AI.Behavior.GruesomeFeastMaxAttempts && bestTarget != null)
 			{
 				break;
 			}
@@ -186,7 +186,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 				settings.ActionPointCostPerLevel = _entity.getLevelActionPointCost();
 				settings.FatigueCostPerLevel = _entity.getLevelFatigueCost();
 				settings.AllowZoneOfControlPassing = false;
-				settings.ZoneOfControlCost = this.Const.AI.Behavior.ZoneOfControlAPPenalty;
+				settings.ZoneOfControlCost = ::Const.AI.Behavior.ZoneOfControlAPPenalty;
 				settings.AlliedFactions = _entity.getAlliedFactions();
 				settings.Faction = _entity.getFaction();
 
@@ -208,7 +208,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 
 					if (movementCosts.End.IsBadTerrain)
 					{
-						score = score - this.Const.AI.Behavior.RaiseUndeadMoveToBadTerrainPenalty * this.getProperties().EngageOnBadTerrainPenaltyMult;
+						score = score - ::Const.AI.Behavior.RaiseUndeadMoveToBadTerrainPenalty * this.getProperties().EngageOnBadTerrainPenaltyMult;
 					}
 
 					if (this.getProperties().EngageOnBadTerrainPenaltyMult != 0.0)
@@ -240,21 +240,21 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 						{
 							if (d.InZonesOfControl != 0 || opponent.getCurrentProperties().IsStunned)
 							{
-								score = score - this.Const.AI.Behavior.GruesomeFeastLowDangerPenalty;
+								score = score - ::Const.AI.Behavior.GruesomeFeastLowDangerPenalty;
 							}
 							else
 							{
-								score = score - this.Const.AI.Behavior.GruesomeFeastHighDangerPenalty;
+								score = score - ::Const.AI.Behavior.GruesomeFeastHighDangerPenalty;
 							}
 						}
 
-						if (danger >= this.Const.AI.Behavior.GruesomeFeastMaxDanger || danger_intermediate >= this.Const.AI.Behavior.GruesomeFeastMaxDanger)
+						if (danger >= ::Const.AI.Behavior.GruesomeFeastMaxDanger || danger_intermediate >= ::Const.AI.Behavior.GruesomeFeastMaxDanger)
 						{
 							break;
 						}
 					}
 
-					if (danger >= this.Const.AI.Behavior.GruesomeFeastMaxDanger || danger_intermediate >= this.Const.AI.Behavior.GruesomeFeastMaxDanger)
+					if (danger >= ::Const.AI.Behavior.GruesomeFeastMaxDanger || danger_intermediate >= ::Const.AI.Behavior.GruesomeFeastMaxDanger)
 					{
 						continue;
 					}
@@ -283,7 +283,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (bestTarget == null)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		this.m.TargetTile = bestTarget;
@@ -301,11 +301,11 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (inZOC != 0 && !bestTarget.isSameTileAs(myTile))
 		{
-			scoreMult = scoreMult * (this.Const.AI.Behavior.GruesomeFeastLeaveZOCMult / inZOC);
+			scoreMult = scoreMult * (::Const.AI.Behavior.GruesomeFeastLeaveZOCMult / inZOC);
 		}
 
-		scoreMult = scoreMult - this.Const.AI.Behavior.GruesomeFeastDangerPenaltyMult * bestDanger;
-		return this.Math.max(0, this.Const.AI.Behavior.Score.GruesomeFeast * scoreMult);
+		scoreMult = scoreMult - ::Const.AI.Behavior.GruesomeFeastDangerPenaltyMult * bestDanger;
+		return this.Math.max(0, ::Const.AI.Behavior.Score.GruesomeFeast * scoreMult);
 	}
 
 	function onBeforeExecute( _entity )
@@ -327,7 +327,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 			{
 				if (this.Tactical.TurnSequenceBar.entityWaitTurn(_entity))
 				{
-					if (this.Const.AI.VerboseMode)
+					if (::Const.AI.VerboseMode)
 					{
 						this.logInfo("* " + _entity.getName() + ": Waiting until others have moved!");
 					}
@@ -351,7 +351,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 				settings.ActionPointCostPerLevel = _entity.getLevelActionPointCost();
 				settings.FatigueCostPerLevel = _entity.getLevelFatigueCost();
 				settings.AllowZoneOfControlPassing = false;
-				settings.ZoneOfControlCost = this.Const.AI.Behavior.ZoneOfControlAPPenalty;
+				settings.ZoneOfControlCost = ::Const.AI.Behavior.ZoneOfControlAPPenalty;
 				settings.AlliedFactions = _entity.getAlliedFactions();
 				settings.Faction = _entity.getFaction();
 
@@ -361,7 +361,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 					return true;
 				}
 
-				if (this.Const.AI.PathfindingDebugMode)
+				if (::Const.AI.PathfindingDebugMode)
 				{
 					navigator.buildVisualisation(_entity, settings, _entity.getActionPoints(), _entity.getFatigueMax() - _entity.getFatigue());
 				}
@@ -369,7 +369,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 				local movement = navigator.getCostForPath(_entity, settings, _entity.getActionPoints(), _entity.getFatigueMax() - _entity.getFatigue());
 				this.getAgent().adjustCameraToDestination(movement.End);
 
-				if (this.Const.AI.VerboseMode)
+				if (::Const.AI.VerboseMode)
 				{
 					this.logInfo("* " + _entity.getName() + ": Moving into range to use Gruesome Feast");
 				}
@@ -419,7 +419,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 
 	function useSkill( _entity )
 	{
-		if (this.Const.AI.VerboseMode)
+		if (::Const.AI.VerboseMode)
 		{
 			this.logInfo("* " + _entity.getName() + ": Using Gruesome Feast!");
 		}
