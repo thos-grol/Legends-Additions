@@ -48,26 +48,30 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_hold_the_line"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_push_forward"));
 
-		// "weapons/noble_sword",
-		// "weapons/fighting_axe",
-		// "weapons/warhammer",
-		// "weapons/legend_glaive",
-		// "weapons/fighting_spear",
-		// "weapons/winged_mace",
-		// "weapons/arming_sword",
-		// "weapons/military_cleaver",
+		// "weapons/noble_sword"
+		// "weapons/fighting_axe"
+		// "weapons/warhammer"
+		// "weapons/legend_glaive"
+		// "weapons/fighting_spear"
+		// "weapons/winged_mace"
+		// "weapons/arming_sword"
+		// "weapons/military_cleaver"
+
+		// "weapons/greataxe"
+
 		// "weapons/greatsword",
-		// "weapons/greataxe",
-		// "weapons/legend_swordstaff",
-		// "weapons/legend_longsword",
-		// "weapons/warbrand",
+
+		// "weapons/legend_swordstaff"
+
+		// "weapons/legend_longsword"
+		// "weapons/warbrand"
 		// "weapons/legend_glaive"
 
-		//"shields/wooden_shield",
-		// "shields/heater_shield",
+		//"shields/wooden_shield"
+		// "shields/heater_shield"
 		// "shields/kite_shield"
 
-		// "weapons/throwing_axe",
+		// "weapons/throwing_axe"
 		// "weapons/javelin"
 
 		if (this.Math.rand(1, 100) <= 25) //2h weapons
