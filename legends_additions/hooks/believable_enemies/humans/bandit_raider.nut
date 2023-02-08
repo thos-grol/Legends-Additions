@@ -28,77 +28,7 @@
 
 	o.assignRandomEquipment = function()
 	{
-		local armor = [
-			[
-				1,
-				"ragged_surcoat"
-			],
-			[
-				1,
-				"padded_leather"
-			],
-			[
-				1,
-				"worn_mail_shirt"
-			],
-			[
-				1,
-				"patched_mail_shirt"
-			],
-			[
-				1,
-				"worn_mail_shirt"
-			],
-			[
-				1,
-				"patched_mail_shirt"
-			]
-		];
-		local helmet = [
-			[
-				1,
-				"nasal_helmet"
-			],
-			[
-				1,
-				"rondel_helm"
-			],
-			[
-				1,
-				"barbute_helmet"
-			],
-			[
-				1,
-				"scale_helm"
-			],
-			[
-				1,
-				"dented_nasal_helmet"
-			],
-			[
-				1,
-				"rusty_mail_coif"
-			],
-			[
-				1,
-				"headscarf"
-			],
-			[
-				1,
-				"nasal_helmet_with_rusty_mail"
-			]
-		];
-		local outfits = [
-			[
-				1,
-				"dark_southern_outfit_00"
-			]
-		];
-
-		foreach( item in ::Const.World.Common.pickOutfit(outfits, armor, helmet) )
-		{
-			this.m.Items.equip(item);
-		}
+		this.addArmor();
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bully")); //tribal perk
 
@@ -383,5 +313,80 @@
 		dirt.Alpha = this.Math.rand(150, 255);
 		this.setArmorSaturation(0.85);
 		this.getSprite("shield_icon").setBrightness(0.85);
+	}
+
+	o.addArmor <- function()
+	{
+		local armor = [
+			[
+				1,
+				"ragged_surcoat"
+			],
+			[
+				1,
+				"padded_leather"
+			],
+			[
+				1,
+				"worn_mail_shirt"
+			],
+			[
+				1,
+				"patched_mail_shirt"
+			],
+			[
+				1,
+				"worn_mail_shirt"
+			],
+			[
+				1,
+				"patched_mail_shirt"
+			]
+		];
+		local helmet = [
+			[
+				1,
+				"nasal_helmet"
+			],
+			[
+				1,
+				"rondel_helm"
+			],
+			[
+				1,
+				"barbute_helmet"
+			],
+			[
+				1,
+				"scale_helm"
+			],
+			[
+				1,
+				"dented_nasal_helmet"
+			],
+			[
+				1,
+				"rusty_mail_coif"
+			],
+			[
+				1,
+				"headscarf"
+			],
+			[
+				1,
+				"nasal_helmet_with_rusty_mail"
+			]
+		];
+		local outfits = [
+			[
+				1,
+				"dark_southern_outfit_00"
+			]
+		];
+
+		foreach( item in ::Const.World.Common.pickOutfit(outfits, armor, helmet) )
+		{
+			this.m.Items.equip(item);
+		}
 	}
 });

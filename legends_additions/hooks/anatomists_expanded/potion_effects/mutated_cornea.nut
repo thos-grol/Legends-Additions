@@ -1,8 +1,22 @@
-//"Mutated Cornea";
+//"Mutated Visual Cortex";
 //"This character\'s eyes have been permanently mutated and are now capable of detecting the subtlest movements of wind and air. While minor on its own, this allows them to better predict the trajectory of projectile attacks and better land hits on vulnerable parts of a target.";
 
 ::mods_hookExactClass("skills/effects/goblin_overseer_potion_effect", function (o)
 {
+    o.create = function()
+	{
+		this.m.ID = "effects.goblin_overseer_potion";
+		this.m.Name = "Mutated Visual Cortex";
+		this.m.Icon = "skills/status_effect_126.png";
+		this.m.IconMini = "";
+		this.m.Overlay = "status_effect_126";
+		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
+	}
+
     o.getTooltip = function()
     {
         local ret = [

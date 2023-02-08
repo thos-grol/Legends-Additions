@@ -1,12 +1,21 @@
 //"Venom Glands"
 //"This character has developed venom glands that allow them to produce poison strong enough to kill any man. Sadly they do not have the fangs of a snake or spider to deliver this venom and have to resort using piercing or cutting weapons to apply it.";
+//TODO: Get all potions showing in tooltips
 ::mods_hookExactClass("skills/effects/serpent_potion_effect", function (o)
 {
     local create = o.create;
     o.create = function()
     {
-        create();
-        this.m.Name = "Venom Glands";
+        this.m.ID = "effects.serpent_potion";
+		this.m.Name = "Venom Glands";
+		this.m.Icon = "skills/status_effect_142.png";
+		this.m.IconMini = "";
+		this.m.Overlay = "status_effect_142";
+		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
     }
 
     local getDescription = o.getDescription;

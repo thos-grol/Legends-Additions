@@ -2,6 +2,21 @@
 //This character's body has mutated and propagates poisons and other hazardous substances through the bloodstream much more slowly, allowing them to be disposed of without serious health effects. Curiously, this doesn't seem to affect their ability to get drunk.
 ::mods_hookExactClass("skills/effects/webknecht_potion_effect", function (o)
 {
+    o.create = function()
+	{
+		this.m.ID = "effects.webknecht_potion";
+		this.m.Name = "Mutated Circulatory System";
+		this.m.Icon = "skills/status_effect_144.png";
+		this.m.IconMini = "status_effect_144_mini";
+		this.m.Overlay = "status_effect_144";
+		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
+	}
+
+
     o.getTooltip = function()
     {
         local ret = [

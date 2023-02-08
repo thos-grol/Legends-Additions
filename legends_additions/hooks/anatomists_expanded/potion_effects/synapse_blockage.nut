@@ -2,6 +2,20 @@
 //"This character\'s body has mutated in such a way that their fight-or-flight response is altered. In high stress situations, their limbic system is simply refused resources for flight, making them effectively unbreakable in the battle line.";
 
 ::mods_hookExactClass("skills/effects/ancient_priest_potion_effect", function(o) {
+	o.create = function()
+	{
+		this.m.ID = "effects.ancient_priest_potion";
+		this.m.Name = "Synapse Blockage";
+		this.m.Icon = "skills/status_effect_134.png";
+		this.m.IconMini = "status_effect_134_mini";
+		this.m.Overlay = "status_effect_134";
+		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
+	}
+
 	o.getTooltip = function()
 	{
 		local ret = [

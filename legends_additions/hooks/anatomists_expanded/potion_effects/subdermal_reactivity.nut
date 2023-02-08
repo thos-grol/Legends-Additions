@@ -2,6 +2,20 @@
 //"It\'s just a flesh wound! This character\'s subdermal flesh has mutated and automatically reacts to sudden trauma, lessening the chance to suffer injuries in battle.";
 ::mods_hookExactClass("skills/effects/wiederganger_potion_effect", function (o)
 {
+    o.create = function()
+	{
+		this.m.ID = "effects.wiederganger_potion";
+		this.m.Name = "Subdermal Reactivity";
+		this.m.Icon = "skills/status_effect_135.png";
+		this.m.IconMini = "";
+		this.m.Overlay = "status_effect_135";
+		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
+	}
+
     o.getTooltip = function()
     {
         local ret = [

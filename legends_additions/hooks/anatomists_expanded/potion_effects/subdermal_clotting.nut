@@ -2,6 +2,19 @@
 //"When this character\'s skin is broken, a substance is secreted that drastically quickens the blood clotting process in the area. Bleeding wounds are much less harmful as a ret, although some blood loss still occurs.";
 ::mods_hookExactClass("skills/effects/hyena_potion_effect", function (o)
 {
+    o.create = function()
+	{
+		this.m.ID = "effects.hyena_potion";
+		this.m.Name = "Subdermal Clotting";
+		this.m.Icon = "skills/status_effect_143.png";
+		this.m.IconMini = "";
+		this.m.Overlay = "status_effect_143";
+		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
+	}
     o.getTooltip = function()
     {
         local ret = [

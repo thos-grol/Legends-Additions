@@ -65,7 +65,8 @@
 });
 
 ::mods_hookBaseClass("skills/skill", function(o) {
-	o.attackEntity = function( _user, _targetEntity, _allowDiversion = true )
+	while(!("attackEntity" in o)) o = o[o.SuperName];
+    o.attackEntity = function( _user, _targetEntity, _allowDiversion = true )
 	{
 		if (_targetEntity != null && !_targetEntity.isAlive()) return false;
 

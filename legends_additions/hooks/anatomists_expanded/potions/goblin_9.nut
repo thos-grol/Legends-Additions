@@ -18,7 +18,7 @@
         if (_actor.getSkills().hasSkill("trait.huge")) _actor.getSkills().removeByID("trait.huge");
         else _actor.getSkills().add(::new("scripts/skills/traits/tiny_trait"));
 
-        //1 Mutated Cornea
+        //1 Mutated Visual Cortex
         _actor.getSkills().add(::new("scripts/skills/effects/goblin_overseer_potion_effect"));
 
         //2: Hair Splitter
@@ -85,7 +85,7 @@
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Mutated Cornea: This character\'s eyes have been permanently mutated and are now capable of detecting the subtlest movements of wind and air. While minor on its own, this allows them to better predict the trajectory of projectile attacks and better land hits on vulnerable parts of a target. An additional" + ::MSU.Text.colorGreen( "20" ) + "% of damage ignores armor when using bows or crossbows"
+            text = "Mutated Visual Cortex: This character\'s eyes have been permanently mutated and are now capable of detecting the subtlest movements of wind and air. While minor on its own, this allows them to better predict the trajectory of projectile attacks and better land hits on vulnerable parts of a target. An additional" + ::MSU.Text.colorGreen( "20" ) + "% of damage ignores armor when using bows or crossbows"
         });
         ret.push({
             id = 11,

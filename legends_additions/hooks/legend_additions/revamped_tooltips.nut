@@ -184,6 +184,7 @@
 			{
 				return ("type" in row) && row.type == "text";
 			};
+			//pushSection(statusEffects, null, 100, 2, "", true);
 			local pushSection = function ( items, title, startID, filter = 0, prependIcon = "", stackInOneLine = false )
 			{
 				if (!items)

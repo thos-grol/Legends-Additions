@@ -26,6 +26,14 @@
 	o.assignRandomEquipment = function()
 	{
 		this.addArmor();
+
+		//light armor + defensive perks
+		this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2
+		this.m.Skills.add(::new("scripts/skills/perks/perk_relentless")); //3
+		this.m.Skills.add(::new("scripts/skills/perks/perk_nimble")); //5
+		this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5 -> 6
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pattern_recognition")); //7
+
 		local weapons = [
 			"weapons/noble_sword",
 			"weapons/arming_sword",
@@ -81,19 +89,6 @@
 		this.m.CurrentProperties = clone b;
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_militia");
-
-		//light armor + defensive perks
-		this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2
-		this.m.Skills.add(::new("scripts/skills/perks/perk_relentless")); //3
-		this.m.Skills.add(::new("scripts/skills/perks/perk_nimble")); //5
-		this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5 -> 6
-		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pattern_recognition")); //6 -> 7
-
-
-
-
-
-
 	}
 
 	o.makeMiniboss = function()

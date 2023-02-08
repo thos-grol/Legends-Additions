@@ -1,15 +1,15 @@
 //Bandit Leader
-//Lvl 11 Player character template with stars
-//10 perks
+//Lvl 11 Player character template with 1-3 stars
+//10 perks + 1 training perk + 1 trait
 ::Const.Tactical.Actor.BanditLeader <- {
 	XP = 375,
 	ActionPoints = 9,
-	Hitpoints = 55,
+	Hitpoints = 65,
 	Bravery = 60,
 	Stamina = 96,
 	MeleeSkill = 65,
 	RangedSkill = 40,
-	MeleeDefense = 10,
+	MeleeDefense = 15,
 	RangedDefense = 10,
 	Initiative = 105,
 	FatigueEffectMult = 1.0,
@@ -24,288 +24,28 @@
 {
 	o.m.is_throwing <- false;
 	o.m.is_shield <- false;
+	o.m.no_man_of_steel <- false;
+
 	o.m.build_num <- 0;
+	o.m.is_miniboss <- false;
 
-	o.assignRandomEquipment = function()
+	o.getBuildNumber <- function()
 	{
-		this.addArmor();
+		this.m.build_num = this.Math.rand(1, 100);
 
-		//Free Tribal Perk
-		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bully"));
-
-		//Bandit Leader Free Traits
-		this.m.Skills.add(::new("scripts/skills/actives/rally_the_troops"));
-		this.m.Skills.add(::new("scripts/skills/perks/perk_captain"));
-
-		//Defensive Perks
-		this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged"));
-
-		//TODO: Bandit Leader builds
-
-		//Commander Variant
-		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_shields_up"));
-		this.m.Skills.add(::new("scripts/skills/perks/perk_rally_the_troops"));
-		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_hold_the_line"));
-		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_push_forward"));
-
-		// "weapons/noble_sword"
-		// "weapons/fighting_axe"
-		// "weapons/warhammer"
-		// "weapons/legend_glaive"
-		// "weapons/fighting_spear"
-		// "weapons/winged_mace"
-		// "weapons/arming_sword"
-		// "weapons/military_cleaver"
-
-		// "weapons/greataxe"
-
-		// "weapons/greatsword",
-
-		// "weapons/legend_swordstaff"
-
-		// "weapons/legend_longsword"
-		// "weapons/warbrand"
-		// "weapons/legend_glaive"
-
-		//"shields/wooden_shield"
-		// "shields/heater_shield"
-		// "shields/kite_shield"
-
-		// "weapons/throwing_axe"
-		// "weapons/javelin"
-
-		if (this.Math.rand(1, 100) <= 25) //2h weapons
-		{
-			this.m.build_num = this.Math.rand(0, 6);
-			switch(this.m.build_num)
-			{
-				case 0: //Infantry axe - 4ap chop, split man, and smashing shields (6ap)
-				case 1:
-					this.m.Items.equip(::new("scripts/items/weapons/woodcutters_axe"));
-
-					this.m.Skills.add(::new("scripts/skills/perks/perk_legend_smashing_shields")); //1
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft")); //2
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_balance")); //3
-					this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_axe")); //4
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2 -> 5
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_cull")); //7
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(7, this.Math.rand(-6, 3) );
-					this.level_resolve(4, this.Math.rand(-6, 3) );
-					this.level_health(3, this.Math.rand(-6, 3) );
-					break;
-				case 2: //polearm - Pike
-				case 4:
-					this.m.Items.equip(::new("scripts/items/weapons/pike"));
-
-					this.m.Skills.removeByID("perk.legend_balance");
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pointy_end")); //1
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_intimidate")); //3
-					this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_polearm")); //4
-					this.m.Skills.add(::new("scripts/skills/perks/perk_rotation")); //3 -> 5
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_follow_up")); //7
-
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(4, 1);
-					this.level_initiative(4, this.Math.rand(-6, 3) );
-					this.level_health(6, this.Math.rand(-6, 3) );
-					break;
-				case 3: //polearm - Hooked Blade
-				case 5:
-					this.m.Items.equip(::new("scripts/items/weapons/hooked_blade"));
-
-					this.m.Skills.removeByID("perk.legend_balance");
-					this.m.Skills.add(::new("scripts/skills/perks/perk_crippling_strikes")); //1
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2
-					this.m.Skills.add(::new("scripts/skills/perks/perk_coup_de_grace")); //2 -> 3
-					this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_polearm")); //4
-					this.m.Skills.add(::new("scripts/skills/perks/perk_rotation")); //3 -> 5
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_follow_up")); //7
-
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(4, 1);
-					this.level_initiative(4, this.Math.rand(-6, 3) );
-					this.level_health(6, this.Math.rand(-6, 3) );
-					break;
-				case 6: //2h Mace
-					local weapons = [
-						"weapons/legend_two_handed_club"
-					];
-					this.m.Items.equip(::new("scripts/items/" + ::MSU.Array.rand(weapons)));
-					this.m.Skills.removeByID("perk.legend_balance");
-
-					this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heavy_strikes")); //2 -> 3
-					this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_mace")); //4
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dismantle")); //5
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bone_breaker")); //7
-
-
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(7, this.Math.rand(-6, 3) );
-					this.level_resolve(4, this.Math.rand(-6, 3) );
-					this.level_health(3, this.Math.rand(-6, 3) );
-
-					break;
-			}
-		}
-		else //1h weapons
-		{
-			this.m.build_num = this.Math.rand(7, 12);
-
-			if (this.m.build_num > 9)
-			{
-				if (this.Math.rand(1, 100) <= 50)
-				{
-					if (this.Math.rand(1, 100) <= 75) this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
-					else this.m.Items.equip(::new("scripts/items/shields/kite_shield"));
-					this.m.is_shield = true;
-					this.m.Skills.add(::new("scripts/skills/perks/perk_shield_expert")); //3
-				}
-			}
-
-			switch(this.m.build_num)
-			{
-				case 7: //Tank
-					this.m.Items.equip(::new("scripts/items/weapons/militia_spear"));
-					this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
-
-					this.m.Skills.removeByID("perk.legend_balance");
-					this.m.Skills.removeByID("perk.legend_lithe");
-					this.m.Skills.add(::new("scripts/skills/perks/perk_nine_lives")); //1
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2
-					this.m.Skills.add(::new("scripts/skills/perks/perk_shield_expert")); //3
-					this.m.Skills.add(::new("scripts/skills/perks/perk_rotation")); //3 -> 4
-					this.m.Skills.add(::new("scripts/skills/perks/perk_fortified_mind")); //3 -> 5
-					this.m.Skills.add(::new("scripts/skills/perks/perk_legend_mind_over_body")); //6
-					this.m.Skills.add(::new("scripts/skills/perks/perk_last_stand")); //7
-
-					this.level_melee_defense(7, this.Math.rand(-3, 3) );
-					this.level_resolve(7, this.Math.rand(-2, 3) );
-					this.level_fatigue(3, this.Math.rand(-6, 3) );
-					this.level_health(4, this.Math.rand(-6, 3) );
-
-					break;
-				case 8: //Spear
-				case 10:
-				case 11: //Thrower
-					switch(this.Math.rand(1, 3))
-					{
-						case 1:
-							this.m.Items.addToBag(::new("scripts/items/weapons/throwing_axe"));
-							break;
-						case 2:
-							this.m.Items.addToBag(::new("scripts/items/weapons/javelin"));
-							break;
-						case 3:
-							this.m.Items.addToBag(::new("scripts/items/weapons/throwing_spear"));
-							break;
-					}
-					this.m.is_throwing = true;
-
-					if (this.Math.rand(1, 100) <= 75) this.m.Items.equip(::new("scripts/items/weapons/militia_spear"));
-					else this.m.Items.equip(::new("scripts/items/weapons/boar_spear"));
-
-					this.m.Skills.removeByID("perk.legend_balance");
-					this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_skirmisher")); //2 -> 3
-					this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_throwing")); //4
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_two_for_one")); //5
-					if (!this.m.is_shield) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_a_better_grip")); //? -> 6
-					this.m.Skills.add(::new("scripts/skills/perks/perk_close_combat_archer")); //7
-
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(7, this.Math.rand(-6, 3) );
-					this.level_resolve(4, this.Math.rand(-6, 3) );
-					this.level_health(3, this.Math.rand(-6, 3) );
-					break;
-				case 12: //Handaxe
-				case 9:
-				case 8:
-					this.m.Items.equip(::new("scripts/items/weapons/hand_axe"));
-					this.m.Skills.removeByID("perk.legend_balance");
-					this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft")); //2
-					if (!this.m.is_shield) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dismemberment")); //3
-					this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_axe")); //4
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2 -> 5
-					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
-					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_cull")); //7
-					break;
-			}
-		}
-
-
-
-		// local roll = this.Math.rand(1.0, 100.0);
-		// if (roll <= 15.0)
-		// {
-		// 	if (roll <= 3.0) this.add_potion("ghoul", true);
-		// 	else if (roll <= 6.0) this.add_potion("ghoul", false);
-		// 	else if (roll <= 9.0) this.add_potion("orc", true);
-		// 	else if (roll <= 12.0) this.add_potion("orc", false);
-		// 	else this.add_potion("unhold", true);
-		// }
-
-
-		// this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel"));
-
-		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_assured_conquest"));
-		// this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_the_rush_of_battle"));
-
-		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_hold_the_line"));
-		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_push_forward"));
-		// this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_primal_fear"));
-		// this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_exude_confidence"));
-		// this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_vengeful_spite"));
-
-		// if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Legendary)
-		// {
-		// 	this.m.Skills.add(::new("scripts/skills/perks/perk_duelist"));
-		// 	this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity"));
-
-
-
-		this.m.Skills.update();
-	}
-
-	o.onInit = function()
-	{
-		this.human.onInit();
-		local b = this.m.BaseProperties;
-		b.setValues(::Const.Tactical.Actor.BanditLeader);
-		this.m.ActionPoints = b.ActionPoints;
-		this.m.Hitpoints = b.Hitpoints;
-		this.m.CurrentProperties = clone b;
-		this.setAppearance();
-		this.getSprite("socket").setBrush("bust_base_bandits");
-		local dirt = this.getSprite("dirt");
-		dirt.Visible = true;
-		dirt.Alpha = this.Math.rand(150, 255);
-		this.setArmorSaturation(0.85);
-		this.getSprite("shield_icon").setBrightness(0.85);
-
-		local agent = actor.getAIAgent();
-		if (agent.findBehavior(::Const.AI.Behavior.ID.Protect) != null)
-		{
-			agent.removeBehavior(::Const.AI.Behavior.ID.Protect);
-			agent.finalizeBehaviors();
-		}
 	}
 
 	o.makeMiniboss = function()
 	{
-		this.m.XP *= 1.5;
+		if (!this.actor.makeMiniboss()) return false;
 		this.m.IsMiniboss = true;
+		this.getBuildNumber();
+
+		this.m.XP *= 1.5;
 		this.m.IsGeneratingKillName = false;
 		this.getSprite("miniboss").setBrush("bust_miniboss");
+
+
 
 
 		//TODO: champion logic - get build number and replace items with named items
@@ -345,6 +85,110 @@
 		}
 
 		return true;
+	}
+
+	o.assignRandomEquipment = function()
+	{
+		this.addArmor();
+
+		//Free Tribal Perk
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bully"));
+
+		//Bandit Leader Free Traits
+		this.m.Skills.add(::new("scripts/skills/actives/rally_the_troops"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_captain"));
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_shields_up"));
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_rally_the_troops"));
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_hold_the_line"));
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_push_forward"));
+
+		//Defensive Perks 7
+		this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+		else this.m.no_man_of_steel = true;
+
+		if (!this.m.IsMiniboss) this.getBuildNumber();
+
+
+		// "weapons/greatsword"
+
+		//TODO: Bandit Leader builds
+
+		// "weapons/fighting_axe"
+		// "weapons/warhammer"
+
+		// "weapons/winged_mace"
+		// "weapons/military_cleaver"
+
+		// "weapons/throwing_axe"
+		// "weapons/javelin"
+
+		//"shields/wooden_shield"
+		// "shields/heater_shield"
+		// "shields/kite_shield"
+
+		this.m.Skills.update();
+	}
+
+	o.build_swordstaff <- function()
+	{
+		this.m.Items.equip(::new("scripts/items/weapons/legend_swordstaff"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_polearm")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_two_for_one")); //5
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_a_better_grip")); //6
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_king_of_all_weapons")); //7
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_double_strike")); //7
+
+		this.level_health(5, this.Math.rand(1, 3) );
+		this.level_fatigue(5, this.Math.rand(1, 3) );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_initiative(3, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25)
+		{
+			if (this.Math.rand(1, 2) == 1) this.add_potion("orc", false);
+			else this.add_potion("spider", false);
+		}
+	}
+
+	o.onInit = function()
+	{
+		this.human.onInit();
+		local b = this.m.BaseProperties;
+		b.setValues(::Const.Tactical.Actor.BanditLeader);
+		this.m.ActionPoints = b.ActionPoints;
+		this.m.Hitpoints = b.Hitpoints;
+		this.m.CurrentProperties = clone b;
+		this.setAppearance();
+		this.getSprite("socket").setBrush("bust_base_bandits");
+		local dirt = this.getSprite("dirt");
+		dirt.Visible = true;
+		dirt.Alpha = this.Math.rand(150, 255);
+		this.setArmorSaturation(0.85);
+		this.getSprite("shield_icon").setBrightness(0.85);
+
+		local agent = actor.getAIAgent();
+		if (agent.findBehavior(::Const.AI.Behavior.ID.Protect) != null)
+		{
+			agent.removeBehavior(::Const.AI.Behavior.ID.Protect);
+			agent.finalizeBehaviors();
+		}
 	}
 
 	o.addArmor <- function()

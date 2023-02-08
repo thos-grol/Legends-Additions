@@ -2,6 +2,20 @@
 //"This character\'s body has mutated to develop a number of redundant synapses, allowing them to maintain a degree of control over sight, hearing, and muscle control even when struck with debilitating blows.";
 ::mods_hookExactClass("skills/effects/orc_warrior_potion_effect", function (o)
 {
+    o.create = function()
+	{
+		this.m.ID = "effects.orc_warrior_potion";
+		this.m.Name = "Sensory Redundancy";
+		this.m.Icon = "skills/status_effect_128.png";
+		this.m.IconMini = "status_effect_128_mini";
+		this.m.Overlay = "status_effect_128";
+		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
+	}
+
     o.getTooltip = function()
     {
         local ret = [

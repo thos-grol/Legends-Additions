@@ -2,6 +2,25 @@
 //"This character\'s body has the incredible ability to incorporate different blood types - or indeed, blood from entirely different creatures - into itself. This grants them remarkable healing via absorption of blood through skin pores (or more dramatically by drinking it directly).";
 ::mods_hookExactClass("skills/effects/necrosavant_potion_effect", function (o)
 {
+    o.create = function()
+	{
+		this.m.ID = "effects.necrosavant_potion";
+		this.m.Name = "Parasitic Blood";
+		this.m.Icon = "skills/status_effect_133.png";
+		this.m.IconMini = "status_effect_133_mini";
+		this.m.Overlay = "status_effect_133";
+		this.m.SoundOnUse = [
+			"sounds/enemies/vampire_life_drain_01.wav",
+			"sounds/enemies/vampire_life_drain_02.wav",
+			"sounds/enemies/vampire_life_drain_03.wav"
+		];
+		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
+	}
+
     o.getTooltip = function()
     {
         local ret = [
@@ -59,7 +78,7 @@
                 text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 5 + "[/color] Melee Skill"
             });
         }
-        
+
         ret.push({
             id = 12,
             type = "hint",
@@ -81,7 +100,7 @@
             _properties.MeleeSkill += 5;
             _properties.Hitpoints += 10;
         }
-        
+
     }
 
     local lifesteal = o.lifesteal;
@@ -116,7 +135,7 @@
     o.onUpdate = function( _properties )
     {
         this.ptr_swordmaster_scenario_effect.onUpdate(_properties);
-            
+
         local actor = this.getContainer().getActor();
         if (this.isEnabled())
         {
@@ -124,7 +143,7 @@
             _properties.MeleeSkill += skillBonus;
             _properties.MeleeDefense += skillBonus;
             _properties.Bravery += skillBonus;
-            _properties.DamageDirectAdd += skillBonus * 0.01;			
+            _properties.DamageDirectAdd += skillBonus * 0.01;
         }
 
         if (!actor.getFlags().has("IsRejuvinated"))
@@ -147,7 +166,7 @@
         {
             return this.Math.min(30, this.Math.max(1, (this.World.getTime().Days - this.m.OldAgeStartDays) / 10));
         }
-        
+
         return 0;
     }
 
@@ -179,7 +198,7 @@
 
                 actor.getBackground().addPerk(::Const.Perks.PerkDefs.PTRSwordmasterBladeDancer, 3, false);
                 actor.getSkills().add(::new("scripts/skills/perks/perk_ptr_swordmaster_blade_dancer"));
-                
+
                 actor.getFlags().add("IsRejuvinated_addback");
             }
             return;
@@ -188,7 +207,7 @@
 
         local bros = this.World.getPlayerRoster().getAll();
         local hasMet = this.World.Flags.get("PTR_SwordmasterScenario_OldAgeEvent_1");
-        
+
         if (!hasMet && bros.len() >= 3 && this.World.getTime().Days >= this.m.OldAgeStartDays)
         {
             if (this.World.Events.fire("event.ptr_swordmaster_scenario_old_age_1"))
@@ -198,7 +217,7 @@
         }
 
         hasMet = this.World.Flags.get("PTR_SwordmasterScenario_OldAgeEvent_2");
-        
+
         if (!hasMet && bros.len() >= 3 && this.World.getTime().Days >= this.m.OldAgeStartDays * 2)
         {
             if (this.World.Events.fire("event.ptr_swordmaster_scenario_old_age_2"))
@@ -208,7 +227,7 @@
         }
 
         hasMet = this.World.Flags.get("PTR_SwordmasterScenario_OldAgeEvent_3");
-        
+
         if (!hasMet && bros.len() >= 3 && this.World.getTime().Days >= this.m.OldAgeStartDays * 3)
         {
             if (this.World.Events.fire("event.ptr_swordmaster_scenario_old_age_3"))
@@ -218,7 +237,7 @@
         }
 
         hasMet = this.World.Flags.get("PTR_SwordmasterScenario_OldAgeEvent_4");
-        
+
         if (!hasMet && bros.len() >= 3 && this.World.getTime().Days >= this.m.OldAgeStartDays * 4)
         {
             if (this.World.Events.fire("event.ptr_swordmaster_scenario_old_age_4"))
@@ -227,6 +246,6 @@
             }
         }
 
-        
+
     }
 });

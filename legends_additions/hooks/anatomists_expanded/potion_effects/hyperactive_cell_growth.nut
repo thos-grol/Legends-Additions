@@ -2,6 +2,20 @@
 //"This character\'s body has mutated to grow at an unnatural pace. In battle, this causes their wounds to close and heal within moments. Outside of battle, it causes unseemly growths, an unquenchable thirst, and disgustingly long finger nails. You once saw them lacerate both arms with a meat cleaver, screeching maniacally that it was \'the only way to keep it in check\'. Odd.";
 ::mods_hookExactClass("skills/effects/unhold_potion_effect", function (o)
 {
+    o.create = function()
+	{
+        this.m.ID = "effects.unhold_potion";
+		this.m.Name = "Hyperactive Cell Growth";
+		this.m.Icon = "skills/status_effect_145.png";
+		this.m.IconMini = "";
+		this.m.Overlay = "status_effect_145";
+		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
+	}
+
     o.getTooltip = function()
     {
         local actor = this.getContainer().getActor();

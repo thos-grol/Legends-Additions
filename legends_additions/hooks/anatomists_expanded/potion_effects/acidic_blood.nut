@@ -2,6 +2,20 @@
 //"This character\'s blood is highly pressurized and burns upon prolonged exposure to air. Attackers who break skin will find themselves unpleasantly surprised by the resultant spray.";
 ::mods_hookExactClass("skills/effects/lindwurm_potion_effect", function (o)
 {
+    o.create = function()
+	{
+		this.m.ID = "effects.lindwurm_potion";
+		this.m.Name = "Acidic blood";
+		this.m.Icon = "skills/status_effect_140.png";
+		this.m.IconMini = "status_effect_140_mini";
+		this.m.Overlay = "status_effect_140";
+        this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
+	}
+
     o.getTooltip = function()
     {
         local ret = [
@@ -29,7 +43,7 @@
             icon = "ui/icons/health.png",
             text = "+" + ::MSU.Text.colorGreen( "30" ) + " Hitpoints"
         });
-        
+
         ret.push({
             id = 12,
             type = "hint",

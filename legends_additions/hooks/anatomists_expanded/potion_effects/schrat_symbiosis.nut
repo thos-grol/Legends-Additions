@@ -2,14 +2,20 @@
 //"With the proper concoction and implanting the heart of schrat into the body, the test subject can form a symbiosis with the heart, gaining the abilities and properties of a schrat. They can send tendrils of wood out of their body.";
 ::mods_hookExactClass("skills/effects/schrat_potion_effect", function (o)
 {
-    local create = o.create;
     o.create = function()
     {
-        create();
-        this.m.Name = "Schrat Symbiosis";
+        this.m.ID = "effects.schrat_potion";
+		this.m.Name = "Schrat Symbiosis";
+		this.m.Icon = "skills/status_effect_146.png";
+		this.m.IconMini = "status_effect_146_mini";
+		this.m.Overlay = "status_effect_146";
+		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
     }
 
-    local getDescription = o.getDescription;
     o.getDescription = function()
     {
         return "With the proper concoction and implanting the heart of schrat into the body, the test subject can form a symbiosis with the heart, gaining the abilities and properties of a schrat. They can send tendrils of wood out of their body.";

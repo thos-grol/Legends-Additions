@@ -1,6 +1,20 @@
 //"Enhanced Eye Rods";
 //"This character\'s eyes have mutated to respond faster and more drastically to low light environments. As a ret, they have night vision nearly on par with their sight during the day.";
 ::mods_hookExactClass("skills/effects/alp_potion_effect", function(o) {
+	o.create = function()
+	{
+		this.m.ID = "effects.alp_potion";
+		this.m.Name = "Enhanced Eye Rods";
+		this.m.Icon = "skills/status_effect_147.png";
+		this.m.IconMini = "status_effect_147_mini";
+		this.m.Overlay = "status_effect_147";
+		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = false;
+		this.m.IsStacking = false;
+	}
+
 	o.getTooltip = function()
 	{
 		local ret = [

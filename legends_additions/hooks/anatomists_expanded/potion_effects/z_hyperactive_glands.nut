@@ -8,7 +8,7 @@
         create();
         this.m.Name = "Hyperactive Glands";
     }
-    
+
     o.getTooltip = function()
     {
         local ret = [
