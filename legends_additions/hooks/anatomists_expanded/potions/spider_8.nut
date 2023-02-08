@@ -6,7 +6,7 @@
         create();
         this.m.Name = "Sequence 8: Black Widow";
         this.m.Description = "It turns out that most the strength of this species is focused on in it's poison making abilities. With research into the legendary Redback Spider, this potion improves upon the poison of the previous sequence, allowing the drinker to poison your enemies with redback poison when cutting or piercing them. They also gain the ability to spit webs at their foes among other improvements.";
-        this.m.Value = 10000;
+        this.m.Value = 15000;
         this.m.Icon = "consumables/potion_31.png";
     }
 
@@ -17,11 +17,17 @@
         _actor.getFlags().add("spider");
         _actor.getFlags().add("spider_8");
 
-        _actor.getSkills().add(::new("scripts/skills/effects/serpent_potion_effect"));
-        _actor.getSkills().add(::new("scripts/skills/perks/perk_legend_item_web_skill"));
+        //1 Mutated Circulatory System
+        _actor.getSkills().add(::new("scripts/skills/effects/webknecht_potion_effect"));
 
-        _actor.getBackground().addPerk(::Const.Perks.PerkDefs.Nimble, 0, false);
-        _actor.getSkills().add(::new("scripts/skills/perks/perk_nimble"));
+        //2 Venom Glands
+        _actor.getSkills().add(::new("scripts/skills/effects/serpent_potion_effect"));
+
+        //3 Escape Artist
+        ::LA.addPerk(_actor, "perk.legend_escape_artist", "scripts/skills/perks/perk_legend_escape_artist", ::Const.Perks.PerkDefs.LegendEscapeArtist, 1);
+
+        //4 Executioner
+        ::LA.addPerk(_actor, "perk.coup_de_grace", "scripts/skills/perks/perk_coup_de_grace", ::Const.Perks.PerkDefs.CoupDeGrace, 0);
 
         this.Sound.play("sounds/enemies/dlc2/giant_spider_death_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/dlc2/giant_spider_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
@@ -32,7 +38,7 @@
 
     o.getTooltip = function()
     {
-        local result = [
+        local ret = [
             {
                 id = 1,
                 type = "title",
@@ -44,7 +50,7 @@
                 text = this.getDescription()
             }
         ];
-        result.push({
+        ret.push({
             id = 66,
             type = "text",
             text = this.getValueString()
@@ -52,7 +58,7 @@
 
         if (this.getIconLarge() != null)
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIconLarge(),
@@ -61,54 +67,64 @@
         }
         else
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIcon()
             });
         }
 
-        result.push({
+        ret.push({
+            id = 12,
+            type = "text",
+            icon = "ui/icons/special.png",
+            text = "Mutated Circulatory System: Immune to poison effects. Not affected by nighttime penalties."
+        });
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/melee_defense.png",
+            text = "+" + ::MSU.Text.colorGreen( "8" ) + " Melee Defense"
+        });
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/health.png",
+            text = "+" + ::MSU.Text.colorGreen( "10" ) + " Hitpoints"
+        });
+
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
             text = "Venom Glands: Piercing or cutting attacks poison the target with redback poison."
         });
-        result.push({
-            id = 11,
-            type = "text",
-            icon = "ui/icons/initiative.png",
-            text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 15 + "[/color] Initiative"
-        });
-        result.push({
-            id = 11,
-            type = "text",
-            icon = "ui/icons/melee_skill.png",
-            text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 10 + "[/color] Melee Skill"
-        });
-        result.push({
+
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Spit Web: Spit a web at your foes and trap them."
+            text = "Escape Artist: Grants a chance to dodge nets with ranged defence. At the start of your turn, perform a free break free action. Also decreases the AP cost of movement and escape skills by 1."
         });
-        result.push({
+
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Nimble: Specialize in light armor! By nimbly dodging or deflecting blows, convert any hits to glancing hits. Hitpoint damage taken is reduced by up to [color=" + ::Const.UI.Color.PositiveValue + "]60%[/color], but lowered exponentially by the total penalty to Maximum Fatigue from body and head armor above 15."
+            text = "Executioner: Inflict additional [color=" + ::Const.UI.Color.PositiveValue + "]20%[/color] damage against targets that have sustained any injury effects, like a broken arm. Also grants [color=" + ::Const.UI.Color.NegativeValue + "]+10%[/color] damage against targets who are stunned, netted or sleeping."
         });
-        result.push({
+
+        ret.push({
             id = 65,
             type = "text",
             text = "Right-click or drag onto the currently selected character in order to drink. Will refund owned perks. Will not give points for traits."
         });
-        result.push({
+        ret.push({
             id = 65,
             type = "hint",
             icon = "ui/tooltips/warning.png",
             text = "Mutates the body. Side effects include sickness and if potions of different sequences are mixed, death."
         });
-        return result;
+        return ret;
     }
 });

@@ -2,8 +2,8 @@ this.haunt <- this.inherit("scripts/skills/magic_skill", {
 	m = {},
 	function create()
 	{
-		//FEATURE_1: Haunt skill
-		//FEATURE_1: Haunt perk
+		//FEATURE_5: Haunt skill
+		//FEATURE_5: Haunt perk
 		this.magic_skill.create();
 		this.m.ID = "actives.haunt";
 		this.m.Name = "Haunt";
@@ -61,7 +61,7 @@ this.haunt <- this.inherit("scripts/skills/magic_skill", {
 				icon = "ui/icons/special.png",
 				text = "Usable in " + this.m.Cooldown + " turns."
 			});
-		}		
+		}
 		return ret;
 	}
 
@@ -73,7 +73,7 @@ this.haunt <- this.inherit("scripts/skills/magic_skill", {
 		local ROLL = this.Math.rand(1, 100);
 
 		if (ROLL > HIT_CHANCE) return false;
-		
+
 		local effect = _target.getSkills().getSkillByID("effects.anguish");
 		if (effect == null)
 		{
@@ -84,8 +84,9 @@ this.haunt <- this.inherit("scripts/skills/magic_skill", {
 			if (a.getSkills().hasSkill("perk.torment_soul")) effect.m.TormentSoul = true;
 		}
 		effect.m.TurnsLeft = this.m.Duration;
-		//FEATURE_1: Haunt fx
-		
+		//FEATURE_5: Haunt fx
+		//Make blue temporary fire fx on spawn
+
 		return true;
 	}
 

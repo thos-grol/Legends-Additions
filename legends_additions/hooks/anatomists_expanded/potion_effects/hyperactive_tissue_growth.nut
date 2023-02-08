@@ -1,12 +1,12 @@
 //"Hyperactive Tissue Growth";
-//"This character\'s body has mutated to regrow skin and muscle tissue much more quickly than normal. Deep injuries heal much faster than normal as a result. They also seem to have developed a strong taste for red meat, but that\'s probably unrelated.";
+//"This character\'s body has mutated to regrow skin and muscle tissue much more quickly than normal. Deep injuries heal much faster than normal as a ret. They also seem to have developed a strong taste for red meat, but that\'s probably unrelated.";
 ::mods_hookExactClass("skills/effects/nachzehrer_potion_effect", function (o)
 {
     
     local getDescription = o.getDescription;
     o.getDescription = function()
     {
-        return "This character\'s body has mutated to regrow skin and muscle tissue much more quickly than normal and they gain the speed of nachzehrer. Deep injuries heal much faster than normal as a result. They also seem to have developed a hunger for red meat, but that\'s probably unrelated.";
+        return "This character\'s body has mutated to regrow skin and muscle tissue much more quickly than normal and they gain the speed of nachzehrer. Deep injuries heal much faster than normal as a ret. They also seem to have developed a hunger for red meat, but that\'s probably unrelated.";
     }
     
     o.getTooltip = function()

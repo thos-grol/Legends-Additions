@@ -34,7 +34,7 @@
 				id = 3,
 				type = "headerText",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Not currently in sight[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Not currently in sight[/color]"
 			});
 		}
 		else
@@ -51,7 +51,7 @@
 						type = "headerText",
 						icon = "ui/icons/hitchance.png",
 						children = _targetedWithSkill.getHitFactors(tile),
-						text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + hitchance + "%[/color] chance to hit"
+						text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + hitchance + "%[/color] chance to hit"
 					});
 				}
 			}
@@ -93,18 +93,18 @@
 				id = 5,
 				type = "progressbar",
 				icon = "ui/icons/armor_head.png",
-				value = this.getArmor(this.Const.BodyPart.Head),
-				valueMax = this.getArmorMax(this.Const.BodyPart.Head),
-				text = this.Const.ArmorStateName[this.getArmorState(this.Const.BodyPart.Head)],
+				value = this.getArmor(::Const.BodyPart.Head),
+				valueMax = this.getArmorMax(::Const.BodyPart.Head),
+				text = ::Const.ArmorStateName[this.getArmorState(::Const.BodyPart.Head)],
 				style = "armor-head-slim"
 			});
 			tooltip.push({
 				id = 6,
 				type = "progressbar",
 				icon = "ui/icons/armor_body.png",
-				value = this.getArmor(this.Const.BodyPart.Body),
-				valueMax = this.getArmorMax(this.Const.BodyPart.Body),
-				text = this.Const.ArmorStateName[this.getArmorState(this.Const.BodyPart.Body)],
+				value = this.getArmor(::Const.BodyPart.Body),
+				valueMax = this.getArmorMax(::Const.BodyPart.Body),
+				text = ::Const.ArmorStateName[this.getArmorState(::Const.BodyPart.Body)],
 				style = "armor-body-slim"
 			});
 			tooltip.push({
@@ -113,7 +113,7 @@
 				icon = "ui/icons/health.png",
 				value = this.getHitpoints() >= 0 ? this.getHitpoints() : 0,
 				valueMax = this.getHitpointsMax(),
-				text = this.Const.HitpointsStateName[this.getHitpointsState()],
+				text = ::Const.HitpointsStateName[this.getHitpointsState()],
 				style = "hitpoints-slim"
 			});
 			tooltip.push({
@@ -121,8 +121,8 @@
 				type = "progressbar",
 				icon = "ui/icons/morale.png",
 				value = this.getMoraleState(),
-				valueMax = this.Const.MoraleState.COUNT - 1,
-				text = this.Const.MoraleStateName[this.getMoraleState()],
+				valueMax = ::Const.MoraleState.COUNT - 1,
+				text = ::Const.MoraleStateName[this.getMoraleState()],
 				style = "morale-slim"
 			});
 			tooltip.push({
@@ -131,7 +131,7 @@
 				icon = "ui/icons/fatigue.png",
 				value = this.getFatigue(),
 				valueMax = this.getFatigueMax(),
-				text = this.Const.FatigueStateName[this.getFatigueState()],
+				text = ::Const.FatigueStateName[this.getFatigueState()],
 				style = "fatigue-slim"
 			});
 
@@ -174,11 +174,11 @@
 			};
 			local isPerk = function ( _, _skill )
 			{
-				return _skill.isType(this.Const.SkillType.Perk);
+				return _skill.isType(::Const.SkillType.Perk);
 			};
 			local isInjury = function ( _, _skill )
 			{
-				return _skill.isType(this.Const.SkillType.TemporaryInjury);
+				return _skill.isType(::Const.SkillType.TemporaryInjury);
 			};
 			local isTextRow = function ( _, row )
 			{
@@ -240,7 +240,7 @@
 
 					if (stackInOneLine && stacks[name] > 1)
 					{
-						text = text + (" [color=" + this.Const.UI.Color.NegativeValue + "]" + "x" + stacks[name] + "[/color]");
+						text = text + (" [color=" + ::Const.UI.Color.NegativeValue + "]" + "x" + stacks[name] + "[/color]");
 					}
 
 					tooltip.push({
@@ -273,10 +273,10 @@
 				return items.len() > 1 ? "s" : "";
 			};
 			local patchedPerkIcons = {};
-			patchedPerkIcons[this.Const.Strings.PerkName.BatteringRam] <- "ui/settlement_status/settlement_effect_13.png";
+			patchedPerkIcons[::Const.Strings.PerkName.BatteringRam] <- "ui/settlement_status/settlement_effect_13.png";
 			local getRealPerkIcon = function ( perk )
 			{
-				local realPerk = this.Const.Perks.findById(perk.getID());
+				local realPerk = ::Const.Perks.findById(perk.getID());
 
 				if (realPerk)
 				{
@@ -302,11 +302,11 @@
 				{
 					if (row.id == 5 && row.icon == "ui/icons/armor_head.png")
 					{
-						row.text <- "" + this.getArmor(this.Const.BodyPart.Head) + " / " + this.getArmorMax(this.Const.BodyPart.Head) + "";
+						row.text <- "" + this.getArmor(::Const.BodyPart.Head) + " / " + this.getArmorMax(::Const.BodyPart.Head) + "";
 					}
 					else if (row.id == 6 && row.icon == "ui/icons/armor_body.png")
 					{
-						row.text <- "" + this.getArmor(this.Const.BodyPart.Body) + " / " + this.getArmorMax(this.Const.BodyPart.Body) + "";
+						row.text <- "" + this.getArmor(::Const.BodyPart.Body) + " / " + this.getArmorMax(::Const.BodyPart.Body) + "";
 					}
 					else if (row.id == 7 && row.icon == "ui/icons/health.png")
 					{
@@ -350,7 +350,7 @@
 				}
 			}
 
-			local statusEffects = this.getSkills().query(this.Const.SkillType.StatusEffect | this.Const.SkillType.TemporaryInjury, false, true);
+			local statusEffects = this.getSkills().query(::Const.SkillType.StatusEffect | ::Const.SkillType.TemporaryInjury, false, true);
 			local count = tooltip.len() - statusEffects.len();
 
 			if (statusEffects.len() && count > 0)
@@ -365,7 +365,7 @@
 					});
 					statusEffects = removeDuplicates(statusEffects);
 					pushSection(statusEffects, null, 100, 2, "", true);
-					local injuries = this.getSkills().query(this.Const.SkillType.TemporaryInjury, false, true);
+					local injuries = this.getSkills().query(::Const.SkillType.TemporaryInjury, false, true);
 
 					foreach( i, injury in injuries )
 					{
@@ -413,7 +413,7 @@
 						}
 						else
 						{
-							injuryRow.text += "[color=" + this.Const.UI.Color.PositiveValue + "]" + " (Iron Will)[/color]";
+							injuryRow.text += "[color=" + ::Const.UI.Color.PositiveValue + "]" + " (Iron Will)[/color]";
 						}
 
 						tooltip.push(injuryRow);
@@ -477,58 +477,28 @@
 				text = "" + this.m.CurrentProperties.RangedDefense
 			});
 
-			local activePerks = this.getSkills().query(this.Const.SkillType.Active, false, true);
+			local activePerks = this.getSkills().query(::Const.SkillType.Active, false, true);
 			activePerks = removeDuplicates(activePerks);
 			pushSection(activePerks, "Usable perks", 200, 1);
-			local thresholdToCompact = 16;
-			local perks = this.getSkills().query(this.Const.SkillType.Perk, false, true);
+			local perks = this.getSkills().query(::Const.SkillType.Perk, false, true);
 			perks = removeDuplicates(perks);
 			pushSectionName(perks, "Perks", 300);
 
-			if (perks.len() < thresholdToCompact)
+			foreach( i, perk in perks )
 			{
-				foreach( i, perk in perks )
-				{
-					tooltip.push({
-						id = 301 + i,
-						type = "text",
-						icon = getRealPerkIcon(perk),
-						text = perk.getName()
-					});
-				}
-			}
-			else
-			{
-				local texts = "";
-
-				foreach( _, perk in perks )
-				{
-					local name = perk.getName();
-
-					if (name && name.len() > 1)
-					{
-						texts = texts + ("[color=" + this.Const.UI.Color.NegativeValue + "]" + name.slice(0, 1) + "[/color]" + name.slice(1) + ", ");
-					}
-				}
-
-				if (texts.len() > 2)
-				{
-					texts = texts.slice(0, -2);
-				}
-
 				tooltip.push({
-					id = 301,
+					id = 301 + i,
 					type = "text",
-					icon = "ui/perks/selection_frame.png",
-					text = texts
+					icon = getRealPerkIcon(perk),
+					text = perk.getName()
 				});
 			}
 
-			local accessories = this.getItems().getAllItemsAtSlot(this.Const.ItemSlot.Accessory);
+			local accessories = this.getItems().getAllItemsAtSlot(::Const.ItemSlot.Accessory);
 			pushSection(accessories, "Accessory", 400, 0, "ui/items/");
-			local ammos = this.getItems().getAllItemsAtSlot(this.Const.ItemSlot.Ammo);
+			local ammos = this.getItems().getAllItemsAtSlot(::Const.ItemSlot.Ammo);
 			pushSection(ammos, "Ammo", 500, 0, "ui/items/");
-			local items = this.getItems().getAllItemsAtSlot(this.Const.ItemSlot.Bag);
+			local items = this.getItems().getAllItemsAtSlot(::Const.ItemSlot.Bag);
 			local itemsTitle = "Item" + getPlural(items) + " in bags";
 			pushSection(items, itemsTitle, 600, 0, "ui/items/", true);
 			local itemsOnGround = this.getTile().Items;

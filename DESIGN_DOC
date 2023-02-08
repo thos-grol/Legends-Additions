@@ -1,40 +1,103 @@
-//FEATURE_3: Overhaul Cultists
+//FEATURE_2: Assassins/bounty hunters hired if you offend nobles
+    //Asassins get escape artist
+//FEATURE_2: Revamp Orcs
+//FEATURE_2: Fix unhold throwing, throw misses knock player back
+//Holy Magic overhaul
 
-//FEATURE_6: BOSS
-    Hexe Leader with Lindwurm Pet
-        Hex ties 2 brothers together, 3 turn duration
-        Illusionary root on all hexed enemies
+General 1h builds (all 1h weps) =
+-straight boring duelist
+-dueling duelist: with parry dagger
+-utility duelist: with offhand training (usually a 1h mace) and stacked with nets
+-1h axe headshot build: (uses heft to go for 'domes')
+-1h 3-head flail with feint and fast adaptation (this one is a beaut! I'm known for my love of flails and 3-head and reach flails are king!)
+-1h spear dodge overwhelm: best 1v1 'duelist' in the game (doesn't use duelist perk though, practically unbeatable in 1v1, 4 stacks of overwhelm at super high speeds)
 
-Storm star : A magic morning star that could release a version of chain lightning when it hit.
-Lefeber's Enchanter : A rod that imbued items with the ability to store spells.
+General 2h builds (most 2h weps are ok with these)
+-generic 2h'er: main 2h wep
+-2h sword MoB: fatigue neutral build that lets you AOE every turn... one of my most disgusting and reliable builds
+-2h 'round spin': probably MoB so you can spin in a circle every turn with a 2h axe/flail (only ever did this build on a lone wolf, not a common/workable build with allies around lol and the fatigue is expensive without mob)
 
+Reach weapons:
+-2h flail reach: 2 types of builds, MoB and generic (disgusting infinite headshot build, can just use rebound for basic, but headhunter with MoB is very strong)
+-general polearm/reach weapon: followup with recover, keeps people pretty strong in your backline
+-2h reach cleav: big numbers with mauler 🙂 (also super scary with follow-up)
+-support mace: (with MoB you can make a support reach mace that can stun every turn, they're very nice indeed, maybe even polearm mastery so they can move 2 spaces every turn before stunning)
+
+Ranged builds:
+-obv. throwing deleter: throwing with muscularity (i forgot, muscularity in multi-attacks-per-turn-builds are a strong help) javelins delete people, 2-shotting footmen is fun!
+-slinger headshot build: yeah, it's definitely fun lol (push the advantange feeds back on a slinger's successful headshot for more headshots)
+-perfect focus archer: crazy first turn, recover next turn, rinse repeat and you'll knock out multiple kills in your 'attacking' turns)
+-over/fear/feint/gunner: the gunner that does everything (usually don't have enough perks to make it) but feint, and fearsome are a great way to make gunners 'fun' 😛
+-quick hands rangers (range hybrids): gun/crossbow hybrid to deal with different enemy types, or bow/throw, sling/throw, cbow/throw (or even gun/throw, but that's harder) having the different options is good and nice but needs perks
+
+Tanks:
+-dodge nimble: generic speedy tank, hates nets and staggers and nomads.... super tricky but super rewarding if you don't have enemy stagger sand such (hates goblins & nomads)
+-medium bonus stats: saves your weaker tanks from dying with good balance (or just in general a good tank, still doesn't like staggers, but more forgiving imo)
+-generic BF wall: heaviest armour, 'nimble attachment' (a.k.a fur padding) makes the best tank imo, can take big hits and cbow/armour pierce isn't as bad
+ALSO
+different ways to fluff up your tank.
+-rebound for infinite shieldwalls
+-or, tower shield to get best def without needing a shieldwall (can't really ever get MoB tanks imo, too many stats and getting fortify every turn is too hard [usually the same with indomitable sadly])
+
+Banner/support builds:
+-holy magic bros: monks and such with MoB. resolve and fatigue to support with heals, free def (and if banner is added, you can use inspiring presence)
+-rally banner: can be used with ^holy magic^, just need to have high res as usual and MoB
+-musician: drumming/singing perks, maybe even have 'entice'/'revolt' (the ranged shield bash is a very nice support ability imo)
+-I've combined a holy magic support and a tank before on one of my stream/YT playthroughs iirc (was a fun combo lol, did decently)
+-ohh and with all supports/banners, inspire is great ofc.
+
+Book Items
+    Put book in bag slot. While camping, bro can learn book.
+
+Apothecary
+Alchemist/Potion Master Rework
+    Potions in bag slots. Potions become ranged ammo. Potion master perk lets you switch ammo to throw them.
+    Perk, chance to not consume ammo when throwing potion.
+Anatomist can be potion master
+
+Houndmaster rework
+
+Overhaul Cultists
+    - Permenant Injuries. For every permenant injury, give a unique buff.
+
+BOSS
+Hexe Leader with Lindwurm Pet
+    Hex ties 2 brothers together, 3 turn duration
+    Illusionary root on all hexed enemies
+
+
+Items
+    Storm star : A magic morning star that could release a version of chain lightning when it hit.
+    Lefeber's Enchanter : A rod that imbued items with the ability to store spells.
+
+Magic
 
     Mana stat
     Resolve = Will
     Ranged Attack = Aim
-    Inteligence Trait  
+    Inteligence Trait
         Smart Trait - Above average intelligence
         Bright Trait - Highly Intelligent
         Genius Trait - Super Intelligent
 
     magic modifiers:
         learn time <- higher intelligence has a bigger chance to learn spells
-        
+
         magic matrix <- determines what school of spells you can cast and learn
         cast speed <- higher intelligence can decrease cast time
-        
+
         mana <- the pool you cast spells from
 
         will <- used in checks/conflicts. can determine success rate of spell
             summoning ghosts/binding them to your will
 
-        the more perks you take in the school, the more knowledge you have. knowledge = power. 
+        the more perks you take in the school, the more knowledge you have. knowledge = power.
             power die + spell roll die = effect damage
 
 
 Schools:
     Theoretical:
-        
+
         Defense:
             Magic Shield
                 perk: autocast magic shield before taking damage
@@ -54,7 +117,7 @@ Schools:
                     perk: gust stuns
             Utility:
                 Haste
-            
+
         Earth - Defense, Single Target Damage
             Vile Clutch
             Iron Shot
@@ -69,10 +132,10 @@ Schools:
             Ice Spear
             Frost Nova
             Simulacrum
-   
 
-        
-        
+
+
+
     Hexes
         Illusion
         Charm
@@ -85,14 +148,55 @@ Schools:
 
             //Unique Spells - Can take from hero's autobiography
             Create Death Knight - Chooses a corpse on the floor to be a death knight. You can only have 1 death knight at a time
-            Negative Energy Fireball - 
+            Negative Energy Fireball -
             Drain Life - Draws health from the target to caster
                 ::Const.Perks.PerkDefs.LegendSiphon
 
 
+
 ---
 
+Potions
 
+All potions increase life stat and then a secondary stat.
+
+Ghoul
+    - Tier 1 HP (15, 30)
+    - Tier 3 Initiative (20, 40)
+
+Direwolf
+    - Tier 3 AP (2, 4)
+    - Fatigue (15, 30)
+    - Fatigue Regeneration (5, 10)
+
+
+Alp
+    - Tier 2 Resolve (15, 30)
+
+Orc
+    - Tier 2 Hp (15, 30)
+    - Tier 2 Fat (20, 40)
+
+Unhold
+    - Tier 3 Hp (20, 40)
+
+Wurm
+    - Tier 3 Hp (20, 40)
+
+
+schrat
+
+serpent
+
+vampire
+
+
+
+
+Poison (No Stat)
+ - Spider
+
+Goblin potion doesnt increase life - have it do something else.
 
 ---
 
@@ -102,13 +206,14 @@ book_item
         spells, contained
 
 Magic Matrix - Engrave a magic matrix allowing you to learn spells of a certain school
-Meditation - 
+Meditation -
 
 Necronomicon
 
 camp:
     no action = learn from spellbook
-    
+
 Champion variants of heroes
 
 Undead cannot be charmed
+

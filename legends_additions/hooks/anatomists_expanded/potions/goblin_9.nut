@@ -6,60 +6,40 @@
         create();
         this.m.Name = "Sequence 9: Goblin";
         this.m.Description = "Equal parts terrifying and annoying, the uncanny marksmanship of goblins has long been thought unobtainable by ordinary, self-respecting humans. With this wondrous potion, however, the discerning warrior can harness some of that latent skill and obtain the celerity inherent in these greenskins. Side effects might include shrinking.\n\nUnfortunately, the anatomist says that this race is too feeble to have develop a sequence 8 potion.";
-        this.m.Value = 5000;
+        this.m.Value = 10000;
     }
 
     o.onUse = function(_actor, _item = null)
     {
         ::LA.doMutation(_actor, "goblin");
+        _actor.getFlags().add("goblin");
 
-        if (_actor.getSkills().hasSkill("trait.huge"))
-        {
-            _actor.getSkills().removeByID("trait.huge");
-        }
+        //Trait Huge -> Normal -> Tiny
+        if (_actor.getSkills().hasSkill("trait.huge")) _actor.getSkills().removeByID("trait.huge");
+        else _actor.getSkills().add(::new("scripts/skills/traits/tiny_trait"));
 
-        if (!_actor.getSkills().hasSkill("trait.tiny"))
-        {
-            _actor.getSkills().add(::new("scripts/skills/traits/tiny_trait"));
-        }
+        //1 Mutated Cornea
+        _actor.getSkills().add(::new("scripts/skills/effects/goblin_overseer_potion_effect"));
 
-        if (!_actor.getFlags().has("goblin"))
-        {
-            _actor.getFlags().add("goblin");
-        }
+        //2: Hair Splitter
+        ::LA.addPerk(_actor, "perk.legend_hair_splitter", "scripts/skills/perks/perk_legend_hair_splitter", ::Const.Perks.PerkDefs.LegendHairSplitter, 0);
 
-        if (_actor.getSkills().getSkillByID("effects.goblin_overseer_potion") == null)
-        {
-            _actor.getSkills().add(::new("scripts/skills/effects/goblin_overseer_potion_effect"));
-        }
+        //3 Head Hunter
+        ::LA.addPerk(_actor, "perk.head_hunter", "scripts/skills/perks/perk_head_hunter", ::Const.Perks.PerkDefs.HeadHunter, 1);
 
-        if (_actor.getSkills().getSkillByID("effects.goblin_grunt_potion") == null)
-        {
-            _actor.getSkills().add(::new("scripts/skills/effects/goblin_grunt_potion_effect"));
-        }
+        //4 Eyes Up
+        ::LA.addPerk(_actor, "perk.ptr_eyes_up", "scripts/skills/perks/perk_ptr_eyes_up", ::Const.Perks.PerkDefs.PTREyesUp, 2);
 
-        if (_actor.getSkills().getSkillByID("perk.footwork") == null)
-        {
-            _actor.getBackground().addPerk(::Const.Perks.PerkDefs.Footwork, 0, false);
-            _actor.getSkills().add(::new("scripts/skills/perks/perk_footwork"));
-        }
-
-        if (_actor.getSkills().getSkillByID("perk.ptr_nailed_it") == null)
-        {
-            _actor.getBackground().addPerk(::Const.Perks.PerkDefs.PTRNailedIt, 1, false);
-            _actor.getSkills().add(::new("scripts/skills/perks/perk_ptr_nailed_it"));
-        }
-
-        this.Sound.play("sounds/enemies/vampire_hurt_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/vampire_death_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/vampire_idle_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/goblin_hurt_0" + this.Math.rand(0, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/goblin_death_0" + this.Math.rand(0, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/goblin_idle_0" + this.Math.rand(0, 3) + ".wav", ::Const.Sound.Volume.Inventory);
 
         return this.anatomist_potion_item.onUse(_actor, _item);
     }
 
     o.getTooltip = function()
     {
-        local result = [
+        local ret = [
             {
                 id = 1,
                 type = "title",
@@ -71,7 +51,7 @@
                 text = this.getDescription()
             }
         ];
-        result.push({
+        ret.push({
             id = 66,
             type = "text",
             text = this.getValueString()
@@ -79,7 +59,7 @@
 
         if (this.getIconLarge() != null)
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIconLarge(),
@@ -88,54 +68,70 @@
         }
         else
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIcon()
             });
         }
 
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Shrinks you."
+            text = "Shrinks the drinker."
         });
-        result.push({
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Reactive Leg Muscles: The AP cost of Rotation and Footwork is reduced to [color=" + ::Const.UI.Color.PositiveValue + "]2[/color] and the Fatigue costs are reduced by [color=" + ::Const.UI.Color.PositiveValue + "]50%[/color]." + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+5[/color] Initiative"
+            text = "Mutated Cornea: This character\'s eyes have been permanently mutated and are now capable of detecting the subtlest movements of wind and air. While minor on its own, this allows them to better predict the trajectory of projectile attacks and better land hits on vulnerable parts of a target. An additional" + ::MSU.Text.colorGreen( "20" ) + "% of damage ignores armor when using bows or crossbows"
         });
-        result.push({
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/ranged_skill.png",
+            text = "+" + ::MSU.Text.colorGreen( "10" ) + " Ranged Skill"
+        });
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/initiative.png",
+            text = "+" + ::MSU.Text.colorGreen( "15" ) + " Initiative"
+        });
+
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Mutated Cornea: An additional [color=" + ::Const.UI.Color.PositiveValue + "]15%[/color] of damage ignores armor when using bows or crossbows\n" + "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Ranged Skill"  + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+15[/color] Ranged Defense"
+            text = "Hair Splitter: +" + ::MSU.Text.colorGreen( "10" ) + "% chance to hit the head."
         });
-        result.push({
+
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Footwork: Allows you to leave a Zone of Control without triggering free attacks by using skillful footwork."
+            text = "Head Hunter: Go for the head! Hitting the head of a target will give you a guaranteed hit to the head also with your next attack. Connecting with your hit will reset the effect."
         });
-        result.push({
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Nailed It!: The chance to hit the head with ranged attacks is increased by [color=" + ::Const.UI.Color.PositiveValue + "]25%[/color] but reduced by [color=" + ::Const.UI.Color.NegativeValue + "]5%[/color] per tile of distance between you and the target."
+            text = "Eyes Up: Modifies the perk to work with any ranged weapon. Ranged attacks, hit or miss, will debuff the targets melee and ranged skill. A weakened version of this effect is spread to adjacent enemies."
         });
-        result.push({
+
+
+        ret.push({
             id = 65,
             type = "text",
             text = "Right-click or drag onto the currently selected character in order to drink. Will refund owned perks. Will not give points for traits."
         });
-        result.push({
+        ret.push({
             id = 65,
             type = "hint",
             icon = "ui/tooltips/warning.png",
             text = "Mutates the body. Side effects include sickness and if potions of different sequences are mixed, death."
         });
-        return result;
+        return ret;
     }
 });

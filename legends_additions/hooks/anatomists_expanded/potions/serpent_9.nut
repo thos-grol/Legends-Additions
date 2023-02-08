@@ -12,11 +12,12 @@
     o.onUse = function(_actor, _item = null)
     {
         ::LA.doMutation(_actor, "serpent");
-
         _actor.getFlags().add("serpent");
 
+        //FEATURE_2: serpent potion disabled
         _actor.getSkills().add(::new("scripts/skills/effects/serpent_potion_effect"));
-        _actor.getSkills().add(::new("scripts/skills/effects/webknecht_potion_effect"));
+        //+15 Melee Defense
+        //+15 HP
 
         _actor.getBackground().addPerk(::Const.Perks.PerkDefs.PTRPatternRecognition, 0, false);
         _actor.getSkills().add(::new("scripts/skills/perks/perk_ptr_pattern_recognition"));
@@ -33,7 +34,7 @@
 
     o.getTooltip = function()
     {
-        local result = [
+        local ret = [
             {
                 id = 1,
                 type = "title",
@@ -45,7 +46,7 @@
                 text = this.getDescription()
             }
         ];
-        result.push({
+        ret.push({
             id = 66,
             type = "text",
             text = this.getValueString()
@@ -53,7 +54,7 @@
 
         if (this.getIconLarge() != null)
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIconLarge(),
@@ -62,60 +63,60 @@
         }
         else
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIcon()
             });
         }
 
-        result.push({
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
             text = "Venom Glands: Piercing or cutting attacks poison the target."
         });
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/initiative.png",
             text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 15 + "[/color] Initiative"
         });
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/melee_skill.png",
             text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 5 + "[/color] Melee Skill"
         });
-        result.push({
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
             text = "Mutated Circulatory System: Immune to poison effects, including those of Webknechts and Goblins."
         });
-        result.push({
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Pattern Recognition: Improves defense per enemy in combat."
+            text = "Pattern Recognition: Adapt defenses against each enemy in combat."
         });
-        result.push({
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
             text = "Survival Instinct: Gain the serpent's survival instinct. Improves defense."
         });
-        result.push({
+        ret.push({
             id = 65,
             type = "text",
             text = "Right-click or drag onto the currently selected character in order to drink. Will refund owned perks. Will not give points for traits."
         });
-        result.push({
+        ret.push({
             id = 65,
             type = "hint",
             icon = "ui/tooltips/warning.png",
             text = "Mutates the body. Side effects include sickness and if potions of different sequences are mixed, death."
         });
-        return result;
+        return ret;
     }
 });

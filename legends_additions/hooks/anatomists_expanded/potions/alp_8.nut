@@ -1,6 +1,7 @@
 ::mods_hookExactClass("items/misc/anatomist/geist_potion_item", function (o)
 {
-    local create = o.create;
+    //FEATURE_2: Rebalance Alp 8 potion
+	local create = o.create;
     o.create = function()
     {
         create();
@@ -8,7 +9,7 @@
 		this.m.Description = "This concoction, borne from research into the legendary demon alp, further improves the qualities given in the sequence 9 potion, Alp. ";
 		this.m.Icon = "consumables/potion_34.png";
         this.m.Value = 1000;
-        
+
     }
 
     o.onUse = function(_actor, _item = null)
@@ -30,7 +31,7 @@
 
     o.getTooltip = function()
     {
-		local result = [
+		local ret = [
 			{
 				id = 1,
 				type = "title",
@@ -42,7 +43,7 @@
 				text = this.getDescription()
 			}
 		];
-		result.push({
+		ret.push({
 			id = 66,
 			type = "text",
 			text = this.getValueString()
@@ -50,7 +51,7 @@
 
 		if (this.getIconLarge() != null)
 		{
-			result.push({
+			ret.push({
 				id = 3,
 				type = "image",
 				image = this.getIconLarge(),
@@ -59,49 +60,49 @@
 		}
 		else
 		{
-			result.push({
+			ret.push({
 				id = 3,
 				type = "image",
 				image = this.getIcon()
 			});
 		}
 
-		result.push({
+		ret.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/special.png",
 			text = "King of Nightmares: Torment the victim's soul with nightmares, bringing them ever closer to oblivion. Improves the Nightmare skill."
 		});
-		result.push({
+		ret.push({
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
 			text = "Kingdom of Sleep: Lull them into your kingdom. Improves the Sleep skill."
 		});
-		result.push({
+		ret.push({
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
 			text = "Horrify: Blare out a piercing, unworldly sound that is more than likely to distress anyone unfortunate enough to hear it."
 		});
-		result.push({
+		ret.push({
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
 			text = "Levitate: Float above the ground. You no longer need to walk like those peasants."
 		});
-		result.push({
+		ret.push({
 			id = 65,
 			type = "text",
 			text = "Right-click or drag onto the currently selected character in order to drink. Will refund owned perks. Will not give points for traits."
 		});
-		result.push({
+		ret.push({
 			id = 65,
 			type = "hint",
 			icon = "ui/tooltips/warning.png",
 			text = "Mutates the body. Side effects include sickness and if potions of different sequences are mixed, death."
 		});
-		return result;
+		return ret;
 	}
 
 });

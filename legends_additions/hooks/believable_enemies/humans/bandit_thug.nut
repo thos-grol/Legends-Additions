@@ -26,190 +26,132 @@
 ::mods_hookExactClass("entity/tactical/enemies/bandit_thug", function(o) {
 	o.assignRandomEquipment = function()
 	{
-		//TODO: finish all the builds for bandit_thug
 		//tribal trait
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bully"));
 		//defensive perk
-		if(this.Math.rand(1, 6) < 6) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_strength_in_numbers"));
-		else this.m.Skills.add(::new("scripts/skills/perks/perk_dodge"));
+		local flag = false;
 
-		local r = this.Math.rand(1, 15);
+		local r = this.Math.rand(1, 6);
 
 		if (r == 1)
 		{
-			r = this.Math.rand(1, 3);
+			r = this.Math.rand(1, 4);
 			if (r == 1)
 			{
-				this.m.Items.equip(this.new("scripts/items/weapons/woodcutters_axe"));
-				this.level_resolve(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-				this.level_melee_skill(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-				this.level_melee_defense(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-
+				this.m.Items.equip(::new("scripts/items/weapons/woodcutters_axe"));
+				this.level_health(4, this.Math.rand(-6, 3) );
+				this.level_melee_skill(4, this.Math.rand(-6, 3) );
+				this.level_melee_defense(4, this.Math.rand(-6, 3) );
+				this.m.Skills.add(::new("scripts/skills/perks/perk_colossus"));
+				this.m.Skills.add(::new("scripts/skills/perks/perk_legend_smashing_shields"));
+				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft"));
 			}
 			else if (r == 2)
 			{
-				this.m.Items.equip(this.new("scripts/items/weapons/goedendag"));
-				this.level_resolve(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-				this.level_melee_skill(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-				this.level_melee_defense(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-
+				this.m.Items.equip(::new("scripts/items/weapons/goedendag"));
+				this.level_resolve(4, this.Math.rand(-6, 3) );
+				this.level_melee_skill(4, this.Math.rand(-6, 3) );
+				this.level_melee_defense(4, this.Math.rand(-6, 3) );
+				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pointy_end"));
+				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_through_the_gaps"));
+				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_small_target"));
 			}
 			else if (r == 3)
 			{
-				this.m.Items.equip(this.new("scripts/items/weapons/pitchfork"));
-				this.level_melee_skill(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-				this.level_melee_defense(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-				this.level_initiative(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
+				this.m.Items.equip(::new("scripts/items/weapons/pitchfork"));
+				this.level_melee_skill(4, this.Math.rand(-6, 3) );
+				this.level_resolve(4, this.Math.rand(-6, 3) );
+				this.level_initiative(4, this.Math.rand(-6, 3) );
+				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pointy_end"));
+				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_leverage"));
+				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_intimidate"));
 			}
+			else
+			{
+				this.m.Items.equip(::new("scripts/items/weapons/legend_ranged_wooden_flail"));
+				this.level_melee_skill(4, this.Math.rand(-6, 3) );
+				this.level_resolve(4, this.Math.rand(-6, 3) );
+				this.level_initiative(4, this.Math.rand(-6, 3) );
+				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_from_all_sides"));
+				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_head_smasher"));
+				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_small_target"));
 
-
+			}
 		}
-		else
+		else if (r == 2)
 		{
-			//TODO: 1h rolls stats no stars
-			if (r == 2)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/shortsword"));
+			this.m.Items.equip(::new("scripts/items/weapons/hatchet"));
+			this.level_fatigue(4, this.Math.rand(-6, 3) );
+			this.level_melee_defense(4, this.Math.rand(-6, 3) );
+			this.level_health(4, this.Math.rand(-6, 3) );
+			this.m.Skills.add(::new("scripts/skills/perks/perk_colossus"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dismemberment"));
+		}
+		else if (r == 3)
+		{
+			this.m.Items.equip(::new("scripts/items/weapons/bludgeon"));
+			this.level_fatigue(4, this.Math.rand(-6, 3) );
+			this.level_melee_defense(4, this.Math.rand(-6, 3) );
+			this.level_health(4, this.Math.rand(-6, 3) );
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_push_it"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heavy_strikes"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bear_down"));
+		}
+		else if (r == 4)
+		{
+			this.m.Items.equip(::new("scripts/items/weapons/pickaxe"));
+			this.level_melee_defense(4, this.Math.rand(-6, 3) );
+			this.level_fatigue(4, this.Math.rand(-6, 3) );
+			this.level_initiative(4, this.Math.rand(-6, 3) );
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_alert"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_rattle"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_internal_hemorrhage"));
+		}
+		else if (r == 5)
+		{
+			this.m.Items.equip(::new("scripts/items/weapons/butchers_cleaver"));
+			this.level_melee_defense(4, this.Math.rand(-6, 3) );
+			this.level_fatigue(4, this.Math.rand(-6, 3) );
+			this.level_health(4, this.Math.rand(-6, 3) );
+			this.m.Skills.add(::new("scripts/skills/perks/perk_colossus"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_deep_cuts"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_sanguinary"));
+		}
+		else if (r == 6)
+		{
+			this.m.Items.equip(::new("scripts/items/weapons/dagger"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_alert"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_backstabber"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_light_weapon"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_dodge"));
+			this.level_melee_skill(4, this.Math.rand(-6, 3) );
+			this.level_melee_defense(4, this.Math.rand(-6, 3) );
+			this.level_initiative(4, this.Math.rand(-6, 3) );
+			flag = true
+		}
 
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_duelist"));
-				}
+		if (!flag)
+		{
+			if(this.Math.rand(1, 6) < 6) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_strength_in_numbers"));
+			else this.m.Skills.add(::new("scripts/skills/perks/perk_dodge"));
+		}
+
+		if (this.Math.rand(1, 100) <= 40)
+		{
+			local r = this.Math.rand(1, 2);
+
+			if (r == 1)
+			{
+				this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
 			}
-			else if (r == 3)
+			else if (r == 2)
 			{
-				this.m.Items.equip(this.new("scripts/items/weapons/hatchet"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_smashing_shields"));
-				}
-			}
-			else if (r == 4)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/bludgeon"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_onslaught"));
-				}
-			}
-			else if (r == 5)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/militia_spear"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_overwhelm"));
-				}
-			}
-			else if (r == 6)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/pickaxe"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_smackdown"));
-				}
-			}
-			else if (r == 7)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/reinforced_wooden_flail"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_head_hunter"));
-				}
-			}
-			else if (r == 8)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/wooden_flail"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_head_hunter"));
-				}
-			}
-			else if (r == 9)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/butchers_cleaver"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_bloodbath"));
-				}
-			}
-			else if (r == 10)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/dagger"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_duelist"));
-				}
-			}
-			else if (r == 11)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/legend_scythe"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_coup_de_grace"));
-				}
-			}
-			else if (r == 12)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/legend_tipstaff"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_return_favor"));
-				}
-			}
-			else if (r == 13)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/legend_militia_glaive"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy"));
-				}
-			}
-			else if (r == 14)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/legend_tipstaff"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy"));
-				}
-			}
-			else if (r == 15)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/legend_ranged_wooden_flail"));
-
-				if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-				{
-					this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy"));
-				}
-			}
-
-			if (this.Math.rand(1, 100) <= 50)
-			{
-				local r = this.Math.rand(1, 2);
-
-				if (r == 1)
-				{
-					this.m.Items.equip(this.new("scripts/items/shields/wooden_shield"));
-				}
-				else if (r == 2)
-				{
-					this.m.Items.equip(this.new("scripts/items/shields/buckler_shield"));
-				}
+				this.m.Items.equip(::new("scripts/items/shields/buckler_shield"));
 			}
 		}
 
-		local item = this.Const.World.Common.pickArmor([
+		local item = ::Const.World.Common.pickArmor([
 			[
 				20,
 				"blotched_gambeson"
@@ -236,7 +178,7 @@
 			this.m.Items.equip(item);
 		}
 
-		item = this.Const.World.Common.pickHelmet([
+		item = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"hood"
@@ -273,7 +215,7 @@
 	{
 		this.human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BanditThug);
+		b.setValues(::Const.Tactical.Actor.BanditThug);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;

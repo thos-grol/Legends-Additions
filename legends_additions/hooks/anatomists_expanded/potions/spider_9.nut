@@ -5,18 +5,26 @@
     {
         create();
         this.m.Name = "Sequence 9: Spider";
-        this.m.Description = "As any experienced beast hunter could tell you, what makes the overgrown arachnids known as Webknechts truly fearsome is their vicious poison. Imbimbing this potion grants the drinker the venom glands of a Webknecht and the ability to resist poisons as well as nightvision. The anatomist remarked that it was odd that this potion only granted three effects. Was he missing something? Where was the power of this species concentrated?";
-        this.m.Value = 5000;
+        this.m.Description = "Grants the drinker the ability to spit webs and poison their enemies.";
+        this.m.Value = 7500;
     }
 
     o.onUse = function(_actor, _item = null)
     {
         ::LA.doMutation(_actor, "spider");
-
         _actor.getFlags().add("spider");
-        _actor.getSkills().add(::new("scripts/skills/effects/serpent_potion_effect"));
+
+        //Mutated Circulatory System 1
         _actor.getSkills().add(::new("scripts/skills/effects/webknecht_potion_effect"));
-        _actor.getSkills().add(::new("scripts/skills/effects/alp_potion_effect"));
+
+        //Web 2
+        _actor.getSkills().add(::new("scripts/skills/perks/perk_legend_item_web_skill"));
+
+        //Poison 3
+        _actor.getSkills().add(::new("scripts/skills/effects/serpent_potion_effect"));
+
+        //Survival Instinct 4
+        ::LA.addPerk(_actor, "perk.ptr_survival_instinct", "scripts/skills/perks/perk_ptr_survival_instinct", ::Const.Perks.PerkDefs.PTRSurvivalInstinct, 0);
 
         this.Sound.play("sounds/enemies/dlc2/giant_spider_death_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/dlc2/giant_spider_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
@@ -27,7 +35,7 @@
 
     o.getTooltip = function()
     {
-        local result = [
+        local ret = [
             {
                 id = 1,
                 type = "title",
@@ -39,7 +47,7 @@
                 text = this.getDescription()
             }
         ];
-        result.push({
+        ret.push({
             id = 66,
             type = "text",
             text = this.getValueString()
@@ -47,7 +55,7 @@
 
         if (this.getIconLarge() != null)
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIconLarge(),
@@ -56,54 +64,61 @@
         }
         else
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIcon()
             });
         }
 
-        result.push({
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Venom Glands: Piercing or cutting attacks poison the target."
+            text = "Mutated Circulatory System: Immune to poison effects. Not affected by nighttime penalties."
         });
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
-            icon = "ui/icons/initiative.png",
-            text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 15 + "[/color] Initiative"
+            icon = "ui/icons/melee_defense.png",
+            text = "+" + ::MSU.Text.colorGreen( "7" ) + " Melee Defense"
         });
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
-            icon = "ui/icons/melee_skill.png",
-            text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 5 + "[/color] Melee Skill"
+            icon = "ui/icons/health.png",
+            text = "+" + ::MSU.Text.colorGreen( "10" ) + " Hitpoints"
         });
-        result.push({
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Mutated Circulatory System: Immune to poison effects, including those of Webknechts and Goblins."
+            text = "Spit Web: Spit a web at your foes and trap them."
         });
-        result.push({
+        ret.push({
             id = 12,
             type = "text",
-            icon = "ui/icons/morale.png",
-            text = "Enhanced Eye Rods: Not affected by nighttime penalties" + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+2[/color] Vision"
+            icon = "ui/icons/special.png",
+            text = "Venom Glands: Piercing or cutting attacks poison the target for 10 damage, 3 turns."
         });
-        result.push({
+        ret.push({
+            id = 12,
+            type = "text",
+            icon = "ui/icons/special.png",
+            text = "Survival Instinct: Every time you are attacked, gain +2 Melee and Ranged Defense on a miss and +5 on a hit. This bonus is reset every turn, but the retained bonus can be max 10."
+        });
+
+        ret.push({
             id = 65,
             type = "text",
             text = "Right-click or drag onto the currently selected character in order to drink. Will refund owned perks. Will not give points for traits."
         });
-        result.push({
+        ret.push({
             id = 65,
             type = "hint",
             icon = "ui/tooltips/warning.png",
             text = "Mutates the body. Side effects include sickness and if potions of different sequences are mixed, death."
         });
-        return result;
+        return ret;
     }
 });

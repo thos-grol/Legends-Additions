@@ -62,7 +62,7 @@
 			"scripts/factions/contracts/legend_hunting_skin_ghouls_action",
 			"scripts/factions/contracts/legend_bandit_army_action",
 			"scripts/factions/contracts/legend_barbarian_prisoner_action",
-			
+
 			//housekeeping
 			"scripts/factions/actions/defend_military_action",
 			"scripts/factions/actions/move_troops_action",
@@ -79,17 +79,17 @@
 			"scripts/factions/actions/send_military_holysite_action"
 		],
 		[],
-		//FEATURE_2: Revamp more contracts
+		//FEATURE_1: Sellsword Contracts
 		//Settlement
 		[
 		//general contracts
 			"scripts/contracts/contracts/return_item_action",
 			"scripts/factions/contracts/drive_away_bandits_action",
 			"scripts/factions/contracts/drive_away_barbarians_action",
-			
+
 			"scripts/factions/contracts/investigate_cemetery_action",
-			
-			
+
+
 			"scripts/factions/contracts/escort_caravan_action",
 				// add chance for monsters to appear
 				// add weird occurences?
@@ -103,19 +103,19 @@
 			"scripts/factions/contracts/defend_settlement_bandits_action",
 			"scripts/factions/contracts/legend_bandit_army_action",
 			"scripts/factions/contracts/defend_settlement_greenskins_action",
-			
+
 			"scripts/factions/contracts/restore_location_action",
 				//something is wrong...
 				//possible haunting - create anomaly
-			
-		//FEATURE_5: Dungeouns
+
+		//FEATURE_6: Dungeouns
 			// "scripts/factions/contracts/discover_location_action",
 				//Discover and scout dungeon to certain floor
 			// "scripts/factions/contracts/find_artifact_action",
 				//Discover minor dungeon and retrieve artefact
 			// "scripts/factions/contracts/obtain_item_action",
 				//create small/medium dungeon to explore
-			
+
 		//monster hunt
 			"scripts/factions/contracts/roaming_beasts_action",
 			"scripts/factions/contracts/hunting_webknechts_action",
@@ -125,7 +125,7 @@
 			"scripts/factions/contracts/hunting_schrats_action",
 			"scripts/factions/contracts/hunting_lindwurms_action",
 
-			
+
 
 			//housekeeping
 			"scripts/factions/actions/send_caravan_action",
@@ -197,7 +197,7 @@
 
 			"scripts/factions/contracts/drive_away_nomads_action",
 			"scripts/factions/contracts/roaming_beasts_desert_action",
-			
+
 			"scripts/factions/contracts/item_delivery_action",
 			"scripts/factions/contracts/escort_caravan_action",
 
@@ -209,7 +209,7 @@
 			"scripts/factions/contracts/conquer_holy_site_action",
 			"scripts/factions/contracts/defend_holy_site_action",
 			"scripts/factions/contracts/hold_chokepoint_action",
-			
+
 			//housekeeping
 			"scripts/factions/actions/defend_citystate_action",
 			"scripts/factions/actions/send_ship_action",

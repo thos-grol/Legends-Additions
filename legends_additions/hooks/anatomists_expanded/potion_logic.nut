@@ -81,3 +81,14 @@
     _actor.getBackground().addPerk(_perk, _perk_row, false);
     _actor.getSkills().add(::new(_perk_location));
 }
+
+::LA.removePerk <- function (_actor, _perk_id, _perk)
+{
+    //if has skill, remove and refund
+    if (_actor.getSkills().hasSkill(_perk_id))
+    {
+        _actor.getSkills().removeByID(_perk_id);
+    }
+    //if perk exists, remove it from the tree
+    if (_actor.getBackground().hasPerk(_perk)) _actor.getBackground().removePerk(_perk)
+}

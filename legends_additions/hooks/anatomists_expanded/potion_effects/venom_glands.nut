@@ -38,18 +38,6 @@
                 icon = "ui/icons/special.png",
                 text = "Piercing or cutting attacks poison the target with redback venom."
             });
-            ret.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/initiative.png",
-                text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 30 + "[/color] Initiative"
-            });
-            ret.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/melee_skill.png",
-                text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 15 + "[/color] Melee Skill"
-            });
         }
         else
         {
@@ -59,20 +47,18 @@
                 icon = "ui/icons/special.png",
                 text = "Piercing or cutting attacks poison the target."
             });
+        }
+
+        if (this.getContainer().getActor().getFlags().has("serpent"))
+        {
             ret.push({
                 id = 11,
                 type = "text",
-                icon = "ui/icons/initiative.png",
-                text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 15 + "[/color] Initiative"
-            });
-            ret.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/melee_skill.png",
-                text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 5 + "[/color] Melee Skill"
+                icon = "ui/icons/special.png",
+                text = "Immune to poison effects"
             });
         }
-        
+
         ret.push({
             id = 12,
             type = "hint",
@@ -85,22 +71,17 @@
 
     o.onUpdate = function(_properties)
     {
-        if (this.getContainer().getActor().getFlags().has("spider_8"))
+        if (this.getContainer().getActor().getFlags().has("serpent"))
         {
-            _properties.Initiative += 30;
-            _properties.MeleeSkill += 15;
+            _properties.IsImmuneToPoison = true;
         }
-        else
-        {
-            _properties.Initiative += 15;
-            _properties.MeleeSkill += 5;
-        }
-
     }
 
     o.onTargetHit <- function(_skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor)
     {
-        if (_targetEntity.getCurrentProperties().IsImmuneToPoison || _damageInflictedHitpoints < ::Const.Combat.PoisonEffectMinDamage || _targetEntity.getHitpoints() <= 0) return;
+        local actor = this.getContainer().getActor();
+        if (_targetEntity.getCurrentProperties().IsImmuneToPoison && !actor.getFlags().has("spider_8")) return;
+        if (_damageInflictedHitpoints < ::Const.Combat.PoisonEffectMinDamage || _targetEntity.getHitpoints() <= 0) return;
 
         if (!_targetEntity.isAlive()) return;
         if (_targetEntity.getFlags().has("undead")) return;
@@ -110,32 +91,145 @@
         if (!_targetEntity.isHiddenToPlayer())
         {
             if (this.m.SoundOnUse.len() != 0) this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.5, _targetEntity.getPos());
-            
+
             this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_targetEntity) + " is poisoned");
         }
 
         this.spawnIcon("status_effect_54", _targetEntity.getTile());
 
-        if (this.getContainer().getActor().getFlags().has("spider_8"))
+        if (actor.getFlags().has("spider_8"))
         {
-            local poison = _targetEntity.getSkills().getSkillByID("effects.legend_redback_spider_poison");
-            if (!_targetEntity.getSkills().hasSkill("effects.stunned") && !_targetEntity.getCurrentProperties().IsImmuneToStun)
-            {
-                _targetEntity.getSkills().add(::new("scripts/skills/effects/stunned_effect"));
-                this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_targetEntity) + " is stunned");
-            }
-
-            if (poison == null) _targetEntity.getSkills().add(::new("scripts/skills/effects/legend_redback_spider_poison_effect"));
-            else poison.resetTime();
+            _targetEntity.getSkills().add(::new("scripts/skills/effects/legend_redback_spider_poison_effect"));
         }
         else
         {
-            local poison = _targetEntity.getSkills().getSkillByID("effects.spider_poison");
-            if (poison == null) _targetEntity.getSkills().add(::new("scripts/skills/effects/spider_poison_effect"));
-            else poison.resetTime();
+            _targetEntity.getSkills().add(::new("scripts/skills/effects/spider_poison_effect"));
+        }
+    }
+
+});
+
+::Const.Strings.PerkDescription.HoldOut = "Keep it together! Reduce the duration of general status effects to " + ::MSU.Text.colorGreen( "1" ) + " turn. +" + ::MSU.Text.colorGreen( "8" ) + " hitpoints.  Raises the chance to survive being struck down from 33% to 66%.";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.HoldOut].Tooltip = ::Const.Strings.PerkDescription.HoldOut;
+
+::mods_hookExactClass("skills/effects/spider_poison_effect", function (o)
+{
+    o.m.Damage = 10;
+
+    o.applyDamage = function()
+    {
+		if (this.m.LastRoundApplied != this.Time.getRound())
+		{
+			this.m.LastRoundApplied = this.Time.getRound();
+			this.spawnIcon("status_effect_54", this.getContainer().getActor().getTile());
+
+			if (this.m.SoundOnUse.len() != 0)
+			{
+				this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.0, this.getContainer().getActor().getPos());
+			}
+
+			local hitInfo = clone ::Const.Tactical.HitInfo;
+			hitInfo.DamageRegular = this.m.Damage;
+			hitInfo.DamageDirect = 1.0;
+			hitInfo.BodyPart = ::Const.BodyPart.Body;
+			hitInfo.BodyDamageMult = 1.0;
+			hitInfo.FatalityChanceMult = 0.0;
+			this.getContainer().getActor().onDamageReceived(this.getContainer().getActor(), this, hitInfo);
+		}
+	}
+});
+
+::mods_hookExactClass("skills/effects/legend_redback_spider_poison_effect", function (o)
+{
+    o.m.Damage = 20;
+    o.applyDamage = function()
+    {
+        if (this.m.LastRoundApplied != this.Time.getRound())
+		{
+			this.m.LastRoundApplied = this.Time.getRound();
+			this.spawnIcon("status_effect_54", this.getContainer().getActor().getTile());
+
+			if (this.m.SoundOnUse.len() != 0)
+			{
+				this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.0, this.getContainer().getActor().getPos());
+			}
+
+			local timeDamage = this.m.Damage;
+			local hitInfo = clone ::Const.Tactical.HitInfo;
+			hitInfo.DamageRegular = timeDamage;
+
+			hitInfo.DamageDirect = 1.0;
+			hitInfo.BodyPart = ::Const.BodyPart.Body;
+			hitInfo.BodyDamageMult = 1.0;
+			hitInfo.FatalityChanceMult = 0.0;
+			this.getContainer().getActor().onDamageReceived(this.getContainer().getActor(), this, hitInfo);
+		}
+    }
+
+    o.onAdded = function()
+	{
+        local actor = this.getContainer().getActor();
+
+        if (!actor.getSkills().hasSkill("effects.stunned") && !actor.getSkills().hasSkill("perk.hold_out") && !actor.getCurrentProperties().IsImmuneToPoison)
+        {
+            actor.getSkills().add(::new("scripts/skills/effects/stunned_effect"));
+            this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " is stunned by redback venom");
         }
 
-        
-    }
-    
+        if (actor.getSkills().hasSkill("perk.hold_out"))
+        {
+            this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " is too resilient to be stunned by redback venom");
+        }
+
+        this.m.TurnsLeft = this.Math.max(2, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+		if (actor.getSkills().hasSkill("trait.ailing")) ++this.m.TurnsLeft;
+        if (actor.getCurrentProperties().IsImmuneToPoison) this.m.TurnsLeft = 1;
+	}
+});
+
+
+::mods_hookExactClass("skills/racial/spider_racial", function (o)
+{
+    o.onTargetHit = function( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
+	{
+		if (_targetEntity.getCurrentProperties().IsImmuneToPoison || _damageInflictedHitpoints < ::Const.Combat.PoisonEffectMinDamage || _targetEntity.getHitpoints() <= 0) return;
+		if (!_targetEntity.isAlive() || _targetEntity.isDying() || _targetEntity.getFlags().has("undead")) return;
+
+		if (!_targetEntity.isHiddenToPlayer())
+		{
+			if (this.m.SoundOnUse.len() != 0)
+			{
+				this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.5, _targetEntity.getPos());
+			}
+
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_targetEntity) + " is poisoned with webknecht venom");
+		}
+
+		this.spawnIcon("status_effect_54", _targetEntity.getTile());
+		_targetEntity.getSkills().add(::new("scripts/skills/effects/spider_poison_effect"));
+	}
+
+});
+
+::mods_hookExactClass("skills/racial/legend_redback_spider_racial", function (o)
+{
+    o.onTargetHit = function( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
+	{
+		if (_damageInflictedHitpoints <= ::Const.Combat.PoisonEffectMinDamage || _targetEntity.getHitpoints() <= 0) return;
+		if (!_targetEntity.isAlive() || _targetEntity.isDying() || _targetEntity.getFlags().has("undead")) return;
+
+		if (!_targetEntity.isHiddenToPlayer())
+		{
+			if (this.m.SoundOnUse.len() != 0)
+			{
+				this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.5, _targetEntity.getPos());
+			}
+
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_targetEntity) + " is poisoned with redback venom");
+		}
+
+		this.spawnIcon("status_effect_54", _targetEntity.getTile());
+		_targetEntity.getSkills().add(::new("scripts/skills/effects/legend_redback_spider_poison_effect"));
+	}
+
 });

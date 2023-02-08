@@ -25,7 +25,7 @@
 	{
 		this.human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BanditRabble);
+		b.setValues(::Const.Tactical.Actor.BanditRabble);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -70,7 +70,23 @@
 		local r = this.Math.rand(1, 6)
 		if(r < 6) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_strength_in_numbers"));
 		else this.m.Skills.add(::new("scripts/skills/perks/perk_dodge"));
-		//Add offensive perk
-		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_entrenched"));
+	}
+
+	local assignRandomEquipment = o.assignRandomEquipment;
+	o.assignRandomEquipment = function()
+	{
+		assignRandomEquipment();
+		local weapon = this.getMainhandItem();
+		if (weapon != null)
+		{
+			if (weapon.isWeaponType(::Const.Items.WeaponType.Sling))
+			{
+				this.m.Skills.add(::new("scripts/skills/perks/perk_legend_specialist_sling_skill"));
+			}
+			else
+			{
+				this.m.Skills.add(::new("scripts/skills/perks/perk_ballistics"));
+			}
+		}
 	}
 });

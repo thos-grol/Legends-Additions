@@ -66,7 +66,7 @@ this.dragons_might <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-	o.onUpdate = function(_properties)
+	function onUpdate(_properties)
 	{
 		if (this.getContainer().getActor().getFaction() == ::Const.Faction.Player) _properties.DamageTotalMult *= 1.25;
 	}

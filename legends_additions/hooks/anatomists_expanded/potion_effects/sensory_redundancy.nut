@@ -17,25 +17,13 @@
             }
         ];
 
-        if (this.getContainer().getActor().getFlags().has("orc_8"))
-        {
-            ret.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/special.png",
-                text = "[color=" + ::Const.UI.Color.PositiveValue + "]33%[/color] chance to resist the Dazed, Staggered, Stunned, Distracted, and Withered status effects" + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+20[/color] Hitpoints"
-            });
-        }
-        else
-        {
-            ret.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/special.png",
-                text = "[color=" + ::Const.UI.Color.PositiveValue + "]33%[/color] chance to resist the Dazed, Staggered, Stunned, Distracted, and Withered status effects" + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Hitpoints"
-            });
-        }
-        
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/special.png",
+            text = "[color=" + ::Const.UI.Color.PositiveValue + "]50%[/color] chance to resist being Baffled, Dazed, or Stunned"
+        });
+
         ret.push({
             id = 12,
             type = "hint",
@@ -45,18 +33,167 @@
 
         return ret;
     }
+});
 
-    local onUpdate = o.onUpdate;
-    o.onUpdate = function(_properties)
-    {
-        onUpdate(_properties);
-        if (this.getContainer().getActor().getFlags().has("orc_8"))
+::mods_hookExactClass("skills/effects/legend_baffled_effect", function (o)
+{
+    o.onAdded = function()
+	{
+		local actor = this.getContainer().getActor();
+        if (actor.getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 50 : false)
+		{
+			if (!actor.isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " wasn't baffled thanks to their unnatural physiology");
+			}
+
+			this.removeSelf();
+		}
+        else if (!this.m.Container.getActor().getCurrentProperties().IsImmuneToStun)
+		{
+			this.m.Container.removeByID("effects.shieldwall");
+			this.m.Container.removeByID("effects.spearwall");
+			this.m.Container.removeByID("effects.riposte");
+			this.m.Container.removeByID("effects.return_favor");
+			this.m.Container.removeByID("effects.possessed_undead");
+			this.m.Container.removeByID("effects.legend_vala_currently_chanting");
+			this.m.Container.removeByID("effects.legend_vala_in_trance");
+		}
+		else
+		{
+			this.m.IsGarbage = true;
+		}
+	}
+
+});
+
+::mods_hookExactClass("skills/effects/dazed_effect", function (o)
+{
+    o.onAdded = function()
+	{
+		local actor = this.getContainer().getActor();
+        if (actor.getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 50 : false)
+		{
+			if (!actor.isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " wasn't dazed thanks to their unnatural physiology");
+			}
+
+			this.removeSelf();
+		}
+        else if (!actor.getCurrentProperties().IsImmuneToDaze) this.m.TurnsLeft = this.Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+		else this.m.IsGarbage = true;
+	}
+
+});
+
+::mods_hookExactClass("skills/effects/stunned_effect", function (o)
+{
+    o.onAdded = function()
+	{
+		local actor = this.getContainer().getActor();
+        if (actor.getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 50 : false)
+		{
+			if (!actor.isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " wasn't stunned thanks to their unnatural physiology");
+			}
+
+			this.removeSelf();
+		}
+        else if (!actor.getCurrentProperties().IsImmuneToStun)
+		{
+			this.m.Container.removeByID("effects.shieldwall");
+			this.m.Container.removeByID("effects.spearwall");
+			this.m.Container.removeByID("effects.riposte");
+			this.m.Container.removeByID("effects.return_favor");
+			this.m.Container.removeByID("effects.possessed_undead");
+			this.m.Container.removeByID("effects.legend_vala_currently_chanting");
+			this.m.Container.removeByID("effects.legend_vala_in_trance");
+		}
+		else this.m.IsGarbage = true;
+
+	}
+
+});
+
+//Remove distracted effect from immunity
+::mods_hookExactClass("skills/effects/distracted_effect", function (o)
+{
+    o.onAdded = function()
+	{
+		local actor = this.getContainer().getActor();
+        this.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+	}
+
+});
+
+::mods_hookExactClass("skills/effects/staggered_effect", function (o)
+{
+    o.onAdded = function()
+	{
+		local actor = this.getContainer().getActor();
+        if (actor.getSkills().hasSkill("trait.sure_footing") ? this.Math.rand(1, 100) <= 50 : false)
         {
-            _properties.Hitpoints += 20;
+            if (!actor.isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " wasn't staggered due to their sure footing");
+			}
+
+			this.removeSelf();
+
         }
         else
         {
-            _properties.Hitpoints += 10;
+            this.m.TurnsLeft = this.Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+		    this.Tactical.TurnSequenceBar.pushEntityBack(actor.getID());
         }
-    }
+
+	}
+
 });
+
+    ::mods_hookExactClass("skills/traits/sure_footing_trait", function (o)
+    {
+        o.getTooltip = function()
+        {
+            return [
+                {
+                    id = 1,
+                    type = "title",
+                    text = this.getName()
+                },
+                {
+                    id = 2,
+                    type = "description",
+                    text = this.getDescription()
+                },
+                {
+                    id = 10,
+                    type = "text",
+                    icon = "ui/icons/melee_defense.png",
+                    text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5[/color] Melee Defense"
+                },
+                {
+                    id = 10,
+                    type = "text",
+                    icon = "ui/icons/special.png",
+                    text = "Has a 50% chance to not be staggered"
+                }
+            ];
+        }
+
+    });
+
+::mods_hookExactClass("skills/effects/withered_effect", function (o)
+{
+    o.onAdded = function()
+	{
+		local actor = this.getContainer().getActor();
+        this.m.TurnsLeft = this.Math.max(2, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+	}
+
+});
+
+
+

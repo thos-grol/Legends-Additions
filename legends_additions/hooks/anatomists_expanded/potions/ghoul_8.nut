@@ -5,7 +5,7 @@
     {
         create();
         this.m.Name = "Sequence 8: Skin Ghoul";
-        this.m.Description = "Should ye fall to madness, only skin and hunger will remain, and the use will degenerate into a skin ghoul. Made from the essence of a skin ghoul, this potion grants the drinker impoved vitality and minor health regeneration and an almost supernatural sense of the how to carve flesh among other things. \n\nUpgrades Sequence 9: Ghoul.";
+        this.m.Description = "Should ye fall to madness, only skin and hunger will remain, and the user will degenerate into a skin ghoul. This potion grants the drinker impoved vitality and minor health regeneration and a supernatural sense of the how to carve flesh. \n\nUpgrades Sequence 9: Ghoul.";
         this.m.Icon = "consumables/potion_36.png";
         this.m.Value = 15000;
     }
@@ -41,7 +41,7 @@
 
     o.getTooltip = function()
     {
-        local result = [
+        local ret = [
             {
                 id = 1,
                 type = "title",
@@ -53,7 +53,7 @@
                 text = this.getDescription()
             }
         ];
-        result.push({
+        ret.push({
             id = 66,
             type = "text",
             text = this.getValueString()
@@ -61,7 +61,7 @@
 
         if (this.getIconLarge() != null)
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIconLarge(),
@@ -70,65 +70,65 @@
         }
         else
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIcon()
             });
         }
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/health.png",
             text = "Subdermal Clotting: Damage received from the Bleeding status effect is reduced by " + ::MSU.Text.colorGreen( "50" ) + "%"
         });
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/health.png",
             text = "+" + ::MSU.Text.colorGreen( "15" ) + " Hitpoints"
         });
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/initiative.png",
             text = "+" + ::MSU.Text.colorGreen( "15" ) + " Initiative"
         });
-        result.push({
+        ret.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/morale.png",
 			text = "Synapse Blockage: Twists the mind into something more inhuman. Morale cannot be reduced below Steady."
 		});
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/health.png",
             text = "This brother becomes gluttonous. Removes the spartan trait."
         });
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/health.png",
             text = "Hyperactive Cell Growth: Heals " + ::MSU.Text.colorGreen( "20" ) + " hitpoints each turn. Cannot heal if poisoned."
         });
-        result.push({
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
             text = "Lacerate: Lust for blood courses through your veins, each stroke rips and tears with a ferocity unmatched. Cause minor but long lasting bleeding on any target you deal direct health damage to with any weapon. This effect stacks.",
         });
-        result.push({
+        ret.push({
             id = 65,
             type = "text",
             text = "Right-click or drag onto the currently selected character in order to drink. Will refund owned perks. Will not give points for traits."
         });
-        result.push({
+        ret.push({
             id = 65,
             type = "hint",
             icon = "ui/tooltips/warning.png",
             text = "Mutates the body. Side effects include sickness and if potions of different sequences are mixed, death."
         });
-        return result;
+        return ret;
     }
 });

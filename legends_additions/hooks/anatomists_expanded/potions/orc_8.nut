@@ -1,31 +1,34 @@
-::mods_hookExactClass("items/misc/anatomist/orc_young_potion_item", function (o)
+::mods_hookExactClass("items/misc/anatomist/orc_warlord_potion_item", function (o)
 {
     local create = o.create;
     o.create = function()
     {
         create();
-        this.m.Name = "Sequence 9: Orc";
-        this.m.Description = "Many a general has wished orcs might be tamed, for if one could control the greenskins and direct their strength with the intellect of man, they would surely control an unstoppable force. With this, such fantasies are within reach!";
-        this.m.Value = 7500;
+        this.m.Name = "Sequence 8: Warlord";
+        this.m.Description = "The power of the orc warlord.";
+        this.m.Value = 15000;
     }
 
     o.onUse = function(_actor, _item = null)
     {
         ::LA.doMutation(_actor, "orc");
-
-        _actor.getSkills().removeByID("trait.tiny");
-        _actor.getSkills().add(::new("scripts/skills/traits/huge_trait"));
-
+        _actor.getFlags().add("orc_8");
         _actor.getFlags().add("orc");
 
+        //Grow and toughen
+        if (_actor.getSkills().hasSkill("trait.tiny")) _actor.getSkills().removeByID("trait.tiny");
+        else _actor.getSkills().add(::new("scripts/skills/traits/huge_trait"));
+        _actor.getSkills().add(::new("scripts/skills/traits/iron_jaw_trait"));
+
+        //1 Improved Musculature
+        //4 Charge Skill
         _actor.getSkills().add(::new("scripts/skills/effects/orc_young_potion_effect"));
-        _actor.getSkills().add(::new("scripts/skills/effects/orc_warrior_potion_effect"));
 
-        _actor.getBackground().addPerk(::Const.Perks.PerkDefs.Colossus, 0, false);
-        _actor.getSkills().add(::new("scripts/skills/perks/perk_colossus"));
+        //2 Font of Strength
+        _actor.getSkills().add(::new("scripts/skills/effects/orc_warlord_potion_effect"));
 
-        _actor.getBackground().addPerk(::Const.Perks.PerkDefs.PTRHaleAndHearty, 1, false);
-        _actor.getSkills().add(::new("scripts/skills/perks/perk_ptr_hale_and_hearty"));
+        //3 Berserk
+        ::LA.addPerk(_actor, "perk.berserk", "scripts/skills/perks/perk_berserk", ::Const.Perks.PerkDefs.Berserk, 2);
 
         this.Sound.play("sounds/enemies/orc_death_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/orc_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
@@ -36,7 +39,7 @@
 
     o.getTooltip = function()
     {
-        local result = [
+        local ret = [
             {
                 id = 1,
                 type = "title",
@@ -48,7 +51,7 @@
                 text = this.getDescription()
             }
         ];
-        result.push({
+        ret.push({
             id = 66,
             type = "text",
             text = this.getValueString()
@@ -56,7 +59,7 @@
 
         if (this.getIconLarge() != null)
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIconLarge(),
@@ -65,54 +68,65 @@
         }
         else
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIcon()
             });
         }
 
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Induces major growth."
+            text = "Induces major growth and toughens the physique."
         });
-        result.push({
+
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/melee_skill.png",
+            text = "Improved Musculature: +" + ::MSU.Text.colorGreen( "15%" ) + " Damage"
+        });
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/health.png",
+            text = "+" + ::MSU.Text.colorGreen( 10 ) + " Hitpoints"
+        });
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/melee_skill.png",
+            text = "This character gains the ability to charge at enemies, stunning them"
+        });
+
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Shock Absorbant Wrists: Attacks do [color=" + ::Const.UI.Color.PositiveValue + "]+15%[/color] additional damage"
+            text = "Font of Might: Orc weapons no longer imposes additional fatigue costs"
         });
-        result.push({
+
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Sensory Redundancy: [color=" + ::Const.UI.Color.PositiveValue + "]33%[/color] chance to resist the Dazed, Staggered, Stunned, Distracted, and Withered status effects" + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Hitpoints"
+            text = "Berserk: RAAARGH! Once per turn, upon killing an enemy, [color=" + ::Const.UI.Color.PositiveValue + "]4[/color] Action Points are immediately regained. Characters can not regain more than their maximum Action Points and no more than 4 for a single attack."
         });
-        result.push({
-            id = 12,
-            type = "text",
-            icon = "ui/icons/special.png",
-            text = "Colossus: Hitpoints are increased by [color=" + ::Const.UI.Color.PositiveValue + "]25%[/color], which also reduces the chance to sustain debilitating injuries when being hit."
-        });
-        result.push({
-            id = 12,
-            type = "text",
-            icon = "ui/icons/special.png",
-            text = "Hale and Hearty: Fatigue Recovery is increased by [color=" + ::Const.UI.Color.PositiveValue + "]5%[/color] of your Maximum Fatigue after gear."
-        });
-        result.push({
+
+
+        ret.push({
             id = 65,
             type = "text",
             text = "Right-click or drag onto the currently selected character in order to drink. Will refund owned perks. Will not give points for traits."
         });
-        result.push({
+        ret.push({
             id = 65,
             type = "hint",
             icon = "ui/tooltips/warning.png",
             text = "Mutates the body. Side effects include sickness and if potions of different sequences are mixed, death."
         });
-        return result;
+        return ret;
     }
 });

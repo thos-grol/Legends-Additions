@@ -14,27 +14,44 @@
                 id = 2,
                 type = "description",
                 text = this.getDescription()
-            },
-            {
-                id = 11,
-                type = "text",
-                icon = "ui/icons/special.png",
-                text = "The threshold to sustain injuries on getting hit is increased by [color=" + ::Const.UI.Color.PositiveValue + "]33%[/color]" + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Hitpoints"
-            },
-            {
-                id = 12,
-                type = "hint",
-                icon = "ui/tooltips/warning.png",
-                text = "Mutations of another sequence may cause this character's genes to spiral out of control, killing them in the process"
             }
         ];
+
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/special.png",
+            text = "The threshold to sustain injuries on getting hit is increased by" + ::MSU.Text.colorGreen( "33" ) + "%"
+        });
+
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/special.png",
+            text = "Reduces damage taken by" + ::MSU.Text.colorGreen( "15" ) + "%"
+        });
+
+        ret.push({
+            id = 12,
+            type = "hint",
+            icon = "ui/tooltips/warning.png",
+            text = "Mutations of another sequence may cause this character's genes to spiral out of control, killing them in the process"
+        });
         return ret;
     }
 
-    local onUpdate = o.onUpdate;
+    o.onBeforeDamageReceived <- function( _attacker, _skill, _hitInfo, _properties )
+	{
+		if (_attacker != null && _attacker.getID() == this.getContainer().getActor().getID() || _skill == null || !_skill.isAttack() || !_skill.isUsingHitchance())
+		{
+			return;
+		}
+
+		_properties.DamageReceivedRegularMult *= 1.0 - 0.15;
+	}
+
     o.onUpdate = function(_properties)
     {
-        onUpdate(_properties);
-        _properties.Hitpoints += 10;
+        _properties.ThresholdToReceiveInjuryMult *= 1.33;
     }
 });

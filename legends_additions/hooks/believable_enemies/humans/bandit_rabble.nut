@@ -22,7 +22,7 @@
 };
 
 ::mods_hookExactClass("entity/tactical/enemies/bandit_rabble", function(o) {
-	
+
 	o.assignRandomEquipment = function()
 	{
 		//roll stats
@@ -35,76 +35,64 @@
 
 		if (r == 1)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/legend_wooden_pitchfork"));
-			item = this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::new("scripts/items/weapons/legend_wooden_pitchfork"));
+			item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"straw_hat"
 				]
 			]);
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_specialist_pitchfork_damage"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_specialist_pitchfork_damage"));
 		}
 		else if (r == 2)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/legend_wooden_spear"));
-			item = this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::new("scripts/items/weapons/legend_wooden_spear"));
+			item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"open_leather_cap"
 				]
 			]);
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_specialist_militia_damage"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_specialist_militia_damage"));
 		}
 		else if (r == 3)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/legend_sickle"));
-			item = this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::new("scripts/items/weapons/legend_sickle"));
+			item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"hood"
 				]
 			]);
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_specialist_sickle_damage"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_specialist_sickle_damage"));
 		}
 		else if (r == 4)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/legend_staff"));
-			item = this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::new("scripts/items/weapons/legend_staff"));
+			item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"hood"
 				]
 			]);
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_ptr_wear_them_down"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_wear_them_down"));
 		}
-		else if (r == 5)
+		else if (r == 5 || r == 6)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/legend_shovel"));
-			item = this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::new("scripts/items/weapons/legend_shovel"));
+			item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"hood"
 				]
 			]);
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_specialist_shovel_damage"));
-		}
-		else if (r == 6)
-		{
-			this.m.Items.equip(this.new("scripts/items/weapons/wooden_stick"));
-			item = this.Const.World.Common.pickHelmet([
-				[
-					1,
-					"straw_hat"
-				]
-			]);
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_onslaught"));
-				
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_specialist_shovel_damage"));
 		}
 		else if (r == 7)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/legend_hammer"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_specialist_hammer_damage"));
-			item = this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::new("scripts/items/weapons/legend_hammer"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_specialist_hammer_damage"));
+			item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"mouth_piece"
@@ -113,32 +101,21 @@
 		}
 		else if (r == 8)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/legend_shiv"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_specialist_knife_damage"));
-				item = this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::new("scripts/items/weapons/legend_shiv"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_backstabber"));
+				item = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"headscarf"
 					]
 				]);
 		}
-		else if (r == 9)
+		else if (r == 9 || r == 10)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/lute"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_specialist_lute_damage"));
-				item = this.Const.World.Common.pickHelmet([
-					[
-						1,
-						"feathered_hat"
-					]
-				]);
-		}
-		else if (r == 10)
-		{
-			this.m.Items.equip(this.new("scripts/items/weapons/butchers_cleaver"));
+			this.m.Items.equip(::new("scripts/items/weapons/butchers_cleaver"));
 
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_specialist_butcher_damage"));
-				item = this.Const.World.Common.pickHelmet([
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_specialist_butcher_damage"));
+				item = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"mouth_piece"
@@ -147,10 +124,10 @@
 		}
 		else if (r == 11)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/legend_saw"));
+			this.m.Items.equip(::new("scripts/items/weapons/legend_saw"));
 
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_specialist_woodaxe_damage"));
-				item = this.Const.World.Common.pickHelmet([
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_specialist_woodaxe_damage"));
+				item = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"headscarf"
@@ -159,10 +136,10 @@
 		}
 		else if (r == 12)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/legend_hoe"));
+			this.m.Items.equip(::new("scripts/items/weapons/legend_hoe"));
 
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_specialist_pitchfork_damage"));
-				item = this.Const.World.Common.pickHelmet([
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_specialist_pitchfork_damage"));
+				item = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"straw_hat"
@@ -171,10 +148,10 @@
 		}
 		else if (r == 13)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/wooden_flail"));
+			this.m.Items.equip(::new("scripts/items/weapons/wooden_flail"));
 
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_specialist_pitchfork_damage"));
-				item = this.Const.World.Common.pickHelmet([
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_specialist_pitchfork_damage"));
+				item = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"cultist_hood"
@@ -186,7 +163,7 @@
 
 		if (this.Math.rand(1, 100) <= 90)
 		{
-			local item = this.Const.World.Common.pickArmor([
+			local item = ::Const.World.Common.pickArmor([
 				[
 					20,
 					"leather_wraps"
@@ -224,7 +201,7 @@
 	{
 		this.human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BanditRabble);
+		b.setValues(::Const.Tactical.Actor.BanditRabble);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;

@@ -24,8 +24,47 @@
             ret.push({
                 id = 11,
                 type = "text",
+                icon = "ui/icons/fatigue.png",
+                text = "+" + ::MSU.Text.colorGreen( 5 ) + " Fatigue Recovery"
+            });
+            ret.push({
+                id = 11,
+                type = "text",
+                icon = "ui/icons/health.png",
+                text = "+" + ::MSU.Text.colorGreen( 40 ) + " Hitpoints"
+            });
+        }
+        else if (actor.getFlags().has("unhold"))
+        {
+            ret.push({
+				id = 11,
+				type = "text",
+				icon = "ui/icons/fatigue.png",
+				text = "+" + ::MSU.Text.colorGreen( 3 ) + " Fatigue Recovery"
+			});
+			ret.push({
+                id = 11,
+                type = "text",
+                icon = "ui/icons/health.png",
+				text = "+" + ::MSU.Text.colorGreen( 20 ) + " Hitpoints"
+            });
+        }
+
+
+
+        if (actor.getFlags().has("unhold_8"))
+        {
+            ret.push({
+                id = 11,
+                type = "text",
                 icon = "ui/icons/health.png",
                 text = "Heals " + ::MSU.Text.colorGreen( "40" ) + " hitpoints each turn. Cannot heal if poisoned."
+            });
+            ret.push({
+                id = 11,
+                type = "text",
+                icon = "ui/icons/armor_body.png",
+                text = "Heals " + ::MSU.Text.colorGreen( "40" ) + " head and body armor each turn.  Cannot heal if poisoned."
             });
         }
         else
@@ -38,16 +77,6 @@
             });
         }
 
-        if (actor.getFlags().has("unhold_8"))
-        {
-            ret.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/armor_body.png",
-                text = "Heals " + ::MSU.Text.colorGreen( "40" ) + " head and body armor each turn.  Cannot heal if poisoned."
-            });
-        }
-
         ret.push({
             id = 12,
             type = "hint",
@@ -56,6 +85,20 @@
         });
         return ret;
     }
+
+    o.onUpdate <- function(_properties)
+	{
+		if (this.getContainer().getActor().getFlags().has("unhold_8"))
+		{
+			_properties.FatigueRecoveryRate += 5;
+			_properties.Hitpoints += 40;
+		}
+		else if (this.getContainer().getActor().getFlags().has("unhold"))
+		{
+			_properties.FatigueRecoveryRate += 3;
+			_properties.Hitpoints += 20;
+		}
+	}
 
     local onCombatFinished = o.onCombatFinished;
     o.onCombatFinished = function()

@@ -5,7 +5,7 @@
 	o.create = function()
 	{
 		create();
-		this.m.BackgroundDescription = "Part scientist and part surgeon, Anatomists are unaccustomed to battle but well served by steady hands. \n\nAfter a battle, each anatomists has a chance to concoct a potion for every monster killed.";
+		this.m.BackgroundDescription = "Part scientist and part surgeon, Anatomists are unaccustomed to battle but well served by steady hands.";
 		this.m.HiringCost = 6000;
 		this.m.DailyCost = 25;
 		this.m.Excluded.push("trait.greedy");
@@ -13,8 +13,11 @@
 		this.m.PerkGroupMultipliers <- [
 			[0.5, ::Const.Perks.LargeTree],
 			[0.5, ::Const.Perks.SturdyTree],
+			[0, ::Const.Perks.OrganisedTree],
 			[6, ::Const.Perks.TalentedTree],
 			[0, ::Const.Perks.MediumArmorTree],
+			[3, ::Const.Perks.LightArmorTree],
+			[1, ::Const.Perks.HeavyArmorTree],
 			[0, ::Const.Perks.EntertainerClassTree],
 			[3, ::Const.Perks.HealerClassTree],
 			[0, ::Const.Perks.HoundmasterClassTree],
@@ -39,10 +42,23 @@
 					[3, ::Const.Perks.UnholdTree],
 					[3, ::Const.Perks.AlpTree],
 					[3, ::Const.Perks.SchratTree],
-					[3, ::Const.Perks.VampireTree]					
+					[3, ::Const.Perks.VampireTree]
 				])
 			]
 		};
+	}
+
+	o.getBackgroundTooltip <- function()
+	{
+		local ret = [
+			{
+				id = 3,
+				type = "hint",
+				icon = "ui/icons/special.png",
+				text = "Has a chance (depending on the monster) to concoct sequence potions from all monsters killed in battle"
+			}
+		];
+		return ret;
 	}
 
 	//Fixes bug where anatomist background overwrites background super method without making any changes??? Now you can see projected perk stats
@@ -63,6 +79,7 @@
 
 		if (this.getContainer() != null)
 		{
+			ret.extend(this.getBackgroundTooltip());
 			ret.extend(this.getAttributesTooltip());
 		}
 
@@ -74,26 +91,10 @@
 ::mods_hookExactClass("scenarios/world/anatomists_scenario", function (o)
 {
 	//Remove how the scenario does loot drops and move the logic somewhere else.
-	local onActorKilled = o.onActorKilled;
-	o.onActorKilled = function( _actor, _killer, _combatID )
-	{
-	}
-	
-	local onBattleWon = o.onBattleWon;
-	o.onBattleWon = function( _combatLoot )
-	{
-	}
-	
-	local onCombatFinished = o.onCombatFinished;
-	o.onCombatFinished = function()
-	{
-		return true;
-	}
-	
-	local onGetBackgroundTooltip = o.onGetBackgroundTooltip;
-	o.onGetBackgroundTooltip = function( _background, _tooltip )
-	{
-	}
+	o.onActorKilled = function( _actor, _killer, _combatID ){}
+	o.onBattleWon = function( _combatLoot ){}
+	o.onCombatFinished = function(){return true;}
+	o.onGetBackgroundTooltip = function( _background, _tooltip ){}
 
 	local create = o.create;
 	o.create = function()
@@ -103,7 +104,6 @@
 	}
 
 	//Modify the characters here and replace the function
-	local onSpawnAssets = o.onSpawnAssets;
 	o.onSpawnAssets = function()
 	{
 		local roster = this.World.getPlayerRoster();
@@ -145,7 +145,7 @@
 		items.equip(::new("scripts/items/armor/undertaker_apron"));
 
 
-		
+
 		bros[1].setStartValuesEx([
 			"anatomist_background"
 		]);
@@ -173,9 +173,7 @@
 		items.equip(::new("scripts/items/helmets/physician_mask"));
 		items.equip(::new("scripts/items/armor/wanderers_coat"));
 		items.equip(::new("scripts/items/weapons/dagger"));
-		
-		
-		
+
 		bros[2].setStartValuesEx([
 			"anatomist_background"
 		]);
@@ -199,302 +197,12 @@
 		bros[2].getBackground().addPerk(::Const.Perks.PerkDefs.HoldOut, 2, false);
 		::LA.addPerk(bros[2], "perk.hold_out", "scripts/skills/perks/perk_hold_out", ::Const.Perks.PerkDefs.HoldOut, 2);
 		bros[2].getSkills().add(::new("scripts/skills/traits/player_character_trait"));
-		
 
 		items.equip(::new("scripts/items/helmets/masked_kettle_helmet"));
 		items.equip(::new("scripts/items/armor/reinforced_leather_tunic"));
 		items.equip(::new("scripts/items/weapons/militia_spear"));
 		this.World.Assets.getStash().add(::new("scripts/items/supplies/smoked_ham_item"));
 		this.World.Assets.getStash().add(::new("scripts/items/supplies/mead_item"));
-
-		//FIXME: Remove test code
-
-		bros[0].getSkills().add(::new("scripts/skills/traits/tester_trait"));
-		bros[1].getSkills().add(::new("scripts/skills/traits/tester_trait"));
-		bros[2].getSkills().add(::new("scripts/skills/traits/tester_trait"));
-
-		// bros[0].getSkills().add(::new("scripts/skills/actives/legend_demon_shadows_skill"));
-		// bros[1].getSkills().add(::new("scripts/skills/actives/legend_demon_shadows_skill"));
-		// bros[2].getSkills().add(::new("scripts/skills/actives/legend_demon_shadows_skill"));
-		// this.World.Assets.getStash().add(::new("scripts/items/misc/anatomist/research_notes_beasts_item"));
-		// this.World.Assets.getStash().add(::new("scripts/items/misc/anatomist/research_notes_greenskins_item"));
-		// this.World.Assets.getStash().add(::new("scripts/items/misc/anatomist/research_notes_undead_item"));
-		// this.World.Assets.getStash().add(::new("scripts/items/misc/anatomist/research_notes_legendary_item"));
-
-		this.World.Statistics.getFlags().set("isNecromancerPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isWiedergangerPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isFallenHeroPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isGeistPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isRachegeistPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isSkeletonWarriorPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isHonorGuardPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isAncientPriestPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isNecrosavantPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isLorekeeperPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isOrcYoungPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isOrcWarriorPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isOrcBerserkerPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isOrcWarlordPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isGoblinGruntPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isGoblinOverseerPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isGoblinShamanPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isDirewolfPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isLindwurmPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isUnholdPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isWebknechtPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isNachzehrerPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isAlpPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isHexePotionAcquired", false);
-		this.World.Statistics.getFlags().set("isSchratPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isSerpentPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isKrakenPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isIjirokPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isIfritPotionAcquired", false);
-		this.World.Statistics.getFlags().set("isHyenaPotionAcquired", false);
-	}
-	
-});
-
-//2. Origin - let anatomist origin bros be confident
-::mods_hookExactClass("entity/tactical/player", function(o)
-{
-	local setMoraleState = o.setMoraleState;
-	o.setMoraleState = function( _m )
-	{
-		if (_m == ::Const.MoraleState.Confident && this.m.Skills.hasSkill("trait.insecure"))
-		{
-			return;
-		}
-
-		if (this.m.Skills.hasSkill("effects.ancient_priest_potion") && _m < 3)
-		{
-			return;
-		}
-
-		if (_m == ::Const.MoraleState.Fleeing && this.m.Skills.hasSkill("trait.oath_of_valor"))
-		{
-			return;
-		}
-
-		if (_m == ::Const.MoraleState.Confident && this.getMoraleState() != ::Const.MoraleState.Confident && this.isPlacedOnMap() && this.Time.getRound() >= 1 && ("State" in this.World) && this.World.State != null && this.World.Ambitions.hasActiveAmbition() && this.World.Ambitions.getActiveAmbition().getID() == "ambition.oath_of_camaraderie")
-		{
-			this.World.Statistics.getFlags().increment("OathtakersBrosConfident");
-		}
-
-		this.actor.setMoraleState(_m);
 	}
 
-	local checkMorale = o.checkMorale;
-	o.checkMorale = function( _change, _difficulty, _type = ::Const.MoraleCheckType.Default, _showIconBeforeMoraleIcon = "", _noNewLine = false )
-	{
-		if (_change < 0 && this.m.Skills.hasSkill("effects.ancient_priest_potion"))
-		{
-			this.logInfo("Reached");
-			if (this.m.MoraleState < 3)
-			{
-				this.actor.setMoraleState(3);
-			}
-			return false;
-		}
-		
-		if (_change > 0 && this.m.MoraleState == ::Const.MoraleState.Steady && this.m.Skills.hasSkill("trait.insecure"))
-		{
-			return false;
-		}
-
-		if (_change < 0 && this.m.MoraleState == ::Const.MoraleState.Breaking && this.m.Skills.hasSkill("trait.oath_of_valor"))
-		{
-			return false;
-		}
-
-		if (_change > 0 && this.m.Skills.hasSkill("trait.optimist"))
-		{
-			_difficulty = _difficulty + 5;
-		}
-		else if (_change < 0 && this.m.Skills.hasSkill("trait.pessimist"))
-		{
-			_difficulty = _difficulty - 5;
-		}
-		else if (this.m.Skills.hasSkill("trait.irrational"))
-		{
-			_difficulty = _difficulty + (this.Math.rand(0, 1) == 0 ? 10 : -10);
-		}
-		else if (this.m.Skills.hasSkill("trait.mad"))
-		{
-			_difficulty = _difficulty + (this.Math.rand(0, 1) == 0 ? 15 : -15);
-		}
-
-		if (_change < 0 && _type == ::Const.MoraleCheckType.MentalAttack && this.m.Skills.hasSkill("trait.superstitious"))
-		{
-			_difficulty = _difficulty - 10;
-		}
-
-		return this.actor.checkMorale(_change, _difficulty, _type, _showIconBeforeMoraleIcon, _noNewLine);
-	}
-});
-
-
-//3. add more anatomists to the world, and potions
-::mods_hookExactClass("entity/world/attached_location/herbalists_grove_location", function (o)
-{
-	local onUpdateDraftList = o.onUpdateDraftList;
-	o.onUpdateDraftList = function( _list, _gender = null )
-	{
-		onUpdateDraftList(_list, _gender);
-		_list.push("anatomist_background");
-	}
-});
-
-::mods_hookExactClass("entity/world/attached_location/stone_watchtower_location", function (o)
-{
-	local onUpdateShopList = o.onUpdateShopList;
-	o.onUpdateShopList = function(_id, _list)
-	{
-		onUpdateShopList(_id, _list);
-		if (_id != "building.marketplace") return;
-		_list.push({
-			R = 90,
-			P = 1.0,
-			S = "misc/anatomist/orc_young_potion_item"
-		});
-		_list.push({
-			R = 90,
-			P = 1.0,
-			S = "misc/anatomist/webknecht_potion_item"
-		});
-		_list.push({
-			R = 90,
-			P = 1.0,
-			S = "misc/anatomist/direwolf_potion_item"
-		});
-	}
-});
-
-::mods_hookExactClass("entity/world/attached_location/stone_watchtower_oriental_location", function (o)
-{
-	local onUpdateDraftList = o.onUpdateDraftList;
-	o.onUpdateDraftList = function( _list, _gender = null )
-	{
-		onUpdateDraftList(_list, _gender);
-		_list.push("anatomist_background");
-	}
-
-	local onUpdateShopList = o.onUpdateShopList;
-	o.onUpdateShopList = function(_id, _list)
-	{
-		onUpdateShopList(_id, _list);
-		if (_id != "building.marketplace") return;
-		_list.push({
-			R = 90,
-			P = 1.0,
-			S = "misc/anatomist/serpent_potion_item"
-		});
-		_list.push({
-			R = 90,
-			P = 1.0,
-			S = "misc/anatomist/orc_young_potion_item"
-		});
-	}
-});
-
-::mods_hookExactClass("entity/world/attached_location/pig_farm_location", function (o)
-{
-	
-	local onUpdateDraftList = o.onUpdateDraftList;
-	o.onUpdateDraftList = function( _list, _gender = null )
-	{
-		onUpdateDraftList(_list, _gender);
-		_list.push("anatomist_background");
-	}
-});
-
-::mods_hookExactClass("entity/world/settlements/buildings/taxidermist_building", function (o)
-{
-	
-	local onUpdateDraftList = o.onUpdateDraftList;
-	o.onUpdateDraftList = function( _list, _gender = null )
-	{
-		onUpdateDraftList(_list, _gender);
-		_list.push("anatomist_background");
-	}
-});
-
-::LA.addAnatomists <- function (list_of_lists)
-{
-	foreach (lst in list_of_lists)
-	{
-		lst.push("anatomist_background");
-	}
-
-}
-
-::mods_hookExactClass("entity/world/settlements/legends_coast_fort", function (o)
-{
-	local create = o.create;
-	o.create = function()
-	{
-		create();
-		::LA.addAnatomists(this.m.DraftLists);
-	}
-});
-
-::mods_hookExactClass("entity/world/settlements/legends_forest_fort", function (o)
-{
-	local create = o.create;
-	o.create = function()
-	{
-		create();
-		::LA.addAnatomists(this.m.DraftLists);
-	}
-});
-
-::mods_hookExactClass("entity/world/settlements/legends_snow_fort", function (o)
-{
-	local create = o.create;
-	o.create = function()
-	{
-		create();
-		::LA.addAnatomists(this.m.DraftLists);
-	}
-});
-
-::mods_hookExactClass("entity/world/settlements/legends_swamp_fort", function (o)
-{
-	local create = o.create;
-	o.create = function()
-	{
-		create();
-		::LA.addAnatomists(this.m.DraftLists);
-	}
-});
-
-::mods_hookExactClass("entity/world/settlements/large_coast_fort", function (o)
-{
-	local create = o.create;
-	o.create = function()
-	{
-		create();
-		this.m.DraftList.push("anatomist_background");
-		this.m.DraftList.push("legend_inventor_background");
-	}
-});
-
-::mods_hookExactClass("entity/world/settlements/large_forest_fort", function (o)
-{
-	local create = o.create;
-	o.create = function()
-	{
-		create();
-		this.m.DraftList.push("anatomist_background");
-	}
-});
-
-::mods_hookExactClass("entity/world/settlements/large_snow_fort", function (o)
-{
-	local create = o.create;
-	o.create = function()
-	{
-		create();
-		this.m.DraftList.push("anatomist_background");
-	}
 });

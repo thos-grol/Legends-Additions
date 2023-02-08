@@ -1,5 +1,5 @@
 //"Subdermal Clotting"
-//"When this character\'s skin is broken, a substance is secreted that drastically quickens the blood clotting process in the area. Bleeding wounds are much less harmful as a result, although some blood loss still occurs.";
+//"When this character\'s skin is broken, a substance is secreted that drastically quickens the blood clotting process in the area. Bleeding wounds are much less harmful as a ret, although some blood loss still occurs.";
 ::mods_hookExactClass("skills/effects/hyena_potion_effect", function (o)
 {
     o.getTooltip = function()
@@ -41,7 +41,7 @@
         }
         else
         {
-           ret.push({
+            ret.push({
                 id = 11,
                 type = "text",
                 icon = "ui/icons/health.png",

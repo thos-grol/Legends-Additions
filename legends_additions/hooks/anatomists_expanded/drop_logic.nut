@@ -22,29 +22,30 @@
 	}
 }
 
-::mods_hookExactClass("entity/tactical/enemies/alp", function (o)
-{
-    local onDeath = o.onDeath;
-    o.onDeath = function(_killer, _skill, _tile, _fatalityType)
-    {
-        onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 2.5;
-        local item = "scripts/items/misc/anatomist/alp_potion_item";
-        ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
-    }
-});
+//FEATURE_2: Reenable Alp potions
+// ::mods_hookExactClass("entity/tactical/enemies/alp", function (o)
+// {
+//     local onDeath = o.onDeath;
+//     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
+//     {
+//         onDeath(_killer, _skill, _tile, _fatalityType);
+//         local chance = 2.0;
+//         local item = "scripts/items/misc/anatomist/alp_potion_item";
+//         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
+//     }
+// });
 
-::mods_hookExactClass("entity/tactical/enemies/legend_demon_alp", function (o)
-{
-    local onDeath = o.onDeath;
-    o.onDeath = function(_killer, _skill, _tile, _fatalityType)
-    {
-        onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 5;
-        local item = "scripts/items/misc/anatomist/demon_alp_potion_item";
-        ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
-    }
-});
+// ::mods_hookExactClass("entity/tactical/enemies/legend_demon_alp", function (o)
+// {
+//     local onDeath = o.onDeath;
+//     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
+//     {
+//         onDeath(_killer, _skill, _tile, _fatalityType);
+//         local chance = 5.0;
+//         local item = "scripts/items/misc/anatomist/geist_potion_item";
+//         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
+//     }
+// });
 
 ::mods_hookExactClass("entity/tactical/enemies/direwolf", function (o)
 {
@@ -64,37 +65,37 @@
     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
     {
         onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 5;
-        local item = "scripts/items/misc/anatomist/white_direwolf_potion_item";
+        local chance = 5.0;
+        local item = "scripts/items/misc/anatomist/goblin_overseer_potion_item";
         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
     }
 });
 
+//FEATURE_2: Reenable vampire potions
 //necrosavant
+// ::mods_hookExactClass("entity/tactical/enemies/vampire", function (o)
+// {
+//     local onDeath = o.onDeath;
+//     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
+//     {
+//         onDeath(_killer, _skill, _tile, _fatalityType);
+//         local chance = 2.5;
+//         local item = "scripts/items/misc/anatomist/necrosavant_potion_item";
+//         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
+//     }
+// });
 
-::mods_hookExactClass("entity/tactical/enemies/vampire", function (o)
-{
-    local onDeath = o.onDeath;
-    o.onDeath = function(_killer, _skill, _tile, _fatalityType)
-    {
-        onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 2.5;
-        local item = "scripts/items/misc/anatomist/necrosavant_potion_item";
-        ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
-    }
-});
-
-::mods_hookExactClass("entity/tactical/enemies/legend_vampire_lord", function (o)
-{
-    local onDeath = o.onDeath;
-    o.onDeath = function(_killer, _skill, _tile, _fatalityType)
-    {
-        onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 5;
-        local item = "scripts/items/misc/anatomist/necrosavant_lord_potion_item";
-        ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
-    }
-});
+// ::mods_hookExactClass("entity/tactical/enemies/legend_vampire_lord", function (o)
+// {
+//     local onDeath = o.onDeath;
+//     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
+//     {
+//         onDeath(_killer, _skill, _tile, _fatalityType);
+//         local chance = 5;
+//         local item = "scripts/items/misc/anatomist/apotheosis_potion_item";
+//         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
+//     }
+// });
 
 //goblin
 
@@ -104,7 +105,7 @@
     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
     {
         onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 1.25;
+        local chance = 0.75;
         local item = "scripts/items/misc/anatomist/goblin_grunt_potion_item";
         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
     }
@@ -116,7 +117,7 @@
     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
     {
         onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 5;
+        local chance = 1;
         local item = "scripts/items/misc/anatomist/goblin_grunt_potion_item";
         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
     }
@@ -197,18 +198,18 @@
 });
 
 //serpent
-
-::mods_hookExactClass("entity/tactical/enemies/serpent", function (o)
-{
-    local onDeath = o.onDeath;
-    o.onDeath = function(_killer, _skill, _tile, _fatalityType)
-    {
-        onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 2.5;
-        local item = "scripts/items/misc/anatomist/serpent_potion_item";
-        ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
-    }
-});
+//FEATURE_2: Reenable Serpent potion
+// ::mods_hookExactClass("entity/tactical/enemies/serpent", function (o)
+// {
+//     local onDeath = o.onDeath;
+//     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
+//     {
+//         onDeath(_killer, _skill, _tile, _fatalityType);
+//         local chance = 2.5;
+//         local item = "scripts/items/misc/anatomist/serpent_potion_item";
+//         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
+//     }
+// });
 
 //spider
 
@@ -286,51 +287,53 @@
     }
 });
 
+//FEATURE_2: Reenable Lindwurm potions
 //lindwurm
-::mods_hookExactClass("entity/tactical/enemies/lindwurm", function (o)
-{
-    local onDeath = o.onDeath;
-    o.onDeath = function(_killer, _skill, _tile, _fatalityType)
-    {
-        onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 5.0;
-        local item = "scripts/items/misc/anatomist/lindwurm_potion_item";
-        ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
-    }
-});
+// ::mods_hookExactClass("entity/tactical/enemies/lindwurm", function (o)
+// {
+//     local onDeath = o.onDeath;
+//     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
+//     {
+//         onDeath(_killer, _skill, _tile, _fatalityType);
+//         local chance = 5.0;
+//         local item = "scripts/items/misc/anatomist/lindwurm_potion_item";
+//         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
+//     }
+// });
 
-::mods_hookExactClass("entity/tactical/enemies/legend_stollwurm", function (o)
-{
-    local onDeath = o.onDeath;
-    o.onDeath = function(_killer, _skill, _tile, _fatalityType)
-    {
-        onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 5.0;
-        local item = "scripts/items/misc/anatomist/orc_warrior_potion_item";
-        ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
-    }
-});
+// ::mods_hookExactClass("entity/tactical/enemies/legend_stollwurm", function (o)
+// {
+//     local onDeath = o.onDeath;
+//     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
+//     {
+//         onDeath(_killer, _skill, _tile, _fatalityType);
+//         local chance = 5.0;
+//         local item = "scripts/items/misc/anatomist/orc_warrior_potion_item";
+//         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
+//     }
+// });
 
-::mods_hookExactClass("entity/tactical/enemies/schrat", function (o)
-{
-    local onDeath = o.onDeath;
-    o.onDeath = function(_killer, _skill, _tile, _fatalityType)
-    {
-        onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 5.0;
-        local item = "scripts/items/misc/anatomist/schrat_potion_item";
-        ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
-    }
-});
+//FEATURE_2: Reenable Schrat potions
+// ::mods_hookExactClass("entity/tactical/enemies/schrat", function (o)
+// {
+//     local onDeath = o.onDeath;
+//     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
+//     {
+//         onDeath(_killer, _skill, _tile, _fatalityType);
+//         local chance = 5.0;
+//         local item = "scripts/items/misc/anatomist/schrat_potion_item";
+//         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
+//     }
+// });
 
-::mods_hookExactClass("entity/tactical/enemies/legend_greenwood_schrat", function (o)
-{
-    local onDeath = o.onDeath;
-    o.onDeath = function(_killer, _skill, _tile, _fatalityType)
-    {
-        onDeath(_killer, _skill, _tile, _fatalityType);
-        local chance = 5.0;
-        local item = "scripts/items/misc/anatomist/ifrit_potion_item";
-        ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
-    }
-});
+// ::mods_hookExactClass("entity/tactical/enemies/legend_greenwood_schrat", function (o)
+// {
+//     local onDeath = o.onDeath;
+//     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
+//     {
+//         onDeath(_killer, _skill, _tile, _fatalityType);
+//         local chance = 5.0;
+//         local item = "scripts/items/misc/anatomist/ifrit_potion_item";
+//         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
+//     }
+// });

@@ -1,26 +1,35 @@
-::mods_hookExactClass("items/misc/anatomist/orc_warlord_potion_item", function (o)
+::mods_hookExactClass("items/misc/anatomist/orc_young_potion_item", function (o)
 {
     local create = o.create;
     o.create = function()
     {
         create();
-        this.m.Name = "Sequence 8: Warlord";
-        this.m.Description = "Borne from the study of the renown Orc Warlord, this potion improves upon that of the previous sequence, allowing one to wield heavy orc weapons with ease as well as letting an orc\'s rage flow through one\'s veins.";
-        this.m.Value = 15000;
+        this.m.Name = "Sequence 9: Orc";
+        this.m.Description = "Greenskin fury.";
+        this.m.Value = 7500;
     }
 
     o.onUse = function(_actor, _item = null)
     {
         ::LA.doMutation(_actor, "orc");
-
-        _actor.getSkills().removeByID("trait.tiny");
-        _actor.getSkills().add(::new("scripts/skills/traits/huge_trait"));
-
         _actor.getFlags().add("orc");
-        _actor.getFlags().add("orc_8");
 
-        _actor.getSkills().add(::new("scripts/skills/effects/orc_warlord_potion_effect"));
-        _actor.getSkills().add(::new("scripts/skills/effects/orc_berserker_potion_effect"));
+        //Grow and toughen
+        if (_actor.getSkills().hasSkill("trait.tiny")) _actor.getSkills().removeByID("trait.tiny");
+        else _actor.getSkills().add(::new("scripts/skills/traits/huge_trait"));
+        _actor.getSkills().add(::new("scripts/skills/traits/iron_jaw_trait"));
+
+        //1 Improved Musculature
+        _actor.getSkills().add(::new("scripts/skills/effects/orc_young_potion_effect"));
+
+        //2 Sensory Redundancy
+        _actor.getSkills().add(::new("scripts/skills/effects/orc_warrior_potion_effect"));
+
+        //3 Muscularity
+        ::LA.addPerk(_actor, "perk.legend_muscularity", "scripts/skills/perks/perk_legend_muscularity", ::Const.Perks.PerkDefs.LegendMuscularity, 0);
+
+        //4 Crippling Strikes
+        ::LA.addPerk(_actor, "perk.crippling_strikes", "scripts/skills/perks/perk_crippling_strikes", ::Const.Perks.PerkDefs.CripplingStrikes, 1);
 
         this.Sound.play("sounds/enemies/orc_death_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/orc_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
@@ -31,7 +40,7 @@
 
     o.getTooltip = function()
     {
-        local result = [
+        local ret = [
             {
                 id = 1,
                 type = "title",
@@ -43,7 +52,7 @@
                 text = this.getDescription()
             }
         ];
-        result.push({
+        ret.push({
             id = 66,
             type = "text",
             text = this.getValueString()
@@ -51,7 +60,7 @@
 
         if (this.getIconLarge() != null)
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIconLarge(),
@@ -60,48 +69,66 @@
         }
         else
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIcon()
             });
         }
 
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Induces major growth."
+            text = "Induces major growth and toughens the physique."
         });
-        result.push({
+
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/melee_skill.png",
+            text = "Improved Musculature: +" + ::MSU.Text.colorGreen( "10%" ) + " Damage"
+        });
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/health.png",
+            text = "+" + ::MSU.Text.colorGreen( 10 ) + " Hitpoints"
+        });
+
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Warlord: Improves upon the effects of the sequence 9 potion. \n[color=" + ::Const.UI.Color.PositiveValue + "]+15[/color]% Damage" + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Hitpoints"
+            text = "Sensory Redundancy: [color=" + ::Const.UI.Color.PositiveValue + "]50%[/color] chance to resist the Dazed, Staggered, Stunned status effects"
         });
-        result.push({
+
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Improved Limbic System: Using orc weapons no longer imposes additional fatigue costs" + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Fatigue"
+            text = "Muscularity: Put your full weight into every blow and gain [color=" + ::Const.UI.Color.PositiveValue + "]+10%[/color] of your current hitpoints as additional minimum and maximum damage, up to 50."
         });
-        result.push({
+
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Hyperactive Glands: This character gains two stacks of Rage each time they take hitpoint damage, and loses one stack at the end of each turn. Rage improves damage reduction and other combat stats."
+            text = "Crippling Strikes: Cripple your enemies! Lowers the threshold to inflict injuries by [color=" + ::Const.UI.Color.NegativeValue + "]33%[/color] for both melee and ranged attacks. Undead cannot be injured, but you gain [color=" + ::Const.UI.Color.NegativeValue + "]+10%[/color] damage against them."
         });
-        result.push({
+
+
+        ret.push({
             id = 65,
             type = "text",
             text = "Right-click or drag onto the currently selected character in order to drink. Will refund owned perks. Will not give points for traits."
         });
-        result.push({
+        ret.push({
             id = 65,
             type = "hint",
             icon = "ui/tooltips/warning.png",
             text = "Mutates the body. Side effects include sickness and if potions of different sequences are mixed, death."
         });
-        return result;
+        return ret;
     }
 });

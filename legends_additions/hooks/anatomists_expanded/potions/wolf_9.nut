@@ -5,21 +5,27 @@
     {
         create();
         this.m.Name = "Sequence 9: Direwolf";
-        this.m.Description = "This humoural concoction, borne from research into the dreaded direwolf, will turn even the clumsiest oaf into a lithe dancer of a warrior, able to gracefully move with the tides of battle long after lesser men succumb to fatigue! Mild akathisia after consuming is normal and expected.";
-        this.m.Value = 5000;
+        this.m.Description = "The relentless vigor of a direwolf, bottled.";
+        this.m.Value = 7500;
     }
 
     o.onUse = function(_actor, _item = null)
     {
         ::LA.doMutation(_actor, "werewolf");
-
         _actor.getFlags().add("werewolf");
-        _actor.getSkills().add(::new("scripts/skills/racial/werewolf_player_racial"));
-        _actor.getSkills().add(::new("scripts/skills/effects/direwolf_potion_effect"));
-        _actor.getSkills().add(::new("scripts/skills/effects/alp_potion_effect"));
 
-        _actor.getBackground().addPerk(::Const.Perks.PerkDefs.PTRSurvivalInstinct, 1, false);
-        _actor.getSkills().add(::new("scripts/skills/perks/perk_ptr_survival_instinct"));
+        //1 Direwolf
+        _actor.getSkills().add(::new("scripts/skills/effects/direwolf_potion_effect"));
+
+        //2 Survival Instinct
+        ::LA.addPerk(_actor, "perk.ptr_survival_instinct", "scripts/skills/perks/perk_ptr_survival_instinct", ::Const.Perks.PerkDefs.PTRSurvivalInstinct, 0);
+
+        //3 Underdog
+        ::LA.addPerk(_actor, "perk.underdog", "scripts/skills/perks/perk_underdog", ::Const.Perks.PerkDefs.Underdog, 1);
+
+        //4 Menacing
+        ::LA.addPerk(_actor, "perk.ptr_menacing", "scripts/skills/perks/perk_ptr_menacing", ::Const.Perks.PerkDefs.PTRMenacing, 2);
+
 
         this.Sound.play("sounds/enemies/werewolf_idle_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/werewolf_idle_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
@@ -31,7 +37,7 @@
 
     o.getTooltip = function()
     {
-        local result = [
+        local ret = [
             {
                 id = 1,
                 type = "title",
@@ -43,7 +49,7 @@
                 text = this.getDescription()
             }
         ];
-        result.push({
+        ret.push({
             id = 66,
             type = "text",
             text = this.getValueString()
@@ -51,7 +57,7 @@
 
         if (this.getIconLarge() != null)
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIconLarge(),
@@ -60,48 +66,67 @@
         }
         else
         {
-            result.push({
+            ret.push({
                 id = 3,
                 type = "image",
                 image = this.getIcon()
             });
         }
 
-        result.push({
+        ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Direwolf: This character counts as a direwolf in skill checks, and inherits the direwolf's racial traits; that is inflicting more damage in proportion to missing health."
+            text = "Direwolf: This character counts as a direwolf in skill checks. Not affected by night time penalties."
         });
-        result.push({
-            id = 12,
+        ret.push({
+            id = 11,
             type = "text",
-            icon = "ui/icons/morale.png",
-            text = "Elasticized Sinew: Attacks that miss have [color=" + ::Const.UI.Color.PositiveValue + "]50%[/color] of their Fatigue cost refunded" + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Fatigue"
+            icon = "ui/icons/special.png",
+            text = "+" + ::MSU.Text.colorGreen( "2" ) + " AP"
         });
-        result.push({
-            id = 12,
+        ret.push({
+            id = 11,
             type = "text",
-            icon = "ui/icons/morale.png",
-            text = "Enhanced Eye Rods: Not affected by nighttime penalties" + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+2[/color] Vision"
+            icon = "ui/icons/fatigue.png",
+            text = "+" + ::MSU.Text.colorGreen( "5" ) + " Fatigue Recovery"
         });
-        result.push({
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/health.png",
+            text = "+" + ::MSU.Text.colorGreen( "15" ) + " Hitpoints"
+        });
+        ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Survival Instinct: Every time you are attacked, gain +2 Melee and Ranged Defense on a miss and +5 on a hit. The bonus is reset at the start of every turn except the bonus gained from getting hit which is retained for the rest of the combat. This retained bonus cannot be higher than +10."
+            text = "Survival Instinct: Every time you are attacked, gain +2 Melee and Ranged Defense on a miss and +5 on a hit. This bonus is reset every turn, but the retained bonus can be max 10."
         });
-        result.push({
+        ret.push({
+            id = 12,
+            type = "text",
+            icon = "ui/icons/special.png",
+            text = "Underdog: The defense malus due to being surrounded by opponents is reduced by [color=" + ::Const.UI.Color.NegativeValue + "]3[/color]."
+        });
+        ret.push({
+            id = 12,
+            type = "text",
+            icon = "ui/icons/special.png",
+            text = "Menacing: Your appearance gives your enemies a bit of doubt! [color=" + ::Const.UI.Color.Passive + "][u]Passive:[/u][/color]\n• Lower the Resolve of adjacent enemies by [color=" + ::Const.UI.Color.PositiveValue + "]-10[/color]."
+        });
+
+        ret.push({
             id = 65,
             type = "text",
             text = "Right-click or drag onto the currently selected character in order to drink. Will refund owned perks. Will not give points for traits."
         });
-        result.push({
+        ret.push({
             id = 65,
             type = "hint",
             icon = "ui/tooltips/warning.png",
             text = "Mutates the body. Side effects include sickness and if potions of different sequences are mixed, death."
         });
-        return result;
+        return ret;
     }
 });

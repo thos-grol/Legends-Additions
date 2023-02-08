@@ -62,7 +62,7 @@
 
 });
 
-this.getroottable().Const.LegendMod.hookTacticalState <- function ()
+::Const.LegendMod.hookTacticalState <- function ()
 {
 	::mods_hookExactClass("states/tactical_state", function ( o )
 	{
@@ -74,9 +74,9 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 			}
 
 			this.m.IsBattleEnded = true;
-			local isVictory = this.Tactical.Entities.getCombatResult() == this.Const.Tactical.CombatResult.EnemyDestroyed || this.Tactical.Entities.getCombatResult() == this.Const.Tactical.CombatResult.EnemyRetreated;
+			local isVictory = this.Tactical.Entities.getCombatResult() == ::Const.Tactical.CombatResult.EnemyDestroyed || this.Tactical.Entities.getCombatResult() == ::Const.Tactical.CombatResult.EnemyRetreated;
 			this.m.IsFogOfWarVisible = false;
-			this.Tactical.fillVisibility(this.Const.Faction.Player, true);
+			this.Tactical.fillVisibility(::Const.Faction.Player, true);
 			this.Tactical.getCamera().zoomTo(2.0, 1.0);
 			this.Tooltip.hide();
 			this.m.TacticalScreen.hide();
@@ -84,17 +84,17 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 
 			if (isVictory)
 			{
-				this.Music.setTrackList(this.Const.Music.VictoryTracks, this.Const.Music.CrossFadeTime);
+				this.Music.setTrackList(::Const.Music.VictoryTracks, ::Const.Music.CrossFadeTime);
 
 				if (!this.isScenarioMode())
 				{
 					if (this.m.StrategicProperties != null && this.m.StrategicProperties.IsAttackingLocation)
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnVictoryVSLocation);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnVictoryVSLocation);
 					}
 					else
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnVictory);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnVictory);
 					}
 
 					this.World.Contracts.onCombatVictory(this.m.StrategicProperties != null ? this.m.StrategicProperties.CombatID : "");
@@ -103,7 +103,7 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 					this.World.Statistics.getFlags().set("LastEnemiesDefeatedCount", this.m.MaxHostiles);
 					this.World.Statistics.getFlags().set("LastCombatResult", 1);
 
-					if (this.World.Statistics.getFlags().getAsInt("LastCombatFaction") == this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).getID())
+					if (this.World.Statistics.getFlags().getAsInt("LastCombatFaction") == this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID())
 					{
 						this.World.Statistics.getFlags().increment("BeastsDefeated");
 					}
@@ -115,8 +115,8 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 					{
 						if (bro.getPlaceInFormation() <= 26 && !bro.isPlacedOnMap() && bro.getFlags().get("Devoured") == true)
 						{
-							bro.getSkills().onDeath(this.Const.FatalityType.Devoured);
-							bro.onDeath(null, null, null, this.Const.FatalityType.Devoured);
+							bro.getSkills().onDeath(::Const.FatalityType.Devoured);
+							bro.onDeath(null, null, null, ::Const.FatalityType.Devoured);
 							this.World.getPlayerRoster().remove(bro);
 						}
 						else if (this.m.StrategicProperties.IsUsingSetPlayers && bro.isPlacedOnMap())
@@ -125,11 +125,11 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 
 							if (this.m.StrategicProperties.IsArenaMode)
 							{
-								bro.improveMood(this.Const.MoodChange.BattleWon, "Won a fight in the arena");
+								bro.improveMood(::Const.MoodChange.BattleWon, "Won a fight in the arena");
 							}
 							else
 							{
-								bro.improveMood(this.Const.MoodChange.BattleWon, "Won a battle");
+								bro.improveMood(::Const.MoodChange.BattleWon, "Won a battle");
 
                                 //if bro has gruesome feast skill, then run this code
                                 if (bro.getSkills().hasSkill("perk.legend_gruesome_feast"))
@@ -138,8 +138,8 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
                                     local skills = bro.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
                                     foreach( s in skills )
                                     {
-                                        if (s.getOrder() == ::Const.SkillOrder.PermanentInjury) continue;
-                                        s.removeSelf();
+                                        if (s.isType(::Const.SkillType.PermanentInjury)) continue;
+										s.removeSelf();
                                     }
                                 }
 
@@ -149,7 +149,7 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 						{
 							if (bro.getLifetimeStats().BattlesWithoutMe > bro.getLifetimeStats().Battles)
 							{
-								bro.worsenMood(this.Const.MoodChange.BattleWithoutMe, "Forced into battle against their wishes");
+								bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Forced into battle against their wishes");
 							}
 						}
 						else if (!this.m.StrategicProperties.IsUsingSetPlayers)
@@ -157,15 +157,15 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 							if (bro.isPlacedOnMap())
 							{
 								bro.getLifetimeStats().BattlesWithoutMe = 0;
-								bro.improveMood(this.Const.MoodChange.BattleWon, "Won a battle");
+								bro.improveMood(::Const.MoodChange.BattleWon, "Won a battle");
 							}
-							else if (bro.getMoodState() > this.Const.MoodState.Concerned && !bro.getCurrentProperties().IsContentWithBeingInReserve && !this.World.Assets.m.IsDisciplined)
+							else if (bro.getMoodState() > ::Const.MoodState.Concerned && !bro.getCurrentProperties().IsContentWithBeingInReserve && !this.World.Assets.m.IsDisciplined)
 							{
 								++bro.getLifetimeStats().BattlesWithoutMe;
 
 								if (bro.getLifetimeStats().BattlesWithoutMe > this.Math.max(2, 6 - bro.getLevel()))
 								{
-									bro.worsenMood(this.Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
+									bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
 								}
 							}
 						}
@@ -176,7 +176,7 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 			}
 			else
 			{
-				this.Music.setTrackList(this.Const.Music.DefeatTracks, this.Const.Music.CrossFadeTime);
+				this.Music.setTrackList(::Const.Music.DefeatTracks, ::Const.Music.CrossFadeTime);
 
 				if (!this.isScenarioMode())
 				{
@@ -188,8 +188,8 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 						{
 							if (bro.isAlive())
 							{
-								bro.getSkills().onDeath(this.Const.FatalityType.Devoured);
-								bro.onDeath(null, null, null, this.Const.FatalityType.Devoured);
+								bro.getSkills().onDeath(::Const.FatalityType.Devoured);
+								bro.onDeath(null, null, null, ::Const.FatalityType.Devoured);
 								this.World.getPlayerRoster().remove(bro);
 							}
 						}
@@ -197,7 +197,7 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 						{
 							if (bro.isAlive())
 							{
-								bro.kill(null, null, this.Const.FatalityType.Suicide);
+								bro.kill(null, null, ::Const.FatalityType.Suicide);
 							}
 						}
 						else if (bro.isPlacedOnMap())
@@ -206,20 +206,20 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 
 							if (this.Tactical.getCasualtyRoster().getSize() != 0)
 							{
-								bro.worsenMood(this.Const.MoodChange.BattleLost, "Lost a battle");
+								bro.worsenMood(::Const.MoodChange.BattleLost, "Lost a battle");
 							}
 							else if (this.World.Assets.getOrigin().getID() != "scenario.deserters")
 							{
-								bro.worsenMood(this.Const.MoodChange.BattleRetreat, "Retreated from battle");
+								bro.worsenMood(::Const.MoodChange.BattleRetreat, "Retreated from battle");
 							}
 						}
-						else if (bro.getMoodState() > this.Const.MoodState.Concerned && !bro.getCurrentProperties().IsContentWithBeingInReserve && (!bro.getFlags().has("TemporaryRider") || !bro.getFlags().has("IsHorse")))
+						else if (bro.getMoodState() > ::Const.MoodState.Concerned && !bro.getCurrentProperties().IsContentWithBeingInReserve && (!bro.getFlags().has("TemporaryRider") || !bro.getFlags().has("IsHorse")))
 						{
 							++bro.getLifetimeStats().BattlesWithoutMe;
 
 							if (bro.getLifetimeStats().BattlesWithoutMe > this.Math.max(2, 6 - bro.getLevel()))
 							{
-								bro.worsenMood(this.Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
+								bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
 							}
 						}
 
@@ -228,7 +228,7 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 
 					if (this.World.getPlayerRoster().getSize() != 0)
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnLoss);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnLoss);
 						this.World.Contracts.onRetreatedFromCombat(this.m.StrategicProperties != null ? this.m.StrategicProperties.CombatID : "");
 						this.World.Events.onRetreatedFromCombat(this.m.StrategicProperties != null ? this.m.StrategicProperties.CombatID : "");
 						this.World.Statistics.getFlags().set("LastEnemiesDefeatedCount", 0);
@@ -239,10 +239,10 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 
 			if (this.m.StrategicProperties != null && this.m.StrategicProperties.IsArenaMode)
 			{
-				this.Sound.play(this.Const.Sound.ArenaEnd[this.Math.rand(0, this.Const.Sound.ArenaEnd.len() - 1)], this.Const.Sound.Volume.Tactical);
+				this.Sound.play(::Const.Sound.ArenaEnd[this.Math.rand(0, ::Const.Sound.ArenaEnd.len() - 1)], ::Const.Sound.Volume.Tactical);
 				this.Time.scheduleEvent(this.TimeUnit.Real, 4500, function ( _t )
 				{
-					this.Sound.play(this.Const.Sound.ArenaOutro[this.Math.rand(0, this.Const.Sound.ArenaOutro.len() - 1)], this.Const.Sound.Volume.Tactical);
+					this.Sound.play(::Const.Sound.ArenaOutro[this.Math.rand(0, ::Const.Sound.ArenaOutro.len() - 1)], ::Const.Sound.Volume.Tactical);
 				}, null);
 			}
 
@@ -262,7 +262,7 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 			{
 				this.Tooltip.hide();
 				this.m.TacticalCombatResultScreen.show();
-				this.Cursor.setCursor(this.Const.UI.Cursor.Hand);
+				this.Cursor.setCursor(::Const.UI.Cursor.Hand);
 				this.m.MenuStack.push(function ()
 				{
 					if (this.m.TacticalCombatResultScreen != null)
@@ -509,7 +509,7 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 
 				if (this.Tactical.Entities.getArmorParts() > 0 && this.World.Assets.m.IsRecoveringArmor)
 				{
-					local amount = this.Math.min(60, this.Math.max(1, this.Tactical.Entities.getArmorParts() * this.Const.World.Assets.ArmorPartsPerArmor * 0.15));
+					local amount = this.Math.min(60, this.Math.max(1, this.Tactical.Entities.getArmorParts() * ::Const.World.Assets.ArmorPartsPerArmor * 0.15));
 					amount = this.Math.rand(amount / 2, amount);
 
 					if (amount > 0)
@@ -583,7 +583,7 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 						Expendable = bro.getBackground().getID() == "background.slave"
 					};
 					this.World.Statistics.addFallen(bro);
-					bro.getSkills().onDeath(this.Const.FatalityType.None);
+					bro.getSkills().onDeath(::Const.FatalityType.None);
 					this.World.getPlayerRoster().remove(bro);
 					bro.die();
 				}
@@ -602,7 +602,7 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 				this.updateAchievement("TimeToRebuild", 1, 1);
 			}
 
-			if (!this.isScenarioMode() && this.World.getPlayerRoster().getSize() == 0 && this.World.FactionManager.getFactionOfType(this.Const.FactionType.Barbarians) != null && this.m.Factions.getHostileFactionWithMostInstances() == this.World.FactionManager.getFactionOfType(this.Const.FactionType.Barbarians).getID())
+			if (!this.isScenarioMode() && this.World.getPlayerRoster().getSize() == 0 && this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians) != null && this.m.Factions.getHostileFactionWithMostInstances() == this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians).getID())
 			{
 				this.updateAchievement("GiveMeBackMyLegions", 1, 1);
 			}
@@ -618,5 +618,5 @@ this.getroottable().Const.LegendMod.hookTacticalState <- function ()
 			return this.m.IsEnemyRetreatDialogShown;
 		};
 	});
-	delete this.Const.LegendMod.hookTacticalState;
+	delete ::Const.LegendMod.hookTacticalState;
 };

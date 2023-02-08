@@ -1,5 +1,5 @@
 //"Enhanced Eye Rods";
-//"This character\'s eyes have mutated to respond faster and more drastically to low light environments. As a result, they have night vision nearly on par with their sight during the day.";
+//"This character\'s eyes have mutated to respond faster and more drastically to low light environments. As a ret, they have night vision nearly on par with their sight during the day.";
 ::mods_hookExactClass("skills/effects/alp_potion_effect", function(o) {
 	o.getTooltip = function()
 	{
