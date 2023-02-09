@@ -42,7 +42,13 @@
                 id = 11,
                 type = "text",
                 icon = "ui/icons/health.png",
-                text = "Heal [color=" + ::Const.UI.Color.PositiveValue + "]25%[/color] of hitpoint damage inflicted on adjacent enemies that have blood"
+                text = "Heal [color=" + ::Const.UI.Color.PositiveValue + "]50%[/color] of hitpoint damage inflicted on adjacent enemies that have blood"
+            });
+            ret.push({
+                id = 11,
+                type = "text",
+                icon = "ui/icons/special.png",
+                text = "Not affected by nighttime penalties"
             });
             ret.push({
                 id = 11,
@@ -50,12 +56,7 @@
                 icon = "ui/icons/health.png",
                 text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 30 + "[/color] Hitpoints"
             });
-            ret.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/melee_skill.png",
-                text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 10 + "[/color] Melee Skill"
-            });
+
         }
         else
         {
@@ -63,19 +64,19 @@
                 id = 11,
                 type = "text",
                 icon = "ui/icons/health.png",
-                text = "Heal [color=" + ::Const.UI.Color.PositiveValue + "]15%[/color] of hitpoint damage inflicted on adjacent enemies that have blood"
+                text = "Heal [color=" + ::Const.UI.Color.PositiveValue + "]25%[/color] of hitpoint damage inflicted on adjacent enemies that have blood"
+            });
+            ret.push({
+                id = 11,
+                type = "text",
+                icon = "ui/icons/special.png",
+                text = "Not affected by nighttime penalties"
             });
             ret.push({
                 id = 11,
                 type = "text",
                 icon = "ui/icons/health.png",
-                text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 10 + "[/color] Hitpoints"
-            });
-            ret.push({
-                id = 11,
-                type = "text",
-                icon = "ui/icons/melee_skill.png",
-                text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 5 + "[/color] Melee Skill"
+                text = "+[color=" + ::Const.UI.Color.PositiveValue + "]" + 15 + "[/color] Hitpoints"
             });
         }
 
@@ -92,13 +93,11 @@
     {
         if (this.getContainer().getActor().getFlags().has("vampire_8"))
         {
-            _properties.MeleeSkill += 15;
             _properties.Hitpoints += 30;
         }
         else
         {
-            _properties.MeleeSkill += 5;
-            _properties.Hitpoints += 10;
+            _properties.Hitpoints += 15;
         }
 
     }
@@ -109,7 +108,7 @@
         local actor = this.m.Container.getActor();
         this.spawnIcon("status_effect_09", actor.getTile());
         local hasMastery = this.getContainer().getActor().getFlags().has("vampire_8");
-        local lifesteal_percent = hasMastery ? 0.25 : 0.15;
+        local lifesteal_percent = hasMastery ? 0.50 : 0.25;
 
         local hitpointsHealed = this.Math.round(_damageInflictedHitpoints * lifesteal_percent);
 

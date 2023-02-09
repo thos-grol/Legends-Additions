@@ -10,7 +10,7 @@
 	MeleeSkill = 65,
 	RangedSkill = 40,
 	MeleeDefense = 15,
-	RangedDefense = 10,		
+	RangedDefense = 10,
 	Initiative = 105,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
@@ -427,7 +427,7 @@
 		this.setArmorSaturation(0.85);
 		this.getSprite("shield_icon").setBrightness(0.85);
 
-		local agent = actor.getAIAgent();
+		local agent = this.actor.getAIAgent();
 		if (agent.findBehavior(::Const.AI.Behavior.ID.Protect) != null)
 		{
 			agent.removeBehavior(::Const.AI.Behavior.ID.Protect);

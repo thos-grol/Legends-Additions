@@ -224,6 +224,7 @@ Undead cannot be charmed
 ::setSpawn("nomad_leader", this.Const.Faction.PlayerAnimals)
 
 ::setSpawn("bandit_raider", this.Const.Faction.PlayerAnimals)
+::setSpawn("swordmaster", this.Const.Faction.PlayerAnimals)
 
 ::setSpawn("bandit_leader", this.Const.Faction.PlayerAnimals)
 ::setSpawn("bandit_leader")
@@ -241,6 +242,9 @@ Undead cannot be charmed
 ::addItem("orc_warlord_potion_item")
 ::addItem("daze_bomb_item")
 ::addItem("fighting_axe")
+::addItem("shamshir")
+::addItem("scimitar")
+::addItem("named_shamshir")
 
 
 

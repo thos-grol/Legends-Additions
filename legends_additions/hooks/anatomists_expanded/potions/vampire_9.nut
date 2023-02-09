@@ -1,6 +1,5 @@
 ::mods_hookExactClass("items/misc/anatomist/necrosavant_potion_item", function (o)
 {
-    //FEATURE_2: Vampire 9 potion
     local create = o.create;
     o.create = function()
     {
@@ -19,18 +18,17 @@
         _actor.getSkills().removeByID("trait.old");
         _actor.getFlags().add("IsRejuvinated", true);
 
-
+        //1 Parasitic Blood
         _actor.getSkills().add(::new("scripts/skills/effects/necrosavant_potion_effect"));
 
-        //Add lacerate
-        _actor.getBackground().addPerk(::Const.Perks.PerkDefs.NineLives, 0, false);
-        _actor.getSkills().add(::new("scripts/skills/perks/perk_nine_lives"));
+        //2 Darkflight
+        ::LA.addPerk(_actor, "perk.legend_darkflight", "scripts/skills/perks/perk_legend_darkflight", ::Const.Perks.PerkDefs.LegendDarkflight, 0);
 
-        _actor.getBackground().addPerk(::Const.Perks.PerkDefs.PTRBloodlust, 1, false);
-        _actor.getSkills().add(::new("scripts/skills/perks/perk_ptr_bloodlust"));
+        //3 Nine Lives
+        ::LA.addPerk(_actor, "perk.nine_lives", "scripts/skills/perks/perk_nine_lives", ::Const.Perks.PerkDefs.NineLives, 1);
 
-        _actor.getBackground().addPerk(::Const.Perks.PerkDefs.PTRSanguinary, 2, false);
-        _actor.getSkills().add(::new("scripts/skills/perks/perk_ptr_sanguinary"));
+        //4 Lacerate
+        ::LA.addPerk(_actor, "perk.legend_lacerate", "scripts/skills/perks/perk_legend_lacerate", ::Const.Perks.PerkDefs.LegendLacerate, 1);
 
         this.Sound.play("sounds/enemies/vampire_hurt_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/vampire_death_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
@@ -81,8 +79,26 @@
             id = 11,
             type = "text",
             icon = "ui/icons/health.png",
-            text = "Parasitic Blood: Heal [color=" + ::Const.UI.Color.PositiveValue + "]15%[/color] of hitpoint damage inflicted on adjacent enemies that have blood" + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Hitpoints." + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+5[/color] Melee Skill."
+            text = "Parasitic Blood: Heal " + ::MSU.Text.colorGreen( "25" ) + "% of hitpoint damage inflicted on adjacent enemies that have blood"
         });
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/special.png",
+            text = "Not affected by nighttime penalties"
+        });
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/health.png",
+            text = "+" + ::MSU.Text.colorGreen( "15" ) + " Hitpoints"
+        });
+        ret.push({
+			id = 12,
+			type = "text",
+			icon = "ui/icons/special.png",
+			text = "Darkflight: Disapparate from your current location and reappear on the other side of the battlefield up to 6 tiles away."
+		});
         ret.push({
             id = 12,
             type = "text",
@@ -93,13 +109,7 @@
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Bloodlust: Attacks on bleeding targets restore fatigue."
-        });
-        ret.push({
-            id = 12,
-            type = "text",
-            icon = "ui/icons/special.png",
-            text = "Sanguinary: Increases the chance to inflict fatalities and fatalities restore fatigue. Attacks against bleeding targets improve your morale."
+            text = "Lacerate: Lust for blood courses through your veins, each stroke rips and tears with a ferocity unmatched. Cause minor but long lasting bleeding on any target you deal direct health damage to with any weapon. This effect stacks.",
         });
         ret.push({
             id = 65,

@@ -35,6 +35,13 @@
                     this.m.Skills.add(::new("scripts/skills/effects/ancient_priest_potion_effect"));
                     this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lacerate"));
                 }
+
+                local agent = this.actor.getAIAgent();
+                if (agent.findBehavior(::Const.AI.Behavior.ID.GruesomeFeast) == null)
+                {
+                    agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_gruesome_feast_potion"));
+                    agent.finalizeBehaviors();
+                }
                 break;
             case "spider":
                 this.getFlags().add("spider");
@@ -82,20 +89,27 @@
                     this.m.Skills.add(::new("scripts/skills/perks/perk_berserk"));
                 }
                 break;
-            // case "necrosavant":
-            //     this.getFlags().add("vampire");
-            //     this.m.Skills.add(::new("scripts/skills/effects/necrosavant_potion_effect"));
-            //     this.m.Skills.add(::new("scripts/skills/perks/perk_nine_lives"));
-            //     this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bloodlust"));
-            //     this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_sanguinary"));
-            //     if (complete)
-            //     {
-            //         this.getFlags().add("vampire_8");
-            //         this.m.Skills.add(::new("scripts/skills/effects/ancient_priest_potion_effect"));
-            //         this.m.Skills.add(::new("scripts/skills/actives/darkflight"));
-            //         this.m.Skills.add(::new("scripts/skills/effects/webknecht_potion_effect"));
-            //     }
-            //     break;
+            case "necrosavant":
+                this.getFlags().add("vampire");
+                this.m.Skills.add(::new("scripts/skills/effects/necrosavant_potion_effect"));
+                this.m.Skills.add(::new("scripts/skills/perks/perk_nine_lives"));
+                this.m.Skills.add(::new("scripts/skills/perks/perk_legend_darkflight"));
+                this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lacerate"));
+
+                if (complete)
+                {
+                    this.getFlags().add("vampire_8");
+                    this.m.Skills.add(::new("scripts/skills/effects/ancient_priest_potion_effect"));
+                    this.m.Skills.add(::new("scripts/skills/effects/webknecht_potion_effect"));
+                }
+
+                local agent = this.actor.getAIAgent();
+                if (agent.findBehavior(this.Const.AI.Behavior.ID.Darkflight) == null)
+                {
+                    agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_darkflight"));
+                    agent.finalizeBehaviors();
+                }
+                break;
             case "goblin":
                 this.getFlags().add("goblin");
                 this.m.Skills.add(::new("scripts/skills/traits/tiny_trait"));
@@ -118,49 +132,10 @@
 });
 
 //////////////////////////////// AI ///////////////////////////////////////////
-
-::mods_hookExactClass("ai/tactical/agents/bandit_melee_agent", function (o)
+::mods_hookExactClass("ai/tactical/behaviors/ai_darkflight", function (o)
 {
-    local onAddBehaviors = o.onAddBehaviors;
-    o.onAddBehaviors = function()
-    {
-        onAddBehaviors();
-        this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_gruesome_feast_potion"));
-        this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_darkflight"));
-        this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_attack_throw_net"));
-    }
+    o.m.PossibleSkills = [
+        "actives.darkflight",
+        "actives.legend_darkflight"
+    ];
 });
-
-::mods_hookExactClass("ai/tactical/agents/bandit_ranged_agent", function (o)
-{
-    local onAddBehaviors = o.onAddBehaviors;
-    o.onAddBehaviors = function()
-    {
-        onAddBehaviors();
-        this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_disengage"));
-    }
-});
-
-::mods_hookExactClass("ai/tactical/agents/bounty_hunter_melee_agent", function (o)
-{
-    local onAddBehaviors = o.onAddBehaviors;
-    o.onAddBehaviors = function()
-    {
-        onAddBehaviors();
-        this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_gruesome_feast_potion"));
-        this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_darkflight"));
-    }
-});
-
-::mods_hookExactClass("ai/tactical/agents/military_melee_agent", function (o)
-{
-    local onAddBehaviors = o.onAddBehaviors;
-    o.onAddBehaviors = function()
-    {
-        onAddBehaviors();
-        this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_gruesome_feast_potion"));
-        this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_darkflight"));
-        this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_attack_throw_net"));
-    }
-});
-

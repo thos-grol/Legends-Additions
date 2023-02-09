@@ -136,11 +136,15 @@
                                 if (bro.getSkills().hasSkill("perk.legend_gruesome_feast"))
                                 {
                                     bro.setHitpoints(bro.getHitpointsMax());
-                                    local skills = bro.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
-                                    foreach( s in skills )
-                                    {
-                                        if (s.isType(::Const.SkillType.TemporaryInjury)) s.removeSelf();
-                                    }
+
+									local skills = _user.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
+									foreach( s in skills )
+									{
+										if (s.getOrder() == ::Const.SkillOrder.PermanentInjury) continue;
+										s.removeSelf();
+									}
+
+									bro.onUpdateInjuryLayer();
                                 }
 
 							}

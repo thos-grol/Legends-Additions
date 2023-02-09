@@ -72,18 +72,18 @@
 });
 
 //FEATURE_2: Reenable vampire potions
-//necrosavant
-// ::mods_hookExactClass("entity/tactical/enemies/vampire", function (o)
-// {
-//     local onDeath = o.onDeath;
-//     o.onDeath = function(_killer, _skill, _tile, _fatalityType)
-//     {
-//         onDeath(_killer, _skill, _tile, _fatalityType);
-//         local chance = 2.5;
-//         local item = "scripts/items/misc/anatomist/necrosavant_potion_item";
-//         ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
-//     }
-// });
+necrosavant
+::mods_hookExactClass("entity/tactical/enemies/vampire", function (o)
+{
+    local onDeath = o.onDeath;
+    o.onDeath = function(_killer, _skill, _tile, _fatalityType)
+    {
+        onDeath(_killer, _skill, _tile, _fatalityType);
+        local chance = 2.5;
+        local item = "scripts/items/misc/anatomist/necrosavant_potion_item";
+        ::LA.drop_potion(_killer, _skill, _tile, _fatalityType, chance, item);
+    }
+});
 
 // ::mods_hookExactClass("entity/tactical/enemies/legend_vampire_lord", function (o)
 // {

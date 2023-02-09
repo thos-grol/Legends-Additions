@@ -26,8 +26,10 @@
         _actor.getSkills().add(::new("scripts/skills/effects/necrosavant_potion_effect"));
         _actor.getSkills().add(::new("scripts/skills/effects/ancient_priest_potion_effect"));
 
-        _actor.getBackground().addPerk(::Const.Perks.PerkDefs.LegendDarkflight, 3, false);
-        _actor.getSkills().add(::new("scripts/skills/perks/perk_legend_darkflight"));
+		_actor.getBackground().addPerk(::Const.Perks.PerkDefs.PTRBloodlust, 1, false);
+        _actor.getSkills().add(::new("scripts/skills/perks/perk_ptr_bloodlust"));
+
+
 
         _actor.getSkills().add(::new("scripts/skills/effects/webknecht_potion_effect"));
 
@@ -82,12 +84,7 @@
 			icon = "ui/icons/special.png",
 			text = "Necrosavant Lord: Improves effects of parasitic blood to 25%."+ "\n[color=" + ::Const.UI.Color.PositiveValue + "]+20[/color] Hitpoints." + "\n[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Melee Skill."
 		});
-		ret.push({
-			id = 12,
-			type = "text",
-			icon = "ui/icons/special.png",
-			text = "Darkflight: Disapparate from your current location and reappear on the other side of the battlefield up to 6 tiles away."
-		});
+
 		ret.push({
 			id = 11,
 			type = "text",
