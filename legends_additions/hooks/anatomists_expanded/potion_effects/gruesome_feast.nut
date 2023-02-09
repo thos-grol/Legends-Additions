@@ -1,623 +1,630 @@
-//TODO: redo logic in injury
-::mods_hookExactClass("skills/actives/legend_gruesome_feast", function (o)
-{
-    local create = o.create;
-    o.create = function()
-    {
-        create();
-        this.m.Description = "Feast on a corpse to regain health and cure injuries. This will daze and disgust any non-mutated human within four tiles. \n\nWill automatically feast on corpses at the end of the battle and restore full health and remove injuries.";
-        this.m.ActionPointCost = 6;
-        this.m.FatigueCost = 35;
-    }
-
-    local onUse = o.onUse;
-    o.onUse = function(_user, _targetTile)
-    {
-        _targetTile = _user.getTile();
-
-        if (_targetTile.IsVisibleForPlayer)
-        {
-            if (::Const.Tactical.GruesomeFeastParticles.len() != 0)
-            {
-                for( local i = 0; i < ::Const.Tactical.GruesomeFeastParticles.len(); i = i )
-                {
-                    this.Tactical.spawnParticleEffect(false, ::Const.Tactical.GruesomeFeastParticles[i].Brushes, _targetTile, ::Const.Tactical.GruesomeFeastParticles[i].Delay, ::Const.Tactical.GruesomeFeastParticles[i].Quantity, ::Const.Tactical.GruesomeFeastParticles[i].LifeTimeQuantity, ::Const.Tactical.GruesomeFeastParticles[i].SpawnRate, ::Const.Tactical.GruesomeFeastParticles[i].Stages);
-                    i = ++i;
-                }
-            }
-
-            if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
-                this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " feasts on a corpse");
-        }
-
-        if (!_user.isHiddenToPlayer()) this.Time.scheduleEvent(this.TimeUnit.Virtual, 500, this.onRemoveCorpse, _targetTile);
-        else this.onRemoveCorpse(_targetTile);
-
-
-        this.spawnBloodbath(_targetTile);
-        _user.setHitpoints(this.Math.min(_user.getHitpoints() + 50, _user.getHitpointsMax()));
-        local skills = _user.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
-
-        foreach( s in skills )
-        {
-            if (s.getOrder() == ::Const.SkillOrder.PermanentInjury) continue;
-            s.removeSelf();
-        }
-
-        local actors = this.Tactical.Entities.getInstancesOfFaction(_user.getFaction());
-
-        foreach( a in actors )
-        {
-            if (a.getID() == _user.getID()) continue;
-            if (_user.getTile().getDistanceTo(a.getTile()) > 4) continue;
-            if (_user.getFlags().getAsInt("SequencesUsed") > 0) continue;
-
-            a.getSkills().add(::new("scripts/skills/effects/legend_dazed_effect"));
-            if (a.getFaction() != _user.getFaction()) continue;
-            a.worsenMood(2.0, "Witnessed someone eat a corpse");
-        }
-
-        _user.onUpdateInjuryLayer();
-        return true;
-    }
-
-});
-
-::Const.LegendMod.hookTacticalState <- function ()
-{
-	::mods_hookExactClass("states/tactical_state", function ( o )
-	{
-		o.onBattleEnded = function ()
-		{
-			if (this.m.IsExitingToMenu)
-			{
-				return;
-			}
-
-			this.m.IsBattleEnded = true;
-			local isVictory = this.Tactical.Entities.getCombatResult() == ::Const.Tactical.CombatResult.EnemyDestroyed || this.Tactical.Entities.getCombatResult() == ::Const.Tactical.CombatResult.EnemyRetreated;
-			this.m.IsFogOfWarVisible = false;
-			this.Tactical.fillVisibility(::Const.Faction.Player, true);
-			this.Tactical.getCamera().zoomTo(2.0, 1.0);
-			this.Tooltip.hide();
-			this.m.TacticalScreen.hide();
-			this.Tactical.OrientationOverlay.removeOverlays();
-
-			if (isVictory)
-			{
-				this.Music.setTrackList(::Const.Music.VictoryTracks, ::Const.Music.CrossFadeTime);
-
-				if (!this.isScenarioMode())
-				{
-					if (this.m.StrategicProperties != null && this.m.StrategicProperties.IsAttackingLocation)
-					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnVictoryVSLocation);
-					}
-					else
-					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnVictory);
-					}
-
-					this.World.Contracts.onCombatVictory(this.m.StrategicProperties != null ? this.m.StrategicProperties.CombatID : "");
-					this.World.Events.onCombatVictory(this.m.StrategicProperties != null ? this.m.StrategicProperties.CombatID : "");
-					this.World.Statistics.getFlags().set("LastPlayersAtBattleStartCount", this.m.MaxPlayers);
-					this.World.Statistics.getFlags().set("LastEnemiesDefeatedCount", this.m.MaxHostiles);
-					this.World.Statistics.getFlags().set("LastCombatResult", 1);
-
-					if (this.World.Statistics.getFlags().getAsInt("LastCombatFaction") == this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID())
-					{
-						this.World.Statistics.getFlags().increment("BeastsDefeated");
-					}
-
-					this.World.Assets.getOrigin().onBattleWon(this.m.CombatResultLoot);
-					local playerRoster = this.World.getPlayerRoster().getAll();
-
-					foreach( bro in playerRoster )
-					{
-						if (bro.getPlaceInFormation() <= 26 && !bro.isPlacedOnMap() && bro.getFlags().get("Devoured") == true)
-						{
-							bro.getSkills().onDeath(::Const.FatalityType.Devoured);
-							bro.onDeath(null, null, null, ::Const.FatalityType.Devoured);
-							this.World.getPlayerRoster().remove(bro);
-						}
-						else if (this.m.StrategicProperties.IsUsingSetPlayers && bro.isPlacedOnMap())
-						{
-							bro.getLifetimeStats().BattlesWithoutMe = 0;
-
-							if (this.m.StrategicProperties.IsArenaMode)
-							{
-								bro.improveMood(::Const.MoodChange.BattleWon, "Won a fight in the arena");
-							}
-							else
-							{
-								bro.improveMood(::Const.MoodChange.BattleWon, "Won a battle");
-
-                                //if bro has gruesome feast skill, then run this code
-                                if (bro.getSkills().hasSkill("perk.legend_gruesome_feast"))
-                                {
-                                    bro.setHitpoints(bro.getHitpointsMax());
-                                    local skills = bro.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
-                                    foreach( s in skills )
-                                    {
-                                        if (s.isType(::Const.SkillType.PermanentInjury)) continue;
-										s.removeSelf();
-                                    }
-                                }
-
-							}
-						}
-						else if (bro.getSkills().hasSkill("perk.legend_pacifist"))
-						{
-							if (bro.getLifetimeStats().BattlesWithoutMe > bro.getLifetimeStats().Battles)
-							{
-								bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Forced into battle against their wishes");
-							}
-						}
-						else if (!this.m.StrategicProperties.IsUsingSetPlayers)
-						{
-							if (bro.isPlacedOnMap())
-							{
-								bro.getLifetimeStats().BattlesWithoutMe = 0;
-								bro.improveMood(::Const.MoodChange.BattleWon, "Won a battle");
-							}
-							else if (bro.getMoodState() > ::Const.MoodState.Concerned && !bro.getCurrentProperties().IsContentWithBeingInReserve && !this.World.Assets.m.IsDisciplined)
-							{
-								++bro.getLifetimeStats().BattlesWithoutMe;
-
-								if (bro.getLifetimeStats().BattlesWithoutMe > this.Math.max(2, 6 - bro.getLevel()))
-								{
-									bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
-								}
-							}
-						}
-
-						bro.getFlags().remove("TemporaryRider");
-					}
-				}
-			}
-			else
-			{
-				this.Music.setTrackList(::Const.Music.DefeatTracks, ::Const.Music.CrossFadeTime);
-
-				if (!this.isScenarioMode())
-				{
-					local playerRoster = this.World.getPlayerRoster().getAll();
-
-					foreach( bro in playerRoster )
-					{
-						if (bro.getPlaceInFormation() <= 26 && !bro.isPlacedOnMap() && bro.getFlags().get("Devoured") == true)
-						{
-							if (bro.isAlive())
-							{
-								bro.getSkills().onDeath(::Const.FatalityType.Devoured);
-								bro.onDeath(null, null, null, ::Const.FatalityType.Devoured);
-								this.World.getPlayerRoster().remove(bro);
-							}
-						}
-						else if (bro.isPlacedOnMap() && (bro.getFlags().get("Charmed") == true || bro.getFlags().get("Sleeping") == true || bro.getFlags().get("Nightmare") == true))
-						{
-							if (bro.isAlive())
-							{
-								bro.kill(null, null, ::Const.FatalityType.Suicide);
-							}
-						}
-						else if (bro.isPlacedOnMap())
-						{
-							bro.getLifetimeStats().BattlesWithoutMe = 0;
-
-							if (this.Tactical.getCasualtyRoster().getSize() != 0)
-							{
-								bro.worsenMood(::Const.MoodChange.BattleLost, "Lost a battle");
-							}
-							else if (this.World.Assets.getOrigin().getID() != "scenario.deserters")
-							{
-								bro.worsenMood(::Const.MoodChange.BattleRetreat, "Retreated from battle");
-							}
-						}
-						else if (bro.getMoodState() > ::Const.MoodState.Concerned && !bro.getCurrentProperties().IsContentWithBeingInReserve && (!bro.getFlags().has("TemporaryRider") || !bro.getFlags().has("IsHorse")))
-						{
-							++bro.getLifetimeStats().BattlesWithoutMe;
-
-							if (bro.getLifetimeStats().BattlesWithoutMe > this.Math.max(2, 6 - bro.getLevel()))
-							{
-								bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
-							}
-						}
-
-						bro.getFlags().remove("TemporaryRider");
-					}
-
-					if (this.World.getPlayerRoster().getSize() != 0)
-					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnLoss);
-						this.World.Contracts.onRetreatedFromCombat(this.m.StrategicProperties != null ? this.m.StrategicProperties.CombatID : "");
-						this.World.Events.onRetreatedFromCombat(this.m.StrategicProperties != null ? this.m.StrategicProperties.CombatID : "");
-						this.World.Statistics.getFlags().set("LastEnemiesDefeatedCount", 0);
-						this.World.Statistics.getFlags().set("LastCombatResult", 2);
-					}
-				}
-			}
-
-			if (this.m.StrategicProperties != null && this.m.StrategicProperties.IsArenaMode)
-			{
-				this.Sound.play(::Const.Sound.ArenaEnd[this.Math.rand(0, ::Const.Sound.ArenaEnd.len() - 1)], ::Const.Sound.Volume.Tactical);
-				this.Time.scheduleEvent(this.TimeUnit.Real, 4500, function ( _t )
-				{
-					this.Sound.play(::Const.Sound.ArenaOutro[this.Math.rand(0, ::Const.Sound.ArenaOutro.len() - 1)], ::Const.Sound.Volume.Tactical);
-				}, null);
-			}
-
-			this.gatherBrothers(isVictory);
-			this.gatherLoot();
-			this.Time.scheduleEvent(this.TimeUnit.Real, 800, this.onBattleEndedDelayed.bindenv(this), isVictory);
-		};
-		o.onBattleEndedDelayed = function ( _isVictory )
-		{
-			if (this.m.MenuStack.hasBacksteps())
-			{
-				this.Time.scheduleEvent(this.TimeUnit.Real, 50, this.onBattleEndedDelayed.bindenv(this), _isVictory);
-				return;
-			}
-
-			if (this.m.IsGameFinishable)
-			{
-				this.Tooltip.hide();
-				this.m.TacticalCombatResultScreen.show();
-				this.Cursor.setCursor(::Const.UI.Cursor.Hand);
-				this.m.MenuStack.push(function ()
-				{
-					if (this.m.TacticalCombatResultScreen != null)
-					{
-						if (_isVictory && !this.Tactical.State.isScenarioMode() && this.m.StrategicProperties != null && (!this.m.StrategicProperties.IsLootingProhibited || this.m.StrategicProperties.IsArenaMode && !this.m.CombatResultLoot.isEmpty()) && this.Settings.getGameplaySettings().AutoLoot)
-						{
-							this.m.TacticalCombatResultScreen.onLootAllItemsButtonPressed();
-							this.World.Assets.consumeItems();
-							this.World.Assets.refillAmmo();
-							this.World.Assets.updateAchievements();
-							this.World.Assets.checkAmbitionItems();
-							this.World.State.updateTopbarAssets();
-						}
-
-						if (("Camp" in this.World) && this.World.Camp != null)
-						{
-							this.World.Camp.assignRepairs();
-						}
-
-						this.m.TacticalScreen.show();
-						this.m.TacticalCombatResultScreen.hide();
-					}
-				}, function ()
-				{
-					return false;
-				});
-			}
-		};
-		o.gatherLoot = function ()
-		{
-			local playerKills = 0;
-
-			foreach( bro in this.m.CombatResultRoster )
-			{
-				playerKills = playerKills + bro.getCombatStats().Kills;
-			}
-
-			if (!this.isScenarioMode())
-			{
-				this.World.Statistics.getFlags().set("LastCombatKills", playerKills);
-			}
-
-			local isArena = !this.isScenarioMode() && this.m.StrategicProperties != null && this.m.StrategicProperties.IsArenaMode;
-
-			if (!isArena && !this.isScenarioMode() && this.m.StrategicProperties != null && this.m.StrategicProperties.IsLootingProhibited)
-			{
-				return;
-			}
-
-			local EntireCompanyRoster = this.World.getPlayerRoster().getAll();
-			local CannibalsInRoster = 0;
-			local CannibalisticButchersInRoster = 0;
-			local zombieSalvage = 10;
-			local zombieLoot = false;
-			local skeletonLoot = false;
-
-			foreach( bro in EntireCompanyRoster )
-			{
-				if (!bro.isAlive())
-				{
-					continue;
-				}
-
-				switch(bro.getBackground().getID())
-				{
-				case "background.vazl_cannibal":
-					CannibalsInRoster = CannibalsInRoster + 1;
-					break;
-
-				case "background.gravedigger":
-					zombieSalvage = zombieSalvage + 5;
-					break;
-
-				case "background.graverobber":
-					zombieSalvage = zombieSalvage + 5;
-					break;
-
-				case "background.butcher":
-					if (bro.getSkills().hasSkill("trait.vazl_cannibalistic"))
-					{
-						CannibalisticButchersInRoster = CannibalisticButchersInRoster + 1;
-					}
-
-					break;
-				}
-
-				if (bro.getSkills().hasSkill("perk.legends_reclamation"))
-				{
-					local skill = bro.getSkills().getSkillByID("perk.legends_reclamation");
-					zombieSalvage = zombieSalvage + skill.m.LootChance;
-				}
-
-				if (bro.getSkills().hasSkill("perk.legend_resurrectionist"))
-				{
-					local skill = bro.getSkills().getSkillByID("perk.legend_resurrectionist");
-					zombieSalvage = zombieSalvage + skill.m.LootChance;
-				}
-
-				if (bro.getSkills().hasSkill("perk.legend_spawn_zombie_low") || bro.getSkills().hasSkill("perk.legend_spawn_zombie_med") || bro.getSkills().hasSkill("perk.legend_spawn_zombie_high"))
-				{
-					zombieLoot = true;
-				}
-
-				if (bro.getSkills().hasSkill("perk.legend_spawn_skeleton_low") || bro.getSkills().hasSkill("perk.legend_spawn_skeleton_med") || bro.getSkills().hasSkill("perk.legend_spawn_skeleton_high"))
-				{
-					skeletonLoot = true;
-				}
-			}
-
-			local loot = [];
-			local size = this.Tactical.getMapSize();
-
-			for( local x = 0; x < size.X; x = x )
-			{
-				for( local y = 0; y < size.Y; y = y )
-				{
-					local tile = this.Tactical.getTileSquare(x, y);
-
-					if (tile.IsContainingItems)
-					{
-						foreach( item in tile.Items )
-						{
-							if (isArena && item.getLastEquippedByFaction() != 1)
-							{
-								continue;
-							}
-
-							item.onCombatFinished();
-							loot.push(item);
-						}
-					}
-
-					if (zombieLoot && tile.Properties.has("Corpse"))
-					{
-						if (tile.Properties.get("Corpse").isHuman == 1 || tile.Properties.get("Corpse").isHuman == 2)
-						{
-							if (this.Math.rand(1, 100) <= zombieSalvage)
-							{
-								local zloot = ::new("scripts/items/spawns/zombie_item");
-								loot.push(zloot);
-							}
-						}
-					}
-
-					if (skeletonLoot && tile.Properties.has("Corpse"))
-					{
-						if (tile.Properties.get("Corpse").isHuman == 1 || tile.Properties.get("Corpse").isHuman == 3)
-						{
-							if (this.Math.rand(1, 100) <= zombieSalvage)
-							{
-								local zloot = ::new("scripts/items/spawns/skeleton_item");
-								loot.push(zloot);
-							}
-						}
-					}
-
-					if (this.Math.rand(1, 100) <= 8 && tile.Properties.has("Corpse") && tile.Properties.get("Corpse").isHuman == 1)
-					{
-						if (CannibalisticButchersInRoster >= 1)
-						{
-							local humanmeat = ::new("scripts/items/supplies/vazl_yummy_sausages");
-							humanmeat.randomizeAmount();
-							humanmeat.randomizeBestBefore();
-							loot.push(humanmeat);
-						}
-						else if (CannibalisticButchersInRoster < 1 && CannibalsInRoster >= 1)
-						{
-							local humanmeat = ::new("scripts/items/supplies/vazl_human_parts");
-							humanmeat.randomizeAmount();
-							humanmeat.randomizeBestBefore();
-							loot.push(humanmeat);
-						}
-					}
-
-					if (tile.Properties.has("Corpse") && tile.Properties.get("Corpse").Items != null && !tile.Properties.has("IsSummoned"))
-					{
-						local items = tile.Properties.get("Corpse").Items.getAllItems();
-
-						foreach( item in items )
-						{
-							if (isArena && item.getLastEquippedByFaction() != 1)
-							{
-								continue;
-							}
-
-							item.onCombatFinished();
-
-							if (!item.isChangeableInBattle(null) && item.isDroppedAsLoot())
-							{
-								if (item.getCondition() > 1 && item.getConditionMax() > 1 && item.getCondition() > item.getConditionMax() * 0.66 && this.Math.rand(1, 100) <= 66)
-								{
-									local c = this.Math.minf(item.getCondition(), this.Math.rand(this.Math.maxf(10, item.getConditionMax() * 0.35), item.getConditionMax()));
-									item.setCondition(c);
-								}
-
-								item.removeFromContainer();
-
-								foreach( i in item.getLootLayers() )
-								{
-									loot.push(i);
-								}
-							}
-						}
-					}
-
-					y = ++y;
-				}
-
-				x = ++x;
-			}
-
-			if (!isArena && this.m.StrategicProperties != null)
-			{
-				local player = this.World.State.getPlayer();
-
-				foreach( party in this.m.StrategicProperties.Parties )
-				{
-					if (party.getTroops().len() == 0 && party.isAlive() && !party.isAlliedWithPlayer() && party.isDroppingLoot() && (playerKills > 0 || this.m.IsDeveloperModeEnabled))
-					{
-						party.onDropLootForPlayer(loot);
-					}
-				}
-
-				foreach( item in this.m.StrategicProperties.Loot )
-				{
-					loot.push(::new(item));
-				}
-			}
-
-			if (!isArena && !this.isScenarioMode())
-			{
-				if (this.Tactical.Entities.getAmmoSpent() > 0 && this.World.Assets.m.IsRecoveringAmmo)
-				{
-					local amount = this.Math.max(1, this.Tactical.Entities.getAmmoSpent() * 0.2);
-					amount = this.Math.rand(amount / 2, amount);
-
-					if (amount > 0)
-					{
-						local ammo = ::new("scripts/items/supplies/ammo_item");
-						ammo.setAmount(amount);
-						loot.push(ammo);
-					}
-				}
-
-				if (this.Tactical.Entities.getArmorParts() > 0 && this.World.Assets.m.IsRecoveringArmor)
-				{
-					local amount = this.Math.min(60, this.Math.max(1, this.Tactical.Entities.getArmorParts() * ::Const.World.Assets.ArmorPartsPerArmor * 0.15));
-					amount = this.Math.rand(amount / 2, amount);
-
-					if (amount > 0)
-					{
-						local parts = ::new("scripts/items/supplies/armor_parts_item");
-						parts.setAmount(amount);
-						loot.push(parts);
-					}
-				}
-			}
-
-			loot.extend(this.m.CombatResultLoot.getItems());
-			this.m.CombatResultLoot.assign(loot);
-			this.m.CombatResultLoot.sort();
-		};
-		o.gatherBrothers = function ( _isVictory )
-		{
-			this.m.CombatResultRoster = [];
-			this.Tactical.CombatResultRoster <- this.m.CombatResultRoster;
-			local alive = this.Tactical.Entities.getAllInstancesAsArray();
-
-			foreach( bro in alive )
-			{
-				if (bro.isAlive() && this.isKindOf(bro, "player"))
-				{
-					bro.onBeforeCombatResult();
-
-					if (bro.isAlive() && !bro.isGuest() && bro.isPlayerControlled())
-					{
-						this.m.CombatResultRoster.push(bro);
-					}
-				}
-			}
-
-			local dead = this.Tactical.getCasualtyRoster().getAll();
-			local survivor = this.Tactical.getSurvivorRoster().getAll();
-			local retreated = this.Tactical.getRetreatRoster().getAll();
-			local isArena = this.m.StrategicProperties != null && this.m.StrategicProperties.IsArenaMode;
-
-			if (_isVictory || isArena)
-			{
-				foreach( s in survivor )
-				{
-					s.setIsAlive(true);
-					s.onBeforeCombatResult();
-
-					foreach( i, d in dead )
-					{
-						if (s.getID() == d.getOriginalID())
-						{
-							dead.remove(i);
-							this.Tactical.getCasualtyRoster().remove(d);
-							break;
-						}
-					}
-				}
-
-				this.m.CombatResultRoster.extend(survivor);
-			}
-			else
-			{
-				foreach( bro in survivor )
-				{
-					local fallen = {
-						Name = bro.getName(),
-						Time = this.World.getTime().Days,
-						TimeWithCompany = this.Math.max(1, bro.getDaysWithCompany()),
-						Kills = bro.getLifetimeStats().Kills,
-						Battles = bro.getLifetimeStats().Battles,
-						KilledBy = "Left to die",
-						Expendable = bro.getBackground().getID() == "background.slave"
-					};
-					this.World.Statistics.addFallen(bro);
-					bro.getSkills().onDeath(::Const.FatalityType.None);
-					this.World.getPlayerRoster().remove(bro);
-					bro.die();
-				}
-			}
-
-			foreach( s in retreated )
-			{
-				s.onBeforeCombatResult();
-			}
-
-			this.m.CombatResultRoster.extend(retreated);
-			this.m.CombatResultRoster.extend(dead);
-
-			if (!this.isScenarioMode() && dead.len() > 1 && dead.len() >= this.m.CombatResultRoster.len() / 2)
-			{
-				this.updateAchievement("TimeToRebuild", 1, 1);
-			}
-
-			if (!this.isScenarioMode() && this.World.getPlayerRoster().getSize() == 0 && this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians) != null && this.m.Factions.getHostileFactionWithMostInstances() == this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians).getID())
-			{
-				this.updateAchievement("GiveMeBackMyLegions", 1, 1);
-			}
-		};
-		local showRetreatScreen = o.showRetreatScreen;
-		o.showRetreatScreen = function ( _tag = null )
-		{
-			this.m.TacticalScreen.getTopbarOptionsModule().changeFleeButtonToAllowRetreat(true);
-			showRetreatScreen();
-		};
-		o.isEnemyRetreatDialogShown <- function ()
-		{
-			return this.m.IsEnemyRetreatDialogShown;
-		};
-	});
-	delete ::Const.LegendMod.hookTacticalState;
+//Bandit Leader
+//Lvl 11 Player character template with 1-3 stars
+//10 perks + 1 training perk + 1 trait
+::Const.Tactical.Actor.BanditLeader <- {
+	XP = 375,
+	ActionPoints = 9,
+	Hitpoints = 65,
+	Bravery = 60,
+	Stamina = 96,
+	MeleeSkill = 65,
+	RangedSkill = 40,
+	MeleeDefense = 15,
+	RangedDefense = 10,
+	Initiative = 105,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	Armor = [
+		0,
+		0
+	],
+	FatigueRecoveryRate = 15
 };
+::mods_hookExactClass("entity/tactical/enemies/bandit_leader", function(o)
+{
+	o.m.is_throwing <- false;
+	o.m.is_shield <- false;
+	o.m.no_man_of_steel <- false;
+
+	o.m.build_num <- 0;
+	o.m.is_miniboss <- false;
+	o.m.named_item_type <- 0;
+
+	o.getBuildNumber <- function()
+	{
+		this.m.build_num = this.Math.rand(1, 100) <= 35 ? this.Math.rand(1, 2) : this.Math.rand(3, 7);
+		if (this.m.build_num > 2 && this.Math.rand(1, 100) <= 75) this.m.is_shield = true;
+		if (this.m.build_num == 7) this.m.is_throwing = true;
+	}
+
+	o.makeMiniboss = function()
+	{
+		if (!this.actor.makeMiniboss()) return false;
+		this.m.is_miniboss = true;
+		this.getBuildNumber();
+
+		this.m.XP *= 1.5;
+		this.m.IsGeneratingKillName = false;
+		this.getSprite("miniboss").setBrush("bust_miniboss");
+
+		this.m.named_item_type = this.Math.rand(this.m.is_throwing ? 0 : 1, this.m.is_shield ? 3 : 2);
+		switch(this.m.named_item_type)
+		{
+			case 0: //throwing weapons
+				local throwing = [
+					"weapons/named/named_javelin",
+					"weapons/named/named_throwing_axe"
+				];
+				this.m.Items.addToBag(::new("scripts/items/" + ::MSU.Array.rand(throwing)));
+				break;
+			case 1: //weapon - logic is handled when adding equipment in builds
+				break;
+			case 2: //armor
+				if (this.Math.rand(0,1) == 0)
+				{
+					local named = ::Const.Items.NamedArmors;
+					local weightName = ::Const.World.Common.convNameToList(named);
+					this.m.Items.equip(::Const.World.Common.pickArmor(weightName));
+				}
+				else
+				{
+					local named = ::Const.Items.NamedHelmets;
+					local weightName = ::Const.World.Common.convNameToList(named);
+					this.m.Items.equip(::Const.World.Common.pickHelmet(weightName));
+				}
+				break;
+			case 3: //shields
+				local shields = clone ::Const.Items.NamedShields;
+				shields.extend([
+					"shields/named/named_bandit_kite_shield",
+					"shields/named/named_bandit_heater_shield"
+				]);
+				this.m.Items.equip(::new("scripts/items/" + ::MSU.Array.rand(shields)));
+				break;
+		}
+
+		return true;
+	}
+
+	o.assignRandomEquipment = function()
+	{
+		this.addArmor();
+
+		//Free Tribal Perk
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bully"));
+
+		//Bandit Leader Free Traits
+		this.m.Skills.add(::new("scripts/skills/actives/rally_the_troops"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_captain"));
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_shields_up"));
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_rally_the_troops"));
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_hold_the_line"));
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_push_forward"));
+
+		//Defensive Perks 7
+		this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+		else this.m.no_man_of_steel = true;
+
+		if (!this.m.is_miniboss) this.getBuildNumber(); //if build isnt already rolled, roll it
+
+		if (this.m.is_shield) //if it is a rolled shield build
+		{
+			if (!this.m.is_miniboss || this.m.named_item_type != 3) //if it isnt a miniboss with item type 3
+			{
+				local shields = [
+					"shields/heater_shield",
+					"shields/kite_shield"
+				];
+				this.m.Items.equip(::new("scripts/items/" + ::MSU.Array.rand(shields)));
+			}
+			this.m.Skills.add(::new("scripts/skills/perks/perk_shield_expert")); //3
+			this.m.Skills.add(::new("scripts/skills/perks/perk_str_line_breaker")); //?
+		}
+
+		switch(this.m.build_num)
+		{
+			case 1:
+				this.build_swordstaff();
+				break;
+			case 2:
+				this.build_greatsword();
+				break;
+			case 3:
+				this.build_1haxe();
+				break;
+			case 4:
+				this.build_1hcleaver();
+				break;
+			case 5:
+				this.build_1hhammer();
+				break;
+			case 6:
+				this.build_1hmace();
+				break;
+			case 7:
+				this.build_thrower();
+				break;
+		}
+
+		this.m.Skills.update();
+	}
+
+	o.build_swordstaff <- function() //1
+	{
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/legend_named_swordstaff"));
+		else this.m.Items.equip(::new("scripts/items/weapons/legend_swordstaff"));
+
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_polearm")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_two_for_one")); //5
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_a_better_grip")); //6
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_king_of_all_weapons")); //7
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity")); //6
+
+		this.level_health(5, this.Math.rand(1, 3) );
+		this.level_fatigue(5, this.Math.rand(1, 3) );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_initiative(3, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25)
+		{
+			if (this.Math.rand(1, 2) == 1) this.add_potion("orc", false);
+			else this.add_potion("spider", false);
+		}
+	}
+
+	o.build_greatsword <- function() //2
+	{
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/named_greatsword"));
+		else this.m.Items.equip(::new("scripts/items/weapons/greatsword"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		this.m.Skills.removeByID("perk.brawny");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_fortified_mind")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_fluid_weapon")); //3
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_sword")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_mind_over_body")); //6
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_en_garde")); //7
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_bloody_harvest")); //7
+
+		this.level_health(3, this.Math.rand(1, 3) );
+		this.level_resolve(10, 3 );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("direwolf", false);
+	}
+
+	o.build_1haxe <- function() //3
+	{
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/named_axe"));
+		else this.m.Items.equip(::new("scripts/items/weapons/fighting_axe"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.removeByID("perk.steel_brow");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_axe")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_cull")); //7
+		if (!this.m.is_shield)
+		{
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dismemberment")); //3
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity")); //6
+		}
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_duelist")); //7
+
+		this.level_health(5, this.Math.rand(1, 3) );
+		this.level_fatigue(5, this.Math.rand(1, 3) );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_initiative(3, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+	}
+
+	o.build_1hcleaver <- function() //4
+	{
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/named_cleaver"));
+		else this.m.Items.equip(::new("scripts/items/weapons/military_cleaver"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.removeByID("perk.steel_brow");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_sanguinary")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		//duelist
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_cleaver")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_mauler")); //7
+		if (!this.m.is_shield)
+		{
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bloodbath"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_sanguinary"));
+		}
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_duelist")); //7
+
+		this.level_health(5, this.Math.rand(1, 3) );
+		this.level_fatigue(5, this.Math.rand(1, 3) );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_initiative(3, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+	}
+
+	o.build_1hhammer <- function() //5
+	{
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/named_warhammer"));
+		else this.m.Items.equip(::new("scripts/items/weapons/warhammer"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.removeByID("perk.steel_brow");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_hammer")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dent_armor")); //7
+		if (!this.m.is_shield)
+		{
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dismantle")); //3
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_deep_impact")); //6
+		}
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_double_strike")); //7
+
+		this.level_health(5, this.Math.rand(1, 3) );
+		this.level_fatigue(5, this.Math.rand(1, 3) );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_initiative(3, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+	}
+
+	o.build_1hmace <- function() //6
+	{
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/named_mace"));
+		else this.m.Items.equip(::new("scripts/items/weapons/winged_mace"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.removeByID("perk.steel_brow");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_mace")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bone_breaker")); //7
+		if (!this.m.is_shield)
+		{
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_push_it")); //1
+			this.m.Skills.add(::new("scripts/skills/perks/ptr_heavy_strikes")); //2
+		}
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_duelist")); //7
+
+		this.level_health(5, this.Math.rand(1, 3) );
+		this.level_fatigue(5, this.Math.rand(1, 3) );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_initiative(3, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+	}
+
+	o.build_thrower <- function() //7
+	{
+		if (!this.m.is_miniboss || this.m.named_item_type != 0)
+		{
+			local throwing = [
+				"weapons/throwing_axe",
+				"weapons/javelin"
+			];
+			this.m.Items.addToBag(::new("scripts/items/" + ::MSU.Array.rand(throwing)));
+		}
+
+		this.m.Items.equip(::new("scripts/items/weapons/fighting_axe"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.removeByID("perk.steel_brow");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity")); //6
+		this.m.Skills.add(::new("scripts/skills/perks/perk_close_combat_archer")); //7
+
+		this.m.Skills.removeByID("perk.str_line_breaker");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_muscularity")); //7
+
+		this.m.Skills.removeByID("perk.ptr_man_of_steel");
+		this.m.Skills.removeByID("perk.underdog");
+		this.m.Skills.removeByID("perk.steadfast");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_hybridization")); //3
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_throwing")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_weapon_master")); //7
+
+		if (!this.m.is_shield)
+		{
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_cull")); //7
+		}
+
+		this.level_health(10, 3 );
+		this.level_fatigue(3, this.Math.rand(1, 3) );
+		this.level_ranged_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("orc", false);
+
+		local agent = actor.getAIAgent();
+		agent.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageMelee] = 0.5;
+		agent.finalizeBehaviors();
+	}
+
+
+	o.onInit = function()
+	{
+		this.human.onInit();
+		local b = this.m.BaseProperties;
+		b.setValues(::Const.Tactical.Actor.BanditLeader);
+		this.m.ActionPoints = b.ActionPoints;
+		this.m.Hitpoints = b.Hitpoints;
+		this.m.CurrentProperties = clone b;
+		this.setAppearance();
+		this.getSprite("socket").setBrush("bust_base_bandits");
+		local dirt = this.getSprite("dirt");
+		dirt.Visible = true;
+		dirt.Alpha = this.Math.rand(150, 255);
+		this.setArmorSaturation(0.85);
+		this.getSprite("shield_icon").setBrightness(0.85);
+
+		local agent = actor.getAIAgent();
+		if (agent.findBehavior(::Const.AI.Behavior.ID.Protect) != null)
+		{
+			agent.removeBehavior(::Const.AI.Behavior.ID.Protect);
+			agent.finalizeBehaviors();
+		}
+	}
+
+	o.addArmor <- function()
+	{
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Body) && this.m.Items.hasEmptySlot(::Const.ItemSlot.Head))
+		{
+			local armor = [
+				[
+					1,
+					"coat_of_plates"
+				],
+				[
+					1,
+					"coat_of_scales"
+				],
+				[
+					1,
+					"heavy_lamellar_armor"
+				],
+				[
+					1,
+					"footman_armor"
+				],
+				[
+					1,
+					"brown_hedgeknight_armor"
+				],
+				[
+					1,
+					"northern_mercenary_armor_02"
+				],
+				[
+					1,
+					"lamellar_harness"
+				],
+				[
+					1,
+					"reinforced_mail_hauberk"
+				],
+				[
+					1,
+					"leather_scale_armor"
+				],
+				[
+					1,
+					"light_scale_armor"
+				]
+			];
+			local helmet = [
+				[
+					1,
+					"closed_mail_coif"
+				],
+				[
+					1,
+					"padded_kettle_hat"
+				],
+				[
+					1,
+					"kettle_hat_with_closed_mail"
+				],
+				[
+					1,
+					"kettle_hat_with_mail"
+				],
+				[
+					1,
+					"padded_flat_top_helmet"
+				],
+				[
+					1,
+					"nasal_helmet_with_mail"
+				],
+				[
+					1,
+					"flat_top_with_mail"
+				],
+				[
+					1,
+					"padded_nasal_helmet"
+				],
+				[
+					1,
+					"bascinet_with_mail"
+				]
+			];
+			local outfits = [
+				[
+					1,
+					"red_bandit_leader_outfit_00"
+				]
+			];
+
+			foreach( item in ::Const.World.Common.pickOutfit(outfits, armor, helmet) )
+			{
+				this.m.Items.equip(item);
+			}
+
+			return;
+		}
+
+		if (this.m.Items.getItemAtSlot(::Const.ItemSlot.Body) == null)
+		{
+			local armor = [
+				[
+					1,
+					"reinforced_mail_hauberk"
+				],
+				[
+					1,
+					"worn_mail_shirt"
+				],
+				[
+					1,
+					"patched_mail_shirt"
+				]
+			];
+
+			if (::Const.DLC.Unhold)
+			{
+				armor.extend([
+					[
+						1,
+						"footman_armor"
+					],
+					[
+						1,
+						"leather_scale_armor"
+					],
+					[
+						1,
+						"light_scale_armor"
+					],
+					[
+						1,
+						"red_bandit_leader_armor"
+					]
+				]);
+			}
+
+			this.m.Items.equip(::Const.World.Common.pickArmor(armor));
+		}
+
+		if (this.m.Items.getItemAtSlot(::Const.ItemSlot.Head) == null)
+		{
+			local item = ::Const.World.Common.pickHelmet([
+				[
+					1,
+					"closed_mail_coif"
+				],
+				[
+					1,
+					"padded_kettle_hat"
+				],
+				[
+					1,
+					"kettle_hat_with_closed_mail"
+				],
+				[
+					1,
+					"kettle_hat_with_mail"
+				],
+				[
+					1,
+					"padded_flat_top_helmet"
+				],
+				[
+					1,
+					"nasal_helmet_with_mail"
+				],
+				[
+					1,
+					"flat_top_with_mail"
+				],
+				[
+					1,
+					"padded_nasal_helmet"
+				],
+				[
+					1,
+					"bascinet_with_mail"
+				],
+				[
+					1,
+					"red_bandit_leader_helmet"
+				]
+			]);
+
+			if (item != null)
+			{
+				this.m.Items.equip(item);
+			}
+		}
+	}
+});
