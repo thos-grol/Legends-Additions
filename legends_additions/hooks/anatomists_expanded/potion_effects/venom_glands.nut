@@ -1,6 +1,5 @@
 //"Venom Glands"
 //"This character has developed venom glands that allow them to produce poison strong enough to kill any man. Sadly they do not have the fangs of a snake or spider to deliver this venom and have to resort using piercing or cutting weapons to apply it.";
-//TODO: Get all potions showing in tooltips
 ::mods_hookExactClass("skills/effects/serpent_potion_effect", function (o)
 {
     local create = o.create;

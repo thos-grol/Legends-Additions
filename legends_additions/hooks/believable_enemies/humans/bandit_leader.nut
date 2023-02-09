@@ -28,60 +28,59 @@
 
 	o.m.build_num <- 0;
 	o.m.is_miniboss <- false;
+	o.m.named_item_type <- 0;
 
 	o.getBuildNumber <- function()
 	{
-		this.m.build_num = this.Math.rand(1, 100);
-
+		this.m.build_num = this.Math.rand(1, 100) <= 35 ? this.Math.rand(1, 2) : this.Math.rand(3, 7);
+		if (this.m.build_num > 2 && this.Math.rand(1, 100) <= 75) this.m.is_shield = true;
+		if (this.m.build_num == 7) this.m.is_throwing = true;
 	}
 
 	o.makeMiniboss = function()
 	{
 		if (!this.actor.makeMiniboss()) return false;
-		this.m.IsMiniboss = true;
+		this.m.is_miniboss = true;
 		this.getBuildNumber();
 
 		this.m.XP *= 1.5;
 		this.m.IsGeneratingKillName = false;
 		this.getSprite("miniboss").setBrush("bust_miniboss");
 
-
-
-
-		//TODO: champion logic - get build number and replace items with named items
-
-		local shields = clone ::Const.Items.NamedShields;
-		shields.extend([
-			"shields/named/named_bandit_kite_shield",
-			"shields/named/named_bandit_heater_shield"
-		]);
-		local r = this.Math.rand(1, 3);
-
-		if (r == 2)
+		this.m.named_item_type = this.Math.rand(this.m.is_throwing ? 0 : 1, this.m.is_shield ? 3 : 2);
+		switch(this.m.named_item_type)
 		{
-			this.m.Items.equip(::new("scripts/items/" + shields[this.Math.rand(0, shields.len() - 1)]));
-		}
-
-		if (r == 1)
-		{
-			local namedWeaponArray = clone ::Const.Items.NamedMeleeWeapons;
-			::MSU.Array.remove(namedWeaponArray, "weapons/named/named_dagger");
-			::MSU.Array.remove(namedWeaponArray, "weapons/named/legend_named_parrying_dagger");
-			::MSU.Array.remove(namedWeaponArray, "weapons/named/legend_named_shovel");
-			::MSU.Array.remove(namedWeaponArray, "weapons/named/legend_named_sickle");
-			this.m.Items.equip(::new("scripts/items/" + ::MSU.Array.rand(namedWeaponArray)));
-		}
-		else if (r == 2)
-		{
-			local named = ::Const.Items.NamedArmors;
-			local weightName = ::Const.World.Common.convNameToList(named);
-			this.m.Items.equip(::Const.World.Common.pickArmor(weightName));
-		}
-		else if (r == 3)
-		{
-			local named = ::Const.Items.NamedHelmets;
-			local weightName = ::Const.World.Common.convNameToList(named);
-			this.m.Items.equip(::Const.World.Common.pickHelmet(weightName));
+			case 0: //throwing weapons
+				local throwing = [
+					"weapons/named/named_javelin",
+					"weapons/named/named_throwing_axe"
+				];
+				this.m.Items.addToBag(::new("scripts/items/" + ::MSU.Array.rand(throwing)));
+				break;
+			case 1: //weapon - logic is handled when adding equipment in builds
+				break;
+			case 2: //armor
+				if (this.Math.rand(0,1) == 0)
+				{
+					local named = ::Const.Items.NamedArmors;
+					local weightName = ::Const.World.Common.convNameToList(named);
+					this.m.Items.equip(::Const.World.Common.pickArmor(weightName));
+				}
+				else
+				{
+					local named = ::Const.Items.NamedHelmets;
+					local weightName = ::Const.World.Common.convNameToList(named);
+					this.m.Items.equip(::Const.World.Common.pickHelmet(weightName));
+				}
+				break;
+			case 3: //shields
+				local shields = clone ::Const.Items.NamedShields;
+				shields.extend([
+					"shields/named/named_bandit_kite_shield",
+					"shields/named/named_bandit_heater_shield"
+				]);
+				this.m.Items.equip(::new("scripts/items/" + ::MSU.Array.rand(shields)));
+				break;
 		}
 
 		return true;
@@ -112,32 +111,55 @@
 		if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
 		else this.m.no_man_of_steel = true;
 
-		if (!this.m.IsMiniboss) this.getBuildNumber();
+		if (!this.m.is_miniboss) this.getBuildNumber(); //if build isnt already rolled, roll it
 
+		if (this.m.is_shield) //if it is a rolled shield build
+		{
+			if (!this.m.is_miniboss || this.m.named_item_type != 3) //if it isnt a miniboss with item type 3
+			{
+				local shields = [
+					"shields/heater_shield",
+					"shields/kite_shield"
+				];
+				this.m.Items.equip(::new("scripts/items/" + ::MSU.Array.rand(shields)));
+			}
+			this.m.Skills.add(::new("scripts/skills/perks/perk_shield_expert")); //3
+			this.m.Skills.add(::new("scripts/skills/perks/perk_str_line_breaker")); //?
+		}
 
-		// "weapons/greatsword"
-
-		//TODO: Bandit Leader builds
-
-		// "weapons/fighting_axe"
-		// "weapons/warhammer"
-
-		// "weapons/winged_mace"
-		// "weapons/military_cleaver"
-
-		// "weapons/throwing_axe"
-		// "weapons/javelin"
-
-		//"shields/wooden_shield"
-		// "shields/heater_shield"
-		// "shields/kite_shield"
+		switch(this.m.build_num)
+		{
+			case 1:
+				this.build_swordstaff();
+				break;
+			case 2:
+				this.build_greatsword();
+				break;
+			case 3:
+				this.build_1haxe();
+				break;
+			case 4:
+				this.build_1hcleaver();
+				break;
+			case 5:
+				this.build_1hhammer();
+				break;
+			case 6:
+				this.build_1hmace();
+				break;
+			case 7:
+				this.build_thrower();
+				break;
+		}
 
 		this.m.Skills.update();
 	}
 
-	o.build_swordstaff <- function()
+	o.build_swordstaff <- function() //1
 	{
-		this.m.Items.equip(::new("scripts/items/weapons/legend_swordstaff"));
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/legend_named_swordstaff"));
+		else this.m.Items.equip(::new("scripts/items/weapons/legend_swordstaff"));
+
 		// Defensive Perks 6-7
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
@@ -152,7 +174,7 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_two_for_one")); //5
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_a_better_grip")); //6
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_king_of_all_weapons")); //7
-		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_double_strike")); //7
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity")); //6
 
 		this.level_health(5, this.Math.rand(1, 3) );
 		this.level_fatigue(5, this.Math.rand(1, 3) );
@@ -166,6 +188,228 @@
 			else this.add_potion("spider", false);
 		}
 	}
+
+	o.build_greatsword <- function() //2
+	{
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/named_greatsword"));
+		else this.m.Items.equip(::new("scripts/items/weapons/greatsword"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		this.m.Skills.removeByID("perk.brawny");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_fortified_mind")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_fluid_weapon")); //3
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_sword")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_mind_over_body")); //6
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_en_garde")); //7
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_bloody_harvest")); //7
+
+		this.level_health(3, this.Math.rand(1, 3) );
+		this.level_resolve(10, 3 );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("direwolf", false);
+	}
+
+	o.build_1haxe <- function() //3
+	{
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/named_axe"));
+		else this.m.Items.equip(::new("scripts/items/weapons/fighting_axe"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.removeByID("perk.steel_brow");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_axe")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_cull")); //7
+		if (!this.m.is_shield)
+		{
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dismemberment")); //3
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity")); //6
+		}
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_duelist")); //7
+
+		this.level_health(5, this.Math.rand(1, 3) );
+		this.level_fatigue(5, this.Math.rand(1, 3) );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_initiative(3, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+	}
+
+	o.build_1hcleaver <- function() //4
+	{
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/named_cleaver"));
+		else this.m.Items.equip(::new("scripts/items/weapons/military_cleaver"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.removeByID("perk.steel_brow");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_sanguinary")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		//duelist
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_cleaver")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_mauler")); //7
+		if (!this.m.is_shield)
+		{
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bloodbath"));
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_sanguinary"));
+		}
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_duelist")); //7
+
+		this.level_health(5, this.Math.rand(1, 3) );
+		this.level_fatigue(5, this.Math.rand(1, 3) );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_initiative(3, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+	}
+
+	o.build_1hhammer <- function() //5
+	{
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/named_warhammer"));
+		else this.m.Items.equip(::new("scripts/items/weapons/warhammer"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.removeByID("perk.steel_brow");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_hammer")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dent_armor")); //7
+		if (!this.m.is_shield)
+		{
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dismantle")); //3
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_deep_impact")); //6
+		}
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_double_strike")); //7
+
+		this.level_health(5, this.Math.rand(1, 3) );
+		this.level_fatigue(5, this.Math.rand(1, 3) );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_initiative(3, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+	}
+
+	o.build_1hmace <- function() //6
+	{
+		if (this.m.is_miniboss && this.m.named_item_type == 1) this.m.Items.equip(::new("scripts/items/weapons/named/named_mace"));
+		else this.m.Items.equip(::new("scripts/items/weapons/winged_mace"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.removeByID("perk.steel_brow");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_mace")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bone_breaker")); //7
+		if (!this.m.is_shield)
+		{
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_push_it")); //1
+			this.m.Skills.add(::new("scripts/skills/perks/ptr_heavy_strikes")); //2
+		}
+		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_duelist")); //7
+
+		this.level_health(5, this.Math.rand(1, 3) );
+		this.level_fatigue(5, this.Math.rand(1, 3) );
+		this.level_melee_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_initiative(3, this.Math.rand(1, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+	}
+
+	o.build_thrower <- function() //7
+	{
+		if (!this.m.is_miniboss || this.m.named_item_type != 0)
+		{
+			local throwing = [
+				"weapons/throwing_axe",
+				"weapons/javelin"
+			];
+			this.m.Items.addToBag(::new("scripts/items/" + ::MSU.Array.rand(throwing)));
+		}
+
+		this.m.Items.equip(::new("scripts/items/weapons/fighting_axe"));
+		// Defensive Perks 6-7
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_colossus")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steel_brow")); //2
+		this.m.Skills.removeByID("perk.steel_brow");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_brawny")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
+		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+
+		//5-6 perks remaining:
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity")); //6
+		this.m.Skills.add(::new("scripts/skills/perks/perk_close_combat_archer")); //7
+
+		this.m.Skills.removeByID("perk.str_line_breaker");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_muscularity")); //7
+
+		this.m.Skills.removeByID("perk.ptr_man_of_steel");
+		this.m.Skills.removeByID("perk.underdog");
+		this.m.Skills.removeByID("perk.steadfast");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_hybridization")); //3
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_throwing")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_weapon_master")); //7
+
+		if (!this.m.is_shield)
+		{
+			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_cull")); //7
+		}
+
+		this.level_health(10, 3 );
+		this.level_fatigue(3, this.Math.rand(1, 3) );
+		this.level_ranged_skill(7, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(2, 3) );
+
+		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("orc", false);
+
+		local agent = actor.getAIAgent();
+		agent.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageMelee] = 0.5;
+		agent.finalizeBehaviors();
+	}
+
 
 	o.onInit = function()
 	{

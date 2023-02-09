@@ -217,3 +217,38 @@ Champion variants of heroes
 
 Undead cannot be charmed
 
+
+-----
+
+::setSpawn("scripts/entity/tactical/enemies/bandit_leader", this.Const.Faction.Enemy)
+::setSpawn("nomad_leader", this.Const.Faction.PlayerAnimals)
+
+::setSpawn("bandit_raider", this.Const.Faction.PlayerAnimals)
+
+::setSpawn("bandit_leader", this.Const.Faction.PlayerAnimals)
+::setSpawn("bandit_leader")
+::setSpawn("spider", this.Const.Faction.Enemy)
+
+::addItem("direwolf_potion_item")
+::addItem("apotheosis_potion_item")
+::addItem("goblin_overseer_potion_item")
+::addItem("nachzehrer_potion_item")
+::addItem("fallen_hero_potion_item")
+::addItem("two_handed_wooden_flail")
+::addItem("throwing_net")
+
+::addItem("orc_young_potion_item")
+::addItem("orc_warlord_potion_item")
+::addItem("daze_bomb_item")
+::addItem("fighting_axe")
+
+
+
+
+// FEATURE_5: Dungeouns
+// 	"scripts/factions/contracts/discover_location_action",
+// 		Discover and scout dungeon to certain floor
+// 	"scripts/factions/contracts/find_artifact_action",
+// 		Discover minor dungeon and retrieve artefact
+// 	"scripts/factions/contracts/obtain_item_action",
+// 		create small/medium dungeon to explore

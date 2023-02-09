@@ -1,3 +1,4 @@
+//TODO: redo logic in injury
 ::mods_hookExactClass("skills/actives/legend_gruesome_feast", function (o)
 {
     local create = o.create;
