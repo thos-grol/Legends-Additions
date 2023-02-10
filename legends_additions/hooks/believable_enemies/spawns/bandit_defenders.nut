@@ -1,4 +1,4 @@
-::Const.World.Spawn.BanditDefenders <- {
+::Const.World.Spawn.BanditDefenders = {
 	Name = "BanditDefenders",
 	IsDynamic = true,
 	MovementSpeedMult = 1.0,
@@ -13,22 +13,22 @@
 			Weight = 59,
 			Types = [
 				{
-					Type = ::Const.World.Spawn.Troops.BanditThug,
+					Type = this.Const.World.Spawn.Troops.BanditThug,
 					Cost = 8
 				},
 				{
-					Type = ::Const.World.Spawn.Troops.BanditRaiderLOW,
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
 					MinR = 130,
 					Cost = 16
 				},
 				{
 					MinR = 320,
-					Type = ::Const.World.Spawn.Troops.BanditRaider,
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
 					Cost = 20
 				},
 				{
 					MinR = 600,
-					Type = ::Const.World.Spawn.Troops.BanditVeteran,
+					Type = this.Const.World.Spawn.Troops.BanditVeteran,
 					Cost = 30
 				}
 			]
@@ -37,22 +37,22 @@
 			Weight = 18,
 			Types = [
 				{
-					Type = ::Const.World.Spawn.Troops.BanditRabblePoacher,
+					Type = this.Const.World.Spawn.Troops.BanditRabblePoacher,
 					MaxR = 110,
 					Cost = 14
 				},
 				{
-					Type = ::Const.World.Spawn.Troops.BanditMarksmanLOW,
+					Type = this.Const.World.Spawn.Troops.BanditMarksmanLOW,
 					Cost = 12
 				},
 				{
-					Type = ::Const.World.Spawn.Troops.BanditMarksman,
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
 					MinR = 400,
 					Cost = 18
 				},
 				{
 					MinR = 600,
-					Type = ::Const.World.Spawn.Troops.MasterArcher,
+					Type = this.Const.World.Spawn.Troops.MasterArcher,
 					Cost = 40,
 					Roll = true
 				}
@@ -62,7 +62,7 @@
 			Weight = 5,
 			Types = [
 				{
-					Type = ::Const.World.Spawn.Troops.Wardog,
+					Type = this.Const.World.Spawn.Troops.Wardog,
 					Cost = 5
 				}
 			]
@@ -72,13 +72,13 @@
 			MinR = 500,
 			Types = [
 				{
-					Type = ::Const.World.Spawn.Troops.BanditLeader,
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
 					Cost = 25,
 					Roll = true
 				},
 				{
 					MinR = 600,
-					Type = ::Const.World.Spawn.Troops.BanditWarlord,
+					Type = this.Const.World.Spawn.Troops.BanditWarlord,
 					Cost = 100,
 					Roll = true
 				}
@@ -89,31 +89,43 @@
 			MinR = 150,
 			Types = [
 				{
-					Type = ::Const.World.Spawn.Troops.LegendPeasantBlacksmith,
+					Type = this.Const.World.Spawn.Troops.LegendPeasantBlacksmith,
 					Cost = 20
 				},
 				{
-					Type = ::Const.World.Spawn.Troops.LegendPeasantButcher,
+					Type = this.Const.World.Spawn.Troops.LegendPeasantButcher,
 					Cost = 20
 				},
 				{
-					Type = ::Const.World.Spawn.Troops.LegendPeasantMinstrel,
+					Type = this.Const.World.Spawn.Troops.LegendPeasantMinstrel,
 					Cost = 20
 				},
 				{
-					Type = ::Const.World.Spawn.Troops.LegendPeasantWoodsman,
+					Type = this.Const.World.Spawn.Troops.LegendPeasantWoodsman,
 					Cost = 20
 				},
 				{
-					Type = ::Const.World.Spawn.Troops.LegendPeasantMiner,
+					Type = this.Const.World.Spawn.Troops.LegendPeasantMiner,
 					Cost = 20
 				},
 				{
-					Type = ::Const.World.Spawn.Troops.LegendPeasantFarmhand,
+					Type = this.Const.World.Spawn.Troops.LegendPeasantMonk,
 					Cost = 20
 				},
 				{
-					Type = ::Const.World.Spawn.Troops.LegendPeasantPoacher,
+					Type = this.Const.World.Spawn.Troops.LegendPeasantFarmhand,
+					Cost = 20
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.LegendPeasantPoacher,
+					Cost = 20
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.LegendPeasantSquire,
+					Cost = 20
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.LegendPeasantWitchHunter,
 					Cost = 20
 				}
 			]
@@ -123,7 +135,7 @@
 			MinR = 600,
 			Types = [
 				{
-					Type = ::Const.World.Spawn.Troops.HedgeKnight,
+					Type = this.Const.World.Spawn.Troops.HedgeKnight,
 					Cost = 80,
 					Roll = true
 				}
@@ -134,7 +146,7 @@
 			MinR = 600,
 			Types = [
 				{
-					Type = ::Const.World.Spawn.Troops.Swordmaster,
+					Type = this.Const.World.Spawn.Troops.Swordmaster,
 					Cost = 40,
 					Roll = true
 				}
