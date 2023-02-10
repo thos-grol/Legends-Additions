@@ -1,4 +1,5 @@
-//fixes bloodlust to count legends bleeding sources as well as bleeding injuries
+//FIXED bloodlust didn't count legends bleeding sources as well as bleeding injuries
+//TODO: Add bleeding injuries as well
 ::mods_hookExactClass("skills/perks/perk_ptr_bloodlust", function(o) {
 	o.onBeforeAnySkillExecuted = function( _skill, _targetTile, _targetEntity, _forFree )
 	{

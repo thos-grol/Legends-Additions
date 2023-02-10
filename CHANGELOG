@@ -1,6 +1,12 @@
 
-    - Poison now counts torwards kills.
-    - Fixed lots of bugs
+=== 1.1.0 ==
+    Balance
+        - Poison now counts torwards kills.
+
+    Fix
+        - Fixed wrong reference names in a lot of files
+        - Fixed tooltips
+            - Removed potion effect hack to display in toolip
 
 === 1.0.0 ==
 General
