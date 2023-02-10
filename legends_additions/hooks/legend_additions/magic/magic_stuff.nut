@@ -1,4 +1,3 @@
-
 ::Const.Magic <- {};
 
 ::Const.Magic.Type <- {
