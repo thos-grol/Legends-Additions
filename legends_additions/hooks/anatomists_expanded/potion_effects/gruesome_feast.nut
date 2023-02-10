@@ -1,4 +1,3 @@
-//TODO: redo logic in injury
 ::mods_hookExactClass("skills/actives/legend_gruesome_feast", function (o)
 {
     local create = o.create;
@@ -138,12 +137,16 @@
                                     bro.setHitpoints(bro.getHitpointsMax());
 
 									local skills = _user.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
+									this.logInfo(skills);
 									foreach( s in skills )
 									{
-										if (s.getOrder() == ::Const.SkillOrder.PermanentInjury) continue;
-										s.removeSelf();
+										if (s.isType(::Const.SkillType.TemporaryInjury))
+										{
+											//FIXME: fix gruesome feast not removing injuries after battle won
+											this.logInfo("Found temp injury, removing" + s.getName());
+											s.removeSelf();
+										}
 									}
-
 									bro.onUpdateInjuryLayer();
                                 }
 

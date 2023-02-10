@@ -83,7 +83,7 @@
 		this.m.Skills.add(::new("scripts/skills/actives/sweep_zoc_skill"));
 		this.m.Skills.add(::new("scripts/skills/actives/fling_back_skill"));
 		this.m.Skills.add(::new("scripts/skills/actives/unstoppable_charge_skill"));
-        //FEATURE_1: remember to add potion perks to rock unholds
+        //TODO: remember to add potion perks to rock unholds
 
         //traits
         this.m.Skills.add(::new("scripts/skills/traits/fearless_trait"));

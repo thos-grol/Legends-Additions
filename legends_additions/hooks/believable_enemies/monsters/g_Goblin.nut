@@ -67,8 +67,8 @@
 		this.m.Skills.add(::new("scripts/skills/effects/goblin_overseer_potion_effect"));
 
 
-		//FEATURE_1: Goblin Perks
-		//FEATURE_1: Rebalance Goblin stats/perks
+		//TODO: Goblin Perks
+		//TODO: Rebalance Goblin stats/perks
 		this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_footwork"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_tumble"));

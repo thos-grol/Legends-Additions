@@ -79,7 +79,7 @@
 			"scripts/factions/actions/send_military_holysite_action"
 		],
 		[],
-		//FEATURE_1: Sellsword Contracts
+		//TODO: Sellsword Contracts
 		//Settlement
 		[
 		//general contracts

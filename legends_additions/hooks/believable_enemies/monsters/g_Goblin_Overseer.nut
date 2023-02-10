@@ -50,7 +50,7 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_eyes_up"));
 
 
-		//FEATURE_1: Overseer Perks
+		//TODO: Overseer Perks
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_true_believer"));
 		this.m.Skills.addPerkTree(::Const.Perks.SwordTree, 7);
 		this.m.Skills.add(::new("scripts/skills/perks/perk_bullseye"));
