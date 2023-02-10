@@ -33,13 +33,6 @@
 		return true;
 	}
 
-	// local weapons = [
-	// 	"weapons/named/named_sword",
-	// 	"weapons/named/legend_named_estoc",
-	// 	"weapons/named/named_sword",
-	// 	"weapons/named/named_shamshir"
-	// ];
-
 	o.assignRandomEquipment = function()
 	{
 		this.addArmor();
@@ -52,40 +45,24 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5 -> 6
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pattern_recognition")); //7
 
-		local weapons = [
-			"weapons/noble_sword",
-			"weapons/arming_sword",
-			"weapons/legend_estoc",
-			"weapons/shamshir"
-		];
-
-		this.m.build_num = this.Math.rand(0, 6);
-
-		this.build_metzger();
-		// switch(this.m.build_num)
-		// {
-		// 	case 0: //Metzger - Southern Curved Swords
-		// 		break;
-
-		// 	case 1: //perk_ptr_swordmaster_blade_dancer
-		// 		break;
-		// 	case 2: //perk_ptr_swordmaster_precise
-		// 		break;
-		// 	case 3: //perk_ptr_swordmaster_juggernaut
-		// 		break;
-		// 	case 4: //perk_ptr_swordmaster_reaper
-		// 		break;
-
-		// }
+		this.m.build_num = this.Math.rand(0, 3);
+		switch(this.m.build_num)
+		{
+			case 0: //Metzger
+				this.build_metzger();
+				break;
+			case 1: //Blade Dancer
+				this.build_bladedancer();
+				break;
+			case 2: //Reaper
+				this.build_reaper();
+				break;
+			case 3: //Precise
+				this.build_precise();
+				break;
+		}
 
 	}
-
-	// "scripts/skills/perks/perk_ptr_swordmaster_blade_dancer",
-	// 		"scripts/skills/perks/perk_ptr_swordmaster_precise",
-	// 		"scripts/skills/perks/perk_ptr_swordmaster_versatile_swordsman",
-	// 		"scripts/skills/perks/perk_ptr_swordmaster_juggernaut",
-	// 		"scripts/skills/perks/perk_ptr_swordmaster_grappler",
-	// 		"scripts/skills/perks/perk_ptr_swordmaster_reaper",
 
 	o.build_metzger <- function()
 	{
@@ -114,38 +91,119 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_duelist")); //6
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_en_garde")); //7
 
+		//metzger free perks and actives
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+		if (item != null) item.addSkill(::new("scripts/skills/actives/decapitate"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_sanguinary"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bloodbath"));
+
 		this.level_melee_skill(8, this.Math.rand(1, 3) );
 		this.level_melee_defense(10, this.Math.rand(1, 3) );
 		this.level_initiative(5, this.Math.rand(-3, 3) );
 		this.level_resolve(2, this.Math.rand(-3, 3) );
 		this.level_fatigue(5, this.Math.rand(-3, 3) );
 
-		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("necrosavant", false);
+		if (o.m.is_miniboss) this.add_potion("necrosavant", true);
+		else if (this.Math.rand(1, 100) <= 25) this.add_potion("necrosavant", false);
 	}
 
-	o.build_bladedancer <- function() //TODO
+	o.build_bladedancer <- function() //warbrand
 	{
+		if (this.m.is_miniboss) this.m.Items.equip(::new("scripts/items/weapons/named/named_warbrand"));
+		else this.m.Items.equip(::new("scripts/items/weapons/warbrand"));
 
+		// Base skills 6 skills
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_alert")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_relentless")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_nimble")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5 -> 6
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pattern_recognition")); //7
+
+		// 5 allowed
+		//duelist
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_sword")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_swordmaster_blade_dancer")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_kata")); //6
+		this.m.Skills.add(::new("scripts/skills/perks/perk_overwhelm")); //6
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity")); //7
+
+		this.level_melee_skill(8, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(1, 3) );
+		this.level_initiative(7, 3 );
+		this.level_fatigue(5, this.Math.rand(-3, 3) );
+
+		if (o.m.is_miniboss) this.add_potion("direwolf", true);
+		else if (this.Math.rand(1, 100) <= 25) this.add_potion("direwolf", false);
 	}
 
-	o.build_reaper <- function() //TODO
+	o.build_reaper <- function()
 	{
+		if (this.m.is_miniboss) this.m.Items.equip(::new("scripts/items/weapons/named/named_greatsword"));
+		else this.m.Items.equip(::new("scripts/items/weapons/greatsword"));
 
+		// Base skills 6 skills
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_alert")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_relentless")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_nimble")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5 -> 6
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pattern_recognition")); //7
+
+		// 5 allowed
+		//duelist
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_sword")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_swordmaster_reaper")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_en_garde")); //7
+
+		this.m.Skills.add(::new("scripts/skills/perks/perk_fortified_mind")); //5
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_mind_over_body")); //6
+
+		this.m.Skills.removeByID("perk.relentless");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bloody_harvest"));
+
+		this.level_melee_skill(8, this.Math.rand(1, 3) );
+		this.level_melee_defense(10, this.Math.rand(1, 3) );
+		this.level_resolve(10, 3 );
+		this.level_fatigue(2, this.Math.rand(-3, 3) );
+
+		if (o.m.is_miniboss) this.add_potion("direwolf", true);
+		else if (this.Math.rand(1, 100) <= 25) this.add_potion("direwolf", false);
 	}
 
-	o.build_precise <- function() //TODO
+	o.build_precise <- function()
 	{
+		if (this.m.is_miniboss) this.m.Items.equip(::new("scripts/items/weapons/named/named_fencing_sword"));
+		else this.m.Items.equip(::new("scripts/items/weapons/fencing_sword"));
 
-	}
+		// Base skills 6 skills
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_alert")); //1
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_relentless")); //3
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_nimble")); //5
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5 -> 6
+		// this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pattern_recognition")); //7
 
-	o.build_swordsman <- function() //TODO
-	{
+		// 5 allowed
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_fluid_weapon")); //3
+		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_sword")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_swordmaster_precise")); //4
+		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_kata")); //6
+		this.m.Skills.add(::new("scripts/skills/perks/perk_bf_fencer")); //7
 
-	}
+		this.m.Skills.removeByID("perk.underdog");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity"));
 
-	o.build_juggernaut <- function() //TODO
-	{
+		this.level_initiative(10, 3 );
+		this.level_melee_skill(10, this.Math.rand(1, 3) );
+		this.level_melee_defense(8, this.Math.rand(1, 3) );
+		this.level_fatigue(2, this.Math.rand(-3, 3) );
 
+		this.m.AIAgent = this.new("scripts/ai/tactical/agents/legend_fencer_agent");
+		this.m.AIAgent.setActor(this);
+
+		if (o.m.is_miniboss) this.add_potion("orc", true);
+		else if (this.Math.rand(1, 100) <= 25) this.add_potion("orc", false);
 	}
 
     o.onInit = function()

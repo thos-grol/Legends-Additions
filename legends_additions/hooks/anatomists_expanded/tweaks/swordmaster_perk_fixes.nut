@@ -3,21 +3,14 @@
 {
     o.onAdded = function()
 	{
+		if (this.getContainer().getActor().getFaction() != this.Const.Faction.Player) return;
+
 		local equippedItem = this.getContainer().getActor().getMainhandItem();
 		if (equippedItem != null)
 		{
 			this.getContainer().getActor().getItems().unequip(equippedItem);
 			this.getContainer().getActor().getItems().equip(equippedItem);
 		}
-
-        if (this.getContainer().getActor().getFaction() != this.Const.Faction.Player)
-        {
-            local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
-            if (item != null) item.addSkill(::new("scripts/skills/actives/decapitate"));
-            this.getContainer().getActor().m.Skills.add(::new("scripts/skills/perks/perk_ptr_sanguinary"));
-            this.getContainer().getActor().m.Skills.add(::new("scripts/skills/perks/perk_ptr_bloodbath"));
-            return;
-        }
 
 		if (!this.m.IsSet && this.perk_ptr_swordmaster_abstract.onAdded())
 		{
