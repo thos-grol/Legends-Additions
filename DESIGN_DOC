@@ -2,6 +2,7 @@
     //Asassins get escape artist
 //FEATURE_2: Revamp Orcs
 //FEATURE_2: Fix unhold throwing, throw misses knock player back
+- FEATURE_5: Arena checks bag slots instead of accessories
 //Holy Magic overhaul
 
 General 1h builds (all 1h weps) =

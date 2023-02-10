@@ -92,7 +92,7 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_en_garde")); //7
 
 		//metzger free perks and actives
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+		local item = this.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
 		if (item != null) item.addSkill(::new("scripts/skills/actives/decapitate"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_sanguinary"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bloodbath"));

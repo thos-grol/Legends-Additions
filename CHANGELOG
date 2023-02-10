@@ -3,9 +3,6 @@ General
     - Refactored AE and GI into Legends Additions
     - Refactored code to match code style in ptr and use new msu stuff
     - Chance for undetected crime (attacking people) increases the better more backgrounds you have for covering crimes up. It's unrealistic that intelligence networks in the past were so good.
-    - TODO: Monster hunters get a free favored enemy perk. Favored enemy perks now refund the point after X enemies killed. But each bro can only have max 2 favored enemies.
-    - TODO: Raider background gets free bully perk.
-    - TODO: Arena checks bag slots instead of accessories
 
 Contracts
     - Boring coin delivery contract removed
