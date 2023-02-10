@@ -226,6 +226,7 @@ Undead cannot be charmed
 
 ::setSpawn("bandit_raider", this.Const.Faction.PlayerAnimals)
 ::setSpawn("swordmaster", this.Const.Faction.PlayerAnimals)
+::setSpawn("swordmaster", this.Const.Faction.PlayerAnimals)
 
 ::setSpawn("bandit_leader", this.Const.Faction.PlayerAnimals)
 ::setSpawn("bandit_leader")
