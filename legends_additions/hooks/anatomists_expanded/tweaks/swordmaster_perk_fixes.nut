@@ -1,5 +1,5 @@
 //Allows swordmaster perks to be used on npcs
-::mods_hookExactClass("skills/perks/perk_ptr_swordmaster_abstract", function(o)
+::mods_hookExactClass("skills/perks/perk_ptr_swordmaster_metzger", function(o)
 {
     o.onAdded = function()
 	{
@@ -22,7 +22,7 @@
 		}
 	}
 
-    o.onEquip <- function( _item )
+    o.onEquip = function( _item )
 	{
 		if (this.getContainer().getActor().getFaction() != this.Const.Faction.Player) return;
 

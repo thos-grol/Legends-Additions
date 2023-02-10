@@ -3,6 +3,7 @@ General
     - Refactored AE and GI into Legends Additions
     - Refactored code to match code style in ptr and use new msu stuff
     - Chance for undetected crime (attacking people) increases the better more backgrounds you have for covering crimes up. It's unrealistic that intelligence networks in the past were so good.
+    - Favored enemy perks now refund the perk point after killing 50 of that favored enemy.
 
 Contracts
     - Boring coin delivery contract removed
