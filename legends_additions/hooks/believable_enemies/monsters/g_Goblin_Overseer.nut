@@ -18,7 +18,7 @@
 	FatigueRecoveryRate = 15
 };
 
-::mods_hookExactClass("entity/tactical/goblin_leader", function (o)
+::mods_hookExactClass("entity/tactical/enemies/goblin_leader", function (o)
 {
 
     o.onInit = function()

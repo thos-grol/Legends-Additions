@@ -96,7 +96,7 @@
 
         this.m.Skills.add(::new("scripts/skills/racial/spider_racial"));
         this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
-        _actor.getSkills().add(::new("scripts/skills/effects/webknecht_potion_effect"));
+        this.m.Skills.add(::new("scripts/skills/effects/webknecht_potion_effect"));
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_survival_instinct"));
         this.m.Skills.add(::new("scripts/skills/perks/perk_overwhelm"));

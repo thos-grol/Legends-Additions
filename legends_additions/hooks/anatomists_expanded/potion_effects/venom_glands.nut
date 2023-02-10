@@ -105,14 +105,13 @@
 
         this.spawnIcon("status_effect_54", _targetEntity.getTile());
 
-        if (actor.getFlags().has("spider_8"))
-        {
-            _targetEntity.getSkills().add(::new("scripts/skills/effects/legend_redback_spider_poison_effect"));
-        }
-        else
-        {
-            _targetEntity.getSkills().add(::new("scripts/skills/effects/spider_poison_effect"));
-        }
+        local effect = this.new("scripts/skills/effects/bleeding_effect");
+
+        local effect;
+        if (actor.getFlags().has("spider_8")) effect = this.new("scripts/skills/effects/legend_redback_spider_poison_effect");
+        else effect = this.new("scripts/skills/effects/spider_poison_effect");
+        if (actor.getFaction() == this.Const.Faction.Player) effect.setActor(actor);
+        _targetEntity.getSkills().add(effect);
     }
 
 });
@@ -123,6 +122,22 @@
 ::mods_hookExactClass("skills/effects/spider_poison_effect", function (o)
 {
     o.m.Damage = 10;
+    o.m.Actor <- null;
+
+    o.setActor <- function( _a )
+	{
+		this.m.Actor = ::MSU.asWeakTableRef(_a);
+	}
+
+    o.getAttacker <- function()
+	{
+		if (::MSU.isNull(this.m.Actor)) return this.getContainer().getActor();
+		if (this.m.Actor.getID() != this.getContainer().getActor().getID())
+		{
+			if (this.m.Actor.isAlive() && this.m.Actor.isPlacedOnMap()) return this.m.Actor;
+		}
+		return this.getContainer().getActor();
+	}
 
     o.applyDamage = function()
     {
@@ -142,7 +157,7 @@
 			hitInfo.BodyPart = ::Const.BodyPart.Body;
 			hitInfo.BodyDamageMult = 1.0;
 			hitInfo.FatalityChanceMult = 0.0;
-			this.getContainer().getActor().onDamageReceived(this.getContainer().getActor(), this, hitInfo);
+			this.getContainer().getActor().onDamageReceived(this.getAttacker(), this, hitInfo);
 		}
 	}
 });
@@ -150,6 +165,23 @@
 ::mods_hookExactClass("skills/effects/legend_redback_spider_poison_effect", function (o)
 {
     o.m.Damage = 20;
+    o.m.Actor <- null;
+
+    o.setActor <- function( _a )
+	{
+		this.m.Actor = ::MSU.asWeakTableRef(_a);
+	}
+
+    o.getAttacker <- function()
+	{
+		if (::MSU.isNull(this.m.Actor)) return this.getContainer().getActor();
+		if (this.m.Actor.getID() != this.getContainer().getActor().getID())
+		{
+			if (this.m.Actor.isAlive() && this.m.Actor.isPlacedOnMap()) return this.m.Actor;
+		}
+		return this.getContainer().getActor();
+	}
+
     o.applyDamage = function()
     {
         if (this.m.LastRoundApplied != this.Time.getRound())
@@ -170,7 +202,7 @@
 			hitInfo.BodyPart = ::Const.BodyPart.Body;
 			hitInfo.BodyDamageMult = 1.0;
 			hitInfo.FatalityChanceMult = 0.0;
-			this.getContainer().getActor().onDamageReceived(this.getContainer().getActor(), this, hitInfo);
+			this.getContainer().getActor().onDamageReceived(this.getAttacker(), this, hitInfo);
 		}
     }
 

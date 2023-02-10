@@ -4,7 +4,7 @@
 	o.onUpdate = function( _properties )
 	{
 		//if perk id hasn't been added yet, and you have more than 50 kills of that favored enemy,
-		if (!this.getContainer().getActor().getFlags().has(this.m.ID) && this.getTotalKillStats() >= 50)
+		if (!this.getContainer().getActor().getFlags().has(this.m.ID) && this.getTotalKillStats().Kills >= 50)
 		{
 			this.logInfo("Adding perk point for flag: " + this.m.ID);
 			this.getContainer().getActor().getFlags().add(this.m.ID);

@@ -1,3 +1,4 @@
+//FEATURE_2: Rebalance anatomist
 this.anatomist <- this.inherit("scripts/entity/tactical/human", {
 	m = {},
 	function create()
@@ -63,8 +64,8 @@ this.anatomist <- this.inherit("scripts/entity/tactical/human", {
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
-	{	
-		
+	{
+
 		// if (this.Math.rand(1.0, 100.0) <= 5.0)
 		// {
 		// 	//FEATURE_5: Anatomist research notes + add to possible books
@@ -112,7 +113,6 @@ this.anatomist <- this.inherit("scripts/entity/tactical/human", {
 	function makeMiniboss()
 	{
 		if (!this.actor.makeMiniboss()) return false;
-		this.m.Name = this.generateName();
 		this.getSprite("miniboss").setBrush("bust_miniboss");
 		local weapons = [
 			"weapons/named/named_sword"

@@ -31,23 +31,35 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		//determine the possible items to roll in the contract and if there are mercenaries
 		local roll_tier = this.Math.rand(1, 10);
 		local roll_enemies = this.Math.rand(1, 100);
-		local range = [0, 1];
+
+		local item_pool = [];
 		if (roll_tier <= 1) //rare items
 		{
+			item_pool.push("scripts/items/weapons/named/legend_staff_ceremonial");
+			item_pool.push("scripts/items/misc/strange_eye_item");
 			if (roll_enemies <= 75) this.m.Flags.set("IsMercenary", true);
-			range = [1, 2];
 		}
 		else if (roll_tier <= 3) //valuable items
 		{
+			item_pool.push("heirloom_sword");
+			item_pool.push("blacksmith_hammer");
+			item_pool.push("scripts/items/misc/lindwurm_bones_item");
 			if (roll_enemies <= 40) this.m.Flags.set("IsMercenary", true);
-			range = [3, 5];
 		}
-		else range = [6, 9]; //common items
+		else //common items
+		{
+			item_pool.push("butchers_cleaver");
+			item_pool.push("sickle");
+			item_pool.push("scripts/items/misc/unhold_bones_item");
+			item_pool.push("lockbox");
+		}
+
 
 		//roll the item
-		local item_ID = ::Const.Contracts.Return_Item.Pool[this.Math.rand(range[0], range[1])];
+		local item_ID = ::MSU.Array.rand(item_pool);
+		this.logInfo("Inital Item Id: " + item_ID);
 
-		//determine enemies
+		//determine special enemies
 		switch(item_ID)
 		{
 			case "strange_tome":
@@ -85,41 +97,49 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 					"scripts/items/accessory/ghoul_trophy_item",
 					"rune"
 				];
-				item_ID = lst_lockbox[this.Math.rand(0, lst_lockbox.len()-1)];
-				is_rune = item_ID == "rune";
-				if (is_rune) item_ID = "scripts/items/rune_sigils/legend_vala_inscription_token";
+				item_ID = ::MSU.Array.rand(lst_lockbox);
+				if (item_ID == "rune")
+				{
+					is_rune = true;
+					item_ID = "scripts/items/rune_sigils/legend_vala_inscription_token";
+				}
 				break;
 			case "blacksmith_hammer":
 				local lst_swords = [
-					"scripts/items/weapons/legend_hammer",
-					"scripts/items/weapons/named/legend_named_blacksmith_hammer"
+					"scripts/items/weapons/legend_hammer"
 				];
-				item_ID = lst_swords[this.Math.min(lst_swords.len() - 1, this.Math.rand(0, 100) / 50)];
+				if (this.Math.rand(0, 100) <= 35) lst_swords.push("scripts/items/weapons/named/legend_named_blacksmith_hammer");
+				item_ID = ::MSU.Array.rand(lst_swords);
 				break;
 			case "butchers_cleaver":
 				local lst_swords = [
-					"scripts/items/weapons/butchers_cleaver",
-					"scripts/items/weapons/named/legend_named_butchers_cleaver"
+					"scripts/items/weapons/butchers_cleaver"
 				];
-				item_ID = lst_swords[this.Math.min(lst_swords.len() - 1, this.Math.rand(0, 100) / 50)];
+				if (this.Math.rand(0, 100) <= 35) lst_swords.push("scripts/items/weapons/named/legend_named_butchers_cleaver");
+				item_ID = ::MSU.Array.rand(lst_swords);
 				break;
 			case "sickle":
 				local lst_swords = [
-					"scripts/items/weapons/legend_sickle",
-					"scripts/items/weapons/named/legend_named_sickle"
+					"scripts/items/weapons/legend_sickle"
 				];
-				item_ID = lst_swords[this.Math.min(lst_swords.len() - 1, this.Math.rand(0, 100) / 50)];
+				if (this.Math.rand(0, 100) <= 35) lst_swords.push("scripts/items/weapons/named/legend_named_sickle");
+				item_ID = ::MSU.Array.rand(lst_swords);
 				break;
 			case "heirloom_sword":
 				local lst_swords = [
 					"scripts/items/weapons/ancient/ancient_sword",
-					"scripts/items/weapons/ancient/legend_gladius",
-					"scripts/items/weapons/named/ancient_sword_named",
-					"scripts/items/weapons/named/legend_gladius_named"
+					"scripts/items/weapons/ancient/legend_gladius"
 				];
-				item_ID = lst_swords[this.Math.min(lst_swords.len() - 1, this.Math.rand(0, 100) / 25)];
+				if (this.Math.rand(0, 100) <= 35)
+				{
+					lst_swords.push("scripts/items/weapons/named/ancient_sword_named");
+					lst_swords.push("scripts/items/weapons/named/legend_gladius_named");
+				}
+				item_ID = ::MSU.Array.rand(lst_swords);
 				break;
 		}
+
+		this.logInfo("Item Id after unpacking: " + item_ID);
 
 		//create and set item parameters
 		this.m.Loot = ::new(item_ID);
@@ -166,13 +186,13 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 			{
 				this.Flags.set("StartDay", this.World.getTime().Days);
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				
+
 				if (!this.Flags.get("IsNecromancer") && !this.Flags.get("IsAnatomist") && !this.Flags.get("IsCultist") && this.Math.rand(1, 100) <= 30)
 				{
 					this.Flags.set("IsCounterOffer", true);
 					this.Flags.set("Bribe", this.Contract.beautifyNumber(this.Contract.m.Payment.getOnCompletion() * this.Math.rand(200, 300) * 0.01));
 				}
-				
+
 				local playerTile = this.World.State.getPlayer().getTile();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 5, 15, [::Const.World.TerrainType.Mountains]);
 
@@ -186,9 +206,9 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				else if (this.Flags.get("IsCultist"))
 				{
 					party_type = ::Const.World.Spawn.Cultists;
-				} 
+				}
 				else party_type = ::Const.World.Spawn.BanditRaiders;
-				
+
 				local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, party_type, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * difficulty_modifier);
 
 				party.setDescription("A group of thieves.");
@@ -211,7 +231,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				{
 					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.GenericFootprints, ::Const.World.FootprintsType.Brigands, 0.75);
 					this.Flags.set("INVESTIGATION", 1);
-					
+
 					//spawn fake parties, make footprints, then kill party
 					local party2;
 					for (local i = 0 ; i < 3 ; i++) {
@@ -222,7 +242,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 					}
 				}
 				else this.Flags.set("INVESTIGATION", 0);
-				
+
 				this.Contract.m.Target = this.WeakTableRef(party);
 				party.getSprite("banner").setBrush("banner_bandits_0" + this.Math.rand(1, 6));
 				local c = party.getController();
@@ -275,7 +295,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 					this.Contract.setScreen("Failure1");
 					this.World.Contracts.showActiveContract();
 				}
-				
+
 			}
 
 			function onTargetAttacked( _dest, _isPlayerAttacking )
@@ -557,7 +577,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 							this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
 							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + temp);
 						}
-						
+
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -585,13 +605,14 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 			{
 				if (!this.Flags.get("IsLockbox"))
 				{
+					this.logInfo(this.Flags.get("LOOT_NAME"));
 					this.List.push({
 						id = 10,
 						icon = "ui/items/" + this.Contract.m.Loot.getIcon(),
 						text = "What to do with " + this.Flags.get("LOOT_NAME") + "?"
 					});
 				}
-				
+
 				this.Options.push({
 					Text = "Let\'s take it for ourselves and try to cover it up.",
 					function getResult()
@@ -617,7 +638,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 							this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
 							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + temp);
 						}
-						
+
 						this.World.Assets.getStash().add(this.Contract.m.Loot);
 						if (this.Flags.get("IsLockbox")) return "Lockbox";
 						return "Subterfuge";
@@ -725,7 +746,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						
+
 						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
 						local temp = this.Flags.get("IsLockbox") ? "lockbox" : this.Flags.get("LOOT_NAME");

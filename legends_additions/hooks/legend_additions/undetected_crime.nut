@@ -1,5 +1,5 @@
 //Feature: undetected caravan robbery
-::mods_hookExactClass("scripts/factions/city_state_faction", function (o)
+::mods_hookExactClass("factions/city_state_faction", function (o)
 {
     local addPlayerRelation = o.addPlayerRelation;
     o.addPlayerRelation = function(_r, _reason = "")
@@ -10,7 +10,7 @@
     }
 });
 
-::mods_hookExactClass("scripts/factions/noble_faction", function (o)
+::mods_hookExactClass("factions/noble_faction", function (o)
 {
     local addPlayerRelation = o.addPlayerRelation;
     o.addPlayerRelation = function(_r, _reason = "")
@@ -21,7 +21,7 @@
     }
 });
 
-::mods_hookExactClass("scripts/factions/city_state_faction", function (o)
+::mods_hookExactClass("factions/settlement_faction", function (o)
 {
     local addPlayerRelation = o.addPlayerRelation;
     o.addPlayerRelation = function(_r, _reason = "")

@@ -9,7 +9,7 @@
 		this.m.Icon = "skills/status_effect_146.png";
 		this.m.IconMini = "status_effect_146_mini";
 		this.m.Overlay = "status_effect_146";
-		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
+        this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.Order = this.Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = false;

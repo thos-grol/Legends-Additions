@@ -342,16 +342,16 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bone_breaker")); //7
 		if (!this.m.is_shield)
 		{
-			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_push_it")); //1
-			this.m.Skills.add(::new("scripts/skills/perks/ptr_heavy_strikes")); //2
+			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity")); //1
+			this.m.Skills.add(::new("scripts/skills/perks/perk_overwhelm")); //2
 		}
 		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_duelist")); //7
 
-		this.level_health(5, this.Math.rand(1, 3) );
-		this.level_fatigue(5, this.Math.rand(1, 3) );
+		this.level_health(2, this.Math.rand(1, 3) );
+		this.level_fatigue(2, this.Math.rand(1, 3) );
 		this.level_melee_skill(7, this.Math.rand(1, 3) );
 		this.level_melee_defense(10, this.Math.rand(2, 3) );
-		this.level_initiative(3, this.Math.rand(1, 3) );
+		this.level_initiative(9, 3 );
 
 		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
 	}

@@ -1,3 +1,7 @@
+
+    - Poison now counts torwards kills.
+    - Fixed lots of bugs
+
 === 1.0.0 ==
 General
     - Refactored AE and GI into Legends Additions
