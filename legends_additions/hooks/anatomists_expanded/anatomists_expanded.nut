@@ -5,7 +5,7 @@
 	o.create = function()
 	{
 		create();
-		this.m.BackgroundDescription = "Part scientist and part surgeon, Anatomists are unaccustomed to battle but well served by steady hands.";
+		this.m.BackgroundDescription = "Part scientist and part surgeon, Anatomists are unaccustomed to battle but well served by steady hands. Anatomists can concoct sequence potions from the remains of monsters.";
 		this.m.HiringCost = 6000;
 		this.m.DailyCost = 25;
 		this.m.Excluded.push("trait.greedy");

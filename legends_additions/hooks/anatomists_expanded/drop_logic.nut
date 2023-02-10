@@ -72,7 +72,7 @@
 });
 
 //FEATURE_2: Reenable vampire potions
-necrosavant
+// necrosavant
 ::mods_hookExactClass("entity/tactical/enemies/vampire", function (o)
 {
     local onDeath = o.onDeath;
