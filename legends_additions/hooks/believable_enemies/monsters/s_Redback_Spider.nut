@@ -1,3 +1,22 @@
+::Const.Tactical.Actor.LegendRedbackSpider <- {
+	XP = 600,
+	ActionPoints = 16,
+	Hitpoints = 250,
+	Bravery = 120,
+	Stamina = 180,
+	MeleeSkill = 85,
+	RangedSkill = 0,
+	MeleeDefense = 45,
+	RangedDefense = 30,
+	Initiative = 175,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	FatigueRecoveryRate = 20,
+	Armor = [
+		240,
+		240
+	]
+};
 ::mods_hookExactClass("entity/tactical/enemies/legend_redback_spider", function (o)
 {
     o.onInit = function()
@@ -8,11 +27,6 @@
 		b.setValues(::Const.Tactical.Actor.LegendRedbackSpider);
 		b.IsAffectedByNight = false;
 		b.IsImmuneToDisarm = true;
-
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 30)
-		{
-			b.DamageDirectAdd += 0.05;
-		}
 
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
@@ -26,20 +40,9 @@
 		local body = this.addSprite("body");
 		body.setBrush("bust_spider_redback_body_0" + this.Math.rand(1, 4));
 
-		if (this.Math.rand(0, 100) < 90)
-		{
-			body.varySaturation(0.3);
-		}
-
-		if (this.Math.rand(0, 100) < 90)
-		{
-			body.varyColor(0.1, 0.1, 0.1);
-		}
-
-		if (this.Math.rand(0, 100) < 90)
-		{
-			body.varyBrightness(0.1);
-		}
+		if (this.Math.rand(0, 100) < 90) body.varySaturation(0.3);
+		if (this.Math.rand(0, 100) < 90) body.varyColor(0.1, 0.1, 0.1);
+		if (this.Math.rand(0, 100) < 90) body.varyBrightness(0.1);
 
 		local legs_front = this.addSprite("legs_front");
 		legs_front.setBrush("bust_spider_redback_legs_front");
@@ -66,7 +69,7 @@
 
         this.m.Skills.add(::new("scripts/skills/racial/legend_redback_spider_racial"));
         this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
-        _actor.getSkills().add(::new("scripts/skills/effects/webknecht_potion_effect"));
+        this.m.Skills.add(::new("scripts/skills/effects/webknecht_potion_effect"));
 
         this.m.Skills.add(::new("scripts/skills/perks/perk_overwhelm"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_footwork"));
@@ -78,8 +81,6 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_fast_adaption"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_killing_frenzy"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_underdog"));
-
-
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged"));
         this.m.Skills.add(::new("scripts/skills/perks/perk_crippling_strikes"));

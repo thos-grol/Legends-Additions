@@ -29,10 +29,7 @@
 		//defensive perk
 		this.m.Skills.add(::new("scripts/skills/perks/perk_dodge"));
 
-		if (this.Math.rand(1, 100) <= 33)
-		{
-			this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
-		}
+		if (this.Math.rand(1, 100) <= 75) this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
 
 		local r = this.Math.rand(4, 9);
 		if (r == 4)

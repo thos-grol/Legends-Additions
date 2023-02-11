@@ -1,14 +1,13 @@
-//FEATURE_2: Make monsters match potions a bit/rebalance monster stats
 ::Const.Tactical.Actor.Direwolf <- {
 	XP = 200,
 	ActionPoints = 12,
 	Hitpoints = 130,
 	Bravery = 60,
 	Stamina = 120,
-	MeleeSkill = 60,
+	MeleeSkill = 75,
 	RangedSkill = 0,
-	MeleeDefense = 20,
-	RangedDefense = 20,
+	MeleeDefense = 40,
+	RangedDefense = 25,
 	Initiative = 150,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
@@ -37,15 +36,8 @@
 		local body = this.addSprite("body");
 		body.setBrush("bust_direwolf_0" + this.Math.rand(1, 3));
 
-		if (this.Math.rand(0, 100) < 90)
-		{
-			body.varySaturation(0.2);
-		}
-
-		if (this.Math.rand(0, 100) < 90)
-		{
-			body.varyColor(0.05, 0.05, 0.05);
-		}
+		if (this.Math.rand(0, 100) < 90) body.varySaturation(0.2);
+		if (this.Math.rand(0, 100) < 90) body.varyColor(0.05, 0.05, 0.05);
 
 		local head = this.addSprite("head");
 		head.setBrush("bust_direwolf_0" + this.Math.rand(1, 3) + "_head");
@@ -70,12 +62,12 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_underdog"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_menacing"));
 
-        this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));
+        //monster qol
+		this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_relentless"));
 
-        this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bear_down"));
+		//combat
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_onslaught"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_unstoppable"));
-        this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_vengeful_spite"));
     }
 });

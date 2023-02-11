@@ -1,5 +1,17 @@
+=== 1.2.0 ==
+    Cultists
+        - changed the cooldown of cultist conversion to a week. Made the event more common.
 
 === 1.1.0 ==
+    Balance
+        - Reworked Spiders and Direwolves
+        - Orcs
+            - Increased some mdef so it's not useless.
+            - all orcs have -10 rdef.
+
+    Contracts
+        - Modified hunting beasts contracts so it's not as much spider and nach spam - increased chance for direwolves.
+
     Balance
         - Poison now counts torwards kills.
 
@@ -7,6 +19,8 @@
         - Fixed wrong reference names in a lot of files
         - Fixed tooltips
             - Removed potion effect hack to display in toolip
+        - refactored bloodlust logic from 4 O(N) to O(N)
+
 
 === 1.0.0 ==
 General

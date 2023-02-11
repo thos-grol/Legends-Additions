@@ -1,9 +1,67 @@
 //FEATURE_2: Assassins/bounty hunters hired if you offend nobles
     //Asassins get escape artist
-//FEATURE_2: Revamp Orcs
-//FEATURE_2: Fix unhold throwing, throw misses knock player back
+
 - FEATURE_5: Arena checks bag slots instead of accessories
 //Holy Magic overhaul
+
+======= Cultists =========
+
+Cultist flow:
+    - Injuries and permenant injuries
+
+Cultist perk tree:
+
+    2: Dedication -> Devotion
+        - 15% resolve to mdef and rdef while wearing cultist headwear
+        - For each permenant injury, the bonus increases by 5%
+    3: Sacrificial Ritual
+        - Passive: The souls of the enemies you kill are claimed by Davkul. Bring him enough sacrifices, and you might get Davkul's attention... and rewards. The reward entirely depends on the whims of Davkul.
+            Tiers
+                25 (Wounds)
+
+                50 (Rituals)
+                    Pain Ritual - Comprehend an esoteric ritual. In the eyes of death, all beings are equal. Harm one's self, inevitably causing an injury, and the enemy you designate will share the consequences with you. This damage is true damage and ignores damage reduction like nimble.
+
+                100 (Grand Rituals)
+                    Only 1 in party ("Brink of Death")
+
+
+    ?: evisceration
+    5: Penance
+        - One has wounds but cannot be wounded...
+        - Each point of missing health increases resolve wearing the appropriate armor.
+        - Decrease the effects that injuries has on this character by half OR grants some other sort of compensation. Mouse over the permenant injury to see the effects.
+
+    7: Lacerate
+        - Remove from the tree, keep the perk tho, it's good.
+    7: Scourging -> Compassion Ritual:
+        - Row 1 -> 7
+        - 6 FAT, 6 AP
+        - The unburnt, the skinless, the headless, the armless...
+        - Target an enemy and share your permenant injuries with them. This effect can only target one enemy at a time and you can only perform the ritual again after the enemy dies and the turn number is a multiple of 6.
+
+
+
+
+    rename & rework
+        Dedication -> Devotion
+            -
+            -
+
+        scourging
+        flesh mortification
+        evisceration
+    rework
+        penance
+        scourging
+Remove lacerate from the tree.
+
+
+Active: ?
+    Share your permenant injuries with the target.
+    Can only be put on one unit at a time.
+
+======== BUILDS ===========
 
 General 1h builds (all 1h weps) =
 -straight boring duelist

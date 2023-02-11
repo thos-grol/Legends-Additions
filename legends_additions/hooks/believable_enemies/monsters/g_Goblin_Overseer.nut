@@ -49,8 +49,6 @@
 		this.getFlags().add("goblin");
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_eyes_up"));
 
-
-		//TODO: Overseer Perks
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_true_believer"));
 		this.m.Skills.addPerkTree(::Const.Perks.SwordTree, 7);
 		this.m.Skills.add(::new("scripts/skills/perks/perk_bullseye"));

@@ -4,10 +4,10 @@
 	Hitpoints = 60,
 	Bravery = 60,
 	Stamina = 130,
-	MeleeSkill = 60,
+	MeleeSkill = 65,
 	RangedSkill = 0,
-	MeleeDefense = 15,
-	RangedDefense = 20,
+	MeleeDefense = 25,
+	RangedDefense = 15,
 	Initiative = 150,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
@@ -28,19 +28,6 @@
 		b.setValues(::Const.Tactical.Actor.Spider);
 		b.IsAffectedByNight = false;
 		b.IsImmuneToDisarm = true;
-
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 25)
-		{
-			b.DamageDirectAdd += 0.05;
-
-			if (this.World.getTime().Days >= 50)
-			{
-				b.DamageDirectAdd += 0.05;
-				b.MeleeDefense += 5;
-				b.RangedDefense += 5;
-			}
-		}
-
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -53,20 +40,9 @@
 		local body = this.addSprite("body");
 		body.setBrush("bust_spider_body_0" + this.Math.rand(1, 4));
 
-		if (this.Math.rand(0, 100) < 90)
-		{
-			body.varySaturation(0.3);
-		}
-
-		if (this.Math.rand(0, 100) < 90)
-		{
-			body.varyColor(0.1, 0.1, 0.1);
-		}
-
-		if (this.Math.rand(0, 100) < 90)
-		{
-			body.varyBrightness(0.1);
-		}
+		if (this.Math.rand(0, 100) < 90) body.varySaturation(0.3);
+		if (this.Math.rand(0, 100) < 90) body.varyColor(0.1, 0.1, 0.1);
+		if (this.Math.rand(0, 100) < 90) body.varyBrightness(0.1);
 
 		local legs_front = this.addSprite("legs_front");
 		legs_front.setBrush("bust_spider_legs_front");
@@ -92,18 +68,20 @@
         //Actives
         this.m.Skills.add(::new("scripts/skills/actives/spider_bite_skill"));
 
+		//Potion
 		if (roll > 76) this.m.Skills.add(::new("scripts/skills/actives/web_skill"));
-
         this.m.Skills.add(::new("scripts/skills/racial/spider_racial"));
-        this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
         this.m.Skills.add(::new("scripts/skills/effects/webknecht_potion_effect"));
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_survival_instinct"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
         this.m.Skills.add(::new("scripts/skills/perks/perk_overwhelm"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_backstabber"));
 
+		//Movement
 		this.m.Skills.add(::new("scripts/skills/perks/perk_footwork"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));
-		this.m.Skills.add(::new("scripts/skills/perks/perk_backstabber"));
+
 	}
 
 });
