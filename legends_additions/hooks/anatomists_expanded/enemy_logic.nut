@@ -68,11 +68,9 @@
                 break;
             case "orc":
                 this.getFlags().add("orc");
-                this.m.Skills.add(::new("scripts/skills/traits/huge_trait"));
                 this.m.Skills.add(::new("scripts/skills/traits/iron_jaw_trait"));
                 this.m.Skills.add(::new("scripts/skills/effects/orc_young_potion_effect"));
                 this.m.Skills.add(::new("scripts/skills/effects/orc_warrior_potion_effect"));
-                this.m.Skills.add(::new("scripts/skills/perks/perk_colossus"));
                 this.m.Skills.add(::new("scripts/skills/perks/perk_crippling_strikes"));
 
                 if (complete)
@@ -80,6 +78,7 @@
                     this.getFlags().add("orc_8");
                     this.m.Skills.add(::new("scripts/skills/effects/orc_warlord_potion_effect"));
                     this.m.Skills.add(::new("scripts/skills/perks/perk_berserk"));
+                    this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_cull"));
                 }
                 break;
             case "necrosavant":
