@@ -1,6 +1,39 @@
+=== Future ===
+    - TODO: Rebalanced cultists, Add cultists to contracts
+                - Cultist Mobs
+                    - Cultist
+                    - Lurker <- Cultist Medium
+                    - Husk Pain & Compassion
+                    - Magister <- Cultist Warlock
+                    - Dark Knight
+
 === 1.2.0 ==
     Cultists
         - changed the cooldown of cultist conversion to a week. Made the event more common.
+        - Reworked Tree:
+            Cultist tree now only has 3 perks: Devotion, Sacrificial Ritual, and Penance
+            Cultists have been reworked to be centered around self-sacrifice and permanent injuries.
+            Key is the sacrificial ritual perk. Davkul will reward cultists who harvest souls for them and grant unique perks.
+        - Strange Eye rare item from contracts. It's use is secret, but lets say it's good for cultists.
+
+    Contracts
+        - Fixed Roaming Beasts Contracts - Legends bug
+        - Return Item Contract
+            - Fixed bug where saving and loading would break the quest
+            - Rebalanced anatomists and bandit thug bodyguard
+    
+    Interesting Traits
+        - Perfectionist trait -  that removes 5% chance to miss and hit.
+        - Lucky Trait now has different tiers that are rare. In the future, some events might give a luck blessing.
+
+    Potions
+        - Direwolf potion nerfed - removed AP boosts
+        - Orc reworked sequence to be more unique
+            - warlord potion now grants force enabled cull
+
+    Fixes
+        - Fixed lindwurm/stollwurm crashes
+        - Many qol/logic fixes and refactors
 
 === 1.1.0 ==
     Balance

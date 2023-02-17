@@ -10,7 +10,7 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 		this.m.Cooldown = 20.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/event_05.png[/img]{A loud cry startles all the men. They quickly find out the source is %addict% who has collapsed to the ground and is spasming. In his hand is the strange eye that your company has recently acquired. Moments later %addict% comes to. They seem to be alright, but not entirely there in the head, but they say that they've never felt better.",
+			Text = "[img]gfx/ui/events/event_05.png[/img]{A loud cry startles all the men. They quickly find out the source is %addict% who has collapsed to the ground and is spasming. Gone is the strange eye that your company has recently acquired. Moments later %addict% comes to. They seem to be alright, but not entirely there in the head, but they say that they've never felt better.",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -33,25 +33,28 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 					Threshold = 0.25,
 					Script = "injury_permanent/brain_damage_injury"
 				}]);
+				::LA.addPerk(_event.m.Addict, ::Const.Perks.PerkDefs.EyesOnTheInside, 3);
+				
 				this.List.push({
 					id = 10,
 					icon = injury.getIcon(),
 					text = _event.m.Addict.getName() + " suffers " + injury.getNameOnly()
 				});
-
-				_event.m.Addict.getBaseProperties().Hitpoints += 5;
-				_event.m.Addict.getBaseProperties().Stamina += 5;
-
 				this.List.push({
 					id = 16,
-					icon = "ui/icons/health.png",
-					text = _event.m.Addict.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+5[/color] Health"
+					icon = "ui/perks/eyes_on_the_inside.png",
+					text = _event.m.Addict.getName() + " gains Eyes on the Inside"
 				});
-				this.List.push({
-					id = 16,
-					icon = "ui/icons/fatigue.png",
-					text = _event.m.Addict.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+5[/color] Fatigue"
-				});
+
+				local bags = _event.m.Addict.getItems().getAllItemsAtSlot(::Const.ItemSlot.Bag);
+				foreach(item in bags)
+				{
+					if (item.getID() == "misc.strange_eye")
+					{
+						item.removeSelf();
+						break;
+					}
+				}
 			}
 
 		});
@@ -71,6 +74,7 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 		{
 			if (bro.getBackground().isBackgroundType(::Const.BackgroundType.ConvertedCultist) || bro.getBackground().isBackgroundType(::Const.BackgroundType.Cultist)) continue;
 			if (bro.getSkills().hasSkill("injury.brain_damage")) continue;
+			if (bro.getSkills().hasSkill("perk.eyes_on_the_inside")) continue;
 
 			local bags = bro.getItems().getAllItemsAtSlot(::Const.ItemSlot.Bag);
 			foreach(item in bags)

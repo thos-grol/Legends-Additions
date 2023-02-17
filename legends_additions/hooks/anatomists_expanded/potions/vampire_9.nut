@@ -22,13 +22,13 @@
         _actor.getSkills().add(::new("scripts/skills/effects/necrosavant_potion_effect"));
 
         //2 Darkflight
-        ::LA.addPerk(_actor, "perk.legend_darkflight", "scripts/skills/perks/perk_legend_darkflight", ::Const.Perks.PerkDefs.LegendDarkflight, 0);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.LegendDarkflight, 0);
 
         //3 Nine Lives
-        ::LA.addPerk(_actor, "perk.nine_lives", "scripts/skills/perks/perk_nine_lives", ::Const.Perks.PerkDefs.NineLives, 1);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.NineLives, 1);
 
         //4 Lacerate
-        ::LA.addPerk(_actor, "perk.legend_lacerate", "scripts/skills/perks/perk_legend_lacerate", ::Const.Perks.PerkDefs.LegendLacerate, 1);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.LegendLacerate, 1);
 
         this.Sound.play("sounds/enemies/vampire_hurt_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/vampire_death_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);

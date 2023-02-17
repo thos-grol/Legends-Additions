@@ -22,13 +22,13 @@
         _actor.getSkills().add(::new("scripts/skills/effects/goblin_overseer_potion_effect"));
 
         //2: Hair Splitter
-        ::LA.addPerk(_actor, "perk.legend_hair_splitter", "scripts/skills/perks/perk_legend_hair_splitter", ::Const.Perks.PerkDefs.LegendHairSplitter, 0);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.LegendHairSplitter, 0);
 
         //3 Head Hunter
-        ::LA.addPerk(_actor, "perk.head_hunter", "scripts/skills/perks/perk_head_hunter", ::Const.Perks.PerkDefs.HeadHunter, 1);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.HeadHunter, 1);
 
         //4 Eyes Up
-        ::LA.addPerk(_actor, "perk.ptr_eyes_up", "scripts/skills/perks/perk_ptr_eyes_up", ::Const.Perks.PerkDefs.PTREyesUp, 2);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTREyesUp, 2);
 
         this.Sound.play("sounds/enemies/goblin_hurt_0" + this.Math.rand(0, 3) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/goblin_death_0" + this.Math.rand(0, 3) + ".wav", ::Const.Sound.Volume.Inventory);

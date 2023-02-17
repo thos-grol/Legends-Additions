@@ -138,12 +138,16 @@
 		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Mainhand));
 		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Offhand));
 
-		bros[0].getBackground().addPerk(::Const.Perks.PerkDefs.HoldOut, 2, false);
-		::LA.addPerk(bros[0], "perk.hold_out", "scripts/skills/perks/perk_hold_out", ::Const.Perks.PerkDefs.HoldOut, 2);
+		::LA.addPerk(bros[0], ::Const.Perks.PerkDefs.HoldOut, 2);
 		bros[0].getSkills().add(::new("scripts/skills/traits/player_character_trait"));
 		items.equip(::new("scripts/items/helmets/undertaker_hat"));
 		items.equip(::new("scripts/items/armor/undertaker_apron"));
 
+		// ::LA.addPerk(bros[0], ::Const.Perks.PerkDefs.LegendSpecCultHood, 1);
+		// ::LA.addPerk(bros[0], ::Const.Perks.PerkDefs.SacrificialRitual, 2);
+		// ::LA.addPerk(bros[0], ::Const.Perks.PerkDefs.LegendSpecCultArmor, 5);
+		
+		// items.equip(::new("scripts/items/weapons/legend_mystic_staff"));
 
 
 		bros[1].setStartValuesEx([
@@ -166,8 +170,7 @@
 		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Mainhand));
 		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Offhand));
 
-		bros[1].getBackground().addPerk(::Const.Perks.PerkDefs.HoldOut, 2, false);
-		::LA.addPerk(bros[1], "perk.hold_out", "scripts/skills/perks/perk_hold_out", ::Const.Perks.PerkDefs.HoldOut, 2);
+		::LA.addPerk(bros[1], ::Const.Perks.PerkDefs.HoldOut, 2);
 		bros[1].getSkills().add(::new("scripts/skills/traits/player_character_trait"));
 
 		items.equip(::new("scripts/items/helmets/physician_mask"));
@@ -194,8 +197,7 @@
 		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Mainhand));
 		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Offhand));
 
-		bros[2].getBackground().addPerk(::Const.Perks.PerkDefs.HoldOut, 2, false);
-		::LA.addPerk(bros[2], "perk.hold_out", "scripts/skills/perks/perk_hold_out", ::Const.Perks.PerkDefs.HoldOut, 2);
+		::LA.addPerk(bros[2], ::Const.Perks.PerkDefs.HoldOut, 2);
 		bros[2].getSkills().add(::new("scripts/skills/traits/player_character_trait"));
 
 		items.equip(::new("scripts/items/helmets/masked_kettle_helmet"));
@@ -206,3 +208,32 @@
 	}
 
 });
+
+::mods_hookExactClass("skills/backgrounds/paladin_background", function (o)
+{
+	//Fixes bug where anatomist background overwrites background super method without making any changes??? Now you can see projected perk stats
+	o.getTooltip = function()
+	{
+		local ret = [
+			{
+				id = 1,
+				type = "title",
+				text = this.getName()
+			},
+			{
+				id = 2,
+				type = "description",
+				text = this.getDescription()
+			}
+		];
+
+		if (this.getContainer() != null)
+		{
+			ret.extend(this.getBackgroundTooltip());
+			ret.extend(this.getAttributesTooltip());
+		}
+
+		return ret;
+	}
+});
+

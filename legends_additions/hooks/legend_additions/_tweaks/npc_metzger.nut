@@ -3,7 +3,7 @@
 {
     o.onAdded = function()
 	{
-		if (this.getContainer().getActor().getFaction() != this.Const.Faction.Player) return;
+		if (this.getContainer().getActor().getFaction() != ::Const.Faction.Player) return;
 
 		local equippedItem = this.getContainer().getActor().getMainhandItem();
 		if (equippedItem != null)
@@ -24,13 +24,13 @@
 
     o.onEquip = function( _item )
 	{
-		if (this.getContainer().getActor().getFaction() != this.Const.Faction.Player) return;
+		if (this.getContainer().getActor().getFaction() != ::Const.Faction.Player) return;
 
         if (!this.isEnabled() || _item.getSlotType() != ::Const.ItemSlot.Mainhand) return;
 
 		if (!this.getContainer().hasSkill("actives.decapitate"))
 		{
-			_item.addSkill(this.new("scripts/skills/actives/decapitate"));
+			_item.addSkill(::new("scripts/skills/actives/decapitate"));
 		}
 
 		if (!this.getContainer().hasSkill("perk.ptr_sanguinary"))

@@ -30,7 +30,7 @@
         _actor.getSkills().add(::new("scripts/skills/effects/ancient_priest_potion_effect"));
 
         //Lacerate
-        ::LA.addPerk(_actor, "perk.legend_lacerate", "scripts/skills/perks/perk_legend_lacerate", ::Const.Perks.PerkDefs.LegendLacerate, 3);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.LegendLacerate, 3);
 
         this.Sound.play("sounds/enemies/ghoul_death_0" + this.Math.rand(1, 6) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/ghoul_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);

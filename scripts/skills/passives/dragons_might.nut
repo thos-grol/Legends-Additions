@@ -61,7 +61,7 @@ this.dragons_might <- this.inherit("scripts/skills/skill", {
 			foreach( a in i )
 			{
 				//-40 difficulty means you need about 130 resolve to ignore the check
-				if (!a.isAlliedWith(_tag.User) && a.getID() != _tag.User.getID() && a.getTile().getDistanceTo(mytile) <= range) a.checkMorale(-1, -40, ::Const.MoraleCheckType.MentalAttack);
+				if (!a.isAlliedWith(_tag.User) && a.getID() != _tag.User.getID() && a.getTile().getDistanceTo(mytile) <= range) a.checkMorale(-1, difficulty, ::Const.MoraleCheckType.MentalAttack);
 			}
 		}
 	}

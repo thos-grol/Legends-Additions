@@ -10,8 +10,8 @@
 		this.m.Icon = "skills/status_effect_142.png";
 		this.m.IconMini = "";
 		this.m.Overlay = "status_effect_142";
-		this.m.Type = this.Const.SkillType.StatusEffect | this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.StatusEffect | ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = false;
 		this.m.IsStacking = false;
@@ -105,12 +105,12 @@
 
         this.spawnIcon("status_effect_54", _targetEntity.getTile());
 
-        local effect = this.new("scripts/skills/effects/bleeding_effect");
+        local effect = ::new("scripts/skills/effects/bleeding_effect");
 
         local effect;
-        if (actor.getFlags().has("spider_8")) effect = this.new("scripts/skills/effects/legend_redback_spider_poison_effect");
-        else effect = this.new("scripts/skills/effects/spider_poison_effect");
-        if (actor.getFaction() == this.Const.Faction.Player) effect.setActor(actor);
+        if (actor.getFlags().has("spider_8")) effect = ::new("scripts/skills/effects/legend_redback_spider_poison_effect");
+        else effect = ::new("scripts/skills/effects/spider_poison_effect");
+        if (actor.getFaction() == ::Const.Faction.Player) effect.setActor(actor);
         _targetEntity.getSkills().add(effect);
     }
 

@@ -44,13 +44,7 @@ this.drained_effect <- this.inherit("scripts/skills/skill", {
 
 	function resetTime()
 	{
-		this.m.TurnsLeft = this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
-		if (this.m.TurnsLeft >= 10) this.actor.kill(this.getAttacker(), this, ::Const.FatalityType.None, false);
-	}
-
-	function incrementTime()
-	{
-		this.m.TurnsLeft += 1;
+		this.m.TurnsLeft += 2;
 		if (this.m.TurnsLeft >= 10) this.actor.kill(this.getAttacker(), this, ::Const.FatalityType.None, false);
 	}
 

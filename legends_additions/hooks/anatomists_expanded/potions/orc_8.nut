@@ -15,20 +15,20 @@
         _actor.getFlags().add("orc_8");
         _actor.getFlags().add("orc");
 
-        //Grow and toughen
-        if (_actor.getSkills().hasSkill("trait.tiny")) _actor.getSkills().removeByID("trait.tiny");
-        else _actor.getSkills().add(::new("scripts/skills/traits/huge_trait"));
+        //Toughen
         _actor.getSkills().add(::new("scripts/skills/traits/iron_jaw_trait"));
 
+        //4 Cull
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTRCull, 2);
+
         //1 Improved Musculature
-        //4 Charge Skill
         _actor.getSkills().add(::new("scripts/skills/effects/orc_young_potion_effect"));
 
         //2 Font of Strength
         _actor.getSkills().add(::new("scripts/skills/effects/orc_warlord_potion_effect"));
 
         //3 Berserk
-        ::LA.addPerk(_actor, "perk.berserk", "scripts/skills/perks/perk_berserk", ::Const.Perks.PerkDefs.Berserk, 2);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.Berserk, 3);
 
         this.Sound.play("sounds/enemies/orc_death_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/orc_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
@@ -79,33 +79,40 @@
             id = 11,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Induces major growth and toughens the physique."
+            text = "Toughens the physique."
         });
 
         ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/melee_skill.png",
-            text = "Improved Musculature: +" + ::MSU.Text.colorGreen( "15%" ) + " Damage"
+            text = "Improved Musculature: +" + ::MSU.Text.colorRed( "10%" ) + " Damage"
         });
+        ret.push({
+			id = 11,
+			type = "text",
+			icon = "ui/icons/fatigue.png",
+			text = "+" + ::MSU.Text.colorGreen( 6 ) + " Fatigue Recovery"
+		});
         ret.push({
             id = 11,
             type = "text",
             icon = "ui/icons/health.png",
             text = "+" + ::MSU.Text.colorGreen( 10 ) + " Hitpoints"
         });
-        ret.push({
-            id = 11,
-            type = "text",
-            icon = "ui/icons/melee_skill.png",
-            text = "This character gains the ability to charge at enemies, stunning them"
-        });
 
         ret.push({
             id = 12,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Font of Might: Orc weapons no longer imposes additional fatigue costs"
+            text = "Grants Cull that works with all weapons."
+        });
+        
+        ret.push({
+            id = 12,
+            type = "text",
+            icon = "ui/icons/special.png",
+            text = "Font of Strength: Orc weapons no longer imposes additional fatigue costs"
         });
 
         ret.push({

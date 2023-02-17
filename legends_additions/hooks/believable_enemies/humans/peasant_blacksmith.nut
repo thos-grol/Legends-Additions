@@ -48,6 +48,5 @@
 		dirt.Visible = true;
 		dirt.Alpha = this.Math.rand(0, 255);
 		this.getSprite("socket").setBrush("bust_base_militia");
-
 	}
 });

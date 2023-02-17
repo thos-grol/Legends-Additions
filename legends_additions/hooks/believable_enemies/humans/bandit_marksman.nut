@@ -43,7 +43,7 @@
 					"weapons/hunting_bow"
 				];
 				this.m.Items.equip(::new("scripts/items/" + ::MSU.Array.rand(weapons)));
-				this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+				this.m.Items.equip(::new("scripts/items/ammo/quiver_of_arrows"));
 
 				this.m.build_num = this.Math.rand(0, 1);
 
@@ -85,7 +85,7 @@
 					"weapons/light_crossbow"
 				];
 				this.m.Items.equip(::new("scripts/items/" + ::MSU.Array.rand(weapons)));
-				this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
+				this.m.Items.equip(::new("scripts/items/ammo/quiver_of_bolts"));
 
 				this.m.build_num = 2;
 				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_power_shot")); //1
@@ -118,7 +118,7 @@
 	{
 		this.human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BanditMarksman);
+		b.setValues(::Const.Tactical.Actor.BanditMarksman);
 		b.TargetAttractionMult = 1.1;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
@@ -145,7 +145,7 @@
 
 	o.addArmor <- function()
 	{
-		local item = this.Const.World.Common.pickArmor([
+		local item = ::Const.World.Common.pickArmor([
 			[
 				20,
 				"thick_tunic"
@@ -167,7 +167,7 @@
 
 		if (this.Math.rand(1, 100) <= 50)
 		{
-			local item = this.Const.World.Common.pickHelmet([
+			local item = ::Const.World.Common.pickHelmet([
 				[
 					20,
 					"hood"

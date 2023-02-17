@@ -28,10 +28,10 @@
 //             this.m.Strength += (count + (brolevel + this.pow(brolevel, 1.2))) * broScale; //Legendary scaling
 
 // 			//Item Scaling?
-//             local mainhand = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
-// 			local offhand = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-// 			local body = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
-// 			local head = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+//             local mainhand = bro.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
+// 			local offhand = bro.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
+// 			local body = bro.getItems().getItemAtSlot(::Const.ItemSlot.Body);
+// 			local head = bro.getItems().getItemAtSlot(::Const.ItemSlot.Head);
 // 			local mainhandvalue = 0;
 // 			local offhandvalue = 0;
 // 			local bodyvalue = 0;

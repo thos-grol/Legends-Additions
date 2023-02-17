@@ -4,7 +4,7 @@ this.strange_eye_item <- this.inherit("scripts/items/item", {
 	{
 		this.m.ID = "misc.strange_eye";
 		this.m.Name = "Strange Eye";
-		this.m.Description = "A peculiar eye, whose origin may not be of this world. Some even think it is cursed. Perhaps letting one of your men hold it in their bags will unveil it's mysteries. Cultists particularly love this type of strange thing.";
+		this.m.Description = "A peculiar eye, whose origin may not be of this world. Some even think it is cursed. Perhaps letting one of your men hold it in their bags will unveil it's mysteries.";
 		this.m.Icon = "misc/strange_eye.png";
 		this.m.SlotType = ::Const.ItemSlot.Bag;
 		this.m.ItemType = ::Const.Items.ItemType.Misc;

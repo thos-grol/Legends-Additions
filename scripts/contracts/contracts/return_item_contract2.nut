@@ -36,7 +36,6 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		if (roll_tier <= 1) //rare items
 		{
 			item_pool.push("scripts/items/weapons/named/legend_staff_ceremonial");
-			item_pool.push("scripts/items/misc/strange_eye_item");
 			if (roll_enemies <= 75) this.m.Flags.set("IsMercenary", true);
 		}
 		else if (roll_tier <= 3) //valuable items
@@ -44,7 +43,8 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 			item_pool.push("heirloom_sword");
 			item_pool.push("blacksmith_hammer");
 			item_pool.push("scripts/items/misc/lindwurm_bones_item");
-			if (roll_enemies <= 40) this.m.Flags.set("IsMercenary", true);
+			item_pool.push("scripts/items/misc/strange_eye_item");
+			if (roll_enemies <= 25) this.m.Flags.set("IsMercenary", true);
 		}
 		else //common items
 		{
@@ -54,7 +54,6 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 			item_pool.push("lockbox");
 		}
 
-
 		//roll the item
 		local item_ID = ::MSU.Array.rand(item_pool);
 		this.logInfo("Inital Item Id: " + item_ID);
@@ -62,9 +61,9 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		//determine special enemies
 		switch(item_ID)
 		{
-			case "strange_tome":
-				if (roll_enemies <= 75) this.m.Flags.set("IsNecromancer", true);
-				break;
+			// case "strange_tome":
+			// 	if (roll_enemies <= 75) this.m.Flags.set("IsNecromancer", true);
+			// 	break;
 			case "lockbox":
 				if (roll_enemies <= 15) this.m.Flags.set("IsAnatomist", true);
 				else if (roll_enemies <= 30) this.m.Flags.set("IsCultist", true);
@@ -100,7 +99,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				item_ID = ::MSU.Array.rand(lst_lockbox);
 				if (item_ID == "rune")
 				{
-					is_rune = true;
+					this.m.Flags.set("IsRune", true);
 					item_ID = "scripts/items/rune_sigils/legend_vala_inscription_token";
 				}
 				break;
@@ -143,14 +142,8 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 
 		//create and set item parameters
 		this.m.Loot = ::new(item_ID);
-		if (is_rune)
-		{
-			local runes = [6,11,12,13];
-			this.m.Loot.setRuneVariant(runes[this.Math.rand(0, runes.len())]);
-			this.m.Loot.setRuneBonus(true);
-			this.m.Loot.updateRuneSigilToken();
-		}
 		this.m.Flags.set("LOOT_NAME", this.m.Loot.m.Name);
+		this.m.Flags.set("LOOT_ID", item_ID);
 
 		local value = this.m.Flags.get("IsLockbox") ? 1000 : this.m.Loot.getValue();
 		this.m.Payment.Pool = value * 0.6 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), ::Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
@@ -603,13 +596,21 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 			Options = [],
 			function start()
 			{
+				this.Contract.m.Loot = ::new(this.Flags.get("LOOT_ID"));
+				if (this.Flags.get("IsRune"))
+				{
+					local runes = [6,11,12,13];
+					this.Contract.m.Loot.setRuneVariant(runes[this.Math.rand(0, runes.len())]);
+					this.Contract.m.Loot.setRuneBonus(true);
+					this.Contract.m.Loot.updateRuneSigilToken();
+				}
 				if (!this.Flags.get("IsLockbox"))
 				{
 					this.logInfo(this.Flags.get("LOOT_NAME"));
 					this.List.push({
 						id = 10,
 						icon = "ui/items/" + this.Contract.m.Loot.getIcon(),
-						text = "What to do with " + this.Flags.get("LOOT_NAME") + "?"
+						text = "What to do with " + this.Contract.m.Loot.m.Name + "?"
 					});
 				}
 
@@ -621,7 +622,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 						local ROLL = this.Math.rand(1, 100);
 						this.Flags.set("SUBTERFUGE_CHANCE", SUBTERFUGE_CHANCE);
 						this.Flags.set("SUBTERFUGE_ROLL", ROLL);
-						local temp = this.Flags.get("IsLockbox") ? "lockbox" : this.Flags.get("LOOT_NAME");
+						local temp = this.Flags.get("IsLockbox") ? "lockbox" : this.Contract.m.Loot.m.Name;
 						if (ROLL > SUBTERFUGE_CHANCE)
 						{
 							//change reputation

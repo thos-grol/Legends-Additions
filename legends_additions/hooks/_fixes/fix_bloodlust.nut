@@ -1,14 +1,16 @@
 //FIXED bloodlust didn't count legends bleeding sources as well as bleeding injuries
 ::mods_hookExactClass("skills/perks/perk_ptr_bloodlust", function(o) {
-	o.onBeforeAnySkillExecuted = function( _skill, _targetTile, _targetEntity, _forFree )
+
+    o.onBeforeAnySkillExecuted = function( _skill, _targetTile, _targetEntity, _forFree )
 	{
 		if (!_skill.isAttack() || _skill.isRanged() || _targetEntity == null) return;
 		this.m.ActorFatigue = null;
 
         local count = 0;
-        foreach( skill in _targetEntity.getSkills() )
+
+        local skills = _targetEntity.getSkills();
+        foreach( skill in skills.m.Skills )
         {
-            if (skill.isGarbage()) continue;
             switch(skill.getID())
             {
                 case "effects.bleeding":

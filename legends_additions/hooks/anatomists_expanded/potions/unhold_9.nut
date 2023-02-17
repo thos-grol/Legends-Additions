@@ -25,10 +25,10 @@
         _actor.getSkills().add(::new("scripts/skills/effects/wiederganger_potion_effect"));
 
         //3 Colossus
-        ::LA.addPerk(_actor, "perk.colossus", "scripts/skills/perks/perk_colossus", ::Const.Perks.PerkDefs.Colossus, 0);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.Colossus, 0);
 
         //4 Muscularity
-        ::LA.addPerk(_actor, "perk.legend_muscularity", "scripts/skills/perks/perk_legend_muscularity", ::Const.Perks.PerkDefs.LegendMuscularity, 1);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.LegendMuscularity, 1);
 
 
         this.Sound.play("sounds/enemies/unhold_death_0" + this.Math.rand(1, 6) + ".wav", ::Const.Sound.Volume.Inventory);

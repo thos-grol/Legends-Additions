@@ -48,7 +48,7 @@
 		local n = this.Math.rand(0, weapons.len() - 1);
 		foreach( w in weapons[n] )
 		{
-			this.m.Items.equip(this.new("scripts/items/" + w));
+			this.m.Items.equip(::new("scripts/items/" + w));
 		}
 
 		local weapon = this.getMainhandItem();
@@ -58,10 +58,10 @@
 			else this.m.Skills.add(::new("scripts/skills/perks/perk_ballistics")); //2 -> 3
 		}
 
-		if (this.Math.rand(1, 100) <= 50) this.m.Items.addToBag(this.new("scripts/items/weapons/legend_shiv"));
-		else this.m.Items.addToBag(this.new("scripts/items/weapons/knife"));
+		if (this.Math.rand(1, 100) <= 50) this.m.Items.addToBag(::new("scripts/items/weapons/legend_shiv"));
+		else this.m.Items.addToBag(::new("scripts/items/weapons/knife"));
 
-		local item = this.Const.World.Common.pickArmor([
+		local item = ::Const.World.Common.pickArmor([
 			[
 				20,
 				"leather_wraps"
@@ -71,7 +71,7 @@
 
 		if (this.Math.rand(1, 100) <= 50)
 		{
-			local item = this.Const.World.Common.pickHelmet([
+			local item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"headscarf"
@@ -93,7 +93,7 @@
 	{
 		this.human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BanditPoacher);
+		b.setValues(::Const.Tactical.Actor.BanditPoacher);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;

@@ -21,10 +21,10 @@
 
 			//2
 			::LA.removePerk(_actor, "perk.underdog", ::Const.Perks.PerkDefs.Underdog);
-			::LA.addPerk(_actor, "perk.legend_battleheart", "scripts/skills/perks/perk_legend_battleheart", ::Const.Perks.PerkDefs.LegendBattleheart, 1);
+			::LA.addPerk(_actor, ::Const.Perks.PerkDefs.LegendBattleheart, 1);
 
 			//4
-			::LA.addPerk(_actor, "perk.ptr_unstoppable", "scripts/skills/perks/perk_ptr_unstoppable", ::Const.Perks.PerkDefs.PTRUnstoppable, 3);
+			::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTRUnstoppable, 3);
 
             this.Sound.play("sounds/enemies/werewolf_idle_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
             this.Sound.play("sounds/enemies/werewolf_idle_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
@@ -81,14 +81,8 @@
         ret.push({
             id = 11,
             type = "text",
-            icon = "ui/icons/special.png",
-            text = "+" + ::MSU.Text.colorGreen( "2" ) + " AP"
-        });
-        ret.push({
-            id = 11,
-            type = "text",
             icon = "ui/icons/fatigue.png",
-            text = "+" + ::MSU.Text.colorGreen( "5" ) + " Fatigue Recovery"
+            text = "+" + ::MSU.Text.colorGreen( "8" ) + " Fatigue Recovery"
         });
 		ret.push({
             id = 11,

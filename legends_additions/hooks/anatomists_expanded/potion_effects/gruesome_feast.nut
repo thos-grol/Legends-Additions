@@ -1,12 +1,36 @@
 ::mods_hookExactClass("skills/actives/legend_gruesome_feast", function (o)
 {
-    local create = o.create;
+	local create = o.create;
     o.create = function()
     {
-        create();
-        this.m.Description = "Feast on a corpse to regain health and cure injuries. This will daze and disgust any non-mutated human within four tiles. \n\nWill automatically feast on corpses at the end of the battle and restore full health and remove injuries.";
-        this.m.ActionPointCost = 6;
-        this.m.FatigueCost = 35;
+        this.m.ID = "actives.legend_gruesome_feast";
+		this.m.Name = "Gruesome Feast";
+		this.m.Description = "Feast on a corpse to regain health and cure injuries. This will daze and disgust any non-mutated human within four tiles. \n\nWill automatically feast on corpses at the end of the battle and restore full health and remove injuries.";
+		this.m.Icon = "skills/gruesome_square.png";
+		this.m.IconDisabled = "skills/gruesome_square_bw.png";
+		this.m.Overlay = "gruesome_square";
+		this.m.SoundOnUse = [
+			"sounds/enemies/gruesome_feast_01.wav",
+			"sounds/enemies/gruesome_feast_02.wav",
+			"sounds/enemies/gruesome_feast_03.wav"
+		];
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
+		this.m.IsSerialized = false;
+		this.m.IsActive = true;
+		this.m.IsTargeted = true;
+		this.m.IsTargetingActor = false;
+		this.m.IsVisibleTileNeeded = true;
+		this.m.IsStacking = false;
+		this.m.IsAttack = false;
+		this.m.IsIgnoredAsAOO = true;
+		this.m.IsAudibleWhenHidden = false;
+		this.m.IsUsingActorPitch = true;
+		this.m.ActionPointCost = 5;
+		this.m.FatigueCost = 35;
+		this.m.MinRange = 0;
+		this.m.MaxRange = 0;
+		this.m.MaxLevelDifference = 4;
     }
 
     local onUse = o.onUse;
@@ -59,6 +83,18 @@
         _user.onUpdateInjuryLayer();
         return true;
     }
+
+	o.onAdded <- function()
+	{
+		local actor = this.getContainer().getActor();
+		if (actor.isPlayerControlled()) return;
+		local agent = actor.getAIAgent();
+		if (agent.findBehavior(::Const.AI.Behavior.ID.GruesomeFeast) == null)
+		{
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_gruesome_feast_potion"));
+			agent.finalizeBehaviors();
+		}
+	}
 
 });
 
@@ -135,17 +171,10 @@
                                 if (bro.getSkills().hasSkill("perk.legend_gruesome_feast"))
                                 {
                                     bro.setHitpoints(bro.getHitpointsMax());
-
-									local skills = _user.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
-									this.logInfo(skills);
+									local skills = bro.getSkills().getAllSkillsOfType(::Const.SkillType.TemporaryInjury);
 									foreach( s in skills )
 									{
-										if (s.isType(::Const.SkillType.TemporaryInjury))
-										{
-											//FIXME: fix gruesome feast not removing injuries after battle won
-											this.logInfo("Found temp injury, removing" + s.getName());
-											s.removeSelf();
-										}
+										s.removeSelf();
 									}
 									bro.onUpdateInjuryLayer();
                                 }

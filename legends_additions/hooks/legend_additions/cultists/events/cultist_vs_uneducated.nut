@@ -6,12 +6,10 @@
 	{
 		create();
 		this.m.Cooldown = 7 * this.World.getTime().SecondsPerDay;
-		this.logInfo("ccc: " + this.m.Cooldown + "days");
 	}
 
 	o.onUpdateScore = function()
 	{
-		this.logInfo("Confirming cooldown for cultist vs uneducated was changed: " + this.m.Cooldown + "days");
 		if (this.World.Assets.getOrigin().getID() == "scenario.cultists") return;
 
 		local brothers = this.World.getPlayerRoster().getAll();
@@ -47,7 +45,8 @@
 
 		this.m.Cultist = ::MSU.Array.rand(cultist_candidates);
 		this.m.Uneducated = ::MSU.Array.rand(uneducated_candidates);
-		this.m.Score = cultist_candidates.len() * 10;
+		this.m.Score = cultist_candidates.len() * 10 + uneducated_candidates.len() * 5;
+		this.logInfo("score: " + this.m.Score);
 	}
 });
 
@@ -97,6 +96,6 @@
 
 		this.m.Cultist = ::MSU.Array.rand(cultist_candidates);
 		this.m.Uneducated = ::MSU.Array.rand(uneducated_candidates);
-		this.m.Score = cultist_candidates.len() * 15;
+		this.m.Score = cultist_candidates.len() * 15 + uneducated_candidates.len() * 10;
 	}
 });

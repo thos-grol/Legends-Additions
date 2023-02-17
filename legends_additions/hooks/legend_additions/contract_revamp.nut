@@ -79,7 +79,7 @@
 			"scripts/factions/actions/send_military_holysite_action"
 		],
 		[],
-		//TODO: Sellsword Contracts
+		//FEATURE_3: Sellsword Contracts
 		//Settlement
 		[
 		//general contracts
@@ -88,7 +88,6 @@
 			"scripts/factions/contracts/drive_away_barbarians_action",
 
 			"scripts/factions/contracts/investigate_cemetery_action",
-
 
 			"scripts/factions/contracts/escort_caravan_action",
 				// add chance for monsters to appear

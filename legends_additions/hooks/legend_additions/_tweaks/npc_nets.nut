@@ -76,9 +76,9 @@
 		local actor = this.getContainer().getActor();
 		if (actor.isPlayerControlled()) return;
 		local agent = actor.getAIAgent();
-		if (agent.findBehavior(this.Const.AI.Behavior.ID.ThrowNet) == null)
+		if (agent.findBehavior(::Const.AI.Behavior.ID.ThrowNet) == null)
 		{
-			agent.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_throw_net"));
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_attack_throw_net"));
 			agent.finalizeBehaviors();
 		}
 	}

@@ -35,13 +35,6 @@
                     this.m.Skills.add(::new("scripts/skills/effects/ancient_priest_potion_effect"));
                     this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lacerate"));
                 }
-
-                local agent = this.actor.getAIAgent();
-                if (agent.findBehavior(::Const.AI.Behavior.ID.GruesomeFeast) == null)
-                {
-                    agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_gruesome_feast_potion"));
-                    agent.finalizeBehaviors();
-                }
                 break;
             case "spider":
                 this.getFlags().add("spider");
@@ -104,7 +97,7 @@
                 }
 
                 local agent = this.actor.getAIAgent();
-                if (agent.findBehavior(this.Const.AI.Behavior.ID.Darkflight) == null)
+                if (agent.findBehavior(::Const.AI.Behavior.ID.Darkflight) == null)
                 {
                     agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_darkflight"));
                     agent.finalizeBehaviors();

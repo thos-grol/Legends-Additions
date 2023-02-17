@@ -6,14 +6,9 @@
 
 ======= Cultists =========
 
-Cultist flow:
-    - Injuries and permenant injuries
-
 Cultist perk tree:
 
-    2: Dedication -> Devotion
-        - 15% resolve to mdef and rdef while wearing cultist headwear
-        - For each permenant injury, the bonus increases by 5%
+
     3: Sacrificial Ritual
         - Passive: The souls of the enemies you kill are claimed by Davkul. Bring him enough sacrifices, and you might get Davkul's attention... and rewards. The reward entirely depends on the whims of Davkul.
             Tiers
@@ -25,12 +20,6 @@ Cultist perk tree:
                 100 (Grand Rituals)
                     Only 1 in party ("Brink of Death")
 
-
-    ?: evisceration
-    5: Penance
-        - One has wounds but cannot be wounded...
-        - Each point of missing health increases resolve wearing the appropriate armor.
-        - Decrease the effects that injuries has on this character by half OR grants some other sort of compensation. Mouse over the permenant injury to see the effects.
 
     7: Lacerate
         - Remove from the tree, keep the perk tho, it's good.
@@ -279,16 +268,20 @@ Undead cannot be charmed
 
 -----
 
-::setSpawn("scripts/entity/tactical/enemies/bandit_leader", this.Const.Faction.Enemy)
-::setSpawn("nomad_leader", this.Const.Faction.PlayerAnimals)
+::setSpawn("scripts/entity/tactical/enemies/bandit_leader", ::Const.Faction.Enemy)
+::setSpawn("nomad_leader", ::Const.Faction.PlayerAnimals)
 
-::setSpawn("bandit_raider", this.Const.Faction.PlayerAnimals)
-::setSpawn("swordmaster", this.Const.Faction.PlayerAnimals)
-::setSpawn("swordmaster", this.Const.Faction.PlayerAnimals)
+::setSpawn("nomad_outlaw", ::Const.Faction.PlayerAnimals)
+::setSpawn("bandit_raider", ::Const.Faction.PlayerAnimals)
+::setSpawn("swordmaster", ::Const.Faction.PlayerAnimals)
+::setSpawn("swordmaster", ::Const.Faction.PlayerAnimals)
 
-::setSpawn("bandit_leader", this.Const.Faction.PlayerAnimals)
+::setSpawn("legend_peasant_blacksmith", ::Const.Faction.PlayerAnimals)
+::setSpawn("ghost_knight", ::Const.Faction.PlayerAnimals)
+::setSpawn("bandit_leader", ::Const.Faction.PlayerAnimals)
+::setSpawn("bandit_leader", ::Const.Faction.PlayerAnimals)
 ::setSpawn("bandit_leader")
-::setSpawn("spider", this.Const.Faction.Enemy)
+::setSpawn("spider", ::Const.Faction.Enemy)
 
 ::addItem("direwolf_potion_item")
 ::addItem("apotheosis_potion_item")
@@ -304,15 +297,15 @@ Undead cannot be charmed
 ::addItem("fighting_axe")
 ::addItem("shamshir")
 ::addItem("scimitar")
-::addItem("named_shamshir")
+::addItem("legend_helmet_sack")
+::addItem("legend_helmet_cloth_scarf")
+::addItem("hunting_bow")
+::addItem("legend_staff_gnarled")
+
+::addItem("named_handgonne")
+::addItem("war_bow")
+::addItem("heater_shield")
+::addItem("strange_eye_item")
 
 
-
-
-// FEATURE_5: Dungeouns
-// 	"scripts/factions/contracts/discover_location_action",
-// 		Discover and scout dungeon to certain floor
-// 	"scripts/factions/contracts/find_artifact_action",
-// 		Discover minor dungeon and retrieve artefact
-// 	"scripts/factions/contracts/obtain_item_action",
-// 		create small/medium dungeon to explore
+bbrusher pack legends_additions.brush C:\Files\Projects\bbros\brush\legends_additions --gfxPath C:\Files\Projects\bbros\brush

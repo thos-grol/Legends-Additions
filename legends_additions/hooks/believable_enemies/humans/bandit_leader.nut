@@ -406,7 +406,7 @@
 		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("orc", false);
 
 		local agent = actor.getAIAgent();
-		agent.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageMelee] = 0.5;
+		agent.m.Properties.BehaviorMult[::Const.AI.Behavior.ID.EngageMelee] = 0.5;
 		agent.finalizeBehaviors();
 	}
 

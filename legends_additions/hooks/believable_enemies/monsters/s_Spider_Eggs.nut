@@ -3,7 +3,7 @@
     o.onSpawn = function( _tile )
 	{
 		if (_tile.IsEmpty) return;
-		if (!_tile.IsOccupiedByActor || _tile.getEntity().getType() != this.Const.EntityType.SpiderEggs) return;
+		if (!_tile.IsOccupiedByActor || _tile.getEntity().getType() != ::Const.EntityType.SpiderEggs) return;
 		if (this.Tactical.Entities.isEnemyRetreating()) return;
 
 
@@ -37,9 +37,9 @@
 
 			foreach( a in allies )
 			{
-				if (a.getType() == this.Const.EntityType.Hexe)
+				if (a.getType() == ::Const.EntityType.Hexe)
 				{
-					spawn.getSkills().add(this.new("scripts/skills/effects/fake_charmed_effect"));
+					spawn.getSkills().add(::new("scripts/skills/effects/fake_charmed_effect"));
 					break;
 				}
 			}

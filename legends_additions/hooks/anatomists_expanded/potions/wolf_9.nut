@@ -18,13 +18,13 @@
         _actor.getSkills().add(::new("scripts/skills/effects/direwolf_potion_effect"));
 
         //2 Survival Instinct
-        ::LA.addPerk(_actor, "perk.ptr_survival_instinct", "scripts/skills/perks/perk_ptr_survival_instinct", ::Const.Perks.PerkDefs.PTRSurvivalInstinct, 0);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTRSurvivalInstinct, 0);
 
         //3 Underdog
-        ::LA.addPerk(_actor, "perk.underdog", "scripts/skills/perks/perk_underdog", ::Const.Perks.PerkDefs.Underdog, 1);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.Underdog, 1);
 
         //4 Menacing
-        ::LA.addPerk(_actor, "perk.ptr_menacing", "scripts/skills/perks/perk_ptr_menacing", ::Const.Perks.PerkDefs.PTRMenacing, 2);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTRMenacing, 2);
 
 
         this.Sound.play("sounds/enemies/werewolf_idle_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
@@ -82,14 +82,8 @@
         ret.push({
             id = 11,
             type = "text",
-            icon = "ui/icons/special.png",
-            text = "+" + ::MSU.Text.colorGreen( "2" ) + " AP"
-        });
-        ret.push({
-            id = 11,
-            type = "text",
             icon = "ui/icons/fatigue.png",
-            text = "+" + ::MSU.Text.colorGreen( "5" ) + " Fatigue Recovery"
+            text = "+" + ::MSU.Text.colorGreen( "7" ) + " Fatigue Recovery"
         });
         ret.push({
             id = 11,

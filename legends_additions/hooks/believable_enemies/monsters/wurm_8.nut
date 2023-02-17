@@ -43,7 +43,7 @@
         if (_damageHitpoints >= 50)
         {
             targets = [];
-            local mytile = _tag.User.getTile();
+            local mytile = _actor.User.getTile();
             local actors = this.Tactical.Entities.getAllInstances();
 
             foreach( i in actors )

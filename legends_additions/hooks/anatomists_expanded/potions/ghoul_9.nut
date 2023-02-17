@@ -22,13 +22,13 @@
         _actor.getSkills().add(::new("scripts/skills/effects/hyena_potion_effect"));
 
         //1
-        ::LA.addPerk(_actor, "perk.legend_gruesome_feast", "scripts/skills/perks/perk_legend_gruesome_feast", ::Const.Perks.PerkDefs.LegendGruesomeFeast, 1);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.LegendGruesomeFeast, 1);
 
         //2
-        ::LA.addPerk(_actor, "perk.legend_alert", "scripts/skills/perks/perk_legend_alert", ::Const.Perks.PerkDefs.LegendAlert, 0);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.LegendAlert, 0);
 
         //3
-        ::LA.addPerk(_actor, "perk.killing_frenzy", "scripts/skills/perks/perk_killing_frenzy", ::Const.Perks.PerkDefs.KillingFrenzy, 2);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.KillingFrenzy, 2);
 
         this.Sound.play("sounds/enemies/ghoul_death_0" + this.Math.rand(1, 6) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/ghoul_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);

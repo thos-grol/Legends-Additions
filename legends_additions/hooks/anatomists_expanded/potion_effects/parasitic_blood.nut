@@ -14,8 +14,8 @@
 			"sounds/enemies/vampire_life_drain_02.wav",
 			"sounds/enemies/vampire_life_drain_03.wav"
 		];
-        this.m.Type = this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.Perk;
+        this.m.Type = ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = false;
 		this.m.IsStacking = false;

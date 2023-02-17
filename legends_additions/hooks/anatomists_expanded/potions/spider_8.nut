@@ -24,10 +24,10 @@
         _actor.getSkills().add(::new("scripts/skills/effects/serpent_potion_effect"));
 
         //3 Escape Artist
-        ::LA.addPerk(_actor, "perk.legend_escape_artist", "scripts/skills/perks/perk_legend_escape_artist", ::Const.Perks.PerkDefs.LegendEscapeArtist, 1);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.LegendEscapeArtist, 1);
 
         //4 Executioner
-        ::LA.addPerk(_actor, "perk.coup_de_grace", "scripts/skills/perks/perk_coup_de_grace", ::Const.Perks.PerkDefs.CoupDeGrace, 0);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.CoupDeGrace, 0);
 
         this.Sound.play("sounds/enemies/dlc2/giant_spider_death_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/dlc2/giant_spider_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
