@@ -1,4 +1,4 @@
-this.pain_ritual <- this.inherit("scripts/skills/skill", {
+this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{
@@ -21,7 +21,7 @@ this.pain_ritual <- this.inherit("scripts/skills/skill", {
 		this.m.IsStacking = false;
 		this.m.IsAttack = false;
 		this.m.ActionPointCost = 5;
-		this.m.FatigueCost = 25;
+		this.m.FatigueCost = 35;
 		this.m.MinRange = 1;
 		this.m.MaxRange = 4;
 		this.m.MaxLevelDifference = 6;
@@ -172,7 +172,7 @@ this.pain_ritual <- this.inherit("scripts/skills/skill", {
 		local agent = actor.getAIAgent();
 		if (agent.findBehavior(::Const.AI.Behavior.ID.PainRitual) == null)
 		{
-			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_pain_ritual"));
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_cultist_pain_ritual"));
 			agent.finalizeBehaviors();
 		}
 	}

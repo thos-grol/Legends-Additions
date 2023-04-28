@@ -1,4 +1,4 @@
-this.compassion_ritual <- this.inherit("scripts/skills/skill", {
+this.cultist_compassion_ritual <- this.inherit("scripts/skills/skill", {
 	m = {
 		isWindow = false
 	},
@@ -119,8 +119,8 @@ this.compassion_ritual <- this.inherit("scripts/skills/skill", {
 			while (color.R + color.G + color.B <= 150);
 
 			this.Tactical.spawnSpriteEffect("compassion_effect", color, target.getTile(), !target.getSprite("status_compassion").isFlippedHorizontally() ? 10 : -5, 88, 3.0, 1.0, 0, 400, 300);
-			local slave = ::new("scripts/skills/effects/compassion_slave");
-			local master = ::new("scripts/skills/effects/compassion_master");
+			local slave = ::new("scripts/skills/effects/cultist_compassion_slave");
+			local master = ::new("scripts/skills/effects/cultist_compassion_master");
 			slave.setMaster(master);
 			slave.setColor(color);
 			target.getSkills().add(slave);
@@ -177,7 +177,7 @@ this.compassion_ritual <- this.inherit("scripts/skills/skill", {
 		local agent = actor.getAIAgent();
 		if (agent.findBehavior(::Const.AI.Behavior.ID.CompassionRitual) == null)
 		{
-			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_compassion_ritual"));
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_cultist_compassion_ritual"));
 			agent.finalizeBehaviors();
 		}
 	}

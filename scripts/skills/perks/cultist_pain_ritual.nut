@@ -1,4 +1,4 @@
-this.pain_ritual <- this.inherit("scripts/skills/skill", {
+this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{
@@ -17,7 +17,7 @@ this.pain_ritual <- this.inherit("scripts/skills/skill", {
 	{
 		if (!this.m.Container.hasSkill("actives.pain_ritual"))
 		{
-			this.m.Container.add(::new("scripts/skills/actives/pain_ritual"));
+			this.m.Container.add(::new("scripts/skills/actives/cultist_pain_ritual"));
 		}
 	}
 

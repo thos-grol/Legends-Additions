@@ -7,11 +7,11 @@
 		Flags = [
 			{
 				ID = "IsHumans",
-				Chance = 10
+				Chance = 5
 			},
 			{
 				ID = "IsDirewolves",
-				Chance = 25
+				Chance = 40
 			},
 			{
 				ID = "IsGhouls",
@@ -26,11 +26,11 @@
 		Flags = [
 			{
 				ID = "IsHumans",
-				Chance = 10
+				Chance = 5
 			},
 			{
 				ID = "IsDirewolves",
-				Chance = 25
+				Chance = 40
 			},
 			{
 				ID = "IsGhouls",
@@ -45,11 +45,11 @@
 		Flags = [
 			{
 				ID = "IsHumans",
-				Chance = 10
+				Chance = 5
 			},
 			{
 				ID = "IsDirewolves",
-				Chance = 25
+				Chance = 40
 			},
 			{
 				ID = "IsGhouls",
@@ -64,11 +64,11 @@
 		Flags = [
 			{
 				ID = "IsHumans",
-				Chance = 10
+				Chance = 5
 			},
 			{
 				ID = "IsDirewolves",
-				Chance = 25
+				Chance = 40
 			},
 			{
 				ID = "IsGhouls",
@@ -98,7 +98,7 @@
 		Flags = [
 			{
 				ID = "IsHumans",
-				Chance = 10
+				Chance = 5
 			},
 			{
 				ID = "IsSpiders",

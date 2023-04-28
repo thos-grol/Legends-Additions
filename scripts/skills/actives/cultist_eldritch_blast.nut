@@ -1,4 +1,4 @@
-this.eldritch_blast <- this.inherit("scripts/skills/skill", {
+this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 	m = {
 		BlastCount = 2,
 		IsPull = false
@@ -378,7 +378,7 @@ this.eldritch_blast <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		if (!actor.getSkills().hasSkill("injury.missing_hand")) return;
 		if (!actor.isPlayerControlled()) return;
-		this.getContainer().add(::new("scripts/skills/actives/eldritch_blast_toggle"));
+		this.getContainer().add(::new("scripts/skills/actives/cultist_eldritch_blast_toggle"));
 	}
 
 	function onAdded()
@@ -388,7 +388,7 @@ this.eldritch_blast <- this.inherit("scripts/skills/skill", {
 		local agent = actor.getAIAgent();
 		if (agent.findBehavior(::Const.AI.Behavior.ID.EldritchBlast) == null)
 		{
-			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_eldritch_blast"));
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_cultist_eldritch_blast"));
 			agent.finalizeBehaviors();
 		}
 	}

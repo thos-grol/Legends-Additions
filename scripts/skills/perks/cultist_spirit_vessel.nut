@@ -1,4 +1,4 @@
-this.spirit_vessel <- this.inherit("scripts/skills/skill", {
+this.cultist_spirit_vessel <- this.inherit("scripts/skills/skill", {
 	m = {
 		chance = 0,
 		isCombat = false

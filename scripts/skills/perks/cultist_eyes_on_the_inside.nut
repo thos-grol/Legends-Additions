@@ -1,4 +1,4 @@
-this.eyes_on_the_inside <- this.inherit("scripts/skills/skill", {
+this.cultist_eyes_on_the_inside <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{

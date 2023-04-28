@@ -1,4 +1,4 @@
-this.writhing_flesh <- this.inherit("scripts/skills/skill", {
+this.cultist_writhing_flesh <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{

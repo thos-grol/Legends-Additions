@@ -123,7 +123,7 @@
 		}
 
 		this.m.MilitiaCaptain = candidate;
-		this.m.Score = 500;
+		this.m.Score = 999999;
 	}
 
 

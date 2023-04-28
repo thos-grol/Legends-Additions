@@ -1,4 +1,4 @@
-this.eldritch_blast <- this.inherit("scripts/skills/skill", {
+this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{
@@ -17,7 +17,7 @@ this.eldritch_blast <- this.inherit("scripts/skills/skill", {
 	{
 		if (!this.m.Container.hasSkill("actives.eldritch_blast"))
 		{
-			this.m.Container.add(::new("scripts/skills/actives/eldritch_blast"));
+			this.m.Container.add(::new("scripts/skills/actives/cultist_eldritch_blast"));
 		}
 	}
 

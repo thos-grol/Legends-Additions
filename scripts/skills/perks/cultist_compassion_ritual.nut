@@ -1,4 +1,4 @@
-this.compassion_ritual <- this.inherit("scripts/skills/skill", {
+this.cultist_compassion_ritual <- this.inherit("scripts/skills/skill", {
 	m = {
 		chance = 0,
 		isCombat = false
@@ -20,7 +20,7 @@ this.compassion_ritual <- this.inherit("scripts/skills/skill", {
 	{
 		if (!this.m.Container.hasSkill("actives.compassion_ritual"))
 		{
-			this.m.Container.add(::new("scripts/skills/actives/compassion_ritual"));
+			this.m.Container.add(::new("scripts/skills/actives/cultist_compassion_ritual"));
 		}
 	}
 

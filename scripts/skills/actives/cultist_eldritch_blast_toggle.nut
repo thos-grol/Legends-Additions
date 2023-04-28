@@ -1,4 +1,4 @@
-this.eldritch_blast_toggle <- this.inherit("scripts/skills/skill", {
+this.cultist_eldritch_blast_toggle <- this.inherit("scripts/skills/skill", {
 	m = {
 		IsOn = false	
 	},

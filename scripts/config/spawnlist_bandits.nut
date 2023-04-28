@@ -640,6 +640,8 @@ gt.Const.World.Spawn.BanditsDisguisedAsDirewolves <- {
 		}
 	]
 };
+
+//unused
 gt.Const.World.Spawn.BanditVermes <- {
 	Name = "BanditsVermes",
 	IsDynamic = true,

@@ -1,5 +1,5 @@
 if (!("LA" in this.getroottable())) ::LA <- {};
-::LA.Version <- "1.2.6";
+::LA.Version <- "1.2.7";
 ::LA.ModID <- "mod_LA";
 ::LA.Name <- "Legends Additions";
 

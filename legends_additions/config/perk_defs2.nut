@@ -40,7 +40,7 @@
 local perks = [
     {
 		ID = "perk.eldritch_blast",
-	    Script = "scripts/skills/perks/eldritch_blast",
+	    Script = "scripts/skills/perks/cultist_eldritch_blast",
 	    Name = ::Const.Strings.PerkName.EldritchBlast,
 		Tooltip = ::Const.Strings.PerkDescription.EldritchBlast,
 		Icon = "ui/perks/eldritch_blast.png",
@@ -49,7 +49,7 @@ local perks = [
 	},
 	{
 		ID = "perk.sacrificial_ritual",
-	    Script = "scripts/skills/perks/sacrificial_ritual",
+	    Script = "scripts/skills/perks/cultist_sacrificial_ritual",
 	    Name = ::Const.Strings.PerkName.SacrificialRitual,
 		Tooltip = ::Const.Strings.PerkDescription.SacrificialRitual,
 		Icon = "ui/perks/sacrificial_ritual.png",
@@ -58,7 +58,7 @@ local perks = [
 	},
 	{
 		ID = "perk.pain_ritual",
-	    Script = "scripts/skills/perks/pain_ritual",
+	    Script = "scripts/skills/perks/cultist_pain_ritual",
 	    Name = ::Const.Strings.PerkName.PainRitual,
 		Tooltip = ::Const.Strings.PerkDescription.PainRitual,
 		Icon = "ui/perks/pain_ritual.png",
@@ -67,7 +67,7 @@ local perks = [
 	},
 	{
 		ID = "perk.writhing_flesh",
-	    Script = "scripts/skills/perks/writhing_flesh",
+	    Script = "scripts/skills/perks/cultist_writhing_flesh",
 	    Name = ::Const.Strings.PerkName.WrithingFlesh,
 		Tooltip = ::Const.Strings.PerkDescription.WrithingFlesh,
 		Icon = "ui/perks/writhing_flesh.png",
@@ -76,7 +76,7 @@ local perks = [
 	},
 	{
 		ID = "perk.eyes_on_the_inside",
-	    Script = "scripts/skills/perks/eyes_on_the_inside",
+	    Script = "scripts/skills/perks/cultist_eyes_on_the_inside",
 	    Name = ::Const.Strings.PerkName.EyesOnTheInside,
 		Tooltip = ::Const.Strings.PerkDescription.EyesOnTheInside,
 		Icon = "ui/perks/eyes_on_the_inside.png",
@@ -85,7 +85,7 @@ local perks = [
 	},
 	{
 		ID = "perk.spirit_vessel",
-	    Script = "scripts/skills/perks/spirit_vessel",
+	    Script = "scripts/skills/perks/cultist_spirit_vessel",
 	    Name = ::Const.Strings.PerkName.SpiritVessel,
 		Tooltip = ::Const.Strings.PerkDescription.SpiritVessel,
 		Icon = "ui/perks/spirit_vessel.png",
@@ -94,7 +94,7 @@ local perks = [
 	},
 	{
 		ID = "perk.compassion_ritual",
-	    Script = "scripts/skills/perks/compassion_ritual",
+	    Script = "scripts/skills/perks/cultist_compassion_ritual",
 	    Name = ::Const.Strings.PerkName.CompassionRitual,
 		Tooltip = ::Const.Strings.PerkDescription.CompassionRitual,
 		Icon = "ui/perks/compassion_ritual.png",
@@ -106,8 +106,8 @@ local perks = [
 ];
 
 ::Const.Perks.addPerkDefObjects(perks);
-this.logInfo("_LA: Adding perkdefs");
 
+//Tree Changes
 ::Const.Perks.CultistProfessionTree = {
 	ID = "CultistProfessionTree",
 	Descriptions = [
@@ -136,8 +136,6 @@ this.logInfo("_LA: Adding perkdefs");
 		[]
 	]
 };
-
-
 
 ::Const.Perks.NinetailsClassTree = {
 	ID = "NinetailsClassTree",
