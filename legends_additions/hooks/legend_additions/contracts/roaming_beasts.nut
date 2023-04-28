@@ -82,6 +82,10 @@
 		Legends = "legends_fishing_village",
 		Flags = [
 			{
+				ID = "IsSpiders",
+				Chance = 50
+			},
+			{
 				ID = "IsGhouls",
 				Chance = 100
 			}
@@ -126,6 +130,10 @@
 		Small = "small_mining_village",
 		Legends = "legends_mining_village",
 		Flags = [
+			{
+				ID = "IsSpiders",
+				Chance = 50
+			},
 			{
 				ID = "IsGhouls",
 				Chance = 100

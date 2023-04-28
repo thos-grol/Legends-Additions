@@ -47,6 +47,12 @@
                 icon = "ui/icons/health.png",
                 text = "+" + ::MSU.Text.colorGreen( 40 ) + " Hitpoints"
             });
+            ret.push({
+                id = 11,
+                type = "text",
+                icon = "ui/icons/fatigue.png",
+				text = "+" + ::MSU.Text.colorGreen( 20 ) + " Fatigue"
+            });
         }
         else if (actor.getFlags().has("unhold"))
         {
@@ -62,6 +68,12 @@
                 icon = "ui/icons/health.png",
 				text = "+" + ::MSU.Text.colorGreen( 20 ) + " Hitpoints"
             });
+            ret.push({
+                id = 11,
+                type = "text",
+                icon = "ui/icons/fatigue.png",
+				text = "+" + ::MSU.Text.colorGreen( 10 ) + " Fatigue"
+            });
         }
 
 
@@ -72,7 +84,7 @@
                 id = 11,
                 type = "text",
                 icon = "ui/icons/health.png",
-                text = "Heals " + ::MSU.Text.colorGreen( "40" ) + " hitpoints each turn. Cannot heal if poisoned."
+                text = "Heals " + ::MSU.Text.colorGreen( "20" ) + " hitpoints each turn. Cannot heal if poisoned."
             });
             ret.push({
                 id = 11,
@@ -87,7 +99,7 @@
                 id = 11,
                 type = "text",
                 icon = "ui/icons/health.png",
-                text = "Heals " + ::MSU.Text.colorGreen( "20" ) + " hitpoints each turn. Cannot heal if poisoned."
+                text = "Heals " + ::MSU.Text.colorGreen( "10" ) + " hitpoints each turn. Cannot heal if poisoned."
             });
         }
 
@@ -106,11 +118,13 @@
 		{
 			_properties.FatigueRecoveryRate += 5;
 			_properties.Hitpoints += 40;
+            _properties.Stamina += 20;
 		}
 		else if (this.getContainer().getActor().getFlags().has("unhold"))
 		{
 			_properties.FatigueRecoveryRate += 3;
 			_properties.Hitpoints += 20;
+            _properties.Stamina += 10;
 		}
 	}
 
@@ -143,7 +157,7 @@
         if (actor.getSkills().getSkillByID("effects.legend_redback_spider_poison") != null) return;
         if (actor.getSkills().getSkillByID("effects.legend_RSW_poison_effect") != null) return;
 
-        local regen_value = (actor.getFlags().has("unhold_8")) ? 40 : 20;
+        local regen_value = (actor.getFlags().has("unhold_8")) ? 20 : 10;
         local health_added = this.Math.min(actor.getHitpointsMax() - actor.getHitpoints(), regen_value);
 
         if (health_added > 0)

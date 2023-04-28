@@ -2,13 +2,10 @@
     //Asassins get escape artist
 
 - FEATURE_5: Arena checks bag slots instead of accessories
-//Holy Magic overhaul
 
 ======= Cultists =========
 
 Cultist perk tree:
-
-
     3: Sacrificial Ritual
         - Passive: The souls of the enemies you kill are claimed by Davkul. Bring him enough sacrifices, and you might get Davkul's attention... and rewards. The reward entirely depends on the whims of Davkul.
             Tiers
@@ -28,8 +25,6 @@ Cultist perk tree:
         - 6 FAT, 6 AP
         - The unburnt, the skinless, the headless, the armless...
         - Target an enemy and share your permenant injuries with them. This effect can only target one enemy at a time and you can only perform the ritual again after the enemy dies and the turn number is a multiple of 6.
-
-
 
 
     rename & rework
@@ -306,6 +301,7 @@ Undead cannot be charmed
 ::addItem("war_bow")
 ::addItem("heater_shield")
 ::addItem("strange_eye_item")
+::addItem("goat_cheese_item")
 
 
 bbrusher pack legends_additions.brush C:\Files\Projects\bbros\brush\legends_additions --gfxPath C:\Files\Projects\bbros\brush

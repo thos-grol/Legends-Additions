@@ -4,6 +4,7 @@
 ::Const.Strings.PerkDescription.LegendSpecCultArmor = "One has wounds but cannot be wounded..."+
 "\n\n[color=" + ::Const.UI.Color.Passive + "][u]Passive:[/u][/color]" +
 "\n• Morale is no longer affected by allies dying or by taking damage." +
+"\n• Garuntees that this character will survive if struck down with no fatalities until they have more than 4 permanent injuries." +
 "\n• Reduce the effects that permenant injuries has on this character or transform the injury in some eldritch way.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendSpecCultArmor].Tooltip = ::Const.Strings.PerkDescription.LegendSpecCultArmor;
@@ -30,5 +31,15 @@
 	{
 		_properties.IsAffectedByDyingAllies = false;
 		_properties.IsAffectedByLosingHitpoints = false;
+
+		local count = 0;
+		local actor = this.getContainer().getActor();
+        local skills = actor.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
+        foreach( s in skills )
+        {
+            if (s.isType(::Const.SkillType.PermanentInjury)) count += 1;
+        }
+
+		if (count < 4) _properties.SurviveWithInjuryChanceMult *= 100.0;
 	}
 });

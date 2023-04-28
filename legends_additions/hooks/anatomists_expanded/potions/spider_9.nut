@@ -17,12 +17,6 @@
         //Mutated Circulatory System 1
         _actor.getSkills().add(::new("scripts/skills/effects/webknecht_potion_effect"));
 
-        //Web 2
-        _actor.getSkills().add(::new("scripts/skills/perks/perk_legend_item_web_skill"));
-
-        //Poison 3
-        _actor.getSkills().add(::new("scripts/skills/effects/serpent_potion_effect"));
-
         //Survival Instinct 4
         ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTRSurvivalInstinct, 0);
 

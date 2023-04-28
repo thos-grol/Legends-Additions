@@ -7,13 +7,13 @@
 				id = 3,
 				type = "hint",
 				icon = "ui/icons/special.png",
-				text = "Is good at subterfuge. +10 subterfuge for relevant checks."
+				text = "Is good at subterfuge. +25 subterfuge for relevant checks."
 			},
 			{
 				id = 3,
 				type = "hint",
 				icon = "ui/icons/special.png",
-				text = "Is good at tracking. +5 tracking for relevant checks."
+				text = "Is good at tracking. +20 tracking for relevant checks."
 			}
 		];
 		return ret;
@@ -23,6 +23,6 @@
 	o.create = function()
 	{
 		create();
-		this.m.BackgroundDescription = "Any raider that survived so far will have some expertise in fighting." + " +10 subterfuge for relevant checks."  + " +5 tracking for relevant checks.";
+		this.m.BackgroundDescription = "Any raider that survived so far will have some expertise in fighting." + " +25 subterfuge for relevant checks."  + " +20 tracking for relevant checks.";
 	}
 });

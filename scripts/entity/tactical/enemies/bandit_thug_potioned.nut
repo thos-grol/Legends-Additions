@@ -9,7 +9,6 @@ this.bandit_thug_potioned <- this.inherit("scripts/entity/tactical/enemies/bandi
 	function onInit()
 	{
 		this.bandit_thug.onInit();
-		this.makeMiniboss();
 		local potions = [
 			"direwolf",
 			"ghoul",

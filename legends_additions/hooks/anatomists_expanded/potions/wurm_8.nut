@@ -8,7 +8,7 @@
         this.m.Name = "Sequence 8: Lindwurm";
         this.m.Description = "Drawing inspiration from the dragon's blood bath of the myths, this potion will perfect the user's physique making them immune to the acidic blood of lindwurms and stollwurms, removing any negative physical traits, and giving them the potential to be a hero of legends. ";
         this.m.Icon = "consumables/potion_27.png";
-        this.m.Value = 10000;
+        this.m.Value = 15000;
     }
 
     o.onUse = function(_actor, _item = null)
@@ -17,10 +17,11 @@
         _actor.getFlags().add("wurm");
 
         _actor.getSkills().add(::new("scripts/skills/traits/perfect_body_trait"));
-
-        _actor.getBackground().addPerk(::Const.Perks.PerkDefs.PTRRisingStar, 0, false);
-        _actor.getSkills().add(::new("scripts/skills/perks/perk_ptr_rising_star"));
         _actor.setVeteranPerks(2);
+
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTRDiscoveredTalent, 0);
+        ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTRRisingStar, 1);
+        
 
         this.Sound.play("sounds/enemies/lindwurm_death_0" + this.Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
         this.Sound.play("sounds/enemies/lindwurm_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
@@ -70,7 +71,7 @@
             id = 11,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "Perfects your physique, removing negative traits and adding positive traits. This character also has improved veteran levels, from 5 to 2."
+            text = "Perfects your physique, removing negative traits and adding positive traits. This character now gains a perk every 2 levels instead of 5 after level 11, unless if they already did."
         });
         ret.push({
             id = 11,

@@ -105,8 +105,6 @@
 
         this.spawnIcon("status_effect_54", _targetEntity.getTile());
 
-        local effect = ::new("scripts/skills/effects/bleeding_effect");
-
         local effect;
         if (actor.getFlags().has("spider_8")) effect = ::new("scripts/skills/effects/legend_redback_spider_poison_effect");
         else effect = ::new("scripts/skills/effects/spider_poison_effect");
@@ -272,4 +270,24 @@
 		_targetEntity.getSkills().add(::new("scripts/skills/effects/legend_redback_spider_poison_effect"));
 	}
 
+});
+
+::mods_hookExactClass("skills/perks/perk_coup_de_grace", function(o) {
+	o.onAnySkillUsed = function ( _skill, _targetEntity, _properties )
+	{
+		if (_targetEntity == null || !_skill.isAttack())
+		{
+			return;
+		}
+
+		if (_targetEntity.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury))
+		{
+			_properties.DamageTotalMult *= 1.2;
+		}
+
+		if (_targetEntity.getSkills().hasSkill("effects.stunned") || _targetEntity.getSkills().hasSkill("effects.net") || _targetEntity.getSkills().hasSkill("effects.sleeping") || _targetEntity.getSkills().hasSkill("effects.debilitated") || _targetEntity.getSkills().hasSkill("effects.web"))
+		{
+			_properties.DamageTotalMult *= 1.2;
+		}
+	}
 });

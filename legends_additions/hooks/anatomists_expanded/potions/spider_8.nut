@@ -20,9 +20,6 @@
         //1 Mutated Circulatory System
         _actor.getSkills().add(::new("scripts/skills/effects/webknecht_potion_effect"));
 
-        //2 Venom Glands
-        _actor.getSkills().add(::new("scripts/skills/effects/serpent_potion_effect"));
-
         //3 Escape Artist
         ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.LegendEscapeArtist, 1);
 

@@ -21,4 +21,13 @@
 		local has = this.has_penance();
 		_properties.InitiativeMult *= has ? 0.95 : 0.9;
 	}
+
+	o.onApplyAppearance = function()
+	{
+		try {
+			local sprite = this.getContainer().getActor().getSprite("permanent_injury_2");
+			sprite.setBrush("permanent_injury_02");
+			sprite.Visible = true;
+		} catch(exception) {}
+	}
 });

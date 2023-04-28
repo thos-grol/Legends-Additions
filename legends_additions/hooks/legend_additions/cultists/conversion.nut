@@ -20,6 +20,7 @@
 			[]
 		];
 		this.addPerkGroup(cultistGroup);
+		::LA.addPerk(this.getContainer().getActor(), ::Const.Perks.PerkDefs.LegendTrueBeliever, 1);
 	}
 });
 

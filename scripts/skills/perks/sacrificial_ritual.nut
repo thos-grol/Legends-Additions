@@ -16,6 +16,7 @@ this.sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 
 	function getTooltip()
 	{
+		local actor = this.getContainer().getActor();
 		local resp = [
 			{
 				id = 1,
@@ -25,7 +26,7 @@ this.sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 			{
 				id = 2,
 				type = "description",
-				text = "The first ritual any cultist learns. The souls harvested by this brother will belong to Davkul. Davkul will reward the devotee after getting 25, 50, 100 kills at their discretion."
+				text = "The first ritual any cultist learns. The souls harvested by this brother will belong to Davkul. Davkul will reward the devotee after getting 4, 44, 66 kills at their discretion."
 			}
 		];
 
@@ -33,8 +34,30 @@ this.sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 			id = 15,
 			type = "hint",
 			icon = "ui/icons/special.png",
-			text = this.getContainer().getActor().getFlags().getAsInt("SoulsHarvestedForDavkul") + " souls harvested for Davkul"
+			text = actor.getFlags().getAsInt("SoulsHarvestedForDavkul") + " souls harvested for Davkul"
 		});
+
+		resp.push({
+			id = 15,
+			type = "hint",
+			icon = "ui/icons/special.png",
+			text = "Reward for 4 souls: " + actor.getFlags().get("Davkul1stReward")
+		});
+
+		resp.push({
+			id = 15,
+			type = "hint",
+			icon = "ui/icons/special.png",
+			text = "Reward for 44 souls: " + actor.getFlags().get("Davkul2ndReward")
+		});
+
+		resp.push({
+			id = 15,
+			type = "hint",
+			icon = "ui/icons/special.png",
+			text = "Reward for 66 souls: " + actor.getFlags().get("Davkul3rdReward")
+		});
+
 
 		return resp;
 	}
@@ -59,11 +82,11 @@ this.sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		local actor = this.getContainer().getActor();
-		if (!actor.getFlags().has("Davkul1stRewarded") && actor.getFlags().getAsInt("SoulsHarvestedForDavkul") >= 25) 
+		if (!actor.getFlags().has("Davkul1stRewarded") && actor.getFlags().getAsInt("SoulsHarvestedForDavkul") >= 4)
 			addReward("Davkul1stReward");
-		if (!actor.getFlags().has("Davkul2ndRewarded") && actor.getFlags().getAsInt("SoulsHarvestedForDavkul") >= 50)
+		if (!actor.getFlags().has("Davkul2ndRewarded") && actor.getFlags().getAsInt("SoulsHarvestedForDavkul") >= 44)
 			addReward("Davkul2ndReward");
-		if (!actor.getFlags().has("Davkul3rdRewarded") && actor.getFlags().getAsInt("SoulsHarvestedForDavkul") >= 100)
+		if (!actor.getFlags().has("Davkul3rdRewarded") && actor.getFlags().getAsInt("SoulsHarvestedForDavkul") >= 66)
 			addReward("Davkul3rdReward");
 	}
 		
@@ -225,12 +248,6 @@ this.sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 				Chance = 75
 			},
 			{
-				ID = "Brink of Death",
-				Validator = [],
-				Params = [],
-				Chance = 5
-			},
-			{
 				ID = "Eyes on the Inside",
 				Validator = [
 					::Const.PerkInfo.SacrificialRitual.hasSkillNot
@@ -265,17 +282,7 @@ this.sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 				Params = [
 					["Eldritch Blast"]
 				],
-				Chance = 76
-			},
-			{
-				ID = "Brink of Death",
-				Validator = [
-					::Const.PerkInfo.SacrificialRitual.hasRewardNot
-				],
-				Params = [
-					["Brink of Death"]
-				],
-				Chance = 5
+				Chance = 100
 			},
 			{
 				ID = "Eyes on the Inside",

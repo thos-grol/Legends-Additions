@@ -7,7 +7,7 @@
 				id = 3,
 				type = "hint",
 				icon = "ui/icons/special.png",
-				text = "Is good at subterfuge. +10 subterfuge for relevant checks."
+				text = "Is good at subterfuge. +25 subterfuge for relevant checks."
 			}
 		];
 		return ret;
@@ -17,6 +17,6 @@
 	o.create = function()
 	{
 		create();
-		this.m.BackgroundDescription = "A killer on the run may kill again, and he knows where to aim." + " +10 subterfuge for relevant checks.";
+		this.m.BackgroundDescription = "A killer on the run may kill again, and he knows where to aim." + " +25 subterfuge for relevant checks.";
 	}
 });

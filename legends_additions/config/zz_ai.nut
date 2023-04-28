@@ -12,3 +12,30 @@
 ::Const.AI.Behavior.Name.push("EldritchBlast");
 ::Const.AI.Behavior.ID.COUNT = ::Const.AI.Behavior.ID.COUNT + 1;
 ::Const.AI.Behavior.Order.EldritchBlast <- 19;
+
+// Direwolf = {
+//     ID = this.Const.EntityType.Direwolf,
+//     Variant = 0,
+//     Strength = 15,
+//     Cost = 20,
+//     Row = -1,
+//     Script = "scripts/entity/tactical/enemies/direwolf"
+// },
+// DirewolfHIGH = {
+//     ID = this.Const.EntityType.Direwolf,
+//     Variant = 0,
+//     Strength = 20,
+//     Cost = 25,
+//     Row = -1,
+//     Script = "scripts/entity/tactical/enemies/direwolf_high"
+// },
+// DirewolfBodyguard = {
+//     ID = this.Const.EntityType.Direwolf,
+//     Variant = 0,
+//     Strength = 20,
+//     Cost = 25,
+//     Row = 2,
+//     Script = "scripts/entity/tactical/enemies/direwolf_bodyguard"
+// },
+
+//direwolf strength increase autoresolve to 35, 50

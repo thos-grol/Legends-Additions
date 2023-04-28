@@ -20,13 +20,13 @@
 			id = 7,
 			type = "text",
 			icon = "ui/icons/xp_received.png",
-			text = "[color=" + ::Const.UI.Color.NegativeValue + "]-25%[/color] Experience Gain"
+			text = ::MSU.Text.colorRed( has ? "-10%" : "-25%") + " Experience Gain"
 		});
 		ret.push({
 			id = 7,
 			type = "text",
 			icon = "ui/icons/initiative.png",
-			text = "[color=" + ::Const.UI.Color.NegativeValue + "]-25%[/color] Initiative"
+			text = ::MSU.Text.colorRed( has ? "-10%" : "-25%") + " Initiative"
 		});
 		if (has)
 		{
@@ -39,12 +39,22 @@
 		}
 		return ret;
 	}
-
+	
 	o.onUpdate = function( _properties )
 	{
+		local has = this.has_penance();
 		_properties.BraveryMult *= 1.15;
-		_properties.XPGainMult *= 0.75;
-		_properties.InitiativeMult *= 0.75;
+		_properties.XPGainMult *= has ? 0.9 : 0.75;
+		_properties.InitiativeMult *= has ? 0.8 : 0.75;
+	}
+
+	o.onApplyAppearance = function()
+	{
+		try {
+			local sprite = this.getContainer().getActor().getSprite("permanent_injury_1");
+			sprite.setBrush("permanent_injury_01");
+			sprite.Visible = true;
+		} catch(exception) {}
 	}
 
 });

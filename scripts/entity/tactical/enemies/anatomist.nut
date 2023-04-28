@@ -3,6 +3,7 @@ this.anatomist <- this.inherit("scripts/entity/tactical/enemies/bandit_raider", 
 	function create()
 	{
 		this.bandit_raider.create();
+		this.m.Name = "Anatomist";
 	}
 
 	function onInit()
@@ -17,6 +18,19 @@ this.anatomist <- this.inherit("scripts/entity/tactical/enemies/bandit_raider", 
 			"orc"
 		]
 		this.add_potion(::MSU.Array.rand(potions), false);
+
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Body))
+		{
+			if (this.Math.rand(1, 100) <= 50) this.m.Items.equip(::new("scripts/items/armor/undertaker_apron"));
+			else this.m.Items.equip(::new("scripts/items/armor/wanderers_coat"));
+		}
+
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head) && this.Math.rand(1, 100) <= 90)
+		{
+			if (this.Math.rand(1, 100) <= 50)  this.m.Items.equip(::new("scripts/items/helmets/undertaker_hat"));
+			else this.m.Items.equip(::new("scripts/items/helmets/physician_mask"));
+		}
+		
 		if (roll <= 5.0 * this.getScaledDifficultyMult()) this.makeMiniboss();
 	}
 

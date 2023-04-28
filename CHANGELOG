@@ -7,6 +7,11 @@
                     - Magister <- Cultist Warlock
                     - Dark Knight
 
+=== 1.2.1 ===
+
+    - QOL Devotion will now refund dodge
+    - Increased cultist conversion chance
+
 === 1.2.0 ==
     Cultists
         - changed the cooldown of cultist conversion to a week. Made the event more common.
@@ -15,6 +20,7 @@
             Cultists have been reworked to be centered around self-sacrifice and permanent injuries.
             Key is the sacrificial ritual perk. Davkul will reward cultists who harvest souls for them and grant unique perks.
         - Strange Eye rare item from contracts. It's use is secret, but lets say it's good for cultists.
+        - Cultist conversion cooldown is a week.
 
     Contracts
         - Fixed Roaming Beasts Contracts - Legends bug

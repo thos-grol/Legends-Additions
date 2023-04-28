@@ -22,4 +22,13 @@
 		_properties.StaminaMult *= has ? 0.95 : 0.9;
 	}
 
+	o.onApplyAppearance = function()
+	{
+		try {
+			local sprite = this.getContainer().getActor().getSprite("permanent_injury_3");
+			sprite.setBrush("permanent_injury_03");
+			sprite.Visible = true;
+		} catch(exception) {}
+	}
+
 });

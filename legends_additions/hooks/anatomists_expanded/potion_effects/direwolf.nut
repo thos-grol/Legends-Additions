@@ -65,7 +65,7 @@
 			id = 11,
 			type = "text",
 			icon = "ui/icons/fatigue.png",
-			text = "+" + ::MSU.Text.colorGreen( is8 ? 10 : 5 ) + " Fatigue Recovery"
+			text = "+" + ::MSU.Text.colorGreen( is8 ? 15 : 7 ) + " Fatigue Recovery"
 		});
 		ret.push({
 			id = 11,

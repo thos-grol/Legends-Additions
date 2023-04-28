@@ -36,6 +36,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		if (roll_tier <= 1) //rare items
 		{
 			item_pool.push("scripts/items/weapons/named/legend_staff_ceremonial");
+			item_pool.push("scripts/items/misc/strange_eye_item");
 			if (roll_enemies <= 75) this.m.Flags.set("IsMercenary", true);
 		}
 		else if (roll_tier <= 3) //valuable items
@@ -91,7 +92,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				local lst_lockbox = [
 					"scripts/items/misc/legend_ancient_scroll_item",
 					"scripts/items/accessory/legend_demon_banshee_trophy_item",
-					"scripts/items/accessory/berserker_mushrooms_item",
+					"scripts/items/misc/strange_eye_item",
 					"scripts/items/loot/bead_necklace_item",
 					"scripts/items/accessory/ghoul_trophy_item",
 					"rune"
@@ -147,6 +148,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 
 		local value = this.m.Flags.get("IsLockbox") ? 1000 : this.m.Loot.getValue();
 		this.m.Payment.Pool = value * 0.6 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), ::Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
+		if (this.m.Payment.Pool < 300.0) this.m.Payment.Pool = 300.0;
 		if (this.Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;

@@ -87,7 +87,7 @@
             id = 11,
             type = "text",
             icon = "ui/icons/health.png",
-            text = "Hyperactive Cell Growth: Heals " + ::MSU.Text.colorGreen( "20" ) + " hitpoints each turn. Cannot heal if poisoned."
+            text = "Hyperactive Cell Growth: Heals " + ::MSU.Text.colorGreen( "10" ) + " hitpoints each turn. Cannot heal if poisoned."
         });
         ret.push({
             id = 11,
@@ -101,6 +101,13 @@
             icon = "ui/icons/health.png",
             text = "+" + ::MSU.Text.colorGreen( 20 ) + " Hitpoints"
         });
+        ret.push({
+            id = 11,
+            type = "text",
+            icon = "ui/icons/health.png",
+            text = "+" + ::MSU.Text.colorGreen( 10 ) + " Fatigue"
+        });
+        
 
 
         ret.push({

@@ -8,7 +8,7 @@
         this.m.Name = "Sequence 7: Stollwurm";
         this.m.Description = "This potion further improves upon the perfect body, granting the drinker dragon's might and acidic blood. ";
         this.m.Icon = "consumables/potion_27.png";
-        this.m.Value = 15000;
+        this.m.Value = 30000;
     }
 
     o.onUse = function(_actor, _item = null)

@@ -7,6 +7,7 @@
 "\n• Unwillingness to avoid pain decreases the effectiveness of the Dodge to 5% of initiative." + 
 "\n• Each permenant injury increases this bonus by  " + ::MSU.Text.colorGreen( "5%" ) +
 "\n• Also works with cultist leather hood, leather helmet, sack, decayed sack helm, warlock hood or mask of davkul." +
+"\n• Will refund dodge." +
 "\n• Unlocks a crafting recipe to make cultist hoods and sacks.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendSpecCultHood].Name = ::Const.Strings.PerkName.LegendSpecCultHood;
@@ -104,6 +105,17 @@
 			_properties.RangedDefense += total;
 		}
 	}
+
+	o.onAdded <- function()
+	{
+		local actor = this.getContainer().getActor();
+		if (!actor.isPlayerControlled()) return;
+		if (!actor.getSkills().hasSkill("perk.dodge")) return;
+		actor.m.Skills.removeByID("perk.dodge");
+		actor.m.PerkPoints += 1;
+		actor.m.PerkPointsSpent -= 1;
+	}
+
 });
 
 ::mods_hookExactClass("skills/effects/dodge_effect", function (o)

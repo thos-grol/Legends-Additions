@@ -1,5 +1,5 @@
 //Escape artist auto break free from nets on start of turn, also gives chance to dodge net using ranged defence.
-::Const.Strings.PerkDescription.LegendEscapeArtist = "Grants a chance to dodge nets with ranged defence. At the start of your turn, perform a free break free action. Also decreases the AP cost of movement and escape skills by 1.";
+::Const.Strings.PerkDescription.LegendEscapeArtist = "Grants a chance to dodge nets with ranged defence. At the start of your turn, perform a free break free action. Also reduces the AP cost of movement and escape skills by 1 and the fatigue by 25%.";
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Tooltip = ::Const.Strings.PerkDescription.LegendEscapeArtist;
 
 //move rebound from agile to fit, replace with escape artist
@@ -33,12 +33,14 @@
 			|| _skill.getID() == "actives.rotation"
 			|| _skill.getID() == "actives.legend_tumble"
 			|| _skill.getID() == "actives.legend_evasion"
-			|| _skill.getID() == "actives.legend_leap";
+			|| _skill.getID() == "actives.legend_leap"
+			|| _skill.getID() == "actives.charge";
 		});
 
 		foreach( s in skills )
 		{
 			s.m.ActionPointCost -= 1;
+			s.m.FatigueCostMult *= 0.75;
 		}
 	}
 

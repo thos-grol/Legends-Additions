@@ -8,7 +8,7 @@
 		{
 			this.logInfo("Adding perk point for flag: " + this.m.ID);
 			this.getContainer().getActor().getFlags().add(this.m.ID);
-			actor.m.PerkPoints += 1;
+			this.getContainer().getActor().m.PerkPoints += 1;
 		}
 
 		if (this.m.BraveryMult == 1.0) return;

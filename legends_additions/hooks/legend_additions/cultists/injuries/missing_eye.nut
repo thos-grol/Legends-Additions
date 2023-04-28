@@ -28,4 +28,13 @@
 		_properties.RangedSkillMult *= has ? 0.9 : 0.5;
 		_properties.Vision -= has ? 1 : 2;
 	}
+
+	o.onApplyAppearance = function()
+	{
+		try {
+			local sprite = this.getContainer().getActor().getSprite("permanent_injury_4");
+			sprite.setBrush("permanent_injury_04");
+			sprite.Visible = true;
+		} catch(exception) {}
+	}
 });

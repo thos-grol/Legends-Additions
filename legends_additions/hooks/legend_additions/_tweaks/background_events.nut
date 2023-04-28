@@ -11,14 +11,14 @@
 			case "background.assassin":
 			case "background.assassin_southern":
 			case "background.legend_commander_assassin":
-				chance += 15;
+				chance += 40;
 				break;
 
 			case "background.killer_on_the_run":
 			case "background.nomad":
 			case "background.raider":
 			case "background.thief":
-				chance += 10;
+				chance += 25;
 				break;
 
 		}
@@ -41,23 +41,24 @@
 			case "background.houndmaster":
 			case "background.hunter":
 			case "background.poacher":
-				chance += 15;
+				chance += 50;
 				break;
 
 			case "background.legend_assassin":
 			case "background.assassin":
 			case "background.assassin_southern":
 			case "background.legend_commander_assassin":
+			case "background.legend_commander_berserker":
 			case "background.wildman":
 			case "background.wildwoman":
 			case "background.barbarian":
 			case "background.witchhunter":
-				chance += 10;
+				chance += 30;
 				break;
 
 			case "background.nomad":
 			case "background.raider":
-				chance += 5;
+				chance += 20;
 				break;
 
 		}

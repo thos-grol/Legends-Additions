@@ -21,7 +21,7 @@ this.pain_ritual <- this.inherit("scripts/skills/skill", {
 		this.m.IsStacking = false;
 		this.m.IsAttack = false;
 		this.m.ActionPointCost = 5;
-		this.m.FatigueCost = 35;
+		this.m.FatigueCost = 25;
 		this.m.MinRange = 1;
 		this.m.MaxRange = 4;
 		this.m.MaxLevelDifference = 6;

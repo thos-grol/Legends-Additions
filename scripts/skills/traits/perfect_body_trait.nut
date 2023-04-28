@@ -6,7 +6,7 @@ this.perfect_body_trait <- this.inherit("scripts/skills/traits/character_trait",
 		this.m.ID = "trait.perfect_body";
 		this.m.Name = "Perfect Body";
 		this.m.Icon = "ui/traits/trait_icon_21.png";
-		this.m.Description = "This character's body has been perfected.";
+		this.m.Description = "This character's body has been perfected. Their body is immune to wurm acid.";
 		this.m.Order = ::Const.SkillOrder.Trait - 10;
 		this.m.Type = this.m.Type;
 		this.m.Titles = [];
