@@ -1,3 +1,4 @@
+//TODO: rebalance all item prices
 ::Z.Economy.Items <- {
 
 //SUPPLIES
