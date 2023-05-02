@@ -230,7 +230,7 @@
 			list.push({
 				R = 50,
 				P = 1.0,
-				S = "supplies/cured_venison_item"
+				S = "supplies/legend_fresh_meat_item"
 			});
 		}
 

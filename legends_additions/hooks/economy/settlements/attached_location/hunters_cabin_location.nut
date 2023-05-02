@@ -1,7 +1,7 @@
 ::mods_hookExactClass("entity/world/attached_location/hunters_cabin_location.nut", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
-		_list.push("supplies/cured_venison_item");
+		_list.push("supplies/legend_fresh_meat_item");
 	}
 
 	o.onUpdateDraftList = function( _list, _gender = null )
@@ -58,11 +58,6 @@
 	{
 		if (_id == "building.marketplace")
 		{
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "supplies/cured_venison_item"
-			});
 			_list.push({
 				R = 0,
 				P = 0.9,

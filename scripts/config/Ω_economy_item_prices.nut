@@ -72,7 +72,7 @@
 	"supplies.wine" : 140,
 
 	//REMOVED
-	"supplies.cured_venison" : 0, //TODO: Remove
+	"supplies.cured_venison" : 0,
 	"supplies.legend_human_parts" : 0, //TODO: Remove
 	"supplies.fermented_unhold_heart" : 0, //TODO: Remove
 	"supplies.legend_yummy_sausages" : 0, //TODO: Remove
