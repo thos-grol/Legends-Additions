@@ -6,6 +6,10 @@ Economy Overhaul
     //TODO: remove most events that give free stuff, you need traits etc to earn them
     //TODO: start making the world poorer, troop equipment nerf
 
+//TODO: Nutrition Overhaul? + Hunting overhaul?
+    function consumeFood()
+    Gathering Resources depends on the tile
+
 ======== BUILDS ===========
 
 General 1h builds (all 1h weps) =

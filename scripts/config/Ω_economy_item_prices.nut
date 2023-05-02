@@ -1,43 +1,87 @@
 //TODO: rebalance all item prices
+//FEATURE_1: generate location loot hooks
+//TODO: this.World.Assets.addMoney
+	//overhaul contract pay
+	//event pay/prices
+
+//FEATURE_8: overhaul enemy equipment/builds
+
+// 12 Pence (d) = 1 Shilling (s)
+// 20 Shilling = 1 pound £
+
+// Horse harness maker: 4 Pence / Day
+// Mason: 6 Pence / Day
+// Laborer: 3,5 Pence / Day
+
+//levied spearmen 2 Pence / Day
+//!!!! pay of soldiers includes food and looting
+
+// Levied spearman: 2 Pence / Day
+// Archer: 3 Pence / Day
+// Squire: 12 d
+// Knight bachelor: 24 p / Day
+// Knight banneret: 48 p / Day
+
+// 4 gallons of ale: 1d
+// 1 hen: 5d
+// Brass pot: 2-13s
+// Crossbow: 12 Pence (today’s retail price, several 100$)
+// 1 Quiver of crossbow bolts: 16 Pence
+// 1 cart-horse: Up to 32 Shillings
+
+//bros will eat 2.0 (DailyFood) units per day
+//food unit is 25 so it will last 12 meals
+//base unit is d
+
+//Harnmaster prices
 ::Z.Economy.Items <- {
 
 //SUPPLIES
-	"supplies.ammo_small" : 50,
-	"supplies.ammo" : 100,
-	"supplies.armor_parts_small" : 100,
+	"supplies.ammo_small" : 30,
+	"supplies.ammo" : 60,
+
 	"supplies.medicine_small" : 100,
-	"supplies.armor_parts" : 200,
 	"supplies.medicine" : 200,
 
+	"supplies.armor_parts_small" : 62,
+	"supplies.armor_parts" : 124,
+
 	//FOOD
-	"supplies.legend_human_parts" : 5,
-	"supplies.strange_meat" : 20,
-	"supplies.legend_fresh_meat" : 30,
 	"supplies.legend_fresh_fruit" : 40,
+	"supplies.roots_and_berries" : 60,
 	"supplies.ground_grains" : 50,
 	"supplies.legend_cooking_spices" : 50,
-	"supplies.legend_yummy_sausages" : 50,
-	"supplies.rice" : 60,
-	"supplies.roots_and_berries" : 60,
-	"supplies.bread" : 65,
-	"supplies.dried_fish" : 70,
 	"supplies.pickled_mushrooms" : 70,
 	"supplies.dates" : 80,
-	"supplies.black_marsh_stew" : 85,
-	"supplies.goat_cheese" : 85,
-	"supplies.mead" : 90,
-	"supplies.smoked_ham" : 90,
-	"supplies.cured_venison" : 100,
-	"supplies.dried_lamb" : 105,
 	"supplies.dried_fruits" : 110,
+	"supplies.rice" : 60,
+	"supplies.bread" : 65,
+	"supplies.goat_cheese" : 85,
+
+	//MEAT
+	"supplies.strange_meat" : 20,
+	"supplies.legend_fresh_meat" : 30,
+	"supplies.dried_fish" : 40,
+	"supplies.smoked_ham" : 60,
+	"supplies.dried_lamb" : 75,
+	
+	//ALCOHOL
+	"supplies.mead" : 90,
 	"supplies.beer" : 120,
 	"supplies.preserved_mead" : 120,
 	"supplies.wine" : 140,
-	"supplies.fermented_unhold_heart" : 150,
-	"supplies.legend_porridge" : 150,
-	"supplies.legend_pudding" : 200,
-	"supplies.legend_pie" : 250,
-	"supplies.cured_rations" : 300,
+
+	//REMOVED
+	"supplies.cured_venison" : 0, //TODO: Remove
+	"supplies.legend_human_parts" : 0, //TODO: Remove
+	"supplies.fermented_unhold_heart" : 0, //TODO: Remove
+	"supplies.legend_yummy_sausages" : 0, //TODO: Remove
+	"supplies.black_marsh_stew" : 0, //TODO: Remove
+
+	"supplies.legend_porridge" : 0, //TODO: Remove
+	"supplies.legend_pudding" : 0, //TODO: Remove
+	"supplies.legend_pie" : 0, //TODO: Remove
+	"supplies.cured_rations" : 0, //TODO: Remove
 
 //TRADE
 	"misc.legend_raw_wood" : 40,
