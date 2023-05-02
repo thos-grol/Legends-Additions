@@ -73,12 +73,12 @@
 
 	//REMOVED
 	"supplies.cured_venison" : 0,
-	"supplies.legend_human_parts" : 0, //TODO: Remove
-	"supplies.fermented_unhold_heart" : 0, //TODO: Remove
-	"supplies.legend_yummy_sausages" : 0, //TODO: Remove
-	"supplies.black_marsh_stew" : 0, //TODO: Remove
+	"supplies.legend_human_parts" : 0, //TODO: Remove skill
+	"supplies.fermented_unhold_heart" : 0,
+	"supplies.legend_yummy_sausages" : 0,
+	"supplies.black_marsh_stew" : 0, //TODO: Remove from hexe drops
 
-	"supplies.legend_porridge" : 0, //TODO: Remove
+	"supplies.legend_porridge" : 0, //TODO: Remove from a lot of places
 	"supplies.legend_pudding" : 0, //TODO: Remove
 	"supplies.legend_pie" : 0, //TODO: Remove
 	"supplies.cured_rations" : 0, //TODO: Remove

@@ -245,15 +245,6 @@
 			});
 		}
 
-		if (this.m.Settlement.getSize() >= 3)
-		{
-			list.push({
-				R = 60,
-				P = 1.0,
-				S = "supplies/cured_rations_item"
-			});
-		}
-
 		if (this.m.Settlement.getSize() >= 3 || this.m.Settlement.isMilitary())
 		{
 			list.push({

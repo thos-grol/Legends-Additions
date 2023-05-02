@@ -33,11 +33,6 @@
 			});
 			_list.push({
 				R = 10,
-				P = 0.9,
-				S = "supplies/legend_pie_item"
-			});
-			_list.push({
-				R = 10,
 				P = 1.0,
 				S = "helmets/hood"
 			});

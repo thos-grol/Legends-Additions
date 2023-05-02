@@ -35,11 +35,6 @@
 				S = "misc/legend_mistletoe_item"
 			});
 			_list.push({
-				R = 30,
-				P = 1.0,
-				S = "supplies/legend_pudding_item"
-			});
-			_list.push({
 				R = 20,
 				P = 1.0,
 				S = "weapons/bludgeon"
