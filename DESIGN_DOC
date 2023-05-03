@@ -1,8 +1,4 @@
-//TODO: Rework
-
 Economy Overhaul
-    //TODO: background price table
-        //TODO: background generation script
     //FEATURE_2: change money added from contracts and events
 
     //FEATURE_2: remove most events that give free stuff, you need traits etc to earn them
