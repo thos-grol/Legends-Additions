@@ -67,10 +67,6 @@
 		"HiringCost" : 30,
 		"DailyCost" : 3
 	},
-	"background.crucified" : {
-		"HiringCost" : None,
-		"DailyCost" : 30
-	},
 	"background.crusader" : {
 		"HiringCost" : 200,
 		"DailyCost" : 25
@@ -542,10 +538,6 @@
 	"background.legend_youngblood" : {
 		"HiringCost" : 95,
 		"DailyCost" : 10
-	},
-	"background.lindwurm_slayer" : {
-		"HiringCost" : None,
-		"DailyCost" : 31
 	},
 	"background.lumberjack" : {
 		"HiringCost" : 100,
