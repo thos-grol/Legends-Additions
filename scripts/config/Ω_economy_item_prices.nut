@@ -1,95 +1,49 @@
-//TODO: rebalance all item prices
-//FEATURE_1: generate location loot hooks
-//TODO: this.World.Assets.addMoney
-	//overhaul contract pay
-	//event pay/prices
-
-//FEATURE_8: overhaul enemy equipment/builds
-
-// 12 Pence (d) = 1 Shilling (s)
-// 20 Shilling = 1 pound £
-
-// Horse harness maker: 4 Pence / Day
-// Mason: 6 Pence / Day
-// Laborer: 3,5 Pence / Day
-
-//levied spearmen 2 Pence / Day
-//!!!! pay of soldiers includes food and looting
-
-// Levied spearman: 2 Pence / Day
-// Archer: 3 Pence / Day
-// Squire: 12 d
-// Knight bachelor: 24 p / Day
-// Knight banneret: 48 p / Day
-
-// 4 gallons of ale: 1d
-// 1 hen: 5d
-// Brass pot: 2-13s
-// Crossbow: 12 Pence (today’s retail price, several 100$)
-// 1 Quiver of crossbow bolts: 16 Pence
-// 1 cart-horse: Up to 32 Shillings
-
-//bros will eat 2.0 (DailyFood) units per day
-//food unit is 25 so it will last 12 meals
-//base unit is d
-
-//Harnmaster prices
 ::Z.Economy.Items <- {
 
 //SUPPLIES
-	"supplies.ammo_small" : 30,
-	"supplies.ammo" : 60,
+	"supplies.ammo_small" : 50,
+	"supplies.ammo" : 100,
+	"supplies.armor_parts_small" : 100,
+	"supplies.medicine_small" : 100,
+	"supplies.armor_parts" : 200,
+	"supplies.medicine" : 200,
 
-	"supplies.medicine_small" : 60,
-	"supplies.medicine" : 120,
-
-	"supplies.armor_parts_small" : 75,
-	"supplies.armor_parts" : 150,
- 
 	//FOOD
-	"supplies.ground_grains" : 9,
-	"supplies.legend_fresh_fruit" : 11,
-	"supplies.roots_and_berries" : 11,
-	"supplies.dates" : 80,
-	"supplies.dried_fruits" : 110,
-	"supplies.rice" : 60,
-	"supplies.bread" : 65,
-	"supplies.goat_cheese" : 85,
-
-	//MEAT
+	"supplies.legend_human_parts" : 5,
 	"supplies.strange_meat" : 20,
 	"supplies.legend_fresh_meat" : 30,
-	"supplies.dried_fish" : 40,
-	"supplies.smoked_ham" : 60,
-	"supplies.dried_lamb" : 75,
-	
-	//ALCOHOL
+	"supplies.legend_fresh_fruit" : 40,
+	"supplies.ground_grains" : 50,
+	"supplies.legend_cooking_spices" : 50,
+	"supplies.legend_yummy_sausages" : 50,
+	"supplies.rice" : 60,
+	"supplies.roots_and_berries" : 60,
+	"supplies.bread" : 65,
+	"supplies.dried_fish" : 70,
+	"supplies.pickled_mushrooms" : 70,
+	"supplies.dates" : 80,
+	"supplies.black_marsh_stew" : 85,
+	"supplies.goat_cheese" : 85,
 	"supplies.mead" : 90,
+	"supplies.smoked_ham" : 90,
+	"supplies.cured_venison" : 100,
+	"supplies.dried_lamb" : 105,
+	"supplies.dried_fruits" : 110,
 	"supplies.beer" : 120,
 	"supplies.preserved_mead" : 120,
 	"supplies.wine" : 140,
-
-	//REMOVED
-	"supplies.cured_venison" : 0,
-	"supplies.legend_human_parts" : 0, //TODO: Remove skill
-	"supplies.fermented_unhold_heart" : 0,
-	"supplies.legend_yummy_sausages" : 0,
-	"supplies.black_marsh_stew" : 0, //TODO: Remove from hexe drops
-
-	"supplies.legend_porridge" : 0, //TODO: Remove from a lot of places
-	"supplies.legend_pudding" : 0, //TODO: Remove
-	"supplies.legend_pie" : 0, //TODO: Remove
-	"supplies.cured_rations" : 0, //TODO: Remove
-	"supplies.legend_cooking_spices" : 0,// TODO: Remove
-	"supplies.pickled_mushrooms" : 0,// TODO: Remove
+	"supplies.fermented_unhold_heart" : 150,
+	"supplies.legend_porridge" : 150,
+	"supplies.legend_pudding" : 200,
+	"supplies.legend_pie" : 250,
+	"supplies.cured_rations" : 300,
 
 //TRADE
-	"misc.legend_raw_wood" : 12,
-	"misc.quality_wood" : 54,
+	"misc.legend_raw_wood" : 40,
 	"misc.peat_bricks" : 100,
 	"misc.cloth_rolls" : 140,
 	"misc.dies" : 175,
-	
+	"misc.quality_wood" : 180,
 	"misc.copper_ingots" : 220,
 	"misc.amber_shards" : 260,
 	"misc.furs" : 300,
@@ -103,18 +57,17 @@
 	"misc.uncut_gems" : 520,
 	"misc.gold_ingots" : 720,
 
-//TODO
-//TENTS 
-	"tent.scrap_tent" : 200,
-	"tent.fletcher_tent" : 200,
-	"tent.gather_tent" : 200,
-	"tent.hunter_tent" : 200,
-	"tent.scout_tent" : 200,
-	"tent.healer_tent" : 200,
-	"tent.repair_tent" : 200,
-	"tent.craft_tent" : 200,
-	"tent.enchant_tent" : 500,
-	"tent.training_tent" : 200,
+//TENTS
+	"tent.scrap_tent" : 2000,
+	"tent.fletcher_tent" : 3000,
+	"tent.gather_tent" : 3000,
+	"tent.hunter_tent" : 3000,
+	"tent.scout_tent" : 3000,
+	"tent.healer_tent" : 5000,
+	"tent.repair_tent" : 5000,
+	"tent.craft_tent" : 10000,
+	"tent.enchant_tent" : 10000,
+	"tent.training_tent" : 10000,
 
 //SPAWNS
 	"spawns.skeleton" : 100,
@@ -355,6 +308,7 @@
 	"shield.legend_named_parrying_dagger" : 800,
 
 	//SWORD
+	//1H
 	"weapon.sickle" : 45,
 	"weapon.broken_ancient_sword" : 200,
 	"weapon.shortsword" : 350,
@@ -368,17 +322,9 @@
 	"weapon.legend_skin_flayer" : 1100,
 	"weapon.arming_sword" : 1250,
 	"weapon.legend_kopis" : 1250,
-	"weapon.rhomphaia" : 1300,
 	"weapon.fencing_sword" : 1550,
-	"weapon.legend_man_mangler" : 1600,
-	"weapon.warbrand" : 1700,
-	"weapon.legend_longsword" : 2000,
-	"weapon.named_longsword" : 2100,
-	"weapon.longsword" : 2300,
-	"weapon.legend_crusader_sword" : 2400,
 	"weapon.named_goblin_falchion" : 2600,
 	"weapon.shamshir" : 2900,
-	"weapon.greatsword" : 3200,
 	"weapon.legend_estoc" : 3200,
 	"weapon.noble_sword" : 3200,
 	"weapon.legend_named_gladius" : 3200,
@@ -386,43 +332,54 @@
 	"weapon.named_shamshir" : 4000,
 	"weapon.legend_named_estoc" : 4200,
 	"weapon.named_sword" : 4200,
-	"weapon.named_warbrand" : 4200,
 	"weapon.legend_named_sickle" : 4500,
+	"weapon.lightbringer_sword" : 20000,
+	//2H
+	"weapon.rhomphaia" : 1300,
+	"weapon.legend_man_mangler" : 1600,
+	"weapon.warbrand" : 1700,
+	"weapon.legend_longsword" : 2000,
+	"weapon.named_longsword" : 2100,
+	"weapon.longsword" : 2300,
+	"weapon.legend_crusader_sword" : 2400,
+	"weapon.greatsword" : 3200,
+	"weapon.named_warbrand" : 4200,
 	"weapon.legend_named_longsword" : 4600,
 	"weapon.named_greatsword" : 4600,
 	"weapon.named_royal_lance" : 4800,
 	"weapon.legend_mage_swordstaff" : 7500,
-	"weapon.lightbringer_sword" : 20000,
 
 	//AXE
-	"weapon.legend_hoe" : 3,
-	"weapon.hatchet" : 6,
-	"weapon.woodcutters_axe" : 12,
-	"weapon.crude_axe" : 800,
-	"weapon.legend_meat_hacker" : 900,
-	"weapon.hand_axe" : 1000,
-	"weapon.orc_axe" : 1100,
+	//2H
+	"weapon.legend_hoe" : 55,
+	"weapon.woodcutters_axe" : 450,
 	"weapon.longaxe" : 1200,
 	"weapon.orc_axe_2h" : 1500,
 	"weapon.legend_infantry_axe" : 1950,
 	"weapon.heavy_rusty_axe" : 2000,
 	"weapon.bardiche" : 2200,
-	"weapon.fighting_axe" : 2350,
-	"weapon.named_orc_axe" : 2400,
 	"weapon.greataxe" : 2725,
 	"weapon.legend_fan_axe" : 3000,
 	"weapon.named_longaxe" : 3000,
 	"weapon.named_heavy_rusty_axe" : 3400,
-	"weapon.named_axe" : 4000,
 	"weapon.legend_named_infantry_axe" : 4600,
 	"weapon.named_bardiche" : 4600,
 	"weapon.named_greataxe" : 4600,
 	"weapon.named_orc_axe_2h" : 5000,
+	//1H
+	"weapon.hatchet" : 210,
+	"weapon.crude_axe" : 800,
+	"weapon.legend_meat_hacker" : 900,
+	"weapon.hand_axe" : 1000,
+	"weapon.orc_axe" : 1100,
+	"weapon.fighting_axe" : 2350,
+	"weapon.named_orc_axe" : 2400,
+	"weapon.named_axe" : 4000,
 
 	//CLEAVER
+	//1H
 	"weapon.legend_cat_o_nine_tails" : 20,
 	"weapon.legend_saw" : 45,
-	"weapon.legend_scythe" : 75,
 	"weapon.butchers_cleaver" : 110,
 	"weapon.antler_cleaver" : 120,
 	"weapon.falx" : 350,
@@ -430,32 +387,35 @@
 	"weapon.battle_whip" : 450,
 	"weapon.blunt_cleaver" : 600,
 	"weapon.scramasax" : 700,
-	"weapon.legend_grisly_scythe" : 750,
 	"weapon.legend_bone_carver" : 900,
 	"weapon.orc_cleaver" : 1100,
 	"weapon.legend_named_butchers_cleaver" : 1100,
 	"weapon.khopesh" : 1300,
 	"weapon.legend_khopesh" : 1300,
+	"weapon.named_battle_whip" : 2200,
+	"weapon.named_orc_cleaver" : 2400,
+	"weapon.military_cleaver" : 2500,
+	"weapon.named_khopesh" : 3200,
+	"weapon.named_cleaver" : 3800,
+	//2H
+	"weapon.legend_scythe" : 75,
+	"weapon.legend_grisly_scythe" : 750,
 	"weapon.rusty_warblade" : 1600,
 	"weapon.legend_limb_lopper" : 1600,
 	"weapon.crypt_cleaver" : 2000,
 	"weapon.legend_great_khopesh" : 2000,
-	"weapon.named_battle_whip" : 2200,
-	"weapon.named_orc_cleaver" : 2400,
 	"weapon.two_handed_saif" : 2400,
 	"weapon.legend_voulge" : 2500,
-	"weapon.military_cleaver" : 2500,
 	"weapon.two_handed_scimitar" : 2900,
 	"weapon.legend_military_voulge" : 3200,
 	"weapon.named_crypt_cleaver" : 3200,
-	"weapon.named_khopesh" : 3200,
 	"weapon.named_rusty_warblade" : 3200,
 	"weapon.named_two_handed_scimitar" : 3200,
 	"weapon.legend_named_voulge" : 3500,
 	"weapon.named_legend_great_khopesh" : 3500,
-	"weapon.named_cleaver" : 3800,
 
 	//POLEARM
+	//2H
 	"weapon.legend_wooden_pitchfork" : 30,
 	"weapon.pitchfork" : 150,
 	"weapon.broken_bladed_pike" : 350,
@@ -480,50 +440,55 @@
 	"weapon.legend_named_swordstaff" : 4800,
 
 	//MACE
+	//1H
 	"weapon.wooden_stick" : 35,
-	"weapon.legend_shovel" : 50,
 	"weapon.bludgeon" : 90,
 	"weapon.claw_club" : 100,
 	"weapon.nomad_mace" : 100,
 	"weapon.orc_wooden_club" : 150,
 	"weapon.orc_metal_club" : 300,
-	"weapon.legend_two_handed_club" : 400,
 	"weapon.light_southern_mace" : 400,
 	"weapon.morning_star" : 600,
-	"weapon.two_handed_spiked_mace" : 900,
-	"weapon.two_handed_mace" : 1000,
 	"weapon.goblin_staff" : 1000,
-	"weapon.polemace" : 1500,
-	"weapon.legend_bough" : 1600,
 	"weapon.winged_mace" : 2100,
 	"weapon.heavy_southern_mace" : 2100,
+	"weapon.named_mace" : 4000,
+	//2H
+	"weapon.legend_shovel" : 50,
+	"weapon.legend_two_handed_club" : 400,
+	"weapon.two_handed_spiked_mace" : 900,
+	"weapon.two_handed_mace" : 1000,
+	"weapon.polemace" : 1500,
+	"weapon.legend_bough" : 1600,
 	"weapon.named_polemace" : 2600,
 	"weapon.two_handed_flanged_mace" : 3000,
 	"weapon.named_two_handed_spiked_mace" : 3000,
 	"weapon.named_two_handed_mace" : 3400,
-	"weapon.named_mace" : 4000,
 	"weapon.legend_named_shovel" : 4500,
 
 	//SPEAR
+	//1H
 	"weapon.legend_wooden_spear" : 15,
 	"weapon.ancient_spear" : 150,
 	"weapon.militia_spear" : 180,
 	"weapon.legend_militia_glaive" : 350,
-	"weapon.warfork" : 400,
 	"weapon.goblin_spear" : 500,
 	"weapon.boar_spear" : 750,
-	"weapon.goedendag" : 750,
 	"weapon.firelance" : 750,
 	"weapon.legend_glaive" : 1250,
-	"weapon.legend_military_goedendag" : 2000,
 	"weapon.fighting_spear" : 2100,
 	"weapon.named_goblin_spear" : 2500,
 	"weapon.legend_battle_glaive" : 3200,
 	"weapon.named_spear" : 3200,
-	"weapon.legend_named_military_goedendag" : 5400,
 	"weapon.legend_named_glaive" : 6000,
+	//2H
+	"weapon.warfork" : 400,
+	"weapon.goedendag" : 750,
+	"weapon.legend_military_goedendag" : 2000,
+	"weapon.legend_named_military_goedendag" : 5400,
 
 	//CROSSBOW
+	//2H
 	"weapon.legend_blowgun" : 30,
 	"weapon.light_crossbow" : 300,
 	"weapon.crossbow" : 750,
@@ -532,6 +497,7 @@
 	"weapon.named_crossbow" : 4400,
 
 	//DAGGER
+	//1H
 	"weapon.legend_shiv" : 3,
 	"weapon.legend_wooden_stake" : 10,
 	"weapon.knife" : 30,
@@ -545,24 +511,27 @@
 	"weapon.obsidian_dagger" : 5000,
 
 	//FLAIL
-	"weapon.legend_ranged_wooden_flail" : 40,
+	//1H
 	"weapon.wooden_flail" : 40,
 	"weapon.reinforced_wooden_flail" : 300,
+	"weapon.flail" : 1800,
+	"weapon.three_headed_flail" : 2200,
+	"weapon.named_flail" : 3400,
+	"weapon.named_three_headed_flail" : 3400,
+	//2H
+	"weapon.legend_ranged_wooden_flail" : 40,
 	"weapon.legend_chain" : 400,
 	"weapon.two_handed_wooden_flail" : 500,
 	"weapon.legend_reinforced_flail" : 1050,
 	"weapon.orc_flail_2h" : 1300,
-	"weapon.flail" : 1800,
 	"weapon.legend_pole_flail" : 2000,
 	"weapon.named_orc_flail_2h" : 2100,
-	"weapon.three_headed_flail" : 2200,
 	"weapon.two_handed_flail" : 2800,
 	"weapon.named_two_handed_flail" : 2800,
 	"weapon.legend_named_flail" : 3000,
-	"weapon.named_flail" : 3400,
-	"weapon.named_three_headed_flail" : 3400,
 
 	//BOW
+	//2H
 	"weapon.wonky_bow" : 100,
 	"weapon.short_bow" : 200,
 	"weapon.goblin_bow" : 250,
@@ -575,6 +544,7 @@
 	"weapon.named_warbow" : 4600,
 
 	//THROWING
+	//1H
 	"weapon.orc_javelin" : 150,
 	"weapon.javelin" : 200,
 	"weapon.throwing_axe" : 200,
@@ -586,31 +556,35 @@
 	"weapon.named_throwing_axe" : 1400,
 
 	//MUSICAL
+	//2H
 	"weapon.lute" : 50,
 	"weapon.legend_drum" : 100,
 	"weapon.barbarian_drum" : 300,
 	"weapon.named_lute" : 1000,
 
 	//HAMMER
+	//1H
 	"weapon.legend_hammer" : 50,
 	"weapon.pickaxe" : 120,
-	"weapon.two_handed_wooden_hammer" : 500,
 	"weapon.axehammer" : 800,
 	"weapon.military_pick" : 900,
 	"weapon.legend_skullsmasher" : 1200,
+	"weapon.warhammer" : 2500,
+	"weapon.named_warhammer" : 4200,
+	"weapon.legend_named_blacksmith_hammer" : 5000,
+	"weapon.legend_named_warhammer" : 5000,
+	//2H
+	"weapon.two_handed_wooden_hammer" : 500,
 	"weapon.skull_hammer" : 1300,
 	"weapon.polehammer" : 1600,
 	"weapon.legend_skullbreaker" : 1600,
-	"weapon.warhammer" : 2500,
 	"weapon.two_handed_hammer" : 3000,
 	"weapon.named_polehammer" : 3200,
 	"weapon.named_skullhammer" : 3200,
 	"weapon.named_two_handed_hammer" : 4000,
-	"weapon.named_warhammer" : 4200,
-	"weapon.legend_named_blacksmith_hammer" : 5000,
-	"weapon.legend_named_warhammer" : 5000,
 
 	//STAFF
+	//2H
 	"weapon.legend_staff" : 50,
 	"weapon.legend_tipstaff" : 100,
 	"weapon.legend_mystic_staff" : 1000,
@@ -618,13 +592,16 @@
 	"weapon.legend_staff_gnarled" : 5000,
 
 	//SLING
-	"weapon.legend_slingshot" : 100,
+	//1H
 	"weapon.legend_sling" : 150,
+	//2H
+	"weapon.legend_slingshot" : 100,
 	"weapon.staff_sling" : 150,
 	"weapon.nomad_sling" : 300,
 	"weapon.legend_slingstaff" : 1000,
 
 	//FIREARM
+	//2H
 	"weapon.handgonne" : 3000,
 	"weapon.named_handgonne" : 5000,
 
@@ -703,75 +680,6 @@
 	"legend_armor_upgrade.legend_redback_cloak" : 7500,
 	"legend_armor_upgrade.legend_hexe_leader_cloak" : 12000,
 
-	//ARMOR_UPGRADES
-	"legend_armor_upgrade.negative_moulderedd" : -250,
-	"legend_armor_upgrade.negative_falling_apart" : -200,
-	"legend_armor_upgrade.negative_weathered" : -150,
-	"legend_armor_upgrade.negative_shabby" : -100,
-	"legend_armor_upgrade.barbarian_horn" : 250,
-	"legend_armor_upgrade.leather_neckguard" : 250,
-	"legend_armor_upgrade.leather_shoulderguards" : 250,
-	"armor_upgrade.light_gladiator_upgrade" : 400,
-	"legend_armor_upgrade.mail_patch" : 500,
-	"legend_armor_upgrade.direwolf_pelt" : 600,
-	"legend_armor_upgrade.double_mail" : 600,
-	"armor_upgrade.hyena_fur" : 600,
-	"legend_armor_upgrade.serpent_skin" : 600,
-	"legend_armor_upgrade.joint_cover" : 750,
-	"armor_upgrade.heavy_gladiator_upgrade" : 800,
-	"legend_armor_upgrade.metal_pauldrons" : 800,
-	"legend_armor_upgrade.metal_plating" : 800,
-	"legend_armor_upgrade.bone_platings" : 850,
-	"legend_armor_upgrade.unhold_fur" : 1000,
-	"legend_armor_upgrade.protective_runes" : 1100,
-	"legend_armor_upgrade.additional_padding" : 1200,
-	"legend_armor_upgrade.heraldic_plates" : 1800,
-	"legend_armor_upgrade.lindwurm_scales" : 1800,
-	"legend_armor_upgrade.light_padding_replacement" : 2000,
-	"legend_armor_upgrade.horn_plate" : 4000,
-	"legend_armor_upgrade.legend_stollwurm_scales" : 6000,
-	"legend_armor_upgrade.legend_white_wolf_pelt" : 6000,
-
-	//CHAIN
-	"legend_armor.body.legend_southern_cloth" : 50,
-	"legend_armor.body.legend_armor_rusty_mail_shirt" : 125,
-	"legend_armor.body.legend_armor_reinforced_rotten_mail_shirt" : 200,
-	"legend_armor.body.legend_armor_mail_shirt_simple" : 250,
-	"legend_armor.body.legend_armor_ancient_mail" : 300,
-	"legend_armor.body.legend_southern_padded_chest" : 325,
-	"legend_armor.body.legend_armor_reinforced_worn_mail_shirt" : 350,
-	"legend_armor.body.legend_armor_mail_shirt" : 375,
-	"legend_armor.body.legend_armor_short_mail" : 500,
-	"legend_armor.body.legend_armor_ancient_double_mail" : 750,
-	"legend_armor.body.legend_armor_basic_mail" : 800,
-	"legend_armor.body.legend_armor_reinforced_mail_shirt" : 1000,
-	"legend_armor.body.legend_armor_hauberk_sleevless" : 1250,
-	"legend_armor.body.legend_armor_reinforced_worn_mail" : 1250,
-	"legend_armor.body.legend_southern_mail" : 1400,
-	"legend_armor.body.legend_armor_hauberk" : 1750,
-	"legend_armor.body.legend_armor_reinforced_mail" : 1750,
-	"legend_armor.body.legend_armor_hauberk_full" : 2500,
-	"legend_armor.body.legend_armor_hauberk_full_named" : 5000,
-
-	//CLOAK
-	"legend_armor.body.legend_shoulder_cloth" : 50,
-	"legend_armor.body.legend_armor_cloak_common" : 100,
-	"legend_armor.body.legend_southern_scarf" : 100,
-	"legend_armor.body.legend_dark_wooly_cloak" : 120,
-	"legend_armor.body.legend_sash" : 150,
-	"legend_armor.body.legend_southern_scarf_wrap" : 150,
-	"legend_armor.body.legend_animal_pelt" : 250,
-	"legend_armor.body.legend_noble_shawl" : 250,
-	"legend_armor.body.legend_armor_cloak_crusader" : 500,
-	"legend_armor.body.legend_armor_cloak_heavy" : 500,
-	"legend_armor.body.serpent_skin" : 800,
-	"legend_armor.body.unhold_fur" : 1000,
-	"legend_armor.body.lindwurm_scales" : 1800,
-	"legend_armor.body.legend_armor_cloak_noble" : 3000,
-	"legend_armor.body.legend_redback_cloak" : 6000,
-	"legend_armor.body.legend_hexe_leader_cloak" : 7500,
-	"legend_armor.body.legend_stollwurm_scales" : 9000,
-
 	//CLOTH
 	"legend_armor.body.legend_bandages" : 1,
 	"legend_armor.body.legend_sackcloth_tattered" : 5,
@@ -807,15 +715,26 @@
 	"legend_armor.body.legend_gambeson_named" : 1500,
 	"legend_armor.body.legend_tunic_noble_named" : 1500,
 
-	//LEGENDARY
-	"legend_armor.body.legend_named_warlock_cloak" : 5000,
-	"legend_armor.body.lindwurm_armor" : 7500,
-	"legend_armor.body.legend_mountain_armor" : 10000,
-	"legend_armor.body.legend_mountain_armor_named" : 10000,
-	"legend_armor.body.legend_skin_armor" : 10000,
-	"legend_armor.body.ijirok_armor" : 12000,
-	"legend_armor.body.armor_of_davkul" : 20000,
-	"legend_armor.body.emperors_armor" : 20000,
+	//CHAIN
+	"legend_armor.body.legend_southern_cloth" : 50,
+	"legend_armor.body.legend_armor_rusty_mail_shirt" : 125,
+	"legend_armor.body.legend_armor_reinforced_rotten_mail_shirt" : 200,
+	"legend_armor.body.legend_armor_mail_shirt_simple" : 250,
+	"legend_armor.body.legend_armor_ancient_mail" : 300,
+	"legend_armor.body.legend_southern_padded_chest" : 325,
+	"legend_armor.body.legend_armor_reinforced_worn_mail_shirt" : 350,
+	"legend_armor.body.legend_armor_mail_shirt" : 375,
+	"legend_armor.body.legend_armor_short_mail" : 500,
+	"legend_armor.body.legend_armor_ancient_double_mail" : 750,
+	"legend_armor.body.legend_armor_basic_mail" : 800,
+	"legend_armor.body.legend_armor_reinforced_mail_shirt" : 1000,
+	"legend_armor.body.legend_armor_hauberk_sleevless" : 1250,
+	"legend_armor.body.legend_armor_reinforced_worn_mail" : 1250,
+	"legend_armor.body.legend_southern_mail" : 1400,
+	"legend_armor.body.legend_armor_hauberk" : 1750,
+	"legend_armor.body.legend_armor_reinforced_mail" : 1750,
+	"legend_armor.body.legend_armor_hauberk_full" : 2500,
+	"legend_armor.body.legend_armor_hauberk_full_named" : 5000,
 
 	//PLATE
 	"legend_armor.body.legend_thick_furs_armor" : 15,
@@ -883,23 +802,6 @@
 	"legend_armor.body.legend_armor_plate_full_greaves_named" : 10000,
 	"legend_armor.body.legend_armor_plate_full_greaves_painted" : 10000,
 
-	//RUNES
-	"legend_armor_upgrade.legend_rune_endurance" : 1200,
-	"legend_armor_upgrade.legend_rune_resilience" : 1200,
-	"legend_armor_upgrade.legend_rune_safety" : 1200,
-
-	//TABARD
-	"legend_armor.body.legend_southern_wide_belt" : 50,
-	"legend_armor.body.legend_southern_wrap_left" : 50,
-	"legend_armor.body.legend_southern_wrap_right" : 50,
-	"legend_armor.body.legend_southern_shoulder_cloth" : 100,
-	"legend_armor.body.legend_southern_wrap" : 100,
-	"legend_armor.body.legend_noble_vest" : 150,
-	"legend_armor.body.legend_southern_overcloth" : 150,
-	"legend_armor.body.legend_common_tabard" : 200,
-	"legend_armor.body.legend_southern_tabard" : 200,
-	"legend_armor.body.legend_noble_tabard" : 1000,
-
 	//NAMED
 	"legend_armor.body.black_leather" : 2000,
 	"legend_armor.body.blue_studded_mail" : 4000,
@@ -917,7 +819,103 @@
 	"legend_armor.cloak_emperor" : 15000,
 	"legend_armor.body.green_coat_of_plates" : 15000,
 
+	//LEGENDARY
+	"legend_armor.body.legend_named_warlock_cloak" : 5000,
+	"legend_armor.body.lindwurm_armor" : 7500,
+	"legend_armor.body.legend_mountain_armor" : 10000,
+	"legend_armor.body.legend_mountain_armor_named" : 10000,
+	"legend_armor.body.legend_skin_armor" : 10000,
+	"legend_armor.body.ijirok_armor" : 12000,
+	"legend_armor.body.armor_of_davkul" : 20000,
+	"legend_armor.body.emperors_armor" : 20000,
+
+	//CLOAK
+	"legend_armor.body.legend_shoulder_cloth" : 50,
+	"legend_armor.body.legend_armor_cloak_common" : 100,
+	"legend_armor.body.legend_southern_scarf" : 100,
+	"legend_armor.body.legend_dark_wooly_cloak" : 120,
+	"legend_armor.body.legend_sash" : 150,
+	"legend_armor.body.legend_southern_scarf_wrap" : 150,
+	"legend_armor.body.legend_animal_pelt" : 250,
+	"legend_armor.body.legend_noble_shawl" : 250,
+	"legend_armor.body.legend_armor_cloak_crusader" : 500,
+	"legend_armor.body.legend_armor_cloak_heavy" : 500,
+	"legend_armor.body.serpent_skin" : 800,
+	"legend_armor.body.unhold_fur" : 1000,
+	"legend_armor.body.lindwurm_scales" : 1800,
+	"legend_armor.body.legend_armor_cloak_noble" : 3000,
+	"legend_armor.body.legend_redback_cloak" : 6000,
+	"legend_armor.body.legend_hexe_leader_cloak" : 7500,
+	"legend_armor.body.legend_stollwurm_scales" : 9000,
+
+	//ARMOR_UPGRADES
+	"legend_armor_upgrade.negative_moulderedd" : -250,
+	"legend_armor_upgrade.negative_falling_apart" : -200,
+	"legend_armor_upgrade.negative_weathered" : -150,
+	"legend_armor_upgrade.negative_shabby" : -100,
+	"legend_armor_upgrade.barbarian_horn" : 250,
+	"legend_armor_upgrade.leather_neckguard" : 250,
+	"legend_armor_upgrade.leather_shoulderguards" : 250,
+	"armor_upgrade.light_gladiator_upgrade" : 400,
+	"legend_armor_upgrade.mail_patch" : 500,
+	"legend_armor_upgrade.direwolf_pelt" : 600,
+	"legend_armor_upgrade.double_mail" : 600,
+	"armor_upgrade.hyena_fur" : 600,
+	"legend_armor_upgrade.serpent_skin" : 600,
+	"legend_armor_upgrade.joint_cover" : 750,
+	"armor_upgrade.heavy_gladiator_upgrade" : 800,
+	"legend_armor_upgrade.metal_pauldrons" : 800,
+	"legend_armor_upgrade.metal_plating" : 800,
+	"legend_armor_upgrade.bone_platings" : 850,
+	"legend_armor_upgrade.unhold_fur" : 1000,
+	"legend_armor_upgrade.protective_runes" : 1100,
+	"legend_armor_upgrade.additional_padding" : 1200,
+	"legend_armor_upgrade.heraldic_plates" : 1800,
+	"legend_armor_upgrade.lindwurm_scales" : 1800,
+	"legend_armor_upgrade.light_padding_replacement" : 2000,
+	"legend_armor_upgrade.horn_plate" : 4000,
+	"legend_armor_upgrade.legend_stollwurm_scales" : 6000,
+	"legend_armor_upgrade.legend_white_wolf_pelt" : 6000,
+
+	//RUNES
+	"legend_armor_upgrade.legend_rune_endurance" : 1200,
+	"legend_armor_upgrade.legend_rune_resilience" : 1200,
+	"legend_armor_upgrade.legend_rune_safety" : 1200,
+
 //LEGEND_HELMETS
+
+	//HOOD
+	"armor.head.legend_helmet_goblin_scarf" : 5,
+	"armor.head.legend_helmet_mummy_bandage" : 5,
+	"armor.head.legend_helmet_cloth_cap" : 10,
+	"armor.head.legend_helmet_cloth_scarf" : 10,
+	"armor.head.legend_helmet_cloth_bandana" : 20,
+	"armor.head.legend_helmet_southern_headband_coin" : 20,
+	"armor.head.legend_helmet_southern_cap" : 30,
+	"armor.head.legend_helmet_southern_cap_dark" : 30,
+	"armor.head.legend_helmet_patched_hood" : 45,
+	"armor.head.legend_helmet_simple_hood" : 50,
+	"armor.head.legend_helmet_barb_leather_cap" : 55,
+	"armor.head.legend_helmet_leather_cap" : 75,
+	"armor.head.legend_helmet_rotten_chain_scarf" : 80,
+	"armor.head.legend_helmet_padded_cap" : 90,
+	"armor.head.legend_helmet_southern_open_hood" : 90,
+	"armor.head.legend_helmet_southern_turban_light_hood" : 90,
+	"armor.head.legend_helmet_leather_hood" : 110,
+	"armor.head.legend_helmet_padded_hood" : 115,
+	"armor.head.legend_helmet_barb_chain_scarf" : 125,
+	"armor.head.legend_helmet_aventail" : 150,
+	"armor.head.legend_helmet_chain_scarf" : 150,
+	"armor.head.legend_helmet_rusty_chain_hood" : 150,
+	"armor.head.legend_helmet_southern_open_chain_hood" : 200,
+	"armor.head.legend_helmet_barb_open_chain" : 225,
+	"armor.head.legend_helmet_open_chain_hood" : 225,
+	"armor.head.legend_helmet_southern_chain_hood" : 260,
+	"armor.head.legend_helmet_chain_hood" : 300,
+	"armor.head.legend_helmet_southern_niqaab" : 300,
+	"armor.head.legend_helmet_chain_hood_full" : 450,
+	"armor.head.legend_helmet_bronze_chain" : 600,
+	"armor.head.legend_helmet_enclave_bevor" : 750,
 
 	//HELM
 	"armor.head.legend_helmet_southern_leather_helm" : 60,
@@ -1013,44 +1011,6 @@
 
 	//HELMETS
 	"armor.head.legend_faction_helmet" : 200,
-
-	//HOOD
-	"armor.head.legend_helmet_goblin_scarf" : 5,
-	"armor.head.legend_helmet_mummy_bandage" : 5,
-	"armor.head.legend_helmet_cloth_cap" : 10,
-	"armor.head.legend_helmet_cloth_scarf" : 10,
-	"armor.head.legend_helmet_cloth_bandana" : 20,
-	"armor.head.legend_helmet_southern_headband_coin" : 20,
-	"armor.head.legend_helmet_southern_cap" : 30,
-	"armor.head.legend_helmet_southern_cap_dark" : 30,
-	"armor.head.legend_helmet_patched_hood" : 45,
-	"armor.head.legend_helmet_simple_hood" : 50,
-	"armor.head.legend_helmet_barb_leather_cap" : 55,
-	"armor.head.legend_helmet_leather_cap" : 75,
-	"armor.head.legend_helmet_rotten_chain_scarf" : 80,
-	"armor.head.legend_helmet_padded_cap" : 90,
-	"armor.head.legend_helmet_southern_open_hood" : 90,
-	"armor.head.legend_helmet_southern_turban_light_hood" : 90,
-	"armor.head.legend_helmet_leather_hood" : 110,
-	"armor.head.legend_helmet_padded_hood" : 115,
-	"armor.head.legend_helmet_barb_chain_scarf" : 125,
-	"armor.head.legend_helmet_aventail" : 150,
-	"armor.head.legend_helmet_chain_scarf" : 150,
-	"armor.head.legend_helmet_rusty_chain_hood" : 150,
-	"armor.head.legend_helmet_southern_open_chain_hood" : 200,
-	"armor.head.legend_helmet_barb_open_chain" : 225,
-	"armor.head.legend_helmet_open_chain_hood" : 225,
-	"armor.head.legend_helmet_southern_chain_hood" : 260,
-	"armor.head.legend_helmet_chain_hood" : 300,
-	"armor.head.legend_helmet_southern_niqaab" : 300,
-	"armor.head.legend_helmet_chain_hood_full" : 450,
-	"armor.head.legend_helmet_bronze_chain" : 600,
-	"armor.head.legend_helmet_enclave_bevor" : 750,
-
-	//RUNES
-	"legend_helmet_upgrade.legend_rune_bravery" : 1200,
-	"legend_helmet_upgrade.legend_rune_clarity" : 1200,
-	"legend_helmet_upgrade.legend_rune_luck" : 1200,
 
 	//TOP
 	"armor.head.legend_helmet_goblin_leaves" : 5,
@@ -1193,4 +1153,9 @@
 	"armor.head.legend_helmet_orc_tail" : 100,
 	"armor.head.legend_helmet_top_plume" : 100,
 	"armor.head.legend_helmet_wings" : 100,
+
+	//RUNES
+	"legend_helmet_upgrade.legend_rune_bravery" : 1200,
+	"legend_helmet_upgrade.legend_rune_clarity" : 1200,
+	"legend_helmet_upgrade.legend_rune_luck" : 1200,
 };

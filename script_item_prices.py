@@ -58,8 +58,56 @@ MANUAL_WEAPON_CATEGORIES = {
     'named_spetum.nut' : 'Polearm',
 }
 
+MISLABLED_WEAPONS2H = {
+    '"weapon.crossbow"',
+    '"weapon.masterwork_bow"',
+    '"weapon.goblin_heavy_bow"',
+}
 
-#TODO: further seperate items into 1h and 2h
+MISLABLED_WEAPONS1H = {
+    '"weapon.goblin_spiked_balls"',
+}
+
+PRINT_ORDER = [
+    'supplies',
+    'trade',
+    'tents',
+    'spawns',
+    'loot',
+    'misc',
+    'special',
+    'rune_sigils',
+    'tools',
+    'ammo',
+    'accessory',
+    'weapons',
+    'shields',
+    'legend_armor',
+    'legend_helmets',
+]
+
+ARMOR_ORDER = [
+    'ARMOR',
+    'CLOTH',
+    'CHAIN',
+    'PLATE',
+    'NAMED',
+    'LEGENDARY',
+    'CLOAK',
+    'ARMOR_UPGRADES',
+    'RUNES',
+]
+
+HELMET_ORDER = [
+    'HOOD',
+    'HELM',
+    'HELMETS',
+    'TOP',
+    'VANITY',
+    'VANITY_LOWER',
+    'RUNES',
+]
+
 def parseItem(path, name):
     if not name.endswith('.nut') or name in FILE_BLACKLIST: return
 
@@ -68,6 +116,7 @@ def parseItem(path, name):
     with open(os.path.join(path, name), encoding='utf-8') as file:
         id = None
         value = None
+        weapontype = None
         for line in file.readlines():
             if 'this.m.ID = ' in line:
                     query = re.findall(r'"(.+?)"', line)[0]
@@ -77,6 +126,8 @@ def parseItem(path, name):
             if CATEGORIES[0] == 'weapons' and 'this.m.WeaponType = ' in line:
                 if name in MANUAL_WEAPON_CATEGORIES:
                     CATEGORIES[1] = MANUAL_WEAPON_CATEGORIES[name]
+                    if CATEGORIES[1] not in DATA[CATEGORIES[0]]:
+                        DATA[CATEGORIES[0]][CATEGORIES[1]] = {}
                 else:
                     value = re.findall(r'=(.+)', line)[0].replace(';', '').strip()
                     types = value.split('|')
@@ -84,11 +135,36 @@ def parseItem(path, name):
                     CATEGORIES[1] = types[0].strip().replace('this.Const.Items.WeaponType.', '')
                     if CATEGORIES[1] not in DATA[CATEGORIES[0]]:
                         DATA[CATEGORIES[0]][CATEGORIES[1]] = {}
+            if CATEGORIES[0] == 'weapons' and 'this.m.ItemType = ' in line:
+                value = re.findall(r'=(.+)', line)[0].replace(';', '').strip()
+                types = value.split('|')
+                for type in types:
+                    if 'OneHanded' in type:
+                        weapontype = '1H'
+                        break
+                    elif 'TwoHanded' in type:
+                        weapontype = '2H'
+                        break
+
+
     if id is None:
         print(name)
     if value is None:
         return
-    DATA[CATEGORIES[0]][CATEGORIES[1]][id] = value
+    if CATEGORIES[0] != 'weapons':
+        DATA[CATEGORIES[0]][CATEGORIES[1]][id] = value
+    else:
+        if id in MISLABLED_WEAPONS2H:
+            weapontype = '2H'
+        if id in MISLABLED_WEAPONS1H:
+            weapontype = '1H'
+
+        if weapontype is None:
+            DATA[CATEGORIES[0]][CATEGORIES[1]][id] = value
+        else:
+            if weapontype not in DATA[CATEGORIES[0]][CATEGORIES[1]]:
+                DATA[CATEGORIES[0]][CATEGORIES[1]][weapontype] = {}
+            DATA[CATEGORIES[0]][CATEGORIES[1]][weapontype][id] = value
 
 def getCategories(path, name):
     #Get file category from path
@@ -102,10 +178,6 @@ def getCategories(path, name):
             SUBCATEGORY = tokens[1].upper()
         else: 
             SUBCATEGORY = getSubCategories(CATEGORY, name)
-    
-
-    #TODO: if weapon change category criteria
-    #TODO: if armor change category criteria
     
     if SUBCATEGORY not in DATA[CATEGORY]:
         DATA[CATEGORY][SUBCATEGORY] = {}
@@ -151,34 +223,54 @@ for MAIN_PATH in os.listdir(DIRECTORY_ITEMS):
         for name in files:
             parseItem(path, name)        
 
-print()
-
-PRINT_ORDER = [
-    'supplies',
-    'trade',
-    'tents',
-    'spawns',
-    'loot',
-    'misc',
-    'special',
-    'rune_sigils',
-    'tools',
-    'ammo',
-    'accessory',
-    'weapons',
-    'shields',
-    'legend_armor',
-    'legend_helmets',
-]
-
 with open(os.path.join(DIRECTORY_OUTPUT, f'Ω_economy_item_prices.nut'), "w+") as f_out:
     f_out.write('::Z.Economy.Items <- {\n')
     for CATEGORY in PRINT_ORDER:
         f_out.write(f'\n//{CATEGORY.upper()}\n')
-        if CATEGORY != 'legend_armor' and CATEGORY != 'legend_helmets':
+        
+        if CATEGORY == 'weapons':
+            #Print MAIN
             SORTED = sortByValue(DATA[CATEGORY]['MAIN'])
             for tuple in SORTED:
                 f_out.write(f'\t{tuple[0]} : {tuple[1]},\n')
+
+            #Print SUBCATEGORY but handle 1h/2h
+            for SUBCATEGORY in DATA[CATEGORY]:
+                if SUBCATEGORY == 'MAIN': continue
+                f_out.write('\n')
+                f_out.write(f'\t//{SUBCATEGORY.upper()}\n')
+                for TYPE in DATA[CATEGORY][SUBCATEGORY]:
+                    f_out.write(f'\t//{TYPE.upper()}\n')
+                    SORTED = sortByValue(DATA[CATEGORY][SUBCATEGORY][TYPE])
+                    for tuple in SORTED:
+                        f_out.write(f'\t{tuple[0]} : {tuple[1]},\n')
+            
+
+            continue
+
+        if CATEGORY == 'legend_armor':
+            for SUBCATEGORY in ARMOR_ORDER:
+                f_out.write('\n')
+                f_out.write(f'\t//{SUBCATEGORY.upper()}\n')
+                SORTED = sortByValue(DATA[CATEGORY][SUBCATEGORY])
+                for tuple in SORTED:
+                    f_out.write(f'\t{tuple[0]} : {tuple[1]},\n')
+            continue
+
+        if CATEGORY == 'legend_helmets':
+            for SUBCATEGORY in HELMET_ORDER:
+                f_out.write('\n')
+                f_out.write(f'\t//{SUBCATEGORY.upper()}\n')
+                SORTED = sortByValue(DATA[CATEGORY][SUBCATEGORY])
+                for tuple in SORTED:
+                    f_out.write(f'\t{tuple[0]} : {tuple[1]},\n')
+            continue
+        
+       
+        SORTED = sortByValue(DATA[CATEGORY]['MAIN'])
+        for tuple in SORTED:
+            f_out.write(f'\t{tuple[0]} : {tuple[1]},\n')
+
         for SUBCATEGORY in DATA[CATEGORY]:
             if SUBCATEGORY == 'MAIN': continue
             if SUBCATEGORY == 'NAMED': continue
