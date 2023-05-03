@@ -40,18 +40,16 @@
 	"supplies.ammo_small" : 30,
 	"supplies.ammo" : 60,
 
-	"supplies.medicine_small" : 100,
-	"supplies.medicine" : 200,
+	"supplies.medicine_small" : 60,
+	"supplies.medicine" : 120,
 
-	"supplies.armor_parts_small" : 62,
-	"supplies.armor_parts" : 124,
-
+	"supplies.armor_parts_small" : 75,
+	"supplies.armor_parts" : 150,
+ 
 	//FOOD
-	"supplies.legend_fresh_fruit" : 40,
-	"supplies.roots_and_berries" : 60,
-	"supplies.ground_grains" : 50,
-	"supplies.legend_cooking_spices" : 50,
-	"supplies.pickled_mushrooms" : 70,
+	"supplies.ground_grains" : 9,
+	"supplies.legend_fresh_fruit" : 11,
+	"supplies.roots_and_berries" : 11,
 	"supplies.dates" : 80,
 	"supplies.dried_fruits" : 110,
 	"supplies.rice" : 60,
@@ -82,13 +80,16 @@
 	"supplies.legend_pudding" : 0, //TODO: Remove
 	"supplies.legend_pie" : 0, //TODO: Remove
 	"supplies.cured_rations" : 0, //TODO: Remove
+	"supplies.legend_cooking_spices" : 0,// TODO: Remove
+	"supplies.pickled_mushrooms" : 0,// TODO: Remove
 
 //TRADE
-	"misc.legend_raw_wood" : 40,
+	"misc.legend_raw_wood" : 12,
+	"misc.quality_wood" : 54,
 	"misc.peat_bricks" : 100,
 	"misc.cloth_rolls" : 140,
 	"misc.dies" : 175,
-	"misc.quality_wood" : 180,
+	
 	"misc.copper_ingots" : 220,
 	"misc.amber_shards" : 260,
 	"misc.furs" : 300,
@@ -102,17 +103,18 @@
 	"misc.uncut_gems" : 520,
 	"misc.gold_ingots" : 720,
 
-//TENTS
-	"tent.scrap_tent" : 2000,
-	"tent.fletcher_tent" : 3000,
-	"tent.gather_tent" : 3000,
-	"tent.hunter_tent" : 3000,
-	"tent.scout_tent" : 3000,
-	"tent.healer_tent" : 5000,
-	"tent.repair_tent" : 5000,
-	"tent.craft_tent" : 10000,
-	"tent.enchant_tent" : 10000,
-	"tent.training_tent" : 10000,
+//TODO
+//TENTS 
+	"tent.scrap_tent" : 200,
+	"tent.fletcher_tent" : 200,
+	"tent.gather_tent" : 200,
+	"tent.hunter_tent" : 200,
+	"tent.scout_tent" : 200,
+	"tent.healer_tent" : 200,
+	"tent.repair_tent" : 200,
+	"tent.craft_tent" : 200,
+	"tent.enchant_tent" : 500,
+	"tent.training_tent" : 200,
 
 //SPAWNS
 	"spawns.skeleton" : 100,
@@ -393,9 +395,9 @@
 	"weapon.lightbringer_sword" : 20000,
 
 	//AXE
-	"weapon.legend_hoe" : 55,
-	"weapon.hatchet" : 210,
-	"weapon.woodcutters_axe" : 450,
+	"weapon.legend_hoe" : 3,
+	"weapon.hatchet" : 6,
+	"weapon.woodcutters_axe" : 12,
 	"weapon.crude_axe" : 800,
 	"weapon.legend_meat_hacker" : 900,
 	"weapon.hand_axe" : 1000,

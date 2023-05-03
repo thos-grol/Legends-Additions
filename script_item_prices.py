@@ -58,6 +58,8 @@ MANUAL_WEAPON_CATEGORIES = {
     'named_spetum.nut' : 'Polearm',
 }
 
+
+#TODO: further seperate items into 1h and 2h
 def parseItem(path, name):
     if not name.endswith('.nut') or name in FILE_BLACKLIST: return
 
