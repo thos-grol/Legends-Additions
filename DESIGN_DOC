@@ -1,14 +1,10 @@
 Economy Overhaul
     //TODO: background price table
         //TODO: background generation script
-    //TODO: change money added from contracts and events
+    //FEATURE_2: change money added from contracts and events
 
-    //TODO: remove most events that give free stuff, you need traits etc to earn them
-    //TODO: start making the world poorer, troop equipment nerf
-
-//TODO: Nutrition Overhaul? + Hunting overhaul?
-    function consumeFood()
-    Gathering Resources depends on the tile
+    //FEATURE_2: remove most events that give free stuff, you need traits etc to earn them
+    //FEATURE_3: start making the world poorer, troop equipment nerf
 
 ======== BUILDS ===========
 

@@ -2,9 +2,15 @@ import os
 import re
 from pathlib import Path
 
-root = r'C:\Files\Projects\bbros\env_reforged\skills\backgrounds'
-out = r'C:\Files\Projects\bbros\env_reforged_additions\scripts\config'
+root = r'C:\Files\Projects\bbros\env_legends\skills\backgrounds'
+out = r'C:\Files\Projects\bbros\mod_legends_additions\Legends-Additions\scripts\config'
 Backgrounds = {}
+
+MANUAL_HIRING_COSTS = {
+    'slave_background.nut' : 190,
+    'female_slave_background.nut' : 190,
+    'legend_puppet_background.nut' : 0,
+}
 
 def isValidFile(root, fname):
     return fname.endswith('.nut')
@@ -17,7 +23,7 @@ def sortTuple(tup):
 
 def parsePrice(root, fname):
     if fname == 'character_background.nut': return
-    with open(os.path.join(root, fname)) as file:
+    with open(os.path.join(root, fname), encoding='utf-8') as file:
         HiringCost = None
         DailyCost = None
         id = None
@@ -30,14 +36,14 @@ def parsePrice(root, fname):
                     query = re.findall(r'"(.+?)"', line)[0]
                     id = f'\"{query}\"'
             if 'this.m.HiringCost ' in line:
-                if fname == 'slave_background.nut':
-                    HiringCost = 190
+                if fname in MANUAL_HIRING_COSTS:
+                    HiringCost = MANUAL_HIRING_COSTS[fname]
                 else:
                     HiringCost = int(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
             if 'this.m.DailyCost ' in line:
                 DailyCost = int(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
             
-            #Parse equipment
+            #TODO Parse legends equipment generation
             if flag_equip:
                 if 'this.Math.rand' in line:
                     #start new category
@@ -74,44 +80,41 @@ for fname in os.listdir(root):
 # Generate background wages - small bug where 2 backgrounds have None hiring cost
 # simply just replace in output file
 
-# with open(os.path.join(out, f'Ω_economy_background_wages.nut'), "w+") as f_out:
-#     f_out.write('::Z.Backgrounds <- {};\n')
-#     f_out.write('::Z.Backgrounds.Equipment <- {};\n')
-#     f_out.write('::Z.Backgrounds.Wages <- {\n')
-#     for key in Backgrounds:
-#         if key == None: continue
-#         f_out.write(f'\t{key}' + ' : {\n')
-#         f_out.write(f'\t\t"HiringCost" : {Backgrounds[key]["HiringCost"]},\n')
-#         f_out.write(f'\t\t"DailyCost" : {Backgrounds[key]["DailyCost"]}\n')
-#         f_out.write('\t},\n')
+with open(os.path.join(out, f'Ω_economy_background_wages.nut'), "w+") as f_out:    
+    f_out.write('::Z.Backgrounds.Wages <- {\n')
+    for key in Backgrounds:
+        if key == None: continue
+        f_out.write(f'\t{key}' + ' : {\n')
+        f_out.write(f'\t\t"HiringCost" : {Backgrounds[key]["HiringCost"]},\n')
+        f_out.write(f'\t\t"DailyCost" : {Backgrounds[key]["DailyCost"]}\n')
+        f_out.write('\t},\n')
 
-#     f_out.write('};')
+    f_out.write('};')
 
 
 # Get backgrounds order from file
-# lst_backgrounds = []
-# with open(os.path.join(out, f'Ω_economy_background_wages.nut')) as f_out:
-#     for line in f_out.readlines():
-#         if '"background.' in line:
-#             query = re.findall(r'"(.+?)"', line)[0]
-#             id = f'\"{query}\"'
-#             lst_backgrounds.append(id)
+#TODO: Sort and categorize backgrounds
+lst_backgrounds = []
+with open(os.path.join(out, f'Ω_economy_background_wages.nut')) as f_out:
+    for line in f_out.readlines():
+        if '"background.' in line:
+            query = re.findall(r'"(.+?)"', line)[0]
+            id = f'\"{query}\"'
+            lst_backgrounds.append(id)
 
-# with open(os.path.join(out, f'Ω_economy_background_Ωequipment.nut'), "w+") as f_out:
-#     for i, key in enumerate(lst_backgrounds):
-#         if Backgrounds[key]["Equipment"] == []: continue
-#         f_out.write(f'::Z.Backgrounds.Equipment[{key}]' + ' <- [\n')
-#         for i, n in enumerate(Backgrounds[key]["Equipment"]):
-#             f_out.write(f'\t[\n')
-#             for item in n:
-#                 f_out.write(f'\t\t{item[1]},\n')
-#             f_out.write(f'\t],\n')
+#TODO: Adapt legends equipment generation
+with open(os.path.join(out, f'Ω_economy_background_Ωequipment.nut'), "w+") as f_out:
+    f_out.write('::Z.Backgrounds.Equipment <- {};\n')
+    for i, key in enumerate(lst_backgrounds):
+        if Backgrounds[key]["Equipment"] == []: continue
+        f_out.write(f'::Z.Backgrounds.Equipment[{key}]' + ' <- [\n')
+        for i, n in enumerate(Backgrounds[key]["Equipment"]):
+            f_out.write(f'\t[\n')
+            for item in n:
+                f_out.write(f'\t\t{item[1]},\n')
+            f_out.write(f'\t],\n')
 
-#         if i == len(lst_backgrounds):
-#             f_out.write('];')
-#         else:
-#             f_out.write('];\n\n')
-            
-
-
-
+        if i == len(lst_backgrounds):
+            f_out.write('];')
+        else:
+            f_out.write('];\n\n')

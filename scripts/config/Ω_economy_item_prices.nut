@@ -1,44 +1,87 @@
+//TODO: rebalance all item prices
+//FEATURE_2: this.World.Assets.addMoney
+	//overhaul contract pay
+	//event pay/prices
+
+//FEATURE_8: overhaul enemy equipment/builds
+
+// 12 Pence (d) = 1 Shilling (s)
+// 20 Shilling = 1 pound £
+
+// Horse harness maker: 4 Pence / Day
+// Mason: 6 Pence / Day
+// Laborer: 3,5 Pence / Day
+
+//levied spearmen 2 Pence / Day
+//!!!! pay of soldiers includes food and looting
+
+// Levied spearman: 2 Pence / Day
+// Archer: 3 Pence / Day
+// Squire: 12 d
+// Knight bachelor: 24 p / Day
+// Knight banneret: 48 p / Day
+
+// 4 gallons of ale: 1d
+// 1 hen: 5d
+// Brass pot: 2-13s
+// Crossbow: 12 Pence (today’s retail price, several 100$)
+// 1 Quiver of crossbow bolts: 16 Pence
+// 1 cart-horse: Up to 32 Shillings
+
+//bros will eat 2.0 (DailyFood) units per day
+//food unit is 25 so it will last 12 meals
+//base unit is d
+
+//Harnmaster prices
 ::Z.Economy.Items <- {
 
 //SUPPLIES
-	"supplies.ammo_small" : 50,
-	"supplies.ammo" : 100,
-	"supplies.armor_parts_small" : 100,
-	"supplies.medicine_small" : 100,
-	"supplies.armor_parts" : 200,
-	"supplies.medicine" : 200,
+	"supplies.ammo_small" : 30,
+	"supplies.ammo" : 60,
+	"supplies.armor_parts_small" : 60,
+	"supplies.medicine_small" : 60,
+	"supplies.armor_parts" : 120,
+	"supplies.medicine" : 120,
 
 	//FOOD
-	"supplies.legend_human_parts" : 5,
+	"supplies.ground_grains" : 9,
+	"supplies.legend_fresh_fruit" : 11,
+	"supplies.roots_and_berries" : 11,
+	//TODO: Supply prices
+	"supplies.dates" : 80,
+	"supplies.dried_fruits" : 110,
+	"supplies.rice" : 60,
+	"supplies.bread" : 65,
+	"supplies.goat_cheese" : 85,
+
+	//MEAT
 	"supplies.strange_meat" : 20,
 	"supplies.legend_fresh_meat" : 30,
-	"supplies.legend_fresh_fruit" : 40,
-	"supplies.ground_grains" : 50,
-	"supplies.legend_cooking_spices" : 50,
-	"supplies.legend_yummy_sausages" : 50,
-	"supplies.rice" : 60,
-	"supplies.roots_and_berries" : 60,
-	"supplies.bread" : 65,
-	"supplies.dried_fish" : 70,
-	"supplies.pickled_mushrooms" : 70,
-	"supplies.dates" : 80,
-	"supplies.black_marsh_stew" : 85,
-	"supplies.goat_cheese" : 85,
+	"supplies.dried_fish" : 40,
+	"supplies.smoked_ham" : 60,
+	"supplies.dried_lamb" : 75,
+	
+	//ALCOHOL
 	"supplies.mead" : 90,
-	"supplies.smoked_ham" : 90,
-	"supplies.cured_venison" : 100,
-	"supplies.dried_lamb" : 105,
-	"supplies.dried_fruits" : 110,
 	"supplies.beer" : 120,
 	"supplies.preserved_mead" : 120,
 	"supplies.wine" : 140,
-	"supplies.fermented_unhold_heart" : 150,
-	"supplies.legend_porridge" : 150,
-	"supplies.legend_pudding" : 200,
-	"supplies.legend_pie" : 250,
-	"supplies.cured_rations" : 300,
 
-//TRADE
+	//REMOVED
+	"supplies.cured_venison" : 0,
+	"supplies.legend_human_parts" : 0, //FEATURE_1: Remove skill
+	"supplies.fermented_unhold_heart" : 0,
+	"supplies.legend_yummy_sausages" : 0,
+	"supplies.black_marsh_stew" : 0, //FEATURE_1: Remove from hexe drops
+
+	"supplies.legend_porridge" : 0, //FEATURE_1: Remove from a lot of places
+	"supplies.legend_pudding" : 0, //FEATURE_1: Remove
+	"supplies.legend_pie" : 0, //FEATURE_1: Remove
+	"supplies.cured_rations" : 0, //FEATURE_1: Remove
+	"supplies.legend_cooking_spices" : 0,// FEATURE_1: Remove
+	"supplies.pickled_mushrooms" : 0,// FEATURE_1: Remove
+
+//TRADE //TODO: Trade prices
 	"misc.legend_raw_wood" : 40,
 	"misc.peat_bricks" : 100,
 	"misc.cloth_rolls" : 140,
@@ -57,7 +100,7 @@
 	"misc.uncut_gems" : 520,
 	"misc.gold_ingots" : 720,
 
-//TENTS
+//TENTS //TODO: Tent prices
 	"tent.scrap_tent" : 2000,
 	"tent.fletcher_tent" : 3000,
 	"tent.gather_tent" : 3000,
@@ -69,14 +112,14 @@
 	"tent.enchant_tent" : 10000,
 	"tent.training_tent" : 10000,
 
-//SPAWNS
+//SPAWNS //TODO: Spawn prices
 	"spawns.skeleton" : 100,
 	"spawns.zombie" : 100,
 	"spawns.donkey" : 5000,
 	"spawns.cart_01" : 15000,
 	"spawns.cart_02" : 25000,
 
-//LOOT
+//LOOT //TODO: Loot prices and removal
 	"misc.bone_figurines" : 180,
 	"misc.webbed_valuables" : 180,
 	"misc.goblin_carved_ivory_iconographs" : 200,
@@ -105,7 +148,7 @@
 	"misc.lindwurm_hoard" : 1200,
 	"misc.jeweled_crown" : 1260,
 
-//MISC
+//MISC //TODO: Misc prices
 	"misc.legend_scroll" : 0,
 	"misc.manhunters_ledger" : 0,
 	"misc.ancient_scroll" : 50,
@@ -208,7 +251,7 @@
 	"misc.webknecht_potion" : 0,
 	"misc.wiederganger_potion" : 0,
 
-//SPECIAL
+//SPECIAL //TODO: Special prices
 	"misc.black_book" : 1000,
 	"misc.broken_ritual_armor" : 1000,
 	"misc.bodily_reward" : 2500,
@@ -218,10 +261,10 @@
 	"misc.golden_goose" : 3000,
 	"misc.trade_jug" : 10000,
 
-//RUNE_SIGILS
+//RUNE_SIGILS //TODO: Rune prices
 	"token.legend_vala_inscription" : 1200,
 
-//TOOLS
+//TOOLS //TODO: Tools prices
 	"tool.legend_broken_throwing_net" : 5,
 	"tool.throwing_net" : 50,
 	"weapon.holy Water" : 100,
@@ -233,13 +276,13 @@
 	"weapon.faction_banner" : 1000,
 	"weapon.player_banner" : 1500,
 
-//AMMO
+//AMMO //TODO: ammo prices
 	"ammo.arrows" : 35,
 	"ammo.bolts" : 35,
 	"ammo.legend_darts" : 35,
 	"ammo.powder" : 50,
 
-//ACCESSORY
+//ACCESSORY //TODO: ACCESSORY prices
 	"accessory.oathtaker_skull_01" : 0,
 	"accessory.oathtaker_skull_02" : 0,
 	"accessory.bandage" : 25,
@@ -303,7 +346,7 @@
 	"accessory.legend_oms_paw" : 2345,
 	"accessory.legend_oms_amphora" : 2450,
 
-//WEAPONS
+//WEAPONS //TODO: WEAPONS prices
 	"shield.legend_parrying_dagger" : 500,
 	"shield.legend_named_parrying_dagger" : 800,
 
@@ -605,7 +648,7 @@
 	"weapon.handgonne" : 3000,
 	"weapon.named_handgonne" : 5000,
 
-//SHIELDS
+//SHIELDS //TODO: SHIELDS prices
 	"shield.buckler" : 45,
 	"shield.wooden_shield_old" : 60,
 	"shield.faction_wooden_shield" : 90,
@@ -664,7 +707,7 @@
 	"shield.named_golden_round" : 1500,
 	"shield.named_sipar_shield" : 1500,
 
-//LEGEND_ARMOR
+//LEGEND_ARMOR //TODO: LEGEND_ARMOR prices
 
 	//ARMOR
 	"legend_armor.body.legend_rabble_fur" : 5,
@@ -882,7 +925,7 @@
 	"legend_armor_upgrade.legend_rune_resilience" : 1200,
 	"legend_armor_upgrade.legend_rune_safety" : 1200,
 
-//LEGEND_HELMETS
+//LEGEND_HELMETS //TODO: LEGEND_HELMETS prices
 
 	//HOOD
 	"armor.head.legend_helmet_goblin_scarf" : 5,
