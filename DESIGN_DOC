@@ -240,7 +240,7 @@ Undead cannot be charmed
 
 ::addItem("preserved_mead_item")
 
-::addItem("direwolf_potion_item")
+::addItem("legend_robes_wizard")
 ::addItem("apotheosis_potion_item")
 ::addItem("goblin_overseer_potion_item")
 ::addItem("nachzehrer_potion_item")
