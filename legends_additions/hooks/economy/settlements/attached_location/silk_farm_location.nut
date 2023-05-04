@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/silk_farm_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/silk_farm_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("trade/silk_item");

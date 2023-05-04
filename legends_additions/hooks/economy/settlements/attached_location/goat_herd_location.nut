@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/goat_herd_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/goat_herd_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("supplies/goat_cheese_item");

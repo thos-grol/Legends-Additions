@@ -318,7 +318,8 @@ def parse(root, fname):
         path = getPath(id.replace('"', ''))
         if path is None: return
         with open(os.path.join(path, fname), 'w+') as f_out:
-            f_out.write(f'::mods_hookExactClass(\"skills/backgrounds/{fname}\", function(o) ' + '{\n')
+            newname = fname.replace('.nut', '')
+            f_out.write(f'::mods_hookExactClass(\"skills/backgrounds/{newname}\", function(o) ' + '{\n')
             f_out.write(f'\tlocal create = o.create;\n')
             f_out.write(f'\to.create = function()\n')
             f_out.write('\t{\n')

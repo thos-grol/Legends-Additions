@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/incense_dryer_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/incense_dryer_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("trade/incense_item");

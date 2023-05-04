@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/gatherers_hut_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/gatherers_hut_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("supplies/roots_and_berries_item");

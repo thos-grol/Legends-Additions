@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/settlements/city_state.nut", function(o) {
+::mods_hookExactClass("entity/world/settlements/city_state", function(o) {
 	o.create = function()
 	{
 		this.settlement.create();

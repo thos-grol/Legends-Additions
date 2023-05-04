@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/amber_collector_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/amber_collector_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("trade/amber_shards_item");

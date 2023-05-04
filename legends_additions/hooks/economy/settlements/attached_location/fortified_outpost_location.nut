@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/fortified_outpost_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/fortified_outpost_location", function(o) {
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
@@ -172,24 +172,9 @@
 				S = "armor/mail_hauberk"
 			});
 			_list.push({
-				R = 50,
-				P = 1.0,
-				S = "weapons/crossbow"
-			});
-			_list.push({
 				R = 80,
 				P = 1.0,
 				S = "tents/tent_train"
-			});
-			_list.push({
-				R = 50,
-				P = 1.0,
-				S = "weapons/light_crossbow"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "ammo/quiver_of_bolts"
 			});
 
 			if (this.Const.DLC.Unhold)

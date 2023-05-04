@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/settlements/buildings/tavern_building.nut", function(o) {
+::mods_hookExactClass("entity/world/settlements/buildings/tavern_building", function(o) {
 	o.buildText = function( _text )
 	{
 		local villages = this.World.EntityManager.getSettlements();

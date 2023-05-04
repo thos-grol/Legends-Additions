@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/militia_trainingcamp_oriental_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/militia_trainingcamp_oriental_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("supplies/ammo_small_item");

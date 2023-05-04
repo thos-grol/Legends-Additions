@@ -1,4 +1,3 @@
-//TODO: rebalance all item prices
 //FEATURE_2: this.World.Assets.addMoney
 	//overhaul contract pay
 	//event pay/prices
@@ -24,17 +23,13 @@
 // 4 gallons of ale: 1d
 // 1 hen: 5d
 // Brass pot: 2-13s
-// Crossbow: 12 Pence (today’s retail price, several 100$)
-// 1 Quiver of crossbow bolts: 16 Pence
 // 1 cart-horse: Up to 32 Shillings
 
 //bros will eat 2.0 (DailyFood) units per day
 //food unit is 25 so it will last 12 meals
 //base unit is d
 
-//Harnmaster prices
 ::Z.Economy.Items <- {
-
 //SUPPLIES
 	"supplies.ammo_small" : 30,
 	"supplies.ammo" : 60,
@@ -44,31 +39,30 @@
 	"supplies.medicine" : 120,
 
 	//FOOD
-	"supplies.ground_grains" : 9,
-	"supplies.legend_fresh_fruit" : 11,
-	"supplies.roots_and_berries" : 11,
-	//TODO: Supply prices
-	"supplies.dates" : 80,
-	"supplies.dried_fruits" : 110,
-	"supplies.rice" : 60,
-	"supplies.bread" : 65,
-	"supplies.goat_cheese" : 85,
+	"supplies.ground_grains" : 5, //unit of 15 servings
+	"supplies.rice" : 7, //unit of 20
+	"supplies.bread" : 10, //unit of 20 loafs
+	"supplies.legend_fresh_fruit" : 11, //unit of 15
+	"supplies.roots_and_berries" : 11, //unit of 15
+	"supplies.dates" : 22, //unit of 20
+	"supplies.dried_fruits" : 32, //unit of 30
 
 	//MEAT
-	"supplies.strange_meat" : 20,
-	"supplies.legend_fresh_meat" : 30,
-	"supplies.dried_fish" : 40,
-	"supplies.smoked_ham" : 60,
-	"supplies.dried_lamb" : 75,
+	"supplies.strange_meat" : 15, //unit of 15
+	"supplies.legend_fresh_meat" : 15, //unit of 15
+	"supplies.dried_fish" : 40, //unit of 20
+	"supplies.smoked_ham" : 60, //unit of 30
+	"supplies.dried_lamb" : 90, //unit of 30
 	
 	//ALCOHOL
-	"supplies.mead" : 90,
-	"supplies.beer" : 120,
-	"supplies.preserved_mead" : 120,
-	"supplies.wine" : 140,
+	"supplies.beer" : 9, //35 units
+	"supplies.mead" : 13, //25 units
+	"supplies.preserved_mead" : 17, //20 units
+	"supplies.wine" : 27, //35 units
 
 	//REMOVED
 	"supplies.cured_venison" : 0,
+	"supplies.goat_cheese" : 0, //FEATURE_1: Remove
 	"supplies.legend_human_parts" : 0, //FEATURE_1: Remove skill
 	"supplies.fermented_unhold_heart" : 0,
 	"supplies.legend_yummy_sausages" : 0,
@@ -81,43 +75,54 @@
 	"supplies.legend_cooking_spices" : 0,// FEATURE_1: Remove
 	"supplies.pickled_mushrooms" : 0,// FEATURE_1: Remove
 
-//TRADE //TODO: Trade prices
-	"misc.legend_raw_wood" : 40,
-	"misc.peat_bricks" : 100,
-	"misc.cloth_rolls" : 140,
-	"misc.dies" : 175,
-	"misc.quality_wood" : 180,
-	"misc.copper_ingots" : 220,
-	"misc.amber_shards" : 260,
-	"misc.furs" : 300,
-	"misc.iron_ingots" : 300,
-	"misc.spices" : 320,
-	"misc.salt" : 340,
-	"misc.incense" : 380,
-	"misc.legend_cooking_spices" : 380,
-	"misc.tin_ingots" : 420,
-	"misc.silk" : 460,
-	"misc.uncut_gems" : 520,
-	"misc.gold_ingots" : 720,
+//TRADE
+	
+	"misc.peat_bricks" : 34,
+	"misc.dies" : 59,
+	
+	"misc.amber_shards" : 87,
+	"misc.spices" : 107,
+	"misc.salt" : 114,
+	"misc.incense" : 127,
+	
+	"misc.cloth_rolls" : 46,
+	"misc.furs" : 100,
+	"misc.silk" : 154,
 
-//TENTS //TODO: Tent prices
-	"tent.scrap_tent" : 2000,
-	"tent.fletcher_tent" : 3000,
-	"tent.gather_tent" : 3000,
-	"tent.hunter_tent" : 3000,
-	"tent.scout_tent" : 3000,
-	"tent.healer_tent" : 5000,
-	"tent.repair_tent" : 5000,
-	"tent.craft_tent" : 10000,
-	"tent.enchant_tent" : 10000,
-	"tent.training_tent" : 10000,
+	"misc.legend_raw_wood" : 18, //6 units
+	"misc.quality_wood" : 60, //6 units
 
-//SPAWNS //TODO: Spawn prices
-	"spawns.skeleton" : 100,
-	"spawns.zombie" : 100,
-	"spawns.donkey" : 5000,
-	"spawns.cart_01" : 15000,
-	"spawns.cart_02" : 25000,
+	"misc.iron_ingots" : 200, //5 13 pound ingots
+	"misc.copper_ingots" : 300,
+	"misc.tin_ingots" : 300,
+
+	//FEATURE_7: make silver ingot item
+	"misc.gold_ingots" : 6400, //FEATURE_7: redo item to be 1 ingot
+	//FEATURE_7: add gemstones
+	"misc.uncut_gems" : 840, //6 units of uncut emeralds
+	"misc.gemstones" : 1400, //2 units of cut emeralds //FEATURE_1: Change to trade item
+	
+	//Removed
+	"misc.legend_cooking_spices" : 0, //FEATURE_1: Remove
+
+//TENTS
+	"tent.scrap_tent" : 200,
+	"tent.fletcher_tent" : 200,
+	"tent.gather_tent" : 200,
+	"tent.hunter_tent" : 200,
+	"tent.scout_tent" : 200,
+	"tent.healer_tent" : 200,
+	"tent.repair_tent" : 200,
+	"tent.craft_tent" : 200, //FEATURE_8: disable + disable crafting in party
+	"tent.training_tent" : 500,
+	"tent.enchant_tent" : 1000,
+
+//SPAWNS
+	"spawns.skeleton" : 0,
+	"spawns.zombie" : 0,
+	"spawns.donkey" : 0, //FEATURE_1: Remove
+	"spawns.cart_01" : 260,
+	"spawns.cart_02" : 400,
 
 //LOOT //TODO: Loot prices and removal
 	"misc.bone_figurines" : 180,
@@ -144,9 +149,9 @@
 	"misc.white_pearls" : 770,
 	"misc.ancient_gold_coins" : 875,
 	"misc.golden_chalice" : 980,
-	"misc.gemstones" : 1120,
-	"misc.lindwurm_hoard" : 1200,
-	"misc.jeweled_crown" : 1260,
+	
+	"misc.lindwurm_hoard" : 0, //FEATURE_1: Remove
+	"misc.jeweled_crown" : 0, //FEATURE_1: Remove
 
 //MISC //TODO: Misc prices
 	"misc.legend_scroll" : 0,
@@ -214,43 +219,6 @@
 	"misc.legend_stollwurm_scales" : 6000,
 	"misc.legend_demon_third_eye" : 7500,
 
-	//ANATOMIST
-	"misc.alp_potion" : 0,
-	"misc.ancient_priest_potion" : 0,
-	"misc.apotheosis_potion" : 0,
-	"misc.direwolf_potion" : 0,
-	"misc.fallen_hero_potion" : 0,
-	"misc.geist_potion" : 0,
-	"misc.goblin_grunt_potion" : 0,
-	"misc.goblin_overseer_potion" : 0,
-	"misc.goblin_shaman_potion" : 0,
-	"misc.hexe_potion" : 0,
-	"misc.honor_guard_potion" : 0,
-	"misc.hyena_potion" : 0,
-	"misc.ifrit_potion" : 0,
-	"misc.ijirok_potion" : 0,
-	"misc.kraken_potion" : 0,
-	"misc.lindwurm_potion" : 0,
-	"misc.lorekeeper_potion" : 0,
-	"misc.nachzehrer_potion" : 0,
-	"misc.necromancer_potion" : 0,
-	"misc.necrosavant_potion" : 0,
-	"misc.orc_berserker_potion" : 0,
-	"misc.orc_warlord_potion" : 0,
-	"misc.orc_warrior_potion" : 0,
-	"misc.orc_young_potion" : 0,
-	"misc.rachegeist_potion" : 0,
-	"misc.research_notes_beasts" : 0,
-	"misc.research_notes_greenskins" : 0,
-	"misc.research_notes_legendary" : 0,
-	"misc.research_notes_undead" : 0,
-	"misc.schrat_potion" : 0,
-	"misc.serpent_potion" : 0,
-	"misc.skeleton_warrior_potion" : 0,
-	"misc.unhold_potion" : 0,
-	"misc.webknecht_potion" : 0,
-	"misc.wiederganger_potion" : 0,
-
 //SPECIAL //TODO: Special prices
 	"misc.black_book" : 1000,
 	"misc.broken_ritual_armor" : 1000,
@@ -265,22 +233,34 @@
 	"token.legend_vala_inscription" : 1200,
 
 //TOOLS //TODO: Tools prices
-	"tool.legend_broken_throwing_net" : 5,
-	"tool.throwing_net" : 50,
-	"weapon.holy Water" : 100,
-	"tool.reinforced_throwing_net" : 150,
-	"weapon.acid_flask" : 400,
-	"weapon.smoke_bomb" : 400,
-	"weapon.daze_bomb" : 500,
-	"weapon.fire_bomb" : 600,
-	"weapon.faction_banner" : 1000,
-	"weapon.player_banner" : 1500,
+	"tool.legend_broken_throwing_net" : 0, //FEATURE_5: Remove
+	"tool.throwing_net" : 50, //FEATURE_5: refillable with tools
+	"tool.reinforced_throwing_net" : 150, //FEATURE_5: refillable with tools
+	"weapon.holy Water" : 100, //FEATURE_5: refillable with priest
+	"weapon.acid_flask" : 400, //FEATURE_5: refillable with alchemist
+	"weapon.smoke_bomb" : 400, //FEATURE_5: refillable with alchemist
+	"weapon.daze_bomb" : 500, //FEATURE_5: refillable with alchemist
+	"weapon.fire_bomb" : 600, //FEATURE_5: refillable with alchemist
+	"accessory.berserker_mushrooms" : 100,
+	"accessory.legend_apothecary_mushrooms" : 100,
+	"accessory.poison" : 100,
+	"accessory.antidote" : 150, //FEATURE_5: refillable with alchemist
+	"accessory.spider_poison" : 150, //FEATURE_5: refillable with alchemist, rename to poison
+	"accessory.iron_will_potion" : 300, //FEATURE_5: refillable with alchemist
+	"accessory.lionheart_potion" : 300, //FEATURE_5: refillable with alchemist
+	"accessory.night_vision_elixir" : 350, //FEATURE_5: refillable with alchemist
+	"accessory.recovery_potion" : 350, //FEATURE_5: refillable with alchemist
+	"accessory.therianthropy_potion" : 500, //TODO: remove
+	"accessory.legend_heartwood_sap_flask" : 3500,
+	"accessory.legend_skin_ghoul_blood_flask" : 3500,
+	"accessory.legend_stollwurm_blood_flask" : 3500,
+	"accessory.legend_hexen_ichor_potion" : 7000,
 
 //AMMO //TODO: ammo prices
-	"ammo.arrows" : 35,
-	"ammo.bolts" : 35,
-	"ammo.legend_darts" : 35,
-	"ammo.powder" : 50,
+	"ammo.arrows" : 30,
+	"ammo.bolts" : 30,
+	"ammo.legend_darts" : 30,
+	"ammo.powder" : 80, //FEATURE_5: refillable with alchemist
 
 //ACCESSORY //TODO: ACCESSORY prices
 	"accessory.oathtaker_skull_01" : 0,
@@ -301,22 +281,6 @@
 	"accessory.legend_demon_banshee_trophy" : 1000,
 	"accessory.legend_demonalp_trophy" : 2500,
 	"accessory.legend_hexen_leader_trophy" : 2500,
-
-	//POTION
-	"accessory.berserker_mushrooms" : 100,
-	"accessory.legend_apothecary_mushrooms" : 100,
-	"accessory.poison" : 100,
-	"accessory.antidote" : 150,
-	"accessory.spider_poison" : 150,
-	"accessory.iron_will_potion" : 300,
-	"accessory.lionheart_potion" : 300,
-	"accessory.night_vision_elixir" : 350,
-	"accessory.recovery_potion" : 350,
-	"accessory.therianthropy_potion" : 500,
-	"accessory.legend_heartwood_sap_flask" : 3500,
-	"accessory.legend_skin_ghoul_blood_flask" : 3500,
-	"accessory.legend_stollwurm_blood_flask" : 3500,
-	"accessory.legend_hexen_ichor_potion" : 7000,
 
 	//PET
 	"accessory.legend_cat_item" : 100,
@@ -347,17 +311,16 @@
 	"accessory.legend_oms_amphora" : 2450,
 
 //WEAPONS //TODO: WEAPONS prices
-	"shield.legend_parrying_dagger" : 500,
-	"shield.legend_named_parrying_dagger" : 800,
-
 	//SWORD
 	//1H
 	"weapon.sickle" : 45,
 	"weapon.broken_ancient_sword" : 200,
-	"weapon.shortsword" : 350,
+
+	"weapon.shortsword" : 90,
 	"weapon.goblin_notched_blade" : 350,
 	"weapon.saif" : 350,
-	"weapon.falchion" : 500,
+	"weapon.falchion" : 120,
+
 	"weapon.ancient_sword" : 850,
 	"weapon.goblin_falchion" : 900,
 	"weapon.legend_gladius" : 950,
@@ -468,6 +431,8 @@
 	"weapon.spetum" : 750,
 	"weapon.goblin_pike" : 800,
 	"weapon.pike" : 900,
+	"weapon.faction_banner" : 1000,
+	"weapon.player_banner" : 1500,
 	"weapon.swordlance" : 1600,
 	"weapon.billhook" : 1875,
 	"weapon.named_bladed_pikee" : 2200,
@@ -484,7 +449,7 @@
 
 	//MACE
 	//1H
-	"weapon.wooden_stick" : 35,
+	"weapon.wooden_stick" : 0, //TODO: Remove from shops
 	"weapon.bludgeon" : 90,
 	"weapon.claw_club" : 100,
 	"weapon.nomad_mace" : 100,
@@ -511,7 +476,7 @@
 
 	//SPEAR
 	//1H
-	"weapon.legend_wooden_spear" : 15,
+	"weapon.legend_wooden_spear" : 0, //TODO: Remove from shops
 	"weapon.ancient_spear" : 150,
 	"weapon.militia_spear" : 180,
 	"weapon.legend_militia_glaive" : 350,
@@ -530,21 +495,13 @@
 	"weapon.legend_military_goedendag" : 2000,
 	"weapon.legend_named_military_goedendag" : 5400,
 
-	//CROSSBOW
-	//2H
-	"weapon.legend_blowgun" : 30,
-	"weapon.light_crossbow" : 300,
-	"weapon.crossbow" : 750,
-	"weapon.goblin_crossbow" : 2000,
-	"weapon.heavy_crossbow" : 3200,
-	"weapon.named_crossbow" : 4400,
-
 	//DAGGER
-	//1H
-	"weapon.legend_shiv" : 3,
-	"weapon.legend_wooden_stake" : 10,
+	"weapon.legend_shiv" : 0, //TODO: Remove from shops
+	"weapon.legend_wooden_stake" : 0, //TODO: Remove from shops
 	"weapon.knife" : 30,
 	"weapon.dagger" : 180,
+	"shield.legend_parrying_dagger" : 500,
+	"shield.legend_named_parrying_dagger" : 800,
 	"weapon.rondel_dagger" : 400,
 	"weapon.qatal_dagger" : 750,
 	"weapon.legend_katar" : 1250,
@@ -555,8 +512,8 @@
 
 	//FLAIL
 	//1H
-	"weapon.wooden_flail" : 40,
-	"weapon.reinforced_wooden_flail" : 300,
+	"weapon.wooden_flail" : 0, //TODO: Remove from shops
+	"weapon.reinforced_wooden_flail" : 0, //TODO: Remove from shops
 	"weapon.flail" : 1800,
 	"weapon.three_headed_flail" : 2200,
 	"weapon.named_flail" : 3400,
@@ -572,38 +529,6 @@
 	"weapon.two_handed_flail" : 2800,
 	"weapon.named_two_handed_flail" : 2800,
 	"weapon.legend_named_flail" : 3000,
-
-	//BOW
-	//2H
-	"weapon.wonky_bow" : 100,
-	"weapon.short_bow" : 200,
-	"weapon.goblin_bow" : 250,
-	"weapon.composite_bow" : 400,
-	"weapon.goblin_heavy_bow" : 500,
-	"weapon.hunting_bow" : 600,
-	"weapon.named_goblin_heavy_bow" : 2200,
-	"weapon.war_bow" : 2900,
-	"weapon.masterwork_bow" : 3500,
-	"weapon.named_warbow" : 4600,
-
-	//THROWING
-	//1H
-	"weapon.orc_javelin" : 150,
-	"weapon.javelin" : 200,
-	"weapon.throwing_axe" : 200,
-	"weapon.goblin_spiked_balls" : 200,
-	"weapon.heavy_javelin" : 300,
-	"weapon.heavy_throwing_axe" : 300,
-	"weapon.throwing_spear" : 400,
-	"weapon.named_javelin" : 1400,
-	"weapon.named_throwing_axe" : 1400,
-
-	//MUSICAL
-	//2H
-	"weapon.lute" : 50,
-	"weapon.legend_drum" : 100,
-	"weapon.barbarian_drum" : 300,
-	"weapon.named_lute" : 1000,
 
 	//HAMMER
 	//1H
@@ -633,6 +558,43 @@
 	"weapon.legend_mystic_staff" : 1000,
 	"weapon.legend_staff_vala" : 1000,
 	"weapon.legend_staff_gnarled" : 5000,
+
+	//BOW
+	"weapon.wonky_bow" : 0, //TODO: Remove from shops
+	"weapon.short_bow" : 200,
+	"weapon.goblin_bow" : 250,
+	"weapon.composite_bow" : 400,
+	"weapon.goblin_heavy_bow" : 500,
+	"weapon.hunting_bow" : 600,
+	"weapon.named_goblin_heavy_bow" : 2200,
+	"weapon.war_bow" : 2900,
+	"weapon.masterwork_bow" : 3500,
+	"weapon.named_warbow" : 4600,
+
+	//CROSSBOW //FEATURE_1: crossbows + bolts are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
+	"weapon.legend_blowgun" : 0,
+	"weapon.light_crossbow" : 180,
+	"weapon.crossbow" : 225,
+	"weapon.heavy_crossbow" : 315,
+	"weapon.goblin_crossbow" : 375, //FEATURE_1: description, superior goods
+	"weapon.named_crossbow" : 473, //heavy crossbow variant, //FEATURE_1: named goblin crossbow
+	
+	//THROWING
+	"weapon.orc_javelin" : 150,
+	"weapon.javelin" : 200,
+	"weapon.throwing_axe" : 200,
+	"weapon.goblin_spiked_balls" : 200,
+	"weapon.heavy_javelin" : 300,
+	"weapon.heavy_throwing_axe" : 300,
+	"weapon.throwing_spear" : 400,
+	"weapon.named_javelin" : 1400,
+	"weapon.named_throwing_axe" : 1400,
+
+	//MUSICAL
+	"weapon.lute" : 50,
+	"weapon.legend_drum" : 100,
+	"weapon.barbarian_drum" : 300,
+	"weapon.named_lute" : 1000,
 
 	//SLING
 	//1H
@@ -723,38 +685,44 @@
 	"legend_armor_upgrade.legend_redback_cloak" : 7500,
 	"legend_armor_upgrade.legend_hexe_leader_cloak" : 12000,
 
-	//CLOTH
-	"legend_armor.body.legend_bandages" : 1,
-	"legend_armor.body.legend_sackcloth_tattered" : 5,
-	"legend_armor.body.legend_sackcloth" : 15,
+	//CLOTH //TODO: spawn in game and examine
+	"legend_armor.body.legend_sackcloth_tattered" : 0,
+	"legend_armor.body.legend_sackcloth" : 0,
+
 	"legend_armor.body.legend_ancient_cloth" : 20,
-	"legend_armor.body.legend_peasant_dress" : 25,
-	"legend_armor.body.legend_robes" : 25,
-	"legend_armor.body.legend_robes_nun" : 25,
-	"legend_armor.body.legend_sackcloth_patched" : 25,
-	"legend_armor.body.legend_tunic" : 25,
-	"legend_armor.body.legend_tunic_collar_deep" : 25,
-	"legend_armor.body.legend_tunic_collar_thin" : 25,
-	"legend_armor.body.legend_tunic_wrap" : 25,
-	"legend_armor.body.legend_southern_robe" : 35,
 	"legend_armor.body.legend_ancient_cloth_restored" : 40,
+	"legend_armor.body.legend_peasant_dress" : 24,
+	"legend_armor.body.legend_robes" : 24,
+	"legend_armor.body.legend_robes_nun" : 24,
+	"legend_armor.body.legend_sackcloth_patched" : 24,
+	"legend_armor.body.legend_tunic" : 24,
+	"legend_armor.body.legend_southern_tunic" : 50, 
+	"legend_armor.body.legend_tunic_collar_deep" : 24,
+	"legend_armor.body.legend_tunic_collar_thin" : 24,
+	"legend_armor.body.legend_tunic_wrap" : 24,
+	"legend_armor.body.legend_southern_robe" : 24,
+
 	"legend_armor.body.legend_thick_tunic" : 40,
 	"legend_armor.body.legend_apron_butcher" : 50,
+
 	"legend_armor.body.legend_dark_tunic" : 50,
 	"legend_armor.body.legend_robes_wizard" : 50,
-	"legend_armor.body.legend_southern_tunic" : 50,
+	
 	"legend_armor.body.legend_apron" : 60,
 	"legend_armor.body.legend_robes_magic" : 100,
 	"legend_armor.body.legend_gladiator_harness" : 150,
 	"legend_armor.body.legend_padded_surcoat" : 150,
 	"legend_armor.body.legend_padded_surcoat_plain" : 150,
+
 	"legend_armor.body.legend_gambeson" : 250,
 	"legend_armor.body.legend_gambeson_plain" : 250,
 	"legend_armor.body.legend_southern_gambeson" : 250,
 	"legend_armor.body.legend_southern_split_gambeson" : 250,
-	"legend_armor.body.legend_gambeson_wolf" : 300,
+	"legend_armor.body.legend_gambeson_wolf" : 250,
+
 	"legend_armor.body.legend_southern_noble_surcoat" : 350,
-	"legend_armor.body.legend_tunic_noble" : 500,
+	"legend_armor.body.legend_tunic_noble" : 176,
+
 	"legend_armor.body.legend_gambeson_named" : 1500,
 	"legend_armor.body.legend_tunic_noble_named" : 1500,
 
@@ -936,16 +904,20 @@
 	"armor.head.legend_helmet_southern_headband_coin" : 20,
 	"armor.head.legend_helmet_southern_cap" : 30,
 	"armor.head.legend_helmet_southern_cap_dark" : 30,
-	"armor.head.legend_helmet_patched_hood" : 45,
-	"armor.head.legend_helmet_simple_hood" : 50,
+
+	"armor.head.legend_helmet_patched_hood" : 5,
+	"armor.head.legend_helmet_simple_hood" : 8,
+
 	"armor.head.legend_helmet_barb_leather_cap" : 55,
 	"armor.head.legend_helmet_leather_cap" : 75,
 	"armor.head.legend_helmet_rotten_chain_scarf" : 80,
 	"armor.head.legend_helmet_padded_cap" : 90,
 	"armor.head.legend_helmet_southern_open_hood" : 90,
 	"armor.head.legend_helmet_southern_turban_light_hood" : 90,
-	"armor.head.legend_helmet_leather_hood" : 110,
+
+	"armor.head.legend_helmet_leather_hood" : 16,
 	"armor.head.legend_helmet_padded_hood" : 115,
+
 	"armor.head.legend_helmet_barb_chain_scarf" : 125,
 	"armor.head.legend_helmet_aventail" : 150,
 	"armor.head.legend_helmet_chain_scarf" : 150,
@@ -1056,7 +1028,7 @@
 	"armor.head.legend_faction_helmet" : 200,
 
 	//TOP
-	"armor.head.legend_helmet_goblin_leaves" : 5,
+	"armor.head.legend_helmet_goblin_leaves" : 0,
 	"armor.head.legend_helmet_hood_cloth_round" : 5,
 	"armor.head.legend_helmet_hood_cloth_square" : 5,
 	"armor.head.legend_helmet_hood_cloth_wide" : 5,

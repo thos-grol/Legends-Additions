@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/settlements/legends_steppe_fort.nut", function(o) {
+::mods_hookExactClass("entity/world/settlements/legends_steppe_fort", function(o) {
 	o.create = function()
 	{
 		this.legends_fort.create();

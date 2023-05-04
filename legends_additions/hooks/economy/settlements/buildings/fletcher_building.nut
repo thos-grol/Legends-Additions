@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/settlements/buildings/fletcher_building.nut", function(o) {
+::mods_hookExactClass("entity/world/settlements/buildings/fletcher_building", function(o) {
 	o.onUpdateShopList = function()
 	{
 		local list = [
@@ -50,36 +50,6 @@
 			{
 				R = 10,
 				P = 1.0,
-				S = "weapons/light_crossbow"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/light_crossbow"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/crossbow"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/crossbow"
-			},
-			{
-				R = 30,
-				P = 1.0,
-				S = "weapons/heavy_crossbow"
-			},
-			{
-				R = 30,
-				P = 1.0,
-				S = "weapons/heavy_crossbow"
-			},
-			{
-				R = 10,
-				P = 1.0,
 				S = "weapons/javelin"
 			},
 			{
@@ -96,11 +66,6 @@
 				R = 0,
 				P = 1.0,
 				S = "ammo/quiver_of_arrows"
-			},
-			{
-				R = 0,
-				P = 1.0,
-				S = "ammo/quiver_of_bolts"
 			},
 			{
 				R = 0,

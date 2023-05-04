@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/fishing_huts_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/fishing_huts_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("supplies/dried_fish_item");

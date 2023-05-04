@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/hedge_knight_background.nut", function(o) {
+::mods_hookExactClass("skills/backgrounds/hedge_knight_background", function(o) {
 	local create = o.create;
 	o.create = function()
 	{

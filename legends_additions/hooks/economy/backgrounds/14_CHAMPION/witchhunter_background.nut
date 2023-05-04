@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/witchhunter_background.nut", function(o) {
+::mods_hookExactClass("skills/backgrounds/witchhunter_background", function(o) {
 	local create = o.create;
 	o.create = function()
 	{
@@ -11,18 +11,6 @@
 	{
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(0, 1);
-
-		if (r == 0)
-		{
-			items.equip(this.new("scripts/items/weapons/light_crossbow"));
-		}
-		else
-		{
-			items.equip(this.new("scripts/items/weapons/crossbow"));
-		}
-
-		items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
 		r = this.Math.rand(0, 2);
 
 		if (r == 0)

@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/poacher_background.nut", function(o) {
+::mods_hookExactClass("skills/backgrounds/poacher_background", function(o) {
 	local create = o.create;
 	o.create = function()
 	{

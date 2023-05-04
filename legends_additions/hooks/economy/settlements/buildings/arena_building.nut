@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/settlements/buildings/arena_building.nut", function(o) {
+::mods_hookExactClass("entity/world/settlements/buildings/arena_building", function(o) {
 	o.refreshCooldown = function()
 	{
 		this.m.CooldownUntil = this.World.getTime().Days + 1;

@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/legend_noble_shield.nut", function(o) {
+::mods_hookExactClass("skills/backgrounds/legend_noble_shield", function(o) {
 	local create = o.create;
 	o.create = function()
 	{

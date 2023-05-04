@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/settlements/legends_tundra_village.nut", function(o) {
+::mods_hookExactClass("entity/world/settlements/legends_tundra_village", function(o) {
 	o.create = function()
 	{
 		this.legends_village.create();

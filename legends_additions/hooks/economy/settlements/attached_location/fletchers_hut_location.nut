@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/fletchers_hut_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/fletchers_hut_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("supplies/ammo_item");
@@ -48,11 +48,6 @@
 			_list.push({
 				R = 0,
 				P = 0.8,
-				S = "ammo/quiver_of_bolts"
-			});
-			_list.push({
-				R = 0,
-				P = 0.8,
 				S = "supplies/ammo_item"
 			});
 			_list.push({
@@ -63,17 +58,7 @@
 			_list.push({
 				R = 80,
 				P = 1.0,
-				S = "ammo/legend_armor_piercing_bolts"
-			});
-			_list.push({
-				R = 80,
-				P = 1.0,
 				S = "ammo/legend_broad_head_arrows"
-			});
-			_list.push({
-				R = 80,
-				P = 1.0,
-				S = "ammo/legend_broad_head_bolts"
 			});
 		}
 		else if (_id == "building.specialized_trader")
@@ -92,19 +77,9 @@
 				S = "weapons/legend_sling"
 			});
 			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/light_crossbow"
-			});
-			_list.push({
 				R = 60,
 				P = 1.0,
 				S = "ammo/huge_quiver_of_arrows"
-			});
-			_list.push({
-				R = 60,
-				P = 1.0,
-				S = "ammo/huge_quiver_of_bolts"
 			});
 			_list.push({
 				R = 40,
@@ -114,17 +89,7 @@
 			_list.push({
 				R = 40,
 				P = 1.0,
-				S = "ammo/legend_large_armor_piercing_bolts"
-			});
-			_list.push({
-				R = 40,
-				P = 1.0,
 				S = "ammo/legend_large_broad_head_arrows"
-			});
-			_list.push({
-				R = 40,
-				P = 1.0,
-				S = "ammo/legend_large_broad_head_bolts"
 			});
 		}
 		else if (_id == "building.weaponsmith")

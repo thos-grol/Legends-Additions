@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/winery_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/winery_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("supplies/wine_item");

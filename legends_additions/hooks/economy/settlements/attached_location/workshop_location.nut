@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/workshop_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/workshop_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("supplies/armor_parts_item");

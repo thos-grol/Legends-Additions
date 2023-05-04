@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/legend_man_at_arms_background.nut", function(o) {
+::mods_hookExactClass("skills/backgrounds/legend_man_at_arms_background", function(o) {
 	local create = o.create;
 	o.create = function()
 	{

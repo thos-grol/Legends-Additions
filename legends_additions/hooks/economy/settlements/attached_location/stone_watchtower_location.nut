@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/stone_watchtower_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/stone_watchtower_location", function(o) {
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
@@ -101,11 +101,6 @@
 			_list.push({
 				R = 50,
 				P = 1.0,
-				S = "weapons/crossbow"
-			});
-			_list.push({
-				R = 50,
-				P = 1.0,
 				S = "weapons/legend_tipstaff"
 			});
 			_list.push({
@@ -127,11 +122,6 @@
 				R = 90,
 				P = 1.0,
 				S = "tents/tent_scout"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "ammo/quiver_of_bolts"
 			});
 
 			if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())

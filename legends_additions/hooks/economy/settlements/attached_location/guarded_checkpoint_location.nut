@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/guarded_checkpoint_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/guarded_checkpoint_location", function(o) {
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";

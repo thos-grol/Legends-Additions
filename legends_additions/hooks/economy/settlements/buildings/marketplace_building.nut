@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/settlements/buildings/marketplace_building.nut", function(o) {
+::mods_hookExactClass("entity/world/settlements/buildings/marketplace_building", function(o) {
 	o.onUpdateShopList = function()
 	{
 		local list = [

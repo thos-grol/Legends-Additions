@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/wool_spinner_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/wool_spinner_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("trade/cloth_rolls_item");

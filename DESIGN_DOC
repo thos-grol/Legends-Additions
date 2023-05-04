@@ -4,6 +4,8 @@ Economy Overhaul
     //FEATURE_2: remove most events that give free stuff, you need traits etc to earn them
     //FEATURE_3: start making the world poorer, troop equipment nerf
 
+//FEATURE_6: Faction Overhaul 
+
 ======== BUILDS ===========
 
 General 1h builds (all 1h weps) =
@@ -30,7 +32,6 @@ Ranged builds:
 -slinger headshot build: yeah, it's definitely fun lol (push the advantange feeds back on a slinger's successful headshot for more headshots)
 -perfect focus archer: crazy first turn, recover next turn, rinse repeat and you'll knock out multiple kills in your 'attacking' turns)
 -over/fear/feint/gunner: the gunner that does everything (usually don't have enough perks to make it) but feint, and fearsome are a great way to make gunners 'fun' 😛
--quick hands rangers (range hybrids): gun/crossbow hybrid to deal with different enemy types, or bow/throw, sling/throw, cbow/throw (or even gun/throw, but that's harder) having the different options is good and nice but needs perks
 
 Tanks:
 -dodge nimble: generic speedy tank, hates nets and staggers and nomads.... super tricky but super rewarding if you don't have enemy stagger sand such (hates goblins & nomads)
@@ -66,7 +67,6 @@ BOSS
 Hexe Leader with Lindwurm Pet
     Hex ties 2 brothers together, 3 turn duration
     Illusionary root on all hexed enemies
-
 
 Items
     Storm star : A magic morning star that could release a version of chain lightning when it hit.
@@ -236,6 +236,9 @@ Undead cannot be charmed
 ::setSpawn("bandit_leader", ::Const.Faction.PlayerAnimals)
 ::setSpawn("bandit_leader")
 ::setSpawn("spider", ::Const.Faction.Enemy)
+
+
+::addItem("preserved_mead_item")
 
 ::addItem("direwolf_potion_item")
 ::addItem("apotheosis_potion_item")

@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/pacified_flagellant_background.nut", function(o) {
+::mods_hookExactClass("skills/backgrounds/pacified_flagellant_background", function(o) {
 	local create = o.create;
 	o.create = function()
 	{

@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/surface_iron_vein_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/surface_iron_vein_location", function(o) {
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";

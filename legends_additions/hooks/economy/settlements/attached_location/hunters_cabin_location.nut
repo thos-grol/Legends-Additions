@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/hunters_cabin_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/hunters_cabin_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("supplies/legend_fresh_meat_item");

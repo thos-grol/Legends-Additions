@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/peat_pit_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/peat_pit_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("trade/peat_bricks_item");

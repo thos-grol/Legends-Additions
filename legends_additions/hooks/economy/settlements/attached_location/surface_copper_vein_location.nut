@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/surface_copper_vein_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/surface_copper_vein_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("trade/copper_ingots_item");

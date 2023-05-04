@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/squire_background.nut", function(o) {
+::mods_hookExactClass("skills/backgrounds/squire_background", function(o) {
 	local create = o.create;
 	o.create = function()
 	{

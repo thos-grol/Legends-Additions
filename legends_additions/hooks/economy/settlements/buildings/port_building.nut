@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/settlements/buildings/port_building.nut", function(o) {
+::mods_hookExactClass("entity/world/settlements/buildings/port_building", function(o) {
 	o.isHidden = function()
 	{
 		return !this.m.Settlement.isCoastal();

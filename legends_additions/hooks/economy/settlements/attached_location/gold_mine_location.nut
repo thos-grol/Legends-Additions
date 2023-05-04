@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/gold_mine_location.nut", function(o) {
+::mods_hookExactClass("entity/world/attached_location/gold_mine_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("trade/gold_ingots_item");

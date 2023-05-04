@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/peddler_background.nut", function(o) {
+::mods_hookExactClass("skills/backgrounds/peddler_background", function(o) {
 	local create = o.create;
 	o.create = function()
 	{
@@ -11,7 +11,7 @@
 	{
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(0, 2);
+		r = this.Math.rand(0, 1);
 
 		if (r == 0)
 		{
@@ -20,11 +20,6 @@
 		else if (r == 1)
 		{
 			items.equip(this.new("scripts/items/weapons/dagger"));
-		}
-		else if (r == 2)
-		{
-			items.equip(this.new("scripts/items/weapons/light_crossbow"));
-			items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
 		}
 
 		items.equip(this.Const.World.Common.pickArmor([

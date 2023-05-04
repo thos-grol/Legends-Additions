@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/killer_on_the_run_background.nut", function(o) {
+::mods_hookExactClass("skills/backgrounds/killer_on_the_run_background", function(o) {
 	local create = o.create;
 	o.create = function()
 	{

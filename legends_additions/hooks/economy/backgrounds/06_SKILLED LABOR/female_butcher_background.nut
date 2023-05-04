@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/female_butcher_background.nut", function(o) {
+::mods_hookExactClass("skills/backgrounds/female_butcher_background", function(o) {
 	local create = o.create;
 	o.create = function()
 	{

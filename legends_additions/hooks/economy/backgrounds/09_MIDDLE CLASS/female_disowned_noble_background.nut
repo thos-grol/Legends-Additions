@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/female_disowned_noble_background.nut", function(o) {
+::mods_hookExactClass("skills/backgrounds/female_disowned_noble_background", function(o) {
 	local create = o.create;
 	o.create = function()
 	{
