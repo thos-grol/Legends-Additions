@@ -685,46 +685,46 @@
 	"legend_armor_upgrade.legend_redback_cloak" : 7500,
 	"legend_armor_upgrade.legend_hexe_leader_cloak" : 12000,
 
-	//CLOTH //TODO: spawn in game and examine
-	"legend_armor.body.legend_sackcloth_tattered" : 0,
-	"legend_armor.body.legend_sackcloth" : 0,
+	//CLOTH
+	"legend_armor.body.legend_sackcloth_tattered" : 0, //FEATURE_1: remove from shops
+	"legend_armor.body.legend_sackcloth" : 0, //FEATURE_1: remove from shops
 
-	"legend_armor.body.legend_ancient_cloth" : 20,
-	"legend_armor.body.legend_ancient_cloth_restored" : 40,
+	"legend_armor.body.legend_ancient_cloth" : 24,
+	"legend_armor.body.legend_ancient_cloth_restored" : 24,
 	"legend_armor.body.legend_peasant_dress" : 24,
 	"legend_armor.body.legend_robes" : 24,
 	"legend_armor.body.legend_robes_nun" : 24,
 	"legend_armor.body.legend_sackcloth_patched" : 24,
 	"legend_armor.body.legend_tunic" : 24,
-	"legend_armor.body.legend_southern_tunic" : 50, 
+	"legend_armor.body.legend_southern_tunic" : 24, //FEATURE_1: set to 25 armor
 	"legend_armor.body.legend_tunic_collar_deep" : 24,
 	"legend_armor.body.legend_tunic_collar_thin" : 24,
 	"legend_armor.body.legend_tunic_wrap" : 24,
 	"legend_armor.body.legend_southern_robe" : 24,
+	"legend_armor.body.legend_robes_wizard" : 0, //FEATURE_1: disabled, looks ugly
 
-	"legend_armor.body.legend_thick_tunic" : 40,
-	"legend_armor.body.legend_apron_butcher" : 50,
-
-	"legend_armor.body.legend_dark_tunic" : 50,
-	"legend_armor.body.legend_robes_wizard" : 50,
+	"legend_armor.body.legend_thick_tunic" : 36,
+	"legend_armor.body.legend_dark_tunic" : 36,
+	"legend_armor.body.legend_apron_butcher" : 36,
 	
 	"legend_armor.body.legend_apron" : 60,
-	"legend_armor.body.legend_robes_magic" : 100,
-	"legend_armor.body.legend_gladiator_harness" : 150,
+	
+	"legend_armor.body.legend_gladiator_harness" : 60,
+
 	"legend_armor.body.legend_padded_surcoat" : 150,
 	"legend_armor.body.legend_padded_surcoat_plain" : 150,
 
+	"legend_armor.body.legend_southern_noble_surcoat" : 250, //FEATURE_1: buff 65 for 6
 	"legend_armor.body.legend_gambeson" : 250,
 	"legend_armor.body.legend_gambeson_plain" : 250,
-	"legend_armor.body.legend_southern_gambeson" : 250,
+	"legend_armor.body.legend_southern_gambeson" : 250, //65 for 8
 	"legend_armor.body.legend_southern_split_gambeson" : 250,
 	"legend_armor.body.legend_gambeson_wolf" : 250,
+	"legend_armor.body.legend_gambeson_named" : 375,
 
-	"legend_armor.body.legend_southern_noble_surcoat" : 350,
-	"legend_armor.body.legend_tunic_noble" : 176,
-
-	"legend_armor.body.legend_gambeson_named" : 1500,
-	"legend_armor.body.legend_tunic_noble_named" : 1500,
+	"legend_armor.body.legend_robes_magic" : 146, //fancy looking //FEATURE_10: magic rework
+	"legend_armor.body.legend_tunic_noble" : 176, //40 for 2
+	"legend_armor.body.legend_tunic_noble_named" : 264,
 
 	//CHAIN
 	"legend_armor.body.legend_southern_cloth" : 50,
@@ -749,11 +749,13 @@
 
 	//PLATE
 	"legend_armor.body.legend_thick_furs_armor" : 15,
-	"legend_armor.body.legend_armor_leather_jacket_simple" : 30,
+	"legend_armor.body.legend_armor_leather_jacket_simple" : 30, //FEATURE_1: Remove
 	"legend_armor.body.legend_armor_leather_jacket" : 75,
 	"legend_armor.body.legend_animal_hide_armor" : 100,
-	"legend_armor.body.legend_armor_plate_ancient_gladiator" : 100,
 	"legend_armor.body.legend_southern_leather_jacket" : 110,
+	
+	
+	"legend_armor.body.legend_armor_plate_ancient_gladiator" : 100,
 	"legend_armor.body.legend_armor_leather_padded" : 175,
 	"legend_armor.body.legend_reinforced_animal_hide_armor" : 175,
 	"legend_armor.body.legend_southern_leather_plates" : 200,
