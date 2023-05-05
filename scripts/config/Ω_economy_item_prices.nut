@@ -1,130 +1,82 @@
-//FEATURE_2: this.World.Assets.addMoney
-	//overhaul contract pay
-	//event pay/prices
-
-//FEATURE_8: overhaul enemy equipment/builds
-
-// 12 Pence (d) = 1 Shilling (s)
-// 20 Shilling = 1 pound £
-
-// Horse harness maker: 4 Pence / Day
-// Mason: 6 Pence / Day
-// Laborer: 3,5 Pence / Day
-
-//levied spearmen 2 Pence / Day
-//!!!! pay of soldiers includes food and looting
-
-// Levied spearman: 2 Pence / Day
-// Archer: 3 Pence / Day
-// Squire: 12 d
-// Knight bachelor: 24 p / Day
-// Knight banneret: 48 p / Day
-
-// 4 gallons of ale: 1d
-// 1 hen: 5d
-// Brass pot: 2-13s
-// 1 cart-horse: Up to 32 Shillings
-
-//bros will eat 2.0 (DailyFood) units per day
-//food unit is 25 so it will last 12 meals
-//base unit is d
-
 ::Z.Economy.Items <- {
+
 //SUPPLIES
-	"supplies.ammo_small" : 30,
-	"supplies.ammo" : 60,
-	"supplies.armor_parts_small" : 60,
-	"supplies.medicine_small" : 60,
-	"supplies.armor_parts" : 120,
-	"supplies.medicine" : 120,
+	"supplies.ammo_small" : 50,
+	"supplies.ammo" : 100,
+	"supplies.armor_parts_small" : 100,
+	"supplies.medicine_small" : 100,
+	"supplies.armor_parts" : 200,
+	"supplies.medicine" : 200,
 
 	//FOOD
-	"supplies.ground_grains" : 5, //unit of 15 servings
-	"supplies.rice" : 7, //unit of 20
-	"supplies.bread" : 10, //unit of 20 loafs
-	"supplies.legend_fresh_fruit" : 11, //unit of 15
-	"supplies.roots_and_berries" : 11, //unit of 15
-	"supplies.dates" : 22, //unit of 20
-	"supplies.dried_fruits" : 32, //unit of 30
-
-	//MEAT
-	"supplies.strange_meat" : 15, //unit of 15
-	"supplies.legend_fresh_meat" : 15, //unit of 15
-	"supplies.dried_fish" : 40, //unit of 20
-	"supplies.smoked_ham" : 60, //unit of 30
-	"supplies.dried_lamb" : 90, //unit of 30
-	
-	//ALCOHOL
-	"supplies.beer" : 9, //35 units
-	"supplies.mead" : 13, //25 units
-	"supplies.preserved_mead" : 17, //20 units
-	"supplies.wine" : 27, //35 units
-
-	//REMOVED
-	"supplies.cured_venison" : 0,
-	"supplies.goat_cheese" : 0, //FEATURE_1: Remove
-	"supplies.legend_human_parts" : 0, //FEATURE_1: Remove skill
-	"supplies.fermented_unhold_heart" : 0,
-	"supplies.legend_yummy_sausages" : 0,
-	"supplies.black_marsh_stew" : 0, //FEATURE_1: Remove from hexe drops
-
-	"supplies.legend_porridge" : 0, //FEATURE_1: Remove from a lot of places
-	"supplies.legend_pudding" : 0, //FEATURE_1: Remove
-	"supplies.legend_pie" : 0, //FEATURE_1: Remove
-	"supplies.cured_rations" : 0, //FEATURE_1: Remove
-	"supplies.legend_cooking_spices" : 0,// FEATURE_1: Remove
-	"supplies.pickled_mushrooms" : 0,// FEATURE_1: Remove
+	"supplies.legend_human_parts" : 5,
+	"supplies.strange_meat" : 20,
+	"supplies.legend_fresh_meat" : 30,
+	"supplies.legend_fresh_fruit" : 40,
+	"supplies.ground_grains" : 50,
+	"supplies.legend_cooking_spices" : 50,
+	"supplies.legend_yummy_sausages" : 50,
+	"supplies.rice" : 60,
+	"supplies.roots_and_berries" : 60,
+	"supplies.bread" : 65,
+	"supplies.dried_fish" : 70,
+	"supplies.pickled_mushrooms" : 70,
+	"supplies.dates" : 80,
+	"supplies.black_marsh_stew" : 85,
+	"supplies.goat_cheese" : 85,
+	"supplies.mead" : 90,
+	"supplies.smoked_ham" : 90,
+	"supplies.cured_venison" : 100,
+	"supplies.dried_lamb" : 105,
+	"supplies.dried_fruits" : 110,
+	"supplies.beer" : 120,
+	"supplies.preserved_mead" : 120,
+	"supplies.wine" : 140,
+	"supplies.fermented_unhold_heart" : 150,
+	"supplies.legend_porridge" : 150,
+	"supplies.legend_pudding" : 200,
+	"supplies.legend_pie" : 250,
+	"supplies.cured_rations" : 300,
 
 //TRADE
-	
-	"misc.peat_bricks" : 34,
-	"misc.dies" : 59,
-	
-	"misc.amber_shards" : 87,
-	"misc.spices" : 107,
-	"misc.salt" : 114,
-	"misc.incense" : 127,
-	
-	"misc.cloth_rolls" : 46,
-	"misc.furs" : 100,
-	"misc.silk" : 154,
-
-	"misc.legend_raw_wood" : 18, //6 units
-	"misc.quality_wood" : 60, //6 units
-
-	"misc.iron_ingots" : 200, //5 13 pound ingots
-	"misc.copper_ingots" : 300,
-	"misc.tin_ingots" : 300,
-
-	//FEATURE_7: make silver ingot item
-	"misc.gold_ingots" : 6400, //FEATURE_7: redo item to be 1 ingot
-	//FEATURE_7: add gemstones
-	"misc.uncut_gems" : 840, //6 units of uncut emeralds
-	"misc.gemstones" : 1400, //2 units of cut emeralds //FEATURE_1: Change to trade item
-	
-	//Removed
-	"misc.legend_cooking_spices" : 0, //FEATURE_1: Remove
+	"misc.legend_raw_wood" : 40,
+	"misc.peat_bricks" : 100,
+	"misc.cloth_rolls" : 140,
+	"misc.dies" : 175,
+	"misc.quality_wood" : 180,
+	"misc.copper_ingots" : 220,
+	"misc.amber_shards" : 260,
+	"misc.furs" : 300,
+	"misc.iron_ingots" : 300,
+	"misc.spices" : 320,
+	"misc.salt" : 340,
+	"misc.incense" : 380,
+	"misc.legend_cooking_spices" : 380,
+	"misc.tin_ingots" : 420,
+	"misc.silk" : 460,
+	"misc.uncut_gems" : 520,
+	"misc.gold_ingots" : 720,
 
 //TENTS
-	"tent.scrap_tent" : 200,
-	"tent.fletcher_tent" : 200,
-	"tent.gather_tent" : 200,
-	"tent.hunter_tent" : 200,
-	"tent.scout_tent" : 200,
-	"tent.healer_tent" : 200,
-	"tent.repair_tent" : 200,
-	"tent.craft_tent" : 200, //FEATURE_8: disable + disable crafting in party
-	"tent.training_tent" : 500,
-	"tent.enchant_tent" : 1000,
+	"tent.scrap_tent" : 2000,
+	"tent.fletcher_tent" : 3000,
+	"tent.gather_tent" : 3000,
+	"tent.hunter_tent" : 3000,
+	"tent.scout_tent" : 3000,
+	"tent.healer_tent" : 5000,
+	"tent.repair_tent" : 5000,
+	"tent.craft_tent" : 10000,
+	"tent.enchant_tent" : 10000,
+	"tent.training_tent" : 10000,
 
 //SPAWNS
-	"spawns.skeleton" : 0,
-	"spawns.zombie" : 0,
-	"spawns.donkey" : 0, //FEATURE_1: Remove
-	"spawns.cart_01" : 260,
-	"spawns.cart_02" : 400,
+	"spawns.skeleton" : 100,
+	"spawns.zombie" : 100,
+	"spawns.donkey" : 5000,
+	"spawns.cart_01" : 15000,
+	"spawns.cart_02" : 25000,
 
-//LOOT //TODO: Loot prices and removal
+//LOOT
 	"misc.bone_figurines" : 180,
 	"misc.webbed_valuables" : 180,
 	"misc.goblin_carved_ivory_iconographs" : 200,
@@ -149,11 +101,11 @@
 	"misc.white_pearls" : 770,
 	"misc.ancient_gold_coins" : 875,
 	"misc.golden_chalice" : 980,
-	
-	"misc.lindwurm_hoard" : 0, //FEATURE_1: Remove
-	"misc.jeweled_crown" : 0, //FEATURE_1: Remove
+	"misc.gemstones" : 1120,
+	"misc.lindwurm_hoard" : 1200,
+	"misc.jeweled_crown" : 1260,
 
-//MISC //TODO: Misc prices
+//MISC
 	"misc.legend_scroll" : 0,
 	"misc.manhunters_ledger" : 0,
 	"misc.ancient_scroll" : 50,
@@ -219,7 +171,44 @@
 	"misc.legend_stollwurm_scales" : 6000,
 	"misc.legend_demon_third_eye" : 7500,
 
-//SPECIAL //TODO: Special prices
+	//ANATOMIST
+	"misc.alp_potion" : 0,
+	"misc.ancient_priest_potion" : 0,
+	"misc.apotheosis_potion" : 0,
+	"misc.direwolf_potion" : 0,
+	"misc.fallen_hero_potion" : 0,
+	"misc.geist_potion" : 0,
+	"misc.goblin_grunt_potion" : 0,
+	"misc.goblin_overseer_potion" : 0,
+	"misc.goblin_shaman_potion" : 0,
+	"misc.hexe_potion" : 0,
+	"misc.honor_guard_potion" : 0,
+	"misc.hyena_potion" : 0,
+	"misc.ifrit_potion" : 0,
+	"misc.ijirok_potion" : 0,
+	"misc.kraken_potion" : 0,
+	"misc.lindwurm_potion" : 0,
+	"misc.lorekeeper_potion" : 0,
+	"misc.nachzehrer_potion" : 0,
+	"misc.necromancer_potion" : 0,
+	"misc.necrosavant_potion" : 0,
+	"misc.orc_berserker_potion" : 0,
+	"misc.orc_warlord_potion" : 0,
+	"misc.orc_warrior_potion" : 0,
+	"misc.orc_young_potion" : 0,
+	"misc.rachegeist_potion" : 0,
+	"misc.research_notes_beasts" : 0,
+	"misc.research_notes_greenskins" : 0,
+	"misc.research_notes_legendary" : 0,
+	"misc.research_notes_undead" : 0,
+	"misc.schrat_potion" : 0,
+	"misc.serpent_potion" : 0,
+	"misc.skeleton_warrior_potion" : 0,
+	"misc.unhold_potion" : 0,
+	"misc.webknecht_potion" : 0,
+	"misc.wiederganger_potion" : 0,
+
+//SPECIAL
 	"misc.black_book" : 1000,
 	"misc.broken_ritual_armor" : 1000,
 	"misc.bodily_reward" : 2500,
@@ -229,40 +218,28 @@
 	"misc.golden_goose" : 3000,
 	"misc.trade_jug" : 10000,
 
-//RUNE_SIGILS //TODO: Rune prices
+//RUNE_SIGILS
 	"token.legend_vala_inscription" : 1200,
 
-//TOOLS //TODO: Tools prices
-	"tool.legend_broken_throwing_net" : 0, //FEATURE_5: Remove
-	"tool.throwing_net" : 50, //FEATURE_5: refillable with tools
-	"tool.reinforced_throwing_net" : 150, //FEATURE_5: refillable with tools
-	"weapon.holy Water" : 100, //FEATURE_5: refillable with priest
-	"weapon.acid_flask" : 400, //FEATURE_5: refillable with alchemist
-	"weapon.smoke_bomb" : 400, //FEATURE_5: refillable with alchemist
-	"weapon.daze_bomb" : 500, //FEATURE_5: refillable with alchemist
-	"weapon.fire_bomb" : 600, //FEATURE_5: refillable with alchemist
-	"accessory.berserker_mushrooms" : 100,
-	"accessory.legend_apothecary_mushrooms" : 100,
-	"accessory.poison" : 100,
-	"accessory.antidote" : 150, //FEATURE_5: refillable with alchemist
-	"accessory.spider_poison" : 150, //FEATURE_5: refillable with alchemist, rename to poison
-	"accessory.iron_will_potion" : 300, //FEATURE_5: refillable with alchemist
-	"accessory.lionheart_potion" : 300, //FEATURE_5: refillable with alchemist
-	"accessory.night_vision_elixir" : 350, //FEATURE_5: refillable with alchemist
-	"accessory.recovery_potion" : 350, //FEATURE_5: refillable with alchemist
-	"accessory.therianthropy_potion" : 500, //TODO: remove
-	"accessory.legend_heartwood_sap_flask" : 3500,
-	"accessory.legend_skin_ghoul_blood_flask" : 3500,
-	"accessory.legend_stollwurm_blood_flask" : 3500,
-	"accessory.legend_hexen_ichor_potion" : 7000,
+//TOOLS
+	"tool.legend_broken_throwing_net" : 5,
+	"tool.throwing_net" : 50,
+	"weapon.holy Water" : 100,
+	"tool.reinforced_throwing_net" : 150,
+	"weapon.acid_flask" : 400,
+	"weapon.smoke_bomb" : 400,
+	"weapon.daze_bomb" : 500,
+	"weapon.fire_bomb" : 600,
+	"weapon.faction_banner" : 1000,
+	"weapon.player_banner" : 1500,
 
-//AMMO //TODO: ammo prices
-	"ammo.arrows" : 30,
-	"ammo.bolts" : 30,
-	"ammo.legend_darts" : 30,
-	"ammo.powder" : 80, //FEATURE_5: refillable with alchemist
+//AMMO
+	"ammo.arrows" : 35,
+	"ammo.bolts" : 35,
+	"ammo.legend_darts" : 35,
+	"ammo.powder" : 50,
 
-//ACCESSORY //TODO: ACCESSORY prices
+//ACCESSORY
 	"accessory.oathtaker_skull_01" : 0,
 	"accessory.oathtaker_skull_02" : 0,
 	"accessory.bandage" : 25,
@@ -281,6 +258,22 @@
 	"accessory.legend_demon_banshee_trophy" : 1000,
 	"accessory.legend_demonalp_trophy" : 2500,
 	"accessory.legend_hexen_leader_trophy" : 2500,
+
+	//POTION
+	"accessory.berserker_mushrooms" : 100,
+	"accessory.legend_apothecary_mushrooms" : 100,
+	"accessory.poison" : 100,
+	"accessory.antidote" : 150,
+	"accessory.spider_poison" : 150,
+	"accessory.iron_will_potion" : 300,
+	"accessory.lionheart_potion" : 300,
+	"accessory.night_vision_elixir" : 350,
+	"accessory.recovery_potion" : 350,
+	"accessory.therianthropy_potion" : 500,
+	"accessory.legend_heartwood_sap_flask" : 3500,
+	"accessory.legend_skin_ghoul_blood_flask" : 3500,
+	"accessory.legend_stollwurm_blood_flask" : 3500,
+	"accessory.legend_hexen_ichor_potion" : 7000,
 
 	//PET
 	"accessory.legend_cat_item" : 100,
@@ -310,307 +303,309 @@
 	"accessory.legend_oms_paw" : 2345,
 	"accessory.legend_oms_amphora" : 2450,
 
-//WEAPONS //TODO: WEAPONS prices
+//WEAPONS
+	"shield.legend_parrying_dagger" : 500,
+	"shield.legend_named_parrying_dagger" : 800,
+
 	//SWORD
 	//1H
-	"weapon.sickle" : 45,
-	"weapon.broken_ancient_sword" : 200,
-
-	"weapon.shortsword" : 90,
-	"weapon.goblin_notched_blade" : 350,
-	"weapon.saif" : 350,
-	"weapon.falchion" : 120,
-
-	"weapon.ancient_sword" : 850,
-	"weapon.goblin_falchion" : 900,
-	"weapon.legend_gladius" : 950,
-	"weapon.scimitar" : 1000,
-	"weapon.legend_skin_flayer" : 1100,
-	"weapon.arming_sword" : 1250,
-	"weapon.legend_kopis" : 1250,
-	"weapon.fencing_sword" : 1550,
-	"weapon.named_goblin_falchion" : 2600,
-	"weapon.shamshir" : 2900,
-	"weapon.legend_estoc" : 3200,
-	"weapon.noble_sword" : 3200,
-	"weapon.legend_named_gladius" : 3200,
-	"weapon.named_fencing_sword" : 4000,
-	"weapon.named_shamshir" : 4000,
-	"weapon.legend_named_estoc" : 4200,
-	"weapon.named_sword" : 4200,
-	"weapon.legend_named_sickle" : 4500,
-	"weapon.lightbringer_sword" : 20000,
+	"weapon.sickle" : 45,                       		//( 15,  20) | AP: -0.05 | AE: 0.50
+	"weapon.broken_ancient_sword" : 200,        		//( 30,  35) | AP: 0.20 | AE: 0.75
+	"weapon.shortsword" : 350,                  		//( 30,  40) | AP: 0.20 | AE: 0.75
+	"weapon.goblin_notched_blade" : 350,        		//( 20,  30) | AP: 0.20 | AE: 0.60
+	"weapon.saif" : 350,                        		//( 35,  40) | AP: 0.20 | AE: 0.65
+	"weapon.falchion" : 500,                    		//( 35,  45) | AP: 0.20 | AE: 0.70
+	"weapon.ancient_sword" : 850,               		//( 38,  43) | AP: 0.20 | AE: 0.80
+	"weapon.goblin_falchion" : 900,             		//( 35,  45) | AP: 0.20 | AE: 0.70
+	"weapon.legend_gladius" : 950,              		//( 43,  48) | AP: 0.20 | AE: 0.80
+	"weapon.scimitar" : 1000,                   		//( 40,  45) | AP: 0.20 | AE: 0.70
+	"weapon.legend_skin_flayer" : 1100,         		//( 45,  60) | AP: 0.20 | AE: 0.90
+	"weapon.arming_sword" : 1250,               		//( 40,  45) | AP: 0.20 | AE: 0.80
+	"weapon.legend_kopis" : 1250,               		//( 35,  45) | AP: 0.25 | AE: 1.00
+	"weapon.fencing_sword" : 1550,              		//( 35,  50) | AP: 0.20 | AE: 0.75
+	"weapon.named_goblin_falchion" : 2600,      		//( 35,  45) | AP: 0.20 | AE: 0.70
+	"weapon.shamshir" : 2900,                   		//( 45,  50) | AP: 0.20 | AE: 0.75
+	"weapon.legend_estoc" : 3200,               		//( 45,  60) | AP: 0.20 | AE: 0.60
+	"weapon.noble_sword" : 3200,                		//( 45,  50) | AP: 0.20 | AE: 0.85
+	"weapon.legend_named_gladius" : 3200,       		//( 43,  48) | AP: 0.20 | AE: 0.80
+	"weapon.named_fencing_sword" : 4000,        		//( 35,  50) | AP: 0.20 | AE: 0.75
+	"weapon.named_shamshir" : 4000,             		//( 45,  50) | AP: 0.20 | AE: 0.75
+	"weapon.legend_named_estoc" : 4200,         		//( 45,  60) | AP: 0.20 | AE: 0.60
+	"weapon.named_sword" : 4200,                		//( 45,  50) | AP: 0.20 | AE: 0.85
+	"weapon.legend_named_sickle" : 4500,        		//( 40,  55) | AP: 0.20 | AE: 0.90
+	"weapon.lightbringer_sword" : 20000,        		//( 50,  55) | AP: 0.20 | AE: 0.90
 	//2H
-	"weapon.rhomphaia" : 1300,
-	"weapon.legend_man_mangler" : 1600,
-	"weapon.warbrand" : 1700,
-	"weapon.legend_longsword" : 2000,
-	"weapon.named_longsword" : 2100,
-	"weapon.longsword" : 2300,
-	"weapon.legend_crusader_sword" : 2400,
-	"weapon.greatsword" : 3200,
-	"weapon.named_warbrand" : 4200,
-	"weapon.legend_named_longsword" : 4600,
-	"weapon.named_greatsword" : 4600,
-	"weapon.named_royal_lance" : 4800,
-	"weapon.legend_mage_swordstaff" : 7500,
+	"weapon.rhomphaia" : 1300,                  		//( 45,  65) | AP: 0.20 | AE: 1.05
+	"weapon.legend_man_mangler" : 1600,         		//( 60,  95) | AP: 0.35 | AE: 1.00
+	"weapon.warbrand" : 1700,                   		//( 50,  75) | AP: 0.20 | AE: 0.75
+	"weapon.legend_longsword" : 2000,           		//( 50,  75) | AP: 0.25 | AE: 0.80
+	"weapon.named_longsword" : 2100,            		//( 65,  85) | AP: 0.25 | AE: 1.00
+	"weapon.longsword" : 2300,                  		//( 65,  85) | AP: 0.25 | AE: 1.00
+	"weapon.legend_crusader_sword" : 2400,      		//( 60,  75) | AP: 0.25 | AE: 0.80
+	"weapon.greatsword" : 3200,                 		//( 85, 100) | AP: 0.25 | AE: 1.00
+	"weapon.named_warbrand" : 4200,             		//( 50,  75) | AP: 0.20 | AE: 0.75
+	"weapon.legend_named_longsword" : 4600,     		//( 50,  75) | AP: 0.25 | AE: 0.80
+	"weapon.named_greatsword" : 4600,           		//( 85, 100) | AP: 0.25 | AE: 1.00
+	"weapon.named_royal_lance" : 4800,          		//( 55,  70) | AP: 0.35 | AE: 1.00
+	"weapon.legend_mage_swordstaff" : 7500,     		//( 55,  75) | AP: 0.25 | AE: 1.00
 
 	//AXE
 	//2H
-	"weapon.legend_hoe" : 55,
-	"weapon.woodcutters_axe" : 450,
-	"weapon.longaxe" : 1200,
-	"weapon.orc_axe_2h" : 1500,
-	"weapon.legend_infantry_axe" : 1950,
-	"weapon.heavy_rusty_axe" : 2000,
-	"weapon.bardiche" : 2200,
-	"weapon.greataxe" : 2725,
-	"weapon.legend_fan_axe" : 3000,
-	"weapon.named_longaxe" : 3000,
-	"weapon.named_heavy_rusty_axe" : 3400,
-	"weapon.legend_named_infantry_axe" : 4600,
-	"weapon.named_bardiche" : 4600,
-	"weapon.named_greataxe" : 4600,
-	"weapon.named_orc_axe_2h" : 5000,
+	"weapon.legend_hoe" : 55,                   		//( 15,  20) | AP: 0.30 | AE: 0.60
+	"weapon.woodcutters_axe" : 450,             		//( 35,  70) | AP: 0.40 | AE: 1.25
+	"weapon.longaxe" : 1200,                    		//( 70,  95) | AP: 0.30 | AE: 1.10
+	"weapon.orc_axe_2h" : 1500,                 		//( 90, 120) | AP: 0.40 | AE: 1.60
+	"weapon.legend_infantry_axe" : 1950,        		//( 50,  70) | AP: 0.35 | AE: 1.25
+	"weapon.heavy_rusty_axe" : 2000,            		//( 75,  90) | AP: 0.40 | AE: 1.50
+	"weapon.bardiche" : 2200,                   		//( 75,  95) | AP: 0.40 | AE: 1.30
+	"weapon.greataxe" : 2725,                   		//( 80, 100) | AP: 0.40 | AE: 1.50
+	"weapon.legend_fan_axe" : 3000,             		//( 60,  95) | AP: 0.40 | AE: 1.10
+	"weapon.named_longaxe" : 3000,              		//( 70,  95) | AP: 0.30 | AE: 1.10
+	"weapon.named_heavy_rusty_axe" : 3400,      		//( 75,  90) | AP: 0.40 | AE: 1.50
+	"weapon.legend_named_infantry_axe" : 4600,  		//( 50,  70) | AP: 0.35 | AE: 1.25
+	"weapon.named_bardiche" : 4600,             		//( 75,  95) | AP: 0.40 | AE: 1.30
+	"weapon.named_greataxe" : 4600,             		//( 80, 100) | AP: 0.40 | AE: 1.50
+	"weapon.named_orc_axe_2h" : 5000,           		//( 90, 120) | AP: 0.40 | AE: 1.60
 	//1H
-	"weapon.hatchet" : 210,
-	"weapon.crude_axe" : 800,
-	"weapon.legend_meat_hacker" : 900,
-	"weapon.hand_axe" : 1000,
-	"weapon.orc_axe" : 1100,
-	"weapon.fighting_axe" : 2350,
-	"weapon.named_orc_axe" : 2400,
-	"weapon.named_axe" : 4000,
+	"weapon.hatchet" : 210,                     		//( 25,  40) | AP: 0.30 | AE: 1.10
+	"weapon.crude_axe" : 800,                   		//( 30,  40) | AP: 0.30 | AE: 1.20
+	"weapon.legend_meat_hacker" : 900,          		//( 30,  55) | AP: 0.30 | AE: 1.20
+	"weapon.hand_axe" : 1000,                   		//( 30,  45) | AP: 0.30 | AE: 1.20
+	"weapon.orc_axe" : 1100,                    		//( 35,  65) | AP: 0.30 | AE: 1.30
+	"weapon.fighting_axe" : 2350,               		//( 35,  55) | AP: 0.30 | AE: 1.30
+	"weapon.named_orc_axe" : 2400,              		//( 35,  65) | AP: 0.30 | AE: 1.30
+	"weapon.named_axe" : 4000,                  		//( 35,  55) | AP: 0.30 | AE: 1.30
 
 	//CLEAVER
 	//1H
-	"weapon.legend_cat_o_nine_tails" : 20,
-	"weapon.legend_saw" : 45,
-	"weapon.butchers_cleaver" : 110,
-	"weapon.antler_cleaver" : 120,
-	"weapon.falx" : 350,
-	"weapon.thorned_whip" : 400,
-	"weapon.battle_whip" : 450,
-	"weapon.blunt_cleaver" : 600,
-	"weapon.scramasax" : 700,
-	"weapon.legend_bone_carver" : 900,
-	"weapon.orc_cleaver" : 1100,
-	"weapon.legend_named_butchers_cleaver" : 1100,
-	"weapon.khopesh" : 1300,
-	"weapon.legend_khopesh" : 1300,
-	"weapon.named_battle_whip" : 2200,
-	"weapon.named_orc_cleaver" : 2400,
-	"weapon.military_cleaver" : 2500,
-	"weapon.named_khopesh" : 3200,
-	"weapon.named_cleaver" : 3800,
+	"weapon.legend_cat_o_nine_tails" : 20,      		//( 10,  15) | AP: 0.10 | AE: 0.15
+	"weapon.legend_saw" : 45,                   		//( 15,  20) | AP: 0.25 | AE: 0.40
+	"weapon.butchers_cleaver" : 110,            		//( 20,  35) | AP: 0.25 | AE: 0.75
+	"weapon.antler_cleaver" : 120,              		//( 20,  30) | AP: 0.25 | AE: 0.75
+	"weapon.falx" : 350,                        		//( 25,  35) | AP: 0.25 | AE: 0.80
+	"weapon.thorned_whip" : 400,                		//( 15,  25) | AP: 0.10 | AE: 0.30
+	"weapon.battle_whip" : 450,                 		//( 15,  30) | AP: 0.10 | AE: 0.25
+	"weapon.blunt_cleaver" : 600,               		//( 30,  40) | AP: 0.25 | AE: 0.80
+	"weapon.scramasax" : 700,                   		//( 30,  45) | AP: 0.25 | AE: 0.80
+	"weapon.legend_bone_carver" : 900,          		//( 30,  60) | AP: 0.25 | AE: 1.00
+	"weapon.orc_cleaver" : 1100,                		//( 40,  70) | AP: 0.25 | AE: 1.10
+	"weapon.legend_named_butchers_cleaver" : 1100,		//( 35,  50) | AP: 0.25 | AE: 0.75
+	"weapon.khopesh" : 1300,                    		//( 35,  55) | AP: 0.25 | AE: 1.20
+	"weapon.legend_khopesh" : 1300,             		//( 40,  55) | AP: 0.25 | AE: 1.10
+	"weapon.named_battle_whip" : 2200,          		//( 15,  30) | AP: 0.10 | AE: 0.25
+	"weapon.named_orc_cleaver" : 2400,          		//( 40,  70) | AP: 0.25 | AE: 1.10
+	"weapon.military_cleaver" : 2500,           		//( 40,  60) | AP: 0.25 | AE: 0.90
+	"weapon.named_khopesh" : 3200,              		//( 35,  55) | AP: 0.25 | AE: 1.20
+	"weapon.named_cleaver" : 3800,              		//( 40,  60) | AP: 0.25 | AE: 0.90
 	//2H
-	"weapon.legend_scythe" : 75,
-	"weapon.legend_grisly_scythe" : 750,
-	"weapon.rusty_warblade" : 1600,
-	"weapon.legend_limb_lopper" : 1600,
-	"weapon.crypt_cleaver" : 2000,
-	"weapon.legend_great_khopesh" : 2000,
-	"weapon.two_handed_saif" : 2400,
-	"weapon.legend_voulge" : 2500,
-	"weapon.two_handed_scimitar" : 2900,
-	"weapon.legend_military_voulge" : 3200,
-	"weapon.named_crypt_cleaver" : 3200,
-	"weapon.named_rusty_warblade" : 3200,
-	"weapon.named_two_handed_scimitar" : 3200,
-	"weapon.legend_named_voulge" : 3500,
-	"weapon.named_legend_great_khopesh" : 3500,
+	"weapon.legend_scythe" : 75,                		//( 15,  30) | AP: 0.25 | AE: 0.25
+	"weapon.legend_grisly_scythe" : 750,        		//( 25,  35) | AP: 0.25 | AE: 0.50
+	"weapon.rusty_warblade" : 1600,             		//( 60,  80) | AP: 0.25 | AE: 1.10
+	"weapon.legend_limb_lopper" : 1600,         		//( 70,  90) | AP: 0.25 | AE: 1.30
+	"weapon.crypt_cleaver" : 2000,              		//( 60,  80) | AP: 0.25 | AE: 1.20
+	"weapon.legend_great_khopesh" : 2000,       		//( 75,  95) | AP: 0.25 | AE: 1.20
+	"weapon.two_handed_saif" : 2400,            		//( 50,  70) | AP: 0.25 | AE: 0.90
+	"weapon.legend_voulge" : 2500,              		//( 60,  85) | AP: 0.25 | AE: 0.80
+	"weapon.two_handed_scimitar" : 2900,        		//( 65,  85) | AP: 0.25 | AE: 1.10
+	"weapon.legend_military_voulge" : 3200,     		//( 80, 100) | AP: 0.25 | AE: 0.90
+	"weapon.named_crypt_cleaver" : 3200,        		//( 60,  80) | AP: 0.25 | AE: 1.20
+	"weapon.named_rusty_warblade" : 3200,       		//( 60,  80) | AP: 0.25 | AE: 1.10
+	"weapon.named_two_handed_scimitar" : 3200,  		//( 65,  85) | AP: 0.25 | AE: 1.10
+	"weapon.legend_named_voulge" : 3500,        		//( 80, 100) | AP: 0.25 | AE: 0.90
+	"weapon.named_legend_great_khopesh" : 3500, 		//( 75,  95) | AP: 0.25 | AE: 1.20
 
 	//POLEARM
 	//2H
-	"weapon.legend_wooden_pitchfork" : 30,
-	"weapon.pitchfork" : 150,
-	"weapon.broken_bladed_pike" : 350,
-	"weapon.bladed_pike" : 600,
-	"weapon.hooked_blade" : 700,
-	"weapon.warscythe" : 700,
-	"weapon.spetum" : 750,
-	"weapon.goblin_pike" : 800,
-	"weapon.pike" : 900,
-	"weapon.faction_banner" : 1000,
-	"weapon.player_banner" : 1500,
-	"weapon.swordlance" : 1600,
-	"weapon.billhook" : 1875,
-	"weapon.named_bladed_pikee" : 2200,
-	"weapon.named_goblin_pike" : 2400,
-	"weapon.legend_swordstaff" : 2750,
-	"weapon.named_pike" : 2800,
-	"weapon.named_spetum" : 2800,
-	"weapon.named_warscythe" : 2800,
-	"weapon.legend_halberd" : 2900,
-	"weapon.named_billhook" : 3200,
-	"weapon.named_swordlance" : 3200,
-	"weapon.legend_named_halberd" : 3800,
-	"weapon.legend_named_swordstaff" : 4800,
+	"weapon.legend_wooden_pitchfork" : 30,      		//( 15,  35) | AP: 0.30 | AE: 0.20
+	"weapon.pitchfork" : 150,                   		//( 30,  50) | AP: 0.30 | AE: 0.75
+	"weapon.broken_bladed_pike" : 350,          		//( 35,  55) | AP: 0.30 | AE: 0.80
+	"weapon.bladed_pike" : 600,                 		//( 55,  80) | AP: 0.30 | AE: 1.25
+	"weapon.hooked_blade" : 700,                		//( 40,  70) | AP: 0.30 | AE: 1.10
+	"weapon.warscythe" : 700,                   		//( 55,  80) | AP: 0.30 | AE: 1.05
+	"weapon.spetum" : 750,                      		//( 55,  75) | AP: 0.25 | AE: 1.00
+	"weapon.goblin_pike" : 800,                 		//( 50,  70) | AP: 0.25 | AE: 0.90
+	"weapon.pike" : 900,                        		//( 60,  80) | AP: 0.30 | AE: 1.00
+	"weapon.swordlance" : 1600,                 		//( 60,  80) | AP: 0.30 | AE: 0.90
+	"weapon.billhook" : 1875,                   		//( 55,  85) | AP: 0.30 | AE: 1.40
+	"weapon.named_bladed_pikee" : 2200,         		//( 55,  80) | AP: 0.30 | AE: 1.25
+	"weapon.named_goblin_pike" : 2400,          		//( 50,  70) | AP: 0.25 | AE: 0.90
+	"weapon.legend_swordstaff" : 2750,          		//( 50,  70) | AP: 0.25 | AE: 1.00
+	"weapon.named_pike" : 2800,                 		//( 60,  80) | AP: 0.30 | AE: 1.00
+	"weapon.named_spetum" : 2800,               		//( 55,  75) | AP: 0.25 | AE: 1.00
+	"weapon.named_warscythe" : 2800,            		//( 55,  80) | AP: 0.30 | AE: 1.05
+	"weapon.legend_halberd" : 2900,             		//( 60,  80) | AP: 0.30 | AE: 1.50
+	"weapon.named_billhook" : 3200,             		//( 55,  85) | AP: 0.30 | AE: 1.40
+	"weapon.named_swordlance" : 3200,           		//( 60,  80) | AP: 0.30 | AE: 0.90
+	"weapon.legend_named_halberd" : 3800,       		//( 60,  80) | AP: 0.30 | AE: 1.50
+	"weapon.legend_named_swordstaff" : 4800,    		//( 50,  70) | AP: 0.25 | AE: 1.00
 
 	//MACE
 	//1H
-	"weapon.wooden_stick" : 0, //TODO: Remove from shops
-	"weapon.bludgeon" : 90,
-	"weapon.claw_club" : 100,
-	"weapon.nomad_mace" : 100,
-	"weapon.orc_wooden_club" : 150,
-	"weapon.orc_metal_club" : 300,
-	"weapon.light_southern_mace" : 400,
-	"weapon.morning_star" : 600,
-	"weapon.goblin_staff" : 1000,
-	"weapon.winged_mace" : 2100,
-	"weapon.heavy_southern_mace" : 2100,
-	"weapon.named_mace" : 4000,
+	"weapon.wooden_stick" : 35,                 		//( 15,  25) | AP: 0.40 | AE: 0.50
+	"weapon.bludgeon" : 90,                     		//( 20,  35) | AP: 0.40 | AE: 0.75
+	"weapon.claw_club" : 100,                   		//( 20,  30) | AP: 0.40 | AE: 0.75
+	"weapon.nomad_mace" : 100,                  		//( 25,  35) | AP: 0.40 | AE: 0.90
+	"weapon.orc_wooden_club" : 150,             		//( 25,  40) | AP: 0.40 | AE: 0.75
+	"weapon.orc_metal_club" : 300,              		//( 30,  50) | AP: 0.40 | AE: 0.90
+	"weapon.light_southern_mace" : 400,         		//( 30,  40) | AP: 0.40 | AE: 1.10
+	"weapon.morning_star" : 600,                		//( 30,  45) | AP: 0.40 | AE: 1.00
+	"weapon.goblin_staff" : 1000,               		//( 25,  35) | AP: 0.40 | AE: 0.70
+	"weapon.winged_mace" : 2100,                		//( 35,  55) | AP: 0.40 | AE: 1.10
+	"weapon.heavy_southern_mace" : 2100,        		//( 35,  50) | AP: 0.40 | AE: 1.20
+	"weapon.named_mace" : 4000,                 		//( 35,  55) | AP: 0.40 | AE: 1.10
 	//2H
-	"weapon.legend_shovel" : 50,
-	"weapon.legend_two_handed_club" : 400,
-	"weapon.two_handed_spiked_mace" : 900,
-	"weapon.two_handed_mace" : 1000,
-	"weapon.polemace" : 1500,
-	"weapon.legend_bough" : 1600,
-	"weapon.named_polemace" : 2600,
-	"weapon.two_handed_flanged_mace" : 3000,
-	"weapon.named_two_handed_spiked_mace" : 3000,
-	"weapon.named_two_handed_mace" : 3400,
-	"weapon.legend_named_shovel" : 4500,
+	"weapon.legend_shovel" : 50,                		//( 20,  30) | AP: 0.40 | AE: 0.45
+	"weapon.legend_two_handed_club" : 400,      		//( 35,  60) | AP: 0.50 | AE: 1.00
+	"weapon.two_handed_spiked_mace" : 900,      		//( 50,  70) | AP: 0.50 | AE: 1.15
+	"weapon.two_handed_mace" : 1000,            		//( 50,  75) | AP: 0.50 | AE: 1.15
+	"weapon.polemace" : 1500,                   		//( 60,  75) | AP: 0.40 | AE: 1.20
+	"weapon.legend_bough" : 1600,               		//( 80, 110) | AP: 0.50 | AE: 1.35
+	"weapon.named_polemace" : 2600,             		//( 60,  75) | AP: 0.40 | AE: 1.20
+	"weapon.two_handed_flanged_mace" : 3000,    		//( 75,  95) | AP: 0.50 | AE: 1.25
+	"weapon.named_two_handed_spiked_mace" : 3000,		//( 50,  70) | AP: 0.50 | AE: 1.15
+	"weapon.named_two_handed_mace" : 3400,      		//( 75,  95) | AP: 0.50 | AE: 1.25
+	"weapon.legend_named_shovel" : 4500,        		//( 40,  55) | AP: 0.20 | AE: 0.80
 
 	//SPEAR
 	//1H
-	"weapon.legend_wooden_spear" : 0, //TODO: Remove from shops
-	"weapon.ancient_spear" : 150,
-	"weapon.militia_spear" : 180,
-	"weapon.legend_militia_glaive" : 350,
-	"weapon.goblin_spear" : 500,
-	"weapon.boar_spear" : 750,
-	"weapon.firelance" : 750,
-	"weapon.legend_glaive" : 1250,
-	"weapon.fighting_spear" : 2100,
-	"weapon.named_goblin_spear" : 2500,
-	"weapon.legend_battle_glaive" : 3200,
-	"weapon.named_spear" : 3200,
-	"weapon.legend_named_glaive" : 6000,
+	"weapon.legend_wooden_spear" : 15,          		//( 15,  25) | AP: 0.25 | AE: 0.45
+	"weapon.ancient_spear" : 150,               		//( 20,  35) | AP: 0.25 | AE: 1.00
+	"weapon.militia_spear" : 180,               		//( 25,  30) | AP: 0.25 | AE: 0.90
+	"weapon.legend_militia_glaive" : 350,       		//( 30,  40) | AP: 0.25 | AE: 0.90
+	"weapon.goblin_spear" : 500,                		//( 30,  40) | AP: 0.25 | AE: 0.70
+	"weapon.boar_spear" : 750,                  		//( 30,  35) | AP: 0.25 | AE: 0.95
+	"weapon.firelance" : 750,                   		//( 30,  35) | AP: 0.25 | AE: 1.10
+	"weapon.legend_glaive" : 1250,              		//( 40,  45) | AP: 0.25 | AE: 0.95
+	"weapon.fighting_spear" : 2100,             		//( 35,  40) | AP: 0.25 | AE: 1.00
+	"weapon.named_goblin_spear" : 2500,         		//( 30,  40) | AP: 0.25 | AE: 0.70
+	"weapon.legend_battle_glaive" : 3200,       		//( 45,  50) | AP: 0.25 | AE: 1.00
+	"weapon.named_spear" : 3200,                		//( 35,  40) | AP: 0.25 | AE: 1.00
+	"weapon.legend_named_glaive" : 6000,        		//( 45,  50) | AP: 0.25 | AE: 1.00
 	//2H
-	"weapon.warfork" : 400,
-	"weapon.goedendag" : 750,
-	"weapon.legend_military_goedendag" : 2000,
-	"weapon.legend_named_military_goedendag" : 5400,
+	"weapon.warfork" : 400,                     		//( 40,  60) | AP: 0.25 | AE: 1.00
+	"weapon.goedendag" : 750,                   		//( 45,  75) | AP: 0.25 | AE: 1.10
+	"weapon.legend_military_goedendag" : 2000,  		//( 70, 100) | AP: 0.40 | AE: 1.25
+	"weapon.legend_named_military_goedendag" : 5400,	//( 80, 110) | AP: 0.40 | AE: 1.25
+
+	//CROSSBOW
+	//2H
+	"weapon.legend_blowgun" : 30,               		//( 10,  25) | AP: 0.10 | AE: 0.20
+	"weapon.light_crossbow" : 300,              		//( 30,  50) | AP: 0.50 | AE: 0.60
+	"weapon.crossbow" : 750,                    		//( 40,  60) | AP: 0.50 | AE: 0.70
+	"weapon.goblin_crossbow" : 2000,            		//( 50,  70) | AP: 0.50 | AE: 0.75
+	"weapon.heavy_crossbow" : 3200,             		//( 50,  70) | AP: 0.50 | AE: 0.75
+	"weapon.named_crossbow" : 4400,             		//( 50,  70) | AP: 0.50 | AE: 0.75
 
 	//DAGGER
-	"weapon.legend_shiv" : 0, //TODO: Remove from shops
-	"weapon.legend_wooden_stake" : 0, //TODO: Remove from shops
-	"weapon.knife" : 30,
-	"weapon.dagger" : 180,
-	"shield.legend_parrying_dagger" : 500,
-	"shield.legend_named_parrying_dagger" : 800,
-	"weapon.rondel_dagger" : 400,
-	"weapon.qatal_dagger" : 750,
-	"weapon.legend_katar" : 1250,
-	"weapon.named_dagger" : 1500,
-	"weapon.named_qatal_dagger" : 3000,
-	"weapon.legend_redback_dagger" : 3800,
-	"weapon.obsidian_dagger" : 5000,
+	//1H
+	"weapon.legend_shiv" : 3,                   		//( 10,  20) | AP: 0.20 | AE: 0.30
+	"weapon.legend_wooden_stake" : 10,          		//( 10,  15) | AP: 0.30 | AE: 0.10
+	"weapon.knife" : 30,                        		//( 15,  25) | AP: 0.20 | AE: 0.50
+	"weapon.dagger" : 180,                      		//( 15,  35) | AP: 0.20 | AE: 0.60
+	"weapon.rondel_dagger" : 400,               		//( 20,  40) | AP: 0.20 | AE: 0.70
+	"weapon.qatal_dagger" : 750,                		//( 30,  45) | AP: 0.20 | AE: 0.70
+	"weapon.legend_katar" : 1250,               		//( 30,  45) | AP: 0.30 | AE: 1.25
+	"weapon.named_dagger" : 1500,               		//( 20,  40) | AP: 0.20 | AE: 0.70
+	"weapon.named_qatal_dagger" : 3000,         		//( 30,  45) | AP: 0.20 | AE: 0.70
+	"weapon.legend_redback_dagger" : 3800,      		//( 26,  52) | AP: 0.36 | AE: 0.70
+	"weapon.obsidian_dagger" : 5000,            		//( 35,  50) | AP: 0.20 | AE: 1.15
 
 	//FLAIL
 	//1H
-	"weapon.wooden_flail" : 0, //TODO: Remove from shops
-	"weapon.reinforced_wooden_flail" : 0, //TODO: Remove from shops
-	"weapon.flail" : 1800,
-	"weapon.three_headed_flail" : 2200,
-	"weapon.named_flail" : 3400,
-	"weapon.named_three_headed_flail" : 3400,
+	"weapon.wooden_flail" : 40,                 		//( 10,  25) | AP: 0.30 | AE: 0.50
+	"weapon.reinforced_wooden_flail" : 300,     		//( 20,  45) | AP: 0.30 | AE: 0.80
+	"weapon.flail" : 1800,                      		//( 25,  55) | AP: 0.30 | AE: 1.00
+	"weapon.three_headed_flail" : 2200,         		//( 30,  75) | AP: 0.30 | AE: 1.00
+	"weapon.named_flail" : 3400,                		//( 25,  55) | AP: 0.30 | AE: 1.00
+	"weapon.named_three_headed_flail" : 3400,   		//( 30,  75) | AP: 0.30 | AE: 1.00
 	//2H
-	"weapon.legend_ranged_wooden_flail" : 40,
-	"weapon.legend_chain" : 400,
-	"weapon.two_handed_wooden_flail" : 500,
-	"weapon.legend_reinforced_flail" : 1050,
-	"weapon.orc_flail_2h" : 1300,
-	"weapon.legend_pole_flail" : 2000,
-	"weapon.named_orc_flail_2h" : 2100,
-	"weapon.two_handed_flail" : 2800,
-	"weapon.named_two_handed_flail" : 2800,
-	"weapon.legend_named_flail" : 3000,
+	"weapon.legend_ranged_wooden_flail" : 40,   		//( 20,  50) | AP: 0.30 | AE: 0.50
+	"weapon.legend_chain" : 400,                		//( 15,  45) | AP: 0.20 | AE: 0.30
+	"weapon.two_handed_wooden_flail" : 500,     		//( 30,  60) | AP: 0.30 | AE: 0.80
+	"weapon.legend_reinforced_flail" : 1050,    		//( 35,  70) | AP: 0.30 | AE: 0.95
+	"weapon.orc_flail_2h" : 1300,               		//( 50, 100) | AP: 0.30 | AE: 1.25
+	"weapon.legend_pole_flail" : 2000,          		//( 40,  70) | AP: 0.30 | AE: 1.00
+	"weapon.named_orc_flail_2h" : 2100,         		//( 50, 100) | AP: 0.30 | AE: 1.25
+	"weapon.two_handed_flail" : 2800,           		//( 45,  90) | AP: 0.30 | AE: 1.15
+	"weapon.named_two_handed_flail" : 2800,     		//( 45,  90) | AP: 0.30 | AE: 1.15
+	"weapon.legend_named_flail" : 3000,         		//( 50,  80) | AP: 0.30 | AE: 1.00
+
+	//BOW
+	//2H
+	"weapon.wonky_bow" : 100,                   		//( 30,  50) | AP: 0.35 | AE: 0.50
+	"weapon.short_bow" : 200,                   		//( 30,  50) | AP: 0.35 | AE: 0.50
+	"weapon.goblin_bow" : 250,                  		//( 25,  40) | AP: 0.35 | AE: 0.55
+	"weapon.composite_bow" : 400,               		//( 40,  55) | AP: 0.35 | AE: 0.70
+	"weapon.goblin_heavy_bow" : 500,            		//( 30,  50) | AP: 0.35 | AE: 0.60
+	"weapon.hunting_bow" : 600,                 		//( 40,  60) | AP: 0.35 | AE: 0.55
+	"weapon.named_goblin_heavy_bow" : 2200,     		//( 30,  50) | AP: 0.35 | AE: 0.60
+	"weapon.war_bow" : 2900,                    		//( 50,  70) | AP: 0.35 | AE: 0.60
+	"weapon.masterwork_bow" : 3500,             		//( 50,  75) | AP: 0.35 | AE: 0.65
+	"weapon.named_warbow" : 4600,               		//( 50,  70) | AP: 0.35 | AE: 0.60
+
+	//THROWING
+	//1H
+	"weapon.orc_javelin" : 150,                 		//( 30,  40) | AP: 0.45 | AE: 0.70
+	"weapon.javelin" : 200,                     		//( 30,  45) | AP: 0.45 | AE: 0.75
+	"weapon.throwing_axe" : 200,                		//( 25,  40) | AP: 0.25 | AE: 1.30
+	"weapon.goblin_spiked_balls" : 200,         		//( 20,  35) | AP: 0.40 | AE: 0.70
+	"weapon.heavy_javelin" : 300,               		//( 35,  50) | AP: 0.45 | AE: 0.80
+	"weapon.heavy_throwing_axe" : 300,          		//( 30,  50) | AP: 0.25 | AE: 1.35
+	"weapon.throwing_spear" : 400,              		//( 45,  70) | AP: 0.45 | AE: 1.10
+	"weapon.named_javelin" : 1400,              		//( 30,  45) | AP: 0.45 | AE: 0.75
+	"weapon.named_throwing_axe" : 1400,         		//( 25,  40) | AP: 0.25 | AE: 1.30
+
+	//MUSICAL
+	//2H
+	"weapon.lute" : 50,                         		//(  5,  20) | AP: 0.40 | AE: 0.10
+	"weapon.legend_drum" : 100,                 		//(  5,  10) | AP: 0.50 | AE: 0.20
+	"weapon.barbarian_drum" : 300,              		//( 15,  20) | AP: 0.00 | AE: 0.00
+	"weapon.named_lute" : 1000,                 		//( 15,  25) | AP: 0.40 | AE: 1.10
 
 	//HAMMER
 	//1H
-	"weapon.legend_hammer" : 50,
-	"weapon.pickaxe" : 120,
-	"weapon.axehammer" : 800,
-	"weapon.military_pick" : 900,
-	"weapon.legend_skullsmasher" : 1200,
-	"weapon.warhammer" : 2500,
-	"weapon.named_warhammer" : 4200,
-	"weapon.legend_named_blacksmith_hammer" : 5000,
-	"weapon.legend_named_warhammer" : 5000,
+	"weapon.legend_hammer" : 50,                		//( 15,  20) | AP: 0.50 | AE: 1.50
+	"weapon.pickaxe" : 120,                     		//( 15,  30) | AP: 0.50 | AE: 1.50
+	"weapon.axehammer" : 800,                   		//( 20,  30) | AP: 0.50 | AE: 2.00
+	"weapon.military_pick" : 900,               		//( 20,  35) | AP: 0.50 | AE: 2.00
+	"weapon.legend_skullsmasher" : 1200,        		//( 35,  50) | AP: 0.50 | AE: 2.25
+	"weapon.warhammer" : 2500,                  		//( 30,  40) | AP: 0.50 | AE: 2.25
+	"weapon.named_warhammer" : 4200,            		//( 30,  40) | AP: 0.50 | AE: 2.25
+	"weapon.legend_named_blacksmith_hammer" : 5000,		//( 20,  30) | AP: 0.50 | AE: 2.00
+	"weapon.legend_named_warhammer" : 5000,     		//( 30,  45) | AP: 0.50 | AE: 2.50
 	//2H
-	"weapon.two_handed_wooden_hammer" : 500,
-	"weapon.skull_hammer" : 1300,
-	"weapon.polehammer" : 1600,
-	"weapon.legend_skullbreaker" : 1600,
-	"weapon.two_handed_hammer" : 3000,
-	"weapon.named_polehammer" : 3200,
-	"weapon.named_skullhammer" : 3200,
-	"weapon.named_two_handed_hammer" : 4000,
+	"weapon.two_handed_wooden_hammer" : 500,    		//( 40,  70) | AP: 0.50 | AE: 1.50
+	"weapon.skull_hammer" : 1300,               		//( 45,  65) | AP: 0.50 | AE: 1.80
+	"weapon.polehammer" : 1600,                 		//( 50,  75) | AP: 0.50 | AE: 1.85
+	"weapon.legend_skullbreaker" : 1600,        		//( 70, 100) | AP: 0.50 | AE: 2.10
+	"weapon.two_handed_hammer" : 3000,          		//( 60,  90) | AP: 0.50 | AE: 2.00
+	"weapon.named_polehammer" : 3200,           		//( 50,  75) | AP: 0.50 | AE: 1.85
+	"weapon.named_skullhammer" : 3200,          		//( 50,  70) | AP: 0.50 | AE: 1.80
+	"weapon.named_two_handed_hammer" : 4000,    		//( 60,  90) | AP: 0.50 | AE: 2.00
 
 	//STAFF
 	//2H
-	"weapon.legend_staff" : 50,
-	"weapon.legend_tipstaff" : 100,
-	"weapon.legend_mystic_staff" : 1000,
-	"weapon.legend_staff_vala" : 1000,
-	"weapon.legend_staff_gnarled" : 5000,
-
-	//BOW
-	"weapon.wonky_bow" : 0, //TODO: Remove from shops
-	"weapon.short_bow" : 200,
-	"weapon.goblin_bow" : 250,
-	"weapon.composite_bow" : 400,
-	"weapon.goblin_heavy_bow" : 500,
-	"weapon.hunting_bow" : 600,
-	"weapon.named_goblin_heavy_bow" : 2200,
-	"weapon.war_bow" : 2900,
-	"weapon.masterwork_bow" : 3500,
-	"weapon.named_warbow" : 4600,
-
-	//CROSSBOW //FEATURE_1: crossbows + bolts are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
-	"weapon.legend_blowgun" : 0,
-	"weapon.light_crossbow" : 180,
-	"weapon.crossbow" : 225,
-	"weapon.heavy_crossbow" : 315,
-	"weapon.goblin_crossbow" : 375, //FEATURE_1: description, superior goods
-	"weapon.named_crossbow" : 473, //heavy crossbow variant, //FEATURE_1: named goblin crossbow
-	
-	//THROWING
-	"weapon.orc_javelin" : 150,
-	"weapon.javelin" : 200,
-	"weapon.throwing_axe" : 200,
-	"weapon.goblin_spiked_balls" : 200,
-	"weapon.heavy_javelin" : 300,
-	"weapon.heavy_throwing_axe" : 300,
-	"weapon.throwing_spear" : 400,
-	"weapon.named_javelin" : 1400,
-	"weapon.named_throwing_axe" : 1400,
-
-	//MUSICAL
-	"weapon.lute" : 50,
-	"weapon.legend_drum" : 100,
-	"weapon.barbarian_drum" : 300,
-	"weapon.named_lute" : 1000,
+	"weapon.legend_staff" : 50,                 		//( 20,  30) | AP: 0.40 | AE: 0.30
+	"weapon.legend_tipstaff" : 100,             		//( 30,  40) | AP: 0.40 | AE: 0.30
+	"weapon.legend_mystic_staff" : 1000,        		//( 40,  50) | AP: 0.40 | AE: 0.30
+	"weapon.legend_staff_vala" : 1000,          		//( 20,  30) | AP: 0.40 | AE: 0.60
+	"weapon.legend_staff_gnarled" : 5000,       		//( 60,  80) | AP: 0.40 | AE: 0.30
 
 	//SLING
 	//1H
-	"weapon.legend_sling" : 150,
+	"weapon.legend_sling" : 150,                		//( 25,  35) | AP: 0.35 | AE: 0.50
 	//2H
-	"weapon.legend_slingshot" : 100,
-	"weapon.staff_sling" : 150,
-	"weapon.nomad_sling" : 300,
-	"weapon.legend_slingstaff" : 1000,
+	"weapon.legend_slingshot" : 100,            		//( 10,  25) | AP: 0.40 | AE: 0.10
+	"weapon.staff_sling" : 150,                 		//( 25,  40) | AP: 0.35 | AE: 0.50
+	"weapon.nomad_sling" : 300,                 		//( 35,  50) | AP: 0.35 | AE: 0.60
+	"weapon.legend_slingstaff" : 1000,          		//( 35,  45) | AP: 0.75 | AE: 1.10
 
 	//FIREARM
 	//2H
-	"weapon.handgonne" : 3000,
-	"weapon.named_handgonne" : 5000,
+	"weapon.handgonne" : 3000,                  		//( 35,  75) | AP: 0.25 | AE: 0.90
+	"weapon.named_handgonne" : 5000,            		//( 35,  75) | AP: 0.25 | AE: 0.90
 
-//SHIELDS //TODO: SHIELDS prices
+//SHIELDS
 	"shield.buckler" : 45,
 	"shield.wooden_shield_old" : 60,
 	"shield.faction_wooden_shield" : 90,
@@ -669,7 +664,7 @@
 	"shield.named_golden_round" : 1500,
 	"shield.named_sipar_shield" : 1500,
 
-//LEGEND_ARMOR //TODO: LEGEND_ARMOR prices
+//LEGEND_ARMOR
 
 	//ARMOR
 	"legend_armor.body.legend_rabble_fur" : 5,
@@ -686,45 +681,39 @@
 	"legend_armor_upgrade.legend_hexe_leader_cloak" : 12000,
 
 	//CLOTH
-	"legend_armor.body.legend_sackcloth_tattered" : 0, //FEATURE_1: remove from shops
-	"legend_armor.body.legend_sackcloth" : 0, //FEATURE_1: remove from shops
-
-	"legend_armor.body.legend_ancient_cloth" : 24,
-	"legend_armor.body.legend_ancient_cloth_restored" : 24,
-	"legend_armor.body.legend_peasant_dress" : 24,
-	"legend_armor.body.legend_robes" : 24,
-	"legend_armor.body.legend_robes_nun" : 24,
-	"legend_armor.body.legend_sackcloth_patched" : 24,
-	"legend_armor.body.legend_tunic" : 24,
-	"legend_armor.body.legend_southern_tunic" : 24, //FEATURE_1: set to 25 armor
-	"legend_armor.body.legend_tunic_collar_deep" : 24,
-	"legend_armor.body.legend_tunic_collar_thin" : 24,
-	"legend_armor.body.legend_tunic_wrap" : 24,
-	"legend_armor.body.legend_southern_robe" : 24,
-	"legend_armor.body.legend_robes_wizard" : 0, //FEATURE_1: disabled, looks ugly
-
-	"legend_armor.body.legend_thick_tunic" : 36,
-	"legend_armor.body.legend_dark_tunic" : 36,
-	"legend_armor.body.legend_apron_butcher" : 36,
-	
+	"legend_armor.body.legend_bandages" : 1,
+	"legend_armor.body.legend_sackcloth_tattered" : 5,
+	"legend_armor.body.legend_sackcloth" : 15,
+	"legend_armor.body.legend_ancient_cloth" : 20,
+	"legend_armor.body.legend_peasant_dress" : 25,
+	"legend_armor.body.legend_robes" : 25,
+	"legend_armor.body.legend_robes_nun" : 25,
+	"legend_armor.body.legend_sackcloth_patched" : 25,
+	"legend_armor.body.legend_tunic" : 25,
+	"legend_armor.body.legend_tunic_collar_deep" : 25,
+	"legend_armor.body.legend_tunic_collar_thin" : 25,
+	"legend_armor.body.legend_tunic_wrap" : 25,
+	"legend_armor.body.legend_southern_robe" : 35,
+	"legend_armor.body.legend_ancient_cloth_restored" : 40,
+	"legend_armor.body.legend_thick_tunic" : 40,
+	"legend_armor.body.legend_apron_butcher" : 50,
+	"legend_armor.body.legend_dark_tunic" : 50,
+	"legend_armor.body.legend_robes_wizard" : 50,
+	"legend_armor.body.legend_southern_tunic" : 50,
 	"legend_armor.body.legend_apron" : 60,
-	
-	"legend_armor.body.legend_gladiator_harness" : 60,
-
+	"legend_armor.body.legend_robes_magic" : 100,
+	"legend_armor.body.legend_gladiator_harness" : 150,
 	"legend_armor.body.legend_padded_surcoat" : 150,
 	"legend_armor.body.legend_padded_surcoat_plain" : 150,
-
-	"legend_armor.body.legend_southern_noble_surcoat" : 250, //FEATURE_1: buff 65 for 6
 	"legend_armor.body.legend_gambeson" : 250,
 	"legend_armor.body.legend_gambeson_plain" : 250,
-	"legend_armor.body.legend_southern_gambeson" : 250, //65 for 8
+	"legend_armor.body.legend_southern_gambeson" : 250,
 	"legend_armor.body.legend_southern_split_gambeson" : 250,
-	"legend_armor.body.legend_gambeson_wolf" : 250,
-	"legend_armor.body.legend_gambeson_named" : 375,
-
-	"legend_armor.body.legend_robes_magic" : 146, //fancy looking //FEATURE_10: magic rework
-	"legend_armor.body.legend_tunic_noble" : 176, //40 for 2
-	"legend_armor.body.legend_tunic_noble_named" : 264,
+	"legend_armor.body.legend_gambeson_wolf" : 300,
+	"legend_armor.body.legend_southern_noble_surcoat" : 350,
+	"legend_armor.body.legend_tunic_noble" : 500,
+	"legend_armor.body.legend_gambeson_named" : 1500,
+	"legend_armor.body.legend_tunic_noble_named" : 1500,
 
 	//CHAIN
 	"legend_armor.body.legend_southern_cloth" : 50,
@@ -749,13 +738,11 @@
 
 	//PLATE
 	"legend_armor.body.legend_thick_furs_armor" : 15,
-	"legend_armor.body.legend_armor_leather_jacket_simple" : 30, //FEATURE_1: Remove
+	"legend_armor.body.legend_armor_leather_jacket_simple" : 30,
 	"legend_armor.body.legend_armor_leather_jacket" : 75,
 	"legend_armor.body.legend_animal_hide_armor" : 100,
-	"legend_armor.body.legend_southern_leather_jacket" : 110,
-	
-	
 	"legend_armor.body.legend_armor_plate_ancient_gladiator" : 100,
+	"legend_armor.body.legend_southern_leather_jacket" : 110,
 	"legend_armor.body.legend_armor_leather_padded" : 175,
 	"legend_armor.body.legend_reinforced_animal_hide_armor" : 175,
 	"legend_armor.body.legend_southern_leather_plates" : 200,
@@ -895,7 +882,7 @@
 	"legend_armor_upgrade.legend_rune_resilience" : 1200,
 	"legend_armor_upgrade.legend_rune_safety" : 1200,
 
-//LEGEND_HELMETS //TODO: LEGEND_HELMETS prices
+//LEGEND_HELMETS
 
 	//HOOD
 	"armor.head.legend_helmet_goblin_scarf" : 5,
@@ -906,20 +893,16 @@
 	"armor.head.legend_helmet_southern_headband_coin" : 20,
 	"armor.head.legend_helmet_southern_cap" : 30,
 	"armor.head.legend_helmet_southern_cap_dark" : 30,
-
-	"armor.head.legend_helmet_patched_hood" : 5,
-	"armor.head.legend_helmet_simple_hood" : 8,
-
+	"armor.head.legend_helmet_patched_hood" : 45,
+	"armor.head.legend_helmet_simple_hood" : 50,
 	"armor.head.legend_helmet_barb_leather_cap" : 55,
 	"armor.head.legend_helmet_leather_cap" : 75,
 	"armor.head.legend_helmet_rotten_chain_scarf" : 80,
 	"armor.head.legend_helmet_padded_cap" : 90,
 	"armor.head.legend_helmet_southern_open_hood" : 90,
 	"armor.head.legend_helmet_southern_turban_light_hood" : 90,
-
-	"armor.head.legend_helmet_leather_hood" : 16,
+	"armor.head.legend_helmet_leather_hood" : 110,
 	"armor.head.legend_helmet_padded_hood" : 115,
-
 	"armor.head.legend_helmet_barb_chain_scarf" : 125,
 	"armor.head.legend_helmet_aventail" : 150,
 	"armor.head.legend_helmet_chain_scarf" : 150,
@@ -1030,7 +1013,7 @@
 	"armor.head.legend_faction_helmet" : 200,
 
 	//TOP
-	"armor.head.legend_helmet_goblin_leaves" : 0,
+	"armor.head.legend_helmet_goblin_leaves" : 5,
 	"armor.head.legend_helmet_hood_cloth_round" : 5,
 	"armor.head.legend_helmet_hood_cloth_square" : 5,
 	"armor.head.legend_helmet_hood_cloth_wide" : 5,
