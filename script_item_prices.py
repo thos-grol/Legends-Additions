@@ -108,6 +108,14 @@ HELMET_ORDER = [
     'RUNES',
 ]
 
+WEAPON_VALUES = {
+
+}
+
+ARMOR_VALUES = {
+    
+}
+
 def parseItem(path, name):
     if not name.endswith('.nut') or name in FILE_BLACKLIST: return
 
@@ -117,36 +125,48 @@ def parseItem(path, name):
         id = None
         value = None
         weapontype = None
+        min = None
+        max = None
+        ap = None
+        af = None
         for line in file.readlines():
             if 'this.m.ID = ' in line:
                     query = re.findall(r'"(.+?)"', line)[0]
                     id = f'\"{query}\"'
             if 'this.m.Value = ' in line:
                 value = int(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
-            if CATEGORIES[0] == 'weapons' and 'this.m.WeaponType = ' in line:
-                if name in MANUAL_WEAPON_CATEGORIES:
-                    CATEGORIES[1] = MANUAL_WEAPON_CATEGORIES[name]
-                    if CATEGORIES[1] not in DATA[CATEGORIES[0]]:
-                        DATA[CATEGORIES[0]][CATEGORIES[1]] = {}
-                else:
+            if CATEGORIES[0] == 'weapons':
+                if 'this.m.WeaponType = ' in line:
+                    if name in MANUAL_WEAPON_CATEGORIES:
+                        CATEGORIES[1] = MANUAL_WEAPON_CATEGORIES[name]
+                        if CATEGORIES[1] not in DATA[CATEGORIES[0]]:
+                            DATA[CATEGORIES[0]][CATEGORIES[1]] = {}
+                    else:
+                        value = re.findall(r'=(.+)', line)[0].replace(';', '').strip()
+                        types = value.split('|')
+                        # CATEGORIES[1] = types[0].strip()
+                        CATEGORIES[1] = types[0].strip().replace('this.Const.Items.WeaponType.', '')
+                        if CATEGORIES[1] not in DATA[CATEGORIES[0]]:
+                            DATA[CATEGORIES[0]][CATEGORIES[1]] = {}
+                if 'this.m.ItemType = ' in line:
                     value = re.findall(r'=(.+)', line)[0].replace(';', '').strip()
                     types = value.split('|')
-                    # CATEGORIES[1] = types[0].strip()
-                    CATEGORIES[1] = types[0].strip().replace('this.Const.Items.WeaponType.', '')
-                    if CATEGORIES[1] not in DATA[CATEGORIES[0]]:
-                        DATA[CATEGORIES[0]][CATEGORIES[1]] = {}
-            if CATEGORIES[0] == 'weapons' and 'this.m.ItemType = ' in line:
-                value = re.findall(r'=(.+)', line)[0].replace(';', '').strip()
-                types = value.split('|')
-                for type in types:
-                    if 'OneHanded' in type:
-                        weapontype = '1H'
-                        break
-                    elif 'TwoHanded' in type:
-                        weapontype = '2H'
-                        break
-
-
+                    for type in types:
+                        if 'OneHanded' in type:
+                            weapontype = '1H'
+                            break
+                        elif 'TwoHanded' in type:
+                            weapontype = '2H'
+                            break
+                if 'this.m.RegularDamage = ' in line:
+                    min = int(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
+                if 'this.m.RegularDamageMax = ' in line:
+                    max = int(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
+                if 'this.m.ArmorDamageMult = ' in line:
+                    af = float(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
+                if 'this.m.DirectDamageMult = ' in line:
+                    ap = float(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
+                
     if id is None:
         print(name)
     if value is None:
@@ -165,6 +185,10 @@ def parseItem(path, name):
             if weapontype not in DATA[CATEGORIES[0]][CATEGORIES[1]]:
                 DATA[CATEGORIES[0]][CATEGORIES[1]][weapontype] = {}
             DATA[CATEGORIES[0]][CATEGORIES[1]][weapontype][id] = value
+
+        if max is not None and min is not None and af is not None and ap is not None:
+            WEAPON_VALUES[id] = [min, max, ap, af]
+
 
 def getCategories(path, name):
     #Get file category from path
@@ -243,7 +267,12 @@ with open(os.path.join(DIRECTORY_OUTPUT, f'Ω_economy_item_prices.nut'), "w+") a
                     f_out.write(f'\t//{TYPE.upper()}\n')
                     SORTED = sortByValue(DATA[CATEGORY][SUBCATEGORY][TYPE])
                     for tuple in SORTED:
-                        f_out.write(f'\t{tuple[0]} : {tuple[1]},\n')
+                        comment = ''
+                        if tuple[0] in WEAPON_VALUES:
+                            e = WEAPON_VALUES[tuple[0]]
+                            comment = f'\t\t//({e[0]:3}, {e[1]:3}) | AP: {e[2]:.2f} | AE: {e[3]:.2f}'
+                            mainstr = f'\t{tuple[0]} : {tuple[1]},'
+                        f_out.write(f'{mainstr :45}{comment}\n')
             
 
             continue

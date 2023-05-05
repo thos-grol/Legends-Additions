@@ -218,11 +218,6 @@
 			list.push({
 				R = 50,
 				P = 1.0,
-				S = "supplies/goat_cheese_item"
-			});
-			list.push({
-				R = 50,
-				P = 1.0,
 				S = "supplies/dried_lamb_item"
 			});
 		}

@@ -1,7 +1,7 @@
 ::mods_hookExactClass("entity/world/attached_location/goat_herd_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
-		_list.push("supplies/goat_cheese_item");
+		_list.push("supplies/dried_lamb_item");
 	}
 
 	o.onUpdateDraftList = function( _list, _gender = null )
@@ -36,7 +36,7 @@
 			_list.push({
 				R = 0,
 				P = 1.0,
-				S = "supplies/goat_cheese_item"
+				S = "supplies/dried_lamb_item"
 			});
 			_list.push({
 				R = 20,

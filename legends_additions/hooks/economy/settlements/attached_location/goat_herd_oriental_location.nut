@@ -24,7 +24,7 @@
 			_list.push({
 				R = 0,
 				P = 1.0,
-				S = "supplies/goat_cheese_item"
+				S = "supplies/dried_lamb_item"
 			});
 			_list.push({
 				R = 0,

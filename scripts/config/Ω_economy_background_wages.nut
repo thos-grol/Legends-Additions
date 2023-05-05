@@ -1,5 +1,5 @@
-//FIXME: After editing item prices, edit backgrounds
-//TODO: remove religious backgrounds
+//FEATURE_2: After editing item prices, edit backgrounds
+//FEATURE_2: remove religious backgrounds
 ::Z.Backgrounds.Wages <- {
 
 	//WASTES

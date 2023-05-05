@@ -5,6 +5,7 @@ Economy Overhaul
     //FEATURE_3: start making the world poorer, troop equipment nerf
 
 //FEATURE_6: Faction Overhaul 
+//FEATURE_4: sellswords armor rework? - no perks needed, buffs granted based on armor weight
 
 ======== BUILDS ===========
 
@@ -238,7 +239,7 @@ Undead cannot be charmed
 ::setSpawn("spider", ::Const.Faction.Enemy)
 
 
-::addItem("preserved_mead_item")
+::addItem("bone_figurines")
 
 ::addItem("legend_robes_wizard")
 ::addItem("apotheosis_potion_item")
