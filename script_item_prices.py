@@ -108,13 +108,9 @@ HELMET_ORDER = [
     'RUNES',
 ]
 
-WEAPON_VALUES = {
-
-}
-
-ARMOR_VALUES = {
-    
-}
+WEAPON_VALUES = {}
+ARMOR_VALUES = {}
+SHIELD_VALUES = {}
 
 def parseItem(path, name):
     if not name.endswith('.nut') or name in FILE_BLACKLIST: return
@@ -135,6 +131,7 @@ def parseItem(path, name):
                     id = f'\"{query}\"'
             if 'this.m.Value = ' in line:
                 value = int(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
+            
             if CATEGORIES[0] == 'weapons':
                 if 'this.m.WeaponType = ' in line:
                     if name in MANUAL_WEAPON_CATEGORIES:
@@ -166,14 +163,33 @@ def parseItem(path, name):
                     af = float(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
                 if 'this.m.DirectDamageMult = ' in line:
                     ap = float(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
+            
+            if CATEGORIES[0] == 'shields':
+                # this.m.MeleeDefense = 20;
+                # this.m.RangedDefense = 15;
+                # this.m.StaminaModifier = -14;
+                # this.m.ConditionMax = 32;
+                if min is None and 'this.m.MeleeDefense = ' in line:
+                    min = int(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
+                if max is None and 'this.m.RangedDefense = ' in line:
+                    max = int(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
+                if af is None and 'this.m.StaminaModifier = ' in line:
+                    af = float(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
+                if ap is None and 'this.m.ConditionMax = ' in line:
+                    ap = float(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
+
+            if CATEGORIES[0] == 'legend_armor' or CATEGORIES[0] == 'legend_helmets':
+                if max is None and 'this.m.ConditionMax = ' in line:
+                    max = int(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
+                if ap is None and 'this.m.StaminaModifier = ' in line:
+                        ap = int(re.findall(r'=(.+)', line)[0].replace(';', '').strip())
                 
     if id is None:
         print(name)
     if value is None:
         return
-    if CATEGORIES[0] != 'weapons':
-        DATA[CATEGORIES[0]][CATEGORIES[1]][id] = value
-    else:
+    
+    if CATEGORIES[0] == 'weapons':
         if id in MISLABLED_WEAPONS2H:
             weapontype = '2H'
         if id in MISLABLED_WEAPONS1H:
@@ -188,8 +204,19 @@ def parseItem(path, name):
 
         if max is not None and min is not None and af is not None and ap is not None:
             WEAPON_VALUES[id] = [min, max, ap, af]
-
-
+        return
+    
+    if CATEGORIES[0] == 'shields':
+        if max is not None and min is not None and af is not None and ap is not None:
+            SHIELD_VALUES[id] = [min, max, ap, af]    
+    if CATEGORIES[0] == 'legend_armor' or CATEGORIES[0] == 'legend_helmets':
+        if max is not None and ap is not None:
+            ARMOR_VALUES[id] = [max, ap]
+    
+   
+        
+    DATA[CATEGORIES[0]][CATEGORIES[1]][id] = value
+    
 def getCategories(path, name):
     #Get file category from path
     tokens = path.replace(r'C:\Files\Projects\bbros\env_legends\items', '')[1:].split('\\')
@@ -271,7 +298,7 @@ with open(os.path.join(DIRECTORY_OUTPUT, f'Ω_economy_item_prices.nut'), "w+") a
                         if tuple[0] in WEAPON_VALUES:
                             e = WEAPON_VALUES[tuple[0]]
                             comment = f'\t\t//({e[0]:3}, {e[1]:3}) | AP: {e[2]:.2f} | AE: {e[3]:.2f}'
-                            mainstr = f'\t{tuple[0]} : {tuple[1]},'
+                        mainstr = f'\t{tuple[0]} : {tuple[1]},'
                         f_out.write(f'{mainstr :45}{comment}\n')
             
 
@@ -283,7 +310,12 @@ with open(os.path.join(DIRECTORY_OUTPUT, f'Ω_economy_item_prices.nut'), "w+") a
                 f_out.write(f'\t//{SUBCATEGORY.upper()}\n')
                 SORTED = sortByValue(DATA[CATEGORY][SUBCATEGORY])
                 for tuple in SORTED:
-                    f_out.write(f'\t{tuple[0]} : {tuple[1]},\n')
+                    comment = ''
+                    if tuple[0] in ARMOR_VALUES:
+                        e = ARMOR_VALUES[tuple[0]]
+                        comment = f'\t\t//DUR: {e[0]:.2f} | STA: {e[1]:.2f}'
+                    mainstr = f'\t{tuple[0]} : {tuple[1]},'
+                    f_out.write(f'{mainstr :70}{comment}\n')
             continue
 
         if CATEGORY == 'legend_helmets':
@@ -292,7 +324,49 @@ with open(os.path.join(DIRECTORY_OUTPUT, f'Ω_economy_item_prices.nut'), "w+") a
                 f_out.write(f'\t//{SUBCATEGORY.upper()}\n')
                 SORTED = sortByValue(DATA[CATEGORY][SUBCATEGORY])
                 for tuple in SORTED:
-                    f_out.write(f'\t{tuple[0]} : {tuple[1]},\n')
+                    comment = ''
+                    if tuple[0] in ARMOR_VALUES:
+                        e = ARMOR_VALUES[tuple[0]]
+                        comment = f'\t\t//DUR: {e[0]:.2f} | STA: {e[1]:.2f}'
+                    mainstr = f'\t{tuple[0]} : {tuple[1]},'
+                    f_out.write(f'{mainstr :70}{comment}\n')
+            continue
+
+        if CATEGORY == 'shields':
+            SORTED = sortByValue(DATA[CATEGORY]['MAIN'])
+            for tuple in SORTED:
+                comment = ''
+                if tuple[0] in SHIELD_VALUES:
+                    e = SHIELD_VALUES[tuple[0]]
+                    comment = f'\t\t//DEF: ({e[0]:3}M, {e[1]:3}R) | DUR: {e[3]:.2f} | STA: {e[2]:.2f}'
+                mainstr = f'\t{tuple[0]} : {tuple[1]},'
+                f_out.write(f'{mainstr :45}{comment}\n')
+
+            for SUBCATEGORY in DATA[CATEGORY]:
+                if SUBCATEGORY == 'MAIN': continue
+                if SUBCATEGORY == 'NAMED': continue
+                f_out.write('\n')
+                f_out.write(f'\t//{SUBCATEGORY.upper()}\n')
+                SORTED = sortByValue(DATA[CATEGORY][SUBCATEGORY])
+                for tuple in SORTED:
+                    comment = ''
+                    if tuple[0] in SHIELD_VALUES:
+                        e = SHIELD_VALUES[tuple[0]]
+                        comment = f'\t\t//DEF: ({e[0]:3}M, {e[1]:3}R) | DUR: {e[3]:.2f} | STA: {e[2]:.2f}'
+                    mainstr = f'\t{tuple[0]} : {tuple[1]},'
+                    f_out.write(f'{mainstr :45}{comment}\n')
+            
+            if 'NAMED' in DATA[CATEGORY]:
+                f_out.write('\n')
+                f_out.write(f'\t//NAMED\n')
+                SORTED = sortByValue(DATA[CATEGORY]['NAMED'])
+                for tuple in SORTED:
+                    comment = ''
+                    if tuple[0] in SHIELD_VALUES:
+                        e = SHIELD_VALUES[tuple[0]]
+                        comment = f'\t\t//DEF: ({e[0]:3}M, {e[1]:3}R) | DUR: {e[3]:.2f} | STA: {e[2]:.2f}'
+                    mainstr = f'\t{tuple[0]} : {tuple[1]},'
+                    f_out.write(f'{mainstr :45}{comment}\n')
             continue
         
        
