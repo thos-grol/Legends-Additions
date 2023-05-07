@@ -10,6 +10,7 @@
 });
 
 //FEATURE_0: log price mults and come up with more sane buy sell price formula and figure out why wages are getting fucked up
+//FEATURE_0: sell prices capped at -50% to -10% of item price, buy price capped to 110% to 150% of item price 
 ::mods_hookExactClass("entity/world/settlement", function(o)
 {
     o.getPriceMult = function()
