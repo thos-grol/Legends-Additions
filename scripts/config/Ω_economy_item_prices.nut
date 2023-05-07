@@ -905,60 +905,63 @@
 	"legend_armor.body.legend_southern_named_golden_plates" : 635,      		//DUR: 200.00 | STA: -36.00
 	"legend_armor.body.legend_southern_named_plates" : 1000,             		//DUR: 210.00 | STA: -25.00	
 
-	"legend_armor.body.ijirok_armor" : 6000,                            		//DUR: 320.00 | STA: -32.00
-	"legend_armor.body.armor_of_davkul" : 6000,                         		//DUR: 270.00 | STA: -18.00
+	"legend_armor.body.ijirok_armor" : 12000,                            		//DUR: 320.00 | STA: -32.00
+	"legend_armor.body.armor_of_davkul" : 12000,                         		//DUR: 270.00 | STA: -18.00
 	"legend_armor.body.emperors_armor" : 20000,                          		//DUR: 380.00 | STA: -30.00
 
-	//III //TODO: armor prices
-	"legend_armor.named_tabard" : 0,                                  			//DUR: 10.00 | STA: 0.00
+	//III
+	"legend_armor.named_tabard" : 0,                                  			//DUR: 10.00 | STA: 0.00 //FEATURE_1: figure out price
 
-	//VI
-	"legend_armor.body.legend_shoulder_cloth" : 50,                      		//DUR: 5.00 | STA: 0.00
-	"legend_armor.body.legend_armor_cloak_common" : 100,                 		//DUR: 10.00 | STA: -1.00
-	"legend_armor.body.legend_southern_scarf" : 100,                     		//DUR: 5.00 | STA: 0.00
-	"legend_armor.body.legend_dark_wooly_cloak" : 120,                   		//DUR: 15.00 | STA: -2.00
-	"legend_armor.body.legend_sash" : 150,                               		//DUR: 3.00 | STA: 0.00
-	"legend_armor.body.legend_southern_scarf_wrap" : 150,                		//DUR: 15.00 | STA: -1.00
-	"legend_armor.body.legend_animal_pelt" : 250,                        		//DUR: 15.00 | STA: -2.00
-	"legend_armor.body.legend_noble_shawl" : 250,                        		//DUR: 10.00 | STA: 0.00
-	"legend_armor.body.legend_armor_cloak_crusader" : 500,               		//DUR: 35.00 | STA: -5.00
-	"legend_armor.body.legend_armor_cloak_heavy" : 500,                  		//DUR: 30.00 | STA: -4.00
-	"legend_armor.body.serpent_skin" : 800,                              		//DUR: 25.00 | STA: -2.00
-	"legend_armor.body.unhold_fur" : 1000,                               		//DUR: 25.00 | STA: -2.00
-	"legend_armor.body.lindwurm_scales" : 1800,                          		//DUR: 25.00 | STA: -2.00
-	"legend_armor.body.legend_armor_cloak_noble" : 3000,                 		//DUR: 25.00 | STA: -2.00
-	"legend_armor.body.legend_redback_cloak" : 6000,                     		//DUR: 10.00 | STA: -1.00
-	"legend_armor.body.legend_hexe_leader_cloak" : 7500,                 		//DUR: 25.00 | STA: -2.00
-	"legend_armor.body.legend_stollwurm_scales" : 9000,                  		//DUR: 30.00 | STA: -4.00
-	"legend_armor_upgrade.legend_redback_cloak" : 7500,                  		//DUR: 35.00 | STA: -3.00
-	"legend_armor_upgrade.legend_hexe_leader_cloak" : 12000,             		//DUR: 20.00 | STA: 0.00
-	"legend_armor.cloak_rich" : 0,                                   			//DUR: 35.00 | STA: -2.00
-	"legend_armor.cloak_emperor" : 0,                                			//DUR: 40.00 | STA: -3.00
+	//VI //FEATURE_1: only the redback silk cloak looks good, possible use it again in future
+	"legend_armor.body.lindwurm_scales" : 0,                          			//DUR: 25.00 | STA: -2.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_stollwurm_scales" : 0,                  			//DUR: 30.00 | STA: -4.00 	//FEATURE_1: Remove
+	"legend_armor.body.serpent_skin" : 0,                              			//DUR: 25.00 | STA: -2.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_shoulder_cloth" : 0,                      		//DUR: 5.00 | STA: 0.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_armor_cloak_common" : 0,                 			//DUR: 10.00 | STA: -1.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_southern_scarf" : 0,                     			//DUR: 5.00 | STA: 0.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_dark_wooly_cloak" : 0,                   			//DUR: 15.00 | STA: -2.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_sash" : 0,                               			//DUR: 3.00 | STA: 0.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_southern_scarf_wrap" : 0,                			//DUR: 15.00 | STA: -1.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_animal_pelt" : 0,                        			//DUR: 15.00 | STA: -2.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_noble_shawl" : 0,                        			//DUR: 10.00 | STA: 0.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_armor_cloak_crusader" : 0,               			//DUR: 35.00 | STA: -5.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_armor_cloak_heavy" : 0,                  			//DUR: 30.00 | STA: -4.00 	//FEATURE_1: Remove
+	"legend_armor.body.unhold_fur" : 0,                               			//DUR: 25.00 | STA: -2.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_armor_cloak_noble" : 0,                 			//DUR: 25.00 | STA: -2.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_redback_cloak" : 0,                     			//DUR: 10.00 | STA: -1.00 	//FEATURE_1: Remove
+	"legend_armor.body.legend_hexe_leader_cloak" : 0,                 			//DUR: 25.00 | STA: -2.00 	//FEATURE_1: Remove
+	"legend_armor_upgrade.legend_redback_cloak" : 0,                  			//DUR: 35.00 | STA: -3.00 	//FEATURE_1: Remove
+	"legend_armor_upgrade.legend_hexe_leader_cloak" : 0,             			//DUR: 20.00 | STA: 0.00 	//FEATURE_1: Remove
+	"legend_armor.cloak_rich" : 0,                                   			//DUR: 35.00 | STA: -2.00 	//FEATURE_1: Remove
+	"legend_armor.cloak_emperor" : 0,                                			//DUR: 40.00 | STA: -3.00 	//FEATURE_1: Remove
 
 	//V
-	"legend_armor_upgrade.barbarian_horn" : 250,                         		//DUR: 40.00 | STA: -3.00
-	"legend_armor_upgrade.leather_neckguard" : 250,                      		//DUR: 10.00 | STA: -2.00
-	"legend_armor_upgrade.leather_shoulderguards" : 250,                 		//DUR: 30.00 | STA: -2.00
-	"armor_upgrade.light_gladiator_upgrade" : 400,                       		//DUR: 45.00 | STA: -2.00
-	"legend_armor_upgrade.mail_patch" : 500,                             		//DUR: 20.00 | STA: -4.00
-	"legend_armor_upgrade.direwolf_pelt" : 600,                          		//DUR: 10.00 | STA: 0.00
-	"legend_armor_upgrade.double_mail" : 600,                            		//DUR: 20.00 | STA: 0.00
-	"armor_upgrade.hyena_fur" : 600,                                     		//DUR: 10.00 | STA: 0.00
-	"legend_armor_upgrade.serpent_skin" : 600,                           		//DUR: 20.00 | STA: -3.00
-	"legend_armor_upgrade.joint_cover" : 750,                            		//DUR: 30.00 | STA: -6.00
-	"armor_upgrade.heavy_gladiator_upgrade" : 800,                       		//DUR: 75.00 | STA: -6.00
-	"legend_armor_upgrade.metal_pauldrons" : 800,                        		//DUR: 60.00 | STA: -6.00
-	"legend_armor_upgrade.metal_plating" : 800,                          		//DUR: 10.00 | STA: 0.00
-	"legend_armor_upgrade.bone_platings" : 850,                          
-	"legend_armor_upgrade.unhold_fur" : 1000,                            
-	"legend_armor_upgrade.protective_runes" : 1100,                      
-	"legend_armor_upgrade.additional_padding" : 1200,                    		//DUR: 1.00 | STA: -2.00
-	"legend_armor_upgrade.heraldic_plates" : 1800,                       		//DUR: 60.00 | STA: -10.00
-	"legend_armor_upgrade.lindwurm_scales" : 1800,                       		//DUR: 20.00 | STA: -1.00
-	"legend_armor_upgrade.light_padding_replacement" : 2000,             		//DUR: 10.00 | STA: 0.00
-	"legend_armor_upgrade.horn_plate" : 4000,                            		//DUR: 40.00 | STA: -6.00
-	"legend_armor_upgrade.legend_stollwurm_scales" : 6000,               		//DUR: 40.00 | STA: -2.00
-	"legend_armor_upgrade.legend_white_wolf_pelt" : 6000,                		//DUR: 30.00 | STA: -2.00             
+	"armor_upgrade.hyena_fur" : 0,                                     			//DUR: 10.00 | STA: 0.00 //FEATURE_1: Remove
+	"legend_armor_upgrade.lindwurm_scales" : 0,                       			//DUR: 20.00 | STA: -1.00 //FEATURE_1: Remove
+	"legend_armor_upgrade.legend_stollwurm_scales" : 0,               			//DUR: 40.00 | STA: -2.00 //FEATURE_1: Remove
+	"legend_armor_upgrade.serpent_skin" : 0,                           			//DUR: 20.00 | STA: -3.00 //FEATURE_1: Remove
+	"legend_armor_upgrade.additional_padding" : 0,                    			//DUR: 1.00 | STA: -2.00 -35% //FEATURE_1: Remove
+
+	"legend_armor_upgrade.leather_shoulderguards" : 36,                 		//DUR: 30.00 | STA: -2.00
+	"legend_armor_upgrade.barbarian_horn" : 45,                         		//DUR: 40.00 | STA: -3.00
+	"armor_upgrade.light_gladiator_upgrade" : 56,                       		//DUR: 45.00 | STA: -2.00
+	"legend_armor_upgrade.metal_pauldrons" : 78,                        		//DUR: 60.00 | STA: -6.00
+	"legend_armor_upgrade.heraldic_plates" : 78,                       			//DUR: 60.00 | STA: -10.00 +10 resolve
+	"armor_upgrade.heavy_gladiator_upgrade" : 98,                       		//DUR: 75.00 | STA: -6.00
+	
+	"legend_armor_upgrade.double_mail" : 54,                            		//DUR: 20.00 | STA: 0.00 -10%, +20% fat 
+	"legend_armor_upgrade.metal_plating" : 68,                          		//DUR: 10.00 | STA: 0.00 -15%, +25% fat
+	"legend_armor_upgrade.leather_neckguard" : 85,                      		//DUR: 10.00 | STA: -2.00 -20%
+	"legend_armor_upgrade.mail_patch" : 107,                             		//DUR: 20.00 | STA: -4.00 -25%
+	"legend_armor_upgrade.joint_cover" : 134,                            		//DUR: 30.00 | STA: -6.00 -30%
+	"legend_armor_upgrade.horn_plate" : 168,                            		//DUR: 40.00 | STA: -6.00 -35%
+
+	"legend_armor_upgrade.unhold_fur" : 0, //FEATURE_1: remove
+	"legend_armor_upgrade.protective_runes" : 0,  //FEATURE_1: remove     
+	"legend_armor_upgrade.light_padding_replacement" : 0,             		//DUR: 10.00 | STA: 0.00  //FEATURE_1: remove
+	"legend_armor_upgrade.bone_platings" : 0,  //FEATURE_1: remove
+	"legend_armor_upgrade.direwolf_pelt" : 250,                          		//DUR: 10.00 | STA: 0.00
+	"legend_armor_upgrade.legend_white_wolf_pelt" : 500,                		//DUR: 30.00 | STA: -2.00             
 
 //LEGEND_HELMETS //TODO: helmet prices
 
