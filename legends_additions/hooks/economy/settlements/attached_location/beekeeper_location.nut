@@ -6,19 +6,14 @@
 
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
+		if (!this.isActive()) return;
+
+		_list.push("farmhand_background");
+		_list.push("farmhand_background");
+
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-
-		if (!this.isActive())
-		{
-			return;
-		}
-
-		_list.push("farmhand_background");
-		_list.push("farmhand_background");
-
 		if (_gender)
 		{
-			_list.push("legend_nun_background");
 			_list.push("female_farmhand_background");
 		}
 	}
@@ -31,16 +26,6 @@
 				R = 0,
 				P = 1.0,
 				S = "supplies/mead_item"
-			});
-			_list.push({
-				R = 30,
-				P = 1.0,
-				S = "helmets/cultist_hood"
-			});
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "armor/apron"
 			});
 		}
 	}

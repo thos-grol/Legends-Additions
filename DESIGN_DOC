@@ -6,6 +6,10 @@ Economy Overhaul
 
 //FEATURE_6: Faction Overhaul 
 //FEATURE_4: sellswords armor rework? - no perks needed, buffs granted based on armor weight
+//FEATURE_8: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
+//FEATURE_2: remove training
+//FEATURE_2: rework crafting
+//FEATURE_2: rework retinue to use anatomist
 
 ======== BUILDS ===========
 
@@ -264,7 +268,7 @@ Undead cannot be charmed
 ::addItem("war_bow")
 ::addItem("heater_shield")
 ::addItem("strange_eye_item")
-::addItem("goat_cheese_item")
+::addItem()
 
 
 bbrusher pack legends_additions.brush C:\Files\Projects\bbros\brush\legends_additions --gfxPath C:\Files\Projects\bbros\brush

@@ -1,3 +1,4 @@
+//DISABLED: function is moved to retinue. Can upgrade retinue.
 ::mods_hookExactClass("skills/backgrounds/anatomist_background", function(o) {
 	local create = o.create;
 	o.create = function()

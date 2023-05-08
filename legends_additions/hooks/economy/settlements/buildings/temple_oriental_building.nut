@@ -3,7 +3,6 @@
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 		_list.push("cripple_southern_background");
-		_list.push("legend_dervish_background");
 	}
 
 });

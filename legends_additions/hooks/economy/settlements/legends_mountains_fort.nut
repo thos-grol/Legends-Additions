@@ -96,7 +96,7 @@
 		this.m.DraftLists = [
 			[
 				"apprentice_background",
-				"houndmaster_background",
+				
 				"beggar_background",
 				"brawler_background",
 				"daytaler_background",
@@ -112,7 +112,7 @@
 				"retired_soldier_background",
 				"retired_soldier_background",
 				"apprentice_background",
-				"houndmaster_background",
+				
 				"brawler_background",
 				"mason_background",
 				"messenger_background",
@@ -129,7 +129,7 @@
 			[
 				"apprentice_background",
 				"apprentice_background",
-				"houndmaster_background",
+				
 				"brawler_background",
 				"caravan_hand_background",
 				"gambler_background",
@@ -153,7 +153,7 @@
 				"sellsword_background",
 				"apprentice_background",
 				"apprentice_background",
-				"houndmaster_background",
+				
 				"brawler_background",
 				"caravan_hand_background",
 				"gambler_background",
@@ -207,7 +207,7 @@
 				"sellsword_background",
 				"squire_background",
 				"squire_background",
-				"swordmaster_background",
+				
 				"cripple_background",
 				"hedge_knight_background",
 				"hedge_knight_background",
@@ -243,7 +243,7 @@
 				"sellsword_background",
 				"squire_background",
 				"squire_background",
-				"swordmaster_background",
+				
 				"cripple_background",
 				"hedge_knight_background",
 				"hedge_knight_background"

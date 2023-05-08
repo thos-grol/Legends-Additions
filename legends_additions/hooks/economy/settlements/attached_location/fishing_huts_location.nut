@@ -28,17 +28,7 @@
 				S = "supplies/dried_fish_item"
 			});
 			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/militia_spear"
-			});
-			_list.push({
 				R = 10,
-				P = 1.0,
-				S = "tools/throwing_net"
-			});
-			_list.push({
-				R = 20,
 				P = 1.0,
 				S = "tools/throwing_net"
 			});

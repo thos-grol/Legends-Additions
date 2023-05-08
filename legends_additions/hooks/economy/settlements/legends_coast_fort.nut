@@ -96,7 +96,7 @@
 			[
 				"fisherman_background",
 				"fisherman_background",
-				"houndmaster_background",
+				
 				"messenger_background",
 				"militia_background",
 				"militia_background",
@@ -110,7 +110,7 @@
 				"retired_soldier_background",
 				"fisherman_background",
 				"fisherman_background",
-				"houndmaster_background",
+				
 				"messenger_background",
 				"militia_background",
 				"militia_background",
@@ -135,7 +135,7 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"monk_background",
+				
 				"peddler_background",
 				"ratcatcher_background",
 				"servant_background",
@@ -149,7 +149,6 @@
 				"raider_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				"swordmaster_background",
 				"apprentice_background",
 				"caravan_hand_background",
 				"gambler_background",
@@ -161,7 +160,7 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"monk_background",
+				
 				"peddler_background",
 				"ratcatcher_background",
 				"vagabond_background",
@@ -172,7 +171,6 @@
 				"raider_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				"swordmaster_background"
 			],
 			[
 				"apprentice_background",
@@ -188,7 +186,7 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"minstrel_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"servant_background",
@@ -206,7 +204,6 @@
 				"retired_soldier_background",
 				"sellsword_background",
 				"squire_background",
-				"swordmaster_background",
 				"cripple_background",
 				"eunuch_background",
 				"apprentice_background",
@@ -221,7 +218,7 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"minstrel_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"vagabond_background",
@@ -236,7 +233,7 @@
 				"retired_soldier_background",
 				"sellsword_background",
 				"squire_background",
-				"swordmaster_background",
+				
 				"cripple_background",
 				"eunuch_background"
 			]

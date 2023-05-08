@@ -70,11 +70,6 @@
 			_list.push({
 				R = 90,
 				P = 1.0,
-				S = "tents/tent_train"
-			});
-			_list.push({
-				R = 90,
-				P = 1.0,
 				S = "tents/tent_scout"
 			});
 			_list.push({
@@ -83,16 +78,6 @@
 				S = "weapons/oriental/light_southern_mace"
 			});
 
-			if (this.Const.DLC.Unhold)
-			{
-				_list.extend([
-					{
-						R = 80,
-						P = 1.0,
-						S = "weapons/throwing_spear"
-					}
-				]);
-			}
 		}
 		else if (_id == "building.specialized_trader")
 		{
@@ -108,26 +93,6 @@
 					R = 35,
 					P = 1.0,
 					S = "legend_armor/tabard/legend_southern_tabard"
-				});
-				_list.push({
-					R = 60,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_armor_cloak_common"
-				});
-				_list.push({
-					R = 60,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_armor_cloak_heavy"
-				});
-				_list.push({
-					R = 99,
-					P = 2.0,
-					S = "legend_armor/named/legend_armor_cloak_rich"
-				});
-				_list.push({
-					R = 60,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_sash"
 				});
 				_list.push({
 					R = 99,

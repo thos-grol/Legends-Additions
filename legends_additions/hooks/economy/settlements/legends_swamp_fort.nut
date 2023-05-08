@@ -113,7 +113,7 @@
 		this.m.DraftLists = [
 			[
 				"cultist_background",
-				"houndmaster_background",
+				
 				"daytaler_background",
 				"hunter_background",
 				"militia_background",
@@ -126,7 +126,7 @@
 				"deserter_background",
 				"retired_soldier_background",
 				"cultist_background",
-				"houndmaster_background",
+				
 				"hunter_background",
 				"militia_background",
 				"militia_background",
@@ -140,7 +140,7 @@
 			],
 			[
 				"apprentice_background",
-				"houndmaster_background",
+				
 				"beggar_background",
 				"butcher_background",
 				"cultist_background",
@@ -149,8 +149,8 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"monk_background",
-				"flagellant_background",
+				
+				
 				"ratcatcher_background",
 				"wildman_background",
 				"witchhunter_background",
@@ -162,7 +162,7 @@
 				"raider_background",
 				"retired_soldier_background",
 				"apprentice_background",
-				"houndmaster_background",
+				
 				"butcher_background",
 				"cultist_background",
 				"gravedigger_background",
@@ -170,8 +170,8 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"monk_background",
-				"flagellant_background",
+				
+				
 				"ratcatcher_background",
 				"wildman_background",
 				"witchhunter_background",
@@ -183,7 +183,7 @@
 			],
 			[
 				"apprentice_background",
-				"houndmaster_background",
+				
 				"beggar_background",
 				"butcher_background",
 				"cultist_background",
@@ -192,8 +192,8 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"monk_background",
-				"flagellant_background",
+				
+				
 				"ratcatcher_background",
 				"wildman_background",
 				"witchhunter_background",
@@ -205,7 +205,7 @@
 				"raider_background",
 				"retired_soldier_background",
 				"apprentice_background",
-				"houndmaster_background",
+				
 				"butcher_background",
 				"cultist_background",
 				"gravedigger_background",
@@ -213,8 +213,8 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"monk_background",
-				"flagellant_background",
+				
+				
 				"ratcatcher_background",
 				"wildman_background",
 				"witchhunter_background",

@@ -5,61 +5,6 @@
 			{
 				R = 10,
 				P = 1.0,
-				S = "weapons/militia_spear"
-			},
-			{
-				R = 20,
-				P = 1.0,
-				S = "weapons/pitchfork"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/knife"
-			},
-			{
-				R = 30,
-				P = 1.0,
-				S = "weapons/short_bow"
-			},
-			{
-				R = 60,
-				P = 1.0,
-				S = "weapons/oriental/composite_bow"
-			},
-			{
-				R = 30,
-				P = 1.0,
-				S = "weapons/javelin"
-			},
-			{
-				R = 40,
-				P = 1.0,
-				S = "weapons/oriental/saif"
-			},
-			{
-				R = 70,
-				P = 1.0,
-				S = "weapons/scimitar"
-			},
-			{
-				R = 40,
-				P = 1.0,
-				S = "weapons/oriental/light_southern_mace"
-			},
-			{
-				R = 70,
-				P = 1.0,
-				S = "weapons/oriental/firelance"
-			},
-			{
-				R = 30,
-				P = 1.0,
-				S = "ammo/quiver_of_arrows"
-			},
-			{
-				R = 10,
-				P = 1.0,
 				S = "armor/oriental/cloth_sash"
 			},
 			{
@@ -71,11 +16,6 @@
 				R = 20,
 				P = 1.0,
 				S = "armor/oriental/padded_vest"
-			},
-			{
-				R = 30,
-				P = 1.0,
-				S = "armor/oriental/linothorax"
 			},
 			{
 				R = 0,
@@ -105,16 +45,6 @@
 			{
 				R = 0,
 				P = 1.0,
-				S = "supplies/rice_item"
-			},
-			{
-				R = 50,
-				P = 1.0,
-				S = "supplies/rice_item"
-			},
-			{
-				R = 0,
-				P = 1.0,
 				S = "supplies/medicine_item"
 			},
 			{
@@ -161,11 +91,6 @@
 				R = 50,
 				P = 1.0,
 				S = "supplies/armor_parts_item"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "accessory/bandage_item"
 			},
 			{
 				R = 20,
@@ -240,53 +165,14 @@
 			});
 		}
 
-		if (this.m.Settlement.getSize() >= 3 || this.m.Settlement.isMilitary())
-		{
-			list.push({
-				R = 90,
-				P = 1.0,
-				S = "accessory/falcon_item"
-			});
-		}
-
-		if (this.Const.DLC.Unhold && ::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue() && (this.m.Settlement.isMilitary() && this.m.Settlement.getSize() >= 3 || this.m.Settlement.getSize() >= 2))
-		{
-			list.push({
-				R = 65,
-				P = 1.0,
-				S = "misc/paint_set_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_remover_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_black_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_red_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_orange_red_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_white_blue_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_white_green_yellow_item"
-			});
-		}
+		// if (this.m.Settlement.getSize() >= 3 || this.m.Settlement.isMilitary())
+		// {
+		// 	list.push({
+		// 		R = 90,
+		// 		P = 1.0,
+		// 		S = "accessory/falcon_item"
+		// 	});
+		// }
 
 		if (this.Const.DLC.Unhold)
 		{
@@ -295,22 +181,6 @@
 					R = 90,
 					P = 1.0,
 					S = "weapons/two_handed_wooden_hammer"
-				},
-				{
-					R = 80,
-					P = 1.0,
-					S = "weapons/throwing_spear"
-				}
-			]);
-		}
-
-		if (this.Const.DLC.Wildmen)
-		{
-			list.extend([
-				{
-					R = 50,
-					P = 1.0,
-					S = "weapons/warfork"
 				}
 			]);
 		}

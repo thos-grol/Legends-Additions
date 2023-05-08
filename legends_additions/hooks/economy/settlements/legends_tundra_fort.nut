@@ -108,7 +108,7 @@
 		this.m.DraftLists = [
 			[
 				"apprentice_background",
-				"houndmaster_background",
+				
 				"militia_background",
 				"militia_background",
 				"miner_background",
@@ -121,7 +121,7 @@
 				"retired_soldier_background"
 			],
 			[
-				"houndmaster_background",
+				
 				"brawler_background",
 				"gravedigger_background",
 				"messenger_background",
@@ -170,7 +170,7 @@
 				"sellsword_background",
 				"sellsword_background",
 				"squire_background",
-				"swordmaster_background",
+				
 				"cripple_background",
 				"eunuch_background",
 				"hedge_knight_background",

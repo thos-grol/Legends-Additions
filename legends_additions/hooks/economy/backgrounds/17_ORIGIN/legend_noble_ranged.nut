@@ -10,7 +10,10 @@
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
-		local r;
+		items.equip(this.new("scripts/items/weapons/light_crossbow"));
+		items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
+		items.addToBag(this.new("scripts/items/weapons/knife"));
+
 		items.equip(this.Const.World.Common.pickHelmet([
 			[
 				1,
@@ -21,9 +24,7 @@
 				"open_leather_cap"
 			]
 		]));
-		items.equip(this.new("scripts/items/weapons/light_crossbow"));
-		items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
-		items.addToBag(this.new("scripts/items/weapons/knife"));
+		
 		items.equip(this.Const.World.Common.pickArmor([
 			[
 				2,

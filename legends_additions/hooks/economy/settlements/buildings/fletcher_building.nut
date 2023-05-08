@@ -5,17 +5,7 @@
 			{
 				R = 10,
 				P = 1.0,
-				S = "weapons/legend_slingshot"
-			},
-			{
-				R = 10,
-				P = 1.0,
 				S = "weapons/short_bow"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/legend_sling"
 			},
 			{
 				R = 10,
@@ -31,11 +21,6 @@
 				R = 10,
 				P = 1.0,
 				S = "weapons/hunting_bow"
-			},
-			{
-				R = 20,
-				P = 1.0,
-				S = "weapons/war_bow"
 			},
 			{
 				R = 20,
@@ -46,16 +31,6 @@
 				R = 70,
 				P = 1.0,
 				S = "weapons/legend_slingstaff"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/javelin"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/throwing_axe"
 			},
 			{
 				R = 80,
@@ -73,47 +48,11 @@
 				S = "supplies/ammo_item"
 			},
 			{
-				R = 40,
-				P = 1.0,
-				S = "ammo/legend_armor_piercing_arrows"
-			},
-			{
-				R = 40,
-				P = 1.0,
-				S = "ammo/legend_broad_head_arrows"
-			},
-			{
-				R = 40,
-				P = 1.0,
-				S = "ammo/legend_armor_piercing_bolts"
-			},
-			{
-				R = 40,
-				P = 1.0,
-				S = "ammo/legend_broad_head_bolts"
-			},
-			{
-				R = 70,
-				P = 1.0,
-				S = "ammo/large_quiver_of_bolts"
-			},
-			{
 				R = 70,
 				P = 1.0,
 				S = "ammo/large_quiver_of_arrows"
 			}
 		];
-
-		if (this.Const.DLC.Unhold)
-		{
-			list.extend([
-				{
-					R = 90,
-					P = 1.0,
-					S = "weapons/throwing_spear"
-				}
-			]);
-		}
 
 		foreach( i in this.Const.Items.NamedRangedWeapons )
 		{

@@ -1,12 +1,8 @@
 ::mods_hookExactClass("entity/world/attached_location/blast_furnace_location", function(o) {
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
+		if (!this.isActive()) return;
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-
-		if (!this.isActive())
-		{
-			return;
-		}
 
 		_list.push("squire_background");
 		_list.push("deserter_background");
@@ -17,16 +13,6 @@
 	{
 		if (_id == "building.marketplace")
 		{
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "armor/leather_tunic"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "armor/apron"
-			});
 			_list.push({
 				R = 90,
 				P = 1.0,

@@ -115,7 +115,7 @@
 				"cultist_background",
 				"daytaler_background",
 				"daytaler_background",
-				"flagellant_background",
+				
 				"poacher_background",
 				"poacher_background",
 				"ratcatcher_background",
@@ -125,7 +125,7 @@
 				"witchhunter_background",
 				"cultist_background",
 				"cultist_background",
-				"flagellant_background",
+				
 				"poacher_background",
 				"poacher_background",
 				"ratcatcher_background",
@@ -142,7 +142,7 @@
 				"cultist_background",
 				"daytaler_background",
 				"daytaler_background",
-				"flagellant_background",
+				
 				"graverobber_background",
 				"historian_background",
 				"killer_on_the_run_background",
@@ -162,7 +162,7 @@
 				"cripple_background",
 				"cultist_background",
 				"cultist_background",
-				"flagellant_background",
+				
 				"graverobber_background",
 				"historian_background",
 				"killer_on_the_run_background",
@@ -186,8 +186,8 @@
 				"cultist_background",
 				"cultist_background",
 				"daytaler_background",
-				"flagellant_background",
-				"flagellant_background",
+				
+				
 				"gravedigger_background",
 				"graverobber_background",
 				"historian_background",
@@ -197,8 +197,8 @@
 				"militia_background",
 				"militia_background",
 				"militia_background",
-				"minstrel_background",
-				"monk_background",
+				
+				
 				"peddler_background",
 				"poacher_background",
 				"ratcatcher_background",
@@ -215,10 +215,10 @@
 				"hedge_knight_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				"swordmaster_background",
+				
 				"cripple_background",
 				"eunuch_background",
-				"legend_inventor_background"
+				
 			]
 		];
 		this.m.FemaleDraftLists = [

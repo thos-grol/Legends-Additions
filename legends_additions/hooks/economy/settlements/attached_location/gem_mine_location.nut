@@ -27,21 +27,6 @@
 		{
 		case "building.marketplace":
 			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/pickaxe"
-			});
-			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "weapons/military_pick"
-			});
-			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "tents/tent_enchant"
-			});
-			_list.push({
 				R = 0,
 				P = 1.0,
 				S = "trade/uncut_gems_item"

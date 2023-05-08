@@ -19,11 +19,6 @@
 		if (_id == "building.marketplace")
 		{
 			_list.push({
-				R = 60,
-				P = 1.0,
-				S = "accessory/wardog_item"
-			});
-			_list.push({
 				R = 30,
 				P = 1.0,
 				S = "armor/leather_tunic"
@@ -101,22 +96,12 @@
 			_list.push({
 				R = 50,
 				P = 1.0,
-				S = "weapons/legend_tipstaff"
-			});
-			_list.push({
-				R = 50,
-				P = 1.0,
 				S = "weapons/legend_slingstaff"
 			});
 			_list.push({
 				R = 20,
 				P = 1.0,
 				S = "weapons/legend_sling"
-			});
-			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "tents/tent_train"
 			});
 			_list.push({
 				R = 90,
@@ -137,22 +122,6 @@
 					S = "legend_helmets/vanity/legend_helmet_faction_helmet"
 				});
 			}
-
-			if (this.Const.DLC.Unhold)
-			{
-				_list.extend([
-					{
-						R = 80,
-						P = 1.0,
-						S = "weapons/two_handed_wooden_flail"
-					},
-					{
-						R = 80,
-						P = 1.0,
-						S = "weapons/throwing_spear"
-					}
-				]);
-			}
 		}
 		else if (_id == "building.specialized_trader")
 		{
@@ -164,31 +133,6 @@
 		{
 			if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
 			{
-				_list.push({
-					R = 50,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_armor_cloak_common"
-				});
-				_list.push({
-					R = 95,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_armor_cloak_noble"
-				});
-				_list.push({
-					R = 50,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_armor_cloak_heavy"
-				});
-				_list.push({
-					R = 99,
-					P = 2.0,
-					S = "legend_armor/named/legend_armor_cloak_rich"
-				});
-				_list.push({
-					R = 45,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_sash"
-				});
 				_list.push({
 					R = 45,
 					P = 1.0,

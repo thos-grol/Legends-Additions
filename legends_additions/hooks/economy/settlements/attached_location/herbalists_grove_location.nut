@@ -14,49 +14,12 @@
 			return;
 		}
 
-		_list.push("monk_background");
-		_list.push("flagellant_background");
-		_list.push("anatomist_background");
 		_list.push("legend_herbalist_background");
 		_list.push("legend_herbalist_background");
 		_list.push("legend_herbalist_background");
 
 		if (_gender)
 		{
-			_list.push("legend_nun_background");
-		}
-
-		if (this.LegendsMod.Configs().LegendMagicEnabled())
-		{
-			local r;
-
-			if (this.World.Assets.getOrigin().getID() == "scenario.legends_seer")
-			{
-				r = this.Math.rand(0, 50);
-
-				if (r == 1)
-				{
-					_list.push("legend_druid_background");
-				}
-			}
-			else if (this.World.Assets.getOrigin().getID() == "scenario.legends_druid")
-			{
-				r = this.Math.rand(0, 9);
-
-				if (r == 1)
-				{
-					_list.push("legend_druid_background");
-				}
-			}
-			else
-			{
-				r = this.Math.rand(0, 90);
-
-				if (r == 1)
-				{
-					_list.push("legend_druid_background");
-				}
-			}
 		}
 	}
 
@@ -91,11 +54,6 @@
 				S = "tents/tent_gather"
 			});
 			_list.push({
-				R = 95,
-				P = 1.0,
-				S = "tents/tent_enchant"
-			});
-			_list.push({
 				R = 50,
 				P = 1.0,
 				S = "accessory/antidote_item"
@@ -121,11 +79,6 @@
 						R = 99,
 						P = 1.0,
 						S = "weapons/named/legend_named_sickle"
-					});
-					_list.push({
-						R = 99,
-						P = 1.0,
-						S = "weapons/named/legend_named_shovel"
 					});
 					break;
 

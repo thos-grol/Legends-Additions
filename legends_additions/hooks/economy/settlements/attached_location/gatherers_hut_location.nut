@@ -2,7 +2,6 @@
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("supplies/roots_and_berries_item");
-		_list.push("trade/legend_cooking_spices_trade_item");
 	}
 
 	o.onUpdateDraftList = function( _list, _gender = null )
@@ -28,11 +27,6 @@
 				R = 0,
 				P = 1.0,
 				S = "supplies/roots_and_berries_item"
-			});
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "misc/legend_mistletoe_item"
 			});
 			_list.push({
 				R = 20,
@@ -72,11 +66,6 @@
 				R = 99,
 				P = 1.0,
 				S = "weapons/named/legend_named_sickle"
-			});
-			_list.push({
-				R = 99,
-				P = 1.0,
-				S = "weapons/named/legend_named_shovel"
 			});
 		}
 	}

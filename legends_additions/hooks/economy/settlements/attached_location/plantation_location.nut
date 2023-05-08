@@ -2,7 +2,6 @@
 	o.onUpdateProduce = function( _list )
 	{
 		_list.push("trade/spices_item");
-		_list.push("supplies/medicine_small_item");
 	}
 
 	o.onUpdateDraftList = function( _list, _gender = null )
@@ -19,7 +18,6 @@
 
 		if (_gender)
 		{
-			_list.push("legend_qiyan_background");
 		}
 	}
 
@@ -31,27 +29,7 @@
 				R = 0,
 				P = 1.0,
 				S = "trade/spices_item"
-			});
-			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "supplies/dates_item"
-			});
-			_list.push({
-				R = 80,
-				P = 1.0,
-				S = "tents/tent_heal"
-			});
-			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "tents/tent_gather"
-			});
-			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "supplies/medicine_small_item"
-			});
+			});	
 		}
 	}
 

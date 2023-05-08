@@ -1,3 +1,20 @@
+// BB has an inflation problem where by late game, your money becomes useless since you gained so much of it from
+// contracts and selling massive amounts of loots and goods. How to combat inflation?
+// 1. Slow down the rate at which money is printed.
+// 	- Nerfing units to be poorer, be more economical and realistic.
+// 	- Spamming selling an item type will cause it to decrease in value for a short period of time that decays...
+// 	- Some loot, merchants will refuse to buy.
+// 	- Remove most events that give free stuff
+// 	- decreasing contract payouts.
+// 2. Money sinks. With 1, money will still eventually pile up. You need a way to burn it:
+// 	- fees to hire retinue and then paying a premium salary to keep them.
+// 	- Guild hall with upgrades and material costs.
+// 	- selling necessities or undroppable gear.
+// 	- make services better/more necessary to encourage more spending
+// 	- tie that currency to another currency ie. resources that are used in multiple ways
+// 	- overhauled crafting system so players don't sell their items but use them elsewhere/break them down
+
+
 //FEATURE_2: this.World.Assets.addMoney
 	//overhaul contract pay
 	//event pay/prices
@@ -5,6 +22,17 @@
 //FEATURE_4: Barbarians stats are higher than average humans due to needing to survive
 
 //FEATURE_8: overhaul enemy equipment/builds
+//FEATURE_1: selling the same item type to stores will decrease the price you can sell it at for a duration...
+//FEATURE_3: guild headquarters features:
+	//bros in headquarters will charge extra salary for food
+	//item storage
+	//bro storage
+	//smithy
+	//fletcher
+	//caravan - sell your produced goods, buy goods. caravan will sell whatever goods have same id put into the item box
+	//training - teachers and students, teachers poplate teaching list, can teach students things, bros put here will study
+	//gatherer - send bros to places to gather materials, has upgrades etc.
+
 
 // 12 Pence (d) = 1 Shilling (s)
 // 20 Shilling = 1 pound £
@@ -17,6 +45,9 @@
 //!!!! pay of soldiers includes food and looting
 
 // Levied spearman: 2 Pence / Day
+// once bro reaches level 6 and level 11, their salary increases
+//		lv 6 2 -> 4
+//		lv 11 10 -> 8
 // Archer: 3 Pence / Day
 // Squire: 12 d
 // Knight bachelor: 24 p / Day
@@ -27,12 +58,7 @@
 // Brass pot: 2-13s
 // 1 cart-horse: Up to 32 Shillings
 
-//bros will eat 2.0 (DailyFood) units per day
-//food unit is 25 so it will last 12 meals
-//base unit is d
-
 // mail was commonplace among infantrymen in the 12th century.
-
 // Most infantrymen would wear either mail or lamellar armour or coats-of-plates (“Visby armour”). Cuir-bouilli would also be used, especially as limb protection. Also padded armour (gambesons, haquetons and jerkins) were commonplace
 
 ::Z.Economy.Items <- {
@@ -46,9 +72,8 @@
 
 	//AMMO
 	"ammo.arrows" : 30, //FEATURE_1: a lot of arrows/bolts/powder share same id, use manual hooks for prices + quiver rework
-	"ammo.bolts" : 0, //FEATURE_1: all removed from shops, no one will also buy restricted goods
-	"ammo.legend_darts" : 30, //FEATURE_1: remove
-	"ammo.powder" : 0, //FEATURE_5: refillable with alchemist //FEATURE_1: all removed from shops, no one will also buy restricted goods
+	"ammo.bolts" : 0,
+	"ammo.powder" : 0, //FEATURE_5: refillable with alchemist
 
 	//FOOD
 	"supplies.ground_grains" : 5, 		//unit of 15 servings
@@ -74,18 +99,17 @@
 
 	//REMOVED
 	"supplies.cured_venison" : 0,
-	"supplies.goat_cheese" : 0, //FEATURE_1: Remove
-	"supplies.legend_human_parts" : 0, //FEATURE_1: Remove skill
+	"supplies.goat_cheese" : 0,
+	"supplies.legend_human_parts" : 0, //FEATURE_2: Remove skill
 	"supplies.fermented_unhold_heart" : 0,
 	"supplies.legend_yummy_sausages" : 0,
-	"supplies.black_marsh_stew" : 0, //FEATURE_1: Remove from hexe drops
-
-	"supplies.legend_porridge" : 0, //FEATURE_1: Remove from a lot of places
-	"supplies.legend_pudding" : 0, //FEATURE_1: Remove
-	"supplies.legend_pie" : 0, //FEATURE_1: Remove
-	"supplies.cured_rations" : 0, //FEATURE_1: Remove
-	"supplies.legend_cooking_spices" : 0,// FEATURE_1: Remove
-	"supplies.pickled_mushrooms" : 0,// FEATURE_1: Remove
+	"supplies.black_marsh_stew" : 0,
+	"supplies.legend_porridge" : 0, //FEATURE_2: Remove from a lot of places
+	"supplies.legend_pudding" : 0, //FEATURE_2: Remove
+	"supplies.legend_pie" : 0, //FEATURE_2: Remove
+	"supplies.cured_rations" : 0, //FEATURE_2: Remove
+	"supplies.legend_cooking_spices" : 0,// FEATURE_2: Remove
+	"supplies.pickled_mushrooms" : 0,// FEATURE_2: Remove
 
 //TRADE
 	"misc.peat_bricks" : 34,
@@ -111,10 +135,10 @@
 	"misc.gold_ingots" : 6400, //FEATURE_7: redo item to be 1 ingot
 	//FEATURE_7: add gemstones
 	"misc.uncut_gems" : 840, //6 units of uncut emeralds
-	"misc.gemstones" : 700, //1 units of cut emeralds //FEATURE_1: Change to trade item
+	"misc.gemstones" : 700, //1 units of cut emeralds //FEATURE_2: Change to trade item
 	
 	//Removed
-	"misc.legend_cooking_spices" : 0, //FEATURE_1: Remove
+	"misc.legend_cooking_spices" : 0, //FEATURE_2: Remove
 
 //TENTS
 	"tent.hunter_tent" : 200,
@@ -133,21 +157,21 @@
 //SPAWNS
 	"spawns.skeleton" : 0,
 	"spawns.zombie" : 0,
-	"spawns.donkey" : 0, //FEATURE_1: Remove
+	"spawns.donkey" : 0, //FEATURE_2: Remove
 	"spawns.cart_01" : 260,
 	"spawns.cart_02" : 400,
 
 //LOOT //FEATURE_3: LOOT sort by tiers and price
-	"misc.signet_ring" : 960, //FEATURE_1: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
+	"misc.signet_ring" : 960, //FEATURE_3: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
 	"misc.ancient_scroll" : 400,
 	"misc.legend_scroll" : 400,
 	"misc.ornate_tome" : 800, //FEATURE_8: Magic rework, contains knowledge, decipherable, generate more tome images, price based on book tiers
-	"misc.white_pearls" : 300, //FEATURE_1: 15 units, rework into item with ammount, trade goods, found in port cities/loot
+	"misc.white_pearls" : 300, //FEATURE_3: 15 units, rework into item with ammount, trade goods, found in port cities/loot
 	
-	//Monster drops //FEATURE_2: Loot prices and removal
-	"misc.growth_pearls" : 100, //FEATURE_1: 5 units, rework into item with ammount
-	"misc.soul_splinter" : 1200, //FEATURE_1: black soul gem, rare alp drop. used for necromancy
-	"misc.ancient_amber" : 800, //FEATURE_1: rare scrat drop. contains life energy
+	//Monster drops //FEATURE_3: Loot prices and removal
+	"misc.growth_pearls" : 100, //FEATURE_3: 5 units, rework into item with ammount
+	"misc.soul_splinter" : 1200, //FEATURE_3: black soul gem, rare alp drop. used for necromancy
+	"misc.ancient_amber" : 800, //FEATURE_3: rare scrat drop. contains life energy
 	"misc.adrenaline_gland" : 100,
 	"misc.spider_silk" : 100,
 	
@@ -190,7 +214,7 @@
 	"misc.legend_banshee_essence" : 0,
 	"misc.legend_demon_hound_bones" : 0,
 	
-	//Remove certain monster drops
+	//Remove certain monster drops //TODO: troop generation script, hook every on death fn for mobs
 	"misc.snake_oil" : 0, //FEATURE_1: Remove
 	"misc.rainbow_scale" : 0, //FEATURE_1: Remove and snakes for now
 	"misc.glistening_scales" : 0, //FEATURE_1: Remove 
@@ -218,28 +242,28 @@
 	"misc.acidic_saliva" : 0, //FEATURE_1: Remove and remove hyenas
 
 	"misc.manhunters_ledger" : 0,
-	"misc.legend_werehand" : 0, //FEATURE_1: Remove
-	"misc.paint_remover" : 0, //FEATURE_1: Remove
-	"misc.paint_black" : 0, //FEATURE_1: Remove
-	"misc.paint_red" : 0, //FEATURE_1: Remove
-	"misc.paint_orange_red" : 0, //FEATURE_1: Remove
-	"misc.poisoned_apple" : 0, //FEATURE_1: Remove
-	"misc.paint_set_shields" : 0, //FEATURE_1: Remove
-	"misc.paint_white_blue" : 0, //FEATURE_1: Remove
-	"misc.paint_white_green_yellow" : 0, //FEATURE_1: Remove
+	"misc.legend_werehand" : 0,
+	"misc.paint_remover" : 0,
+	"misc.paint_black" : 0,
+	"misc.paint_red" : 0,
+	"misc.paint_orange_red" : 0,
+	"misc.poisoned_apple" : 0,
+	"misc.paint_set_shields" : 0,
+	"misc.paint_white_blue" : 0,
+	"misc.paint_white_green_yellow" : 0,
 
-	"misc.mysterious_herbs" : 0, //FEATURE_1: Remove for now
-	"misc.legend_mistletoe" : 30, //FEATURE_1: Remove
-	"misc.legend_wolfsbane" : 50, //FEATURE_1: Remove
+	"misc.mysterious_herbs" : 0,
+	"misc.legend_mistletoe" : 30,
+	"misc.legend_wolfsbane" : 50,
 
 
-//SPECIAL //FEATURE_2: Special prices
+//SPECIAL //FEATURE_3: Special prices
 	"misc.legendary_sword_blade" : 0,
 	"misc.legendary_sword_grip" : 0,	
 	"misc.black_book" : 0,
 	"misc.broken_ritual_armor" : 0,
 	"misc.trade_jug" : 0,
-	"misc.golden_goose" : 3000, //FEATURE_1: Remove the golden goose for now
+	"misc.golden_goose" : 0, //FEATURE_3: Remove the golden goose for now
 
 //RUNE_SIGILS //FEATURE_2: Rune prices
 	"token.legend_vala_inscription" : 0,
@@ -278,37 +302,36 @@
 	"accessory.cat_potion" : 350, //FEATURE_5: refillable with alchemist
 	//FEATURE_5: Toxicity system
 	//Contraband
-	"misc.happy_powder" : 400, //FEATURE_1: Drugs
+	"misc.happy_powder" : 400, //FEATURE_3: Drugs
 	"misc.miracle_drug" : 450,
 
 	"misc.bodily_reward" : 2500,
 	"misc.spiritual_reward" : 2500,
 
-//ACCESSORY //FEATURE_1: ACCESSORY prices
+//ACCESSORY
 	"accessory.oathtaker_skull_01" : 0,
 	"accessory.oathtaker_skull_02" : 0,
-	"accessory.bandage" : 0, //FEATURE_1: remove from game, perk to bandage in healing backgrounds
-	"accessory.legend_pack_small" : 0, //FEATURE_1 Remove
-	"accessory.legend_pack_large" : 0, //FEATURE_1 Remove
-	"accessory.legend_catapult" : 0, //FEATURE_1 Remove
+	"accessory.bandage" : 0,
+	"accessory.legend_pack_small" : 0,
+	"accessory.legend_pack_large" : 0, 
+	"accessory.legend_catapult" : 0,
 
 	//GEAR
 	"accessory.sergeant_badge" : 0,
-	"accessory.ghoul_trophy" : 0, //FEATURE_1 Rework
-	"accessory.alp_trophy" : 0, //FEATURE_1 Rework
-	"accessory.goblin_trophy" : 0, //FEATURE_1 Rework
-	"accessory.orc_trophy" : 0, //FEATURE_1 Rework
-	"accessory.undead_trophy" : 0, //FEATURE_1 Rework
-	"accessory.hexen_trophy" : 0, //FEATURE_1 Rework
-	"accessory.legend_demon_banshee_trophy" : 0, //FEATURE_1 Rework
-	"accessory.legend_demonalp_trophy" : 0, //FEATURE_1 Rework
-	"accessory.legend_hexen_leader_trophy" : 0, //FEATURE_1 Rework
-	"accessory.cursed_crystal_skull" : 0, //FEATURE_1 Rework
-	"accessory.slayer_necklace" : 0, //FEATURE_1 Rework
+	"accessory.ghoul_trophy" : 0, //FEATURE_3 Rework
+	"accessory.alp_trophy" : 0, //FEATURE_3 Rework
+	"accessory.goblin_trophy" : 0, //FEATURE_3 Rework
+	"accessory.orc_trophy" : 0, //FEATURE_3 Rework
+	"accessory.undead_trophy" : 0, //FEATURE_3 Rework
+	"accessory.hexen_trophy" : 0, //FEATURE_3 Rework
+	"accessory.legend_demon_banshee_trophy" : 0, //FEATURE_3 Rework
+	"accessory.legend_demonalp_trophy" : 0, //FEATURE_3 Rework
+	"accessory.legend_hexen_leader_trophy" : 0, //FEATURE_3 Rework
+	"accessory.cursed_crystal_skull" : 0, //FEATURE_3 Rework
+	"accessory.slayer_necklace" : 0, //FEATURE_3 Rework
 
 	//PET
 	"accessory.falcon" : 100,
-
 	"accessory.legend_cat_item" : 0,
 	"accessory.legend_wolfsbane_necklace" : 0, //FEATURE_1: Remove
 	"accessory.wardog" : 0, //FEATURE_1: Remove
@@ -323,7 +346,7 @@
 	"misc.wardog_heavy_armor_upgrade" : 0, //FEATURE_1: Remove
 	"misc.wardog_armor_upgrade" : 0, //FEATURE_1: Remove
 
-	//OTHER
+	//OTHER //FEATURE_3: rework event
 	"accessory.legend_oms_fate" : 100,
 	"accessory.legend_oms_rib" : 100,
 	"accessory.legend_oms_tome" : 100,
@@ -331,8 +354,8 @@
 	"accessory.legend_oms_amphora" : 100,
 //WEAPONS
 	//DAGGER
-	"weapon.legend_shiv" : 0,                   		//( 10,  20) | AP: 0.20 | AE: 0.30 //FEATURE_1: remove from stores
-	"weapon.legend_redback_dagger" : 0,      			//( 26,  52) | AP: 0.36 | AE: 0.70 //FEATURE_1: remove
+	"weapon.legend_shiv" : 0,                   		//( 10,  20) | AP: 0.20 | AE: 0.30
+	"weapon.legend_redback_dagger" : 0,      			//( 26,  52) | AP: 0.36 | AE: 0.70
 	"weapon.obsidian_dagger" : 0,            			//( 35,  50) | AP: 0.20 | AE: 1.15 //FEATURE_1: remove
 
 	"weapon.legend_wooden_stake" : 0,          			//( 10,  15) | AP: 0.30 | AE: 0.10
@@ -731,14 +754,14 @@
 	
 //LEGEND_ARMOR
 	"legend_armor.body.legend_rabble_fur" : 0,                           		//DUR: 5.00 | STA: 0.00
-	"legend_armor.body.legend_vala_dress" : 0,                          		//DUR: 50.00 | STA: 0.00 //FEATURE_1: remove
-	"legend_armor.body.legend_vala_cloak" : 0,                         			//DUR: 80.00 | STA: 0.00 //FEATURE_1: remove
-	"legend_armor.body.legend_seer_robes" : 0,                         			//DUR: 80.00 | STA: 8.00 //FEATURE_1: remove
-	"legend_armor.body.cultist_leather_robe" : 0,                      			//DUR: 88.00 | STA: -9.00 //FEATURE_1: remove
-	"legend_armor.body.legend_ranger_armor" : 0,                       			//DUR: 110.00 | STA: -6.00 //FEATURE_1: remove
-	"legend_armor.body.legend_werewolf_hide" : 0,                      			//DUR: 100.00 | STA: -9.00 //FEATURE_1: remove
-	"legend_armor.body.legend_armor_crusader" : 0,                    			//DUR: 160.00 | STA: -10.00 //FEATURE_1: remove
-	"legend_armor.body.legend_armor_warlock_cloak" : 0,                			//DUR: 100.00 | STA: 4.00 //FEATURE_1: keep?
+	"legend_armor.body.legend_vala_dress" : 0,                          		//DUR: 50.00 | STA: 0.00
+	"legend_armor.body.legend_vala_cloak" : 0,                         			//DUR: 80.00 | STA: 0.00
+	"legend_armor.body.legend_seer_robes" : 0,                         			//DUR: 80.00 | STA: 8.00
+	"legend_armor.body.cultist_leather_robe" : 0,                      			//DUR: 88.00 | STA: -9.00
+	"legend_armor.body.legend_ranger_armor" : 0,                       			//DUR: 110.00 | STA: -6.00
+	"legend_armor.body.legend_werewolf_hide" : 0,                      			//DUR: 100.00 | STA: -9.00
+	"legend_armor.body.legend_armor_crusader" : 0,                    			//DUR: 160.00 | STA: -10.00
+	"legend_armor.body.legend_armor_warlock_cloak" : 0,                			//DUR: 100.00 | STA: 4.00
 	"legend_armor.body.black_leather" : 0,                            			//DUR: 110.00 | STA: -11.00
 	"legend_armor.body.blue_studded_mail" : 0,                        			//DUR: 150.00 | STA: -18.00
 	"legend_armor.body.named_plated_fur_armor" : 0,                   			//DUR: 130.00 | STA: -14.00
@@ -751,18 +774,18 @@
 	"legend_armor.body.named_golden_lamellar_armor" : 0,             			//DUR: 285.00 | STA: -40.00
 	"legend_armor.body.brown_coat_of_plates" : 0,                    			//DUR: 300.00 | STA: -36.00
 	"legend_armor.body.green_coat_of_plates" : 0,                    			//DUR: 320.00 | STA: -42.00
-	"legend_armor.body.legend_named_warlock_cloak" : 0,               			//DUR: 180.00 | STA: 8.00 //FEATURE_1: remove
-	"legend_armor.body.lindwurm_armor" : 0,                           			//DUR: 300.00 | STA: -36.00 //FEATURE_1: remove
-	"legend_armor.body.legend_mountain_armor" : 0,                   			//DUR: 400.00 | STA: -33.00 //FEATURE_1: remove
-	"legend_armor.body.legend_mountain_armor_named" : 0,             			//DUR: 320.00 | STA: -42.00 //FEATURE_1: remove
-	"legend_armor.body.legend_skin_armor" : 0,                       			//DUR: 160.00 | STA: -16.00 //FEATURE_1: remove
+	"legend_armor.body.legend_named_warlock_cloak" : 0,               			//DUR: 180.00 | STA: 8.00
+	"legend_armor.body.lindwurm_armor" : 0,                           			//DUR: 300.00 | STA: -36.00
+	"legend_armor.body.legend_mountain_armor" : 0,                   			//DUR: 400.00 | STA: -33.00
+	"legend_armor.body.legend_mountain_armor_named" : 0,             			//DUR: 320.00 | STA: -42.00
+	"legend_armor.body.legend_skin_armor" : 0,                       			//DUR: 160.00 | STA: -16.00
 	
 	//CLOTH & LEATHER
-	"legend_armor.body.legend_bandages" : 0,                             		//DUR: 5.00 | STA: 0.00   //FEATURE_1: remove
-	"legend_armor.body.legend_sackcloth_tattered" : 0,                   		//DUR: 5.00 | STA: 0.00   //FEATURE_1: remove from store
-	"legend_armor.body.legend_sackcloth" : 0,                           		//DUR: 10.00 | STA: 0.00  //FEATURE_1: remove from store
-	"legend_armor.body.legend_sackcloth_patched" : 0,                   		//DUR: 15.00 | STA: -1.00 //FEATURE_1: remove from store
-	"legend_armor.body.legend_robes_wizard" : 0,                        		//DUR: 30.00 | STA: -1.00 //FEATURE_1: Remove
+	"legend_armor.body.legend_bandages" : 0,                             		//DUR: 5.00 | STA: 0.00
+	"legend_armor.body.legend_sackcloth_tattered" : 0,                   		//DUR: 5.00 | STA: 0.00
+	"legend_armor.body.legend_sackcloth" : 0,                           		//DUR: 10.00 | STA: 0.00
+	"legend_armor.body.legend_sackcloth_patched" : 0,                   		//DUR: 15.00 | STA: -1.00
+	"legend_armor.body.legend_robes_wizard" : 0,                        		//DUR: 30.00 | STA: -1.00 //FEATURE_1: remove from config
 
 	"legend_armor.body.legend_ancient_cloth" : 14,                       		//DUR: 30.00 | STA: -5.00
 	"legend_armor.body.legend_ancient_cloth_restored" : 24,              		//DUR: 35.00 | STA: -4.00
@@ -803,12 +826,12 @@
 		"legend_armor.body.legend_southern_padded_chest" : 36,              		//DUR: 45.00 | STA: -4.00
 
 		//II
-		"legend_armor.body.legend_thick_furs_armor" : 0,                    		//DUR: 10.00 | STA: -1.00 //FEATURE_1: remove from shop
-		"legend_armor.body.legend_armor_leather_jacket_simple" : 0,         		//DUR: 15.00 | STA: -2.00 //FEATURE_1: remove from shop
-		"legend_armor.body.legend_armor_leather_jacket" : 0,                		//DUR: 25.00 | STA: -3.00 //FEATURE_1: remove from shop
-		"legend_armor.body.legend_animal_hide_armor" : 0,                  			//DUR: 30.00 | STA: -4.00 //FEATURE_1: remove from shop
+		"legend_armor.body.legend_thick_furs_armor" : 0,                    		//DUR: 10.00 | STA: -1.00
+		"legend_armor.body.legend_armor_leather_jacket_simple" : 0,         		//DUR: 15.00 | STA: -2.00
+		"legend_armor.body.legend_armor_leather_jacket" : 0,                		//DUR: 25.00 | STA: -3.00
+		"legend_armor.body.legend_animal_hide_armor" : 0,                  			//DUR: 30.00 | STA: -4.00
 		"legend_armor.body.legend_reinforced_animal_hide_armor" : 0,       			//DUR: 55.00 | STA: -9.00
-		"legend_armor.body.legend_armor_cult_armor" : 0,                   			//DUR: 55.00 | STA: -7.00  //FEATURE_1: remove from shop
+		"legend_armor.body.legend_armor_cult_armor" : 0,                   			//DUR: 55.00 | STA: -7.00
 		"legend_armor.body.legend_hide_and_bone_armor" : 0,                			//DUR: 80.00 | STA: -11.00
 
 		"legend_armor.body.legend_southern_arm_guards" : 36,                		//DUR: 30.00 | STA: -2.00
@@ -840,19 +863,19 @@
 	//CHAIN
 	//FEATURE_1: most mobs besides top tier mobs will be using at most chain armor
 	//FEATURE_1: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
-	"legend_armor.body.legend_armor_rusty_mail_shirt" : 0,             			//DUR: 20.00 | STA: -4.00 //FEATURE_1: remove from shop
-	"legend_armor.body.legend_armor_reinforced_rotten_mail_shirt" : 0, 			//DUR: 45.00 | STA: -7.00 //FEATURE_1: remove from shop
-	"legend_armor.body.legend_armor_mail_shirt_simple" : 0,            			//DUR: 25.00 | STA: -3.00 //FEATURE_1: remove from shop
-	"legend_armor.body.legend_armor_ancient_mail" : 0,                 			//DUR: 35.00 | STA: -6.00 //FEATURE_1: remove from shop
+	"legend_armor.body.legend_armor_rusty_mail_shirt" : 0,             			//DUR: 20.00 | STA: -4.00
+	"legend_armor.body.legend_armor_reinforced_rotten_mail_shirt" : 0, 			//DUR: 45.00 | STA: -7.00
+	"legend_armor.body.legend_armor_mail_shirt_simple" : 0,            			//DUR: 25.00 | STA: -3.00
+	"legend_armor.body.legend_armor_ancient_mail" : 0,                 			//DUR: 35.00 | STA: -6.00
 	"legend_armor.body.legend_armor_mail_shirt" : 188,                   		//DUR: 50.00 | STA: -6.00
 	"legend_armor.body.legend_armor_short_mail" : 213,                   		//DUR: 60.00 | STA: -8.00
 	"legend_armor.body.legend_armor_hauberk_sleevless" : 228,           		//DUR: 65.00 | STA: -7.00
-	"legend_armor.body.legend_armor_ancient_double_mail" : 0,          			//DUR: 80.00 | STA: -14.00 //FEATURE_1: remove from shop
+	"legend_armor.body.legend_armor_ancient_double_mail" : 0,          			//DUR: 80.00 | STA: -14.00
 	"legend_armor.body.legend_armor_basic_mail" : 228,                   		//DUR: 85.00 | STA: -12.00
 	"legend_armor.body.legend_armor_reinforced_mail_shirt" : 253,       		//DUR: 80.00 | STA: -10.00
-	"legend_armor.body.legend_armor_reinforced_worn_mail_shirt" : 0,   			//DUR: 65.00 | STA: -11.00 //FEATURE_1: remove from shop
+	"legend_armor.body.legend_armor_reinforced_worn_mail_shirt" : 0,   			//DUR: 65.00 | STA: -11.00
 
-	"legend_armor.body.legend_armor_reinforced_worn_mail" : 0,        			//DUR: 105.00 | STA: -17.00 //FEATURE_1: remove from shop
+	"legend_armor.body.legend_armor_reinforced_worn_mail" : 0,        			//DUR: 105.00 | STA: -17.00
 	"legend_armor.body.legend_armor_hauberk" : 300,                     		//DUR: 95.00 | STA: -11.00
 	"legend_armor.body.legend_southern_mail" : 325,                     		//DUR: 100.00 | STA: -13.00
 	"legend_armor.body.legend_armor_reinforced_mail" : 350,             		//DUR: 110.00 | STA: -15.00
@@ -910,7 +933,9 @@
 	"legend_armor.body.emperors_armor" : 20000,                          		//DUR: 380.00 | STA: -30.00
 
 	//III
-	"legend_armor.named_tabard" : 0,                                  			//DUR: 10.00 | STA: 0.00 //FEATURE_1: figure out price
+	"legend_armor.body.legend_common_tabard" : 40,                             	//DUR: 10.00 | STA: 0.00
+	"legend_armor.body.legend_southern_tabard" : 40,                             //DUR: 10.00 | STA: 0.00
+	"legend_armor.named_tabard" : 264,                                  		//DUR: 10.00 | STA: 0.00
 
 	//VI //FEATURE_1: only the redback silk cloak looks good, possible use it again in future
 	"legend_armor.body.lindwurm_scales" : 0,                          			//DUR: 25.00 | STA: -2.00 	//FEATURE_1: Remove
@@ -963,135 +988,146 @@
 	"legend_armor_upgrade.direwolf_pelt" : 250,                          		//DUR: 10.00 | STA: 0.00
 	"legend_armor_upgrade.legend_white_wolf_pelt" : 500,                		//DUR: 30.00 | STA: -2.00             
 
-//LEGEND_HELMETS //TODO: helmet prices
+//LEGEND_HELMETS
+	"armor.head.legend_helmet_goblin_scarf" : 0,                         		//DUR: 5.00 | STA: 0.00
+	"armor.head.legend_helmet_mummy_bandage" : 0,                        		//DUR: 5.00 | STA: 0.00
+	"armor.head.legend_helmet_rotten_chain_scarf" : 0,                  		//DUR: 50.00 | STA: -3.00 //FEATURE_1: remove
+	"armor.head.legend_helmet_barb_chain_scarf" : 0,                   			//DUR: 55.00 | STA: -3.00 
+	"armor.head.legend_helmet_barb_leather_cap" : 0,                    		//DUR: 25.00 | STA: 0.00
+	"armor.head.legend_helmet_barb_open_chain" : 0,                    			//DUR: 65.00 | STA: -3.00
+	"armor.head.legend_helmet_rusty_chain_hood" : 0,                   			//DUR: 70.00 | STA: -4.00 //FEATURE_1: remove
+	"armor.head.legend_helmet_barb_metal_cap" : 0,                     			//DUR: 40.00 | STA: -2.00
+	"armor.head.legend_helmet_barb_ritual_helm" : 0,                  			//DUR: 190.00 | STA: -16.00
+	"armor.head.legend_helmet_ancient_conic_helm" : 0,                 			//DUR: 60.00 | STA: -6.00
+	"armor.head.legend_helmet_ancient_crested" : 0,                    			//DUR: 60.00 | STA: -6.00
+	"armor.head.legend_helmet_ancient_dome" : 0,                       			//DUR: 60.00 | STA: -6.00
+	"armor.head.legend_helmet_ancient_kettle" : 0,                     			//DUR: 60.00 | STA: -6.00
+	"armor.head.legend_helmet_ancient_dome_tailed" : 0,                			//DUR: 95.00 | STA: -9.00
+	"armor.head.legend_helmet_ancient_face_plate" : 0,                 			//DUR: 95.00 | STA: -9.00
+	"armor.head.legend_helmet_ancient_legionaire" : 0,                 			//DUR: 95.00 | STA: -9.00
+	"armor.head.legend_helmet_ancient_side_hawk" : 0,                  			//DUR: 95.00 | STA: -9.00
+	"armor.head.legend_helmet_ancient_tailed_conic_helm" : 0,          			//DUR: 95.00 | STA: -9.00
+	"armor.head.legend_helmet_ancient_face_helm" : 0,                  			//DUR: 120.00 | STA: -10.00
+	"armor.head.legend_helmet_ancient_beard_mask" : 0,                 			//DUR: 130.00 | STA: -12.00
+	"armor.head.legend_helmet_ancient_lion_mask" : 0,                  			//DUR: 130.00 | STA: -12.00
+	"armor.head.legend_helmet_ancient_mask" : 0,                       			//DUR: 130.00 | STA: -12.00
+	"armor.head.legend_helmet_legend_ancient_legionaire_restored" : 0, 			//DUR: 140.00 | STA: -9.00
+	"armor.head.legend_helmet_legend_ancient_gladiator" : 0,          			//DUR: 150.00 | STA: -11.00
+	"armor.head.legend_helmet_orc_great_helm" : 0,                    			//DUR: 280.00 | STA: -32.00
+	"armor.head.legend_helmet_orc_strapped_helm" : 0,                  			//DUR: 160.00 | STA: -18.00
+	"armor.head.legend_helmet_rotten_flat_top_face_mask" : 0,          			//DUR: 110.00 | STA: -8.00
+	"armor.head.legend_helmet_orc_behemoth_helmet" : 0,                			//DUR: 180.00 | STA: -20.00
+	"armor.head.legend_helmet_orc_double_helm" : 0,                   			//DUR: 190.00 | STA: -22.00
+	"armor.head.legend_helmet_orc_scale_helm" : 0,                    			//DUR: 250.00 | STA: -30.00
+	"armor.head.legend_helmet_orc_elite_double_helm" : 0,             			//DUR: 225.00 | STA: -25.00
+	"armor.head.legend_helmet_crude_metal_helm" : 0,                   			//DUR: 110.00 | STA: -8.00
+	"armor.head.legend_helmet_crude_cylinder_helm" : 0,                			//DUR: 155.00 | STA: -12.00
+	"armor.head.legend_helmet_crude_skull_helm" : 0,                  			//DUR: 150.00 | STA: -9.00
+	"armor.head.legend_helmet_rotten_great_helm" : 0,                  			//DUR: 150.00 | STA: -14.00
 
-	//HOOD
-	"armor.head.legend_helmet_goblin_scarf" : 5,                         		//DUR: 5.00 | STA: 0.00
-	"armor.head.legend_helmet_mummy_bandage" : 5,                        		//DUR: 5.00 | STA: 0.00
-	"armor.head.legend_helmet_cloth_cap" : 10,                           		//DUR: 15.00 | STA: 0.00
-	"armor.head.legend_helmet_cloth_scarf" : 10,                         		//DUR: 15.00 | STA: 0.00
-	"armor.head.legend_helmet_cloth_bandana" : 20,                       		//DUR: 15.00 | STA: 0.00
-	"armor.head.legend_helmet_southern_headband_coin" : 20,              		//DUR: 5.00 | STA: 0.00
-	"armor.head.legend_helmet_southern_cap" : 30,                        		//DUR: 20.00 | STA: 0.00
-	"armor.head.legend_helmet_southern_cap_dark" : 30,                   		//DUR: 20.00 | STA: 0.00
-	"armor.head.legend_helmet_patched_hood" : 45,                        		//DUR: 25.00 | STA: -1.00
-	"armor.head.legend_helmet_simple_hood" : 50,                         		//DUR: 30.00 | STA: -1.00
-	"armor.head.legend_helmet_barb_leather_cap" : 55,                    		//DUR: 25.00 | STA: 0.00
-	"armor.head.legend_helmet_leather_cap" : 75,                         		//DUR: 35.00 | STA: -1.00
-	"armor.head.legend_helmet_rotten_chain_scarf" : 80,                  		//DUR: 50.00 | STA: -3.00
-	"armor.head.legend_helmet_padded_cap" : 90,                          		//DUR: 40.00 | STA: -1.00
-	"armor.head.legend_helmet_southern_open_hood" : 90,                  		//DUR: 40.00 | STA: -1.00
-	"armor.head.legend_helmet_southern_turban_light_hood" : 90,          		//DUR: 40.00 | STA: -1.00
-	"armor.head.legend_helmet_leather_hood" : 110,                       		//DUR: 45.00 | STA: -2.00
-	"armor.head.legend_helmet_padded_hood" : 115,                        		//DUR: 50.00 | STA: -2.00
-	"armor.head.legend_helmet_barb_chain_scarf" : 125,                   		//DUR: 55.00 | STA: -3.00
-	"armor.head.legend_helmet_aventail" : 150,                           		//DUR: 60.00 | STA: -3.00
-	"armor.head.legend_helmet_chain_scarf" : 150,                        		//DUR: 55.00 | STA: -3.00
-	"armor.head.legend_helmet_rusty_chain_hood" : 150,                   		//DUR: 70.00 | STA: -4.00
-	"armor.head.legend_helmet_southern_open_chain_hood" : 200,           		//DUR: 65.00 | STA: -3.00
-	"armor.head.legend_helmet_barb_open_chain" : 225,                    		//DUR: 65.00 | STA: -3.00
-	"armor.head.legend_helmet_open_chain_hood" : 225,                    		//DUR: 65.00 | STA: -3.00
-	"armor.head.legend_helmet_southern_chain_hood" : 260,                		//DUR: 75.00 | STA: -4.00
-	"armor.head.legend_helmet_chain_hood" : 300,                         		//DUR: 75.00 | STA: -4.00
-	"armor.head.legend_helmet_southern_niqaab" : 300,                    		//DUR: 45.00 | STA: -1.00
-	"armor.head.legend_helmet_chain_hood_full" : 450,                    		//DUR: 85.00 | STA: -5.00
-	"armor.head.legend_helmet_bronze_chain" : 600,                       		//DUR: 90.00 | STA: -6.00
-	"armor.head.legend_helmet_enclave_bevor" : 750,                      		//DUR: 95.00 | STA: -7.00
 
-	//HELM
-	"armor.head.legend_helmet_southern_leather_helm" : 60,               		//DUR: 15.00 | STA: -1.00
-	"armor.head.legend_helmet_southern_studded_leather_helm" : 125,      		//DUR: 25.00 | STA: -1.00
-	"armor.head.legend_helmet_barb_metal_cap" : 150,                     		//DUR: 40.00 | STA: -2.00
-	"armor.head.legend_helmet_norman_helm" : 150,                        		//DUR: 50.00 | STA: -3.00
-	"armor.head.legend_helmet_southern_cap_smooth" : 150,                		//DUR: 40.00 | STA: -2.00
-	"armor.head.legend_helmet_southern_cap_spiked" : 150,                		//DUR: 40.00 | STA: -2.00
-	"armor.head.legend_helmet_ancient_conic_helm" : 200,                 		//DUR: 60.00 | STA: -6.00
-	"armor.head.legend_helmet_ancient_crested" : 200,                    		//DUR: 60.00 | STA: -6.00
-	"armor.head.legend_helmet_ancient_dome" : 200,                       		//DUR: 60.00 | STA: -6.00
-	"armor.head.legend_helmet_ancient_kettle" : 200,                     		//DUR: 60.00 | STA: -6.00
-	"armor.head.legend_helmet_horsetail" : 200,                          		//DUR: 60.00 | STA: -3.00
-	"armor.head.legend_helmet_viking_helm" : 200,                        		//DUR: 55.00 | STA: -3.00
-	"armor.head.legend_helmet_flat_top_helm_low" : 225,                  		//DUR: 70.00 | STA: -4.00
-	"armor.head.legend_helmet_kettle_helm_low" : 250,                    		//DUR: 75.00 | STA: -5.00
-	"armor.head.legend_helmet_flat_top_helm" : 325,                      		//DUR: 85.00 | STA: -5.00
-	"armor.head.legend_helmet_ancient_dome_tailed" : 350,                		//DUR: 95.00 | STA: -9.00
-	"armor.head.legend_helmet_ancient_face_plate" : 350,                 		//DUR: 95.00 | STA: -9.00
-	"armor.head.legend_helmet_ancient_legionaire" : 350,                 		//DUR: 95.00 | STA: -9.00
-	"armor.head.legend_helmet_ancient_side_hawk" : 350,                  		//DUR: 95.00 | STA: -9.00
-	"armor.head.legend_helmet_ancient_tailed_conic_helm" : 350,          		//DUR: 95.00 | STA: -9.00
-	"armor.head.legend_helmet_orc_strapped_helm" : 400,                  		//DUR: 160.00 | STA: -18.00
-	"armor.head.legend_helmet_rotten_flat_top_face_mask" : 400,          		//DUR: 110.00 | STA: -8.00
-	"armor.head.legend_helmet_italo_norman_helm" : 425,                  		//DUR: 90.00 | STA: -6.00
-	"armor.head.legend_helmet_nordic_helm_low" : 460,                    		//DUR: 110.00 | STA: -7.00
-	"armor.head.legend_helmet_ancient_face_helm" : 500,                  		//DUR: 120.00 | STA: -10.00
-	"armor.head.legend_helmet_crude_metal_helm" : 500,                   		//DUR: 110.00 | STA: -8.00
-	"armor.head.legend_helmet_kettle_helm_med" : 500,                    		//DUR: 95.00 | STA: -7.00
-	"armor.head.legend_helmet_flat_top_helm_polished" : 550,             		//DUR: 100.00 | STA: -5.00
-	"armor.head.legend_helmet_ancient_beard_mask" : 600,                 		//DUR: 130.00 | STA: -12.00
-	"armor.head.legend_helmet_ancient_lion_mask" : 600,                  		//DUR: 130.00 | STA: -12.00
-	"armor.head.legend_helmet_ancient_mask" : 600,                       		//DUR: 130.00 | STA: -12.00
-	"armor.head.legend_helmet_crude_cylinder_helm" : 600,                		//DUR: 155.00 | STA: -12.00
-	"armor.head.legend_helmet_enclave_skullcap" : 600,                   		//DUR: 65.00 | STA: -4.00
-	"armor.head.legend_helmet_orc_behemoth_helmet" : 600,                		//DUR: 180.00 | STA: -20.00
-	"armor.head.legend_helmet_conic_helm" : 700,                         		//DUR: 110.00 | STA: -6.00
-	"armor.head.legend_helmet_scale_helm" : 725,                         		//DUR: 75.00 | STA: -5.00
-	"armor.head.legend_helmet_kettle_helm" : 750,                        		//DUR: 115.00 | STA: -8.00
-	"armor.head.legend_helmet_rotten_great_helm" : 750,                  		//DUR: 150.00 | STA: -14.00
-	"armor.head.legend_helmet_rondel_helm" : 775,                        		//DUR: 85.00 | STA: -6.00
-	"armor.head.legend_helmet_legend_ancient_legionaire_restored" : 800, 		//DUR: 140.00 | STA: -9.00
-	"armor.head.legend_helmet_sallet" : 800,                             		//DUR: 50.00 | STA: -2.00
-	"armor.head.legend_helmet_kettle_helm_high" : 850,                   		//DUR: 125.00 | STA: -9.00
-	"armor.head.legend_helmet_flat_top_face_plate" : 900,                		//DUR: 120.00 | STA: -9.00
-	"armor.head.legend_helmet_bronze_helm" : 1000,                       		//DUR: 115.00 | STA: -8.00
-	"armor.head.legend_helmet_deep_sallet" : 1000,                       		//DUR: 100.00 | STA: -5.00
-	"armor.head.legend_helmet_nordic_helm" : 1000,                       		//DUR: 125.00 | STA: -8.00
-	"armor.head.legend_helmet_orc_double_helm" : 1000,                   		//DUR: 190.00 | STA: -22.00
-	"armor.head.legend_helmet_southern_conic_helm" : 1000,               		//DUR: 75.00 | STA: -4.00
-	"armor.head.legend_helmet_southern_helmet_nasal" : 1000,             		//DUR: 125.00 | STA: -7.00
-	"armor.head.legend_helmet_dentist_helmet" : 1200,                    		//DUR: 70.00 | STA: -3.00
-	"armor.head.legend_helmet_heavy_plate_helm" : 1200,                  		//DUR: 175.00 | STA: -15.00
-	"armor.head.legend_helmet_legend_ancient_gladiator" : 1200,          		//DUR: 150.00 | STA: -11.00
-	"armor.head.legend_helmet_orc_scale_helm" : 1200,                    		//DUR: 250.00 | STA: -30.00
-	"armor.head.legend_helmet_barbute" : 1250,                           		//DUR: 75.00 | STA: -3.00
-	"armor.head.legend_helmet_basinet" : 1250,                           		//DUR: 80.00 | STA: -5.00
-	"armor.head.legend_helmet_enclave_kettle" : 1250,                    		//DUR: 145.00 | STA: -10.00
-	"armor.head.legend_helmet_enclave_armet" : 1400,                     		//DUR: 140.00 | STA: -9.00
-	"armor.head.legend_helmet_orc_elite_double_helm" : 1500,             		//DUR: 225.00 | STA: -25.00
-	"armor.head.legend_helmet_southern_peaked_nasal_helm" : 1500,        		//DUR: 150.00 | STA: -11.00
-	"armor.head.legend_helmet_wallace_sallet" : 1500,                    		//DUR: 105.00 | STA: -7.00
-	"armor.head.legend_helmet_carthaginian" : 1600,                      		//DUR: 105.00 | STA: -5.00
-	"armor.head.legend_helmet_legend_armet" : 1750,                      		//DUR: 155.00 | STA: -11.00
-	"armor.head.legend_helmet_nordic_helm_high" : 1750,                  		//DUR: 135.00 | STA: -8.00
-	"armor.head.legend_helmet_heavy_spiked_helm" : 1800,                 		//DUR: 165.00 | STA: -10.00
-	"armor.head.legend_helmet_italo_norman_helm_named" : 2000,           		//DUR: 110.00 | STA: -5.00
-	"armor.head.legend_helmet_southern_named_conic" : 2000,              		//DUR: 85.00 | STA: -3.00
-	"armor.head.legend_helmet_southern_peaked_helm" : 2000,              		//DUR: 115.00 | STA: -8.00
-	"armor.head.legend_helmet_legend_frogmouth" : 2250,                  		//DUR: 160.00 | STA: -10.00
-	"armor.head.legend_helmet_legend_frogmouth_close" : 2250,            		//DUR: 160.00 | STA: -10.00
-	"armor.head.legend_helmet_bascinet_named" : 2500,                    		//DUR: 90.00 | STA: -4.00
-	"armor.head.legend_helmet_great_helm" : 2500,                        		//DUR: 175.00 | STA: -12.00
-	"armor.head.legend_helmet_southern_gladiator_helm_crested" : 2500,   		//DUR: 130.00 | STA: -6.00
-	"armor.head.legend_helmet_southern_gladiator_helm_masked" : 2500,    		//DUR: 130.00 | STA: -6.00
-	"armor.head.legend_helmet_southern_gladiator_helm_split" : 2500,     		//DUR: 130.00 | STA: -6.00
-	"armor.head.legend_helmet_wallace_sallet_named" : 2500,              		//DUR: 110.00 | STA: -6.00
-	"armor.head.legend_helmet_enclave_great_helm" : 2650,                		//DUR: 180.00 | STA: -12.00
-	"armor.head.legend_helmet_barbute_named" : 2750,                     		//DUR: 85.00 | STA: -4.00
-	"armor.head.legend_helmet_enclave_great_bascinet" : 2800,            		//DUR: 180.00 | STA: -13.00
-	"armor.head.legend_helmet_enclave_venitian_bascinet" : 3000,         		//DUR: 185.00 | STA: -14.00
-	"armor.head.legend_helmet_orc_great_helm" : 3000,                    		//DUR: 280.00 | STA: -32.00
-	"armor.head.legend_helmet_tailed_conic" : 3000,                      		//DUR: 140.00 | STA: -8.00
-	"armor.head.legend_helmet_deep_sallet_named" : 3200,                 		//DUR: 105.00 | STA: -6.00
-	"armor.head.legend_helmet_crude_skull_helm" : 3500,                  		//DUR: 150.00 | STA: -9.00
-	"armor.head.legend_helmet_heavy_plate_helm_named" : 3500,            		//DUR: 185.00 | STA: -14.00
-	"armor.head.legend_helmet_kettle_helm_named" : 3500,                 		//DUR: 130.00 | STA: -9.00
-	"armor.head.legend_helmet_legend_armet_01_named" : 4000,             		//DUR: 170.00 | STA: -11.00
-	"armor.head.legend_helmet_stag_helm" : 5000,                         		//DUR: 200.00 | STA: -15.00
-	"armor.head.legend_helmet_swan_helm" : 5000,                         		//DUR: 200.00 | STA: -15.00
-	"armor.head.legend_helmet_barb_ritual_helm" : 6000,                  		//DUR: 190.00 | STA: -16.00
-	"armor.head.legend_helmet_skin_helm" : 20000,                        		//DUR: 105.00 | STA: -5.00
 
-	//HELMETS
-	"armor.head.legend_faction_helmet" : 200,                            		//DUR: 80.00 | STA: -4.00
+	//CLOTH & LEATHER
+	"armor.head.legend_helmet_southern_headband_coin" : 5,              		//DUR: 5.00 | STA: 0.00
+	"armor.head.legend_helmet_cloth_cap" : 0,                           		//DUR: 15.00 | STA: 0.00
+	"armor.head.legend_helmet_cloth_scarf" : 0,                         		//DUR: 15.00 | STA: 0.00
+	"armor.head.legend_helmet_cloth_bandana" : 0,                       		//DUR: 15.00 | STA: 0.00
+	"armor.head.legend_helmet_southern_cap" : 0,                        		//DUR: 20.00 | STA: 0.00
+	"armor.head.legend_helmet_southern_cap_dark" : 0,                   		//DUR: 20.00 | STA: 0.00
+	"armor.head.legend_helmet_patched_hood" : 0,                        		//DUR: 25.00 | STA: -1.00
+	
+	"armor.head.legend_helmet_southern_leather_helm" : 28,               		//DUR: 15.00 | STA: -1.00
+	"armor.head.legend_helmet_southern_studded_leather_helm" : 28,      		//DUR: 25.00 | STA: -1.00
+	"armor.head.legend_helmet_simple_hood" : 28,                         		//DUR: 30.00 | STA: -1.00
+	"armor.head.legend_helmet_leather_cap" : 32,                         		//DUR: 35.00 | STA: -1.00
+	"armor.head.legend_helmet_padded_cap" : 36,                          		//DUR: 40.00 | STA: -1.00
+	"armor.head.legend_helmet_southern_open_hood" : 36,                  		//DUR: 40.00 | STA: -1.00
+	"armor.head.legend_helmet_southern_turban_light_hood" : 36,          		//DUR: 40.00 | STA: -1.00
+	"armor.head.legend_helmet_southern_niqaab" : 40,                    		//DUR: 45.00 | STA: -1.00
+	"armor.head.legend_helmet_leather_hood" : 40,                       		//DUR: 45.00 | STA: -2.00
+	"armor.head.legend_helmet_padded_hood" : 40,                        		//DUR: 50.00 | STA: -2.00
+	
+
+	//CHAIN
+	"armor.head.legend_helmet_aventail" : 60,                           		//DUR: 60.00 | STA: -3.00
+	"armor.head.legend_helmet_chain_scarf" : 60,                        		//DUR: 55.00 | STA: -3.00
+	"armor.head.legend_helmet_southern_open_chain_hood" : 60,           		//DUR: 65.00 | STA: -3.00
+	"armor.head.legend_helmet_open_chain_hood" : 60,                    		//DUR: 65.00 | STA: -3.00
+	"armor.head.legend_helmet_southern_chain_hood" : 90,                		//DUR: 75.00 | STA: -4.00
+	"armor.head.legend_helmet_chain_hood" : 90,                         		//DUR: 75.00 | STA: -4.00
+	"armor.head.legend_faction_helmet" : 90,                            		//DUR: 80.00 | STA: -4.00 //chain hood
+	"armor.head.legend_helmet_chain_hood_full" : 120,                    		//DUR: 85.00 | STA: -5.00
+	"armor.head.legend_helmet_bronze_chain" : 120,                       		//DUR: 90.00 | STA: -6.00
+
+	//Plate
+	"armor.head.legend_helmet_southern_cap_smooth" : 92,                		//DUR: 40.00 | STA: -2.00
+	"armor.head.legend_helmet_southern_cap_spiked" : 92,                		//DUR: 40.00 | STA: -2.00
+
+	"armor.head.legend_helmet_norman_helm" : 115,                        		//DUR: 50.00 | STA: -3.00
+	"armor.head.legend_helmet_sallet" : 115,                             		//DUR: 50.00 | STA: -2.00
+	"armor.head.legend_helmet_viking_helm" : 115,                        		//DUR: 55.00 | STA: -3.00
+	"armor.head.legend_helmet_horsetail" : 115,                          		//DUR: 60.00 | STA: -3.00
+	"armor.head.legend_helmet_enclave_skullcap" : 115,                   		//DUR: 65.00 | STA: -4.00
+
+	"armor.head.legend_helmet_flat_top_helm_low" : 144,                  		//DUR: 70.00 | STA: -4.00
+	"armor.head.legend_helmet_dentist_helmet" : 144,                    		//DUR: 70.00 | STA: -3.00
+	"armor.head.legend_helmet_kettle_helm_low" : 144,                    		//DUR: 75.00 | STA: -5.00
+	"armor.head.legend_helmet_scale_helm" : 144,                         		//DUR: 75.00 | STA: -5.00
+	"armor.head.legend_helmet_southern_conic_helm" : 144,               		//DUR: 75.00 | STA: -4.00
+	"armor.head.legend_helmet_barbute" : 144,                           		//DUR: 75.00 | STA: -3.00
+	"armor.head.legend_helmet_barbute_named" : 216,                     		//DUR: 85.00 | STA: -4.00
+	"armor.head.legend_helmet_basinet" : 144,                           		//DUR: 80.00 | STA: -5.00
+	"armor.head.legend_helmet_flat_top_helm" : 144,                      		//DUR: 85.00 | STA: -5.00
+	"armor.head.legend_helmet_rondel_helm" : 144,                        		//DUR: 85.00 | STA: -6.00
+	"armor.head.legend_helmet_southern_named_conic" : 144,              		//DUR: 85.00 | STA: -3.00
+	"armor.head.legend_helmet_bascinet_named" : 216,                    		//DUR: 90.00 | STA: -4.00
+
+	"armor.head.legend_helmet_italo_norman_helm" : 180,                  		//DUR: 90.00 | STA: -6.00
+	"armor.head.legend_helmet_italo_norman_helm_named" : 270,           		//DUR: 110.00 | STA: -5.00
+	"armor.head.legend_helmet_enclave_bevor" : 180,                      		//DUR: 95.00 | STA: -7.00
+	"armor.head.legend_helmet_kettle_helm_med" : 180,                    		//DUR: 95.00 | STA: -7.00
+	"armor.head.legend_helmet_flat_top_helm_polished" : 180,             		//DUR: 100.00 | STA: -5.00
+	"armor.head.legend_helmet_deep_sallet" : 180,                       		//DUR: 100.00 | STA: -5.00
+	"armor.head.legend_helmet_deep_sallet_named" : 270,                 		//DUR: 105.00 | STA: -6.00
+	"armor.head.legend_helmet_wallace_sallet" : 180,                    		//DUR: 105.00 | STA: -7.00
+	"armor.head.legend_helmet_wallace_sallet_named" : 270,              		//DUR: 110.00 | STA: -6.00
+	"armor.head.legend_helmet_carthaginian" : 180,                      		//DUR: 105.00 | STA: -5.00
+	"armor.head.legend_helmet_skin_helm" : 180,                        			//DUR: 105.00 | STA: -5.00
+
+	"armor.head.legend_helmet_nordic_helm_low" : 225,                    		//DUR: 110.00 | STA: -7.00
+	"armor.head.legend_helmet_conic_helm" : 225,                         		//DUR: 110.00 | STA: -6.00
+	"armor.head.legend_helmet_kettle_helm" : 225,                        		//DUR: 115.00 | STA: -8.00
+	"armor.head.legend_helmet_bronze_helm" : 225,                       		//DUR: 115.00 | STA: -8.00
+	"armor.head.legend_helmet_southern_peaked_helm" : 225,              		//DUR: 115.00 | STA: -8.00
+	"armor.head.legend_helmet_flat_top_face_plate" : 225,                		//DUR: 120.00 | STA: -9.00
+	"armor.head.legend_helmet_kettle_helm_high" : 225,                   		//DUR: 125.00 | STA: -9.00
+	"armor.head.legend_helmet_kettle_helm_named" : 338,                 		//DUR: 130.00 | STA: -9.00
+	"armor.head.legend_helmet_nordic_helm" : 225,                       		//DUR: 125.00 | STA: -8.00
+	"armor.head.legend_helmet_southern_helmet_nasal" : 225,             		//DUR: 125.00 | STA: -7.00
+	"armor.head.legend_helmet_southern_gladiator_helm_crested" : 225,   		//DUR: 130.00 | STA: -6.00
+	"armor.head.legend_helmet_southern_gladiator_helm_masked" : 225,    		//DUR: 130.00 | STA: -6.00
+	"armor.head.legend_helmet_southern_gladiator_helm_split" : 225,     		//DUR: 130.00 | STA: -6.00
+	"armor.head.legend_helmet_nordic_helm_high" : 225,                  		//DUR: 135.00 | STA: -8.00
+
+	"armor.head.legend_helmet_tailed_conic" : 281,                      		//DUR: 140.00 | STA: -8.00
+	"armor.head.legend_helmet_enclave_armet" : 281,                     		//DUR: 140.00 | STA: -9.00
+	"armor.head.legend_helmet_enclave_kettle" : 281,                    		//DUR: 145.00 | STA: -10.00
+	"armor.head.legend_helmet_southern_peaked_nasal_helm" : 281,        		//DUR: 150.00 | STA: -11.00
+	"armor.head.legend_helmet_legend_armet" : 281,                      		//DUR: 155.00 | STA: -11.00
+	"armor.head.legend_helmet_legend_armet_01_named" : 421,             		//DUR: 170.00 | STA: -11.00
+	"armor.head.legend_helmet_legend_frogmouth" : 281,                  		//DUR: 160.00 | STA: -10.00
+	"armor.head.legend_helmet_legend_frogmouth_close" : 281,            		//DUR: 160.00 | STA: -10.00
+	"armor.head.legend_helmet_heavy_spiked_helm" : 281,                 		//DUR: 165.00 | STA: -10.00
+
+	"armor.head.legend_helmet_great_helm" : 351,                        		//DUR: 175.00 | STA: -12.00
+	"armor.head.legend_helmet_heavy_plate_helm" : 351,                  		//DUR: 175.00 | STA: -15.00
+	"armor.head.legend_helmet_heavy_plate_helm_named" : 527,            		//DUR: 185.00 | STA: -14.00
+	"armor.head.legend_helmet_enclave_great_helm" : 351,                		//DUR: 180.00 | STA: -12.00
+	"armor.head.legend_helmet_enclave_great_bascinet" : 351,            		//DUR: 180.00 | STA: -13.00
+	"armor.head.legend_helmet_enclave_venitian_bascinet" : 351,         		//DUR: 185.00 | STA: -14.00
+	"armor.head.legend_helmet_stag_helm" : 351,                         		//DUR: 200.00 | STA: -15.00
+	"armor.head.legend_helmet_swan_helm" : 351,                         		//DUR: 200.00 | STA: -15.00
+	
 
 	//TOP //FEATURE_1: find and remove 0 armors from shop, mark unused for later
 	"armor.head.legend_helmet_mummy_beard" : 0,                        			//DUR: 15.00 | STA: -1.00

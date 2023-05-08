@@ -31,26 +31,6 @@
 				P = 0.9,
 				S = "supplies/legend_fresh_fruit_item"
 			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "helmets/hood"
-			});
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/scramasax"
-			});
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/legend_shiv"
-			});
-			_list.push({
-				R = 30,
-				P = 1.0,
-				S = "weapons/legend_sickle"
-			});
 		}
 	}
 

@@ -46,31 +46,6 @@
 				R = 30,
 				P = 1.0,
 				S = "accessory/antidote_item"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/oriental/firelance"
-			},
-			{
-				R = 20,
-				P = 1.0,
-				S = "weapons/oriental/firelance"
-			},
-			{
-				R = 35,
-				P = 1.0,
-				S = "weapons/oriental/handgonne"
-			},
-			{
-				R = 0,
-				P = 1.0,
-				S = "ammo/powder_bag"
-			},
-			{
-				R = 99,
-				P = 2.0,
-				S = "weapons/named/named_handgonne"
 			}
 		];
 
@@ -122,7 +97,6 @@
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-		_list.push("legend_alchemist_background");
 		_list.push("legend_alchemist_background");
 	}
 

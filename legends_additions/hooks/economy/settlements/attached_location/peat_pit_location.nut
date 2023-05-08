@@ -27,16 +27,6 @@
 		if (_id == "building.marketplace")
 		{
 			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "weapons/legend_hoe"
-			});
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/legend_shovel"
-			});
-			_list.push({
 				R = 0,
 				P = 1.0,
 				S = "trade/peat_bricks_item"

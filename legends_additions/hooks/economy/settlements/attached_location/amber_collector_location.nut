@@ -7,12 +7,7 @@
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-
-		if (!this.isActive())
-		{
-			return;
-		}
-
+		if (!this.isActive()) return;
 		_list.push("peddler_background");
 		_list.push("caravan_hand_background");
 		_list.push("thief_background");
@@ -30,11 +25,6 @@
 				R = 0,
 				P = 1.0,
 				S = "trade/amber_shards_item"
-			});
-			_list.push({
-				R = 95,
-				P = 1.0,
-				S = "tents/tent_enchant"
 			});
 			break;
 

@@ -15,7 +15,6 @@
 
 		_list.push("cultist_background");
 		_list.push("cultist_background");
-		_list.push("flagellant_background");
 		_list.push("wildman_background");
 		_list.push("legend_herbalist_background");
 	}
@@ -24,11 +23,6 @@
 	{
 		if (_id == "building.marketplace")
 		{
-			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "supplies/pickled_mushrooms_item"
-			});
 			_list.push({
 				R = 20,
 				P = 1.0,
@@ -45,34 +39,10 @@
 				S = "tents/tent_gather"
 			});
 			_list.push({
-				R = 30,
-				P = 1.0,
-				S = "weapons/legend_shovel"
-			});
-			_list.push({
 				R = 20,
 				P = 1.0,
 				S = "supplies/medicine_item"
 			});
-			_list.push({
-				R = 50,
-				P = 1.0,
-				S = "accessory/berserker_mushrooms_item"
-			});
-			_list.push({
-				R = 50,
-				P = 1.0,
-				S = "accessory/legend_apothecary_mushrooms_item"
-			});
-
-			if (this.Const.DLC.Wildmen)
-			{
-				_list.push({
-					R = 30,
-					P = 1.0,
-					S = "weapons/legend_cat_o_nine_tails"
-				});
-			}
 
 			if (_id == "building.weaponsmith")
 			{
@@ -80,11 +50,6 @@
 					R = 30,
 					P = 1.0,
 					S = "weapons/named/legend_named_sickle"
-				});
-				_list.push({
-					R = 30,
-					P = 1.0,
-					S = "weapons/named/legend_named_shovel"
 				});
 			}
 		}

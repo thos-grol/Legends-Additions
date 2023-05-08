@@ -91,22 +91,7 @@
 			_list.push({
 				R = 80,
 				P = 1.0,
-				S = "tents/tent_train"
-			});
-			_list.push({
-				R = 80,
-				P = 1.0,
 				S = "tents/tent_scout"
-			});
-			_list.push({
-				R = 30,
-				P = 1.0,
-				S = "weapons/legend_tipstaff"
-			});
-			_list.push({
-				R = 60,
-				P = 1.0,
-				S = "weapons/legend_slingstaff"
 			});
 			_list.push({
 				R = 70,

@@ -19,14 +19,6 @@
 
 	o.onUpdateShopList = function( _id, _list )
 	{
-		if (_id == "building.marketplace")
-		{
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "tools/throwing_net"
-			});
-		}
 	}
 
 	o.getNewResources = function()

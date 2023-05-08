@@ -19,8 +19,6 @@
 
 		if (_gender)
 		{
-			_list.push("legend_qiyan_background");
-			_list.push("legend_qiyan_background");
 		}
 	}
 
@@ -28,16 +26,6 @@
 	{
 		if (_id == "building.marketplace")
 		{
-			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "tents/tent_scrap"
-			});
-			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "tents/tent_repair"
-			});
 			_list.push({
 				R = 0,
 				P = 1.0,

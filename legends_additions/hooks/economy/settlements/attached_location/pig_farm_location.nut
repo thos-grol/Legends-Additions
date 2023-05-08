@@ -19,8 +19,6 @@
 		_list.push("farmhand_background");
 		_list.push("farmhand_background");
 		_list.push("farmhand_background");
-		_list.push("anatomist_background");
-		_list.push("legend_taxidermist_background");
 
 		if (_gender)
 		{
@@ -37,26 +35,6 @@
 				R = 0,
 				P = 1.0,
 				S = "supplies/smoked_ham_item"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "weapons/butchers_cleaver"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "weapons/legend_shiv"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "weapons/legend_chain"
-			});
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "armor/butcher_apron"
 			});
 		}
 	}

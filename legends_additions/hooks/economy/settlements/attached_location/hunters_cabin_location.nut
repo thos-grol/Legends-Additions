@@ -21,36 +21,15 @@
 		_list.push("poacher_background");
 		_list.push("poacher_background");
 		_list.push("poacher_background");
-		_list.push("legend_taxidermist_background");
 
 		if (this.Math.rand(0, 9) == 1)
 		{
 			_list.push("legend_master_archer_background");
 		}
 
-		if (this.LegendsMod.Configs().LegendMagicEnabled())
+		if (this.Math.rand(0, 9) == 1)
 		{
-			local r;
-
-			if (this.World.Assets.getOrigin().getID() == "scenario.legends_rangers")
-			{
-				r = this.Math.rand(0, 9);
-
-				if (r == 1)
-				{
-					_list.push("legend_master_archer_background");
-					_list.push("legend_ranger_background");
-				}
-			}
-			else
-			{
-				r = this.Math.rand(0, 9);
-
-				if (r == 1)
-				{
-					_list.push("legend_master_archer_background");
-				}
-			}
+			_list.push("legend_ranger_background");
 		}
 	}
 
@@ -64,56 +43,10 @@
 				S = "supplies/legend_fresh_meat_item"
 			});
 			_list.push({
-				R = 30,
-				P = 1.0,
-				S = "weapons/short_bow"
-			});
-			_list.push({
-				R = 50,
-				P = 1.0,
-				S = "weapons/hunting_bow"
-			});
-			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "weapons/war_bow"
-			});
-			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "weapons/greenskins/goblin_bow"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "helmets/hood"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "weapons/knife"
-			});
-			_list.push({
 				R = 80,
 				P = 1.0,
 				S = "tents/tent_hunter"
 			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "helmets/hunters_hat"
-			});
-
-			if (this.Const.DLC.Unhold)
-			{
-				_list.extend([
-					{
-						R = 10,
-						P = 1.0,
-						S = "weapons/spetum"
-					}
-				]);
-			}
 		}
 	}
 

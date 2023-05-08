@@ -95,7 +95,7 @@
 			[
 				"farmhand_background",
 				"farmhand_background",
-				"houndmaster_background",
+				
 				"mason_background",
 				"messenger_background",
 				"militia_background",
@@ -107,7 +107,7 @@
 				"deserter_background",
 				"retired_soldier_background",
 				"retired_soldier_background",
-				"houndmaster_background",
+				
 				"mason_background",
 				"messenger_background",
 				"militia_background",
@@ -120,12 +120,12 @@
 			],
 			[
 				"gambler_background",
-				"houndmaster_background",
+				
 				"farmhand_background",
 				"mason_background",
 				"messenger_background",
 				"militia_background",
-				"minstrel_background",
+				
 				"ratcatcher_background",
 				"vagabond_background",
 				"witchhunter_background",
@@ -141,7 +141,7 @@
 				"squire_background",
 				"cripple_background",
 				"gambler_background",
-				"houndmaster_background",
+				
 				"mason_background",
 				"messenger_background",
 				"militia_background",
@@ -169,7 +169,7 @@
 				"militia_background",
 				"miller_background",
 				"miller_background",
-				"minstrel_background",
+				
 				"peddler_background",
 				"ratcatcher_background",
 				"refugee_background",
@@ -189,14 +189,14 @@
 				"sellsword_background",
 				"squire_background",
 				"squire_background",
-				"swordmaster_background",
+				
 				"apprentice_background",
 				"gambler_background",
 				"mason_background",
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"minstrel_background",
+				
 				"peddler_background",
 				"ratcatcher_background",
 				"refugee_background",
@@ -212,7 +212,6 @@
 				"sellsword_background",
 				"squire_background",
 				"squire_background",
-				"swordmaster_background"
 			]
 		];
 		this.m.FemaleDraftLists = [
@@ -224,7 +223,7 @@
 			],
 			[
 				"female_farmhand_background",
-				"female_minstrel_background",
+				
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background"
 			],

@@ -98,16 +98,6 @@
 				S = "weapons/fighting_spear"
 			},
 			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/javelin"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/javelin"
-			},
-			{
 				R = 45,
 				P = 1.0,
 				S = "weapons/pike"
@@ -146,11 +136,6 @@
 				R = 90,
 				P = 1.0,
 				S = "weapons/two_handed_hammer"
-			},
-			{
-				R = 40,
-				P = 1.0,
-				S = "weapons/battle_whip"
 			}
 		];
 
@@ -206,22 +191,6 @@
 					R = 80,
 					P = 1.0,
 					S = "weapons/fencing_sword"
-				},
-				{
-					R = 10,
-					P = 1.0,
-					S = "weapons/throwing_spear"
-				}
-			]);
-		}
-
-		if (this.Const.DLC.Wildmen)
-		{
-			list.extend([
-				{
-					R = 20,
-					P = 1.0,
-					S = "weapons/warfork"
 				}
 			]);
 		}

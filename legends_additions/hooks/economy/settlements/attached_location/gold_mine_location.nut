@@ -17,7 +17,6 @@
 		_list.push("miner_background");
 		_list.push("miner_background");
 		_list.push("legend_ironmonger_background");
-		_list.push("sellsword_background");
 		_list.push("caravan_hand_background");
 		_list.push("thief_background");
 	}
@@ -27,21 +26,6 @@
 		switch(_id)
 		{
 		case "building.marketplace":
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/pickaxe"
-			});
-			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "weapons/military_pick"
-			});
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/legend_hammer"
-			});
 			break;
 
 		default:

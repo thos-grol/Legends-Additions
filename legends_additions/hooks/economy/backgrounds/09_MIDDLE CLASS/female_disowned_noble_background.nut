@@ -10,23 +10,17 @@
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
-		local r;
-		r = this.Math.rand(0, 2);
 
-		if (r == 0)
+		switch (this.Math.rand(0, 1))
 		{
-			items.equip(this.new("scripts/items/weapons/hunting_bow"));
-			items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
-		}
-		else if (r == 1)
-		{
-			items.equip(this.new("scripts/items/weapons/light_crossbow"));
-			items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
-		}
-		else if (r == 2)
-		{
-			items.equip(this.new("scripts/items/weapons/arming_sword"));
-			items.equip(this.new("scripts/items/shields/wooden_shield"));
+			case 0:
+				items.equip(this.new("scripts/items/weapons/hunting_bow"));
+				items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+				break
+			default:
+				items.equip(this.new("scripts/items/weapons/arming_sword"));
+				items.equip(this.new("scripts/items/shields/wooden_shield"));
+
 		}
 
 		items.equip(this.Const.World.Common.pickArmor([

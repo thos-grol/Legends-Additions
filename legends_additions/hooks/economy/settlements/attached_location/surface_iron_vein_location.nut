@@ -27,16 +27,6 @@
 		{
 		case "building.marketplace":
 			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "weapons/pickaxe"
-			});
-			_list.push({
-				R = 15,
-				P = 1.0,
-				S = "weapons/reinforced_wooden_flail"
-			});
-			_list.push({
 				R = 25,
 				P = 1.0,
 				S = "supplies/armor_parts_item"

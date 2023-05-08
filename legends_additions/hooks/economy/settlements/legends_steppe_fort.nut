@@ -116,7 +116,7 @@
 			[
 				"caravan_hand_background",
 				"caravan_hand_background",
-				"houndmaster_background",
+				
 				"daytaler_background",
 				"mason_background",
 				"militia_background",
@@ -130,7 +130,7 @@
 				"retired_soldier_background",
 				"caravan_hand_background",
 				"caravan_hand_background",
-				"houndmaster_background",
+				
 				"mason_background",
 				"militia_background",
 				"militia_background",
@@ -144,7 +144,7 @@
 			],
 			[
 				"apprentice_background",
-				"houndmaster_background",
+				
 				"beggar_background",
 				"brawler_background",
 				"caravan_hand_background",
@@ -168,7 +168,7 @@
 				"retired_soldier_background",
 				"sellsword_background",
 				"apprentice_background",
-				"houndmaster_background",
+				
 				"brawler_background",
 				"caravan_hand_background",
 				"caravan_hand_background",
@@ -207,7 +207,7 @@
 				"militia_background",
 				"militia_background",
 				"militia_background",
-				"flagellant_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"servant_background",
@@ -227,7 +227,7 @@
 				"sellsword_background",
 				"sellsword_background",
 				"sellsword_background",
-				"swordmaster_background",
+				
 				"hedge_knight_background",
 				"apprentice_background",
 				"brawler_background",
@@ -244,7 +244,7 @@
 				"militia_background",
 				"militia_background",
 				"militia_background",
-				"flagellant_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"vagabond_background",
@@ -259,7 +259,7 @@
 				"sellsword_background",
 				"sellsword_background",
 				"sellsword_background",
-				"swordmaster_background",
+				
 				"hedge_knight_background"
 			]
 		];

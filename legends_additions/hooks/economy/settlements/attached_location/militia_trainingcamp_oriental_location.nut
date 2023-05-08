@@ -14,8 +14,6 @@
 		}
 
 		_list.push("nomad_background");
-		_list.push("legend_dervish_background");
-		_list.push("legend_dervish_background");
 
 		if (this.Math.rand(0, 4) == 1)
 		{
@@ -82,17 +80,6 @@
 				P = 1.0,
 				S = "tents/tent_fletcher"
 			});
-
-			if (this.Const.DLC.Unhold)
-			{
-				_list.extend([
-					{
-						R = 20,
-						P = 1.0,
-						S = "weapons/throwing_spear"
-					}
-				]);
-			}
 		}
 		else if (_id == "building.specialized_trader")
 		{

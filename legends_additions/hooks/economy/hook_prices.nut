@@ -9,8 +9,33 @@
 	}
 });
 
+::mods_hookExactClass("items/item", function(o)
+{
+    o.getBuyPrice = function()
+	{
+		if (this.isSold()) return this.getSellPrice();
+
+		if (("State" in this.World) && this.World.State != null && this.World.State.getCurrentTown() != null)
+		{
+			return this.Math.max(this.getSellPrice(), this.Math.ceil(this.getValue() * this.getBuyPriceMult() * this.getPriceMult() * this.World.State.getCurrentTown().getBuyPriceMult() ));
+		}
+		else return this.Math.ceil(this.getValue() * this.getPriceMult());
+	}
+
+	o.getSellPrice = function()
+	{
+		if (this.isBought()) return this.getBuyPrice();
+
+		if (("State" in this.World) && this.World.State != null && this.World.State.getCurrentTown() != null)
+		{
+			return this.Math.floor(this.getValue() * this.getSellPriceMult() * this.Const.World.Assets.BaseSellPrice * this.World.State.getCurrentTown().getSellPriceMult());
+		}
+		else return this.Math.floor(this.getValue() * this.Const.World.Assets.BaseSellPrice);
+	}
+});
+
+
 //FEATURE_0: log price mults and come up with more sane buy sell price formula and figure out why wages are getting fucked up
-//FEATURE_0: sell prices capped at -50% to -10% of item price, buy price capped to 110% to 150% of item price 
 ::mods_hookExactClass("entity/world/settlement", function(o)
 {
     o.getPriceMult = function()
@@ -33,6 +58,7 @@
 		return p * this.m.Modifiers.PriceMult;
 	}
 
+    //FEATURE_0: having workshop in town decreases item prices for that type 
     o.getBuyPriceMult = function()
     {
         local p = this.getPriceMult() * this.World.Assets.getBuyPriceMult();
@@ -58,6 +84,7 @@
         local p_old = p;
         p = p * this.m.Modifiers.BuyPriceMult;
         ::logInfo("p = " + p_old + " * " + this.m.Modifiers.BuyPriceMult + " = " + p);
+        p = this.Math.max(p, 0.75);
         return p;
     }
 
@@ -85,6 +112,7 @@
         local p_old = p;
         p = p * this.m.Modifiers.SellPriceMult;
         ::logInfo("p = " + p_old + " * " + this.m.Modifiers.SellPriceMult + " = " + p);
+        p = this.Math.max(this.Math.min(p, 0.5), 1.25);
         return p;
     }
 });

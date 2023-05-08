@@ -13,8 +13,7 @@
 			"female_slave_southern_background",
 			"female_slave_southern_background",
 			"female_slave_southern_background",
-			"female_slave_southern_background",
-			"legend_qiyan_background"
+			"female_slave_southern_background"
 		];
 		this.m.DraftList = [
 			"beggar_southern_background",
@@ -58,7 +57,6 @@
 			"juggler_southern_background",
 			"assassin_southern_background",
 			"legend_muladi_background",
-			"legend_dervish_background"
 		];
 
 		if (this.Const.DLC.Unhold)

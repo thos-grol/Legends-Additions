@@ -151,7 +151,7 @@
 				"militia_background",
 				"miller_background",
 				"miller_background",
-				"minstrel_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"servant_background",
@@ -165,14 +165,14 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"minstrel_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"vagabond_background",
 				"retired_soldier_background"
 			],
 			[
-				"swordmaster_background",
+				
 				"apprentice_background",
 				"caravan_hand_background",
 				"gambler_background",
@@ -180,8 +180,8 @@
 				"juggler_background",
 				"militia_background",
 				"militia_background",
-				"minstrel_background",
-				"minstrel_background",
+				
+				
 				"peddler_background",
 				"ratcatcher_background",
 				"refugee_background",
@@ -193,8 +193,8 @@
 				"retired_soldier_background",
 				"sellsword_background",
 				"squire_background",
-				"swordmaster_background",
-				"legend_inventor_background"
+				
+				
 			]
 		];
 		this.m.FemaleDraftLists = [

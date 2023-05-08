@@ -3,11 +3,8 @@
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 
-		if (!this.isActive())
-		{
-			return;
-		}
-
+		if (!this.isActive()) return;
+		
 		_list.push("legend_blacksmith_background");
 		_list.push("legend_ironmonger_background");
 		_list.push("retired_soldier_background");
@@ -41,16 +38,6 @@
 	{
 		if (_id == "building.marketplace")
 		{
-			_list.push({
-				R = 60,
-				P = 1.0,
-				S = "accessory/wardog_item"
-			});
-			_list.push({
-				R = 60,
-				P = 1.0,
-				S = "accessory/armored_wardog_item"
-			});
 			_list.push({
 				R = 30,
 				P = 1.0,
@@ -171,11 +158,6 @@
 				P = 1.0,
 				S = "armor/mail_hauberk"
 			});
-			_list.push({
-				R = 80,
-				P = 1.0,
-				S = "tents/tent_train"
-			});
 
 			if (this.Const.DLC.Unhold)
 			{
@@ -223,31 +205,6 @@
 		{
 			if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
 			{
-				_list.push({
-					R = 50,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_armor_cloak_common"
-				});
-				_list.push({
-					R = 95,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_armor_cloak_noble"
-				});
-				_list.push({
-					R = 45,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_armor_cloak_heavy"
-				});
-				_list.push({
-					R = 99,
-					P = 2.0,
-					S = "legend_armor/named/legend_armor_cloak_rich"
-				});
-				_list.push({
-					R = 45,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_sash"
-				});
 				_list.push({
 					R = 45,
 					P = 1.0,

@@ -124,7 +124,7 @@
 				"lumberjack_background",
 				"mason_background",
 				"miner_background",
-				"flagellant_background",
+				
 				"poacher_background",
 				"thief_background",
 				"vagabond_background",
@@ -136,7 +136,7 @@
 				"lumberjack_background",
 				"mason_background",
 				"miner_background",
-				"flagellant_background",
+				
 				"poacher_background",
 				"vagabond_background",
 				"wildman_background",
@@ -204,7 +204,7 @@
 				"militia_background",
 				"militia_background",
 				"peddler_background",
-				"flagellant_background",
+				
 				"poacher_background",
 				"poacher_background",
 				"poacher_background",
@@ -217,8 +217,8 @@
 				"raider_background",
 				"raider_background",
 				"sellsword_background",
-				"swordmaster_background",
-				"legend_inventor_background"
+				
+				
 			]
 		];
 		this.m.FemaleDraftLists = [

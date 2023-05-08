@@ -43,29 +43,9 @@
 				S = "weapons/shortsword"
 			},
 			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/javelin"
-			},
-			{
 				R = 80,
 				P = 1.0,
 				S = "tents/tent_repair"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/javelin"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/throwing_axe"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "weapons/throwing_axe"
 			},
 			{
 				R = 45,
@@ -333,17 +313,6 @@
 					S = "weapons/shamshir"
 				});
 			}
-
-			list.push({
-				R = 80,
-				P = 1.0,
-				S = "weapons/battle_whip"
-			});
-			list.push({
-				R = 70,
-				P = 1.0,
-				S = "weapons/legend_cat_o_nine_tails"
-			});
 		}
 
 		foreach( i in this.Const.Items.NamedMeleeWeapons )

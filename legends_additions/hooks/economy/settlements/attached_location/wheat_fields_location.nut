@@ -48,26 +48,6 @@
 				P = 1.0,
 				S = "helmets/straw_hat"
 			});
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/pitchfork"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "weapons/legend_wooden_pitchfork"
-			});
-			_list.push({
-				R = 25,
-				P = 1.0,
-				S = "weapons/legend_scythe"
-			});
-			_list.push({
-				R = 50,
-				P = 1.0,
-				S = "weapons/hooked_blade"
-			});
 		}
 	}
 

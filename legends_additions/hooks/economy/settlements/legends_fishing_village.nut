@@ -141,9 +141,9 @@
 				"killer_on_the_run_background",
 				"messenger_background",
 				"militia_background",
-				"monk_background",
+				
 				"peddler_background",
-				"flagellant_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"servant_background",
@@ -167,9 +167,9 @@
 				"killer_on_the_run_background",
 				"messenger_background",
 				"militia_background",
-				"monk_background",
+				
 				"peddler_background",
-				"flagellant_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"vagabond_background",
@@ -196,12 +196,12 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"minstrel_background",
-				"monk_background",
+				
+				
 				"cripple_background",
 				"eunuch_background",
 				"peddler_background",
-				"flagellant_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"vagabond_background",
@@ -210,8 +210,8 @@
 				"raider_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				"swordmaster_background",
-				"legend_inventor_background"
+				
+				
 			]
 		];
 		this.m.FemaleDraftLists = [

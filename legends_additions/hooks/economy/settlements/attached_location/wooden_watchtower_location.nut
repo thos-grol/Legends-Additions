@@ -9,7 +9,6 @@
 		}
 
 		_list.push("militia_background");
-		_list.push("paladin_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )
@@ -63,11 +62,6 @@
 				S = "weapons/legend_sling"
 			});
 			_list.push({
-				R = 50,
-				P = 1.0,
-				S = "weapons/legend_staff"
-			});
-			_list.push({
 				R = 65,
 				P = 1.0,
 				S = "shields/legend_tower_shield"
@@ -76,11 +70,6 @@
 				R = 80,
 				P = 1.0,
 				S = "tents/tent_scout"
-			});
-			_list.push({
-				R = 30,
-				P = 1.0,
-				S = "weapons/legend_wooden_spear"
 			});
 			break;
 

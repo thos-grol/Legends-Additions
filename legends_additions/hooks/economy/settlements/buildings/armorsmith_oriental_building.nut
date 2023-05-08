@@ -165,42 +165,6 @@
 
 		if (this.Const.DLC.Unhold && ::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
 		{
-			list.push({
-				R = 60,
-				P = 1.0,
-				S = "misc/paint_set_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_remover_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_black_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_red_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_orange_red_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_white_blue_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_white_green_yellow_item"
-			});
-
 			if (::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
 			{
 				list.push({

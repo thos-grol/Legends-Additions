@@ -6,20 +6,13 @@
 
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
-		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-
-		if (!this.isActive())
-		{
-			return;
-		}
-
-		_list.push("monk_background");
+		if (!this.isActive()) return;
 		_list.push("brawler_background");
 		_list.push("gambler_background");
 
+		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 		if (_gender)
 		{
-			_list.push("legend_nun_background");
 		}
 	}
 
