@@ -18,7 +18,7 @@
 		0
 	]
 };
-::mods_hookExactClass("entity/tactical/enemies/hexe", function(o) {
+::mods_hookExactClass("entity/tactical/enemies/legend_hexe_leader", function(o) {
 	o.onDeath = function( _killer, _skill, _tile, _fatalityType )
 	{
 		if (!this.Tactical.State.isScenarioMode() && _killer != null && _killer.isPlayerControlled())
@@ -92,9 +92,9 @@
 					local r = this.Math.rand(1, 100);
 					local loot;
 
-					if (r <= 35)
+					if (r <= 50)
 					{
-						loot = this.new("scripts/items/misc/witch_hair_item");
+						loot = this.new("scripts/items/misc/legend_witch_leader_hair_item");
 					}
 					else if (r <= 70)
 					{
@@ -107,7 +107,7 @@
 
 					loot.drop(_tile);
 
-					if (this.Math.rand(1, 100) <= 20)
+					if (this.Math.rand(1, 100) <= 50)
 					{
 						local food = this.new("scripts/items/supplies/black_marsh_stew_item");
 						food.randomizeAmount();
@@ -115,20 +115,14 @@
 						food.drop(_tile);
 					}
 
-					if (this.Math.rand(1, 100) <= 30)
-					{
-						local loot = this.new("scripts/items/loot/jade_broche_item");
-						loot.drop(_tile);
-					}
-
 					i = ++i;
 				}
 
-				local chance = 1;
+				local chance = 10;
 
 				if (this.LegendsMod.Configs().LegendMagicEnabled())
 				{
-					chance = 10;
+					chance = 100;
 				}
 
 				if (this.Math.rand(1, 100) <= chance)
@@ -186,7 +180,7 @@
 		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
 		this.addSprite("socket").setBrush("bust_base_beasts");
 		local body = this.addSprite("body");
-		body.setBrush("bust_hexen_body_0" + this.Math.rand(1, 3));
+		body.setBrush("bust_hexenleader_body_01");
 		body.varySaturation(0.1);
 		body.varyColor(0.05, 0.05, 0.05);
 		local charm_body = this.addSprite("charm_body");
@@ -196,7 +190,7 @@
 		charm_armor.setBrush("bust_hexen_charmed_dress_0" + this.Math.rand(1, 3));
 		charm_armor.Visible = false;
 		local head = this.addSprite("head");
-		head.setBrush("bust_hexen_head_0" + this.Math.rand(1, 3));
+		head.setBrush("bust_hexenleader_head_01");
 		head.Color = body.Color;
 		head.Saturation = body.Saturation;
 		local charm_head = this.addSprite("charm_head");
@@ -211,30 +205,67 @@
 		charm_hair.Visible = false;
 		this.addDefaultStatusSprites();
 		this.getSprite("status_rooted").Scale = 0.55;
-		this.m.Skills.add(this.new("scripts/skills/actives/charm_skill"));
+		this.m.Skills.add(this.new("scripts/skills/actives/legend_intensely_charm_skill"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_anticipation"));
 		this.m.Skills.add(this.new("scripts/skills/actives/hex_skill"));
 		this.m.Skills.add(this.new("scripts/skills/actives/legend_wither"));
+		this.m.Skills.add(this.new("scripts/skills/actives/sleep_skill"));
+		this.m.Skills.add(this.new("scripts/skills/actives/legend_magic_missile"));
+		this.m.Skills.add(this.new("scripts/skills/actives/legend_teleport"));
 		this.m.Skills.add(this.new("scripts/skills/actives/fake_drink_night_vision_skill"));
 
 		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
 		{
+			this.m.Skills.add(this.new("scripts/skills/racial/schrat_racial"));
 			this.m.Skills.add(this.new("scripts/skills/perks/perk_inspiring_presence"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_anticipation"));
-			this.m.Skills.add(this.new("scripts/skills/actives/legend_magic_missile"));
+			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_levitation"));
+			this.m.Skills.add(this.new("scripts/skills/perks/perk_hold_out"));
 			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_composure"));
-			b.Initiative += 50;
-			b.RangedSkill += 75;
-			b.Stamina += 70;
 			this.m.Skills.add(this.new("scripts/skills/traits/fearless_trait"));
+		}
+
+		if (!this.Tactical.State.isScenarioMode())
+		{
+			local dateToSkip = 0;
+
+			switch(this.World.Assets.getCombatDifficulty())
+			{
+			case this.Const.Difficulty.Easy:
+				dateToSkip = 250;
+				break;
+
+			case this.Const.Difficulty.Normal:
+				dateToSkip = 200;
+				break;
+
+			case this.Const.Difficulty.Hard:
+				dateToSkip = 150;
+				break;
+
+			case this.Const.Difficulty.Legendary:
+				dateToSkip = 100;
+				break;
+			}
+
+			if (this.World.getTime().Days >= dateToSkip)
+			{
+				local bonus = this.Math.min(1, this.Math.floor((this.World.getTime().Days - dateToSkip) / 20.0));
+				b.MeleeSkill += this.Math.floor(bonus / 2);
+				b.RangedSkill += bonus;
+				b.MeleeDefense += this.Math.floor(bonus / 2);
+				b.RangedDefense += this.Math.floor(bonus / 2);
+				b.Hitpoints += this.Math.floor(bonus * 2);
+				b.Initiative += bonus;
+				b.Stamina += bonus;
+				b.Bravery += bonus;
+				b.FatigueRecoveryRate += this.Math.floor(bonus / 4);
+			}
 		}
 	}
 
 	o.assignRandomEquipment = function()
 	{
-		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-		{
-			this.m.Items.equip(this.new("scripts/items/weapons/legend_staff_gnarled"));
-		}
+		this.m.Items.equip(this.new("scripts/items/weapons/legend_staff_gnarled"));
 	}
 
 			this.Time.scheduleEvent(this.TimeUnit.Virtual, t + 100, function ( _e )
