@@ -276,6 +276,7 @@
 
 //TOOLS //FEATURE_5: Tools prices
 	"tool.legend_broken_throwing_net" : 0, //FEATURE_5: Remove
+	"accessory.therianthropy_potion" : 0,
 	"tool.throwing_net" : 50, //FEATURE_5: refillable with tools
 	"tool.reinforced_throwing_net" : 150, //FEATURE_5: refillable with tools
 	"weapon.holy Water" : 100, //FEATURE_5: refillable with priest
@@ -292,7 +293,6 @@
 	"accessory.lionheart_potion" : 300, //FEATURE_5: refillable with alchemist
 	"accessory.night_vision_elixir" : 350, //FEATURE_5: refillable with alchemist
 	"accessory.recovery_potion" : 350, //FEATURE_5: refillable with alchemist
-	"accessory.therianthropy_potion" : 500, //FEATURE_1: remove
 	"accessory.legend_heartwood_sap_flask" : 3500,
 	"accessory.legend_skin_ghoul_blood_flask" : 3500,
 	"accessory.legend_stollwurm_blood_flask" : 3500,
@@ -333,18 +333,18 @@
 	//PET
 	"accessory.falcon" : 100,
 	"accessory.legend_cat_item" : 0,
-	"accessory.legend_wolfsbane_necklace" : 0, //FEATURE_1: Remove
-	"accessory.wardog" : 0, //FEATURE_1: Remove
-	"accessory.warhound" : 0, //FEATURE_1: Remove
-	"accessory.armored_wardog" : 0, //FEATURE_1: Remove
-	"accessory.armored_warhound" : 0, //FEATURE_1: Remove
-	"accessory.heavily_armored_wardog" : 0, //FEATURE_1: Remove
-	"accessory.warwolf" : 0, //FEATURE_1: Remove
-	"accessory.heavily_armored_warhound" : 0, //FEATURE_1: Remove
-	"accessory.legend_warbear" : 0, //FEATURE_1: Remove
-	"accessory.legend_white_warwolf" : 0, //FEATURE_1: Remove
-	"misc.wardog_heavy_armor_upgrade" : 0, //FEATURE_1: Remove
-	"misc.wardog_armor_upgrade" : 0, //FEATURE_1: Remove
+	"accessory.legend_wolfsbane_necklace" : 0,
+	"accessory.wardog" : 0, //FEATURE_2: Remove from contracts and troops
+	"accessory.warhound" : 0, //FEATURE_2: Remove from contracts and troops
+	"accessory.armored_wardog" : 0, //FEATURE_2: Remove from contracts and troops
+	"accessory.armored_warhound" : 0, //FEATURE_2: Remove from contracts and troops
+	"accessory.heavily_armored_wardog" : 0, //FEATURE_2: Remove from contracts and troops
+	"accessory.warwolf" : 0, //FEATURE_2: Remove from contracts and troops
+	"accessory.heavily_armored_warhound" : 0, //FEATURE_2: Remove from contracts and troops
+	"accessory.legend_warbear" : 0, //FEATURE_2: Remove from contracts and troops
+	"accessory.legend_white_warwolf" : 0, //FEATURE_2: Remove from contracts and troops
+	"misc.wardog_heavy_armor_upgrade" : 0, //FEATURE_2: Remove from contracts and troops
+	"misc.wardog_armor_upgrade" : 0, //FEATURE_2: Remove from contracts and troops
 
 	//OTHER //FEATURE_3: rework event
 	"accessory.legend_oms_fate" : 100,
@@ -356,7 +356,7 @@
 	//DAGGER
 	"weapon.legend_shiv" : 0,                   		//( 10,  20) | AP: 0.20 | AE: 0.30
 	"weapon.legend_redback_dagger" : 0,      			//( 26,  52) | AP: 0.36 | AE: 0.70
-	"weapon.obsidian_dagger" : 0,            			//( 35,  50) | AP: 0.20 | AE: 1.15 //FEATURE_1: remove
+	"weapon.obsidian_dagger" : 0,            			//( 35,  50) | AP: 0.20 | AE: 1.15 //FEATURE_4: rework method of acquiring and fight
 
 	"weapon.legend_wooden_stake" : 0,          			//( 10,  15) | AP: 0.30 | AE: 0.10
 	"weapon.knife" : 6,                        			//( 15,  25) | AP: 0.20 | AE: 0.50
@@ -371,14 +371,14 @@
 	"weapon.legend_katar" : 120,               			//( 30,  45) | AP: 0.30 | AE: 1.25
 	
 	//SWORD
-	//FEATURE_1: swords are rarer, usually only equipped by swordmasters/nobles/strong units
+	//FEATURE_2: swords are rarer, usually only equipped by swordmasters/nobles/strong units
 	//1H
 	"weapon.broken_ancient_sword" : 0,        			//( 30,  35) | AP: 0.20 | AE: 0.75
 	"weapon.legend_skin_flayer" : 0,         			//( 45,  60) | AP: 0.20 | AE: 0.90
 	"weapon.legend_man_mangler" : 0,         			//( 60,  95) | AP: 0.35 | AE: 1.00
 	"weapon.sickle" : 8,                       			//( 15,  20) | AP: -0.05 | AE: 0.50
 	"weapon.legend_named_sickle" : 90,        			//( 40,  55) | AP: 0.20 | AE: 0.90 
-	//FEATURE_1: nerf named sickle, add auxillary flag for gathering
+	//FEATURE_4: nerf named sickle, add auxillary flag for gathering
 
 	"weapon.shortsword" : 90,                  			//( 30,  40) | AP: 0.20 | AE: 0.75
 	"weapon.goblin_falchion" : 90,             			//( 35,  45) | AP: 0.20 | AE: 0.70
@@ -425,14 +425,14 @@
 	"weapon.orc_axe" : 0,                    			//( 35,  65) | AP: 0.30 | AE: 1.30
 
 	//1H
-	"weapon.hatchet" : 12,                     			//( 25,  40) | AP: 0.30 | AE: 1.10	//FEATURE_1: remove from shops
+	"weapon.hatchet" : 12,                     			//( 25,  40) | AP: 0.30 | AE: 1.10
 	"weapon.crude_axe" : 0,                   			//( 30,  40) | AP: 0.30 | AE: 1.20
 	"weapon.hand_axe" : 72,                   			//( 30,  45) | AP: 0.30 | AE: 1.20
 	"weapon.fighting_axe" : 150,               			//( 35,  55) | AP: 0.30 | AE: 1.30
 	"weapon.named_axe" : 225,                  			//( 35,  55) | AP: 0.30 | AE: 1.30
 	"weapon.named_orc_axe" : 225,              			//( 35,  65) | AP: 0.30 | AE: 1.30
 	//2H
-	"weapon.legend_hoe" : 3,                   			//( 15,  20) | AP: 0.30 | AE: 0.60 //FEATURE_1: remove from shops
+	"weapon.legend_hoe" : 3,                   			//( 15,  20) | AP: 0.30 | AE: 0.60
 	"weapon.woodcutters_axe" : 12,             			//( 35,  70) | AP: 0.40 | AE: 1.25
 	
 	"weapon.legend_infantry_axe" : 112,        			//( 50,  70) | AP: 0.35 | AE: 1.25
@@ -454,16 +454,16 @@
 
 	//CLEAVER 
 	"weapon.orc_cleaver" : 0,                			//( 40,  70) | AP: 0.25 | AE: 1.10
-	"weapon.legend_saw" : 0,                   			//( 15,  20) | AP: 0.25 | AE: 0.40 //FEATURE_1: remove
-	"weapon.legend_cat_o_nine_tails" : 0,      			//( 10,  15) | AP: 0.10 | AE: 0.15 //FEATURE_1: remove from shops
+	"weapon.legend_saw" : 0,                   			//( 15,  20) | AP: 0.25 | AE: 0.40
+	"weapon.legend_cat_o_nine_tails" : 0,      			//( 10,  15) | AP: 0.10 | AE: 0.15
 	"weapon.legend_bone_carver" : 0,          			//( 30,  60) | AP: 0.25 | AE: 1.00
-	"weapon.thorned_whip" : 0,                			//( 15,  25) | AP: 0.10 | AE: 0.30 //FEATURE_1: remove
-	"weapon.battle_whip" : 0,                 			//( 15,  30) | AP: 0.10 | AE: 0.25 //FEATURE_1: remove
-	"weapon.named_battle_whip" : 0,          			//( 15,  30) | AP: 0.10 | AE: 0.25 //FEATURE_1: remove
+	"weapon.thorned_whip" : 0,                			//( 15,  25) | AP: 0.10 | AE: 0.30
+	"weapon.battle_whip" : 0,                 			//( 15,  30) | AP: 0.10 | AE: 0.25
+	"weapon.named_battle_whip" : 0,          			//( 15,  30) | AP: 0.10 | AE: 0.25
 	"weapon.antler_cleaver" : 0,              			//( 20,  30) | AP: 0.25 | AE: 0.75
 	"weapon.legend_limb_lopper" : 0,         			//( 70,  90) | AP: 0.25 | AE: 1.30
-	"weapon.legend_scythe" : 0,                			//( 15,  30) | AP: 0.25 | AE: 0.25 //FEATURE_1: remove
-	"weapon.legend_grisly_scythe" : 0,        			//( 25,  35) | AP: 0.25 | AE: 0.50 //FEATURE_1: remove
+	"weapon.legend_scythe" : 0,                			//( 15,  30) | AP: 0.25 | AE: 0.25
+	"weapon.legend_grisly_scythe" : 0,        			//( 25,  35) | AP: 0.25 | AE: 0.50
 
 	//1H
 	"weapon.butchers_cleaver" : 10,            			//( 20,  35) | AP: 0.25 | AE: 0.75
@@ -496,7 +496,7 @@
 	"weapon.named_legend_great_khopesh" : 284, 			//( 75,  95) | AP: 0.25 | AE: 1.20
 
 	//SPEAR
-	"weapon.legend_wooden_spear" : 0,          			//( 15,  25) | AP: 0.25 | AE: 0.45 //FEATURE_1: remove
+	"weapon.legend_wooden_spear" : 0,          			//( 15,  25) | AP: 0.25 | AE: 0.45
 	
 	//1H
 	"weapon.militia_spear" : 52,               			//( 25,  30) | AP: 0.25 | AE: 0.90
@@ -522,12 +522,10 @@
 	"weapon.legend_named_military_goedendag" : 194,		//( 80, 110) | AP: 0.40 | AE: 1.25
 
 	//POLEARM
-	"weapon.legend_wooden_pitchfork" : 0,      			//( 15,  35) | AP: 0.30 | AE: 0.20 //FEATURE_1: remove from store
-	"weapon.legend_mage_swordstaff" : 0,     			//( 55,  75) | AP: 0.25 | AE: 1.00 //FEATURE_1: remove
-	
-	"weapon.pitchfork" : 6,                   			//( 30,  50) | AP: 0.30 | AE: 0.75 //FEATURE_1: remove from store
+	"weapon.legend_wooden_pitchfork" : 0,      			//( 15,  35) | AP: 0.30 | AE: 0.20
+	"weapon.pitchfork" : 6,                   			//( 30,  50) | AP: 0.30 | AE: 0.75
 	"weapon.broken_bladed_pike" : 24,          			//( 35,  55) | AP: 0.30 | AE: 0.80 
-	"weapon.hooked_blade" : 24,                			//( 40,  70) | AP: 0.30 | AE: 1.10 //FEATURE_1: remove from store, add to enemies
+	"weapon.hooked_blade" : 24,                			//( 40,  70) | AP: 0.30 | AE: 1.10
 
 	"weapon.goblin_pike" : 130,                 		//( 50,  70) | AP: 0.25 | AE: 0.90
 	"weapon.named_goblin_pike" : 195,          			//( 50,  70) | AP: 0.25 | AE: 0.90
@@ -544,16 +542,17 @@
 	"weapon.legend_halberd" : 160,             			//( 60,  80) | AP: 0.30 | AE: 1.50
 	"weapon.legend_named_halberd" : 240,       			//( 60,  80) | AP: 0.30 | AE: 1.50
 	
-	"weapon.warfork" : 64,                     			//( 40,  60) | AP: 0.25 | AE: 1.00 //FEATURE_1: remove from store, add to enemies
+	"weapon.warfork" : 64,                     			//( 40,  60) | AP: 0.25 | AE: 1.00
 	"weapon.spetum" : 140,                      		//( 55,  75) | AP: 0.25 | AE: 1.00
 	"weapon.named_spetum" : 210,               			//( 55,  75) | AP: 0.25 | AE: 1.00
 	"weapon.legend_swordstaff" : 160,          			//( 50,  70) | AP: 0.25 | AE: 1.00
 	"weapon.legend_named_swordstaff" : 240,    			//( 50,  70) | AP: 0.25 | AE: 1.00
+	"weapon.legend_mage_swordstaff" : 420,     			//( 55,  75) | AP: 0.25 | AE: 1.00
 	"weapon.named_royal_lance" : 300,          			//( 55,  70) | AP: 0.35 | AE: 1.00
 
 	//FLAIL
 	//1H
-	"weapon.wooden_flail" : 0,                 			//( 10,  25) | AP: 0.30 | AE: 0.50 //FEATURE_1: remove from store
+	"weapon.wooden_flail" : 0,                 			//( 10,  25) | AP: 0.30 | AE: 0.50
 	
 	"weapon.reinforced_wooden_flail" : 9,     			//( 20,  45) | AP: 0.30 | AE: 0.80
 	"weapon.flail" : 48,                      			//( 25,  55) | AP: 0.30 | AE: 1.00
@@ -577,7 +576,7 @@
 	
 
 	//MACE
-	"weapon.wooden_stick" : 0,                 			//( 15,  25) | AP: 0.40 | AE: 0.50 //FEATURE_1: remove from store
+	"weapon.wooden_stick" : 0,                 			//( 15,  25) | AP: 0.40 | AE: 0.50
 	"weapon.claw_club" : 0,                   			//( 20,  30) | AP: 0.40 | AE: 0.75
 	"weapon.orc_wooden_club" : 0,             			//( 25,  40) | AP: 0.40 | AE: 0.75
 	"weapon.orc_metal_club" : 0,              			//( 30,  50) | AP: 0.40 | AE: 0.90
@@ -596,7 +595,7 @@
 	
 	//2H
 	"weapon.legend_shovel" : 8,                			//( 20,  30) | AP: 0.40 | AE: 0.45
-	"weapon.legend_named_shovel" : 0,        			//( 40,  55) | AP: 0.20 | AE: 0.80 //FEATURE_1: Remove
+	"weapon.legend_named_shovel" : 0,        			//( 40,  55) | AP: 0.20 | AE: 0.80
 
 	"weapon.legend_two_handed_club" : 15,      			//( 35,  60) | AP: 0.50 | AE: 1.00
 	"weapon.two_handed_mace" : 27,            			//( 50,  75) | AP: 0.50 | AE: 1.15
@@ -613,13 +612,13 @@
 	//HAMMER
 	"weapon.legend_skullsmasher" : 0,        			//( 35,  50) | AP: 0.50 | AE: 2.25
 	"weapon.axehammer" : 0,                   			//( 20,  30) | AP: 0.50 | AE: 2.00
-	"weapon.legend_named_warhammer" : 0,     			//( 30,  45) | AP: 0.50 | AE: 2.50 //FEATURE_1: remove
+	"weapon.legend_named_warhammer" : 0,     			//( 30,  45) | AP: 0.50 | AE: 2.50
 	"weapon.legend_skullbreaker" : 0,        			//( 70, 100) | AP: 0.50 | AE: 2.10
 
 	//1H
-	"weapon.legend_hammer" : 6,                			//( 15,  20) | AP: 0.50 | AE: 1.50 //FEATURE_1: remove from store
-	"weapon.legend_named_blacksmith_hammer" : 200,		//( 20,  30) | AP: 0.50 | AE: 2.00 //FEATURE_1: crafting overhaul
-	"weapon.pickaxe" : 8,                     			//( 15,  30) | AP: 0.50 | AE: 1.50 //FEATURE_1: remove from store
+	"weapon.legend_hammer" : 6,                			//( 15,  20) | AP: 0.50 | AE: 1.50
+	"weapon.legend_named_blacksmith_hammer" : 200,		//( 20,  30) | AP: 0.50 | AE: 2.00 //FEATURE_4: crafting overhaul
+	"weapon.pickaxe" : 8,                     			//( 15,  30) | AP: 0.50 | AE: 1.50
 	
 	"weapon.military_pick" : 47,               			//( 20,  35) | AP: 0.50 | AE: 2.00
 	"weapon.warhammer" : 78,                  			//( 30,  40) | AP: 0.50 | AE: 2.25
@@ -639,30 +638,28 @@
 	"weapon.named_two_handed_hammer" : 180,    			//( 60,  90) | AP: 0.50 | AE: 2.00
 
 	//BOW
-	//FEATURE_1: muscularity for bows and slings
-	//FEATURE_1: bow perk that has a chance to make shot have 99% AP based on range skill
-	"weapon.wonky_bow" : 0,                   			//( 30,  50) | AP: 0.35 | AE: 0.50 //FEATURE_1: remove
+	"weapon.wonky_bow" : 0,                   			//( 30,  50) | AP: 0.35 | AE: 0.50
 	
 	"weapon.goblin_bow" : 42,                  			//( 25,  40) | AP: 0.35 | AE: 0.55
 	"weapon.short_bow" : 48,                   			//( 30,  50) | AP: 0.35 | AE: 0.50
 	"weapon.goblin_heavy_bow" : 54,            			//( 30,  50) | AP: 0.35 | AE: 0.60
 	"weapon.named_goblin_heavy_bow" : 151,     			//( 30,  50) | AP: 0.35 | AE: 0.60
-	"weapon.composite_bow" : 72,               			//( 40,  55) | AP: 0.35 | AE: 0.70 //FEATURE_1: find usages, remove from store
+	"weapon.composite_bow" : 54,               			//( 40,  55) | AP: 0.35 | AE: 0.70
 	
 	"weapon.hunting_bow" : 60,                 			//( 40,  60) | AP: 0.35 | AE: 0.55
 	"weapon.war_bow" : 151,                    			//( 50,  70) | AP: 0.35 | AE: 0.60
-	"weapon.named_warbow" : 227,               			//( 50,  70) | AP: 0.35 | AE: 0.60
-	"weapon.masterwork_bow" : 227,             			//( 50,  75) | AP: 0.35 | AE: 0.65 //FEATURE_1: find usages, also missing item glow
+	"weapon.named_warbow" : 227,               			//( 50,  70) | AP: 0.35 | AE: 0.60 //FEATURE_4: item crafting bowyer
+	"weapon.masterwork_bow" : 227,             			//( 50,  75) | AP: 0.35 | AE: 0.65
 	
 	//SLING
-	"weapon.legend_sling" : 0,                			//( 25,  35) | AP: 0.35 | AE: 0.50 //FEATURE_1: Remove from stores
-	"weapon.legend_slingshot" : 0,            			//( 10,  25) | AP: 0.40 | AE: 0.10 //FEATURE_1: Remove
+	"weapon.legend_sling" : 0,                			//( 25,  35) | AP: 0.35 | AE: 0.50
+	"weapon.legend_slingshot" : 0,            			//( 10,  25) | AP: 0.40 | AE: 0.10
 	//2H
 	"weapon.staff_sling" : 12,                 			//( 25,  40) | AP: 0.35 | AE: 0.50
 	"weapon.nomad_sling" : 18,                 			//( 35,  50) | AP: 0.35 | AE: 0.60
 	"weapon.legend_slingstaff" : 40,          			//( 35,  45) | AP: 0.75 | AE: 1.10
 
-	//THROWING //FEATURE_1: remove throwing weapons and throwing tree
+	//THROWING
 	"weapon.orc_javelin" : 0,                 			//( 30,  40) | AP: 0.45 | AE: 0.70
 	"weapon.javelin" : 0,                     			//( 30,  45) | AP: 0.45 | AE: 0.75
 	"weapon.throwing_axe" : 0,                			//( 25,  40) | AP: 0.25 | AE: 1.30
@@ -689,18 +686,18 @@
 	"weapon.named_handgonne" : 0,            			//( 35,  75) | AP: 0.25 | AE: 0.90 //FEATURE_1: state of the art, restricted goods
 
 	//MUSICAL
-	"weapon.lute" : 0,                         			//(  5,  20) | AP: 0.40 | AE: 0.10 //FEATURE_1: remove and remove minstrel backgrounds
-	"weapon.named_lute" : 0,                 			//( 15,  25) | AP: 0.40 | AE: 1.10 //FEATURE_1: remove
-	"weapon.legend_drum" : 0,                 			//(  5,  10) | AP: 0.50 | AE: 0.20 //FEATURE_1: prevent drop
-	"weapon.barbarian_drum" : 0,              			//( 15,  20) | AP: 0.00 | AE: 0.00 //FEATURE_1: prevent drop
+	"weapon.lute" : 0,                         			//(  5,  20) | AP: 0.40 | AE: 0.10
+	"weapon.named_lute" : 0,                 			//( 15,  25) | AP: 0.40 | AE: 1.10
+	"weapon.legend_drum" : 0,                 			//(  5,  10) | AP: 0.50 | AE: 0.20
+	"weapon.barbarian_drum" : 0,              			//( 15,  20) | AP: 0.00 | AE: 0.00
 
-	//STAFF //FEATURE_2: weapon prices, remove staff tree?, on staff added, add staff block perk
-	"weapon.legend_staff" : 0,                 			//( 20,  30) | AP: 0.40 | AE: 0.30 //FEATURE_1: Remove
-	"weapon.legend_tipstaff" : 0,             			//( 30,  40) | AP: 0.40 | AE: 0.30 //FEATURE_1: Remove
+	//STAFF 
+	"weapon.legend_staff" : 0,                 			//( 20,  30) | AP: 0.40 | AE: 0.30
+	"weapon.legend_tipstaff" : 0,             			//( 30,  40) | AP: 0.40 | AE: 0.30
 	"weapon.legend_mystic_staff" : 0,        			//( 40,  50) | AP: 0.40 | AE: 0.30
 	"weapon.legend_staff_vala" : 0,          			//( 20,  30) | AP: 0.40 | AE: 0.60
 	"weapon.legend_staff_gnarled" : 0,       			//( 60,  80) | AP: 0.40 | AE: 0.30
-	"weapon.goblin_staff" : 0,               			//( 25,  35) | AP: 0.40 | AE: 0.70 //FEATURE_1: Rework
+	"weapon.goblin_staff" : 0,               			//( 25,  35) | AP: 0.40 | AE: 0.70 //FEATURE_4: Rework
 
 //SHIELDS
 	"shield.legend_mummy_shield" : 0,         			//DEF: (  8M,   8R) | DUR: -6.00 | STA: 26.00
@@ -711,11 +708,11 @@
 	"shield.orc_light_shield" : 0,             			//DEF: ( 15M,  20R) | DUR: -12.00 | STA: 16.00
 	"shield.goblin_heavy_shield" : 0,          			//DEF: ( 10M,  10R) | DUR: -8.00 | STA: 16.00
 	"shield.orc_heavy_shield" : 0,            			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 72.00
-	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00 //FEATURE_1: remove
-	"shield.craftable_lindwurm" : 0,          			//DEF: ( 17M,  25R) | DUR: -14.00 | STA: 64.00 //FEATURE_1: remove
-	"shield.craftable_schrat" : 0,           			//DEF: ( 20M,  17R) | DUR: -12.00 | STA: 60.00 //FEATURE_1: remove
-	"shield.craftable_kraken" : 0,           			//DEF: ( 24M,  24R) | DUR: -15.00 | STA: 50.00 //FEATURE_1: remove
-	"shield.legend_craftable_greenwood_schrat" : 0,		//DEF: ( 30M,  25R) | DUR: -14.00 | STA: 72.00 //FEATURE_1: remove	
+	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00 //FEATURE_1: remove from named drops
+	"shield.craftable_lindwurm" : 0,          			//DEF: ( 17M,  25R) | DUR: -14.00 | STA: 64.00
+	"shield.craftable_schrat" : 0,           			//DEF: ( 20M,  17R) | DUR: -12.00 | STA: 60.00
+	"shield.craftable_kraken" : 0,           			//DEF: ( 24M,  24R) | DUR: -15.00 | STA: 50.00
+	"shield.legend_craftable_greenwood_schrat" : 0,		//DEF: ( 30M,  25R) | DUR: -14.00 | STA: 72.00
 
 	"shield.wooden_shield_old" : 14,            		//DEF: ( 15M,  15R) | DUR: -10.00 | STA: 16.00
 
@@ -861,8 +858,6 @@
 	
 		
 	//CHAIN
-	//FEATURE_1: most mobs besides top tier mobs will be using at most chain armor
-	//FEATURE_1: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
 	"legend_armor.body.legend_armor_rusty_mail_shirt" : 0,             			//DUR: 20.00 | STA: -4.00
 	"legend_armor.body.legend_armor_reinforced_rotten_mail_shirt" : 0, 			//DUR: 45.00 | STA: -7.00
 	"legend_armor.body.legend_armor_mail_shirt_simple" : 0,            			//DUR: 25.00 | STA: -3.00
@@ -937,35 +932,39 @@
 	"legend_armor.body.legend_southern_tabard" : 40,                             //DUR: 10.00 | STA: 0.00
 	"legend_armor.named_tabard" : 264,                                  		//DUR: 10.00 | STA: 0.00
 
-	//VI //FEATURE_1: only the redback silk cloak looks good, possible use it again in future
-	"legend_armor.body.lindwurm_scales" : 0,                          			//DUR: 25.00 | STA: -2.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_stollwurm_scales" : 0,                  			//DUR: 30.00 | STA: -4.00 	//FEATURE_1: Remove
-	"legend_armor.body.serpent_skin" : 0,                              			//DUR: 25.00 | STA: -2.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_shoulder_cloth" : 0,                      		//DUR: 5.00 | STA: 0.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_armor_cloak_common" : 0,                 			//DUR: 10.00 | STA: -1.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_southern_scarf" : 0,                     			//DUR: 5.00 | STA: 0.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_dark_wooly_cloak" : 0,                   			//DUR: 15.00 | STA: -2.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_sash" : 0,                               			//DUR: 3.00 | STA: 0.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_southern_scarf_wrap" : 0,                			//DUR: 15.00 | STA: -1.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_animal_pelt" : 0,                        			//DUR: 15.00 | STA: -2.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_noble_shawl" : 0,                        			//DUR: 10.00 | STA: 0.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_armor_cloak_crusader" : 0,               			//DUR: 35.00 | STA: -5.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_armor_cloak_heavy" : 0,                  			//DUR: 30.00 | STA: -4.00 	//FEATURE_1: Remove
-	"legend_armor.body.unhold_fur" : 0,                               			//DUR: 25.00 | STA: -2.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_armor_cloak_noble" : 0,                 			//DUR: 25.00 | STA: -2.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_redback_cloak" : 0,                     			//DUR: 10.00 | STA: -1.00 	//FEATURE_1: Remove
-	"legend_armor.body.legend_hexe_leader_cloak" : 0,                 			//DUR: 25.00 | STA: -2.00 	//FEATURE_1: Remove
-	"legend_armor_upgrade.legend_redback_cloak" : 0,                  			//DUR: 35.00 | STA: -3.00 	//FEATURE_1: Remove
-	"legend_armor_upgrade.legend_hexe_leader_cloak" : 0,             			//DUR: 20.00 | STA: 0.00 	//FEATURE_1: Remove
-	"legend_armor.cloak_rich" : 0,                                   			//DUR: 35.00 | STA: -2.00 	//FEATURE_1: Remove
-	"legend_armor.cloak_emperor" : 0,                                			//DUR: 40.00 | STA: -3.00 	//FEATURE_1: Remove
+	//VI //FEATURE_4: only the redback silk cloak looks good, possible use it again in future
+	"legend_armor.body.lindwurm_scales" : 0,                          			//DUR: 25.00 | STA: -2.00
+	"legend_armor.body.legend_stollwurm_scales" : 0,                  			//DUR: 30.00 | STA: -4.00
+	"legend_armor.body.serpent_skin" : 0,                              			//DUR: 25.00 | STA: -2.00
+	"legend_armor.body.legend_shoulder_cloth" : 0,                      		//DUR: 5.00 | STA: 0.00
+	"legend_armor.body.legend_armor_cloak_common" : 0,                 			//DUR: 10.00 | STA: -1.00 	
+	"legend_armor.body.legend_southern_scarf" : 0,                     			//DUR: 5.00 | STA: 0.00 	
+	"legend_armor.body.legend_dark_wooly_cloak" : 0,                   			//DUR: 15.00 | STA: -2.00 	
+	"legend_armor.body.legend_sash" : 0,                               			//DUR: 3.00 | STA: 0.00 	
+	"legend_armor.body.legend_southern_scarf_wrap" : 0,                			//DUR: 15.00 | STA: -1.00 	
+	"legend_armor.body.legend_animal_pelt" : 0,                        			//DUR: 15.00 | STA: -2.00 	
+	"legend_armor.body.legend_noble_shawl" : 0,                        			//DUR: 10.00 | STA: 0.00 	
+	"legend_armor.body.legend_armor_cloak_crusader" : 0,               			//DUR: 35.00 | STA: -5.00 	
+	"legend_armor.body.legend_armor_cloak_heavy" : 0,                  			//DUR: 30.00 | STA: -4.00 	
+	"legend_armor.body.unhold_fur" : 0,                               			//DUR: 25.00 | STA: -2.00 	
+	"legend_armor.body.legend_armor_cloak_noble" : 0,                 			//DUR: 25.00 | STA: -2.00 	
+	"legend_armor.body.legend_redback_cloak" : 0,                     			//DUR: 10.00 | STA: -1.00 	
+	"legend_armor.body.legend_hexe_leader_cloak" : 0,                 			//DUR: 25.00 | STA: -2.00 	
+	"legend_armor_upgrade.legend_redback_cloak" : 0,                  			//DUR: 35.00 | STA: -3.00 	
+	"legend_armor_upgrade.legend_hexe_leader_cloak" : 0,             			//DUR: 20.00 | STA: 0.00 	
+	"legend_armor.cloak_rich" : 0,                                   			//DUR: 35.00 | STA: -2.00
+	"legend_armor.cloak_emperor" : 0,                                			//DUR: 40.00 | STA: -3.00
 
 	//V
-	"armor_upgrade.hyena_fur" : 0,                                     			//DUR: 10.00 | STA: 0.00 //FEATURE_1: Remove
-	"legend_armor_upgrade.lindwurm_scales" : 0,                       			//DUR: 20.00 | STA: -1.00 //FEATURE_1: Remove
-	"legend_armor_upgrade.legend_stollwurm_scales" : 0,               			//DUR: 40.00 | STA: -2.00 //FEATURE_1: Remove
-	"legend_armor_upgrade.serpent_skin" : 0,                           			//DUR: 20.00 | STA: -3.00 //FEATURE_1: Remove
-	"legend_armor_upgrade.additional_padding" : 0,                    			//DUR: 1.00 | STA: -2.00 -35% //FEATURE_1: Remove
+	"armor_upgrade.hyena_fur" : 0,                                     			//DUR: 10.00 | STA: 0.00
+	"legend_armor_upgrade.lindwurm_scales" : 0,                       			//DUR: 20.00 | STA: -1.00
+	"legend_armor_upgrade.legend_stollwurm_scales" : 0,               			//DUR: 40.00 | STA: -2.00
+	"legend_armor_upgrade.serpent_skin" : 0,                           			//DUR: 20.00 | STA: -3.00
+	"legend_armor_upgrade.additional_padding" : 0,                    			//DUR: 1.00 | STA: -2.00 -35%
+	"legend_armor_upgrade.unhold_fur" : 0,
+	"legend_armor_upgrade.protective_runes" : 0,
+	"legend_armor_upgrade.light_padding_replacement" : 0,             		//DUR: 10.00 | STA: 0.00
+	"legend_armor_upgrade.bone_platings" : 0,
 
 	"legend_armor_upgrade.leather_shoulderguards" : 36,                 		//DUR: 30.00 | STA: -2.00
 	"legend_armor_upgrade.barbarian_horn" : 45,                         		//DUR: 40.00 | STA: -3.00
@@ -981,21 +980,17 @@
 	"legend_armor_upgrade.joint_cover" : 134,                            		//DUR: 30.00 | STA: -6.00 -30%
 	"legend_armor_upgrade.horn_plate" : 168,                            		//DUR: 40.00 | STA: -6.00 -35%
 
-	"legend_armor_upgrade.unhold_fur" : 0, //FEATURE_1: remove
-	"legend_armor_upgrade.protective_runes" : 0,  //FEATURE_1: remove     
-	"legend_armor_upgrade.light_padding_replacement" : 0,             		//DUR: 10.00 | STA: 0.00  //FEATURE_1: remove
-	"legend_armor_upgrade.bone_platings" : 0,  //FEATURE_1: remove
 	"legend_armor_upgrade.direwolf_pelt" : 250,                          		//DUR: 10.00 | STA: 0.00
 	"legend_armor_upgrade.legend_white_wolf_pelt" : 500,                		//DUR: 30.00 | STA: -2.00             
 
 //LEGEND_HELMETS
 	"armor.head.legend_helmet_goblin_scarf" : 0,                         		//DUR: 5.00 | STA: 0.00
 	"armor.head.legend_helmet_mummy_bandage" : 0,                        		//DUR: 5.00 | STA: 0.00
-	"armor.head.legend_helmet_rotten_chain_scarf" : 0,                  		//DUR: 50.00 | STA: -3.00 //FEATURE_1: remove
+	"armor.head.legend_helmet_rotten_chain_scarf" : 0,                  		//DUR: 50.00 | STA: -3.00
 	"armor.head.legend_helmet_barb_chain_scarf" : 0,                   			//DUR: 55.00 | STA: -3.00 
 	"armor.head.legend_helmet_barb_leather_cap" : 0,                    		//DUR: 25.00 | STA: 0.00
 	"armor.head.legend_helmet_barb_open_chain" : 0,                    			//DUR: 65.00 | STA: -3.00
-	"armor.head.legend_helmet_rusty_chain_hood" : 0,                   			//DUR: 70.00 | STA: -4.00 //FEATURE_1: remove
+	"armor.head.legend_helmet_rusty_chain_hood" : 0,                   			//DUR: 70.00 | STA: -4.00
 	"armor.head.legend_helmet_barb_metal_cap" : 0,                     			//DUR: 40.00 | STA: -2.00
 	"armor.head.legend_helmet_barb_ritual_helm" : 0,                  			//DUR: 190.00 | STA: -16.00
 	"armor.head.legend_helmet_ancient_conic_helm" : 0,                 			//DUR: 60.00 | STA: -6.00
@@ -1129,7 +1124,7 @@
 	"armor.head.legend_helmet_swan_helm" : 351,                         		//DUR: 200.00 | STA: -15.00
 	
 
-	//TOP //FEATURE_1: find and remove 0 armors from shop, mark unused for later
+	//TOP
 	"armor.head.legend_helmet_mummy_beard" : 0,                        			//DUR: 15.00 | STA: -1.00
 	"armor.head.legend_helmet_goblin_leaves" : 0,                        		//DUR: 5.00 | STA: 0.00
 	"armor.head.legend_helmet_hood_cloth_round" : 0,                     		//DUR: 5.00 | STA: 0.00
@@ -1190,7 +1185,7 @@
 	"armor.head.legend_helmet_warlock_skull" : 2000,                     		//DUR: 45.00 | STA: -2.00
 	"armor.head.legend_helmet_golden_helm" : 3000,                       		//DUR: 90.00 | STA: -7.00
 
-	//VANITY //FEATURE_1: remove from shops, use decorations in heroes etc, mark unused
+	//VANITY
 	"armor.head.legend_helmet_ancient_priest_hat" : 0,                 		//DUR: 10.00 | STA: 0.00
 	"armor.head.legend_helmet_ancient_wig" : 0,                        		//DUR: 10.00 | STA: 0.00
 	"armor.head.legend_helmet_antler" : 0,                             		//DUR: 10.00 | STA: 0.00
@@ -1252,15 +1247,15 @@
 	"armor.head.legend_helmet_wizard_cowl" : 0,                        		//DUR: 10.00 | STA: 0.00
 	"armor.head.legend_helmet_wolf_helm" : 0,                          		//DUR: 10.00 | STA: 0.00
 	"armor.head.legend_helmet_wreath" : 0,                             		//DUR: 10.00 | STA: 0.00
-	"armor.head.legend_helmet_demon_alp_helm" : 0,                     		//DUR: 10.00 | STA: -1.00 //FEATURE_1: keep?
+	"armor.head.legend_helmet_demon_alp_helm" : 0,                     		//DUR: 10.00 | STA: -1.00
 	"armor.head.legend_helmet_jester_hat" : 0,                         		//DUR: 10.00 | STA: -1.00
-	"armor.head.legend_helmet_lindwurm_helm" : 0,                      		//DUR: 10.00 | STA: -1.00 //FEATURE_1: keep?
-	"armor.head.legend_helmet_nach_helm" : 0,                          		//DUR: 10.00 | STA: -1.00 //FEATURE_1: keep?
-	"armor.head.legend_helmet_redback_helm" : 0,                       		//DUR: 10.00 | STA: -1.00 //FEATURE_1: keep?
-	"armor.head.legend_helmet_white_wolf_helm" : 0,                    		//DUR: 10.00 | STA: -1.00 //FEATURE_1: keep?
-	"armor.head.legend_helmet_witchhunter_helm" : 0,                   		//DUR: 10.00 | STA: -1.00 //FEATURE_1: keep?
-	"armor.head.legend_helmet_hunter_cap" : 0,                        		//DUR: 10.00 | STA: -1.00 //FEATURE_1: keep?
-	"armor.head.legend_helmet_mountain_helm" : 0,                     		//DUR: 30.00 | STA: -2.00 //FEATURE_1: keep?
+	"armor.head.legend_helmet_lindwurm_helm" : 0,                      		//DUR: 10.00 | STA: -1.00
+	"armor.head.legend_helmet_nach_helm" : 0,                          		//DUR: 10.00 | STA: -1.00
+	"armor.head.legend_helmet_redback_helm" : 0,                       		//DUR: 10.00 | STA: -1.00
+	"armor.head.legend_helmet_white_wolf_helm" : 0,                    		//DUR: 10.00 | STA: -1.00
+	"armor.head.legend_helmet_witchhunter_helm" : 0,                   		//DUR: 10.00 | STA: -1.00
+	"armor.head.legend_helmet_hunter_cap" : 0,                        		//DUR: 10.00 | STA: -1.00
+	"armor.head.legend_helmet_mountain_helm" : 0,                     		//DUR: 30.00 | STA: -2.00
 
 	"armor.head.legend_helmet_back_crest" : 0,                         		//DUR: 10.00 | STA: 0.00
 	"armor.head.legend_helmet_back_feathers" : 0,                      		//DUR: 10.00 | STA: 0.00

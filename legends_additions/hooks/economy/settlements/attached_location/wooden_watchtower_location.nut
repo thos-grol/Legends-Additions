@@ -57,11 +57,6 @@
 				S = "shields/wooden_shield"
 			});
 			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "weapons/legend_sling"
-			});
-			_list.push({
 				R = 65,
 				P = 1.0,
 				S = "shields/legend_tower_shield"

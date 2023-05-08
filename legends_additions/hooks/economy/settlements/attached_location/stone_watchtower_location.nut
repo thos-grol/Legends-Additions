@@ -99,11 +99,6 @@
 				S = "weapons/legend_slingstaff"
 			});
 			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/legend_sling"
-			});
-			_list.push({
 				R = 90,
 				P = 1.0,
 				S = "tents/tent_scout"

@@ -46,11 +46,6 @@
 				S = "weapons/war_bow"
 			});
 			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/legend_sling"
-			});
-			_list.push({
 				R = 60,
 				P = 1.0,
 				S = "ammo/huge_quiver_of_arrows"
