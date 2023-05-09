@@ -12,7 +12,7 @@
 ::mods_hookExactClass("crafting/blueprints/mod_legend/food/legend_smoked_ham_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/food/legend_wine_blueprint", function(o) { o.isValid <- function(){ return false; }});
 
-//FEATURE_1: go disable various blueprints
+//TODO: go disable various blueprints
 //paint
 ::mods_hookExactClass("crafting/blueprints/paint_remover_blueprint", function(o) { o.isValid <- function(){ return false; }});
 //crafting\blueprints\hexen_trophy_blueprint.nut

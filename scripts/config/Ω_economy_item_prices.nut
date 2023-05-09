@@ -15,14 +15,14 @@
 // 	- overhauled crafting system so players don't sell their items but use them elsewhere/break them down
 
 
-//FEATURE_2: this.World.Assets.addMoney
+//FEATURE_0: this.World.Assets.addMoney
 	//overhaul contract pay
 	//event pay/prices
 
 //FEATURE_4: Barbarians stats are higher than average humans due to needing to survive
 
 //FEATURE_8: overhaul enemy equipment/builds
-//FEATURE_1: selling the same item type to stores will decrease the price you can sell it at for a duration...
+//FEATURE_4: selling the same item type to stores will decrease the price you can sell it at for a duration...
 //FEATURE_3: guild headquarters features:
 	//bros in headquarters will charge extra salary for food
 	//item storage
@@ -71,7 +71,7 @@
 	"supplies.medicine" : 120,
 
 	//AMMO
-	"ammo.arrows" : 30, //FEATURE_1: a lot of arrows/bolts/powder share same id, use manual hooks for prices + quiver rework
+	"ammo.arrows" : 30, //FEATURE_3: a lot of arrows/bolts/powder share same id, use manual hooks for prices
 	"ammo.bolts" : 0,
 	"ammo.powder" : 0, //FEATURE_5: refillable with alchemist
 
@@ -100,14 +100,14 @@
 	//REMOVED
 	"supplies.cured_venison" : 0,
 	"supplies.goat_cheese" : 0,
-	"supplies.legend_human_parts" : 0, //FEATURE_2: Remove skill
+	"supplies.legend_human_parts" : 0, //FEATURE_0: Remove skill
 	"supplies.fermented_unhold_heart" : 0,
 	"supplies.legend_yummy_sausages" : 0,
 	"supplies.black_marsh_stew" : 0,
-	"supplies.legend_porridge" : 0, //FEATURE_2: Remove from a lot of places
-	"supplies.legend_pudding" : 0, //FEATURE_2: Remove
-	"supplies.legend_pie" : 0, //FEATURE_2: Remove
-	"supplies.cured_rations" : 0, //FEATURE_2: Remove
+	"supplies.legend_porridge" : 0, //FEATURE_0: Remove from a lot of places
+	"supplies.legend_pudding" : 0, //FEATURE_0: Remove
+	"supplies.legend_pie" : 0, //FEATURE_0: Remove
+	"supplies.cured_rations" : 0, //FEATURE_0: Remove
 	"supplies.legend_cooking_spices" : 0,// FEATURE_2: Remove
 	"supplies.pickled_mushrooms" : 0,// FEATURE_2: Remove
 
@@ -135,10 +135,10 @@
 	"misc.gold_ingots" : 6400, //FEATURE_7: redo item to be 1 ingot
 	//FEATURE_7: add gemstones
 	"misc.uncut_gems" : 840, //6 units of uncut emeralds
-	"misc.gemstones" : 700, //1 units of cut emeralds //FEATURE_2: Change to trade item
+	"misc.gemstones" : 700, //1 units of cut emeralds //FEATURE_0: Change to trade item
 	
 	//Removed
-	"misc.legend_cooking_spices" : 0, //FEATURE_2: Remove
+	"misc.legend_cooking_spices" : 0, //FEATURE_0: Remove
 
 //TENTS
 	"tent.hunter_tent" : 200,
@@ -157,7 +157,7 @@
 //SPAWNS
 	"spawns.skeleton" : 0,
 	"spawns.zombie" : 0,
-	"spawns.donkey" : 0, //FEATURE_2: Remove
+	"spawns.donkey" : 0, //FEATURE_0: Remove
 	"spawns.cart_01" : 260,
 	"spawns.cart_02" : 400,
 
@@ -214,32 +214,32 @@
 	"misc.legend_banshee_essence" : 0,
 	"misc.legend_demon_hound_bones" : 0,
 	
-	//Remove certain monster drops //TODO: troop generation script, hook every on death fn for mobs
-	"misc.snake_oil" : 0, //FEATURE_1: Remove
-	"misc.rainbow_scale" : 0, //FEATURE_1: Remove and snakes for now
-	"misc.glistening_scales" : 0, //FEATURE_1: Remove 
-	"misc.serpent_skin" : 350, //FEATURE_1: Remove 
-	"misc.sabertooth" : 0, //FEATURE_1: Remove
-	"misc.golden_chalice" : 0, //FEATURE_1: Remove
-	"misc.ancient_gold_coins" : 0, //FEATURE_1: Remove
-	"misc.jade_broche" : 0, //FEATURE_1: Remove
-	"misc.silverware" : 0, //FEATURE_1: Remove
-	"misc.silver_bowl" : 0, //FEATURE_1: Remove
-	"misc.valuable_furs" : 0, //FEATURE_1: Remove and replace with "misc.furs" : 100
-	"misc.bone_figurines" : 0, //FEATURE_1: Remove
-	"misc.bead_necklace" : 0, //FEATURE_1: Remove
-	"misc.looted_valuables" : 0, //FEATURE_1: Remove
-	"misc.goblin_carved_ivory_iconographs" : 0, //FEATURE_1: Remove
-	"misc.goblin_minted_coins" : 0, //FEATURE_1: Remove
-	"misc.goblin_rank_insignia" : 0, //FEATURE_1: Remove
-	"misc.webbed_valuables" : 0, //FEATURE_1: Remove
-	"misc.deformed_valuables" : 0, //FEATURE_1: Remove
-	"misc.legend_bear_fur" : 0, //FEATURE_1: Remove and remove bears
-	"misc.lindwurm_hoard" : 0, //FEATURE_1: Remove
-	"misc.jeweled_crown" : 0, //FEATURE_1: Remove
-	"misc.glittering_rock" : 0, //FEATURE_1: Remove
-	"misc.hyena_fur" : 0, //FEATURE_1: Remove and remove hyenas
-	"misc.acidic_saliva" : 0, //FEATURE_1: Remove and remove hyenas
+	//Remove certain monster drops
+	"misc.snake_oil" : 0, //FEATURE_3: Remove
+	"misc.rainbow_scale" : 0, //FEATURE_3: Remove item and snakes for now
+	"misc.glistening_scales" : 0, //FEATURE_3: Remove 
+	"misc.serpent_skin" : 350, //FEATURE_3: Remove 
+	"misc.sabertooth" : 0, //FEATURE_3: Remove
+	"misc.golden_chalice" : 0, //FEATURE_3: Remove
+	"misc.ancient_gold_coins" : 0, //FEATURE_3: Remove
+	"misc.jade_broche" : 0, //FEATURE_3: Remove
+	"misc.silverware" : 0, //FEATURE_3: Remove
+	"misc.silver_bowl" : 0, //FEATURE_3: Remove
+	"misc.valuable_furs" : 0, //FEATURE_3: Remove and replace with "misc.furs" : 100
+	"misc.bone_figurines" : 0, //FEATURE_3: Remove
+	"misc.bead_necklace" : 0, //FEATURE_3: Remove
+	"misc.looted_valuables" : 0, //FEATURE_3: Remove
+	"misc.goblin_carved_ivory_iconographs" : 0, //FEATURE_3: Remove
+	"misc.goblin_minted_coins" : 0, //FEATURE_3: Remove
+	"misc.goblin_rank_insignia" : 0, //FEATURE_3: Remove
+	"misc.webbed_valuables" : 0, //FEATURE_3: Remove
+	"misc.deformed_valuables" : 0, //FEATURE_3: Remove
+	"misc.legend_bear_fur" : 0, //FEATURE_3: Remove and remove bears
+	"misc.lindwurm_hoard" : 0, //FEATURE_3: Remove
+	"misc.jeweled_crown" : 0, //FEATURE_3: Remove
+	"misc.glittering_rock" : 0, //FEATURE_3: Remove
+	"misc.hyena_fur" : 0, //FEATURE_3: Remove and remove hyenas
+	"misc.acidic_saliva" : 0, //FEATURE_3: Remove and remove hyenas
 
 	"misc.manhunters_ledger" : 0,
 	"misc.legend_werehand" : 0,
@@ -265,7 +265,7 @@
 	"misc.trade_jug" : 0,
 	"misc.golden_goose" : 0, //FEATURE_3: Remove the golden goose for now
 
-//RUNE_SIGILS //FEATURE_2: Rune prices
+//RUNE_SIGILS //FEATURE_0: Rune prices
 	"token.legend_vala_inscription" : 0,
 	"legend_helmet_upgrade.legend_rune_bravery" : 0,
 	"legend_helmet_upgrade.legend_rune_clarity" : 0,
@@ -334,17 +334,17 @@
 	"accessory.falcon" : 100,
 	"accessory.legend_cat_item" : 0,
 	"accessory.legend_wolfsbane_necklace" : 0,
-	"accessory.wardog" : 0, //FEATURE_2: Remove from contracts and troops
-	"accessory.warhound" : 0, //FEATURE_2: Remove from contracts and troops
-	"accessory.armored_wardog" : 0, //FEATURE_2: Remove from contracts and troops
-	"accessory.armored_warhound" : 0, //FEATURE_2: Remove from contracts and troops
-	"accessory.heavily_armored_wardog" : 0, //FEATURE_2: Remove from contracts and troops
-	"accessory.warwolf" : 0, //FEATURE_2: Remove from contracts and troops
-	"accessory.heavily_armored_warhound" : 0, //FEATURE_2: Remove from contracts and troops
-	"accessory.legend_warbear" : 0, //FEATURE_2: Remove from contracts and troops
-	"accessory.legend_white_warwolf" : 0, //FEATURE_2: Remove from contracts and troops
-	"misc.wardog_heavy_armor_upgrade" : 0, //FEATURE_2: Remove from contracts and troops
-	"misc.wardog_armor_upgrade" : 0, //FEATURE_2: Remove from contracts and troops
+	"accessory.wardog" : 0, //FEATURE_3: Remove from contracts and troops
+	"accessory.warhound" : 0, //FEATURE_3: Remove from contracts and troops
+	"accessory.armored_wardog" : 0, //FEATURE_3: Remove from contracts and troops
+	"accessory.armored_warhound" : 0, //FEATURE_3: Remove from contracts and troops
+	"accessory.heavily_armored_wardog" : 0, //FEATURE_3: Remove from contracts and troops
+	"accessory.warwolf" : 0, //FEATURE_3: Remove from contracts and troops
+	"accessory.heavily_armored_warhound" : 0, //FEATURE_3: Remove from contracts and troops
+	"accessory.legend_warbear" : 0, //FEATURE_3: Remove from contracts and troops
+	"accessory.legend_white_warwolf" : 0, //FEATURE_3: Remove from contracts and troops
+	"misc.wardog_heavy_armor_upgrade" : 0, //FEATURE_3: Remove from contracts and troops
+	"misc.wardog_armor_upgrade" : 0, //FEATURE_3: Remove from contracts and troops
 
 	//OTHER //FEATURE_3: rework event
 	"accessory.legend_oms_fate" : 100,
@@ -371,7 +371,7 @@
 	"weapon.legend_katar" : 120,               			//( 30,  45) | AP: 0.30 | AE: 1.25
 	
 	//SWORD
-	//FEATURE_2: swords are rarer, usually only equipped by swordmasters/nobles/strong units
+	//FEATURE_0: swords are rarer, usually only equipped by swordmasters/nobles/strong units
 	//1H
 	"weapon.broken_ancient_sword" : 0,        			//( 30,  35) | AP: 0.20 | AE: 0.75
 	"weapon.legend_skin_flayer" : 0,         			//( 45,  60) | AP: 0.20 | AE: 0.90
@@ -671,8 +671,8 @@
 	"weapon.named_throwing_axe" : 0,         			//( 25,  40) | AP: 0.25 | AE: 1.30
 
 	//CROSSBOW 
-	//FEATURE_1: crossbows + bolts, firearms, powder are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
-	//FEATURE_1: remove crossbow tree from most backgrounds that never will have a chance to get the tree
+	//FEATURE_3: crossbows + bolts, firearms, powder are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
+	//FEATURE_3: remove crossbow tree from most backgrounds that never will have a chance to get the tree
 	//FEATURE_3: Training halls, can give bros trained tree or weapon trees, rework backgrounds to have less trees + trained tree is free on trained backgrounds - also most lowborn backgrounds do not have trained.
 	"weapon.legend_blowgun" : 0,               			//( 10,  25) | AP: 0.10 | AE: 0.20
 	"weapon.light_crossbow" : 0,              			//( 30,  50) | AP: 0.50 | AE: 0.60
@@ -682,8 +682,8 @@
 	"weapon.named_crossbow" : 0,             			//( 50,  70) | AP: 0.50 | AE: 0.75
 
 	//FIREARM
-	"weapon.handgonne" : 0,                  			//( 35,  75) | AP: 0.25 | AE: 0.90 //FEATURE_1: state of the art, restricted goods
-	"weapon.named_handgonne" : 0,            			//( 35,  75) | AP: 0.25 | AE: 0.90 //FEATURE_1: state of the art, restricted goods
+	"weapon.handgonne" : 0,                  			//( 35,  75) | AP: 0.25 | AE: 0.90
+	"weapon.named_handgonne" : 0,            			//( 35,  75) | AP: 0.25 | AE: 0.90
 
 	//MUSICAL
 	"weapon.lute" : 0,                         			//(  5,  20) | AP: 0.40 | AE: 0.10
@@ -708,7 +708,7 @@
 	"shield.orc_light_shield" : 0,             			//DEF: ( 15M,  20R) | DUR: -12.00 | STA: 16.00
 	"shield.goblin_heavy_shield" : 0,          			//DEF: ( 10M,  10R) | DUR: -8.00 | STA: 16.00
 	"shield.orc_heavy_shield" : 0,            			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 72.00
-	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00 //FEATURE_1: remove from named drops
+	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00 //FEATURE_3: remove from named drops
 	"shield.craftable_lindwurm" : 0,          			//DEF: ( 17M,  25R) | DUR: -14.00 | STA: 64.00
 	"shield.craftable_schrat" : 0,           			//DEF: ( 20M,  17R) | DUR: -12.00 | STA: 60.00
 	"shield.craftable_kraken" : 0,           			//DEF: ( 24M,  24R) | DUR: -15.00 | STA: 50.00
@@ -782,7 +782,7 @@
 	"legend_armor.body.legend_sackcloth_tattered" : 0,                   		//DUR: 5.00 | STA: 0.00
 	"legend_armor.body.legend_sackcloth" : 0,                           		//DUR: 10.00 | STA: 0.00
 	"legend_armor.body.legend_sackcloth_patched" : 0,                   		//DUR: 15.00 | STA: -1.00
-	"legend_armor.body.legend_robes_wizard" : 0,                        		//DUR: 30.00 | STA: -1.00 //FEATURE_1: remove from config
+	"legend_armor.body.legend_robes_wizard" : 0,                        		//DUR: 30.00 | STA: -1.00
 
 	"legend_armor.body.legend_ancient_cloth" : 14,                       		//DUR: 30.00 | STA: -5.00
 	"legend_armor.body.legend_ancient_cloth_restored" : 24,              		//DUR: 35.00 | STA: -4.00

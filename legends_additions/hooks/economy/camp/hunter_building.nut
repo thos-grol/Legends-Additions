@@ -9,10 +9,10 @@
 // 	},
 // 	function create()
 // 	{
-// 		//FEATURE_2: redo how loot is gathered
-// 		//FEATURE_2: balance salvaging
-// 		//FEATURE_2: disable training, training retinue with upgrades. retired soldier -> soldier -> old swordmaster
-// 		//FEATURE_2: disable crafting
+// 		//FEATURE_0: redo how loot is gathered
+// 		//FEATURE_0: balance salvaging
+// 		//FEATURE_0: disable training, training retinue with upgrades. retired soldier -> soldier -> old swordmaster
+// 		//FEATURE_0: disable crafting
 // 		this.camp_building.create();
 // 		this.m.ID = this.Const.World.CampBuildings.Hunter;
 // 		this.m.ModName = "Hunting";

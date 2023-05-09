@@ -1,5 +1,4 @@
-//FEATURE_2: After editing item prices, edit backgrounds
-//FEATURE_2: remove religious backgrounds
+//FEATURE_0: After editing item prices, edit backgrounds
 ::Z.Backgrounds.Wages <- {
 
 	//WASTES

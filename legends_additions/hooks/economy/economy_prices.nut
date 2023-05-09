@@ -35,7 +35,7 @@
 });
 
 
-//FEATURE_0: log price mults and come up with more sane buy sell price formula and figure out why wages are getting fucked up
+//TODO: log price mults and come up with more sane buy sell price formula and figure out why wages are getting fucked up
 ::mods_hookExactClass("entity/world/settlement", function(o)
 {
     o.getPriceMult = function()
@@ -58,7 +58,7 @@
 		return p * this.m.Modifiers.PriceMult;
 	}
 
-    //FEATURE_0: having workshop in town decreases item prices for that type 
+    //TODO: having workshop in town decreases item prices for that type 
     o.getBuyPriceMult = function()
     {
         local p = this.getPriceMult() * this.World.Assets.getBuyPriceMult();
