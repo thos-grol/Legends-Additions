@@ -8,17 +8,17 @@ Economy Overhaul
 //FEATURE_6: Faction Overhaul 
 //FEATURE_4: sellswords armor rework? - no perks needed, buffs granted based on armor weight
 //FEATURE_8: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
-//FEATURE_0: redefine backgrounds hooks script, parse ptr changes and merge into file
-    //FEATURE_0: remove staff tree?
-    //FEATURE_0: remove throwing weapons from troops and backgrounds
-    //FEATURE_0: remove throwing tree
+//TODO: redefine backgrounds hooks script, parse ptr changes and merge into file
+    //TODO: remove staff tree?
+    //TODO: remove throwing weapons from troops and backgrounds
+    //TODO: remove throwing tree
 
-//FEATURE_0: remove training
-//FEATURE_0: rework crafting
-//FEATURE_0: rework retinue to use anatomist
+//TODO: remove training
+//TODO: rework crafting
+//TODO: rework retinue to use anatomist
 
-//FEATURE_0: most mobs besides top tier mobs will be using at most chain armor
-//FEATURE_0: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
+//TODO: most mobs besides top tier mobs will be using at most chain armor
+//TODO: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
 
 //FEATURE_4: muscularity for bows and slings
 //FEATURE_4: bow perk that has a chance to make shot have 99% AP based on range skill

@@ -15,7 +15,7 @@
 // 	- overhauled crafting system so players don't sell their items but use them elsewhere/break them down
 
 
-//FEATURE_0: this.World.Assets.addMoney
+//TODO: this.World.Assets.addMoney
 	//overhaul contract pay
 	//event pay/prices
 
@@ -100,14 +100,14 @@
 	//REMOVED
 	"supplies.cured_venison" : 0,
 	"supplies.goat_cheese" : 0,
-	"supplies.legend_human_parts" : 0, //FEATURE_0: Remove skill
+	"supplies.legend_human_parts" : 0, //TODO: Remove skill
 	"supplies.fermented_unhold_heart" : 0,
 	"supplies.legend_yummy_sausages" : 0,
 	"supplies.black_marsh_stew" : 0,
-	"supplies.legend_porridge" : 0, //FEATURE_0: Remove from a lot of places
-	"supplies.legend_pudding" : 0, //FEATURE_0: Remove
-	"supplies.legend_pie" : 0, //FEATURE_0: Remove
-	"supplies.cured_rations" : 0, //FEATURE_0: Remove
+	"supplies.legend_porridge" : 0, //TODO: Remove from a lot of places
+	"supplies.legend_pudding" : 0, //TODO: Remove
+	"supplies.legend_pie" : 0, //TODO: Remove
+	"supplies.cured_rations" : 0, //TODO: Remove
 	"supplies.legend_cooking_spices" : 0,// FEATURE_2: Remove
 	"supplies.pickled_mushrooms" : 0,// FEATURE_2: Remove
 
@@ -135,10 +135,10 @@
 	"misc.gold_ingots" : 6400, //FEATURE_7: redo item to be 1 ingot
 	//FEATURE_7: add gemstones
 	"misc.uncut_gems" : 840, //6 units of uncut emeralds
-	"misc.gemstones" : 700, //1 units of cut emeralds //FEATURE_0: Change to trade item
+	"misc.gemstones" : 700, //1 units of cut emeralds //TODO: Change to trade item
 	
 	//Removed
-	"misc.legend_cooking_spices" : 0, //FEATURE_0: Remove
+	"misc.legend_cooking_spices" : 0, //TODO: Remove
 
 //TENTS
 	"tent.hunter_tent" : 200,
@@ -157,7 +157,7 @@
 //SPAWNS
 	"spawns.skeleton" : 0,
 	"spawns.zombie" : 0,
-	"spawns.donkey" : 0, //FEATURE_0: Remove
+	"spawns.donkey" : 0, //TODO: Remove
 	"spawns.cart_01" : 260,
 	"spawns.cart_02" : 400,
 
@@ -265,7 +265,7 @@
 	"misc.trade_jug" : 0,
 	"misc.golden_goose" : 0, //FEATURE_3: Remove the golden goose for now
 
-//RUNE_SIGILS //FEATURE_0: Rune prices
+//RUNE_SIGILS //TODO: Rune prices
 	"token.legend_vala_inscription" : 0,
 	"legend_helmet_upgrade.legend_rune_bravery" : 0,
 	"legend_helmet_upgrade.legend_rune_clarity" : 0,
@@ -371,7 +371,7 @@
 	"weapon.legend_katar" : 120,               			//( 30,  45) | AP: 0.30 | AE: 1.25
 	
 	//SWORD
-	//FEATURE_0: swords are rarer, usually only equipped by swordmasters/nobles/strong units
+	//TODO: swords are rarer, usually only equipped by swordmasters/nobles/strong units
 	//1H
 	"weapon.broken_ancient_sword" : 0,        			//( 30,  35) | AP: 0.20 | AE: 0.75
 	"weapon.legend_skin_flayer" : 0,         			//( 45,  60) | AP: 0.20 | AE: 0.90

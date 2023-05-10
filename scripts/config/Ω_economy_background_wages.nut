@@ -1,4 +1,4 @@
-//FEATURE_0: After editing item prices, edit backgrounds
+//TODO: After editing item prices, edit backgrounds
 ::Z.Backgrounds.Wages <- {
 
 	//WASTES
