@@ -13,7 +13,7 @@
 				::Const.Perks.CalmTree,
 				::Const.Perks.LightArmorTree,
 				::Const.Perks.MediumArmorTree,
-				::Const.Perks.StaffTree,
+				::Const.Perks.MaceTree,
 				::Const.Perks.TwoHandedTree
 			]
 		);

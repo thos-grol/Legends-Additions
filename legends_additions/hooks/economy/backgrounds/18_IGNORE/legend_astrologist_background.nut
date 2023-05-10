@@ -6,7 +6,7 @@
 		this.m.PerkGroupMultipliers <- [
 			[5, ::Const.Perks.TalentedTree],
 			[1.66, ::Const.Perks.OrganisedTree],
-			[5, ::Const.Perks.StaffTree]
+			[0, ::Const.Perks.StaffTree]
 		];
 
 		this.m.PerkTreeDynamic = {

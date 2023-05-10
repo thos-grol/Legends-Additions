@@ -9,7 +9,7 @@
 			[
 				::Const.Perks.CleaverTree,
 				::Const.Perks.DaggerTree,
-				::Const.Perks.StaffTree,
+				::Const.Perks.MaceTree,
 				::Const.Perks.OneHandedTree,
 				::Const.Perks.TwoHandedTree,
 				::Const.Perks.LightArmorTree,

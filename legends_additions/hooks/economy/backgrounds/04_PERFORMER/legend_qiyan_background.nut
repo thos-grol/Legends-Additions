@@ -11,7 +11,7 @@
 			[0.66, ::Const.Perks.ShieldTree],
 			[3, ::Const.Perks.DaggerTree],
 			[2, ::Const.Perks.SwordTree],
-			[2, ::Const.Perks.ThrowingTree]
+			[0, ::Const.Perks.ThrowingTree]
 		];
 
 		this.m.PerkTreeDynamic = {

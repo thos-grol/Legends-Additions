@@ -22,7 +22,7 @@
 					[25, ::Const.Perks.BowTree],
 					[25, ::Const.Perks.CrossbowTree],
 					[25, ::Const.Perks.SlingTree],
-					[25, ::Const.Perks.ThrowingTree]
+					[0, ::Const.Perks.ThrowingTree]
 				])
 			]
 		};

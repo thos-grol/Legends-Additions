@@ -12,7 +12,7 @@
 				::Const.Perks.MediumArmorTree,
 				::Const.Perks.CleaverTree,
 				::Const.Perks.PolearmTree,
-				::Const.Perks.StaffTree,
+				::Const.Perks.MaceTree,
 				::Const.Perks.TwoHandedTree
 			]
 		);

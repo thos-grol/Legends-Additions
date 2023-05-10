@@ -13,7 +13,7 @@
 			[0.5, ::Const.Perks.FlailTree],
 			[0.5, ::Const.Perks.HammerTree],
 			[0.5, ::Const.Perks.MaceTree],
-			[0.5, ::Const.Perks.StaffTree],
+			[0, ::Const.Perks.StaffTree],
 			[0.25, ::Const.Perks.SlingTree],
 			[0, ::Const.Perks.ApothecaryProfessionTree],
 			[0, ::Const.Perks.MinstrelProfessionTree]

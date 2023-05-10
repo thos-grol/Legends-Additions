@@ -22,7 +22,7 @@
 
 			],
 			Weapon = [
-				::Const.Perks.StaffTree
+				::Const.Perks.MaceTree
 			]
 		};
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;

@@ -8,7 +8,7 @@
 		::PTR.HooksHelper.addPerkTreesToCustomPerkTree(this.m.CustomPerkTree,
 			[
 				::Const.Perks.BowTree,
-				::Const.Perks.ThrowingTree,
+				
 				::Const.Perks.RangedTree,
 				::Const.Perks.LightArmorTree,
 				::Const.Perks.AgileTree,

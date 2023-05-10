@@ -11,7 +11,7 @@
 			[0, ::Const.Perks.CrossbowTree],
 			[0, ::Const.Perks.SlingTree],
 			[0.5, ::Const.Perks.DaggerTree],
-			[0.33, ::Const.Perks.ThrowingTree],
+			[0, ::Const.Perks.ThrowingTree],
 			[0.66, ::Const.Perks.SpearTree]
 		];
 

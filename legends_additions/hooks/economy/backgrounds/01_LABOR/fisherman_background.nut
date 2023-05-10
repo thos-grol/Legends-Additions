@@ -10,7 +10,7 @@
 			[1.5, ::Const.Perks.OrganisedTree],
 			[1.5, ::Const.Perks.ChefClassTree],
 			[1.25, ::Const.Perks.SpearTree],
-			[0.66, ::Const.Perks.ThrowingTree]
+			[0, ::Const.Perks.ThrowingTree]
 		];
 
 		this.m.PerkTreeDynamic = {

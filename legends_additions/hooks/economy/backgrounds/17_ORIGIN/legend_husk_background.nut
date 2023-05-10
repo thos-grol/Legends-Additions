@@ -24,7 +24,7 @@
 			[0, ::Const.Perks.CrossbowTree],
 			[0.5, ::Const.Perks.PolearmTree],
 			[0, ::Const.Perks.SlingTree],
-			[0.5, ::Const.Perks.ThrowingTree]
+			[0, ::Const.Perks.ThrowingTree]
 		];
 
 		this.m.PerkTreeDynamic = {

@@ -22,7 +22,7 @@
 			[0.5, ::Const.Perks.DaggerTree],
 			[0.5, ::Const.Perks.PolearmTree],
 			[0.66, ::Const.Perks.SpearTree],
-			[0.5, ::Const.Perks.StaffTree]
+			[0, ::Const.Perks.StaffTree]
 		];
 
 		this.m.PerkTreeDynamic = {

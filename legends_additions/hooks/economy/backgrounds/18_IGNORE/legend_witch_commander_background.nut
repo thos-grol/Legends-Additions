@@ -6,7 +6,7 @@
 		::PTR.HooksHelper.addPerkTreesToCustomPerkTree(this.m.CustomPerkTree,
 	 		[
 	 			::Const.Perks.TalentedTree,
-	 			::Const.Perks.StaffTree,
+	 			::Const.Perks.MaceTree,
 	 			::Const.Perks.TwoHandedTree
 	 		]
 	 	);

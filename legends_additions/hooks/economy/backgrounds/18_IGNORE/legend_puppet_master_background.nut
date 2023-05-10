@@ -13,7 +13,7 @@
 				::Const.Perks.HeavyArmorTree,
 				::Const.Perks.CleaverTree,
 				::Const.Perks.MaceTree,
-				::Const.Perks.ThrowingTree,
+				
 				::Const.Perks.TwoHandedTree
 			]
 		);

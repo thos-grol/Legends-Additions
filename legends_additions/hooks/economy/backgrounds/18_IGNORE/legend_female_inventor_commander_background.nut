@@ -9,7 +9,7 @@
 			[
 				::Const.Perks.CrossbowTree,
 				::Const.Perks.FlailTree,
-				::Const.Perks.StaffTree,
+				::Const.Perks.MaceTree,
 				::Const.Perks.LightArmorTree,
 				::Const.Perks.MediumArmorTree,
 				::Const.Perks.OrganisedTree,

@@ -13,7 +13,7 @@
 		 		::Const.Perks.SergeantClassTree,
 		 		::Const.Perks.LightArmorTree,
 		 		::Const.Perks.TwoHandedTree,
-		 		::Const.Perks.StaffTree,
+		 		::Const.Perks.MaceTree,
 	 		]
 	 	);
 

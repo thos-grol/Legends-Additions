@@ -8,9 +8,9 @@
 			[3, ::Const.Perks.MediumArmorTree],
 			[9, ::Const.Perks.BowTree],
 			[0.5, ::Const.Perks.PolearmTree],
-			[0.5, ::Const.Perks.StaffTree],
+			[0, ::Const.Perks.StaffTree],
 			[3, ::Const.Perks.SlingTree],
-			[3, ::Const.Perks.ThrowingTree]
+			[0, ::Const.Perks.ThrowingTree]
 		];
 
 		this.m.PerkTreeDynamic = {

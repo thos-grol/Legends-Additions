@@ -28,7 +28,6 @@
 				::Const.Perks.BowTree,
 				::Const.Perks.CrossbowTree,
 				::Const.Perks.SlingTree,
-				::Const.Perks.ThrowingTree
 			]
 		};
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;

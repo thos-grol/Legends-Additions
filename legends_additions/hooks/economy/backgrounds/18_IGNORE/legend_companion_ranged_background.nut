@@ -28,7 +28,7 @@
 				]),
 				::MSU.Class.WeightedContainer([
 					[10, ::Const.Perks.SlingTree],
-					[10, ::Const.Perks.ThrowingTree]
+					[0, ::Const.Perks.ThrowingTree]
 				])
 			],
 			Defense = [
