@@ -2,34 +2,34 @@
 
 	//WASTES
 	"background.beggar" : {
-		"HiringCost" : 30,
-		"DailyCost" : 3
+		"HiringCost" : 2,
+		"DailyCost" : 1
 	},
 	"background.female_beggar" : {
-		"HiringCost" : 30,
-		"DailyCost" : 3
+		"HiringCost" : 2,
+		"DailyCost" : 1
 	},
 	"background.cripple" : {
-		"HiringCost" : 30,
-		"DailyCost" : 3
+		"HiringCost" : 2,
+		"DailyCost" : 1
 	},
 	"background.gambler" : {
-		"HiringCost" : 60,
-		"DailyCost" : 6
+		"HiringCost" : 2,
+		"DailyCost" : 1
 	},
 	"background.pimp" : {
-		"HiringCost" : 60,
-		"DailyCost" : 6
+		"HiringCost" : 2,
+		"DailyCost" : 1
 	},
 
 	//LABOR
 	"background.daytaler" : {
-		"HiringCost" : 60,
-		"DailyCost" : 6
+		"HiringCost" : 4,
+		"DailyCost" : 2
 	},
 	"background.female_daytaler" : {
-		"HiringCost" : 60,
-		"DailyCost" : 6
+		"HiringCost" : 4,
+		"DailyCost" : 2
 	},
 	"background.farmhand" : {
 		"HiringCost" : 90,

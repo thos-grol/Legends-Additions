@@ -291,68 +291,68 @@ def parse(root, fname):
             "HiringCost" : HiringCost,
             "DailyCost" : DailyCost
         }
-        #fn save
-        flag_copy = False
-        text = []
-        for line in lines:
-            if not flag_copy and not 'function ' in line: continue
-            if id.replace('"', '') in BACKGROUNDS['IGNORE']: continue
-            if 'function ' in line:
-                flag_copy = True
-                try:
-                    query = re.findall(r'function (.+)\(\)', line)[0]
-                    if not query in ALLOWED_FNS:
-                        flag_copy = False
-                        continue
-                    text.append(f'\to.{query} = function()\n')
-                except:
-                    query = re.findall(r'function (.+)\((.+)\)', line)[0]
-                    if not query[0] in ALLOWED_FNS:
-                        flag_copy = False
-                        continue
-                    text.append(f'\to.{query[0]} = function({query[1]})\n')
-            else:
-                text.append(line)
+        # #fn save
+        # flag_copy = False
+        # text = []
+        # for line in lines:
+        #     if not flag_copy and not 'function ' in line: continue
+        #     if id.replace('"', '') in BACKGROUNDS['IGNORE']: continue
+        #     if 'function ' in line:
+        #         flag_copy = True
+        #         try:
+        #             query = re.findall(r'function (.+)\(\)', line)[0]
+        #             if not query in ALLOWED_FNS:
+        #                 flag_copy = False
+        #                 continue
+        #             text.append(f'\to.{query} = function()\n')
+        #         except:
+        #             query = re.findall(r'function (.+)\((.+)\)', line)[0]
+        #             if not query[0] in ALLOWED_FNS:
+        #                 flag_copy = False
+        #                 continue
+        #             text.append(f'\to.{query[0]} = function({query[1]})\n')
+        #     else:
+        #         text.append(line)
 
-        path = getPath(id.replace('"', ''))
-        if path is None: return
-        with open(os.path.join(path, fname), 'w+') as f_out:
-            newname = fname.replace('.nut', '')
-            f_out.write(f'::mods_hookExactClass(\"skills/backgrounds/{newname}\", function(o) ' + '{\n')
+        # path = getPath(id.replace('"', ''))
+        # if path is None: return
+        # with open(os.path.join(path, fname), 'w+') as f_out:
+        #     newname = fname.replace('.nut', '')
+        #     f_out.write(f'::mods_hookExactClass(\"skills/backgrounds/{newname}\", function(o) ' + '{\n')
 
-            #Insert ptr fn here
-            if newname in PTR:
-                create_fn = PTR[newname]
-                for l in create_fn:
-                    f_out.write(l)
-            f_out.write('\n')
+        #     #Insert ptr fn here
+        #     if newname in PTR:
+        #         create_fn = PTR[newname]
+        #         for l in create_fn:
+        #             f_out.write(l)
+        #     f_out.write('\n')
 
-            for line in text:
-                f_out.write(line)
-        endFlag = False
-        with open(os.path.join(path, fname)) as f_out:
-            for line in f_out.readlines():
-                if '});\n' == line:
-                    endFlag = True
-        if not endFlag:
-            with open(os.path.join(path, fname), 'a') as f_out:
-                f_out.write('});\n')
+        #     for line in text:
+        #         f_out.write(line)
+        # endFlag = False
+        # with open(os.path.join(path, fname)) as f_out:
+        #     for line in f_out.readlines():
+        #         if '});\n' == line:
+        #             endFlag = True
+        # if not endFlag:
+        #     with open(os.path.join(path, fname), 'a') as f_out:
+        #         f_out.write('});\n')
 
 #PROGRAM START
-PTR = {}
-for fname in os.listdir(ptr):
-   if not isValidFile(ptr, fname): continue
-   if fname == 'character_background.nut': continue
-   with open(os.path.join(ptr, fname), encoding='utf-8') as file:
-        PTR_FN = []
-        for line in file.readlines():
-            PTR_FN.append(line)
-        PTR_FN.pop(-1)
-        PTR_FN.pop(0)
-        if PTR_FN[0] == '\tm = {},\n': PTR_FN.pop(0)
-        PTR_FN.insert(-1, f'\t\tthis.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;\n')
-        PTR_FN.insert(-1, f'\t\tthis.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;\n')
-        PTR[fname.replace('.nut', '')] = PTR_FN
+# PTR = {}
+# for fname in os.listdir(ptr):
+#    if not isValidFile(ptr, fname): continue
+#    if fname == 'character_background.nut': continue
+#    with open(os.path.join(ptr, fname), encoding='utf-8') as file:
+#         PTR_FN = []
+#         for line in file.readlines():
+#             PTR_FN.append(line)
+#         PTR_FN.pop(-1)
+#         PTR_FN.pop(0)
+#         if PTR_FN[0] == '\tm = {},\n': PTR_FN.pop(0)
+#         PTR_FN.insert(-1, f'\t\tthis.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;\n')
+#         PTR_FN.insert(-1, f'\t\tthis.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;\n')
+#         PTR[fname.replace('.nut', '')] = PTR_FN
 
 for fname in os.listdir(root):
    if not isValidFile(root, fname): continue
@@ -360,6 +360,26 @@ for fname in os.listdir(root):
 
 # Generate background wages - small bug where 2 backgrounds have None hiring cost
 # simply just replace in output file
+
+CATEGORY_WAGES = {
+    'WASTES' : [2, 1],
+    'LABOR' : [4, 2],
+    'LAWLESS' : [4, 2],
+    'RELIGIOUS' : [4, 2],
+    'PERFORMER' : [4, 2],
+    'TRADER' : [4, 2],
+    'SKILLED LABOR' : [4, 2],
+    'CRAFTSMEN' : [20, 10],
+    'NATURE' : [4, 2],
+    'MIDDLE CLASS' : [6, 3],
+    'NOBLE' : [24, 12],
+    'FODDER' : [6, 3],
+    'SOLDIER' : [24, 12],
+    'ELITE' : [48, 24],
+    'CHAMPION' : [48, 24],
+    'SPECIAL' : [48, 24],
+    'EVENT' : [48, 24]
+}
 
 with open(os.path.join(out, f'Ω_economy_background_wages.nut'), "w+") as f_out:    
     f_out.write('::Z.Backgrounds.Wages <- {\n')
@@ -369,7 +389,13 @@ with open(os.path.join(out, f'Ω_economy_background_wages.nut'), "w+") as f_out:
         for id in BACKGROUNDS[CATEGORY]:
             name = f'"{id}"'
             f_out.write(f'\t{name}' + ' : {\n')
-            f_out.write(f'\t\t"HiringCost" : {Backgrounds[name]["HiringCost"]},\n')
-            f_out.write(f'\t\t"DailyCost" : {Backgrounds[name]["DailyCost"]}\n')
+            hc = Backgrounds[name]["HiringCost"]
+            dc = Backgrounds[name]["DailyCost"]
+
+            if CATEGORY in CATEGORY_WAGES:
+                hc = CATEGORY_WAGES[CATEGORY][0]
+                dc = CATEGORY_WAGES[CATEGORY][1]
+            f_out.write(f'\t\t"HiringCost" : {hc},\n')
+            f_out.write(f'\t\t"DailyCost" : {dc}\n')
             f_out.write('\t},\n')
     f_out.write('};')
