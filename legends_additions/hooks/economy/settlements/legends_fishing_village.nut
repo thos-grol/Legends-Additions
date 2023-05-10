@@ -325,20 +325,8 @@
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/port_building"), 3);
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/tavern_building"));
 
-		if (this.Math.rand(1, 100) <= 66)
-		{
-			local r = this.Math.rand(1, 2);
-
-			if (r == 1 || this.Const.World.Buildings.Barbers == 0)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/barber_building"));
-			}
-			else if (r <= 2)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
-			}
-		}
-
+		if (this.Math.rand(1, 100) <= 66) this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
+		
 		this.buildAttachedLocation(1, "scripts/entity/world/attached_location/harbor_location", [
 			this.Const.World.TerrainType.Shore
 		], [
@@ -394,14 +382,7 @@
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/tavern_building"));
 
-		if (this.Math.rand(1, 100) <= 60 || this.Const.World.Buildings.Barbers == 0)
-		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/barber_building"));
-		}
-		else
-		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/training_hall_building"));
-		}
+		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/training_hall_building"));
 
 		if (this.Math.rand(1, 100) <= 50)
 		{

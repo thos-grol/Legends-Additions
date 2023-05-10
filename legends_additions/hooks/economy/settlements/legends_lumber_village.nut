@@ -269,11 +269,7 @@
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
 
-		if (this.Const.DLC.Unhold && (this.Const.World.Buildings.Taxidermists == 0 || this.Math.rand(1, 100) <= 33))
-		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/taxidermist_building"));
-		}
-		else if (this.Math.rand(1, 100) <= 50)
+		if (this.Math.rand(1, 100) <= 50)
 		{
 			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/fletcher_building"));
 		}
@@ -377,38 +373,26 @@
 
 		if (this.Const.DLC.Unhold)
 		{
-			local r = this.Math.rand(1, 4);
+			local r = this.Math.rand(2, 3);
 
-			if (r == 1 || this.Const.World.Buildings.Taxidermists == 0)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/taxidermist_building"));
-			}
-			else if (r == 2 || this.Const.World.Buildings.Fletchers == 0)
+			if (r == 2 || this.Const.World.Buildings.Fletchers == 0)
 			{
 				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/fletcher_building"));
 			}
-			else if (r == 3 || this.Const.World.Buildings.Barbers == 0)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/barber_building"));
-			}
-			else if (r == 4)
+			else if (r == 3)
 			{
 				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
 			}
 		}
 		else
 		{
-			local r = this.Math.rand(1, 3);
+			local r = this.Math.rand(1, 2);
 
 			if (r == 1 || this.Const.World.Buildings.Fletchers == 0)
 			{
 				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/fletcher_building"));
 			}
-			else if (r == 2 || this.Const.World.Buildings.Barbers == 0)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/barber_building"));
-			}
-			else if (r == 3)
+			else if (r == 2)
 			{
 				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
 			}
@@ -550,11 +534,7 @@
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/tavern_building"));
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/fletcher_building"));
 
-		if (this.Const.DLC.Unhold)
-		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/taxidermist_building"));
-		}
-		else if (this.Math.rand(1, 100) <= 50)
+		if (this.Math.rand(1, 100) <= 50)
 		{
 			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 		}

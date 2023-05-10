@@ -206,10 +206,6 @@
 				a = ++a;
 				a = a;
 			}
-			else if (this.Const.DLC.Unhold && this.Const.World.Buildings.TaxidermistsOriental == 0)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/taxidermist_oriental_building"));
-			}
 			else if (w == 0 && (a != 0 || this.Math.rand(1, 100) <= 50))
 			{
 				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/weaponsmith_oriental_building"));

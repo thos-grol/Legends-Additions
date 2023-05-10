@@ -255,11 +255,7 @@
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
 
-		if (this.Const.DLC.Unhold && (this.Const.World.Buildings.Taxidermists == 0 || this.Math.rand(1, 100) <= 33))
-		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/taxidermist_building"));
-		}
-		else if (this.Math.rand(1, 100) <= 50)
+		if (this.Math.rand(1, 100) <= 50)
 		{
 			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/fletcher_building"));
 		}
