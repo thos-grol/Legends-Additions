@@ -1,12 +1,11 @@
 Economy Overhaul
 
+//TODO: edit background prices and items
+    //remove throwing weapons and staffs from troops and backgrounds
 
 //TODO: tweak hiring cost fns
     //TODO: function adjustHiringCostBasedOnEquipment()
     //TODO: function getTryoutCost
-
-//TODO: edit background prices and items
-    //remove throwing weapons and staffs from troops and backgrounds
 
 //TODO: script to generate all ambitions
 
