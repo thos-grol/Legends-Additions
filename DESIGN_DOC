@@ -8,7 +8,7 @@ Economy Overhaul
 //FEATURE_6: Faction Overhaul 
 //FEATURE_4: sellswords armor rework? - no perks needed, buffs granted based on armor weight
 //FEATURE_8: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
-//TODO: redefine backgrounds hooks script, parse ptr changes and merge into file
+
     //TODO: remove staff tree?
     //TODO: remove throwing weapons from troops and backgrounds
     //TODO: remove throwing tree

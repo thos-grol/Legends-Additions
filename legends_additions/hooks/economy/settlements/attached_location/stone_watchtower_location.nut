@@ -111,11 +111,6 @@
 					P = 1.0,
 					S = "legend_armor/tabard/legend_common_tabard"
 				});
-				_list.push({
-					R = 30,
-					P = 1.0,
-					S = "legend_helmets/vanity/legend_helmet_faction_helmet"
-				});
 			}
 		}
 		else if (_id == "building.specialized_trader")

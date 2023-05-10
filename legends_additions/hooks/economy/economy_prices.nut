@@ -55,30 +55,87 @@
     }
 });
 
-::mods_hookExactClass("items/item", function(o)
+//Legend's mod has a buyback mod that messed up my hook on item price fns. 
+//I had to overwrite the mod's hook with and add in the modified code.
+::mods_hookDescendants("items/item", function ( o )
 {
-    o.getBuyPrice = function()
+	//FIXME: check and handle produce item prices.
+	o.getSellPrice <- function ()
 	{
-		if (this.isSold()) return this.getSellPrice();
+		local originalTime;
+		local sellPrice;
 
-		if (("State" in this.World) && this.World.State != null && this.World.State.getCurrentTown() != null)
+		if (::mods_isClass(this, "legend_usable_food") && this.getSpoilInDays() > this.m.GoodForDays)
 		{
-            return this.Math.ceil(this.getValue() * this.Math.max(this.getBuyPriceMult() * this.getPriceMult() * this.World.State.getCurrentTown().getBuyPriceMult(), 0.75) ); //buy price can't be lower than 75%
+			originalTime = this.m.BestBefore;
+			this.m.BestBefore = 0;
 		}
-		else return this.Math.ceil(this.getValue() * this.getPriceMult());
-        //FIXME: having workshop in town decreases item prices for that type
-	}
+		if (originalTime != null) this.m.BestBefore = originalTime;
 
-	o.getSellPrice = function()
-	{
-		if (this.isBought()) return this.getBuyPrice();
-
+		if (this.isBought())
+		{
+			this.m.IsBought = false;
+			sellPrice = this.getBuyPrice();
+			this.m.IsBought = true;
+			return sellPrice;
+		}
+		
 		if (("State" in this.World) && this.World.State != null && this.World.State.getCurrentTown() != null)
 		{
 			local mult = this.getSellPriceMult() * this.Const.World.Assets.BaseSellPrice * this.World.State.getCurrentTown().getSellPriceMult();
-            mult = this.Math.min(this.Math.max(mult, 0.5), 1.25); //sell price can't be lower than 50% or higher than 125%
-            return this.Math.floor(this.getValue() * mult);
+			local mult_old = mult;
+			mult = this.Math.minf(this.Math.maxf(mult, 0.5), 1.25); //sell price can't be lower than 50% or higher than 125%
+
+			::logInfo(this.m.ID);
+			::logInfo("item.getSellPriceMult() = " + this.getSellPriceMult());
+			::logInfo("this.Const.World.Assets.BaseSellPrice = " + this.Const.World.Assets.BaseSellPrice);
+			::logInfo("settlement.getSellPriceMult() = " + this.World.State.getCurrentTown().getSellPriceMult());
+			::logInfo("mult = " + mult_old);
+			::logInfo("after this.Math.min(this.Math.max(mult, 0.5), 1.25) = " + mult);
+
+			return this.Math.floor(this.getValue() * mult);
 		}
-		else return this.Math.floor(this.getValue() * this.Const.World.Assets.BaseSellPrice);
-	}
+		
+		return this.Math.floor(this.getValue() * this.Const.World.Assets.BaseSellPrice);
+	};
+
+	o.getBuyPrice <- function ()
+	{
+		if (this.isSold())
+		{
+			this.m.IsSold = false;
+			local sellPrice = this.getSellPrice();
+			this.m.IsSold = true;
+			return sellPrice;
+		}
+
+		local originalTime;
+		if (::mods_isClass(this, "legend_usable_food") && this.getSpoilInDays() > this.m.GoodForDays)
+		{
+			if (this.getSpoilInDays() > this.m.GoodForDays)
+			{
+				originalTime = this.m.BestBefore;
+				this.m.BestBefore = 0;
+			}
+		}
+		if (originalTime != null) this.m.BestBefore = originalTime;
+
+		if (("State" in this.World) && this.World.State != null && this.World.State.getCurrentTown() != null)
+		{
+			local mult = this.getBuyPriceMult() * this.getPriceMult() * this.World.State.getCurrentTown().getBuyPriceMult();
+			local mult_old = mult;
+			mult = this.Math.maxf(0.75, mult);
+
+			::logInfo(this.m.ID);
+			::logInfo("item.getBuyPriceMult() = " + this.getBuyPriceMult());
+			::logInfo("item.getPriceMult() = " + this.getPriceMult());
+			::logInfo("settlement.getBuyPriceMult() = " + this.World.State.getCurrentTown().getBuyPriceMult());
+			::logInfo("mult = " + mult_old);
+			::logInfo("after this.Math.max(0.75, mult) = " + mult);
+
+			return this.Math.ceil(this.getValue() *  mult); //buy price can't be lower than 75%
+		}
+		
+		return this.Math.ceil(this.getValue() * this.getPriceMult());
+	};
 });

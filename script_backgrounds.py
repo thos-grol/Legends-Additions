@@ -5,6 +5,7 @@ from pathlib import Path
 #FEATURE_2: function adjustHiringCostBasedOnEquipment()
 #FEATURE_2: function getTryoutCost
 root = r'C:\Files\Projects\bbros\env_legends\skills\backgrounds'
+ptr = r'C:\Files\Projects\bbros\env_legends\mod_ptr\hooks\skills\backgrounds'
 out = r'C:\Files\Projects\bbros\mod_legends_additions\Legends-Additions\scripts\config'
 out2 = r'C:\Files\Projects\bbros\mod_legends_additions\Legends-Additions\legends_additions\hooks\economy\backgrounds'
 Backgrounds = {}
@@ -320,13 +321,12 @@ def parse(root, fname):
         with open(os.path.join(path, fname), 'w+') as f_out:
             newname = fname.replace('.nut', '')
             f_out.write(f'::mods_hookExactClass(\"skills/backgrounds/{newname}\", function(o) ' + '{\n')
-            f_out.write(f'\tlocal create = o.create;\n')
-            f_out.write(f'\to.create = function()\n')
-            f_out.write('\t{\n')
-            f_out.write(f'\t\tcreate();\n')
-            f_out.write(f'\t\tthis.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;\n')
-            f_out.write(f'\t\tthis.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;\n')
-            f_out.write('\t}\n')
+
+            #Insert ptr fn here
+            if newname in PTR:
+                create_fn = PTR[newname]
+                for l in create_fn:
+                    f_out.write(l)
             f_out.write('\n')
 
             for line in text:
@@ -341,6 +341,21 @@ def parse(root, fname):
                 f_out.write('});\n')
 
 #PROGRAM START
+PTR = {}
+for fname in os.listdir(ptr):
+   if not isValidFile(ptr, fname): continue
+   if fname == 'character_background.nut': continue
+   with open(os.path.join(ptr, fname), encoding='utf-8') as file:
+        PTR_FN = []
+        for line in file.readlines():
+            PTR_FN.append(line)
+        PTR_FN.pop(-1)
+        PTR_FN.pop(0)
+        if PTR_FN[0] == '\tm = {},\n': PTR_FN.pop(0)
+        PTR_FN.insert(-1, f'\t\tthis.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;\n')
+        PTR_FN.insert(-1, f'\t\tthis.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;\n')
+        PTR[fname.replace('.nut', '')] = PTR_FN
+
 for fname in os.listdir(root):
    if not isValidFile(root, fname): continue
    parse(root, fname)

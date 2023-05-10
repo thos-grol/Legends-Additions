@@ -60,7 +60,8 @@
 
 // mail was commonplace among infantrymen in the 12th century.
 // Most infantrymen would wear either mail or lamellar armour or coats-of-plates (“Visby armour”). Cuir-bouilli would also be used, especially as limb protection. Also padded armour (gambesons, haquetons and jerkins) were commonplace
-
+//FIXME: remove 0 cost items from shop
+::Const.World.Assets.BaseSellPrice = 0.72;
 ::Z.Economy.Items <- {
 //SUPPLIES
 	"supplies.ammo_small" : 30,

@@ -28,7 +28,7 @@
 			});
 			_list.push({
 				R = 0,
-				P = 0.9,
+				P = 1.0,
 				S = "supplies/legend_fresh_fruit_item"
 			});
 		}

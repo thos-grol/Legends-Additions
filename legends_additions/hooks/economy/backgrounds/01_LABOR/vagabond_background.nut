@@ -3,8 +3,24 @@
 	o.create = function()
 	{
 		create();
-		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
+		this.m.PerkGroupMultipliers <- [
+			[0.5, ::Const.Perks.LargeTree],
+			[2, ::Const.Perks.UnstoppableTree]
+		];
+
+		this.m.PerkTreeDynamic = {
+			Profession = [
+				::Const.Perks.LaborerProfessionTree
+			],
+			Class = [
+				::MSU.Class.WeightedContainer([
+					[75, ::Const.Perks.ScoutClassTree],
+					[25, ::Const.Perks.NoTree]
+				])
+			]
+		};
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
+		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 	}
 
 	o.onAddEquipment = function()

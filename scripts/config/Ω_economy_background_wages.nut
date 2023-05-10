@@ -1,4 +1,3 @@
-//TODO: After editing item prices, edit backgrounds
 ::Z.Backgrounds.Wages <- {
 
 	//WASTES

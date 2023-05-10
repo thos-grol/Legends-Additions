@@ -23,17 +23,17 @@
 		case "building.marketplace":
 			_list.push({
 				R = 0,
-				P = 0.9,
+				P = 1.0,
 				S = "trade/copper_ingots_item"
 			});
 			_list.push({
 				R = 25,
-				P = 0.9,
+				P = 1.0,
 				S = "supplies/armor_parts_small_item"
 			});
 			_list.push({
 				R = 25,
-				P = 0.9,
+				P = 1.0,
 				S = "supplies/armor_parts_item"
 			});
 			break;

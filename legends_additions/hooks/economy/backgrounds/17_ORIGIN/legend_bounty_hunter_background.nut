@@ -1,11 +1,4 @@
 ::mods_hookExactClass("skills/backgrounds/legend_bounty_hunter_background", function(o) {
-	local create = o.create;
-	o.create = function()
-	{
-		create();
-		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
-		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
-	}
 
 	o.onAddEquipment = function()
 	{
