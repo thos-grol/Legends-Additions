@@ -2,8 +2,6 @@ import os
 import re
 from pathlib import Path
 
-#FEATURE_2: function adjustHiringCostBasedOnEquipment()
-#FEATURE_2: function getTryoutCost
 root = r'C:\Files\Projects\bbros\env_legends\skills\backgrounds'
 ptr = r'C:\Files\Projects\bbros\env_legends\mod_ptr\hooks\skills\backgrounds'
 out = r'C:\Files\Projects\bbros\mod_legends_additions\Legends-Additions\scripts\config'

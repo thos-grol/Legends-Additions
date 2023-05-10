@@ -1,4 +1,11 @@
 Economy Overhaul
+//TODO: disable donkey events
+
+//TODO: remove taxidermist
+//TODO: tweak hiring cost fns
+    //TODO: function adjustHiringCostBasedOnEquipment()
+    //TODO: function getTryoutCost
+
 //TODO: edit background prices and items
     //remove throwing weapons and staffs from troops and backgrounds
 
@@ -7,10 +14,10 @@ Economy Overhaul
 //TODO: script to generate all contracts
     //TODO: change money added from contracts and events
     //this.World.Assets.addMoney
-    //TODO: disable donkey events
+    
 
     //FEATURE_4: remove most events that give free stuff, you need traits etc to earn them
-    //FEATURE_3: start making the world poorer, troop equipment nerf
+    
 
 
 //FEATURE_6: Faction Overhaul 
@@ -19,11 +26,11 @@ Economy Overhaul
 
 //TODO: remove training
     //training retinue with upgrades? retired soldier -> soldier -> old swordmaster
-//TODO: remove crafting
-//TODO: rebalance salvaging
 
+
+//FEATURE_1: start making the world poorer, troop equipment nerf
 //FEATURE_1: most mobs besides top tier mobs will be using at most chain armor
-//TODO: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
+//FEATURE_1: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
 
 //FEATURE_5: peddler becomes a retinue
 //FEATURE_5: anatomist becomes a retinue

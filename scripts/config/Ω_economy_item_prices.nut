@@ -96,16 +96,16 @@
 	//REMOVED
 	"supplies.cured_venison" : 0,
 	"supplies.goat_cheese" : 0,
-	"supplies.legend_human_parts" : 0, //TODO: Remove skill
+	"supplies.legend_human_parts" : 0, //FIXME: Remove skill
 	"supplies.fermented_unhold_heart" : 0,
 	"supplies.legend_yummy_sausages" : 0,
 	"supplies.black_marsh_stew" : 0,
-	"supplies.legend_porridge" : 0, //TODO: Remove from a lot of places
-	"supplies.legend_pudding" : 0, //TODO: Remove
-	"supplies.legend_pie" : 0, //TODO: Remove
-	"supplies.cured_rations" : 0, //TODO: Remove
-	"supplies.legend_cooking_spices" : 0,// FEATURE_2: Remove
-	"supplies.pickled_mushrooms" : 0,// FEATURE_2: Remove
+	"supplies.legend_porridge" : 0, //FIXME: Remove from a lot of places
+	"supplies.legend_pudding" : 0, //FIXME: Remove
+	"supplies.legend_pie" : 0, //FIXME: Remove
+	"supplies.cured_rations" : 0, //FIXME: Remove
+	"supplies.legend_cooking_spices" : 0,// FIXME: Remove
+	"supplies.pickled_mushrooms" : 0,// FIXME: Remove
 
 //TRADE
 	"misc.peat_bricks" : 34,
@@ -131,10 +131,10 @@
 	"misc.gold_ingots" : 6400, //FEATURE_7: redo item to be 1 ingot
 	//FEATURE_7: add gemstones
 	"misc.uncut_gems" : 840, //6 units of uncut emeralds
-	"misc.gemstones" : 700, //1 units of cut emeralds //TODO: Change to trade item
+	"misc.gemstones" : 700, //1 units of cut emeralds //FEATURE_3: Change to trade item
 	
 	//Removed
-	"misc.legend_cooking_spices" : 0, //TODO: Remove
+	"misc.legend_cooking_spices" : 0, //FIXME: Remove
 
 //TENTS
 	"tent.hunter_tent" : 200,
@@ -276,19 +276,19 @@
 	"tool.throwing_net" : 50, //FEATURE_5: refillable with tools
 	"tool.reinforced_throwing_net" : 150, //FEATURE_5: refillable with tools
 	"weapon.holy Water" : 100, //FEATURE_5: refillable with priest
-	"weapon.acid_flask" : 400, //FEATURE_5: refillable with alchemist
-	"weapon.smoke_bomb" : 400, //FEATURE_5: refillable with alchemist
-	"weapon.daze_bomb" : 500, //FEATURE_5: refillable with alchemist
-	"weapon.fire_bomb" : 600, //FEATURE_5: refillable with alchemist
+	"weapon.acid_flask" : 400, //FEATURE_5: refillable with alchemist retinue
+	"weapon.smoke_bomb" : 400, //FEATURE_5: refillable with alchemist retinue
+	"weapon.daze_bomb" : 500, //FEATURE_5: refillable with alchemist retinue
+	"weapon.fire_bomb" : 600, //FEATURE_5: refillable with alchemist retinue
 	"accessory.berserker_mushrooms" : 100,
 	"accessory.legend_apothecary_mushrooms" : 100,
 	"accessory.poison" : 100,
-	"accessory.antidote" : 150, //FEATURE_5: refillable with alchemist
-	"accessory.spider_poison" : 150, //FEATURE_5: refillable with alchemist, rename to poison
-	"accessory.iron_will_potion" : 300, //FEATURE_5: refillable with alchemist
-	"accessory.lionheart_potion" : 300, //FEATURE_5: refillable with alchemist
-	"accessory.night_vision_elixir" : 350, //FEATURE_5: refillable with alchemist
-	"accessory.recovery_potion" : 350, //FEATURE_5: refillable with alchemist
+	"accessory.antidote" : 150, //FEATURE_5: refillable with alchemist retinue
+	"accessory.spider_poison" : 150, //FEATURE_5: refillable with alchemist retinue, rename to poison
+	"accessory.iron_will_potion" : 300, //FEATURE_5: refillable with alchemist retinue
+	"accessory.lionheart_potion" : 300, //FEATURE_5: refillable with alchemist retinue
+	"accessory.night_vision_elixir" : 350, //FEATURE_5: refillable with alchemist retinue
+	"accessory.recovery_potion" : 350, //FEATURE_5: refillable with alchemist retinue, unlocks potion crafting
 	"accessory.legend_heartwood_sap_flask" : 3500,
 	"accessory.legend_skin_ghoul_blood_flask" : 3500,
 	"accessory.legend_stollwurm_blood_flask" : 3500,
