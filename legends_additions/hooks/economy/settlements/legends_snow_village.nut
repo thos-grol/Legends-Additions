@@ -157,7 +157,7 @@
 				"lumberjack_background",
 				"militia_background",
 				"miner_background",
-				"peddler_background",
+				
 				"poacher_background",
 				"poacher_background",
 				"poacher_background",
@@ -178,7 +178,7 @@
 				"lumberjack_background",
 				"militia_background",
 				"miner_background",
-				"peddler_background",
+				
 				"poacher_background",
 				"poacher_background",
 				"poacher_background",
@@ -203,7 +203,7 @@
 				"militia_background",
 				"militia_background",
 				"militia_background",
-				"peddler_background",
+				
 				
 				"poacher_background",
 				"poacher_background",

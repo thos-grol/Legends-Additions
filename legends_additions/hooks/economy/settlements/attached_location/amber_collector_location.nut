@@ -8,10 +8,8 @@
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 		if (!this.isActive()) return;
-		_list.push("peddler_background");
 		_list.push("caravan_hand_background");
 		_list.push("thief_background");
-		_list.push("peddler_background");
 		_list.push("caravan_hand_background");
 		_list.push("thief_background");
 	}

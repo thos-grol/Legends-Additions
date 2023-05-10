@@ -120,7 +120,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				"peddler_background",
+				
 				"thief_background",
 				"poacher_background",
 				"apprentice_background",
@@ -132,7 +132,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				"peddler_background",
+				
 				"poacher_background"
 			],
 			[
@@ -151,7 +151,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				"peddler_background",
+				
 				"ratcatcher_background",
 				"servant_background",
 				"shepherd_background",
@@ -171,7 +171,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				"peddler_background",
+				
 				"ratcatcher_background",
 				"shepherd_background",
 				"vagabond_background"
@@ -192,7 +192,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				"peddler_background",
+				
 				"ratcatcher_background",
 				"servant_background",
 				"shepherd_background",
@@ -212,7 +212,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				"peddler_background",
+				
 				"ratcatcher_background",
 				"shepherd_background",
 				"vagabond_background"

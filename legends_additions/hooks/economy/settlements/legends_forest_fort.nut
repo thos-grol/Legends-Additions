@@ -191,16 +191,16 @@
 		];
 		this.m.StablesLists = [
 			[
-				"legend_donkey_background",
-				"legend_horse_rouncey"
+				
+				
 			],
 			[
-				"legend_donkey_background",
-				"legend_horse_rouncey"
+				
+				
 			],
 			[
-				"legend_donkey_background",
-				"legend_horse_rouncey",
+				
+				,
 				"legend_horse_destrier",
 				"legend_horse_courser"
 			]
@@ -222,34 +222,14 @@
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
 
-		if (this.Const.World.Buildings.Kennels == 0)
+		local r = this.Math.rand(1, 2);
+		if (r == 1 || this.Const.World.Buildings.Fletchers == 0)
 		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/kennel_building"));
+			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/fletcher_building"));
 		}
-		else if (this.Const.World.Buildings.Stables == 0)
+		else if (r == 2)
 		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/stables_building"));
-		}
-		else
-		{
-			local r = this.Math.rand(1, 4);
-
-			if (r == 1 || this.Const.World.Buildings.Fletchers == 0)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/fletcher_building"));
-			}
-			else if (r == 2)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/armorsmith_building"));
-			}
-			else if (r == 3)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/kennel_building"));
-			}
-			else if (r == 4)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/stables_building"));
-			}
+			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 50)
@@ -373,34 +353,14 @@
 			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
 		}
 
-		if (this.Const.World.Buildings.Kennels == 0)
+		local r = this.Math.rand(1, 2);
+		if (r == 1)
 		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/kennel_building"));
+			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/tavern_building"));
 		}
-		else if (this.Const.World.Buildings.Stables == 0)
+		else if (r == 2)
 		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/stables_building"));
-		}
-		else
-		{
-			local r = this.Math.rand(1, 4);
-
-			if (r == 1)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/tavern_building"));
-			}
-			else if (r == 2)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
-			}
-			else if (r == 3)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/kennel_building"));
-			}
-			else if (r == 4)
-			{
-				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/stables_building"));
-			}
+			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 70)

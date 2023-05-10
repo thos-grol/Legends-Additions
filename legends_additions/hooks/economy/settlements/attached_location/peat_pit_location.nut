@@ -14,7 +14,6 @@
 		}
 
 		_list.push("daytaler_background");
-		_list.push("peddler_background");
 
 		if (_gender)
 		{

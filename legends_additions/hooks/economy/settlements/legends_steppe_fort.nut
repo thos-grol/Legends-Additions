@@ -265,11 +265,11 @@
 		];
 		this.m.StablesLists = [
 			[
-				"legend_donkey_background",
-				"legend_horse_rouncey"
+				
+				
 			],
 			[
-				"legend_horse_rouncey",
+				,
 				"legend_horse_destrier"
 			],
 			[

@@ -120,7 +120,7 @@
 				"daytaler_background",
 				"farmhand_background",
 				"miner_background",
-				"peddler_background",
+				
 				"poacher_background",
 				"shepherd_background",
 				"tailor_background",
@@ -128,7 +128,7 @@
 				"wildman_background",
 				"brawler_background",
 				"miner_background",
-				"peddler_background",
+				
 				"poacher_background",
 				"shepherd_background",
 				"vagabond_background",
@@ -151,7 +151,7 @@
 				"militia_background",
 				
 				
-				"peddler_background",
+				
 				"poacher_background",
 				"tailor_background",
 				"thief_background",
@@ -167,7 +167,7 @@
 				"messenger_background",
 				"militia_background",
 				
-				"peddler_background",
+				
 				"poacher_background",
 				"vagabond_background",
 				"wildman_background"
@@ -190,7 +190,7 @@
 				"militia_background",
 				
 				
-				"peddler_background",
+				
 				"poacher_background",
 				"ratcatcher_background",
 				"shepherd_background",

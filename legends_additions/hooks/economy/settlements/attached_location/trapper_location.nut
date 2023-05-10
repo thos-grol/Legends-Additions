@@ -14,7 +14,6 @@
 			return;
 		}
 
-		_list.push("peddler_background");
 		_list.push("caravan_hand_background");
 		_list.push("poacher_background");
 	}

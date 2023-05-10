@@ -22,7 +22,6 @@
 		_list.push("legend_blacksmith_background");
 		_list.push("apprentice_background");
 		_list.push("caravan_hand_background");
-		_list.push("peddler_background");
 		_list.push("daytaler_background");
 
 		if (_gender)

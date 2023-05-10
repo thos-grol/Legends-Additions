@@ -182,7 +182,7 @@
 				"militia_background",
 				
 				
-				"peddler_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"shepherd_background",
@@ -242,18 +242,18 @@
 		];
 		this.m.StablesLists = [
 			[
-				"legend_donkey_background",
+				
 				"legend_donkey_background"
 			],
 			[
-				"legend_donkey_background",
-				"legend_donkey_background",
-				"legend_horse_rouncey"
+				
+				
+				
 			],
 			[
-				"legend_donkey_background",
-				"legend_donkey_background",
-				"legend_horse_rouncey"
+				
+				
+				
 			]
 		];
 		this.m.Rumors = this.Const.Strings.RumorsFarmingSettlement;

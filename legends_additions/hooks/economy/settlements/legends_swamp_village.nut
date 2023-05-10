@@ -199,7 +199,7 @@
 				"militia_background",
 				
 				
-				"peddler_background",
+				
 				"poacher_background",
 				"ratcatcher_background",
 				"ratcatcher_background",

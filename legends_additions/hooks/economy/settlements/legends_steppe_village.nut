@@ -97,7 +97,7 @@
 				"gambler_background",
 				"daytaler_background",
 				"daytaler_background",
-				"peddler_background",
+				
 				"refugee_background",
 				"tailor_background",
 				"thief_background",
@@ -107,7 +107,7 @@
 				"brawler_background",
 				"caravan_hand_background",
 				"gambler_background",
-				"peddler_background",
+				
 				"refugee_background",
 				"vagabond_background",
 				"poacher_background"
@@ -126,7 +126,7 @@
 				"mason_background",
 				"militia_background",
 				
-				"peddler_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"refugee_background",
@@ -145,7 +145,7 @@
 				"hunter_background",
 				"mason_background",
 				"militia_background",
-				"peddler_background",
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"refugee_background",
@@ -170,8 +170,8 @@
 				
 				
 				
-				"peddler_background",
-				"peddler_background",
+				
+				
 				"ratcatcher_background",
 				"refugee_background",
 				"refugee_background",
@@ -221,8 +221,8 @@
 		];
 		this.m.StablesLists = [
 			[
-				"legend_donkey_background",
-				"legend_horse_rouncey",
+				
+				,
 				"legend_horse_destrier",
 				"legend_horse_courser"
 			],

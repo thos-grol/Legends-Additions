@@ -190,7 +190,7 @@
 				"militia_background",
 				"militia_background",
 				
-				"peddler_background",
+				
 				"poacher_background",
 				"poacher_background",
 				"poacher_background",
@@ -239,16 +239,16 @@
 		];
 		this.m.StablesLists = [
 			[
-				"legend_donkey_background",
-				"legend_horse_rouncey"
+				
+				
 			],
 			[
-				"legend_donkey_background",
-				"legend_horse_rouncey"
+				
+				
 			],
 			[
-				"legend_donkey_background",
-				"legend_horse_rouncey"
+				
+				
 			]
 		];
 

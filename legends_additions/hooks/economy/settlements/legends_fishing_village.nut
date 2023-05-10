@@ -108,7 +108,7 @@
 				"fisherman_background",
 				"fisherman_background",
 				"gravedigger_background",
-				"peddler_background",
+				
 				"tailor_background",
 				"vagabond_background",
 				"vagabond_background",
@@ -118,7 +118,7 @@
 				"fisherman_background",
 				"fisherman_background",
 				"gravedigger_background",
-				"peddler_background",
+				
 				"vagabond_background",
 				"vagabond_background"
 			],
@@ -142,7 +142,7 @@
 				"messenger_background",
 				"militia_background",
 				
-				"peddler_background",
+				
 				
 				"ratcatcher_background",
 				"refugee_background",
@@ -168,7 +168,7 @@
 				"messenger_background",
 				"militia_background",
 				
-				"peddler_background",
+				
 				
 				"ratcatcher_background",
 				"refugee_background",
@@ -200,7 +200,7 @@
 				
 				"cripple_background",
 				"eunuch_background",
-				"peddler_background",
+				
 				
 				"ratcatcher_background",
 				"refugee_background",

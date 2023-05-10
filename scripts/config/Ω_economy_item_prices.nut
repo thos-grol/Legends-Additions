@@ -14,11 +14,6 @@
 // 	- tie that currency to another currency ie. resources that are used in multiple ways
 // 	- overhauled crafting system so players don't sell their items but use them elsewhere/break them down
 
-
-//TODO: this.World.Assets.addMoney
-	//overhaul contract pay
-	//event pay/prices
-
 //FEATURE_4: Barbarians stats are higher than average humans due to needing to survive
 
 //FEATURE_8: overhaul enemy equipment/builds
@@ -158,7 +153,7 @@
 //SPAWNS
 	"spawns.skeleton" : 0,
 	"spawns.zombie" : 0,
-	"spawns.donkey" : 0, //TODO: Remove
+	"spawns.donkey" : 0,
 	"spawns.cart_01" : 260,
 	"spawns.cart_02" : 400,
 
@@ -266,7 +261,7 @@
 	"misc.trade_jug" : 0,
 	"misc.golden_goose" : 0, //FEATURE_3: Remove the golden goose for now
 
-//RUNE_SIGILS //TODO: Rune prices
+//RUNE_SIGILS //FEATURE_5: Rune prices
 	"token.legend_vala_inscription" : 0,
 	"legend_helmet_upgrade.legend_rune_bravery" : 0,
 	"legend_helmet_upgrade.legend_rune_clarity" : 0,
@@ -372,7 +367,7 @@
 	"weapon.legend_katar" : 120,               			//( 30,  45) | AP: 0.30 | AE: 1.25
 	
 	//SWORD
-	//TODO: swords are rarer, usually only equipped by swordmasters/nobles/strong units
+	//FEATURE_1: swords are rarer, usually only equipped by swordmasters/nobles/strong units
 	//1H
 	"weapon.broken_ancient_sword" : 0,        			//( 30,  35) | AP: 0.20 | AE: 0.75
 	"weapon.legend_skin_flayer" : 0,         			//( 45,  60) | AP: 0.20 | AE: 0.90

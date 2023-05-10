@@ -1,5 +1,13 @@
 Economy Overhaul
-    //FEATURE_3: change money added from contracts and events
+//TODO: edit background prices and items
+    //remove throwing weapons and staffs from troops and backgrounds
+
+//TODO: script to generate all ambitions
+
+//TODO: script to generate all contracts
+    //TODO: change money added from contracts and events
+    //this.World.Assets.addMoney
+    //TODO: disable donkey events
 
     //FEATURE_4: remove most events that give free stuff, you need traits etc to earn them
     //FEATURE_3: start making the world poorer, troop equipment nerf
@@ -9,14 +17,16 @@ Economy Overhaul
 //FEATURE_4: sellswords armor rework? - no perks needed, buffs granted based on armor weight
 //FEATURE_8: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
 
-    //TODO: remove throwing weapons and staffs from troops and backgrounds
-
 //TODO: remove training
-//TODO: rework crafting
-//TODO: rework retinue to use anatomist
+    //training retinue with upgrades? retired soldier -> soldier -> old swordmaster
+//TODO: remove crafting
+//TODO: rebalance salvaging
 
-//TODO: most mobs besides top tier mobs will be using at most chain armor
+//FEATURE_1: most mobs besides top tier mobs will be using at most chain armor
 //TODO: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
+
+//FEATURE_5: peddler becomes a retinue
+//FEATURE_5: anatomist becomes a retinue
 
 //FEATURE_4: muscularity for bows and slings
 //FEATURE_4: bow perk that has a chance to make shot have 99% AP based on range skill
