@@ -1,3 +1,4 @@
+//Item prices
 ::mods_hookDescendants("items/item", function (o)
 {
     local create = o.create;
@@ -138,4 +139,34 @@
 		
 		return this.Math.ceil(this.getValue() * this.getPriceMult());
 	};
+});
+
+//Background Prices
+::mods_hookExactClass("skills/backgrounds/character_background", function(o)
+{
+	o.adjustHiringCostBasedOnEquipment = function()
+	{
+		local actor = this.getContainer().getActor();
+		//actor.m.HiringCost = this.Math.floor(this.m.HiringCost + this.Math.pow(this.m.Level - 1, 1.5));
+		//TODO: if actor reaches level 11, upgrade his cost tier by 1 or to soldier, whichever one is higher
+		//TODO: oathtaker armor, replace with hedge knight gear
+		local items = actor.getItems().getAllItems();
+		local cost = 0;
+
+		foreach( i in items )
+		{
+			cost = cost + i.getValue();
+		}
+
+		actor.m.HiringCost = actor.m.HiringCost + this.Math.ceil(cost * 1.1);
+	}
+
+});
+
+::mods_hookExactClass("entity/tactical/player", function(o)
+{
+	o.getTryoutCost = function()
+	{
+		return this.m.CurrentProperties.DailyWage;
+	}
 });

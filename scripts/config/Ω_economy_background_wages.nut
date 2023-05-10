@@ -323,12 +323,12 @@
 		"HiringCost" : 6,
 		"DailyCost" : 3
 	},
+	"background.brawler" : {
+		"HiringCost" : 6,
+		"DailyCost" : 3
+	},
 
 	//SOLDIER
-	"background.brawler" : {
-		"HiringCost" : 24,
-		"DailyCost" : 12
-	},
 	"background.squire" : {
 		"HiringCost" : 24,
 		"DailyCost" : 12
@@ -350,6 +350,10 @@
 		"DailyCost" : 12
 	},
 	"background.sellsword" : {
+		"HiringCost" : 24,
+		"DailyCost" : 12
+	},
+	"background.witchhunter" : {
 		"HiringCost" : 24,
 		"DailyCost" : 12
 	},
@@ -378,10 +382,6 @@
 		"DailyCost" : 24
 	},
 	"background.beast_slayer" : {
-		"HiringCost" : 48,
-		"DailyCost" : 24
-	},
-	"background.witchhunter" : {
 		"HiringCost" : 48,
 		"DailyCost" : 24
 	},

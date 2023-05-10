@@ -29,6 +29,7 @@
 		};
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
+		this.m.Modifiers.Crafting = this.Const.LegendMod.ResourceModifiers.Crafting[0];
 	}
 
 	o.onAddEquipment = function()
