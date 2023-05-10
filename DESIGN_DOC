@@ -1,7 +1,6 @@
 Economy Overhaul
 
 
-//TODO: remove taxidermist
 //TODO: tweak hiring cost fns
     //TODO: function adjustHiringCostBasedOnEquipment()
     //TODO: function getTryoutCost

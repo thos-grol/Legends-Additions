@@ -191,18 +191,10 @@
 		];
 		this.m.StablesLists = [
 			[
-				
-				
 			],
 			[
-				
-				
 			],
 			[
-				
-				,
-				"legend_horse_destrier",
-				"legend_horse_courser"
 			]
 		];
 

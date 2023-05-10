@@ -208,7 +208,7 @@
 		}
 
 		this.m.Settlement.onUpdateShopList(this.m.ID, list);
-		this.fillStash(list, this.m.Stash, 1.1, false);
+		this.fillStash(list, this.m.Stash, 1.0, false);
 	}
 
 });

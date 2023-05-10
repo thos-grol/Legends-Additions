@@ -86,12 +86,12 @@
 			local mult_old = mult;
 			mult = this.Math.minf(this.Math.maxf(mult, 0.5), 1.25); //sell price can't be lower than 50% or higher than 125%
 
-			::logInfo(this.m.ID);
-			::logInfo("item.getSellPriceMult() = " + this.getSellPriceMult());
-			::logInfo("this.Const.World.Assets.BaseSellPrice = " + this.Const.World.Assets.BaseSellPrice);
-			::logInfo("settlement.getSellPriceMult() = " + this.World.State.getCurrentTown().getSellPriceMult());
-			::logInfo("mult = " + mult_old);
-			::logInfo("after this.Math.min(this.Math.max(mult, 0.5), 1.25) = " + mult);
+			// ::logInfo(this.m.ID);
+			// ::logInfo("item.getSellPriceMult() = " + this.getSellPriceMult());
+			// ::logInfo("this.Const.World.Assets.BaseSellPrice = " + this.Const.World.Assets.BaseSellPrice);
+			// ::logInfo("settlement.getSellPriceMult() = " + this.World.State.getCurrentTown().getSellPriceMult());
+			// ::logInfo("mult = " + mult_old);
+			// ::logInfo("after this.Math.min(this.Math.max(mult, 0.5), 1.25) = " + mult);
 
 			return this.Math.floor(this.getValue() * mult);
 		}
@@ -126,12 +126,12 @@
 			local mult_old = mult;
 			mult = this.Math.maxf(0.75, mult);
 
-			::logInfo(this.m.ID);
-			::logInfo("item.getBuyPriceMult() = " + this.getBuyPriceMult());
-			::logInfo("item.getPriceMult() = " + this.getPriceMult());
-			::logInfo("settlement.getBuyPriceMult() = " + this.World.State.getCurrentTown().getBuyPriceMult());
-			::logInfo("mult = " + mult_old);
-			::logInfo("after this.Math.max(0.75, mult) = " + mult);
+			// ::logInfo(this.m.ID);
+			// ::logInfo("item.getBuyPriceMult() = " + this.getBuyPriceMult());
+			// ::logInfo("item.getPriceMult() = " + this.getPriceMult());
+			// ::logInfo("settlement.getBuyPriceMult() = " + this.World.State.getCurrentTown().getBuyPriceMult());
+			// ::logInfo("mult = " + mult_old);
+			// ::logInfo("after this.Math.max(0.75, mult) = " + mult);
 
 			return this.Math.ceil(this.getValue() *  mult); //buy price can't be lower than 75%
 		}

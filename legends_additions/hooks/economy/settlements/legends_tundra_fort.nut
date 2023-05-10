@@ -203,17 +203,10 @@
 		];
 		this.m.StablesLists = [
 			[
-				
-				
 			],
 			[
-				
-				
 			],
 			[
-				
-				,
-				"legend_horse_destrier"
 			]
 		];
 		this.m.Rumors = this.Const.Strings.RumorsTundraSettlement;
