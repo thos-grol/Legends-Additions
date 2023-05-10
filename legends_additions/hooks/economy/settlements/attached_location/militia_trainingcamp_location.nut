@@ -108,11 +108,6 @@
 						R = 40,
 						P = 1.0,
 						S = "weapons/goedendag"
-					},
-					{
-						R = 20,
-						P = 1.0,
-						S = "weapons/throwing_spear"
 					}
 				]);
 			}

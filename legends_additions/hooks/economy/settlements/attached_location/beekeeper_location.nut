@@ -20,13 +20,15 @@
 
 	o.onUpdateShopList = function( _id, _list )
 	{
-		if (_id == "building.marketplace")
+		switch(_id)
 		{
-			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "supplies/mead_item"
-			});
+			case "building.marketplace":
+				_list.push({
+					R = 0,
+					P = 1.0,
+					S = "supplies/mead_item"
+				});
+			break;
 		}
 	}
 

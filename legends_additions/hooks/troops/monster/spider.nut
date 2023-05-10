@@ -51,7 +51,7 @@
 						Start = this.Time.getRealTimeF(),
 						Vector = this.createVec(0.0, -1.0),
 						Iterations = 0,
-	o.onCorpseEffect = function( _data )
+						function onCorpseEffect( _data )
 						{
 							if (this.Time.getRealTimeF() - _data.Start > 0.2)
 							{

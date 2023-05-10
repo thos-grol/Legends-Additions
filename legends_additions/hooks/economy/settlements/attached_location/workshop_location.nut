@@ -38,12 +38,12 @@
 		case "building.marketplace":
 			_list.push({
 				R = 20,
-				P = 1.0,
+				P = 0.9,
 				S = "supplies/armor_parts_item"
 			});
 			_list.push({
 				R = 20,
-				P = 1.0,
+				P = 0.9,
 				S = "supplies/armor_parts_item"
 			});
 			break;

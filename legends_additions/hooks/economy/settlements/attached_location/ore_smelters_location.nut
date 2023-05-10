@@ -18,24 +18,15 @@
 	{
 		switch(_id)
 		{
-		case "building.marketplace":
-			_list.push({
-				R = 25,
-				P = 1.0,
-				S = "supplies/armor_parts_item"
-			});
+			case "building.marketplace":
+				_list.push({
+					R = 25,
+					P = 1.0,
+					S = "supplies/armor_parts_item"
+				});
 			break;
 
-		default:
-			switch(_id)
-			{
-			case "building.specialized_trader":
-				break;
-
-			default:
-				switch(_id)
-				{
-				case "building.weaponsmith":
+			case "building.weaponsmith":
 					_list.push({
 						R = 35,
 						P = 1.0,
@@ -81,14 +72,7 @@
 						P = 1.0,
 						S = "weapons/two_handed_hammer"
 					});
-					break;
-
-				default:
-					if (_id == "building.armorsmith")
-					{
-					}
-				}
-			}
+				break;
 		}
 	}
 

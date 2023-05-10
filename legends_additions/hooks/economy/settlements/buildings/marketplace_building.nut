@@ -8,64 +8,9 @@
 				S = "armor/linen_tunic"
 			},
 			{
-				R = 25,
-				P = 1.0,
-				S = "armor/thick_tunic"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "helmets/straw_hat"
-			},
-			{
 				R = 20,
 				P = 1.0,
 				S = "helmets/hood"
-			},
-			{
-				R = 15,
-				P = 1.0,
-				S = "shields/buckler_shield"
-			},
-			{
-				R = 20,
-				P = 1.0,
-				S = "shields/wooden_shield"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "supplies/medicine_item"
-			},
-			{
-				R = 0,
-				P = 1.0,
-				S = "supplies/ammo_item"
-			},
-			{
-				R = 0,
-				P = 1.0,
-				S = "supplies/ammo_small_item"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "supplies/armor_parts_item"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "supplies/armor_parts_small_item"
-			},
-			{
-				R = 50,
-				P = 1.0,
-				S = "supplies/armor_parts_item"
-			},
-			{
-				R = 50,
-				P = 1.0,
-				S = "supplies/armor_parts_small_item"
 			}
 		];
 
@@ -79,7 +24,7 @@
 			list.push({
 				R = 50,
 				P = 1.0,
-				S = "supplies/armor_parts_item"
+				S = "supplies/armor_parts_small_item"
 			});
 		}
 
@@ -171,17 +116,6 @@
 				P = 1.0,
 				S = "supplies/wine_item"
 			});
-		}
-
-		if (this.Const.DLC.Unhold)
-		{
-			list.extend([
-				{
-					R = 90,
-					P = 1.0,
-					S = "weapons/two_handed_wooden_hammer"
-				}
-			]);
 		}
 
 		this.m.Settlement.onUpdateShopList(this.m.ID, list);

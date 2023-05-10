@@ -8,10 +8,7 @@
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 
-		if (!this.isActive())
-		{
-			return;
-		}
+		if (!this.isActive()) return;
 
 		_list.push("miner_background");
 		_list.push("miner_background");
@@ -26,25 +23,20 @@
 		case "building.marketplace":
 			_list.push({
 				R = 0,
-				P = 1.0,
+				P = 0.9,
 				S = "trade/copper_ingots_item"
 			});
 			_list.push({
 				R = 25,
-				P = 1.0,
+				P = 0.9,
 				S = "supplies/armor_parts_small_item"
 			});
 			_list.push({
 				R = 25,
-				P = 1.0,
+				P = 0.9,
 				S = "supplies/armor_parts_item"
 			});
 			break;
-
-		default:
-			if (_id == "building.specialized_trader")
-			{
-			}
 		}
 	}
 

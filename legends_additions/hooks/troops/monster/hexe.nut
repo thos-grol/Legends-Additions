@@ -237,6 +237,4 @@
 		}
 	}
 
-			this.Time.scheduleEvent(this.TimeUnit.Virtual, t + 100, function ( _e )
-			this.Time.scheduleEvent(this.TimeUnit.Virtual, t + 100, function ( _e )
 });

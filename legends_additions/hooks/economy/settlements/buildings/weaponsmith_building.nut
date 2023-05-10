@@ -281,11 +281,6 @@
 					R = 90,
 					P = 1.0,
 					S = "weapons/legend_estoc"
-				},
-				{
-					R = 10,
-					P = 1.0,
-					S = "weapons/throwing_spear"
 				}
 			]);
 		}

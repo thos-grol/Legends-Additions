@@ -176,11 +176,6 @@
 						R = 55,
 						P = 1.0,
 						S = "weapons/polehammer"
-					},
-					{
-						R = 55,
-						P = 1.0,
-						S = "weapons/throwing_spear"
 					}
 				]);
 			}

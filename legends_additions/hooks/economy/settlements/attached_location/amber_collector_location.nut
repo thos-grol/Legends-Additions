@@ -20,18 +20,13 @@
 	{
 		switch(_id)
 		{
-		case "building.marketplace":
-			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "trade/amber_shards_item"
-			});
+			case "building.marketplace":
+				_list.push({
+					R = 0,
+					P = 1.0,
+					S = "trade/amber_shards_item"
+				});
 			break;
-
-		default:
-			if (_id == "building.specialized_trader")
-			{
-			}
 		}
 	}
 

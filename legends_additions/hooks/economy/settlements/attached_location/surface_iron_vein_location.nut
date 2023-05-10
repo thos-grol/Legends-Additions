@@ -25,72 +25,19 @@
 	{
 		switch(_id)
 		{
-		case "building.marketplace":
-			_list.push({
-				R = 25,
-				P = 1.0,
-				S = "supplies/armor_parts_item"
-			});
-			break;
-
-		default:
-			switch(_id)
-			{
-			case "building.specialized_trader":
+			case "building.marketplace":
+				_list.push({
+					R = 25,
+					P = 0.9,
+					S = "supplies/armor_parts_item"
+				});
+				_list.push({
+					R = 25,
+					P = 0.9,
+					S = "trade/iron_ingots_item"
+				});
 				break;
 
-			default:
-				switch(_id)
-				{
-				case "building.weaponsmith":
-					_list.push({
-						R = 55,
-						P = 1.0,
-						S = "weapons/falchion"
-					});
-					_list.push({
-						R = 60,
-						P = 1.0,
-						S = "weapons/morning_star"
-					});
-					_list.push({
-						R = 60,
-						P = 1.0,
-						S = "weapons/legend_tipstaff"
-					});
-					_list.push({
-						R = 70,
-						P = 1.0,
-						S = "weapons/arming_sword"
-					});
-					_list.push({
-						R = 70,
-						P = 1.0,
-						S = "weapons/military_cleaver"
-					});
-					_list.push({
-						R = 60,
-						P = 1.0,
-						S = "weapons/winged_mace"
-					});
-					_list.push({
-						R = 60,
-						P = 1.0,
-						S = "weapons/pike"
-					});
-					_list.push({
-						R = 70,
-						P = 1.0,
-						S = "weapons/longaxe"
-					});
-					break;
-
-				default:
-					if (_id == "building.armorsmith")
-					{
-					}
-				}
-			}
 		}
 	}
 

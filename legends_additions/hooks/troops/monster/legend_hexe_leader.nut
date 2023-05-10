@@ -268,6 +268,4 @@
 		this.m.Items.equip(this.new("scripts/items/weapons/legend_staff_gnarled"));
 	}
 
-			this.Time.scheduleEvent(this.TimeUnit.Virtual, t + 100, function ( _e )
-			this.Time.scheduleEvent(this.TimeUnit.Virtual, t + 100, function ( _e )
 });
