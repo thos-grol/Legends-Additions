@@ -8,7 +8,7 @@
 			[3, ::Const.Perks.ScoutClassTree],
 			[3, ::Const.Perks.MediumArmorTree],
 			[9, ::Const.Perks.BowTree],
-			[2.4, ::Const.Perks.CrossbowTree],
+			[0, ::Const.Perks.CrossbowTree],
 			[3, ::Const.Perks.SlingTree],
 			[0, ::Const.Perks.StaffTree],
 			[0, ::Const.Perks.ThrowingTree],
@@ -28,7 +28,7 @@
 			Weapon = [
 				::MSU.Class.WeightedContainer([
 					[25, ::Const.Perks.BowTree],
-					[25, ::Const.Perks.CrossbowTree],
+					[0, ::Const.Perks.CrossbowTree],
 					[25, ::Const.Perks.SlingTree],
 					[0, ::Const.Perks.ThrowingTree]
 				])

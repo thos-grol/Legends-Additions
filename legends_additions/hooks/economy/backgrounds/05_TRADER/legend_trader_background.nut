@@ -7,7 +7,6 @@
 
 	 	::PTR.HooksHelper.addPerkTreesToCustomPerkTree(this.m.CustomPerkTree,
 			 [
-			 	 ::Const.Perks.CrossbowTree,
 				 ::Const.Perks.SwordTree,
 				 ::Const.Perks.SpearTree,
 				 ::Const.Perks.OneHandedTree,

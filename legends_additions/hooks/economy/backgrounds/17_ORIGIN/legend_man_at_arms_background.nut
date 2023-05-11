@@ -4,7 +4,7 @@
 	{
 		create();
 		this.m.PerkGroupMultipliers <- [
-			[0.8, ::Const.Perks.CrossbowTree],
+			[0, ::Const.Perks.CrossbowTree],
 			[0.5, ::Const.Perks.SlingTree]
 		];
 

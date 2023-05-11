@@ -93,35 +93,59 @@
 			items.equip(this.new("scripts/items/" + shields[this.Math.rand(0, shields.len() - 1)]));
 		}
 
-		r = this.Math.rand(0, 5);
 		items.equip(this.Const.World.Common.pickArmor([
 			[
-				2,
-				"adorned_mail_shirt"
-			],
-			[
-				2,
-				"adorned_warriors_armor"
+				1,
+				"mail_hauberk"
 			],
 			[
 				1,
-				"adorned_heavy_mail_hauberk"
-			]
-		]));
-		items.equip(this.Const.World.Common.pickHelmet([
-			[
-				2,
-				"heavy_mail_coif"
-			],
-			[
-				2,
-				"adorned_closed_flat_top_with_mail"
+				"basic_mail_shirt"
 			],
 			[
 				1,
-				"adorned_full_helm"
+				"scale_armor"
+			],
+			[
+				1,
+				"reinforced_mail_hauberk"
+			],
+			[
+				1,
+				"worn_mail_shirt"
 			]
 		]));
+		local helm = [
+			[
+				1,
+				"nasal_helmet"
+			],
+			[
+				1,
+				"nasal_helmet_with_mail"
+			],
+			[
+				1,
+				"mail_coif"
+			],
+			[
+				1,
+				"bascinet_with_mail"
+			],
+			[
+				1,
+				"closed_flat_top_helmet"
+			]
+		];
+
+		if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
+		{
+			helm.push([
+				1,
+				"theamson_barbute_helmet"
+			]);
+		}
+		items.equip(this.Const.World.Common.pickHelmet(helm));
 	}
 
 });

@@ -13,7 +13,7 @@
 			[2, ::Const.Perks.OrganisedTree],
 			[0.33, ::Const.Perks.LightArmorTree],
 			[0, ::Const.Perks.BowTree],
-			[0.1, ::Const.Perks.CrossbowTree],
+			[0, ::Const.Perks.CrossbowTree],
 			[0, ::Const.Perks.SlingTree]
 		];
 

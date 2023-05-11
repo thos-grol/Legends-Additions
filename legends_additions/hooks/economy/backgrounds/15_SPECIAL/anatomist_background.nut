@@ -11,7 +11,7 @@
 			[3, ::Const.Perks.HealerClassTree],
 			[0, ::Const.Perks.HoundmasterClassTree],
 			[0, ::Const.Perks.BowTree],
-			[0.4, ::Const.Perks.CrossbowTree],
+			[0, ::Const.Perks.CrossbowTree],
 			[0, ::Const.Perks.SlingTree],
 			[0, ::Const.Perks.RangedTree]
 		];

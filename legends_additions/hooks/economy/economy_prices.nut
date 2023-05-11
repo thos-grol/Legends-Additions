@@ -149,7 +149,6 @@
 		local actor = this.getContainer().getActor();
 		//actor.m.HiringCost = this.Math.floor(this.m.HiringCost + this.Math.pow(this.m.Level - 1, 1.5));
 		//TODO: if actor reaches level 11, upgrade his cost tier by 1 or to soldier, whichever one is higher
-		//TODO: oathtaker armor, replace with hedge knight gear
 		local items = actor.getItems().getAllItems();
 		local cost = 0;
 
@@ -167,6 +166,6 @@
 {
 	o.getTryoutCost = function()
 	{
-		return this.m.CurrentProperties.DailyWage;
+		return this.Math.max(0, this.Math.ceil(this.m.CurrentProperties.DailyWage));
 	}
 });

@@ -20,7 +20,7 @@
 			Weapon = [
 				::MSU.Class.WeightedContainer([
 					[25, ::Const.Perks.BowTree],
-					[25, ::Const.Perks.CrossbowTree],
+					[0, ::Const.Perks.CrossbowTree],
 					[25, ::Const.Perks.SlingTree],
 					[0, ::Const.Perks.ThrowingTree]
 				])
