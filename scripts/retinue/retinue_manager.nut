@@ -1,3 +1,4 @@
+//Scout (I) -> Scout (II) (Lookout) -> Scout III (Scavenger) upgrade path
 this.retinue_manager <- {
 	m = {
 		Followers = [],
@@ -57,32 +58,14 @@ this.retinue_manager <- {
 
 	function getNumberOfUnlockedSlots()
 	{
-		local unlocked = 0;
-
-		for( local i = 0; i < this.m.Slots.len(); i = ++i )
-		{
-			if (this.World.Assets.getBusinessReputation() >= this.Const.BusinessReputation[this.Const.FollowerSlotRequirements[i]])
-			{
-				unlocked = ++unlocked;
-			}
-		}
-
-		return unlocked;
+		return this.m.Slots.len();
 	}
 
 	function getCurrentFollowersForUI()
 	{
 		local ret = [];
 		ret.resize(this.m.Slots.len());
-		local unlocked = 0;
-
-		for( local i = 0; i < this.m.Slots.len(); i = ++i )
-		{
-			if (this.World.Assets.getBusinessReputation() >= this.Const.BusinessReputation[this.Const.FollowerSlotRequirements[i]])
-			{
-				unlocked = ++unlocked;
-			}
-		}
+		local unlocked = this.m.Slots.len();
 
 		foreach( i, p in this.m.Slots )
 		{
