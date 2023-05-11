@@ -37,10 +37,7 @@
 		{
 			items.equip(this.new("scripts/items/weapons/legend_shovel"));
 		}
-		else if (r == 1)
-		{
-			items.equip(this.new("scripts/items/weapons/legend_staff"));
-		}
+		
 
 		items.equip(this.Const.World.Common.pickArmor([
 			[

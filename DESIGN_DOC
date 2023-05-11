@@ -1,15 +1,11 @@
 Economy Overhaul
 
-//TODO: edit background prices and items
-    //remove throwing weapons and staffs from troops and backgrounds
+//TODO: 1 difficulty, remove/lock many sliders and options from legends
 
 //TODO: script to generate all ambitions
-
 //TODO: script to generate all contracts
     //TODO: change money added from contracts and events
     //this.World.Assets.addMoney
-    
-
     //FEATURE_4: remove most events that give free stuff, you need traits etc to earn them
     
 

@@ -24,14 +24,8 @@
 		items.equip(this.Const.World.Common.pickArmor([
 			[
 				1,
-				"noble_tunic"
-			]
-		]));
-		items.equip(this.Const.World.Common.pickHelmet([
-			[
-				1,
-				"feathered_hat"
-			]
+				"linen_tunic"
+			],
 		]));
 	}
 

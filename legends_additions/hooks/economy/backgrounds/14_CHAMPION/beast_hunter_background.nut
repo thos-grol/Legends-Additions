@@ -48,7 +48,7 @@
 	{
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(1, 4);
+		r = this.Math.rand(1, 3);
 
 		if (r == 1)
 		{
@@ -63,10 +63,6 @@
 		else if (r == 3)
 		{
 			items.equip(this.new("scripts/items/weapons/spetum"));
-		}
-		else if (r == 4)
-		{
-			items.equip(this.new("scripts/items/weapons/javelin"));
 		}
 
 		if (this.Math.rand(1, 100) <= 50 && items.getItemAtSlot(this.Const.ItemSlot.Offhand) == null)

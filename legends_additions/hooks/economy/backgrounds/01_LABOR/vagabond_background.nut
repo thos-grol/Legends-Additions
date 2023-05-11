@@ -33,10 +33,7 @@
 		{
 			items.equip(this.new("scripts/items/weapons/legend_saw"));
 		}
-		else if (r == 1)
-		{
-			items.equip(this.new("scripts/items/weapons/legend_staff"));
-		}
+		
 
 		r = this.Math.rand(0, 3);
 		items.equip(this.Const.World.Common.pickArmor([

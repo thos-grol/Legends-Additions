@@ -68,10 +68,6 @@
 			[
 				1,
 				"padded_surcoat"
-			],
-			[
-				1,
-				"gambeson"
 			]
 		]));
 		local item = this.Const.World.Common.pickHelmet([

@@ -61,10 +61,6 @@
 			[
 				1,
 				"padded_surcoat"
-			],
-			[
-				1,
-				"gambeson"
 			]
 		]));
 		items.equip(this.new("scripts/items/weapons/woodcutters_axe"));

@@ -60,10 +60,6 @@
 			],
 			[
 				1,
-				"gambeson"
-			],
-			[
-				1,
 				"basic_mail_shirt"
 			],
 			[

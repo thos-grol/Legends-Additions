@@ -22,11 +22,7 @@
 		local r;
 		r = this.Math.rand(0, 4);
 
-		if (r == 0)
-		{
-			items.equip(this.new("scripts/items/weapons/legend_staff"));
-		}
-		else if (r == 1)
+		if (r == 1)
 		{
 			items.equip(this.new("scripts/items/weapons/wooden_stick"));
 		}

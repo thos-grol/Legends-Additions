@@ -59,7 +59,7 @@
 //patched hood
 //leather jacket
 //simple leather jacket
-::Const.World.Assets.BaseSellPrice = 0.72;
+::Const.World.Assets.BaseSellPrice = 0.62;
 ::Z.Economy.Items <- {
 //SUPPLIES
 	"supplies.ammo_small" : 30,

@@ -86,7 +86,6 @@
 		stash.removeByID("supplies.ground_grains");
 		stash.removeByID("supplies.ground_grains");
 		stash.add(this.new("scripts/items/supplies/roots_and_berries_item"));
-		stash.add(this.new("scripts/items/weapons/throwing_axe"));
 		items.equip(this.Const.World.Common.pickArmor([
 			[
 				1,

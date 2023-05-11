@@ -41,11 +41,6 @@
 			items.equip(this.new("scripts/items/weapons/knife"));
 		}
 
-		if (r == 1)
-		{
-			items.equip(this.new("scripts/items/weapons/throwing_spear"));
-		}
-
 		items.equip(this.new("scripts/items/tools/throwing_net"));
 		items.equip(this.Const.World.Common.pickArmor([
 			[

@@ -36,16 +36,6 @@
 				R = 50,
 				P = 1.0,
 				S = "tools/acid_flask_item"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "accessory/antidote_item"
-			},
-			{
-				R = 30,
-				P = 1.0,
-				S = "accessory/antidote_item"
 			}
 		];
 

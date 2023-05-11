@@ -79,10 +79,6 @@
 			[
 				1,
 				"padded_surcoat"
-			],
-			[
-				1,
-				"gambeson"
 			]
 		]));
 		items.equip(this.Const.World.Common.pickHelmet([

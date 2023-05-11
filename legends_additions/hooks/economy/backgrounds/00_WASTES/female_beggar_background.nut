@@ -29,11 +29,7 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/knife"));
-		}
-		else if (r == 1)
-		{
-			items.equip(this.new("scripts/items/weapons/legend_staff"));
+			items.equip(this.new("scripts/items/weapons/wooden_stick"));
 		}
 
 		items.equip(this.Const.World.Common.pickArmor([
@@ -44,14 +40,6 @@
 			[
 				1,
 				"leather_wraps"
-			],
-			[
-				1,
-				"legend_maid_dress"
-			],
-			[
-				1,
-				"legend_maid_apron"
 			]
 		]));
 		local item = this.Const.World.Common.pickHelmet([

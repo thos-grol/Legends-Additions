@@ -40,10 +40,6 @@
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_staff"));
-		}
-		else if (r == 4)
-		{
 			items.equip(this.new("scripts/items/weapons/legend_sling"));
 		}
 

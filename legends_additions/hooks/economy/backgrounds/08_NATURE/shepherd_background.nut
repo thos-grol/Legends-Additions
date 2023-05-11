@@ -24,12 +24,10 @@
 		local items = this.getContainer().getActor().getItems();
 		local r;
 
-		if (this.Const.DLC.Wildmen)
+		r = this.Math.rand(0, 4);
+		if (r <= 3)
 		{
-			if (this.Math.rand(1, 100) <= 66)
-			{
-				items.equip(this.new("scripts/items/weapons/legend_sling"));
-			}
+			items.equip(this.new("scripts/items/weapons/legend_sling"));
 		}
 
 		items.equip(this.Const.World.Common.pickArmor([
@@ -47,17 +45,7 @@
 				this.Math.rand(6, 7)
 			]
 		]));
-		r = this.Math.rand(0, 4);
-
-		if (r <= 3)
-		{
-			items.equip(this.new("scripts/items/weapons/legend_sling"));
-		}
-		else if (r == 4)
-		{
-			items.equip(this.new("scripts/items/weapons/legend_staff"));
-		}
-
+		
 		items.equip(this.Const.World.Common.pickHelmet([
 			[
 				1,

@@ -39,11 +39,6 @@
 				S = "supplies/medicine_small_item"
 			});
 			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "accessory/bandage_item"
-			});
-			_list.push({
 				R = 80,
 				P = 1.0,
 				S = "tents/tent_heal"
@@ -52,11 +47,6 @@
 				R = 90,
 				P = 1.0,
 				S = "tents/tent_gather"
-			});
-			_list.push({
-				R = 50,
-				P = 1.0,
-				S = "accessory/antidote_item"
 			});
 			_list.push({
 				R = 20,

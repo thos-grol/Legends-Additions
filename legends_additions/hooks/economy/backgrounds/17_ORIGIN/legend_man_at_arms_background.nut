@@ -35,7 +35,6 @@
 			"weapons/military_pick",
 			"weapons/hand_axe",
 			"weapons/legend_glaive",
-			"weapons/javelin",
 			"weapons/scramasax"
 		];
 		items.equip(this.Const.World.Common.pickArmor([

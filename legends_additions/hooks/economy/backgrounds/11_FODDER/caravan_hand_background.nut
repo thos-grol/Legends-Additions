@@ -52,10 +52,6 @@
 		items.equip(this.Const.World.Common.pickArmor([
 			[
 				1,
-				"gambeson"
-			],
-			[
-				1,
 				"padded_leather"
 			],
 			[

@@ -43,11 +43,6 @@
 				P = 1.0,
 				S = "supplies/ground_grains_item"
 			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "helmets/straw_hat"
-			});
 		}
 	}
 

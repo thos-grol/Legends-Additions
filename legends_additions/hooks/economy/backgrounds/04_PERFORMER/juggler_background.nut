@@ -31,32 +31,13 @@
 		local r;
 		r = this.Math.rand(0, 4);
 
-		if (r == 0)
-		{
-			items.equip(this.new("scripts/items/weapons/legend_staff"));
-		}
-		else if (r == 1)
-		{
-			items.equip(this.new("scripts/items/weapons/throwing_axe"));
-		}
-		else if (r == 2)
-		{
-			items.equip(this.new("scripts/items/weapons/throwing_spear"));
-		}
-		else if (r == 3)
+		if (r == 1)
 		{
 			items.equip(this.new("scripts/items/weapons/legend_chain"));
 		}
-		else if (r == 3)
+		else if (r == 2)
 		{
 			items.equip(this.new("scripts/items/weapons/legend_ranged_wooden_flail"));
-		}
-
-		r = this.Math.rand(0, 1);
-
-		if (r == 0)
-		{
-			items.addToBag(this.new("scripts/items/weapons/throwing_spear"));
 		}
 
 		items.equip(this.Const.World.Common.pickArmor([

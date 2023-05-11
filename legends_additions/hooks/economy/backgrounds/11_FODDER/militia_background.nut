@@ -59,10 +59,6 @@
 			],
 			[
 				1,
-				"gambeson"
-			],
-			[
-				1,
 				"linen_tunic"
 			]
 		]));

@@ -63,10 +63,6 @@
 				1,
 				"linen_tunic",
 				this.Math.rand(6, 7)
-			],
-			[
-				1,
-				"gambeson"
 			]
 		]));
 		items.equip(this.Const.World.Common.pickHelmet([

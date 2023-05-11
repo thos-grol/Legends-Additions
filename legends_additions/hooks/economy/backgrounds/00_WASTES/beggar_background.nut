@@ -29,10 +29,6 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/knife"));
-		}
-		else if (r == 1)
-		{
 			items.equip(this.new("scripts/items/weapons/wooden_stick"));
 		}
 
