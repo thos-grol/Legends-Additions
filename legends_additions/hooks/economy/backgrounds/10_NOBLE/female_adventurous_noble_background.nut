@@ -52,11 +52,6 @@
 			items.equip(this.new("scripts/items/weapons/hunting_bow"));
 			items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
 		}
-		else if (r == 1)
-		{
-			items.equip(this.new("scripts/items/weapons/crossbow"));
-			items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
-		}
 		else if (r == 2)
 		{
 			items.equip(this.new("scripts/items/weapons/pike"));

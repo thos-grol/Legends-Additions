@@ -8,58 +8,8 @@
 		if (this.m.ID in ::Z.Economy.Items)
             this.m.Value = ::Z.Economy.Items[this.m.ID];
 	}
-});
 
-::mods_hookExactClass("entity/world/settlement", function(o)
-{
-    o.getPriceMult = function()
-	{
-		local p;
-        switch(this.m.Size)
-		{
-            case 2:
-                p = 1.02 + this.getActiveAttachedLocations().len() * 0.03;
-                break;
-            case 3:
-                p = 1.1 + this.getActiveAttachedLocations().len() * 0.03;
-                break;
-            default:
-                p = 0.95 + this.getActiveAttachedLocations().len() * 0.03;
-                break;
-		}
-		return p * this.m.Modifiers.PriceMult;
-	}
-
-    
-    o.getBuyPriceMult = function()
-    {
-        local p = this.getPriceMult() * this.World.Assets.getBuyPriceMult();
-		local r = this.World.FactionManager.getFaction(this.m.Factions[0]).getPlayerRelation();
-
-		if (r < 50) p = p + (50.0 - r) * 0.006;
-		else if (r > 50) p = p - (r - 50.0) * 0.003;
-
-		local barterMult = this.World.State.getPlayer().getBarterMult();
-		if (this.m.Modifiers.BuyPriceMult - barterMult >= 0.01) p = p * (this.m.Modifiers.BuyPriceMult - barterMult);
-		return p;
-    }
-
-    o.getSellPriceMult = function()
-    {
-        local p = this.getPriceMult() * this.World.Assets.getSellPriceMult();
-		local r = this.World.FactionManager.getFaction(this.m.Factions[0]).getPlayerRelation();
-
-		if (r < 50) p = p - (50.0 - r) * 0.006;
-		else if (r > 50) p = p + (r - 50.0) * 0.003;
-
-		return p * (this.m.Modifiers.SellPriceMult + this.World.State.getPlayer().getBarterMult());
-    }
-});
-
-//Legend's mod has a buyback mod that messed up my hook on item price fns. 
-//I had to overwrite the mod's hook with and add in the modified code.
-::mods_hookDescendants("items/item", function ( o )
-{
+	//Overwriting legend's mod buyback
 	//FIXME: check and handle produce item prices.
 	o.getSellPrice <- function ()
 	{
@@ -139,6 +89,52 @@
 		
 		return this.Math.ceil(this.getValue() * this.getPriceMult());
 	};
+});
+
+::mods_hookExactClass("entity/world/settlement", function(o)
+{
+    o.getPriceMult = function()
+	{
+		local p;
+        switch(this.m.Size)
+		{
+            case 2:
+                p = 1.02 + this.getActiveAttachedLocations().len() * 0.03;
+                break;
+            case 3:
+                p = 1.1 + this.getActiveAttachedLocations().len() * 0.03;
+                break;
+            default:
+                p = 0.95 + this.getActiveAttachedLocations().len() * 0.03;
+                break;
+		}
+		return p * this.m.Modifiers.PriceMult;
+	}
+
+    
+    o.getBuyPriceMult = function()
+    {
+        local p = this.getPriceMult() * this.World.Assets.getBuyPriceMult();
+		local r = this.World.FactionManager.getFaction(this.m.Factions[0]).getPlayerRelation();
+
+		if (r < 50) p = p + (50.0 - r) * 0.006;
+		else if (r > 50) p = p - (r - 50.0) * 0.003;
+
+		local barterMult = this.World.State.getPlayer().getBarterMult();
+		if (this.m.Modifiers.BuyPriceMult - barterMult >= 0.01) p = p * (this.m.Modifiers.BuyPriceMult - barterMult);
+		return p;
+    }
+
+    o.getSellPriceMult = function()
+    {
+        local p = this.getPriceMult() * this.World.Assets.getSellPriceMult();
+		local r = this.World.FactionManager.getFaction(this.m.Factions[0]).getPlayerRelation();
+
+		if (r < 50) p = p - (50.0 - r) * 0.006;
+		else if (r > 50) p = p + (r - 50.0) * 0.003;
+
+		return p * (this.m.Modifiers.SellPriceMult + this.World.State.getPlayer().getBarterMult());
+    }
 });
 
 //Background Prices
