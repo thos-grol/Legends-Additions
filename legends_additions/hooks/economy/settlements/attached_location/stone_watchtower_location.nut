@@ -21,7 +21,7 @@
 			_list.push({
 				R = 30,
 				P = 1.0,
-				S = "armor/leather_tunic"
+				S = "armor/linen_tunic"
 			});
 			_list.push({
 				R = 40,
@@ -34,11 +34,6 @@
 				S = "armor/padded_leather"
 			});
 			_list.push({
-				R = 50,
-				P = 1.0,
-				S = "armor/gambeson"
-			});
-			_list.push({
 				R = 65,
 				P = 1.0,
 				S = "shields/legend_tower_shield"
@@ -46,7 +41,7 @@
 			_list.push({
 				R = 60,
 				P = 1.0,
-				S = "armor/basic_mail_shirt"
+				S = "legend_armor/chain/basic_mail_shirt"
 			});
 			_list.push({
 				R = 10,
@@ -61,12 +56,7 @@
 			_list.push({
 				R = 60,
 				P = 1.0,
-				S = "helmets/nasal_helmet"
-			});
-			_list.push({
-				R = 65,
-				P = 1.0,
-				S = "helmets/kettle_hat"
+				S = "legend_helmets/helm/legend_helmet_norman_helm"
 			});
 			_list.push({
 				R = 65,

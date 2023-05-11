@@ -8,35 +8,23 @@
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 
-		if (!this.isActive())
-		{
-			return;
-		}
+		if (!this.isActive()) return;
 
 		_list.push("brawler_background");
 		_list.push("caravan_hand_background");
-
-		if (_gender)
-		{
-		}
 	}
 
 	o.onUpdateShopList = function( _id, _list )
 	{
 		switch(_id)
 		{
-		case "building.marketplace":
-			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "supplies/wine_item"
-			});
-			break;
-
-		default:
-			if (_id == "building.specialized_trader")
-			{
-			}
+			case "building.marketplace":
+				_list.push({
+					R = 0,
+					P = 1.0,
+					S = "supplies/wine_item"
+				});
+				break;
 		}
 	}
 

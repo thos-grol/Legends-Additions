@@ -28,11 +28,6 @@
 
 			case "building.armorsmith":
 				_list.push({
-					R = 20,
-					P = 1.0,
-					S = "armor/leather_lamellar"
-				});
-				_list.push({
 					R = 35,
 					P = 1.0,
 					S = "armor/mail_hauberk"
@@ -86,11 +81,6 @@
 					R = 50,
 					P = 1.0,
 					S = "armor/heavy_lamellar_armor"
-				});
-				_list.push({
-					R = 55,
-					P = 1.0,
-					S = "armor/coat_of_scales"
 				});
 				_list.push({
 					R = 55,

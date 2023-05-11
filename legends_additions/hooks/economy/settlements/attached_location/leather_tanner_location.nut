@@ -21,42 +21,22 @@
 		{
 			_list.push({
 				R = 10,
-				P = 1.0,
-				S = "armor/leather_tunic"
+				P = 0.9,
+				S = "armor/linen_tunic"
 			});
 			_list.push({
 				R = 10,
-				P = 1.0,
-				S = "armor/leather_tunic"
+				P = 0.9,
+				S = "legend_armor/cloth/legend_apron"
 			});
 			_list.push({
 				R = 10,
-				P = 1.0,
-				S = "armor/apron"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
+				P = 0.9,
 				S = "armor/padded_leather"
 			});
 			_list.push({
 				R = 10,
-				P = 1.0,
-				S = "armor/padded_leather"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "weapons/legend_chain"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "helmets/full_leather_cap"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
+				P = 0.9,
 				S = "helmets/full_leather_cap"
 			});
 		}
@@ -107,11 +87,6 @@
 				R = 45,
 				P = 1.0,
 				S = "helmets/closed_flat_top_helmet"
-			});
-			_list.push({
-				R = 40,
-				P = 1.0,
-				S = "shields/kite_shield"
 			});
 		}
 	}

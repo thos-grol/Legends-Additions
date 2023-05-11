@@ -5,13 +5,19 @@
 
 		if (!this.isActive()) return;
 		
-		_list.push("legend_blacksmith_background");
-		_list.push("legend_ironmonger_background");
 		_list.push("retired_soldier_background");
 		_list.push("deserter_background");
 		_list.push("sellsword_background");
-		_list.push("hedge_knight_background");
-		_list.push("paladin_background");
+		
+		if (this.Math.rand(0, 9) == 1)
+		{
+			_list.push("hedge_knight_background");
+		}
+
+		if (this.Math.rand(0, 9) == 1)
+		{
+			_list.push("paladin_background");
+		}
 
 		if (this.Math.rand(0, 9) == 1)
 		{
@@ -41,7 +47,7 @@
 			_list.push({
 				R = 30,
 				P = 1.0,
-				S = "armor/leather_tunic"
+				S = "armor/linen_tunic"
 			});
 			_list.push({
 				R = 40,
@@ -52,21 +58,6 @@
 				R = 40,
 				P = 1.0,
 				S = "armor/padded_leather"
-			});
-			_list.push({
-				R = 50,
-				P = 1.0,
-				S = "armor/gambeson"
-			});
-			_list.push({
-				R = 60,
-				P = 1.0,
-				S = "armor/basic_mail_shirt"
-			});
-			_list.push({
-				R = 70,
-				P = 1.0,
-				S = "armor/mail_shirt"
 			});
 			_list.push({
 				R = 10,
@@ -81,57 +72,12 @@
 			_list.push({
 				R = 60,
 				P = 1.0,
-				S = "helmets/nasal_helmet"
-			});
-			_list.push({
-				R = 65,
-				P = 1.0,
-				S = "helmets/kettle_hat"
+				S = "legend_helmets/helm/legend_helmet_norman_helm"
 			});
 			_list.push({
 				R = 65,
 				P = 1.0,
 				S = "helmets/flat_top_helmet"
-			});
-			_list.push({
-				R = 65,
-				P = 1.0,
-				S = "shields/legend_tower_shield"
-			});
-			_list.push({
-				R = 30,
-				P = 1.0,
-				S = "shields/wooden_shield"
-			});
-			_list.push({
-				R = 70,
-				P = 1.0,
-				S = "weapons/dagger"
-			});
-			_list.push({
-				R = 70,
-				P = 1.0,
-				S = "weapons/billhook"
-			});
-			_list.push({
-				R = 70,
-				P = 1.0,
-				S = "weapons/pike"
-			});
-			_list.push({
-				R = 60,
-				P = 1.0,
-				S = "weapons/military_cleaver"
-			});
-			_list.push({
-				R = 70,
-				P = 1.0,
-				S = "weapons/boar_spear"
-			});
-			_list.push({
-				R = 70,
-				P = 1.0,
-				S = "weapons/military_pick"
 			});
 			_list.push({
 				R = 50,
@@ -159,32 +105,61 @@
 				S = "armor/mail_hauberk"
 			});
 
-			if (this.Const.DLC.Unhold)
-			{
-				_list.extend([
-					{
-						R = 75,
-						P = 1.0,
-						S = "weapons/longsword"
-					},
-					{
-						R = 75,
-						P = 1.0,
-						S = "weapons/two_handed_wooden_flail"
-					},
-					{
-						R = 55,
-						P = 1.0,
-						S = "weapons/polehammer"
-					}
-				]);
-			}
+
+			_list.push({
+				R = 70,
+				P = 0.9,
+				S = "weapons/dagger"
+			});
+			_list.push({
+				R = 70,
+				P = 0.9,
+				S = "weapons/pike"
+			});
+
+			_list.push({
+				R = 65,
+				P = 0.9,
+				S = "shields/legend_tower_shield"
+			});
+			_list.push({
+				R = 30,
+				P = 0.9,
+				S = "shields/wooden_shield"
+			});
+
+			_list.push({
+				R = 75,
+				P = 0.9,
+				S = "weapons/two_handed_wooden_flail"
+			});
+
 		}
 		else if (_id == "building.specialized_trader")
 		{
 		}
 		else if (_id == "building.weaponsmith")
 		{
+			_list.push({
+				R = 75,
+				P = 1.0,
+				S = "weapons/longsword"
+			});
+			_list.push({
+				R = 55,
+				P = 1.0,
+				S = "weapons/polehammer"
+			});
+			_list.push({
+				R = 60,
+				P = 1.0,
+				S = "weapons/military_cleaver"
+			});
+			_list.push({
+				R = 70,
+				P = 1.0,
+				S = "weapons/boar_spear"
+			});
 			_list.push({
 				R = 20,
 				P = 1.0,
@@ -200,6 +175,17 @@
 		{
 			if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
 			{
+				_list.push({
+					R = 50,
+					P = 1.0,
+					S = "armor/gambeson"
+				});
+				_list.push({
+					R = 60,
+					P = 1.0,
+					S = "legend_armor/chain/basic_mail_shirt"
+				});
+
 				_list.push({
 					R = 45,
 					P = 1.0,

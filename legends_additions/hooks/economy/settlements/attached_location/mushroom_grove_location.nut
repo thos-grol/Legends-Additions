@@ -25,22 +25,22 @@
 		{
 			_list.push({
 				R = 20,
-				P = 1.0,
-				S = "armor/apron"
+				P = 0.9,
+				S = "legend_armor/cloth/legend_apron"
 			});
 			_list.push({
 				R = 10,
-				P = 1.0,
+				P = 0.9,
 				S = "weapons/legend_sickle"
 			});
 			_list.push({
 				R = 90,
-				P = 1.0,
+				P = 0.9,
 				S = "tents/tent_gather"
 			});
 			_list.push({
 				R = 20,
-				P = 1.0,
+				P = 0.9,
 				S = "supplies/medicine_item"
 			});
 

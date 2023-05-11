@@ -7,13 +7,7 @@
 
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
-		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-
-		if (!this.isActive())
-		{
-			return;
-		}
-
+		if (!this.isActive()) return;
 		_list.push("legend_ironmonger_background");
 		_list.push("legend_ironmonger_background");
 		_list.push("legend_ironmonger_background");
@@ -23,53 +17,33 @@
 		_list.push("apprentice_background");
 		_list.push("caravan_hand_background");
 		_list.push("daytaler_background");
-
-		if (_gender)
-		{
-			_list.push("female_daytaler_background");
-		}
+		_list.push("female_daytaler_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )
 	{
 		switch(_id)
 		{
-		case "building.marketplace":
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "supplies/armor_parts_item"
-			});
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "supplies/armor_parts_item"
-			});
-			break;
-
-		default:
-			switch(_id)
-			{
-			case "building.specialized_trader":
+			case "building.marketplace":
+				_list.push({
+					R = 20,
+					P = 1.0,
+					S = "supplies/armor_parts_item"
+				});
+				_list.push({
+					R = 20,
+					P = 1.0,
+					S = "supplies/armor_parts_item"
+				});
 				break;
 
-			default:
-				switch(_id)
-				{
-				case "building.weaponsmith":
-					_list.push({
-						R = 95,
-						P = 1.0,
-						S = "weapons/named/legend_named_blacksmith_hammer"
-					});
-					break;
-
-				default:
-					if (_id == "building.armorsmith")
-					{
-					}
-				}
-			}
+			case "building.weaponsmith":
+				_list.push({
+					R = 95,
+					P = 1.0,
+					S = "weapons/named/legend_named_blacksmith_hammer"
+				});
+				break;
 		}
 	}
 

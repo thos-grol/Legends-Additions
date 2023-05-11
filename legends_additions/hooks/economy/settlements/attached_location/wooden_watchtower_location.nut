@@ -19,7 +19,7 @@
 			_list.push({
 				R = 30,
 				P = 1.0,
-				S = "armor/leather_tunic"
+				S = "armor/linen_tunic"
 			});
 			_list.push({
 				R = 40,
@@ -34,12 +34,7 @@
 			_list.push({
 				R = 50,
 				P = 1.0,
-				S = "armor/gambeson"
-			});
-			_list.push({
-				R = 50,
-				P = 1.0,
-				S = "armor/basic_mail_shirt"
+				S = "legend_armor/chain/basic_mail_shirt"
 			});
 			_list.push({
 				R = 10,
