@@ -6,7 +6,9 @@ this.follower <- {
 		Effects = [],
 		Requirements = [],
 		Image = "",
-		Cost = 0
+		Cost = 0,
+		Salary = 0,
+		Remove = false
 	},
 	function getID()
 	{
@@ -139,6 +141,11 @@ this.follower <- {
 
 	function onNewDay()
 	{
+		if (this.m.Salary > 0)
+		{
+			if (this.m.Salary > this.m.Money) this.m.Remove = true
+			else this.m.Money -= this.m.Salary;
+		}
 	}
 
 	function onSerialize( _out )

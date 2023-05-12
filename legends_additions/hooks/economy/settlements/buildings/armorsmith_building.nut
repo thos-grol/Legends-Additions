@@ -10,12 +10,12 @@
 			{
 				R = 20,
 				P = 1.0,
-				S = "legend_armor/chain/basic_mail_shirt"
+				S = "legend_armor/chain/legend_armor_mail_shirt"
 			},
 			{
 				R = 30,
 				P = 1.0,
-				S = "legend_armor/chain/basic_mail_shirt"
+				S = "legend_armor/chain/legend_armor_mail_shirt"
 			},
 			{
 				R = 50,

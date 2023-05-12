@@ -188,12 +188,17 @@ this.retinue_manager <- {
 
 	function onNewDay()
 	{
+		local i = 0;
 		foreach( p in this.m.Slots )
 		{
-			if (p != null)
+			if (p != null) p.onNewDay();
+			
+			if (p.m.Remove)
 			{
-				p.onNewDay();
+				p.m.Remove = false;
+				this.m.Slots[idx] = null;
 			}
+			i++;
 		}
 	}
 

@@ -34,7 +34,7 @@
 			_list.push({
 				R = 50,
 				P = 1.0,
-				S = "legend_armor/chain/basic_mail_shirt"
+				S = "legend_armor/chain/legend_armor_mail_shirt"
 			});
 			_list.push({
 				R = 10,
