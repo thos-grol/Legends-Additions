@@ -104,7 +104,7 @@
 			],
 			[
 				"female_beggar_background",
-				"female_bowyer_background",
+				
 				"female_servant_background",
 				"female_tailor_background",
 				"female_adventurous_noble_background",
@@ -192,7 +192,7 @@
 			[
 				"apprentice_background",
 				"beggar_background",
-				"bowyer_background",
+				
 				"brawler_background",
 				"caravan_hand_background",
 				"caravan_hand_background",

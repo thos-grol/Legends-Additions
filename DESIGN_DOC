@@ -5,9 +5,6 @@ Economy Overhaul
     //TODO: comment out tents that can be accessed from main tent
     //TODO: remove crafting and training from main tent
 
-    //TODO: undo legends retinue changes
-        //training retinue with upgrades? retired soldier -> soldier -> old swordmaster
-
     //TODO: change money added from contracts and events
     //TODO: no retinue limit, retinue is balanced by costs and achievements
     //TODO: cart can only be upgraded once, experiment with stash size
@@ -20,9 +17,6 @@ Economy Overhaul
 
 //FEATURE_1: script to generate all ambitions
 //FEATURE_1: script to generate all contracts
-
-//FEATURE_5: peddler becomes a retinue
-//FEATURE_5: anatomist becomes a retinue
     
 
 //FEATURE_6: disable donkey events

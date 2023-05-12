@@ -165,13 +165,10 @@
 		this.m.FemaleDraftLists = [
 			[
 				"legend_shieldmaiden_background",
-				"female_bowyer_background",
 				"female_daytaler_background"
 			],
 			[
 				"legend_shieldmaiden_background",
-				"female_bowyer_background",
-				"female_bowyer_background",
 				"female_butcher_background",
 				"wildwoman_background",
 				"female_disowned_noble_background",
@@ -179,9 +176,6 @@
 			],
 			[
 				"female_beggar_background",
-				"female_bowyer_background",
-				"female_bowyer_background",
-				"female_bowyer_background",
 				"wildwoman_background",
 				"female_disowned_noble_background",
 				"female_disowned_noble_background",

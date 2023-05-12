@@ -1,4 +1,11 @@
 //Scout (I) -> Scout (II) (Lookout) -> Scout III (Scavenger) upgrade path
+//(Negotiator) Negotiator -> Trader -> Paymaster
+//(Agent) Minstrel -> Agent -> Brigand
+//(Surgeon) Surgeon -> Anatomist -> Anatomist II
+//Alchemist I -> Alchemist II -> Alchemist III
+//Drill Seargant -> Soldier -> Old Swordmaster
+//Cook -> Quartermaster -> Recruiter
+//TODO: if u have the upgrade, then hide the lower versions
 this.retinue_manager <- {
 	m = {
 		Followers = [],

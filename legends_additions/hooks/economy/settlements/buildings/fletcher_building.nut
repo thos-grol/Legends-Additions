@@ -72,13 +72,8 @@
 
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
-		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 		_list.push("bowyer_background");
-
-		if (_gender)
-		{
-			_list.push("female_bowyer_background");
-		}
+		_list.push("female_bowyer_background");
 	}
 
 });

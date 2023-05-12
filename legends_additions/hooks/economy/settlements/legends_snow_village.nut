@@ -237,7 +237,7 @@
 			[
 				"legend_shieldmaiden_background",
 				"female_beggar_background",
-				"female_bowyer_background",
+				
 				"female_daytaler_background",
 				"female_daytaler_background",
 				"female_farmhand_background",

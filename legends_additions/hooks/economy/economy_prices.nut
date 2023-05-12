@@ -138,13 +138,19 @@
 });
 
 //Background Prices
+::mods_hookExactClass("entity/tactical/player", function(o)
+{
+	o.getTryoutCost = function()
+	{
+		return this.Math.max(0, this.Math.ceil(this.m.CurrentProperties.DailyWage));
+	}
+});
+
 ::mods_hookExactClass("skills/backgrounds/character_background", function(o)
 {
 	o.adjustHiringCostBasedOnEquipment = function()
 	{
 		local actor = this.getContainer().getActor();
-		//actor.m.HiringCost = this.Math.floor(this.m.HiringCost + this.Math.pow(this.m.Level - 1, 1.5));
-		//TODO: if actor reaches level 11, upgrade his cost tier by 1 or to soldier, whichever one is higher
 		local items = actor.getItems().getAllItems();
 		local cost = 0;
 
@@ -156,12 +162,17 @@
 		actor.m.HiringCost = actor.m.HiringCost + this.Math.ceil(cost * 1.1);
 	}
 
-});
-
-::mods_hookExactClass("entity/tactical/player", function(o)
-{
-	o.getTryoutCost = function()
+	//Wage hike upon reaching level 11
+	function onUpdate( _properties )
 	{
-		return this.Math.max(0, this.Math.ceil(this.m.CurrentProperties.DailyWage));
+		if (("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin() != null && this.World.Assets.getOrigin().getID() == "scenario.manhunters" && this.getID() != "background.slave") _properties.XPGainMult *= 0.9;
+
+		if (this.m.DailyCost == 0 || this.getContainer().hasSkill("trait.player")) _properties.DailyWage = 0;
+		else
+		{
+			if (this.getContainer().getActor().getLevel() >= 11 && this.m.DailyCost < 12) this.m.DailyCost = 12;
+			if (this.isBackgroundType(this.Const.BackgroundType.ConvertedCultist)) this.m.DailyCost = 4;
+			_properties.DailyWage += this.Math.round(this.m.DailyCost * this.m.DailyCostMult);
+		}
 	}
 });

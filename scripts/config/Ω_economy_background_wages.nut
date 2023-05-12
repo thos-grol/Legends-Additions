@@ -1,5 +1,4 @@
 ::Z.Backgrounds.Wages <- {
-
 	//WASTES
 	"background.beggar" : {
 		"HiringCost" : 2,
