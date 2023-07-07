@@ -1,7 +1,7 @@
 ::mods_hookExactClass("entity/world/locations/bandit_camp_location", function(o) {
 	o.getDescription = function()
 	{
-		return "A fortified wooden encampment used by outlaws to stash their loot, rest in between raids and play drinking games.";
+		return "A fortified base used by outlaws to stash their loot, rest in between raids and play drinking games.";
 	}
 
 	o.create = function()
@@ -16,6 +16,9 @@
 		this.setDefenderSpawnList(this.Const.World.Spawn.BanditDefenders);
 		this.m.Resources = 180;
 		this.m.NamedShieldsList = this.Const.Items.NamedBanditShields;
+		//Changes
+		this.m.Flags.add("ID", this.Math.rand(1, 100000));
+		//TODO: create bandit gangs with archetypes
 	}
 
 	o.onSpawned = function()

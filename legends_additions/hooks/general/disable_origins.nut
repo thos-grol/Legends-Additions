@@ -10,7 +10,7 @@
 ::mods_hookExactClass("scenarios/world/legends_noble_scenario", function(o) { o.isValid = function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_party_scenario", function(o) { o.isValid = function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_rangers_scenario", function(o) { o.isValid = function(){ return false; }});
-::mods_hookExactClass("scenarios/world/legends_scaling_beggar_scenario", function(o) { o.isValid = function(){ return false; }});
+::mods_hookExactClass("scenarios/world/legends_beggar_scenario", function(o) { o.isValid = function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_troupe_scenario", function(o) { o.isValid = function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/manhunters_scenario", function(o) { o.isValid = function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/paladins_scenario", function(o) { o.isValid = function(){ return false; }});
@@ -24,3 +24,9 @@
 ::mods_hookExactClass("scenarios/world/legends_risen_legion_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_assassin_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/tutorial_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/legends_sisterhood_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/legends_seer_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/raiders_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/sato_escaped_slaves_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/rangers_scenario", function(o) { o.isValid <- function(){ return false; }});

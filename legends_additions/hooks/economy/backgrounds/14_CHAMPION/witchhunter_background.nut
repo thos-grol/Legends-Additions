@@ -29,7 +29,7 @@
 		};
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
-		//TODO: revamp background multipliers and camping
+		//FEATURE_0: revamp background multipliers and camping
 		this.m.Modifiers.Crafting = this.Const.LegendMod.ResourceModifiers.Crafting[0];
 	}
 

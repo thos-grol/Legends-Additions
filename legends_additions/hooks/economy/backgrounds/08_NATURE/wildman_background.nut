@@ -2,7 +2,7 @@
 	local create = o.create;
 	o.create = function()
 	{
-		//TODO: write script to reparse file and check for existence of staff, crossbow, and throwing entries. If DNE, set 0
+		//FEATURE_0: write script to reparse file and check for existence of staff, crossbow, and throwing entries. If DNE, set 0
 		create();
 		this.m.PerkGroupMultipliers <- [
 			[2, ::Const.Perks.ResilientTree],
