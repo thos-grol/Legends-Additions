@@ -24,7 +24,7 @@ this.update_settlement_action <- this.inherit("scripts/factions/faction_action",
 		if (settlements[0].isIsolated()) return;
 
 		updateHouseKeeping (_faction);
-		
+
 		//update contracts
 		updateCaravan(_faction);
 			//interact with nearby factions
@@ -45,7 +45,7 @@ this.update_settlement_action <- this.inherit("scripts/factions/faction_action",
 	function updateCaravan( _faction )
 	{
 		if (this.Math.rand(1, 100) <= 85) return;
-		
+
 		local settlements = this.World.EntityManager.getSettlements();
 		local mySettlement = _faction.getSettlements()[0];
 		local candidates = 0;
@@ -55,7 +55,7 @@ this.update_settlement_action <- this.inherit("scripts/factions/faction_action",
 			if (s.getID() == mySettlement.getID()) continue;
 			if (!s.isAlliedWith(_faction.getID())) continue;
 			if (mySettlement.isIsolated() || s.isIsolated() || !mySettlement.isConnectedToByRoads(s) || mySettlement.isCoastal() && s.isCoastal()) continue;
-		
+
 			local d = s.getTile().getDistanceTo(mySettlement.getTile());
 
 			if (d <= 12 || d > 100) continue;
@@ -95,9 +95,9 @@ this.update_settlement_action <- this.inherit("scripts/factions/faction_action",
 
 		local bandit_camp = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getNearestSettlement(this.m.Home.getTile());
 
-		local _faction_bandit = 
+		//local _faction_bandit =
 		//If bandits are weaker open up contract to destroy bandit den
-		if (bandit_camp.getFlags().get("Power") <= 20) 
+		if (bandit_camp.getFlags().get("Power") <= 20)
 		{
 			//Found their den, and weak enough to kill
 			//Reputation requirement
@@ -118,7 +118,7 @@ this.update_settlement_action <- this.inherit("scripts/factions/faction_action",
 			if (l.isActive() && l.isMilitary()) return;
 			if (l.isUsable()) targets = ++targets;
 		}
-		if (targets >= 2 && bandit_camp.getFlags().get("Power") > 40 && this.Math.rand(1, 100) <= 50) 
+		if (targets >= 2 && bandit_camp.getFlags().get("Power") > 40 && this.Math.rand(1, 100) <= 50)
 		{
 			//Raid settlement
 			local contract = this.new("scripts/contracts/contracts/defend_settlement_bandits_contract");

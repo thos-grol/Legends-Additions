@@ -9,10 +9,9 @@ this.build_bandit_camp_action <- this.inherit("scripts/factions/faction_action",
 
 	function onUpdate( _faction )
 	{
-		local settlements = _faction.getSettlements();
-
 		if (this.World.Statistics.getFlags().has("GEN_BANDITS_FINISHED")) return;
 
+		local settlements = _faction.getSettlements();
 		if (settlements.len() > 5)
 		{
 			this.World.Statistics.getFlags().add("GEN_BANDITS_FINISHED", true);
@@ -39,7 +38,7 @@ this.build_bandit_camp_action <- this.inherit("scripts/factions/faction_action",
 		], 7, 16, 1000, 7, 7, null, minY, maxY);
 
 		if (tile != null) camp = this.World.spawnLocation("scripts/entity/world/locations/bandit_camp_location", tile.Coords);
-		
+
 		if (camp != null)
 		{
 			local banner = this.getAppropriateBanner(camp, _faction.getSettlements(), 15, this.Const.BanditBanners);

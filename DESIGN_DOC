@@ -8,11 +8,12 @@ Economy Overhaul
 
     //FEATURE_0: change money added from contracts and events
     //FEATURE_0: cart can only be upgraded once, experiment with stash size
-    //FEATURE_0: tents will now disappear and grant their bonuses
-
     //this.World.Assets.addMoney
     //FEATURE_4: remove most events that give free stuff, you need traits etc to earn them
 
+//TODO: if fights are at camps, prevent luring enemies in.
+//TODO: make town guards to attack parties, if guards are defeated, they respawn after a period.
+//TODO: if guards are defeated during crisis, spawn contract to defend the city if they are close to the wilderness/threat.
 //TODO: Faction Overhaul
     //update action
         faction action <- factions have a chance to build strength during update
@@ -22,9 +23,9 @@ Economy Overhaul
             settlements store monster strength, create witcher necrophages?
 
     //military action <- suppress menace
-        
+
     //function buildSettlements( _rect )
-    
+
     //Predefine noble house
         //function createNobleHouses( _num )
         //function assignSettlementsToNobleHouses( _nobleHouses )
@@ -45,7 +46,7 @@ Economy Overhaul
     dungeon consists of generated rooms stored with loot.
     dungeon exploration progress. when it reaches 100% boss room.
 
-    dungeon: 
+    dungeon:
         Endless Woods
         Black Monolith
         Library
@@ -56,7 +57,7 @@ Economy Overhaul
 
 //FEATURE_9: arena,source of money when no contracts
 
-    
+
 
 //New Long Term Contracts:
     //Dungeon exploration
