@@ -177,21 +177,18 @@
 				]
 			];
 
-			if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
-			{
-				armor.push([
-					1,
-					"barbarians/reinforced_heavy_iron_armor"
-				]);
-				armor.push([
-					1,
-					"barbarian_chosen_armor_00"
-				]);
-				armor.push([
-					1,
-					"barbarian_chosen_armor_01"
-				]);
-			}
+			armor.push([
+				1,
+				"barbarians/reinforced_heavy_iron_armor"
+			]);
+			armor.push([
+				1,
+				"barbarian_chosen_armor_00"
+			]);
+			armor.push([
+				1,
+				"barbarian_chosen_armor_01"
+			]);
 
 			this.m.Items.equip(this.Const.World.Common.pickArmor(armor));
 		}

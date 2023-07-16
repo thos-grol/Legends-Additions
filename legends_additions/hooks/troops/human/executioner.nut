@@ -114,13 +114,10 @@
 				]
 			];
 
-			if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
-			{
-				helm.push([
-					1,
-					"oriental/janissary_helmet"
-				]);
-			}
+			helm.push([
+				1,
+				"oriental/janissary_helmet"
+			]);
 
 			this.m.Items.equip(this.Const.World.Common.pickHelmet(helm));
 		}

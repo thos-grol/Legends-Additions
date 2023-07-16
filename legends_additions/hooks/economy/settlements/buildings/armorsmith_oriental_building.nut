@@ -124,18 +124,15 @@
 			}
 		];
 
-		if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
+		foreach( i in this.Const.Items.LegendNamedSouthernArmorLayers )
 		{
-			foreach( i in this.Const.Items.LegendNamedSouthernArmorLayers )
+			if (this.Math.rand(1, 100) <= 33)
 			{
-				if (this.Math.rand(1, 100) <= 33)
-				{
-					list.push({
-						R = 99,
-						P = 2.0,
-						S = i
-					});
-				}
+				list.push({
+					R = 99,
+					P = 2.0,
+					S = i
+				});
 			}
 		}
 
@@ -163,94 +160,48 @@
 			}
 		}
 
-		if (this.Const.DLC.Unhold && ::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
+		if (this.Const.DLC.Unhold)
 		{
-			if (::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
-			{
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "armor_upgrades/metal_plating_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "armor_upgrades/metal_pauldrons_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "armor_upgrades/mail_patch_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "armor_upgrades/leather_shoulderguards_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "armor_upgrades/leather_neckguard_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "armor_upgrades/joint_cover_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "armor_upgrades/heraldic_plates_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "armor_upgrades/double_mail_upgrade"
-				});
-			}
-			else
-			{
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "legend_armor/armor_upgrades/legend_metal_plating_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "legend_armor/armor_upgrades/legend_metal_pauldrons_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "legend_armor/armor_upgrades/legend_mail_patch_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "legend_armor/armor_upgrades/legend_leather_shoulderguards_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "legend_armor/armor_upgrades/legend_leather_neckguard_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "legend_armor/armor_upgrades/legend_joint_cover_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "legend_armor/armor_upgrades/legend_heraldic_plates_upgrade"
-				});
-				list.push({
-					R = 85,
-					P = 1.25,
-					S = "legend_armor/armor_upgrades/legend_double_mail_upgrade"
-				});
-			}
+			list.push({
+				R = 85,
+				P = 1.25,
+				S = "legend_armor/armor_upgrades/legend_metal_plating_upgrade"
+			});
+			list.push({
+				R = 85,
+				P = 1.25,
+				S = "legend_armor/armor_upgrades/legend_metal_pauldrons_upgrade"
+			});
+			list.push({
+				R = 85,
+				P = 1.25,
+				S = "legend_armor/armor_upgrades/legend_mail_patch_upgrade"
+			});
+			list.push({
+				R = 85,
+				P = 1.25,
+				S = "legend_armor/armor_upgrades/legend_leather_shoulderguards_upgrade"
+			});
+			list.push({
+				R = 85,
+				P = 1.25,
+				S = "legend_armor/armor_upgrades/legend_leather_neckguard_upgrade"
+			});
+			list.push({
+				R = 85,
+				P = 1.25,
+				S = "legend_armor/armor_upgrades/legend_joint_cover_upgrade"
+			});
+			list.push({
+				R = 85,
+				P = 1.25,
+				S = "legend_armor/armor_upgrades/legend_heraldic_plates_upgrade"
+			});
+			list.push({
+				R = 85,
+				P = 1.25,
+				S = "legend_armor/armor_upgrades/legend_double_mail_upgrade"
+			});
 		}
 
 		this.m.Settlement.onUpdateShopList(this.m.ID, list);

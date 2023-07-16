@@ -2,37 +2,17 @@
 	local create = o.create;
 	o.create = function()
 	{
-		//FEATURE_0: write script to reparse file and check for existence of staff, crossbow, and throwing entries. If DNE, set 0
 		create();
-		this.m.PerkGroupMultipliers <- [
-			[2, ::Const.Perks.ResilientTree],
-			[2, ::Const.Perks.ViciousTree],
-			[0.4, ::Const.Perks.DeviousTree],
-			[2, ::Const.Perks.LargeTree],
-			[2, ::Const.Perks.SturdyTree],
-			[2, ::Const.Perks.UnstoppableTree],
-			[0.4, ::Const.Perks.TrainedTree],
-			[0.5, ::Const.Perks.MenderClassTree],
-			[2, ::Const.Perks.ScoutClassTree],
-			[3, ::Const.Perks.HeavyArmorTree],
-			[3, ::Const.Perks.MaceTree],
-			[3, ::Const.Perks.HammerTree],
-			[2, ::Const.Perks.AxeTree],
-			[0.66, ::Const.Perks.SpearTree],
-			[0.5, ::Const.Perks.SwordTree],
-			[0, ::Const.Perks.StaffTree]
-		];
-
-		this.m.PerkTreeDynamic = {
-			Profession = [
-				::Const.Perks.WildlingProfessionTree
-			],
-			Styles = [
-				::Const.Perks.TwoHandedTree
-			]
-		};
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
+
+		if ("Weapon" in this.m.PerkTreeDynamic)
+		{
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
+		}
 	}
 
 	o.onAddEquipment = function()

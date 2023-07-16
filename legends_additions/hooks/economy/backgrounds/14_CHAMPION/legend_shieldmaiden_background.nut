@@ -3,34 +3,16 @@
 	o.create = function()
 	{
 		create();
-		this.m.PerkGroupMultipliers <- [
-			[0.1, ::Const.Perks.OrganisedTree],
-			[0.25, ::Const.Perks.FastTree],
-			[0.25, ::Const.Perks.AgileTree],
-			[0.1, ::Const.Perks.LightArmorTree],
-			[3, ::Const.Perks.HeavyArmorTree],
-			[0, ::Const.Perks.BowTree],
-			[0, ::Const.Perks.SlingTree],
-			[0, ::Const.Perks.CrossbowTree],
-			[0.5, ::Const.Perks.DaggerTree]
-		];
-
-		this.m.PerkTreeDynamic = {
-			Profession = [
-				::MSU.Class.WeightedContainer([
-					[90, ::Const.Perks.LaborerProfessionTree],
-					[10, ::Const.Perks.WildlingProfessionTree]
-				])
-			],
-			Defense = [
-				::Const.Perks.ShieldTree
-			],
-			Styles = [
-				::Const.Perks.OneHandedTree
-			]
-		};
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
+
+		if ("Weapon" in this.m.PerkTreeDynamic)
+		{
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
+		}
 	}
 
 	o.onAddEquipment = function()

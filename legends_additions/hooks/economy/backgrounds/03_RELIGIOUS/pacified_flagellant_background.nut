@@ -3,24 +3,16 @@
 	o.create = function()
 	{
 		create();
-		this.m.PerkGroupMultipliers <- [
-			[3, ::Const.Perks.OrganisedTree],
-			[3, ::Const.Perks.ResilientTree],
-			[2, ::Const.Perks.SturdyTree],
-			[2, ::Const.Perks.TalentedTree],
-			[2, ::Const.Perks.LightArmorTree]
-		];
-
-		this.m.PerkTreeDynamic = {
-			Profession = [
-				::Const.Perks.HolyManProfessionTree
-			],
-			Class = [
-				::Const.Perks.SergeantClassTree
-			]
-		};
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
+
+		if ("Weapon" in this.m.PerkTreeDynamic)
+		{
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
+		}
 	}
 
 	o.onAddEquipment = function()

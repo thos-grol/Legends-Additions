@@ -87,19 +87,16 @@
 		}
 		else if (_id == "building.armorsmith")
 		{
-			if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
-			{
-				_list.push({
-					R = 35,
-					P = 1.0,
-					S = "legend_armor/tabard/legend_southern_tabard"
-				});
-				_list.push({
-					R = 99,
-					P = 2.0,
-					S = "legend_armor/named/legend_armor_named_tabard"
-				});
-			}
+			_list.push({
+				R = 35,
+				P = 1.0,
+				S = "legend_armor/tabard/legend_southern_tabard"
+			});
+			_list.push({
+				R = 99,
+				P = 2.0,
+				S = "legend_armor/named/legend_armor_named_tabard"
+			});
 		}
 	}
 

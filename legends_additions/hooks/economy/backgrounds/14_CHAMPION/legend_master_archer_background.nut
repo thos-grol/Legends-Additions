@@ -3,35 +3,16 @@
 	o.create = function()
 	{
 		create();
-		this.m.PerkGroupMultipliers <- [
-			[0.66, ::Const.Perks.ShieldTree],
-			[3, ::Const.Perks.MediumArmorTree]
-		];
-
-		this.m.PerkTreeDynamic = {
-			Profession = [
-				::Const.Perks.HunterProfessionTree
-			],
-			Enemy = [
-				::Const.Perks.ArchersTree
-			],
-			Traits = [
-				::Const.Perks.AgileTree
-			],
-			Class = [
-				::Const.Perks.ScoutClassTree
-			],
-			Defense = [
-				::Const.Perks.LightArmorTree
-			],
-			Weapon = [
-				::Const.Perks.BowTree,
-				::Const.Perks.CrossbowTree,
-				::Const.Perks.SlingTree,
-			]
-		};
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
+
+		if ("Weapon" in this.m.PerkTreeDynamic)
+		{
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
+		}
 	}
 
 	o.onAddEquipment = function()

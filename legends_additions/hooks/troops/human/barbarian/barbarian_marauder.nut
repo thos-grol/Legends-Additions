@@ -176,13 +176,10 @@
 			]
 		];
 
-		if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
-		{
-			armor.push([
-				5,
-				"barbarians/legend_barbarian_southern_armor"
-			]);
-		}
+		armor.push([
+			5,
+			"barbarians/legend_barbarian_southern_armor"
+		]);
 
 		this.m.Items.equip(this.Const.World.Common.pickArmor(armor));
 		local item = this.Const.World.Common.pickHelmet([

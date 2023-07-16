@@ -310,13 +310,10 @@
 			]
 		];
 
-		if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
-		{
-			helm.push([
-				5,
-				"theamson_barbute_helmet"
-			]);
-		}
+		helm.push([
+			5,
+			"theamson_barbute_helmet"
+		]);
 
 		local outfits = [
 			[

@@ -126,29 +126,26 @@
 				S = "legend_armor/chain/legend_armor_mail_shirt"
 			});
 
-			if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
-			{
-				_list.push({
-					R = 50,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_armor_cloak_common"
-				});
-				_list.push({
-					R = 50,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_armor_cloak_heavy"
-				});
-				_list.push({
-					R = 45,
-					P = 1.0,
-					S = "legend_armor/cloak/legend_sash"
-				});
-				_list.push({
-					R = 45,
-					P = 1.0,
-					S = "legend_armor/tabard/legend_common_tabard"
-				});
-			}
+			_list.push({
+				R = 50,
+				P = 1.0,
+				S = "legend_armor/cloak/legend_armor_cloak_common"
+			});
+			_list.push({
+				R = 50,
+				P = 1.0,
+				S = "legend_armor/cloak/legend_armor_cloak_heavy"
+			});
+			_list.push({
+				R = 45,
+				P = 1.0,
+				S = "legend_armor/cloak/legend_sash"
+			});
+			_list.push({
+				R = 45,
+				P = 1.0,
+				S = "legend_armor/tabard/legend_common_tabard"
+			});
 		}
 	}
 

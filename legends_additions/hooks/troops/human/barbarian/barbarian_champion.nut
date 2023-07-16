@@ -129,13 +129,10 @@
 			]
 		];
 
-		if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
-		{
-			armor.push([
-				5,
-				"barbarians/reinforced_heavy_iron_armor"
-			]);
-		}
+		armor.push([
+			5,
+			"barbarians/reinforced_heavy_iron_armor"
+		]);
 
 		this.m.Items.equip(this.Const.World.Common.pickArmor(armor));
 

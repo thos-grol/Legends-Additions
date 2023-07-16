@@ -10,7 +10,6 @@
 	}
 
 	//Overwriting legend's mod buyback
-	//FIXME: check and handle produce item prices.
 	o.getSellPrice <- function ()
 	{
 		local originalTime;
@@ -151,15 +150,11 @@
 	o.adjustHiringCostBasedOnEquipment = function()
 	{
 		local actor = this.getContainer().getActor();
-		local items = actor.getItems().getAllItems();
-		local cost = 0;
-
+		local items = actor.getItems().getAllItems();		
 		foreach( i in items )
 		{
-			cost = cost + i.getValue();
+			actor.m.HiringCost += i.getValue();
 		}
-
-		actor.m.HiringCost = actor.m.HiringCost + this.Math.ceil(cost * 1.1);
 	}
 
 	//Wage hike upon reaching level 11

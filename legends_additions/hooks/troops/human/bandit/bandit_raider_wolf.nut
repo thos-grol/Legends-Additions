@@ -127,7 +127,7 @@
 				"basic_mail_shirt"
 			]
 		]);
-		item.setUpgrade(this.new("scripts/items/" + (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue() ? "legend_armor/armor_upgrades/legend_direwolf_pelt_upgrade" : "armor_upgrades/direwolf_pelt_upgrade")));
+		item.setUpgrade(this.new("scripts/items/legend_armor/armor_upgrades/legend_direwolf_pelt_upgrade"));
 		this.m.Items.equip(item);
 
 		if (this.Math.rand(1, 100) <= 75)

@@ -94,14 +94,11 @@
 				S = "tents/tent_scout"
 			});
 
-			if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
-			{
-				_list.push({
-					R = 45,
-					P = 1.0,
-					S = "legend_armor/tabard/legend_common_tabard"
-				});
-			}
+			_list.push({
+				R = 45,
+				P = 1.0,
+				S = "legend_armor/tabard/legend_common_tabard"
+			});
 		}
 		else if (_id == "building.specialized_trader")
 		{
@@ -111,19 +108,16 @@
 		}
 		else if (_id == "building.armorsmith")
 		{
-			if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
-			{
-				_list.push({
-					R = 45,
-					P = 1.0,
-					S = "legend_armor/tabard/legend_common_tabard"
-				});
-				_list.push({
-					R = 99,
-					P = 2.0,
-					S = "legend_armor/named/legend_armor_named_tabard"
-				});
-			}
+			_list.push({
+				R = 45,
+				P = 1.0,
+				S = "legend_armor/tabard/legend_common_tabard"
+			});
+			_list.push({
+				R = 99,
+				P = 2.0,
+				S = "legend_armor/named/legend_armor_named_tabard"
+			});
 		}
 	}
 

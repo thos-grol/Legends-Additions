@@ -99,16 +99,16 @@
 	//REMOVED
 	"supplies.cured_venison" : 0,
 	"supplies.goat_cheese" : 0,
-	"supplies.legend_human_parts" : 0, //FIXME: Remove skill
+	"supplies.legend_human_parts" : 0, //FEATURE_4: Remove
 	"supplies.fermented_unhold_heart" : 0,
 	"supplies.legend_yummy_sausages" : 0,
 	"supplies.black_marsh_stew" : 0,
-	"supplies.legend_porridge" : 0, //FIXME: Remove from a lot of places
-	"supplies.legend_pudding" : 0, //FIXME: Remove
-	"supplies.legend_pie" : 0, //FIXME: Remove
-	"supplies.cured_rations" : 0, //FIXME: Remove
-	"supplies.legend_cooking_spices" : 0,// FIXME: Remove
-	"supplies.pickled_mushrooms" : 0,// FIXME: Remove
+	"supplies.legend_porridge" : 0, //FEATURE_4: Remove
+	"supplies.legend_pudding" : 0, //FEATURE_4: Remove
+	"supplies.legend_pie" : 0, //FEATURE_4: Remove
+	"supplies.cured_rations" : 0, //FEATURE_4: Remove
+	"supplies.legend_cooking_spices" : 0,//FEATURE_4: Remove
+	"supplies.pickled_mushrooms" : 0,//FEATURE_4: Remove
 
 //TRADE
 	"misc.peat_bricks" : 34,
@@ -137,7 +137,7 @@
 	"misc.gemstones" : 700, //1 units of cut emeralds //FEATURE_3: Change to trade item
 	
 	//Removed
-	"misc.legend_cooking_spices" : 0, //FIXME: Remove
+	"misc.legend_cooking_spices" : 0, //FEATURE_4: Remove
 
 //TENTS
 	"tent.hunter_tent" : 200,

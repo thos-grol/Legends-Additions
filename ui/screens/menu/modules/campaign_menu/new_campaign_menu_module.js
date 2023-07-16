@@ -580,14 +580,6 @@ NewCampaignMenuModule.prototype.setStartingScenarios = function (_data)
 
 NewCampaignMenuModule.prototype.setCrusadeCampaignVisible = function (_data)
 {
-	if(_data)
-	{
-		this.mEvilCrusadeControl.addClass('display-block').removeClass('display-none');
-	}
-	else
-	{
-		this.mEvilCrusadeControl.removeClass('display-block').addClass('display-none');
-	}
 }
 
 

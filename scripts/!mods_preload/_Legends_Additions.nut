@@ -5,7 +5,7 @@ if (!("LA" in this.getroottable())) ::LA <- {};
 
 ::mods_registerMod(::LA.ModID, ::LA.Version, ::LA.Name);
 
-::mods_queue(::LA.ModID, ">mod_legends, mod_msu(>=1.2.0-rc.2), >mod_legends_PTR", function()
+::mods_queue(::LA.ModID, ">mod_legends, mod_msu(>=1.2.6)", function()
 {
 	::LA.Mod <- ::MSU.Class.Mod(::LA.ModID, ::LA.Version, ::LA.Name);
 
