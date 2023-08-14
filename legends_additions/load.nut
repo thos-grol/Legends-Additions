@@ -28,7 +28,7 @@
 // 	::include(file);
 // }
 
-foreach (file in ::IO.enumerateFiles("legends_additions/hooks"))
+foreach (file in ::IO.enumerateFiles("legends_additions/modules"))
 {
 	::include(file);
 }

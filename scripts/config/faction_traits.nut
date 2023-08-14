@@ -1,3 +1,4 @@
+//TODO: reset and update this file, waiting for legends changes
 local gt = this.getroottable();
 gt.Const.FactionTrait <- {
 	None = 0,
@@ -85,16 +86,16 @@ gt.Const.FactionTrait <- {
 			"scripts/factions/actions/defend_militia_action",
 			// "scripts/factions/actions/send_peasants_action",
 			
-			// "scripts/factions/actions/send_ship_action", //TODO: harbor building generates goods and wealth
+			// "scripts/factions/actions/send_ship_action",
 			// "scripts/factions/actions/receive_ship_action",
 
-			"scripts/factions/actions/burn_location_action", //TODO: merged into contract timeout
-			"scripts/factions/actions/rebuild_location_action", //TODO: merge into update, when situation expires rebuild
-			"scripts/factions/contracts/restore_location_action", //TODO: becomes automatic
+			"scripts/factions/actions/burn_location_action",
+			"scripts/factions/actions/rebuild_location_action",
+			"scripts/factions/contracts/restore_location_action",
 
-			"scripts/factions/actions/legend_build_location_action", //TODO: merge into update, when situation expires rebuild
-			"scripts/factions/actions/legend_upgrade_settlement_action", //TODO: merge into update, when situation expires rebuild
-			"scripts/factions/actions/add_random_situation_action" //TODO: merge into update, when situation expires rebuild
+			"scripts/factions/actions/legend_build_location_action",
+			"scripts/factions/actions/legend_upgrade_settlement_action",
+			"scripts/factions/actions/add_random_situation_action"
 			
 			//new contracts
 			//escort important person

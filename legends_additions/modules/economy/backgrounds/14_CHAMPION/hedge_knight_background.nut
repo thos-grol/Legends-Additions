@@ -75,13 +75,10 @@
 			]
 		];
 
-		if (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
-		{
-			helm.push([
-				1,
-				"theamson_barbute_helmet"
-			]);
-		}
+		helm.push([
+			1,
+			"theamson_barbute_helmet"
+		]);
 
 		items.equip(this.Const.World.Common.pickHelmet(helm));
 	}

@@ -1,5 +1,13 @@
 Economy Overhaul
 
+patch: 
+- escort_caravan_contract.nut
+- world_state.nut
+
+//TODO: integrate the black market in, make it so that only 2 black markets generate
+//TODO: remove ptr dependency
+//TODO: add kobolds to troop definitions
+
 //camping ui
     //FEATURE_0: replace crafting tent on screen with anatomist, hide if you don't have
     //FEATURE_0: replace tent on screen with alchemist, hide if you don't have
@@ -11,9 +19,7 @@ Economy Overhaul
     //this.World.Assets.addMoney
     //FEATURE_4: remove most events that give free stuff, you need traits etc to earn them
 
-//TODO: if fights are at camps, prevent luring enemies in.
-//TODO: make town guards to attack parties, if guards are defeated, they respawn after a period.
-//TODO: if guards are defeated during crisis, spawn contract to defend the city if they are close to the wilderness/threat.
+//TODO: every settlement spawns guards, guards vary in strength
 //TODO: Faction Overhaul
     //update action
         faction action <- factions have a chance to build strength during update
