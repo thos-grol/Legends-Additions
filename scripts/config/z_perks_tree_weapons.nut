@@ -1,3 +1,4 @@
+//TODO: compare diff with legends version and fix
 //Remove staff and throwing trees
 local gt = this.getroottable();
 
