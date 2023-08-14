@@ -18,7 +18,7 @@
 
 //FEATURE_8: overhaul enemy equipment/builds
 //FEATURE_4: selling the same item type to stores will decrease the price you can sell it at for a duration...
-//FEATURE_3: guild headquarters features:
+//TODO: guild headquarters features:
 	//bros in headquarters will charge extra salary for food
 	//item storage
 	//bro storage
@@ -70,7 +70,7 @@
 	"supplies.medicine" : 120,
 
 	//AMMO
-	"ammo.arrows" : 30, //FEATURE_3: a lot of arrows/bolts/powder share same id, use manual hooks for prices
+	"ammo.arrows" : 30, //TODO: a lot of arrows/bolts/powder share same id, use manual hooks for prices
 	"ammo.bolts" : 0,
 	"ammo.powder" : 0, //FEATURE_5: refillable with alchemist
 
@@ -134,7 +134,7 @@
 	"misc.gold_ingots" : 6400, //FEATURE_7: redo item to be 1 ingot
 	//FEATURE_7: add gemstones
 	"misc.uncut_gems" : 840, //6 units of uncut emeralds
-	"misc.gemstones" : 700, //1 units of cut emeralds //FEATURE_3: Change to trade item
+	"misc.gemstones" : 700, //1 units of cut emeralds //TODO: Change to trade item
 	
 	//Removed
 	"misc.legend_cooking_spices" : 0, //FEATURE_4: Remove
@@ -160,17 +160,17 @@
 	"spawns.cart_01" : 260,
 	"spawns.cart_02" : 400,
 
-//LOOT //FEATURE_3: LOOT sort by tiers and price
-	"misc.signet_ring" : 960, //FEATURE_3: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
+//LOOT //TODO: LOOT sort by tiers and price
+	"misc.signet_ring" : 960, //TODO: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
 	"misc.ancient_scroll" : 400,
 	"misc.legend_scroll" : 400,
 	"misc.ornate_tome" : 800, //FEATURE_8: Magic rework, contains knowledge, decipherable, generate more tome images, price based on book tiers
-	"misc.white_pearls" : 300, //FEATURE_3: 15 units, rework into item with ammount, trade goods, found in port cities/loot
+	"misc.white_pearls" : 300, //TODO: 15 units, rework into item with ammount, trade goods, found in port cities/loot
 	
-	//Monster drops //FEATURE_3: Loot prices and removal
-	"misc.growth_pearls" : 100, //FEATURE_3: 5 units, rework into item with ammount
-	"misc.soul_splinter" : 1200, //FEATURE_3: black soul gem, rare alp drop. used for necromancy
-	"misc.ancient_amber" : 800, //FEATURE_3: rare scrat drop. contains life energy
+	//Monster drops //TODO: Loot prices and removal
+	"misc.growth_pearls" : 100, //TODO: 5 units, rework into item with ammount
+	"misc.soul_splinter" : 1200, //TODO: black soul gem, rare alp drop. used for necromancy
+	"misc.ancient_amber" : 800, //TODO: rare scrat drop. contains life energy
 	"misc.adrenaline_gland" : 100,
 	"misc.spider_silk" : 100,
 	
@@ -214,31 +214,31 @@
 	"misc.legend_demon_hound_bones" : 0,
 	
 	//Remove certain monster drops
-	"misc.snake_oil" : 0, //FEATURE_3: Remove
-	"misc.rainbow_scale" : 0, //FEATURE_3: Remove item and snakes for now
-	"misc.glistening_scales" : 0, //FEATURE_3: Remove 
-	"misc.serpent_skin" : 350, //FEATURE_3: Remove 
-	"misc.sabertooth" : 0, //FEATURE_3: Remove
-	"misc.golden_chalice" : 0, //FEATURE_3: Remove
-	"misc.ancient_gold_coins" : 0, //FEATURE_3: Remove
-	"misc.jade_broche" : 0, //FEATURE_3: Remove
-	"misc.silverware" : 0, //FEATURE_3: Remove
-	"misc.silver_bowl" : 0, //FEATURE_3: Remove
-	"misc.valuable_furs" : 0, //FEATURE_3: Remove and replace with "misc.furs" : 100
-	"misc.bone_figurines" : 0, //FEATURE_3: Remove
-	"misc.bead_necklace" : 0, //FEATURE_3: Remove
-	"misc.looted_valuables" : 0, //FEATURE_3: Remove
-	"misc.goblin_carved_ivory_iconographs" : 0, //FEATURE_3: Remove
-	"misc.goblin_minted_coins" : 0, //FEATURE_3: Remove
-	"misc.goblin_rank_insignia" : 0, //FEATURE_3: Remove
-	"misc.webbed_valuables" : 0, //FEATURE_3: Remove
-	"misc.deformed_valuables" : 0, //FEATURE_3: Remove
-	"misc.legend_bear_fur" : 0, //FEATURE_3: Remove and remove bears
-	"misc.lindwurm_hoard" : 0, //FEATURE_3: Remove
-	"misc.jeweled_crown" : 0, //FEATURE_3: Remove
-	"misc.glittering_rock" : 0, //FEATURE_3: Remove
-	"misc.hyena_fur" : 0, //FEATURE_3: Remove and remove hyenas
-	"misc.acidic_saliva" : 0, //FEATURE_3: Remove and remove hyenas
+	"misc.snake_oil" : 0, //TODO: Remove
+	"misc.rainbow_scale" : 0, //TODO: Remove item and snakes for now
+	"misc.glistening_scales" : 0, //TODO: Remove 
+	"misc.serpent_skin" : 350, //TODO: Remove 
+	"misc.sabertooth" : 0, //TODO: Remove
+	"misc.golden_chalice" : 0, //TODO: Remove
+	"misc.ancient_gold_coins" : 0, //TODO: Remove
+	"misc.jade_broche" : 0, //TODO: Remove
+	"misc.silverware" : 0, //TODO: Remove
+	"misc.silver_bowl" : 0, //TODO: Remove
+	"misc.valuable_furs" : 0, //TODO: Remove and replace with "misc.furs" : 100
+	"misc.bone_figurines" : 0, //TODO: Remove
+	"misc.bead_necklace" : 0, //TODO: Remove
+	"misc.looted_valuables" : 0, //TODO: Remove
+	"misc.goblin_carved_ivory_iconographs" : 0, //TODO: Remove
+	"misc.goblin_minted_coins" : 0, //TODO: Remove
+	"misc.goblin_rank_insignia" : 0, //TODO: Remove
+	"misc.webbed_valuables" : 0, //TODO: Remove
+	"misc.deformed_valuables" : 0, //TODO: Remove
+	"misc.legend_bear_fur" : 0, //TODO: Remove and remove bears
+	"misc.lindwurm_hoard" : 0, //TODO: Remove
+	"misc.jeweled_crown" : 0, //TODO: Remove
+	"misc.glittering_rock" : 0, //TODO: Remove
+	"misc.hyena_fur" : 0, //TODO: Remove and remove hyenas
+	"misc.acidic_saliva" : 0, //TODO: Remove and remove hyenas
 
 	"misc.manhunters_ledger" : 0,
 	"misc.legend_werehand" : 0,
@@ -256,13 +256,13 @@
 	"misc.legend_wolfsbane" : 50,
 
 
-//SPECIAL //FEATURE_3: Special prices
+//SPECIAL //TODO: Special prices
 	"misc.legendary_sword_blade" : 0,
 	"misc.legendary_sword_grip" : 0,	
 	"misc.black_book" : 0,
 	"misc.broken_ritual_armor" : 0,
 	"misc.trade_jug" : 0,
-	"misc.golden_goose" : 0, //FEATURE_3: Remove the golden goose for now
+	"misc.golden_goose" : 0, //TODO: Remove the golden goose for now
 
 //RUNE_SIGILS //FEATURE_5: Rune prices
 	"token.legend_vala_inscription" : 0,
@@ -301,7 +301,7 @@
 	"accessory.cat_potion" : 350, //FEATURE_5: refillable with alchemist
 	//FEATURE_5: Toxicity system
 	//Contraband
-	"misc.happy_powder" : 400, //FEATURE_3: Drugs
+	"misc.happy_powder" : 400, //TODO: Drugs
 	"misc.miracle_drug" : 450,
 
 	"misc.bodily_reward" : 2500,
@@ -317,35 +317,35 @@
 
 	//GEAR
 	"accessory.sergeant_badge" : 0,
-	"accessory.ghoul_trophy" : 0, //FEATURE_3 Rework
-	"accessory.alp_trophy" : 0, //FEATURE_3 Rework
-	"accessory.goblin_trophy" : 0, //FEATURE_3 Rework
-	"accessory.orc_trophy" : 0, //FEATURE_3 Rework
-	"accessory.undead_trophy" : 0, //FEATURE_3 Rework
-	"accessory.hexen_trophy" : 0, //FEATURE_3 Rework
-	"accessory.legend_demon_banshee_trophy" : 0, //FEATURE_3 Rework
-	"accessory.legend_demonalp_trophy" : 0, //FEATURE_3 Rework
-	"accessory.legend_hexen_leader_trophy" : 0, //FEATURE_3 Rework
-	"accessory.cursed_crystal_skull" : 0, //FEATURE_3 Rework
-	"accessory.slayer_necklace" : 0, //FEATURE_3 Rework
+	"accessory.ghoul_trophy" : 0, //TODO Rework
+	"accessory.alp_trophy" : 0, //TODO Rework
+	"accessory.goblin_trophy" : 0, //TODO Rework
+	"accessory.orc_trophy" : 0, //TODO Rework
+	"accessory.undead_trophy" : 0, //TODO Rework
+	"accessory.hexen_trophy" : 0, //TODO Rework
+	"accessory.legend_demon_banshee_trophy" : 0, //TODO Rework
+	"accessory.legend_demonalp_trophy" : 0, //TODO Rework
+	"accessory.legend_hexen_leader_trophy" : 0, //TODO Rework
+	"accessory.cursed_crystal_skull" : 0, //TODO Rework
+	"accessory.slayer_necklace" : 0, //TODO Rework
 
 	//PET
 	"accessory.falcon" : 100,
 	"accessory.legend_cat_item" : 0,
 	"accessory.legend_wolfsbane_necklace" : 0,
-	"accessory.wardog" : 0, //FEATURE_3: Remove from contracts and troops
-	"accessory.warhound" : 0, //FEATURE_3: Remove from contracts and troops
-	"accessory.armored_wardog" : 0, //FEATURE_3: Remove from contracts and troops
-	"accessory.armored_warhound" : 0, //FEATURE_3: Remove from contracts and troops
-	"accessory.heavily_armored_wardog" : 0, //FEATURE_3: Remove from contracts and troops
-	"accessory.warwolf" : 0, //FEATURE_3: Remove from contracts and troops
-	"accessory.heavily_armored_warhound" : 0, //FEATURE_3: Remove from contracts and troops
-	"accessory.legend_warbear" : 0, //FEATURE_3: Remove from contracts and troops
-	"accessory.legend_white_warwolf" : 0, //FEATURE_3: Remove from contracts and troops
-	"misc.wardog_heavy_armor_upgrade" : 0, //FEATURE_3: Remove from contracts and troops
-	"misc.wardog_armor_upgrade" : 0, //FEATURE_3: Remove from contracts and troops
+	"accessory.wardog" : 0, //TODO: Remove from contracts and troops
+	"accessory.warhound" : 0, //TODO: Remove from contracts and troops
+	"accessory.armored_wardog" : 0, //TODO: Remove from contracts and troops
+	"accessory.armored_warhound" : 0, //TODO: Remove from contracts and troops
+	"accessory.heavily_armored_wardog" : 0, //TODO: Remove from contracts and troops
+	"accessory.warwolf" : 0, //TODO: Remove from contracts and troops
+	"accessory.heavily_armored_warhound" : 0, //TODO: Remove from contracts and troops
+	"accessory.legend_warbear" : 0, //TODO: Remove from contracts and troops
+	"accessory.legend_white_warwolf" : 0, //TODO: Remove from contracts and troops
+	"misc.wardog_heavy_armor_upgrade" : 0, //TODO: Remove from contracts and troops
+	"misc.wardog_armor_upgrade" : 0, //TODO: Remove from contracts and troops
 
-	//OTHER //FEATURE_3: rework event
+	//OTHER //TODO: rework event
 	"accessory.legend_oms_fate" : 100,
 	"accessory.legend_oms_rib" : 100,
 	"accessory.legend_oms_tome" : 100,
@@ -670,9 +670,9 @@
 	"weapon.named_throwing_axe" : 0,         			//( 25,  40) | AP: 0.25 | AE: 1.30
 
 	//CROSSBOW 
-	//FEATURE_3: crossbows + bolts, firearms, powder are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
-	//FEATURE_3: remove crossbow tree from most backgrounds that never will have a chance to get the tree
-	//FEATURE_3: Training halls, can give bros trained tree or weapon trees, rework backgrounds to have less trees + trained tree is free on trained backgrounds - also most lowborn backgrounds do not have trained.
+	//TODO: crossbows + bolts, firearms, powder are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
+	//TODO: remove crossbow tree from most backgrounds that never will have a chance to get the tree
+	//TODO: Training halls, can give bros trained tree or weapon trees, rework backgrounds to have less trees + trained tree is free on trained backgrounds - also most lowborn backgrounds do not have trained.
 	"weapon.legend_blowgun" : 0,               			//( 10,  25) | AP: 0.10 | AE: 0.20
 	"weapon.light_crossbow" : 0,              			//( 30,  50) | AP: 0.50 | AE: 0.60
 	"weapon.crossbow" : 0,                    			//( 40,  60) | AP: 0.50 | AE: 0.70
@@ -707,7 +707,7 @@
 	"shield.orc_light_shield" : 0,             			//DEF: ( 15M,  20R) | DUR: -12.00 | STA: 16.00
 	"shield.goblin_heavy_shield" : 0,          			//DEF: ( 10M,  10R) | DUR: -8.00 | STA: 16.00
 	"shield.orc_heavy_shield" : 0,            			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 72.00
-	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00 //FEATURE_3: remove from named drops
+	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00 //TODO: remove from named drops
 	"shield.craftable_lindwurm" : 0,          			//DEF: ( 17M,  25R) | DUR: -14.00 | STA: 64.00
 	"shield.craftable_schrat" : 0,           			//DEF: ( 20M,  17R) | DUR: -12.00 | STA: 60.00
 	"shield.craftable_kraken" : 0,           			//DEF: ( 24M,  24R) | DUR: -15.00 | STA: 50.00

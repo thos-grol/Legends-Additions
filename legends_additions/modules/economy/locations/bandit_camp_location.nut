@@ -18,7 +18,7 @@
 		this.m.NamedShieldsList = this.Const.Items.NamedBanditShields;
 		//Changes
 		this.m.Flags.add("ID", this.Math.rand(1, 100000));
-		//TODO: create bandit gangs with archetypes
+		//FEATURE_9: create bandit gangs with archetypes
 	}
 
 	o.onSpawned = function()

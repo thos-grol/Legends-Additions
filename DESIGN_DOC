@@ -98,6 +98,8 @@ Foot soldier loses -5 ranged skill and -5 initiative, hiring cost increased. A b
 Historians gain 0-5 bravery, 0-7 melee skill, -3-3 Mdef, -6-6 Rdef, -5-5 Init. This increases variability, making it possible to rarely find some who know a little bit about fighting, but also possible for them to be worse
 Maids gain 0-10 Bravery, 0-5 ranged defense, 0-10 in...
 
+//TODO: remove or make monster spawns very much rarer. Then rework monsters into boss fights.
+
 //camping ui
     //FEATURE_0: replace crafting tent on screen with anatomist, hide if you don't have
     //FEATURE_0: replace tent on screen with alchemist, hide if you don't have
