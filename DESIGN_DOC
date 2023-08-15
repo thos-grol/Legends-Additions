@@ -1,12 +1,11 @@
 Economy Overhaul
 
-patch: 
+patch:
 - escort_caravan_contract.nut
 - world_state.nut
 
 //TODO: integrate the black market in, make it so that only 2 black markets generate
 //TODO: add new items into economy table
-//TODO: remove ptr dependency
 //TODO: add kobolds to troop definitions
 //TODO: remove most class perks from trees
 //TODO: make some backgrounds have garunteed stats/traits, ie. lumberjacks will come with passive for axes
@@ -175,8 +174,6 @@ Maids gain 0-10 Bravery, 0-5 ranged defense, 0-10 in...
 //FEATURE_1: start making the world poorer, troop equipment nerf
 //FEATURE_1: most mobs besides top tier mobs will be using at most chain armor
 //FEATURE_1: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
-
-
 
 //FEATURE_4: muscularity for bows and slings
 //FEATURE_4: bow perk that has a chance to make shot have 99% AP based on range skill
