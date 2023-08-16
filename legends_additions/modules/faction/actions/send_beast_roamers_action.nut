@@ -1,4 +1,53 @@
+//FIXME: list changes - made beasts rarer
+//Reworked beasts
 ::mods_hookExactClass("factions/actions/send_beast_roamers_action", function(o) {
+	o.onUpdate = function( _faction )
+	{
+		foreach( u in _faction.getUnits() )
+		{
+			if (!u.isDiscovered() && this.Time.getVirtualTimeF() - u.getSpawnTime() >= 20.0 * this.World.getTime().SecondsPerDay && !u.getSprite("selection").Visible && (this.World.State.getPlayer() == null || this.World.State.getPlayer().getTile().getDistanceTo(u.getTile()) >= 8))
+			{
+				u.die();
+				break;
+			}
+		}
+
+		if (_faction.getUnits().len() >= 10) return;
+		this.m.Score = 10;
+	}
+
+	o.onExecute = function( _faction )
+	{
+		local r = this.Math.rand(0, this.m.Options.len() - 1);
+
+		if (this.World.getTime().Days <= 9)
+		{
+			r = this.Math.rand(0, this.m.BeastsLow.len() - 1);
+		}
+
+		local cap = 10;
+
+		for( local i = 0; i < cap - _faction.getUnits().len(); i = i )
+		{
+			this.m.Cooldown = 0.0;
+
+			if (this.m.Options[r](this))
+			{
+				this.m.Cooldown = 5.0;
+				break;
+			}
+
+			r = this.Math.rand(0, this.m.Options.len() - 1);
+
+			if (this.World.getTime().Days <= 9)
+			{
+				r = this.Math.rand(0, this.m.BeastsLow.len() - 1);
+			}
+
+			i = ++i;
+		}
+	}
+
 	o.create = function()
 	{
 		this.m.ID = "send_beast_roamers_action";
@@ -1509,57 +1558,6 @@
 		// };
 		// this.m.Options.push(beast);
 		// this.m.BeastsHigh.push(beast);
-	}
-
-	o.onUpdate = function( _faction )
-	{
-		foreach( u in _faction.getUnits() )
-		{
-			if (!u.isDiscovered() && this.Time.getVirtualTimeF() - u.getSpawnTime() >= 20.0 * this.World.getTime().SecondsPerDay && !u.getSprite("selection").Visible && (this.World.State.getPlayer() == null || this.World.State.getPlayer().getTile().getDistanceTo(u.getTile()) >= 8))
-			{
-				u.die();
-				break;
-			}
-		}
-
-		if (_faction.getUnits().len() >= 15 + (this.Const.DLC.Desert ? 5 : 0))
-		{
-			return;
-		}
-
-		this.m.Score = 10;
-	}
-
-	o.onExecute = function( _faction )
-	{
-		local r = this.Math.rand(0, this.m.Options.len() - 1);
-
-		if (this.World.getTime().Days <= 9)
-		{
-			r = this.Math.rand(0, this.m.BeastsLow.len() - 1);
-		}
-
-		local cap = 15 + (this.Const.DLC.Desert ? 5 : 0);
-
-		for( local i = 0; i < cap - _faction.getUnits().len(); i = i )
-		{
-			this.m.Cooldown = 0.0;
-
-			if (this.m.Options[r](this))
-			{
-				this.m.Cooldown = 5.0;
-				break;
-			}
-
-			r = this.Math.rand(0, this.m.Options.len() - 1);
-
-			if (this.World.getTime().Days <= 9)
-			{
-				r = this.Math.rand(0, this.m.BeastsLow.len() - 1);
-			}
-
-			i = ++i;
-		}
 	}
 
 });
