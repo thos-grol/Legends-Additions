@@ -1,1 +1,0 @@
-::Z.Backgrounds.Equipment <- {};

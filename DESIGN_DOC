@@ -4,68 +4,10 @@ patch:
 - escort_caravan_contract.nut
 - world_state.nut
 
-//TODO: add new items into economy table
 //TODO: add kobolds to troop definitions
 //TODO: remove most class perks from trees
 //TODO: make some backgrounds have garunteed stats/traits, ie. lumberjacks will come with passive for axes
 //TODO: investigate and fix cause for price varience
-
-    Hats
-    Vanity:
-    -Undertaker's Hat
-    -Torse in 6 colours
-    -Rotten Torse
-    -Physician's Hood
-    -Chaperon in 9 colours
-    -Felt Chaperon in 9 colours
-
-    Top:
-    -Physician's Mask
-    -Helm Adornment
-    -Tarnished Helm Adornment
-    -Undertaker's Scarf
-
-    Helm:
-    -Full Helm
-    -Kettle Hat
-    -Guilded Sallet
-    -Sir Giles Helm
-
-    Hood:
-    -Beak Hood
-    -Full Mask
-
-    Armors
-    Cloth:
-    -Anatomist Robe
-    -Wanderer's Coat
-    -Knightly Robe in 8 colours
-    -Magician's Robe expanded to 6 colours
-
-    Plate:
-    -Heavy Mail in 14 colours
-    -Noble Scale in 6 colours
-    -Undertaker's Apron
-
-    Chain:
-    -Wild scale
-
-    Cloak:
-    -Anatomist Hood
-    -Decorative Cowl in 11 colours
-    -Duke's Cloak in 4 colours
-    -Fur Cloak in 4 colours
-    -Relic Hood in 10 colours
-    -Religious Scarf in 4 colours
-    -Tabbed Cowl
-
-    Attachments:
-
-    Amulet Coif - +3 resolve and taunts enemies in battle
-    Spiked Coif - +3 mdef -10 init 20 condition -3 stamina
-    Skull Chain - +10% chance to hit head, +1 fatigue per tile moved
-    Sacred Shield - +5% resolve
-    Iron Pauldrons, Heavy Pauldrons, Strong Pauldrons, Stag Pauldrons, Swan Pauldrons and Guilded Pauldrons
 
 //TODO: integrate logic
 World economy
@@ -81,20 +23,6 @@ Fencers, Halberdiers and Slingers are all stronger and appear later in your camp
 New unit: Noble Guard - High tier with plate armor
 New unit: Man at Arms - Very high tier with decorated armor and new helmets
 You can try them out in a new tactical scenario 'Noble Camp'
-
-
-
-//TODO: Background changes
-
-A few outlier backgrounds have been brought back closer to average stat ranges to increase the variety of compositions.
-Arbelester loses 5 stamina and 10 initiative, hiring cost increased. To make them a bit less powerful without impacting their core benefits
-Beggar gain up to 2 mdef and 3 ranged defense, from years taking abuse on the streets
-Cannibal gains 5-10 melee attack, 5-8 initiative and 3-2 hitpoints. To make the trade-off more worthwhile
-Cripple gain 0-5 resolve and 0-5 fatigue, a little more likely to persist through their hardship. still not great.
-Eunuch gains 5-15 initiative 0-5 hitpoints and 0-10 bravery, they gain situational advantages, and can be a bit less frail, but still aren't fighters.
-Foot soldier loses -5 ranged skill and -5 initiative, hiring cost increased. A bit less dominating without losing their core benefits
-Historians gain 0-5 bravery, 0-7 melee skill, -3-3 Mdef, -6-6 Rdef, -5-5 Init. This increases variability, making it possible to rarely find some who know a little bit about fighting, but also possible for them to be worse
-Maids gain 0-10 Bravery, 0-5 ranged defense, 0-10 in...
 
 //TODO: remove or make monster spawns very much rarer. Then rework monsters into boss fights.
 
