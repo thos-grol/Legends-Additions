@@ -4,19 +4,15 @@ patch:
 - escort_caravan_contract.nut
 - world_state.nut
 
-//TODO: add kobolds to troop definitions
-//TODO: remove most class perks from trees
-//TODO: make some backgrounds have garunteed stats/traits, ie. lumberjacks will come with passive for axes
 //TODO: investigate and fix cause for price varience
-//TODO: integrate logic
-World economy
+//TODO: integrate logic World economy
 
 Caravans now take goods out of each building's inventory of the town they leave, carry the goods in their inventory, and deliver the goods into the inventory of the town they arrive at. Paying the origin town when they unload.
 Patrols, Mercenaries, Ships, Peasants and caravans are more frequent to increase the odds of caravans making it through and towns serving and thriving.
 
 //FEATURE_0: rework monsters into boss fights. Make monster spawns much rarer.
 
-//FEATURE_1: Camping and Retinue Rework
+//FEATURE_1: Camping and Retinue and class Rework
 camping ui
     //FEATURE_1: replace crafting tent on screen with anatomist, hide if you don't have
     //FEATURE_1: replace tent on screen with alchemist, hide if you don't have
@@ -26,7 +22,11 @@ camping ui
     //FEATURE_1: change money added from contracts and events
     //FEATURE_1: cart can only be upgraded once, experiment with stash size
     //this.World.Assets.addMoney
-    //FEATURE_4: remove most events that give free stuff, you need traits etc to earn them
+    //FEATURE_1: remove most events that give free stuff, you need traits etc to earn them
+    //FEATURE_1: remove most class perks from trees
+    //FEATURE_1: make some backgrounds have garunteed stats/traits, ie. lumberjacks will come with passive for axes
+
+
 
 //FEATURE_5: Faction Overhaul
     //every settlement spawns guards, guards vary in strength
@@ -80,25 +80,25 @@ camping ui
     //Arena
 
 //FEATURE_2: contract, ambition, event pay, money rework
-//FEATURE_2: script to generate all ambitions
-//FEATURE_2: script to generate all contracts
-//FEATURE_2: disable donkey events
-//FEATURE_2: disable oathtaker armor event
-//FEATURE_2: start making the world poorer, troop equipment nerf
-//FEATURE_2: most mobs besides top tier mobs will be using at most chain armor
-//FEATURE_2: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
+    //FEATURE_2: script to generate all ambitions
+    //FEATURE_2: script to generate all contracts
+    //FEATURE_2: disable donkey events
+    //FEATURE_2: disable oathtaker armor event
+    //FEATURE_2: start making the world poorer, troop equipment nerf
+    //FEATURE_2: most mobs besides top tier mobs will be using at most chain armor
+    //FEATURE_2: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
 
-//FEATURE_4: sellswords armor rework? - no perks needed, buffs granted based on armor weight
-//FEATURE_8: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
+//FEATURE_6: sellswords armor rework? - no perks needed, buffs granted based on armor weight
+//FEATURE_6: muscularity for bows and slings
+//FEATURE_6: bow perk that has a chance to make shot have 99% AP based on range skill
+//FEATURE_6: fletching etc costs money to do <- the resources have to come from somwhere don't they?
+//FEATURE_9: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
 
 
 
-//FEATURE_4: muscularity for bows and slings
-//FEATURE_4: bow perk that has a chance to make shot have 99% AP based on range skill
 
-//FEATURE_4: fletching etc costs money to do <- the resources have to come from somwhere don't they?
 
-FEATURE_5: Origins to Revamp:
+FEATURE_9: Origins to Revamp:
     - Beast Slayers
     - Scaling Beggar
     - Old Swordmaster

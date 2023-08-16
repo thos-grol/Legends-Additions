@@ -1,4 +1,4 @@
-//TODO: change to tag
+//FIXME: change to tag
 ::mods_hookExactClass("skills/perks/perk_overwhelm", function (o)
 {
     local onTargetHit = o.onTargetHit;
