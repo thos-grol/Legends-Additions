@@ -1,6 +1,6 @@
 ::mods_hookExactClass("items/misc/anatomist/orc_warrior_potion_item", function (o)
 {
-    //FEATURE_2: Wurm 7 potion
+    //FEATURE_8:: Wurm 7 potion
     local create = o.create;
     o.create = function()
     {

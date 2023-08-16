@@ -22,7 +22,7 @@
 	}
 }
 
-//FEATURE_2: Reenable Alp potions
+//FEATURE_8:: Reenable Alp potions
 // ::mods_hookExactClass("entity/tactical/enemies/alp", function (o)
 // {
 //     local onDeath = o.onDeath;
@@ -196,7 +196,7 @@
 });
 
 //serpent
-//FEATURE_2: Reenable Serpent potion
+//FEATURE_8:: Reenable Serpent potion
 // ::mods_hookExactClass("entity/tactical/enemies/serpent", function (o)
 // {
 //     local onDeath = o.onDeath;
@@ -285,7 +285,7 @@
     }
 });
 
-//FEATURE_2: Reenable Lindwurm potions
+//FEATURE_8:: Reenable Lindwurm potions
 //lindwurm
 // ::mods_hookExactClass("entity/tactical/enemies/lindwurm", function (o)
 // {
@@ -311,7 +311,7 @@
 //     }
 // });
 
-//FEATURE_2: Reenable Schrat potions
+//FEATURE_8:: Reenable Schrat potions
 // ::mods_hookExactClass("entity/tactical/enemies/schrat", function (o)
 // {
 //     local onDeath = o.onDeath;

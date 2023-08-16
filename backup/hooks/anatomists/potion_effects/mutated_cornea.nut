@@ -168,7 +168,7 @@
 			_properties.DamageDirectMult += 0.20;
 		}
 
-        //FEATURE_2: stake vampire players
+        //FEATURE_8:: stake vampire players
     }
 });
 

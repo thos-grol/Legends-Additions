@@ -133,7 +133,7 @@ BACKGROUNDS = {
     'CHAMPION' : [
         'background.legend_shieldmaiden',
         
-        'background.beast_slayer', #FEATURE_2: combine into monster hunter, disable witchunter background
+        'background.beast_slayer', #FEATURE_8:: combine into monster hunter, disable witchunter background
         'background.witchhunter',
         'background.legend_master_archer',
 

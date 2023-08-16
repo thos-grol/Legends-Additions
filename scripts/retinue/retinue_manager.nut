@@ -5,7 +5,7 @@
 //Alchemist I -> Alchemist II -> Alchemist III
 //Drill Seargant -> Soldier -> Old Swordmaster
 //Cook -> Quartermaster -> Recruiter
-//FEATURE_0: if u have the upgrade, then hide the lower versions
+//FEATURE_1: if u have the upgrade, then hide the lower versions
 this.retinue_manager <- {
 	m = {
 		Followers = [],

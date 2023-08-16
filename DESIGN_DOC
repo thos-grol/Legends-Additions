@@ -98,14 +98,15 @@ Maids gain 0-10 Bravery, 0-5 ranged defense, 0-10 in...
 
 //TODO: remove or make monster spawns very much rarer. Then rework monsters into boss fights.
 
-//camping ui
-    //FEATURE_0: replace crafting tent on screen with anatomist, hide if you don't have
-    //FEATURE_0: replace tent on screen with alchemist, hide if you don't have
-    //FEATURE_0: comment out tents that can be accessed from main tent
-    //FEATURE_0: remove crafting and training from main tent
+//FEATURE_1: Camping and Retinue Rework
+camping ui
+    //FEATURE_1: replace crafting tent on screen with anatomist, hide if you don't have
+    //FEATURE_1: replace tent on screen with alchemist, hide if you don't have
+    //FEATURE_1: comment out tents that can be accessed from main tent
+    //FEATURE_1: remove crafting and training from main tent
 
-    //FEATURE_0: change money added from contracts and events
-    //FEATURE_0: cart can only be upgraded once, experiment with stash size
+    //FEATURE_1: change money added from contracts and events
+    //FEATURE_1: cart can only be upgraded once, experiment with stash size
     //this.World.Assets.addMoney
     //FEATURE_4: remove most events that give free stuff, you need traits etc to earn them
 
@@ -160,19 +161,19 @@ Maids gain 0-10 Bravery, 0-5 ranged defense, 0-10 in...
     //Opening up the wilderness
     //Arena
 
-
-//FEATURE_1: script to generate all ambitions
-//FEATURE_1: script to generate all contracts
-
-//FEATURE_6: disable donkey events
-//FEATURE_6: disable oathtaker armor event
+//FEATURE_2: contract, ambition, event pay, money rework
+//FEATURE_2: script to generate all ambitions
+//FEATURE_2: script to generate all contracts
+//FEATURE_2: disable donkey events
+//FEATURE_2: disable oathtaker armor event
+//FEATURE_2: start making the world poorer, troop equipment nerf
+//FEATURE_2: most mobs besides top tier mobs will be using at most chain armor
+//FEATURE_2: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
 
 //FEATURE_4: sellswords armor rework? - no perks needed, buffs granted based on armor weight
 //FEATURE_8: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
 
-//FEATURE_1: start making the world poorer, troop equipment nerf
-//FEATURE_1: most mobs besides top tier mobs will be using at most chain armor
-//FEATURE_1: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
+
 
 //FEATURE_4: muscularity for bows and slings
 //FEATURE_4: bow perk that has a chance to make shot have 99% AP based on range skill

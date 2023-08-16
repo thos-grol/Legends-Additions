@@ -21,9 +21,9 @@ local perkDefObjects = [
     }
 ];
 
-//FEATURE_5: Add perks and icons to perk def objects
-//FEATURE_5: Verify perk/active icons
-//FEATURE_5: Bright perk adds flag when added, changes name of the perk in description. Changes effect as well.
+//FEATURE_8: Add perks and icons to perk def objects
+//FEATURE_8: Verify perk/active icons
+//FEATURE_8: Bright perk adds flag when added, changes name of the perk in description. Changes effect as well.
 //Bright
 //Extremely Bright
 //Genius
@@ -90,17 +90,17 @@ local perkDefObjects = [
 //     Lich's Tome
 
 //Tome of Spiritualism Spells
-    // FEATURE_5: Black Lead Potion item & Recipe
+    // FEATURE_8: Black Lead Potion item & Recipe
     // Matrix: Negative Energy
     // Meditation Technique: Underworld Thoughts, taking this will refund any other meditation techniques
-        //FEATURE_5: Interchangable meditation techniques
+        //FEATURE_8: Interchangable meditation techniques
     // Negative Energy Hand
         // 	partial astral projection
     //Reanimate
     //Anguish
     //Haunt
         // 	2 perks
-//FEATURE_5: Tome of Spiritualism Base item and item
+//FEATURE_8: Tome of Spiritualism Base item and item
     // learnable perks, push in order
     // learn in order
     // if cannot learn anymore, tell message

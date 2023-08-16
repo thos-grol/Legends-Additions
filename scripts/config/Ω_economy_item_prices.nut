@@ -18,8 +18,8 @@
 
 //FEATURE_8: overhaul enemy equipment/builds
 //FEATURE_4: selling the same item type to stores will decrease the price you can sell it at for a duration...
-//TODO: guild headquarters features:
-	//bros in headquarters will charge extra salary for food
+//FEATURE_7: guild headquarters features:
+	//bros in headquarters will charge extra salary accounting for food
 	//item storage
 	//bro storage
 	//smithy
@@ -70,7 +70,7 @@
 	"supplies.medicine" : 120,
 
 	//AMMO
-	"ammo.arrows" : 30, //TODO: a lot of arrows/bolts/powder share same id, use manual hooks for prices
+	"ammo.arrows" : 30, //FIXME: a lot of arrows/bolts/powder share same id, use manual hooks for prices
 	"ammo.bolts" : 0,
 	"ammo.powder" : 0, //FEATURE_5: refillable with alchemist
 
@@ -134,7 +134,7 @@
 	"misc.gold_ingots" : 6400, //FEATURE_7: redo item to be 1 ingot
 	//FEATURE_7: add gemstones
 	"misc.uncut_gems" : 840, //6 units of uncut emeralds
-	"misc.gemstones" : 700, //1 units of cut emeralds //TODO: Change to trade item
+	"misc.gemstones" : 700, //1 units of cut emeralds //FIXME: Change to trade item
 
 	//Removed
 	"misc.legend_cooking_spices" : 0, //FEATURE_4: Remove
@@ -160,17 +160,17 @@
 	"spawns.cart_01" : 260,
 	"spawns.cart_02" : 400,
 
-//LOOT //TODO: LOOT sort by tiers and price
-	"misc.signet_ring" : 960, //TODO: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
+//LOOT //FIXME: LOOT sort by tiers and price
+	"misc.signet_ring" : 960, //FEATURE_8: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
 	"misc.ancient_scroll" : 400,
 	"misc.legend_scroll" : 400,
 	"misc.ornate_tome" : 800, //FEATURE_8: Magic rework, contains knowledge, decipherable, generate more tome images, price based on book tiers
-	"misc.white_pearls" : 300, //TODO: 15 units, rework into item with ammount, trade goods, found in port cities/loot
+	"misc.white_pearls" : 300, //FEATURE_8: 15 units, rework into item with ammount, trade goods, found in port cities/loot
 
-	//Monster drops //TODO: Loot prices and removal
-	"misc.growth_pearls" : 100, //TODO: 5 units, rework into item with ammount
-	"misc.soul_splinter" : 1200, //TODO: black soul gem, rare alp drop. used for necromancy
-	"misc.ancient_amber" : 800, //TODO: rare scrat drop. contains life energy
+	//Monster drops //FEATURE_8: Loot prices and removal
+	"misc.growth_pearls" : 100, //FEATURE_8: 5 units, rework into item with ammount
+	"misc.soul_splinter" : 1200, //FEATURE_8: black soul gem, rare alp drop. used for necromancy
+	"misc.ancient_amber" : 800, //FEATURE_8: rare scrat drop. contains life energy
 	"misc.adrenaline_gland" : 100,
 	"misc.spider_silk" : 100,
 
@@ -213,32 +213,32 @@
 	"misc.legend_banshee_essence" : 0,
 	"misc.legend_demon_hound_bones" : 0,
 
-	//Remove certain monster drops
+	//FEATURE_8: Remove certain monster drops
 	"misc.snake_oil" : 0,
-	"misc.rainbow_scale" : 0, //TODO: Remove item and snakes for now
-	"misc.glistening_scales" : 0, //TODO: Remove
-	"misc.serpent_skin" : 350, //TODO: Remove
-	"misc.sabertooth" : 0, //TODO: Remove
-	"misc.golden_chalice" : 0, //TODO: Remove
-	"misc.ancient_gold_coins" : 0, //TODO: Remove
-	"misc.jade_broche" : 0, //TODO: Remove
-	"misc.silverware" : 0, //TODO: Remove
-	"misc.silver_bowl" : 0, //TODO: Remove
-	"misc.valuable_furs" : 0, //TODO: Remove and replace with "misc.furs" : 100
-	"misc.bone_figurines" : 0, //TODO: Remove
-	"misc.bead_necklace" : 0, //TODO: Remove
-	"misc.looted_valuables" : 0, //TODO: Remove
-	"misc.goblin_carved_ivory_iconographs" : 0, //TODO: Remove
-	"misc.goblin_minted_coins" : 0, //TODO: Remove
-	"misc.goblin_rank_insignia" : 0, //TODO: Remove
-	"misc.webbed_valuables" : 0, //TODO: Remove
-	"misc.deformed_valuables" : 0, //TODO: Remove
-	"misc.legend_bear_fur" : 0, //TODO: Remove and remove bears
-	"misc.lindwurm_hoard" : 0, //TODO: Remove
-	"misc.jeweled_crown" : 0, //TODO: Remove
-	"misc.glittering_rock" : 0, //TODO: Remove
-	"misc.hyena_fur" : 0, //TODO: Remove and remove hyenas
-	"misc.acidic_saliva" : 0, //TODO: Remove and remove hyenas
+	"misc.rainbow_scale" : 0, //FEATURE_8: Remove item and snakes for now
+	"misc.glistening_scales" : 0, //FEATURE_8: Remove
+	"misc.serpent_skin" : 350, //FEATURE_8: Remove
+	"misc.sabertooth" : 0, //FEATURE_8: Remove
+	"misc.golden_chalice" : 0, //FEATURE_8: Remove
+	"misc.ancient_gold_coins" : 0, //FIFEATURE_8XME: Remove
+	"misc.jade_broche" : 0, //FEATURE_8: Remove
+	"misc.silverware" : 0, //FEATURE_8: Remove
+	"misc.silver_bowl" : 0, //FEATURE_8: Remove
+	"misc.valuable_furs" : 0, //FEATURE_8: Remove and replace with "misc.furs" : 100
+	"misc.bone_figurines" : 0, //FEATURE_8: Remove
+	"misc.bead_necklace" : 0, //FEATURE_8: Remove
+	"misc.looted_valuables" : 0, //FEATURE_8: Remove
+	"misc.goblin_carved_ivory_iconographs" : 0, //FEATURE_8: Remove
+	"misc.goblin_minted_coins" : 0, //FEATURE_8: Remove
+	"misc.goblin_rank_insignia" : 0, //FEATURE_8: Remove
+	"misc.webbed_valuables" : 0, //FEATURE_8: Remove
+	"misc.deformed_valuables" : 0, //FEATURE_8: Remove
+	"misc.legend_bear_fur" : 0, //FEATURE_8: Remove and remove bears
+	"misc.lindwurm_hoard" : 0, //FEATURE_8: Remove
+	"misc.jeweled_crown" : 0, //FEATURE_8: Remove
+	"misc.glittering_rock" : 0, //FEATURE_8: Remove
+	"misc.hyena_fur" : 0, //FEATURE_8: Remove and remove hyenas
+	"misc.acidic_saliva" : 0, //FEATURE_8: Remove and remove hyenas
 
 	"misc.manhunters_ledger" : 0,
 	"misc.legend_werehand" : 0,
@@ -256,15 +256,15 @@
 	"misc.legend_wolfsbane" : 50,
 
 
-//SPECIAL //TODO: Special prices
+//SPECIAL //FEATURE_8: Special prices
 	"misc.legendary_sword_blade" : 0,
 	"misc.legendary_sword_grip" : 0,
 	"misc.black_book" : 0,
 	"misc.broken_ritual_armor" : 0,
 	"misc.trade_jug" : 0,
-	"misc.golden_goose" : 0, //TODO: Remove the golden goose for now
+	"misc.golden_goose" : 0, //FEATURE_8: Remove the golden goose for now
 
-//RUNE_SIGILS //FEATURE_5: Rune prices
+//RUNE_SIGILS //FEATURE_8: Rune prices
 	"token.legend_vala_inscription" : 0,
 	"legend_helmet_upgrade.legend_rune_bravery" : 0,
 	"legend_helmet_upgrade.legend_rune_clarity" : 0,
@@ -301,7 +301,7 @@
 	"accessory.cat_potion" : 350, //FEATURE_5: refillable with alchemist
 	//FEATURE_5: Toxicity system
 	//Contraband
-	"misc.happy_powder" : 400, //TODO: Drugs
+	"misc.happy_powder" : 400, //FIXME: Drugs
 	"misc.miracle_drug" : 450,
 
 	"misc.bodily_reward" : 2500,
@@ -317,35 +317,35 @@
 
 	//GEAR
 	"accessory.sergeant_badge" : 0,
-	"accessory.ghoul_trophy" : 0, //TODO Rework
-	"accessory.alp_trophy" : 0, //TODO Rework
-	"accessory.goblin_trophy" : 0, //TODO Rework
-	"accessory.orc_trophy" : 0, //TODO Rework
-	"accessory.undead_trophy" : 0, //TODO Rework
-	"accessory.hexen_trophy" : 0, //TODO Rework
-	"accessory.legend_demon_banshee_trophy" : 0, //TODO Rework
-	"accessory.legend_demonalp_trophy" : 0, //TODO Rework
-	"accessory.legend_hexen_leader_trophy" : 0, //TODO Rework
-	"accessory.cursed_crystal_skull" : 0, //TODO Rework
-	"accessory.slayer_necklace" : 0, //TODO Rework
+	"accessory.ghoul_trophy" : 0, //FEATURE_8 Rework
+	"accessory.alp_trophy" : 0, //FEATURE_8 Rework
+	"accessory.goblin_trophy" : 0, //FEATURE_8 Rework
+	"accessory.orc_trophy" : 0, //FEATURE_8 Rework
+	"accessory.undead_trophy" : 0, //FEATURE_8 Rework
+	"accessory.hexen_trophy" : 0, //FEATURE_8 Rework
+	"accessory.legend_demon_banshee_trophy" : 0, //FEATURE_8 Rework
+	"accessory.legend_demonalp_trophy" : 0, //FEATURE_8 Rework
+	"accessory.legend_hexen_leader_trophy" : 0, //FEATURE_8 Rework
+	"accessory.cursed_crystal_skull" : 0, //FEATURE_8 Rework
+	"accessory.slayer_necklace" : 0, //FEATURE_8 Rework
 
 	//PET
 	"accessory.falcon" : 100,
 	"accessory.legend_cat_item" : 0,
 	"accessory.legend_wolfsbane_necklace" : 0,
-	"accessory.wardog" : 0, //TODO: Remove from contracts and troops
-	"accessory.warhound" : 0, //TODO: Remove from contracts and troops
-	"accessory.armored_wardog" : 0, //TODO: Remove from contracts and troops
-	"accessory.armored_warhound" : 0, //TODO: Remove from contracts and troops
-	"accessory.heavily_armored_wardog" : 0, //TODO: Remove from contracts and troops
-	"accessory.warwolf" : 0, //TODO: Remove from contracts and troops
-	"accessory.heavily_armored_warhound" : 0, //TODO: Remove from contracts and troops
-	"accessory.legend_warbear" : 0, //TODO: Remove from contracts and troops
-	"accessory.legend_white_warwolf" : 0, //TODO: Remove from contracts and troops
-	"misc.wardog_heavy_armor_upgrade" : 0, //TODO: Remove from contracts and troops
-	"misc.wardog_armor_upgrade" : 0, //TODO: Remove from contracts and troops
+	"accessory.wardog" : 0, //FIXME: Remove from contracts and troops
+	"accessory.warhound" : 0, //FIXME: Remove from contracts and troops
+	"accessory.armored_wardog" : 0, //FIXME: Remove from contracts and troops
+	"accessory.armored_warhound" : 0, //FIXME: Remove from contracts and troops
+	"accessory.heavily_armored_wardog" : 0, //FIXME: Remove from contracts and troops
+	"accessory.warwolf" : 0, //FIXME: Remove from contracts and troops
+	"accessory.heavily_armored_warhound" : 0, //FIXME: Remove from contracts and troops
+	"accessory.legend_warbear" : 0, //FIXME: Remove from contracts and troops
+	"accessory.legend_white_warwolf" : 0, //FIXME: Remove from contracts and troops
+	"misc.wardog_heavy_armor_upgrade" : 0, //FIXME: Remove from contracts and troops
+	"misc.wardog_armor_upgrade" : 0, //FIXME: Remove from contracts and troops
 
-	//OTHER //TODO: rework event
+	//OTHER //FIXME: rework event
 	"accessory.legend_oms_fate" : 100,
 	"accessory.legend_oms_rib" : 100,
 	"accessory.legend_oms_tome" : 100,
@@ -370,7 +370,7 @@
 	"weapon.legend_katar" : 120,               			//( 30,  45) | AP: 0.30 | AE: 1.25
 
 	//SWORD
-	//FEATURE_1: swords are rarer, usually only equipped by swordmasters/nobles/strong units
+	//FEATURE_2: swords are rarer, usually only equipped by swordmasters/nobles/strong units
 	//1H
 	"weapon.broken_ancient_sword" : 0,        			//( 30,  35) | AP: 0.20 | AE: 0.75
 	"weapon.legend_skin_flayer" : 0,         			//( 45,  60) | AP: 0.20 | AE: 0.90
@@ -670,9 +670,9 @@
 	"weapon.named_throwing_axe" : 0,         			//( 25,  40) | AP: 0.25 | AE: 1.30
 
 	//CROSSBOW
-	//TODO: crossbows + bolts, firearms, powder are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
-	//TODO: remove crossbow tree from most backgrounds that never will have a chance to get the tree
-	//TODO: Training halls, can give bros trained tree or weapon trees, rework backgrounds to have less trees + trained tree is free on trained backgrounds - also most lowborn backgrounds do not have trained.
+	//FIXME: crossbows + bolts, firearms, powder are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
+	//FIXME: remove crossbow tree from most backgrounds that never will have a chance to get the tree
+	//FIXME: Training halls, can give bros trained tree or weapon trees, rework backgrounds to have less trees + trained tree is free on trained backgrounds - also most lowborn backgrounds do not have trained.
 	"weapon.legend_blowgun" : 0,               			//( 10,  25) | AP: 0.10 | AE: 0.20
 	"weapon.light_crossbow" : 0,              			//( 30,  50) | AP: 0.50 | AE: 0.60
 	"weapon.crossbow" : 0,                    			//( 40,  60) | AP: 0.50 | AE: 0.70
@@ -707,7 +707,7 @@
 	"shield.orc_light_shield" : 0,             			//DEF: ( 15M,  20R) | DUR: -12.00 | STA: 16.00
 	"shield.goblin_heavy_shield" : 0,          			//DEF: ( 10M,  10R) | DUR: -8.00 | STA: 16.00
 	"shield.orc_heavy_shield" : 0,            			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 72.00
-	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00 //TODO: remove from named drops
+	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00 //FIXME: remove from named drops
 	"shield.craftable_lindwurm" : 0,          			//DEF: ( 17M,  25R) | DUR: -14.00 | STA: 64.00
 	"shield.craftable_schrat" : 0,           			//DEF: ( 20M,  17R) | DUR: -12.00 | STA: 60.00
 	"shield.craftable_kraken" : 0,           			//DEF: ( 24M,  24R) | DUR: -15.00 | STA: 50.00
@@ -816,7 +816,7 @@
 
 	"legend_armor.body.legend_tunic_noble" : 176,                        		//DUR: 40.00 | STA: -2.00
 	"legend_armor.body.legend_tunic_noble_named" : 264,                 		//DUR: 40.00 | STA: -2.00
-	"legend_armor.body.legend_robes_magic" : 146,                        		//DUR: 40.00 | STA: -1.00 //fancy looking //FEATURE_10: magic rework
+	"legend_armor.body.legend_robes_magic" : 146,                        		//DUR: 40.00 | STA: -1.00 //fancy looking //FEATURE_9: magic rework
 
 		//I
 		"legend_armor.body.legend_southern_padded_chest" : 36,              		//DUR: 45.00 | STA: -4.00

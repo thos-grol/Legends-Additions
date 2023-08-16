@@ -95,7 +95,7 @@ this.anguish <- this.inherit("scripts/skills/magic_skill", {
 			if (a.getSkills().hasSkill("perk.torment_soul")) effect.m.TormentSoul = true;
 		}
 		effect.m.TurnsLeft = this.m.Duration;
-		//FEATURE_5: Anguish fx
+		//FEATURE_8: Anguish fx
 		//Use blue horrify fx?
 
 		return true;

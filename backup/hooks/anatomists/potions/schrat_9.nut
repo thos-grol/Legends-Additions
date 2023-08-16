@@ -1,6 +1,6 @@
 ::mods_hookExactClass("items/misc/anatomist/schrat_potion_item", function (o)
 {
-    //FEATURE_2: Rebalance Schrat 9 potion
+    //FEATURE_8:: Rebalance Schrat 9 potion
     local create = o.create;
     o.create = function()
     {

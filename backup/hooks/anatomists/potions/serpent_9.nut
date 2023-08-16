@@ -14,7 +14,7 @@
         ::LA.doMutation(_actor, "serpent");
         _actor.getFlags().add("serpent");
 
-        //FEATURE_2: serpent potion disabled
+        //FEATURE_8:: serpent potion disabled
         _actor.getSkills().add(::new("scripts/skills/effects/serpent_potion_effect"));
         //+15 Melee Defense
         //+15 HP
