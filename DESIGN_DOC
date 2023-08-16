@@ -10,7 +10,29 @@ patch:
 Caravans now take goods out of each building's inventory of the town they leave, carry the goods in their inventory, and deliver the goods into the inventory of the town they arrive at. Paying the origin town when they unload.
 Patrols, Mercenaries, Ships, Peasants and caravans are more frequent to increase the odds of caravans making it through and towns serving and thriving.
 
-//FEATURE_0: rework monsters into boss fights. Make monster spawns much rarer.
+//FEATURE_0: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.
+    //Nachzherer/Ghoul
+        //stage 3 nacho
+        //A corpse eater/Gluttony
+        //Abilities...
+            //Consumption
+            //Execution ability - attack and if a bro is killed, move onto square and consume the corpse
+            //Gain the abilities/powers of things it ate
+
+    //Direwolf
+        //The more attacks it recieves, the higher it's fury...
+
+
+    //Alp
+        //A master of dreams
+        //Will periodically split into 5 clones, 2 false and 1 real
+
+
+    //Webknecht
+    //Direwolf
+    //Necrosavant
+    //Schrat
+    //Lindwurm
 
 //FEATURE_1: Camping and Retinue and class Rework
 camping ui
