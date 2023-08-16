@@ -9,10 +9,7 @@
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 
-		if (!this.isActive())
-		{
-			return;
-		}
+		if (!this.isActive()) return;
 
 		_list.push("legend_herbalist_background");
 		_list.push("legend_herbalist_background");
@@ -27,57 +24,33 @@
 	{
 		switch(_id)
 		{
-		case "building.marketplace":
-			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "supplies/medicine_item"
-			});
-			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "supplies/medicine_small_item"
-			});
-			_list.push({
-				R = 80,
-				P = 1.0,
-				S = "tents/tent_heal"
-			});
-			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "tents/tent_gather"
-			});
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "weapons/legend_sickle"
-			});
-			break;
-
-		default:
-			switch(_id)
-			{
-			case "building.specialized_trader":
+			case "building.marketplace":
+				_list.push({
+					R = 0,
+					P = 1.0,
+					S = "supplies/medicine_item"
+				});
+				_list.push({
+					R = 0,
+					P = 1.0,
+					S = "supplies/medicine_small_item"
+				});
+				_list.push({
+					R = 80,
+					P = 1.0,
+					S = "tents/tent_heal"
+				});
+				_list.push({
+					R = 90,
+					P = 1.0,
+					S = "tents/tent_gather"
+				});
+				_list.push({
+					R = 20,
+					P = 1.0,
+					S = "weapons/legend_sickle"
+				});
 				break;
-
-			default:
-				switch(_id)
-				{
-				case "building.weaponsmith":
-					_list.push({
-						R = 99,
-						P = 1.0,
-						S = "weapons/named/legend_named_sickle"
-					});
-					break;
-
-				default:
-					if (_id == "building.armorsmith")
-					{
-					}
-				}
-			}
 		}
 	}
 

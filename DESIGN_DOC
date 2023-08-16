@@ -4,7 +4,6 @@ patch:
 - escort_caravan_contract.nut
 - world_state.nut
 
-//TODO: integrate the black market in, make it so that only 2 black markets generate
 //TODO: add new items into economy table
 //TODO: add kobolds to troop definitions
 //TODO: remove most class perks from trees

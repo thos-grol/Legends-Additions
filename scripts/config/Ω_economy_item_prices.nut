@@ -89,7 +89,7 @@
 	"supplies.dried_fish" : 40, 		//unit of 20
 	"supplies.smoked_ham" : 60, 		//unit of 30
 	"supplies.dried_lamb" : 60, 		//unit of 30
-	
+
 	//ALCOHOL
 	"supplies.beer" : 9, 				//35 units
 	"supplies.preserved_mead" : 11, 	//20 units
@@ -113,12 +113,12 @@
 //TRADE
 	"misc.peat_bricks" : 34,
 	"misc.dies" : 59,
-	
+
 	"misc.amber_shards" : 87,
 	"misc.spices" : 107,
 	"misc.salt" : 114,
 	"misc.incense" : 127,
-	
+
 	"misc.cloth_rolls" : 46,
 	"misc.furs" : 100,
 	"misc.silk" : 154,
@@ -135,7 +135,7 @@
 	//FEATURE_7: add gemstones
 	"misc.uncut_gems" : 840, //6 units of uncut emeralds
 	"misc.gemstones" : 700, //1 units of cut emeralds //TODO: Change to trade item
-	
+
 	//Removed
 	"misc.legend_cooking_spices" : 0, //FEATURE_4: Remove
 
@@ -166,18 +166,18 @@
 	"misc.legend_scroll" : 400,
 	"misc.ornate_tome" : 800, //FEATURE_8: Magic rework, contains knowledge, decipherable, generate more tome images, price based on book tiers
 	"misc.white_pearls" : 300, //TODO: 15 units, rework into item with ammount, trade goods, found in port cities/loot
-	
+
 	//Monster drops //TODO: Loot prices and removal
 	"misc.growth_pearls" : 100, //TODO: 5 units, rework into item with ammount
 	"misc.soul_splinter" : 1200, //TODO: black soul gem, rare alp drop. used for necromancy
 	"misc.ancient_amber" : 800, //TODO: rare scrat drop. contains life energy
 	"misc.adrenaline_gland" : 100,
 	"misc.spider_silk" : 100,
-	
+
 	"misc.ghoul_horn" : 0,
 	"misc.ghoul_teeth" : 0,
 	"misc.ghoul_brain" : 0,
-	
+
 	"misc.poison_gland" : 0,
 	"misc.parched_skin" : 0,
 	"misc.petrified_scream" : 0,
@@ -212,12 +212,12 @@
 
 	"misc.legend_banshee_essence" : 0,
 	"misc.legend_demon_hound_bones" : 0,
-	
+
 	//Remove certain monster drops
-	"misc.snake_oil" : 0, //TODO: Remove
+	"misc.snake_oil" : 0,
 	"misc.rainbow_scale" : 0, //TODO: Remove item and snakes for now
-	"misc.glistening_scales" : 0, //TODO: Remove 
-	"misc.serpent_skin" : 350, //TODO: Remove 
+	"misc.glistening_scales" : 0, //TODO: Remove
+	"misc.serpent_skin" : 350, //TODO: Remove
 	"misc.sabertooth" : 0, //TODO: Remove
 	"misc.golden_chalice" : 0, //TODO: Remove
 	"misc.ancient_gold_coins" : 0, //TODO: Remove
@@ -258,7 +258,7 @@
 
 //SPECIAL //TODO: Special prices
 	"misc.legendary_sword_blade" : 0,
-	"misc.legendary_sword_grip" : 0,	
+	"misc.legendary_sword_grip" : 0,
 	"misc.black_book" : 0,
 	"misc.broken_ritual_armor" : 0,
 	"misc.trade_jug" : 0,
@@ -312,7 +312,7 @@
 	"accessory.oathtaker_skull_02" : 0,
 	"accessory.bandage" : 0,
 	"accessory.legend_pack_small" : 0,
-	"accessory.legend_pack_large" : 0, 
+	"accessory.legend_pack_large" : 0,
 	"accessory.legend_catapult" : 0,
 
 	//GEAR
@@ -368,7 +368,7 @@
 	"weapon.qatal_dagger" : 75,                			//( 30,  45) | AP: 0.20 | AE: 0.70
 	"weapon.named_qatal_dagger" : 113,         			//( 30,  45) | AP: 0.20 | AE: 0.70
 	"weapon.legend_katar" : 120,               			//( 30,  45) | AP: 0.30 | AE: 1.25
-	
+
 	//SWORD
 	//FEATURE_1: swords are rarer, usually only equipped by swordmasters/nobles/strong units
 	//1H
@@ -376,7 +376,7 @@
 	"weapon.legend_skin_flayer" : 0,         			//( 45,  60) | AP: 0.20 | AE: 0.90
 	"weapon.legend_man_mangler" : 0,         			//( 60,  95) | AP: 0.35 | AE: 1.00
 	"weapon.sickle" : 8,                       			//( 15,  20) | AP: -0.05 | AE: 0.50
-	"weapon.legend_named_sickle" : 90,        			//( 40,  55) | AP: 0.20 | AE: 0.90 
+	"weapon.legend_named_sickle" : 90,        			//( 40,  55) | AP: 0.20 | AE: 0.90
 	//FEATURE_4: nerf named sickle, add auxillary flag for gathering
 
 	"weapon.shortsword" : 90,                  			//( 30,  40) | AP: 0.20 | AE: 0.75
@@ -387,21 +387,21 @@
 	"weapon.saif" : 110,                        		//( 35,  40) | AP: 0.20 | AE: 0.65
 	"weapon.legend_kopis" : 120,               			//( 35,  45) | AP: 0.25 | AE: 1.00
 	"weapon.ancient_sword" : 120,               		//( 38,  43) | AP: 0.20 | AE: 0.80
-	
+
 	"weapon.arming_sword" : 150,               			//( 40,  45) | AP: 0.20 | AE: 0.80
 	"weapon.scimitar" : 150,                   			//( 40,  45) | AP: 0.20 | AE: 0.70
 	"weapon.legend_gladius" : 150,              		//( 43,  48) | AP: 0.20 | AE: 0.80
 	"weapon.legend_named_gladius" : 225,       			//( 43,  48) | AP: 0.20 | AE: 0.80
-	
+
 	"weapon.noble_sword" : 188,                			//( 45,  50) | AP: 0.20 | AE: 0.85
 	"weapon.named_sword" : 282,                			//( 45,  50) | AP: 0.20 | AE: 0.85
 	"weapon.shamshir" : 188,                   			//( 45,  50) | AP: 0.20 | AE: 0.75
 	"weapon.named_shamshir" : 282,             			//( 45,  50) | AP: 0.20 | AE: 0.75
 	"weapon.fencing_sword" : 146,              			//( 35,  50) | AP: 0.20 | AE: 0.75
 	"weapon.named_fencing_sword" : 219,        			//( 35,  50) | AP: 0.20 | AE: 0.75
-	
+
 	"weapon.lightbringer_sword" : 18000,        		//( 50,  55) | AP: 0.20 | AE: 0.90
-	
+
 	//2H
 	"weapon.rhomphaia" : 146,                  			//( 45,  65) | AP: 0.20 | AE: 1.05
 	"weapon.warbrand" : 166,                   			//( 50,  75) | AP: 0.20 | AE: 0.75
@@ -413,13 +413,13 @@
 
 	"weapon.legend_estoc" : 186,               			//( 45,  60) | AP: 0.20 | AE: 0.60
 	"weapon.legend_named_estoc" : 279,         			//( 45,  60) | AP: 0.20 | AE: 0.60
-	
+
 	"weapon.longsword" : 194,                  			//( 65,  85) | AP: 0.25 | AE: 1.00
 	"weapon.named_longsword" : 291,            			//( 65,  85) | AP: 0.25 | AE: 1.00
 	"weapon.greatsword" : 266,                 			//( 85, 100) | AP: 0.25 | AE: 1.00
 	"weapon.named_greatsword" : 399,           			//( 85, 100) | AP: 0.25 | AE: 1.00
 
-	//AXE 
+	//AXE
 	"weapon.legend_meat_hacker" : 0,          			//( 30,  55) | AP: 0.30 | AE: 1.20
 	"weapon.orc_axe" : 0,                    			//( 35,  65) | AP: 0.30 | AE: 1.30
 
@@ -433,10 +433,10 @@
 	//2H
 	"weapon.legend_hoe" : 3,                   			//( 15,  20) | AP: 0.30 | AE: 0.60
 	"weapon.woodcutters_axe" : 12,             			//( 35,  70) | AP: 0.40 | AE: 1.25
-	
+
 	"weapon.legend_infantry_axe" : 112,        			//( 50,  70) | AP: 0.35 | AE: 1.25
 	"weapon.legend_named_infantry_axe" : 168,  			//( 50,  70) | AP: 0.35 | AE: 1.25
-	
+
 	"weapon.longaxe" : 112,                    			//( 70,  95) | AP: 0.30 | AE: 1.10
 	"weapon.named_longaxe" : 168,              			//( 70,  95) | AP: 0.30 | AE: 1.10
 	"weapon.legend_fan_axe" : 151,             			//( 60,  95) | AP: 0.40 | AE: 1.10
@@ -451,7 +451,7 @@
 	"weapon.orc_axe_2h" : 274,                 			//( 90, 120) | AP: 0.40 | AE: 1.60
 	"weapon.named_orc_axe_2h" : 411,           			//( 90, 120) | AP: 0.40 | AE: 1.60
 
-	//CLEAVER 
+	//CLEAVER
 	"weapon.orc_cleaver" : 0,                			//( 40,  70) | AP: 0.25 | AE: 1.10
 	"weapon.legend_saw" : 0,                   			//( 15,  20) | AP: 0.25 | AE: 0.40
 	"weapon.legend_cat_o_nine_tails" : 0,      			//( 10,  15) | AP: 0.10 | AE: 0.15
@@ -470,14 +470,14 @@
 	"weapon.falx" : 52,                        			//( 25,  35) | AP: 0.25 | AE: 0.80
 	"weapon.blunt_cleaver" : 0,               			//( 30,  40) | AP: 0.25 | AE: 0.80
 	"weapon.scramasax" : 64,                   			//( 30,  45) | AP: 0.25 | AE: 0.80
-	
+
 	"weapon.military_cleaver" : 150,           			//( 40,  60) | AP: 0.25 | AE: 0.90
 	"weapon.named_cleaver" : 225,              			//( 40,  60) | AP: 0.25 | AE: 0.90
 	"weapon.named_orc_cleaver" : 225,          			//( 40,  70) | AP: 0.25 | AE: 1.10
 	"weapon.khopesh" : 136,                    			//( 35,  55) | AP: 0.25 | AE: 1.20
 	"weapon.named_khopesh" : 204,              			//( 35,  55) | AP: 0.25 | AE: 1.20
 	"weapon.legend_khopesh" : 136,             			//( 40,  55) | AP: 0.25 | AE: 1.10
-	
+
 	//2H
 	"weapon.two_handed_saif" : 136,            			//( 50,  70) | AP: 0.25 | AE: 0.90
 	"weapon.two_handed_scimitar" : 151,        			//( 65,  85) | AP: 0.25 | AE: 1.10
@@ -496,17 +496,17 @@
 
 	//SPEAR
 	"weapon.legend_wooden_spear" : 0,          			//( 15,  25) | AP: 0.25 | AE: 0.45
-	
+
 	//1H
 	"weapon.militia_spear" : 52,               			//( 25,  30) | AP: 0.25 | AE: 0.90
 	"weapon.ancient_spear" : 26,               			//( 20,  35) | AP: 0.25 | AE: 1.00
-	
+
 	"weapon.boar_spear" : 66,                  			//( 30,  35) | AP: 0.25 | AE: 0.95
 	"weapon.firelance" : 86,                   			//( 30,  35) | AP: 0.25 | AE: 1.10
-	
+
 	"weapon.fighting_spear" : 150,             			//( 35,  40) | AP: 0.25 | AE: 1.00
 	"weapon.named_spear" : 225,                			//( 35,  40) | AP: 0.25 | AE: 1.00
-	
+
 	"weapon.legend_militia_glaive" : 65,       			//( 30,  40) | AP: 0.25 | AE: 0.90
 	"weapon.goblin_spear" : 55,                			//( 30,  40) | AP: 0.25 | AE: 0.70
 	"weapon.named_goblin_spear" : 130,         			//( 30,  40) | AP: 0.25 | AE: 0.70
@@ -514,7 +514,7 @@
 	"weapon.legend_glaive" : 120,              			//( 40,  45) | AP: 0.25 | AE: 0.95
 	"weapon.legend_battle_glaive" : 150,       			//( 45,  50) | AP: 0.25 | AE: 1.00
 	"weapon.legend_named_glaive" : 225,        			//( 45,  50) | AP: 0.25 | AE: 1.00
-	
+
 	//2H
 	"weapon.goedendag" : 86,                   			//( 45,  75) | AP: 0.25 | AE: 1.10
 	"weapon.legend_military_goedendag" : 129,  			//( 70, 100) | AP: 0.40 | AE: 1.25
@@ -523,7 +523,7 @@
 	//POLEARM
 	"weapon.legend_wooden_pitchfork" : 0,      			//( 15,  35) | AP: 0.30 | AE: 0.20
 	"weapon.pitchfork" : 6,                   			//( 30,  50) | AP: 0.30 | AE: 0.75
-	"weapon.broken_bladed_pike" : 24,          			//( 35,  55) | AP: 0.30 | AE: 0.80 
+	"weapon.broken_bladed_pike" : 24,          			//( 35,  55) | AP: 0.30 | AE: 0.80
 	"weapon.hooked_blade" : 24,                			//( 40,  70) | AP: 0.30 | AE: 1.10
 
 	"weapon.goblin_pike" : 130,                 		//( 50,  70) | AP: 0.25 | AE: 0.90
@@ -540,7 +540,7 @@
 	"weapon.named_warscythe" : 240,            			//( 55,  80) | AP: 0.30 | AE: 1.05
 	"weapon.legend_halberd" : 160,             			//( 60,  80) | AP: 0.30 | AE: 1.50
 	"weapon.legend_named_halberd" : 240,       			//( 60,  80) | AP: 0.30 | AE: 1.50
-	
+
 	"weapon.warfork" : 64,                     			//( 40,  60) | AP: 0.25 | AE: 1.00
 	"weapon.spetum" : 140,                      		//( 55,  75) | AP: 0.25 | AE: 1.00
 	"weapon.named_spetum" : 210,               			//( 55,  75) | AP: 0.25 | AE: 1.00
@@ -552,7 +552,7 @@
 	//FLAIL
 	//1H
 	"weapon.wooden_flail" : 0,                 			//( 10,  25) | AP: 0.30 | AE: 0.50
-	
+
 	"weapon.reinforced_wooden_flail" : 9,     			//( 20,  45) | AP: 0.30 | AE: 0.80
 	"weapon.flail" : 48,                      			//( 25,  55) | AP: 0.30 | AE: 1.00
 	"weapon.named_flail" : 72,                			//( 25,  55) | AP: 0.30 | AE: 1.00
@@ -572,7 +572,7 @@
 	"weapon.legend_chain" : 20,                			//( 15,  45) | AP: 0.20 | AE: 0.30
 	"weapon.orc_flail_2h" : 50,               			//( 50, 100) | AP: 0.30 | AE: 1.25
 	"weapon.named_orc_flail_2h" : 75,         			//( 50, 100) | AP: 0.30 | AE: 1.25
-	
+
 
 	//MACE
 	"weapon.wooden_stick" : 0,                 			//( 15,  25) | AP: 0.40 | AE: 0.50
@@ -584,14 +584,14 @@
 	//1H
 	"weapon.bludgeon" : 24,                     		//( 20,  35) | AP: 0.40 | AE: 0.75
 	"weapon.nomad_mace" : 24,                  			//( 25,  35) | AP: 0.40 | AE: 0.90
-	
+
 	"weapon.light_southern_mace" : 36,         			//( 30,  40) | AP: 0.40 | AE: 1.10
 	"weapon.morning_star" : 36,                			//( 30,  45) | AP: 0.40 | AE: 1.00
-	
+
 	"weapon.winged_mace" : 90,                			//( 35,  55) | AP: 0.40 | AE: 1.10
 	"weapon.heavy_southern_mace" : 90,        			//( 35,  50) | AP: 0.40 | AE: 1.20
 	"weapon.named_mace" : 151,                 			//( 35,  55) | AP: 0.40 | AE: 1.10
-	
+
 	//2H
 	"weapon.legend_shovel" : 8,                			//( 20,  30) | AP: 0.40 | AE: 0.45
 	"weapon.legend_named_shovel" : 0,        			//( 40,  55) | AP: 0.20 | AE: 0.80
@@ -602,11 +602,11 @@
 	"weapon.named_two_handed_spiked_mace" : 151,		//( 50,  70) | AP: 0.50 | AE: 1.15
 	"weapon.two_handed_flanged_mace" : 130,    			//( 75,  95) | AP: 0.50 | AE: 1.25
 	"weapon.named_two_handed_mace" : 195,      			//( 75,  95) | AP: 0.50 | AE: 1.25
-	
+
 	"weapon.polemace" : 115,                   			//( 60,  75) | AP: 0.40 | AE: 1.20
 	"weapon.named_polemace" : 195,             			//( 60,  75) | AP: 0.40 | AE: 1.20
 
-	
+
 
 	//HAMMER
 	"weapon.legend_skullsmasher" : 0,        			//( 35,  50) | AP: 0.50 | AE: 2.25
@@ -618,11 +618,11 @@
 	"weapon.legend_hammer" : 6,                			//( 15,  20) | AP: 0.50 | AE: 1.50
 	"weapon.legend_named_blacksmith_hammer" : 200,		//( 20,  30) | AP: 0.50 | AE: 2.00 //FEATURE_4: crafting overhaul
 	"weapon.pickaxe" : 8,                     			//( 15,  30) | AP: 0.50 | AE: 1.50
-	
+
 	"weapon.military_pick" : 47,               			//( 20,  35) | AP: 0.50 | AE: 2.00
 	"weapon.warhammer" : 78,                  			//( 30,  40) | AP: 0.50 | AE: 2.25
 	"weapon.named_warhammer" : 151,            			//( 30,  40) | AP: 0.50 | AE: 2.25
-	
+
 
 	//2H
 	"weapon.two_handed_wooden_hammer" : 24,    			//( 40,  70) | AP: 0.50 | AE: 1.50
@@ -638,18 +638,18 @@
 
 	//BOW
 	"weapon.wonky_bow" : 0,                   			//( 30,  50) | AP: 0.35 | AE: 0.50
-	
+
 	"weapon.goblin_bow" : 42,                  			//( 25,  40) | AP: 0.35 | AE: 0.55
 	"weapon.short_bow" : 48,                   			//( 30,  50) | AP: 0.35 | AE: 0.50
 	"weapon.goblin_heavy_bow" : 54,            			//( 30,  50) | AP: 0.35 | AE: 0.60
 	"weapon.named_goblin_heavy_bow" : 151,     			//( 30,  50) | AP: 0.35 | AE: 0.60
 	"weapon.composite_bow" : 54,               			//( 40,  55) | AP: 0.35 | AE: 0.70
-	
+
 	"weapon.hunting_bow" : 60,                 			//( 40,  60) | AP: 0.35 | AE: 0.55
 	"weapon.war_bow" : 151,                    			//( 50,  70) | AP: 0.35 | AE: 0.60
 	"weapon.named_warbow" : 227,               			//( 50,  70) | AP: 0.35 | AE: 0.60 //FEATURE_4: item crafting bowyer
 	"weapon.masterwork_bow" : 227,             			//( 50,  75) | AP: 0.35 | AE: 0.65
-	
+
 	//SLING
 	"weapon.legend_sling" : 0,                			//( 25,  35) | AP: 0.35 | AE: 0.50
 	"weapon.legend_slingshot" : 0,            			//( 10,  25) | AP: 0.40 | AE: 0.10
@@ -669,7 +669,7 @@
 	"weapon.named_javelin" : 0,              			//( 30,  45) | AP: 0.45 | AE: 0.75
 	"weapon.named_throwing_axe" : 0,         			//( 25,  40) | AP: 0.25 | AE: 1.30
 
-	//CROSSBOW 
+	//CROSSBOW
 	//TODO: crossbows + bolts, firearms, powder are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
 	//TODO: remove crossbow tree from most backgrounds that never will have a chance to get the tree
 	//TODO: Training halls, can give bros trained tree or weapon trees, rework backgrounds to have less trees + trained tree is free on trained backgrounds - also most lowborn backgrounds do not have trained.
@@ -690,7 +690,7 @@
 	"weapon.legend_drum" : 0,                 			//(  5,  10) | AP: 0.50 | AE: 0.20
 	"weapon.barbarian_drum" : 0,              			//( 15,  20) | AP: 0.00 | AE: 0.00
 
-	//STAFF 
+	//STAFF
 	"weapon.legend_staff" : 0,                 			//( 20,  30) | AP: 0.40 | AE: 0.30
 	"weapon.legend_tipstaff" : 0,             			//( 30,  40) | AP: 0.40 | AE: 0.30
 	"weapon.legend_mystic_staff" : 0,        			//( 40,  50) | AP: 0.40 | AE: 0.30
@@ -747,7 +747,7 @@
 	"shield.legend_tower_shield" : 96,        			//DEF: ( 30M,  15R) | DUR: -30.00 | STA: 96.00
 
 	"shield.gilders_embrace" : 10000,           		//DEF: ( 25M,  25R) | DUR: -16.00 | STA: 786.00
-	
+
 //LEGEND_ARMOR
 	"legend_armor.body.legend_rabble_fur" : 0,                           		//DUR: 5.00 | STA: 0.00
 	"legend_armor.body.legend_vala_dress" : 0,                          		//DUR: 50.00 | STA: 0.00
@@ -775,7 +775,7 @@
 	"legend_armor.body.legend_mountain_armor" : 0,                   			//DUR: 400.00 | STA: -33.00
 	"legend_armor.body.legend_mountain_armor_named" : 0,             			//DUR: 320.00 | STA: -42.00
 	"legend_armor.body.legend_skin_armor" : 0,                       			//DUR: 160.00 | STA: -16.00
-	
+
 	//CLOTH & LEATHER
 	"legend_armor.body.legend_bandages" : 0,                             		//DUR: 5.00 | STA: 0.00
 	"legend_armor.body.legend_sackcloth_tattered" : 0,                   		//DUR: 5.00 | STA: 0.00
@@ -794,14 +794,14 @@
 	"legend_armor.body.legend_tunic_wrap" : 24,                          		//DUR: 20.00 | STA: -1.00
 	"legend_armor.body.legend_southern_robe" : 24,                       		//DUR: 25.00 | STA: -1.00
 	"legend_armor.body.legend_southern_tunic" : 24,                      		//DUR: 25.00 | STA: -1.00
-	
+
 	"legend_armor.body.legend_thick_tunic" : 36,                         		//DUR: 30.00 | STA: -3.00
 	"legend_armor.body.legend_apron_butcher" : 36,                       		//DUR: 30.00 | STA: -3.00
 	"legend_armor.body.legend_apron" : 36,                               		//DUR: 35.00 | STA: -4.00
 	"legend_armor.body.legend_dark_tunic" : 36,                          		//DUR: 35.00 | STA: -4.00
 
 	"legend_armor.body.legend_gladiator_harness" : 48,                  		//DUR: 40.00 | STA: -4.00
-	
+
 	"legend_armor.body.legend_padded_surcoat" : 150,                     		//DUR: 55.00 | STA: -6.00
 	"legend_armor.body.legend_padded_surcoat_plain" : 150,               		//DUR: 55.00 | STA: -6.00
 	"legend_armor.body.legend_southern_noble_surcoat" : 206,             		//DUR: 55.00 | STA: -6.00
@@ -837,7 +837,7 @@
 		"legend_armor.body.legend_armor_leather_studded_jacket_named" : 81, 		//DUR: 30.00 | STA: -3.00
 		"legend_armor.body.legend_armor_leather_padded" : 63,               		//DUR: 40.00 | STA: -5.00
 		"legend_armor.body.legend_southern_strips" : 63,                    		//DUR: 40.00 | STA: -4.00
-		
+
 		"legend_armor.body.legend_southern_leather_plates" : 135,            		//DUR: 50.00 | STA: -5.00
 		"legend_armor.body.legend_armor_leather_lamellar" : 135,             		//DUR: 50.00 | STA: -6.00
 		"legend_armor.body.legend_armor_leather_lamellar_reinforced" : 145,  		//DUR: 55.00 | STA: -7.00
@@ -853,9 +853,9 @@
 		"legend_armor.body.legend_armor_leather_riveted_light" : 259,        		//DUR: 80.00 | STA: -11.00
 		"legend_armor.body.legend_armor_leather_riveted" : 285,              		//DUR: 95.00 | STA: -13.00
 		"legend_armor.body.legend_armor_leather_brigandine_hardened" : 310, 		//DUR: 110.00 | STA: -15.00
-		
-	
-		
+
+
+
 	//CHAIN
 	"legend_armor.body.legend_armor_rusty_mail_shirt" : 0,             			//DUR: 20.00 | STA: -4.00
 	"legend_armor.body.legend_armor_reinforced_rotten_mail_shirt" : 0, 			//DUR: 45.00 | STA: -7.00
@@ -902,7 +902,7 @@
 	"legend_armor.body.legend_armor_leather_brigandine_hardened_full" : 465,	//DUR: 140.00 | STA: -19.00
 	"legend_armor.body.legend_armor_leather_lamellar_heavy_named" : 727,		//DUR: 140.00 | STA: -23.00
 	"legend_armor.body.legend_armor_leather_lamellar_harness_reinforced" : 485,//DUR: 150.00 | STA: -23.00
-	
+
 	"legend_armor.body.legend_armor_plate_ancient_scale_coat" : 0,    			//DUR: 140.00 | STA: -24.00
 	"legend_armor.body.legend_armor_plate_cuirass" : 510,               		//DUR: 150.00 | STA: -21.00
 	"legend_armor.body.legend_southern_leather_scale" : 510,            		//DUR: 155.00 | STA: -26.00
@@ -920,7 +920,7 @@
 	"legend_armor.body.legend_armor_plate_full_greaves_named" : 803,   			//DUR: 170.00 | STA: -26.00
 
 	"legend_armor.body.legend_southern_named_golden_plates" : 635,      		//DUR: 200.00 | STA: -36.00
-	"legend_armor.body.legend_southern_named_plates" : 1000,             		//DUR: 210.00 | STA: -25.00	
+	"legend_armor.body.legend_southern_named_plates" : 1000,             		//DUR: 210.00 | STA: -25.00
 
 	"legend_armor.body.ijirok_armor" : 12000,                            		//DUR: 320.00 | STA: -32.00
 	"legend_armor.body.armor_of_davkul" : 12000,                         		//DUR: 270.00 | STA: -18.00
@@ -936,21 +936,21 @@
 	"legend_armor.body.legend_stollwurm_scales" : 0,                  			//DUR: 30.00 | STA: -4.00
 	"legend_armor.body.serpent_skin" : 0,                              			//DUR: 25.00 | STA: -2.00
 	"legend_armor.body.legend_shoulder_cloth" : 0,                      		//DUR: 5.00 | STA: 0.00
-	"legend_armor.body.legend_armor_cloak_common" : 0,                 			//DUR: 10.00 | STA: -1.00 	
-	"legend_armor.body.legend_southern_scarf" : 0,                     			//DUR: 5.00 | STA: 0.00 	
-	"legend_armor.body.legend_dark_wooly_cloak" : 0,                   			//DUR: 15.00 | STA: -2.00 	
-	"legend_armor.body.legend_sash" : 0,                               			//DUR: 3.00 | STA: 0.00 	
-	"legend_armor.body.legend_southern_scarf_wrap" : 0,                			//DUR: 15.00 | STA: -1.00 	
-	"legend_armor.body.legend_animal_pelt" : 0,                        			//DUR: 15.00 | STA: -2.00 	
-	"legend_armor.body.legend_noble_shawl" : 0,                        			//DUR: 10.00 | STA: 0.00 	
-	"legend_armor.body.legend_armor_cloak_crusader" : 0,               			//DUR: 35.00 | STA: -5.00 	
-	"legend_armor.body.legend_armor_cloak_heavy" : 0,                  			//DUR: 30.00 | STA: -4.00 	
-	"legend_armor.body.unhold_fur" : 0,                               			//DUR: 25.00 | STA: -2.00 	
-	"legend_armor.body.legend_armor_cloak_noble" : 0,                 			//DUR: 25.00 | STA: -2.00 	
-	"legend_armor.body.legend_redback_cloak" : 0,                     			//DUR: 10.00 | STA: -1.00 	
-	"legend_armor.body.legend_hexe_leader_cloak" : 0,                 			//DUR: 25.00 | STA: -2.00 	
-	"legend_armor_upgrade.legend_redback_cloak" : 0,                  			//DUR: 35.00 | STA: -3.00 	
-	"legend_armor_upgrade.legend_hexe_leader_cloak" : 0,             			//DUR: 20.00 | STA: 0.00 	
+	"legend_armor.body.legend_armor_cloak_common" : 0,                 			//DUR: 10.00 | STA: -1.00
+	"legend_armor.body.legend_southern_scarf" : 0,                     			//DUR: 5.00 | STA: 0.00
+	"legend_armor.body.legend_dark_wooly_cloak" : 0,                   			//DUR: 15.00 | STA: -2.00
+	"legend_armor.body.legend_sash" : 0,                               			//DUR: 3.00 | STA: 0.00
+	"legend_armor.body.legend_southern_scarf_wrap" : 0,                			//DUR: 15.00 | STA: -1.00
+	"legend_armor.body.legend_animal_pelt" : 0,                        			//DUR: 15.00 | STA: -2.00
+	"legend_armor.body.legend_noble_shawl" : 0,                        			//DUR: 10.00 | STA: 0.00
+	"legend_armor.body.legend_armor_cloak_crusader" : 0,               			//DUR: 35.00 | STA: -5.00
+	"legend_armor.body.legend_armor_cloak_heavy" : 0,                  			//DUR: 30.00 | STA: -4.00
+	"legend_armor.body.unhold_fur" : 0,                               			//DUR: 25.00 | STA: -2.00
+	"legend_armor.body.legend_armor_cloak_noble" : 0,                 			//DUR: 25.00 | STA: -2.00
+	"legend_armor.body.legend_redback_cloak" : 0,                     			//DUR: 10.00 | STA: -1.00
+	"legend_armor.body.legend_hexe_leader_cloak" : 0,                 			//DUR: 25.00 | STA: -2.00
+	"legend_armor_upgrade.legend_redback_cloak" : 0,                  			//DUR: 35.00 | STA: -3.00
+	"legend_armor_upgrade.legend_hexe_leader_cloak" : 0,             			//DUR: 20.00 | STA: 0.00
 	"legend_armor.cloak_rich" : 0,                                   			//DUR: 35.00 | STA: -2.00
 	"legend_armor.cloak_emperor" : 0,                                			//DUR: 40.00 | STA: -3.00
 
@@ -971,8 +971,8 @@
 	"legend_armor_upgrade.metal_pauldrons" : 78,                        		//DUR: 60.00 | STA: -6.00
 	"legend_armor_upgrade.heraldic_plates" : 78,                       			//DUR: 60.00 | STA: -10.00 +10 resolve
 	"armor_upgrade.heavy_gladiator_upgrade" : 98,                       		//DUR: 75.00 | STA: -6.00
-	
-	"legend_armor_upgrade.double_mail" : 54,                            		//DUR: 20.00 | STA: 0.00 -10%, +20% fat 
+
+	"legend_armor_upgrade.double_mail" : 54,                            		//DUR: 20.00 | STA: 0.00 -10%, +20% fat
 	"legend_armor_upgrade.metal_plating" : 68,                          		//DUR: 10.00 | STA: 0.00 -15%, +25% fat
 	"legend_armor_upgrade.leather_neckguard" : 85,                      		//DUR: 10.00 | STA: -2.00 -20%
 	"legend_armor_upgrade.mail_patch" : 107,                             		//DUR: 20.00 | STA: -4.00 -25%
@@ -980,13 +980,13 @@
 	"legend_armor_upgrade.horn_plate" : 168,                            		//DUR: 40.00 | STA: -6.00 -35%
 
 	"legend_armor_upgrade.direwolf_pelt" : 250,                          		//DUR: 10.00 | STA: 0.00
-	"legend_armor_upgrade.legend_white_wolf_pelt" : 500,                		//DUR: 30.00 | STA: -2.00             
+	"legend_armor_upgrade.legend_white_wolf_pelt" : 500,                		//DUR: 30.00 | STA: -2.00
 
 //LEGEND_HELMETS
 	"armor.head.legend_helmet_goblin_scarf" : 0,                         		//DUR: 5.00 | STA: 0.00
 	"armor.head.legend_helmet_mummy_bandage" : 0,                        		//DUR: 5.00 | STA: 0.00
 	"armor.head.legend_helmet_rotten_chain_scarf" : 0,                  		//DUR: 50.00 | STA: -3.00
-	"armor.head.legend_helmet_barb_chain_scarf" : 0,                   			//DUR: 55.00 | STA: -3.00 
+	"armor.head.legend_helmet_barb_chain_scarf" : 0,                   			//DUR: 55.00 | STA: -3.00
 	"armor.head.legend_helmet_barb_leather_cap" : 0,                    		//DUR: 25.00 | STA: 0.00
 	"armor.head.legend_helmet_barb_open_chain" : 0,                    			//DUR: 65.00 | STA: -3.00
 	"armor.head.legend_helmet_rusty_chain_hood" : 0,                   			//DUR: 70.00 | STA: -4.00
@@ -1029,7 +1029,7 @@
 	"armor.head.legend_helmet_southern_cap" : 0,                        		//DUR: 20.00 | STA: 0.00
 	"armor.head.legend_helmet_southern_cap_dark" : 0,                   		//DUR: 20.00 | STA: 0.00
 	"armor.head.legend_helmet_patched_hood" : 0,                        		//DUR: 25.00 | STA: -1.00
-	
+
 	"armor.head.legend_helmet_southern_leather_helm" : 28,               		//DUR: 15.00 | STA: -1.00
 	"armor.head.legend_helmet_southern_studded_leather_helm" : 28,      		//DUR: 25.00 | STA: -1.00
 	"armor.head.legend_helmet_simple_hood" : 28,                         		//DUR: 30.00 | STA: -1.00
@@ -1040,7 +1040,7 @@
 	"armor.head.legend_helmet_southern_niqaab" : 40,                    		//DUR: 45.00 | STA: -1.00
 	"armor.head.legend_helmet_leather_hood" : 40,                       		//DUR: 45.00 | STA: -2.00
 	"armor.head.legend_helmet_padded_hood" : 40,                        		//DUR: 50.00 | STA: -2.00
-	
+
 
 	//CHAIN
 	"armor.head.legend_helmet_aventail" : 60,                           		//DUR: 60.00 | STA: -3.00
@@ -1121,7 +1121,7 @@
 	"armor.head.legend_helmet_enclave_venitian_bascinet" : 351,         		//DUR: 185.00 | STA: -14.00
 	"armor.head.legend_helmet_stag_helm" : 351,                         		//DUR: 200.00 | STA: -15.00
 	"armor.head.legend_helmet_swan_helm" : 351,                         		//DUR: 200.00 | STA: -15.00
-	
+
 
 	//TOP
 	"armor.head.legend_helmet_mummy_beard" : 0,                        			//DUR: 15.00 | STA: -1.00
@@ -1263,5 +1263,5 @@
 	"armor.head.legend_helmet_knotted_tail" : 0,                       		//DUR: 10.00 | STA: 0.00
 	"armor.head.legend_helmet_orc_tail" : 0,                           		//DUR: 10.00 | STA: 0.00
 	"armor.head.legend_helmet_top_plume" : 0,                          		//DUR: 10.00 | STA: 0.00
-	"armor.head.legend_helmet_wings" : 0,                              		//DUR: 10.00 | STA: 0.00                 
+	"armor.head.legend_helmet_wings" : 0,                              		//DUR: 10.00 | STA: 0.00
 };
