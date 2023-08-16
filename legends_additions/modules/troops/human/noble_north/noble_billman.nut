@@ -1,14 +1,14 @@
-::Const.Tactical.Actor.LegendFencer = {
-	XP = 500,
-	ActionPoints = 12,
-	Hitpoints = 100,
-	Bravery = 75,
-	Stamina = 125,
-	MeleeSkill = 85,
-	RangedSkill = 60,
-	MeleeDefense = 30,
-	RangedDefense = 20,
-	Initiative = 130,
+::Const.Tactical.Actor.Billman <- {
+	XP = 250,
+	ActionPoints = 9,
+	Hitpoints = 70,
+	Bravery = 60,
+	Stamina = 120,
+	MeleeSkill = 70,
+	RangedSkill = 50,
+	MeleeDefense = 10,
+	RangedDefense = 5,
+	Initiative = 80,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -17,12 +17,12 @@
 	],
 	FatigueRecoveryRate = 15
 };
-::mods_hookExactClass("entity/tactical/humans/legend_noble_fencer", function(o) {
+::mods_hookExactClass("entity/tactical/humans/noble_billman", function(o) {
 	o.onInit = function()
 	{
 		this.human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.LegendFencer);
+		b.setValues(this.Const.Tactical.Actor.Billman);
 		b.IsSpecializedInSwords = true;
 		b.IsSpecializedInAxes = true;
 		b.IsSpecializedInMaces = true;
@@ -37,22 +37,22 @@
 		this.m.CurrentProperties = clone b;
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_military");
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_nimble"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_dodge"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_battle_forged"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_brawny"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_reach_advantage"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_backstabber"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_footwork"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_fast_adaption"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_back_to_basics"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_feint"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_berserk"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_rotation"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_recover"));
 
 		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
 		{
 			this.m.Hitpoints = b.Hitpoints * 2;
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_battle_forged"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_battle_flow"));
+			this.m.Skills.add(this.new("scripts/skills/perks/perk_coup_de_grace"));
+			this.m.Skills.add(this.new("scripts/skills/perks/perk_feint"));
+			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_back_to_basics"));
+			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_full_force"));
+			this.m.Skills.add(this.new("scripts/skills/perks/perk_berserk"));
 			this.m.Skills.add(this.new("scripts/skills/traits/fearless_trait"));
 		}
 	}
@@ -78,17 +78,20 @@
 			this.getSprite("surcoat").setBrush("surcoat_" + (banner < 10 ? "0" + banner : banner));
 		}
 
-		r = this.Math.rand(0, 2);
+		local weapons = [
+			"weapons/billhook",
+			"weapons/pike",
+			"weapons/legend_military_voulge"
+		];
 
-		if (r <= 1)
+		if (this.Const.DLC.Unhold)
 		{
-			this.m.Items.equip(this.new("scripts/items/weapons/legend_estoc"));
-		}
-		else if (r == 2)
-		{
-			this.m.Items.equip(this.new("scripts/items/weapons/fencing_sword"));
+			weapons.extend([
+				"weapons/polehammer"
+			]);
 		}
 
+		this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 		this.m.Items.equip(this.Const.World.Common.pickArmor([
 			[
 				1,
@@ -113,6 +116,14 @@
 					],
 					[
 						1,
+						"rondel_helm"
+					],
+					[
+						1,
+						"scale_helm"
+					],
+					[
+						1,
 						"padded_kettle_hat"
 					],
 					[
@@ -122,6 +133,14 @@
 					[
 						1,
 						"mail_coif"
+					],
+					[
+						2,
+						"legend_enclave_vanilla_skullcap_01"
+					],
+					[
+						5,
+						"heavy_noble_house_helmet_00"
 					]
 				]);
 			}
@@ -138,11 +157,27 @@
 					],
 					[
 						1,
+						"rondel_helm"
+					],
+					[
+						1,
+						"scale_helm"
+					],
+					[
+						1,
 						"flat_top_with_mail"
 					],
 					[
 						1,
 						"mail_coif"
+					],
+					[
+						1,
+						"legend_enclave_vanilla_skullcap_01"
+					],
+					[
+						5,
+						"heavy_noble_house_helmet_00"
 					]
 				]);
 			}
@@ -163,7 +198,23 @@
 					],
 					[
 						1,
+						"rondel_helm"
+					],
+					[
+						1,
+						"scale_helm"
+					],
+					[
+						1,
 						"mail_coif"
+					],
+					[
+						2,
+						"legend_enclave_vanilla_skullcap_01"
+					],
+					[
+						5,
+						"heavy_noble_house_helmet_00"
 					]
 				]);
 			}
@@ -182,55 +233,23 @@
 		{
 			this.m.Items.equip(this.Const.World.Common.pickHelmet([
 				[
+					1,
+					"full_aketon_cap"
+				],
+				[
 					2,
 					"aketon_cap"
 				],
 				[
 					1,
-					"full_aketon_cap"
+					""
 				],
 				[
 					1,
 					"headscarf"
-				],
-				[
-					1,
-					""
 				]
 			]));
 		}
-	}
-
-	o.makeMiniboss = function()
-	{
-		if (!this.actor.makeMiniboss())
-		{
-			return false;
-		}
-
-		this.getSprite("miniboss").setBrush("bust_miniboss");
-		local weapons = [
-			"weapons/named/named_fencing_sword",
-			"weapons/named/legend_named_estoc"
-		];
-		local armor = [
-			"armor/named/black_leather_armor",
-			"armor/named/named_noble_mail_armor",
-			"armor/named/blue_studded_mail_armor"
-		];
-
-		if (this.Math.rand(1, 100) <= 70)
-		{
-			this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
-		}
-		else
-		{
-			this.m.Items.equip(this.Const.World.Common.pickArmor(this.Const.World.Common.convNameToList(armor)));
-		}
-
-		this.m.BaseProperties.DamageDirectMult *= 1.25;
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_relentless"));
-		return true;
 	}
 
 });

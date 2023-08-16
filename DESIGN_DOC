@@ -8,23 +8,13 @@ patch:
 //TODO: remove most class perks from trees
 //TODO: make some backgrounds have garunteed stats/traits, ie. lumberjacks will come with passive for axes
 //TODO: investigate and fix cause for price varience
-
 //TODO: integrate logic
 World economy
 
 Caravans now take goods out of each building's inventory of the town they leave, carry the goods in their inventory, and deliver the goods into the inventory of the town they arrive at. Paying the origin town when they unload.
 Patrols, Mercenaries, Ships, Peasants and caravans are more frequent to increase the odds of caravans making it through and towns serving and thriving.
 
-//TODO: nobles
-Noble armies
-
-Nobles have much smaller armies with harder high tier units closer to Orc Elites
-Fencers, Halberdiers and Slingers are all stronger and appear later in your campaign.
-New unit: Noble Guard - High tier with plate armor
-New unit: Man at Arms - Very high tier with decorated armor and new helmets
-You can try them out in a new tactical scenario 'Noble Camp'
-
-//TODO: remove or make monster spawns very much rarer. Then rework monsters into boss fights.
+//FEATURE_0: rework monsters into boss fights. Make monster spawns much rarer.
 
 //FEATURE_1: Camping and Retinue Rework
 camping ui
@@ -38,8 +28,8 @@ camping ui
     //this.World.Assets.addMoney
     //FEATURE_4: remove most events that give free stuff, you need traits etc to earn them
 
-//TODO: every settlement spawns guards, guards vary in strength
 //FEATURE_5: Faction Overhaul
+    //every settlement spawns guards, guards vary in strength
     //update action
         faction action <- factions have a chance to build strength during update
             combine multiple contract checks into update action,
