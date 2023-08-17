@@ -12,26 +12,47 @@ Patrols, Mercenaries, Ships, Peasants and caravans are more frequent to increase
 
 //FEATURE_0: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.
     //Nachzherer/Ghoul
-        //stage 3 nacho
+        //Attributes: Grail, Winter
+        //Weakness: Heart
+        //Stage 3 nacho
         //A corpse eater/Gluttony
         //Abilities...
-            //Consumption
-            //Execution ability - attack and if a bro is killed, move onto square and consume the corpse
-            //Gain the abilities/powers of things it ate
+            //Rending Armor Piercing Claws, Inflict bleed and overwhelm
+            //Devour
+                //Devour Corpse
+                //Greater Devour - Can devour a target of any size. The target shrinks to fit the mouth. Some units are immune to this magic. Gain the 1/4 the stats of the current target. Eaten enemies take 15 hp damage per turn.
+            //Hair Armor, High HP, minor hp regeneration
+
+
 
     //Direwolf
         //The more attacks it recieves, the higher it's fury...
 
 
     //Alp
+        //Attribute: Dream
         //A master of dreams
-        //Will periodically split into 5 clones, 2 false and 1 real
+        //Abilities:
+            //Greater sleep. All enemies within X tiles have a check to be lured into dreams.
+            //Dream Eater. Consume the dreams of others and recover a percentage back as health.
+            //Chance to teleport when taking damage.
+            //Split: Will periodically split into 3 clones, 2 false and 1 real. When 1 clone is killed, combine back into one. If it was the real clone killed, take 25% of life damage, otherwise take no damage.
+            //Greater split: will copy itself into the 3 strongest bros of your company or into monsters with only a portion of health. When 1 clone is killed, reform back into alp.
 
 
     //Webknecht
     //Direwolf
     //Necrosavant
     //Schrat
+        //Atributes: Heart, Lantern
+        //Weakness: Fire
+        //Abilities:
+            //Passive:
+                //Crown of flies: Attacking enemies have a chance to be inflicted with flies.
+                //Uproot: wood attack striking 3 tiles long. Rooting them.
+                //Uproot (Circle): wood attack striking everything around it, knocking them back, rooting them.
+                //Barkskin: Recovers a shield every few turns. Resistance to arrows and bolts. Weak to fire.
+
     //Lindwurm
 
 //FEATURE_1: Camping and Retinue and class Rework
@@ -197,7 +218,6 @@ Items
     Lefeber's Enchanter : A rod that imbued items with the ability to store spells.
 
 Magic
-
     Mana stat
     Resolve = Will
     Ranged Attack = Aim
@@ -220,8 +240,21 @@ Magic
         the more perks you take in the school, the more knowledge you have. knowledge = power.
             power die + spell roll die = effect damage
 
-
 Schools:
+    Origin - The tides of magic have waned. This world is undergoing the end of the dharma... where fantasy is wasting away. The only miracles left are the remnants of the gods, inner or outer... The mainstream power of this world is blasphemy... using the remains of the gods to achieve power.
+
+    Winter - Silence and death. The dead. The end.
+    Heart - Unrelenting optimism. The beating of the heart keeps the world running. Preservation. Continuation. Thunder.
+    Grail - Desire and birth. The feast. The color red. Gluttony. Vampires.
+    Moth - Desire to change. Transformation.
+    Lantern - The light of knowledge with no mercy. Certainty and uncertainy. Fate and luck. Divination.
+    Forge - Shaping and fire. Runelore.
+    Edge - The secrets of the blade and battle.
+
+    Dream - [O]utside the ordered universe [is] that amorphous blight of nethermost confusion which blasphemes and bubbles at the center of all infinity—the boundless daemon sultan Azathoth, whose name no lips dare speak aloud, and who gnaws hungrily in inconceivable, unlighted chambers beyond time and space amidst the muffled, maddening beating of vile drums and the thin monotonous whine of accursed flutes.
+
+    The dream is the origin of all mysteries, and the end of all mysteries. And herein lies it's secret doctrine.
+
     Theoretical:
 
         Defense:
