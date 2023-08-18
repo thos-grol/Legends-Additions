@@ -1,43 +1,52 @@
 Economy Overhaul
 
-patch:
-- escort_caravan_contract.nut
-- world_state.nut
+//TODO: 0 cost items:
 
-//TODO: investigate and fix cause for price varience
-//TODO: integrate logic World economy
+    Marketplace:
+
+    Southern Head Wrap
+    Ancient Mail
+    Southern Veil
+    Southern Coin Headress
+    Southern Coin Headband
+    Southern Earings
+    Southern Cap
+
+    Armorsmith:
+
+    Patched Mail Shirt
+    Rotten Reinforced Mail Shirt
+    Simple Mail Shirt
+    Open Turban
+    Ancient Side Hawk
+
+//TODO: remove nets as items. create perks that refuel nets if left hand is empty. Borrow reforged net perks. Add perk that increases the ammount of nets stored. Increase wages of net backgrounds. Fishermen, beast hunter, gladiator, bounty hunter.
+
+    Search: throwing_net
+    ignore: troops, believable_enemies
+
+//TODO: figure out how to make fixed party templates/encounters
+
+//TODO: Reintegrate mood changes
+
+//TODO: integrate logic World economy.
 
 Caravans now take goods out of each building's inventory of the town they leave, carry the goods in their inventory, and deliver the goods into the inventory of the town they arrive at. Paying the origin town when they unload.
 Patrols, Mercenaries, Ships, Peasants and caravans are more frequent to increase the odds of caravans making it through and towns serving and thriving.
 
+patch:
+- escort_caravan_contract.nut
+- world_state.nut
+
+//New potion system
+
 //FEATURE_0: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.
-    //Nachzherer/Ghoul
-        //Attributes: Grail, Winter
-        //Weakness: Heart
-        //Stage 3 nacho
-        //A corpse eater/Gluttony
-        //Abilities...
-            //Rending Armor Piercing Claws, Inflict bleed and overwhelm
-            //Devour
-                //Devour Corpse
-                //Greater Devour - Can devour a target of any size. The target shrinks to fit the mouth. Some units are immune to this magic. Gain the 1/4 the stats of the current target. Eaten enemies take 15 hp damage per turn.
-            //Hair Armor, High HP, minor hp regeneration
+    
 
 
 
     //Direwolf
         //The more attacks it recieves, the higher it's fury...
-
-
-    //Alp
-        //Attribute: Dream
-        //A master of dreams
-        //Abilities:
-            //Greater sleep. All enemies within X tiles have a check to be lured into dreams.
-            //Dream Eater. Consume the dreams of others and recover a percentage back as health.
-            //Chance to teleport when taking damage.
-            //Split: Will periodically split into 3 clones, 2 false and 1 real. When 1 clone is killed, combine back into one. If it was the real clone killed, take 25% of life damage, otherwise take no damage.
-            //Greater split: will copy itself into the 3 strongest bros of your company or into monsters with only a portion of health. When 1 clone is killed, reform back into alp.
 
 
     //Webknecht

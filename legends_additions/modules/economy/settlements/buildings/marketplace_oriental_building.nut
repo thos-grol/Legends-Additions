@@ -93,11 +93,6 @@
 				S = "supplies/armor_parts_item"
 			},
 			{
-				R = 20,
-				P = 1.0,
-				S = "tools/throwing_net"
-			},
-			{
 				R = 60,
 				P = 1.0,
 				S = "helmets/legend_earings"

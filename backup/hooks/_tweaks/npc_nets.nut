@@ -21,6 +21,35 @@
         this.m.Count = this.Math.rand(0, 2);
 	}
 
+	o.onAdded <- function()
+	{
+		local actor = this.getContainer().getActor();
+		//TODO: add logic
+		//add net to bro if he has none
+
+		if (actor.isPlayerControlled()) return;
+		local agent = actor.getAIAgent();
+		if (agent.findBehavior(::Const.AI.Behavior.ID.ThrowNet) == null)
+		{
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_attack_throw_net"));
+			agent.finalizeBehaviors();
+		}
+	}
+
+	o.onCombatStarted <- function()
+	{
+		//TODO: add logic
+		//add net to bro if he has none and minus it from the count.
+	}
+
+	o.onCombatFinished <- function()
+	{
+		//TODO: add logic
+		//add net to bro if he has none
+	}
+
+	
+
     o.onTurnEnd <- function()
 	{
         if (this.m.Refill)
@@ -69,18 +98,6 @@
 	o.onPayForItemAction <- function(_skill, _items)
 	{
 		if (_skill != null && _skill.getID() != "perk.ptr_target_practice") this.m.IsSpent = true;
-	}
-
-	o.onAdded <- function()
-	{
-		local actor = this.getContainer().getActor();
-		if (actor.isPlayerControlled()) return;
-		local agent = actor.getAIAgent();
-		if (agent.findBehavior(::Const.AI.Behavior.ID.ThrowNet) == null)
-		{
-			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_attack_throw_net"));
-			agent.finalizeBehaviors();
-		}
 	}
 
 });

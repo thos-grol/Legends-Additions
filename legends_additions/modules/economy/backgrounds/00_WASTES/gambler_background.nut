@@ -21,8 +21,12 @@
 		items.equip(this.Const.World.Common.pickArmor([
 			[
 				1,
-				"linen_tunic"
+				"tattered_sackcloth"
 			],
+			[
+				1,
+				"leather_wraps"
+			]
 			[
 				2,
 				""

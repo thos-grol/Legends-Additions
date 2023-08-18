@@ -276,8 +276,8 @@
 //TOOLS //FEATURE_5: Tools prices
 	"tool.legend_broken_throwing_net" : 0, //FEATURE_5: Remove
 	"accessory.therianthropy_potion" : 0,
-	"tool.throwing_net" : 50, //FEATURE_5: refillable with tools
-	"tool.reinforced_throwing_net" : 150, //FEATURE_5: refillable with tools
+	"tool.throwing_net" : 0,
+	"tool.reinforced_throwing_net" : 0,
 	"weapon.holy Water" : 100, //FEATURE_5: refillable with priest
 	"weapon.acid_flask" : 400, //FEATURE_5: refillable with alchemist retinue
 	"weapon.smoke_bomb" : 400, //FEATURE_5: refillable with alchemist retinue

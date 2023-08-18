@@ -24,11 +24,6 @@
 				P = 1.0,
 				S = "supplies/dried_fish_item"
 			});
-			_list.push({
-				R = 20,
-				P = 1.0,
-				S = "tools/throwing_net"
-			});
 		}
 	}
 
