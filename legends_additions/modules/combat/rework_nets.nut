@@ -190,7 +190,6 @@
 
 //======================================================================================================================
 
-//TODO: rework: Add code to dodge spider webs, melee defense - 10
 ::mods_hookExactClass("skills/actives/web_skill", function (o)
 {
 	o.onUse = function( _user, _targetTile )
@@ -254,8 +253,19 @@
 
 //======================================================================================================================
 
-//TODO: rework: Add code to dodge roots, over ptr code
 ::mods_hookExactClass("skills/actives/root_skill", function(o) {
+	o.m.Cooldown <- this.Math.rand(1, 3);
+
+	o.isUsable = function()
+	{
+		return this.skill.isUsable() && !this.getContainer().getActor().isEngagedInMelee() && this.m.Cooldown == 0;
+	}
+
+	o.onTurnStart <- function()
+	{
+		this.m.Cooldown = this.Math.max(0, this.m.Cooldown - 1);
+	}
+
 	o.onUse = function( _user, _targetTile )
 	{
 		local targets = [];
