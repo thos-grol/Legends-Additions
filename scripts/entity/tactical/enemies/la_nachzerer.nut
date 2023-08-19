@@ -18,7 +18,7 @@
 			//Nachzherer - Winter Sealer
 				//Greater Devour - Can devour a target of any size. The target shrinks to fit the mouth. Some units are immune to this magic. Gain the 1/4 the stats of the current target. Eaten enemies take 15 hp damage per turn.
 
-            
+
 
 this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
@@ -72,6 +72,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		this.setSpriteOffset("status_rooted", this.createVec(-7, 14));
 
 		//Skills
+		//TODO: rethink nacho skills
         this.m.Skills.add(this.new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
 
 		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_claws")); //improved armor piercing and bleeding
@@ -79,9 +80,8 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
         this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy")); // buffs damage on kill
 
         this.m.Skills.add(this.new("scripts/skills/actives/swallow_whole_skill")); //TODO: Rework to shrink and swallow the target. Gain 1/4 of the target's physical stats. Deal 15 damage a turn to the swallowed target. IF the target dies, the ability goes back into use. Has a chance to miss.
-
 		this.m.Skills.add(this.new("scripts/skills/actives/gruesome_feast")); //TODO: Rework to jump to tile within 3 squares and consume the corpse. Use ijirok jump code
-		this.m.Skills.add(this.new("scripts/skills/effects/gruesome_feast_effect")); 
+		this.m.Skills.add(this.new("scripts/skills/effects/gruesome_feast_effect"));
 
         this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
 
@@ -166,20 +166,19 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
                     if (r <= 15)
                     {
                         loot = this.new("scripts/items/loot/growth_pearls_item");
+						//TODO: switch with new item: Winter Pearls
+						//Pearls tainted by the influence of Winter.
+						//Winter Influence:
                     }
                     else
                     {
                         loot = this.new("scripts/items/misc/ghoul_teeth_item");
+						//TODO: switch with new item: shard of gluttony.
+						//Shard of Gluttony
+						//A minute, diluted shard of a Grail Long who fell on this world eons ago.
+						//Grail Influence:
                     }
-                    // else if (r <= 70)
-                    // {
-                    //     loot = this.new("scripts/items/misc/ghoul_horn_item");  //TODO: remove
-                    // }
-                    // else
-                    // {
-                    //     loot = this.new("scripts/items/misc/ghoul_brain_item"); //TODO: remove
-
-                    // }
+					//TODO: create new anatomist potions.
 
                     loot.drop(_tile);
 					i = ++i;
