@@ -63,8 +63,8 @@
 		"DailyCost" : 2
 	},
 	"background.fisherman" : {
-		"HiringCost" : 8
-		"DailyCost" : 2
+		"HiringCost" : 12
+		"DailyCost" : 4
 	},
 	"background.lumberjack" : {
 		"HiringCost" : 8
@@ -75,8 +75,8 @@
 		"DailyCost" : 0
 	},
 	"background.ratcatcher" : {
-		"HiringCost" : 8
-		"DailyCost" : 2
+		"HiringCost" : 12
+		"DailyCost" : 4
 	},
 	"background.refugee" : {
 		"HiringCost" : 8
@@ -315,8 +315,8 @@
 		"DailyCost" : 3
 	},
 	"background.manhunter" : {
-		"HiringCost" : 12,
-		"DailyCost" : 3
+		"HiringCost" : 16,
+		"DailyCost" : 7
 	},
 	"background.companion" : {
 		"HiringCost" : 12,

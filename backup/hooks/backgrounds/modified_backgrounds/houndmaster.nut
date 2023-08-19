@@ -17,6 +17,6 @@
 	o.create = function()
 	{
 		create();
-		this.m.BackgroundDescription = "Houndmasters are used to handle dogs of war." + " +50 tracking for relevant checks.";
+		this.m.BackgroundDescription = "Houndmasters are disabled.";
 	}
 });

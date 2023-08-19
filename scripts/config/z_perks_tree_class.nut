@@ -1,3 +1,4 @@
+//FEATURE_0: feature class rework.
 local gt = this.getroottable();
 
 if (!("Perks" in gt.Const))
@@ -7,26 +8,29 @@ if (!("Perks" in gt.Const))
 
 gt.Const.Perks.BeastClassTree <- {
 	ID = "BeastClassTree",
-	Name = "Nets",
+	Name = "Trapper",
 	Descriptions = [
-		"catching beasts"
+		"using nets"
 	],
 	Tree = [
-		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendNetRepair
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendNetCasting
+		],
+		[
 		],
 		[
 			gt.Const.Perks.PerkDefs.LegendMasteryNets
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendEscapeArtist
 		],
-		[],
-		[]
+		[
+			//gt.Const.Perks.PerkDefs.LegendEscapeArtist //FEATURE_0: move to agile tree
+		],
+		[
+			gt.Const.Perks.PerkDefs.LegendNetCasting
+		]
 	]
 };
 gt.Const.Perks.BardClassTree <- {
@@ -60,7 +64,7 @@ gt.Const.Perks.BardClassTree <- {
 		]
 	]
 };
-gt.Const.Perks.HealerClassTree <- {
+gt.Const.Perks.HealerClassTree <- { //FEATURE_0: herbalists and medical classes automattically get spec bandage and field triage perks
 	ID = "HealerClassTree",
 	Name = "Healing",
 	Descriptions = [
@@ -131,7 +135,7 @@ gt.Const.Perks.FistsClassTree <- {
 		[]
 	]
 };
-gt.Const.Perks.ChefClassTree <- {
+gt.Const.Perks.ChefClassTree <- { //FEATURE_0: remove chef tree
 	ID = "ChefClassTree",
 	Name = "Chef",
 	Descriptions = [
@@ -157,7 +161,7 @@ gt.Const.Perks.ChefClassTree <- {
 		]
 	]
 };
-gt.Const.Perks.RepairClassTree <- {
+gt.Const.Perks.RepairClassTree <- { //FEATURE_0: rework repair tree
 	ID = "RepairClassTree",
 	Name = "Repair",
 	Descriptions = [
@@ -393,13 +397,13 @@ gt.Const.Perks.WoodaxeClassTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendWoodworking
+			//gt.Const.Perks.PerkDefs.LegendWoodworking
 		],
 		[],
 		[]
 	]
 };
-gt.Const.Perks.SickleClassTree <- {
+gt.Const.Perks.SickleClassTree <- { //FEATURE_0: Rework
 	ID = "SickleClassTree",
 	Name = "Sickle",
 	Descriptions = [
@@ -487,7 +491,7 @@ gt.Const.Perks.HoundmasterClassTree <- {
 	ID = "HoundmasterClassTree",
 	Name = "Hound Master",
 	Descriptions = [
-		"training dogs"
+		"being useless"
 	],
 	Tree = [
 		[],

@@ -20,11 +20,6 @@ Economy Overhaul
     Open Turban
     Ancient Side Hawk
 
-//TODO: remove nets as items. create perks that refuel nets if left hand is empty. Borrow reforged net perks. Add perk that increases the ammount of nets stored. Increase wages of net backgrounds. Fishermen, beast hunter, gladiator, bounty hunter.
-
-    Search: throwing_net
-    ignore: troops, believable_enemies
-
 //TODO: figure out how to make fixed party templates/encounters
 
 //TODO: Reintegrate mood changes
@@ -41,7 +36,7 @@ patch:
 //New potion system
 
 //FEATURE_0: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.
-    
+
 
 
 
@@ -211,8 +206,6 @@ Alchemist/Potion Master Rework
     Potions in bag slots. Potions become ranged ammo. Potion master perk lets you switch ammo to throw them.
     Perk, chance to not consume ammo when throwing potion.
 Anatomist can be potion master
-
-Houndmaster rework
 
 Overhaul Cultists
     - Permenant Injuries. For every permenant injury, give a unique buff.
@@ -412,7 +405,6 @@ Undead cannot be charmed
 ::addItem("nachzehrer_potion_item")
 ::addItem("fallen_hero_potion_item")
 ::addItem("two_handed_wooden_flail")
-::addItem("throwing_net")
 
 ::addItem("orc_young_potion_item")
 ::addItem("orc_warlord_potion_item")

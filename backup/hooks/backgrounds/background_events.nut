@@ -38,7 +38,6 @@
 			case "background.legend_commander_ranger":
 			case "background.legend_ranger":
 			case "background.beast_slayer":
-			case "background.houndmaster":
 			case "background.hunter":
 			case "background.poacher":
 				chance += 50;

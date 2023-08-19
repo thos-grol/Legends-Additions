@@ -85,12 +85,6 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
         this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
 
-
-
-
-
-
-
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
