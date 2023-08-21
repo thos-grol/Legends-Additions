@@ -28,10 +28,6 @@
 				"leather_wraps"
 			],
 			[
-				1,
-				"indebted_armor_rags"
-			],
-			[
 				2,
 				""
 			]

@@ -28,10 +28,6 @@
 				"leather_wraps"
 			],
 			[
-				1,
-				"oriental/cloth_sash"
-			],
-			[
 				2,
 				""
 			]
