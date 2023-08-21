@@ -76,11 +76,16 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
         this.m.Skills.add(this.new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
 
 		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_claws")); //improved armor piercing and bleeding
+		//TODO: hammer 3 swing skill when surrounded, knock back.
+
         this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_muscularity")); //muscularity buffs claw attacks
         this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy")); // buffs damage on kill
 
         this.m.Skills.add(this.new("scripts/skills/actives/swallow_whole_skill")); //TODO: Rework to shrink and swallow the target. Gain 1/4 of the target's physical stats. Deal 15 damage a turn to the swallowed target. IF the target dies, the ability goes back into use. Has a chance to miss.
 		this.m.Skills.add(this.new("scripts/skills/actives/gruesome_feast")); //TODO: Rework to jump to tile within 3 squares and consume the corpse. Use ijirok jump code
+
+		//TODO: leap skill when surrounded.
+
 		this.m.Skills.add(this.new("scripts/skills/effects/gruesome_feast_effect"));
 
         this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));

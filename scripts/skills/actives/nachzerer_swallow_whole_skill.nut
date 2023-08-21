@@ -56,6 +56,26 @@ this.nachzerer_swallow_whole_skill <- this.inherit("scripts/skills/skill", {
 		return this.skill.onVerifyTarget(_originTile, _targetTile) && !_targetTile.getEntity().getCurrentProperties().IsImmuneToKnockBackAndGrab;
 	}
 
+	function onTurnEnd()
+	{
+		local hp = this.m.SwallowedEntity.getHitpoints();
+		local damage = this.Math.rand(10, 20);
+		hp = this.Math.max(0, hp - damage);
+
+		this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " takes " + damage + " damage. They have " + hp + " remaining.");
+
+		if (hp > 0) this.m.SwallowedEntity.setHitpoints(hp);
+		else
+		{
+			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " has been digested.");
+			bro.getSkills().onDeath(this.Const.FatalityType.Devoured);
+			bro.onDeath(null, null, null, this.Const.FatalityType.Devoured);
+			this.World.getPlayerRoster().remove(bro);
+
+			//TODO: heal nacho injuries. And additional effect.
+		}
+	}
+
 	function onUse( _user, _targetTile )
 	{
 		local target = _targetTile.getEntity();
@@ -79,7 +99,6 @@ this.nachzerer_swallow_whole_skill <- this.inherit("scripts/skills/skill", {
 
 		this.m.SwallowedEntity = target;
 		this.m.SwallowedEntity.getFlags().set("Devoured", true);
-		this.m.SwallowedEntity.setHitpoints(this.Math.max(5, this.m.SwallowedEntity.getHitpoints() - this.Math.rand(10, 20)));
 		target.removeFromMap();
 		_user.getSprite("body").setBrush("bust_ghoul_body_04");
 		_user.getSprite("injury").setBrush("bust_ghoul_04_injured");

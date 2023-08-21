@@ -88,6 +88,8 @@ this.nachzerer_claws <- this.inherit("scripts/skills/skill", {
         if (_user.getFaction() == this.Const.Faction.Player) effect.setActor(this.getContainer().getActor());
         effect.setDamage(15);
         target.getSkills().add(effect);
+
+		//TODO: add overwhelm
 	}
 
 });
