@@ -1,8 +1,8 @@
 Economy Overhaul
 
-//TODO: fix alchemist having named items
-//TODO: figure out how to make fixed party templates/encounters
-//TODO: Reintegrate mood changes
+//TODO: fix alchemist having named items.
+//TODO: Reintegrate mood changes.
+//TODO: Reintegrate custom tooltip.
 //TODO: integrate logic World economy.
 
 Caravans now take goods out of each building's inventory of the town they leave, carry the goods in their inventory, and deliver the goods into the inventory of the town they arrive at. Paying the origin town when they unload.

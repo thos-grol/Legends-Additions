@@ -1,5 +1,6 @@
 //FIXME: list changes - made beasts rarer
 //Reworked beasts
+//TODO: add newly created single/multiple beast parties.
 ::mods_hookExactClass("factions/actions/send_beast_roamers_action", function(o) {
 	o.onUpdate = function( _faction )
 	{
@@ -58,51 +59,20 @@
 		beast = function ( _action, _nearTile = null ) //Nachzehrers
 		{
 			local disallowedTerrain = [];
-
-			if (this.Const.DLC.Unhold)
+			for( local i = 0; i < this.Const.World.TerrainType.COUNT; i += 1 )
 			{
-				for( local i = 0; i < this.Const.World.TerrainType.COUNT; i = i )
-				{
-					if (i == this.Const.World.TerrainType.Steppe || i == this.Const.World.TerrainType.Plains)
-					{
-					}
-					else
-					{
-						disallowedTerrain.push(i);
-					}
-
-					i = ++i;
-				}
+				if (i != this.Const.World.TerrainType.Steppe && i != this.Const.World.TerrainType.Plains) 
+					disallowedTerrain.push(i);
 			}
-			else
-			{
-				disallowedTerrain = [
-					this.Const.World.TerrainType.Snow,
-					this.Const.World.TerrainType.SnowyForest,
-					this.Const.World.TerrainType.Forest,
-					this.Const.World.TerrainType.LeaveForest,
-					this.Const.World.TerrainType.AutumnForest,
-					this.Const.World.TerrainType.Desert,
-					this.Const.World.TerrainType.Oasis
-				];
-			}
-
 			local tile = _action.getTileToSpawnLocation(10, disallowedTerrain, 7, 35, 1000, 3, 0, _nearTile, 0.0, 0.75);
+			if (tile == null) return false;
+			if (_action.getDistanceToNextAlly(tile) <= distanceToNextAlly / (_nearTile == null ? 1 : 2)) return false;
 
-			if (tile == null)
-			{
-				return false;
-			}
-
-			if (_action.getDistanceToNextAlly(tile) <= distanceToNextAlly / (_nearTile == null ? 1 : 2))
-			{
-				return false;
-			}
 
 			local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-			local party = _action.getFaction().spawnEntity(tile, "Nachzehrers", false, this.Const.World.Spawn.Ghouls, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+			local party = ::Const.World.Common.la_spawnEntity_single(_action.getFaction(), tile, "Nachzehrer", false, ::Const.World.Spawn.Troops.GhoulHIGH, ::Const.World.Spawn.Ghouls);
 			party.getSprite("banner").setBrush("banner_beasts_01");
-			party.setDescription("A flock of scavenging nachzehrers.");
+			party.setDescription("A scavenging nachzehrer.");
 			party.setFootprintType(this.Const.World.FootprintsType.Ghouls);
 			party.setSlowerAtNight(false);
 			party.setUsingGlobalVision(false);
@@ -117,6 +87,9 @@
 		};
 		this.m.Options.push(beast);
 		this.m.BeastsLow.push(beast);
+		
+		return; //PLACEHOLDER
+
 		beast = function ( _action, _nearTile = null ) //Direwolves
 		{
 			local disallowedTerrain = [];

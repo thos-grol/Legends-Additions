@@ -119,6 +119,12 @@
 		local chance = this.Math.min(100, _user.getCurrentProperties().getRangedDefense() - 10);
 		local dodgeCheck = targetEntity.getSkills().hasSkill("perk.legend_escape_artist") &&  roll <= chance;
 
+		local net_item = _user.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		if (net_item.m.Container != null) net_item.m.Container.unequip(net_item);
+
+		local net_mastery = _user.getSkills().getSkillByID("perk.legend_mastery_nets");
+		if (net_mastery != null) net_mastery.refill();
+
         if (targetEntity.getCurrentProperties().IsImmuneToRoot || dodgeCheck)
         {
 			if (this.m.SoundOnMiss.len() != 0) this.Sound.play(this.m.SoundOnMiss[this.Math.rand(0, this.m.SoundOnMiss.len() - 1)], ::Const.Sound.Volume.Skill, targetEntity.getPos());
@@ -131,13 +137,6 @@
 			{
 				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " fails to net immune target " + ::Const.UI.getColorizedEntityName(targetEntity) + ", the net falls to the ground");
 			}
-
-			_user.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).drop();
-            if (_user.getSkills().hasSkill("perk.legend_mastery_nets"))
-            {
-                local net_mastery = _user.getSkills().getSkillByID("perk.legend_mastery_nets");
-                net_mastery.refill();
-            }
 			return false;
 		}
         else
@@ -153,13 +152,6 @@
 			{
 				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " throws a net and hits " + ::Const.UI.getColorizedEntityName(targetEntity));
 			}
-
-            _user.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).drop();
-            if (_user.getSkills().hasSkill("perk.legend_mastery_nets"))
-            {
-                local net_mastery = _user.getSkills().getSkillByID("perk.legend_mastery_nets");
-                net_mastery.refill();
-            }
 
 			targetEntity.getSkills().add(this.new("scripts/skills/effects/net_effect"));
 			local breakFree = this.new("scripts/skills/actives/break_free_skill");
