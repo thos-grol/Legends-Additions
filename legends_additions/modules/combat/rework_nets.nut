@@ -13,7 +13,7 @@
 
 ::mods_hookExactClass("skills/perks/perk_legend_net_repair", function (o)
 {
-    o.m.Count <- 0;
+    o.m.Count <- 2;
     o.m.Refill <- false;
 
     o.create = function()
@@ -27,7 +27,6 @@
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
-        this.m.Count = 2;
 	}
 
     o.onTurnEnd <- function()
@@ -120,10 +119,14 @@
 		local dodgeCheck = targetEntity.getSkills().hasSkill("perk.legend_escape_artist") &&  roll <= chance;
 
 		local net_item = _user.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-		if (net_item.m.Container != null) net_item.m.Container.unequip(net_item);
+		if (net_item.m.Container != null)
+		{
+			net_item.m.Container.unequip(net_item);
+			net_item.m.IsDroppedAsLoot = false;
+		}
 
-		local net_mastery = _user.getSkills().getSkillByID("perk.legend_mastery_nets");
-		if (net_mastery != null) net_mastery.refill();
+		local net_repair = _user.getSkills().getSkillByID("perk.legend_net_repair");
+		if (net_repair != null) net_repair.refill();
 
         if (targetEntity.getCurrentProperties().IsImmuneToRoot || dodgeCheck)
         {
