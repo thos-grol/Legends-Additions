@@ -115,7 +115,7 @@
 	{
 		local targetEntity = _targetTile.getEntity();
 		local roll = this.Math.rand(1, 100);
-		local chance = this.Math.min(100, _user.getCurrentProperties().getRangedDefense() - 10);
+		local chance = this.Math.min(100, targetEntity.getCurrentProperties().getRangedDefense());
 		local dodgeCheck = targetEntity.getSkills().hasSkill("perk.legend_escape_artist") &&  roll <= chance;
 
 		local net_item = _user.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);

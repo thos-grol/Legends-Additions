@@ -79,11 +79,18 @@ this.nachzerer_swallow_whole_skill <- this.inherit("scripts/skills/skill", {
 	function onUse( _user, _targetTile )
 	{
 		local target = _targetTile.getEntity();
+		local roll = this.Math.rand(1, 100);
+		local chance = this.Math.min(100, _user.getCurrentProperties().getMeleeSkill() - target.getCurrentProperties().getMeleeDefense() + 30);
+		local dodgeCheck = roll <= chance;
+		if (!dodgeCheck)
+		{
+			if (!_user.isHiddenToPlayer() && (_targetTile.IsVisibleForPlayer || this.knockToTile.IsVisibleForPlayer))
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " tries to devour " + this.Const.UI.getColorizedEntityName(target) + " but misses. Rolled " + roll + " vs " + chance);
+			return false;
+		}
 
 		if (!_user.isHiddenToPlayer() && (_targetTile.IsVisibleForPlayer || this.knockToTile.IsVisibleForPlayer))
-		{
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " devours " + this.Const.UI.getColorizedEntityName(target));
-		}
+			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " devours " + this.Const.UI.getColorizedEntityName(target) + "Rolled " + roll + " vs " + chance);
 
 		local skills = target.getSkills();
 		skills.removeByID("effects.shieldwall");
@@ -94,8 +101,6 @@ this.nachzerer_swallow_whole_skill <- this.inherit("scripts/skills/skill", {
 		skills.removeByID("effects.legend_vala_chant_senses_effect");
 		skills.removeByID("effects.legend_vala_currently_chanting");
 		skills.removeByID("effects.legend_vala_in_trance");
-
-		if (target.getMoraleState() != this.Const.MoraleState.Ignore) target.setMoraleState(this.Const.MoraleState.Breaking);
 
 		this.m.SwallowedEntity = target;
 		this.m.SwallowedEntity.getFlags().set("Devoured", true);
