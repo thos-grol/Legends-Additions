@@ -1,4 +1,4 @@
-::mods_hookExactClass("scenarios/world/deserters_scenario", function(o) { 
+::mods_hookExactClass("scenarios/world/gladiators_scenario", function(o) { 
     o.onSpawnAssets = function()
 	{
 		local roster = this.World.getPlayerRoster();
