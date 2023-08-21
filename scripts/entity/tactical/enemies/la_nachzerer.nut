@@ -9,6 +9,7 @@
             //Devour
                 //Devour Corpse - Heals all temp injuries, heals.
                 //Greater Devour - Can devour a target of any size. The target shrinks to fit the mouth. Some units are immune to this magic. Gain the 1/4 the stats of the current target. Eaten enemies take 15 hp damage per turn.
+					//Maddening Hunger - If the user fails to swallow the target, add the maddening hunger effect. + 10 matk. This effect stacks 3 times.
 		//Potions:
 			//Nachzherer - Grail Knight
 				//Bleed Aura, Inflict bleed and overwhelm
