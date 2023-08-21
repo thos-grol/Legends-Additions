@@ -5,7 +5,7 @@
 //rework net mastery to refill nets
 ::Const.Strings.PerkName.LegendNetRepair = "Net Specialization"
 ::Const.Strings.PerkDescription.LegendNetRepair = "Many years and storms weathered with a net in hand..."
-+ "\n\n[color=" + ::Const.UI.Color.Passive + "][u]Passive:[/u][/color]"
++ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
 + "\n• Gain 3 nets. Start the battle off with one, and if this brother ends their turn with their offhand empty, will automatically replace their thrown nets."
 + "\n• Grants +10 melee defense while holding a net.";
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendNetRepair].Name = ::Const.Strings.PerkName.LegendNetRepair;
@@ -94,7 +94,7 @@
 
 ::Const.Strings.PerkName.LegendNetCasting = "Net Arsenal"
 ::Const.Strings.PerkDescription.LegendNetCasting = "A well equipped mercenary is a prepared mercenary..."
-+ "\n\n[color=" + ::Const.UI.Color.Passive + "][u]Passive:[/u][/color]"
++ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
 + "\n• Increase the max amount of stored nets by 1."
 + "\n• Nets thrown by this brother are 20% harder to break out of.";
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendNetCasting].Name = ::Const.Strings.PerkName.LegendNetCasting;

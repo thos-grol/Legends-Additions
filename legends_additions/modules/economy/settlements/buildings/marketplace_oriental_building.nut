@@ -18,16 +18,6 @@
 				S = "armor/oriental/padded_vest"
 			},
 			{
-				R = 0,
-				P = 1.0,
-				S = "helmets/oriental/southern_head_wrap"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "helmets/oriental/southern_head_wrap"
-			},
-			{
 				R = 30,
 				P = 1.0,
 				S = "helmets/oriental/wrapped_southern_helmet"
@@ -91,36 +81,6 @@
 				R = 50,
 				P = 1.0,
 				S = "supplies/armor_parts_item"
-			},
-			{
-				R = 60,
-				P = 1.0,
-				S = "helmets/legend_earings"
-			},
-			{
-				R = 60,
-				P = 1.0,
-				S = "helmets/legend_headband_coin"
-			},
-			{
-				R = 50,
-				P = 1.0,
-				S = "helmets/legend_southern_cloth_headress"
-			},
-			{
-				R = 40,
-				P = 1.0,
-				S = "helmets/legend_southern_veil"
-			},
-			{
-				R = 80,
-				P = 1.0,
-				S = "helmets/legend_southern_veil_coin"
-			},
-			{
-				R = 70,
-				P = 1.0,
-				S = "helmets/legend_headress_coin"
 			}
 		];
 

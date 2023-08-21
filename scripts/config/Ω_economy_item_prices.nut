@@ -55,10 +55,6 @@
 
 // mail was commonplace among infantrymen in the 12th century.
 // Most infantrymen would wear either mail or lamellar armour or coats-of-plates (“Visby armour”). Cuir-bouilli would also be used, especially as limb protection. Also padded armour (gambesons, haquetons and jerkins) were commonplace
-//FIXME: remove 0 cost items from shop
-//patched hood
-//leather jacket
-//simple leather jacket
 ::Const.World.Assets.BaseSellPrice = 0.62;
 ::Z.Economy.Items <- {
 //SUPPLIES
@@ -797,6 +793,7 @@
 	"legend_armor.body.relic_hood" : 24,                       					//DUR: 25.00 | STA: -2.00
 	"legend_armor.body.legend_southern_robe" : 24,                       		//DUR: 25.00 | STA: -1.00
 	"legend_armor.body.legend_southern_tunic" : 24,                      		//DUR: 25.00 | STA: -1.00
+	"legend_armor.company_tabard" : 36,                        					//DUR: 10.00 | STA:  0.00
 
 	"legend_armor.body.legend_thick_tunic" : 36,                         		//DUR: 30.00 | STA: -3.00
 	"legend_armor.body.legend_apron_butcher" : 36,                       		//DUR: 30.00 | STA: -3.00
@@ -823,6 +820,7 @@
 	"legend_armor.body.anatomist_robe" : 196,                    				//DUR: 70.00 | STA: -7.00
 
 	"legend_armor.body.legend_tunic_noble" : 176,                        		//DUR: 40.00 | STA: -2.00
+	"legend_armor.named_tabard" : 176,                        					//DUR: 10.00 | STA:  0.00
 	"legend_armor.body.legend_tunic_noble_named" : 264,                 		//DUR: 40.00 | STA: -2.00
 	"legend_armor.body.legend_robes_magic" : 146,                        		//DUR: 40.00 | STA: -1.00 //fancy looking //FEATURE_9: magic rework
 

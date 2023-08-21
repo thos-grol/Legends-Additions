@@ -36,16 +36,6 @@
 				S = "armor/oriental/padded_vest"
 			});
 			_list.push({
-				R = 40,
-				P = 1.0,
-				S = "armor/oriental/linothorax"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "helmets/oriental/southern_head_wrap"
-			});
-			_list.push({
 				R = 65,
 				P = 1.0,
 				S = "helmets/oriental/spiked_skull_cap_with_mail"

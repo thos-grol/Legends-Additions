@@ -29,6 +29,7 @@
 			bro.setVeteranPerks(2);
             bro.m.HiringCost = 0;
 		    bro.getBaseProperties().DailyWage = 0;
+			bro.getSkills().update();
 			i = ++i;
 		}
 
@@ -126,7 +127,7 @@
 		this.World.Assets.getStash().resize(this.World.Assets.getStash().getCapacity() - 9);
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/dried_lamb_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/wine_item"));
-		this.World.Assets.m.Money = 200;
+		this.World.Assets.m.Money = 500;
 		this.World.Assets.m.ArmorParts = this.World.Assets.m.ArmorParts / 2;
 		this.World.Assets.m.Medicine = this.World.Assets.m.Medicine / 2;
 		this.World.Assets.m.Ammo = 0;

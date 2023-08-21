@@ -96,7 +96,6 @@
 ::mods_hookExactClass("crafting/blueprints/mod_legend/shields/legend_tower_shield_blueprint", function(o) { o.isValid <- function(){ return false; }});
 
 //Armor
-::mods_hookExactClass("crafting/blueprints/noble_bull_helm_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/chest/legend_leather_robe_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/chest/legend_lindwurm_armor_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/chest/legend_mountain_armor_blueprint", function(o) { o.isValid <- function(){ return false; }});
@@ -117,21 +116,15 @@
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/chest/tabards/legend_tabard_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/chest/tabards/legend_tabard_noble_blueprint", function(o) { o.isValid <- function(){ return false; }});
 
-::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_demonalp_helmet_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_demonalp_helmet_layered_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_leather_hood_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_mountain_helmet_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_mountain_helmet_layered_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_redback_helmet_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_redback_helmet_layered_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_restored_ancient_helm", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_sack_hood_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_skin_helmet_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_skin_helmet_layered_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_stollwurm_helmet_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_stollwurm_helmet_layered_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_warlock_hood_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_white_wolf_helmet_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_white_wolf_helmet_layered_blueprint", function(o) { o.isValid <- function(){ return false; }});
 
 //Food
@@ -159,7 +152,6 @@
 ::mods_hookExactClass("crafting/blueprints/mod_legend/runes/legend_rune_poison_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/runes/legend_rune_power_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/runes/legend_rune_radiance_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/mod_legend/runes/legend_rune_resilience_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/runes/legend_rune_safety_blueprint", function(o) { o.isValid <- function(){ return false; }});
 
 //Weapon
@@ -185,17 +177,12 @@
 ::mods_hookExactClass("crafting/blueprints/mod_legend/werewolfs/wolfsbane_necklace_blueprint", function(o) { o.isValid <- function(){ return false; }});
 
 ::mods_hookExactClass("crafting/blueprints/paint_black_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/paint_black_blueprint_dye", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/paint_orange_red_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/paint_orange_red_blueprint_dye", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/paint_red_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/paint_red_blueprint_dye", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/paint_remover_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/paint_set_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/paint_white_blue_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/paint_white_blue_blueprint_dye", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/paint_white_green_yellow_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/paint_white_green_yellow_blueprint_dye", function(o) { o.isValid <- function(){ return false; }});
 
 ::mods_hookExactClass("crafting/blueprints/mod_legend/misc/legend_scroll_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/misc/legend_small_medicine_blueprint", function(o) { o.isValid <- function(){ return false; }});

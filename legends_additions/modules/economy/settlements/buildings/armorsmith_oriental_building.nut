@@ -3,11 +3,6 @@
 	{
 		local list = [
 			{
-				R = 0,
-				P = 1.0,
-				S = "armor/oriental/linothorax"
-			},
-			{
 				R = 10,
 				P = 1.0,
 				S = "armor/oriental/padded_vest"
@@ -88,11 +83,6 @@
 				S = "helmets/oriental/heavy_lamellar_helmet"
 			},
 			{
-				R = 0,
-				P = 1.0,
-				S = "helmets/oriental/southern_head_wrap"
-			},
-			{
 				R = 30,
 				P = 1.0,
 				S = "helmets/oriental/southern_helmet_with_coif"
@@ -160,49 +150,46 @@
 			}
 		}
 
-		if (this.Const.DLC.Unhold)
-		{
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "legend_armor/armor_upgrades/legend_metal_plating_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "legend_armor/armor_upgrades/legend_metal_pauldrons_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "legend_armor/armor_upgrades/legend_mail_patch_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "legend_armor/armor_upgrades/legend_leather_shoulderguards_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "legend_armor/armor_upgrades/legend_leather_neckguard_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "legend_armor/armor_upgrades/legend_joint_cover_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "legend_armor/armor_upgrades/legend_heraldic_plates_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "legend_armor/armor_upgrades/legend_double_mail_upgrade"
-			});
-		}
+		list.push({
+			R = 85,
+			P = 1.25,
+			S = "legend_armor/armor_upgrades/legend_metal_plating_upgrade"
+		});
+		list.push({
+			R = 85,
+			P = 1.25,
+			S = "legend_armor/armor_upgrades/legend_metal_pauldrons_upgrade"
+		});
+		list.push({
+			R = 85,
+			P = 1.25,
+			S = "legend_armor/armor_upgrades/legend_mail_patch_upgrade"
+		});
+		list.push({
+			R = 85,
+			P = 1.25,
+			S = "legend_armor/armor_upgrades/legend_leather_shoulderguards_upgrade"
+		});
+		list.push({
+			R = 85,
+			P = 1.25,
+			S = "legend_armor/armor_upgrades/legend_leather_neckguard_upgrade"
+		});
+		list.push({
+			R = 85,
+			P = 1.25,
+			S = "legend_armor/armor_upgrades/legend_joint_cover_upgrade"
+		});
+		list.push({
+			R = 85,
+			P = 1.25,
+			S = "legend_armor/armor_upgrades/legend_heraldic_plates_upgrade"
+		});
+		list.push({
+			R = 85,
+			P = 1.25,
+			S = "legend_armor/armor_upgrades/legend_double_mail_upgrade"
+		});
 
 		this.m.Settlement.onUpdateShopList(this.m.ID, list);
 		this.fillStash(list, this.m.Stash, 1.0, false);

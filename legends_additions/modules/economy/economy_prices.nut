@@ -1,3 +1,44 @@
+//Background Prices
+::mods_hookExactClass("entity/tactical/player", function(o)
+{
+	o.getTryoutCost = function()
+	{
+		return this.Math.max(0, this.Math.ceil(this.m.CurrentProperties.DailyWage));
+	}
+});
+
+::mods_hookExactClass("skills/backgrounds/character_background", function(o)
+{
+	o.adjustHiringCostBasedOnEquipment = function()
+	{
+		local actor = this.getContainer().getActor();
+		local items = actor.getItems().getAllItems();
+		local id = actor.getBackground().getID();
+		
+		if (actor.m.HiringCost == 0 && id in ::Z.Backgrounds.Wages) 
+			actor.m.HiringCost = ::Z.Backgrounds.Wages[id].HiringCost;
+		
+		foreach(i in items)
+		{
+			actor.m.HiringCost += this.Math.ceil(i.getValue() * 0.75);
+		}
+	}
+
+	// //Wage hike upon reaching level 11
+	// function onUpdate( _properties )
+	// {
+	// 	if (("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin() != null && this.World.Assets.getOrigin().getID() == "scenario.manhunters" && this.getID() != "background.slave") _properties.XPGainMult *= 0.9;
+
+	// 	if (this.m.DailyCost == 0 || this.getContainer().hasSkill("trait.player")) _properties.DailyWage = 0;
+	// 	else
+	// 	{
+	// 		if (this.getContainer().getActor().getLevel() >= 11 && this.m.DailyCost < 12) this.m.DailyCost = 12;
+	// 		if (this.isBackgroundType(this.Const.BackgroundType.ConvertedCultist)) this.m.DailyCost = 4;
+	// 		_properties.DailyWage += this.Math.round(this.m.DailyCost * this.m.DailyCostMult);
+	// 	}
+	// }
+});
+
 //Item prices
 ::mods_hookDescendants("items/item", function (o)
 {
@@ -134,40 +175,63 @@
 
 		return p * (this.m.Modifiers.SellPriceMult + this.World.State.getPlayer().getBarterMult());
     }
-});
 
-//Background Prices
-::mods_hookExactClass("entity/tactical/player", function(o)
-{
-	o.getTryoutCost = function()
+	o.updateShop = function( _force = false )
 	{
-		return this.Math.max(0, this.Math.ceil(this.m.CurrentProperties.DailyWage));
-	}
-});
+		local daysPassed = (this.Time.getVirtualTimeF() - this.m.LastShopUpdate) / this.World.getTime().SecondsPerDay;
 
-::mods_hookExactClass("skills/backgrounds/character_background", function(o)
-{
-	o.adjustHiringCostBasedOnEquipment = function()
-	{
-		local actor = this.getContainer().getActor();
-		local items = actor.getItems().getAllItems();		
-		foreach( i in items )
+		if (!_force && this.m.LastShopUpdate != 0 && daysPassed < 3)
 		{
-			actor.m.HiringCost += i.getValue();
+			this.updateImportedProduce();
+			this.removeZeroCostItems();
+			return;
 		}
+
+		if (this.m.ShopSeed != 0) this.Math.seedRandom(this.m.ShopSeed);
+		this.m.ShopSeed = this.Math.floor(this.Time.getRealTime() + this.Math.rand());
+		this.m.LastShopUpdate = this.Time.getVirtualTimeF();
+
+		foreach( building in this.m.Buildings )
+		{
+			if (building != null)
+			{
+				building.onUpdateShopList();
+
+				if (building.getStash() != null)
+				{
+					foreach( s in this.m.Situations )
+					{
+						s.onUpdateShop(building.getStash());
+					}
+				}
+			}
+		}
+
+		this.updateImportedProduce();
+		this.removeZeroCostItems();
 	}
 
-	//Wage hike upon reaching level 11
-	function onUpdate( _properties )
+	o.removeZeroCostItems <- function()
 	{
-		if (("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin() != null && this.World.Assets.getOrigin().getID() == "scenario.manhunters" && this.getID() != "background.slave") _properties.XPGainMult *= 0.9;
-
-		if (this.m.DailyCost == 0 || this.getContainer().hasSkill("trait.player")) _properties.DailyWage = 0;
-		else
+		foreach( building in this.m.Buildings )
 		{
-			if (this.getContainer().getActor().getLevel() >= 11 && this.m.DailyCost < 12) this.m.DailyCost = 12;
-			if (this.isBackgroundType(this.Const.BackgroundType.ConvertedCultist)) this.m.DailyCost = 4;
-			_properties.DailyWage += this.Math.round(this.m.DailyCost * this.m.DailyCostMult);
+			if (building == null) continue;
+			local stash = building.getStash();
+			if (stash == null) continue;
+			local items = stash.getItems();
+			if (items == null) continue;
+
+			for( local i = items.len() - 1; i >= 0; i -= 1 )
+			{
+				local item = items[i];
+				if (item == null) continue;
+
+				local id = item.m.ID;
+				if (id in ::Z.Economy.Items && ::Z.Economy.Items[id] == 0)
+					stash.removeByIndex(i);
+			}
 		}
+
 	}
 });
+

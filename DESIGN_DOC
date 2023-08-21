@@ -1,29 +1,8 @@
 Economy Overhaul
 
-//TODO: 0 cost items:
-
-    Marketplace:
-
-    Southern Head Wrap
-    Ancient Mail
-    Southern Veil
-    Southern Coin Headress
-    Southern Coin Headband
-    Southern Earings
-    Southern Cap
-
-    Armorsmith:
-
-    Patched Mail Shirt
-    Rotten Reinforced Mail Shirt
-    Simple Mail Shirt
-    Open Turban
-    Ancient Side Hawk
-
+//TODO: fix alchemist having named items
 //TODO: figure out how to make fixed party templates/encounters
-
 //TODO: Reintegrate mood changes
-
 //TODO: integrate logic World economy.
 
 Caravans now take goods out of each building's inventory of the town they leave, carry the goods in their inventory, and deliver the goods into the inventory of the town they arrive at. Paying the origin town when they unload.

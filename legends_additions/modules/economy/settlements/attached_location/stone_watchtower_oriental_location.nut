@@ -35,17 +35,7 @@
 			_list.push({
 				R = 40,
 				P = 1.0,
-				S = "armor/oriental/linothorax"
-			});
-			_list.push({
-				R = 40,
-				P = 1.0,
 				S = "armor/oriental/southern_mail_shirt"
-			});
-			_list.push({
-				R = 10,
-				P = 1.0,
-				S = "helmets/oriental/southern_head_wrap"
 			});
 			_list.push({
 				R = 65,
