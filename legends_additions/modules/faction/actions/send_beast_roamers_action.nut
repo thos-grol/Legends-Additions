@@ -69,7 +69,7 @@
 			if (_action.getDistanceToNextAlly(tile) <= distanceToNextAlly / (_nearTile == null ? 1 : 2)) return false;
 
 			local NACHZERER = {
-				ID = ::Const.EntityType.Nachzerer,
+				ID = ::Const.EntityType.Ghoul,
 				Variant = 0,
 				Strength = 250,
 				Cost = 30,
