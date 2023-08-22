@@ -88,7 +88,8 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 		ret = this.attackEntity(_user, target);
 
 		if (!_user.isAlive() || _user.isDying()) return ret;
-		if (ret && _targetTile.IsOccupiedByActor && target.isAlive() && !target.isDying()) this.applyEffectToTarget(_user, target, _targetTile);
+		if (ret && _targetTile.IsOccupiedByActor && target.isAlive() && !target.isDying()) 
+			this.applyEffectToTarget(_user, target, _targetTile);
 		local nextDir = dir - 1 >= 0 ? dir - 1 : this.Const.Direction.COUNT - 1;
 		if (ownTile.hasNextTile(nextDir))
 		{
@@ -157,15 +158,17 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
+		if (_skill != this) return;
 		if (_targetEntity.getHitpoints() <= 0 || !_targetEntity.isAlive() || _targetEntity.getFlags().has("undead")) return;
-        if (_targetEntity.getCurrentProperties().IsImmuneToBleeding || hp - _targetEntity.getHitpoints() < this.Const.Combat.MinDamageToApplyBleeding) return;
+        if (_targetEntity.getCurrentProperties().IsImmuneToBleeding) return;
 
 		if (!_targetEntity.isHiddenToPlayer()) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_targetEntity) + " has been bled by the Nachzerer's sharp claws.");
 
         local effect = this.new("scripts/skills/effects/bleeding_effect");
-        if (_user.getFaction() == this.Const.Faction.Player) effect.setActor(this.getContainer().getActor());
+		local actor = this.getContainer().getActor();
+        if (actor.getFaction() == this.Const.Faction.Player) effect.setActor(this.getContainer().getActor());
         effect.setDamage(15);
-        target.getSkills().add(effect);
+        _targetEntity.getSkills().add(effect);
 	}
 
 	function findTileToKnockBackTo( _userTile, _targetTile )

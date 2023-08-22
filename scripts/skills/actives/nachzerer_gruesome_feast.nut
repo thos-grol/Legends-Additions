@@ -60,6 +60,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 
 	function isUsable()
 	{
+		local actor = this.getContainer().getActor();
 		return this.skill.isUsable() && !actor.getCurrentProperties().IsRooted && !this.m.Used;
 	}
 

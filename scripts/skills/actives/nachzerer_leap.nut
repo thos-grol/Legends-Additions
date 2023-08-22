@@ -72,7 +72,7 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 	function isUsable()
 	{
 		local actor = this.getContainer().getActor();
-		return this.skill.isUsable() && !actor.getCurrentProperties().IsRooted && this.m.Cooldown == 0 && actor.getSurroundedCount() + 1 >= 2;
+		return this.skill.isUsable() && !actor.getCurrentProperties().IsRooted && this.m.Cooldown == 0;
 	}
 
 
@@ -224,15 +224,16 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
+		if (_skill != this) return;
 		if (_targetEntity.getHitpoints() <= 0 || !_targetEntity.isAlive() || _targetEntity.getFlags().has("undead")) return;
-        if (_targetEntity.getCurrentProperties().IsImmuneToBleeding || hp - _targetEntity.getHitpoints() < this.Const.Combat.MinDamageToApplyBleeding) return;
-
+		if (_targetEntity.getCurrentProperties().IsImmuneToBleeding) return;
 		if (!_targetEntity.isHiddenToPlayer()) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_targetEntity) + " has been bled by the Nachzerer's sharp claws.");
 
         local effect = this.new("scripts/skills/effects/bleeding_effect");
-        if (_user.getFaction() == this.Const.Faction.Player) effect.setActor(this.getContainer().getActor());
+		local actor = this.getContainer().getActor();
+        if (actor.getFaction() == this.Const.Faction.Player) effect.setActor(this.getContainer().getActor());
         effect.setDamage(15);
-        target.getSkills().add(effect);
+        _targetEntity.getSkills().add(effect);
 	}
 
 });

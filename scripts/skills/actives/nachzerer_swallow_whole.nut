@@ -1,6 +1,8 @@
 this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 	m = {
 		SwallowedEntity = null,
+		SwallowedItems = [],
+		SwallowedEntity_HP = 0,
 		Cooldown = 2
 	},
 	function getSwallowedEntity()
@@ -10,12 +12,13 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 
 	function onTurnStart()
 	{
+		if (this.m.SwallowedEntity != null) return;
 		this.m.Cooldown = this.Math.max(0, this.m.Cooldown - 1);
 	}
 
 	function isUsable()
 	{
-		return this.skill.isUsable() && this.m.Cooldown == 0 && this.m.SwallowedEntity == null;
+		return this.skill.isUsable() && this.m.SwallowedEntity == null && this.m.Cooldown == 0;
 	}
 
 	function create()
@@ -64,22 +67,28 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 
 	function onTurnEnd()
 	{
-		local actor = this.getContainer().getActor();
-		local hp = this.m.SwallowedEntity.getHitpoints();
-		local damage = this.Math.rand(10, 20);
-		hp = this.Math.max(0, hp - damage);
+		if (this.m.SwallowedEntity == null) return;
 
-		if (hp > 0)
+		local damage = this.Math.rand(10, 20);
+		this.m.SwallowedEntity_HP = this.Math.max(0, this.m.SwallowedEntity_HP - damage);
+		local actor = this.getContainer().getActor();
+		
+		if (this.m.SwallowedEntity_HP > 0)
 		{
-			this.m.SwallowedEntity.setHitpoints(hp);
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " takes " + damage + " damage. They have " + hp + " remaining.");
+			actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + damage));
+			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " takes " + damage + " damage. They have " + this.m.SwallowedEntity_HP + " remaining.\n" + this.Const.UI.getColorizedEntityName(actor) + " gains " + damage + " hitpoints.");
 		}
 		else
 		{
 			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " has been digested.");
-			bro.getSkills().onDeath(this.Const.FatalityType.Devoured);
-			bro.onDeath(null, null, null, this.Const.FatalityType.Devoured);
-			this.World.getPlayerRoster().remove(bro);
+			this.m.SwallowedEntity.getSkills().onDeath(this.Const.FatalityType.Devoured);
+			this.m.SwallowedEntity.onDeath(null, null, null, this.Const.FatalityType.Devoured);
+			this.World.getPlayerRoster().remove(this.m.SwallowedEntity);
+			this.m.SwallowedEntity = null;
+
+			//TODO: bro death effects ie. party mood
+			
+			//TODO: loop through all items and save it to this.m.SwallowedItems
 
 			//Counts as feasted, remove temp injuries
 			local skills = actor.getSkills().getAllSkillsOfType(this.Const.SkillType.Injury);
@@ -90,12 +99,11 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 			}
 
 			//add 2 stacks of hair armor
-			local nachzerer_hair_armor = _user.getSkills().getSkillByID("perk.nachzerer_hair_armor");
+			local nachzerer_hair_armor = actor.getSkills().getSkillByID("perk.nachzerer_hair_armor");
 			if (nachzerer_hair_armor != null) nachzerer_hair_armor.addCharges(2);
 		}
 
 		actor.setHitpoints(this.Math.min(actor.getHitpoints() + damage, actor.getHitpointsMax()));
-		this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " heals " + damage + " hitpoints.");
 	}
 
 	function onUse( _user, _targetTile )
@@ -132,6 +140,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 
 		this.m.SwallowedEntity = target;
 		this.m.SwallowedEntity.getFlags().set("Devoured", true);
+		this.m.SwallowedEntity_HP = target.getHitpoints();
 		target.removeFromMap();
 		_user.getSprite("body").setBrush("bust_ghoul_body_04");
 		_user.getSprite("injury").setBrush("bust_ghoul_04_injured");

@@ -63,6 +63,7 @@ this.ai_nachzerer_swing <- this.inherit("scripts/ai/tactical/behavior", {
 
 	function onExecute( _entity )
 	{
+		::logInfo("begin: " + "ai_nachzerer_swing");
 		if (this.m.IsFirstExecuted)
 		{
 			this.getAgent().adjustCameraToTarget(this.m.TargetTile);

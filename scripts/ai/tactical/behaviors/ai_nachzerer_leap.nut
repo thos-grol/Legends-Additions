@@ -1,3 +1,5 @@
+//TODO: rewrite leap skill using darkflight copy.
+//TODO: copy darkflight ai.
 this.ai_nachzerer_leap <- this.inherit("scripts/ai/tactical/behavior", {
 	m = {
 		TargetTile = null,
@@ -20,6 +22,8 @@ this.ai_nachzerer_leap <- this.inherit("scripts/ai/tactical/behavior", {
 
 	function onEvaluate( _entity )
 	{
+		local i = 0;
+		::logInfo("0: ai_nachzerer_leap");
 		// Function is a generator.
 		local score = this.getProperties().BehaviorMult[this.m.ID];
 		this.m.TargetTile = null;
@@ -27,63 +31,27 @@ this.ai_nachzerer_leap <- this.inherit("scripts/ai/tactical/behavior", {
 		this.m.UnlockTime = 0;
 		local time = this.Time.getExactTime();
 
-		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP)
-		{
-			return this.Const.AI.Behavior.Score.Zero;
-		}
+		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP) return this.Const.AI.Behavior.Score.Zero;
+		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
+		if (this.getAgent().getIntentions().IsDefendingPosition) return this.Const.AI.Behavior.Score.Zero;
+		if (_entity.getCurrentProperties().IsRooted) return this.Const.AI.Behavior.Score.Zero;
 
-		if (_entity.getCurrentProperties().IsRooted)
-		{
-			return this.Const.AI.Behavior.Score.Zero;
-		}
+		::logInfo("1: ai_nachzerer_leap");
 
-		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing)
-		{
-			return this.Const.AI.Behavior.Score.Zero;
-		}
+		this.m.SelectedSkill = this.selectSkill(this.m.PossibleSkills);
+		::logInfo("2: ai_nachzerer_leap");
+		if (this.m.SelectedSkill == null) return this.Const.AI.Behavior.Score.Zero;
 
-		if (this.getAgent().getIntentions().IsDefendingPosition)
-		{
-			return this.Const.AI.Behavior.Score.Zero;
-		}
-
-		local skills = [];
-
-		foreach( skillID in this.m.PossibleSkills )
-		{
-			local skill = _entity.getSkills().getSkillByID(skillID);
-
-			if (skill != null && skill.isUsable() && skill.isAffordable())
-			{
-				this.m.SelectedSkill = skill;
-				break;
-			}
-		}
-
-		if (this.m.SelectedSkill == null)
-		{
-			return this.Const.AI.Behavior.Score.Zero;
-		}
-
-		if (this.m.LastEvaluateTime == this.m.LastExecuteTime)
-		{
-			this.m.Inertia = this.Math.maxf(0, this.m.Inertia - 1);
-		}
-		else
-		{
-			this.m.Inertia = 0;
-		}
-
+		if (this.m.LastEvaluateTime == this.m.LastExecuteTime) this.m.Inertia = this.Math.maxf(0, this.m.Inertia - 1);
+		else this.m.Inertia = 0;
 		this.m.LastEvaluateTime = this.Tactical.TurnSequenceBar.getCurrentRound();
 
-		if (!this.getAgent().hasKnownOpponent())
-		{
-			return this.Const.AI.Behavior.Score.Zero;
-		}
+		::logInfo("3: ai_nachzerer_leap");
+		if (!this.getAgent().hasKnownOpponent()) return this.Const.AI.Behavior.Score.Zero;
 
 		score = score - this.Math.min(this.Const.AI.Behavior.DarkflightMaxInertia, this.m.Inertia) * this.Const.AI.Behavior.DarkflightInertiaMult;
-		local targetsInMelee = this.queryTargetsInMeleeRange();
 
+		local targetsInMelee = this.queryTargetsInMeleeRange();
 		if (targetsInMelee.len() != 0)
 		{
 			foreach( t in targetsInMelee )
@@ -106,12 +74,11 @@ this.ai_nachzerer_leap <- this.inherit("scripts/ai/tactical/behavior", {
 				score = score + (t.getArmor(this.Const.BodyPart.Body) + t.getArmor(this.Const.BodyPart.Head)) * this.Const.AI.Behavior.DarkflightHatredForArmorMult;
 				score = score + t.getCurrentProperties().getMeleeDefense() * this.Const.AI.Behavior.DarkflightHatredForMeleeDefenseMult * 5.0;
 
-				if (this.getAgent().getForcedOpponent() != null && this.getAgent().getForcedOpponent().getID() == t.getID())
-				{
-					score = score + 100.0;
-				}
+				if (this.getAgent().getForcedOpponent() != null && this.getAgent().getForcedOpponent().getID() == t.getID()) score = score + 100.0;
 			}
 		}
+
+		::logInfo("4: ai_nachzerer_leap");
 
 		local targets = this.getAgent().getKnownOpponents();
 		local potentialDestinations = [];
@@ -185,6 +152,8 @@ this.ai_nachzerer_leap <- this.inherit("scripts/ai/tactical/behavior", {
 				}
 			}
 		}
+
+		::logInfo("5: " + "ai_nachzerer_leap");
 
 		if (potentialDestinations.len() == 0)
 		{
@@ -340,6 +309,8 @@ this.ai_nachzerer_leap <- this.inherit("scripts/ai/tactical/behavior", {
 
 		potentialDestinations.sort(this.onSortByScore);
 
+		::logInfo("6: " + "ai_nachzerer_leap");
+
 		if (myTileScore != null && (potentialDestinations[0].Tile.isSameTileAs(myTile) || potentialDestinations[0].Score <= myTileScore.Score))
 		{
 			return this.Const.AI.Behavior.Score.Zero;
@@ -367,7 +338,8 @@ this.ai_nachzerer_leap <- this.inherit("scripts/ai/tactical/behavior", {
 
 		this.m.TargetTile = potentialDestinations[0].Tile;
 		this.getAgent().getIntentions().TargetTile = this.m.TargetTile;
-		return this.Const.AI.Behavior.Score.Darkflight * score * potentialDestinations[0].ScoreMult;
+		::logInfo("7: " + "ai_nachzerer_leap");
+		return this.Const.AI.Behavior.Score.Darkflight * score * potentialDestinations[0].ScoreMult * 100;
 	}
 
 	function onBeforeExecute( _entity )

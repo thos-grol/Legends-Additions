@@ -15,6 +15,7 @@ this.ai_nachzerer_swallow_whole <- this.inherit("scripts/ai/tactical/behavior", 
 
 	function onEvaluate( _entity )
 	{
+		::logInfo("begin: " + "ai_nachzerer_swallow_whole");
 		this.m.TargetTile = null;
 		this.m.Skill = null;
 		local score = this.getProperties().BehaviorMult[this.m.ID];
@@ -35,11 +36,6 @@ this.ai_nachzerer_swallow_whole <- this.inherit("scripts/ai/tactical/behavior", 
 		}
 
 		if (this.getAgent().getKnownOpponents().len() <= 1)
-		{
-			return this.Const.AI.Behavior.Score.Zero;
-		}
-
-		if (_entity.getHitpointsPct() < 0.15 && _entity.getTile().getZoneOfControlCountOtherThan(_entity.getAlliedFactions()) > 1)
 		{
 			return this.Const.AI.Behavior.Score.Zero;
 		}
@@ -68,7 +64,7 @@ this.ai_nachzerer_swallow_whole <- this.inherit("scripts/ai/tactical/behavior", 
 
 		this.m.TargetTile = bestTarget.Target.getTile();
 		score = score * bestTarget.Score;
-		return this.Const.AI.Behavior.Score.SwallowWhole * score;
+		return this.Const.AI.Behavior.Score.SwallowWhole * score * 1000;
 	}
 
 	function onExecute( _entity )

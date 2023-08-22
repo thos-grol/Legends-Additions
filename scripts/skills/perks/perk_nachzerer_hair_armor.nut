@@ -7,7 +7,7 @@ this.perk_nachzerer_hair_armor <- this.inherit("scripts/skills/skill", {
 	{
 		this.m.ID = "perk.nachzerer_hair_armor";
 		this.m.Name = this.Const.Strings.PerkName.NachzererHairArmor;
-		this.m.Description = this.Const.Strings.PerkDescription.NachzererHairArmor; //TODO: figure out how to add perk definition.
+		this.m.Description = this.Const.Strings.PerkDescription.NachzererHairArmor;
 		this.m.Icon = "ui/perks/perk_29.png"; //TODO: Create icon for hair armor.
 		this.m.Type = this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
 		this.m.Order = this.Const.SkillOrder.Perk;
@@ -53,8 +53,9 @@ this.perk_nachzerer_hair_armor <- this.inherit("scripts/skills/skill", {
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
 		if (this.m.Charges == 0) return;
-		if (_attacker != null && _attacker.getID() == this.getContainer().getActor().getID() || _skill == null || !_skill.isAttack() || !_skill.isUsingHitchance()) return;
-		if (_user.getSkills().getSkillByID("effects.bone_plating") == null) return;
+		local actor = this.getContainer().getActor();
+		if (_attacker != null && _attacker.getID() == actor.getID() || _skill == null || !_skill.isAttack() || !_skill.isUsingHitchance()) return;
+		if (actor.getSkills().getSkillByID("effects.bone_plating") != null) return;
 
 		_properties.DamageReceivedRegularMult *= 0;
 		this.m.Charges = this.Math.max(0, this.m.Charges - 1);
