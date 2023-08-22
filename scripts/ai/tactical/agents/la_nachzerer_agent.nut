@@ -30,11 +30,11 @@ this.la_nachzerer_agent <- this.inherit("scripts/ai/tactical/agent", {
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_retreat"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_engage_melee"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_break_free"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_default")); //claws
+		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_default")); //claws - not working properly
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_disengage"));
 
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_swing")); //claws swing
-		// this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_swallow_whole")); //swallow
+		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_swing")); //working
+		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_swallow_whole")); //working
 		// this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_gruesome_feast")); //feast
 		// this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_leap")); //leap
 	}
