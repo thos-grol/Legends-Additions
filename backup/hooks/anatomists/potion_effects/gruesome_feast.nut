@@ -56,7 +56,6 @@
         if (!_user.isHiddenToPlayer()) this.Time.scheduleEvent(this.TimeUnit.Virtual, 500, this.onRemoveCorpse, _targetTile);
         else this.onRemoveCorpse(_targetTile);
 
-
         this.spawnBloodbath(_targetTile);
         _user.setHitpoints(this.Math.min(_user.getHitpoints() + 50, _user.getHitpointsMax()));
         local skills = _user.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);

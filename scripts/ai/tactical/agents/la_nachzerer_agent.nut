@@ -1,4 +1,3 @@
-//TODO: ghoul new AI agent
 this.la_nachzerer_agent <- this.inherit("scripts/ai/tactical/agent", {
 	m = {},
 	function create()
@@ -16,9 +15,9 @@ this.la_nachzerer_agent <- this.inherit("scripts/ai/tactical/agent", {
 		this.m.Properties.TargetPriorityArmorMult = 0.3;
 		this.m.Properties.TargetPriorityMoraleMult = 0.4;
 		this.m.Properties.TargetPriorityBraveryMult = 0.4;
-		this.m.Properties.OverallDefensivenessMult = 2.0;
+		this.m.Properties.OverallDefensivenessMult = 1.0;
 		this.m.Properties.OverallFormationMult = 2.0;
-		this.m.Properties.EngageAgainstSpearwallMult = 0.25;
+		this.m.Properties.EngageAgainstSpearwallMult = 1.0;
 		this.m.Properties.EngageTargetAlreadyBeingEngagedMult = 0.75;
 		this.m.Properties.EngageFlankingMult = 1.5;
 		this.m.Properties.PreferCarefulEngage = true;
@@ -31,44 +30,13 @@ this.la_nachzerer_agent <- this.inherit("scripts/ai/tactical/agent", {
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_retreat"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_engage_melee"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_break_free"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_default"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_gruesome_feast"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_swallow_whole"));
+		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_default")); //claws
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_disengage"));
-	}
 
-	function onUpdate()
-	{
-		this.m.Properties.OverallDefensivenessMult = 2.0 - (this.m.Actor.getSize() - 1) * 0.5;
-		local ghouls = 0;
-		local nonGhouls = 0;
-
-		foreach( ally in this.m.KnownAllies )
-		{
-			if (ally.getFlags().has("ghoul"))
-			{
-				ghouls = ++ghouls;
-				ghouls = ghouls;
-			}
-			else
-			{
-				nonGhouls = ++nonGhouls;
-				nonGhouls = nonGhouls;
-			}
-		}
-
-		local strategy = this.Tactical.Entities.getStrategy(this.getActor().getFaction());
-
-		if (!strategy.getStats().IsEngaged && this.m.Actor.getAttackedCount() == 0 && this.Time.getRound() <= 3 && ghouls < nonGhouls)
-		{
-			this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageMelee] = 0.0;
-			this.m.Properties.PreferWait = true;
-		}
-		else
-		{
-			this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageMelee] = 1.0;
-			this.m.Properties.PreferWait = false;
-		}
+		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_swing")); //claws swing
+		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_swallow_whole")); //swallow
+		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_gruesome_feast")); //feast
+		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_leap")); //leap
 	}
 
 });

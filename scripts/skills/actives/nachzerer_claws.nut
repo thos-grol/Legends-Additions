@@ -2,7 +2,7 @@ this.nachzerer_claws <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{
-		this.m.ID = "actives.nachzerer_claws";
+		this.m.ID = "actives.ghoul_claws";
 		this.m.Name = "Nachzerer Claws";
 		this.m.Description = "Long and sharp claws that can tear flesh with ease.";
 		this.m.KilledString = "Ripped to shreds";
@@ -28,7 +28,7 @@ this.nachzerer_claws <- this.inherit("scripts/skills/skill", {
 		this.m.InjuriesOnHead = this.Const.Injury.CuttingHead;
 		this.m.DirectDamageMult = 0.25;
 		this.m.ActionPointCost = 4;
-		this.m.FatigueCost = 6;
+		this.m.FatigueCost = 20;
 		this.m.MinRange = 1;
 		this.m.MaxRange = 1;
 		this.m.ChanceDecapitate = 75;
@@ -66,8 +66,8 @@ this.nachzerer_claws <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		_properties.DamageRegularMin += 25;
-		_properties.DamageRegularMax += 40;
+		_properties.DamageRegularMin += 45;
+		_properties.DamageRegularMax += 70;
 		_properties.DamageArmorMult *= 0.75;
 	}
 
@@ -88,8 +88,6 @@ this.nachzerer_claws <- this.inherit("scripts/skills/skill", {
         if (_user.getFaction() == this.Const.Faction.Player) effect.setActor(this.getContainer().getActor());
         effect.setDamage(15);
         target.getSkills().add(effect);
-
-		//TODO: add overwhelm
 	}
 
 });

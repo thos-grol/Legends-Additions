@@ -1,28 +1,27 @@
-//TODO: make it choose a random empty tile
-//Add cooldown
-//TODO: add ai agent, leap will be used when nacho is surrounded by more than 4. Leap has a cooldown of 3 turns.
 this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 	m = {
-		IsSpent = false
+		Cooldown = 4
 	},
 	function create()
 	{
-		this.m.ID = "actives.charge";
-		this.m.Name = "Charge";
+		this.m.ID = "actives.nachzerer_leap";
+		this.m.Name = "Leap";
 		this.m.Description = "";
 		this.m.Icon = "skills/active_52.png";
 		this.m.IconDisabled = "skills/active_52_sw.png";
 		this.m.Overlay = "active_52";
+		this.m.Description = "Long and sharp claws that can tear flesh with ease.";
+		this.m.KilledString = "Ripped to shreds";
 		this.m.SoundOnUse = [
-			"sounds/enemies/orc_charge_01.wav",
-			"sounds/enemies/orc_charge_02.wav",
-			"sounds/enemies/orc_charge_03.wav",
-			"sounds/enemies/orc_charge_04.wav"
+			"sounds/combat/jump_01.wav"
 		];
 		this.m.SoundOnHit = [
-			"sounds/combat/knockback_hit_01.wav",
-			"sounds/combat/knockback_hit_02.wav",
-			"sounds/combat/knockback_hit_03.wav"
+			"sounds/enemies/ghoul_claws_01.wav",
+			"sounds/enemies/ghoul_claws_02.wav",
+			"sounds/enemies/ghoul_claws_03.wav",
+			"sounds/enemies/ghoul_claws_04.wav",
+			"sounds/enemies/ghoul_claws_05.wav",
+			"sounds/enemies/ghoul_claws_06.wav"
 		];
 		this.m.Type = this.Const.SkillType.Active;
 		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
@@ -30,16 +29,22 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
 		this.m.IsTargetingActor = false;
-		this.m.IsVisibleTileNeeded = true;
 		this.m.IsStacking = false;
-		this.m.IsAttack = false;
+		this.m.IsAttack = true;
 		this.m.IsIgnoredAsAOO = true;
 		this.m.IsUsingActorPitch = true;
-		this.m.ActionPointCost = 4;
-		this.m.FatigueCost = 25;
-		this.m.MinRange = 1;
-		this.m.MaxRange = 2;
+		this.m.ActionPointCost = 7;
+		this.m.FatigueCost = 45;
+		this.m.MinRange = 2;
+		this.m.MaxRange = 4;
+
 		this.m.MaxLevelDifference = 1;
+		this.m.ChanceDecapitate = 75;
+		this.m.ChanceDisembowel = 75;
+		this.m.ChanceSmash = 0;
+		this.m.InjuriesOnBody = this.Const.Injury.CuttingBody;
+		this.m.InjuriesOnHead = this.Const.Injury.CuttingHead;
+		this.m.DirectDamageMult = 0.25;
 	}
 
 	function getTooltip()
@@ -66,61 +71,26 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 
 	function isUsable()
 	{
-		return this.skill.isUsable() && !this.m.IsSpent && !this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions());
+		local actor = this.getContainer().getActor();
+		return this.skill.isUsable() && !actor.getCurrentProperties().IsRooted && this.m.Cooldown == 0 && actor.getSurroundedCount() + 1 >= 2;
 	}
+
 
 	function onVerifyTarget( _originTile, _targetTile )
 	{
-		if (!_targetTile.IsEmpty)
-		{
-			return false;
-		}
-
-		if (this.Math.abs(_targetTile.Level - _originTile.Level) > this.m.MaxLevelDifference)
-		{
-			return false;
-		}
-
-		local myPos = _originTile.Pos;
-		local targetPos = _targetTile.Pos;
-		local distance = _originTile.getDistanceTo(_targetTile);
-		local Dx = (targetPos.X - myPos.X) / distance;
-		local Dy = (targetPos.Y - myPos.Y) / distance;
-
-		for( local i = 0; i < distance; i = ++i )
-		{
-			local x = myPos.X + Dx * i;
-			local y = myPos.Y + Dy * i;
-			local tileCoords = this.Tactical.worldToTile(this.createVec(x, y));
-			local tile = this.Tactical.getTile(tileCoords);
-
-			if (!tile.IsOccupiedByActor && !tile.IsEmpty)
-			{
-				return false;
-			}
-
-			if (tile.hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions()))
-			{
-				return false;
-			}
-
-			if (this.Math.abs(tile.Level - _originTile.Level) > 1)
-			{
-				return false;
-			}
-		}
-
+		if (!_targetTile.IsEmpty) return false;
+		if (this.Math.abs(_targetTile.Level - _originTile.Level) > this.m.MaxLevelDifference) return false;
 		return true;
 	}
 
 	function onTurnStart()
 	{
-		this.m.IsSpent = false;
+		this.m.Cooldown = this.Math.max(0, this.m.Cooldown - 1);
 	}
 
 	function onUse( _user, _targetTile )
 	{
-		this.m.IsSpent = true;
+		this.m.Cooldown = 4;
 		local tag = {
 			Skill = this,
 			User = _user,
@@ -172,69 +142,34 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 
 		for( local i = 0; i != 6; i = ++i )
 		{
-			if (!myTile.hasNextTile(i))
+			if (!myTile.hasNextTile(i)) continue;
+
+			local tile = myTile.getNextTile(i);
+			if (!tile.IsOccupiedByActor) continue;
+
+			local actor = tile.getEntity();
+			if (!actor.isAlliedWith(_entity))
 			{
-			}
-			else
-			{
-				local tile = myTile.getNextTile(i);
-
-				if (!tile.IsOccupiedByActor)
-				{
-				}
-				else
-				{
-					local actor = tile.getEntity();
-
-					if (actor.isAlliedWith(_entity) || actor.getCurrentProperties().IsStunned)
-					{
-					}
-					else
-					{
-						ZOC.push(actor);
-
-						if (betterThanNothing == null)
-						{
-							betterThanNothing = actor;
-						}
-
-						if (actor.getCurrentProperties().IsImmuneToStun)
-						{
-						}
-						else
-						{
-							potentialVictims.push(actor);
-						}
-					}
-				}
+				ZOC.push(actor);
+				if (betterThanNothing == null) betterThanNothing = actor;
+				potentialVictims.push(actor);
 			}
 		}
 
 		foreach( actor in ZOC )
 		{
-			if (!actor.onMovementInZoneOfControl(_entity, true))
-			{
-				continue;
-			}
+			if (!actor.onMovementInZoneOfControl(_entity, true)) continue;
 
 			if (actor.onAttackOfOpportunity(_entity, true))
 			{
-				if (_tag.OldTile.IsVisibleForPlayer || myTile.IsVisibleForPlayer)
-				{
-					this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_entity) + " charges and is repelled");
-				}
-
-				if (!_entity.isAlive() || _entity.isDying())
-				{
-					return;
-				}
+				if (_tag.OldTile.IsVisibleForPlayer || myTile.IsVisibleForPlayer) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_entity) + " leaps and is repelled");
+				if (!_entity.isAlive() || _entity.isDying()) return;
 
 				local dir = myTile.getDirectionTo(_tag.OldTile);
 
 				if (myTile.hasNextTile(dir))
 				{
 					local tile = myTile.getNextTile(dir);
-
 					if (tile.IsEmpty && this.Math.abs(tile.Level - myTile.Level) <= 1 && tile.getDistanceTo(actor.getTile()) > 1)
 					{
 						_tag.TargetTile = tile;
@@ -245,25 +180,13 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 
 				for( local i = 0; i != 6; i = ++i )
 				{
-					if (!myTile.hasNextTile(i))
+					if (!myTile.hasNextTile(i)) continue;
+					local tile = myTile.getNextTile(i);
+					if (tile.IsEmpty && this.Math.abs(tile.Level - myTile.Level) <= 1 && tile.getZoneOfControlCountOtherThan(_entity.getAlliedFactions()) == 0)
 					{
-					}
-					else
-					{
-						local tile = myTile.getNextTile(i);
-
-						if (tile.IsEmpty && this.Math.abs(tile.Level - myTile.Level) <= 1)
-						{
-							if (tile.getZoneOfControlCountOtherThan(_entity.getAlliedFactions()) != 0)
-							{
-							}
-							else
-							{
-								_tag.TargetTile = tile;
-								this.Time.scheduleEvent(this.TimeUnit.Virtual, 50, _tag.OnRepelled, _tag);
-								return;
-							}
-						}
+						_tag.TargetTile = tile;
+						this.Time.scheduleEvent(this.TimeUnit.Virtual, 50, _tag.OnRepelled, _tag);
+						return;
 					}
 				}
 
@@ -273,31 +196,11 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		if (potentialVictims.len() == 0 && betterThanNothing != null)
-		{
-			potentialVictims.push(betterThanNothing);
-		}
+		if (potentialVictims.len() == 0 && betterThanNothing != null) potentialVictims.push(betterThanNothing);
 
 		if (potentialVictims.len() != 0)
 		{
 			local victim = potentialVictims[this.Math.rand(0, potentialVictims.len() - 1)];
-			local chance = 100;
-
-			if (victim.isArmedWithShield())
-			{
-				local shield = victim.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-				chance = chance - shield.getMeleeDefense();
-
-				if (victim.getSkills().hasSkill("effects.shieldwall"))
-				{
-					chance = chance - shield.getMeleeDefense();
-				}
-			}
-
-			if (_tag.Skill.m.SoundOnHit.len() != 0)
-			{
-				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, victim.getPos());
-			}
 
 			if (!victim.isHiddenToPlayer())
 			{
@@ -305,23 +208,31 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 				this.Tactical.getShaker().shake(victim, myTile, 2);
 			}
 
-			if (!victim.getCurrentProperties().IsImmuneToStun && this.Math.rand(1, 100) <= chance)
+			if (_tag.OldTile.IsVisibleForPlayer || myTile.IsVisibleForPlayer)
 			{
-				victim.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));
-
-				if (_tag.OldTile.IsVisibleForPlayer || myTile.IsVisibleForPlayer)
-				{
-					this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_entity) + " charges and stuns " + this.Const.UI.getColorizedEntityName(victim));
-				}
-
-				return;
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_entity) + " leaps and swipes " + this.Const.UI.getColorizedEntityName(victim));
 			}
+
+			this.spawnAttackEffect(victim.getTile(), this.Const.Tactical.AttackEffectClaws);
+			this.Sound.play("sounds/enemies/ghoul_claws_01.wav", 200.0, _user.getPos(), this.Math.rand(95, 105) * 0.01);
+			this.attackEntity(_user, victim);
+			return;
 		}
 
-		if (_tag.OldTile.IsVisibleForPlayer || myTile.IsVisibleForPlayer)
-		{
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_entity) + " charges");
-		}
+		if (_tag.OldTile.IsVisibleForPlayer || myTile.IsVisibleForPlayer) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_entity) + " leaps");
+	}
+
+	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
+	{
+		if (_targetEntity.getHitpoints() <= 0 || !_targetEntity.isAlive() || _targetEntity.getFlags().has("undead")) return;
+        if (_targetEntity.getCurrentProperties().IsImmuneToBleeding || hp - _targetEntity.getHitpoints() < this.Const.Combat.MinDamageToApplyBleeding) return;
+
+		if (!_targetEntity.isHiddenToPlayer()) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_targetEntity) + " has been bled by the Nachzerer's sharp claws.");
+
+        local effect = this.new("scripts/skills/effects/bleeding_effect");
+        if (_user.getFaction() == this.Const.Faction.Player) effect.setActor(this.getContainer().getActor());
+        effect.setDamage(15);
+        target.getSkills().add(effect);
 	}
 
 });

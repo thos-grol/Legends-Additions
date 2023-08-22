@@ -14,10 +14,6 @@ patch:
 //New potion system
 
 //FEATURE_0: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.
-
-
-
-
     //Direwolf
         //The more attacks it recieves, the higher it's fury...
 

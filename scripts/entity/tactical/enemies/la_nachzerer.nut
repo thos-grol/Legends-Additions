@@ -1,26 +1,6 @@
 //Nachzherer/Ghoul
-        //Attributes: Grail, Winter
-        //Weakness: Heart
-        //Stage 3 nacho
-        //A corpse eater/Gluttony
-        //Abilities...
-            //Bleed Aura, Inflict bleed and overwhelm
-			//Hair Armor, High HP, minor hp regeneration
-            //Devour
-                //Devour Corpse - Heals all temp injuries, heals.
-                //Greater Devour - Can devour a target of any size. The target shrinks to fit the mouth. Some units are immune to this magic. Gain the 1/4 the stats of the current target. Eaten enemies take 15 hp damage per turn.
-					//Maddening Hunger - If the user fails to swallow the target, add the maddening hunger effect. + 10 matk. This effect stacks 3 times.
-		//Potions:
-			//Nachzherer - Grail Knight
-				//Bleed Aura, Inflict bleed and overwhelm
-				//Hair Armor, High HP, minor hp regeneration
-			//Nachzherer - Gluttony Demon
-				//Devour Corpse - Heals all temp injuries, heals.
-			//Nachzherer - Winter Sealer
-				//Greater Devour - Can devour a target of any size. The target shrinks to fit the mouth. Some units are immune to this magic. Gain the 1/4 the stats of the current target. Eaten enemies take 15 hp damage per turn.
-
-
-
+//Attributes: Grail, Winter
+//Weakness: Heart
 this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
     function onInit()
@@ -32,20 +12,21 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
             ActionPoints = 18,
             Hitpoints = 500,
             Bravery = 0,
-            Stamina = 130,
-            MeleeSkill = 60,
+            Stamina = 200,
+            MeleeSkill = 80,
             RangedSkill = 0,
             MeleeDefense = 30,
-            RangedDefense = 30,
-            Initiative = 125,
+            RangedDefense = 20,
+            Initiative = 145,
             FatigueEffectMult = 1.0,
             MoraleEffectMult = 1.0,
-            FatigueRecoveryRate = 20,
+            FatigueRecoveryRate = 25,
             Armor = [
                 0,
                 0
             ]
         });
+
 		b.IsAffectedByNight = false;
 		b.IsImmuneToDisarm = true;
 		this.m.ActionPoints = b.ActionPoints;
@@ -72,25 +53,31 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		this.getSprite("status_rooted").Scale = 0.6;
 		this.setSpriteOffset("status_rooted", this.createVec(-7, 14));
 
+		this.getFlags().add("ghoul");
+		this.getFlags().add("undead");
+		this.getFlags().add("immunity_overwhelm");
+
 		//Skills
-		//TODO: rethink nacho skills
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_escape_artist"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
         this.m.Skills.add(this.new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
 
-		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_claws")); //improved armor piercing and bleeding
-		//TODO: hammer 3 swing skill when surrounded, knock back.
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_nachzerer_hair_armor")); // hair armor nullifies damage for x hits.
 
+		//will swallow bro, damaging them and healing the damage dealt. Has a chance to miss. If the swallowed bro dies,
+		//will heal temp injuries, and gain 2 charges of hair armor.
+		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_swallow_whole_skill"));
+
+		//jumps to tile with corpse within 4 range. Feast on the corpse, healing temp injuries, regaining health, and gaining 2 charges of hair armor.
+		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_gruesome_feast"));
+
+		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_claws")); //claws that inflict bleeding
+		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_claws_swipe")); //claw swing that hits 3 enemies and knocks them back.
         this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_muscularity")); //muscularity buffs claw attacks
         this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy")); // buffs damage on kill
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_overwhelm"));
 
-        this.m.Skills.add(this.new("scripts/skills/actives/swallow_whole_skill")); 
-		this.m.Skills.add(this.new("scripts/skills/actives/gruesome_feast")); //TODO: Rework to jump to tile within 3 squares and consume the corpse. Use ijirok jump code
-
-		//TODO: leap skill when surrounded.
-
-		this.m.Skills.add(this.new("scripts/skills/effects/gruesome_feast_effect"));
-
-        this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
-
+		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_leap")); //leap skill when surrounded, perform a claw attack on the target.
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
@@ -287,16 +274,13 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		local onArmorHitSounds = this.getItems().getAppearance().ImpactSound;
 		onArmorHitSounds[this.Const.BodyPart.Body] = this.Const.Sound.ArmorLeatherImpact;
 		onArmorHitSounds[this.Const.BodyPart.Head] = this.Const.Sound.ArmorLeatherImpact;
-		this.getFlags().add("ghoul");
-		this.getFlags().add("undead");
         this.m.AIAgent = this.new("scripts/ai/tactical/agents/la_nachzerer_agent");
 		this.m.AIAgent.setActor(this);
 	}
 
     function onAfterDeath( _tile )
 	{
-		//TODO: integrate new swallow skill
-        local skill = this.getSkills().getSkillByID("actives.swallow_whole");
+        local skill = this.getSkills().getSkillByID("actives.nachzerer_swallow_whole");
 		if (skill.getSwallowedEntity() == null) return;
 
 		local e = skill.getSwallowedEntity();
@@ -322,10 +306,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
         this.getSprite("head").Scale = this.Math.minf(1.0, 0.94 + 0.06 * ((this.Time.getVirtualTimeF() - this.m.ScaleStartTime) / 0.3));
         this.moveSpriteOffset("body", this.createVec(0, -1), this.createVec(0, 0), 0.3, this.m.ScaleStartTime);
 
-        if (this.moveSpriteOffset("head", this.createVec(0, -1), this.createVec(0, 0), 0.3, this.m.ScaleStartTime))
-        {
-            this.setRenderCallbackEnabled(false);
-        }
+        if (this.moveSpriteOffset("head", this.createVec(0, -1), this.createVec(0, 0), 0.3, this.m.ScaleStartTime)) this.setRenderCallbackEnabled(false);
 	}
 
 });
