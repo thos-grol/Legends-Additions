@@ -1,6 +1,7 @@
 //Nachzherer/Ghoul
 //Attributes: Grail, Winter
 //Weakness: Heart
+::Const.EntityType.Nachzerer <- 99000;
 this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
     function onInit()

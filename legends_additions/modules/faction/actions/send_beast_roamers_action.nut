@@ -61,16 +61,24 @@
 			local disallowedTerrain = [];
 			for( local i = 0; i < this.Const.World.TerrainType.COUNT; i += 1 )
 			{
-				if (i != this.Const.World.TerrainType.Steppe && i != this.Const.World.TerrainType.Plains) 
+				if (i != this.Const.World.TerrainType.Steppe && i != this.Const.World.TerrainType.Plains)
 					disallowedTerrain.push(i);
 			}
 			local tile = _action.getTileToSpawnLocation(10, disallowedTerrain, 7, 35, 1000, 3, 0, _nearTile, 0.0, 0.75);
 			if (tile == null) return false;
 			if (_action.getDistanceToNextAlly(tile) <= distanceToNextAlly / (_nearTile == null ? 1 : 2)) return false;
 
+			local NACHZERER = {
+				ID = ::Const.EntityType.Nachzerer,
+				Variant = 0,
+				Strength = 250,
+				Cost = 30,
+				Row = 0,
+				Script = "scripts/entity/tactical/enemies/la_nachzerer"
+			};
 
 			local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-			local party = ::Const.World.Common.la_spawnEntity_single(_action.getFaction(), tile, "Nachzehrer", false, ::Const.World.Spawn.Troops.GhoulHIGH, ::Const.World.Spawn.Ghouls);
+			local party = ::Const.World.Common.la_spawnEntity_single(_action.getFaction(), tile, "Nachzehrer", false, NACHZERER, ::Const.World.Spawn.Ghouls);
 			party.getSprite("banner").setBrush("banner_beasts_01");
 			party.setDescription("A scavenging nachzehrer.");
 			party.setFootprintType(this.Const.World.FootprintsType.Ghouls);
@@ -87,7 +95,7 @@
 		};
 		this.m.Options.push(beast);
 		this.m.BeastsLow.push(beast);
-		
+
 		return; //PLACEHOLDER
 
 		beast = function ( _action, _nearTile = null ) //Direwolves
