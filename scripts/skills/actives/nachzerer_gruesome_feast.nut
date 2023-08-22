@@ -1,3 +1,4 @@
+//TODO: confirm working
 this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 	m = {
 		Used = false

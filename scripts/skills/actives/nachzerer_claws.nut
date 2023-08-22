@@ -1,3 +1,5 @@
+//TODO: fix attacking only once.
+//TODO: move bleeding out of all these skills. Modify lacerate to use bleed normally.
 this.nachzerer_claws <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()

@@ -1,3 +1,4 @@
+//TODO: confirm working
 this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 	m = {
 		Cooldown = 3

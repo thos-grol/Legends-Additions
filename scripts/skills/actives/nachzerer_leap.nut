@@ -1,3 +1,4 @@
+//TODO: rewrite this and AI
 this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 	m = {
 		Cooldown = 4
