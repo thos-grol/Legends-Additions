@@ -1,7 +1,7 @@
-//TODO: confirm working
 this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 	m = {
-		Cooldown = 3
+		Cooldown = 1,
+		TilesUsed = []
 	},
 	function create()
 	{
@@ -41,31 +41,11 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 		this.m.ChanceSmash = 0;
 	}
 
-	function getTooltip()
+	function onUpdate( _properties )
 	{
-		local ret = this.getDefaultTooltip();
-		ret.extend([
-			{
-				id = 6,
-				type = "text",
-				icon = "ui/icons/hitchance.png",
-				text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-5%[/color] chance to hit"
-			},
-			{
-				id = 9,
-				type = "text",
-				icon = "ui/icons/special.png",
-				text = "Knocks back on a hit"
-			},
-			{
-				id = 6,
-				type = "text",
-				icon = "ui/icons/special.png",
-				text = "Can hit up to 3 targets"
-			}
-		]);
-
-		return ret;
+		_properties.DamageRegularMin += 45;
+		_properties.DamageRegularMax += 70;
+		_properties.DamageArmorMult *= 0.75;
 	}
 
 	function onTurnStart()
@@ -81,6 +61,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 	function onUse( _user, _targetTile )
 	{
 		this.m.TilesUsed = [];
+		this.m.Cooldown = 1;
 		this.spawnAttackEffect(_targetTile, this.Const.Tactical.AttackEffectSwing);
 		local ret = false;
 		local ownTile = _user.getTile();
@@ -155,21 +136,6 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
 		if (_skill == this) _properties.MeleeSkill -= 5;
-	}
-
-	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
-	{
-		if (_skill != this) return;
-		if (_targetEntity.getHitpoints() <= 0 || !_targetEntity.isAlive() || _targetEntity.getFlags().has("undead")) return;
-        if (_targetEntity.getCurrentProperties().IsImmuneToBleeding) return;
-
-		if (!_targetEntity.isHiddenToPlayer()) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_targetEntity) + " has been bled by the Nachzerer's sharp claws.");
-
-        local effect = this.new("scripts/skills/effects/bleeding_effect");
-		local actor = this.getContainer().getActor();
-        if (actor.getFaction() == this.Const.Faction.Player) effect.setActor(this.getContainer().getActor());
-        effect.setDamage(15);
-        _targetEntity.getSkills().add(effect);
 	}
 
 	function findTileToKnockBackTo( _userTile, _targetTile )
@@ -248,13 +214,40 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-function onKnockedDown( _entity, _tag )
-{
-	if (_tag.HitInfo.DamageRegular != 0)
+	function onKnockedDown( _entity, _tag )
 	{
-		_entity.onDamageReceived(_tag.Attacker, _tag.Skill, _tag.HitInfo);
+		if (_tag.HitInfo.DamageRegular != 0)
+		{
+			_entity.onDamageReceived(_tag.Attacker, _tag.Skill, _tag.HitInfo);
+		}
 	}
-}
+
+	function getTooltip()
+	{
+		local ret = this.getDefaultTooltip();
+		ret.extend([
+			{
+				id = 6,
+				type = "text",
+				icon = "ui/icons/hitchance.png",
+				text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-5%[/color] chance to hit"
+			},
+			{
+				id = 9,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "Knocks back on a hit"
+			},
+			{
+				id = 6,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "Can hit up to 3 targets"
+			}
+		]);
+
+		return ret;
+	}
 
 });
 

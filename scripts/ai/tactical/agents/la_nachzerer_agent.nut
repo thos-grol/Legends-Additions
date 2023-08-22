@@ -34,9 +34,9 @@ this.la_nachzerer_agent <- this.inherit("scripts/ai/tactical/agent", {
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_disengage"));
 
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_swing")); //claws swing
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_swallow_whole")); //swallow
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_gruesome_feast")); //feast
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_leap")); //leap
+		// this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_swallow_whole")); //swallow
+		// this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_gruesome_feast")); //feast
+		// this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_leap")); //leap
 	}
 
 });

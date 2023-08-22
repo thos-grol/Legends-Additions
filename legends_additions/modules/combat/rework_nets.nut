@@ -3,7 +3,7 @@
 //	- TODO: fix description of reinforced nets to 20% harder to break free.
 
 //rework net mastery to refill nets
-::Const.Strings.PerkName.LegendNetRepair = "Net Specialization"
+::Const.Strings.PerkName.LegendNetRepair = "Net Specialization";
 ::Const.Strings.PerkDescription.LegendNetRepair = "Many years and storms weathered with a net in hand..."
 + "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
 + "\n• Gain 3 nets. Start the battle off with one, and if this brother ends their turn with their offhand empty, will automatically replace their thrown nets."

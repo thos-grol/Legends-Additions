@@ -223,19 +223,5 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 		if (_tag.OldTile.IsVisibleForPlayer || myTile.IsVisibleForPlayer) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_entity) + " leaps");
 	}
 
-	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
-	{
-		if (_skill != this) return;
-		if (_targetEntity.getHitpoints() <= 0 || !_targetEntity.isAlive() || _targetEntity.getFlags().has("undead")) return;
-		if (_targetEntity.getCurrentProperties().IsImmuneToBleeding) return;
-		if (!_targetEntity.isHiddenToPlayer()) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_targetEntity) + " has been bled by the Nachzerer's sharp claws.");
-
-        local effect = this.new("scripts/skills/effects/bleeding_effect");
-		local actor = this.getContainer().getActor();
-        if (actor.getFaction() == this.Const.Faction.Player) effect.setActor(this.getContainer().getActor());
-        effect.setDamage(15);
-        _targetEntity.getSkills().add(effect);
-	}
-
 });
 
