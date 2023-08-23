@@ -345,14 +345,6 @@
 	}
 });
 
-::mods_hookExactClass("entity/tactical/actor", function (o)
-{
-	o.onDiscovered = function()
-	{
-		if (!this.isPlayerControlled()) this.setDirty(true);
-	}
-});
-
 ::mods_hookExactClass("ui/screens/tactical/modules/turn_sequence_bar/turn_sequence_bar", function (o)
 {
 	o.flashProgressbars = function( _flashActionPointsProgressbar, _flashFatigueProgressbar )
@@ -389,5 +381,65 @@
 		}
 	}
 });
+
+//items\legend_armor\legend_armor.nut
+::mods_hookExactClass("items/legend_armor/legend_armor", function (o)
+{
+	o.onDamageReceived = function( _damage, _fatalityType, _attacker )
+	{
+		local totalDamage = _damage;
+
+		for( local i = this.Const.Items.ArmorUpgrades.COUNT - 1; i >= 0; i = i )
+		{
+			local u = this.m.Upgrades[i];
+
+			if (u == null)
+			{
+			}
+			else
+			{
+				totalDamage = u.onDamageReceived(totalDamage, _fatalityType, _attacker);
+			}
+
+			i = --i;
+		}
+
+		if (this.m.Condition == 0)
+		{
+			this.updateAppearance();
+			return;
+		}
+
+		this.m.Condition = this.Math.max(0, this.m.Condition - totalDamage) * 1.0;
+
+		if (this.m.Condition == 0 && !this.m.IsIndestructible)
+		{
+			this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + "\'s " + this.makeName() + " is hit for [b]" + this.Math.floor(_damage) + "[/b] damage and has been destroyed!");
+
+			if (_attacker != null && _attacker.isPlayerControlled())
+			{
+				this.Tactical.Entities.addArmorParts(this.getArmorMax());
+			}
+		}
+		else
+		{
+			this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + "\'s " + this.makeName() + " is hit for [b]" + this.Math.floor(_damage) + "[/b] damage");
+		}
+
+		this.updateAppearance();
+	}
+	
+});
+
+::mods_hookExactClass("entity/tactical/actor", function (o)
+{
+	o.onDiscovered = function()
+	{
+		if (!this.isPlayerControlled()) this.setDirty(true);
+	}
+});
+
+
+
 
 
