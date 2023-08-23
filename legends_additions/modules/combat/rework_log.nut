@@ -8,12 +8,12 @@
 
 ::Z.Log.melee_hit <- function(_user, _targetEntity, _skill_name, rolled, toHit)
 {
-    ::Tactical.EventLog.logEx(_user + " [" + _skill_name + "] " + _targetEntity + ::MSU.Text.colorGreen(" [HIT] ") + "(" + rolled + " vs " + ::Math.min(95, ::Math.max(5, toHit))+ ")");
+    ::Tactical.EventLog.logEx(_user + " [" + _skill_name + "] " + _targetEntity + ::MSU.Text.colorGreen(" [HIT] » ") + "(" + rolled + " vs " + ::Math.min(95, ::Math.max(5, toHit))+ ")");
 };
 
 ::Z.Log.melee_miss <- function(_user, _targetEntity, _skill_name, rolled, toHit)
 {
-    ::Tactical.EventLog.logEx(_user + " [" + _skill_name + "] " + _targetEntity + ::MSU.Text.color(::Z.Log.Color.BloodRed, " [MISS] ") + "(" + rolled + " vs " + ::Math.min(95, ::Math.max(5, toHit))+ ")");
+    ::Tactical.EventLog.logEx(_user + " [" + _skill_name + "] " + _targetEntity + ::MSU.Text.color(::Z.Log.Color.BloodRed, " [MISS] » ") + "(" + rolled + " vs " + ::Math.min(95, ::Math.max(5, toHit))+ ")");
 };
 
 ::Z.Log.hair_armor <- function()
