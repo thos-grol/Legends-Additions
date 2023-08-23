@@ -1,6 +1,6 @@
 this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 	m = {
-		Cooldown = 1,
+		Cooldown = 2,
 		TilesUsed = []
 	},
 	function create()
@@ -135,7 +135,10 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
-		if (_skill == this) _properties.MeleeSkill -= 5;
+		if (_skill == this)
+		{
+			_properties.MeleeSkill -= 5;
+		}
 	}
 
 	function findTileToKnockBackTo( _userTile, _targetTile )

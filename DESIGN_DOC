@@ -1,9 +1,12 @@
 //TURN #
-\n ATTACKER 🔪 DEFENDER ➜ [MISS || H X ➜ Y | B X ➜ Y] (ROLL ⚔️ CHANCE)
 DEFENDER has been knocked back
 DEFENDER has been lacerated.
 
 Economy Overhaul
+
+//TODO: indent log: //body is hit for
+//TODO: new skill use, \n at beginning.
+//TODO: add turn marker to log.
 
 //TODO: fix alchemist having named items.
 //TODO: Reintegrate mood changes.

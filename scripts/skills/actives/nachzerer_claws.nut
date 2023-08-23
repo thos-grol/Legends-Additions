@@ -64,13 +64,6 @@ this.nachzerer_claws <- this.inherit("scripts/skills/skill", {
 		];
 	}
 
-	function onUpdate( _properties )
-	{
-		_properties.DamageRegularMin += 45;
-		_properties.DamageRegularMax += 70;
-		_properties.DamageArmorMult *= 0.75;
-	}
-
 	function onUse( _user, _targetTile )
 	{
 		this.spawnAttackEffect(_targetTile, this.Const.Tactical.AttackEffectClaws);

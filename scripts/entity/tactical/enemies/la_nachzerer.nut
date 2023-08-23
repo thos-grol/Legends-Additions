@@ -35,8 +35,8 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		this.getSprite("status_rooted").Scale = 0.6;
 		this.setSpriteOffset("status_rooted", this.createVec(-7, 14));
 
-		this.getFlags().add("ghoul");
 		this.getFlags().add("undead");
+		this.getFlags().add("la_nachzerer");
 		this.getFlags().add("immunity_overwhelm");
 		this.getFlags().set("bleed_aura", 15);
 
@@ -49,19 +49,18 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
 		//will swallow bro, damaging them and healing the damage dealt. Has a chance to miss. If the swallowed bro dies,
 		//will heal temp injuries, and gain 2 charges of hair armor.
-		//this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_swallow_whole"));
+		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_swallow_whole"));
 
 		//jumps to tile with corpse within 4 range. Feast on the corpse, healing temp injuries, regaining health, and gaining 2 charges of hair armor.
-		//this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_gruesome_feast"));
+		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_gruesome_feast"));
 
-		//this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_claws")); //claws that inflict bleeding
+		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_claws")); //claws that inflict bleeding
 		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_claws_swipe")); //claw swing that hits 3 enemies and knocks them back.
         this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy")); // buffs damage on kill
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_lacerate"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_overwhelm"));
 
-
-		//this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_leap")); //leap skill when surrounded, perform a claw attack on the target.
+		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_leap")); //leap skill when surrounded, perform a claw attack on the target.
 
 	}
 
@@ -275,6 +274,10 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 			local e = skill.getSwallowedEntity();
 			this.Tactical.addEntityToMap(e, _tile.Coords.X, _tile.Coords.Y);
 			e.getFlags().set("Devoured", false);
+
+			if (!e.isPlayerControlled()) ::Tactical.getTemporaryRoster().remove(e);
+			::Tactical.TurnSequenceBar.addEntity(e);
+
 			local slime = e.getSprite("dirt");
 			slime.setBrush("bust_slime");
 			slime.Visible = true;
@@ -283,9 +286,13 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		if (skill.getSwallowedItems() != null)
 		{
 			local items = skill.getSwallowedItems();
-			foreach(item in items)
+			if (items.len() != 0)
 			{
-				item.drop(_tile);
+				_tile.IsContainingItems = true;
+				foreach(item in items)
+				{
+					_tile.Items.push(item);
+				}
 			}
 		}
 	}

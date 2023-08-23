@@ -36,7 +36,7 @@ this.ai_nachzerer_swing <- this.inherit("scripts/ai/tactical/behavior", {
 		
 		if (bestTarget.Target == null) return this.Const.AI.Behavior.Score.Zero;
 		this.m.TargetTile = bestTarget.Target.getTile();
-		return this.Const.AI.Behavior.Score.Swing * bestTarget.Score * score * 100;
+		return this.Const.AI.Behavior.Score.Swing * bestTarget.Score * score;
 	}
 
 	function onExecute( _entity )

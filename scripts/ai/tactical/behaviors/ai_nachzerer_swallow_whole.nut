@@ -18,7 +18,6 @@ this.ai_nachzerer_swallow_whole <- this.inherit("scripts/ai/tactical/behavior", 
 		::logInfo("begin: " + "ai_nachzerer_swallow_whole");
 		this.m.TargetTile = null;
 		this.m.Skill = null;
-		local score = this.getProperties().BehaviorMult[this.m.ID];
 
 		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP)
 		{
@@ -47,7 +46,6 @@ this.ai_nachzerer_swallow_whole <- this.inherit("scripts/ai/tactical/behavior", 
 			return this.Const.AI.Behavior.Score.Zero;
 		}
 
-		score = score * this.getFatigueScoreMult(this.m.Skill);
 		local targets = this.queryTargetsInMeleeRange();
 
 		if (targets.len() == 0)
@@ -63,8 +61,7 @@ this.ai_nachzerer_swallow_whole <- this.inherit("scripts/ai/tactical/behavior", 
 		}
 
 		this.m.TargetTile = bestTarget.Target.getTile();
-		score = score * bestTarget.Score;
-		return this.Const.AI.Behavior.Score.SwallowWhole * score * 1000;
+		return this.Const.AI.Behavior.Score.SwallowWhole * 100;
 	}
 
 	function onExecute( _entity )

@@ -1,5 +1,7 @@
 this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
-	m = {},
+	m = {
+		IsSpent = false
+	},
 	function create()
 	{
 		this.m.ID = "actives.nachzerer_gruesome_feast";
@@ -19,20 +21,13 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		this.m.IsTargetingActor = false;
 		this.m.IsVisibleTileNeeded = false;
 		this.m.IsStacking = false;
-		this.m.IsAttack = true;
+		this.m.IsAttack = false;
 		this.m.IsIgnoredAsAOO = true;
-		this.m.ActionPointCost = 4;
+		this.m.ActionPointCost = 1;
 		this.m.FatigueCost = 0;
-		this.m.MinRange = 1;
-		this.m.MaxRange = 5;
+		this.m.MinRange = 0;
+		this.m.MaxRange = 6;
 		this.m.MaxLevelDifference = 3;
-
-		this.m.ChanceDecapitate = 75;
-		this.m.ChanceDisembowel = 75;
-		this.m.ChanceSmash = 0;
-		this.m.InjuriesOnBody = this.Const.Injury.CuttingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.CuttingHead;
-		this.m.DirectDamageMult = 0.25;
 	}
 
 	function onVerifyTarget( _originTile, _targetTile )
@@ -45,20 +40,40 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
+		::logInfo("0: feast");
 		this.m.IsSpent = true;
 		local tag = {
 			Skill = this,
 			User = _user,
 			OldTile = _user.getTile(),
-			TargetTile = _targetTile
+			TargetTile = _targetTile,
+			OnDone = this.onTeleportDone
 		};
-		if (tag.OldTile.IsVisibleForPlayer || _targetTile.IsVisibleForPlayer) this.spawnDust(_user, _targetTile, tag);
-		this.Tactical.getNavigator().teleport(_user, _targetTile, this.onTeleportDone, tag, false, 2.0);
+		if (tag.OldTile.IsVisibleForPlayer)
+		{
+			this.spawnDust(_user, _targetTile, tag);
+			this.Time.scheduleEvent(this.TimeUnit.Virtual, 400, this.onTeleportStart, tag);
+			::logInfo("0.5: feast");
+		}
+		else
+		{
+			this.onTeleportStart(tag);
+			::logInfo("0.75: feast");
+		}
+		
 		return true;
+	}
+
+	function onTeleportStart( _tag )
+	{
+		::logInfo("1: feast");
+		this.Tactical.getNavigator().teleport(_tag.User, _tag.TargetTile, _tag.OnDone, _tag, false, 2.0);
+		::logInfo("2: feast");
 	}
 
 	function onTeleportDone( _entity, _tag )
 	{
+		::logInfo("3: feast");
 		_targetTile = _tag.TargetTile;
 		_user = _tag.User;
 
@@ -76,10 +91,14 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 
 			if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " feasts on a corpse. Human units that fail the resolve check are dazed.");
 		}
+		::logInfo("4: feast");
 		if (!_user.isHiddenToPlayer()) this.Time.scheduleEvent(this.TimeUnit.Virtual, 500, this.onRemoveCorpse, _targetTile);
 		else this.onRemoveCorpse(_targetTile);
 
+		::logInfo("5: feast");
+
 		this.spawnBloodbath(_targetTile);
+		::logInfo("6: feast");
 
 		local feast_sounds = [
 			"sounds/enemies/gruesome_feast_01.wav",

@@ -1,4 +1,4 @@
-this.ai_attack_default <- this.inherit("scripts/ai/tactical/behavior", {
+this.ai_nachzerer_claws <- this.inherit("scripts/ai/tactical/behavior", {
 	m = {
 		TargetTile = null,
 		PossibleSkills = [
@@ -17,7 +17,6 @@ this.ai_attack_default <- this.inherit("scripts/ai/tactical/behavior", {
 	{
 		this.m.TargetTile = null;
 		this.m.Skill = null;
-		local score = this.getProperties().BehaviorMult[this.m.ID];
 
 		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP) return this.Const.AI.Behavior.Score.Zero;
 		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
@@ -26,19 +25,12 @@ this.ai_attack_default <- this.inherit("scripts/ai/tactical/behavior", {
 		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
 		if (this.m.Skill == null) return this.Const.AI.Behavior.Score.Zero;
 
-		score = score * this.getFatigueScoreMult(this.m.Skill);
 		local myTile = _entity.getTile();
 		local targets = this.queryTargetsInMeleeRange(this.m.Skill.getMinRange(), this.m.Skill.getMaxRange() + (this.m.Skill.isRanged() ? myTile.Level : 0), this.m.Skill.getMaxLevelDifference());
 		if (targets.len() == 0) return this.Const.AI.Behavior.Score.Zero;
 
-		local bestTarget;
-		if (this.m.Skill.isRanged()) bestTarget = this.queryBestRangedTarget(_entity, this.m.Skill, targets);
-		else bestTarget = this.queryBestMeleeTarget(_entity, this.m.Skill, targets);
-
-		if (bestTarget.Target == null) return this.Const.AI.Behavior.Score.Zero;
-
-		this.m.TargetTile = bestTarget.Target.getTile();
-		return this.Math.max(0, this.Const.AI.Behavior.Score.Attack * bestTarget.Score * score);
+		this.m.TargetTile = ::MSU.Array.rand(targets).getTile();
+		return this.Const.AI.Behavior.Score.Attack;
 	}
 
 	function onExecute( _entity )

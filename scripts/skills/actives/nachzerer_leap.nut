@@ -99,13 +99,6 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 		this.attackEntity(_user, victim);
 	}
 
-	function onUpdate( _properties )
-	{
-		_properties.DamageRegularMin += 45;
-		_properties.DamageRegularMax += 70;
-		_properties.DamageArmorMult *= 0.75;
-	}
-
 	function spawnDust(_user, _targetTile, _tag)
 	{
 		local myPos = _user.getPos();

@@ -76,23 +76,33 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		else
 		{
 			//handle items
-			this.m.SwallowedItems.extend(this.m.SwallowedEntity.getItems().getAllItems());
+			local digested_items = this.m.SwallowedEntity.getItems().getAllItems();
+			foreach(digested_item in digested_items)
+			{
+				digested_item.setContainer(null);
+				digested_item.setCurrentSlotType(this.Const.ItemSlot.None);
+			}
+			this.m.SwallowedItems.extend(digested_items);
 
 			//handle death
+			local is_player_controlled = this.m.SwallowedEntity.isPlayerControlled();
+			local is_guest = this.m.SwallowedEntity.isGuest();
+			local background_id = this.m.SwallowedEntity.getBackground().getID();
+
 			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " has been digested.");
 			this.m.SwallowedEntity.getSkills().onDeath(this.Const.FatalityType.Devoured);
 			this.m.SwallowedEntity.onDeath(null, null, null, this.Const.FatalityType.Devoured);
 			this.World.getPlayerRoster().remove(this.m.SwallowedEntity);
 			this.m.SwallowedEntity = null;
 
-			if (!this.Tactical.State.isScenarioMode() && this.m.SwallowedEntity.isPlayerControlled() && !this.m.SwallowedEntity.isGuest())
+			if (!this.Tactical.State.isScenarioMode() && is_player_controlled && !is_guest)
 			{
 				local roster = this.World.getPlayerRoster().getAll();
 				foreach( bro in roster )
 				{
 					if (bro.isAlive() && !bro.isDying() && bro.getCurrentProperties().IsAffectedByDyingAllies)
 					{
-						if (this.World.Assets.getOrigin().getID() != "scenario.manhunters" || this.m.SwallowedEntity.getBackground().getID() != "background.slave")
+						if (this.World.Assets.getOrigin().getID() != "scenario.manhunters" || background_id != "background.slave")
 						{
 							bro.worsenMood(this.Const.MoodChange.BrotherDied, this.getName() + " died in battle");
 						}
@@ -150,6 +160,8 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		skills.removeByID("effects.legend_vala_currently_chanting");
 		skills.removeByID("effects.legend_vala_in_trance");
 
+		::Tactical.getTemporaryRoster().add(target);
+		::Tactical.TurnSequenceBar.removeEntity(target);
 		this.m.SwallowedEntity = target;
 		this.m.SwallowedEntity.getFlags().set("Devoured", true);
 		this.m.SwallowedEntity_HP = target.getHitpoints();
