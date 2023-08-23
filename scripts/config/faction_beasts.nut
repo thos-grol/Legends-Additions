@@ -12,10 +12,10 @@ if (!("Actor" in gt.Const.Tactical))
 
 gt.Const.Tactical.Actor.Ghoul <- {
 	XP = 5000,
-	ActionPoints = 18,
+	ActionPoints = 12,
 	Hitpoints = 500,
 	Bravery = 10,
-	Stamina = 200,
+	Stamina = 666,
 	MeleeSkill = 80,
 	RangedSkill = 0,
 	MeleeDefense = 30,

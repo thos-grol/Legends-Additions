@@ -1,63 +1,68 @@
 this.ai_nachzerer_gruesome_feast <- this.inherit("scripts/ai/tactical/behavior", {
 	m = {
 		TargetTile = null,
+		SelectedSkill = null,
 		PossibleSkills = [
-			"actives.nachzerer_gruesome_feast"
-		],
-		Skill = null
+			"actives.nachzerer_leap"
+		]
 	},
 	function create()
 	{
-		this.m.ID = this.Const.AI.Behavior.ID.GruesomeFeast;
-		this.m.Order = this.Const.AI.Behavior.Order.GruesomeFeast;
+		this.m.ID = this.Const.AI.Behavior.ID.Darkflight;
+		this.m.Order = this.Const.AI.Behavior.Order.Darkflight;
 		this.m.IsThreaded = true;
 		this.behavior.create();
 	}
 
 	function onEvaluate( _entity )
 	{
-		::logInfo("begin: " + "ai_nachzerer_gruesome_feast");
-		// Function is a generator.
+		local score = this.getProperties().BehaviorMult[this.m.ID];
+		this.m.TargetTile = null;
+		this.m.SelectedSkill = null;
 
 		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP) return this.Const.AI.Behavior.Score.Zero;
-		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
-		if (this.getAgent().getIntentions().IsDefendingPosition) return this.Const.AI.Behavior.Score.Zero;
 		if (_entity.getCurrentProperties().IsRooted) return this.Const.AI.Behavior.Score.Zero;
+		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
 
-		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
-		if (this.m.Skill == null) return this.Const.AI.Behavior.Score.Zero;
+		this.m.SelectedSkill = this.selectSkill(this.m.PossibleSkills);
+		if (this.m.SelectedSkill == null) return this.Const.AI.Behavior.Score.Zero;
 
-		local time = this.Time.getExactTime();
-		local tile_origin = _entity.getTile();
-		local corpses = this.Tactical.Entities.getCorpses();
-		if (corpses.len() == 0) return this.Const.AI.Behavior.Score.Zero;
+		//Get all potential corpses
+		local corpse_tiles = this.Tactical.Entities.getCorpses();
+		if (corpse_tiles.len() == 0) return this.Const.AI.Behavior.Score.Zero;
 
-		local potentialCorpses = [];
-		foreach( c in corpses )
+		local targets = [];
+		local origin = _entity.getTile();
+
+		foreach( corpse_tile in corpse_tiles )
 		{
-			if (!c.IsCorpseSpawned || !c.Properties.get("Corpse").IsConsumable || c.IsEmpty) continue;
-			
-			local dist = c.getDistanceTo(tile_origin);
-			if (dist > this.m.Skill.getMaxRange()) continue;
-			potentialCorpses.push({
-				Tile = c,
-				Distance = dist
-			});
+			if (!corpse_tile.IsCorpseSpawned || !corpse_tile.Properties.get("Corpse").IsConsumable) continue;
+			local distance = corpse_tile.getDistanceTo(origin);
+			if (distance > this.m.SelectedSkill.m.MaxRange) continue;
 
-			if (this.isAllottedTimeReached(time))
+			//Scan 6 adjacent tiles for enemies
+			local surrounding_enemies = 0;
+			for( local i = 0; i < 6; i = i++)
 			{
-				yield null;
-				time = this.Time.getExactTime();
+				if (!_targetTile.hasNextTile(i)) continue;
+				local next_tile = _targetTile.getNextTile(i);
+				if (!next_tile.IsOccupiedByActor) continue;
+				local actor = next_tile.getEntity();
+				if (!actor.isAlliedWith(_entity)) surrounding_enemies++;
 			}
+
+			local safety_factor = distance - surrounding_enemies;
+			targets.push({
+				Tile = corpse_tile,
+				SafetyFactor = safety_factor
+			});
 		}
 
-		if (potentialCorpses.len() == 0) return this.Const.AI.Behavior.Score.Zero;
-		potentialCorpses.sort(this.onSortByDistance);
-
-		local bestTarget = potentialCorpses[0].Tile;
-		if (bestTarget == null) return this.Const.AI.Behavior.Score.Zero;
-		this.m.TargetTile = bestTarget;
-		return this.Math.max(0, this.Const.AI.Behavior.Score.GruesomeFeast) * 100;
+		if (targets.len() == 0) return this.Const.AI.Behavior.Score.Zero;
+		targets.sort(this.comparator_SafetyFactor);
+		this.m.TargetTile = targets[0].Tile; //pick the most isolated, and furthest distance away corpse to eat.
+		this.getAgent().getIntentions().TargetTile = this.m.TargetTile;
+		return this.Const.AI.Behavior.Score.Darkflight * score;
 	}
 
 	function onExecute( _entity )
@@ -66,36 +71,23 @@ this.ai_nachzerer_gruesome_feast <- this.inherit("scripts/ai/tactical/behavior",
 		{
 			this.m.IsFirstExecuted = false;
 
-			if (this.Const.AI.VerboseMode) this.logInfo("* " + _entity.getName() + ": Using Gruesome Feast (Leap).");
-
-			this.m.Agent.adjustCameraToTarget(this.m.TargetTile);
-			if (this.m.Skill.use(this.m.TargetTile))
+			if (this.Const.AI.VerboseMode)
 			{
-				if (!_entity.isHiddenToPlayer() || this.m.TargetTile.IsVisibleForPlayer)
-				{
-					this.getAgent().declareAction();
-					this.getAgent().declareEvaluationDelay(600);
-				}
+				this.logInfo("* " + _entity.getName() + ": Using Darkflight to engage.");
 			}
 
-			this.m.Skill = null;
-			this.m.TargetTile = null;
+			this.m.Agent.adjustCameraToTarget(this.m.TargetTile);
+			this.m.SelectedSkill.use(this.m.TargetTile);
 		}
 
 		return false;
 	}
 
-	function onSortByDistance( _a, _b )
+	//This comparator fn sorts by descending
+	function comparator_SafetyFactor( _a, _b )
 	{
-		if (_a.Distance > _b.Distance)
-		{
-			return -1;
-		}
-		else if (_a.Distance < _b.Distance)
-		{
-			return 1;
-		}
-
+		if (_a.SafetyFactor > _b.SafetyFactor) return -1;
+		else if (_a.SafetyFactor < _b.SafetyFactor) return 1;
 		return 0;
 	}
 

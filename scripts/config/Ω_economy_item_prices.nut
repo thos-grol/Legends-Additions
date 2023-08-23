@@ -666,9 +666,9 @@
 	"weapon.named_throwing_axe" : 0,         			//( 25,  40) | AP: 0.25 | AE: 1.30
 
 	//CROSSBOW
-	//TODO: crossbows + bolts, firearms, powder are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
-	//TODO: remove crossbow tree from most backgrounds that never will have a chance to get the tree
-	//FIXME: Training halls, can give bros trained tree or weapon trees, rework backgrounds to have less trees + trained tree is free on trained backgrounds - also most lowborn backgrounds do not have trained.
+	//FEATURE_5: crossbows + bolts, firearms, powder are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
+	//FEATURE_5: remove crossbow tree from most backgrounds that never will have a chance to get the tree
+	//FEATURE_5: Training halls, can give bros trained tree or weapon trees, rework backgrounds to have less trees + trained tree is free on trained backgrounds - also most lowborn backgrounds do not have trained.
 	"weapon.legend_blowgun" : 0,               			//( 10,  25) | AP: 0.10 | AE: 0.20
 	"weapon.light_crossbow" : 0,              			//( 30,  50) | AP: 0.50 | AE: 0.60
 	"weapon.crossbow" : 0,                    			//( 40,  60) | AP: 0.50 | AE: 0.70

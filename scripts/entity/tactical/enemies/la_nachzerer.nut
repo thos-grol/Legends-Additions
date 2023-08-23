@@ -59,10 +59,10 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
         this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy")); // buffs damage on kill
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_lacerate"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_overwhelm"));
-		
+
 
 		//this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_leap")); //leap skill when surrounded, perform a claw attack on the target.
-		
+
 	}
 
 	function create()
@@ -270,8 +270,6 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 	function onAfterDeath( _tile )
 	{
         local skill = this.getSkills().getSkillByID("actives.nachzerer_swallow_whole");
-		//TODO: drop swallowed items if any
-		
 		if (skill.getSwallowedEntity() != null)
 		{
 			local e = skill.getSwallowedEntity();
@@ -280,6 +278,15 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 			local slime = e.getSprite("dirt");
 			slime.setBrush("bust_slime");
 			slime.Visible = true;
+		}
+
+		if (skill.getSwallowedItems() != null)
+		{
+			local items = skill.getSwallowedItems();
+			foreach(item in items)
+			{
+				item.drop(_tile);
+			}
 		}
 	}
 

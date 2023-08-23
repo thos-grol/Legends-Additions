@@ -1,8 +1,15 @@
+//TURN #
+\n ATTACKER 🔪 DEFENDER ➜ [MISS || H X ➜ Y | B X ➜ Y] (ROLL ⚔️ CHANCE)
+DEFENDER has been knocked back
+DEFENDER has been lacerated.
+
 Economy Overhaul
 
 //TODO: fix alchemist having named items.
 //TODO: Reintegrate mood changes.
 //TODO: integrate logic World economy.
+
+
 
 Caravans now take goods out of each building's inventory of the town they leave, carry the goods in their inventory, and deliver the goods into the inventory of the town they arrive at. Paying the origin town when they unload.
 Patrols, Mercenaries, Ships, Peasants and caravans are more frequent to increase the odds of caravans making it through and towns serving and thriving.

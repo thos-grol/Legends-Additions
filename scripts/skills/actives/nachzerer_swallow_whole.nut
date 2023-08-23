@@ -5,11 +5,6 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		SwallowedEntity_HP = 0,
 		Cooldown = 2
 	},
-	function getSwallowedEntity()
-	{
-		return this.m.SwallowedEntity;
-	}
-
 	function onTurnStart()
 	{
 		if (this.m.SwallowedEntity != null) return;
@@ -72,7 +67,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		local damage = this.Math.rand(10, 20);
 		this.m.SwallowedEntity_HP = this.Math.max(0, this.m.SwallowedEntity_HP - damage);
 		local actor = this.getContainer().getActor();
-		
+
 		if (this.m.SwallowedEntity_HP > 0)
 		{
 			actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + damage));
@@ -80,15 +75,32 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		}
 		else
 		{
+			//handle items
+			this.m.SwallowedItems.extend(this.m.SwallowedEntity.getItems().getAllItems());
+
+			//handle death
 			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " has been digested.");
 			this.m.SwallowedEntity.getSkills().onDeath(this.Const.FatalityType.Devoured);
 			this.m.SwallowedEntity.onDeath(null, null, null, this.Const.FatalityType.Devoured);
 			this.World.getPlayerRoster().remove(this.m.SwallowedEntity);
 			this.m.SwallowedEntity = null;
 
-			//TODO: bro death effects ie. party mood
-			
-			//TODO: loop through all items and save it to this.m.SwallowedItems
+			if (!this.Tactical.State.isScenarioMode() && this.m.SwallowedEntity.isPlayerControlled() && !this.m.SwallowedEntity.isGuest())
+			{
+				local roster = this.World.getPlayerRoster().getAll();
+				foreach( bro in roster )
+				{
+					if (bro.isAlive() && !bro.isDying() && bro.getCurrentProperties().IsAffectedByDyingAllies)
+					{
+						if (this.World.Assets.getOrigin().getID() != "scenario.manhunters" || this.m.SwallowedEntity.getBackground().getID() != "background.slave")
+						{
+							bro.worsenMood(this.Const.MoodChange.BrotherDied, this.getName() + " died in battle");
+						}
+					}
+				}
+			}
+
+
 
 			//Counts as feasted, remove temp injuries
 			local skills = actor.getSkills().getAllSkillsOfType(this.Const.SkillType.Injury);
@@ -157,6 +169,16 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 			this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, _user.getPos());
 
 		return true;
+	}
+
+	function getSwallowedEntity()
+	{
+		return this.m.SwallowedEntity;
+	}
+
+	function getSwallowedItems()
+	{
+		return this.m.SwallowedItems;
 	}
 
 });
