@@ -59,6 +59,7 @@ this.perk_nachzerer_hair_armor <- this.inherit("scripts/skills/skill", {
 
 		_properties.DamageReceivedRegularMult *= 0;
 		this.m.Charges = this.Math.max(0, this.m.Charges - 1);
+		::Z.Log.hair_armor();
 	}
 
 	function onUpdate( _properties )

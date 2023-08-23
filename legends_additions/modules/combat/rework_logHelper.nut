@@ -157,7 +157,7 @@
 				{
 					if (isHit)
 					{
-						this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(_user) + " [" + this.getName() + "] 🏹" + this.Const.UI.getColorizedEntityName(_targetEntity) + "[Astray] (Chance: " + this.Math.min(95, this.Math.max(5, toHit)) + ", Rolled: " + rolled + ")");
+						::Z.Log.shot_astray(::Const.UI.getColorizedEntityName(_user), ::Const.UI.getColorizedEntityName(_targetEntity), getName(), rolled, toHit);
 					}
 					else
 					{
@@ -171,14 +171,8 @@
 			}
 			else if (this.isUsingHitchance())
 			{
-				if (isHit)
-				{
-					this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(_user) + " [" + this.getName() + "] " + this.Const.UI.getColorizedEntityName(_targetEntity) + "     [HIT]  (" + this.Math.min(95, this.Math.max(5, toHit)) + " v " + rolled + ")");
-				}
-				else
-				{
-					this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(_user) + " [" + this.getName() + "] " + this.Const.UI.getColorizedEntityName(_targetEntity) + " [MISS]  (" + this.Math.min(95, this.Math.max(5, toHit)) + " v " + rolled + ")");
-				}
+				if (isHit) ::Z.Log.melee_hit(::Const.UI.getColorizedEntityName(_user), ::Const.UI.getColorizedEntityName(_targetEntity), getName(), rolled, toHit);
+				else ::Z.Log.melee_miss(::Const.UI.getColorizedEntityName(_user), ::Const.UI.getColorizedEntityName(_targetEntity), getName(), rolled, toHit);
 			}
 			else
 			{
@@ -382,54 +376,54 @@
 	}
 });
 
-//items\legend_armor\legend_armor.nut
-::mods_hookExactClass("items/legend_armor/legend_armor", function (o)
-{
-	o.onDamageReceived = function( _damage, _fatalityType, _attacker )
-	{
-		local totalDamage = _damage;
+// //items\legend_armor\legend_armor.nut
+// ::mods_hookExactClass("items/legend_armor/legend_armor", function (o)
+// {
+// 	o.onDamageReceived = function( _damage, _fatalityType, _attacker )
+// 	{
+// 		local totalDamage = _damage;
 
-		for( local i = this.Const.Items.ArmorUpgrades.COUNT - 1; i >= 0; i = i )
-		{
-			local u = this.m.Upgrades[i];
+// 		for( local i = this.Const.Items.ArmorUpgrades.COUNT - 1; i >= 0; i = i )
+// 		{
+// 			local u = this.m.Upgrades[i];
 
-			if (u == null)
-			{
-			}
-			else
-			{
-				totalDamage = u.onDamageReceived(totalDamage, _fatalityType, _attacker);
-			}
+// 			if (u == null)
+// 			{
+// 			}
+// 			else
+// 			{
+// 				totalDamage = u.onDamageReceived(totalDamage, _fatalityType, _attacker);
+// 			}
 
-			i = --i;
-		}
+// 			i = --i;
+// 		}
 
-		if (this.m.Condition == 0)
-		{
-			this.updateAppearance();
-			return;
-		}
+// 		if (this.m.Condition == 0)
+// 		{
+// 			this.updateAppearance();
+// 			return;
+// 		}
 
-		this.m.Condition = this.Math.max(0, this.m.Condition - totalDamage) * 1.0;
+// 		this.m.Condition = this.Math.max(0, this.m.Condition - totalDamage) * 1.0;
 
-		if (this.m.Condition == 0 && !this.m.IsIndestructible)
-		{
-			this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + "\'s " + this.makeName() + " is hit for [b]" + this.Math.floor(_damage) + "[/b] damage and has been destroyed!");
+// 		if (this.m.Condition == 0 && !this.m.IsIndestructible)
+// 		{
+// 			this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + "\'s " + this.makeName() + " is hit for [b]" + this.Math.floor(_damage) + "[/b] damage and has been destroyed!");
 
-			if (_attacker != null && _attacker.isPlayerControlled())
-			{
-				this.Tactical.Entities.addArmorParts(this.getArmorMax());
-			}
-		}
-		else
-		{
-			this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + "\'s " + this.makeName() + " is hit for [b]" + this.Math.floor(_damage) + "[/b] damage");
-		}
+// 			if (_attacker != null && _attacker.isPlayerControlled())
+// 			{
+// 				this.Tactical.Entities.addArmorParts(this.getArmorMax());
+// 			}
+// 		}
+// 		else
+// 		{
+// 			this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + "\'s " + this.makeName() + " is hit for [b]" + this.Math.floor(_damage) + "[/b] damage");
+// 		}
 
-		this.updateAppearance();
-	}
+// 		this.updateAppearance();
+// 	}
 	
-});
+// });
 
 ::mods_hookExactClass("entity/tactical/actor", function (o)
 {
@@ -439,7 +433,11 @@
 	}
 });
 
-
+::mods_hookExactClass("ui/screens/tactical/modules/topbar/tactical_screen_topbar_event_log", function (o)
+{
+	o.destroy = function(){}
+	o.log_newline = function(){}
+});
 
 
 
