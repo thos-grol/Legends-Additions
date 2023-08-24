@@ -18,17 +18,25 @@ this.ai_nachzerer_gruesome_feast <- this.inherit("scripts/ai/tactical/behavior",
 		this.m.TargetTile = null;
 		this.m.Skill = null;
 
+		::logInfo("0: ai_nachzerer_gruesome_feast");
+
 		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP) return this.Const.AI.Behavior.Score.Zero;
 		if (_entity.getCurrentProperties().IsRooted) return this.Const.AI.Behavior.Score.Zero;
 		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
 
+		::logInfo("1: ai_nachzerer_gruesome_feast");
+
 		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
 		if (this.m.Skill == null) return this.Const.AI.Behavior.Score.Zero;
+
+		::logInfo("2: ai_nachzerer_gruesome_feast");
 
 
 		//Get all potential corpses
 		local corpse_tiles = this.Tactical.Entities.getCorpses();
 		if (corpse_tiles.len() == 0) return this.Const.AI.Behavior.Score.Zero;
+
+		::logInfo("3: ai_nachzerer_gruesome_feast");
 
 		local targets = [];
 		local origin = _entity.getTile();
@@ -37,7 +45,9 @@ this.ai_nachzerer_gruesome_feast <- this.inherit("scripts/ai/tactical/behavior",
 		{
 			if (!corpse_tile.IsCorpseSpawned || !corpse_tile.Properties.get("Corpse").IsConsumable) continue;
 			local distance = corpse_tile.getDistanceTo(origin);
-			if (distance > this.m.SelectedSkill.m.MaxRange) continue;
+			if (distance > this.m.Skill.m.MaxRange) continue;
+
+			::logInfo("distance = " + distance + " vs " + "max range" + this.m.Skill.m.MaxRange);
 
 			//Scan 6 adjacent tiles for enemies
 			local surrounding_enemies = 0;
@@ -57,9 +67,14 @@ this.ai_nachzerer_gruesome_feast <- this.inherit("scripts/ai/tactical/behavior",
 			});
 		}
 
+		::logInfo("targets.len() = " + targets.len());
+		::logInfo("4: ai_nachzerer_gruesome_feast");
+
 		if (targets.len() == 0) return this.Const.AI.Behavior.Score.Zero;
 		targets.sort(this.comparator_SafetyFactor);
 		this.m.TargetTile = targets[0].Tile; //pick the most isolated, and furthest distance away corpse to eat.
+
+		::logInfo("5: ai_nachzerer_gruesome_feast");
 
 		return 350000;
 	}

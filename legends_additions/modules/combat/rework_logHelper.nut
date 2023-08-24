@@ -1,10 +1,4 @@
 //DONE
-::mods_hookExactClass("ui/screens/tactical/modules/topbar/tactical_screen_topbar_event_log", function (o)
-{
-	o.destroy = function(){}
-	o.log_newline = function(){}
-});
-
 ::mods_hookExactClass("ui/screens/tactical/modules/turn_sequence_bar/turn_sequence_bar", function (o)
 {
 	o.flashProgressbars = function( _flashActionPointsProgressbar, _flashFatigueProgressbar )
@@ -193,37 +187,59 @@
 	}
 
 });
+    
 
-::mods_hookExactClass("items/legend_helmets/legend_helmet", function (o)
+::mods_hookBaseClass("items/legend_helmets/legend_helmet", function (o)
 {
+	while(!("onDamageReceived" in o)) o = o[o.SuperName];
 	o.onDamageReceived = function( _damage, _fatalityType, _attacker )
 	{
 		local totalDamage = _damage;
 
 		for( local i = this.m.Upgrades.len() - 1; i >= 0; i = --i )
 		{
-			if (this.m.Upgrades[i] != null && i != this.Const.Items.HelmetUpgrades.ExtraVanity)
+			if (this.m.Upgrades[i] == null || i == this.Const.Items.HelmetUpgrades.ExtraVanity)
+			{
+			}
+			else
+			{
 				totalDamage = this.m.Upgrades[i].onDamageReceived(totalDamage, _fatalityType, _attacker);
+			}
 		}
+
 		if (this.m.Condition == 0)
 		{
 			this.updateAppearance();
 			return;
 		}
+
 		local prev_condition = this.m.Condition;
 		this.m.Condition = this.Math.max(0, this.m.Condition - totalDamage) * 1.0;
-		::Z.Log.damage_armor(this.getContainer().getActor(), this.makeName(), this.m.Condition, prev_condition, _damage);
 
-		if (this.m.Condition == 0 && !this.m.IsIndestructible && _attacker != null && _attacker.isPlayerControlled())
-			this.Tactical.Entities.addArmorParts(this.getArmorMax());
+		if (this.m.Condition == 0 && !this.m.IsIndestructible)
+		{
+			::Z.Log.damage_armor(this.getContainer().getActor(), this.makeName(), this.m.Condition, prev_condition, _damage);
+
+			if (_attacker != null && _attacker.isPlayerControlled())
+			{
+				this.Tactical.Entities.addArmorParts(this.getArmorMax());
+			}
+		}
+		else
+		{
+			::Z.Log.damage_armor(this.getContainer().getActor(), this.makeName(), this.m.Condition, prev_condition, _damage);
+		}
+
 		this.updateAppearance();
 	}
-
 });
 
-::mods_hookExactClass("entity/tactical/actor", function (o)
+::mods_hookBaseClass("entity/tactical/actor", function (o)
 {
+	while(!("onDiscovered" in o)) o = o[o.SuperName];
 	o.onDiscovered = function() { if (!this.isPlayerControlled()) this.setDirty(true);}
+	
+	while(!("onDamageReceived" in o)) o = o[o.SuperName];
 	o.onDamageReceived = function( _attacker, _skill, _hitInfo )
 	{
 		if (!this.isAlive() || !this.isPlacedOnMap())
