@@ -60,7 +60,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 			this.onTeleportStart(tag);
 			::logInfo("0.75: feast");
 		}
-		
+
 		return true;
 	}
 

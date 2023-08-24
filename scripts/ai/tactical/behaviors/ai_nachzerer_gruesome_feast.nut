@@ -1,10 +1,10 @@
 this.ai_nachzerer_gruesome_feast <- this.inherit("scripts/ai/tactical/behavior", {
 	m = {
 		TargetTile = null,
-		SelectedSkill = null,
 		PossibleSkills = [
 			"actives.nachzerer_gruesome_feast"
-		]
+		],
+		Skill = null
 	},
 	function create()
 	{
@@ -15,12 +15,16 @@ this.ai_nachzerer_gruesome_feast <- this.inherit("scripts/ai/tactical/behavior",
 
 	function onEvaluate( _entity )
 	{
+		this.m.TargetTile = null;
+		this.m.Skill = null;
+
 		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP) return this.Const.AI.Behavior.Score.Zero;
 		if (_entity.getCurrentProperties().IsRooted) return this.Const.AI.Behavior.Score.Zero;
 		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
 
-		this.m.SelectedSkill = this.selectSkill(this.m.PossibleSkills);
-		if (this.m.SelectedSkill == null) return this.Const.AI.Behavior.Score.Zero;
+		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
+		if (this.m.Skill == null) return this.Const.AI.Behavior.Score.Zero;
+
 
 		//Get all potential corpses
 		local corpse_tiles = this.Tactical.Entities.getCorpses();
@@ -53,11 +57,9 @@ this.ai_nachzerer_gruesome_feast <- this.inherit("scripts/ai/tactical/behavior",
 			});
 		}
 
-
 		if (targets.len() == 0) return this.Const.AI.Behavior.Score.Zero;
 		targets.sort(this.comparator_SafetyFactor);
 		this.m.TargetTile = targets[0].Tile; //pick the most isolated, and furthest distance away corpse to eat.
-		this.getAgent().getIntentions().TargetTile = this.m.TargetTile;
 
 		return 350000;
 	}
@@ -66,20 +68,26 @@ this.ai_nachzerer_gruesome_feast <- this.inherit("scripts/ai/tactical/behavior",
 	{
 		if (this.m.IsFirstExecuted)
 		{
+			this.getAgent().adjustCameraToTarget(this.m.TargetTile);
 			this.m.IsFirstExecuted = false;
-			this.m.Agent.adjustCameraToTarget(this.m.TargetTile);
 			return false;
 		}
 
-		if (this.Const.AI.VerboseMode)
+		if (this.m.TargetTile != null)
 		{
-			this.logInfo("* " + _entity.getName() + ": Leaping gruesome feast.");
+			if (::Const.AI.VerboseMode)
+			{
+				this.logInfo("* " + _entity.getName() + ": Leaping gruesome feast.");
+			}
+
+			local dist = _entity.getTile().getDistanceTo(this.m.TargetTile);
+			this.m.Skill.use(this.m.TargetTile);
+			this.getAgent().declareEvaluationDelay(3000);
+			this.getAgent().declareAction();
+
+			this.m.TargetTile = null;
 		}
-		this.m.SelectedSkill.use(this.m.TargetTile);
-		this.getAgent().declareEvaluationDelay(3000);
-		this.getAgent().declareAction();
-		this.m.TargetTile = null;
-		this.m.SelectedSkill = null;
+
 		return true;
 	}
 

@@ -1,13 +1,15 @@
-//TURN #
 DEFENDER has been knocked back
 DEFENDER has been lacerated.
 
 Economy Overhaul
 
-//TODO: indent log: //body is hit for
-//TODO: Rabble is breaking.
-//TODO: new skill use, \n at beginning.
-//TODO: add turn marker to log.
+//TODO: LOG: Rabble is breaking.
+
+//TODO: this.m.Payment.Pool, contracts
+//TODO: addmoney, events
+
+//TODO: disable most ambitions, rework
+    //Slay a monster -> unlock anatomist retinue
 
 //TODO: fix alchemist having named items.
 //TODO: Reintegrate mood changes.
@@ -24,7 +26,8 @@ patch:
 
 //New potion system
 
-//FEATURE_5: Fantasy bros magic integration.
+//FEATURE_5: Fantasy Bros Investigation
+
 
 //FEATURE_0: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.
     //Direwolf

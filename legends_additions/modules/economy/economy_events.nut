@@ -18,3 +18,6 @@
 ::mods_hookExactClass("events/events/wardogs_fight_each_other_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/dlc2/dog_in_swamp_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/dlc8/anatomist_vs_dog_event", function (o){ o.onUpdateScore = function() { return; }});
+
+//TODO: read through scripts to see which one to change/remove
+//TODO: create blacklists from the event files, create script tool to copy over non-blacklisted script files
