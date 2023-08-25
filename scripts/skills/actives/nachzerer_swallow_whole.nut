@@ -70,6 +70,8 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 
 		if (this.m.SwallowedEntity_HP > 0)
 		{
+			//TODO: log
+			
 			actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + damage));
 			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " takes " + damage + " damage. They have " + this.m.SwallowedEntity_HP + " remaining.\n" + this.Const.UI.getColorizedEntityName(actor) + " gains " + damage + " hitpoints.");
 		}

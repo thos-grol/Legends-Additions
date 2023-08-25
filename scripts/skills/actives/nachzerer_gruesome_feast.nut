@@ -197,7 +197,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		local _user = _tag.User;
 
 		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)) 
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " feasts on a corpse. Human units that fail the resolve check are dazed.");
+			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " feasts on a corpse.");
 
 		//heal self and temp injuries
 		_user.setHitpoints(this.Math.min(_user.getHitpoints() + 100, _user.getHitpointsMax()));
@@ -215,21 +215,6 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		//add 2 stacks of hair armor
 		local nachzerer_hair_armor = _user.getSkills().getSkillByID("perk.nachzerer_hair_armor");
 		if (nachzerer_hair_armor != null) nachzerer_hair_armor.addCharges(2);
-
-		//daze actors that are non immune and fail the resolve check
-		local actors = this.Tactical.Entities.getAllInstances();
-		foreach( a in actors )
-		{
-			//TODO: the index 'getID' does not exist
-			if (a.getID() == _user.getID() || _user.getTile().getDistanceTo(a.getTile()) > 5) continue;
-			if (a.getFlags().has("monster")) continue;
-
-			local roll = this.Math.rand(1, 100);
-			local chance = this.Math.min(100, this.Math.max(100 - a.getCurrentProperties().getBravery(), 0));
-
-			if (roll > chance) continue;
-			a.getSkills().add(this.new("scripts/skills/effects/legend_dazed_effect"));
-		}
 	}
 });
 

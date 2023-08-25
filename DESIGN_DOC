@@ -26,7 +26,27 @@ patch:
 
 //New potion system
 
-//FEATURE_5: Fantasy Bros Investigation
+//FEATURE_5: Fantasy Bros Skills worth looking into
+    //Pyromancer
+        2 skills are good
+    //Shaman
+        magical healing skill
+        miracle
+    //Fight Master
+        Crushing Blow
+        Storm fury
+    //Enchantress
+        Blessing Fx Only
+        Hymn of Valor Fx only
+    //Wizard
+        Frost Blast
+            Ground is buggy, use necro's tile changing code instead
+        Thunder Bolt
+    //Warlock
+        Acid grenade fx
+        Hellfire grenade ground fire
+    //Umbra
+        Banshee scream skill targeting? Geist???
 
 
 //FEATURE_0: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.

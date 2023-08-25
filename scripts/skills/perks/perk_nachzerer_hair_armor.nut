@@ -67,8 +67,8 @@ this.perk_nachzerer_hair_armor <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		if (actor.getFlags().has("la_nachzerer"))
 		{
-			_properties.DamageRegularMin += 35;
-			_properties.DamageRegularMax += 60;
+			_properties.DamageRegularMin += 20;
+			_properties.DamageRegularMax += 45;
 			_properties.DamageArmorMult *= 0.75;
 		}
 	}

@@ -32,6 +32,7 @@
 
         if (!actor.isHiddenToPlayer() && _targetEntity.getTile().IsVisibleForPlayer)
 		{
+			//TODO: log
 			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " lacerated " + this.Const.UI.getColorizedEntityName(_targetEntity) + " bleeding them for " + damage + "damage per turn");
 		}
 		return true;

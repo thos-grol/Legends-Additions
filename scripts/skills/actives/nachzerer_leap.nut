@@ -1,3 +1,4 @@
+//TODO: duplicate darkflight ai, dupilicate gruesome feast skill and add claw swipe
 this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
