@@ -6,10 +6,10 @@ Economy Overhaul
 //TODO: LOG: Rabble is breaking.
 
 //TODO: this.m.Payment.Pool, contracts
-//TODO: addmoney, events
 
 //TODO: disable most ambitions, rework
     //Slay a monster -> unlock anatomist retinue
+        //Anatomist retinue unlocks anatomist events.
 
 //TODO: fix alchemist having named items.
 //TODO: Reintegrate mood changes.
@@ -103,7 +103,7 @@ camping ui
         Black Monolith
         Library
 
-//FEATURE_9: generate 2 fake villages, never the target of caravans. has action to generate ghosts. event can trigger at night where you are stuck. if you survive, then you hear ghost stories about how village was burned mysteriously years ago and no one dares to live there. Ghost boss.
+//FEATURE_9: one village is slated for death upon geneartion. At a certain day in the campaign, generate ghosts. event can trigger at night where you are stuck. if you survive, then you hear ghost stories about how village was burned mysteriously years ago and no one dares to live there. Ghost boss.
 //if disguise is torn off, it becomes a dungeon.
 //remove weakest 20% of bros. Rest have a chance to be cursed by ghost and haunted. Haunting can even kill party members if they fail the check. Reveal starts when you take a contract to defend the village from raiders or hexe or alps and you stay overnight...
 

@@ -121,7 +121,7 @@
 				"ratcatcher_background",
 				"ratcatcher_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"retired_soldier_background",
@@ -133,7 +133,7 @@
 				"ratcatcher_background",
 				"ratcatcher_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"retired_soldier_background"
@@ -153,8 +153,8 @@
 				
 				"ratcatcher_background",
 				"wildman_background",
-				"witchhunter_background",
-				"witchhunter_background",
+				
+				
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
@@ -174,8 +174,8 @@
 				
 				"ratcatcher_background",
 				"wildman_background",
-				"witchhunter_background",
-				"witchhunter_background",
+				
+				
 				"bastard_background",
 				"deserter_background",
 				"raider_background",
@@ -196,8 +196,8 @@
 				
 				"ratcatcher_background",
 				"wildman_background",
-				"witchhunter_background",
-				"witchhunter_background",
+				
+				
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
@@ -217,8 +217,8 @@
 				
 				"ratcatcher_background",
 				"wildman_background",
-				"witchhunter_background",
-				"witchhunter_background",
+				
+				
 				"bastard_background",
 				"deserter_background",
 				"raider_background",

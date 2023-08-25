@@ -212,7 +212,7 @@
 				"vagabond_background",
 				"wildman_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"raider_background",
 				"raider_background",

@@ -275,26 +275,26 @@
 	"tool.throwing_net" : 0,
 	"tool.reinforced_throwing_net" : 0,
 	"weapon.holy Water" : 100, //FEATURE_5: refillable with priest
-	"weapon.acid_flask" : 400, //FEATURE_5: refillable with alchemist retinue
-	"weapon.smoke_bomb" : 400, //FEATURE_5: refillable with alchemist retinue
-	"weapon.daze_bomb" : 500, //FEATURE_5: refillable with alchemist retinue
-	"weapon.fire_bomb" : 600, //FEATURE_5: refillable with alchemist retinue
+	"weapon.acid_flask" : 400, //TODO: refillable with alchemist retinue
+	"weapon.smoke_bomb" : 400, //TODO: refillable with alchemist retinue
+	"weapon.daze_bomb" : 500, //TODO: refillable with alchemist retinue
+	"weapon.fire_bomb" : 600, //TODO: refillable with alchemist retinue
 	"accessory.berserker_mushrooms" : 100,
 	"accessory.legend_apothecary_mushrooms" : 100,
 	"accessory.poison" : 100,
-	"accessory.antidote" : 150, //FEATURE_5: refillable with alchemist retinue
-	"accessory.spider_poison" : 150, //FEATURE_5: refillable with alchemist retinue, rename to poison
-	"accessory.iron_will_potion" : 300, //FEATURE_5: refillable with alchemist retinue
-	"accessory.lionheart_potion" : 300, //FEATURE_5: refillable with alchemist retinue
-	"accessory.night_vision_elixir" : 350, //FEATURE_5: refillable with alchemist retinue
-	"accessory.recovery_potion" : 350, //FEATURE_5: refillable with alchemist retinue, unlocks potion crafting
+	"accessory.antidote" : 150, //TODO: refillable with alchemist retinue
+	"accessory.spider_poison" : 150, //TODO: refillable with alchemist retinue, rename to poison
+	"accessory.iron_will_potion" : 300, //TODO: refillable with alchemist retinue
+	"accessory.lionheart_potion" : 300, //TODO: refillable with alchemist retinue
+	"accessory.night_vision_elixir" : 350, //TODO: refillable with alchemist retinue
+	"accessory.recovery_potion" : 350, //TODO: refillable with alchemist retinue, unlocks potion crafting
 	"accessory.legend_heartwood_sap_flask" : 3500,
 	"accessory.legend_skin_ghoul_blood_flask" : 3500,
 	"accessory.legend_stollwurm_blood_flask" : 3500,
 	"accessory.legend_hexen_ichor_potion" : 7000,
 	"misc.potion_of_oblivion" : 2500,
 	"misc.potion_of_knowledge" : 750,
-	"accessory.cat_potion" : 350, //FEATURE_5: refillable with alchemist
+	"accessory.cat_potion" : 350, //TODO: refillable with alchemist
 	//FEATURE_5: Toxicity system
 	//Contraband
 	"misc.happy_powder" : 400, //FIXME: Drugs

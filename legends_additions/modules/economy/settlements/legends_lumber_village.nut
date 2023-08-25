@@ -149,7 +149,7 @@
 				"tailor_background",
 				"vagabond_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"cripple_background",
 				"eunuch_background",
 				"brawler_background",
@@ -168,7 +168,7 @@
 				"vagabond_background",
 				"wildman_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"cripple_background",
 				"eunuch_background"
 			],
@@ -198,7 +198,7 @@
 				"thief_background",
 				"vagabond_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"hedge_knight_background",
 				"retired_soldier_background",

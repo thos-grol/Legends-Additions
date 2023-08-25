@@ -124,7 +124,7 @@
 				"militia_background",
 				"militia_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"retired_soldier_background",
@@ -146,7 +146,7 @@
 				"ratcatcher_background",
 				"refugee_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",

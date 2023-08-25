@@ -105,7 +105,7 @@
 				"militia_background",
 				"militia_background",
 				"vagabond_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -119,7 +119,7 @@
 				"militia_background",
 				"militia_background",
 				"vagabond_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -142,7 +142,7 @@
 				"miner_background",
 				"servant_background",
 				"shepherd_background",
-				"witchhunter_background",
+				
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
@@ -165,7 +165,7 @@
 				"miner_background",
 				"miner_background",
 				"shepherd_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -194,7 +194,7 @@
 				"miner_background",
 				"ratcatcher_background",
 				"vagabond_background",
-				"witchhunter_background",
+				
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
@@ -231,7 +231,7 @@
 				"miner_background",
 				"ratcatcher_background",
 				"vagabond_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",

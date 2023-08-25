@@ -130,7 +130,7 @@
 				"ratcatcher_background",
 				"vagabond_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -160,7 +160,7 @@
 				"vagabond_background",
 				"wildman_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"bastard_background",
 				"deserter_background",
@@ -187,7 +187,7 @@
 				
 				"female_daytaler_background",
 				"wildwoman_background",
-				"witchhunter_background",
+				
 				"female_disowned_noble_background"
 			],
 			[
@@ -197,7 +197,7 @@
 				"female_daytaler_background",
 				"female_farmhand_background",
 				"wildwoman_background",
-				"witchhunter_background",
+				
 				"female_disowned_noble_background"
 			]
 		];

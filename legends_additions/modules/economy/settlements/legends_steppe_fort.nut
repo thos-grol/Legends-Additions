@@ -159,7 +159,7 @@
 				"refugee_background",
 				"servant_background",
 				"vagabond_background",
-				"witchhunter_background",
+				
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
@@ -181,7 +181,7 @@
 				"ratcatcher_background",
 				"refugee_background",
 				"vagabond_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"raider_background",
@@ -213,7 +213,7 @@
 				"servant_background",
 				"tailor_background",
 				"vagabond_background",
-				"witchhunter_background",
+				
 				"adventurous_noble_background",
 				"adventurous_noble_background",
 				"adventurous_noble_background",
@@ -248,7 +248,7 @@
 				"ratcatcher_background",
 				"refugee_background",
 				"vagabond_background",
-				"witchhunter_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",

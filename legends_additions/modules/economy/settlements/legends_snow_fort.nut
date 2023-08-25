@@ -118,7 +118,7 @@
 				"militia_background",
 				"vagabond_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"deserter_background",
 				"deserter_background",
 				"raider_background",
@@ -143,7 +143,7 @@
 				"vagabond_background",
 				"wildman_background",
 				"wildman_background",
-				"witchhunter_background",
+				
 				"deserter_background",
 				"raider_background",
 				"retired_soldier_background"
@@ -164,8 +164,8 @@
 				"vagabond_background",
 				"wildman_background",
 				"wildman_background",
-				"witchhunter_background",
-				"witchhunter_background",
+				
+				
 				"deserter_background",
 				"deserter_background",
 				"hedge_knight_background",

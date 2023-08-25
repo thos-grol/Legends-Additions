@@ -63,7 +63,6 @@ this.cultist_sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 
 	function getTotalKillStats()
 	{
-		//FEATURE_3: adapt to reforged
 		return ::Const.LegendMod.GetFavoriteEnemyStats(this.getContainer().getActor(), this.m.ValidTypes);
 	}
 
@@ -89,26 +88,26 @@ this.cultist_sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 		if (!actor.getFlags().has("Davkul3rdRewarded") && actor.getFlags().getAsInt("SoulsHarvestedForDavkul") >= 66)
 			addReward("Davkul3rdReward");
 	}
-		
+
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
 		if (!actor.isPlayerControlled()) return;
 		if (actor.getFlags().has("Davkul1stReward")) return;
-		
+
 		local roll;
-		foreach (rewardtier in ::Const.PerkInfo.SacrificialRitual.Rewards) 
+		foreach (rewardtier in ::Const.PerkInfo.SacrificialRitual.Rewards)
 		{
 			::logInfo("Doing " + rewardtier.ID);
 			roll = this.Math.rand(1, 100);
-			foreach (reward in rewardtier.Rolls) 
+			foreach (reward in rewardtier.Rolls)
 			{
 				::logInfo("Checking " + reward.ID);
 				if (reward.Validator.len() != 0) //If has validator(s), run it.
 				{
 					::logInfo("Has validator, checking...");
 					local valid = true;
-					foreach (index, validator in reward.Validator) 
+					foreach (index, validator in reward.Validator)
 					{
 						local check = validator(actor, reward.Params[index]);
 						::logInfo("Validator[" + index + "] returns " + check);
@@ -120,7 +119,7 @@ this.cultist_sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 					}
 					if (!valid) continue;
 				}
-				
+
 				::logInfo("Rolling " + roll + " vs " + reward.Chance);
 				if (roll <= reward.Chance) //Since it's valid, then roll
 				{
@@ -143,7 +142,7 @@ this.cultist_sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 		{
 			local reward = ::Const.PerkInfo.SacrificialRitual.RewardTable[reward_id];
 
-			foreach (index, fn in reward.functions) 
+			foreach (index, fn in reward.functions)
 			{
 				fn(actor, reward.params);
 			}
@@ -239,7 +238,7 @@ this.cultist_sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 // 				ID = "Agonizing Blast",
 // 				Validator = [
 // 					::Const.PerkInfo.SacrificialRitual.hasReward
-// 				], 
+// 				],
 // 				Params = [
 // 					["Eldritch Blast"]
 // 				],
@@ -282,7 +281,7 @@ this.cultist_sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 // 				ID = "Instinctive Blast",
 // 				Validator = [
 // 					::Const.PerkInfo.SacrificialRitual.hasReward
-// 				], 
+// 				],
 // 				Params = [
 // 					["Eldritch Blast"]
 // 				],
@@ -424,5 +423,5 @@ this.cultist_sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 // 		],
 // 		"params" : [::Const.Perks.PerkDefs.CompassionRitual, 4]
 // 	}
-		
+
 // };
