@@ -1,6 +1,6 @@
 this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 	m = {
-		Cooldown = 2,
+		Cooldown = 3,
 		TilesUsed = []
 	},
 	function create()
@@ -70,7 +70,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 		ret = this.attackEntity(_user, target);
 
 		if (!_user.isAlive() || _user.isDying()) return ret;
-		if (ret && _targetTile.IsOccupiedByActor && target.isAlive() && !target.isDying()) 
+		if (ret && _targetTile.IsOccupiedByActor && target.isAlive() && !target.isDying())
 			this.applyEffectToTarget(_user, target, _targetTile);
 		local nextDir = dir - 1 >= 0 ? dir - 1 : this.Const.Direction.COUNT - 1;
 		if (ownTile.hasNextTile(nextDir))

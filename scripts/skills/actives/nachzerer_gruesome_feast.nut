@@ -1,5 +1,7 @@
 this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
-	m = {},
+	m = {
+		Cooldown = 1
+	},
 	function create()
 	{
 		this.m.ID = "actives.nachzerer_gruesome_feast";
@@ -60,8 +62,19 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		return true;
 	}
 
+	function onTurnStart()
+	{
+		this.m.Cooldown = this.Math.max(0, this.m.Cooldown - 1);
+	}
+
+	function isUsable()
+	{
+		return this.skill.isUsable() && this.m.Cooldown == 0;
+	}
+
 	function onUse( _user, _targetTile )
 	{
+		this.m.Cooldown = 1;
 		local tag = {
 			Skill = this,
 			User = _user,
@@ -196,7 +209,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 	{
 		local _user = _tag.User;
 
-		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)) 
+		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
 			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " feasts on a corpse.");
 
 		//heal self and temp injuries

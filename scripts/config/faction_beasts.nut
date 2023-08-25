@@ -19,7 +19,7 @@ gt.Const.Tactical.Actor.Ghoul <- {
 	MeleeSkill = 80,
 	RangedSkill = 0,
 	MeleeDefense = 30,
-	RangedDefense = 20,
+	RangedDefense = 40,
 	Initiative = 145,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
