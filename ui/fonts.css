@@ -1,0 +1,494 @@
+/*
+ *  @Project:		Battle Brothers
+ *	@Company:		Overhype Studios
+ *
+ *	@Copyright:		(c) Overhype Studios | 2013 - 2020
+ * 
+ *  @Author:		Overhype Studios
+ *  @Date:			14.02.2017
+ *  @Description:	Defines all Fonts used by the UI
+ */
+
+
+/*
+	Global Font size
+*/
+.global-font-size
+{
+	font-size: 62.5%; /* Base size -> 1.0rem ~ 10px */
+}
+
+/*
+	Define Custom Font
+*/
+
+@font-face{
+	font-family: 'Roboto-Mono-Regular';
+	src: url('coui://gfx/fonts/Roboto-Mono/RobotoMono-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'Roboto-Mono-Italic';
+	src: url('coui://gfx/fonts/Roboto-Mono/RobotoMono-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'Arsenal-Regular';
+	src: url('coui://gfx/fonts/arsenal/Arsenal-Regular.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'Arsenal-Italic';
+	src: url('coui://gfx/fonts/arsenal/Arsenal-Italic.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'FreeUniversal-Regular';
+	src: url('coui://gfx/fonts/free_universal/FreeUniversal-Regular-edited.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'FreeUniversal-Italic';
+	src: url('coui://gfx/fonts/free_universal/FreeUniversal-Italic-edited.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'Cinzel-Regular';
+	src: url('coui://data/gfx/fonts/cinzel/Cinzel-Regular.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'Cinzel-Bold';
+	src: url('coui://data/gfx/fonts/cinzel/Cinzel-Bold.ttf') format('truetype');
+}
+
+
+/*
+	Fonts
+*/
+.default-font-very-small,
+.default-font-small,
+.default-font-normal,
+.default-font-big
+{
+	font-weight: normal;
+	font-size  : 1.2rem;
+	font-style : normal;
+	font-family: monospace, arial;
+}
+
+.default-font-small
+{
+	font-size: 1.4rem;
+}
+
+.default-font-normal
+{
+	font-size: 1.8rem;
+}
+
+.default-font-big
+{
+	font-size: 2.2rem;
+}
+
+.default-font-very-big
+{
+	font-size: 2.8rem;
+}
+
+
+/*
+	Title Font
+*/
+.title-font-very-small,
+.title-font-small,
+.title-font-normal,
+.title-font-big,
+.title-font-very-big
+{
+	font-weight: normal;
+	font-size  : 1.2rem;
+	font-style : normal;
+	font-family: 'Cinzel-Bold', monospace;
+}
+
+.title-font-small
+{
+	font-size: 1.4rem;
+}
+
+.title-font-normal
+{
+	font-size: 1.8rem;
+}
+
+.title-font-big
+{
+	font-size: 2.2rem;
+}
+
+.title-font-very-big
+{
+	font-size: 2.8rem;
+}
+
+
+/*
+	Text Font
+*/
+.text-font-very-small,
+.text-font-small,
+.text-font-medium,
+.text-font-normal,
+.text-font-big,
+.text-font-very-big
+{
+	font-weight: normal;
+	font-size  : 1.2rem;
+	font-style : normal;
+	font-family: 'FreeUniversal-Regular';
+}
+
+.text-font-small
+{
+	font-size: 1.4rem;
+}
+
+.text-font-medium
+{
+	font-size: 1.6rem;
+}
+
+.text-font-normal
+{
+	font-size: 1.8rem;
+}
+
+.text-font-big
+{
+	font-size: 2.2rem;
+}
+
+.text-font-very-big
+{
+	font-size: 2.8rem;
+}
+
+
+/*
+	Description Font
+*/
+.description-font-very-small,
+.description-font-small,
+.description-font-medium,
+.description-font-normal,
+.description-font-big,
+.description-font-very-big
+{
+	font-weight: normal;
+	font-size  : 1.2rem;
+	font-style : italic;
+	font-family: 'FreeUniversal-Italic';
+}
+
+.description-font-small
+{
+	font-size: 1.4rem;
+}
+
+.description-font-medium
+{
+	font-size: 1.6rem;
+}
+
+.description-font-normal
+{
+	font-size: 1.8rem;
+}
+
+.description-font-big
+{
+	font-size: 2.0rem;
+}
+
+.description-font-very-big
+{
+	font-size: 2.6rem;
+}
+
+
+
+/*
+	Generic Font properties
+*/
+.font-bold
+{
+	font-weight: bold !important;
+}
+
+
+.font-style-normal
+{
+	font-style: normal !important;
+}
+
+.font-style-italic
+{
+	font-style: italic !important;
+}
+
+
+.font-align-left
+{
+	text-align: left;
+}
+
+.font-align-right
+{
+	text-align: right;
+}
+
+.font-align-center
+{
+	text-align: center;
+}
+
+.font-align-justify
+{
+	text-align: justify;
+}@import url('file:///H:\Arbeit\BattleBrothers\bin\data\ui\colors.css');
+
+
+.font-decoration-line-through
+{
+	text-decoration: line-through !important;
+}
+
+.font-decoration-underline
+{
+	text-decoration: underline !important;
+}
+
+
+.font-bottom-shadow
+{
+	text-shadow: 1px 1px 1px #000;
+}
+
+.font-shadow
+{
+	text-shadow: 1px 1px rgba(0, 0, 0, 128), -1px -1px #000;
+}
+
+.font-shadow-outline
+{
+	text-shadow:  1px  1px 1px black,
+				  1px -1px 1px black,
+				 -1px  1px 1px black,
+				 -1px -1px 1px black;
+
+	/*text-shadow:
+				 0 1px 0 #000000,
+				 0 -1px 0 #000000,
+				 1px 0 0 #000000,
+				 -1px 0 0 #000000;*/
+}
+
+.font-shadow-silhouette
+{
+	text-shadow : 
+		-1px -1px 0 #000, 
+		1px -1px 0 #000, 
+		-1px 1px 0 #000, 
+		1px 1px 0 #000;
+}
+
+
+/*
+	Generic Font sizes
+*/
+.font-size-4
+{ 
+	font-size: 0.4rem; 
+}
+
+.font-size-5
+{
+	font-size: 0.5rem; 
+}
+
+.font-size-6
+{
+	font-size: 0.6rem; 
+}
+
+.font-size-7
+{
+	font-size: 0.7rem; 
+}
+
+.font-size-8
+{
+	font-size: 0.8rem; 
+}
+
+.font-size-9
+{
+	font-size: 0.9rem; 
+}
+
+.font-size-10
+{
+	font-size: 1.0rem; 
+}
+
+.font-size-11
+{
+	font-size: 1.1rem; 
+}
+
+.font-size-12
+{
+	font-size: 1.2rem; 
+}
+
+.font-size-13
+{
+	font-size: 1.3rem; 
+}
+
+.font-size-14
+{
+	font-size: 1.4rem; 
+}
+
+.font-size-15
+{
+	font-size: 1.5rem; 
+}
+
+.font-size-16
+{
+	font-size: 1.6rem; 
+}
+
+.font-size-17
+{
+	font-size: 1.7rem; 
+}
+
+.font-size-18
+{
+	font-size: 1.8rem; 
+}
+
+.font-size-19
+{
+	font-size: 1.9rem; 
+}
+
+.font-size-20
+{
+	font-size: 2.0rem; 
+}
+
+.font-size-21
+{
+	font-size: 2.1rem; 
+}
+
+.font-size-22
+{
+	font-size: 2.2rem; 
+}
+
+.font-size-23
+{
+	font-size: 2.3rem; 
+}
+
+.font-size-24
+{
+	font-size: 2.4rem; 
+}
+
+.font-size-25
+{
+	font-size: 2.5rem; 
+}
+
+.font-size-26
+{
+	font-size: 2.6rem; 
+}
+
+.font-size-27
+{
+	font-size: 2.7rem; 
+}
+
+.font-size-28
+{
+	font-size: 2.8rem; 
+}
+
+.font-size-29
+{
+	font-size: 2.9rem; 
+}
+
+.font-size-30
+{
+	font-size: 3.0rem; 
+}
+
+.font-size-31
+{
+	font-size: 3.1rem;
+}
+
+.font-size-32
+{
+	font-size: 3.2rem; 
+}
+
+.font-size-33
+{
+	font-size: 3.3rem; 
+}
+
+.font-size-34
+{
+	font-size: 3.4rem;
+}
+
+.font-size-35
+{
+	font-size: 3.5rem; 
+}
+
+.font-size-36
+{
+	font-size: 3.6rem; 
+}
+
+.font-size-37
+{
+	font-size: 3.7rem;
+}
+
+.font-size-38
+{
+	font-size: 3.8rem; 
+}
+
+.font-size-39
+{
+	font-size: 3.9rem; 
+}
+
+.font-size-40
+{
+	font-size: 4.0rem; 
+}

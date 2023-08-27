@@ -373,16 +373,16 @@
 			{
 				if (isHit)
 				{
-					::Z.Log.skill(_user, _targetEntity, getName(), rolled, toHit, "HIT");
+					::Z.Log.skill(_user, _targetEntity, getName(), rolled, toHit, "");
 				}
 				else
 				{
-					::Z.Log.skill(_user, _targetEntity, getName(), rolled, toHit, "MISS", false);
+					::Z.Log.skill(_user, _targetEntity, getName(), rolled, toHit, "", false);
 				}
 			}
 			else
 			{
-				::Z.Log.skill(_user, _targetEntity, getName(), rolled, toHit, "HIT", true, false);
+				::Z.Log.skill(_user, _targetEntity, getName(), rolled, toHit, "", true, false);
 			}
 		}
 

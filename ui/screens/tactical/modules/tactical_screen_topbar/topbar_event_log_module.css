@@ -63,6 +63,11 @@
 	height: 13.0rem;
 	position: absolute;
 	margin: auto;
+
+	font-weight: normal;
+	font-size: 1.4rem;
+	font-style : normal;
+	font-family: 'Roboto-Mono-Regular';
 }
 
 .tactical-screen .topbar-event-log-module .l-event-logs-container .entry

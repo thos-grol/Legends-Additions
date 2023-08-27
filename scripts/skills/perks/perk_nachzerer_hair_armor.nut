@@ -18,15 +18,15 @@ this.perk_nachzerer_hair_armor <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("actives.lantern_firefly_strike"))
+		if (!this.m.Container.hasSkill("actives.winter_negative_energy_hand"))
 		{
-			this.m.Container.add(this.new("scripts/skills/actives/lantern_firefly_strike"));
+			this.m.Container.add(this.new("scripts/skills/actives/winter_negative_energy_hand"));
 		}
 	}
 
 	function onRemoved()
 	{
-		this.m.Container.removeByID("actives.lantern_firefly_strike");
+		this.m.Container.removeByID("actives.winter_negative_energy_hand");
 	}
 
 	function onCombatStarted()

@@ -131,7 +131,7 @@ TacticalScreenTopbarEventLogModule.prototype.createEventLogEntryDIV = function (
 		return null;
 	}
 
-	var entry = $('<div class="entry text-font-small font-color-ink"></div>');
+	var entry = $('<div class="entry font-color-ink"></div>');
 	var parsedText = XBBCODE.process({
 		text: _text,
 		removeMisalignedTags: false,
@@ -149,7 +149,7 @@ TacticalScreenTopbarEventLogModule.prototype.createEventLogEntryDIV_indent = fun
 		return null;
 	}
 
-	var entry = $('<div class="entry2 text-font-small font-color-ink"></div>');
+	var entry = $('<div class="entry2 font-color-ink"></div>');
 	var parsedText = XBBCODE.process({
 		text: _text,
 		removeMisalignedTags: false,
@@ -167,7 +167,7 @@ TacticalScreenTopbarEventLogModule.prototype.createEventLogEntryDIV_title = func
 		return null;
 	}
 
-	var entry = $('<div class="entry3 text-font-small font-color-ink"></div>');
+	var entry = $('<div class="entry3 font-color-ink"></div>');
 	var parsedText = XBBCODE.process({
 		text: _text,
 		removeMisalignedTags: false,

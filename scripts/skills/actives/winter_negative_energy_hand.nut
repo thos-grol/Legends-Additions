@@ -1,7 +1,7 @@
 //Lantern
 //Firefly Strike
 //Fantasy Bro's code
-this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
+this.winter_negative_energy_hand <- this.inherit("scripts/skills/skill", {
 	m = {
 		AdditionalAccuracy = 0,
 		AdditionalHitChance = 0
@@ -13,16 +13,14 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 
 	function create()
 	{
-		this.m.ID = "actives.lantern_firefly_strike";
-		this.m.Name = "Firefly strike";
-		this.m.Description = "Unleash powerful arcane energy at the target";
-		this.m.Icon = "skills/active_202.png";
-		this.m.IconDisabled = "skills/active_202_sw.png";
-		this.m.Overlay = "active_202";
+		this.m.ID = "actives.winter_negative_energy_hand";
+		this.m.Name = "Negative Energy Hand";
+		this.m.Description = "Unleash powerful negative energy at the target";
+		this.m.Icon = "skills/active_42.png";
+		this.m.IconDisabled = "skills/active_42.png";
+		this.m.Overlay = "active_42";
 		this.m.SoundOnUse = [
-			"sounds/combat/bolt_shot_01.wav",
-			"sounds/combat/bolt_shot_02.wav",
-			"sounds/combat/bolt_shot_03.wav"
+			"sounds/enemies/ghastly_touch_01.wav"
 		];
 		this.m.SoundOnHit = [
 			"sounds/combat/poison_applied_01.wav",
@@ -43,15 +41,15 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 		this.m.IsShowingProjectile = false;
 		this.m.IsDoingForwardMove = false;
 		this.m.DirectDamageMult = 0.4;
-		this.m.ActionPointCost = 8;
-		this.m.FatigueCost = 15;
+		this.m.ActionPointCost = 1;
+		this.m.FatigueCost = 0;
 		this.m.MinRange = 2;
 		this.m.MaxRange = 6;
 		this.m.MaxLevelDifference = 4;
 		this.m.InjuriesOnBody = this.Const.Injury.BurningBody;
 		this.m.InjuriesOnHead = this.Const.Injury.BurningHead;
-		this.m.ProjectileType = this.Const.ProjectileType.xxprojectile_05; //TODO: port over brush
-		this.m.ProjectileTimeScale = 0.9;
+		this.m.ProjectileType = ::Const.ProjectileType.GhostHand;
+		this.m.ProjectileTimeScale = 1.0;
 	}
 
 	function getTooltip()
@@ -147,9 +145,9 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 				xxtileE = xxtile.remove(this.Math.rand(0, xxtile.len() - 1));
 				if (_user.getTile().getDistanceTo(_targetTile) >= this.Const.Combat.SpawnProjectileMinDist)
 				{
-					this.Sound.play("sounds/combat/strike_down_hit_0" + this.Math.rand(1, 2) + ".wav", this.Const.Sound.Volume.Skill * 1.2, this.getContainer().getActor().getPos());
+					this.Sound.play("sounds/enemies/ghastly_touch_01.wav", this.Const.Sound.Volume.Skill * 1.2, this.getContainer().getActor().getPos());
 					this.Tactical.spawnSpriteEffect("sparkleflare_1", this.createColor("#ccf1ff"), xxtileE, 0, 10, 1.2, 0.2, -10, 200, 400);
-					this.Tactical.spawnProjectileEffect(this.Const.ProjectileSprite[this.m.ProjectileType], xxtileE, _targetTile, 0.7 + (this.Math.rand(0, 5) * 0.1), this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
+					this.Tactical.spawnProjectileEffect(this.Const.ProjectileSprite[this.m.ProjectileType], xxtileE, _targetTile, 1.0 , this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
 				}
 			}.bindenv(this), this);
 		}
@@ -176,4 +174,3 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 	}
 
 });
-
