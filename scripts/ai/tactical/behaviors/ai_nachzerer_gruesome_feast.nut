@@ -37,6 +37,7 @@ this.ai_nachzerer_gruesome_feast <- this.inherit("scripts/ai/tactical/behavior",
 			if (!corpse_tile.IsCorpseSpawned || !corpse_tile.Properties.get("Corpse").IsConsumable) continue;
 			local distance = corpse_tile.getDistanceTo(origin);
 			if (distance > this.m.Skill.m.MaxRange) continue;
+			if (corpse_tile.IsOccupiedByActor) continue;
 
 			//Scan 6 adjacent tiles for enemies
 			local surrounding_enemies = 0;

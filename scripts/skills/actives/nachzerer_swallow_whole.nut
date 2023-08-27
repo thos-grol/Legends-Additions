@@ -71,7 +71,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		if (this.m.SwallowedEntity_HP > 0)
 		{
 			//TODO: log
-			
+
 			actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + damage));
 			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " takes " + damage + " damage. They have " + this.m.SwallowedEntity_HP + " remaining.\n" + this.Const.UI.getColorizedEntityName(actor) + " gains " + damage + " hitpoints.");
 		}
@@ -88,8 +88,14 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 
 			//handle death
 			local is_player_controlled = this.m.SwallowedEntity.isPlayerControlled();
-			local is_guest = this.m.SwallowedEntity.isGuest();
-			local background_id = this.m.SwallowedEntity.getBackground().getID();
+			local is_guest;
+			try
+			{
+				is_guest = this.m.SwallowedEntity.isGuest();
+			}catch(execption)
+			{
+				is_guest = null;
+			}
 
 			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " has been digested.");
 			this.m.SwallowedEntity.getSkills().onDeath(this.Const.FatalityType.Devoured);
@@ -97,14 +103,14 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 			this.World.getPlayerRoster().remove(this.m.SwallowedEntity);
 			this.m.SwallowedEntity = null;
 
-			if (!this.Tactical.State.isScenarioMode() && is_player_controlled && !is_guest)
+			if (!this.Tactical.State.isScenarioMode() && is_player_controlled && (is_guest == null || !is_guest))
 			{
 				local roster = this.World.getPlayerRoster().getAll();
 				foreach( bro in roster )
 				{
 					if (bro.isAlive() && !bro.isDying() && bro.getCurrentProperties().IsAffectedByDyingAllies)
 					{
-						if (this.World.Assets.getOrigin().getID() != "scenario.manhunters" || background_id != "background.slave")
+						if (this.World.Assets.getOrigin().getID() != "scenario.manhunters" && bro.getBackground().getID() != "background.slave")
 						{
 							bro.worsenMood(this.Const.MoodChange.BrotherDied, this.getName() + " died in battle");
 						}

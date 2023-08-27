@@ -4,25 +4,14 @@ this.bounty_hunter_follower <- this.inherit("scripts/retinue/follower", {
 	{
 		this.follower.create();
 		this.m.ID = "follower.bounty_hunter";
-		this.m.Name = "Bounty Board";
-		this.m.Description = "A well maintained bounty board can keep everyone up to date on which heads they should be taking after a battle.";
-		this.m.Image = "ui/campfire/legend_bounty_hunter_01";
-		this.m.Cost = 4000;
+		this.m.Name = "The Bounty Hunter";
+		this.m.Description = "The Bounty Hunter has a pocket full of contracts on the most dangerous individuals. He knows how to get them from hiding and will pay handsomely for any bounty fulfilled.";
+		this.m.Image = "ui/campfire/bounty_hunter_01";
+		this.m.Cost = 150;
 		this.m.Effects = [
-			"Significantly increases the chance of encountering champions",
-			"Pays between 300 and 750 crowns for every champion slain"
+			"Increases the chance of encountering champions by 5%",
+			"Pays between 50 - 200 crowns for every champion slain"
 		];
-		this.addRequirement("Have at least a named or a legendary items in your possession ", function ()
-		{
-			return this.getNumberOfNamedItems() >= 1;
-		});
-		this.addSkillRequirement("Have at least one of the following backgrounds: Manhunter, Witch Hunter, Beast Slayer", [
-			"background.witchhunter",
-			"background.beast_slayer",
-			"background.manhunter",
-			"background.legend_companion_melee",
-			"background.legend_companion_ranged"
-		]);
 	}
 
 	function isValid()
@@ -34,7 +23,7 @@ this.bounty_hunter_follower <- this.inherit("scripts/retinue/follower", {
 	{
 		if ("ChampionChanceAdditional" in this.World.Assets.m)
 		{
-			this.World.Assets.m.ChampionChanceAdditional = 3;
+			this.World.Assets.m.ChampionChanceAdditional = 5;
 		}
 	}
 

@@ -16,6 +16,19 @@ this.perk_nachzerer_hair_armor <- this.inherit("scripts/skills/skill", {
 		this.m.IsHidden = false;
 	}
 
+	function onAdded()
+	{
+		if (!this.m.Container.hasSkill("actives.lantern_firefly_strike"))
+		{
+			this.m.Container.add(this.new("scripts/skills/actives/lantern_firefly_strike"));
+		}
+	}
+
+	function onRemoved()
+	{
+		this.m.Container.removeByID("actives.lantern_firefly_strike");
+	}
+
 	function onCombatStarted()
 	{
 		this.m.Charges = 1;

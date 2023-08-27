@@ -235,3 +235,17 @@
 	}
 });
 
+//Caravan Budgets
+::Const.World.Common.WorldEconomy.setupTrade = function ( _party, _settlement, _destination, _fixedBudget = -1, _minBudget = -1, _maxBudget = -1 )
+{
+	local budget = _fixedBudget != -1 ? _fixedBudget : this.calculateTradingBudget(_settlement, _minBudget, _maxBudget);
+	budget = ::Math.round(budget / 10);
+	local result = this.makeTradingDecision(_settlement, budget);
+	local finance = this.getExpectedFinancialReport(_settlement);
+	_settlement.addResources(-finance.Investment);
+	_party.setOrigin(_settlement);
+	_party.getStashInventory().assign(result.Items);
+	_party.getFlags().set("CaravanProfit", finance.Profit);
+	_party.getFlags().set("CaravanInvestment", finance.Investment);
+	this.logWarning("Exporting " + _party.getStashInventory().getItems().len() + " items (" + result.Value + " crowns), focusinng on trading \'" + result.Decision + "\', investing " + finance.Investment + " resources," + " from " + _settlement.getName() + " via a caravan bound for " + _destination.getName() + " town");
+}

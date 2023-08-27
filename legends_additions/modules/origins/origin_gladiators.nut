@@ -63,6 +63,10 @@
 		bros[0].getItems().equip(this.new("scripts/items/tools/throwing_net"));
 		bros[0].improveMood(0.75, "Eager to prove himself outside the arena");
 		bros[0].setVeteranPerks(2);
+
+		::Z.Perks.addPerk(bros[0], ::Const.Perks.PerkDefs.NachzererHairArmor, 1);
+
+
 		bros[1].setTitle("the Bear");
 		bros[1].getSkills().add(this.new("scripts/skills/traits/glorious_endurance_trait"));
 		bros[1].getTalents().resize(this.Const.Attributes.COUNT, 0);

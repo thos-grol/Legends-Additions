@@ -779,6 +779,8 @@
 	"legend_armor.body.legend_sackcloth_patched" : 0,                   		//DUR: 15.00 | STA: -1.00
 	"legend_armor.body.legend_robes_wizard" : 0,                        		//DUR: 30.00 | STA: -1.00
 
+	"legend_armor.body.legend_southern_shoulder_cloth" : 1,                    	//DUR: 5.00  | STA:  0.00
+	"legend_armor.body.legend_southern_wrap_right" : 1,                    		//DUR: 2.00  | STA:  0.00
 	"legend_armor.body.legend_ancient_cloth" : 14,                       		//DUR: 30.00 | STA: -5.00
 	"legend_armor.body.legend_religious_scarf" : 14,                       		//DUR: 10.00 | STA:  0.00
 	"legend_armor.body.tabbed_hood" : 14,                       				//DUR: 10.00 | STA: -1.00

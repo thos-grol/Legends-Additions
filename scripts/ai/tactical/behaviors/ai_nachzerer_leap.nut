@@ -327,7 +327,7 @@ this.ai_nachzerer_leap <- this.inherit("scripts/ai/tactical/behavior", {
 
 		this.m.TargetTile = potentialDestinations[0].Tile;
 		this.getAgent().getIntentions().TargetTile = this.m.TargetTile;
-		return this.Const.AI.Behavior.Score.Darkflight * score * potentialDestinations[0].ScoreMult;
+		return this.Const.AI.Behavior.Score.Darkflight * score * potentialDestinations[0].ScoreMult * 10000;
 	}
 
 	function onBeforeExecute( _entity )

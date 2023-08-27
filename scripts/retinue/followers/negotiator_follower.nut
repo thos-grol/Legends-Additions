@@ -4,71 +4,33 @@ this.negotiator_follower <- this.inherit("scripts/retinue/follower", {
 	{
 		this.follower.create();
 		this.m.ID = "follower.negotiator";
-		this.m.Name = "Meeting Point";
-		this.m.Description = "Having a dedicated meeting place where negotiators can talk, barter and trade insults with prominant figures or their lackeys can help in finding work.";
-		this.m.Image = "ui/campfire/legend_negotiator_01";
+		this.m.Name = "Anatomist";
+		this.m.Description = "The Anatomist is an expert in the study of flesh and bloodlines. From the corpses of monsters, he derive sequences that convey a part of the monster's power to a human.";
+		this.m.Image = "ui/campfire/negotiator_01";
 		this.m.Cost = 3500;
 		this.m.Effects = [
-			"Allows for more rounds of contract negotiations and greater payment with your potential employers before they abort, and with only a 10% chance on a hit to relations. Bad relations recover faster"
+			"Has a 5% chance to extract an extraordinary sequence as a potion when slaying a monster",
+			"Unlocks anatomist events"
 		];
-		this.addRequirement("Negotiated for the payment of contracts x times", function ()
+		this.addRequirement("Slay a monster", function ()
 		{
-			return ::World.Statistics.getFlags().getAsInt("NegotiatingTries") >= 10;
+			return ::World.Statistics.getFlags().getAsInt("MonstersSlain") >= 1;
 		}, true, function ( _r )
 		{
-			_r.Count <- 10;
+			_r.Count <- 1;
 			_r.UpdateText <- function ()
 			{
-				this.Text = "Negotiated for the payment of contracts " + ::Math.min(this.Count, ::World.Statistics.getFlags().getAsInt("NegotiatingTries")) + "/" + this.Count + " times (attempts only be counted after accepting the contract)";
+				this.Text = "Slay " + ::Math.min(this.Count, ::World.Statistics.getFlags().getAsInt("MonstersSlain")) + "/" + this.Count + " monsters";
 			};
 		});
-		this.addSkillRequirement("Have someone with the Pacifist perk. Guaranteed on Widow, Inventor, Tailor and many others", [
-			"perk.legend_pacifist",
-			"background.legend_companion_melee",
-			"background.legend_companion_ranged"
-		], true);
 	}
 
 	function onUpdate()
 	{
-		if ("NegotiationAnnoyanceMult" in this.World.Assets.m)
-		{
-			this.World.Assets.m.NegotiationAnnoyanceMult = 0.5;
-		}
-
-		if ("AdvancePaymentCap" in this.World.Assets.m)
-		{
-			this.World.Assets.m.AdvancePaymentCap = 0.75;
-		}
-
-		if ("RelationDecayGoodMult" in this.World.Assets.m)
-		{
-			if (this.World.Assets.getOrigin().getID() == "scenario.sato_escaped_slaves")
-			{
-				this.World.Assets.m.RelationDecayGoodMult = 1.075;
-			}
-			else
-			{
-				this.World.Assets.m.RelationDecayGoodMult = 0.85;
-			}
-		}
-
-		if ("RelationDecayBadMult" in this.World.Assets.m)
-		{
-			if (this.World.Assets.getOrigin().getID() == "scenario.sato_escaped_slaves")
-			{
-				this.World.Assets.m.RelationDecayBadMult = 0.925;
-			}
-			else
-			{
-				this.World.Assets.m.RelationDecayBadMult = 1.15;
-			}
-		}
 	}
 
 	function onNewDay()
 	{
-		this.onUpdate();
 	}
 
 });
