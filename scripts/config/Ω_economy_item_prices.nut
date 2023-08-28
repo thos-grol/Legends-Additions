@@ -798,7 +798,7 @@
 	"legend_armor.company_tabard" : 36,                        					//DUR: 10.00 | STA:  0.00
 
 	"legend_armor.body.legend_thick_tunic" : 36,                         		//DUR: 30.00 | STA: -3.00
-	"legend_armor.body.legend_apron_butcher" : 36,                       		//DUR: 30.00 | STA: -3.00
+	"legend_armor.body.legend_apron_butcher" : 10,                       		//DUR: 30.00 | STA: -3.00
 	"legend_armor.body.fur_cloak" : 36,                               			//DUR: 35.00 | STA: -6.00
 	"legend_armor.body.legend_apron" : 36,                               		//DUR: 35.00 | STA: -4.00
 	"legend_armor.body.undertakers_apron" : 36,                               	//DUR: 35.00 | STA: -4.00
