@@ -18,6 +18,11 @@
 			[
 				1,
 				"sackcloth"
+			],
+			[
+				1,
+				"linen_tunic",
+				this.Math.rand(6, 7)
 			]
 		]));
 		local helm = this.Const.World.Common.pickHelmet([
