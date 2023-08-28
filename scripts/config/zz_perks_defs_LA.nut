@@ -1,7 +1,7 @@
-::Const.Strings.PerkName.NachzererHairArmor <- "Hair Armor";
-::Const.Strings.PerkDescription.NachzererHairArmor <- "Grow hairs all over the body that can nullify physical blows."
+::Const.Strings.PerkName.NachzererGluttonyBarrier <- "Gluttony Shield";
+::Const.Strings.PerkDescription.NachzererGluttonyBarrier <- "Protection by the powers of gluttony..."
 + "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
-+ "\n• At the start of battle, gain 1 charge of hair armor."
++ "\n• At the start of battle, gain 1 charge of shielding."
 + "\n• Each charge can nullify a blow. Gain more charges through consuming enemies or corpses.";
 
 // ::Const.Strings.PerkName.EldritchBlast <- "Eldritch Blast"
@@ -45,13 +45,13 @@
 
 local perks = [
     {
-        ID = "perk.nachzerer_hair_armor",
-        Script = "scripts/skills/perks/perk_nachzerer_hair_armor",
-        Name = ::Const.Strings.PerkName.NachzererHairArmor,
-        Tooltip = ::Const.Strings.PerkDescription.NachzererHairArmor,
+        ID = "perk.nachzerer_gluttony_barrier",
+        Script = "scripts/skills/perks/perk_nachzerer_gluttony_barrier",
+        Name = ::Const.Strings.PerkName.NachzererGluttonyBarrier,
+        Tooltip = ::Const.Strings.PerkDescription.NachzererGluttonyBarrier,
         Icon = "ui/perks/perk_29.png",
         IconDisabled = "ui/perks/perk_29_sw.png",
-        Const = "NachzererHairArmor"
+        Const = "NachzererGluttonyBarrier"
     },
     // {
 	// 	ID = "perk.eldritch_blast",

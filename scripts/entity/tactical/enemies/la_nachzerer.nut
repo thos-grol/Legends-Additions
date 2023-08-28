@@ -45,7 +45,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
         this.m.Skills.add(this.new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
 
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_nachzerer_hair_armor")); // hair armor nullifies damage for x hits.
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_nachzerer_gluttony_barrier")); // hair armor nullifies damage for x hits.
 
 		//will swallow bro, damaging them and healing the damage dealt. Has a chance to miss. If the swallowed bro dies,
 		//will heal temp injuries, and gain 2 charges of hair armor.

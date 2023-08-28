@@ -4,8 +4,8 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 	},
 	function create()
 	{
-		this.m.ID = "actives.nachzerer_gruesome_feast";
-		this.m.Name = "Darkflight";
+		this.m.ID = "actives.nachzerer_leap";
+		this.m.Name = "Leap";
 		this.m.Description = "Disapparate from your current location and reappear on the other side of the battlefield";
 		this.m.Icon = "skills/darkflight.png";
 		this.m.IconDisabled = "skills/darkflight_bw.png";
@@ -28,7 +28,7 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 		this.m.IsIgnoredAsAOO = true;
 		this.m.ActionPointCost = 0;
 		this.m.FatigueCost = 0;
-		this.m.MinRange = 0;
+		this.m.MinRange = 1;
 		this.m.MaxRange = 6;
 		this.m.MaxLevelDifference = 4;
 	}
@@ -82,6 +82,7 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 			OnDone = this.onTeleportDone,
 			OnTeleportStart = this.onTeleportStart
 		};
+		::logInfo("Leap 0");
 
 		if (_user.getTile().IsVisibleForPlayer)
 		{
@@ -95,7 +96,7 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 				}
 			}
 
-			this.Time.scheduleEvent(this.TimeUnit.Virtual, 400, this.onTeleportStart, tag);
+			this.Time.scheduleEvent(this.TimeUnit.Virtual, 200, this.onTeleportStart, tag);
 		}
 		else this.onTeleportStart(tag);
 
@@ -104,11 +105,13 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 
 	function onTeleportStart( _tag )
 	{
+		::logInfo("Leap 1");
 		this.Tactical.getNavigator().teleport(_tag.User, _tag.TargetTile, _tag.OnDone, _tag, false, 3.0);
 	}
 
 	function onTeleportDone( _entity, _tag )
 	{
+		::logInfo("Leap 2");
 		if (!_entity.isHiddenToPlayer())
 		{
 			local _tile = _tag.User.getTile()
@@ -124,5 +127,26 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 			if (_entity.getTile().IsVisibleForPlayer && _tag.Skill.m.SoundOnHit.len() > 0)
 				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, _entity.getPos());
 		}
+		::logInfo("Leap 3");
+	}
+
+	function getTargets( _user )
+	{
+		local ret = {
+			Tiles = [],
+			User = _user
+		};
+		this.Tactical.queryTilesInRange(_user.getTile(), this.m.MinRange, this.m.MaxRange, false, [], this.onQueryTilesActor, ret);
+		return ret.Tiles;
+	}
+
+	function onQueryTilesActor( _tile, _ret )
+	{
+		if (_tile.IsEmpty) return;
+		if (_tile.getEntity() == null) return;
+		if (!_tile.getEntity().isAttackable()) return;
+		if (!_tile.getEntity().isAlive() || _tile.getEntity().isDying()) return;
+		if (_ret.User.isAlliedWith(_tile.getEntity())) return;
+		_ret.Tiles.push(_tile);
 	}
 });

@@ -129,7 +129,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 			}
 
 			//add 2 stacks of hair armor
-			local nachzerer_hair_armor = actor.getSkills().getSkillByID("perk.nachzerer_hair_armor");
+			local nachzerer_hair_armor = actor.getSkills().getSkillByID("perk.nachzerer_gluttony_barrier");
 			if (nachzerer_hair_armor != null) nachzerer_hair_armor.addCharges(2);
 		}
 

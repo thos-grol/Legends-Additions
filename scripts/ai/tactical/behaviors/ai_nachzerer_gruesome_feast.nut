@@ -82,7 +82,7 @@ this.ai_nachzerer_gruesome_feast <- this.inherit("scripts/ai/tactical/behavior",
 
 			local dist = _entity.getTile().getDistanceTo(this.m.TargetTile);
 			this.m.Skill.use(this.m.TargetTile);
-			this.getAgent().declareEvaluationDelay(3000);
+			this.getAgent().declareEvaluationDelay(1000);
 			this.getAgent().declareAction();
 
 			this.m.TargetTile = null;

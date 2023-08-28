@@ -98,7 +98,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 				}
 			}
 
-			this.Time.scheduleEvent(this.TimeUnit.Virtual, 400, this.onTeleportStart, tag);
+			this.Time.scheduleEvent(this.TimeUnit.Virtual, 200, this.onTeleportStart, tag);
 		}
 		else this.onTeleportStart(tag);
 
@@ -226,7 +226,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		_user.getSkills().removeByID("effects.nachzerer_maddening_hunger");
 
 		//add 2 stacks of hair armor
-		local nachzerer_hair_armor = _user.getSkills().getSkillByID("perk.nachzerer_hair_armor");
+		local nachzerer_hair_armor = _user.getSkills().getSkillByID("perk.nachzerer_gluttony_barrier");
 		if (nachzerer_hair_armor != null) nachzerer_hair_armor.addCharges(2);
 	}
 });
