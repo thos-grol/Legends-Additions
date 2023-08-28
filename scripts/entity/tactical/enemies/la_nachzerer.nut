@@ -60,7 +60,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_lacerate"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_overwhelm"));
 
-		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_leap")); //leap skill when surrounded, perform a claw attack on the target.
+		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_leap")); //leap skill when surrounded 0ap, 3 turn cd
 
 	}
 
