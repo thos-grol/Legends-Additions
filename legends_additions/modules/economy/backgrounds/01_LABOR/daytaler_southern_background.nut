@@ -1,0 +1,37 @@
+::mods_hookExactClass("skills/backgrounds/daytaler_background", function(o) {
+	o.onAddEquipment = function()
+	{
+		local items = this.getContainer().getActor().getItems();
+		local r;
+		r = this.Math.rand(0, 4);
+
+		if (r == 0)
+		{
+			items.equip(this.new("scripts/items/weapons/knife"));
+		}
+		else if (r == 1)
+		{
+			items.equip(this.new("scripts/items/weapons/wooden_stick"));
+		}
+
+		items.equip(this.Const.World.Common.pickArmor([
+			[
+				1,
+				"sackcloth"
+			]
+		]));
+		local helm = this.Const.World.Common.pickHelmet([
+			[
+				3,
+				""
+			],
+			[
+				1,
+				"oriental/southern_head_wrap"
+			]
+		]);
+		items.equip(helm);
+	}
+
+});
+

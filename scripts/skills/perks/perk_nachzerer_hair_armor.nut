@@ -18,15 +18,15 @@ this.perk_nachzerer_hair_armor <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("actives.winter_negative_energy_hand"))
+		if (!this.m.Container.hasSkill("actives.direwolf_blizzard"))
 		{
-			this.m.Container.add(this.new("scripts/skills/actives/winter_negative_energy_hand"));
+			this.m.Container.add(this.new("scripts/skills/actives/direwolf_blizzard"));
 		}
 	}
 
 	function onRemoved()
 	{
-		this.m.Container.removeByID("actives.winter_negative_energy_hand");
+		this.m.Container.removeByID("actives.direwolf_blizzard");
 	}
 
 	function onCombatStarted()
