@@ -4,19 +4,14 @@
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 
 		if (!this.isActive()) return;
-		
+
 		_list.push("retired_soldier_background");
 		_list.push("deserter_background");
 		_list.push("sellsword_background");
-		
-		if (this.Math.rand(0, 9) == 1)
-		{
-			_list.push("hedge_knight_background");
-		}
 
 		if (this.Math.rand(0, 9) == 1)
 		{
-			_list.push("paladin_background");
+			_list.push("hedge_knight_background");
 		}
 
 		if (this.Math.rand(0, 9) == 1)

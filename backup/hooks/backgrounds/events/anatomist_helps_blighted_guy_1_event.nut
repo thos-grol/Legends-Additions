@@ -74,7 +74,7 @@
 				_event.m.Dude.getFlags().set("IsSpecial", true);
 				_event.m.Dude.getBackground().m.RawDescription = "" + _event.m.Anatomist.getNameOnly() + " the Anatomist rescued %name% from being buried alive for carrying some strange disease. Now he has the unique pleasure of both bearing the plague AND being a lab rat for some researchers. Stay over there, please.";
 				_event.m.Dude.getBackground().buildDescription(true);
-				
+
 				_event.m.Dude.m.PerkPoints = 8;
 				_event.m.Dude.m.LevelUps = 8;
 				_event.m.Dude.m.Level = 9;

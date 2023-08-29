@@ -11,7 +11,6 @@
 		_list.push("legend_ironmonger_background");
 		_list.push("retired_soldier_background");
 		_list.push("deserter_background");
-		_list.push("paladin_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )
