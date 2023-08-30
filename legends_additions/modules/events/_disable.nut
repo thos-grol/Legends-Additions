@@ -57,6 +57,7 @@
 
 //Disable dlc6 events
 ::mods_hookExactClass("events/events/dlc6/cultish_arrangement_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework event
+::mods_hookExactClass("events/events/dlc6/desert_well_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework event
 ::mods_hookExactClass("events/events/dlc6/gunpowder_wagon_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework event
 ::mods_hookExactClass("events/events/dlc6/manhunters_origin_capture_prisoner_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/dlc6/read_black_book_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework event

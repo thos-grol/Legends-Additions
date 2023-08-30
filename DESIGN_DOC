@@ -12,6 +12,15 @@ Economy Overhaul
 //TODO: fix alchemist having named items.
 //TODO: Reintegrate mood changes.
 
+//TODO: Make backgrounds more unique. Most backgrounds only get access to one weapon tree.
+//TODO: give backgrounds items they can use
+//TODO: weapon mastery system
+//TODO: training halls, unique...
+    ie. event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters.
+
+DOC:
+    Bros will now generate with only one main weapon tree, and two trait trees. Backgrounds now really do matter. BUT it's not impossible to learn new weapons skills.
+
 //New potion system
 
 //FEATURE_5: Fantasy Bros Skills worth looking into

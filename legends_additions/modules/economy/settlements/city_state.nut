@@ -26,8 +26,6 @@
 			"daytaler_southern_background",
 			"daytaler_southern_background",
 			"historian_southern_background",
-			"peddler_southern_background",
-			"peddler_southern_background",
 			"servant_southern_background",
 			"shepherd_southern_background",
 			"shepherd_southern_background",
