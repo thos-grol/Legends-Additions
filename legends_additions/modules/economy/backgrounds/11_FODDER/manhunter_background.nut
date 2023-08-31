@@ -1,3 +1,4 @@
+//disabled
 ::mods_hookExactClass("skills/backgrounds/manhunter_background", function(o) {
 	local create = o.create;
 	o.create = function()

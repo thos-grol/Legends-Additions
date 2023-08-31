@@ -6,13 +6,22 @@
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 
-		if ("Weapon" in this.m.PerkTreeDynamic)
-		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
-		}
+		this.m.PerkTreeDynamic = {
+			Weapon = [
+				this.Const.Perks.AxeTree,
+				this.Const.Perks.MaceTree,
+				this.Const.Perks.ShieldTree,
+			],
+			Defense = [
+				this.Const.Perks.HeavyArmorTree
+			],
+			Traits = [],
+			Enemy = [],
+			Class = [],
+			Magic = []
+		};
+
+		this.m.PerkTreeDynamicMins.Traits = 4;
 	}
 
 	o.onAddEquipment = function()
@@ -21,36 +30,13 @@
 		local r;
 		r = this.Math.rand(0, 5);
 
-		if (r == 0)
-		{
-			items.equip(this.new("scripts/items/weapons/falchion"));
-		}
-		else if (r == 1)
-		{
-			items.equip(this.new("scripts/items/weapons/flail"));
-		}
-		else if (r == 2)
+		if (r == 2)
 		{
 			items.equip(this.new("scripts/items/weapons/hand_axe"));
 		}
 		else if (r == 3)
 		{
 			items.equip(this.new("scripts/items/weapons/morning_star"));
-		}
-		else if (r == 4)
-		{
-			items.equip(this.new("scripts/items/weapons/military_pick"));
-		}
-		else if (r == 5)
-		{
-			items.equip(this.new("scripts/items/weapons/boar_spear"));
-		}
-
-		r = this.Math.rand(0, 0);
-
-		if (r == 0)
-		{
-			items.equip(this.new("scripts/items/shields/wooden_shield"));
 		}
 
 		items.equip(this.Const.World.Common.pickArmor([

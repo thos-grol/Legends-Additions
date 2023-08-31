@@ -6,11 +6,33 @@
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 
-		if ("Weapon" in this.m.PerkTreeDynamic)
-		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
-		}
+		this.m.PerkTreeDynamic = {
+			Weapon = [
+				this.Const.Perks.SwordTree,
+				this.Const.Perks.DaggerTree,
+				this.Const.Perks.CrossbowTree
+			],
+			Defense = [
+				this.Const.Perks.LightArmorTree
+			],
+			Traits = [
+				this.Const.Perks.FitTree,
+				this.Const.Perks.CalmTree,
+				this.Const.Perks.LargeTree,
+				this.Const.Perks.ViciousTree
+			],
+			Enemy = [
+				this.Const.Perks.SwordmastersTree,
+				this.Const.Perks.NoblesTree,
+				this.Const.Perks.MercenaryTree
+			],
+			Class = [],
+			Magic = [
+				this.Const.Perks.AssassinMagicTree
+			]
+		};
+
+		this.m.PerkTreeDynamicMins.Traits = 4;
 	}
 
 	o.onAddEquipment = function()

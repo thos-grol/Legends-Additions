@@ -72,8 +72,8 @@
 
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
-		_list.push("bowyer_background");
-		_list.push("female_bowyer_background");
+		//_list.push("bowyer_background");
+		//_list.push("female_bowyer_background");
 	}
 
 });

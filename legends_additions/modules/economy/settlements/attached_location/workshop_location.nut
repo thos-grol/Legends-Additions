@@ -8,13 +8,12 @@
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
 		if (!this.isActive()) return;
-		_list.push("legend_ironmonger_background");
-		_list.push("legend_ironmonger_background");
-		_list.push("legend_ironmonger_background");
-		_list.push("legend_ironmonger_background");
-		_list.push("legend_blacksmith_background");
+		//_list.push("legend_blacksmith_background");
 		_list.push("apprentice_background");
 		_list.push("caravan_hand_background");
+		_list.push("daytaler_background");
+		_list.push("daytaler_background");
+		_list.push("daytaler_background");
 		_list.push("daytaler_background");
 		_list.push("female_daytaler_background");
 	}

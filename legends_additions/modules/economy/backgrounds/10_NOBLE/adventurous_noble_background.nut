@@ -6,18 +6,26 @@
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 
-		if ("Weapon" in this.m.PerkTreeDynamic)
-		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
-		}
+		this.m.PerkTreeDynamic = {
+			Weapon = [
+				this.Const.Perks.SwordTree,
+				this.Const.Perks.ShieldTree,
+				this.Const.Perks.PolearmTree,
+				this.Const.Perks.BowTree
+			],
+			Defense = [],
+			Traits = [],
+			Enemy = [],
+			Class = [],
+			Magic = []
+		};
 	}
 
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(0, 2);
+		r = this.Math.rand(0, 1);
 
 		if (r == 0)
 		{
@@ -26,11 +34,6 @@
 		else if (r == 1)
 		{
 			items.equip(this.new("scripts/items/weapons/pike"));
-		}
-		else if (r == 2)
-		{
-			items.equip(this.new("scripts/items/weapons/rondel_dagger"));
-			items.equip(this.new("scripts/items/weapons/legend_parrying_dagger"));
 		}
 
 		items.equip(this.Const.World.Common.pickArmor([

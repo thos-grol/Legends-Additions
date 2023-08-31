@@ -205,8 +205,8 @@
 				"sellsword_background",
 				"sellsword_background",
 				"sellsword_background",
-				"squire_background",
-				"squire_background",
+				
+				
 				
 				"cripple_background",
 				"hedge_knight_background",
@@ -241,8 +241,8 @@
 				"sellsword_background",
 				"sellsword_background",
 				"sellsword_background",
-				"squire_background",
-				"squire_background",
+				
+				
 				
 				"cripple_background",
 				"hedge_knight_background",

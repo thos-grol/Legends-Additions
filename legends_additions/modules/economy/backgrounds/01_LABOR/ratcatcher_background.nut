@@ -8,14 +8,12 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.SpearTree
+				this.Const.Perks.DaggerTree
 			],
 			Defense = [
 				this.Const.Perks.LightArmorTree
 			],
-			Traits = [
-				this.Const.Perks.DeviousTree
-			],
+			Traits = [],
 			Enemy = [],
 			Class = [
 				this.Const.Perks.BeastClassTree

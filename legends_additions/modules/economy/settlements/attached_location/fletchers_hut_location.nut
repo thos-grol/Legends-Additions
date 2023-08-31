@@ -12,8 +12,8 @@
 		_list.push("hunter_background");
 		_list.push("poacher_background");
 
-		_list.push("bowyer_background");
-		_list.push("female_bowyer_background");
+		//_list.push("bowyer_background");
+		//_list.push("female_bowyer_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )

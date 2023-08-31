@@ -203,7 +203,7 @@
 				"retired_soldier_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				"squire_background",
+				
 				"cripple_background",
 				"eunuch_background",
 				"apprentice_background",
@@ -232,7 +232,7 @@
 				"retired_soldier_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				"squire_background",
+				
 
 				"cripple_background",
 				"eunuch_background"

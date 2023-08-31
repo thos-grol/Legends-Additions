@@ -1,3 +1,4 @@
+//disabled
 ::mods_hookExactClass("skills/backgrounds/legend_taxidermist_background", function(o) {
 	local create = o.create;
 	o.create = function()

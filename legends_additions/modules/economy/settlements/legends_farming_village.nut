@@ -128,7 +128,7 @@
 				"miller_background",
 				"miller_background",
 				"ratcatcher_background",
-				"tailor_background",
+				//"tailor_background",
 				"vagabond_background",
 				"poacher_background",
 				"ratcatcher_background",
@@ -155,7 +155,7 @@
 				"ratcatcher_background",
 				"refugee_background",
 				"servant_background",
-				"tailor_background",
+				//"tailor_background",
 				"vagabond_background",
 				"retired_soldier_background",
 				"apprentice_background",
@@ -192,7 +192,7 @@
 				"raider_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				"squire_background",
+				
 				
 				
 			]
@@ -236,7 +236,7 @@
 				"female_miller_background",
 				"female_miller_background",
 				"female_servant_background",
-				"female_tailor_background",
+				//"female_tailor_background",
 				"female_adventurous_noble_background"
 			]
 		];

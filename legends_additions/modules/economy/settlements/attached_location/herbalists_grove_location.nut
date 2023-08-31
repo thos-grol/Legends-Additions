@@ -11,9 +11,9 @@
 
 		if (!this.isActive()) return;
 
-		_list.push("legend_herbalist_background");
-		_list.push("legend_herbalist_background");
-		_list.push("legend_herbalist_background");
+		//_list.push("legend_herbalist_background");
+		//_list.push("legend_herbalist_background");
+		//_list.push("legend_herbalist_background");
 
 		if (_gender)
 		{

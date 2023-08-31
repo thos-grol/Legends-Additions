@@ -99,7 +99,7 @@
 				"daytaler_background",
 				
 				"refugee_background",
-				"tailor_background",
+				//"tailor_background",
 				"thief_background",
 				"vagabond_background",
 				"poacher_background",
@@ -131,7 +131,7 @@
 				"refugee_background",
 				"refugee_background",
 				"servant_background",
-				"tailor_background",
+				//"tailor_background",
 				"thief_background",
 				"vagabond_background",
 				"adventurous_noble_background",
@@ -194,7 +194,7 @@
 				"female_beggar_background",
 				"female_daytaler_background",
 				"female_daytaler_background",
-				"female_tailor_background",
+				//"female_tailor_background",
 				"female_thief_background"
 			],
 			[
@@ -204,7 +204,7 @@
 				"female_daytaler_background",
 				
 				"female_servant_background",
-				"female_tailor_background",
+				//"female_tailor_background",
 				"female_thief_background",
 				"female_adventurous_noble_background"
 			],
@@ -213,7 +213,7 @@
 				"female_beggar_background",
 				
 				"female_daytaler_background",
-				"female_tailor_background",
+				//"female_tailor_background",
 				"female_adventurous_noble_background",
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background"
@@ -228,12 +228,12 @@
 			]
 		];
 
-		if (this.Const.DLC.Unhold)
-		{
-			this.m.DraftLists[0].push("beast_hunter_background");
-			this.m.DraftLists[1].push("beast_hunter_background");
-			this.m.DraftLists[2].push("beast_hunter_background");
-		}
+		// if (this.Const.DLC.Unhold)
+		// {
+		// 	this.m.DraftLists[0].push("beast_hunter_background");
+		// 	this.m.DraftLists[1].push("beast_hunter_background");
+		// 	this.m.DraftLists[2].push("beast_hunter_background");
+		// }
 
 		this.m.Rumors = this.Const.Strings.RumorsSteppeSettlement;
 	}

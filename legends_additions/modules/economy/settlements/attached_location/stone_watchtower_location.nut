@@ -8,7 +8,6 @@
 			return;
 		}
 
-		_list.push("legend_ironmonger_background");
 		_list.push("retired_soldier_background");
 		_list.push("deserter_background");
 	}

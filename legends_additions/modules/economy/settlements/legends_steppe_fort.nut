@@ -106,7 +106,7 @@
 				"female_beggar_background",
 				
 				"female_servant_background",
-				"female_tailor_background",
+				//"female_tailor_background",
 				"female_adventurous_noble_background",
 				"female_adventurous_noble_background",
 				"female_adventurous_noble_background"
@@ -211,7 +211,7 @@
 				"ratcatcher_background",
 				"refugee_background",
 				"servant_background",
-				"tailor_background",
+				//"tailor_background",
 				"vagabond_background",
 				
 				"adventurous_noble_background",

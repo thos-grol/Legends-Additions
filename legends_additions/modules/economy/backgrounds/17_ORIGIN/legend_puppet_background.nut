@@ -35,7 +35,6 @@
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/shortsword"));
 		}
 		else if (r == 4)
 		{

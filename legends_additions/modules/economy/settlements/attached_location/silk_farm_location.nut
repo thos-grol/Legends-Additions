@@ -15,7 +15,6 @@
 
 		_list.push("daytaler_southern_background");
 		_list.push("daytaler_southern_background");
-		_list.push("legend_muladi_background");
 
 		if (_gender)
 		{

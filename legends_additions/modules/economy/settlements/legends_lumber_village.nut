@@ -117,7 +117,7 @@
 				"wildman_background",
 				"hunter_background",
 				"hunter_background",
-				"tailor_background",
+				//"tailor_background",
 				"apprentice_background",
 				"lumberjack_background",
 				"lumberjack_background",
@@ -146,7 +146,7 @@
 				
 				"poacher_background",
 				"poacher_background",
-				"tailor_background",
+				//"tailor_background",
 				"vagabond_background",
 				"wildman_background",
 				
@@ -194,7 +194,7 @@
 				"poacher_background",
 				"ratcatcher_background",
 				"refugee_background",
-				"tailor_background",
+				//"tailor_background",
 				"thief_background",
 				"vagabond_background",
 				"wildman_background",
@@ -250,13 +250,13 @@
 			]
 		];
 
-		if (this.Const.DLC.Unhold)
-		{
-			this.m.DraftLists[0].push("beast_hunter_background");
-			this.m.DraftLists[1].push("beast_hunter_background");
-			this.m.DraftLists[2].push("beast_hunter_background");
-			this.m.DraftLists[2].push("beast_hunter_background");
-		}
+		// if (this.Const.DLC.Unhold)
+		// {
+		// 	this.m.DraftLists[0].push("beast_hunter_background");
+		// 	this.m.DraftLists[1].push("beast_hunter_background");
+		// 	this.m.DraftLists[2].push("beast_hunter_background");
+		// 	this.m.DraftLists[2].push("beast_hunter_background");
+		// }
 
 		this.m.Rumors = this.Const.Strings.RumorsForestSettlement;
 		this.m.ProduceString = "wood";

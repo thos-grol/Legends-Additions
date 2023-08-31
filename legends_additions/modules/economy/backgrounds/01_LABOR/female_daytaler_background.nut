@@ -11,8 +11,7 @@
 				this.Const.Perks.MaceTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree,
-				this.Const.Perks.MediumArmorTree
+				this.Const.Perks.LightArmorTree
 			],
 			Traits = [
 				this.Const.Perks.FitTree

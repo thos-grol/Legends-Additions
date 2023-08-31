@@ -6,26 +6,37 @@
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 
-		if ("Weapon" in this.m.PerkTreeDynamic)
-		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
-		}
+		this.m.PerkTreeDynamic = {
+			Weapon = [
+				this.Const.Perks.AxeTree,
+				this.Const.Perks.CleaverTree,
+				this.Const.Perks.ShieldTree,
+			],
+			Defense = [
+				this.Const.Perks.HeavyArmorTree,
+				this.Const.Perks.LightArmorTree
+			],
+			Traits = [
+				this.Const.Perks.ViciousTree,
+				this.Const.Perks.TrainedTree
+			],
+			Enemy = [],
+			Class = [
+				this.Const.Perks.FistsClassTree
+			],
+			Magic = []
+		};
+
+		this.m.PerkTreeDynamicMins.Traits = 4;
 	}
 
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(1, 3);
+		r = this.Math.rand(2, 3);
 
-		if (r == 1)
-		{
-			items.equip(this.new("scripts/items/weapons/barbarians/axehammer"));
-		}
-		else if (r == 2)
+		if (r == 2)
 		{
 			items.equip(this.new("scripts/items/weapons/barbarians/crude_axe"));
 		}

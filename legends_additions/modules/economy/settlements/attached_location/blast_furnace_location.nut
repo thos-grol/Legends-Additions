@@ -4,7 +4,6 @@
 		if (!this.isActive()) return;
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 
-		_list.push("squire_background");
 		_list.push("deserter_background");
 		_list.push("disowned_noble_background");
 	}

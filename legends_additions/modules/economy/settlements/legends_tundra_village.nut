@@ -123,7 +123,7 @@
 				
 				"poacher_background",
 				"shepherd_background",
-				"tailor_background",
+				//"tailor_background",
 				"vagabond_background",
 				"wildman_background",
 				"brawler_background",
@@ -153,7 +153,7 @@
 				
 				
 				"poacher_background",
-				"tailor_background",
+				//"tailor_background",
 				"thief_background",
 				"vagabond_background",
 				"wildman_background",
@@ -219,7 +219,7 @@
 				"female_butcher_background",
 				"female_daytaler_background",
 				
-				"female_tailor_background",
+				//"female_tailor_background",
 				"female_thief_background"
 			],
 			[
@@ -227,7 +227,7 @@
 				"female_beggar_background",
 				"female_daytaler_background",
 				"female_daytaler_background",
-				"female_tailor_background",
+				//"female_tailor_background",
 				"female_thief_background",
 				"wildwoman_background",
 				"female_disowned_noble_background"

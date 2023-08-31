@@ -13,8 +13,8 @@
 			return;
 		}
 
-		_list.push("legend_herbalist_background");
-		_list.push("legend_herbalist_background");
+		//_list.push("legend_herbalist_background");
+		//_list.push("legend_herbalist_background");
 		_list.push("daytaler_background");
 		_list.push("daytaler_background");
 	}

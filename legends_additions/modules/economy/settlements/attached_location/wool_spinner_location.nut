@@ -9,8 +9,8 @@
 		if (!this.isActive()) return;
 		_list.push("apprentice_background");
 		_list.push("caravan_hand_background");
-		_list.push("tailor_background");
-		_list.push("female_tailor_background");
+		//_list.push("tailor_background");
+		//_list.push("female_tailor_background");
 		_list.push("shepherd_background");
 	}
 

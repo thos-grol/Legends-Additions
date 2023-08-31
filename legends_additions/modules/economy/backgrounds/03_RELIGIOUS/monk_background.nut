@@ -1,3 +1,5 @@
+//TODO: Create monk join event
+//TODO: Monk has access to heart
 ::mods_hookExactClass("skills/backgrounds/monk_background", function(o) {
 	local create = o.create;
 	o.create = function()
@@ -6,13 +8,24 @@
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 
-		if ("Weapon" in this.m.PerkTreeDynamic)
-		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
-		}
+		this.m.PerkTreeDynamic = {
+			Weapon = [
+				this.Const.Perks.FlailTree,
+				this.Const.Perks.MaceTree
+			],
+			Defense = [
+				this.Const.Perks.ClothArmorTree
+			],
+			Traits = [
+				this.Const.Perks.IntelligentTree,
+				this.Const.Perks.CalmTree
+			],
+			Enemy = [],
+			Class = [
+				this.Const.Perks.FaithClassTree
+			],
+			Magic = []
+		};
 	}
 
 	o.onAddEquipment = function()

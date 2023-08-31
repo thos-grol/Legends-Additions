@@ -13,8 +13,6 @@
 		_list.push("shepherd_southern_background");
 		_list.push("shepherd_southern_background");
 		_list.push("shepherd_southern_background");
-		_list.push("legend_muladi_background");
-		_list.push("legend_muladi_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )

@@ -47,20 +47,17 @@
 			"slave_southern_background",
 			"slave_southern_background",
 			"slave_southern_background",
-			"manhunter_background",
-			"manhunter_background",
 			"nomad_background",
 			"nomad_background",
 			"nomad_ranged_background",
 			"juggler_southern_background",
-			"assassin_southern_background",
-			"legend_muladi_background",
+			"assassin_southern_background"
 		];
 
-		if (this.Const.DLC.Unhold)
-		{
-			this.m.DraftList.push("beast_hunter_background");
-		}
+		// if (this.Const.DLC.Unhold)
+		// {
+		// 	this.m.DraftList.push("beast_hunter_background");
+		// }
 
 		this.m.UIDescription = "A large and rich city state that thrives on trade at the edge of the desert";
 		this.m.Description = "A large and rich city state that thrives on trade at the edge of the desert.";

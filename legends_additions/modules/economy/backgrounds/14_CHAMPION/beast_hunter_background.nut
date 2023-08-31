@@ -1,3 +1,4 @@
+//Disabled
 ::mods_hookExactClass("skills/backgrounds/beast_hunter_background", function(o) {
 	local create = o.create;
 	o.create = function()

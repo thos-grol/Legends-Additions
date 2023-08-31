@@ -16,7 +16,6 @@
 		_list.push("miner_background");
 		_list.push("miner_background");
 		_list.push("miner_background");
-		_list.push("legend_ironmonger_background");
 		_list.push("caravan_hand_background");
 		_list.push("thief_background");
 	}

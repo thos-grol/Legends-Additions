@@ -16,7 +16,7 @@
 		_list.push("cultist_background");
 		_list.push("cultist_background");
 		_list.push("wildman_background");
-		_list.push("legend_herbalist_background");
+		//_list.push("legend_herbalist_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )

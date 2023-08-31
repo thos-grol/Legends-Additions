@@ -7,13 +7,24 @@
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 
-		if ("Weapon" in this.m.PerkTreeDynamic)
-		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
-		}
+		this.m.PerkTreeDynamic = {
+			Weapon = [
+				this.Const.Perks.MaceTree,
+				this.Const.Perks.PolearmTree,
+				this.Const.Perks.ShieldTree,
+			],
+			Defense = [
+				this.Const.Perks.LightArmorTree
+			],
+			Traits = [
+				this.Const.Perks.TrainedTree
+			],
+			Enemy = [],
+			Class = [
+				this.Const.Perks.MilitiaClassTree
+			],
+			Magic = []
+		};
 	}
 	
 	o.onAddEquipment = function()
@@ -38,10 +49,6 @@
 		{
 			items.equip(this.new("scripts/items/weapons/oriental/light_southern_mace"));
 			items.equip(this.new("scripts/items/shields/oriental/southern_light_shield"));
-		}
-		else if (r == 4)
-		{
-			items.equip(this.new("scripts/items/weapons/oriental/firelance"));
 		}
 
 		items.equip(this.Const.World.Common.pickArmor([

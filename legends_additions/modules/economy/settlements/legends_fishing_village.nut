@@ -109,7 +109,7 @@
 				"fisherman_background",
 				"gravedigger_background",
 				
-				"tailor_background",
+				//"tailor_background",
 				"vagabond_background",
 				"vagabond_background",
 				"fisherman_background",
@@ -147,7 +147,7 @@
 				"ratcatcher_background",
 				"refugee_background",
 				"servant_background",
-				"tailor_background",
+				//"tailor_background",
 				"thief_background",
 				"vagabond_background",
 				"cripple_background",
@@ -230,7 +230,7 @@
 				"female_butcher_background",
 				"female_butcher_background",
 				"female_servant_background",
-				"female_tailor_background",
+				//"female_tailor_background",
 				"female_thief_background"
 			],
 			[
@@ -242,7 +242,7 @@
 				"female_butcher_background",
 				"female_servant_background",
 				"female_servant_background",
-				"female_tailor_background",
+				//"female_tailor_background",
 				"female_thief_background",
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background"

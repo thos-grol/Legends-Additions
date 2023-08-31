@@ -137,8 +137,8 @@
 				"retired_soldier_background",
 				"disowned_noble_background",
 				"sellsword_background",
-				"squire_background",
-				"squire_background",
+				
+				
 				"cripple_background",
 				"gambler_background",
 				
@@ -154,8 +154,8 @@
 				"retired_soldier_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				"squire_background",
-				"squire_background",
+				
+				
 				"cripple_background"
 			],
 			[
@@ -173,7 +173,7 @@
 				
 				"ratcatcher_background",
 				"refugee_background",
-				"tailor_background",
+				//"tailor_background",
 				"vagabond_background",
 				
 				"adventurous_noble_background",
@@ -187,8 +187,8 @@
 				"hedge_knight_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				"squire_background",
-				"squire_background",
+				
+				
 				
 				"apprentice_background",
 				"gambler_background",
@@ -210,8 +210,8 @@
 				"hedge_knight_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				"squire_background",
-				"squire_background",
+				
+				
 			]
 		];
 		this.m.FemaleDraftLists = [
@@ -232,7 +232,7 @@
 				"female_farmhand_background",
 				"female_miller_background",
 				"female_miller_background",
-				"female_tailor_background",
+				//"female_tailor_background",
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background",
 				"female_disowned_noble_background"

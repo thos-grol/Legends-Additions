@@ -13,9 +13,7 @@
 			Defense = [
 				this.Const.Perks.LightArmorTree
 			],
-			Traits = [
-				this.Const.Perks.IndestructibleTree
-			],
+			Traits = [],
 			Enemy = [],
 			Class = [
 				this.Const.Perks.PickaxeClassTree

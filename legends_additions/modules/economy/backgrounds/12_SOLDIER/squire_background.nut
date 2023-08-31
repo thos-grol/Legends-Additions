@@ -1,3 +1,4 @@
+//Disabled
 ::mods_hookExactClass("skills/backgrounds/squire_background", function(o) {
 	local create = o.create;
 	o.create = function()
@@ -6,13 +7,23 @@
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 
-		if ("Weapon" in this.m.PerkTreeDynamic)
-		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
-		}
+		this.m.PerkTreeDynamic = {
+			Weapon = [
+				this.Const.Perks.SwordTree,
+				this.Const.Perks.ShieldTree,
+				this.Const.Perks.PolearmTree,
+				this.Const.Perks.BowTree
+			],
+			Defense = [],
+			Traits = [
+				this.Const.Perks.TrainedTree,
+			],
+			Enemy = [],
+			Class = [],
+			Magic = []
+		};
+
+		this.m.PerkTreeDynamicMins.Traits = 4;
 	}
 
 	o.onAddEquipment = function()
