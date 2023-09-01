@@ -96,7 +96,7 @@
 		this.m.DraftLists = [
 			[
 				"apprentice_background",
-				
+
 				"beggar_background",
 				"brawler_background",
 				"daytaler_background",
@@ -105,21 +105,21 @@
 				"militia_background",
 				"militia_background",
 				"vagabond_background",
-				
+
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
 				"retired_soldier_background",
 				"retired_soldier_background",
 				"apprentice_background",
-				
+
 				"brawler_background",
 				"mason_background",
 				"messenger_background",
 				"militia_background",
 				"militia_background",
 				"vagabond_background",
-				
+
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -129,7 +129,7 @@
 			[
 				"apprentice_background",
 				"apprentice_background",
-				
+
 				"brawler_background",
 				"caravan_hand_background",
 				"gambler_background",
@@ -142,7 +142,7 @@
 				"miner_background",
 				"servant_background",
 				"shepherd_background",
-				
+
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
@@ -153,7 +153,7 @@
 				"sellsword_background",
 				"apprentice_background",
 				"apprentice_background",
-				
+
 				"brawler_background",
 				"caravan_hand_background",
 				"gambler_background",
@@ -165,7 +165,7 @@
 				"miner_background",
 				"miner_background",
 				"shepherd_background",
-				
+
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -194,7 +194,7 @@
 				"miner_background",
 				"ratcatcher_background",
 				"vagabond_background",
-				
+
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
@@ -205,12 +205,11 @@
 				"sellsword_background",
 				"sellsword_background",
 				"sellsword_background",
-				
-				
-				
+
+
+
 				"cripple_background",
-				"hedge_knight_background",
-				"hedge_knight_background",
+
 				"apprentice_background",
 				"apprentice_background",
 				"brawler_background",
@@ -231,7 +230,7 @@
 				"miner_background",
 				"ratcatcher_background",
 				"vagabond_background",
-				
+
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -241,12 +240,11 @@
 				"sellsword_background",
 				"sellsword_background",
 				"sellsword_background",
-				
-				
-				
+
+
+
 				"cripple_background",
-				"hedge_knight_background",
-				"hedge_knight_background"
+
 			]
 		];
 		this.m.FemaleDraftLists = [

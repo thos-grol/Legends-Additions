@@ -110,7 +110,7 @@
 		];
 		this.m.DraftLists = [
 			[
-				
+
 				"brawler_background",
 				"cultist_background",
 				"mason_background",
@@ -118,7 +118,7 @@
 				"militia_background",
 				"vagabond_background",
 				"wildman_background",
-				
+
 				"deserter_background",
 				"deserter_background",
 				"raider_background",
@@ -127,7 +127,7 @@
 			],
 			[
 				"apprentice_background",
-				
+
 				"brawler_background",
 				"brawler_background",
 				"cultist_background",
@@ -136,14 +136,14 @@
 				"messenger_background",
 				"militia_background",
 				"miner_background",
-				
+
 				"ratcatcher_background",
 				"refugee_background",
 				"vagabond_background",
 				"vagabond_background",
 				"wildman_background",
 				"wildman_background",
-				
+
 				"deserter_background",
 				"raider_background",
 				"retired_soldier_background"
@@ -164,19 +164,18 @@
 				"vagabond_background",
 				"wildman_background",
 				"wildman_background",
-				
-				
+
+
 				"deserter_background",
 				"deserter_background",
-				"hedge_knight_background",
-				"hedge_knight_background",
+
 				"raider_background",
 				"raider_background",
 				"raider_background",
 				"retired_soldier_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				
+
 				"cripple_background"
 			]
 		];

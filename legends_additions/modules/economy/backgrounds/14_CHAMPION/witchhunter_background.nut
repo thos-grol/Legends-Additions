@@ -1,3 +1,4 @@
+//Disabled
 ::mods_hookExactClass("skills/backgrounds/witchhunter_background", function(o) {
 	local create = o.create;
 	o.create = function()
@@ -5,7 +6,6 @@
 		create();
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
-		//FEATURE_1: revamp background multipliers and camping
 		this.m.Modifiers.Crafting = this.Const.LegendMod.ResourceModifiers.Crafting[0];
 	}
 

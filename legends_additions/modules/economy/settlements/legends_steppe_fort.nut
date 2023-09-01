@@ -104,7 +104,7 @@
 			],
 			[
 				"female_beggar_background",
-				
+
 				"female_servant_background",
 				//"female_tailor_background",
 				"female_adventurous_noble_background",
@@ -116,7 +116,7 @@
 			[
 				"caravan_hand_background",
 				"caravan_hand_background",
-				
+
 				"daytaler_background",
 				"mason_background",
 				"militia_background",
@@ -130,7 +130,7 @@
 				"retired_soldier_background",
 				"caravan_hand_background",
 				"caravan_hand_background",
-				
+
 				"mason_background",
 				"militia_background",
 				"militia_background",
@@ -144,7 +144,7 @@
 			],
 			[
 				"apprentice_background",
-				
+
 				"beggar_background",
 				"brawler_background",
 				"caravan_hand_background",
@@ -159,7 +159,7 @@
 				"refugee_background",
 				"servant_background",
 				"vagabond_background",
-				
+
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
@@ -168,7 +168,7 @@
 				"retired_soldier_background",
 				"sellsword_background",
 				"apprentice_background",
-				
+
 				"brawler_background",
 				"caravan_hand_background",
 				"caravan_hand_background",
@@ -181,7 +181,7 @@
 				"ratcatcher_background",
 				"refugee_background",
 				"vagabond_background",
-				
+
 				"bastard_background",
 				"deserter_background",
 				"raider_background",
@@ -192,7 +192,7 @@
 			[
 				"apprentice_background",
 				"beggar_background",
-				
+
 				"brawler_background",
 				"caravan_hand_background",
 				"caravan_hand_background",
@@ -207,13 +207,13 @@
 				"militia_background",
 				"militia_background",
 				"militia_background",
-				
+
 				"ratcatcher_background",
 				"refugee_background",
 				"servant_background",
 				//"tailor_background",
 				"vagabond_background",
-				
+
 				"adventurous_noble_background",
 				"adventurous_noble_background",
 				"adventurous_noble_background",
@@ -227,8 +227,8 @@
 				"sellsword_background",
 				"sellsword_background",
 				"sellsword_background",
-				
-				"hedge_knight_background",
+
+
 				"apprentice_background",
 				"brawler_background",
 				"caravan_hand_background",
@@ -244,11 +244,11 @@
 				"militia_background",
 				"militia_background",
 				"militia_background",
-				
+
 				"ratcatcher_background",
 				"refugee_background",
 				"vagabond_background",
-				
+
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -259,8 +259,6 @@
 				"sellsword_background",
 				"sellsword_background",
 				"sellsword_background",
-				
-				"hedge_knight_background"
 			]
 		];
 		this.m.StablesLists = [

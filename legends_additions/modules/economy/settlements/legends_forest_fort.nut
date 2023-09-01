@@ -97,7 +97,7 @@
 		this.m.DraftLists = [
 			[
 				"apprentice_background",
-				
+
 				"brawler_background",
 				"hunter_background",
 				"hunter_background",
@@ -113,7 +113,7 @@
 			],
 			[
 				"apprentice_background",
-				
+
 				"brawler_background",
 				"daytaler_background",
 				"gravedigger_background",
@@ -124,11 +124,11 @@
 				"militia_background",
 				"militia_background",
 				"wildman_background",
-				
+
 				"bastard_background",
 				"deserter_background",
 				"retired_soldier_background",
-				
+
 			],
 			[
 				"apprentice_background",
@@ -146,19 +146,18 @@
 				"ratcatcher_background",
 				"refugee_background",
 				"wildman_background",
-				
+
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
-				"hedge_knight_background",
 				"raider_background",
 				"raider_background",
 				"retired_soldier_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				
-				
-				
+
+
+
 				"cripple_background"
 			]
 		];

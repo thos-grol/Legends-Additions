@@ -108,7 +108,7 @@
 		this.m.DraftLists = [
 			[
 				"apprentice_background",
-				
+
 				"militia_background",
 				"militia_background",
 				"miner_background",
@@ -121,7 +121,7 @@
 				"retired_soldier_background"
 			],
 			[
-				
+
 				"brawler_background",
 				"gravedigger_background",
 				"messenger_background",
@@ -130,7 +130,7 @@
 				"ratcatcher_background",
 				"vagabond_background",
 				"wildman_background",
-				
+
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -152,7 +152,7 @@
 				"militia_background",
 				"militia_background",
 				"militia_background",
-				
+
 				"ratcatcher_background",
 				"refugee_background",
 				"shepherd_background",
@@ -160,7 +160,7 @@
 				"vagabond_background",
 				"wildman_background",
 				"wildman_background",
-				
+
 				"bastard_background",
 				"bastard_background",
 				"deserter_background",
@@ -169,12 +169,11 @@
 				"retired_soldier_background",
 				"sellsword_background",
 				"sellsword_background",
-				
-				
+
+
 				"cripple_background",
 				"eunuch_background",
-				"hedge_knight_background",
-				"hedge_knight_background"
+
 			]
 		];
 		this.m.FemaleDraftLists = [
@@ -184,20 +183,20 @@
 			],
 			[
 				"legend_shieldmaiden_background",
-				
+
 				"female_daytaler_background",
 				"wildwoman_background",
-				
+
 				"female_disowned_noble_background"
 			],
 			[
 				"legend_shieldmaiden_background",
 				"female_beggar_background",
-				
+
 				"female_daytaler_background",
 				"female_farmhand_background",
 				"wildwoman_background",
-				
+
 				"female_disowned_noble_background"
 			]
 		];

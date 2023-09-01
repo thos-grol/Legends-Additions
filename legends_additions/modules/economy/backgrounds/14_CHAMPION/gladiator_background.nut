@@ -25,7 +25,6 @@
 		};
 
 		this.m.PerkTreeDynamicMins.Traits = 4;
-		//TODO: resume background editing from here.
 		//TODO: add arena wins trait to gladiator.
 	}
 

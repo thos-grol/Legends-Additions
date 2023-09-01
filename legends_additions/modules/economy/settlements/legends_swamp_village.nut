@@ -211,7 +211,6 @@
 
 				"adventurous_noble_background",
 				"bastard_background",
-				"hedge_knight_background",
 				"retired_soldier_background",
 				"sellsword_background",
 

@@ -105,7 +105,7 @@
 		this.m.DraftLists = [
 			[
 				"apprentice_background",
-				
+
 				"butcher_background",
 				"daytaler_background",
 				"lumberjack_background",
@@ -131,7 +131,7 @@
 			],
 			[
 				"beggar_background",
-				
+
 				"brawler_background",
 				"butcher_background",
 				"daytaler_background",
@@ -143,13 +143,13 @@
 				"lumberjack_background",
 				"lumberjack_background",
 				"militia_background",
-				
+
 				"poacher_background",
 				"poacher_background",
 				//"tailor_background",
 				"vagabond_background",
 				"wildman_background",
-				
+
 				"cripple_background",
 				"eunuch_background",
 				"brawler_background",
@@ -162,13 +162,13 @@
 				"lumberjack_background",
 				"lumberjack_background",
 				"militia_background",
-				
+
 				"poacher_background",
 				"poacher_background",
 				"vagabond_background",
 				"wildman_background",
 				"wildman_background",
-				
+
 				"cripple_background",
 				"eunuch_background"
 			],
@@ -187,8 +187,8 @@
 				"lumberjack_background",
 				"militia_background",
 				"militia_background",
-				
-				
+
+
 				"poacher_background",
 				"poacher_background",
 				"poacher_background",
@@ -198,20 +198,19 @@
 				"thief_background",
 				"vagabond_background",
 				"wildman_background",
-				
+
 				"bastard_background",
-				"hedge_knight_background",
 				"retired_soldier_background",
 				"cripple_background",
 				"eunuch_background",
-				
+
 			]
 		];
 		this.m.FemaleDraftLists = [
 			[
 				"wildwoman_background",
-				
-				
+
+
 				"female_butcher_background",
 				"female_daytaler_background",
 				"female_tailor_background"
@@ -219,16 +218,16 @@
 			[
 				"wildwoman_background",
 				"female_beggar_background",
-				
-				
+
+
 				"female_daytaler_background",
 				"female_tailor_background"
 			],
 			[
 				"legend_shieldmaiden_background",
-				
-				
-				
+
+
+
 				"female_butcher_background",
 				"female_servant_background",
 				"wildwoman_background",
@@ -237,16 +236,16 @@
 		];
 		this.m.StablesLists = [
 			[
-				
-				
+
+
 			],
 			[
-				
-				
+
+
 			],
 			[
-				
-				
+
+
 			]
 		];
 

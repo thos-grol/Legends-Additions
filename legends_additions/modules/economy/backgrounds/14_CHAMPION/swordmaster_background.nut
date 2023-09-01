@@ -1,3 +1,4 @@
+//disabled
 ::mods_hookExactClass("skills/backgrounds/swordmaster_background", function(o) {
 	local create = o.create;
 	o.create = function()

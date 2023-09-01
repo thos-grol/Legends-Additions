@@ -151,7 +151,7 @@
 				"militia_background",
 				"miller_background",
 				"miller_background",
-				
+
 				"ratcatcher_background",
 				"refugee_background",
 				"servant_background",
@@ -165,14 +165,14 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				
+
 				"ratcatcher_background",
 				"refugee_background",
 				"vagabond_background",
 				"retired_soldier_background"
 			],
 			[
-				
+
 				"apprentice_background",
 				"caravan_hand_background",
 				"gambler_background",
@@ -180,21 +180,20 @@
 				"juggler_background",
 				"militia_background",
 				"militia_background",
-				
-				
-				
+
+
+
 				"ratcatcher_background",
 				"refugee_background",
 				"shepherd_background",
 				"vagabond_background",
 				"bastard_background",
-				"hedge_knight_background",
 				"raider_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				
-				
-				
+
+
+
 			]
 		];
 		this.m.FemaleDraftLists = [
@@ -242,18 +241,18 @@
 		];
 		this.m.StablesLists = [
 			[
-				
+
 				"legend_donkey_background"
 			],
 			[
-				
-				
-				
+
+
+
 			],
 			[
-				
-				
-				
+
+
+
 			]
 		];
 		this.m.Rumors = this.Const.Strings.RumorsFarmingSettlement;
