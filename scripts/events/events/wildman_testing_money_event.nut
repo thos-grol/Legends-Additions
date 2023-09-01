@@ -67,7 +67,7 @@ this.wildman_testing_money_event <- this.inherit("scripts/events/event", {
 			{
 				this.World.Assets.addMoralReputation(-1);
 				this.Characters.push(_event.m.Wildman.getImagePath());
-				local money = 10 * _event.m.Wildman.getDaysWithCompany();
+				local money = 2 * _event.m.Wildman.getDaysWithCompany();
 				this.World.Assets.addMoney(money);
 				this.List = [
 					{

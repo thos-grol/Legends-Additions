@@ -67,12 +67,12 @@ this.runaway_laborers_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation decreases slightly"
 				});
-				this.World.Assets.addMoney(50);
+				this.World.Assets.addMoney(15);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
+						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
 					}
 				];
 			}
@@ -110,20 +110,36 @@ this.runaway_laborers_event <- this.inherit("scripts/events/event", {
 			{
 				local roster = this.World.getTemporaryRoster();
 				_event.m.Dude = roster.create("scripts/entity/tactical/player");
+				_event.m.Dude.setStartValuesEx(this.Const.CharacterLaborerBackgrounds);
 
-				if (this.World.Assets.getOrigin().getID() == "scenario.legend_risen_legion")
-				{
-					_event.m.Dude.getFlags().add("PlayerSkeleton");
-					_event.m.Dude.getFlags().add("undead");
-					_event.m.Dude.getFlags().add("skeleton");
-					_event.m.Dude.setStartValuesEx(this.Const.CharacterLaborerBackgrounds);
-					_event.m.Dude.getSkills().add(this.new("scripts/skills/racial/skeleton_racial"));
-					_event.m.Dude.getSkills().add(this.new("scripts/skills/traits/legend_fleshless_trait"));
-				}
-				else
-				{
-					_event.m.Dude.setStartValuesEx(this.Const.CharacterLaborerBackgrounds);
-				}
+				_event.m.Dude.m.PerkPoints = 3;
+				_event.m.Dude.m.LevelUps = 3;
+				_event.m.Dude.m.Level = 4;
+				_event.m.Dude.m.XP = ::Const.LevelXP[_event.m.Dude.m.Level - 1];
+				_event.m.Dude.m.Talents = [];
+				local talents = _event.m.Dude.getTalents();
+				talents.resize(::Const.Attributes.COUNT, 0);
+
+				local roll = ::Math.rand(1, 100);
+				if (roll < 15) roll = 3;
+				else if (rol < 40) roll = 2;
+				else roll = 1;
+				talents[::Const.Attributes.MeleeSkill] = roll;
+
+				roll = ::Math.rand(1, 100);
+				if (roll < 15) roll = 3;
+				else if (rol < 40) roll = 2;
+				else roll = 1;
+				talents[::Const.Attributes.MeleeDefense] = roll;
+
+				roll = ::Math.rand(1, 100);
+				if (roll < 15) roll = 3;
+				else if (rol < 40) roll = 2;
+				else roll = 1;
+				talents[::Const.Attributes.Fatigue] = roll;
+
+				_event.m.Dude.m.Attributes = [];
+				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 
 				this.Characters.push(_event.m.Dude.getImagePath());
 				this.List.push({
@@ -190,15 +206,8 @@ this.runaway_laborers_event <- this.inherit("scripts/events/event", {
 	{
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (!currentTile.HasRoad)
-		{
-			return;
-		}
-
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
-		{
-			return;
-		}
+		if (!currentTile.HasRoad) return;
+		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2) return;
 
 		this.m.Score = 7;
 	}

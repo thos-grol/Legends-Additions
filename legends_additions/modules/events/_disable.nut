@@ -34,6 +34,11 @@
 ::mods_hookExactClass("events/events/pimp_and_harlots_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/traveling_troupe_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/traveling_monk_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/inadvertently_save_merchant_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/troublemakers_bully_peasants_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/pimp_vs_harlot_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/peacenik_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dead_merchant_forest_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework event spooky
 
 
 //Disable dlc2 events
@@ -136,8 +141,6 @@
     //change cooldown.
     //increase event score by the number of gravediggers in party
 //graverobber_heist_event
-//greedy_demands_raise_event
-    //increase wage by 2
 //historian_mysterious_text_event
 //petrified_scream_event
 //treant_vs_giants_event

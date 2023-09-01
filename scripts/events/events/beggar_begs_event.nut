@@ -85,11 +85,11 @@ this.beggar_begs_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Beggar.getImagePath());
-				this.World.Assets.addMoney(-10);
+				this.World.Assets.addMoney(-3);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]10[/color] Crowns"
+					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]3[/color] Crowns"
 				});
 				_event.m.Beggar.improveMood(0.5, "Got a few extra crowns from you");
 				this.World.Assets.addMoralReputation(1);

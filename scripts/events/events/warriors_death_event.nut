@@ -147,11 +147,11 @@ this.warriors_death_event <- this.inherit("scripts/events/event", {
 					}
 				}
 
-				this.World.Assets.addMoney(-60);
+				this.World.Assets.addMoney(-15);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]60[/color] Crowns"
+					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]15[/color] Crowns"
 				});
 			}
 
