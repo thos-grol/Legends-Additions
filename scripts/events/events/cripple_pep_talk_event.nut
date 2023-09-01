@@ -7,7 +7,7 @@ this.cripple_pep_talk_event <- this.inherit("scripts/events/event", {
 	{
 		this.m.ID = "event.cripple_pep_talk";
 		this.m.Title = "During camp...";
-		this.m.Cooldown = 60.0 * this.World.getTime().SecondsPerDay;
+		this.m.Cooldown = 7.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
 			Text = "[img]gfx/ui/events/event_06.png[/img]%cripple% the cripple asks how %veteran% does it. The veteran raises an eyebrow.%SPEECH_ON%Do what?%SPEECH_OFF%The cripple bounces their head around as if figuratively beating around the bush.%SPEECH_ON%You know, it. Fight. Every time I get out there, I just think I\'m not up to it, as though I were dragging you folk down.%SPEECH_OFF%%veteran% laughs.%SPEECH_ON%Aye, I get what you mean. A cripple ain\'t fit for sellswording. But is that who you are? Just a cripple? Or are ye a hero? You can choose to let your wobbles and ungainliness define who you are, or you can make your own path, as crooked and hobbled it may be.%SPEECH_OFF%Nodding, %cripple%\'s face starts to glow.%SPEECH_ON%You\'re right. I\'m not all that I could be and I got the body of a dying nun, but no one will put in more effort than I!%SPEECH_OFF%",
@@ -35,6 +35,7 @@ this.cripple_pep_talk_event <- this.inherit("scripts/events/event", {
 				_event.m.Cripple.getBaseProperties().Stamina += fatigue;
 				_event.m.Cripple.getBaseProperties().Initiative += initiative;
 				_event.m.Cripple.getSkills().update();
+				_event.markAsLearned();
 				this.List = [
 					{
 						id = 16,
@@ -63,44 +64,34 @@ this.cripple_pep_talk_event <- this.inherit("scripts/events/event", {
 		});
 	}
 
+	function markAsLearned()
+	{
+		this.m.Cripple.getFlags().add("event_cripple");
+	}
+
 	function onUpdateScore()
 	{
 		local brothers = this.World.getPlayerRoster().getAll();
-
-		if (brothers.len() < 2)
-		{
-			return;
-		}
+		if (brothers.len() < 2) return;
 
 		local cripple_candidates = [];
-
 		foreach( bro in brothers )
 		{
-			if (bro.getLevel() <= 3 && bro.getBackground().getID() == "background.cripple")
-			{
-				cripple_candidates.push(bro);
-			}
+			if (bro.getBackground().getID() == "background.cripple" && !bro.getFlags().has("event_cripple")) cripple_candidates.push(bro);
+
 		}
 
-		if (cripple_candidates.len() == 0)
-		{
-			return;
-		}
+		if (cripple_candidates.len() == 0) return;
+
 
 		local veteran_candidates = [];
-
 		foreach( bro in brothers )
 		{
-			if (bro.getLevel() >= 5)
-			{
-				veteran_candidates.push(bro);
-			}
+			if (bro.getLevel() >= 5) veteran_candidates.push(bro);
+
 		}
 
-		if (veteran_candidates.len() == 0)
-		{
-			return;
-		}
+		if (veteran_candidates.len() == 0) return;
 
 		this.m.Cripple = cripple_candidates[this.Math.rand(0, cripple_candidates.len() - 1)];
 		this.m.Veteran = veteran_candidates[this.Math.rand(0, veteran_candidates.len() - 1)];

@@ -89,11 +89,11 @@ this.bad_curse_event <- this.inherit("scripts/events/event", {
 					icon = this.Const.MoodStateIcon[_event.m.Cursed.getMoodState()],
 					text = _event.m.Cursed.getName() + this.Const.MoodStateEvent[_event.m.Cursed.getMoodState()]
 				});
-				this.World.Assets.addMoney(-400);
+				this.World.Assets.addMoney(-40);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + 400 + "[/color] Crowns"
+					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + 40 + "[/color] Crowns"
 				});
 			}
 
@@ -215,15 +215,7 @@ this.bad_curse_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.World.getTime().IsDaytime)
-		{
-			return;
-		}
-
-		if (this.World.Assets.getMoney() < 1000)
-		{
-			return;
-		}
+		if (this.World.Assets.getMoney() < 100) return;
 
 		local towns = this.World.EntityManager.getSettlements();
 		local nearTown = false;

@@ -7,7 +7,7 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 	{
 		this.m.ID = "event.apprentice_learns";
 		this.m.Title = "During camp...";
-		this.m.Cooldown = 90.0 * this.World.getTime().SecondsPerDay;
+		this.m.Cooldown = 7.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
 			Text = "[img]gfx/ui/events/event_05.png[/img]The apprentice %apprentice% has apparently become a ward to %teacher%. The swordmaster, while long in the tooth, seems quite eager to help the young one become a better fighter. The apprentice uses a real sword, the swordmaster but a wooden one. It is in this rather large difference of chosen weaponry that the swordmaster displays the usefulness of positioning, finding openings, and getting out of the way of danger.\n\nEven in old age the master twirls and whirls, becoming impossible for the apprentice to hit. In one particularly brilliant trick, the swordmaster senses an incoming strike, so closes distance with the apprentice and steps on their foot. When the apprentice tilts back to create space, the foot does not follow. The sudden imbalance brings the trainee tumbling to the ground, then looks up to find a wooden sword prodding the neck.\n\nYou find the apprentice patting the dirt off pretty often, at least the young one is always getting up for more. Let\'s just say the apprentice is improving one splinter at a time.",
@@ -234,7 +234,12 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 
 	function markAsLearned()
 	{
-		this.m.Apprentice.getFlags().add("learned");
+		if (this.m.Apprentice.getFlags().has("event_apprentice_1"))
+		{
+			this.m.Apprentice.getFlags().add("event_apprentice_2");
+			return;
+		}
+		this.m.Apprentice.getFlags().add("event_apprentice_1");
 	}
 
 	function onUpdateScore()
@@ -250,36 +255,22 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 
 		foreach( bro in brothers )
 		{
-			if (bro.getLevel() > 3 && bro.getBackground().getID() == "background.apprentice" && !bro.getFlags().has("learned"))
-			{
-				apprentice_candidates.push(bro);
-			}
+			if (bro.getBackground().getID() == "background.apprentice" && !bro.getFlags().has("event_apprentice_2")) apprentice_candidates.push(bro);
 		}
 
-		if (apprentice_candidates.len() < 1)
-		{
-			return;
-		}
+		if (apprentice_candidates.len() < 1) return;
 
 		local teacher_candidates = [];
 
 		foreach( bro in brothers )
 		{
-			if (bro.getLevel() < 6)
-			{
-				continue;
-			}
-
 			if (bro.getBackground().getID() == "background.swordmaster" || bro.getBackground().getID() == "background.old_swordmaster" || bro.getBackground().getID() == "background.retired_soldier" || bro.getBackground().getID() == "background.hedgeknight" || bro.getBackground().getID() == "background.sellsword")
 			{
 				teacher_candidates.push(bro);
 			}
 		}
 
-		if (teacher_candidates.len() < 1)
-		{
-			return;
-		}
+		if (teacher_candidates.len() < 1) return;
 
 		this.m.Apprentice = apprentice_candidates[this.Math.rand(0, apprentice_candidates.len() - 1)];
 		this.m.Teacher = teacher_candidates[this.Math.rand(0, teacher_candidates.len() - 1)];

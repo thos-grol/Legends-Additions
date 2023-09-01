@@ -159,12 +159,12 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(-this.Const.World.Assets.RelationFavor, "You pressed hard an important citizen to get paid for helping build a mill");
-				this.World.Assets.addMoney(200);
+				this.World.Assets.addMoney(300);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]200[/color] Crowns"
+						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]300[/color] Crowns"
 					}
 				];
 				local brothers = this.World.getPlayerRoster().getAll();
@@ -264,15 +264,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.World.getTime().IsDaytime)
-		{
-			return;
-		}
-
-		if (this.World.Assets.getMoney() > 3000)
-		{
-			return;
-		}
+		if (!this.World.getTime().IsDaytime) return;
 
 		local towns = this.World.EntityManager.getSettlements();
 		local nearTown = false;

@@ -387,3 +387,27 @@ Undead cannot be charmed
 
 
 bbrusher pack legends_additions.brush C:\Files\Projects\bbros\brush\legends_additions --gfxPath C:\Files\Projects\bbros\brush
+
+
+////CHANGELOG
+//Economy Rework - Countering inflation.
+A problem in the game was that eventually you would reach the point where money was worthless while you have hundreds of thousands of crowns. The economy rework tries to fix this through many ways to make you feel the struggles of managing a mercenary company (poverty).
+
+# Scale
+- Shrunk down the scale of a crown so that each crown is worth more. Now you will feel that 100 crowns is a lot of money.
+- Reworked event and contract prices to match.
+- At the same time, hiring and keeping bros is much, much cheaper, but armor and weapons are expensive.
+
+# Input - restrict the amount of money flowing in
+- Most npcs will not be walking money trees dropping expensive items anymore.
+- Stores wont buy most random junk at all.
+- Removed a lot of freebies given through events etc.
+- Removed legends money printing skills like lumber etc.
+
+# Ouput - create channels for money to flow out
+
+//Event rework
+- Disabled some events I experienced every playthrough and thought didn't add much.
+- Reworked MOST event bros to be of higher quality to fix the problem of accepting them and then kicking them from party. Made changes where it made sense.
+- Made certain events garunteed to happen within the timeframe ie. kingsguard recovering.
+- Reworked some events to be repeatable and provide benefits to certain backgrounds. Ie. apprentice learns event can trigger max twice for 1 apprentice. And the event cooldown is a week.

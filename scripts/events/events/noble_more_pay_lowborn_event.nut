@@ -174,23 +174,12 @@ this.noble_more_pay_lowborn_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (this.World.Assets.getMoney() < 500)
-		{
-			return;
-		}
+		if (this.World.Assets.getMoney() < 50) return;
+		if (this.World.Retinue.hasFollower("follower.paymaster")) return;
 
-		if (this.World.Retinue.hasFollower("follower.paymaster"))
-		{
-			return;
-		}
 
 		local brothers = this.World.getPlayerRoster().getAll();
-
-		if (brothers.len() < 2)
-		{
-			return;
-		}
-
+		if (brothers.len() < 2) return;
 		local lowestPay = 1000;
 		local lowestNoble;
 

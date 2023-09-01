@@ -50,7 +50,7 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 					Text = "The bet is on!",
 					function getResult( _event )
 					{
-						_event.m.Bet = 500;
+						_event.m.Bet = 50;
 						return "P";
 					}
 
@@ -338,11 +338,11 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Jouster.getImagePath());
-				this.World.Assets.addMoney(-500);
+				this.World.Assets.addMoney(-50);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]500[/color] Crowns"
+					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]50[/color] Crowns"
 				});
 			}
 
@@ -383,7 +383,7 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (this.World.Assets.getMoney() < 500)
+		if (this.World.Assets.getMoney() < 50)
 		{
 			return;
 		}

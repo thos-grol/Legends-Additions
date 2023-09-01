@@ -36,7 +36,7 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				if (this.World.Assets.getMoney() >= 1500)
+				if (this.World.Assets.getMoney() >= 150)
 				{
 					this.Options.push({
 						Text = "Surely this isn\'t something that can\'t be solved with a fat purse of crowns?",
@@ -106,11 +106,11 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 				_event.m.Criminal.getItems().transferToStash(this.World.Assets.getStash());
 				_event.m.Criminal.getSkills().onDeath(this.Const.FatalityType.None);
 				this.World.getPlayerRoster().remove(_event.m.Criminal);
-				this.World.Assets.addMoney(100);
+				this.World.Assets.addMoney(25);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + 100 + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + 25 + "[/color] Crowns"
 				});
 			}
 
@@ -240,11 +240,11 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
 				this.Characters.push(_event.m.Criminal.getImagePath());
-				this.World.Assets.addMoney(-1000);
+				this.World.Assets.addMoney(-100);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + 1000 + "[/color] Crowns"
+					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + 100 + "[/color] Crowns"
 				});
 			}
 

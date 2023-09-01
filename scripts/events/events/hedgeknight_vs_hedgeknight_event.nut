@@ -261,7 +261,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "D",
-			Text = "[img]gfx/ui/events/event_04.png[/img]You bring out a satchel heavy with coins. The two hedge knights look over, the sound of gold clinking against itself hard to miss.%SPEECH_ON%A thousand crowns to each of you, yeah?%SPEECH_OFF%The two exchange a glance. They shrug. You nod.%SPEECH_ON%Alright, but this isn\'t happening again, understand?%SPEECH_OFF%The men nod too, walking over and accepting the crowns with shameless ease. Some comrades look a little miffed that these mercenaries just got free money for essentially choosing not to fight. The hedge knights begrudgingly find peace amongst themselves, being more concerned with counting money than killing each other. You just hope they got an equal amount lest the \'festivities\' resume.",
+			Text = "[img]gfx/ui/events/event_04.png[/img]You bring out a satchel heavy with coins. The two hedge knights look over, the sound of gold clinking against itself hard to miss.%SPEECH_ON%Twenty-five to each of you, yeah?%SPEECH_OFF%The two exchange a glance. They shrug. You nod.%SPEECH_ON%Alright, but this isn\'t happening again, understand?%SPEECH_OFF%The men nod too, walking over and accepting the crowns with shameless ease. Some comrades look a little miffed that these mercenaries just got free money for essentially choosing not to fight. The hedge knights begrudgingly find peace amongst themselves, being more concerned with counting money than killing each other. You just hope they got an equal amount lest the \'festivities\' resume.",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -279,12 +279,12 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.HedgeKnight1.getImagePath());
 				this.Characters.push(_event.m.HedgeKnight2.getImagePath());
-				this.World.Assets.addMoney(-2000);
+				this.World.Assets.addMoney(-50);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]2000[/color] Crowns"
+						text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]50[/color] Crowns"
 					}
 				];
 				local brothers = this.World.getPlayerRoster().getAll();
@@ -551,7 +551,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (this.World.Assets.getMoney() < 2000)
+		if (this.World.Assets.getMoney() < 200)
 		{
 			return;
 		}

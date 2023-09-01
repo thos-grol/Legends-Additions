@@ -70,11 +70,11 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 						{
 							if (_event.m.Berserker != null)
 							{
-								this.m.Compensation = this.Math.round(400 + 0.03 * this.World.Assets.getMoney());
+								this.m.Compensation = this.Math.round(40);
 							}
 							else
 							{
-								this.m.Compensation = this.Math.round(300 + 0.02 * this.World.Assets.getMoney());
+								this.m.Compensation = this.Math.round(30);
 							}
 
 							return "T";
@@ -456,7 +456,7 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.World.Assets.getMoney() < 600)
+		if (this.World.Assets.getMoney() < 100)
 		{
 			return;
 		}
@@ -519,13 +519,13 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_berserkers.len() != 0)
 		{
-			this.m.Compensation = this.Math.round(1000 + 0.05 * this.World.Assets.getMoney());
+			this.m.Compensation = this.Math.round(50);
 			this.m.Berserker = candidates_berserkers[this.Math.rand(0, candidates_berserkers.len() - 1)];
 		}
 
 		if (candidates_wildchars.len() != 0)
 		{
-			this.m.Compensation = this.Math.round(500 + 0.03 * this.World.Assets.getMoney());
+			this.m.Compensation = this.Math.round(50);
 			this.m.Wildman = candidates_wildchars[this.Math.rand(0, candidates_wildchars.len() - 1)];
 		}
 

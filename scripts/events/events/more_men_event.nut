@@ -16,7 +16,7 @@ this.more_men_event <- this.inherit("scripts/events/event", {
 					Text = "I\'d hire more if only we could afford it.",
 					function getResult( _event )
 					{
-						if (this.World.Assets.getMoney() >= 4000)
+						if (this.World.Assets.getMoney() >= 100)
 						{
 							return "D";
 						}
@@ -229,11 +229,11 @@ this.more_men_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.World.Assets.addMoney(1000);
+				this.World.Assets.addMoney(50);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + 1000 + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + 50 + "[/color] Crowns"
 				});
 				local brothers = this.World.getPlayerRoster().getAll();
 

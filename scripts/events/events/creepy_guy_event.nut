@@ -13,7 +13,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 999999.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/event_43.png[/img]While walking the streets of %townname%, you come upon a crowd standing around a hanged man. He must have been of some notoriety: the folks are muscling one another to try and get a turn to cut a toe or finger off as a sort of hanging-heirloom. An old man is quickly elbowed out of the mob. He turns to you, voice raspy, his bony fingers tented like sickly ribs.%SPEECH_ON%Ahh, sellsword are ye? O\'course, I can smell your business, the purchases ye have made. Say, would you do a bit of work for me? I need a number of that dead man\'s fingers and toes. It\'s for m\'work, ye shall see. I\'ll give you five hundred crowns in return for it.%SPEECH_OFF%You ask why he needs that particular man\'s appendages. The crooning, shoulder-cowed man laughs, a heckle if there ever was one.%SPEECH_ON%Aye, good question. The man earned his walk to the hangman\'s noose with a penchant for violence and an unerring strength to see his desires through. The toes and fingers of a simpleton won\'t do. I need a man of uncinched cruelty, and the only one I see right now is swinging by that there rope. So, what say ye? Five hundred crowns, remember?%SPEECH_OFF%",
+			Text = "[img]gfx/ui/events/event_43.png[/img]While walking the streets of %townname%, you come upon a crowd standing around a hanged man. He must have been of some notoriety: the folks are muscling one another to try and get a turn to cut a toe or finger off as a sort of hanging-heirloom. An old man is quickly elbowed out of the mob. He turns to you, voice raspy, his bony fingers tented like sickly ribs.%SPEECH_ON%Ahh, sellsword are ye? O\'course, I can smell your business, the purchases ye have made. Say, would you do a bit of work for me? I need a number of that dead man\'s fingers and toes. It\'s for m\'work, ye shall see. I\'ll give you fifty crowns in return for it.%SPEECH_OFF%You ask why he needs that particular man\'s appendages. The crooning, shoulder-cowed man laughs, a heckle if there ever was one.%SPEECH_ON%Aye, good question. The man earned his walk to the hangman\'s noose with a penchant for violence and an unerring strength to see his desires through. The toes and fingers of a simpleton won\'t do. I need a man of uncinched cruelty, and the only one I see right now is swinging by that there rope. So, what say ye? fifty crowns, remember?%SPEECH_OFF%",
 			Image = "",
 			List = [],
 			Options = [
@@ -21,7 +21,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 					Text = "Alright, I\'ll go and find them.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 30 || this.World.Assets.getMoney() <= 1000)
+						if (this.Math.rand(1, 100) <= 30 || this.World.Assets.getMoney() <= 100)
 						{
 							return "Good";
 						}
@@ -84,7 +84,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "Good",
-			Text = "[img]gfx/ui/events/event_43.png[/img]You muscle your way into the crowd, looking for fingers and toes or bloodied pockets. One man\'s got a good, lumpy sag in his pocket. You drive him into a corner and shake him down with a dagger to his throat.\n\n After him, you see a woman with a sickly grin on her face prancing along the cobbled stones. That\'s a scornful wench if you\'ve ever seen one. Pulling her aside, you quickly find the a finger and a toe in the linens of her frock. She lies and says they\'re just cooking ingredients. You tell her if that\'s the case then you\'ll report her to the guards for cannibalism. She gives them up.\n\n Returning the grossly extremities to the old man, you are promptly paid the five hundred crowns. He hardly even thanks you for your \'work\' before rushing away. He never did explain what, exactly, such things were for. You don\'t care. Five hundred crowns is five hundred crowns.",
+			Text = "[img]gfx/ui/events/event_43.png[/img]You muscle your way into the crowd, looking for fingers and toes or bloodied pockets. One man\'s got a good, lumpy sag in his pocket. You drive him into a corner and shake him down with a dagger to his throat.\n\n After him, you see a woman with a sickly grin on her face prancing along the cobbled stones. That\'s a scornful wench if you\'ve ever seen one. Pulling her aside, you quickly find the a finger and a toe in the linens of her frock. She lies and says they\'re just cooking ingredients. You tell her if that\'s the case then you\'ll report her to the guards for cannibalism. She gives them up.\n\n Returning the grossly extremities to the old man, you are promptly paid the fifty crowns. He hardly even thanks you for your \'work\' before rushing away. He never did explain what, exactly, such things were for. You don\'t care. fifty crowns is fifty crowns.",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -100,12 +100,12 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.World.Assets.addMoney(500);
+				this.World.Assets.addMoney(50);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]500[/color] Crowns"
+						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
 					}
 				];
 			}
@@ -129,7 +129,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local money = this.Math.rand(200, 400);
+				local money = this.Math.rand(20, 40);
 				this.World.Assets.addMoney(-money);
 				this.List = [
 					{
@@ -161,12 +161,12 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Thief.getImagePath());
-				this.World.Assets.addMoney(500);
+				this.World.Assets.addMoney(50);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]500[/color] Crowns"
+						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
 					}
 				];
 				local initiative = this.Math.rand(2, 4);
@@ -215,16 +215,16 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Minstrel.getImagePath());
-				this.World.Assets.addMoney(500);
+				this.World.Assets.addMoney(50);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]500[/color] Crowns"
+					text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]50[/color] Crowns"
 				});
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]1000[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
 				});
 				local initiative = this.Math.rand(2, 4);
 				_event.m.Minstrel.getBaseProperties().Initiative += initiative;
@@ -266,11 +266,11 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Butcher.getImagePath());
-				this.World.Assets.addMoney(250);
+				this.World.Assets.addMoney(25);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]250[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]25[/color] Crowns"
 				});
 				_event.m.Butcher.improveMood(1.0, "Has made a tidy sum selling one of his fingers");
 

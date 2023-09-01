@@ -87,7 +87,7 @@
 
 				},
 				{
-					Text = "I\'ll pay you 500 crowns right now if you join us.",
+					Text = "I\'ll pay you 50 crowns right now if you join us.",
 					function getResult( _event )
 					{
 						return "F";
@@ -197,12 +197,12 @@
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Dude.getImagePath());
-				this.World.Assets.addMoney(-500);
+				this.World.Assets.addMoney(-50);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You spend [color=" + ::Const.UI.Color.PositiveEventValue + "]500[/color] Crowns"
+						text = "You spend [color=" + ::Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
 					}
 				];
 			}
@@ -302,7 +302,7 @@ this.belly_dancer_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "I\'ll pay you 500 crowns right now if you join us.",
+					Text = "I\'ll pay you 100 crowns right now if you join us.",
 					function getResult( _event )
 					{
 						return "F";
@@ -427,25 +427,10 @@ this.belly_dancer_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!::Const.DLC.Desert)
-		{
-			return;
-		}
+		if (!::Const.DLC.Desert) return;
+		if (this.World.getPlayerRoster().getSize() >= this.World.Assets.getBrothersMax()) return;
+		if (this.World.Assets.getMoney() < 750) return;
 
-		if (!this.World.getTime().IsDaytime)
-		{
-			return;
-		}
-
-		if (this.World.getPlayerRoster().getSize() >= this.World.Assets.getBrothersMax())
-		{
-			return;
-		}
-
-		if (this.World.Assets.getMoney() < 750)
-		{
-			return;
-		}
 
 		local towns = this.World.EntityManager.getSettlements();
 		local currentTile = this.World.State.getPlayer().getTile();

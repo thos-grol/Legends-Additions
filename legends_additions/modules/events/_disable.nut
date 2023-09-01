@@ -28,6 +28,14 @@
 ::mods_hookExactClass("events/events/ratcatcher_crafts_net_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/wound_heals_event", function(o) { o.onUpdateScore = function(){ return; }});
 
+::mods_hookExactClass("events/events/peddler_deal_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/peddler_sells_rat_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/shady_character_offers_map_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/pimp_and_harlots_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/traveling_troupe_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/traveling_monk_event", function(o) { o.onUpdateScore = function(){ return; }});
+
+
 //Disable dlc2 events
 ::mods_hookExactClass("events/events/dlc2/addict_steals_potion_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/dlc2/alp_captured_in_hole_event", function(o) { o.onUpdateScore = function(){ return; }});
@@ -87,9 +95,7 @@
 //lindwurm_slayer_event
 //strange_scribe_event
 
-//TODO: Disable crisis events
-
-//TODO: Disable legends events
+//Disable legends events
 ::mods_hookExactClass("events/events/legends/legend_alchemist_crafts_thing_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/legends/legend_blacksmith_craft_armor", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/legends/legend_blacksmith_crafts_crusadersword", function(o) { o.onUpdateScore = function(){ return; }});
@@ -155,9 +161,6 @@
 
 //Rework
 
-//apprentice_learns_event
-    //decrease cooldown to 1 week. Add flag to learning brother. Add limit to how many times that brother can trigger the event.
-//cripple_pep_talk_event
 //brawler_teaches_event
     //else if (bro.getLevel() < 3 && !bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat))
     //increase teachable bro level to 7
@@ -175,7 +178,6 @@
 //Rework stage2
 //bad_curse_event ? make curse scarier?
 //sacrificed_man_event
-//shady_character_offers_map_event
 
 //::mods_hookExactClass("events/events/dlc2/alp_nightmare1_event", function(o) { o.onUpdateScore = function(){ return; }});
 // ::mods_hookExactClass("events/events/dlc2/alp_nightmare2_event", function(o) { o.onUpdateScore = function(){ return; }});

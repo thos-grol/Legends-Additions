@@ -7,7 +7,7 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 	{
 		this.m.ID = "event.brawler_teaches";
 		this.m.Title = "During camp...";
-		this.m.Cooldown = 70.0 * this.World.getTime().SecondsPerDay;
+		this.m.Cooldown = 7.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
 			Text = "[img]gfx/ui/events/event_05.png[/img]A shadow crosses over you from behind. When you look back, %brawler% is standing there with a rather distant look in his eyes. He cracks his knuckles in one long staccato before asking if he can train up %noncom%. You ask why. The brawler looks down at you.%SPEECH_ON%Because weakness must leave the body through pain.%SPEECH_OFF%Hmmm, good enough.",
@@ -73,6 +73,7 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 				local skill = this.Math.rand(2, 4);
 				_event.m.Student.getBaseProperties().Stamina += skill;
 				_event.m.Student.getSkills().update();
+				_event.markAsLearned();
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/fatigue.png",
@@ -104,6 +105,7 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 				local skill = this.Math.rand(2, 4);
 				_event.m.Student.getBaseProperties().Hitpoints += skill;
 				_event.m.Student.getSkills().update();
+				_event.markAsLearned();
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/health.png",
@@ -143,6 +145,7 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 				_event.m.Student.getBaseProperties().MeleeSkill += attack;
 				_event.m.Student.getBaseProperties().MeleeDefense += defense;
 				_event.m.Student.getSkills().update();
+				_event.markAsLearned();
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
@@ -158,40 +161,33 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 		});
 	}
 
+	function markAsLearned()
+	{
+		if (this.m.Student.getFlags().has("event_brawler_teaches_1"))
+		{
+			this.m.Student.getFlags().add("event_brawler_teaches_2");
+			return;
+		}
+		this.m.Student.getFlags().add("event_brawler_teaches_1");
+	}
+
 	function onUpdateScore()
 	{
 		local brothers = this.World.getPlayerRoster().getAll();
 
-		if (brothers.len() < 3)
-		{
-			return;
-		}
+		if (brothers.len() < 3) return;
 
 		local candidates_brawler = [];
 		local candidates_student = [];
 
 		foreach( bro in brothers )
 		{
-			if (bro.getFlags().has("brawler_teaches"))
-			{
-				continue;
-			}
-
-			if (bro.getLevel() >= 3 && bro.getBackground().getID() == "background.brawler")
-			{
-				candidates_brawler.push(bro);
-			}
-			else if (bro.getLevel() < 3 && !bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat))
-			{
-				candidates_student.push(bro);
-			}
+			if (bro.getFlags().has("brawler_teaches")) continue;
+			if (bro.getLevel() >= 3 && bro.getBackground().getID() == "background.brawler") candidates_brawler.push(bro);
+			else if (!bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat) && !bro.getFlags().has("event_brawler_teaches_2")) candidates_student.push(bro);
 		}
 
-		if (candidates_brawler.len() == 0 || candidates_student.len() == 0)
-		{
-			return;
-		}
-
+		if (candidates_brawler.len() == 0 || candidates_student.len() == 0) return;
 		this.m.Brawler = candidates_brawler[this.Math.rand(0, candidates_brawler.len() - 1)];
 		this.m.Student = candidates_student[this.Math.rand(0, candidates_student.len() - 1)];
 		this.m.Score = (candidates_brawler.len() + candidates_student.len()) * 3;

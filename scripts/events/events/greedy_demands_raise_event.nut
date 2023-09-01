@@ -56,7 +56,7 @@ this.greedy_demands_raise_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Greedy.getImagePath());
-				_event.m.Greedy.getBaseProperties().DailyWage += 8;
+				_event.m.Greedy.getBaseProperties().DailyWage += 4;
 				_event.m.Greedy.improveMood(2.0, "Received a pay raise");
 				_event.m.Greedy.getSkills().update();
 				this.List.push({
@@ -140,7 +140,7 @@ this.greedy_demands_raise_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.World.Assets.getMoney() < 4000)
+		if (this.World.Assets.getMoney() < 400)
 		{
 			return;
 		}
