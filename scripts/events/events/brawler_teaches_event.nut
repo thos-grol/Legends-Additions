@@ -182,9 +182,9 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 
 		foreach( bro in brothers )
 		{
-			if (bro.getFlags().has("brawler_teaches")) continue;
+			if (bro.getFlags().has("event_brawler_teaches_2")) continue;
 			if (bro.getLevel() >= 3 && bro.getBackground().getID() == "background.brawler") candidates_brawler.push(bro);
-			else if (!bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat) && !bro.getFlags().has("event_brawler_teaches_2")) candidates_student.push(bro);
+			else if (!bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat)) candidates_student.push(bro);
 		}
 
 		if (candidates_brawler.len() == 0 || candidates_student.len() == 0) return;

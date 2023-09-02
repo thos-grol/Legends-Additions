@@ -38,6 +38,10 @@
 ::mods_hookExactClass("events/events/troublemakers_bully_peasants_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/pimp_vs_harlot_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/peacenik_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/hidden_cache_forest_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/the_horseman_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/fell_down_well_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/surefooted_saves_damsel_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/dead_merchant_forest_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework event spooky
 
 
@@ -129,7 +133,6 @@
 ::mods_hookExactClass("events/events/legends/legends_minstrel_and_troubador_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/legends/legends_troubador_and_juggler_event", function(o) { o.onUpdateScore = function(){ return; }});
 
-
 //Remove Dogs
 ::mods_hookExactClass("events/events/dlc2/dog_in_swamp_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/dlc8/anatomist_vs_dog_event", function (o){ o.onUpdateScore = function() { return; }});
@@ -156,27 +159,13 @@
 //oracle_event
 
 //TODO: start copying over and modifying events that use addmoney, World.Assets.getMoney()
+//TODO: .onHired();
+//TODO: getlevel()
 
 //TODO: rework events to affect low resolve bros only, otherwise, they will gain a hatred
 ::mods_hookExactClass("events/events/dlc8/anatomist_reflects_on_webknechts_event", function(o) { o.onUpdateScore = function(){ return; }});
 
-//TODO: read through scripts to see which one to change/remove
-
 //Rework
-
-//brawler_teaches_event
-    //else if (bro.getLevel() < 3 && !bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat))
-    //increase teachable bro level to 7
-    //decrease cooldown to 1 week.
-//combat_drill_event
-    //decrease cooldown to 1 week. Add flag to learning brother. Add limit to how many times that brother can trigger the event.
-//farmer_old_tricks_event
-    //rework to 4 weeks event
-    //rework to trigger only once per bro
-//running_around_event
-    //cd
-
-
 
 //Rework stage2
 //bad_curse_event ? make curse scarier?
