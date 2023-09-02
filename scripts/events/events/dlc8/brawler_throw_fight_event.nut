@@ -7,7 +7,7 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 	{
 		this.m.ID = "event.brawler_throw_fight";
 		this.m.Title = "At %townname%";
-		this.m.Cooldown = 100.0 * this.World.getTime().SecondsPerDay;
+		this.m.Cooldown = 60.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
 			Text = "[img]gfx/ui/events/event_51.png[/img]{Without giving you any heads up, it appears that %brawler% the brawler entered a fighting tournament on his own accord, and he\'s already made it all the way to the final match. He has so easily smashed all his opposition in the first round that he is the heavy favorite to win it all.\n\nHowever, a few very powerful betting brokers are upset that %brawler% has already caused them to lose a ton of money. Knowing that he is with you, they have asked that you tell %brawler% to take a fall and throw the match. In return, you\'ll get a percentage of their winnings, which will no doubt be quite substantial...}",
@@ -29,7 +29,7 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 					{
 						local outcome = this.Math.rand(1, 100);
 
-						if (outcome <= 39 + _event.m.Brawler.getLevel())
+						if (outcome <= 39 + _event.m.Brawler.getLevel() * 10)
 						{
 							return "D";
 						}
@@ -78,11 +78,11 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Brawler.getImagePath());
-				this.World.Assets.addMoney(400);
+				this.World.Assets.addMoney(100);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]400[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
 				});
 				_event.m.Brawler.worsenMood(0.5, "Was told to throw a fight");
 				_event.m.Brawler.worsenMood(2.0, "Lost a fighting tournament");

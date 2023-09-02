@@ -106,6 +106,7 @@
 ::mods_hookExactClass("events/events/dlc8/captured_oathbringer_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/dlc8/anatomist_reflects_on_webknechts_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/dlc8/anatomist_vs_dog_event", function (o){ o.onUpdateScore = function() { return; }});
+::mods_hookExactClass("events/events/dlc8/incense_trade_event", function (o){ o.onUpdateScore = function() { return; }}); //FEATURE_5: rework spooky
 
 //Disable legends events
 ::mods_hookExactClass("events/events/legends/legend_alchemist_crafts_thing_event", function(o) { o.onUpdateScore = function(){ return; }});

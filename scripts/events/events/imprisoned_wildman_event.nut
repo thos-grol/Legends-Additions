@@ -300,6 +300,9 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.m.LevelUps = 5;
 				_event.m.Dude.m.Level = 6;
 				_event.m.Dude.m.XP = ::Const.LevelXP[_event.m.Dude.m.Level - 1];
+				_event.m.Dude.m.Attributes = [];
+				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
+				
 				_event.m.Dude.m.Talents = [];
 				local talents = _event.m.Dude.getTalents();
 				talents.resize(::Const.Attributes.COUNT, 0);
@@ -319,8 +322,7 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 				roll = ::Math.rand(1, 100);
 				talents[::Const.Attributes.Hitpoints] = 3;
 
-				_event.m.Dude.m.Attributes = [];
-				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
+				
 
 				_event.m.Dude.setTitle("the Animal");
 				_event.m.Dude.getBackground().m.RawDescription = "%name% was \'saved\' by you during a confrontation with an animal tamer-turned-enslaver. A sense of gratitude and debt overcomes any language barriers: the once imprisoned wildling serves the company loyally for the rescue.";

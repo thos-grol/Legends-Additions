@@ -14,15 +14,27 @@ this.negotiator_follower <- this.inherit("scripts/retinue/follower", {
 		];
 		this.addRequirement("Slay a monster", function ()
 		{
+			if (!::World.Statistics.getFlags().has("MonstersSlain")) return false;
 			return ::World.Statistics.getFlags().getAsInt("MonstersSlain") >= 1;
 		}, true, function ( _r )
 		{
 			_r.Count <- 1;
 			_r.UpdateText <- function ()
 			{
-				this.Text = "Slay " + ::Math.min(this.Count, ::World.Statistics.getFlags().getAsInt("MonstersSlain")) + "/" + this.Count + " monsters";
+				local monsters_slain = (!::World.Statistics.getFlags().has("MonstersSlain") ? 0 : ::World.Statistics.getFlags().getAsInt("MonstersSlain"));
+				this.Text = "Slay " + ::Math.min(this.Count, monsters_slain) + "/" + this.Count + " monsters";
 			};
 		});
+	}
+
+	function setEnabled()
+	{
+		::World.Statistics.getFlags().set("retinue_anatomist", true);
+	}
+
+	function setDisabled()
+	{
+		::World.Statistics.getFlags().set("retinue_anatomist", false);
 	}
 
 	function onUpdate()

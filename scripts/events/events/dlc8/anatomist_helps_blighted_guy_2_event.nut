@@ -99,35 +99,26 @@ this.anatomist_helps_blighted_guy_2_event <- this.inherit("scripts/events/event"
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Paladins)
-		{
-			return;
-		}
-
-		if (this.World.Assets.getOrigin().getID() != "scenario.anatomists")
-		{
-			return;
-		}
+		if (!this.Const.DLC.Paladins) return;
+		if (!::World.Statistics.getFlags().has("retinue_anatomist") 
+			|| !::World.Statistics.getFlags().get("retinue_anatomist") ) return;
 
 		local brothers = this.World.getPlayerRoster().getAll();
 		local candidate;
 
 		foreach( bro in brothers )
 		{
-			if (!bro.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury) && !bro.getSkills().hasSkillOfType(this.Const.SkillType.SemiInjury) && bro.getDaysWithCompany() >= 5 && bro.getFlags().get("IsMilitiaCaptain"))
+			if (!bro.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury) && !bro.getSkills().hasSkillOfType(this.Const.SkillType.SemiInjury) && bro.getDaysWithCompany() >= 30 && bro.getFlags().get("IsMilitiaCaptain"))
 			{
 				candidate = bro;
 				break;
 			}
 		}
 
-		if (candidate == null)
-		{
-			return;
-		}
-
+		if (candidate == null) return;
+		
 		this.m.MilitiaCaptain = candidate;
-		this.m.Score = 20;
+		this.m.Score = 999999999;
 	}
 
 	function onPrepare()
