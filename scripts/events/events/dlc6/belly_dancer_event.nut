@@ -90,7 +90,7 @@ this.belly_dancer_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "I\'ll pay you 500 crowns right now if you join us.",
+					Text = "I\'ll pay you 75 crowns right now if you join us.",
 					function getResult( _event )
 					{
 						return "F";
@@ -105,6 +105,28 @@ this.belly_dancer_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.setStartValuesEx([
 					"belly_dancer_background"
 				]);
+
+				_event.m.Dude.m.PerkPoints = 3;
+				_event.m.Dude.m.LevelUps = 3;
+				_event.m.Dude.m.Level = 4;
+				_event.m.Dude.m.XP = ::Const.LevelXP[_event.m.Dude.m.Level - 1];
+				_event.m.Dude.m.Talents = [];
+				local talents = _event.m.Dude.getTalents();
+				talents.resize(::Const.Attributes.COUNT, 0);
+
+				local roll = ::Math.rand(1, 100);
+				talents[::Const.Attributes.MeleeSkill] = 3;
+				talents[::Const.Attributes.MeleeDefense] = 3;
+
+				roll = ::Math.rand(1, 100);
+				if (roll < 15) roll = 3;
+				else if (roll < 40) roll = 2;
+				else roll = 1;
+				talents[::Const.Attributes.Initiative] = roll;
+
+				_event.m.Dude.m.Attributes = [];
+				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
+
 				_event.m.Dude.getBackground().m.RawDescription = "You found %name% in " + _event.m.Town.getName() + ", masked by green silk and drawing crowds with rhythmic movements and impressively precise fruit slicing. The latter skill is a boon to any mercenary company, and so you didn\'t hesitate to recruit them\t.";
 				_event.m.Dude.getBackground().buildDescription(true);
 				local trait = this.new("scripts/skills/traits/dexterous_trait");
@@ -186,7 +208,7 @@ this.belly_dancer_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Dude.getImagePath());
-				this.World.Assets.addMoney(-500);
+				this.World.Assets.addMoney(-75);
 				this.List = [
 					{
 						id = 10,
@@ -216,7 +238,7 @@ this.belly_dancer_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.World.Assets.getMoney() < 750)
+		if (this.World.Assets.getMoney() < 150)
 		{
 			return;
 		}

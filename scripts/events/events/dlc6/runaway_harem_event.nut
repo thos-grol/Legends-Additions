@@ -132,6 +132,7 @@ this.runaway_harem_event <- this.inherit("scripts/events/event", {
 				local talents = _event.m.Dude.getTalents();
 				talents.resize(this.Const.Attributes.COUNT, 0);
 				talents[this.Const.Attributes.MeleeSkill] = 3;
+				talents[this.Const.Attributes.MeleeDefense] = 3;
 				talents[this.Const.Attributes.Bravery] = 3;
 				_event.m.Dude.getSkills().add(this.new("scripts/skills/perks/perk_coup_de_grace"));
 				_event.m.Dude.getSkills().add(this.new("scripts/skills/perks/perk_legend_favoured_enemy_southerner"));

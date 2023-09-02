@@ -178,7 +178,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
 				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationFavor, "Saved some of their men");
 				_event.m.Town.getFactionOfType(this.Const.FactionType.Settlement).addPlayerRelation(this.Const.World.Assets.RelationOffense, "Killed some of their men");
-				local money = this.Math.rand(200, 400);
+				local money = this.Math.rand(50, 80);
 				this.World.Assets.addMoney(money);
 				this.List.push({
 					id = 10,

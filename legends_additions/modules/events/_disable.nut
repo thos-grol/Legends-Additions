@@ -59,6 +59,12 @@
 ::mods_hookExactClass("events/events/dlc2/unhold_exposition_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/dlc2/webknecht_exposition_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/dlc2/youngling_alp_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc2/treasure_in_rock_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc2/dog_in_swamp_event", function (o){ o.onUpdateScore = function() { return; }});
+::mods_hookExactClass("events/events/dlc2/lucky_finds_something_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework
+::mods_hookExactClass("events/events/dlc2/oracle_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework
+::mods_hookExactClass("events/events/dlc2/petrified_scream_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework
+::mods_hookExactClass("events/events/dlc2/treant_vs_giants_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework
 
 //Disable dlc4 events
 ::mods_hookExactClass("events/events/dlc4/adopt_warhound_event", function(o) { o.onUpdateScore = function(){ return; }});
@@ -71,6 +77,8 @@
 ::mods_hookExactClass("events/events/dlc4/cultist_origin_vs_uneducated_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework event
 ::mods_hookExactClass("events/events/dlc4/traveler_north_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/dlc4/wild_dog_sounds_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc4/drunk_nobleman_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc4/horse_race_event", function(o) { o.onUpdateScore = function(){ return; }});
 
 //Disable dlc6 events
 ::mods_hookExactClass("events/events/dlc6/cultish_arrangement_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework event
@@ -81,28 +89,23 @@
 ::mods_hookExactClass("events/events/dlc6/trade_black_book_event", function(o) { o.onUpdateScore = function(){ return; }}); //FEATURE_5: rework event
 ::mods_hookExactClass("events/events/dlc6/traveler_south_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/dlc6/sellsword_retires_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc6/gladiators_food_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc6/merchant_of_jugs_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc6/pirates_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc6/retired_gladiator_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc6/sellsword_vs_bees_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc6/cannon_execution_event", function(o) { o.onUpdateScore = function(){ return; }});
 
 
 //Disable dlc8 events
 ::mods_hookExactClass("events/events/dlc8/oathbreaker_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/dlc8/tree_fort_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/dlc8/volunteers_event", function(o) { o.onUpdateScore = function(){ return; }});
-
-//Rework
-
-//anatomist_helps_blighted_guy_1_event
-//anatomist_helps_blighted_guy_2_event
-//anatomist_vs_ailing_event
-//anatomist_vs_asthmatic_event
-//anatomist_vs_clubfooted_event
-//anatomist_vs_iron_lungs_event
-//gladiator_origin_vs_anatomist_event
-//mutated_gladiator_annoys_others_event
-//missing_kids_event
-//killer_on_the_run_reminisces_event
-//something_in_barn_event
-//lindwurm_slayer_event
-//strange_scribe_event
+::mods_hookExactClass("events/events/dlc8/black_market_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc8/missing_kids_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc8/captured_oathbringer_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc8/anatomist_reflects_on_webknechts_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc8/anatomist_vs_dog_event", function (o){ o.onUpdateScore = function() { return; }});
 
 //Disable legends events
 ::mods_hookExactClass("events/events/legends/legend_alchemist_crafts_thing_event", function(o) { o.onUpdateScore = function(){ return; }});
@@ -133,20 +136,22 @@
 ::mods_hookExactClass("events/events/legends/legends_minstrel_and_troubador_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/legends/legends_troubador_and_juggler_event", function(o) { o.onUpdateScore = function(){ return; }});
 
-//Remove Dogs
-::mods_hookExactClass("events/events/dlc2/dog_in_swamp_event", function (o){ o.onUpdateScore = function() { return; }});
-::mods_hookExactClass("events/events/dlc8/anatomist_vs_dog_event", function (o){ o.onUpdateScore = function() { return; }});
 
-//Rework
-//graverobber_finds_item_event
-    //rework loot
-    //has a chance to be cursed by ghost
-    //change cooldown.
-    //increase event score by the number of gravediggers in party
-//graverobber_heist_event
-//historian_mysterious_text_event
-//petrified_scream_event
-//treant_vs_giants_event
+
+//TODO: Rework dlc8
+//anatomist_helps_blighted_guy_1_event
+//anatomist_helps_blighted_guy_2_event
+//anatomist_vs_ailing_event
+//anatomist_vs_asthmatic_event
+//anatomist_vs_clubfooted_event
+//anatomist_vs_iron_lungs_event
+//gladiator_origin_vs_anatomist_event
+//mutated_gladiator_annoys_others_event
+//killer_on_the_run_reminisces_event
+//something_in_barn_event
+//lindwurm_slayer_event
+//strange_scribe_event
+
 //legend_cannibal_recruitment //rework cannibal to be more interesting.
     //legend_cannibal_corrupts_butcher
 //legend_barbarian_vs_shieldmaiden rework higher levels
@@ -162,15 +167,13 @@
 //TODO: .onHired();
 //TODO: getlevel()
 
-//TODO: rework events to affect low resolve bros only, otherwise, they will gain a hatred
-::mods_hookExactClass("events/events/dlc8/anatomist_reflects_on_webknechts_event", function(o) { o.onUpdateScore = function(){ return; }});
-
 //Rework
 
 //Rework stage2
 //bad_curse_event ? make curse scarier?
 //sacrificed_man_event
 
+//FEATURE_5, summon alp boss to fight.
 //::mods_hookExactClass("events/events/dlc2/alp_nightmare1_event", function(o) { o.onUpdateScore = function(){ return; }});
-// ::mods_hookExactClass("events/events/dlc2/alp_nightmare2_event", function(o) { o.onUpdateScore = function(){ return; }});
-    //Rework, summon alp boss to fight.
+//::mods_hookExactClass("events/events/dlc2/alp_nightmare2_event", function(o) { o.onUpdateScore = function(){ return; }});
+

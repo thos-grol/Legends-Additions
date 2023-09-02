@@ -220,12 +220,12 @@ this.greenskins_investigation_event <- this.inherit("scripts/events/event", {
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
 				this.Characters.push(_event.m.Noble.getImagePath());
 				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Did a favor for " + _event.m.Noble.getName());
-				this.World.Assets.addMoney(100);
+				this.World.Assets.addMoney(50);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You earn [color=" + this.Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
+						text = "You earn [color=" + this.Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
 					}
 				];
 			}
@@ -356,12 +356,12 @@ this.greenskins_investigation_event <- this.inherit("scripts/events/event", {
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
 				this.Characters.push(_event.m.Noble.getImagePath());
 				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Did a favor for " + _event.m.Noble.getName());
-				this.World.Assets.addMoney(100);
+				this.World.Assets.addMoney(50);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You earn [color=" + this.Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
+						text = "You earn [color=" + this.Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
 					}
 				];
 			}
@@ -418,12 +418,12 @@ this.greenskins_investigation_event <- this.inherit("scripts/events/event", {
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
 				this.Characters.push(_event.m.Noble.getImagePath());
 				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Did a favor for " + _event.m.Noble.getName());
-				this.World.Assets.addMoney(200);
+				this.World.Assets.addMoney(100);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You earn [color=" + this.Const.UI.Color.PositiveEventValue + "]200[/color] Crowns"
+						text = "You earn [color=" + this.Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
 					}
 				];
 			}

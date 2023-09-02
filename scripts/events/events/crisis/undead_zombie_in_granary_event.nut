@@ -117,12 +117,12 @@ this.undead_zombie_in_granary_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Dude.getImagePath());
-				this.World.Assets.addMoney(50);
+				this.World.Assets.addMoney(15);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
+						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
 					}
 				];
 			}
@@ -179,12 +179,12 @@ this.undead_zombie_in_granary_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Dude.getImagePath());
-				this.World.Assets.addMoney(50);
+				this.World.Assets.addMoney(15);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
+						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
 					}
 				];
 				_event.m.Dude.improveMood(0.25, "Saved a peasant");

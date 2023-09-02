@@ -1,3 +1,4 @@
+//FEATURE_9: rework with Lonewolf origin
 this.lone_wolf_origin_squire_event <- this.inherit("scripts/events/event", {
 	m = {
 		Dude = null,

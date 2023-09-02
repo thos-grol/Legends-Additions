@@ -222,11 +222,11 @@ this.undead_hoggart_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.World.Assets.addMoney(300);
+				this.World.Assets.addMoney(75);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]300[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]75[/color] Crowns"
 				});
 			}
 

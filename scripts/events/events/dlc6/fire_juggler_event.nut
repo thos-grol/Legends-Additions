@@ -180,6 +180,36 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.setStartValuesEx([
 					"juggler_southern_background"
 				]);
+
+				_event.m.Dude.m.PerkPoints = 3;
+				_event.m.Dude.m.LevelUps = 3;
+				_event.m.Dude.m.Level = 4;
+				_event.m.Dude.m.XP = ::Const.LevelXP[_event.m.Dude.m.Level - 1];
+				_event.m.Dude.m.Talents = [];
+				local talents = _event.m.Dude.getTalents();
+				talents.resize(::Const.Attributes.COUNT, 0);
+
+				local roll = ::Math.rand(1, 100);
+				if (roll < 15) roll = 3;
+				else if (roll < 40) roll = 2;
+				else roll = 2;
+				talents[::Const.Attributes.MeleeSkill] = roll;
+
+				roll = ::Math.rand(1, 100);
+				if (roll < 15) roll = 3;
+				else if (roll < 40) roll = 2;
+				else roll = 2;
+				talents[::Const.Attributes.MeleeDefense] = roll;
+
+				roll = ::Math.rand(1, 100);
+				if (roll < 15) roll = 3;
+				else if (roll < 40) roll = 2;
+				else roll = 2;
+				talents[::Const.Attributes.Initiative] = roll;
+
+				_event.m.Dude.m.Attributes = [];
+				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
+
 				_event.m.Dude.setTitle("the Fire Juggler");
 				_event.m.Dude.getBackground().m.RawDescription = "You found %name% on the streets of " + _event.m.Town.getName() + ", ready to put on fiery display of record-breaking fire juggling that could have well cost him his life. Luckily, " + _event.m.Juggler.getName() + " jumped in to perform the act with him, possibly saving his life. Afterwards, %name% finally had enough of his trade and volunteered to join your company.";
 				_event.m.Dude.getBackground().buildDescription(true);

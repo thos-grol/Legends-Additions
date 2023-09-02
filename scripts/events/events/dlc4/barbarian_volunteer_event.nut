@@ -44,9 +44,31 @@ this.barbarian_volunteer_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.setStartValuesEx([
 					"barbarian_background"
 				]);
+
+				_event.m.Dude.m.PerkPoints = 5;
+				_event.m.Dude.m.LevelUps = 5;
+				_event.m.Dude.m.Level = 6;
+				_event.m.Dude.m.XP = ::Const.LevelXP[_event.m.Dude.m.Level - 1];
+				_event.m.Dude.m.Talents = [];
+				local talents = _event.m.Dude.getTalents();
+				talents.resize(::Const.Attributes.COUNT, 0);
+
+				local roll = ::Math.rand(1, 100);
+				if (roll < 15) roll = 3;
+				else if (roll < 40) roll = 2;
+				else roll = 1;
+				talents[::Const.Attributes.MeleeSkill] = roll;
+				talents[::Const.Attributes.MeleeDefense] = 3;
+				if (roll < 15) roll = 3;
+				else if (roll < 40) roll = 2;
+				else roll = 1;
+				talents[::Const.Attributes.Hitpoints] = roll;
+
+				_event.m.Dude.m.Attributes = [];
+				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
+
 				_event.m.Dude.getBackground().m.RawDescription = "%name% joined you after being exiled from his tribe in the north for refusing to kill his brother. He\'ll fight for you as well as for anyone.";
 				_event.m.Dude.getBackground().buildDescription(true);
-				_event.m.Dude.getItems().equip(this.new("scripts/items/accessory/warhound_item"));
 				this.Characters.push(_event.m.Dude.getImagePath());
 			}
 

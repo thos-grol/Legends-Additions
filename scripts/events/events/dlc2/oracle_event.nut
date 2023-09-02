@@ -1,3 +1,4 @@
+//FEATURE_5: rework
 this.oracle_event <- this.inherit("scripts/events/event", {
 	m = {},
 	function create()

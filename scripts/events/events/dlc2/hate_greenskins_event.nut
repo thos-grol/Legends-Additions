@@ -1,3 +1,4 @@
+//FEATURE_5: rework
 this.hate_greenskins_event <- this.inherit("scripts/events/event", {
 	m = {
 		Image = "",

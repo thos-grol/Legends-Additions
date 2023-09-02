@@ -45,7 +45,7 @@ this.nightowl_catches_thief_event <- this.inherit("scripts/events/event", {
 					icon = trait.getIcon(),
 					text = _event.m.NightOwl.getName() + " is exhausted"
 				});
-				local money = this.Math.rand(100, 300);
+				local money = this.Math.rand(10, 30);
 				this.World.Assets.addMoney(money);
 				this.List.push({
 					id = 10,

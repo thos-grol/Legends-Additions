@@ -1,3 +1,4 @@
+//FEATURE_5: rework spooky
 this.incense_trade_event <- this.inherit("scripts/events/event", {
 	m = {
 		Dancer = null

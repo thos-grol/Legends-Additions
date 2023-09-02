@@ -83,19 +83,19 @@ this.deserter_in_forest_event <- this.inherit("scripts/events/event", {
 
 				local roll = ::Math.rand(1, 100);
 				if (roll < 15) roll = 3;
-				else if (rol < 40) roll = 2;
+				else if (roll < 40) roll = 2;
 				else roll = 1;
 				talents[::Const.Attributes.MeleeSkill] = roll;
 
 				roll = ::Math.rand(1, 100);
 				if (roll < 15) roll = 3;
-				else if (rol < 40) roll = 2;
+				else if (roll < 40) roll = 2;
 				else roll = 1;
 				talents[::Const.Attributes.MeleeDefense] = roll;
 
 				roll = ::Math.rand(1, 100);
 				if (roll < 15) roll = 3;
-				else if (rol < 40) roll = 2;
+				else if (roll < 40) roll = 2;
 				else roll = 1;
 				talents[::Const.Attributes.Hitpoints] = roll;
 

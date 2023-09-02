@@ -35,25 +35,9 @@ this.kings_guard_1_event <- this.inherit("scripts/events/event", {
 			{
 				local roster = this.World.getTemporaryRoster();
 				_event.m.Dude = roster.create("scripts/entity/tactical/player");
-
-				if (this.World.Assets.getOrigin().getID() == "scenario.legend_risen_legion")
-				{
-					_event.m.Dude.getFlags().add("PlayerSkeleton");
-					_event.m.Dude.getFlags().add("undead");
-					_event.m.Dude.getFlags().add("skeleton");
-					_event.m.Dude.setStartValuesEx([
-						"cripple_background"
-					], false);
-					_event.m.Dude.getSkills().add(this.new("scripts/skills/racial/skeleton_racial"));
-					_event.m.Dude.getSkills().add(this.new("scripts/skills/traits/legend_fleshless_trait"));
-				}
-				else
-				{
-					_event.m.Dude.setStartValuesEx([
-						"cripple_background"
-					], false);
-				}
-
+				_event.m.Dude.setStartValuesEx([
+					"cripple_background"
+				], false);
 				_event.m.Dude.setTitle("");
 				_event.m.Dude.getBackground().m.RawDescription = "You found %name% frozen half to death in the north, claiming to have been a King\'s Guard once, but looking at the wretch now you see but a cripple.";
 				_event.m.Dude.getBackground().buildDescription(true);
@@ -67,9 +51,9 @@ this.kings_guard_1_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.m.Talents = [];
 				local talents = _event.m.Dude.getTalents();
 				talents.resize(this.Const.Attributes.COUNT, 0);
-				talents[this.Const.Attributes.MeleeSkill] = 2;
+				talents[this.Const.Attributes.MeleeSkill] = 3;
 				talents[this.Const.Attributes.MeleeDefense] = 3;
-				talents[this.Const.Attributes.RangedDefense] = 3;
+				talents[this.Const.Attributes.Hitpoints] = 3;
 				_event.m.Dude.m.Attributes = [];
 				_event.m.Dude.fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
 				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand));
@@ -156,7 +140,7 @@ this.kings_guard_1_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Score = 5;
+		this.m.Score = 10;
 	}
 
 	function onPrepare()

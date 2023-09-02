@@ -1,3 +1,4 @@
+//TODO: rework, doctor retinue.
 this.ailing_recovers_event <- this.inherit("scripts/events/event", {
 	m = {
 		Ailing = null,
