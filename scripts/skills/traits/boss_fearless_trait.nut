@@ -47,8 +47,6 @@ this.boss_fearless_trait <- this.inherit("scripts/skills/traits/character_trait"
 				icon = "ui/icons/bravery.png",
 				text = "[color=" + this.Const.UI.Color.PositiveValue + "]Unbreakable... as long as they are over 25% health."
 			}
-
-			//TODO: ancient priest potion
 		];
 	}
 
@@ -63,6 +61,8 @@ this.boss_fearless_trait <- this.inherit("scripts/skills/traits/character_trait"
 		}
 		else
 		{
+			_properties.IsAffectedByDyingAllies = true;
+			_properties.IsAffectedByLosingHitpoints = true;
 			_properties.Bravery += 40;
 		}
 

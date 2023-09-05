@@ -13,3 +13,4 @@
 ::Z.Economy.Fortune <- 200;
 ::Z.Economy.Jackpot <- 500;
 ::Z.Economy.Jackpot_2 <- 1000;
+

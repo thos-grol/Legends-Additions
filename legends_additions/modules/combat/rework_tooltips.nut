@@ -339,37 +339,37 @@ local modTacticalTooltip = function ( tooltip, _targetedWithSkill )
 		id = 101,
 		type = "hint",
 		icon = "ui/icons/bravery.png",
-		text = "" + this.getBravery()
+		text = "" + this.getCurrentProperties().Bravery
 	});
 	tooltip.push({
 		id = 102,
 		type = "hint",
 		icon = "ui/icons/initiative.png",
-		text = "" + this.getInitiative()
+		text = "" + this.getCurrentProperties().Initiative
 	});
 	tooltip.push({
 		id = 103,
 		type = "hint",
 		icon = "ui/icons/melee_skill.png",
-		text = "" + this.m.CurrentProperties.MeleeSkill
+		text = "" + this.getCurrentProperties().MeleeSkill
 	});
 	tooltip.push({
 		id = 104,
 		type = "hint",
 		icon = "ui/icons/ranged_skill.png",
-		text = "" + this.m.CurrentProperties.RangedSkill
+		text = "" + this.getCurrentProperties().RangedSkill
 	});
 	tooltip.push({
 		id = 105,
 		type = "hint",
 		icon = "ui/icons/melee_defense.png",
-		text = "" + this.m.CurrentProperties.MeleeDefense
+		text = "" + this.getCurrentProperties().MeleeDefense
 	});
 	tooltip.push({
 		id = 106,
 		type = "hint",
 		icon = "ui/icons/ranged_defense.png",
-		text = "" + this.m.CurrentProperties.RangedDefense
+		text = "" + this.getCurrentProperties().RangedDefense
 	});
 	return tooltip;
 };

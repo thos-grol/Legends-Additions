@@ -4,6 +4,26 @@
 + "\n• At the start of battle, gain 1 charge of shielding."
 + "\n• Each charge can nullify a blow. Gain more charges through consuming enemies or corpses.";
 
+::Const.Strings.PerkName.DirewolfBerserkMode <- "Berserk Mode";
+::Const.Strings.PerkDescription.DirewolfBerserkMode <- "Unstoppable rage..."
++ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n• When reduced to 50% hp, triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
++ "\n• Become immune to stuns and displacement for 2 turns."
++ "\n• Gain increased damage, initiative, and defenses for 2 turns.";
+
+::Const.Strings.PerkName.DirewolfRuinAura <- "Ruin Aura";
+::Const.Strings.PerkDescription.DirewolfRuinAura <- "Unstoppable rage..."
++ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n• When reduced to 50% hp, triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
++ "\n• Become immune to stuns and displacement for 2 turns."
++ "\n• Gain increased damage, initiative, and defenses for 2 turns.";
+
+::Const.Strings.PerkName.Finesse <- "Finesse";
+::Const.Strings.PerkDescription.Finesse <- "With experience and skill comes finesse..."
++ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n• Reduce Fatigue Cost of all skills by 20%."
++ "\n• At the end of your turn, gain twice your remaining action points as melee defense.";
+
 // ::Const.Strings.PerkName.EldritchBlast <- "Eldritch Blast"
 // // ::Const.Strings.PerkDescription.LegendSpecCultHood = "With face obscured by a cultist hood, gain " + ::MSU.Text.colorGreen( 15 ) + "% of your base resolve as a bonus to melee and ranged defense. Also works with cultist leather hood, leather helmet, sack, decayed sack helm, warlock hood or mask of davkul.\n Also unlocks a crafting recipe to make cultist hoods and sacks.";
 // ::Const.Strings.PerkDescription.EldritchBlast <- "Blast your foes with eldritch energy.";
@@ -52,6 +72,33 @@ local perks = [
         Icon = "ui/perks/perk_29.png",
         IconDisabled = "ui/perks/perk_29_sw.png",
         Const = "NachzererGluttonyBarrier"
+    },
+	{
+        ID = "perk.direwolf_berserk_mode",
+        Script = "scripts/skills/perks/perk_direwolf_berserk_mode",
+        Name = ::Const.Strings.PerkName.DirewolfBerserkMode,
+        Tooltip = ::Const.Strings.PerkDescription.DirewolfBerserkMode,
+        Icon = "ui/perks/perk_29.png",
+        IconDisabled = "ui/perks/perk_29_sw.png",
+        Const = "DirewolfBerserkMode"
+    },
+	{
+        ID = "perk.direwolf_ruin_aura",
+        Script = "scripts/skills/perks/perk_direwolf_ruin_aura",
+        Name = ::Const.Strings.PerkName.DirewolfRuinAura,
+        Tooltip = ::Const.Strings.PerkDescription.DirewolfRuinAura,
+        Icon = "ui/perks/perk_29.png",
+        IconDisabled = "ui/perks/perk_29_sw.png",
+        Const = "DirewolfRuinAura"
+    },
+	{
+        ID = "perk.finesse",
+        Script = "scripts/skills/perks/perk_finesse",
+        Name = ::Const.Strings.PerkName.Finesse,
+        Tooltip = ::Const.Strings.PerkDescription.Finesse,
+        Icon = "ui/perks/rf_finesse.png",
+        IconDisabled = "ui/perks/rf_finesse_bw.png",
+        Const = "Finesse"
     },
     // {
 	// 	ID = "perk.eldritch_blast",

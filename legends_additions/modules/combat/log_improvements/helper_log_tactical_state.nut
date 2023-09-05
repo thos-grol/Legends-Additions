@@ -1,4 +1,4 @@
-::mods_hookBaseClass("states/tactical_state", function (o)
+::mods_hookExactClass("states/tactical_state", function (o)
 {
 	o.executeEntitySkill = function( _activeEntity, _targetTile )
 	{
@@ -48,5 +48,4 @@
 			}
 		}
 	}
-
 });

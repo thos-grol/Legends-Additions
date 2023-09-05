@@ -19,5 +19,11 @@ this.alchemist_follower <- this.inherit("scripts/retinue/follower", {
 		return this.Const.DLC.Unhold;
 	}
 
+	function onNewDay()
+	{
+		//TODO: for items in stash and bro inventories:
+			//refill items
+	}
+
 });
 

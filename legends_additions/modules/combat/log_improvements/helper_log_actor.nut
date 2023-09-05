@@ -553,7 +553,7 @@
 		this.onAfterDeath(myTile);
 	};
 
-	while(!("kill" in o)) o = o[o.changeMorale];
+	while(!("changeMorale" in o)) o = o[o.SuperName];
 	o.changeMorale <- function ( _change, _showIconBeforeMoraleIcon = "", _noNewLine = false )
 	{
 		local oldMoraleState = this.m.MoraleState;
@@ -661,4 +661,45 @@
 			}
 		}
 	};
+
+	while(!("setMoraleState" in o)) o = o[o.SuperName];
+	o.setMoraleState = function ( _m )
+	{
+		if (this.m.Skills.hasSkill("effects.ancient_priest_potion")) return;
+		if (this.m.Skills.hasSkill("trait.boss_fearless") && this.getHitpointsPct() > 0.25) return;
+		if (this.m.MoraleState == _m) return;
+		
+
+		if (_m == this.Const.MoraleState.Fleeing)
+		{
+			this.m.Skills.removeByID("effects.shieldwall");
+			this.m.Skills.removeByID("effects.spearwall");
+			this.m.Skills.removeByID("effects.riposte");
+			this.m.Skills.removeByID("effects.return_favor");
+			this.m.Skills.removeByID("effects.indomitable");
+		}
+
+		this.m.MoraleState = _m;
+		local morale = this.getSprite("morale");
+
+		if (this.Const.MoraleStateBrush[this.m.MoraleState].len() != 0)
+		{
+			if (this.m.MoraleState == this.Const.MoraleState.Confident)
+			{
+				morale.setBrush(this.m.ConfidentMoraleBrush);
+			}
+			else
+			{
+				morale.setBrush(this.Const.MoraleStateBrush[this.m.MoraleState]);
+			}
+
+			morale.Visible = true;
+		}
+		else
+		{
+			morale.Visible = false;
+		}
+
+		this.m.Skills.update();
+	}
 });

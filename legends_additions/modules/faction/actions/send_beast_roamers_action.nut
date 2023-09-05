@@ -1,6 +1,5 @@
-//FIXME: list changes - made beasts rarer
 //Reworked beasts
-//TODO: add newly created single/multiple beast parties.
+//FEATURE_0: add newly created single/multiple beast parties.
 ::mods_hookExactClass("factions/actions/send_beast_roamers_action", function(o) {
 	o.onUpdate = function( _faction )
 	{
@@ -13,7 +12,7 @@
 			}
 		}
 
-		if (_faction.getUnits().len() >= 10) return;
+		if (_faction.getUnits().len() >= 6) return;
 		this.m.Score = 10;
 	}
 
@@ -56,13 +55,70 @@
 		this.faction_action.create();
 		local distanceToNextAlly = 10;
 		local beast;
-		beast = function ( _action, _nearTile = null ) //Nachzehrers
+
+		beast = function ( _action, _nearTile = null ) //Direwolf
+		{
+			local disallowedTerrain = [];
+
+			for( local i = 0; i < this.Const.World.TerrainType.COUNT; i = i )
+			{
+				if   ( i == this.Const.World.TerrainType.SnowyForest 
+					|| i == this.Const.World.TerrainType.AutumnForest 
+					|| i == this.Const.World.TerrainType.Snow 
+					|| i == this.Const.World.TerrainType.Tundra
+				) {}
+				else disallowedTerrain.push(i);
+
+				i = ++i;
+			}
+
+			local tile = _action.getTileToSpawnLocation(10, disallowedTerrain, 7, 50, 1000, 3, 0, _nearTile, 0.2);
+
+			if (tile == null) return false;
+			if (_action.getDistanceToNextAlly(tile) <= distanceToNextAlly / (_nearTile == null ? 1 : 2)) return false;
+
+			local DIREWOLF = {
+				ID = ::Const.EntityType.Direwolf,
+				Variant = 0,
+				Strength = 250,
+				Cost = 30,
+				Row = 0,
+				Script = "scripts/entity/tactical/enemies/la_direwolf"
+			};
+
+			local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
+			local party = ::Const.World.Common.la_spawnEntity_single(_action.getFaction(), tile, "Direwolf", false, DIREWOLF, ::Const.World.Spawn.Direwolves);
+			party.getSprite("banner").setBrush("banner_beasts_01");
+			party.setDescription("A ferocious direwolf looking to lay ruin to all.");
+			party.setFootprintType(this.Const.World.FootprintsType.Direwolves);
+			party.setSlowerAtNight(false);
+			party.setUsingGlobalVision(false);
+			party.setLooting(false);
+
+			local roam = this.new("scripts/ai/world/orders/roam_order");
+			roam.setAllTerrainAvailable();
+			roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
+			roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+			roam.setPivot(settlement);
+			roam.setAvoidHeat(true);
+			party.getController().addOrder(roam);
+			return true;
+		};
+		this.m.Options.push(beast);
+		this.m.BeastsLow.push(beast);
+
+
+		return; //TODO: PLACEHOLDER remove for normal function
+		
+		beast = function ( _action, _nearTile = null ) //Nachzehrer
 		{
 			local disallowedTerrain = [];
 			for( local i = 0; i < this.Const.World.TerrainType.COUNT; i += 1 )
 			{
-				if (i != this.Const.World.TerrainType.Steppe && i != this.Const.World.TerrainType.Plains)
-					disallowedTerrain.push(i);
+				if   ( i == this.Const.World.TerrainType.Steppe 
+					|| i == this.Const.World.TerrainType.Plains 
+				) {}
+				else disallowedTerrain.push(i);
 			}
 			local tile = _action.getTileToSpawnLocation(10, disallowedTerrain, 7, 35, 1000, 3, 0, _nearTile, 0.0, 0.75);
 			if (tile == null) return false;
@@ -90,99 +146,6 @@
 			roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
 			roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
 			roam.setTerrain(this.Const.World.TerrainType.Shore, false);
-			party.getController().addOrder(roam);
-			return true;
-		};
-		this.m.Options.push(beast);
-		this.m.BeastsLow.push(beast);
-
-		return; //PLACEHOLDER
-
-		beast = function ( _action, _nearTile = null ) //Direwolves
-		{
-			local disallowedTerrain = [];
-
-			for( local i = 0; i < this.Const.World.TerrainType.COUNT; i = i )
-			{
-				if (i == this.Const.World.TerrainType.Forest || i == this.Const.World.TerrainType.SnowyForest || i == this.Const.World.TerrainType.LeaveForest || i == this.Const.World.TerrainType.AutumnForest)
-				{
-				}
-				else
-				{
-					disallowedTerrain.push(i);
-				}
-
-				i = ++i;
-			}
-
-			local tile = _action.getTileToSpawnLocation(10, disallowedTerrain, 7, 50, 1000, 3, 0, _nearTile, 0.2);
-
-			if (tile == null)
-			{
-				return false;
-			}
-
-			if (_action.getDistanceToNextAlly(tile) <= distanceToNextAlly / (_nearTile == null ? 1 : 2))
-			{
-				return false;
-			}
-
-			local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-			local party = _action.getFaction().spawnEntity(tile, "Direwolves", false, this.Const.World.Spawn.Direwolves, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
-			party.getSprite("banner").setBrush("banner_beasts_01");
-			party.setDescription("A pack of ferocious direwolves on the hunt for prey.");
-			party.setFootprintType(this.Const.World.FootprintsType.Direwolves);
-			party.setSlowerAtNight(false);
-			party.setUsingGlobalVision(false);
-			party.setLooting(false);
-			local roam = this.new("scripts/ai/world/orders/roam_order");
-			roam.setNoTerrainAvailable();
-			roam.setTerrain(this.Const.World.TerrainType.Forest, true);
-			roam.setTerrain(this.Const.World.TerrainType.SnowyForest, true);
-			roam.setTerrain(this.Const.World.TerrainType.LeaveForest, true);
-			roam.setTerrain(this.Const.World.TerrainType.SwampForest, true);
-			roam.setTerrain(this.Const.World.TerrainType.SwampGreen, true);
-			roam.setTerrain(this.Const.World.TerrainType.Hills, true);
-			local r = this.Math.rand(1, 20);
-
-			if (r == 1)
-			{
-				roam.setTerrain(this.Const.World.TerrainType.Plains, true);
-			}
-			else if (r == 2)
-			{
-				roam.setTerrain(this.Const.World.TerrainType.Plains, true);
-				roam.setTerrain(this.Const.World.TerrainType.Farmland, true);
-			}
-			else if (r == 3)
-			{
-				roam.setTerrain(this.Const.World.TerrainType.Swamp, true);
-			}
-			else if (r == 4)
-			{
-				roam.setTerrain(this.Const.World.TerrainType.AutumnForest, true);
-			}
-			else if (r == 5)
-			{
-				roam.setTerrain(this.Const.World.TerrainType.Farmland, true);
-			}
-			else if (r == 6)
-			{
-				roam.setTerrain(this.Const.World.TerrainType.Snow, true);
-			}
-			else if (r == 7)
-			{
-				roam.setTerrain(this.Const.World.TerrainType.Badlands, true);
-			}
-			else if (r == 8)
-			{
-				roam.setTerrain(this.Const.World.TerrainType.Tundra, true);
-			}
-			else if (r == 9)
-			{
-				roam.setTerrain(this.Const.World.TerrainType.Steppe, true);
-			}
-
 			party.getController().addOrder(roam);
 			return true;
 		};

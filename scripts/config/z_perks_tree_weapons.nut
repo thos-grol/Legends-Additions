@@ -439,7 +439,6 @@ gt.Const.Perks.DaggerTree <- {
 	Tree = [
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Backstabber
 		],
 		[],
 		[
@@ -887,21 +886,28 @@ gt.Const.Perks.ShieldTree <- {
 	Tree = [
 		[],
 		[
-			gt.Const.Perks.PerkDefs.ShieldBash
+			gt.Const.Perks.PerkDefs.Taunt
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistShieldPush
+			
 		],
 		[
 			gt.Const.Perks.PerkDefs.ShieldExpert
+			//gt.Const.Perks.PerkDefs.LegendSpecialistShieldPush //TODO merge
+			//gt.Const.Perks.PerkDefs.ShieldBash //TODO: rework and merge, knockback, + chance to hit
 		],
 		[
 			gt.Const.Perks.PerkDefs.LegendSpecialistShieldSkill
+			//TODO: replace with rebuke
 		],
 		[],
 		[]
 	]
 };
+
+// "Rebuke
+// Gain a 25% chance to perform a free attack against an adjacent opponent who misses a melee attack against you. The chance is increased by an additional +10% when equipped with a shield."
+//Rework, to while weilding shield
 gt.Const.Perks.StaffTree <- {
 	ID = "Staff",
 	Name = "Staff",

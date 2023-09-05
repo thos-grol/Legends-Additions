@@ -25,9 +25,7 @@ gt.Const.Perks.BeastClassTree <- {
 		],
 		[
 		],
-		[
-			//gt.Const.Perks.PerkDefs.LegendEscapeArtist //FEATURE_0: move to agile tree
-		],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendNetCasting
 		]

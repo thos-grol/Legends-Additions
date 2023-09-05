@@ -33,7 +33,7 @@
 ::mods_hookExactClass("events/events/shady_character_offers_map_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/pimp_and_harlots_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/traveling_troupe_event", function(o) { o.onUpdateScore = function(){ return; }});
-::mods_hookExactClass("events/events/traveling_monk_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/travelling_monk_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/inadvertently_save_merchant_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/troublemakers_bully_peasants_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/pimp_vs_harlot_event", function(o) { o.onUpdateScore = function(){ return; }});
@@ -138,21 +138,6 @@
 ::mods_hookExactClass("events/events/legends/legends_troubador_and_juggler_event", function(o) { o.onUpdateScore = function(){ return; }});
 
 
-
-//TODO: Rework dlc8
-//anatomist_helps_blighted_guy_1_event
-//anatomist_helps_blighted_guy_2_event
-//anatomist_vs_ailing_event
-//anatomist_vs_asthmatic_event
-//anatomist_vs_clubfooted_event
-//anatomist_vs_iron_lungs_event
-//gladiator_origin_vs_anatomist_event
-//mutated_gladiator_annoys_others_event
-//killer_on_the_run_reminisces_event
-//something_in_barn_event
-//lindwurm_slayer_event
-//strange_scribe_event
-
 //legend_cannibal_recruitment //rework cannibal to be more interesting.
     //legend_cannibal_corrupts_butcher
 //legend_barbarian_vs_shieldmaiden rework higher levels
@@ -163,12 +148,6 @@
 //lucky_finds_something_event
 //
 //oracle_event
-
-//TODO: start copying over and modifying events that use addmoney, World.Assets.getMoney()
-//TODO: .onHired();
-//TODO: getlevel()
-
-//Rework
 
 //Rework stage2
 //bad_curse_event ? make curse scarier?

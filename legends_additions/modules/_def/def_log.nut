@@ -98,6 +98,14 @@
     );
 };
 
+::Z.Log.status <- function(_targetEntity, _string)
+{
+    ::Tactical.EventLog.logIn(
+        ::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " is " + _string)
+    );
+};
+
+
 
 
 ::Z.Log.suffer_injury <- function(_targetEntity, _injury)

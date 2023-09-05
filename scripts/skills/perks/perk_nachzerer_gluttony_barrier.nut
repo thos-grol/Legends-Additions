@@ -18,21 +18,12 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("actives.direwolf_blizzard"))
-		{
-			this.m.Container.add(this.new("scripts/skills/actives/direwolf_blizzard"));
-		}
 		local actor = this.getContainer().getActor();
 		if (actor.isPlayerControlled()) return;
 		actor.addSprite("sprite_gluttony_shield");
 		actor.getSprite("sprite_gluttony_shield").setHorizontalFlipping(true);
 		actor.getSprite("sprite_gluttony_shield").setBrush("gluttony_shield");
 		actor.getSprite("sprite_gluttony_shield").Visible = true;
-	}
-
-	function onRemoved()
-	{
-		this.m.Container.removeByID("actives.direwolf_blizzard");
 	}
 
 	function onCombatStarted()
@@ -102,7 +93,6 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 		if (this.m.Charges == 0) return;
 		local actor = this.getContainer().getActor();
 		if (_attacker != null && _attacker.getID() == actor.getID() || _skill == null || !_skill.isAttack() || !_skill.isUsingHitchance()) return;
-		//if (actor.getSkills().getSkillByID("effects.bone_plating") != null) return; //TODO: boneplating checks for this
 
 		_properties.DamageReceivedRegularMult *= 0;
 		_properties.DamageReceivedArmorMult *= 0;

@@ -1,22 +1,55 @@
-DEFENDER has been knocked back
-DEFENDER has been lacerated.
+//TODO: all armor tooltips -> moved to armor class. ie. nimble dodge. check for status effect...
+
+//TODO: weapon mastery system for retinue
+    // Add effect that records the weapon type of the currently equipped weapon. 
+    // If already has it, try to learn shield.
+    // Description: Trains all weapons and shields.
+        // function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
+        // add total damage to exp. Once damage accumulates enough add tree.
+
+        //every time attack misses and character has shield equipped, gain a random ammount of shield exp.
+    //Will display currently training message.
+
+//TODO: make some backgrounds have garunteed stats/traits, ie. lumberjacks will come with weapon proficiency
+    Weapon mastery perks renamed to weapon proficiency -> becomes status effect. When mastered, grant stance to user.
+    Choose 1 of 2 stances for each weapon.
+    Masters can transform your stance into different stance.
+
+//TODO: gladiator tooltips moved to perks, fix visual clutter
+
+//TODO: bright trait tiers.
 
 Economy Overhaul
 
 //TODO: this.m.Payment.Pool, contracts
 
-//TODO: disable most ambitions, rework
-    //Slay a monster -> unlock anatomist retinue
-        //Anatomist retinue unlocks anatomist events.
+//TODO: ambitions rework
+    //FEATURE_0: Slay a monster -> unlock anatomist retinue
 
 //TODO: fix alchemist having named items.
-//TODO: Reintegrate mood changes.
 
-//TODO: Make backgrounds more unique. Most backgrounds only get access to one weapon tree.
-//TODO: give backgrounds items they can use
-//TODO: weapon mastery system
-//TODO: training halls, unique...
-    ie. event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters.
+
+//FEATURE_5: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
+
+
+//TODO: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
+//TODO: Serpent -> Knock (Poison opens wounds), Edge. Medusa's Gaze
+//TODO: Lindwurm -> Dragon -> Dream, Edge (Poison)
+//TODO: Schrat -> Heart, Lantern
+
+//TODO: Necrosavant -> Grail, Knock
+    //Modes:
+        //Scummy - tp away close to party, summon weakest bro to it
+        //Guerilla - tp and strike, tp and strike
+        //Vampire - Casts blood magic, charms enemies
+    //All attacks cause bleed, and heal damage caused from attacks including bleed.
+
+//TODO: zombie -> lesser undead
+    //Increase hp, add nimble. that's it
+
+//TODO: rework ghosts
+
+//Z
 
 DOC:
     Bros will now generate with only one main weapon tree, and two trait trees. Backgrounds now really do matter. BUT it's not impossible to learn new weapons skills.
@@ -70,17 +103,11 @@ DOC:
 
 //FEATURE_1: Camping and Retinue and class Rework
 camping ui
-    //FEATURE_1: replace crafting tent on screen with anatomist, hide if you don't have
-    //FEATURE_1: replace tent on screen with alchemist, hide if you don't have
-    //FEATURE_1: comment out tents that can be accessed from main tent
     //FEATURE_1: remove crafting and training from main tent
-
-    //FEATURE_1: change money added from contracts and events
     //FEATURE_1: cart can only be upgraded once, experiment with stash size
     //this.World.Assets.addMoney
-    //FEATURE_1: remove most events that give free stuff, you need traits etc to earn them
     //FEATURE_1: remove most class perks from trees
-    //FEATURE_1: make some backgrounds have garunteed stats/traits, ie. lumberjacks will come with passive for axes
+   
 
 
 
@@ -134,17 +161,10 @@ camping ui
     //Dungeon exploration
     //Opening up the wilderness
     //Arena
+    //FEATURE_3: start making the world poorer, troop equipment nerf
+    //FEATURE_3: most mobs besides top tier mobs will be using at most chain armor
+    //FEATURE_3: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
 
-//FEATURE_2: contract, ambition, event pay, money rework
-    //FEATURE_2: script to generate all ambitions
-    //FEATURE_2: script to generate all contracts
-    //FEATURE_2: disable donkey events
-    //FEATURE_2: disable oathtaker armor event
-    //FEATURE_2: start making the world poorer, troop equipment nerf
-    //FEATURE_2: most mobs besides top tier mobs will be using at most chain armor
-    //FEATURE_2: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
-
-//FEATURE_6: sellswords armor rework? - no perks needed, buffs granted based on armor weight
 //FEATURE_6: muscularity for bows and slings
 //FEATURE_6: bow perk that has a chance to make shot have 99% AP based on range skill
 //FEATURE_6: fletching etc costs money to do <- the resources have to come from somwhere don't they?
@@ -411,3 +431,233 @@ A problem in the game was that eventually you would reach the point where money 
 - Reworked MOST event bros to be of higher quality to fix the problem of accepting them and then kicking them from party. Made changes where it made sense.
 - Made certain events garunteed to happen within the timeframe ie. kingsguard recovering.
 - Reworked some events to be repeatable and provide benefits to certain backgrounds. Ie. apprentice learns event can trigger max twice for 1 apprentice. And the event cooldown is a week.
+
+::Const.Tactical.RuinAuraParticles <- [
+	{
+		Delay = 0,
+		Quantity = 30,
+		LifeTimeQuantity = 30,
+		SpawnRate = 30,
+		Brushes = [
+			"effect_skull_03"
+		],
+		Stages = [
+			{
+				LifeTimeMin = 0.5,
+				LifeTimeMax = 1.0,
+				ColorMin = this.createColor("4cccf300"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				RotationMin = 0,
+				RotationMax = 359,
+				TorqueMin = -10,
+				TorqueMax = 10,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(-0.25, -0.5),
+				DirectionMax = this.createVec(0.25, -1.0),
+				SpawnOffsetMin = this.createVec(-30, 100),
+				SpawnOffsetMax = this.createVec(30, 150),
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 10)
+			},
+			{
+				LifeTimeMin = 1.0,
+				LifeTimeMax = 1.5,
+				ColorMin = this.createColor("4cccf39d"),
+				ColorMax = this.createColor("ffffff9d"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(-0.25, -0.5),
+				DirectionMax = this.createVec(0.25, -1.0),
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 10)
+			},
+			{
+				LifeTimeMin = 0.5,
+				LifeTimeMax = 1.0,
+				ColorMin = this.createColor("4cccf300"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 10)
+			}
+		]
+	},
+	{
+		Delay = 0,
+		Quantity = 30,
+		LifeTimeQuantity = 30,
+		SpawnRate = 30,
+		Brushes = [
+			"effect_skull_03"
+		],
+		Stages = [
+			{
+				LifeTimeMin = 0.5,
+				LifeTimeMax = 1.0,
+				ColorMin = this.createColor("4cccf300"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				RotationMin = 0,
+				RotationMax = 359,
+				TorqueMin = -10,
+				TorqueMax = 10,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(-0.25, 0.5),
+				DirectionMax = this.createVec(0.25, 1.0),
+				SpawnOffsetMin = this.createVec(-30, -100),
+				SpawnOffsetMax = this.createVec(30, 50),
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 10)
+			},
+			{
+				LifeTimeMin = 1.0,
+				LifeTimeMax = 1.5,
+				ColorMin = this.createColor("4cccf39d"),
+				ColorMax = this.createColor("ffffff9d"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(-0.25, 0.5),
+				DirectionMax = this.createVec(0.25, 1.0),
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 10)
+			},
+			{
+				LifeTimeMin = 0.5,
+				LifeTimeMax = 1.0,
+				ColorMin = this.createColor("4cccf300"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 10)
+			}
+		]
+	},
+	{
+		Delay = 0,
+		Quantity = 30,
+		LifeTimeQuantity = 30,
+		SpawnRate = 30,
+		Brushes = [
+			"effect_skull_03"
+		],
+		Stages = [
+			{
+				LifeTimeMin = 0.5,
+				LifeTimeMax = 1.0,
+				ColorMin = this.createColor("4cccf300"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				RotationMin = 0,
+				RotationMax = 359,
+				TorqueMin = -10,
+				TorqueMax = 10,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(-0.5, -0.2),
+				DirectionMax = this.createVec(-1.0, 0.2),
+				SpawnOffsetMin = this.createVec(50, 0),
+				SpawnOffsetMax = this.createVec(100, 75),
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 0)
+			},
+			{
+				LifeTimeMin = 1.0,
+				LifeTimeMax = 1.5,
+				ColorMin = this.createColor("4cccf39d"),
+				ColorMax = this.createColor("ffffff9d"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(-0.5, -0.25),
+				DirectionMax = this.createVec(-1.0, 0.25),
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 0)
+			},
+			{
+				LifeTimeMin = 0.5,
+				LifeTimeMax = 1.0,
+				ColorMin = this.createColor("4cccf300"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 0)
+			}
+		]
+	},
+	{
+		Delay = 0,
+		Quantity = 30,
+		LifeTimeQuantity = 30,
+		SpawnRate = 30,
+		Brushes = [
+			"effect_skull_03"
+		],
+		Stages = [
+			{
+				LifeTimeMin = 0.5,
+				LifeTimeMax = 1.0,
+				ColorMin = this.createColor("4cccf300"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				RotationMin = 0,
+				RotationMax = 359,
+				TorqueMin = -10,
+				TorqueMax = 10,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(0.5, -0.2),
+				DirectionMax = this.createVec(1.0, 0.2),
+				SpawnOffsetMin = this.createVec(-100, 0),
+				SpawnOffsetMax = this.createVec(-50, 75),
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 0)
+			},
+			{
+				LifeTimeMin = 1.0,
+				LifeTimeMax = 1.5,
+				ColorMin = this.createColor("4cccf39d"),
+				ColorMax = this.createColor("ffffff9d"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(0.5, -0.25),
+				DirectionMax = this.createVec(1.0, 0.25),
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 0)
+			},
+			{
+				LifeTimeMin = 0.5,
+				LifeTimeMax = 1.0,
+				ColorMin = this.createColor("4cccf300"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				ForceMin = this.createVec(0, 0),
+				ForceMax = this.createVec(0, 0)
+			}
+		]
+	}

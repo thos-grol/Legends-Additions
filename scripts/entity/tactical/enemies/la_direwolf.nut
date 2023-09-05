@@ -1,23 +1,93 @@
 //Direwolf
-//Attributes: Winter, Knife
+//Attributes: Winter, Edge
 //Weakness: Heart
 
-//TODO: design direwolf
-
-//use ruina boss ideas
-//Aura of unmaking - Every 5 turns, the aura pulses, giving all the injuries the wolf has to all beings within 5 squares of it
-//Ruinous Attack - Strike with an attack that inflicts a random injury on self and on the target.
-//leap to attack archers.
-
-//Add berserk frenzy, replace head with frenzied head, and turn eyes red. Add fury aura.
-	//When taking enough hits, has a chance to enter a berserk rage where instantly the area 5 squares around it is hit with a winter mass attack.
-	//All people who are hit in the aoe have their turns ended instantly.
-	//Deal increased damage
-	//Next turn, do a 4 jump attacks.
-	//Normal turn - At the end of the turn, berserk ends.
+::Const.Tactical.Actor.Direwolf <- {
+	XP = 200,
+	ActionPoints = 12,
+	Hitpoints = 600,
+	Bravery = 10,
+	Stamina = 180,
+	MeleeSkill = 75,
+	RangedSkill = 0,
+	MeleeDefense = 50,
+	RangedDefense = 50,
+	Initiative = 150,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	FatigueRecoveryRate = 20,
+	Armor = [
+		200,
+		200
+	]
+};
 
 this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 	m = {},
+	function onInit()
+	{
+		this.actor.onInit();
+		local b = this.m.BaseProperties;
+		b.setValues(this.Const.Tactical.Actor.Direwolf);
+		b.IsAffectedByNight = false;
+		b.IsImmuneToDisarm = true;
+		this.m.ActionPoints = b.ActionPoints;
+		this.m.Hitpoints = b.Hitpoints;
+		this.m.CurrentProperties = clone b;
+		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+
+		local scale_mult = 1.25;
+		this.addSprite("socket").setBrush("bust_base_beasts");
+		local body = this.addSprite("body");
+		body.setBrush("bust_direwolf_0" + this.Math.rand(1, 3));
+		body.Scale = scale_mult;
+
+		if (this.Math.rand(0, 100) < 90) body.varySaturation(0.2);
+		if (this.Math.rand(0, 100) < 90) body.varyColor(0.05, 0.05, 0.05);
+
+		local head = this.addSprite("head");
+		head.setBrush("bust_direwolf_03_head");
+		head.Color = body.Color;
+		head.Saturation = body.Saturation;
+		head.Scale = scale_mult;
+		local head_frenzy = this.addSprite("head_frenzy");
+		head_frenzy.setBrush(this.getSprite("head").getBrush().Name + "_frenzy");
+		head_frenzy.Scale = scale_mult;
+		local injury = this.addSprite("injury");
+		injury.Visible = false;
+		injury.setBrush("bust_direwolf_injured");
+		injury.Scale = scale_mult;
+		local body_blood = this.addSprite("body_blood");
+		body_blood.Visible = false;
+		body_blood.Scale = scale_mult;
+		this.addDefaultStatusSprites();
+		this.getSprite("status_rooted").Scale = 0.54 * scale_mult;
+		this.setSpriteOffset("status_rooted", this.createVec(0, 0));
+
+		////////////////////////////////////////////////////////////////////////
+
+		this.getFlags().add("la_direwolf");
+
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_escape_artist"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_berserk"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_crippling_strikes"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_fast_adaption"));
+        this.m.Skills.add(this.new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
+
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_direwolf_berserk_mode"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_second_wind"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_direwolf_ruin_aura"));
+
+		//this.m.Skills.add(this.new("scripts/skills/racial/werewolf_racial"));
+		this.m.Skills.add(this.new("scripts/skills/actives/direwolf_bite"));
+		this.m.Skills.add(this.new("scripts/skills/actives/direwolf_hunt_teleport"));
+		this.m.Skills.add(this.new("scripts/skills/actives/direwolf_indomitable"));
+		
+		
+	}
+
 	function create()
 	{
 		this.m.Type = this.Const.EntityType.Direwolf;
@@ -106,7 +176,7 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.SoundVolume[this.Const.Sound.ActorEvent.Attack] = 0.8;
 		this.m.SoundVolume[this.Const.Sound.ActorEvent.Move] = 0.7;
 		this.m.SoundPitch = this.Math.rand(95, 105) * 0.01;
-		this.m.AIAgent = this.new("scripts/ai/tactical/agents/direwolf_agent");
+		this.m.AIAgent = this.new("scripts/ai/tactical/agents/la_direwolf_agent");
 		this.m.AIAgent.setActor(this);
 	}
 
@@ -246,59 +316,6 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
-
-	function onInit()
-	{
-		this.actor.onInit();
-		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Direwolf);
-		b.IsAffectedByNight = false;
-		b.IsImmuneToDisarm = true;
-		this.m.ActionPoints = b.ActionPoints;
-		this.m.Hitpoints = b.Hitpoints;
-		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
-		this.addSprite("socket").setBrush("bust_base_beasts");
-		local body = this.addSprite("body");
-		body.setBrush("bust_direwolf_0" + this.Math.rand(1, 3));
-
-		if (this.Math.rand(0, 100) < 90)
-		{
-			body.varySaturation(0.2);
-		}
-
-		if (this.Math.rand(0, 100) < 90)
-		{
-			body.varyColor(0.05, 0.05, 0.05);
-		}
-
-		local head = this.addSprite("head");
-		head.setBrush("bust_direwolf_0" + this.Math.rand(1, 3) + "_head");
-		head.Color = body.Color;
-		head.Saturation = body.Saturation;
-		local head_frenzy = this.addSprite("head_frenzy");
-		local injury = this.addSprite("injury");
-		injury.Visible = false;
-		injury.setBrush("bust_direwolf_injured");
-		local body_blood = this.addSprite("body_blood");
-		body_blood.Visible = false;
-		this.addDefaultStatusSprites();
-		this.getSprite("status_rooted").Scale = 0.54;
-		this.setSpriteOffset("status_rooted", this.createVec(0, 0));
-		this.m.Skills.add(this.new("scripts/skills/actives/werewolf_bite"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_coup_de_grace"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_berserk"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
-
-		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-		{
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_backstabber"));
-			this.m.Skills.add(this.new("scripts/skills/racial/werewolf_racial"));
-			this.m.Skills.add(this.new("scripts/skills/traits/fearless_trait"));
-		}
-	}
-
 });
 
 

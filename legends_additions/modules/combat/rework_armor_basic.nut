@@ -19,18 +19,24 @@
 
     o.getDescription <- function()
 	{
-		return "Grants bonus's based on the user's armor class.";
+		return "Grants bonuses based on the user's armor class.";
 	}
 
 	o.getTooltip = function()
 	{
 		local tooltip = this.skill.getTooltip();
 		local total_weight = getTotalWeight();
+		local armor_class = "";
+
+		if (total_weight <= 20) armor_class = "Light";
+        else if (total_weight > 20 && total_weight <= 40) armor_class = "Medium";
+        else if (total_weight > 40) armor_class = "Heavy";
+
         tooltip.push({
 			id = 10,
 			type = "text",
 			icon = "ui/icons/fatigue.png",
-			text = "Current effective armor weight is [color=" + this.Const.UI.Color.PositiveValue + "]" + total_weight + "[/color] ."			
+			text = "Armor class: " + armor_class + " ([color=" + this.Const.UI.Color.PositiveValue + "]" + total_weight + "[/color])"			
 		});		
         if (total_weight <= 20) getTooltip_FreedomOfMovement(tooltip);
         else if (total_weight > 20 && total_weight <= 40) getTooltip_InTheZone(tooltip);
@@ -111,6 +117,7 @@
 
 	o.onMissed <- function( _attacker, _skill )
 	{
+		local total_weight = getTotalWeight();
 		if (total_weight > 20 && total_weight <= 40)
         {
             if (_attacker != null && _skill != null && _skill.isAttack() && !_skill.isRanged()) this.m.Stacks = this.Math.min(this.m.MaxStacks, this.m.Stacks + 1);

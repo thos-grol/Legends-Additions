@@ -13,9 +13,7 @@ gt.Const.Perks.HeavyArmorTree <- {
 	],
 	Tree = [
 		[],
-		[
-			gt.Const.Perks.PerkDefs.SteelBrow
-		],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.Brawny
 		],
@@ -37,15 +35,18 @@ gt.Const.Perks.MediumArmorTree <- {
 	Tree = [
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendBalance
+			gt.Const.Perks.PerkDefs.Dodge,
+			
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendPerfectFit
+			
 		],
 		[],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendLithe
+			gt.Const.Perks.PerkDefs.LegendLithe,
+			gt.Const.Perks.PerkDefs.LegendBalance,
+			//gt.Const.Perks.PerkDefs.LegendPerfectFit //TODO: merge all
 		],
 		[
 		]
@@ -62,9 +63,7 @@ gt.Const.Perks.LightArmorTree <- {
 		[
 			gt.Const.Perks.PerkDefs.Dodge
 		],
-		[
-			gt.Const.Perks.PerkDefs.Relentless
-		],
+		[],
 		[],
 		[],
 		[
@@ -81,12 +80,11 @@ gt.Const.Perks.ClothArmorTree <- {
 		"cloth armor"
 	],
 	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendMeek
-		],
+		[],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendSmallTarget
+			//gt.Const.Perks.PerkDefs.LegendMeek //TODO: merge
 		],
 		[],
 		[],

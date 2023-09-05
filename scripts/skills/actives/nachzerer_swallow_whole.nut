@@ -65,15 +65,23 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		if (this.m.SwallowedEntity == null) return;
 
 		local damage = this.Math.rand(10, 20);
+		local prev = this.m.SwallowedEntity_HP;
 		this.m.SwallowedEntity_HP = this.Math.max(0, this.m.SwallowedEntity_HP - damage);
 		local actor = this.getContainer().getActor();
 
 		if (this.m.SwallowedEntity_HP > 0)
 		{
-			//TODO: log
-
 			actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + damage));
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " takes " + damage + " damage. They have " + this.m.SwallowedEntity_HP + " remaining.\n" + this.Const.UI.getColorizedEntityName(actor) + " gains " + damage + " hitpoints.");
+
+			::Tactical.EventLog.log(
+				::Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " " 
+				 + "[Swallowed]" 
+				 + " » " + ::MSU.Text.color(::Z.Log.Color.BloodRed, prev) + " › " + ::MSU.Text.color(::Z.Log.Color.BloodRed, this.m.SwallowedEntity_HP) 
+				 + " ([b]" + ::MSU.Text.color(::Z.Log.Color.BloodRed, damage) + "[/b])"
+			);
+			::Tactical.EventLog.logIn(
+				this.Const.UI.getColorizedEntityName(actor) + " heals " + damage + " hitpoints.\n\n"
+			);
 		}
 		else
 		{
@@ -146,7 +154,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		if (!dodgeCheck)
 		{
 			if (!_user.isHiddenToPlayer() && (_targetTile.IsVisibleForPlayer || this.knockToTile.IsVisibleForPlayer))
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " tries to devour " + this.Const.UI.getColorizedEntityName(target) + " but misses. Rolled " + roll + " vs " + chance);
+				::Z.Log.skill(_user, target, "Swallow Whole", roll, chance, false, true);
 
 			local nachzerer_maddening_hunger = _user.getSkills().getSkillByID("effects.nachzerer_maddening_hunger");
 			if (nachzerer_maddening_hunger == null) _user.getSkills().add(this.new("scripts/skills/effects/nachzerer_maddening_hunger"));
@@ -156,7 +164,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		}
 
 		if (!_user.isHiddenToPlayer() && (_targetTile.IsVisibleForPlayer || this.knockToTile.IsVisibleForPlayer))
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " devours " + this.Const.UI.getColorizedEntityName(target) + "Rolled " + roll + " vs " + chance);
+			::Z.Log.skill(_user, target, "Swallow Whole", roll, chance, false, true);
 
 		local skills = target.getSkills();
 		skills.removeByID("effects.shieldwall");

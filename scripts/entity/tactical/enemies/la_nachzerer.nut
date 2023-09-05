@@ -1,3 +1,22 @@
+::Const.Tactical.Actor.Ghoul <- {
+	XP = 5000,
+	ActionPoints = 12,
+	Hitpoints = 800,
+	Bravery = 10,
+	Stamina = 666,
+	MeleeSkill = 75,
+	RangedSkill = 0,
+	MeleeDefense = 50,
+	RangedDefense = 50,
+	Initiative = 145,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	Armor = [
+		0,
+		0
+	]
+};
+
 this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 	m = {
 		Head = 1
@@ -38,11 +57,13 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		this.getFlags().add("undead");
 		this.getFlags().add("la_nachzerer");
 		this.getFlags().add("immunity_overwhelm");
-		this.getFlags().set("bleed_aura", 15);
+		this.getFlags().set("bleed_aura", 10);
 
-		//Skills
+		////////////////////////////////////////////////////////////////////////
+
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_escape_artist"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_fast_adaption"));
         this.m.Skills.add(this.new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
 
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_nachzerer_gluttony_barrier")); // hair armor nullifies damage for x hits.

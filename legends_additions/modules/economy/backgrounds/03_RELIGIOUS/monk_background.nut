@@ -1,5 +1,3 @@
-//TODO: Create monk join event
-//TODO: Monk has access to heart
 ::mods_hookExactClass("skills/backgrounds/monk_background", function(o) {
 	local create = o.create;
 	o.create = function()

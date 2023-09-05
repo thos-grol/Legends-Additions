@@ -1,10 +1,10 @@
 //Provides overwhelm immunity to tagged enemies.
 
-::Const.Strings.PerkName.LegendLacerate = "Bleed Aura";
+::Const.Strings.PerkName.LegendLacerate = "Blood Aura";
 ::Const.Strings.PerkDescription.LegendLacerate = "Bloodlust..."
 + "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
-+ "\n• Attacks that hit will cause enemies to bleed out."
-+ "\n• The default bleed damage is 10.";
++ "\n• Attacks that hit no matter how hard will cause enemies to bleed out."
++ "\n• The default bleed damage is 5.";
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendLacerate].Name = ::Const.Strings.PerkName.LegendLacerate;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendLacerate].Tooltip = ::Const.Strings.PerkDescription.LegendLacerate;
 
@@ -24,16 +24,16 @@
 
         local actor = this.getContainer().getActor();
         local effect = this.new("scripts/skills/effects/bleeding_effect");
-        local damage = actor.getFlags().has("bleed_aura") ? actor.getFlags().getAsInt("bleed_aura") : 10;
-		
+        local damage = actor.getFlags().has("bleed_aura") ? actor.getFlags().getAsInt("bleed_aura") : 5;
         if (actor.getFaction() == this.Const.Faction.Player) effect.setActor(this.getContainer().getActor());
         effect.setDamage(damage);
         _targetEntity.getSkills().add(effect);
 
         if (!actor.isHiddenToPlayer() && _targetEntity.getTile().IsVisibleForPlayer)
 		{
-			//TODO: log
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " lacerated " + this.Const.UI.getColorizedEntityName(_targetEntity) + " bleeding them for " + damage + "damage per turn");
+			::Tactical.EventLog.logIn(
+				::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " is bleeding for " + damage + " per turn" )
+			);
 		}
 		return true;
 	}
