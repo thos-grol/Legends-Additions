@@ -111,7 +111,7 @@ gt.Const.Perks.CleaverTree <- {
 		[
 			gt.Const.Perks.PerkDefs.SpecCleaver //Update description, no more whips
 			// "Bloodbath
-			// Fatalities instantly restore 3 Action Points. Can only trigger once per attack. Has no limit on how many times it can proc per turn."
+			// Increase bleed damage from cleaver. Bleeds inflicted by cleavers have a 50% chance to last a turn longer.
 		],
 		[
 			//Mutilation
