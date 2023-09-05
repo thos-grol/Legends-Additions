@@ -122,7 +122,8 @@ gt.Const.Perks.CleaverTree <- {
 		],
 		[
 			//TODO: stances
-			//Yeild my flesh.... to claim their bones.
+			//Yeild my flesh.... to claim their bones (Stance).
+			//Massacre (Stance).
 		]
 	]
 };
