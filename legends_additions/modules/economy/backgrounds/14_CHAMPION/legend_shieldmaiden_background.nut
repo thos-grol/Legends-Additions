@@ -23,11 +23,13 @@
 			Enemy = [
 				this.Const.Perks.BarbarianTree
 			],
-			Class = [],
+			Class = [
+				this.Const.Perks.FistsClassTree
+			],
 			Magic = []
 		};
 
-		this.m.PerkTreeDynamicMins.Traits = 4;
+		this.m.PerkTreeDynamicMins.Traits = 3;
 	}
 
 	o.onAddEquipment = function()

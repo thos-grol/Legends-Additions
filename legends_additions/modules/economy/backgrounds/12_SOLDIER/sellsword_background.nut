@@ -23,12 +23,13 @@
 			],
 			Enemy = [],
 			Class = [
+				this.Const.Perks.FistsClassTree,
 				this.Const.Perks.BeastClassTree
 			],
 			Magic = []
 		};
 
-		this.m.PerkTreeDynamicMins.Traits = 4;
+		this.m.PerkTreeDynamicMins.Traits = 3;
 	}
 
 	o.onAddEquipment = function()

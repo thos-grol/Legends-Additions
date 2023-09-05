@@ -1,7 +1,6 @@
 //Bandit Raider
 //Level 8 Raider template
 //raider template, 7 perks
-
 ::Const.Tactical.Actor.BanditRaider <- {
 	XP = 250,
 	ActionPoints = 9,
@@ -28,7 +27,14 @@
 
 	o.assignRandomEquipment = function()
 	{
-		this.addArmor();
+		foreach( item in ::Const.World.Common.pickOutfit(
+            ::B.BanditRaider.Outfit,
+            ::B.BanditRaider.Armor,
+            ::B.BanditRaider.Helmet) 
+        )
+		{
+			this.m.Items.equip(item);
+		}
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bully")); //tribal perk
 
@@ -314,79 +320,72 @@
 		this.setArmorSaturation(0.85);
 		this.getSprite("shield_icon").setBrightness(0.85);
 	}
-
-	o.addArmor <- function()
-	{
-		local armor = [
-			[
-				1,
-				"ragged_surcoat"
-			],
-			[
-				1,
-				"padded_leather"
-			],
-			[
-				1,
-				"worn_mail_shirt"
-			],
-			[
-				1,
-				"patched_mail_shirt"
-			],
-			[
-				1,
-				"worn_mail_shirt"
-			],
-			[
-				1,
-				"patched_mail_shirt"
-			]
-		];
-		local helmet = [
-			[
-				1,
-				"nasal_helmet"
-			],
-			[
-				1,
-				"rondel_helm"
-			],
-			[
-				1,
-				"barbute_helmet"
-			],
-			[
-				1,
-				"scale_helm"
-			],
-			[
-				1,
-				"dented_nasal_helmet"
-			],
-			[
-				1,
-				"rusty_mail_coif"
-			],
-			[
-				1,
-				"headscarf"
-			],
-			[
-				1,
-				"nasal_helmet_with_rusty_mail"
-			]
-		];
-		local outfits = [
-			[
-				1,
-				"dark_southern_outfit_00"
-			]
-		];
-
-		foreach( item in ::Const.World.Common.pickOutfit(outfits, armor, helmet) )
-		{
-			this.m.Items.equip(item);
-		}
-	}
 });
+
+::B.BanditRaider <- {};
+::B.BanditRaider.Armor <- [
+    [
+        1,
+        "ragged_surcoat"
+    ],
+    [
+        1,
+        "padded_leather"
+    ],
+    [
+        1,
+        "worn_mail_shirt"
+    ],
+    [
+        1,
+        "patched_mail_shirt"
+    ],
+    [
+        1,
+        "worn_mail_shirt"
+    ],
+    [
+        1,
+        "patched_mail_shirt"
+    ]
+];
+::B.BanditRaider.Helmet <- [
+    [
+        1,
+        "nasal_helmet"
+    ],
+    [
+        1,
+        "rondel_helm"
+    ],
+    [
+        1,
+        "barbute_helmet"
+    ],
+    [
+        1,
+        "scale_helm"
+    ],
+    [
+        1,
+        "dented_nasal_helmet"
+    ],
+    [
+        1,
+        "rusty_mail_coif"
+    ],
+    [
+        1,
+        "headscarf"
+    ],
+    [
+        1,
+        "nasal_helmet_with_rusty_mail"
+    ]
+];
+::B.BanditRaider.Outfit <-  = [
+    [
+        1,
+        "dark_southern_outfit_00"
+    ]
+];

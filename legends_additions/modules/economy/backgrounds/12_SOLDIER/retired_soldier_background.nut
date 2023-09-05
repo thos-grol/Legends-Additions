@@ -19,11 +19,13 @@
 				this.Const.Perks.TrainedTree,
 			],
 			Enemy = [],
-			Class = [],
+			Class = [
+				this.Const.Perks.FistsClassTree
+			],
 			Magic = []
 		};
 
-		this.m.PerkTreeDynamicMins.Traits = 4;
+		this.m.PerkTreeDynamicMins.Traits = 3;
 	}
 
 	o.onAddEquipment = function()

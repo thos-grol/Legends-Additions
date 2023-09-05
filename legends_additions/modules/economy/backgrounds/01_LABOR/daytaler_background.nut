@@ -17,7 +17,9 @@
 				this.Const.Perks.FitTree
 			],
 			Enemy = [],
-			Class = [],
+			Class = [
+				this.Const.Perks.FistsClassTree
+			],
 			Magic = []
 		};
 	}

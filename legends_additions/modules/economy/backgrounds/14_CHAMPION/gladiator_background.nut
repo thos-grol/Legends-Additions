@@ -16,15 +16,18 @@
 			Defense = [
 				this.Const.Perks.HeavyArmorTree
 			],
-			Traits = [],
+			Traits = [
+				this.Const.Perks.TrainedTree
+			],
 			Enemy = [],
 			Class = [
+				this.Const.Perks.FistsClassTree,
 				this.Const.Perks.BeastClassTree
 			],
 			Magic = []
 		};
 
-		this.m.PerkTreeDynamicMins.Traits = 4;
+		this.m.PerkTreeDynamicMins.Traits = 3;
 		//TODO: add arena wins trait to gladiator.
 	}
 

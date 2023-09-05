@@ -52,10 +52,10 @@ gt.Const.Perks.AgileTree <- {
 			//gt.Const.Perks.PerkDefs.Sprint //TODO: add sprint to pathfinder
 			//gt.Const.Perks.PerkDefs.LegendClimb //TODO: add climb to pathfinder
 		],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.Footwork
 		],
-		[],
 		[],
 		[],
 		[],
@@ -105,11 +105,11 @@ gt.Const.Perks.IndestructibleTree <- {
 		]
 	},
 	Tree = [
-		[],
 		[
 			gt.Const.Perks.PerkDefs.FortifiedMind
 			//gt.Const.Perks.PerkDefs.LegendTrueBeliever //Combine with fortified mind
 		],
+		[],
 		[
 			
 		],
@@ -167,14 +167,13 @@ gt.Const.Perks.SturdyTree <- {
 	Tree = [
 		[
 			gt.Const.Perks.PerkDefs.NineLives,
+			//gt.Const.Perks.PerkDefs.LegendSecondWind //TODO: merge
 		],
 		[],
 		[
-			
+			gt.Const.Perks.PerkDefs.HoldOut //TODO: rework
 		],
-		[
-			gt.Const.Perks.PerkDefs.HoldOut
-		],
+		[],
 		[],
 		[],
 		[
@@ -228,14 +227,15 @@ gt.Const.Perks.MartyrTree <- {
 			gt.Const.Perks.PerkDefs.Underdog
 		],
 		[],
-		[],
-		[],
 		[
 			gt.Const.Perks.PerkDefs.LoneWolf
 		],
 		[],
+		[],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.LastStand
+			
 		]
 	]
 };
@@ -280,21 +280,25 @@ gt.Const.Perks.ViciousTree <- {
 		]
 	},
 	Tree = [
-		[],
+		[
+			//gt.Const.Perks.PerkDefs.Fearsome
+			gt.Const.Perks.PerkDefs.Vengeance
+			//TODO: merge
+		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.CripplingStrikes
-			//gt.Const.Perks.PerkDefs.Debilitate //TODO: merge, buff debilititate
+			gt.Const.Perks.PerkDefs.HeadHunter
+			//gt.Const.Perks.PerkDefs.Debilitate
 		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.Berserk
 		],
 		[
-			gt.Const.Perks.PerkDefs.Vengeance
+			
 		],
 		[
-			
+			gt.Const.Perks.PerkDefs.KillingFrenzy
 		]
 	]
 };
@@ -340,18 +344,21 @@ gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
 	},
 	Tree = [
 		[
+			gt.Const.Perks.PerkDefs.Backstabber
+			//gt.Const.Perks.PerkDefs.CoupDeGrace //TODO: Merge
+		],
+		[
 			
 		],
 		[
-			gt.Const.Perks.PerkDefs.Backstabber
-		],
-		[
 			gt.Const.Perks.PerkDefs.LegendBlendIn
+			//TODO: Merge Reforged Sneak attack: when entering a zoc or ranged attacking an enemy engaged in melee, gain damage increase and armor pen
+
 		],
 		[],
 		[
 			//gt.Const.Perks.PerkDefs.LegendEvasion
-			//Sneak attack: when entering a zoc or ranged attacking an enemy engaged in melee, gain damage increase and armor pen
+			
 		],
 		[],
 		[]
@@ -398,22 +405,23 @@ gt.Const.Perks.InspirationalTree <- {
 		]
 	},
 	Tree = [
-		[],
-		[
-			
-		],
-		[],
-		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendAssuredConquest
+			gt.Const.Perks.PerkDefs.Inspire //TODO: merge
 		],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.InspiringPresence
 			//gt.Const.Perks.PerkDefs.RallyTheTroops //TODO: becomes passive 25%
 			//TODO: give active as well
 		],
+		[],
 		[
-			gt.Const.Perks.PerkDefs.Inspire
+			
+		],
+		[],
+		[
+			
 		]
 	]
 };
@@ -467,12 +475,11 @@ gt.Const.Perks.IntelligentTree <- {
 			gt.Const.Perks.PerkDefs.FastAdaption
 		],
 		[],
+		[],
+		[],
 		[
-		],
-		[
-			
-		],
-		[]
+			gt.Const.Perks.PerkDefs.PerfectFocus
+		]
 	]
 };
 gt.Const.Perks.CalmTree <- {
@@ -522,19 +529,17 @@ gt.Const.Perks.CalmTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendAlert
-		],
-		[],
-		[],
-		[
 			gt.Const.Perks.PerkDefs.LegendPeaceful
 		],
+		[],
+		[],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendClarity
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.PerfectFocus
+			gt.Const.Perks.PerkDefs.BattleFlow
 		]
 	]
 };
@@ -582,17 +587,17 @@ gt.Const.Perks.OrganisedTree <- { //TODO: rework tree
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.BagsAndBelts
-		],
-		[
 			gt.Const.Perks.PerkDefs.LegendHelpful
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendEfficientPacking
+			
+		],
+		[
+			
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSkillfulStacking
+			
 		],
 		[],
 		[]
@@ -646,7 +651,8 @@ gt.Const.Perks.FitTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Steadfast
+			gt.Const.Perks.PerkDefs.Relentless
+			//gt.Const.Perks.PerkDefs.Steadfast //TODO: merge
 		],
 		[],
 		[
@@ -701,12 +707,17 @@ gt.Const.Perks.LargeTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.SteelBrow
-		],
-		[],
-		[
 			gt.Const.Perks.PerkDefs.Colossus
-			//gt.Const.Perks.PerkDefs.LegendSecondWind //TODO: Merge
+			gt.Const.Perks.PerkDefs.SteelBrow
+			//TODO: Merge
+		],
+		[
+			
+		],
+		[
+			gt.Const.Perks.PerkDefs.SunderingStrikes
+			gt.Const.Perks.PerkDefs.CripplingStrikes
+			//TODO: merge, heavy strikes
 		],
 		[],
 		[],
@@ -759,7 +770,7 @@ gt.Const.Perks.FastTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.Relentless
+			gt.Const.Perks.PerkDefs.LegendAlert
 		],
 		[],
 		[
@@ -767,6 +778,7 @@ gt.Const.Perks.FastTree <- {
 		],
 		[],
 		[
+			gt.Const.Perks.PerkDefs.DoubleStrike
 			gt.Const.Perks.PerkDefs.Anticipation //TODO: rework to 15%, buff anticipation
 		],
 		[
@@ -775,6 +787,24 @@ gt.Const.Perks.FastTree <- {
 		[]
 	]
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+// Done
+///////////////////////////////////////////////////////////////////////////
+
 
 gt.Const.Perks.TrainedTree <- {
 	ID = "TrainedTree",

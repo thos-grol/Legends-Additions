@@ -16,23 +16,19 @@
 				this.Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.FitTree,
-				this.Const.Perks.CalmTree,
-				this.Const.Perks.LargeTree,
-				this.Const.Perks.ViciousTree
+				this.Const.Perks.TrainedTree
 			],
-			Enemy = [
-				this.Const.Perks.SwordmastersTree,
-				this.Const.Perks.NoblesTree,
-				this.Const.Perks.MercenaryTree
+			Enemy = [],
+			Class = [
+				this.Const.Perks.FistsClassTree,
+				this.Const.Perks.KnifeClassTree
 			],
-			Class = [],
 			Magic = [
 				this.Const.Perks.AssassinMagicTree
 			]
 		};
 
-		this.m.PerkTreeDynamicMins.Traits = 4;
+		this.m.PerkTreeDynamicMins.Traits = 3;
 	}
 
 	o.onAddEquipment = function()

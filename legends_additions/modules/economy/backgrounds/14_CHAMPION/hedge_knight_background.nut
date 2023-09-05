@@ -22,18 +22,18 @@
 			Traits = [
 				this.Const.Perks.TrainedTree,
 				this.Const.Perks.ViciousTree,
-				this.Const.Perks.LargeTree,
-				this.Const.Perks.IndestructibleTree
-
+				this.Const.Perks.LargeTree
 			],
 			Enemy = [
 				this.Const.Perks.SwordmastersTree
 			],
-			Class = [],
+			Class = [
+				this.Const.Perks.FistsClassTree
+			],
 			Magic = []
 		};
 
-		this.m.PerkTreeDynamicMins.Traits = 6;
+		this.m.PerkTreeDynamicMins.Traits = 5;
 	}
 
 	o.onAddEquipment = function()

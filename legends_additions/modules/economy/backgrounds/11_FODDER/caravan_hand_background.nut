@@ -16,7 +16,9 @@
 				this.Const.Perks.OrganisedTree
 			],
 			Enemy = [],
-			Class = [],
+			Class = [
+				this.Const.Perks.FistsClassTree
+			],
 			Magic = []
 		};
 	}

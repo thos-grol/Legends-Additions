@@ -5,6 +5,187 @@ if (!("Perks" in gt.Const))
 	gt.Const.Perks <- {};
 }
 
+gt.Const.Perks.AxeTree <- {
+	ID = "Axe",
+	Name = "Axe",
+	Descriptions = [
+		"axes"
+	],
+	Attributes = {
+		Hitpoints = [
+			3,
+			3
+		],
+		Bravery = [
+			0,
+			0
+		],
+		Stamina = [
+			0,
+			0
+		],
+		MeleeSkill = [
+			3,
+			3
+		],
+		RangedSkill = [
+			-3,
+			-3
+		],
+		MeleeDefense = [
+			0,
+			0
+		],
+		RangedDefense = [
+			0,
+			0
+		],
+		Initiative = [
+			-3,
+			-3
+		]
+	},
+	Tree = [
+		[],
+		[],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.SpecAxe
+			//gt.Const.Perks.PerkDefs.LegendSmashingShields //Rework, shield smashing attacks are free once a turn. //TODO: merge
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Duelist
+			//TODO: reforged Cull + Between the eyes
+		],
+		[
+			//TODO: stances
+		]
+	]
+};
+
+gt.Const.Perks.CleaverTree <- {
+	ID = "Cleaver",
+	Name = "Cleaver",
+	Descriptions = [
+		"cleavers"
+	],
+	Attributes = {
+		Hitpoints = [
+			0,
+			0
+		],
+		Bravery = [
+			0,
+			0
+		],
+		Stamina = [
+			3,
+			3
+		],
+		MeleeSkill = [
+			0,
+			0
+		],
+		RangedSkill = [
+			0,
+			0
+		],
+		MeleeDefense = [
+			-3,
+			-3
+		],
+		RangedDefense = [
+			-3,
+			-3
+		],
+		Initiative = [
+			3,
+			3
+		]
+	},
+	Tree = [
+		[],
+		[],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.SpecCleaver //Update description, no more whips
+			// "Bloodbath
+			// Fatalities instantly restore 3 Action Points. Can only trigger once per attack. Has no limit on how many times it can proc per turn."
+			//remove bleed damage increase
+		],
+		[
+			//Has to do with bleed
+			//Increase bleed damage by 10
+		],
+		[
+			//TODO: Cleaver lacks an identity, expand it.
+			gt.Const.Perks.PerkDefs.Duelist
+		],
+		[
+			//TODO: stances
+		]
+	]
+};
+
+gt.Const.Perks.SwordTree <- {
+	ID = "Sword",
+	Name = "One-Handed Sword",
+	Descriptions = [
+		"swords"
+	],
+	Attributes = {
+		Hitpoints = [
+			0,
+			0
+		],
+		Bravery = [
+			-3,
+			-3
+		],
+		Stamina = [
+			3,
+			3
+		],
+		MeleeSkill = [
+			3,
+			3
+		],
+		RangedSkill = [
+			0,
+			0
+		],
+		MeleeDefense = [
+			0,
+			0
+		],
+		RangedDefense = [
+			-3,
+			-3
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Feint
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.SpecSword
+		],
+		[
+			gt.Const.Perks.PerkDefs.Duelist
+		],
+		[
+			//TODO: stances
+		]
+	]
+};
+
 gt.Const.Perks.MaceTree <- {
 	ID = "Mace",
 	Name = "Mace",
@@ -56,9 +237,12 @@ gt.Const.Perks.MaceTree <- {
 		],
 		[],
 		[
+			gt.Const.Perks.PerkDefs.Duelist,
 			gt.Const.Perks.PerkDefs.ReturnFavor
 		],
-		[]
+		[
+			//TODO: stances
+		]
 	]
 };
 gt.Const.Perks.FlailTree <- {
@@ -110,10 +294,11 @@ gt.Const.Perks.FlailTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.HeadHunter
+			gt.Const.Perks.PerkDefs.Duelist,
+			
 		],
 		[
-			gt.Const.Perks.PerkDefs.BattleFlow
+			//TODO: stances
 		]
 	]
 };
@@ -168,234 +353,15 @@ gt.Const.Perks.HammerTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.SunderingStrikes
+			gt.Const.Perks.PerkDefs.Duelist,
 		],
-		[]
-	]
-};
-gt.Const.Perks.AxeTree <- {
-	ID = "Axe",
-	Name = "Axe",
-	Descriptions = [
-		"axes"
-	],
-	Attributes = {
-		Hitpoints = [
-			3,
-			3
-		],
-		Bravery = [
-			0,
-			0
-		],
-		Stamina = [
-			0,
-			0
-		],
-		MeleeSkill = [
-			3,
-			3
-		],
-		RangedSkill = [
-			-3,
-			-3
-		],
-		MeleeDefense = [
-			0,
-			0
-		],
-		RangedDefense = [
-			0,
-			0
-		],
-		Initiative = [
-			-3,
-			-3
-		]
-	},
-	Tree = [
-		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSmashingShields
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.SpecAxe
-		],
-		[],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.KillingFrenzy
+			//TODO: stances
 		]
 	]
 };
-gt.Const.Perks.CleaverTree <- {
-	ID = "Cleaver",
-	Name = "Cleaver",
-	Descriptions = [
-		"cleavers"
-	],
-	Attributes = {
-		Hitpoints = [
-			0,
-			0
-		],
-		Bravery = [
-			0,
-			0
-		],
-		Stamina = [
-			3,
-			3
-		],
-		MeleeSkill = [
-			0,
-			0
-		],
-		RangedSkill = [
-			0,
-			0
-		],
-		MeleeDefense = [
-			-3,
-			-3
-		],
-		RangedDefense = [
-			-3,
-			-3
-		],
-		Initiative = [
-			3,
-			3
-		]
-	},
-	Tree = [
-		[],
-		[],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.SpecCleaver
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendBloodbath
-		],
-		[
-			gt.Const.Perks.PerkDefs.Fearsome
-		]
-	]
-};
-gt.Const.Perks.GreatSwordTree <- {
-	ID = "GreatSword",
-	Name = "Two-Handed Sword",
-	Descriptions = [
-		"greatswords"
-	],
-	Attributes = {
-		Hitpoints = [
-			0,
-			0
-		],
-		Bravery = [
-			3,
-			3
-		],
-		Stamina = [
-			-3,
-			-3
-		],
-		MeleeSkill = [
-			-3,
-			-3
-		],
-		RangedSkill = [
-			0,
-			0
-		],
-		MeleeDefense = [
-			3,
-			3
-		],
-		RangedDefense = [
-			0,
-			0
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[],
-		[
-			gt.Const.Perks.PerkDefs.BloodyHarvest
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecGreatSword
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendForcefulSwing
-		],
-		[]
-	]
-};
-gt.Const.Perks.SwordTree <- {
-	ID = "Sword",
-	Name = "One-Handed Sword",
-	Descriptions = [
-		"swords"
-	],
-	Attributes = {
-		Hitpoints = [
-			0,
-			0
-		],
-		Bravery = [
-			-3,
-			-3
-		],
-		Stamina = [
-			3,
-			3
-		],
-		MeleeSkill = [
-			3,
-			3
-		],
-		RangedSkill = [
-			0,
-			0
-		],
-		MeleeDefense = [
-			0,
-			0
-		],
-		RangedDefense = [
-			-3,
-			-3
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Feint
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.SpecSword
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Duelist
-		]
-	]
-};
+
+
 gt.Const.Perks.DaggerTree <- {
 	ID = "Dagger",
 	Name = "Dagger",
@@ -444,69 +410,14 @@ gt.Const.Perks.DaggerTree <- {
 		[
 			gt.Const.Perks.PerkDefs.SpecDagger
 		],
-		[
-			gt.Const.Perks.PerkDefs.DoubleStrike
-		],
 		[],
+		[
+			gt.Const.Perks.PerkDefs.Duelist
+		],
 		[]
 	]
 };
-gt.Const.Perks.PolearmTree <- {
-	ID = "Polearm",
-	Name = "Polearm",
-	Descriptions = [
-		"polearms"
-	],
-	Attributes = {
-		Hitpoints = [
-			-3,
-			-3
-		],
-		Bravery = [
-			3,
-			3
-		],
-		Stamina = [
-			0,
-			0
-		],
-		MeleeSkill = [
-			0,
-			0
-		],
-		RangedSkill = [
-			0,
-			0
-		],
-		MeleeDefense = [
-			-3,
-			-3
-		],
-		RangedDefense = [
-			3,
-			3
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[],
-		[
-			gt.Const.Perks.PerkDefs.CoupDeGrace
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.SpecPolearm
-		],
-		[
-			gt.Const.Perks.PerkDefs.ReachAdvantage
-		],
-		[],
-		[]
-	]
-};
+
 gt.Const.Perks.SpearTree <- {
 	ID = "Spear",
 	Name = "Spear",
@@ -550,19 +461,220 @@ gt.Const.Perks.SpearTree <- {
 	Tree = [
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecSpearWall
+			
 		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.SpecSpear
+			gt.Const.Perks.PerkDefs.LegendSpecSpearWall
+			gt.Const.Perks.PerkDefs.LegendSpecSpearThrust
+			//TODO: Merge
+
+			// "Two for One (requires Spear)
+			// When using a Spear, the action post cost of Thrust, Glaive Slash and Prong is reduced by 1. When using a 1h Spear with offhand free, the range of Thrust is increased to 2 tiles. When used at this range, it does 20% reduced Damage, has no bonus Chance-to-Hit, and has -20% Chance-to-Hit per character between you and the target."
+
+			// "King of all Weapons (requires Spear)
+			// When using a Spear, the first Thrust or Prong during your turn costs 0 Action Points, builds 0 Fatigue, but does -25% Damage."
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecSpearThrust
+			
+		],
+		[
+			gt.Const.Perks.PerkDefs.Duelist
+		],
+		[
+			// 			"Spear Advantage (requires Spear)
+			//  When using a Spear, every successful hit against an opponent increases your Melee Skill and Melee Defense against that opponent by +5 up to a maximum of +20. This bonus does not expire on its own but is lost upon taking Damage from that opponent."
+		]
+	]
+};
+
+gt.Const.Perks.ShieldTree <- {
+	ID = "ShieldTree",
+	Name = "Shield",
+	Descriptions = [
+		"shields"
+	],
+	Attributes = {
+		Hitpoints = [
+			3,
+			3
+		],
+		Bravery = [
+			0,
+			0
+		],
+		Stamina = [
+			0,
+			0
+		],
+		MeleeSkill = [
+			0,
+			0
+		],
+		RangedSkill = [
+			-3,
+			-3
+		],
+		MeleeDefense = [
+			3,
+			3
+		],
+		RangedDefense = [
+			-3,
+			-3
+		],
+		Initiative = [
+			3,
+			3
+		]
+	},
+	Tree = [
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Taunt
+		],
+		[
+			
+		],
+		[
+			gt.Const.Perks.PerkDefs.ShieldExpert
+			//gt.Const.Perks.PerkDefs.LegendSpecialistShieldPush //TODO merge
+			//gt.Const.Perks.PerkDefs.ShieldBash //TODO: rework and merge, knockback, + chance to hit
+		],
+		[
+			gt.Const.Perks.PerkDefs.LegendSpecialistShieldSkill
+			//TODO: replace with rebuke
 		],
 		[],
 		[]
 	]
 };
+
+// "Rebuke
+// Gain a 25% chance to perform a free attack against an adjacent opponent who misses a melee attack against you. The chance is increased by an additional +10% when equipped with a shield."
+//Rework, to while weilding shield
+
+gt.Const.Perks.GreatSwordTree <- {
+	ID = "GreatSword",
+	Name = "Two-Handed Sword",
+	Descriptions = [
+		"greatswords"
+	],
+	Attributes = {
+		Hitpoints = [
+			0,
+			0
+		],
+		Bravery = [
+			3,
+			3
+		],
+		Stamina = [
+			-3,
+			-3
+		],
+		MeleeSkill = [
+			-3,
+			-3
+		],
+		RangedSkill = [
+			0,
+			0
+		],
+		MeleeDefense = [
+			3,
+			3
+		],
+		RangedDefense = [
+			0,
+			0
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[],
+		[],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.LegendSpecGreatSword //TODO: update 5% -> 15% chance to hit
+			// LegendSpecGreatSword = "Master the art of fighting with a large unwieldy sword. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nSplit, Swing, Overhead Strike, Great Lunge and Great Slash gain [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit.",
+			// "There\'s wolves, bears, nachzehrers and you. All beings of vicious slaughter.\n\nGain [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] chance to hit for all Melee area of effect attacks.",
+			//gt.Const.Perks.PerkDefs.BloodyHarvest
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.ReachAdvantage
+		],
+		[
+			//TODO:
+			// "Reaper
+			// Area-of-Effect attacks cost -2 Action points and build 20% less Fatigue."
+		]
+	]
+};
+
+gt.Const.Perks.PolearmTree <- {
+	ID = "Polearm",
+	Name = "Polearm",
+	Descriptions = [
+		"polearms"
+	],
+	Attributes = {
+		Hitpoints = [
+			-3,
+			-3
+		],
+		Bravery = [
+			3,
+			3
+		],
+		Stamina = [
+			0,
+			0
+		],
+		MeleeSkill = [
+			0,
+			0
+		],
+		RangedSkill = [
+			0,
+			0
+		],
+		MeleeDefense = [
+			-3,
+			-3
+		],
+		RangedDefense = [
+			3,
+			3
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[],
+		[],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.SpecPolearm
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.ReachAdvantage
+		],
+		[]
+	]
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Ranged
+/////////////////////////////////////////////////////////////////////////////////////////////
 gt.Const.Perks.CrossbowTree <- {
 	ID = "Crossbow",
 	Name = "Crossbow",
@@ -679,62 +791,7 @@ gt.Const.Perks.BowTree <- {
 		[]
 	]
 };
-gt.Const.Perks.ThrowingTree <- {
-	ID = "Throwing",
-	Name = "Throwing",
-	Descriptions = [
-		"throwing weapons"
-	],
-	Attributes = {
-		Hitpoints = [
-			0,
-			0
-		],
-		Bravery = [
-			-3,
-			-3
-		],
-		Stamina = [
-			0,
-			0
-		],
-		MeleeSkill = [
-			3,
-			3
-		],
-		RangedSkill = [
-			3,
-			3
-		],
-		MeleeDefense = [
-			-3,
-			-3
-		],
-		RangedDefense = [
-			0,
-			0
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[],
-		[
-			gt.Const.Perks.PerkDefs.QuickHands
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.SpecThrowing
-		],
-		[],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.CloseCombatArcher
-		]
-	]
-};
+
 gt.Const.Perks.SlingTree <- {
 	ID = "Sling",
 	Name = "Sling",
@@ -791,123 +848,67 @@ gt.Const.Perks.SlingTree <- {
 		[]
 	]
 };
-gt.Const.Perks.StaffTree <- {
-	ID = "Staff",
-	Name = "Staff",
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Disabled
+/////////////////////////////////////////////////////////////////////////////////////////////
+gt.Const.Perks.ThrowingTree <- {
+	ID = "Throwing",
+	Name = "Throwing",
 	Descriptions = [
-		"staves"
+		"throwing weapons"
 	],
 	Attributes = {
 		Hitpoints = [
-			-3,
-			-3
-		],
-		Bravery = [
 			0,
 			0
+		],
+		Bravery = [
+			-3,
+			-3
 		],
 		Stamina = [
 			0,
 			0
 		],
 		MeleeSkill = [
-			0,
-			0
+			3,
+			3
 		],
 		RangedSkill = [
-			0,
-			0
+			3,
+			3
 		],
 		MeleeDefense = [
-			3,
-			3
+			-3,
+			-3
 		],
 		RangedDefense = [
-			3,
-			3
+			0,
+			0
 		],
 		Initiative = [
-			-3,
-			-3
-		]
-	},
-	Tree = [
-		[],
-		[],
-		[],
-		[],
-		[],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.PushTheAdvantage
-		]
-	]
-};
-gt.Const.Perks.ShieldTree <- {
-	ID = "ShieldTree",
-	Name = "Shield",
-	Descriptions = [
-		"shields"
-	],
-	Attributes = {
-		Hitpoints = [
-			3,
-			3
-		],
-		Bravery = [
 			0,
 			0
-		],
-		Stamina = [
-			0,
-			0
-		],
-		MeleeSkill = [
-			0,
-			0
-		],
-		RangedSkill = [
-			-3,
-			-3
-		],
-		MeleeDefense = [
-			3,
-			3
-		],
-		RangedDefense = [
-			-3,
-			-3
-		],
-		Initiative = [
-			3,
-			3
 		]
 	},
 	Tree = [
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Taunt
-		],
-		[
-			
-		],
-		[
-			gt.Const.Perks.PerkDefs.ShieldExpert
-			//gt.Const.Perks.PerkDefs.LegendSpecialistShieldPush //TODO merge
-			//gt.Const.Perks.PerkDefs.ShieldBash //TODO: rework and merge, knockback, + chance to hit
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistShieldSkill
-			//TODO: replace with rebuke
+			gt.Const.Perks.PerkDefs.QuickHands
 		],
 		[],
-		[]
+		[
+			gt.Const.Perks.PerkDefs.SpecThrowing
+		],
+		[],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.CloseCombatArcher
+		]
 	]
 };
 
-// "Rebuke
-// Gain a 25% chance to perform a free attack against an adjacent opponent who misses a melee attack against you. The chance is increased by an additional +10% when equipped with a shield."
-//Rework, to while weilding shield
 gt.Const.Perks.StaffTree <- {
 	ID = "Staff",
 	Name = "Staff",
@@ -966,6 +967,10 @@ gt.Const.Perks.StaffTree <- {
 		]
 	]
 };
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// End
+/////////////////////////////////////////////////////////////////////////////////////////////
 gt.Const.Perks.WeaponTrees <- {
 	Tree = [
 		gt.Const.Perks.MaceTree,

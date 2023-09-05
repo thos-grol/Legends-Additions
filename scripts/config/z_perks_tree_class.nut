@@ -21,14 +21,13 @@ gt.Const.Perks.BeastClassTree <- {
 		[
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendMasteryNets
+			// gt.Const.Perks.PerkDefs.LegendMasteryNets
+			gt.Const.Perks.PerkDefs.LegendNetCasting
 		],
 		[
 		],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendNetCasting
-		]
+		[]
 	]
 };
 gt.Const.Perks.BardClassTree <- {
@@ -114,12 +113,11 @@ gt.Const.Perks.FistsClassTree <- {
 	],
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendKick,
 			gt.Const.Perks.PerkDefs.LegendAmbidextrous
+			gt.Const.Perks.PerkDefs.LegendKick,
+			//TODO: merge, rename ambidextrous to hand to hand.
 		],
-		[
-			gt.Const.Perks.PerkDefs.LegendChoke
-		],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendGrapple
 		],
@@ -128,9 +126,11 @@ gt.Const.Perks.FistsClassTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendTackle
+			//gt.Const.Perks.PerkDefs.LegendTackle
 		],
-		[]
+		[
+			gt.Const.Perks.PerkDefs.LegendChoke
+		]
 	]
 };
 gt.Const.Perks.ChefClassTree <- { //FEATURE_0: remove chef tree

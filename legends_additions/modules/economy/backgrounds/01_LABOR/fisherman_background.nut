@@ -18,6 +18,7 @@
 			],
 			Enemy = [],
 			Class = [
+				this.Const.Perks.FistsClassTree,
 				this.Const.Perks.BeastClassTree
 			],
 			Magic = []

@@ -27,7 +27,7 @@
 			Magic = []
 		};
 
-		this.m.PerkTreeDynamicMins.Traits = 4;
+		this.m.PerkTreeDynamicMins.Traits = 3;
 	}
 
 	o.onAddEquipment = function()

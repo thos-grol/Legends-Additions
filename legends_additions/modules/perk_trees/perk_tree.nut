@@ -2,7 +2,7 @@
     o.m.PerkTreeDynamicMins = {
         Weapon = 0,
         Defense = 2,
-        Traits = 3,
+        Traits = 2,
         Enemy = 0,
         EnemyChance = 0,
         Class = 1,

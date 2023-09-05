@@ -13,7 +13,9 @@
 			Defense = [],
 			Traits = [],
 			Enemy = [],
-			Class = [],
+			Class = [
+				this.Const.Perks.FistsClassTree
+			],
 			Magic = []
 		};
 	}

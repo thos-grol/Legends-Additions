@@ -19,11 +19,13 @@
 				this.Const.Perks.ViciousTree
 			],
 			Enemy = [],
-			Class = [],
+			Class = [
+				this.Const.Perks.FistsClassTree
+			],
 			Magic = []
 		};
 
-		this.m.PerkTreeDynamicMins.Traits = 5;
+		this.m.PerkTreeDynamicMins.Traits = 4;
 	}
 
 });

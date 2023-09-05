@@ -17,6 +17,7 @@
 			Traits = [],
 			Enemy = [],
 			Class = [
+				this.Const.Perks.FistsClassTree,
 				this.Const.Perks.ShortbowClassTree
 			],
 			Magic = []

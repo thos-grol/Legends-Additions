@@ -1,5 +1,10 @@
 //TODO: all armor tooltips -> moved to armor class. ie. nimble dodge. check for status effect...
 
+//TODO: event, non-combat background gains another trait tree
+    //They must be in party for x battles.
+    //Cooldown is 1 week.
+    //Add flag.
+
 //TODO: weapon mastery system for retinue
     // Add effect that records the weapon type of the currently equipped weapon. 
     // If already has it, try to learn shield.

@@ -16,7 +16,7 @@
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.BarterClassTree
+				this.Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};

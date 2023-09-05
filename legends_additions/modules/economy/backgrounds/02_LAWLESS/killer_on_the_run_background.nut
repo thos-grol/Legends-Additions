@@ -17,7 +17,9 @@
 				this.Const.Perks.ViciousTree
 			],
 			Enemy = [],
-			Class = [],
+			Class = [
+				this.Const.Perks.FistsClassTree
+			],
 			Magic = [
 				this.Const.Perks.AssassinMagicTree
 			]

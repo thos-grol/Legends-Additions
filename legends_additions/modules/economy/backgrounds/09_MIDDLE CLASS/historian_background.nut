@@ -13,10 +13,12 @@
 			Defense = [
 				this.Const.Perks.ClothArmorTree
 			],
-			Traits = [],
+			Traits = [
+				this.Const.Perks.IntelligentTree
+			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.IntelligentTree,
+				this.Const.Perks.FistsClassTree	
 			],
 			Magic = [
 				this.Const.Perks.PhilosophyMagicTree

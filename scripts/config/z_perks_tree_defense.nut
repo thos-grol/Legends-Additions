@@ -34,12 +34,9 @@ gt.Const.Perks.MediumArmorTree <- {
 	],
 	Tree = [
 		[],
+		[],
 		[
-			gt.Const.Perks.PerkDefs.Dodge,
-			
-		],
-		[
-			
+			gt.Const.Perks.PerkDefs.Dodge
 		],
 		[],
 		[],
@@ -60,10 +57,10 @@ gt.Const.Perks.LightArmorTree <- {
 	],
 	Tree = [
 		[],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.Dodge
 		],
-		[],
 		[],
 		[],
 		[
