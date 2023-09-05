@@ -104,7 +104,7 @@ gt.Const.Perks.CleaverTree <- {
 			3
 		]
 	},
-	Tree = [
+	Tree = [ //TODO: Cleaver lacks an identity, expand it.
 		[],
 		[],
 		[],
@@ -112,18 +112,17 @@ gt.Const.Perks.CleaverTree <- {
 			gt.Const.Perks.PerkDefs.SpecCleaver //Update description, no more whips
 			// "Bloodbath
 			// Fatalities instantly restore 3 Action Points. Can only trigger once per attack. Has no limit on how many times it can proc per turn."
-			//remove bleed damage increase
 		],
 		[
-			//Has to do with bleed
-			//Increase bleed damage by 10
+			//Mutilation
+			//Refunds AP of the first attack... as long as the target is bleeding.
 		],
 		[
-			//TODO: Cleaver lacks an identity, expand it.
 			gt.Const.Perks.PerkDefs.Duelist
 		],
 		[
 			//TODO: stances
+			//Yeild my flesh.... to claim their bones.
 		]
 	]
 };
