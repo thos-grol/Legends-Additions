@@ -122,7 +122,10 @@ gt.Const.Perks.CleaverTree <- {
 		],
 		[
 			//TODO: stances
-			//Yeild my flesh.... to claim their bones (Stance).
+			//[Stance] Yeild my flesh.... to claim their bones.
+			
+
+			
 			//Massacre (Stance).
 		]
 	]
@@ -181,7 +184,7 @@ gt.Const.Perks.SwordTree <- {
 			gt.Const.Perks.PerkDefs.Duelist
 		],
 		[
-			//TODO: stances
+			
 		]
 	]
 };
@@ -610,9 +613,19 @@ gt.Const.Perks.GreatSwordTree <- {
 			gt.Const.Perks.PerkDefs.ReachAdvantage
 		],
 		[
-			//TODO:
-			// "Reaper
-			// Area-of-Effect attacks cost -2 Action points and build 20% less Fatigue."
+			//[Stance] The Strongest
+				//The strongest are undeterred no matter what they face.
+				//At the end of the turn, riposte.
+				//Upon the first melee attack hit per turn at 1 tile range, negate the attack and riposte it. Then remove riposte.
+			
+			//[Stance] Wrath
+				//Sacrifice defense to gain the ultimate offense.
+				// Area-of-Effect attacks cost -2 Action points and build 20% less Fatigue."
+				// Gain x% increased damage
+				// Reduce melee defense by x%
+
+			//TODO: rework stagger? reduces defenses. Grapple applies stagger.
+				
 		]
 	]
 };

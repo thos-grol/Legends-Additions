@@ -1,5 +1,8 @@
 //TODO: all armor tooltips -> moved to armor class. ie. nimble dodge. check for status effect...
 
+//TODO: reworked perk trees
+
+
 //TODO: event, non-combat background gains another trait tree
     //They must be in party for x battles.
     //Cooldown is 1 week.

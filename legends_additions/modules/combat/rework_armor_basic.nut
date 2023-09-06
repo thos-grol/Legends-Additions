@@ -48,6 +48,10 @@
 				break;
 		}
 
+		//TODO:  Heavy, man of steel
+		// "Man of Steel
+		// Gain 10% of the current condition of the armor piece hit by an attack as a reduction in armor penetration."
+
         tooltip.push({
 			id = 10,
 			type = "text",

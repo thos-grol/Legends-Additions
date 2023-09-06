@@ -54,7 +54,9 @@ gt.Const.Perks.AgileTree <- {
 		[
 			gt.Const.Perks.PerkDefs.Footwork
 		],
-		[],
+		[
+			
+		],
 		[],
 		[],
 		[
@@ -104,17 +106,19 @@ gt.Const.Perks.IndestructibleTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.FortifiedMind
+			gt.Const.Perks.PerkDefs.FortifiedMind //TODO: rename to Inner Faith
 			//gt.Const.Perks.PerkDefs.LegendTrueBeliever //Combine with fortified mind
 		],
 		[],
 		[
-
+			//"Survival Instinct //TODO: port over
+			// Whenever you are attacked, gain a stacking bonus to Melee and Ranged Defense of +2 on a miss and +5 on a hit. This can stack up to 5 tgimes for misses and up to 2 times for hits.
+			// At the start of every turn, the bonus is reset except the bonus gained from getting hit which is retained for the remainder of the combat."
 		],
 		[],
 		[],
 		[
-
+			gt.Const.Perks.PerkDefs.LegendAssuredConquest
 		],
 		[
 			gt.Const.Perks.PerkDefs.LegendMindOverBody
@@ -176,6 +180,9 @@ gt.Const.Perks.SturdyTree <- {
 		[],
 		[
 			gt.Const.Perks.PerkDefs.Indomitable
+			//"Indomitable
+			// In addition to previous bonuses, now grants immunity to Cull while active.
+			//TODO: rework, also fix direwolf indom.
 		]
 	]
 };
@@ -342,24 +349,33 @@ gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.Backstabber
-			//gt.Const.Perks.PerkDefs.CoupDeGrace //TODO: Merge
+			gt.Const.Perks.PerkDefs.Backstabber //TODO: Backstabber + CoupDeGrace
+			//"Backstabber (requires Melee Attack)
+			// The bonus to hitchance in melee is doubled to +10% for each ally surrounding and distracting your target.
+			// Melee Piercing type attacks gain +5% damage per ally surrounding the target."
+			//gt.Const.Perks.PerkDefs.CoupDeGrace 
 		],
+		[],
 		[
-
+			//TODO: borderlands 2 skills trees ideas
+			//TODO: stone shard
+			//TODO: dead cells.
+			//TODO: pokemon
+			//TODO: FF Tactics and Tactics Ogre handle classes
+			//TODO: Dungeon crawl stone soup
+			//TODO: nethack
 		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.LegendEvasion
+			//gt.Const.Perks.PerkDefs.Anticipation //TODO: rework to 15%, buff anticipation, rename something involving reflexes
+			// give mdef and rdef
+		],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendBlendIn
 			//TODO: Merge Reforged Sneak attack: when entering a zoc or ranged attacking an enemy engaged in melee, gain damage increase and armor pen
-
-		],
-		[],
-		[
-			//gt.Const.Perks.PerkDefs.LegendEvasion
-
-		],
-		[],
-		[]
+		]
 	]
 };
 gt.Const.Perks.InspirationalTree <- {
@@ -404,18 +420,18 @@ gt.Const.Perks.InspirationalTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendAssuredConquest
-			gt.Const.Perks.PerkDefs.Inspire //TODO: merge
+			gt.Const.Perks.PerkDefs.InspiringPresence //TODO: InspiringPresence + RallyTheTroops
+			//gt.Const.Perks.PerkDefs.RallyTheTroops 
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.InspiringPresence
-			//gt.Const.Perks.PerkDefs.RallyTheTroops //TODO: becomes passive 25%
-			//TODO: give active as well
+			//Exude confidence.
+			
+			
 		],
 		[],
 		[
-
+			gt.Const.Perks.PerkDefs.Inspire
 		],
 		[],
 		[
@@ -649,16 +665,16 @@ gt.Const.Perks.FitTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Relentless
-			//gt.Const.Perks.PerkDefs.Steadfast //TODO: merge
+			gt.Const.Perks.PerkDefs.Steadfast //TODO: merge, rename endurance
+			//gt.Const.Perks.PerkDefs.Relentless
 		],
 		[],
 		[
-
+			 //TODO: missing perk
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Rebound
+			gt.Const.Perks.PerkDefs.Rebound //TODO: need to strengthen
 		]
 	]
 };
@@ -706,7 +722,7 @@ gt.Const.Perks.LargeTree <- {
 	Tree = [
 		[
 			gt.Const.Perks.PerkDefs.Colossus
-			gt.Const.Perks.PerkDefs.SteelBrow
+			gt.Const.Perks.PerkDefs.SteelBrow //TODO: cull immunity
 			//TODO: Merge
 		],
 		[
@@ -718,10 +734,13 @@ gt.Const.Perks.LargeTree <- {
 			//TODO: merge, heavy strikes
 		],
 		[],
-		[],
+		[
+			//TODO: "Death Dealer (requires Melee Area-of-Effect attack)
+			//AOE attacks gain +10% chance to hit and deal +10% damage."
+		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendMuscularity
+			gt.Const.Perks.PerkDefs.LegendMuscularity //TODO: buff?
 		]
 	]
 };
@@ -768,7 +787,7 @@ gt.Const.Perks.FastTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendAlert
+			gt.Const.Perks.PerkDefs.LegendAlert //TODO: redo description
 		],
 		[],
 		[
@@ -776,13 +795,14 @@ gt.Const.Perks.FastTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.DoubleStrike
-			gt.Const.Perks.PerkDefs.Anticipation //TODO: rework to 15%, buff anticipation
+			gt.Const.Perks.PerkDefs.QuickHands
+			// "Looking for this? Swapping any item in battle except for shields becomes a free action with no Action Point cost once every turn.", //TODO: redo description
 		],
+		[],
 		[
-			gt.Const.Perks.PerkDefs.Overwhelm
-		],
-		[]
+			gt.Const.Perks.PerkDefs.Overwhelm //TODO: Overwhelm + DoubleStrike
+			//gt.Const.Perks.PerkDefs.DoubleStrike
+		]
 	]
 };
 
@@ -858,6 +878,8 @@ gt.Const.Perks.TrainedTree <- {
 			gt.Const.Perks.PerkDefs.Finesse
 		],
 		[
+			//"Pattern Recognition
+			// Every time an opponent attacks you or you attack an opponent, gain stacking Melee Skill and Melee Defense against that opponent for the remainder of the combat. Every subsequent attack gives a larger bonus, with the first attack giving +1, the second +2, the third +3, and so on. Once the bonus reaches 10, all subsequent attacks increase it by +1 only. Only works with dealing or receiving Melee Attacks."
 
 		]
 	]
