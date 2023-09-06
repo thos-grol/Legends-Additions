@@ -6,8 +6,8 @@
     o.create = function()
 	{
 		this.m.ID = "special.mood_check";
-		this.m.Name = "Armor Class";
-		this.m.Icon = "ui/perks/fullforce_circle.png";
+		this.m.Name = "Details";
+		this.m.Icon = "ui/perks/back_to_basics_circle.png";
 		this.m.IconMini = "";
 		this.m.Type = this.Const.SkillType.Special | this.Const.SkillType.Trait;
 		this.m.Order = ::Const.SkillOrder.Background + 5;
@@ -19,25 +19,41 @@
 
     o.getDescription <- function()
 	{
-		return "Grants bonuses based on the user's armor class.";
+		return "Provides details about the character's progression and armor.";
 	}
 
 	o.getTooltip = function()
 	{
 		local tooltip = this.skill.getTooltip();
-		local total_weight = getTotalWeight();
-		local armor_class = "";
 
-		if (total_weight <= 20) armor_class = "Light";
-        else if (total_weight > 20 && total_weight <= 40) armor_class = "Medium";
-        else if (total_weight > 40) armor_class = "Heavy";
+
+
+		local total_weight = getTotalWeight();
+		local armor = 1;
+		if (total_weight <= 20) armor = 1;
+        else if (total_weight > 20 && total_weight <= 40) armor = 2;
+        else if (total_weight > 40) armor = 3;
+
+		local armor_class = "";
+		switch(armor)
+		{
+			case 1:
+				armor_class = "Light";
+				break;
+			case 2:
+				armor_class = "Medium";
+				break;
+			case 3:
+				armor_class = "Heavy";
+				break;
+		}
 
         tooltip.push({
 			id = 10,
 			type = "text",
 			icon = "ui/icons/fatigue.png",
-			text = "Armor class: " + armor_class + " ([color=" + this.Const.UI.Color.PositiveValue + "]" + total_weight + "[/color])"			
-		});		
+			text = "Armor class: " + armor_class + " ([color=" + this.Const.UI.Color.PositiveValue + "]" + total_weight + "[/color])"
+		});
         if (total_weight <= 20) getTooltip_FreedomOfMovement(tooltip);
         else if (total_weight > 20 && total_weight <= 40) getTooltip_InTheZone(tooltip);
         else if (total_weight > 40) getTooltip_FullForce(tooltip, total_weight);
@@ -52,7 +68,7 @@
         {
             local bonus = ::Math.floor(::Math.abs(total_weight / 5));
             _properties.MeleeDefense += bonus;
-            _properties.DamageRegularMin += this.Math.floor(bonus);	
+            _properties.DamageRegularMin += this.Math.floor(bonus);
 		    _properties.DamageRegularMax += this.Math.floor(bonus);
         }
 	}
@@ -62,7 +78,7 @@
 		local total_weight = getTotalWeight();
         if (total_weight <= 20) // Freedom of Movement
         {
-        
+
             if (_attacker == null || _attacker != null && _attacker.getID() == this.getContainer().getActor().getID() || _skill == null || !_skill.isAttack() || !_skill.isUsingHitchance()) return;
             local ourCurrentInitiative = this.getContainer().getActor().getInitiative();
             local enemyCurrentInitiative = _attacker.getInitiative();
@@ -101,7 +117,7 @@
 		if (!actor.isPlacedOnMap())
 		{
 			this.m.Stacks = 0;
-			if (actor.getInitiative() >= 2 * total_weight) 
+			if (actor.getInitiative() >= 2 * total_weight)
                 this.m.Stacks = this.Math.min(this.m.MaxStacks, this.Math.max(0, total_weight - 15));
 		}
 
@@ -109,7 +125,7 @@
 		{
 			local bonus = this.m.Stacks * 0.5;
 			_properties.MeleeSkillMult *= 1 + bonus * 0.01;
-			if (!actor.isPlacedOnMap() || ::Tactical.Entities.getHostileActors(actor.getFaction(), actor.getTile(), 1, true).len() > 0) 
+			if (!actor.isPlacedOnMap() || ::Tactical.Entities.getHostileActors(actor.getFaction(), actor.getTile(), 1, true).len() > 0)
                 bonus = bonus * 2;
 			_properties.MeleeDamageMult *= 1 + bonus * 0.01;
 		}
@@ -122,7 +138,7 @@
         {
             if (_attacker != null && _skill != null && _skill.isAttack() && !_skill.isRanged()) this.m.Stacks = this.Math.min(this.m.MaxStacks, this.m.Stacks + 1);
         }
-        
+
 	}
 
 // =============================================================================================
@@ -142,7 +158,7 @@
 
     o.getTooltip_FullForce <- function( _tooltip, total_weight)
 	{
-		local bonus = this.Math.abs(total_weight / 5);		
+		local bonus = this.Math.abs(total_weight / 5);
 		_tooltip.push({
 			id = 10,
 			type = "text",
@@ -156,7 +172,7 @@
             text = "+" + ::MSU.Text.colorGreen( bonus ) + " Melee defense"
 		});
 		return _tooltip;
-	}    
+	}
 
     o.getTooltip_InTheZone <- function( _tooltip)
 	{
@@ -249,7 +265,7 @@
                 break;
             case this.Const.MoodState.InGoodSpirit:
                 actor.setMaxMoraleState(this.Const.MoraleState.Confident);
-                if (morale < this.Const.MoraleState.Confident && this.Math.rand(1, 100) <= 25 && !isDastard) 
+                if (morale < this.Const.MoraleState.Confident && this.Math.rand(1, 100) <= 25 && !isDastard)
                     actor.setMoraleState(this.Const.MoraleState.Confident);
                 break;
             case this.Const.MoodState.Eager:

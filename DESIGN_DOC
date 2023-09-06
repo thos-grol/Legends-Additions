@@ -6,7 +6,7 @@
     //Add flag.
 
 //TODO: weapon mastery system for retinue
-    // Add effect that records the weapon type of the currently equipped weapon. 
+    // Add effect that records the weapon type of the currently equipped weapon.
     // If already has it, try to learn shield.
     // Description: Trains all weapons and shields.
         // function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
@@ -112,7 +112,7 @@ camping ui
     //FEATURE_1: cart can only be upgraded once, experiment with stash size
     //this.World.Assets.addMoney
     //FEATURE_1: remove most class perks from trees
-   
+
 
 
 

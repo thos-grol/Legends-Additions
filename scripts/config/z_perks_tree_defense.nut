@@ -15,12 +15,12 @@ gt.Const.Perks.HeavyArmorTree <- {
 		[],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Brawny
+			gt.Const.Perks.PerkDefs.BattleForged
 		],
 		[],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.BattleForged
+			gt.Const.Perks.PerkDefs.Brawny
 		],
 		[
 		]
@@ -41,9 +41,7 @@ gt.Const.Perks.MediumArmorTree <- {
 		[],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendLithe,
-			gt.Const.Perks.PerkDefs.LegendBalance,
-			//gt.Const.Perks.PerkDefs.LegendPerfectFit //TODO: merge all
+			gt.Const.Perks.PerkDefs.LegendLithe
 		],
 		[
 		]
@@ -80,13 +78,12 @@ gt.Const.Perks.ClothArmorTree <- {
 		[],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSmallTarget
-			//gt.Const.Perks.PerkDefs.LegendMeek //TODO: merge
+			gt.Const.Perks.PerkDefs.Dodge
 		],
 		[],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendFashionable
+			gt.Const.Perks.PerkDefs.LegendSmallTarget
 		],
 		[]
 	]

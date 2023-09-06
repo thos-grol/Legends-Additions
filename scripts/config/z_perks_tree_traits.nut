@@ -49,8 +49,6 @@ gt.Const.Perks.AgileTree <- {
 	Tree = [
 		[
 			gt.Const.Perks.PerkDefs.Pathfinder,
-			//gt.Const.Perks.PerkDefs.Sprint //TODO: add sprint to pathfinder
-			//gt.Const.Perks.PerkDefs.LegendClimb //TODO: add climb to pathfinder
 		],
 		[],
 		[
@@ -111,12 +109,12 @@ gt.Const.Perks.IndestructibleTree <- {
 		],
 		[],
 		[
-			
+
 		],
 		[],
 		[],
 		[
-			
+
 		],
 		[
 			gt.Const.Perks.PerkDefs.LegendMindOverBody
@@ -235,7 +233,7 @@ gt.Const.Perks.MartyrTree <- {
 		[],
 		[
 			gt.Const.Perks.PerkDefs.LastStand
-			
+
 		]
 	]
 };
@@ -295,7 +293,7 @@ gt.Const.Perks.ViciousTree <- {
 			gt.Const.Perks.PerkDefs.Berserk
 		],
 		[
-			
+
 		],
 		[
 			gt.Const.Perks.PerkDefs.KillingFrenzy
@@ -348,7 +346,7 @@ gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
 			//gt.Const.Perks.PerkDefs.CoupDeGrace //TODO: Merge
 		],
 		[
-			
+
 		],
 		[
 			gt.Const.Perks.PerkDefs.LegendBlendIn
@@ -358,7 +356,7 @@ gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
 		[],
 		[
 			//gt.Const.Perks.PerkDefs.LegendEvasion
-			
+
 		],
 		[],
 		[]
@@ -417,11 +415,11 @@ gt.Const.Perks.InspirationalTree <- {
 		],
 		[],
 		[
-			
+
 		],
 		[],
 		[
-			
+
 		]
 	]
 };
@@ -590,14 +588,14 @@ gt.Const.Perks.OrganisedTree <- { //TODO: rework tree
 			gt.Const.Perks.PerkDefs.LegendHelpful
 		],
 		[
-			
+
 		],
 		[
-			
+
 		],
 		[],
 		[
-			
+
 		],
 		[],
 		[]
@@ -656,7 +654,7 @@ gt.Const.Perks.FitTree <- {
 		],
 		[],
 		[
-			
+
 		],
 		[],
 		[
@@ -712,7 +710,7 @@ gt.Const.Perks.LargeTree <- {
 			//TODO: Merge
 		],
 		[
-			
+
 		],
 		[
 			gt.Const.Perks.PerkDefs.SunderingStrikes
