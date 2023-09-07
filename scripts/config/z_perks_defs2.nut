@@ -24,6 +24,13 @@
 + "\n• Reduce Fatigue Cost of all skills by 20%."
 + "\n• At the end of your turn, gain twice your remaining action points as melee defense.";
 
+::Const.Strings.PerkName.DeathDealer <- "Death Dealer";
+::Const.Strings.PerkDescription.DeathDealer <- "This character's immense strength makes them a dealer of death..."
++ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n• For AOE attacks:"
++ "\n• +" + ::MSU.Text.colorGreen("10%") + " damage"
++ "\n• -" + ::MSU.Text.colorGreen("25%") + " Fatigue cost";
+
 // ::Const.Strings.PerkName.EldritchBlast <- "Eldritch Blast"
 // // ::Const.Strings.PerkDescription.LegendSpecCultHood = "With face obscured by a cultist hood, gain " + ::MSU.Text.colorGreen( 15 ) + "% of your base resolve as a bonus to melee and ranged defense. Also works with cultist leather hood, leather helmet, sack, decayed sack helm, warlock hood or mask of davkul.\n Also unlocks a crafting recipe to make cultist hoods and sacks.";
 // ::Const.Strings.PerkDescription.EldritchBlast <- "Blast your foes with eldritch energy.";
@@ -99,6 +106,15 @@ local perks = [
         Icon = "ui/perks/rf_finesse.png",
         IconDisabled = "ui/perks/rf_finesse_bw.png",
         Const = "Finesse"
+    },
+	{
+        ID = "perk.death_dealer",
+        Script = "scripts/skills/perks/perk_death_dealer",
+        Name = ::Const.Strings.PerkName.DeathDealer,
+        Tooltip = ::Const.Strings.PerkDescription.DeathDealer,
+        Icon = "ui/perks/rf_finesse.png",
+        IconDisabled = "ui/perks/rf_finesse_bw.png",
+        Const = "DeathDealer"
     },
     // {
 	// 	ID = "perk.eldritch_blast",

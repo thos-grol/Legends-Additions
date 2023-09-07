@@ -25,9 +25,6 @@
 	o.getTooltip = function()
 	{
 		local tooltip = this.skill.getTooltip();
-
-
-
 		local total_weight = getTotalWeight();
 		local armor = 1;
 		if (total_weight <= 20) armor = 1;
@@ -48,6 +45,20 @@
 				break;
 		}
 
+		local weight_category = "";
+		switch(armor)
+		{
+			case 1:
+				weight_category = "0 - 20";
+				break;
+			case 2:
+				weight_category = "21 - 40";
+				break;
+			case 3:
+				weight_category = "40+";
+				break;
+		}
+
 		//TODO:  Heavy, man of steel
 		// "Man of Steel
 		// Gain 10% of the current condition of the armor piece hit by an attack as a reduction in armor penetration."
@@ -56,7 +67,8 @@
 			id = 10,
 			type = "text",
 			icon = "ui/icons/fatigue.png",
-			text = "Armor class: " + armor_class + " ([color=" + this.Const.UI.Color.PositiveValue + "]" + total_weight + "[/color])"
+			text = "Armor class: " + armor_class + " (" + ::MSU.Text.colorGreen("total_weight") + ") [" + weight_category + "]"
+
 		});
         if (total_weight <= 20) getTooltip_FreedomOfMovement(tooltip);
         else if (total_weight > 20 && total_weight <= 40) getTooltip_InTheZone(tooltip);

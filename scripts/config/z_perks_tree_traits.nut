@@ -55,7 +55,7 @@ gt.Const.Perks.AgileTree <- {
 			gt.Const.Perks.PerkDefs.Footwork
 		],
 		[
-			
+
 		],
 		[],
 		[],
@@ -353,7 +353,7 @@ gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
 			//"Backstabber (requires Melee Attack)
 			// The bonus to hitchance in melee is doubled to +10% for each ally surrounding and distracting your target.
 			// Melee Piercing type attacks gain +5% damage per ally surrounding the target."
-			//gt.Const.Perks.PerkDefs.CoupDeGrace 
+			//gt.Const.Perks.PerkDefs.CoupDeGrace
 		],
 		[],
 		[
@@ -421,13 +421,13 @@ gt.Const.Perks.InspirationalTree <- {
 	Tree = [
 		[
 			gt.Const.Perks.PerkDefs.InspiringPresence //TODO: InspiringPresence + RallyTheTroops
-			//gt.Const.Perks.PerkDefs.RallyTheTroops 
+			//gt.Const.Perks.PerkDefs.RallyTheTroops
 		],
 		[],
 		[
 			//Exude confidence.
-			
-			
+
+
 		],
 		[],
 		[
@@ -481,8 +481,7 @@ gt.Const.Perks.IntelligentTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.Gifted
-			//gt.Const.Perks.PerkDefs.Student //TODO: merge gifted into student
+			gt.Const.Perks.PerkDefs.Student
 		],
 		[],
 		[
@@ -559,7 +558,7 @@ gt.Const.Perks.CalmTree <- {
 };
 
 
-gt.Const.Perks.OrganisedTree <- { //TODO: rework tree
+gt.Const.Perks.OrganisedTree <- { //TODO: remake and rename tree? Combat
 	ID = "OrganisedTree",
 	Name = "Organized",
 	Descriptions = [
@@ -660,26 +659,24 @@ gt.Const.Perks.FitTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendRecuperation,
-			//gt.Const.Perks.PerkDefs.Recover //TODO: recup grants recover
+			gt.Const.Perks.PerkDefs.LegendRecuperation
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Steadfast //TODO: merge, rename endurance
-			//gt.Const.Perks.PerkDefs.Relentless
+			gt.Const.Perks.PerkDefs.Steadfast
 		],
 		[],
 		[
-			 //TODO: missing perk
+			//TODO: missing perk
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Rebound //TODO: need to strengthen
+			//TODO: missing perk //Vigourous Assault
 		]
 	]
 };
 
-gt.Const.Perks.LargeTree <- {
+gt.Const.Perks.LargeTree <- { //Complete
 	ID = "LargeTree",
 	Name = "Large",
 	Descriptions = [
@@ -722,25 +719,18 @@ gt.Const.Perks.LargeTree <- {
 	Tree = [
 		[
 			gt.Const.Perks.PerkDefs.Colossus
-			gt.Const.Perks.PerkDefs.SteelBrow //TODO: cull immunity
-			//TODO: Merge
 		],
-		[
-
-		],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.SunderingStrikes
-			gt.Const.Perks.PerkDefs.CripplingStrikes
-			//TODO: merge, heavy strikes
 		],
 		[],
 		[
-			//TODO: "Death Dealer (requires Melee Area-of-Effect attack)
-			//AOE attacks gain +10% chance to hit and deal +10% damage."
+			gt.Const.Perks.PerkDefs.DeathDealer
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendMuscularity //TODO: buff?
+			gt.Const.Perks.PerkDefs.LegendMuscularity
 		]
 	]
 };
@@ -787,11 +777,11 @@ gt.Const.Perks.FastTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendAlert //TODO: redo description
+			gt.Const.Perks.PerkDefs.Adrenaline
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Adrenaline
+			gt.Const.Perks.PerkDefs.LegendAlert //TODO: redo description
 		],
 		[],
 		[

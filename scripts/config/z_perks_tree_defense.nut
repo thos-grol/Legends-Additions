@@ -21,6 +21,7 @@ gt.Const.Perks.HeavyArmorTree <- {
 		[],
 		[
 			gt.Const.Perks.PerkDefs.Brawny
+			//TODO: fuse Rebound = "Fatigue regeneration is increased by [color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] per turn while over 90% fatigued.",
 		],
 		[
 		]
