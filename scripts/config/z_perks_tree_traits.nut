@@ -777,35 +777,22 @@ gt.Const.Perks.FastTree <- {
 	},
 	Tree = [
 		[
+			gt.Const.Perks.PerkDefs.LegendAlert
+		],
+		[],
+		[
 			gt.Const.Perks.PerkDefs.Adrenaline
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendAlert //TODO: redo description
-		],
-		[],
-		[
 			gt.Const.Perks.PerkDefs.QuickHands
-			// "Looking for this? Swapping any item in battle except for shields becomes a free action with no Action Point cost once every turn.", //TODO: redo description
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Overwhelm //TODO: Overwhelm + DoubleStrike
-			//gt.Const.Perks.PerkDefs.DoubleStrike
+			gt.Const.Perks.PerkDefs.Overwhelm
 		]
 	]
 };
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -965,4 +952,3 @@ gt.Const.Perks.TraitsTrees <- {
 	}
 
 };
-

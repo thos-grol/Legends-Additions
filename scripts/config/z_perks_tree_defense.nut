@@ -13,10 +13,10 @@ gt.Const.Perks.HeavyArmorTree <- {
 	],
 	Tree = [
 		[],
-		[],
 		[
 			gt.Const.Perks.PerkDefs.BattleForged
 		],
+		[],
 		[],
 		[],
 		[
@@ -35,10 +35,10 @@ gt.Const.Perks.MediumArmorTree <- {
 	],
 	Tree = [
 		[],
-		[],
 		[
 			gt.Const.Perks.PerkDefs.Dodge
 		],
+		[],
 		[],
 		[],
 		[
@@ -56,10 +56,10 @@ gt.Const.Perks.LightArmorTree <- {
 	],
 	Tree = [
 		[],
-		[],
 		[
 			gt.Const.Perks.PerkDefs.Dodge
 		],
+		[],
 		[],
 		[],
 		[
@@ -77,10 +77,10 @@ gt.Const.Perks.ClothArmorTree <- {
 	],
 	Tree = [
 		[],
-		[],
 		[
 			gt.Const.Perks.PerkDefs.Dodge
 		],
+		[],
 		[],
 		[],
 		[

@@ -1,7 +1,7 @@
 ::Const.Strings.PerkDescription.Adrenaline = "The rush of battle, adrenaline..."
 + "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
-+ "\n• Whenever you are attacked, hit or miss, gain a stacking " + ::MSU.Text.colorGreen("+5") + " Initiative and " + ::MSU.Text.colorGreen("+5%") + " reduction to the Fatigue Cost of skills during your next turn, up to a maximum of " + ::MSU.Text.colorGreen("+25") + " and " + ::MSU.Text.colorGreen("+25%") + " respectively."
-+ "\n• Unlocks the Adrenaline skill (1 AP, 20 FAT) which puts you first in the turn order for the next round, to have another turn before your enemies do.";
++ "\n• When attacked, gain " + ::MSU.Text.colorGreen("+5") + " Initiative and " + ::MSU.Text.colorGreen("+5%") + " Fatigue Cost Reduction during your next turn. This can stack up to 5 times."
++ "\n• Grants \'Adrenaline\' (1 AP, 20 Fat): The user becomes first in the next round's turn order.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Adrenaline].Tooltip = ::Const.Strings.PerkDescription.Adrenaline;
 

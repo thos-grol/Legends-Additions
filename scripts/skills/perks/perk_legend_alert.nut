@@ -1,5 +1,12 @@
 ::Const.Strings.PerkName.LegendAlert = "Fast";
+::Const.Strings.PerkDescription.LegendAlert = "Fast, like the wind..."
++ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n• " + ::MSU.Text.colorGreen("+20%") + " Initiative";
+
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAlert].Name = ::Const.Strings.PerkName.LegendAlert;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAlert].Tooltip = ::Const.Strings.PerkDescription.LegendAlert;
+
+
 
 this.perk_legend_alert <- this.inherit("scripts/skills/skill", {
 	m = {},

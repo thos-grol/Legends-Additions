@@ -1,12 +1,13 @@
 ::Const.Strings.PerkDescription.LegendBackToBasics = "The basics make a master..."
 + "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
-+ "\n• Gain 2 perk points."
-+ "\n• But reset your perk row to 2.";
++ "\n• " + ::MSU.Text.colorGreen("+2") + " perk points, " + ::MSU.Text.colorRed("but resets your perk row to 3")
++ "\n• Is not refundable.";
+
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBackToBasics].Tooltip = ::Const.Strings.PerkDescription.LegendBackToBasics;
 
-::mods_hookExactClass("skills/perks/perk_legend_back_to_basics", function (o){ 
-    
-	o.create = function()
+this.perk_legend_back_to_basics <- this.inherit("scripts/skills/skill", {
+	m = {},
+	function create()
 	{
 		this.m.ID = "perk.legend_back_to_basics";
 		this.m.Name = this.Const.Strings.PerkName.LegendBackToBasics;
@@ -19,35 +20,16 @@
 		this.m.IsHidden = false;
 	}
 
-	o.onAdded <- function()
+	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
 		if (actor.getFlags().has("perk_back_to_basics")) return;
 		if (!::MSU.isKindOf(actor, "player"))  return;
 
-		actor.m.PerkPointsSpent = 1;
+		actor.m.PerkPointsSpent = 2;
 		actor.m.PerkPoints += 2;
 		actor.getFlags().set("perk_back_to_basics", true);
 	}
 
-	o.getTooltip = function()
-	{
-		return [
-			{
-				id = 1,
-				type = "title",
-				text = this.getName()
-			},
-			{
-				id = 2,
-				type = "description",
-				text = this.getDescription()
-			}
-		];
-	}
-	o.onUpdate = function( _properties ) {}
-	o.onTurnStart = function() {}
-	o.onDamageReceived = function( _attacker, _damageHitpoints, _damageArmor ) {}
-	o.onCombatFinished = function() {}
-
 });
+

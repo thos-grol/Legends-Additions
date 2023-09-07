@@ -112,12 +112,10 @@ gt.Const.Perks.FistsClassTree <- {
 		"unarmed combat"
 	],
 	Tree = [
+		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendAmbidextrous
-			gt.Const.Perks.PerkDefs.LegendKick,
-			//TODO: merge, rename ambidextrous to hand to hand.
 		],
-		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendGrapple
 		],
@@ -126,7 +124,7 @@ gt.Const.Perks.FistsClassTree <- {
 		],
 		[],
 		[
-			//gt.Const.Perks.PerkDefs.LegendTackle
+			gt.Const.Perks.PerkDefs.LegendTackle
 		],
 		[
 			gt.Const.Perks.PerkDefs.LegendChoke
@@ -570,4 +568,6 @@ gt.Const.Perks.ClassTrees <- {
 	}
 
 };
+
+
 

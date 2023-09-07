@@ -99,7 +99,6 @@
 			roam.setAllTerrainAvailable();
 			roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
 			roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
-			roam.setPivot(settlement);
 			roam.setAvoidHeat(true);
 			party.getController().addOrder(roam);
 			return true;
