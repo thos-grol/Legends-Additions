@@ -1,11 +1,87 @@
 //TODO: reworked perk trees, ideas:
-	//borderlands
 	//stone shard
+		https://stoneshard.fandom.com/wiki/Pyromancy_(skill_tree)
+		https://stoneshard.fandom.com/wiki/Geomancy_(skill_tree)
 	//dead cells.
+		//https://deadcells.fandom.com/wiki/Gear#Skills 
+		//interesting weapon design
 	//pokemon
-	//FF Tactics and Tactics Ogre handle classes
+		//for magic passives
+			//Magic Guard
+			//Intimidate
+			//Protean - Used for magic
+			//Poison Heal
+		//status effects
+			//sleep
+			//paralysis
+			//burn
+			//poison/toxic
+			//frozen
+			//panic
+		.
 	//Dungeon crawl stone soup
-	//nethack
+		http://crawl.chaosforge.org/List_of_spells_by_school
+		http://crawl.chaosforge.org/Brand
+		http://crawl.chaosforge.org/Ego
+		http://crawl.chaosforge.org/List_of_unrands
+		http://crawl.chaosforge.org/God
+		http://crawl.chaosforge.org/Unique_monster
+
+	//LW2
+		//Bladestorm
+		//Free sword attacks on any enemies that enter or attack from melee range.
+
+		Combatives
+		You may parry melee attacks and counterattack with your combat knife. Also gain +10 dodge.
+
+		Cutthroat
+		Your melee attacks against biological enemies ignore their armor, have a +15 critical chance, and do +2 critical damage.
+
+		Deadeye
+		Take a shot with a small aim penalty for a significant damage boost.
+
+		Cloaking
+		Cloaking resets sneak attack targets
+
+		Lightning Reflexes
+		Reaction fire shots against you have a significantly decreased chance to hit. The bonus goes down with each additional reaction shot you face
+
+		Mark Target
+		Locked On
+		Gain +10 aim and +10 crit for successive shots at the same enemy unit.
+
+		Domination (Grail)
+		Permanently mind control an enemy. Only one successful Domination can be performed per mission.
+
+		Fortress (Pokemon Magic Gaurd)
+		The Psi Operative is immune to fire, poison, acid, and explosive damage.
+
+		Stasis (Winter)
+		Completely stuns the target for 1 turn, but renders them immune to any damage or attack.
+
+		
+
+		
+
+
+	//
+
+//Magic has a cast chance - then a hit chance.
+
+//Ideas
+	//Luck - increases the chances of effects occuring. Bad luck decreases it.
+
+	//Fragile - takes more injuries
+	//Open Wounds - increases the damage of applied bleed.
+	//Stagger
+	//Slower
+
+	//Bleeding
+	//Poison
+
+	//Daze
+	//Stun
+	
 
 //TODO: event, non-combat background gains another trait tree
     //They must be in party for x battles.

@@ -203,7 +203,7 @@
 			_exclude.push(tt.ID);
 		}
 
-		local t = this.Const.Perks.TraitsTrees.getRandom(_exclude);
+		local t = this.Const.Perks.TraitsTrees.getRandom(_exclude, _flags);
 		_localMap.Traits.push(t);
 		i = ++i;
 	}

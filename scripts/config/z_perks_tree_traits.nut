@@ -5,6 +5,9 @@ if (!("Perks" in gt.Const))
 	gt.Const.Perks <- {};
 }
 
+//TODO: take the nerf hammer after to balance trees.
+//Philosophy try to remove damage buffs from lower tiers.
+
 gt.Const.Perks.AgileTree <- {
 	ID = "AgileTree",
 	Name = "Agile",
@@ -298,7 +301,6 @@ gt.Const.Perks.ViciousTree <- {
 	Tree = [
 		[
 			//gt.Const.Perks.PerkDefs.Fearsome
-			gt.Const.Perks.PerkDefs.Vengeance
 			//TODO: vicious t1
 		],
 		[],
@@ -316,6 +318,7 @@ gt.Const.Perks.ViciousTree <- {
 		[
 			//TODO: vicious t7 perk
 			gt.Const.Perks.PerkDefs.KillingFrenzy
+			gt.Const.Perks.PerkDefs.Vengeance
 		]
 	]
 };
@@ -381,9 +384,9 @@ gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
 		]
 	]
 };
-gt.Const.Perks.InspirationalTree <- {
+gt.Const.Perks.InspirationalTree <- { //TODO: move to commanding tree
 	ID = "InspirationalTree",
-	Name = "Inspirational",
+	Name = "Commanding",
 	Descriptions = [
 		"is inspirational"
 	],
@@ -424,22 +427,32 @@ gt.Const.Perks.InspirationalTree <- {
 	Tree = [
 		[
 			//TODO: inspirational perk tier 1
-			gt.Const.Perks.PerkDefs.InspiringPresence //TODO: InspiringPresence + RallyTheTroops
+			
+		],
+		[],
+		[
+			//TODO: inspirational perk tier 3 rework
+			// Lead By Example
+			// Gives all bros within vision 5% of attack, defense, and resolve. 
+			// Only one bro in the party can have this perk at a time. Selecting it will refund that bro's perk. 
+			//gt.Const.Perks.PerkDefs.InspiringPresence //Use code
+		],
+		[],
+		[
+			//TODO: inspirational perk tier 5: Trial By Fire + RallyTheTroops
+			// Trial By Fire
+				// Any soldiers below level 5 will be automatically promoted after a successful mission with this officer.
+				// On battle start, give all bros meeting criteria perk effect.
+				// On battle won, give bros level up.
+				// Only one bro in the party can have this perk at a time. Selecting it will refund that bro's perk. 
 			//gt.Const.Perks.PerkDefs.RallyTheTroops
 		],
 		[],
 		[
-			//TODO: inspirational perk tier 3
-			//Exude confidence.
-		],
-		[],
-		[
-			//TODO: inspirational perk tier 5
-			gt.Const.Perks.PerkDefs.Inspire
-		],
-		[],
-		[
 			//TODO: inspirational perk tier 7
+			//gt.Const.Perks.PerkDefs.Inspire //Rename to command
+				//End your turn to grant +4 AP to any visible unit.
+				//Only one bro in the party can have this perk at a time. Selecting it will refund that bro's perk. 
 		]
 	]
 };
@@ -888,17 +901,22 @@ gt.Const.Perks.TraitsTrees <- {
 		gt.Const.Perks.FitTree,
 		gt.Const.Perks.TrainedTree
 	],
-	function getRandom( _exclude )
+	function getRandom( _exclude, _flags )
 	{
+		if (_flags.has("Intelligent") && !_flags.has("IntelligentAdded"))
+		{
+			_flags.set("IntelligentAdded", true)
+			return gt.Const.Perks.IntelligentTree;
+		}
+		
 		local L = [];
 
 		foreach( i, t in this.Tree )
 		{
-			if (_exclude != null && _exclude.find(t.ID) != null)
-			{
-				continue;
-			}
-
+			if (t.ID == "InspirationalTree") continue;
+			if (t.ID == "OrganisedTree") continue;
+			if (t.ID == "IntelligentTree") continue;
+			if (_exclude != null && _exclude.find(t.ID) != null) continue;
 			L.push(i);
 		}
 
