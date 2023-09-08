@@ -1,5 +1,5 @@
 ::Const.Strings.PerkDescription.LegendLithe = "Medium armor provides a sweet spot between movement and protection."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• When armor weight is between 25 - 35 (bonuses drops exponentially outside this range): "
 + "\n• Incoming body and armor damage is reduced by " + ::MSU.Text.colorGreen("35%")
 + "\n• Does not affect damage from mental attacks or status effects, but can help to avoid receiving them.";

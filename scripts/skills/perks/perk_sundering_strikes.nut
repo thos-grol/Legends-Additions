@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.SunderingStrikes = "Sundering Strikes";
 
 ::Const.Strings.PerkDescription.SunderingStrikes = "This character's immense strength cause them to sunder both armor and flesh..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• For any weapon:"
 + "\n• " + ::MSU.Text.colorGreen("+20%") + " armor damage"
 + "\n• " + ::MSU.Text.colorGreen("+33%") + " injury threshold.";

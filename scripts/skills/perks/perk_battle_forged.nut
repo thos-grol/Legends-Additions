@@ -1,5 +1,5 @@
 ::Const.Strings.PerkDescription.BattleForged = "Trade hit for hit with heavy armor..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• Reduce armor damage taken by " + ::MSU.Text.colorGreen("5%") + " of the current total armor points."
 + "\n• Does not affect damage from mental attacks or status effects, but can help to avoid receiving them.";
 

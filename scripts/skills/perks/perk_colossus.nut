@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.Colossus = "Colossus";
 
 ::Const.Strings.PerkDescription.Colossus = "This character looms over their enemies..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• +" + ::MSU.Text.colorGreen("25%") + " Hitpoints."
 + "\n• Hits to the head no longer cause critical damage."
 + "\n• Most attacks that would stun, now dazes."

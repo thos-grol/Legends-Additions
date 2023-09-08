@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.LegendAlert = "Fast";
 ::Const.Strings.PerkDescription.LegendAlert = "Fast, like the wind..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• " + ::MSU.Text.colorGreen("+20%") + " Initiative";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAlert].Name = ::Const.Strings.PerkName.LegendAlert;

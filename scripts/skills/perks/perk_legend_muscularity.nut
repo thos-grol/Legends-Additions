@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.LegendMuscularity = "Muscularity";
 
 ::Const.Strings.PerkDescription.LegendMuscularity = "Full weight into every blow..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• +" + ::MSU.Text.colorGreen("15%") + "of current Hitpoints to Minimum and Maximum damage.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Name = ::Const.Strings.PerkName.LegendMuscularity;

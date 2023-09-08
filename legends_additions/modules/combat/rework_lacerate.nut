@@ -2,7 +2,7 @@
 
 ::Const.Strings.PerkName.LegendLacerate = "Blood Aura";
 ::Const.Strings.PerkDescription.LegendLacerate = "Bloodlust..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• Attacks that hit no matter how hard will cause enemies to bleed out."
 + "\n• The default bleed damage is 5.";
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendLacerate].Name = ::Const.Strings.PerkName.LegendLacerate;

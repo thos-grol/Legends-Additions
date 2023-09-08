@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.LegendAmbidextrous = "CQC";
 ::Const.Strings.PerkDescription.LegendAmbidextrous = "Fighting with arms and legs. The basics..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• When attacking, strike with fists at the enemy for each empty hand."
 + "\n• Grants \'Kick\' (4 AP, 14 Fat): Kick the enemy, canceling Shieldwall, Spearwall, Return Favor, or Riposte. Has a chance to inflict Daze (" + ::MSU.Text.colorGreen("-25%") + " dmg, " + ::MSU.Text.colorGreen("-25%") + " Max Fat, " + ::MSU.Text.colorGreen("-25%") + " Initiative).";
 

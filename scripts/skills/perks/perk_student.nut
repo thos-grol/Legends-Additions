@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.Student = "Student";
 
 ::Const.Strings.PerkDescription.Student = "There is an ocean of knowledge out there, and this character has the talent to grasp a tiny portion of it..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• " + ::MSU.Text.colorGreen("+20%") + " EXP gain"
 + "\n• At " + ::MSU.Text.colorRed("Level 11") + ", " + ::MSU.Text.colorGreen("+1") + " perk point"
 + "\n• Grants an attribute level up with maximum rolls and without taking stars into account.";

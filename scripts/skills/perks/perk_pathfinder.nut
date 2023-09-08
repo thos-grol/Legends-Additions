@@ -1,5 +1,5 @@
 ::Const.Strings.PerkDescription.Pathfinder = "Navigating all sorts of difficult terrain..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• Movement AP cost is reduced by " + ::MSU.Text.colorGreen("1") + " to a minimum of 2 per tile, and Fatigue cost is reduced to half."
 + "\n• Unlocks the Sprint skill (5 AP, 25 FAT) which allows you to move 4 tiles in a straight line. Does not work across rough terrain or through enemy zones of control."
 + "\n• Unlocks the Climb skill (3 AP, 20 FAT) which allows you to move up or down levels. Does not trigger attacks of opportunity.";

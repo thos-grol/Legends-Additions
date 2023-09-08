@@ -1,5 +1,5 @@
 ::Const.Strings.PerkDescription.Adrenaline = "The rush of battle, adrenaline..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• When attacked, gain " + ::MSU.Text.colorGreen("+5") + " Initiative and " + ::MSU.Text.colorGreen("+5%") + " Fatigue Cost Reduction during your next turn. This can stack up to 5 times."
 + "\n• Grants \'Adrenaline\' (1 AP, 20 Fat): The user becomes first in the next round's turn order.";
 

@@ -1,6 +1,6 @@
 
 ::Const.Strings.PerkDescription.Backstabber = "It's not the strong who survive. It's the survivors who are strong..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• " + ::MSU.Text.colorGreen("+5%") + " melee hitchance for each ally surrounding a target."
 + "\n• " + ::MSU.Text.colorGreen("+20%") + " melee or ranged damage against targets that are " + ::MSU.Text.colorRed("injured, stunned, netted, or sleeping.");
 

@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.Steadfast = "Endurance";
 
 ::Const.Strings.PerkDescription.Steadfast = "A fit body can endure greater stress..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• " + ::MSU.Text.colorGreen("-90%") + "Accumulated Fatigue from being attacked. Invalid for attacks that specifically target fatigue."
 + "\n• " + ::MSU.Text.colorGreen("-50%") + "Accumulated Fatigue will affect Initiative"
 + "\n• \'Wait\' will no longer give an Initiative penalty.";

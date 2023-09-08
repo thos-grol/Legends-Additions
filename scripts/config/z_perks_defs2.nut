@@ -1,32 +1,32 @@
 ::Const.Strings.PerkName.NachzererGluttonyBarrier <- "Gluttony Shield";
 ::Const.Strings.PerkDescription.NachzererGluttonyBarrier <- "Protection by the powers of gluttony..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• At the start of battle, gain 1 charge of shielding."
 + "\n• Each charge can nullify a blow. Gain more charges through consuming enemies or corpses.";
 
 ::Const.Strings.PerkName.DirewolfBerserkMode <- "Berserk Mode";
 ::Const.Strings.PerkDescription.DirewolfBerserkMode <- "Unstoppable rage..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• When reduced to 50% hp, triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
 + "\n• Become immune to stuns and displacement for 2 turns."
 + "\n• Gain increased damage, initiative, and defenses for 2 turns.";
 
 ::Const.Strings.PerkName.DirewolfRuinAura <- "Ruin Aura";
 ::Const.Strings.PerkDescription.DirewolfRuinAura <- "Unstoppable rage..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• When reduced to 50% hp, triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
 + "\n• Become immune to stuns and displacement for 2 turns."
 + "\n• Gain increased damage, initiative, and defenses for 2 turns.";
 
 ::Const.Strings.PerkName.Finesse <- "Finesse";
 ::Const.Strings.PerkDescription.Finesse <- "With experience and skill comes finesse..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• Reduce Fatigue Cost of all skills by 20%."
 + "\n• At the end of your turn, gain twice your remaining action points as melee defense.";
 
 ::Const.Strings.PerkName.DeathDealer <- "Death Dealer";
 ::Const.Strings.PerkDescription.DeathDealer <- "This character's immense strength makes them a dealer of death..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• For AOE attacks:"
 + "\n• +" + ::MSU.Text.colorGreen("10%") + " damage"
 + "\n• -" + ::MSU.Text.colorGreen("25%") + " Fatigue cost";

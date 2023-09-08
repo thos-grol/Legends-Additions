@@ -160,7 +160,7 @@
 			ret.Type <- 3;
 			ret.Range <- "40+";
 		}
-ss
+
 		return ret;
 	}
 
@@ -173,8 +173,8 @@ ss
 		_tooltip.push({
 			id = 6,
 			type = "text",
-			icon = "ui/icons/melee_defense.png",
-			text = ::MSU.Text.colorGreen("+x%") + " damage reduction proportional to the initiative difference between the attacker and this unit. (Max 80% for a 100 initiative)."
+			icon = "ui/icons/health.png",
+			text = ::MSU.Text.colorGreen("+x%") + " damage reduction proportional to the initiative difference between the attacker and this unit. (Max 80% for a 100 difference)."
 		});
 		return _tooltip;
 	}
@@ -195,8 +195,8 @@ ss
 			_tooltip.push({
 				id = 6,
 				type = "text",
-				icon = "ui/icons/melee_defense.png",
-				text = "Nimble: Only receive" + ::MSU.Text.colorGreen(fm + "%") + " damage to hitpoints"
+				icon = "ui/icons/health.png",
+				text = "Nimble: " + ::MSU.Text.colorGreen("+" + fm + "%") + " hitpoint damage reduction"
 			});
 		}
 
@@ -206,17 +206,12 @@ ss
 	o.getTooltip_Dodge <- function( _tooltip )
 	{
 		local initiative = this.Math.max(0, this.Math.floor(this.getContainer().getActor().getInitiative() * 0.15));
+		if (initiative == 0) return _tooltip;
 		_tooltip.push({
 			id = 6,
 			type = "text",
 			icon = "ui/icons/melee_defense.png",
-			text = "Dodge: " + ::MSU.Text.colorGreen("+" + initiative) + " Melee Defense"
-		});
-		_tooltip.push({
-			id = 6,
-			type = "text",
-			icon = "ui/icons/ranged_defense.png",
-			text = "Dodge: " + ::MSU.Text.colorGreen("+" + initiative) + " Ranged Defense"
+			text = "Dodge: " + ::MSU.Text.colorGreen("+" + initiative) + " Melee and Ranged Defense"
 		});
 		return _tooltip;
 	}
@@ -240,15 +235,6 @@ ss
 				text = "Small Target: [color=" + this.Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Ranged Defense"
 			});
 		}
-		else if (this.getContainer().getActor().getBodyItem() == null)
-		{
-			_tooltip.push({
-				id = 6,
-				type = "text",
-				icon = "ui/tooltips/warning.png",
-				text = "Small Target: This character needs armor to recieve a defence bonus."
-			});
-		}
 
 		local bonus2 = SmallTarget_getBonus2();
 
@@ -259,15 +245,6 @@ ss
 				type = "text",
 				icon = "ui/icons/special.png",
 				text = "Small Target: [color=" + this.Const.UI.Color.PositiveValue + "]+" + bonus2 + "%[/color] chance for enemies to be forced to reroll their attack"
-			});
-		}
-		else
-		{
-			_tooltip.push({
-				id = 6,
-				type = "text",
-				icon = "ui/tooltips/warning.png",
-				text = "Small Target: This character\'s [color=" + this.Const.UI.Color.NegativeValue + "]Melee Defence and Resolve is too high[/color] to gain reroll chance."
 			});
 		}
 
@@ -358,15 +335,9 @@ ss
         _tooltip.push({
             id = 6,
             type = "text",
-            icon = "ui/icons/melee_defense.png",
-            text = ::MSU.Text.colorGreen("+" + bonus + "%") + " damage reduction. (50% Max)"
+            icon = "ui/icons/health.png",
+            text = ::MSU.Text.colorGreen("+" + bonus + "%") + " damage reduction. " + ::MSU.Text.colorGreen("+5%") + " upon dodging. " + ::MSU.Text.colorGreen("-10%") + " when hit. " + ::MSU.Text.colorRed("(50% Max)")
         });
-		_tooltip.push({
-			id = 6,
-			type = "text",
-			icon = "ui/icons/melee_defense.png",
-			text = "Gains " + ::MSU.Text.colorGreen("+5%") + " upon dodging an attack. " + ::MSU.Text.colorGreen("-10%") + " when hit."
-		});
 
 		return _tooltip;
 	}
@@ -391,7 +362,7 @@ ss
 		return mult;
 	}
 
-	o.Lithe_getBonus = function()
+	o.Lithe_getBonus <- function()
 	{
 		local actor = this.getContainer().getActor();
 		local bodyitem = actor.getBodyItem();
@@ -415,8 +386,8 @@ ss
 			_tooltip.push({
 				id = 6,
 				type = "text",
-				icon = "ui/icons/melee_defense.png",
-				text = "Lithe: Only receive " + ::MSU.Text.colorGreen((100 - bonus) + "%") + " damage to hitpoints and armor"
+				icon = "ui/icons/health.png",
+				text = "Lithe: " + ::MSU.Text.colorGreen("+" + (100 - bonus) + "%") + " damage reduction"
 			});
 			return _tooltip;
 		}
@@ -453,8 +424,8 @@ ss
 			_tooltip.push({
 				id = 6,
 				type = "text",
-				icon = "ui/icons/special.png",
-				text = "Armor penetrating damage through Head Armor is reduced by " + ::MSU.Text.colorGreen(headBonus + "%")
+				icon = "ui/icons/health.png",
+				text = ::MSU.Text.colorGreen("+" + headBonus + "%") + " hitpoint damage reduction " + ::MSU.Text.colorRed("(Head)")
 			});
 		}
 		if (bodyBonus > 0)
@@ -462,10 +433,11 @@ ss
 			_tooltip.push({
 				id = 6,
 				type = "text",
-				icon = "ui/icons/special.png",
-				text = "Armor penetrating damage through Body Armor is reduced by " + ::MSU.Text.colorGreen(bodyBonus + "%")
+				icon = "ui/icons/health.png",
+				text = ::MSU.Text.colorGreen("+" + bodyBonus + "%") + " hitpoint damage reduction " + ::MSU.Text.colorRed("(Body)")
 			});
 		}
+
 		return _tooltip;
 	}
 
@@ -477,8 +449,8 @@ ss
 		_tooltip.push({
 			id = 6,
 			type = "text",
-			icon = "ui/icons/special.png",
-			text = "Battleforged: Only receive " + ::MSU.Text.colorGreen((100 - reduction) + "%") + " damage to armor"
+			icon = "ui/icons/armor_head.png",
+			text = "Battleforged: " + ::MSU.Text.colorGreen("+" + reduction + "%") + " armor damage reduction"
 		});
 
 		return _tooltip;

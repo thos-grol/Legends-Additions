@@ -1,7 +1,7 @@
 //Provides overwhelm immunity to tagged enemies.
 
 ::Const.Strings.PerkDescription.Overwhelm = "Overwhelm the enemy with the speed of your attacks."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• Every attack, hit or miss, against an opponent that acts after you in the current round, inflict the \'Overwhelmed\' status effect which lowers both Melee Skill and Ranged Skill by [color=" + this.Const.UI.Color.NegativeValue + "]5%[/color] for one turn."
 + "\n• The effect stacks with each attack, and can be applied to multiple targets at once with a single attack."
 + "\n• Some targets such as big monsters are immune to being overwhelmed.";

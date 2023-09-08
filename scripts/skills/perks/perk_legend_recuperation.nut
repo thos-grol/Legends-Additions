@@ -1,7 +1,8 @@
 ::Const.Strings.PerkDescription.LegendRecuperation = "A fit body can shake off fatigue and injuries..."
-+ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
-+ "\n• Heal " + ::MSU.Text.colorGreen("2") + " hitpoints and fatigue at the end of every turn."
-+ "\n• Grants \'Recover\' (X AP): Reduces accumulated Fatigue by 5.5% * X AP. Cannot be used if another skill has been used.";
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n" + ::MSU.Text.colorGreen("+2") + " Hitpoint recovery"
++ "\n" + ::MSU.Text.colorGreen("+2") + " Fatigue recovery"
++ "\n• \'Recover\' (X AP): Reduces accumulated Fatigue by 5.5% * X AP. " + ::MSU.Text.colorRed("Cannot be used if another skill has been used");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendRecuperation].Tooltip = ::Const.Strings.PerkDescription.LegendRecuperation;
 
