@@ -1,4 +1,3 @@
-//TODO: each tree needs 3-4 perks
 local gt = this.getroottable();
 
 if (!("Perks" in gt.Const))
@@ -52,12 +51,13 @@ gt.Const.Perks.AgileTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Footwork
-		],
-		[
-
+			//TODO: Agile t3 perk
+			//gt.Const.Perks.PerkDefs.Footwork
 		],
 		[],
+		[
+			//TODO: Agile t5 perk
+		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendEscapeArtist
@@ -106,11 +106,12 @@ gt.Const.Perks.IndestructibleTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.FortifiedMind //TODO: rename to Inner Faith
-			//gt.Const.Perks.PerkDefs.LegendTrueBeliever //Combine with fortified mind
+			gt.Const.Perks.PerkDefs.FortifiedMind //TODO: rename to Inner Faith. Combine with fortified mind
+			//gt.Const.Perks.PerkDefs.LegendTrueBeliever
 		],
 		[],
 		[
+			//TODO: Tenacious t3 perk
 			//"Survival Instinct //TODO: port over
 			// Whenever you are attacked, gain a stacking bonus to Melee and Ranged Defense of +2 on a miss and +5 on a hit. This can stack up to 5 tgimes for misses and up to 2 times for hits.
 			// At the start of every turn, the bonus is reset except the bonus gained from getting hit which is retained for the remainder of the combat."
@@ -118,7 +119,8 @@ gt.Const.Perks.IndestructibleTree <- {
 		[],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendAssuredConquest
+			//TODO: Tenacious t5 perk
+			//gt.Const.Perks.PerkDefs.LegendAssuredConquest
 		],
 		[
 			gt.Const.Perks.PerkDefs.LegendMindOverBody
@@ -168,17 +170,22 @@ gt.Const.Perks.SturdyTree <- {
 	},
 	Tree = [
 		[
+			//TODO: sturdy t1 perk
 			gt.Const.Perks.PerkDefs.NineLives,
-			//gt.Const.Perks.PerkDefs.LegendSecondWind //TODO: merge
+			//gt.Const.Perks.PerkDefs.LegendSecondWind
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.HoldOut //TODO: rework
+			//TODO: sturdy t3 perk
+			gt.Const.Perks.PerkDefs.HoldOut //TODO: rework " resists being overwhelmed thanks to his unnatural physiology"
 		],
 		[],
-		[],
+		[
+			//TODO: sturdy t5 perk
+		],
 		[],
 		[
+			//TODO: sturdy t7 perk, buff indom? make it trigger at hp % automatically?
 			gt.Const.Perks.PerkDefs.Indomitable
 			//"Indomitable
 			// In addition to previous bonuses, now grants immunity to Cull while active.
@@ -229,18 +236,22 @@ gt.Const.Perks.MartyrTree <- {
 	},
 	Tree = [
 		[
+			//TODO: martyr t1 perk
 			gt.Const.Perks.PerkDefs.Underdog
 		],
 		[],
 		[
+			//TODO: martyr t3 perk
 			gt.Const.Perks.PerkDefs.LoneWolf
 		],
 		[],
-		[],
+		[
+			//TODO: martyr t5 perk
+		],
 		[],
 		[
+			//TODO: martyr t7 perk
 			gt.Const.Perks.PerkDefs.LastStand
-
 		]
 	]
 };
@@ -288,21 +299,22 @@ gt.Const.Perks.ViciousTree <- {
 		[
 			//gt.Const.Perks.PerkDefs.Fearsome
 			gt.Const.Perks.PerkDefs.Vengeance
-			//TODO: merge
+			//TODO: vicious t1
 		],
 		[],
 		[
+			//TODO: vicious t3 perk
 			gt.Const.Perks.PerkDefs.HeadHunter
 			//gt.Const.Perks.PerkDefs.Debilitate
 		],
 		[],
 		[
+			//TODO: vicious t5 perk
 			gt.Const.Perks.PerkDefs.Berserk
 		],
+		[],
 		[
-
-		],
-		[
+			//TODO: vicious t7 perk
 			gt.Const.Perks.PerkDefs.KillingFrenzy
 		]
 	]
@@ -349,24 +361,16 @@ gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.Backstabber //TODO: Backstabber + CoupDeGrace
-			//"Backstabber (requires Melee Attack)
-			// The bonus to hitchance in melee is doubled to +10% for each ally surrounding and distracting your target.
-			// Melee Piercing type attacks gain +5% damage per ally surrounding the target."
-			//gt.Const.Perks.PerkDefs.CoupDeGrace
+			gt.Const.Perks.PerkDefs.Backstabber
 		],
 		[],
 		[
-			//TODO: borderlands 2 skills trees ideas
-			//TODO: stone shard
-			//TODO: dead cells.
-			//TODO: pokemon
-			//TODO: FF Tactics and Tactics Ogre handle classes
-			//TODO: Dungeon crawl stone soup
-			//TODO: nethack
+			//TODO: devious perk tier 3
+
 		],
 		[],
 		[
+			//TODO: devious perk tier 5, rethink
 			gt.Const.Perks.PerkDefs.LegendEvasion
 			//gt.Const.Perks.PerkDefs.Anticipation //TODO: rework to 15%, buff anticipation, rename something involving reflexes
 			// give mdef and rdef
@@ -374,7 +378,6 @@ gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
 		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendBlendIn
-			//TODO: Merge Reforged Sneak attack: when entering a zoc or ranged attacking an enemy engaged in melee, gain damage increase and armor pen
 		]
 	]
 };
@@ -420,22 +423,23 @@ gt.Const.Perks.InspirationalTree <- {
 	},
 	Tree = [
 		[
+			//TODO: inspirational perk tier 1
 			gt.Const.Perks.PerkDefs.InspiringPresence //TODO: InspiringPresence + RallyTheTroops
 			//gt.Const.Perks.PerkDefs.RallyTheTroops
 		],
 		[],
 		[
+			//TODO: inspirational perk tier 3
 			//Exude confidence.
-
-
 		],
 		[],
 		[
+			//TODO: inspirational perk tier 5
 			gt.Const.Perks.PerkDefs.Inspire
 		],
 		[],
 		[
-
+			//TODO: inspirational perk tier 7
 		]
 	]
 };
@@ -485,13 +489,15 @@ gt.Const.Perks.IntelligentTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.FastAdaption
+			//TODO: inspirational perk tier 3, port Pattern Recognition. higher intelligence allows one to extrapolate patterns from data
 		],
 		[],
-		[],
+		[
+			//TODO: inspirational perk tier 5
+		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.PerfectFocus
+			//TODO: inspirational perk tier 7
 		]
 	]
 };
@@ -542,17 +548,22 @@ gt.Const.Perks.CalmTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendPeaceful
-		],
-		[],
-		[],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendClarity
+			//TODO: calm perk tier 1
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.BattleFlow
+			gt.Const.Perks.PerkDefs.BattleFlow  //TODO: calm perk tier 3 port over unstoppable?, also keep fat buff
+		],
+		[],
+		[
+			//TODO: calm perk tier 5
+			gt.Const.Perks.PerkDefs.LegendPeaceful //TODO: rename to inner peace
+			//TODO: rework
+		],
+		[],
+		[
+
+			gt.Const.Perks.PerkDefs.PerfectFocus //TODO: calm perk tier 7 add sfx, redo description.
 		]
 	]
 };
@@ -667,10 +678,11 @@ gt.Const.Perks.FitTree <- {
 		],
 		[],
 		[
-			//TODO: missing perk
+			//TODO: calm perk tier 5
 		],
 		[],
 		[
+			//TODO: calm perk tier 7
 			//TODO: missing perk //Vigourous Assault
 		]
 	]
@@ -735,7 +747,7 @@ gt.Const.Perks.LargeTree <- { //Complete
 	]
 };
 
-gt.Const.Perks.FastTree <- {
+gt.Const.Perks.FastTree <- { //Complete
 	ID = "FastTree",
 	Name = "Fast",
 	Descriptions = [
@@ -855,9 +867,7 @@ gt.Const.Perks.TrainedTree <- {
 			gt.Const.Perks.PerkDefs.Finesse
 		],
 		[
-			//"Pattern Recognition
-			// Every time an opponent attacks you or you attack an opponent, gain stacking Melee Skill and Melee Defense against that opponent for the remainder of the combat. Every subsequent attack gives a larger bonus, with the first attack giving +1, the second +2, the third +3, and so on. Once the bonus reaches 10, all subsequent attacks increase it by +1 only. Only works with dealing or receiving Melee Attacks."
-
+			//TODO: trained tree tier 7
 		]
 	]
 };

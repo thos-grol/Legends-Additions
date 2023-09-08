@@ -1,38 +1,55 @@
-::mods_hookExactClass("skills/perks/perk_backstabber", function (o) {
-	o.m.IsForceEnabled <- false;
-	o.m.DamageBonusPerSurroundCount <- 0.05;
 
-	local create = o.create;
-    o.create = function()
-    {
-        create();
-        this.m.Icon = "ui/perks/perk_59.png";
-    }
+::Const.Strings.PerkDescription.Backstabber = "It's not the strong who survive. It's the survivors who are strong..."
++ "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
++ "\n• " + ::MSU.Text.colorGreen("+5%") + " melee hitchance for each ally surrounding a target."
++ "\n• " + ::MSU.Text.colorGreen("+20%") + " melee or ranged damage against targets that are " + ::MSU.Text.colorRed("injured, stunned, netted, or sleeping.");
 
-    o.isEnabled <- function()
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Backstabber].Tooltip = ::Const.Strings.PerkDescription.Backstabber;
+
+this.perk_backstabber <- this.inherit("scripts/skills/skill", {
+	m = {},
+	function create()
 	{
-		if (this.m.IsForceEnabled)
-		{
-			return true;
-		}
-
-		if (this.getContainer().getActor().isDisarmed()) return false;
-
-		local weapon = this.getContainer().getActor().getMainhandItem();
-		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Dagger))
-		{
-			return false;
-		}
-
-		return true;
+		this.m.ID = "perk.backstabber";
+		this.m.Name = this.Const.Strings.PerkName.Backstabber;
+		this.m.Description = this.Const.Strings.PerkDescription.Backstabber;
+		this.m.Icon = "ui/perks/perk_40.png";
+		this.m.Type = this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsStacking = false;
+		this.m.IsHidden = false;
 	}
 
-	o.onAnySkillUsed <- function( _skill, _targetEntity, _properties )
+	function onUpdate( _properties )
 	{
-		if (_skill.isAttack() && _targetEntity != null && this.isEnabled() && !_targetEntity.getCurrentProperties().IsImmuneToSurrounding && !_targetEntity.isAlliedWith(this.getContainer().getActor()))
+		_properties.SurroundedBonusMult = 2.0;
+	}
+
+	function onAnySkillUsed( _skill, _targetEntity, _properties )
+	{
+		if (_targetEntity == null)
 		{
-			_properties.DamageTotalMult *= 1.0 + (this.m.DamageBonusPerSurroundCount * _targetEntity.getSurroundedCount());
+			return;
 		}
 
+		if (_skill.isAttack() && _targetEntity.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury) || _targetEntity.getSkills().hasSkill("effects.debilitated"))
+		{
+			_properties.DamageTotalMult *= 1.2;
+		}
+
+		if (_targetEntity.getSkills().hasSkill("effects.stunned") || _targetEntity.getSkills().hasSkill("effects.net") || _targetEntity.getSkills().hasSkill("effects.sleeping"))
+		{
+			_properties.DamageTotalMult *= 1.1;
+		}
 	}
+
+	function onBeforeTargetHit( _skill, _targetEntity, _hitInfo )
+	{
+		if (_skill.isAttack() && _targetEntity != null && _targetEntity.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury))
+		{
+			this.spawnIcon("perk_16", this.getContainer().getActor().getTile());
+		}
+	}
+
 });

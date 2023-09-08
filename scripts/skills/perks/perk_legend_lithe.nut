@@ -1,7 +1,8 @@
 ::Const.Strings.PerkDescription.LegendLithe = "Medium armor provides a sweet spot between movement and protection."
 + "\n\n[color=" + ::Const.UI.Color.NegativeValue + "][u]Passive:[/u][/color]"
 + "\n• When armor weight is between 25 - 35 (bonuses drops exponentially outside this range): "
-+ "\n• Incoming body and armor damage is reduced by " + ::MSU.Text.colorGreen("35%");
++ "\n• Incoming body and armor damage is reduced by " + ::MSU.Text.colorGreen("35%")
++ "\n• Does not affect damage from mental attacks or status effects, but can help to avoid receiving them.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendLithe].Tooltip = ::Const.Strings.PerkDescription.LegendLithe;
 
@@ -16,7 +17,7 @@ this.perk_legend_lithe <- this.inherit("scripts/skills/skill", {
 		this.m.Name = this.Const.Strings.PerkName.LegendLithe;
 		this.m.Description = "Lithe like a lizard! %name% is able to partially deflect attacks at the last moment, turning them into glancing hits.";
 		this.m.Icon = "ui/perks/lithe.png";
-		this.m.Type = this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
+		this.m.Type = this.Const.SkillType.Perk;
 		this.m.Order = this.Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;

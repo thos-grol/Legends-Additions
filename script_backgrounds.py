@@ -93,7 +93,7 @@ BACKGROUNDS = {
         'background.hunter',
         'background.wildman',
         'background.wildwoman',
-        
+
     ],
     'MIDDLE CLASS' : [
         'background.bastard',
@@ -132,8 +132,8 @@ BACKGROUNDS = {
     ],
     'CHAMPION' : [
         'background.legend_shieldmaiden',
-        
-        'background.beast_slayer', #FEATURE_8:: combine into monster hunter, disable witchunter background
+
+        'background.beast_slayer',
         'background.witchhunter',
         'background.legend_master_archer',
 
@@ -262,7 +262,7 @@ def getPath(id):
                 return path
         i += 1
     return None
-    
+
 ALLOWED_FNS = ['onAddEquipment']
 def parse(root, fname):
     if fname == 'character_background.nut': return
@@ -270,7 +270,7 @@ def parse(root, fname):
         HiringCost = None
         DailyCost = None
         id = None
-       
+
 
         #first pass to read data
         lines = file.readlines()
@@ -381,7 +381,7 @@ CATEGORY_WAGES = {
     'EVENT' : [48, 24]
 }
 
-with open(os.path.join(out, f'Ω_economy_background_wages.nut'), "w+") as f_out:    
+with open(os.path.join(out, f'Ω_economy_background_wages.nut'), "w+") as f_out:
     f_out.write('::Z.Backgrounds.Wages <- {\n')
     for CATEGORY in BACKGROUNDS:
         if CATEGORY == 'IGNORE': continue

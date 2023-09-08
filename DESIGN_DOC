@@ -1,7 +1,11 @@
-//TODO: all armor tooltips -> moved to armor class. ie. nimble dodge. check for status effect...
-
-//TODO: reworked perk trees
-
+//TODO: reworked perk trees, ideas:
+	//borderlands
+	//stone shard
+	//dead cells.
+	//pokemon
+	//FF Tactics and Tactics Ogre handle classes
+	//Dungeon crawl stone soup
+	//nethack
 
 //TODO: event, non-combat background gains another trait tree
     //They must be in party for x battles.
@@ -22,8 +26,6 @@
     Weapon mastery perks renamed to weapon proficiency -> becomes status effect. When mastered, grant stance to user.
     Choose 1 of 2 stances for each weapon.
     Masters can transform your stance into different stance.
-
-//TODO: gladiator tooltips moved to perks, fix visual clutter
 
 //TODO: bright trait tiers.
 
