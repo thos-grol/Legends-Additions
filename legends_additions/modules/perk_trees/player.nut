@@ -47,8 +47,9 @@
 			}
 		}
 
-        //TODO: for testing
-        // this.m.Skills.add(::new("scripts/skills/traits/bright_trait"));
+
+        this.m.Skills.add(::new("scripts/skills/traits/bright_trait"));
+        this.m.Skills.add(::new("scripts/skills/traits/teamplayer_trait"));
 
 		local attributes = background.buildPerkTree();
 		
@@ -75,19 +76,99 @@
 
 		if (_addTraits)
 		{
-			if (this.getFlags().has("Intelligent"))
-            {
-                this.fillTalentValues(2);
-                if (this.getTalents()[this.Const.Attributes.MeleeDefense] > 0)
-                {
-                    this.getTalents()[this.Const.Attributes.MeleeDefense] = ::Math.max(::Math.rand(2,3), this.getTalents()[this.Const.Attributes.MeleeDefense]);
-                    this.fillTalentValues(1);
-                }
-                else this.getTalents()[this.Const.Attributes.MeleeDefense] = ::Math.rand(2,3);
-            }
-            else this.fillTalentValues(3);
+			this.fillTalentValues(3);
 			this.fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
+		}
+	}
 
+	o.fillTalentValues = function( _num, _force = false )
+	{
+		this.m.Talents.resize(this.Const.Attributes.COUNT, 0);
+		if (this.getBackground() != null && this.getBackground().isBackgroundType(this.Const.BackgroundType.Untalented) && !_force) return;
+		
+
+		local attributes = [];
+		local weights = [];
+		local totalWeight = 0;
+
+		if (this.getFlags().has("Intelligent"))
+		{
+			this.getTalents()[this.Const.Attributes.MeleeDefense] = ::Math.rand(2,3);
+			_num -= 1;
+		}
+
+		if (this.getFlags().has("Commander"))
+		{
+			this.getTalents()[this.Const.Attributes.Bravery] = ::Math.rand(2,3);
+			_num -= 1;
+		}
+
+		for( local i = 0; i < this.m.StarWeights.len(); i = i )
+		{
+			if (this.m.Talents[i] != 0)
+			{
+			}
+			else if (this.getBackground() != null && this.getBackground().getExcludedTalents().find(i) != null)
+			{
+			}
+			else
+			{
+				if (this.getFlags().has("PlayerZombie") && (i == this.Const.Attributes.Bravery || i == this.Const.Attributes.Fatigue || i == this.Const.Attributes.Initiative))
+				{
+					continue;
+				}
+				else if (this.getFlags().has("PlayerSkeleton") && (i == this.Const.Attributes.Bravery || i == this.Const.Attributes.Fatigue || i == this.Const.Attributes.Hitpoints))
+				{
+					continue;
+				}
+
+				attributes.push(i);
+				weights.push(this.m.StarWeights[i]);
+				totalWeight = totalWeight + this.m.StarWeights[i];
+			}
+
+			i = ++i;
+		}
+
+		for( local done = 0; done < _num; done = done )
+		{
+			local weight = this.Math.rand(1, totalWeight);
+			local totalhere = 0;
+
+			for( local i = 0; i < attributes.len(); i = i )
+			{
+				if (weight > totalhere && weight <= totalhere + weights[i])
+				{
+					local r = this.Math.rand(1, 100);
+					local j = attributes[i];
+
+					if (r <= 60)
+					{
+						this.m.Talents[j] = 1;
+					}
+					else if (r <= 90)
+					{
+						this.m.Talents[j] = 2;
+					}
+					else
+					{
+						this.m.Talents[j] = 3;
+					}
+
+					attributes.remove(i);
+					totalWeight = totalWeight - weights[i];
+					weights.remove(i);
+					break;
+				}
+				else
+				{
+					totalhere = totalhere + weights[i];
+				}
+
+				i = ++i;
+			}
+
+			done = ++done;
 		}
 	}
 });

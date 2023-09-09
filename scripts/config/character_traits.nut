@@ -222,7 +222,7 @@ gt.Const.CharacterTraits <- [
 	],
 	[
 		"trait.huge",
-		"scripts/skills/traits/huge_trait"
+		"scripts/skills/traits/huge_trait" //TODO: make large trait tree garunteed
 	],
 	[
 		"trait.lucky",
@@ -242,20 +242,20 @@ gt.Const.CharacterTraits <- [
 	],
 	[
 		"trait.natural",
-		"scripts/skills/traits/natural_trait"
+		"scripts/skills/traits/natural_trait" //TODO: buff with perfectionist
 	],
 	[
 		"trait.pragmatic",
 		"scripts/skills/traits/pragmatic_trait"
 	],
-	[
-		"trait.light",
-		"scripts/skills/traits/light_trait"
-	],
-	[
-		"trait.heavy",
-		"scripts/skills/traits/heavy_trait"
-	],
+	// [
+	// 	"trait.light",
+	// 	"scripts/skills/traits/light_trait"
+	// ],
+	// [
+	// 	"trait.heavy",
+	// 	"scripts/skills/traits/heavy_trait"
+	// ],
 	[
 		"trait.ambitious",
 		"scripts/skills/traits/ambitious_trait"
@@ -264,10 +264,10 @@ gt.Const.CharacterTraits <- [
 		"trait.aggressive",
 		"scripts/skills/traits/aggressive_trait"
 	],
-	[
-		"trait.gift_of_people",
-		"scripts/skills/traits/gift_of_people_trait"
-	],
+	// [
+	// 	"trait.gift_of_people",
+	// 	"scripts/skills/traits/gift_of_people_trait"
+	// ], //TODO: rework
 	[
 		"trait.double_tongued",
 		"scripts/skills/traits/double_tongued_trait"

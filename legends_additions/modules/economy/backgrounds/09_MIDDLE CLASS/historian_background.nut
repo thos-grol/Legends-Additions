@@ -13,9 +13,7 @@
 			Defense = [
 				this.Const.Perks.ClothArmorTree
 			],
-			Traits = [
-				this.Const.Perks.IntelligentTree
-			],
+			Traits = [],
 			Enemy = [],
 			Class = [
 				this.Const.Perks.FistsClassTree	

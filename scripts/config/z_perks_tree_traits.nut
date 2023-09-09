@@ -384,11 +384,11 @@ gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
 		]
 	]
 };
-gt.Const.Perks.InspirationalTree <- { //TODO: move to commanding tree
+gt.Const.Perks.InspirationalTree <- {
 	ID = "InspirationalTree",
-	Name = "Commanding",
+	Name = "Officer",
 	Descriptions = [
-		"is inspirational"
+		"is good at commanding"
 	],
 	Attributes = {
 		Hitpoints = [
@@ -428,14 +428,16 @@ gt.Const.Perks.InspirationalTree <- { //TODO: move to commanding tree
 		[
 			//TODO: inspirational perk tier 1
 			
-		],
-		[],
-		[
-			//TODO: inspirational perk tier 3 rework
 			// Lead By Example
 			// Gives all bros within vision 5% of attack, defense, and resolve. 
 			// Only one bro in the party can have this perk at a time. Selecting it will refund that bro's perk. 
 			//gt.Const.Perks.PerkDefs.InspiringPresence //Use code
+		],
+		[],
+		[
+			//TODO: inspirational perk tier 3 rework
+			//TODO: idea: Teamwork Excercises
+			//-75% friendly fire chance of all units in party
 		],
 		[],
 		[
@@ -826,7 +828,7 @@ gt.Const.Perks.FastTree <- { //Complete
 ///////////////////////////////////////////////////////////////////////////
 
 
-gt.Const.Perks.TrainedTree <- {
+gt.Const.Perks.TrainedTree <- { //Complete, trained doesn't really count as a trait tree. //TODO: add extra trait tree to all backgrounds that use trained. Prevent rolling it.
 	ID = "TrainedTree",
 	Name = "Trained",
 	Descriptions = [
@@ -879,9 +881,7 @@ gt.Const.Perks.TrainedTree <- {
 		[
 			gt.Const.Perks.PerkDefs.Finesse
 		],
-		[
-			//TODO: trained tree tier 7
-		]
+		[]
 	]
 };
 gt.Const.Perks.TraitsTrees <- {
@@ -903,19 +903,17 @@ gt.Const.Perks.TraitsTrees <- {
 	],
 	function getRandom( _exclude, _flags )
 	{
-		if (_flags.has("Intelligent") && !_flags.has("IntelligentAdded"))
-		{
-			_flags.set("IntelligentAdded", true)
-			return gt.Const.Perks.IntelligentTree;
-		}
-		
-		local L = [];
+		if (_flags.has("Intelligent") && _exclude.find("IntelligentTree") == null) return gt.Const.Perks.IntelligentTree;
+		if (_flags.has("Commander") && _exclude.find("InspirationalTree") == null) return gt.Const.Perks.InspirationalTree;
 
+		local L = [];
 		foreach( i, t in this.Tree )
 		{
-			if (t.ID == "InspirationalTree") continue;
-			if (t.ID == "OrganisedTree") continue;
-			if (t.ID == "IntelligentTree") continue;
+			if (t.ID == "OrganisedTree") continue; //unused
+			if (t.ID == "TrainedTree") continue; //background unlocks it
+			if (t.ID == "IntelligentTree") continue; //needs bright trait to unlock
+			if (t.ID == "InspirationalTree") continue; //needs team player trait to unlock
+			
 			if (_exclude != null && _exclude.find(t.ID) != null) continue;
 			L.push(i);
 		}

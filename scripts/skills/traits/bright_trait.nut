@@ -1,4 +1,4 @@
-//TODO: rework
+//TODO: bright trait tiers. rework remove bonus
 this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {},
 	function create()

@@ -15,7 +15,6 @@
 				this.Const.Perks.ClothArmorTree
 			],
 			Traits = [
-				this.Const.Perks.IntelligentTree,
 				this.Const.Perks.CalmTree
 			],
 			Enemy = [],

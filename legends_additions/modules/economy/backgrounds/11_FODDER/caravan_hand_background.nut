@@ -12,9 +12,7 @@
 				this.Const.Perks.ShieldTree
 			],
 			Defense = [],
-			Traits = [
-				this.Const.Perks.OrganisedTree
-			],
+			Traits = [],
 			Enemy = [],
 			Class = [
 				this.Const.Perks.FistsClassTree
