@@ -119,7 +119,7 @@ gt.Const.Perks.ViciousTree <- {
 		],
 		[],
 		[
-			//TODO: vicious t3 perk
+			//TODO: vicious t3 perk, Sadism
 			//gt.Const.Perks.PerkDefs.Fearsome
 			//gt.Const.Perks.PerkDefs.Debilitate
 		],
