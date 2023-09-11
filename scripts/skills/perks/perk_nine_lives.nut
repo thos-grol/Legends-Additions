@@ -38,7 +38,7 @@ this.perk_nine_lives <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "ui/perks/perk_07.png";
 		this.m.IconMini = "perk_07_mini";
 		this.m.Overlay = "perk_07";
-		this.m.Type = this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
+		this.m.Type = this.Const.SkillType.Perk;
 		this.m.Order = this.Const.SkillOrder.VeryLast + 10000;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;

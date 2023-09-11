@@ -222,7 +222,7 @@ gt.Const.CharacterTraits <- [
 	],
 	[
 		"trait.huge",
-		"scripts/skills/traits/huge_trait" //TODO: make large trait tree garunteed
+		"scripts/skills/traits/huge_trait"
 	],
 	[
 		"trait.lucky",
@@ -267,7 +267,7 @@ gt.Const.CharacterTraits <- [
 	// [
 	// 	"trait.gift_of_people",
 	// 	"scripts/skills/traits/gift_of_people_trait"
-	// ], //TODO: rework
+	// ],
 	[
 		"trait.double_tongued",
 		"scripts/skills/traits/double_tongued_trait"

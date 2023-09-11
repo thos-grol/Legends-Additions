@@ -115,7 +115,7 @@ gt.Const.Perks.ViciousTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.HeadHunter //TODO: description
+			gt.Const.Perks.PerkDefs.HeadHunter
 		],
 		[],
 		[
@@ -125,7 +125,6 @@ gt.Const.Perks.ViciousTree <- {
 		],
 		[],
 		[
-			//TODO: vicious t5 perk
 			gt.Const.Perks.PerkDefs.Berserk
 		],
 		[],
