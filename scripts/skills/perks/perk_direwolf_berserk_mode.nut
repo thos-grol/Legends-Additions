@@ -1,3 +1,14 @@
+//TODO: rewrite using new format
+::Const.Strings.PerkName.DirewolfBerserkMode <- "Berserk Mode";
+::Const.Strings.PerkDescription.DirewolfBerserkMode <- "Unstoppable rage..."
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n• When reduced to 50% hp, triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
++ "\n• Become immune to stuns and displacement for 2 turns."
++ "\n• Gain increased damage, initiative, and defenses for 2 turns.";
+
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DirewolfBerserkMode].Name = ::Const.Strings.PerkName.DirewolfBerserkMode;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DirewolfBerserkMode].Tooltip = ::Const.Strings.PerkDescription.DirewolfBerserkMode;
+
 this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 	m = {
 		Charges = 1,

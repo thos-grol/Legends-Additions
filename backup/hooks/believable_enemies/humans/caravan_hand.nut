@@ -35,7 +35,7 @@
 		if (r == 4)
 		{
 			this.m.Items.equip(::new("scripts/items/weapons/hatchet"));
-			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_back_to_basics"));
+			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dismemberment"));
 			this.level_melee_skill(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
@@ -45,7 +45,7 @@
 		else if (r == 5)
 		{
 			this.m.Items.equip(::new("scripts/items/weapons/bludgeon"));
-			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_back_to_basics"));
+			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_push_it"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heavy_strikes"));
 			this.level_fatigue(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
@@ -56,7 +56,7 @@
 		{
 			this.m.Items.equip(::new("scripts/items/weapons/militia_spear"));
 			this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
-			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_back_to_basics"));
+			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pointy_end"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_through_the_gaps"));
 			this.level_fatigue(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
@@ -67,7 +67,7 @@
 		else if (r == 7)
 		{
 			this.m.Items.equip(::new("scripts/items/weapons/scramasax"));
-			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_back_to_basics"));
+			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_swordlike"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_deep_cuts"));
 			this.level_fatigue(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
@@ -77,7 +77,7 @@
 		else if (r == 8)
 		{
 			this.m.Items.equip(::new("scripts/items/weapons/shortsword"));
-			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_back_to_basics"));
+			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_deep_cuts"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_fluid_weapon"));
 			this.level_fatigue(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
@@ -87,7 +87,7 @@
 		else if (r == 9)
 		{
 			this.m.Items.equip(::new("scripts/items/weapons/legend_militia_glaive"));
-			this.m.Skills.add(::new("scripts/skills/perks/perk_legend_back_to_basics"));
+			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_deep_cuts"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_fluid_weapon"));
 			this.level_initiative(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );

@@ -1,0 +1,41 @@
+//TODO: rewrite using new format
+::Const.Strings.PerkName.Inspire <- "Command";
+::Const.Strings.PerkDescription.Inspire <- "Command a soldier to strike..."
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n"+::MSU.Text.colorRed("\'Command\'") + "(7 AP, 30 Fat): Target unit gains " + ::MSU.Text.colorGreen("4 AP")
++ "\n\n" + ::MSU.Text.colorRed("There can only be one commander in the party. Will refund this perk if any other unit has it.");
+
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Inspire].Name = ::Const.Strings.PerkName.Inspire;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Inspire].Tooltip = ::Const.Strings.PerkDescription.Inspire;
+
+this.perk_inspire <- this.inherit("scripts/skills/skill", {
+	m = {},
+	function create()
+	{
+		this.m.ID = "perk.inspire";
+		this.m.Name = this.Const.Strings.PerkName.Inspire;
+		this.m.Description = this.Const.Strings.PerkDescription.Inspire;
+		this.m.Icon = "ui/perks/inspire_circle.png";
+		this.m.IconDisabled = "ui/perks/inspire_circle_bw.png";
+		this.m.Type = this.Const.SkillType.Perk;
+		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.IsActive = false;
+		this.m.IsStacking = false;
+		this.m.IsHidden = false;
+	}
+
+	function onAdded()
+	{
+		if (!this.m.Container.hasSkill("actives.inspire"))
+		{
+			this.m.Container.add(this.new("scripts/skills/actives/inspire_skill"));
+		}
+	}
+
+	function onRemoved()
+	{
+		this.m.Container.removeByID("actives.inspire");
+	}
+
+});
+

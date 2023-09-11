@@ -1,5 +1,5 @@
+//TODO: rewrite using new format
 ::Const.Strings.PerkName.Student = "Student";
-
 ::Const.Strings.PerkDescription.Student = "There is an ocean of knowledge out there, and this character has the talent to grasp a tiny portion of it..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n" + ::MSU.Text.colorGreen("250%") + " EXP gain"

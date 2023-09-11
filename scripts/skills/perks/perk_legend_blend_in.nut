@@ -1,3 +1,4 @@
+//TODO: rewrite using new format
 ::Const.Strings.PerkName.LegendBlendIn = "Sneak Attack";
 ::Const.Strings.PerkDescription.LegendBlendIn = "If you notice me, you're already dead..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")

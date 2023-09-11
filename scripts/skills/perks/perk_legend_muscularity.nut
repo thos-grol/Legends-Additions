@@ -1,3 +1,4 @@
+//TODO: rewrite using new format
 ::Const.Strings.PerkName.LegendMuscularity = "Muscularity";
 
 ::Const.Strings.PerkDescription.LegendMuscularity = "Full weight into every blow..."

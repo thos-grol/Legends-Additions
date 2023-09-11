@@ -210,7 +210,7 @@
 				"female_daytaler_background",
 				"female_daytaler_background",
 				"female_farmhand_background",
-				"female_tailor_background"
+				//"female_tailor_background"
 			],
 			[
 				"wildwoman_background",

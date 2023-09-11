@@ -1,3 +1,4 @@
+//TODO: rewrite using new format
 ::Const.Strings.PerkDescription.Brawny = "Trade hit for hit with heavy armor..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.LightBlue, "[u]Passive:[/u]")
 + "\n• " + ::MSU.Text.colorGreen("-30%") + " Fatigue and Initiative penalty from wearing armor."

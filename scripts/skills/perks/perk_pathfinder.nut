@@ -1,3 +1,4 @@
+//TODO: rewrite using new format
 ::Const.Strings.PerkDescription.Pathfinder = "Navigating all sorts of difficult terrain..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• Movement AP cost is reduced by " + ::MSU.Text.colorGreen("1") + " to a minimum of 2 per tile, and Fatigue cost is reduced to half."

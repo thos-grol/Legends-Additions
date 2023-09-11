@@ -5,6 +5,7 @@
 		create();
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
+		this.m.PerkTreeDynamicMins.Traits = 3;
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
@@ -20,9 +21,7 @@
 				this.Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree,
-				this.Const.Perks.ViciousTree,
-				this.Const.Perks.LargeTree
+				this.Const.Perks.TrainedTree
 			],
 			Enemy = [
 				this.Const.Perks.SwordmastersTree
@@ -32,8 +31,6 @@
 			],
 			Magic = []
 		};
-
-		this.m.PerkTreeDynamicMins.Traits = 5;
 	}
 
 	o.onAddEquipment = function()

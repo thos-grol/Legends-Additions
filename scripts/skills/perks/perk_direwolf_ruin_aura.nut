@@ -1,3 +1,14 @@
+//TODO: rewrite using new format
+::Const.Strings.PerkName.DirewolfRuinAura <- "Ruin Aura";
+::Const.Strings.PerkDescription.DirewolfRuinAura <- "Unstoppable rage..."
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n• When reduced to 50% hp, triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
++ "\n• Become immune to stuns and displacement for 2 turns."
++ "\n• Gain increased damage, initiative, and defenses for 2 turns.";
+
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DirewolfRuinAura].Name = ::Const.Strings.PerkName.DirewolfRuinAura;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DirewolfRuinAura].Tooltip = ::Const.Strings.PerkDescription.DirewolfRuinAura;
+
 this.perk_direwolf_ruin_aura <- this.inherit("scripts/skills/skill", {
 	m = {
 	},

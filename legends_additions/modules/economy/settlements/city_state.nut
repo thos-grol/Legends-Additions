@@ -29,7 +29,7 @@
 			"servant_southern_background",
 			"shepherd_southern_background",
 			"shepherd_southern_background",
-			"tailor_southern_background",
+			//"tailor_southern_background",
 			"thief_southern_background",
 			"disowned_noble_background",
 			"sellsword_background",

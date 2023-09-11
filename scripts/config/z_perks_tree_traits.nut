@@ -5,131 +5,9 @@ if (!("Perks" in gt.Const))
 	gt.Const.Perks <- {};
 }
 
-//TODO: take the nerf hammer after to balance trees.
-//Philosophy try to remove damage buffs from lower tiers.
 
-gt.Const.Perks.AgileTree <- {
-	ID = "AgileTree",
-	Name = "Agile",
-	Descriptions = [
-		"is agile"
-	],
-	Attributes = {
-		Hitpoints = [
-			-4,
-			-4
-		],
-		Bravery = [
-			-2,
-			-2
-		],
-		Stamina = [
-			0,
-			0
-		],
-		MeleeSkill = [
-			-2,
-			-2
-		],
-		RangedSkill = [
-			4,
-			4
-		],
-		MeleeDefense = [
-			0,
-			0
-		],
-		RangedDefense = [
-			2,
-			2
-		],
-		Initiative = [
-			2,
-			2
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.Pathfinder,
-		],
-		[],
-		[
-			//TODO: Agile t3 perk
-			//gt.Const.Perks.PerkDefs.Footwork
-		],
-		[],
-		[
-			//TODO: Agile t5 perk
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendEscapeArtist
-		]
-	]
-};
-gt.Const.Perks.IndestructibleTree <- {
-	ID = "IndestructibleTree",
-	Name = "Tenacious",
-	Descriptions = [
-		"is tenacious"
-	],
-	Attributes = {
-		Hitpoints = [
-			4,
-			4
-		],
-		Bravery = [
-			2,
-			2
-		],
-		Stamina = [
-			-2,
-			-2
-		],
-		MeleeSkill = [
-			0,
-			0
-		],
-		RangedSkill = [
-			-2,
-			-2
-		],
-		MeleeDefense = [
-			0,
-			0
-		],
-		RangedDefense = [
-			2,
-			2
-		],
-		Initiative = [
-			-4,
-			-4
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.FortifiedMind //TODO: rename to Inner Faith. Combine with fortified mind
-			//gt.Const.Perks.PerkDefs.LegendTrueBeliever
-		],
-		[],
-		[
-			//TODO: Tenacious t3 perk
-			//"Survival Instinct //TODO: port over
-			// Whenever you are attacked, gain a stacking bonus to Melee and Ranged Defense of +2 on a miss and +5 on a hit. This can stack up to 5 tgimes for misses and up to 2 times for hits.
-			// At the start of every turn, the bonus is reset except the bonus gained from getting hit which is retained for the remainder of the combat."
-		],
-		[],
-		[],
-		[
-			//TODO: Tenacious t5 perk
-			//gt.Const.Perks.PerkDefs.LegendAssuredConquest
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendMindOverBody
-		]
-	]
-};
+
+
 
 gt.Const.Perks.SturdyTree <- {
 	ID = "SturdyTree",
@@ -173,18 +51,16 @@ gt.Const.Perks.SturdyTree <- {
 	},
 	Tree = [
 		[
-			//TODO: sturdy t1 perk
-			gt.Const.Perks.PerkDefs.NineLives,
-			//gt.Const.Perks.PerkDefs.LegendSecondWind
+			gt.Const.Perks.PerkDefs.NineLives
 		],
 		[],
 		[
 			//TODO: sturdy t3 perk
-			gt.Const.Perks.PerkDefs.HoldOut //TODO: rework " resists being overwhelmed thanks to his unnatural physiology"
+			
 		],
 		[],
 		[
-			//TODO: sturdy t5 perk
+			gt.Const.Perks.PerkDefs.HoldOut
 		],
 		[],
 		[
@@ -197,67 +73,6 @@ gt.Const.Perks.SturdyTree <- {
 	]
 };
 
-gt.Const.Perks.MartyrTree <- {
-	ID = "MartyrTree",
-	Name = "Martyr",
-	Descriptions = [
-		"has martyr complex"
-	],
-	Attributes = {
-		Hitpoints = [
-			0,
-			0
-		],
-		Bravery = [
-			0,
-			0
-		],
-		Stamina = [
-			2,
-			2
-		],
-		MeleeSkill = [
-			-2,
-			-2
-		],
-		RangedSkill = [
-			-4,
-			-4
-		],
-		MeleeDefense = [
-			4,
-			4
-		],
-		RangedDefense = [
-			2,
-			2
-		],
-		Initiative = [
-			-2,
-			-2
-		]
-	},
-	Tree = [
-		[
-			//TODO: martyr t1 perk
-			gt.Const.Perks.PerkDefs.Underdog
-		],
-		[],
-		[
-			//TODO: martyr t3 perk
-			gt.Const.Perks.PerkDefs.LoneWolf
-		],
-		[],
-		[
-			//TODO: martyr t5 perk
-		],
-		[],
-		[
-			//TODO: martyr t7 perk
-			gt.Const.Perks.PerkDefs.LastStand
-		]
-	]
-};
 gt.Const.Perks.ViciousTree <- {
 	ID = "ViciousTree",
 	Name = "Vicious",
@@ -300,13 +115,12 @@ gt.Const.Perks.ViciousTree <- {
 	},
 	Tree = [
 		[
-			//gt.Const.Perks.PerkDefs.Fearsome
-			//TODO: vicious t1
+			gt.Const.Perks.PerkDefs.HeadHunter //TODO: description
 		],
 		[],
 		[
 			//TODO: vicious t3 perk
-			gt.Const.Perks.PerkDefs.HeadHunter
+			//gt.Const.Perks.PerkDefs.Fearsome
 			//gt.Const.Perks.PerkDefs.Debilitate
 		],
 		[],
@@ -317,12 +131,13 @@ gt.Const.Perks.ViciousTree <- {
 		[],
 		[
 			//TODO: vicious t7 perk
-			gt.Const.Perks.PerkDefs.KillingFrenzy
-			gt.Const.Perks.PerkDefs.Vengeance
+			//gt.Const.Perks.PerkDefs.KillingFrenzy
+			gt.Const.Perks.PerkDefs.Vengeance  //TODO: description
 		]
 	]
 };
-gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
+
+gt.Const.Perks.DeviousTree <- {
 	ID = "DeviousTree",
 	Name = "Devious",
 	Descriptions = [
@@ -375,6 +190,7 @@ gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
 		[
 			//TODO: devious perk tier 5, rethink
 			gt.Const.Perks.PerkDefs.LegendEvasion
+			//gt.Const.Perks.PerkDefs.Footwork
 			//gt.Const.Perks.PerkDefs.Anticipation //TODO: rework to 15%, buff anticipation, rename something involving reflexes
 			// give mdef and rdef
 		],
@@ -384,138 +200,7 @@ gt.Const.Perks.DeviousTree <- { //TODO: devious tree needs improvement
 		]
 	]
 };
-gt.Const.Perks.InspirationalTree <- {
-	ID = "InspirationalTree",
-	Name = "Officer",
-	Descriptions = [
-		"is good at commanding"
-	],
-	Attributes = {
-		Hitpoints = [
-			-2,
-			-2
-		],
-		Bravery = [
-			4,
-			4
-		],
-		Stamina = [
-			0,
-			0
-		],
-		MeleeSkill = [
-			2,
-			2
-		],
-		RangedSkill = [
-			-4,
-			-4
-		],
-		MeleeDefense = [
-			2,
-			2
-		],
-		RangedDefense = [
-			0,
-			0
-		],
-		Initiative = [
-			-2,
-			-2
-		]
-	},
-	Tree = [
-		[
-			//TODO: inspirational perk tier 1
-			
-			// Lead By Example
-			// Gives all bros within vision 5% of attack, defense, and resolve. 
-			// Only one bro in the party can have this perk at a time. Selecting it will refund that bro's perk. 
-			//gt.Const.Perks.PerkDefs.InspiringPresence //Use code
-		],
-		[],
-		[
-			//TODO: inspirational perk tier 3 rework
-			//TODO: idea: Teamwork Excercises
-			//-75% friendly fire chance of all units in party
-		],
-		[],
-		[
-			//TODO: inspirational perk tier 5: Trial By Fire + RallyTheTroops
-			// Trial By Fire
-				// Any soldiers below level 5 will be automatically promoted after a successful mission with this officer.
-				// On battle start, give all bros meeting criteria perk effect.
-				// On battle won, give bros level up.
-				// Only one bro in the party can have this perk at a time. Selecting it will refund that bro's perk. 
-			//gt.Const.Perks.PerkDefs.RallyTheTroops
-		],
-		[],
-		[
-			//TODO: inspirational perk tier 7
-			//gt.Const.Perks.PerkDefs.Inspire //Rename to command
-				//End your turn to grant +4 AP to any visible unit.
-				//Only one bro in the party can have this perk at a time. Selecting it will refund that bro's perk. 
-		]
-	]
-};
-gt.Const.Perks.IntelligentTree <- {
-	ID = "IntelligentTree",
-	Name = "Intelligent",
-	Descriptions = [
-		"is intelligent"
-	],
-	Attributes = {
-		Hitpoints = [
-			-2,
-			-2
-		],
-		Bravery = [
-			4,
-			4
-		],
-		Stamina = [
-			-2,
-			-2
-		],
-		MeleeSkill = [
-			0,
-			0
-		],
-		RangedSkill = [
-			0,
-			0
-		],
-		MeleeDefense = [
-			-4,
-			-4
-		],
-		RangedDefense = [
-			2,
-			2
-		],
-		Initiative = [
-			2,
-			2
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.Student
-		],
-		[],
-		[
-			//TODO: inspirational perk tier 3, port Pattern Recognition. higher intelligence allows one to extrapolate patterns from data
-		],
-		[],
-		[
-			//TODO: inspirational perk tier 5
-		],
-		[],
-		[
-			//TODO: inspirational perk tier 7
-		]
-	]
-};
+
 gt.Const.Perks.CalmTree <- {
 	ID = "CalmTree",
 	Name = "Calm",
@@ -583,66 +268,6 @@ gt.Const.Perks.CalmTree <- {
 	]
 };
 
-
-gt.Const.Perks.OrganisedTree <- { //TODO: remake and rename tree? Combat
-	ID = "OrganisedTree",
-	Name = "Organized",
-	Descriptions = [
-		"is organized"
-	],
-	Attributes = {
-		Hitpoints = [
-			2,
-			2
-		],
-		Bravery = [
-			-2,
-			-2
-		],
-		Stamina = [
-			4,
-			4
-		],
-		MeleeSkill = [
-			-4,
-			-4
-		],
-		RangedSkill = [
-			0,
-			0
-		],
-		MeleeDefense = [
-			-2,
-			-2
-		],
-		RangedDefense = [
-			0,
-			0
-		],
-		Initiative = [
-			2,
-			2
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendHelpful
-		],
-		[
-
-		],
-		[
-
-		],
-		[],
-		[
-
-		],
-		[],
-		[]
-	]
-};
-
 gt.Const.Perks.FitTree <- {
 	ID = "FitTree",
 	Name = "Fit",
@@ -693,21 +318,24 @@ gt.Const.Perks.FitTree <- {
 		],
 		[],
 		[
-			//TODO: calm perk tier 5
+			//TODO: fit perk tier 5
 		],
 		[],
 		[
-			//TODO: calm perk tier 7
-			//TODO: missing perk //Vigourous Assault
+			gt.Const.Perks.PerkDefs.FreshAndFurious
 		]
 	]
 };
 
-gt.Const.Perks.LargeTree <- { //Complete
-	ID = "LargeTree",
-	Name = "Large",
+///////////////////////////////////////////////////////////////////////////
+// Scheduled
+///////////////////////////////////////////////////////////////////////////
+
+gt.Const.Perks.IndestructibleTree <- {
+	ID = "IndestructibleTree",
+	Name = "Tenacious",
 	Descriptions = [
-		"is large"
+		"is tenacious"
 	],
 	Attributes = {
 		Hitpoints = [
@@ -715,54 +343,65 @@ gt.Const.Perks.LargeTree <- { //Complete
 			4
 		],
 		Bravery = [
-			0,
-			0
+			2,
+			2
 		],
 		Stamina = [
-			2,
-			2
+			-2,
+			-2
 		],
 		MeleeSkill = [
-			2,
-			2
-		],
-		RangedSkill = [
 			0,
 			0
 		],
+		RangedSkill = [
+			-2,
+			-2
+		],
 		MeleeDefense = [
-			-4,
-			-4
+			0,
+			0
 		],
 		RangedDefense = [
-			-2,
-			-2
+			2,
+			2
 		],
 		Initiative = [
-			-2,
-			-2
+			-4,
+			-4
 		]
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.Colossus
+			//TODO: descriptions: Are you a dog or a wolf?
+			gt.Const.Perks.PerkDefs.Underdog,
+			gt.Const.Perks.PerkDefs.LoneWolf
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.SunderingStrikes
+			gt.Const.Perks.PerkDefs.FortifiedMind //TODO: rename to Inner Faith. Combine with fortified mind
+			//gt.Const.Perks.PerkDefs.LegendTrueBeliever
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.DeathDealer
+			//TODO: Tenacious t3 perk
+			//"Survival Instinct //TODO: port over
+			// Whenever you are attacked, gain a stacking bonus to Melee and Ranged Defense of +2 on a miss and +5 on a hit. This can stack up to 5 tgimes for misses and up to 2 times for hits.
+			// At the start of every turn, the bonus is reset except the bonus gained from getting hit which is retained for the remainder of the combat."
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendMuscularity
+			gt.Const.Perks.PerkDefs.LegendMindOverBody
+			//Ignores the effects of temporary injuries
 		]
 	]
 };
 
-gt.Const.Perks.FastTree <- { //Complete
+///////////////////////////////////////////////////////////////////////////
+// Done
+///////////////////////////////////////////////////////////////////////////
+
+gt.Const.Perks.FastTree <- {
 	ID = "FastTree",
 	Name = "Fast",
 	Descriptions = [
@@ -821,14 +460,248 @@ gt.Const.Perks.FastTree <- { //Complete
 	]
 };
 
+gt.Const.Perks.AgileTree <- {
+	ID = "AgileTree",
+	Name = "Agile",
+	Descriptions = [
+		"is agile"
+	],
+	Attributes = {
+		Hitpoints = [
+			-4,
+			-4
+		],
+		Bravery = [
+			-2,
+			-2
+		],
+		Stamina = [
+			0,
+			0
+		],
+		MeleeSkill = [
+			-2,
+			-2
+		],
+		RangedSkill = [
+			4,
+			4
+		],
+		MeleeDefense = [
+			0,
+			0
+		],
+		RangedDefense = [
+			2,
+			2
+		],
+		Initiative = [
+			2,
+			2
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.Pathfinder,
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.LegendTwirl
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Ghostlike
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.LegendEscapeArtist
+		]
+	]
+};
 
+gt.Const.Perks.LargeTree <- {
+	ID = "LargeTree",
+	Name = "Large",
+	Descriptions = [
+		"is large"
+	],
+	Attributes = {
+		Hitpoints = [
+			4,
+			4
+		],
+		Bravery = [
+			0,
+			0
+		],
+		Stamina = [
+			2,
+			2
+		],
+		MeleeSkill = [
+			2,
+			2
+		],
+		RangedSkill = [
+			0,
+			0
+		],
+		MeleeDefense = [
+			-4,
+			-4
+		],
+		RangedDefense = [
+			-2,
+			-2
+		],
+		Initiative = [
+			-2,
+			-2
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.Colossus
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.SunderingStrikes
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.DeathDealer
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.LegendMuscularity
+		]
+	]
+};
 
 ///////////////////////////////////////////////////////////////////////////
-// Done
+// Special
 ///////////////////////////////////////////////////////////////////////////
 
+gt.Const.Perks.IntelligentTree <- {
+	ID = "IntelligentTree",
+	Name = "Intelligent",
+	Descriptions = [
+		"is intelligent"
+	],
+	Attributes = {
+		Hitpoints = [
+			-2,
+			-2
+		],
+		Bravery = [
+			4,
+			4
+		],
+		Stamina = [
+			-2,
+			-2
+		],
+		MeleeSkill = [
+			0,
+			0
+		],
+		RangedSkill = [
+			0,
+			0
+		],
+		MeleeDefense = [
+			-4,
+			-4
+		],
+		RangedDefense = [
+			2,
+			2
+		],
+		Initiative = [
+			2,
+			2
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.Student
+		],
+		[],
+		[
+			//TODO: inspirational perk tier 3, port Pattern Recognition. higher intelligence allows one to extrapolate patterns from data
+		],
+		[],
+		[
+			//TODO: inspirational perk tier 5
+		],
+		[],
+		[
+			//TODO: inspirational perk tier 7
+		]
+	]
+};
 
-gt.Const.Perks.TrainedTree <- { //Complete, trained doesn't really count as a trait tree. //TODO: add extra trait tree to all backgrounds that use trained. Prevent rolling it.
+gt.Const.Perks.InspirationalTree <- {
+	ID = "InspirationalTree",
+	Name = "Officer",
+	Descriptions = [
+		"is good at commanding"
+	],
+	Attributes = {
+		Hitpoints = [
+			-2,
+			-2
+		],
+		Bravery = [
+			4,
+			4
+		],
+		Stamina = [
+			0,
+			0
+		],
+		MeleeSkill = [
+			2,
+			2
+		],
+		RangedSkill = [
+			-4,
+			-4
+		],
+		MeleeDefense = [
+			2,
+			2
+		],
+		RangedDefense = [
+			0,
+			0
+		],
+		Initiative = [
+			-2,
+			-2
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.LeadByExample
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.InspiringPresence //Teamwork Exercises
+			
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.TrialByFire
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Inspire
+		]
+	]
+};
+
+gt.Const.Perks.TrainedTree <- {
 	ID = "TrainedTree",
 	Name = "Trained",
 	Descriptions = [
@@ -873,7 +746,9 @@ gt.Const.Perks.TrainedTree <- { //Complete, trained doesn't really count as a tr
 			gt.Const.Perks.PerkDefs.Rotation
 		],
 		[],
-		[],
+		[
+			gt.Const.Perks.PerkDefs.BagsAndBelts //TODO: description
+		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendBackToBasics
@@ -884,6 +759,121 @@ gt.Const.Perks.TrainedTree <- { //Complete, trained doesn't really count as a tr
 		[]
 	]
 };
+
+gt.Const.Perks.OrganisedTree <- { //Unused
+	ID = "OrganisedTree",
+	Name = "Organized",
+	Descriptions = [
+		"is organized"
+	],
+	Attributes = {
+		Hitpoints = [
+			2,
+			2
+		],
+		Bravery = [
+			-2,
+			-2
+		],
+		Stamina = [
+			4,
+			4
+		],
+		MeleeSkill = [
+			-4,
+			-4
+		],
+		RangedSkill = [
+			0,
+			0
+		],
+		MeleeDefense = [
+			-2,
+			-2
+		],
+		RangedDefense = [
+			0,
+			0
+		],
+		Initiative = [
+			2,
+			2
+		]
+	},
+	Tree = [
+		[
+			
+		],
+		[
+
+		],
+		[
+
+		],
+		[],
+		[
+
+		],
+		[],
+		[]
+	]
+};
+
+gt.Const.Perks.MartyrTree <- { //Unused
+	ID = "MartyrTree",
+	Name = "Martyr",
+	Descriptions = [
+		"has martyr complex"
+	],
+	Attributes = {
+		Hitpoints = [
+			0,
+			0
+		],
+		Bravery = [
+			0,
+			0
+		],
+		Stamina = [
+			2,
+			2
+		],
+		MeleeSkill = [
+			-2,
+			-2
+		],
+		RangedSkill = [
+			-4,
+			-4
+		],
+		MeleeDefense = [
+			4,
+			4
+		],
+		RangedDefense = [
+			2,
+			2
+		],
+		Initiative = [
+			-2,
+			-2
+		]
+	},
+	Tree = [
+		[],
+		[],
+		[],
+		[],
+		[],
+		[],
+		[]
+	]
+};
+
+///////////////////////////////////////////////////////////////////////////
+// Done
+///////////////////////////////////////////////////////////////////////////
+
 gt.Const.Perks.TraitsTrees <- {
 	Tree = [
 		gt.Const.Perks.AgileTree,
@@ -905,11 +895,14 @@ gt.Const.Perks.TraitsTrees <- {
 	{
 		if (_flags.has("Intelligent") && _exclude.find("IntelligentTree") == null) return gt.Const.Perks.IntelligentTree;
 		if (_flags.has("Commander") && _exclude.find("InspirationalTree") == null) return gt.Const.Perks.InspirationalTree;
+		if (_flags.has("Huge") && _exclude.find("LargeTree") == null) return gt.Const.Perks.LargeTree;
 
 		local L = [];
 		foreach( i, t in this.Tree )
 		{
 			if (t.ID == "OrganisedTree") continue; //unused
+			if (t.ID == "MartyrTree") continue; //unused
+			if (t.ID == "LargeTree" && _flags.has("Tiny")) continue; //Tiny cannot be large. Duh
 			if (t.ID == "TrainedTree") continue; //background unlocks it
 			if (t.ID == "IntelligentTree") continue; //needs bright trait to unlock
 			if (t.ID == "InspirationalTree") continue; //needs team player trait to unlock

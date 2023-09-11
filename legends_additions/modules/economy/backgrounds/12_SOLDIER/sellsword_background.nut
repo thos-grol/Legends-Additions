@@ -5,14 +5,11 @@
 		create();
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
+		this.m.PerkTreeDynamicMins.Traits = 3;
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.AxeTree,
-				this.Const.Perks.MaceTree,
-				this.Const.Perks.FlailTree,
-				this.Const.Perks.PolearmTree,
-				this.Const.Perks.ShieldTree,
+				this.Const.Perks.MaceTree
 			],
 			Defense = [
 				this.Const.Perks.LightArmorTree,
@@ -23,13 +20,11 @@
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.BeastClassTree
+				this.Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
 
-		this.m.PerkTreeDynamicMins.Traits = 3;
 	}
 
 	o.onAddEquipment = function()
@@ -58,6 +53,8 @@
 		{
 			items.equip(this.new("scripts/items/weapons/winged_mace"));
 		}
+
+		//TODO: set weapon tree based on equipped weapon
 
 		items.equip(this.Const.World.Common.pickArmor([
 			[

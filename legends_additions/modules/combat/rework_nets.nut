@@ -1,8 +1,4 @@
-//Reinforced Nets
-//  - When replacing nets, all the nets will now be reinforced nets, making it 20% harder to break free.
-//	- TODO: fix description of reinforced nets to 20% harder to break free.
-
-//rework net mastery to refill nets
+//TODO: rewrite using new format
 ::Const.Strings.PerkName.LegendNetRepair = "Net Specialization";
 ::Const.Strings.PerkDescription.LegendNetRepair = "Many years and storms weathered with a net in hand..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
@@ -90,7 +86,7 @@
 });
 
 //======================================================================================================================
-
+//TODO: rewrite using new format
 ::Const.Strings.PerkName.LegendNetCasting = "Net Arsenal"
 ::Const.Strings.PerkDescription.LegendNetCasting = "A well equipped mercenary is a prepared mercenary..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")

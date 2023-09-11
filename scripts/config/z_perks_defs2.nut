@@ -1,36 +1,3 @@
-::Const.Strings.PerkName.NachzererGluttonyBarrier <- "Gluttony Shield";
-::Const.Strings.PerkDescription.NachzererGluttonyBarrier <- "Protection by the powers of gluttony..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• At the start of battle, gain 1 charge of shielding."
-+ "\n• Each charge can nullify a blow. Gain more charges through consuming enemies or corpses.";
-
-::Const.Strings.PerkName.DirewolfBerserkMode <- "Berserk Mode";
-::Const.Strings.PerkDescription.DirewolfBerserkMode <- "Unstoppable rage..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• When reduced to 50% hp, triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
-+ "\n• Become immune to stuns and displacement for 2 turns."
-+ "\n• Gain increased damage, initiative, and defenses for 2 turns.";
-
-::Const.Strings.PerkName.DirewolfRuinAura <- "Ruin Aura";
-::Const.Strings.PerkDescription.DirewolfRuinAura <- "Unstoppable rage..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• When reduced to 50% hp, triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
-+ "\n• Become immune to stuns and displacement for 2 turns."
-+ "\n• Gain increased damage, initiative, and defenses for 2 turns.";
-
-::Const.Strings.PerkName.Finesse <- "Finesse";
-::Const.Strings.PerkDescription.Finesse <- "With experience and skill comes finesse..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• Reduce Fatigue Cost of all skills by 20%."
-+ "\n• At the end of your turn, gain twice your remaining action points as melee defense.";
-
-::Const.Strings.PerkName.DeathDealer <- "Death Dealer";
-::Const.Strings.PerkDescription.DeathDealer <- "This character's immense strength makes them a dealer of death..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• For AOE attacks:"
-+ "\n• +" + ::MSU.Text.colorGreen("10%") + " damage"
-+ "\n• -" + ::MSU.Text.colorGreen("25%") + " Fatigue cost";
-
 // ::Const.Strings.PerkName.EldritchBlast <- "Eldritch Blast"
 // // ::Const.Strings.PerkDescription.LegendSpecCultHood = "With face obscured by a cultist hood, gain " + ::MSU.Text.colorGreen( 15 ) + "% of your base resolve as a bonus to melee and ranged defense. Also works with cultist leather hood, leather helmet, sack, decayed sack helm, warlock hood or mask of davkul.\n Also unlocks a crafting recipe to make cultist hoods and sacks.";
 // ::Const.Strings.PerkDescription.EldritchBlast <- "Blast your foes with eldritch energy.";
@@ -74,8 +41,8 @@ local perks = [
     {
         ID = "perk.nachzerer_gluttony_barrier",
         Script = "scripts/skills/perks/perk_nachzerer_gluttony_barrier",
-        Name = ::Const.Strings.PerkName.NachzererGluttonyBarrier,
-        Tooltip = ::Const.Strings.PerkDescription.NachzererGluttonyBarrier,
+        Name = "",
+        Tooltip = "",
         Icon = "ui/perks/perk_29.png",
         IconDisabled = "ui/perks/perk_29_sw.png",
         Const = "NachzererGluttonyBarrier"
@@ -83,8 +50,8 @@ local perks = [
 	{
         ID = "perk.direwolf_berserk_mode",
         Script = "scripts/skills/perks/perk_direwolf_berserk_mode",
-        Name = ::Const.Strings.PerkName.DirewolfBerserkMode,
-        Tooltip = ::Const.Strings.PerkDescription.DirewolfBerserkMode,
+        Name = "",
+        Tooltip = "",
         Icon = "ui/perks/perk_29.png",
         IconDisabled = "ui/perks/perk_29_sw.png",
         Const = "DirewolfBerserkMode"
@@ -92,8 +59,8 @@ local perks = [
 	{
         ID = "perk.direwolf_ruin_aura",
         Script = "scripts/skills/perks/perk_direwolf_ruin_aura",
-        Name = ::Const.Strings.PerkName.DirewolfRuinAura,
-        Tooltip = ::Const.Strings.PerkDescription.DirewolfRuinAura,
+        Name = "",
+        Tooltip = "",
         Icon = "ui/perks/perk_29.png",
         IconDisabled = "ui/perks/perk_29_sw.png",
         Const = "DirewolfRuinAura"
@@ -101,8 +68,8 @@ local perks = [
 	{
         ID = "perk.finesse",
         Script = "scripts/skills/perks/perk_finesse",
-        Name = ::Const.Strings.PerkName.Finesse,
-        Tooltip = ::Const.Strings.PerkDescription.Finesse,
+        Name = "",
+        Tooltip = "",
         Icon = "ui/perks/rf_finesse.png",
         IconDisabled = "ui/perks/rf_finesse_bw.png",
         Const = "Finesse"
@@ -110,17 +77,53 @@ local perks = [
 	{
         ID = "perk.death_dealer",
         Script = "scripts/skills/perks/perk_death_dealer",
-        Name = ::Const.Strings.PerkName.DeathDealer,
-        Tooltip = ::Const.Strings.PerkDescription.DeathDealer,
+        Name = "",
+        Tooltip = "",
         Icon = "ui/perks/rf_finesse.png",
         IconDisabled = "ui/perks/rf_finesse_bw.png",
         Const = "DeathDealer"
     },
+    {
+        ID = "perk.trial_by_fire",
+        Script = "scripts/skills/perks/perk_trial_by_fire",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/liberty_perk.png",
+        IconDisabled = "ui/perks/liberty_perk_bw.png",
+        Const = "TrialByFire"
+    },
+    {
+        ID = "perk.lead_by_example",
+        Script = "scripts/skills/perks/perk_lead_by_example",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/rf_inspiring_presence.png",
+        IconDisabled = "ui/perks/rf_inspiring_presence_bw.png",
+        Const = "LeadByExample"
+    },
+    {
+        ID = "perk.fresh_and_furious",
+        Script = "scripts/skills/perks/perk_fresh_and_furious",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/rf_fresh_and_furious.png",
+        IconDisabled = "ui/perks/rf_fresh_and_furious_bw.png",
+        Const = "FreshAndFurious"
+    },
+    {
+        ID = "perk.ghostlike",
+        Script = "scripts/skills/perks/perk_ghostlike",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/rf_ghostlike.png",
+        IconDisabled = "ui/perks/rf_ghostlike_bw.png",
+        Const = "Ghostlike"
+    },
     // {
 	// 	ID = "perk.eldritch_blast",
 	//     Script = "scripts/skills/perks/cultist_eldritch_blast",
-	//     Name = ::Const.Strings.PerkName.EldritchBlast,
-	// 	Tooltip = ::Const.Strings.PerkDescription.EldritchBlast,
+	//     Name = "",
+	// 	Tooltip = "",
 	// 	Icon = "ui/perks/eldritch_blast.png",
     //     IconDisabled = "ui/perks/eldritch_blast_bw.png",
     //     Const = "EldritchBlast"
@@ -128,8 +131,8 @@ local perks = [
 	// {
 	// 	ID = "perk.sacrificial_ritual",
 	//     Script = "scripts/skills/perks/cultist_sacrificial_ritual",
-	//     Name = ::Const.Strings.PerkName.SacrificialRitual,
-	// 	Tooltip = ::Const.Strings.PerkDescription.SacrificialRitual,
+	//     Name = "",
+	// 	Tooltip = "",
 	// 	Icon = "ui/perks/sacrificial_ritual.png",
     //     IconDisabled = "ui/perks/sacrificial_ritual_bw.png",
     //     Const = "SacrificialRitual"
@@ -137,8 +140,8 @@ local perks = [
 	// {
 	// 	ID = "perk.pain_ritual",
 	//     Script = "scripts/skills/perks/cultist_pain_ritual",
-	//     Name = ::Const.Strings.PerkName.PainRitual,
-	// 	Tooltip = ::Const.Strings.PerkDescription.PainRitual,
+	//     Name = "",
+	// 	Tooltip = "",
 	// 	Icon = "ui/perks/pain_ritual.png",
     //     IconDisabled = "ui/perks/pain_ritual_bw.png",
     //     Const = "PainRitual"
@@ -146,8 +149,8 @@ local perks = [
 	// {
 	// 	ID = "perk.writhing_flesh",
 	//     Script = "scripts/skills/perks/cultist_writhing_flesh",
-	//     Name = ::Const.Strings.PerkName.WrithingFlesh,
-	// 	Tooltip = ::Const.Strings.PerkDescription.WrithingFlesh,
+	//     Name = "",
+	// 	Tooltip = "",
 	// 	Icon = "ui/perks/writhing_flesh.png",
     //     IconDisabled = "ui/perks/writhing_flesh_bw.png",
     //     Const = "WrithingFlesh"
@@ -155,8 +158,8 @@ local perks = [
 	// {
 	// 	ID = "perk.eyes_on_the_inside",
 	//     Script = "scripts/skills/perks/cultist_eyes_on_the_inside",
-	//     Name = ::Const.Strings.PerkName.EyesOnTheInside,
-	// 	Tooltip = ::Const.Strings.PerkDescription.EyesOnTheInside,
+	//     Name = "",
+	// 	Tooltip = "",
 	// 	Icon = "ui/perks/eyes_on_the_inside.png",
     //     IconDisabled = "ui/perks/eyes_on_the_inside_bw.png",
     //     Const = "EyesOnTheInside"
@@ -164,8 +167,8 @@ local perks = [
 	// {
 	// 	ID = "perk.spirit_vessel",
 	//     Script = "scripts/skills/perks/cultist_spirit_vessel",
-	//     Name = ::Const.Strings.PerkName.SpiritVessel,
-	// 	Tooltip = ::Const.Strings.PerkDescription.SpiritVessel,
+	//     Name = "",
+	// 	Tooltip = "",
 	// 	Icon = "ui/perks/spirit_vessel.png",
     //     IconDisabled = "ui/perks/spirit_vessel_bw.png",
     //     Const = "SpiritVessel"
@@ -173,8 +176,8 @@ local perks = [
 	// {
 	// 	ID = "perk.compassion_ritual",
 	//     Script = "scripts/skills/perks/cultist_compassion_ritual",
-	//     Name = ::Const.Strings.PerkName.CompassionRitual,
-	// 	Tooltip = ::Const.Strings.PerkDescription.CompassionRitual,
+	//     Name = "",
+	// 	Tooltip = "",
 	// 	Icon = "ui/perks/compassion_ritual.png",
     //     IconDisabled = "ui/perks/compassion_ritual_bw.png",
     //     Const = "CompassionRitual"

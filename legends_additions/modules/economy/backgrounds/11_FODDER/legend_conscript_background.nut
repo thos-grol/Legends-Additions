@@ -6,6 +6,7 @@
 		create();
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
+		this.m.PerkTreeDynamicMins.Traits = 3;
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [

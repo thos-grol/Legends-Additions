@@ -1,3 +1,13 @@
+//TODO: rewrite using new format
+::Const.Strings.PerkName.NachzererGluttonyBarrier <- "Gluttony Shield";
+::Const.Strings.PerkDescription.NachzererGluttonyBarrier <- "Protection by the powers of gluttony..."
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n• At the start of battle, gain 1 charge of shielding."
++ "\n• Each charge can nullify a blow. Gain more charges through consuming enemies or corpses.";
+
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.NachzererGluttonyBarrier].Name = ::Const.Strings.PerkName.NachzererGluttonyBarrier;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.NachzererGluttonyBarrier].Tooltip = ::Const.Strings.PerkDescription.NachzererGluttonyBarrier;
+
 this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 	m = {
 		Charges = 1,

@@ -1,5 +1,5 @@
+//TODO: rewrite using new format
 ::Const.Strings.PerkName.SunderingStrikes = "Sundering Strikes";
-
 ::Const.Strings.PerkDescription.SunderingStrikes = "This character's immense strength cause them to sunder both armor and flesh..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• For any weapon:"

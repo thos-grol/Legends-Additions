@@ -5,12 +5,10 @@
 		create();
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
+		this.m.PerkTreeDynamicMins.Traits = 3;
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.PolearmTree,
-				this.Const.Perks.SwordTree,
-				this.Const.Perks.ShieldTree,
 				this.Const.Perks.DaggerTree
 			],
 			Defense = [
@@ -26,9 +24,7 @@
 			],
 			Magic = []
 		};
-
-		this.m.PerkTreeDynamicMins.Traits = 3;
-		//TODO: add arena wins trait to gladiator.
+		//FEATURE_6: Idea? add arena wins trait to gladiator.
 	}
 
 	o.onAddEquipment = function()
@@ -60,6 +56,7 @@
 			}
 
 			items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+			//TODO: set weapon tree based on equipped weapon
 		}
 
 		if (items.hasEmptySlot(this.Const.ItemSlot.Offhand))
@@ -69,6 +66,7 @@
 				"shields/oriental/metal_round_shield"
 			];
 			items.equip(this.new("scripts/items/" + offhand[this.Math.rand(0, offhand.len() - 1)]));
+			//TODO: set weapon tree based on equipped offhand
 		}
 
 		local a = this.Const.World.Common.pickArmor([

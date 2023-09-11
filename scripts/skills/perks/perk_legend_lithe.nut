@@ -1,15 +1,16 @@
 ::Const.Strings.PerkDescription.LegendLithe = "Medium armor provides a sweet spot between movement and protection."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• When armor weight is between 25 - 35 (bonuses drops exponentially outside this range): "
-+ "\n• Incoming body and armor damage is reduced by " + ::MSU.Text.colorGreen("35%")
-+ "\n• Does not affect damage from mental attacks or status effects, but can help to avoid receiving them.";
++ "\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "When armor weight is between 25 - 35:")
++ "\n" + ::MSU.Text.colorGreen("+30%") + " damage resistance"
++ "\n" + ::MSU.Text.colorRed("Bonus drops outside this range")
++ "\n\n" + ::MSU.Text.colorRed("Does not affect damage from mental attacks or status effects, but can help avoid receiving them");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendLithe].Tooltip = ::Const.Strings.PerkDescription.LegendLithe;
 
 this.perk_legend_lithe <- this.inherit("scripts/skills/skill", {
 	m = {
 		BonusMin = 0,
-		BonusMax = 35
+		BonusMax = 30
 	},
 	function create()
 	{

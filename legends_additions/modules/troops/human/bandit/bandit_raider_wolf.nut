@@ -9,7 +9,7 @@
 			{
 				this.m.Skills.add(this.new("scripts/skills/injury_permanent/legend_lycanthropy_injury"));
 				this.m.Skills.add(this.new("scripts/skills/traits/weasel_trait"));
-				this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_back_to_basics"));
+				
 			}
 		}
 	}

@@ -1,3 +1,4 @@
+//TODO: rewrite using new format
 ::Const.Strings.PerkName.LegendAmbidextrous = "CQC";
 ::Const.Strings.PerkDescription.LegendAmbidextrous = "Fighting with arms and legs. The basics..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")

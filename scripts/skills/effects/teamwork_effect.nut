@@ -9,7 +9,7 @@ this.teamwork_effect <- this.inherit("scripts/skills/skill", {
 		this.m.IconMini = "perk_01_mini";
 		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
-		this.m.IsRemovedAfterBattle = false;
+		this.m.IsRemovedAfterBattle = true;
 		this.m.IsHidden = true;
 	}
 
@@ -20,11 +20,6 @@ this.teamwork_effect <- this.inherit("scripts/skills/skill", {
 			_properties.MeleeSkillMult *= 0.25;
 			_properties.RangedSkillMult *= 0.25;
 		}
-	}
-
-	function onCombatFinished()
-	{
-		this.removeSelf();
 	}
 
 });

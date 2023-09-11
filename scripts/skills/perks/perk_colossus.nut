@@ -1,5 +1,5 @@
+//TODO: rewrite using new format
 ::Const.Strings.PerkName.Colossus = "Colossus";
-
 ::Const.Strings.PerkDescription.Colossus = "This character looms over their enemies..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n• +" + ::MSU.Text.colorGreen("25%") + " Hitpoints."

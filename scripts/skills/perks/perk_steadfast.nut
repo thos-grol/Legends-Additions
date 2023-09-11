@@ -1,10 +1,11 @@
+//TODO: rewrite using new format
 ::Const.Strings.PerkName.Steadfast = "Endurance";
-
-::Const.Strings.PerkDescription.Steadfast = "A fit body can endure greater stress..."
+::Const.Strings.PerkDescription.Steadfast = "Endure and in enduring, become strong..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• " + ::MSU.Text.colorGreen("-90%") + "Accumulated Fatigue from being attacked. Invalid for attacks that specifically target fatigue."
-+ "\n• " + ::MSU.Text.colorGreen("-50%") + "Accumulated Fatigue will affect Initiative"
-+ "\n• \'Wait\' will no longer give an Initiative penalty.";
++ "\n" + ::MSU.Text.colorGreen("-50%") + " effect of Fatigue on Initiative"
++ "\n" + ::MSU.Text.colorGreen("-90%") + " Fatigue from being attacked"
++ "\n" + ::MSU.Text.colorRed("Invalid for attacks that specifically target fatigue")
++ "\n\n" + ::MSU.Text.colorGreen("\'Wait\' will no longer give an Initiative penalty");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Steadfast].Name = ::Const.Strings.PerkName.Steadfast;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Steadfast].Tooltip = ::Const.Strings.PerkDescription.Steadfast;

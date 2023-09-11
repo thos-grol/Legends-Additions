@@ -1,3 +1,4 @@
+//TODO: rewrite using new format
 ::Const.Strings.PerkName.QuickHands = "Quick Hands";
 ::Const.Strings.PerkDescription.QuickHands = "Slower is dead..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")

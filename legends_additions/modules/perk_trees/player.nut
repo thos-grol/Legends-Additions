@@ -48,8 +48,8 @@
 		}
 
 
-        this.m.Skills.add(::new("scripts/skills/traits/bright_trait"));
-        this.m.Skills.add(::new("scripts/skills/traits/teamplayer_trait"));
+		// this.m.Skills.add(::new("scripts/skills/traits/bright_trait"));
+        // this.m.Skills.add(::new("scripts/skills/traits/teamplayer_trait"));
 
 		local attributes = background.buildPerkTree();
 		

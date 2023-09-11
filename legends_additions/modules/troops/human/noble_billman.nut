@@ -50,7 +50,7 @@
 			this.m.Hitpoints = b.Hitpoints * 2;
 			this.m.Skills.add(this.new("scripts/skills/perks/perk_coup_de_grace"));
 			this.m.Skills.add(this.new("scripts/skills/perks/perk_feint"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_back_to_basics"));
+			
 			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_full_force"));
 			this.m.Skills.add(this.new("scripts/skills/perks/perk_berserk"));
 			this.m.Skills.add(this.new("scripts/skills/traits/fearless_trait"));
