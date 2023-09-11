@@ -5,211 +5,11 @@ if (!("Perks" in gt.Const))
 	gt.Const.Perks <- {};
 }
 
-
-
-
-
-gt.Const.Perks.SturdyTree <- {
-	ID = "SturdyTree",
-	Name = "Sturdy",
-	Descriptions = [
-		"is sturdy"
-	],
-	Attributes = {
-		Hitpoints = [
-			2,
-			2
-		],
-		Bravery = [
-			0,
-			0
-		],
-		Stamina = [
-			2,
-			2
-		],
-		MeleeSkill = [
-			-2,
-			-2
-		],
-		RangedSkill = [
-			-2,
-			-2
-		],
-		MeleeDefense = [
-			4,
-			4
-		],
-		RangedDefense = [
-			-4,
-			-4
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.NineLives
-		],
-		[],
-		[
-			//TODO: sturdy t3 perk
-			
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.HoldOut
-		],
-		[],
-		[
-			//TODO: sturdy t7 perk, buff indom? make it trigger at hp % automatically?
-			gt.Const.Perks.PerkDefs.Indomitable
-			//"Indomitable
-			// In addition to previous bonuses, now grants immunity to Cull while active.
-			//TODO: rework, also fix direwolf indom.
-		]
-	]
-};
-
-gt.Const.Perks.ViciousTree <- {
-	ID = "ViciousTree",
-	Name = "Vicious",
-	Descriptions = [
-		"is vicious"
-	],
-	Attributes = {
-		Hitpoints = [
-			0,
-			0
-		],
-		Bravery = [
-			2,
-			2
-		],
-		Stamina = [
-			-2,
-			-2
-		],
-		MeleeSkill = [
-			4,
-			4
-		],
-		RangedSkill = [
-			2,
-			2
-		],
-		MeleeDefense = [
-			-2,
-			-2
-		],
-		RangedDefense = [
-			-4,
-			-4
-		],
-		Initiative = [
-			2,
-			2
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.HeadHunter
-		],
-		[],
-		[
-			//TODO: vicious t3 perk, Sadism
-			//gt.Const.Perks.PerkDefs.Fearsome
-			//gt.Const.Perks.PerkDefs.Debilitate
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Berserk
-		],
-		[],
-		[
-			
-			gt.Const.Perks.PerkDefs.Vengeance  //TODO: vicious t7 perk //Buff: Store hits, every hit taken will increase fatality chance
-			
-		]
-	]
-};
-
-gt.Const.Perks.DeviousTree <- {
-	ID = "DeviousTree",
-	Name = "Devious",
-	Descriptions = [
-		"is devious"
-	],
-	Attributes = {
-		Hitpoints = [
-			0,
-			0
-		],
-		Bravery = [
-			-4,
-			-4
-		],
-		Stamina = [
-			0,
-			0
-		],
-		MeleeSkill = [
-			2,
-			2
-		],
-		RangedSkill = [
-			2,
-			2
-		],
-		MeleeDefense = [
-			-2,
-			-2
-		],
-		RangedDefense = [
-			4,
-			4
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.Backstabber
-		],
-		[],
-		[
-			//TODO: devious perk tier 3
-
-		],
-		[],
-		[
-			//TODO: devious perk tier 5, rethink
-			gt.Const.Perks.PerkDefs.LegendEvasion
-			//gt.Const.Perks.PerkDefs.Footwork
-			//gt.Const.Perks.PerkDefs.Anticipation //TODO: rework to 15%, buff anticipation, rename something involving reflexes
-			// give mdef and rdef
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendBlendIn
-		]
-	]
-};
-
-gt.Const.Perks.CalmTree <- {
+gt.Const.Perks.CalmTree <- { //TODO: plan tree
 	ID = "CalmTree",
 	Name = "Calm",
 	Descriptions = [
-		"is calm",
-		"is soothingly relaxed",
-		"projects peace of mind",
-		"seems unflustered",
-		"goes with the flow",
-		"is unworried"
+		"is calm"
 	],
 	Attributes = {
 		Hitpoints = [
@@ -251,77 +51,15 @@ gt.Const.Perks.CalmTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.BattleFlow  //TODO: calm perk tier 3 port over unstoppable?, also keep fat buff
+			gt.Const.Perks.PerkDefs.BattleFlow  //TODO: calm perk tier 3, merge in perk_rf_unstoppable
 		],
 		[],
 		[
-			//TODO: calm perk tier 5
-			gt.Const.Perks.PerkDefs.LegendPeaceful //TODO: rename to inner peace
-			//TODO: rework
+			gt.Const.Perks.PerkDefs.LegendPeaceful //TODO: calm perk tier 5, rename to inner peace, rework
 		],
 		[],
 		[
-
 			gt.Const.Perks.PerkDefs.PerfectFocus //TODO: calm perk tier 7 add sfx, redo description.
-		]
-	]
-};
-
-gt.Const.Perks.FitTree <- {
-	ID = "FitTree",
-	Name = "Fit",
-	Descriptions = [
-		"is fit"
-	],
-	Attributes = {
-		Hitpoints = [
-			2,
-			2
-		],
-		Bravery = [
-			-4,
-			-4
-		],
-		Stamina = [
-			4,
-			4
-		],
-		MeleeSkill = [
-			0,
-			0
-		],
-		RangedSkill = [
-			-2,
-			-2
-		],
-		MeleeDefense = [
-			2,
-			2
-		],
-		RangedDefense = [
-			-2,
-			-2
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendRecuperation
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Steadfast
-		],
-		[],
-		[
-			//TODO: fit perk tier 5
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.FreshAndFurious
 		]
 	]
 };
@@ -383,15 +121,258 @@ gt.Const.Perks.IndestructibleTree <- {
 		],
 		[],
 		[
-			//TODO: Tenacious t3 perk
-			//"Survival Instinct //TODO: port over
+			//"Survival Instinct //TODO: Tenacious t3 perk perk_rf_survival_instinct
 			// Whenever you are attacked, gain a stacking bonus to Melee and Ranged Defense of +2 on a miss and +5 on a hit. This can stack up to 5 tgimes for misses and up to 2 times for hits.
 			// At the start of every turn, the bonus is reset except the bonus gained from getting hit which is retained for the remainder of the combat."
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendMindOverBody
-			//Ignores the effects of temporary injuries
+			gt.Const.Perks.PerkDefs.LegendMindOverBody //TODO: buff, Ignores the effects of temporary injuries, no morale loss upon being hit
+		]
+	]
+};
+
+gt.Const.Perks.ViciousTree <- {
+	ID = "ViciousTree",
+	Name = "Vicious",
+	Descriptions = [
+		"is vicious"
+	],
+	Attributes = {
+		Hitpoints = [
+			0,
+			0
+		],
+		Bravery = [
+			2,
+			2
+		],
+		Stamina = [
+			-2,
+			-2
+		],
+		MeleeSkill = [
+			4,
+			4
+		],
+		RangedSkill = [
+			2,
+			2
+		],
+		MeleeDefense = [
+			-2,
+			-2
+		],
+		RangedDefense = [
+			-4,
+			-4
+		],
+		Initiative = [
+			2,
+			2
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.HeadHunter
+		],
+		[],
+		[
+			//TODO: vicious t3 perk, Sadism
+			//gt.Const.Perks.PerkDefs.Fearsome
+			//gt.Const.Perks.PerkDefs.Debilitate, strikes have a 10% chance to debilitate. Adds active.
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Berserk
+		],
+		[],
+		[
+			
+			gt.Const.Perks.PerkDefs.Vengeance  //TODO: vicious t7 perk //Buff: Store hits, every hit taken will increase fatality chance
+			
+		]
+	]
+};
+
+gt.Const.Perks.FitTree <- {
+	ID = "FitTree",
+	Name = "Fit",
+	Descriptions = [
+		"is fit"
+	],
+	Attributes = {
+		Hitpoints = [
+			2,
+			2
+		],
+		Bravery = [
+			-4,
+			-4
+		],
+		Stamina = [
+			4,
+			4
+		],
+		MeleeSkill = [
+			0,
+			0
+		],
+		RangedSkill = [
+			-2,
+			-2
+		],
+		MeleeDefense = [
+			2,
+			2
+		],
+		RangedDefense = [
+			-2,
+			-2
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.LegendRecuperation
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Steadfast
+		],
+		[],
+		[
+			//TODO: fit perk tier 5, "Wears it Well Reduce overall penalty to Max Fatigue by Mainhand, Offhand, Head and Body Gear is reduced by 20%. Stacks with Brawny." perk_rf_wears_it_well
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.FreshAndFurious
+		]
+	]
+};
+
+gt.Const.Perks.SturdyTree <- {
+	ID = "SturdyTree",
+	Name = "Sturdy",
+	Descriptions = [
+		"is sturdy"
+	],
+	Attributes = {
+		Hitpoints = [
+			2,
+			2
+		],
+		Bravery = [
+			0,
+			0
+		],
+		Stamina = [
+			2,
+			2
+		],
+		MeleeSkill = [
+			-2,
+			-2
+		],
+		RangedSkill = [
+			-2,
+			-2
+		],
+		MeleeDefense = [
+			4,
+			4
+		],
+		RangedDefense = [
+			-4,
+			-4
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.Colossus
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.HoldOut
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.NineLives
+		],
+		[],
+		[
+			//TODO: sturdy t7 perk, buff indom? make it trigger at hp % automatically?
+			gt.Const.Perks.PerkDefs.Indomitable
+			//"Indomitable
+			// In addition to previous bonuses, now grants immunity to Cull while active.
+			//TODO: rework, also fix direwolf indom.
+		]
+	]
+};
+
+gt.Const.Perks.DeviousTree <- {
+	ID = "DeviousTree",
+	Name = "Devious",
+	Descriptions = [
+		"is devious"
+	],
+	Attributes = {
+		Hitpoints = [
+			0,
+			0
+		],
+		Bravery = [
+			-4,
+			-4
+		],
+		Stamina = [
+			0,
+			0
+		],
+		MeleeSkill = [
+			2,
+			2
+		],
+		RangedSkill = [
+			2,
+			2
+		],
+		MeleeDefense = [
+			-2,
+			-2
+		],
+		RangedDefense = [
+			4,
+			4
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.Backstabber
+		],
+		[],
+		[
+			//TODO: devious perk tier 5, //gt.Const.Perks.PerkDefs.Footwork
+			
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Ghostlike
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.LegendBlendIn
 		]
 	]
 };
@@ -627,15 +608,15 @@ gt.Const.Perks.IntelligentTree <- {
 		],
 		[],
 		[
-			//TODO: inspirational perk tier 3, port Pattern Recognition. higher intelligence allows one to extrapolate patterns from data
+			//TODO: intelligent perk tier 3, port Pattern Recognition. higher intelligence allows one to extrapolate patterns from data
 		],
 		[],
 		[
-			//TODO: inspirational perk tier 5
+			//TODO: intelligent perk tier 5
 		],
 		[],
 		[
-			//TODO: inspirational perk tier 7
+			//TODO: intelligent perk tier 7
 		]
 	]
 };
