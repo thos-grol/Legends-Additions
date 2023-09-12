@@ -39,19 +39,8 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				type = "text",
 				icon = "ui/icons/special.png",
 				text = "Gives the intelligent perk tree. It is impossible to obtain otherwise"
-			},
-			{
-				id = 10,
-				type = "text",
-				icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] Experience Gain"
 			}
 		];
-	}
-
-	function onUpdate( _properties )
-	{
-		_properties.XPGainMult *= 1.1;
 	}
 
 	function onAdded()
