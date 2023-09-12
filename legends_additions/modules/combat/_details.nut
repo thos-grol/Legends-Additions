@@ -1,3 +1,5 @@
+//TODO: current _properties.FatigueEffectMult
+//TODO: mind over body tooltip
 ::mods_hookExactClass("skills/special/mood_check", function (o)
 {
     o.m.Stacks <- 0;

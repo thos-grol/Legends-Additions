@@ -1,4 +1,16 @@
-this.perk_rf_survival_instinct <- ::inherit("scripts/skills/skill", {
+::Const.Strings.PerkName.SurvivalInstinct = "Survival Instinct";
+::Const.Strings.PerkDescription.SurvivalInstinct = "The resolve and instinct to survive..."
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Whenever attacked:")
++ "\n"+::MSU.Text.colorGreen("+2") + " Melee and Ranged Defense " + ::MSU.Text.colorRed("on miss")
++ "\n"+::MSU.Text.colorGreen("+5") + " Melee and Ranged Defense " + ::MSU.Text.colorRed("on hit")
++ "\n"+::MSU.Text.colorRed("Stacks up to 5 times for misses and 2 for hits")
++ "\n\n"+::MSU.Text.colorGreen("On turn start, the bonus is reset excluding the on hit bonus");
+
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SurvivalInstinct].Name = ::Const.Strings.PerkName.SurvivalInstinct;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SurvivalInstinct].Tooltip = ::Const.Strings.PerkDescription.SurvivalInstinct;
+
+this.perk_survival_instinct <- ::inherit("scripts/skills/skill", {
 	m = {
 		MissStacks = 0,
 		HitStacks = 0,
@@ -9,10 +21,10 @@ this.perk_rf_survival_instinct <- ::inherit("scripts/skills/skill", {
 	},
 	function create()
 	{
-		this.m.ID = "perk.rf_survival_instinct";
-		this.m.Name = ::Const.Strings.PerkName.RF_SurvivalInstinct;
+		this.m.ID = "perk.survival_instinct";
+		this.m.Name = ::Const.Strings.PerkName.SurvivalInstinct;
 		this.m.Description = "This character\'s senses are heightened when faced with mortal danger.";
-		this.m.Icon = "ui/perks/rf_survival_instinct.png";
+		this.m.Icon = "ui/perks/rf_survival_instinct.png"; //TODO: transfer images, mini, normal, bw
 		this.m.IconMini = "rf_survival_instinct_mini";
 		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
 		this.m.Order = ::Const.SkillOrder.Perk;

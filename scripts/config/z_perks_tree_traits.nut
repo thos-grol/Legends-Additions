@@ -1,3 +1,4 @@
+//TODO: make last row traits mutually exclusive, Add destiny description
 local gt = this.getroottable();
 
 if (!("Perks" in gt.Const))
@@ -68,70 +69,6 @@ gt.Const.Perks.CalmTree <- { //TODO: plan tree
 // Scheduled
 ///////////////////////////////////////////////////////////////////////////
 
-gt.Const.Perks.IndestructibleTree <- {
-	ID = "IndestructibleTree",
-	Name = "Tenacious",
-	Descriptions = [
-		"is tenacious"
-	],
-	Attributes = {
-		Hitpoints = [
-			4,
-			4
-		],
-		Bravery = [
-			2,
-			2
-		],
-		Stamina = [
-			-2,
-			-2
-		],
-		MeleeSkill = [
-			0,
-			0
-		],
-		RangedSkill = [
-			-2,
-			-2
-		],
-		MeleeDefense = [
-			0,
-			0
-		],
-		RangedDefense = [
-			2,
-			2
-		],
-		Initiative = [
-			-4,
-			-4
-		]
-	},
-	Tree = [
-		[
-			//TODO: descriptions: Are you a dog or a wolf?
-			gt.Const.Perks.PerkDefs.Underdog,
-			gt.Const.Perks.PerkDefs.LoneWolf
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.FortifiedMind //TODO: rename to Inner Faith. Combine with fortified mind
-			//gt.Const.Perks.PerkDefs.LegendTrueBeliever
-		],
-		[],
-		[
-			//"Survival Instinct //TODO: Tenacious t3 perk perk_rf_survival_instinct
-			// Whenever you are attacked, gain a stacking bonus to Melee and Ranged Defense of +2 on a miss and +5 on a hit. This can stack up to 5 tgimes for misses and up to 2 times for hits.
-			// At the start of every turn, the bonus is reset except the bonus gained from getting hit which is retained for the remainder of the combat."
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendMindOverBody //TODO: buff, Ignores the effects of temporary injuries, no morale loss upon being hit
-		]
-	]
-};
-
 gt.Const.Perks.ViciousTree <- {
 	ID = "ViciousTree",
 	Name = "Vicious",
@@ -188,9 +125,9 @@ gt.Const.Perks.ViciousTree <- {
 		],
 		[],
 		[
-			
+
 			gt.Const.Perks.PerkDefs.Vengeance  //TODO: vicious t7 perk //Buff: Store hits, every hit taken will increase fatality chance
-			
+
 		]
 	]
 };
@@ -313,66 +250,6 @@ gt.Const.Perks.SturdyTree <- {
 			//"Indomitable
 			// In addition to previous bonuses, now grants immunity to Cull while active.
 			//TODO: rework, also fix direwolf indom.
-		]
-	]
-};
-
-gt.Const.Perks.DeviousTree <- {
-	ID = "DeviousTree",
-	Name = "Devious",
-	Descriptions = [
-		"is devious"
-	],
-	Attributes = {
-		Hitpoints = [
-			0,
-			0
-		],
-		Bravery = [
-			-4,
-			-4
-		],
-		Stamina = [
-			0,
-			0
-		],
-		MeleeSkill = [
-			2,
-			2
-		],
-		RangedSkill = [
-			2,
-			2
-		],
-		MeleeDefense = [
-			-2,
-			-2
-		],
-		RangedDefense = [
-			4,
-			4
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.Backstabber
-		],
-		[],
-		[
-			//TODO: devious perk tier 5, //gt.Const.Perks.PerkDefs.Footwork
-			
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Ghostlike
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendBlendIn
 		]
 	]
 };
@@ -558,6 +435,125 @@ gt.Const.Perks.LargeTree <- {
 	]
 };
 
+gt.Const.Perks.IndestructibleTree <- {
+	ID = "IndestructibleTree",
+	Name = "Tenacious",
+	Descriptions = [
+		"is tenacious"
+	],
+	Attributes = {
+		Hitpoints = [
+			4,
+			4
+		],
+		Bravery = [
+			2,
+			2
+		],
+		Stamina = [
+			-2,
+			-2
+		],
+		MeleeSkill = [
+			0,
+			0
+		],
+		RangedSkill = [
+			-2,
+			-2
+		],
+		MeleeDefense = [
+			0,
+			0
+		],
+		RangedDefense = [
+			2,
+			2
+		],
+		Initiative = [
+			-4,
+			-4
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.Underdog,
+			gt.Const.Perks.PerkDefs.LoneWolf
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.FortifiedMind
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.SurvivalInstinct
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.LegendMindOverBody
+		]
+	]
+};
+
+gt.Const.Perks.DeviousTree <- {
+	ID = "DeviousTree",
+	Name = "Devious",
+	Descriptions = [
+		"is devious"
+	],
+	Attributes = {
+		Hitpoints = [
+			0,
+			0
+		],
+		Bravery = [
+			-4,
+			-4
+		],
+		Stamina = [
+			0,
+			0
+		],
+		MeleeSkill = [
+			2,
+			2
+		],
+		RangedSkill = [
+			2,
+			2
+		],
+		MeleeDefense = [
+			-2,
+			-2
+		],
+		RangedDefense = [
+			4,
+			4
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.Backstabber
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Footwork
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Ghostlike
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.LegendBlendIn
+		]
+	]
+};
+
 ///////////////////////////////////////////////////////////////////////////
 // Special
 ///////////////////////////////////////////////////////////////////////////
@@ -668,7 +664,7 @@ gt.Const.Perks.InspirationalTree <- {
 		[],
 		[
 			gt.Const.Perks.PerkDefs.InspiringPresence //Teamwork Exercises
-			
+
 		],
 		[],
 		[
@@ -782,7 +778,7 @@ gt.Const.Perks.OrganisedTree <- { //Unused
 	},
 	Tree = [
 		[
-			
+
 		],
 		[
 
@@ -886,7 +882,7 @@ gt.Const.Perks.TraitsTrees <- {
 			if (t.ID == "TrainedTree") continue; //background unlocks it
 			if (t.ID == "IntelligentTree") continue; //needs bright trait to unlock
 			if (t.ID == "InspirationalTree") continue; //needs team player trait to unlock
-			
+
 			if (_exclude != null && _exclude.find(t.ID) != null) continue;
 			L.push(i);
 		}
