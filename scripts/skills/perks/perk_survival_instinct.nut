@@ -1,5 +1,5 @@
-::Const.Strings.PerkName.SurvivalInstinct = "Survival Instinct";
-::Const.Strings.PerkDescription.SurvivalInstinct = "The resolve and instinct to survive..."
+::Const.Strings.PerkName.SurvivalInstinct <- "Survival Instinct";
+::Const.Strings.PerkDescription.SurvivalInstinct <- "The resolve and instinct to survive..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Whenever attacked:")
 + "\n"+::MSU.Text.colorGreen("+2") + " Melee and Ranged Defense " + ::MSU.Text.colorRed("on miss")
@@ -24,8 +24,7 @@ this.perk_survival_instinct <- ::inherit("scripts/skills/skill", {
 		this.m.ID = "perk.survival_instinct";
 		this.m.Name = ::Const.Strings.PerkName.SurvivalInstinct;
 		this.m.Description = "This character\'s senses are heightened when faced with mortal danger.";
-		this.m.Icon = "ui/perks/rf_survival_instinct.png"; //TODO: transfer images, mini, normal, bw
-		this.m.IconMini = "rf_survival_instinct_mini";
+		this.m.Icon = "ui/perks/rf_survival_instinct.png";
 		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
 		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;

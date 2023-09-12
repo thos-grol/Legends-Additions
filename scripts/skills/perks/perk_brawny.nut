@@ -1,8 +1,7 @@
-//TODO: rewrite using new format
-::Const.Strings.PerkDescription.Brawny = "Trade hit for hit with heavy armor..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.LightBlue, "[u]Passive:[/u]")
-+ "\n• " + ::MSU.Text.colorGreen("-30%") + " Fatigue and Initiative penalty from wearing armor."
-+ "\n• " + ::MSU.Text.colorGreen("+5") + " Fatigue recovery while over 90% fatigued.";
+::Const.Strings.PerkDescription.Brawny = "Get accustomed to the weight of armor..."
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n"+::MSU.Text.colorGreen("-30%") + " armor Fatigue and Initiative penalty"
++ "\n"+::MSU.Text.colorGreen("+5") + " Fatigue recovery while over 90% fatigued";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Brawny].Tooltip = ::Const.Strings.PerkDescription.Brawny;
 
