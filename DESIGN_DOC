@@ -81,14 +81,8 @@
 
 	//Daze
 	//Stun
-	
 
-//TODO: event, non-combat background gains another trait tree
-    //They must be in party for x battles.
-    //Cooldown is 1 week.
-    //Add flag.
-
-//TODO: weapon mastery system for retinue
+//FEATURE_1: weapon mastery system for retinue, trained tree as well
     // Add effect that records the weapon type of the currently equipped weapon.
     // If already has it, try to learn shield.
     // Description: Trains all weapons and shields.
@@ -98,7 +92,7 @@
         //every time attack misses and character has shield equipped, gain a random ammount of shield exp.
     //Will display currently training message.
 
-//TODO: make some backgrounds have garunteed stats/traits, ie. lumberjacks will come with weapon proficiency
+//FEATURE_1: make some backgrounds have garunteed stats/traits, ie. lumberjacks will come with weapon proficiency
     Weapon mastery perks renamed to weapon proficiency -> becomes status effect. When mastered, grant stance to user.
     Choose 1 of 2 stances for each weapon.
     Masters can transform your stance into different stance.
@@ -107,7 +101,7 @@ Economy Overhaul
 
 //TODO: this.m.Payment.Pool, contracts
 
-//TODO: ambitions rework
+//FEATURE_1: ambitions rework
     //FEATURE_0: Slay a monster -> unlock anatomist retinue
 
 //TODO: fix alchemist having named items.
@@ -116,22 +110,22 @@ Economy Overhaul
 //FEATURE_5: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
 
 
-//TODO: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
-//TODO: Serpent -> Knock (Poison opens wounds), Edge. Medusa's Gaze
-//TODO: Lindwurm -> Dragon -> Dream, Edge (Poison)
-//TODO: Schrat -> Heart, Lantern
+//FEATURE_0: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
+//FEATURE_0: Serpent -> Knock (Poison opens wounds), Edge. Medusa's Gaze
+//FEATURE_0: Lindwurm -> Dragon -> Dream, Edge (Poison)
+//FEATURE_0: Schrat -> Heart, Lantern
 
-//TODO: Necrosavant -> Grail, Knock
+//FEATURE_0: Necrosavant -> Grail, Knock
     //Modes:
         //Scummy - tp away close to party, summon weakest bro to it
         //Guerilla - tp and strike, tp and strike
         //Vampire - Casts blood magic, charms enemies
     //All attacks cause bleed, and heal damage caused from attacks including bleed.
 
-//TODO: zombie -> lesser undead
+//FEATURE_0: zombie -> lesser undead
     //Increase hp, add nimble. that's it
 
-//TODO: rework ghosts
+//FEATURE_0: rework ghosts
 
 //Z
 
