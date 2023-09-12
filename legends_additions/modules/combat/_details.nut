@@ -1,4 +1,5 @@
 //TODO: current _properties.FatigueEffectMult
+//TODO: _properties.FatalityChanceMult
 //TODO: mind over body tooltip
 ::mods_hookExactClass("skills/special/mood_check", function (o)
 {

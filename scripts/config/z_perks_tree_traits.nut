@@ -125,9 +125,7 @@ gt.Const.Perks.ViciousTree <- {
 		],
 		[],
 		[
-
-			gt.Const.Perks.PerkDefs.Vengeance  //TODO: vicious t7 perk //Buff: Store hits, every hit taken will increase fatality chance
-
+			gt.Const.Perks.PerkDefs.Vengeance
 		]
 	]
 };
