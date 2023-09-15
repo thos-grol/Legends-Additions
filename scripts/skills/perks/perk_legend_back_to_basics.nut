@@ -1,4 +1,3 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkDescription.LegendBackToBasics = "The basics make a master..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n" + ::MSU.Text.colorGreen("+2") + " perk points, "

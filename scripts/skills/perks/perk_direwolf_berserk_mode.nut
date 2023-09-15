@@ -1,8 +1,7 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.DirewolfBerserkMode <- "Berserk Mode";
 ::Const.Strings.PerkDescription.DirewolfBerserkMode <- "Unstoppable rage..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• When reduced to 50% hp, triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]When reduced to 50% hp:[/u]")
++ "\n• Triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
 + "\n• Become immune to stuns and displacement for 2 turns."
 + "\n• Gain increased damage, initiative, and defenses for 2 turns.";
 
@@ -58,23 +57,23 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 		if (!this.m.Berserk_Mode) return;
 
 		this.m.Berserk_Turns = ::Math.max(0, this.m.Berserk_Turns - 1);
-		
+
 		if (this.m.Berserk_Turns != 0) return;
 
 		local actor = this.getContainer().getActor();
 		if (actor.getFlags().has("la_direwolf_frenzy_attacks"))
 			actor.getFlags().remove("la_direwolf_frenzy_attacks");
 
-		if (actor.getFlags().has("la_direwolf")) 
+		if (actor.getFlags().has("la_direwolf"))
 			actor.removeSprite("head_berserk");
-		
+
 		this.m.Berserk_Mode = false;
 	}
 
 	function onTurnStart()
 	{
 		local actor = this.getContainer().getActor();
-		if (actor.getFlags().has("la_direwolf_frenzy_attacks") && !this.getContainer().hasSkill("effects.indomitable")) 
+		if (actor.getFlags().has("la_direwolf_frenzy_attacks") && !this.getContainer().hasSkill("effects.indomitable"))
 			this.m.Container.add(this.new("scripts/skills/effects/indomitable_effect"));
 	}
 
@@ -111,7 +110,7 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 			actor.getSprite("head_berserk").Visible = true;
 		}
 
-		if (!this.getContainer().hasSkill("effects.indomitable")) 
+		if (!this.getContainer().hasSkill("effects.indomitable"))
 			this.m.Container.add(this.new("scripts/skills/effects/indomitable_effect"));
 
 		this.Sound.play("sounds/monster/direwolf_berserk.wav", 300.0, actor.getPos());
@@ -200,7 +199,7 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 				target.getSkills().add(stun);
 				stun.setTurns(3);
 
-				if (!user.isHiddenToPlayer() && target.getTile().IsVisibleForPlayer) 
+				if (!user.isHiddenToPlayer() && target.getTile().IsVisibleForPlayer)
 				::Tactical.EventLog.logIn(
 					::Const.UI.getColorizedEntityName(target) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " is stunned (3 turns).")
 				);

@@ -1,9 +1,10 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.LegendMuscularity = "Muscularity";
-
-::Const.Strings.PerkDescription.LegendMuscularity = "Full weight into every blow..."
+::Const.Strings.PerkDescription.LegendMuscularity = "Put one's full weight into every blow..."
++ "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• +" + ::MSU.Text.colorGreen("15%") + "of current Hitpoints to Minimum and Maximum damage.";
++ "\n"+::MSU.Text.colorGreen("+25% of current Hitpoints") + " to Minimum and Maximum damage."
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Name = ::Const.Strings.PerkName.LegendMuscularity;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Tooltip = ::Const.Strings.PerkDescription.LegendMuscularity;
@@ -27,8 +28,8 @@ this.perk_legend_muscularity <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		local bodyHealth = this.getContainer().getActor().getHitpoints();
-		_properties.DamageRegularMin += this.Math.min(50, this.Math.floor(bodyHealth * 0.15));
-		_properties.DamageRegularMax += this.Math.min(50, this.Math.floor(bodyHealth * 0.15));
+		_properties.DamageRegularMin += this.Math.min(50, this.Math.floor(bodyHealth * 0.25));
+		_properties.DamageRegularMax += this.Math.min(50, this.Math.floor(bodyHealth * 0.25));
 	}
 
 });

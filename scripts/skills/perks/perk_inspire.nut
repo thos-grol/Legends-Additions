@@ -1,8 +1,8 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.Inspire <- "Command";
 ::Const.Strings.PerkDescription.Inspire <- "Command a soldier to strike..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n"+::MSU.Text.colorRed("\'Command\'") + "(7 AP, 30 Fat): Target unit gains " + ::MSU.Text.colorGreen("4 AP")
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Command\'[/u] (7 AP, 30 Fat):")
++ "\nTarget unit gains " + ::MSU.Text.colorGreen("4 AP")
 + "\n\n" + ::MSU.Text.colorRed("There can only be one commander in the party. Will refund this perk if any other unit has it.");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Inspire].Name = ::Const.Strings.PerkName.Inspire;

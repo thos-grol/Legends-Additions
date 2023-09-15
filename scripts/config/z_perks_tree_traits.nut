@@ -1,4 +1,3 @@
-//TODO: make last row traits mutually exclusive, Add destiny description
 local gt = this.getroottable();
 
 if (!("Perks" in gt.Const))
@@ -6,254 +5,8 @@ if (!("Perks" in gt.Const))
 	gt.Const.Perks <- {};
 }
 
-gt.Const.Perks.CalmTree <- { //TODO: plan tree
-	ID = "CalmTree",
-	Name = "Calm",
-	Descriptions = [
-		"is calm"
-	],
-	Attributes = {
-		Hitpoints = [
-			-2,
-			-2
-		],
-		Bravery = [
-			2,
-			2
-		],
-		Stamina = [
-			-2,
-			-2
-		],
-		MeleeSkill = [
-			-4,
-			-4
-		],
-		RangedSkill = [
-			4,
-			4
-		],
-		MeleeDefense = [
-			0,
-			0
-		],
-		RangedDefense = [
-			0,
-			0
-		],
-		Initiative = [
-			2,
-			2
-		]
-	},
-	Tree = [
-		[
-			//TODO: calm perk tier 1
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.BattleFlow  //TODO: calm perk tier 3, merge in perk_rf_unstoppable
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendPeaceful //TODO: calm perk tier 5, rename to inner peace, rework
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.PerfectFocus //TODO: calm perk tier 7 add sfx, redo description.
-		]
-	]
-};
-
 ///////////////////////////////////////////////////////////////////////////
-// Scheduled
-///////////////////////////////////////////////////////////////////////////
-
-gt.Const.Perks.ViciousTree <- {
-	ID = "ViciousTree",
-	Name = "Vicious",
-	Descriptions = [
-		"is vicious"
-	],
-	Attributes = {
-		Hitpoints = [
-			0,
-			0
-		],
-		Bravery = [
-			2,
-			2
-		],
-		Stamina = [
-			-2,
-			-2
-		],
-		MeleeSkill = [
-			4,
-			4
-		],
-		RangedSkill = [
-			2,
-			2
-		],
-		MeleeDefense = [
-			-2,
-			-2
-		],
-		RangedDefense = [
-			-4,
-			-4
-		],
-		Initiative = [
-			2,
-			2
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.HeadHunter
-		],
-		[],
-		[
-			//TODO: vicious t3 perk, Sadism
-			//gt.Const.Perks.PerkDefs.Fearsome
-			//gt.Const.Perks.PerkDefs.Debilitate, strikes have a 10% chance to debilitate. Adds active.
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Berserk
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Vengeance
-		]
-	]
-};
-
-gt.Const.Perks.FitTree <- {
-	ID = "FitTree",
-	Name = "Fit",
-	Descriptions = [
-		"is fit"
-	],
-	Attributes = {
-		Hitpoints = [
-			2,
-			2
-		],
-		Bravery = [
-			-4,
-			-4
-		],
-		Stamina = [
-			4,
-			4
-		],
-		MeleeSkill = [
-			0,
-			0
-		],
-		RangedSkill = [
-			-2,
-			-2
-		],
-		MeleeDefense = [
-			2,
-			2
-		],
-		RangedDefense = [
-			-2,
-			-2
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendRecuperation
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Steadfast
-		],
-		[],
-		[
-			//TODO: fit perk tier 5, "Wears it Well Reduce overall penalty to Max Fatigue by Mainhand, Offhand, Head and Body Gear is reduced by 20%. Stacks with Brawny." perk_rf_wears_it_well
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.FreshAndFurious
-		]
-	]
-};
-
-gt.Const.Perks.SturdyTree <- {
-	ID = "SturdyTree",
-	Name = "Sturdy",
-	Descriptions = [
-		"is sturdy"
-	],
-	Attributes = {
-		Hitpoints = [
-			2,
-			2
-		],
-		Bravery = [
-			0,
-			0
-		],
-		Stamina = [
-			2,
-			2
-		],
-		MeleeSkill = [
-			-2,
-			-2
-		],
-		RangedSkill = [
-			-2,
-			-2
-		],
-		MeleeDefense = [
-			4,
-			4
-		],
-		RangedDefense = [
-			-4,
-			-4
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.Colossus
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.HoldOut
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.NineLives
-		],
-		[],
-		[
-			//TODO: sturdy t7 perk, buff indom? make it trigger at hp % automatically?
-			gt.Const.Perks.PerkDefs.Indomitable
-			//"Indomitable
-			// In addition to previous bonuses, now grants immunity to Cull while active.
-			//TODO: rework, also fix direwolf indom.
-		]
-	]
-};
-
-///////////////////////////////////////////////////////////////////////////
-// Done
+// Trees
 ///////////////////////////////////////////////////////////////////////////
 
 gt.Const.Perks.FastTree <- {
@@ -493,6 +246,63 @@ gt.Const.Perks.IndestructibleTree <- {
 	]
 };
 
+gt.Const.Perks.CalmTree <- {
+	ID = "CalmTree",
+	Name = "Calm",
+	Descriptions = [
+		"is calm"
+	],
+	Attributes = {
+		Hitpoints = [
+			-2,
+			-2
+		],
+		Bravery = [
+			2,
+			2
+		],
+		Stamina = [
+			-2,
+			-2
+		],
+		MeleeSkill = [
+			-4,
+			-4
+		],
+		RangedSkill = [
+			4,
+			4
+		],
+		MeleeDefense = [
+			0,
+			0
+		],
+		RangedDefense = [
+			0,
+			0
+		],
+		Initiative = [
+			2,
+			2
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.LegendPeaceful
+		],
+		[],
+		[],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.BattleFlow
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.PerfectFocus
+		]
+	]
+};
+
 gt.Const.Perks.DeviousTree <- {
 	ID = "DeviousTree",
 	Name = "Devious",
@@ -552,6 +362,183 @@ gt.Const.Perks.DeviousTree <- {
 	]
 };
 
+gt.Const.Perks.ViciousTree <- {
+	ID = "ViciousTree",
+	Name = "Vicious",
+	Descriptions = [
+		"is vicious"
+	],
+	Attributes = {
+		Hitpoints = [
+			0,
+			0
+		],
+		Bravery = [
+			2,
+			2
+		],
+		Stamina = [
+			-2,
+			-2
+		],
+		MeleeSkill = [
+			4,
+			4
+		],
+		RangedSkill = [
+			2,
+			2
+		],
+		MeleeDefense = [
+			-2,
+			-2
+		],
+		RangedDefense = [
+			-4,
+			-4
+		],
+		Initiative = [
+			2,
+			2
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.HeadHunter
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Fearsome
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Berserk
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Vengeance
+		]
+	]
+};
+
+gt.Const.Perks.FitTree <- {
+	ID = "FitTree",
+	Name = "Fit",
+	Descriptions = [
+		"is fit"
+	],
+	Attributes = {
+		Hitpoints = [
+			2,
+			2
+		],
+		Bravery = [
+			-4,
+			-4
+		],
+		Stamina = [
+			4,
+			4
+		],
+		MeleeSkill = [
+			0,
+			0
+		],
+		RangedSkill = [
+			-2,
+			-2
+		],
+		MeleeDefense = [
+			2,
+			2
+		],
+		RangedDefense = [
+			-2,
+			-2
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.LegendRecuperation
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Steadfast
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.WearsItWell
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.FreshAndFurious
+		]
+	]
+};
+
+gt.Const.Perks.SturdyTree <- {
+	ID = "SturdyTree",
+	Name = "Sturdy",
+	Descriptions = [
+		"is sturdy"
+	],
+	Attributes = {
+		Hitpoints = [
+			2,
+			2
+		],
+		Bravery = [
+			0,
+			0
+		],
+		Stamina = [
+			2,
+			2
+		],
+		MeleeSkill = [
+			-2,
+			-2
+		],
+		RangedSkill = [
+			-2,
+			-2
+		],
+		MeleeDefense = [
+			4,
+			4
+		],
+		RangedDefense = [
+			-4,
+			-4
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.Colossus
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.HoldOut
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.NineLives
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.Indomitable
+		]
+	]
+};
+
 ///////////////////////////////////////////////////////////////////////////
 // Special
 ///////////////////////////////////////////////////////////////////////////
@@ -602,15 +589,15 @@ gt.Const.Perks.IntelligentTree <- {
 		],
 		[],
 		[
-			//TODO: intelligent perk tier 3, port Pattern Recognition. higher intelligence allows one to extrapolate patterns from data
+			//FEATURE_5: intelligent perk tier 3, port Pattern Recognition. higher intelligence allows one to extrapolate patterns from data
 		],
 		[],
 		[
-			//TODO: intelligent perk tier 5
+			//FEATURE_5: intelligent perk tier 5
 		],
 		[],
 		[
-			//TODO: intelligent perk tier 7
+			//FEATURE_5: intelligent perk tier 7
 		]
 	]
 };
@@ -661,16 +648,15 @@ gt.Const.Perks.InspirationalTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.InspiringPresence //Teamwork Exercises
-
-		],
-		[],
-		[
 			gt.Const.Perks.PerkDefs.TrialByFire
 		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.Inspire
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.InspiringPresence //Teamwork Exercises
 		]
 	]
 };
@@ -725,11 +711,9 @@ gt.Const.Perks.TrainedTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendBackToBasics
-		],
-		[
 			gt.Const.Perks.PerkDefs.Finesse
 		],
+		[],
 		[]
 	]
 };
@@ -775,19 +759,11 @@ gt.Const.Perks.OrganisedTree <- { //Unused
 		]
 	},
 	Tree = [
-		[
-
-		],
-		[
-
-		],
-		[
-
-		],
 		[],
-		[
-
-		],
+		[],
+		[],
+		[],
+		[],
 		[],
 		[]
 	]

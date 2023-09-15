@@ -1,8 +1,11 @@
 ::Const.Strings.PerkName.LegendMindOverBody = "Mind Over Body";
 ::Const.Strings.PerkDescription.LegendMindOverBody = "The spirit is willing, but the flesh is weak..."
++ "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n" + ::MSU.Text.colorGreen("Reduces Fatigue costs based on resolve ") + ::MSU.Text.colorRed("(About 30% at 120 Resolve)")
-+ "\n" + ::MSU.Text.colorGreen("Becomes immune to the effects of fresh injuries, and unnafected by health losses.");
++ "\n" + ::MSU.Text.colorGreen("Becomes immune to the effects of fresh injuries, and unnafected by health losses.")
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMindOverBody].Name = ::Const.Strings.PerkName.LegendMindOverBody;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMindOverBody].Tooltip = ::Const.Strings.PerkDescription.LegendMindOverBody;

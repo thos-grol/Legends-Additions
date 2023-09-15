@@ -1,9 +1,10 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.FreshAndFurious <- "Fresh";
 ::Const.Strings.PerkDescription.FreshAndFurious <- "This character seems to have endless energy..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n"+::MSU.Text.colorGreen("Halve the AP cost ") + "of the first skill used this turn. "
-+ "\n"+::MSU.Text.colorRed("Invalid if Fatigue is above 30%");
++ "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On first skill use this turn:[/u]")
++ "\n"+::MSU.Text.colorGreen("-50%") + "AP cost"
++ "\n"+::MSU.Text.colorRed("Invalid if Fatigue is over 40% max")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.FreshAndFurious].Name = ::Const.Strings.PerkName.FreshAndFurious;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.FreshAndFurious].Tooltip = ::Const.Strings.PerkDescription.FreshAndFurious;
@@ -47,7 +48,7 @@ this.perk_fresh_and_furious <- ::inherit("scripts/skills/skill", {
 			id = 10,
 			type = "text",
 			icon = "ui/icons/warning.png",
-			text = "[color=" + ::Const.UI.Color.NegativeValue + "]Will expire upon using a skill with non-zero Action Point or Fatigue cost or when current Fatigue reaches 30% of Maximum Fatigue[/color]"
+			text = "[color=" + ::Const.UI.Color.NegativeValue + "]Will expire upon using a skill with non-zero Action Point or Fatigue cost or when current Fatigue reaches 40% of Maximum Fatigue[/color]"
 		});
 
 		return tooltip;
@@ -55,7 +56,7 @@ this.perk_fresh_and_furious <- ::inherit("scripts/skills/skill", {
 
 	function isEnabled()
 	{
-		return this.getContainer().getActor().getFatigue() < 0.3 * this.getContainer().getActor().getFatigueMax();
+		return this.getContainer().getActor().getFatigue() < 0.4 * this.getContainer().getActor().getFatigueMax();
 	}
 
 	function onAfterUpdate( _properties )

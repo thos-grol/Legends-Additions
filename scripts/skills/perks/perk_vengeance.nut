@@ -1,9 +1,12 @@
 ::Const.Strings.PerkName.Vengeance = "Vengeance";
 ::Const.Strings.PerkDescription.Vengeance = "..."
++ "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Upon being hit:")
 + "\n" + ::MSU.Text.colorGreen("+100%") + " damage for the next attack"
-+ "\n" + ::MSU.Text.colorGreen("+25%") + " stacking fatality chance";
++ "\n" + ::MSU.Text.colorGreen("+25%") + " stacking fatality chance"
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Vengeance].Name = ::Const.Strings.PerkName.Vengeance;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Vengeance].Tooltip = ::Const.Strings.PerkDescription.Vengeance;
@@ -35,7 +38,7 @@ this.perk_vengeance <- this.inherit("scripts/skills/skill", {
 			this.m.Stacks += 1;
 			this.m.Active = true;
 		}
-		
+
 	}
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
@@ -49,7 +52,7 @@ this.perk_vengeance <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		if (_targetEntity == actor) return;
 		this.m.Active = false;
-		
+
 	}
 
 	function onTargetMissed( _skill, _targetEntity )

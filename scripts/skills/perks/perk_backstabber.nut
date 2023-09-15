@@ -1,8 +1,7 @@
-
 ::Const.Strings.PerkDescription.Backstabber = "It's not the strong who survive. It's the survivors who are strong..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n"+::MSU.Text.colorGreen("+5") + " Surrounded Offense"
-+ "\n"+::MSU.Text.colorGreen("+20%") + " damage against targets that are " + ::MSU.Text.colorRed("injured, stunned, netted, or sleeping.");
++ "\n"+::MSU.Text.colorGreen("+20%") + " damage against " + ::MSU.Text.colorRed("injured, stunned, netted, or sleeping.") + " targets";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Backstabber].Tooltip = ::Const.Strings.PerkDescription.Backstabber;
 

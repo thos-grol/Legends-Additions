@@ -1,4 +1,10 @@
-//TODO: description
+::Const.Strings.PerkName.HeadHunter = "Head Hunter";
+::Const.Strings.PerkDescription.HeadHunter = "Aim to kill..."
++ "\n\n"+::MSU.Text.color(::Z.Log.Color.Blue, "[u]On headshot:[/u]")
++ "\n"+::MSU.Text.colorGreen("This unit's next attack will hit the head");
+
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.HeadHunter].Name = ::Const.Strings.PerkName.HeadHunter;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.HeadHunter].Tooltip = ::Const.Strings.PerkDescription.HeadHunter;
 
 this.perk_head_hunter <- this.inherit("scripts/skills/skill", {
 	m = {

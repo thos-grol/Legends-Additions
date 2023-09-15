@@ -1,13 +1,17 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.InspiringPresence = "Teamwork Exercises";
 ::Const.Strings.PerkDescription.InspiringPresence = "Work as a team, fight as a team..."
++ "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n" + ::MSU.Text.colorGreen("-75%") + " chance of friendly fire between units in the company. " + ::MSU.Text.colorRed("Is cancelled if this unit dies")
-+ "\n• \'Hold the Line\' (9 AP, 25 Fat, 2 Charges): Allied units within 4 tiles: "
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Hold the Line\'[/u] (9 AP, 25 Fat, 2 Charges):")
++ "\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]For allied units within 4 tiles:[/u]")
 + "\n"+::MSU.Text.colorGreen("+25%" + " damage reduction")
 + "\n"+::MSU.Text.colorGreen("+Displacement Immunity")
 + "\n"+::MSU.Text.colorGreen("+Shieldwall")
-+ "\n\n" + ::MSU.Text.colorRed("There can only be one commander in the party. Will refund this perk if any other unit has it.");
+
++ "\n\n" + ::MSU.Text.colorRed("There can only be one commander in the party. Will refund this perk if any other unit has it.")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.InspiringPresence].Name = ::Const.Strings.PerkName.InspiringPresence;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.InspiringPresence].Tooltip = ::Const.Strings.PerkDescription.InspiringPresence;

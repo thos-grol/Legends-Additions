@@ -1,4 +1,3 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.DirewolfRuinAura <- "Ruin Aura";
 ::Const.Strings.PerkDescription.DirewolfRuinAura <- "Unstoppable rage..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
@@ -60,7 +59,7 @@ this.perk_direwolf_ruin_aura <- this.inherit("scripts/skills/skill", {
 		{
 			this.Tactical.spawnParticleEffect(false, ::Const.Tactical.RuinAuraParticles[i].Brushes, actor.getTile(), ::Const.Tactical.RuinAuraParticles[i].Delay, ::Const.Tactical.RuinAuraParticles[i].Quantity, ::Const.Tactical.RuinAuraParticles[i].LifeTimeQuantity, ::Const.Tactical.RuinAuraParticles[i].SpawnRate, ::Const.Tactical.RuinAuraParticles[i].Stages);
 		}
-		
+
 		this.Time.scheduleEvent(this.TimeUnit.Virtual, 500, this.onDelayedEffect.bindenv(this), tag);
 	}
 
@@ -84,19 +83,19 @@ this.perk_direwolf_ruin_aura <- this.inherit("scripts/skills/skill", {
 		foreach( t in targets )
 		{
 			if (!t.IsOccupiedByActor || !t.getEntity().isAttackable()) continue;
-			
+
 			for( local i = 0; i < ::Const.Tactical.RuinAuraParticles.len(); i = ++i )
 			{
 				this.Tactical.spawnParticleEffect(false, ::Const.Tactical.RuinAuraParticles[i].Brushes, t, ::Const.Tactical.RuinAuraParticles[i].Delay, ::Const.Tactical.RuinAuraParticles[i].Quantity, ::Const.Tactical.RuinAuraParticles[i].LifeTimeQuantity, ::Const.Tactical.RuinAuraParticles[i].SpawnRate, ::Const.Tactical.RuinAuraParticles[i].Stages);
 			}
-			
+
 			local target = t.getEntity();
 			if (target.isAlive())
 			{
 				if (target.m.CurrentProperties.IsAffectedByInjuries && target.m.IsAbleToDie)
 				{
 					local potentialInjuries = [];
-					
+
 					foreach( inj in ::Const.Injury.All)
 					{
 						if (!target.m.Skills.hasSkill(inj.ID) && target.m.ExcludedInjuries.find(inj.ID) == null)
@@ -115,9 +114,9 @@ this.perk_direwolf_ruin_aura <- this.inherit("scripts/skills/skill", {
 						{
 							target.m.Skills.add(injury);
 
-							if (!target.isHiddenToPlayer()) 
+							if (!target.isHiddenToPlayer())
 								::Z.Log.suffer_injury(target, injury.getNameOnly());
-							
+
 
 							appliedInjury = true;
 
@@ -126,7 +125,7 @@ this.perk_direwolf_ruin_aura <- this.inherit("scripts/skills/skill", {
 								local volume = 1.0;
 								target.playSound(::Const.Sound.ActorEvent.DamageReceived, ::Const.Sound.Volume.Actor * target.m.SoundVolume[::Const.Sound.ActorEvent.DamageReceived] * target.m.SoundVolumeOverall * volume, target.m.SoundPitch);
 							}
-							
+
 							break;
 						}
 						else potentialInjuries.remove(r);

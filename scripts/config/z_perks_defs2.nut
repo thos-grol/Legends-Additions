@@ -128,6 +128,15 @@ local perks = [
         IconDisabled = "ui/perks/rf_survival_instinct_bw.png",
         Const = "SurvivalInstinct"
     },
+    {
+        ID = "perk.wears_it_well",
+        Script = "scripts/skills/perks/perk_wears_it_well",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/rf_wears_it_well.png",
+        IconDisabled = "ui/perks/rf_wears_it_well_bw.png",
+        Const = "WearsItWell"
+    },
     // {
 	// 	ID = "perk.eldritch_blast",
 	//     Script = "scripts/skills/perks/cultist_eldritch_blast",

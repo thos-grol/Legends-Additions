@@ -1,9 +1,9 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.Finesse <- "Finesse";
 ::Const.Strings.PerkDescription.Finesse <- "With experience and skill comes finesse..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• Reduce Fatigue Cost of all skills by 20%."
-+ "\n• At the end of your turn, gain twice your remaining action points as melee defense.";
++ "\n" + ::MSU.Text.colorGreen("-15%") + " skill Fatigue cost"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On turn end:[/u]")
++ "\nConvert the remaining x action points into 2x melee defense.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Finesse].Name = ::Const.Strings.PerkName.Finesse;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Finesse].Tooltip = ::Const.Strings.PerkDescription.Finesse;
@@ -29,7 +29,7 @@ this.perk_finesse <- ::inherit("scripts/skills/skill", {
 	{
 		foreach (skill in this.getContainer().getAllSkillsOfType(::Const.SkillType.Active))
 		{
-			skill.m.FatigueCostMult *= 0.8;
+			skill.m.FatigueCostMult *= 0.85;
 		}
 	}
 

@@ -1,9 +1,8 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.Ghostlike <- "Ghostlike";
 ::Const.Strings.PerkDescription.Ghostlike <- "Blink and you miss me..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n"+::MSU.Text.colorGreen("Ignore Zone of Control when moving ") + "once per turn "
-+ "\n"+::MSU.Text.colorRed("Valid when the number of adjacent allies is greater than or equal to the number of adjacent enemies");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Once per turn:[/u]")
++ "\n"+::MSU.Text.colorGreen("Ignore Zone of Control when moving")
++ "\n\n"+::MSU.Text.colorRed("Valid when the number of adjacent allies is greater than or equal to the number of adjacent enemies");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Ghostlike].Name = ::Const.Strings.PerkName.Ghostlike;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Ghostlike].Tooltip = ::Const.Strings.PerkDescription.Ghostlike;

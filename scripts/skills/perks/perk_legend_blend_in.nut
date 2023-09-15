@@ -1,14 +1,16 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.LegendBlendIn = "Sneak Attack";
 ::Const.Strings.PerkDescription.LegendBlendIn = "If you notice me, you're already dead..."
++ "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• "+ ::MSU.Text.colorGreen("+25%") + " melee damage"
-+ "\n• "+ ::MSU.Text.colorGreen("+20%") + " armor penetration"
++ "\n"+ ::MSU.Text.colorGreen("-90%") + " target attraction. Makes it less likely to be targeted for an attack."
++ "\n\n"+ ::MSU.Text.colorGreen("+25%") + " melee damage"
++ "\n"+ ::MSU.Text.colorGreen("+20%") + " armor penetration"
 + "\n"+ ::MSU.Text.colorRed("Invalid if this unit started their turn next to the target")
-+ "\n• "+ ::MSU.Text.colorGreen("+25%") + " ranged damage"
-+ "\n• "+ ::MSU.Text.colorGreen("+20%") + " armor penetration"
++ "\n\n"+ ::MSU.Text.colorGreen("+25%") + " ranged damage"
++ "\n"+ ::MSU.Text.colorGreen("+20%") + " armor penetration"
 + "\n"+ ::MSU.Text.colorRed("Invalid if this target has been hit before")
-+ "\n• "+ ::MSU.Text.colorGreen("-90%") + " target attraction. Makes it less likely to be targeted for an attack.";
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Name = ::Const.Strings.PerkName.LegendBlendIn;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Tooltip = ::Const.Strings.PerkDescription.LegendBlendIn;
