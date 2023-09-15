@@ -707,13 +707,15 @@ gt.Const.Perks.TrainedTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.BagsAndBelts //TODO: description
+			gt.Const.Perks.PerkDefs.BagsAndBelts
 		],
 		[],
 		[
+			gt.Const.Perks.PerkDefs.LegendBackToBasics
+		],
+		[
 			gt.Const.Perks.PerkDefs.Finesse
 		],
-		[],
 		[]
 	]
 };
@@ -845,7 +847,14 @@ gt.Const.Perks.TraitsTrees <- {
 	{
 		if (_flags.has("Intelligent") && _exclude.find("IntelligentTree") == null) return gt.Const.Perks.IntelligentTree;
 		if (_flags.has("Commander") && _exclude.find("InspirationalTree") == null) return gt.Const.Perks.InspirationalTree;
-		if (_flags.has("Huge") && _exclude.find("LargeTree") == null) return gt.Const.Perks.LargeTree;
+		if (_flags.has("Large") && _exclude.find("LargeTree") == null) return gt.Const.Perks.LargeTree;
+		if (_flags.has("Vicious") && _exclude.find("ViciousTree") == null) return gt.Const.Perks.ViciousTree;
+		if (_flags.has("Devious") && _exclude.find("DeviousTree") == null) return gt.Const.Perks.DeviousTree;
+		if (_flags.has("Fast") && _exclude.find("FastTree") == null) return gt.Const.Perks.FastTree;
+		if (_flags.has("Sturdy") && _exclude.find("SturdyTree") == null) return gt.Const.Perks.SturdyTree;
+		if (_flags.has("Tenacious") && _exclude.find("IndestructibleTree") == null) return gt.Const.Perks.IndestructibleTree;
+		if (_flags.has("Fit") && _exclude.find("FitTree") == null) return gt.Const.Perks.FitTree;
+		
 
 		local L = [];
 		foreach( i, t in this.Tree )

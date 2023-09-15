@@ -3,7 +3,7 @@
 + "\n" + ::MSU.Text.colorGreen("+2") + " Hitpoint recovery"
 + "\n" + ::MSU.Text.colorGreen("+2") + " Fatigue recovery"
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Recover\'[/u] (X AP):")
-+ "\n" + ::MSU.Text.colorGreen("-5.5% * X") + " Fatigue accumulated"
++ "\n" + ::MSU.Text.colorGreen("– 5.5% * X") + " Fatigue accumulated"
 + "\n"+::MSU.Text.colorRed("Cannot be used if another skill has been used");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendRecuperation].Tooltip = ::Const.Strings.PerkDescription.LegendRecuperation;

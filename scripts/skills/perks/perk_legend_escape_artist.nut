@@ -2,8 +2,8 @@
 ::Const.Strings.PerkDescription.LegendEscapeArtist = "Take a glimpse of the landscape and draw it from memory..."
 + "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n"+::MSU.Text.colorGreen("-1") + "AP cost for movement skills"
-+ "\n"+::MSU.Text.colorGreen("-25%") + "Fatigue cost for movement skills"
++ "\n"+::MSU.Text.colorGreen("– 1") + "AP cost for movement skills"
++ "\n"+::MSU.Text.colorGreen("– 25%") + "Fatigue cost for movement skills"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On turn start:")
 + "\n"+::MSU.Text.colorGreen("Perform a break free action using Melee Skill with a -25 penalty")

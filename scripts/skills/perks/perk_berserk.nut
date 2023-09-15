@@ -3,7 +3,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Upon killing an enemy:")
 + "\n" + ::MSU.Text.colorGreen("+4") + " AP, "  + ::MSU.Text.colorRed("cannot exceed the max")
-+ "\n\n"+::MSU.Text.colorRed("After the first kill, only fatalities will provide AP");
++ "\n\n"+::MSU.Text.colorRed("After the first kill, only fatalities will provide AP. This clause resets each turn");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Berserk].Name = ::Const.Strings.PerkName.Berserk;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Berserk].Tooltip = ::Const.Strings.PerkDescription.Berserk;

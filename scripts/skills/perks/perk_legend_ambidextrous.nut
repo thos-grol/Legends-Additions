@@ -1,11 +1,11 @@
 ::Const.Strings.PerkName.LegendAmbidextrous = "CQC";
 ::Const.Strings.PerkDescription.LegendAmbidextrous = "Fighting with arms and legs. The basics..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On attack:")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On attack:[/u]")
 + "\nStrike with fists for each empty hand"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Kick\'[/u] (4 AP, 14 Fat):")
-+ "• Kick the enemy, canceling Shieldwall, Spearwall, Return Favor, or Riposte"
-+ "• Has a chance to inflict Daze (" + ::MSU.Text.colorGreen("-25%") + " dmg, " + ::MSU.Text.colorGreen("-25%") + " Max Fat, " + ::MSU.Text.colorGreen("-25%") + " Initiative)";
++ "\n• Kick the enemy, canceling Shieldwall, Spearwall, Return Favor, or Riposte"
++ "\n• Has a chance to inflict Daze (" + ::MSU.Text.colorGreen("– 25%") + " dmg, " + ::MSU.Text.colorGreen("– 25%") + " Max Fat, " + ::MSU.Text.colorGreen("– 25%") + " Initiative)";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Name = ::Const.Strings.PerkName.LegendAmbidextrous;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Tooltip = ::Const.Strings.PerkDescription.LegendAmbidextrous;

@@ -4,7 +4,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Upon being hit:")
 + "\n" + ::MSU.Text.colorGreen("+100%") + " damage for the next attack"
-+ "\n" + ::MSU.Text.colorGreen("+25%") + " stacking fatality chance"
++ "\n" + ::MSU.Text.colorGreen("+10%") + " stacking fatality chance"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
 
@@ -43,7 +43,7 @@ this.perk_vengeance <- this.inherit("scripts/skills/skill", {
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
-		_properties.FatalityChanceMult *= 1 + 0.25 * this.m.Stacks;
+		_properties.FatalityChanceMult *= 1 + 0.1 * this.m.Stacks;
 	}
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )

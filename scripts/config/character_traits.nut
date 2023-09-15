@@ -242,7 +242,7 @@ gt.Const.CharacterTraits <- [
 	],
 	[
 		"trait.natural",
-		"scripts/skills/traits/natural_trait" //TODO: buff with perfectionist
+		"scripts/skills/traits/natural_trait"
 	],
 	[
 		"trait.pragmatic",
@@ -256,10 +256,10 @@ gt.Const.CharacterTraits <- [
 	// 	"trait.heavy",
 	// 	"scripts/skills/traits/heavy_trait"
 	// ],
-	[
-		"trait.ambitious",
-		"scripts/skills/traits/ambitious_trait"
-	],
+	// [
+	// 	"trait.ambitious",
+	// 	"scripts/skills/traits/ambitious_trait"
+	// ],
 	[
 		"trait.aggressive",
 		"scripts/skills/traits/aggressive_trait"

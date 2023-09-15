@@ -2,7 +2,7 @@
 ::Const.Strings.PerkDescription.LegendBlendIn = "If you notice me, you're already dead..."
 + "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n"+ ::MSU.Text.colorGreen("-90%") + " target attraction. Makes it less likely to be targeted for an attack."
++ "\n"+ ::MSU.Text.colorGreen("– 90%") + " target attraction. Makes it less likely to be targeted for an attack."
 + "\n\n"+ ::MSU.Text.colorGreen("+25%") + " melee damage"
 + "\n"+ ::MSU.Text.colorGreen("+20%") + " armor penetration"
 + "\n"+ ::MSU.Text.colorRed("Invalid if this unit started their turn next to the target")

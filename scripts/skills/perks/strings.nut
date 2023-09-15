@@ -496,7 +496,7 @@
 // 	 		Effects = [{
 //  				Type = ::UPD.EffectType.Passive,
 //  				Description = [
-//  					"With every attack, hit or miss, against an opponent that acts after you in the current round, inflict the [Overwhelmed|Skill+overwhelmed_effect] status effect which lowers both [Melee Skill|Concept.MeleeSkill] and [Ranged Skill|Concept.RangeSkill] by " + ::MSU.Text.colorRed("-10%") + " for one [turn|Concept.Turn].",
+//  					"With every attack, hit or miss, against an opponent that acts after you in the current round, inflict the [Overwhelmed|Skill+overwhelmed_effect] status effect which lowers both [Melee Skill|Concept.MeleeSkill] and [Ranged Skill|Concept.RangeSkill] by " + ::MSU.Text.colorRed("– 10%") + " for one [turn|Concept.Turn].",
 //  					"The effect stacks with each attack, up to a maximum of 7 times, and can be applied to multiple targets at once with a single attack."
 //  				]
 //  			}]
@@ -511,7 +511,7 @@
 // 		 		{
 // 	 				Type = ::UPD.EffectType.Passive,
 // 	 				Description = [
-// 	 					"[Action Point|Concept.ActionPoints] costs for movement on all terrain is reduced by " + ::MSU.Text.colorRed("-1") + " to a minimum of 2 [Action Points|Concept.ActionPoints] per tile, and [Fatigue|Concept.Fatigue] cost is reduced to half.",
+// 	 					"[Action Point|Concept.ActionPoints] costs for movement on all terrain is reduced by " + ::MSU.Text.colorRed("– 1") + " to a minimum of 2 [Action Points|Concept.ActionPoints] per tile, and [Fatigue|Concept.Fatigue] cost is reduced to half.",
 // 	 					"Changing height levels also has no additional [Action Point|Concept.ActionPoints] cost anymore."
 // 	 				]
 // 	 			},
@@ -601,13 +601,13 @@
 //  			{
 //  				Type = ::UPD.EffectType.Passive,
 //  				Description = [
-//  					"Enemies have a " + ::MSU.Text.colorRed("-20%") + " chance to break from from nets you throw."
+//  					"Enemies have a " + ::MSU.Text.colorRed("– 20%") + " chance to break from from nets you throw."
 //  				]
 //  			},
 //  			{
 //  				Type = ::UPD.EffectType.Active,
 //  				Description = [
-//  					"Unlocks the [Net Pull|Skill+rf_net_pull_skill] skill that allows you to pull a target and net it, but does not gain the passive " + ::MSU.Text.colorRed("-20%") + " chance to break free."
+//  					"Unlocks the [Net Pull|Skill+rf_net_pull_skill] skill that allows you to pull a target and net it, but does not gain the passive " + ::MSU.Text.colorRed("– 20%") + " chance to break free."
 //  				]
 //  			}
 //  		]
@@ -944,7 +944,7 @@
 //  		Effects = [{
 // 			Type = ::UPD.EffectType.Passive,
 // 			Description = [
-// 				"Every attack, hit or miss, applies a stacking debuff on the target reducing their [Melee Skill|Concept.MeleeSkill] and [Ranged Skill|Concept.RangeSkill] by " + ::MSU.Text.colorRed("-5") + " and [Melee Defense|Concept.MeleeDefense] by " + ::MSU.Text.colorRed("-3") + " for one [turn|Concept.Turn].",
+// 				"Every attack, hit or miss, applies a stacking debuff on the target reducing their [Melee Skill|Concept.MeleeSkill] and [Ranged Skill|Concept.RangeSkill] by " + ::MSU.Text.colorRed("– 5") + " and [Melee Defense|Concept.MeleeDefense] by " + ::MSU.Text.colorRed("– 3") + " for one [turn|Concept.Turn].",
 // 				"Only applies half a stack if the primary target is wielding a shield. Additionally, applies half a stack to enemies adjacent to the primary target who are not wielding shields. Bucklers do not count as shields for this perk.",
 // 				"Can have a maximum of " + ::MSU.Text.colorGreen(10) + " stacks."
 // 			]
@@ -1002,7 +1002,7 @@
 // 			Description = [
 // 				"Gain stacking rage during combat. You gain 1 stack for getting hit, 3 for making a kill, 1 for every successful hit against an adjacent target with a skill with a base [Action Point|Concept.ActionPoints] cost of 4 or less and 2 for greater.",
 // 				"You lose 2 rage at the start of every [turn|Concept.Turn].",
-// 				"Each stack of rage increases [Resolve|Concept.Bravery], [Initiative|Concept.Initiative], and Damage by " + ::MSU.Text.colorGreen("+1") + ", lowers [Melee Defense|Concept.MeleeDefense] by " + ::MSU.Text.colorRed("-1") + ", and reduces incoming damage by " + ::MSU.Text.colorGreen("2%") + ".",
+// 				"Each stack of rage increases [Resolve|Concept.Bravery], [Initiative|Concept.Initiative], and Damage by " + ::MSU.Text.colorGreen("+1") + ", lowers [Melee Defense|Concept.MeleeDefense] by " + ::MSU.Text.colorRed("– 1") + ", and reduces incoming damage by " + ::MSU.Text.colorGreen("2%") + ".",
 // 				"At 5 stacks, gain immunity to being [Dazed|Skill+dazed_effect] and a " + ::MSU.Text.colorGreen("33%") + " chance to resist physical [status effects|Concept.StatusEffect] such as [staggered|Skill+staggered_effect], [distracted|Skill+distracted_effect] and [withered|Skill+withered_effect].",
 // 				"At 7 stacks, additionally gain immunity to being [Stunned|Skill+stunned_effect].",
 // 				"At 10 stacks, additionally gain immunity to being knocked back, grabbed or swallowed."
@@ -1295,7 +1295,7 @@
 //  		Effects = [{
 // 			Type = ::UPD.EffectType.Passive,
 // 			Description = [
-// 				"Lower the [Resolve|Concept.Bravery] of adjacent enemies by " + ::MSU.Text.colorRed("-10") + "."
+// 				"Lower the [Resolve|Concept.Bravery] of adjacent enemies by " + ::MSU.Text.colorRed("– 10") + "."
 // 			]
 // 		}]
 //  	}),
@@ -1326,7 +1326,7 @@
 //  		Effects = [{
 // 			Type = ::UPD.EffectType.Passive,
 // 			Description = [
-// 				"Gain " + ::MSU.Text.colorGreen("+25%") + " chance to hit the head at a distance of 2 tiles. For every tile beyond that, this bonus is reduced by " + ::MSU.Text.colorRed("-5%") + ".",
+// 				"Gain " + ::MSU.Text.colorGreen("+25%") + " chance to hit the head at a distance of 2 tiles. For every tile beyond that, this bonus is reduced by " + ::MSU.Text.colorRed("– 5%") + ".",
 // 				"The penalty to hitchance from obstructed line of sight is reduced by " + ::MSU.Text.colorGreen("50%") + " at a distance of 2 tiles."
 // 			]
 // 		}]
@@ -1816,7 +1816,7 @@
 // 			Type = ::UPD.EffectType.Passive,
 // 			Description = [
 // 				"The [Action Point|Concept.ActionPoints] cost of [Thrust|Skill+thrust] and [Prong|Skill+prong_skill] is reduced by " + ::MSU.Text.colorGreen(1) + ".",
-// 				"When double-gripping one-handed spears, the range of [Thrust|Skill+thrust] is increased to " + ::MSU.Text.colorGreen(2) + " tiles. When used at this range, it does " + ::MSU.Text.colorRed("20%") + " reduced damage, has no bonus chance to hit, and has " + ::MSU.Text.colorRed("-20%") + " chance to hit per character between you and the target."
+// 				"When double-gripping one-handed spears, the range of [Thrust|Skill+thrust] is increased to " + ::MSU.Text.colorGreen(2) + " tiles. When used at this range, it does " + ::MSU.Text.colorRed("20%") + " reduced damage, has no bonus chance to hit, and has " + ::MSU.Text.colorRed("– 20%") + " chance to hit per character between you and the target."
 // 			]
 // 		}]
 //  	}),

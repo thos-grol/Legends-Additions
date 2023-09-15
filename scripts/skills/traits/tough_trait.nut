@@ -1,23 +1,22 @@
-this.strong_trait <- this.inherit("scripts/skills/traits/character_trait", {
+this.tough_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {},
 	function create()
 	{
 		this.character_trait.create();
-		this.m.ID = "trait.strong";
-		this.m.Name = "Strong";
-		this.m.Icon = "ui/traits/trait_icon_15.png";
-		this.m.Description = "This character is exceptionally muscled and capable of impressive feats of strength";
+		this.m.ID = "trait.tough";
+		this.m.Name = "Tough";
+		this.m.Icon = "ui/traits/trait_icon_14.png";
+		this.m.Description = "This character is tough as nails, shrugging off hits and blows.";
 		this.m.Titles = [
-			"the Strong",
+			"the Rock",
 			"the Bull",
 			"the Ox",
-			"the Bear",
-			"the Big"
+			"the Bear"
 		];
 		this.m.Excluded = [
 			"trait.tiny",
 			"trait.fragile",
-			"trait.fat",
+			"trait.bleeder",
 			"trait.ailing",
 			"trait.light",
 			"trait.frail"
@@ -40,21 +39,21 @@ this.strong_trait <- this.inherit("scripts/skills/traits/character_trait", {
 			{
 				id = 10,
 				type = "text",
-				icon = "ui/icons/fatigue.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Max Fatigue"
+				icon = "ui/icons/health.png",
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Hitpoints"
 			}
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		_properties.Stamina += 10;
+		_properties.Hitpoints += 10;
 	}
 
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Large", true);
+		actor.getFlags().set("Sturdy", true);
 	}
 
 });

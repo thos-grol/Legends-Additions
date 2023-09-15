@@ -1,10 +1,10 @@
 //TODO: rewrite using new format
 ::Const.Strings.PerkName.Overwhelm = "Overwhelm";
-::Const.Strings.PerkDescription.Overwhelm = "Overwhelm them with a flurry of strikes. Follow up to create devestating attacks."
-+ "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• Attacks hit or miss inflict a stacking Overwhelm effect (" + ::MSU.Text.colorGreen("-10%") + " melee and ranged attack for a turn)." //TODO: overwhelm cap
-+ "\n• " + ::MSU.Text.colorGreen("+20%") + " increased damage for the next attack on landing an attack."
+::Const.Strings.PerkDescription.Overwhelm = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
++ "\nOverwhelm them with a flurry of strikes. Follow up to create devestating attacks."
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On attack hit or miss:[/u]")
++ "\nInflict 1 stack of " + ::MSU.Text.colorRed("Overwhelm") + ": " + ::MSU.Text.colorGreen("– 10%") + " melee and ranged attack per stack for a turn)."
++ "\n" + ::MSU.Text.colorGreen("+20%") + " increased damage for the next attack on landing an attack."
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
 

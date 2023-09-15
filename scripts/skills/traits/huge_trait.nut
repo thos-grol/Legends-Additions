@@ -75,7 +75,7 @@ this.huge_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Huge", true);
+		actor.getFlags().set("Large", true);
 	}
 
 });

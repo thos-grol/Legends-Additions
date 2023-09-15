@@ -1,16 +1,15 @@
 ::Const.Strings.PerkName.Indomitable = "Indomitable";
-::Const.Strings.PerkDescription.Indomitable = "Indomitable, like the mountain..."
-+ "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
+::Const.Strings.PerkDescription.Indomitable = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
++ "\n" + "Indomitable, like the mountain..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Indomitable\'[/u] (5 AP, 25 Fat):")
-+ "\n" + ::MSU.Text.colorGreen("-50%") + " damage taken"
++ "\n " + ::MSU.Text.colorGreen("– 50%") + " damage taken"
 + "\n" + ::MSU.Text.colorGreen("+Stun Immunity")
 + "\n" + ::MSU.Text.colorGreen("+Displacement Immunity")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "When at or below 50% Hitpoints:")
-+ "\n" + ::MSU.Text.colorGreen("Gain Indomitable without using the skill")
-+ "\n\n" + ::MSU.Text.colorRed("This effect remains active even after the unit is healed over 50% Hitpoints")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Upon reaching 50% Hitpoints:[/u]")
++ "\n" + ::MSU.Text.colorGreen("Become Indomitable")
++ "\n" + ::MSU.Text.colorRed("Effect lasts until the end of battle")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Indomitable].Name = ::Const.Strings.PerkName.Indomitable;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Indomitable].Tooltip = ::Const.Strings.PerkDescription.Indomitable;

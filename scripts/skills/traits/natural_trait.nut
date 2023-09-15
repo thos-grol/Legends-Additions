@@ -6,7 +6,7 @@ this.natural_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		this.m.ID = "trait.natural";
 		this.m.Name = "Talented";
 		this.m.Icon = "ui/traits/natural_trait.png";
-		this.m.Description = "Has natural skills, talents and abilities. Born to be successful.";
+		this.m.Description = "Has natural skills, talents and abilities.";
 		this.m.Titles = [
 			"the Talented",
 			"the Smart",
@@ -49,29 +49,16 @@ this.natural_trait <- this.inherit("scripts/skills/traits/character_trait", {
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/health.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+3[/color] Hitpoints"
+				icon = "ui/icons/special.png",
+				text = "This character's hit dice has an upper bound of 95 (instead of 100)"
 			},
 			{
 				id = 12,
 				type = "text",
-				icon = "ui/icons/fatigue.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+3[/color] Fatigue"
-			},
-			{
-				id = 10,
-				type = "text",
 				icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] Experience Gain"
+				text = "Enemy's hit dice against this character have a lower bound of 6 (instead of 1)"
 			}
 		];
-	}
-
-	function onUpdate( _properties )
-	{
-		_properties.XPGainMult *= 1.05;
-		_properties.Hitpoints += 3;
-		_properties.Stamina += 3;
 	}
 
 });

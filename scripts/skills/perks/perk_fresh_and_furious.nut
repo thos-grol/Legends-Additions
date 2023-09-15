@@ -2,7 +2,7 @@
 ::Const.Strings.PerkDescription.FreshAndFurious <- "This character seems to have endless energy..."
 + "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On first skill use this turn:[/u]")
-+ "\n"+::MSU.Text.colorGreen("-50%") + "AP cost"
++ "\n"+::MSU.Text.colorGreen("– 50%") + "AP cost"
 + "\n"+::MSU.Text.colorRed("Invalid if Fatigue is over 40% max")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
 
