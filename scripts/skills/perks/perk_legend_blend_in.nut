@@ -1,8 +1,9 @@
 ::Const.Strings.PerkName.LegendBlendIn = "Sneak Attack";
-::Const.Strings.PerkDescription.LegendBlendIn = ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
+::Const.Strings.PerkDescription.LegendBlendIn = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\n"+"If you notice me, you're already dead..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n"+ ::MSU.Text.colorGreen("– 90%") + " target attraction. Makes it less likely to be targeted for an attack."
++ "\n"+ ::MSU.Text.colorGreen("– 90%") + " target attraction"
++ "\n"+ ::MSU.Text.colorRed("Makes it much less likely to be targeted for an attack")
 + "\n\n"+ ::MSU.Text.colorGreen("+25%") + " melee damage"
 + "\n"+ ::MSU.Text.colorGreen("+20%") + " armor penetration"
 + "\n"+ ::MSU.Text.colorRed("Invalid if this unit started their turn next to the target")
@@ -10,7 +11,7 @@
 + "\n"+ ::MSU.Text.colorGreen("+20%") + " armor penetration"
 + "\n"+ ::MSU.Text.colorRed("Invalid if this target has been hit before")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny. \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Name = ::Const.Strings.PerkName.LegendBlendIn;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Tooltip = ::Const.Strings.PerkDescription.LegendBlendIn;
@@ -31,6 +32,31 @@ this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
+	}
+
+	function onAdded()
+	{
+		//If NPC, logic doesn't apply
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+
+		//Check for destiny, if already has, refund this perk
+		if (actor.getFlags().has("Destiny") || actor.getLevel() < 11)
+		{
+			actor.m.PerkPoints += 1;
+			actor.m.PerkPointsSpent -= 1;
+			this.removeSelf();
+			return;
+		}
+		actor.getFlags().set("Destiny", "perk.legend_blend_in");
+	}
+
+	function onRemoved()
+	{
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+		
+		
 	}
 
 	function onUpdate( _properties )

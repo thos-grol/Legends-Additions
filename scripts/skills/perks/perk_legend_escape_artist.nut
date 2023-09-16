@@ -1,14 +1,14 @@
 ::Const.Strings.PerkName.LegendEscapeArtist = "Escape Artist";
-::Const.Strings.PerkDescription.LegendEscapeArtist = ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
+::Const.Strings.PerkDescription.LegendEscapeArtist = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\n" + "Escape from anything, perhaps even death..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n"+::MSU.Text.colorGreen("– 1") + "AP cost for movement skills"
-+ "\n"+::MSU.Text.colorGreen("– 25%") + "Fatigue cost for movement skills"
++ "\n"+::MSU.Text.colorGreen("– 1") + " AP cost for movement skills"
++ "\n"+::MSU.Text.colorGreen("– 25%") + " Fatigue cost for movement skills"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On turn start:")
 + "\n"+::MSU.Text.colorGreen("Perform a break free action using Melee Skill with a -25 penalty")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny. \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Name = ::Const.Strings.PerkName.LegendEscapeArtist;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Tooltip = ::Const.Strings.PerkDescription.LegendEscapeArtist;
@@ -26,6 +26,31 @@ this.perk_legend_escape_artist <- this.inherit("scripts/skills/skill", {
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
+	}
+
+	function onAdded()
+	{
+		//If NPC, logic doesn't apply
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+
+		//Check for destiny, if already has, refund this perk
+		if (actor.getFlags().has("Destiny") || actor.getLevel() < 11)
+		{
+			actor.m.PerkPoints += 1;
+			actor.m.PerkPointsSpent -= 1;
+			this.removeSelf();
+			return;
+		}
+		actor.getFlags().set("Destiny", "perk.legend_escape_artist");
+	}
+
+	function onRemoved()
+	{
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+		
+		
 	}
 
 	function onAfterUpdate( _properties )

@@ -67,7 +67,7 @@ this.indomitable <- this.inherit("scripts/skills/skill", {
 	function isHidden()
 	{
 		local actor = this.getContainer().getActor();
-		local projected_hitpoints_pct = (actor.getHitpoints() - _damageHitpoints) / actor.getHitpointsMax();
+		local projected_hitpoints_pct = actor.getHitpoints() / actor.getHitpointsMax();
 		return projected_hitpoints_pct <= 0.5;
 	}
 

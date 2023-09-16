@@ -1,11 +1,11 @@
 ::Const.Strings.PerkName.SurvivalInstinct <- "Survival Instinct";
 ::Const.Strings.PerkDescription.SurvivalInstinct <- "The resolve and instinct to survive..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On incoming attack miss:[/u]")
-+ "\n"+ ::MSU.Text.colorGreen("+1") + " stack, " + ::MSU.Text.colorRed("up to 5")
++ "\n"+::MSU.Text.colorRed("+1 stack, up to 5")
 + "\n"+::MSU.Text.colorGreen("+2") + " Melee and Ranged Defense per stack"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On incoming attack hit:[/u]")
-+ "\n"+ ::MSU.Text.colorGreen("+1") + " stack, " + ::MSU.Text.colorRed("up to 2")
++ "\n"+::MSU.Text.colorRed("+1 stack, up to 2")
 + "\n"+::MSU.Text.colorGreen("+5") + " Melee and Ranged Defense per stack"
 
 + "\n\n"+::MSU.Text.colorGreen("On turn start, all stacks are lost except for the on hit stacks");

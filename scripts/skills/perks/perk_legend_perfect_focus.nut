@@ -1,10 +1,10 @@
 ::Const.Strings.PerkName.PerfectFocus = "Perfect Focus";
-::Const.Strings.PerkDescription.PerfectFocus = ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
+::Const.Strings.PerkDescription.PerfectFocus = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\n" + "Eternity within a moment..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Perfect Focus\'[/u] (0 AP, 0 Fat):")
 + "\n" + ::MSU.Text.colorGreen("– 50%") + " AP costs for skills, " + ::MSU.Text.colorRed("but +75% Fatigue cost")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny. \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PerfectFocus].Name = ::Const.Strings.PerkName.PerfectFocus;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PerfectFocus].Tooltip = ::Const.Strings.PerkDescription.PerfectFocus;
@@ -26,15 +26,31 @@ this.perk_legend_perfect_focus <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("actives.perfect_focus"))
+		if (!this.m.Container.hasSkill("actives.perfect_focus")) this.m.Container.add(this.new("scripts/skills/actives/perfect_focus"));
+
+		//If NPC, logic doesn't apply
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+
+		//Check for destiny, if already has, refund this perk
+		if (actor.getFlags().has("Destiny") || actor.getLevel() < 11)
 		{
-			this.m.Container.add(this.new("scripts/skills/actives/perfect_focus"));
+			actor.m.PerkPoints += 1;
+			actor.m.PerkPointsSpent -= 1;
+			this.removeSelf();
+			return;
 		}
+		actor.getFlags().set("Destiny", "perk.vengeance");
 	}
 
 	function onRemoved()
 	{
 		this.m.Container.removeByID("actives.perfect_focus");
+
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+		
+		
 	}
 
 });

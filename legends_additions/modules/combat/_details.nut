@@ -189,7 +189,7 @@
 			id = 6,
 			type = "text",
 			icon = "ui/icons/health.png",
-			text = ::MSU.Text.colorGreen("+x%") + " damage reduction proportional to the initiative difference between the attacker and this unit. (Max 80% for a 100 difference)."
+			text = ::MSU.Text.colorGreen("– x%") + " damage taken proportional to the initiative difference between the attacker and this unit. (Max 80% for a 100 difference)."
 		});
 		return _tooltip;
 	}
@@ -211,7 +211,7 @@
 				id = 6,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "Nimble: " + ::MSU.Text.colorGreen("+" + fm + "%") + " hitpoint damage reduction"
+				text = "Nimble: " + ::MSU.Text.colorGreen("– " + fm + "%") + " hitpoint damage taken"
 			});
 		}
 
@@ -351,7 +351,7 @@
             id = 6,
             type = "text",
             icon = "ui/icons/health.png",
-            text = ::MSU.Text.colorGreen("+" + bonus + "%") + " damage reduction. " + ::MSU.Text.colorGreen("+5%") + " upon dodging. " + ::MSU.Text.colorGreen("-10%") + " when hit. " + ::MSU.Text.colorRed("(50% Max)")
+            text = ::MSU.Text.colorGreen("– " + bonus + "%") + " damage taken. " + ::MSU.Text.colorGreen("+5%") + " upon dodging. " + ::MSU.Text.colorGreen("– 10%") + " when hit. " + ::MSU.Text.colorRed("(50% Max)")
         });
 
 		return _tooltip;
@@ -402,7 +402,7 @@
 				id = 6,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "Lithe: " + ::MSU.Text.colorGreen("+" + (100 - bonus) + "%") + " damage reduction"
+				text = "Lithe: " + ::MSU.Text.colorGreen("– " + (100 - bonus) + "%") + " damage taken"
 			});
 			return _tooltip;
 		}
@@ -440,7 +440,7 @@
 				id = 6,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = ::MSU.Text.colorGreen("+" + headBonus + "%") + " hitpoint damage reduction " + ::MSU.Text.colorRed("(Head)")
+				text = ::MSU.Text.colorGreen("– " + headBonus + "%") + " hitpoint damage taken " + ::MSU.Text.colorRed("(Head)")
 			});
 		}
 		if (bodyBonus > 0)
@@ -449,7 +449,7 @@
 				id = 6,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = ::MSU.Text.colorGreen("+" + bodyBonus + "%") + " hitpoint damage reduction " + ::MSU.Text.colorRed("(Body)")
+				text = ::MSU.Text.colorGreen("– " + bodyBonus + "%") + " hitpoint damage taken " + ::MSU.Text.colorRed("(Body)")
 			});
 		}
 
@@ -465,7 +465,7 @@
 			id = 6,
 			type = "text",
 			icon = "ui/icons/armor_head.png",
-			text = "Battleforged: " + ::MSU.Text.colorGreen("+" + reduction + "%") + " armor damage reduction"
+			text = "Battleforged: " + ::MSU.Text.colorGreen("– " + reduction + "%") + " armor damage taken"
 		});
 
 		return _tooltip;

@@ -26,9 +26,21 @@ this.perk_inspire <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("actives.inspire"))
-		{
+		if (!this.m.Container.hasSkill("actives.inspire")) 
 			this.m.Container.add(this.new("scripts/skills/actives/inspire_skill"));
+
+		local actor = this.getContainer().getActor();
+		local playerRoster = this.World.getPlayerRoster().getAll();
+		foreach( bro in playerRoster )
+		{
+			if (bro.getID() == actor.getID()) continue;
+			if (bro.getSkills().hasSkill("perk.inspire"))
+			{
+				bro.m.Skills.removeByID("perk.inspire");
+				bro.m.PerkPoints += 1;
+				bro.m.PerkPointsSpent -= 1;
+				break;
+			}
 		}
 	}
 

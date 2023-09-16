@@ -1,10 +1,10 @@
 ::Const.Strings.PerkName.LegendPeaceful = "Clarity";
 ::Const.Strings.PerkDescription.LegendPeaceful = "Take a glimpse of the landscape and draw it from memory..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n"+::MSU.Text.colorGreen("+10") + "Melee or Ranged skill, whichever is highest at base"
-+ "\n"+::MSU.Text.colorGreen("+1") + "Vision"
-+ "\n"+::MSU.Text.colorGreen("+5") + "Melee Defense"
-+ "\n"+::MSU.Text.colorGreen("+5") + "Ranged Defense";
++ "\n"+::MSU.Text.colorGreen("+10") + " Melee or Ranged skill, whichever is highest at base"
++ "\n"+::MSU.Text.colorGreen("+1") + " Vision"
++ "\n"+::MSU.Text.colorGreen("+5") + " Melee Defense"
++ "\n"+::MSU.Text.colorGreen("+5") + " Ranged Defense";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendPeaceful].Name = ::Const.Strings.PerkName.LegendPeaceful;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendPeaceful].Tooltip = ::Const.Strings.PerkDescription.LegendPeaceful;

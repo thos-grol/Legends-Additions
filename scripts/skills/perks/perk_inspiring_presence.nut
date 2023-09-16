@@ -1,5 +1,5 @@
 ::Const.Strings.PerkName.InspiringPresence = "Teamwork Exercises";
-::Const.Strings.PerkDescription.InspiringPresence = ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
+::Const.Strings.PerkDescription.InspiringPresence = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\n" + "Work as a team, fight as a team..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n" + ::MSU.Text.colorGreen("– 75%") + " chance of friendly fire between units in the company. " + ::MSU.Text.colorRed("Is cancelled if this unit dies")
@@ -11,7 +11,7 @@
 + "\n"+::MSU.Text.colorGreen("+Shieldwall")
 
 + "\n\n" + ::MSU.Text.colorRed("There can only be one commander in the party. Will refund this perk if any other unit has it.")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 destiny");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny. \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.InspiringPresence].Name = ::Const.Strings.PerkName.InspiringPresence;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.InspiringPresence].Tooltip = ::Const.Strings.PerkDescription.InspiringPresence;
@@ -33,27 +33,49 @@ this.perk_inspiring_presence <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
+		if (!this.m.Container.hasSkill("actives.legend_hold_the_line"))
+			this.m.Container.add(this.new("scripts/skills/actives/legend_hold_the_line"));
+
+		//If NPC, logic doesn't apply
 		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+
+		//Check for destiny, if already has, refund this perk
+		if (actor.getFlags().has("Destiny") || actor.getLevel() < 11)
+		{
+			actor.m.PerkPoints += 1;
+			actor.m.PerkPointsSpent -= 1;
+			this.removeSelf();
+			return;
+		}
+		
+		actor.getFlags().set("Destiny", "perk.inspiring_presence");
+
 		local playerRoster = this.World.getPlayerRoster().getAll();
 		foreach( bro in playerRoster )
 		{
 			if (bro.getID() == actor.getID()) continue;
-			if (bro.getSkills().hasSkill("perk.trial_by_fire"))
+			if (bro.getSkills().hasSkill("perk.inspiring_presence"))
 			{
-				bro.m.Skills.removeByID("perk.trial_by_fire");
+				bro.m.Skills.removeByID("perk.inspiring_presence");
 				bro.m.PerkPoints += 1;
 				bro.m.PerkPointsSpent -= 1;
-			}
-			break;
-		}
 
-		if (!this.m.Container.hasSkill("actives.legend_hold_the_line"))
-			this.m.Container.add(this.new("scripts/skills/actives/legend_hold_the_line"));
+				if (bro.getFlags().has("Destiny"))
+					bro.getFlags().remove("Destiny");
+				break;
+			}
+		}
 	}
 
 	function onRemoved()
 	{
 		this.m.Container.removeByID("actives.legend_hold_the_line");
+
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+		
+		
 	}
 
 	function onCombatStarted()

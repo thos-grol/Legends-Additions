@@ -40,8 +40,8 @@ this.perk_lead_by_example <- this.inherit("scripts/skills/skill", {
 				bro.m.Skills.removeByID("perk.lead_by_example");
 				bro.m.PerkPoints += 1;
 				bro.m.PerkPointsSpent -= 1;
+				break;
 			}
-			break;
 		}
 	}
 

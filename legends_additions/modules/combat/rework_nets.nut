@@ -39,7 +39,7 @@
         }
 	}
 
-	onUpdate = function( _properties ){}
+	// onUpdate <- function( _properties ){}
 
     o.refill <- function()
     {
