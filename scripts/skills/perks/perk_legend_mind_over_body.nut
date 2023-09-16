@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.LegendMindOverBody = "Mind Over Body";
-::Const.Strings.PerkDescription.LegendMindOverBody = "The spirit is willing, but the flesh is weak..."
-+ "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
+::Const.Strings.PerkDescription.LegendMindOverBody = ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
++ "\n" + "The spirit is willing, but the flesh is weak..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n" + ::MSU.Text.colorGreen("Reduces Fatigue costs based on resolve ") + ::MSU.Text.colorRed("(About 30% at 120 Resolve)")
 + "\n" + ::MSU.Text.colorGreen("Becomes immune to the effects of fresh injuries, and unnafected by health losses.")

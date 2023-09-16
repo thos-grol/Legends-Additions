@@ -1,4 +1,4 @@
-::Const.Strings.PerkDescription.Brawny = "Get accustomed to the weight of armor..."
+::Const.Strings.PerkDescription.Brawny = "Greater fitness, heavier armor..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n"+::MSU.Text.colorGreen("– 30%") + " Fatigue and Initiative penalty from armor"
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]While over 90% Fatigued:[/u]")

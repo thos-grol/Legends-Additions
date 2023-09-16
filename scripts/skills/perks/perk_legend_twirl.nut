@@ -1,9 +1,8 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.LegendTwirl <- "Footwork";
 ::Const.Strings.PerkDescription.LegendTwirl <- "Footwork is important... Repeat it again!"
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n"+::MSU.Text.colorGreen("Rotation can now target enemies")
-+ "\n"+::MSU.Text.colorGreen("Rotating an enemy has a chance to Stagger them. ") +::MSU.Text.colorRed("The higher the mdef, the lower the chance")
++ "\n"+::MSU.Text.colorGreen("+Rotation can now target enemies")
++ "\n"+::MSU.Text.colorGreen("+Rotating an enemy has a chance to Stagger them. ") +::MSU.Text.colorRed("The higher the mdef, the lower the chance")
 + "\n"+::MSU.Text.colorGreen("+3") + " Melee Defense";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendTwirl].Name = ::Const.Strings.PerkName.LegendTwirl;

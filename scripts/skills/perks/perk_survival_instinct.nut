@@ -1,11 +1,14 @@
 ::Const.Strings.PerkName.SurvivalInstinct <- "Survival Instinct";
 ::Const.Strings.PerkDescription.SurvivalInstinct <- "The resolve and instinct to survive..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Whenever attacked:")
-+ "\n"+::MSU.Text.colorGreen("+2") + " Melee and Ranged Defense " + ::MSU.Text.colorRed("on miss")
-+ "\n"+::MSU.Text.colorGreen("+5") + " Melee and Ranged Defense " + ::MSU.Text.colorRed("on hit")
-+ "\n"+::MSU.Text.colorRed("Stacks up to 5 times for misses and 2 for hits")
-+ "\n\n"+::MSU.Text.colorGreen("On turn start, the bonus is reset excluding the on hit bonus");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On incoming attack miss:[/u]")
++ "\n"+ ::MSU.Text.colorGreen("+1") + " stack, " + ::MSU.Text.colorRed("up to 5")
++ "\n"+::MSU.Text.colorGreen("+2") + " Melee and Ranged Defense per stack"
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On incoming attack hit:[/u]")
++ "\n"+ ::MSU.Text.colorGreen("+1") + " stack, " + ::MSU.Text.colorRed("up to 2")
++ "\n"+::MSU.Text.colorGreen("+5") + " Melee and Ranged Defense per stack"
+
++ "\n\n"+::MSU.Text.colorGreen("On turn start, all stacks are lost except for the on hit stacks");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SurvivalInstinct].Name = ::Const.Strings.PerkName.SurvivalInstinct;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SurvivalInstinct].Tooltip = ::Const.Strings.PerkDescription.SurvivalInstinct;

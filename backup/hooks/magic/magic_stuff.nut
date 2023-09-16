@@ -21,9 +21,7 @@ local perkDefObjects = [
     }
 ];
 
-//FEATURE_8: Add perks and icons to perk def objects
-//FEATURE_8: Verify perk/active icons
-//FEATURE_8: Bright perk adds flag when added, changes name of the perk in description. Changes effect as well.
+
 //Bright
 //Extremely Bright
 //Genius

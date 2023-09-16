@@ -1,4 +1,3 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.NachzererGluttonyBarrier <- "Gluttony Shield";
 ::Const.Strings.PerkDescription.NachzererGluttonyBarrier <- "Protection by the powers of gluttony..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
@@ -60,7 +59,7 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 			local actor = this.getContainer().getActor();
 			actor.getSprite("sprite_gluttony_shield").Visible = true;
 		}
-		
+
 	}
 
 	function onCombatFinished()
@@ -136,7 +135,7 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 	function spawnEffect()
 	{
 		local owntile = this.getContainer().getActor().getTile();
-		
+
 		local effect = {
 			Delay = 0,
 			Quantity = 12,

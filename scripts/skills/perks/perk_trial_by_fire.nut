@@ -1,10 +1,13 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.TrialByFire <- "Trial By Fire";
 ::Const.Strings.PerkDescription.TrialByFire <- "Soldiers are forged by battle..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n" + ::MSU.Text.colorGreen("+1") + " Level for all units below Level 5 upon victory"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Upon Victory, for all units in party:[/u]")
++ "\n" + ::MSU.Text.colorGreen("+1") + " Level"
 + "\n" + ::MSU.Text.colorRed("The effect is cancelled if the commander dies")
-+ "\n• \'Rally the Troops\' (5 AP, 25 Fat): Rally fleeing allies, and raise morale of all nearby allies to a steady level. Higher resolve increases the chance to succeed"
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Rally the Troops\'[/u] (5 AP, 25 Fat):")
++ "\nRally fleeing allies, and raise morale of all nearby allies to a steady level"
++ "\n"+::MSU.Text.colorRed("Higher resolve increases the chance to succeed")
+
 + "\n\n" + ::MSU.Text.colorRed("There can only be one commander in the party. Will refund this perk if any other unit has it.");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.TrialByFire].Name = ::Const.Strings.PerkName.TrialByFire;

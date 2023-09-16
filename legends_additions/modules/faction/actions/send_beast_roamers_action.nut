@@ -62,9 +62,9 @@
 
 			for( local i = 0; i < this.Const.World.TerrainType.COUNT; i = i )
 			{
-				if   ( i == this.Const.World.TerrainType.SnowyForest 
-					|| i == this.Const.World.TerrainType.AutumnForest 
-					|| i == this.Const.World.TerrainType.Snow 
+				if   ( i == this.Const.World.TerrainType.SnowyForest
+					|| i == this.Const.World.TerrainType.AutumnForest
+					|| i == this.Const.World.TerrainType.Snow
 					|| i == this.Const.World.TerrainType.Tundra
 				) {}
 				else disallowedTerrain.push(i);
@@ -107,15 +107,15 @@
 		this.m.BeastsLow.push(beast);
 
 
-		return; //TODO: PLACEHOLDER remove for normal function
-		
+		return; //FEATURE_0: PLACEHOLDER remove for normal function
+
 		beast = function ( _action, _nearTile = null ) //Nachzehrer
 		{
 			local disallowedTerrain = [];
 			for( local i = 0; i < this.Const.World.TerrainType.COUNT; i += 1 )
 			{
-				if   ( i == this.Const.World.TerrainType.Steppe 
-					|| i == this.Const.World.TerrainType.Plains 
+				if   ( i == this.Const.World.TerrainType.Steppe
+					|| i == this.Const.World.TerrainType.Plains
 				) {}
 				else disallowedTerrain.push(i);
 			}

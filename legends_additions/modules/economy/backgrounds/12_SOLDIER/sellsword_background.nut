@@ -33,28 +33,16 @@
 		local r;
 		r = this.Math.rand(0, 4);
 
-		if (r == 0)
-		{
-			items.equip(this.new("scripts/items/weapons/flail"));
-		}
-		else if (r == 1)
-		{
-			items.equip(this.new("scripts/items/weapons/hand_axe"));
-		}
-		else if (r == 2)
-		{
-			items.equip(this.new("scripts/items/weapons/greataxe"));
-		}
-		else if (r == 3)
-		{
-			items.equip(this.new("scripts/items/weapons/billhook"));
-		}
-		else if (r == 4)
-		{
-			items.equip(this.new("scripts/items/weapons/winged_mace"));
-		}
+		local item;
 
-		//TODO: set weapon tree based on equipped weapon
+		if (r == 0) item = ::new("scripts/items/weapons/flail");
+		else if (r == 1) item = ::new("scripts/items/weapons/hand_axe");
+		else if (r == 2) item = ::new("scripts/items/weapons/greataxe");
+		else if (r == 3) item = ::new("scripts/items/weapons/billhook");
+		else item = ::new("scripts/items/weapons/winged_mace");
+
+		this.addPerkGroup(::Z.Perks.getTreeFromItem(item));
+		items.equip(item);
 
 		items.equip(this.Const.World.Common.pickArmor([
 			[

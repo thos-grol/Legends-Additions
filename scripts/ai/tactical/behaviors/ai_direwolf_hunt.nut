@@ -1,4 +1,4 @@
-//TODO: rewrite targeting. Pick hunt tile first, and then find intemediary point
+//FEATURE_0: rewrite targeting. Pick hunt tile first, and then find intemediary point
 this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 	m = {
 		TargetTile = null,
@@ -34,11 +34,11 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 
 		local opponents = this.getAgent().getKnownOpponents();
 		local func = this.findBestTarget(_entity, opponents);
-
 		while (resume func == null)
 		{
 			yield null;
 		}
+
 		if (this.m.TargetTile == null) return this.Const.AI.Behavior.Score.Zero;
 
 		local hunt_target = pick_hunt(_entity);
@@ -201,7 +201,7 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 			User = _entity,
 			Num = 0
 		};
-		
+
 		local onQueryTilesHit = function( _tile, result )
 		{
 			if (_tile.IsEmpty) return;
@@ -224,7 +224,7 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 				if (!enemy_tile.hasNextTile(i)) continue;
 				local next_tile = enemy_tile.getNextTile(i);
 				if (!next_tile.IsEmpty) continue;
-				
+
 				//Scan 6 adjacent tiles to above tile for enemies
 				local surrounding_enemies = 0;
 				for( local j = 0; j < 6; j = ++i)

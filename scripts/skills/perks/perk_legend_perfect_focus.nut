@@ -1,5 +1,6 @@
 ::Const.Strings.PerkName.PerfectFocus = "Perfect Focus";
-::Const.Strings.PerkDescription.PerfectFocus = "Eternity within a moment..."
+::Const.Strings.PerkDescription.PerfectFocus = ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
++ "\n" + "Eternity within a moment..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Perfect Focus\'[/u] (0 AP, 0 Fat):")
 + "\n" + ::MSU.Text.colorGreen("– 50%") + " AP costs for skills, " + ::MSU.Text.colorRed("but +75% Fatigue cost")
 

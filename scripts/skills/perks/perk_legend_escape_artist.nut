@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.LegendEscapeArtist = "Escape Artist";
-::Const.Strings.PerkDescription.LegendEscapeArtist = "Take a glimpse of the landscape and draw it from memory..."
-+ "\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
+::Const.Strings.PerkDescription.LegendEscapeArtist = ::MSU.Text.color(::Z.Log.Color.Purple, "[u]Destiny[/u]")
++ "\n" + "Escape from anything, perhaps even death..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n"+::MSU.Text.colorGreen("– 1") + "AP cost for movement skills"
 + "\n"+::MSU.Text.colorGreen("– 25%") + "Fatigue cost for movement skills"
@@ -33,13 +33,15 @@ this.perk_legend_escape_artist <- this.inherit("scripts/skills/skill", {
         local skills = this.getContainer().getSkillsByFunction(function ( _skill )
 		{
 			return _skill.getID() == "actives.break_free"
+			|| _skill.getID() == "actives.legend_climb"
+			|| _skill.getID() == "actives.sprint"
 			|| _skill.getID() == "actives.footwork"
 			|| _skill.getID() == "actives.rotation"
+
 			|| _skill.getID() == "actives.legend_tumble"
 			|| _skill.getID() == "actives.legend_evasion"
 			|| _skill.getID() == "actives.legend_leap"
 			|| _skill.getID() == "actives.charge";
-			//TODO: fill out movement skills
 		});
 
 		foreach( s in skills )

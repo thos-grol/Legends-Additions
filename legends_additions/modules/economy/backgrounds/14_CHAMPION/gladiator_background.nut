@@ -55,8 +55,9 @@
 				]);
 			}
 
-			items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
-			//TODO: set weapon tree based on equipped weapon
+			local item = ::new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]);
+			this.addPerkGroup(::Z.Perks.getTreeFromItem(item));
+			items.equip(item);
 		}
 
 		if (items.hasEmptySlot(this.Const.ItemSlot.Offhand))
@@ -65,8 +66,10 @@
 				"tools/throwing_net",
 				"shields/oriental/metal_round_shield"
 			];
-			items.equip(this.new("scripts/items/" + offhand[this.Math.rand(0, offhand.len() - 1)]));
-			//TODO: set weapon tree based on equipped offhand
+
+			local item = ::new("scripts/items/" + offhand[this.Math.rand(0, offhand.len() - 1)]);
+			this.addPerkGroup(::Z.Perks.getTreeFromItem(item));
+			items.equip(item);
 		}
 
 		local a = this.Const.World.Common.pickArmor([

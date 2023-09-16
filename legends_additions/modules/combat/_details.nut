@@ -1,6 +1,3 @@
-//TODO: current _properties.FatigueEffectMult
-//TODO: _properties.FatalityChanceMult
-//TODO: mind over body tooltip
 ::mods_hookExactClass("skills/special/mood_check", function (o)
 {
     o.m.Stacks <- 0;
@@ -29,6 +26,21 @@
 	{
 		local tooltip = this.skill.getTooltip();
 		local details = getTooltip_Details();
+		local p = this.getContainer().getActor().getCurrentProperties();
+
+		tooltip.push({
+			id = 10,
+			type = "text",
+			icon = "ui/icons/fatigue.png",
+			text = "Skill Fatigue Mult: " + ::MSU.Text.colorGreen(p.FatigueEffectMult)
+		});
+
+		tooltip.push({
+			id = 10,
+			type = "text",
+			icon = "ui/icons/fatigue.png",
+			text = "Fatality Chance Mult: " + ::MSU.Text.colorGreen(p.FatalityChanceMult)
+		});
 
         tooltip.push({
 			id = 10,

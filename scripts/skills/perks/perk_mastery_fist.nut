@@ -1,4 +1,3 @@
-//TODO: fix description
 this.perk_mastery_fist <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()

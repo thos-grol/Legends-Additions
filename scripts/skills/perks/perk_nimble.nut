@@ -1,9 +1,9 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkDescription.Nimble = "Nimbly dodge strikes, turning them into glancing blows..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• " + ::MSU.Text.colorGreen("+40%") + " hitpoint damage reduction. Is lowered exponentially when total armor weight is above 15. Ignores Brawny when doing calculations."
-+ "\n• " + ::MSU.Text.colorGreen("+10%") + " injury threshold."
-+ "\n• Does not affect damage from mental attacks or status effects, but can help to avoid receiving them.";
++ "\n"+::MSU.Text.colorGreen("– 40%") + " hitpoint damage taken"
++ "\n"+::MSU.Text.colorRed("Bonus drops when armor weight is above 15. Weight calculations ignore Brawny")
++ "\n"+::MSU.Text.colorGreen("+10%") + " injury resistance"
++ "\n\nDoes not affect damage from mental attacks or status effects, but can help to avoid receiving them.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Nimble].Tooltip = ::Const.Strings.PerkDescription.Nimble;
 

@@ -1,10 +1,8 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.SunderingStrikes = "Sundering Strikes";
 ::Const.Strings.PerkDescription.SunderingStrikes = "This character's immense strength cause them to sunder both armor and flesh..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• For any weapon:"
-+ "\n• " + ::MSU.Text.colorGreen("+20%") + " armor damage"
-+ "\n• " + ::MSU.Text.colorGreen("+33%") + " injury threshold.";
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Attacks inflict:[/u]")
++ "\n"+::MSU.Text.colorGreen("+20%") + " armor damage"
++ "\n"+::MSU.Text.colorGreen("-33%") + " injury resistance";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SunderingStrikes].Name = ::Const.Strings.PerkName.SunderingStrikes;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SunderingStrikes].Tooltip = ::Const.Strings.PerkDescription.SunderingStrikes;

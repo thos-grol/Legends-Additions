@@ -1,9 +1,14 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkDescription.Pathfinder = "Navigating all sorts of difficult terrain..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• Movement AP cost is reduced by " + ::MSU.Text.colorGreen("1") + " to a minimum of 2 per tile, and Fatigue cost is reduced to half."
-+ "\n• Unlocks the Sprint skill (5 AP, 25 FAT) which allows you to move 4 tiles in a straight line. Does not work across rough terrain or through enemy zones of control."
-+ "\n• Unlocks the Climb skill (3 AP, 20 FAT) which allows you to move up or down levels. Does not trigger attacks of opportunity.";
++ "\n"+::MSU.Text.colorGreen("– 1") + " movement AP cost (minimum of 2 per tile)"
++ "\n"+::MSU.Text.colorGreen("– 50%") + " movement Fatigue cost"
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Sprint\'[/u] (5 AP, 25 Fat):")
++ "\nSprint 4 tiles in a straight line"
++ "\n"+::MSU.Text.colorRed("Does not work across rough terrain or through enemy zones of control")
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Climb\'[/u] (3 AP, 20 Fat):")
++ "\nClimb up or down levels. Does not trigger attacks of opportunity";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Pathfinder].Tooltip = ::Const.Strings.PerkDescription.Pathfinder;
 

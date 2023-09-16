@@ -1,9 +1,9 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.Student = "Student";
 ::Const.Strings.PerkDescription.Student = "There is an ocean of knowledge out there, and this character has the talent to grasp a tiny portion of it..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n" + ::MSU.Text.colorGreen("250%") + " EXP gain"
-+ "\n• At " + ::MSU.Text.colorRed("Level 11") + ", " + ::MSU.Text.colorGreen("+1") + " perk point";
++ "\n"+::MSU.Text.colorGreen("250%") + " EXP gain"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Upon reaching Level 11:[/u]")
++ "\n"+::MSU.Text.colorGreen("+1") + " perk point";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Student].Name = ::Const.Strings.PerkName.Student;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Student].Tooltip = ::Const.Strings.PerkDescription.Student;

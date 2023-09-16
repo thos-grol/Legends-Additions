@@ -1,9 +1,9 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.Steadfast = "Endurance";
 ::Const.Strings.PerkDescription.Steadfast = "Endure and in enduring, become strong..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n" + ::MSU.Text.colorGreen("– 50%") + " effect of Fatigue on Initiative"
 + "\n" + ::MSU.Text.colorGreen("– 90%") + " Fatigue from being attacked"
++ "\n" + ::MSU.Text.colorGreen("– 50%") + " effect of Fatigue on Initiative"
+
 + "\n" + ::MSU.Text.colorRed("Invalid for attacks that specifically target fatigue")
 + "\n\n" + ::MSU.Text.colorGreen("\'Wait\' will no longer give an Initiative penalty");
 

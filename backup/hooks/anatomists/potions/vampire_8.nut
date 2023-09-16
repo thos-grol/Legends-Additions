@@ -1,6 +1,6 @@
 ::mods_hookExactClass("items/misc/anatomist/apotheosis_potion_item", function (o)
 {
-    //FEATURE_8:: Vampire 8 potion
+    
 	local create = o.create;
     o.create = function()
     {

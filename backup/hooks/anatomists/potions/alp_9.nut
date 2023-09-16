@@ -1,6 +1,6 @@
 ::mods_hookExactClass("items/misc/anatomist/alp_potion_item", function (o)
 {
-    //FEATURE_8:: Rebalance Alp 9 potion
+    
     local create = o.create;
     o.create = function()
     {

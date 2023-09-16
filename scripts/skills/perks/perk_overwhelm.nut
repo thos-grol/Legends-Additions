@@ -1,4 +1,3 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.Overwhelm = "Overwhelm";
 ::Const.Strings.PerkDescription.Overwhelm = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\nOverwhelm them with a flurry of strikes. Follow up to create devestating attacks."

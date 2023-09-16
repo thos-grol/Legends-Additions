@@ -51,15 +51,15 @@ gt.Const.Perks.AxeTree <- {
 		[],
 		[
 			gt.Const.Perks.PerkDefs.SpecAxe
-			//gt.Const.Perks.PerkDefs.LegendSmashingShields //Rework, shield smashing attacks are free once a turn. //FEATURE_0: merge
+			//gt.Const.Perks.PerkDefs.LegendSmashingShields //Rework, shield smashing attacks are free once a turn. //TODO: merge
 		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.Duelist
-			//FEATURE_0: reforged Cull + Between the eyes
+			//TODO: reforged Cull + Between the eyes
 		],
 		[
-			//FEATURE_0: stances
+			//TODO: stances
 		]
 	]
 };
@@ -104,7 +104,7 @@ gt.Const.Perks.CleaverTree <- {
 			3
 		]
 	},
-	Tree = [ //FEATURE_0: Cleaver lacks an identity, expand it.
+	Tree = [ //TODO: Cleaver lacks an identity, expand it.
 		[],
 		[],
 		[],
@@ -113,19 +113,18 @@ gt.Const.Perks.CleaverTree <- {
 			// "Bloodbath
 			// Increase bleed damage from cleaver. Bleeds inflicted by cleavers have a 50% chance to last a turn longer.
 		],
+		[],
 		[
+			gt.Const.Perks.PerkDefs.Duelist
 			//Mutilation
 			//Refunds AP of the first attack... as long as the target is bleeding.
 		],
 		[
-			gt.Const.Perks.PerkDefs.Duelist
-		],
-		[
-			//FEATURE_0: stances
+			//TODO: stances
 			//[Stance] Yeild my flesh.... to claim their bones.
-			
 
-			
+
+
 			//Massacre (Stance).
 		]
 	]
@@ -184,7 +183,7 @@ gt.Const.Perks.SwordTree <- {
 			gt.Const.Perks.PerkDefs.Duelist
 		],
 		[
-			
+
 		]
 	]
 };
@@ -244,7 +243,7 @@ gt.Const.Perks.MaceTree <- {
 			gt.Const.Perks.PerkDefs.ReturnFavor
 		],
 		[
-			//FEATURE_0: stances
+			//TODO: stances
 		]
 	]
 };
@@ -298,10 +297,10 @@ gt.Const.Perks.FlailTree <- {
 		[],
 		[
 			gt.Const.Perks.PerkDefs.Duelist,
-			
+
 		],
 		[
-			//FEATURE_0: stances
+			//TODO: stances
 		]
 	]
 };
@@ -359,7 +358,7 @@ gt.Const.Perks.HammerTree <- {
 			gt.Const.Perks.PerkDefs.Duelist,
 		],
 		[
-			//FEATURE_0: stances
+			//TODO: stances
 		]
 	]
 };
@@ -464,14 +463,14 @@ gt.Const.Perks.SpearTree <- {
 	Tree = [
 		[],
 		[
-			
+
 		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.SpecSpear
 			gt.Const.Perks.PerkDefs.LegendSpecSpearWall
 			gt.Const.Perks.PerkDefs.LegendSpecSpearThrust
-			//FEATURE_0: Merge
+			//TODO: Merge
 
 			// "Two for One (requires Spear)
 			// When using a Spear, the action post cost of Thrust, Glaive Slash and Prong is reduced by 1. When using a 1h Spear with offhand free, the range of Thrust is increased to 2 tiles. When used at this range, it does 20% reduced Damage, has no bonus Chance-to-Hit, and has -20% Chance-to-Hit per character between you and the target."
@@ -480,7 +479,7 @@ gt.Const.Perks.SpearTree <- {
 			// When using a Spear, the first Thrust or Prong during your turn costs 0 Action Points, builds 0 Fatigue, but does -25% Damage."
 		],
 		[
-			
+
 		],
 		[
 			gt.Const.Perks.PerkDefs.Duelist
@@ -538,16 +537,16 @@ gt.Const.Perks.ShieldTree <- {
 			gt.Const.Perks.PerkDefs.Taunt
 		],
 		[
-			
+
 		],
 		[
 			gt.Const.Perks.PerkDefs.ShieldExpert
-			//gt.Const.Perks.PerkDefs.LegendSpecialistShieldPush //FEATURE_0 merge
-			//gt.Const.Perks.PerkDefs.ShieldBash //FEATURE_0: rework and merge, knockback, + chance to hit
+			//gt.Const.Perks.PerkDefs.LegendSpecialistShieldPush //TODO merge
+			//gt.Const.Perks.PerkDefs.ShieldBash //TODO: rework and merge, knockback, + chance to hit
 		],
 		[
 			gt.Const.Perks.PerkDefs.LegendSpecialistShieldSkill
-			//FEATURE_0: replace with rebuke
+			//TODO: replace with rebuke
 		],
 		[],
 		[]
@@ -603,7 +602,7 @@ gt.Const.Perks.GreatSwordTree <- {
 		[],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecGreatSword //FEATURE_0: update 5% -> 15% chance to hit
+			gt.Const.Perks.PerkDefs.LegendSpecGreatSword //TODO: update 5% -> 15% chance to hit
 			// LegendSpecGreatSword = "Master the art of fighting with a large unwieldy sword. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nSplit, Swing, Overhead Strike, Great Lunge and Great Slash gain [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit.",
 			// "There\'s wolves, bears, nachzehrers and you. All beings of vicious slaughter.\n\nGain [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] chance to hit for all Melee area of effect attacks.",
 			//gt.Const.Perks.PerkDefs.BloodyHarvest
@@ -617,15 +616,15 @@ gt.Const.Perks.GreatSwordTree <- {
 				//The strongest are undeterred no matter what they face.
 				//At the end of the turn, riposte.
 				//Upon the first melee attack hit per turn at 1 tile range, negate the attack and riposte it. Then remove riposte.
-			
+
 			//[Stance] Wrath
 				//Sacrifice defense to gain the ultimate offense.
 				// Area-of-Effect attacks cost -2 Action points and build 20% less Fatigue."
 				// Gain x% increased damage
 				// Reduce melee defense by x%
 
-			//FEATURE_0: rework stagger? reduces defenses. Grapple applies stagger.
-				
+			//TODO: rework stagger? reduces defenses. Grapple applies stagger.
+
 		]
 	]
 };

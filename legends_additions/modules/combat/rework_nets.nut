@@ -1,9 +1,13 @@
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.LegendNetRepair = "Net Specialization";
 ::Const.Strings.PerkDescription.LegendNetRepair = "Many years and storms weathered with a net in hand..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• Gain 3 nets. Start the battle off with one, and if this brother ends their turn with their offhand empty, will automatically replace their thrown nets."
-+ "\n• Grants +10 melee defense while holding a net.";
++ "\n"+::MSU.Text.colorGreen("+2") + " Nets"
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On turn end, offhand empty:[/u]")
++ "\n"+::MSU.Text.colorGreen("Add a net to the offhand")
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On battle end OR perk added:[/u]")
++ "\n"+::MSU.Text.colorGreen("Add a net to the offhand");
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendNetRepair].Name = ::Const.Strings.PerkName.LegendNetRepair;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendNetRepair].Tooltip = ::Const.Strings.PerkDescription.LegendNetRepair;
 
@@ -35,17 +39,7 @@
         }
 	}
 
-	function onUpdate( _properties )
-	{
-		local actor = this.getContainer().getActor();
-		local item = actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-
-		if (item == null) return
-		if (item.getID() == "tool.throwing_net" || item.getID() == "tool.reinforced_throwing_net")
-		{
-			_properties.MeleeDefense += 10;
-		}
-	}
+	onUpdate = function( _properties ){}
 
     o.refill <- function()
     {
@@ -86,12 +80,11 @@
 });
 
 //======================================================================================================================
-//TODO: rewrite using new format
 ::Const.Strings.PerkName.LegendNetCasting = "Net Arsenal"
 ::Const.Strings.PerkDescription.LegendNetCasting = "A well equipped mercenary is a prepared mercenary..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n• Increase the max amount of stored nets by 1."
-+ "\n• Nets thrown by this brother are 20% harder to break out of.";
++ "\n"+::MSU.Text.colorGreen("+1") + " Net"
++ "\n"+::MSU.Text.colorGreen("+20%") + " Net effectiveness";
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendNetCasting].Name = ::Const.Strings.PerkName.LegendNetCasting;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendNetCasting].Tooltip = ::Const.Strings.PerkDescription.LegendNetCasting;
 
