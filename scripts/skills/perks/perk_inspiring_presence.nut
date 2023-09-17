@@ -11,7 +11,7 @@
 + "\n"+::MSU.Text.colorGreen("+Shieldwall")
 
 + "\n\n" + ::MSU.Text.colorRed("There can only be one commander in the party. Will refund this perk if any other unit has it.")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Characters may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.InspiringPresence].Name = ::Const.Strings.PerkName.InspiringPresence;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.InspiringPresence].Tooltip = ::Const.Strings.PerkDescription.InspiringPresence;
@@ -36,19 +36,7 @@ this.perk_inspiring_presence <- this.inherit("scripts/skills/skill", {
 		if (!this.m.Container.hasSkill("actives.legend_hold_the_line"))
 			this.m.Container.add(this.new("scripts/skills/actives/legend_hold_the_line"));
 
-		//If NPC, logic doesn't apply
 		local actor = this.getContainer().getActor();
-		if (actor.getFaction() != ::Const.Faction.Player) return;
-
-		//Check for destiny, if already has, refund this perk
-		if (actor.getFlags().has("Destiny") || actor.getLevel() < 11)
-		{
-			actor.m.PerkPoints += 1;
-			actor.m.PerkPointsSpent -= 1;
-			this.removeSelf();
-			return;
-		}
-		
 		actor.getFlags().set("Destiny", "perk.inspiring_presence");
 
 		local playerRoster = this.World.getPlayerRoster().getAll();

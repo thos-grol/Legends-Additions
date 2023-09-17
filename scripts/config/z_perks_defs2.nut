@@ -38,6 +38,37 @@
 
 
 local perks = [
+///////////////////////////////////////////////////////////////////////////
+// Mastery
+///////////////////////////////////////////////////////////////////////////
+    {
+        ID = "perk.mastery.axec",
+        Script = "scripts/skills/perks/perk_mastery_axec",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_axe.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecAxeC"
+    },
+
+///////////////////////////////////////////////////////////////////////////
+// Stances
+///////////////////////////////////////////////////////////////////////////
+
+    {
+        ID = "perk.stance.executioner",
+        Script = "scripts/skills/perks/perk_stance_executioner",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/executioner.png",
+        IconDisabled = "ui/perks/executioner_bw.png",
+        Const = "StanceExecutioner"
+    },
+
+///////////////////////////////////////////////////////////////////////////
+// Monster
+///////////////////////////////////////////////////////////////////////////
+
     {
         ID = "perk.nachzerer_gluttony_barrier",
         Script = "scripts/skills/perks/perk_nachzerer_gluttony_barrier",
@@ -65,6 +96,11 @@ local perks = [
         IconDisabled = "ui/perks/perk_29_sw.png",
         Const = "DirewolfRuinAura"
     },
+
+///////////////////////////////////////////////////////////////////////////
+// Perk Rework
+///////////////////////////////////////////////////////////////////////////
+
 	{
         ID = "perk.finesse",
         Script = "scripts/skills/perks/perk_finesse",
@@ -79,8 +115,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_death_dealer",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/tackle_circle.png",
-        IconDisabled = "ui/perks/tackle_circle_bw.png",
+        Icon = "ui/perks/rf_death_dealer.png",
+        IconDisabled = "ui/perks/rf_death_dealer_bw.png",
         Const = "DeathDealer"
     },
     {

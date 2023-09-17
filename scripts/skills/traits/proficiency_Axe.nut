@@ -1,11 +1,15 @@
 this.proficiency_Axe <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {
-		TypeZ = "Axe",
-		BaseChance = 5,
-		ProficiencyMax = 100,
+		str = "Axe",
+		// BaseChance = 5,
+		// ProficiencyMax = 100,
+
+		BaseChance = 100,
+		ProficiencyMax = 1,
 		FlagBonus = "ProficiencyBonusAxe",
 		FlagStore = "ProficiencyAxe",
-		FlagReward = "ProficiencyAxeMastered",
+		Proficiency = ::Const.Perks.PerkDefs.SpecAxe,
+		Mastery = ::Const.Perks.PerkDefs.SpecAxeC
 	},
 	function create()
 	{
@@ -37,7 +41,7 @@ this.proficiency_Axe <- this.inherit("scripts/skills/traits/character_trait", {
 		}
 
 		if (actor.getFlags().getAsInt(this.m.FlagStore) == this.m.ProficiencyMax) 
-			actor.getFlags().set(this.m.FlagReward, true);
+			reward();
 	}
 
 	function getDetails( _tooltip )
@@ -52,10 +56,19 @@ this.proficiency_Axe <- this.inherit("scripts/skills/traits/character_trait", {
 			id = 6,
 			type = "text",
 			icon = "ui/icons/melee_skill.png",
-			text = this.m.TypeZ + " Proficiency: " + ::MSU.Text.color(::Z.Log.Color.BloodRed, amount + " / " + this.m.ProficiencyMax)
+			text = this.m.str + " Proficiency: " + ::MSU.Text.color(::Z.Log.Color.BloodRed, amount + " / " + this.m.ProficiencyMax)
 		});
 		return _tooltip;
 	}
+
+	function reward()
+	{
+		local actor = this.getContainer().getActor();
+		::Z.Perks.remove(actor, this.m.Proficiency);
+		::Z.Perks.add(actor, this.m.Mastery, 3);
+	}
+
+	
 
 });
 

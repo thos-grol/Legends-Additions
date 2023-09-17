@@ -41,7 +41,7 @@
 		else if (r == 3) item = ::new("scripts/items/weapons/billhook");
 		else item = ::new("scripts/items/weapons/winged_mace");
 
-		this.addPerkGroup(::Z.Perks.getTreeFromItem(item));
+		this.addPerkGroup(::Z.Perks.tree(item));
 		items.equip(item);
 
 		items.equip(this.Const.World.Common.pickArmor([

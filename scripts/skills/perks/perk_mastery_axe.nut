@@ -19,6 +19,7 @@ this.perk_mastery_axe <- this.inherit("scripts/skills/skill", {
 	m = {
 		IsForceEnabled = false,
 		Threshold = 0.33,
+		ThresholdExecutioner = 0.44,
 	},
 	function create()
 	{
@@ -38,13 +39,14 @@ this.perk_mastery_axe <- this.inherit("scripts/skills/skill", {
 		if (_bodyPart != ::Const.BodyPart.Head 
 			|| !_skill.isAttack() || !this.isEnabled() 
 			|| !_targetEntity.isAlive() || _targetEntity.isDying() 
-			|| _targetEntity.getSkills().hasSkill("effects.SpecAxe") 
+			|| _targetEntity.getSkills().hasSkill("effects.indomitable") 
 			|| _targetEntity.getSkills().hasSkill("perk.colossus")
 			) return;
 
 		local actor = this.getContainer().getActor();
+		local threshold = actor.getSkills().hasSkill("perk.stance.executioner") ? this.m.ThresholdExecutioner : this.m.Threshold;
 		
-		if (_targetEntity.getHitpoints() / (_targetEntity.getHitpointsMax() * 1.0) < this.m.Threshold)
+		if (_targetEntity.getHitpoints() / (_targetEntity.getHitpointsMax() * 1.0) < threshold)
 		{
 			if (!actor.isHiddenToPlayer() && _targetEntity.getTile().IsVisibleForPlayer) 
 				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " has been culled"));
@@ -77,7 +79,6 @@ this.perk_mastery_axe <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		//If NPC, logic doesn't apply
 		local actor = this.getContainer().getActor();
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 

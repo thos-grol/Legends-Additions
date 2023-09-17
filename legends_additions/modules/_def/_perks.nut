@@ -1,5 +1,24 @@
 ::Z.Perks <- {};
-::Z.Perks.addPerk <- function (_actor, _perk, _perk_row)
+
+::Z.Perks.Destiny <- {
+    "perk.fresh_and_furious" : 0,
+    "perk.indomitable" : 0,
+    "perk.inspiring_presence" : 0,
+    "perk.legend_blend_in" : 0,
+    "perk.legend_escape_artist" : 0,
+    "perk.legend_mind_over_body" : 0,
+    "perk.legend_muscularity" : 0,
+    "perk.legend_perfect_focus" : 0,
+    "perk.overwhelm" : 0,
+    "perk.vengeance" : 0,
+};
+
+::Z.Perks.Stance <- {
+    "perk.stance.executioner": "perk.mastery.axec",
+};
+
+
+::Z.Perks.add <- function (_actor, _perk, _perk_row)
 {
     //if has skill, remove and refund
     if (_actor.getSkills().hasSkill(::Const.Perks.PerkDefObjects[_perk].ID))
@@ -15,18 +34,18 @@
     _actor.getSkills().add(::new(::Const.Perks.PerkDefObjects[_perk].Script));
 }
 
-::Z.Perks.removePerk <- function (_actor, _perk_id, _perk)
+::Z.Perks.remove <- function (_actor, _perk)
 {
     //if has skill, remove and refund
-    if (_actor.getSkills().hasSkill(_perk_id))
+    if (_actor.getSkills().hasSkill(::Const.Perks.PerkDefObjects[_perk].ID))
     {
-        _actor.getSkills().removeByID(_perk_id);
+        _actor.getSkills().removeByID(::Const.Perks.PerkDefObjects[_perk].ID);
     }
     //if perk exists, remove it from the tree
     if (_actor.getBackground().hasPerk(_perk)) _actor.getBackground().removePerk(_perk)
 }
 
-::Z.Perks.getTreeFromItem <- function (_item)
+::Z.Perks.tree <- function (_item)
 {
     if (_item.isItemType(::Const.Items.ItemType.Shield)) return ::Const.Perks.ShieldTree.Tree;
     else if (_item.m.ID == "tool.throwing_net") return ::Const.Perks.BeastClassTree.Tree;
@@ -44,4 +63,19 @@
     else if (_item.isWeaponType(::Const.Items.WeaponType.Bow)) return ::Const.Perks.BowTree.Tree;
     else if (_item.isWeaponType(::Const.Items.WeaponType.Sling)) return ::Const.Perks.SlingTree.Tree;
     else return ::Const.Perks.MaceTree.Tree;
+}
+
+::Z.Perks.isDestiny <- function (_id)
+{
+    return _id in ::Z.Perks.Destiny;
+}
+
+::Z.Perks.isStance <- function (_id)
+{
+    return _id in ::Z.Perks.Stance;
+}
+
+::Z.Perks.verifyStance <- function (_actor, _id)
+{
+    return _actor.getSkills().hasSkill(::Z.Perks.Stance[_id]);
 }

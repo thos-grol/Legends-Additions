@@ -7,9 +7,27 @@
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 		this.m.PerkTreeDynamicMins.Traits = 3;
 
+		//FEATURE_0: remove test code
+
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.DaggerTree
+				// ::Const.Perks.MaceTree,
+				// ::Const.Perks.FlailTree,
+				// ::Const.Perks.HammerTree,
+				// ::Const.Perks.AxeTree,
+				// ::Const.Perks.CleaverTree,
+				// ::Const.Perks.GreatSwordTree,
+				// ::Const.Perks.SwordTree,
+				// ::Const.Perks.DaggerTree,
+				// ::Const.Perks.PolearmTree,
+				// ::Const.Perks.SpearTree,
+				// ::Const.Perks.CrossbowTree,
+				// ::Const.Perks.BowTree,
+				// ::Const.Perks.ThrowingTree,
+				// ::Const.Perks.SlingTree,
+				// ::Const.Perks.ShieldTree,
+				// ::Const.Perks.StaffTree
+				::Const.Perks.AxeTree,
 			],
 			Defense = [
 				this.Const.Perks.HeavyArmorTree
@@ -56,7 +74,7 @@
 			}
 
 			local item = ::new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]);
-			this.addPerkGroup(::Z.Perks.getTreeFromItem(item));
+			this.addPerkGroup(::Z.Perks.tree(item));
 			items.equip(item);
 		}
 
@@ -68,7 +86,7 @@
 			];
 
 			local item = ::new("scripts/items/" + offhand[this.Math.rand(0, offhand.len() - 1)]);
-			this.addPerkGroup(::Z.Perks.getTreeFromItem(item));
+			this.addPerkGroup(::Z.Perks.tree(item));
 			items.equip(item);
 		}
 

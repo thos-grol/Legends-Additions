@@ -171,4 +171,27 @@
 			done = ++done;
 		}
 	}
+
+	o.isPerkUnlockable = function( _id )
+	{
+		if (this.m.PerkPoints == 0 || this.hasPerk(_id)) return false;
+		local perk = this.getBackground().getPerk(_id);
+		if (perk == null) return false;
+
+		if (::Z.Perks.isDestiny(_id))
+		{
+			if (this.m.Level < 11) return false; //is level 11
+			if (this.getFlags().has("Destiny")) return false; //has a destiny already
+		}
+
+		if (::Z.Perks.isStance(_id))
+		{
+			if (!::Z.Perks.verifyStance(actor, _id)) return false; //has required mastery
+			if (this.getFlags().has("Stance")) return false; //has a stance already
+		}
+		
+
+		if (this.m.PerkPointsSpent >= perk.Unlocks) return true;
+		return false;
+	}
 });

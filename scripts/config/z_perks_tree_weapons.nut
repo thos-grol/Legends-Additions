@@ -62,6 +62,7 @@ gt.Const.Perks.AxeTree <- {
 			gt.Const.Perks.PerkDefs.ReachAdvantage
 		],
 		[
+			gt.Const.Perks.PerkDefs.StanceExecutioner
 			//TODO: axe stance: Executioner
 			// +50 Headshot chance
 			// Cull now triggers at 44% HP

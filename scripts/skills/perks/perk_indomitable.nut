@@ -11,7 +11,7 @@
 + "\n" + ::MSU.Text.colorGreen("Become Indomitable")
 + "\n" + ::MSU.Text.colorRed("Effect lasts until the end of battle")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Characters may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Indomitable].Name = ::Const.Strings.PerkName.Indomitable;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Indomitable].Tooltip = ::Const.Strings.PerkDescription.Indomitable;
@@ -38,18 +38,7 @@ this.perk_indomitable <- this.inherit("scripts/skills/skill", {
 		if (!this.m.Container.hasSkill("actives.indomitable"))
 			this.m.Container.add(this.new("scripts/skills/actives/indomitable"));
 
-		//If NPC, logic doesn't apply
 		local actor = this.getContainer().getActor();
-		if (actor.getFaction() != ::Const.Faction.Player) return;
-
-		//Check for destiny, if already has, refund this perk
-		if (actor.getFlags().has("Destiny") || actor.getLevel() < 11)
-		{
-			actor.m.PerkPoints += 1;
-			actor.m.PerkPointsSpent -= 1;
-			this.removeSelf();
-			return;
-		}
 		actor.getFlags().set("Destiny", "perk.indomitable");
 	}
 

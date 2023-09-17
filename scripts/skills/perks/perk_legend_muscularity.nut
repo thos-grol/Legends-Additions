@@ -5,7 +5,7 @@
 + "\n"+::MSU.Text.colorGreen("+25% of current Hitpoints") + " to Minimum and Maximum damage"
 + "\n"+::MSU.Text.colorRed("+100%") + " target attraction, due to being huge"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Characters may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Name = ::Const.Strings.PerkName.LegendMuscularity;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Tooltip = ::Const.Strings.PerkDescription.LegendMuscularity;
@@ -28,27 +28,8 @@ this.perk_legend_muscularity <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		//If NPC, logic doesn't apply
 		local actor = this.getContainer().getActor();
-		if (actor.getFaction() != ::Const.Faction.Player) return;
-
-		//Check for destiny, if already has, refund this perk
-		if (actor.getFlags().has("Destiny") || actor.getLevel() < 11)
-		{
-			actor.m.PerkPoints += 1;
-			actor.m.PerkPointsSpent -= 1;
-			this.removeSelf();
-			return;
-		}
 		actor.getFlags().set("Destiny", "perk.legend_muscularity");
-	}
-
-	function onRemoved()
-	{
-		local actor = this.getContainer().getActor();
-		if (actor.getFaction() != ::Const.Faction.Player) return;
-		
-		
 	}
 
 	function onUpdate( _properties )

@@ -7,7 +7,7 @@
 + "\n\n" + ::MSU.Text.colorGreen("+Fresh Injury effect immunity")
 + "\n" + ::MSU.Text.colorGreen("+Morale unnaffected by Hitpoint loss")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Characters may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMindOverBody].Name = ::Const.Strings.PerkName.LegendMindOverBody;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMindOverBody].Tooltip = ::Const.Strings.PerkDescription.LegendMindOverBody;
@@ -29,27 +29,8 @@ this.perk_legend_mind_over_body <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		//If NPC, logic doesn't apply
 		local actor = this.getContainer().getActor();
-		if (actor.getFaction() != ::Const.Faction.Player) return;
-
-		//Check for destiny, if already has, refund this perk
-		if (actor.getFlags().has("Destiny") || actor.getLevel() < 11)
-		{
-			actor.m.PerkPoints += 1;
-			actor.m.PerkPointsSpent -= 1;
-			this.removeSelf();
-			return;
-		}
 		actor.getFlags().set("Destiny", "perk.legend_mind_over_body");
-	}
-
-	function onRemoved()
-	{
-		local actor = this.getContainer().getActor();
-		if (actor.getFaction() != ::Const.Faction.Player) return;
-		
-		
 	}
 
 	function getBonus()

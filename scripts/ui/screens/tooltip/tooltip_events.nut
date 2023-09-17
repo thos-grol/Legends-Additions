@@ -1057,6 +1057,54 @@ this.tooltip_events <- {
 
 			if (!player.hasPerk(_perkId))
 			{
+				//Destiny changes
+				if (::Z.Perks.isDestiny(_perkId))
+                {
+                    if (player.m.Level < 11)
+                    {
+                        ret.push({
+                            id = 3,
+                            type = "hint",
+                            icon = "ui/icons/icon_locked.png",
+                            text = "This character needs to break through the limit and reach Level 11 to obtain a Destiny"
+                        });
+                    }
+                    else if (player.getFlags().has("Destiny"))
+                    {
+                        ret.push({
+                            id = 3,
+                            type = "hint",
+                            icon = "ui/icons/icon_locked.png",
+                            text = "This character has already obtained a Destiny"
+                        });
+                    }
+                    return ret;
+                }
+
+				//stance changes
+				if (::Z.Perks.isStance(_perkId))
+                {
+                    if (!::Z.Perks.verifyStance(player, _perkId))
+                    {
+                        ret.push({
+                            id = 3,
+                            type = "hint",
+                            icon = "ui/icons/icon_locked.png",
+                            text = "This character must master the weapon first"
+                        });
+                    }
+                    else if (player.getFlags().has("Stance"))
+                    {
+                        ret.push({
+                            id = 3,
+                            type = "hint",
+                            icon = "ui/icons/icon_locked.png",
+                            text = "This character has already obtained a Stance"
+                        });
+                    }
+                    return ret;
+                }
+
 				if (player.getPerkPointsSpent() >= perk.Unlocks)
 				{
 					if (player.getPerkPoints() == 0)

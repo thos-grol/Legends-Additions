@@ -4,13 +4,14 @@
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On first skill use this turn:[/u]")
 + "\n"+::MSU.Text.colorGreen("– 50%") + " AP cost"
 + "\n"+::MSU.Text.colorRed("Invalid if Fatigue is over 40% max")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Characters may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.FreshAndFurious].Name = ::Const.Strings.PerkName.FreshAndFurious;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.FreshAndFurious].Tooltip = ::Const.Strings.PerkDescription.FreshAndFurious;
 
 this.perk_fresh_and_furious <- ::inherit("scripts/skills/skill", {
 	m = {
+		Destiny = true,
 		IsUsingFreeSkill = false,
 		IsSpent = true
 	},
@@ -96,27 +97,10 @@ this.perk_fresh_and_furious <- ::inherit("scripts/skills/skill", {
 		this.m.IsSpent = true;
 	}
 
-	
 	function onAdded()
 	{
-		//If NPC, logic doesn't apply
 		local actor = this.getContainer().getActor();
-		if (actor.getFaction() != ::Const.Faction.Player) return;
-
-		//Check for destiny, if already has, refund this perk
-		if (actor.getFlags().has("Destiny") || actor.getLevel() < 11)
-		{
-			actor.m.PerkPoints += 1;
-			actor.m.PerkPointsSpent -= 1;
-			this.removeSelf();
-			return;
-		}
 		actor.getFlags().set("Destiny", "perk.fresh_and_furious");
 	}
 
-	function onRemoved()
-	{
-		local actor = this.getContainer().getActor();
-		if (actor.getFaction() != ::Const.Faction.Player) return;
-	}
 });

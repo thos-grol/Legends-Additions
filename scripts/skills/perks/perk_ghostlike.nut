@@ -7,6 +7,8 @@
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Ghostlike].Name = ::Const.Strings.PerkName.Ghostlike;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Ghostlike].Tooltip = ::Const.Strings.PerkDescription.Ghostlike;
 
+//TODO: update with fixed reforge
+
 this.perk_ghostlike <- ::inherit("scripts/skills/skill", {
 	m = {
 		IsSpent = true

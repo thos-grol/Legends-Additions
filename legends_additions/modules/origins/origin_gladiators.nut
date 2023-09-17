@@ -64,8 +64,7 @@
 		bros[0].improveMood(0.75, "Eager to prove himself outside the arena");
 		bros[0].setVeteranPerks(2);
 
-		::Z.Perks.addPerk(bros[0], ::Const.Perks.PerkDefs.NachzererGluttonyBarrier, 1);
-
+		::Z.Perks.add(bros[0], ::Const.Perks.PerkDefs.NachzererGluttonyBarrier, 1);
 
 		bros[1].setTitle("the Bear");
 		bros[1].getSkills().add(this.new("scripts/skills/traits/glorious_endurance_trait"));
