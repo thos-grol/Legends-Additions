@@ -113,21 +113,20 @@ gt.Const.Perks.FistsClassTree <- {
 	],
 	Tree = [
 		[],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendAmbidextrous
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendGrapple
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecFists
+			gt.Const.Perks.PerkDefs.LegendSpecFists //TODO: merge, fist mastery. Heavier armor increases fist damage
+			//gt.Const.Perks.PerkDefs.LegendGrapple //TODO: decrease defense bonus for you
 		],
 		[],
+		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendTackle
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendChoke
+			//Wrestler
+			//gt.Const.Perks.PerkDefs.LegendGrapple, can disarm
+			//TODO: can use grappled enemy and redirect incoming attack, 50% chance
 		]
 	]
 };

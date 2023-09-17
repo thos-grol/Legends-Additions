@@ -79,8 +79,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_death_dealer",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/rf_finesse.png",
-        IconDisabled = "ui/perks/rf_finesse_bw.png",
+        Icon = "ui/perks/tackle_circle.png",
+        IconDisabled = "ui/perks/tackle_circle_bw.png",
         Const = "DeathDealer"
     },
     {

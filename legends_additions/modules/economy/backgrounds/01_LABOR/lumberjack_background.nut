@@ -27,6 +27,9 @@
 
 	o.onAddEquipment = function()
 	{
+		local actor = this.getContainer().getActor();
+		actor.getFlags().set("ProficiencyBonusAxe", true);
+
 		local items = this.getContainer().getActor().getItems();
 		local r;
 		r = this.Math.rand(0, 3);
@@ -73,6 +76,18 @@
 				"hood"
 			]
 		]));
+	}
+
+	o.getTooltip <- function ()
+	{
+		local ret = this.character_background.getTooltip();
+		ret.push({
+			id = 12,
+			type = "text",
+			icon = "ui/icons/special.png",
+			text = "Gains axe proficiency faster"
+		});
+		return ret;
 	}
 
 });

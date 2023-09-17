@@ -4,7 +4,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Perfect Focus\'[/u] (0 AP, 0 Fat):")
 + "\n" + ::MSU.Text.colorGreen("– 50%") + " AP costs for skills, " + ::MSU.Text.colorRed("but +75% Fatigue cost")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny. \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PerfectFocus].Name = ::Const.Strings.PerkName.PerfectFocus;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PerfectFocus].Tooltip = ::Const.Strings.PerkDescription.PerfectFocus;

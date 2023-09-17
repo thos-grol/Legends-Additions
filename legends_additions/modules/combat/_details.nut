@@ -26,7 +26,11 @@
 	{
 		local tooltip = this.skill.getTooltip();
 		local details = getTooltip_Details();
-		local p = this.getContainer().getActor().getCurrentProperties();
+		local actor = this.getContainer().getActor();
+		local p = actor.getCurrentProperties();
+
+
+		getTooltip_Proficiency(tooltip);
 
 		tooltip.push({
 			id = 10,
@@ -54,25 +58,78 @@
 		{
 			case 1: //Light
 			getTooltip_FreedomOfMovement(tooltip);
-			if (this.getContainer().hasSkill("perk.nimble")) getTooltip_Nimble(tooltip);
 			break;
 
 			case 2: //Medium
 			getTooltip_MediumArmor(tooltip);
-			if (this.getContainer().hasSkill("perk.legend_lithe")) getTooltip_Lithe(tooltip);
 			break;
 
 			case 3: //Heavy
 			getTooltip_ManOfSteel(tooltip);
-			if (this.getContainer().hasSkill("perk.battle_forged")) getTooltip_Battleforged(tooltip);
 			break;
 		}
+
+		if (this.getContainer().hasSkill("perk.nimble")) getTooltip_Nimble(tooltip);
+		if (this.getContainer().hasSkill("perk.legend_lithe")) getTooltip_Lithe(tooltip);
+		if (this.getContainer().hasSkill("perk.battle_forged")) getTooltip_Battleforged(tooltip);
 
 		if (this.getContainer().hasSkill("perk.legend_small_target")) getTooltip_SmallTarget(tooltip);
 		if (this.getContainer().hasSkill("effects.dodge")) getTooltip_Dodge(tooltip);
 
 		return tooltip;
 	}
+
+	// =============================================================================================
+	// Proficiency tooltips
+	// =============================================================================================
+
+	o.getTooltip_Proficiency <- function( _tooltip )
+	{
+		local actor = this.getContainer().getActor();
+		local skill;
+		local count = 0;
+
+		local proficiencies = [
+			"trait.proficiency_Axe",
+			"trait.proficiency_Cleaver",
+			"trait.proficiency_Sword",
+			"trait.proficiency_Mace",
+			"trait.proficiency_Hammer",
+			"trait.proficiency_Flail",
+			"trait.proficiency_Spear",
+			"trait.proficiency_Polearm",
+			"trait.proficiency_Dagger",
+			"trait.proficiency_Shield",
+			"trait.proficiency_Unarmed",
+		];
+
+		foreach (proficiency in proficiencies)
+		{
+			skill = actor.getSkills().getSkillByID(proficiency);
+			if (skill != null)
+			{
+				skill.getDetails(_tooltip);
+				count += 1;
+			}
+		}
+
+		if (count > 0)
+		{
+			_tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "========================"
+			});
+		}
+
+		return _tooltip;
+	}
+
+
+	// =============================================================================================
+	// Logic
+	// =============================================================================================
 
 	o.onUpdate = function( _properties )
 	{

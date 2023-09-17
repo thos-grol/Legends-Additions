@@ -2,6 +2,7 @@
 ::Const.Strings.PerkDescription.Colossus = "This character looms over their enemies..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n" + ::MSU.Text.colorGreen("+25%") + " Hitpoints."
++ "\n" + ::MSU.Text.colorGreen("+Cull Immunity")
 + "\n" + ::MSU.Text.colorGreen("+Hits to the head no longer cause critical damage")
 + "\n" + ::MSU.Text.colorGreen("+Most attacks that would stun, now dazes")
 + "\n\n" + ::MSU.Text.colorRed("More hitpoints and lower damage taken reduce the chances of becoming injured");

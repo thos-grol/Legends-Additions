@@ -5,8 +5,8 @@
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAlert].Name = ::Const.Strings.PerkName.LegendAlert;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAlert].Tooltip = ::Const.Strings.PerkDescription.LegendAlert;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAlert].Icon = "ui/perks/rf_blitzkrieg.png";
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAlert].IconDisabled = "ui/perks/rf_blitzkrieg_bw.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAlert].Icon = "ui/perks/alert_circle.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAlert].IconDisabled = "ui/perks/alert_circle_bw.png";
 
 this.perk_legend_alert <- this.inherit("scripts/skills/skill", {
 	m = {},
@@ -15,8 +15,8 @@ this.perk_legend_alert <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "perk.legend_alert";
 		this.m.Name = this.Const.Strings.PerkName.LegendAlert;
 		this.m.Description = this.Const.Strings.PerkDescription.LegendAlert;
-		this.m.Icon = "ui/perks/rf_blitzkrieg.png";
-		this.m.IconDisabled = "ui/perks/rf_blitzkrieg_bw.png";
+		this.m.Icon = "ui/perks/alert_circle.png";
+		this.m.IconDisabled = "ui/perks/alert_circle_bw.png";
 		this.m.Type = this.Const.SkillType.Perk;
 		this.m.Order = this.Const.SkillOrder.Perk;
 		this.m.IsActive = false;

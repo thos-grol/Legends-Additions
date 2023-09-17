@@ -5,7 +5,7 @@
 + "\nInflict 1 stack of " + ::MSU.Text.colorRed("Overwhelm") + ": " + ::MSU.Text.colorGreen("– 10%") + " melee and ranged attack per stack for a turn)."
 + "\n" + ::MSU.Text.colorGreen("+20%") + " increased damage for the next attack on landing an attack."
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny. \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Overwhelm].Name = ::Const.Strings.PerkName.Overwhelm;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Overwhelm].Tooltip = ::Const.Strings.PerkDescription.Overwhelm;

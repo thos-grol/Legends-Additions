@@ -8,7 +8,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On turn start:")
 + "\n"+::MSU.Text.colorGreen("Perform a break free action using Melee Skill with a -25 penalty")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny. \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Name = ::Const.Strings.PerkName.LegendEscapeArtist;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Tooltip = ::Const.Strings.PerkDescription.LegendEscapeArtist;

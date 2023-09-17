@@ -11,7 +11,7 @@
 + "\n"+ ::MSU.Text.colorGreen("+20%") + " armor penetration"
 + "\n"+ ::MSU.Text.colorRed("Invalid if this target has been hit before")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny. \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "You may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Name = ::Const.Strings.PerkName.LegendBlendIn;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Tooltip = ::Const.Strings.PerkDescription.LegendBlendIn;
