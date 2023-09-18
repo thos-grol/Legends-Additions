@@ -8,9 +8,7 @@
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Skill: Split Shield[/u]")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue"
-+ "\n " + ::MSU.Text.colorGreen("+50%") + " shield damage"
-
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Deal damage with axes to have a chance of increasing proficiency \n\nSee progress on the Details page");
++ "\n " + ::MSU.Text.colorGreen("+50%") + " shield damage";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecAxe].Name = ::Const.Strings.PerkName.SpecAxe;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecAxe].Tooltip = ::Const.Strings.PerkDescription.SpecAxe;

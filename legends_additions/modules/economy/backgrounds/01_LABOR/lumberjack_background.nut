@@ -25,6 +25,18 @@
 		};
 	}
 
+	o.getTooltip <- function ()
+	{
+		local ret = this.character_background.getTooltip();
+		ret.push({
+			id = 12,
+			type = "text",
+			icon = "ui/icons/special.png",
+			text = "Gains axe proficiency faster"
+		});
+		return ret;
+	}
+
 	o.onAddEquipment = function()
 	{
 		local actor = this.getContainer().getActor();
@@ -76,18 +88,6 @@
 				"hood"
 			]
 		]));
-	}
-
-	o.getTooltip <- function ()
-	{
-		local ret = this.character_background.getTooltip();
-		ret.push({
-			id = 12,
-			type = "text",
-			icon = "ui/icons/special.png",
-			text = "Gains axe proficiency faster"
-		});
-		return ret;
 	}
 
 });

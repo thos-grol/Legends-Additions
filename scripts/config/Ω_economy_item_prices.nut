@@ -14,10 +14,10 @@
 // 	- tie that currency to another currency ie. resources that are used in multiple ways
 // 	- overhauled crafting system so players don't sell their items but use them elsewhere/break them down
 
-//FEATURE_4: Barbarians stats are higher than average humans due to needing to survive
+//FEATURE_5: Barbarians stats are higher than average humans due to needing to survive
 
 //FEATURE_8: overhaul enemy equipment/builds
-//FEATURE_4: selling the same item type to stores will decrease the price you can sell it at for a duration...
+//FEATURE_5: selling the same item type to stores will decrease the price you can sell it at for a duration...
 //FEATURE_7: guild headquarters features:
 	//bros in headquarters will charge extra salary accounting for food
 	//item storage
@@ -66,9 +66,9 @@
 	"supplies.medicine" : 120,
 
 	//AMMO
-	"ammo.arrows" : 30, //FIXME: a lot of arrows/bolts/powder share same id, use manual hooks for prices
+	"ammo.arrows" : 30, //FEATURE_6: a lot of arrows/bolts/powder share same id, use manual hooks for prices
 	"ammo.bolts" : 0,
-	"ammo.powder" : 0, //FEATURE_5: refillable with alchemist
+	"ammo.powder" : 0, //FEATURE_6: refillable with alchemist
 
 	//FOOD
 	"supplies.ground_grains" : 5, 		//unit of 15 servings
@@ -95,16 +95,16 @@
 	//REMOVED
 	"supplies.cured_venison" : 0,
 	"supplies.goat_cheese" : 0,
-	"supplies.legend_human_parts" : 0, //FEATURE_4: Remove
+	"supplies.legend_human_parts" : 0, //FEATURE_5: Remove
 	"supplies.fermented_unhold_heart" : 0,
 	"supplies.legend_yummy_sausages" : 0,
 	"supplies.black_marsh_stew" : 0,
-	"supplies.legend_porridge" : 0, //FEATURE_4: Remove
-	"supplies.legend_pudding" : 0, //FEATURE_4: Remove
-	"supplies.legend_pie" : 0, //FEATURE_4: Remove
-	"supplies.cured_rations" : 0, //FEATURE_4: Remove
-	"supplies.legend_cooking_spices" : 0,//FEATURE_4: Remove
-	"supplies.pickled_mushrooms" : 0,//FEATURE_4: Remove
+	"supplies.legend_porridge" : 0, //FEATURE_5: Remove
+	"supplies.legend_pudding" : 0, //FEATURE_5: Remove
+	"supplies.legend_pie" : 0, //FEATURE_5: Remove
+	"supplies.cured_rations" : 0, //FEATURE_5: Remove
+	"supplies.legend_cooking_spices" : 0,//FEATURE_5: Remove
+	"supplies.pickled_mushrooms" : 0,//FEATURE_5: Remove
 
 //TRADE
 	"misc.peat_bricks" : 34,
@@ -130,10 +130,10 @@
 	"misc.gold_ingots" : 6400, //FEATURE_7: redo item to be 1 ingot
 	//FEATURE_7: add gemstones
 	"misc.uncut_gems" : 840, //6 units of uncut emeralds
-	"misc.gemstones" : 700, //1 units of cut emeralds //FIXME: Change to trade item
+	"misc.gemstones" : 700, //1 units of cut emeralds //FEATURE_6: Change to trade item
 
 	//Removed
-	"misc.legend_cooking_spices" : 0, //FEATURE_4: Remove
+	"misc.legend_cooking_spices" : 0, //FEATURE_5: Remove
 
 //TENTS
 	"tent.hunter_tent" : 200,
@@ -156,7 +156,7 @@
 	"spawns.cart_01" : 260,
 	"spawns.cart_02" : 400,
 
-//LOOT //FIXME: LOOT sort by tiers and price
+//LOOT //FEATURE_8: LOOT sort by tiers and price
 	"misc.signet_ring" : 960, //FEATURE_8: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
 	"misc.ancient_scroll" : 400,
 	"misc.legend_scroll" : 400,
@@ -269,35 +269,35 @@
 	"legend_armor_upgrade.legend_rune_resilience" : 0,
 	"legend_armor_upgrade.legend_rune_safety" : 0,
 
-//TOOLS //FEATURE_5: Tools prices
-	"tool.legend_broken_throwing_net" : 0, //FEATURE_5: Remove
+//TOOLS //FEATURE_6: Tools prices
+	"tool.legend_broken_throwing_net" : 0, //FEATURE_6: Remove
 	"accessory.therianthropy_potion" : 0,
 	"tool.throwing_net" : 0,
 	"tool.reinforced_throwing_net" : 0,
-	"weapon.holy Water" : 100, //FEATURE_5: refillable with priest
-	"weapon.acid_flask" : 400, //FEATURE_2: rework, refillable with alchemist retinue
-	"weapon.smoke_bomb" : 400, //FEATURE_2: rework, refillable with alchemist retinue
-	"weapon.daze_bomb" : 500, //FEATURE_2: rework, refillable with alchemist retinue
-	"weapon.fire_bomb" : 600, //FEATURE_2: rework, refillable with alchemist retinue
+	"weapon.holy Water" : 100, //FEATURE_6: refillable with priest
+	"weapon.acid_flask" : 400, //FEATURE_3: rework, refillable with alchemist retinue
+	"weapon.smoke_bomb" : 400, //FEATURE_3: rework, refillable with alchemist retinue
+	"weapon.daze_bomb" : 500, //FEATURE_3: rework, refillable with alchemist retinue
+	"weapon.fire_bomb" : 600, //FEATURE_3: rework, refillable with alchemist retinue
 	"accessory.berserker_mushrooms" : 100,
 	"accessory.legend_apothecary_mushrooms" : 100,
 	"accessory.poison" : 100,
-	"accessory.antidote" : 150, //FEATURE_2: rework, refillable with alchemist retinue
-	"accessory.spider_poison" : 150, //FEATURE_2: rework, refillable with alchemist retinue
-	"accessory.iron_will_potion" : 300, //FEATURE_2: rework, refillable with alchemist retinue
-	"accessory.lionheart_potion" : 300, //FEATURE_2: rework, refillable with alchemist retinue
-	"accessory.night_vision_elixir" : 350, //FEATURE_2: rework, refillable with alchemist retinue
-	"accessory.recovery_potion" : 350, //FEATURE_2: rework, refillable with alchemist retinue
+	"accessory.antidote" : 150, //FEATURE_3: rework, refillable with alchemist retinue
+	"accessory.spider_poison" : 150, //FEATURE_3: rework, refillable with alchemist retinue
+	"accessory.iron_will_potion" : 300, //FEATURE_3: rework, refillable with alchemist retinue
+	"accessory.lionheart_potion" : 300, //FEATURE_3: rework, refillable with alchemist retinue
+	"accessory.night_vision_elixir" : 350, //FEATURE_3: rework, refillable with alchemist retinue
+	"accessory.recovery_potion" : 350, //FEATURE_3: rework, refillable with alchemist retinue
 	"accessory.legend_heartwood_sap_flask" : 3500,
 	"accessory.legend_skin_ghoul_blood_flask" : 3500,
 	"accessory.legend_stollwurm_blood_flask" : 3500,
 	"accessory.legend_hexen_ichor_potion" : 7000,
 	"misc.potion_of_oblivion" : 2500,
 	"misc.potion_of_knowledge" : 750,
-	"accessory.cat_potion" : 350, //FEATURE_2: rework, refillable with alchemist retinue
-	//FEATURE_5: Toxicity system
+	"accessory.cat_potion" : 350, //FEATURE_3: rework, refillable with alchemist retinue
+	//FEATURE_6: Toxicity system
 	//Contraband
-	"misc.happy_powder" : 400, //FIXME: Drugs
+	"misc.happy_powder" : 400, //FEATURE_6: Drugs
 	"misc.miracle_drug" : 450,
 
 	"misc.bodily_reward" : 2500,
@@ -329,19 +329,19 @@
 	"accessory.falcon" : 100,
 	"accessory.legend_cat_item" : 0,
 	"accessory.legend_wolfsbane_necklace" : 0,
-	"accessory.wardog" : 0, //FIXME: Remove from contracts and troops
-	"accessory.warhound" : 0, //FIXME: Remove from contracts and troops
-	"accessory.armored_wardog" : 0, //FIXME: Remove from contracts and troops
-	"accessory.armored_warhound" : 0, //FIXME: Remove from contracts and troops
-	"accessory.heavily_armored_wardog" : 0, //FIXME: Remove from contracts and troops
-	"accessory.warwolf" : 0, //FIXME: Remove from contracts and troops
-	"accessory.heavily_armored_warhound" : 0, //FIXME: Remove from contracts and troops
-	"accessory.legend_warbear" : 0, //FIXME: Remove from contracts and troops
-	"accessory.legend_white_warwolf" : 0, //FIXME: Remove from contracts and troops
-	"misc.wardog_heavy_armor_upgrade" : 0, //FIXME: Remove from contracts and troops
-	"misc.wardog_armor_upgrade" : 0, //FIXME: Remove from contracts and troops
+	"accessory.wardog" : 0, //FEATURE_6: Remove from contracts and troops
+	"accessory.warhound" : 0, //FEATURE_6: Remove from contracts and troops
+	"accessory.armored_wardog" : 0, //FEATURE_6: Remove from contracts and troops
+	"accessory.armored_warhound" : 0, //FEATURE_6: Remove from contracts and troops
+	"accessory.heavily_armored_wardog" : 0, //FEATURE_6: Remove from contracts and troops
+	"accessory.warwolf" : 0, //FEATURE_6: Remove from contracts and troops
+	"accessory.heavily_armored_warhound" : 0, //FEATURE_6: Remove from contracts and troops
+	"accessory.legend_warbear" : 0, //FEATURE_6: Remove from contracts and troops
+	"accessory.legend_white_warwolf" : 0, //FEATURE_6: Remove from contracts and troops
+	"misc.wardog_heavy_armor_upgrade" : 0, //FEATURE_6: Remove from contracts and troops
+	"misc.wardog_armor_upgrade" : 0, //FEATURE_6: Remove from contracts and troops
 
-	//OTHER //FIXME: rework event
+	//OTHER //FEATURE_6: rework event
 	"accessory.legend_oms_fate" : 100,
 	"accessory.legend_oms_rib" : 100,
 	"accessory.legend_oms_tome" : 100,
@@ -351,7 +351,7 @@
 	//DAGGER
 	"weapon.legend_shiv" : 0,                   		//( 10,  20) | AP: 0.20 | AE: 0.30
 	"weapon.legend_redback_dagger" : 0,      			//( 26,  52) | AP: 0.36 | AE: 0.70
-	"weapon.obsidian_dagger" : 0,            			//( 35,  50) | AP: 0.20 | AE: 1.15 //FEATURE_4: rework method of acquiring and fight
+	"weapon.obsidian_dagger" : 0,            			//( 35,  50) | AP: 0.20 | AE: 1.15 //FEATURE_5: rework method of acquiring and fight
 
 	"weapon.legend_wooden_stake" : 0,          			//( 10,  15) | AP: 0.30 | AE: 0.10
 	"weapon.knife" : 6,                        			//( 15,  25) | AP: 0.20 | AE: 0.50
@@ -366,14 +366,14 @@
 	"weapon.legend_katar" : 120,               			//( 30,  45) | AP: 0.30 | AE: 1.25
 
 	//SWORD
-	//FEATURE_2: swords are rarer, usually only equipped by swordmasters/nobles/strong units
+	//FEATURE_3: swords are rarer, usually only equipped by swordmasters/nobles/strong units
 	//1H
 	"weapon.broken_ancient_sword" : 0,        			//( 30,  35) | AP: 0.20 | AE: 0.75
 	"weapon.legend_skin_flayer" : 0,         			//( 45,  60) | AP: 0.20 | AE: 0.90
 	"weapon.legend_man_mangler" : 0,         			//( 60,  95) | AP: 0.35 | AE: 1.00
 	"weapon.sickle" : 8,                       			//( 15,  20) | AP: -0.05 | AE: 0.50
 	"weapon.legend_named_sickle" : 90,        			//( 40,  55) | AP: 0.20 | AE: 0.90
-	//FEATURE_4: nerf named sickle, add auxillary flag for gathering
+	//FEATURE_5: nerf named sickle, add auxillary flag for gathering
 
 	"weapon.shortsword" : 90,                  			//( 30,  40) | AP: 0.20 | AE: 0.75
 	"weapon.goblin_falchion" : 90,             			//( 35,  45) | AP: 0.20 | AE: 0.70
@@ -612,7 +612,7 @@
 
 	//1H
 	"weapon.legend_hammer" : 6,                			//( 15,  20) | AP: 0.50 | AE: 1.50
-	"weapon.legend_named_blacksmith_hammer" : 200,		//( 20,  30) | AP: 0.50 | AE: 2.00 //FEATURE_4: crafting overhaul
+	"weapon.legend_named_blacksmith_hammer" : 200,		//( 20,  30) | AP: 0.50 | AE: 2.00 //FEATURE_5: crafting overhaul
 	"weapon.pickaxe" : 8,                     			//( 15,  30) | AP: 0.50 | AE: 1.50
 
 	"weapon.military_pick" : 47,               			//( 20,  35) | AP: 0.50 | AE: 2.00
@@ -643,7 +643,7 @@
 
 	"weapon.hunting_bow" : 60,                 			//( 40,  60) | AP: 0.35 | AE: 0.55
 	"weapon.war_bow" : 151,                    			//( 50,  70) | AP: 0.35 | AE: 0.60
-	"weapon.named_warbow" : 227,               			//( 50,  70) | AP: 0.35 | AE: 0.60 //FEATURE_4: item crafting bowyer
+	"weapon.named_warbow" : 227,               			//( 50,  70) | AP: 0.35 | AE: 0.60 //FEATURE_5: item crafting bowyer
 	"weapon.masterwork_bow" : 227,             			//( 50,  75) | AP: 0.35 | AE: 0.65
 
 	//SLING
@@ -666,9 +666,9 @@
 	"weapon.named_throwing_axe" : 0,         			//( 25,  40) | AP: 0.25 | AE: 1.30
 
 	//CROSSBOW
-	//FEATURE_5: crossbows + bolts, firearms, powder are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
-	//FEATURE_5: remove crossbow tree from most backgrounds that never will have a chance to get the tree
-	//FEATURE_5: Training halls, can give bros trained tree or weapon trees, rework backgrounds to have less trees + trained tree is free on trained backgrounds - also most lowborn backgrounds do not have trained.
+	//FEATURE_6: crossbows + bolts, firearms, powder are restricted goods, can only rob from military/top tier bandits, reflect that in description of items
+	//FEATURE_6: remove crossbow tree from most backgrounds that never will have a chance to get the tree
+	//FEATURE_6: Training halls, can give bros trained tree or weapon trees, rework backgrounds to have less trees + trained tree is free on trained backgrounds - also most lowborn backgrounds do not have trained.
 	"weapon.legend_blowgun" : 0,               			//( 10,  25) | AP: 0.10 | AE: 0.20
 	"weapon.light_crossbow" : 0,              			//( 30,  50) | AP: 0.50 | AE: 0.60
 	"weapon.crossbow" : 0,                    			//( 40,  60) | AP: 0.50 | AE: 0.70
@@ -692,7 +692,7 @@
 	"weapon.legend_mystic_staff" : 0,        			//( 40,  50) | AP: 0.40 | AE: 0.30
 	"weapon.legend_staff_vala" : 0,          			//( 20,  30) | AP: 0.40 | AE: 0.60
 	"weapon.legend_staff_gnarled" : 0,       			//( 60,  80) | AP: 0.40 | AE: 0.30
-	"weapon.goblin_staff" : 0,               			//( 25,  35) | AP: 0.40 | AE: 0.70 //FEATURE_4: Rework
+	"weapon.goblin_staff" : 0,               			//( 25,  35) | AP: 0.40 | AE: 0.70 //FEATURE_5: Rework
 
 //SHIELDS
 	"shield.legend_mummy_shield" : 0,         			//DEF: (  8M,   8R) | DUR: -6.00 | STA: 26.00
@@ -703,7 +703,7 @@
 	"shield.orc_light_shield" : 0,             			//DEF: ( 15M,  20R) | DUR: -12.00 | STA: 16.00
 	"shield.goblin_heavy_shield" : 0,          			//DEF: ( 10M,  10R) | DUR: -8.00 | STA: 16.00
 	"shield.orc_heavy_shield" : 0,            			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 72.00
-	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00 //FIXME: remove from named drops
+	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00 //FEATURE_6: remove from named drops
 	"shield.craftable_lindwurm" : 0,          			//DEF: ( 17M,  25R) | DUR: -14.00 | STA: 64.00
 	"shield.craftable_schrat" : 0,           			//DEF: ( 20M,  17R) | DUR: -12.00 | STA: 60.00
 	"shield.craftable_kraken" : 0,           			//DEF: ( 24M,  24R) | DUR: -15.00 | STA: 50.00
@@ -943,7 +943,7 @@
 	"legend_armor.body.legend_southern_tabard" : 40,                             //DUR: 10.00 | STA: 0.00
 	"legend_armor.named_tabard" : 264,                                  		//DUR: 10.00 | STA: 0.00
 
-	//VI //FEATURE_4: only the redback silk cloak looks good, possible use it again in future
+	//VI //FEATURE_5: only the redback silk cloak looks good, possible use it again in future
 	"legend_armor.body.lindwurm_scales" : 0,                          			//DUR: 25.00 | STA: -2.00
 	"legend_armor.body.legend_stollwurm_scales" : 0,                  			//DUR: 30.00 | STA: -4.00
 	"legend_armor.body.serpent_skin" : 0,                              			//DUR: 25.00 | STA: -2.00

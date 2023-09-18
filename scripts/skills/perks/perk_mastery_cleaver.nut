@@ -18,9 +18,7 @@
 + "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "On turn end or waiting, inflict 5 damage. Effect is stackable")
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "[u]Weakness:[/u] (Duration: 3)")
-+ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "-5X% damage. X is the number of bleed stacks. Caps at 75%")
-
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Deal damage with cleavers to have a chance of increasing proficiency \n\nSee progress on the Details page");
++ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "-5X% damage. X is the number of bleed stacks. Caps at 75%");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecCleaver].Name = ::Const.Strings.PerkName.SpecCleaver;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecCleaver].Tooltip = ::Const.Strings.PerkDescription.SpecCleaver;

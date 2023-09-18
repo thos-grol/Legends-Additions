@@ -1,6 +1,8 @@
-//TODO: perk mastery icons
+//TODO: remove reforged art and stuff
+//Ghostlike
+//TODO: rework stagger?
 
-//TODO: reworked perk trees, ideas:
+//reworked perk trees, ideas:
 	//stone shard
 		https://stoneshard.fandom.com/wiki/Pyromancy_(skill_tree)
 		https://stoneshard.fandom.com/wiki/Geomancy_(skill_tree)
@@ -62,12 +64,6 @@
 		Completely stuns the target for 1 turn, but renders them immune to any damage or attack.
 
 
-//TODO: fearsome perk description
-
-
-
-	//
-
 //Magic has a cast chance - then a hit chance.
 
 //Ideas
@@ -84,41 +80,38 @@
 	//Daze
 	//Stun
 
-//TODO: weapon mastery system for retinue, trained tree as well
-	later Ill add training retinue that gives an adaptive active skill to all bros 
+//TODO: later Ill add training retinue that gives an adaptive active skill to all bros 
 	you click the button and it'll show you the school it'll add
-    
-//TODO: make some backgrounds have garunteed stats/traits, ie. lumberjacks will come with weapon proficiency
 
 Economy Overhaul
 
-//FEATURE_1: this.m.Payment.Pool, contracts
+//FEATURE_2: this.m.Payment.Pool, contracts
 
-//FEATURE_1: ambitions rework
-    //FEATURE_0: Slay a monster -> unlock anatomist retinue
+//FEATURE_2: ambitions rework
+    //FEATURE_1: Slay a monster -> unlock anatomist retinue
 
-//FEATURE_5: fix alchemist having named items.
-
-
-//FEATURE_5: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
+//FEATURE_6: fix alchemist having named items.
 
 
-//FEATURE_0: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
-//FEATURE_0: Serpent -> Knock (Poison opens wounds), Edge. Medusa's Gaze
-//FEATURE_0: Lindwurm -> Dragon -> Dream, Edge (Poison)
-//FEATURE_0: Schrat -> Heart, Lantern
+//FEATURE_6: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
 
-//FEATURE_0: Necrosavant -> Grail, Knock
+
+//FEATURE_1: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
+//FEATURE_1: Serpent -> Knock (Poison opens wounds), Edge. Medusa's Gaze
+//FEATURE_1: Lindwurm -> Dragon -> Dream, Edge (Poison)
+//FEATURE_1: Schrat -> Heart, Lantern
+
+//FEATURE_1: Necrosavant -> Grail, Knock
     //Modes:
         //Scummy - tp away close to party, summon weakest bro to it
         //Guerilla - tp and strike, tp and strike
         //Vampire - Casts blood magic, charms enemies
     //All attacks cause bleed, and heal damage caused from attacks including bleed.
 
-//FEATURE_0: zombie -> lesser undead
+//FEATURE_1: zombie -> lesser undead
     //Increase hp, add nimble. that's it
 
-//FEATURE_0: rework ghosts
+//FEATURE_1: rework ghosts
 
 //Z
 
@@ -127,7 +120,7 @@ DOC:
 
 //New potion system
 
-//FEATURE_5: Fantasy Bros Skills worth looking into
+//FEATURE_6: Fantasy Bros Skills worth looking into
     //Pyromancer
         2 skills are good
     //Shaman
@@ -152,7 +145,7 @@ DOC:
     //Arcane missile
 
 
-//FEATURE_0: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.
+//FEATURE_1: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.
     //Direwolf
         //The more attacks it recieves, the higher it's fury...
 
@@ -172,17 +165,17 @@ DOC:
 
     //Lindwurm
 
-//FEATURE_1: Camping and Retinue and class Rework
+//FEATURE_2: Camping and Retinue and class Rework
 camping ui
-    //FEATURE_1: remove crafting and training from main tent
-    //FEATURE_1: cart can only be upgraded once, experiment with stash size
+    //FEATURE_2: remove crafting and training from main tent
+    //FEATURE_2: cart can only be upgraded once, experiment with stash size
     //this.World.Assets.addMoney
-    //FEATURE_1: remove most class perks from trees
+    //FEATURE_2: remove most class perks from trees
 
 
 
 
-//FEATURE_5: Faction Overhaul
+//FEATURE_6: Faction Overhaul
     //every settlement spawns guards, guards vary in strength
     //update action
         faction action <- factions have a chance to build strength during update
@@ -232,13 +225,10 @@ camping ui
     //Dungeon exploration
     //Opening up the wilderness
     //Arena
-    //FEATURE_3: start making the world poorer, troop equipment nerf
-    //FEATURE_3: most mobs besides top tier mobs will be using at most chain armor
-    //FEATURE_3: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
+    //FEATURE_4: start making the world poorer, troop equipment nerf
+    //FEATURE_4: most mobs besides top tier mobs will be using at most chain armor
+    //FEATURE_4: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
 
-//FEATURE_6: muscularity for bows and slings
-//FEATURE_6: bow perk that has a chance to make shot have 99% AP based on range skill
-//FEATURE_6: fletching etc costs money to do <- the resources have to come from somwhere don't they?
 //FEATURE_9: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
 
 

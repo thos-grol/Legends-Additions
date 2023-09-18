@@ -117,7 +117,7 @@
 				"militia_background",
 				"militia_background",
 				"vagabond_background",
-				"wildman_background",
+				
 
 				"deserter_background",
 				"deserter_background",
@@ -141,8 +141,8 @@
 				"refugee_background",
 				"vagabond_background",
 				"vagabond_background",
-				"wildman_background",
-				"wildman_background",
+				
+				
 
 				"deserter_background",
 				"raider_background",
@@ -162,8 +162,8 @@
 				"refugee_background",
 				"vagabond_background",
 				"vagabond_background",
-				"wildman_background",
-				"wildman_background",
+				
+				
 
 
 				"deserter_background",
@@ -185,14 +185,14 @@
 			],
 			[
 				"female_daytaler_background",
-				"wildwoman_background",
+				
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background"
 			],
 			[
 				"female_daytaler_background",
 				"female_servant_background",
-				"wildwoman_background",
+				
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background",
 				"female_disowned_noble_background",

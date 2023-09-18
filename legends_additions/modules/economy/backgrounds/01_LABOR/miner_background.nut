@@ -23,8 +23,23 @@
 		};
 	}
 
+	o.getTooltip <- function ()
+	{
+		local ret = this.character_background.getTooltip();
+		ret.push({
+			id = 12,
+			type = "text",
+			icon = "ui/icons/special.png",
+			text = "Gains hammer proficiency faster"
+		});
+		return ret;
+	}
+
 	o.onAddEquipment = function()
 	{
+		local actor = this.getContainer().getActor();
+		actor.getFlags().set("ProficiencyBonusHammer", true);
+
 		local items = this.getContainer().getActor().getItems();
 		items.equip(this.new("scripts/items/weapons/pickaxe"));
 		items.equip(this.Const.World.Common.pickArmor([

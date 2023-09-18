@@ -106,7 +106,7 @@
 				//something is wrong...
 				//possible haunting - create anomaly
 
-		//FEATURE_6: Dungeouns
+		
 			// "scripts/factions/contracts/discover_location_action",
 				//Discover and scout dungeon to certain floor
 			// "scripts/factions/contracts/find_artifact_action",

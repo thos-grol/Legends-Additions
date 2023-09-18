@@ -1,4 +1,4 @@
-//FEATURE_0: make magic lacerate perk for nacho
+//FEATURE_1: make magic lacerate perk for nacho
 // //Provides overwhelm immunity to tagged enemies.
 
 // ::Const.Strings.PerkName.LegendLacerate = "Blood Aura";

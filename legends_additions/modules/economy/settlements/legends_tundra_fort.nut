@@ -113,7 +113,7 @@
 				"militia_background",
 				"miner_background",
 				"vagabond_background",
-				"wildman_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -129,7 +129,7 @@
 				"militia_background",
 				"ratcatcher_background",
 				"vagabond_background",
-				"wildman_background",
+				
 
 				"bastard_background",
 				"deserter_background",
@@ -158,8 +158,8 @@
 				"shepherd_background",
 				"shepherd_background",
 				"vagabond_background",
-				"wildman_background",
-				"wildman_background",
+				
+				
 
 				"bastard_background",
 				"bastard_background",
@@ -185,7 +185,7 @@
 				"legend_shieldmaiden_background",
 
 				"female_daytaler_background",
-				"wildwoman_background",
+				
 
 				"female_disowned_noble_background"
 			],
@@ -195,7 +195,7 @@
 
 				"female_daytaler_background",
 				"female_farmhand_background",
-				"wildwoman_background",
+				
 
 				"female_disowned_noble_background"
 			]

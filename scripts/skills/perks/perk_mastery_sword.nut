@@ -5,9 +5,7 @@
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Ending turn, with sword equipped:[/u]")
 + "\n "+"Riposte. If impossible, Return Favor"
-+ "\n "+::MSU.Text.colorRed("Invalid with less than 15 Fatigue remaining")
-
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Deal damage with swords to have a chance of increasing proficiency \n\nSee progress on the Details page");
++ "\n "+::MSU.Text.colorRed("Invalid with less than 15 Fatigue remaining");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecSword].Name = ::Const.Strings.PerkName.SpecSword;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecSword].Tooltip = ::Const.Strings.PerkDescription.SpecSword;

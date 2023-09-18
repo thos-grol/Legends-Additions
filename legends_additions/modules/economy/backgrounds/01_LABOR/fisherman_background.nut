@@ -25,8 +25,23 @@
 		};
 	}
 
+	o.getTooltip <- function ()
+	{
+		local ret = this.character_background.getTooltip();
+		ret.push({
+			id = 12,
+			type = "text",
+			icon = "ui/icons/special.png",
+			text = "Gains spear proficiency faster"
+		});
+		return ret;
+	}
+
 	o.onAddEquipment = function()
 	{
+		local actor = this.getContainer().getActor();
+		actor.getFlags().set("ProficiencyBonusSpear", true);
+
 		local items = this.getContainer().getActor().getItems();
 		local r;
 		r = this.Math.rand(0, 2);

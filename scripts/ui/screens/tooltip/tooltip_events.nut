@@ -1066,7 +1066,7 @@ this.tooltip_events <- {
                             id = 3,
                             type = "hint",
                             icon = "ui/icons/icon_locked.png",
-                            text = "This character needs to break through the limit and reach Level 11 to obtain a Destiny"
+                            text = "Break through the human limit and reach Level 11. Characters can only take one destiny"
                         });
                     }
                     else if (player.getFlags().has("Destiny"))
@@ -1075,7 +1075,7 @@ this.tooltip_events <- {
                             id = 3,
                             type = "hint",
                             icon = "ui/icons/icon_locked.png",
-                            text = "This character has already obtained a Destiny"
+                            text = "This character already has Destiny"
                         });
                     }
                     return ret;
@@ -1090,7 +1090,7 @@ this.tooltip_events <- {
                             id = 3,
                             type = "hint",
                             icon = "ui/icons/icon_locked.png",
-                            text = "This character must master the weapon first"
+                            text = "Master the weapon first. Pick the proficiency perk and check the details page. Characters can only take one stance"
                         });
                     }
                     else if (player.getFlags().has("Stance"))
@@ -1099,7 +1099,7 @@ this.tooltip_events <- {
                             id = 3,
                             type = "hint",
                             icon = "ui/icons/icon_locked.png",
-                            text = "This character has already obtained a Stance"
+                            text = "This character already has a Stance"
                         });
                     }
                     return ret;
@@ -1135,6 +1135,16 @@ this.tooltip_events <- {
 						text = "Locked until " + (perk.Unlocks - player.getPerkPointsSpent()) + " more perk point is spent"
 					});
 				}
+			}
+
+			if (::Z.Perks.isProficiency(_perkId))
+			{
+				ret.push({
+					id = 3,
+					type = "hint",
+					icon = "ui/icons/icon_locked.png",
+					text = "Deal damage with correct weapon to gain proficiency, or for unarmed, use the associated skills. Check the details page to see progress"
+				});
 			}
 
 			return ret;

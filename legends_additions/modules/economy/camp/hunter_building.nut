@@ -9,7 +9,7 @@
 // 	},
 // 	function create()
 // 	{
-// 		//FEATURE_5: redo how loot is gathered
+// 		//FEATURE_6: redo how loot is gathered
 // 		this.camp_building.create();
 // 		this.m.ID = this.Const.World.CampBuildings.Hunter;
 // 		this.m.ModName = "Hunting";

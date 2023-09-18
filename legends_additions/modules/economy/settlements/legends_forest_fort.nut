@@ -104,7 +104,7 @@
 				"lumberjack_background",
 				"militia_background",
 				"militia_background",
-				"wildman_background",
+				
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -123,7 +123,7 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				"wildman_background",
+				
 
 				"bastard_background",
 				"deserter_background",
@@ -145,7 +145,7 @@
 				"militia_background",
 				"ratcatcher_background",
 				"refugee_background",
-				"wildman_background",
+				
 
 				"bastard_background",
 				"deserter_background",
@@ -169,13 +169,13 @@
 			[
 				"legend_shieldmaiden_background",
 				"female_butcher_background",
-				"wildwoman_background",
+				
 				"female_disowned_noble_background",
 				"female_disowned_noble_background"
 			],
 			[
 				"female_beggar_background",
-				"wildwoman_background",
+				
 				"female_disowned_noble_background",
 				"female_disowned_noble_background",
 				"legend_shieldmaiden_background",

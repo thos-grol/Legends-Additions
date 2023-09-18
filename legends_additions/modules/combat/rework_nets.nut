@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.LegendNetRepair = "Net Specialization";
 ::Const.Strings.PerkDescription.LegendNetRepair = "Many years and storms weathered with a net in hand..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n"+::MSU.Text.colorGreen("+2") + " Nets"
++ "\n"+::MSU.Text.colorGreen("+1") + " Nets"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On turn end, offhand empty:[/u]")
 + "\n"+::MSU.Text.colorGreen("Add a net to the offhand")
@@ -13,7 +13,7 @@
 
 ::mods_hookExactClass("skills/perks/perk_legend_net_repair", function (o)
 {
-    o.m.Count <- 2;
+    o.m.Count <- 1;
     o.m.Refill <- false;
 
     o.create = function()

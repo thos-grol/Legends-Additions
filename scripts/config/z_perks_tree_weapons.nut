@@ -52,7 +52,9 @@ gt.Const.Perks.AxeTree <- {
 	Tree = [
 		[],
 		[],
-		[],
+		[
+			//TODO: axe free perk
+		],
 		[
 			gt.Const.Perks.PerkDefs.SpecAxe
 		],
@@ -62,12 +64,7 @@ gt.Const.Perks.AxeTree <- {
 			gt.Const.Perks.PerkDefs.ReachAdvantage
 		],
 		[
-			gt.Const.Perks.PerkDefs.StanceExecutioner
-			//TODO: axe stance: Executioner
-			// +50 Headshot chance
-			// Cull now triggers at 44% HP
-			// If enemy is immune to cull, increase damage by X%
-
+			gt.Const.Perks.PerkDefs.StanceExecutioner,
 			//TODO: axe stance
 		]
 	]
@@ -188,10 +185,6 @@ gt.Const.Perks.SwordTree <- {
 		[],
 		[
 			gt.Const.Perks.PerkDefs.SpecSword,
-			gt.Const.Perks.PerkDefs.LegendSpecGreatSword //TODO: update 5% -> 15% chance to hit
-			// LegendSpecGreatSword = "Master the art of fighting with a large unwieldy sword. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nSplit, Swing, Overhead Strike, Great Lunge and Great Slash gain [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit.",
-			// "There\'s wolves, bears, nachzehrers and you. All beings of vicious slaughter.\n\nGain [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] chance to hit for all Melee area of effect attacks.",
-			//gt.Const.Perks.PerkDefs.BloodyHarvest
 		],
 		[
 			gt.Const.Perks.PerkDefs.Duelist,
@@ -208,13 +201,11 @@ gt.Const.Perks.SwordTree <- {
 				// Area-of-Effect attacks cost -2 Action points and build 20% less Fatigue."
 				// Gain x% increased damage
 				// Reduce melee defense by x%
-
-			//TODO: rework stagger? reduces defenses. Grapple applies stagger.
 		]
 	]
 };
 
-gt.Const.Perks.MaceTree <- { //TODO: tree mace
+gt.Const.Perks.MaceTree <- { //FEATURE_0: tree mace
 	ID = "Mace",
 	Name = "Mace",
 	Descriptions = [
@@ -269,12 +260,12 @@ gt.Const.Perks.MaceTree <- { //TODO: tree mace
 			gt.Const.Perks.PerkDefs.ReturnFavor
 		],
 		[
-			//TODO: stances
+			//FEATURE_0: stances
 		]
 	]
 };
 
-gt.Const.Perks.HammerTree <- { //TODO: tree hammer
+gt.Const.Perks.HammerTree <- { //FEATURE_0: tree hammer
 	ID = "Hammer",
 	Name = "Hammer",
 	Descriptions = [
@@ -329,12 +320,12 @@ gt.Const.Perks.HammerTree <- { //TODO: tree hammer
 			gt.Const.Perks.PerkDefs.ReachAdvantage,
 		],
 		[
-			//TODO: stances
+			//FEATURE_0: stances
 		]
 	]
 };
 
-gt.Const.Perks.FlailTree <- { //TODO: tree flail
+gt.Const.Perks.FlailTree <- { //FEATURE_0: tree flail
 	ID = "Flail",
 	Name = "Flail",
 	Descriptions = [
@@ -388,12 +379,12 @@ gt.Const.Perks.FlailTree <- { //TODO: tree flail
 
 		],
 		[
-			//TODO: stances
+			//FEATURE_0: stances
 		]
 	]
 };
 
-gt.Const.Perks.SpearTree <- { //TODO: tree spear
+gt.Const.Perks.SpearTree <- { //FEATURE_0: tree spear
 	ID = "Spear",
 	Name = "Spear",
 	Descriptions = [
@@ -443,7 +434,7 @@ gt.Const.Perks.SpearTree <- { //TODO: tree spear
 			gt.Const.Perks.PerkDefs.SpecSpear
 			gt.Const.Perks.PerkDefs.LegendSpecSpearWall
 			gt.Const.Perks.PerkDefs.LegendSpecSpearThrust
-			//TODO: Merge
+			//FEATURE_0: Merge
 
 			// "Two for One (requires Spear)
 			// When using a Spear, the action post cost of Thrust, Glaive Slash and Prong is reduced by 1. When using a 1h Spear with offhand free, the range of Thrust is increased to 2 tiles. When used at this range, it does 20% reduced Damage, has no bonus Chance-to-Hit, and has -20% Chance-to-Hit per character between you and the target."
@@ -465,7 +456,7 @@ gt.Const.Perks.SpearTree <- { //TODO: tree spear
 	]
 };
 
-gt.Const.Perks.PolearmTree <- { //TODO: tree polearm
+gt.Const.Perks.PolearmTree <- { //FEATURE_0: tree polearm
 	ID = "Polearm",
 	Name = "Polearm",
 	Descriptions = [
@@ -524,7 +515,7 @@ gt.Const.Perks.PolearmTree <- { //TODO: tree polearm
 // Special - Melee
 ///////////////////////////////////////////////////////////////////////////
 
-gt.Const.Perks.DaggerTree <- { //TODO: tree dagger
+gt.Const.Perks.DaggerTree <- { //FEATURE_0: tree dagger
 	ID = "Dagger",
 	Name = "Dagger",
 	Descriptions = [
@@ -580,7 +571,7 @@ gt.Const.Perks.DaggerTree <- { //TODO: tree dagger
 	]
 };
 
-gt.Const.Perks.ShieldTree <- { //TODO: tree shield
+gt.Const.Perks.ShieldTree <- { //FEATURE_0: tree shield
 	ID = "ShieldTree",
 	Name = "Shield",
 	Descriptions = [
@@ -631,11 +622,11 @@ gt.Const.Perks.ShieldTree <- { //TODO: tree shield
 		[
 			gt.Const.Perks.PerkDefs.ShieldExpert
 			//gt.Const.Perks.PerkDefs.LegendSpecialistShieldPush //TODO merge
-			//gt.Const.Perks.PerkDefs.ShieldBash //TODO: rework and merge, knockback, + chance to hit
+			//gt.Const.Perks.PerkDefs.ShieldBash //FEATURE_0: rework and merge, knockback, + chance to hit
 		],
 		[
 			gt.Const.Perks.PerkDefs.LegendSpecialistShieldSkill
-			//TODO: replace with rebuke
+			//FEATURE_0: replace with rebuke
 		],
 		[],
 		[]
@@ -649,7 +640,7 @@ gt.Const.Perks.ShieldTree <- { //TODO: tree shield
 /////////////////////////////////////////////////////////////////////////////////////////////
 // Ranged
 /////////////////////////////////////////////////////////////////////////////////////////////
-gt.Const.Perks.GreatSwordTree <- { //TODO: tree firearm
+gt.Const.Perks.GreatSwordTree <- { //FEATURE_0: tree firearm
 	ID = "GreatSword",
 	Name = "Two-Handed Sword",
 	Descriptions = [
@@ -700,7 +691,7 @@ gt.Const.Perks.GreatSwordTree <- { //TODO: tree firearm
 	]
 };
 
-gt.Const.Perks.CrossbowTree <- { //TODO: tree crossbow
+gt.Const.Perks.CrossbowTree <- { //FEATURE_0: tree crossbow
 	ID = "Crossbow",
 	Name = "Crossbow",
 	Descriptions = [
@@ -759,7 +750,7 @@ gt.Const.Perks.CrossbowTree <- { //TODO: tree crossbow
 	]
 };
 
-gt.Const.Perks.BowTree <- { //TODO: tree bow
+gt.Const.Perks.BowTree <- { //FEATURE_0: tree bow
 	ID = "Bow",
 	Name = "Bow",
 	Descriptions = [
@@ -818,7 +809,7 @@ gt.Const.Perks.BowTree <- { //TODO: tree bow
 	]
 };
 
-gt.Const.Perks.SlingTree <- { //TODO: tree sling
+gt.Const.Perks.SlingTree <- { //FEATURE_0: tree sling
 	ID = "Sling",
 	Name = "Sling",
 	Descriptions = [

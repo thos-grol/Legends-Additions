@@ -24,8 +24,23 @@
 		};
 	}
 
+	o.getTooltip <- function ()
+	{
+		local ret = this.character_background.getTooltip();
+		ret.push({
+			id = 12,
+			type = "text",
+			icon = "ui/icons/special.png",
+			text = "Gains bow proficiency faster"
+		});
+		return ret;
+	}
+
 	o.onAddEquipment = function()
 	{
+		local actor = this.getContainer().getActor();
+		actor.getFlags().set("ProficiencyBonusBow", true);
+
 		local items = this.getContainer().getActor().getItems();
 		items.equip(this.new("scripts/items/weapons/hunting_bow"));
 		items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));

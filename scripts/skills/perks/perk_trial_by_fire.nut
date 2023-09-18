@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.TrialByFire <- "Trial By Fire";
 ::Const.Strings.PerkDescription.TrialByFire <- "Soldiers are forged by battle..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Upon Victory, for all units in party:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Upon Victory, for units below LV5:[/u]")
 + "\n" + ::MSU.Text.colorGreen("+1") + " Level"
 + "\n" + ::MSU.Text.colorRed("The effect is cancelled if the commander dies")
 

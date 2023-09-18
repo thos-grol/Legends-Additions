@@ -1,4 +1,4 @@
-//FEATURE_0: feature class rework.
+//FEATURE_1: feature class rework.
 local gt = this.getroottable();
 
 if (!("Perks" in gt.Const))
@@ -61,7 +61,7 @@ gt.Const.Perks.BardClassTree <- {
 		]
 	]
 };
-gt.Const.Perks.HealerClassTree <- { //FEATURE_0: herbalists and medical classes automattically get spec bandage and field triage perks
+gt.Const.Perks.HealerClassTree <- { //FEATURE_1: herbalists and medical classes automattically get spec bandage and field triage perks
 	ID = "HealerClassTree",
 	Name = "Healing",
 	Descriptions = [
@@ -118,19 +118,16 @@ gt.Const.Perks.FistsClassTree <- {
 			gt.Const.Perks.PerkDefs.LegendAmbidextrous
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecFists //TODO: merge, fist mastery. Heavier armor increases fist damage
-			//gt.Const.Perks.PerkDefs.LegendGrapple //TODO: decrease defense bonus for you
+			gt.Const.Perks.PerkDefs.LegendSpecFists
 		],
 		[],
 		[],
 		[
-			//Wrestler
-			//gt.Const.Perks.PerkDefs.LegendGrapple, can disarm
-			//TODO: can use grappled enemy and redirect incoming attack, 50% chance
+			
 		]
 	]
 };
-gt.Const.Perks.ChefClassTree <- { //FEATURE_0: remove chef tree
+gt.Const.Perks.ChefClassTree <- { //FEATURE_1: remove chef tree
 	ID = "ChefClassTree",
 	Name = "Chef",
 	Descriptions = [
@@ -156,7 +153,7 @@ gt.Const.Perks.ChefClassTree <- { //FEATURE_0: remove chef tree
 		]
 	]
 };
-gt.Const.Perks.RepairClassTree <- { //FEATURE_0: rework repair tree
+gt.Const.Perks.RepairClassTree <- { //FEATURE_1: rework repair tree
 	ID = "RepairClassTree",
 	Name = "Repair",
 	Descriptions = [
@@ -398,7 +395,7 @@ gt.Const.Perks.WoodaxeClassTree <- {
 		[]
 	]
 };
-gt.Const.Perks.SickleClassTree <- { //FEATURE_0: Rework
+gt.Const.Perks.SickleClassTree <- { //FEATURE_1: Rework
 	ID = "SickleClassTree",
 	Name = "Sickle",
 	Descriptions = [

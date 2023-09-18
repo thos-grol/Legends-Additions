@@ -23,8 +23,23 @@
 		};
 	}
 
+	o.getTooltip <- function ()
+	{
+		local ret = this.character_background.getTooltip();
+		ret.push({
+			id = 12,
+			type = "text",
+			icon = "ui/icons/special.png",
+			text = "Gains cleaver proficiency faster"
+		});
+		return ret;
+	}
+
 	o.onAddEquipment = function()
 	{
+		local actor = this.getContainer().getActor();
+		actor.getFlags().set("ProficiencyBonusCleaver", true);
+
 		local items = this.getContainer().getActor().getItems();
 		local r;
 		items.equip(this.new("scripts/items/weapons/butchers_cleaver"));

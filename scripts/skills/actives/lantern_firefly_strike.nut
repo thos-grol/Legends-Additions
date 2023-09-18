@@ -50,7 +50,7 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 		this.m.MaxLevelDifference = 4;
 		this.m.InjuriesOnBody = this.Const.Injury.BurningBody;
 		this.m.InjuriesOnHead = this.Const.Injury.BurningHead;
-		this.m.ProjectileType = this.Const.ProjectileType.xxprojectile_05; //FEATURE_5: port over brush
+		this.m.ProjectileType = this.Const.ProjectileType.xxprojectile_05; //FEATURE_6: port over brush
 		this.m.ProjectileTimeScale = 0.9;
 	}
 

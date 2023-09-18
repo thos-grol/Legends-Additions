@@ -28,9 +28,9 @@ this.drill_sergeant_follower <- this.inherit("scripts/retinue/follower", {
 
 	function onNewDay()
 	{
-		//FEATURE_0: write weapon gain system
-		//FEATURE_0: add weapon training trait, using flags to store data
-			//FEATURE_0: if retinue not active, then hide that trait.
+		//FEATURE_1: write weapon gain system
+		//FEATURE_1: add weapon training trait, using flags to store data
+			//FEATURE_1: if retinue not active, then hide that trait.
 	}
 
 });

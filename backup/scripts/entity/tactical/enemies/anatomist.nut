@@ -46,7 +46,7 @@ this.anatomist <- this.inherit("scripts/entity/tactical/enemies/bandit_raider", 
 
 		// if (this.Math.rand(1.0, 100.0) <= 5.0)
 		// {
-		// 	//FEATURE_5: Anatomist research notes + add to possible books
+		// 	//FEATURE_6: Anatomist research notes + add to possible books
 		// }
 		this.human.onDeath(_killer, _skill, _tile, _fatalityType);
 	}

@@ -21,7 +21,7 @@ this.alchemist_follower <- this.inherit("scripts/retinue/follower", {
 
 	function onNewDay()
 	{
-		//FEATURE_0: for items in stash and bro inventories:
+		//FEATURE_1: for items in stash and bro inventories:
 			//refill items
 	}
 

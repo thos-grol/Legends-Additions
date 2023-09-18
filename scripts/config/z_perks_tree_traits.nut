@@ -118,7 +118,7 @@ gt.Const.Perks.AgileTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Ghostlike
+			gt.Const.Perks.PerkDefs.Ghostlike //TODO: replace
 		],
 		[],
 		[
@@ -353,7 +353,7 @@ gt.Const.Perks.DeviousTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Ghostlike
+			gt.Const.Perks.PerkDefs.Ghostlike //TODO: replace
 		],
 		[],
 		[
@@ -589,15 +589,15 @@ gt.Const.Perks.IntelligentTree <- {
 		],
 		[],
 		[
-			//FEATURE_5: intelligent perk tier 3, port Pattern Recognition. higher intelligence allows one to extrapolate patterns from data
+			//FEATURE_6: intelligent perk tier 3, port Pattern Recognition. higher intelligence allows one to extrapolate patterns from data
 		],
 		[],
 		[
-			//FEATURE_5: intelligent perk tier 5
+			//FEATURE_6: intelligent perk tier 5
 		],
 		[],
 		[
-			//FEATURE_5: intelligent perk tier 7
+			//FEATURE_6: intelligent perk tier 7
 		]
 	]
 };

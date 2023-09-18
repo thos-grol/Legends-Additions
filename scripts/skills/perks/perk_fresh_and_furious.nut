@@ -3,8 +3,7 @@
 + "\nBoundless energy, unstoppable determination..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On first skill use this turn:[/u]")
 + "\n"+::MSU.Text.colorGreen("– 50%") + " AP cost"
-+ "\n"+::MSU.Text.colorRed("Invalid if Fatigue is over 40% max")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Characters may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n"+::MSU.Text.colorRed("Invalid if Fatigue is over 40% max");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.FreshAndFurious].Name = ::Const.Strings.PerkName.FreshAndFurious;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.FreshAndFurious].Tooltip = ::Const.Strings.PerkDescription.FreshAndFurious;

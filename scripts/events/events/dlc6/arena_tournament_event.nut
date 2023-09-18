@@ -1,4 +1,4 @@
-//FEATURE_5: rework arena
+//FEATURE_6: rework arena
 this.arena_tournament_event <- this.inherit("scripts/events/event", {
 	m = {
 		Town = null

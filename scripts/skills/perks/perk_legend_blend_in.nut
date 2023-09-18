@@ -9,9 +9,7 @@
 + "\n"+ ::MSU.Text.colorRed("Invalid if this unit started their turn next to the target")
 + "\n\n"+ ::MSU.Text.colorGreen("+25%") + " ranged damage"
 + "\n"+ ::MSU.Text.colorGreen("+20%") + " armor penetration"
-+ "\n"+ ::MSU.Text.colorRed("Invalid if this target has been hit before")
-
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Characters may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n"+ ::MSU.Text.colorRed("Invalid if this target has been hit before");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Name = ::Const.Strings.PerkName.LegendBlendIn;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Tooltip = ::Const.Strings.PerkDescription.LegendBlendIn;

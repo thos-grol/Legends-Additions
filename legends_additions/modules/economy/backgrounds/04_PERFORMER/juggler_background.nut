@@ -1,4 +1,4 @@
-//FEATURE_0: Add knife throw perk
+//FEATURE_1: Add knife throw perk
 ::mods_hookExactClass("skills/backgrounds/juggler_background", function(o) {
 	local create = o.create;
 	o.create = function()

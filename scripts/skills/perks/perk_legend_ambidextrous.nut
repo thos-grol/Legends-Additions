@@ -8,6 +8,8 @@
 + "\n• Has a chance to inflict Daze (" + ::MSU.Text.colorGreen("– 25%") + " dmg, " + ::MSU.Text.colorGreen("– 25%") + " Max Fat, " + ::MSU.Text.colorGreen("– 25%") + " Initiative)";
 
 
+// LegendAmbidextrous = "Unlock the ability to punch with your off hand! Follow up all attacks with the Hand to Hand skill if your offhand is free. You can now use the Hand to Hand skill as long as your off hand is free. Additionally you gain [color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] melee skill, [color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] melee defense when both hands are free.",
+
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Name = ::Const.Strings.PerkName.LegendAmbidextrous;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Tooltip = ::Const.Strings.PerkDescription.LegendAmbidextrous;

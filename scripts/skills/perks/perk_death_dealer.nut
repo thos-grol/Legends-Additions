@@ -1,5 +1,5 @@
 ::Const.Strings.PerkName.DeathDealer <- "Death Dealer";
-::Const.Strings.PerkDescription.DeathDealer <- "This character's immense strength makes them a dealer of death..."
+::Const.Strings.PerkDescription.DeathDealer <- "There\'s bears, nachzehrers, and you. All beings of vicious slaughter..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]For AOE attacks:[/u]")
 + "\n"+::MSU.Text.colorGreen("+10%") + " damage"
 + "\n"+::MSU.Text.colorGreen("– 25%") + " Fatigue cost";

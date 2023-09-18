@@ -1,5 +1,5 @@
 //Reworked beasts
-//FEATURE_0: add newly created single/multiple beast parties.
+//FEATURE_1: add newly created single/multiple beast parties.
 ::mods_hookExactClass("factions/actions/send_beast_roamers_action", function(o) {
 	o.onUpdate = function( _faction )
 	{
@@ -107,7 +107,7 @@
 		this.m.BeastsLow.push(beast);
 
 
-		return; //FEATURE_0: PLACEHOLDER remove for normal function
+		return; //FEATURE_1: PLACEHOLDER remove for normal function
 
 		beast = function ( _action, _nearTile = null ) //Nachzehrer
 		{

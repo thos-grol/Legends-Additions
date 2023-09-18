@@ -17,6 +17,22 @@
     "perk.stance.executioner": "perk.mastery.axec",
 };
 
+::Z.Perks.Proficiency <- {
+    "perk.mastery.axe" : 0,
+    "perk.mastery.cleaver" : 0,
+    "perk.mastery.dagger" : 0,
+    "perk.mastery_fist" : 0,
+    "perk.mastery.flail" : 0,
+    "perk.mastery.hammer" : 0,
+    "perk.mastery.mace" : 0,
+    "perk.mastery.polearm" : 0,
+    "perk.mastery.spear" : 0,
+    "perk.mastery.sword" : 0,
+    "perk.mastery.bow" : 0,
+    "perk.mastery.crossbow" : 0,
+    "perk.legend_mastery_slings" : 0,
+};
+
 
 ::Z.Perks.add <- function (_actor, _perk, _perk_row)
 {
@@ -63,6 +79,11 @@
     else if (_item.isWeaponType(::Const.Items.WeaponType.Bow)) return ::Const.Perks.BowTree.Tree;
     else if (_item.isWeaponType(::Const.Items.WeaponType.Sling)) return ::Const.Perks.SlingTree.Tree;
     else return ::Const.Perks.MaceTree.Tree;
+}
+
+::Z.Perks.isProficiency <- function (_id)
+{
+    return _id in ::Z.Perks.Proficiency;
 }
 
 ::Z.Perks.isDestiny <- function (_id)

@@ -5,9 +5,7 @@
 + "\n" + ::MSU.Text.colorGreen("-x%") + " Skill Fatigue costs based on resolve"
 + "\n" + ::MSU.Text.colorRed("About 30% at 120 Resolve")
 + "\n\n" + ::MSU.Text.colorGreen("+Fresh Injury effect immunity")
-+ "\n" + ::MSU.Text.colorGreen("+Morale unnaffected by Hitpoint loss")
-
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Characters may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n" + ::MSU.Text.colorGreen("+Morale unnaffected by Hitpoint loss");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMindOverBody].Name = ::Const.Strings.PerkName.LegendMindOverBody;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMindOverBody].Tooltip = ::Const.Strings.PerkDescription.LegendMindOverBody;

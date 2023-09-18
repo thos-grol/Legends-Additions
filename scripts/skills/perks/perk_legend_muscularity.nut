@@ -3,9 +3,7 @@
 + "\n"+"Put one's full weight into every blow..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n"+::MSU.Text.colorGreen("+25% of current Hitpoints") + " to Minimum and Maximum damage"
-+ "\n"+::MSU.Text.colorRed("+100%") + " target attraction, due to being huge"
-
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Characters may only pick 1 Destiny \n\nDestiny is only obtainable by breaking the limit and reaching Level 11");
++ "\n"+::MSU.Text.colorRed("+100%") + " target attraction, due to being huge";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Name = ::Const.Strings.PerkName.LegendMuscularity;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Tooltip = ::Const.Strings.PerkDescription.LegendMuscularity;

@@ -120,7 +120,7 @@
 				"militia_background",
 				"ratcatcher_background",
 				"ratcatcher_background",
-				"wildman_background",
+				
 				
 				"bastard_background",
 				"deserter_background",
@@ -132,7 +132,7 @@
 				"militia_background",
 				"ratcatcher_background",
 				"ratcatcher_background",
-				"wildman_background",
+				
 				
 				"bastard_background",
 				"deserter_background",
@@ -152,7 +152,7 @@
 				
 				
 				"ratcatcher_background",
-				"wildman_background",
+				
 				
 				
 				"adventurous_noble_background",
@@ -173,7 +173,7 @@
 				
 				
 				"ratcatcher_background",
-				"wildman_background",
+				
 				
 				
 				"bastard_background",
@@ -195,7 +195,7 @@
 				
 				
 				"ratcatcher_background",
-				"wildman_background",
+				
 				
 				
 				"adventurous_noble_background",
@@ -216,7 +216,7 @@
 				
 				
 				"ratcatcher_background",
-				"wildman_background",
+				
 				
 				
 				"bastard_background",
@@ -227,17 +227,17 @@
 		];
 		this.m.FemaleDraftLists = [
 			[
-				"wildwoman_background",
+				
 				"female_daytaler_background"
 			],
 			[
-				"wildwoman_background",
+				
 				"female_beggar_background",
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background"
 			],
 			[
-				"wildwoman_background",
+				
 				"female_beggar_background",
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background"
