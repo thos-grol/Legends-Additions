@@ -10,6 +10,8 @@
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Name = ::Const.Strings.PerkName.LegendEscapeArtist;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Tooltip = ::Const.Strings.PerkDescription.LegendEscapeArtist;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Icon = "ui/perks/escape_artist.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].IconDisabled = "ui/perks/escape_artist_bw.png";
 
 this.perk_legend_escape_artist <- this.inherit("scripts/skills/skill", {
 	m = {},

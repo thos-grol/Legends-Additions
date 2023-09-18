@@ -101,11 +101,8 @@ gt.Const.Perks.DefenseTrees <- {
 
 		foreach( i, t in this.Tree )
 		{
-			if (_exclude != null && _exclude.find(t.ID) != null)
-			{
-				continue;
-			}
-
+			if (_exclude != null && _exclude.find(t.ID) != null) continue;
+			if (t.ID == "ClothArmorTree") continue; //unused
 			L.push(i);
 		}
 

@@ -53,7 +53,7 @@ this.riposte <- this.inherit("scripts/skills/skill", {
 			id = 4,
 			type = "text",
 			icon = "ui/icons/hitchance.png",
-			text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] chance to hit"
+			text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] chance to hit"
 		});
 
 		return ret;

@@ -9,6 +9,8 @@
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMindOverBody].Name = ::Const.Strings.PerkName.LegendMindOverBody;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMindOverBody].Tooltip = ::Const.Strings.PerkDescription.LegendMindOverBody;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Icon = "ui/perks/mind_over_body.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].IconDisabled = "ui/perks/mind_over_body_bw.png";
 
 this.perk_legend_mind_over_body <- this.inherit("scripts/skills/skill", {
 	m = {},

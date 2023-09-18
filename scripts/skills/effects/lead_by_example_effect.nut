@@ -11,7 +11,7 @@ this.lead_by_example_effect <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "effects.lead_by_example";
 		this.m.Name = "Lead by Example";
 		this.m.Description = "This character has been inspired by their commander.";
-		this.m.Icon = "ui/perks/rf_inspiring_presence.png";
+		this.m.Icon = "ui/perks/lead_by_example.png";
 		this.m.IconMini = "perk_01_mini";
 		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.IsActive = false;

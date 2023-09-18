@@ -471,7 +471,7 @@ gt.Const.Perks.FitTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.WearsItWell
+			gt.Const.Perks.PerkDefs.Fitness
 		],
 		[],
 		[

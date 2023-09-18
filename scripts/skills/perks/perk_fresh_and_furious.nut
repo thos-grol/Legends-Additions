@@ -19,7 +19,7 @@ this.perk_fresh_and_furious <- ::inherit("scripts/skills/skill", {
 		this.m.ID = "perk.fresh_and_furious";
 		this.m.Name = ::Const.Strings.PerkName.FreshAndFurious;
 		this.m.Description = "This character seems to have endless energy.";
-		this.m.Icon = "ui/perks/rf_fresh_and_furious.png";
+		this.m.Icon = "ui/perks/fresh_and_furious.png";
 		this.m.IconMini = "rf_fresh_and_furious_mini";
 		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
 		this.m.Order = ::Const.SkillOrder.Any;

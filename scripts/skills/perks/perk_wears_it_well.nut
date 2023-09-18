@@ -1,22 +1,22 @@
-::Const.Strings.PerkName.WearsItWell <- "Fitness";
-::Const.Strings.PerkDescription.WearsItWell <- "Greater fitness, heavier armor..."
+::Const.Strings.PerkName.Fitness <- "Fitness";
+::Const.Strings.PerkDescription.Fitness <- "Greater fitness, heavier armor..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n" + ::MSU.Text.colorGreen("– 20%") + " Fatigue from Mainhand, Offhand, Head and Body Gear"
 + "\n\n" + ::MSU.Text.colorRed("Stacks with Brawny");
 
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.WearsItWell].Name = ::Const.Strings.PerkName.WearsItWell;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.WearsItWell].Tooltip = ::Const.Strings.PerkDescription.WearsItWell;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Fitness].Name = ::Const.Strings.PerkName.Fitness;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Fitness].Tooltip = ::Const.Strings.PerkDescription.Fitness;
 
-this.perk_wears_it_well <- ::inherit("scripts/skills/skill", {
+this.perk_fitness <- ::inherit("scripts/skills/skill", {
 	m = {
 		FatPenReduction = 20
 	},
 	function create()
 	{
-		this.m.ID = "perk.wears_it_well";
-		this.m.Name = ::Const.Strings.PerkName.WearsItWell;
-		this.m.Description = ::Const.Strings.PerkDescription.WearsItWell;
-		this.m.Icon = "ui/perks/rf_wears_it_well.png";
+		this.m.ID = "perk.fitness";
+		this.m.Name = ::Const.Strings.PerkName.Fitness;
+		this.m.Description = ::Const.Strings.PerkDescription.Fitness;
+		this.m.Icon = "ui/perks/fitness.png";
 		this.m.Type = ::Const.SkillType.Perk;
 		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;

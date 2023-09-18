@@ -124,8 +124,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_lead_by_example",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/rf_inspiring_presence.png",
-        IconDisabled = "ui/perks/rf_inspiring_presence_bw.png",
+        Icon = "ui/perks/lead_by_example.png",
+        IconDisabled = "ui/perks/lead_by_example_bw.png",
         Const = "LeadByExample"
     },
     {
@@ -133,8 +133,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_fresh_and_furious",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/rf_fresh_and_furious.png",
-        IconDisabled = "ui/perks/rf_fresh_and_furious_bw.png",
+        Icon = "ui/perks/fresh_and_furious.png",
+        IconDisabled = "ui/perks/fresh_and_furious_bw.png",
         Const = "FreshAndFurious"
     },
     {
@@ -156,13 +156,13 @@ local perks = [
         Const = "SurvivalInstinct"
     },
     {
-        ID = "perk.wears_it_well",
-        Script = "scripts/skills/perks/perk_wears_it_well",
+        ID = "perk.fitness",
+        Script = "scripts/skills/perks/perk_fitness",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/rf_wears_it_well.png",
-        IconDisabled = "ui/perks/rf_wears_it_well_bw.png",
-        Const = "WearsItWell"
+        Icon = "ui/perks/fitness.png",
+        IconDisabled = "ui/perks/fitness_bw.png",
+        Const = "Fitness"
     },
     // {
 	// 	ID = "perk.eldritch_blast",

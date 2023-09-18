@@ -11,9 +11,7 @@
 				this.Const.Perks.SwordTree,
 				this.Const.Perks.PolearmTree,
 			],
-			Defense = [
-				this.Const.Perks.ClothArmorTree
-			],
+			Defense = [],
 			Traits = [
 				this.Const.Perks.AgileTree
 			],

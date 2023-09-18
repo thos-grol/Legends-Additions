@@ -31,7 +31,7 @@ this.riposte_effect <- this.inherit("scripts/skills/skill", {
 	{
 		if (this.Tactical.TurnSequenceBar.getActiveEntity() == null || this.Tactical.TurnSequenceBar.getActiveEntity().getID() != this.getContainer().getActor().getID())
 		{
-			_properties.MeleeSkill -= 25;
+			_properties.MeleeSkill -= 15;
 		}
 	}
 

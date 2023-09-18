@@ -10,9 +10,7 @@
 			Weapon = [
 				this.Const.Perks.DaggerTree
 			],
-			Defense = [
-				this.Const.Perks.ClothArmorTree
-			],
+			Defense = [],
 			Traits = [],
 			Enemy = [],
 			Class = [

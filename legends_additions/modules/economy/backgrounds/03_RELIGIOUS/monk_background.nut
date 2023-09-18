@@ -11,9 +11,7 @@
 				this.Const.Perks.FlailTree,
 				this.Const.Perks.MaceTree
 			],
-			Defense = [
-				this.Const.Perks.ClothArmorTree
-			],
+			Defense = [],
 			Traits = [
 				this.Const.Perks.CalmTree
 			],

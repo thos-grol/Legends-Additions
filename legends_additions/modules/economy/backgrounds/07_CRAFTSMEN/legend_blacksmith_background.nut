@@ -11,9 +11,7 @@
 			Weapon = [
 				this.Const.Perks.HammerTree
 			],
-			Defense = [
-				this.Const.Perks.ClothArmorTree
-			],
+			Defense = [],
 			Traits = [],
 			Enemy = [],
 			Class = [
