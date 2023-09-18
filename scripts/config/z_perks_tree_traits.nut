@@ -713,9 +713,7 @@ gt.Const.Perks.TrainedTree <- {
 		[
 			gt.Const.Perks.PerkDefs.LegendBackToBasics
 		],
-		[
-			gt.Const.Perks.PerkDefs.Finesse
-		],
+		[],
 		[]
 	]
 };

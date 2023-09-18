@@ -9,8 +9,8 @@ this.en_garde_toggle <- ::inherit("scripts/skills/skill", {
 		this.m.ID = "actives.en_garde_toggle";
 		this.m.Name = "Toggle Riposte";
 		this.m.Description = "Toggle automatic riposte"
-		this.m.Icon = "skills/rf_en_garde_toggle_on.png";
-		this.m.IconDisabled = "skills/rf_en_garde_toggle_bw.png";
+		this.m.Icon = "skills/riposte_toggle.png";
+		this.m.IconDisabled = "skills/riposte_toggle_bw.png";
 		this.m.ReturnFavorSounds <- [
 			"sounds/combat/return_favor_01.wav"
 		];
@@ -129,7 +129,7 @@ this.en_garde_toggle <- ::inherit("scripts/skills/skill", {
 	function onUse( _user, _targetTile )
 	{
 		this.m.IsOn = !this.m.IsOn;
-		this.m.Icon = this.m.IsOn ? "skills/rf_en_garde_toggle_on.png" : "skills/rf_en_garde_toggle_off.png";
+		this.m.Icon = this.m.IsOn ? "skills/riposte_toggle.png" : "skills/riposte_toggle_bw.png";
 		return true;
 	}
 });

@@ -102,15 +102,6 @@ local perks = [
 ///////////////////////////////////////////////////////////////////////////
 
 	{
-        ID = "perk.finesse",
-        Script = "scripts/skills/perks/perk_finesse",
-        Name = "",
-        Tooltip = "",
-        Icon = "ui/perks/rf_finesse.png",
-        IconDisabled = "ui/perks/rf_finesse_bw.png",
-        Const = "Finesse"
-    },
-	{
         ID = "perk.death_dealer",
         Script = "scripts/skills/perks/perk_death_dealer",
         Name = "",

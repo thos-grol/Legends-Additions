@@ -48,10 +48,11 @@ this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 		this.m.Enemies.clear();
 		local actor = this.getContainer().getActor();
 
-		foreach (tile in ::MSU.Tile.getNeighbors(actor.getTile()))
-		{
-			if (tile.IsOccupiedByActor) this.m.Enemies.push(tile.getEntity().getID());
-		}
+		// //TODO: ::MSU.Tile.getNeighbors DNE. Write custom logic
+		// foreach (tile in ::MSU.Tile.getNeighbors(actor.getTile()))
+		// {
+		// 	if (tile.IsOccupiedByActor) this.m.Enemies.push(tile.getEntity().getID());
+		// }
 	}
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
