@@ -32,12 +32,12 @@ this.perk_mastery_sword <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		this.getContainer().add(::new("scripts/skills/actives/rf_en_garde_toggle_skill"));
+		this.getContainer().add(::new("scripts/skills/actives/en_garde_toggle"));
 	}
 
 	function onRemoved()
 	{
-		this.getContainer().removeByID("actives.rf_en_garde_toggle");
+		this.getContainer().removeByID("actives.en_garde_toggle");
 	}
 
 });

@@ -1,3 +1,6 @@
+//TODO: talented trait, move effect here. then put talent bonus to weapon proficiency
+//TODO: start off with max stacks of battleflow on battle start, increase the potency of battleflow
+
 ::Const.Strings.PerkName.PerfectFocus = "Perfect Focus";
 ::Const.Strings.PerkDescription.PerfectFocus = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\n" + "Eternity within a moment..."

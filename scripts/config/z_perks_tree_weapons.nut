@@ -384,7 +384,7 @@ gt.Const.Perks.FlailTree <- { //FEATURE_0: tree flail
 	]
 };
 
-gt.Const.Perks.SpearTree <- { //FEATURE_0: tree spear
+gt.Const.Perks.SpearTree <- {
 	ID = "Spear",
 	Name = "Spear",
 	Descriptions = [
@@ -434,15 +434,18 @@ gt.Const.Perks.SpearTree <- { //FEATURE_0: tree spear
 			gt.Const.Perks.PerkDefs.SpecSpear
 			gt.Const.Perks.PerkDefs.LegendSpecSpearWall
 			gt.Const.Perks.PerkDefs.LegendSpecSpearThrust
-			//FEATURE_0: Merge
 
-			// "Two for One (requires Spear)
-			// When using a Spear, the action post cost of Thrust, Glaive Slash and Prong is reduced by 1. When using a 1h Spear with offhand free, the range of Thrust is increased to 2 tiles. When used at this range, it does 20% reduced Damage, has no bonus Chance-to-Hit, and has -20% Chance-to-Hit per character between you and the target."
+			//TODO: spec spear
+
+			// "Spear Advantage (requires Spear)
+			//  When using a Spear, every successful hit against an opponent increases your Melee Skill and Melee Defense against that opponent by +5 up to a maximum of +20. This bonus does not expire on its own but is lost upon taking Damage from that opponent."
 
 			// "King of all Weapons (requires Spear)
-			// When using a Spear, the first Thrust or Prong during your turn costs 0 Action Points, builds 0 Fatigue, but does -25% Damage."
+			// When using a Spear, the first Thrust or Prong during your turn costs 0 Action Points, builds 0 Fatigue, but does -25% Damage."		
 		],
 		[
+			//TODO: // "Poke Poke 
+			//Decrease the AP cost of spear and polearm attacks by 1. 
 
 		],
 		[
@@ -450,8 +453,14 @@ gt.Const.Perks.SpearTree <- { //FEATURE_0: tree spear
 			gt.Const.Perks.PerkDefs.ReachAdvantage
 		],
 		[
-			// 			"Spear Advantage (requires Spear)
-			//  When using a Spear, every successful hit against an opponent increases your Melee Skill and Melee Defense against that opponent by +5 up to a maximum of +20. This bonus does not expire on its own but is lost upon taking Damage from that opponent."
+			//TODO: Soveriegn
+			//Poke poke poke poke
+			// On turn end, attack all adjacent enemies once
+
+			//TODO: Porcupine
+			// spear attacks have a chance to knock back
+			// On turn end, use spearwall automatically
+			
 		]
 	]
 };

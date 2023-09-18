@@ -1,4 +1,4 @@
-this.rf_en_garde_toggle_skill <- ::inherit("scripts/skills/skill", {
+this.en_garde_toggle <- ::inherit("scripts/skills/skill", {
 	m = {
 		IsOn = true,
 		IsSpent = false,
@@ -6,7 +6,7 @@ this.rf_en_garde_toggle_skill <- ::inherit("scripts/skills/skill", {
 	},
 	function create()
 	{
-		this.m.ID = "actives.rf_en_garde_toggle";
+		this.m.ID = "actives.en_garde_toggle";
 		this.m.Name = "Toggle Riposte";
 		this.m.Description = "Toggle automatic riposte"
 		this.m.Icon = "skills/rf_en_garde_toggle_on.png";

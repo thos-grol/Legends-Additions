@@ -54,12 +54,6 @@ this.ai_rf_kata_step <- ::inherit("scripts/ai/tactical/behavior", {
 		local myTile = _entity.getTile();		
 		local knownAllies = this.getAgent().getKnownAllies();
 		local lungeSkill = _entity.getSkills().getSkillByID("actives.lunge");
-		local canEngarde = false;
-		local engarde = _entity.getSkills().getSkillByID("actives.rf_en_garde_toggle");
-		if (engarde != null && engarde.pickSkill() != null)
-		{
-			canEngarde = true;
-		}
 
 		local evaluateTarget = function( _target, _startingTile )
 		{
@@ -274,16 +268,6 @@ this.ai_rf_kata_step <- ::inherit("scripts/ai/tactical/behavior", {
 				}
 
 				local spearwallMult = this.querySpearwallValueForTile(_entity, tile);
-
-
-				if (tile.isSameTileAs(myTile) && canEngarde)
-				{
-					if (::Const.AI.VerboseMode)
-					{
-						this.logInfo("Increasing score of my tile as I have En Garde available");
-					}
-					tileScore += 10 + ::Const.AI.Behavior.EngageTerrainLevelBonus * this.getProperties().EngageOnGoodTerrainBonusMult;
-				}
 
 				local isSkillUsable = !tile.isSameTileAs(_startingTile);
 
