@@ -110,15 +110,15 @@ gt.Const.Perks.AgileTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.Pathfinder,
+			gt.Const.Perks.PerkDefs.Pathfinder
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendTwirl
+			//TODO: agile row 2
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Ghostlike //TODO: replace
+			gt.Const.Perks.PerkDefs.LegendTwirl 
 		],
 		[],
 		[
@@ -288,10 +288,12 @@ gt.Const.Perks.CalmTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendPeaceful
+			gt.Const.Perks.PerkDefs.LegendRecuperation
 		],
 		[],
-		[],
+		[
+			gt.Const.Perks.PerkDefs.LegendPeaceful
+		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.BattleFlow
@@ -353,7 +355,7 @@ gt.Const.Perks.DeviousTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Ghostlike //TODO: replace
+			//TODO: devious row 5
 		],
 		[],
 		[

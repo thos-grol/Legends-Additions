@@ -138,15 +138,6 @@ local perks = [
         Const = "FreshAndFurious"
     },
     {
-        ID = "perk.ghostlike",
-        Script = "scripts/skills/perks/perk_ghostlike",
-        Name = "",
-        Tooltip = "",
-        Icon = "ui/perks/rf_ghostlike.png",
-        IconDisabled = "ui/perks/rf_ghostlike_bw.png",
-        Const = "Ghostlike"
-    },
-    {
         ID = "perk.survival_instinct",
         Script = "scripts/skills/perks/perk_survival_instinct",
         Name = "",

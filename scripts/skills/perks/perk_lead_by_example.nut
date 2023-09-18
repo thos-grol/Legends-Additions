@@ -20,7 +20,7 @@ this.perk_lead_by_example <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "perk.lead_by_example";
 		this.m.Name = this.Const.Strings.PerkName.LeadByExample;
 		this.m.Description = this.Const.Strings.PerkDescription.LeadByExample;
-		this.m.Icon = "ui/perks/rf_inspiring_presence.png";
+		this.m.Icon = "ui/perks/inspiring_presence.png";
 		this.m.Type = this.Const.SkillType.Perk;
 		this.m.Order = this.Const.SkillOrder.Perk;
 		this.m.IsActive = false;

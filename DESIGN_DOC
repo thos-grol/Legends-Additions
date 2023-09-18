@@ -1,5 +1,10 @@
 //TODO: remove reforged art and stuff
-//Ghostlike
+ Icon = "ui/perks/rf_death_dealer.png",
+        IconDisabled = "ui/perks/rf_death_dealer_bw.png",
+
+Icon = "ui/perks/rf_survival_instinct.png",
+        IconDisabled = "ui/perks/rf_survival_instinct_bw.png",
+
 //TODO: rework stagger?
 //TODO: hand to hand attack, hide if hands aren't empty
 //TODO: remove cloth armor

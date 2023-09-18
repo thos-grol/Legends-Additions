@@ -180,7 +180,10 @@ gt.Const.Perks.SwordTree <- {
 	Tree = [
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Feint //TODO: replace with Kata
+			//TODO: perk idea, Quickstep
+			//gives the footwork active skill
+			//hitting an attack has a 25% chance to make the AP cost of the next use of footwork to 0
+			//Having the footwork perk increases this chance to 75%
 		],
 		[],
 		[
