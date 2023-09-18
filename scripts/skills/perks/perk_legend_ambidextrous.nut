@@ -7,8 +7,12 @@
 + "\n• Kick the enemy, canceling Shieldwall, Spearwall, Return Favor, or Riposte"
 + "\n• Has a chance to inflict Daze (" + ::MSU.Text.colorGreen("– 25%") + " dmg, " + ::MSU.Text.colorGreen("– 25%") + " Max Fat, " + ::MSU.Text.colorGreen("– 25%") + " Initiative)";
 
+
+
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Name = ::Const.Strings.PerkName.LegendAmbidextrous;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Tooltip = ::Const.Strings.PerkDescription.LegendAmbidextrous;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Icon = "ui/perks/grapple_circle.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].IconDisabled = "ui/perks/grapple_circle_bw.png";
 
 this.perk_legend_ambidextrous <- this.inherit("scripts/skills/skill", {
 	m = {},
