@@ -5,10 +5,6 @@
 Icon = "ui/perks/rf_survival_instinct.png",
         IconDisabled = "ui/perks/rf_survival_instinct_bw.png",
 
-//TODO: rework stagger?
-//TODO: hand to hand attack, hide if hands aren't empty
-//TODO: remove cloth armor
-
 //reworked perk trees, ideas:
 	//stone shard
 		https://stoneshard.fandom.com/wiki/Pyromancy_(skill_tree)
@@ -56,6 +52,10 @@ Icon = "ui/perks/rf_survival_instinct.png",
 
 		Lightning Reflexes
 		Reaction fire shots against you have a significantly decreased chance to hit. The bonus goes down with each additional reaction shot you face
+			+50 mdef until you wait or end turn
+			function onTurnEnd()
+			function onWaitTurn()
+
 
 		Mark Target
 		Locked On

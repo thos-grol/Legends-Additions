@@ -1,0 +1,89 @@
+this._proficiency <- this.inherit("scripts/skills/traits/character_trait", {
+	m = {
+		str = "Axe",
+		BaseChance = 100, //TODO: remove testing when done
+		ProficiencyMax = 1
+	},
+	function create()
+	{
+		this.character_trait.create();
+		this.m.ID = "trait.proficiency_Axe";
+		this.m.Name = "";
+		this.m.Icon = "ui/traits/trait_icon_21.png";
+		this.m.Description = "";
+		this.m.Titles = [];
+		this.m.Excluded = [];
+		this.m.IsHidden = true;
+	}
+
+	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
+	{
+		local actor = this.getContainer().getActor();
+		local chance = this.m.BaseChance + (actor.getFlags().has(getFlagBonus()) ? 5 : 0);
+		if (actor.getFlags().has(getFlagStore()) && actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax) return;
+
+		if (::Math.rand(1,100) <= chance)
+		{
+			if (!actor.getFlags().has(getFlagStore())) 
+				actor.getFlags().set(getFlagStore(), 0);
+
+			actor.getFlags().set(getFlagStore(), 
+				::Math.min(this.m.ProficiencyMax, actor.getFlags().getAsInt(getFlagStore()) + 1));
+
+			::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " has  gained 1 " + this.m.Type + " proficiency"));
+		}
+
+		if (actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax) 
+			reward();
+	}
+
+	function getDetails( _tooltip )
+	{
+		local actor = this.getContainer().getActor();
+		local amount = 0;
+
+		if (actor.getFlags().has(getFlagStore())) 
+			amount = actor.getFlags().getAsInt(getFlagStore());
+
+		_tooltip.push({
+			id = 6,
+			type = "text",
+			icon = "ui/icons/melee_skill.png",
+			text = this.m.str + " Proficiency: " + ::MSU.Text.color(::Z.Log.Color.BloodRed, amount + " / " + this.m.ProficiencyMax)
+		});
+		return _tooltip;
+	}
+
+	function reward()
+	{
+		local actor = this.getContainer().getActor();
+		::Z.Perks.remove(actor, getProficiency());
+		::Z.Perks.add(actor, getMastery(), 3);
+	}
+
+	function getFlagBonus()
+	{
+		return "ProficiencyBonus" + this.m.str;
+	}
+
+	function getFlagStore()
+	{
+		return "Proficiency" + this.m.str;
+	}
+
+	function getProficiency()
+	{
+		return ::Z.Perks.ProficiencyToMastery[this.m.str].Proficiency;
+	}
+
+	function getMastery()
+	{
+		return ::Z.Perks.ProficiencyToMastery[this.m.str].Mastery;
+	}
+
+	function setWeapon(_str)
+	{
+		this.m.str = _str;
+	}
+});
+

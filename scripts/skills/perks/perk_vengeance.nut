@@ -72,7 +72,7 @@ this.perk_vengeance <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Destiny", "perk.vengeance");
+		actor.getFlags().set("Destiny", true);
 	}
 
 	

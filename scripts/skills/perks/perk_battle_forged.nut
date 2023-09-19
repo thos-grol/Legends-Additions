@@ -1,6 +1,7 @@
 ::Const.Strings.PerkDescription.BattleForged = "Trade hit for hit with heavy armor..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
-+ "\n"+::MSU.Text.colorGreen("– 7% of current armor points") + " as armor damage taken"
++ "\n"+::MSU.Text.colorGreen("– X%") + " armor damage taken"
++ "\n"+::MSU.Text.colorRed("X being 7% of current armor points")
 + "\n\n"+::MSU.Text.colorRed("Does not affect damage from mental attacks or status effects, but can help to avoid receiving them");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.BattleForged].Tooltip = ::Const.Strings.PerkDescription.BattleForged;

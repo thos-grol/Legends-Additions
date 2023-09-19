@@ -81,7 +81,7 @@ this.perk_mastery_axe <- this.inherit("scripts/skills/skill", {
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 
 		if (!this.m.Container.hasSkill("trait.proficiency_Axe"))
-			this.m.Container.add(this.new("scripts/skills/traits/proficiency_Axe"));
+			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Axe"));
 	}
 
 });

@@ -1,5 +1,3 @@
-::Z.Perks <- {};
-
 ::Z.Perks.Destiny <- {
     "perk.fresh_and_furious" : 0,
     "perk.indomitable" : 0,

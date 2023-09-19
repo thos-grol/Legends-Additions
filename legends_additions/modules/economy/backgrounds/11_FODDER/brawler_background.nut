@@ -43,7 +43,7 @@
 	o.onAddEquipment = function()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("ProficiencyBonusUnarmed", true);
+		actor.getFlags().set("ProficiencyBonusFist", true);
 
 		local items = this.getContainer().getActor().getItems();
 		items.equip(this.Const.World.Common.pickArmor([

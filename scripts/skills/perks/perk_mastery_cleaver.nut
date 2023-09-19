@@ -1,11 +1,3 @@
-// Cleaver Proficiency
-
-// -25% Cleaver skill Fatigue
-
-// Bleeding damage inflicted by cleavers and whips is doubled to 10 and 20 per turn
-
-// Disarm only has half the penalty to hit
-
 ::Const.Strings.PerkName.SpecCleaver = "Cleaver Proficiency";
 ::Const.Strings.PerkDescription.SpecCleaver = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
@@ -60,6 +52,15 @@ this.perk_mastery_cleaver <- this.inherit("scripts/skills/skill", {
 		else _targetEntity.getSkills().add(::new("scripts/skills/effects/weakness_effect"));
 
 		return true;
+	}
+
+	function onAdded()
+	{
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+
+		if (!this.m.Container.hasSkill("trait.proficiency_Cleaver"))
+			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Cleaver"));
 	}
 
 });

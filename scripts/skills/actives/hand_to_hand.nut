@@ -62,78 +62,38 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
+		if (("IsSpecializedInFists" in _properties) && _properties.IsSpecializedInFists)
+		{
+			ret.push({
+				id = 7,
+				type = "text",
+				icon = "ui/icons/regular_damage.png",
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+"+ getBonus() +"[/color] from armor (Unarmed Mastery)"
+			});
+		}
+
 		return ret;
 	}
 
-	function isUsable()
+	function onUse( _user, _targetTile )
 	{
-		local items = this.getContainer().getActor().getItems();
-		local off = items.getItemAtSlot(this.Const.ItemSlot.Offhand);
-		local main = items.getItemAtSlot(this.Const.ItemSlot.Mainhand);
-
-		if (this.m.Container.hasSkill("perk.legend_ambidextrous") && off == null && !items.hasBlockedSlot(this.Const.ItemSlot.Offhand) && this.skill.isUsable)
-		{
-			return true;
-		}
-
-		return (main == null || this.getContainer().hasSkill("effects.disarmed")) && this.skill.isUsable();
-	}
-
-	function isHidden()
-	{
-		local items = this.getContainer().getActor().getItems();
-		local off = items.getItemAtSlot(this.Const.ItemSlot.Offhand);
-		local main = items.getItemAtSlot(this.Const.ItemSlot.Mainhand);
-
-		if (this.m.Container.hasSkill("perk.legend_ambidextrous") && off == null && !items.hasBlockedSlot(this.Const.ItemSlot.Offhand))
-		{
-			return false;
-		}
-
-		return main != null && !this.getContainer().hasSkill("effects.disarmed") || this.skill.isHidden() || this.m.Container.getActor().isStabled();
-	}
-
-	function onAfterUpdate( _properties )
-	{
-		if (_properties.IsSpecializedInFists)
-		{
-			this.m.FatigueCostMult = _properties.IsSpecializedInFists ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
-
-			// if (this.m.Container.hasSkill("perk.legend_ambidextrous"))
-			// {
-			// 	this.m.ActionPointCost = 3;
-			// }
-		}
-
-		if (this.m.Container.hasSkill("perk.legend_ambidextrous"))
-		{
-			if (this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
-			{
-				this.m.IsIgnoredAsAOO = true;
-			}
-			else
-			{
-				this.m.IsIgnoredAsAOO = false;
-			}
-		}
+		return this.attackEntity(_user, _targetTile.getEntity());
 	}
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
-		if (_skill != this)
-		{
-			return;
-		}
-
+		if (_skill != this) return;
+		
 		local actor = this.getContainer().getActor();
 		_properties.DamageRegularMin += 5;
 		_properties.DamageRegularMax += 10;
 		_properties.DamageArmorMult = 0.5;
+		_properties.FatigueDealtPerHitMult += 1.0;
 
+		//if unarmed or performing offhand attack
 		if (this.m.Container.hasSkill("effects.disarmed") || this.m.Container.hasSkill("perk.legend_ambidextrous"))
 		{
 			local mhand = actor.getMainhandItem();
-
 			if (mhand != null)
 			{
 				_properties.DamageRegularMin -= mhand.m.RegularDamage;
@@ -141,14 +101,11 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		_properties.FatigueDealtPerHitMult += 1.0;
-
-		if (this.m.Container.hasSkill("perk.legend_ambidextrous"))
+		//Calculate damage
+		if (("IsSpecializedInFists" in _properties) && _properties.IsSpecializedInFists)
 		{
-			if (actor.getMainhandItem() != null)
-			{
-				_properties.MeleeDamageMult /= 1.25;
-			}
+			_properties.DamageRegularMin += getBonus();
+			_properties.DamageRegularMax += getBonus();
 		}
 
 		foreach( bg in this.m.Backgrounds )
@@ -160,16 +117,73 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		if (("IsSpecializedInFists" in _properties) && _properties.IsSpecializedInFists)
+		if (this.m.Container.hasSkill("perk.legend_ambidextrous") * actor.getMainhandItem() != null) 
+			_properties.DamageTotalMult *= 0.8;
+
+	}
+
+	function onAfterUpdate( _properties )
+	{
+		if (_properties.IsSpecializedInFists) this.m.FatigueCostMult = _properties.IsSpecializedInFists ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+
+		if (this.m.Container.hasSkill("perk.legend_ambidextrous"))
 		{
-			//TODO: rework increase damage of fists the heavier body armor is
+			if (this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null) this.m.IsIgnoredAsAOO = true;
+			else this.m.IsIgnoredAsAOO = false;
 		}
 	}
 
-	function onUse( _user, _targetTile )
+	function isHidden()
 	{
-		return this.attackEntity(_user, _targetTile.getEntity());
+		local items = this.getContainer().getActor().getItems();
+		local off = items.getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local main = items.getItemAtSlot(this.Const.ItemSlot.Mainhand);
+		return main != null && !this.getContainer().hasSkill("effects.disarmed") || this.skill.isHidden() || this.m.Container.getActor().isStabled();
 	}
+
+	function getBonus()
+    {
+        local total_weight = this.getContainer().getActor().getItems().getStaminaModifier([
+            ::Const.ItemSlot.Body,
+            ::Const.ItemSlot.Head
+        ]) * -1;
+
+		return ::Math.round(2 * ::Math.pow(total_weight, 0.5));
+    }
+
+	function isUsable()
+	{
+		local items = this.getContainer().getActor().getItems();
+		if (this.m.Container.hasSkill("perk.legend_ambidextrous") 
+			&& items.getItemAtSlot(this.Const.ItemSlot.Offhand) == null 
+			&& !items.hasBlockedSlot(this.Const.ItemSlot.Offhand) 
+			&& this.skill.isUsable) return true;
+
+		return (items.getItemAtSlot(this.Const.ItemSlot.Mainhand) == null || this.getContainer().hasSkill("effects.disarmed")) && this.skill.isUsable();
+	}
+
+	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
+	{
+		if (_skill != this) return;
+		if (!_targetEntity.isAlive() || _targetEntity.isDying()) return;
+		
+		local roll = ::Math.rand(1, 100);
+		local chance = getBonus();
+		if (roll > chance) return;
+
+		local isVisible = !_targetEntity.isHiddenToPlayer();
+
+		if (target.getFlags().has("StaggerImmunity"))
+		{
+			if (isVisible) ::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" is immune to stagger"));
+			return;
+		}
+
+		target.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
+		if (isVisible) ::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" has been staggered") + ::Z.Log.display_chance(roll, chance));
+	}
+
+
 
 });
 

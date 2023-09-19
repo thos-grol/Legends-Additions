@@ -30,7 +30,7 @@ this.perk_legend_perfect_focus <- this.inherit("scripts/skills/skill", {
 		if (!this.m.Container.hasSkill("actives.perfect_focus")) this.m.Container.add(this.new("scripts/skills/actives/perfect_focus"));
 
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Destiny", "perk.vengeance");
+		actor.getFlags().set("Destiny", true);
 	}
 
 	function onRemoved()

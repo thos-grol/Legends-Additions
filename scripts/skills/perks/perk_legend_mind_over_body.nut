@@ -30,7 +30,7 @@ this.perk_legend_mind_over_body <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Destiny", "perk.legend_mind_over_body");
+		actor.getFlags().set("Destiny", true);
 	}
 
 	function getBonus()

@@ -99,7 +99,7 @@ this.perk_fresh_and_furious <- ::inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Destiny", "perk.fresh_and_furious");
+		actor.getFlags().set("Destiny", true);
 	}
 
 });

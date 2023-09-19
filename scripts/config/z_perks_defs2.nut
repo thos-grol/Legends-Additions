@@ -42,6 +42,15 @@ local perks = [
 // Mastery
 ///////////////////////////////////////////////////////////////////////////
     {
+        ID = "perk.mastery.fistc",
+        Script = "scripts/skills/perks/perk_mastery_fistc",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_fist.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecFistC"
+    },    
+    {
         ID = "perk.mastery.axec",
         Script = "scripts/skills/perks/perk_mastery_axec",
         Name = "",
@@ -222,3 +231,56 @@ local perks = [
 
 ::Const.Perks.addPerkDefObjects(perks);
 ::Const.Perks.updatePerkGroupTooltips();
+
+////////////////////////////////////////////////////
+
+::Z.Perks.ProficiencyToMastery <- {
+    "Axe" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.SpecAxe,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecAxeC,
+    },
+    "Bow" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.SpecBow,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecBowC,
+    },
+    "Cleaver" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.SpecCleaver,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecCleaverC,
+    },
+    "Crossbow" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.SpecCrossbow,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecCrossbowC,
+    },
+    "Dagger" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.SpecDagger,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecDaggerC,
+    },
+    "Fist" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.LegendSpecFists,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecFistC,
+    },
+    "Flail" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.SpecFlail,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecFlailC,
+    },
+    "Hammer" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.SpecHammer,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecHammerC,
+    },
+    "Mace" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.SpecMace,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecMaceC,
+    },
+    "Polearm" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.SpecPolearm,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecPolearmC,
+    },
+    "Spear" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.SpecSpear,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecSpearC,
+    },
+    "Sword" : {
+        "Proficiency" : ::Const.Perks.PerkDefs.SpecSword,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecSwordC,
+    }
+};

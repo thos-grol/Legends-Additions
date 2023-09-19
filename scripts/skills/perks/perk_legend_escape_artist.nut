@@ -31,7 +31,7 @@ this.perk_legend_escape_artist <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Destiny", "perk.legend_escape_artist");
+		actor.getFlags().set("Destiny", true);
 	}
 
 	function onAfterUpdate( _properties )

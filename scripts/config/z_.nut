@@ -2,6 +2,9 @@
 ::Z.Economy <- {};
 ::Z.Backgrounds <- {};
 ::Z.Log <- {};
+::Z.Perks <- {};
+
+::B <- {}; //B for builds
 
 ::Z.Log.Color <- {};
 ::Z.Log.Color.BloodRed <- "#900C3F";
@@ -14,5 +17,3 @@
 ::Z.Log.Color.Gold <- "#F1C40F";
 ::Z.Log.Color.Pink <- "#dfabcd";
 ::Z.Log.HasActed <- false;
-
-::B <- {}; //B for builds

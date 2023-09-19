@@ -35,7 +35,7 @@ this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Destiny", "perk.legend_blend_in");
+		actor.getFlags().set("Destiny", true);
 	}
 
 	function onUpdate( _properties )

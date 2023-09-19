@@ -18,5 +18,14 @@ this.perk_mastery_spear <- this.inherit("scripts/skills/skill", {
 		_properties.IsSpecializedInSpears = true;
 	}
 
+	function onAdded()
+	{
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+
+		if (!this.m.Container.hasSkill("trait.proficiency_Spear"))
+			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Spear"));
+	}
+
 });
 

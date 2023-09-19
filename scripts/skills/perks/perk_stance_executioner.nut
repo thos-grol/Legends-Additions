@@ -34,7 +34,7 @@ this.perk_stance_executioner <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Stance", "perk.stance.executioner");
+		actor.getFlags().set("Stance", true);
 	}
 
 });

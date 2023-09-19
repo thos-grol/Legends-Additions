@@ -37,7 +37,7 @@ this.perk_indomitable <- this.inherit("scripts/skills/skill", {
 			this.m.Container.add(this.new("scripts/skills/actives/indomitable"));
 
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Destiny", "perk.indomitable");
+		actor.getFlags().set("Destiny", true);
 	}
 
 	function onRemoved()

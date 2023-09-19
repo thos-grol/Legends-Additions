@@ -36,7 +36,7 @@ this.perk_inspiring_presence <- this.inherit("scripts/skills/skill", {
 			this.m.Container.add(this.new("scripts/skills/actives/legend_hold_the_line"));
 
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Destiny", "perk.inspiring_presence");
+		actor.getFlags().set("Destiny", true);
 
 		local playerRoster = this.World.getPlayerRoster().getAll();
 		foreach( bro in playerRoster )

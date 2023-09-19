@@ -1,15 +1,20 @@
 ::Const.Strings.PerkName.LegendAmbidextrous = "CQC";
-::Const.Strings.PerkDescription.LegendAmbidextrous = "Fighting with arms and legs. The basics..."
+::Const.Strings.PerkDescription.LegendAmbidextrous = "Knee jabs, elbow strikes, kicks. The basics..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On attack:[/u]")
-+ "\nStrike with fists for each empty hand"
++ "\n "+::MSU.Text.colorGreen("+1")+" CQC attack"
++ "\n" + ::MSU.Text.colorRed("If mainhand is not empty, -20% damage")
++ "\n"+::MSU.Text.colorRed("Invalid if offhand is missing or not free")
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Kick\'[/u] (4 AP, 14 Fat):")
-+ "\n• Kick the enemy, canceling Shieldwall, Spearwall, Return Favor, or Riposte"
-+ "\n• Has a chance to inflict Daze (" + ::MSU.Text.colorGreen("– 25%") + " dmg, " + ::MSU.Text.colorGreen("– 25%") + " Max Fat, " + ::MSU.Text.colorGreen("– 25%") + " Initiative)";
++ "\nPerform a CQC attack with a malus of " + ::MSU.Text.colorRed("-25") + " melee skill. Will " + ::MSU.Text.colorRed("Stagger")
++ "\n" + ::MSU.Text.colorRed("Invalid if this unit is missing a leg")
 
-
-// LegendAmbidextrous = "Unlock the ability to punch with your off hand! Follow up all attacks with the Hand to Hand skill if your offhand is free. You can now use the Hand to Hand skill as long as your off hand is free. Additionally you gain [color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] melee skill, [color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] melee defense when both hands are free.",
-
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "[u]Stagger:[/u]")
++ "\n "+::MSU.Text.colorRed("-50%")+" Initiative"
++ "\n "+::MSU.Text.colorRed("-25")+" Melee Defense"
++ "\n "+::MSU.Text.colorRed("-25")+" Ranged Defense"
++ "\n +Cancels Shieldwall, Spearwall, Return Favor, and Riposte"
++ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Is removed when this character starts their turn");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Name = ::Const.Strings.PerkName.LegendAmbidextrous;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Tooltip = ::Const.Strings.PerkDescription.LegendAmbidextrous;
@@ -28,85 +33,28 @@ this.perk_legend_ambidextrous <- this.inherit("scripts/skills/skill", {
 		this.m.Order = this.Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
-		this.m.IsHidden = false;
-	}
-
-	function isHidden()
-	{
-		local items = this.getContainer().getActor().getItems();
-		local off = items.getItemAtSlot(this.Const.ItemSlot.Offhand);
-		local main = items.getItemAtSlot(this.Const.ItemSlot.Mainhand);
-		return !(off == null && !items.hasBlockedSlot(this.Const.ItemSlot.Offhand));
-	}
-
-	function getDescription()
-	{
-		return "Fluid like water!\n\nThis character will follow up any attack with a punch from their off hand! If both hands are free, they also gain additional melee skill and melee defense.";
-	}
-
-	function getTooltip()
-	{
-		local items = this.getContainer().getActor().getItems();
-		local off = items.getItemAtSlot(this.Const.ItemSlot.Offhand);
-		local main = items.getItemAtSlot(this.Const.ItemSlot.Mainhand);
-		local ret = [
-			{
-				id = 1,
-				type = "title",
-				text = "Fluid"
-			},
-			{
-				id = 2,
-				type = "description",
-				text = this.getDescription()
-			}
-		];
-
-		if (main == null)
-		{
-			ret.push({
-				id = 3,
-				type = "text",
-				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] melee skill"
-			});
-			ret.push({
-				id = 4,
-				type = "text",
-				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] melee defense"
-			});
-		}
-
-		return ret;
+		this.m.IsHidden = true;
 	}
 
 	function onAnySkillExecuted( _skill, _targetTile, _targetEntity, _forFree )
 	{
 		local items = this.getContainer().getActor().getItems();
-		local off = items.getItemAtSlot(this.Const.ItemSlot.Offhand);
 
-		if (_targetEntity != null && !items.hasBlockedSlot(this.Const.ItemSlot.Offhand) && off == null)
-		{
-			if (!_forFree)
-			{
-				if (_targetTile == null)
-				{
-					return;
-				}
-
-				local attack = this.getContainer().getSkillByID("actives.hand_to_hand");
-				attack.useForFree(_targetTile);
-			}
-		}
+		if (_targetEntity == null 
+			|| items.hasBlockedSlot(this.Const.ItemSlot.Offhand) 
+			|| items.getItemAtSlot(this.Const.ItemSlot.Offhand) != null) return;
+		if (_forFree) return;
+		if (_targetTile == null) return;
+		if (_skill.m.ID == "actives.legend_kick") return;
+		
+		local attack = this.getContainer().getSkillByID("actives.hand_to_hand");
+		attack.useForFree(_targetTile);
 	}
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("actives.legend_kick"))
-		{
+		if (!this.m.Container.hasSkill("actives.legend_kick")) 
 			this.m.Container.add(this.new("scripts/skills/actives/legend_kick"));
-		}
 	}
 
 	function onRemoved()

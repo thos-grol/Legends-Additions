@@ -27,7 +27,7 @@ this.perk_legend_muscularity <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Destiny", "perk.legend_muscularity");
+		actor.getFlags().set("Destiny", true);
 	}
 
 	function onUpdate( _properties )

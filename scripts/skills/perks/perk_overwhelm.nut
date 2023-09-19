@@ -100,7 +100,7 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Destiny", "perk.overwhelm");
+		actor.getFlags().set("Destiny", true);
 	}
 
 	
