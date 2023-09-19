@@ -205,8 +205,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_death_dealer",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/rf_death_dealer.png",
-        IconDisabled = "ui/perks/rf_death_dealer_bw.png",
+        Icon = "ui/perks/death_dealer.png",
+        IconDisabled = "ui/perks/death_dealer_bw.png",
         Const = "DeathDealer"
     },
     {
@@ -241,8 +241,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_survival_instinct",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/rf_survival_instinct.png",
-        IconDisabled = "ui/perks/rf_survival_instinct_bw.png",
+        Icon = "ui/perks/survival_instinct.png",
+        IconDisabled = "ui/perks/survival_instinct_bw.png",
         Const = "SurvivalInstinct"
     },
     {
