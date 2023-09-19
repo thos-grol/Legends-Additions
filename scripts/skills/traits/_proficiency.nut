@@ -18,23 +18,8 @@ this._proficiency <- this.inherit("scripts/skills/traits/character_trait", {
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
-		local actor = this.getContainer().getActor();
-		local chance = this.m.BaseChance + (actor.getFlags().has(getFlagBonus()) ? 5 : 0);
-		if (actor.getFlags().has(getFlagStore()) && actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax) return;
-
-		if (::Math.rand(1,100) <= chance)
-		{
-			if (!actor.getFlags().has(getFlagStore())) 
-				actor.getFlags().set(getFlagStore(), 0);
-
-			actor.getFlags().set(getFlagStore(), 
-				::Math.min(this.m.ProficiencyMax, actor.getFlags().getAsInt(getFlagStore()) + 1));
-
-			::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " has  gained 1 " + this.m.Type + " proficiency"));
-		}
-
-		if (actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax) 
-			reward();
+		if (!validate()) return;
+		add_proficiency();
 	}
 
 	function getDetails( _tooltip )
@@ -54,11 +39,37 @@ this._proficiency <- this.inherit("scripts/skills/traits/character_trait", {
 		return _tooltip;
 	}
 
+	function add_proficiency()
+	{
+		local actor = this.getContainer().getActor();
+		local chance = this.m.BaseChance + (actor.getFlags().has(getFlagBonus()) ? 5 : 0);
+		if (actor.getFlags().has(getFlagStore()) && actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax) return;
+
+		if (::Math.rand(1,100) <= chance)
+		{
+			if (!actor.getFlags().has(getFlagStore())) 
+				actor.getFlags().set(getFlagStore(), 0);
+
+			actor.getFlags().set(getFlagStore(), 
+				::Math.min(this.m.ProficiencyMax, actor.getFlags().getAsInt(getFlagStore()) + 1));
+
+			::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " has gained 1 " + this.m.str + " proficiency"));
+		}
+
+		if (actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax) 
+			reward();
+	}
+
 	function reward()
 	{
 		local actor = this.getContainer().getActor();
 		::Z.Perks.remove(actor, getProficiency());
 		::Z.Perks.add(actor, getMastery(), 3);
+	}
+
+	function validate()
+	{
+		return true;
 	}
 
 	function getFlagBonus()

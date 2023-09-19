@@ -11,7 +11,7 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "actives.hand_to_hand";
-		this.m.Name = "Hand-to-Hand Attack";
+		this.m.Name = "CQC";
 		this.m.Description = "Let them fly! Use your limbs to inflict damage on your enemy.";
 		this.m.KilledString = "Pummeled to death";
 		this.m.Icon = "skills/active_08.png";
@@ -47,6 +47,7 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 	{
 		local ret = this.getDefaultTooltip();
 		local actor = this.getContainer().getActor();
+		local _properties = actor.getCurrentProperties();
 
 		foreach( bg in this.m.Backgrounds )
 		{
@@ -117,7 +118,7 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		if (this.m.Container.hasSkill("perk.legend_ambidextrous") * actor.getMainhandItem() != null) 
+		if (this.m.Container.hasSkill("perk.legend_ambidextrous") && actor.getMainhandItem() != null) 
 			_properties.DamageTotalMult *= 0.8;
 
 	}
@@ -165,6 +166,14 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
 		if (_skill != this) return;
+
+		//add proficiency to cqc strikes, even when weapon is equipped
+		local items = this.getContainer().getActor().getItems();
+		if (this.m.Container.hasSkill("perk.legend_ambidextrous") && items.getItemAtSlot(this.Const.ItemSlot.Mainhand) != null){
+			local fist_proficiency = this.m.Container.getSkillByID("trait.proficiency_Fist");
+			if (fist_proficiency != null) fist_proficiency.add_proficiency();
+		}
+
 		if (!_targetEntity.isAlive() || _targetEntity.isDying()) return;
 		
 		local roll = ::Math.rand(1, 100);

@@ -40,16 +40,7 @@
 local perks = [
 ///////////////////////////////////////////////////////////////////////////
 // Mastery
-///////////////////////////////////////////////////////////////////////////
-    {
-        ID = "perk.mastery.fistc",
-        Script = "scripts/skills/perks/perk_mastery_fistc",
-        Name = "",
-        Tooltip = "",
-        Icon = "ui/perks/mastery_fist.png",
-        IconDisabled = "ui/perks/perk_44_sw.png",
-        Const = "SpecFistC"
-    },    
+/////////////////////////////////////////////////////////////////////////// 
     {
         ID = "perk.mastery.axec",
         Script = "scripts/skills/perks/perk_mastery_axec",
@@ -58,6 +49,105 @@ local perks = [
         Icon = "ui/perks/mastery_axe.png",
         IconDisabled = "ui/perks/perk_44_sw.png",
         Const = "SpecAxeC"
+    }, 
+    {
+        ID = "perk.mastery.bowc",
+        Script = "scripts/skills/perks/perk_mastery_bowc",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_bow.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecBowC"
+    },
+    {
+        ID = "perk.mastery.cleaverc",
+        Script = "scripts/skills/perks/perk_mastery_cleaverc",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_cleaver.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecCleaverC"
+    },
+    {
+        ID = "perk.mastery.crossbowc",
+        Script = "scripts/skills/perks/perk_mastery_crossbowc",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_crossbow.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecCrossbowC"
+    },
+    {
+        ID = "perk.mastery.daggerc",
+        Script = "scripts/skills/perks/perk_mastery_daggerc",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_dagger.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecDaggerC"
+    },
+    {
+        ID = "perk.mastery.fistc",
+        Script = "scripts/skills/perks/perk_mastery_fistc",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_fist.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecFistC"
+    },
+    {
+        ID = "perk.mastery.flailc",
+        Script = "scripts/skills/perks/perk_mastery_flailc",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_flail.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecFlailC"
+    },
+    {
+        ID = "perk.mastery.hammerc",
+        Script = "scripts/skills/perks/perk_mastery_hammerc",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_hammer.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecHammerC"
+    },
+    {
+        ID = "perk.mastery.macec",
+        Script = "scripts/skills/perks/perk_mastery_macec",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_mace.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecMaceC"
+    },
+    {
+        ID = "perk.mastery.polearmc",
+        Script = "scripts/skills/perks/perk_mastery_polearmc",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_polearm.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecPolearmC"
+    },
+    {
+        ID = "perk.mastery.spearc",
+        Script = "scripts/skills/perks/perk_mastery_spearc",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_spear.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecSpearC"
+    },
+    {
+        ID = "perk.mastery.swordc",
+        Script = "scripts/skills/perks/perk_mastery_swordc",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/mastery_sword.png",
+        IconDisabled = "ui/perks/perk_44_sw.png",
+        Const = "SpecSwordC"
     },
 
 ///////////////////////////////////////////////////////////////////////////

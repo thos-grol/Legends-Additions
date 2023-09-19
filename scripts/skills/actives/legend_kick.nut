@@ -27,7 +27,7 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/hand_hit_03.wav"
 		];
 		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted + 3;
+		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
 		this.m.IsStacking = false;
@@ -46,7 +46,7 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 	function getTooltip()
 	{
 		local actor = this.getContainer().getActor();
-		local p = this.getContainer().getActor().getCurrentProperties();
+		local _properties = this.getContainer().getActor().getCurrentProperties();
 		local ret = [
 			{
 				id = 1,
@@ -102,6 +102,10 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 
 			target.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
 			::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" has been staggered"));
+
+			//add proficiency to kicks, even when weapon is equipped
+			local fist_proficiency = this.m.Container.getSkillByID("trait.proficiency_Fist");
+			if (fist_proficiency != null) fist_proficiency.add_proficiency();
 		}
 	}
 
