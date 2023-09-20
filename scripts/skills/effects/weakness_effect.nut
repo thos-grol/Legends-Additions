@@ -20,7 +20,7 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 
 	function getName()
 	{
-		return this.m.Name + " (-" + getBonus() + "%)";
+		return this.m.Name + " (-" + getBonus() + "% Damage)";
 	}
 
 	function getDescription()
@@ -50,6 +50,19 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 		];
 	}
 
+	function getBonus()
+	{
+		local count = 0;
+		foreach( s in this.getContainer().getActor().getSkills().getAllSkillsOfType(::Const.SkillType.DamageOverTime) )
+		{
+			if (s.m.ID == "effects.bleeding") count += 1;
+		}
+		local actor = this.getContainer().getActor();
+		local cap = actor.getSkills().hasSkill("perk.stance.gourmet") ? 75 : this.m.Cap;
+		local effect = actor.getSkills().hasSkill("perk.stance.gourmet") ? 10 : this.m.Effect;
+		return ::Math.min(count * effect, cap);
+	}
+
 	function onUpdate( _properties )
 	{
 		_properties.DamageTotalMult -= 1.0 + getBonus() * 0.01;
@@ -71,18 +84,7 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 		this.m.TurnsLeft = this.Math.max(1, this.m.TurnsLeft + actor.getCurrentProperties().NegativeStatusEffectDuration);
 	}
 
-	function getBonus()
-	{
-		local count = 0;
-		foreach( s in this.getContainer().getActor().getSkills().getAllSkillsOfType(::Const.SkillType.DamageOverTime) )
-		{
-			if (s.m.ID == "effects.bleeding") count += 1;
-		}
-		local actor = this.getContainer().getActor();
-		local cap = actor.getSkills().hasSkill("perk.stance.gourmet") ? 75 : this.m.Cap;
-		local effect = actor.getSkills().hasSkill("perk.stance.gourmet") ? 10 : this.m.Effect;
-		return ::Math.min(count * effect, cap);
-	}
+	
 
 	function resetTime()
 	{

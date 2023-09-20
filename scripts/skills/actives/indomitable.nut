@@ -74,7 +74,7 @@ this.indomitable <- this.inherit("scripts/skills/skill", {
 	function isUsable()
 	{
 		local actor = this.getContainer().getActor();
-		local projected_hitpoints_pct = (actor.getHitpoints() - _damageHitpoints) / actor.getHitpointsMax();
+		local projected_hitpoints_pct = actor.getHitpoints()  / actor.getHitpointsMax();
 		return this.skill.isUsable() && !this.getContainer().hasSkill("effects.indomitable") && projected_hitpoints_pct > 0.5;
 	}
 

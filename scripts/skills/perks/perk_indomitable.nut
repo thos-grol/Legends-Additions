@@ -52,6 +52,7 @@ this.perk_indomitable <- this.inherit("scripts/skills/skill", {
 
 	function onCombatStarted()
 	{
+		local actor = this.getContainer().getActor();
 		local projected_hitpoints_pct = actor.getHitpoints() / actor.getHitpointsMax();
 		if (projected_hitpoints_pct > 0.5) return;
 

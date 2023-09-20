@@ -94,14 +94,14 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 	{
 		if (_skill == this && _targetEntity.isAlive() && !_targetEntity.isDying())
 		{
-			if (target.getFlags().has("StaggerImmunity"))
+			if (_targetEntity.getFlags().has("StaggerImmunity"))
 			{
-				::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" is immune to stagger"));
+				::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" is immune to stagger"));
 				return true;
 			}
 
-			target.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
-			::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" has been staggered"));
+			_targetEntity.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
+			::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" has been staggered"));
 
 			//add proficiency to kicks, even when weapon is equipped
 			local fist_proficiency = this.m.Container.getSkillByID("trait.proficiency_Fist");

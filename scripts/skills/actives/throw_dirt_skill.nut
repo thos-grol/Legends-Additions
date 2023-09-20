@@ -164,8 +164,7 @@ this.throw_dirt_skill <- this.inherit("scripts/skills/skill", {
 			};
 			this.Tactical.spawnParticleEffect(false, effect.Brushes, _targetTile, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(-30, 70));
 		}
-		target.getSkills().add(::new("scripts/skills/effects/legend_threw_sand_effect"));
-
+	
 		if (!target.getSkills().hasSkill("effects.stunned")
 			&& !target.getSkills().hasSkill("effects.legend_threw_sand_effect")
 			&& !target.getSkills().hasSkill("perk.pocket_dirt")
@@ -173,6 +172,7 @@ this.throw_dirt_skill <- this.inherit("scripts/skills/skill", {
 		)
 		{
 			target.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));
+			target.getSkills().add(::new("scripts/skills/effects/legend_threw_sand_effect"));
 			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
 				this.Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" is stunned"));
 		}
