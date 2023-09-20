@@ -1,5 +1,5 @@
-::Const.Strings.PerkName.StanceGourmet = "Gourmet";
-::Const.Strings.PerkDescription.StanceGourmet = ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
+::Const.Strings.PerkName.StanceGourmet <- "Gourmet";
+::Const.Strings.PerkDescription.StanceGourmet <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]With cleaver equipped:[/u]")
 + "\n" + "Attacks apply " + ::MSU.Text.colorRed("Weakness")

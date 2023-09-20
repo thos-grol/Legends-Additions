@@ -4,6 +4,8 @@
  Icon = "ui/perks/rf_death_dealer.png",
         IconDisabled = "ui/perks/rf_death_dealer_bw.png",
 
+//TODO: function onShieldHit( _info ) fix annoying message
+
 //reworked perk trees, ideas:
 	//stone shard
 		https://stoneshard.fandom.com/wiki/Pyromancy_(skill_tree)

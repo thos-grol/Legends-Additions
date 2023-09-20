@@ -3,10 +3,10 @@
 ::Const.Strings.PerkDescription.SpecSpear = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Spears)"
-+ "\nNo adjacent hit penalty for the Spetum and Warfork"
++ "\n " + ::MSU.Text.colorGreen("0%") + " adjacent hit penalty (Spetum and Warfork)"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]With spear equipped:[/u]")
-+ "\n The first Thrust or Prong during this unit\'s turn costs nothing, but does -25% Damage."
++ "\n " + ::MSU.Text.colorGreen("+1") + " free attack (Thrust or Prong), but does -25% Damage"
 + "\n\n"+::MSU.Text.colorGreen("+5") + " melee defense against an opponent per hit (up to +20)"
 + "\n"+::MSU.Text.colorRed("Invalid if a shield is equipped. When taking damage, the bonus against the source is lost")
 

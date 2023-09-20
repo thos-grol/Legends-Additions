@@ -6,7 +6,7 @@
 + "\n"+::MSU.Text.colorGreen("– 25%") + " Fatigue cost for movement skills"
 + "\n"+::MSU.Text.colorGreen("+75") + " Melee Defense when moving"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On turn start:")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On turn start:[/u]")
 + "\n"+::MSU.Text.colorGreen("Perform a break free action using Melee Skill with a -25 penalty");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Name = ::Const.Strings.PerkName.LegendEscapeArtist;

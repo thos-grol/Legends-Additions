@@ -11,7 +11,7 @@ this._king_of_all_weapons <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.ptr_king_of_all_weapons";
-		this.m.Name = this.Const.Strings.PerkName.PTRKingOfAllWeapons;
+		this.m.Name = "";
 		this.m.Description = "This character is highly skilled in spears and can perform a free attack during %their% turn.";
 		this.m.Icon = "ui/perks/ptr_king_of_all_weapons.png";
 		this.m.IconMini = "ptr_king_of_all_weapons_mini";

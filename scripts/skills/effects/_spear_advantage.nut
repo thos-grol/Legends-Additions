@@ -8,7 +8,7 @@ this._spear_advantage <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.ptr_a_better_grip";
-		this.m.Name = this.Const.Strings.PerkName.PTRABetterGrip;
+		this.m.Name = this.m.Name = "";
 		this.m.Description = "This character is using %their% spear to great effect, manifesting %their% advantage in combat.";
 		this.m.Icon = "ui/perks/ptr_a_better_grip.png";
 		this.m.Type = this.Const.SkillType.StatusEffect;
@@ -97,7 +97,7 @@ this._spear_advantage <- this.inherit("scripts/skills/skill", {
 		if (_attacker.getID() in this.m.Opponents)
 		{
 			local offhand = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-			if (offhand =! null && !offhand.isItemType(::Const.Items.ItemType.Shield)) return;
+			if (offhand != null && !offhand.isItemType(::Const.Items.ItemType.Shield)) return;
 			_properties.MeleeDefense += this.getBonus(_attacker.getID());
 		}
 	}

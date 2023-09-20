@@ -57,20 +57,12 @@ this.perk_mastery_axe <- this.inherit("scripts/skills/skill", {
 	function onUpdate(_properties)
 	{
 		_properties.IsSpecializedInAxes = true;
-
-		// if (this.getContainer().getActor().isDisarmed()) return;
-
-		// local weapon = this.getContainer().getActor().getMainhandItem();
-		// if (weapon != null && weapon.isWeaponType(::Const.Items.WeaponType.Axe))
-		// {
-		// 	_properties.DamageRegularMax += ::Math.floor(weapon.m.RegularDamageMax * 0.1);
-		// }
 	}
 
 	function isEnabled()
 	{
 		if (this.m.IsForceEnabled) return true;
-		if (this.getContainer().getActor().isDisarmed()) return false;
+		if (this.getContainer().getActor().getCurrentProperties().IsAbleToUseWeaponSkills) return false; //isDisarmed
 		local weapon = this.getContainer().getActor().getMainhandItem();
 		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Axe)) return false;
 		return true;

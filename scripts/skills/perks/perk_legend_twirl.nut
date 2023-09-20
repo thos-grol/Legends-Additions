@@ -8,6 +8,8 @@
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendTwirl].Name = ::Const.Strings.PerkName.LegendTwirl;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendTwirl].Tooltip = ::Const.Strings.PerkDescription.LegendTwirl;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendTwirl].Icon = "ui/perks/twirl.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendTwirl].IconDisabled = "ui/perks/twirl_bw.png";
 
 //////////////////
 

@@ -2,7 +2,7 @@
 ::Const.Strings.PerkDescription.LegendLacerate = "Bleed them dry..."
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Cutting or Piercing attacks:[/u]")
-+ "\n" + "Inflict "+::MSU.Text.colorGreen("1")+" Bleed"
++ "\n" + "Inflict "+::MSU.Text.colorGreen("1")+" Bleed (50% chance)"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "[u]Bleed:[/u] (Duration: 2)")
 + "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "On turn end or waiting, inflict 5 damage. Effect is stackable");
@@ -40,6 +40,7 @@ this.perk_legend_lacerate <- this.inherit("scripts/skills/skill", {
 		if (_targetEntity.getCurrentProperties().IsImmuneToBleeding) return false;
 		if (_damageInflictedHitpoints < this.Const.Combat.MinDamageToApplyBleeding) return false;
 		if (_targetEntity.isNonCombatant()) return false;
+		if (::Math.rand(1,100) > 50) return false;
 
 		local actor = this.getContainer().getActor();
 		local effect = this.new("scripts/skills/effects/bleeding_effect");

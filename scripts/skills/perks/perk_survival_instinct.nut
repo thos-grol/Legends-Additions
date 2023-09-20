@@ -27,7 +27,7 @@ this.perk_survival_instinct <- ::inherit("scripts/skills/skill", {
 		this.m.ID = "perk.survival_instinct";
 		this.m.Name = ::Const.Strings.PerkName.SurvivalInstinct;
 		this.m.Description = "This character\'s senses are heightened when faced with mortal danger.";
-		this.m.Icon = "ui/perks/rf_survival_instinct.png";
+		this.m.Icon = "ui/perks/survival_instinct.png";
 		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
 		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;

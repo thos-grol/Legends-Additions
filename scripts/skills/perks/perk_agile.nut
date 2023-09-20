@@ -26,7 +26,7 @@ this.perk_agile <- this.inherit("scripts/skills/skill", {
 	function isEnabled()
 	{
 		local offhand = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-		if (offhand =! null && !offhand.isItemType(::Const.Items.ItemType.Shield)) return false;
+		if (offhand != null && !offhand.isItemType(::Const.Items.ItemType.Shield)) return false;
 		return true;
 	}
 
