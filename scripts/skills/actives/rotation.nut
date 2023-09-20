@@ -1,5 +1,7 @@
 this.rotation <- this.inherit("scripts/skills/skill", {
-	m = {},
+	m = {
+		Charges = 1
+	},
 	function create()
 	{
 		this.m.ID = "actives.rotation";
@@ -47,6 +49,13 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 			}
 		];
 
+		ret.push({
+			id = 9,
+			type = "text",
+			icon = "ui/tooltips/special.png",
+			text = "Can be used once per turn"
+		});
+
 		if (this.getContainer().getActor().getCurrentProperties().IsRooted)
 		{
 			ret.push({
@@ -65,8 +74,15 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/special.png",
-				text = "Has a [color=" + this.Const.UI.Color.NegativeValue + "]"+chance + "%" +"[/color] chance to Stagger"
+				text = "Can target enemies"
 			});
+			ret.push({
+				id = 9,
+				type = "text",
+				icon = "ui/tooltips/special.png",
+				text = "Has a [color=" + this.Const.UI.Color.NegativeValue + "]"+chance + "%" +"[/color] chance to Stagger enemies"
+			});
+			
 
 		}
 
@@ -100,6 +116,7 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 
 	function isUsable()
 	{
+		if (this.m.Charges <= 0) return false;
 		return this.skill.isUsable() && !this.getContainer().getActor().getCurrentProperties().IsRooted;
 	}
 
@@ -125,6 +142,8 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
+		this.m.Charges = 0;
+
 		local target = _targetTile.getEntity();
 		this.Tactical.getNavigator().switchEntities(_user, target, null, null, 1.0);
 		local skills = this.getContainer().getActor().getSkills();
@@ -146,6 +165,11 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 
 		}
 		return true;
+	}
+
+	function onTurnStart()
+	{
+		this.m.Charges = 1;
 	}
 
 });
