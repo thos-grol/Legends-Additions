@@ -29,7 +29,7 @@
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Gains unarmed proficiency faster"
+			text = "Gains unarmed proficiency faster (+5 chance)"
 		});
 		ret.push({
 			id = 12,

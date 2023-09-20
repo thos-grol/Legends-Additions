@@ -1,4 +1,4 @@
-this.perk_ptr_a_better_grip <- this.inherit("scripts/skills/skill", {
+this._spear_advantage <- this.inherit("scripts/skills/skill", {
 	m = {
 		DamageMultAtTwoTiles = 0.80,
 		BonusPerStack = 5,
@@ -11,16 +11,11 @@ this.perk_ptr_a_better_grip <- this.inherit("scripts/skills/skill", {
 		this.m.Name = this.Const.Strings.PerkName.PTRABetterGrip;
 		this.m.Description = "This character is using %their% spear to great effect, manifesting %their% advantage in combat.";
 		this.m.Icon = "ui/perks/ptr_a_better_grip.png";
-		this.m.Type = this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
+		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.Order = this.Const.SkillOrder.VeryLast;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
-		this.m.IsHidden = false;
-	}
-
-	function isHidden()
-	{
-		return this.m.Opponents.len() == 0;
+		this.m.IsHidden = true;
 	}
 
 	function getTooltip()
@@ -31,7 +26,7 @@ this.perk_ptr_a_better_grip <- this.inherit("scripts/skills/skill", {
 			id = 10,
 			type = "text",
 			icon = "ui/icons/plus.png",
-			text = "Increased Melee Skill and Melee Defense"
+			text = "Increased Melee Defense"
 		});
 
 		foreach (id, stacks in this.m.Opponents)
@@ -62,7 +57,7 @@ this.perk_ptr_a_better_grip <- this.inherit("scripts/skills/skill", {
 	{
 		return ::Math.floor(this.m.Opponents[_entityID] * this.m.BonusPerStack);
 	}
-	
+
 	function isEnabled()
 	{
 		local weapon = this.getContainer().getActor().getMainhandItem();
@@ -101,6 +96,8 @@ this.perk_ptr_a_better_grip <- this.inherit("scripts/skills/skill", {
 	{
 		if (_attacker.getID() in this.m.Opponents)
 		{
+			local offhand = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+			if (offhand =! null && !offhand.isItemType(::Const.Items.ItemType.Shield)) return;
 			_properties.MeleeDefense += this.getBonus(_attacker.getID());
 		}
 	}
@@ -108,7 +105,7 @@ this.perk_ptr_a_better_grip <- this.inherit("scripts/skills/skill", {
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
 		if (!this.isEnabled() || !_skill.isAttack() || _targetEntity == null) return;
-		
+
 		if (_skill.getID() == "actives.thrust")
 		{
 			if (_targetEntity != null && this.getContainer().getActor().isDoubleGrippingWeapon())
@@ -122,7 +119,7 @@ this.perk_ptr_a_better_grip <- this.inherit("scripts/skills/skill", {
 
 					local betweenTiles = [];
 					local malus = _skill.m.HitChanceBonus;
-					
+
 					for (local i = 0; i < 6; i++)
 					{
 						if (targetTile.hasNextTile(i))
@@ -151,11 +148,6 @@ this.perk_ptr_a_better_grip <- this.inherit("scripts/skills/skill", {
 					_properties.MeleeSkill -= malus;
 				}
 			}
-		}
-
-		if (_targetEntity.getID() in this.m.Opponents)
-		{
-			_properties.MeleeSkill += this.getBonus(_targetEntity.getID());
 		}
 	}
 

@@ -57,6 +57,29 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 			});
 		}
 
+		local skills = this.getContainer().getActor().getSkills();
+		if (skills.hasSkill("perk.legend_twirl"))
+		{
+			local chance = skills.hasSkill("perk.legend_rotation") ? 40 : 20;
+			ret.push({
+				id = 9,
+				type = "text",
+				icon = "ui/tooltips/special.png",
+				text = "Has a [color=" + this.Const.UI.Color.NegativeValue + "]"+chance + "%" +"[/color] chance to Stagger"
+			});
+
+		}
+
+		if (this.getContainer().getActor().getCurrentProperties().IsRooted)
+		{
+			ret.push({
+				id = 9,
+				type = "text",
+				icon = "ui/tooltips/warning.png",
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Can not be used while rooted[/color]"
+			});
+		}
+
 		return ret;
 	}
 
@@ -104,18 +127,23 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 	{
 		local target = _targetTile.getEntity();
 		this.Tactical.getNavigator().switchEntities(_user, target, null, null, 1.0);
-		if (this.getContainer().getActor().getSkills().hasSkill("perk.legend_twirl"))
+		local skills = this.getContainer().getActor().getSkills();
+		if (skills.hasSkill("perk.legend_twirl"))
 		{
 			local roll = ::Math.rand(1,100);
-			local chance = 100 - target.getCurrentProperties().getMeleeDefense();
+			local chance = skills.hasSkill("perk.legend_rotation") ? 40 : 20;
 
-			target.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
+			if (roll <= chance)
+			{
+				target.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
+				::Tactical.EventLog.logIn(
+					::Const.UI.getColorizedEntityName(target)
+					+ (roll <= chance ? ::MSU.Text.color(::Z.Log.Color.BloodRed, " is staggered" ) : ::MSU.Text.color(::Z.Log.Color.NiceGreen, " keeps their footing"))
+					+ ::Z.Log.display_chance(roll, chance)
+				);
+			}
 
-			::Tactical.EventLog.logIn(
-				::Const.UI.getColorizedEntityName(target) 
-				+ (roll <= chance ? ::MSU.Text.color(::Z.Log.Color.BloodRed, " is staggered" ) : ::MSU.Text.color(::Z.Log.Color.NiceGreen, " keeps their footing"))
-				+ ::Z.Log.display_chance(roll, chance)
-			);
+
 		}
 		return true;
 	}

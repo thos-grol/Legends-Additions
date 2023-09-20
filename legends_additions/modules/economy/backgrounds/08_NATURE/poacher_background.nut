@@ -30,7 +30,7 @@
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Gains sling proficiency faster"
+			text = "Gains sling proficiency faster (+5 chance)"
 		});
 		return ret;
 	}

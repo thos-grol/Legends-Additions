@@ -1,11 +1,6 @@
-//TODO: Stance: ??? Choose name:
-	// When hit with another enemy adjacent, has X chance to redirect the strike to a random enemy (not the attacker)
-	// This chance drops with every redirection until next turn
-
-
-//TODO: Stance: Asura - Unleash a flurry of blows upon the opponent. 
+//TODO: Stance: Asura - Unleash a flurry of blows upon the opponent.
 //With no items equipped in either hand.
-//Hand to hand unleashes a flurry of 4 (unarmed attacks) -> //TODO: rename hand to hand to CQC
+//Hand to hand unleashes a flurry of 4 (unarmed attacks)
 	//+3 CQC strikes
 	//Kick:
 	//+1 Kick

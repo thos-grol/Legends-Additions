@@ -32,7 +32,7 @@
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Gains spear proficiency faster"
+			text = "Gains spear proficiency faster (+5 chance)"
 		});
 		return ret;
 	}

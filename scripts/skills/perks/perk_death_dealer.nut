@@ -2,7 +2,10 @@
 ::Const.Strings.PerkDescription.DeathDealer <- "There\'s bears, nachzehrers, and you. All beings of vicious slaughter..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]For AOE attacks:[/u]")
 + "\n"+::MSU.Text.colorGreen("+10%") + " damage"
-+ "\n"+::MSU.Text.colorGreen("– 25%") + " Fatigue cost";
++ "\n"+::MSU.Text.colorGreen("– 25%") + " Fatigue cost"
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n" + ::MSU.Text.colorGreen("50%") + " chance to resist stagger";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DeathDealer].Name = ::Const.Strings.PerkName.DeathDealer;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DeathDealer].Tooltip = ::Const.Strings.PerkDescription.DeathDealer;

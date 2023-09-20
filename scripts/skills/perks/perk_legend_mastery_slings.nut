@@ -1,5 +1,4 @@
-//TODO: create sling perk image
-this.perk_legend_mastery_slings <- this.inherit("scripts/skills/skill", {
+this.perk_legend_mastery_slings <- this.inherit("scripts/skills/skill", { //FEATURE_0: sling proficiency
 	m = {},
 	function create()
 	{

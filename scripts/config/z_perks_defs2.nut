@@ -40,7 +40,7 @@
 local perks = [
 ///////////////////////////////////////////////////////////////////////////
 // Mastery
-/////////////////////////////////////////////////////////////////////////// 
+///////////////////////////////////////////////////////////////////////////
     {
         ID = "perk.mastery.axec",
         Script = "scripts/skills/perks/perk_mastery_axec",
@@ -49,7 +49,7 @@ local perks = [
         Icon = "ui/perks/mastery_axe.png",
         IconDisabled = "ui/perks/perk_44_sw.png",
         Const = "SpecAxeC"
-    }, 
+    },
     {
         ID = "perk.mastery.bowc",
         Script = "scripts/skills/perks/perk_mastery_bowc",
@@ -163,6 +163,15 @@ local perks = [
         IconDisabled = "ui/perks/executioner_bw.png",
         Const = "StanceExecutioner"
     },
+    {
+        ID = "perk.stance.gourmet",
+        Script = "scripts/skills/perks/perk_stance_gourmet",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/executioner.png", //TODO: StanceGourmet art
+        IconDisabled = "ui/perks/executioner_bw.png",
+        Const = "StanceGourmet"
+    },
 
 ///////////////////////////////////////////////////////////////////////////
 // Monster
@@ -253,6 +262,24 @@ local perks = [
         Icon = "ui/perks/fitness.png",
         IconDisabled = "ui/perks/fitness_bw.png",
         Const = "Fitness"
+    },
+    {
+        ID = "perk.pocket_dirt",
+        Script = "scripts/skills/perks/perk_pocket_dirt",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/fitness.png", //TODO: pocket dirt art
+        IconDisabled = "ui/perks/fitness_bw.png",
+        Const = "PocketDirt"
+    },
+    {
+        ID = "perk.agile",
+        Script = "scripts/skills/perks/perk_agile",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/fitness.png", //TODO: agile art
+        IconDisabled = "ui/perks/fitness_bw.png",
+        Const = "Agile"
     },
     // {
 	// 	ID = "perk.eldritch_blast",

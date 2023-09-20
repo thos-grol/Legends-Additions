@@ -27,7 +27,7 @@ this._proficiency <- this.inherit("scripts/skills/traits/character_trait", {
 		local actor = this.getContainer().getActor();
 		local amount = 0;
 
-		if (actor.getFlags().has(getFlagStore())) 
+		if (actor.getFlags().has(getFlagStore()))
 			amount = actor.getFlags().getAsInt(getFlagStore());
 
 		_tooltip.push({
@@ -42,21 +42,23 @@ this._proficiency <- this.inherit("scripts/skills/traits/character_trait", {
 	function add_proficiency()
 	{
 		local actor = this.getContainer().getActor();
-		local chance = this.m.BaseChance + (actor.getFlags().has(getFlagBonus()) ? 5 : 0);
 		if (actor.getFlags().has(getFlagStore()) && actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax) return;
+
+		local chance = this.m.BaseChance + (actor.getFlags().has(getFlagBonus()) ? 5 : 0);
+		if (actor.getSkills().hasSkill("trait.natural")) chance += 5;
 
 		if (::Math.rand(1,100) <= chance)
 		{
-			if (!actor.getFlags().has(getFlagStore())) 
+			if (!actor.getFlags().has(getFlagStore()))
 				actor.getFlags().set(getFlagStore(), 0);
 
-			actor.getFlags().set(getFlagStore(), 
+			actor.getFlags().set(getFlagStore(),
 				::Math.min(this.m.ProficiencyMax, actor.getFlags().getAsInt(getFlagStore()) + 1));
 
 			::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " has gained 1 " + this.m.str + " proficiency"));
 		}
 
-		if (actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax) 
+		if (actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax)
 			reward();
 	}
 

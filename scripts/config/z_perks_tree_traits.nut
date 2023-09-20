@@ -114,11 +114,11 @@ gt.Const.Perks.AgileTree <- {
 		],
 		[],
 		[
-			//TODO: agile row 2
+			gt.Const.Perks.PerkDefs.Agile
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendTwirl 
+			gt.Const.Perks.PerkDefs.LegendTwirl
 		],
 		[],
 		[
@@ -355,7 +355,7 @@ gt.Const.Perks.DeviousTree <- {
 		],
 		[],
 		[
-			//TODO: devious row 5
+			gt.Const.Perks.PerkDefs.PocketDirt
 		],
 		[],
 		[
@@ -854,7 +854,7 @@ gt.Const.Perks.TraitsTrees <- {
 		if (_flags.has("Sturdy") && _exclude.find("SturdyTree") == null) return gt.Const.Perks.SturdyTree;
 		if (_flags.has("Tenacious") && _exclude.find("IndestructibleTree") == null) return gt.Const.Perks.IndestructibleTree;
 		if (_flags.has("Fit") && _exclude.find("FitTree") == null) return gt.Const.Perks.FitTree;
-		
+
 
 		local L = [];
 		foreach( i, t in this.Tree )

@@ -69,44 +69,28 @@ this.staggered_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		// local statusResisted = actor.getCurrentProperties().IsResistantToAnyStatuses ? this.Math.rand(1, 100) <= 50 : false;
-		// statusResisted = statusResisted || actor.getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 33 : false;
-
-		// if (statusResisted)
-		// {
-		// 	if (!actor.isHiddenToPlayer())
-		// 	{
-		// 		this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " shook off being staggered thanks to his unnatural physiology");
-		// 	}
-
-		// 	this.removeSelf();
-		// }
-		// else
-		// {
-		// 	this.m.TurnsLeft = this.Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
-		// 	this.Tactical.TurnSequenceBar.pushEntityBack(actor.getID());
-		// }
-
-		//TODO: stagge resistance from perks
-		// gt.Const.Perks.PerkDefs.DeathDealer
-		// stances
 
 		local actor = this.getContainer().getActor();
-		this.m.TurnsLeft = this.Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
-		this.Tactical.TurnSequenceBar.pushEntityBack(actor.getID());
 
-		if (this.m.TurnsLeft == 0) 
+		if ((actor.getSkills().hasSkill("effects.death_dealer") && ::Math.rand(1,100) <= 50)
+			|| (actor.getFlags().has("StaggerImmune"))
+		)
 		{
+			if (!actor.isHiddenToPlayer())
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " resisted being staggered");
 			this.removeSelf();
 			return;
 		}
 
+		// this.m.TurnsLeft = this.Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+		this.Tactical.TurnSequenceBar.pushEntityBack(actor.getID());
 		local s = actor.getSkills();
 		s.removeByID("effects.shieldwall");
 		s.removeByID("effects.spearwall");
 		s.removeByID("effects.riposte");
 		s.removeByID("effects.return_favor");
 	}
+
 
 });
 

@@ -331,7 +331,7 @@
 		}
 
 		//perfectionist hitchance changes
-        local r = this.Math.rand(_targetEntity.getSkills().hasSkill("trait.natural") ? 6 : 1, _user.getSkills().hasSkill("trait.natural") ? 95 : 100);
+        local r = this.Math.rand(_targetEntity.getSkills().hasSkill("perk.legend_perfect_focus") ? 6 : 1, _user.getSkills().hasSkill("perk.legend_perfect_focus") ? 95 : 100);
 
 		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == 0)
 		{

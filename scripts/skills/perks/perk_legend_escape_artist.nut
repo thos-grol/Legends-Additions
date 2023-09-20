@@ -4,6 +4,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
 + "\n"+::MSU.Text.colorGreen("– 1") + " AP cost for movement skills"
 + "\n"+::MSU.Text.colorGreen("– 25%") + " Fatigue cost for movement skills"
++ "\n"+::MSU.Text.colorGreen("+75") + " Melee Defense when moving"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On turn start:")
 + "\n"+::MSU.Text.colorGreen("Perform a break free action using Melee Skill with a -25 penalty");
@@ -32,6 +33,19 @@ this.perk_legend_escape_artist <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 		actor.getFlags().set("Destiny", true);
+	}
+
+	function onBeingAttacked( _attacker, _skill, _properties )
+	{
+		if (("State" in this.Tactical) && this.Tactical.State != null && this.Tactical.State.isScenarioMode())
+		{
+			return;
+		}
+
+		if (this.getContainer().getActor().isPlacedOnMap() && this.Tactical.State.isAutoRetreat() && this.Tactical.TurnSequenceBar.getActiveEntity() != null && this.Tactical.TurnSequenceBar.getActiveEntity().getID() == this.getContainer().getActor().getID())
+		{
+			_properties.MeleeDefense += 75;
+		}
 	}
 
 	function onAfterUpdate( _properties )

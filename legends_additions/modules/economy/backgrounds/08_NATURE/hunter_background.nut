@@ -31,7 +31,7 @@
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Gains bow proficiency faster"
+			text = "Gains bow proficiency faster (+5 chance)"
 		});
 		return ret;
 	}

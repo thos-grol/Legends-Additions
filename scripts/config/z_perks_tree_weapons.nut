@@ -64,8 +64,7 @@ gt.Const.Perks.AxeTree <- {
 			gt.Const.Perks.PerkDefs.ReachAdvantage
 		],
 		[
-			gt.Const.Perks.PerkDefs.StanceExecutioner,
-			//TODO: axe stance
+			gt.Const.Perks.PerkDefs.StanceExecutioner
 		]
 	]
 };
@@ -125,14 +124,7 @@ gt.Const.Perks.CleaverTree <- {
 			gt.Const.Perks.PerkDefs.ReachAdvantage
 		],
 		[
-			//TODO: cleaver stance: Gourmet
-			//Prepare the meat...
-			// + "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "[u]Improves Weakness:[/u] (Duration: 3)")
-			// + "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "-10X% damage. X is the number of bleed stacks. Caps at 75%")
-
-			//TODO: cleaver stance: Skull Collector
-			//Skulls for the skull throne
-			//Decapitate has a chance to detonate blood stacks. This chance increases with the number of blood stacks.
+			gt.Const.Perks.PerkDefs.StanceGourmet
 		]
 	]
 };
@@ -251,7 +243,7 @@ gt.Const.Perks.MaceTree <- { //FEATURE_0: tree mace
 	Tree = [
 		[],
 		[
-			
+
 		],
 		[],
 		[
@@ -435,20 +427,10 @@ gt.Const.Perks.SpearTree <- {
 		[],
 		[
 			gt.Const.Perks.PerkDefs.SpecSpear
-			gt.Const.Perks.PerkDefs.LegendSpecSpearWall
-			gt.Const.Perks.PerkDefs.LegendSpecSpearThrust
-
-			//TODO: spec spear
-
-			// "Spear Advantage (requires Spear)
-			//  When using a Spear, every successful hit against an opponent increases your Melee Skill and Melee Defense against that opponent by +5 up to a maximum of +20. This bonus does not expire on its own but is lost upon taking Damage from that opponent."
-
-			// "King of all Weapons (requires Spear)
-			// When using a Spear, the first Thrust or Prong during your turn costs 0 Action Points, builds 0 Fatigue, but does -25% Damage."		
 		],
 		[
-			//TODO: // "Poke Poke 
-			//Decrease the AP cost of spear and polearm attacks by 1. 
+			//TODO: // "Poke Poke
+			//Decrease the AP cost of spear and polearm attacks by 1.
 
 		],
 		[
@@ -459,11 +441,6 @@ gt.Const.Perks.SpearTree <- {
 			//TODO: Soveriegn
 			//Poke poke poke poke
 			// On turn end, attack all adjacent enemies once
-
-			//TODO: Porcupine
-			// spear attacks have a chance to knock back
-			// On turn end, use spearwall automatically
-			
 		]
 	]
 };
@@ -632,14 +609,14 @@ gt.Const.Perks.ShieldTree <- { //FEATURE_0: tree shield
 
 		],
 		[
-			gt.Const.Perks.PerkDefs.ShieldExpert
-			//gt.Const.Perks.PerkDefs.LegendSpecialistShieldPush //TODO merge
-			//gt.Const.Perks.PerkDefs.ShieldBash //FEATURE_0: rework and merge, knockback, + chance to hit
+			gt.Const.Perks.PerkDefs.ShieldExpert //FEATURE_0: rework shield
+			//increase shield damage reduction
+			//provides some damage reduction to the user
+			//remove defence bonus
+			//gt.Const.Perks.PerkDefs.LegendSpecialistShieldPush
+			//gt.Const.Perks.PerkDefs.ShieldBash
 		],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistShieldSkill
-			//FEATURE_0: replace with rebuke
-		],
+		[],
 		[],
 		[]
 	]

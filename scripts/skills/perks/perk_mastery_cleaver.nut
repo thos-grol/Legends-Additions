@@ -9,7 +9,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "[u]Bleed:[/u] (Duration: 2)")
 + "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "On turn end or waiting, inflict 5 damage. Effect is stackable")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "[u]Weakness:[/u] (Duration: 3)")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "[u]Weakness:[/u] (Duration: 2)")
 + "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "-5X% damage. X is the number of bleed stacks. Caps at 75%");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecCleaver].Name = ::Const.Strings.PerkName.SpecCleaver;

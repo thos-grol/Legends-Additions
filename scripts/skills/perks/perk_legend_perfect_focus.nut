@@ -1,11 +1,10 @@
-//TODO: talented trait, move effect here. then put talent bonus to weapon proficiency
-//TODO: start off with max stacks of battleflow on battle start, increase the potency of battleflow
-
 ::Const.Strings.PerkName.PerfectFocus = "Perfect Focus";
 ::Const.Strings.PerkDescription.PerfectFocus = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\n" + "Eternity within a moment..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Perfect Focus\'[/u] (0 AP, 0 Fat):")
-+ "\n" + ::MSU.Text.colorGreen("– 50%") + " AP costs for skills, " + ::MSU.Text.colorRed("but +75% Fatigue cost");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n" + ::MSU.Text.colorGreen("+10") + " Battle Flow stacks on combat start"
++ "\nThis character's attack rolls are (1, 95) instead of (1, 100)"
++ "\nThis character's defense rolls are (6, 100) instead of (1, 100)";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PerfectFocus].Name = ::Const.Strings.PerkName.PerfectFocus;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PerfectFocus].Tooltip = ::Const.Strings.PerkDescription.PerfectFocus;
@@ -27,20 +26,12 @@ this.perk_legend_perfect_focus <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("actives.perfect_focus")) this.m.Container.add(this.new("scripts/skills/actives/perfect_focus"));
-
 		local actor = this.getContainer().getActor();
 		actor.getFlags().set("Destiny", true);
 	}
 
 	function onRemoved()
 	{
-		this.m.Container.removeByID("actives.perfect_focus");
-
-		local actor = this.getContainer().getActor();
-		if (actor.getFaction() != ::Const.Faction.Player) return;
-		
-		
 	}
 
 });

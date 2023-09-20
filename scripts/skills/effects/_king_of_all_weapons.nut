@@ -1,4 +1,4 @@
-this.perk_ptr_king_of_all_weapons <- this.inherit("scripts/skills/skill", {
+this._king_of_all_weapons <- this.inherit("scripts/skills/skill", {
 	m = {
 		IsForceEnabled = false,
 		IsSpent = true,
@@ -15,16 +15,11 @@ this.perk_ptr_king_of_all_weapons <- this.inherit("scripts/skills/skill", {
 		this.m.Description = "This character is highly skilled in spears and can perform a free attack during %their% turn.";
 		this.m.Icon = "ui/perks/ptr_king_of_all_weapons.png";
 		this.m.IconMini = "ptr_king_of_all_weapons_mini";
-		this.m.Type = this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
+		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.Order = this.Const.SkillOrder.VeryLast;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
-		this.m.IsHidden = false;
-	}
-
-	function isHidden()
-	{
-		return this.m.IsSpent;
+		this.m.IsHidden = true;
 	}
 
 	function getTooltip()
@@ -112,9 +107,9 @@ this.perk_ptr_king_of_all_weapons <- this.inherit("scripts/skills/skill", {
 
 	function onAnySkillExecuted( _skill, _targetTile, _targetEntity, _forFree )
 	{
-		if (_targetEntity != null && 
-			this.Tactical.TurnSequenceBar.getActiveEntity() != null && 
-			this.Tactical.TurnSequenceBar.getActiveEntity().getID() == this.getContainer().getActor().getID() && 
+		if (_targetEntity != null &&
+			this.Tactical.TurnSequenceBar.getActiveEntity() != null &&
+			this.Tactical.TurnSequenceBar.getActiveEntity().getID() == this.getContainer().getActor().getID() &&
 			this.m.Skills.find(_skill.getID()) != null
 			)
 		{
@@ -136,7 +131,7 @@ this.perk_ptr_king_of_all_weapons <- this.inherit("scripts/skills/skill", {
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
-		if (this.m.IsSpent || this.m.IsHidden)
+		if (this.m.IsSpent)
 		{
 			return;
 		}

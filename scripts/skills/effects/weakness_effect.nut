@@ -1,9 +1,9 @@
 this.weakness_effect <- this.inherit("scripts/skills/skill", {
 	m = {
-		TurnsLeft = 3,
-		TurnsLeftMax = 3,
+		TurnsLeft = 2,
+		TurnsLeftMax = 2,
 		Effect = 5,
-		Cap = 75
+		Cap = 50
 	},
 	function create()
 	{
@@ -55,6 +55,22 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 		_properties.DamageTotalMult -= 1.0 + getBonus() * 0.01;
 	}
 
+	function onAdded()
+	{
+
+		local actor = this.getContainer().getActor();
+		if ((actor.getFlags().has("WeaknessImmune"))
+		)
+		{
+			if (!actor.isHiddenToPlayer())
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " resisted being weakend");
+			this.removeSelf();
+			return;
+		}
+
+		this.m.TurnsLeft = this.Math.max(1, this.m.TurnsLeft + actor.getCurrentProperties().NegativeStatusEffectDuration);
+	}
+
 	function getBonus()
 	{
 		local count = 0;
@@ -62,7 +78,10 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 		{
 			if (s.m.ID == "effects.bleeding") count += 1;
 		}
-		return ::Math.min(count * this.m.Effect, this.m.Cap);
+		local actor = this.getContainer().getActor();
+		local cap = actor.getSkills().hasSkill("perk.stance.gourmet") ? 75 : this.m.Cap;
+		local effect = actor.getSkills().hasSkill("perk.stance.gourmet") ? 10 : this.m.Effect;
+		return ::Math.min(count * effect, cap);
 	}
 
 	function resetTime()
@@ -70,7 +89,7 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 		if (this.m.TurnsLeft != this.m.TurnsLeftMax)
 		{
 			this.m.TurnsLeft = this.m.TurnsLeftMax;
-			if (this.getContainer().getActor().isPlacedOnMap()) 
+			if (this.getContainer().getActor().isPlacedOnMap())
 				this.spawnIcon("weakness", this.getContainer().getActor().getTile());
 		}
 	}

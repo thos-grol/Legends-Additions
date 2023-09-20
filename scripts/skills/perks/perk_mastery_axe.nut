@@ -4,7 +4,7 @@
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Axes)"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]With axe equipped:[/u]")
-+ "\n Headshots will "+::MSU.Text.colorRed("Cull")+", executing targets with less than "+::MSU.Text.colorRed("33%")+" Hitpoints after recieving the hit" 
++ "\n Headshots will "+::MSU.Text.colorRed("Cull")+", executing targets with less than "+::MSU.Text.colorRed("33%")+" Hitpoints after recieving the hit"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Skill: Split Shield[/u]")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue"
@@ -34,21 +34,22 @@ this.perk_mastery_axe <- this.inherit("scripts/skills/skill", {
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
-		if (_bodyPart != ::Const.BodyPart.Head 
-			|| !_skill.isAttack() || !this.isEnabled() 
-			|| !_targetEntity.isAlive() || _targetEntity.isDying() 
-			|| _targetEntity.getSkills().hasSkill("effects.indomitable") 
+		if (!isEnabled()) return;
+		if (_bodyPart != ::Const.BodyPart.Head
+			|| !_skill.isAttack() || !this.isEnabled()
+			|| !_targetEntity.isAlive() || _targetEntity.isDying()
+			|| _targetEntity.getSkills().hasSkill("effects.indomitable")
 			|| _targetEntity.getSkills().hasSkill("perk.colossus")
 			) return;
 
 		local actor = this.getContainer().getActor();
 		local threshold = actor.getSkills().hasSkill("perk.stance.executioner") ? this.m.ThresholdExecutioner : this.m.Threshold;
-		
+
 		if (_targetEntity.getHitpoints() / (_targetEntity.getHitpointsMax() * 1.0) < threshold)
 		{
-			if (!actor.isHiddenToPlayer() && _targetEntity.getTile().IsVisibleForPlayer) 
+			if (!actor.isHiddenToPlayer() && _targetEntity.getTile().IsVisibleForPlayer)
 				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " has been culled"));
-			
+
 			_targetEntity.kill(actor, _skill, ::Const.FatalityType.Decapitated);
 		}
 	}

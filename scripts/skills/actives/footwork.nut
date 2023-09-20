@@ -69,15 +69,13 @@ this.footwork <- this.inherit("scripts/skills/skill", {
 			});
 		}
 
-		//TODO: cannot be used while grappled
-
 		return ret;
 	}
 
 	function isUsable()
 	{
-		if (this.skill.isUsable() 
-			&& this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions()) 
+		if (this.skill.isUsable()
+			&& this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions())
 			&& !this.getContainer().getActor().getCurrentProperties().IsRooted)
 		{
 			local myTile = this.getContainer().getActor().getTile();
