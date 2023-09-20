@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.LoneWolf = "Lone Wolf";
 ::Const.Strings.PerkDescription.LoneWolf = "Dog or Wolf?"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "With no ally within 2 tiles:")
 + "\n"+::MSU.Text.colorGreen("+15%") + " Melee Skill"
 + "\n"+::MSU.Text.colorGreen("+15%") + " Ranged Skill"

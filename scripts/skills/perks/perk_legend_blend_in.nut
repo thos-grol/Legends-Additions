@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.LegendBlendIn = "Sneak Attack";
 ::Const.Strings.PerkDescription.LegendBlendIn = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\n"+"If you notice me, you're already dead..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n"+ ::MSU.Text.colorGreen("– 90%") + " target attraction"
 + "\n"+ ::MSU.Text.colorRed("Makes it much less likely to be targeted for an attack")
 + "\n\n"+ ::MSU.Text.colorGreen("+25%") + " melee damage"

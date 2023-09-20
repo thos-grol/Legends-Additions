@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.Vengeance = "Vengeance";
 ::Const.Strings.PerkDescription.Vengeance = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Upon being hit:")
 + "\n" + ::MSU.Text.colorGreen("+100%") + " damage for the next attack"
 + "\n" + ::MSU.Text.colorGreen("+10%") + " stacking fatality chance";

@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.Footwork = "Footwork";
 ::Const.Strings.PerkDescription.Footwork = "Use that slipperiness to get out of bad situations..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Footwork\'[/u] (3 AP, 20 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Footwork\' (3 AP, 20 Fat):")
 + "\nLeave a zone of control without incurring any free attacks";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Footwork].Name = ::Const.Strings.PerkName.Footwork;

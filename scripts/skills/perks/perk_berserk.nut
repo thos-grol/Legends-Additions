@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.Berserk = "Brutality";
 ::Const.Strings.PerkDescription.Berserk = "Go berserk, brutalize them, destroy them..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Upon killing an enemy:")
 + "\n" + ::MSU.Text.colorGreen("+4") + " AP, "  + ::MSU.Text.colorRed("cannot exceed the max")
 + "\n\n"+::MSU.Text.colorRed("After the first kill, only fatalities will provide AP. This clause resets each turn");

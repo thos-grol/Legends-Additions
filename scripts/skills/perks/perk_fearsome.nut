@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.Fearsome = "Fearsome";
 ::Const.Strings.PerkDescription.Fearsome = "Make them scatter and flee!"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Dealing at least 1 HP damage:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Dealing at least 1 HP damage:")
 + "\n Morale check enemy with a penalty of "+ ::MSU.Text.colorGreen("20% this unit\'s resolve")
 + "\n" + ::MSU.Text.colorRed("Does not proc multiple times on the same target from one attack")
 + "\n\n" + ::MSU.Text.colorRed("Default morale check occurs at 15 HP damage with no penalty");

@@ -1,11 +1,11 @@
 ::Const.Strings.PerkName.LegendLacerate = "Lacerate";
 ::Const.Strings.PerkDescription.LegendLacerate = "Bleed them dry..."
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Cutting or Piercing attacks:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Cutting or Piercing attacks:")
 + "\n" + "Inflict "+::MSU.Text.colorGreen("1")+" Bleed (50% chance)"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "[u]Bleed:[/u] (Duration: 2)")
-+ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "On turn end or waiting, inflict 5 damage. Effect is stackable");
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Bleed: (Duration: 2, Stackable)")
++ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "On wait or turn end, inflict 5 damage");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendLacerate].Name = ::Const.Strings.PerkName.LegendLacerate;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendLacerate].Tooltip = ::Const.Strings.PerkDescription.LegendLacerate;

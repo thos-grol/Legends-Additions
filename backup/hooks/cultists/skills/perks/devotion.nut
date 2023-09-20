@@ -2,7 +2,7 @@
 // ::Const.Strings.PerkDescription.LegendSpecCultHood = "With face obscured by a cultist hood, gain " + ::MSU.Text.colorGreen( 15 ) + "% of your base resolve as a bonus to melee and ranged defense. Also works with cultist leather hood, leather helmet, sack, decayed sack helm, warlock hood or mask of davkul.\n Also unlocks a crafting recipe to make cultist hoods and sacks.";
 
 ::Const.Strings.PerkDescription.LegendSpecCultHood = "In Pain we find the truth of ourselves. We have no identity beyond servitude, our glory is agony."+
-"\n\n[color=" + ::Const.UI.Color.Passive + "][u]Passive:[/u][/color]" +
+"\n\n[color=" + ::Const.UI.Color.Passive + "]Passive:[/color]" +
 "\n• With face obscured by a cultist hood, gain " + ::MSU.Text.colorGreen( 15 ) + "% of your base resolve as a bonus to melee and ranged defense." +
 "\n• Unwillingness to avoid pain decreases the effectiveness of the Dodge to 5% of initiative." + 
 "\n• Each permenant injury increases this bonus by  " + ::MSU.Text.colorGreen( "5%" ) +

@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.NachzererGluttonyBarrier <- "Gluttony Shield";
 ::Const.Strings.PerkDescription.NachzererGluttonyBarrier <- "Protection by the powers of gluttony..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n• At the start of battle, gain 1 charge of shielding."
 + "\n• Each charge can nullify a blow. Gain more charges through consuming enemies or corpses.";
 

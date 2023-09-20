@@ -1,5 +1,5 @@
 ::Const.Strings.PerkDescription.Dodge = "Too fast..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("+15% of current Initiative") + " as Melee and Ranged Defense.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Dodge].Tooltip = ::Const.Strings.PerkDescription.Dodge;

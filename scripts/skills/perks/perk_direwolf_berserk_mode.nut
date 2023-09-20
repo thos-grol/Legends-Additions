@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.DirewolfBerserkMode <- "Berserk Mode";
 ::Const.Strings.PerkDescription.DirewolfBerserkMode <- "Unstoppable rage..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]When reduced to 50% hp:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "When reduced to 50% hp:")
 + "\n• Triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
 + "\n• Become immune to stuns and displacement for 2 turns."
 + "\n• Gain increased damage, initiative, and defenses for 2 turns.";

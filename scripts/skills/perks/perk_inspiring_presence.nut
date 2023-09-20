@@ -1,11 +1,11 @@
 ::Const.Strings.PerkName.InspiringPresence = "Teamwork Exercises";
 ::Const.Strings.PerkDescription.InspiringPresence = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\n" + "Work as a team, fight as a team..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("– 75%") + " chance of friendly fire between units in the company. " + ::MSU.Text.colorRed("Is cancelled if this unit dies")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Hold the Line\'[/u] (9 AP, 25 Fat, 2 Charges):")
-+ "\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]For allied units within 4 tiles:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Hold the Line\' (9 AP, 25 Fat, 2 Charges):")
++ "\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "For allied units within 4 tiles:")
 + "\n"+::MSU.Text.colorGreen("+25%" + " damage reduction")
 + "\n"+::MSU.Text.colorGreen("+Displacement Immunity")
 + "\n"+::MSU.Text.colorGreen("+Shieldwall")

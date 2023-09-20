@@ -1,5 +1,5 @@
 ::Const.Strings.PerkDescription.LegendBackToBasics = "The basics make a master..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("+2") + " perk points, "
 + "\n" + ::MSU.Text.colorRed("Resets this unit\'s perk row to 3")
 + "\n\n" + ::MSU.Text.colorRed("Is not refundable");

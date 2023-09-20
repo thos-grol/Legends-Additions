@@ -1,9 +1,9 @@
 ::Const.Strings.PerkName.StanceExecutioner <- "Executioner";
 ::Const.Strings.PerkDescription.StanceExecutioner <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("+50%") + " Headshot chance"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]With axe equipped:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "With axe equipped:")
 + "\n "+::MSU.Text.colorRed("Cull") + " now triggers at "+::MSU.Text.colorRed("44%")
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Characters may only pick 1 Stance \n\nStance is only obtainable by mastering the corresponding weapon");

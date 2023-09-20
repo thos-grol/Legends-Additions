@@ -1,5 +1,5 @@
-//TODO: test spear mastery, cleaver mastery, gourmet stance, escape artist, pocket dirt, agile, battle flow, perfect focus, rotation, twirl
-
+//TODO: gourmet stance, rotation, twirl
+//TODO: gourmet art, vengance and perfect focus golden circles
 //TODO: remove reforged art and stuff
  Icon = "ui/perks/rf_death_dealer.png",
         IconDisabled = "ui/perks/rf_death_dealer_bw.png",

@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.Fitness <- "Fitness";
 ::Const.Strings.PerkDescription.Fitness <- "Greater fitness, heavier armor..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("– 20%") + " Fatigue from Mainhand, Offhand, Head and Body Gear"
 + "\n\n" + ::MSU.Text.colorRed("Stacks with Brawny");
 

@@ -1,8 +1,8 @@
 ::Const.Strings.PerkDescription.Adrenaline = "The rush of battle, adrenaline..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Adrenaline\'[/u] (1 AP, 20 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Adrenaline\' (1 AP, 20 Fat):")
 + "\nThe user becomes first in the next round's turn order"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]When attacked:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "When attacked:")
 + "\n"+::MSU.Text.colorRed("+1 stack up to 5")
 + "\n"+::MSU.Text.colorRed("stacks expire on turn end")
 + "\n" + ::MSU.Text.colorGreen("+5") + " Initiative per stack"

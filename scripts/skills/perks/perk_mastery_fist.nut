@@ -7,10 +7,10 @@
 
 ::Const.Strings.PerkName.LegendSpecFists = "Unarmed Proficiency";
 ::Const.Strings.PerkDescription.LegendSpecFists = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Unarmed)"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Unarmed strikes:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Unarmed strikes:")
 + "\n"+::MSU.Text.colorGreen("+X%") + " unarmed damage"
 + "\n"+::MSU.Text.colorGreen("+X%") + " unarmed stagger chance"
 + "\n"+::MSU.Text.colorRed("X = 2*sqrt(total armor weight)");

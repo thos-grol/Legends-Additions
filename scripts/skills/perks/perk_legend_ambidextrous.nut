@@ -1,15 +1,15 @@
 ::Const.Strings.PerkName.LegendAmbidextrous = "CQC";
 ::Const.Strings.PerkDescription.LegendAmbidextrous = "Knee jabs, elbow strikes, kicks. The basics..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On attack:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On attack:")
 + "\n "+::MSU.Text.colorGreen("+1")+" CQC attack"
 + "\n" + ::MSU.Text.colorRed("If mainhand is not empty, -20% damage")
 + "\n"+::MSU.Text.colorRed("Invalid if offhand is missing or not free")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Kick\'[/u] (4 AP, 14 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Kick\' (4 AP, 14 Fat):")
 + "\nPerform a CQC attack with a malus of " + ::MSU.Text.colorRed("-25") + " melee skill. Will " + ::MSU.Text.colorRed("Stagger")
 + "\n" + ::MSU.Text.colorRed("Invalid if this unit is missing a leg")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "[u]Stagger:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Stagger:")
 + "\n "+::MSU.Text.colorRed("-50%")+" Initiative"
 + "\n "+::MSU.Text.colorRed("-25")+" Melee Defense"
 + "\n "+::MSU.Text.colorRed("-25")+" Ranged Defense"

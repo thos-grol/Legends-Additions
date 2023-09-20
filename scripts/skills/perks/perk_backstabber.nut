@@ -1,5 +1,5 @@
 ::Const.Strings.PerkDescription.Backstabber = "It's not the strong who survive. It's the survivors who are strong..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("+5") + " Surrounded Offense"
 + "\n"+::MSU.Text.colorGreen("+20%") + " damage against " + ::MSU.Text.colorRed("injured, stunned, netted, or sleeping") + " targets";
 

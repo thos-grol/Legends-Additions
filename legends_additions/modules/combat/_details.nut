@@ -1,3 +1,4 @@
+//TODO: redo to not contain logic
 ::mods_hookExactClass("skills/special/mood_check", function (o)
 {
     o.m.Stacks <- 0;

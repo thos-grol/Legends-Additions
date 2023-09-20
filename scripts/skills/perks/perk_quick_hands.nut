@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.QuickHands = "Quick Hands";
 ::Const.Strings.PerkDescription.QuickHands = "Slower is dead..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Once per turn:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Once per turn:")
 + "\nSwapping any item (besides shields) costs 0 AP";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.QuickHands].Name = ::Const.Strings.PerkName.QuickHands;

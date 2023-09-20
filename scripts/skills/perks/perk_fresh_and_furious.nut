@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.FreshAndFurious <- "Fresh";
 ::Const.Strings.PerkDescription.FreshAndFurious <- ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\nBoundless energy, unstoppable determination..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On first skill use this turn:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On first skill use this turn:")
 + "\n"+::MSU.Text.colorGreen("– 50%") + " AP cost"
 + "\n"+::MSU.Text.colorRed("Invalid if Fatigue is over 40% max");
 

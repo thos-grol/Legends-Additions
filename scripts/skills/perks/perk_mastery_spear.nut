@@ -1,16 +1,16 @@
 
 ::Const.Strings.PerkName.SpecSpear = "Spear Proficiency";
 ::Const.Strings.PerkDescription.SpecSpear = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Spears)"
 + "\n " + ::MSU.Text.colorGreen("0%") + " adjacent hit penalty (Spetum and Warfork)"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]With spear equipped:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "With spear equipped:")
 + "\n " + ::MSU.Text.colorGreen("+1") + " free attack (Thrust or Prong), but does -25% Damage"
 + "\n\n"+::MSU.Text.colorGreen("+5") + " melee defense against an opponent per hit (up to +20)"
 + "\n"+::MSU.Text.colorRed("Invalid if a shield is equipped. When taking damage, the bonus against the source is lost")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Spearwall:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Spearwall:")
 + "\nIs no longer cancelled once an enemy overcomes it";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecSpear].Name = ::Const.Strings.PerkName.SpecSpear;

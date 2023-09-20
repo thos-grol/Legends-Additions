@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.NineLives <- "Nine Lives";
 ::Const.Strings.PerkDescription.NineLives <- "Like a cat..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Upon taking fatal damage:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Upon taking fatal damage:")
 + "\n"+::MSU.Text.colorGreen("+Death immunity") + " till turn start"
 + "\n"+::MSU.Text.colorGreen("+Remove DOT effects");
 

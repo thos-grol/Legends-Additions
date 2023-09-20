@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.HoldOut <- "Resilient";
 ::Const.Strings.PerkDescription.HoldOut <- "Blink and you miss me..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("– 1 duration for negative status effects")
 + "\n"+::MSU.Text.colorGreen("+8") + " Hitpoints"
 + "\n"+::MSU.Text.colorGreen("+33%") + " chance to survive being struck down (Base: 33%)";

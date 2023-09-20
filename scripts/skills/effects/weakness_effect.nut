@@ -1,7 +1,7 @@
 this.weakness_effect <- this.inherit("scripts/skills/skill", {
 	m = {
-		TurnsLeft = 2,
-		TurnsLeftMax = 2,
+		TurnsLeft = 1,
+		TurnsLeftMax = 1,
 		Effect = 5,
 		Cap = 50
 	},
@@ -82,9 +82,8 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 		}
 
 		this.m.TurnsLeft = this.Math.max(1, this.m.TurnsLeft + actor.getCurrentProperties().NegativeStatusEffectDuration);
+		//TODO: if turnsleft is 0, tell message
 	}
-
-	
 
 	function resetTime()
 	{

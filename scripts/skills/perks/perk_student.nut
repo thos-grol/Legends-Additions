@@ -1,8 +1,8 @@
 ::Const.Strings.PerkName.Student = "Student";
 ::Const.Strings.PerkDescription.Student = "There is an ocean of knowledge out there, and this character has the talent to grasp a tiny portion of it..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("250%") + " EXP gain"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Upon reaching Level 11:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Upon reaching Level 11:")
 + "\n"+::MSU.Text.colorGreen("+1") + " perk point";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Student].Name = ::Const.Strings.PerkName.Student;

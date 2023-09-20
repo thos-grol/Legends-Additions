@@ -1,7 +1,7 @@
 ::Const.Strings.PerkDescription.Brawny = "Greater fitness, heavier armor..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("– 30%") + " Fatigue and Initiative penalty from armor"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]While over 90% Fatigued:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "While over 90% Fatigued:")
 + "\n"+::MSU.Text.colorGreen("+5") + " Fatigue recovery";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Brawny].Tooltip = ::Const.Strings.PerkDescription.Brawny;

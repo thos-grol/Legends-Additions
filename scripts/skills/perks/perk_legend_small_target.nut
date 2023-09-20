@@ -1,5 +1,5 @@
 ::Const.Strings.PerkDescription.LegendSmallTarget = "Use flowing, billowing clothes to distract..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("+100") + " Melee and Ranged defence. "  + ::MSU.Text.colorRed("– 1") + " per point of armor and health. "  + ::MSU.Text.colorRed("Tabards") + ", "  + ::MSU.Text.colorRed("Cloaks") + ", and "  + ::MSU.Text.colorRed("Helmet Vanity Layers") + " are not used in calculations."
 + "\n\n" + ::MSU.Text.colorGreen("+100%") + " to reroll incoming hits. "  + ::MSU.Text.colorRed("– 1%") + " chance per point of Melee Defense and Resolve.";
 

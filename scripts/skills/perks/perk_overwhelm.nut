@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.Overwhelm = "Overwhelm";
 ::Const.Strings.PerkDescription.Overwhelm = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\nOverwhelm them with a flurry of strikes. Follow up to create devestating attacks."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On attack hit or miss:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On attack hit or miss:")
 + "\nInflict 1 stack of " + ::MSU.Text.colorRed("Overwhelm") + ": " + ::MSU.Text.colorGreen("– 10%") + " melee and ranged attack per stack for a turn)."
 + "\n" + ::MSU.Text.colorGreen("+20%") + " increased damage for the next attack on landing an attack.";
 

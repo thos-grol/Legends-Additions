@@ -1,8 +1,8 @@
 ::Const.Strings.PerkDescription.LegendRecuperation = "Recover health and fatigue..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("+2") + " Hitpoint recovery"
 + "\n" + ::MSU.Text.colorGreen("+2") + " Fatigue recovery"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]\'Recover\'[/u] (X AP):")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Recover\' (X AP):")
 + "\n" + ::MSU.Text.colorGreen("– 5.5% * X") + " Fatigue accumulated"
 + "\n"+::MSU.Text.colorRed("Cannot be used if another skill has been used");
 

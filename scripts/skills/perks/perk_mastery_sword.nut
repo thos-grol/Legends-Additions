@@ -1,9 +1,9 @@
 ::Const.Strings.PerkName.SpecSword = "Sword Proficiency";
 ::Const.Strings.PerkDescription.SpecSword = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Swords)"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Ending turn, with sword equipped:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Ending turn, with sword equipped:")
 + "\n "+"Riposte. If impossible, Return Favor"
 + "\n "+::MSU.Text.colorRed("Invalid with less than 15 Fatigue remaining");
 

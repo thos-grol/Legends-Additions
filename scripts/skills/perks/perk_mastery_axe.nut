@@ -1,12 +1,12 @@
 ::Const.Strings.PerkName.SpecAxe = "Axe Proficiency";
 ::Const.Strings.PerkDescription.SpecAxe = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Axes)"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]With axe equipped:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "With axe equipped:")
 + "\n Headshots will "+::MSU.Text.colorRed("Cull")+", executing targets with less than "+::MSU.Text.colorRed("33%")+" Hitpoints after recieving the hit"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Skill: Split Shield[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Skill: Split Shield")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue"
 + "\n " + ::MSU.Text.colorGreen("+50%") + " shield damage";
 
