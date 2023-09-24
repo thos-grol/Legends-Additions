@@ -31,17 +31,17 @@ this.farmer_old_tricks_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Farmer.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+					text = _event.m.Farmer.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
 				});
 				_event.m.Farmer.improveMood(1.0, "Realized he has some fighting knowledge");
 				_event.markAsLearned();
 
-				if (_event.m.Farmer.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Farmer.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Farmer.getMoodState()],
-						text = _event.m.Farmer.getName() + this.Const.MoodStateEvent[_event.m.Farmer.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Farmer.getMoodState()],
+						text = _event.m.Farmer.getName() + ::Const.MoodStateEvent[_event.m.Farmer.getMoodState()]
 					});
 				}
 			}

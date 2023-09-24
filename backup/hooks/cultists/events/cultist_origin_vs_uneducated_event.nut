@@ -73,7 +73,7 @@
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Cultist.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+2[/color] Resolve"
+					text = _event.m.Cultist.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+2[/color] Resolve"
 				});
 			}
 
@@ -100,12 +100,12 @@
 				this.Characters.push(_event.m.Uneducated.getImagePath());
 				_event.m.Cultist.worsenMood(1.0, "Was denied the chance to convert " + _event.m.Uneducated.getName());
 
-				if (_event.m.Cultist.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Cultist.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Cultist.getMoodState()],
-						text = _event.m.Cultist.getName() + this.Const.MoodStateEvent[_event.m.Cultist.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Cultist.getMoodState()],
+						text = _event.m.Cultist.getName() + ::Const.MoodStateEvent[_event.m.Cultist.getMoodState()]
 					});
 				}
 			}

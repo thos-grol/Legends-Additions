@@ -20,15 +20,15 @@ this.direwolf_bite <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/werewolf_claw_hit_02.wav",
 			"sounds/enemies/werewolf_claw_hit_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
 		this.m.IsStacking = false;
 		this.m.IsAttack = true;
-		this.m.InjuriesOnBody = this.Const.Injury.CuttingAndPiercingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.CuttingAndPiercingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.CuttingAndPiercingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.CuttingAndPiercingHead;
 		this.m.DirectDamageMult = 0.2;
 		this.m.ActionPointCost = 4;
 		this.m.FatigueCost = 6;
@@ -68,7 +68,7 @@ this.direwolf_bite <- this.inherit("scripts/skills/skill", {
 				id = 4,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "Inflicts [color=" + this.Const.UI.Color.DamageValue + "]" + p.DamageRegularMin + "[/color] - [color=" + this.Const.UI.Color.DamageValue + "]" + p.DamageRegularMax + "[/color] damage"
+				text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]" + p.DamageRegularMin + "[/color] - [color=" + ::Const.UI.Color.DamageValue + "]" + p.DamageRegularMax + "[/color] damage"
 			}
 		];
 	}

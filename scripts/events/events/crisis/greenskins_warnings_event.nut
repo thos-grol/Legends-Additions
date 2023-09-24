@@ -30,7 +30,7 @@ this.greenskins_warnings_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (this.World.FactionManager.getGreaterEvilType() == this.Const.World.GreaterEvilType.Greenskins && this.World.FactionManager.getGreaterEvilPhase() == this.Const.World.GreaterEvilPhase.Warning)
+		if (this.World.FactionManager.getGreaterEvilType() == ::Const.World.GreaterEvilType.Greenskins && this.World.FactionManager.getGreaterEvilPhase() == ::Const.World.GreaterEvilPhase.Warning)
 		{
 			local playerTile = this.World.State.getPlayer().getTile();
 
@@ -39,7 +39,7 @@ this.greenskins_warnings_event <- this.inherit("scripts/events/event", {
 				return;
 			}
 
-			if (this.Const.DLC.Desert && playerTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+			if (::Const.DLC.Desert && playerTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 			{
 				return;
 			}

@@ -33,14 +33,14 @@ this.fisherman_vs_farmer_event <- this.inherit("scripts/events/event", {
 				_event.m.Fisherman.improveMood(1.0, "Bonded with " + _event.m.Farmer.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Fisherman.getMoodState()],
-					text = _event.m.Fisherman.getName() + this.Const.MoodStateEvent[_event.m.Fisherman.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Fisherman.getMoodState()],
+					text = _event.m.Fisherman.getName() + ::Const.MoodStateEvent[_event.m.Fisherman.getMoodState()]
 				});
 				_event.m.Farmer.improveMood(1.0, "Bonded with " + _event.m.Fisherman.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Farmer.getMoodState()],
-					text = _event.m.Farmer.getName() + this.Const.MoodStateEvent[_event.m.Farmer.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Farmer.getMoodState()],
+					text = _event.m.Farmer.getName() + ::Const.MoodStateEvent[_event.m.Farmer.getMoodState()]
 				});
 
 				if (_event.m.Fisherman.getTitle() == "")
@@ -87,14 +87,14 @@ this.fisherman_vs_farmer_event <- this.inherit("scripts/events/event", {
 				_event.m.Fisherman.improveMood(1.0, "Bonded with " + _event.m.Farmer.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Fisherman.getMoodState()],
-					text = _event.m.Fisherman.getName() + this.Const.MoodStateEvent[_event.m.Fisherman.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Fisherman.getMoodState()],
+					text = _event.m.Fisherman.getName() + ::Const.MoodStateEvent[_event.m.Fisherman.getMoodState()]
 				});
 				_event.m.Farmer.improveMood(1.0, "Bonded with " + _event.m.Fisherman.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Farmer.getMoodState()],
-					text = _event.m.Farmer.getName() + this.Const.MoodStateEvent[_event.m.Farmer.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Farmer.getMoodState()],
+					text = _event.m.Farmer.getName() + ::Const.MoodStateEvent[_event.m.Farmer.getMoodState()]
 				});
 
 				if (_event.m.Farmer.getTitle() == "")

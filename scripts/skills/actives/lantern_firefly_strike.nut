@@ -29,8 +29,8 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/poison_applied_02.wav"
 		];
 		this.m.SoundVolume = 0.9;
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.Delay = 200;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
@@ -48,9 +48,9 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 		this.m.MinRange = 2;
 		this.m.MaxRange = 6;
 		this.m.MaxLevelDifference = 4;
-		this.m.InjuriesOnBody = this.Const.Injury.BurningBody;
-		this.m.InjuriesOnHead = this.Const.Injury.BurningHead;
-		this.m.ProjectileType = this.Const.ProjectileType.xxprojectile_05; //FEATURE_6: port over brush
+		this.m.InjuriesOnBody = ::Const.Injury.BurningBody;
+		this.m.InjuriesOnHead = ::Const.Injury.BurningHead;
+		this.m.ProjectileType = ::Const.ProjectileType.xxprojectile_05; //FEATURE_6: port over brush
 		this.m.ProjectileTimeScale = 0.9;
 	}
 
@@ -81,7 +81,7 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Can not be used because this character is engaged in melee[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Can not be used because this character is engaged in melee[/color]"
 			});
 		}
 		return ret;
@@ -145,11 +145,11 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 			this.Time.scheduleEvent(this.TimeUnit.Virtual, 0 + (i * 80), function ( _skill )
 			{
 				xxtileE = xxtile.remove(this.Math.rand(0, xxtile.len() - 1));
-				if (_user.getTile().getDistanceTo(_targetTile) >= this.Const.Combat.SpawnProjectileMinDist)
+				if (_user.getTile().getDistanceTo(_targetTile) >= ::Const.Combat.SpawnProjectileMinDist)
 				{
-					this.Sound.play("sounds/combat/strike_down_hit_0" + this.Math.rand(1, 2) + ".wav", this.Const.Sound.Volume.Skill * 1.2, this.getContainer().getActor().getPos());
+					this.Sound.play("sounds/combat/strike_down_hit_0" + this.Math.rand(1, 2) + ".wav", ::Const.Sound.Volume.Skill * 1.2, this.getContainer().getActor().getPos());
 					this.Tactical.spawnSpriteEffect("sparkleflare_1", this.createColor("#ccf1ff"), xxtileE, 0, 10, 1.2, 0.2, -10, 200, 400);
-					this.Tactical.spawnProjectileEffect(this.Const.ProjectileSprite[this.m.ProjectileType], xxtileE, _targetTile, 0.7 + (this.Math.rand(0, 5) * 0.1), this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
+					this.Tactical.spawnProjectileEffect(::Const.ProjectileSprite[this.m.ProjectileType], xxtileE, _targetTile, 0.7 + (this.Math.rand(0, 5) * 0.1), this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
 				}
 			}.bindenv(this), this);
 		}

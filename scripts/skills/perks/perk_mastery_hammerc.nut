@@ -8,7 +8,7 @@ this.perk_mastery_hammerc <- this.inherit("scripts/skills/perks/perk_mastery_ham
 	{
 		this.perk_mastery_hammer.create();
 		this.m.ID = "perk.mastery.hammerc";
-		this.m.Name = this.Const.Strings.PerkName.SpecHammerC;
+		this.m.Name = ::Const.Strings.PerkName.SpecHammerC;
 	}
 });
 

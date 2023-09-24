@@ -346,8 +346,8 @@ local perks = [
 	// }
 ];
 
+::logInfo("z_perks_defs2");
 ::Const.Perks.addPerkDefObjects(perks);
-::Const.Perks.updatePerkGroupTooltips();
 
 ////////////////////////////////////////////////////
 

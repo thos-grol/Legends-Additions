@@ -91,7 +91,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.InjuredDude.getImagePath());
-				local injury = _event.m.InjuredDude.addInjury(this.Const.Injury.Accident3);
+				local injury = _event.m.InjuredDude.addInjury(::Const.Injury.Accident3);
 				this.List = [
 					{
 						id = 10,
@@ -228,7 +228,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + sword.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(sword.getName()) + sword.getName()
+					text = "You gain " + ::Const.Strings.getArticle(sword.getName()) + sword.getName()
 				});
 				this.World.Assets.getStash().add(sword);
 			}
@@ -277,7 +277,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 			}
 			else if (r == 3)
 			{
-				item = this.Const.World.Common.pickHelmet([
+				item = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"hood"
@@ -298,7 +298,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 			}
 			else if (r == 7)
 			{
-				item = this.Const.World.Common.pickHelmet([
+				item = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"feathered_hat"
@@ -307,7 +307,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 			}
 			else
 			{
-				item = this.Const.World.Common.pickArmor([
+				item = ::Const.World.Common.pickArmor([
 					[
 						1,
 						"linen_tunic"
@@ -327,7 +327,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 			_list.push({
 				id = 10,
 				icon = "ui/items/" + item.getIcon(),
-				text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+				text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 			});
 			i = ++i;
 		}
@@ -347,7 +347,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 		{
 			return;
 		}
@@ -365,7 +365,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 
 		foreach( bro in brothers )
 		{
-			if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat) || bro.getSkills().hasSkill("trait.bloodthirsty") || bro.getSkills().hasSkill("trait.brute"))
+			if (bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat) || bro.getSkills().hasSkill("trait.bloodthirsty") || bro.getSkills().hasSkill("trait.brute"))
 			{
 				candidates_aggro.push(bro);
 			}

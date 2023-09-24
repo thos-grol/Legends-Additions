@@ -7,7 +7,7 @@
 		{
 			this.m.LastDayPaid = this.World.getTime().Days;
 
-			if (this.m.BusinessReputation > 0) this.m.BusinessReputation = this.Math.max(0, this.m.BusinessReputation + this.Const.World.Assets.ReputationDaily);
+			if (this.m.BusinessReputation > 0) this.m.BusinessReputation = this.Math.max(0, this.m.BusinessReputation + ::Const.World.Assets.ReputationDaily);
 			
 			this.World.Retinue.onNewDay();
 
@@ -66,11 +66,11 @@
 				{
 					if (bro.getSkills().hasSkill("trait.greedy"))
 					{
-						bro.worsenMood(this.Const.MoodChange.NotPaidGreedy, "Did not get paid");
+						bro.worsenMood(::Const.MoodChange.NotPaidGreedy, "Did not get paid");
 					}
 					else
 					{
-						bro.worsenMood(this.Const.MoodChange.NotPaid, "Did not get paid");
+						bro.worsenMood(::Const.MoodChange.NotPaid, "Did not get paid");
 					}
 				}
 
@@ -78,15 +78,15 @@
 				{
 					if (bro.getSkills().hasSkill("trait.spartan"))
 					{
-						bro.worsenMood(this.Const.MoodChange.NotEatenSpartan, "Went hungry");
+						bro.worsenMood(::Const.MoodChange.NotEatenSpartan, "Went hungry");
 					}
 					else if (bro.getSkills().hasSkill("trait.gluttonous"))
 					{
-						bro.worsenMood(this.Const.MoodChange.NotEatenGluttonous, "Went hungry");
+						bro.worsenMood(::Const.MoodChange.NotEatenGluttonous, "Went hungry");
 					}
 					else
 					{
-						bro.worsenMood(this.Const.MoodChange.NotEaten, "Went hungry");
+						bro.worsenMood(::Const.MoodChange.NotEaten, "Went hungry");
 					}
 				}
 
@@ -94,7 +94,7 @@
 				{
 					if (bro.getBackground().getID() != "background.slave")
 					{
-						bro.worsenMood(this.Const.MoodChange.TooFewSlaves, "Too few indebted in the company");
+						bro.worsenMood(::Const.MoodChange.TooFewSlaves, "Too few indebted in the company");
 					}
 				}
 
@@ -102,7 +102,7 @@
 				mood = mood + bro.getMoodState();
 			}
 
-			this.Sound.play(this.Const.Sound.MoneyTransaction[this.Math.rand(0, this.Const.Sound.MoneyTransaction.len() - 1)], this.Const.Sound.Volume.Inventory);
+			this.Sound.play(::Const.Sound.MoneyTransaction[this.Math.rand(0, ::Const.Sound.MoneyTransaction.len() - 1)], ::Const.Sound.Volume.Inventory);
 			this.m.AverageMoodState = this.Math.round(mood / roster.len());
 			_worldState.updateTopbarAssets();
 
@@ -138,11 +138,11 @@
 				{
 					if (bro.getFlags().has("undead"))
 					{
-						bro.setHitpoints(this.Math.minf(bro.getHitpointsMax(), bro.getHitpoints() + this.Const.World.Assets.HitpointsPerHour / 10 * this.Const.Difficulty.HealMult[this.World.Assets.getEconomicDifficulty()] * this.m.HitpointsPerHourMult));
+						bro.setHitpoints(this.Math.minf(bro.getHitpointsMax(), bro.getHitpoints() + ::Const.World.Assets.HitpointsPerHour / 10 * ::Const.Difficulty.HealMult[this.World.Assets.getEconomicDifficulty()] * this.m.HitpointsPerHourMult));
 					}
 					else
 					{
-						bro.setHitpoints(this.Math.minf(bro.getHitpointsMax(), bro.getHitpoints() + this.Const.World.Assets.HitpointsPerHour * this.Const.Difficulty.HealMult[this.World.Assets.getEconomicDifficulty()] * this.m.HitpointsPerHourMult));
+						bro.setHitpoints(this.Math.minf(bro.getHitpointsMax(), bro.getHitpoints() + ::Const.World.Assets.HitpointsPerHour * ::Const.Difficulty.HealMult[this.World.Assets.getEconomicDifficulty()] * this.m.HitpointsPerHourMult));
 					}
 				}
 			}
@@ -182,7 +182,7 @@
 				{
 					if (item.getRepair() < item.getRepairMax())
 					{
-						local d = this.Math.ceil(this.Math.minf(this.Const.World.Assets.ArmorPerHour * this.Const.Difficulty.RepairMult[this.World.Assets.getEconomicDifficulty()] * this.m.RepairSpeedMult, item.getRepairMax() - item.getRepair()));
+						local d = this.Math.ceil(this.Math.minf(::Const.World.Assets.ArmorPerHour * ::Const.Difficulty.RepairMult[this.World.Assets.getEconomicDifficulty()] * this.m.RepairSpeedMult, item.getRepairMax() - item.getRepair()));
 						item.onRepair(item.getRepair() + d);
 						this.m.ArmorParts = this.Math.maxf(0, this.m.ArmorParts - d * this.m.ArmorPartsPerArmor * perkMod);
 						updateBro = true;
@@ -211,7 +211,7 @@
 			}
 
 			local items = this.m.Stash.getItems();
-			local stashmaxrepairpotential = this.Math.ceil(roster.len() * this.Const.Difficulty.RepairMult[this.World.Assets.getEconomicDifficulty()] * this.m.RepairSpeedMult * this.Const.World.Assets.ArmorPerHour);
+			local stashmaxrepairpotential = this.Math.ceil(roster.len() * ::Const.Difficulty.RepairMult[this.World.Assets.getEconomicDifficulty()] * this.m.RepairSpeedMult * ::Const.World.Assets.ArmorPerHour);
 
 			foreach( item in items )
 			{
@@ -272,9 +272,9 @@
 				{
 					bro.recoverMood();
 
-					if (town != null && bro.getMoodState() <= this.Const.MoodState.Neutral)
+					if (town != null && bro.getMoodState() <= ::Const.MoodState.Neutral)
 					{
-						bro.improveMood(this.Const.MoodChange.NearCity, "Has enjoyed the visit to " + town.getName());
+						bro.improveMood(::Const.MoodChange.NearCity, "Has enjoyed the visit to " + town.getName());
 					}
 				}
 			}
@@ -298,7 +298,7 @@
 		];
 		local activeContract = this.World.Contracts.getActiveContract();
 
-		if (activeContract && this.World.FactionManager.getFaction(activeContract.getFaction()).m.Type == this.Const.FactionType.NobleHouse && excluded_contracts.find(activeContract.m.Type) == null && (activeContract.getActiveState().ID == "Return" || activeContract.m.Type == "contract.big_game_hunt" && activeContract.getActiveState().Flags.get("HeadsCollected") != 0))
+		if (activeContract && this.World.FactionManager.getFaction(activeContract.getFaction()).m.Type == ::Const.FactionType.NobleHouse && excluded_contracts.find(activeContract.m.Type) == null && (activeContract.getActiveState().ID == "Return" || activeContract.m.Type == "contract.big_game_hunt" && activeContract.getActiveState().Flags.get("HeadsCollected") != 0))
 		{
 			local contract_faction = this.World.FactionManager.getFaction(activeContract.getFaction());
 			local towns = contract_faction.getSettlements();

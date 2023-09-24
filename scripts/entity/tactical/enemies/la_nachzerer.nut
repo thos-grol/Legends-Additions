@@ -32,8 +32,8 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.addSprite("socket").setBrush("bust_base_beasts");
 		local body = this.addSprite("body");
 		body.setBrush("bust_ghoul_body_03");
@@ -87,16 +87,16 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Ghoul;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Ghoul.XP;
+		this.m.Type = ::Const.EntityType.Ghoul;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.Ghoul.XP;
 		this.m.BloodSplatterOffset = this.createVec(0, 0);
 		this.m.DecapitateSplatterOffset = this.createVec(35, -26);
 		this.m.DecapitateBloodAmount = 1.5;
 		this.m.BloodPoolScale = 1.33;
 		this.m.ConfidentMoraleBrush = "icon_confident_undead";
 		this.actor.create();
-		this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
+		this.m.Sound[::Const.Sound.ActorEvent.DamageReceived] = [
 			"sounds/enemies/ghoul_hurt_01.wav",
 			"sounds/enemies/ghoul_hurt_02.wav",
 			"sounds/enemies/ghoul_hurt_03.wav",
@@ -113,7 +113,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/ghoul_hurt_14.wav",
 			"sounds/enemies/ghoul_hurt_15.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Death] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Death] = [
 			"sounds/enemies/ghoul_death_01.wav",
 			"sounds/enemies/ghoul_death_02.wav",
 			"sounds/enemies/ghoul_death_03.wav",
@@ -122,7 +122,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/ghoul_death_06.wav",
 			"sounds/enemies/ghoul_death_07.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Flee] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Flee] = [
 			"sounds/enemies/ghoul_flee_01.wav",
 			"sounds/enemies/ghoul_flee_02.wav",
 			"sounds/enemies/ghoul_flee_03.wav",
@@ -132,7 +132,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/ghoul_flee_07.wav",
 			"sounds/enemies/ghoul_flee_08.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Idle] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Idle] = [
 			"sounds/enemies/ghoul_idle_01.wav",
 			"sounds/enemies/ghoul_idle_02.wav",
 			"sounds/enemies/ghoul_idle_03.wav",
@@ -161,21 +161,21 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/ghoul_idle_26.wav",
 			"sounds/enemies/ghoul_idle_27.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Other1] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Other1] = [
 			"sounds/enemies/ghoul_grows_01.wav",
 			"sounds/enemies/ghoul_grows_02.wav",
 			"sounds/enemies/ghoul_grows_03.wav",
 			"sounds/enemies/ghoul_grows_04.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Other2] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Other2] = [
 			"sounds/enemies/ghoul_death_fullbelly_01.wav",
 			"sounds/enemies/ghoul_death_fullbelly_02.wav",
 			"sounds/enemies/ghoul_death_fullbelly_03.wav"
 		];
 		this.m.SoundPitch = 0.9;
 		local onArmorHitSounds = this.getItems().getAppearance().ImpactSound;
-		onArmorHitSounds[this.Const.BodyPart.Body] = this.Const.Sound.ArmorLeatherImpact;
-		onArmorHitSounds[this.Const.BodyPart.Head] = this.Const.Sound.ArmorLeatherImpact;
+		onArmorHitSounds[::Const.BodyPart.Body] = ::Const.Sound.ArmorLeatherImpact;
+		onArmorHitSounds[::Const.BodyPart.Head] = ::Const.Sound.ArmorLeatherImpact;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/la_nachzerer_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -183,7 +183,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 	function onDeath( _killer, _skill, _tile, _fatalityType )
 	{
 		local flip = this.Math.rand(0, 100) < 50;
-		local isResurrectable = _fatalityType != this.Const.FatalityType.Decapitated;
+		local isResurrectable = _fatalityType != ::Const.FatalityType.Decapitated;
 		local sprite_body = this.getSprite("body");
 		local sprite_head = this.getSprite("head");
 
@@ -192,13 +192,13 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 			local decal;
 			local skin = this.getSprite("body");
 			this.m.IsCorpseFlipped = flip;
-			decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+			decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 			decal.Color = skin.Color;
 			decal.Saturation = skin.Saturation;
 			decal.Scale = 0.9;
 			decal.setBrightness(0.9);
 
-			if (_fatalityType == this.Const.FatalityType.Decapitated)
+			if (_fatalityType == ::Const.FatalityType.Decapitated)
 			{
 				local layers = [
 					sprite_head.getBrush().Name + "_dead"
@@ -215,45 +215,45 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 			}
 			else
 			{
-				decal = _tile.spawnDetail(sprite_head.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(sprite_head.getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Color = skin.Color;
 				decal.Saturation = skin.Saturation;
 				decal.Scale = 0.9;
 				decal.setBrightness(0.9);
 			}
 
-			if (_skill && _skill.getProjectileType() == this.Const.ProjectileType.Arrow)
+			if (_skill && _skill.getProjectileType() == ::Const.ProjectileType.Arrow)
 			{
-				decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead_arrows", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead_arrows", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.9;
 				decal.setBrightness(0.9);
 			}
-			else if (_skill && _skill.getProjectileType() == this.Const.ProjectileType.Javelin)
+			else if (_skill && _skill.getProjectileType() == ::Const.ProjectileType.Javelin)
 			{
-				decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead_javelin", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead_javelin", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.9;
 				decal.setBrightness(0.9);
 			}
 
 			this.spawnTerrainDropdownEffect(_tile);
 			this.spawnFlies(_tile);
-			local corpse = clone this.Const.Corpse;
+			local corpse = clone ::Const.Corpse;
 			corpse.CorpseName = "A " + this.getName();
 			corpse.Tile = _tile;
 			corpse.Value = 2.0;
 			corpse.IsResurrectable = false;
 			corpse.Armor = this.m.BaseProperties.Armor;
-			corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+			corpse.IsHeadAttached = _fatalityType != ::Const.FatalityType.Decapitated;
 			_tile.Properties.set("Corpse", corpse);
 			this.Tactical.Entities.addCorpse(_tile);
 
-			if ((_killer == null || _killer.getFaction() == this.Const.Faction.Player || _killer.getFaction() == this.Const.Faction.PlayerAnimals) && this.Math.rand(1, 100) <= 50)
+			if ((_killer == null || _killer.getFaction() == ::Const.Faction.Player || _killer.getFaction() == ::Const.Faction.PlayerAnimals) && this.Math.rand(1, 100) <= 50)
 			{
 				local n = 1 + (!this.Tactical.State.isScenarioMode() && this.Math.rand(1, 100) <= this.World.Assets.getExtraLootChance() ? 1 : 0);
 
 				for( local i = 0; i < n; i = i )
 				{
-					if (this.Const.DLC.Unhold)
+					if (::Const.DLC.Unhold)
 					{
 						local r = this.Math.rand(1, 100);
 						local loot;

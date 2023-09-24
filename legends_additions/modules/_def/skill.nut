@@ -214,9 +214,9 @@
 
 		if (_allowDiversion && this.m.IsRanged && userTile.getDistanceTo(_targetEntity.getTile()) > 1)
 		{
-			local blockedTiles = this.Const.Tactical.Common.getBlockedTiles(userTile, _targetEntity.getTile(), _user.getFaction());
+			local blockedTiles = ::Const.Tactical.Common.getBlockedTiles(userTile, _targetEntity.getTile(), _user.getFaction());
 
-			if (blockedTiles.len() != 0 && this.Math.rand(1, 100) <= this.Math.ceil(this.Const.Combat.RangedAttackBlockedChance * properties.RangedAttackBlockedChanceMult * 100))
+			if (blockedTiles.len() != 0 && this.Math.rand(1, 100) <= this.Math.ceil(::Const.Combat.RangedAttackBlockedChance * properties.RangedAttackBlockedChanceMult * 100))
 			{
 				_allowDiversion = false;
 				astray = true;
@@ -230,9 +230,9 @@
 			{
 				local flip = !this.m.IsProjectileRotated && _targetEntity.getPos().X > _user.getPos().X;
 
-				if (_user.getTile().getDistanceTo(_targetEntity.getTile()) >= this.Const.Combat.SpawnProjectileMinDist)
+				if (_user.getTile().getDistanceTo(_targetEntity.getTile()) >= ::Const.Combat.SpawnProjectileMinDist)
 				{
-					this.Tactical.spawnProjectileEffect(this.Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), _targetEntity.getTile(), 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
+					this.Tactical.spawnProjectileEffect(::Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), _targetEntity.getTile(), 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
 				}
 			}
 
@@ -255,17 +255,17 @@
 
 		if (levelDifference < 0)
 		{
-			toHit = toHit + this.Const.Combat.LevelDifferenceToHitBonus;
+			toHit = toHit + ::Const.Combat.LevelDifferenceToHitBonus;
 		}
 		else
 		{
-			toHit = toHit + this.Const.Combat.LevelDifferenceToHitMalus * levelDifference;
+			toHit = toHit + ::Const.Combat.LevelDifferenceToHitMalus * levelDifference;
 		}
 
 		local shieldBonus = 0;
-		local shield = _targetEntity.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local shield = _targetEntity.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
-		if (shield != null && shield.isItemType(this.Const.Items.ItemType.Shield))
+		if (shield != null && shield.isItemType(::Const.Items.ItemType.Shield))
 		{
 			shieldBonus = (this.m.IsRanged ? shield.getRangedDefense() : shield.getMeleeDefense()) * (_targetEntity.getCurrentProperties().IsSpecializedInShields ? 1.25 : 1.0);
 
@@ -415,10 +415,10 @@
 				DistanceToTarget = distanceToTarget
 			};
 
-			if (this.m.IsShowingProjectile && this.m.ProjectileType != 0 && _user.getTile().getDistanceTo(_targetEntity.getTile()) >= this.Const.Combat.SpawnProjectileMinDist && (!_user.isHiddenToPlayer() || !_targetEntity.isHiddenToPlayer()))
+			if (this.m.IsShowingProjectile && this.m.ProjectileType != 0 && _user.getTile().getDistanceTo(_targetEntity.getTile()) >= ::Const.Combat.SpawnProjectileMinDist && (!_user.isHiddenToPlayer() || !_targetEntity.isHiddenToPlayer()))
 			{
 				local flip = !this.m.IsProjectileRotated && _targetEntity.getPos().X > _user.getPos().X;
-				local time = this.Tactical.spawnProjectileEffect(this.Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), _targetEntity.getTile(), 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
+				local time = this.Tactical.spawnProjectileEffect(::Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), _targetEntity.getTile(), 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
 				this.Time.scheduleEvent(this.TimeUnit.Virtual, time, this.onScheduledTargetHit, info);
 
 				if (this.m.SoundOnHit.len() != 0)
@@ -433,12 +433,12 @@
 			{
 				if (this.m.SoundOnHit.len() != 0)
 				{
-					this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill * this.m.SoundVolume, _targetEntity.getPos());
+					this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, _targetEntity.getPos());
 				}
 
 				if (this.Tactical.State.getStrategicProperties() != null && this.Tactical.State.getStrategicProperties().IsArenaMode && toHit <= 15)
 				{
-					this.Sound.play(this.Const.Sound.ArenaShock[this.Math.rand(0, this.Const.Sound.ArenaShock.len() - 1)], this.Const.Sound.Volume.Tactical * this.Const.Sound.Volume.Arena);
+					this.Sound.play(::Const.Sound.ArenaShock[this.Math.rand(0, ::Const.Sound.ArenaShock.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 				}
 
 				this.onScheduledTargetHit(info);
@@ -457,7 +457,7 @@
 			{
 				local targetTile = _targetEntity.getTile();
 
-				for( local i = 0; i < this.Const.Direction.COUNT; i = i )
+				for( local i = 0; i < ::Const.Direction.COUNT; i = i )
 				{
 					if (!targetTile.hasNextTile(i))
 					{
@@ -499,9 +499,9 @@
 					local flip = !this.m.IsProjectileRotated && _targetEntity.getPos().X > _user.getPos().X;
 					local time = 0;
 
-					if (_user.getTile().getDistanceTo(divertTile) >= this.Const.Combat.SpawnProjectileMinDist)
+					if (_user.getTile().getDistanceTo(divertTile) >= ::Const.Combat.SpawnProjectileMinDist)
 					{
-						time = this.Tactical.spawnProjectileEffect(this.Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), divertTile, 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
+						time = this.Tactical.spawnProjectileEffect(::Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), divertTile, 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
 					}
 
 					this.Time.scheduleEvent(this.TimeUnit.Virtual, time, this.onShieldHit, info);
@@ -515,7 +515,7 @@
 			{
 				if (this.m.SoundOnMiss.len() != 0)
 				{
-					this.Sound.play(this.m.SoundOnMiss[this.Math.rand(0, this.m.SoundOnMiss.len() - 1)], this.Const.Sound.Volume.Skill * this.m.SoundVolume, _targetEntity.getPos());
+					this.Sound.play(this.m.SoundOnMiss[this.Math.rand(0, this.m.SoundOnMiss.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, _targetEntity.getPos());
 				}
 
 				if (this.m.IsShowingProjectile && this.m.ProjectileType != 0)
@@ -523,9 +523,9 @@
 					local divertTile = _targetEntity.getTile();
 					local flip = !this.m.IsProjectileRotated && _targetEntity.getPos().X > _user.getPos().X;
 
-					if (_user.getTile().getDistanceTo(divertTile) >= this.Const.Combat.SpawnProjectileMinDist)
+					if (_user.getTile().getDistanceTo(divertTile) >= ::Const.Combat.SpawnProjectileMinDist)
 					{
-						this.Tactical.spawnProjectileEffect(this.Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), divertTile, 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
+						this.Tactical.spawnProjectileEffect(::Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), divertTile, 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
 					}
 				}
 
@@ -533,11 +533,11 @@
 				{
 					if (toHit >= 90 || _targetEntity.getHitpointsPct() <= 0.1)
 					{
-						this.Sound.play(this.Const.Sound.ArenaMiss[this.Math.rand(0, this.Const.Sound.ArenaBigMiss.len() - 1)], this.Const.Sound.Volume.Tactical * this.Const.Sound.Volume.Arena);
+						this.Sound.play(::Const.Sound.ArenaMiss[this.Math.rand(0, ::Const.Sound.ArenaBigMiss.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 					}
 					else if (this.Math.rand(1, 100) <= 20)
 					{
-						this.Sound.play(this.Const.Sound.ArenaMiss[this.Math.rand(0, this.Const.Sound.ArenaMiss.len() - 1)], this.Const.Sound.Volume.Tactical * this.Const.Sound.Volume.Arena);
+						this.Sound.play(::Const.Sound.ArenaMiss[this.Math.rand(0, ::Const.Sound.ArenaMiss.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 					}
 				}
 			}

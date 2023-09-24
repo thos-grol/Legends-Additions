@@ -77,14 +77,14 @@ this.religious_peasants_event <- this.inherit("scripts/events/event", {
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.CivilianTracks;
+						properties.Music = ::Const.Music.CivilianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
 
 						for( local i = 0; i < 50; i = i )
 						{
-							local unit = clone this.Const.World.Spawn.Troops.Cultist;
-							unit.Faction <- this.Const.Faction.Enemy;
+							local unit = clone ::Const.World.Spawn.Troops.Cultist;
+							unit.Faction <- ::Const.Faction.Enemy;
 							properties.Entities.push(unit);
 							i = ++i;
 						}
@@ -126,12 +126,12 @@ this.religious_peasants_event <- this.inherit("scripts/events/event", {
 					{
 						bro.worsenMood(0.5, "Witnessed a horrible curse");
 
-						if (bro.getMoodState() < this.Const.MoodState.Neutral)
+						if (bro.getMoodState() < ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -164,7 +164,7 @@ this.religious_peasants_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation increases slightly"
 				});
-				this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+				this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 				this.List.insert(0, {
 					id = 10,
 					icon = "ui/icons/special.png",
@@ -172,12 +172,12 @@ this.religious_peasants_event <- this.inherit("scripts/events/event", {
 				});
 				_event.m.Monk.improveMood(1.0, "Helped spread word about the company");
 
-				if (_event.m.Monk.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Monk.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Monk.getMoodState()],
-						text = _event.m.Monk.getName() + this.Const.MoodStateEvent[_event.m.Monk.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Monk.getMoodState()],
+						text = _event.m.Monk.getName() + ::Const.MoodStateEvent[_event.m.Monk.getMoodState()]
 					});
 				}
 			}
@@ -194,7 +194,7 @@ this.religious_peasants_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (currentTile.Type != this.Const.World.TerrainType.Forest && currentTile.Type != this.Const.World.TerrainType.LeaveForest && currentTile.Type != this.Const.World.TerrainType.AutumnForest)
+		if (currentTile.Type != ::Const.World.TerrainType.Forest && currentTile.Type != ::Const.World.TerrainType.LeaveForest && currentTile.Type != ::Const.World.TerrainType.AutumnForest)
 		{
 			return;
 		}

@@ -160,7 +160,7 @@
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]250[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]250[/color] Crowns"
 				});
 				_event.m.Other.getBaseProperties().Initiative += 2;
 				_event.m.Other.getBaseProperties().Bravery += 1;
@@ -168,12 +168,12 @@
 				this.List.push({
 					id = 17,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.Other.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+2[/color] Initiative"
+					text = _event.m.Other.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+2[/color] Initiative"
 				});
 				this.List.push({
 					id = 17,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Other.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+1[/color] Resolve"
+					text = _event.m.Other.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+1[/color] Resolve"
 				});
 			}
 
@@ -306,19 +306,19 @@
 				_event.m.Dude.m.Attributes = [];
 				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
 				{
-					_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
+					_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).removeSelf();
 				}
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null)
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null)
 				{
-					_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).removeSelf();
+					_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand).removeSelf();
 				}
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head) != null)
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head) != null)
 				{
-					_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
+					_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head).removeSelf();
 				}
 
 				this.Characters.push(_event.m.Dude.getImagePath());
@@ -375,12 +375,12 @@
 				this.Characters.push(_event.m.Monk.getImagePath());
 				_event.m.Monk.worsenMood(1.0, "Shaken by the violence he witnessed");
 
-				if (_event.m.Monk.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Monk.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Monk.getMoodState()],
-						text = _event.m.Monk.getName() + this.Const.MoodStateEvent[_event.m.Monk.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Monk.getMoodState()],
+						text = _event.m.Monk.getName() + ::Const.MoodStateEvent[_event.m.Monk.getMoodState()]
 					});
 				}
 			}
@@ -481,7 +481,7 @@
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 				item = this.new("scripts/items/supplies/cured_venison_item");
 				this.World.Assets.getStash().add(item);

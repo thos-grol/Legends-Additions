@@ -47,17 +47,17 @@ this.kings_guard_1_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.m.PerkPoints = 2;
 				_event.m.Dude.m.LevelUps = 2;
 				_event.m.Dude.m.Level = 3;
-				_event.m.Dude.m.XP = this.Const.LevelXP[_event.m.Dude.m.Level - 1];
+				_event.m.Dude.m.XP = ::Const.LevelXP[_event.m.Dude.m.Level - 1];
 				_event.m.Dude.m.Talents = [];
 				local talents = _event.m.Dude.getTalents();
-				talents.resize(this.Const.Attributes.COUNT, 0);
-				talents[this.Const.Attributes.MeleeSkill] = 3;
-				talents[this.Const.Attributes.MeleeDefense] = 3;
-				talents[this.Const.Attributes.Hitpoints] = 3;
+				talents.resize(::Const.Attributes.COUNT, 0);
+				talents[::Const.Attributes.MeleeSkill] = 3;
+				talents[::Const.Attributes.MeleeDefense] = 3;
+				talents[::Const.Attributes.Hitpoints] = 3;
 				_event.m.Dude.m.Attributes = [];
-				_event.m.Dude.fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
-				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand));
-				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand));
+				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
+				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand));
+				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand));
 				_event.m.Dude.worsenMood(1.5, "Got taken by barbarians and left to die in the cold");
 				_event.m.Dude.getFlags().set("IsKingsGuard", true);
 				this.Characters.push(_event.m.Dude.getImagePath());
@@ -118,7 +118,7 @@ this.kings_guard_1_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Wildmen)
+		if (!::Const.DLC.Wildmen)
 		{
 			return;
 		}
@@ -130,7 +130,7 @@ this.kings_guard_1_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (currentTile.Type != this.Const.World.TerrainType.Snow)
+		if (currentTile.Type != ::Const.World.TerrainType.Snow)
 		{
 			return;
 		}

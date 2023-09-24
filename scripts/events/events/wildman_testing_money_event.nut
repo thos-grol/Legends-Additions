@@ -73,7 +73,7 @@ this.wildman_testing_money_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 					}
 				];
 			}
@@ -101,16 +101,16 @@ this.wildman_testing_money_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Wildman.getImagePath());
 				_event.m.Wildman.worsenMood(1.0, "Did a bad trade");
 
-				if (_event.m.Wildman.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Wildman.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Wildman.getMoodState()],
-						text = _event.m.Wildman.getName() + this.Const.MoodStateEvent[_event.m.Wildman.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Wildman.getMoodState()],
+						text = _event.m.Wildman.getName() + ::Const.MoodStateEvent[_event.m.Wildman.getMoodState()]
 					});
 				}
 
-				local injury = _event.m.OtherGuy.addInjury(this.Const.Injury.Brawl);
+				local injury = _event.m.OtherGuy.addInjury(::Const.Injury.Brawl);
 				this.List.push({
 					id = 10,
 					icon = injury.getIcon(),
@@ -123,7 +123,7 @@ this.wildman_testing_money_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 10,
 						icon = "ui/items/" + _event.m.Item.getIcon(),
-						text = "You lose " + this.Const.Strings.getArticle(_event.m.Item.getName()) + _event.m.Item.getName()
+						text = "You lose " + ::Const.Strings.getArticle(_event.m.Item.getName()) + _event.m.Item.getName()
 					});
 				}
 			}
@@ -176,12 +176,12 @@ this.wildman_testing_money_event <- this.inherit("scripts/events/event", {
 				continue;
 			}
 
-			if (item.isItemType(this.Const.Items.ItemType.Legendary) || item.isIndestructible())
+			if (item.isItemType(::Const.Items.ItemType.Legendary) || item.isIndestructible())
 			{
 				continue;
 			}
 
-			if (item.isItemType(this.Const.Items.ItemType.Weapon) || item.isItemType(this.Const.Items.ItemType.Shield) || item.isItemType(this.Const.Items.ItemType.Armor) || item.isItemType(this.Const.Items.ItemType.Helmet))
+			if (item.isItemType(::Const.Items.ItemType.Weapon) || item.isItemType(::Const.Items.ItemType.Shield) || item.isItemType(::Const.Items.ItemType.Armor) || item.isItemType(::Const.Items.ItemType.Helmet))
 			{
 				candidates.push(item);
 			}

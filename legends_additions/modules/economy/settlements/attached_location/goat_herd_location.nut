@@ -24,8 +24,8 @@
 
 		if (_gender)
 		{
-			_list.push("female_daytaler_background");
-			_list.push("female_farmhand_background");
+			_list.push();
+			
 		}
 	}
 

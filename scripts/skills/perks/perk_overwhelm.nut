@@ -16,11 +16,11 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.overwhelm";
-		this.m.Name = this.Const.Strings.PerkName.Overwhelm;
-		this.m.Description = this.Const.Strings.PerkDescription.Overwhelm;
+		this.m.Name = ::Const.Strings.PerkName.Overwhelm;
+		this.m.Description = ::Const.Strings.PerkDescription.Overwhelm;
 		this.m.Icon = "ui/perks/perk_62.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -47,12 +47,12 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 
 		if (!_targetEntity.isTurnStarted() && !_targetEntity.isTurnDone())
 		{
-			if (this.m.SkillCount == this.Const.SkillCounter && this.m.LastTargetID == _targetEntity.getID())
+			if (this.m.SkillCount == ::Const.SkillCounter && this.m.LastTargetID == _targetEntity.getID())
 			{
 				return;
 			}
 
-			this.m.SkillCount = this.Const.SkillCounter;
+			this.m.SkillCount = ::Const.SkillCounter;
 			this.m.LastTargetID = _targetEntity.getID();
 			_targetEntity.getSkills().add(this.new("scripts/skills/effects/overwhelmed_effect"));
 		}
@@ -72,14 +72,14 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 
 		if (!_targetEntity.isTurnStarted() && !_targetEntity.isTurnDone())
 		{
-			if (this.m.SkillCount == this.Const.SkillCounter && this.m.LastTargetID == _targetEntity.getID())
+			if (this.m.SkillCount == ::Const.SkillCounter && this.m.LastTargetID == _targetEntity.getID())
 			{
 				return;
 			}
 
-			this.m.SkillCount = this.Const.SkillCounter;
+			this.m.SkillCount = ::Const.SkillCounter;
 			this.m.LastTargetID = _targetEntity.getID();
-			this.m.SkillCount = this.Const.SkillCounter;
+			this.m.SkillCount = ::Const.SkillCounter;
 			_targetEntity.getSkills().add(this.new("scripts/skills/effects/overwhelmed_effect"));
 		}
 	}

@@ -234,7 +234,7 @@
 			S = "helmets/rondel_helm"
 		});
 
-		foreach( i in this.Const.Items.LegendNamedArmorLayers )
+		foreach( i in ::Const.Items.LegendNamedArmorLayers )
 		{
 			if (this.Math.rand(1, 100) <= 33)
 			{
@@ -246,7 +246,7 @@
 			}
 		}
 
-		foreach( i in this.Const.Items.LegendNamedHelmetLayers )
+		foreach( i in ::Const.Items.LegendNamedHelmetLayers )
 		{
 			if (this.Math.rand(1, 100) <= 33)
 			{
@@ -258,7 +258,7 @@
 			}
 		}
 
-		foreach( i in this.Const.Items.NamedArmors )
+		foreach( i in ::Const.Items.NamedArmors )
 		{
 			if (this.Math.rand(1, 100) <= 33)
 			{
@@ -270,7 +270,7 @@
 			}
 		}
 
-		foreach( i in this.Const.Items.NamedHelmets )
+		foreach( i in ::Const.Items.NamedHelmets )
 		{
 			if (this.Math.rand(1, 100) <= 33)
 			{
@@ -282,7 +282,7 @@
 			}
 		}
 
-		if (this.Const.DLC.Unhold)
+		if (::Const.DLC.Unhold)
 		{
 			list.push({
 				R = 45,
@@ -362,7 +362,7 @@
 			});
 		}
 
-		if (this.Const.DLC.Wildmen && this.m.Settlement.getTile().SquareCoords.Y > this.World.getMapSize().Y * 0.7)
+		if (::Const.DLC.Wildmen && this.m.Settlement.getTile().SquareCoords.Y > this.World.getMapSize().Y * 0.7)
 		{
 			list.push({
 				R = 70,

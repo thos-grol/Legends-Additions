@@ -14,7 +14,7 @@
 			items.equip(this.new("scripts/items/weapons/wooden_stick"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"sackcloth"
@@ -25,7 +25,7 @@
 				this.Math.rand(6, 7)
 			]
 		]));
-		local helm = this.Const.World.Common.pickHelmet([
+		local helm = ::Const.World.Common.pickHelmet([
 			[
 				3,
 				""

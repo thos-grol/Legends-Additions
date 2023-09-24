@@ -9,21 +9,21 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.AxeTree,
-				this.Const.Perks.CleaverTree,
-				this.Const.Perks.ShieldTree,
+				::Const.Perks.AxeTree,
+				::Const.Perks.CleaverTree,
+				::Const.Perks.ShieldTree,
 			],
 			Defense = [
-				this.Const.Perks.HeavyArmorTree,
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.HeavyArmorTree,
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.ViciousTree,
-				this.Const.Perks.TrainedTree
+				::Const.Perks.ViciousTree,
+				::Const.Perks.TrainedTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
@@ -44,7 +44,7 @@
 			items.equip(this.new("scripts/items/weapons/barbarians/blunt_cleaver"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"barbarians/thick_furs_armor"
@@ -62,7 +62,7 @@
 				"barbarians/scrap_metal_armor"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"barbarians/bear_headpiece"

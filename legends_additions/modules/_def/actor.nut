@@ -24,7 +24,7 @@
 		if (_attacker != null && _attacker.isAlive() && _attacker.isPlayerControlled() && !this.isPlayerControlled())
 		{
 			this.setDiscovered(true);
-			this.getTile().addVisibilityForFaction(this.Const.Faction.Player);
+			this.getTile().addVisibilityForFaction(::Const.Faction.Player);
 			this.getTile().addVisibilityForCurrentEntity();
 		}
 
@@ -60,7 +60,7 @@
 		_hitInfo.DamageFatigue *= p.FatigueEffectMult;
 		this.m.Fatigue = this.Math.min(this.getFatigueMax(), this.Math.round(this.m.Fatigue + _hitInfo.DamageFatigue * p.FatigueReceivedPerHitMult * this.m.CurrentProperties.FatigueLossOnAnyAttackMult));
 		local damage = 0;
-		damage = damage + this.Math.maxf(0.0, _hitInfo.DamageRegular * _hitInfo.DamageDirect * p.DamageReceivedDirectMult - armor * this.Const.Combat.ArmorDirectDamageMitigationMult);
+		damage = damage + this.Math.maxf(0.0, _hitInfo.DamageRegular * _hitInfo.DamageDirect * p.DamageReceivedDirectMult - armor * ::Const.Combat.ArmorDirectDamageMitigationMult);
 
 		if (armor <= 0 || _hitInfo.DamageDirect >= 1.0)
 		{
@@ -81,12 +81,12 @@
 
 			if (armorHitSound.len() > 0)
 			{
-				this.Sound.play(armorHitSound[this.Math.rand(0, armorHitSound.len() - 1)], this.Const.Sound.Volume.ActorArmorHit, this.getPos());
+				this.Sound.play(armorHitSound[this.Math.rand(0, armorHitSound.len() - 1)], ::Const.Sound.Volume.ActorArmorHit, this.getPos());
 			}
 
-			if (damage < this.Const.Combat.PlayPainSoundMinDamage)
+			if (damage < ::Const.Combat.PlayPainSoundMinDamage)
 			{
-				this.playSound(this.Const.Sound.ActorEvent.NoDamageReceived, this.Const.Sound.Volume.Actor * this.m.SoundVolume[this.Const.Sound.ActorEvent.NoDamageReceived] * this.m.SoundVolumeOverall);
+				this.playSound(::Const.Sound.ActorEvent.NoDamageReceived, ::Const.Sound.Volume.Actor * this.m.SoundVolume[::Const.Sound.ActorEvent.NoDamageReceived] * this.m.SoundVolumeOverall);
 			}
 		}
 
@@ -108,10 +108,10 @@
 
 			if (lorekeeperPotionEffect != null && (!lorekeeperPotionEffect.isSpent() || lorekeeperPotionEffect.getLastFrameUsed() == this.Time.getFrame()))
 			{
-				this.getSkills().removeByType(this.Const.SkillType.DamageOverTime);
+				this.getSkills().removeByType(::Const.SkillType.DamageOverTime);
 				this.m.Hitpoints = this.getHitpointsMax();
 				lorekeeperPotionEffect.setSpent(true);
-				this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(this) + " is reborn by the power of the Lorekeeper!");
+				this.Tactical.EventLog.logEx(::Const.UI.getColorizedEntityName(this) + " is reborn by the power of the Lorekeeper!");
 			}
 			else
 			{
@@ -119,7 +119,7 @@
 
 				if (nineLivesSkill != null && (!nineLivesSkill.isSpent() || nineLivesSkill.getLastFrameUsed() == this.Time.getFrame()))
 				{
-					this.getSkills().removeByType(this.Const.SkillType.DamageOverTime);
+					this.getSkills().removeByType(::Const.SkillType.DamageOverTime);
 					this.m.Hitpoints = this.Math.rand(11, 15);
 					nineLivesSkill.setSpent(true);
 					::Z.Log.nine_lives(this);
@@ -127,7 +127,7 @@
 			}
 		}
 
-		local fatalityType = this.Const.FatalityType.None;
+		local fatalityType = ::Const.FatalityType.None;
 
 		if (this.m.Hitpoints <= 0)
 		{
@@ -135,17 +135,17 @@
 
 			if (_skill != null)
 			{
-				if (_skill.getChanceDecapitate() >= 100 || _hitInfo.BodyPart == this.Const.BodyPart.Head && this.Math.rand(1, 100) <= _skill.getChanceDecapitate() * _hitInfo.FatalityChanceMult)
+				if (_skill.getChanceDecapitate() >= 100 || _hitInfo.BodyPart == ::Const.BodyPart.Head && this.Math.rand(1, 100) <= _skill.getChanceDecapitate() * _hitInfo.FatalityChanceMult)
 				{
-					fatalityType = this.Const.FatalityType.Decapitated;
+					fatalityType = ::Const.FatalityType.Decapitated;
 				}
-				else if (_skill.getChanceSmash() >= 100 || _hitInfo.BodyPart == this.Const.BodyPart.Head && this.Math.rand(1, 100) <= _skill.getChanceSmash() * _hitInfo.FatalityChanceMult)
+				else if (_skill.getChanceSmash() >= 100 || _hitInfo.BodyPart == ::Const.BodyPart.Head && this.Math.rand(1, 100) <= _skill.getChanceSmash() * _hitInfo.FatalityChanceMult)
 				{
-					fatalityType = this.Const.FatalityType.Smashed;
+					fatalityType = ::Const.FatalityType.Smashed;
 				}
-				else if (_skill.getChanceDisembowel() >= 100 || _hitInfo.BodyPart == this.Const.BodyPart.Body && this.Math.rand(1, 100) <= _skill.getChanceDisembowel() * _hitInfo.FatalityChanceMult)
+				else if (_skill.getChanceDisembowel() >= 100 || _hitInfo.BodyPart == ::Const.BodyPart.Body && this.Math.rand(1, 100) <= _skill.getChanceDisembowel() * _hitInfo.FatalityChanceMult)
 				{
-					fatalityType = this.Const.FatalityType.Disemboweled;
+					fatalityType = ::Const.FatalityType.Disemboweled;
 				}
 			}
 		}
@@ -158,16 +158,16 @@
 			{
 				overflowDamage = overflowDamage - this.m.BaseProperties.Armor[_hitInfo.BodyPart] * this.m.BaseProperties.ArmorMult[_hitInfo.BodyPart];
 				this.m.BaseProperties.Armor[_hitInfo.BodyPart] = this.Math.max(0, this.m.BaseProperties.Armor[_hitInfo.BodyPart] * this.m.BaseProperties.ArmorMult[_hitInfo.BodyPart] - _hitInfo.DamageArmor);
-				this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(this) + "\'s armor is hit for [b]" + this.Math.floor(_hitInfo.DamageArmor) + "[/b] damage");
+				this.Tactical.EventLog.logEx(::Const.UI.getColorizedEntityName(this) + "\'s armor is hit for [b]" + this.Math.floor(_hitInfo.DamageArmor) + "[/b] damage");
 			}
 
 			if (overflowDamage > 0)
 			{
-				this.m.Items.onDamageReceived(overflowDamage, fatalityType, _hitInfo.BodyPart == this.Const.BodyPart.Body ? this.Const.ItemSlot.Body : this.Const.ItemSlot.Head, _attacker);
+				this.m.Items.onDamageReceived(overflowDamage, fatalityType, _hitInfo.BodyPart == ::Const.BodyPart.Body ? ::Const.ItemSlot.Body : ::Const.ItemSlot.Head, _attacker);
 			}
 		}
 
-		if (this.getFaction() == this.Const.Faction.Player && _attacker != null && _attacker.isAlive())
+		if (this.getFaction() == ::Const.Faction.Player && _attacker != null && _attacker.isAlive())
 		{
 			this.Tactical.getCamera().quake(_attacker, this, 5.0, 0.16, 0.3);
 		}
@@ -179,7 +179,7 @@
 				local layers = this.m.ShakeLayers[_hitInfo.BodyPart];
 				local recoverMult = 1.0;
 				this.Tactical.getShaker().cancel(this);
-				this.Tactical.getShaker().shake(this, _attacker.getTile(), this.m.IsShakingOnHit ? 2 : 3, this.Const.Combat.ShakeEffectArmorHitColor, this.Const.Combat.ShakeEffectArmorHitHighlight, this.Const.Combat.ShakeEffectArmorHitFactor, this.Const.Combat.ShakeEffectArmorSaturation, layers, recoverMult);
+				this.Tactical.getShaker().shake(this, _attacker.getTile(), this.m.IsShakingOnHit ? 2 : 3, ::Const.Combat.ShakeEffectArmorHitColor, ::Const.Combat.ShakeEffectArmorHitHighlight, ::Const.Combat.ShakeEffectArmorHitFactor, ::Const.Combat.ShakeEffectArmorSaturation, layers, recoverMult);
 			}
 
 			this.m.Skills.update();
@@ -187,7 +187,7 @@
 			return 0;
 		}
 
-		if (damage >= this.Const.Combat.SpawnBloodMinDamage)
+		if (damage >= ::Const.Combat.SpawnBloodMinDamage)
 		{
 			this.spawnBloodDecals(this.getTile());
 		}
@@ -199,7 +199,7 @@
 		}
 		else
 		{
-			if (damage >= this.Const.Combat.SpawnBloodEffectMinDamage)
+			if (damage >= ::Const.Combat.SpawnBloodEffectMinDamage)
 			{
 				local mult = this.Math.maxf(0.75, this.Math.minf(2.0, damage / this.getHitpointsMax() * 3.0));
 				this.spawnBloodEffect(this.getTile(), mult);
@@ -211,22 +211,22 @@
 
 				if (mult >= 0.75)
 				{
-					this.Sound.play(this.Const.Sound.ArenaBigHit[this.Math.rand(0, this.Const.Sound.ArenaBigHit.len() - 1)], this.Const.Sound.Volume.Tactical * this.Const.Sound.Volume.Arena);
+					this.Sound.play(::Const.Sound.ArenaBigHit[this.Math.rand(0, ::Const.Sound.ArenaBigHit.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 				}
 				else if (mult >= 0.25 || this.Math.rand(1, 100) <= 20)
 				{
-					this.Sound.play(this.Const.Sound.ArenaHit[this.Math.rand(0, this.Const.Sound.ArenaHit.len() - 1)], this.Const.Sound.Volume.Tactical * this.Const.Sound.Volume.Arena);
+					this.Sound.play(::Const.Sound.ArenaHit[this.Math.rand(0, ::Const.Sound.ArenaHit.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 				}
 			}
 
-			if (this.m.CurrentProperties.IsAffectedByInjuries && this.m.IsAbleToDie && damage >= this.Const.Combat.InjuryMinDamage && this.m.CurrentProperties.ThresholdToReceiveInjuryMult != 0 && _hitInfo.InjuryThresholdMult != 0 && _hitInfo.Injuries != null)
+			if (this.m.CurrentProperties.IsAffectedByInjuries && this.m.IsAbleToDie && damage >= ::Const.Combat.InjuryMinDamage && this.m.CurrentProperties.ThresholdToReceiveInjuryMult != 0 && _hitInfo.InjuryThresholdMult != 0 && _hitInfo.Injuries != null)
 			{
 				local potentialInjuries = [];
-				local bonus = _hitInfo.BodyPart == this.Const.BodyPart.Head ? 1.25 : 1.0;
+				local bonus = _hitInfo.BodyPart == ::Const.BodyPart.Head ? 1.25 : 1.0;
 
 				foreach( inj in _hitInfo.Injuries )
 				{
-					if (inj.Threshold * _hitInfo.InjuryThresholdMult * this.Const.Combat.InjuryThresholdMult * this.m.CurrentProperties.ThresholdToReceiveInjuryMult * bonus <= damage / (this.getHitpointsMax() * 1.0))
+					if (inj.Threshold * _hitInfo.InjuryThresholdMult * ::Const.Combat.InjuryThresholdMult * this.m.CurrentProperties.ThresholdToReceiveInjuryMult * bonus <= damage / (this.getHitpointsMax() * 1.0))
 					{
 						if (!this.m.Skills.hasSkill(inj.ID) && this.m.ExcludedInjuries.find(inj.ID) == null)
 						{
@@ -248,7 +248,7 @@
 
 						if (this.isPlayerControlled() && this.isKindOf(this, "player"))
 						{
-							this.worsenMood(this.Const.MoodChange.Injury, "Suffered an injury");
+							this.worsenMood(::Const.MoodChange.Injury, "Suffered an injury");
 
 							if (("State" in this.World) && this.World.State != null && this.World.Ambitions.hasActiveAmbition() && this.World.Ambitions.getActiveAmbition().getID() == "ambition.oath_of_sacrifice")
 							{
@@ -258,7 +258,7 @@
 
 						if (this.isPlayerControlled() || !this.isHiddenToPlayer())
 						{
-							::Z.Log.damage_body(this, this.Const.Strings.BodyPartName[_hitInfo.BodyPart], this.m.Hitpoints, prev_hitpoints, damage);
+							::Z.Log.damage_body(this, ::Const.Strings.BodyPartName[_hitInfo.BodyPart], this.m.Hitpoints, prev_hitpoints, damage);
 							::Z.Log.suffer_injury(this, injury.getNameOnly());
 						}
 
@@ -275,35 +275,35 @@
 				{
 					if (damage > 0 && !this.isHiddenToPlayer())
 					{
-						::Z.Log.damage_body(this, this.Const.Strings.BodyPartName[_hitInfo.BodyPart], this.m.Hitpoints, prev_hitpoints, damage);
+						::Z.Log.damage_body(this, ::Const.Strings.BodyPartName[_hitInfo.BodyPart], this.m.Hitpoints, prev_hitpoints, damage);
 					}
 				}
 			}
 			else if (damage > 0 && !this.isHiddenToPlayer())
 			{
-				::Z.Log.damage_body(this, this.Const.Strings.BodyPartName[_hitInfo.BodyPart], this.m.Hitpoints, prev_hitpoints, damage);
+				::Z.Log.damage_body(this, ::Const.Strings.BodyPartName[_hitInfo.BodyPart], this.m.Hitpoints, prev_hitpoints, damage);
 			}
 
-			if (this.m.MoraleState != this.Const.MoraleState.Ignore && damage >= this.Const.Morale.OnHitMinDamage && this.getCurrentProperties().IsAffectedByLosingHitpoints)
+			if (this.m.MoraleState != ::Const.MoraleState.Ignore && damage >= ::Const.Morale.OnHitMinDamage && this.getCurrentProperties().IsAffectedByLosingHitpoints)
 			{
 				if (!this.isPlayerControlled() || !this.m.Skills.hasSkill("effects.berserker_mushrooms"))
 				{
-					this.checkMorale(-1, this.Const.Morale.OnHitBaseDifficulty * (1.0 - this.getHitpoints() / this.getHitpointsMax()) - (_attacker != null && _attacker.getID() != this.getID() ? _attacker.getCurrentProperties().ThreatOnHit : 0), this.Const.MoraleCheckType.Default, "", true);
+					this.checkMorale(-1, ::Const.Morale.OnHitBaseDifficulty * (1.0 - this.getHitpoints() / this.getHitpointsMax()) - (_attacker != null && _attacker.getID() != this.getID() ? _attacker.getCurrentProperties().ThreatOnHit : 0), ::Const.MoraleCheckType.Default, "", true);
 				}
 			}
 
 			this.m.Skills.onAfterDamageReceived();
 
-			if (damage >= this.Const.Combat.PlayPainSoundMinDamage && this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived].len() > 0)
+			if (damage >= ::Const.Combat.PlayPainSoundMinDamage && this.m.Sound[::Const.Sound.ActorEvent.DamageReceived].len() > 0)
 			{
 				local volume = 1.0;
 
-				if (damage < this.Const.Combat.PlayPainVolumeMaxDamage)
+				if (damage < ::Const.Combat.PlayPainVolumeMaxDamage)
 				{
-					volume = damage / this.Const.Combat.PlayPainVolumeMaxDamage;
+					volume = damage / ::Const.Combat.PlayPainVolumeMaxDamage;
 				}
 
-				this.playSound(this.Const.Sound.ActorEvent.DamageReceived, this.Const.Sound.Volume.Actor * this.m.SoundVolume[this.Const.Sound.ActorEvent.DamageReceived] * this.m.SoundVolumeOverall * volume, this.m.SoundPitch);
+				this.playSound(::Const.Sound.ActorEvent.DamageReceived, ::Const.Sound.Volume.Actor * this.m.SoundVolume[::Const.Sound.ActorEvent.DamageReceived] * this.m.SoundVolumeOverall * volume, this.m.SoundPitch);
 			}
 
 			this.m.Skills.update();
@@ -314,7 +314,7 @@
 				local layers = this.m.ShakeLayers[_hitInfo.BodyPart];
 				local recoverMult = this.Math.minf(1.5, this.Math.maxf(1.0, damage * 2.0 / this.getHitpointsMax()));
 				this.Tactical.getShaker().cancel(this);
-				this.Tactical.getShaker().shake(this, _attacker.getTile(), this.m.IsShakingOnHit ? 2 : 3, this.Const.Combat.ShakeEffectHitpointsHitColor, this.Const.Combat.ShakeEffectHitpointsHitHighlight, this.Const.Combat.ShakeEffectHitpointsHitFactor, this.Const.Combat.ShakeEffectHitpointsSaturation, layers, recoverMult);
+				this.Tactical.getShaker().shake(this, _attacker.getTile(), this.m.IsShakingOnHit ? 2 : 3, ::Const.Combat.ShakeEffectHitpointsHitColor, ::Const.Combat.ShakeEffectHitpointsHitHighlight, ::Const.Combat.ShakeEffectHitpointsHitFactor, ::Const.Combat.ShakeEffectHitpointsSaturation, layers, recoverMult);
 			}
 
 			this.setDirty(true);
@@ -324,7 +324,7 @@
 	}
 
 	while(!("kill" in o)) o = o[o.SuperName];
-	o.kill <- function ( _killer = null, _skill = null, _fatalityType = this.Const.FatalityType.None, _silent = false )
+	o.kill <- function ( _killer = null, _skill = null, _fatalityType = ::Const.FatalityType.None, _silent = false )
 	{
 		if (!this.isAlive())
 		{
@@ -352,7 +352,7 @@
 		if (!isReallyDead)
 		{
 			this.TherianthropeInfection(_killer);
-			_fatalityType = this.Const.FatalityType.Unconscious;
+			_fatalityType = ::Const.FatalityType.Unconscious;
 			this.logDebug(this.getName() + " is unconscious.");
 		}
 		else
@@ -362,7 +362,7 @@
 
 		if (!_silent)
 		{
-			this.playSound(this.Const.Sound.ActorEvent.Death, this.Const.Sound.Volume.Actor * this.m.SoundVolume[this.Const.Sound.ActorEvent.Death] * this.m.SoundVolumeOverall, this.m.SoundPitch);
+			this.playSound(::Const.Sound.ActorEvent.Death, ::Const.Sound.Volume.Actor * this.m.SoundVolume[::Const.Sound.ActorEvent.Death] * this.m.SoundVolumeOverall, this.m.SoundPitch);
 		}
 
 		local myTile = this.isPlacedOnMap() ? this.getTile() : null;
@@ -418,33 +418,33 @@
 		{
 			if (tile != null)
 			{
-				if (_fatalityType == this.Const.FatalityType.Decapitated)
+				if (_fatalityType == ::Const.FatalityType.Decapitated)
 				{
 					this.spawnDecapitateSplatters(tile, 1.0 * this.m.DecapitateBloodAmount);
 				}
-				else if (_fatalityType == this.Const.FatalityType.Smashed && (this.getFlags().has("human") || this.getFlags().has("zombie_minion")))
+				else if (_fatalityType == ::Const.FatalityType.Smashed && (this.getFlags().has("human") || this.getFlags().has("zombie_minion")))
 				{
 					this.spawnSmashSplatters(tile, 1.0);
 				}
 				else
 				{
-					this.spawnBloodSplatters(tile, this.Const.Combat.BloodSplattersAtDeathMult * this.m.DeathBloodAmount);
+					this.spawnBloodSplatters(tile, ::Const.Combat.BloodSplattersAtDeathMult * this.m.DeathBloodAmount);
 
 					if (!this.getTile().isSameTileAs(tile))
 					{
-						this.spawnBloodSplatters(this.getTile(), this.Const.Combat.BloodSplattersAtOriginalPosMult);
+						this.spawnBloodSplatters(this.getTile(), ::Const.Combat.BloodSplattersAtOriginalPosMult);
 					}
 				}
 			}
 			else if (myTile != null)
 			{
-				this.spawnBloodSplatters(this.getTile(), this.Const.Combat.BloodSplattersAtDeathMult * this.m.DeathBloodAmount);
+				this.spawnBloodSplatters(this.getTile(), ::Const.Combat.BloodSplattersAtDeathMult * this.m.DeathBloodAmount);
 			}
 		}
 
 		if (tile != null)
 		{
-			this.spawnBloodPool(tile, this.Math.rand(this.Const.Combat.BloodPoolsAtDeathMin, this.Const.Combat.BloodPoolsAtDeathMax));
+			this.spawnBloodPool(tile, this.Math.rand(::Const.Combat.BloodPoolsAtDeathMin, ::Const.Combat.BloodPoolsAtDeathMax));
 		}
 
 		this.m.IsTurnDone = true;
@@ -465,11 +465,11 @@
 			{
 				if (_killer == null || _killer.getID() == this.getID())
 				{
-					this.Sound.play(this.Const.Sound.ArenaFlee[this.Math.rand(0, this.Const.Sound.ArenaFlee.len() - 1)], this.Const.Sound.Volume.Tactical * this.Const.Sound.Volume.Arena);
+					this.Sound.play(::Const.Sound.ArenaFlee[this.Math.rand(0, ::Const.Sound.ArenaFlee.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 				}
 				else
 				{
-					this.Sound.play(this.Const.Sound.ArenaKill[this.Math.rand(0, this.Const.Sound.ArenaKill.len() - 1)], this.Const.Sound.Volume.Tactical * this.Const.Sound.Volume.Arena);
+					this.Sound.play(::Const.Sound.ArenaKill[this.Math.rand(0, ::Const.Sound.ArenaKill.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 				}
 			}
 		}
@@ -490,23 +490,23 @@
 
 			if (this.Tactical.Entities.getHostilesNum() != 0)
 			{
-				this.Tactical.Entities.setLastCombatResult(this.Const.Tactical.CombatResult.PlayerDestroyed);
+				this.Tactical.Entities.setLastCombatResult(::Const.Tactical.CombatResult.PlayerDestroyed);
 			}
 			else
 			{
-				this.Tactical.Entities.setLastCombatResult(this.Const.Tactical.CombatResult.EnemyDestroyed);
+				this.Tactical.Entities.setLastCombatResult(::Const.Tactical.CombatResult.EnemyDestroyed);
 			}
 		}
 		else
 		{
 			if (!this.Tactical.State.isAutoRetreat())
 			{
-				this.Tactical.Entities.setLastCombatResult(this.Const.Tactical.CombatResult.EnemyDestroyed);
+				this.Tactical.Entities.setLastCombatResult(::Const.Tactical.CombatResult.EnemyDestroyed);
 			}
 
 			if (_killer != null && _killer.isPlayerControlled() && !this.Tactical.State.isScenarioMode() && this.World.FactionManager.getFaction(this.getFaction()) != null && !this.World.FactionManager.getFaction(this.getFaction()).isTemporaryEnemy())
 			{
-				this.World.FactionManager.getFaction(this.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationUnitKilled);
+				this.World.FactionManager.getFaction(this.getFaction()).addPlayerRelation(::Const.World.Assets.RelationUnitKilled);
 			}
 		}
 
@@ -522,7 +522,7 @@
 					{
 						if (this.World.Assets.getOrigin().getID() != "scenario.manhunters" || this.getBackground().getID() != "background.slave")
 						{
-							bro.worsenMood(this.Const.MoodChange.BrotherDied, this.getName() + " died in battle");
+							bro.worsenMood(::Const.MoodChange.BrotherDied, this.getName() + " died in battle");
 						}
 					}
 				}
@@ -545,7 +545,7 @@
 			}
 		}
 
-		if (!this.Tactical.State.isScenarioMode() && _killer != null && _killer.getFaction() == this.Const.Faction.PlayerAnimals && _skill != null && _skill.getID() == "actives.wardog_bite")
+		if (!this.Tactical.State.isScenarioMode() && _killer != null && _killer.getFaction() == ::Const.Faction.PlayerAnimals && _skill != null && _skill.getID() == "actives.wardog_bite")
 		{
 			this.updateAchievement("WhoLetTheDogsOut", 1, 1);
 		}
@@ -560,12 +560,12 @@
 		this.m.MoraleState = _change;
 		this.m.FleeingRounds = 0;
 
-		if (this.m.MoraleState == this.Const.MoraleState.Confident && oldMoraleState != this.Const.MoraleState.Confident && ("State" in this.World) && this.World.State != null && this.World.Ambitions.hasActiveAmbition() && this.World.Ambitions.getActiveAmbition().getID() == "ambition.oath_of_camaraderie")
+		if (this.m.MoraleState == ::Const.MoraleState.Confident && oldMoraleState != ::Const.MoraleState.Confident && ("State" in this.World) && this.World.State != null && this.World.Ambitions.hasActiveAmbition() && this.World.Ambitions.getActiveAmbition().getID() == "ambition.oath_of_camaraderie")
 		{
 			this.World.Statistics.getFlags().increment("OathtakersBrosConfident");
 		}
 
-		if (oldMoraleState == this.Const.MoraleState.Fleeing && this.m.IsActingEachTurn)
+		if (oldMoraleState == ::Const.MoraleState.Fleeing && this.m.IsActingEachTurn)
 		{
 			this.setZoneOfControl(this.getTile(), this.hasZoneOfControl());
 
@@ -573,15 +573,15 @@
 			{
 				if (_noNewLine)
 				{
-					::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(this) + " has rallied");
+					::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(this) + " has rallied");
 				}
 				else
 				{
-					::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(this) + " has rallied");
+					::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(this) + " has rallied");
 				}
 			}
 		}
-		else if (this.m.MoraleState == this.Const.MoraleState.Fleeing)
+		else if (this.m.MoraleState == ::Const.MoraleState.Fleeing)
 		{
 			this.setZoneOfControl(this.getTile(), this.hasZoneOfControl());
 			this.m.Skills.removeByID("effects.shieldwall");
@@ -593,15 +593,15 @@
 
 		local morale = this.getSprite("morale");
 
-		if (this.Const.MoraleStateBrush[this.m.MoraleState].len() != 0 && morale != null)
+		if (::Const.MoraleStateBrush[this.m.MoraleState].len() != 0 && morale != null)
 		{
-			if (this.m.MoraleState == this.Const.MoraleState.Confident)
+			if (this.m.MoraleState == ::Const.MoraleState.Confident)
 			{
 				morale.setBrush(this.m.ConfidentMoraleBrush);
 			}
 			else
 			{
-				morale.setBrush(this.Const.MoraleStateBrush[this.m.MoraleState]);
+				morale.setBrush(::Const.MoraleStateBrush[this.m.MoraleState]);
 			}
 
 			morale.Visible = true;
@@ -615,37 +615,37 @@
 		{
 			if (_noNewLine)
 			{
-				::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(this) + this.Const.MoraleStateEvent[this.m.MoraleState]);
+				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(this) + ::Const.MoraleStateEvent[this.m.MoraleState]);
 			}
 			else
 			{
-				::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(this) + this.Const.MoraleStateEvent[this.m.MoraleState]);
+				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(this) + ::Const.MoraleStateEvent[this.m.MoraleState]);
 			}
 
 			if (_showIconBeforeMoraleIcon != "")
 			{
-				this.Tactical.spawnIconEffect(_showIconBeforeMoraleIcon, this.getTile(), this.Const.Tactical.Settings.SkillIconOffsetX, this.Const.Tactical.Settings.SkillIconOffsetY, this.Const.Tactical.Settings.SkillIconScale, this.Const.Tactical.Settings.SkillIconFadeInDuration, this.Const.Tactical.Settings.SkillIconStayDuration, this.Const.Tactical.Settings.SkillIconFadeOutDuration, this.Const.Tactical.Settings.SkillIconMovement);
+				this.Tactical.spawnIconEffect(_showIconBeforeMoraleIcon, this.getTile(), ::Const.Tactical.Settings.SkillIconOffsetX, ::Const.Tactical.Settings.SkillIconOffsetY, ::Const.Tactical.Settings.SkillIconScale, ::Const.Tactical.Settings.SkillIconFadeInDuration, ::Const.Tactical.Settings.SkillIconStayDuration, ::Const.Tactical.Settings.SkillIconFadeOutDuration, ::Const.Tactical.Settings.SkillIconMovement);
 			}
 
 			if (_change > 0)
 			{
-				this.Tactical.spawnIconEffect(this.Const.Morale.MoraleUpIcon, this.getTile(), this.Const.Tactical.Settings.SkillIconOffsetX, this.Const.Tactical.Settings.SkillIconOffsetY, this.Const.Tactical.Settings.SkillIconScale, this.Const.Tactical.Settings.SkillIconFadeInDuration, this.Const.Tactical.Settings.SkillIconStayDuration, this.Const.Tactical.Settings.SkillIconFadeOutDuration, this.Const.Tactical.Settings.SkillIconMovement);
+				this.Tactical.spawnIconEffect(::Const.Morale.MoraleUpIcon, this.getTile(), ::Const.Tactical.Settings.SkillIconOffsetX, ::Const.Tactical.Settings.SkillIconOffsetY, ::Const.Tactical.Settings.SkillIconScale, ::Const.Tactical.Settings.SkillIconFadeInDuration, ::Const.Tactical.Settings.SkillIconStayDuration, ::Const.Tactical.Settings.SkillIconFadeOutDuration, ::Const.Tactical.Settings.SkillIconMovement);
 			}
 			else
 			{
-				this.Tactical.spawnIconEffect(this.Const.Morale.MoraleDownIcon, this.getTile(), this.Const.Tactical.Settings.SkillIconOffsetX, this.Const.Tactical.Settings.SkillIconOffsetY, this.Const.Tactical.Settings.SkillIconScale, this.Const.Tactical.Settings.SkillIconFadeInDuration, this.Const.Tactical.Settings.SkillIconStayDuration, this.Const.Tactical.Settings.SkillIconFadeOutDuration, this.Const.Tactical.Settings.SkillIconMovement);
+				this.Tactical.spawnIconEffect(::Const.Morale.MoraleDownIcon, this.getTile(), ::Const.Tactical.Settings.SkillIconOffsetX, ::Const.Tactical.Settings.SkillIconOffsetY, ::Const.Tactical.Settings.SkillIconScale, ::Const.Tactical.Settings.SkillIconFadeInDuration, ::Const.Tactical.Settings.SkillIconStayDuration, ::Const.Tactical.Settings.SkillIconFadeOutDuration, ::Const.Tactical.Settings.SkillIconMovement);
 			}
 		}
 
 		this.m.Skills.update();
 		this.setDirty(true);
 
-		if (this.m.MoraleState == this.Const.MoraleState.Fleeing && this.Tactical.TurnSequenceBar.getActiveEntity() != this)
+		if (this.m.MoraleState == ::Const.MoraleState.Fleeing && this.Tactical.TurnSequenceBar.getActiveEntity() != this)
 		{
 			this.Tactical.TurnSequenceBar.pushEntityBack(this.getID());
 		}
 
-		if (this.m.MoraleState == this.Const.MoraleState.Fleeing)
+		if (this.m.MoraleState == ::Const.MoraleState.Fleeing)
 		{
 			local actors = this.Tactical.Entities.getInstancesOfFaction(this.getFaction());
 
@@ -670,7 +670,7 @@
 		if (this.m.MoraleState == _m) return;
 		
 
-		if (_m == this.Const.MoraleState.Fleeing)
+		if (_m == ::Const.MoraleState.Fleeing)
 		{
 			this.m.Skills.removeByID("effects.shieldwall");
 			this.m.Skills.removeByID("effects.spearwall");
@@ -682,15 +682,15 @@
 		this.m.MoraleState = _m;
 		local morale = this.getSprite("morale");
 
-		if (this.Const.MoraleStateBrush[this.m.MoraleState].len() != 0)
+		if (::Const.MoraleStateBrush[this.m.MoraleState].len() != 0)
 		{
-			if (this.m.MoraleState == this.Const.MoraleState.Confident)
+			if (this.m.MoraleState == ::Const.MoraleState.Confident)
 			{
 				morale.setBrush(this.m.ConfidentMoraleBrush);
 			}
 			else
 			{
-				morale.setBrush(this.Const.MoraleStateBrush[this.m.MoraleState]);
+				morale.setBrush(::Const.MoraleStateBrush[this.m.MoraleState]);
 			}
 
 			morale.Visible = true;

@@ -105,7 +105,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
 					}
 				];
 			}
@@ -135,7 +135,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]" + money + "[/color] Crowns"
+						text = "You lose [color=" + ::Const.UI.Color.NegativeEventValue + "]" + money + "[/color] Crowns"
 					}
 				];
 			}
@@ -166,7 +166,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
 					}
 				];
 				local initiative = this.Math.rand(2, 4);
@@ -175,16 +175,16 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.Thief.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
+					text = _event.m.Thief.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
 				});
 				_event.m.Thief.improveMood(1.0, "Has used his unique talents to great success");
 
-				if (_event.m.Thief.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Thief.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Thief.getMoodState()],
-						text = _event.m.Thief.getName() + this.Const.MoodStateEvent[_event.m.Thief.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Thief.getMoodState()],
+						text = _event.m.Thief.getName() + ::Const.MoodStateEvent[_event.m.Thief.getMoodState()]
 					});
 				}
 
@@ -219,12 +219,12 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]50[/color] Crowns"
+					text = "You lose [color=" + ::Const.UI.Color.NegativeEventValue + "]50[/color] Crowns"
 				});
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
 				});
 				local initiative = this.Math.rand(2, 4);
 				_event.m.Minstrel.getBaseProperties().Initiative += initiative;
@@ -232,16 +232,16 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.Minstrel.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
+					text = _event.m.Minstrel.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
 				});
 				_event.m.Minstrel.improveMood(1.0, "Has used his unique talents to great success");
 
-				if (_event.m.Minstrel.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Minstrel.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Minstrel.getMoodState()],
-						text = _event.m.Minstrel.getName() + this.Const.MoodStateEvent[_event.m.Minstrel.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Minstrel.getMoodState()],
+						text = _event.m.Minstrel.getName() + ::Const.MoodStateEvent[_event.m.Minstrel.getMoodState()]
 					});
 				}
 			}
@@ -270,16 +270,16 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]25[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]25[/color] Crowns"
 				});
 				_event.m.Butcher.improveMood(1.0, "Has made a tidy sum selling one of his fingers");
 
-				if (_event.m.Butcher.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Butcher.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Butcher.getMoodState()],
-						text = _event.m.Butcher.getName() + this.Const.MoodStateEvent[_event.m.Butcher.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Butcher.getMoodState()],
+						text = _event.m.Butcher.getName() + ::Const.MoodStateEvent[_event.m.Butcher.getMoodState()]
 					});
 				}
 
@@ -300,7 +300,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Butcher.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+3[/color] Resolve"
+					text = _event.m.Butcher.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+3[/color] Resolve"
 				});
 			}
 

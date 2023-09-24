@@ -30,23 +30,23 @@ this.gladiators_vibes_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Gladiator2.getImagePath());
 				_event.m.Gladiator1.improveMood(1.0, "Feels strong and beautiful");
 
-				if (_event.m.Gladiator1.getMoodState() > this.Const.MoodState.Neutral)
+				if (_event.m.Gladiator1.getMoodState() > ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Gladiator1.getMoodState()],
-						text = _event.m.Gladiator1.getName() + this.Const.MoodStateEvent[_event.m.Gladiator1.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Gladiator1.getMoodState()],
+						text = _event.m.Gladiator1.getName() + ::Const.MoodStateEvent[_event.m.Gladiator1.getMoodState()]
 					});
 				}
 
 				_event.m.Gladiator2.improveMood(1.0, "Feels strong and beautiful");
 
-				if (_event.m.Gladiator2.getMoodState() > this.Const.MoodState.Neutral)
+				if (_event.m.Gladiator2.getMoodState() > ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Gladiator2.getMoodState()],
-						text = _event.m.Gladiator2.getName() + this.Const.MoodStateEvent[_event.m.Gladiator2.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Gladiator2.getMoodState()],
+						text = _event.m.Gladiator2.getName() + ::Const.MoodStateEvent[_event.m.Gladiator2.getMoodState()]
 					});
 				}
 			}
@@ -75,8 +75,8 @@ this.gladiators_vibes_event <- this.inherit("scripts/events/event", {
 				_event.m.Gladiator2.worsenMood(1.0, "Had a bad dream about not being strong and beautiful");
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Gladiator2.getMoodState()],
-					text = _event.m.Gladiator2.getName() + this.Const.MoodStateEvent[_event.m.Gladiator2.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Gladiator2.getMoodState()],
+					text = _event.m.Gladiator2.getName() + ::Const.MoodStateEvent[_event.m.Gladiator2.getMoodState()]
 				});
 			}
 
@@ -85,7 +85,7 @@ this.gladiators_vibes_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Desert)
+		if (!::Const.DLC.Desert)
 		{
 			return;
 		}

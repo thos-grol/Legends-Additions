@@ -8,15 +8,15 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.MaceTree
+				::Const.Perks.MaceTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
@@ -35,7 +35,7 @@
 		
 
 		r = this.Math.rand(0, 3);
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"tattered_sackcloth"
@@ -53,7 +53,7 @@
 				"leather_tunic"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				""

@@ -8,16 +8,16 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.DaggerTree
+				::Const.Perks.DaggerTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.BeastClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.BeastClassTree
 			],
 			Magic = []
 		};
@@ -27,7 +27,7 @@
 	{
 		local items = this.getContainer().getActor().getItems();
 		items.equip(this.new("scripts/items/tools/throwing_net"));
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"tattered_sackcloth"

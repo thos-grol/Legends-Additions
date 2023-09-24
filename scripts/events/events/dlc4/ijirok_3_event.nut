@@ -23,7 +23,7 @@ this.ijirok_3_event <- this.inherit("scripts/events/event", {
 						{
 							if (v.getTypeID() == "location.icy_cave_location")
 							{
-								this.Const.World.Common.addFootprintsFromTo(this.World.State.getPlayer().getTile(), v.getTile(), this.Const.GenericFootprints, 0.5);
+								::Const.World.Common.addFootprintsFromTo(this.World.State.getPlayer().getTile(), v.getTile(), ::Const.GenericFootprints, 0.5);
 								break;
 							}
 						}
@@ -42,7 +42,7 @@ this.ijirok_3_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Wildmen)
+		if (!::Const.DLC.Wildmen)
 		{
 			return;
 		}
@@ -54,7 +54,7 @@ this.ijirok_3_event <- this.inherit("scripts/events/event", {
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Snow || currentTile.Type != this.Const.World.TerrainType.SnowyForest)
+		if (currentTile.Type != ::Const.World.TerrainType.Snow || currentTile.Type != ::Const.World.TerrainType.SnowyForest)
 		{
 			return;
 		}

@@ -25,8 +25,8 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/split_shield_02.wav",
 			"sounds/combat/split_shield_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -43,7 +43,7 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 
 	function getTooltip()
 	{
-		local damage = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).getShieldDamage();
+		local damage = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).getShieldDamage();
 
 		if (this.getContainer().getActor().getCurrentProperties().IsSpecializedInAxes)
 		{
@@ -71,7 +71,7 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 			id = 7,
 			type = "text",
 			icon = "ui/icons/shield_damage.png",
-			text = "Inflicts [color=" + this.Const.UI.Color.DamageValue + "]" + damage + "[/color] damage to shields"
+			text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]" + damage + "[/color] damage to shields"
 		});
 
 		if (this.m.MaxRange > 1)
@@ -80,7 +80,7 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 				id = 8,
 				type = "text",
 				icon = "ui/icons/vision.png",
-				text = "Has a range of [color=" + this.Const.UI.Color.PositiveValue + "] " + this.m.MaxRange + "[/color] tiles"
+				text = "Has a range of [color=" + ::Const.UI.Color.PositiveValue + "] " + this.m.MaxRange + "[/color] tiles"
 			});
 		}
 
@@ -90,7 +90,7 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/hitchance.png",
-				text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] chance to hit targets directly adjacent because the weapon is too unwieldy. Can be removed with polearm proficiency"
+				text = "Has [color=" + ::Const.UI.Color.NegativeValue + "]-15%[/color] chance to hit targets directly adjacent because the weapon is too unwieldy. Can be removed with polearm proficiency"
 			});
 		}
 
@@ -99,9 +99,9 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInAxes ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInAxes ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 
-		if (this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null && this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).getBlockedSlotType() != null)
+		if (this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null && this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).getBlockedSlotType() != null)
 		{
 			this.m.ActionPointCost = 6;
 		}
@@ -124,12 +124,12 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 	function onUse( _user, _targetTile )
 	{
 		local target = _targetTile.getEntity();
-		local shield = target.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local shield = target.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
 		if (shield != null)
 		{
-			this.spawnAttackEffect(_targetTile, this.Const.Tactical.AttackEffectSplitShield);
-			local damage = _user.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).getShieldDamage();
+			this.spawnAttackEffect(_targetTile, ::Const.Tactical.AttackEffectSplitShield);
+			local damage = _user.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).getShieldDamage();
 
 			if (_user.getCurrentProperties().IsSpecializedInAxes)
 			{
@@ -152,25 +152,25 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 			{
 				if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
 				{
-					this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " uses Split Shield and destroys " + this.Const.UI.getColorizedEntityName(target) + "\'s shield");
+					this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " uses Split Shield and destroys " + ::Const.UI.getColorizedEntityName(target) + "\'s shield");
 				}
 			}
 			else
 			{
 				if (this.m.SoundOnHit.len() != 0)
 				{
-					this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, target.getPos());
+					this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, target.getPos());
 				}
 
 				if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
 				{
-					this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " uses Split Shield and hits " + this.Const.UI.getColorizedEntityName(target) + "\'s shield for [b]" + (conditionBefore - shield.getCondition()) + "[/b] damage");
+					this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " uses Split Shield and hits " + ::Const.UI.getColorizedEntityName(target) + "\'s shield for [b]" + (conditionBefore - shield.getCondition()) + "[/b] damage");
 				}
 			}
 
 			if (!this.Tactical.getNavigator().isTravelling(target))
 			{
-				this.Tactical.getShaker().shake(target, _user.getTile(), 2, this.Const.Combat.ShakeEffectSplitShieldColor, this.Const.Combat.ShakeEffectSplitShieldHighlight, this.Const.Combat.ShakeEffectSplitShieldFactor, 1.0, [
+				this.Tactical.getShaker().shake(target, _user.getTile(), 2, ::Const.Combat.ShakeEffectSplitShieldColor, ::Const.Combat.ShakeEffectSplitShieldHighlight, ::Const.Combat.ShakeEffectSplitShieldFactor, 1.0, [
 					"shield_icon"
 				], 1.0);
 			}
@@ -179,7 +179,7 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 
 			if (overwhelm != null)
 			{
-				overwhelm.onTargetHit(this, _targetTile.getEntity(), this.Const.BodyPart.Body, 0, 0);
+				overwhelm.onTargetHit(this, _targetTile.getEntity(), ::Const.BodyPart.Body, 0, 0);
 			}
 		}
 

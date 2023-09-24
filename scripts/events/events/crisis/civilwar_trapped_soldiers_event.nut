@@ -70,14 +70,14 @@ this.civilwar_trapped_soldiers_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationFavor, "Saved some of their men");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationFavor, "Saved some of their men");
 				this.World.Assets.addMoralReputation(1);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation increases slightly"
 				});
-				_event.m.Town.getFactionOfType(this.Const.FactionType.Settlement).addPlayerRelation(this.Const.World.Assets.RelationMinorOffense);
+				_event.m.Town.getFactionOfType(::Const.FactionType.Settlement).addPlayerRelation(::Const.World.Assets.RelationMinorOffense);
 			}
 
 		});
@@ -100,20 +100,20 @@ this.civilwar_trapped_soldiers_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Saved some of their men");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Saved some of their men");
 				this.World.Assets.addMoralReputation(-2);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation decreases"
 				});
-				_event.m.Town.getFactionOfType(this.Const.FactionType.Settlement).addPlayerRelation(this.Const.World.Assets.RelationOffense, "Killed some of their men");
+				_event.m.Town.getFactionOfType(::Const.FactionType.Settlement).addPlayerRelation(::Const.World.Assets.RelationOffense, "Killed some of their men");
 				local brothers = this.World.getPlayerRoster().getAll();
 				local candidates = [];
 
 				foreach( bro in brothers )
 				{
-					if (!bro.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury))
+					if (!bro.getSkills().hasSkillOfType(::Const.SkillType.TemporaryInjury))
 					{
 						candidates.push(bro);
 					}
@@ -126,7 +126,7 @@ this.civilwar_trapped_soldiers_event <- this.inherit("scripts/events/event", {
 					local idx = this.Math.rand(0, candidates.len() - 1);
 					local bro = candidates[idx];
 					candidates.remove(idx);
-					local injury = bro.addInjury(this.Const.Injury.Brawl);
+					local injury = bro.addInjury(::Const.Injury.Brawl);
 					this.List.push({
 						id = 10,
 						icon = injury.getIcon(),
@@ -184,7 +184,7 @@ this.civilwar_trapped_soldiers_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Refused to help their men");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Refused to help their men");
 			}
 
 		});

@@ -35,7 +35,7 @@ this.lone_wolf_origin_another_squire_event <- this.inherit("scripts/events/event
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Wildmen)
+		if (!::Const.DLC.Wildmen)
 		{
 			return;
 		}

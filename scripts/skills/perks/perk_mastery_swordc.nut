@@ -8,7 +8,7 @@ this.perk_mastery_swordc <- this.inherit("scripts/skills/perks/perk_mastery_swor
 	{
 		this.perk_mastery_sword.create();
 		this.m.ID = "perk.mastery.swordc";
-		this.m.Name = this.Const.Strings.PerkName.SpecSwordC;
+		this.m.Name = ::Const.Strings.PerkName.SpecSwordC;
 	}
 });
 

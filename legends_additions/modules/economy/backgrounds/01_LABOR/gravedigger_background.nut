@@ -9,18 +9,18 @@
 		//FEATURE_6: gravedigger is more morbid alignment
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.MaceTree
+				::Const.Perks.MaceTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.FitTree
+				::Const.Perks.FitTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.ShovelClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.ShovelClassTree
 			],
 			Magic = []
 		};
@@ -41,7 +41,7 @@
 			items.equip(this.new("scripts/items/weapons/legend_shovel"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"sackcloth"
@@ -55,7 +55,7 @@
 				"leather_tunic"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"hood"

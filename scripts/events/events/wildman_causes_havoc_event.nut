@@ -124,7 +124,7 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 					this.Characters.push(_event.m.Wildman.getImagePath());
 				}
 
-				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "You refused to pay for damages caused by one of your mercenaries");
+				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "You refused to pay for damages caused by one of your mercenaries");
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_moral_reputation.png",
@@ -166,7 +166,7 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
 				});
 				this.List.push({
 					id = 10,
@@ -198,25 +198,25 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
 				});
 				this.Characters.push(_event.m.Wildman.getImagePath());
 				_event.m.Wildman.getBaseProperties().DailyWage -= this.Math.floor(_event.m.Wildman.getDailyCost() / 4);
 				_event.m.Wildman.getSkills().update();
-				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "One of your mercenaries caused havoc in town");
+				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "One of your mercenaries caused havoc in town");
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_daily_money.png",
-					text = _event.m.Wildman.getName() + " is now paid [color=" + this.Const.UI.Color.NegativeEventValue + "]" + _event.m.Wildman.getDailyCost() + "[/color] crowns a day"
+					text = _event.m.Wildman.getName() + " is now paid [color=" + ::Const.UI.Color.NegativeEventValue + "]" + _event.m.Wildman.getDailyCost() + "[/color] crowns a day"
 				});
 				_event.m.Wildman.worsenMood(2.0, "Got a pay cut");
 
-				if (_event.m.Wildman.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Wildman.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Wildman.getMoodState()],
-						text = _event.m.Wildman.getName() + this.Const.MoodStateEvent[_event.m.Wildman.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Wildman.getMoodState()],
+						text = _event.m.Wildman.getName() + ::Const.MoodStateEvent[_event.m.Wildman.getMoodState()]
 					});
 				}
 			}
@@ -244,25 +244,25 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
 				});
 				this.Characters.push(_event.m.Berserker.getImagePath());
 				_event.m.Berserker.getBaseProperties().DailyWage -= this.Math.floor(_event.m.Berserker.getDailyCost() / 4);
 				_event.m.Berserker.getSkills().update();
-				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "One of your mercenaries caused havoc in town");
+				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "One of your mercenaries caused havoc in town");
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_daily_money.png",
-					text = _event.m.Berserker.getName() + " is now paid [color=" + this.Const.UI.Color.NegativeEventValue + "]" + _event.m.Berserker.getDailyCost() + "[/color] crowns a day"
+					text = _event.m.Berserker.getName() + " is now paid [color=" + ::Const.UI.Color.NegativeEventValue + "]" + _event.m.Berserker.getDailyCost() + "[/color] crowns a day"
 				});
 				_event.m.Berserker.worsenMood(2.0, "Got a pay cut");
 
-				if (_event.m.Berserker.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Berserker.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Berserker.getMoodState()],
-						text = _event.m.Berserker.getName() + this.Const.MoodStateEvent[_event.m.Berserker.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Berserker.getMoodState()],
+						text = _event.m.Berserker.getName() + ::Const.MoodStateEvent[_event.m.Berserker.getMoodState()]
 					});
 				}
 
@@ -274,7 +274,7 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 					{
 						if (this.Math.rand(1, 100) <= 66)
 						{
-							local injury = bro.addInjury(this.Const.Injury.Brawl);
+							local injury = bro.addInjury(::Const.Injury.Brawl);
 							this.List.push({
 								id = 10,
 								icon = injury.getIcon(),
@@ -307,13 +307,13 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 					function getResult( _event )
 					{
 						this.World.Assets.addMoralReputation(-2);
-						this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationBetrayal, "You killed some of the militia");
+						this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationBetrayal, "You killed some of the militia");
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.CivilianTracks;
+						properties.Music = ::Const.Music.CivilianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Militia, this.Math.rand(90, 130), this.Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Militia, this.Math.rand(90, 130), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -381,23 +381,23 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
 				});
 				local brothers = this.World.getPlayerRoster().getAll();
 
 				foreach( bro in brothers )
 				{
-					if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat) && this.Math.rand(1, 100) <= 33)
+					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat) && this.Math.rand(1, 100) <= 33)
 					{
 						bro.worsenMood(1.0, "The company backed down from a fight");
 					}
 
-					if (bro.getMoodState() < this.Const.MoodState.Neutral)
+					if (bro.getMoodState() < ::Const.MoodState.Neutral)
 					{
 						this.List.push({
 							id = 10,
-							icon = this.Const.MoodStateIcon[bro.getMoodState()],
-							text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+							icon = ::Const.MoodStateIcon[bro.getMoodState()],
+							text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 						});
 					}
 				}
@@ -437,7 +437,7 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
 				});
 				this.List.push({
 					id = 10,

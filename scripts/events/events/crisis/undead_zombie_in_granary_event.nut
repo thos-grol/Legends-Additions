@@ -81,16 +81,16 @@ this.undead_zombie_in_granary_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.OffendedByViolence) && this.Math.rand(1, 100) <= 50)
+					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && this.Math.rand(1, 100) <= 50)
 					{
 						bro.worsenMood(0.5, "You had a boy burned by accident");
 
-						if (bro.getMoodState() < this.Const.MoodState.Neutral)
+						if (bro.getMoodState() < ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -122,7 +122,7 @@ this.undead_zombie_in_granary_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
 					}
 				];
 			}
@@ -149,12 +149,12 @@ this.undead_zombie_in_granary_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Dude.getImagePath());
 				_event.m.Dude.worsenMood(2.0, "Killed a little boy by accident");
 
-				if (_event.m.Dude.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Dude.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Dude.getMoodState()],
-						text = _event.m.Dude.getName() + this.Const.MoodStateEvent[_event.m.Dude.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Dude.getMoodState()],
+						text = _event.m.Dude.getName() + ::Const.MoodStateEvent[_event.m.Dude.getMoodState()]
 					});
 				}
 			}
@@ -184,17 +184,17 @@ this.undead_zombie_in_granary_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
 					}
 				];
 				_event.m.Dude.improveMood(0.25, "Saved a peasant");
 
-				if (_event.m.Dude.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Dude.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Dude.getMoodState()],
-						text = _event.m.Dude.getName() + this.Const.MoodStateEvent[_event.m.Dude.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Dude.getMoodState()],
+						text = _event.m.Dude.getName() + ::Const.MoodStateEvent[_event.m.Dude.getMoodState()]
 					});
 				}
 			}

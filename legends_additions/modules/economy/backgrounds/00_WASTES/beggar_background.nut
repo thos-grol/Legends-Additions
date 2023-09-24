@@ -8,13 +8,13 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.DaggerTree
+				::Const.Perks.DaggerTree
 			],
 			Defense = [],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
@@ -31,7 +31,7 @@
 			items.equip(this.new("scripts/items/weapons/wooden_stick"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"tattered_sackcloth"
@@ -45,7 +45,7 @@
 				"legend_rabble_tunic"
 			]
 		]));
-		local item = this.Const.World.Common.pickHelmet([
+		local item = ::Const.World.Common.pickHelmet([
 			[
 				3,
 				""

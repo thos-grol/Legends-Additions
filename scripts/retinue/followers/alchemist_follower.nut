@@ -16,7 +16,7 @@ this.alchemist_follower <- this.inherit("scripts/retinue/follower", {
 
 	function isValid()
 	{
-		return this.Const.DLC.Unhold;
+		return ::Const.DLC.Unhold;
 	}
 
 	function onNewDay()

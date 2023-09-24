@@ -1,4 +1,3 @@
-//FEATURE_1: feature class rework.
 local gt = this.getroottable();
 
 if (!("Perks" in gt.Const))
@@ -8,9 +7,9 @@ if (!("Perks" in gt.Const))
 
 gt.Const.Perks.BeastClassTree <- {
 	ID = "BeastClassTree",
-	Name = "Trapper",
+	Name = "Nets",
 	Descriptions = [
-		"using nets"
+		"catching beasts"
 	],
 	Tree = [
 		[
@@ -61,7 +60,7 @@ gt.Const.Perks.BardClassTree <- {
 		]
 	]
 };
-gt.Const.Perks.HealerClassTree <- { //FEATURE_1: herbalists and medical classes automattically get spec bandage and field triage perks
+gt.Const.Perks.HealerClassTree <- {
 	ID = "HealerClassTree",
 	Name = "Healing",
 	Descriptions = [
@@ -127,7 +126,7 @@ gt.Const.Perks.FistsClassTree <- {
 		]
 	]
 };
-gt.Const.Perks.ChefClassTree <- { //FEATURE_1: remove chef tree
+gt.Const.Perks.ChefClassTree <- {
 	ID = "ChefClassTree",
 	Name = "Chef",
 	Descriptions = [
@@ -153,7 +152,7 @@ gt.Const.Perks.ChefClassTree <- { //FEATURE_1: remove chef tree
 		]
 	]
 };
-gt.Const.Perks.RepairClassTree <- { //FEATURE_1: rework repair tree
+gt.Const.Perks.RepairClassTree <- {
 	ID = "RepairClassTree",
 	Name = "Repair",
 	Descriptions = [
@@ -389,13 +388,13 @@ gt.Const.Perks.WoodaxeClassTree <- {
 		],
 		[],
 		[
-			//gt.Const.Perks.PerkDefs.LegendWoodworking
+			gt.Const.Perks.PerkDefs.LegendWoodworking
 		],
 		[],
 		[]
 	]
 };
-gt.Const.Perks.SickleClassTree <- { //FEATURE_1: Rework
+gt.Const.Perks.SickleClassTree <- {
 	ID = "SickleClassTree",
 	Name = "Sickle",
 	Descriptions = [
@@ -483,7 +482,7 @@ gt.Const.Perks.HoundmasterClassTree <- {
 	ID = "HoundmasterClassTree",
 	Name = "Hound Master",
 	Descriptions = [
-		"being useless"
+		"training dogs"
 	],
 	Tree = [
 		[],
@@ -503,6 +502,26 @@ gt.Const.Perks.HoundmasterClassTree <- {
 		[
 			gt.Const.Perks.PerkDefs.LegendDogMaster
 		]
+	]
+};
+gt.Const.Perks.ScytheClassTree <- {
+	ID = "ScytheClassTree",
+	Name = "Scythe",
+	Descriptions = [
+		"scythes"
+	],
+	Tree = [
+		[
+			gt.Const.Perks.PerkDefs.LegendSpecialistScytheSkill
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.LegendSpecialistScytheDamage
+		],
+		[],
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.ClassTrees <- {
@@ -526,7 +545,8 @@ gt.Const.Perks.ClassTrees <- {
 		gt.Const.Perks.SickleClassTree,
 		gt.Const.Perks.NinetailsClassTree,
 		gt.Const.Perks.JugglerClassTree,
-		gt.Const.Perks.HoundmasterClassTree
+		gt.Const.Perks.HoundmasterClassTree,
+		gt.Const.Perks.ScytheClassTree
 	],
 	function getRandom( _exclude )
 	{
@@ -564,6 +584,4 @@ gt.Const.Perks.ClassTrees <- {
 	}
 
 };
-
-
 

@@ -6,7 +6,7 @@
 		create();
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
-		this.m.Modifiers.Crafting = this.Const.LegendMod.ResourceModifiers.Crafting[0];
+		this.m.Modifiers.Crafting = ::Const.LegendMod.ResourceModifiers.Crafting[0];
 	}
 
 	o.onAddEquipment = function()
@@ -32,13 +32,13 @@
 			items.addToBag(this.new("scripts/items/weapons/legend_wooden_stake"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"ragged_surcoat"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"witchhunter_hat"

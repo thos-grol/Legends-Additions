@@ -41,7 +41,7 @@ this.strong_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Max Fatigue"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Max Fatigue"
 			}
 		];
 	}

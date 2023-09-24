@@ -77,7 +77,7 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/fatigue.png",
-					text = _event.m.Student.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + skill + "[/color] Max Fatigue"
+					text = _event.m.Student.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + skill + "[/color] Max Fatigue"
 				});
 			}
 
@@ -109,7 +109,7 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/health.png",
-					text = _event.m.Student.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + skill + "[/color] Hitpoints"
+					text = _event.m.Student.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + skill + "[/color] Hitpoints"
 				});
 				_event.m.Student.addLightInjury();
 				this.List.push({
@@ -149,12 +149,12 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Student.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + attack + "[/color] Melee Skill"
+					text = _event.m.Student.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + attack + "[/color] Melee Skill"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_defense.png",
-					text = _event.m.Student.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + defense + "[/color] Melee Defense"
+					text = _event.m.Student.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + defense + "[/color] Melee Defense"
 				});
 			}
 
@@ -184,7 +184,7 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 		{
 			if (bro.getFlags().has("event_brawler_teaches_2")) continue;
 			if (bro.getLevel() >= 3 && bro.getBackground().getID() == "background.brawler") candidates_brawler.push(bro);
-			else if (!bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat)) candidates_student.push(bro);
+			else if (!bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat)) candidates_student.push(bro);
 		}
 
 		if (candidates_brawler.len() == 0 || candidates_student.len() == 0) return;

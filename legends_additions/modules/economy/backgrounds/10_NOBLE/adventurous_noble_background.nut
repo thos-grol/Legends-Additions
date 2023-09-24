@@ -8,16 +8,16 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.SwordTree,
-				this.Const.Perks.ShieldTree,
-				this.Const.Perks.PolearmTree,
-				this.Const.Perks.BowTree
+				::Const.Perks.SwordTree,
+				::Const.Perks.ShieldTree,
+				::Const.Perks.PolearmTree,
+				::Const.Perks.BowTree
 			],
 			Defense = [],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
@@ -38,7 +38,7 @@
 			items.equip(this.new("scripts/items/weapons/pike"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"mail_shirt"
@@ -52,7 +52,7 @@
 				"mail_hauberk"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				2,
 				"nasal_helmet"

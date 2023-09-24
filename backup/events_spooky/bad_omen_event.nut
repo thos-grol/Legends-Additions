@@ -36,12 +36,12 @@ this.bad_omen_event <- this.inherit("scripts/events/event", {
 					text = _event.m.Superstitious.getName() + " is afraid"
 				});
 
-				if (_event.m.Superstitious.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Superstitious.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Superstitious.getMoodState()],
-						text = _event.m.Superstitious.getName() + this.Const.MoodStateEvent[_event.m.Superstitious.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Superstitious.getMoodState()],
+						text = _event.m.Superstitious.getName() + ::Const.MoodStateEvent[_event.m.Superstitious.getMoodState()]
 					});
 				}
 			}

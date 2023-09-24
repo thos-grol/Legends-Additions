@@ -7,14 +7,7 @@
 			"ORIENTAL CITY #2",
 			"ORIENTAL CITY #3"
 		]);
-		this.m.FemaleDraftList = [
-			"female_thief_southern_background",
-			"female_slave_background",
-			"female_slave_southern_background",
-			"female_slave_southern_background",
-			"female_slave_southern_background",
-			"female_slave_southern_background"
-		];
+		this.m.FemaleDraftList = [];
 		this.m.DraftList = [
 			"beggar_southern_background",
 			"beggar_southern_background",
@@ -37,7 +30,7 @@
 			"eunuch_southern_background",
 			"slave_background",
 			"slave_background",
-			"female_slave_background",
+			
 			"slave_southern_background",
 			"slave_southern_background",
 			"slave_southern_background",
@@ -54,7 +47,7 @@
 			"assassin_southern_background"
 		];
 
-		// if (this.Const.DLC.Unhold)
+		// if (::Const.DLC.Unhold)
 		// {
 		// 	this.m.DraftList.push("beast_hunter_background");
 		// }
@@ -68,8 +61,8 @@
 		this.m.UISprite = "ui/settlement_sprites/citystate_01.png";
 		this.m.Sprite = "world_city_01";
 		this.m.Lighting = "world_city_01_light";
-		this.m.Rumors = this.Const.Strings.RumorsDesertSettlement;
-		this.m.Culture = this.Const.World.Culture.Southern;
+		this.m.Rumors = ::Const.Strings.RumorsDesertSettlement;
+		this.m.Culture = ::Const.World.Culture.Southern;
 		this.m.IsMilitary = false;
 		this.m.Size = 3;
 		this.m.HousesType = 4;
@@ -84,14 +77,14 @@
 		local tiles = [
 			myTile
 		];
-		local mapGen = this.MapGen.get(this.Const.World.TerrainScript[this.Const.World.TerrainType.Oasis]);
-		myTile.Type = this.Const.World.TerrainType.Oasis;
+		local mapGen = this.MapGen.get(::Const.World.TerrainScript[::Const.World.TerrainType.Oasis]);
+		myTile.Type = ::Const.World.TerrainType.Oasis;
 
 		for( local i = 0; i < 6; i = i )
 		{
 			local nextTile = myTile.getNextTile(i);
 
-			if (nextTile.Type == this.Const.World.TerrainType.Desert)
+			if (nextTile.Type == ::Const.World.TerrainType.Desert)
 			{
 				tiles.push(nextTile);
 			}
@@ -100,7 +93,7 @@
 			{
 				local veryNextTile = nextTile.getNextTile(i);
 
-				if (veryNextTile.Type == this.Const.World.TerrainType.Desert && this.Math.rand(1, 100) <= 66)
+				if (veryNextTile.Type == ::Const.World.TerrainType.Desert && this.Math.rand(1, 100) <= 66)
 				{
 					tiles.push(veryNextTile);
 				}
@@ -130,13 +123,13 @@
 			{
 				local tile = this.World.getTileSquare(x, y);
 
-				if (tile.Type == this.Const.World.TerrainType.Mountains)
+				if (tile.Type == ::Const.World.TerrainType.Mountains)
 				{
 				}
 				else
 				{
 					tile.clear();
-					this.MapGen.get(this.Const.World.TerrainScript[tile.Type]).fill({
+					this.MapGen.get(::Const.World.TerrainScript[tile.Type]).fill({
 						X = x,
 						Y = y,
 						W = 1,
@@ -157,12 +150,12 @@
 			{
 				local tile = this.World.getTileSquare(x, y);
 
-				if (tile.Type == this.Const.World.TerrainType.Mountains)
+				if (tile.Type == ::Const.World.TerrainType.Mountains)
 				{
 				}
 				else
 				{
-					this.MapGen.get(this.Const.World.TerrainScript[tile.Type]).fill({
+					this.MapGen.get(::Const.World.TerrainScript[tile.Type]).fill({
 						X = x,
 						Y = y,
 						W = 1,
@@ -185,17 +178,17 @@
 
 		for( local i = 0; i < 2; i = i )
 		{
-			if (this.Const.World.Buildings.Arenas == 0)
+			if (::Const.World.Buildings.Arenas == 0)
 			{
 				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/arena_building"));
 			}
-			else if (this.Const.World.Buildings.WeaponsmithsOriental == 0)
+			else if (::Const.World.Buildings.WeaponsmithsOriental == 0)
 			{
 				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/weaponsmith_oriental_building"));
 				w = ++w;
 				w = w;
 			}
-			else if (this.Const.World.Buildings.ArmorsmithsOriental == 0)
+			else if (::Const.World.Buildings.ArmorsmithsOriental == 0)
 			{
 				this.addBuilding(this.new("scripts/entity/world/settlements/buildings/armorsmith_oriental_building"));
 				a = ++a;
@@ -222,49 +215,49 @@
 		if (this.Math.rand(1, 100) <= 60)
 		{
 			this.buildAttachedLocation(1, "scripts/entity/world/attached_location/stone_watchtower_oriental_location", [
-				this.Const.World.TerrainType.Plains,
-				this.Const.World.TerrainType.Steppe,
-				this.Const.World.TerrainType.Hills,
-				this.Const.World.TerrainType.Desert
+				::Const.World.TerrainType.Plains,
+				::Const.World.TerrainType.Steppe,
+				::Const.World.TerrainType.Hills,
+				::Const.World.TerrainType.Desert
 			], [], 4, true);
 			this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/militia_trainingcamp_oriental_location", [
-				this.Const.World.TerrainType.Plains,
-				this.Const.World.TerrainType.Steppe,
-				this.Const.World.TerrainType.Hills,
-				this.Const.World.TerrainType.Desert
+				::Const.World.TerrainType.Plains,
+				::Const.World.TerrainType.Steppe,
+				::Const.World.TerrainType.Hills,
+				::Const.World.TerrainType.Desert
 			], [], 1, true);
 		}
 		else
 		{
 			this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/stone_watchtower_oriental_location", [
-				this.Const.World.TerrainType.Plains,
-				this.Const.World.TerrainType.Steppe,
-				this.Const.World.TerrainType.Hills,
-				this.Const.World.TerrainType.Desert
+				::Const.World.TerrainType.Plains,
+				::Const.World.TerrainType.Steppe,
+				::Const.World.TerrainType.Hills,
+				::Const.World.TerrainType.Desert
 			], [], 4, true);
 			this.buildAttachedLocation(1, "scripts/entity/world/attached_location/militia_trainingcamp_oriental_location", [
-				this.Const.World.TerrainType.Plains,
-				this.Const.World.TerrainType.Steppe,
-				this.Const.World.TerrainType.Hills,
-				this.Const.World.TerrainType.Desert
+				::Const.World.TerrainType.Plains,
+				::Const.World.TerrainType.Steppe,
+				::Const.World.TerrainType.Hills,
+				::Const.World.TerrainType.Desert
 			], [], 1, true);
 		}
 
 		if (this.m.IsCoastal)
 		{
 			this.buildAttachedLocation(2, "scripts/entity/world/attached_location/harbor_location", [
-				this.Const.World.TerrainType.Shore
+				::Const.World.TerrainType.Shore
 			], [
-				this.Const.World.TerrainType.Ocean,
-				this.Const.World.TerrainType.Shore
+				::Const.World.TerrainType.Ocean,
+				::Const.World.TerrainType.Shore
 			], -1, false, false);
 			this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/fishing_huts_oriental_location", [
-				this.Const.World.TerrainType.Plains,
-				this.Const.World.TerrainType.Steppe,
-				this.Const.World.TerrainType.Desert,
-				this.Const.World.TerrainType.Oasis
+				::Const.World.TerrainType.Plains,
+				::Const.World.TerrainType.Steppe,
+				::Const.World.TerrainType.Desert,
+				::Const.World.TerrainType.Oasis
 			], [
-				this.Const.World.TerrainType.Shore
+				::Const.World.TerrainType.Shore
 			]);
 		}
 
@@ -286,31 +279,31 @@
 		}
 
 		this.buildAttachedLocation(this.Math.rand(n == 1 ? 2 : 0, n == 1 ? 2 : 1), "scripts/entity/world/attached_location/incense_dryer_location", [
-			this.Const.World.TerrainType.Steppe,
-			this.Const.World.TerrainType.Desert,
-			this.Const.World.TerrainType.Oasis
+			::Const.World.TerrainType.Steppe,
+			::Const.World.TerrainType.Desert,
+			::Const.World.TerrainType.Oasis
 		], []);
 		this.buildAttachedLocation(this.Math.rand(n == 2 ? 2 : 0, n == 2 ? 2 : 1), "scripts/entity/world/attached_location/silk_farm_location", [
-			this.Const.World.TerrainType.Steppe,
-			this.Const.World.TerrainType.Desert,
-			this.Const.World.TerrainType.Oasis
+			::Const.World.TerrainType.Steppe,
+			::Const.World.TerrainType.Desert,
+			::Const.World.TerrainType.Oasis
 		], []);
 		this.buildAttachedLocation(this.Math.rand(n == 3 ? 2 : 0, n == 3 ? 2 : 1), "scripts/entity/world/attached_location/plantation_location", [
-			this.Const.World.TerrainType.Steppe,
-			this.Const.World.TerrainType.Desert,
-			this.Const.World.TerrainType.Oasis
+			::Const.World.TerrainType.Steppe,
+			::Const.World.TerrainType.Desert,
+			::Const.World.TerrainType.Oasis
 		], []);
 		this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/dye_maker_oriental_location", [
-			this.Const.World.TerrainType.Steppe,
-			this.Const.World.TerrainType.Desert,
-			this.Const.World.TerrainType.Oasis
+			::Const.World.TerrainType.Steppe,
+			::Const.World.TerrainType.Desert,
+			::Const.World.TerrainType.Oasis
 		], [
-			this.Const.World.TerrainType.Hills
+			::Const.World.TerrainType.Hills
 		]);
 		this.buildAttachedLocation(this.Math.rand(1, 2), "scripts/entity/world/attached_location/goat_herd_oriental_location", [
-			this.Const.World.TerrainType.Steppe,
-			this.Const.World.TerrainType.Desert,
-			this.Const.World.TerrainType.Oasis
+			::Const.World.TerrainType.Steppe,
+			::Const.World.TerrainType.Desert,
+			::Const.World.TerrainType.Oasis
 		], []);
 	}
 

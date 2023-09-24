@@ -8,21 +8,21 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.nomad_ruins";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.southern_ruins";
 		this.m.CombatLocation.Template[1] = "tactical.desert_camp";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.Walls;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.Walls;
 		this.m.CombatLocation.CutDownTrees = false;
 		this.m.IsShowingDefenders = false;
 		this.m.IsShowingBanner = false;
-		this.setDefenderSpawnList(this.Const.World.Spawn.NomadDefenders);
+		this.setDefenderSpawnList(::Const.World.Spawn.NomadDefenders);
 		this.m.Resources = 150;
-		this.m.NamedShieldsList = this.Const.Items.NamedSouthernShields;
+		this.m.NamedShieldsList = ::Const.Items.NamedSouthernShields;
 	}
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.AncientRuins);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.AncientRuins);
 		this.location.onSpawned();
 	}
 
@@ -45,7 +45,7 @@
 			"tools/fire_bomb_item"
 		];
 
-		if (this.Const.DLC.Unhold)
+		if (::Const.DLC.Unhold)
 		{
 			treasure.extend(treasure);
 			treasure.extend(treasure);

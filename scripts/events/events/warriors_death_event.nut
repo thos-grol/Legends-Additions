@@ -93,12 +93,12 @@ this.warriors_death_event <- this.inherit("scripts/events/event", {
 
 					bro.worsenMood(0.5, "Dismayed that fallen comrades were left to rot on the battlefield");
 
-					if (bro.getMoodState() < this.Const.MoodState.Neutral)
+					if (bro.getMoodState() < ::Const.MoodState.Neutral)
 					{
 						this.List.push({
 							id = 10,
-							icon = this.Const.MoodStateIcon[bro.getMoodState()],
-							text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+							icon = ::Const.MoodStateIcon[bro.getMoodState()],
+							text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 						});
 					}
 				}
@@ -137,12 +137,12 @@ this.warriors_death_event <- this.inherit("scripts/events/event", {
 
 					bro.improveMood(0.5, "Glad to see fallen comrades receive a fine farewell");
 
-					if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+					if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 					{
 						this.List.push({
 							id = 10,
-							icon = this.Const.MoodStateIcon[bro.getMoodState()],
-							text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+							icon = ::Const.MoodStateIcon[bro.getMoodState()],
+							text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 						});
 					}
 				}
@@ -151,7 +151,7 @@ this.warriors_death_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]15[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]15[/color] Crowns"
 				});
 			}
 
@@ -188,12 +188,12 @@ this.warriors_death_event <- this.inherit("scripts/events/event", {
 
 					bro.improveMood(0.5, "Glad to see fallen comrades receive a fine farewell");
 
-					if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+					if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 					{
 						this.List.push({
 							id = 10,
-							icon = this.Const.MoodStateIcon[bro.getMoodState()],
-							text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+							icon = ::Const.MoodStateIcon[bro.getMoodState()],
+							text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 						});
 					}
 				}

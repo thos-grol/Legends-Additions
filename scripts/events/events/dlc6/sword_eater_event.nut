@@ -72,11 +72,11 @@ this.sword_eater_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]5[/color] Crowns"
+						text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]5[/color] Crowns"
 					}
 				];
 				_event.m.Town.getOwner().addPlayerRelation(5.0, "Local entertainers spread the word about you");
-				this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+				this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 			}
 
 		});
@@ -104,7 +104,7 @@ this.sword_eater_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]5[/color] Crowns"
+						text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]5[/color] Crowns"
 					}
 				];
 				local item = this.new("scripts/items/weapons/fencing_sword");
@@ -113,7 +113,7 @@ this.sword_eater_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 				_event.m.Town.getOwner().addPlayerRelation(-10.0, "Rumor is that a local entertainer was killed by one of your men");
 				this.World.Flags.set("IsSwordEaterWildmanDone", true);
@@ -124,7 +124,7 @@ this.sword_eater_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Desert || !this.Const.DLC.Unhold)
+		if (!::Const.DLC.Desert || !::Const.DLC.Unhold)
 		{
 			return;
 		}
@@ -171,7 +171,7 @@ this.sword_eater_event <- this.inherit("scripts/events/event", {
 				continue;
 			}
 
-			if (this.Const.DLC.Wildmen && !this.World.Flags.get("IsSwordEaterWildmanDone") && bro.getBackground().getID() == "background.wildman")
+			if (::Const.DLC.Wildmen && !this.World.Flags.get("IsSwordEaterWildmanDone") && bro.getBackground().getID() == "background.wildman")
 			{
 				candidates_wildman.push(bro);
 			}

@@ -48,9 +48,9 @@ this.determined_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	{
 		local actor = this.getContainer().getActor();
 
-		if (actor.getMoodState() >= this.Const.MoodState.Neutral && actor.getMoraleState() < this.Const.MoraleState.Confident)
+		if (actor.getMoodState() >= ::Const.MoodState.Neutral && actor.getMoraleState() < ::Const.MoraleState.Confident)
 		{
-			actor.setMoraleState(this.Const.MoraleState.Confident);
+			actor.setMoraleState(::Const.MoraleState.Confident);
 		}
 	}
 

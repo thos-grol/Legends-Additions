@@ -115,7 +115,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 						this.List.push({
 							id = 16,
 							icon = "ui/icons/melee_skill.png",
-							text = bro.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+							text = bro.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
 						});
 					}
 
@@ -124,13 +124,13 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 						this.List.push({
 							id = 16,
 							icon = "ui/icons/melee_defense.png",
-							text = bro.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + meleeDefense + "[/color] Melee Defense"
+							text = bro.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeDefense + "[/color] Melee Defense"
 						});
 					}
 
 					local injuryChance = 33;
 					if (bro.getSkills().hasSkill("trait.clumsy") || bro.getSkills().hasSkill("trait.drunkard")) injuryChance = injuryChance * 2.0;
-					if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat)) injuryChance = injuryChance * 0.5;
+					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat)) injuryChance = injuryChance * 0.5;
 					if (bro.getSkills().hasSkill("trait.dexterous")) injuryChance = injuryChance * 0.5;
 					if (this.Math.rand(1, 100) <= injuryChance)
 					{
@@ -145,7 +145,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 						}
 						else
 						{
-							local injury = bro.addInjury(this.Const.Injury.Accident1);
+							local injury = bro.addInjury(::Const.Injury.Accident1);
 							this.List.push({
 								id = 10,
 								icon = injury.getIcon(),
@@ -218,7 +218,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 						this.List.push({
 							id = 16,
 							icon = "ui/icons/ranged_skill.png",
-							text = bro.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + rangedSkill + "[/color] Ranged Skill"
+							text = bro.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + rangedSkill + "[/color] Ranged Skill"
 						});
 					}
 
@@ -303,7 +303,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 						this.List.push({
 							id = 16,
 							icon = "ui/icons/fatigue.png",
-							text = bro.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + stamina + "[/color] Max Fatigue"
+							text = bro.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + stamina + "[/color] Max Fatigue"
 						});
 					}
 
@@ -312,7 +312,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 						this.List.push({
 							id = 16,
 							icon = "ui/icons/initiative.png",
-							text = bro.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
+							text = bro.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
 						});
 					}
 
@@ -345,9 +345,9 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 
 		foreach( bro in brothers )
 		{
-			if (bro.getLevel() >= 7 && bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat) && !bro.getBackground().isBackgroundType(this.Const.BackgroundType.Noble)) candidates.push(bro);
+			if (bro.getLevel() >= 7 && bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat) && !bro.getBackground().isBackgroundType(::Const.BackgroundType.Noble)) candidates.push(bro);
 			else if (bro.getLevel() < 7
-				&& !bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat)
+				&& !bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat)
 				&& !bro.getFlags().has("event_combat_drill_2")) numRecruits = ++numRecruits;
 		}
 

@@ -37,13 +37,13 @@ this.legend_barbarian_vs_shieldmaiden <- this.inherit("scripts/events/event", {
 					_event.markAsLearnedS();
 					_event.m.Shieldmaiden.improveMood(1.0, "victorious in a brawl");
 					_event.m.Shieldmaiden.addLightInjury();
-					local injury1 = _event.m.Barbarian.addInjury(this.Const.Injury.Brawl);
+					local injury1 = _event.m.Barbarian.addInjury(::Const.Injury.Brawl);
 					_event.m.Barbarian.worsenMood(0.5, "Overpowered by " + _event.m.Shieldmaiden.getName());
 					this.List = [
 						{
 							id = 16,
 							icon = "ui/icons/melee_defense.png",
-							text = _event.m.Shieldmaiden.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + MeleeDefense + "[/color] Melee Defense"
+							text = _event.m.Shieldmaiden.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + MeleeDefense + "[/color] Melee Defense"
 						},
 						{
 							id = 10,
@@ -57,8 +57,8 @@ this.legend_barbarian_vs_shieldmaiden <- this.inherit("scripts/events/event", {
 						},
 						{
 							id = 10,
-							icon = this.Const.MoodStateIcon[_event.m.Barbarian.getMoodState()],
-							text = _event.m.Barbarian.getName() + this.Const.MoodStateEvent[_event.m.Barbarian.getMoodState()]
+							icon = ::Const.MoodStateIcon[_event.m.Barbarian.getMoodState()],
+							text = _event.m.Barbarian.getName() + ::Const.MoodStateEvent[_event.m.Barbarian.getMoodState()]
 						}
 					];
 				}
@@ -70,14 +70,14 @@ this.legend_barbarian_vs_shieldmaiden <- this.inherit("scripts/events/event", {
 					_event.m.Barbarian.getSkills().update();
 					_event.markAsLearnedB();
 					_event.m.Barbarian.improveMood(1.0, "victorious in a brawl");
-					local injury2 = _event.m.Shieldmaiden.addInjury(this.Const.Injury.Brawl);
+					local injury2 = _event.m.Shieldmaiden.addInjury(::Const.Injury.Brawl);
 					_event.m.Shieldmaiden.worsenMood(0.5, "Overpowered by " + _event.m.Barbarian.getName());
 					_event.m.Barbarian.addLightInjury();
 					this.List = [
 						{
 							id = 16,
 							icon = "ui/icons/melee_skill.png",
-							text = _event.m.Barbarian.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+							text = _event.m.Barbarian.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
 						},
 						{
 							id = 10,
@@ -91,8 +91,8 @@ this.legend_barbarian_vs_shieldmaiden <- this.inherit("scripts/events/event", {
 						},
 						{
 							id = 10,
-							icon = this.Const.MoodStateIcon[_event.m.Shieldmaiden.getMoodState()],
-							text = _event.m.Shieldmaiden.getName() + this.Const.MoodStateEvent[_event.m.Shieldmaiden.getMoodState()]
+							icon = ::Const.MoodStateIcon[_event.m.Shieldmaiden.getMoodState()],
+							text = _event.m.Shieldmaiden.getName() + ::Const.MoodStateEvent[_event.m.Shieldmaiden.getMoodState()]
 						}
 					];
 				}

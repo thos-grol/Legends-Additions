@@ -55,13 +55,13 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationFavor, "You lend some help ro build a mill");
+				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationFavor, "You lend some help ro build a mill");
 				this.World.Assets.addMoney(150);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]150[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]150[/color] Crowns"
 					}
 				];
 				local brothers = this.World.getPlayerRoster().getAll();
@@ -92,12 +92,12 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 						{
 							bro.improveMood(0.5, "Helped build a mill");
 
-							if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+							if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 							{
 								this.List.push({
 									id = 10,
-									icon = this.Const.MoodStateIcon[bro.getMoodState()],
-									text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+									icon = ::Const.MoodStateIcon[bro.getMoodState()],
+									text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 								});
 							}
 						}
@@ -158,13 +158,13 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(-this.Const.World.Assets.RelationFavor, "You pressed hard an important citizen to get paid for helping build a mill");
+				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(-::Const.World.Assets.RelationFavor, "You pressed hard an important citizen to get paid for helping build a mill");
 				this.World.Assets.addMoney(300);
 				this.List = [
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]300[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]300[/color] Crowns"
 					}
 				];
 				local brothers = this.World.getPlayerRoster().getAll();
@@ -190,12 +190,12 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 						{
 							bro.improveMood(0.5, "Helped build a mill");
 
-							if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+							if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 							{
 								this.List.push({
 									id = 10,
-									icon = this.Const.MoodStateIcon[bro.getMoodState()],
-									text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+									icon = ::Const.MoodStateIcon[bro.getMoodState()],
+									text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 								});
 							}
 						}
@@ -222,7 +222,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationFavor, "You lend some help to build a mill");
+				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationFavor, "You lend some help to build a mill");
 				local brothers = this.World.getPlayerRoster().getAll();
 
 				foreach( bro in brothers )
@@ -246,12 +246,12 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 						{
 							bro.worsenMood(1.0, "Helped build a mill without getting paid");
 
-							if (bro.getMoodState() < this.Const.MoodState.Neutral)
+							if (bro.getMoodState() < ::Const.MoodState.Neutral)
 							{
 								this.List.push({
 									id = 10,
-									icon = this.Const.MoodStateIcon[bro.getMoodState()],
-									text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+									icon = ::Const.MoodStateIcon[bro.getMoodState()],
+									text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 								});
 							}
 						}

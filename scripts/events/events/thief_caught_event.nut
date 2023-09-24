@@ -85,7 +85,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 						{
 							id = 10,
 							icon = "ui/icons/asset_ammo.png",
-							text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Ammunition"
+							text = "You lose [color=" + ::Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Ammunition"
 						}
 					];
 				}
@@ -97,7 +97,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 						{
 							id = 10,
 							icon = "ui/icons/asset_supplies.png",
-							text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Tools and Supplies"
+							text = "You lose [color=" + ::Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Tools and Supplies"
 						}
 					];
 				}
@@ -109,7 +109,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 						{
 							id = 10,
 							icon = "ui/icons/asset_medicine.png",
-							text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Medical Supplies"
+							text = "You lose [color=" + ::Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Medical Supplies"
 						}
 					];
 				}
@@ -207,7 +207,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 			{
 				local roster = this.World.getTemporaryRoster();
 				_event.m.Dude = roster.create("scripts/entity/tactical/player");
-				_event.m.Dude.setStartValuesEx(this.Const.CharacterThiefBackgrounds);
+				_event.m.Dude.setStartValuesEx(::Const.CharacterThiefBackgrounds);
 
 				_event.m.Dude.m.PerkPoints = 3;
 				_event.m.Dude.m.LevelUps = 3;
@@ -308,12 +308,12 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 
 						bro.worsenMood(1.0, "Felt for a thief killed by you");
 
-						if (bro.getMoodState() < this.Const.MoodState.Neutral)
+						if (bro.getMoodState() < ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -362,7 +362,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 						{
 							id = 10,
 							icon = "ui/icons/asset_ammo.png",
-							text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Ammunition"
+							text = "You lose [color=" + ::Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Ammunition"
 						}
 					];
 				}
@@ -374,7 +374,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 						{
 							id = 10,
 							icon = "ui/icons/asset_supplies.png",
-							text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Tools and Supplies"
+							text = "You lose [color=" + ::Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Tools and Supplies"
 						}
 					];
 				}
@@ -386,7 +386,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 						{
 							id = 10,
 							icon = "ui/icons/asset_medicine.png",
-							text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Medical Supplies"
+							text = "You lose [color=" + ::Const.UI.Color.NegativeEventValue + "]-" + amount + "[/color] Medical Supplies"
 						}
 					];
 				}

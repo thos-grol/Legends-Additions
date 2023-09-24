@@ -8,7 +8,7 @@ this.perk_mastery_crossbowc <- this.inherit("scripts/skills/perks/perk_mastery_c
 	{
 		this.perk_mastery_crossbow.create();
 		this.m.ID = "perk.mastery.crossbowc";
-		this.m.Name = this.Const.Strings.PerkName.SpecCrossbowC;
+		this.m.Name = ::Const.Strings.PerkName.SpecCrossbowC;
 	}
 });
 

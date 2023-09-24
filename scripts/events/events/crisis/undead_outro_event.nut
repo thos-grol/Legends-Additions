@@ -142,10 +142,10 @@ this.undead_outro_event <- this.inherit("scripts/events/event", {
 				if (this.World.Assets.isIronman())
 				{
 					local defeated = this.getPersistentStat("CrisesDefeatedOnIronman");
-					defeated = defeated | this.Const.World.GreaterEvilTypeBit.Undead;
+					defeated = defeated | ::Const.World.GreaterEvilTypeBit.Undead;
 					this.setPersistentStat("CrisesDefeatedOnIronman", defeated);
 
-					if (defeated == this.Const.World.GreaterEvilTypeBit.All)
+					if (defeated == ::Const.World.GreaterEvilTypeBit.All)
 					{
 						this.updateAchievement("Savior", 1, 1);
 					}

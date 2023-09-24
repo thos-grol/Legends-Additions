@@ -13,7 +13,7 @@ this.lead_by_example_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Description = "This character has been inspired by their commander.";
 		this.m.Icon = "ui/perks/lead_by_example.png";
 		this.m.IconMini = "perk_01_mini";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 		this.m.IsHidden = false;
@@ -36,31 +36,31 @@ this.lead_by_example_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.MeleeSkill + "[/color] Melee Attack"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.MeleeSkill + "[/color] Melee Attack"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_skill.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.RangedSkill + "[/color] Ranged Attack"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.RangedSkill + "[/color] Ranged Attack"
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.MeleeDefense + "[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.MeleeDefense + "[/color] Melee Defense"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.RangedDefense + "[/color] Ranged Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.RangedDefense + "[/color] Ranged Defense"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.Bravery + "[/color] Resolve"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.Bravery + "[/color] Resolve"
 			}
 		];
 	}

@@ -66,7 +66,7 @@ this.oracle_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+					local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
 
 					if (item != null && item.getID() == "accessory.legend_oms_amphora" || item.getID() == "accessory.legend_oms_fate" || item.getID() == "accessory.legend_oms_tome" || item.getID() == "accessory.legend_oms_paw" || item.getID() == "accessory.legend_oms_rib")
 					{
@@ -150,7 +150,7 @@ this.oracle_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]100[/color] Crowns"
+						text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]100[/color] Crowns"
 					});
 					this.List.push({
 						id = 10,
@@ -190,7 +190,7 @@ this.oracle_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 			}
 
@@ -311,7 +311,7 @@ this.oracle_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Unhold)
+		if (!::Const.DLC.Unhold)
 		{
 			return;
 		}
@@ -328,7 +328,7 @@ this.oracle_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (currentTile.Type == this.Const.World.TerrainType.Snow || currentTile.Type == this.Const.World.TerrainType.SnowyForest)
+		if (currentTile.Type == ::Const.World.TerrainType.Snow || currentTile.Type == ::Const.World.TerrainType.SnowyForest)
 		{
 			return;
 		}

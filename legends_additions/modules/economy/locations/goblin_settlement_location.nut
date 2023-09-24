@@ -8,18 +8,18 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.goblin_settlement";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.goblin_camp";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.Walls;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.Walls;
 		this.m.CombatLocation.CutDownTrees = true;
 		this.m.IsDespawningDefenders = false;
-		this.setDefenderSpawnList(this.Const.World.Spawn.GoblinBoss);
+		this.setDefenderSpawnList(::Const.World.Spawn.GoblinBoss);
 		this.m.Resources = 350;
 	}
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.GoblinBase);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.GoblinBase);
 		this.location.onSpawned();
 	}
 
@@ -55,11 +55,11 @@
 		this.location.onInit();
 		this.setVisibleInFogOfWar(true);
 		local body = this.addSprite("body");
-		local inSteppe = this.getTile().Type == this.Const.World.TerrainType.Steppe;
+		local inSteppe = this.getTile().Type == ::Const.World.TerrainType.Steppe;
 
 		for( local i = 0; i != 6; i = ++i )
 		{
-			if (this.getTile().hasNextTile(i) && this.getTile().getNextTile(i).Type == this.Const.World.TerrainType.Steppe)
+			if (this.getTile().hasNextTile(i) && this.getTile().getNextTile(i).Type == ::Const.World.TerrainType.Steppe)
 			{
 				inSteppe = true;
 				break;

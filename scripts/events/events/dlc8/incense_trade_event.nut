@@ -93,7 +93,7 @@ this.incense_trade_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + crowns + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + crowns + "[/color] Crowns"
 				});
 			}
 
@@ -142,7 +142,7 @@ this.incense_trade_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
 				});
 			}
 
@@ -202,7 +202,7 @@ this.incense_trade_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Paladins)
+		if (!::Const.DLC.Paladins)
 		{
 			return;
 		}
@@ -225,7 +225,7 @@ this.incense_trade_event <- this.inherit("scripts/events/event", {
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Snow)
+		if (currentTile.Type != ::Const.World.TerrainType.Snow)
 		{
 			return;
 		}

@@ -32,7 +32,7 @@ this.settlement_modifiers <- {
 		this.RecruitsMult = 0.75;
 		this.StablesMult = 1.0;
 
-		// if (this.World.Assets.getEconomicDifficulty() == this.Const.Difficulty.Legendary)
+		// if (this.World.Assets.getEconomicDifficulty() == ::Const.Difficulty.Legendary)
 		// {
 		// 	this.RecruitsMult = 0.5;
 		// }

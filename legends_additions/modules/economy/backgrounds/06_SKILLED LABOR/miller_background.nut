@@ -8,13 +8,13 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.MaceTree
+				::Const.Perks.MaceTree
 			],
 			Defense = [],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
@@ -35,7 +35,7 @@
 			items.equip(this.new("scripts/items/weapons/legend_shovel"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"linen_tunic",

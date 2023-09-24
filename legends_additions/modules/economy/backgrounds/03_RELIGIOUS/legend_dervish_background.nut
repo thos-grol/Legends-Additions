@@ -8,24 +8,24 @@
 
 		if ("Weapon" in this.m.PerkTreeDynamic)
 		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.ThrowingTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.CrossbowTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.StaffTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.SwordTree );
 		}
 	}
 
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
-		local armor = this.Const.World.Common.pickArmor([
+		local armor = ::Const.World.Common.pickArmor([
 			[
 				1,
 				"oriental/cloth_sash"
 			]
 		]);
 		items.equip(armor);
-		local helm = this.Const.World.Common.pickHelmet([
+		local helm = ::Const.World.Common.pickHelmet([
 			[
 				2,
 				"oriental/southern_head_wrap"

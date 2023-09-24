@@ -13,8 +13,8 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 		this.m.SoundOnUse = [
 			"sounds/combat/rotation_01.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.Any;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.Any;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -62,7 +62,7 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Can not be used while rooted[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Can not be used while rooted[/color]"
 			});
 		}
 
@@ -80,7 +80,7 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/special.png",
-				text = "Has a [color=" + this.Const.UI.Color.NegativeValue + "]"+chance + "%" +"[/color] chance to Stagger enemies"
+				text = "Has a [color=" + ::Const.UI.Color.NegativeValue + "]"+chance + "%" +"[/color] chance to Stagger enemies"
 			});
 			
 
@@ -92,7 +92,7 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Can not be used while rooted[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Can not be used while rooted[/color]"
 			});
 		}
 
@@ -101,7 +101,7 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 
 	function getCursorForTile( _tile )
 	{
-		return this.Const.UI.Cursor.Rotation;
+		return ::Const.UI.Cursor.Rotation;
 	}
 
 	function onAfterUpdate( _properties )

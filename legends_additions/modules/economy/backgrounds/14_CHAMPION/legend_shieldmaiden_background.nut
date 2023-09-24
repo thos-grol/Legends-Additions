@@ -9,23 +9,23 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.SpearTree,
-				this.Const.Perks.AxeTree,
-				this.Const.Perks.SwordTree,
-				this.Const.Perks.ShieldTree
+				::Const.Perks.SpearTree,
+				::Const.Perks.AxeTree,
+				::Const.Perks.SwordTree,
+				::Const.Perks.ShieldTree
 			],
 			Defense = [
-				this.Const.Perks.HeavyArmorTree,
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.HeavyArmorTree,
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree
+				::Const.Perks.TrainedTree
 			],
 			Enemy = [
-				this.Const.Perks.BarbarianTree
+				::Const.Perks.BarbarianTree
 			],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
@@ -35,7 +35,7 @@
 	{
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"leather_tunic"
@@ -53,7 +53,7 @@
 				"gambeson"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"open_leather_cap"

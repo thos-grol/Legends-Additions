@@ -1,7 +1,7 @@
 ::mods_hookExactClass("entity/world/locations/undead_ruins_location", function(o) {
 	o.getDescription = function()
 	{
-		local isSouthern = this.getTile().Type == this.Const.World.TerrainType.Desert || this.getTile().Type == this.Const.World.TerrainType.Steppe || this.getTile().Type == this.Const.World.TerrainType.Oasis || this.getTile().TacticalType == this.Const.World.TerrainTacticalType.DesertHills;
+		local isSouthern = this.getTile().Type == ::Const.World.TerrainType.Desert || this.getTile().Type == ::Const.World.TerrainType.Steppe || this.getTile().Type == ::Const.World.TerrainType.Oasis || this.getTile().TacticalType == ::Const.World.TerrainTacticalType.DesertHills;
 
 		if (isSouthern)
 		{
@@ -17,9 +17,9 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.undead_ruins";
-		this.m.LocationType = this.Const.World.LocationType.Lair | this.Const.World.LocationType.Passive;
+		this.m.LocationType = ::Const.World.LocationType.Lair | ::Const.World.LocationType.Passive;
 		this.m.CombatLocation.Template[0] = "tactical.ruins";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.Walls;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.Walls;
 		this.m.CombatLocation.CutDownTrees = false;
 		this.m.CombatLocation.ForceLineBattle = true;
 		this.m.CombatLocation.AdditionalRadius = 5;
@@ -29,15 +29,15 @@
 
 		if (r == 1)
 		{
-			this.setDefenderSpawnList(this.Const.World.Spawn.ZombiesAndGhosts);
+			this.setDefenderSpawnList(::Const.World.Spawn.ZombiesAndGhosts);
 		}
 		else if (r == 2)
 		{
-			this.setDefenderSpawnList(this.Const.World.Spawn.ZombiesAndGhouls);
+			this.setDefenderSpawnList(::Const.World.Spawn.ZombiesAndGhouls);
 		}
 		else if (r == 3)
 		{
-			this.setDefenderSpawnList(this.Const.World.Spawn.Necromancer);
+			this.setDefenderSpawnList(::Const.World.Spawn.Necromancer);
 		}
 
 		this.m.Resources = 180;
@@ -45,7 +45,7 @@
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.Ruins);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.Ruins);
 		this.location.onSpawned();
 	}
 
@@ -62,7 +62,7 @@
 			"loot/golden_chalice_item"
 		];
 
-		if (this.Const.DLC.Unhold)
+		if (::Const.DLC.Unhold)
 		{
 			treasure.extend(treasure);
 			treasure.extend(treasure);
@@ -86,14 +86,14 @@
 	{
 		this.location.onInit();
 		local body = this.addSprite("body");
-		local isSouthern = this.getTile().Type == this.Const.World.TerrainType.Desert || this.getTile().Type == this.Const.World.TerrainType.Steppe || this.getTile().Type == this.Const.World.TerrainType.Oasis || this.getTile().TacticalType == this.Const.World.TerrainTacticalType.DesertHills;
+		local isSouthern = this.getTile().Type == ::Const.World.TerrainType.Desert || this.getTile().Type == ::Const.World.TerrainType.Steppe || this.getTile().Type == ::Const.World.TerrainType.Oasis || this.getTile().TacticalType == ::Const.World.TerrainTacticalType.DesertHills;
 
 		if (isSouthern)
 		{
 			body.setBrush("world_desert_ruins_0" + this.Math.rand(1, 2));
-			this.setDefenderSpawnList(this.Const.World.Spawn.UndeadArmy);
+			this.setDefenderSpawnList(::Const.World.Spawn.UndeadArmy);
 
-			if (this.Const.DLC.Desert)
+			if (::Const.DLC.Desert)
 			{
 				this.m.CombatLocation.Template[0] = "tactical.southern_ruins";
 			}

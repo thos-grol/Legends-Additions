@@ -8,16 +8,16 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.CleaverTree
+				::Const.Perks.CleaverTree
 			],
 			Defense = [],
 			Traits = [
-				this.Const.Perks.ViciousTree
+				::Const.Perks.ViciousTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.ButcherClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.ButcherClassTree
 			],
 			Magic = []
 		};
@@ -43,7 +43,7 @@
 		local items = this.getContainer().getActor().getItems();
 		local r;
 		items.equip(this.new("scripts/items/weapons/butchers_cleaver"));
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"butcher_apron"

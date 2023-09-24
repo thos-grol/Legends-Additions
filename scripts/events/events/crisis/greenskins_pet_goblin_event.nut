@@ -119,7 +119,7 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.HurtBro.getImagePath());
-				local injury = _event.m.HurtBro.addInjury(this.Const.Injury.PiercedArm);
+				local injury = _event.m.HurtBro.addInjury(::Const.Injury.PiercedArm);
 				this.List = [
 					{
 						id = 10,
@@ -161,7 +161,7 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 				item = this.new("scripts/items/supplies/roots_and_berries_item");
 				this.World.Assets.getStash().add(item);
@@ -233,7 +233,7 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 				item = this.new("scripts/items/supplies/roots_and_berries_item");
 				this.World.Assets.getStash().add(item);
@@ -269,7 +269,7 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 10,
 						icon = "ui/icons/asset_medicine.png",
-						text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]-2[/color] Medical Supplies."
+						text = "You lose [color=" + ::Const.UI.Color.NegativeEventValue + "]-2[/color] Medical Supplies."
 					});
 				}
 
@@ -286,7 +286,7 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 				}
 				else if (r == 3)
 				{
-					item = this.Const.World.Common.pickHelmet([
+					item = ::Const.World.Common.pickHelmet([
 						[
 							1,
 							"named/wolf_helmet"
@@ -295,7 +295,7 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 				}
 				else if (r == 4)
 				{
-					item = this.Const.World.Common.pickArmor([
+					item = ::Const.World.Common.pickArmor([
 						[
 							1,
 							"named/black_leather_armor"
@@ -336,14 +336,14 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 				item = this.new("scripts/items/weapons/knife");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 				item = this.new("scripts/items/supplies/roots_and_berries_item");
 				this.World.Assets.getStash().add(item);
@@ -366,7 +366,7 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Forest && currentTile.Type != this.Const.World.TerrainType.LeaveForest && currentTile.Type != this.Const.World.TerrainType.AutumnForest)
+		if (currentTile.Type != ::Const.World.TerrainType.Forest && currentTile.Type != ::Const.World.TerrainType.LeaveForest && currentTile.Type != ::Const.World.TerrainType.AutumnForest)
 		{
 			return;
 		}
@@ -389,7 +389,7 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 
 		foreach( bro in brothers )
 		{
-			if (!bro.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury))
+			if (!bro.getSkills().hasSkillOfType(::Const.SkillType.TemporaryInjury))
 			{
 				candidates.push(bro);
 			}

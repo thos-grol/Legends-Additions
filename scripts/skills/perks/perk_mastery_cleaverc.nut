@@ -8,7 +8,7 @@ this.perk_mastery_cleaverc <- this.inherit("scripts/skills/perks/perk_mastery_cl
 	{
 		this.perk_mastery_cleaver.create();
 		this.m.ID = "perk.mastery.cleaverc";
-		this.m.Name = this.Const.Strings.PerkName.SpecCleaverC;
+		this.m.Name = ::Const.Strings.PerkName.SpecCleaverC;
 	}
 });
 

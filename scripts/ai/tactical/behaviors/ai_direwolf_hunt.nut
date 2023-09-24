@@ -9,8 +9,8 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 	},
 	function create()
 	{
-		this.m.ID = this.Const.AI.Behavior.ID.Teleport;
-		this.m.Order = this.Const.AI.Behavior.Order.Teleport;
+		this.m.ID = ::Const.AI.Behavior.ID.Teleport;
+		this.m.Order = ::Const.AI.Behavior.Order.Teleport;
 		this.m.IsThreaded = true;
 		this.behavior.create();
 	}
@@ -22,14 +22,14 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 		this.m.TargetTile = null;
 		local score = this.getProperties().BehaviorMult[this.m.ID];
 
-		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP) return this.Const.AI.Behavior.Score.Zero;
-		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
-		if (!this.getAgent().hasKnownOpponent()) return this.Const.AI.Behavior.Score.Zero;
-		if (_entity.getCurrentProperties().IsRooted) return this.Const.AI.Behavior.Score.Zero;
+		if (_entity.getActionPoints() < ::Const.Movement.AutoEndTurnBelowAP) return ::Const.AI.Behavior.Score.Zero;
+		if (_entity.getMoraleState() == ::Const.MoraleState.Fleeing) return ::Const.AI.Behavior.Score.Zero;
+		if (!this.getAgent().hasKnownOpponent()) return ::Const.AI.Behavior.Score.Zero;
+		if (_entity.getCurrentProperties().IsRooted) return ::Const.AI.Behavior.Score.Zero;
 
 		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
 
-		if (this.m.Skill == null) return this.Const.AI.Behavior.Score.Zero;
+		if (this.m.Skill == null) return ::Const.AI.Behavior.Score.Zero;
 		this.m.Skill.m.HuntTile = null;
 
 		local opponents = this.getAgent().getKnownOpponents();
@@ -39,10 +39,10 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 			yield null;
 		}
 
-		if (this.m.TargetTile == null) return this.Const.AI.Behavior.Score.Zero;
+		if (this.m.TargetTile == null) return ::Const.AI.Behavior.Score.Zero;
 
 		local hunt_target = pick_hunt(_entity);
-		if (hunt_target == null) return this.Const.AI.Behavior.Score.Zero;
+		if (hunt_target == null) return ::Const.AI.Behavior.Score.Zero;
 		this.m.Skill.m.HuntTile = hunt_target;
 
 		return 100000000;
@@ -58,7 +58,7 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 			if (this.m.TargetTile.IsVisibleForPlayer && _entity.isHiddenToPlayer())
 			{
 				_entity.setDiscovered(true);
-				_entity.getTile().addVisibilityForFaction(this.Const.Faction.Player);
+				_entity.getTile().addVisibilityForFaction(::Const.Faction.Player);
 			}
 
 			return false;

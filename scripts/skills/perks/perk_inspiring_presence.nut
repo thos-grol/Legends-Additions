@@ -20,11 +20,11 @@ this.perk_inspiring_presence <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.inspiring_presence";
-		this.m.Name = this.Const.Strings.PerkName.InspiringPresence;
-		this.m.Description = this.Const.Strings.PerkDescription.InspiringPresence;
+		this.m.Name = ::Const.Strings.PerkName.InspiringPresence;
+		this.m.Description = ::Const.Strings.PerkDescription.InspiringPresence;
 		this.m.Icon = "ui/perks/perk_28.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;

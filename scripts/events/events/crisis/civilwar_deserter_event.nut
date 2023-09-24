@@ -27,19 +27,19 @@ this.civilwar_deserter_event <- this.inherit("scripts/events/event", {
 						_event.m.Dude.getBackground().m.RawDescription = "Once a soldier of a noble army, %name% was almost hanged for refusing orders, until rescued by you and the %companyname%.";
 						_event.m.Dude.getBackground().buildDescription(true);
 
-						if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
+						if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
 						{
-							_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
+							_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).removeSelf();
 						}
 
-						if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null)
+						if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null)
 						{
-							_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).removeSelf();
+							_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand).removeSelf();
 						}
 
-						if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head) != null)
+						if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head) != null)
 						{
-							_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
+							_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head).removeSelf();
 						}
 
 						if (this.Math.rand(1, 100) <= 50)
@@ -99,7 +99,7 @@ this.civilwar_deserter_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationUnitKilled);
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationUnitKilled);
 				this.Characters.push(_event.m.Dude.getImagePath());
 			}
 
@@ -135,7 +135,7 @@ this.civilwar_deserter_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Killed one of their men");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Killed one of their men");
 				this.Characters.push(_event.m.Dude.getImagePath());
 			}
 
@@ -167,12 +167,12 @@ this.civilwar_deserter_event <- this.inherit("scripts/events/event", {
 					{
 						bro.worsenMood(0.75, "You didn\'t help a deserting lieutenant");
 
-						if (bro.getMoodState() < this.Const.MoodState.Neutral)
+						if (bro.getMoodState() < ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -196,7 +196,7 @@ this.civilwar_deserter_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 		{
 			return;
 		}

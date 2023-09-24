@@ -8,16 +8,16 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.HammerTree
+				::Const.Perks.HammerTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.PickaxeClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.PickaxeClassTree
 			],
 			Magic = []
 		};
@@ -42,13 +42,13 @@
 
 		local items = this.getContainer().getActor().getItems();
 		items.equip(this.new("scripts/items/weapons/pickaxe"));
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"sackcloth"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				""

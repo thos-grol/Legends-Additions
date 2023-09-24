@@ -199,7 +199,7 @@
 			}
 		];
 
-		if (this.Const.DLC.Unhold)
+		if (::Const.DLC.Unhold)
 		{
 			list.extend([
 				{
@@ -285,7 +285,7 @@
 			]);
 		}
 
-		if (this.Const.DLC.Wildmen)
+		if (::Const.DLC.Wildmen)
 		{
 			if (this.m.Settlement.getTile().SquareCoords.Y > this.World.getMapSize().Y * 0.7)
 			{
@@ -310,7 +310,7 @@
 			}
 		}
 
-		foreach( i in this.Const.Items.NamedMeleeWeapons )
+		foreach( i in ::Const.Items.NamedMeleeWeapons )
 		{
 			if (this.Math.rand(1, 100) <= 30)
 			{

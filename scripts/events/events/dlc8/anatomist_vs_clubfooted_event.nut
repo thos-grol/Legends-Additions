@@ -132,7 +132,7 @@ this.anatomist_vs_clubfooted_event <- this.inherit("scripts/events/event", {
 					icon = injury.getIcon(),
 					text = _event.m.Clubfooted.getName() + " suffers " + injury.getNameOnly()
 				});
-				_event.m.Clubfooted.worsenMood(this.Const.MoodChange.PermanentInjury, "Experimented on by a madman");
+				_event.m.Clubfooted.worsenMood(::Const.MoodChange.PermanentInjury, "Experimented on by a madman");
 				this.Characters.push(_event.m.Clubfooted.getImagePath());
 			}
 
@@ -162,7 +162,7 @@ this.anatomist_vs_clubfooted_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Paladins) return;
+		if (!::Const.DLC.Paladins) return;
 		if (!::World.Statistics.getFlags().has("retinue_anatomist") 
 			|| !::World.Statistics.getFlags().get("retinue_anatomist") ) return;
 

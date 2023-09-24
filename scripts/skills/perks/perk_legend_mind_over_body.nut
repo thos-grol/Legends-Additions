@@ -17,11 +17,11 @@ this.perk_legend_mind_over_body <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.legend_mind_over_body";
-		this.m.Name = this.Const.Strings.PerkName.LegendMindOverBody;
-		this.m.Description = this.Const.Strings.PerkDescription.LegendMindOverBody;
+		this.m.Name = ::Const.Strings.PerkName.LegendMindOverBody;
+		this.m.Description = ::Const.Strings.PerkDescription.LegendMindOverBody;
 		this.m.Icon = "ui/perks/mind_over_body.png";
-		this.m.Type = this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.Last;
+		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.Last;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -72,7 +72,7 @@ this.perk_legend_mind_over_body <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "All your fatigue costs are reduced by [color=" + this.Const.UI.Color.PositiveValue + "]" + reduction + "%[/color]."
+				text = "All your fatigue costs are reduced by [color=" + ::Const.UI.Color.PositiveValue + "]" + reduction + "%[/color]."
 			});
 		}
 		else

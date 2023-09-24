@@ -8,13 +8,13 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.black_monolith";
-		this.m.LocationType = this.Const.World.LocationType.Lair | this.Const.World.LocationType.Unique;
+		this.m.LocationType = ::Const.World.LocationType.Lair | ::Const.World.LocationType.Unique;
 		this.m.IsShowingDefenders = false;
 		this.m.IsShowingBanner = false;
 		this.m.VisibilityMult = 0.8;
 		this.m.Resources = 500;
-		this.m.NamedWeaponsList = this.Const.Items.NamedUndeadWeapons;
-		this.m.NamedShieldsList = this.Const.Items.NamedUndeadShields;
+		this.m.NamedWeaponsList = ::Const.Items.NamedUndeadWeapons;
+		this.m.NamedShieldsList = ::Const.Items.NamedUndeadShields;
 		this.m.OnEnter = "event.location.monolith_enter";
 	}
 
@@ -25,64 +25,64 @@
 
 		for( local i = 0; i < 8; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.SkeletonMedium
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.SkeletonMedium
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 7; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.SkeletonMediumPolearm
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.SkeletonMediumPolearm
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 5; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.Vampire
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.Vampire
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 2; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.VampireLOW
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.VampireLOW
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 9; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.SkeletonHeavy
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.SkeletonHeavy
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 8; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.SkeletonHeavyPolearm
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.SkeletonHeavyPolearm
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 5; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.SkeletonHeavyBodyguard
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.SkeletonHeavyBodyguard
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 3; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.SkeletonPriest
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.SkeletonPriest
 			}, false);
 			i = ++i;
 		}
@@ -98,44 +98,44 @@
 
 			if (r == 1)
 			{
-				this.Const.World.Common.addTroop(this, {
-					Type = this.Const.World.Spawn.Troops.SkeletonMedium
+				::Const.World.Common.addTroop(this, {
+					Type = ::Const.World.Spawn.Troops.SkeletonMedium
 				}, false);
 			}
 			else if (r == 2)
 			{
-				this.Const.World.Common.addTroop(this, {
-					Type = this.Const.World.Spawn.Troops.SkeletonMediumPolearm
+				::Const.World.Common.addTroop(this, {
+					Type = ::Const.World.Spawn.Troops.SkeletonMediumPolearm
 				}, false);
 			}
 			else if (r == 3)
 			{
-				this.Const.World.Common.addTroop(this, {
-					Type = this.Const.World.Spawn.Troops.Vampire
+				::Const.World.Common.addTroop(this, {
+					Type = ::Const.World.Spawn.Troops.Vampire
 				}, false);
 			}
 			else if (r == 4)
 			{
-				this.Const.World.Common.addTroop(this, {
-					Type = this.Const.World.Spawn.Troops.VampireLOW
+				::Const.World.Common.addTroop(this, {
+					Type = ::Const.World.Spawn.Troops.VampireLOW
 				}, false);
 			}
 			else if (r == 5)
 			{
-				this.Const.World.Common.addTroop(this, {
-					Type = this.Const.World.Spawn.Troops.SkeletonHeavy
+				::Const.World.Common.addTroop(this, {
+					Type = ::Const.World.Spawn.Troops.SkeletonHeavy
 				}, false);
 			}
 			else if (r == 6)
 			{
-				this.Const.World.Common.addTroop(this, {
-					Type = this.Const.World.Spawn.Troops.SkeletonHeavyPolearm
+				::Const.World.Common.addTroop(this, {
+					Type = ::Const.World.Spawn.Troops.SkeletonHeavyPolearm
 				}, false);
 			}
 			else if (r == 7)
 			{
-				this.Const.World.Common.addTroop(this, {
-					Type = this.Const.World.Spawn.Troops.SkeletonPriest
+				::Const.World.Common.addTroop(this, {
+					Type = ::Const.World.Spawn.Troops.SkeletonPriest
 				}, false);
 			}
 
@@ -166,7 +166,7 @@
 			"loot/ancient_gold_coins_item",
 			"misc/legend_ancient_scroll_item"
 		], _lootTable);
-		_lootTable.push(this.Const.World.Common.pickArmor([
+		_lootTable.push(::Const.World.Common.pickArmor([
 			[
 				1,
 				"legendary/emperors_armor"

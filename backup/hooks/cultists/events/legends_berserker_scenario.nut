@@ -18,7 +18,7 @@
 			"legend_berserker_commander_background"
 		]);
 		bros[0].getSkills().add(this.new("scripts/skills/traits/player_character_trait"));
-		this.addScenarioPerk(bros[0].getBackground(), this.Const.Perks.PerkDefs.Berserk);
+		this.addScenarioPerk(bros[0].getBackground(), ::Const.Perks.PerkDefs.Berserk);
 		bros[0].getFlags().set("IsPlayerCharacter", true);
 		bros[0].setVeteranPerks(2);
 		local talents = bros[0].getTalents();

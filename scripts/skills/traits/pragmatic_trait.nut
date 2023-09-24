@@ -43,26 +43,26 @@ this.pragmatic_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] Melee Skill"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5%[/color] Melee Skill"
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/ranged_skill.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] Ranged Skill"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5%[/color] Ranged Skill"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/chance_to_hit_head.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] Chance To Hit Head"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-10%[/color] Chance To Hit Head"
 			}
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		_properties.HitChance[this.Const.BodyPart.Head] -= 10;
+		_properties.HitChance[::Const.BodyPart.Head] -= 10;
 		_properties.MeleeSkillMult *= 1.05;
 		_properties.RangedSkillMult *= 1.05;
 	}

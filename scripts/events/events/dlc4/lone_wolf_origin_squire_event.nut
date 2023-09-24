@@ -58,11 +58,11 @@ this.lone_wolf_origin_squire_event <- this.inherit("scripts/events/event", {
 				]);
 				_event.m.Dude.getBackground().m.RawDescription = "You met %name% in " + _event.m.Town.getName() + " where he volunteered to be your squire. He probably had no idea what he was getting into back then.";
 				_event.m.Dude.getBackground().buildDescription(true);
-				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand));
-				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand));
-				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head));
-				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Body));
-				_event.m.Dude.getItems().equip(this.Const.World.Common.pickArmor([
+				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand));
+				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand));
+				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head));
+				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Body));
+				_event.m.Dude.getItems().equip(::Const.World.Common.pickArmor([
 					[
 						1,
 						"linen_tunic"
@@ -206,7 +206,7 @@ this.lone_wolf_origin_squire_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Wildmen)
+		if (!::Const.DLC.Wildmen)
 		{
 			return;
 		}

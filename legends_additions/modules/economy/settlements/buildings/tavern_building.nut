@@ -13,8 +13,8 @@
 		}
 
 		local distance = this.m.Location != null && !this.m.Location.isNull() ? this.m.Settlement.getTile().getDistanceTo(this.m.Location.getTile()) : 0;
-		distance = this.Const.Strings.Distance[this.Math.min(this.Const.Strings.Distance.len() - 1, distance / 30.0 * (this.Const.Strings.Distance.len() - 1))];
-		local mercCompany = this.World.EntityManager.getMercenaries().len() != 0 ? this.World.EntityManager.getMercenaries()[this.Math.rand(0, this.World.EntityManager.getMercenaries().len() - 1)].getName() : this.Const.Strings.MercenaryCompanyNames[this.Math.rand(0, this.Const.Strings.MercenaryCompanyNames.len() - 1)];
+		distance = ::Const.Strings.Distance[this.Math.min(::Const.Strings.Distance.len() - 1, distance / 30.0 * (::Const.Strings.Distance.len() - 1))];
+		local mercCompany = this.World.EntityManager.getMercenaries().len() != 0 ? this.World.EntityManager.getMercenaries()[this.Math.rand(0, this.World.EntityManager.getMercenaries().len() - 1)].getName() : ::Const.Strings.MercenaryCompanyNames[this.Math.rand(0, ::Const.Strings.MercenaryCompanyNames.len() - 1)];
 		local text;
 		local vars = [
 			[
@@ -43,11 +43,11 @@
 			],
 			[
 				"direction",
-				this.m.Location != null && !this.m.Location.isNull() ? this.Const.Strings.Direction8[this.m.Settlement.getTile().getDirection8To(this.m.Location.getTile())] : ""
+				this.m.Location != null && !this.m.Location.isNull() ? ::Const.Strings.Direction8[this.m.Settlement.getTile().getDirection8To(this.m.Location.getTile())] : ""
 			],
 			[
 				"terrain",
-				this.m.Location != null && !this.m.Location.isNull() ? this.Const.Strings.Terrain[this.m.Location.getTile().Type] : ""
+				this.m.Location != null && !this.m.Location.isNull() ? ::Const.Strings.Terrain[this.m.Location.getTile().Type] : ""
 			],
 			[
 				"distance",
@@ -55,15 +55,15 @@
 			],
 			[
 				"randomname",
-				this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]
+				::Const.Strings.CharacterNames[this.Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]
 			],
 			[
 				"randomfemalename",
-				this.Const.Strings.CharacterNamesFemale[this.Math.rand(0, this.Const.Strings.CharacterNamesFemale.len() - 1)]
+				::Const.Strings.CharacterNamesFemale[this.Math.rand(0, ::Const.Strings.CharacterNamesFemale.len() - 1)]
 			],
 			[
 				"randomnoble",
-				this.Const.Strings.KnightNames[this.Math.rand(0, this.Const.Strings.KnightNames.len() - 1)]
+				::Const.Strings.KnightNames[this.Math.rand(0, ::Const.Strings.KnightNames.len() - 1)]
 			],
 			[
 				"randomtown",
@@ -108,7 +108,7 @@
 
 			this.World.Assets.addMoney(this.Math.round(-20 * this.m.Settlement.getBuyPriceMult()));
 			++this.m.RumorsGiven;
-			this.Sound.play(this.Const.Sound.TavernRumor[this.Math.rand(0, this.Const.Sound.TavernRumor.len() - 1)]);
+			this.Sound.play(::Const.Sound.TavernRumor[this.Math.rand(0, ::Const.Sound.TavernRumor.len() - 1)]);
 		}
 
 		if (this.m.RumorsGiven > 3)
@@ -134,7 +134,7 @@
 					this.World.FactionManager.getFaction(this.m.Settlement.getFactions()[0]).addPlayerRelation(0.1);
 				}
 
-				rumor = rumor + this.Const.Strings.PayTavernRumorsIntro[this.Math.rand(0, this.Const.Strings.PayTavernRumorsIntro.len() - 1)];
+				rumor = rumor + ::Const.Strings.PayTavernRumorsIntro[this.Math.rand(0, ::Const.Strings.PayTavernRumorsIntro.len() - 1)];
 			}
 			else if (this.m.LastRumor != "")
 			{
@@ -152,21 +152,21 @@
 			{
 				if (this.World.FactionManager.isGreaterEvil())
 				{
-					candidates.extend(this.Const.Strings.RumorsGreaterEvil[this.World.FactionManager.getGreaterEvilType()]);
-					candidates.extend(this.Const.Strings.RumorsGreaterEvil[this.World.FactionManager.getGreaterEvilType()]);
+					candidates.extend(::Const.Strings.RumorsGreaterEvil[this.World.FactionManager.getGreaterEvilType()]);
+					candidates.extend(::Const.Strings.RumorsGreaterEvil[this.World.FactionManager.getGreaterEvilType()]);
 				}
 				else
 				{
-					candidates.extend(this.Const.Strings.RumorsGeneral);
+					candidates.extend(::Const.Strings.RumorsGeneral);
 				}
 
 				if (this.m.Settlement.isMilitary())
 				{
-					candidates.extend(this.Const.Strings.RumorsMilitary);
+					candidates.extend(::Const.Strings.RumorsMilitary);
 				}
 				else
 				{
-					candidates.extend(this.Const.Strings.RumorsCivilian);
+					candidates.extend(::Const.Strings.RumorsCivilian);
 				}
 
 				candidates.extend(this.m.Settlement.getRumors());
@@ -196,20 +196,20 @@
 
 					if (best != null)
 					{
-						candidates.extend(this.Const.Strings.RumorsContract);
+						candidates.extend(::Const.Strings.RumorsContract);
 						this.m.ContractSettlement = this.WeakTableRef(best);
 					}
 					else
 					{
-						candidates.extend(this.Const.Strings.RumorsGeneral);
+						candidates.extend(::Const.Strings.RumorsGeneral);
 
 						if (this.m.Settlement.isMilitary())
 						{
-							candidates.extend(this.Const.Strings.RumorsMilitary);
+							candidates.extend(::Const.Strings.RumorsMilitary);
 						}
 						else
 						{
-							candidates.extend(this.Const.Strings.RumorsCivilian);
+							candidates.extend(::Const.Strings.RumorsCivilian);
 						}
 
 						candidates.extend(this.m.Settlement.getRumors());
@@ -223,7 +223,7 @@
 
 				foreach( s in this.World.EntityManager.getLocations() )
 				{
-					if (s.isLocationType(this.Const.World.LocationType.AttachedLocation) || s.isLocationType(this.Const.World.LocationType.Unique) || s.isAlliedWithPlayer())
+					if (s.isLocationType(::Const.World.LocationType.AttachedLocation) || s.isLocationType(::Const.World.LocationType.Unique) || s.isAlliedWithPlayer())
 					{
 						continue;
 					}
@@ -239,20 +239,20 @@
 
 				if (best != null)
 				{
-					candidates.extend(this.Const.Strings.RumorsLocation);
+					candidates.extend(::Const.Strings.RumorsLocation);
 					this.m.Location = this.WeakTableRef(best);
 				}
 				else
 				{
-					candidates.extend(this.Const.Strings.RumorsGeneral);
+					candidates.extend(::Const.Strings.RumorsGeneral);
 
 					if (this.m.Settlement.isMilitary())
 					{
-						candidates.extend(this.Const.Strings.RumorsMilitary);
+						candidates.extend(::Const.Strings.RumorsMilitary);
 					}
 					else
 					{
-						candidates.extend(this.Const.Strings.RumorsCivilian);
+						candidates.extend(::Const.Strings.RumorsCivilian);
 					}
 
 					candidates.extend(this.m.Settlement.getRumors());
@@ -294,53 +294,53 @@
 					local f = this.World.FactionManager.getFaction(best.getFaction());
 					local category = 0;
 
-					if (best.getLoot().getItems()[0].isItemType(this.Const.Items.ItemType.Shield))
+					if (best.getLoot().getItems()[0].isItemType(::Const.Items.ItemType.Shield))
 					{
 						category = 1;
 					}
-					else if (best.getLoot().getItems()[0].isItemType(this.Const.Items.ItemType.Armor) || best.getLoot().getItems()[0].isItemType(this.Const.Items.ItemType.Helmet))
+					else if (best.getLoot().getItems()[0].isItemType(::Const.Items.ItemType.Armor) || best.getLoot().getItems()[0].isItemType(::Const.Items.ItemType.Helmet))
 					{
 						category = 2;
 					}
 
-					if (f.getType() == this.Const.FactionType.Orcs)
+					if (f.getType() == ::Const.FactionType.Orcs)
 					{
-						candidates.extend(this.Const.Strings.RumorsItemsOrcs[category]);
+						candidates.extend(::Const.Strings.RumorsItemsOrcs[category]);
 					}
-					else if (f.getType() == this.Const.FactionType.Goblins)
+					else if (f.getType() == ::Const.FactionType.Goblins)
 					{
-						candidates.extend(this.Const.Strings.RumorsItemsGoblins[category]);
+						candidates.extend(::Const.Strings.RumorsItemsGoblins[category]);
 					}
-					else if (f.getType() == this.Const.FactionType.Undead || f.getType() == this.Const.FactionType.Zombies)
+					else if (f.getType() == ::Const.FactionType.Undead || f.getType() == ::Const.FactionType.Zombies)
 					{
-						candidates.extend(this.Const.Strings.RumorsItemsUndead[category]);
+						candidates.extend(::Const.Strings.RumorsItemsUndead[category]);
 					}
-					else if (f.getType() == this.Const.FactionType.Barbarians)
+					else if (f.getType() == ::Const.FactionType.Barbarians)
 					{
-						candidates.extend(this.Const.Strings.RumorsItemsBarbarians[category]);
+						candidates.extend(::Const.Strings.RumorsItemsBarbarians[category]);
 					}
-					else if (f.getType() == this.Const.FactionType.OrientalBandits)
+					else if (f.getType() == ::Const.FactionType.OrientalBandits)
 					{
-						candidates.extend(this.Const.Strings.RumorsItemsNomads[category]);
+						candidates.extend(::Const.Strings.RumorsItemsNomads[category]);
 					}
 					else
 					{
-						candidates.extend(this.Const.Strings.RumorsItemsBandits[category]);
+						candidates.extend(::Const.Strings.RumorsItemsBandits[category]);
 					}
 
 					this.m.Location = this.WeakTableRef(best);
 				}
 				else
 				{
-					candidates.extend(this.Const.Strings.RumorsGeneral);
+					candidates.extend(::Const.Strings.RumorsGeneral);
 
 					if (this.m.Settlement.isMilitary())
 					{
-						candidates.extend(this.Const.Strings.RumorsMilitary);
+						candidates.extend(::Const.Strings.RumorsMilitary);
 					}
 					else
 					{
-						candidates.extend(this.Const.Strings.RumorsCivilian);
+						candidates.extend(::Const.Strings.RumorsCivilian);
 					}
 
 					candidates.extend(this.m.Settlement.getRumors());
@@ -380,15 +380,15 @@
 				}
 				else
 				{
-					candidates.extend(this.Const.Strings.RumorsGeneral);
+					candidates.extend(::Const.Strings.RumorsGeneral);
 
 					if (this.m.Settlement.isMilitary())
 					{
-						candidates.extend(this.Const.Strings.RumorsMilitary);
+						candidates.extend(::Const.Strings.RumorsMilitary);
 					}
 					else
 					{
-						candidates.extend(this.Const.Strings.RumorsCivilian);
+						candidates.extend(::Const.Strings.RumorsCivilian);
 					}
 
 					candidates.extend(this.m.Settlement.getRumors());
@@ -425,12 +425,12 @@
 			return null;
 		}
 
-		this.Sound.play(this.Const.Sound.TavernRound[this.Math.rand(0, this.Const.Sound.TavernRound.len() - 1)]);
+		this.Sound.play(::Const.Sound.TavernRound[this.Math.rand(0, ::Const.Sound.TavernRound.len() - 1)]);
 		this.World.Assets.addMoney(this.Math.round(bros.len() * -5 * this.m.Settlement.getBuyPriceMult()));
 		++this.m.RoundsGiven;
 		this.m.LastRoundTime = this.Time.getVirtualTimeF();
 		local result = {
-			Intro = this.Const.Strings.PayTavernRoundIntro[this.Math.rand(0, this.Const.Strings.PayTavernRoundIntro.len() - 1)],
+			Intro = ::Const.Strings.PayTavernRoundIntro[this.Math.rand(0, ::Const.Strings.PayTavernRoundIntro.len() - 1)],
 			Result = []
 		};
 
@@ -515,10 +515,10 @@
 			if ((b.getLastDrinkTime() == 0 || this.Time.getVirtualTimeF() - b.getLastDrinkTime() > this.World.getTime().SecondsPerDay) && this.Math.rand(1, 100) <= 35)
 			{
 				b.setLastDrinkTime(this.Time.getVirtualTimeF());
-				b.improveMood(this.Const.MoodChange.DrunkAtTavern, "Got drunk with the company");
+				b.improveMood(::Const.MoodChange.DrunkAtTavern, "Got drunk with the company");
 				result.Result.push({
-					Icon = this.Const.MoodStateIcon[b.getMoodState()],
-					Text = b.getName() + this.Const.MoodStateEvent[b.getMoodState()]
+					Icon = ::Const.MoodStateIcon[b.getMoodState()],
+					Text = b.getName() + ::Const.MoodStateEvent[b.getMoodState()]
 				});
 			}
 		}

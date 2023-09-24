@@ -27,15 +27,15 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/hand_hit_02.wav",
 			"sounds/combat/hand_hit_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted + 3;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted + 3;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
 		this.m.IsStacking = false;
 		this.m.IsAttack = true;
 		this.m.IsSerialized = false;
-		this.m.InjuriesOnBody = this.Const.Injury.BluntBody;
-		this.m.InjuriesOnHead = this.Const.Injury.BluntHead;
+		this.m.InjuriesOnBody = ::Const.Injury.BluntBody;
+		this.m.InjuriesOnHead = ::Const.Injury.BluntHead;
 		this.m.DirectDamageMult = 0.1;
 		this.m.ActionPointCost = 4;
 		this.m.FatigueCost = 5;
@@ -57,7 +57,7 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 					id = 7,
 					type = "text",
 					icon = "ui/icons/regular_damage.png",
-					text = "[color=" + this.Const.UI.Color.PositiveValue + "]+25%[/color] damage from background"
+					text = "[color=" + ::Const.UI.Color.PositiveValue + "]+25%[/color] damage from background"
 				});
 				break;
 			}
@@ -69,7 +69,7 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/regular_damage.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+"+ getBonus() +"[/color] from armor (Unarmed Mastery)"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+"+ getBonus() +"[/color] from armor (Unarmed Mastery)"
 			});
 		}
 
@@ -125,11 +125,11 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		if (_properties.IsSpecializedInFists) this.m.FatigueCostMult = _properties.IsSpecializedInFists ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		if (_properties.IsSpecializedInFists) this.m.FatigueCostMult = _properties.IsSpecializedInFists ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 
 		if (this.m.Container.hasSkill("perk.legend_ambidextrous"))
 		{
-			if (this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null) this.m.IsIgnoredAsAOO = true;
+			if (this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null) this.m.IsIgnoredAsAOO = true;
 			else this.m.IsIgnoredAsAOO = false;
 		}
 	}
@@ -137,8 +137,8 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 	function isHidden()
 	{
 		local items = this.getContainer().getActor().getItems();
-		local off = items.getItemAtSlot(this.Const.ItemSlot.Offhand);
-		local main = items.getItemAtSlot(this.Const.ItemSlot.Mainhand);
+		local off = items.getItemAtSlot(::Const.ItemSlot.Offhand);
+		local main = items.getItemAtSlot(::Const.ItemSlot.Mainhand);
 		return main != null && !this.getContainer().hasSkill("effects.disarmed") || this.skill.isHidden() || this.m.Container.getActor().isStabled();
 	}
 
@@ -156,11 +156,11 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 	{
 		local items = this.getContainer().getActor().getItems();
 		if (this.m.Container.hasSkill("perk.legend_ambidextrous") 
-			&& items.getItemAtSlot(this.Const.ItemSlot.Offhand) == null 
-			&& !items.hasBlockedSlot(this.Const.ItemSlot.Offhand) 
+			&& items.getItemAtSlot(::Const.ItemSlot.Offhand) == null 
+			&& !items.hasBlockedSlot(::Const.ItemSlot.Offhand) 
 			&& this.skill.isUsable) return true;
 
-		return (items.getItemAtSlot(this.Const.ItemSlot.Mainhand) == null || this.getContainer().hasSkill("effects.disarmed")) && this.skill.isUsable();
+		return (items.getItemAtSlot(::Const.ItemSlot.Mainhand) == null || this.getContainer().hasSkill("effects.disarmed")) && this.skill.isUsable();
 	}
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
@@ -169,7 +169,7 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 
 		//add proficiency to cqc strikes, even when weapon is equipped
 		local items = this.getContainer().getActor().getItems();
-		if (this.m.Container.hasSkill("perk.legend_ambidextrous") && items.getItemAtSlot(this.Const.ItemSlot.Mainhand) != null){
+		if (this.m.Container.hasSkill("perk.legend_ambidextrous") && items.getItemAtSlot(::Const.ItemSlot.Mainhand) != null){
 			local fist_proficiency = this.m.Container.getSkillByID("trait.proficiency_Fist");
 			if (fist_proficiency != null) fist_proficiency.add_proficiency();
 		}
@@ -184,12 +184,12 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 
 		if (target.getFlags().has("StaggerImmunity"))
 		{
-			if (isVisible) ::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" is immune to stagger"));
+			if (isVisible) ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" is immune to stagger"));
 			return;
 		}
 
 		target.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
-		if (isVisible) ::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" has been staggered") + ::Z.Log.display_chance(roll, chance));
+		if (isVisible) ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" has been staggered") + ::Z.Log.display_chance(roll, chance));
 	}
 
 

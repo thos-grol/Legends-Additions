@@ -13,11 +13,11 @@ this.perk_battle_forged <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.battle_forged";
-		this.m.Name = this.Const.Strings.PerkName.BattleForged;
-		this.m.Description = this.Const.Strings.PerkDescription.BattleForged;
+		this.m.Name = ::Const.Strings.PerkName.BattleForged;
+		this.m.Description = ::Const.Strings.PerkDescription.BattleForged;
 		this.m.Icon = "ui/perks/perk_03.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -30,12 +30,12 @@ this.perk_battle_forged <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "Specialize in heavy armor! Armor damage taken is reduced by a percentage equal to [color=" + this.Const.UI.Color.PositiveValue + "]" + this.m.ArmorPercentageAsReduction + "[/color] of the current total armor value of both body and head armor. The heavier your armor and helmet, the more you benefit.";
+		return "Specialize in heavy armor! Armor damage taken is reduced by a percentage equal to [color=" + ::Const.UI.Color.PositiveValue + "]" + this.m.ArmorPercentageAsReduction + "[/color] of the current total armor value of both body and head armor. The heavier your armor and helmet, the more you benefit.";
 	}
 
 	function getReductionPercentage()
 	{
-		local armor = this.getContainer().getActor().getArmor(this.Const.BodyPart.Head) + this.getContainer().getActor().getArmor(this.Const.BodyPart.Body);
+		local armor = this.getContainer().getActor().getArmor(::Const.BodyPart.Head) + this.getContainer().getActor().getArmor(::Const.BodyPart.Body);
 		return this.Math.floor(armor * this.m.ArmorPercentageAsReduction * 0.01);
 	}
 
@@ -46,7 +46,7 @@ this.perk_battle_forged <- this.inherit("scripts/skills/skill", {
 			id = 6,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Only receive [color=" + this.Const.UI.Color.PositiveValue + "]" + (100 - this.getReductionPercentage()) + "%[/color] of any damage to armor from attacks"
+			text = "Only receive [color=" + ::Const.UI.Color.PositiveValue + "]" + (100 - this.getReductionPercentage()) + "%[/color] of any damage to armor from attacks"
 		});
 		return tooltip;
 	}

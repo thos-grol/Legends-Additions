@@ -46,7 +46,7 @@ this.civilwar_flavor_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 		{
 			return;
 		}

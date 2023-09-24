@@ -8,10 +8,10 @@
 
 		if ("Weapon" in this.m.PerkTreeDynamic)
 		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.ThrowingTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.CrossbowTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.StaffTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.SwordTree );
 		}
 	}
 
@@ -29,7 +29,7 @@
 			"weapons/legend_glaive",
 			"weapons/scramasax"
 		];
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"worn_mail_shirt"
@@ -51,7 +51,7 @@
 				"gambeson"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				4,
 				""
@@ -77,8 +77,8 @@
 				"full_leather_cap"
 			]
 		]));
-		local rng = this.Math.rand(0, this.Const.Injury.Permanent.len() - 1);
-		this.m.Container.add(this.new("scripts/skills/" + this.Const.Injury.Permanent[rng].Script));
+		local rng = this.Math.rand(0, ::Const.Injury.Permanent.len() - 1);
+		this.m.Container.add(this.new("scripts/skills/" + ::Const.Injury.Permanent[rng].Script));
 	}
 
 });

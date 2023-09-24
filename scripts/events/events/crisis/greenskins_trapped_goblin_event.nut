@@ -116,10 +116,10 @@ this.greenskins_trapped_goblin_event <- this.inherit("scripts/events/event", {
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.BeastsTracks;
+						properties.Music = ::Const.Music.BeastsTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Ghouls, this.Math.rand(70, 90), this.Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Ghouls, this.Math.rand(70, 90), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -200,13 +200,13 @@ this.greenskins_trapped_goblin_event <- this.inherit("scripts/events/event", {
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.GoblinsTracks;
+						properties.Music = ::Const.Music.GoblinsTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
 						properties.EnemyBanners = [
 							"banner_goblins_03"
 						];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.GreenskinHorde, this.Math.rand(70, 90), this.Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.GreenskinHorde, this.Math.rand(70, 90), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -229,7 +229,7 @@ this.greenskins_trapped_goblin_event <- this.inherit("scripts/events/event", {
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Forest && currentTile.Type != this.Const.World.TerrainType.LeaveForest && currentTile.Type != this.Const.World.TerrainType.AutumnForest)
+		if (currentTile.Type != ::Const.World.TerrainType.Forest && currentTile.Type != ::Const.World.TerrainType.LeaveForest && currentTile.Type != ::Const.World.TerrainType.AutumnForest)
 		{
 			return;
 		}

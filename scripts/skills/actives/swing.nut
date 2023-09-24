@@ -18,8 +18,8 @@ this.swing <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/swing_hit_02.wav",
 			"sounds/combat/swing_hit_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -28,8 +28,8 @@ this.swing <- this.inherit("scripts/skills/skill", {
 		this.m.IsIgnoredAsAOO = true;
 		this.m.IsAOE = true;
 		this.m.IsWeaponSkill = true;
-		this.m.InjuriesOnBody = this.Const.Injury.CuttingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.CuttingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.CuttingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.CuttingHead;
 		this.m.DirectDamageMult = 0.25;
 		this.m.ActionPointCost = 6;
 		this.m.FatigueCost = 30;
@@ -54,7 +54,7 @@ this.swing <- this.inherit("scripts/skills/skill", {
 			id = 6,
 			type = "text",
 			icon = "ui/icons/hitchance.png",
-			text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-5%[/color] chance to hit"
+			text = "Has [color=" + ::Const.UI.Color.NegativeValue + "]-5%[/color] chance to hit"
 		});
 
 		return ret;
@@ -62,12 +62,12 @@ this.swing <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInSwords ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInSwords ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onUse( _user, _targetTile )
 	{
-		this.spawnAttackEffect(_targetTile, this.Const.Tactical.AttackEffectSwing);
+		this.spawnAttackEffect(_targetTile, ::Const.Tactical.AttackEffectSwing);
 		local ret = false;
 		local ownTile = _user.getTile();
 		local dir = ownTile.getDirectionTo(_targetTile);
@@ -78,7 +78,7 @@ this.swing <- this.inherit("scripts/skills/skill", {
 			return ret;
 		}
 
-		local nextDir = dir - 1 >= 0 ? dir - 1 : this.Const.Direction.COUNT - 1;
+		local nextDir = dir - 1 >= 0 ? dir - 1 : ::Const.Direction.COUNT - 1;
 
 		if (ownTile.hasNextTile(nextDir))
 		{
@@ -95,7 +95,7 @@ this.swing <- this.inherit("scripts/skills/skill", {
 			return ret;
 		}
 
-		nextDir = nextDir - 1 >= 0 ? nextDir - 1 : this.Const.Direction.COUNT - 1;
+		nextDir = nextDir - 1 >= 0 ? nextDir - 1 : ::Const.Direction.COUNT - 1;
 
 		if (ownTile.hasNextTile(nextDir))
 		{
@@ -114,8 +114,8 @@ this.swing <- this.inherit("scripts/skills/skill", {
 	{
 		local ownTile = this.m.Container.getActor().getTile();
 		local dir = ownTile.getDirectionTo(_targetTile);
-		this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, _targetTile, _targetTile.Pos.X, _targetTile.Pos.Y);
-		local nextDir = dir - 1 >= 0 ? dir - 1 : this.Const.Direction.COUNT - 1;
+		this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, _targetTile, _targetTile.Pos.X, _targetTile.Pos.Y);
+		local nextDir = dir - 1 >= 0 ? dir - 1 : ::Const.Direction.COUNT - 1;
 
 		if (ownTile.hasNextTile(nextDir))
 		{
@@ -123,11 +123,11 @@ this.swing <- this.inherit("scripts/skills/skill", {
 
 			if (this.Math.abs(nextTile.Level - ownTile.Level) <= 1)
 			{
-				this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
+				this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
 			}
 		}
 
-		nextDir = nextDir - 1 >= 0 ? nextDir - 1 : this.Const.Direction.COUNT - 1;
+		nextDir = nextDir - 1 >= 0 ? nextDir - 1 : ::Const.Direction.COUNT - 1;
 
 		if (ownTile.hasNextTile(nextDir))
 		{
@@ -135,7 +135,7 @@ this.swing <- this.inherit("scripts/skills/skill", {
 
 			if (this.Math.abs(nextTile.Level - ownTile.Level) <= 1)
 			{
-				this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
+				this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
 			}
 		}
 	}

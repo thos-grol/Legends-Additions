@@ -26,11 +26,11 @@ this.perk_legend_ambidextrous <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.legend_ambidextrous";
-		this.m.Name = this.Const.Strings.PerkName.LegendAmbidextrous;
-		this.m.Description = this.Const.Strings.PerkDescription.LegendAmbidextrous;
+		this.m.Name = ::Const.Strings.PerkName.LegendAmbidextrous;
+		this.m.Description = ::Const.Strings.PerkDescription.LegendAmbidextrous;
 		this.m.Icon = "ui/perks/ambidexterity_circle.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = true;
@@ -41,8 +41,8 @@ this.perk_legend_ambidextrous <- this.inherit("scripts/skills/skill", {
 		local items = this.getContainer().getActor().getItems();
 
 		if (_targetEntity == null 
-			|| items.hasBlockedSlot(this.Const.ItemSlot.Offhand) 
-			|| items.getItemAtSlot(this.Const.ItemSlot.Offhand) != null) return;
+			|| items.hasBlockedSlot(::Const.ItemSlot.Offhand) 
+			|| items.getItemAtSlot(::Const.ItemSlot.Offhand) != null) return;
 		if (_forFree) return;
 		if (_targetTile == null) return;
 		if (_skill.m.ID == "actives.legend_kick") return;

@@ -56,12 +56,12 @@
 		if (this.m.CustomPerkTree == null)
 		{
 			local mins = this.getPerkTreeDynamicMins();
-			local result = this.Const.Perks.GetDynamicPerkTree(mins, this.m.PerkTreeDynamic, this.getContainer().getActor().getFlags());
+			local result = ::Const.Perks.GetDynamicPerkTree(mins, this.m.PerkTreeDynamic, this.getContainer().getActor().getFlags());
 			this.m.CustomPerkTree = result.Tree;
 			a = result.Attributes;
 		}
 
-		local pT = this.Const.Perks.BuildCustomPerkTree(this.m.CustomPerkTree);
+		local pT = ::Const.Perks.BuildCustomPerkTree(this.m.CustomPerkTree);
 		this.m.PerkTree = pT.Tree;
 		this.m.PerkTreeMap = pT.Map;
 		local origin = this.World.Assets.getOrigin();
@@ -102,7 +102,7 @@
 		[],
 		[]
 	];
-	local attributes = this.Const.Perks.TraitsTrees.getBaseAttributes();
+	local attributes = ::Const.Perks.TraitsTrees.getBaseAttributes();
 	local _localMap = {
 		Weapon = [],
 		Defense = [],
@@ -171,7 +171,7 @@
 			_exclude.push(tt.ID);
 		}
 
-		local t = this.Const.Perks.WeaponTrees.getRandom(_exclude);
+		local t = ::Const.Perks.WeaponTrees.getRandom(_exclude);
 		_localMap.Weapon.push(t);
 		i = ++i;
 	}
@@ -187,7 +187,7 @@
 			_exclude.push(tt.ID);
 		}
 
-		local t = this.Const.Perks.DefenseTrees.getRandom(_exclude);
+		local t = ::Const.Perks.DefenseTrees.getRandom(_exclude);
 		_localMap.Defense.push(t);
 		i = ++i;
 	}
@@ -203,7 +203,7 @@
 			_exclude.push(tt.ID);
 		}
 
-		local t = this.Const.Perks.TraitsTrees.getRandom(_exclude, _flags);
+		local t = ::Const.Perks.TraitsTrees.getRandom(_exclude, _flags);
 		_localMap.Traits.push(t);
 		i = ++i;
 	}
@@ -226,7 +226,7 @@
 				_exclude.push(tt.ID);
 			}
 
-			local t = this.Const.Perks.EnemyTrees.getRandom(_exclude);
+			local t = ::Const.Perks.EnemyTrees.getRandom(_exclude);
 			_localMap.Enemy.push(t);
 		}
 
@@ -251,7 +251,7 @@
 				_exclude.push(tt.ID);
 			}
 
-			local t = this.Const.Perks.ClassTrees.getRandom(_exclude);
+			local t = ::Const.Perks.ClassTrees.getRandom(_exclude);
 			_localMap.Class.push(t);
 		}
 
@@ -276,7 +276,7 @@
 				_exclude.push(tt.ID);
 			}
 
-			local t = this.Const.Perks.MagicTrees.getRandom(_exclude);
+			local t = ::Const.Perks.MagicTrees.getRandom(_exclude);
 
 			if (this.LegendsMod.Configs().LegendMagicEnabled())
 			{

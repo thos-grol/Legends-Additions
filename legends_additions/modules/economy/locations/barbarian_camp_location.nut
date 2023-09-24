@@ -8,21 +8,21 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.barbarian_camp";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.barbarian_camp";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.None;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.None;
 		this.m.CombatLocation.CutDownTrees = true;
 		this.m.IsDespawningDefenders = false;
-		this.setDefenderSpawnList(this.Const.World.Spawn.Barbarians);
+		this.setDefenderSpawnList(::Const.World.Spawn.Barbarians);
 		this.m.Resources = 180;
-		this.m.NamedWeaponsList = this.Const.Items.NamedBarbarianWeapons;
-		this.m.NamedArmorsList = this.Const.Items.NamedBarbarianArmors;
-		this.m.NamedHelmetsList = this.Const.Items.NamedBarbarianHelmets;
+		this.m.NamedWeaponsList = ::Const.Items.NamedBarbarianWeapons;
+		this.m.NamedArmorsList = ::Const.Items.NamedBarbarianArmors;
+		this.m.NamedHelmetsList = ::Const.Items.NamedBarbarianHelmets;
 	}
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.BarbarianCamp);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.BarbarianCamp);
 		this.location.onSpawned();
 	}
 
@@ -62,11 +62,11 @@
 	{
 		this.location.onInit();
 		local body = this.addSprite("body");
-		local isOnSnow = this.getTile().Type == this.Const.World.TerrainType.Snow;
+		local isOnSnow = this.getTile().Type == ::Const.World.TerrainType.Snow;
 
 		for( local i = 0; i != 6; i = i )
 		{
-			if (this.getTile().hasNextTile(i) && this.getTile().getNextTile(i).Type == this.Const.World.TerrainType.Snow)
+			if (this.getTile().hasNextTile(i) && this.getTile().getNextTile(i).Type == ::Const.World.TerrainType.Snow)
 			{
 				isOnSnow = true;
 				break;

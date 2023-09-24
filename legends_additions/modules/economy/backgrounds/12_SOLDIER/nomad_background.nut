@@ -8,17 +8,17 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.MaceTree,
-				this.Const.Perks.SpearTree,
-				this.Const.Perks.ShieldTree,
+				::Const.Perks.MaceTree,
+				::Const.Perks.SpearTree,
+				::Const.Perks.ShieldTree,
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
@@ -43,7 +43,7 @@
 			items.equip(this.new("scripts/items/weapons/militia_spear"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"oriental/nomad_robe"
@@ -61,7 +61,7 @@
 				"oriental/leather_nomad_robe"
 			]
 		]));
-		local helm = this.Const.World.Common.pickHelmet([
+		local helm = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"oriental/nomad_head_wrap"

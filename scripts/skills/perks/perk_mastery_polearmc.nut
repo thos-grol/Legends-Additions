@@ -8,7 +8,7 @@ this.perk_mastery_polearmc <- this.inherit("scripts/skills/perks/perk_mastery_po
 	{
 		this.perk_mastery_polearm.create();
 		this.m.ID = "perk.mastery.polearmc";
-		this.m.Name = this.Const.Strings.PerkName.SpecPolearmC;
+		this.m.Name = ::Const.Strings.PerkName.SpecPolearmC;
 	}
 });
 

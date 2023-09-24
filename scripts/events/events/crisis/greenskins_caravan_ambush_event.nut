@@ -53,9 +53,9 @@ this.greenskins_caravan_ambush_event <- this.inherit("scripts/events/event", {
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.GoblinsTracks;
+						properties.Music = ::Const.Music.GoblinsTracks;
 						properties.Entities = [];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.GoblinRaiders, this.Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), this.Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.GoblinRaiders, this.Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						_event.registerToShowAfterCombat("AftermathB", null);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
@@ -85,8 +85,8 @@ this.greenskins_caravan_ambush_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
-				this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+				this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
+				this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/special.png",
@@ -120,12 +120,12 @@ this.greenskins_caravan_ambush_event <- this.inherit("scripts/events/event", {
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.GoblinsTracks;
+						properties.Music = ::Const.Music.GoblinsTracks;
 						properties.Entities = [];
-						properties.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Edge;
-						properties.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Random;
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.GoblinRaiders, this.Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), this.Const.Faction.Enemy);
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Peasants, this.Math.rand(40, 50) * _event.getReputationToDifficultyLightMult(), this.Const.Faction.PlayerAnimals);
+						properties.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Edge;
+						properties.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Random;
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.GoblinRaiders, this.Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Peasants, this.Math.rand(40, 50) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.PlayerAnimals);
 						_event.registerToShowAfterCombat("AftermathC", null);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
@@ -155,7 +155,7 @@ this.greenskins_caravan_ambush_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
+				this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
 				this.World.Assets.addMoralReputation(-2);
 				this.List.push({
 					id = 10,
@@ -204,12 +204,12 @@ this.greenskins_caravan_ambush_event <- this.inherit("scripts/events/event", {
 					{
 						bro.worsenMood(1.0, "Disappointed that you avoided battle and let peasants die");
 
-						if (bro.getMoodState() <= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() <= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}

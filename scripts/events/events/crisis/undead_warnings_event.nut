@@ -30,7 +30,7 @@ this.undead_warnings_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (this.World.FactionManager.getGreaterEvilType() == this.Const.World.GreaterEvilType.Undead && this.World.FactionManager.getGreaterEvilPhase() == this.Const.World.GreaterEvilPhase.Warning)
+		if (this.World.FactionManager.getGreaterEvilType() == ::Const.World.GreaterEvilType.Undead && this.World.FactionManager.getGreaterEvilPhase() == ::Const.World.GreaterEvilPhase.Warning)
 		{
 			local playerTile = this.World.State.getPlayer().getTile();
 			local towns = this.World.EntityManager.getSettlements();

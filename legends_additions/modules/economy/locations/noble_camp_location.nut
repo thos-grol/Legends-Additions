@@ -9,12 +9,12 @@
 		this.location.create();
 		this.m.Name = "Army Camp";
 		this.m.TypeID = "location.noble_camp";
-		this.m.LocationType = this.Const.World.LocationType.Passive;
+		this.m.LocationType = ::Const.World.LocationType.Passive;
 		this.m.CombatLocation.Template[0] = "tactical.human_camp";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.Palisade;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.Palisade;
 		this.m.CombatLocation.CutDownTrees = true;
 		this.m.IsDespawningDefenders = false;
-		this.setDefenderSpawnList(this.Const.World.Spawn.Noble);
+		this.setDefenderSpawnList(::Const.World.Spawn.Noble);
 		this.m.Resources = 300;
 	}
 

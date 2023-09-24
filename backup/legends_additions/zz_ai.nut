@@ -14,7 +14,7 @@
 ::Const.AI.Behavior.Order.EldritchBlast <- 19;
 
 // Direwolf = {
-//     ID = this.Const.EntityType.Direwolf,
+//     ID = ::Const.EntityType.Direwolf,
 //     Variant = 0,
 //     Strength = 15,
 //     Cost = 20,
@@ -22,7 +22,7 @@
 //     Script = "scripts/entity/tactical/enemies/direwolf"
 // },
 // DirewolfHIGH = {
-//     ID = this.Const.EntityType.Direwolf,
+//     ID = ::Const.EntityType.Direwolf,
 //     Variant = 0,
 //     Strength = 20,
 //     Cost = 25,
@@ -30,7 +30,7 @@
 //     Script = "scripts/entity/tactical/enemies/direwolf_high"
 // },
 // DirewolfBodyguard = {
-//     ID = this.Const.EntityType.Direwolf,
+//     ID = ::Const.EntityType.Direwolf,
 //     Variant = 0,
 //     Strength = 20,
 //     Cost = 25,

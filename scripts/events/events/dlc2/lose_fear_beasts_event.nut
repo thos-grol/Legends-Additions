@@ -41,12 +41,12 @@ this.lose_fear_beasts_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Unhold)
+		if (!::Const.DLC.Unhold)
 		{
 			return;
 		}
 
-		if (this.World.Statistics.getFlags().getAsInt("LastCombatFaction") != this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).getID())
+		if (this.World.Statistics.getFlags().getAsInt("LastCombatFaction") != this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID())
 		{
 			return;
 		}

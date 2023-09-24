@@ -8,18 +8,18 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.AxeTree
+				::Const.Perks.AxeTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.LargeTree
+				::Const.Perks.LargeTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.WoodaxeClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.WoodaxeClassTree
 			],
 			Magic = []
 		};
@@ -63,7 +63,7 @@
 			items.equip(this.new("scripts/items/weapons/legend_saw"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				2,
 				"padded_surcoat"
@@ -78,7 +78,7 @@
 				6
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				""

@@ -39,51 +39,51 @@ this.gladiator_origin_vs_anatomist_event <- this.inherit("scripts/events/event",
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/health.png",
-					text = _event.m.Gladiator.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+5[/color] Hitpoints"
+					text = _event.m.Gladiator.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+5[/color] Hitpoints"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Gladiator.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+5[/color] Resolve"
+					text = _event.m.Gladiator.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+5[/color] Resolve"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/fatigue.png",
-					text = _event.m.Gladiator.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+5[/color] Fatigue"
+					text = _event.m.Gladiator.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+5[/color] Fatigue"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.Gladiator.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+5[/color] Initiative"
+					text = _event.m.Gladiator.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+5[/color] Initiative"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Gladiator.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+3[/color] Melee Skill"
+					text = _event.m.Gladiator.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+3[/color] Melee Skill"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/ranged_skill.png",
-					text = _event.m.Gladiator.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+3[/color] Ranged Skill"
+					text = _event.m.Gladiator.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+3[/color] Ranged Skill"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_defense.png",
-					text = _event.m.Gladiator.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+3[/color] Melee Defense"
+					text = _event.m.Gladiator.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+3[/color] Melee Defense"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/ranged_defense.png",
-					text = _event.m.Gladiator.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+3[/color] Ranged Defense"
+					text = _event.m.Gladiator.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+3[/color] Ranged Defense"
 				});
 				_event.m.Gladiator.worsenMood(0.5, "Was accused of taking artificial enhancements");
 
-				if (_event.m.Gladiator.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Gladiator.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Gladiator.getMoodState()],
-						text = _event.m.Gladiator.getName() + this.Const.MoodStateEvent[_event.m.Gladiator.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Gladiator.getMoodState()],
+						text = _event.m.Gladiator.getName() + ::Const.MoodStateEvent[_event.m.Gladiator.getMoodState()]
 					});
 				}
 			}
@@ -93,7 +93,7 @@ this.gladiator_origin_vs_anatomist_event <- this.inherit("scripts/events/event",
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Paladins) return;
+		if (!::Const.DLC.Paladins) return;
 		if (!::World.Statistics.getFlags().has("retinue_anatomist") 
 			|| !::World.Statistics.getFlags().get("retinue_anatomist") ) return;
 

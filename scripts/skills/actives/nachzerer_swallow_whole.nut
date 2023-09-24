@@ -34,8 +34,8 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/swallow_whole_miss_02.wav",
 			"sounds/enemies/swallow_whole_miss_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -51,7 +51,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 	function onVerifyTarget( _originTile, _targetTile )
 	{
 		local target = _targetTile.getEntity();
-		local brothers = this.Tactical.Entities.getInstancesOfFaction(this.Const.Faction.Player);
+		local brothers = this.Tactical.Entities.getInstancesOfFaction(::Const.Faction.Player);
 
 		if (target == null) return false;
 		if (target.getFlags().has("IsSummoned")) return false;
@@ -80,7 +80,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 				 + " ([b]" + ::MSU.Text.color(::Z.Log.Color.BloodRed, damage) + "[/b])"
 			);
 			::Tactical.EventLog.logIn(
-				this.Const.UI.getColorizedEntityName(actor) + " heals " + damage + " hitpoints.\n\n"
+				::Const.UI.getColorizedEntityName(actor) + " heals " + damage + " hitpoints.\n\n"
 			);
 		}
 		else
@@ -90,7 +90,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 			foreach(digested_item in digested_items)
 			{
 				digested_item.setContainer(null);
-				digested_item.setCurrentSlotType(this.Const.ItemSlot.None);
+				digested_item.setCurrentSlotType(::Const.ItemSlot.None);
 			}
 			this.m.SwallowedItems.extend(digested_items);
 
@@ -105,9 +105,9 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 				is_guest = null;
 			}
 
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " has been digested.");
-			this.m.SwallowedEntity.getSkills().onDeath(this.Const.FatalityType.Devoured);
-			this.m.SwallowedEntity.onDeath(null, null, null, this.Const.FatalityType.Devoured);
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " has been digested.");
+			this.m.SwallowedEntity.getSkills().onDeath(::Const.FatalityType.Devoured);
+			this.m.SwallowedEntity.onDeath(null, null, null, ::Const.FatalityType.Devoured);
 			this.World.getPlayerRoster().remove(this.m.SwallowedEntity);
 			this.m.SwallowedEntity = null;
 
@@ -120,7 +120,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 					{
 						if (this.World.Assets.getOrigin().getID() != "scenario.manhunters" && bro.getBackground().getID() != "background.slave")
 						{
-							bro.worsenMood(this.Const.MoodChange.BrotherDied, this.getName() + " died in battle");
+							bro.worsenMood(::Const.MoodChange.BrotherDied, this.getName() + " died in battle");
 						}
 					}
 				}
@@ -129,7 +129,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 
 
 			//Counts as feasted, remove temp injuries
-			local skills = actor.getSkills().getAllSkillsOfType(this.Const.SkillType.Injury);
+			local skills = actor.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
 			foreach( s in skills )
 			{
 				if (s.getOrder() == ::Const.SkillOrder.PermanentInjury) continue;
@@ -185,7 +185,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		_user.getSprite("body").setBrush("bust_ghoul_body_04");
 		_user.getSprite("injury").setBrush("bust_ghoul_04_injured");
 		_user.getSprite("head").setBrush("bust_ghoul_04_head_0" + _user.m.Head);
-		_user.m.Sound[this.Const.Sound.ActorEvent.Death] = _user.m.Sound[this.Const.Sound.ActorEvent.Other2];
+		_user.m.Sound[::Const.Sound.ActorEvent.Death] = _user.m.Sound[::Const.Sound.ActorEvent.Other2];
 		local effect = this.new("scripts/skills/effects/swallowed_whole_effect");
 		effect.setName(target.getName());
 		_user.getSkills().add(effect);
@@ -194,7 +194,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		_user.getSkills().removeByID("effects.nachzerer_maddening_hunger");
 
 		if (this.m.SoundOnHit.len() != 0)
-			this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, _user.getPos());
+			this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
 
 		return true;
 	}

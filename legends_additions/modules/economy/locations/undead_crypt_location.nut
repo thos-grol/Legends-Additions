@@ -8,9 +8,9 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.undead_crypt";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.graveyard";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.Walls;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.Walls;
 		this.m.CombatLocation.CutDownTrees = false;
 		this.m.CombatLocation.ForceLineBattle = true;
 		this.m.CombatLocation.AdditionalRadius = 5;
@@ -19,11 +19,11 @@
 
 		if (r == 1)
 		{
-			this.setDefenderSpawnList(this.Const.World.Spawn.ZombiesAndGhosts);
+			this.setDefenderSpawnList(::Const.World.Spawn.ZombiesAndGhosts);
 		}
 		else if (r == 2)
 		{
-			this.setDefenderSpawnList(this.Const.World.Spawn.Necromancer);
+			this.setDefenderSpawnList(::Const.World.Spawn.Necromancer);
 		}
 
 		this.m.Resources = 180;
@@ -31,7 +31,7 @@
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.Crypt);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.Crypt);
 		this.location.onSpawned();
 	}
 
@@ -46,7 +46,7 @@
 			"loot/ornate_tome_item"
 		];
 
-		if (this.Const.DLC.Unhold)
+		if (::Const.DLC.Unhold)
 		{
 			treasure.extend(treasure);
 			treasure.extend(treasure);
@@ -71,7 +71,7 @@
 	{
 		this.location.onInit();
 		local body = this.addSprite("body");
-		local isSouthern = this.getTile().Type == this.Const.World.TerrainType.Desert || this.getTile().Type == this.Const.World.TerrainType.Steppe || this.getTile().Type == this.Const.World.TerrainType.Oasis || this.getTile().TacticalType == this.Const.World.TerrainTacticalType.DesertHills;
+		local isSouthern = this.getTile().Type == ::Const.World.TerrainType.Desert || this.getTile().Type == ::Const.World.TerrainType.Steppe || this.getTile().Type == ::Const.World.TerrainType.Oasis || this.getTile().TacticalType == ::Const.World.TerrainTacticalType.DesertHills;
 
 		if (isSouthern)
 		{

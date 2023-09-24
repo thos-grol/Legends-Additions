@@ -22,7 +22,7 @@
 
 		foreach( bro in brothers )
 		{
-			if (bro.getLevel() >= 11 && (bro.getBackground().isBackgroundType(this.Const.BackgroundType.ConvertedCultist) || bro.getBackground().isBackgroundType(this.Const.BackgroundType.Cultist)))
+			if (bro.getLevel() >= 11 && (bro.getBackground().isBackgroundType(::Const.BackgroundType.ConvertedCultist) || bro.getBackground().isBackgroundType(::Const.BackgroundType.Cultist)))
 			{
 				candidates.push(bro);
 			}

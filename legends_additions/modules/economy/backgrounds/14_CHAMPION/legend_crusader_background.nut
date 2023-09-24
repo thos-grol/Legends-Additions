@@ -9,23 +9,23 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.GreatSwordTree,
-				this.Const.Perks.FlailTree,
-				this.Const.Perks.HammerTree,
-				this.Const.Perks.MaceTree,
-				this.Const.Perks.ShieldTree
+				::Const.Perks.GreatSwordTree,
+				::Const.Perks.FlailTree,
+				::Const.Perks.HammerTree,
+				::Const.Perks.MaceTree,
+				::Const.Perks.ShieldTree
 			],
 			Defense = [
-				this.Const.Perks.HeavyArmorTree
+				::Const.Perks.HeavyArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree
-				this.Const.Perks.IndestructibleTree,
-				this.Const.Perks.MartyrTree
+				::Const.Perks.TrainedTree
+				::Const.Perks.IndestructibleTree,
+				::Const.Perks.MartyrTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FaithClassTree
+				::Const.Perks.FaithClassTree
 			],
 			Magic = []
 		};
@@ -34,8 +34,8 @@
 	o.onAddEquipment = function()
 	{
 		local talents = this.getContainer().getActor().getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.MeleeDefense] = 3;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.MeleeDefense] = 3;
 		this.getContainer().getActor().fillTalentValues(2, true);
 		local items = this.getContainer().getActor().getItems();
 		local r;
@@ -72,7 +72,7 @@
 
 		shield.onPaintSpecificColor(23);
 		items.equip(shield);
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"mail_hauberk"
@@ -94,7 +94,7 @@
 				"worn_mail_shirt"
 			]
 		]));
-		local item = this.Const.World.Common.pickHelmet([
+		local item = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"nasal_helmet"
@@ -119,7 +119,7 @@
 
 		if (item != null)
 		{
-			item.onPaint(this.Const.Items.Paint.None);
+			item.onPaint(::Const.Items.Paint.None);
 			items.equip(item);
 		}
 	}

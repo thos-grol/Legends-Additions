@@ -26,7 +26,7 @@
 			}
 		];
 
-		foreach( i in this.Const.Items.NamedMeleeWeapons )
+		foreach( i in ::Const.Items.NamedMeleeWeapons )
 		{
 			if (this.Math.rand(1, 100) <= 50)
 			{
@@ -38,7 +38,7 @@
 			}
 		}
 
-		foreach( i in this.Const.Items.NamedRangedWeapons )
+		foreach( i in ::Const.Items.NamedRangedWeapons )
 		{
 			if (this.Math.rand(1, 100) <= 50)
 			{

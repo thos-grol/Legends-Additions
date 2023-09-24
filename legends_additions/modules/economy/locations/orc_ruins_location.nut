@@ -1,7 +1,7 @@
 ::mods_hookExactClass("entity/world/locations/orc_ruins_location", function(o) {
 	o.getDescription = function()
 	{
-		local isSouthern = this.getTile().Type == this.Const.World.TerrainType.Desert || this.getTile().Type == this.Const.World.TerrainType.Steppe || this.getTile().Type == this.Const.World.TerrainType.Oasis || this.getTile().TacticalType == this.Const.World.TerrainTacticalType.DesertHills;
+		local isSouthern = this.getTile().Type == ::Const.World.TerrainType.Desert || this.getTile().Type == ::Const.World.TerrainType.Steppe || this.getTile().Type == ::Const.World.TerrainType.Oasis || this.getTile().TacticalType == ::Const.World.TerrainTacticalType.DesertHills;
 
 		if (isSouthern)
 		{
@@ -17,22 +17,22 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.orc_ruins";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.ruins";
 		this.m.CombatLocation.Template[1] = "tactical.orc_camp";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.Walls;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.Walls;
 		this.m.CombatLocation.CutDownTrees = true;
 		this.m.IsShowingDefenders = false;
 		this.m.IsShowingBanner = false;
-		this.setDefenderSpawnList(this.Const.World.Spawn.YoungOrcsAndBerserkers);
+		this.setDefenderSpawnList(::Const.World.Spawn.YoungOrcsAndBerserkers);
 		this.m.Resources = 150;
-		this.m.NamedWeaponsList = this.Const.Items.NamedOrcWeapons;
-		this.m.NamedShieldsList = this.Const.Items.NamedOrcShields;
+		this.m.NamedWeaponsList = ::Const.Items.NamedOrcWeapons;
+		this.m.NamedShieldsList = ::Const.Items.NamedOrcShields;
 	}
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.Ruins);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.Ruins);
 		this.location.onSpawned();
 	}
 
@@ -53,7 +53,7 @@
 			"loot/silver_bowl_item"
 		];
 
-		if (this.Const.DLC.Unhold)
+		if (::Const.DLC.Unhold)
 		{
 			treasure.extend(treasure);
 			treasure.extend(treasure);
@@ -79,13 +79,13 @@
 	{
 		this.location.onInit();
 		local body = this.addSprite("body");
-		local isSouthern = this.getTile().Type == this.Const.World.TerrainType.Desert || this.getTile().Type == this.Const.World.TerrainType.Steppe || this.getTile().Type == this.Const.World.TerrainType.Oasis || this.getTile().TacticalType == this.Const.World.TerrainTacticalType.DesertHills;
+		local isSouthern = this.getTile().Type == ::Const.World.TerrainType.Desert || this.getTile().Type == ::Const.World.TerrainType.Steppe || this.getTile().Type == ::Const.World.TerrainType.Oasis || this.getTile().TacticalType == ::Const.World.TerrainTacticalType.DesertHills;
 
 		if (isSouthern)
 		{
 			body.setBrush("world_desert_ruins_0" + this.Math.rand(1, 2));
 
-			if (this.Const.DLC.Desert)
+			if (::Const.DLC.Desert)
 			{
 				this.m.CombatLocation.Template[0] = "tactical.southern_ruins";
 			}

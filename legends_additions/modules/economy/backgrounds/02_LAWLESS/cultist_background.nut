@@ -8,16 +8,16 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.CleaverTree
+				::Const.Perks.CleaverTree
 			],
 			Defense = [],
 			Traits = [
-				this.Const.Perks.MartyrTree
+				::Const.Perks.MartyrTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.NinetailsClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.NinetailsClassTree
 			],
 			Magic = []
 		};
@@ -47,11 +47,11 @@
 		}
 		else if (r == 4)
 		{
-			if (this.Const.DLC.Wildmen)
+			if (::Const.DLC.Wildmen)
 			{
 				items.equip(this.new("scripts/items/weapons/battle_whip"));
 			}
-			else if (!this.Const.DLC.Wildmen)
+			else if (!::Const.DLC.Wildmen)
 			{
 				items.equip(this.new("scripts/items/weapons/legend_cat_o_nine_tails"));
 			}
@@ -61,7 +61,7 @@
 			items.equip(this.new("scripts/items/weapons/legend_cat_o_nine_tails"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"tattered_sackcloth"
@@ -79,7 +79,7 @@
 				"cultist_leather_robe"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"cultist_hood"

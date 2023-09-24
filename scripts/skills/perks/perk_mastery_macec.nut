@@ -8,7 +8,7 @@ this.perk_mastery_macec <- this.inherit("scripts/skills/perks/perk_mastery_mace"
 	{
 		this.perk_mastery_mace.create();
 		this.m.ID = "perk.mastery.macec";
-		this.m.Name = this.Const.Strings.PerkName.SpecMaceC;
+		this.m.Name = ::Const.Strings.PerkName.SpecMaceC;
 	}
 });
 

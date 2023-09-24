@@ -15,8 +15,8 @@ this._king_of_all_weapons <- this.inherit("scripts/skills/skill", {
 		this.m.Description = "This character is highly skilled in spears and can perform a free attack during %their% turn.";
 		this.m.Icon = "ui/perks/ptr_king_of_all_weapons.png";
 		this.m.IconMini = "ptr_king_of_all_weapons_mini";
-		this.m.Type = this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.VeryLast;
+		this.m.Type = ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.VeryLast;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = true;
@@ -30,14 +30,14 @@ this._king_of_all_weapons <- this.inherit("scripts/skills/skill", {
 			id = 10,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "The next Thrust or Prong attack costs [color=" + this.Const.UI.Color.PositiveValue + "]0[/color] Action Points, builds [color=" + this.Const.UI.Color.NegativeValue + "]0[/color] Fatigue but does [color=" + this.Const.UI.Color.NegativeValue + "]-" + this.m.DamageReductionPercentage + "%[/color] Damage"
+			text = "The next Thrust or Prong attack costs [color=" + ::Const.UI.Color.PositiveValue + "]0[/color] Action Points, builds [color=" + ::Const.UI.Color.NegativeValue + "]0[/color] Fatigue but does [color=" + ::Const.UI.Color.NegativeValue + "]-" + this.m.DamageReductionPercentage + "%[/color] Damage"
 		});
 
 		tooltip.push({
 			id = 10,
 			type = "text",
 			icon = "ui/icons/warning.png",
-			text = "[color=" + this.Const.UI.Color.PositiveValue + "]Will be lost upon switching your weapon![/color]"
+			text = "[color=" + ::Const.UI.Color.PositiveValue + "]Will be lost upon switching your weapon![/color]"
 		});
 
 		return tooltip;
@@ -60,7 +60,7 @@ this._king_of_all_weapons <- this.inherit("scripts/skills/skill", {
 		}
 
 		local weapon = this.getContainer().getActor().getMainhandItem();
-		if (weapon == null || !weapon.isWeaponType(this.Const.Items.WeaponType.Spear) || this.getContainer().getSkillsByFunction((@(_skill) this.m.Skills.find(_skill.getID()) != null).bindenv(this)).len() == 0)
+		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Spear) || this.getContainer().getSkillsByFunction((@(_skill) this.m.Skills.find(_skill.getID()) != null).bindenv(this)).len() == 0)
 		{
 			return false;
 		}

@@ -11,7 +11,7 @@
 // 	{
 // 		//FEATURE_6: redo how loot is gathered
 // 		this.camp_building.create();
-// 		this.m.ID = this.Const.World.CampBuildings.Hunter;
+// 		this.m.ID = ::Const.World.CampBuildings.Hunter;
 // 		this.m.ModName = "Hunting";
 // 		this.m.ModMod = 10.0;
 // 		this.m.BaseCraft = 1.5;
@@ -76,7 +76,7 @@
 // 				id = 5,
 // 				type = "text",
 // 				icon = "ui/buttons/asset_food_up.png",
-// 				text = "Successful hunt will take approximately [color=" + this.Const.UI.Color.PositiveValue + "]" + this.Math.floor(100.0 / mod.Craft) + "[/color] hours."
+// 				text = "Successful hunt will take approximately [color=" + ::Const.UI.Color.PositiveValue + "]" + this.Math.floor(100.0 / mod.Craft) + "[/color] hours."
 // 			}
 // 		];
 // 		local id = 6;
@@ -87,7 +87,7 @@
 // 				id = id,
 // 				type = "hint",
 // 				icon = "ui/icons/special.png",
-// 				text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + bro[0] / 100.0 * 100.0 + "%[/color] " + bro[1] + " (" + bro[2] + ")"
+// 				text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + bro[0] / 100.0 * 100.0 + "%[/color] " + bro[1] + " (" + bro[2] + ")"
 // 			});
 // 			id = ++id;
 // 		}

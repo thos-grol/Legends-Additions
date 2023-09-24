@@ -33,7 +33,7 @@
 	// 	else
 	// 	{
 	// 		if (this.getContainer().getActor().getLevel() >= 11 && this.m.DailyCost < 12) this.m.DailyCost = 12;
-	// 		if (this.isBackgroundType(this.Const.BackgroundType.ConvertedCultist)) this.m.DailyCost = 4;
+	// 		if (this.isBackgroundType(::Const.BackgroundType.ConvertedCultist)) this.m.DailyCost = 4;
 	// 		_properties.DailyWage += this.Math.round(this.m.DailyCost * this.m.DailyCostMult);
 	// 	}
 	// }
@@ -73,13 +73,13 @@
 		
 		if (("State" in this.World) && this.World.State != null && this.World.State.getCurrentTown() != null)
 		{
-			local mult = this.getSellPriceMult() * this.Const.World.Assets.BaseSellPrice * this.World.State.getCurrentTown().getSellPriceMult();
+			local mult = this.getSellPriceMult() * ::Const.World.Assets.BaseSellPrice * this.World.State.getCurrentTown().getSellPriceMult();
 			local mult_old = mult;
 			mult = this.Math.minf(this.Math.maxf(mult, 0.5), 1.25); //sell price can't be lower than 50% or higher than 125%
 
 			// ::logInfo(this.m.ID);
 			// ::logInfo("item.getSellPriceMult() = " + this.getSellPriceMult());
-			// ::logInfo("this.Const.World.Assets.BaseSellPrice = " + this.Const.World.Assets.BaseSellPrice);
+			// ::logInfo("::Const.World.Assets.BaseSellPrice = " + ::Const.World.Assets.BaseSellPrice);
 			// ::logInfo("settlement.getSellPriceMult() = " + this.World.State.getCurrentTown().getSellPriceMult());
 			// ::logInfo("mult = " + mult_old);
 			// ::logInfo("after this.Math.min(this.Math.max(mult, 0.5), 1.25) = " + mult);
@@ -87,7 +87,7 @@
 			return this.Math.floor(this.getValue() * mult);
 		}
 		
-		return this.Math.floor(this.getValue() * this.Const.World.Assets.BaseSellPrice);
+		return this.Math.floor(this.getValue() * ::Const.World.Assets.BaseSellPrice);
 	};
 
 	o.getBuyPrice <- function ()

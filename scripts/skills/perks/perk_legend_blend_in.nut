@@ -22,11 +22,11 @@ this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.legend_blend_in";
-		this.m.Name = this.Const.Strings.PerkName.LegendBlendIn;
-		this.m.Description = this.Const.Strings.PerkDescription.LegendBlendIn;
+		this.m.Name = ::Const.Strings.PerkName.LegendBlendIn;
+		this.m.Description = ::Const.Strings.PerkDescription.LegendBlendIn;
 		this.m.Icon = "ui/perks/perk_42.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -48,11 +48,10 @@ this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 		this.m.Enemies.clear();
 		local actor = this.getContainer().getActor();
 
-		// //TODO: ::MSU.Tile.getNeighbors DNE. Write custom logic
-		// foreach (tile in ::MSU.Tile.getNeighbors(actor.getTile()))
-		// {
-		// 	if (tile.IsOccupiedByActor) this.m.Enemies.push(tile.getEntity().getID());
-		// }
+		foreach (tile in ::MSU.Tile.getNeighbors(actor.getTile()))
+		{
+			if (tile.IsOccupiedByActor) this.m.Enemies.push(tile.getEntity().getID());
+		}
 	}
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )

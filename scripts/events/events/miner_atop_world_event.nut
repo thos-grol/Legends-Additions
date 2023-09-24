@@ -28,12 +28,12 @@ this.miner_atop_world_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Miner.getImagePath());
 				_event.m.Miner.improveMood(2.0, "Enjoyed the view from atop a mountain");
 
-				if (_event.m.Miner.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Miner.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Miner.getMoodState()],
-						text = _event.m.Miner.getName() + this.Const.MoodStateEvent[_event.m.Miner.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Miner.getMoodState()],
+						text = _event.m.Miner.getName() + ::Const.MoodStateEvent[_event.m.Miner.getMoodState()]
 					});
 				}
 			}
@@ -45,7 +45,7 @@ this.miner_atop_world_event <- this.inherit("scripts/events/event", {
 	{
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Mountains)
+		if (currentTile.Type != ::Const.World.TerrainType.Mountains)
 		{
 			return;
 		}

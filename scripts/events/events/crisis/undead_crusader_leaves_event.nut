@@ -18,7 +18,7 @@ this.undead_crusader_leaves_event <- this.inherit("scripts/events/event", {
 					function getResult( _event )
 					{
 						_event.m.Dude.getItems().transferToStash(this.World.Assets.getStash());
-						_event.m.Dude.getSkills().onDeath(this.Const.FatalityType.None);
+						_event.m.Dude.getSkills().onDeath(::Const.FatalityType.None);
 						this.World.getPlayerRoster().remove(_event.m.Dude);
 						_event.m.Dude = null;
 						return 0;

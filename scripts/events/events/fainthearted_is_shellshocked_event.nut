@@ -28,12 +28,12 @@ this.fainthearted_is_shellshocked_event <- this.inherit("scripts/events/event", 
 				this.Characters.push(_event.m.Rookie.getImagePath());
 				_event.m.Rookie.worsenMood(1.5, "Shocked by the horrors of battle");
 
-				if (_event.m.Rookie.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Rookie.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Rookie.getMoodState()],
-						text = _event.m.Rookie.getName() + this.Const.MoodStateEvent[_event.m.Rookie.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Rookie.getMoodState()],
+						text = _event.m.Rookie.getName() + ::Const.MoodStateEvent[_event.m.Rookie.getMoodState()]
 					});
 				}
 			}

@@ -15,8 +15,8 @@ this.throw_dirt_skill <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/dlc6/throw_dirt_02.wav",
 			"sounds/enemies/dlc6/throw_dirt_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.Any;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.Any;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -174,7 +174,7 @@ this.throw_dirt_skill <- this.inherit("scripts/skills/skill", {
 			target.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));
 			target.getSkills().add(::new("scripts/skills/effects/legend_threw_sand_effect"));
 			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
-				this.Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" is stunned"));
+				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" is stunned"));
 		}
 		this.Tactical.getShaker().shake(target, _user.getTile(), 4);
 		return true;

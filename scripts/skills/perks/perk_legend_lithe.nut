@@ -14,11 +14,11 @@ this.perk_legend_lithe <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.legend_lithe";
-		this.m.Name = this.Const.Strings.PerkName.LegendLithe;
+		this.m.Name = ::Const.Strings.PerkName.LegendLithe;
 		this.m.Description = "Lithe like a lizard! %name% is able to partially deflect attacks at the last moment, turning them into glancing hits.";
 		this.m.Icon = "ui/perks/lithe.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -40,7 +40,7 @@ this.perk_legend_lithe <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Only receive [color=" + this.Const.UI.Color.PositiveValue + "]" + (100 - bonus) + "%[/color] of any damage to Hitpoints and Armor from attacks"
+				text = "Only receive [color=" + ::Const.UI.Color.PositiveValue + "]" + (100 - bonus) + "%[/color] of any damage to Hitpoints and Armor from attacks"
 			});
 			return tooltip;
 		}

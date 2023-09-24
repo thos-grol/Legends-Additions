@@ -71,14 +71,14 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 				local money = this.Math.rand(10, 100);
 				this.World.Assets.addMoney(money);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 			}
 
@@ -105,19 +105,19 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (!bro.getBackground().isBackgroundType(this.Const.BackgroundType.OffendedByViolence) || bro.getLevel() >= 7)
+					if (!bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) || bro.getLevel() >= 7)
 					{
 						continue;
 					}
 
 					bro.worsenMood(0.75, "Shaken by a gruesome scene");
 
-					if (bro.getMoodState() < this.Const.MoodState.Neutral)
+					if (bro.getMoodState() < ::Const.MoodState.Neutral)
 					{
 						this.List.push({
 							id = 10,
-							icon = this.Const.MoodStateIcon[bro.getMoodState()],
-							text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+							icon = ::Const.MoodStateIcon[bro.getMoodState()],
+							text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 						});
 					}
 				}
@@ -148,7 +148,7 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 			}
 
@@ -178,9 +178,9 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
-				item = this.Const.World.Common.pickArmor([
+				item = ::Const.World.Common.pickArmor([
 					[
 						1,
 						"basic_mail_shirt"
@@ -191,7 +191,7 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 			}
 
@@ -200,7 +200,7 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Unhold)
+		if (!::Const.DLC.Unhold)
 		{
 			return;
 		}
@@ -212,7 +212,7 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Forest && currentTile.Type != this.Const.World.TerrainType.LeaveForest && currentTile.Type != this.Const.World.TerrainType.AutumnForest)
+		if (currentTile.Type != ::Const.World.TerrainType.Forest && currentTile.Type != ::Const.World.TerrainType.LeaveForest && currentTile.Type != ::Const.World.TerrainType.AutumnForest)
 		{
 			return;
 		}

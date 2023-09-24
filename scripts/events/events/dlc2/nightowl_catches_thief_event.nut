@@ -29,12 +29,12 @@ this.nightowl_catches_thief_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.NightOwl.getImagePath());
 				_event.m.NightOwl.improveMood(1.0, "Caught a thief at night");
 
-				if (_event.m.NightOwl.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.NightOwl.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.NightOwl.getMoodState()],
-						text = _event.m.NightOwl.getName() + this.Const.MoodStateEvent[_event.m.NightOwl.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.NightOwl.getMoodState()],
+						text = _event.m.NightOwl.getName() + ::Const.MoodStateEvent[_event.m.NightOwl.getMoodState()]
 					});
 				}
 
@@ -50,7 +50,7 @@ this.nightowl_catches_thief_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 			}
 
@@ -59,7 +59,7 @@ this.nightowl_catches_thief_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Unhold)
+		if (!::Const.DLC.Unhold)
 		{
 			return;
 		}

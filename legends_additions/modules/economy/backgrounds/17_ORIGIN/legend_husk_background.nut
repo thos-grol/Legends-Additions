@@ -8,18 +8,18 @@
 
 		if ("Weapon" in this.m.PerkTreeDynamic)
 		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.ThrowingTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.CrossbowTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.StaffTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.SwordTree );
 		}
 	}
 
 	o.onAddEquipment = function()
 	{
 		local talents = this.getContainer().getActor().getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.MeleeSkill] = 1;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.MeleeSkill] = 1;
 		this.getContainer().getActor().fillTalentValues(1, true);
 		local items = this.getContainer().getActor().getItems();
 		local r;
@@ -43,11 +43,11 @@
 		}
 		else if (r == 4)
 		{
-			if (this.Const.DLC.Wildmen)
+			if (::Const.DLC.Wildmen)
 			{
 				items.equip(this.new("scripts/items/weapons/battle_whip"));
 			}
-			else if (!this.Const.DLC.Wildmen)
+			else if (!::Const.DLC.Wildmen)
 			{
 				items.equip(this.new("scripts/items/weapons/legend_cat_o_nine_tails"));
 			}
@@ -57,7 +57,7 @@
 			items.equip(this.new("scripts/items/weapons/legend_infantry_axe"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"tattered_sackcloth"
@@ -75,7 +75,7 @@
 				"decayed_coat_of_plates"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"cultist_hood"

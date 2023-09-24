@@ -9,10 +9,10 @@
 
 		if ("Weapon" in this.m.PerkTreeDynamic)
 		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.CrossbowTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.StaffTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, this.Const.Perks.SwordTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.ThrowingTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.CrossbowTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.StaffTree );
+			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.SwordTree );
 		}
 	}
 
@@ -21,7 +21,7 @@
 		local items = this.getContainer().getActor().getItems();
 		local r;
 
-		if (items.hasEmptySlot(this.Const.ItemSlot.Mainhand))
+		if (items.hasEmptySlot(::Const.ItemSlot.Mainhand))
 		{
 			local weapons = [
 				"weapons/arming_sword",
@@ -35,7 +35,7 @@
 				"weapons/greatsword"
 			];
 
-			if (this.Const.DLC.Unhold)
+			if (::Const.DLC.Unhold)
 			{
 				weapons.extend([
 					"weapons/longsword",
@@ -45,7 +45,7 @@
 				]);
 			}
 
-			if (this.Const.DLC.Wildmen)
+			if (::Const.DLC.Wildmen)
 			{
 				weapons.extend([
 					"weapons/bardiche"
@@ -55,7 +55,7 @@
 			items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 		}
 
-		if (items.hasEmptySlot(this.Const.ItemSlot.Offhand) && this.Math.rand(1, 100) <= 75)
+		if (items.hasEmptySlot(::Const.ItemSlot.Offhand) && this.Math.rand(1, 100) <= 75)
 		{
 			local shields = [
 				"shields/wooden_shield",
@@ -66,7 +66,7 @@
 			items.equip(this.new("scripts/items/" + shields[this.Math.rand(0, shields.len() - 1)]));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"mail_hauberk"
@@ -115,7 +115,7 @@
 			1,
 			"theamson_barbute_helmet"
 		]);
-		items.equip(this.Const.World.Common.pickHelmet(helm));
+		items.equip(::Const.World.Common.pickHelmet(helm));
 	}
 
 });

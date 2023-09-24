@@ -7,7 +7,7 @@ this.dodge_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Description = "Quick reflexes allow this character to add part of their current initiative to melee and ranged defense.";
 		this.m.Icon = "ui/perks/perk_01.png";
 		this.m.IconMini = "perk_01_mini";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = false;
 		this.m.IsHidden = true;
@@ -31,13 +31,13 @@ this.dodge_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Melee Defense"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Ranged Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Ranged Defense"
 			}
 		];
 	}

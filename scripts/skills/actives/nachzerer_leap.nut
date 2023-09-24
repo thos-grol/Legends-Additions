@@ -16,8 +16,8 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 		this.m.SoundOnHit = [
 			"sounds/enemies/ghoul_death_03.wav",
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OtherTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OtherTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -87,11 +87,11 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 		if (_user.getTile().IsVisibleForPlayer)
 		{
 			local _tile = _user.getTile()
-			if (this.Tactical.isValidTile(_tile.X, _tile.Y) && this.Const.Tactical.DustParticles.len() != 0)
+			if (this.Tactical.isValidTile(_tile.X, _tile.Y) && ::Const.Tactical.DustParticles.len() != 0)
 			{
-				for( local i = 0; i < this.Const.Tactical.DustParticles.len(); i = i )
+				for( local i = 0; i < ::Const.Tactical.DustParticles.len(); i = i )
 				{
-					this.Tactical.spawnParticleEffect(false, this.Const.Tactical.DustParticles[i].Brushes, _tile, this.Const.Tactical.DustParticles[i].Delay, this.Const.Tactical.DustParticles[i].Quantity * 0.5, this.Const.Tactical.DustParticles[i].LifeTimeQuantity * 0.5, this.Const.Tactical.DustParticles[i].SpawnRate, this.Const.Tactical.DustParticles[i].Stages);
+					this.Tactical.spawnParticleEffect(false, ::Const.Tactical.DustParticles[i].Brushes, _tile, ::Const.Tactical.DustParticles[i].Delay, ::Const.Tactical.DustParticles[i].Quantity * 0.5, ::Const.Tactical.DustParticles[i].LifeTimeQuantity * 0.5, ::Const.Tactical.DustParticles[i].SpawnRate, ::Const.Tactical.DustParticles[i].Stages);
 					i = ++i;
 				}
 			}
@@ -115,17 +115,17 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 		if (!_entity.isHiddenToPlayer())
 		{
 			local _tile = _tag.User.getTile()
-			if (this.Tactical.isValidTile(_tile.X, _tile.Y) && this.Const.Tactical.DustParticles.len() != 0)
+			if (this.Tactical.isValidTile(_tile.X, _tile.Y) && ::Const.Tactical.DustParticles.len() != 0)
 			{
-				for( local i = 0; i < this.Const.Tactical.DustParticles.len(); i = i )
+				for( local i = 0; i < ::Const.Tactical.DustParticles.len(); i = i )
 				{
-					this.Tactical.spawnParticleEffect(false, this.Const.Tactical.DustParticles[i].Brushes, _tile, this.Const.Tactical.DustParticles[i].Delay, this.Const.Tactical.DustParticles[i].Quantity * 0.5, this.Const.Tactical.DustParticles[i].LifeTimeQuantity * 0.5, this.Const.Tactical.DustParticles[i].SpawnRate, this.Const.Tactical.DustParticles[i].Stages);
+					this.Tactical.spawnParticleEffect(false, ::Const.Tactical.DustParticles[i].Brushes, _tile, ::Const.Tactical.DustParticles[i].Delay, ::Const.Tactical.DustParticles[i].Quantity * 0.5, ::Const.Tactical.DustParticles[i].LifeTimeQuantity * 0.5, ::Const.Tactical.DustParticles[i].SpawnRate, ::Const.Tactical.DustParticles[i].Stages);
 					i = ++i;
 				}
 			}
 
 			if (_entity.getTile().IsVisibleForPlayer && _tag.Skill.m.SoundOnHit.len() > 0)
-				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, _entity.getPos());
+				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _entity.getPos());
 		}
 		::logInfo("Leap 3");
 	}

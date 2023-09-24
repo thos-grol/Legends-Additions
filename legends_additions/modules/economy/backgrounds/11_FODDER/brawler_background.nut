@@ -8,15 +8,15 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.DaggerTree
+				::Const.Perks.DaggerTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
@@ -35,7 +35,7 @@
 			id = 12,
 			type = "text",
 			icon = "ui/icons/regular_damage.png",
-			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+25%[/color] Damage when unarmed"
+			text = "[color=" + ::Const.UI.Color.PositiveValue + "]+25%[/color] Damage when unarmed"
 		});
 		return ret;
 	}
@@ -46,7 +46,7 @@
 		actor.getFlags().set("ProficiencyBonusFist", true);
 
 		local items = this.getContainer().getActor().getItems();
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"sackcloth"

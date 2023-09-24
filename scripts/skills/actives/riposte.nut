@@ -15,8 +15,8 @@ this.riposte <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/riposte_02.wav",
 			"sounds/combat/riposte_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = false;
@@ -53,7 +53,7 @@ this.riposte <- this.inherit("scripts/skills/skill", {
 			id = 4,
 			type = "text",
 			icon = "ui/icons/hitchance.png",
-			text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] chance to hit"
+			text = "Has [color=" + ::Const.UI.Color.NegativeValue + "]-15%[/color] chance to hit"
 		});
 
 		return ret;
@@ -66,7 +66,7 @@ this.riposte <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInSwords ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInSwords ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onVerifyTarget( _originTile, _targetTile )
@@ -83,7 +83,7 @@ this.riposte <- this.inherit("scripts/skills/skill", {
 
 			if (!_user.isHiddenToPlayer())
 			{
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " uses Riposte");
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " uses Riposte");
 			}
 
 			return true;

@@ -43,7 +43,7 @@ this.cartographer_follower <- this.inherit("scripts/retinue/follower", {
 
 		local reward = this.Math.min(400, this.Math.max(100, 10 * dist));
 
-		if (_location.isLocationType(this.Const.World.LocationType.Unique))
+		if (_location.isLocationType(::Const.World.LocationType.Unique))
 		{
 			reward = reward * 2;
 		}

@@ -8,19 +8,19 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.BowTree,
-				this.Const.Perks.DaggerTree
+				::Const.Perks.BowTree,
+				::Const.Perks.DaggerTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = [
-				this.Const.Perks.RangerHuntMagicTree
+				::Const.Perks.RangerHuntMagicTree
 			]
 		};
 	}
@@ -28,9 +28,9 @@
 	o.onAddEquipment = function()
 	{
 		local talents = this.getContainer().getActor().getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.RangedSkill] = 3;
-		talents[this.Const.Attributes.Fatigue] = 3;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.RangedSkill] = 3;
+		talents[::Const.Attributes.Fatigue] = 3;
 		this.getContainer().getActor().fillTalentValues(2, true);
 		local items = this.getContainer().getActor().getItems();
 		local r;
@@ -43,7 +43,7 @@
 			items.addToBag(this.new("scripts/items/weapons/knife"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"padded_surcoat"
@@ -57,7 +57,7 @@
 				"leather_tunic"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"hood"

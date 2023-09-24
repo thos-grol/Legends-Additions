@@ -39,19 +39,19 @@ this.tiny_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5[/color] Melee Defense"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Ranged Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5[/color] Ranged Defense"
 			},
 			{
 				id = 12,
 				type = "text",
 				icon = "ui/icons/regular_damage.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] Melee Damage"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-15%[/color] Melee Damage"
 			}
 		];
 	}

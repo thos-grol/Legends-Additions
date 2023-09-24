@@ -15,12 +15,12 @@ this.perk_steadfast <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.steadfast";
-		this.m.Name = this.Const.Strings.PerkName.Steadfast;
-		this.m.Description = this.Const.Strings.PerkDescription.Steadfast;
+		this.m.Name = ::Const.Strings.PerkName.Steadfast;
+		this.m.Description = ::Const.Strings.PerkDescription.Steadfast;
 		this.m.Icon = "ui/perks/steadfast_circle.png";
 		this.m.IconDisabled = "ui/perks/steadfast_circle_bw.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;

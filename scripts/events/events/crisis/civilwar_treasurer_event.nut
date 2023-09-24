@@ -63,7 +63,7 @@ this.civilwar_treasurer_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "You threatened one of their treasurers");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "You threatened one of their treasurers");
 				this.World.Assets.addMoralReputation(1);
 				this.List.push({
 					id = 10,
@@ -86,12 +86,12 @@ this.civilwar_treasurer_event <- this.inherit("scripts/events/event", {
 					{
 						bro.improveMood(0.25, "You helped a farmer in peril");
 
-						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -118,7 +118,7 @@ this.civilwar_treasurer_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "You respected the authority of one of their treasurers");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "You respected the authority of one of their treasurers");
 			}
 
 		});
@@ -141,7 +141,7 @@ this.civilwar_treasurer_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "You threatened one of their treasurers");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "You threatened one of their treasurers");
 				this.World.Assets.addMoralReputation(-2);
 				local maxfood = this.Math.rand(2, 3);
 
@@ -176,7 +176,7 @@ this.civilwar_treasurer_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 		{
 			return;
 		}

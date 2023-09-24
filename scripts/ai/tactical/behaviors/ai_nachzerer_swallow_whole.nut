@@ -8,8 +8,8 @@ this.ai_nachzerer_swallow_whole <- this.inherit("scripts/ai/tactical/behavior", 
 	},
 	function create()
 	{
-		this.m.ID = this.Const.AI.Behavior.ID.SwallowWhole;
-		this.m.Order = this.Const.AI.Behavior.Order.SwallowWhole;
+		this.m.ID = ::Const.AI.Behavior.ID.SwallowWhole;
+		this.m.Order = ::Const.AI.Behavior.Order.SwallowWhole;
 		this.behavior.create();
 	}
 
@@ -19,49 +19,49 @@ this.ai_nachzerer_swallow_whole <- this.inherit("scripts/ai/tactical/behavior", 
 		this.m.TargetTile = null;
 		this.m.Skill = null;
 
-		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP)
+		if (_entity.getActionPoints() < ::Const.Movement.AutoEndTurnBelowAP)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing)
+		if (_entity.getMoraleState() == ::Const.MoraleState.Fleeing)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (!this.getAgent().hasVisibleOpponent())
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (this.getAgent().getKnownOpponents().len() <= 1)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
 
 		if (this.m.Skill == null)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		local targets = this.queryTargetsInMeleeRange();
 
 		if (targets.len() == 0)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		local bestTarget = this.getBestTarget(_entity, this.m.Skill, targets);
 
 		if (bestTarget.Target == null)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		this.m.TargetTile = bestTarget.Target.getTile();
-		return this.Const.AI.Behavior.Score.SwallowWhole * 100;
+		return ::Const.AI.Behavior.Score.SwallowWhole * 100;
 	}
 
 	function onExecute( _entity )
@@ -75,7 +75,7 @@ this.ai_nachzerer_swallow_whole <- this.inherit("scripts/ai/tactical/behavior", 
 
 		if (this.m.TargetTile != null && this.m.TargetTile.IsOccupiedByActor)
 		{
-			if (this.Const.AI.VerboseMode)
+			if (::Const.AI.VerboseMode)
 			{
 				this.logInfo("* " + _entity.getName() + ": Using Swallow Whole against " + this.m.TargetTile.getEntity().getName() + "!");
 			}
@@ -116,7 +116,7 @@ this.ai_nachzerer_swallow_whole <- this.inherit("scripts/ai/tactical/behavior", 
 			score = score + p.getMeleeDefense();
 			score = score + p.getMeleeSkill() * 0.25;
 			score = score + target.getHitpoints() * 0.25;
-			score = score + (target.getArmor(this.Const.BodyPart.Body) * (p.HitChance[this.Const.BodyPart.Body] / 100.0) + target.getArmor(this.Const.BodyPart.Head) * (p.HitChance[this.Const.BodyPart.Head] / 100.0)) * 0.1;
+			score = score + (target.getArmor(::Const.BodyPart.Body) * (p.HitChance[::Const.BodyPart.Body] / 100.0) + target.getArmor(::Const.BodyPart.Head) * (p.HitChance[::Const.BodyPart.Head] / 100.0)) * 0.1;
 			score = score * p.TargetAttractionMult;
 
 			if (score > bestScore)

@@ -45,8 +45,8 @@ this.graverobber_vs_gravedigger_event <- this.inherit("scripts/events/event", {
 				_event.m.Graverobber.worsenMood(0.5, "Got in a brawl with " + _event.m.Gravedigger.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
-					text = _event.m.Graverobber.getName() + this.Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
+					text = _event.m.Graverobber.getName() + ::Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
 				});
 
 				if (this.Math.rand(1, 100) <= 50)
@@ -65,8 +65,8 @@ this.graverobber_vs_gravedigger_event <- this.inherit("scripts/events/event", {
 				_event.m.Gravedigger.worsenMood(0.5, "Got in a brawl with " + _event.m.Graverobber.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Gravedigger.getMoodState()],
-					text = _event.m.Gravedigger.getName() + this.Const.MoodStateEvent[_event.m.Gravedigger.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Gravedigger.getMoodState()],
+					text = _event.m.Gravedigger.getName() + ::Const.MoodStateEvent[_event.m.Gravedigger.getMoodState()]
 				});
 			}
 

@@ -29,15 +29,15 @@
 				::Const.Perks.AxeTree,
 			],
 			Defense = [
-				this.Const.Perks.HeavyArmorTree
+				::Const.Perks.HeavyArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree
+				::Const.Perks.TrainedTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.BeastClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.BeastClassTree
 			],
 			Magic = []
 		};
@@ -49,7 +49,7 @@
 		local items = this.getContainer().getActor().getItems();
 		local r;
 
-		if (items.hasEmptySlot(this.Const.ItemSlot.Mainhand))
+		if (items.hasEmptySlot(::Const.ItemSlot.Mainhand))
 		{
 			local weapons = [
 				"weapons/shamshir",
@@ -63,7 +63,7 @@
 				"weapons/fighting_spear"
 			];
 
-			if (this.Const.DLC.Wildmen)
+			if (::Const.DLC.Wildmen)
 			{
 				weapons.extend([
 					"weapons/two_handed_flail",
@@ -77,7 +77,7 @@
 			items.equip(item);
 		}
 
-		if (items.hasEmptySlot(this.Const.ItemSlot.Offhand))
+		if (items.hasEmptySlot(::Const.ItemSlot.Offhand))
 		{
 			local offhand = [
 				"tools/throwing_net",
@@ -89,7 +89,7 @@
 			items.equip(item);
 		}
 
-		local a = this.Const.World.Common.pickArmor([
+		local a = ::Const.World.Common.pickArmor([
 			[
 				1,
 				"oriental/gladiator_harness"
@@ -107,7 +107,7 @@
 		}
 
 		items.equip(a);
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"oriental/gladiator_helmet",

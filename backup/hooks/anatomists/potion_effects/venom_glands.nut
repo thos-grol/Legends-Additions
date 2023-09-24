@@ -280,7 +280,7 @@
 			return;
 		}
 
-		if (_targetEntity.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury))
+		if (_targetEntity.getSkills().hasSkillOfType(::Const.SkillType.TemporaryInjury))
 		{
 			_properties.DamageTotalMult *= 1.2;
 		}

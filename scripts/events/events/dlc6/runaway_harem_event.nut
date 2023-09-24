@@ -78,10 +78,10 @@ this.runaway_harem_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
 					}
 				];
-				_event.m.Citystate.addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "You aided in the escape of a Vizier\'s harem");
+				_event.m.Citystate.addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "You aided in the escape of a Vizier\'s harem");
 			}
 
 		});
@@ -121,19 +121,20 @@ this.runaway_harem_event <- this.inherit("scripts/events/event", {
 				local roster = this.World.getTemporaryRoster();
 				_event.m.Dude = roster.create("scripts/entity/tactical/player");
 				_event.m.Dude.setStartValuesEx([
-					"female_slave_southern_background"
+					"slave_southern_background"
 				]);
 				_event.m.Dude.setTitle("of the dance");
+				_event.m.Dude.getBackground().setGender_event();
 				_event.m.Dude.getBackground().m.RawDescription = "You rescued %name% from a life in slavery after she was forced into the vizier\'s harem. She seeks revenge on the vizier.";
 				_event.m.Dude.getBackground().buildDescription(true);
-				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand));
-				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand));
+				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand));
+				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand));
 				_event.m.Dude.getItems().equip(this.new("scripts/items/weapons/oriental/qatal_dagger"));
 				local talents = _event.m.Dude.getTalents();
-				talents.resize(this.Const.Attributes.COUNT, 0);
-				talents[this.Const.Attributes.MeleeSkill] = 3;
-				talents[this.Const.Attributes.MeleeDefense] = 3;
-				talents[this.Const.Attributes.Bravery] = 3;
+				talents.resize(::Const.Attributes.COUNT, 0);
+				talents[::Const.Attributes.MeleeSkill] = 3;
+				talents[::Const.Attributes.MeleeDefense] = 3;
+				talents[::Const.Attributes.Bravery] = 3;
 				_event.m.Dude.getSkills().add(this.new("scripts/skills/perks/perk_coup_de_grace"));
 				_event.m.Dude.getSkills().add(this.new("scripts/skills/perks/perk_legend_favoured_enemy_southerner"));
 				_event.m.Dude.getSkills().add(this.new("scripts/skills/traits/natural_trait"));
@@ -141,11 +142,11 @@ this.runaway_harem_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.worsenMood(1.0, "Got taken captive by manhunters");
 				_event.m.Dude.improveMood(2.0, "Got saved from a life in slavery");
 				this.Characters.push(_event.m.Dude.getImagePath());
-				local cityStates = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.OrientalCityState);
+				local cityStates = this.World.FactionManager.getFactionsOfType(::Const.FactionType.OrientalCityState);
 
 				foreach( c in cityStates )
 				{
-					c.addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "You aided in the escape of a Vizier\'s harem");
+					c.addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "You aided in the escape of a Vizier\'s harem");
 				}
 			}
 
@@ -174,10 +175,10 @@ this.runaway_harem_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]150[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]150[/color] Crowns"
 					}
 				];
-				_event.m.Citystate.addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "You helped to return a Vizier\'s harem");
+				_event.m.Citystate.addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "You helped to return a Vizier\'s harem");
 			}
 
 		});
@@ -207,14 +208,14 @@ this.runaway_harem_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Desert)
+		if (!::Const.DLC.Desert)
 		{
 			return;
 		}
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Desert && currentTile.TacticalType != this.Const.World.TerrainTacticalType.DesertHills)
+		if (currentTile.Type != ::Const.World.TerrainType.Desert && currentTile.TacticalType != ::Const.World.TerrainTacticalType.DesertHills)
 		{
 			return;
 		}

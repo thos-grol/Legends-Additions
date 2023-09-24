@@ -86,14 +86,14 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationOffense, "Ambushed some of their men");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationOffense, "Ambushed some of their men");
 				this.World.Assets.addMoralReputation(-1);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation decreases slightly"
 				});
-				_event.m.Town.getFactionOfType(this.Const.FactionType.Settlement).addPlayerRelation(this.Const.World.Assets.RelationFavor, "Helped in an ambush against " + _event.m.NobleHouse.getName());
+				_event.m.Town.getFactionOfType(::Const.FactionType.Settlement).addPlayerRelation(::Const.World.Assets.RelationFavor, "Helped in an ambush against " + _event.m.NobleHouse.getName());
 				local item;
 				local banner = _event.m.NobleHouse.getBanner();
 				local r;
@@ -120,7 +120,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 				r = this.Math.rand(1, 4);
 
@@ -136,7 +136,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 				}
 				else
 				{
-					item = this.Const.World.Common.pickArmor([
+					item = ::Const.World.Common.pickArmor([
 						[
 							1,
 							"mail_shirt"
@@ -152,7 +152,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 			}
 
@@ -176,14 +176,14 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationFavor, "Saved some of their men");
-				_event.m.Town.getFactionOfType(this.Const.FactionType.Settlement).addPlayerRelation(this.Const.World.Assets.RelationOffense, "Killed some of their men");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationFavor, "Saved some of their men");
+				_event.m.Town.getFactionOfType(::Const.FactionType.Settlement).addPlayerRelation(::Const.World.Assets.RelationOffense, "Killed some of their men");
 				local money = this.Math.rand(50, 80);
 				this.World.Assets.addMoney(money);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 				local item;
 				local r = this.Math.rand(1, 5);
@@ -213,7 +213,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 			}
 
@@ -229,7 +229,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 
 		local playerTile = this.World.State.getPlayer().getTile();
 
-		if (playerTile.Type != this.Const.World.TerrainType.Forest && playerTile.Type != this.Const.World.TerrainType.LeaveForest && playerTile.Type != this.Const.World.TerrainType.AutumnForest)
+		if (playerTile.Type != ::Const.World.TerrainType.Forest && playerTile.Type != ::Const.World.TerrainType.LeaveForest && playerTile.Type != ::Const.World.TerrainType.AutumnForest)
 		{
 			return;
 		}
@@ -259,7 +259,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		local nobleHouses = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+		local nobleHouses = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 		local candidates = [];
 
 		foreach( h in nobleHouses )

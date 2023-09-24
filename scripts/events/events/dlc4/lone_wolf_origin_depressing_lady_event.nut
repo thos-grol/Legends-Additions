@@ -32,7 +32,7 @@ this.lone_wolf_origin_depressing_lady_event <- this.inherit("scripts/events/even
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Wildmen)
+		if (!::Const.DLC.Wildmen)
 		{
 			return;
 		}

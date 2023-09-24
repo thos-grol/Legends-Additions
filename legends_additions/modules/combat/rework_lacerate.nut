@@ -26,7 +26,7 @@
 //         local actor = this.getContainer().getActor();
 //         local effect = this.new("scripts/skills/effects/bleeding_effect");
 //         local damage = actor.getFlags().has("bleed_aura") ? actor.getFlags().getAsInt("bleed_aura") : 5;
-//         if (actor.getFaction() == this.Const.Faction.Player) effect.setActor(this.getContainer().getActor());
+//         if (actor.getFaction() == ::Const.Faction.Player) effect.setActor(this.getContainer().getActor());
 //         effect.setDamage(damage);
 //         _targetEntity.getSkills().add(effect);
 

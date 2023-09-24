@@ -2,14 +2,14 @@
     
     o.setStartValuesEx = function( _backgrounds, _addTraits = true, _gender = -1, _addEquipment = true )
 	{
-		if (this.isSomethingToSee() && this.World.getTime().Days >= 7) _backgrounds = this.Const.CharacterPiracyBackgrounds;
+		if (this.isSomethingToSee() && this.World.getTime().Days >= 7) _backgrounds = ::Const.CharacterPiracyBackgrounds;
 	
 		local background = this.new("scripts/skills/backgrounds/" + _backgrounds[this.Math.rand(0, _backgrounds.len() - 1)]);
-		if (::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() == "All") 
+		if (::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled") 
             background.setGender(_gender);
 		this.m.Skills.add(background);
 		background.buildDescription();
-		if (background.isBackgroundType(this.Const.BackgroundType.Female)) 
+		if (background.isBackgroundType(::Const.BackgroundType.Female)) 
             this.setGender(1);
 		
 
@@ -77,14 +77,14 @@
 		if (_addTraits)
 		{
 			this.fillTalentValues(3);
-			this.fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
+			this.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 		}
 	}
 
 	o.fillTalentValues = function( _num, _force = false )
 	{
-		this.m.Talents.resize(this.Const.Attributes.COUNT, 0);
-		if (this.getBackground() != null && this.getBackground().isBackgroundType(this.Const.BackgroundType.Untalented) && !_force) return;
+		this.m.Talents.resize(::Const.Attributes.COUNT, 0);
+		if (this.getBackground() != null && this.getBackground().isBackgroundType(::Const.BackgroundType.Untalented) && !_force) return;
 		
 
 		local attributes = [];
@@ -93,13 +93,13 @@
 
 		if (this.getFlags().has("Intelligent"))
 		{
-			this.getTalents()[this.Const.Attributes.MeleeDefense] = ::Math.rand(2,3);
+			this.getTalents()[::Const.Attributes.MeleeDefense] = ::Math.rand(2,3);
 			_num -= 1;
 		}
 
 		if (this.getFlags().has("Commander"))
 		{
-			this.getTalents()[this.Const.Attributes.Bravery] = ::Math.rand(2,3);
+			this.getTalents()[::Const.Attributes.Bravery] = ::Math.rand(2,3);
 			_num -= 1;
 		}
 
@@ -113,11 +113,11 @@
 			}
 			else
 			{
-				if (this.getFlags().has("PlayerZombie") && (i == this.Const.Attributes.Bravery || i == this.Const.Attributes.Fatigue || i == this.Const.Attributes.Initiative))
+				if (this.getFlags().has("PlayerZombie") && (i == ::Const.Attributes.Bravery || i == ::Const.Attributes.Fatigue || i == ::Const.Attributes.Initiative))
 				{
 					continue;
 				}
-				else if (this.getFlags().has("PlayerSkeleton") && (i == this.Const.Attributes.Bravery || i == this.Const.Attributes.Fatigue || i == this.Const.Attributes.Hitpoints))
+				else if (this.getFlags().has("PlayerSkeleton") && (i == ::Const.Attributes.Bravery || i == ::Const.Attributes.Fatigue || i == ::Const.Attributes.Hitpoints))
 				{
 					continue;
 				}

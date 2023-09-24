@@ -8,16 +8,16 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.orc_fortress";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.orc_camp";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.None;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.None;
 		this.m.CombatLocation.CutDownTrees = true;
 		this.m.IsShowingDefenders = false;
 		this.m.IsShowingBanner = true;
 		this.m.IsDespawningDefenders = false;
 		this.m.Resources = 500;
-		this.m.NamedWeaponsList = this.Const.Items.NamedOrcWeapons;
-		this.m.NamedShieldsList = this.Const.Items.NamedOrcShields;
+		this.m.NamedWeaponsList = ::Const.Items.NamedOrcWeapons;
+		this.m.NamedShieldsList = ::Const.Items.NamedOrcShields;
 	}
 
 	o.onSpawned = function()
@@ -27,25 +27,25 @@
 
 		for( local i = 0; i < 16; i = i )
 		{
-			this.Const.World.Common.addTroop(this, this.Const.World.Spawn.Troops.OrcYoung, false);
+			::Const.World.Common.addTroop(this, ::Const.World.Spawn.Troops.OrcYoung, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 8; i = i )
 		{
-			this.Const.World.Common.addTroop(this, this.Const.World.Spawn.Troops.OrcBerserker, false);
+			::Const.World.Common.addTroop(this, ::Const.World.Spawn.Troops.OrcBerserker, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 15; i = i )
 		{
-			this.Const.World.Common.addTroop(this, this.Const.World.Spawn.Troops.OrcWarrior, false);
+			::Const.World.Common.addTroop(this, ::Const.World.Spawn.Troops.OrcWarrior, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 3; i = i )
 		{
-			this.Const.World.Common.addTroop(this, this.Const.World.Spawn.Troops.OrcWarlord, false);
+			::Const.World.Common.addTroop(this, ::Const.World.Spawn.Troops.OrcWarlord, false);
 			i = ++i;
 		}
 	}
@@ -65,7 +65,7 @@
 			"trade/dies_item",
 			"loot/white_pearls_item"
 		], _lootTable);
-		_lootTable.push(this.Const.World.Common.pickHelmet([
+		_lootTable.push(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"legendary/emperors_countenance"

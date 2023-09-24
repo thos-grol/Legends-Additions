@@ -82,7 +82,7 @@ this.civilwar_intro_event <- this.inherit("scripts/events/event", {
 			"noblehouse1",
 			this.m.NobleHouse.getNameOnly()
 		]);
-		local nobles = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+		local nobles = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 		local noblehouse2;
 
 		do

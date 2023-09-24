@@ -25,11 +25,11 @@ this.perk_battle_flow <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.battle_flow";
-		this.m.Name = this.Const.Strings.PerkName.BattleFlow;
-		this.m.Description = this.Const.Strings.PerkDescription.BattleFlow;
+		this.m.Name = ::Const.Strings.PerkName.BattleFlow;
+		this.m.Description = ::Const.Strings.PerkDescription.BattleFlow;
 		this.m.Icon = "ui/perks/perk_41.png";
-		this.m.Type = this.Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = true;

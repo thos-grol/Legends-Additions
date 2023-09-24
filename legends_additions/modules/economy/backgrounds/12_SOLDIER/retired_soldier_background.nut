@@ -9,19 +9,19 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.AxeTree,
-				this.Const.Perks.ShieldTree
+				::Const.Perks.AxeTree,
+				::Const.Perks.ShieldTree
 			],
 			Defense = [
-				this.Const.Perks.HeavyArmorTree,
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.HeavyArmorTree,
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree,
+				::Const.Perks.TrainedTree,
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
@@ -41,7 +41,7 @@
 			items.equip(this.new("scripts/items/shields/wooden_shield"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"patched_mail_shirt"
@@ -59,7 +59,7 @@
 				"worn_mail_shirt"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				2,
 				""

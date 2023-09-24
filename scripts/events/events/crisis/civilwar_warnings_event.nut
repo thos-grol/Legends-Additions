@@ -30,7 +30,7 @@ this.civilwar_warnings_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (this.World.FactionManager.getGreaterEvilType() == this.Const.World.GreaterEvilType.CivilWar && this.World.FactionManager.getGreaterEvilPhase() == this.Const.World.GreaterEvilPhase.Warning)
+		if (this.World.FactionManager.getGreaterEvilType() == ::Const.World.GreaterEvilType.CivilWar && this.World.FactionManager.getGreaterEvilPhase() == ::Const.World.GreaterEvilPhase.Warning)
 		{
 			local playerTile = this.World.State.getPlayer().getTile();
 
@@ -39,7 +39,7 @@ this.civilwar_warnings_event <- this.inherit("scripts/events/event", {
 				return;
 			}
 
-			if (this.Const.DLC.Desert && playerTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+			if (::Const.DLC.Desert && playerTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 			{
 				return;
 			}
@@ -69,7 +69,7 @@ this.civilwar_warnings_event <- this.inherit("scripts/events/event", {
 
 	function onPrepareVariables( _vars )
 	{
-		local nobles = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+		local nobles = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 		_vars.push([
 			"noblehouse",
 			nobles[0].getName()

@@ -21,19 +21,19 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.undead_necropolis";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.ruins";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.Walls;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.Walls;
 		this.m.CombatLocation.CutDownTrees = false;
 		this.m.CombatLocation.ForceLineBattle = true;
 		this.m.CombatLocation.AdditionalRadius = 5;
 		this.m.IsShowingDefenders = false;
 		this.m.IsShowingBanner = true;
 		local r = this.Math.rand(1, 3);
-		this.setDefenderSpawnList(this.Const.World.Spawn.UndeadScourge);
+		this.setDefenderSpawnList(::Const.World.Spawn.UndeadScourge);
 		this.m.Resources = 350;
-		this.m.NamedWeaponsList = this.Const.Items.NamedUndeadWeapons;
-		this.m.NamedShieldsList = this.Const.Items.NamedUndeadShields;
+		this.m.NamedWeaponsList = ::Const.Items.NamedUndeadWeapons;
+		this.m.NamedShieldsList = ::Const.Items.NamedUndeadShields;
 	}
 
 	o.onSpawned = function()
@@ -72,7 +72,7 @@
 
 	o.onCombatLost = function()
 	{
-		this.getTile().spawnDetail(this.m.SettlementSprite + "_ruins", this.Const.World.ZLevel.Object - 3, 0, false);
+		this.getTile().spawnDetail(this.m.SettlementSprite + "_ruins", ::Const.World.ZLevel.Object - 3, 0, false);
 		this.World.EntityManager.onWorldEntityDestroyed(this, true);
 		this.world_entity.onCombatLost();
 	}

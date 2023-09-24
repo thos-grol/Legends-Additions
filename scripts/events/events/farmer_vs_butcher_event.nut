@@ -31,7 +31,7 @@ this.farmer_vs_butcher_event <- this.inherit("scripts/events/event", {
 
 				if (this.Math.rand(1, 100) <= 50)
 				{
-					local injury1 = _event.m.Butcher.addInjury(this.Const.Injury.Brawl);
+					local injury1 = _event.m.Butcher.addInjury(::Const.Injury.Brawl);
 					this.List.push({
 						id = 10,
 						icon = injury1.getIcon(),
@@ -51,13 +51,13 @@ this.farmer_vs_butcher_event <- this.inherit("scripts/events/event", {
 				_event.m.Butcher.worsenMood(0.5, "Got in a brawl with " + _event.m.Farmer.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Butcher.getMoodState()],
-					text = _event.m.Butcher.getName() + this.Const.MoodStateEvent[_event.m.Butcher.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Butcher.getMoodState()],
+					text = _event.m.Butcher.getName() + ::Const.MoodStateEvent[_event.m.Butcher.getMoodState()]
 				});
 
 				if (this.Math.rand(1, 100) <= 50)
 				{
-					local injury2 = _event.m.Farmer.addInjury(this.Const.Injury.Brawl);
+					local injury2 = _event.m.Farmer.addInjury(::Const.Injury.Brawl);
 					this.List.push({
 						id = 10,
 						icon = injury2.getIcon(),
@@ -77,8 +77,8 @@ this.farmer_vs_butcher_event <- this.inherit("scripts/events/event", {
 				_event.m.Farmer.worsenMood(0.5, "Got in a brawl with " + _event.m.Butcher.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Farmer.getMoodState()],
-					text = _event.m.Farmer.getName() + this.Const.MoodStateEvent[_event.m.Farmer.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Farmer.getMoodState()],
+					text = _event.m.Farmer.getName() + ::Const.MoodStateEvent[_event.m.Farmer.getMoodState()]
 				});
 			}
 

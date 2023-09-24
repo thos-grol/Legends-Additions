@@ -12,7 +12,7 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "ui/traits/trait_icon_59.png";
 		this.m.IconMini = "weakness_mini";
 		this.m.Overlay = "weakness";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsRemovedAfterBattle = true;
@@ -45,7 +45,7 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + getBonus() + "%[/color] Damage"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-" + getBonus() + "%[/color] Damage"
 			}
 		];
 	}
@@ -76,7 +76,7 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 		)
 		{
 			if (!actor.isHiddenToPlayer())
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " resisted being weakend");
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " resisted being weakend");
 			this.removeSelf();
 			return;
 		}

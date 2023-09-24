@@ -16,39 +16,69 @@
 	addNCSetting(map, ::MSU.Class.BooleanSetting("StackCitadels", true, "Decked Out Citadels", "If enabled, every Citadel will start with all those building attachments map scummers are re-rolling for."));
 	addNCSetting(map, ::MSU.Class.BooleanSetting("AllTradeLocations", true, "All trade buildings available", "If enabled, ensures there is at least one of each trade location building on the map."));
 	addNCSetting(map, ::MSU.Class.BooleanSetting("DebugMap", false, "(Debug) Show Entire Map", "If enabled, the map will start completely revealed and all enemies and camps will be visible."));
-
-	::Legends.Mod.ModSettings.getSetting("LandRatio").lock("Locked.");
-	::Legends.Mod.ModSettings.getSetting("Water").lock("Locked.");
-	::Legends.Mod.ModSettings.getSetting("Snowline").lock("Locked.");
-	::Legends.Mod.ModSettings.getSetting("Settlements").lock("Locked.");
-	::Legends.Mod.ModSettings.getSetting("Factions").lock("Locked.");
 	::Legends.Mod.ModSettings.getSetting("StackCitadels").lock("Locked.");
 	::Legends.Mod.ModSettings.getSetting("AllTradeLocations").lock("Locked.");
 
 	local config = ::Legends.Mod.ModSettings.addPage("Campaign Options");
-	addNCSetting(config, ::MSU.Class.EnumSetting("GenderEquality", "All", [
+	addNCSetting(config, ::MSU.Class.EnumSetting("GenderEquality", "Enabled", [
 		"Disabled",
-		"Specific",
-		"All"
-	], "Battle Sisters", "Disabled:\nThe vanilla experience. No backgrounds or enemy encounters with females. (Yes, your friend the Hex is still here!)\n\nSpecific:\nLegend curated female backgrounds and enemies can be found and recruited throughout your adventure.\n\nAll:\nAll commanders and most backgrounds will have a chance of being any gender."));
+		"Enabled",
+		"Enabled (Cosmetic)"
+	], "Battle Sisters", "When enabled, most backgrounds will be randomly assigned male or female. Some backgrounds will remain exclusively male or female.\n\n[u]Disabled[/u]\nThe vanilla experience. No backgrounds or enemy encounters with females. (Yes, your friend the Hex is still here!)\n\n[u]Enabled[/u]\nBeing female has gameplay effects.\n\n[u]Enabled (Cosmetic)[/u]\nBeing female has no gameplay effects."));
 	addNCSetting(config, ::MSU.Class.SettingsDivider("ConfigDivider1"));
-	addNCSetting(config, ::MSU.Class.BooleanSetting("PerkTrees", true, "Dynamic Perks", "If enabled, all recruits for hire will have a unique perk tree including new Legends perks. \n\n Detail: Dynamic perk trees are half determined by background, and half randomly chosen from perk groups. Perk groups align around a theme, and you can see hints about the perks of potential recruits in their background description. Recruits will also have their stats and talents modifed to align with their new perks"));
 	addNCSetting(config, ::MSU.Class.BooleanSetting("DistanceScaling", true, "Distance Scaling", "If enabled, enemies will be stronger the further they spawn from civilization. \n\n Detail: Begins at 14 tiles from the nearest town, enemies spawned at 28 tiles will be twice as strong. \n\n This is in addition to other difficulty settings."));
 	addNCSetting(config, ::MSU.Class.BooleanSetting("SkipCamp", true, "Skip Camp Tutorial", "If disabled, you will gradually unlock camping activities by visiting towns. Useful for first playthroughs. \n\n Detail: skips the camp unlock events and ambition, you still need to buy upgrades."));
 	addNCSetting(config, ::MSU.Class.BooleanSetting("RecruitScaling", true, "Recruit Scaling", "If enabled, new recruits will gain levels based on the levels in your party and your renown in the world. \n\n  Details: The maximum level of recruits is increased by half the average level of mercs in your company, averaged with your reputation divided by 1,000. \n\n For example: if your company were all level 10, and your renown was 10,000, new recruits could gain up to 7 levels rounded down. \n\n This in addition to normal recruit level variance."));
 	addNCSetting(config, ::MSU.Class.BooleanSetting("BleedKiller", true, "Bleeds Count As Kills", "If enabled, kills by bleeding out are granted to the actor who caused the bleed."));
 	addNCSetting(config, ::MSU.Class.BooleanSetting("WorldEconomy", true, "World Economy", "If enabled, Settlements will actively trade items and resources and can grow or decline in value \n\n  Details: The value of a settlement is now a dynamic value that grows and declines with caravan arrivals and departures, contracts fullfilled or failed, good or bad settlement events. \n\n The value of the settlement determines how valuable the caravans it creates are, as well as the strength of local militia. \n\n Very prosperous settlements will continue to grow and potentialy add new locations."));
 	addNCSetting(config, ::MSU.Class.SettingsDivider("ConfigDivider2"));
-	addNCSetting(config, ::MSU.Class.BooleanSetting("UnlayeredArmor", false, "Unlayered Armor[LEGACY]", "[color=" + this.Const.UI.Color.NegativeValue + "]LEGACY OPTION, NOT RECOMMENDED.[/color]\n\nIn Legends, armor is arranged in layers, hundreds of pieces combine into millions of visual combinations. \n\n Detail: Armor is made up of a base cloth layer, chain, plate, tabard, cloak, attachment and finally a rune layer.\n\nHelmet is made up of a base hood layer, helmet layer, top layer, vanity layer and finally a rune layer.\n\nEach layer can be upgraded individually, allowing flexible armor builds and aesthetics\n\nIf this option is checked, layered armor is disabled."));
-	local combat = ::Legends.Mod.ModSettings.addPage("Combat");
-	combat.addElement(::MSU.Class.BooleanSetting("EnhancedTooltips", false, "Enhanced Enemy Tooltips", "Enemy tooltips in tactical battles will show more information, like perks and statuses"));
+	local tooltip = ::Legends.Mod.ModSettings.addPage("Tooltips / UI");
+	tooltip.addTitle("TooltipCombat", "Tooltips - Combat");
+	tooltip.addElement(::MSU.Class.BooleanSetting("EnhancedTooltips", true, "Enhanced Enemy Tooltips", "Enemy tooltips in tactical battles will show more information, like perks and statuses"));
+	::Legends.Mod.ModSettings.getSetting("EnhancedTooltips").lock("Locked.");
+	tooltip.addDivider("TooltipDivider1");
+	tooltip.addTitle("TooltipInventory", "Tooltips - Inventory");
+	tooltip.addElement(::MSU.Class.BooleanSetting("ShowArmorPerFatigueValue", true, "Show Armor/Fatigue Efficiency", "Show the Armor value gained per unit of Fatigue cost of an Armor/Helmet Piece/Layer in the Tooltip when the player mouses over an individual Armor/Helmet Piece/Layer.\n\nUseful for people who like to buy their groceries based on price per unit weight"));
+	tooltip.addElement(::MSU.Class.BooleanSetting("ShowExpandedArmorLayerTooltip", true, "Expanded Armor Layer Tooltips", "Show the Armor value and Fatigue cost of each Armor/Helmet layer in the Tooltip when the player mouses over a combined Armor/Helmet set.\n\nDisabling this may help reduce the Tooltip length to fit better on lower resolution screens"));
+	tooltip.addDivider("TooltipDivider2");
+	tooltip.addTitle("TooltipCharacter", "Tooltips - Character");
+	tooltip.addElement(::MSU.Class.BooleanSetting("ShowCharacterBackgroundType", true, "Show Character Background Types", "Show a character\'s Background Types in Tooltips.\n\nUseful when playing Origins with additional gameplay mechanics based on Background Types"));
+	tooltip.addDivider("TooltipDivider3");
+	tooltip.addTitle("TooltipUI", "UI");
+	local cpLight = tooltip.addElement(::MSU.Class.ColorPickerSetting("HighlightLightBackground", "2,55,189,1", "Highlighted Text (Light Background)", "Customize the color for special highlighted text occurring in light backgrounds, such as in tooltips"));
+	::Const.UI.Color.getHighlightLightBackgroundValue <- function ()
+	{
+		return "#" + cpLight.getValueAsHexString().slice(0, 6);
+	};
+	local cpDark = tooltip.addElement(::MSU.Class.ColorPickerSetting("HighlightDarkBackground", "111,145,201,1", "Highlighted Text (Dark Background)", "Customize the color of special highlighted text occurring in dark backgrounds, such as in events"));
+	::Const.UI.Color.getHighlightDarkBackgroundValue <- function ()
+	{
+		return "#" + cpDark.getValueAsHexString().slice(0, 6);
+	};
+	tooltip.addElement(::MSU.Class.EnumSetting("ContractCategoryIconAlignment", "Middle", [
+		"Left",
+		"Middle",
+		"Right",
+		"Below"
+	], "Contract Category Icon Alignment", "Adjust the position of the Contract Category icon at the bottom of Contracts in the Settlement screen"));
 	local misc = ::Legends.Mod.ModSettings.addPage("Misc");
 	local myEnumTooltip = "Define how Blueprints are shown: \'All Ingredients Available\' is the Vanilla behavior; \'One Ingredient Available\' shows recipes when one ingredient is fully satisfied; \'Always\' shows all recipes at all time";
-	misc.addElement(::MSU.Class.EnumSetting("ShowBlueprintsWhen", "Always", [
+	misc.addElement(::MSU.Class.EnumSetting("ShowBlueprintsWhen", "All Ingredients Available", [
 		"All Ingredients Available",
 		"One Ingredient Available",
 		"Always"
 	], "Show Blueprints when", myEnumTooltip));
 	misc.addElement(::MSU.Class.BooleanSetting("AutoRepairLayer", false, "Autorepair Layer", "Any Body or Helmet Layer that you strip from a piece of armor is automatically marked as \'to be repaired\'."));
-};
+	misc.addElement(::MSU.Class.BooleanSetting("ClickPresetToSwitch", false, "Faster Camping Preset Switch", "Clicking on the camping preset slot immediately applies the preset"));
+	local logging = ::Legends.Mod.ModSettings.addPage("Logging");
 
+	foreach( f in ::Const.LegendMod.Debug.FlagDefs )
+	{
+		local b = logging.addElement(::MSU.Class.BooleanSetting(f.ID, f.Value, f.Name, f.Description));
+		b.Data.FlagID <- f.ID;
+		b.addCallback(function ( _value )
+		{
+			::Legends.Mod.Debug.setFlag(this.Data.FlagID, _value);
+		});
+	}
+};

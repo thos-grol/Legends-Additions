@@ -3,7 +3,7 @@
 
     o.onUpdateScore = function()
 	{
-		if (!this.Const.DLC.Wildmen)
+		if (!::Const.DLC.Wildmen)
 		{
 			return;
 		}

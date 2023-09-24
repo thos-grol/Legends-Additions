@@ -13,8 +13,8 @@ this.legend_hold_the_line <- this.inherit("scripts/skills/skill", {
 		this.m.SoundOnUse = [
 			"sounds/combat/holdtheline_01.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.BeforeLast;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.BeforeLast;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = false;
@@ -52,7 +52,7 @@ this.legend_hold_the_line <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/regular_damage.png",
-				text = "Receive only [color=" + this.Const.UI.Color.PositiveValue + "]75%[/color] of any damage"
+				text = "Receive only [color=" + ::Const.UI.Color.PositiveValue + "]75%[/color] of any damage"
 			},
 			{
 				id = 6,
@@ -88,8 +88,8 @@ this.legend_hold_the_line <- this.inherit("scripts/skills/skill", {
 				a.getSkills().add(effect);
 			}
 
-			local offhand = a.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-			if (offhand != null && offhand.isItemType(this.Const.Items.ItemType.Shield))
+			local offhand = a.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
+			if (offhand != null && offhand.isItemType(::Const.Items.ItemType.Shield))
 			{
 				if (!a.getSkills().hasSkill("effects.shieldwall"))
 				{

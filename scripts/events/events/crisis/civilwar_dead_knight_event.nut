@@ -31,7 +31,7 @@ this.civilwar_dead_knight_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local item = this.Const.World.Common.pickHelmet([
+				local item = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"faction_helm"
@@ -42,7 +42,7 @@ this.civilwar_dead_knight_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 			}
 
@@ -71,7 +71,7 @@ this.civilwar_dead_knight_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 			}
 

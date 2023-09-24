@@ -141,7 +141,7 @@ this.bastard_assassin_event <- this.inherit("scripts/events/event", {
 						this.World.getTemporaryRoster().clear();
 						_event.m.Assassin.onHired();
 						_event.m.Bastard.getItems().transferToStash(this.World.Assets.getStash());
-						_event.m.Bastard.getSkills().onDeath(this.Const.FatalityType.None);
+						_event.m.Bastard.getSkills().onDeath(::Const.FatalityType.None);
 						this.World.Statistics.addFallen(_event.m.Bastard, "Left to claim their birthright");
 						this.World.getPlayerRoster().remove(_event.m.Bastard);
 						_event.m.Bastard = null;
@@ -249,7 +249,7 @@ this.bastard_assassin_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]500[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]500[/color] Crowns"
 				});
 				this.List.push({
 					id = 13,
@@ -279,13 +279,13 @@ this.bastard_assassin_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Bastard.getImagePath());
-				local injury = _event.m.Bastard.addInjury(this.Const.Injury.PiercingBody);
+				local injury = _event.m.Bastard.addInjury(::Const.Injury.PiercingBody);
 				this.List.push({
 					id = 10,
 					icon = injury.getIcon(),
 					text = _event.m.Bastard.getName() + " suffers " + injury.getNameOnly()
 				});
-				injury = _event.m.Bastard.addInjury(this.Const.Injury.PiercingBody);
+				injury = _event.m.Bastard.addInjury(::Const.Injury.PiercingBody);
 				this.List.push({
 					id = 10,
 					icon = injury.getIcon(),
@@ -357,12 +357,12 @@ this.bastard_assassin_event <- this.inherit("scripts/events/event", {
 					text = "The company\'s moral reputation increases slightly"
 				});
 
-				if (_event.m.Bastard.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Bastard.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Bastard.getMoodState()],
-						text = _event.m.Bastard.getName() + this.Const.MoodStateEvent[_event.m.Bastard.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Bastard.getMoodState()],
+						text = _event.m.Bastard.getName() + ::Const.MoodStateEvent[_event.m.Bastard.getMoodState()]
 					});
 				}
 
@@ -379,12 +379,12 @@ this.bastard_assassin_event <- this.inherit("scripts/events/event", {
 					{
 						bro.improveMood(0.5, "You risked your life for the men");
 
-						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}

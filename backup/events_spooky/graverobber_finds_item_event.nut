@@ -103,7 +103,7 @@ this.graverobber_finds_item_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 			}
 
@@ -216,7 +216,7 @@ this.graverobber_finds_item_event <- this.inherit("scripts/events/event", {
 
 	function onPrepare()
 	{
-		this.m.NobleName = this.Const.Strings.KnightNames[this.Math.rand(0, this.Const.Strings.KnightNames.len() - 1)];
+		this.m.NobleName = ::Const.Strings.KnightNames[this.Math.rand(0, ::Const.Strings.KnightNames.len() - 1)];
 		this.m.UniqueItemName = this.m.NobleName + "\'s Shield";
 	}
 

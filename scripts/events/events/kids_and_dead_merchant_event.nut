@@ -76,14 +76,14 @@ this.kids_and_dead_merchant_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 				item = this.Math.rand(25, 50);
 				this.World.Assets.addMoney(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + item + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + item + "[/color] Crowns"
 				});
 				local brothers = this.World.getPlayerRoster().getAll();
 
@@ -93,7 +93,7 @@ this.kids_and_dead_merchant_event <- this.inherit("scripts/events/event", {
 					{
 						if (this.Math.rand(1, 100) <= 66)
 						{
-							local injury = bro.addInjury(this.Const.Injury.Brawl);
+							local injury = bro.addInjury(::Const.Injury.Brawl);
 							this.List.push({
 								id = 10,
 								icon = injury.getIcon(),
@@ -138,14 +138,14 @@ this.kids_and_dead_merchant_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 				item = this.Math.rand(25, 50);
 				this.World.Assets.addMoney(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + item + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + item + "[/color] Crowns"
 				});
 			}
 

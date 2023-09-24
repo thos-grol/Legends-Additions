@@ -8,14 +8,14 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.bandit_camp";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.human_camp";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.Palisade;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.Palisade;
 		this.m.CombatLocation.CutDownTrees = true;
 		this.m.IsDespawningDefenders = false;
-		this.setDefenderSpawnList(this.Const.World.Spawn.BanditDefenders);
+		this.setDefenderSpawnList(::Const.World.Spawn.BanditDefenders);
 		this.m.Resources = 180;
-		this.m.NamedShieldsList = this.Const.Items.NamedBanditShields;
+		this.m.NamedShieldsList = ::Const.Items.NamedBanditShields;
 		//Changes
 		this.m.Flags.add("ID", this.Math.rand(1, 100000));
 		//FEATURE_9: create bandit gangs with archetypes
@@ -23,7 +23,7 @@
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.BanditCamp);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.BanditCamp);
 		this.location.onSpawned();
 	}
 
@@ -48,7 +48,7 @@
 			"loot/signet_ring_item"
 		];
 
-		if (this.Const.DLC.Unhold)
+		if (::Const.DLC.Unhold)
 		{
 			treasure.extend(treasure);
 			treasure.extend(treasure);
@@ -81,11 +81,11 @@
 	{
 		this.location.onInit();
 		local body = this.addSprite("body");
-		local isOnSteppe = this.getTile().Type == this.Const.World.TerrainType.Steppe;
+		local isOnSteppe = this.getTile().Type == ::Const.World.TerrainType.Steppe;
 
 		for( local i = 0; i != 6; i = i )
 		{
-			if (this.getTile().hasNextTile(i) && this.getTile().getNextTile(i).Type == this.Const.World.TerrainType.Steppe)
+			if (this.getTile().hasNextTile(i) && this.getTile().getNextTile(i).Type == ::Const.World.TerrainType.Steppe)
 			{
 				isOnSteppe = true;
 				break;

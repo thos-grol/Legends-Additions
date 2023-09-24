@@ -60,7 +60,7 @@ this.wound_gets_infected_event <- this.inherit("scripts/events/event", {
 
 		foreach( bro in brothers )
 		{
-			local injuries = bro.getSkills().query(this.Const.SkillType.TemporaryInjury);
+			local injuries = bro.getSkills().query(::Const.SkillType.TemporaryInjury);
 			local next = false;
 
 			foreach( inj in injuries )
@@ -104,7 +104,7 @@ this.wound_gets_infected_event <- this.inherit("scripts/events/event", {
 
 	function onPrepare()
 	{
-		local injuries = this.m.Injured.getSkills().query(this.Const.SkillType.TemporaryInjury);
+		local injuries = this.m.Injured.getSkills().query(::Const.SkillType.TemporaryInjury);
 		local wound;
 		local highest = -1.0;
 

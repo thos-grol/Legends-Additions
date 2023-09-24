@@ -40,21 +40,21 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 					{
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
 					},
 					{
 						id = 17,
 						icon = "ui/icons/melee_defense.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + meleeDefense + "[/color] Melee Defense"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeDefense + "[/color] Melee Defense"
 					}
 				];
 
-				if (_event.m.Apprentice.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Apprentice.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Apprentice.getMoodState()],
-						text = _event.m.Apprentice.getName() + this.Const.MoodStateEvent[_event.m.Apprentice.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Apprentice.getMoodState()],
+						text = _event.m.Apprentice.getName() + ::Const.MoodStateEvent[_event.m.Apprentice.getMoodState()]
 					});
 				}
 			}
@@ -92,21 +92,21 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 					{
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
 					},
 					{
 						id = 16,
 						icon = "ui/icons/bravery.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
 					}
 				];
 
-				if (_event.m.Apprentice.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Apprentice.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Apprentice.getMoodState()],
-						text = _event.m.Apprentice.getName() + this.Const.MoodStateEvent[_event.m.Apprentice.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Apprentice.getMoodState()],
+						text = _event.m.Apprentice.getName() + ::Const.MoodStateEvent[_event.m.Apprentice.getMoodState()]
 					});
 				}
 			}
@@ -146,26 +146,26 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 					{
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
 					},
 					{
 						id = 17,
 						icon = "ui/icons/initiative.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
 					},
 					{
 						id = 17,
 						icon = "ui/icons/fatigue.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + stamina + "[/color] Max Fatigue"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + stamina + "[/color] Max Fatigue"
 					}
 				];
 
-				if (_event.m.Apprentice.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Apprentice.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Apprentice.getMoodState()],
-						text = _event.m.Apprentice.getName() + this.Const.MoodStateEvent[_event.m.Apprentice.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Apprentice.getMoodState()],
+						text = _event.m.Apprentice.getName() + ::Const.MoodStateEvent[_event.m.Apprentice.getMoodState()]
 					});
 				}
 			}
@@ -205,26 +205,26 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 					{
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
 					},
 					{
 						id = 17,
 						icon = "ui/icons/health.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + hitpoints + "[/color] Hitpoints"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + hitpoints + "[/color] Hitpoints"
 					},
 					{
 						id = 17,
 						icon = "ui/icons/fatigue.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + stamina + "[/color] Max Fatigue"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + stamina + "[/color] Max Fatigue"
 					}
 				];
 
-				if (_event.m.Apprentice.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Apprentice.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Apprentice.getMoodState()],
-						text = _event.m.Apprentice.getName() + this.Const.MoodStateEvent[_event.m.Apprentice.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Apprentice.getMoodState()],
+						text = _event.m.Apprentice.getName() + ::Const.MoodStateEvent[_event.m.Apprentice.getMoodState()]
 					});
 				}
 			}

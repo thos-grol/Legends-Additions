@@ -3,7 +3,7 @@ this.la_nachzerer_agent <- this.inherit("scripts/ai/tactical/agent", {
 	function create()
 	{
 		this.agent.create();
-		this.m.ID = this.Const.AI.Agent.ID.LegendSkinGhoul;
+		this.m.ID = ::Const.AI.Agent.ID.LegendSkinGhoul;
 		this.m.Properties.TargetPriorityHitchanceMult = 0.7;
 		this.m.Properties.TargetPriorityHitpointsMult = 1.0;
 		this.m.Properties.TargetPriorityRandomMult = 0.0;

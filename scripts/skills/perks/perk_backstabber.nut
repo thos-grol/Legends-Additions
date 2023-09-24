@@ -10,11 +10,11 @@ this.perk_backstabber <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.backstabber";
-		this.m.Name = this.Const.Strings.PerkName.Backstabber;
-		this.m.Description = this.Const.Strings.PerkDescription.Backstabber;
+		this.m.Name = ::Const.Strings.PerkName.Backstabber;
+		this.m.Description = ::Const.Strings.PerkDescription.Backstabber;
 		this.m.Icon = "ui/perks/perk_40.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -32,7 +32,7 @@ this.perk_backstabber <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		if (_skill.isAttack() && _targetEntity.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury) || _targetEntity.getSkills().hasSkill("effects.debilitated"))
+		if (_skill.isAttack() && _targetEntity.getSkills().hasSkillOfType(::Const.SkillType.TemporaryInjury) || _targetEntity.getSkills().hasSkill("effects.debilitated"))
 		{
 			_properties.DamageTotalMult *= 1.2;
 		}
@@ -45,7 +45,7 @@ this.perk_backstabber <- this.inherit("scripts/skills/skill", {
 
 	function onBeforeTargetHit( _skill, _targetEntity, _hitInfo )
 	{
-		if (_skill.isAttack() && _targetEntity != null && _targetEntity.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury))
+		if (_skill.isAttack() && _targetEntity != null && _targetEntity.getSkills().hasSkillOfType(::Const.SkillType.TemporaryInjury))
 		{
 			this.spawnIcon("perk_16", this.getContainer().getActor().getTile());
 		}

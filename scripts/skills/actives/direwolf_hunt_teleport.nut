@@ -20,8 +20,8 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/dlc4/thing_teleport_04.wav"
 		];
 		this.m.SoundOnHit = [];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -37,8 +37,8 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 		this.m.MaxLevelDifference = 4;
 
 		this.m.IsSpearwallRelevant = false;
-		this.m.InjuriesOnBody = this.Const.Injury.BluntBody;
-		this.m.InjuriesOnHead = this.Const.Injury.BluntHead;
+		this.m.InjuriesOnBody = ::Const.Injury.BluntBody;
+		this.m.InjuriesOnHead = ::Const.Injury.BluntHead;
 		this.m.DirectDamageMult = 0.4;
 		this.m.ChanceDecapitate = 0;
 		this.m.ChanceDisembowel = 25;
@@ -113,11 +113,11 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 
 		if (_user.getTile().IsVisibleForPlayer)
 		{
-			if (this.Const.Tactical.SpiritWalkStartParticles.len() != 0)
+			if (::Const.Tactical.SpiritWalkStartParticles.len() != 0)
 			{
-				for( local i = 0; i < this.Const.Tactical.SpiritWalkStartParticles.len() - 1; i = ++i )
+				for( local i = 0; i < ::Const.Tactical.SpiritWalkStartParticles.len() - 1; i = ++i )
 				{
-					this.Tactical.spawnParticleEffect(false, this.Const.Tactical.SpiritWalkStartParticles[i].Brushes, _user.getTile(), this.Const.Tactical.SpiritWalkStartParticles[i].Delay, this.Const.Tactical.SpiritWalkStartParticles[i].Quantity, this.Const.Tactical.SpiritWalkStartParticles[i].LifeTimeQuantity, this.Const.Tactical.SpiritWalkStartParticles[i].SpawnRate, this.Const.Tactical.SpiritWalkStartParticles[i].Stages);
+					this.Tactical.spawnParticleEffect(false, ::Const.Tactical.SpiritWalkStartParticles[i].Brushes, _user.getTile(), ::Const.Tactical.SpiritWalkStartParticles[i].Delay, ::Const.Tactical.SpiritWalkStartParticles[i].Quantity, ::Const.Tactical.SpiritWalkStartParticles[i].LifeTimeQuantity, ::Const.Tactical.SpiritWalkStartParticles[i].SpawnRate, ::Const.Tactical.SpiritWalkStartParticles[i].Stages);
 				}
 			}
 
@@ -149,11 +149,11 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 	{
 		if (!_entity.isHiddenToPlayer())
 		{
-			if (this.Const.Tactical.SpiritWalkEndParticles.len() != 0)
+			if (::Const.Tactical.SpiritWalkEndParticles.len() != 0)
 			{
-				for( local i = 0; i < this.Const.Tactical.SpiritWalkEndParticles.len() - 1; i = ++i )
+				for( local i = 0; i < ::Const.Tactical.SpiritWalkEndParticles.len() - 1; i = ++i )
 				{
-					this.Tactical.spawnParticleEffect(false, this.Const.Tactical.SpiritWalkEndParticles[i].Brushes, _entity.getTile(), this.Const.Tactical.SpiritWalkEndParticles[i].Delay, this.Const.Tactical.SpiritWalkEndParticles[i].Quantity, this.Const.Tactical.SpiritWalkEndParticles[i].LifeTimeQuantity, this.Const.Tactical.SpiritWalkEndParticles[i].SpawnRate, this.Const.Tactical.SpiritWalkEndParticles[i].Stages);
+					this.Tactical.spawnParticleEffect(false, ::Const.Tactical.SpiritWalkEndParticles[i].Brushes, _entity.getTile(), ::Const.Tactical.SpiritWalkEndParticles[i].Delay, ::Const.Tactical.SpiritWalkEndParticles[i].Quantity, ::Const.Tactical.SpiritWalkEndParticles[i].LifeTimeQuantity, ::Const.Tactical.SpiritWalkEndParticles[i].SpawnRate, ::Const.Tactical.SpiritWalkEndParticles[i].Stages);
 				}
 			}
 
@@ -161,7 +161,7 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 
 			if (_entity.getTile().IsVisibleForPlayer && _tag.Skill.m.SoundOnHit.len() > 0)
 			{
-				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, _entity.getPos());
+				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _entity.getPos());
 			}
 		}
 		else
@@ -223,11 +223,11 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 				local y = myPos.Y + Dy * i;
 				local tile = this.Tactical.worldToTile(this.createVec(x, y));
 
-				if (this.Tactical.isValidTile(tile.X, tile.Y) && this.Const.Tactical.DustParticles.len() != 0)
+				if (this.Tactical.isValidTile(tile.X, tile.Y) && ::Const.Tactical.DustParticles.len() != 0)
 				{
-					for( local i = 0; i < this.Const.Tactical.DustParticles.len(); i = ++i )
+					for( local i = 0; i < ::Const.Tactical.DustParticles.len(); i = ++i )
 					{
-						this.Tactical.spawnParticleEffect(false, this.Const.Tactical.DustParticles[i].Brushes, this.Tactical.getTile(tile), this.Const.Tactical.DustParticles[i].Delay, this.Const.Tactical.DustParticles[i].Quantity * 0.5, this.Const.Tactical.DustParticles[i].LifeTimeQuantity * 0.5, this.Const.Tactical.DustParticles[i].SpawnRate, this.Const.Tactical.DustParticles[i].Stages);
+						this.Tactical.spawnParticleEffect(false, ::Const.Tactical.DustParticles[i].Brushes, this.Tactical.getTile(tile), ::Const.Tactical.DustParticles[i].Delay, ::Const.Tactical.DustParticles[i].Quantity * 0.5, ::Const.Tactical.DustParticles[i].LifeTimeQuantity * 0.5, ::Const.Tactical.DustParticles[i].SpawnRate, ::Const.Tactical.DustParticles[i].Stages);
 					}
 				}
 			}
@@ -285,10 +285,10 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 		{
 			if (_tag.Skill.m.SoundOnHit.len() != 0)
 			{
-				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, victim.getPos());
+				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, victim.getPos());
 			}
 
-			this.spawnAttackEffect(victim.getTile(), this.Const.Tactical.AttackEffectClaws);
+			this.spawnAttackEffect(victim.getTile(), ::Const.Tactical.AttackEffectClaws);
 			this.attackEntity(_entity, victim);
 
 			local s = [
@@ -331,8 +331,8 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 			skills.removeByID("effects.shieldwall");
 			skills.removeByID("effects.spearwall");
 			skills.removeByID("effects.riposte");
-			_target.setCurrentMovementType(this.Const.Tactical.MovementType.Involuntary);
-			local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - _targetTile.Level) - 1) * this.Const.Combat.FallingDamage;
+			_target.setCurrentMovementType(::Const.Tactical.MovementType.Involuntary);
+			local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - _targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
 
 			if (damage == 0)
 			{
@@ -344,11 +344,11 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 				local tag = {
 					Attacker = _user,
 					Skill = this,
-					HitInfo = clone this.Const.Tactical.HitInfo
+					HitInfo = clone ::Const.Tactical.HitInfo
 				};
 				tag.HitInfo.DamageRegular = damage;
 				tag.HitInfo.DamageDirect = 1.0;
-				tag.HitInfo.BodyPart = this.Const.BodyPart.Body;
+				tag.HitInfo.BodyPart = ::Const.BodyPart.Body;
 				tag.HitInfo.BodyDamageMult = 1.0;
 				tag.HitInfo.FatalityChanceMult = 1.0;
 				this.Tactical.getNavigator().teleport(_target, knockToTile, _tag.OnKnockedDown, tag, true);

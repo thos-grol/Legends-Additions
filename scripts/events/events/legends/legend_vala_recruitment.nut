@@ -129,7 +129,7 @@ this.legend_vala_recruitment <- this.inherit("scripts/events/event", {
 		}
 
 		this.m.Town = town;
-		this.m.Score = 20.0 + brotherlevels / totalbrothers * 10.0 / this.Const.LevelXP.len();
+		this.m.Score = 20.0 + brotherlevels / totalbrothers * 10.0 / ::Const.LevelXP.len();
 	}
 
 	function onPrepare()

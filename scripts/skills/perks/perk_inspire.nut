@@ -13,12 +13,12 @@ this.perk_inspire <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.inspire";
-		this.m.Name = this.Const.Strings.PerkName.Inspire;
-		this.m.Description = this.Const.Strings.PerkDescription.Inspire;
+		this.m.Name = ::Const.Strings.PerkName.Inspire;
+		this.m.Description = ::Const.Strings.PerkDescription.Inspire;
 		this.m.Icon = "ui/perks/inspire_circle.png";
 		this.m.IconDisabled = "ui/perks/inspire_circle_bw.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;

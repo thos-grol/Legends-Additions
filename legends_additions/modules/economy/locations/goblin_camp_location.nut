@@ -8,18 +8,18 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.goblin_camp";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.goblin_camp";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.Palisade;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.Palisade;
 		this.m.CombatLocation.CutDownTrees = true;
 		this.m.IsDespawningDefenders = false;
-		this.setDefenderSpawnList(this.Const.World.Spawn.GoblinBoss);
+		this.setDefenderSpawnList(::Const.World.Spawn.GoblinBoss);
 		this.m.Resources = 120;
 	}
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.GoblinCamp);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.GoblinCamp);
 		this.location.onSpawned();
 	}
 

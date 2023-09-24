@@ -25,15 +25,15 @@ this.nachzerer_claws <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/ghoul_claws_05.wav",
 			"sounds/enemies/ghoul_claws_06.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
 		this.m.IsStacking = false;
 		this.m.IsAttack = true;
-		this.m.InjuriesOnBody = this.Const.Injury.CuttingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.CuttingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.CuttingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.CuttingHead;
 		this.m.DirectDamageMult = 0.25;
 		this.m.ActionPointCost = 3;
 		this.m.FatigueCost = 0;
@@ -67,14 +67,14 @@ this.nachzerer_claws <- this.inherit("scripts/skills/skill", {
 				id = 4,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "Inflicts [color=" + this.Const.UI.Color.DamageValue + "]" + p.DamageRegularMin + "[/color] - [color=" + this.Const.UI.Color.DamageValue + "]" + p.DamageRegularMax + "[/color] damage"
+				text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]" + p.DamageRegularMin + "[/color] - [color=" + ::Const.UI.Color.DamageValue + "]" + p.DamageRegularMax + "[/color] damage"
 			}
 		];
 	}
 
 	function onUse( _user, _targetTile )
 	{
-		this.spawnAttackEffect(_targetTile, this.Const.Tactical.AttackEffectClaws);
+		this.spawnAttackEffect(_targetTile, ::Const.Tactical.AttackEffectClaws);
 		return this.attackEntity(_user, _targetTile.getEntity());
 	}
 });

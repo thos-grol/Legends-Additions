@@ -37,7 +37,7 @@ this.quick_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Initiative"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Initiative"
 			}
 		];
 	}

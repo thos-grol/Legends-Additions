@@ -49,10 +49,10 @@ this.civilwar_outro_event <- this.inherit("scripts/events/event", {
 				if (this.World.Assets.isIronman())
 				{
 					local defeated = this.getPersistentStat("CrisesDefeatedOnIronman");
-					defeated = defeated | this.Const.World.GreaterEvilTypeBit.CivilWar;
+					defeated = defeated | ::Const.World.GreaterEvilTypeBit.CivilWar;
 					this.setPersistentStat("CrisesDefeatedOnIronman", defeated);
 
-					if (defeated == this.Const.World.GreaterEvilTypeBit.All)
+					if (defeated == ::Const.World.GreaterEvilTypeBit.All)
 					{
 						this.updateAchievement("Savior", 1, 1);
 					}
@@ -71,7 +71,7 @@ this.civilwar_outro_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 		{
 			return;
 		}
@@ -107,7 +107,7 @@ this.civilwar_outro_event <- this.inherit("scripts/events/event", {
 			"dude",
 			this.m.Dude.getNameOnly()
 		]);
-		local nobles = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+		local nobles = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 		_vars.push([
 			"randomnoblehouse",
 			nobles[this.Math.rand(0, nobles.len() - 1)].getName()

@@ -8,7 +8,7 @@ this.perk_mastery_flailc <- this.inherit("scripts/skills/perks/perk_mastery_flai
 	{
 		this.perk_mastery_flail.create();
 		this.m.ID = "perk.mastery.flailc";
-		this.m.Name = this.Const.Strings.PerkName.SpecFlailC;
+		this.m.Name = ::Const.Strings.PerkName.SpecFlailC;
 	}
 });
 

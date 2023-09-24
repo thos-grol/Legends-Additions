@@ -9,23 +9,23 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.SwordTree,
-				this.Const.Perks.DaggerTree,
-				this.Const.Perks.CrossbowTree
+				::Const.Perks.SwordTree,
+				::Const.Perks.DaggerTree,
+				::Const.Perks.CrossbowTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree
+				::Const.Perks.TrainedTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.KnifeClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.KnifeClassTree
 			],
 			Magic = [
-				this.Const.Perks.AssassinMagicTree
+				::Const.Perks.AssassinMagicTree
 			]
 		};
 
@@ -58,7 +58,7 @@
 			items.equip(this.new("scripts/items/tools/daze_bomb_item"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"oriental/thick_nomad_robe"
@@ -68,7 +68,7 @@
 				"oriental/assassin_robe"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"oriental/assassin_head_wrap"

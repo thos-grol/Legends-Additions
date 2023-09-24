@@ -89,7 +89,7 @@ this.beggar_begs_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]3[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]3[/color] Crowns"
 				});
 				_event.m.Beggar.improveMood(0.5, "Got a few extra crowns from you");
 				this.World.Assets.addMoralReputation(1);
@@ -99,12 +99,12 @@ this.beggar_begs_event <- this.inherit("scripts/events/event", {
 					text = "The company\'s moral reputation increases slightly"
 				});
 
-				if (_event.m.Beggar.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Beggar.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Beggar.getMoodState()],
-						text = _event.m.Beggar.getName() + this.Const.MoodStateEvent[_event.m.Beggar.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Beggar.getMoodState()],
+						text = _event.m.Beggar.getName() + ::Const.MoodStateEvent[_event.m.Beggar.getMoodState()]
 					});
 				}
 			}

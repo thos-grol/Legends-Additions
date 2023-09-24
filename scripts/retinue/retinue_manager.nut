@@ -63,7 +63,7 @@ this.retinue_manager <- {
 
 		for( local i = 0; i < this.m.Slots.len(); i = i )
 		{
-			if (this.World.Assets.getBusinessReputation() >= this.Const.BusinessReputation[this.Const.FollowerSlotRequirements[i]])
+			if (this.World.Assets.getBusinessReputation() >= ::Const.BusinessReputation[::Const.FollowerSlotRequirements[i]])
 			{
 				unlocked = ++unlocked;
 				unlocked = unlocked;
@@ -83,7 +83,7 @@ this.retinue_manager <- {
 
 		for( local i = 0; i < this.m.Slots.len(); i = i )
 		{
-			if (this.World.Assets.getBusinessReputation() >= this.Const.BusinessReputation[this.Const.FollowerSlotRequirements[i]])
+			if (this.World.Assets.getBusinessReputation() >= ::Const.BusinessReputation[::Const.FollowerSlotRequirements[i]])
 			{
 				unlocked = ++unlocked;
 				unlocked = unlocked;
@@ -230,7 +230,7 @@ this.retinue_manager <- {
 
 	function create()
 	{
-		if (!this.Const.DLC.Desert)
+		if (!::Const.DLC.Desert)
 		{
 			return;
 		}

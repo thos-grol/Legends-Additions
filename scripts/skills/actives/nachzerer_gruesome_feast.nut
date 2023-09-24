@@ -16,8 +16,8 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		this.m.SoundOnHit = [
 			"sounds/enemies/ghoul_death_03.wav",
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OtherTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OtherTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -89,11 +89,11 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		if (_user.getTile().IsVisibleForPlayer)
 		{
 			local _tile = _user.getTile()
-			if (this.Tactical.isValidTile(_tile.X, _tile.Y) && this.Const.Tactical.DustParticles.len() != 0)
+			if (this.Tactical.isValidTile(_tile.X, _tile.Y) && ::Const.Tactical.DustParticles.len() != 0)
 			{
-				for( local i = 0; i < this.Const.Tactical.DustParticles.len(); i = i )
+				for( local i = 0; i < ::Const.Tactical.DustParticles.len(); i = i )
 				{
-					this.Tactical.spawnParticleEffect(false, this.Const.Tactical.DustParticles[i].Brushes, _tile, this.Const.Tactical.DustParticles[i].Delay, this.Const.Tactical.DustParticles[i].Quantity * 0.5, this.Const.Tactical.DustParticles[i].LifeTimeQuantity * 0.5, this.Const.Tactical.DustParticles[i].SpawnRate, this.Const.Tactical.DustParticles[i].Stages);
+					this.Tactical.spawnParticleEffect(false, ::Const.Tactical.DustParticles[i].Brushes, _tile, ::Const.Tactical.DustParticles[i].Delay, ::Const.Tactical.DustParticles[i].Quantity * 0.5, ::Const.Tactical.DustParticles[i].LifeTimeQuantity * 0.5, ::Const.Tactical.DustParticles[i].SpawnRate, ::Const.Tactical.DustParticles[i].Stages);
 					i = ++i;
 				}
 			}
@@ -115,18 +115,18 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		if (!_entity.isHiddenToPlayer())
 		{
 			local _tile = _tag.User.getTile()
-			if (this.Tactical.isValidTile(_tile.X, _tile.Y) && this.Const.Tactical.DustParticles.len() != 0)
+			if (this.Tactical.isValidTile(_tile.X, _tile.Y) && ::Const.Tactical.DustParticles.len() != 0)
 			{
-				for( local i = 0; i < this.Const.Tactical.DustParticles.len(); i = i )
+				for( local i = 0; i < ::Const.Tactical.DustParticles.len(); i = i )
 				{
-					this.Tactical.spawnParticleEffect(false, this.Const.Tactical.DustParticles[i].Brushes, _tile, this.Const.Tactical.DustParticles[i].Delay, this.Const.Tactical.DustParticles[i].Quantity * 0.5, this.Const.Tactical.DustParticles[i].LifeTimeQuantity * 0.5, this.Const.Tactical.DustParticles[i].SpawnRate, this.Const.Tactical.DustParticles[i].Stages);
+					this.Tactical.spawnParticleEffect(false, ::Const.Tactical.DustParticles[i].Brushes, _tile, ::Const.Tactical.DustParticles[i].Delay, ::Const.Tactical.DustParticles[i].Quantity * 0.5, ::Const.Tactical.DustParticles[i].LifeTimeQuantity * 0.5, ::Const.Tactical.DustParticles[i].SpawnRate, ::Const.Tactical.DustParticles[i].Stages);
 					i = ++i;
 				}
 			}
 			this.Time.scheduleEvent(this.TimeUnit.Virtual, 800, _tag.OnFadeIn, _tag);
 
 			if (_entity.getTile().IsVisibleForPlayer && _tag.Skill.m.SoundOnHit.len() > 0)
-				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, _entity.getPos());
+				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _entity.getPos());
 		}
 		else _tag.OnFadeIn(_tag);
 	}
@@ -139,11 +139,11 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		// Spawn Gruesome Feast particles
 		if (_targetTile.IsVisibleForPlayer)
 		{
-			if (this.Const.Tactical.GruesomeFeastParticles.len() != 0)
+			if (::Const.Tactical.GruesomeFeastParticles.len() != 0)
 			{
-				for( local i = 0; i < this.Const.Tactical.GruesomeFeastParticles.len(); i = i )
+				for( local i = 0; i < ::Const.Tactical.GruesomeFeastParticles.len(); i = i )
 				{
-					this.Tactical.spawnParticleEffect(false, this.Const.Tactical.GruesomeFeastParticles[i].Brushes, _targetTile, this.Const.Tactical.GruesomeFeastParticles[i].Delay, this.Const.Tactical.GruesomeFeastParticles[i].Quantity, this.Const.Tactical.GruesomeFeastParticles[i].LifeTimeQuantity, this.Const.Tactical.GruesomeFeastParticles[i].SpawnRate, this.Const.Tactical.GruesomeFeastParticles[i].Stages);
+					this.Tactical.spawnParticleEffect(false, ::Const.Tactical.GruesomeFeastParticles[i].Brushes, _targetTile, ::Const.Tactical.GruesomeFeastParticles[i].Delay, ::Const.Tactical.GruesomeFeastParticles[i].Quantity, ::Const.Tactical.GruesomeFeastParticles[i].LifeTimeQuantity, ::Const.Tactical.GruesomeFeastParticles[i].SpawnRate, ::Const.Tactical.GruesomeFeastParticles[i].Stages);
 					i = ++i;
 				}
 			}
@@ -156,9 +156,9 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		// Spawn Bloodbath
 		if (_targetTile.IsVisibleForPlayer)
 		{
-			for( local i = 0; i != this.Const.CorpsePart.len(); i = ++i )
+			for( local i = 0; i != ::Const.CorpsePart.len(); i = ++i )
 			{
-				_targetTile.spawnDetail(this.Const.CorpsePart[i]);
+				_targetTile.spawnDetail(::Const.CorpsePart[i]);
 			}
 
 			for( local i = 0; i != 6; i = ++i )
@@ -167,7 +167,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 				local tile = _targetTile.getNextTile(i);
 				for( local n = this.Math.rand(0, 2); n != 0; n = n )
 				{
-					local decal = this.Const.BloodDecals[this.Const.BloodType.Red][this.Math.rand(0, this.Const.BloodDecals[this.Const.BloodType.Red].len() - 1)];
+					local decal = ::Const.BloodDecals[::Const.BloodType.Red][this.Math.rand(0, ::Const.BloodDecals[::Const.BloodType.Red].len() - 1)];
 					tile.spawnDetail(decal);
 					n = --n;
 				}
@@ -175,7 +175,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 
 			for( local n = 2; n != 0; n = --n )
 			{
-				local decal = this.Const.BloodDecals[this.Const.BloodType.Red][this.Math.rand(0, this.Const.BloodDecals[this.Const.BloodType.Red].len() - 1)];
+				local decal = ::Const.BloodDecals[::Const.BloodType.Red][this.Math.rand(0, ::Const.BloodDecals[::Const.BloodType.Red].len() - 1)];
 				_targetTile.spawnDetail(decal);
 			}
 		}
@@ -200,7 +200,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 	function onRemoveCorpse( _tag )
 	{
 		this.Tactical.Entities.removeCorpse(_tag);
-		_tag.clear(this.Const.Tactical.DetailFlag.Corpse);
+		_tag.clear(::Const.Tactical.DetailFlag.Corpse);
 		_tag.Properties.remove("Corpse");
 		_tag.Properties.remove("IsSpawningFlies");
 	}
@@ -210,11 +210,11 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		local _user = _tag.User;
 
 		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " feasts on a corpse.");
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " feasts on a corpse.");
 
 		//heal self and temp injuries
 		_user.setHitpoints(this.Math.min(_user.getHitpoints() + 100, _user.getHitpointsMax()));
-		local skills = _user.getSkills().getAllSkillsOfType(this.Const.SkillType.Injury);
+		local skills = _user.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
 		foreach( s in skills )
         {
             if (s.getOrder() == ::Const.SkillOrder.PermanentInjury) continue;

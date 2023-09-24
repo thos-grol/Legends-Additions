@@ -101,10 +101,10 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.BarbarianTracks;
+						properties.Music = ::Const.Music.BarbarianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Barbarians, this.Math.rand(75, 110) * _event.getReputationToDifficultyLightMult(), this.Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, this.Math.rand(75, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -129,10 +129,10 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.BarbarianTracks;
+						properties.Music = ::Const.Music.BarbarianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Barbarians, this.Math.rand(110, 140) * _event.getReputationToDifficultyLightMult(), this.Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, this.Math.rand(110, 140) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -170,7 +170,7 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Barbarian.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + bravery + "[/color] Resolve"
+					text = _event.m.Barbarian.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + bravery + "[/color] Resolve"
 				});
 				_event.m.Barbarian.improveMood(1.0, "prevented a bloodbath in the woods");
 				_event.m.Rewarditems.getItems().transferToStash(this.World.Assets.getStash());
@@ -182,12 +182,12 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 					text = "You gain " + item.getName()
 				});
 
-				if (_event.m.Barbarian.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Barbarian.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Barbarian.getMoodState()],
-						text = _event.m.Barbarian.getName() + this.Const.MoodStateEvent[_event.m.Barbarian.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Barbarian.getMoodState()],
+						text = _event.m.Barbarian.getName() + ::Const.MoodStateEvent[_event.m.Barbarian.getMoodState()]
 					});
 				}
 
@@ -212,10 +212,10 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.BarbarianTracks;
+						properties.Music = ::Const.Music.BarbarianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Barbarians, this.Math.rand(60, 75) * _event.getReputationToDifficultyLightMult(), this.Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, this.Math.rand(60, 75) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -231,17 +231,17 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Wildman.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + bravery + "[/color] Resolve"
+					text = _event.m.Wildman.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + bravery + "[/color] Resolve"
 				});
 				_event.m.Wildman.improveMood(2.0, "Had a good time");
 				_event.m.Wildman.addLightInjury();
 
-				if (_event.m.Wildman.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Wildman.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Wildman.getMoodState()],
-						text = _event.m.Wildman.getName() + this.Const.MoodStateEvent[_event.m.Wildman.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Wildman.getMoodState()],
+						text = _event.m.Wildman.getName() + ::Const.MoodStateEvent[_event.m.Wildman.getMoodState()]
 					});
 				}
 			}
@@ -274,21 +274,21 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.MasterArcher.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + bravery + "[/color] Resolve"
+					text = _event.m.MasterArcher.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + bravery + "[/color] Resolve"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.MasterArcher.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
+					text = _event.m.MasterArcher.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
 				});
 				_event.m.MasterArcher.improveMood(1.0, "Evaded a patrol");
 
-				if (_event.m.MasterArcher.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.MasterArcher.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.MasterArcher.getMoodState()],
-						text = _event.m.MasterArcher.getName() + this.Const.MoodStateEvent[_event.m.MasterArcher.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.MasterArcher.getMoodState()],
+						text = _event.m.MasterArcher.getName() + ::Const.MoodStateEvent[_event.m.MasterArcher.getMoodState()]
 					});
 				}
 			}
@@ -307,19 +307,19 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.BarbarianTracks;
-						properties.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Circle;
-						properties.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Center;
+						properties.Music = ::Const.Music.BarbarianTracks;
+						properties.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Circle;
+						properties.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Center;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Barbarians, this.Math.rand(60, 70) * _event.getReputationToDifficultyLightMult(), this.Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, this.Math.rand(60, 70) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
 
 					function onEntityPlaced( _entity, _tag )
 					{
-						_entity.setMoraleState(this.Const.MoraleState.Fleeing);
+						_entity.setMoraleState(::Const.MoraleState.Fleeing);
 						_entity.getBaseProperties().Bravery = 50;
 					}
 
@@ -336,21 +336,21 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Assassin.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + bravery + "[/color] Resolve"
+					text = _event.m.Assassin.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + bravery + "[/color] Resolve"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.Assassin.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
+					text = _event.m.Assassin.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
 				});
 				_event.m.Assassin.improveMood(1.0, "Outsmarted a raiding party");
 
-				if (_event.m.Assassin.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Assassin.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Assassin.getMoodState()],
-						text = _event.m.Assassin.getName() + this.Const.MoodStateEvent[_event.m.Assassin.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Assassin.getMoodState()],
+						text = _event.m.Assassin.getName() + ::Const.MoodStateEvent[_event.m.Assassin.getMoodState()]
 					});
 				}
 			}
@@ -374,7 +374,7 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Forest && currentTile.Type != this.Const.World.TerrainType.SnowyForest && currentTile.Type != this.Const.World.TerrainType.LeaveForest && currentTile.Type != this.Const.World.TerrainType.AutumnForest)
+		if (currentTile.Type != ::Const.World.TerrainType.Forest && currentTile.Type != ::Const.World.TerrainType.SnowyForest && currentTile.Type != ::Const.World.TerrainType.LeaveForest && currentTile.Type != ::Const.World.TerrainType.AutumnForest)
 		{
 			return;
 		}

@@ -9,8 +9,8 @@ this.nachzerer_maddening_hunger <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "skills/status_effect_10.png";
 		this.m.IconMini = "status_effect_10_mini";
 		this.m.Overlay = "status_effect_93";
-		this.m.Type = this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 		this.m.IsSerialized = true;
@@ -43,7 +43,7 @@ this.nachzerer_maddening_hunger <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Melee Skill"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Melee Skill"
 			},
 			{
 				id = 7,

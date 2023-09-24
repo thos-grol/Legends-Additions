@@ -284,7 +284,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]50[/color] Crowns"
+						text = "You lose [color=" + ::Const.UI.Color.NegativeEventValue + "]50[/color] Crowns"
 					}
 				];
 				local brothers = this.World.getPlayerRoster().getAll();
@@ -307,8 +307,8 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[bro.getMoodState()],
-						text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+						icon = ::Const.MoodStateIcon[bro.getMoodState()],
+						text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 					});
 				}
 			}
@@ -359,7 +359,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					}
 					else
 					{
-						local injury = bro.addInjury(this.Const.Injury.Brawl);
+						local injury = bro.addInjury(::Const.Injury.Brawl);
 						this.List.push({
 							id = 10,
 							icon = injury.getIcon(),
@@ -398,9 +398,9 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					text = _event.m.HedgeKnight2.getName() + " has died"
 				});
 				_event.m.HedgeKnight2.getItems().transferToStash(this.World.Assets.getStash());
-				_event.m.HedgeKnight2.getSkills().onDeath(this.Const.FatalityType.None);
+				_event.m.HedgeKnight2.getSkills().onDeath(::Const.FatalityType.None);
 				this.World.getPlayerRoster().remove(_event.m.HedgeKnight2);
-				local injury = _event.m.HedgeKnight1.addInjury(this.Const.Injury.Brawl);
+				local injury = _event.m.HedgeKnight1.addInjury(::Const.Injury.Brawl);
 				this.List.push({
 					id = 10,
 					icon = injury.getIcon(),
@@ -414,7 +414,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.HedgeKnight1.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Melee Skill"
+						text = _event.m.HedgeKnight1.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Melee Skill"
 					});
 				}
 				else
@@ -424,7 +424,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 16,
 						icon = "ui/icons/melee_defense.png",
-						text = _event.m.HedgeKnight1.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Melee Defense"
+						text = _event.m.HedgeKnight1.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Melee Defense"
 					});
 				}
 
@@ -465,9 +465,9 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					text = _event.m.HedgeKnight1.getName() + " has died"
 				});
 				_event.m.HedgeKnight1.getItems().transferToStash(this.World.Assets.getStash());
-				_event.m.HedgeKnight1.getSkills().onDeath(this.Const.FatalityType.None);
+				_event.m.HedgeKnight1.getSkills().onDeath(::Const.FatalityType.None);
 				this.World.getPlayerRoster().remove(_event.m.HedgeKnight1);
-				local injury = _event.m.HedgeKnight2.addInjury(this.Const.Injury.Brawl);
+				local injury = _event.m.HedgeKnight2.addInjury(::Const.Injury.Brawl);
 				this.List.push({
 					id = 10,
 					icon = injury.getIcon(),
@@ -481,7 +481,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.HedgeKnight2.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Melee Skill"
+						text = _event.m.HedgeKnight2.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Melee Skill"
 					});
 				}
 				else
@@ -491,7 +491,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 16,
 						icon = "ui/icons/melee_defense.png",
-						text = _event.m.HedgeKnight2.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Melee Defense"
+						text = _event.m.HedgeKnight2.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Melee Defense"
 					});
 				}
 
@@ -534,7 +534,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 						{
 							id = 16,
 							icon = "ui/icons/bravery.png",
-							text = _event.m.Monk.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+3[/color] Resolve"
+							text = _event.m.Monk.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+3[/color] Resolve"
 						}
 					];
 				}

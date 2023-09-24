@@ -8,9 +8,9 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.goblin_city";
-		this.m.LocationType = this.Const.World.LocationType.Lair | this.Const.World.LocationType.Unique;
+		this.m.LocationType = ::Const.World.LocationType.Lair | ::Const.World.LocationType.Unique;
 		this.m.CombatLocation.Template[0] = "tactical.goblin_camp";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.Walls;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.Walls;
 		this.m.CombatLocation.CutDownTrees = true;
 		this.m.IsShowingDefenders = false;
 		this.m.IsShowingBanner = true;
@@ -21,19 +21,19 @@
 
 		switch(this.World.Assets.getCombatDifficulty())
 		{
-		case this.Const.Difficulty.Easy:
+		case ::Const.Difficulty.Easy:
 			dateToSkip = 400;
 			break;
 
-		case this.Const.Difficulty.Normal:
+		case ::Const.Difficulty.Normal:
 			dateToSkip = 300;
 			break;
 
-		case this.Const.Difficulty.Hard:
+		case ::Const.Difficulty.Hard:
 			dateToSkip = 200;
 			break;
 
-		case this.Const.Difficulty.Legendary:
+		case ::Const.Difficulty.Legendary:
 			dateToSkip = 100;
 			break;
 		}
@@ -52,64 +52,64 @@
 
 		for( local i = 0; i < 16; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.GoblinSkirmisher
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.GoblinSkirmisher
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 6; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.GoblinAmbusher
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.GoblinAmbusher
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 2; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.GoblinOverseer
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.GoblinOverseer
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 2; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.GoblinShaman
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.GoblinShaman
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 11; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.GoblinWolfrider
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.GoblinWolfrider
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 7; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.GoblinAmbusher
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.GoblinAmbusher
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 1; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.GoblinOverseer
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.GoblinOverseer
 			}, false);
 			i = ++i;
 		}
 
 		for( local i = 0; i < 2; i = i )
 		{
-			this.Const.World.Common.addTroop(this, {
-				Type = this.Const.World.Spawn.Troops.GoblinShaman
+			::Const.World.Common.addTroop(this, {
+				Type = ::Const.World.Spawn.Troops.GoblinShaman
 			}, false);
 			i = ++i;
 		}
@@ -123,19 +123,19 @@
 
 		switch(this.World.Assets.getCombatDifficulty())
 		{
-		case this.Const.Difficulty.Easy:
+		case ::Const.Difficulty.Easy:
 			dateToSkip = 400;
 			break;
 
-		case this.Const.Difficulty.Normal:
+		case ::Const.Difficulty.Normal:
 			dateToSkip = 300;
 			break;
 
-		case this.Const.Difficulty.Hard:
+		case ::Const.Difficulty.Hard:
 			dateToSkip = 200;
 			break;
 
-		case this.Const.Difficulty.Legendary:
+		case ::Const.Difficulty.Legendary:
 			dateToSkip = 100;
 			break;
 		}
@@ -152,20 +152,20 @@
 
 			if (r == 1)
 			{
-				this.Const.World.Common.addTroop(this, {
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisher
+				::Const.World.Common.addTroop(this, {
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisher
 				}, false);
 			}
 			else if (r == 2)
 			{
-				this.Const.World.Common.addTroop(this, {
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusher
+				::Const.World.Common.addTroop(this, {
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusher
 				}, false);
 			}
 			else if (r == 3)
 			{
-				this.Const.World.Common.addTroop(this, {
-					Type = this.Const.World.Spawn.Troops.GoblinWolfrider
+				::Const.World.Common.addTroop(this, {
+					Type = ::Const.World.Spawn.Troops.GoblinWolfrider
 				}, false);
 			}
 
@@ -227,7 +227,7 @@
 			"loot/goblin_rank_insignia_item",
 			"misc/legend_ancient_scroll_item"
 		], _lootTable);
-		_lootTable.push(this.Const.World.Common.pickHelmet([
+		_lootTable.push(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"legendary/emperors_countenance"

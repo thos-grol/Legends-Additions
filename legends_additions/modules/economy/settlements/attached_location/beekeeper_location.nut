@@ -14,7 +14,7 @@
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 		if (_gender)
 		{
-			_list.push("female_farmhand_background");
+			
 		}
 	}
 

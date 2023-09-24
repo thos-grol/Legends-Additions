@@ -9,7 +9,7 @@
 
 // function getColorizedEntityName( _entity )
 // 	{
-// 		if (_entity.isPlayerControlled() || _entity.getFaction() == this.Const.Faction.PlayerAnimals)
+// 		if (_entity.isPlayerControlled() || _entity.getFaction() == ::Const.Faction.PlayerAnimals)
 // 		{
 // 			return "[color=#1e468f]" + _entity.getName() + "[/color]";
 // 		}

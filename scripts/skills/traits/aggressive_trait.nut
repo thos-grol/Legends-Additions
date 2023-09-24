@@ -47,13 +47,13 @@ this.aggressive_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/regular_damage.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+15%[/color] Melee Damage"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+15%[/color] Melee Damage"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-5[/color] Defense from each surrounding enemy"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5[/color] Defense from each surrounding enemy"
 			},
 			{
 				id = 12,
@@ -74,9 +74,9 @@ this.aggressive_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	{
 		local actor = this.getContainer().getActor();
 
-		if (actor.getMoraleState() < this.Const.MoraleState.Steady)
+		if (actor.getMoraleState() < ::Const.MoraleState.Steady)
 		{
-			actor.setMoraleState(this.Const.MoraleState.Steady);
+			actor.setMoraleState(::Const.MoraleState.Steady);
 		}
 	}
 

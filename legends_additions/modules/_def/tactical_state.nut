@@ -44,7 +44,7 @@
 			}
 			else
 			{
-				this.Cursor.setCursor(this.Const.UI.Cursor.Denied);
+				this.Cursor.setCursor(::Const.UI.Cursor.Denied);
 			}
 		}
 	}
@@ -58,9 +58,9 @@
 		}
 
 		this.m.IsBattleEnded = true;
-		local isVictory = this.Tactical.Entities.getCombatResult() == this.Const.Tactical.CombatResult.EnemyDestroyed || this.Tactical.Entities.getCombatResult() == this.Const.Tactical.CombatResult.EnemyRetreated;
+		local isVictory = this.Tactical.Entities.getCombatResult() == ::Const.Tactical.CombatResult.EnemyDestroyed || this.Tactical.Entities.getCombatResult() == ::Const.Tactical.CombatResult.EnemyRetreated;
 		this.m.IsFogOfWarVisible = false;
-		this.Tactical.fillVisibility(this.Const.Faction.Player, true);
+		this.Tactical.fillVisibility(::Const.Faction.Player, true);
 		this.Tactical.getCamera().zoomTo(2.0, 1.0);
 		this.Tooltip.hide();
 		this.m.TacticalScreen.hide();
@@ -68,17 +68,17 @@
 
 		if (isVictory)
 		{
-			this.Music.setTrackList(this.Const.Music.VictoryTracks, this.Const.Music.CrossFadeTime);
+			this.Music.setTrackList(::Const.Music.VictoryTracks, ::Const.Music.CrossFadeTime);
 
 			if (!this.isScenarioMode())
 			{
 				if (this.m.StrategicProperties != null && this.m.StrategicProperties.IsAttackingLocation)
 				{
-					this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnVictoryVSLocation);
+					this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnVictoryVSLocation);
 				}
 				else
 				{
-					this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnVictory);
+					this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnVictory);
 				}
 
 				this.World.Contracts.onCombatVictory(this.m.StrategicProperties != null ? this.m.StrategicProperties.CombatID : "");
@@ -88,7 +88,7 @@
 				this.World.Statistics.getFlags().set("LastCombatResult", 1);
 				this.World.Statistics.getFlags().increment("BattlesWon");
 
-				if (this.World.Statistics.getFlags().getAsInt("LastCombatFaction") == this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).getID())
+				if (this.World.Statistics.getFlags().getAsInt("LastCombatFaction") == this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID())
 				{
 					this.World.Statistics.getFlags().increment("BeastsDefeated");
 				}
@@ -108,14 +108,14 @@
 				{
 					if (bro.getPlaceInFormation() <= 26 && !bro.isPlacedOnMap() && bro.getFlags().get("Devoured") == true)
 					{
-						bro.getSkills().onDeath(this.Const.FatalityType.Devoured);
-						bro.onDeath(null, null, null, this.Const.FatalityType.Devoured);
+						bro.getSkills().onDeath(::Const.FatalityType.Devoured);
+						bro.onDeath(null, null, null, ::Const.FatalityType.Devoured);
 						this.World.getPlayerRoster().remove(bro);
 					}
 					else if (bro.getSkills().hasSkill("perk.legend_pacifist") && bro.isPlacedOnMap())
 					{
 						bro.getLifetimeStats().BattlesWithoutMe = 0;
-						bro.worsenMood(this.Const.MoodChange.BattleWithoutMe, "Forced into battle against their wishes");
+						bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Forced into battle against their wishes");
 					}
 					else if (this.m.StrategicProperties.IsUsingSetPlayers && bro.isPlacedOnMap())
 					{
@@ -123,11 +123,11 @@
 
 						if (this.m.StrategicProperties.IsArenaMode)
 						{
-							bro.improveMood(this.Const.MoodChange.BattleWon, "Won a fight in the arena");
+							bro.improveMood(::Const.MoodChange.BattleWon, "Won a fight in the arena");
 						}
 						else
 						{
-							bro.improveMood(this.Const.MoodChange.BattleWon, "Won a battle");
+							bro.improveMood(::Const.MoodChange.BattleWon, "Won a battle");
 							if (trial_by_fire && bro.m.Level < 5)
 							{
 								bro.m.PerkPoints += 1;
@@ -142,7 +142,7 @@
 						if (bro.isPlacedOnMap())
 						{
 							bro.getLifetimeStats().BattlesWithoutMe = 0;
-							bro.improveMood(this.Const.MoodChange.BattleWon, "Won a battle");
+							bro.improveMood(::Const.MoodChange.BattleWon, "Won a battle");
 							if (trial_by_fire && bro.m.Level < 5)
 							{
 								bro.m.PerkPoints += 1;
@@ -151,13 +151,13 @@
 								bro.m.XP += ::Const.LevelXP[bro.m.Level - 1];
 							}
 						}
-						else if (bro.getMoodState() > this.Const.MoodState.Concerned && !bro.getCurrentProperties().IsContentWithBeingInReserve && !this.World.Assets.m.IsDisciplined)
+						else if (bro.getMoodState() > ::Const.MoodState.Concerned && !bro.getCurrentProperties().IsContentWithBeingInReserve && !this.World.Assets.m.IsDisciplined)
 						{
 							++bro.getLifetimeStats().BattlesWithoutMe;
 
 							if (bro.getLifetimeStats().BattlesWithoutMe > this.Math.max(2, 6 - bro.getLevel()))
 							{
-								bro.worsenMood(this.Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
+								bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
 							}
 						}
 					}
@@ -168,7 +168,7 @@
 		}
 		else
 		{
-			this.Music.setTrackList(this.Const.Music.DefeatTracks, this.Const.Music.CrossFadeTime);
+			this.Music.setTrackList(::Const.Music.DefeatTracks, ::Const.Music.CrossFadeTime);
 
 			if (!this.isScenarioMode())
 			{
@@ -180,8 +180,8 @@
 					{
 						if (bro.isAlive())
 						{
-							bro.getSkills().onDeath(this.Const.FatalityType.Devoured);
-							bro.onDeath(null, null, null, this.Const.FatalityType.Devoured);
+							bro.getSkills().onDeath(::Const.FatalityType.Devoured);
+							bro.onDeath(null, null, null, ::Const.FatalityType.Devoured);
 							this.World.getPlayerRoster().remove(bro);
 						}
 					}
@@ -189,7 +189,7 @@
 					{
 						if (bro.isAlive())
 						{
-							bro.kill(null, null, this.Const.FatalityType.Suicide);
+							bro.kill(null, null, ::Const.FatalityType.Suicide);
 						}
 					}
 					else if (bro.isPlacedOnMap())
@@ -198,20 +198,20 @@
 
 						if (this.Tactical.getCasualtyRoster().getSize() != 0)
 						{
-							bro.worsenMood(this.Const.MoodChange.BattleLost, "Lost a battle");
+							bro.worsenMood(::Const.MoodChange.BattleLost, "Lost a battle");
 						}
 						else if (this.World.Assets.getOrigin().getID() != "scenario.deserters")
 						{
-							bro.worsenMood(this.Const.MoodChange.BattleRetreat, "Retreated from battle");
+							bro.worsenMood(::Const.MoodChange.BattleRetreat, "Retreated from battle");
 						}
 					}
-					else if (bro.getMoodState() > this.Const.MoodState.Concerned && !bro.getCurrentProperties().IsContentWithBeingInReserve && (!bro.getFlags().has("TemporaryRider") || !bro.getFlags().has("IsHorse")))
+					else if (bro.getMoodState() > ::Const.MoodState.Concerned && !bro.getCurrentProperties().IsContentWithBeingInReserve && (!bro.getFlags().has("TemporaryRider") || !bro.getFlags().has("IsHorse")))
 					{
 						++bro.getLifetimeStats().BattlesWithoutMe;
 
 						if (bro.getLifetimeStats().BattlesWithoutMe > this.Math.max(2, 6 - bro.getLevel()))
 						{
-							bro.worsenMood(this.Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
+							bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
 						}
 					}
 
@@ -220,7 +220,7 @@
 
 				if (this.World.getPlayerRoster().getSize() != 0)
 				{
-					this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnLoss);
+					this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnLoss);
 					this.World.Contracts.onRetreatedFromCombat(this.m.StrategicProperties != null ? this.m.StrategicProperties.CombatID : "");
 					this.World.Events.onRetreatedFromCombat(this.m.StrategicProperties != null ? this.m.StrategicProperties.CombatID : "");
 					this.World.Statistics.getFlags().set("LastEnemiesDefeatedCount", 0);
@@ -231,10 +231,10 @@
 
 		if (this.m.StrategicProperties != null && this.m.StrategicProperties.IsArenaMode)
 		{
-			this.Sound.play(this.Const.Sound.ArenaEnd[this.Math.rand(0, this.Const.Sound.ArenaEnd.len() - 1)], this.Const.Sound.Volume.Tactical);
+			this.Sound.play(::Const.Sound.ArenaEnd[this.Math.rand(0, ::Const.Sound.ArenaEnd.len() - 1)], ::Const.Sound.Volume.Tactical);
 			this.Time.scheduleEvent(this.TimeUnit.Real, 4500, function ( _t )
 			{
-				this.Sound.play(this.Const.Sound.ArenaOutro[this.Math.rand(0, this.Const.Sound.ArenaOutro.len() - 1)], this.Const.Sound.Volume.Tactical);
+				this.Sound.play(::Const.Sound.ArenaOutro[this.Math.rand(0, ::Const.Sound.ArenaOutro.len() - 1)], ::Const.Sound.Volume.Tactical);
 			}, null);
 		}
 

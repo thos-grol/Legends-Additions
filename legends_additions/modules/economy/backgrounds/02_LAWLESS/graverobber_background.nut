@@ -8,18 +8,18 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.MaceTree
+				::Const.Perks.MaceTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.DeviousTree
+				::Const.Perks.DeviousTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.ShovelClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.ShovelClassTree
 			],
 			Magic = []
 		};
@@ -48,7 +48,7 @@
 			items.equip(this.new("scripts/items/weapons/ancient/broken_ancient_sword"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"ragged_surcoat"
@@ -62,7 +62,7 @@
 				"leather_tunic"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"hood"

@@ -165,7 +165,7 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]250[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]250[/color] Crowns"
 				});
 				_event.m.Other.getBaseProperties().Initiative += 2;
 				_event.m.Other.getBaseProperties().Bravery += 1;
@@ -173,12 +173,12 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 17,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.Other.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+2[/color] Initiative"
+					text = _event.m.Other.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+2[/color] Initiative"
 				});
 				this.List.push({
 					id = 17,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Other.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+1[/color] Resolve"
+					text = _event.m.Other.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+1[/color] Resolve"
 				});
 			}
 
@@ -328,9 +328,9 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.getBackground().m.RawDescription = "%name% was \'saved\' by you during a confrontation with an animal tamer-turned-enslaver. A sense of gratitude and debt overcomes any language barriers: the once imprisoned wildling serves the company loyally for the rescue.";
 				_event.m.Dude.getBackground().buildDescription(true);
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null) _event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null) _event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).removeSelf();
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head) != null) _event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null) _event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).removeSelf();
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null) _event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand).removeSelf();
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head) != null) _event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head).removeSelf();
 				this.Characters.push(_event.m.Dude.getImagePath());
 			}
 
@@ -385,12 +385,12 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Monk.getImagePath());
 				_event.m.Monk.worsenMood(1.0, "Shaken by the violence they witnessed");
 
-				if (_event.m.Monk.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Monk.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Monk.getMoodState()],
-						text = _event.m.Monk.getName() + this.Const.MoodStateEvent[_event.m.Monk.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Monk.getMoodState()],
+						text = _event.m.Monk.getName() + ::Const.MoodStateEvent[_event.m.Monk.getMoodState()]
 					});
 				}
 			}
@@ -498,7 +498,7 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 				item = this.new("scripts/items/supplies/cured_venison_item");
 				this.World.Assets.getStash().add(item);

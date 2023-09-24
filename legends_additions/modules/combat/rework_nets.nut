@@ -19,11 +19,11 @@
     o.create = function()
 	{
 		this.m.ID = "perk.legend_net_repair";
-		this.m.Name = this.Const.Strings.PerkName.LegendNetRepair;
-		this.m.Description = this.Const.Strings.PerkDescription.LegendNetRepair;
+		this.m.Name = ::Const.Strings.PerkName.LegendNetRepair;
+		this.m.Description = ::Const.Strings.PerkDescription.LegendNetRepair;
 		this.m.Icon = "ui/perks/net_perk.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -50,7 +50,7 @@
 	{
 		local actor = this.getContainer().getActor();
 
-		local item = actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = actor.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 		if (item == null) this.getContainer().getActor().m.Items.equip(::new("scripts/items/tools/throwing_net"));
 
 		if (actor.isPlayerControlled()) return;
@@ -67,7 +67,7 @@
 		local actor = this.getContainer().getActor();
 		if (!actor.isPlayerControlled()) return;
 
-		local item = actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = actor.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 		if (item == null) this.getContainer().getActor().m.Items.equip(::new("scripts/items/tools/throwing_net"));
 	}
 
@@ -107,7 +107,7 @@
 		local chance = this.Math.min(100, targetEntity.getCurrentProperties().getRangedDefense());
 		local dodgeCheck = targetEntity.getSkills().hasSkill("perk.legend_escape_artist") &&  roll <= chance;
 
-		local net_item = _user.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local net_item = _user.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 		if (net_item.m.Container != null)
 		{
 			net_item.m.Container.unequip(net_item);
@@ -133,7 +133,7 @@
 		}
         else
 		{
-			if (this.m.SoundOnHit.len() != 0) this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, targetEntity.getPos());
+			if (this.m.SoundOnHit.len() != 0) this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, targetEntity.getPos());
 
 			if (targetEntity.getSkills().hasSkill("perk.legend_escape_artist"))
 			{

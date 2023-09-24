@@ -78,14 +78,14 @@
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.LegendWhiteDirewolf);
+		b.setValues(::Const.Tactical.Actor.LegendWhiteDirewolf);
 		b.IsAffectedByNight = false;
 		b.IsImmuneToDisarm = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.addSprite("socket").setBrush("bust_base_beasts");
 		local body = this.addSprite("body");
 		body.setBrush("bust_direwolf_white_01_body");
@@ -151,19 +151,19 @@
 
 			switch(this.World.Assets.getCombatDifficulty())
 			{
-			case this.Const.Difficulty.Easy:
+			case ::Const.Difficulty.Easy:
 				dateToSkip = 250;
 				break;
 
-			case this.Const.Difficulty.Normal:
+			case ::Const.Difficulty.Normal:
 				dateToSkip = 200;
 				break;
 
-			case this.Const.Difficulty.Hard:
+			case ::Const.Difficulty.Hard:
 				dateToSkip = 150;
 				break;
 
-			case this.Const.Difficulty.Legendary:
+			case ::Const.Difficulty.Legendary:
 				dateToSkip = 100;
 				break;
 			}

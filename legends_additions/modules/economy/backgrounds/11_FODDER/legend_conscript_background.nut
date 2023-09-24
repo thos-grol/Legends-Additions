@@ -10,20 +10,20 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.MaceTree,
-				this.Const.Perks.PolearmTree,
-				this.Const.Perks.ShieldTree,
+				::Const.Perks.MaceTree,
+				::Const.Perks.PolearmTree,
+				::Const.Perks.ShieldTree,
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree
+				::Const.Perks.TrainedTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.MilitiaClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.MilitiaClassTree
 			],
 			Magic = []
 		};
@@ -53,7 +53,7 @@
 			items.equip(this.new("scripts/items/shields/oriental/southern_light_shield"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				2,
 				"oriental/linothorax"
@@ -63,7 +63,7 @@
 				"oriental/southern_mail_shirt"
 			]
 		]));
-		local helm = this.Const.World.Common.pickHelmet([
+		local helm = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"oriental/southern_head_wrap"

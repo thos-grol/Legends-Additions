@@ -3,7 +3,7 @@
 	o.onDamageReceived = function( _damage, _fatalityType, _attacker )
 	{
 		local totalDamage = _damage;
-		for( local i = this.Const.Items.ArmorUpgrades.COUNT - 1; i >= 0; i = --i )
+		for( local i = ::Const.Items.ArmorUpgrades.COUNT - 1; i >= 0; i = --i )
 		{
 			local u = this.m.Upgrades[i];
 			if (u != null) totalDamage = u.onDamageReceived(totalDamage, _fatalityType, _attacker);

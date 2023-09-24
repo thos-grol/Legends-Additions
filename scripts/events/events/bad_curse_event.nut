@@ -86,14 +86,14 @@ this.bad_curse_event <- this.inherit("scripts/events/event", {
 				_event.m.Cursed.improveMood(3.0, "Was cured of a curse");
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Cursed.getMoodState()],
-					text = _event.m.Cursed.getName() + this.Const.MoodStateEvent[_event.m.Cursed.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Cursed.getMoodState()],
+					text = _event.m.Cursed.getName() + ::Const.MoodStateEvent[_event.m.Cursed.getMoodState()]
 				});
 				this.World.Assets.addMoney(-40);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + 40 + "[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + 40 + "[/color] Crowns"
 				});
 			}
 
@@ -129,8 +129,8 @@ this.bad_curse_event <- this.inherit("scripts/events/event", {
 				_event.m.Cursed.worsenMood(2.0, "Felt let down by you");
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Cursed.getMoodState()],
-					text = _event.m.Cursed.getName() + this.Const.MoodStateEvent[_event.m.Cursed.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Cursed.getMoodState()],
+					text = _event.m.Cursed.getName() + ::Const.MoodStateEvent[_event.m.Cursed.getMoodState()]
 				});
 			}
 
@@ -164,7 +164,7 @@ this.bad_curse_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 16,
 						icon = "ui/icons/bravery.png",
-						text = _event.m.Cursed.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+1[/color] Resolve"
+						text = _event.m.Cursed.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+1[/color] Resolve"
 					});
 				}
 
@@ -176,7 +176,7 @@ this.bad_curse_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 16,
 						icon = "ui/icons/bravery.png",
-						text = _event.m.Monk.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+1[/color] Resolve"
+						text = _event.m.Monk.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+1[/color] Resolve"
 					});
 				}
 			}
@@ -205,8 +205,8 @@ this.bad_curse_event <- this.inherit("scripts/events/event", {
 				_event.m.Cursed.improveMood(3.0, "Was cured of a curse");
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Cursed.getMoodState()],
-					text = _event.m.Cursed.getName() + this.Const.MoodStateEvent[_event.m.Cursed.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Cursed.getMoodState()],
+					text = _event.m.Cursed.getName() + ::Const.MoodStateEvent[_event.m.Cursed.getMoodState()]
 				});
 			}
 

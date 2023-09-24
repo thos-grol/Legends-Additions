@@ -19,11 +19,11 @@ this.perk_adrenalin <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.adrenaline";
-		this.m.Name = this.Const.Strings.PerkName.Adrenaline;
-		this.m.Description = this.Const.Strings.PerkDescription.Adrenaline;
+		this.m.Name = ::Const.Strings.PerkName.Adrenaline;
+		this.m.Description = ::Const.Strings.PerkDescription.Adrenaline;
 		this.m.Icon = "ui/perks/perk_37.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;

@@ -82,7 +82,7 @@ this.legend_reserve_gets_fat_event <- this.inherit("scripts/events/event", {
 			"fatguy",
 			this.m.FatGuy.getName()
 		]);
-		this.Const.LegendMod.extendVarsWithPronouns(_vars, this.m.FatGuy.getGender());
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.FatGuy.getGender());
 	}
 
 	function onDetermineStartScreen()

@@ -72,7 +72,7 @@ this.legend_cannibal_corrupts_butcher <- this.inherit("scripts/events/event", {
 
 		this.m.Cannibal = cannibal_candidates[this.Math.rand(0, cannibal_candidates.len() - 1)];
 		this.m.Butcher = butcher_candidates[this.Math.rand(0, butcher_candidates.len() - 1)];
-		this.m.Score = 5 + (this.m.Cannibal.getLevel() + this.m.Butcher.getLevel() + 0.0) * 5.0 / this.Const.LevelXP.len();
+		this.m.Score = 5 + (this.m.Cannibal.getLevel() + this.m.Butcher.getLevel() + 0.0) * 5.0 / ::Const.LevelXP.len();
 	}
 
 	function onPrepare()

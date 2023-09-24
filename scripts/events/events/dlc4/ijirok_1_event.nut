@@ -31,7 +31,7 @@ this.ijirok_1_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Wildmen)
+		if (!::Const.DLC.Wildmen)
 		{
 			return;
 		}
@@ -43,7 +43,7 @@ this.ijirok_1_event <- this.inherit("scripts/events/event", {
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Snow)
+		if (currentTile.Type != ::Const.World.TerrainType.Snow)
 		{
 			return;
 		}

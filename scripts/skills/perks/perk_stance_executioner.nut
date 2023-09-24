@@ -16,11 +16,11 @@ this.perk_stance_executioner <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.stance.executioner";
-		this.m.Name = this.Const.Strings.PerkName.StanceExecutioner;
-		this.m.Description = this.Const.Strings.PerkDescription.StanceExecutioner;
+		this.m.Name = ::Const.Strings.PerkName.StanceExecutioner;
+		this.m.Description = ::Const.Strings.PerkDescription.StanceExecutioner;
 		this.m.Icon = "ui/perks/perk_10.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -28,7 +28,7 @@ this.perk_stance_executioner <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate(_properties)
 	{
-		_properties.HitChance[this.Const.BodyPart.Head] += 50;
+		_properties.HitChance[::Const.BodyPart.Head] += 50;
 	}
 
 	function onAdded()

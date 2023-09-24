@@ -11,8 +11,8 @@ this.footwork <- this.inherit("scripts/skills/skill", {
 		this.m.SoundOnUse = [
 			"sounds/combat/footwork_01.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.Any;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.Any;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -55,7 +55,7 @@ this.footwork <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Can only be used when in an opponent\'s Zone of Control[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Can only be used when in an opponent\'s Zone of Control[/color]"
 			});
 		}
 
@@ -65,7 +65,7 @@ this.footwork <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Can not be used while rooted[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Can not be used while rooted[/color]"
 			});
 		}
 

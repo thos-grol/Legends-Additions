@@ -18,11 +18,11 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.trial_by_fire";
-		this.m.Name = this.Const.Strings.PerkName.TrialByFire;
-		this.m.Description = this.Const.Strings.PerkDescription.TrialByFire;
+		this.m.Name = ::Const.Strings.PerkName.TrialByFire;
+		this.m.Description = ::Const.Strings.PerkDescription.TrialByFire;
 		this.m.Icon = "ui/perks/liberty_perk.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;

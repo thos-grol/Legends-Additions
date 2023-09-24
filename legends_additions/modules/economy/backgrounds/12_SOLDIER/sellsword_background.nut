@@ -9,18 +9,18 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.MaceTree
+				::Const.Perks.MaceTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree,
-				this.Const.Perks.HeavyArmorTree
+				::Const.Perks.LightArmorTree,
+				::Const.Perks.HeavyArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree,
+				::Const.Perks.TrainedTree,
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
@@ -44,7 +44,7 @@
 		this.addPerkGroup(::Z.Perks.tree(item));
 		items.equip(item);
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"patched_mail_shirt"
@@ -70,7 +70,7 @@
 				"mail_shirt"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				""

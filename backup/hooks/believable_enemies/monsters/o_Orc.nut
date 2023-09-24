@@ -125,7 +125,7 @@
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.OrcYoung);
+		b.setValues(::Const.Tactical.Actor.OrcYoung);
 
 		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 70)
 		{
@@ -142,8 +142,8 @@
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.m.Items.getAppearance().Body = "bust_orc_01_body";
 		this.addSprite("socket").setBrush("bust_base_orcs");
 		local body = this.addSprite("body");
@@ -164,7 +164,7 @@
 		local v = -7;
 		local v2 = 0;
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			this.addSprite(a);
 			this.setSpriteOffset(a, this.createVec(v2, v));
@@ -193,15 +193,15 @@
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.OrcWarrior);
+		b.setValues(::Const.Tactical.Actor.OrcWarrior);
 		this.m.BaseProperties.DamageTotalMult -= 0.1;
 		b.IsSpecializedInAxes = true;
 		b.IsSpecializedInCleavers = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.m.Items.getAppearance().Body = "bust_orc_03_body";
 		this.addSprite("socket").setBrush("bust_base_orcs");
 		local body = this.addSprite("body");
@@ -221,7 +221,7 @@
 		local v = 1;
 		local v2 = -6;
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			this.addSprite(a);
 			this.setSpriteOffset(a, this.createVec(v2, v));
@@ -261,14 +261,14 @@
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.OrcWarlord);
+		b.setValues(::Const.Tactical.Actor.OrcWarlord);
 		b.IsSpecializedInAxes = true;
 		b.IsSpecializedInCleavers = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.m.Items.getAppearance().Body = "bust_orc_04_body";
 		this.addSprite("socket").setBrush("bust_base_orcs");
 		local body = this.addSprite("body");
@@ -286,7 +286,7 @@
 		injury.Visible = false;
 		injury.setBrush("bust_orc_04_head_injured");
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			this.addSprite(a);
 		}
@@ -294,7 +294,7 @@
 		local v = 8;
 		local v2 = -15;
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			if (!this.hasSprite(a))
 			{
@@ -339,7 +339,7 @@
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.OrcBerserker);
+		b.setValues(::Const.Tactical.Actor.OrcBerserker);
 
 		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 190)
 		{
@@ -355,8 +355,8 @@
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.m.Items.getAppearance().Body = "bust_orc_02_body";
 		this.addSprite("socket").setBrush("bust_base_orcs");
 		local body = this.addSprite("body");
@@ -389,7 +389,7 @@
 		injury.Visible = false;
 		injury.setBrush("bust_orc_02_head_injured");
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			this.addSprite(a);
 		}
@@ -397,7 +397,7 @@
 		local v = 3;
 		local v2 = -5;
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			if (!this.hasSprite(a))
 			{
@@ -435,15 +435,15 @@
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.LegendOrcBehemoth);
+		b.setValues(::Const.Tactical.Actor.LegendOrcBehemoth);
 		this.m.BaseProperties.DamageTotalMult -= 0.1;
 		b.IsSpecializedInAxes = true;
 		b.IsSpecializedInCleavers = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints * 2;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.m.Items.getAppearance().Body = "legend_orc_behemoth_body_01";
 		this.addSprite("socket").setBrush("bust_base_orcs");
 		local body = this.addSprite("body");
@@ -460,7 +460,7 @@
 		injury.Visible = false;
 		injury.setBrush("legend_orc_behemoth_head_01_bloodied");
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			this.addSprite(a);
 		}
@@ -468,7 +468,7 @@
 		local v = 15;
 		local v2 = -5;
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			if (!this.hasSprite(a))
 			{
@@ -506,7 +506,7 @@
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.OrcWarrior);
+		b.setValues(::Const.Tactical.Actor.OrcWarrior);
 
 		this.m.BaseProperties.DamageTotalMult -= 0.1;
 		b.IsSpecializedInAxes = true;
@@ -514,8 +514,8 @@
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints * 2;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.m.Items.getAppearance().Body = "bust_orc_03_body";
 		this.addSprite("socket").setBrush("bust_base_orcs");
 		local body = this.addSprite("body");
@@ -533,7 +533,7 @@
 		injury.Visible = false;
 		injury.setBrush("bust_orc_03_head_injured");
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			this.addSprite(a);
 		}

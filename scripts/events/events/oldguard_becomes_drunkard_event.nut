@@ -37,12 +37,12 @@ this.oldguard_becomes_drunkard_event <- this.inherit("scripts/events/event", {
 				});
 				_event.m.Oldguard.worsenMood(1.0, "Has lost too many friends");
 
-				if (_event.m.Oldguard.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Oldguard.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Oldguard.getMoodState()],
-						text = _event.m.Oldguard.getName() + this.Const.MoodStateEvent[_event.m.Oldguard.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Oldguard.getMoodState()],
+						text = _event.m.Oldguard.getName() + ::Const.MoodStateEvent[_event.m.Oldguard.getMoodState()]
 					});
 				}
 			}
@@ -91,7 +91,7 @@ this.oldguard_becomes_drunkard_event <- this.inherit("scripts/events/event", {
 
 		foreach( bro in brothers )
 		{
-			if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.ConvertedCultist) || bro.getBackground().getID() == "background.slave")
+			if (bro.getBackground().isBackgroundType(::Const.BackgroundType.ConvertedCultist) || bro.getBackground().getID() == "background.slave")
 			{
 				continue;
 			}

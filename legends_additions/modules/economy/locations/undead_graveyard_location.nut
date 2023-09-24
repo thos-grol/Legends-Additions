@@ -8,9 +8,9 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.undead_graveyard";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.graveyard";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.Walls;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.Walls;
 		this.m.CombatLocation.CutDownTrees = false;
 		this.m.CombatLocation.ForceLineBattle = true;
 		this.m.CombatLocation.AdditionalRadius = 5;
@@ -20,19 +20,19 @@
 
 		if (r == 1)
 		{
-			this.setDefenderSpawnList(this.Const.World.Spawn.ZombiesOrZombiesAndGhosts);
+			this.setDefenderSpawnList(::Const.World.Spawn.ZombiesOrZombiesAndGhosts);
 		}
 		else if (r == 2)
 		{
-			this.setDefenderSpawnList(this.Const.World.Spawn.ZombiesOrZombiesAndGhouls);
+			this.setDefenderSpawnList(::Const.World.Spawn.ZombiesOrZombiesAndGhouls);
 		}
 		else if (r == 3)
 		{
-			this.setDefenderSpawnList(this.Const.World.Spawn.Ghouls);
+			this.setDefenderSpawnList(::Const.World.Spawn.Ghouls);
 		}
 		else if (r == 4)
 		{
-			this.setDefenderSpawnList(this.Const.World.Spawn.Ghosts);
+			this.setDefenderSpawnList(::Const.World.Spawn.Ghosts);
 		}
 
 		this.m.Resources = 130;
@@ -40,7 +40,7 @@
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.Graveyard);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.Graveyard);
 		this.location.onSpawned();
 	}
 

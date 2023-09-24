@@ -85,7 +85,7 @@ this.tooltip_events <- {
 	{
 		if (typeof _followerID == "integer")
 		{
-			local renown = "\'" + this.Const.Strings.BusinessReputation[this.Const.FollowerSlotRequirements[_followerID]] + "\' (" + this.Const.BusinessReputation[this.Const.FollowerSlotRequirements[_followerID]] + ")";
+			local renown = "\'" + ::Const.Strings.BusinessReputation[::Const.FollowerSlotRequirements[_followerID]] + "\' (" + ::Const.BusinessReputation[::Const.FollowerSlotRequirements[_followerID]] + ")";
 			local ret = [
 				{
 					id = 1,
@@ -154,14 +154,14 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = this.Const.Strings.Tactical.TerrainName[lastTileHovered.Subtype],
+					text = ::Const.Strings.Tactical.TerrainName[lastTileHovered.Subtype],
 					icon = "ui/tooltips/height_" + lastTileHovered.Level + ".png"
 				}
 			];
 			tooltipContent.push({
 				id = 2,
 				type = "description",
-				text = this.Const.Strings.Tactical.TerrainDescription[lastTileHovered.Subtype]
+				text = ::Const.Strings.Tactical.TerrainDescription[lastTileHovered.Subtype]
 			});
 
 			if (lastTileHovered.IsCorpseSpawned)
@@ -184,7 +184,7 @@ this.tooltip_events <- {
 						tooltipContent.push({
 							id = 90,
 							type = "text",
-							text = "Costs [b][color=" + this.Const.UI.Color.PositiveValue + "]" + actor.getActionPointCosts()[lastTileHovered.Type] + "+" + actor.getLevelActionPointCost() + "[/color][/b] AP and [b][color=" + this.Const.UI.Color.PositiveValue + "]" + actor.getFatigueCosts()[lastTileHovered.Type] + "+" + actor.getLevelFatigueCost() + "[/color][/b] Fatigue to traverse because it is at a different height level"
+							text = "Costs [b][color=" + ::Const.UI.Color.PositiveValue + "]" + actor.getActionPointCosts()[lastTileHovered.Type] + "+" + actor.getLevelActionPointCost() + "[/color][/b] AP and [b][color=" + ::Const.UI.Color.PositiveValue + "]" + actor.getFatigueCosts()[lastTileHovered.Type] + "+" + actor.getLevelFatigueCost() + "[/color][/b] Fatigue to traverse because it is at a different height level"
 						});
 					}
 					else
@@ -192,13 +192,13 @@ this.tooltip_events <- {
 						tooltipContent.push({
 							id = 90,
 							type = "text",
-							text = "Costs [b][color=" + this.Const.UI.Color.PositiveValue + "]" + actor.getActionPointCosts()[lastTileHovered.Type] + "[/color][/b] AP and [b][color=" + this.Const.UI.Color.PositiveValue + "]" + actor.getFatigueCosts()[lastTileHovered.Type] + "[/color][/b] Fatigue to traverse"
+							text = "Costs [b][color=" + ::Const.UI.Color.PositiveValue + "]" + actor.getActionPointCosts()[lastTileHovered.Type] + "[/color][/b] AP and [b][color=" + ::Const.UI.Color.PositiveValue + "]" + actor.getFatigueCosts()[lastTileHovered.Type] + "[/color][/b] Fatigue to traverse"
 						});
 					}
 				}
 			}
 
-			foreach( i, line in this.Const.Tactical.TerrainEffectTooltip[lastTileHovered.Type] )
+			foreach( i, line in ::Const.Tactical.TerrainEffectTooltip[lastTileHovered.Type] )
 			{
 				tooltipContent.push(line);
 			}
@@ -209,7 +209,7 @@ this.tooltip_events <- {
 					id = 98,
 					type = "text",
 					icon = "ui/icons/vision.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]Hides anyone inside from being seen at a distance.[/color]"
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]Hides anyone inside from being seen at a distance.[/color]"
 				});
 			}
 
@@ -217,11 +217,11 @@ this.tooltip_events <- {
 
 			if (this.Tactical.State.isScenarioMode())
 			{
-				allies = this.Const.FactionAlliance[this.Const.Faction.Player];
+				allies = ::Const.FactionAlliance[::Const.Faction.Player];
 			}
 			else
 			{
-				allies = this.World.FactionManager.getAlliedFactions(this.Const.Faction.Player);
+				allies = this.World.FactionManager.getAlliedFactions(::Const.Faction.Player);
 			}
 
 			if (lastTileHovered.IsVisibleForPlayer && lastTileHovered.hasZoneOfControlOtherThan(allies))
@@ -230,7 +230,7 @@ this.tooltip_events <- {
 					id = 99,
 					type = "text",
 					icon = "ui/tooltips/warning.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]Is in opponent\'s Zone of Control.[/color]"
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]Is in opponent\'s Zone of Control.[/color]"
 				});
 			}
 
@@ -240,7 +240,7 @@ this.tooltip_events <- {
 					id = 99,
 					type = "text",
 					icon = "ui/tooltips/warning.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]Any character on this tile may retreat safely and immediately from battle.[/color]"
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]Any character on this tile may retreat safely and immediately from battle.[/color]"
 				});
 			}
 
@@ -250,7 +250,7 @@ this.tooltip_events <- {
 					id = 100,
 					type = "text",
 					icon = "ui/tooltips/warning.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + lastTileHovered.Properties.Effect.Tooltip + "[/color]"
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]" + lastTileHovered.Properties.Effect.Tooltip + "[/color]"
 				});
 			}
 
@@ -361,7 +361,7 @@ this.tooltip_events <- {
 				return null;
 			}
 
-			return entity.getRemoveLayerTooltip(this.Const.ItemSlot.Body, _itemId);
+			return entity.getRemoveLayerTooltip(::Const.ItemSlot.Body, _itemId);
 
 		case "paperdoll.remove-helmet-layer":
 			if (entity == null)
@@ -369,7 +369,7 @@ this.tooltip_events <- {
 				return null;
 			}
 
-			return entity.getRemoveLayerTooltip(this.Const.ItemSlot.Head, _itemId);
+			return entity.getRemoveLayerTooltip(::Const.ItemSlot.Head, _itemId);
 		}
 
 		return null;
@@ -395,7 +395,7 @@ this.tooltip_events <- {
 
 	function tactical_helper_getEntityTooltip( _targetedEntity, _activeEntity, _isTileEntity )
 	{
-		if (this.Tactical.State != null && this.Tactical.State.getCurrentActionState() == this.Const.Tactical.ActionState.SkillSelected)
+		if (this.Tactical.State != null && this.Tactical.State.getCurrentActionState() == ::Const.Tactical.ActionState.SkillSelected)
 		{
 			if (_activeEntity != null && this.isKindOf(_targetedEntity, "actor") && _activeEntity.isPlayerControlled() && _targetedEntity != null && !_targetedEntity.isPlayerControlled())
 			{
@@ -426,7 +426,7 @@ this.tooltip_events <- {
 				id = 1,
 				type = "hint",
 				icon = "ui/icons/mouse_left_button.png",
-				text = this.Const.Strings.Tooltip.Tactical.Hint_FocusCharacter
+				text = ::Const.Strings.Tooltip.Tactical.Hint_FocusCharacter
 			});
 		}
 
@@ -467,7 +467,7 @@ this.tooltip_events <- {
 					id = 1,
 					type = "hint",
 					icon = "ui/icons/icon_locked.png",
-					text = this.Const.Strings.Tooltip.Tactical.Hint_CannotChangeItemInCombat
+					text = ::Const.Strings.Tooltip.Tactical.Hint_CannotChangeItemInCombat
 				});
 				return tooltip;
 			}
@@ -478,7 +478,7 @@ this.tooltip_events <- {
 					id = 1,
 					type = "hint",
 					icon = "ui/icons/icon_locked.png",
-					text = this.Const.Strings.Tooltip.Tactical.Hint_OnlyActiveCharacterCanChangeItemsInCombat
+					text = ::Const.Strings.Tooltip.Tactical.Hint_OnlyActiveCharacterCanChangeItemsInCombat
 				});
 				return tooltip;
 			}
@@ -491,7 +491,7 @@ this.tooltip_events <- {
 					id = 1,
 					type = "hint",
 					icon = "ui/tooltips/warning.png",
-					text = "Not enough Action Points to change items ([b][color=" + this.Const.UI.Color.NegativeValue + "]" + _activeEntity.getItems().getActionCost([
+					text = "Not enough Action Points to change items ([b][color=" + ::Const.UI.Color.NegativeValue + "]" + _activeEntity.getItems().getActionCost([
 						_item
 					]) + "[/color][/b] required)"
 				});
@@ -502,17 +502,17 @@ this.tooltip_events <- {
 		switch(_itemOwner)
 		{
 		case "entity":
-			if (_item.getCurrentSlotType() == this.Const.ItemSlot.Bag && _item.getSlotType() != this.Const.ItemSlot.None)
+			if (_item.getCurrentSlotType() == ::Const.ItemSlot.Bag && _item.getSlotType() != ::Const.ItemSlot.None)
 			{
 				if (stashLocked == true)
 				{
-					if (_item.getSlotType() != this.Const.ItemSlot.Bag && (_entity.getItems().getItemAtSlot(_item.getSlotType()) == null || _entity.getItems().getItemAtSlot(_item.getSlotType()) == "-1" || _entity.getItems().getItemAtSlot(_item.getSlotType()).isAllowedInBag(_entity)))
+					if (_item.getSlotType() != ::Const.ItemSlot.Bag && (_entity.getItems().getItemAtSlot(_item.getSlotType()) == null || _entity.getItems().getItemAtSlot(_item.getSlotType()) == "-1" || _entity.getItems().getItemAtSlot(_item.getSlotType()).isAllowedInBag(_entity)))
 					{
 						tooltip.push({
 							id = 1,
 							type = "hint",
 							icon = "ui/icons/mouse_right_button.png",
-							text = "Equip item ([b][color=" + this.Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
+							text = "Equip item ([b][color=" + ::Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
 								_item,
 								_entity.getItems().getItemAtSlot(_item.getSlotType()),
 								_entity.getItems().getItemAtSlot(_item.getBlockedSlotType())
@@ -524,14 +524,14 @@ this.tooltip_events <- {
 						id = 2,
 						type = "hint",
 						icon = "ui/icons/mouse_right_button_ctrl.png",
-						text = "Drop item on ground ([b][color=" + this.Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
+						text = "Drop item on ground ([b][color=" + ::Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
 							_item
 						]) + "[/color][/b] AP)"
 					});
 				}
 				else
 				{
-					if (_item.getSlotType() != this.Const.ItemSlot.Bag && (_entity.getItems().getItemAtSlot(_item.getSlotType()) == null || _entity.getItems().getItemAtSlot(_item.getSlotType()) == "-1" || _entity.getItems().getItemAtSlot(_item.getSlotType()).isAllowedInBag(_entity)))
+					if (_item.getSlotType() != ::Const.ItemSlot.Bag && (_entity.getItems().getItemAtSlot(_item.getSlotType()) == null || _entity.getItems().getItemAtSlot(_item.getSlotType()) == "-1" || _entity.getItems().getItemAtSlot(_item.getSlotType()).isAllowedInBag(_entity)))
 					{
 						tooltip.push({
 							id = 1,
@@ -551,13 +551,13 @@ this.tooltip_events <- {
 			}
 			else if (stashLocked == true)
 			{
-				if (_item.isChangeableInBattle(_entity) && _item.isAllowedInBag(_entity) && _entity.getItems().hasEmptySlot(this.Const.ItemSlot.Bag))
+				if (_item.isChangeableInBattle(_entity) && _item.isAllowedInBag(_entity) && _entity.getItems().hasEmptySlot(::Const.ItemSlot.Bag))
 				{
 					tooltip.push({
 						id = 1,
 						type = "hint",
 						icon = "ui/icons/mouse_right_button.png",
-						text = "Place item in bag ([b][color=" + this.Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
+						text = "Place item in bag ([b][color=" + ::Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
 							_item
 						]) + "[/color][/b] AP)"
 					});
@@ -567,7 +567,7 @@ this.tooltip_events <- {
 					id = 2,
 					type = "hint",
 					icon = "ui/icons/mouse_right_button_ctrl.png",
-					text = "Drop item on ground ([b][color=" + this.Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
+					text = "Drop item on ground ([b][color=" + ::Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
 						_item
 					]) + "[/color][/b] AP)"
 				});
@@ -598,13 +598,13 @@ this.tooltip_events <- {
 		case "character-screen-inventory-list-module.ground":
 			if (_item.isChangeableInBattle(_entity))
 			{
-				if (_item.getSlotType() != this.Const.ItemSlot.None)
+				if (_item.getSlotType() != ::Const.ItemSlot.None)
 				{
 					tooltip.push({
 						id = 1,
 						type = "hint",
 						icon = "ui/icons/mouse_right_button.png",
-						text = "Equip item ([b][color=" + this.Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
+						text = "Equip item ([b][color=" + ::Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
 							_item,
 							_entity.getItems().getItemAtSlot(_item.getSlotType()),
 							_entity.getItems().getItemAtSlot(_item.getBlockedSlotType())
@@ -618,7 +618,7 @@ this.tooltip_events <- {
 						id = 2,
 						type = "hint",
 						icon = "ui/icons/mouse_right_button_ctrl.png",
-						text = "Place item in bag ([b][color=" + this.Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
+						text = "Place item in bag ([b][color=" + ::Const.UI.Color.PositiveValue + "]" + _activeEntity.getItems().getActionCost([
 							_item
 						]) + "[/color][/b] AP)"
 					});
@@ -638,7 +638,7 @@ this.tooltip_events <- {
 					text = "Use item"
 				});
 			}
-			else if (_item.getSlotType() != this.Const.ItemSlot.None && _item.getSlotType() != this.Const.ItemSlot.Bag)
+			else if (_item.getSlotType() != ::Const.ItemSlot.None && _item.getSlotType() != ::Const.ItemSlot.Bag)
 			{
 				tooltip.push({
 					id = 1,
@@ -733,8 +733,8 @@ this.tooltip_events <- {
 
 			if (this.World.State.getCurrentTown() != null && this.World.State.getCurrentTown().getCurrentBuilding() != null && this.World.State.getCurrentTown().getCurrentBuilding().isRepairOffered() && _item.getRepairMax() > 1 && _item.getRepair() < _item.getRepairMax())
 			{
-				local price = (_item.getRepairMax() - _item.getRepair()) * this.Const.World.Assets.CostToRepairPerPoint;
-				local value = _item.getRawValue() * (1.0 - _item.getRepair() / _item.getRepairMax()) * 0.2 * this.World.State.getCurrentTown().getPriceMult() * this.Const.Difficulty.SellPriceMult[this.World.Assets.getEconomicDifficulty()];
+				local price = (_item.getRepairMax() - _item.getRepair()) * ::Const.World.Assets.CostToRepairPerPoint;
+				local value = _item.getRawValue() * (1.0 - _item.getRepair() / _item.getRepairMax()) * 0.2 * this.World.State.getCurrentTown().getPriceMult() * ::Const.Difficulty.SellPriceMult[this.World.Assets.getEconomicDifficulty()];
 				price = this.Math.max(price, value);
 
 				if (this.World.Assets.getMoney() >= price)
@@ -795,7 +795,7 @@ this.tooltip_events <- {
 		{
 			if (this.World.Assets.m.IsShowingExtendedFootprints)
 			{
-				local footprints = this.World.getAllFootprintsAtPos(this.World.getCamera().screenToWorld(this.Cursor.getX(), this.Cursor.getY()), this.Const.World.FootprintsType.COUNT);
+				local footprints = this.World.getAllFootprintsAtPos(this.World.getCamera().screenToWorld(this.Cursor.getX(), this.Cursor.getY()), ::Const.World.FootprintsType.COUNT);
 				local ret = [
 					{
 						id = 1,
@@ -811,7 +811,7 @@ this.tooltip_events <- {
 						ret.push({
 							id = 1,
 							type = "hint",
-							text = this.Const.Strings.FootprintsType[i] + " recently passed through here"
+							text = ::Const.Strings.FootprintsType[i] + " recently passed through here"
 						});
 					}
 
@@ -938,7 +938,7 @@ this.tooltip_events <- {
 				return null;
 			}
 
-			return entity.getRemoveLayerTooltip(this.Const.ItemSlot.Body, _itemId);
+			return entity.getRemoveLayerTooltip(::Const.ItemSlot.Body, _itemId);
 
 		case "paperdoll.remove-helmet-layer":
 			if (entity == null)
@@ -946,7 +946,7 @@ this.tooltip_events <- {
 				return null;
 			}
 
-			return entity.getRemoveLayerTooltip(this.Const.ItemSlot.Head, _itemId);
+			return entity.getRemoveLayerTooltip(::Const.ItemSlot.Head, _itemId);
 		}
 
 		return null;
@@ -990,7 +990,7 @@ this.tooltip_events <- {
 			{
 				local ret = statusEffect.getTooltip();
 
-				if (statusEffect.isType(this.Const.SkillType.Background) && ("State" in this.World) && this.World.State != null)
+				if (statusEffect.isType(::Const.SkillType.Background) && ("State" in this.World) && this.World.State != null)
 				{
 					this.World.Assets.getOrigin().onGetBackgroundTooltip(statusEffect, ret);
 				}
@@ -1037,7 +1037,7 @@ this.tooltip_events <- {
 				player.getTitle()
 			]
 		];
-		this.Const.LegendMod.extendVarsWithPronouns(vars, player.getGender());
+		::Const.LegendMod.extendVarsWithPronouns(vars, player.getGender());
 		local tooltip = this.buildTextFromTemplate(perk.Tooltip, vars);
 
 		if (perk != null)
@@ -1239,7 +1239,7 @@ this.tooltip_events <- {
 				if (bm > 0)
 				{
 					barterMult = barterMult + bm;
-					L[2] = L[2] + " [color=" + this.Const.UI.Color.PositiveValue + "]" + bm + "%[/color] Barter";
+					L[2] = L[2] + " [color=" + ::Const.UI.Color.PositiveValue + "]" + bm + "%[/color] Barter";
 				}
 
 				brolist.push(L);
@@ -1274,7 +1274,7 @@ this.tooltip_events <- {
 					{
 						id = 2,
 						type = "description",
-						text = "The amount of coin your mercenary company has. Used to pay every mercenary daily at noon, as well as to hire new people and purchase equipment.\n\nYou pay out [color=" + this.Const.UI.Color.NegativeValue + "]" + dailyMoney + "[/color] crowns per day. Your [color=" + this.Const.UI.Color.PositiveValue + "]" + money + "[/color] crowns will last you for [color=" + this.Const.UI.Color.PositiveValue + "]" + time + "[/color] more days."
+						text = "The amount of coin your mercenary company has. Used to pay every mercenary daily at noon, as well as to hire new people and purchase equipment.\n\nYou pay out [color=" + ::Const.UI.Color.NegativeValue + "]" + dailyMoney + "[/color] crowns per day. Your [color=" + ::Const.UI.Color.PositiveValue + "]" + money + "[/color] crowns will last you for [color=" + ::Const.UI.Color.PositiveValue + "]" + time + "[/color] more days."
 					}
 				];
 			}
@@ -1289,7 +1289,7 @@ this.tooltip_events <- {
 					{
 						id = 2,
 						type = "description",
-						text = "The amount of coin your mercenary company has. Used to pay every mercenary daily, as well as to hire new people and purchase equipment.\n\nYou pay out [color=" + this.Const.UI.Color.PositiveValue + "]" + dailyMoney + "[/color] crowns per day.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]You have no more crowns to pay your men with! Earn some crowns fast or let some people go before they desert you one by one.[/color]"
+						text = "The amount of coin your mercenary company has. Used to pay every mercenary daily, as well as to hire new people and purchase equipment.\n\nYou pay out [color=" + ::Const.UI.Color.PositiveValue + "]" + dailyMoney + "[/color] crowns per day.\n\n[color=" + ::Const.UI.Color.NegativeValue + "]You have no more crowns to pay your men with! Earn some crowns fast or let some people go before they desert you one by one.[/color]"
 					}
 				];
 			}
@@ -1317,7 +1317,7 @@ this.tooltip_events <- {
 					id = id,
 					type = "hint",
 					icon = "ui/tooltips/money.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + bro[0] + "[/color] " + bro[1] + " (" + bro[2] + ")"
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]" + bro[0] + "[/color] " + bro[1] + " (" + bro[2] + ")"
 				});
 				id = ++id;
 				id = id;
@@ -1327,7 +1327,7 @@ this.tooltip_events <- {
 				id = id,
 				type = "text",
 				icon = "ui/icons/asset_moral_reputation.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + barterMult + "[/color]% Barter Multiplier"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + barterMult + "[/color]% Barter Multiplier"
 			});
 			id = ++id;
 			id = id;
@@ -1391,12 +1391,12 @@ this.tooltip_events <- {
 
 		case "assets.Food":
 			local food = this.World.Assets.getFood();
-			local dailyFood = this.Math.ceil(this.World.Assets.getDailyFoodCost() * this.Const.World.TerrainFoodConsumption[this.World.State.getPlayer().getTile().Type]);
+			local dailyFood = this.Math.ceil(this.World.Assets.getDailyFoodCost() * ::Const.World.TerrainFoodConsumption[this.World.State.getPlayer().getTile().Type]);
 			local brolist = [];
 
 			foreach( bro in this.World.getPlayerRoster().getAll() )
 			{
-				local brofood = this.Math.ceil(bro.getDailyFood() * this.Const.World.TerrainFoodConsumption[this.World.State.getPlayer().getTile().Type]);
+				local brofood = this.Math.ceil(bro.getDailyFood() * ::Const.World.TerrainFoodConsumption[this.World.State.getPlayer().getTile().Type]);
 				brolist.push([
 					brofood,
 					bro.getName()
@@ -1417,7 +1417,7 @@ this.tooltip_events <- {
 					{
 						id = 2,
 						type = "description",
-						text = "The total amount of provisions you carry. The average mercenary requires 2 provisions per day, more on difficult terrain or when in reserve. Your mercenaries will eat the provisions closest to expiring first. Running out of provisions will lower morale and will eventually lead to your people deserting you before dying of starvation.\n\nYou use [color=" + this.Const.UI.Color.PositiveValue + "]" + dailyFood + "[/color] provisions per day. Your [color=" + this.Const.UI.Color.PositiveValue + "]" + food + "[/color] provisions will last you for [color=" + this.Const.UI.Color.PositiveValue + "]" + time + "[/color] more days at most. Keep in mind that individual provisions will eventually turn bad!"
+						text = "The total amount of provisions you carry. The average mercenary requires 2 provisions per day, more on difficult terrain or when in reserve. Your mercenaries will eat the provisions closest to expiring first. Running out of provisions will lower morale and will eventually lead to your people deserting you before dying of starvation.\n\nYou use [color=" + ::Const.UI.Color.PositiveValue + "]" + dailyFood + "[/color] provisions per day. Your [color=" + ::Const.UI.Color.PositiveValue + "]" + food + "[/color] provisions will last you for [color=" + ::Const.UI.Color.PositiveValue + "]" + time + "[/color] more days at most. Keep in mind that individual provisions will eventually turn bad!"
 					}
 				];
 			}
@@ -1432,7 +1432,7 @@ this.tooltip_events <- {
 					{
 						id = 2,
 						type = "description",
-						text = "The total amount of provisions you carry. The average mercenary requires 2 provisions per day and more on difficult terrain. Your mercenaries will eat the provisions closest to expiring first. Running out of provisions will lower morale and will eventually lead to your people deserting you before dying of starvation.\n\nYou use [color=" + this.Const.UI.Color.PositiveValue + "]" + dailyFood + "[/color] provisions per day.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]You are almost out of provisions to feed your company! Buy new provisions as fast as possible or your mercenaries will desert you one by one before they starve![/color]"
+						text = "The total amount of provisions you carry. The average mercenary requires 2 provisions per day and more on difficult terrain. Your mercenaries will eat the provisions closest to expiring first. Running out of provisions will lower morale and will eventually lead to your people deserting you before dying of starvation.\n\nYou use [color=" + ::Const.UI.Color.PositiveValue + "]" + dailyFood + "[/color] provisions per day.\n\n[color=" + ::Const.UI.Color.NegativeValue + "]You are almost out of provisions to feed your company! Buy new provisions as fast as possible or your mercenaries will desert you one by one before they starve![/color]"
 					}
 				];
 			}
@@ -1447,7 +1447,7 @@ this.tooltip_events <- {
 					{
 						id = 2,
 						type = "description",
-						text = "The total amount of provisions you carry. The average mercenary requires 2 provisions per day, more on difficult terrain or when in reserve. Your mercenaries will eat the provisions closest to expiring first. Running out of provisions will lower morale and will eventually lead to your people deserting you before dying of starvation.\n\nYou use [color=" + this.Const.UI.Color.PositiveValue + "]" + dailyFood + "[/color] provisions per day.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]You have no more provisions to feed your company! Buy new provisions as fast as possible or your mercenaries will desert you one by one before they starve![/color]"
+						text = "The total amount of provisions you carry. The average mercenary requires 2 provisions per day, more on difficult terrain or when in reserve. Your mercenaries will eat the provisions closest to expiring first. Running out of provisions will lower morale and will eventually lead to your people deserting you before dying of starvation.\n\nYou use [color=" + ::Const.UI.Color.PositiveValue + "]" + dailyFood + "[/color] provisions per day.\n\n[color=" + ::Const.UI.Color.NegativeValue + "]You have no more provisions to feed your company! Buy new provisions as fast as possible or your mercenaries will desert you one by one before they starve![/color]"
 					}
 				];
 			}
@@ -1475,7 +1475,7 @@ this.tooltip_events <- {
 					id = id,
 					type = "text",
 					icon = "ui/icons/asset_daily_food.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + bro[0] + "[/color] " + bro[1]
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]" + bro[0] + "[/color] " + bro[1]
 				});
 				id = ++id;
 				id = id;
@@ -1546,7 +1546,7 @@ this.tooltip_events <- {
 			return ret;
 
 		case "repairs.Required":
-			local tent = this.World.Camp.getBuildingByID(this.Const.World.CampBuildings.Repair);
+			local tent = this.World.Camp.getBuildingByID(::Const.World.CampBuildings.Repair);
 			local desc = "Number of tools required to repair the selected equipment. One point is required to repair " + tent.getConversionRate() + " points of item condition.";
 			local ret = [
 				{
@@ -1563,7 +1563,7 @@ this.tooltip_events <- {
 			return ret;
 
 		case "repairs.Bros":
-			local tent = this.World.Camp.getBuildingByID(this.Const.World.CampBuildings.Repair);
+			local tent = this.World.Camp.getBuildingByID(::Const.World.CampBuildings.Repair);
 			local repair = tent.getModifiers();
 			local desc = "Number of people assigned to repair duty. The more assigned, the quicker equipment can be repaired.";
 			local ret = [
@@ -1581,7 +1581,7 @@ this.tooltip_events <- {
 					id = 3,
 					type = "text",
 					icon = "ui/icons/repair_item.png",
-					text = "Total repair modifier is [color=" + this.Const.UI.Color.PositiveValue + "]" + repair.Craft + " units per hour[/color]"
+					text = "Total repair modifier is [color=" + ::Const.UI.Color.PositiveValue + "]" + repair.Craft + " units per hour[/color]"
 				}
 			];
 			local id = 4;
@@ -1592,7 +1592,7 @@ this.tooltip_events <- {
 					id = id,
 					type = "text",
 					icon = "ui/icons/special.png",
-					text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + bro[0] + " units/hour [/color] " + bro[1] + " (" + bro[2] + ")"
+					text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + bro[0] + " units/hour [/color] " + bro[1] + " (" + bro[2] + ")"
 				});
 				id = ++id;
 				id = id;
@@ -1622,26 +1622,26 @@ this.tooltip_events <- {
 
 			if (heal.MedicineMin > 0)
 			{
-				desc = desc + ("\n\nHealing up all your men will take between [color=" + this.Const.UI.Color.PositiveValue + "]" + heal.DaysMin + "[/color] and [color=" + this.Const.UI.Color.PositiveValue + "]" + heal.DaysMax + "[/color] days and requires between ");
+				desc = desc + ("\n\nHealing up all your men will take between [color=" + ::Const.UI.Color.PositiveValue + "]" + heal.DaysMin + "[/color] and [color=" + ::Const.UI.Color.PositiveValue + "]" + heal.DaysMax + "[/color] days and requires between ");
 
 				if (heal.MedicineMin <= this.World.Assets.getMedicine())
 				{
-					desc = desc + ("[color=" + this.Const.UI.Color.PositiveValue + "]");
+					desc = desc + ("[color=" + ::Const.UI.Color.PositiveValue + "]");
 				}
 				else
 				{
-					desc = desc + ("[color=" + this.Const.UI.Color.NegativeValue + "]");
+					desc = desc + ("[color=" + ::Const.UI.Color.NegativeValue + "]");
 				}
 
 				desc = desc + (heal.MedicineMin + "[/color] and ");
 
 				if (heal.MedicineMax <= this.World.Assets.getMedicine())
 				{
-					desc = desc + ("[color=" + this.Const.UI.Color.PositiveValue + "]");
+					desc = desc + ("[color=" + ::Const.UI.Color.PositiveValue + "]");
 				}
 				else
 				{
-					desc = desc + ("[color=" + this.Const.UI.Color.NegativeValue + "]");
+					desc = desc + ("[color=" + ::Const.UI.Color.NegativeValue + "]");
 				}
 
 				desc = desc + (heal.MedicineMax + "[/color] Medical Supplies.");
@@ -1662,7 +1662,7 @@ this.tooltip_events <- {
 
 			if (meds > 0)
 			{
-				desc = desc + (" You need [color=" + this.Const.UI.Color.NegativeValue + "]" + meds + "[/color] units each day to maintain your supply of flesh and bones for summoning.");
+				desc = desc + (" You need [color=" + ::Const.UI.Color.NegativeValue + "]" + meds + "[/color] units each day to maintain your supply of flesh and bones for summoning.");
 			}
 
 			desc = desc + ("\n\nYou can carry " + this.World.Assets.getMaxMedicine() + " units at most.");
@@ -1697,7 +1697,7 @@ this.tooltip_events <- {
 					id = id,
 					type = "hint",
 					icon = "ui/icons/days_wounded.png",
-					text = bro[2] + " [color=" + this.Const.UI.Color.NegativeValue + "]" + bro[0] + "[/color] to [color=" + this.Const.UI.Color.NegativeValue + "]" + bro[1] + "[/color] days"
+					text = bro[2] + " [color=" + ::Const.UI.Color.NegativeValue + "]" + bro[0] + "[/color] to [color=" + ::Const.UI.Color.NegativeValue + "]" + bro[1] + "[/color] days"
 				});
 				id = ++id;
 				id = id;
@@ -1771,7 +1771,7 @@ this.tooltip_events <- {
 				ret.push({
 					id = id,
 					type = "text",
-					text = bro[0] + " [color=" + this.Const.UI.Color.PositiveValue + "]" + bro[1] + "%[/color]"
+					text = bro[0] + " [color=" + ::Const.UI.Color.PositiveValue + "]" + bro[1] + "%[/color]"
 				});
 				id = ++id;
 				id = id;
@@ -2260,7 +2260,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]WARNING:[/color] Deletes the selected campaign without any further warning."
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]WARNING:[/color] Deletes the selected campaign without any further warning."
 				}
 			];
 
@@ -2302,7 +2302,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]WARNING:[/color] Deletes the selected campaign without any further warning."
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]WARNING:[/color] Deletes the selected campaign without any further warning."
 				}
 			];
 
@@ -3104,7 +3104,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "Pause the active character\'s turn and move them to the end of the queue. Waiting this turn will also have you act later (as though you only had" + (this.Const.Combat.InitiativeAfterWaitMult * 100).tointeger() + "% of your initiative) next turn."
+					text = "Pause the active character\'s turn and move them to the end of the queue. Waiting this turn will also have you act later (as though you only had" + (::Const.Combat.InitiativeAfterWaitMult * 100).tointeger() + "% of your initiative) next turn."
 				}
 			];
 
@@ -3196,7 +3196,7 @@ this.tooltip_events <- {
 						id = 1,
 						type = "text",
 						icon = "ui/icons/days_wounded.png",
-						text = "Will heal in [color=" + this.Const.UI.Color.NegativeValue + "]" + entity.getDaysWounded() + "[/color] days"
+						text = "Will heal in [color=" + ::Const.UI.Color.NegativeValue + "]" + entity.getDaysWounded() + "[/color] days"
 					});
 				}
 			}
@@ -3252,13 +3252,13 @@ this.tooltip_events <- {
 					id = 1,
 					type = "text",
 					icon = "ui/icons/regular_damage.png",
-					text = "Dealt [color=" + this.Const.UI.Color.PositiveValue + "]" + combatStats.DamageDealtHitpoints + "[/color] damage to hitpoints"
+					text = "Dealt [color=" + ::Const.UI.Color.PositiveValue + "]" + combatStats.DamageDealtHitpoints + "[/color] damage to hitpoints"
 				});
 				result.push({
 					id = 2,
 					type = "text",
 					icon = "ui/icons/shield_damage.png",
-					text = "Dealt [color=" + this.Const.UI.Color.PositiveValue + "]" + combatStats.DamageDealtArmor + "[/color] damage to armor"
+					text = "Dealt [color=" + ::Const.UI.Color.PositiveValue + "]" + combatStats.DamageDealtArmor + "[/color] damage to armor"
 				});
 			}
 
@@ -3285,13 +3285,13 @@ this.tooltip_events <- {
 					id = 1,
 					type = "text",
 					icon = "ui/icons/regular_damage.png",
-					text = "Received [color=" + this.Const.UI.Color.NegativeValue + "]" + combatStats.DamageReceivedHitpoints + "[/color] hitpoint damage"
+					text = "Received [color=" + ::Const.UI.Color.NegativeValue + "]" + combatStats.DamageReceivedHitpoints + "[/color] hitpoint damage"
 				});
 				result.push({
 					id = 2,
 					type = "text",
 					icon = "ui/icons/shield_damage.png",
-					text = "Received [color=" + this.Const.UI.Color.NegativeValue + "]" + combatStats.DamageReceivedArmor + "[/color] armor damage"
+					text = "Received [color=" + ::Const.UI.Color.NegativeValue + "]" + combatStats.DamageReceivedArmor + "[/color] armor damage"
 				});
 			}
 
@@ -3773,7 +3773,7 @@ this.tooltip_events <- {
 					id = 9,
 					type = "text",
 					icon = "ui/tooltips/warning.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]Unable to camp while travelling with other parties[/color]"
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]Unable to camp while travelling with other parties[/color]"
 				});
 			}
 
@@ -4391,7 +4391,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary participate in a sparring fight with experienced opponents and various fighting styles. The bruises collected and lessons learned will result in [color=" + this.Const.UI.Color.PositiveValue + "]+50%[/color] Experience Gain for the next battle."
+					text = "Have your mercenary participate in a sparring fight with experienced opponents and various fighting styles. The bruises collected and lessons learned will result in [color=" + ::Const.UI.Color.PositiveValue + "]+50%[/color] Experience Gain for the next battle."
 				}
 			];
 
@@ -4405,7 +4405,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary learn valuable lessons and insights from a true veteran of the trade. The knowledge imparted will result in [color=" + this.Const.UI.Color.PositiveValue + "]+35%[/color] Experience Gain for the duration of three battles."
+					text = "Have your mercenary learn valuable lessons and insights from a true veteran of the trade. The knowledge imparted will result in [color=" + ::Const.UI.Color.PositiveValue + "]+35%[/color] Experience Gain for the duration of three battles."
 				}
 			];
 
@@ -4419,7 +4419,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary undergo a rigorous training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with [color=" + this.Const.UI.Color.PositiveValue + "]+20%[/color] Experience Gain for the duration of five battles."
+					text = "Have your mercenary undergo a rigorous training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with [color=" + ::Const.UI.Color.PositiveValue + "]+20%[/color] Experience Gain for the duration of five battles."
 				}
 			];
 
@@ -4481,7 +4481,7 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = this.Const.Strings.InventoryHeader[this.World.Retinue.getInventoryUpgrades()]
+					text = ::Const.Strings.InventoryHeader[this.World.Retinue.getInventoryUpgrades()]
 				},
 				{
 					id = 2,
@@ -4490,13 +4490,13 @@ this.tooltip_events <- {
 				}
 			];
 
-			if (this.World.Retinue.getInventoryUpgrades() < this.Const.Strings.InventoryUpgradeHeader.len())
+			if (this.World.Retinue.getInventoryUpgrades() < ::Const.Strings.InventoryUpgradeHeader.len())
 			{
 				ret.push({
 					id = 1,
 					type = "hint",
 					icon = "ui/icons/mouse_left_button.png",
-					text = this.Const.Strings.InventoryUpgradeHeader[this.World.Retinue.getInventoryUpgrades()] + " for [img]gfx/ui/tooltips/money.png[/img]" + this.Const.Strings.InventoryUpgradeCosts[this.World.Retinue.getInventoryUpgrades()]
+					text = ::Const.Strings.InventoryUpgradeHeader[this.World.Retinue.getInventoryUpgrades()] + " for [img]gfx/ui/tooltips/money.png[/img]" + ::Const.Strings.InventoryUpgradeCosts[this.World.Retinue.getInventoryUpgrades()]
 				});
 			}
 
@@ -4516,13 +4516,13 @@ this.tooltip_events <- {
 				}
 			];
 
-			if (this.Const.DLC.Lindwurm == true)
+			if (::Const.DLC.Lindwurm == true)
 			{
-				ret[1].text += "\n\n[color=" + this.Const.UI.Color.PositiveValue + "]This DLC has been installed.[/color]";
+				ret[1].text += "\n\n[color=" + ::Const.UI.Color.PositiveValue + "]This DLC has been installed.[/color]";
 			}
 			else
 			{
-				ret[1].text += "\n\n[color=" + this.Const.UI.Color.NegativeValue + "]This DLC is missing. It\'s available for free on Steam and GOG! [/color] Parts of Legends will not work without this DLC";
+				ret[1].text += "\n\n[color=" + ::Const.UI.Color.NegativeValue + "]This DLC is missing. It\'s available for free on Steam and GOG! [/color] Parts of Legends will not work without this DLC";
 			}
 
 			ret.push({
@@ -4547,13 +4547,13 @@ this.tooltip_events <- {
 				}
 			];
 
-			if (this.Const.DLC.Unhold == true)
+			if (::Const.DLC.Unhold == true)
 			{
-				ret[1].text += "\n\n[color=" + this.Const.UI.Color.PositiveValue + "]This DLC has been installed.[/color]";
+				ret[1].text += "\n\n[color=" + ::Const.UI.Color.PositiveValue + "]This DLC has been installed.[/color]";
 			}
 			else
 			{
-				ret[1].text += "\n\n[color=" + this.Const.UI.Color.NegativeValue + "]This DLC is missing. It\'s available for purchase on Steam and GOG! [/color] Legends will not work without this DLC";
+				ret[1].text += "\n\n[color=" + ::Const.UI.Color.NegativeValue + "]This DLC is missing. It\'s available for purchase on Steam and GOG! [/color] Legends will not work without this DLC";
 			}
 
 			ret.push({
@@ -4653,7 +4653,7 @@ this.tooltip_events <- {
 			];
 
 		case "workshop.Required":
-			local tent = this.World.Camp.getBuildingByID(this.Const.World.CampBuildings.Workshop);
+			local tent = this.World.Camp.getBuildingByID(::Const.World.CampBuildings.Workshop);
 			local desc = "Number of tools that will be salvaged from selected equipment. " + tent.getConversionRate() + " points of item condition equals 1 tool. Once a tools condition reaches zero it will be destroyed.";
 			local ret = [
 				{
@@ -4668,7 +4668,7 @@ this.tooltip_events <- {
 			return ret;
 
 		case "workshop.Bros":
-			local tent = this.World.Camp.getBuildingByID(this.Const.World.CampBuildings.Workshop);
+			local tent = this.World.Camp.getBuildingByID(::Const.World.CampBuildings.Workshop);
 			local repair = tent.getModifiers();
 			local desc = "Number of people assigned to repair duty. The more assigned, the quicker equipment can be salvaged.";
 			local ret = [
@@ -4696,7 +4696,7 @@ this.tooltip_events <- {
 					id = id,
 					type = "text",
 					icon = "ui/icons/special.png",
-					text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + bro[0] + " units/hour [/color] " + bro[1] + " (" + bro[2] + ")"
+					text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + bro[0] + " units/hour [/color] " + bro[1] + " (" + bro[2] + ")"
 				});
 				id = ++id;
 				id = id;
@@ -4721,7 +4721,7 @@ this.tooltip_events <- {
 			return ret;
 
 		case "crafting.Bros":
-			local tent = this.World.Camp.getBuildingByID(this.Const.World.CampBuildings.Crafting);
+			local tent = this.World.Camp.getBuildingByID(::Const.World.CampBuildings.Crafting);
 			local repair = tent.getModifiers();
 			local desc = "Number of people assigned to crafting duty. The more assigned, the quicker items can be crafted.";
 			local ret = [
@@ -4749,7 +4749,7 @@ this.tooltip_events <- {
 					id = id,
 					type = "text",
 					icon = "ui/icons/special.png",
-					text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + bro[0] + " units/hour [/color] " + bro[1] + " (" + bro[2] + ")"
+					text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + bro[0] + " units/hour [/color] " + bro[1] + " (" + bro[2] + ")"
 				});
 				id = ++id;
 				id = id;
@@ -4806,7 +4806,7 @@ this.tooltip_events <- {
 			return ret;
 
 		case "healer.Required":
-			local tent = this.World.Camp.getBuildingByID(this.Const.World.CampBuildings.Healer);
+			local tent = this.World.Camp.getBuildingByID(::Const.World.CampBuildings.Healer);
 			local desc = "Quantity of Medicine required to treat selected injuries.";
 			local ret = [
 				{
@@ -4823,7 +4823,7 @@ this.tooltip_events <- {
 			return ret;
 
 		case "healer.Bros":
-			local tent = this.World.Camp.getBuildingByID(this.Const.World.CampBuildings.Healer);
+			local tent = this.World.Camp.getBuildingByID(::Const.World.CampBuildings.Healer);
 			local repair = tent.getModifiers();
 			local desc = "Number of people assigned to tent duty. The more assigned, the quicker injuries can be treated.";
 			local ret = [
@@ -4840,7 +4840,7 @@ this.tooltip_events <- {
 					id = 3,
 					type = "text",
 					icon = "ui/icons/asset_medicine.png",
-					text = "Total treatment modifier is [color=" + this.Const.UI.Color.PositiveValue + "]" + repair.Craft + " units per hour[/color]"
+					text = "Total treatment modifier is [color=" + ::Const.UI.Color.PositiveValue + "]" + repair.Craft + " units per hour[/color]"
 				}
 			];
 			return ret;
@@ -4889,13 +4889,13 @@ this.tooltip_events <- {
 				}
 			];
 
-			if (this.Const.DLC.Wildmen == true)
+			if (::Const.DLC.Wildmen == true)
 			{
-				ret[1].text += "\n\n[color=" + this.Const.UI.Color.PositiveValue + "]This DLC has been installed.[/color]";
+				ret[1].text += "\n\n[color=" + ::Const.UI.Color.PositiveValue + "]This DLC has been installed.[/color]";
 			}
 			else
 			{
-				ret[1].text += "\n\n[color=" + this.Const.UI.Color.NegativeValue + "]This DLC is missing. It\'s available for purchase on Steam and GOG![/color]";
+				ret[1].text += "\n\n[color=" + ::Const.UI.Color.NegativeValue + "]This DLC is missing. It\'s available for purchase on Steam and GOG![/color]";
 			}
 
 			ret.push({
@@ -4920,13 +4920,13 @@ this.tooltip_events <- {
 				}
 			];
 
-			if (this.Const.DLC.Desert == true)
+			if (::Const.DLC.Desert == true)
 			{
-				ret[1].text += "\n\n[color=" + this.Const.UI.Color.PositiveValue + "]This DLC has been installed.[/color]";
+				ret[1].text += "\n\n[color=" + ::Const.UI.Color.PositiveValue + "]This DLC has been installed.[/color]";
 			}
 			else
 			{
-				ret[1].text += "\n\n[color=" + this.Const.UI.Color.NegativeValue + "]This DLC is missing. It\'s available for purchase on Steam and GOG![/color]";
+				ret[1].text += "\n\n[color=" + ::Const.UI.Color.NegativeValue + "]This DLC is missing. It\'s available for purchase on Steam and GOG![/color]";
 			}
 
 			ret.push({
@@ -4951,13 +4951,13 @@ this.tooltip_events <- {
 				}
 			];
 
-			if (this.Const.DLC.Paladins == true)
+			if (::Const.DLC.Paladins == true)
 			{
-				ret[1].text += "\n\n[color=" + this.Const.UI.Color.PositiveValue + "]This DLC has been installed.[/color]";
+				ret[1].text += "\n\n[color=" + ::Const.UI.Color.PositiveValue + "]This DLC has been installed.[/color]";
 			}
 			else
 			{
-				ret[1].text += "\n\n[color=" + this.Const.UI.Color.NegativeValue + "]This DLC is missing. It\'s available for free on Steam and GOG![/color]";
+				ret[1].text += "\n\n[color=" + ::Const.UI.Color.NegativeValue + "]This DLC is missing. It\'s available for free on Steam and GOG![/color]";
 			}
 
 			ret.push({

@@ -14,7 +14,7 @@
 		this.location.create();
 		this.m.Name = "Battle Site";
 		this.m.TypeID = "location.battlefield";
-		this.m.LocationType = this.Const.World.LocationType.Passive;
+		this.m.LocationType = ::Const.World.LocationType.Passive;
 		this.m.IsDespawningDefenders = false;
 		this.m.IsBattlesite = true;
 		this.m.IsAttackable = false;

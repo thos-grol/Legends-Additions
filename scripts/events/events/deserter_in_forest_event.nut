@@ -131,7 +131,7 @@ this.deserter_in_forest_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
 				});
 				local brothers = this.World.getPlayerRoster().getAll();
 
@@ -141,12 +141,12 @@ this.deserter_in_forest_event <- this.inherit("scripts/events/event", {
 					{
 						bro.worsenMood(0.5, "You gave up a deserter to bounty hunters");
 
-						if (bro.getMoodState() < this.Const.MoodState.Neutral)
+						if (bro.getMoodState() < ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -161,7 +161,7 @@ this.deserter_in_forest_event <- this.inherit("scripts/events/event", {
 		if (this.World.getPlayerRoster().getSize() >= this.World.Assets.getBrothersMax()) return;
 		if (!this.World.getTime().IsDaytime) return;
 		local currentTile = this.World.State.getPlayer().getTile();
-		if (currentTile.Type != this.Const.World.TerrainType.Forest && currentTile.Type != this.Const.World.TerrainType.LeaveForest && currentTile.Type != this.Const.World.TerrainType.AutumnForest) return;
+		if (currentTile.Type != ::Const.World.TerrainType.Forest && currentTile.Type != ::Const.World.TerrainType.LeaveForest && currentTile.Type != ::Const.World.TerrainType.AutumnForest) return;
 		this.m.Score = 10;
 	}
 

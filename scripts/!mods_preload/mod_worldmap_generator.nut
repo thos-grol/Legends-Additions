@@ -13,7 +13,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 				{
 					local tile = this.World.getTileSquare(x, y);
 
-					if (tile.Type == this.Const.World.TerrainType.Ocean)
+					if (tile.Type == ::Const.World.TerrainType.Ocean)
 					{
 						ocean = ++ocean;
 						ocean = ocean;
@@ -31,8 +31,8 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			}
 
 			local ratio = nonOcean * 1.0 / (ocean * 1.0);
-			this.logInfo("Land Ocean ratio" + ratio + " >= " + this.Const.World.Settings.MinLandToWaterRatio + " :: Land :" + nonOcean + " Ocean:" + ocean);
-			return nonOcean * 1.0 / (ocean * 1.0) >= this.Const.World.Settings.MinLandToWaterRatio;
+			this.logInfo("Land Ocean ratio" + ratio + " >= " + ::Const.World.Settings.MinLandToWaterRatio + " :: Land :" + nonOcean + " Ocean:" + ocean);
+			return nonOcean * 1.0 / (ocean * 1.0) >= ::Const.World.Settings.MinLandToWaterRatio;
 		};
 		o.isDesertAcceptable = function ( _rect )
 		{
@@ -44,7 +44,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 				{
 					local tile = this.World.getTileSquare(x, y);
 
-					if (tile.Type == this.Const.World.TerrainType.Desert || tile.Type == this.Const.World.TerrainType.Oasis || tile.TacticalType == this.Const.World.TerrainTacticalType.DesertHills)
+					if (tile.Type == ::Const.World.TerrainType.Desert || tile.Type == ::Const.World.TerrainType.Oasis || tile.TacticalType == ::Const.World.TerrainTacticalType.DesertHills)
 					{
 						desert = ++desert;
 						desert = desert;
@@ -56,8 +56,8 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 				x = ++x;
 			}
 
-			this.logInfo("Desert tiles " + desert + " >= " + this.Const.World.Settings.MinDesertTiles);
-			return desert >= this.Const.World.Settings.MinDesertTiles;
+			this.logInfo("Desert tiles " + desert + " >= " + ::Const.World.Settings.MinDesertTiles);
+			return desert >= ::Const.World.Settings.MinDesertTiles;
 		};
 		o.refineSettlements = function ( _rect )
 		{
@@ -146,7 +146,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 
 				local terrain = this.getTerrainInRegion(tile);
 
-				if (terrain.Adjacent[this.Const.World.TerrainType.Ocean] >= 3 || terrain.Adjacent[this.Const.World.TerrainType.Shore] >= 3)
+				if (terrain.Adjacent[::Const.World.TerrainType.Ocean] >= 3 || terrain.Adjacent[::Const.World.TerrainType.Shore] >= 3)
 				{
 					continue;
 				}
@@ -168,7 +168,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 
 				local type = candidates[this.Math.rand(0, candidates.len() - 1)];
 
-				if ((terrain.Region[this.Const.World.TerrainType.Ocean] >= 3 || terrain.Region[this.Const.World.TerrainType.Shore] >= 3) && !("IsCoastal" in type) && !("IsFlexible" in type))
+				if ((terrain.Region[::Const.World.TerrainType.Ocean] >= 3 || terrain.Region[::Const.World.TerrainType.Shore] >= 3) && !("IsCoastal" in type) && !("IsFlexible" in type))
 				{
 					continue;
 				}
@@ -181,7 +181,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 					for( local i = settlementTiles.len() - 1; i >= 0; i = i )
 					{
 						local settlement = settlementTiles[i];
-						navSettings.ActionPointCosts = this.Const.World.TerrainTypeNavCost;
+						navSettings.ActionPointCosts = ::Const.World.TerrainTypeNavCost;
 						local path = this.World.getNavigator().findPath(tile, settlement, navSettings, 0);
 
 						if (!path.isEmpty())
@@ -206,7 +206,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 					{
 						local settlement = settlementTiles[i];
 						local navSettings = this.World.getNavigator().createSettings();
-						navSettings.ActionPointCosts = this.Const.World.TerrainTypeNavCost_Flat;
+						navSettings.ActionPointCosts = ::Const.World.TerrainTypeNavCost_Flat;
 						local path = this.World.getNavigator().findPath(tile, settlement, navSettings, 0);
 
 						if (!path.isEmpty())
@@ -241,7 +241,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			local isLeft = this.Math.rand(0, 1);
 			local settlementTiles = [];
 
-			foreach( list in this.Const.World.Settlements.LegendsWorldMaster )
+			foreach( list in ::Const.World.Settlements.LegendsWorldMaster )
 			{
 				local num = this.Math.ceil(::Legends.Mod.ModSettings.getSetting("Settlements").getValue() * list.Ratio);
 				local additionalSpace = 0;
@@ -292,7 +292,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 		{
 			local settlements = this.World.EntityManager.getSettlements();
 
-			if (this.Const.World.Buildings.Blackmarket < 2)
+			if (::Const.World.Buildings.Blackmarket < 2)
 			{
 				local candidates = [];
 
@@ -304,7 +304,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 					}
 				}
 
-				for( local i = this.Const.World.Buildings.Blackmarket; i <= 2; i = i )
+				for( local i = ::Const.World.Buildings.Blackmarket; i <= 2; i = i )
 				{
 					local r = this.Math.rand(0, candidates.len() - 1);
 					local s = candidates[r];
@@ -320,7 +320,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 				}
 			}
 
-			if (this.Const.World.Buildings.Fletchers < 2)
+			if (::Const.World.Buildings.Fletchers < 2)
 			{
 				local candidates = [];
 
@@ -332,7 +332,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 					}
 				}
 
-				for( local i = this.Const.World.Buildings.Fletchers; i <= 2; i = i )
+				for( local i = ::Const.World.Buildings.Fletchers; i <= 2; i = i )
 				{
 					local r = this.Math.rand(0, candidates.len() - 1);
 					local s = candidates[r];
@@ -348,7 +348,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 				}
 			}
 
-			// if (this.Const.World.Buildings.Temples < 2)
+			// if (::Const.World.Buildings.Temples < 2)
 			// {
 			// 	local candidates = [];
 
@@ -360,7 +360,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			// 		}
 			// 	}
 
-			// 	for( local i = this.Const.World.Buildings.Temples; i <= 2; i = i )
+			// 	for( local i = ::Const.World.Buildings.Temples; i <= 2; i = i )
 			// 	{
 			// 		local r = this.Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
@@ -376,7 +376,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			// 	}
 			// }
 
-			// if (this.Const.World.Buildings.Kennels < 2)
+			// if (::Const.World.Buildings.Kennels < 2)
 			// {
 			// 	local candidates = [];
 
@@ -388,7 +388,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			// 		}
 			// 	}
 
-			// 	for( local i = this.Const.World.Buildings.Kennels; i <= 2; i = i )
+			// 	for( local i = ::Const.World.Buildings.Kennels; i <= 2; i = i )
 			// 	{
 			// 		local r = this.Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
@@ -404,7 +404,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			// 	}
 			// }
 
-			// if (this.Const.DLC.Unhold && this.Const.World.Buildings.Taxidermists < 2)
+			// if (::Const.DLC.Unhold && ::Const.World.Buildings.Taxidermists < 2)
 			// {
 			// 	local candidates = [];
 
@@ -416,7 +416,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			// 		}
 			// 	}
 
-			// 	for( local i = this.Const.World.Buildings.Taxidermists; i <= 2; i = i )
+			// 	for( local i = ::Const.World.Buildings.Taxidermists; i <= 2; i = i )
 			// 	{
 			// 		local r = this.Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
@@ -432,7 +432,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			// 	}
 			// }
 
-			// if (this.Const.World.Buildings.Stables < 1)
+			// if (::Const.World.Buildings.Stables < 1)
 			// {
 			// 	local candidates = [];
 
@@ -444,7 +444,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			// 		}
 			// 	}
 
-			// 	for( local i = this.Const.World.Buildings.Stables; i <= 2; i = i )
+			// 	for( local i = ::Const.World.Buildings.Stables; i <= 2; i = i )
 			// 	{
 			// 		local r = this.Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
@@ -594,15 +594,15 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 				}
 
 				local ALL = [
-					this.Const.World.TerrainType.Plains,
-					this.Const.World.TerrainType.Steppe,
-					this.Const.World.TerrainType.Snow,
-					this.Const.World.TerrainType.Hills,
-					this.Const.World.TerrainType.Tundra,
-					this.Const.World.TerrainType.Forest,
-					this.Const.World.TerrainType.SnowyForest,
-					this.Const.World.TerrainType.AutumnForest,
-					this.Const.World.TerrainType.LeaveForest
+					::Const.World.TerrainType.Plains,
+					::Const.World.TerrainType.Steppe,
+					::Const.World.TerrainType.Snow,
+					::Const.World.TerrainType.Hills,
+					::Const.World.TerrainType.Tundra,
+					::Const.World.TerrainType.Forest,
+					::Const.World.TerrainType.SnowyForest,
+					::Const.World.TerrainType.AutumnForest,
+					::Const.World.TerrainType.LeaveForest
 				];
 
 				for( local tries = 0; tries++ < 1000; tries = tries )
@@ -620,6 +620,6 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			}
 		};
 	});
-	delete this.Const.LegendMod.hookWorldmapGenerator;
+	delete ::Const.LegendMod.hookWorldmapGenerator;
 };
 

@@ -35,7 +35,7 @@
 
 		foreach( bro in brothers )
 		{
-			if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.ConvertedCultist))
+			if (bro.getBackground().isBackgroundType(::Const.BackgroundType.ConvertedCultist))
 			{
 				cultist_candidates.push(bro);
 

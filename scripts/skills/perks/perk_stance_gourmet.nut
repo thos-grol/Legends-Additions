@@ -13,11 +13,11 @@ this.perk_stance_gourmet <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.stance.gourmet";
-		this.m.Name = this.Const.Strings.PerkName.StanceGourmet;
-		this.m.Description = this.Const.Strings.PerkDescription.StanceGourmet;
+		this.m.Name = ::Const.Strings.PerkName.StanceGourmet;
+		this.m.Description = ::Const.Strings.PerkDescription.StanceGourmet;
 		this.m.Icon = "ui/perks/perk_10.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;

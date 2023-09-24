@@ -15,11 +15,11 @@ this.perk_student <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.student";
-		this.m.Name = this.Const.Strings.PerkName.Student;
-		this.m.Description = this.Const.Strings.PerkDescription.Student;
+		this.m.Name = ::Const.Strings.PerkName.Student;
+		this.m.Description = ::Const.Strings.PerkDescription.Student;
 		this.m.Icon = "ui/perks/perk_21.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;

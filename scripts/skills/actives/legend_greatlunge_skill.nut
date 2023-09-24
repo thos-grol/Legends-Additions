@@ -28,8 +28,8 @@ this.legend_greatlunge_skill <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/dlc2/lunge_attack_hit_03.wav",
 			"sounds/combat/dlc2/lunge_attack_hit_04.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -37,8 +37,8 @@ this.legend_greatlunge_skill <- this.inherit("scripts/skills/skill", {
 		this.m.IsAttack = true;
 		this.m.IsIgnoredAsAOO = true;
 		this.m.IsWeaponSkill = true;
-		this.m.InjuriesOnBody = this.Const.Injury.PiercingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.PiercingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.PiercingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.PiercingHead;
 		this.m.HitChanceBonus = 0;
 		this.m.DirectDamageMult = 0.25;
 		this.m.ActionPointCost = 5;
@@ -74,7 +74,7 @@ this.legend_greatlunge_skill <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Can not be used while rooted[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Can not be used while rooted[/color]"
 			});
 		}
 
@@ -84,7 +84,7 @@ this.legend_greatlunge_skill <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/hitchance.png",
-				text = "Has [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit due to greatsword specialisation"
+				text = "Has [color=" + ::Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit due to greatsword specialisation"
 			});
 		}
 
@@ -140,7 +140,7 @@ this.legend_greatlunge_skill <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInSwords ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInSwords ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onUse( _user, _targetTile )
@@ -232,7 +232,7 @@ this.legend_greatlunge_skill <- this.inherit("scripts/skills/skill", {
 			{
 				if (_tag.OldTile.IsVisibleForPlayer || myTile.IsVisibleForPlayer)
 				{
-					this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_entity) + " lunges and is repelled");
+					this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_entity) + " lunges and is repelled");
 				}
 
 				if (!_entity.isAlive() || _entity.isDying())
@@ -256,7 +256,7 @@ this.legend_greatlunge_skill <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		this.spawnAttackEffect(_tag.TargetTile, this.Const.Tactical.AttackEffectThrust);
+		this.spawnAttackEffect(_tag.TargetTile, ::Const.Tactical.AttackEffectThrust);
 		local s = this.m.SoundOnUse;
 		this.m.SoundOnUse = this.m.SoundOnAttack;
 		this.attackEntity(_entity, _tag.TargetTile.getEntity());

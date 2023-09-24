@@ -8,21 +8,21 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.undead_necromancers_lair";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.graveyard";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.None;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.None;
 		this.m.CombatLocation.CutDownTrees = false;
 		this.m.CombatLocation.ForceLineBattle = true;
 		this.m.CombatLocation.AdditionalRadius = 5;
-		this.setDefenderSpawnList(this.Const.World.Spawn.Necromancer);
+		this.setDefenderSpawnList(::Const.World.Spawn.Necromancer);
 		this.m.Resources = 150;
-		this.m.RoamerSpawnList = this.Const.World.Spawn.Zombies;
-		this.m.NamedShieldsList = this.Const.Items.NamedUndeadShields;
+		this.m.RoamerSpawnList = ::Const.World.Spawn.Zombies;
+		this.m.NamedShieldsList = ::Const.Items.NamedUndeadShields;
 	}
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.NecromancerLair);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.NecromancerLair);
 		this.location.onSpawned();
 	}
 

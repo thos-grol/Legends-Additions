@@ -6,7 +6,7 @@
 
 		for( local i = this.m.Upgrades.len() - 1; i >= 0; i = --i )
 		{
-			if (this.m.Upgrades[i] == null || i == this.Const.Items.HelmetUpgrades.ExtraVanity)
+			if (this.m.Upgrades[i] == null || i == ::Const.Items.HelmetUpgrades.ExtraVanity)
 			{
 			}
 			else

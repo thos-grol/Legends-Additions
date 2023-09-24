@@ -35,13 +35,13 @@ this.squire_vs_hedge_knight_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Squire.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
+					text = _event.m.Squire.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
 				});
 				_event.m.Squire.worsenMood(1.5, "Has been shaken in his beliefs");
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Squire.getMoodState()],
-					text = _event.m.Squire.getName() + this.Const.MoodStateEvent[_event.m.Squire.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Squire.getMoodState()],
+					text = _event.m.Squire.getName() + ::Const.MoodStateEvent[_event.m.Squire.getMoodState()]
 				});
 			}
 

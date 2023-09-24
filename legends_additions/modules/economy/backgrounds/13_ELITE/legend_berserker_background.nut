@@ -8,28 +8,28 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.MaceTree,
-				this.Const.Perks.AxeTree,
-				this.Const.Perks.ThrowingTree
+				::Const.Perks.MaceTree,
+				::Const.Perks.AxeTree,
+				::Const.Perks.ThrowingTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.SturdyTree,
-				this.Const.Perks.IndestructibleTree,
-				this.Const.Perks.LargeTree,
-				this.Const.Perks.FitTree
+				::Const.Perks.SturdyTree,
+				::Const.Perks.IndestructibleTree,
+				::Const.Perks.LargeTree,
+				::Const.Perks.FitTree
 			],
 			Enemy = [
-				this.Const.Perks.OrcTree,
-				this.Const.Perks.GoblinTree
+				::Const.Perks.OrcTree,
+				::Const.Perks.GoblinTree
 			],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = [
-				this.Const.Perks.BerserkerMagicTree
+				::Const.Perks.BerserkerMagicTree
 			]
 		};
 	}
@@ -37,21 +37,21 @@
 	o.onAddEquipment = function()
 	{
 		local talents = this.getContainer().getActor().getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.MeleeSkill] = 3;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.MeleeSkill] = 3;
 		this.getContainer().getActor().fillTalentValues(2, true);
 		local items = this.getContainer().getActor().getItems();
 		local stash = this.World.Assets.getStash();
 		stash.removeByID("supplies.ground_grains");
 		stash.removeByID("supplies.ground_grains");
 		stash.add(this.new("scripts/items/supplies/roots_and_berries_item"));
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"barbarians/hide_and_bone_armor"
 			]
 		]));
-		local item = this.Const.World.Common.pickHelmet([
+		local item = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"barbarians/leather_helmet"

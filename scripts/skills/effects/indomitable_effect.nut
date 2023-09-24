@@ -7,7 +7,7 @@ this.indomitable_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "ui/perks/perk_30.png";
 		this.m.IconMini = "perk_30_mini";
 		this.m.Overlay = "perk_30";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 	}
@@ -34,7 +34,7 @@ this.indomitable_effect <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Receives only [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] of any damage"
+				text = "Receives only [color=" + ::Const.UI.Color.PositiveValue + "]50%[/color] of any damage"
 			},
 			{
 				id = 6,

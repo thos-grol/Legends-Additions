@@ -26,15 +26,15 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/hand_hit_02.wav",
 			"sounds/combat/hand_hit_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
 		this.m.IsStacking = false;
 		this.m.IsAttack = true;
 		this.m.IsSerialized = false;
-		this.m.InjuriesOnBody = this.Const.Injury.BluntBody;
-		this.m.InjuriesOnHead = this.Const.Injury.BluntHead;
+		this.m.InjuriesOnBody = ::Const.Injury.BluntBody;
+		this.m.InjuriesOnHead = ::Const.Injury.BluntHead;
 		this.m.DirectDamageMult = 0.1;
 		this.m.ActionPointCost = 4;
 		this.m.FatigueCost = 14;
@@ -69,7 +69,7 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 			id = 6,
 			type = "text",
 			icon = "ui/icons/hitchance.png",
-			text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] chance to hit"
+			text = "Has [color=" + ::Const.UI.Color.NegativeValue + "]-25%[/color] chance to hit"
 		});
 
 		if (("IsSpecializedInFists" in _properties) && _properties.IsSpecializedInFists)
@@ -78,7 +78,7 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/regular_damage.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+"+ getBonus() +"[/color] from armor (Unarmed Mastery)"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+"+ getBonus() +"[/color] from armor (Unarmed Mastery)"
 			});
 		}
 
@@ -96,12 +96,12 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 		{
 			if (_targetEntity.getFlags().has("StaggerImmunity"))
 			{
-				::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" is immune to stagger"));
+				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" is immune to stagger"));
 				return true;
 			}
 
 			_targetEntity.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
-			::Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" has been staggered"));
+			::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" has been staggered"));
 
 			//add proficiency to kicks, even when weapon is equipped
 			local fist_proficiency = this.m.Container.getSkillByID("trait.proficiency_Fist");
@@ -149,7 +149,7 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 	function onAfterUpdate( _properties )
 	{
 		if ("IsSpecializedInFists" in _properties)
-			this.m.FatigueCostMult = _properties.IsSpecializedInFists ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+			this.m.FatigueCostMult = _properties.IsSpecializedInFists ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function getBonus()

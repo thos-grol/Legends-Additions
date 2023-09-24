@@ -9,7 +9,7 @@
 		this.location.create();
 		this.m.Name = "Abandoned Fortress";
 		this.m.TypeID = "location.abandoned_fortress";
-		this.m.LocationType = this.Const.World.LocationType.Passive;
+		this.m.LocationType = ::Const.World.LocationType.Passive;
 		this.m.IsDespawningDefenders = false;
 		this.m.IsBattlesite = false;
 		this.m.IsAttackable = false;

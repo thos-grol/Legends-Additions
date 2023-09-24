@@ -8,9 +8,9 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.undead_hideout";
-		this.m.LocationType = this.Const.World.LocationType.Lair | this.Const.World.LocationType.Passive;
+		this.m.LocationType = ::Const.World.LocationType.Lair | ::Const.World.LocationType.Passive;
 		this.m.CombatLocation.Template[0] = "tactical.ruins";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.None;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.None;
 		this.m.CombatLocation.CutDownTrees = false;
 		this.m.CombatLocation.ForceLineBattle = true;
 		this.m.IsDespawningDefenders = false;
@@ -19,20 +19,20 @@
 
 		if (r == 1)
 		{
-			this.setDefenderSpawnList(this.Const.World.Spawn.ZombiesOrZombiesAndGhouls);
+			this.setDefenderSpawnList(::Const.World.Spawn.ZombiesOrZombiesAndGhouls);
 		}
 		else if (r == 2)
 		{
-			this.setDefenderSpawnList(this.Const.World.Spawn.ZombiesOrZombiesAndGhosts);
+			this.setDefenderSpawnList(::Const.World.Spawn.ZombiesOrZombiesAndGhosts);
 		}
 
 		this.m.Resources = 80;
-		this.m.RoamerSpawnList = this.Const.World.Spawn.Zombies;
+		this.m.RoamerSpawnList = ::Const.World.Spawn.Zombies;
 	}
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.Hideout);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.Hideout);
 		this.location.onSpawned();
 	}
 
@@ -60,11 +60,11 @@
 		this.location.onInit();
 		local body = this.addSprite("body");
 		body.setBrush("world_homestead_01");
-		local isSouthern = this.getTile().Type == this.Const.World.TerrainType.Desert || this.getTile().Type == this.Const.World.TerrainType.Steppe || this.getTile().Type == this.Const.World.TerrainType.Oasis || this.getTile().TacticalType == this.Const.World.TerrainTacticalType.DesertHills;
+		local isSouthern = this.getTile().Type == ::Const.World.TerrainType.Desert || this.getTile().Type == ::Const.World.TerrainType.Steppe || this.getTile().Type == ::Const.World.TerrainType.Oasis || this.getTile().TacticalType == ::Const.World.TerrainTacticalType.DesertHills;
 
 		if (isSouthern)
 		{
-			if (this.Const.DLC.Desert)
+			if (::Const.DLC.Desert)
 			{
 				this.m.CombatLocation.Template[0] = "tactical.southern_ruins";
 			}

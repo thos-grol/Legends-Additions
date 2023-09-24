@@ -15,7 +15,7 @@
 		_list.push("daytaler_background");
 		_list.push("daytaler_background");
 		_list.push("daytaler_background");
-		_list.push("female_daytaler_background");
+		_list.push();
 	}
 
 	o.onUpdateShopList = function( _id, _list )

@@ -15,12 +15,12 @@ this.perk_legend_lacerate <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.legend_lacerate";
-		this.m.Name = this.Const.Strings.PerkName.LegendLacerate;
-		this.m.Description = this.Const.Strings.PerkDescription.LegendLacerate;
+		this.m.Name = ::Const.Strings.PerkName.LegendLacerate;
+		this.m.Description = ::Const.Strings.PerkDescription.LegendLacerate;
 		this.m.Icon = "ui/perks/graze_circle.png";
 		this.m.IconDisabled = "ui/perks/graze_circle_bw.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -38,19 +38,19 @@ this.perk_legend_lacerate <- this.inherit("scripts/skills/skill", {
 		if (!_skill.getDamageType().contains(::Const.Damage.DamageType.Cutting) 
 			&& !_skill.getDamageType().contains(::Const.Damage.DamageType.Piercing)) return false;
 		if (_targetEntity.getCurrentProperties().IsImmuneToBleeding) return false;
-		if (_damageInflictedHitpoints < this.Const.Combat.MinDamageToApplyBleeding) return false;
+		if (_damageInflictedHitpoints < ::Const.Combat.MinDamageToApplyBleeding) return false;
 		if (_targetEntity.isNonCombatant()) return false;
 		if (::Math.rand(1,100) > 50) return false;
 
 		local actor = this.getContainer().getActor();
 		local effect = this.new("scripts/skills/effects/bleeding_effect");
-		if (actor.getFaction() == this.Const.Faction.Player) effect.setActor(actor);
+		if (actor.getFaction() == ::Const.Faction.Player) effect.setActor(actor);
 		effect.setDamage(5);
 		_targetEntity.getSkills().add(effect);
 
 		// if (!actor.isHiddenToPlayer() && _targetEntity.getTile().IsVisibleForPlayer)
 		// {
-		// 	this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " lacerated " + this.Const.UI.getColorizedEntityName(_targetEntity) + " leaving them grazed");
+		// 	this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " lacerated " + ::Const.UI.getColorizedEntityName(_targetEntity) + " leaving them grazed");
 		// }
 
 		return true;

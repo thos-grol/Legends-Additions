@@ -18,11 +18,11 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.direwolf_berserk_mode";
-		this.m.Name = this.Const.Strings.PerkName.DirewolfBerserkMode;
-		this.m.Description = this.Const.Strings.PerkDescription.DirewolfBerserkMode;
+		this.m.Name = ::Const.Strings.PerkName.DirewolfBerserkMode;
+		this.m.Description = ::Const.Strings.PerkDescription.DirewolfBerserkMode;
 		this.m.Icon = "ui/perks/perk_29.png";
-		this.m.Type = this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -46,7 +46,7 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 			id = 6,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Only receive [color=" + this.Const.UI.Color.PositiveValue + "] 0%[/color] of any damage to hitpoints for " + this.m.Charges + " attacks. Bone plating takes precedence over this effect."
+			text = "Only receive [color=" + ::Const.UI.Color.PositiveValue + "] 0%[/color] of any damage to hitpoints for " + this.m.Charges + " attacks. Bone plating takes precedence over this effect."
 		});
 
 		return tooltip;
@@ -126,9 +126,9 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 			TargetTile = actor.getTile()
 		};
 
-		for( local i = 0; i < this.Const.Tactical.SpiritWalkStartParticles.len(); i = ++i )
+		for( local i = 0; i < ::Const.Tactical.SpiritWalkStartParticles.len(); i = ++i )
 		{
-			this.Tactical.spawnParticleEffect(false, this.Const.Tactical.SpiritWalkStartParticles[i].Brushes, actor.getTile(), this.Const.Tactical.SpiritWalkStartParticles[i].Delay, this.Const.Tactical.SpiritWalkStartParticles[i].Quantity, this.Const.Tactical.SpiritWalkStartParticles[i].LifeTimeQuantity, this.Const.Tactical.SpiritWalkStartParticles[i].SpawnRate, this.Const.Tactical.SpiritWalkStartParticles[i].Stages);
+			this.Tactical.spawnParticleEffect(false, ::Const.Tactical.SpiritWalkStartParticles[i].Brushes, actor.getTile(), ::Const.Tactical.SpiritWalkStartParticles[i].Delay, ::Const.Tactical.SpiritWalkStartParticles[i].Quantity, ::Const.Tactical.SpiritWalkStartParticles[i].LifeTimeQuantity, ::Const.Tactical.SpiritWalkStartParticles[i].SpawnRate, ::Const.Tactical.SpiritWalkStartParticles[i].Stages);
 		}
 		this.Time.scheduleEvent(this.TimeUnit.Virtual, 500, this.onDelayedEffect.bindenv(this), tag);
 	}
@@ -144,11 +144,11 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 			Skill = _tag.Skill,
 			User = user,
 			Targets = affectedTiles,
-			HitInfo = clone this.Const.Tactical.HitInfo
+			HitInfo = clone ::Const.Tactical.HitInfo
 		};
-		tag.HitInfo.DamageFatigue = this.Const.Combat.FatigueReceivedPerHit;
+		tag.HitInfo.DamageFatigue = ::Const.Combat.FatigueReceivedPerHit;
 		tag.HitInfo.DamageDirect = 1.0;
-		tag.HitInfo.BodyPart = this.Const.BodyPart.Body;
+		tag.HitInfo.BodyPart = ::Const.BodyPart.Body;
 		tag.HitInfo.BodyDamageMult = 1.0;
 		tag.HitInfo.FatalityChanceMult = 1.0;
 		this.Time.scheduleEvent(this.TimeUnit.Virtual, 200, this.applyEffectToTargets.bindenv(this), tag);
@@ -162,12 +162,12 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 
 		foreach( t in targets )
 		{
-			for( local i = 0; i < this.Const.Tactical.SpiritWalkEndParticles.len(); i = ++i )
+			for( local i = 0; i < ::Const.Tactical.SpiritWalkEndParticles.len(); i = ++i )
 			{
-				this.Tactical.spawnParticleEffect(false, this.Const.Tactical.SpiritWalkEndParticles[i].Brushes, t, this.Const.Tactical.SpiritWalkEndParticles[i].Delay, this.Const.Tactical.SpiritWalkEndParticles[i].Quantity, this.Const.Tactical.SpiritWalkEndParticles[i].LifeTimeQuantity, this.Const.Tactical.SpiritWalkEndParticles[i].SpawnRate, this.Const.Tactical.SpiritWalkEndParticles[i].Stages);
+				this.Tactical.spawnParticleEffect(false, ::Const.Tactical.SpiritWalkEndParticles[i].Brushes, t, ::Const.Tactical.SpiritWalkEndParticles[i].Delay, ::Const.Tactical.SpiritWalkEndParticles[i].Quantity, ::Const.Tactical.SpiritWalkEndParticles[i].LifeTimeQuantity, ::Const.Tactical.SpiritWalkEndParticles[i].SpawnRate, ::Const.Tactical.SpiritWalkEndParticles[i].Stages);
 			}
 
-			if (t.Subtype != this.Const.Tactical.TerrainSubtype.Snow && t.Subtype != this.Const.Tactical.TerrainSubtype.LightSnow)
+			if (t.Subtype != ::Const.Tactical.TerrainSubtype.Snow && t.Subtype != ::Const.Tactical.TerrainSubtype.LightSnow)
 			{
 				t.clear();
 				t.Type = 0;

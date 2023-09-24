@@ -39,14 +39,14 @@ this.sacrificed_man_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 				item = this.new("scripts/items/weapons/militia_spear");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 			}
 
@@ -111,19 +111,19 @@ this.sacrificed_man_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.getBackground().m.RawDescription = "You found this man as a sacrifice, but he arose from his fate to be a servant of Davkul. He asked to fight for you, and you, for some reason, actually agreed.";
 				_event.m.Dude.getBackground().buildDescription(true);
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
 				{
-					_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
+					_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).removeSelf();
 				}
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null)
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null)
 				{
-					_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).removeSelf();
+					_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand).removeSelf();
 				}
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head) != null)
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head) != null)
 				{
-					_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
+					_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head).removeSelf();
 				}
 
 				this.Characters.push(_event.m.Dude.getImagePath());
@@ -155,12 +155,12 @@ this.sacrificed_man_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Dude.getImagePath());
 				_event.m.Cultist.improveMood(1.0, "You recruited a fellow cultist");
 
-				if (_event.m.Cultist.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Cultist.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Cultist.getMoodState()],
-						text = _event.m.Cultist.getName() + this.Const.MoodStateEvent[_event.m.Cultist.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Cultist.getMoodState()],
+						text = _event.m.Cultist.getName() + ::Const.MoodStateEvent[_event.m.Cultist.getMoodState()]
 					});
 				}
 			}
@@ -189,12 +189,12 @@ this.sacrificed_man_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Dude.getImagePath());
 				_event.m.Cultist.worsenMood(1.0, "You failed to recruit a fellow cultist");
 
-				if (_event.m.Cultist.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Cultist.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Cultist.getMoodState()],
-						text = _event.m.Cultist.getName() + this.Const.MoodStateEvent[_event.m.Cultist.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Cultist.getMoodState()],
+						text = _event.m.Cultist.getName() + ::Const.MoodStateEvent[_event.m.Cultist.getMoodState()]
 					});
 				}
 			}
@@ -245,7 +245,7 @@ this.sacrificed_man_event <- this.inherit("scripts/events/event", {
 				continue;
 			}
 
-			if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.ConvertedCultist))
+			if (bro.getBackground().isBackgroundType(::Const.BackgroundType.ConvertedCultist))
 			{
 				candidates_cultist.push(bro);
 			}

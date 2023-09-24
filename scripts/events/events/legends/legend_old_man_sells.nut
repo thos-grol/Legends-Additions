@@ -89,13 +89,13 @@ this.legend_old_man_sells <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 10,
 						icon = "ui/items/" + item.getIcon(),
-						text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+						text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 					});
 					this.World.Assets.addMoney(-2000);
 					this.List.push({
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]2000[/color] Crowns"
+						text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]2000[/color] Crowns"
 					});
 				}
 			}
@@ -125,7 +125,7 @@ this.legend_old_man_sells <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You lost [color=" + this.Const.UI.Color.NegativeEventValue + "]" + money + "[/color] Crowns"
+						text = "You lost [color=" + ::Const.UI.Color.NegativeEventValue + "]" + money + "[/color] Crowns"
 					}
 				];
 			}
@@ -176,7 +176,7 @@ this.legend_old_man_sells <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gained [color=" + this.Const.UI.Color.NegativeEventValue + "]" + money + "[/color] Crowns"
+						text = "You gained [color=" + ::Const.UI.Color.NegativeEventValue + "]" + money + "[/color] Crowns"
 					}
 				];
 			}
@@ -210,7 +210,7 @@ this.legend_old_man_sells <- this.inherit("scripts/events/event", {
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Forest && currentTile.Type != this.Const.World.TerrainType.LeaveForest)
+		if (currentTile.Type != ::Const.World.TerrainType.Forest && currentTile.Type != ::Const.World.TerrainType.LeaveForest)
 		{
 			return;
 		}

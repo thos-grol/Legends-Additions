@@ -8,18 +8,18 @@
 	{
 		this.location.create();
 		this.m.TypeID = "location.goblin_outpost";
-		this.m.LocationType = this.Const.World.LocationType.Lair;
+		this.m.LocationType = ::Const.World.LocationType.Lair;
 		this.m.CombatLocation.Template[0] = "tactical.goblin_camp";
-		this.m.CombatLocation.Fortification = this.Const.Tactical.FortificationType.WallsAndPalisade;
+		this.m.CombatLocation.Fortification = ::Const.Tactical.FortificationType.WallsAndPalisade;
 		this.m.CombatLocation.CutDownTrees = true;
 		this.m.IsDespawningDefenders = false;
-		this.setDefenderSpawnList(this.Const.World.Spawn.GoblinBoss);
+		this.setDefenderSpawnList(::Const.World.Spawn.GoblinBoss);
 		this.m.Resources = 200;
 	}
 
 	o.onSpawned = function()
 	{
-		this.m.Name = this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.GoblinBase);
+		this.m.Name = this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.GoblinBase);
 		this.location.onSpawned();
 	}
 
@@ -43,7 +43,7 @@
 			"loot/goblin_rank_insignia_item"
 		];
 
-		if (this.Const.DLC.Unhold)
+		if (::Const.DLC.Unhold)
 		{
 			treasure.extend(treasure);
 			treasure.extend(treasure);

@@ -19,8 +19,8 @@ this.round_swing <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/round_swing_hit_02.wav",
 			"sounds/combat/round_swing_hit_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -29,8 +29,8 @@ this.round_swing <- this.inherit("scripts/skills/skill", {
 		this.m.IsIgnoredAsAOO = true;
 		this.m.IsAOE = true;
 		this.m.IsWeaponSkill = true;
-		this.m.InjuriesOnBody = this.Const.Injury.CuttingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.CuttingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.CuttingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.CuttingHead;
 		this.m.HitChanceBonus = -15;
 		this.m.DirectDamageMult = 0.3;
 		this.m.ActionPointCost = 6;
@@ -58,7 +58,7 @@ this.round_swing <- this.inherit("scripts/skills/skill", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/hitchance.png",
-				text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]" + hitchanceBonus + "%[/color] chance to hit"
+				text = "Has [color=" + ::Const.UI.Color.NegativeValue + "]" + hitchanceBonus + "%[/color] chance to hit"
 			});
 		}
 
@@ -73,7 +73,7 @@ this.round_swing <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInAxes ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInAxes ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onUse( _user, _targetTile )
@@ -81,7 +81,7 @@ this.round_swing <- this.inherit("scripts/skills/skill", {
 		local ret = false;
 		local ownTile = this.m.Container.getActor().getTile();
 		local soundBackup = [];
-		this.spawnAttackEffect(ownTile, this.Const.Tactical.AttackEffectThresh);
+		this.spawnAttackEffect(ownTile, ::Const.Tactical.AttackEffectThresh);
 
 		for( local i = 5; i >= 0; i = i )
 		{
@@ -135,7 +135,7 @@ this.round_swing <- this.inherit("scripts/skills/skill", {
 
 				if (this.Math.abs(tile.Level - ownTile.Level) <= 1)
 				{
-					this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, tile, tile.Pos.X, tile.Pos.Y);
+					this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, tile, tile.Pos.X, tile.Pos.Y);
 				}
 			}
 

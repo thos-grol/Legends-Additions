@@ -31,14 +31,14 @@ this.shepherd_vs_ratcatcher_event <- this.inherit("scripts/events/event", {
 				_event.m.Shepherd.improveMood(1.0, "Bonded with " + _event.m.Ratcatcher.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Shepherd.getMoodState()],
-					text = _event.m.Shepherd.getName() + this.Const.MoodStateEvent[_event.m.Shepherd.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Shepherd.getMoodState()],
+					text = _event.m.Shepherd.getName() + ::Const.MoodStateEvent[_event.m.Shepherd.getMoodState()]
 				});
 				_event.m.Ratcatcher.improveMood(1.0, "Bonded with " + _event.m.Shepherd.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Ratcatcher.getMoodState()],
-					text = _event.m.Ratcatcher.getName() + this.Const.MoodStateEvent[_event.m.Ratcatcher.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Ratcatcher.getMoodState()],
+					text = _event.m.Ratcatcher.getName() + ::Const.MoodStateEvent[_event.m.Ratcatcher.getMoodState()]
 				});
 			}
 

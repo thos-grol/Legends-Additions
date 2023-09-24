@@ -66,7 +66,7 @@ this.civilwar_hungry_hamlet_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				_event.distributeFood(this.List);
-				this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+				this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 				this.List.insert(0, {
 					id = 10,
 					icon = "ui/icons/special.png",
@@ -168,9 +168,9 @@ this.civilwar_hungry_hamlet_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "You threatened some of their men");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "You threatened some of their men");
 				this.World.Assets.addMoralReputation(3);
-				this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess * 2);
+				this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess * 2);
 				this.List.insert(0, {
 					id = 10,
 					icon = "ui/icons/special.png",
@@ -203,9 +203,9 @@ this.civilwar_hungry_hamlet_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationOffense, "You killed some of their men");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationOffense, "You killed some of their men");
 				this.World.Assets.addMoralReputation(1);
-				this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess * 2);
+				this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess * 2);
 				this.List.insert(0, {
 					id = 10,
 					icon = "ui/icons/special.png",
@@ -213,7 +213,7 @@ this.civilwar_hungry_hamlet_event <- this.inherit("scripts/events/event", {
 				});
 				local brothers = this.World.getPlayerRoster().getAll();
 				local bro = brothers[this.Math.rand(0, brothers.len() - 1)];
-				local injury = bro.addInjury(this.Const.Injury.Accident1);
+				local injury = bro.addInjury(::Const.Injury.Accident1);
 				this.List.push({
 					id = 10,
 					icon = injury.getIcon(),
@@ -246,7 +246,7 @@ this.civilwar_hungry_hamlet_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				this.World.Assets.addBusinessReputation(-this.Const.World.Assets.ReputationOnContractSuccess);
+				this.World.Assets.addBusinessReputation(-::Const.World.Assets.ReputationOnContractSuccess);
 				this.List.insert(0, {
 					id = 10,
 					icon = "ui/icons/special.png",
@@ -292,7 +292,7 @@ this.civilwar_hungry_hamlet_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 		{
 			return;
 		}

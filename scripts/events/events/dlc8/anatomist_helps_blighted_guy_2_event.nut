@@ -34,12 +34,12 @@ this.anatomist_helps_blighted_guy_2_event <- this.inherit("scripts/events/event"
 				_event.m.MilitiaCaptain.getBackground().buildDescription(true);
 				_event.m.MilitiaCaptain.improveMood(1.0, "Recovered from the blight afflicting him");
 
-				if (_event.m.MilitiaCaptain.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.MilitiaCaptain.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.MilitiaCaptain.getMoodState()],
-						text = _event.m.MilitiaCaptain.getName() + this.Const.MoodStateEvent[_event.m.MilitiaCaptain.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.MilitiaCaptain.getMoodState()],
+						text = _event.m.MilitiaCaptain.getName() + ::Const.MoodStateEvent[_event.m.MilitiaCaptain.getMoodState()]
 					});
 				}
 
@@ -55,42 +55,42 @@ this.anatomist_helps_blighted_guy_2_event <- this.inherit("scripts/events/event"
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_defense.png",
-					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+4[/color] Melee Defense"
+					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+4[/color] Melee Defense"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/ranged_defense.png",
-					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+4[/color] Ranged Defense"
+					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+4[/color] Ranged Defense"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+8[/color] Melee Skill"
+					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+8[/color] Melee Skill"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/ranged_skill.png",
-					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+7[/color] Ranged Skill"
+					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+7[/color] Ranged Skill"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/fatigue.png",
-					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+3[/color] Max Fatigue"
+					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+3[/color] Max Fatigue"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+6[/color] Initiative"
+					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+6[/color] Initiative"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+12[/color] Resolve"
+					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+12[/color] Resolve"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/health.png",
-					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+5[/color] Hitpoints"
+					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+5[/color] Hitpoints"
 				});
 			}
 
@@ -99,7 +99,7 @@ this.anatomist_helps_blighted_guy_2_event <- this.inherit("scripts/events/event"
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Paladins) return;
+		if (!::Const.DLC.Paladins) return;
 		if (!::World.Statistics.getFlags().has("retinue_anatomist") 
 			|| !::World.Statistics.getFlags().get("retinue_anatomist") ) return;
 
@@ -108,7 +108,7 @@ this.anatomist_helps_blighted_guy_2_event <- this.inherit("scripts/events/event"
 
 		foreach( bro in brothers )
 		{
-			if (!bro.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury) && !bro.getSkills().hasSkillOfType(this.Const.SkillType.SemiInjury) && bro.getDaysWithCompany() >= 30 && bro.getFlags().get("IsMilitiaCaptain"))
+			if (!bro.getSkills().hasSkillOfType(::Const.SkillType.TemporaryInjury) && !bro.getSkills().hasSkillOfType(::Const.SkillType.SemiInjury) && bro.getDaysWithCompany() >= 30 && bro.getFlags().get("IsMilitiaCaptain"))
 			{
 				candidate = bro;
 				break;

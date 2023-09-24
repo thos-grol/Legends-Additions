@@ -10,7 +10,7 @@ this.overwhelmed_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "skills/status_effect_74.png";
 		this.m.IconMini = "status_effect_74_mini";
 		this.m.Overlay = "status_effect_74";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsRemovedAfterBattle = true;
@@ -45,13 +45,13 @@ this.overwhelmed_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + this.m.Count * 10 + "%[/color] Melee Skill"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-" + this.m.Count * 10 + "%[/color] Melee Skill"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + this.m.Count * 10 + "%[/color] Ranged Skill"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-" + this.m.Count * 10 + "%[/color] Ranged Skill"
 			}
 		];
 	}

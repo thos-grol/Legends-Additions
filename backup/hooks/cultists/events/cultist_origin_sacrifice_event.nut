@@ -1,7 +1,7 @@
 ::mods_hookExactClass("events/events/dlc4/cultist_origin_sacrifice_event", function(o) {
     o.onUpdateScore = function()
 	{
-		if (!this.Const.DLC.Wildmen) return;
+		if (!::Const.DLC.Wildmen) return;
 		if (this.World.getTime().Days <= 5) return;
 		if (this.World.Assets.getOrigin().getID() != "scenario.cultists") return;
 		

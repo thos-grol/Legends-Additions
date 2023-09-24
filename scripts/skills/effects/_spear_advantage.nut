@@ -11,8 +11,8 @@ this._spear_advantage <- this.inherit("scripts/skills/skill", {
 		this.m.Name = this.m.Name = "";
 		this.m.Description = "This character is using %their% spear to great effect, manifesting %their% advantage in combat.";
 		this.m.Icon = "ui/perks/ptr_a_better_grip.png";
-		this.m.Type = this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.VeryLast;
+		this.m.Type = ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.VeryLast;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = true;
@@ -38,7 +38,7 @@ this._spear_advantage <- this.inherit("scripts/skills/skill", {
 					id = 10,
 					type = "text",
 					icon = "ui/orientation/" + opponent.getOverlayImage() + ".png",
-					text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.getBonus(id) + "[/color] against " + opponent.getName()
+					text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.getBonus(id) + "[/color] against " + opponent.getName()
 				});
 			}
 		}
@@ -47,7 +47,7 @@ this._spear_advantage <- this.inherit("scripts/skills/skill", {
 			id = 10,
 			type = "text",
 			icon = "ui/tooltips/warning.png",
-			text = "[color=" + this.Const.UI.Color.NegativeValue + "]The bonus against an opponent expires upon receiving damage from that opponent[/color]"
+			text = "[color=" + ::Const.UI.Color.NegativeValue + "]The bonus against an opponent expires upon receiving damage from that opponent[/color]"
 		});
 
 		return tooltip;
@@ -61,7 +61,7 @@ this._spear_advantage <- this.inherit("scripts/skills/skill", {
 	function isEnabled()
 	{
 		local weapon = this.getContainer().getActor().getMainhandItem();
-		return weapon != null && weapon.isWeaponType(this.Const.Items.WeaponType.Spear);
+		return weapon != null && weapon.isWeaponType(::Const.Items.WeaponType.Spear);
 	}
 
 	function onAfterUpdate(_properties)
@@ -96,7 +96,7 @@ this._spear_advantage <- this.inherit("scripts/skills/skill", {
 	{
 		if (_attacker.getID() in this.m.Opponents)
 		{
-			local offhand = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+			local offhand = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 			if (offhand != null && !offhand.isItemType(::Const.Items.ItemType.Shield)) return;
 			_properties.MeleeDefense += this.getBonus(_attacker.getID());
 		}
@@ -157,7 +157,7 @@ this._spear_advantage <- this.inherit("scripts/skills/skill", {
 		{
 			_tooltip.push({
 				icon = "ui/tooltips/positive.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + this.getBonus(_targetTile.getEntity().getID()) + "%[/color] " + this.getName()
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + this.getBonus(_targetTile.getEntity().getID()) + "%[/color] " + this.getName()
 			});
 		}
 	}
@@ -182,7 +182,7 @@ this._spear_advantage <- this.inherit("scripts/skills/skill", {
 						id = 6,
 						type = "text",
 						icon = "ui/icons/hitchance.png",
-						text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] chance to hit per character between you and the target"
+						text = "Has [color=" + ::Const.UI.Color.NegativeValue + "]-20%[/color] chance to hit per character between you and the target"
 					}
 				);
 
@@ -191,7 +191,7 @@ this._spear_advantage <- this.inherit("scripts/skills/skill", {
 						id = 6,
 						type = "text",
 						icon = "ui/icons/damage_dealt.png",
-						text = "When attacking at a distance of 2 tiles, damage is reduced by [color=" + this.Const.UI.Color.NegativeValue + "]20%[/color]"
+						text = "When attacking at a distance of 2 tiles, damage is reduced by [color=" + ::Const.UI.Color.NegativeValue + "]20%[/color]"
 					}
 				);
 			}

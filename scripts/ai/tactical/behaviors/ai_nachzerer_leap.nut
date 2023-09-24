@@ -8,8 +8,8 @@ this.ai_nachzerer_leap <- this.inherit("scripts/ai/tactical/behavior", {
 	},
 	function create()
 	{
-		this.m.ID = this.Const.AI.Behavior.ID.Darkflight;
-		this.m.Order = this.Const.AI.Behavior.Order.Darkflight;
+		this.m.ID = ::Const.AI.Behavior.ID.Darkflight;
+		this.m.Order = ::Const.AI.Behavior.Order.Darkflight;
 		this.behavior.create();
 	}
 
@@ -18,16 +18,16 @@ this.ai_nachzerer_leap <- this.inherit("scripts/ai/tactical/behavior", {
 		this.m.TargetTile = null;
 		this.m.Skill = null;
 
-		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP) return this.Const.AI.Behavior.Score.Zero;
-		if (_entity.getCurrentProperties().IsRooted) return this.Const.AI.Behavior.Score.Zero;
-		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
+		if (_entity.getActionPoints() < ::Const.Movement.AutoEndTurnBelowAP) return ::Const.AI.Behavior.Score.Zero;
+		if (_entity.getCurrentProperties().IsRooted) return ::Const.AI.Behavior.Score.Zero;
+		if (_entity.getMoraleState() == ::Const.MoraleState.Fleeing) return ::Const.AI.Behavior.Score.Zero;
 
 		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
-		if (this.m.Skill == null) return this.Const.AI.Behavior.Score.Zero;
+		if (this.m.Skill == null) return ::Const.AI.Behavior.Score.Zero;
 
 		//Get all potential corpses
 		local enemy_tiles = this.m.Skill.getTargets( _entity );
-		if (enemy_tiles.len() == 0) return this.Const.AI.Behavior.Score.Zero;
+		if (enemy_tiles.len() == 0) return ::Const.AI.Behavior.Score.Zero;
 
 		local targets = [];
 		local origin = _entity.getTile();
@@ -60,7 +60,7 @@ this.ai_nachzerer_leap <- this.inherit("scripts/ai/tactical/behavior", {
 			}
 		}
 
-		if (targets.len() == 0) return this.Const.AI.Behavior.Score.Zero;
+		if (targets.len() == 0) return ::Const.AI.Behavior.Score.Zero;
 		targets.sort(this.comparator_SafetyFactor);
 		this.m.TargetTile = targets[0].Tile; //pick the furthest, safest tile to jump to.
 

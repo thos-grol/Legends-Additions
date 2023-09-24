@@ -104,13 +104,13 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 					text = _event.m.Criminal.getName() + " has left the company"
 				});
 				_event.m.Criminal.getItems().transferToStash(this.World.Assets.getStash());
-				_event.m.Criminal.getSkills().onDeath(this.Const.FatalityType.None);
+				_event.m.Criminal.getSkills().onDeath(::Const.FatalityType.None);
 				this.World.getPlayerRoster().remove(_event.m.Criminal);
 				this.World.Assets.addMoney(25);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + 25 + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + 25 + "[/color] Crowns"
 				});
 			}
 
@@ -127,16 +127,16 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 					Text = "Charge!",
 					function getResult( _event )
 					{
-						_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationAttacked, "You killed some of their men");
+						_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationAttacked, "You killed some of their men");
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.NobleTracks;
+						properties.Music = ::Const.Music.NobleTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
 						properties.TemporaryEnemies = [
 							_event.m.NobleHouse.getID()
 						];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Noble, this.Math.rand(80, 100) * _event.getReputationToDifficultyLightMult(), _event.m.NobleHouse.getID());
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Noble, this.Math.rand(80, 100) * _event.getReputationToDifficultyLightMult(), _event.m.NobleHouse.getID());
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -173,12 +173,12 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Criminal.getImagePath());
 				_event.m.Criminal.improveMood(2.0, "Was protected by the company");
 
-				if (_event.m.Criminal.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Criminal.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Criminal.getMoodState()],
-						text = _event.m.Criminal.getName() + this.Const.MoodStateEvent[_event.m.Criminal.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Criminal.getMoodState()],
+						text = _event.m.Criminal.getName() + ::Const.MoodStateEvent[_event.m.Criminal.getMoodState()]
 					});
 				}
 			}
@@ -196,16 +196,16 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 					Text = "Form up!",
 					function getResult( _event )
 					{
-						_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationAttacked, "You killed some of their men");
+						_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationAttacked, "You killed some of their men");
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.NobleTracks;
+						properties.Music = ::Const.Music.NobleTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
 						properties.TemporaryEnemies = [
 							_event.m.NobleHouse.getID()
 						];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Noble, this.Math.rand(80, 100) * _event.getReputationToDifficultyLightMult(), _event.m.NobleHouse.getID());
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Noble, this.Math.rand(80, 100) * _event.getReputationToDifficultyLightMult(), _event.m.NobleHouse.getID());
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -244,7 +244,7 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + 100 + "[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + 100 + "[/color] Crowns"
 				});
 			}
 
@@ -304,7 +304,7 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.18)
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.18)
 		{
 			return;
 		}

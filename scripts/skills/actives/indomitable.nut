@@ -12,8 +12,8 @@ this.indomitable <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/indomitable_01.wav",
 			"sounds/combat/indomitable_02.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.Any;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.Any;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = false;
@@ -47,7 +47,7 @@ this.indomitable <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Only receive [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] of any damage"
+				text = "Only receive [color=" + ::Const.UI.Color.PositiveValue + "]50%[/color] of any damage"
 			},
 			{
 				id = 6,

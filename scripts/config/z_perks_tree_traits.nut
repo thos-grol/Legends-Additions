@@ -843,6 +843,7 @@ gt.Const.Perks.TraitsTrees <- {
 		gt.Const.Perks.FitTree,
 		gt.Const.Perks.TrainedTree
 	],
+
 	function getRandom( _exclude, _flags )
 	{
 		if (_flags.has("Intelligent") && _exclude.find("IntelligentTree") == null) return gt.Const.Perks.IntelligentTree;

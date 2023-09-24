@@ -16,7 +16,7 @@ this.bounty_hunter_follower <- this.inherit("scripts/retinue/follower", {
 
 	function isValid()
 	{
-		return this.Const.DLC.Wildmen;
+		return ::Const.DLC.Wildmen;
 	}
 
 	function onUpdate()
@@ -42,7 +42,7 @@ this.bounty_hunter_follower <- this.inherit("scripts/retinue/follower", {
 
 		foreach( item in items )
 		{
-			if (item != null && (item.isItemType(this.Const.Items.ItemType.Named) || item.isItemType(this.Const.Items.ItemType.Legendary)) && item.getID() != "armor.head.fangshire")
+			if (item != null && (item.isItemType(::Const.Items.ItemType.Named) || item.isItemType(::Const.Items.ItemType.Legendary)) && item.getID() != "armor.head.fangshire")
 			{
 				n = ++n;
 				n = n;
@@ -53,33 +53,33 @@ this.bounty_hunter_follower <- this.inherit("scripts/retinue/follower", {
 
 		foreach( bro in roster )
 		{
-			local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+			local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
 
-			if (item != null && (item.isItemType(this.Const.Items.ItemType.Named) || item.isItemType(this.Const.Items.ItemType.Legendary)))
+			if (item != null && (item.isItemType(::Const.Items.ItemType.Named) || item.isItemType(::Const.Items.ItemType.Legendary)))
 			{
 				n = ++n;
 				n = n;
 			}
 
-			item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+			item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
-			if (item != null && item != "-1" && (item.isItemType(this.Const.Items.ItemType.Named) || item.isItemType(this.Const.Items.ItemType.Legendary)))
+			if (item != null && item != "-1" && (item.isItemType(::Const.Items.ItemType.Named) || item.isItemType(::Const.Items.ItemType.Legendary)))
 			{
 				n = ++n;
 				n = n;
 			}
 
-			item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+			item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Head);
 
-			if (item != null && (item.isItemType(this.Const.Items.ItemType.Named) || item.isItemType(this.Const.Items.ItemType.Legendary)) && item.getID() != "armor.head.fangshire")
+			if (item != null && (item.isItemType(::Const.Items.ItemType.Named) || item.isItemType(::Const.Items.ItemType.Legendary)) && item.getID() != "armor.head.fangshire")
 			{
 				n = ++n;
 				n = n;
 			}
 
-			item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
+			item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Body);
 
-			if (item != null && (item.isItemType(this.Const.Items.ItemType.Named) || item.isItemType(this.Const.Items.ItemType.Legendary)))
+			if (item != null && (item.isItemType(::Const.Items.ItemType.Named) || item.isItemType(::Const.Items.ItemType.Legendary)))
 			{
 				n = ++n;
 				n = n;
@@ -89,7 +89,7 @@ this.bounty_hunter_follower <- this.inherit("scripts/retinue/follower", {
 			{
 				local item = bro.getItems().getItemAtBagSlot(i);
 
-				if (item != null && (item.isItemType(this.Const.Items.ItemType.Named) || item.isItemType(this.Const.Items.ItemType.Legendary)))
+				if (item != null && (item.isItemType(::Const.Items.ItemType.Named) || item.isItemType(::Const.Items.ItemType.Legendary)))
 				{
 					n = ++n;
 					n = n;

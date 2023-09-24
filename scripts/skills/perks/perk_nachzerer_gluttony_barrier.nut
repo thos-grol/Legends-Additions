@@ -15,11 +15,11 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.nachzerer_gluttony_barrier";
-		this.m.Name = this.Const.Strings.PerkName.NachzererGluttonyBarrier;
-		this.m.Description = this.Const.Strings.PerkDescription.NachzererGluttonyBarrier;
+		this.m.Name = ::Const.Strings.PerkName.NachzererGluttonyBarrier;
+		this.m.Description = ::Const.Strings.PerkDescription.NachzererGluttonyBarrier;
 		this.m.Icon = "ui/perks/perk_29.png";
-		this.m.Type = this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -91,7 +91,7 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 			id = 6,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Only receive [color=" + this.Const.UI.Color.PositiveValue + "] 0%[/color] of any damage to hitpoints for " + this.m.Charges + " attacks. Bone plating takes precedence over this effect."
+			text = "Only receive [color=" + ::Const.UI.Color.PositiveValue + "] 0%[/color] of any damage to hitpoints for " + this.m.Charges + " attacks. Bone plating takes precedence over this effect."
 		});
 
 		return tooltip;

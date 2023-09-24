@@ -72,7 +72,7 @@ this.runaway_laborers_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]15[/color] Crowns"
 					}
 				];
 			}
@@ -110,7 +110,7 @@ this.runaway_laborers_event <- this.inherit("scripts/events/event", {
 			{
 				local roster = this.World.getTemporaryRoster();
 				_event.m.Dude = roster.create("scripts/entity/tactical/player");
-				_event.m.Dude.setStartValuesEx(this.Const.CharacterLaborerBackgrounds);
+				_event.m.Dude.setStartValuesEx(::Const.CharacterLaborerBackgrounds);
 
 				_event.m.Dude.m.PerkPoints = 3;
 				_event.m.Dude.m.LevelUps = 3;
@@ -207,7 +207,7 @@ this.runaway_laborers_event <- this.inherit("scripts/events/event", {
 		local currentTile = this.World.State.getPlayer().getTile();
 
 		if (!currentTile.HasRoad) return;
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2) return;
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2) return;
 
 		this.m.Score = 7;
 	}

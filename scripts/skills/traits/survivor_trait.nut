@@ -37,7 +37,7 @@ this.survivor_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Has a [color=" + this.Const.UI.Color.PositiveValue + "]90%[/color] chance to survive if struck down and not killed by a fatality"
+				text = "Has a [color=" + ::Const.UI.Color.PositiveValue + "]90%[/color] chance to survive if struck down and not killed by a fatality"
 			}
 		];
 	}

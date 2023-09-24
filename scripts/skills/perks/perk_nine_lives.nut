@@ -32,13 +32,13 @@ this.perk_nine_lives <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.nine_lives";
-		this.m.Name = this.Const.Strings.PerkName.NineLives;
-		this.m.Description = this.Const.Strings.PerkDescription.NineLives;
+		this.m.Name = ::Const.Strings.PerkName.NineLives;
+		this.m.Description = ::Const.Strings.PerkDescription.NineLives;
 		this.m.Icon = "ui/perks/perk_07.png";
 		this.m.IconMini = "perk_07_mini";
 		this.m.Overlay = "perk_07";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.VeryLast + 10000;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.VeryLast + 10000;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -117,7 +117,7 @@ this.perk_nine_lives <- this.inherit("scripts/skills/skill", {
 	{
 		if (this.m.RemoveDamageOverTime && this.m.IsSpent && this.m.LastFrameUsed == this.Time.getFrame())
 		{
-			this.getContainer().removeByType(this.Const.SkillType.DamageOverTime);
+			this.getContainer().removeByType(::Const.SkillType.DamageOverTime);
 		}
 	}
 

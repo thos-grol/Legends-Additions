@@ -40,13 +40,13 @@ this.brute_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/chance_to_hit_head.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+15%[/color] Damage on a hit to the head"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+15%[/color] Damage on a hit to the head"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-5[/color] Melee Skill"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5[/color] Melee Skill"
 			}
 		];
 	}
@@ -60,7 +60,7 @@ this.brute_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	{
 		if (_skill.isAttack() && !_skill.isRanged())
 		{
-			_properties.DamageAgainstMult[this.Const.BodyPart.Head] += 0.15;
+			_properties.DamageAgainstMult[::Const.BodyPart.Head] += 0.15;
 		}
 	}
 

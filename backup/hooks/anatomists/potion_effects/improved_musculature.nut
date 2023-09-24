@@ -144,7 +144,7 @@
 		}
 
 		local weapon = this.getContainer().getActor().getMainhandItem();
-		if (weapon == null || !weapon.isWeaponType(this.Const.Items.WeaponType.Axe))
+		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Axe))
 		{
 			return false;
 		}

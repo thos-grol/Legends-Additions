@@ -64,7 +64,7 @@ this.historian_mysterious_text_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 16,
 						icon = "ui/icons/ranged_defense.png",
-						text = bro.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+1[/color] Ranged Defense"
+						text = bro.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+1[/color] Ranged Defense"
 					});
 				}
 			}
@@ -120,13 +120,13 @@ this.historian_mysterious_text_event <- this.inherit("scripts/events/event", {
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.BeastsTracks;
+						properties.Music = ::Const.Music.BeastsTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						properties.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Center;
-						properties.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Circle;
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Direwolves, this.Math.rand(40, 70), this.Const.Faction.Enemy);
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Ghouls, this.Math.rand(40, 70), this.Const.Faction.Enemy);
+						properties.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Center;
+						properties.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Direwolves, this.Math.rand(40, 70), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Ghouls, this.Math.rand(40, 70), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -166,12 +166,12 @@ this.historian_mysterious_text_event <- this.inherit("scripts/events/event", {
 					{
 						bro.improveMood(1.0, "Had a pleasurable supernatural experience");
 
-						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}

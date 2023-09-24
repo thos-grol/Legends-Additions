@@ -7,7 +7,7 @@ this.teamwork_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Description = "You aren't supposed to see this.";
 		this.m.Icon = "ui/perks/perk_01.png";
 		this.m.IconMini = "perk_01_mini";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 		this.m.IsHidden = true;

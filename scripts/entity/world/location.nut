@@ -190,8 +190,8 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 		this.m.IsAttackable = true;
 		this.m.IsAttackableByAI = false;
 		this.m.IsShowingStrength = false;
-		this.m.CombatLocation = clone this.Const.Tactical.LocationTemplate;
-		this.m.CombatLocation.Template = clone this.Const.Tactical.LocationTemplate.Template;
+		this.m.CombatLocation = clone ::Const.Tactical.LocationTemplate;
+		this.m.CombatLocation.Template = clone ::Const.Tactical.LocationTemplate.Template;
 		this.m.Loot = this.new("scripts/items/stash_container");
 		this.m.Loot.setResizable(true);
 		this.m.Flags = this.new("scripts/tools/tag_collection");
@@ -216,21 +216,21 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 			_pos = this.getPos();
 		}
 
-		if (this.Const.World.SmokeParticles.len() != 0)
+		if (::Const.World.SmokeParticles.len() != 0)
 		{
-			local smoke = this.Const.World.SmokeParticles;
+			local smoke = ::Const.World.SmokeParticles;
 
 			for( local i = 0; i < smoke.len(); i = i )
 			{
-				this.World.spawnParticleEffect(smoke[i].Brushes, smoke[i].Delay, smoke[i].Quantity, smoke[i].LifeTime, smoke[i].SpawnRate, smoke[i].Stages, this.createVec(_pos.X, _pos.Y - 30), -200 + this.Const.World.ZLevel.Particles);
+				this.World.spawnParticleEffect(smoke[i].Brushes, smoke[i].Delay, smoke[i].Quantity, smoke[i].LifeTime, smoke[i].SpawnRate, smoke[i].Stages, this.createVec(_pos.X, _pos.Y - 30), -200 + ::Const.World.ZLevel.Particles);
 				i = ++i;
 			}
 
-			local fire = this.Const.World.FireParticles;
+			local fire = ::Const.World.FireParticles;
 
 			for( local i = 0; i < fire.len(); i = i )
 			{
-				this.World.spawnParticleEffect(fire[i].Brushes, fire[i].Delay, fire[i].Quantity, fire[i].LifeTime, fire[i].SpawnRate, fire[i].Stages, this.createVec(_pos.X, _pos.Y - 30), -200 + this.Const.World.ZLevel.Particles - 3);
+				this.World.spawnParticleEffect(fire[i].Brushes, fire[i].Delay, fire[i].Quantity, fire[i].LifeTime, fire[i].SpawnRate, fire[i].Stages, this.createVec(_pos.X, _pos.Y - 30), -200 + ::Const.World.ZLevel.Particles - 3);
 				i = ++i;
 			}
 		}
@@ -289,7 +289,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 				id = 21,
 				type = "hint",
 				icon = "ui/orientation/terrain_orientation.png",
-				text = "This location is " + this.Const.Strings.TerrainAlternative[this.getTile().Type]
+				text = "This location is " + ::Const.Strings.TerrainAlternative[this.getTile().Type]
 			});
 
 			if (this.isShowingDefenders() && this.getCombatLocation().Template[0] != null && this.getCombatLocation().Fortification != 0 && !this.getCombatLocation().ForceLineBattle)
@@ -313,7 +313,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 
 	function setLootScaleBasedOnResources( _r )
 	{
-		local resources = this.m.Resources * this.Math.minf(3.0, 1.0 + this.World.getTime().Days * 0.0075) * this.Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
+		local resources = this.m.Resources * this.Math.minf(3.0, 1.0 + this.World.getTime().Days * 0.0075) * ::Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
 		this.m.LootScale = this.Math.minf(1.0, _r / resources);
 	}
 
@@ -372,10 +372,10 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 
 		if (this.m.IsDestructible && this.m.IsBattlesite)
 		{
-			if (this.Const.World.TerrainScript[tile.Type] != "")
+			if (::Const.World.TerrainScript[tile.Type] != "")
 			{
-				tile.clearAllBut(this.Const.World.DetailType.Road | this.Const.World.DetailType.Shore | this.Const.World.DetailType.Footprints);
-				local t = this.MapGen.get(this.Const.World.TerrainScript[tile.Type]);
+				tile.clearAllBut(::Const.World.DetailType.Road | ::Const.World.DetailType.Shore | ::Const.World.DetailType.Footprints);
+				local t = this.MapGen.get(::Const.World.TerrainScript[tile.Type]);
 				t.fill({
 					X = tile.SquareCoords.X,
 					Y = tile.SquareCoords.Y,
@@ -457,7 +457,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 			}
 		}
 
-		if (!this.isLocationType(this.Const.World.LocationType.Unique))
+		if (!this.isLocationType(::Const.World.LocationType.Unique))
 		{
 			local num = 0;
 
@@ -474,7 +474,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 
 					if (type <= 40)
 					{
-						local weapons = clone this.Const.Items.NamedWeapons;
+						local weapons = clone ::Const.Items.NamedWeapons;
 
 						if (this.m.NamedWeaponsList != null && this.m.NamedWeaponsList.len() != 0)
 						{
@@ -486,7 +486,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 					}
 					else if (type <= 60)
 					{
-						local shields = clone this.Const.Items.NamedShields;
+						local shields = clone ::Const.Items.NamedShields;
 
 						if (this.m.NamedShieldsList != null && this.m.NamedShieldsList.len() != 0)
 						{
@@ -498,7 +498,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 					}
 					else if (type <= 80)
 					{
-						local helmets = clone this.Const.Items.NamedHelmets;
+						local helmets = clone ::Const.Items.NamedHelmets;
 
 						if (this.m.NamedHelmetsList != null && this.m.NamedHelmetsList.len() != 0)
 						{
@@ -506,12 +506,12 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 							helmets.extend(this.m.NamedHelmetsList);
 						}
 
-						local weightName = this.Const.World.Common.convNameToList(helmets);
-						this.m.Loot.add(this.Const.World.Common.pickHelmet(weightName));
+						local weightName = ::Const.World.Common.convNameToList(helmets);
+						this.m.Loot.add(::Const.World.Common.pickHelmet(weightName));
 					}
 					else if (type <= 100)
 					{
-						local armor = clone this.Const.Items.NamedArmors;
+						local armor = clone ::Const.Items.NamedArmors;
 
 						if (this.m.NamedArmorsList != null && this.m.NamedArmorsList.len() != 0)
 						{
@@ -519,8 +519,8 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 							armor.extend(this.m.NamedArmorsList);
 						}
 
-						local weightName = this.Const.World.Common.convNameToList(armor);
-						this.m.Loot.add(this.Const.World.Common.pickArmor(weightName));
+						local weightName = ::Const.World.Common.convNameToList(armor);
+						this.m.Loot.add(::Const.World.Common.pickArmor(weightName));
 					}
 				}
 				else
@@ -537,7 +537,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 		this.setRenderedTop(false);
 		this.setVisibleInFogOfWar(true);
 
-		if (this.m.LocationType != this.Const.World.LocationType.Settlement)
+		if (this.m.LocationType != ::Const.World.LocationType.Settlement)
 		{
 			this.World.EntityManager.addLocation(this);
 		}
@@ -562,12 +562,12 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 		this.world_entity.onFinish();
 		this.getTile().IsOccupied = false;
 
-		if (this.m.LocationType != this.Const.World.LocationType.Settlement)
+		if (this.m.LocationType != ::Const.World.LocationType.Settlement)
 		{
 			this.World.EntityManager.removeLocation(this);
 		}
 
-		if (this.World.FactionManager.getFaction(this.getFaction()) != null && this.m.LocationType != this.Const.World.LocationType.AttachedLocation)
+		if (this.World.FactionManager.getFaction(this.getFaction()) != null && this.m.LocationType != ::Const.World.LocationType.AttachedLocation)
 		{
 			this.World.FactionManager.getFaction(this.getFaction()).removeSettlement(this);
 		}
@@ -576,8 +576,8 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 	function onDiscovered()
 	{
 		this.world_entity.onDiscovered();
-		this.getTile().clearAllBut(this.Const.World.DetailType.Road | this.Const.World.DetailType.Shore);
-		this.getLabel("name").Visible = this.Const.World.AI.VisualizeNameOfLocations && this.m.IsShowingLabel;
+		this.getTile().clearAllBut(::Const.World.DetailType.Road | ::Const.World.DetailType.Shore);
+		this.getLabel("name").Visible = ::Const.World.AI.VisualizeNameOfLocations && this.m.IsShowingLabel;
 
 		if (!this.isHiddenToPlayer() && this.getTypeID() != "location.battlefield")
 		{
@@ -623,7 +623,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 
 		if (!this.isAlliedWithPlayer())
 		{
-			resources = resources * this.Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
+			resources = resources * ::Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
 		}
 
 		if (this.Time.getVirtualTimeF() - this.m.LastSpawnTime <= 60.0)
@@ -637,7 +637,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 
 		if (this.m.DefenderSpawnList && "Name" in this.m.DefenderSpawnList)
 		{
-			best = this.Const.World.Common.buildDynamicTroopList(this.m.DefenderSpawnList, resources);
+			best = ::Const.World.Common.buildDynamicTroopList(this.m.DefenderSpawnList, resources);
 		}
 		else
 		{
@@ -713,14 +713,14 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 
 			if (!(key in troopMbMap))
 			{
-				troopMbMap[key] <- this.Const.LegendMod.GetFavEnemyBossChance(t.Type.ID);
+				troopMbMap[key] <- ::Const.LegendMod.GetFavEnemyBossChance(t.Type.ID);
 			}
 
 			local mb = troopMbMap[key];
 
 			for( local i = 0; i != t.Num; i = i )
 			{
-				this.Const.World.Common.addTroop(this, t, false, mb);
+				::Const.World.Common.addTroop(this, t, false, mb);
 				i = ++i;
 			}
 		}
@@ -763,7 +763,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 		this.m.Loot.onDeserialize(_in);
 		this.m.Flags.onDeserialize(_in);
 
-		this.getLabel("name").Visible = this.Const.World.AI.VisualizeNameOfLocations && this.m.IsShowingLabel;
+		this.getLabel("name").Visible = ::Const.World.AI.VisualizeNameOfLocations && this.m.IsShowingLabel;
 		this.onUpdate();
 	}
 

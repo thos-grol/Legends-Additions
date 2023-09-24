@@ -12,8 +12,8 @@ this.perk_legend_back_to_basics <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.legend_back_to_basics";
-		this.m.Name = this.Const.Strings.PerkName.LegendBackToBasics;
-		this.m.Description = this.Const.Strings.PerkDescription.LegendBackToBasics;
+		this.m.Name = ::Const.Strings.PerkName.LegendBackToBasics;
+		this.m.Description = ::Const.Strings.PerkDescription.LegendBackToBasics;
 		this.m.Icon = "ui/perks/back_to_basics_circle.png";
 		this.m.Type = ::Const.SkillType.Perk;
 		this.m.Order = ::Const.SkillOrder.Perk;

@@ -11,11 +11,11 @@
 		_list.push("farmhand_background");
 		_list.push("farmhand_background");
 		_list.push("farmhand_background");
-		_list.push("female_farmhand_background");
+		
 		_list.push("daytaler_background");
-		_list.push("female_daytaler_background");
+		_list.push();
 		_list.push("miller_background");
-		_list.push("female_miller_background");
+		
 	}
 
 	o.onUpdateShopList = function( _id, _list )

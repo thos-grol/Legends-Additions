@@ -12,8 +12,8 @@
 
 		if (_gender)
 		{
-			_list.push("female_butcher_background");
-			_list.push("female_butcher_background");
+			
+			
 		}
 	}
 

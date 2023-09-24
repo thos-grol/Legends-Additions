@@ -42,7 +42,7 @@ this.hate_greenskins_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Unhold)
+		if (!::Const.DLC.Unhold)
 		{
 			return;
 		}
@@ -65,7 +65,7 @@ this.hate_greenskins_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.World.Statistics.getFlags().getAsInt("LastCombatFaction") != this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getID() && this.World.Statistics.getFlags().getAsInt("LastCombatFaction") != this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).getID())
+		if (this.World.Statistics.getFlags().getAsInt("LastCombatFaction") != this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getID() && this.World.Statistics.getFlags().getAsInt("LastCombatFaction") != this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).getID())
 		{
 			return;
 		}
@@ -98,7 +98,7 @@ this.hate_greenskins_event <- this.inherit("scripts/events/event", {
 
 	function onPrepare()
 	{
-		if (this.World.Statistics.getFlags().getAsInt("LastCombatFaction") == this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getID())
+		if (this.World.Statistics.getFlags().getAsInt("LastCombatFaction") == this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getID())
 		{
 			this.m.Image = "[img]gfx/ui/events/event_81.png[/img]";
 		}

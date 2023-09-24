@@ -9,23 +9,23 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.SwordTree,
-				this.Const.Perks.DaggerTree,
-				this.Const.Perks.CrossbowTree
+				::Const.Perks.SwordTree,
+				::Const.Perks.DaggerTree,
+				::Const.Perks.CrossbowTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree
+				::Const.Perks.TrainedTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.KnifeClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.KnifeClassTree
 			],
 			Magic = [
-				this.Const.Perks.AssassinMagicTree
+				::Const.Perks.AssassinMagicTree
 			]
 		};
 
@@ -34,19 +34,19 @@
 	o.onAddEquipment = function()
 	{
 		local talents = this.getContainer().getActor().getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.MeleeSkill] = 2;
-		talents[this.Const.Attributes.Initiative] = 2;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.MeleeSkill] = 2;
+		talents[::Const.Attributes.Initiative] = 2;
 		this.getContainer().getActor().fillTalentValues(2, true);
 		local items = this.getContainer().getActor().getItems();
 		items.equip(this.new("scripts/items/weapons/rondel_dagger"));
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"thick_dark_tunic"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"hood"

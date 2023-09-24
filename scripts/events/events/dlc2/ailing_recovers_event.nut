@@ -31,12 +31,12 @@ this.ailing_recovers_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Healer.getImagePath());
 				_event.m.Ailing.improveMood(1.5, "Feels the best he did in a long time");
 
-				if (_event.m.Ailing.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Ailing.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Ailing.getMoodState()],
-						text = _event.m.Ailing.getName() + this.Const.MoodStateEvent[_event.m.Ailing.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Ailing.getMoodState()],
+						text = _event.m.Ailing.getName() + ::Const.MoodStateEvent[_event.m.Ailing.getMoodState()]
 					});
 				}
 
@@ -53,7 +53,7 @@ this.ailing_recovers_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Unhold)
+		if (!::Const.DLC.Unhold)
 		{
 			return;
 		}

@@ -26,7 +26,7 @@ gt.Const.World.Spawn.LegendStollwurm = {
 			Weight = 100,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendStollwurm,
+					Type = ::Const.World.Spawn.Troops.LegendStollwurm,
 					Cost = 270
 				}
 			]

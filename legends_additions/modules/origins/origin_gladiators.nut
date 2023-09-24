@@ -38,12 +38,12 @@
 		local u;
 		bros[0].setTitle("the Lion");
 		bros[0].getSkills().add(this.new("scripts/skills/traits/glorious_resolve_trait"));
-		bros[0].getTalents().resize(this.Const.Attributes.COUNT, 0);
-		bros[0].getTalents()[this.Const.Attributes.MeleeDefense] = 2;
-		bros[0].getTalents()[this.Const.Attributes.Fatigue] = 2;
-		bros[0].getTalents()[this.Const.Attributes.MeleeSkill] = 3;
-		bros[0].fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
-		a = this.Const.World.Common.pickArmor([
+		bros[0].getTalents().resize(::Const.Attributes.COUNT, 0);
+		bros[0].getTalents()[::Const.Attributes.MeleeDefense] = 2;
+		bros[0].getTalents()[::Const.Attributes.Fatigue] = 2;
+		bros[0].getTalents()[::Const.Attributes.MeleeSkill] = 3;
+		bros[0].fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
+		a = ::Const.World.Common.pickArmor([
 			[
 				1,
 				"oriental/gladiator_harness"
@@ -51,7 +51,7 @@
 		]);
 		a.setUpgrade(this.new("scripts/items/legend_armor/armor_upgrades/legend_light_gladiator_upgrade"));
 		bros[0].getItems().equip(a);
-		a = this.Const.World.Common.pickHelmet([
+		a = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"oriental/gladiator_helmet",
@@ -68,12 +68,12 @@
 
 		bros[1].setTitle("the Bear");
 		bros[1].getSkills().add(this.new("scripts/skills/traits/glorious_endurance_trait"));
-		bros[1].getTalents().resize(this.Const.Attributes.COUNT, 0);
-		bros[1].getTalents()[this.Const.Attributes.Hitpoints] = 3;
-		bros[1].getTalents()[this.Const.Attributes.Fatigue] = 2;
-		bros[1].getTalents()[this.Const.Attributes.Bravery] = 2;
-		bros[1].fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
-		a = this.Const.World.Common.pickArmor([
+		bros[1].getTalents().resize(::Const.Attributes.COUNT, 0);
+		bros[1].getTalents()[::Const.Attributes.Hitpoints] = 3;
+		bros[1].getTalents()[::Const.Attributes.Fatigue] = 2;
+		bros[1].getTalents()[::Const.Attributes.Bravery] = 2;
+		bros[1].fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
+		a = ::Const.World.Common.pickArmor([
 			[
 				1,
 				"oriental/gladiator_harness"
@@ -81,7 +81,7 @@
 		]);
 		a.setUpgrade(this.new("scripts/items/legend_armor/armor_upgrades/legend_heavy_gladiator_upgrade"));
 		bros[1].getItems().equip(a);
-		a = this.Const.World.Common.pickHelmet([
+		a = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"oriental/gladiator_helmet",
@@ -95,12 +95,12 @@
 		bros[1].setVeteranPerks(2);
 		bros[2].setTitle("the Viper");
 		bros[2].getSkills().add(this.new("scripts/skills/traits/glorious_quickness_trait"));
-		bros[2].getTalents().resize(this.Const.Attributes.COUNT, 0);
-		bros[2].getTalents()[this.Const.Attributes.MeleeDefense] = 2;
-		bros[2].getTalents()[this.Const.Attributes.Initiative] = 3;
-		bros[2].getTalents()[this.Const.Attributes.MeleeSkill] = 2;
-		bros[2].fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
-		a = this.Const.World.Common.pickArmor([
+		bros[2].getTalents().resize(::Const.Attributes.COUNT, 0);
+		bros[2].getTalents()[::Const.Attributes.MeleeDefense] = 2;
+		bros[2].getTalents()[::Const.Attributes.Initiative] = 3;
+		bros[2].getTalents()[::Const.Attributes.MeleeSkill] = 2;
+		bros[2].fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
+		a = ::Const.World.Common.pickArmor([
 			[
 				1,
 				"oriental/gladiator_harness"
@@ -108,7 +108,7 @@
 		]);
 		a.setUpgrade(this.new("scripts/items/legend_armor/armor_upgrades/legend_light_gladiator_upgrade"));
 		bros[2].getItems().equip(a);
-		a = this.Const.World.Common.pickHelmet([
+		a = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"oriental/gladiator_helmet",

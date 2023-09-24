@@ -9,20 +9,20 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.SpearTree,
-				this.Const.Perks.PolearmTree,
-				this.Const.Perks.ShieldTree,
+				::Const.Perks.SpearTree,
+				::Const.Perks.PolearmTree,
+				::Const.Perks.ShieldTree,
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree,
+				::Const.Perks.TrainedTree,
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.MilitiaClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.MilitiaClassTree
 			],
 			Magic = []
 		};
@@ -39,12 +39,12 @@
 
 		items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 
-		if (items.getItemAtSlot(this.Const.ItemSlot.Offhand) == null && this.Math.rand(1, 100) <= 50)
+		if (items.getItemAtSlot(::Const.ItemSlot.Offhand) == null && this.Math.rand(1, 100) <= 50)
 		{
 			items.equip(this.new("scripts/items/shields/buckler_shield"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"leather_tunic"
@@ -62,7 +62,7 @@
 				"linen_tunic"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				""

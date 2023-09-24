@@ -112,11 +112,11 @@ this.anatomist_vs_asthmatic_event <- this.inherit("scripts/events/event", {
 				});
 				_event.m.Asthmatic.worsenMood(0.5, "Was injured by a madman");
 
-				if (_event.m.Asthmatic.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Asthmatic.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 11,
-						icon = this.Const.MoodStateIcon[_event.m.Asthmatic.getMoodState()],
+						icon = ::Const.MoodStateIcon[_event.m.Asthmatic.getMoodState()],
 						text = _event.m.Asthmatic.getName() + "was injured by a madman"
 					});
 				}
@@ -216,7 +216,7 @@ this.anatomist_vs_asthmatic_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Paladins) return;
+		if (!::Const.DLC.Paladins) return;
 		if (!::World.Statistics.getFlags().has("retinue_anatomist") 
 			|| !::World.Statistics.getFlags().get("retinue_anatomist") ) return;
 

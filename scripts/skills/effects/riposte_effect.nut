@@ -7,7 +7,7 @@ this.riposte_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "skills/status_effect_33.png";
 		this.m.IconMini = "status_effect_33_mini";
 		this.m.Overlay = "status_effect_33";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 	}

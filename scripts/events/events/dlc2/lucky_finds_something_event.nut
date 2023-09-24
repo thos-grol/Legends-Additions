@@ -32,7 +32,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + _event.m.FoundItem.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(_event.m.FoundItem.getName()) + _event.m.FoundItem.getName()
+					text = "You gain " + ::Const.Strings.getArticle(_event.m.FoundItem.getName()) + _event.m.FoundItem.getName()
 				});
 			}
 
@@ -41,7 +41,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Unhold)
+		if (!::Const.DLC.Unhold)
 		{
 			return;
 		}
@@ -91,7 +91,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		}
 		else if (r == 2)
 		{
-			item = this.Const.World.Common.pickArmor([
+			item = ::Const.World.Common.pickArmor([
 				[
 					1,
 					"patched_mail_shirt"
@@ -100,7 +100,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		}
 		else if (r == 3)
 		{
-			item = this.Const.World.Common.pickHelmet([
+			item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"dented_nasal_helmet"
@@ -109,7 +109,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		}
 		else if (r == 4)
 		{
-			item = this.Const.World.Common.pickHelmet([
+			item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"mail_coif"
@@ -118,7 +118,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		}
 		else if (r == 5)
 		{
-			item = this.Const.World.Common.pickHelmet([
+			item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"cultist_hood"
@@ -127,7 +127,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		}
 		else if (r == 6)
 		{
-			item = this.Const.World.Common.pickHelmet([
+			item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"full_leather_cap"
@@ -136,7 +136,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		}
 		else if (r == 7)
 		{
-			item = this.Const.World.Common.pickArmor([
+			item = ::Const.World.Common.pickArmor([
 				[
 					1,
 					"ragged_surcoat"
@@ -145,7 +145,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		}
 		else if (r == 8)
 		{
-			item = this.Const.World.Common.pickArmor([
+			item = ::Const.World.Common.pickArmor([
 				[
 					1,
 					"noble_tunic"
@@ -186,7 +186,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		}
 		else if (r == 17)
 		{
-			item = this.Const.World.Common.pickArmor([
+			item = ::Const.World.Common.pickArmor([
 				[
 					1,
 					"thick_dark_tunic"
@@ -218,7 +218,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		]);
 		_vars.push([
 			"finding",
-			this.Const.Strings.getArticle(this.m.FoundItem.getName()) + this.m.FoundItem.getName()
+			::Const.Strings.getArticle(this.m.FoundItem.getName()) + this.m.FoundItem.getName()
 		]);
 	}
 

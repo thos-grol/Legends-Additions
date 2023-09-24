@@ -54,7 +54,7 @@
 			}
 		];
 
-		foreach( i in this.Const.Items.NamedRangedWeapons )
+		foreach( i in ::Const.Items.NamedRangedWeapons )
 		{
 			if (this.Math.rand(1, 100) <= 50)
 			{
@@ -72,8 +72,8 @@
 
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
-		//_list.push("bowyer_background");
-		//_list.push("female_bowyer_background");
+		
+		
 	}
 
 });

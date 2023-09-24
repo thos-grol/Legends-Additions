@@ -126,13 +126,13 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 					_event.m.Dude.getFlags().add("PlayerSkeleton");
 					_event.m.Dude.getFlags().add("undead");
 					_event.m.Dude.getFlags().add("skeleton");
-					_event.m.Dude.setStartValuesEx(this.Const.SupposedWitchBackgrounds);
+					_event.m.Dude.setStartValuesEx(::Const.SupposedWitchBackgrounds);
 					_event.m.Dude.getSkills().add(this.new("scripts/skills/racial/skeleton_racial"));
 					_event.m.Dude.getSkills().add(this.new("scripts/skills/traits/legend_fleshless_trait"));
 				}
 				else
 				{
-					_event.m.Dude.setStartValuesEx(this.Const.SupposedWitchBackgrounds);
+					_event.m.Dude.setStartValuesEx(::Const.SupposedWitchBackgrounds);
 				}
 
 				_event.m.Dude.setTitle("the Roasted");
@@ -146,7 +146,7 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 					{
 						if (this.Math.rand(1, 100) <= 66)
 						{
-							local injury = bro.addInjury(this.Const.Injury.Brawl);
+							local injury = bro.addInjury(::Const.Injury.Brawl);
 							this.List.push({
 								id = 10,
 								icon = injury.getIcon(),
@@ -168,12 +168,12 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 					{
 						bro.improveMood(1.0, "You saved a woman from being burned at the stake");
 
-						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -212,12 +212,12 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 					{
 						bro.worsenMood(1.0, "You set free an evil spirit");
 
-						if (bro.getMoodState() < this.Const.MoodState.Neutral)
+						if (bro.getMoodState() < ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -251,24 +251,24 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 				_event.m.Witchhunter.getSkills().update();
 				_event.m.Witchhunter.improveMood(2.0, "Killed an evil spirit");
 
-				if (_event.m.Witchhunter.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Witchhunter.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Witchhunter.getMoodState()],
-						text = _event.m.Witchhunter.getName() + this.Const.MoodStateEvent[_event.m.Witchhunter.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Witchhunter.getMoodState()],
+						text = _event.m.Witchhunter.getName() + ::Const.MoodStateEvent[_event.m.Witchhunter.getMoodState()]
 					});
 				}
 
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Witchhunter.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
+					text = _event.m.Witchhunter.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.Witchhunter.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
+					text = _event.m.Witchhunter.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
 				});
 				local brothers = this.World.getPlayerRoster().getAll();
 
@@ -278,12 +278,12 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 					{
 						bro.improveMood(1.0, "Saw an evil spirit meet its end");
 
-						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -315,19 +315,19 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 				_event.m.Monk.getSkills().update();
 				_event.m.Monk.improveMood(2.0, "Had a witch burned");
 
-				if (_event.m.Monk.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Monk.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Monk.getMoodState()],
-						text = _event.m.Monk.getName() + this.Const.MoodStateEvent[_event.m.Monk.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Monk.getMoodState()],
+						text = _event.m.Monk.getName() + ::Const.MoodStateEvent[_event.m.Monk.getMoodState()]
 					});
 				}
 
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Monk.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
+					text = _event.m.Monk.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
 				});
 				local brothers = this.World.getPlayerRoster().getAll();
 
@@ -337,12 +337,12 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 					{
 						bro.improveMood(1.0, "Saw a witch burning at the stake");
 
-						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -374,34 +374,34 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 				_event.m.Cultist.getSkills().update();
 				_event.m.Cultist.improveMood(2.0, "Witnessed Davkul\'s power");
 
-				if (_event.m.Cultist.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Cultist.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Cultist.getMoodState()],
-						text = _event.m.Cultist.getName() + this.Const.MoodStateEvent[_event.m.Cultist.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Cultist.getMoodState()],
+						text = _event.m.Cultist.getName() + ::Const.MoodStateEvent[_event.m.Cultist.getMoodState()]
 					});
 				}
 
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Cultist.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
+					text = _event.m.Cultist.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
 				});
 				local brothers = this.World.getPlayerRoster().getAll();
 
 				foreach( bro in brothers )
 				{
-					if (bro.getID() != _event.m.Cultist.getID() && bro.getBackground().isBackgroundType(this.Const.BackgroundType.ConvertedCultist))
+					if (bro.getID() != _event.m.Cultist.getID() && bro.getBackground().isBackgroundType(::Const.BackgroundType.ConvertedCultist))
 					{
 						bro.improveMood(1.0, "Witnessed Davkul\'s power");
 
-						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -409,12 +409,12 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 					{
 						bro.worsenMood(1.0, _event.m.Cultist.getName() + " freed a witch");
 
-						if (bro.getMoodState() < this.Const.MoodState.Neutral)
+						if (bro.getMoodState() < ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -443,7 +443,7 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 		{
 			return;
 		}
@@ -467,7 +467,7 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 			{
 				candidate_monk.push(bro);
 			}
-			else if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.ConvertedCultist))
+			else if (bro.getBackground().isBackgroundType(::Const.BackgroundType.ConvertedCultist))
 			{
 				candidate_cultist.push(bro);
 			}

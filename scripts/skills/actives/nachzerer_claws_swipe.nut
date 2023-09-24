@@ -19,8 +19,8 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/ghoul_claws_05.wav",
 			"sounds/enemies/ghoul_claws_06.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -29,8 +29,8 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 		this.m.IsIgnoredAsAOO = true;
 		this.m.IsAOE = true;
 		this.m.IsWeaponSkill = true;
-		this.m.InjuriesOnBody = this.Const.Injury.CuttingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.CuttingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.CuttingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.CuttingHead;
 		this.m.DirectDamageMult = 0.25;
 		this.m.ActionPointCost = 6;
 		this.m.FatigueCost = 35;
@@ -62,7 +62,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 	{
 		this.m.TilesUsed = [];
 		this.m.Cooldown = 1;
-		this.spawnAttackEffect(_targetTile, this.Const.Tactical.AttackEffectSwing);
+		this.spawnAttackEffect(_targetTile, ::Const.Tactical.AttackEffectSwing);
 		local ret = false;
 		local ownTile = _user.getTile();
 		local dir = ownTile.getDirectionTo(_targetTile);
@@ -72,7 +72,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 		if (!_user.isAlive() || _user.isDying()) return ret;
 		if (ret && _targetTile.IsOccupiedByActor && target.isAlive() && !target.isDying())
 			this.applyEffectToTarget(_user, target, _targetTile);
-		local nextDir = dir - 1 >= 0 ? dir - 1 : this.Const.Direction.COUNT - 1;
+		local nextDir = dir - 1 >= 0 ? dir - 1 : ::Const.Direction.COUNT - 1;
 		if (ownTile.hasNextTile(nextDir))
 		{
 			local nextTile = ownTile.getNextTile(nextDir);
@@ -85,7 +85,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 			ret = success || ret;
 		}
 
-		nextDir = nextDir - 1 >= 0 ? nextDir - 1 : this.Const.Direction.COUNT - 1;
+		nextDir = nextDir - 1 >= 0 ? nextDir - 1 : ::Const.Direction.COUNT - 1;
 		if (ownTile.hasNextTile(nextDir))
 		{
 			local nextTile = ownTile.getNextTile(nextDir);
@@ -107,8 +107,8 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 	{
 		local ownTile = this.m.Container.getActor().getTile();
 		local dir = ownTile.getDirectionTo(_targetTile);
-		this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, _targetTile, _targetTile.Pos.X, _targetTile.Pos.Y);
-		local nextDir = dir - 1 >= 0 ? dir - 1 : this.Const.Direction.COUNT - 1;
+		this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, _targetTile, _targetTile.Pos.X, _targetTile.Pos.Y);
+		local nextDir = dir - 1 >= 0 ? dir - 1 : ::Const.Direction.COUNT - 1;
 
 		if (ownTile.hasNextTile(nextDir))
 		{
@@ -116,11 +116,11 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 
 			if (this.Math.abs(nextTile.Level - ownTile.Level) <= 1)
 			{
-				this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
+				this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
 			}
 		}
 
-		nextDir = nextDir - 1 >= 0 ? nextDir - 1 : this.Const.Direction.COUNT - 1;
+		nextDir = nextDir - 1 >= 0 ? nextDir - 1 : ::Const.Direction.COUNT - 1;
 
 		if (ownTile.hasNextTile(nextDir))
 		{
@@ -128,7 +128,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 
 			if (this.Math.abs(nextTile.Level - ownTile.Level) <= 1)
 			{
-				this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
+				this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
 			}
 		}
 	}
@@ -190,14 +190,14 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 
 		this.m.TilesUsed.push(knockToTile.ID);
 
-		if (!_user.isHiddenToPlayer() && (_targetTile.IsVisibleForPlayer || knockToTile.IsVisibleForPlayer)) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " has knocked back " + this.Const.UI.getColorizedEntityName(_target));
+		if (!_user.isHiddenToPlayer() && (_targetTile.IsVisibleForPlayer || knockToTile.IsVisibleForPlayer)) this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " has knocked back " + ::Const.UI.getColorizedEntityName(_target));
 
 		local skills = _target.getSkills();
 		skills.removeByID("effects.shieldwall");
 		skills.removeByID("effects.spearwall");
 		skills.removeByID("effects.riposte");
-		_target.setCurrentMovementType(this.Const.Tactical.MovementType.Involuntary);
-		local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - _targetTile.Level) - 1) * this.Const.Combat.FallingDamage;
+		_target.setCurrentMovementType(::Const.Tactical.MovementType.Involuntary);
+		local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - _targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
 
 		if (damage == 0) this.Tactical.getNavigator().teleport(_target, knockToTile, null, null, true);
 		else
@@ -206,11 +206,11 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 			local tag = {
 				Attacker = _user,
 				Skill = this,
-				HitInfo = clone this.Const.Tactical.HitInfo
+				HitInfo = clone ::Const.Tactical.HitInfo
 			};
 			tag.HitInfo.DamageRegular = damage;
 			tag.HitInfo.DamageDirect = 1.0;
-			tag.HitInfo.BodyPart = this.Const.BodyPart.Body;
+			tag.HitInfo.BodyPart = ::Const.BodyPart.Body;
 			tag.HitInfo.BodyDamageMult = 1.0;
 			tag.HitInfo.FatalityChanceMult = 1.0;
 			this.Tactical.getNavigator().teleport(_target, knockToTile, this.onKnockedDown, tag, true);
@@ -233,7 +233,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/hitchance.png",
-				text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-5%[/color] chance to hit"
+				text = "Has [color=" + ::Const.UI.Color.NegativeValue + "]-5%[/color] chance to hit"
 			},
 			{
 				id = 9,

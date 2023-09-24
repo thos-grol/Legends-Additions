@@ -142,7 +142,7 @@ def parseItem(path, name):
                         value = re.findall(r'=(.+)', line)[0].replace(';', '').strip()
                         types = value.split('|')
                         # CATEGORIES[1] = types[0].strip()
-                        CATEGORIES[1] = types[0].strip().replace('this.Const.Items.WeaponType.', '')
+                        CATEGORIES[1] = types[0].strip().replace('::Const.Items.WeaponType.', '')
                         if CATEGORIES[1] not in DATA[CATEGORIES[0]]:
                             DATA[CATEGORIES[0]][CATEGORIES[1]] = {}
                 if 'this.m.ItemType = ' in line:

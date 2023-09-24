@@ -8,16 +8,16 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.FlailTree,
-				this.Const.Perks.MaceTree
+				::Const.Perks.FlailTree,
+				::Const.Perks.MaceTree
 			],
 			Defense = [],
 			Traits = [
-				this.Const.Perks.CalmTree
+				::Const.Perks.CalmTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FaithClassTree
+				::Const.Perks.FaithClassTree
 			],
 			Magic = []
 		};
@@ -26,7 +26,7 @@
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"monk_robe"

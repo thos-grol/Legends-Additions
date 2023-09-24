@@ -65,12 +65,12 @@ this.greedy_demands_raise_event <- this.inherit("scripts/events/event", {
 					text = _event.m.Greedy.getName() + " is now paid " + _event.m.Greedy.getDailyCost() + " crowns a day"
 				});
 
-				if (_event.m.Greedy.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Greedy.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Greedy.getMoodState()],
-						text = _event.m.Greedy.getName() + this.Const.MoodStateEvent[_event.m.Greedy.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Greedy.getMoodState()],
+						text = _event.m.Greedy.getName() + ::Const.MoodStateEvent[_event.m.Greedy.getMoodState()]
 					});
 				}
 			}
@@ -97,15 +97,15 @@ this.greedy_demands_raise_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Greedy.getImagePath());
 				_event.m.Greedy.worsenMood(this.Math.rand(2, 3), "Was denied a pay raise");
 
-				if (_event.m.Greedy.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Greedy.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Greedy.getMoodState()],
-						text = _event.m.Greedy.getName() + this.Const.MoodStateEvent[_event.m.Greedy.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Greedy.getMoodState()],
+						text = _event.m.Greedy.getName() + ::Const.MoodStateEvent[_event.m.Greedy.getMoodState()]
 					});
 
-					if (_event.m.Greedy.getMoodState() == this.Const.MoodState.Angry)
+					if (_event.m.Greedy.getMoodState() == ::Const.MoodState.Angry)
 					{
 						if (!_event.m.Greedy.getSkills().hasSkill("trait.loyal") && !_event.m.Greedy.getSkills().hasSkill("trait.disloyal"))
 						{

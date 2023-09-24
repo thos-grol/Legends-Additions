@@ -8,18 +8,18 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.SpearTree,
+				::Const.Perks.SpearTree,
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.FitTree
+				::Const.Perks.FitTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.BeastClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.BeastClassTree
 			],
 			Magic = []
 		};
@@ -52,7 +52,7 @@
 		}
 
 		items.equip(this.new("scripts/items/tools/throwing_net"));
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"sackcloth"
@@ -67,7 +67,7 @@
 				this.Math.rand(6, 7)
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"straw_hat"

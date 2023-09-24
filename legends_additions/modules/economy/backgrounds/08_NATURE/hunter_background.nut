@@ -8,17 +8,17 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.BowTree,
-				this.Const.Perks.DaggerTree
+				::Const.Perks.BowTree,
+				::Const.Perks.DaggerTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.ShortbowClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.ShortbowClassTree
 			],
 			Magic = []
 		};
@@ -50,7 +50,7 @@
 			items.addToBag(this.new("scripts/items/weapons/knife"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"leather_tunic"
@@ -64,7 +64,7 @@
 				"linen_tunic"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"hood"

@@ -85,31 +85,31 @@ this.anatomist_helps_blighted_guy_1_event <- this.inherit("scripts/events/event"
 
 				_event.m.Dude.m.Talents = [];
 				local talents = _event.m.Dude.getTalents();
-				talents.resize(this.Const.Attributes.COUNT, 0);
-				talents[this.Const.Attributes.MeleeSkill] = 3;
-				talents[this.Const.Attributes.MeleeDefense] = 3;
-				talents[this.Const.Attributes.Bravery] = 3;
+				talents.resize(::Const.Attributes.COUNT, 0);
+				talents[::Const.Attributes.MeleeSkill] = 3;
+				talents[::Const.Attributes.MeleeDefense] = 3;
+				talents[::Const.Attributes.Bravery] = 3;
 				_event.m.Dude.m.Attributes = [];
-				_event.m.Dude.fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
+				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
 				{
-					_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
+					_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).removeSelf();
 				}
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null)
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null)
 				{
-					_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).removeSelf();
+					_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand).removeSelf();
 				}
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head) != null)
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head) != null)
 				{
-					_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
+					_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head).removeSelf();
 				}
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Body) != null)
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Body) != null)
 				{
-					_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Body).removeSelf();
+					_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Body).removeSelf();
 				}
 
 				_event.m.Dude.worsenMood(1.5, "Was almost buried alive for bearing a disease");
@@ -143,7 +143,7 @@ this.anatomist_helps_blighted_guy_1_event <- this.inherit("scripts/events/event"
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]65[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]65[/color] Crowns"
 				});
 			}
 
@@ -152,7 +152,7 @@ this.anatomist_helps_blighted_guy_1_event <- this.inherit("scripts/events/event"
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Paladins) return;
+		if (!::Const.DLC.Paladins) return;
 		if (!::World.Statistics.getFlags().has("retinue_anatomist") 
 			|| !::World.Statistics.getFlags().get("retinue_anatomist") ) return;
 		

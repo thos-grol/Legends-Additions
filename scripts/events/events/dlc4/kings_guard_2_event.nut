@@ -37,12 +37,12 @@ this.kings_guard_2_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.resetPerks();
 				_event.m.Dude.improveMood(1.0, "Is his former self again");
 
-				if (_event.m.Dude.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Dude.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Dude.getMoodState()],
-						text = _event.m.Dude.getName() + this.Const.MoodStateEvent[_event.m.Dude.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Dude.getMoodState()],
+						text = _event.m.Dude.getName() + ::Const.MoodStateEvent[_event.m.Dude.getMoodState()]
 					});
 				}
 
@@ -56,32 +56,32 @@ this.kings_guard_2_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_defense.png",
-					text = _event.m.Dude.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+7[/color] Melee Defense"
+					text = _event.m.Dude.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+7[/color] Melee Defense"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/ranged_defense.png",
-					text = _event.m.Dude.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+7[/color] Ranged Defense"
+					text = _event.m.Dude.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+7[/color] Ranged Defense"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Dude.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+12[/color] Melee Skill"
+					text = _event.m.Dude.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+12[/color] Melee Skill"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/fatigue.png",
-					text = _event.m.Dude.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+10[/color] Max Fatigue"
+					text = _event.m.Dude.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+10[/color] Max Fatigue"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.Dude.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+10[/color] Initiative"
+					text = _event.m.Dude.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+10[/color] Initiative"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/health.png",
-					text = _event.m.Dude.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+15[/color] Hitpoints"
+					text = _event.m.Dude.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+15[/color] Hitpoints"
 				});
 			}
 
@@ -90,7 +90,7 @@ this.kings_guard_2_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Wildmen) return;
+		if (!::Const.DLC.Wildmen) return;
 
 		local brothers = this.World.getPlayerRoster().getAll();
 		local candidate;

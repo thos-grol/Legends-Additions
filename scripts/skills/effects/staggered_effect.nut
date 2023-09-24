@@ -9,7 +9,7 @@ this.staggered_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "skills/status_effect_65.png";
 		this.m.IconMini = "status_effect_65_mini";
 		this.m.Overlay = "status_effect_65";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsRemovedAfterBattle = true;
@@ -17,7 +17,7 @@ this.staggered_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character is off-balance, scrambling, and late to act. Will wear off in [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] turn(s).";
+		return "This character is off-balance, scrambling, and late to act. Will wear off in [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] turn(s).";
 	}
 
 	function getTooltip()
@@ -37,13 +37,13 @@ this.staggered_effect <- this.inherit("scripts/skills/skill", {
 				id = 12,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Initiative"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-50%[/color] Initiative"
 			},
 			{
 				id = 12,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-25%[/color] Melee Defense"
 			}
 		];
 	}
@@ -77,7 +77,7 @@ this.staggered_effect <- this.inherit("scripts/skills/skill", {
 		)
 		{
 			if (!actor.isHiddenToPlayer())
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " resisted being staggered");
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " resisted being staggered");
 			this.removeSelf();
 			return;
 		}

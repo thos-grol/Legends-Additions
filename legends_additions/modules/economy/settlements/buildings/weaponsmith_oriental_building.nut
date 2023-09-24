@@ -139,7 +139,7 @@
 			}
 		];
 
-		if (this.Const.DLC.Unhold)
+		if (::Const.DLC.Unhold)
 		{
 			list.extend([
 				{
@@ -195,7 +195,7 @@
 			]);
 		}
 
-		foreach( i in this.Const.Items.NamedMeleeWeapons )
+		foreach( i in ::Const.Items.NamedMeleeWeapons )
 		{
 			if (this.Math.rand(1, 100) <= 30)
 			{

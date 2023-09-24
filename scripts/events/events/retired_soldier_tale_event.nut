@@ -28,12 +28,12 @@ this.retired_soldier_tale_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Soldier.getImagePath());
 				_event.m.Soldier.improveMood(0.25, "Told one of his war stories");
 
-				if (_event.m.Soldier.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Soldier.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Soldier.getMoodState()],
-						text = _event.m.Soldier.getName() + this.Const.MoodStateEvent[_event.m.Soldier.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Soldier.getMoodState()],
+						text = _event.m.Soldier.getName() + ::Const.MoodStateEvent[_event.m.Soldier.getMoodState()]
 					});
 				}
 
@@ -50,12 +50,12 @@ this.retired_soldier_tale_event <- this.inherit("scripts/events/event", {
 					{
 						bro.improveMood(1.0, "Felt emboldened by " + _event.m.Soldier.getName() + "\'s war stories");
 
-						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}

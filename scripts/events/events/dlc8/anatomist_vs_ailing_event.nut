@@ -82,7 +82,7 @@ this.anatomist_vs_ailing_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/health.png",
-					text = _event.m.Ailing.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + healthBoost + "[/color] Hitpoints"
+					text = _event.m.Ailing.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + healthBoost + "[/color] Hitpoints"
 				});
 				this.Characters.push(_event.m.Ailing.getImagePath());
 			}
@@ -213,7 +213,7 @@ this.anatomist_vs_ailing_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Paladins) return;
+		if (!::Const.DLC.Paladins) return;
 		if (!::World.Statistics.getFlags().has("retinue_anatomist") 
 			|| !::World.Statistics.getFlags().get("retinue_anatomist") ) return;
 

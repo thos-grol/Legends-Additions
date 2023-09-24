@@ -9,25 +9,25 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.GreatSwordTree,
-				this.Const.Perks.PolearmTree,
-				this.Const.Perks.AxeTree,
-				this.Const.Perks.MaceTree,
-				this.Const.Perks.FlailTree,
-				this.Const.Perks.HammerTree
+				::Const.Perks.GreatSwordTree,
+				::Const.Perks.PolearmTree,
+				::Const.Perks.AxeTree,
+				::Const.Perks.MaceTree,
+				::Const.Perks.FlailTree,
+				::Const.Perks.HammerTree
 			],
 			Defense = [
-				this.Const.Perks.HeavyArmorTree,
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.HeavyArmorTree,
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree
+				::Const.Perks.TrainedTree
 			],
 			Enemy = [
-				this.Const.Perks.SwordmastersTree
+				::Const.Perks.SwordmastersTree
 			],
 			Class = [
-				this.Const.Perks.FistsClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};
@@ -48,7 +48,7 @@
 			items.equip(this.new("scripts/items/weapons/greatsword"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"mail_hauberk"
@@ -98,7 +98,7 @@
 			"theamson_barbute_helmet"
 		]);
 
-		items.equip(this.Const.World.Common.pickHelmet(helm));
+		items.equip(::Const.World.Common.pickHelmet(helm));
 	}
 
 });

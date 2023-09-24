@@ -36,12 +36,12 @@ this.petrified_scream_event <- this.inherit("scripts/events/event", {
 					{
 						bro.worsenMood(0.75, "Concerned about carrying around a Petrified Scream artifact");
 
-						if (bro.getMoodState() <= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() <= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -53,7 +53,7 @@ this.petrified_scream_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Unhold)
+		if (!::Const.DLC.Unhold)
 		{
 			return;
 		}

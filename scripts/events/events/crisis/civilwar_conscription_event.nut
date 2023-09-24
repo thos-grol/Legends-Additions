@@ -87,8 +87,8 @@ this.civilwar_conscription_event <- this.inherit("scripts/events/event", {
 					text = "The company\'s moral reputation decreases slightly"
 				});
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Helped conscript some peasants");
-				_event.m.Town.getFactionOfType(this.Const.FactionType.Settlement).addPlayerRelation(this.Const.World.Assets.RelationMinorOffense, "Helped conscript their populace");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Helped conscript some peasants");
+				_event.m.Town.getFactionOfType(::Const.FactionType.Settlement).addPlayerRelation(::Const.World.Assets.RelationMinorOffense, "Helped conscript their populace");
 			}
 
 		});
@@ -116,13 +116,13 @@ this.civilwar_conscription_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation decreases"
 				});
-				_event.m.Town.getFactionOfType(this.Const.FactionType.Settlement).addPlayerRelation(this.Const.World.Assets.RelationAttacked, "Cut down their populace");
+				_event.m.Town.getFactionOfType(::Const.FactionType.Settlement).addPlayerRelation(::Const.World.Assets.RelationAttacked, "Cut down their populace");
 				local brothers = this.World.getPlayerRoster().getAll();
 				local candidates = [];
 
 				foreach( bro in brothers )
 				{
-					if (!bro.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury))
+					if (!bro.getSkills().hasSkillOfType(::Const.SkillType.TemporaryInjury))
 					{
 						candidates.push(bro);
 					}
@@ -138,7 +138,7 @@ this.civilwar_conscription_event <- this.inherit("scripts/events/event", {
 
 					if (this.Math.rand(1, 100) <= 50)
 					{
-						local injury = bro.addInjury(this.Const.Injury.Brawl);
+						local injury = bro.addInjury(::Const.Injury.Brawl);
 						this.List.push({
 							id = 10,
 							icon = injury.getIcon(),
@@ -184,8 +184,8 @@ this.civilwar_conscription_event <- this.inherit("scripts/events/event", {
 					text = "The company\'s moral reputation increases slightly"
 				});
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationMinorOffense, "Prevented their men from conscripting peasants");
-				_event.m.Town.getFactionOfType(this.Const.FactionType.Settlement).addPlayerRelation(this.Const.World.Assets.RelationFavor, "Saved their populace from being conscripted");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationMinorOffense, "Prevented their men from conscripting peasants");
+				_event.m.Town.getFactionOfType(::Const.FactionType.Settlement).addPlayerRelation(::Const.World.Assets.RelationFavor, "Saved their populace from being conscripted");
 			}
 
 		});
@@ -272,14 +272,14 @@ this.civilwar_conscription_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Helped their men conscript some peasants");
-				_event.m.Town.getFactionOfType(this.Const.FactionType.Settlement).addPlayerRelation(this.Const.World.Assets.RelationAttacked, "Cut down their populace");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Helped their men conscript some peasants");
+				_event.m.Town.getFactionOfType(::Const.FactionType.Settlement).addPlayerRelation(::Const.World.Assets.RelationAttacked, "Cut down their populace");
 				local brothers = this.World.getPlayerRoster().getAll();
 				local candidates = [];
 
 				foreach( bro in brothers )
 				{
-					if (!bro.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury))
+					if (!bro.getSkills().hasSkillOfType(::Const.SkillType.TemporaryInjury))
 					{
 						candidates.push(bro);
 					}
@@ -295,7 +295,7 @@ this.civilwar_conscription_event <- this.inherit("scripts/events/event", {
 
 					if (this.Math.rand(1, 100) <= 50)
 					{
-						local injury = bro.addInjury(this.Const.Injury.Brawl);
+						local injury = bro.addInjury(::Const.Injury.Brawl);
 						this.List.push({
 							id = 10,
 							icon = injury.getIcon(),
@@ -336,8 +336,8 @@ this.civilwar_conscription_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationAttacked, "Killed some of their men");
-				_event.m.Town.getFactionOfType(this.Const.FactionType.Settlement).addPlayerRelation(this.Const.World.Assets.RelationFavor, "Saved their populace from being conscripted");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationAttacked, "Killed some of their men");
+				_event.m.Town.getFactionOfType(::Const.FactionType.Settlement).addPlayerRelation(::Const.World.Assets.RelationFavor, "Saved their populace from being conscripted");
 				this.World.Assets.addMoralReputation(4);
 			}
 

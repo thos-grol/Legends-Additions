@@ -62,15 +62,15 @@ this.undead_plague_or_infected_event <- this.inherit("scripts/events/event", {
 					{
 						if (this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
 						}
 
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.CivilianTracks;
+						properties.Music = ::Const.Music.CivilianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.PeasantsArmed, this.Math.rand(50, 100), this.Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.PeasantsArmed, this.Math.rand(50, 100), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -137,17 +137,17 @@ this.undead_plague_or_infected_event <- this.inherit("scripts/events/event", {
 					{
 						if (this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
 						}
 
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.CivilianTracks;
+						properties.Music = ::Const.Music.CivilianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						properties.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Center;
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Peasants, this.Math.rand(10, 30), this.Const.Faction.PlayerAnimals);
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.ZombiesLight, this.Math.rand(60, 90), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID());
+						properties.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Center;
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Peasants, this.Math.rand(10, 30), ::Const.Faction.PlayerAnimals);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.ZombiesLight, this.Math.rand(60, 90), this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}

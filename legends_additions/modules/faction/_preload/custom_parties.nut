@@ -2,7 +2,7 @@
 ::Const.World.Common.la_assignTroops_single <- function (_party, _troop, _parameters)
 {
 	local p;
-	_party.setMovementSpeed(_parameters.MovementSpeedMult * this.Const.World.MovementSettings.Speed);
+	_party.setMovementSpeed(_parameters.MovementSpeedMult * ::Const.World.MovementSettings.Speed);
     _party.setVisibilityMult(_parameters.VisibilityMult);
     _party.setVisionRadius(_parameters.VisionMult * ::Const.World.Settings.Vision);
 	_party.getSprite("body").setBrush(_parameters.Body);

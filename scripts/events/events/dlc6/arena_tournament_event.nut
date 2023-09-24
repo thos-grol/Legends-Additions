@@ -32,7 +32,7 @@ this.arena_tournament_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Desert)
+		if (!::Const.DLC.Desert)
 		{
 			return;
 		}

@@ -189,7 +189,7 @@ this.undead_hoggart_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local item = this.Const.World.Common.pickArmor([
+				local item = ::Const.World.Common.pickArmor([
 					[
 						1,
 						"named/black_leather_armor"
@@ -226,7 +226,7 @@ this.undead_hoggart_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]75[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]75[/color] Crowns"
 				});
 			}
 
@@ -328,7 +328,7 @@ this.undead_hoggart_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 		{
 			return;
 		}

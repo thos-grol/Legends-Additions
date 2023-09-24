@@ -18,8 +18,8 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/hand_hit_03.wav"
 		];
 		this.m.SoundOnHitDelay = 0;
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted + 222;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted + 222;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -33,8 +33,8 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 		this.m.IsDoingForwardMove = false;
 		this.m.IsTargetingActor = false;
 		this.m.IsAOE = true;
-		this.m.InjuriesOnBody = this.Const.Injury.CuttingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.CuttingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.CuttingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.CuttingHead;
 		this.m.DirectDamageMult = 0.4;
 		this.m.ActionPointCost = 1;
 		this.m.FatigueCost = 0;
@@ -55,7 +55,7 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 			id = 4,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Damage: [color=" + this.Const.UI.Color.PositiveValue + "](40) ~ (80 + Level x 2)[/color] \nDouble Grip: [color=" + this.Const.UI.Color.PositiveValue + "]+30% Damage[/color] \nDuelist (Perk): [color=" + this.Const.UI.Color.PositiveValue + "]+30% Armor Ignore[/color]"
+			text = "Damage: [color=" + ::Const.UI.Color.PositiveValue + "](40) ~ (80 + Level x 2)[/color] \nDouble Grip: [color=" + ::Const.UI.Color.PositiveValue + "]+30% Damage[/color] \nDuelist (Perk): [color=" + ::Const.UI.Color.PositiveValue + "]+30% Armor Ignore[/color]"
 		});
 		ret.push({
 			id = 5,
@@ -79,12 +79,12 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 
 		foreach( t in targets )
 		{
-			for( local i = 0; i < this.Const.Tactical.SpiritWalkEndParticles.len(); i = ++i )
+			for( local i = 0; i < ::Const.Tactical.SpiritWalkEndParticles.len(); i = ++i )
 			{
-				this.Tactical.spawnParticleEffect(false, this.Const.Tactical.SpiritWalkEndParticles[i].Brushes, t, this.Const.Tactical.SpiritWalkEndParticles[i].Delay, this.Const.Tactical.SpiritWalkEndParticles[i].Quantity, this.Const.Tactical.SpiritWalkEndParticles[i].LifeTimeQuantity, this.Const.Tactical.SpiritWalkEndParticles[i].SpawnRate, this.Const.Tactical.SpiritWalkEndParticles[i].Stages);
+				this.Tactical.spawnParticleEffect(false, ::Const.Tactical.SpiritWalkEndParticles[i].Brushes, t, ::Const.Tactical.SpiritWalkEndParticles[i].Delay, ::Const.Tactical.SpiritWalkEndParticles[i].Quantity, ::Const.Tactical.SpiritWalkEndParticles[i].LifeTimeQuantity, ::Const.Tactical.SpiritWalkEndParticles[i].SpawnRate, ::Const.Tactical.SpiritWalkEndParticles[i].Stages);
 			}
 
-			if (t.Subtype != this.Const.Tactical.TerrainSubtype.Snow && t.Subtype != this.Const.Tactical.TerrainSubtype.LightSnow)
+			if (t.Subtype != ::Const.Tactical.TerrainSubtype.Snow && t.Subtype != ::Const.Tactical.TerrainSubtype.LightSnow)
 			{
 				t.clear();
 				t.Type = 0;
@@ -191,7 +191,7 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 
 		foreach( t in affectedTiles )
 		{
-			this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, t, t.Pos.X, t.Pos.Y);
+			this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, t, t.Pos.X, t.Pos.Y);
 		}
 	}
 
@@ -202,9 +202,9 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 			User = _user,
 			TargetTile = _targetTile
 		};
-		for( local i = 0; i < this.Const.Tactical.SpiritWalkStartParticles.len(); i = ++i )
+		for( local i = 0; i < ::Const.Tactical.SpiritWalkStartParticles.len(); i = ++i )
 		{
-			this.Tactical.spawnParticleEffect(false, this.Const.Tactical.SpiritWalkStartParticles[i].Brushes, _user.getTile(), this.Const.Tactical.SpiritWalkStartParticles[i].Delay, this.Const.Tactical.SpiritWalkStartParticles[i].Quantity, this.Const.Tactical.SpiritWalkStartParticles[i].LifeTimeQuantity, this.Const.Tactical.SpiritWalkStartParticles[i].SpawnRate, this.Const.Tactical.SpiritWalkStartParticles[i].Stages);
+			this.Tactical.spawnParticleEffect(false, ::Const.Tactical.SpiritWalkStartParticles[i].Brushes, _user.getTile(), ::Const.Tactical.SpiritWalkStartParticles[i].Delay, ::Const.Tactical.SpiritWalkStartParticles[i].Quantity, ::Const.Tactical.SpiritWalkStartParticles[i].LifeTimeQuantity, ::Const.Tactical.SpiritWalkStartParticles[i].SpawnRate, ::Const.Tactical.SpiritWalkStartParticles[i].Stages);
 		}
 		this.Time.scheduleEvent(this.TimeUnit.Virtual, 500, this.onDelayedEffect.bindenv(this), tag);
 		return true;
@@ -232,8 +232,8 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 		{
 			local xactor = this.getContainer().getActor();
 			local xitems = xactor.getItems();
-			local mainh = xitems.getItemAtSlot(this.Const.ItemSlot.Mainhand);
-			local offh = xitems.getItemAtSlot(this.Const.ItemSlot.Offhand);
+			local mainh = xitems.getItemAtSlot(::Const.ItemSlot.Mainhand);
+			local offh = xitems.getItemAtSlot(::Const.ItemSlot.Offhand);
 			_properties.DamageRegularMin = 40;
 			_properties.DamageRegularMax = xactor.getLevel() * 2 + 80;
 			_properties.DamageArmorMult = 1.0;
@@ -241,7 +241,7 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 			_properties.RangedAttackBlockedChanceMult *= 0;
 			if (xactor.getSkills().hasSkill("perk.duelist"))
 			{
-				if (offh == null && !xitems.hasBlockedSlot(this.Const.ItemSlot.Offhand) || offh != null && offh.isItemType(this.Const.Items.ItemType.Tool))
+				if (offh == null && !xitems.hasBlockedSlot(::Const.ItemSlot.Offhand) || offh != null && offh.isItemType(::Const.Items.ItemType.Tool))
 				{
 					_properties.DamageDirectAdd += 0.05;
 				}

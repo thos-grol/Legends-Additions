@@ -9,19 +9,19 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.FlailTree,
-				this.Const.Perks.DaggerTree
+				::Const.Perks.FlailTree,
+				::Const.Perks.DaggerTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree
+				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.AgileTree
+				::Const.Perks.AgileTree
 			],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.FistsClassTree,
-				this.Const.Perks.JugglerClassTree
+				::Const.Perks.FistsClassTree,
+				::Const.Perks.JugglerClassTree
 			],
 			Magic = []
 		};
@@ -42,13 +42,13 @@
 			items.equip(this.new("scripts/items/weapons/legend_ranged_wooden_flail"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"linen_tunic"
 			]
 		]));
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"jesters_hat"

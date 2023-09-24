@@ -20,11 +20,11 @@ this.perk_mastery_cleaver <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.mastery.cleaver";
-		this.m.Name = this.Const.Strings.PerkName.SpecCleaver;
-		this.m.Description = this.Const.Strings.PerkDescription.SpecCleaver;
+		this.m.Name = ::Const.Strings.PerkName.SpecCleaver;
+		this.m.Description = ::Const.Strings.PerkDescription.SpecCleaver;
 		this.m.Icon = "ui/perks/perk_10.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -40,10 +40,10 @@ this.perk_mastery_cleaver <- this.inherit("scripts/skills/skill", {
 		if (!_targetEntity.isAlive() || _targetEntity.isDying()) return false;
 
 		local item = this.getContainer().getActor().getMainhandItem();
-		if (!item.isWeaponType(this.Const.Items.WeaponType.Cleaver)) return false;
+		if (!item.isWeaponType(::Const.Items.WeaponType.Cleaver)) return false;
 
 		if (_targetEntity.getCurrentProperties().IsImmuneToBleeding) return false;
-		if (_damageInflictedHitpoints < this.Const.Combat.MinDamageToApplyBleeding) return false;
+		if (_damageInflictedHitpoints < ::Const.Combat.MinDamageToApplyBleeding) return false;
 		if (_targetEntity.isNonCombatant()) return false;
 
 		local actor = this.getContainer().getActor();

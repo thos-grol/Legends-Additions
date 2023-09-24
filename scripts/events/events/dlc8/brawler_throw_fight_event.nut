@@ -82,17 +82,17 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
 				});
 				_event.m.Brawler.worsenMood(0.5, "Was told to throw a fight");
 				_event.m.Brawler.worsenMood(2.0, "Lost a fighting tournament");
 
-				if (_event.m.Brawler.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Brawler.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
-						text = _event.m.Brawler.getName() + this.Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
+						text = _event.m.Brawler.getName() + ::Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
 					});
 				}
 			}
@@ -126,12 +126,12 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 				_event.m.Brawler.worsenMood(0.5, "Was told to throw a fight");
 				_event.m.Brawler.improveMood(2.0, "Handily won a fighting tournament");
 
-				if (_event.m.Brawler.getMoodState() > this.Const.MoodState.Neutral)
+				if (_event.m.Brawler.getMoodState() > ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
-						text = _event.m.Brawler.getName() + this.Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
+						text = _event.m.Brawler.getName() + ::Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
 					});
 				}
 			}
@@ -168,32 +168,32 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Brawler.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + resolve_boost + "[/color] Resolve"
+					text = _event.m.Brawler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + resolve_boost + "[/color] Resolve"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.Brawler.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + initiative_boost + "[/color] Initiative"
+					text = _event.m.Brawler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + initiative_boost + "[/color] Initiative"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Brawler.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + melee_skill_boost + "[/color] Melee Skill"
+					text = _event.m.Brawler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + melee_skill_boost + "[/color] Melee Skill"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_defense.png",
-					text = _event.m.Brawler.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + melee_defense_boost + "[/color] Melee Defense"
+					text = _event.m.Brawler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + melee_defense_boost + "[/color] Melee Defense"
 				});
 				_event.m.Brawler.improveMood(0.5, "Was allowed to fight on his own terms");
 				_event.m.Brawler.improveMood(2.0, "Handily won a fighting tournament");
 
-				if (_event.m.Brawler.getMoodState() > this.Const.MoodState.Neutral)
+				if (_event.m.Brawler.getMoodState() > ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
-						text = _event.m.Brawler.getName() + this.Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
+						text = _event.m.Brawler.getName() + ::Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
 					});
 				}
 			}
@@ -218,7 +218,7 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Brawler.getImagePath());
-				local injury = _event.m.Brawler.addInjury(this.Const.Injury.Concussion);
+				local injury = _event.m.Brawler.addInjury(::Const.Injury.Concussion);
 				this.List.push({
 					id = 10,
 					icon = injury.getIcon(),
@@ -244,22 +244,22 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/initiative.png",
-					text = _event.m.Brawler.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + initiative_boost + "[/color] Initiative"
+					text = _event.m.Brawler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + initiative_boost + "[/color] Initiative"
 				});
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Brawler.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + melee_skill_boost + "[/color] Melee Skill"
+					text = _event.m.Brawler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + melee_skill_boost + "[/color] Melee Skill"
 				});
 				_event.m.Brawler.improveMood(0.5, "Was allowed to fight on his own terms");
 				_event.m.Brawler.improveMood(2.0, "Handily won a fighting tournament");
 
-				if (_event.m.Brawler.getMoodState() > this.Const.MoodState.Neutral)
+				if (_event.m.Brawler.getMoodState() > ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
-						text = _event.m.Brawler.getName() + this.Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
+						text = _event.m.Brawler.getName() + ::Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
 					});
 				}
 			}
@@ -284,7 +284,7 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Brawler.getImagePath());
-				local injury = _event.m.Brawler.addInjury(this.Const.Injury.Concussion);
+				local injury = _event.m.Brawler.addInjury(::Const.Injury.Concussion);
 				this.List.push({
 					id = 10,
 					icon = injury.getIcon(),
@@ -293,12 +293,12 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 				_event.m.Brawler.improveMood(0.5, "Was allowed to fight on his own terms");
 				_event.m.Brawler.worsenMood(2.0, "Got badly beaten in a fighting tournament");
 
-				if (_event.m.Brawler.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Brawler.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
-						text = _event.m.Brawler.getName() + this.Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
+						text = _event.m.Brawler.getName() + ::Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
 					});
 				}
 			}
@@ -325,12 +325,12 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Brawler.getImagePath());
 				_event.m.Brawler.worsenMood(2.0, "Was denied participation in a fighting tournament");
 
-				if (_event.m.Brawler.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Brawler.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
-						text = _event.m.Brawler.getName() + this.Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Brawler.getMoodState()],
+						text = _event.m.Brawler.getName() + ::Const.MoodStateEvent[_event.m.Brawler.getMoodState()]
 					});
 				}
 			}
@@ -340,7 +340,7 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Paladins)
+		if (!::Const.DLC.Paladins)
 		{
 			return;
 		}

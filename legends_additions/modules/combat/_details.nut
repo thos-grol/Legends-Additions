@@ -10,7 +10,7 @@
 		this.m.Name = "Details";
 		this.m.Icon = "ui/perks/back_to_basics_circle.png";
 		this.m.IconMini = "";
-		this.m.Type = this.Const.SkillType.Special | this.Const.SkillType.Trait;
+		this.m.Type = ::Const.SkillType.Special | ::Const.SkillType.Trait;
 		this.m.Order = ::Const.SkillOrder.Background + 5;
 		this.m.IsActive = false;
 		this.m.IsHidden = false;
@@ -255,8 +255,8 @@
 	o.getTooltip_Nimble <- function( _tooltip )
 	{
 		local fat = 0;
-		local body = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Body);
-		local head = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+		local body = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Body);
+		local head = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Head);
 		if (body != null) fat = fat + body.getStaminaModifier();
 		if (head != null) fat = fat + head.getStaminaModifier();
 		fat = this.Math.min(0, fat + 15);
@@ -299,13 +299,13 @@
 				id = 6,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "Small Target: [color=" + this.Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Melee Defense"
+				text = "Small Target: [color=" + ::Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Melee Defense"
 			});
 			_tooltip.push({
 				id = 6,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "Small Target: [color=" + this.Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Ranged Defense"
+				text = "Small Target: [color=" + ::Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Ranged Defense"
 			});
 		}
 
@@ -317,7 +317,7 @@
 				id = 6,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Small Target: [color=" + this.Const.UI.Color.PositiveValue + "]+" + bonus2 + "%[/color] chance for enemies to be forced to reroll their attack"
+				text = "Small Target: [color=" + ::Const.UI.Color.PositiveValue + "]+" + bonus2 + "%[/color] chance for enemies to be forced to reroll their attack"
 			});
 		}
 
@@ -330,27 +330,27 @@
 		local actor = this.getContainer().getActor();
 		local health = 0;
 		health = actor.getBaseProperties().Hitpoints;
-		local bodyItem = actor.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
+		local bodyItem = actor.getItems().getItemAtSlot(::Const.ItemSlot.Body);
 		local bodyArmor = 0;
-		local headItem = actor.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+		local headItem = actor.getItems().getItemAtSlot(::Const.ItemSlot.Head);
 		local headArmor = 0;
 
 		if (bodyItem != null)
 		{
-			bodyArmor = actor.getArmor(this.Const.BodyPart.Body);
+			bodyArmor = actor.getArmor(::Const.BodyPart.Body);
 		}
 
 		if (headItem != null)
 		{
-			headArmor = actor.getArmor(this.Const.BodyPart.Head);
+			headArmor = actor.getArmor(::Const.BodyPart.Head);
 		}
 
 		local stackTotal = health + headArmor + bodyArmor;
 
 		if (bodyItem != null)
 		{
-			local tabard = bodyItem.getUpgrade(this.Const.Items.ArmorUpgrades.Tabbard);
-			local cloak = bodyItem.getUpgrade(this.Const.Items.ArmorUpgrades.Cloak);
+			local tabard = bodyItem.getUpgrade(::Const.Items.ArmorUpgrades.Tabbard);
+			local cloak = bodyItem.getUpgrade(::Const.Items.ArmorUpgrades.Cloak);
 
 			if (tabard != null)
 			{
@@ -367,8 +367,8 @@
 
 		if (headItem != null)
 		{
-			local vanity = headItem.getUpgrade(this.Const.Items.HelmetUpgrades.Vanity);
-			local extra = headItem.getUpgrade(this.Const.Items.HelmetUpgrades.ExtraVanity);
+			local vanity = headItem.getUpgrade(::Const.Items.HelmetUpgrades.Vanity);
+			local extra = headItem.getUpgrade(::Const.Items.HelmetUpgrades.ExtraVanity);
 
 			if (vanity != null)
 			{
@@ -516,7 +516,7 @@
 
 	o.getTooltip_Battleforged <- function( _tooltip)
 	{
-		local armor = this.getContainer().getActor().getArmor(this.Const.BodyPart.Head) + this.getContainer().getActor().getArmor(this.Const.BodyPart.Body);
+		local armor = this.getContainer().getActor().getArmor(::Const.BodyPart.Head) + this.getContainer().getActor().getArmor(::Const.BodyPart.Body);
 		local reduction = this.Math.floor(armor * 5 * 0.01);
 
 		_tooltip.push({
@@ -543,38 +543,38 @@
 
 		switch(mood)
 		{
-            case this.Const.MoodState.Concerned:
-                actor.setMaxMoraleState(this.Const.MoraleState.Steady);
-                actor.setMoraleState(this.Const.MoraleState.Steady);
+            case ::Const.MoodState.Concerned:
+                actor.setMaxMoraleState(::Const.MoraleState.Steady);
+                actor.setMoraleState(::Const.MoraleState.Steady);
                 break;
 
-            case this.Const.MoodState.Disgruntled:
-                actor.setMaxMoraleState(this.Const.MoraleState.Wavering);
-                actor.setMoraleState(this.Const.MoraleState.Wavering);
+            case ::Const.MoodState.Disgruntled:
+                actor.setMaxMoraleState(::Const.MoraleState.Wavering);
+                actor.setMoraleState(::Const.MoraleState.Wavering);
                 break;
 
-            case this.Const.MoodState.Angry:
-                actor.setMaxMoraleState(this.Const.MoraleState.Breaking);
-                actor.setMoraleState(this.Const.MoraleState.Breaking);
+            case ::Const.MoodState.Angry:
+                actor.setMaxMoraleState(::Const.MoraleState.Breaking);
+                actor.setMoraleState(::Const.MoraleState.Breaking);
                 break;
 
-            case this.Const.MoodState.Neutral:
-                actor.setMaxMoraleState(this.Const.MoraleState.Confident);
+            case ::Const.MoodState.Neutral:
+                actor.setMaxMoraleState(::Const.MoraleState.Confident);
                 break;
-            case this.Const.MoodState.InGoodSpirit:
-                actor.setMaxMoraleState(this.Const.MoraleState.Confident);
-                if (morale < this.Const.MoraleState.Confident && this.Math.rand(1, 100) <= 25 && !isDastard)
-                    actor.setMoraleState(this.Const.MoraleState.Confident);
+            case ::Const.MoodState.InGoodSpirit:
+                actor.setMaxMoraleState(::Const.MoraleState.Confident);
+                if (morale < ::Const.MoraleState.Confident && this.Math.rand(1, 100) <= 25 && !isDastard)
+                    actor.setMoraleState(::Const.MoraleState.Confident);
                 break;
-            case this.Const.MoodState.Eager:
-                actor.setMaxMoraleState(this.Const.MoraleState.Confident);
-                if (morale < this.Const.MoraleState.Confident && this.Math.rand(1, 100) <= 50 && !isDastard)
-                    actor.setMoraleState(this.Const.MoraleState.Confident);
+            case ::Const.MoodState.Eager:
+                actor.setMaxMoraleState(::Const.MoraleState.Confident);
+                if (morale < ::Const.MoraleState.Confident && this.Math.rand(1, 100) <= 50 && !isDastard)
+                    actor.setMoraleState(::Const.MoraleState.Confident);
                 break;
-            case this.Const.MoodState.Euphoric:
-                actor.setMaxMoraleState(this.Const.MoraleState.Confident);
-                if (morale < this.Const.MoraleState.Confident && this.Math.rand(1, 100) <= 75 && !isDastard)
-                    actor.setMoraleState(this.Const.MoraleState.Confident);
+            case ::Const.MoodState.Euphoric:
+                actor.setMaxMoraleState(::Const.MoraleState.Confident);
+                if (morale < ::Const.MoraleState.Confident && this.Math.rand(1, 100) <= 75 && !isDastard)
+                    actor.setMoraleState(::Const.MoraleState.Confident);
                 break;
         }
 	}

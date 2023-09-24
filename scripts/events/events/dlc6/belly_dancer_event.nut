@@ -68,7 +68,7 @@ this.belly_dancer_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]1[/color] Crown"
+						text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]1[/color] Crown"
 					}
 				];
 			}
@@ -213,7 +213,7 @@ this.belly_dancer_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You spend [color=" + this.Const.UI.Color.PositiveEventValue + "]500[/color] Crowns"
+						text = "You spend [color=" + ::Const.UI.Color.PositiveEventValue + "]500[/color] Crowns"
 					}
 				];
 			}
@@ -223,7 +223,7 @@ this.belly_dancer_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Desert)
+		if (!::Const.DLC.Desert)
 		{
 			return;
 		}

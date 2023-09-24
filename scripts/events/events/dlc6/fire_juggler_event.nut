@@ -73,7 +73,7 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 					}
 				];
 			}
@@ -105,12 +105,12 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 					{
 						bro.improveMood(0.5, "Was entertained by a fire juggler");
 
-						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -142,7 +142,7 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 					}
 				];
 			}
@@ -221,8 +221,8 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 				}
 
 				_event.m.Dude.getSkills().add(trait);
-				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand));
-				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand));
+				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand));
+				_event.m.Dude.getItems().unequip(_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand));
 				_event.m.Dude.improveMood(1.0, "Got saved from a possible flaming death by a fellow juggler");
 				this.Characters.push(_event.m.Dude.getImagePath());
 			}
@@ -259,15 +259,15 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Juggler.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+					text = _event.m.Juggler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
 				});
 
-				if (_event.m.Juggler.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Juggler.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Juggler.getMoodState()],
-						text = _event.m.Juggler.getName() + this.Const.MoodStateEvent[_event.m.Juggler.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Juggler.getMoodState()],
+						text = _event.m.Juggler.getName() + ::Const.MoodStateEvent[_event.m.Juggler.getMoodState()]
 					});
 				}
 			}
@@ -302,15 +302,15 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Juggler.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+					text = _event.m.Juggler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
 				});
 
-				if (_event.m.Juggler.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Juggler.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Juggler.getMoodState()],
-						text = _event.m.Juggler.getName() + this.Const.MoodStateEvent[_event.m.Juggler.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Juggler.getMoodState()],
+						text = _event.m.Juggler.getName() + ::Const.MoodStateEvent[_event.m.Juggler.getMoodState()]
 					});
 				}
 			}
@@ -320,7 +320,7 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Desert)
+		if (!::Const.DLC.Desert)
 		{
 			return;
 		}

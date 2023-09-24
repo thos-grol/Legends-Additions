@@ -14,11 +14,11 @@ this.perk_direwolf_ruin_aura <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.direwolf_ruin_aura";
-		this.m.Name = this.Const.Strings.PerkName.DirewolfRuinAura;
-		this.m.Description = this.Const.Strings.PerkDescription.DirewolfRuinAura;
+		this.m.Name = ::Const.Strings.PerkName.DirewolfRuinAura;
+		this.m.Description = ::Const.Strings.PerkDescription.DirewolfRuinAura;
 		this.m.Icon = "ui/perks/perk_29.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -32,7 +32,7 @@ this.perk_direwolf_ruin_aura <- this.inherit("scripts/skills/skill", {
 			id = 6,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Only receive [color=" + this.Const.UI.Color.PositiveValue + "] 0%[/color] of any damage to hitpoints for " + this.m.Charges + " attacks. Bone plating takes precedence over this effect."
+			text = "Only receive [color=" + ::Const.UI.Color.PositiveValue + "] 0%[/color] of any damage to hitpoints for " + this.m.Charges + " attacks. Bone plating takes precedence over this effect."
 		});
 
 		return tooltip;

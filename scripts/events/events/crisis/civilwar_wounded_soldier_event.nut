@@ -90,7 +90,7 @@ this.civilwar_wounded_soldier_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationOffense, "Killed one of their men");
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationOffense, "Killed one of their men");
 			}
 
 		});
@@ -124,13 +124,13 @@ this.civilwar_wounded_soldier_event <- this.inherit("scripts/events/event", {
 		_list.push({
 			id = 10,
 			icon = "ui/items/" + item.getIcon(),
-			text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+			text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 		});
 		r = this.Math.rand(1, 4);
 
 		if (r == 1)
 		{
-			item = this.Const.World.Common.pickHelmet([
+			item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"faction_helm"
@@ -140,7 +140,7 @@ this.civilwar_wounded_soldier_event <- this.inherit("scripts/events/event", {
 		}
 		else
 		{
-			item = this.Const.World.Common.pickArmor([
+			item = ::Const.World.Common.pickArmor([
 				[
 					1,
 					"special/heraldic_armor",
@@ -164,7 +164,7 @@ this.civilwar_wounded_soldier_event <- this.inherit("scripts/events/event", {
 		_list.push({
 			id = 10,
 			icon = "ui/items/" + item.getIcon(),
-			text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+			text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 		});
 	}
 
@@ -182,7 +182,7 @@ this.civilwar_wounded_soldier_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 		{
 			return;
 		}
@@ -192,7 +192,7 @@ this.civilwar_wounded_soldier_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		local nobleHouses = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+		local nobleHouses = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 		local candidates = [];
 
 		foreach( h in nobleHouses )

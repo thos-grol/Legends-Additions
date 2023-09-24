@@ -9,14 +9,14 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.HammerTree
+				::Const.Perks.HammerTree
 			],
 			Defense = [],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				this.Const.Perks.HammerClassTree,
-				this.Const.Perks.RepairClassTree
+				::Const.Perks.HammerClassTree,
+				::Const.Perks.RepairClassTree
 			],
 			Magic = []
 		};
@@ -26,7 +26,7 @@
 	{
 		local items = this.getContainer().getActor().getItems();
 		items.equip(this.new("scripts/items/weapons/legend_hammer"));
-		items.equip(this.Const.World.Common.pickArmor([
+		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"legend_blacksmith_apron"

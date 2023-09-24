@@ -75,12 +75,12 @@ this.noble_more_pay_lowborn_event <- this.inherit("scripts/events/event", {
 				});
 				_event.m.Noble.improveMood(1.0, "Got a pay raise");
 
-				if (_event.m.Noble.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Noble.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Noble.getMoodState()],
-						text = _event.m.Noble.getName() + this.Const.MoodStateEvent[_event.m.Noble.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Noble.getMoodState()],
+						text = _event.m.Noble.getName() + ::Const.MoodStateEvent[_event.m.Noble.getMoodState()]
 					});
 				}
 			}
@@ -107,12 +107,12 @@ this.noble_more_pay_lowborn_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Noble.getImagePath());
 				_event.m.Noble.worsenMood(2.0, "Was denied satisfaction over a lowborn");
 
-				if (_event.m.Noble.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Noble.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Noble.getMoodState()],
-						text = _event.m.Noble.getName() + this.Const.MoodStateEvent[_event.m.Noble.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Noble.getMoodState()],
+						text = _event.m.Noble.getName() + ::Const.MoodStateEvent[_event.m.Noble.getMoodState()]
 					});
 				}
 			}
@@ -148,12 +148,12 @@ this.noble_more_pay_lowborn_event <- this.inherit("scripts/events/event", {
 				_event.m.Noble.worsenMood(2.0, "Was denied satisfaction over a lowborn");
 				_event.m.Noble.worsenMood(2.0, "Got a pay cut");
 
-				if (_event.m.Noble.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Noble.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Noble.getMoodState()],
-						text = _event.m.Noble.getName() + this.Const.MoodStateEvent[_event.m.Noble.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Noble.getMoodState()],
+						text = _event.m.Noble.getName() + ::Const.MoodStateEvent[_event.m.Noble.getMoodState()]
 					});
 				}
 
@@ -190,7 +190,7 @@ this.noble_more_pay_lowborn_event <- this.inherit("scripts/events/event", {
 				continue;
 			}
 
-			if (bro.getDailyCost() < lowestPay && bro.getBackground().isBackgroundType(this.Const.BackgroundType.Noble))
+			if (bro.getDailyCost() < lowestPay && bro.getBackground().isBackgroundType(::Const.BackgroundType.Noble))
 			{
 				lowestNoble = bro;
 				lowestPay = bro.getDailyCost();
@@ -206,7 +206,7 @@ this.noble_more_pay_lowborn_event <- this.inherit("scripts/events/event", {
 
 		foreach( bro in brothers )
 		{
-			if (bro.getDailyCost() > lowestPay && bro.getBackground().isBackgroundType(this.Const.BackgroundType.Lowborn))
+			if (bro.getDailyCost() > lowestPay && bro.getBackground().isBackgroundType(::Const.BackgroundType.Lowborn))
 			{
 				lowborn_candidates.push(bro);
 			}

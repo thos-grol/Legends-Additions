@@ -12,11 +12,11 @@ this.perk_legend_small_target <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.legend_small_target";
-		this.m.Name = this.Const.Strings.PerkName.LegendSmallTarget;
+		this.m.Name = ::Const.Strings.PerkName.LegendSmallTarget;
 		this.m.Description = "Gains increased Melee and Ranged defense and reroll chance.";
 		this.m.Icon = "ui/perks/small_target.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -33,13 +33,13 @@ this.perk_legend_small_target <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Melee Defense"
 			});
 			tooltip.push({
 				id = 6,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Ranged Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Ranged Defense"
 			});
 		}
 		else if (this.getContainer().getActor().getBodyItem() == null)
@@ -60,7 +60,7 @@ this.perk_legend_small_target <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + bonus2 + "%[/color] chance for enemies to be forced to reroll their attack"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + bonus2 + "%[/color] chance for enemies to be forced to reroll their attack"
 			});
 		}
 		else
@@ -73,7 +73,7 @@ this.perk_legend_small_target <- this.inherit("scripts/skills/skill", {
 					id = 6,
 					type = "text",
 					icon = "ui/tooltips/warning.png",
-					text = "This character\'s [color=" + this.Const.UI.Color.NegativeValue + "]Melee Defence and Resolve is too high[/color] to gain reroll chance."
+					text = "This character\'s [color=" + ::Const.UI.Color.NegativeValue + "]Melee Defence and Resolve is too high[/color] to gain reroll chance."
 				});
 			}
 		}
@@ -87,27 +87,27 @@ this.perk_legend_small_target <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		local health = 0;
 		health = actor.getBaseProperties().Hitpoints;
-		local bodyItem = actor.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
+		local bodyItem = actor.getItems().getItemAtSlot(::Const.ItemSlot.Body);
 		local bodyArmor = 0;
-		local headItem = actor.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+		local headItem = actor.getItems().getItemAtSlot(::Const.ItemSlot.Head);
 		local headArmor = 0;
 
 		if (bodyItem != null)
 		{
-			bodyArmor = actor.getArmor(this.Const.BodyPart.Body);
+			bodyArmor = actor.getArmor(::Const.BodyPart.Body);
 		}
 
 		if (headItem != null)
 		{
-			headArmor = actor.getArmor(this.Const.BodyPart.Head);
+			headArmor = actor.getArmor(::Const.BodyPart.Head);
 		}
 
 		local stackTotal = health + headArmor + bodyArmor;
 
 		if (bodyItem != null)
 		{
-			local tabard = bodyItem.getUpgrade(this.Const.Items.ArmorUpgrades.Tabbard);
-			local cloak = bodyItem.getUpgrade(this.Const.Items.ArmorUpgrades.Cloak);
+			local tabard = bodyItem.getUpgrade(::Const.Items.ArmorUpgrades.Tabbard);
+			local cloak = bodyItem.getUpgrade(::Const.Items.ArmorUpgrades.Cloak);
 
 			if (tabard != null)
 			{
@@ -124,8 +124,8 @@ this.perk_legend_small_target <- this.inherit("scripts/skills/skill", {
 
 		if (headItem != null)
 		{
-			local vanity = headItem.getUpgrade(this.Const.Items.HelmetUpgrades.Vanity);
-			local extra = headItem.getUpgrade(this.Const.Items.HelmetUpgrades.ExtraVanity);
+			local vanity = headItem.getUpgrade(::Const.Items.HelmetUpgrades.Vanity);
+			local extra = headItem.getUpgrade(::Const.Items.HelmetUpgrades.ExtraVanity);
 
 			if (vanity != null)
 			{

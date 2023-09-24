@@ -45,7 +45,7 @@ this.boss_fearless_trait <- this.inherit("scripts/skills/traits/character_trait"
 				id = 10,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]Unbreakable... as long as they are over 25% health."
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]Unbreakable... as long as they are over 25% health."
 			}
 		];
 	}

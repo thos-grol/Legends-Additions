@@ -40,24 +40,24 @@ this.cripple_pep_talk_event <- this.inherit("scripts/events/event", {
 					{
 						id = 16,
 						icon = "ui/icons/bravery.png",
-						text = _event.m.Cripple.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
+						text = _event.m.Cripple.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + resolve + "[/color] Resolve"
 					},
 					{
 						id = 17,
 						icon = "ui/icons/fatigue.png",
-						text = _event.m.Cripple.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + fatigue + "[/color] Max Fatigue"
+						text = _event.m.Cripple.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + fatigue + "[/color] Max Fatigue"
 					},
 					{
 						id = 17,
 						icon = "ui/icons/initiative.png",
-						text = _event.m.Cripple.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
+						text = _event.m.Cripple.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + initiative + "[/color] Initiative"
 					}
 				];
 				_event.m.Cripple.improveMood(2.0, "Was motivated by " + _event.m.Veteran.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Cripple.getMoodState()],
-					text = _event.m.Cripple.getName() + this.Const.MoodStateEvent[_event.m.Cripple.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Cripple.getMoodState()],
+					text = _event.m.Cripple.getName() + ::Const.MoodStateEvent[_event.m.Cripple.getMoodState()]
 				});
 			}
 

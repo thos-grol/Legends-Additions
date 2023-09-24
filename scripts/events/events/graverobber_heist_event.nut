@@ -84,7 +84,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 					}
 				];
 			}
@@ -112,7 +112,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 
 				if (this.Math.rand(1, 100) <= 50)
 				{
-					local injury2 = _event.m.Graverobber.addInjury(this.Const.Injury.Brawl);
+					local injury2 = _event.m.Graverobber.addInjury(::Const.Injury.Brawl);
 					this.List.push({
 						id = 10,
 						icon = injury2.getIcon(),
@@ -132,8 +132,8 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 				_event.m.Graverobber.worsenMood(0.5, "Got beaten up in " + _event.m.Town.getName());
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
-					text = _event.m.Graverobber.getName() + this.Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
+					text = _event.m.Graverobber.getName() + ::Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
 				});
 			}
 
@@ -166,8 +166,8 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 				_event.m.Graverobber.worsenMood(1.0, "Was forbidden to rob a grave");
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
-					text = _event.m.Graverobber.getName() + this.Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
+					text = _event.m.Graverobber.getName() + ::Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
 				});
 			}
 
@@ -259,8 +259,8 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 				_event.m.Graverobber.worsenMood(0.5, "Had no success robbing a grave with you");
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
-					text = _event.m.Graverobber.getName() + this.Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
+					text = _event.m.Graverobber.getName() + ::Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
 				});
 			}
 
@@ -290,14 +290,14 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 					{
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 					}
 				];
 				_event.m.Graverobber.improveMood(1.0, "Found treasure while robbing a grave");
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
-					text = _event.m.Graverobber.getName() + this.Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
+					text = _event.m.Graverobber.getName() + ::Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
 				});
 			}
 
@@ -330,7 +330,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 				}
 				else if (r == 2)
 				{
-					item = this.Const.World.Common.pickHelmet([
+					item = ::Const.World.Common.pickHelmet([
 						[
 							1,
 							"decayed_full_helm"
@@ -339,7 +339,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 				}
 				else if (r == 3)
 				{
-					item = this.Const.World.Common.pickArmor([
+					item = ::Const.World.Common.pickArmor([
 						[
 							1,
 							"decayed_coat_of_plates"
@@ -352,13 +352,13 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 				_event.m.Graverobber.improveMood(1.0, "Found treasure while robbing a grave");
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
-					text = _event.m.Graverobber.getName() + this.Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
+					text = _event.m.Graverobber.getName() + ::Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
 				});
 			}
 
@@ -374,7 +374,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 					Text = "Embarrassing.",
 					function getResult( _event )
 					{
-						this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationOffense, "You and your men attempted to rob a local grave");
+						this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationOffense, "You and your men attempted to rob a local grave");
 						this.World.Assets.addMoralReputation(-1);
 						return 0;
 					}
@@ -387,8 +387,8 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 				_event.m.Graverobber.worsenMood(0.5, "Was caught trying to rob a grave");
 				this.List.push({
 					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
-					text = _event.m.Graverobber.getName() + this.Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
+					icon = ::Const.MoodStateIcon[_event.m.Graverobber.getMoodState()],
+					text = _event.m.Graverobber.getName() + ::Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
 				});
 			}
 

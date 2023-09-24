@@ -83,7 +83,7 @@ this.undead_necrosavant_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
 			}
 
@@ -101,21 +101,21 @@ this.undead_necrosavant_event <- this.inherit("scripts/events/event", {
 					{
 						if (this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
 						}
 
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.UndeadTracks;
+						properties.Music = ::Const.Music.UndeadTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Zombies, this.Math.rand(80, 120), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID());
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Zombies, this.Math.rand(80, 120), this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
 						properties.Entities.push({
-							ID = this.Const.EntityType.Necromancer,
+							ID = ::Const.EntityType.Necromancer,
 							Variant = 0,
 							Row = 2,
 							Script = "scripts/entity/tactical/enemies/necromancer",
-							Faction = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID(),
+							Faction = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID(),
 							Callback = null
 						});
 						this.World.State.startScriptedCombat(properties, false, false, true);
@@ -157,12 +157,12 @@ this.undead_necrosavant_event <- this.inherit("scripts/events/event", {
 				});
 				_event.m.Witchhunter.improveMood(1.0, "Killed a Necrosavant on the road");
 
-				if (_event.m.Witchhunter.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Witchhunter.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Witchhunter.getMoodState()],
-						text = _event.m.Witchhunter.getName() + this.Const.MoodStateEvent[_event.m.Witchhunter.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Witchhunter.getMoodState()],
+						text = _event.m.Witchhunter.getName() + ::Const.MoodStateEvent[_event.m.Witchhunter.getMoodState()]
 					});
 				}
 			}

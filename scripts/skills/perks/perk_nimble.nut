@@ -13,10 +13,10 @@ this.perk_nimble <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.nimble";
-		this.m.Name = this.Const.Strings.PerkName.Nimble;
+		this.m.Name = ::Const.Strings.PerkName.Nimble;
 		this.m.Icon = "ui/perks/perk_29.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -38,7 +38,7 @@ this.perk_nimble <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Only receive [color=" + this.Const.UI.Color.PositiveValue + "]" + fm + "%[/color] of any damage to hitpoints from attacks"
+				text = "Only receive [color=" + ::Const.UI.Color.PositiveValue + "]" + fm + "%[/color] of any damage to hitpoints from attacks"
 			});
 		}
 		else
@@ -47,7 +47,7 @@ this.perk_nimble <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]This character\'s body and head armor are too heavy as to gain any benefit from being nimble[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]This character\'s body and head armor are too heavy as to gain any benefit from being nimble[/color]"
 			});
 		}
 
@@ -57,8 +57,8 @@ this.perk_nimble <- this.inherit("scripts/skills/skill", {
 	function getChance()
 	{
 		local fat = 0;
-		local body = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Body);
-		local head = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+		local body = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Body);
+		local head = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Head);
 
 		if (body != null)
 		{

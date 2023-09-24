@@ -27,12 +27,12 @@ this.giant_tree_in_forest_event <- this.inherit("scripts/events/event", {
 			{
 				_event.m.Monk.improveMood(2.0, "Saw a godtree with their own eyes");
 
-				if (_event.m.Monk.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Monk.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Monk.getMoodState()],
-						text = _event.m.Monk.getName() + this.Const.MoodStateEvent[_event.m.Monk.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Monk.getMoodState()],
+						text = _event.m.Monk.getName() + ::Const.MoodStateEvent[_event.m.Monk.getMoodState()]
 					});
 				}
 			}
@@ -49,7 +49,7 @@ this.giant_tree_in_forest_event <- this.inherit("scripts/events/event", {
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Forest && currentTile.Type != this.Const.World.TerrainType.LeaveForest)
+		if (currentTile.Type != ::Const.World.TerrainType.Forest && currentTile.Type != ::Const.World.TerrainType.LeaveForest)
 		{
 			return;
 		}

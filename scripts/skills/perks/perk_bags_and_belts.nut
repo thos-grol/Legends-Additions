@@ -11,11 +11,11 @@ this.perk_bags_and_belts <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.bags_and_belts";
-		this.m.Name = this.Const.Strings.PerkName.BagsAndBelts;
-		this.m.Description = this.Const.Strings.PerkDescription.BagsAndBelts;
+		this.m.Name = ::Const.Strings.PerkName.BagsAndBelts;
+		this.m.Description = ::Const.Strings.PerkDescription.BagsAndBelts;
 		this.m.Icon = "ui/perks/perk_20.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;

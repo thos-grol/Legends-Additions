@@ -114,7 +114,7 @@
 			}
 		];
 
-		foreach( i in this.Const.Items.LegendNamedSouthernArmorLayers )
+		foreach( i in ::Const.Items.LegendNamedSouthernArmorLayers )
 		{
 			if (this.Math.rand(1, 100) <= 33)
 			{
@@ -126,7 +126,7 @@
 			}
 		}
 
-		foreach( i in this.Const.Items.NamedArmors )
+		foreach( i in ::Const.Items.NamedArmors )
 		{
 			if (this.Math.rand(1, 100) <= 33)
 			{
@@ -138,7 +138,7 @@
 			}
 		}
 
-		foreach( i in this.Const.Items.NamedHelmets )
+		foreach( i in ::Const.Items.NamedHelmets )
 		{
 			if (this.Math.rand(1, 100) <= 33)
 			{

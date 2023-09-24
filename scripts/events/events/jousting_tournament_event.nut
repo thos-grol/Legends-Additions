@@ -149,12 +149,12 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Jouster.getImagePath());
 				_event.m.Jouster.improveMood(2.0, "Won a jousting tournament");
 
-				if (_event.m.Jouster.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Jouster.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Jouster.getMoodState()],
-						text = _event.m.Jouster.getName() + this.Const.MoodStateEvent[_event.m.Jouster.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Jouster.getMoodState()],
+						text = _event.m.Jouster.getName() + ::Const.MoodStateEvent[_event.m.Jouster.getMoodState()]
 					});
 				}
 			}
@@ -183,16 +183,16 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You win [color=" + this.Const.UI.Color.PositiveEventValue + "]" + _event.m.Bet + "[/color] Crowns"
+					text = "You win [color=" + ::Const.UI.Color.PositiveEventValue + "]" + _event.m.Bet + "[/color] Crowns"
 				});
 				_event.m.Jouster.improveMood(2.0, "Won a jousting tournament");
 
-				if (_event.m.Jouster.getMoodState() >= this.Const.MoodState.Neutral)
+				if (_event.m.Jouster.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Jouster.getMoodState()],
-						text = _event.m.Jouster.getName() + this.Const.MoodStateEvent[_event.m.Jouster.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Jouster.getMoodState()],
+						text = _event.m.Jouster.getName() + ::Const.MoodStateEvent[_event.m.Jouster.getMoodState()]
 					});
 				}
 			}
@@ -246,7 +246,7 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Jouster.getImagePath());
-				local injury = _event.m.Jouster.addInjury(this.Const.Injury.Jousting);
+				local injury = _event.m.Jouster.addInjury(::Const.Injury.Jousting);
 				this.List.push({
 					id = 10,
 					icon = injury.getIcon(),
@@ -278,9 +278,9 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You lose [color=" + this.Const.UI.Color.NegativeEventValue + "]" + _event.m.Bet + "[/color] Crowns"
+					text = "You lose [color=" + ::Const.UI.Color.NegativeEventValue + "]" + _event.m.Bet + "[/color] Crowns"
 				});
-				local injury = _event.m.Jouster.addInjury(this.Const.Injury.Jousting);
+				local injury = _event.m.Jouster.addInjury(::Const.Injury.Jousting);
 				this.List.push({
 					id = 10,
 					icon = injury.getIcon(),
@@ -342,7 +342,7 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]50[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]50[/color] Crowns"
 				});
 			}
 
@@ -368,12 +368,12 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Jouster.getImagePath());
 				_event.m.Jouster.worsenMood(2.0, "Was denied participation in a jousting tournament");
 
-				if (_event.m.Jouster.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Jouster.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Jouster.getMoodState()],
-						text = _event.m.Jouster.getName() + this.Const.MoodStateEvent[_event.m.Jouster.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Jouster.getMoodState()],
+						text = _event.m.Jouster.getName() + ::Const.MoodStateEvent[_event.m.Jouster.getMoodState()]
 					});
 				}
 			}
@@ -437,7 +437,7 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 				continue;
 			}
 
-			if ((bro.getBackground().getID() == "background.adventurous_noble" || bro.getBackground().getID() == "background.female_adventurous_noble" || bro.getBackground().getID() == "background.disowned_noble" || bro.getBackground().getID() == "background.female_disowned_noble" || bro.getBackground().getID() == "background.bastard" || bro.getBackground().getID() == "background.hedge_knight") && !bro.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury))
+			if ((bro.getBackground().getID() == "background.adventurous_noble" || bro.getBackground().getID() == "background.female_adventurous_noble" || bro.getBackground().getID() == "background.disowned_noble" || bro.getBackground().getID() == "background.female_disowned_noble" || bro.getBackground().getID() == "background.bastard" || bro.getBackground().getID() == "background.hedge_knight") && !bro.getSkills().hasSkillOfType(::Const.SkillType.TemporaryInjury))
 			{
 				candidates.push(bro);
 			}
@@ -454,7 +454,7 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 
 	function onPrepare()
 	{
-		this.m.Opponent = this.Const.Strings.KnightNames[this.Math.rand(0, this.Const.Strings.KnightNames.len() - 1)];
+		this.m.Opponent = ::Const.Strings.KnightNames[this.Math.rand(0, ::Const.Strings.KnightNames.len() - 1)];
 	}
 
 	function onPrepareVariables( _vars )

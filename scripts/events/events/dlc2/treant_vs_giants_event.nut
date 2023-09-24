@@ -68,13 +68,13 @@ this.treant_vs_giants_event <- this.inherit("scripts/events/event", {
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.BeastsTracks;
+						properties.Music = ::Const.Music.BeastsTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						properties.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Edge;
-						properties.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Random;
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.UnholdBog, 100, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).getID());
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Schrats, 100, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
+						properties.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Edge;
+						properties.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Random;
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.UnholdBog, 100, this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Schrats, 100, this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -98,7 +98,7 @@ this.treant_vs_giants_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.Const.DLC.Unhold)
+		if (!::Const.DLC.Unhold)
 		{
 			return;
 		}
@@ -115,7 +115,7 @@ this.treant_vs_giants_event <- this.inherit("scripts/events/event", {
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Forest && currentTile.Type != this.Const.World.TerrainType.LeaveForest && currentTile.Type != this.Const.World.TerrainType.AutumnForest)
+		if (currentTile.Type != ::Const.World.TerrainType.Forest && currentTile.Type != ::Const.World.TerrainType.LeaveForest && currentTile.Type != ::Const.World.TerrainType.AutumnForest)
 		{
 			return;
 		}

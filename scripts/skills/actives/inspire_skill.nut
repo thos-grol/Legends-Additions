@@ -12,8 +12,8 @@ this.inspire_skill <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/inspire_01.wav",
 			"sounds/combat/inspire_02.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.Any;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.Any;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;

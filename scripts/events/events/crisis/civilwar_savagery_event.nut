@@ -64,8 +64,8 @@ this.civilwar_savagery_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Killed some of their men");
-				this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Killed some of their men");
+				this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 				this.List.insert(0, {
 					id = 10,
 					icon = "ui/icons/special.png",
@@ -80,16 +80,16 @@ this.civilwar_savagery_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.OffendedByViolence) && this.Math.rand(1, 100) <= 75)
+					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && this.Math.rand(1, 100) <= 75)
 					{
 						bro.improveMood(0.5, "Helped save some peasants");
 
-						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -121,8 +121,8 @@ this.civilwar_savagery_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation increases"
 				});
-				_event.m.NobleHouse.addPlayerRelation(this.Const.World.Assets.RelationOffense, "Attacked some of their men");
-				this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationOffense, "Attacked some of their men");
+				this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 				this.List.insert(0, {
 					id = 10,
 					icon = "ui/icons/special.png",
@@ -132,16 +132,16 @@ this.civilwar_savagery_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.OffendedByViolence) && this.Math.rand(1, 100) <= 75)
+					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && this.Math.rand(1, 100) <= 75)
 					{
 						bro.improveMood(0.5, "Helped save some peasants");
 
-						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
+						if (bro.getMoodState() >= ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -165,12 +165,12 @@ this.civilwar_savagery_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
+		if (::Const.DLC.Desert && currentTile.SquareCoords.Y <= this.World.getMapSize().Y * 0.2)
 		{
 			return;
 		}
 
-		local nobleHouses = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+		local nobleHouses = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 		local candidates = [];
 
 		foreach( h in nobleHouses )

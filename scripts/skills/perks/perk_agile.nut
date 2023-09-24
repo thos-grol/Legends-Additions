@@ -13,11 +13,11 @@ this.perk_agile <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.agile";
-		this.m.Name = this.Const.Strings.PerkName.Agile;
-		this.m.Description = this.Const.Strings.PerkDescription.Agile;
+		this.m.Name = ::Const.Strings.PerkName.Agile;
+		this.m.Description = ::Const.Strings.PerkDescription.Agile;
 		this.m.Icon = "ui/perks/twirl_circle.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -25,7 +25,7 @@ this.perk_agile <- this.inherit("scripts/skills/skill", {
 
 	function isEnabled()
 	{
-		local offhand = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local offhand = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 		if (offhand != null && !offhand.isItemType(::Const.Items.ItemType.Shield)) return false;
 		return true;
 	}

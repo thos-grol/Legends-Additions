@@ -8,7 +8,7 @@ this.perk_mastery_axec <- this.inherit("scripts/skills/perks/perk_mastery_axe", 
 	{
 		this.perk_mastery_axe.create();
 		this.m.ID = "perk.mastery.axec";
-		this.m.Name = this.Const.Strings.PerkName.SpecAxeC;
+		this.m.Name = ::Const.Strings.PerkName.SpecAxeC;
 	}
 });
 
