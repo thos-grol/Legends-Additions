@@ -4,9 +4,7 @@
 + "\n " + ::MSU.Text.colorGreen("+50%") + " Headshot chance"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "With axe equipped:")
-+ "\n "+::MSU.Text.colorRed("Cull") + " now triggers at "+::MSU.Text.colorRed("44%")
-
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Purple, "Characters may only pick 1 Stance \n\nStance is only obtainable by mastering the corresponding weapon");
++ "\n "+::MSU.Text.colorRed("Cull") + " now triggers at "+::MSU.Text.colorRed("44%");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceExecutioner].Name = ::Const.Strings.PerkName.StanceExecutioner;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceExecutioner].Tooltip = ::Const.Strings.PerkDescription.StanceExecutioner;

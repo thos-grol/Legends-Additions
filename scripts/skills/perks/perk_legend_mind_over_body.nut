@@ -2,7 +2,7 @@
 ::Const.Strings.PerkDescription.LegendMindOverBody = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
 + "\n" + "The spirit is willing, but the flesh is weak..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
-+ "\n" + ::MSU.Text.colorGreen("-x%") + " Skill Fatigue costs based on resolve"
++ "\n" + ::MSU.Text.colorGreen("– x%") + " Skill Fatigue costs based on resolve"
 + "\n" + ::MSU.Text.colorRed("About 30% at 120 Resolve")
 + "\n\n" + ::MSU.Text.colorGreen("+Fresh Injury effect immunity")
 + "\n" + ::MSU.Text.colorGreen("+Morale unnaffected by Hitpoint loss");
