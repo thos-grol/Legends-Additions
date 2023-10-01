@@ -1,4 +1,3 @@
-//TODO: message on applying bleed
 this.bleeding_effect <- this.inherit("scripts/skills/skill", {
 	m = {
 		TurnsLeft = 2,
@@ -42,24 +41,12 @@ this.bleeding_effect <- this.inherit("scripts/skills/skill", {
 
 	function getAttacker()
 	{
-		if (!::Legends.Mod.ModSettings.getSetting("BleedKiller").getValue())
-		{
-			return this.getContainer().getActor();
-		}
-
-		if (::MSU.isNull(this.m.Actor))
-		{
-			return this.getContainer().getActor();
-		}
-
+		if (!::Legends.Mod.ModSettings.getSetting("BleedKiller").getValue()) return this.getContainer().getActor();
+		if (::MSU.isNull(this.m.Actor)) return this.getContainer().getActor();
 		if (this.m.Actor.getID() != this.getContainer().getActor().getID())
 		{
-			if (this.m.Actor.isAlive() && this.m.Actor.isPlacedOnMap())
-			{
-				return this.m.Actor;
-			}
+			if (this.m.Actor.isAlive() && this.m.Actor.isPlacedOnMap()) return this.m.Actor;
 		}
-
 		return this.getContainer().getActor();
 	}
 
@@ -77,11 +64,7 @@ this.bleeding_effect <- this.inherit("scripts/skills/skill", {
 			hitInfo.BodyDamageMult = 1.0;
 			hitInfo.FatalityChanceMult = 0.0;
 			actor.onDamageReceived(this.getAttacker(), this, hitInfo);
-
-			if (--this.m.TurnsLeft <= 0)
-			{
-				this.removeSelf();
-			}
+			if (--this.m.TurnsLeft <= 0) this.removeSelf();
 		}
 	}
 
@@ -99,11 +82,8 @@ this.bleeding_effect <- this.inherit("scripts/skills/skill", {
 		else
 		{
 			this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
-
-			if (this.getContainer().hasSkill("trait.bleeder"))
-			{
-				++this.m.TurnsLeft;
-			}
+			if (this.getContainer().hasSkill("trait.bleeder")) ++this.m.TurnsLeft;
+			::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " is bleeding");
 		}
 	}
 

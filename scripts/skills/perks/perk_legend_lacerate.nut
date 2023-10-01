@@ -45,14 +45,7 @@ this.perk_legend_lacerate <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		local effect = this.new("scripts/skills/effects/bleeding_effect");
 		if (actor.getFaction() == ::Const.Faction.Player) effect.setActor(actor);
-		effect.setDamage(5);
 		_targetEntity.getSkills().add(effect);
-
-		// if (!actor.isHiddenToPlayer() && _targetEntity.getTile().IsVisibleForPlayer)
-		// {
-		// 	this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " lacerated " + ::Const.UI.getColorizedEntityName(_targetEntity) + " leaving them grazed");
-		// }
-
 		return true;
 	}
 

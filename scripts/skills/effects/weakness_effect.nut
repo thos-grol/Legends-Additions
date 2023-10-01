@@ -72,17 +72,15 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 	{
 
 		local actor = this.getContainer().getActor();
-		if ((actor.getFlags().has("WeaknessImmune"))
-		)
+
+		this.m.TurnsLeft = this.Math.max(1, this.m.TurnsLeft + actor.getCurrentProperties().NegativeStatusEffectDuration);
+		if (actor.getFlags().has("WeaknessImmune") || this.m.TurnsLeft == 0)
 		{
 			if (!actor.isHiddenToPlayer())
-				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " resisted being weakend");
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " resisted being weakened");
 			this.removeSelf();
 			return;
 		}
-
-		this.m.TurnsLeft = this.Math.max(1, this.m.TurnsLeft + actor.getCurrentProperties().NegativeStatusEffectDuration);
-		//TODO: if turnsleft is 0, tell message
 	}
 
 	function resetTime()

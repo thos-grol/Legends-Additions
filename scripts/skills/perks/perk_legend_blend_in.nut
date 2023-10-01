@@ -13,8 +13,8 @@
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Name = ::Const.Strings.PerkName.LegendBlendIn;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Tooltip = ::Const.Strings.PerkDescription.LegendBlendIn;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Icon = "ui/perks/alert_circle.png";
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].IconDisabled = "ui/perks/alert_circle_bw.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Icon = "ui/perks/sneak_attack.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].IconDisabled = "ui/perks/sneak_attack_bw.png";
 
 this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 	m = {

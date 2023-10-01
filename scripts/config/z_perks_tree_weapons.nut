@@ -504,7 +504,7 @@ gt.Const.Perks.PolearmTree <- { //FEATURE_0: tree polearm
 // Special - Melee
 ///////////////////////////////////////////////////////////////////////////
 
-gt.Const.Perks.DaggerTree <- { //FEATURE_0: tree dagger
+gt.Const.Perks.DaggerTree <- { //FEATURE_0: dagger becomes a sidearm tree (2 perks, no stance or mastery)
 	ID = "Dagger",
 	Name = "Dagger",
 	Descriptions = [
@@ -547,15 +547,14 @@ gt.Const.Perks.DaggerTree <- { //FEATURE_0: tree dagger
 	Tree = [
 		[],
 		[
+			//TODO: Puncture, unlocks the ability to puncture with daggers.
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.SpecDagger
+			//TODO: Finish them, if the enemy is sleeping or stunned, puncture has 100% to hit.
 		],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.Duelist
-		],
+		[],
 		[]
 	]
 };
@@ -622,14 +621,10 @@ gt.Const.Perks.ShieldTree <- { //FEATURE_0: tree shield
 	]
 };
 
-// "Rebuke
-// Gain a 25% chance to perform a free attack against an adjacent opponent who misses a melee attack against you. The chance is increased by an additional +10% when equipped with a shield."
-//Rework, to while weilding shield
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 // Ranged
 /////////////////////////////////////////////////////////////////////////////////////////////
-gt.Const.Perks.GreatSwordTree <- { //FEATURE_0: tree firearm
+gt.Const.Perks.GreatSwordTree <- {
 	ID = "GreatSword",
 	Name = "Two-Handed Sword",
 	Descriptions = [
@@ -680,7 +675,7 @@ gt.Const.Perks.GreatSwordTree <- { //FEATURE_0: tree firearm
 	]
 };
 
-gt.Const.Perks.CrossbowTree <- { //FEATURE_0: tree crossbow
+gt.Const.Perks.CrossbowTree <- { //TODO: ranged weaponry tree
 	ID = "Crossbow",
 	Name = "Crossbow",
 	Descriptions = [
@@ -739,7 +734,7 @@ gt.Const.Perks.CrossbowTree <- { //FEATURE_0: tree crossbow
 	]
 };
 
-gt.Const.Perks.BowTree <- { //FEATURE_0: tree bow
+gt.Const.Perks.BowTree <- {
 	ID = "Bow",
 	Name = "Bow",
 	Descriptions = [
@@ -798,7 +793,7 @@ gt.Const.Perks.BowTree <- { //FEATURE_0: tree bow
 	]
 };
 
-gt.Const.Perks.SlingTree <- { //FEATURE_0: tree sling
+gt.Const.Perks.SlingTree <- {
 	ID = "Sling",
 	Name = "Sling",
 	Descriptions = [

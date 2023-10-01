@@ -1,10 +1,8 @@
-//TODO: improve description
 ::Const.Strings.PerkName.StanceGourmet <- "Gourmet";
 ::Const.Strings.PerkDescription.StanceGourmet <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Improves Weakness: (Duration: 2)")
-+ "\n– 10X% damage"
-+ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "-10X% damage. X is the number of bleed stacks. Caps at 75%");
++ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "– 10X% damage. X is the number of bleed stacks. Caps at 75%");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceGourmet].Name = ::Const.Strings.PerkName.StanceGourmet;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceGourmet].Tooltip = ::Const.Strings.PerkDescription.StanceGourmet;
