@@ -98,9 +98,8 @@
 			"trait.proficiency_Flail",
 			"trait.proficiency_Spear",
 			"trait.proficiency_Polearm",
-			"trait.proficiency_Dagger",
-			"trait.proficiency_Shield",
 			"trait.proficiency_Unarmed",
+			"trait.proficiency_Ranged",
 		];
 
 		foreach (proficiency in proficiencies)

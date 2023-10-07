@@ -43,7 +43,7 @@ this.staggered_effect <- this.inherit("scripts/skills/skill", {
 				id = 12,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-25%[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-25[/color] Melee Defense"
 			}
 		];
 	}

@@ -10,8 +10,7 @@
 		this.m.PerkTreeDynamic = {
 			Weapon = [
 				::Const.Perks.SwordTree,
-				::Const.Perks.DaggerTree,
-				::Const.Perks.CrossbowTree
+				::Const.Perks.BowTree
 			],
 			Defense = [
 				::Const.Perks.LightArmorTree
@@ -22,7 +21,7 @@
 			Enemy = [],
 			Class = [
 				::Const.Perks.FistsClassTree,
-				::Const.Perks.KnifeClassTree
+				
 			],
 			Magic = [
 				::Const.Perks.AssassinMagicTree

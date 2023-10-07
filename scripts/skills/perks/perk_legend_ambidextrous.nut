@@ -9,12 +9,11 @@
 + "\nPerform a CQC attack with a malus of " + ::MSU.Text.colorRed("-25") + " melee skill. Will " + ::MSU.Text.colorRed("Stagger")
 + "\n" + ::MSU.Text.colorRed("Invalid if this unit is missing a leg")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Stagger:")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Stagger: (Removed on turn start)")
 + "\n "+::MSU.Text.colorRed("-50%")+" Initiative"
 + "\n "+::MSU.Text.colorRed("-25")+" Melee Defense"
 + "\n "+::MSU.Text.colorRed("-25")+" Ranged Defense"
-+ "\n +Cancels Shieldwall, Spearwall, Return Favor, and Riposte"
-+ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Is removed when this character starts their turn");
++ "\n +Cancels Shieldwall, Spearwall, Return Favor, and Riposte";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Name = ::Const.Strings.PerkName.LegendAmbidextrous;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Tooltip = ::Const.Strings.PerkDescription.LegendAmbidextrous;
@@ -40,20 +39,20 @@ this.perk_legend_ambidextrous <- this.inherit("scripts/skills/skill", {
 	{
 		local items = this.getContainer().getActor().getItems();
 
-		if (_targetEntity == null 
-			|| items.hasBlockedSlot(::Const.ItemSlot.Offhand) 
+		if (_targetEntity == null
+			|| items.hasBlockedSlot(::Const.ItemSlot.Offhand)
 			|| items.getItemAtSlot(::Const.ItemSlot.Offhand) != null) return;
 		if (_forFree) return;
 		if (_targetTile == null) return;
 		if (_skill.m.ID == "actives.legend_kick") return;
-		
+
 		local attack = this.getContainer().getSkillByID("actives.hand_to_hand");
 		attack.useForFree(_targetTile);
 	}
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("actives.legend_kick")) 
+		if (!this.m.Container.hasSkill("actives.legend_kick"))
 			this.m.Container.add(this.new("scripts/skills/actives/legend_kick"));
 	}
 

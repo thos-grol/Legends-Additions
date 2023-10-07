@@ -711,7 +711,9 @@ gt.Const.Perks.TrainedTree <- {
 		[
 			gt.Const.Perks.PerkDefs.BagsAndBelts
 		],
-		[],
+		[
+			gt.Const.Perks.PerkDefs.Hybridization
+		],
 		[
 			gt.Const.Perks.PerkDefs.LegendBackToBasics
 		],

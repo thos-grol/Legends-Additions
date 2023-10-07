@@ -51,13 +51,13 @@ local perks = [
         Const = "SpecAxeC"
     },
     {
-        ID = "perk.mastery.bowc",
-        Script = "scripts/skills/perks/perk_mastery_bowc",
+        ID = "perk.mastery.rangedc",
+        Script = "scripts/skills/perks/perk_mastery_rangedc",
         Name = "",
         Tooltip = "",
         Icon = "ui/perks/mastery_bow.png",
         IconDisabled = "ui/perks/perk_44_sw.png",
-        Const = "SpecBowC"
+        Const = "SpecRangedC"
     },
     {
         ID = "perk.mastery.cleaverc",
@@ -67,24 +67,6 @@ local perks = [
         Icon = "ui/perks/mastery_cleaver.png",
         IconDisabled = "ui/perks/perk_44_sw.png",
         Const = "SpecCleaverC"
-    },
-    {
-        ID = "perk.mastery.crossbowc",
-        Script = "scripts/skills/perks/perk_mastery_crossbowc",
-        Name = "",
-        Tooltip = "",
-        Icon = "ui/perks/mastery_crossbow.png",
-        IconDisabled = "ui/perks/perk_44_sw.png",
-        Const = "SpecCrossbowC"
-    },
-    {
-        ID = "perk.mastery.daggerc",
-        Script = "scripts/skills/perks/perk_mastery_daggerc",
-        Name = "",
-        Tooltip = "",
-        Icon = "ui/perks/mastery_dagger.png",
-        IconDisabled = "ui/perks/perk_44_sw.png",
-        Const = "SpecDaggerC"
     },
     {
         ID = "perk.mastery.fistc",
@@ -168,9 +150,36 @@ local perks = [
         Script = "scripts/skills/perks/perk_stance_gourmet",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/executioner.png", //TODO: StanceGourmet art
+        Icon = "ui/perks/executioner.png", //TODO: art
         IconDisabled = "ui/perks/executioner_bw.png",
         Const = "StanceGourmet"
+    },
+    {
+        ID = "perk.stance.the_strongest",
+        Script = "scripts/skills/perks/perk_stance_the_strongest",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/executioner.png", //TODO: art
+        IconDisabled = "ui/perks/executioner_bw.png",
+        Const = "StanceTheStrongest"
+    },
+    {
+        ID = "perk.stance.wrath",
+        Script = "scripts/skills/perks/perk_stance_wrath",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/executioner.png", //TODO: art
+        IconDisabled = "ui/perks/executioner_bw.png",
+        Const = "StanceWrath"
+    },
+    {
+        ID = "perk.stance.bone_breaker",
+        Script = "scripts/skills/perks/perk_stance_bone_breaker",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/executioner.png", //TODO: art
+        IconDisabled = "ui/perks/executioner_bw.png",
+        Const = "StanceBoneBreaker"
     },
 
 ///////////////////////////////////////////////////////////////////////////
@@ -210,11 +219,47 @@ local perks = [
 ///////////////////////////////////////////////////////////////////////////
 
 	{
+        ID = "perk.hybridization",
+        Script = "scripts/skills/perks/perk_hybridization", //TODO: art
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/death_dealer.png",
+        IconDisabled = "ui/perks/death_dealer_bw.png",
+        Const = "Hybridization"
+    },
+    {
+        ID = "perk.quickstep",
+        Script = "scripts/skills/perks/perk_quickstep",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/quickstep.png", //TODO: art
+        IconDisabled = "ui/perks/quickstep_bw.png",
+        Const = "Quickstep"
+    },
+    {
+        ID = "perk.dismemberment",
+        Script = "scripts/skills/perks/perk_dismemberment",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/dismemberment.png", //TODO: art
+        IconDisabled = "ui/perks/dismemberment_bw.png",
+        Const = "Dismemberment"
+    },
+    {
+        ID = "perk.deep_impact",
+        Script = "scripts/skills/perks/perk_deep_impact", //TODO: art
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/deep_impact.png",
+        IconDisabled = "ui/perks/deep_impact_bw.png",
+        Const = "DeepImpact"
+    },
+    {
         ID = "perk.death_dealer",
         Script = "scripts/skills/perks/perk_death_dealer",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/death_dealer.png",
+        Icon = "ui/perks/death_dealer.png", //TODO: art
         IconDisabled = "ui/perks/death_dealer_bw.png",
         Const = "DeathDealer"
     },
@@ -356,21 +401,13 @@ local perks = [
         "Proficiency" : ::Const.Perks.PerkDefs.SpecAxe,
         "Mastery" : ::Const.Perks.PerkDefs.SpecAxeC,
     },
-    "Bow" : {
+    "Ranged" : {
         "Proficiency" : ::Const.Perks.PerkDefs.SpecBow,
-        "Mastery" : ::Const.Perks.PerkDefs.SpecBowC,
+        "Mastery" : ::Const.Perks.PerkDefs.SpecRangedC,
     },
     "Cleaver" : {
         "Proficiency" : ::Const.Perks.PerkDefs.SpecCleaver,
         "Mastery" : ::Const.Perks.PerkDefs.SpecCleaverC,
-    },
-    "Crossbow" : {
-        "Proficiency" : ::Const.Perks.PerkDefs.SpecCrossbow,
-        "Mastery" : ::Const.Perks.PerkDefs.SpecCrossbowC,
-    },
-    "Dagger" : {
-        "Proficiency" : ::Const.Perks.PerkDefs.SpecDagger,
-        "Mastery" : ::Const.Perks.PerkDefs.SpecDaggerC,
     },
     "Fist" : {
         "Proficiency" : ::Const.Perks.PerkDefs.LegendSpecFists,

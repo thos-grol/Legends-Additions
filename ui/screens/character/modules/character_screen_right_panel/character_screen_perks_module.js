@@ -36,7 +36,7 @@ CharacterScreenPerksModule.prototype.createDIV = function (_parentDiv)
 	// create: containers (init hidden!)
 	this.mContainer = $('<div class="perks-module opacity-none"/>');
 	_parentDiv.append(this.mContainer);
-	
+
 	this.mListContainer = $('<div class="ui-control list has-frame"/>');
 	var scrollContainer = $('<div class="scroll-container"/>');
     this.mListContainer.append(scrollContainer);
@@ -79,7 +79,7 @@ CharacterScreenPerksModule.prototype.destroyDIV = function ()
     this.mListContainer.destroyList();
     this.mListContainer.remove();
     this.mListContainer = null;
-	
+
     this.mContainer.empty();
     this.mContainer.remove();
     this.mContainer = null;
@@ -101,7 +101,7 @@ CharacterScreenPerksModule.prototype.createPerkTreeDIV = function (_perkTree, _p
 		}
 	}
 	//console.error('lowestx = ' + lowestx);
-	
+
 	for (var row = 0; row < _perkTree.length; ++row)
 	{
 		var rowDIV = $('<div class="row"/>');
@@ -112,7 +112,7 @@ CharacterScreenPerksModule.prototype.createPerkTreeDIV = function (_perkTree, _p
 		rowDIV.append(centerDIV);
 
 		this.mPerkRows[row] = rowDIV;
-		
+
 		for (var i = 0; i < _perkTree[row].length; ++i)
 		{
 			var perk = _perkTree[row][i];
@@ -129,7 +129,7 @@ CharacterScreenPerksModule.prototype.createPerkTreeDIV = function (_perkTree, _p
 			perk.Image.attr('src', Path.GFX + perk.IconDisabled);
 			perk.Container.append(perk.Image);
 		}
-		
+
 		centerDIV.css({ 'width': (5.0 * _perkTree[row].length) + 'rem' }); // css is retarded?
 		centerDIV.css({ 'left': (((660 - centerDIV.width()) / 2) - lowestx) + 'px' }); // css is retarded?
 	}
@@ -152,7 +152,7 @@ CharacterScreenPerksModule.prototype.resetPerkTree = function(_perkTree)
 {
 	if (_perkTree == null)
 		return;
-	
+
 	this.mPerkTree = _perkTree;
 
 	for (var row = 0; row < this.mPerkRows.length; ++row)
@@ -208,7 +208,7 @@ CharacterScreenPerksModule.prototype.initPerkTree = function (_perkTree, _perksU
 			}*/
 		}
 	}
-	
+
 	for (var row = 0; row < this.mPerkRows.length; ++row)
 	{
 		if (row <= perkPointsSpent)
@@ -282,6 +282,7 @@ var Destiny = {
 
 var Stance = {
 	"perk.stance.executioner": "perk.mastery.axec",
+	//TODO: fill out all stances
 };
 
 CharacterScreenPerksModule.prototype.isPerkUnlockable = function (_perk)
@@ -291,7 +292,7 @@ CharacterScreenPerksModule.prototype.isPerkUnlockable = function (_perk)
 	var level = character[CharacterScreenIdentifier.Entity.Character.Level];
 	var perkPoints = this.mDataSource.getBrotherPerkPoints(_brother);
 	var perkPointsSpent = this.mDataSource.getBrotherPerkPointsSpent(_brother);
-	
+
 	if(level >= 13 && _perk.ID === 'perk.student') {
 		return false;
 	}
@@ -313,7 +314,7 @@ CharacterScreenPerksModule.prototype.isPerkUnlockable = function (_perk)
 
 	if(_perk.ID in Stance)
 	{
-		//If not have mastery, then can't take 
+		//If not have mastery, then can't take
 		var found = false;
 		for (var row = 0; row < PERK_TREE.length; ++row)
 		{
@@ -417,7 +418,7 @@ CharacterScreenPerksModule.prototype.showPerkUnlockDialog = function(_perk)
 
     var self = this;
     var popupDialog = $('.character-screen').createPopupDialog('Unlock Perk', null, null, 'unlock-perk-popup');
-    
+
     popupDialog.addPopupDialogContent(this.createPerkUnlockDialogContent(_perk));
 
     popupDialog.addPopupDialogOkButton(jQuery.proxy(function (_dialog)
@@ -447,7 +448,7 @@ CharacterScreenPerksModule.prototype.createPerkUnlockDialogContent = function (_
 
     var rightColumn = $('<div class="right-column"/>');
     result.append(rightColumn);
-    
+
     var perkNameLabel = $('<div class="name title-font-normal font-bold font-color-title">' + _perk.Name + '</div>');
     rightColumn.append(perkNameLabel);
 

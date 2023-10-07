@@ -79,7 +79,6 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 
 	function addCharges( _amount )
 	{
-		::logInfo("Adding charges");
 		this.m.Charges = this.Math.min(this.m.Charges_Max, this.m.Charges + _amount);
 		if (this.m.Charges > 0)
 		{
@@ -107,6 +106,9 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 		if (this.m.Charges == 0) return;
 		local actor = this.getContainer().getActor();
 		if (_attacker != null && _attacker.getID() == actor.getID() || _skill == null || !_skill.isAttack() || !_skill.isUsingHitchance()) return;
+
+		local the_strongest = actor.getSkills().getSkillByID("perk.stance.the_strongest");
+        if (the_strongest != null && the_strongest.m.Active) return;
 
 		_properties.DamageReceivedRegularMult *= 0;
 		_properties.DamageReceivedArmorMult *= 0;

@@ -267,7 +267,7 @@
 
 		if (shield != null && shield.isItemType(::Const.Items.ItemType.Shield))
 		{
-			shieldBonus = (this.m.IsRanged ? shield.getRangedDefense() : shield.getMeleeDefense()) * (_targetEntity.getCurrentProperties().IsSpecializedInShields ? 1.25 : 1.0);
+			shieldBonus = (this.m.IsRanged ? shield.getRangedDefense() : shield.getMeleeDefense());
 
 			if (!this.m.IsShieldRelevant)
 			{
@@ -546,3 +546,509 @@
 		}
 	}
 });
+
+::mods_hookExactClass("skills/skill", function (o)
+{
+	o.onShieldHit = function( _info )
+	{
+		local shield = _info.Shield;
+		local user = _info.User;
+		local targetEntity = _info.TargetEntity;
+
+		if (_info.Skill.m.SoundOnHitShield.len() != 0)
+		{
+			this.Sound.play(_info.Skill.m.SoundOnHitShield[this.Math.rand(0, _info.Skill.m.SoundOnHitShield.len() - 1)], this.Const.Sound.Volume.Skill * this.m.SoundVolume, user.getPos());
+		}
+
+		shield.applyShieldDamage(this.Const.Combat.BasicShieldDamage, _info.Skill.m.SoundOnHitShield.len() == 0);
+
+		if (shield.getCondition() == 0)
+		{
+			if (!user.isHiddenToPlayer()) this.Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(targetEntity) + "\'s shield has destroyed ");
+		}
+		else
+		{
+			if (!this.Tactical.getNavigator().isTravelling(targetEntity))
+			{
+				this.Tactical.getShaker().shake(targetEntity, user.getTile(), 2, this.Const.Combat.ShakeEffectSplitShieldColor, this.Const.Combat.ShakeEffectSplitShieldHighlight, this.Const.Combat.ShakeEffectSplitShieldFactor, 1.0, [
+					"shield_icon"
+				], 1.0);
+			}
+		}
+
+		_info.TargetEntity.getItems().onShieldHit(_info.User, this);
+	}
+
+	o.getHitchance = function( _targetEntity )
+	{
+		if (!_targetEntity.isAttackable() && !_targetEntity.isRock() && !_targetEntity.isTree() && !_targetEntity.isBush() && !_targetEntity.isSupplies())
+		{
+			return 0;
+		}
+
+		local user = this.m.Container.getActor();
+		local properties = this.factoringOffhand(this.m.Container.buildPropertiesForUse(this, _targetEntity));
+
+		if (!this.isUsingHitchance())
+		{
+			return 100;
+		}
+
+		local allowDiversion = this.m.IsRanged && this.m.MaxRangeBonus > 1;
+		local defenderProperties = _targetEntity.getSkills().buildPropertiesForDefense(user, this);
+		local skill = this.m.IsRanged ? properties.RangedSkill * properties.RangedSkillMult : properties.MeleeSkill * properties.MeleeSkillMult;
+		local defense = _targetEntity.getDefense(user, this, defenderProperties);
+		local levelDifference = _targetEntity.getTile().Level - user.getTile().Level;
+		local distanceToTarget = user.getTile().getDistanceTo(_targetEntity.getTile());
+		local toHit = skill - defense;
+
+		if (this.m.IsRanged)
+		{
+			toHit = toHit + (distanceToTarget - this.m.MinRange) * properties.HitChanceAdditionalWithEachTile * properties.HitChanceWithEachTileMult;
+		}
+
+		if (levelDifference < 0)
+		{
+			toHit = toHit + this.Const.Combat.LevelDifferenceToHitBonus;
+		}
+		else
+		{
+			toHit = toHit + this.Const.Combat.LevelDifferenceToHitMalus * levelDifference;
+		}
+
+		if (!this.m.IsShieldRelevant)
+		{
+			local shield = _targetEntity.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+
+			if (shield != null && shield.isItemType(this.Const.Items.ItemType.Shield))
+			{
+				local shieldBonus = (this.m.IsRanged ? shield.getRangedDefense() : shield.getMeleeDefense());
+				toHit = toHit + shieldBonus;
+
+				if (!this.m.IsShieldwallRelevant && _targetEntity.getSkills().hasSkill("effects.shieldwall"))
+				{
+					toHit = toHit + shieldBonus;
+				}
+			}
+		}
+
+		toHit = toHit * properties.TotalAttackToHitMult;
+		toHit = toHit + this.Math.max(0, 100 - toHit) * (1.0 - defenderProperties.TotalDefenseToHitMult);
+		local userTile = user.getTile();
+
+		if (allowDiversion && this.m.IsRanged && userTile.getDistanceTo(_targetEntity.getTile()) > 1)
+		{
+			local blockedTiles = this.Const.Tactical.Common.getBlockedTiles(userTile, _targetEntity.getTile(), user.getFaction(), true);
+
+			if (blockedTiles.len() != 0)
+			{
+				local blockChance = this.Const.Combat.RangedAttackBlockedChance * properties.RangedAttackBlockedChanceMult;
+				toHit = this.Math.floor(toHit * (1.0 - blockChance));
+			}
+		}
+
+		return this.Math.max(5, this.Math.min(95, toHit));
+	}
+
+	o.modGetHitFactors = function( ret, _targetTile )
+	{
+		if (!ret)
+		{
+			return ret;
+		}
+
+		local retCount = ret.len();
+		local green = function ( text )
+		{
+			if (!text)
+			{
+				return "";
+			}
+
+			return "[color=" + this.Const.UI.Color.PositiveValue + "]" + text + "[/color]";
+		};
+		local red = function ( text )
+		{
+			if (!text)
+			{
+				return "";
+			}
+
+			return "[color=" + this.Const.UI.Color.NegativeValue + "]" + text + "[/color]";
+		};
+		local isIn = function ( pattern, text )
+		{
+			if (!pattern || !text)
+			{
+				return false;
+			}
+
+			return this.regexp(pattern).search(text);
+		};
+		local user = this.m.Container.getActor();
+		local myTile = user.getTile();
+		local targetEntity = _targetTile.IsOccupiedByActor ? _targetTile.getEntity() : null;
+		local getBadTerrainFactor = function ( attributeIcon )
+		{
+			if (!attributeIcon)
+			{
+				return false;
+			}
+
+			local badTerrains = [
+				"terrain.swamp"
+			];
+
+			for( local i = 0; i < badTerrains.len(); i++ )
+			{
+				local terrainEffect = targetEntity.getSkills().getSkillByID(badTerrains[i]);
+
+				if (!(terrainEffect && "getTooltip" in terrainEffect))
+				{
+				}
+				else
+				{
+					local tooltip = terrainEffect.getTooltip();
+
+					foreach( i, r in tooltip )
+					{
+						if (("type" in r) && r.type == "text" && ("icon" in r) && "text" in r)
+						{
+							if (isIn(attributeIcon, r.icon))
+							{
+								return r.text;
+							}
+						}
+					}
+				}
+			}
+
+			return null;
+		};
+		local attackingEntity = user;
+		local thisSkill = this;
+		local modifier = {};
+		local skillName = this.getName();
+		local skillHitChanceBonus = this.m.HitChanceBonus;
+		modifier[skillName] <- function ( row, description )
+		{
+			if (!("icon" in row))
+			{
+				return;
+			}
+
+			local icon = row.icon;
+
+			if (icon == "ui/tooltips/positive.png")
+			{
+				row.text = green("" + skillHitChanceBonus + "%") + " " + description;
+			}
+			else if (icon == "ui/tooltips/negative.png")
+			{
+				row.text = red(-skillHitChanceBonus + "%") + " " + description;
+			}
+		};
+		modifier.Surrounded <- function ( row, description )
+		{
+			if (targetEntity.m.CurrentProperties.IsImmuneToSurrounding)
+			{
+				return;
+			}
+
+			local malus = this.Math.max(0, attackingEntity.getCurrentProperties().SurroundedBonus - targetEntity.getCurrentProperties().SurroundedDefense) * targetEntity.getSurroundedCount();
+
+			if (malus)
+			{
+				row.text = green(malus + "%") + " " + description;
+			}
+		};
+		modifier["Height advantage"] <- function ( row, description )
+		{
+			row.text = green(this.Const.Combat.LevelDifferenceToHitBonus + "%") + " " + description;
+		};
+		modifier["Height disadvantage"] <- function ( row, description )
+		{
+			local levelDifference = myTile.Level - _targetTile.Level;
+			local malus = this.Const.Combat.LevelDifferenceToHitMalus * levelDifference;
+			row.text = red(malus + "%") + " " + description;
+		};
+		modifier["Target on bad terrain"] <- function ( row, description )
+		{
+			local defenseIcon = thisSkill.m.IsRanged ? "ranged_defense" : "melee_defense";
+			local terrainFactor = getBadTerrainFactor(defenseIcon);
+
+			if (terrainFactor)
+			{
+				row.text = description + " (" + terrainFactor + ")";
+			}
+		};
+		modifier["On bad terrain"] <- function ( row, description )
+		{
+			local attackIcon = thisSkill.m.IsRanged ? "ranged_skill" : "melee_skill";
+			local terrainFactor = getBadTerrainFactor(attackIcon);
+
+			if (terrainFactor)
+			{
+				row.text = description + " (" + terrainFactor + ")";
+			}
+		};
+		modifier["Fast Adaption"] <- function ( row, description )
+		{
+			local fast_adaption = thisSkill.m.Container.getSkillByID("perk.fast_adaption");
+			local bonus = 10 * fast_adaption.m.Stacks;
+			row.text = green(bonus + "%") + " " + description;
+		};
+		modifier["Too close"] <- function ( row, description )
+		{
+			row.text = red(-skillHitChanceBonus + "%") + " " + description;
+		};
+		local getShieldBonus = function ()
+		{
+			local shield = targetEntity.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+			local shieldBonus = (thisSkill.m.IsRanged ? shield.getRangedDefense() : shield.getMeleeDefense());
+			return this.Math.floor(shieldBonus);
+		};
+		modifier["Armed with shield"] <- function ( row, description )
+		{
+			row.text = red(getShieldBonus() + "%") + " " + description;
+		};
+		modifier.Shieldwall <- function ( row, description )
+		{
+			local shieldwallEffect = targetEntity.getSkills().getSkillByID("effects.shieldwall");
+			local adjacencyBonus = shieldwallEffect.getBonus();
+			row.text = red(getShieldBonus() + adjacencyBonus + "%") + " " + description;
+		};
+		local isRangedRelevant = function ()
+		{
+			return thisSkill.m.IsRanged && myTile.getDistanceTo(_targetTile) > this.m.MinRange && _targetTile.IsOccupiedByActor;
+		};
+
+		if (isRangedRelevant())
+		{
+			local distanceToTarget = _targetTile.getDistanceTo(user.getTile());
+			local propertiesWithSkill = this.factoringOffhand(thisSkill.m.Container.buildPropertiesForUse(thisSkill, targetEntity));
+			modifier["Distance of " + distanceToTarget] <- function ( row, description )
+			{
+				local hitDistancePenalty = (distanceToTarget - thisSkill.m.MinRange) * propertiesWithSkill.HitChanceAdditionalWithEachTile * propertiesWithSkill.HitChanceWithEachTileMult;
+				row.text = (hitDistancePenalty > 0 ? green(hitDistancePenalty + "%") : red(-hitDistancePenalty + "%")) + " " + description;
+			};
+			modifier["Line of fire blocked"] <- function ( row, description )
+			{
+				local blockChance = this.Const.Combat.RangedAttackBlockedChance * propertiesWithSkill.RangedAttackBlockedChanceMult;
+				blockChance = this.Math.ceil(blockChance * 100);
+				row.text = description + "\n(" + red("-" + blockChance + "%") + " Total hit chance)";
+			};
+			  // [082]  OP_CLOSE          0     18    0    0
+		}
+
+		modifier.Nighttime <- function ( row, description )
+		{
+			local night = user.getSkills().getSkillByID("special.night");
+			local attributeIcon = "ranged_skill";
+
+			if (!(night && "getTooltip" in night))
+			{
+				return;
+			}
+
+			local tooltip = night.getTooltip();
+
+			foreach( _, r in tooltip )
+			{
+				if (("type" in r) && r.type == "text" && ("icon" in r) && "text" in r)
+				{
+					if (isIn(attributeIcon, r.icon))
+					{
+						row.text = description + "\n(" + r.text + ")";
+						return;
+					}
+				}
+			}
+		};
+		local getDamageResistance = function ()
+		{
+			if (!targetEntity)
+			{
+				return null;
+			}
+
+			local racialSkills = [
+				"racial.skeleton",
+				"racial.golem",
+				"racial.serpent",
+				"racial.alp",
+				"racial.schrat"
+			];
+			local racialSkill;
+
+			for( local i = 0; i < racialSkills.len(); i++ )
+			{
+				racialSkill = targetEntity.getSkills().getSkillByID(racialSkills[i]);
+
+				if (racialSkill)
+				{
+					break;
+				}
+			}
+
+			if (!racialSkill)
+			{
+				return null;
+			}
+
+			local propertiesBefore = targetEntity.getCurrentProperties();
+
+			if (!("DamageReceivedRegularMult" in propertiesBefore))
+			{
+				return null;
+			}
+
+			local hitInfo = clone this.Const.Tactical.HitInfo;
+			local propertiesAfter = propertiesBefore.getClone();
+			racialSkill.onBeforeDamageReceived(attackingEntity, thisSkill, hitInfo, propertiesAfter);
+			local diff = propertiesBefore.DamageReceivedRegularMult - propertiesAfter.DamageReceivedRegularMult;
+			return this.Math.ceil(diff * 100);
+		};
+		local flagResistanceExists = false;
+		modifier["Resistance against ranged weapons"] <- function ( row, description )
+		{
+			flagResistanceExists = true;
+			local damageResistance = getDamageResistance();
+
+			if (damageResistance == null)
+			{
+				return;
+			}
+
+			row.text = description + "\n(" + red("-" + damageResistance + "%") + " Total HP damage using " + thisSkill.getName() + ")";
+		};
+		modifier["Resistance against piercing attacks"] <- function ( row, description )
+		{
+			flagResistanceExists = true;
+			local damageResistance = getDamageResistance();
+
+			if (damageResistance == null)
+			{
+				return;
+			}
+
+			row.text = description + "\n(" + red("-" + damageResistance + "%") + " Total HP damage using " + thisSkill.getName() + ")";
+		};
+
+		for( local i = 0; i < retCount; i++ )
+		{
+			local row = ret[i];
+
+			if ("text" in row)
+			{
+				local description = row.text;
+
+				if (description in modifier)
+				{
+					modifier[description](row, description);
+				}
+			}
+		}
+
+		local getDifferenceInProperty = function ( _property, _targetEntity )
+		{
+			local props = user.getCurrentProperties();
+
+			if (!(_property in props))
+			{
+				return null;
+			}
+
+			local propsWithSkill = props.getClone();
+			thisSkill.onAnySkillUsed(thisSkill, _targetEntity, propsWithSkill);
+			return propsWithSkill[_property] - props[_property];
+		};
+
+		if (!thisSkill.m.HitChanceBonus && isRangedRelevant())
+		{
+			local diff = getDifferenceInProperty("RangedSkill", targetEntity);
+
+			if (diff != null)
+			{
+				if (diff > 0)
+				{
+					ret.insert(0, {
+						icon = "ui/tooltips/positive.png",
+						text = green(diff + "%") + " " + thisSkill.getName()
+					});
+				}
+				else if (diff < 0)
+				{
+					ret.insert(0, {
+						icon = "ui/tooltips/negative.png",
+						text = red(diff + "%") + " " + thisSkill.getName()
+					});
+				}
+			}
+		}
+
+		local addDamageResistanceRow = function ()
+		{
+			if (!flagResistanceExists && thisSkill.m.IsAttack && _targetTile.IsOccupiedByActor)
+			{
+				local damageResistance = getDamageResistance();
+
+				if (!damageResistance)
+				{
+					return;
+				}
+
+				local icon = damageResistance > 0 ? "ui/tooltips/negative.png" : "ui/tooltips/positive.png";
+				local desc = damageResistance > 0 ? "Resistance against" : "Susceptible to";
+				local sign = damageResistance > 0 ? "-" : "+";
+				local colorize = damageResistance > 0 ? red : green;
+
+				if (damageResistance < 0)
+				{
+					damageResistance = damageResistance * -1;
+				}
+
+				ret.push({
+					icon = icon,
+					text = desc + " " + thisSkill.getName() + "\n(" + colorize(sign + damageResistance + "%") + " Total HP damage)"
+				});
+			}
+		};
+		local addLungeDamageRow = function ()
+		{
+			if (!thisSkill.m.IsAttack || thisSkill.m.ID != "actives.lunge" || !_targetTile.IsOccupiedByActor)
+			{
+				return;
+			}
+
+			local diff = getDifferenceInProperty("DamageTotalMult", null);
+
+			if (!diff)
+			{
+				return;
+			}
+
+			local icon = diff > 0 ? "ui/tooltips/positive.png" : "ui/tooltips/negative.png";
+			local desc = diff > 0 ? "High initiative" : "Low initiative";
+			local sign = diff > 0 ? "+" : "-";
+			local colorize = diff > 0 ? green : red;
+
+			if (diff < 0)
+			{
+				diff = diff * -1;
+			}
+
+			diff = this.Math.floor(diff * 100);
+			ret.push({
+				icon = icon,
+				text = desc + " " + "\n(" + colorize(sign + diff + "%") + " Lunge damage)"
+			});
+		};
+		addDamageResistanceRow();
+		addLungeDamageRow();
+		return ret;
+	}
+
+});
+
+

@@ -27,13 +27,5 @@ this.riposte_effect <- this.inherit("scripts/skills/skill", {
 		this.removeSelf();
 	}
 
-	function onAnySkillUsed( _skill, _targetEntity, _properties )
-	{
-		if (this.Tactical.TurnSequenceBar.getActiveEntity() == null || this.Tactical.TurnSequenceBar.getActiveEntity().getID() != this.getContainer().getActor().getID())
-		{
-			_properties.MeleeSkill -= 15;
-		}
-	}
-
 });
 

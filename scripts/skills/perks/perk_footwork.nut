@@ -31,6 +31,7 @@ this.perk_footwork <- this.inherit("scripts/skills/skill", {
 
 	function onRemoved()
 	{
+		if (this.m.Container.hasSkill("perk.quickstep")) return;
 		this.m.Container.removeByID("actives.footwork");
 	}
 

@@ -2,8 +2,8 @@
 {
 	while(!("onDiscovered" in o)) o = o[o.SuperName];
 	o.onDiscovered = function() { if (!this.isPlayerControlled()) this.setDirty(true);}
-	
-	while(!("onDamageReceived" in o)) o = o[o.SuperName];	
+
+	while(!("onDamageReceived" in o)) o = o[o.SuperName];
 	o.onDamageReceived = function( _attacker, _skill, _hitInfo )
 	{
 		if (!this.isAlive() || !this.isPlacedOnMap())
@@ -72,7 +72,7 @@
 		_hitInfo.DamageInflictedHitpoints = damage;
 
 		local prev_hitpoints = this.m.Hitpoints;
-		
+
 		this.m.Skills.onDamageReceived(_attacker, _hitInfo.DamageInflictedHitpoints, _hitInfo.DamageInflictedArmor);
 
 		if (armorDamage > 0 && !this.isHiddenToPlayer() && _hitInfo.IsPlayingArmorSound)
@@ -668,7 +668,7 @@
 		if (this.m.Skills.hasSkill("effects.ancient_priest_potion")) return;
 		if (this.m.Skills.hasSkill("trait.boss_fearless") && this.getHitpointsPct() > 0.25) return;
 		if (this.m.MoraleState == _m) return;
-		
+
 
 		if (_m == ::Const.MoraleState.Fleeing)
 		{

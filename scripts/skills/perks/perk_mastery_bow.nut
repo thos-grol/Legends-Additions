@@ -24,8 +24,8 @@ this.perk_mastery_bow <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 
-		if (!this.m.Container.hasSkill("trait.proficiency_Bow"))
-			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Bow"));
+		if (!this.m.Container.hasSkill("trait.proficiency_Ranged"))
+			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Ranged"));
 	}
 
 });

@@ -4,8 +4,12 @@
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Swords)"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Ending turn, with sword equipped:")
-+ "\n "+"Riposte. If impossible, Return Favor"
-+ "\n "+::MSU.Text.colorRed("Invalid with less than 15 Fatigue remaining");
++ "\nRiposte"
++ "\n "+::MSU.Text.colorRed("Invalid with less than 15 Fatigue remaining. If the sword cannot riposte, missing attackers will have a 75% to be dazed")
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Daze: (Duration: 2)")
++ "\n "+::MSU.Text.colorRed("-50%")+" Fatigue"
++ "\n "+::MSU.Text.colorRed("-50%")+" Initiative";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecSword].Name = ::Const.Strings.PerkName.SpecSword;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecSword].Tooltip = ::Const.Strings.PerkDescription.SpecSword;

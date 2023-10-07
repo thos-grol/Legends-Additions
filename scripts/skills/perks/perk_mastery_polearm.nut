@@ -1,3 +1,4 @@
+//Removes the adjacent penalty to hit for 2 range tile weapons
 this.perk_mastery_polearm <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()

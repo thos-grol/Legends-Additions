@@ -106,9 +106,9 @@ gt.Const.Perks.FaithClassTree <- {
 };
 gt.Const.Perks.FistsClassTree <- {
 	ID = "FistsClassTree",
-	Name = "Unarmed",
+	Name = "Basics",
 	Descriptions = [
-		"unarmed combat"
+		"basics"
 	],
 	Tree = [
 		[],
@@ -117,12 +117,13 @@ gt.Const.Perks.FistsClassTree <- {
 			gt.Const.Perks.PerkDefs.LegendAmbidextrous
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecFists
+			gt.Const.Perks.PerkDefs.LegendSpecFists,
+			gt.Const.Perks.PerkDefs.LegendKnifeplay
 		],
 		[],
 		[],
 		[
-			
+
 		]
 	]
 };

@@ -79,6 +79,8 @@ this.riposte <- this.inherit("scripts/skills/skill", {
 		if (!this.m.IsSpent)
 		{
 			this.m.Container.add(this.new("scripts/skills/effects/riposte_effect"));
+			if (!this.getContainer().getActor().getSkills().hasSkill("effects._riposte_debuff"))
+				this.m.Container.add(this.new("scripts/skills/effects/_riposte_debuff"));
 			this.m.IsSpent = true;
 
 			if (!_user.isHiddenToPlayer())

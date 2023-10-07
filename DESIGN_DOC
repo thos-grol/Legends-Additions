@@ -1,10 +1,5 @@
-//TODO: gourmet stance, rotation, twirl
 //TODO: gourmet art, vengance and perfect focus golden circles
-//TODO: remove reforged art and stuff
- Icon = "ui/perks/rf_death_dealer.png",
-        IconDisabled = "ui/perks/rf_death_dealer_bw.png",
-
-//TODO: function onShieldHit( _info ) fix annoying message
+//TODO: prevent status effects from bypassing gluttony barrier or the strongest
 
 //reworked perk trees, ideas:
 	//stone shard

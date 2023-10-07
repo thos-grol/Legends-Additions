@@ -35,15 +35,9 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 			actor.getSkills().add(this.new("scripts/skills/effects/double_strike_effect"));
 		}
 
-		if (this.Tactical.TurnSequenceBar.getActiveEntity() == null || this.Tactical.TurnSequenceBar.getActiveEntity().getID() != this.getContainer().getActor().getID())
-		{
-			return;
-		}
+		if (this.Tactical.TurnSequenceBar.getActiveEntity() == null || this.Tactical.TurnSequenceBar.getActiveEntity().getID() != this.getContainer().getActor().getID()) return;
 
-		if (!_targetEntity.isAlive() || _targetEntity.isDying() || _targetEntity.isAlliedWith(this.getContainer().getActor()))
-		{
-			return;
-		}
+		if (!_targetEntity.isAlive() || _targetEntity.isDying() || _targetEntity.isAlliedWith(this.getContainer().getActor())) return;
 
 		if (!_targetEntity.isTurnStarted() && !_targetEntity.isTurnDone())
 		{
@@ -103,7 +97,7 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 		actor.getFlags().set("Destiny", true);
 	}
 
-	
+
 
 });
 
