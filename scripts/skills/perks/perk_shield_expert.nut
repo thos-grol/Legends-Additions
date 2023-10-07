@@ -6,7 +6,7 @@
 + "\n " + ::MSU.Text.colorGreen("– 50%") + " shield damage recieved to a minimum of 1"
 
 +"\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On turn end:")
-+ "\nThis unit shieldwalls if it isn't already. Has 6 charges."
++ "\nThis unit shieldwalls or fortifies if it hasn't already. Has 6 charges."
 
 +"\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Modifies Knock Back:")
 + "\n " + ::MSU.Text.colorGreen("+25%") + " chance to hit for Knockback";
@@ -63,6 +63,7 @@ this.perk_shield_expert <- this.inherit("scripts/skills/skill", {
 			actor.getSkills().add(this.new("scripts/skills/effects/shieldwall_effect"));
 			this.m.TurnsLeft--;
 		}
+		//TODO: pick between shieldwall and fortify
 	}
 
 });

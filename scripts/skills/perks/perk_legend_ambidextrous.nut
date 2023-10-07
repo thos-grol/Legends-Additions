@@ -10,9 +10,9 @@
 + "\n" + ::MSU.Text.colorRed("Invalid if this unit is missing a leg")
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Stagger: (Removed on turn start)")
-+ "\n "+::MSU.Text.colorRed("-50%")+" Initiative"
-+ "\n "+::MSU.Text.colorRed("-25")+" Melee Defense"
-+ "\n "+::MSU.Text.colorRed("-25")+" Ranged Defense"
++ "\n "+::MSU.Text.colorRed("– 50%")+" Initiative"
++ "\n "+::MSU.Text.colorRed("– 25")+" Melee Defense"
++ "\n "+::MSU.Text.colorRed("– 25")+" Ranged Defense"
 + "\n +Cancels Shieldwall, Spearwall, Return Favor, and Riposte";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Name = ::Const.Strings.PerkName.LegendAmbidextrous;
