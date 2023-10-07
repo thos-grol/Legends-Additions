@@ -10,7 +10,7 @@
 + "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "On wait or turn end, inflict 5 damage")
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Weakness: (Duration: 1)")
-+ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "-5X% damage. X is the number of bleed stacks. Caps at 50%");
++ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "– 5X% damage. X is the number of bleed stacks. Caps at 50%");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecCleaver].Name = ::Const.Strings.PerkName.SpecCleaver;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecCleaver].Tooltip = ::Const.Strings.PerkDescription.SpecCleaver;

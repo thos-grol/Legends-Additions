@@ -9,8 +9,8 @@
 + "\n"+::MSU.Text.colorRed("Duration becomes 2 turns with a 1H mace. Will stun with a 2H mace. If target is immune, daze them instead")
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Daze: (Duration: 2)")
-+ "\n "+::MSU.Text.colorRed("-50%")+" Fatigue"
-+ "\n "+::MSU.Text.colorRed("-50%")+" Initiative";
++ "\n "+::MSU.Text.colorRed("– 50% Fatigue")
++ "\n "+::MSU.Text.colorRed("– 50% Initiative");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecMace].Name = ::Const.Strings.PerkName.SpecMace;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecMace].Tooltip = ::Const.Strings.PerkDescription.SpecMace;

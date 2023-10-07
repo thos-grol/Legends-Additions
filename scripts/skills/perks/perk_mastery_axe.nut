@@ -6,7 +6,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "With axe equipped:")
 + "\n Headshots will "+::MSU.Text.colorRed("Cull")+", executing targets with less than "+::MSU.Text.colorRed("33%")+" Hitpoints after recieving the hit"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Skill: Split Shield")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Split Shield")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue"
 + "\n " + ::MSU.Text.colorGreen("+50%") + " shield damage";
 
