@@ -9,7 +9,7 @@
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DeepImpact].Name = ::Const.Strings.PerkName.DeepImpact;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DeepImpact].Tooltip = ::Const.Strings.PerkDescription.DeepImpact;
 
-this.perk_ptr_deep_impact <- this.inherit("scripts/skills/skill", {
+this.perk_deep_impact <- this.inherit("scripts/skills/skill", {
 	m = {
 		AppliedMultiplier = 1.0,
 		DidApply = false,

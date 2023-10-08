@@ -7,6 +7,8 @@
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Overwhelm].Name = ::Const.Strings.PerkName.Overwhelm;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Overwhelm].Tooltip = ::Const.Strings.PerkDescription.Overwhelm;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Overwhelm].Icon = "ui/perks/overwhelm.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Overwhelm].IconDisabled = "ui/perks/overwhelm_bw.png";
 
 this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 	m = {

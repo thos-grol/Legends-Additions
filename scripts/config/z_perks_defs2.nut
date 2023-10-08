@@ -150,8 +150,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_stance_gourmet",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/executioner.png", //TODO: art
-        IconDisabled = "ui/perks/executioner_bw.png",
+        Icon = "ui/perks/gourmet.png",
+        IconDisabled = "ui/perks/gourmet_bw.png",
         Const = "StanceGourmet"
     },
     {
@@ -159,8 +159,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_stance_the_strongest",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/executioner.png", //TODO: art
-        IconDisabled = "ui/perks/executioner_bw.png",
+        Icon = "ui/perks/the_strongest.png",
+        IconDisabled = "ui/perks/the_strongest_bw.png",
         Const = "StanceTheStrongest"
     },
     {
@@ -168,8 +168,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_stance_wrath",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/executioner.png", //TODO: art
-        IconDisabled = "ui/perks/executioner_bw.png",
+        Icon = "ui/perks/wrath.png",
+        IconDisabled = "ui/perks/wrath_bw.png",
         Const = "StanceWrath"
     },
     {
@@ -177,8 +177,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_stance_bone_breaker",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/executioner.png", //TODO: art
-        IconDisabled = "ui/perks/executioner_bw.png",
+        Icon = "ui/perks/bone_breaker.png",
+        IconDisabled = "ui/perks/bone_breaker_bw.png",
         Const = "StanceBoneBreaker"
     },
 
@@ -220,11 +220,11 @@ local perks = [
 
 	{
         ID = "perk.hybridization",
-        Script = "scripts/skills/perks/perk_hybridization", //TODO: art
+        Script = "scripts/skills/perks/perk_hybridization",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/death_dealer.png",
-        IconDisabled = "ui/perks/death_dealer_bw.png",
+        Icon = "ui/perks/hybridization.png",
+        IconDisabled = "ui/perks/hybridization_bw.png",
         Const = "Hybridization"
     },
     {
@@ -232,7 +232,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_quickstep",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/quickstep.png", //TODO: art
+        Icon = "ui/perks/quickstep.png",
         IconDisabled = "ui/perks/quickstep_bw.png",
         Const = "Quickstep"
     },
@@ -241,13 +241,13 @@ local perks = [
         Script = "scripts/skills/perks/perk_dismemberment",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/dismemberment.png", //TODO: art
+        Icon = "ui/perks/dismemberment.png",
         IconDisabled = "ui/perks/dismemberment_bw.png",
         Const = "Dismemberment"
     },
     {
         ID = "perk.deep_impact",
-        Script = "scripts/skills/perks/perk_deep_impact", //TODO: art
+        Script = "scripts/skills/perks/perk_deep_impact",
         Name = "",
         Tooltip = "",
         Icon = "ui/perks/deep_impact.png",
@@ -259,7 +259,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_death_dealer",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/death_dealer.png", //TODO: art
+        Icon = "ui/perks/death_dealer.png",
         IconDisabled = "ui/perks/death_dealer_bw.png",
         Const = "DeathDealer"
     },
@@ -304,8 +304,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_fitness",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/fitness.png",
-        IconDisabled = "ui/perks/fitness_bw.png",
+        Icon = "ui/perks/wears_it_well.png",
+        IconDisabled = "ui/perks/wears_it_well_bw.png",
         Const = "Fitness"
     },
     {
@@ -313,8 +313,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_pocket_dirt",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/fitness.png", //TODO: pocket dirt art
-        IconDisabled = "ui/perks/fitness_bw.png",
+        Icon = "ui/perks/throw_sand_01.png",
+        IconDisabled = "ui/perks/throw_sand_01_bw.png",
         Const = "PocketDirt"
     },
     {
@@ -322,7 +322,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_agile",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/fitness.png", //TODO: agile art
+        Icon = "ui/perks/fitness.png",
         IconDisabled = "ui/perks/fitness_bw.png",
         Const = "Agile"
     },

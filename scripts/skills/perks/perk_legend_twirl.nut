@@ -4,7 +4,13 @@
 + "\nSwitch places with an allied unit"
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n"+"Rotation now targets enemies and has a 20% chance to stagger them"
-+ "\n"+::MSU.Text.colorRed("The chance to stagger becomes 40% if this unit has the Rotation perk");
++ "\n"+::MSU.Text.colorRed("The chance to stagger becomes 40% if this unit has the Rotation perk")
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Stagger: (Removed on turn start)")
++ "\n"+::MSU.Text.colorRed("– 50% Initiative")
++ "\n"+::MSU.Text.colorRed("– 25 Melee Defense")
++ "\n"+::MSU.Text.colorRed("– 25 Ranged Defense")
++ "\n"+::MSU.Text.colorRed("+Cancels Shieldwall, Spearwall, Return Favor, and Riposte");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendTwirl].Name = ::Const.Strings.PerkName.LegendTwirl;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendTwirl].Tooltip = ::Const.Strings.PerkDescription.LegendTwirl;

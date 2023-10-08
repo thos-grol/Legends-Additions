@@ -171,7 +171,9 @@ this.throw_dirt_skill <- this.inherit("scripts/skills/skill", {
 			&& !target.getFlags().has("DirtImmune")
 		)
 		{
-			target.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));
+			local stun = ::new("scripts/skills/effects/stunned_effect");
+			stun.m.Ignore = true;
+			target.getSkills().add(stun);
 			target.getSkills().add(::new("scripts/skills/effects/legend_threw_sand_effect"));
 			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
 				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" is stunned"));

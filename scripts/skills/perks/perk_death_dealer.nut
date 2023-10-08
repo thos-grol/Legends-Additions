@@ -8,10 +8,10 @@
 + "\n" + ::MSU.Text.colorGreen("50%") + " chance to resist stagger"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Stagger: (Removed on turn start)")
-+ "\n "+::MSU.Text.colorRed("– 50%")+" Initiative"
-+ "\n "+::MSU.Text.colorRed("– 25")+" Melee Defense"
-+ "\n "+::MSU.Text.colorRed("– 25")+" Ranged Defense"
-+ "\n +Cancels Shieldwall, Spearwall, Return Favor, and Riposte";
++ "\n"+::MSU.Text.colorRed("– 50% Initiative")
++ "\n"+::MSU.Text.colorRed("– 25 Melee Defense")
++ "\n"+::MSU.Text.colorRed("– 25 Ranged Defense")
++ "\n"+::MSU.Text.colorRed("+Cancels Shieldwall, Spearwall, Return Favor, and Riposte");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DeathDealer].Name = ::Const.Strings.PerkName.DeathDealer;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DeathDealer].Tooltip = ::Const.Strings.PerkDescription.DeathDealer;

@@ -8,6 +8,9 @@
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PerfectFocus].Name = ::Const.Strings.PerkName.PerfectFocus;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PerfectFocus].Tooltip = ::Const.Strings.PerkDescription.PerfectFocus;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PerfectFocus].Icon = "ui/perks/perfect_focus.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PerfectFocus].IconDisabled = "ui/perks/perfect_focus_bw.png";
+
 this.perk_legend_perfect_focus <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()

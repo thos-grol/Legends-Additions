@@ -7,6 +7,8 @@
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Name = ::Const.Strings.PerkName.LegendMuscularity;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Tooltip = ::Const.Strings.PerkDescription.LegendMuscularity;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Icon = "ui/perks/muscularity.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].IconDisabled = "ui/perks/muscularity_bw.png";
 
 this.perk_legend_muscularity <- this.inherit("scripts/skills/skill", {
 	m = {},

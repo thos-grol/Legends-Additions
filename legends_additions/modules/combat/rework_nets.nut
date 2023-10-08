@@ -4,8 +4,6 @@
 + "\n"+::MSU.Text.colorGreen("+1") + " Nets"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On turn end, offhand empty:[/u]")
-+ "\n"+::MSU.Text.colorGreen("Add a net to the offhand")
-
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]On battle end OR perk added:[/u]")
 + "\n"+::MSU.Text.colorGreen("Add a net to the offhand");
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendNetRepair].Name = ::Const.Strings.PerkName.LegendNetRepair;

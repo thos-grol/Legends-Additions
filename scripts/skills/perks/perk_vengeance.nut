@@ -7,6 +7,8 @@
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Vengeance].Name = ::Const.Strings.PerkName.Vengeance;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Vengeance].Tooltip = ::Const.Strings.PerkDescription.Vengeance;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Vengeance].Icon = "ui/perks/vengeance.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Vengeance].IconDisabled = "ui/perks/vengeance_bw.png";
 
 this.perk_vengeance <- this.inherit("scripts/skills/skill", {
 	m = {

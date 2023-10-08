@@ -98,3 +98,18 @@
 {
     return _actor.getSkills().hasSkill(::Z.Perks.Stance[_id]);
 }
+
+::Z.getNeighbors <- function( _tile, _function = null )
+{
+	local ret = [];
+	for (local i = 0; i < 6; i++)
+	{
+		if (_tile.hasNextTile(i))
+		{
+			local nextTile = _tile.getNextTile(i);
+			if (_function == null || _function(nextTile))
+				ret.push(nextTile);
+		}
+	}
+	return ret;
+}

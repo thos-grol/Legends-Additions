@@ -42,6 +42,9 @@ this.perk_mastery_mace <- this.inherit("scripts/skills/skill", {
 
 		if (!this.m.Container.hasSkill("trait.proficiency_Mace"))
 			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Mace"));
+
+			if (!this.m.Container.hasSkill("actives._adaptive"))
+			this.m.Container.add(this.new("scripts/skills/actives/_adaptive"));
 	}
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
@@ -56,8 +59,6 @@ this.perk_mastery_mace <- this.inherit("scripts/skills/skill", {
 
 		local targetTile = _targetEntity.getTile();
 
-		//TODO: fix log text and daze logic?? doesnt seem right
-
 		if (weapon.isWeaponType(::Const.Items.WeaponType.Mace) && _skill.m.IsWeaponSkill && _skill.getDamageType().contains(::Const.Damage.DamageType.Blunt))
 		{
 			if (weapon.isItemType(::Const.Items.ItemType.TwoHanded))
@@ -67,11 +68,7 @@ this.perk_mastery_mace <- this.inherit("scripts/skills/skill", {
 					if (!_targetEntity.getSkills().hasSkill("effects.stunned"))
 					{
 						_targetEntity.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));
-
-						if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer)
-						{
-							this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " has stunned " + ::Const.UI.getColorizedEntityName(_targetEntity) + " for one turn");
-						}
+						if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " has stunned ");
 					}
 				}
 				else
@@ -80,10 +77,7 @@ this.perk_mastery_mace <- this.inherit("scripts/skills/skill", {
 					_targetEntity.getSkills().add(effect);
 					effect.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 
-					if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer)
-					{
-						this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " struck a blow that leaves " + ::Const.UI.getColorizedEntityName(_targetEntity) + " dazed for " + effect.m.TurnsLeft + " turns");
-					}
+					if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " has been dazed for " + effect.m.TurnsLeft + " turns");
 				}
 			}
 			else
@@ -91,10 +85,7 @@ this.perk_mastery_mace <- this.inherit("scripts/skills/skill", {
 				local effect = this.new("scripts/skills/effects/dazed_effect");
 				_targetEntity.getSkills().add(effect);
 				effect.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
-				if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer)
-				{
-					this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " struck a blow that leaves " + ::Const.UI.getColorizedEntityName(_targetEntity) + " dazed for " + effect.m.TurnsLeft + " turns");
-				}
+				if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " has been dazed for " + effect.m.TurnsLeft + " turns");
 			}
 		}
 		else
@@ -102,10 +93,7 @@ this.perk_mastery_mace <- this.inherit("scripts/skills/skill", {
 			local effect = this.new("scripts/skills/effects/dazed_effect");
 			_targetEntity.getSkills().add(effect);
 			effect.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
-			if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer)
-			{
-				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " struck a blow that leaves " + ::Const.UI.getColorizedEntityName(_targetEntity) + " dazed for " + effect.m.TurnsLeft + " turns");
-			}
+			if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " has been dazed for " + effect.m.TurnsLeft + " turns");
 		}
 
 	}
