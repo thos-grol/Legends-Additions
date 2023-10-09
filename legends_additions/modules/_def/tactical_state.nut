@@ -57,6 +57,12 @@
 			return;
 		}
 
+		if (this.Tactical.Entities.getCombatResult() == ::Const.Tactical.CombatResult.PlayerRetreated)
+		{
+			this.World.Statistics.getFlags().set("LastCombatResultRetreated", true);
+			this.World.Statistics.getFlags().set("LastCombatResultTime", this.Time.getRealTimeF());
+		}
+
 		this.m.IsBattleEnded = true;
 		local isVictory = this.Tactical.Entities.getCombatResult() == ::Const.Tactical.CombatResult.EnemyDestroyed || this.Tactical.Entities.getCombatResult() == ::Const.Tactical.CombatResult.EnemyRetreated;
 		this.m.IsFogOfWarVisible = false;
@@ -72,6 +78,9 @@
 
 			if (!this.isScenarioMode())
 			{
+				this.World.Statistics.getFlags().set("LastCombatResultRetreated", false);
+				this.World.Statistics.getFlags().set("LastCombatResultTime", this.Time.getRealTimeF());
+
 				if (this.m.StrategicProperties != null && this.m.StrategicProperties.IsAttackingLocation)
 				{
 					this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnVictoryVSLocation);

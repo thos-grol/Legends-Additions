@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.StanceSeismicSlam <- "Seismic Slam";
 ::Const.Strings.PerkDescription.StanceSeismicSlam <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
-+ "\nSacrifice defense to gain the ultimate offense"
++ "\nEarthshaking..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorRed("– 25%") + " Initiative"
 + "\n"+::MSU.Text.colorRed("+3") + " Attack AP Cost"

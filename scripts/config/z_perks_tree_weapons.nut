@@ -606,13 +606,15 @@ gt.Const.Perks.BowTree <- { //TODO: plan ranged weaponry tree
 	Tree = [
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Bullseye //TODO: 2 ranged free perks
+			//TODO: 2 ranged free perks
 			//gt.Const.Perks.PerkDefs.Ballistics combine
 			//Scavenger //TODO: pick up ammo from corpses
 		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.SpecBow //TODO specbow
+			//gt.Const.Perks.PerkDefs.Bullseye
+			//ballistics
 		],
 		[],
 		[],

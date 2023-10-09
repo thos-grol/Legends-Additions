@@ -90,7 +90,7 @@ this.perk_quickstep <- this.inherit("scripts/skills/skill", {
 			foreach (skill in this.getContainer().getSkillsByFunction((@(_skill) this.m.Skills.find(_skill.getID()) != null).bindenv(this)))
 			{
 				this.modifyPreviewField(skill, "ActionPointCost", 0, false);
-				this.modifyPreviewField(skill, "FatigueCostMult", 1, true);
+				this.modifyPreviewField(skill, "FatigueCostMult", 0, true);
 			}
 		}
 	}
