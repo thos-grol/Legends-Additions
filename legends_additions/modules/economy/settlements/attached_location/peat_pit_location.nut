@@ -15,10 +15,7 @@
 
 		_list.push("daytaler_background");
 
-		if (_gender)
-		{
-			_list.push();
-		}
+		
 	}
 
 	o.onUpdateShopList = function( _id, _list )

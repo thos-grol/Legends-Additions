@@ -1,3 +1,4 @@
+//TODO: change projectile to knife change skill art to knife
 this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 	m = {
 		AdditionalAccuracy = 5,
@@ -40,7 +41,7 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 		this.m.InjuriesOnHead = this.Const.Injury.CuttingHead;
 		this.m.ActionPointCost = 4;
 		this.m.FatigueCost = 20;
-		this.m.MinRange = 2;
+		this.m.MinRange = 1;
 		this.m.MaxRange = 3;
 		this.m.MaxLevelDifference = 4;
 		this.m.ProjectileType = this.Const.ProjectileType.Axe;
@@ -64,9 +65,10 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 	function isUsable()
 	{
 		local has_dagger = false;
-		local items = this.getContainer().getActor().getAllItems();
+		local items = this.getContainer().getActor().getItems().getAllItems();
 		foreach(i in items)
 		{
+			if (i == null || !i.isItemType(this.Const.Items.ItemType.Weapon)) continue;
 			if (i.isWeaponType(::Const.Items.WeaponType.Dagger)) has_dagger = true;
 		}
 		return this.Tactical.isActive() && this.skill.isUsable() && this.m.Charges > 0 && has_dagger;
@@ -75,9 +77,10 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 	function isHidden()
 	{
 		local has_dagger = false;
-		local items = this.getContainer().getActor().getAllItems();
+		local items = this.getContainer().getActor().getItems().getAllItems();
 		foreach(i in items)
 		{
+			if (i == null || !i.isItemType(this.Const.Items.ItemType.Weapon)) continue;
 			if (i.isWeaponType(::Const.Items.WeaponType.Dagger)) has_dagger = true;
 		}
 
@@ -99,10 +102,10 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 
 		if (!mhand.isWeaponType(::Const.Items.WeaponType.Dagger)) //if mainhand isn't dagger, need to get dagger properties
 		{
-			local items = this.getContainer().getActor().getAllItems();
+			local items = this.getContainer().getActor().getItems().getAllItems();
 			foreach(i in items)
 			{
-				if (!i.isWeaponType(::Const.Items.WeaponType.Dagger)) continue;
+				if (i == null || !i.isItemType(this.Const.Items.ItemType.Weapon) || !i.isWeaponType(::Const.Items.WeaponType.Dagger)) continue;
 				_properties.DamageRegularMin += i.m.RegularDamage;
 				_properties.DamageRegularMax += i.m.RegularDamageMax;
 				_properties.DamageArmorMult *= i.m.ArmorDamageMult;

@@ -152,7 +152,7 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 			local roll = ::Math.rand(1,100);
 			local chance = skills.hasSkill("perk.legend_rotation") ? 40 : 20;
 
-			if (roll <= chance)
+			if (roll <= chance && !target.getSkills().hasSkill("effects.staggered"))
 			{
 				target.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
 				::Tactical.EventLog.logIn(

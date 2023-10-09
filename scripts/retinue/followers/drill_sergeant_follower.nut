@@ -9,16 +9,15 @@ this.drill_sergeant_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Image = "ui/campfire/drill_01";
 		this.m.Cost = 100;
 		this.m.Effects = [
-			"Trains brothers so that they can pick up one new weapon tree. They must have the weapon equipped. At the end of the day, a brother will have a chance to gain experience in that tree",
-			"Contraband weapons like crossbows and firearms do not count",
-			"Will take effect at the start of the next day"
+			"Every new day, brothers without the trained perk tree will have a 5% chance to gain it",
+			"Unlocks the training drill event where non-combat backgrounds below level 11 can improve their stats 2 times"
 		];
 		this.addRequirement("Won 10 battles", function ()
 		{
-			return ::World.Statistics.getFlags().getAsInt("BattlesWon") >= 10;
+			return ::World.Statistics.getFlags().getAsInt("BattlesWon") >= 50;
 		}, true, function ( _r )
 		{
-			_r.Count <- 10;
+			_r.Count <- 50;
 			_r.UpdateText <- function ()
 			{
 				this.Text = "Won at least " + ::Math.min(this.Count, ::World.Statistics.getFlags().getAsInt("BattlesWon")) + "/" + this.Count + " battles";
@@ -28,9 +27,14 @@ this.drill_sergeant_follower <- this.inherit("scripts/retinue/follower", {
 
 	function onNewDay()
 	{
-		//FEATURE_1: write weapon gain system
-		//FEATURE_1: add weapon training trait, using flags to store data
-			//FEATURE_1: if retinue not active, then hide that trait.
+		local brothers = this.World.getPlayerRoster().getAll();
+		local numRecruits = 0;
+		foreach( bro in brothers )
+		{
+			if (bro.getBackground().hasPerkGroup(::Const.Perks.TrainedTree)) continue;
+			if (::Math.rand(1,100) > 5) continue;
+			bro.getBackground().addPerkGroup(::Const.Perks.TrainedTree.Tree);
+		}
 	}
 
 });

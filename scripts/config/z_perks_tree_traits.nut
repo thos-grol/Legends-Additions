@@ -707,7 +707,9 @@ gt.Const.Perks.TrainedTree <- {
 		[
 			gt.Const.Perks.PerkDefs.Rotation
 		],
-		[],
+		[
+			gt.Const.Perks.PerkDefs.LegendAdaptive
+		],
 		[
 			gt.Const.Perks.PerkDefs.BagsAndBelts
 		],

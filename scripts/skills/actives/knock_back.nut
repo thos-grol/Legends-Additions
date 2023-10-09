@@ -222,12 +222,14 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 
 		if (_user.getSkills().hasSkill("trait.oath_of_fortification") && _targetTile.IsOccupiedByActor && !target.isNonCombatant())
 		{
-			target.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
-
-			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
+			if (!target.getSkills().hasSkill("effects.staggered"))
 			{
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " has staggered " + this.Const.UI.getColorizedEntityName(target) + " for one turn");
+				target.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
+				if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(target) + " has been staggered");
 			}
+				
+
+			
 		}
 
 		if (this.m.SoundOnHit.len() != 0)

@@ -62,8 +62,9 @@ this.perk_mastery_axe <- this.inherit("scripts/skills/skill", {
 	function isEnabled()
 	{
 		if (this.m.IsForceEnabled) return true;
-		if (this.getContainer().getActor().getCurrentProperties().IsAbleToUseWeaponSkills) return false; //isDisarmed
-		local weapon = this.getContainer().getActor().getMainhandItem();
+		local actor = this.getContainer().getActor();
+		if (actor.getCurrentProperties().IsAbleToUseWeaponSkills) return false; //isDisarmed
+		local weapon = actor.getMainhandItem();
 		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Axe)) return false;
 		return true;
 	}

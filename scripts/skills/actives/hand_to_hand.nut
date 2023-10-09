@@ -182,14 +182,19 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 
 		local isVisible = !_targetEntity.isHiddenToPlayer();
 
-		if (target.getFlags().has("StaggerImmunity"))
+		if (_targetEntity.getFlags().has("StaggerImmunity"))
 		{
-			if (isVisible) ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" is immune to stagger"));
+			if (isVisible) ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" is immune to stagger"));
 			return;
 		}
 
-		target.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
-		if (isVisible) ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + ::MSU.Text.colorRed(" has been staggered") + ::Z.Log.display_chance(roll, chance));
+		if (!_targetEntity.getSkills().hasSkill("effects.staggered"))
+		{
+			_targetEntity.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
+			if (isVisible) ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" has been staggered") + ::Z.Log.display_chance(roll, chance));
+		}
+				
+		
 	}
 
 

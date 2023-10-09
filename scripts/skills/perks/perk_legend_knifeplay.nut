@@ -5,7 +5,10 @@
 + "\n " + ::MSU.Text.colorGreen("– 1") + " AP cost for Stab, Puncture and Deathblow"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Throw Knife\' (4 AP, 10 Fat, 3 Charges):")
-+ "\nThrow a knife at the enemy, using the dagger's properties and the user's perks to calculate damage. Can be used in melee range";
++ "\nThrow a knife at the enemy, using the dagger's properties and the user's perks to calculate damage. Can be used in melee range"
++ "\nA dagger must be equipped or in the bag. Hybridization is applied in calculations";
+
+//TODO: apply hybridization, if melee weapon is equipped, still apply ranged bonus
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendKnifeplay].Name = ::Const.Strings.PerkName.LegendKnifeplay;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendKnifeplay].Tooltip = ::Const.Strings.PerkDescription.LegendKnifeplay;

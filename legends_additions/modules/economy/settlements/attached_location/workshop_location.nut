@@ -15,7 +15,6 @@
 		_list.push("daytaler_background");
 		_list.push("daytaler_background");
 		_list.push("daytaler_background");
-		_list.push();
 	}
 
 	o.onUpdateShopList = function( _id, _list )

@@ -22,11 +22,7 @@
 		_list.push("shepherd_background");
 		_list.push("shepherd_background");
 
-		if (_gender)
-		{
-			_list.push();
-			
-		}
+		
 	}
 
 	o.onUpdateShopList = function( _id, _list )

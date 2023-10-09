@@ -1105,6 +1105,26 @@ this.tooltip_events <- {
                     return ret;
                 }
 
+				if ((::World.State.isInCharacterScreen() || ::Tactical.isActive() && ::Tactical.State.isInCharacterScreen()) && ("HasUnactivatedPerkTooltipHints" in perk) && perk.HasUnactivatedPerkTooltipHints)
+				{
+					local tempContainer = this.new("scripts/skills/skill_container");
+					local tempPerk = this.new(perk.Script);
+					local playerClone = clone player;
+					tempPerk.m.IsForPerkTooltip = true;
+					tempContainer.setActor(playerClone);
+					tempContainer.add(tempPerk);
+					local perkHints = tempPerk.getUnactivatedPerkTooltipHints();
+
+					if (perkHints != null && perkHints.len() > 0)
+					{
+						ret.extend(perkHints);
+					}
+
+					tempPerk = null;
+					tempContainer = null;
+					playerClone = null;
+				}
+
 				if (player.getPerkPointsSpent() >= perk.Unlocks)
 				{
 					if (player.getPerkPoints() == 0)

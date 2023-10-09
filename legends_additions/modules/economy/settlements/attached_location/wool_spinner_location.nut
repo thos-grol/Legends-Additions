@@ -10,7 +10,6 @@
 		_list.push("apprentice_background");
 		_list.push("caravan_hand_background");
 		//_list.push("tailor_background");
-		//_list.push();
 		_list.push("shepherd_background");
 	}
 

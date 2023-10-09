@@ -64,7 +64,7 @@ gt.Const.Perks.AxeTree <- {
 			gt.Const.Perks.PerkDefs.ReachAdvantage
 		],
 		[
-			gt.Const.Perks.PerkDefs.StanceExecutioner //TODO: add 15% to cull with other weapons
+			gt.Const.Perks.PerkDefs.StanceExecutioner
 		]
 	]
 };
@@ -191,7 +191,7 @@ gt.Const.Perks.SwordTree <- {
 	]
 };
 
-gt.Const.Perks.MaceTree <- { //TODO: test maces
+gt.Const.Perks.MaceTree <- {
 	ID = "Mace",
 	Name = "Mace",
 	Descriptions = [
@@ -252,7 +252,7 @@ gt.Const.Perks.MaceTree <- { //TODO: test maces
 	]
 };
 
-gt.Const.Perks.HammerTree <- { //TODO: plan hammer tree
+gt.Const.Perks.HammerTree <- {
 	ID = "Hammer",
 	Name = "Hammer",
 	Descriptions = [
@@ -294,11 +294,10 @@ gt.Const.Perks.HammerTree <- { //TODO: plan hammer tree
 	},
 	Tree = [
 		[],
-		[
-			//TODO: hammer free perk
-
-		],
 		[],
+		[
+			gt.Const.Perks.PerkDefs.Rattle
+		],
 		[
 			gt.Const.Perks.PerkDefs.SpecHammer
 		],
@@ -308,7 +307,7 @@ gt.Const.Perks.HammerTree <- { //TODO: plan hammer tree
 			gt.Const.Perks.PerkDefs.ReachAdvantage,
 		],
 		[
-			//TODO: hammer stance
+			gt.Const.Perks.PerkDefs.StanceSeismicSlam,
 		]
 	]
 };
@@ -355,11 +354,11 @@ gt.Const.Perks.FlailTree <- {
 	},
 	Tree = [
 		[],
+		[],
 		[
 			//TODO: "Strange Strikes
-			// Gain 13 melee skill
+			// Gain 10 melee skill. Does not trigger riposte
 		],
-		[],
 		[
 			gt.Const.Perks.PerkDefs.SpecFlail //TODO: spec flail
 			//"Flail Proficiency
@@ -380,7 +379,7 @@ gt.Const.Perks.FlailTree <- {
 	]
 };
 
-gt.Const.Perks.SpearTree <- { //TODO: tree spear
+gt.Const.Perks.SpearTree <- {
 	ID = "Spear",
 	Name = "Spear",
 	Descriptions = [
@@ -422,10 +421,11 @@ gt.Const.Perks.SpearTree <- { //TODO: tree spear
 	},
 	Tree = [
 		[],
-		[
-
-		],
 		[],
+		[
+			//TODO: "Intimidate
+			// Attacks reduce the Resolve and damage of the target by 10% of your Melee Skill."
+		],
 		[
 			gt.Const.Perks.PerkDefs.SpecSpear
 		],
@@ -434,14 +434,13 @@ gt.Const.Perks.SpearTree <- { //TODO: tree spear
 			gt.Const.Perks.PerkDefs.Duelist
 		],
 		[
-			//TODO: Soveriegn
-			//Poke poke poke poke
-			// On turn end, attack all adjacent enemies once
+			//TODO: Sovereign (Spear only)
+			// On turn end, attack all surrounding enemies
 		]
 	]
 };
 
-gt.Const.Perks.PolearmTree <- { //TODO: tree polearm
+gt.Const.Perks.PolearmTree <- {
 	ID = "Polearm",
 	Name = "Polearm",
 	Descriptions = [
@@ -483,19 +482,21 @@ gt.Const.Perks.PolearmTree <- { //TODO: tree polearm
 	},
 	Tree = [
 		[],
+		[],
 		[
 			//TODO: // "Poke Poke
 			//Decrease the AP cost of spear and polearm attacks by 1.
 		],
-		[],
 		[
-			gt.Const.Perks.PerkDefs.SpecPolearm
+			gt.Const.Perks.PerkDefs.SpecPolearm //TODO: followup + followup AI
 		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.ReachAdvantage
 		],
-		[]
+		[
+			//TODO: stance polearm use followup for free upon ending turn
+		]
 	]
 };
 

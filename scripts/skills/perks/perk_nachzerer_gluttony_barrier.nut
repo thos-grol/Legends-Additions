@@ -27,11 +27,6 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("actives.winter_negative_energy_hand"))
-		{
-			this.m.Container.add(this.new("scripts/skills/actives/winter_negative_energy_hand"));
-		}
-
 		local actor = this.getContainer().getActor();
 		if (actor.isPlayerControlled()) return;
 		actor.addSprite("sprite_gluttony_shield");

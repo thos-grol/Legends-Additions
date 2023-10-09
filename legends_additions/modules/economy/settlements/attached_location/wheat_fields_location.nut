@@ -13,7 +13,6 @@
 		_list.push("farmhand_background");
 		
 		_list.push("daytaler_background");
-		_list.push();
 		_list.push("miller_background");
 		
 	}

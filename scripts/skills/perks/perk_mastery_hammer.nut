@@ -5,7 +5,7 @@
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Hammer attacks inflict:")
 + "\n"+::MSU.Text.colorGreen("+5%") + " armor piercing (10% for 2H)"
-+ "\n"+::MSU.Text.colorRed("Effect applies to any future attacks (even from allies) until the end of battle. Caps at 30%");
++ "\n"+::MSU.Text.colorRed("Debuff remains until the end of battle. Caps at 30%");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecHammer].Name = ::Const.Strings.PerkName.SpecHammer;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecHammer].Tooltip = ::Const.Strings.PerkDescription.SpecHammer;

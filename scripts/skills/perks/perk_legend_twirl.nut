@@ -20,7 +20,7 @@
 //////////////////
 
 ::Const.Strings.PerkName.Rotation = "Rotation";
-::Const.Strings.PerkDescription.Rotation = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
+::Const.Strings.PerkDescription.Rotation = "Rotate!"
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Rotation\' (3 AP, 25 Fat):")
 + "\nSwitch places with an allied unit"
 + "\n"+::MSU.Text.colorRed("Invalid if either character is stunned, rooted or otherwise disabled");

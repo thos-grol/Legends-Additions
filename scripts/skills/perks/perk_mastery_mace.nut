@@ -42,9 +42,6 @@ this.perk_mastery_mace <- this.inherit("scripts/skills/skill", {
 
 		if (!this.m.Container.hasSkill("trait.proficiency_Mace"))
 			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Mace"));
-
-			if (!this.m.Container.hasSkill("actives._adaptive"))
-			this.m.Container.add(this.new("scripts/skills/actives/_adaptive"));
 	}
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )

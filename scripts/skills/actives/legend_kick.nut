@@ -100,8 +100,11 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 				return true;
 			}
 
-			_targetEntity.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
-			::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" has been staggered"));
+			if (!_targetEntity.getSkills().hasSkill("effects.staggered"))
+			{
+				_targetEntity.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
+				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" has been staggered"));
+			}
 
 			//add proficiency to kicks, even when weapon is equipped
 			local fist_proficiency = this.m.Container.getSkillByID("trait.proficiency_Fist");

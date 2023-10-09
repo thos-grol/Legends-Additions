@@ -1,4 +1,9 @@
+//TODO: duelist, reach advantage descriptions
+
 //TODO: prevent status effects from bypassing gluttony barrier or the strongest
+
+//TODO: fix baiting, on player retreat, if they fight the same enemy, not a caravan multiple times quickly (use time as flag), then they'll get surrounded debuff.
+//TODO: fix baiting, beasts cannot be lured into camps. neither can orcs or goblins. undead can tho
 
 //reworked perk trees, ideas:
 	//stone shard
@@ -81,9 +86,6 @@
 
 	//Daze
 	//Stun
-
-//TODO: later Ill add training retinue that gives an adaptive active skill to all bros
-	you click the button and it'll show you the school it'll add
 
 Economy Overhaul
 

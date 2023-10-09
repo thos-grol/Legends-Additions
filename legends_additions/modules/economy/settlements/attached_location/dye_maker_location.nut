@@ -14,10 +14,7 @@
 		_list.push("caravan_hand_background");
 		//_list.push("tailor_background");
 
-		if (_gender)
-		{
-			//_list.push();
-		}
+		
 	}
 
 	o.onUpdateShopList = function( _id, _list )
