@@ -1,8 +1,8 @@
 this._proficiency <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {
 		str = "Axe",
-		BaseChance = 100, //TODO: remove testing when done
-		ProficiencyMax = 1
+		BaseChance = 5,
+		ProficiencyMax = 100
 	},
 	function create()
 	{

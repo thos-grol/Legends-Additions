@@ -612,7 +612,7 @@ gt.Const.Perks.BowTree <- { //TODO: plan ranged weaponry tree
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.SpecBow //TODO
+			gt.Const.Perks.PerkDefs.SpecBow //TODO specbow
 		],
 		[],
 		[],

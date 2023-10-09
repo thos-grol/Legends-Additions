@@ -1,4 +1,3 @@
-//TODO: change projectile to knife change skill art to knife
 this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 	m = {
 		AdditionalAccuracy = 5,
@@ -10,8 +9,8 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "actives.legend_throw_knife";
 		this.m.Name = "Throw Knife";
 		this.m.Description = "Throw a knife at an enemy.";
-		this.m.Icon = "skills/active_87.png";
-		this.m.IconDisabled = "skills/active_87_sw.png";
+		this.m.Icon = "skills/en_garde_square.png";
+		this.m.IconDisabled = "skills/en_garde_square_bw.png";
 		this.m.Overlay = "active_87";
 		this.m.SoundOnUse = [
 			"sounds/combat/throw_axe_01.wav",
@@ -44,9 +43,9 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 		this.m.MinRange = 1;
 		this.m.MaxRange = 3;
 		this.m.MaxLevelDifference = 4;
-		this.m.ProjectileType = this.Const.ProjectileType.Axe;
+		this.m.ProjectileType = this.Const.ProjectileType.Dagger;
 		this.m.ProjectileTimeScale = 1.5;
-		this.m.IsProjectileRotated = false;
+		this.m.IsProjectileRotated = true;
 	}
 
 	function getTooltip()
@@ -92,16 +91,13 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 		if (_skill != this) return;
 		local actor = this.getContainer().getActor();
 		local mhand = actor.getMainhandItem();
-		if (mhand != null && !mhand.isWeaponType(::Const.Items.WeaponType.Dagger)) //if mainhand isn't dagger, need to remove weapon properties
+		if (mhand != null && !mhand.isWeaponType(::Const.Items.WeaponType.Dagger)) //if mainhand isn't dagger, need to remove weapon properties and get dagger properties
 		{
 			_properties.DamageRegularMin -= mhand.m.RegularDamage;
 			_properties.DamageRegularMax -= mhand.m.RegularDamageMax;
 			_properties.DamageArmorMult /= mhand.m.ArmorDamageMult;
 			_properties.DamageDirectMult /= mhand.m.DirectDamageMult;
-		}
 
-		if (!mhand.isWeaponType(::Const.Items.WeaponType.Dagger)) //if mainhand isn't dagger, need to get dagger properties
-		{
 			local items = this.getContainer().getActor().getItems().getAllItems();
 			foreach(i in items)
 			{
@@ -112,7 +108,24 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 				_properties.DamageDirectMult *= i.m.DirectDamageMult;
 				break;
 			}
+
+			if (this.m.Container.hasSkill("perk.hybridization"))
+			{
+				local weapon = actor.getMainhandItem();
+				local baseProperties = actor.getBaseProperties();
+
+				if (weapon != null && !weapon.isItemType(::Const.Items.ItemType.RangedWeapon))
+				{
+					local bonus = this.Math.floor(baseProperties.getRangedSkill() * 0.15);
+					_properties.MeleeSkill += bonus;
+					this.m.HitChanceBonus += bonus;
+				}
+			}
+
+			
 		}
+
+		
 
 	}
 

@@ -16,7 +16,11 @@
 
 this.perk_shield_expert <- this.inherit("scripts/skills/skill", {
 	m = {
-		TurnsLeft = 6
+		TurnsLeft = 6,
+		Skills = [
+			"actives.legend_fortify_skill",
+			"actives.shieldwall"
+		]
 	},
 	function create()
 	{
@@ -58,12 +62,36 @@ this.perk_shield_expert <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 
-		if (this.m.TurnsLeft > 0 && !actor.getSkills().hasSkill("effects.shieldwall") && actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null && actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).isItemType(this.Const.Items.ItemType.Shield))
+		if (this.m.TurnsLeft > 0 && actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null && actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).isItemType(this.Const.Items.ItemType.Shield))
 		{
-			actor.getSkills().add(this.new("scripts/skills/effects/shieldwall_effect"));
+			local skills = this.getContainer().getSkillsByFunction((@(_skill) this.m.Skills.find(_skill.getID()) != null).bindenv(this));
+			if (skills.len() == 0) return;
+			foreach (s in skills)
+			{
+				if (s == null) continue;
+				if (s.m.ID == "actives.legend_fortify_skill" && !actor.getSkills().hasSkill("effects.legend_fortify"))
+				{
+					actor.getSkills().add(this.new("scripts/skills/effects/legend_fortify_effect"));
+					if (!actor.isHiddenToPlayer())
+					{
+						this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " uses Fortify");
+					}
+					break;
+				}
+
+				if (s.m.ID == "actives.shieldwall" && !actor.getSkills().hasSkill("effects.shieldwall"))
+				{
+					actor.getSkills().add(this.new("scripts/skills/effects/shieldwall_effect"));
+					if (!actor.isHiddenToPlayer())
+					{
+						this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " uses Shieldwall");
+					}
+					break;
+				}
+			}
 			this.m.TurnsLeft--;
 		}
-		//TODO: pick between shieldwall and fortify
+		
 	}
 
 });

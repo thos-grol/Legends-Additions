@@ -10,6 +10,6 @@ this._proficiency_Ranged <- this.inherit("scripts/skills/traits/_proficiency", {
 	function validate()
 	{
 		local weapon = this.getContainer().getActor().getMainhandItem();
-		return weapon != null && weapon.isWeaponType(::Const.Items.WeaponType.Bow); //TODO: check item type ranged
+		return weapon != null && weapon.isItemType(::Const.Items.ItemType.RangedWeapon);
 	}
 });

@@ -8,8 +8,6 @@
 + "\nThrow a knife at the enemy, using the dagger's properties and the user's perks to calculate damage. Can be used in melee range"
 + "\nA dagger must be equipped or in the bag. Hybridization is applied in calculations";
 
-//TODO: apply hybridization, if melee weapon is equipped, still apply ranged bonus
-
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendKnifeplay].Name = ::Const.Strings.PerkName.LegendKnifeplay;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendKnifeplay].Tooltip = ::Const.Strings.PerkDescription.LegendKnifeplay;
 

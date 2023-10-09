@@ -36,7 +36,7 @@ this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 		if (!this.m.Active) return;
 		this.m.Active = false;
 
-		//TODO: play parry sound
+		this.Sound.play("sounds/general/parry.wav", 200.0, actor.getPos());
 
 		//negate the damage
 		_properties.DamageReceivedRegularMult *= 0;
