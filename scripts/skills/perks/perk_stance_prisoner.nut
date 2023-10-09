@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.StancePrisoner <- "Prisoner";
 ::Const.Strings.PerkDescription.StancePrisoner <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On incoming attack missed")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On incoming attack missed:")
 + "\n Disarm the enemy rolling on their miss chance / 2";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StancePrisoner].Name = ::Const.Strings.PerkName.StancePrisoner;
