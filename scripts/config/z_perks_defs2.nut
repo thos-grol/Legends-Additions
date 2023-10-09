@@ -190,6 +190,15 @@ local perks = [
         IconDisabled = "ui/perks/seismic_slam_bw.png",
         Const = "StanceSeismicSlam"
     },
+    {
+        ID = "perk.stance.prisoner",
+        Script = "scripts/skills/perks/perk_stance_prisoner",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/prisoner.png",
+        IconDisabled = "ui/perks/prisoner_bw.png",
+        Const = "StancePrisoner"
+    },
 
 ///////////////////////////////////////////////////////////////////////////
 // Monster
@@ -343,6 +352,15 @@ local perks = [
         Icon = "ui/perks/rattle.png",
         IconDisabled = "ui/perks/rattle_bw.png",
         Const = "Rattle"
+    },
+    {
+        ID = "perk.strange_strikes",
+        Script = "scripts/skills/perks/perk_strange_strikes",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/strange_strikes.png",
+        IconDisabled = "ui/perks/strange_strikes_bw.png",
+        Const = "StrangeStrikes"
     },
     // {
 	// 	ID = "perk.eldritch_blast",

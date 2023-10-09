@@ -35,6 +35,7 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 		this.m.IsSerialized = false;
 		this.m.InjuriesOnBody = ::Const.Injury.BluntBody;
 		this.m.InjuriesOnHead = ::Const.Injury.BluntHead;
+		this.m.IsIgnoredAsAOO = true;
 		this.m.DirectDamageMult = 0.1;
 		this.m.ActionPointCost = 4;
 		this.m.FatigueCost = 14;

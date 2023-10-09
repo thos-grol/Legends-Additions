@@ -55,7 +55,7 @@ this.perk_mastery_hammer <- this.inherit("scripts/skills/skill", {
 		if (!_skill.getDamageType().contains(::Const.Damage.DamageType.Blunt)) return;
 		if (_targetEntity.getArmor(_bodyPart) == 0) return;
 
-		local effect = _targetEntity.getSkills().getSkillByID("effects.ptr_dismantled");
+		local effect = _targetEntity.getSkills().getSkillByID("effects.dismantled");
 		if (effect == null) effect = this.new("scripts/skills/effects/dismantled_effect");
 
 		local countsToAdd = 1;

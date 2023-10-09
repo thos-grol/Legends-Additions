@@ -356,15 +356,10 @@ gt.Const.Perks.FlailTree <- {
 		[],
 		[],
 		[
-			//TODO: "Strange Strikes
-			// Gain 10 melee skill. Does not trigger riposte
+			gt.Const.Perks.PerkDefs.StrangeStrikes
 		],
 		[
-			gt.Const.Perks.PerkDefs.SpecFlail //TODO: spec flail
-			//"Flail Proficiency
-			// Attacks with flails have a 75% chance to do a free extra attack.
-
-			// "
+			gt.Const.Perks.PerkDefs.SpecFlail
 		],
 		[],
 		[
@@ -373,8 +368,7 @@ gt.Const.Perks.FlailTree <- {
 
 		],
 		[
-			//TODO: Prisoner's Stance (requires Flail)
-			// Until your next turn any opponent who misses an attack against you in melee has a chance equal to the miss chance to be Disarmed. The effect expires after your next attack.
+			gt.Const.Perks.PerkDefs.StancePrisoner,
 		]
 	]
 };
