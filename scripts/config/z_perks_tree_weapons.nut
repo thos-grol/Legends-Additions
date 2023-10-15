@@ -476,18 +476,17 @@ gt.Const.Perks.PolearmTree <- {
 		[],
 		[],
 		[
-			//TODO: // "Poke Poke
-			//Decrease the AP cost of spear and polearm attacks by 1.
+			gt.Const.Perks.PerkDefs.PokePoke
 		],
 		[
-			gt.Const.Perks.PerkDefs.SpecPolearm //TODO: followup + followup AI
+			gt.Const.Perks.PerkDefs.SpecPolearm
 		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.ReachAdvantage
 		],
 		[
-			//TODO: stance polearm use followup for free upon ending turn
+			gt.Const.Perks.PerkDefs.StanceFollowup
 		]
 	]
 };
@@ -721,19 +720,11 @@ gt.Const.Perks.StaffTree <- {
 	Tree = [
 		[],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecStaffSkill
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendMasteryStaves
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecStaffStun
-		],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.PushTheAdvantage
-		]
+		[],
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.DaggerTree <- {
@@ -828,21 +819,14 @@ gt.Const.Perks.ThrowingTree <- {
 	},
 	Tree = [
 		[],
-		[
-			gt.Const.Perks.PerkDefs.QuickHands
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.SpecThrowing
-		],
 		[],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.CloseCombatArcher
-		]
+		[],
+		[],
+		[],
+		[]
 	]
 };
-
 gt.Const.Perks.CrossbowTree <- {
 	ID = "Crossbow",
 	Name = "Crossbow",
@@ -887,18 +871,10 @@ gt.Const.Perks.CrossbowTree <- {
 		[],
 		[],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.SpecCrossbow
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendHeightenedReflexes
-		],
-		[
-			gt.Const.Perks.PerkDefs.Ballistics
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendPiercingShot
-		]
+		[],
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.SlingTree <- {
@@ -942,17 +918,11 @@ gt.Const.Perks.SlingTree <- {
 		]
 	},
 	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistSlingSkill
-		],
 		[],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendMasterySlings
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistSlingDamage
-		],
+		[],
+		[],
+		[],
 		[],
 		[]
 	]
