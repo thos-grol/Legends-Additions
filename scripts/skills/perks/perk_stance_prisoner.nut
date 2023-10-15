@@ -1,8 +1,9 @@
 ::Const.Strings.PerkName.StancePrisoner <- "Prisoner";
 ::Const.Strings.PerkDescription.StancePrisoner <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On incoming attack missed:")
-+ "\n Disarm the enemy rolling on their miss chance / 2";
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Incoming Attack Miss:")
++ "\n" + ::MSU.Text.colorGreen("+X%") + " chance to disarm the attacker"
++ "\n " + ::MSU.Text.colorRed("X is the attacker\'s miss chance");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StancePrisoner].Name = ::Const.Strings.PerkName.StancePrisoner;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StancePrisoner].Tooltip = ::Const.Strings.PerkDescription.StancePrisoner;

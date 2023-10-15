@@ -1,6 +1,7 @@
 ::Const.Strings.PerkDescription.Dodge = "Too fast..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
-+ "\n" + ::MSU.Text.colorGreen("+15% of current Initiative") + " as Melee and Ranged Defense.";
++ "\n" + ::MSU.Text.colorGreen("+X") + " as Melee and Ranged Defense."
++ "\n"+::MSU.Text.colorRed("X is 15% of current Iniative. Invalid if a shield is equipped");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Dodge].Tooltip = ::Const.Strings.PerkDescription.Dodge;
 

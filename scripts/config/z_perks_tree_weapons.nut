@@ -417,8 +417,7 @@ gt.Const.Perks.SpearTree <- {
 		[],
 		[],
 		[
-			//TODO: "Intimidate
-			// Attacks reduce the Resolve and damage of the target by 10% of your Melee Skill."
+			gt.Const.Perks.PerkDefs.Intimidate
 		],
 		[
 			gt.Const.Perks.PerkDefs.SpecSpear
@@ -428,8 +427,7 @@ gt.Const.Perks.SpearTree <- {
 			gt.Const.Perks.PerkDefs.Duelist
 		],
 		[
-			//TODO: Sovereign (Spear only)
-			// On turn end, attack all surrounding enemies
+			gt.Const.Perks.PerkDefs.StanceBreakthrough
 		]
 	]
 };

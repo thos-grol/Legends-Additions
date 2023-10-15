@@ -41,7 +41,7 @@ this.perk_mastery_hammer <- this.inherit("scripts/skills/skill", {
 
 	function isEnabled()
 	{
-		if (this.getContainer().getActor().getCurrentProperties().IsAbleToUseWeaponSkills) return false; //isDisarmed
+		if (!this.getContainer().getActor().getCurrentProperties().IsAbleToUseWeaponSkills) return false; //isDisarmed
 		local weapon = this.getContainer().getActor().getMainhandItem();
 		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Hammer)) return false;
 		return true;

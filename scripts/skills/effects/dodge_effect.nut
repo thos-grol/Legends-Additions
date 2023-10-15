@@ -42,8 +42,16 @@ this.dodge_effect <- this.inherit("scripts/skills/skill", {
 		];
 	}
 
+	function isEnabled()
+	{
+		local offhand = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
+		if (offhand != null && offhand.isItemType(::Const.Items.ItemType.Shield)) return false;
+		return true;
+	}
+
 	function onAfterUpdate( _properties )
 	{
+		if (!isEnabled()) return;
 		local initiative = this.Math.floor(this.getContainer().getActor().getInitiative() * 0.15);
 		_properties.MeleeDefense += this.Math.max(0, initiative);
 		_properties.RangedDefense += this.Math.max(0, initiative);

@@ -52,7 +52,7 @@ this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 
 		foreach (tile in ::Z.getNeighbors(actor.getTile()))
 		{
-			if (tile.IsOccupiedByActor) this.m.Enemies.push(tile.getEntity().getID());
+			if (tile.IsOccupiedByActor && !tile.getEntity().isAlliedWithPlayer()) this.m.Enemies.push(tile.getEntity().getID());
 		}
 	}
 

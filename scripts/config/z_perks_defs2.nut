@@ -199,6 +199,15 @@ local perks = [
         IconDisabled = "ui/perks/prisoner_bw.png",
         Const = "StancePrisoner"
     },
+    {
+        ID = "perk.stance.breakthrough",
+        Script = "scripts/skills/perks/perk_stance_breakthrough",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/breakthrough.png",
+        IconDisabled = "ui/perks/breakthrough_bw.png",
+        Const = "StanceBreakthrough"
+    },
 
 ///////////////////////////////////////////////////////////////////////////
 // Monster
@@ -361,6 +370,15 @@ local perks = [
         Icon = "ui/perks/strange_strikes.png",
         IconDisabled = "ui/perks/strange_strikes_bw.png",
         Const = "StrangeStrikes"
+    },
+    {
+        ID = "perk.intimidate",
+        Script = "scripts/skills/perks/perk_intimidate",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/intimidate.png",
+        IconDisabled = "ui/perks/intimidate_bw.png",
+        Const = "Intimidate"
     },
     // {
 	// 	ID = "perk.eldritch_blast",
