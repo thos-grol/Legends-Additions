@@ -3,6 +3,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Upon taking fatal damage:")
 + "\n"+::MSU.Text.colorGreen("+Death immunity") + " till turn start"
 + "\n"+::MSU.Text.colorGreen("+Remove DOT effects");
++ "\n"+::MSU.Text.colorRed("Effect occurs once per battle");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.NineLives].Name = ::Const.Strings.PerkName.NineLives;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.NineLives].Tooltip = ::Const.Strings.PerkDescription.NineLives;

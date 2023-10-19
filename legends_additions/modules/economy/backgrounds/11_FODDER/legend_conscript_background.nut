@@ -10,7 +10,7 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				::Const.Perks.MaceTree,
+				::Const.Perks.HammerTree,
 				::Const.Perks.PolearmTree,
 				::Const.Perks.ShieldTree,
 			],

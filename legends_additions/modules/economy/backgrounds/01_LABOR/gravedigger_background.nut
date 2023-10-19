@@ -9,7 +9,7 @@
 		//FEATURE_6: gravedigger is more morbid alignment
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				::Const.Perks.MaceTree
+				::Const.Perks.HammerTree
 			],
 			Defense = [
 				::Const.Perks.LightArmorTree
