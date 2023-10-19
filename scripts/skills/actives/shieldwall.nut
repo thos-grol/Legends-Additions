@@ -13,8 +13,8 @@ this.shieldwall <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/shieldwall_02.wav",
 			"sounds/combat/shieldwall_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.NonTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.NonTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = false;
@@ -28,7 +28,7 @@ this.shieldwall <- this.inherit("scripts/skills/skill", {
 
 	function getTooltip()
 	{
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 		local mult = 1.0;
 		local proficiencyBonus = 0;
 
@@ -52,19 +52,19 @@ this.shieldwall <- this.inherit("scripts/skills/skill", {
 				id = 4,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "Grants [color=" + this.Const.UI.Color.PositiveValue + "]+" + item.getMeleeDefense() + "[/color] Melee Defense for one turn"
+				text = "Grants [color=" + ::Const.UI.Color.PositiveValue + "]+" + item.getMeleeDefense() + "[/color] Melee Defense for one turn"
 			},
 			{
 				id = 5,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "Grants [color=" + this.Const.UI.Color.PositiveValue + "]+" + item.getRangedDefense() + "[/color] Ranged Defense for one turn"
+				text = "Grants [color=" + ::Const.UI.Color.PositiveValue + "]+" + item.getRangedDefense() + "[/color] Ranged Defense for one turn"
 			},
 			{
 				id = 6,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "Grants an additional [color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Defense against all attacks for each ally adjacent also using Shieldwall"
+				text = "Grants an additional [color=" + ::Const.UI.Color.PositiveValue + "]+5[/color] Defense against all attacks for each ally adjacent also using Shieldwall"
 			}
 		];
 	}
@@ -96,7 +96,7 @@ this.shieldwall <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInShields ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInShields ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onVerifyTarget( _originTile, _targetTile )
@@ -106,11 +106,11 @@ this.shieldwall <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
-		this.m.Container.add(this.new("scripts/skills/effects/shieldwall_effect"));
+		this.m.Container.add(::new("scripts/skills/effects/shieldwall_effect"));
 
 		if (!_user.isHiddenToPlayer())
 		{
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " uses Shieldwall");
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " uses Shieldwall");
 		}
 
 		return true;

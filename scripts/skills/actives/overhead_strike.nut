@@ -81,7 +81,7 @@ this.overhead_strike <- this.inherit("scripts/skills/skill", {
 
 		if (success && _targetTile.IsOccupiedByActor && this.Math.rand(1, 100) <= this.m.StunChance && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
 		{
-			target.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));
+			target.getSkills().add(::new("scripts/skills/effects/stunned_effect"));
 
 			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
 			{

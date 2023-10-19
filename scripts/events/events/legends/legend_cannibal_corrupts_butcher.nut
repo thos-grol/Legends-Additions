@@ -27,7 +27,7 @@ this.legend_cannibal_corrupts_butcher <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Cannibal.getImagePath());
-				local cannibalistic_trait = this.new("scripts/skills/traits/legend_cannibalistic");
+				local cannibalistic_trait = ::new("scripts/skills/traits/legend_cannibalistic");
 				_event.m.Butcher.getSkills().add(cannibalistic_trait);
 				this.List.push({
 					id = 10,

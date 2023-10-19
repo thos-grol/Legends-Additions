@@ -9,7 +9,7 @@ this.seal_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "skills/status_effect_87.png";
 		this.m.IconMini = "status_effect_87_mini";
 		this.m.Overlay = "status_effect_87";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsRemovedAfterBattle = true;
@@ -17,7 +17,7 @@ this.seal_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character has received so heavy a blow that their movements are sealed. Will wear off in [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] turn(s).";
+		return "This character has received so heavy a blow that their movements are sealed. Will wear off in [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] turn(s).";
 	}
 
 	function getTooltip()
@@ -37,7 +37,7 @@ this.seal_effect <- this.inherit("scripts/skills/skill", {
 				id = 12,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-4[/color] AP"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-4[/color] AP"
 			}
 		];
 	}

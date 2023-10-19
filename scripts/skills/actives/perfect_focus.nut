@@ -61,7 +61,7 @@ this.perfect_focus <- this.inherit("scripts/skills/skill", {
 	{
 		if (!this.getContainer().hasSkill("effects.perfect_focus"))
 		{
-			this.m.Container.add(this.new("scripts/skills/effects/perfect_focus_effect"));
+			this.m.Container.add(::new("scripts/skills/effects/perfect_focus_effect"));
 			return true;
 		}
 

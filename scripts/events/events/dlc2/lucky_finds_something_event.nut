@@ -87,7 +87,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 
 		if (r == 1)
 		{
-			item = this.new("scripts/items/weapons/militia_spear");
+			item = ::new("scripts/items/weapons/militia_spear");
 		}
 		else if (r == 2)
 		{
@@ -154,35 +154,35 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		}
 		else if (r == 9)
 		{
-			item = this.new("scripts/items/misc/ghoul_horn_item");
+			item = ::new("scripts/items/misc/ghoul_horn_item");
 		}
 		else if (r == 10)
 		{
-			item = this.new("scripts/items/weapons/knife");
+			item = ::new("scripts/items/weapons/knife");
 		}
 		else if (r == 11)
 		{
-			item = this.new("scripts/items/misc/wardog_armor_upgrade_item");
+			item = ::new("scripts/items/misc/wardog_armor_upgrade_item");
 		}
 		else if (r == 12)
 		{
-			item = this.new("scripts/items/legend_armor/armor_upgrades/legend_joint_cover_upgrade");
+			item = ::new("scripts/items/legend_armor/armor_upgrades/legend_joint_cover_upgrade");
 		}
 		else if (r == 13)
 		{
-			item = this.new("scripts/items/tools/throwing_net");
+			item = ::new("scripts/items/tools/throwing_net");
 		}
 		else if (r == 14)
 		{
-			item = this.new("scripts/items/weapons/throwing_spear");
+			item = ::new("scripts/items/weapons/throwing_spear");
 		}
 		else if (r == 15)
 		{
-			item = this.new("scripts/items/weapons/hatchet");
+			item = ::new("scripts/items/weapons/hatchet");
 		}
 		else if (r == 16)
 		{
-			item = this.new("scripts/items/weapons/lute");
+			item = ::new("scripts/items/weapons/lute");
 		}
 		else if (r == 17)
 		{
@@ -195,11 +195,11 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		}
 		else if (r == 18)
 		{
-			item = this.new("scripts/items/legend_armor/armor_upgrades/legend_mail_patch_upgrade");
+			item = ::new("scripts/items/legend_armor/armor_upgrades/legend_mail_patch_upgrade");
 		}
 		else if (r == 19)
 		{
-			item = this.new("scripts/items/misc/paint_black_item");
+			item = ::new("scripts/items/misc/paint_black_item");
 		}
 
 		if (item.getConditionMax() > 1)

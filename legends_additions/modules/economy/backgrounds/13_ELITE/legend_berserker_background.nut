@@ -44,7 +44,7 @@
 		local stash = this.World.Assets.getStash();
 		stash.removeByID("supplies.ground_grains");
 		stash.removeByID("supplies.ground_grains");
-		stash.add(this.new("scripts/items/supplies/roots_and_berries_item"));
+		stash.add(::new("scripts/items/supplies/roots_and_berries_item"));
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
@@ -61,23 +61,23 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/ancient/rhomphaia"));
+			items.equip(::new("scripts/items/weapons/ancient/rhomphaia"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/warbrand"));
+			items.equip(::new("scripts/items/weapons/warbrand"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/ancient/crypt_cleaver"));
+			items.equip(::new("scripts/items/weapons/ancient/crypt_cleaver"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_longsword"));
+			items.equip(::new("scripts/items/weapons/legend_longsword"));
 		}
 		else if (r == 4)
 		{
-			items.equip(this.new("scripts/items/weapons/greenskins/orc_axe_2h"));
+			items.equip(::new("scripts/items/weapons/greenskins/orc_axe_2h"));
 		}
 
 		this.getContainer().getActor().TherianthropeInfectionRandom();

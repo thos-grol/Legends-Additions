@@ -40,7 +40,7 @@ this.perk_mastery_flail <- this.inherit("scripts/skills/skill", {
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 
 		if (!this.m.Container.hasSkill("trait.proficiency_Flail"))
-			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Flail"));
+			this.m.Container.add(::new("scripts/skills/traits/_proficiency_Flail"));
 	}
 
 	function spinFlail (_skill, _targetTile)
@@ -62,7 +62,7 @@ this.perk_mastery_flail <- this.inherit("scripts/skills/skill", {
 					{
 						if (!user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
 						{
-							this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(user) + " spins their flail");
+							this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(user) + " spins their flail");
 						}
 
 						perk.m.IsSpinningFlail = true;
@@ -115,7 +115,7 @@ this.perk_mastery_flail <- this.inherit("scripts/skills/skill", {
 	function onAnySkillExecuted( _skill, _targetTile, _targetEntity, _forFree )
 	{
 		local weapon = this.getContainer().getActor().getMainhandItem();
-		if (weapon != null && weapon.isWeaponType(this.Const.Items.WeaponType.Flail) && _skill.isAttack() && _skill.m.IsWeaponSkill)
+		if (weapon != null && weapon.isWeaponType(::Const.Items.WeaponType.Flail) && _skill.isAttack() && _skill.m.IsWeaponSkill)
 		{
 			this.spinFlail(_skill, _targetTile);
 		}

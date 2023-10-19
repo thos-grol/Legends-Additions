@@ -23,15 +23,15 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/knife"));
+			items.equip(::new("scripts/items/weapons/knife"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_saw"));
+			items.equip(::new("scripts/items/weapons/legend_saw"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/butchers_cleaver"));
+			items.equip(::new("scripts/items/weapons/butchers_cleaver"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

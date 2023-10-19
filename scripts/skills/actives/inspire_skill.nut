@@ -77,7 +77,7 @@ this.inspire_skill <- this.inherit("scripts/skills/skill", {
 	function onUse( _user, _targetTile )
 	{
 		local target = _targetTile.getEntity();
-		target.getSkills().add(this.new("scripts/skills/effects/inspired_effect"));
+		target.getSkills().add(::new("scripts/skills/effects/inspired_effect"));
 		return true;
 	}
 

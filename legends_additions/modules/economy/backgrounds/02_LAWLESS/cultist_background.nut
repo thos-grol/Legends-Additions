@@ -31,34 +31,34 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_scythe"));
+			items.equip(::new("scripts/items/weapons/legend_scythe"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/wooden_flail"));
+			items.equip(::new("scripts/items/weapons/wooden_flail"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_cat_o_nine_tails"));
+			items.equip(::new("scripts/items/weapons/legend_cat_o_nine_tails"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_chain"));
+			items.equip(::new("scripts/items/weapons/legend_chain"));
 		}
 		else if (r == 4)
 		{
 			if (::Const.DLC.Wildmen)
 			{
-				items.equip(this.new("scripts/items/weapons/battle_whip"));
+				items.equip(::new("scripts/items/weapons/battle_whip"));
 			}
 			else if (!::Const.DLC.Wildmen)
 			{
-				items.equip(this.new("scripts/items/weapons/legend_cat_o_nine_tails"));
+				items.equip(::new("scripts/items/weapons/legend_cat_o_nine_tails"));
 			}
 		}
 		else if (r >= 5)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_cat_o_nine_tails"));
+			items.equip(::new("scripts/items/weapons/legend_cat_o_nine_tails"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

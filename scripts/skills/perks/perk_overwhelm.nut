@@ -32,9 +32,9 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 
-		if (!_targetEntity.isAlliedWith(actor) && !actor.getSkills().hasSkill("effect.double_strike"))
+		if (!_targetEntity.isAlliedWith(actor) && !this.m.Container.hasSkill("effect.double_strike"))
 		{
-			actor.getSkills().add(this.new("scripts/skills/effects/double_strike_effect"));
+			this.m.Container.add(::new("scripts/skills/effects/double_strike_effect"));
 		}
 
 		if (this.Tactical.TurnSequenceBar.getActiveEntity() == null || this.Tactical.TurnSequenceBar.getActiveEntity().getID() != this.getContainer().getActor().getID()) return;
@@ -50,7 +50,7 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 
 			this.m.SkillCount = ::Const.SkillCounter;
 			this.m.LastTargetID = _targetEntity.getID();
-			_targetEntity.getSkills().add(this.new("scripts/skills/effects/overwhelmed_effect"));
+			_targetEntity.getSkills().add(::new("scripts/skills/effects/overwhelmed_effect"));
 		}
 	}
 
@@ -76,7 +76,7 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 			this.m.SkillCount = ::Const.SkillCounter;
 			this.m.LastTargetID = _targetEntity.getID();
 			this.m.SkillCount = ::Const.SkillCounter;
-			_targetEntity.getSkills().add(this.new("scripts/skills/effects/overwhelmed_effect"));
+			_targetEntity.getSkills().add(::new("scripts/skills/effects/overwhelmed_effect"));
 		}
 	}
 

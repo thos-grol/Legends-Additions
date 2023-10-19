@@ -25,18 +25,18 @@ this.la_nachzerer_agent <- this.inherit("scripts/ai/tactical/agent", {
 
 	function onAddBehaviors()
 	{
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_roam"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_flee"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_retreat"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_engage_melee"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_break_free"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_disengage"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_roam"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_flee"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_retreat"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_engage_melee"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_break_free"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_disengage"));
 
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_swing"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_swallow_whole"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_claws"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_gruesome_feast"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_nachzerer_leap"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_nachzerer_swing"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_nachzerer_swallow_whole"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_nachzerer_claws"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_nachzerer_gruesome_feast"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_nachzerer_leap"));
 	}
 
 });

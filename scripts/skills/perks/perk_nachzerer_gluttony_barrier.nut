@@ -109,7 +109,7 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		if (_attacker != null && _attacker.getID() == actor.getID() || _skill == null || !_skill.isAttack() || !_skill.isUsingHitchance()) return;
 
-		local the_strongest = actor.getSkills().getSkillByID("perk.stance.the_strongest");
+		local the_strongest = this.m.Container.hasSkill.getSkillByID("perk.stance.the_strongest");
         if (the_strongest != null && the_strongest.m.Active) return;
 
 		_properties.DamageReceivedRegularMult *= 0;

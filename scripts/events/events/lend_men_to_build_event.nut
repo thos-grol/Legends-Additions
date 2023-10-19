@@ -79,7 +79,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 					{
 						if (this.Math.rand(1, 100) <= 33)
 						{
-							local effect = this.new("scripts/skills/effects_world/exhausted_effect");
+							local effect = ::new("scripts/skills/effects_world/exhausted_effect");
 							bro.getSkills().add(effect);
 							this.List.push({
 								id = 10,
@@ -177,7 +177,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 					{
 						if (this.Math.rand(1, 100) <= 33)
 						{
-							local effect = this.new("scripts/skills/effects_world/exhausted_effect");
+							local effect = ::new("scripts/skills/effects_world/exhausted_effect");
 							bro.getSkills().add(effect);
 							this.List.push({
 								id = 10,
@@ -233,7 +233,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 					{
 						if (this.Math.rand(1, 100) <= 33)
 						{
-							local effect = this.new("scripts/skills/effects_world/exhausted_effect");
+							local effect = ::new("scripts/skills/effects_world/exhausted_effect");
 							bro.getSkills().add(effect);
 							this.List.push({
 								id = 10,

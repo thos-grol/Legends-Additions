@@ -30,42 +30,42 @@
 
 			if (r <= 50)
 			{
-				items.equip(this.new("scripts/items/weapons/short_bow"));
-				items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+				items.equip(::new("scripts/items/weapons/short_bow"));
+				items.equip(::new("scripts/items/ammo/quiver_of_arrows"));
 			}
 			else if (r <= 80)
 			{
-				items.equip(this.new("scripts/items/weapons/legend_sling"));
+				items.equip(::new("scripts/items/weapons/legend_sling"));
 			}
 			else
 			{
-				items.equip(this.new("scripts/items/weapons/wonky_bow"));
-				items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+				items.equip(::new("scripts/items/weapons/wonky_bow"));
+				items.equip(::new("scripts/items/ammo/quiver_of_arrows"));
 			}
 		}
 		else
 		{
 			if (this.Math.rand(1, 100) <= 75)
 			{
-				items.equip(this.new("scripts/items/weapons/short_bow"));
+				items.equip(::new("scripts/items/weapons/short_bow"));
 			}
 			else
 			{
-				items.equip(this.new("scripts/items/weapons/wonky_bow"));
+				items.equip(::new("scripts/items/weapons/wonky_bow"));
 			}
 
-			items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+			items.equip(::new("scripts/items/ammo/quiver_of_arrows"));
 		}
 
 		r = this.Math.rand(0, 4);
 
 		if (r == 0)
 		{
-			items.addToBag(this.new("scripts/items/weapons/knife"));
+			items.addToBag(::new("scripts/items/weapons/knife"));
 		}
 		else if (r == 1)
 		{
-			items.addToBag(this.new("scripts/items/weapons/legend_cat_o_nine_tails"));
+			items.addToBag(::new("scripts/items/weapons/legend_cat_o_nine_tails"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

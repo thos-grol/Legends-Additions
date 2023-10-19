@@ -37,20 +37,20 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/oriental/polemace"));
+			items.equip(::new("scripts/items/weapons/oriental/polemace"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/oriental/swordlance"));
+			items.equip(::new("scripts/items/weapons/oriental/swordlance"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/oriental/nomad_mace"));
+			items.equip(::new("scripts/items/weapons/oriental/nomad_mace"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/oriental/light_southern_mace"));
-			items.equip(this.new("scripts/items/shields/oriental/southern_light_shield"));
+			items.equip(::new("scripts/items/weapons/oriental/light_southern_mace"));
+			items.equip(::new("scripts/items/shields/oriental/southern_light_shield"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

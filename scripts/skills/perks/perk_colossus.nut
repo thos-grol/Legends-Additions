@@ -36,7 +36,7 @@ this.perk_colossus <- this.inherit("scripts/skills/skill", {
 
 		if (!this.m.Container.hasSkill("effects.steel_brow"))
 		{
-			this.m.Container.add(this.new("scripts/skills/effects/steel_brow_effect"));
+			this.m.Container.add(::new("scripts/skills/effects/steel_brow_effect"));
 		}
 	}
 

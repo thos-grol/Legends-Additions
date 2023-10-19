@@ -8,7 +8,7 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "skills/status_effect_03.png";
 		this.m.IconMini = "status_effect_03_mini";
 		this.m.Overlay = "status_effect_03";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 	}
@@ -46,13 +46,13 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		return this.Math.min(this.Const.Combat.ShieldWallMaxAllies, num) * 5;
+		return this.Math.min(::Const.Combat.ShieldWallMaxAllies, num) * 5;
 	}
 
 	function getTooltip()
 	{
 		local bonus = this.getBonus();
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 		local mult = 1.0;
 		local proficiencyBonus = 0;
 
@@ -71,22 +71,22 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.Math.floor(item.getMeleeDefense() * mult + bonus + proficiencyBonus) + "[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.Math.floor(item.getMeleeDefense() * mult + bonus + proficiencyBonus) + "[/color] Melee Defense"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.Math.floor(item.getRangedDefense() * mult + bonus + proficiencyBonus) + "[/color] Ranged Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.Math.floor(item.getRangedDefense() * mult + bonus + proficiencyBonus) + "[/color] Ranged Defense"
 			}
 		];
 	}
 
 	function onAdded()
 	{
-		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = this.m.Container.getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
-		if (item != null && item.isItemType(this.Const.Items.ItemType.Shield))
+		if (item != null && item.isItemType(::Const.Items.ItemType.Shield))
 		{
 			item.onShieldUp();
 		}
@@ -94,9 +94,9 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
-		if (item.isItemType(this.Const.Items.ItemType.Shield) && item.getCondition() > 0)
+		if (item.isItemType(::Const.Items.ItemType.Shield) && item.getCondition() > 0)
 		{
 			local mult = 1.0;
 			local proficiencyBonus = 0;
@@ -112,9 +112,9 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 
 	function onRemoved()
 	{
-		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = this.m.Container.getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
-		if (item != null && item.isItemType(this.Const.Items.ItemType.Shield))
+		if (item != null && item.isItemType(::Const.Items.ItemType.Shield))
 		{
 			item.onShieldDown();
 		}

@@ -75,9 +75,9 @@ this.master_no_use_apprentice_event <- this.inherit("scripts/events/event", {
 
 				_event.m.Dude.getBackground().m.RawDescription = "An impatient student of a fencing and swordmaster, %name% didn\'t have the mental aptitude to stick with the trials and tribulations of becoming a master of the blade himself. But what he lacks in mental fortitude he more than makes up for in effort. You \'hired\' him simply by taking him off the old man\'s hands.";
 				_event.m.Dude.getBackground().buildDescription(true);
-				local trait = this.new("scripts/skills/traits/natural_trait");
+				local trait = ::new("scripts/skills/traits/natural_trait");
 				_event.m.Dude.getSkills().add(trait);
-				trait = this.new("scripts/skills/traits/lucky_trait");
+				trait = ::new("scripts/skills/traits/lucky_trait");
 				_event.m.Dude.getSkills().add(trait);
 				this.Characters.push(_event.m.Dude.getImagePath());
 			}

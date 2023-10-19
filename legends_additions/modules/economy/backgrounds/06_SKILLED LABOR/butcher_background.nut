@@ -42,7 +42,7 @@
 
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		items.equip(this.new("scripts/items/weapons/butchers_cleaver"));
+		items.equip(::new("scripts/items/weapons/butchers_cleaver"));
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,

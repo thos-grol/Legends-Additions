@@ -25,11 +25,11 @@ this.perk_shield_expert <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.shield_expert";
-		this.m.Name = this.Const.Strings.PerkName.ShieldExpert;
-		this.m.Description = this.Const.Strings.PerkDescription.ShieldExpert;
+		this.m.Name = ::Const.Strings.PerkName.ShieldExpert;
+		this.m.Description = ::Const.Strings.PerkDescription.ShieldExpert;
 		this.m.Icon = "ui/perks/perk_05.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -40,9 +40,9 @@ this.perk_shield_expert <- this.inherit("scripts/skills/skill", {
 		_properties.IsSpecializedInShields = true;
 
 		local actor = this.getContainer().getActor();
-		local item = actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = actor.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
-		if (item != null && item.isItemType(this.Const.Items.ItemType.Shield))
+		if (item != null && item.isItemType(::Const.Items.ItemType.Shield))
 		{
 			_properties.DamageReceivedRegularMult *= 0.9;
 		}
@@ -62,36 +62,36 @@ this.perk_shield_expert <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 
-		if (this.m.TurnsLeft > 0 && actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null && actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).isItemType(this.Const.Items.ItemType.Shield))
+		if (this.m.TurnsLeft > 0 && actor.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null && actor.getItems().getItemAtSlot(::Const.ItemSlot.Offhand).isItemType(::Const.Items.ItemType.Shield))
 		{
 			local skills = this.getContainer().getSkillsByFunction((@(_skill) this.m.Skills.find(_skill.getID()) != null).bindenv(this));
 			if (skills.len() == 0) return;
 			foreach (s in skills)
 			{
 				if (s == null) continue;
-				if (s.m.ID == "actives.legend_fortify_skill" && !actor.getSkills().hasSkill("effects.legend_fortify"))
+				if (s.m.ID == "actives.legend_fortify_skill" && !this.m.Container.hasSkill("effects.legend_fortify"))
 				{
-					actor.getSkills().add(this.new("scripts/skills/effects/legend_fortify_effect"));
+					this.m.Container.add(::new("scripts/skills/effects/legend_fortify_effect"));
 					if (!actor.isHiddenToPlayer())
 					{
-						this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " uses Fortify");
+						this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " uses Fortify");
 					}
 					break;
 				}
 
-				if (s.m.ID == "actives.shieldwall" && !actor.getSkills().hasSkill("effects.shieldwall"))
+				if (s.m.ID == "actives.shieldwall" && !this.m.Container.hasSkill("effects.shieldwall"))
 				{
-					actor.getSkills().add(this.new("scripts/skills/effects/shieldwall_effect"));
+					this.m.Container.add(::new("scripts/skills/effects/shieldwall_effect"));
 					if (!actor.isHiddenToPlayer())
 					{
-						this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " uses Shieldwall");
+						this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " uses Shieldwall");
 					}
 					break;
 				}
 			}
 			this.m.TurnsLeft--;
 		}
-		
+
 	}
 
 });

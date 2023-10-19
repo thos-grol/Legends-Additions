@@ -12,8 +12,8 @@ this.ptr_follow_up_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Description = "Every time an enemy gets hit in this character\'s attack range by an ally, %they% will perform a free non-lethal attack against that enemy with reduced damage.";
 		this.m.Icon = "ui/perks/follow_up.png";
 		this.m.IconMini = "ptr_follow_up_effect_mini";
-		this.m.Type = this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.Last;
+		this.m.Type = ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.Last;
 		this.m.IsActive = false;
 		this.m.IsHidden = false;
 		this.m.IsRemovedAfterBattle = true;
@@ -27,7 +27,7 @@ this.ptr_follow_up_effect <- this.inherit("scripts/skills/skill", {
 					id = 10,
 					type = "text",
 					icon = "ui/icons/damage_dealt.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + this.getCurrentMalus() + "%[/color] Damage inflicted"
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]-" + this.getCurrentMalus() + "%[/color] Damage inflicted"
 				}
 			);
 
@@ -61,7 +61,7 @@ this.ptr_follow_up_effect <- this.inherit("scripts/skills/skill", {
 		}
 
 		local weapon = actor.getMainhandItem();
-		if (weapon == null || !weapon.isItemType(this.Const.Items.ItemType.TwoHanded) || !weapon.isItemType(this.Const.Items.ItemType.MeleeWeapon))
+		if (weapon == null || !weapon.isItemType(::Const.Items.ItemType.TwoHanded) || !weapon.isItemType(::Const.Items.ItemType.MeleeWeapon))
 		{
 			return false;
 		}
@@ -72,7 +72,7 @@ this.ptr_follow_up_effect <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		local actor = this.getContainer().getActor();
-		if (!actor.isPlacedOnMap() || actor.getMoraleState() == this.Const.MoraleState.Fleeing)
+		if (!actor.isPlacedOnMap() || actor.getMoraleState() == ::Const.MoraleState.Fleeing)
 		{
 			this.removeSelf();
 			return;
@@ -121,7 +121,7 @@ this.ptr_follow_up_effect <- this.inherit("scripts/skills/skill", {
 
 						if (!user.isHiddenToPlayer() && targetTile.IsVisibleForPlayer)
 						{
-							this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(user) + " is Following Up");
+							this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(user) + " is Following Up");
 						}
 
 						local isAbleToDie = targetEntity.m.IsAbleToDie;

@@ -61,27 +61,27 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
 		////////////////////////////////////////////////////////////////////////
 
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_escape_artist"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_fast_adaption"));
-        this.m.Skills.add(this.new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_fast_adaption"));
+        this.m.Skills.add(::new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
 
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_nachzerer_gluttony_barrier")); // hair armor nullifies damage for x hits.
+		this.m.Skills.add(::new("scripts/skills/perks/perk_nachzerer_gluttony_barrier")); // hair armor nullifies damage for x hits.
 
 		//will swallow bro, damaging them and healing the damage dealt. Has a chance to miss. If the swallowed bro dies,
 		//will heal temp injuries, and gain 2 charges of hair armor.
-		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_swallow_whole"));
+		this.m.Skills.add(::new("scripts/skills/actives/nachzerer_swallow_whole"));
 
 		//jumps to tile with corpse within 4 range. Feast on the corpse, healing temp injuries, regaining health, and gaining 2 charges of hair armor.
-		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_gruesome_feast"));
+		this.m.Skills.add(::new("scripts/skills/actives/nachzerer_gruesome_feast"));
 
-		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_claws")); //claws that inflict bleeding
-		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_claws_swipe")); //claw swing that hits 3 enemies and knocks them back.
-        this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy")); // buffs damage on kill
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_lacerate"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_overwhelm"));
+		this.m.Skills.add(::new("scripts/skills/actives/nachzerer_claws")); //claws that inflict bleeding
+		this.m.Skills.add(::new("scripts/skills/actives/nachzerer_claws_swipe")); //claw swing that hits 3 enemies and knocks them back.
+        this.m.Skills.add(::new("scripts/skills/perks/perk_killing_frenzy")); // buffs damage on kill
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lacerate"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_overwhelm"));
 
-		this.m.Skills.add(this.new("scripts/skills/actives/nachzerer_leap")); //leap skill when surrounded 0ap, 3 turn cd
+		this.m.Skills.add(::new("scripts/skills/actives/nachzerer_leap")); //leap skill when surrounded 0ap, 3 turn cd
 
 	}
 
@@ -176,7 +176,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		local onArmorHitSounds = this.getItems().getAppearance().ImpactSound;
 		onArmorHitSounds[::Const.BodyPart.Body] = ::Const.Sound.ArmorLeatherImpact;
 		onArmorHitSounds[::Const.BodyPart.Head] = ::Const.Sound.ArmorLeatherImpact;
-		this.m.AIAgent = this.new("scripts/ai/tactical/agents/la_nachzerer_agent");
+		this.m.AIAgent = ::new("scripts/ai/tactical/agents/la_nachzerer_agent");
 		this.m.AIAgent.setActor(this);
 	}
 
@@ -260,22 +260,22 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
 						if (r <= 35)
 						{
-							loot = this.new("scripts/items/misc/ghoul_teeth_item");
+							loot = ::new("scripts/items/misc/ghoul_teeth_item");
 						}
 						else if (r <= 70)
 						{
-							loot = this.new("scripts/items/misc/ghoul_horn_item");
+							loot = ::new("scripts/items/misc/ghoul_horn_item");
 						}
 						else
 						{
-							loot = this.new("scripts/items/misc/ghoul_brain_item");
+							loot = ::new("scripts/items/misc/ghoul_brain_item");
 						}
 
 						loot.drop(_tile);
 					}
 					else
 					{
-						local loot = this.new("scripts/items/misc/ghoul_teeth_item");
+						local loot = ::new("scripts/items/misc/ghoul_teeth_item");
 						loot.drop(_tile);
 					}
 

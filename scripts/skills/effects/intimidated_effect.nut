@@ -10,7 +10,7 @@ this.intimidated_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "ui/perks/intimidate.png";
 		this.m.IconMini = "intimidated_mini";
 		this.m.Overlay = "intimidated";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsRemovedAfterBattle = true;
@@ -38,7 +38,7 @@ this.intimidated_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + this.m.ResolveMalus + "[/color] Resolve"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-" + this.m.ResolveMalus + "[/color] Resolve"
 			}
 		];
 	}

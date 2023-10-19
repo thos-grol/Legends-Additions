@@ -358,20 +358,20 @@
 
 		if (_info.Skill.m.SoundOnHitShield.len() != 0)
 		{
-			this.Sound.play(_info.Skill.m.SoundOnHitShield[this.Math.rand(0, _info.Skill.m.SoundOnHitShield.len() - 1)], this.Const.Sound.Volume.Skill * this.m.SoundVolume, user.getPos());
+			this.Sound.play(_info.Skill.m.SoundOnHitShield[this.Math.rand(0, _info.Skill.m.SoundOnHitShield.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, user.getPos());
 		}
 
-		shield.applyShieldDamage(this.Const.Combat.BasicShieldDamage, _info.Skill.m.SoundOnHitShield.len() == 0);
+		shield.applyShieldDamage(::Const.Combat.BasicShieldDamage, _info.Skill.m.SoundOnHitShield.len() == 0);
 
 		if (shield.getCondition() == 0)
 		{
-			if (!user.isHiddenToPlayer()) this.Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(targetEntity) + "\'s shield has destroyed ");
+			if (!user.isHiddenToPlayer()) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(targetEntity) + "\'s shield has destroyed ");
 		}
 		else
 		{
 			if (!this.Tactical.getNavigator().isTravelling(targetEntity))
 			{
-				this.Tactical.getShaker().shake(targetEntity, user.getTile(), 2, this.Const.Combat.ShakeEffectSplitShieldColor, this.Const.Combat.ShakeEffectSplitShieldHighlight, this.Const.Combat.ShakeEffectSplitShieldFactor, 1.0, [
+				this.Tactical.getShaker().shake(targetEntity, user.getTile(), 2, ::Const.Combat.ShakeEffectSplitShieldColor, ::Const.Combat.ShakeEffectSplitShieldHighlight, ::Const.Combat.ShakeEffectSplitShieldFactor, 1.0, [
 					"shield_icon"
 				], 1.0);
 			}
@@ -410,18 +410,18 @@
 
 		if (levelDifference < 0)
 		{
-			toHit = toHit + this.Const.Combat.LevelDifferenceToHitBonus;
+			toHit = toHit + ::Const.Combat.LevelDifferenceToHitBonus;
 		}
 		else
 		{
-			toHit = toHit + this.Const.Combat.LevelDifferenceToHitMalus * levelDifference;
+			toHit = toHit + ::Const.Combat.LevelDifferenceToHitMalus * levelDifference;
 		}
 
 		if (!this.m.IsShieldRelevant)
 		{
-			local shield = _targetEntity.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+			local shield = _targetEntity.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
-			if (shield != null && shield.isItemType(this.Const.Items.ItemType.Shield))
+			if (shield != null && shield.isItemType(::Const.Items.ItemType.Shield))
 			{
 				local shieldBonus = (this.m.IsRanged ? shield.getRangedDefense() : shield.getMeleeDefense());
 				toHit = toHit + shieldBonus;
@@ -439,11 +439,11 @@
 
 		if (allowDiversion && this.m.IsRanged && userTile.getDistanceTo(_targetEntity.getTile()) > 1)
 		{
-			local blockedTiles = this.Const.Tactical.Common.getBlockedTiles(userTile, _targetEntity.getTile(), user.getFaction(), true);
+			local blockedTiles = ::Const.Tactical.Common.getBlockedTiles(userTile, _targetEntity.getTile(), user.getFaction(), true);
 
 			if (blockedTiles.len() != 0)
 			{
-				local blockChance = this.Const.Combat.RangedAttackBlockedChance * properties.RangedAttackBlockedChanceMult;
+				local blockChance = ::Const.Combat.RangedAttackBlockedChance * properties.RangedAttackBlockedChanceMult;
 				toHit = this.Math.floor(toHit * (1.0 - blockChance));
 			}
 		}
@@ -466,7 +466,7 @@
 				return "";
 			}
 
-			return "[color=" + this.Const.UI.Color.PositiveValue + "]" + text + "[/color]";
+			return "[color=" + ::Const.UI.Color.PositiveValue + "]" + text + "[/color]";
 		};
 		local red = function ( text )
 		{
@@ -475,7 +475,7 @@
 				return "";
 			}
 
-			return "[color=" + this.Const.UI.Color.NegativeValue + "]" + text + "[/color]";
+			return "[color=" + ::Const.UI.Color.NegativeValue + "]" + text + "[/color]";
 		};
 		local isIn = function ( pattern, text )
 		{
@@ -565,12 +565,12 @@
 		};
 		modifier["Height advantage"] <- function ( row, description )
 		{
-			row.text = green(this.Const.Combat.LevelDifferenceToHitBonus + "%") + " " + description;
+			row.text = green(::Const.Combat.LevelDifferenceToHitBonus + "%") + " " + description;
 		};
 		modifier["Height disadvantage"] <- function ( row, description )
 		{
 			local levelDifference = myTile.Level - _targetTile.Level;
-			local malus = this.Const.Combat.LevelDifferenceToHitMalus * levelDifference;
+			local malus = ::Const.Combat.LevelDifferenceToHitMalus * levelDifference;
 			row.text = red(malus + "%") + " " + description;
 		};
 		modifier["Target on bad terrain"] <- function ( row, description )
@@ -605,7 +605,7 @@
 		};
 		local getShieldBonus = function ()
 		{
-			local shield = targetEntity.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+			local shield = targetEntity.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 			local shieldBonus = (thisSkill.m.IsRanged ? shield.getRangedDefense() : shield.getMeleeDefense());
 			return this.Math.floor(shieldBonus);
 		};
@@ -635,7 +635,7 @@
 			};
 			modifier["Line of fire blocked"] <- function ( row, description )
 			{
-				local blockChance = this.Const.Combat.RangedAttackBlockedChance * propertiesWithSkill.RangedAttackBlockedChanceMult;
+				local blockChance = ::Const.Combat.RangedAttackBlockedChance * propertiesWithSkill.RangedAttackBlockedChanceMult;
 				blockChance = this.Math.ceil(blockChance * 100);
 				row.text = description + "\n(" + red("-" + blockChance + "%") + " Total hit chance)";
 			};
@@ -704,7 +704,7 @@
 				return null;
 			}
 
-			local hitInfo = clone this.Const.Tactical.HitInfo;
+			local hitInfo = clone ::Const.Tactical.HitInfo;
 			local propertiesAfter = propertiesBefore.getClone();
 			racialSkill.onBeforeDamageReceived(attackingEntity, thisSkill, hitInfo, propertiesAfter);
 			local diff = propertiesBefore.DamageReceivedRegularMult - propertiesAfter.DamageReceivedRegularMult;

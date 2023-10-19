@@ -42,9 +42,9 @@ this.perk_mastery_axe <- this.inherit("scripts/skills/skill", {
 			|| _targetEntity.getSkills().hasSkill("perk.colossus")
 			) return;
 
-		local actor = this.getContainer().getActor();
-		local threshold = actor.getSkills().hasSkill("perk.stance.executioner") ? this.m.ThresholdExecutioner : this.m.Threshold;
+		local threshold = this.m.Container.hasSkill("perk.stance.executioner") ? this.m.ThresholdExecutioner : this.m.Threshold;
 
+		local actor = this.getContainer().getActor();
 		if (_targetEntity.getHitpoints() / (_targetEntity.getHitpointsMax() * 1.0) < threshold)
 		{
 			if (!actor.isHiddenToPlayer() && _targetEntity.getTile().IsVisibleForPlayer)
@@ -75,7 +75,7 @@ this.perk_mastery_axe <- this.inherit("scripts/skills/skill", {
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 
 		if (!this.m.Container.hasSkill("trait.proficiency_Axe"))
-			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Axe"));
+			this.m.Container.add(::new("scripts/skills/traits/_proficiency_Axe"));
 	}
 
 });

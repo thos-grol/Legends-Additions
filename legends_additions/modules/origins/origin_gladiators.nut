@@ -14,7 +14,7 @@
 			bro.getSkills().removeByID("trait.greedy");
 			bro.getSkills().removeByID("trait.loyal");
 			bro.getSkills().removeByID("trait.disloyal");
-			bro.getSkills().add(this.new("scripts/skills/traits/arena_champion_trait"));
+			bro.getSkills().add(::new("scripts/skills/traits/arena_champion_trait"));
 			bro.getFlags().set("ArenaFightsWon", 25);
 			bro.getFlags().set("ArenaFights", 25);
 			bro.setPlaceInFormation(3 + i);
@@ -37,7 +37,7 @@
 		local a;
 		local u;
 		bros[0].setTitle("the Lion");
-		bros[0].getSkills().add(this.new("scripts/skills/traits/glorious_resolve_trait"));
+		bros[0].getSkills().add(::new("scripts/skills/traits/glorious_resolve_trait"));
 		bros[0].getTalents().resize(::Const.Attributes.COUNT, 0);
 		bros[0].getTalents()[::Const.Attributes.MeleeDefense] = 2;
 		bros[0].getTalents()[::Const.Attributes.Fatigue] = 2;
@@ -49,7 +49,7 @@
 				"oriental/gladiator_harness"
 			]
 		]);
-		a.setUpgrade(this.new("scripts/items/legend_armor/armor_upgrades/legend_light_gladiator_upgrade"));
+		a.setUpgrade(::new("scripts/items/legend_armor/armor_upgrades/legend_light_gladiator_upgrade"));
 		bros[0].getItems().equip(a);
 		a = ::Const.World.Common.pickHelmet([
 			[
@@ -59,15 +59,15 @@
 			]
 		]);
 		bros[0].getItems().equip(a);
-		bros[0].getItems().equip(this.new("scripts/items/weapons/scimitar"));
-		bros[0].getItems().equip(this.new("scripts/items/tools/throwing_net"));
+		bros[0].getItems().equip(::new("scripts/items/weapons/scimitar"));
+		bros[0].getItems().equip(::new("scripts/items/tools/throwing_net"));
 		bros[0].improveMood(0.75, "Eager to prove himself outside the arena");
 		bros[0].setVeteranPerks(2);
 
 		::Z.Perks.add(bros[0], ::Const.Perks.PerkDefs.NachzererGluttonyBarrier, 1);
 
 		bros[1].setTitle("the Bear");
-		bros[1].getSkills().add(this.new("scripts/skills/traits/glorious_endurance_trait"));
+		bros[1].getSkills().add(::new("scripts/skills/traits/glorious_endurance_trait"));
 		bros[1].getTalents().resize(::Const.Attributes.COUNT, 0);
 		bros[1].getTalents()[::Const.Attributes.Hitpoints] = 3;
 		bros[1].getTalents()[::Const.Attributes.Fatigue] = 2;
@@ -79,7 +79,7 @@
 				"oriental/gladiator_harness"
 			]
 		]);
-		a.setUpgrade(this.new("scripts/items/legend_armor/armor_upgrades/legend_heavy_gladiator_upgrade"));
+		a.setUpgrade(::new("scripts/items/legend_armor/armor_upgrades/legend_heavy_gladiator_upgrade"));
 		bros[1].getItems().equip(a);
 		a = ::Const.World.Common.pickHelmet([
 			[
@@ -89,12 +89,12 @@
 			]
 		]);
 		bros[1].getItems().equip(a);
-		bros[1].getItems().equip(this.new("scripts/items/weapons/oriental/heavy_southern_mace"));
-		bros[1].getItems().equip(this.new("scripts/items/shields/oriental/metal_round_shield"));
+		bros[1].getItems().equip(::new("scripts/items/weapons/oriental/heavy_southern_mace"));
+		bros[1].getItems().equip(::new("scripts/items/shields/oriental/metal_round_shield"));
 		bros[1].improveMood(0.75, "Eager to prove himself outside the arena");
 		bros[1].setVeteranPerks(2);
 		bros[2].setTitle("the Viper");
-		bros[2].getSkills().add(this.new("scripts/skills/traits/glorious_quickness_trait"));
+		bros[2].getSkills().add(::new("scripts/skills/traits/glorious_quickness_trait"));
 		bros[2].getTalents().resize(::Const.Attributes.COUNT, 0);
 		bros[2].getTalents()[::Const.Attributes.MeleeDefense] = 2;
 		bros[2].getTalents()[::Const.Attributes.Initiative] = 3;
@@ -106,7 +106,7 @@
 				"oriental/gladiator_harness"
 			]
 		]);
-		a.setUpgrade(this.new("scripts/items/legend_armor/armor_upgrades/legend_light_gladiator_upgrade"));
+		a.setUpgrade(::new("scripts/items/legend_armor/armor_upgrades/legend_light_gladiator_upgrade"));
 		bros[2].getItems().equip(a);
 		a = ::Const.World.Common.pickHelmet([
 			[
@@ -116,8 +116,8 @@
 			]
 		]);
 		bros[2].getItems().equip(a);
-		bros[2].getItems().equip(this.new("scripts/items/weapons/oriental/qatal_dagger"));
-		bros[2].getItems().equip(this.new("scripts/items/tools/throwing_net"));
+		bros[2].getItems().equip(::new("scripts/items/weapons/oriental/qatal_dagger"));
+		bros[2].getItems().equip(::new("scripts/items/tools/throwing_net"));
 		bros[2].improveMood(0.75, "Eager to prove himself outside the arena");
 		bros[2].setVeteranPerks(2);
 		bros[0].getBackground().m.RawDescription = "{%fullname% thinks muscles make for glory. Wrong. Captain, it is I, " + bros[2].getName() + ", who commands the ladies of this realm. Need not ask me how. Behold! Look at it! Look at the size of it! Yeah. That\'s what I thought. Fools, train all you want, you can\'t have this!}";
@@ -128,8 +128,8 @@
 		bros[2].getBackground().buildDescription(true);
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Assets.getStash().resize(this.World.Assets.getStash().getCapacity() - 9);
-		this.World.Assets.getStash().add(this.new("scripts/items/supplies/dried_lamb_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/supplies/wine_item"));
+		this.World.Assets.getStash().add(::new("scripts/items/supplies/dried_lamb_item"));
+		this.World.Assets.getStash().add(::new("scripts/items/supplies/wine_item"));
 		this.World.Assets.m.Money = 500;
 		this.World.Assets.m.ArmorParts = this.World.Assets.m.ArmorParts / 2;
 		this.World.Assets.m.Medicine = this.World.Assets.m.Medicine / 2;

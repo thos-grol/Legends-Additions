@@ -243,7 +243,7 @@
 
 // 		if (dropLoot)
 // 		{
-// 			local brewerLoot = this.new("scripts/mods/script_container");
+// 			local brewerLoot = ::new("scripts/mods/script_container");
 // 			brewerLoot.extend([
 // 				"scripts/items/supplies/beer_item",
 // 				"scripts/items/supplies/wine_item"
@@ -260,7 +260,7 @@
 // 				]);
 // 			}
 
-// 			item = this.new(brewerLoot.roll());
+// 			item = ::new(brewerLoot.roll());
 // 			this.m.Items.push(item);
 // 			this.Stash.add(item);
 // 			emptySlots = --emptySlots;
@@ -276,7 +276,7 @@
 
 // 		if (dropLoot)
 // 		{
-// 			local chefLoot = this.new("scripts/mods/script_container");
+// 			local chefLoot = ::new("scripts/mods/script_container");
 // 			chefLoot.extend([
 // 				"scripts/items/supplies/dried_fruits_item",
 // 				"scripts/items/supplies/cured_venison_item",
@@ -305,7 +305,7 @@
 // 				]);
 // 			}
 
-// 			item = this.new(chefLoot.roll());
+// 			item = ::new(chefLoot.roll());
 // 			this.m.Items.push(item);
 // 			this.Stash.add(item);
 // 			emptySlots = --emptySlots;
@@ -317,11 +317,11 @@
 // 		}
 
 // 		local r = this.Math.rand(1, 4);
-// 		local huntingLoot = this.new("scripts/mods/script_container");
+// 		local huntingLoot = ::new("scripts/mods/script_container");
 
 // 		if (r <= 2)
 // 		{
-// 			item = this.new("scripts/items/supplies/legend_fresh_meat_item");
+// 			item = ::new("scripts/items/supplies/legend_fresh_meat_item");
 // 			huntingLoot.extend([
 // 				"scripts/items/misc/adrenaline_gland_item",
 // 				"scripts/items/misc/poison_gland_item",
@@ -333,14 +333,14 @@
 // 		}
 // 		else if (r == 3)
 // 		{
-// 			item = this.new("scripts/items/supplies/roots_and_berries_item");
+// 			item = ::new("scripts/items/supplies/roots_and_berries_item");
 // 			huntingLoot.extend([
 // 				"scripts/items/supplies/cured_venison_item"
 // 			]);
 // 		}
 // 		else
 // 		{
-// 			item = this.new("scripts/items/supplies/legend_fresh_fruit_item");
+// 			item = ::new("scripts/items/supplies/legend_fresh_fruit_item");
 // 			huntingLoot.extend([
 // 				"scripts/items/supplies/dried_fruits_item"
 // 			]);
@@ -365,7 +365,7 @@
 
 // 		if (this.Math.rand(1, 5) == 1)
 // 		{
-// 			item = this.new(huntingLoot.roll());
+// 			item = ::new(huntingLoot.roll());
 // 			this.m.Items.push(item);
 // 			this.Stash.add(item);
 // 		}

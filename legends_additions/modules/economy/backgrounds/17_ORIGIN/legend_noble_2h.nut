@@ -18,7 +18,7 @@
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
-		items.equip(this.new("scripts/items/weapons/legend_infantry_axe"));
+		items.equip(::new("scripts/items/weapons/legend_infantry_axe"));
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,

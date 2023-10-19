@@ -36,7 +36,7 @@ this.perk_mastery_hammer <- this.inherit("scripts/skills/skill", {
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 
 		if (!this.m.Container.hasSkill("trait.proficiency_Hammer"))
-			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Hammer"));
+			this.m.Container.add(::new("scripts/skills/traits/_proficiency_Hammer"));
 	}
 
 	function isEnabled()
@@ -56,12 +56,12 @@ this.perk_mastery_hammer <- this.inherit("scripts/skills/skill", {
 		if (_targetEntity.getArmor(_bodyPart) == 0) return;
 
 		local effect = _targetEntity.getSkills().getSkillByID("effects.dismantled");
-		if (effect == null) effect = this.new("scripts/skills/effects/dismantled_effect");
+		if (effect == null) effect = ::new("scripts/skills/effects/dismantled_effect");
 
 		local countsToAdd = 1;
 		local weapon = actor.getMainhandItem();
-		if (weapon != null && weapon.isItemType(this.Const.Items.ItemType.TwoHanded)) countsToAdd += 1;
-		if (_bodyPart == this.Const.BodyPart.Body) effect.m.BodyHitCount += countsToAdd;
+		if (weapon != null && weapon.isItemType(::Const.Items.ItemType.TwoHanded)) countsToAdd += 1;
+		if (_bodyPart == ::Const.BodyPart.Body) effect.m.BodyHitCount += countsToAdd;
 		else effect.m.HeadHitCount += countsToAdd;
 
 		_targetEntity.getSkills().add(effect);

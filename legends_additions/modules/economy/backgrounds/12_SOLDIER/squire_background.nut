@@ -35,26 +35,26 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/shortsword"));
+			items.equip(::new("scripts/items/weapons/shortsword"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/hatchet"));
+			items.equip(::new("scripts/items/weapons/hatchet"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/winged_mace"));
+			items.equip(::new("scripts/items/weapons/winged_mace"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/boar_spear"));
+			items.equip(::new("scripts/items/weapons/boar_spear"));
 		}
 
 		r = this.Math.rand(0, 2);
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/shields/wooden_shield"));
+			items.equip(::new("scripts/items/shields/wooden_shield"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

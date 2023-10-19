@@ -29,19 +29,19 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/knife"));
+			items.equip(::new("scripts/items/weapons/knife"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/dagger"));
+			items.equip(::new("scripts/items/weapons/dagger"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/bludgeon"));
+			items.equip(::new("scripts/items/weapons/bludgeon"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/hatchet"));
+			items.equip(::new("scripts/items/weapons/hatchet"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

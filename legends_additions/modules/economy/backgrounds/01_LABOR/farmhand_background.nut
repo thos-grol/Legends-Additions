@@ -48,23 +48,23 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_scythe"));
+			items.equip(::new("scripts/items/weapons/legend_scythe"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/wooden_flail"));
+			items.equip(::new("scripts/items/weapons/wooden_flail"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_hoe"));
+			items.equip(::new("scripts/items/weapons/legend_hoe"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/pitchfork"));
+			items.equip(::new("scripts/items/weapons/pitchfork"));
 		}
 		else if (r == 4)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_wooden_pitchfork"));
+			items.equip(::new("scripts/items/weapons/legend_wooden_pitchfork"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

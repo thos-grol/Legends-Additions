@@ -37,11 +37,11 @@
 			"weapons/warfork"
 		];
 
-		items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+		items.equip(::new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 
 		if (items.getItemAtSlot(::Const.ItemSlot.Offhand) == null && this.Math.rand(1, 100) <= 50)
 		{
-			items.equip(this.new("scripts/items/shields/buckler_shield"));
+			items.equip(::new("scripts/items/shields/buckler_shield"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

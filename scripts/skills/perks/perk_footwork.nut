@@ -25,7 +25,7 @@ this.perk_footwork <- this.inherit("scripts/skills/skill", {
 	{
 		if (!this.m.Container.hasSkill("actives.footwork"))
 		{
-			this.m.Container.add(this.new("scripts/skills/actives/footwork"));
+			this.m.Container.add(::new("scripts/skills/actives/footwork"));
 		}
 	}
 

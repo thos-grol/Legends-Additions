@@ -29,22 +29,22 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/falchion"));
+			items.equip(::new("scripts/items/weapons/falchion"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/shortsword"));
+			items.equip(::new("scripts/items/weapons/shortsword"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/hand_axe"));
+			items.equip(::new("scripts/items/weapons/hand_axe"));
 		}
 
 		r = this.Math.rand(0, 1);
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/shields/heater_shield"));
+			items.equip(::new("scripts/items/shields/heater_shield"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

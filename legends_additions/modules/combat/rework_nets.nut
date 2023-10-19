@@ -143,8 +143,8 @@
 				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " throws a net and hits " + ::Const.UI.getColorizedEntityName(targetEntity));
 			}
 
-			targetEntity.getSkills().add(this.new("scripts/skills/effects/net_effect"));
-			local breakFree = this.new("scripts/skills/actives/break_free_skill");
+			targetEntity.getSkills().add(::new("scripts/skills/effects/net_effect"));
+			local breakFree = ::new("scripts/skills/actives/break_free_skill");
 			breakFree.m.Icon = "skills/active_74.png";
 			breakFree.m.IconDisabled = "skills/active_74_sw.png";
 			breakFree.m.Overlay = "active_74";

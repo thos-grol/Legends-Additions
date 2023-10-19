@@ -113,7 +113,7 @@ this.anatomist_helps_blighted_guy_1_event <- this.inherit("scripts/events/event"
 				}
 
 				_event.m.Dude.worsenMood(1.5, "Was almost buried alive for bearing a disease");
-				local i = this.new("scripts/skills/injury/sickness_injury");
+				local i = ::new("scripts/skills/injury/sickness_injury");
 				i.addHealingTime(8);
 				_event.m.Dude.getSkills().add(i);
 				_event.m.Dude.getFlags().set("IsMilitiaCaptain", true);

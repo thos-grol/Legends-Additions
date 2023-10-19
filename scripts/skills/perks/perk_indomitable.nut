@@ -34,7 +34,7 @@ this.perk_indomitable <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		if (!this.m.Container.hasSkill("actives.indomitable"))
-			this.m.Container.add(this.new("scripts/skills/actives/indomitable"));
+			this.m.Container.add(::new("scripts/skills/actives/indomitable"));
 
 		local actor = this.getContainer().getActor();
 		actor.getFlags().set("Destiny", true);
@@ -58,7 +58,7 @@ this.perk_indomitable <- this.inherit("scripts/skills/skill", {
 
 		this.m.On = true;
 		if (!this.getContainer().hasSkill("effects.indomitable"))
-			this.m.Container.add(this.new("scripts/skills/effects/indomitable_effect"));
+			this.m.Container.add(::new("scripts/skills/effects/indomitable_effect"));
 	}
 
 	function onCombatFinished()
@@ -75,7 +75,7 @@ this.perk_indomitable <- this.inherit("scripts/skills/skill", {
 
 		this.m.On = true;
 		if (!this.getContainer().hasSkill("effects.indomitable"))
-			this.m.Container.add(this.new("scripts/skills/effects/indomitable_effect"));
+			this.m.Container.add(::new("scripts/skills/effects/indomitable_effect"));
 
 	}
 

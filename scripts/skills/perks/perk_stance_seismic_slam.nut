@@ -66,14 +66,14 @@ this.perk_stance_seismic_slam <- this.inherit("scripts/skills/skill", {
 		{
 			if (!_targetEntity.getSkills().hasSkill("effects.staggered"))
 			{
-				_targetEntity.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
-				if (!_targetEntity.isHiddenToPlayer()) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_targetEntity) + " has been staggered");
+				_targetEntity.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
+				if (!_targetEntity.isHiddenToPlayer()) this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_targetEntity) + " has been staggered");
 			}
 				
 			if (!_targetEntity.getSkills().hasSkill("effects.seal"))
 			{
-				_targetEntity.getSkills().add(this.new("scripts/skills/effects/seal_effect"));
-				if (!_targetEntity.isHiddenToPlayer()) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_targetEntity) + "\'s movements have been sealed");
+				_targetEntity.getSkills().add(::new("scripts/skills/effects/seal_effect"));
+				if (!_targetEntity.isHiddenToPlayer()) this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_targetEntity) + "\'s movements have been sealed");
 			}
 				
 		}

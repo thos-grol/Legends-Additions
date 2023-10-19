@@ -34,13 +34,13 @@
 		this.getContainer().getActor().fillTalentValues(2, true);
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		items.equip(this.new("scripts/items/weapons/war_bow"));
-		items.equip(this.new("scripts/items/ammo/huge_quiver_of_arrows"));
+		items.equip(::new("scripts/items/weapons/war_bow"));
+		items.equip(::new("scripts/items/ammo/huge_quiver_of_arrows"));
 		r = this.Math.rand(0, 1);
 
 		if (r == 0)
 		{
-			items.addToBag(this.new("scripts/items/weapons/knife"));
+			items.addToBag(::new("scripts/items/weapons/knife"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

@@ -218,11 +218,11 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 
 				if (r == 1)
 				{
-					sword = this.new("scripts/items/weapons/arming_sword");
+					sword = ::new("scripts/items/weapons/arming_sword");
 				}
 				else if (r == 2)
 				{
-					sword = this.new("scripts/items/weapons/falchion");
+					sword = ::new("scripts/items/weapons/falchion");
 				}
 
 				this.List.push({
@@ -243,15 +243,15 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 
 		if (r == 1)
 		{
-			food = this.new("scripts/items/supplies/dried_fish_item");
+			food = ::new("scripts/items/supplies/dried_fish_item");
 		}
 		else if (r == 2)
 		{
-			food = this.new("scripts/items/supplies/ground_grains_item");
+			food = ::new("scripts/items/supplies/ground_grains_item");
 		}
 		else
 		{
-			food = this.new("scripts/items/supplies/bread_item");
+			food = ::new("scripts/items/supplies/bread_item");
 		}
 
 		_list.push({
@@ -269,11 +269,11 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 
 			if (r == 1)
 			{
-				item = this.new("scripts/items/weapons/wooden_stick");
+				item = ::new("scripts/items/weapons/wooden_stick");
 			}
 			else if (r == 2)
 			{
-				item = this.new("scripts/items/weapons/knife");
+				item = ::new("scripts/items/weapons/knife");
 			}
 			else if (r == 3)
 			{
@@ -286,15 +286,15 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 			}
 			else if (r == 4)
 			{
-				item = this.new("scripts/items/weapons/woodcutters_axe");
+				item = ::new("scripts/items/weapons/woodcutters_axe");
 			}
 			else if (r == 5)
 			{
-				item = this.new("scripts/items/shields/wooden_shield_old");
+				item = ::new("scripts/items/shields/wooden_shield_old");
 			}
 			else if (r == 6)
 			{
-				item = this.new("scripts/items/weapons/pickaxe");
+				item = ::new("scripts/items/weapons/pickaxe");
 			}
 			else if (r == 7)
 			{

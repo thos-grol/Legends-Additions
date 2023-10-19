@@ -32,23 +32,23 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_hammer"));
+			items.equip(::new("scripts/items/weapons/legend_hammer"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_hoe"));
+			items.equip(::new("scripts/items/weapons/legend_hoe"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_shovel"));
+			items.equip(::new("scripts/items/weapons/legend_shovel"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_scythe"));
+			items.equip(::new("scripts/items/weapons/legend_scythe"));
 		}
 		else if (r == 4)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_saw"));
+			items.equip(::new("scripts/items/weapons/legend_saw"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

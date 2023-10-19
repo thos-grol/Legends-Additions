@@ -129,7 +129,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 
 
 			//Counts as feasted, remove temp injuries
-			local skills = actor.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
+			local skills = this.m.Container.getAllSkillsOfType(::Const.SkillType.Injury);
 			foreach( s in skills )
 			{
 				if (s.getOrder() == ::Const.SkillOrder.PermanentInjury) continue;
@@ -137,7 +137,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 			}
 
 			//add 2 stacks of hair armor
-			local nachzerer_hair_armor = actor.getSkills().getSkillByID("perk.nachzerer_gluttony_barrier");
+			local nachzerer_hair_armor = this.m.Container.getSkillByID("perk.nachzerer_gluttony_barrier");
 			if (nachzerer_hair_armor != null) nachzerer_hair_armor.addCharges(2);
 		}
 
@@ -157,7 +157,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 				::Z.Log.skill(_user, target, "Swallow Whole", roll, chance, false, true);
 
 			local nachzerer_maddening_hunger = _user.getSkills().getSkillByID("effects.nachzerer_maddening_hunger");
-			if (nachzerer_maddening_hunger == null) _user.getSkills().add(this.new("scripts/skills/effects/nachzerer_maddening_hunger"));
+			if (nachzerer_maddening_hunger == null) _user.getSkills().add(::new("scripts/skills/effects/nachzerer_maddening_hunger"));
 			else nachzerer_maddening_hunger.addStacks(1);
 
 			return false;
@@ -186,7 +186,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		_user.getSprite("injury").setBrush("bust_ghoul_04_injured");
 		_user.getSprite("head").setBrush("bust_ghoul_04_head_0" + _user.m.Head);
 		_user.m.Sound[::Const.Sound.ActorEvent.Death] = _user.m.Sound[::Const.Sound.ActorEvent.Other2];
-		local effect = this.new("scripts/skills/effects/swallowed_whole_effect");
+		local effect = ::new("scripts/skills/effects/swallowed_whole_effect");
 		effect.setName(target.getName());
 		_user.getSkills().add(effect);
 

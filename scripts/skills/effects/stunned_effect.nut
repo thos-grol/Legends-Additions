@@ -10,14 +10,14 @@ this.stunned_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "skills/status_effect_05.png";
 		this.m.IconMini = "status_effect_05_mini";
 		this.m.Overlay = "status_effect_05";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 	}
 
 	function getDescription()
 	{
-		return "This character is stunned or otherwise incapacitated for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s), and unable to act.";
+		return "This character is stunned or otherwise incapacitated for [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s), and unable to act.";
 	}
 
 	function addTurns( _t )
@@ -42,11 +42,11 @@ this.stunned_effect <- this.inherit("scripts/skills/skill", {
 			{
 				if (this.getContainer().getActor().getTile().IsVisibleForPlayer)
 				{
-					this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " resists the Stun with " + skill.getName() + " and is Dazed instead.");
+					this.Tactical.EventLog.logEx(::Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " resists the Stun with " + skill.getName() + " and is Dazed instead.");
 				}
 
 				this.removeSelf();
-				this.getContainer().add(this.new("scripts/skills/effects/dazed_effect"));
+				this.getContainer().add(::new("scripts/skills/effects/dazed_effect"));
 				return;
 			}
 		}
@@ -59,7 +59,7 @@ this.stunned_effect <- this.inherit("scripts/skills/skill", {
 		{
 			if (!this.getContainer().getActor().isHiddenToPlayer())
 			{
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " shook off being stunned thanks to his unnatural physiology");
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " shook off being stunned thanks to his unnatural physiology");
 			}
 
 			this.removeSelf();
@@ -105,7 +105,7 @@ this.stunned_effect <- this.inherit("scripts/skills/skill", {
 
 				if (actor.hasSprite("status_stunned"))
 				{
-					actor.getSprite("status_stunned").setBrush(this.Const.Combat.StunnedBrush);
+					actor.getSprite("status_stunned").setBrush(::Const.Combat.StunnedBrush);
 					actor.getSprite("status_stunned").Visible = true;
 				}
 

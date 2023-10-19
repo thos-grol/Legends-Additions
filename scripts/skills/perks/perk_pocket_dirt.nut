@@ -26,7 +26,7 @@ this.perk_pocket_dirt <- this.inherit("scripts/skills/skill", {
 	{
 		if (!this.m.Container.hasSkill("actives.throw_dirt"))
 		{
-			this.m.Container.add(this.new("scripts/skills/actives/throw_dirt_skill"));
+			this.m.Container.add(::new("scripts/skills/actives/throw_dirt_skill"));
 		}
 	}
 

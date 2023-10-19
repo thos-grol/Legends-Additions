@@ -8,14 +8,14 @@ this.legend_fortify_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "skills/status_effect_03.png";
 		this.m.IconMini = "status_effect_03_mini";
 		this.m.Overlay = "status_effect_03";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 	}
 
 	function getTooltip()
 	{
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
 		return [
 			{
@@ -32,22 +32,22 @@ this.legend_fortify_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + item.getMeleeDefense() + "[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + item.getMeleeDefense() + "[/color] Melee Defense"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + item.getRangedDefense() + "[/color] Ranged Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + item.getRangedDefense() + "[/color] Ranged Defense"
 			}
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
-		if (item.isItemType(this.Const.Items.ItemType.Shield) && item.getCondition() > 0)
+		if (item.isItemType(::Const.Items.ItemType.Shield) && item.getCondition() > 0)
 		{
 			local mult = 1.0;
 
@@ -63,9 +63,9 @@ this.legend_fortify_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = this.m.Container.getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
-		if (item != null && item.isItemType(this.Const.Items.ItemType.Shield))
+		if (item != null && item.isItemType(::Const.Items.ItemType.Shield))
 		{
 			item.onShieldUp();
 		}
@@ -73,9 +73,9 @@ this.legend_fortify_effect <- this.inherit("scripts/skills/skill", {
 
 	function onRemoved()
 	{
-		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = this.m.Container.getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
-		if (item != null && item.isItemType(this.Const.Items.ItemType.Shield))
+		if (item != null && item.isItemType(::Const.Items.ItemType.Shield))
 		{
 			item.onShieldDown();
 		}

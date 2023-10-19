@@ -33,19 +33,19 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/knife"));
+			items.equip(::new("scripts/items/weapons/knife"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_shovel"));
+			items.equip(::new("scripts/items/weapons/legend_shovel"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_shovel"));
+			items.equip(::new("scripts/items/weapons/legend_shovel"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/ancient/broken_ancient_sword"));
+			items.equip(::new("scripts/items/weapons/ancient/broken_ancient_sword"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

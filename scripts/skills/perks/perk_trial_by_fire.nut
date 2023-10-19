@@ -44,7 +44,7 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		if (!this.m.Container.hasSkill("actives.rally_the_troops")) this.m.Container.add(this.new("scripts/skills/actives/rally_the_troops"));
+		if (!this.m.Container.hasSkill("actives.rally_the_troops")) this.m.Container.add(::new("scripts/skills/actives/rally_the_troops"));
 	}
 
 	function onRemoved()

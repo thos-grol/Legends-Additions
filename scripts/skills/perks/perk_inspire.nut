@@ -27,7 +27,7 @@ this.perk_inspire <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		if (!this.m.Container.hasSkill("actives.inspire")) 
-			this.m.Container.add(this.new("scripts/skills/actives/inspire_skill"));
+			this.m.Container.add(::new("scripts/skills/actives/inspire_skill"));
 
 		local actor = this.getContainer().getActor();
 		local playerRoster = this.World.getPlayerRoster().getAll();

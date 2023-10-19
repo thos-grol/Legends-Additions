@@ -75,7 +75,7 @@ this.undead_frozen_pond_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Other.getImagePath());
-				local item = this.new("scripts/items/weapons/greatsword");
+				local item = ::new("scripts/items/weapons/greatsword");
 				item.setCondition(11.0);
 				this.World.Assets.getStash().add(item);
 				this.List.push({
@@ -119,7 +119,7 @@ this.undead_frozen_pond_event <- this.inherit("scripts/events/event", {
 						text = _event.m.Other.getName() + " suffers " + injury.getNameOnly()
 					}
 				];
-				local effect = this.new("scripts/skills/injury/sickness_injury");
+				local effect = ::new("scripts/skills/injury/sickness_injury");
 				_event.m.Other.getSkills().add(effect);
 				this.List.push({
 					id = 10,
@@ -148,7 +148,7 @@ this.undead_frozen_pond_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Lightweight.getImagePath());
-				local item = this.new("scripts/items/weapons/greatsword");
+				local item = ::new("scripts/items/weapons/greatsword");
 				item.setCondition(11.0);
 				this.World.Assets.getStash().add(item);
 				this.List.push({
@@ -156,7 +156,7 @@ this.undead_frozen_pond_event <- this.inherit("scripts/events/event", {
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
-				item = this.new("scripts/items/loot/signet_ring_item");
+				item = ::new("scripts/items/loot/signet_ring_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,

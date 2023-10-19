@@ -48,19 +48,19 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/hand_axe"));
+			items.equip(::new("scripts/items/weapons/hand_axe"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/hatchet"));
+			items.equip(::new("scripts/items/weapons/hatchet"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/woodcutters_axe"));
+			items.equip(::new("scripts/items/weapons/woodcutters_axe"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_saw"));
+			items.equip(::new("scripts/items/weapons/legend_saw"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

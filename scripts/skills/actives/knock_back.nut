@@ -18,8 +18,8 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/knockback_hit_02.wav",
 			"sounds/combat/knockback_hit_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -59,7 +59,7 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/hitchance.png",
-				text = "Has [color=" + this.Const.UI.Color.PositiveValue + "]+50%[/color] chance to hit"
+				text = "Has [color=" + ::Const.UI.Color.PositiveValue + "]+50%[/color] chance to hit"
 			});
 		}
 		else
@@ -68,7 +68,7 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/hitchance.png",
-				text = "Has [color=" + this.Const.UI.Color.PositiveValue + "]+25%[/color] chance to hit"
+				text = "Has [color=" + ::Const.UI.Color.PositiveValue + "]+25%[/color] chance to hit"
 			});
 		}
 
@@ -78,7 +78,7 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Has a [color=" + this.Const.UI.Color.PositiveValue + "]100%[/color] chance to stagger on a hit"
+				text = "Has a [color=" + ::Const.UI.Color.PositiveValue + "]100%[/color] chance to stagger on a hit"
 			});
 		}
 
@@ -107,13 +107,13 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 				id = 4,
 				type = "text",
 				icon = "ui/icons/regular_damage.png",
-				text = "Inflicts [color=" + this.Const.UI.Color.DamageValue + "]" + damagemin + "[/color] - [color=" + this.Const.UI.Color.DamageValue + "]" + damagemax + "[/color] damage to hitpoints"
+				text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]" + damagemin + "[/color] - [color=" + ::Const.UI.Color.DamageValue + "]" + damagemax + "[/color] damage to hitpoints"
 			});
 			ret.push({
 				id = 5,
 				type = "text",
 				icon = "ui/icons/armor_damage.png",
-				text = "Inflicts [color=" + this.Const.UI.Color.DamageValue + "]" + this.Math.abs(0.5 * damagemin) + "[/color] - [color=" + this.Const.UI.Color.DamageValue + "]" + this.Math.abs(0.5 * damagemax) + "[/color] damage to armor"
+				text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]" + this.Math.abs(0.5 * damagemin) + "[/color] - [color=" + ::Const.UI.Color.DamageValue + "]" + this.Math.abs(0.5 * damagemax) + "[/color] damage to armor"
 			});
 		}
 
@@ -163,7 +163,7 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInShields ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInShields ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onVerifyTarget( _originTile, _targetTile )
@@ -187,7 +187,7 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 
 		if (this.m.SoundOnUse.len() != 0)
 		{
-			this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.Skill, _user.getPos());
+			this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
 		}
 
 		if (this.Math.rand(1, 100) > this.getHitchance(_targetTile.getEntity()))
@@ -212,7 +212,7 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 
 		if (!_user.isHiddenToPlayer() && (_targetTile.IsVisibleForPlayer || knockToTile.IsVisibleForPlayer))
 		{
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " has knocked back " + this.Const.UI.getColorizedEntityName(target));
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " has knocked back " + ::Const.UI.getColorizedEntityName(target));
 		}
 
 		local skills = target.getSkills();
@@ -224,8 +224,8 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 		{
 			if (!target.getSkills().hasSkill("effects.staggered"))
 			{
-				target.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
-				if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer) this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(target) + " has been staggered");
+				target.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
+				if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer) this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(target) + " has been staggered");
 			}
 				
 
@@ -234,12 +234,12 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 
 		if (this.m.SoundOnHit.len() != 0)
 		{
-			this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, _user.getPos());
+			this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
 		}
 
-		target.setCurrentMovementType(this.Const.Tactical.MovementType.Involuntary);
+		target.setCurrentMovementType(::Const.Tactical.MovementType.Involuntary);
 		local hasShieldBash = _user.getSkills().hasSkill("perk.shield_bash");
-		local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - _targetTile.Level) - 1) * this.Const.Combat.FallingDamage;
+		local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - _targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
 
 		if (damage == 0 && !hasShieldBash)
 		{
@@ -251,13 +251,13 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 			local tag = {
 				Attacker = _user,
 				Skill = this,
-				HitInfo = clone this.Const.Tactical.HitInfo,
+				HitInfo = clone ::Const.Tactical.HitInfo,
 				HitInfoBash = null
 			};
 			tag.HitInfo.DamageRegular = damage;
-			tag.HitInfo.DamageFatigue = this.Const.Combat.FatigueReceivedPerHit;
+			tag.HitInfo.DamageFatigue = ::Const.Combat.FatigueReceivedPerHit;
 			tag.HitInfo.DamageDirect = 1.0;
-			tag.HitInfo.BodyPart = this.Const.BodyPart.Body;
+			tag.HitInfo.BodyPart = ::Const.BodyPart.Body;
 			tag.HitInfo.BodyDamageMult = 1.0;
 			tag.HitInfo.FatalityChanceMult = 1.0;
 
@@ -275,11 +275,11 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 				}
 
 				damage = damage + this.Math.rand(damagemin, damagemax);
-				tag.HitInfoBash = clone this.Const.Tactical.HitInfo;
+				tag.HitInfoBash = clone ::Const.Tactical.HitInfo;
 				tag.HitInfoBash.DamageRegular = damage * p.DamageRegularMult;
 				tag.HitInfoBash.DamageArmor = this.Math.floor(damage * 0.5);
 				tag.HitInfoBash.DamageFatigue = 10;
-				tag.HitInfoBash.BodyPart = this.Const.BodyPart.Body;
+				tag.HitInfoBash.BodyPart = ::Const.BodyPart.Body;
 				tag.HitInfoBash.BodyDamageMult = 1.0;
 				tag.HitInfoBash.FatalityChanceMult = 0.0;
 			}

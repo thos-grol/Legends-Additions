@@ -41,7 +41,7 @@ this.perk_mastery_mace <- this.inherit("scripts/skills/skill", {
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 
 		if (!this.m.Container.hasSkill("trait.proficiency_Mace"))
-			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Mace"));
+			this.m.Container.add(::new("scripts/skills/traits/_proficiency_Mace"));
 	}
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
@@ -64,13 +64,13 @@ this.perk_mastery_mace <- this.inherit("scripts/skills/skill", {
 				{
 					if (!_targetEntity.getSkills().hasSkill("effects.stunned"))
 					{
-						_targetEntity.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));
+						_targetEntity.getSkills().add(::new("scripts/skills/effects/stunned_effect"));
 						if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " has stunned ");
 					}
 				}
 				else
 				{
-					local effect = this.new("scripts/skills/effects/dazed_effect");
+					local effect = ::new("scripts/skills/effects/dazed_effect");
 					_targetEntity.getSkills().add(effect);
 					effect.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 
@@ -79,7 +79,7 @@ this.perk_mastery_mace <- this.inherit("scripts/skills/skill", {
 			}
 			else
 			{
-				local effect = this.new("scripts/skills/effects/dazed_effect");
+				local effect = ::new("scripts/skills/effects/dazed_effect");
 				_targetEntity.getSkills().add(effect);
 				effect.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 				if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " has been dazed for " + effect.m.TurnsLeft + " turns");
@@ -87,7 +87,7 @@ this.perk_mastery_mace <- this.inherit("scripts/skills/skill", {
 		}
 		else
 		{
-			local effect = this.new("scripts/skills/effects/dazed_effect");
+			local effect = ::new("scripts/skills/effects/dazed_effect");
 			_targetEntity.getSkills().add(effect);
 			effect.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 			if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " has been dazed for " + effect.m.TurnsLeft + " turns");

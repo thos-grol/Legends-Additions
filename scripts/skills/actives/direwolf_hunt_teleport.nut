@@ -310,7 +310,7 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 		if (_target.isNonCombatant()) return;
 
 		if (!_target.getSkills().hasSkill("effects.staggered")) 
-				_target.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
+				_target.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
 		
 		if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer) ::Z.Log.status(_target, "staggered (1 turn)");
 

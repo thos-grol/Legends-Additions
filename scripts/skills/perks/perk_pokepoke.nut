@@ -11,11 +11,11 @@ this.perk_pokepoke <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.pokepoke";
-		this.m.Name = this.Const.Strings.PerkName.PokePoke;
-		this.m.Description = this.Const.Strings.PerkDescription.PokePoke;
+		this.m.Name = ::Const.Strings.PerkName.PokePoke;
+		this.m.Description = ::Const.Strings.PerkDescription.PokePoke;
 		this.m.Icon = "ui/perks/pokepoke.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;

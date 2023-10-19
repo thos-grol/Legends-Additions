@@ -66,23 +66,23 @@ this.legend_old_man_sells <- this.inherit("scripts/events/event", {
 
 					if (r == 1)
 					{
-						item = this.new("scripts/items/accessory/special/legend_oms_rib_item");
+						item = ::new("scripts/items/accessory/special/legend_oms_rib_item");
 					}
 					else if (r == 2)
 					{
-						item = this.new("scripts/items/accessory/special/legend_oms_amphora_item");
+						item = ::new("scripts/items/accessory/special/legend_oms_amphora_item");
 					}
 					else if (r == 3)
 					{
-						item = this.new("scripts/items/accessory/special/legend_oms_ledger_item");
+						item = ::new("scripts/items/accessory/special/legend_oms_ledger_item");
 					}
 					else if (r == 4)
 					{
-						item = this.new("scripts/items/accessory/special/legend_oms_paw_item");
+						item = ::new("scripts/items/accessory/special/legend_oms_paw_item");
 					}
 					else if (r == 5)
 					{
-						item = this.new("scripts/items/accessory/special/legend_oms_fate_item");
+						item = ::new("scripts/items/accessory/special/legend_oms_fate_item");
 					}
 
 					this.World.Assets.getStash().add(item);

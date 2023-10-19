@@ -39,22 +39,22 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/oriental/qatal_dagger"));
+			items.equip(::new("scripts/items/weapons/oriental/qatal_dagger"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/dagger"));
+			items.equip(::new("scripts/items/weapons/dagger"));
 		}
 
 		r = this.Math.rand(0, 1);
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/tools/smoke_bomb_item"));
+			items.equip(::new("scripts/items/tools/smoke_bomb_item"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/tools/daze_bomb_item"));
+			items.equip(::new("scripts/items/tools/daze_bomb_item"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

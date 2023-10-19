@@ -26,7 +26,7 @@ this.anatomist_helps_blighted_guy_2_event <- this.inherit("scripts/events/event"
 			function start( _event )
 			{
 				this.Characters.push(_event.m.MilitiaCaptain.getImagePath());
-				local bg = this.new("scripts/skills/backgrounds/militia_background");
+				local bg = ::new("scripts/skills/backgrounds/militia_background");
 				bg.m.IsNew = false;
 				_event.m.MilitiaCaptain.getSkills().removeByID("background.vagabond");
 				_event.m.MilitiaCaptain.getSkills().add(bg);

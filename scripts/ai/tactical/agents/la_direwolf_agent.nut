@@ -21,15 +21,15 @@ this.la_direwolf_agent <- this.inherit("scripts/ai/tactical/agent", {
 
 	function onAddBehaviors()
 	{
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_roam"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_flee"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_engage_melee"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_retreat"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_break_free"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_roam"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_flee"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_engage_melee"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_retreat"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_break_free"));
 
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_direwolf_bite"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_direwolf_hunt"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_direwolf_indomitable"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_direwolf_bite"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_direwolf_hunt"));
+		this.addBehavior(::new("scripts/ai/tactical/behaviors/ai_direwolf_indomitable"));
 	}
 
 });

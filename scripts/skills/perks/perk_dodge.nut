@@ -22,7 +22,7 @@ this.perk_dodge <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		this.getContainer().add(this.new("scripts/skills/effects/dodge_effect"));
+		this.getContainer().add(::new("scripts/skills/effects/dodge_effect"));
 	}
 
 	function onRemoved()

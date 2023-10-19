@@ -31,12 +31,12 @@
 	{
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		items.equip(this.new("scripts/items/weapons/militia_spear"));
+		items.equip(::new("scripts/items/weapons/militia_spear"));
 
 		r = this.Math.rand(0, 3);
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/shields/wooden_shield"));
+			items.equip(::new("scripts/items/shields/wooden_shield"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

@@ -95,7 +95,7 @@
 			party.setUsingGlobalVision(false);
 			party.setLooting(false);
 
-			local roam = this.new("scripts/ai/world/orders/roam_order");
+			local roam = ::new("scripts/ai/world/orders/roam_order");
 			roam.setAllTerrainAvailable();
 			roam.setTerrain(::Const.World.TerrainType.Ocean, false);
 			roam.setTerrain(::Const.World.TerrainType.Mountains, false);
@@ -140,7 +140,7 @@
 			party.setSlowerAtNight(false);
 			party.setUsingGlobalVision(false);
 			party.setLooting(false);
-			local roam = this.new("scripts/ai/world/orders/roam_order");
+			local roam = ::new("scripts/ai/world/orders/roam_order");
 			roam.setAllTerrainAvailable();
 			roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 			roam.setTerrain(::Const.World.TerrainType.Ocean, false);
@@ -190,7 +190,7 @@
 			// 	party.setSlowerAtNight(false);
 			// 	party.setUsingGlobalVision(false);
 			// 	party.setLooting(false);
-			// 	local roam = this.new("scripts/ai/world/orders/roam_order");
+			// 	local roam = ::new("scripts/ai/world/orders/roam_order");
 			// 	roam.setNoTerrainAvailable();
 			// 	roam.setTerrain(::Const.World.TerrainType.Desert, true);
 			// 	roam.setTerrain(::Const.World.TerrainType.Oasis, true);
@@ -267,7 +267,7 @@
 			// 	party.setSlowerAtNight(false);
 			// 	party.setUsingGlobalVision(false);
 			// 	party.setLooting(false);
-			// 	local roam = this.new("scripts/ai/world/orders/roam_order");
+			// 	local roam = ::new("scripts/ai/world/orders/roam_order");
 			// 	roam.setNoTerrainAvailable();
 			// 	roam.setTerrain(::Const.World.TerrainType.Desert, true);
 			// 	roam.setTerrain(::Const.World.TerrainType.Oasis, true);
@@ -361,7 +361,7 @@
 				party.setUsingGlobalVision(false);
 				party.setLooting(false);
 				party.getFlags().set("IsWebknechts", true);
-				local roam = this.new("scripts/ai/world/orders/roam_order");
+				local roam = ::new("scripts/ai/world/orders/roam_order");
 				roam.setNoTerrainAvailable();
 				roam.setTerrain(::Const.World.TerrainType.Forest, true);
 				roam.setTerrain(::Const.World.TerrainType.LeaveForest, true);
@@ -418,7 +418,7 @@
 				party.setUsingGlobalVision(false);
 				party.setLooting(false);
 				party.getFlags().set("IsUnholds", true);
-				local roam = this.new("scripts/ai/world/orders/roam_order");
+				local roam = ::new("scripts/ai/world/orders/roam_order");
 				roam.setNoTerrainAvailable();
 				roam.setTerrain(::Const.World.TerrainType.Forest, true);
 				roam.setTerrain(::Const.World.TerrainType.Hills, true);
@@ -511,7 +511,7 @@
 				party.setUsingGlobalVision(false);
 				party.setLooting(false);
 				party.getFlags().set("IsUnholds", true);
-				local roam = this.new("scripts/ai/world/orders/roam_order");
+				local roam = ::new("scripts/ai/world/orders/roam_order");
 				roam.setNoTerrainAvailable();
 				roam.setTerrain(::Const.World.TerrainType.Snow, true);
 				roam.setTerrain(::Const.World.TerrainType.SnowyForest, true);
@@ -575,7 +575,7 @@
 				party.setUsingGlobalVision(false);
 				party.setLooting(false);
 				party.getFlags().set("IsUnholds", true);
-				local roam = this.new("scripts/ai/world/orders/roam_order");
+				local roam = ::new("scripts/ai/world/orders/roam_order");
 				roam.setNoTerrainAvailable();
 				roam.setTerrain(::Const.World.TerrainType.Swamp, true);
 				roam.setTerrain(::Const.World.TerrainType.LeaveForest, true);
@@ -651,7 +651,7 @@
 				party.setUsingGlobalVision(false);
 				party.setLooting(false);
 				party.getFlags().set("IsAlps", true);
-				local roam = this.new("scripts/ai/world/orders/roam_order");
+				local roam = ::new("scripts/ai/world/orders/roam_order");
 				roam.setAllTerrainAvailable();
 				roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 				roam.setTerrain(::Const.World.TerrainType.Ocean, false);
@@ -727,7 +727,7 @@
 			// 	party.setSlowerAtNight(false);
 			// 	party.setUsingGlobalVision(false);
 			// 	party.setLooting(false);
-			// 	local roam = this.new("scripts/ai/world/orders/roam_order");
+			// 	local roam = ::new("scripts/ai/world/orders/roam_order");
 			// 	roam.setAllTerrainAvailable();
 			// 	roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 			// 	roam.setTerrain(::Const.World.TerrainType.Ocean, false);
@@ -807,7 +807,7 @@
 				party.setSlowerAtNight(false);
 				party.setUsingGlobalVision(false);
 				party.setLooting(false);
-				local roam = this.new("scripts/ai/world/orders/roam_order");
+				local roam = ::new("scripts/ai/world/orders/roam_order");
 				roam.setNoTerrainAvailable();
 				roam.setTerrain(::Const.World.TerrainType.Forest, true);
 				roam.setTerrain(::Const.World.TerrainType.LeaveForest, true);
@@ -888,7 +888,7 @@
 				party.setSlowerAtNight(true);
 				party.setUsingGlobalVision(false);
 				party.setLooting(false);
-				local roam = this.new("scripts/ai/world/orders/roam_order");
+				local roam = ::new("scripts/ai/world/orders/roam_order");
 				roam.setNoTerrainAvailable();
 				roam.setTerrain(::Const.World.TerrainType.Swamp, true);
 				party.getController().addOrder(roam);
@@ -941,7 +941,7 @@
 			// 	party.setSlowerAtNight(false);
 			// 	party.setUsingGlobalVision(false);
 			// 	party.setLooting(false);
-			// 	local roam = this.new("scripts/ai/world/orders/roam_order");
+			// 	local roam = ::new("scripts/ai/world/orders/roam_order");
 			// 	roam.setNoTerrainAvailable();
 			// 	roam.setTerrain(::Const.World.TerrainType.Desert, true);
 			// 	roam.setTerrain(::Const.World.TerrainType.Oasis, true);
@@ -1002,7 +1002,7 @@
 				party.setSlowerAtNight(false);
 				party.setUsingGlobalVision(false);
 				party.setLooting(false);
-				local roam = this.new("scripts/ai/world/orders/roam_order");
+				local roam = ::new("scripts/ai/world/orders/roam_order");
 				roam.setNoTerrainAvailable();
 				roam.setTerrain(::Const.World.TerrainType.Forest, true);
 				roam.setTerrain(::Const.World.TerrainType.LeaveForest, true);
@@ -1082,7 +1082,7 @@
 		// 	party.setSlowerAtNight(false);
 		// 	party.setUsingGlobalVision(false);
 		// 	party.setLooting(false);
-		// 	local roam = this.new("scripts/ai/world/orders/roam_order");
+		// 	local roam = ::new("scripts/ai/world/orders/roam_order");
 		// 	roam.setNoTerrainAvailable();
 		// 	roam.setTerrain(::Const.World.TerrainType.Mountains, true);
 		// 	local r = this.Math.rand(1, 20);
@@ -1154,7 +1154,7 @@
 		// 	party.setSlowerAtNight(false);
 		// 	party.setUsingGlobalVision(false);
 		// 	party.setLooting(false);
-		// 	local roam = this.new("scripts/ai/world/orders/roam_order");
+		// 	local roam = ::new("scripts/ai/world/orders/roam_order");
 		// 	roam.setNoTerrainAvailable();
 		// 	roam.setTerrain(::Const.World.TerrainType.Steppe, true);
 		// 	roam.setTerrain(::Const.World.TerrainType.Plains, true);
@@ -1226,7 +1226,7 @@
 		// 	party.setSlowerAtNight(false);
 		// 	party.setUsingGlobalVision(false);
 		// 	party.setLooting(false);
-		// 	local roam = this.new("scripts/ai/world/orders/roam_order");
+		// 	local roam = ::new("scripts/ai/world/orders/roam_order");
 		// 	roam.setNoTerrainAvailable();
 		// 	roam.setTerrain(::Const.World.TerrainType.Snow, true);
 		// 	roam.setTerrain(::Const.World.TerrainType.SnowyForest, true);
@@ -1322,7 +1322,7 @@
 		// 	party.setSlowerAtNight(false);
 		// 	party.setUsingGlobalVision(false);
 		// 	party.setLooting(false);
-		// 	local roam = this.new("scripts/ai/world/orders/roam_order");
+		// 	local roam = ::new("scripts/ai/world/orders/roam_order");
 		// 	roam.setNoTerrainAvailable();
 		// 	roam.setTerrain(::Const.World.TerrainType.Forest, true);
 		// 	roam.setTerrain(::Const.World.TerrainType.LeaveForest, true);
@@ -1397,7 +1397,7 @@
 		// 	party.setSlowerAtNight(false);
 		// 	party.setUsingGlobalVision(false);
 		// 	party.setLooting(false);
-		// 	local roam = this.new("scripts/ai/world/orders/roam_order");
+		// 	local roam = ::new("scripts/ai/world/orders/roam_order");
 		// 	roam.setNoTerrainAvailable();
 		// 	roam.setTerrain(::Const.World.TerrainType.Hills, true);
 		// 	roam.setTerrain(::Const.World.TerrainType.Mountains, true);
@@ -1472,7 +1472,7 @@
 		// 	party.setSlowerAtNight(false);
 		// 	party.setUsingGlobalVision(false);
 		// 	party.setLooting(false);
-		// 	local roam = this.new("scripts/ai/world/orders/roam_order");
+		// 	local roam = ::new("scripts/ai/world/orders/roam_order");
 		// 	roam.setNoTerrainAvailable();
 		// 	roam.setTerrain(::Const.World.TerrainType.Forest, true);
 		// 	roam.setTerrain(::Const.World.TerrainType.LeaveForest, true);

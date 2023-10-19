@@ -25,7 +25,7 @@
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
-		items.equip(this.new("scripts/items/weapons/legend_hammer"));
+		items.equip(::new("scripts/items/weapons/legend_hammer"));
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,

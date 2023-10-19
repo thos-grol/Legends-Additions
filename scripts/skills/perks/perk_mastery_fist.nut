@@ -52,7 +52,7 @@ this.perk_mastery_fist <- this.inherit("scripts/skills/skill", {
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 
 		if (!this.m.Container.hasSkill("trait.proficiency_Fist"))
-			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Fist"));
+			this.m.Container.add(::new("scripts/skills/traits/_proficiency_Fist"));
 	}
 
 });

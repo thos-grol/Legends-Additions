@@ -70,7 +70,7 @@ this.civilwar_treasurer_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation increases slightly"
 				});
-				local food = this.new("scripts/items/supplies/ground_grains_item");
+				local food = ::new("scripts/items/supplies/ground_grains_item");
 				this.World.Assets.getStash().add(food);
 				this.World.Assets.updateFood();
 				this.List.push({
@@ -147,7 +147,7 @@ this.civilwar_treasurer_event <- this.inherit("scripts/events/event", {
 
 				for( local i = 0; i < maxfood; i = i )
 				{
-					local food = this.new("scripts/items/supplies/ground_grains_item");
+					local food = ::new("scripts/items/supplies/ground_grains_item");
 					this.World.Assets.getStash().add(food);
 					this.World.Assets.updateFood();
 					this.List.push({

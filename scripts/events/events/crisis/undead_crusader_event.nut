@@ -60,7 +60,7 @@ this.undead_crusader_event <- this.inherit("scripts/events/event", {
 					_event.m.Dude.getBackground().buildDescription(true);
 				}
 
-				_event.m.Dude.getSkills().add(this.new("scripts/skills/traits/hate_undead_trait"));
+				_event.m.Dude.getSkills().add(::new("scripts/skills/traits/hate_undead_trait"));
 				this.Characters.push(_event.m.Dude.getImagePath());
 			}
 

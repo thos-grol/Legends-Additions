@@ -15,11 +15,11 @@ this.perk_shield_bash <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.shield_bash";
-		this.m.Name = this.Const.Strings.PerkName.ShieldBash;
-		this.m.Description = this.Const.Strings.PerkDescription.ShieldBash;
+		this.m.Name = ::Const.Strings.PerkName.ShieldBash;
+		this.m.Description = ::Const.Strings.PerkDescription.ShieldBash;
 		this.m.Icon = "ui/perks/perk_22.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -29,7 +29,7 @@ this.perk_shield_bash <- this.inherit("scripts/skills/skill", {
 	{
 		if (!this.m.Container.hasSkill("actives.taunt"))
 		{
-			this.m.Container.add(this.new("scripts/skills/actives/taunt"));
+			this.m.Container.add(::new("scripts/skills/actives/taunt"));
 		}
 	}
 

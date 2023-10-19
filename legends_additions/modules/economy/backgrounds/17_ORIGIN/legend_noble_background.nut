@@ -52,21 +52,21 @@
 
 		if (r <= 1)
 		{
-			items.equip(this.new("scripts/items/weapons/dagger"));
-			items.equip(this.new("scripts/items/weapons/legend_parrying_dagger"));
+			items.equip(::new("scripts/items/weapons/dagger"));
+			items.equip(::new("scripts/items/weapons/legend_parrying_dagger"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/fencing_sword"));
-			items.equip(this.new("scripts/items/weapons/legend_parrying_dagger"));
+			items.equip(::new("scripts/items/weapons/fencing_sword"));
+			items.equip(::new("scripts/items/weapons/legend_parrying_dagger"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/rondel_dagger"));
+			items.equip(::new("scripts/items/weapons/rondel_dagger"));
 		}
 		else if (r == 4)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_estoc"));
+			items.equip(::new("scripts/items/weapons/legend_estoc"));
 		}
 	}
 

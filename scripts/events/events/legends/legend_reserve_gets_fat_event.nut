@@ -26,7 +26,7 @@ this.legend_reserve_gets_fat_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.FatGuy.getImagePath());
-				_event.m.FatGuy.getSkills().add(this.new("scripts/skills/traits/gluttonous_trait"));
+				_event.m.FatGuy.getSkills().add(::new("scripts/skills/traits/gluttonous_trait"));
 				this.List = [
 					{
 						id = 10,

@@ -21,26 +21,26 @@
 
 // 		if (r == 0)
 // 		{
-// 			items.equip(this.new("scripts/items/weapons/arming_sword"));
+// 			items.equip(::new("scripts/items/weapons/arming_sword"));
 // 		}
 // 		else if (r == 1)
 // 		{
-// 			items.equip(this.new("scripts/items/weapons/hand_axe"));
+// 			items.equip(::new("scripts/items/weapons/hand_axe"));
 // 		}
 // 		else if (r == 2)
 // 		{
-// 			items.equip(this.new("scripts/items/weapons/boar_spear"));
+// 			items.equip(::new("scripts/items/weapons/boar_spear"));
 // 		}
 // 		else if (r == 3)
 // 		{
-// 			items.equip(this.new("scripts/items/weapons/morning_star"));
+// 			items.equip(::new("scripts/items/weapons/morning_star"));
 // 		}
 
 // 		r = this.Math.rand(0, 0);
 
 // 		if (r == 0)
 // 		{
-// 			items.equip(this.new("scripts/items/shields/wooden_shield"));
+// 			items.equip(::new("scripts/items/shields/wooden_shield"));
 // 		}
 
 // 		items.equip(::Const.World.Common.pickArmor([

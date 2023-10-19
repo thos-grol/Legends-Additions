@@ -39,7 +39,7 @@ this.perk_legend_recuperation <- this.inherit("scripts/skills/skill", {
 	{
 		if (!this.m.Container.hasSkill("actives.recover"))
 		{
-			this.m.Container.add(this.new("scripts/skills/actives/recover_skill"));
+			this.m.Container.add(::new("scripts/skills/actives/recover_skill"));
 		}
 	}
 

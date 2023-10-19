@@ -31,11 +31,11 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/fencing_sword"));
+			items.equip(::new("scripts/items/weapons/fencing_sword"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/pike"));
+			items.equip(::new("scripts/items/weapons/pike"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

@@ -4,7 +4,7 @@
 	{
 		if (this.isSomethingToSee() && this.World.getTime().Days >= 7) _backgrounds = ::Const.CharacterPiracyBackgrounds;
 	
-		local background = this.new("scripts/skills/backgrounds/" + _backgrounds[this.Math.rand(0, _backgrounds.len() - 1)]);
+		local background = ::new("scripts/skills/backgrounds/" + _backgrounds[this.Math.rand(0, _backgrounds.len() - 1)]);
 		if (::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled") 
             background.setGender(_gender);
 		this.m.Skills.add(background);
@@ -28,7 +28,7 @@
 
 				foreach( trait in background.m.IsGuaranteed )
 				{
-					traits.push(this.new("scripts/skills/traits/" + trait));
+					traits.push(::new("scripts/skills/traits/" + trait));
 				}
 			}
 
@@ -59,7 +59,7 @@
 
 		background.buildDescription();
 
-		local inTraining = this.new("scripts/skills/traits/intensive_training_trait");
+		local inTraining = ::new("scripts/skills/traits/intensive_training_trait");
 		if (!this.getSkills().hasSkill("trait.intensive_training_trait")) this.m.Skills.add(inTraining);
 
 

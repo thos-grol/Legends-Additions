@@ -105,7 +105,7 @@ this.direwolf_blizzard <- this.inherit("scripts/skills/skill", {
 
 			local target = t.getEntity();
 			this.attackEntity(user, target, false);
-			// target.getSkills().add(this.new("scripts/skills/effects/xxmagebb_effect"));
+			// target.getSkills().add(::new("scripts/skills/effects/xxmagebb_effect"));
 		}
 		this.Sound.play("sounds/winter/blizzard_impact.wav", 2.0, user.getPos());
 	}
@@ -182,7 +182,7 @@ this.direwolf_blizzard <- this.inherit("scripts/skills/skill", {
 			// local offh = xitems.getItemAtSlot(::Const.ItemSlot.Offhand);
 			// _properties.RangedSkill += 5;
 			// _properties.RangedAttackBlockedChanceMult *= 0;
-			// if (xactor.getSkills().hasSkill("perk.duelist"))
+			// if (xthis.m.Container.hasSkill("perk.duelist"))
 			// {
 			// 	if (offh == null && !xitems.hasBlockedSlot(::Const.ItemSlot.Offhand) || offh != null && offh.isItemType(::Const.Items.ItemType.Tool))
 			// 	{

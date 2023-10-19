@@ -33,11 +33,11 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/knife"));
+			items.equip(::new("scripts/items/weapons/knife"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/dagger"));
+			items.equip(::new("scripts/items/weapons/dagger"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

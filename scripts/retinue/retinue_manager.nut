@@ -239,7 +239,7 @@ this.retinue_manager <- {
 
 		foreach( scriptFile in scriptFiles )
 		{
-			local f = this.new(scriptFile);
+			local f = ::new(scriptFile);
 
 			if (f.isValid())
 			{

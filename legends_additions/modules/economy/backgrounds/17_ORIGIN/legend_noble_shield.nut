@@ -18,8 +18,8 @@
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
-		items.equip(this.new("scripts/items/weapons/militia_spear"));
-		items.equip(this.new("scripts/items/shields/wooden_shield"));
+		items.equip(::new("scripts/items/weapons/militia_spear"));
+		items.equip(::new("scripts/items/shields/wooden_shield"));
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,

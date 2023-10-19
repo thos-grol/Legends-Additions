@@ -22,7 +22,7 @@
 		talents[::Const.Attributes.Bravery] = this.Math.rand(2, 3);
 		this.getContainer().getActor().fillTalentValues(2, true);
 		local items = this.getContainer().getActor().getItems();
-		items.equip(this.new("scripts/items/weapons/legend_staff_vala"));
+		items.equip(::new("scripts/items/weapons/legend_staff_vala"));
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,

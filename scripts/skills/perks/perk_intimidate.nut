@@ -15,11 +15,11 @@ this.perk_intimidate <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.intimidate";
-		this.m.Name = this.Const.Strings.PerkName.Intimidate;
-		this.m.Description = this.Const.Strings.PerkDescription.Intimidate;
+		this.m.Name = ::Const.Strings.PerkName.Intimidate;
+		this.m.Description = ::Const.Strings.PerkDescription.Intimidate;
 		this.m.Icon = "ui/perks/intimidate.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -27,7 +27,7 @@ this.perk_intimidate <- this.inherit("scripts/skills/skill", {
 
 	function applyDebuff(_targetEntity)
 	{
-		if (_targetEntity.getMoraleState() == this.Const.MoraleState.Ignore) return;
+		if (_targetEntity.getMoraleState() == ::Const.MoraleState.Ignore) return;
 
 		local effect = _targetEntity.getSkills().getSkillByID("effects.intimidated");
 		if (effect != null)
@@ -60,7 +60,7 @@ this.perk_intimidate <- this.inherit("scripts/skills/skill", {
 		if (this.m.IsForceEnabled) return true;
 
 		local weapon = this.getContainer().getActor().getMainhandItem();
-		if (weapon == null || !weapon.isWeaponType(this.Const.Items.WeaponType.Spear)) return false;
+		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Spear)) return false;
 		return true;
 	}
 });

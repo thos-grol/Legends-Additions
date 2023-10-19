@@ -74,7 +74,7 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 		if (actor.getFlags().has("la_direwolf_frenzy_attacks") && !this.getContainer().hasSkill("effects.indomitable"))
-			this.m.Container.add(this.new("scripts/skills/effects/indomitable_effect"));
+			this.m.Container.add(::new("scripts/skills/effects/indomitable_effect"));
 	}
 
 	function onUpdate( _properties )
@@ -111,7 +111,7 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 		}
 
 		if (!this.getContainer().hasSkill("effects.indomitable"))
-			this.m.Container.add(this.new("scripts/skills/effects/indomitable_effect"));
+			this.m.Container.add(::new("scripts/skills/effects/indomitable_effect"));
 
 		this.Sound.play("sounds/monster/direwolf_berserk.wav", 300.0, actor.getPos());
 		this.Sound.play("sounds/winter/blizzard_buildup.wav", 200.0, actor.getPos());
@@ -194,8 +194,8 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 
 			if (target.isAlive())
 			{
-				target.getSkills().add(this.new("scripts/skills/effects/chilled_effect"));
-				local stun = this.new("scripts/skills/effects/stunned_effect");
+				target.getSkills().add(::new("scripts/skills/effects/chilled_effect"));
+				local stun = ::new("scripts/skills/effects/stunned_effect");
 				target.getSkills().add(stun);
 				stun.setTurns(3);
 

@@ -117,7 +117,7 @@ this.bad_curse_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Cursed.getImagePath());
-				local effect = this.new("scripts/skills/effects_world/afraid_effect");
+				local effect = ::new("scripts/skills/effects_world/afraid_effect");
 				_event.m.Cursed.getSkills().add(effect);
 				this.List = [
 					{

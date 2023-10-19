@@ -78,7 +78,7 @@ this.undead_necrosavant_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local item = this.new("scripts/items/loot/silver_bowl_item");
+				local item = ::new("scripts/items/loot/silver_bowl_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
@@ -148,7 +148,7 @@ this.undead_necrosavant_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Witchhunter.getImagePath());
-				local item = this.new("scripts/items/misc/vampire_dust_item");
+				local item = ::new("scripts/items/misc/vampire_dust_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
@@ -206,8 +206,8 @@ this.undead_necrosavant_event <- this.inherit("scripts/events/event", {
 				_event.m.Warlock.setStartValuesEx([
 					"legend_necro_background"
 				]);
-				_event.m.Warlock.getSkills().add(this.new("scripts/skills/racial/skeleton_racial"));
-				_event.m.Warlock.getSkills().add(this.new("scripts/skills/traits/legend_fleshless_trait"));
+				_event.m.Warlock.getSkills().add(::new("scripts/skills/racial/skeleton_racial"));
+				_event.m.Warlock.getSkills().add(::new("scripts/skills/traits/legend_fleshless_trait"));
 				this.Characters.push(_event.m.Warlock.getImagePath());
 			}
 

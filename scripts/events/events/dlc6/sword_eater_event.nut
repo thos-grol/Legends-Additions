@@ -107,7 +107,7 @@ this.sword_eater_event <- this.inherit("scripts/events/event", {
 						text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]5[/color] Crowns"
 					}
 				];
-				local item = this.new("scripts/items/weapons/fencing_sword");
+				local item = ::new("scripts/items/weapons/fencing_sword");
 				item.setCondition(this.Math.max(1, item.getConditionMax() * this.Math.rand(10, 40) * 0.01));
 				this.World.Assets.getStash().add(item);
 				this.List.push({

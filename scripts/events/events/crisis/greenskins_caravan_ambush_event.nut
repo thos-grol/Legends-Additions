@@ -98,7 +98,7 @@ this.greenskins_caravan_ambush_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation increases"
 				});
-				local food = this.new("scripts/items/supplies/bread_item");
+				local food = ::new("scripts/items/supplies/bread_item");
 				this.World.Assets.getStash().add(food);
 				this.List.push({
 					id = 10,
@@ -162,14 +162,14 @@ this.greenskins_caravan_ambush_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation decreases"
 				});
-				local food = this.new("scripts/items/supplies/bread_item");
+				local food = ::new("scripts/items/supplies/bread_item");
 				this.World.Assets.getStash().add(food);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + food.getIcon(),
 					text = "You gain " + food.getName()
 				});
-				local item = this.new("scripts/items/weapons/pitchfork");
+				local item = ::new("scripts/items/weapons/pitchfork");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,

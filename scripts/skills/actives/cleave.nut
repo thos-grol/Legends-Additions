@@ -103,7 +103,7 @@ this.cleave <- this.inherit("scripts/skills/skill", {
 			}
 			else if (!target.getCurrentProperties().IsImmuneToBleeding && hp - target.getHitpoints() >= ::Const.Combat.MinDamageToApplyBleeding)
 			{
-				local effect = this.new("scripts/skills/effects/bleeding_effect");
+				local effect = ::new("scripts/skills/effects/bleeding_effect");
 
 				if (_user.getFaction() == ::Const.Faction.Player)
 				{

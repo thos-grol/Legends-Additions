@@ -72,7 +72,7 @@ this.staggered_effect <- this.inherit("scripts/skills/skill", {
 
 		local actor = this.getContainer().getActor();
 
-		if ((actor.getSkills().hasSkill("effects.death_dealer") && ::Math.rand(1,100) <= 50)
+		if ((this.m.Container.hasSkill("effects.death_dealer") && ::Math.rand(1,100) <= 50)
 			|| (actor.getFlags().has("StaggerImmune"))
 		)
 		{

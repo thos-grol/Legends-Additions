@@ -32,15 +32,15 @@
 
 		if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/oriental/nomad_mace"));
+			items.equip(::new("scripts/items/weapons/oriental/nomad_mace"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/oriental/light_southern_mace"));
+			items.equip(::new("scripts/items/weapons/oriental/light_southern_mace"));
 		}
 		else if (r == 4)
 		{
-			items.equip(this.new("scripts/items/weapons/militia_spear"));
+			items.equip(::new("scripts/items/weapons/militia_spear"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

@@ -21,8 +21,8 @@ this.crumble_skill <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/dlc6/crumble_hit_03.wav",
 			"sounds/combat/dlc6/crumble_hit_04.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -31,8 +31,8 @@ this.crumble_skill <- this.inherit("scripts/skills/skill", {
 		this.m.IsRanged = false;
 		this.m.IsTooCloseShown = true;
 		this.m.IsWeaponSkill = true;
-		this.m.InjuriesOnBody = this.Const.Injury.BluntBody;
-		this.m.InjuriesOnHead = this.Const.Injury.BluntHead;
+		this.m.InjuriesOnBody = ::Const.Injury.BluntBody;
+		this.m.InjuriesOnHead = ::Const.Injury.BluntHead;
 		this.m.DirectDamageMult = 0.4;
 		this.m.HitChanceBonus = 0;
 		this.m.ActionPointCost = 6;
@@ -51,13 +51,13 @@ this.crumble_skill <- this.inherit("scripts/skills/skill", {
 			id = 7,
 			type = "text",
 			icon = "ui/icons/vision.png",
-			text = "Has a range of [color=" + this.Const.UI.Color.PositiveValue + "]2" + "[/color] tiles"
+			text = "Has a range of [color=" + ::Const.UI.Color.PositiveValue + "]2" + "[/color] tiles"
 		});
 		ret.push({
 			id = 6,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Inflicts [color=" + this.Const.UI.Color.DamageValue + "]" + this.Const.Combat.FatigueReceivedPerHit * 2 + "[/color] extra fatigue"
+			text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]" + ::Const.Combat.FatigueReceivedPerHit * 2 + "[/color] extra fatigue"
 		});
 
 		if (!this.getContainer().getActor().getCurrentProperties().IsSpecializedInPolearms)
@@ -66,7 +66,7 @@ this.crumble_skill <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/hitchance.png",
-				text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] chance to hit targets directly adjacent because the weapon is too unwieldy"
+				text = "Has [color=" + ::Const.UI.Color.NegativeValue + "]-15%[/color] chance to hit targets directly adjacent because the weapon is too unwieldy"
 			});
 		}
 
@@ -75,12 +75,12 @@ this.crumble_skill <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInMaces ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInMaces ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onUse( _user, _targetTile )
 	{
-		this.spawnAttackEffect(_targetTile, this.Const.Tactical.AttackEffectBash);
+		this.spawnAttackEffect(_targetTile, ::Const.Tactical.AttackEffectBash);
 		return this.attackEntity(_user, _targetTile.getEntity());
 	}
 

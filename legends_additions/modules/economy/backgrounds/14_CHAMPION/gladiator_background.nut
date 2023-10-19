@@ -98,11 +98,11 @@
 
 		if (r == 1)
 		{
-			a.setUpgrade(this.new("scripts/items/legend_armor/armor_upgrades/legend_light_gladiator_upgrade"));
+			a.setUpgrade(::new("scripts/items/legend_armor/armor_upgrades/legend_light_gladiator_upgrade"));
 		}
 		else if (r == 2)
 		{
-			a.setUpgrade(this.new("scripts/items/legend_armor/armor_upgrades/legend_heavy_gladiator_upgrade"));
+			a.setUpgrade(::new("scripts/items/legend_armor/armor_upgrades/legend_heavy_gladiator_upgrade"));
 		}
 
 		items.equip(a);

@@ -69,21 +69,21 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 		this.getFlags().add("la_direwolf");
 
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_escape_artist"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_berserk"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_crippling_strikes"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_fast_adaption"));
-        this.m.Skills.add(this.new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_berserk"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_crippling_strikes"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_fast_adaption"));
+        this.m.Skills.add(::new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
 
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_direwolf_berserk_mode"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_second_wind"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_direwolf_ruin_aura"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_direwolf_berserk_mode"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_second_wind"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_direwolf_ruin_aura"));
 
-		//this.m.Skills.add(this.new("scripts/skills/racial/werewolf_racial"));
-		this.m.Skills.add(this.new("scripts/skills/actives/direwolf_bite"));
-		this.m.Skills.add(this.new("scripts/skills/actives/direwolf_hunt_teleport"));
-		this.m.Skills.add(this.new("scripts/skills/actives/direwolf_indomitable"));
+		//this.m.Skills.add(::new("scripts/skills/racial/werewolf_racial"));
+		this.m.Skills.add(::new("scripts/skills/actives/direwolf_bite"));
+		this.m.Skills.add(::new("scripts/skills/actives/direwolf_hunt_teleport"));
+		this.m.Skills.add(::new("scripts/skills/actives/direwolf_indomitable"));
 		
 		
 	}
@@ -176,7 +176,7 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.SoundVolume[::Const.Sound.ActorEvent.Attack] = 0.8;
 		this.m.SoundVolume[::Const.Sound.ActorEvent.Move] = 0.7;
 		this.m.SoundPitch = this.Math.rand(95, 105) * 0.01;
-		this.m.AIAgent = this.new("scripts/ai/tactical/agents/la_direwolf_agent");
+		this.m.AIAgent = ::new("scripts/ai/tactical/agents/la_direwolf_agent");
 		this.m.AIAgent.setActor(this);
 	}
 
@@ -282,30 +282,30 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 							if (r <= 70)
 							{
-								loot = this.new("scripts/items/misc/werewolf_pelt_item");
+								loot = ::new("scripts/items/misc/werewolf_pelt_item");
 							}
 							else
 							{
-								loot = this.new("scripts/items/misc/adrenaline_gland_item");
+								loot = ::new("scripts/items/misc/adrenaline_gland_item");
 							}
 
 							loot.drop(_tile);
 						}
 						else
 						{
-							local loot = this.new("scripts/items/misc/werewolf_pelt_item");
+							local loot = ::new("scripts/items/misc/werewolf_pelt_item");
 							loot.drop(_tile);
 						}
 					}
 					else if (this.Math.rand(1, 100) <= 33)
 					{
-						local loot = this.new("scripts/items/supplies/strange_meat_item");
+						local loot = ::new("scripts/items/supplies/strange_meat_item");
 						loot.drop(_tile);
 					}
 
 					if (this.isKindOf(this, "direwolf_high") && this.Math.rand(1, 100) <= 20)
 					{
-						local loot = this.new("scripts/items/loot/sabertooth_item");
+						local loot = ::new("scripts/items/loot/sabertooth_item");
 						loot.drop(_tile);
 					}
 

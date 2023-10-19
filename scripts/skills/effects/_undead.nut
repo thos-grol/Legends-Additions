@@ -7,8 +7,8 @@ this._undead <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "effects._undead";
 		this.m.Name = "";
 		this.m.Description = "";
-		this.m.Type = this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.VeryLast;
+		this.m.Type = ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.VeryLast;
 		this.m.IsActive = false;
 		this.m.IsHidden = true;
 	}
@@ -22,7 +22,7 @@ this._undead <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		if (_skill.getDamageType().contains(this.Const.Damage.DamageType.Cutting))
+		if (_skill.getDamageType().contains(::Const.Damage.DamageType.Cutting))
 		{
 			local dismemberment = _attacker.getSkills().getSkillByID("perk.dismemberment");
 			if (dismemberment != null && dismemberment.isEnabled())
@@ -32,7 +32,7 @@ this._undead <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		if (_skill.getDamageType().contains(this.Const.Damage.DamageType.Blunt))
+		if (_skill.getDamageType().contains(::Const.Damage.DamageType.Blunt))
 		{
 			local deepImpact = _attacker.getSkills().getSkillByID("perk.deep_impact");
 			if (deepImpact != null && deepImpact.isEnabled())

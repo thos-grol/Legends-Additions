@@ -85,7 +85,7 @@ this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 	function onTurnEnd()
 	{
 		if (!this.getContainer().getActor().getSkills().hasSkill("effects._riposte_debuff"))
-			this.m.Container.add(this.new("scripts/skills/effects/_riposte_debuff"));
+			this.m.Container.add(::new("scripts/skills/effects/_riposte_debuff"));
 	}
 
 	function onCombatStarted()

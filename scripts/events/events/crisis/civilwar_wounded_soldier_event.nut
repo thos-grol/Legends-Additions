@@ -105,19 +105,19 @@ this.civilwar_wounded_soldier_event <- this.inherit("scripts/events/event", {
 
 		if (r == 1)
 		{
-			item = this.new("scripts/items/weapons/arming_sword");
+			item = ::new("scripts/items/weapons/arming_sword");
 		}
 		else if (r == 2)
 		{
-			item = this.new("scripts/items/weapons/morning_star");
+			item = ::new("scripts/items/weapons/morning_star");
 		}
 		else if (r == 3)
 		{
-			item = this.new("scripts/items/weapons/military_pick");
+			item = ::new("scripts/items/weapons/military_pick");
 		}
 		else if (r == 4)
 		{
-			item = this.new("scripts/items/weapons/warbrand");
+			item = ::new("scripts/items/weapons/warbrand");
 		}
 
 		this.World.Assets.getStash().add(item);

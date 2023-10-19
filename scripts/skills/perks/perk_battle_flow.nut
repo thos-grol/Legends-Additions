@@ -155,9 +155,7 @@ this.perk_battle_flow <- this.inherit("scripts/skills/skill", {
 	function onCombatStarted()
 	{
 		this.m.Stacks = 0;
-		local actor = this.getContainer().getActor();
-		if (actor.getSkills().hasSkill("perk.legend_perfect_focus")) this.m.Stacks = 10;
-
+		if (this.m.Container.hasSkill("perk.legend_perfect_focus")) this.m.Stacks = 10;
 	}
 
 	function onCombatFinished()

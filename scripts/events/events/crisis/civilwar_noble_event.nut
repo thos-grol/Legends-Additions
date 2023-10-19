@@ -47,8 +47,8 @@ this.civilwar_noble_event <- this.inherit("scripts/events/event", {
 					_event.m.Dude.setStartValuesEx([
 						"legend_noble_background"
 					]);
-					_event.m.Dude.getSkills().add(this.new("scripts/skills/racial/skeleton_racial"));
-					_event.m.Dude.getSkills().add(this.new("scripts/skills/traits/legend_fleshless_trait"));
+					_event.m.Dude.getSkills().add(::new("scripts/skills/racial/skeleton_racial"));
+					_event.m.Dude.getSkills().add(::new("scripts/skills/traits/legend_fleshless_trait"));
 				}
 				else
 				{
@@ -57,7 +57,7 @@ this.civilwar_noble_event <- this.inherit("scripts/events/event", {
 					]);
 				}
 
-				_event.m.Dude.getSkills().add(this.new("scripts/skills/traits/hate_nobles_trait"));
+				_event.m.Dude.getSkills().add(::new("scripts/skills/traits/hate_nobles_trait"));
 				this.Characters.push(_event.m.Dude.getImagePath());
 			}
 

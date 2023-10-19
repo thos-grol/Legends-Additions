@@ -36,12 +36,12 @@
 
 		if (r <= 2)
 		{
-			items.equip(this.new("scripts/items/weapons/lute"));
+			items.equip(::new("scripts/items/weapons/lute"));
 		}
 
 		if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_drum"));
+			items.equip(::new("scripts/items/weapons/legend_drum"));
 		}
 	}
 

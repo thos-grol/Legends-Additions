@@ -11,8 +11,8 @@ this.follow_up <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/indomitable_01.wav",
 			"sounds/combat/indomitable_02.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.Any;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.Any;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = false;
@@ -46,7 +46,7 @@ this.follow_up <- this.inherit("scripts/skills/skill", {
 		}
 
 		local weapon = actor.getMainhandItem();
-		if (weapon == null || !weapon.isItemType(this.Const.Items.ItemType.TwoHanded) || !weapon.isItemType(this.Const.Items.ItemType.MeleeWeapon))
+		if (weapon == null || !weapon.isItemType(::Const.Items.ItemType.TwoHanded) || !weapon.isItemType(::Const.Items.ItemType.MeleeWeapon))
 		{
 			ret.push({
 				id = 7,
@@ -69,9 +69,9 @@ this.follow_up <- this.inherit("scripts/skills/skill", {
 
 		local agent = actor.getAIAgent();
 
-		if (agent.findBehavior(this.Const.AI.Behavior.ID.PTRFollowUp) == null)
+		if (agent.findBehavior(::Const.AI.Behavior.ID.PTRFollowUp) == null)
 		{
-			agent.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_follow_up"));
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_follow_up"));
 			agent.finalizeBehaviors();
 		}
 	}
@@ -81,7 +81,7 @@ this.follow_up <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		local weapon = actor.getMainhandItem();
 
-		if (actor.isEngagedInMelee() || weapon == null || !weapon.isItemType(this.Const.Items.ItemType.TwoHanded) || !weapon.isItemType(this.Const.Items.ItemType.MeleeWeapon))
+		if (actor.isEngagedInMelee() || weapon == null || !weapon.isItemType(::Const.Items.ItemType.TwoHanded) || !weapon.isItemType(::Const.Items.ItemType.MeleeWeapon))
 		{
 			return false;
 		}
@@ -96,7 +96,7 @@ this.follow_up <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
-		this.m.Container.add(this.new("scripts/skills/effects/ptr_follow_up_effect"));
+		this.m.Container.add(::new("scripts/skills/effects/ptr_follow_up_effect"));
 		return true;
 	}
 });

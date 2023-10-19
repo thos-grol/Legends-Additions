@@ -29,7 +29,7 @@
 
 		if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/wooden_stick"));
+			items.equip(::new("scripts/items/weapons/wooden_stick"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

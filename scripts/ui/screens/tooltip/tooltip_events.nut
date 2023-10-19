@@ -1107,8 +1107,8 @@ this.tooltip_events <- {
 
 				if ((::World.State.isInCharacterScreen() || ::Tactical.isActive() && ::Tactical.State.isInCharacterScreen()) && ("HasUnactivatedPerkTooltipHints" in perk) && perk.HasUnactivatedPerkTooltipHints)
 				{
-					local tempContainer = this.new("scripts/skills/skill_container");
-					local tempPerk = this.new(perk.Script);
+					local tempContainer = ::new("scripts/skills/skill_container");
+					local tempPerk = ::new(perk.Script);
 					local playerClone = clone player;
 					tempPerk.m.IsForPerkTooltip = true;
 					tempContainer.setActor(playerClone);

@@ -12,11 +12,11 @@ this.perk_legend_adaptive <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.legend_adaptive";
-		this.m.Name = this.Const.Strings.PerkName.LegendAdaptive;
-		this.m.Description = this.Const.Strings.PerkDescription.LegendAdaptive;
+		this.m.Name = ::Const.Strings.PerkName.LegendAdaptive;
+		this.m.Description = ::Const.Strings.PerkDescription.LegendAdaptive;
 		this.m.Icon = "ui/perks/adaptive_circle.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -80,11 +80,11 @@ this.perk_legend_adaptive <- this.inherit("scripts/skills/skill", {
 		local newTree;
 		local actor = this.getContainer().getActor();
 
-		if (actor.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
+		if (actor.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
 		{
 			item = actor.getMainhandItem();
 
-			if (item.isItemType(this.Const.Items.ItemType.Weapon))
+			if (item.isItemType(::Const.Items.ItemType.Weapon))
 			{
 				newTree = this.getWeaponPerkTree(item);
 			}
@@ -158,23 +158,23 @@ this.perk_legend_adaptive <- this.inherit("scripts/skills/skill", {
 	{
 		local ret = [];
 		local weaponToPerkMap = {
-			Axe = this.Const.Perks.AxeTree,
-			Bow = this.Const.Perks.BowTree,
-			Cleaver = this.Const.Perks.CleaverTree,
-			Crossbow = this.Const.Perks.BowTree,
-			Firearm = this.Const.Perks.BowTree,
-			Flail = this.Const.Perks.FlailTree,
-			Hammer = this.Const.Perks.HammerTree,
-			Mace = this.Const.Perks.MaceTree,
-			Polearm = this.Const.Perks.PolearmTree,
-			Sling = this.Const.Perks.BowTree,
-			Spear = this.Const.Perks.SpearTree,
-			Sword = this.Const.Perks.SwordTree
+			Axe = ::Const.Perks.AxeTree,
+			Bow = ::Const.Perks.BowTree,
+			Cleaver = ::Const.Perks.CleaverTree,
+			Crossbow = ::Const.Perks.BowTree,
+			Firearm = ::Const.Perks.BowTree,
+			Flail = ::Const.Perks.FlailTree,
+			Hammer = ::Const.Perks.HammerTree,
+			Mace = ::Const.Perks.MaceTree,
+			Polearm = ::Const.Perks.PolearmTree,
+			Sling = ::Const.Perks.BowTree,
+			Spear = ::Const.Perks.SpearTree,
+			Sword = ::Const.Perks.SwordTree
 		};
 
 		foreach( weapon, tree in weaponToPerkMap )
 		{
-			if (_item.isWeaponType(this.Const.Items.WeaponType[weapon])) ret.push(tree);
+			if (_item.isWeaponType(::Const.Items.WeaponType[weapon])) ret.push(tree);
 		}
 
 		return ret;

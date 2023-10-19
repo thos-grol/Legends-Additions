@@ -33,7 +33,7 @@ this.perk_adrenalin <- this.inherit("scripts/skills/skill", {
 	{
 		if (!this.m.Container.hasSkill("actives.adrenaline"))
 		{
-			this.m.Container.add(this.new("scripts/skills/actives/adrenaline_skill"));
+			this.m.Container.add(::new("scripts/skills/actives/adrenaline_skill"));
 		}
 	}
 

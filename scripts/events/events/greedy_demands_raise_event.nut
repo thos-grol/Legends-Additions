@@ -109,7 +109,7 @@ this.greedy_demands_raise_event <- this.inherit("scripts/events/event", {
 					{
 						if (!_event.m.Greedy.getSkills().hasSkill("trait.loyal") && !_event.m.Greedy.getSkills().hasSkill("trait.disloyal"))
 						{
-							local trait = this.new("scripts/skills/traits/disloyal_trait");
+							local trait = ::new("scripts/skills/traits/disloyal_trait");
 							_event.m.Greedy.getSkills().add(trait);
 							this.List.push({
 								id = 10,

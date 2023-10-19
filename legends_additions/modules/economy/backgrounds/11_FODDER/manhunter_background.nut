@@ -24,22 +24,22 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/battle_whip"));
+			items.equip(::new("scripts/items/weapons/battle_whip"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/wooden_stick"));
+			items.equip(::new("scripts/items/weapons/wooden_stick"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/bludgeon"));
+			items.equip(::new("scripts/items/weapons/bludgeon"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/oriental/saif"));
+			items.equip(::new("scripts/items/weapons/oriental/saif"));
 		}
 
-		items.equip(this.new("scripts/items/tools/throwing_net"));
+		items.equip(::new("scripts/items/tools/throwing_net"));
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,

@@ -83,7 +83,7 @@ this.legend_hold_the_line <- this.inherit("scripts/skills/skill", {
 			if (myTile.getDistanceTo(a.getTile()) > 4) continue;
 			if (a.getFaction() == _user.getFaction() && !a.getSkills().hasSkill("effects.holding_the_line"))
 			{
-				local effect = this.new("scripts/skills/effects/legend_holding_the_line");
+				local effect = ::new("scripts/skills/effects/legend_holding_the_line");
 				effect.setCommander(this.getContainer().getActor());
 				a.getSkills().add(effect);
 			}
@@ -93,13 +93,13 @@ this.legend_hold_the_line <- this.inherit("scripts/skills/skill", {
 			{
 				if (!a.getSkills().hasSkill("effects.shieldwall"))
 				{
-					a.getSkills().add(this.new("scripts/skills/effects/shieldwall_effect"));
+					a.getSkills().add(::new("scripts/skills/effects/shieldwall_effect"));
 					::Tactical.EventLog.logIn(::Z.Log.display_basic(a, null, _skill_name, true));
 				}
 			}
 		}
 
-		local effect = this.new("scripts/skills/effects/legend_holding_the_line");
+		local effect = ::new("scripts/skills/effects/legend_holding_the_line");
 		effect.setCommander(this.getContainer().getActor());
 		this.getContainer().add(effect);
 		return true;

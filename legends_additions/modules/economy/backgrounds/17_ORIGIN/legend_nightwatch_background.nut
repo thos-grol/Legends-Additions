@@ -23,19 +23,19 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/wooden_stick"));
+			items.equip(::new("scripts/items/weapons/wooden_stick"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new(""));
+			items.equip(::new(""));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/hatchet"));
+			items.equip(::new("scripts/items/weapons/hatchet"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_sling"));
+			items.equip(::new("scripts/items/weapons/legend_sling"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

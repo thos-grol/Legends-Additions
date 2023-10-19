@@ -31,7 +31,7 @@
 				"legend_herbalist_robe"
 			]
 		]));
-		items.equip(this.new("scripts/items/weapons/legend_sickle"));
+		items.equip(::new("scripts/items/weapons/legend_sickle"));
 	}
 
 });

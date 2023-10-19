@@ -61,7 +61,7 @@ this.indomitable_effect <- this.inherit("scripts/skills/skill", {
 	function onTurnStart()
 	{
 		local actor = this.getContainer().getActor();
-		local indomitable = actor.getSkills().getSkillByID("perk.indomitable");
+		local indomitable = this.m.Container.getSkillByID("perk.indomitable");
 		if (indomitable != null && indomitable.m.On) return;
 		this.removeSelf();
 	}

@@ -70,27 +70,27 @@ this.greenskins_trapped_goblin_event <- this.inherit("scripts/events/event", {
 
 				if (r == 1)
 				{
-					item = this.new("scripts/items/weapons/named/named_dagger");
+					item = ::new("scripts/items/weapons/named/named_dagger");
 				}
 				else if (r == 2)
 				{
-					item = this.new("scripts/items/weapons/rondel_dagger");
+					item = ::new("scripts/items/weapons/rondel_dagger");
 				}
 				else if (r == 3)
 				{
-					item = this.new("scripts/items/weapons/dagger");
+					item = ::new("scripts/items/weapons/dagger");
 				}
 				else if (r == 4)
 				{
-					item = this.new("scripts/items/weapons/knife");
+					item = ::new("scripts/items/weapons/knife");
 				}
 				else if (r == 5)
 				{
-					item = this.new("scripts/items/loot/golden_chalice_item");
+					item = ::new("scripts/items/loot/golden_chalice_item");
 				}
 				else if (r == 6)
 				{
-					item = this.new("scripts/items/loot/silver_bowl_item");
+					item = ::new("scripts/items/loot/silver_bowl_item");
 				}
 
 				this.World.Assets.getStash().makeEmptySlots(1);
@@ -133,27 +133,27 @@ this.greenskins_trapped_goblin_event <- this.inherit("scripts/events/event", {
 
 				if (r == 1)
 				{
-					item = this.new("scripts/items/weapons/named/named_dagger");
+					item = ::new("scripts/items/weapons/named/named_dagger");
 				}
 				else if (r == 2)
 				{
-					item = this.new("scripts/items/weapons/rondel_dagger");
+					item = ::new("scripts/items/weapons/rondel_dagger");
 				}
 				else if (r == 3)
 				{
-					item = this.new("scripts/items/weapons/dagger");
+					item = ::new("scripts/items/weapons/dagger");
 				}
 				else if (r == 4)
 				{
-					item = this.new("scripts/items/weapons/knife");
+					item = ::new("scripts/items/weapons/knife");
 				}
 				else if (r == 5)
 				{
-					item = this.new("scripts/items/loot/golden_chalice_item");
+					item = ::new("scripts/items/loot/golden_chalice_item");
 				}
 				else if (r == 6)
 				{
-					item = this.new("scripts/items/loot/silver_bowl_item");
+					item = ::new("scripts/items/loot/silver_bowl_item");
 				}
 
 				this.World.Assets.getStash().makeEmptySlots(1);

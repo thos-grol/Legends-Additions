@@ -240,7 +240,7 @@
 				while (potentialInjuries.len() != 0)
 				{
 					local r = this.Math.rand(0, potentialInjuries.len() - 1);
-					local injury = this.new("scripts/skills/" + potentialInjuries[r]);
+					local injury = ::new("scripts/skills/" + potentialInjuries[r]);
 
 					if (injury.isValid(this))
 					{

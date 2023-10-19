@@ -43,7 +43,7 @@ this.perk_legend_lacerate <- this.inherit("scripts/skills/skill", {
 		if (::Math.rand(1,100) > 50) return false;
 
 		local actor = this.getContainer().getActor();
-		local effect = this.new("scripts/skills/effects/bleeding_effect");
+		local effect = ::new("scripts/skills/effects/bleeding_effect");
 		if (actor.getFaction() == ::Const.Faction.Player) effect.setActor(actor);
 		_targetEntity.getSkills().add(effect);
 		return true;

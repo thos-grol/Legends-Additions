@@ -41,11 +41,11 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/greataxe"));
+			items.equip(::new("scripts/items/weapons/greataxe"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/greatsword"));
+			items.equip(::new("scripts/items/weapons/greatsword"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

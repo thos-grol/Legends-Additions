@@ -75,26 +75,26 @@
 
 		if (r <= 2)
 		{
-			items.equip(this.new("scripts/items/shields/heater_shield"));
+			items.equip(::new("scripts/items/shields/heater_shield"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/shields/legend_tower_shield"));
+			items.equip(::new("scripts/items/shields/legend_tower_shield"));
 		}
 
 		r = this.Math.rand(0, 4);
 
 		if (r <= 2)
 		{
-			items.equip(this.new("scripts/items/weapons/militia_spear"));
+			items.equip(::new("scripts/items/weapons/militia_spear"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_wooden_spear"));
+			items.equip(::new("scripts/items/weapons/legend_wooden_spear"));
 		}
 		else if (r == 4)
 		{
-			items.equip(this.new("scripts/items/weapons/ancient/ancient_spear"));
+			items.equip(::new("scripts/items/weapons/ancient/ancient_spear"));
 		}
 	}
 

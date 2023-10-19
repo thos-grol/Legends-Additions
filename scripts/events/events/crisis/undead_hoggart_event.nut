@@ -98,7 +98,7 @@ this.undead_hoggart_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation decreases slightly"
 				});
-				local item = this.new("scripts/items/weapons/named/named_dagger");
+				local item = ::new("scripts/items/weapons/named/named_dagger");
 				item.m.Name = "Barnabas\' Dagger";
 				this.World.Assets.getStash().makeEmptySlots(1);
 				this.World.Assets.getStash().add(item);
@@ -300,7 +300,7 @@ this.undead_hoggart_event <- this.inherit("scripts/events/event", {
 					text = "The company\'s moral reputation increases slightly"
 				});
 				this.Characters.push(_event.m.Witchhunter.getImagePath());
-				local item = this.new("scripts/items/weapons/named/named_greatsword");
+				local item = ::new("scripts/items/weapons/named/named_greatsword");
 				item.m.Name = "Hoggart\'s Heirloom";
 				this.World.Assets.getStash().makeEmptySlots(1);
 				this.World.Assets.getStash().add(item);

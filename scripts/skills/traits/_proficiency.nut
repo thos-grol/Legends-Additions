@@ -45,7 +45,7 @@ this._proficiency <- this.inherit("scripts/skills/traits/character_trait", {
 		if (actor.getFlags().has(getFlagStore()) && actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax) return;
 
 		local chance = this.m.BaseChance + (actor.getFlags().has(getFlagBonus()) ? 5 : 0);
-		if (actor.getSkills().hasSkill("trait.natural")) chance += 5;
+		if (this.m.Container.hasSkill("trait.natural")) chance += 5;
 
 		if (::Math.rand(1,100) <= chance)
 		{

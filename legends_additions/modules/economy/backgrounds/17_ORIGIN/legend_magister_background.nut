@@ -27,11 +27,11 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_reinforced_flail"));
+			items.equip(::new("scripts/items/weapons/legend_reinforced_flail"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_chain"));
+			items.equip(::new("scripts/items/weapons/legend_chain"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

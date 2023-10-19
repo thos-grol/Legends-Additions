@@ -52,7 +52,7 @@
 				]);
 			}
 
-			items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+			items.equip(::new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 		}
 
 		if (items.hasEmptySlot(::Const.ItemSlot.Offhand) && this.Math.rand(1, 100) <= 75)
@@ -63,7 +63,7 @@
 				"shields/heater_shield",
 				"shields/kite_shield"
 			];
-			items.equip(this.new("scripts/items/" + shields[this.Math.rand(0, shields.len() - 1)]));
+			items.equip(::new("scripts/items/" + shields[this.Math.rand(0, shields.len() - 1)]));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

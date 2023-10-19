@@ -51,7 +51,7 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 
 		foreach( bg in this.m.Backgrounds )
 		{
-			if (actor.getSkills().hasSkill(bg))
+			if (this.m.Container.hasSkill(bg))
 			{
 				ret.push({
 					id = 7,
@@ -111,7 +111,7 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 
 		foreach( bg in this.m.Backgrounds )
 		{
-			if (actor.getSkills().hasSkill(bg))
+			if (this.m.Container.hasSkill(bg))
 			{
 				_properties.DamageTotalMult *= 1.25;
 				break;
@@ -190,7 +190,7 @@ this.hand_to_hand <- this.inherit("scripts/skills/skill", {
 
 		if (!_targetEntity.getSkills().hasSkill("effects.staggered"))
 		{
-			_targetEntity.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
+			_targetEntity.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
 			if (isVisible) ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" has been staggered") + ::Z.Log.display_chance(roll, chance));
 		}
 				

@@ -340,7 +340,7 @@ this.bastard_assassin_event <- this.inherit("scripts/events/event", {
 
 				if (!_event.m.Bastard.getSkills().hasSkill("trait.loyal") && !_event.m.Bastard.getSkills().hasSkill("trait.disloyal"))
 				{
-					local loyal = this.new("scripts/skills/traits/loyal_trait");
+					local loyal = ::new("scripts/skills/traits/loyal_trait");
 					_event.m.Bastard.getSkills().add(loyal);
 					this.List.push({
 						id = 10,

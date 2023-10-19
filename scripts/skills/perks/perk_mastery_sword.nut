@@ -42,7 +42,7 @@ this.perk_mastery_sword <- this.inherit("scripts/skills/skill", {
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 
 		if (!this.m.Container.hasSkill("trait.proficiency_Sword"))
-			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Sword"));
+			this.m.Container.add(::new("scripts/skills/traits/_proficiency_Sword"));
 	}
 
 	function onRemoved()

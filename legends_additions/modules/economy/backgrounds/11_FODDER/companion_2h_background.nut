@@ -33,7 +33,7 @@
 				"padded_surcoat"
 			]
 		]));
-		items.equip(this.new("scripts/items/weapons/woodcutters_axe"));
+		items.equip(::new("scripts/items/weapons/woodcutters_axe"));
 		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,

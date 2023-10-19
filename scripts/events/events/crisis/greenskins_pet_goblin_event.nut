@@ -149,21 +149,21 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.World.Assets.addMoralReputation(-1);
-				local item = this.new("scripts/items/weapons/light_crossbow");
+				local item = ::new("scripts/items/weapons/light_crossbow");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + item.getName()
 				});
-				item = this.new("scripts/items/weapons/dagger");
+				item = ::new("scripts/items/weapons/dagger");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
-				item = this.new("scripts/items/supplies/roots_and_berries_item");
+				item = ::new("scripts/items/supplies/roots_and_berries_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
@@ -228,14 +228,14 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local item = this.new("scripts/items/weapons/light_crossbow");
+				local item = ::new("scripts/items/weapons/light_crossbow");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
-				item = this.new("scripts/items/supplies/roots_and_berries_item");
+				item = ::new("scripts/items/supplies/roots_and_berries_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
@@ -278,11 +278,11 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 
 				if (r == 1)
 				{
-					item = this.new("scripts/items/weapons/named/named_axe");
+					item = ::new("scripts/items/weapons/named/named_axe");
 				}
 				else if (r == 2)
 				{
-					item = this.new("scripts/items/weapons/named/named_spear");
+					item = ::new("scripts/items/weapons/named/named_spear");
 				}
 				else if (r == 3)
 				{
@@ -331,21 +331,21 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local item = this.new("scripts/items/weapons/light_crossbow");
+				local item = ::new("scripts/items/weapons/light_crossbow");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
-				item = this.new("scripts/items/weapons/knife");
+				item = ::new("scripts/items/weapons/knife");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
-				item = this.new("scripts/items/supplies/roots_and_berries_item");
+				item = ::new("scripts/items/supplies/roots_and_berries_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,

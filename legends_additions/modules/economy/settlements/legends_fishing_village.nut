@@ -276,13 +276,13 @@
 
 	o.onBuildOne = function( _settings )
 	{
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/port_building"), 3);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/port_building"), 3);
 
 		if (this.Math.rand(1, 100) <= 20)
 		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
+			this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 		}
 
 		this.buildAttachedLocation(1, "scripts/entity/world/attached_location/harbor_location", [
@@ -320,12 +320,12 @@
 
 	o.onBuildTwo = function( _settings )
 	{
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/port_building"), 3);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/tavern_building"));
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/port_building"), 3);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 
-		if (this.Math.rand(1, 100) <= 66) this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
+		if (this.Math.rand(1, 100) <= 66) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 		
 		this.buildAttachedLocation(1, "scripts/entity/world/attached_location/harbor_location", [
 			::Const.World.TerrainType.Shore
@@ -376,13 +376,13 @@
 
 	o.onBuildThree = function( _settings )
 	{
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/port_building"), 3);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/tavern_building"));
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/port_building"), 3);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/training_hall_building"));
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/training_hall_building"));
 
 		if (this.Math.rand(1, 100) <= 50)
 		{

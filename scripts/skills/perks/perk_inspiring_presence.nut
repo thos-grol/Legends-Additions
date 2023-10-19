@@ -33,7 +33,7 @@ this.perk_inspiring_presence <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		if (!this.m.Container.hasSkill("actives.legend_hold_the_line"))
-			this.m.Container.add(this.new("scripts/skills/actives/legend_hold_the_line"));
+			this.m.Container.add(::new("scripts/skills/actives/legend_hold_the_line"));
 
 		local actor = this.getContainer().getActor();
 		actor.getFlags().set("Destiny", true);

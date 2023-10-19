@@ -451,14 +451,14 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local item = this.new("scripts/items/accessory/wardog_item");
+				local item = ::new("scripts/items/accessory/wardog_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + item.getName()
 				});
-				item = this.new("scripts/items/accessory/falcon_item");
+				item = ::new("scripts/items/accessory/falcon_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
@@ -500,28 +500,28 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_money.png",
 					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
-				item = this.new("scripts/items/supplies/cured_venison_item");
+				item = ::new("scripts/items/supplies/cured_venison_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + item.getName()
 				});
-				item = this.new("scripts/items/supplies/smoked_ham_item");
+				item = ::new("scripts/items/supplies/smoked_ham_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + item.getName()
 				});
-				item = this.new("scripts/items/supplies/strange_meat_item");
+				item = ::new("scripts/items/supplies/strange_meat_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + item.getName()
 				});
-				item = this.new("scripts/items/supplies/strange_meat_item");
+				item = ::new("scripts/items/supplies/strange_meat_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,

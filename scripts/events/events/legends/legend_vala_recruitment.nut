@@ -56,8 +56,8 @@ this.legend_vala_recruitment <- this.inherit("scripts/events/event", {
 
 				if (this.World.Assets.getOrigin().getID() == "scenario.legend_risen_legion")
 				{
-					_event.m.Vala.getSkills().add(this.new("scripts/skills/racial/skeleton_racial"));
-					_event.m.Vala.getSkills().add(this.new("scripts/skills/traits/legend_fleshless_trait"));
+					_event.m.Vala.getSkills().add(::new("scripts/skills/racial/skeleton_racial"));
+					_event.m.Vala.getSkills().add(::new("scripts/skills/traits/legend_fleshless_trait"));
 				}
 
 				this.Characters.push(_event.m.Vala.getImagePath());

@@ -24,22 +24,22 @@
 
 		if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/hunting_bow"));
-			items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
-			items.addToBag(this.new("scripts/items/weapons/knife"));
+			items.equip(::new("scripts/items/weapons/hunting_bow"));
+			items.equip(::new("scripts/items/ammo/quiver_of_arrows"));
+			items.addToBag(::new("scripts/items/weapons/knife"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/boar_spear"));
+			items.equip(::new("scripts/items/weapons/boar_spear"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/spetum"));
+			items.equip(::new("scripts/items/weapons/spetum"));
 		}
 
 		if (this.Math.rand(1, 100) <= 50 && items.getItemAtSlot(::Const.ItemSlot.Offhand) == null)
 		{
-			items.equip(this.new("scripts/items/tools/throwing_net"));
+			items.equip(::new("scripts/items/tools/throwing_net"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

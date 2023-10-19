@@ -166,7 +166,7 @@ this.incense_trade_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Dancer.getImagePath());
-				local item = this.new("scripts/items/weapons/named/named_qatal_dagger");
+				local item = ::new("scripts/items/weapons/named/named_qatal_dagger");
 				this.World.Assets.getStash().makeEmptySlots(1);
 				this.World.Assets.getStash().add(item);
 				this.List.push({

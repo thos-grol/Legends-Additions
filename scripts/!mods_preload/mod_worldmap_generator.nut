@@ -309,7 +309,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 					local r = this.Math.rand(0, candidates.len() - 1);
 					local s = candidates[r];
 					candidates.remove(r);
-					s.addBuilding(this.new("scripts/entity/world/settlements/buildings/blackmarket_building"));
+					s.addBuilding(::new("scripts/entity/world/settlements/buildings/blackmarket_building"));
 
 					if (candidates.len() == 0)
 					{
@@ -337,7 +337,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 					local r = this.Math.rand(0, candidates.len() - 1);
 					local s = candidates[r];
 					candidates.remove(r);
-					s.addBuilding(this.new("scripts/entity/world/settlements/buildings/fletcher_building"));
+					s.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
 
 					if (candidates.len() == 0)
 					{
@@ -365,7 +365,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			// 		local r = this.Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
 			// 		candidates.remove(r);
-			// 		s.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
+			// 		s.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 
 			// 		if (candidates.len() == 0)
 			// 		{
@@ -393,7 +393,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			// 		local r = this.Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
 			// 		candidates.remove(r);
-			// 		s.addBuilding(this.new("scripts/entity/world/settlements/buildings/kennel_building"));
+			// 		s.addBuilding(::new("scripts/entity/world/settlements/buildings/kennel_building"));
 
 			// 		if (candidates.len() == 0)
 			// 		{
@@ -421,7 +421,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			// 		local r = this.Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
 			// 		candidates.remove(r);
-			// 		s.addBuilding(this.new("scripts/entity/world/settlements/buildings/taxidermist_building"));
+			// 		s.addBuilding(::new("scripts/entity/world/settlements/buildings/taxidermist_building"));
 
 			// 		if (candidates.len() == 0)
 			// 		{
@@ -449,7 +449,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			// 		local r = this.Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
 			// 		candidates.remove(r);
-			// 		s.addBuilding(this.new("scripts/entity/world/settlements/buildings/stables_building"));
+			// 		s.addBuilding(::new("scripts/entity/world/settlements/buildings/stables_building"));
 
 			// 		if (candidates.len() == 0)
 			// 		{

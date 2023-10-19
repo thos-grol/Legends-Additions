@@ -41,7 +41,7 @@
 		actor.getFlags().set("ProficiencyBonusHammer", true);
 
 		local items = this.getContainer().getActor().getItems();
-		items.equip(this.new("scripts/items/weapons/pickaxe"));
+		items.equip(::new("scripts/items/weapons/pickaxe"));
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,

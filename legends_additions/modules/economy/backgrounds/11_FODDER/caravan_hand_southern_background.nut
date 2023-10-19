@@ -7,15 +7,15 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/knife"));
+			items.equip(::new("scripts/items/weapons/knife"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/bludgeon"));
+			items.equip(::new("scripts/items/weapons/bludgeon"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/oriental/light_southern_mace"));
+			items.equip(::new("scripts/items/weapons/oriental/light_southern_mace"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

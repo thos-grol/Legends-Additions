@@ -213,7 +213,7 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.setTitle("the Fire Juggler");
 				_event.m.Dude.getBackground().m.RawDescription = "You found %name% on the streets of " + _event.m.Town.getName() + ", ready to put on fiery display of record-breaking fire juggling that could have well cost him his life. Luckily, " + _event.m.Juggler.getName() + " jumped in to perform the act with him, possibly saving his life. Afterwards, %name% finally had enough of his trade and volunteered to join your company.";
 				_event.m.Dude.getBackground().buildDescription(true);
-				local trait = this.new("scripts/skills/traits/fearless_trait");
+				local trait = ::new("scripts/skills/traits/fearless_trait");
 
 				foreach( id in trait.m.Excluded )
 				{

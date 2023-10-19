@@ -17,19 +17,19 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/light_crossbow"));
+			items.equip(::new("scripts/items/weapons/light_crossbow"));
 		}
 		else
 		{
-			items.equip(this.new("scripts/items/weapons/crossbow"));
+			items.equip(::new("scripts/items/weapons/crossbow"));
 		}
 
-		items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
+		items.equip(::new("scripts/items/ammo/quiver_of_bolts"));
 		r = this.Math.rand(0, 2);
 
 		if (r == 0)
 		{
-			items.addToBag(this.new("scripts/items/weapons/legend_wooden_stake"));
+			items.addToBag(::new("scripts/items/weapons/legend_wooden_stake"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

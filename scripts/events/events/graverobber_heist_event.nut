@@ -326,7 +326,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 
 				if (r == 1)
 				{
-					item = this.new("scripts/items/weapons/arming_sword");
+					item = ::new("scripts/items/weapons/arming_sword");
 				}
 				else if (r == 2)
 				{

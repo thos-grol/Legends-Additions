@@ -27,15 +27,15 @@
 
 			if (r == 0)
 			{
-				items.equip(this.new("scripts/items/weapons/noble_sword"));
+				items.equip(::new("scripts/items/weapons/noble_sword"));
 			}
 			else if (r == 1)
 			{
-				items.equip(this.new("scripts/items/weapons/arming_sword"));
+				items.equip(::new("scripts/items/weapons/arming_sword"));
 			}
 			else if (r == 2)
 			{
-				items.equip(this.new("scripts/items/weapons/fencing_sword"));
+				items.equip(::new("scripts/items/weapons/fencing_sword"));
 			}
 		}
 		else
@@ -44,11 +44,11 @@
 
 			if (r == 0)
 			{
-				items.equip(this.new("scripts/items/weapons/noble_sword"));
+				items.equip(::new("scripts/items/weapons/noble_sword"));
 			}
 			else if (r == 1)
 			{
-				items.equip(this.new("scripts/items/weapons/arming_sword"));
+				items.equip(::new("scripts/items/weapons/arming_sword"));
 			}
 		}
 

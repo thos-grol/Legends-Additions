@@ -38,7 +38,7 @@ this.nightowl_catches_thief_event <- this.inherit("scripts/events/event", {
 					});
 				}
 
-				local trait = this.new("scripts/skills/effects_world/exhausted_effect");
+				local trait = ::new("scripts/skills/effects_world/exhausted_effect");
 				_event.m.NightOwl.getSkills().add(trait);
 				this.List.push({
 					id = 10,

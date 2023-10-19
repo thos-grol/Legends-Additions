@@ -26,7 +26,7 @@ this.kings_guard_2_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Dude.getImagePath());
-				local bg = this.new("scripts/skills/backgrounds/kings_guard_background");
+				local bg = ::new("scripts/skills/backgrounds/kings_guard_background");
 				bg.m.IsNew = false;
 				local oldPerkTree = _event.m.Dude.getBackground().m.CustomPerkTree;
 				_event.m.Dude.getSkills().removeByID("background.cripple");

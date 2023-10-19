@@ -39,16 +39,16 @@ this.perk_mastery_spear <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		if (!this.m.Container.hasSkill("perk.ptr_king_of_all_weapons"))
-			this.m.Container.add(this.new("scripts/skills/effects/_king_of_all_weapons"));
+			this.m.Container.add(::new("scripts/skills/effects/_king_of_all_weapons"));
 
 		if (!this.m.Container.hasSkill("perk.ptr_a_better_grip"))
-			this.m.Container.add(this.new("scripts/skills/effects/_spear_advantage"));
+			this.m.Container.add(::new("scripts/skills/effects/_spear_advantage"));
 
 		local actor = this.getContainer().getActor();
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 
 		if (!this.m.Container.hasSkill("trait.proficiency_Spear"))
-			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Spear"));
+			this.m.Container.add(::new("scripts/skills/traits/_proficiency_Spear"));
 	}
 
 	function onRemoved()

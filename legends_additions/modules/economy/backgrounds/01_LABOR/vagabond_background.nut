@@ -30,7 +30,7 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_saw"));
+			items.equip(::new("scripts/items/weapons/legend_saw"));
 		}
 		
 

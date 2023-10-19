@@ -18,11 +18,11 @@ this.perk_rattle <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.rattle";
-		this.m.Name = this.Const.Strings.PerkName.Rattle;
-		this.m.Description = this.Const.Strings.PerkDescription.Rattle;
+		this.m.Name = ::Const.Strings.PerkName.Rattle;
+		this.m.Description = ::Const.Strings.PerkDescription.Rattle;
 		this.m.Icon = "ui/perks/rattle.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -39,7 +39,7 @@ this.perk_rattle <- this.inherit("scripts/skills/skill", {
 
 		local stacks = 1;
 		local weapon = actor.getMainhandItem();
-		if (weapon != null && weapon.isItemType(this.Const.Items.ItemType.TwoHanded)) stacks += 1;
+		if (weapon != null && weapon.isItemType(::Const.Items.ItemType.TwoHanded)) stacks += 1;
 		if (this.m.Container.hasSkill("perk.stance.seismic_slam")) stacks *= 2;
 
 		local rattled = !this.m.Container.hasSkill("effects.rattled") ? ::new("scripts/skills/effects/rattled_effect") : this.m.Container.getSkillByID("effects.rattled");

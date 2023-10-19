@@ -43,8 +43,8 @@
 		local items = this.getContainer().getActor().getItems();
 		local r;
 
-		items.equip(this.new("scripts/items/weapons/legend_sling"));
-		items.addToBag(this.new("scripts/items/weapons/knife"));
+		items.equip(::new("scripts/items/weapons/legend_sling"));
+		items.addToBag(::new("scripts/items/weapons/knife"));
 
 		items.equip(::Const.World.Common.pickArmor([
 			[

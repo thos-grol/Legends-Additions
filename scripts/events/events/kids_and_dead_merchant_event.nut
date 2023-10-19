@@ -71,7 +71,7 @@ this.kids_and_dead_merchant_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation decreases slightly"
 				});
-				local item = this.new("scripts/items/loot/signet_ring_item");
+				local item = ::new("scripts/items/loot/signet_ring_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
@@ -133,7 +133,7 @@ this.kids_and_dead_merchant_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.HedgeKnight.getImagePath());
-				local item = this.new("scripts/items/loot/signet_ring_item");
+				local item = ::new("scripts/items/loot/signet_ring_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,

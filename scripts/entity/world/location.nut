@@ -192,9 +192,9 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 		this.m.IsShowingStrength = false;
 		this.m.CombatLocation = clone ::Const.Tactical.LocationTemplate;
 		this.m.CombatLocation.Template = clone ::Const.Tactical.LocationTemplate.Template;
-		this.m.Loot = this.new("scripts/items/stash_container");
+		this.m.Loot = ::new("scripts/items/stash_container");
 		this.m.Loot.setResizable(true);
-		this.m.Flags = this.new("scripts/tools/tag_collection");
+		this.m.Flags = ::new("scripts/tools/tag_collection");
 		this.m.Flags.add("Power", 100);
 	}
 
@@ -482,7 +482,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 							weapons.extend(this.m.NamedWeaponsList);
 						}
 
-						this.m.Loot.add(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+						this.m.Loot.add(::new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 					}
 					else if (type <= 60)
 					{
@@ -494,7 +494,7 @@ this.location <- this.inherit("scripts/entity/world/world_entity", {
 							shields.extend(this.m.NamedShieldsList);
 						}
 
-						this.m.Loot.add(this.new("scripts/items/" + shields[this.Math.rand(0, shields.len() - 1)]));
+						this.m.Loot.add(::new("scripts/items/" + shields[this.Math.rand(0, shields.len() - 1)]));
 					}
 					else if (type <= 80)
 					{

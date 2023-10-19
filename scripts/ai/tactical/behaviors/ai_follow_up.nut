@@ -7,8 +7,8 @@ this.ai_follow_up <- this.inherit("scripts/ai/tactical/behavior", {
 	},
 	function create()
 	{
-		this.m.ID = this.Const.AI.Behavior.ID.FollowUp;
-		this.m.Order = this.Const.AI.Behavior.Order.FollowUp;
+		this.m.ID = ::Const.AI.Behavior.ID.FollowUp;
+		this.m.Order = ::Const.AI.Behavior.Order.FollowUp;
 		this.behavior.create();
 	}
 
@@ -17,32 +17,32 @@ this.ai_follow_up <- this.inherit("scripts/ai/tactical/behavior", {
 		this.m.Skill = null;
 		local score = this.getProperties().BehaviorMult[this.m.ID];
 
-		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP)
+		if (_entity.getActionPoints() < ::Const.Movement.AutoEndTurnBelowAP)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing)
+		if (_entity.getMoraleState() == ::Const.MoraleState.Fleeing)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (!this.getAgent().hasVisibleOpponent())
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
 
 		if (this.m.Skill == null)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		local attackSkill = _entity.getSkills().getAttackOfOpportunity();
 		if (attackSkill == null)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		score = score * this.getFatigueScoreMult(this.m.Skill);
@@ -53,36 +53,36 @@ this.ai_follow_up <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (bestTarget.Target == null)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		local meleeTarget = bestTarget.Target;
 
-		local attackBehaviorScore = this.getProperties().BehaviorMult[this.Const.AI.Behavior.ID.AttackDefault];
+		local attackBehaviorScore = this.getProperties().BehaviorMult[::Const.AI.Behavior.ID.AttackDefault];
 		attackBehaviorScore = attackBehaviorScore * this.getFatigueScoreMult(attackSkill);
 
-		attackBehaviorScore = this.Math.max(0, this.Const.AI.Behavior.Score.Attack * bestTarget.Score * attackBehaviorScore);
+		attackBehaviorScore = this.Math.max(0, ::Const.AI.Behavior.Score.Attack * bestTarget.Score * attackBehaviorScore);
 
 		local damage = attackSkill.getExpectedDamage(meleeTarget);
 
 		if (meleeTarget.getHitpoints() <= damage.HitpointDamage + damage.DirectDamage)
 		{
-			if (this.Const.AI.VerboseMode)
+			if (::Const.AI.VerboseMode)
 			{
 				this.logInfo("Can kill " + meleeTarget.getName() + " hence no Follow Up");
 			}
 			
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		if (damage.HitpointDamage >= this.Const.Combat.InjuryMinDamage)
+		if (damage.HitpointDamage >= ::Const.Combat.InjuryMinDamage)
 		{
-			local threshold = _entity.getCurrentProperties().ThresholdToInflictInjuryMult * this.Const.Combat.InjuryThresholdMult * meleeTarget.getCurrentProperties().ThresholdToReceiveInjuryMult;
+			local threshold = _entity.getCurrentProperties().ThresholdToInflictInjuryMult * ::Const.Combat.InjuryThresholdMult * meleeTarget.getCurrentProperties().ThresholdToReceiveInjuryMult;
 			local dmg = damage.HitpointDamage / (meleeTarget.getHitpointsMax() * 1.0);
 
 			if (threshold * 0.25 <= dmg)
 			{
-				score = score * this.Const.AI.Behavior.DistractPreferInjuryMult;
+				score = score * ::Const.AI.Behavior.DistractPreferInjuryMult;
 			}
 		}
 
@@ -120,14 +120,14 @@ this.ai_follow_up <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (surroundedTargets == 0 || surroundingAllies == 0)
 		{
-			if (this.Const.AI.VerboseMode)
+			if (::Const.AI.VerboseMode)
 			{
 				this.logInfo("No Surrounded Target or Surrounding Allies in sight");
 			}
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		if (this.Const.AI.VerboseMode)
+		if (::Const.AI.VerboseMode)
 		{
 			this.logInfo("Surrounded Targets : " + surroundedTargets + ", and Surrounding Allies : " + surroundingAllies);
 			this.logInfo("Attack Behavior Score: " + attackBehaviorScore);
@@ -137,14 +137,14 @@ this.ai_follow_up <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (score < attackBehaviorScore)
 		{
-			if (this.Const.AI.VerboseMode)
+			if (::Const.AI.VerboseMode)
 			{
 				this.logInfo("Follow Up Score " + score + " was lower than melee attack score " + attackBehaviorScore + " hence no follow up");
 			}
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		return this.Const.AI.Behavior.Score.PTRFollowUp * score;
+		return ::Const.AI.Behavior.Score.PTRFollowUp * score;
 	}
 
 	function onExecute( _entity )

@@ -9,7 +9,7 @@ this.ptr_follow_up_proccer_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Description = "";
 		this.m.Icon = "ui/perks/ptr_follow_up.png";
 		//this.m.IconMini = "perk_01_mini";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsHidden = true;
 		this.m.IsRemovedAfterBattle = false;
@@ -34,12 +34,12 @@ this.ptr_follow_up_proccer_effect <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		if (this.m.SkillCount == this.Const.SkillCounter)
+		if (this.m.SkillCount == ::Const.SkillCounter)
 		{
 			return;
 		}
 
-		this.m.SkillCount = this.Const.SkillCounter;
+		this.m.SkillCount = ::Const.SkillCounter;
 
 		local allies = ::Tactical.Entities.getHostileActors(_targetEntity.getFaction(), _targetEntity.getTile(), 2);
 		foreach (ally in allies)

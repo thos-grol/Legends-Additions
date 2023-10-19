@@ -61,8 +61,8 @@ this.greenskins_slayer_event <- this.inherit("scripts/events/event", {
 					_event.m.Dude.getBackground().buildDescription(true);
 				}
 
-				_event.m.Dude.getSkills().add(this.new("scripts/skills/traits/hate_greenskins_trait"));
-				local necklace = this.new("scripts/items/accessory/special/slayer_necklace_item");
+				_event.m.Dude.getSkills().add(::new("scripts/skills/traits/hate_greenskins_trait"));
+				local necklace = ::new("scripts/items/accessory/special/slayer_necklace_item");
 				necklace.m.Name = _event.m.Dude.getNameOnly() + "\'s Necklace";
 				_event.m.Dude.getItems().equip(necklace);
 				this.Characters.push(_event.m.Dude.getImagePath());

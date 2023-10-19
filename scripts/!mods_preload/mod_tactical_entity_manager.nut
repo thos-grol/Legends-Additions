@@ -545,12 +545,12 @@ this.getroottable().Const.LegendMod.hookTacticalEntityManager <- function ()
 
 				if (!this.World.getTime().IsDaytime && e.getBaseProperties().IsAffectedByNight)
 				{
-					e.getSkills().add(this.new("scripts/skills/special/night_effect"));
+					e.getSkills().add(::new("scripts/skills/special/night_effect"));
 				}
 
 				if (this.Tactical.getWeather().IsRaining && e.getBaseProperties().IsAffectedByRain)
 				{
-					e.getSkills().add(this.new("scripts/skills/special/legend_rain_effect"));
+					e.getSkills().add(::new("scripts/skills/special/legend_rain_effect"));
 				}
 			}
 		};

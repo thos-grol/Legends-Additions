@@ -174,7 +174,7 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 				});
 				_event.m.Barbarian.improveMood(1.0, "prevented a bloodbath in the woods");
 				_event.m.Rewarditems.getItems().transferToStash(this.World.Assets.getStash());
-				local item = this.new("scripts/items/loot/looted_valuables_item");
+				local item = ::new("scripts/items/loot/looted_valuables_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,

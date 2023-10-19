@@ -86,7 +86,7 @@ this.en_garde_toggle <- ::inherit("scripts/skills/skill", {
 		}
 		else
 		{
-			return this.new("scripts/skills/effects/return_favor_effect");
+			return ::new("scripts/skills/effects/return_favor_effect");
 		}
 	}
 

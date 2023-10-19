@@ -36,7 +36,7 @@ this.perk_quickstep <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		if (!this.m.Container.hasSkill("actives.footwork"))
-			this.m.Container.add(this.new("scripts/skills/actives/footwork"));
+			this.m.Container.add(::new("scripts/skills/actives/footwork"));
 	}
 
 	function onRemoved()

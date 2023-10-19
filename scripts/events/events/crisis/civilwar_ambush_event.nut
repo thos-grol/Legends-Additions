@@ -101,19 +101,19 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 
 				if (r == 1)
 				{
-					item = this.new("scripts/items/weapons/arming_sword");
+					item = ::new("scripts/items/weapons/arming_sword");
 				}
 				else if (r == 2)
 				{
-					item = this.new("scripts/items/weapons/morning_star");
+					item = ::new("scripts/items/weapons/morning_star");
 				}
 				else if (r == 3)
 				{
-					item = this.new("scripts/items/weapons/military_pick");
+					item = ::new("scripts/items/weapons/military_pick");
 				}
 				else if (r == 4)
 				{
-					item = this.new("scripts/items/weapons/billhook");
+					item = ::new("scripts/items/weapons/billhook");
 				}
 
 				this.World.Assets.getStash().add(item);
@@ -126,12 +126,12 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 
 				if (r == 1)
 				{
-					item = this.new("scripts/items/shields/faction_wooden_shield");
+					item = ::new("scripts/items/shields/faction_wooden_shield");
 					item.setFaction(banner);
 				}
 				else if (r == 2)
 				{
-					item = this.new("scripts/items/shields/faction_kite_shield");
+					item = ::new("scripts/items/shields/faction_kite_shield");
 					item.setFaction(banner);
 				}
 				else
@@ -190,23 +190,23 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 
 				if (r == 1)
 				{
-					item = this.new("scripts/items/weapons/pitchfork");
+					item = ::new("scripts/items/weapons/pitchfork");
 				}
 				else if (r == 2)
 				{
-					item = this.new("scripts/items/weapons/short_bow");
+					item = ::new("scripts/items/weapons/short_bow");
 				}
 				else if (r == 3)
 				{
-					item = this.new("scripts/items/weapons/hunting_bow");
+					item = ::new("scripts/items/weapons/hunting_bow");
 				}
 				else if (r == 4)
 				{
-					item = this.new("scripts/items/weapons/militia_spear");
+					item = ::new("scripts/items/weapons/militia_spear");
 				}
 				else if (r == 5)
 				{
-					item = this.new("scripts/items/shields/wooden_shield");
+					item = ::new("scripts/items/shields/wooden_shield");
 				}
 
 				this.World.Assets.getStash().add(item);

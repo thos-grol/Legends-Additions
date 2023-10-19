@@ -12,11 +12,11 @@ this.perk_duelist <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.duelist";
-		this.m.Name = this.Const.Strings.PerkName.Duelist;
-		this.m.Description = this.Const.Strings.PerkDescription.Duelist;
+		this.m.Name = ::Const.Strings.PerkName.Duelist;
+		this.m.Description = ::Const.Strings.PerkDescription.Duelist;
 		this.m.Icon = "skills/passive_03.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -25,9 +25,9 @@ this.perk_duelist <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		local items = this.getContainer().getActor().getItems();
-		local off = items.getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local off = items.getItemAtSlot(::Const.ItemSlot.Offhand);
 
-		if (this.getContainer().hasSkill("injury.missing_hand") || off == null && !items.hasBlockedSlot(this.Const.ItemSlot.Offhand) || off != null && off.isItemType(this.Const.Items.ItemType.Tool))
+		if (this.getContainer().hasSkill("injury.missing_hand") || off == null && !items.hasBlockedSlot(::Const.ItemSlot.Offhand) || off != null && off.isItemType(::Const.Items.ItemType.Tool))
 		{
 			_properties.DamageDirectAdd += 0.25;
 		}

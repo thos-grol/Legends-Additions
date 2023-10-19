@@ -11,7 +11,7 @@ this.rattled_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "ui/perks/rattle.png";
 		this.m.IconMini = "rattled_effect_mini";
 		this.m.Overlay = "rattled_effect";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 	}
@@ -29,7 +29,7 @@ this.rattled_effect <- this.inherit("scripts/skills/skill", {
 			id = 10,
 			type = "text",
 			icon = "ui/icons/damage_dealt.png",
-			text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + (this.m.Stacks * this.m.DamageReductionPercentage) + "%[/color] Damage inflicted"
+			text = "[color=" + ::Const.UI.Color.NegativeValue + "]-" + (this.m.Stacks * this.m.DamageReductionPercentage) + "%[/color] Damage inflicted"
 		});
 		
 		return tooltip;

@@ -43,15 +43,15 @@
 
 		if (r <= 2)
 		{
-			items.equip(this.new("scripts/items/weapons/flail"));
+			items.equip(::new("scripts/items/weapons/flail"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/winged_mace"));
+			items.equip(::new("scripts/items/weapons/winged_mace"));
 		}
 		else if (r == 4)
 		{
-			items.equip(this.new("scripts/items/weapons/warhammer"));
+			items.equip(::new("scripts/items/weapons/warhammer"));
 		}
 
 		local shield;
@@ -59,15 +59,15 @@
 
 		if (r <= 2)
 		{
-			shield = this.new("scripts/items/shields/legend_tower_shield");
+			shield = ::new("scripts/items/shields/legend_tower_shield");
 		}
 		else if (r == 3)
 		{
-			shield = this.new("scripts/items/shields/heater_shield");
+			shield = ::new("scripts/items/shields/heater_shield");
 		}
 		else if (r == 4)
 		{
-			shield = this.new("scripts/items/shields/kite_shield");
+			shield = ::new("scripts/items/shields/kite_shield");
 		}
 
 		shield.onPaintSpecificColor(23);

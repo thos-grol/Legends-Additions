@@ -29,13 +29,13 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/hunting_bow"));
-			items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+			items.equip(::new("scripts/items/weapons/hunting_bow"));
+			items.equip(::new("scripts/items/ammo/quiver_of_arrows"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/arming_sword"));
-			items.equip(this.new("scripts/items/shields/wooden_shield"));
+			items.equip(::new("scripts/items/weapons/arming_sword"));
+			items.equip(::new("scripts/items/shields/wooden_shield"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

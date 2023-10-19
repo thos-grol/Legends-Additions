@@ -39,12 +39,12 @@ this.perk_pathfinder <- this.inherit("scripts/skills/skill", {
 	{
 		if (!this.m.Container.hasSkill("actives.sprint"))
 		{
-			this.m.Container.add(this.new("scripts/skills/actives/sprint_skill_5"));
+			this.m.Container.add(::new("scripts/skills/actives/sprint_skill_5"));
 		}
 
 		if (!this.m.Container.hasSkill("actives.legend_climb"))
 		{
-			this.m.Container.add(this.new("scripts/skills/actives/legend_climb"));
+			this.m.Container.add(::new("scripts/skills/actives/legend_climb"));
 		}
 	}
 

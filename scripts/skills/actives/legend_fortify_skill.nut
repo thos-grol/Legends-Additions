@@ -13,8 +13,8 @@ this.legend_fortify_skill <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/shieldwall_02.wav",
 			"sounds/combat/shieldwall_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.NonTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.NonTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = false;
@@ -28,7 +28,7 @@ this.legend_fortify_skill <- this.inherit("scripts/skills/skill", {
 
 	function getTooltip()
 	{
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 		local mult = 1.0;
 
 		return [
@@ -51,19 +51,19 @@ this.legend_fortify_skill <- this.inherit("scripts/skills/skill", {
 				id = 4,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "Grants [color=" + this.Const.UI.Color.PositiveValue + "]+" + item.getMeleeDefense() + "[/color] Melee Defense for one turn"
+				text = "Grants [color=" + ::Const.UI.Color.PositiveValue + "]+" + item.getMeleeDefense() + "[/color] Melee Defense for one turn"
 			},
 			{
 				id = 5,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "Grants [color=" + this.Const.UI.Color.PositiveValue + "]+" + item.getRangedDefense() + "[/color] Ranged Defense for one turn"
+				text = "Grants [color=" + ::Const.UI.Color.PositiveValue + "]+" + item.getRangedDefense() + "[/color] Ranged Defense for one turn"
 			},
 			{
 				id = 6,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "Grants an additional [color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Defense against all attacks."
+				text = "Grants an additional [color=" + ::Const.UI.Color.PositiveValue + "]+5[/color] Defense against all attacks."
 			}
 		];
 	}
@@ -104,7 +104,7 @@ this.legend_fortify_skill <- this.inherit("scripts/skills/skill", {
 
 		if (this.getContainer().getActor().getSkills().hasSkill("perk.legend_specialist_shield_push"))
 		{
-			this.m.FatigueCostMult = this.Const.Combat.WeaponSpecFatigueMult;
+			this.m.FatigueCostMult = ::Const.Combat.WeaponSpecFatigueMult;
 			this.m.ActionPointCost = 3;
 		}
 
@@ -116,11 +116,11 @@ this.legend_fortify_skill <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
-		this.m.Container.add(this.new("scripts/skills/effects/legend_fortify_effect"));
+		this.m.Container.add(::new("scripts/skills/effects/legend_fortify_effect"));
 
 		if (!_user.isHiddenToPlayer())
 		{
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " uses Fortify");
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " uses Fortify");
 		}
 
 		return true;

@@ -32,11 +32,11 @@
 
 		if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/hand_axe"));
+			items.equip(::new("scripts/items/weapons/hand_axe"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/morning_star"));
+			items.equip(::new("scripts/items/weapons/morning_star"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

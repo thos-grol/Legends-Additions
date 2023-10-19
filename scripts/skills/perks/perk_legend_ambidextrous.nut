@@ -53,7 +53,7 @@ this.perk_legend_ambidextrous <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		if (!this.m.Container.hasSkill("actives.legend_kick"))
-			this.m.Container.add(this.new("scripts/skills/actives/legend_kick"));
+			this.m.Container.add(::new("scripts/skills/actives/legend_kick"));
 	}
 
 	function onRemoved()

@@ -30,7 +30,7 @@ this.perk_stance_followup <- this.inherit("scripts/skills/skill", {
 	function onTurnEnd()
 	{
 		local actor = this.getContainer().getActor();
-		local skill = actor.getSkills().getSkillByID("actives.follow_up");
+		local skill = this.m.Container.getSkillByID("actives.follow_up");
 		if (skill == null || !skill.isUsable()) return;
 		skill.useForFree(actor.getTile());
 	}

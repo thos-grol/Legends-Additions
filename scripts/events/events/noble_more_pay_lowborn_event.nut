@@ -159,7 +159,7 @@ this.noble_more_pay_lowborn_event <- this.inherit("scripts/events/event", {
 
 				if (!_event.m.Noble.getSkills().hasSkill("trait.greedy"))
 				{
-					local trait = this.new("scripts/skills/traits/greedy_trait");
+					local trait = ::new("scripts/skills/traits/greedy_trait");
 					_event.m.Noble.getSkills().add(trait);
 					this.List.push({
 						id = 10,

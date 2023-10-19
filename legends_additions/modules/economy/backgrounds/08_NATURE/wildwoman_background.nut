@@ -32,15 +32,15 @@
 		r = this.Math.rand(1, 3);
 		if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/wooden_stick"));
+			items.equip(::new("scripts/items/weapons/wooden_stick"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/greenskins/orc_metal_club"));
+			items.equip(::new("scripts/items/weapons/greenskins/orc_metal_club"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/greenskins/orc_wooden_club"));
+			items.equip(::new("scripts/items/weapons/greenskins/orc_wooden_club"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

@@ -492,7 +492,7 @@
 				{
 					if (this.Math.rand(1, 100) <= this.m.RoundsGiven + 5)
 					{
-						local drunk = this.new("scripts/skills/traits/drunkard_trait");
+						local drunk = ::new("scripts/skills/traits/drunkard_trait");
 						b.getSkills().add(drunk);
 						result.Result.push({
 							Icon = drunk.getIcon(),
@@ -504,7 +504,7 @@
 
 			if (this.Math.rand(1, 100) <= drunkChance)
 			{
-				local drunk = this.new("scripts/skills/effects_world/drunk_effect");
+				local drunk = ::new("scripts/skills/effects_world/drunk_effect");
 				b.getSkills().add(drunk);
 				result.Result.push({
 					Icon = drunk.getIcon(),

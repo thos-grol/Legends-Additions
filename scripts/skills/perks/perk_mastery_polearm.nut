@@ -34,13 +34,13 @@ this.perk_mastery_polearm <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("actives.follow_up")) this.m.Container.add(this.new("scripts/skills/actives/follow_up"));
+		if (!this.m.Container.hasSkill("actives.follow_up")) this.m.Container.add(::new("scripts/skills/actives/follow_up"));
 		
 		local actor = this.getContainer().getActor();
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 
 		if (!this.m.Container.hasSkill("trait.proficiency_Polearm"))
-			this.m.Container.add(this.new("scripts/skills/traits/_proficiency_Polearm"));
+			this.m.Container.add(::new("scripts/skills/traits/_proficiency_Polearm"));
 	}
 
 	function onRemoved()

@@ -58,7 +58,7 @@ this.bleeding_effect <- this.inherit("scripts/skills/skill", {
 			local actor = this.getContainer().getActor();
 			this.spawnIcon("status_effect_01", actor.getTile());
 			local hitInfo = clone ::Const.Tactical.HitInfo;
-			hitInfo.DamageRegular = this.m.Damage * (actor.getSkills().hasSkill("effects.hyena_potion") ? 0.5 : 1.0);
+			hitInfo.DamageRegular = this.m.Damage * (this.m.Container.hasSkill("effects.hyena_potion") ? 0.5 : 1.0);
 			hitInfo.DamageDirect = 1.0;
 			hitInfo.BodyPart = ::Const.BodyPart.Body;
 			hitInfo.BodyDamageMult = 1.0;

@@ -28,11 +28,11 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/wooden_flail"));
+			items.equip(::new("scripts/items/weapons/wooden_flail"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_shovel"));
+			items.equip(::new("scripts/items/weapons/legend_shovel"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

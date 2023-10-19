@@ -37,11 +37,11 @@
 
 		if (r == 2)
 		{
-			items.equip(this.new("scripts/items/weapons/barbarians/crude_axe"));
+			items.equip(::new("scripts/items/weapons/barbarians/crude_axe"));
 		}
 		else if (r == 3)
 		{
-			items.equip(this.new("scripts/items/weapons/barbarians/blunt_cleaver"));
+			items.equip(::new("scripts/items/weapons/barbarians/blunt_cleaver"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

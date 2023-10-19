@@ -187,11 +187,11 @@
 
 // 			if (r == 1)
 // 			{
-// 				item = this.new("scripts/items/supplies/roots_and_berries_item");
+// 				item = ::new("scripts/items/supplies/roots_and_berries_item");
 // 			}
 // 			else
 // 			{
-// 				item = this.new("scripts/items/supplies/medicine_small_item");
+// 				item = ::new("scripts/items/supplies/medicine_small_item");
 // 			}
 
 // 			this.m.Items.push(item);
@@ -212,7 +212,7 @@
 
 // 			if (r == 1)
 // 			{
-// 				item = this.new("scripts/items/trade/quality_wood_item");
+// 				item = ::new("scripts/items/trade/quality_wood_item");
 // 			}
 
 // 			this.m.Items.push(item);
@@ -233,7 +233,7 @@
 
 // 			if (r == 1)
 // 			{
-// 				item = this.new("scripts/items/trade/legend_raw_wood_item");
+// 				item = ::new("scripts/items/trade/legend_raw_wood_item");
 // 			}
 
 // 			this.m.Items.push(item);
@@ -254,7 +254,7 @@
 
 // 			if (r < 3)
 // 			{
-// 				item = this.new("scripts/items/trade/uncut_gems_item");
+// 				item = ::new("scripts/items/trade/uncut_gems_item");
 // 			}
 
 // 			this.m.Items.push(item);
@@ -275,7 +275,7 @@
 
 // 			if (r < 3)
 // 			{
-// 				item = this.new("scripts/items/trade/peat_bricks_item");
+// 				item = ::new("scripts/items/trade/peat_bricks_item");
 // 			}
 
 // 			this.m.Items.push(item);
@@ -293,7 +293,7 @@
 // 		//FEATURE_6: redo how loot is gathered, also potions are now brewed at guild headquarters, and requires investment for alchemical apparati.
 // 		if (dropLoot)
 // 		{
-// 			local loot = this.new("scripts/mods/script_container");
+// 			local loot = ::new("scripts/mods/script_container");
 // 			loot.extend([
 // 				"scripts/items/accessory/berserker_mushrooms_item",
 // 				"scripts/items/accessory/antidote_item",
@@ -330,7 +330,7 @@
 // 				}
 // 			}
 
-// 			item = this.new(loot.roll());
+// 			item = ::new(loot.roll());
 // 			this.m.Items.push(item);
 // 			this.Stash.add(item);
 // 			emptySlots = --emptySlots;

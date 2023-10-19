@@ -58,8 +58,8 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 			if (s.m.ID == "effects.bleeding") count += 1;
 		}
 		local actor = this.getContainer().getActor();
-		local cap = actor.getSkills().hasSkill("perk.stance.gourmet") ? 75 : this.m.Cap;
-		local effect = actor.getSkills().hasSkill("perk.stance.gourmet") ? 10 : this.m.Effect;
+		local cap = this.m.Container.hasSkill("perk.stance.gourmet") ? 75 : this.m.Cap;
+		local effect = this.m.Container.hasSkill("perk.stance.gourmet") ? 10 : this.m.Effect;
 		return ::Math.min(count * effect, cap);
 	}
 

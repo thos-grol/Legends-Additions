@@ -27,9 +27,9 @@
 				"noble_tunic"
 			]
 		]));
-		items.equip(this.new("scripts/items/weapons/pike"));
+		items.equip(::new("scripts/items/weapons/pike"));
 		local stash = this.World.Assets.getStash();
-		stash.add(this.new("scripts/items/supplies/wine_item"));
+		stash.add(::new("scripts/items/supplies/wine_item"));
 	}
 
 });

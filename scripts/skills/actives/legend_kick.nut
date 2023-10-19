@@ -103,7 +103,7 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 
 			if (!_targetEntity.getSkills().hasSkill("effects.staggered"))
 			{
-				_targetEntity.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
+				_targetEntity.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
 				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.colorRed(" has been staggered"));
 			}
 
@@ -142,7 +142,7 @@ this.legend_kick <- this.inherit("scripts/skills/skill", {
 
 		foreach( bg in this.m.Backgrounds )
 		{
-			if (actor.getSkills().hasSkill(bg))
+			if (this.m.Container.hasSkill(bg))
 			{
 				_properties.DamageTotalMult *= 1.25;
 				break;

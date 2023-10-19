@@ -99,7 +99,7 @@ this.direwolf_indomitable <- this.inherit("scripts/skills/skill", {
 
 		if (!this.getContainer().hasSkill("effects.indomitable"))
 		{
-			this.m.Container.add(this.new("scripts/skills/effects/indomitable_effect"));
+			this.m.Container.add(::new("scripts/skills/effects/indomitable_effect"));
 			return true;
 		}
 		

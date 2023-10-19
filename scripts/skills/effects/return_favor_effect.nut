@@ -8,7 +8,7 @@ this.return_favor_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "ui/perks/perk_31.png";
 		this.m.IconMini = "perk_31_mini";
 		this.m.Overlay = "perk_31";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
 	}
@@ -30,7 +30,7 @@ this.return_favor_effect <- this.inherit("scripts/skills/skill", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Has a [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] chance to daze missing with a melee attack (resistances and immunities still apply)."
+				text = "Has a [color=" + ::Const.UI.Color.PositiveValue + "]50%[/color] chance to daze missing with a melee attack (resistances and immunities still apply)."
 			}
 		];
 	}
@@ -44,7 +44,7 @@ this.return_favor_effect <- this.inherit("scripts/skills/skill", {
 			if (this.Math.rand(1, 100) <= 50 && !_attacker.getCurrentProperties().IsImmuneToStun && !_attacker.getSkills().hasSkill("effects.stunned"))
 			{
 				local d = _attacker.getTile().getDistanceTo(user.getTile());
-				local item = user.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+				local item = user.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
 
 				if (d <= 1 )
 				{
@@ -52,7 +52,7 @@ this.return_favor_effect <- this.inherit("scripts/skills/skill", {
 
 					if (!user.isHiddenToPlayer() && !_attacker.isHiddenToPlayer())
 					{
-						this.Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(_attacker) + " has been dazed for one turn");
+						this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_attacker) + " has been dazed for one turn");
 					}
 				}
 			}

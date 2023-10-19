@@ -149,7 +149,7 @@ this.anatomist_vs_asthmatic_event <- this.inherit("scripts/events/event", {
 					icon = "ui/traits/trait_icon_22.png",
 					text = _event.m.Asthmatic.getName() + " is no longer Asthmatic"
 				});
-				local trait = this.new("scripts/skills/traits/iron_lungs_trait");
+				local trait = ::new("scripts/skills/traits/iron_lungs_trait");
 				_event.m.Asthmatic.getSkills().add(trait);
 				this.List.push({
 					id = 11,
@@ -173,7 +173,7 @@ this.anatomist_vs_asthmatic_event <- this.inherit("scripts/events/event", {
 
 				while (num_new_traits > 0 && new_traits.len() > 0)
 				{
-					local trait = this.new(new_traits.remove(this.Math.rand(0, new_traits.len() - 1)));
+					local trait = ::new(new_traits.remove(this.Math.rand(0, new_traits.len() - 1)));
 
 					if (!_event.m.Asthmatic.getSkills().hasSkill(trait.getID()))
 					{

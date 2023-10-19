@@ -23,34 +23,34 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/wooden_stick"));
+			items.equip(::new("scripts/items/weapons/wooden_stick"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/wooden_flail"));
+			items.equip(::new("scripts/items/weapons/wooden_flail"));
 		}
 		else if (r == 2)
 		{
-			items.equip(this.new(""));
+			items.equip(::new(""));
 		}
 		else if (r == 3)
 		{
 		}
 		else if (r == 4)
 		{
-			items.equip(this.new("scripts/items/weapons/hatchet"));
+			items.equip(::new("scripts/items/weapons/hatchet"));
 		}
 		else if (r == 5)
 		{
-			items.equip(this.new("scripts/items/shields/worn_heater_shield"));
+			items.equip(::new("scripts/items/shields/worn_heater_shield"));
 		}
 		else if (r == 6)
 		{
-			items.equip(this.new("scripts/items/shields/worn_kite_shield"));
+			items.equip(::new("scripts/items/shields/worn_kite_shield"));
 		}
 		else if (r == 7)
 		{
-			items.equip(this.new("scripts/items/weapons/boar_spear"));
+			items.equip(::new("scripts/items/weapons/boar_spear"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

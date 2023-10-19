@@ -28,7 +28,7 @@ this.oldguard_becomes_drunkard_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Oldguard.getImagePath());
-				local trait = this.new("scripts/skills/traits/drunkard_trait");
+				local trait = ::new("scripts/skills/traits/drunkard_trait");
 				_event.m.Oldguard.getSkills().add(trait);
 				this.List.push({
 					id = 10,

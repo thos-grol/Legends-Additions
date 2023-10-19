@@ -115,7 +115,7 @@ this.anatomist_vs_ailing_event <- this.inherit("scripts/events/event", {
 
 				if (!_event.m.Ailing.getSkills().hasSkill("trait.paranoid"))
 				{
-					local trait = this.new("scripts/skills/traits/paranoid_trait");
+					local trait = ::new("scripts/skills/traits/paranoid_trait");
 					_event.m.Ailing.getSkills().add(trait);
 					this.List.push({
 						id = 10,
@@ -170,7 +170,7 @@ this.anatomist_vs_ailing_event <- this.inherit("scripts/events/event", {
 
 				while (num_new_traits > 0 && new_traits.len() > 0)
 				{
-					local trait = this.new(new_traits.remove(this.Math.rand(0, new_traits.len() - 1)));
+					local trait = ::new(new_traits.remove(this.Math.rand(0, new_traits.len() - 1)));
 
 					if (!_event.m.Ailing.getSkills().hasSkill(trait.getID()))
 					{

@@ -104,12 +104,12 @@ this.main_menu_screen <- {
 	function create()
 	{
 		this.m.Visible = false;
-		this.m.MainMenuModule = this.new("scripts/ui/screens/menu/modules/main_menu_module");
-		this.m.LoadCampaignModule = this.new("scripts/ui/screens/menu/modules/load_campaign_menu_module");
-		this.m.NewCampaignModule = this.new("scripts/ui/screens/menu/modules/new_campaign_menu_module");
-		this.m.ScenarioMenuModule = this.new("scripts/ui/screens/menu/modules/scenario_menu_module");
-		this.m.OptionsMenuModule = this.new("scripts/ui/screens/menu/modules/options_menu_module");
-		this.m.CreditsModule = this.new("scripts/ui/screens/menu/modules/credits_module");
+		this.m.MainMenuModule = ::new("scripts/ui/screens/menu/modules/main_menu_module");
+		this.m.LoadCampaignModule = ::new("scripts/ui/screens/menu/modules/load_campaign_menu_module");
+		this.m.NewCampaignModule = ::new("scripts/ui/screens/menu/modules/new_campaign_menu_module");
+		this.m.ScenarioMenuModule = ::new("scripts/ui/screens/menu/modules/scenario_menu_module");
+		this.m.OptionsMenuModule = ::new("scripts/ui/screens/menu/modules/options_menu_module");
+		this.m.CreditsModule = ::new("scripts/ui/screens/menu/modules/credits_module");
 	}
 
 	function connect()

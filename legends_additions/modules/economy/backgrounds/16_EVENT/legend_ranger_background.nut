@@ -24,24 +24,24 @@
 		this.getContainer().getActor().fillTalentValues(1, true);
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		items.equip(this.new("scripts/items/weapons/hunting_bow"));
-		items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+		items.equip(::new("scripts/items/weapons/hunting_bow"));
+		items.equip(::new("scripts/items/ammo/quiver_of_arrows"));
 		local stash = this.World.Assets.getStash();
-		stash.add(this.new("scripts/items/ammo/quiver_of_arrows"));
-		stash.add(this.new("scripts/items/supplies/cured_venison_item"));
-		stash.add(this.new("scripts/items/accessory/wardog_item"));
+		stash.add(::new("scripts/items/ammo/quiver_of_arrows"));
+		stash.add(::new("scripts/items/supplies/cured_venison_item"));
+		stash.add(::new("scripts/items/accessory/wardog_item"));
 		stash.removeByID("supplies.ground_grains");
 		stash.removeByID("supplies.ground_grains");
 		r = this.Math.rand(0, 1);
 
 		if (r == 0)
 		{
-			items.addToBag(this.new("scripts/items/weapons/knife"));
+			items.addToBag(::new("scripts/items/weapons/knife"));
 		}
 
 		if (r == 1)
 		{
-			items.addToBag(this.new("scripts/items/weapons/bludgeon"));
+			items.addToBag(::new("scripts/items/weapons/bludgeon"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

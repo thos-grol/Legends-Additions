@@ -48,8 +48,8 @@ this.legend_cannibal_recruitment <- this.inherit("scripts/events/event", {
 					_event.m.Cannibal.setStartValuesEx([
 						"legend_cannibal_background"
 					]);
-					_event.m.Cannibal.getSkills().add(this.new("scripts/skills/racial/skeleton_racial"));
-					_event.m.Cannibal.getSkills().add(this.new("scripts/skills/traits/legend_fleshless_trait"));
+					_event.m.Cannibal.getSkills().add(::new("scripts/skills/racial/skeleton_racial"));
+					_event.m.Cannibal.getSkills().add(::new("scripts/skills/traits/legend_fleshless_trait"));
 				}
 				else
 				{

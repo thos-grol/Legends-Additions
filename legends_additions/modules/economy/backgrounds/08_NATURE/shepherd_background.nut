@@ -31,7 +31,7 @@
 		r = this.Math.rand(0, 4);
 		if (r <= 3)
 		{
-			items.equip(this.new("scripts/items/weapons/legend_sling"));
+			items.equip(::new("scripts/items/weapons/legend_sling"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

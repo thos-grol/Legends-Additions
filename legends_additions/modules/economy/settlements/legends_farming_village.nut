@@ -277,16 +277,16 @@
 
 	o.onBuildOne = function( _settings )
 	{
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
 
 		if (this.Math.rand(1, 100) <= 25)
 		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
+			this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 		}
 		else if (this.Math.rand(1, 100) <= 25)
 		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/tavern_building"));
+			this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 		}
 
 		this.buildAttachedLocation(this.Math.rand(1, 2), "scripts/entity/world/attached_location/wheat_fields_location", [
@@ -315,10 +315,10 @@
 
 	o.onBuildTwo = function( _settings )
 	{
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/tavern_building"));
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 
 		if (this.Math.rand(1, 100) <= 70)
 		{
@@ -374,18 +374,18 @@
 
 	o.onBuildThree = function( _settings )
 	{
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/temple_building"));
-		this.addBuilding(this.new("scripts/entity/world/settlements/buildings/tavern_building"));
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
+		this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 
 		if (::Const.World.Buildings.Fletchers == 0)
 		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/fletcher_building"));
+			this.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
 		}
 		else if (this.Math.rand(1, 100) <= 50)
 		{
-			this.addBuilding(this.new("scripts/entity/world/settlements/buildings/armorsmith_building"));
+			this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 70)

@@ -26,7 +26,7 @@
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
-		items.equip(this.new("scripts/items/tools/throwing_net"));
+		items.equip(::new("scripts/items/tools/throwing_net"));
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,

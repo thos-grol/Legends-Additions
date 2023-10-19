@@ -78,7 +78,7 @@
 			]
 		]));
 		local rng = this.Math.rand(0, ::Const.Injury.Permanent.len() - 1);
-		this.m.Container.add(this.new("scripts/skills/" + ::Const.Injury.Permanent[rng].Script));
+		this.m.Container.add(::new("scripts/skills/" + ::Const.Injury.Permanent[rng].Script));
 	}
 
 });

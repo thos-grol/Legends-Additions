@@ -22,16 +22,16 @@
 
 		if (this.Math.rand(1, 100) >= 50)
 		{
-			items.equip(this.new("scripts/items/tools/throwing_net"));
+			items.equip(::new("scripts/items/tools/throwing_net"));
 		}
 
 		if (this.Math.rand(1, 100) >= 50)
 		{
-			items.equip(this.new("scripts/items/accessory/wardog_item"));
+			items.equip(::new("scripts/items/accessory/wardog_item"));
 		}
 		else
 		{
-			items.equip(this.new("scripts/items/accessory/warhound_item"));
+			items.equip(::new("scripts/items/accessory/warhound_item"));
 		}
 
 		items.equip(::Const.World.Common.pickArmor([

@@ -28,7 +28,7 @@ this.hate_undead_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Casualty.getImagePath());
-				local trait = this.new("scripts/skills/traits/hate_undead_trait");
+				local trait = ::new("scripts/skills/traits/hate_undead_trait");
 				_event.m.Casualty.getSkills().add(trait);
 				this.List.push({
 					id = 10,

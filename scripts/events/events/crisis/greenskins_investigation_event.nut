@@ -98,7 +98,7 @@ this.greenskins_investigation_event <- this.inherit("scripts/events/event", {
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
 				this.Characters.push(_event.m.Noble.getImagePath());
 				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Did a favor for " + _event.m.Noble.getName());
-				local food = this.new("scripts/items/supplies/wine_item");
+				local food = ::new("scripts/items/supplies/wine_item");
 				this.World.Assets.getStash().add(food);
 				this.List.push({
 					id = 10,
@@ -187,7 +187,7 @@ this.greenskins_investigation_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation decreases slightly"
 				});
-				local item = this.new("scripts/items/shields/faction_heater_shield");
+				local item = ::new("scripts/items/shields/faction_heater_shield");
 				item.setFaction(_event.m.NobleHouse.getBanner());
 				item.setVariant(2);
 				this.World.Assets.getStash().add(item);
@@ -304,28 +304,28 @@ this.greenskins_investigation_event <- this.inherit("scripts/events/event", {
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
 				local item;
-				item = this.new("scripts/items/accessory/poison_item");
+				item = ::new("scripts/items/accessory/poison_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + item.getName()
 				});
-				item = this.new("scripts/items/accessory/antidote_item");
+				item = ::new("scripts/items/accessory/antidote_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + item.getName()
 				});
-				item = this.new("scripts/items/accessory/berserker_mushrooms_item");
+				item = ::new("scripts/items/accessory/berserker_mushrooms_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + item.getName()
 				});
-				item = this.new("scripts/items/accessory/wardog_item");
+				item = ::new("scripts/items/accessory/wardog_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
@@ -448,7 +448,7 @@ this.greenskins_investigation_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
-				local item = this.new("scripts/items/weapons/arming_sword");
+				local item = ::new("scripts/items/weapons/arming_sword");
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,

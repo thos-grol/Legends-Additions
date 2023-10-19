@@ -13,7 +13,7 @@ this.dismantled_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Icon = "skills/deep_impact.png";
 		this.m.IconMini = "dismantled_mini";
 		this.m.Overlay = "dismantled";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsRemovedAfterBattle = true;
@@ -45,7 +45,7 @@ this.dismantled_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/direct_damage.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]+" + ::Math.min(this.m.HeadHitCount * this.m.DamageIncrease, this.m.Max) + "%[/color] Damage received through Head Armor"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]+" + ::Math.min(this.m.HeadHitCount * this.m.DamageIncrease, this.m.Max) + "%[/color] Damage received through Head Armor"
 			});
 		}
 
@@ -55,7 +55,7 @@ this.dismantled_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/direct_damage.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]+" + ::Math.min(this.m.BodyHitCount * this.m.DamageIncrease, this.m.Max) + "%[/color] Damage received through Body Armor"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]+" + ::Math.min(this.m.BodyHitCount * this.m.DamageIncrease, this.m.Max) + "%[/color] Damage received through Body Armor"
 			});
 		}
 
@@ -71,7 +71,7 @@ this.dismantled_effect <- this.inherit("scripts/skills/skill", {
 	{
 		if (_skill == null || !_skill.isAttack() || _attacker == null || _attacker.getID() == this.getContainer().getActor().getID()) return;
 		local count = 0;
-		count = _hitInfo.BodyPart == this.Const.BodyPart.Body ? this.m.BodyHitCount : this.m.HeadHitCount;
+		count = _hitInfo.BodyPart == ::Const.BodyPart.Body ? this.m.BodyHitCount : this.m.HeadHitCount;
 		count = ::Math.min(count * this.m.DamageIncrease, this.m.Max);
 		_properties.DamageReceivedDirectMult *= 1.0 + (count * 0.01);
 	}

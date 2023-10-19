@@ -30,14 +30,14 @@
 
 		if (r == 0)
 		{
-			items.equip(this.new("scripts/items/weapons/hunting_bow"));
+			items.equip(::new("scripts/items/weapons/hunting_bow"));
 		}
 		else if (r == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/short_bow"));
+			items.equip(::new("scripts/items/weapons/short_bow"));
 		}
 
-		items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+		items.equip(::new("scripts/items/ammo/quiver_of_arrows"));
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
