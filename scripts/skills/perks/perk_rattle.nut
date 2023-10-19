@@ -4,8 +4,13 @@
 + "\nRattle the target"
 + "\n "+::MSU.Text.colorRed("Must inflict at least 5 Hitpoint damage to trigger. 2H weapons inflict an additional stack of rattled")
 
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Blunt attacks:")
++ "\nCan apply injuries to the undead"
+
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Rattle: (Duration: 1)")
 + "\n "+::MSU.Text.colorRed("– 10% Damage Dealt");
+
+
 
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Rattle].Name = ::Const.Strings.PerkName.Rattle;

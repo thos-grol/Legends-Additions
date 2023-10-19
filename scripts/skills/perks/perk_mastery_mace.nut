@@ -4,14 +4,6 @@
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Mace)"
 + "\nKnock Out, Knock Over and Strike Down have a " + ::MSU.Text.colorGreen("100%") + " chance to stun the target"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On headshot")
-+ "\n Apply daze for 1 turn"
-+ "\n"+::MSU.Text.colorRed("Duration becomes 2 turns with a 1H mace. Will stun with a 2H mace. If target is immune, daze them instead")
-
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Daze: (Duration: 2)")
-+ "\n "+::MSU.Text.colorRed("– 50% Fatigue")
-+ "\n "+::MSU.Text.colorRed("– 50% Initiative");
-
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecMace].Name = ::Const.Strings.PerkName.SpecMace;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecMace].Tooltip = ::Const.Strings.PerkDescription.SpecMace;
 

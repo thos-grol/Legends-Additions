@@ -96,15 +96,6 @@ local perks = [
         Const = "SpecHammerC"
     },
     {
-        ID = "perk.mastery.macec",
-        Script = "scripts/skills/perks/perk_mastery_macec",
-        Name = "",
-        Tooltip = "",
-        Icon = "ui/perks/mastery_mace.png",
-        IconDisabled = "ui/perks/perk_44_sw.png",
-        Const = "SpecMaceC"
-    },
-    {
         ID = "perk.mastery.polearmc",
         Script = "scripts/skills/perks/perk_mastery_polearmc",
         Name = "",
@@ -171,15 +162,6 @@ local perks = [
         Icon = "ui/perks/wrath.png",
         IconDisabled = "ui/perks/wrath_bw.png",
         Const = "StanceWrath"
-    },
-    {
-        ID = "perk.stance.bone_breaker",
-        Script = "scripts/skills/perks/perk_stance_bone_breaker",
-        Name = "",
-        Tooltip = "",
-        Icon = "ui/perks/bone_breaker.png",
-        IconDisabled = "ui/perks/bone_breaker_bw.png",
-        Const = "StanceBoneBreaker"
     },
     {
         ID = "perk.stance.seismic_slam",
@@ -280,15 +262,6 @@ local perks = [
         Icon = "ui/perks/dismemberment.png",
         IconDisabled = "ui/perks/dismemberment_bw.png",
         Const = "Dismemberment"
-    },
-    {
-        ID = "perk.deep_impact",
-        Script = "scripts/skills/perks/perk_deep_impact",
-        Name = "",
-        Tooltip = "",
-        Icon = "ui/perks/deep_impact.png",
-        IconDisabled = "ui/perks/deep_impact_bw.png",
-        Const = "DeepImpact"
     },
     {
         ID = "perk.death_dealer",
@@ -492,10 +465,6 @@ local perks = [
     "Hammer" : {
         "Proficiency" : ::Const.Perks.PerkDefs.SpecHammer,
         "Mastery" : ::Const.Perks.PerkDefs.SpecHammerC,
-    },
-    "Mace" : {
-        "Proficiency" : ::Const.Perks.PerkDefs.SpecMace,
-        "Mastery" : ::Const.Perks.PerkDefs.SpecMaceC,
     },
     "Polearm" : {
         "Proficiency" : ::Const.Perks.PerkDefs.SpecPolearm,

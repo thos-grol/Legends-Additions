@@ -66,7 +66,7 @@ this.knock_over_skill <- this.inherit("scripts/skills/skill", {
 			text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]" + ::Const.Combat.FatigueReceivedPerHit * 2 + "[/color] extra fatigue"
 		});
 
-		if (this.getContainer().getActor().getCurrentProperties().IsSpecializedInMaces)
+		if (this.getContainer().getActor().getCurrentProperties().IsSpecializedInHammers)
 		{
 			ret.push({
 				id = 7,
@@ -100,7 +100,7 @@ this.knock_over_skill <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInMaces ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInHammers ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onUse( _user, _targetTile )
@@ -117,7 +117,7 @@ this.knock_over_skill <- this.inherit("scripts/skills/skill", {
 		{
 			local target = _targetTile.getEntity();
 
-			if ((_user.getCurrentProperties().IsSpecializedInMaces || this.Math.rand(1, 100) <= this.m.StunChance) && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
+			if ((_user.getCurrentProperties().IsSpecializedInHammers || this.Math.rand(1, 100) <= this.m.StunChance) && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
 			{
 				target.getSkills().add(::new("scripts/skills/effects/stunned_effect"));
 

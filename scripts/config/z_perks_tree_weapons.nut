@@ -191,67 +191,6 @@ gt.Const.Perks.SwordTree <- {
 	]
 };
 
-gt.Const.Perks.MaceTree <- {
-	ID = "Mace",
-	Name = "Mace",
-	Descriptions = [
-		"maces"
-	],
-	Attributes = {
-		Hitpoints = [
-			3,
-			3
-		],
-		Bravery = [
-			3,
-			3
-		],
-		Stamina = [
-			-3,
-			-3
-		],
-		MeleeSkill = [
-			0,
-			0
-		],
-		RangedSkill = [
-			-3,
-			-3
-		],
-		MeleeDefense = [
-			0,
-			0
-		],
-		RangedDefense = [
-			0,
-			0
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[],
-		[
-			gt.Const.Perks.PerkDefs.DeepImpact
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.SpecMace
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Duelist,
-			gt.Const.Perks.PerkDefs.ReachAdvantage
-
-		],
-		[
-			gt.Const.Perks.PerkDefs.StanceBoneBreaker
-		]
-	]
-};
-
 gt.Const.Perks.HammerTree <- {
 	ID = "Hammer",
 	Name = "Hammer",
@@ -633,6 +572,56 @@ gt.Const.Perks.BowTree <- { //TODO: plan ranged weaponry tree
 /////////////////////////////////////////////////////////////////////////////////////////////
 // Disabled
 /////////////////////////////////////////////////////////////////////////////////////////////
+gt.Const.Perks.MaceTree <- {
+	ID = "Mace",
+	Name = "Mace",
+	Descriptions = [
+		"maces"
+	],
+	Attributes = {
+		Hitpoints = [
+			3,
+			3
+		],
+		Bravery = [
+			3,
+			3
+		],
+		Stamina = [
+			-3,
+			-3
+		],
+		MeleeSkill = [
+			0,
+			0
+		],
+		RangedSkill = [
+			-3,
+			-3
+		],
+		MeleeDefense = [
+			0,
+			0
+		],
+		RangedDefense = [
+			0,
+			0
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[],
+		[],
+		[],
+		[],
+		[],
+		[],
+		[]
+	]
+};
 gt.Const.Perks.GreatSwordTree <- {
 	ID = "GreatSword",
 	Name = "Two-Handed Sword",
@@ -933,7 +922,6 @@ gt.Const.Perks.SlingTree <- {
 		[]
 	]
 };
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 // End
 /////////////////////////////////////////////////////////////////////////////////////////////

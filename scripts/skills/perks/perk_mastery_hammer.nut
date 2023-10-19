@@ -3,9 +3,18 @@
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Hammer)"
 
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On headshot")
++ "\n Apply daze for 1 turn"
+
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Hammer attacks inflict:")
 + "\n"+::MSU.Text.colorGreen("+5%") + " armor piercing (10% for 2H)"
-+ "\n"+::MSU.Text.colorRed("Debuff remains until the end of battle. Caps at 30%");
++ "\n"+::MSU.Text.colorRed("Debuff remains until the end of battle. Caps at 30%")
+
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Daze: (Duration: 2)")
++ "\n "+::MSU.Text.colorRed("– 50% Fatigue")
++ "\n "+::MSU.Text.colorRed("– 50% Initiative");
+
+
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecHammer].Name = ::Const.Strings.PerkName.SpecHammer;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecHammer].Tooltip = ::Const.Strings.PerkDescription.SpecHammer;
@@ -50,7 +59,16 @@ this.perk_mastery_hammer <- this.inherit("scripts/skills/skill", {
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
 		local actor = this.getContainer().getActor();
-		if (!_targetEntity.isAlive() || _targetEntity.isDying() || _targetEntity.isAlliedWith(actor) || !_skill.isAttack()) return;
+		if (!_targetEntity.isAlive() || _targetEntity.isDying() || !_skill.isAttack()) return;
+
+		if (_bodyPart == ::Const.BodyPart.Head)
+		{
+			local effect = ::new("scripts/skills/effects/dazed_effect");
+			_targetEntity.getSkills().add(effect);
+			effect.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+			if (!actor.isHiddenToPlayer() && targetTile.IsVisibleForPlayer) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " has been dazed for " + effect.m.TurnsLeft + " turns");
+		}
+
 		if (!isEnabled()) return;
 		if (!_skill.getDamageType().contains(::Const.Damage.DamageType.Blunt)) return;
 		if (_targetEntity.getArmor(_bodyPart) == 0) return;
