@@ -10,7 +10,8 @@
 
 this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 	m = {
-		Active = false
+		Active = false,
+		Immunity = true
 	},
 	function create()
 	{
@@ -33,7 +34,11 @@ this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
-		if (!this.m.Active) return;
+		if (!this.m.Active)
+		{
+			this.m.Immunity = false;
+			return;
+		}
 		this.m.Active = false;
 
 		this.Sound.play("sounds/general/parry.wav", 200.0, actor.getPos());
@@ -74,6 +79,7 @@ this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 	function onTurnStart()
 	{
 		this.m.Active = true;
+		this.m.Immunity = true;
 	}
 
 	function onTurnEnd()
@@ -85,12 +91,24 @@ this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 	function onCombatStarted()
 	{
 		this.m.Active = true;
+		this.m.Immunity = true;
 	}
 
 	function onCombatFinished()
 	{
 		this.skill.onCombatFinished();
 		this.m.Active = false;
+	}
+
+	function onUpdate( _properties )
+	{
+		if (this.m.Immunity)
+		{
+			_properties.IsImmuneToStun = true;
+			_properties.IsImmuneToDaze = true;
+			_properties.IsImmuneToBleeding = true;
+			_properties.IsImmuneToPoison = true;
+		}
 	}
 
 });

@@ -10,7 +10,8 @@
 this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 	m = {
 		Charges = 1,
-		Charges_Max = 5
+		Charges_Max = 5,
+		Immunity = true
 	},
 	function create()
 	{
@@ -79,6 +80,7 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 		{
 			local actor = this.getContainer().getActor();
 			actor.getSprite("sprite_gluttony_shield").Visible = true;
+			this.m.Immunity = true;
 		}
 	}
 
@@ -98,7 +100,12 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
-		if (this.m.Charges == 0) return;
+		if (this.m.Charges == 0)
+		{
+			this.m.Immunity = false;
+			return;
+		}
+
 		local actor = this.getContainer().getActor();
 		if (_attacker != null && _attacker.getID() == actor.getID() || _skill == null || !_skill.isAttack() || !_skill.isUsingHitchance()) return;
 
@@ -123,8 +130,17 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 
 	}
 
+
 	function onUpdate( _properties )
 	{
+		if (this.m.Immunity)
+		{
+			_properties.IsImmuneToStun = true;
+			_properties.IsImmuneToDaze = true;
+			_properties.IsImmuneToBleeding = true;
+			_properties.IsImmuneToPoison = true;
+		}
+
 		local actor = this.getContainer().getActor();
 		if (actor.getFlags().has("la_nachzerer"))
 		{
