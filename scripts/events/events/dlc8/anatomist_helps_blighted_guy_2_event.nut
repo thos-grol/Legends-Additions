@@ -100,8 +100,7 @@ this.anatomist_helps_blighted_guy_2_event <- this.inherit("scripts/events/event"
 	function onUpdateScore()
 	{
 		if (!::Const.DLC.Paladins) return;
-		if (!::World.Statistics.getFlags().has("retinue_anatomist") 
-			|| !::World.Statistics.getFlags().get("retinue_anatomist") ) return;
+		if (!this.World.Retinue.hasFollower("follower.drill_sergeant")) return;
 
 		local brothers = this.World.getPlayerRoster().getAll();
 		local candidate;
@@ -116,7 +115,7 @@ this.anatomist_helps_blighted_guy_2_event <- this.inherit("scripts/events/event"
 		}
 
 		if (candidate == null) return;
-		
+
 		this.m.MilitiaCaptain = candidate;
 		this.m.Score = 999999999;
 	}

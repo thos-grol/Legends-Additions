@@ -153,9 +153,7 @@ this.anatomist_helps_blighted_guy_1_event <- this.inherit("scripts/events/event"
 	function onUpdateScore()
 	{
 		if (!::Const.DLC.Paladins) return;
-		if (!::World.Statistics.getFlags().has("retinue_anatomist") 
-			|| !::World.Statistics.getFlags().get("retinue_anatomist") ) return;
-		
+		if (!this.World.Retinue.hasFollower("follower.drill_sergeant")) return;
 		local currentTile = this.World.State.getPlayer().getTile();
 		if (!currentTile.HasRoad) return;
 		this.m.Score = 10;

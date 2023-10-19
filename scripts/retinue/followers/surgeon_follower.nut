@@ -4,19 +4,27 @@ this.surgeon_follower <- this.inherit("scripts/retinue/follower", {
 	{
 		this.follower.create();
 		this.m.ID = "follower.surgeon";
-		this.m.Name = "Triage Table";
-		this.m.Description = "Having an area set up and ready to treat the worst injuries could be the hair between life and death for the company. Maybe even yourself...one day.";
-		this.m.Image = "ui/campfire/legend_surgeon_01";
+		this.m.Name = "Anatomist";
+		this.m.Description = "The Anatomist is an expert in the study of flesh and bloodlines. From the corpses of monsters, he derive sequences that convey a part of the monster's power to a human.";
+		this.m.Image = "ui/campfire/surgeon_01";
 		this.m.Cost = 1750;
 		this.m.Effects = [
-			"Makes every man without a permanent injury guaranteed to survive an otherwise fatal blow",
-			"Makes every injury take one less day to heal"
+			"Has a 5% chance to extract an extraordinary sequence as a potion when slaying a monster",
+			"Unlocks anatomist events"
 		];
-		this.addSkillRequirement("Have someone with the Field Triage perk. Guaranteed on Monks and Nuns", [
-			"perk.legend_field_triage",
-			"background.legend_companion_melee",
-			"background.legend_companion_ranged"
-		]);
+		this.addRequirement("Slay a monster", function ()
+		{
+			if (!::World.Statistics.getFlags().has("MonstersSlain")) return false;
+			return ::World.Statistics.getFlags().getAsInt("MonstersSlain") >= 1;
+		}, true, function ( _r )
+		{
+			_r.Count <- 1;
+			_r.UpdateText <- function ()
+			{
+				local monsters_slain = (!::World.Statistics.getFlags().has("MonstersSlain") ? 0 : ::World.Statistics.getFlags().getAsInt("MonstersSlain"));
+				this.Text = "Slay " + ::Math.min(this.Count, monsters_slain) + "/" + this.Count + " monsters";
+			};
+		});
 	}
 
 	function onUpdate()

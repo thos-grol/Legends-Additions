@@ -610,15 +610,21 @@ gt.Const.Perks.BowTree <- { //TODO: plan ranged weaponry tree
 		[],
 		[],
 		[
-			//TODO: Divine Hands
-			//Reduce the ap cost of any ranged weapon skill to 3. Does not apply to sling heavy stones.
+			//slings - damage scales based on strength (hp)
 
-			//TODO: Divine Eyes
-			//Ranged attacks gain X armor piercing
-			//If ranged skill is below 120, +10 ranged skill
+			//bows - damage depends on draw weight. need certain level of strength (max hp) to weild higher damage bows
 
-			//TODO: David
-			//Improve sling skills somehow
+			//crossbows - are very easy to aim (close range) and moderate difficulty far range, but reload time takes a turn. High armor piercing.
+				//crossbow reload costs 6 AP
+				//crossbow fire costs 2 AP
+
+			//handgonne - shrapnel primitive gunpowder firearm
+				//reload costs 6 AP
+				//fire costs 2 AP
+
+			//Marksman - Bow and Crossbows have a X% chance to gain X% armor piercing. If the effect is triggered, X damage multiplier on headshot.
+			//Deft Hands - Reloading a Crossbow or Handgonne will reload all weapons in inventory
+			//David - Headshots with slings will stun. Increase the armor penetration of sling attacks.
 
 		]
 	]

@@ -1,3 +1,4 @@
+//TODO: change to different function
 this.negotiator_follower <- this.inherit("scripts/retinue/follower", {
 	m = {},
 	function create()
@@ -25,16 +26,6 @@ this.negotiator_follower <- this.inherit("scripts/retinue/follower", {
 				this.Text = "Slay " + ::Math.min(this.Count, monsters_slain) + "/" + this.Count + " monsters";
 			};
 		});
-	}
-
-	function setEnabled()
-	{
-		::World.Statistics.getFlags().set("retinue_anatomist", true);
-	}
-
-	function setDisabled()
-	{
-		::World.Statistics.getFlags().set("retinue_anatomist", false);
 	}
 
 	function onUpdate()
