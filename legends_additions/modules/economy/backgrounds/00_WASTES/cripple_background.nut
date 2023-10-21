@@ -82,7 +82,7 @@
 		]);
 		items.equip(helm);
 
-		this.m.Container.add(::new(::MSU.Array.rand(::Const.Injury.Permanent).Script));
+		this.m.Container.add(::new("scripts/skills/" + ::MSU.Array.rand(::Const.Injury.Permanent).Script));
 
 
 	}

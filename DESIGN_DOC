@@ -1,10 +1,7 @@
 //TODO: return favor can only occur for 2H swords if there is no riposte on the weapon
 //TODO: redo return favor? - perform 1 cqc attack?
 //TODO: middle-eastern swords gash becomes default - copy slash costs, and they gain riposte
-//Estoc and rapier gain riposte
-
-//TODO: remove maces (weak tree) and combine some concepts into hammers - rename tree into bludgeon
-//TODO: examine mace and hammer items. hammer gains stun skills?
+//Estoc and rapier gain riposte                                                    
 
 //TODO: cripple, copy daytaler stats, but add permenant injury. cripple background cannot be fit. cripple background cannot get lots of fit traits/strong traits - higher chance to become a mage!
 

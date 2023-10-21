@@ -549,8 +549,6 @@ gt.Const.Perks.BowTree <- { //TODO: plan ranged weaponry tree
 		[],
 		[],
 		[
-			//slings - damage scales based on strength (hp)
-
 			//bows - damage depends on draw weight. need certain level of strength (max hp) to weild higher damage bows
 
 			//crossbows - are very easy to aim (close range) and moderate difficulty far range, but reload time takes a turn. High armor piercing.

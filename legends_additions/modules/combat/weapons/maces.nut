@@ -4,7 +4,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -13,7 +13,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -22,7 +22,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -31,7 +31,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -40,7 +40,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -49,7 +49,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -58,7 +58,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Spear | this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Spear | ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -67,7 +67,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -76,7 +76,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -85,7 +85,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Musical | this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Musical | ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -94,7 +94,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -103,7 +103,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -112,7 +112,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -121,7 +121,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -130,7 +130,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -139,7 +139,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -148,7 +148,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -157,7 +157,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -166,7 +166,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -175,7 +175,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Spear | this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Spear | ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -184,7 +184,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Spear | this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Spear | ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -193,7 +193,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -202,7 +202,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -211,7 +211,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Musical | this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Musical | ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -220,7 +220,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -229,7 +229,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -238,7 +238,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -247,7 +247,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -256,6 +256,6 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = this.Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
