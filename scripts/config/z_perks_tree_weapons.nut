@@ -193,9 +193,9 @@ gt.Const.Perks.SwordTree <- {
 
 gt.Const.Perks.HammerTree <- {
 	ID = "Hammer",
-	Name = "Hammer",
+	Name = "Bludgeon",
 	Descriptions = [
-		"hammers"
+		"bludgeons"
 	],
 	Attributes = {
 		Hitpoints = [
