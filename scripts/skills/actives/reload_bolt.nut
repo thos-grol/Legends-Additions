@@ -12,8 +12,8 @@ this.reload_bolt <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/reload_01.wav",
 			"sounds/combat/reload_02.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.NonTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.NonTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = false;
@@ -21,7 +21,7 @@ this.reload_bolt <- this.inherit("scripts/skills/skill", {
 		this.m.IsAttack = false;
 		this.m.IsRemovedAfterBattle = true;
 		this.m.IsWeaponSkill = true;
-		this.m.ActionPointCost = 7;
+		this.m.ActionPointCost = 6;
 		this.m.FatigueCost = 35;
 		this.m.MinRange = 0;
 		this.m.MaxRange = 0;
@@ -55,7 +55,7 @@ this.reload_bolt <- this.inherit("scripts/skills/skill", {
 				id = 4,
 				type = "text",
 				icon = "ui/icons/ammo.png",
-				text = "Has [color=" + this.Const.UI.Color.PositiveValue + "]" + ammo + "[/color] bolts left"
+				text = "Has [color=" + ::Const.UI.Color.PositiveValue + "]" + ammo + "[/color] bolts left"
 			});
 		}
 		else
@@ -64,7 +64,7 @@ this.reload_bolt <- this.inherit("scripts/skills/skill", {
 				id = 4,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Needs a non-empty quiver of bolts equipped[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Needs a non-empty quiver of bolts equipped[/color]"
 			});
 		}
 
@@ -74,7 +74,7 @@ this.reload_bolt <- this.inherit("scripts/skills/skill", {
 				id = 5,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Can not be used because this character is engaged in melee[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Can not be used because this character is engaged in melee[/color]"
 			});
 		}
 
@@ -88,14 +88,14 @@ this.reload_bolt <- this.inherit("scripts/skills/skill", {
 
 	function getAmmo()
 	{
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Ammo);
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Ammo);
 
 		if (item == null)
 		{
 			return 0;
 		}
 
-		if (item.getAmmoType() == this.Const.Items.AmmoType.Bolts)
+		if (item.getAmmoType() == ::Const.Items.AmmoType.Bolts)
 		{
 			return item.getAmmo();
 		}
@@ -103,7 +103,7 @@ this.reload_bolt <- this.inherit("scripts/skills/skill", {
 
 	function consumeAmmo()
 	{
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Ammo);
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Ammo);
 
 		if (item != null)
 		{
@@ -113,7 +113,8 @@ this.reload_bolt <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInCrossbows ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInBows ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.ActionPointCost = _properties.IsSpecializedInBows ? 6 : 9;
 	}
 
 	function onVerifyTarget( _originTile, _targetTile )

@@ -133,16 +133,8 @@ this.tooltip_events <- {
 	{
 		local lastTileHovered = this.Tactical.State.getLastTileHovered();
 
-		if (lastTileHovered == null)
-		{
-			return null;
-		}
-
-		if (!lastTileHovered.IsDiscovered)
-		{
-			return null;
-		}
-
+		if (lastTileHovered == null) return null;
+		if (!lastTileHovered.IsDiscovered) return null;
 		if (lastTileHovered.IsDiscovered && !lastTileHovered.IsEmpty && (!lastTileHovered.IsOccupiedByActor || lastTileHovered.IsVisibleForPlayer))
 		{
 			local entity = lastTileHovered.getEntity();
@@ -171,6 +163,25 @@ this.tooltip_events <- {
 					type = "description",
 					text = lastTileHovered.Properties.get("Corpse").CorpseName + " was slain here."
 				});
+
+				if (this.Tactical.TurnSequenceBar.getActiveEntity() != null && lastTileHovered.IsVisibleForPlayer)
+				{
+					local actor = this.Tactical.TurnSequenceBar.getActiveEntity();				
+					if (actor.isPlacedOnMap() && actor.isPlayerControlled())
+					{
+						local opportunist = actor.getSkills().getSkillByID("perk.mastery.bow");
+						if (opportunist == null) opportunist = actor.getSkills().getSkillByID("perk.mastery.rangedc");
+						if (opportunist != null && opportunist.isEnabled() && opportunist.canProcOntile(lastTileHovered))
+						{
+							tooltipContent.push({
+								id = 90,
+								type = "text",
+								icon = "ui/perks/hybridization.png"
+								text = "Can scavenge ammo here"
+							});
+						}
+					}
+				}
 			}
 
 			if (this.Tactical.TurnSequenceBar.getActiveEntity() != null)

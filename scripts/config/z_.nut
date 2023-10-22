@@ -5,8 +5,6 @@
 ::Z.Perks <- {};
 ::Z.Lib <- {};
 
-::B <- {}; //B for builds
-
 ///////////////
 
 ::Z.Log.Color <- {};
@@ -22,4 +20,6 @@
 ::Z.Log.HasActed <- false;
 
 /////////////////
+
+::Const.Combat.OpportunistUsedTiles <- [];
 

@@ -493,7 +493,7 @@ gt.Const.Perks.ShieldTree <- {
 // Ranged
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-gt.Const.Perks.BowTree <- { //TODO: plan ranged weaponry tree
+gt.Const.Perks.BowTree <- {
 	ID = "Bow",
 	Name = "Ranged",
 	Descriptions = [
@@ -535,34 +535,18 @@ gt.Const.Perks.BowTree <- { //TODO: plan ranged weaponry tree
 	},
 	Tree = [
 		[],
-		[
-			//TODO: 2 ranged free perks
-			//gt.Const.Perks.PerkDefs.Ballistics combine
-			//Scavenger //TODO: pick up ammo from corpses
-		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.SpecBow //TODO specbow
-			//gt.Const.Perks.PerkDefs.Bullseye
-			//ballistics
+			gt.Const.Perks.PerkDefs.LegendWindReader
+		],
+		[
+			gt.Const.Perks.PerkDefs.SpecBow
 		],
 		[],
 		[],
 		[
-			//bows - damage depends on draw weight. need certain level of strength (max hp) to weild higher damage bows
-
-			//crossbows - are very easy to aim (close range) and moderate difficulty far range, but reload time takes a turn. High armor piercing.
-				//crossbow reload costs 6 AP
-				//crossbow fire costs 2 AP
-
-			//handgonne - shrapnel primitive gunpowder firearm
-				//reload costs 6 AP
-				//fire costs 2 AP
-
-			//Marksman - Bow and Crossbows have a X% chance to gain X% armor piercing. If the effect is triggered, X damage multiplier on headshot.
-			//Deft Hands - Reloading a Crossbow or Handgonne will reload all weapons in inventory
-			//David - Headshots with slings will stun. Increase the armor penetration of sling attacks.
-
+			gt.Const.Perks.PerkDefs.StanceMarksman,
+			gt.Const.Perks.PerkDefs.StanceDavid,
 		]
 	]
 };

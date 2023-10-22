@@ -76,15 +76,11 @@ gt.Const.Perks.ClothArmorTree <- {
 	],
 	Tree = [
 		[],
-		[
-			gt.Const.Perks.PerkDefs.Dodge
-		],
 		[],
 		[],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendSmallTarget
-		],
+		[],
+		[],
 		[]
 	]
 };

@@ -1,7 +1,7 @@
 this.legend_sling_heavy_stone_skill <- this.inherit("scripts/skills/skill", {
 	m = {
 		AdditionalAccuracy = -10,
-		AdditionalHitChance = -2
+		AdditionalHitChance = -5
 	},
 	function create()
 	{
@@ -76,7 +76,7 @@ this.legend_sling_heavy_stone_skill <- this.inherit("scripts/skills/skill", {
 			id = 8,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = 1.0 + ::Math.min(this.getContainer().getActor().getHitpointsMax(), 200) / 400.0 + "x Damage. 200 HP caps damage at 1.5x"
+			text =  getBonus() + "x Damage. 200 HP caps damage at 1.5x"
 		});
 
 		ret.push({
@@ -100,6 +100,12 @@ this.legend_sling_heavy_stone_skill <- this.inherit("scripts/skills/skill", {
 		return ret;
 	}
 
+	function getBonus()
+	{
+		local bonus = 1.0 + ::Math.min(this.getContainer().getActor().getHitpointsMax(), 200) / 400.0;
+		return (this.getContainer().getSkillByID("perk.stance.david") != null) ? bonus * 1.33 : bonus; 
+	}
+
 	function isUsable()
 	{
 		return !this.Tactical.isActive() || !this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions());
@@ -107,10 +113,9 @@ this.legend_sling_heavy_stone_skill <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.MaxRange = this.m.Item.getRangeMax() + (_properties.IsSpecializedInSlings ? 1 : 0);
-		this.m.AdditionalAccuracy = _properties.IsSpecializedInSlings ? 0 : -5;
-		this.m.AdditionalHitChance = _properties.IsSpecializedInSlings ? -2 : -4;
-		this.m.FatigueCostMult = _properties.IsSpecializedInSlings ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.AdditionalAccuracy =  -10;
+		this.m.AdditionalHitChance = -5;
+		this.m.FatigueCostMult = _properties.IsSpecializedInBows ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onUse( _user, _targetTile )
@@ -150,31 +155,33 @@ this.legend_sling_heavy_stone_skill <- this.inherit("scripts/skills/skill", {
 		{
 			_properties.RangedSkill += this.m.AdditionalAccuracy;
 			_properties.HitChanceAdditionalWithEachTile += this.m.AdditionalHitChance;
-			_properties.DamageRegularMult *= 1.0 + ::Math.min(this.getContainer().getActor().getHitpointsMax(), 200) / 400.0;
+			_properties.DamageRegularMult *= getBonus();
 		}
 	}
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
-		if (_skill == this && _targetEntity.isAlive() && !_targetEntity.isDying())
+		if (_skill != this || !_targetEntity.isAlive() || _targetEntity.isDying()) return;
+		if (_bodyPart != ::Const.BodyPart.Head) return;
+		
+		local targetTile = _targetEntity.getTile();
+		local user = this.getContainer().getActor();
+
+		_targetEntity.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
+		if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
+				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + " is staggered");
+
+		if (this.m.Skills.getSkillByID("perk.stance.david") != null && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
 		{
-			_targetEntity.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
+			target.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));
+			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
+				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + " is stunned for 1 turn");
 		}
-
-		if (_skill == this && _targetEntity.isAlive() && !_targetEntity.isDying())
+		else if (!_targetEntity.getCurrentProperties().IsImmuneToDaze)
 		{
-			local targetTile = _targetEntity.getTile();
-			local user = this.getContainer().getActor();
-
-			if (_bodyPart == ::Const.BodyPart.Head)
-			{
-				_targetEntity.getSkills().add(this.new("scripts/skills/effects/dazed_effect"));
-
-				if (!user.isHiddenToPlayer() && targetTile.IsVisibleForPlayer)
-				{
-					this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(user) + " struck a hit that leaves " + ::Const.UI.getColorizedEntityName(_targetEntity) + " dazed");
-				}
-			}
+			_targetEntity.getSkills().add(this.new("scripts/skills/effects/dazed_effect"));
+			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
+				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + " is dazed");
 		}
 	}
 

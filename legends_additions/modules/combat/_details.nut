@@ -212,14 +212,13 @@
 			Weight = getTotalWeight()
 		};
 
-		local armor = 1;
 		if (ret.Weight <= 20)
 		{
 			ret.Name <- "Light";
 			ret.Type <- 1;
 			ret.Range <- "0 - 20";
 		}
-        else if (ret.Weight > 20 && ret.Weight <= 40)
+        else if (ret.Weight <= 40)
 		{
 			ret.Name <- "Medium";
 			ret.Type <- 2;

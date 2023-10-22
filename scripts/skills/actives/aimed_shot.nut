@@ -153,8 +153,7 @@ this.aimed_shot <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.MaxRange = this.m.Item.getRangeMax() + (_properties.IsSpecializedInBows ? 1 : 0);
-		this.m.AdditionalAccuracy = 10 + this.m.Item.getAdditionalAccuracy();
+		this.m.AdditionalAccuracy = 0 + this.m.Item.getAdditionalAccuracy();
 		this.m.FatigueCostMult = _properties.IsSpecializedInBows ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 
 		local weapon = this.getContainer().getActor().getMainhandItem();

@@ -37,8 +37,8 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/bolt_shot_miss_02.wav",
 			"sounds/combat/bolt_shot_miss_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.Delay = 100;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
@@ -50,15 +50,15 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 		this.m.IsShowingProjectile = true;
 		this.m.IsWeaponSkill = true;
 		this.m.IsDoingForwardMove = false;
-		this.m.InjuriesOnBody = this.Const.Injury.PiercingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.PiercingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.PiercingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.PiercingHead;
 		this.m.DirectDamageMult = 0.5;
 		this.m.ActionPointCost = 4;
 		this.m.FatigueCost = 0;
 		this.m.MinRange = 1;
 		this.m.MaxRange = 7;
 		this.m.MaxLevelDifference = 4;
-		this.m.ProjectileType = this.Const.ProjectileType.Arrow;
+		this.m.ProjectileType = ::Const.ProjectileType.Arrow;
 	}
 
 	function getTooltip()
@@ -79,7 +79,7 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 				id = 8,
 				type = "text",
 				icon = "ui/icons/ammo.png",
-				text = "Has [color=" + this.Const.UI.Color.PositiveValue + "]" + ammo + "[/color] bolts left"
+				text = "Has [color=" + ::Const.UI.Color.PositiveValue + "]" + ammo + "[/color] bolts left"
 			});
 		}
 		else
@@ -88,7 +88,7 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 				id = 8,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Needs a non-empty quiver of bolts equipped[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Needs a non-empty quiver of bolts equipped[/color]"
 			});
 		}
 
@@ -98,7 +98,7 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Must be reloaded before firing again[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Must be reloaded before firing again[/color]"
 			});
 		}
 
@@ -112,14 +112,14 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 
 	function getAmmo()
 	{
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Ammo);
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Ammo);
 
 		if (item == null)
 		{
 			return 0;
 		}
 
-		if (item.getAmmoType() == this.Const.Items.AmmoType.Bolts)
+		if (item.getAmmoType() == ::Const.Items.AmmoType.Bolts)
 		{
 			return item.getAmmo();
 		}
@@ -180,7 +180,7 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 		_properties.RangedSkill += this.m.AdditionalAccuracy;
 		_properties.HitChanceAdditionalWithEachTile += this.m.AdditionalHitChance;
 
-		if (_targetEntity.getType() == this.Const.EntityType.Vampire || _targetEntity.getType() == this.Const.EntityType.LegendVampireLord)
+		if (_targetEntity.getType() == ::Const.EntityType.Vampire || _targetEntity.getType() == ::Const.EntityType.LegendVampireLord)
 		{
 			_properties.DamageRegularMin += 100;
 			_properties.DamageRegularMax += 105;
@@ -218,14 +218,14 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 
 			if (!user.isHiddenToPlayer() && (targetTile.IsVisibleForPlayer || knockToTile.IsVisibleForPlayer))
 			{
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(user) + " has knocked back " + this.Const.UI.getColorizedEntityName(_targetEntity));
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(user) + " has knocked back " + ::Const.UI.getColorizedEntityName(_targetEntity));
 			}
 
 			local skills = _targetEntity.getSkills();
 			skills.removeByID("effects.shieldwall");
 			skills.removeByID("effects.spearwall");
 			skills.removeByID("effects.riposte");
-			local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - targetTile.Level) - 1) * this.Const.Combat.FallingDamage;
+			local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
 
 			if (damage == 0)
 			{
@@ -237,13 +237,13 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 				local tag = {
 					Attacker = user,
 					Skill = this,
-					HitInfo = clone this.Const.Tactical.HitInfo,
+					HitInfo = clone ::Const.Tactical.HitInfo,
 					HitInfoBash = null
 				};
 				tag.HitInfo.DamageRegular = damage;
-				tag.HitInfo.DamageFatigue = this.Const.Combat.FatigueReceivedPerHit;
+				tag.HitInfo.DamageFatigue = ::Const.Combat.FatigueReceivedPerHit;
 				tag.HitInfo.DamageDirect = 1.0;
-				tag.HitInfo.BodyPart = this.Const.BodyPart.Body;
+				tag.HitInfo.BodyPart = ::Const.BodyPart.Body;
 				tag.HitInfo.BodyDamageMult = 1.0;
 				tag.HitInfo.FatalityChanceMult = 1.0;
 				this.Tactical.getNavigator().teleport(_targetEntity, knockToTile, this.onKnockedDown, tag, true);

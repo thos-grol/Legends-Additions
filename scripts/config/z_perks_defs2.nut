@@ -199,6 +199,24 @@ local perks = [
         IconDisabled = "ui/perks/followup_bw.png",
         Const = "StanceFollowup"
     },
+    {
+        ID = "perk.stance.marksman",
+        Script = "scripts/skills/perks/perk_stance_marksman",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/marksman.png",
+        IconDisabled = "ui/perks/marksman_bw.png",
+        Const = "StanceMarksman"
+    },
+    {
+        ID = "perk.stance.david",
+        Script = "scripts/skills/perks/perk_stance_david",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/david.png",
+        IconDisabled = "ui/perks/david_bw.png",
+        Const = "StanceDavid"
+    },
 
 ///////////////////////////////////////////////////////////////////////////
 // Monster

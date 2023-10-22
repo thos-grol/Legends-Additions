@@ -18,7 +18,7 @@
     }
 });
 
-::mods_hookExactClass("items/weapons/oriental/named_handgonne", function (o){
+::mods_hookExactClass("items/weapons/named/named_handgonne", function (o){
     local create = o.create;
     o.create = function()
     {

@@ -3,7 +3,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Bludgeons - Maces and Hammers)"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On headshot")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Headshot")
 + "\n Apply daze for 1 turn"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Bludgeon attacks inflict:")
