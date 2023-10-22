@@ -1,6 +1,6 @@
 //Bandit Rabble
 //Lvl 4 Peasant template - Avg Daytaler stats
-::Const.Tactical.Actor.BanditRabble <- {
+::Const.Tactical.Actor.BanditRabblePoacher <- {
 	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 55,
@@ -20,46 +20,34 @@
 	FatigueRecoveryRate = 15
 };
 
-::B.Info[::Const.EntityType.BanditRabble] <- {
+::B.Info[::Const.EntityType.BanditRabblePoacher] <- {
     Level = 4,
     Pattern = [
         ["T", 1],
         ["D", 2],
-        ["T", 3],
+        ["W", 3],
     ],
 	LevelUps = [
 		["Health", 3, 0],
-		["Melee Skill", 3, 0],
+		["Ranged Skill", 3, 0],
 		["Melee Defense", 3, 0],
 	],
     Trait = [],
     Outfit = [
 		[
 			1,
-			"bandit_rabble_outfit_00"
+			"bandit_rabble_poacher_outfit_00"
 		]
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/pitchfork"
+			"scripts/items/weapons/short_bow",
 		],
 		[
-			"scripts/items/weapons/legend_wooden_spear"
+			"scripts/items/weapons/legend_sling",
 		],
 		[
-			"scripts/items/weapons/wooden_stick"
-		],
-		[
-			"scripts/items/weapons/legend_hammer"
-		],
-		[
-			"scripts/items/weapons/butchers_cleaver"
-		],
-		[
-			"scripts/items/weapons/legend_hoe"
-		],
-		[
-			"scripts/items/weapons/wooden_flail"
+			"scripts/items/weapons/legend_sling",
 		]
 	]
 };

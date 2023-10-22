@@ -14,10 +14,10 @@
 		local actor = this.getContainer().getActor();
 		local items = actor.getItems().getAllItems();
 		local id = actor.getBackground().getID();
-		
-		if (actor.m.HiringCost == 0 && id in ::Z.Backgrounds.Wages) 
+
+		if (actor.m.HiringCost == 0 && id in ::Z.Backgrounds.Wages)
 			actor.m.HiringCost = ::Z.Backgrounds.Wages[id].HiringCost;
-		
+
 		foreach(i in items)
 		{
 			actor.m.HiringCost += this.Math.ceil(i.getValue() * 0.75);
@@ -70,7 +70,9 @@
 			this.m.IsBought = true;
 			return sellPrice;
 		}
-		
+
+		if (this.m.ID in ::Z.Economy.NoSell) return 0;
+
 		if (("State" in this.World) && this.World.State != null && this.World.State.getCurrentTown() != null)
 		{
 			local mult = this.getSellPriceMult() * ::Const.World.Assets.BaseSellPrice * this.World.State.getCurrentTown().getSellPriceMult();
@@ -86,7 +88,7 @@
 
 			return this.Math.floor(this.getValue() * mult);
 		}
-		
+
 		return this.Math.floor(this.getValue() * ::Const.World.Assets.BaseSellPrice);
 	};
 
@@ -126,7 +128,7 @@
 
 			return this.Math.ceil(this.getValue() *  mult); //buy price can't be lower than 75%
 		}
-		
+
 		return this.Math.ceil(this.getValue() * this.getPriceMult());
 	};
 });
@@ -151,7 +153,7 @@
 		return p * this.m.Modifiers.PriceMult;
 	}
 
-    
+
     o.getBuyPriceMult = function()
     {
         local p = this.getPriceMult() * this.World.Assets.getBuyPriceMult();

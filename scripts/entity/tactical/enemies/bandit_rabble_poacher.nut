@@ -1,17 +1,17 @@
-this.bandit_rabble <- this.inherit("scripts/entity/tactical/abstract_human", {
+this.bandit_rabble_poacher <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Name = "Rabble";
-		this.m.Type = this.Const.EntityType.BanditRabble;
+		this.m.Name = "Poacher";
+		this.m.Type = this.Const.EntityType.BanditRabblePoacher;
 		this.m.BloodType = this.Const.BloodType.Red;
 		this.m.XP = this.Const.Tactical.Actor.BanditRabble.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllWhiteMale;
+		this.m.Faces = this.Const.Faces.AllMale;
 		this.m.Hairs = this.Const.Hair.UntidyMale;
 		this.m.HairColors = this.Const.HairColors.All;
 		this.m.Beards = this.Const.Beards.Raider;
-		this.m.AIAgent = this.new("scripts/ai/tactical/agents/legend_bandit_rabble_agent");
+		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_ranged_agent");
 		this.m.AIAgent.setActor(this);
 
 		if (this.Math.rand(1, 100) <= 10)
@@ -54,8 +54,15 @@ this.bandit_rabble <- this.inherit("scripts/entity/tactical/abstract_human", {
 			this.getSprite("eye_rings").Visible = true;
 		}
 
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 40)
+		{
+			b.RangedDefense += 5;
+		}
+
 		this.setArmorSaturation(0.8);
 		this.getSprite("shield_icon").setBrightness(0.9);
+
+		this.m.Skills.update();
 	}
 
 	function onAppearanceChanged( _appearance, _setDirty = true )
@@ -64,21 +71,12 @@ this.bandit_rabble <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.setDirty(true);
 	}
 
-	function makeMiniboss()
+	function assignRandomEquipment()
 	{
-		if (!this.actor.makeMiniboss())
-		{
-			return false;
-		}
-
-		local weapons = [
-			"legend_named_blacksmith_hammer",
-			"legend_named_butchers_cleaver",
-			"legend_named_shovel",
-			"legend_named_sickle"
-		];
-		this.m.Items.unequip(this.m.Items.getItemAtSlot(this.Const.ItemSlot.Mainhand));
-		this.m.Items.equip(this.new("scripts/items/named/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+		this.abstract_human.assignRandomEquipment();
+		//TODO: if has bow
+		this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+		this.m.Items.addToBag(this.new("scripts/items/weapons/knife"));
 	}
 
 });

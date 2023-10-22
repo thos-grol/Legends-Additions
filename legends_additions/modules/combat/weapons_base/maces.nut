@@ -259,3 +259,19 @@
         this.m.WeaponType = ::Const.Items.WeaponType.Hammer;
     }
 });
+
+::mods_hookExactClass("items/weapons/military_pick", function (o){
+    local create = o.create;
+    o.create = function()
+    {
+        create();
+        this.m.ShieldDamage = 0;
+		this.m.Condition = 56.0;
+		this.m.ConditionMax = 56.0;
+		this.m.StaminaModifier = -10;
+		this.m.RegularDamage = 35;
+		this.m.RegularDamageMax = 50;
+		this.m.ArmorDamageMult = 1.5;
+		this.m.DirectDamageMult = 0.5;
+    }
+});

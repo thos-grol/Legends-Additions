@@ -24,7 +24,7 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		{
 			this.m.Items.equip(item);
 			if ("m" in item && "StaminaModifier" in item.m) weight_armor += item.m.StaminaModifier * -1;
-			
+
 		}
 
 		if (weight_armor <= 20) this.m.TREE_DEFENSE = ::Const.Perks.LightArmorTree.Tree;
@@ -61,7 +61,9 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 			this.m.Items.equip(::new(item));
 		}
 		local weapon = this.getMainhandItem();
+		::logInfo(weapon.m.ID);
 		this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
+
 
 		//Add perks according to specified pattern
 		foreach( pattern in ::B.Info[this.m.Type].Pattern )
@@ -120,7 +122,7 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 
 			case "T":
 			perk = ::Math.rand(1,100) <= 50 ? this.m.TREE_TRAIT1[_array[1] - 1][0] : this.m.TREE_TRAIT2[_array[1] - 1][0];
-			break; 
+			break;
 
 			case "D":
 			perk = this.m.TREE_DEFENSE[_array[1] - 1][0];
