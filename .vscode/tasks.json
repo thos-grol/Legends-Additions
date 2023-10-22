@@ -6,7 +6,12 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "C:/Files/Projects/bbros/mod_legends_additions/Legends-Additions/build.bat"
+            "command": "C:/Files/Projects/bbros/Legends-Dark-Age/build.bat",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
