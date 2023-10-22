@@ -5,6 +5,10 @@
 ::Z.Perks <- {};
 ::Z.Lib <- {};
 
+::B <- {}; //B for builds
+::B.Info <- {};
+::B.Lib <- {};
+
 ///////////////
 
 ::Z.Log.Color <- {};
@@ -23,3 +27,4 @@
 
 ::Const.Combat.OpportunistUsedTiles <- [];
 
+/////////////////

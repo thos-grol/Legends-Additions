@@ -326,7 +326,6 @@ def parse(code):
             else:
                 _close_or_unexpected()
         elif stack.top.kind == "[":
-            # TODO: handle array in table better
             # if m := re_find(r"^(\s+)([{[])\n$", line):
             #     prefix, bracket = m
             #     op = "table" if bracket == "{" else "array"

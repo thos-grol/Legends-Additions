@@ -86,7 +86,7 @@ this.perk_legend_adaptive <- this.inherit("scripts/skills/skill", {
 
 			if (item.isItemType(::Const.Items.ItemType.Weapon))
 			{
-				newTree = this.getWeaponPerkTree(item);
+				newTree = ::Z.Perks.getWeaponPerkTree(item);
 			}
 
 			newTree = this.getOnlyNonExistingTrees(newTree);
@@ -152,32 +152,6 @@ this.perk_legend_adaptive <- this.inherit("scripts/skills/skill", {
 		}
 
 		actor.getFlags().set("perk_legend_adaptive", true);
-	}
-
-	function getWeaponPerkTree( _item )
-	{
-		local ret = [];
-		local weaponToPerkMap = {
-			Axe = ::Const.Perks.AxeTree,
-			Bow = ::Const.Perks.BowTree,
-			Cleaver = ::Const.Perks.CleaverTree,
-			Crossbow = ::Const.Perks.BowTree,
-			Firearm = ::Const.Perks.BowTree,
-			Flail = ::Const.Perks.FlailTree,
-			Hammer = ::Const.Perks.HammerTree,
-			Mace = ::Const.Perks.MaceTree,
-			Polearm = ::Const.Perks.PolearmTree,
-			Sling = ::Const.Perks.BowTree,
-			Spear = ::Const.Perks.SpearTree,
-			Sword = ::Const.Perks.SwordTree
-		};
-
-		foreach( weapon, tree in weaponToPerkMap )
-		{
-			if (_item.isWeaponType(::Const.Items.WeaponType[weapon])) ret.push(tree);
-		}
-
-		return ret;
 	}
 
 });

@@ -1,26 +1,3 @@
-//Bandit Rabble
-//Lvl 3 peasant template
-//Avg Daytaler stats
-::Const.Tactical.Actor.BanditRabble <- {
-	XP = 100,
-	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 35,
-	Stamina = 95,
-	MeleeSkill = 56,
-	RangedSkill = 40,
-	MeleeDefense = 3,
-	RangedDefense = 3,
-	Initiative = 105,
-	FatigueEffectMult = 1.0,
-	MoraleEffectMult = 1.0,
-	Armor = [
-		0,
-		0
-	],
-	FatigueRecoveryRate = 15
-};
-
 ::mods_hookExactClass("entity/tactical/enemies/bandit_rabble", function(o) {
 
 	o.assignRandomEquipment = function()

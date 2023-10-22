@@ -1,25 +1,4 @@
-::mods_hookExactClass("ui/screens/tactical/modules/topbar/tactical_screen_topbar_event_log", function (o)
-{
-	o.destroy = function(){}
-	o.log_newline = function(){}
-	o.log = function( _text ) { this.m.JSHandle.asyncCall("log", _text); }
-	o.logIn <- function( _text ) { this.m.JSHandle.asyncCall("log_indent", _text); }
-    o.logTi <- function( _text ) { this.m.JSHandle.asyncCall("log_title", _text); }
-});
-
-// function getColorizedEntityName( _entity )
-// 	{
-// 		if (_entity.isPlayerControlled() || _entity.getFaction() == ::Const.Faction.PlayerAnimals)
-// 		{
-// 			return "[color=#1e468f]" + _entity.getName() + "[/color]";
-// 		}
-// 		else
-// 		{
-// 			return "[color=#8f1e1e]" + _entity.getName() + "[/color]";
-// 		}
-// 	}
-
-//HELPER FNS
+//Lib
 
 ::Z.Log.display_basic <- function(_user, _targetEntity, _skill_name, is_good)
 {
@@ -115,3 +94,26 @@
 {
     ::Tactical.EventLog.logIn("[" + ::Const.UI.getColorizedEntityName(_targetEntity) + "] triggers [" + ::MSU.Text.colorRed("Nine Lives") + "]");
 };
+
+//Hook Ui
+
+::mods_hookExactClass("ui/screens/tactical/modules/topbar/tactical_screen_topbar_event_log", function (o)
+{
+	o.destroy = function(){}
+	o.log_newline = function(){}
+	o.log = function( _text ) { this.m.JSHandle.asyncCall("log", _text); }
+	o.logIn <- function( _text ) { this.m.JSHandle.asyncCall("log_indent", _text); }
+    o.logTi <- function( _text ) { this.m.JSHandle.asyncCall("log_title", _text); }
+});
+
+// function getColorizedEntityName( _entity )
+// 	{
+// 		if (_entity.isPlayerControlled() || _entity.getFaction() == ::Const.Faction.PlayerAnimals)
+// 		{
+// 			return "[color=#1e468f]" + _entity.getName() + "[/color]";
+// 		}
+// 		else
+// 		{
+// 			return "[color=#8f1e1e]" + _entity.getName() + "[/color]";
+// 		}
+// 	}

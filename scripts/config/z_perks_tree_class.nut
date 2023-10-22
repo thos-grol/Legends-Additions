@@ -123,6 +123,12 @@ gt.Const.Perks.FistsClassTree <- {
 		[],
 		[],
 		[
+			//TODO: Stance: Asura - Unleash a flurry of blows upon the opponent.
+			//With no items equipped in either hand.
+			//Hand to hand unleashes a flurry of 4 (unarmed attacks)
+				//+3 CQC strikes
+				//Kick:
+				//+1 Kick
 
 		]
 	]

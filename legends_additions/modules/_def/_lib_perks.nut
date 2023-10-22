@@ -99,6 +99,32 @@
     return _actor.getSkills().hasSkill(::Z.Perks.Stance[_id]);
 }
 
+::Z.Perks.getWeaponPerkTree <- function (_item)
+{
+    local ret = [];
+    local weaponToPerkMap = {
+        Axe = ::Const.Perks.AxeTree,
+        Bow = ::Const.Perks.BowTree,
+        Cleaver = ::Const.Perks.CleaverTree,
+        Crossbow = ::Const.Perks.BowTree,
+        Firearm = ::Const.Perks.BowTree,
+        Flail = ::Const.Perks.FlailTree,
+        Hammer = ::Const.Perks.HammerTree,
+        Mace = ::Const.Perks.MaceTree,
+        Polearm = ::Const.Perks.PolearmTree,
+        Sling = ::Const.Perks.BowTree,
+        Spear = ::Const.Perks.SpearTree,
+        Sword = ::Const.Perks.SwordTree
+    };
+
+    foreach( weapon, tree in weaponToPerkMap )
+    {
+        if (_item.isWeaponType(::Const.Items.WeaponType[weapon])) ret.push(tree);
+    }
+
+    return ret;
+}
+
 ::Z.getNeighbors <- function( _tile, _function = null )
 {
 	local ret = [];
