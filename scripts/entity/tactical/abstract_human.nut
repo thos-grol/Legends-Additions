@@ -16,17 +16,22 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		this.m.XP = ::B.Info[this.m.Type].Level * 35;
 	}
 
-	function assignRandomEquipment()
+	function pickOutfit()
 	{
-		//Assign outfit and get the defense tree
-		local weight_armor = 0;
 		foreach( item in this.Const.World.Common.pickOutfit(::B.Info[this.m.Type].Outfit) )
 		{
 			this.m.Items.equip(item);
-			if ("m" in item && "StaminaModifier" in item.m) weight_armor += item.m.StaminaModifier * -1;
-
 		}
+	}
 
+	function assignRandomEquipment()
+	{
+		//Assign outfit and get the defense tree
+		pickOutfit();
+		local weight_armor = this.getItems().getStaminaModifier([
+            ::Const.ItemSlot.Body,
+            ::Const.ItemSlot.Head
+        ]) * -1;
 		if (weight_armor <= 20) this.m.TREE_DEFENSE = ::Const.Perks.LightArmorTree.Tree;
         else if (weight_armor <= 40) this.m.TREE_DEFENSE = ::Const.Perks.MediumArmorTree.Tree;
         else this.m.TREE_DEFENSE = ::Const.Perks.HeavyArmorTree.Tree;
@@ -64,6 +69,14 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		::logInfo(weapon.m.ID);
 		this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
 
+		try {
+			if (weapon.isWeaponType(::Const.Items.WeaponType.Crossbow))
+				this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
+			else if (weapon.isWeaponType(::Const.Items.WeaponType.Bow))
+				this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+			else if (weapon.isWeaponType(::Const.Items.WeaponType.Firearm))
+				this.m.Items.equip(this.new("scripts/items/ammo/powder_bag"));
+		} catch (exception){}
 
 		//Add perks according to specified pattern
 		foreach( pattern in ::B.Info[this.m.Type].Pattern )

@@ -1,30 +1,24 @@
-this.bandit_rabble_poacher <- this.inherit("scripts/entity/tactical/abstract_human", {
+this.bandit_thug <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Name = "Rabble";
-		this.m.Type = this.Const.EntityType.BanditRabblePoacher;
+		this.m.Type = this.Const.EntityType.BanditThug;
 		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.BanditRabble.XP;
+		this.m.XP = this.Const.Tactical.Actor.BanditThug.XP;
 		this.abstract_human.create();
 		this.m.Faces = this.Const.Faces.AllMale;
 		this.m.Hairs = this.Const.Hair.UntidyMale;
 		this.m.HairColors = this.Const.HairColors.All;
 		this.m.Beards = this.Const.Beards.Raider;
-		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_ranged_agent");
+		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_melee_agent");
 		this.m.AIAgent.setActor(this);
-
-		if (this.Math.rand(1, 100) <= 10)
-		{
-			this.setGender(1);
-		}
 	}
 
 	function onInit()
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BanditRabble);
+		b.setValues(this.Const.Tactical.Actor.BanditThug);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -54,27 +48,14 @@ this.bandit_rabble_poacher <- this.inherit("scripts/entity/tactical/abstract_hum
 			this.getSprite("eye_rings").Visible = true;
 		}
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 40)
-		{
-			b.RangedDefense += 5;
-		}
-
 		this.setArmorSaturation(0.8);
 		this.getSprite("shield_icon").setBrightness(0.9);
-
-		this.m.Skills.update();
 	}
 
 	function onAppearanceChanged( _appearance, _setDirty = true )
 	{
 		this.actor.onAppearanceChanged(_appearance, false);
 		this.setDirty(true);
-	}
-
-	function assignRandomEquipment()
-	{
-		this.abstract_human.assignRandomEquipment();
-		this.m.Items.addToBag(this.new("scripts/items/weapons/knife"));
 	}
 
 });

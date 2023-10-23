@@ -1,12 +1,11 @@
-this.bandit_rabble_poacher <- this.inherit("scripts/entity/tactical/abstract_human", {
+this.bandit_poacher <- this.inherit("scripts/entity/tactical/randomized_unit_abstract", {
 	m = {},
 	function create()
 	{
-		this.m.Name = "Rabble";
-		this.m.Type = this.Const.EntityType.BanditRabblePoacher;
+		this.m.Type = this.Const.EntityType.BanditPoacher;
 		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.BanditRabble.XP;
-		this.abstract_human.create();
+		this.m.XP = this.Const.Tactical.Actor.BanditPoacher.XP;
+		this.randomized_unit_abstract.create();
 		this.m.Faces = this.Const.Faces.AllMale;
 		this.m.Hairs = this.Const.Hair.UntidyMale;
 		this.m.HairColors = this.Const.HairColors.All;
@@ -22,22 +21,16 @@ this.bandit_rabble_poacher <- this.inherit("scripts/entity/tactical/abstract_hum
 
 	function onInit()
 	{
-		this.abstract_human.onInit();
+		this.randomized_unit_abstract.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BanditRabble);
+		b.setValues(this.Const.Tactical.Actor.BanditPoacher);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_bandits");
 
-		if (this.Math.rand(1, 100) <= 10)
-		{
-			local pox = this.getSprite("tattoo_head");
-			pox.Visible = true;
-			pox.setBrush("bust_head_pox_01");
-		}
-		else if (this.Math.rand(1, 100) <= 15)
+		if (this.Math.rand(1, 100) <= 20)
 		{
 			local pox = this.getSprite("tattoo_head");
 			pox.Visible = true;
@@ -47,22 +40,11 @@ this.bandit_rabble_poacher <- this.inherit("scripts/entity/tactical/abstract_hum
 		{
 			local dirt = this.getSprite("dirt");
 			dirt.Visible = true;
+			dirt.Alpha = this.Math.rand(150, 255);
 		}
 
-		if (this.Math.rand(1, 100) <= 25)
-		{
-			this.getSprite("eye_rings").Visible = true;
-		}
-
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 40)
-		{
-			b.RangedDefense += 5;
-		}
-
-		this.setArmorSaturation(0.8);
-		this.getSprite("shield_icon").setBrightness(0.9);
-
-		this.m.Skills.update();
+		this.setArmorSaturation(0.85);
+		this.getSprite("shield_icon").setBrightness(0.85);
 	}
 
 	function onAppearanceChanged( _appearance, _setDirty = true )
@@ -73,7 +55,8 @@ this.bandit_rabble_poacher <- this.inherit("scripts/entity/tactical/abstract_hum
 
 	function assignRandomEquipment()
 	{
-		this.abstract_human.assignRandomEquipment();
+		this.randomized_unit_abstract.assignRandomEquipment();
+		this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
 		this.m.Items.addToBag(this.new("scripts/items/weapons/knife"));
 	}
 
