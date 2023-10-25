@@ -1,3 +1,4 @@
+//TODO: bandit_leader
 this.bandit_leader <- this.inherit("scripts/entity/tactical/human", {
 	m = {},
 	function create()

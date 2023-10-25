@@ -1,14 +1,14 @@
 ::mods_hookExactClass("states/world/asset_manager", function(o)
-{ 
-    local create = o.create; 
-    o.update = function( _worldState ) 
+{
+    // local create = o.create;
+    o.update = function( _worldState )
     {
 		if (this.World.getTime().Days > this.m.LastDayPaid && this.World.getTime().Hours > 8 && this.m.IsConsumingAssets)
 		{
 			this.m.LastDayPaid = this.World.getTime().Days;
 
 			if (this.m.BusinessReputation > 0) this.m.BusinessReputation = this.Math.max(0, this.m.BusinessReputation + ::Const.World.Assets.ReputationDaily);
-			
+
 			this.World.Retinue.onNewDay();
 
 			if (this.World.Flags.get("IsGoldenGoose") == true)
@@ -74,22 +74,6 @@
 					}
 				}
 
-				if (this.m.IsUsingProvisions && this.m.Food < bro.getDailyFood())
-				{
-					if (bro.getSkills().hasSkill("trait.spartan"))
-					{
-						bro.worsenMood(::Const.MoodChange.NotEatenSpartan, "Went hungry");
-					}
-					else if (bro.getSkills().hasSkill("trait.gluttonous"))
-					{
-						bro.worsenMood(::Const.MoodChange.NotEatenGluttonous, "Went hungry");
-					}
-					else
-					{
-						bro.worsenMood(::Const.MoodChange.NotEaten, "Went hungry");
-					}
-				}
-
 				if (this.m.Origin.getID() == "scenario.manhunters" && slaves <= nonSlaves)
 				{
 					if (bro.getBackground().getID() != "background.slave")
@@ -126,7 +110,7 @@
 		if (this.World.getTime().Hours != this.m.LastHourUpdated && this.m.IsConsumingAssets)
 		{
 			this.m.LastHourUpdated = this.World.getTime().Hours;
-			this.consumeFood();
+			// this.consumeFood();
 			local roster = this.World.getPlayerRoster().getAll();
 			local campMultiplier = this.isCamping() ? this.m.CampingMult : 1.0;
 
@@ -336,4 +320,23 @@
 			}
 		}
 	}
+
+	// disable food
+	o.getDailyFoodCost = function(){return 0;}
+	o.consumeFood = function(){}
+	o.updateFood = function ()
+	{
+		// 	local items = this.m.Stash.getItems();
+		// 	this.m.Food = 0.0;
+
+		// 	foreach( item in items )
+		// 	{
+		// 		if (item != null && item.isItemType(this.Const.Items.ItemType.Food))
+		// 		{
+		// 			this.m.Food += item.getAmount();
+		// 		}
+		// 	}
+		this.m.Food = 0.0;
+	}
+
 });

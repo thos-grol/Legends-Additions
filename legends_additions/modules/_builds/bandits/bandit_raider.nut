@@ -38,12 +38,6 @@
 		["Melee Defense", 7, 0],
 	],
     Trait = [],
-    Outfit = [
-		[
-			1,
-			"bandit_thug_outfit_00"
-		]
-	],
 	Loadout = [
 		[
 			"scripts/items/weapons/legend_infantry_axe",

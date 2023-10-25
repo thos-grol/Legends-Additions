@@ -14,105 +14,42 @@ this.bandit_raider_low <- this.inherit("scripts/entity/tactical/enemies/bandit_r
 		this.m.Skills.update();
 	}
 
-	function assignRandomEquipment()
+	function pickOffhand()
 	{
-		local r = this.Math.rand(0, 7);
+		if (::Math.rand(1, 100) > 15) return;
 
-		if (r <= 1)
+		this.m.PATTERN_OVERWRITE <- {};
+
+		if (::Math.rand(1, 100) <= 80) //Sheild users
 		{
-			if (this.Const.DLC.Unhold)
-			{
-				r = this.Math.rand(0, 3);
-
-				if (r == 0)
-				{
-					this.m.Items.equip(this.new("scripts/items/weapons/woodcutters_axe"));
-				}
-				else if (r == 1)
-				{
-					this.m.Items.equip(this.new("scripts/items/weapons/hooked_blade"));
-				}
-				else if (r == 2)
-				{
-					this.m.Items.equip(this.new("scripts/items/weapons/pike"));
-				}
-				else if (r == 3)
-				{
-					this.m.Items.equip(this.new("scripts/items/weapons/two_handed_wooden_hammer"));
-				}
-			}
-			else
-			{
-				r = this.Math.rand(0, 2);
-
-				if (r == 0)
-				{
-					this.m.Items.equip(this.new("scripts/items/weapons/woodcutters_axe"));
-				}
-				else if (r == 1)
-				{
-					this.m.Items.equip(this.new("scripts/items/weapons/hooked_blade"));
-				}
-				else if (r == 2)
-				{
-					this.m.Items.equip(this.new("scripts/items/weapons/pike"));
-				}
-			}
+			// ["T", 1],
+			// ["D", 2],
+			// ["W", 3], <- 3: ["Z", "scripts/skills/perks/perk_shield_bash"]
+			// ["W", 4],
+			// ["T", 5],
+			// ["D", 6],
+			// ["T", 3], <- 7: ["Z", "scripts/skills/perks/perk_shield_expert"]
+			this.m.PATTERN_OVERWRITE[3] <- ["Z", "scripts/skills/perks/perk_shield_bash"];
+			this.m.PATTERN_OVERWRITE[7] <- ["Z", "scripts/skills/perks/perk_shield_expert"];
+			this.m.Items.equip(this.new("scripts/items/shields/wooden_shield"));
 		}
-		else
+		else //nets
 		{
-			if (r == 2)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/shortsword"));
-			}
-			else if (r == 3)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/hand_axe"));
-			}
-			else if (r == 4)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/boar_spear"));
-			}
-			else if (r == 5)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/morning_star"));
-			}
-			else if (r == 6)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/falchion"));
-			}
-			else if (r == 7)
-			{
-				this.m.Items.equip(this.new("scripts/items/weapons/flail"));
-			}
-
-			if (this.Math.rand(1, 100) <= 66)
-			{
-				if (this.Math.rand(1, 100) <= 33)
-				{
-					this.m.Items.equip(this.new("scripts/items/shields/buckler_shield"));
-				}
-				else
-				{
-					this.m.Items.equip(this.new("scripts/items/shields/wooden_shield"));
-				}
-			}
+			// ["T", 1],
+			// ["D", 2],
+			// ["W", 3], <- 3: ["Z", "scripts/skills/perks/perk_shield_bash"]
+			// ["W", 4],
+			// ["T", 5],
+			// ["D", 6],
+			// ["T", 3], <- 7: ["Z", "scripts/skills/perks/perk_shield_expert"]
+			this.m.PATTERN_OVERWRITE[3] <- ["Z", "scripts/skills/perks/perk_legend_net_repair"];
+			this.m.PATTERN_OVERWRITE[7] <- ["Z", "scripts/skills/perks/perk_legend_net_casting"];
+			//net perk autoloads nets
 		}
+	}
 
-		if (this.getIdealRange() == 1 && this.Math.rand(1, 100) <= 25)
-		{
-			r = this.Math.rand(1, 2);
-
-			if (r == 1)
-			{
-				this.m.Items.addToBag(this.new("scripts/items/weapons/throwing_axe"));
-			}
-			else if (r == 2)
-			{
-				this.m.Items.addToBag(this.new("scripts/items/weapons/javelin"));
-			}
-		}
-
+	function pickOutfit()
+	{
 		local item = this.Const.World.Common.pickArmor([
 			[
 				10,
@@ -167,6 +104,46 @@ this.bandit_raider_low <- this.inherit("scripts/entity/tactical/enemies/bandit_r
 				this.m.Items.equip(item);
 			}
 		}
+	}
+
+	function pickWeapon()
+	{
+		local Loadout = [
+			[
+				"scripts/items/weapons/woodcutters_axe",
+			],
+			[
+				"scripts/items/weapons/hooked_blade",
+			],
+			[
+				"scripts/items/weapons/pike",
+			],
+			[
+				"scripts/items/weapons/two_handed_wooden_hammer",
+			],
+			[
+				"scripts/items/weapons/two_handed_mace",
+			],
+			[
+				"scripts/items/weapons/legend_two_handed_club",
+			],
+			[
+				"scripts/items/weapons/boar_spear",
+			],
+			[
+				"scripts/items/weapons/morning_star",
+			],
+			[
+				"scripts/items/weapons/falchion",
+			],
+			[
+				"scripts/items/weapons/flail",
+			],
+			[
+				"scripts/items/weapons/hand_axe",
+			],
+		];
+
 	}
 
 });

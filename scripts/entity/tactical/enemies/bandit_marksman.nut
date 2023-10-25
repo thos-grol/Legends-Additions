@@ -1,3 +1,4 @@
+//TODO: bandit_marksman
 this.bandit_marksman <- this.inherit("scripts/entity/tactical/human", {
 	m = {
 		IsLow = false

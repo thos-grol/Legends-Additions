@@ -476,10 +476,10 @@ gt.Const.Perks.ShieldTree <- {
 	},
 	Tree = [
 		[],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.ShieldBash
 		],
-		[],
 		[
 			gt.Const.Perks.PerkDefs.ShieldExpert
 		],

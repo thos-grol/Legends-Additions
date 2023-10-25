@@ -1,11 +1,12 @@
-this.bandit_poacher <- this.inherit("scripts/entity/tactical/randomized_unit_abstract", {
+this.bandit_poacher <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
+		this.m.Name = "Thug";
 		this.m.Type = this.Const.EntityType.BanditPoacher;
 		this.m.BloodType = this.Const.BloodType.Red;
 		this.m.XP = this.Const.Tactical.Actor.BanditPoacher.XP;
-		this.randomized_unit_abstract.create();
+		this.abstract_human.create();
 		this.m.Faces = this.Const.Faces.AllMale;
 		this.m.Hairs = this.Const.Hair.UntidyMale;
 		this.m.HairColors = this.Const.HairColors.All;
@@ -21,7 +22,7 @@ this.bandit_poacher <- this.inherit("scripts/entity/tactical/randomized_unit_abs
 
 	function onInit()
 	{
-		this.randomized_unit_abstract.onInit();
+		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
 		b.setValues(this.Const.Tactical.Actor.BanditPoacher);
 		this.m.ActionPoints = b.ActionPoints;
@@ -55,8 +56,7 @@ this.bandit_poacher <- this.inherit("scripts/entity/tactical/randomized_unit_abs
 
 	function assignRandomEquipment()
 	{
-		this.randomized_unit_abstract.assignRandomEquipment();
-		this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+		this.abstract_human.assignRandomEquipment();
 		this.m.Items.addToBag(this.new("scripts/items/weapons/knife"));
 	}
 

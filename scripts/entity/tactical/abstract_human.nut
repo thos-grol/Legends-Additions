@@ -1,9 +1,11 @@
 this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 	m = {
+		is_build = false,
 		TREE_DEFENSE = null,
 		TREE_TRAIT1 = null,
 		TREE_TRAIT2 = null,
-		TREE_WEAPON = null
+		TREE_WEAPON = null,
+		PATTERN_OVERWRITE = null
 	},
 	function onInit()
 	{
@@ -21,6 +23,19 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		foreach( item in this.Const.World.Common.pickOutfit(::B.Info[this.m.Type].Outfit) )
 		{
 			this.m.Items.equip(item);
+		}
+	}
+
+	function pickOffhand()
+	{
+	}
+
+	function pickWeapon()
+	{
+		local loadout = ::MSU.Array.rand(::B.Info[this.m.Type].Loadout);
+		foreach(item in loadout)
+		{
+			this.m.Items.equip(::new(item));
 		}
 	}
 
@@ -59,15 +74,11 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		this.m.TREE_TRAIT2 = ::MSU.Array.rand(roll);
 
 		//TREE_WEAPON
-		local loadout = ::MSU.Array.rand(::B.Info[this.m.Type].Loadout);
-
-		foreach(item in loadout)
-		{
-			this.m.Items.equip(::new(item));
-		}
+		pickWeapon();
 		local weapon = this.getMainhandItem();
 		::logInfo(weapon.m.ID);
 		this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
+		if (!weapon.isItemType(::Const.Items.ItemType.TwoHanded)) pickOffhand();
 
 		try {
 			if (weapon.isWeaponType(::Const.Items.WeaponType.Crossbow))
@@ -79,9 +90,13 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		} catch (exception){}
 
 		//Add perks according to specified pattern
+		local i = 1;
 		foreach( pattern in ::B.Info[this.m.Type].Pattern )
 		{
-			decode_add(pattern);
+			if (this.m.PATTERN_OVERWRITE != null && i in this.m.PATTERN_OVERWRITE)
+				decode_add(this.m.PATTERN_OVERWRITE[i]);
+			else decode_add(pattern);
+			i++;
 		}
 
 		//add level ups

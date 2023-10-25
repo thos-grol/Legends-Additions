@@ -2,6 +2,7 @@ this.bandit_thug <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
+		this.m.Name = "Thug";
 		this.m.Type = this.Const.EntityType.BanditThug;
 		this.m.BloodType = this.Const.BloodType.Red;
 		this.m.XP = this.Const.Tactical.Actor.BanditThug.XP;
@@ -56,6 +57,20 @@ this.bandit_thug <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.actor.onAppearanceChanged(_appearance, false);
 		this.setDirty(true);
+	}
+
+	function pickOffhand()
+	{
+		if (::Math.rand(1, 100) > 10) return;
+
+		this.m.PATTERN_OVERWRITE <- {};
+
+		// ["T", 1],
+		// ["D", 2],
+		// ["W", 3], <- 3: ["Z", "scripts/skills/perks/perk_legend_net_repair"]
+		// ["W", 4],
+		this.m.PATTERN_OVERWRITE[3] <- ["Z", "scripts/skills/perks/perk_legend_net_repair"];
+		//net perk autoloads nets
 	}
 
 });

@@ -69,7 +69,7 @@ this.follow_up <- this.inherit("scripts/skills/skill", {
 
 		local agent = actor.getAIAgent();
 
-		if (agent.findBehavior(::Const.AI.Behavior.ID.PTRFollowUp) == null)
+		if (agent.findBehavior(::Const.AI.Behavior.ID.FollowUp) == null)
 		{
 			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_follow_up"));
 			agent.finalizeBehaviors();

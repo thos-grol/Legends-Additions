@@ -20,7 +20,7 @@
 	FatigueRecoveryRate = 15
 };
 
-::B.Info[::Const.EntityType.BanditRabblePoacher] <- {
+::B.Info[::Const.EntityType.BanditThug] <- {
     Level = 6,
     Pattern = [
         ["T", 1],

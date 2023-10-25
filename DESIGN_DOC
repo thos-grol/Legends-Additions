@@ -5,6 +5,21 @@
 //Estoc and rapier gain riposte
 //TODO: hit shield message overhaul
 
+//TODO: convert bandits to abstract
+//TODO: convert nomads to abstract
+//TODO: convert orcs to abstract
+//TODO: convert goblins to abstract
+//TODO: finish basic 4 monsters - nach, direwolf, spider, alp
+
+//TODO: retinue rework
+	//TODO: anatomist
+//TODO: enconomy rework finalization - contracts and events
+	//TODO: black market
+
+//////////////////////////////////////////////
+
+
+
 //reworked perk trees, ideas:
 	//stone shard
 		https://stoneshard.fandom.com/wiki/Pyromancy_(skill_tree)

@@ -67,16 +67,14 @@
     else if (_item.isWeaponType(::Const.Items.WeaponType.Hammer)) return ::Const.Perks.HammerTree.Tree;
     else if (_item.isWeaponType(::Const.Items.WeaponType.Axe)) return ::Const.Perks.AxeTree.Tree;
     else if (_item.isWeaponType(::Const.Items.WeaponType.Cleaver)) return ::Const.Perks.CleaverTree.Tree;
-    else if (_item.isWeaponType(::Const.Items.WeaponType.Sword) && _item.isItemType(::Const.Items.ItemType.TwoHanded))
-        return ::Const.Perks.GreatSwordTree.Tree;
     else if (_item.isWeaponType(::Const.Items.WeaponType.Sword)) return ::Const.Perks.SwordTree.Tree;
-    else if (_item.isWeaponType(::Const.Items.WeaponType.Dagger)) return ::Const.Perks.DaggerTree.Tree;
     else if (_item.isWeaponType(::Const.Items.WeaponType.Polearm)) return ::Const.Perks.PolearmTree.Tree;
     else if (_item.isWeaponType(::Const.Items.WeaponType.Spear)) return ::Const.Perks.SpearTree.Tree;
-    else if (_item.isWeaponType(::Const.Items.WeaponType.Crossbow)) return ::Const.Perks.CrossbowTree.Tree;
+    else if (_item.isWeaponType(::Const.Items.WeaponType.Crossbow)) return ::Const.Perks.BowTree.Tree;
     else if (_item.isWeaponType(::Const.Items.WeaponType.Bow)) return ::Const.Perks.BowTree.Tree;
-    else if (_item.isWeaponType(::Const.Items.WeaponType.Sling)) return ::Const.Perks.SlingTree.Tree;
-    else return ::Const.Perks.MaceTree.Tree;
+    else if (_item.isWeaponType(::Const.Items.WeaponType.Sling)) return ::Const.Perks.BowTree.Tree;
+    else if (_item.isWeaponType(::Const.Items.WeaponType.Firearm)) return ::Const.Perks.BowTree.Tree;
+    else return ::Const.Perks.HammerTree.Tree;
 }
 
 ::Z.Perks.isProficiency <- function (_id)
