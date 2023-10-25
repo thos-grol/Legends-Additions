@@ -5,7 +5,7 @@
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Ending turn, with sword equipped:")
 + "\nRiposte"
-+ "\n "+::MSU.Text.colorRed("Invalid with less than 15 Fatigue remaining. If the sword cannot riposte, missing attackers will have a 50% to be dazed")
++ "\n "+::MSU.Text.colorRed("Invalid with less than 15 Fatigue remaining. If the sword cannot riposte, perform a cqc attack with a 50% chance of dazing")
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Daze: (Duration: 2)")
 + "\n "+::MSU.Text.colorRed("– 50% Fatigue")

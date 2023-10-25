@@ -1,6 +1,3 @@
-//TODO: remove food
-//TODO: return favor can only occur for 2H swords if there is no riposte on the weapon
-//TODO: redo return favor? - perform 1 cqc attack with 1.5x damage multiplier
 //TODO: middle-eastern swords gash becomes default - copy slash costs, and they gain riposte
 //Estoc and rapier gain riposte
 //TODO: hit shield message overhaul
@@ -15,6 +12,8 @@
 	//TODO: anatomist
 //TODO: enconomy rework finalization - contracts and events
 	//TODO: black market
+
+//TODO: rework food as nutrition needed for potions (meat and expensive food)
 
 //////////////////////////////////////////////
 

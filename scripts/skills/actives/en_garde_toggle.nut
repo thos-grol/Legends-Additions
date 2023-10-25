@@ -39,7 +39,7 @@ this.en_garde_toggle <- ::inherit("scripts/skills/skill", {
 			icon = "ui/icons/special.png",
 			text = "Automatic riposte is currently " + (this.m.IsOn ? "[color=" + ::Const.UI.Color.PositiveValue + "]Enabled[/color]" : "[color=" + ::Const.UI.Color.NegativeValue + "]Disabled[/color]")
 		});
-		
+
 		return tooltip;
 	}
 
@@ -80,14 +80,8 @@ this.en_garde_toggle <- ::inherit("scripts/skills/skill", {
 		if (this.getContainer().getActor().getFatigueMax() - this.getContainer().getActor().getFatigue() < this.m.FatigueRequired) return null;
 
 		local riposte = this.getContainer().getSkillByID("actives.riposte");
-		if (riposte != null)
-		{
-			return riposte;
-		}
-		else
-		{
-			return ::new("scripts/skills/effects/return_favor_effect");
-		}
+		if (riposte != null) return riposte;
+		else return ::new("scripts/skills/effects/return_favor_effect");
 	}
 
 	function onTurnEnd()
