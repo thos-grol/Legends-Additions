@@ -25,15 +25,6 @@
 			items.equip(::new("scripts/items/tools/throwing_net"));
 		}
 
-		if (this.Math.rand(1, 100) >= 50)
-		{
-			items.equip(::new("scripts/items/accessory/wardog_item"));
-		}
-		else
-		{
-			items.equip(::new("scripts/items/accessory/warhound_item"));
-		}
-
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,

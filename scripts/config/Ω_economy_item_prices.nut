@@ -329,17 +329,17 @@
 	"accessory.falcon" : 100,
 	"accessory.legend_cat_item" : 0,
 	"accessory.legend_wolfsbane_necklace" : 0,
-	"accessory.wardog" : 0, //TODO: Remove from contracts and troops
-	"accessory.warhound" : 0, //TODO: Remove from contracts and troops
-	"accessory.armored_wardog" : 0, //TODO: Remove from contracts and troops
-	"accessory.armored_warhound" : 0, //TODO: Remove from contracts and troops
-	"accessory.heavily_armored_wardog" : 0, //TODO: Remove from contracts and troops
-	"accessory.warwolf" : 0, //TODO: Remove from contracts and troops
-	"accessory.heavily_armored_warhound" : 0, //TODO: Remove from contracts and troops
-	"accessory.legend_warbear" : 0, //TODO: Remove from contracts and troops
-	"accessory.legend_white_warwolf" : 0, //TODO: Remove from contracts and troops
-	"misc.wardog_heavy_armor_upgrade" : 0, //TODO: Remove from contracts and troops
-	"misc.wardog_armor_upgrade" : 0, //TODO: Remove from contracts and troops
+	"accessory.wardog" : 0,
+	"accessory.warhound" : 0,
+	"accessory.armored_wardog" : 0,
+	"accessory.armored_warhound" : 0,
+	"accessory.heavily_armored_wardog" : 0,
+	"accessory.warwolf" : 0,
+	"accessory.heavily_armored_warhound" : 0,
+	"accessory.legend_warbear" : 0,
+	"accessory.legend_white_warwolf" : 0,
+	"misc.wardog_heavy_armor_upgrade" : 0,
+	"misc.wardog_armor_upgrade" : 0,
 
 	//OTHER //TODO: rework event
 	"accessory.legend_oms_fate" : 100,

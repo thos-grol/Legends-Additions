@@ -30,3 +30,8 @@
 ::mods_hookExactClass("scenarios/world/sato_escaped_slaves_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/rangers_scenario", function(o) { o.isValid <- function(){ return false; }});
+
+::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
+
+//FEATURE_6 rework and reenable cultists scenario
+::mods_hookExactClass("scenarios/world/cultists_scenario", function(o) { o.isValid <- function(){ return false; }});

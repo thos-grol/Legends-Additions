@@ -751,63 +751,6 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 			List = [],
 			Options = [
 				{
-					Text = "We\'ll take the wardogs.",
-					function getResult()
-					{
-						for( local i = 0; i < 3; i = i )
-						{
-							local item = this.new("scripts/items/accessory/wardog_item");
-							this.World.Assets.getStash().add(item);
-							i = ++i;
-						}
-
-						return 0;
-					}
-
-				},
-				{
-					Text = "We\'ll take the nets.",
-					function getResult()
-					{
-						for( local i = 0; i < 4; i = i )
-						{
-							local item = this.new("scripts/items/tools/throwing_net");
-							this.World.Assets.getStash().add(item);
-							i = ++i;
-						}
-
-						return 0;
-					}
-
-				},
-				{
-					Text = "We\'ll take the throwing spears.",
-					function getResult()
-					{
-						if (this.Const.DLC.Wildmen)
-						{
-							for( local i = 0; i < 4; i = i )
-							{
-								local item = this.new("scripts/items/weapons/throwing_spear");
-								this.World.Assets.getStash().add(item);
-								i = ++i;
-							}
-						}
-						else
-						{
-							for( local i = 0; i < 4; i = i )
-							{
-								local item = this.new("scripts/items/weapons/javelin");
-								this.World.Assets.getStash().add(item);
-								i = ++i;
-							}
-						}
-
-						return 0;
-					}
-
-				},
-				{
 					Text = "We have all that we need. Save it for the others.",
 					function getResult()
 					{

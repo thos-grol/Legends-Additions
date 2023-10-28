@@ -29,7 +29,6 @@
 		local stash = this.World.Assets.getStash();
 		stash.add(::new("scripts/items/ammo/quiver_of_arrows"));
 		stash.add(::new("scripts/items/supplies/cured_venison_item"));
-		stash.add(::new("scripts/items/accessory/wardog_item"));
 		stash.removeByID("supplies.ground_grains");
 		stash.removeByID("supplies.ground_grains");
 		r = this.Math.rand(0, 1);

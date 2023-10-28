@@ -112,9 +112,6 @@ Economy Overhaul
 //FEATURE_2: ambitions rework
     //FEATURE_1: Slay a monster -> unlock anatomist retinue
 
-//TODO: fix alchemist having named items.
-
-
 //TODO: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
 
 
@@ -129,11 +126,6 @@ Economy Overhaul
         //Guerilla - tp and strike, tp and strike
         //Vampire - Casts blood magic, charms enemies
     //All attacks cause bleed, and heal damage caused from attacks including bleed.
-
-//FEATURE_1: zombie -> lesser undead
-    //Increase hp, add nimble. that's it
-
-//FEATURE_1: rework ghosts
 
 //Z
 

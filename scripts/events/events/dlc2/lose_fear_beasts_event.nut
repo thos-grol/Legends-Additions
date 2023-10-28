@@ -1,4 +1,3 @@
-//TODO: rework
 this.lose_fear_beasts_event <- this.inherit("scripts/events/event", {
 	m = {
 		Casualty = null

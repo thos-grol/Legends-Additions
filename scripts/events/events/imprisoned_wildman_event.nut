@@ -302,7 +302,7 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude.m.XP = ::Const.LevelXP[_event.m.Dude.m.Level - 1];
 				_event.m.Dude.m.Attributes = [];
 				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
-				
+
 				_event.m.Dude.m.Talents = [];
 				local talents = _event.m.Dude.getTalents();
 				talents.resize(::Const.Attributes.COUNT, 0);
@@ -322,7 +322,7 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 				roll = ::Math.rand(1, 100);
 				talents[::Const.Attributes.Hitpoints] = 3;
 
-				
+
 
 				_event.m.Dude.setTitle("the Animal");
 				_event.m.Dude.getBackground().m.RawDescription = "%name% was \'saved\' by you during a confrontation with an animal tamer-turned-enslaver. A sense of gratitude and debt overcomes any language barriers: the once imprisoned wildling serves the company loyally for the rescue.";
@@ -435,13 +435,13 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "AnimalsFreed",
-			Text = "[img]gfx/ui/events/event_27.png[/img]You feel it just wouldn\'t be right to leave them out here to starve to death and a caged creature no doubt has gamey meat when it comes to harvesting. You decide to let them on out of their cages. Most of these strange creatures make a beeline for the treeline, but two remain behind: a husky dog and a hooded falcon, both seemingly looking for a master.",
+			Text = "[img]gfx/ui/events/event_27.png[/img]You feel it just wouldn\'t be right to leave them out here to starve to death and a caged creature no doubt has gamey meat when it comes to harvesting. You decide to let them on out of their cages. Most of these strange creatures make a beeline for the treeline, but one remains behind: a hooded falcon, seemingly looking for a master.",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "You\'ll both fit right in.",
+					Text = "You\'ll fit right in.",
 					function getResult( _event )
 					{
 						return 0;
@@ -451,13 +451,6 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local item = ::new("scripts/items/accessory/wardog_item");
-				this.World.Assets.getStash().add(item);
-				this.List.push({
-					id = 10,
-					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + item.getName()
-				});
 				item = ::new("scripts/items/accessory/falcon_item");
 				this.World.Assets.getStash().add(item);
 				this.List.push({

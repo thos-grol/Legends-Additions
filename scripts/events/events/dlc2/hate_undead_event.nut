@@ -1,4 +1,3 @@
-//TODO: rework
 this.hate_undead_event <- this.inherit("scripts/events/event", {
 	m = {
 		Image = "",

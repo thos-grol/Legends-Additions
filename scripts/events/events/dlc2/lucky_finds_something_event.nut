@@ -1,4 +1,4 @@
-//TODO: rework
+//FEATURE_6: rework lucky event
 this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 	m = {
 		Lucky = null,
@@ -162,7 +162,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 		}
 		else if (r == 11)
 		{
-			item = ::new("scripts/items/misc/wardog_armor_upgrade_item");
+			item = ::new("scripts/items/weapons/knife");
 		}
 		else if (r == 12)
 		{

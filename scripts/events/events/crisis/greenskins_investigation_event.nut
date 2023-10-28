@@ -325,13 +325,6 @@ this.greenskins_investigation_event <- this.inherit("scripts/events/event", {
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + item.getName()
 				});
-				item = ::new("scripts/items/accessory/wardog_item");
-				this.World.Assets.getStash().add(item);
-				this.List.push({
-					id = 10,
-					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + item.getName()
-				});
 			}
 
 		});

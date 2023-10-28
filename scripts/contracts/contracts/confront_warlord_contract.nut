@@ -114,16 +114,7 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 				else if (this.Flags.get("IsBerserkersDone"))
 				{
 					this.Flags.set("IsBerserkersDone", false);
-
-					if (this.Math.rand(1, 100) <= 50)
-					{
-						this.Contract.setScreen("Berserkers3");
-					}
-					else
-					{
-						this.Contract.setScreen("Berserkers4");
-					}
-
+					this.Contract.setScreen("Berserkers4");
 					this.World.Contracts.showActiveContract();
 				}
 				else if (this.Flags.get("IsBerserkers") && !this.TempFlags.has("IsBerserkersShown") && this.Contract.getDistanceToNearestSettlement() >= 7 && this.Math.rand(1, 1000) <= 1)
@@ -485,31 +476,13 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
-				local brothers = this.World.getPlayerRoster().getAll();
-
-				foreach( bro in brothers )
-				{
-					if (bro.getBackground().getID() == "background.houndmaster" || bro.getBackground().getID() == "background.legend_muladi")
-					{
-						bro.worsenMood(1.0, "You didn\'t help wardogs being eaten by orcs");
-
-						if (bro.getMoodState() < this.Const.MoodState.Neutral)
-						{
-							this.List.push({
-								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
-							});
-						}
-					}
-				}
 			}
 
 		});
 		this.m.Screens.push({
 			ID = "Berserkers3",
 			Title = "After the battle...",
-			Text = "[img]gfx/ui/events/event_32.png[/img]The fight over, you take a good look around the berserkers\' encampment. Each of the cages is home to a shriveled, cornered dog. When you open one of the cages, the dog sprints out, yelping and yapping as it darts over the hills and is gone, just like that. Most of the other mutts follow suit. Two, however, remain. They follow you around as you inspect the rest of the encampment. %randombrother% notes that they\'re war dogs.%SPEECH_ON%Look at the size of \'em. Big, burly, nasty farks. Their owners must\'ve been killed by the orcs and now, well, they\'ve reason to trust us. Welcome to the company, little buddies.%SPEECH_OFF%",
+			Text = "[img]gfx/ui/events/event_32.png[/img]The fight over, you take a good look around the berserkers\' encampment. Each of the cages is home to a shriveled, cornered dog. When you open one of the cages, the dog sprints out, yelping and yapping as it darts over the hills and is gone, just like that. Most of the other mutts follow suit. Two, however, remain. They follow you around as you inspect the rest of the encampment. %randombrother% notes that they\'re war dogs.%SPEECH_ON%Look at the size of \'em. Big, burly, nasty farks. Their owners must\'ve been killed by the orcs.%SPEECH_OFF%",
 			Image = "",
 			List = [],
 			Options = [
@@ -526,20 +499,6 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
-				local item = this.new("scripts/items/accessory/wardog_item");
-				this.World.Assets.getStash().add(item);
-				this.List.push({
-					id = 10,
-					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + item.getName()
-				});
-				item = this.new("scripts/items/accessory/wardog_item");
-				this.World.Assets.getStash().add(item);
-				this.List.push({
-					id = 10,
-					icon = "ui/items/" + item.getIcon(),
-					text = "You gain " + item.getName()
-				});
 			}
 
 		});

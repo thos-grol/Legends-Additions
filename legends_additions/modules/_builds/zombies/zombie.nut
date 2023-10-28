@@ -18,7 +18,7 @@
 	]
 };
 
-gt.Const.Tactical.Actor.ZombiePlayer <- {
+::Const.Tactical.Actor.ZombiePlayer <- {
 	XP = 500,
 	ActionPoints = 9,
 	Hitpoints = 500,
