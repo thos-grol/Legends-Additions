@@ -52,7 +52,7 @@ gt.Const.World.Spawn.BanditRoamers <- {
 			]
 		},
 		{
-			Weight = 18,
+			Weight = 10,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRabblePoacher,
@@ -114,7 +114,7 @@ gt.Const.World.Spawn.BanditScouts <- {
 			]
 		},
 		{
-			Weight = 20,
+			Weight = 10,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRabblePoacher,
