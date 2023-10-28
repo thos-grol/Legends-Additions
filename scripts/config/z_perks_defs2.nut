@@ -223,7 +223,7 @@ local perks = [
         Name = "",
         Tooltip = "",
         Icon = "ui/perks/asura.png",
-        IconDisabled = "ui/perks/asura_bw.png", //TODO: art bw, gold border
+        IconDisabled = "ui/perks/asura_bw.png",
         Const = "StanceAsura"
     },
 

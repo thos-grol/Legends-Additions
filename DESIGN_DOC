@@ -2,24 +2,13 @@
 //FEATURE_0: convert orcs to abstract
 //FEATURE_0: convert goblins to abstract
 
-//TODO: finish basic 4 monsters - nach, direwolf, spider, alp
-//TODO: finish undead - ghosts, zombies, necros, necrosavant
-
-
-
-//TODO: black market
+//FEATURE_0: finish spider, alp
+//FEATURE_0: finish undead - ghosts, zombies, necros, necrosavant
 
 //FEATURE_0: retinue rework
 	//FEATURE_0: anatomist
 
-//TODO: basic occult system
-//TODO: aspected materials, ritual space ui
-
-
-
-
-
-
+//TODO: remove kill stealing
 
 //////////////////////////////////////////////
 
@@ -112,7 +101,7 @@ Economy Overhaul
 //FEATURE_2: ambitions rework
     //FEATURE_1: Slay a monster -> unlock anatomist retinue
 
-//TODO: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
+//FEATURE_6: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
 
 
 //FEATURE_1: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
@@ -134,7 +123,7 @@ DOC:
 
 //New potion system
 
-//TODO: Fantasy Bros Skills worth looking into
+//Fantasy Bros Skills worth looking into
     //Pyromancer
         2 skills are good
     //Shaman

@@ -592,14 +592,15 @@ gt.Const.Perks.IntelligentTree <- {
 		[],
 		[
 			//TODO: intelligent perk tier 3, port Pattern Recognition. higher intelligence allows one to extrapolate patterns from data
+				//unlocks ability to decode occult knowledge
 		],
 		[],
 		[
-			//TODO: intelligent perk tier 5
+			//FEATURE_6: intelligent perk tier 5
 		],
 		[],
 		[
-			//TODO: intelligent perk tier 7
+			//FEATURE_6: intelligent perk tier 7
 		]
 	]
 };

@@ -61,10 +61,17 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
 		////////////////////////////////////////////////////////////////////////
 
+		//base skills
+
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_berserk"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_crippling_strikes"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_fast_adaption"));
         this.m.Skills.add(::new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
+
+
+		//unique skills
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_nachzerer_gluttony_barrier")); // hair armor nullifies damage for x hits.
 

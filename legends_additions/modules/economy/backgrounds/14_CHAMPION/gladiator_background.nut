@@ -7,7 +7,7 @@
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 		this.m.PerkTreeDynamicMins.Traits = 3;
 
-		//FEATURE_1: remove test code
+		//FEATURE_0: remove test code
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [

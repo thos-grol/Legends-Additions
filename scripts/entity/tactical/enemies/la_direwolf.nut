@@ -5,7 +5,7 @@
 ::Const.Tactical.Actor.Direwolf <- {
 	XP = 200,
 	ActionPoints = 12,
-	Hitpoints = 600,
+	Hitpoints = 700,
 	Bravery = 10,
 	Stamina = 180,
 	MeleeSkill = 75,

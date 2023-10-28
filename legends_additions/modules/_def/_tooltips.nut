@@ -535,6 +535,7 @@ local modTacticalTooltip = function ( tooltip, _targetedWithSkill )
 		onInit();
 		// this.getSkills().add(::new("scripts/skills/effects/ptr_formidable_approach_debuff_effect"));
 		this.getSkills().add(::new("scripts/skills/effects/ptr_follow_up_proccer_effect"));
+		this.getSkills().add(::new("scripts/skills/effects/_nokillstealing"));
 
 		local flags = this.getFlags();
 		if (flags.has("undead") && !flags.has("ghost") && !flags.has("ghoul") && !flags.has("vampire"))

@@ -1,4 +1,4 @@
-//TODO: rework event
+//FEATURE_6: rework event
 //Graves are forbidden, don't touch the dead
 //Make rewards better, unmarked grave contains grimoire
 //Make event repeatable.

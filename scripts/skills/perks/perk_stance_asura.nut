@@ -43,14 +43,30 @@ this.perk_stance_asura <- this.inherit("scripts/skills/skill", {
 		if (_skill.m.ID == "actives.hand_to_hand")
 		{
 			local attack = this.getContainer().getSkillByID("actives.hand_to_hand");
-			attack.useForFree(_targetTile);
-			attack.useForFree(_targetTile);
-			attack.useForFree(_targetTile);
+			for( local i = 0; i < 3; i++)
+			{
+				local info = {
+					User = this.getContainer().getActor(),
+					Skill = attack,
+					TargetTile = _targetTile
+				};
+				::Time.scheduleEvent(this.TimeUnit.Virtual, ::Math.floor(::Const.Combat.RiposteDelay * i / 2), this.onRiposte, info);
+			}
 		}
 		else if (_skill.m.ID == "actives.legend_kick")
 		{
 			local attack = this.getContainer().getSkillByID("actives.legend_kick");
-			attack.useForFree(_targetTile);
+			local info = {
+				User = this.getContainer().getActor(),
+				Skill = attack,
+				TargetTile = _targetTile
+			};
+			::Time.scheduleEvent(this.TimeUnit.Virtual, ::Math.floor(::Const.Combat.RiposteDelay / 2), this.onRiposte, info);
 		}
+	}
+
+	function onRiposte( _info )
+	{
+		_info.Skill.useForFree(_info.TargetTile);
 	}
 });

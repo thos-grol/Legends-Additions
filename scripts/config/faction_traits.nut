@@ -171,7 +171,7 @@ gt.Const.FactionTrait <- {
 		],
 		[
 			"scripts/factions/contracts/drive_away_nomads_action",
-			"scripts/factions/contracts/roaming_beasts_desert_action", //TODO: rework difficulty
+			// "scripts/factions/contracts/roaming_beasts_desert_action", //FEATURE_6: rework difficulty
 			"scripts/factions/contracts/slave_uprising_action",
 			"scripts/factions/contracts/item_delivery_action",
 			"scripts/factions/contracts/escort_caravan_action",

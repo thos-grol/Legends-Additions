@@ -1,4 +1,4 @@
-//FEATURE_1: rewrite targeting. Pick hunt tile first, and then find intemediary point
+//TODO: rewrite targeting. Pick hunt target first, and then find intemediary point
 this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 	m = {
 		TargetTile = null,
