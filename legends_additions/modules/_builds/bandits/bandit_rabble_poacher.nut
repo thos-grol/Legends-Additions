@@ -28,9 +28,9 @@
         ["W", 3],
     ],
 	LevelUps = [
-		["Health", 3, 0],
-		["Ranged Skill", 3, 0],
-		["Melee Defense", 3, 0],
+		["Health", 3, 0, 1],
+		["Ranged Skill", 3, 0, 1],
+		["Melee Defense", 3, 0, 1],
 	],
     Trait = [],
     Outfit = [

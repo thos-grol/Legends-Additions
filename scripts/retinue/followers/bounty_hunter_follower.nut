@@ -7,10 +7,10 @@ this.bounty_hunter_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Name = "The Bounty Hunter";
 		this.m.Description = "The Bounty Hunter has a pocket full of contracts on the most dangerous individuals. He knows how to get them from hiding and will pay handsomely for any bounty fulfilled.";
 		this.m.Image = "ui/campfire/bounty_hunter_01";
-		this.m.Cost = 150;
+		this.m.Cost = 50;
 		this.m.Effects = [
 			"Increases the chance of encountering champions by 5%",
-			"Pays between 50 - 200 crowns for every champion slain"
+			"Pays between 10 - 50 crowns for every champion slain"
 		];
 	}
 
@@ -31,7 +31,7 @@ this.bounty_hunter_follower <- this.inherit("scripts/retinue/follower", {
 	{
 		if (this.Tactical.State.getStrategicProperties() == null || !this.Tactical.State.getStrategicProperties().IsArenaMode)
 		{
-			this.World.Assets.addMoney(this.Math.floor(_champion.getXPValue()));
+			this.World.Assets.addMoney(::Math.rand(10, 50));
 		}
 	}
 

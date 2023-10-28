@@ -1,11 +1,11 @@
 this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 	m = {
-		is_build = false,
 		TREE_DEFENSE = null,
 		TREE_TRAIT1 = null,
 		TREE_TRAIT2 = null,
 		TREE_WEAPON = null,
-		PATTERN_OVERWRITE = null
+		PATTERN_OVERWRITE = null,
+		build = null
 	},
 	function onInit()
 	{
@@ -26,21 +26,27 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		}
 	}
 
-	function pickOffhand()
-	{
-	}
-
-	function pickWeapon()
-	{
-		local loadout = ::MSU.Array.rand(::B.Info[this.m.Type].Loadout);
-		foreach(item in loadout)
-		{
-			this.m.Items.equip(::new(item));
-		}
-	}
-
 	function assignRandomEquipment()
 	{
+		if (this.m.IsMiniboss) //if is champion
+		{
+			//decide what item will be named
+			local r = this.Math.rand(1, 4);
+			if (r == 1) //helmet
+			{
+				local named = this.Const.Items.NamedHelmets;
+				local weightName = this.Const.World.Common.convNameToList(named);
+				this.m.Items.equip(this.Const.World.Common.pickHelmet(weightName));
+			}
+			else if (r == 2) //armor
+			{
+				local named = this.Const.Items.NamedArmors;
+				local weightName = this.Const.World.Common.convNameToList(named);
+				this.m.Items.equip(this.Const.World.Common.pickArmor(weightName));
+			}
+			else this.m.IsMinibossWeapon <- true;
+		}
+
 		//Assign outfit and get the defense tree
 		pickOutfit();
 		local weight_armor = this.getItems().getStaminaModifier([
@@ -51,8 +57,28 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
         else if (weight_armor <= 40) this.m.TREE_DEFENSE = ::Const.Perks.MediumArmorTree.Tree;
         else this.m.TREE_DEFENSE = ::Const.Perks.HeavyArmorTree.Tree;
 
-		if ("Builds" in ::B.Info[this.m.Type])
+		if ("Builds" in ::B.Info[this.m.Type]
+			&& "BuildsChance" in ::B.Info[this.m.Type]
+			&& ::Math.rand(1,100) <= ::B.Info[this.m.Type].BuildsChance)
 		{
+			this.m.Build = ::MSU.Tables.rand(::B.Info[this.m.Type].Builds).Name;
+
+			//build add weapon
+			local loadout = ("IsMinibossWeapon" in this.m && this.m.IsMinibossWeapon) ? ::MSU.Array.rand(::B.Info[this.m.Type].Builds[this.m.Build].NamedLoadout) : ::MSU.Array.rand(::B.Info[this.m.Type].Builds[this.m.Build].Loadout);
+			foreach(item in loadout)
+			{
+				this.m.Items.equip(::new(item));
+			}
+
+			//build add perks
+			foreach( pattern in ::B.Info[this.m.Type].Builds[this.m.Build].Pattern )
+			{
+				decode_add(pattern);
+				i++;
+			}
+
+			//build add levelups
+			pickLevelups(::B.Info[this.m.Type].Builds[this.m.Build].LevelUps);
 			return;
 		}
 
@@ -78,7 +104,6 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		local weapon = this.getMainhandItem();
 		::logInfo(weapon.m.ID);
 		this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
-		if (!weapon.isItemType(::Const.Items.ItemType.TwoHanded)) pickOffhand();
 
 		try {
 			if (weapon.isWeaponType(::Const.Items.WeaponType.Crossbow))
@@ -100,43 +125,8 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		}
 
 		//add level ups
-		foreach( stat in ::B.Info[this.m.Type].LevelUps )
-		{
-			switch(stat[0])
-			{
-				case "Health":
-				::B.Lib.level_health(this, stat[1], stat[2])
-				break;
+		pickLevelups(::B.Info[this.m.Type].LevelUps);
 
-				case "Fatigue":
-				::B.Lib.level_fatigue(this, stat[1], stat[2])
-				break;
-
-				case "Resolve":
-				::B.Lib.level_resolve(this, stat[1], stat[2])
-				break;
-
-				case "Initiative":
-				::B.Lib.level_initiative(this, stat[1], stat[2])
-				break;
-
-				case "Melee Skill":
-				::B.Lib.level_melee_skill(this, stat[1], stat[2])
-				break;
-
-				case "Ranged Skill":
-				::B.Lib.level_ranged_skill(this, stat[1], stat[2])
-				break;
-
-				case "Melee Defense":
-				::B.Lib.level_melee_defense(this, stat[1], stat[2])
-				break;
-
-				case "Ranged Defense":
-				::B.Lib.level_ranged_defense(this, stat[1], stat[2])
-				break;
-			}
-		}
 	}
 
 	function decode_add(_array)
@@ -149,7 +139,15 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 			return; //return bc no need to find perk
 
 			case "T":
-			perk = ::Math.rand(1,100) <= 50 ? this.m.TREE_TRAIT1[_array[1] - 1][0] : this.m.TREE_TRAIT2[_array[1] - 1][0];
+				local b = ::Math.rand(1,100) <= 50;
+				perk = b ? this.m.TREE_TRAIT1[_array[1] - 1][0] : this.m.TREE_TRAIT2[_array[1] - 1][0];
+
+				if (this.getSkills().hasSkill(::Const.Perks.PerkDefObjects[perk].ID))
+				{
+					b = !b;
+					perk = b ? this.m.TREE_TRAIT1[_array[1] - 1][0] : this.m.TREE_TRAIT2[_array[1] - 1][0];
+				}
+
 			break;
 
 			case "D":
@@ -162,6 +160,56 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		}
 
 		this.getSkills().add(::new(::Const.Perks.PerkDefObjects[perk].Script));
+	}
+
+	function pickWeapon()
+	{
+		local loadout = ("IsMinibossWeapon" in this.m && this.m.IsMinibossWeapon) ? ::MSU.Array.rand(::B.Info[this.m.Type].NamedLoadout) : ::MSU.Array.rand(::B.Info[this.m.Type].Loadout);
+		foreach(item in loadout)
+		{
+			this.m.Items.equip(::new(item));
+		}
+	}
+
+	function pickLevelups(_source)
+	{
+		foreach( stat in _source)
+		{
+			switch(stat[0])
+			{
+				case "Health":
+				::B.Lib.level_health(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Fatigue":
+				::B.Lib.level_fatigue(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Resolve":
+				::B.Lib.level_resolve(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Initiative":
+				::B.Lib.level_initiative(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Melee Skill":
+				::B.Lib.level_melee_skill(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Ranged Skill":
+				::B.Lib.level_ranged_skill(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Melee Defense":
+				::B.Lib.level_melee_defense(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Ranged Defense":
+				::B.Lib.level_ranged_defense(this, stat[1], stat[2], stat[3]);
+				break;
+			}
+		}
 	}
 
 });

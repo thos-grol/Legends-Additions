@@ -25,8 +25,15 @@ this.perk_pocket_dirt <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		if (!this.m.Container.hasSkill("actives.throw_dirt"))
-		{
 			this.m.Container.add(::new("scripts/skills/actives/throw_dirt_skill"));
+
+		local actor = this.getContainer().getActor();
+		if (actor.isPlayerControlled()) return;
+		local agent = actor.getAIAgent();
+		if (agent.findBehavior(::Const.AI.Behavior.ID.Adrenaline) == null)
+		{
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_distract"));
+			agent.finalizeBehaviors();
 		}
 	}
 

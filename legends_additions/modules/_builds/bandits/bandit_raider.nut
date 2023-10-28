@@ -22,7 +22,7 @@
 };
 
 ::B.Info[::Const.EntityType.BanditRaider] <- {
-    Level = 6,
+    Level = 8,
     Pattern = [
         ["T", 1],
         ["D", 2],
@@ -33,9 +33,9 @@
         ["T", 3],
     ],
 	LevelUps = [
-		["Health", 7, 0],
-		["Melee Skill", 7, 0],
-		["Melee Defense", 7, 0],
+		["Health", 7, 0, 2],
+		["Melee Skill", 7, 0, 2],
+		["Melee Defense", 7, 0, 2],
 	],
     Trait = [],
 	Loadout = [
@@ -61,25 +61,123 @@
 			"scripts/items/weapons/legend_two_handed_club",
 		],
 		[
+			"scripts/items/weapons/morning_star",
+		],
+	],
+	Builds = {},
+	BuildsChance = 40
+};
+
+//////////////////////////////////////////////////////////////////
+
+::B.Info[::Const.EntityType.BanditRaider].Builds["1H Kite Shield"] <- {
+	Name = "1H Kite Shield",
+	Pattern = [
+        ["T", 1],
+        ["D", 2],
+        ["Z", "scripts/skills/perks/perk_shield_bash"],
+        ["W", 4],
+        ["T", 5],
+        ["D", 6],
+        ["Z", "scripts/skills/perks/perk_shield_expert"],
+    ],
+	LevelUps = [
+		["Health", 7, 0, 2],
+		["Melee Skill", 7, 0, 2],
+		["Melee Defense", 7, 0, 2],
+	],
+	Loadout = [
+		[
 			"scripts/items/weapons/boar_spear",
+			"scripts/items/shields/kite_shield"
 		],
 		[
 			"scripts/items/weapons/morning_star",
+			"scripts/items/shields/kite_shield"
 		],
 		[
 			"scripts/items/weapons/falchion",
+			"scripts/items/shields/kite_shield"
 		],
 		[
 			"scripts/items/weapons/flail",
+			"scripts/items/shields/kite_shield"
 		],
 		[
 			"scripts/items/weapons/military_pick",
+			"scripts/items/shields/kite_shield"
 		],
-	],
-	Builds = {}
+	]
 };
 
-///////
+::B.Info[::Const.EntityType.BanditRaider].Builds["1H Shield"] <- {
+	Name = "1H Shield",
+	Pattern = [
+        ["T", 1],
+        ["D", 2],
+        ["Z", "scripts/skills/perks/perk_shield_bash"],
+        ["W", 4],
+        ["T", 5],
+        ["D", 6],
+        ["Z", "scripts/skills/perks/perk_shield_expert"],
+    ],
+	LevelUps = [
+		["Health", 7, 0, 2],
+		["Melee Skill", 7, 0, 2],
+		["Melee Defense", 7, 0, 2],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/boar_spear",
+			"scripts/items/shields/wooden_shield"
+		],
+		[
+			"scripts/items/weapons/morning_star",
+			"scripts/items/shields/wooden_shield"
+		],
+		[
+			"scripts/items/weapons/falchion",
+			"scripts/items/shields/wooden_shield"
+		],
+		[
+			"scripts/items/weapons/flail",
+			"scripts/items/shields/wooden_shield"
+		],
+		[
+			"scripts/items/weapons/military_pick",
+			"scripts/items/shields/wooden_shield"
+		],
+	]
+};
 
-
-// ::B.Info[::Const.EntityType.BanditRaider].Builds.
+::B.Info[::Const.EntityType.BanditRaider].Builds["1H Net"] <- {
+	Name = "1H Net",
+	Pattern = [
+        ["T", 1],
+        ["D", 2],
+        ["Z", "scripts/skills/perks/perk_legend_net_repair"],
+        ["W", 4],
+        ["T", 5],
+        ["D", 6],
+        ["Z", "scripts/skills/perks/perk_legend_net_casting"],
+    ],
+	LevelUps = [
+		["Health", 7, 0, 2],
+		["Melee Skill", 7, 0, 2],
+		["Melee Defense", 7, 0, 2],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/morning_star"
+		],
+		[
+			"scripts/items/weapons/falchion"
+		],
+		[
+			"scripts/items/weapons/flail"
+		],
+		[
+			"scripts/items/weapons/military_pick"
+		],
+	]
+};

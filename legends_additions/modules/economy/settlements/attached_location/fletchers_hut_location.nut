@@ -8,12 +8,12 @@
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
 		if (!this.isActive()) return;
-		
+
 		_list.push("hunter_background");
 		_list.push("poacher_background");
 
-		
-		
+
+
 	}
 
 	o.onUpdateShopList = function( _id, _list )
@@ -35,11 +35,6 @@
 				R = 50,
 				P = 1.0,
 				S = "weapons/war_bow"
-			});
-			_list.push({
-				R = 60,
-				P = 1.0,
-				S = "ammo/huge_quiver_of_arrows"
 			});
 		}
 		else if (_id == "building.weaponsmith")

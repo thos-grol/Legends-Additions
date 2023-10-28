@@ -32,11 +32,8 @@ this.perk_adrenalin <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		if (!this.m.Container.hasSkill("actives.adrenaline"))
-		{
 			this.m.Container.add(::new("scripts/skills/actives/adrenaline_skill"));
-		}
 
-		//TODO: for all traits and weapons, add ai for perks!!! Important
 		local actor = this.getContainer().getActor();
 		if (actor.isPlayerControlled()) return;
 		local agent = actor.getAIAgent();

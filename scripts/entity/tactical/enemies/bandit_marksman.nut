@@ -1,14 +1,12 @@
-//TODO: bandit_marksman
-this.bandit_marksman <- this.inherit("scripts/entity/tactical/human", {
-	m = {
-		IsLow = false
-	},
+this.bandit_marksman <- this.inherit("scripts/entity/tactical/abstract_human", {
+	m = {},
 	function create()
 	{
+		this.m.Name = "Raider";
 		this.m.Type = this.Const.EntityType.BanditMarksman;
 		this.m.BloodType = this.Const.BloodType.Red;
 		this.m.XP = this.Const.Tactical.Actor.BanditMarksman.XP;
-		this.human.create();
+		this.abstract_human.create();
 		this.m.Faces = this.Const.Faces.AllMale;
 		this.m.Hairs = this.Const.Hair.UntidyMale;
 		this.m.HairColors = this.Const.HairColors.All;
@@ -25,7 +23,7 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/human", {
 
 	function onInit()
 	{
-		this.human.onInit();
+		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
 		b.setValues(this.Const.Tactical.Actor.BanditMarksman);
 		b.TargetAttractionMult = 1.1;
@@ -50,36 +48,6 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/human", {
 
 		this.setArmorSaturation(0.85);
 		this.getSprite("shield_icon").setBrightness(0.85);
-
-		if (!this.m.IsLow)
-		{
-			b.IsSpecializedInBows = true;
-			b.IsSpecializedInCrossbows = true;
-			b.IsSpecializedInSlings = true;
-			b.Vision = 8;
-		}
-
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 40)
-		{
-			b.RangedDefense += 5;
-		}
-
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_rotation"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_recover"));
-
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 20)
-		{
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_bullseye"));
-		}
-
-		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-		{
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_ballistics"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_close_combat_archer"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_crippling_strikes"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_lone_wolf"));
-			this.m.Skills.add(this.new("scripts/skills/traits/fearless_trait"));
-		}
 	}
 
 	function onAppearanceChanged( _appearance, _setDirty = true )
@@ -100,48 +68,16 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/human", {
 
 	function assignRandomEquipment()
 	{
-		local r = this.Math.rand(1, 4);
+		this.abstract_human.assignRandomEquipment();
 
-		if (r == 1)
-		{
-			this.m.Items.equip(this.new("scripts/items/weapons/short_bow"));
-			this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
-		}
-		else if (r == 2)
-		{
-			this.m.Items.equip(this.new("scripts/items/weapons/hunting_bow"));
-			this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
-		}
-		else if (r == 3)
-		{
-			this.m.Items.equip(this.new("scripts/items/weapons/crossbow"));
-			this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
-		}
-		else if (r == 4)
-		{
-			this.m.Items.equip(this.new("scripts/items/weapons/light_crossbow"));
-			this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
-		}
+		local r = this.Math.rand(1, 3);
+		if (r == 1) this.m.Items.addToBag(this.new("scripts/items/weapons/dagger"));
+		else if (r == 2) this.m.Items.addToBag(this.new("scripts/items/weapons/hatchet"));
+		else this.m.Items.addToBag(this.new("scripts/items/weapons/bludgeon"));
+	}
 
-		r = this.Math.rand(1, 4);
-
-		if (r == 1)
-		{
-			this.m.Items.addToBag(this.new("scripts/items/weapons/dagger"));
-		}
-		else if (r == 2)
-		{
-			this.m.Items.addToBag(this.new("scripts/items/weapons/knife"));
-		}
-		else if (r == 3)
-		{
-			this.m.Items.addToBag(this.new("scripts/items/weapons/hatchet"));
-		}
-		else if (r == 4)
-		{
-			this.m.Items.addToBag(this.new("scripts/items/weapons/bludgeon"));
-		}
-
+	function pickOutfit()
+	{
 		local item = this.Const.World.Common.pickArmor([
 			[
 				20,

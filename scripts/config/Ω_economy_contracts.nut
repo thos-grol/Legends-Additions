@@ -1,0 +1,89 @@
+::Z.Economy.Contracts <- {
+
+    //Disabled
+    "contract.obtain_item" : 50,
+    "contract.big_game_hunt" : 260,
+
+    //Easy
+    "contract.discover_location" : 20,
+    "contract.deliver_item" : 50,
+    "contract.deliver_money" : 50,
+    "contract.restore_location" : 50,
+    "contract.return_item" : 50,
+
+    //Medium
+    "contract.arena" : 50,
+    "contract.escort_caravan" : 50,
+
+    "contract.slave_uprising" : 90,
+    "contract.drive_away_bandits" : 110,
+    "contract.drive_away_barbarians" : 120,
+    "contract.drive_away_nomads" : 120,
+
+    "contract.investigate_cemetery" : 110,
+
+    "contract.raze_attached_location" : 120,
+    "contract.defend_settlement_bandits" : 140,
+
+    "contract.patrol" : 100,
+
+    //Hard
+    "contract.legend_barbarian_prisoner" : 0,
+    "contract.escort_envoy" : 50,
+    "contract.legend_bandit_army_contract" : 100,
+
+    "contract.marauding_greenskins" : 160,
+    "contract.raid_caravan" : 160,
+
+    "contract.defend_settlement_greenskins" : 180,
+    "contract.destroy_goblin_camp" : 180,
+    "contract.destroy_orc_camp" : 180,
+
+
+    "contract.defend_holy_site_southern" : 240,
+
+    "contract.defend_holy_site" : 250,
+    "contract.conquer_holy_site_southern" : 260,
+    "contract.intercept_raiding_parties" : 260,
+
+    "contract.privateering" : 260,
+    "contract.conquer_holy_site" : 270,
+    "contract.free_greenskin_prisoners" : 270,
+    "contract.hold_chokepoint" : 280,
+    "contract.break_greenskin_siege" : 300,
+
+    "contract.root_out_undead" : 300,
+    "contract.siege_fortification" : 310,
+    "contract.decisive_battle" : 320,
+    "contract.last_stand" : 320,
+
+    "contract.barbarian_king" : 340,
+    "contract.confront_warlord" : 360,
+    "contract.find_artifact" : 400,
+
+
+    //Nightmare
+    "contract.hunting_webknechts" : 90,
+    "contract.roaming_beasts" : 100,
+    "contract.roaming_beasts_desert" : 100,
+
+    "contract.hunting_serpents" : 110,
+    "contract.hunting_unholds" : 150,
+
+    "contract.hunting_alps" : 120,
+    "contract.hunting_mummies" : 120,
+    "contract.hunting_lindwurms" : 160,
+    "contract.hunting_sandgolems" : 170,
+    "contract.hunting_hexen" : 180,
+    "contract.hunting_schrats" : 180,
+
+    "contract.legend_hunting_redback_webknechts" : 180,
+    "contract.legend_hunting_white_direwolf" : 200,
+    "contract.legend_hunting_skin_ghouls" : 240,
+    "contract.legend_hunting_demon_alps" : 260,
+    "contract.legend_hunting_rock_unholds" : 300,
+
+    "contract.legend_hunting_stollwurms" : 320,
+    "contract.legend_hunting_coven_leader" : 360,
+    "contract.legend_hunting_greenwood_schrats" : 360,
+};

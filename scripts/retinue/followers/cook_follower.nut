@@ -6,8 +6,8 @@ this.cook_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.ID = "follower.cook";
 		this.m.Name = "Cooking Equipment";
 		this.m.Description = "A good warm meal goes a long way towards healing body and mind. A cook can only do so much with whatever there is to hand in the wilderness, Having the proper equipment to prepare meals makes sure that no provisions go to waste.";
-		this.m.Image = "ui/campfire/legend_cook_01";
-		this.m.Cost = 1000;
+		this.m.Image = "ui/campfire/cook_01";
+		this.m.Cost = 100;
 		this.m.Effects = [
 			"Makes all provisions last 4 extra days"
 		];
@@ -24,6 +24,11 @@ this.cook_follower <- this.inherit("scripts/retinue/follower", {
 		{
 			this.World.Assets.m.FoodAdditionalDays = 4;
 		}
+	}
+
+	function isVisible()
+	{
+		return false;
 	}
 
 });

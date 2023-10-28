@@ -1,4 +1,4 @@
-::mods_hookExactClass("items/weapons/orienta/saif", function (o){
+::mods_hookExactClass("items/weapons/oriental/saif", function (o){
     o.onEquip = function()
 	{
 		this.weapon.onEquip();

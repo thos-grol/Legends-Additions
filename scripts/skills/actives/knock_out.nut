@@ -98,7 +98,6 @@ this.knock_out <- this.inherit("scripts/skills/skill", {
 		{
 			local target = _targetTile.getEntity();
 
-			//TODO: update bludgeon descriptions about weapon changes maces
 			if ((_user.getCurrentProperties().IsSpecializedInHammers || this.Math.rand(1, 100) <= this.m.StunChance) && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
 			{
 				target.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));

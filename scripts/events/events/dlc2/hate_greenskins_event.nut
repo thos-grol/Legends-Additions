@@ -1,4 +1,4 @@
-//FEATURE_6: rework
+//TODO: rework
 this.hate_greenskins_event <- this.inherit("scripts/events/event", {
 	m = {
 		Image = "",

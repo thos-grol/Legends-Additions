@@ -217,6 +217,15 @@ local perks = [
         IconDisabled = "ui/perks/david_bw.png",
         Const = "StanceDavid"
     },
+    {
+        ID = "perk.stance.asura",
+        Script = "scripts/skills/perks/perk_stance_asura",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/asura.png",
+        IconDisabled = "ui/perks/asura_bw.png", //TODO: art bw, gold border
+        Const = "StanceAsura"
+    },
 
 ///////////////////////////////////////////////////////////////////////////
 // Monster

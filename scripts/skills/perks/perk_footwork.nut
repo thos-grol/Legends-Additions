@@ -27,6 +27,15 @@ this.perk_footwork <- this.inherit("scripts/skills/skill", {
 		{
 			this.m.Container.add(::new("scripts/skills/actives/footwork"));
 		}
+
+		local actor = this.getContainer().getActor();
+		if (actor.isPlayerControlled()) return;
+		local agent = actor.getAIAgent();
+		if (agent.findBehavior(::Const.AI.Behavior.ID.Adrenaline) == null)
+		{
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_disengage"));
+			agent.finalizeBehaviors();
+		}
 	}
 
 	function onRemoved()

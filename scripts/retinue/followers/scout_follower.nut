@@ -4,13 +4,15 @@ this.scout_follower <- this.inherit("scripts/retinue/follower", {
 	{
 		this.follower.create();
 		this.m.ID = "follower.scout";
-		this.m.Name = "Watcher\'s Totem";
+		this.m.Name = "Scout";
 		this.m.Description = "The people of the woods and hinterlands swear that the presence of this totem grants good fortune to those around it, somehow preventing sickness and accidents as long as it is in the camp. Sounds like farking nonsense but if it keeps them happy...";
 		this.m.Image = "ui/campfire/legend_scout_01";
-		this.m.Cost = 1250;
+		this.m.Cost = 150;
 		this.m.Effects = [
 			"Reduces the movement penalty of difficult terrain by 15%",
-			"Prevents sickness and accidents due to terrain"
+			"Prevents sickness and accidents due to terrain",
+			"Increases your sight radius by 25%",
+			"Reveals extended information about footprints"
 		];
 		this.addSkillRequirement("Have at least one of the following backgrounds: Wildman/Wildwoman, Hunter, Lumberjack, Ranger, Master Archer", [
 			"background.wildman",
@@ -35,6 +37,16 @@ this.scout_follower <- this.inherit("scripts/retinue/follower", {
 			}
 
 			i = ++i;
+		}
+
+		if ("VisionRadiusMult" in this.World.Assets.m)
+		{
+			this.World.Assets.m.VisionRadiusMult = 1.25;
+		}
+
+		if ("IsShowingExtendedFootprints" in this.World.Assets.m)
+		{
+			this.World.Assets.m.IsShowingExtendedFootprints = true;
 		}
 	}
 

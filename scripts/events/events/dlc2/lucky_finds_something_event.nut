@@ -1,4 +1,4 @@
-//FEATURE_6: rework
+//TODO: rework
 this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 	m = {
 		Lucky = null,

@@ -1,5 +1,6 @@
-::B.Lib.level_health <- function( _actor, _times, _stars )
+::B.Lib.level_health <- function( _actor, _times, _stars_min, _stars_max)
 {
+    local _stars = ::Math.rand(_stars_min, _stars_max);
     local lower = 2;
     local upper = 4;
     if (_stars > 0) lower += 1;
@@ -16,8 +17,9 @@
     }
 }
 
-::B.Lib.level_fatigue <- function( _actor, _times, _stars )
+::B.Lib.level_fatigue <- function( _actor, _times, _stars_min, _stars_max)
 {
+    local _stars = ::Math.rand(_stars_min, _stars_max);
     local lower = 2;
     local upper = 4;
     if (_stars > 0) lower += 1;
@@ -32,8 +34,9 @@
     }
 }
 
-::B.Lib.level_resolve <- function( _actor, _times, _stars )
+::B.Lib.level_resolve <- function( _actor, _times, _stars_min, _stars_max)
 {
+    local _stars = ::Math.rand(_stars_min, _stars_max);
     local lower = 2;
     local upper = 4;
     if (_stars > 0) lower += 1;
@@ -48,8 +51,9 @@
     }
 }
 
-::B.Lib.level_initiative <- function( _actor, _times, _stars )
+::B.Lib.level_initiative <- function( _actor, _times, _stars_min, _stars_max)
 {
+    local _stars = ::Math.rand(_stars_min, _stars_max);
     local lower = 3;
     local upper = 5;
     if (_stars > 0) lower += 1;
@@ -64,8 +68,9 @@
     }
 }
 
-::B.Lib.level_melee_skill <- function( _actor, _times, _stars )
+::B.Lib.level_melee_skill <- function( _actor, _times, _stars_min, _stars_max)
 {
+    local _stars = ::Math.rand(_stars_min, _stars_max);
     local lower = 1;
     local upper = 3;
     if (_stars > 0) lower += 1;
@@ -80,8 +85,9 @@
     }
 }
 
-::B.Lib.level_ranged_skill <- function( _actor, _times, _stars )
+::B.Lib.level_ranged_skill <- function( _actor, _times, _stars_min, _stars_max)
 {
+    local _stars = ::Math.rand(_stars_min, _stars_max);
     local lower = 2;
     local upper = 4;
     if (_stars > 0) lower += 1;
@@ -96,8 +102,9 @@
     }
 }
 
-::B.Lib.level_melee_defense <- function( _actor, _times, _stars )
+::B.Lib.level_melee_defense <- function( _actor, _times, _stars_min, _stars_max)
 {
+    local _stars = ::Math.rand(_stars_min, _stars_max);
     local lower = 1;
     local upper = 3;
     if (_stars > 0) lower += 1;
@@ -112,8 +119,9 @@
     }
 }
 
-::B.Lib.level_ranged_defense <- function( _actor, _times, _stars )
+::B.Lib.level_ranged_defense <- function( _actor, _times, _stars_min, _stars_max)
 {
+    local _stars = ::Math.rand(_stars_min, _stars_max);
     local lower = 2;
     local upper = 4;
     if (_stars > 0) lower += 1;

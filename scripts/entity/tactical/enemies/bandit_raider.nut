@@ -38,49 +38,6 @@ this.bandit_raider <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.setDirty(true);
 	}
 
-	function assignRandomEquipment()
-	{
-		this.abstract_human.assignRandomEquipment();
-	}
-
-	function pickOffhand()
-	{
-		if (::Math.rand(1, 100) > 25) return;
-
-		this.m.PATTERN_OVERWRITE <- {};
-
-		if (::Math.rand(1, 100) <= 80) //Sheild users
-		{
-			// ["T", 1],
-			// ["D", 2],
-			// ["W", 3], <- 3: ["Z", "scripts/skills/perks/perk_shield_bash"]
-			// ["W", 4],
-			// ["T", 5],
-			// ["D", 6],
-			// ["T", 3], <- 7: ["Z", "scripts/skills/perks/perk_shield_expert"]
-			this.m.PATTERN_OVERWRITE[3] <- ["Z", "scripts/skills/perks/perk_shield_bash"];
-			this.m.PATTERN_OVERWRITE[7] <- ["Z", "scripts/skills/perks/perk_shield_expert"];
-
-			if (this.Math.rand(1, 100) <= 75) this.m.Items.equip(this.new("scripts/items/shields/wooden_shield"));
-			else this.m.Items.equip(this.new("scripts/items/shields/kite_shield"));
-
-		}
-		else //nets
-		{
-			// ["T", 1],
-			// ["D", 2],
-			// ["W", 3], <- 3: ["Z", "scripts/skills/perks/perk_shield_bash"]
-			// ["W", 4],
-			// ["T", 5],
-			// ["D", 6],
-			// ["T", 3], <- 7: ["Z", "scripts/skills/perks/perk_shield_expert"]
-			this.m.PATTERN_OVERWRITE[3] <- ["Z", "scripts/skills/perks/perk_legend_net_repair"];
-			this.m.PATTERN_OVERWRITE[7] <- ["Z", "scripts/skills/perks/perk_legend_net_casting"];
-			//net perk autoloads nets
-		}
-
-	}
-
 	function pickOutfit()
 	{
 		local armor = [

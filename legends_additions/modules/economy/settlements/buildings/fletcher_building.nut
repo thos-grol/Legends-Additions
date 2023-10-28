@@ -46,11 +46,6 @@
 				R = 0,
 				P = 1.0,
 				S = "supplies/ammo_item"
-			},
-			{
-				R = 70,
-				P = 1.0,
-				S = "ammo/large_quiver_of_arrows"
 			}
 		];
 
@@ -72,8 +67,8 @@
 
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
-		
-		
+
+
 	}
 
 });

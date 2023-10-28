@@ -32,5 +32,10 @@ this.lookout_follower <- this.inherit("scripts/retinue/follower", {
 		}
 	}
 
+	function isVisible()
+	{
+		return false;
+	}
+
 });
 

@@ -282,7 +282,16 @@ var Destiny = {
 
 var Stance = {
 	"perk.stance.executioner": "perk.mastery.axec",
-	//TODO: fill out all stances
+	"perk.stance.gourmet": "perk.mastery.cleaverc",
+	"perk.stance.the_strongest": "perk.mastery.swordc",
+	"perk.stance.wrath": "perk.mastery.swordc",
+	"perk.stance.seismic_slam": "perk.mastery.hammerc",
+	"perk.stance.prisoner": "perk.mastery.flailc",
+	"perk.stance.breakthrough": "perk.mastery.spearc",
+	"perk.stance.followup": "perk.mastery.polearmc",
+	"perk.stance.marksman": "perk.mastery.rangedc",
+	"perk.stance.david": "perk.mastery.rangedc",
+	// "perk.stance.asura": "perk.mastery.fistc", //TODO: test and then add
 };
 
 CharacterScreenPerksModule.prototype.isPerkUnlockable = function (_perk)

@@ -31,6 +31,11 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
+
+		if (!this.m.Container.hasSkill("actives.rally_the_troops")) this.m.Container.add(::new("scripts/skills/actives/rally_the_troops"));
+
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+
 		local playerRoster = this.World.getPlayerRoster().getAll();
 		foreach( bro in playerRoster )
 		{
@@ -44,7 +49,7 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		if (!this.m.Container.hasSkill("actives.rally_the_troops")) this.m.Container.add(::new("scripts/skills/actives/rally_the_troops"));
+
 	}
 
 	function onRemoved()

@@ -31,6 +31,8 @@ this.perk_lead_by_example <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+
 		local playerRoster = this.World.getPlayerRoster().getAll();
 		foreach( bro in playerRoster )
 		{
@@ -45,14 +47,14 @@ this.perk_lead_by_example <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-	function onCombatStarted()
+	function trigger()
 	{
-		this.skill.onCombatStarted();
 		local actor = this.getContainer().getActor();
-
 		foreach( ally in this.Tactical.Entities.getInstancesOfFaction(actor.getFaction()) )
 		{
 			if (ally.getID() == actor.getID()) continue;
+			if (ally.getSkills().getSkillByID("effects.lead_by_example") != null) break;
+
 			local effect = ::new("scripts/skills/effects/lead_by_example_effect");
 			effect.m.MeleeSkill = ::Math.round(actor.getCurrentProperties().getMeleeSkill()  * 0.05);
 			effect.m.RangedSkill = ::Math.round(actor.getCurrentProperties().getRangedSkill()  * 0.05);
@@ -61,6 +63,12 @@ this.perk_lead_by_example <- this.inherit("scripts/skills/skill", {
 			effect.m.Bravery = ::Math.round(actor.getCurrentProperties().getBravery()  * 0.05);
 			ally.getSkills().add(effect);
 		}
+	}
+
+	function onCombatStarted()
+	{
+		this.skill.onCombatStarted();
+		trigger();
 	}
 
 	function onDeath( _fatalityType )
@@ -73,6 +81,17 @@ this.perk_lead_by_example <- this.inherit("scripts/skills/skill", {
 				ally.getSkills().removeByID("effects.lead_by_example");
 		}
 
+		local has_replacement = false;
+		foreach( ally in this.Tactical.Entities.getInstancesOfFaction(actor.getFaction()) )
+		{
+			if (ally.getID() == actor.getID()) continue;
+			if (ally.getSkills().hasSkill("perk.lead_by_example"))
+				has_replacement = true;
+		}
+
+		if (!has_replacement) return;
+		local skill = ally.getSkills().getSkillByID("perk.lead_by_example");
+		skill.trigger();
 	}
 
 });

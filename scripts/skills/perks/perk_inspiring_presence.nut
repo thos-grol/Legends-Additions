@@ -37,6 +37,7 @@ this.perk_inspiring_presence <- this.inherit("scripts/skills/skill", {
 
 		local actor = this.getContainer().getActor();
 		actor.getFlags().set("Destiny", true);
+		if (actor.getFaction() != ::Const.Faction.Player) return;
 
 		local playerRoster = this.World.getPlayerRoster().getAll();
 		foreach( bro in playerRoster )
@@ -61,8 +62,8 @@ this.perk_inspiring_presence <- this.inherit("scripts/skills/skill", {
 
 		local actor = this.getContainer().getActor();
 		if (actor.getFaction() != ::Const.Faction.Player) return;
-		
-		
+
+
 	}
 
 	function onCombatStarted()
@@ -81,6 +82,16 @@ this.perk_inspiring_presence <- this.inherit("scripts/skills/skill", {
 	function onDeath( _fatalityType )
 	{
 		local actor = this.getContainer().getActor();
+
+		local has_replacement = false;
+		foreach( ally in this.Tactical.Entities.getInstancesOfFaction(actor.getFaction()) )
+		{
+			if (ally.getID() == actor.getID()) continue;
+			if (ally.getSkills().hasSkill("perk.inspiring_presence"))
+				has_replacement = true;
+		}
+
+		if (has_replacement) return;
 
 		foreach( ally in this.Tactical.Entities.getInstancesOfFaction(actor.getFaction()) )
 		{

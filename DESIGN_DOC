@@ -1,23 +1,27 @@
-//TODO: middle-eastern swords gash becomes default - copy slash costs, and they gain riposte
-//Estoc and rapier gain riposte
-//TODO: hit shield message overhaul
+//FEATURE_0: convert nomads to abstract
+//FEATURE_0: convert orcs to abstract
+//FEATURE_0: convert goblins to abstract
 
-//TODO: convert bandits to abstract
-//TODO: convert nomads to abstract
-//TODO: convert orcs to abstract
-//TODO: convert goblins to abstract
 //TODO: finish basic 4 monsters - nach, direwolf, spider, alp
+//TODO: finish undead - ghosts, zombies, necros, necrosavant
 
-//TODO: retinue rework
-	//TODO: anatomist
-//TODO: enconomy rework finalization - contracts and events
-	//TODO: black market
 
-//TODO: rework food as nutrition needed for potions (meat and expensive food)
+
+//TODO: black market
+
+//FEATURE_0: retinue rework
+	//FEATURE_0: anatomist
+
+//TODO: basic occult system
+//TODO: aspected materials, ritual space ui
+
+
+
+
+
+
 
 //////////////////////////////////////////////
-
-
 
 //reworked perk trees, ideas:
 	//stone shard
@@ -108,10 +112,10 @@ Economy Overhaul
 //FEATURE_2: ambitions rework
     //FEATURE_1: Slay a monster -> unlock anatomist retinue
 
-//FEATURE_6: fix alchemist having named items.
+//TODO: fix alchemist having named items.
 
 
-//FEATURE_6: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
+//TODO: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
 
 
 //FEATURE_1: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
@@ -138,7 +142,7 @@ DOC:
 
 //New potion system
 
-//FEATURE_6: Fantasy Bros Skills worth looking into
+//TODO: Fantasy Bros Skills worth looking into
     //Pyromancer
         2 skills are good
     //Shaman

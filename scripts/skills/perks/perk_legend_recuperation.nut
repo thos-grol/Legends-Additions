@@ -38,8 +38,15 @@ this.perk_legend_recuperation <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		if (!this.m.Container.hasSkill("actives.recover"))
-		{
 			this.m.Container.add(::new("scripts/skills/actives/recover_skill"));
+
+		local actor = this.getContainer().getActor();
+		if (actor.isPlayerControlled()) return;
+		local agent = actor.getAIAgent();
+		if (agent.findBehavior(::Const.AI.Behavior.ID.Adrenaline) == null)
+		{
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_recover"));
+			agent.finalizeBehaviors();
 		}
 	}
 

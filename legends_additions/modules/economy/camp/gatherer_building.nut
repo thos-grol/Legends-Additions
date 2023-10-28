@@ -290,7 +290,7 @@
 
 // 		dropLoot = levels.Apothecary > 0 ? -600.0 / (levels.Apothecary + levels.Brewer + 60) + 10 > this.Math.rand(1, 100) : false;
 
-// 		//FEATURE_6: redo how loot is gathered, also potions are now brewed at guild headquarters, and requires investment for alchemical apparati.
+// 		//TODO: redo how loot is gathered, also potions are now brewed at guild headquarters, and requires investment for alchemical apparati.
 // 		if (dropLoot)
 // 		{
 // 			local loot = ::new("scripts/mods/script_container");

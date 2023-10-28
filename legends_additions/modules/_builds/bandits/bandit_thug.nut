@@ -30,9 +30,9 @@
         ["T", 5],
     ],
 	LevelUps = [
-		["Health", 5, 0],
-		["Melee Skill", 5, 0],
-		["Melee Defense", 5, 0],
+		["Health", 5, 0, 2],
+		["Melee Skill", 5, 0, 2],
+		["Melee Defense", 5, 0, 2],
 	],
     Trait = [],
     Outfit = [
@@ -70,4 +70,37 @@
 			"scripts/items/weapons/legend_ranged_wooden_flail",
 		]
 	],
+	Builds = {},
+	BuildsChance = 15
 };
+
+::B.Info[::Const.EntityType.BanditThug].Builds["1H Net"] <- {
+	Name = "1H Net",
+	Pattern = [
+        ["T", 1],
+        ["D", 2],
+        ["Z", "scripts/skills/perks/perk_legend_net_repair"],
+        ["W", 4],
+        ["T", 5],
+    ],
+	LevelUps = [
+		["Health", 5, 0, 2],
+		["Melee Skill", 5, 0, 2],
+		["Melee Defense", 5, 0, 2],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/hatchet",
+		],
+		[
+			"scripts/items/weapons/bludgeon",
+		],
+		[
+			"scripts/items/weapons/reinforced_wooden_flail",
+		],
+		[
+			"scripts/items/weapons/legend_militia_glaive",
+		]
+	],
+};
+

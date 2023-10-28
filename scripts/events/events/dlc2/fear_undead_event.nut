@@ -1,4 +1,4 @@
-//FEATURE_6: rework
+//TODO: rework
 this.fear_undead_event <- this.inherit("scripts/events/event", {
 	m = {
 		Casualty = null

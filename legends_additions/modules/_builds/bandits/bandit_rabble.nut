@@ -28,9 +28,9 @@
         ["T", 3],
     ],
 	LevelUps = [
-		["Health", 3, 0],
-		["Melee Skill", 3, 0],
-		["Melee Defense", 3, 0],
+		["Health", 3, 0, 1],
+		["Melee Skill", 3, 0, 1],
+		["Melee Defense", 3, 0, 1],
 	],
     Trait = [],
     Outfit = [

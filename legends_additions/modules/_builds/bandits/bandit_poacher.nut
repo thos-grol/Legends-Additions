@@ -21,7 +21,7 @@
 };
 
 ::B.Info[::Const.EntityType.BanditPoacher] <- {
-    Level = 4,
+    Level = 6,
     Pattern = [
         ["T", 1],
         ["D", 2],
@@ -30,9 +30,9 @@
         ["T", 5],
     ],
 	LevelUps = [
-		["Health", 5, 0],
-		["Ranged Skill", 5, 0],
-		["Melee Defense", 5, 0],
+		["Health", 5, 0, 1],
+		["Ranged Skill", 5, 0, 1],
+		["Melee Defense", 5, 0, 1],
 	],
     Trait = [],
     Outfit = [
