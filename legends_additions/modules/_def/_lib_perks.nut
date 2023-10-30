@@ -12,7 +12,17 @@
 };
 
 ::Z.Perks.Stance <- {
-    "perk.stance.executioner": "perk.mastery.axec",
+    "perk.stance.executioner" : "perk.mastery.axec",
+    "perk.stance.gourmet": "perk.mastery.cleaverc",
+	"perk.stance.the_strongest": "perk.mastery.swordc",
+	"perk.stance.wrath": "perk.mastery.swordc",
+	"perk.stance.seismic_slam": "perk.mastery.hammerc",
+	"perk.stance.prisoner": "perk.mastery.flailc",
+	"perk.stance.breakthrough": "perk.mastery.spearc",
+	"perk.stance.followup": "perk.mastery.polearmc",
+	"perk.stance.marksman": "perk.mastery.rangedc",
+	"perk.stance.david": "perk.mastery.rangedc",
+	"perk.stance.asura": "perk.mastery.fistc",
 };
 
 ::Z.Perks.Proficiency <- {

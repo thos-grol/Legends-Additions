@@ -291,7 +291,7 @@ var Stance = {
 	"perk.stance.followup": "perk.mastery.polearmc",
 	"perk.stance.marksman": "perk.mastery.rangedc",
 	"perk.stance.david": "perk.mastery.rangedc",
-	// "perk.stance.asura": "perk.mastery.fistc", //TODO: test and then add
+	"perk.stance.asura": "perk.mastery.fistc",
 };
 
 CharacterScreenPerksModule.prototype.isPerkUnlockable = function (_perk)

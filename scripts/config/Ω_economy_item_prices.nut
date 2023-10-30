@@ -233,8 +233,8 @@
 	"misc.lindwurm_hoard" : 0, //FEATURE_8: Remove
 	"misc.jeweled_crown" : 0, //FEATURE_8: Remove
 	"misc.glittering_rock" : 0, //FEATURE_8: Remove
-	"misc.hyena_fur" : 0, //TODO: Remove and remove hyenas
-	"misc.acidic_saliva" : 0, //TODO: Remove and remove hyenas
+	"misc.hyena_fur" : 0,
+	"misc.acidic_saliva" : 0,
 
 	"misc.manhunters_ledger" : 0,
 	"misc.legend_werehand" : 0,
