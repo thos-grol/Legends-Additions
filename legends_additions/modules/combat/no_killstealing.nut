@@ -7,34 +7,23 @@
         local IsDroppingLoot = true;
 		local emergency = false;
 
-        if (no_killstealing == null) IsDroppingLoot = false;
-        else 
+        if (no_killstealing != null)
         {
-            foreach(faction in no_killstealing.m.Factions)
-            {
-                local player_faction_amount = 0;
-                local faction_max = 0;
-                local faction_max_amount = 0;
+            local faction_max = 0;
+            local faction_max_amount = 0;
 
-                if (faction == ::Const.Faction.Player
-                    || faction == ::Const.Faction.PlayerAnimals)
-                {
-                    player_faction_amount += no_killstealing.m.Factions[faction];
-                    if (faction_max_amount <= player_faction_amount)
-                    {
-                        faction_max = ::Const.Faction.Player;
-                        faction_max_amount = player_faction_amount;
-                    }
-                }
-                else
-                {
-                    faction_max = faction;
-                    faction_max_amount = no_killstealing.m.Factions[faction];
-                }
+			foreach(faction in no_killstealing.m.Factions)
+            {
+                faction_max = faction;
+                faction_max_amount = no_killstealing.m.Factions[faction];
             }
 
-            if (faction_max == ::Const.Faction.Player) IsDroppingLoot = true;
+            //no killstealing
+			if (faction_max == ::Const.Faction.Player) IsDroppingLoot = true;
         }
+
+		//no looting allies
+		if (_killer != null && _killer.isPlayerControlled() && !isPlayer && _killer.isAlliedWith(this.m.Actor)) IsDroppingLoot = false;
 
 		if (_tile == null)
 		{
