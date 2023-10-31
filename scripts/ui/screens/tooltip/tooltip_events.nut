@@ -1524,82 +1524,47 @@ this.tooltip_events <- {
 			}
 
 			local time = this.Math.floor(food / dailyFood);
-			local ret = [];
-
-			if (food > 0 && time > 1)
-			{
-				ret = [
-					{
-						id = 1,
-						type = "title",
-						text = "Provisions"
-					},
-					{
-						id = 2,
-						type = "description",
-						text = "The total amount of provisions you carry. The average mercenary requires 2 provisions per day, more on difficult terrain or when in reserve. Your mercenaries will eat the provisions closest to expiring first. Running out of provisions will lower morale and will eventually lead to your people deserting you before dying of starvation.\n\nYou use [color=" + ::Const.UI.Color.PositiveValue + "]" + dailyFood + "[/color] provisions per day. Your [color=" + ::Const.UI.Color.PositiveValue + "]" + food + "[/color] provisions will last you for [color=" + ::Const.UI.Color.PositiveValue + "]" + time + "[/color] more days at most. Keep in mind that individual provisions will eventually turn bad!"
-					}
-				];
-			}
-			else if (food > 0 && time == 1)
-			{
-				ret = [
-					{
-						id = 1,
-						type = "title",
-						text = "Provisions"
-					},
-					{
-						id = 2,
-						type = "description",
-						text = "The total amount of provisions you carry. The average mercenary requires 2 provisions per day and more on difficult terrain. Your mercenaries will eat the provisions closest to expiring first. Running out of provisions will lower morale and will eventually lead to your people deserting you before dying of starvation.\n\nYou use [color=" + ::Const.UI.Color.PositiveValue + "]" + dailyFood + "[/color] provisions per day.\n\n[color=" + ::Const.UI.Color.NegativeValue + "]You are almost out of provisions to feed your company! Buy new provisions as fast as possible or your mercenaries will desert you one by one before they starve![/color]"
-					}
-				];
-			}
-			else
-			{
-				ret = [
-					{
-						id = 1,
-						type = "title",
-						text = "Provisions"
-					},
-					{
-						id = 2,
-						type = "description",
-						text = "The total amount of provisions you carry. The average mercenary requires 2 provisions per day, more on difficult terrain or when in reserve. Your mercenaries will eat the provisions closest to expiring first. Running out of provisions will lower morale and will eventually lead to your people deserting you before dying of starvation.\n\nYou use [color=" + ::Const.UI.Color.PositiveValue + "]" + dailyFood + "[/color] provisions per day.\n\n[color=" + ::Const.UI.Color.NegativeValue + "]You have no more provisions to feed your company! Buy new provisions as fast as possible or your mercenaries will desert you one by one before they starve![/color]"
-					}
-				];
-			}
-
-			local id = 4;
-			local sortfn = function ( first, second )
-			{
-				if (first[0] == second[0])
+			local ret = [
 				{
-					return 0;
-				}
-
-				if (first[0] > second[0])
+					id = 1,
+					type = "title",
+					text = "Provisions"
+				},
 				{
-					return -1;
+					id = 2,
+					type = "description",
+					text = "Food is disabled currently, and the cost is rolled into daily wages"
 				}
+			];
 
-				return 1;
-			};
-			brolist.sort(sortfn);
+			// local id = 4;
+			// local sortfn = function ( first, second )
+			// {
+			// 	if (first[0] == second[0])
+			// 	{
+			// 		return 0;
+			// 	}
 
-			foreach( bro in brolist )
-			{
-				ret.push({
-					id = id,
-					type = "text",
-					icon = "ui/icons/asset_daily_food.png",
-					text = "[color=" + ::Const.UI.Color.NegativeValue + "]" + bro[0] + "[/color] " + bro[1]
-				});
-				id = ++id;
-				id = id;
-			}
+			// 	if (first[0] > second[0])
+			// 	{
+			// 		return -1;
+			// 	}
+
+			// 	return 1;
+			// };
+			// brolist.sort(sortfn);
+
+			// foreach( bro in brolist )
+			// {
+			// 	ret.push({
+			// 		id = id,
+			// 		type = "text",
+			// 		icon = "ui/icons/asset_daily_food.png",
+			// 		text = "[color=" + ::Const.UI.Color.NegativeValue + "]" + bro[0] + "[/color] " + bro[1]
+			// 	});
+			// 	id = ++id;
+			// 	id = id;
+			// }
 
 			return ret;
 

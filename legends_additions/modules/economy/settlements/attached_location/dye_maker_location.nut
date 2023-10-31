@@ -13,24 +13,11 @@
 		_list.push("apprentice_background");
 		_list.push("caravan_hand_background");
 		//_list.push("tailor_background");
-
-		
 	}
 
 	o.onUpdateShopList = function( _id, _list )
 	{
-		if (_id == "building.marketplace")
-		{
-			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "trade/dies_item"
-			});
-		}
-		else if (_id == "building.specialized_trader")
-		{
-		}
-		else if (_id == "building.armorsmith")
+		if (_id == "building.armorsmith")
 		{
 			_list.push({
 				R = 0,

@@ -86,16 +86,16 @@
 	//REMOVED
 	"supplies.cured_venison" : 0,
 	"supplies.goat_cheese" : 0,
-	"supplies.legend_human_parts" : 0, //TODO: Remove
+	"supplies.legend_human_parts" : 0,
 	"supplies.fermented_unhold_heart" : 0,
 	"supplies.legend_yummy_sausages" : 0,
 	"supplies.black_marsh_stew" : 0,
-	"supplies.legend_porridge" : 0, //TODO: Remove
-	"supplies.legend_pudding" : 0, //TODO: Remove
-	"supplies.legend_pie" : 0, //TODO: Remove
-	"supplies.cured_rations" : 0, //TODO: Remove
-	"supplies.legend_cooking_spices" : 0,//TODO: Remove
-	"supplies.pickled_mushrooms" : 0,//TODO: Remove
+	"supplies.legend_porridge" : 0,
+	"supplies.legend_pudding" : 0,
+	"supplies.legend_pie" : 0,
+	"supplies.cured_rations" : 0,
+	"supplies.legend_cooking_spices" : 0,
+	"supplies.pickled_mushrooms" : 0,
 
 //TRADE
 	"misc.peat_bricks" : 34,

@@ -9,30 +9,25 @@
 		if (!this.isActive()) return;
 		_list.push("brawler_background");
 		_list.push("gambler_background");
-
-		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-		if (_gender)
-		{
-		}
 	}
 
 	o.onUpdateShopList = function( _id, _list )
 	{
-		switch(_id)
-		{
-		case "building.marketplace":
-			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "supplies/beer_item"
-			});
-			break;
+		// switch(_id)
+		// {
+		// case "building.marketplace":
+		// 	_list.push({
+		// 		R = 0,
+		// 		P = 1.0,
+		// 		S = "supplies/beer_item"
+		// 	});
+		// 	break;
 
-		default:
-			if (_id == "building.specialized_trader")
-			{
-			}
-		}
+		// default:
+		// 	if (_id == "building.specialized_trader")
+		// 	{
+		// 	}
+		// }
 	}
 
 });

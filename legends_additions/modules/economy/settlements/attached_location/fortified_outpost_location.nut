@@ -1,8 +1,6 @@
 ::mods_hookExactClass("entity/world/attached_location/fortified_outpost_location", function(o) {
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
-		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-
 		if (!this.isActive()) return;
 
 		_list.push("retired_soldier_background");
