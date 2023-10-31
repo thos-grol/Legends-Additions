@@ -52,6 +52,7 @@
 
 			local companyRep = this.World.Assets.getMoralReputation() / 10;
 
+			//pay bros
 			foreach( bro in roster )
 			{
 				bro.getSkills().onNewDay();
@@ -64,14 +65,8 @@
 
 				if (bro.getDailyCost() > 0 && this.m.Money < bro.getDailyCost())
 				{
-					if (bro.getSkills().hasSkill("trait.greedy"))
-					{
-						bro.worsenMood(::Const.MoodChange.NotPaidGreedy, "Did not get paid");
-					}
-					else
-					{
-						bro.worsenMood(::Const.MoodChange.NotPaid, "Did not get paid");
-					}
+					if (bro.getSkills().hasSkill("trait.greedy")) bro.worsenMood(::Const.MoodChange.NotPaidGreedy, "Did not get paid");
+					else bro.worsenMood(::Const.MoodChange.NotPaid, "Did not get paid");
 				}
 
 				if (this.m.Origin.getID() == "scenario.manhunters" && slaves <= nonSlaves)
@@ -84,6 +79,52 @@
 
 				this.m.Money -= bro.getDailyCost();
 				mood = mood + bro.getMoodState();
+			}
+
+			if (this.World.Retinue.hasFollower("follower.drill_sergeant"))
+			{
+				local alchemy_ammo = [];
+				local alchemy_tools = [];
+				local alchemy_potions = [];
+
+				foreach( bro in this.World.getPlayerRoster().getAll() )
+				{
+					foreach( item in bro.getItems().getAllItems() )
+					{
+						if (!("m" in item)) continue;
+						if ("is_alchemy_ammo" in item.m) alchemy_ammo.push(item);
+						else if ("is_alchemy_tool" in item.m) alchemy_ammo.push(item);
+						else if ("is_alchemy_potion" in item.m) alchemy_ammo.push(item);
+					}
+				}
+
+				foreach( item in alchemy_ammo )
+				{
+					local cost = item.get_refill_cost();
+					if (this.m.Money - cost < 0) break;
+					item.refill();
+					this.m.Money -= cost;
+				}
+
+				foreach( item in alchemy_tools )
+				{
+					local cost = item.get_refill_cost();
+					if (this.m.Money - cost < 0) break;
+					item.refill();
+					this.m.Money -= cost;
+				}
+
+				foreach( item in alchemy_potions )
+				{
+					local cost = item.get_refill_cost();
+					if (this.m.Money - cost < 0) break;
+					item.refill();
+					this.m.Money -= cost;
+				}
+
+				alchemy_ammo.clear();
+				alchemy_tools.clear();
+				alchemy_potions.clear();
 			}
 
 			this.Sound.play(::Const.Sound.MoneyTransaction[this.Math.rand(0, ::Const.Sound.MoneyTransaction.len() - 1)], ::Const.Sound.Volume.Inventory);
@@ -318,6 +359,44 @@
 					break;
 				}
 			}
+		}
+	}
+
+	//remove powder ammo from default ammo logic
+	o.refillAmmo = function()
+	{
+		if (this.m.Ammo == 0) return;
+		local roster = this.World.getPlayerRoster().getAll();
+
+		foreach( bro in roster )
+		{
+			local items = bro.getItems().getAllItems();
+
+			foreach( item in items )
+			{
+				if ("m" in item && "is_alchemy_ammo" in item.m) continue; //alchemy ammo change
+
+				if (item.isItemType(this.Const.Items.ItemType.Ammo) && item.getAmmo() < item.getAmmoMax())
+				{
+					local a = this.Math.min(this.m.Ammo, this.Math.ceil(item.getAmmoMax() - item.getAmmo()) * item.getAmmoCost());
+
+					if (this.m.Ammo >= a)
+					{
+						item.setAmmo(item.getAmmo() + this.Math.ceil(a / item.getAmmoCost()));
+						this.m.Ammo -= a;
+					}
+				}
+
+				if (this.m.Ammo == 0)
+				{
+					break;
+				}
+			}
+		}
+
+		if (this.World.State.getCurrentTown() != null)
+		{
+			this.World.State.getTownScreen().updateAssets();
 		}
 	}
 

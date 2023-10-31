@@ -33,5 +33,5 @@
 
 ::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
 
-//FEATURE_6 rework and reenable cultists scenario
+//FEATURE_5 rework and reenable cultists scenario
 ::mods_hookExactClass("scenarios/world/cultists_scenario", function(o) { o.isValid <- function(){ return false; }});

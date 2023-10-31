@@ -1,5 +1,5 @@
 ::mods_hookExactClass("entity/world/locations/bandit_ruins_location", function(o) {
-	//FEATURE_9: turn this into haunted ruins
+	//FEATURE_8: turn this into haunted ruins
 	o.getDescription = function()
 	{
 		local isSouthern = this.getTile().Type == ::Const.World.TerrainType.Desert || this.getTile().Type == ::Const.World.TerrainType.Steppe || this.getTile().Type == ::Const.World.TerrainType.Oasis || this.getTile().TacticalType == ::Const.World.TerrainTacticalType.DesertHills;

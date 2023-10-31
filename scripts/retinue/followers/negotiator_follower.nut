@@ -1,4 +1,4 @@
-//FEATURE_0: negotiator
+//TODO: negotiator
 this.negotiator_follower <- this.inherit("scripts/retinue/follower", {
 	m = {},
 	function create()

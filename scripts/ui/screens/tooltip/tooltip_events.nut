@@ -166,7 +166,7 @@ this.tooltip_events <- {
 
 				if (this.Tactical.TurnSequenceBar.getActiveEntity() != null && lastTileHovered.IsVisibleForPlayer)
 				{
-					local actor = this.Tactical.TurnSequenceBar.getActiveEntity();				
+					local actor = this.Tactical.TurnSequenceBar.getActiveEntity();
 					if (actor.isPlacedOnMap() && actor.isPlayerControlled())
 					{
 						local opportunist = actor.getSkills().getSkillByID("perk.mastery.bow");
@@ -1342,6 +1342,8 @@ this.tooltip_events <- {
 			};
 			brolist.sort(sortfn);
 
+			//display bro wages
+
 			foreach( bro in brolist )
 			{
 				ret.push({
@@ -1352,6 +1354,93 @@ this.tooltip_events <- {
 				});
 				id = ++id;
 				id = id;
+			}
+
+			if (this.World.Retinue.hasFollower("follower.alchemist"))
+			{
+				local alchemy_ammo = [];
+				local alchemy_tools = [];
+				local alchemy_potions = [];
+
+				foreach( bro in this.World.getPlayerRoster().getAll() )
+				{
+					foreach( item in bro.getItems().getAllItems() )
+					{
+						if (!("m" in item)) continue;
+						if ("is_alchemy_ammo" in item.m) alchemy_ammo.push(item);
+						else if ("is_alchemy_tool" in item.m) alchemy_ammo.push(item);
+						else if ("is_alchemy_potion" in item.m) alchemy_ammo.push(item);
+					}
+				}
+
+				local cost_display = 0;
+				local break_flag = false;
+
+				foreach( item in alchemy_ammo )
+				{
+					local cost = item.get_refill_cost();
+					if (this.m.Money - cost_display < 0)
+					{
+						break_flag = true;
+						break;
+					}
+					cost_display += cost;
+				}
+
+				if (cost_display > 0) ret.push({
+					id = id,
+					type = "hint",
+					icon = "ui/tooltips/money.png",
+					text = ::MSU.Text.colorRed("Refill alchemy ammo: ") + cost_display
+				});
+				cost_display = 0;
+
+				if (!break_flag)
+				{
+					foreach( item in alchemy_tools )
+					{
+						local cost = item.get_refill_cost();
+						if (this.m.Money - cost_display < 0)
+						{
+							break_flag = true;
+							break;
+						}
+						cost_display += cost;
+					}
+				}
+
+				if (cost_display > 0) ret.push({
+					id = id,
+					type = "hint",
+					icon = "ui/tooltips/money.png",
+					text = ::MSU.Text.colorRed("Refill alchemy tools: ") + cost_display
+				});
+				cost_display = 0;
+
+				if (!break_flag)
+				{
+					foreach( item in alchemy_potions )
+					{
+						local cost = item.get_refill_cost();
+						if (this.m.Money - cost_display < 0)
+						{
+							break_flag = true;
+							break;
+						}
+						cost_display += cost;
+					}
+				}
+
+				if (cost_display > 0) ret.push({
+					id = id,
+					type = "hint",
+					icon = "ui/tooltips/money.png",
+					text = ::MSU.Text.colorRed("Refill alchemy potions: ") + cost_display
+				});
+
+				alchemy_ammo.clear();
+				alchemy_tools.clear();
+				alchemy_potions.clear();
 			}
 
 			ret.push({

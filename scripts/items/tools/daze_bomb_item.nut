@@ -1,19 +1,19 @@
-this.smoke_bomb_item <- this.inherit("scripts/items/weapons/weapon", {
+this.daze_bomb_item <- this.inherit("scripts/items/tools/alchemy_tool", {
 	m = {},
 	function create()
 	{
-		this.weapon.create();
-		this.m.ID = "weapon.smoke_bomb";
-		this.m.Name = "Smoke Pot";
-		this.m.Description = "A small pot that quickly creates a dense smoke cloud when broken on the ground. Useful for covering movement.";
-		this.m.IconLarge = "tools/smoke_bomb_01.png";
-		this.m.Icon = "tools/smoke_bomb_01_70x70.png";
+		this.alchemy_tool.create();
+		this.m.ID = "weapon.daze_bomb";
+		this.m.Name = "Flash Pot";
+		this.m.Description = "A throwable pot filled with mysterious powders that react violently on impact to create a bright flash and loud bang. Will daze anyone close by.";
+		this.m.IconLarge = "tools/daze_bomb_01.png";
+		this.m.Icon = "tools/daze_bomb_01_70x70.png";
 		this.m.SlotType = this.Const.ItemSlot.Offhand;
 		this.m.ItemType = this.Const.Items.ItemType.Tool;
 		this.m.AddGenericSkill = true;
 		this.m.ShowArmamentIcon = true;
-		this.m.ArmamentIcon = "icon_smoke_bomb_01";
-		this.m.Value = 400;
+		this.m.ArmamentIcon = "icon_daze_bomb_01";
+		this.m.Value = 500;
 		this.m.RangeMax = 3;
 		this.m.StaminaModifier = 0;
 		this.m.IsDroppedAsLoot = true;
@@ -72,14 +72,19 @@ this.smoke_bomb_item <- this.inherit("scripts/items/weapons/weapon", {
 			id = 5,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Covers [color=" + this.Const.UI.Color.DamageValue + "]7[/color] tiles in smoke for one round, allowing anyone inside to move freely and ignore zones of control"
+			text = "Will give up to [color=" + this.Const.UI.Color.DamageValue + "]7[/color] targets the Dazed status effect for 2 turns"
 		});
-		result.push({
-			id = 6,
-			type = "text",
-			icon = "ui/icons/special.png",
-			text = "Is destroyed on use"
-		});
+
+		if (this.m.Ammo <= 0.0)
+		{
+			result.push({
+				id = 6,
+				type = "text",
+				icon = "ui/tooltips/warning.png",
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Needs to be restocked by an alchemist[/color]"
+			});
+		}
+
 		return result;
 	}
 
@@ -91,7 +96,7 @@ this.smoke_bomb_item <- this.inherit("scripts/items/weapons/weapon", {
 	function onEquip()
 	{
 		this.weapon.onEquip();
-		local skill = this.new("scripts/skills/actives/throw_smoke_bomb_skill");
+		local skill = this.new("scripts/skills/actives/throw_daze_bomb_skill");
 		skill.setItem(this);
 		this.addSkill(skill);
 	}

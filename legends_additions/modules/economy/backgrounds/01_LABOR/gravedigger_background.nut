@@ -6,7 +6,7 @@
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 
-		//FEATURE_6: gravedigger is more morbid alignment, affects events - supernatural spooky
+		//FEATURE_5: gravedigger is more morbid alignment, affects events - supernatural spooky
 		this.m.PerkTreeDynamic = {
 			Weapon = [
 				::Const.Perks.HammerTree

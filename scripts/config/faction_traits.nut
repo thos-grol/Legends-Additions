@@ -88,7 +88,7 @@ gt.Const.FactionTrait <- {
 			"scripts/factions/contracts/return_item_action",
 			"scripts/factions/contracts/defend_settlement_bandits_action",
 			"scripts/factions/contracts/defend_settlement_greenskins_action",
-			//"scripts/factions/contracts/obtain_item_action", //FEATURE_6: Rework with dungeons
+			//"scripts/factions/contracts/obtain_item_action", //FEATURE_5: Rework with dungeons
 			"scripts/factions/contracts/restore_location_action",
 			"scripts/factions/contracts/discover_location_action",
 			"scripts/factions/contracts/hunting_webknechts_action",
@@ -171,13 +171,13 @@ gt.Const.FactionTrait <- {
 		],
 		[
 			"scripts/factions/contracts/drive_away_nomads_action",
-			// "scripts/factions/contracts/roaming_beasts_desert_action", //FEATURE_6: rework difficulty
+			// "scripts/factions/contracts/roaming_beasts_desert_action", //FEATURE_5: rework difficulty
 			"scripts/factions/contracts/slave_uprising_action",
 			"scripts/factions/contracts/item_delivery_action",
 			"scripts/factions/contracts/escort_caravan_action",
 			"scripts/factions/contracts/hunting_serpents_action", //TODO: rework giant serpents
 			//"scripts/factions/contracts/hunting_sand_golems_action",
-			//"scripts/factions/contracts/hunting_mummies_action", //FEATURE_6: mummy rework
+			//"scripts/factions/contracts/hunting_mummies_action", //FEATURE_5: mummy rework
 			"scripts/factions/contracts/conquer_holy_site_action",
 			"scripts/factions/contracts/defend_holy_site_action",
 			"scripts/factions/contracts/hold_chokepoint_action",

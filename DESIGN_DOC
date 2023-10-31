@@ -1,12 +1,14 @@
-//FEATURE_0: convert nomads to abstract
-//FEATURE_0: convert orcs to abstract
-//FEATURE_0: convert goblins to abstract
+//TODO: convert nomads to abstract
+//TODO: convert orcs to abstract
+//TODO: convert goblins to abstract
 
-//FEATURE_0: finish spider, alp
-//FEATURE_0: finish undead - ghosts, zombies, necros, necrosavant
+//TODO: finish spider, alp
+	//TODO: spiders, remove roaming spiders, they are stationary monsters
+		//revamp spider nest with tiers of spiders
+//TODO: finish undead - ghosts, zombies, necros, necrosavant
 
-//FEATURE_0: retinue rework
-	//FEATURE_0: anatomist
+//TODO: retinue rework
+	//TODO: anatomist
 
 //////////////////////////////////////////////
 
@@ -94,20 +96,20 @@
 
 Economy Overhaul
 
-//FEATURE_2: this.m.Payment.Pool, contracts
+//FEATURE_1: this.m.Payment.Pool, contracts
 
-//FEATURE_2: ambitions rework
-    //FEATURE_1: Slay a monster -> unlock anatomist retinue
+//FEATURE_1: ambitions rework
+    //FEATURE_0: Slay a monster -> unlock anatomist retinue
 
-//FEATURE_6: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
+//FEATURE_5: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
 
 
-//FEATURE_1: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
-//FEATURE_1: Serpent -> Knock (Poison opens wounds), Edge. Medusa's Gaze
-//FEATURE_1: Lindwurm -> Dragon -> Dream, Edge (Poison)
-//FEATURE_1: Schrat -> Heart, Lantern
+//FEATURE_0: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
+//FEATURE_0: Serpent -> Knock (Poison opens wounds), Edge. Medusa's Gaze
+//FEATURE_0: Lindwurm -> Dragon -> Dream, Edge (Poison)
+//FEATURE_0: Schrat -> Heart, Lantern
 
-//FEATURE_1: Necrosavant -> Grail, Knock
+//FEATURE_0: Necrosavant -> Grail, Knock
     //Modes:
         //Scummy - tp away close to party, summon weakest bro to it
         //Guerilla - tp and strike, tp and strike
@@ -146,7 +148,7 @@ DOC:
     //Arcane missile
 
 
-//FEATURE_1: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.
+//FEATURE_0: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.
     //Direwolf
         //The more attacks it recieves, the higher it's fury...
 
@@ -166,17 +168,13 @@ DOC:
 
     //Lindwurm
 
-//FEATURE_2: Camping and Retinue and class Rework
-camping ui
-    //FEATURE_2: remove crafting and training from main tent
-    //FEATURE_2: cart can only be upgraded once, experiment with stash size
-    //this.World.Assets.addMoney
-    //FEATURE_2: remove most class perks from trees
+//FEATURE_1: remove training from main tent and camp menu
+//FEATURE_1: cart can only be upgraded once, experiment with stash size
 
 
 
 
-//FEATURE_6: Faction Overhaul
+//FEATURE_8: Faction Overhaul
     //every settlement spawns guards, guards vary in strength
     //update action
         faction action <- factions have a chance to build strength during update
@@ -200,7 +198,7 @@ camping ui
 
     //timed out contracts: contractmanager, function update( _force = false ), c.isTimedOut()
 
-//FEATURE_9: dungeon, source of money when no contracts
+//FEATURE_8: dungeon, source of money when no contracts
     rooms:
         treasure room
         trap room
@@ -214,11 +212,11 @@ camping ui
         Black Monolith
         Library
 
-//FEATURE_9: one village is slated for death upon geneartion. At a certain day in the campaign, generate ghosts. event can trigger at night where you are stuck. if you survive, then you hear ghost stories about how village was burned mysteriously years ago and no one dares to live there. Ghost boss.
+//FEATURE_8: one village is slated for death upon geneartion. At a certain day in the campaign, generate ghosts. event can trigger at night where you are stuck. if you survive, then you hear ghost stories about how village was burned mysteriously years ago and no one dares to live there. Ghost boss.
 //if disguise is torn off, it becomes a dungeon.
 //remove weakest 20% of bros. Rest have a chance to be cursed by ghost and haunted. Haunting can even kill party members if they fail the check. Reveal starts when you take a contract to defend the village from raiders or hexe or alps and you stay overnight...
 
-//FEATURE_9: arena,source of money when no contracts
+//FEATURE_8: arena,source of money when no contracts
 
 
 
@@ -226,14 +224,14 @@ camping ui
     //Dungeon exploration
     //Opening up the wilderness
     //Arena
-    //FEATURE_4: start making the world poorer, troop equipment nerf
-    //FEATURE_4: most mobs besides top tier mobs will be using at most chain armor
-    //FEATURE_4: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
+    //FEATURE_3: start making the world poorer, troop equipment nerf
+    //FEATURE_3: most mobs besides top tier mobs will be using at most chain armor
+    //FEATURE_3: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
 
-//FEATURE_9: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
+//FEATURE_8: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
 
 
-FEATURE_9: Origins to Revamp:
+FEATURE_8: Origins to Revamp:
     - Beast Slayers
     - Scaling Beggar
     - Old Swordmaster

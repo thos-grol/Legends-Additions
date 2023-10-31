@@ -7,7 +7,7 @@
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 		this.m.PerkTreeDynamicMins.Traits = 3;
 
-		//FEATURE_0: remove test code
+		//TODO: remove test code
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
@@ -33,7 +33,7 @@
 			],
 			Magic = []
 		};
-		//FEATURE_7: Idea? add arena wins trait to gladiator.
+		//FEATURE_6: Idea? add arena wins trait to gladiator.
 	}
 
 	o.onAddEquipment = function()

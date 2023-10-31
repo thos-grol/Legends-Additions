@@ -596,11 +596,11 @@ gt.Const.Perks.IntelligentTree <- {
 		],
 		[],
 		[
-			//FEATURE_6: intelligent perk tier 5
+			//FEATURE_5: intelligent perk tier 5
 		],
 		[],
 		[
-			//FEATURE_6: intelligent perk tier 7
+			//FEATURE_5: intelligent perk tier 7
 		]
 	]
 };

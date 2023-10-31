@@ -106,7 +106,7 @@ this.sling_stone_skill <- this.inherit("scripts/skills/skill", {
 	function getBonus()
 	{
 		local bonus = 1.0 + ::Math.min(this.getContainer().getActor().getHitpointsMax(), 200) / 400.0;
-		return (this.getContainer().getSkillByID("perk.stance.david") != null) ? bonus * 1.33 : bonus; 
+		return (this.getContainer().getSkillByID("perk.stance.david") != null) ? bonus * 1.33 : bonus;
 	}
 
 	function onAfterUpdate( _properties )
@@ -160,11 +160,11 @@ this.sling_stone_skill <- this.inherit("scripts/skills/skill", {
 	{
 		if (_skill != this || !_targetEntity.isAlive() || _targetEntity.isDying()) return;
 		if (_bodyPart != ::Const.BodyPart.Head) return;
-		
+
 		local targetTile = _targetEntity.getTile();
 		local user = this.getContainer().getActor();
 
-		if (this.m.Skills.getSkillByID("perk.stance.david") != null && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
+		if (user.getSkills().getSkillByID("perk.stance.david") != null && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
 		{
 			target.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));
 			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)

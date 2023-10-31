@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/settlements/buildings/alchemist_building", function(o) {
+::mods_hookExactClass("entity/world/settlements/buildings/blackmarket_building", function(o) {
 
     o.onUpdateShopList = function()
 	{
@@ -25,71 +25,53 @@
 			// },
 			{
 				R = 0,
-				P = 5.0,
+				P = 1.0,
 				S = "misc/happy_powder_item"
-			}
-		];
+			},
 
-		if (this.Math.rand(1, 100) <= 50)
-		{
-			list.push({
-				R = 0,
-				P = 3.0,
+
+			{
+				R = 40,
+				P = 1.0,
+				S = "ammo/large_quiver_of_bolts"
+			},
+			{
+				R = 40,
+				P = 1.0,
+				S = "ammo/huge_quiver_of_bolts"
+			},
+			{
+				R = 40,
+				P = 1.0,
 				S = "weapons/light_crossbow"
-			});
-			list.push({
-				R = 0,
+			},
+			{
+				R = 40,
 				P = 1.0,
-				S = "ammo/quiver_of_bolts"
-			});
-		}
-
-		if (this.Math.rand(1, 100) <= 25)
-		{
-			list.push({
-				R = 0,
-				P = 3.0,
 				S = "weapons/crossbow"
-			});
-			list.push({
-				R = 0,
+			},
+			{
+				R = 40,
 				P = 1.0,
-				S = "ammo/quiver_of_bolts"
-			});
-		}
-
-		if (this.Math.rand(1, 100) <= 25)
-		{
-			list.push({
-				R = 0,
-				P = 3.0,
 				S = "weapons/heavy_crossbow"
-			});
-			list.push({
-				R = 0,
-				P = 1.0,
-				S = "ammo/quiver_of_bolts"
-			});
-		}
+			},
 
-		if (this.Math.rand(1, 100) <= 25)
-		{
-			list.push({
-				R = 0,
+			{
+				R = 40,
+				P = 1.0,
+				S = "ammo/large_powder_bag"
+			},
+			{
+				R = 40,
 				P = 1.0,
 				S = "weapons/oriental/handgonne"
-			});
-			list.push({
-				R = 0,
+			},
+			{
+				R = 40,
 				P = 1.0,
-				S = "ammo/powder_bag"
-			});
-			list.push({
-				R = 60,
-				P = 2.0,
 				S = "weapons/named/named_handgonne"
-			});
-		}
+			},
+		];
 
 		foreach( i in ::Const.Items.NamedMeleeWeapons )
 		{
@@ -97,7 +79,7 @@
 			{
 				list.push({
 					R = 60,
-					P = 3.0,
+					P = 1.0,
 					S = i
 				});
 			}
@@ -109,7 +91,7 @@
 			{
 				list.push({
 					R = 60,
-					P = 3.0,
+					P = 1.0,
 					S = i
 				});
 			}
