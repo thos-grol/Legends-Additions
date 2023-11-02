@@ -3,16 +3,16 @@
 //Weakness: Heart
 
 ::Const.Tactical.Actor.Direwolf <- {
-	XP = 200,
+	XP = 1000,
 	ActionPoints = 12,
-	Hitpoints = 700,
+	Hitpoints = 600,
 	Bravery = 10,
 	Stamina = 180,
-	MeleeSkill = 75,
+	MeleeSkill = 85,
 	RangedSkill = 0,
 	MeleeDefense = 50,
 	RangedDefense = 50,
-	Initiative = 150,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	FatigueRecoveryRate = 20,
@@ -31,6 +31,8 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 		b.setValues(::Const.Tactical.Actor.Direwolf);
 		b.IsAffectedByNight = false;
 		b.IsImmuneToDisarm = true;
+		b.DamageTotalMult *= 1.5;
+
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -68,12 +70,15 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 		////////////////////////////////////////////////////////////////////////
 
 		this.getFlags().add("la_direwolf");
+		this.m.Skills.add(::new("scripts/skills/perks/perk_underdog"));
 
-		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
+
+		this.m.Skills.add(::new("scripts/skills/perks/perk_fast_adaption"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_overwhelm"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_berserk"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_crippling_strikes"));
-		this.m.Skills.add(::new("scripts/skills/perks/perk_fast_adaption"));
         this.m.Skills.add(::new("scripts/skills/traits/boss_fearless_trait")); //doesn't run until 25% hp
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_direwolf_berserk_mode"));
@@ -84,8 +89,6 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.Skills.add(::new("scripts/skills/actives/direwolf_bite"));
 		this.m.Skills.add(::new("scripts/skills/actives/direwolf_hunt_teleport"));
 		this.m.Skills.add(::new("scripts/skills/actives/direwolf_indomitable"));
-		
-		
 	}
 
 	function create()

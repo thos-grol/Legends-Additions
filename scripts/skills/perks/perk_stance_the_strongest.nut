@@ -49,7 +49,7 @@ this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 		_properties.DamageReceivedArmorMult *= 0;
 
 		//perform a riposte if possible
-		this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " parried the strike");
+		this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + " parried the strike");
 
 		if (_attacker != null
 			&& !_attacker.isAlliedWith(actor)

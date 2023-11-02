@@ -17,6 +17,15 @@
     return " » (" + rolled + " < " + ::Math.min(95, ::Math.max(5, toHit))+ ")";
 }
 
+::Z.Log.roundFloat <- function(val, decimalPoints)
+{
+    local f = ::Math.pow(10, decimalPoints) * 1.0;
+    local newVal = val * f;
+    newVal = ::Math.floor(newVal + 0.5)
+    newVal = (newVal * 1.0) / f;
+    return newVal;
+}
+
 //FNS
 
 ::Z.Log.next_round <- function(_turn)

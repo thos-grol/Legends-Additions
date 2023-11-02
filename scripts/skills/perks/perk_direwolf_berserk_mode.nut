@@ -197,7 +197,7 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 				target.getSkills().add(::new("scripts/skills/effects/chilled_effect"));
 				local stun = ::new("scripts/skills/effects/stunned_effect");
 				target.getSkills().add(stun);
-				stun.setTurns(3);
+				stun.addTurns(2);
 
 				if (!user.isHiddenToPlayer() && target.getTile().IsVisibleForPlayer)
 				::Tactical.EventLog.logIn(

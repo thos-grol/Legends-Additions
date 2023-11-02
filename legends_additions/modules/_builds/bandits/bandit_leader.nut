@@ -71,7 +71,6 @@
 	],
 };
 ::B.Info[::Const.EntityType.BanditLeader].Builds["Commander2"] <- ::B.Info[::Const.EntityType.BanditLeader].Builds["Commander"];
-::B.Info[::Const.EntityType.BanditLeader].Builds["Commander3"] <- ::B.Info[::Const.EntityType.BanditLeader].Builds["Commander"];
 
 ::B.Info[::Const.EntityType.BanditLeader].Builds["Wrath"] <- {
 	Name = "Wrath Axe",

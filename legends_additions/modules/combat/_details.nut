@@ -156,20 +156,33 @@
                 local diffPoint = this.Math.minf(1, this.Math.pow(diff, 0.4)) * 0.8;
                 bonus = 1 - diffPoint;
             }
-            _properties.DamageReceivedRegularMult *= bonus;
+			_properties.DamageReceivedRegularMult *= bonus;
+
+			bonus = 1 - bonus;
+			if (bonus > 0) ::Tactical.EventLog.logIn(
+				"[Freedom of Movement] -" + (::Z.Log.roundFloat(bonus, 2) * 100) + "% damage"
+			);
         }
         else if (total_weight > 20 && total_weight <= 40) // Medium Armor
         {
             if (_attacker != null && _skill != null && _skill.isAttack())
 			{
-				_properties.DamageReceivedRegularMult *= 1 - this.m.Stacks * 0.05;
+				local bonus = this.m.Stacks * 0.05;
+				_properties.DamageReceivedRegularMult *= 1 - bonus;
 				this.m.Stacks = ::Math.max(0, this.m.Stacks - 2);
+				if (bonus > 0) ::Tactical.EventLog.logIn(
+					"[Medium Armor Passive] -" + (::Z.Log.roundFloat(bonus, 2) * 100) + "% damage"
+				);
 			}
         }
 		else //Man of steel
 		{
 			if (_attacker != null && _attacker.getID() == this.getContainer().getActor().getID() || _skill == null || !_skill.isAttack() || !_skill.isUsingHitchance()) return;
-			_properties.DamageReceivedDirectMult *= 1.0 - this.getBonus_ManOfSteel(_hitInfo.BodyPart) * 0.01;
+			local bonus = this.getBonus_ManOfSteel(_hitInfo.BodyPart) * 0.01;
+			_properties.DamageReceivedDirectMult *= 1.0 - bonus;
+			if (bonus > 0) ::Tactical.EventLog.logIn(
+				"[Man of Steel] -" + (::Z.Log.roundFloat(bonus, 2)  * 100) + "% hitpoint damage"
+			);
 		}
 	}
 

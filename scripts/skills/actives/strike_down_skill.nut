@@ -98,7 +98,7 @@ this.strike_down_skill <- this.inherit("scripts/skills/skill", {
 			{
 				local stun = this.new("scripts/skills/effects/stunned_effect");
 				target.getSkills().add(stun);
-				stun.setTurns(2);
+				stun.addTurns(1);
 
 				if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
 				{

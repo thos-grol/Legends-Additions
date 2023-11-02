@@ -186,11 +186,10 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
 		b.setValues(this.Const.Tactical.Actor.Serpent);
-		b.Initiative += this.Math.rand(0, 50);
 		b.IsAffectedByNight = false;
 		b.IsImmuneToDisarm = true;
 
-		b.DamageDirectMult *= 1.5;
+		b.DamageTotalMult *= 1.5;
 
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;

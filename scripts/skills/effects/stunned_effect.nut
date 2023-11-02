@@ -25,14 +25,6 @@ this.stunned_effect <- this.inherit("scripts/skills/skill", {
 		this.m.TurnsLeft += _t;
 	}
 
-	function setTurns( _t )
-	{
-		if (this.getContainer() != null)
-		{
-			this.m.TurnsLeft = this.Math.max(1, _t + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
-		}
-	}
-
 	function onAdded()
 	{
 		if (!this.m.Ignore)
@@ -50,7 +42,7 @@ this.stunned_effect <- this.inherit("scripts/skills/skill", {
 				return;
 			}
 		}
-		
+
 
 		local statusResisted = this.getContainer().getActor().getCurrentProperties().IsResistantToAnyStatuses ? this.Math.rand(1, 100) <= 50 : false;
 		statusResisted = statusResisted || this.getContainer().getActor().getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 33 : false;
