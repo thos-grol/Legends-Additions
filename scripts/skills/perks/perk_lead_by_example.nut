@@ -85,13 +85,14 @@ this.perk_lead_by_example <- this.inherit("scripts/skills/skill", {
 		foreach( ally in this.Tactical.Entities.getInstancesOfFaction(actor.getFaction()) )
 		{
 			if (ally.getID() == actor.getID()) continue;
-			if (ally.getSkills().hasSkill("perk.lead_by_example"))
-				has_replacement = true;
+			local skill = ally.getSkills().getSkillByID("perk.lead_by_example");
+			if (skill != null)
+			{
+				skill.trigger();
+				return;
+			}
 		}
 
-		if (!has_replacement) return;
-		local skill = ally.getSkills().getSkillByID("perk.lead_by_example");
-		skill.trigger();
 	}
 
 });

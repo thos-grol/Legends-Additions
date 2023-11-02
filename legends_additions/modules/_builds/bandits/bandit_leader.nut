@@ -24,90 +24,127 @@
 
 ::B.Info[::Const.EntityType.BanditLeader] <- {
     Level = 10,
-    Pattern = [
-        ["Z", "scripts/skills/perks/perk_lead_by_example"], //1 LeadByExample
-        ["D", 2], //2
-        ["W", 3], //3
-        ["W", 4], //4
-        ["T", 1], //5
-        ["D", 6], //6
-        ["Z", "scripts/skills/perks/perk_trial_by_fire"], //7 TrialByFire
-        ["T", 5], //8
-        ["W", 7], //9
-    ],
-	LevelUps = [
-		["Health", 9, 1, 3],
-		["Melee Skill", 9, 1, 3],
-		["Melee Defense", 9, 1, 3],
-	],
-    Trait = [],
-	Loadout = [
-		[
-			"scripts/items/weapons/greatsword",
-		],
-		[
-			"scripts/items/weapons/greataxe",
-		],
-		[
-			"scripts/items/weapons/legend_longsword",
-		],
-		[
-			"scripts/items/weapons/two_handed_hammer",
-		],
-	],
-	NamedLoadout = [
-		[
-			"weapons/named/named_greatsword",
-		],
-		[
-			"weapons/named/named_greataxe",
-		],
-		[
-			"weapons/named/legend_named_longsword",
-		],
-		[
-			"weapons/named/named_two_handed_hammer",
-		],
-	],
 	Builds = {},
-	BuildsChance = 50
+	BuildsChance = 100
 };
 
 ///////
 
-// if (this.m.Items.getItemAtSlot(this.Const.ItemSlot.Mainhand) == null)
-// {
-// 	local weapons = [
-// 		"weapons/noble_sword",
-// 		"weapons/fighting_axe",
-// 		"weapons/warhammer",
-// 		"weapons/legend_glaive",
-// 		"weapons/fighting_spear",
-// 		"weapons/winged_mace",
-// 		"weapons/arming_sword",
-// 		"weapons/military_cleaver"
-// 	];
-// 	// "shields/heater_shield",
-// 	// "shields/kite_shield"
-// }
+::B.Info[::Const.EntityType.BanditLeader].Builds["Commander"] <- {
+	Name = "Commander",
+	Pattern = [
+        ["scripts/skills/perks/perk_lead_by_example"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_rotation"], //3
+        ["scripts/skills/perks/perk_mastery_swordc"], //4
+        ["scripts/skills/perks/perk_shield_expert"], //5
+        ["D", 6],
+        ["scripts/skills/perks/perk_trial_by_fire"], //7
+        ["scripts/skills/perks/perk_fortified_mind"], //8
+        ["scripts/skills/perks/perk_stance_the_strongest"], //9
+    ],
+	LevelUps = [
+		["Resolve", 7, 2, 3],
+		["Health", 2, 2, 3],
+		["Melee Skill", 9, 2, 3],
+		["Melee Defense", 9, 2, 3],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/arming_sword",
+			"scripts/items/shields/kite_shield",
+		],
+		[
+			"scripts/items/weapons/arming_sword",
+			"scripts/items/shields/heater_shield",
+		],
+	],
+	NamedLoadout = [
+		[
+			"scripts/items/weapons/named/named_sword",
+			"scripts/items/shields/named/named_bandit_kite_shield"
+		],
+		[
+			"scripts/items/weapons/named/named_sword",
+			"scripts/items/shields/named/named_bandit_heater_shield"
+		],
+	],
+};
+::B.Info[::Const.EntityType.BanditLeader].Builds["Commander2"] <- ::B.Info[::Const.EntityType.BanditLeader].Builds["Commander"];
+::B.Info[::Const.EntityType.BanditLeader].Builds["Commander3"] <- ::B.Info[::Const.EntityType.BanditLeader].Builds["Commander"];
 
-// shields.extend([
-// 	"shields/named/named_bandit_kite_shield",
-// 	"shields/named/named_bandit_heater_shield"
-// ]);
+::B.Info[::Const.EntityType.BanditLeader].Builds["Wrath"] <- {
+	Name = "Wrath Axe",
+	Pattern = [
+        ["scripts/skills/perks/perk_colossus"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_steadfast"], //3
+        ["scripts/skills/perks/perk_mastery_swordc"], //4
+        ["scripts/skills/perks/perk_mastery_axec"], //5
+        ["D", 6],
+        ["scripts/skills/perks/perk_death_dealer"], //7
+        ["scripts/skills/perks/perk_nine_lives"], //8
+        ["scripts/skills/perks/perk_stance_wrath"], //9
+    ],
+	LevelUps = [
+		["Health", 9, 3, 3],
+		["Melee Skill", 9, 2, 3],
+		["Melee Defense", 9, 2, 3],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/greataxe",
+		],
+	],
+	NamedLoadout = [
+		[
+			"weapons/named/named_greataxe",
+		],
+	],
+};
+
+::B.Info[::Const.EntityType.BanditLeader].Builds["Longsword Instinct"] <- {
+	Name = "Longsword Instinct",
+	Pattern = [
+        ["scripts/skills/perks/perk_lone_wolf"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_underdog"], //3
+        ["scripts/skills/perks/perk_mastery_swordc"], //4
+        ["scripts/skills/perks/perk_survival_instinct"], //5
+        ["D", 6],
+        ["scripts/skills/perks/perk_nine_lives"], //7
+        ["scripts/skills/perks/perk_reach_advantage"], //8
+        ["scripts/skills/perks/perk_stance_the_strongest"], //9
+    ],
+	LevelUps = [
+		["Health", 9, 3, 3],
+		["Melee Skill", 9, 2, 3],
+		["Melee Defense", 9, 2, 3],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/legend_longsword",
+		],
+	],
+	NamedLoadout = [
+		[
+			"weapons/named/legend_named_longsword",
+		],
+	],
+};
 
 ::B.Info[::Const.EntityType.BanditLeader].Builds["Swordstaff"] <- {
 	Name = "Swordstaff",
 	Pattern = [
-        ["Z", "scripts/skills/perks/perk_legend_recuperation"], //1 LeadByExample
+        ["scripts/skills/perks/perk_legend_recuperation"], //1
         ["D", 2], //2
-        ["W", "scripts/skills/perks/perk_pokepoke"], //3
-        ["Z", "scripts/skills/perks/perk_mastery_spearc"], //4
-        ["T", "scripts/skills/perks/perk_steadfast"], //5
+        ["scripts/skills/perks/perk_pokepoke"], //3
+        ["scripts/skills/perks/perk_mastery_spearc"], //4
+        ["scripts/skills/perks/perk_steadfast"], //5
         ["D", 6],
-        ["Z", "scripts/skills/perks/perk_mastery_sword"], //7 TrialByFire
-        ["T", "scripts/skills/perks/perk_battle_flow"], //8
-        ["Z", "scripts/skills/perks/perk_stance_breakthrough"], //9
+        ["scripts/skills/perks/perk_mastery_swordc"], //7
+        ["scripts/skills/perks/perk_battle_flow"], //8
+        ["scripts/skills/perks/perk_stance_breakthrough"], //9
     ],
 	LevelUps = [
 		["Health", 9, 1, 3],
@@ -125,3 +162,44 @@
 		]
 	],
 };
+
+::B.Info[::Const.EntityType.BanditLeader].Builds["Seismic"] <- {
+	Name = "Seismic",
+	Pattern = [
+        ["scripts/skills/perks/perk_pathfinder"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_rattle"], //3
+        ["scripts/skills/perks/perk_mastery_hammerc"], //4
+        ["scripts/skills/perks/perk_legend_peaceful"], //5
+        ["D", 6],
+        ["scripts/skills/perks/perk_agile"], //7
+        ["scripts/skills/perks/perk_battle_flow"], //8
+        ["scripts/skills/perks/perk_stance_seismic_slam"], //9
+    ],
+	LevelUps = [
+		["Health", 9, 1, 3],
+		["Melee Skill", 9, 2, 3],
+		["Melee Defense", 9, 2, 3],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/two_handed_hammer",
+		],
+	],
+	NamedLoadout = [
+		[
+			"weapons/named/named_two_handed_hammer",
+		]
+	],
+};
+
+//TODO: 2h flail build
+
+//TODO: axe duelist - vicious, calm
+//TODO: cleaver duelist - bleeding, calm, steadfast
+// if (this.m.Items.getItemAtSlot(this.Const.ItemSlot.Mainhand) == null)
+// {
+// 	local weapons = [
+// 		"weapons/fighting_axe",
+// 		"weapons/military_cleaver"
+// 	];

@@ -82,9 +82,9 @@
 	Pattern = [
         ["T", 1], //1
         ["D", 2], //2
-        ["Z", "scripts/skills/perks/perk_shield_bash"],
+        ["scripts/skills/perks/perk_shield_bash"],
         ["W", 4], //4
-        ["Z", "scripts/skills/perks/perk_shield_expert"],
+        ["scripts/skills/perks/perk_shield_expert"],
         ["D", 6], //6
         ["T", 3], //7
         ["T", 5], //8
@@ -116,7 +116,7 @@
         ["T", 1], //5
         ["D", 6], //6
         ["T", 3], //7
-        ["Z", "scripts/skills/perks/perk_duelist"], //8
+        ["scripts/skills/perks/perk_duelist"], //8
     ],
 	LevelUps = [
 		["Health", 8, 1, 3],
@@ -141,9 +141,9 @@
 	Pattern = [
         ["T", 1], //1
         ["D", 2], //2
-        ["Z", "scripts/skills/perks/perk_legend_net_repair"],
+        ["scripts/skills/perks/perk_legend_net_repair"],
         ["W", 4], //4
-        ["Z", "scripts/skills/perks/perk_legend_net_casting"],
+        ["scripts/skills/perks/perk_legend_net_casting"],
         ["D", 6], //6
         ["T", 3], //7
         ["T", 5], //8

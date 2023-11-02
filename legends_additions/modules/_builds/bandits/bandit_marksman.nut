@@ -30,7 +30,7 @@
         ["T", 5],
         ["D", 6],
         ["T", 3],
-		["Z", "scripts/skills/perks/perk_hybridization"],
+		["scripts/skills/perks/perk_hybridization"],
     ],
 	LevelUps = [
 		["Health", 8, 0, 2],

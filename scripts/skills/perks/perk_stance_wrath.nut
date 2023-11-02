@@ -3,7 +3,8 @@
 + "\nSacrifice defense to gain the ultimate offense"
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("+25%") + " damage"
-+ "\n"+::MSU.Text.colorRed("– 25%") + " melee defense"
++ "\n"+::MSU.Text.colorRed("– 25%") + " Melee Defense"
++ "\n"+::MSU.Text.colorRed("– 25%") + " Fatigue cost for AOE attacks"
 + "\n"+::MSU.Text.colorGreen("– 2") + " AP cost for AOE attacks";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceWrath].Name = ::Const.Strings.PerkName.StanceWrath;
@@ -61,6 +62,7 @@ this.perk_stance_wrath <- this.inherit("scripts/skills/skill", {
 			if (s != null)
 			{
 				s.m.ActionPointCost -= 2;
+				s.m.FatigueCostMult *= 0.75;
 			}
 		}
 	}
@@ -72,6 +74,7 @@ this.perk_stance_wrath <- this.inherit("scripts/skills/skill", {
 			foreach (skill in this.getContainer().getSkillsByFunction((@(_skill) this.m.Skills.find(_skill.getID()) != null).bindenv(this)))
 			{
 				this.modifyPreviewField(skill, "ActionPointCost", skill.m.ActionPointCost - 2, false);
+				this.modifyPreviewField(skill, "FatigueCostMult", 0.75, true);
 			}
 		}
 	}

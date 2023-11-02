@@ -1,8 +1,6 @@
-//Bandit Leader
-//Level 11 Raider template
-//raider template, 10 perks
-//has weapon mastery, stance, and destiny
-::Const.Tactical.Actor.BanditWarlord <- {
+//Lvl 10 Raider Template
+//Has stance, 9 perks
+::Const.Tactical.Actor.NomadLeader <- {
 	XP = 250,
 	ActionPoints = 9,
 	Hitpoints = 55,
@@ -22,7 +20,7 @@
 	FatigueRecoveryRate = 15
 };
 
-::B.Info[::Const.EntityType.BanditWarlord] <- {
+::B.Info[::Const.EntityType.NomadLeader] <- {
     Level = 10,
     Pattern = [
         ["scripts/skills/perks/perk_lead_by_example"], //1 LeadByExample
@@ -34,12 +32,11 @@
         ["scripts/skills/perks/perk_trial_by_fire"], //7 TrialByFire
         ["T", 5], //8
         ["W", 7], //9
-		["T", 7], //10
     ],
 	LevelUps = [
-		["Health", 10, 1, 3],
-		["Melee Skill", 10, 1, 3],
-		["Melee Defense", 10, 1, 3],
+		["Health", 9, 1, 3],
+		["Melee Skill", 9, 1, 3],
+		["Melee Defense", 9, 1, 3],
 	],
     Trait = [],
 	Loadout = [
@@ -71,28 +68,23 @@
 		],
 	],
 	Builds = {},
-	BuildsChance = 0
+	BuildsChance = 100
 };
 
-///////
+"weapons/shamshir",
+"weapons/oriental/heavy_southern_mace",
+"weapons/fighting_spear"
+"weapons/oriental/two_handed_scimitar"
 
-// if (this.m.Items.getItemAtSlot(this.Const.ItemSlot.Mainhand) == null)
-// {
-// 	local weapons = [
-// 		"weapons/noble_sword",
-// 		"weapons/fighting_axe",
-// 		"weapons/warhammer",
-// 		"weapons/legend_glaive",
-// 		"weapons/fighting_spear",
-// 		"weapons/winged_mace",
-// 		"weapons/arming_sword",
-// 		"weapons/military_cleaver"
-// 	];
-// 	// "shields/heater_shield",
-// 	// "shields/kite_shield"
-// }
+"shields/oriental/metal_round_shield"
 
-// shields.extend([
-// 	"shields/named/named_bandit_kite_shield",
-// 	"shields/named/named_bandit_heater_shield"
-// ]);
+
+// "weapons/named/named_shamshir"
+// "weapons/named/named_qatal_dagger"
+// "weapons/named/named_swordlance"
+// "weapons/named/named_polemace"
+// "weapons/named/named_two_handed_scimitar"
+// "weapons/named/named_spear"
+
+// "shields/named/named_sipar_shield"
+

@@ -124,7 +124,7 @@
 	"misc.gemstones" : 700, //1 units of cut emeralds //FEATURE_5: Change to trade item
 
 	//Removed
-	"misc.legend_cooking_spices" : 0, //TODO: Remove
+	"misc.legend_cooking_spices" : 0,
 
 //TENTS
 	"tent.hunter_tent" : 200,
@@ -346,7 +346,7 @@
 	//DAGGER
 	"weapon.legend_shiv" : 0,                   		//( 10,  20) | AP: 0.20 | AE: 0.30
 	"weapon.legend_redback_dagger" : 0,      			//( 26,  52) | AP: 0.36 | AE: 0.70
-	"weapon.obsidian_dagger" : 0,            			//( 35,  50) | AP: 0.20 | AE: 1.15 //TODO: rework method of acquiring and fight
+	"weapon.obsidian_dagger" : 0,            			//( 35,  50) | AP: 0.20 | AE: 1.15 //FEATURE_9: rework method of acquiring and fight
 
 	"weapon.legend_wooden_stake" : 0,          			//( 10,  15) | AP: 0.30 | AE: 0.10
 	"weapon.knife" : 6,                        			//( 15,  25) | AP: 0.20 | AE: 0.50
@@ -361,14 +361,12 @@
 	"weapon.legend_katar" : 120,               			//( 30,  45) | AP: 0.30 | AE: 1.25
 
 	//SWORD
-	//FEATURE_2: swords are rarer, usually only equipped by swordmasters/nobles/strong units
 	//1H
 	"weapon.broken_ancient_sword" : 0,        			//( 30,  35) | AP: 0.20 | AE: 0.75
 	"weapon.legend_skin_flayer" : 0,         			//( 45,  60) | AP: 0.20 | AE: 0.90
 	"weapon.legend_man_mangler" : 0,         			//( 60,  95) | AP: 0.35 | AE: 1.00
 	"weapon.sickle" : 8,                       			//( 15,  20) | AP: -0.05 | AE: 0.50
-	"weapon.legend_named_sickle" : 90,        			//( 40,  55) | AP: 0.20 | AE: 0.90
-	//TODO: nerf named sickle, add auxillary flag for gathering
+	"weapon.legend_named_sickle" : 0,        			//( 40,  55) | AP: 0.20 | AE: 0.90
 
 	"weapon.shortsword" : 90,                  			//( 30,  40) | AP: 0.20 | AE: 0.75
 	"weapon.goblin_falchion" : 90,             			//( 35,  45) | AP: 0.20 | AE: 0.70
@@ -695,7 +693,7 @@
 	"shield.orc_light_shield" : 0,             			//DEF: ( 15M,  20R) | DUR: -12.00 | STA: 16.00
 	"shield.goblin_heavy_shield" : 0,          			//DEF: ( 10M,  10R) | DUR: -8.00 | STA: 16.00
 	"shield.orc_heavy_shield" : 0,            			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 72.00
-	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00 //TODO: remove from named drops
+	"shield.named_orc_heavy_shield" : 0,      			//DEF: ( 15M,  15R) | DUR: -22.00 | STA: 80.00
 	"shield.craftable_lindwurm" : 0,          			//DEF: ( 17M,  25R) | DUR: -14.00 | STA: 64.00
 	"shield.craftable_schrat" : 0,           			//DEF: ( 20M,  17R) | DUR: -12.00 | STA: 60.00
 	"shield.craftable_kraken" : 0,           			//DEF: ( 24M,  24R) | DUR: -15.00 | STA: 50.00
@@ -935,7 +933,7 @@
 	"legend_armor.body.legend_southern_tabard" : 40,                             //DUR: 10.00 | STA: 0.00
 	"legend_armor.named_tabard" : 264,                                  		//DUR: 10.00 | STA: 0.00
 
-	//VI //TODO: only the redback silk cloak looks good, possible use it again in future
+	//VI //FEATURE_9: only the redback silk cloak looks good, possible use it again in future
 	"legend_armor.body.lindwurm_scales" : 0,                          			//DUR: 25.00 | STA: -2.00
 	"legend_armor.body.legend_stollwurm_scales" : 0,                  			//DUR: 30.00 | STA: -4.00
 	"legend_armor.body.serpent_skin" : 0,                              			//DUR: 25.00 | STA: -2.00

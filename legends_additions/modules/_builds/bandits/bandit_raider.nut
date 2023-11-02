@@ -73,13 +73,13 @@
 ::B.Info[::Const.EntityType.BanditRaider].Builds["1H Kite Shield"] <- {
 	Name = "1H Kite Shield",
 	Pattern = [
+        ["scripts/skills/perks/perk_rotation"],
         ["T", 1],
-        ["D", 2],
-        ["Z", "scripts/skills/perks/perk_shield_bash"],
+        ["scripts/skills/perks/perk_shield_bash"],
         ["W", 4],
         ["T", 5],
         ["D", 6],
-        ["Z", "scripts/skills/perks/perk_shield_expert"],
+        ["scripts/skills/perks/perk_shield_expert"],
     ],
 	LevelUps = [
 		["Health", 7, 0, 2],
@@ -113,13 +113,13 @@
 ::B.Info[::Const.EntityType.BanditRaider].Builds["1H Shield"] <- {
 	Name = "1H Shield",
 	Pattern = [
+        ["scripts/skills/perks/perk_rotation"],
         ["T", 1],
-        ["D", 2],
-        ["Z", "scripts/skills/perks/perk_shield_bash"],
+        ["scripts/skills/perks/perk_shield_bash"],
         ["W", 4],
         ["T", 5],
         ["D", 6],
-        ["Z", "scripts/skills/perks/perk_shield_expert"],
+        ["scripts/skills/perks/perk_shield_expert"],
     ],
 	LevelUps = [
 		["Health", 7, 0, 2],
@@ -155,11 +155,11 @@
 	Pattern = [
         ["T", 1],
         ["D", 2],
-        ["Z", "scripts/skills/perks/perk_legend_net_repair"],
+        ["scripts/skills/perks/perk_legend_net_repair"],
         ["W", 4],
         ["T", 5],
         ["D", 6],
-        ["Z", "scripts/skills/perks/perk_legend_net_casting"],
+        ["scripts/skills/perks/perk_legend_net_casting"],
     ],
 	LevelUps = [
 		["Health", 7, 0, 2],

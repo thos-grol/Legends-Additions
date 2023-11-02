@@ -7,17 +7,9 @@
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 		this.m.PerkTreeDynamicMins.Traits = 3;
 
-		//TODO: remove test code
-
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				::Const.Perks.HammerTree,
-				::Const.Perks.FlailTree,
-				::Const.Perks.CleaverTree,
-				::Const.Perks.SwordTree,
-				// ::Const.Perks.PolearmTree,
-				::Const.Perks.SpearTree,
-				// ::Const.Perks.BowTree,
+				::Const.Perks.PolearmTree,
 				::Const.Perks.AxeTree,
 			],
 			Defense = [
@@ -33,7 +25,6 @@
 			],
 			Magic = []
 		};
-		//FEATURE_6: Idea? add arena wins trait to gladiator.
 	}
 
 	o.onAddEquipment = function()

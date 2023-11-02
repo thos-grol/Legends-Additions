@@ -1,18 +1,20 @@
-//TODO: convert nomads to abstract
-	//TODO: nomads, remove indebted
-	//TODO: examine slave revolt contract
-	//TODO: less ranged units
+//TODO: test direwolf hunt
 
-//TODO: convert orcs to abstract
-//TODO: convert goblins to abstract
+//FEATURE_0: convert orcs to abstract
+//TOFEATURE_0DO: convert goblins to abstract
 
-//TODO: finish spider, alp
-	//TODO: spiders, remove roaming spiders, they are stationary monsters
+//FEATURE_0: finish spider, alp
+	//FEATURE_0: spiders, remove roaming spiders, they are stationary monsters
 		//revamp spider nest with tiers of spiders
-//TODO: finish undead - ghosts, zombies, necros, necrosavant
+//FEATURE_0: finish undead - ghosts, zombies, necros, necrosavant
 
-//TODO: retinue rework
-	//TODO: anatomist
+//FEATURE_0: retinue rework
+	//FEATURE_0: anatomist
+    //FEATURE_0: negotiator
+
+
+//FEATURE_0: add more builds based on playthrough test
+//FEATURE_0: revise armor for troops
 
 //////////////////////////////////////////////
 

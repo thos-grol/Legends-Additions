@@ -94,10 +94,8 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bully"));
 
 		//Bandit Leader Free Traits
-		this.m.Skills.add(::new("scripts/skills/actives/rally_the_troops"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_captain"));
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_shields_up"));
-		// this.m.Skills.add(::new("scripts/skills/perks/perk_rally_the_troops"));
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_hold_the_line"));
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_legend_push_forward"));
 

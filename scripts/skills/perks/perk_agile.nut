@@ -35,7 +35,7 @@ this.perk_agile <- this.inherit("scripts/skills/skill", {
 		if (!isEnabled()) return;
 		_properties.MeleeDefense += 10;
 		_properties.RangedDefense += 10;
-		
+
 	}
 
 });

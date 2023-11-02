@@ -398,6 +398,15 @@ local perks = [
         IconDisabled = "ui/perks/pokepoke_bw.png",
         Const = "PokePoke"
     },
+    {
+        ID = "perk.pattern_recognition",
+        Script = "scripts/skills/perks/perk_pattern_recognition",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/pattern_recognition.png", //TODO: pattern recog art
+        IconDisabled = "ui/perks/pattern_recognition_bw.png",
+        Const = "PatternRecognition"
+    },
     // {
 	// 	ID = "perk.eldritch_blast",
 	//     Script = "scripts/skills/perks/cultist_eldritch_blast",

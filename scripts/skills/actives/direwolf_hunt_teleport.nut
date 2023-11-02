@@ -95,7 +95,7 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 
 		this.Sound.play("sounds/monster/direwolf_howl.wav", 500.0, actor.getPos());
-		
+
 		local tag = {
 			Skill = this,
 			User = _user,
@@ -197,7 +197,7 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 //////////////////////////////////////////////////////////////////////////////
 
 	function onStrike( _tag )
-	{		
+	{
 		_tag.TargetTile = this.m.HuntTile;
 
 		local s = [
@@ -309,9 +309,9 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 	{
 		if (_target.isNonCombatant()) return;
 
-		if (!_target.getSkills().hasSkill("effects.staggered")) 
+		if (!_target.getSkills().hasSkill("effects.staggered"))
 				_target.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
-		
+
 		if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer) ::Z.Log.status(_target, "staggered (1 turn)");
 
 		if (!_target.getCurrentProperties().IsImmuneToKnockBackAndGrab && !_target.getCurrentProperties().IsRooted)
@@ -325,7 +325,7 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 
 			this.m.TilesUsed.push(knockToTile.ID);
 
-			if (!_user.isHiddenToPlayer() && (_targetTile.IsVisibleForPlayer || knockToTile.IsVisibleForPlayer)) 
+			if (!_user.isHiddenToPlayer() && (_targetTile.IsVisibleForPlayer || knockToTile.IsVisibleForPlayer))
 				::Z.Log.status(_target, "knocked back");
 
 			local skills = _target.getSkills();
@@ -403,9 +403,9 @@ this.direwolf_hunt_teleport <- this.inherit("scripts/skills/skill", {
 		if (_tag.HitInfo.DamageRegular != 0) _entity.onDamageReceived(_tag.Attacker, _tag.Skill, _tag.HitInfo);
 	}
 
-	
 
-	
+
+
 
 });
 

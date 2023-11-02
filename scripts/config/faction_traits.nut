@@ -175,7 +175,7 @@ gt.Const.FactionTrait <- {
 			"scripts/factions/contracts/slave_uprising_action",
 			"scripts/factions/contracts/item_delivery_action",
 			"scripts/factions/contracts/escort_caravan_action",
-			"scripts/factions/contracts/hunting_serpents_action", //TODO: rework giant serpents
+			"scripts/factions/contracts/hunting_serpents_action",
 			//"scripts/factions/contracts/hunting_sand_golems_action",
 			//"scripts/factions/contracts/hunting_mummies_action", //FEATURE_5: mummy rework
 			"scripts/factions/contracts/conquer_holy_site_action",

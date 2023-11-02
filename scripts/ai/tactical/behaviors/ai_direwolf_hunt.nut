@@ -1,4 +1,3 @@
-//TODO: rewrite targeting. Pick hunt target first, and then find intemediary point
 this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 	m = {
 		TargetTile = null,
@@ -28,22 +27,17 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 		if (_entity.getCurrentProperties().IsRooted) return ::Const.AI.Behavior.Score.Zero;
 
 		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
-
 		if (this.m.Skill == null) return ::Const.AI.Behavior.Score.Zero;
-		this.m.Skill.m.HuntTile = null;
 
-		local opponents = this.getAgent().getKnownOpponents();
-		local func = this.findBestTarget(_entity, opponents);
+		this.m.Skill.m.HuntTile = pick_hunt(_entity);
+		if (this.m.Skill.m.HuntTile == null) return ::Const.AI.Behavior.Score.Zero;
+
+		local func = this.findBestTarget(_entity, this.getAgent().getKnownOpponents());
 		while (resume func == null)
 		{
 			yield null;
 		}
-
 		if (this.m.TargetTile == null) return ::Const.AI.Behavior.Score.Zero;
-
-		local hunt_target = pick_hunt(_entity);
-		if (hunt_target == null) return ::Const.AI.Behavior.Score.Zero;
-		this.m.Skill.m.HuntTile = hunt_target;
 
 		return 100000000;
 	}
@@ -121,25 +115,16 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 
 						for( local i = 0; i < 6; i = ++i )
 						{
-							if (!targetTile.hasNextTile(i))
+							if (!targetTile.hasNextTile(i)) continue;
+							local adjacentTile = targetTile.getNextTile(i);
+							if (isUsableOn_local(_entity, adjacentTile, tile))
 							{
-							}
-							else
-							{
-								local adjacentTile = targetTile.getNextTile(i);
-
-								if (isUsableOn_local(_entity, adjacentTile, tile))
-								{
-									usable = true;
-									break;
-								}
+								usable = true;
+								break;
 							}
 						}
 
-						if (usable)
-						{
-							break;
-						}
+						if (usable) break;
 					}
 
 					if (usable)
@@ -206,8 +191,8 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 		{
 			if (_tile.IsEmpty) return;
 			if (_tile.getEntity() == null) return;
+			if (!_tile.getEntity().isAlive()) return;
 			if (!_tile.getEntity().isAttackable()) return;
-			if (!_tile.getEntity().isAlive() || _tile.getEntity().isDying()) return;
 			if (result.User.isAlliedWith(_tile.getEntity())) return;
 
 			result.Tiles.push(_tile);
@@ -253,7 +238,7 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 			return 0;
 		};
 		targets.sort(comparator_SafetyFactor);
-		return targets[0].Tile; //pick the furthest, safest tile to jump to.
+		return targets[0].Tile; //pick the furthest, safest tile to attack.
 	}
 
 });

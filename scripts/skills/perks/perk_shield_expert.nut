@@ -6,7 +6,8 @@
 + "\n " + ::MSU.Text.colorGreen("– 50%") + " shield damage recieved to a minimum of 1"
 
 +"\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On turn end:")
-+ "\nThis unit shieldwalls or fortifies if it hasn't already. Has 6 charges."
++ "\nThis unit shieldwalls or fortifies if it hasn't already. Has 4 charges."
++ "\n " + ::MSU.Text.colorRed("Charges only decrement with enemy in ZOC.")
 
 +"\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Modifies Knock Back:")
 + "\n " + ::MSU.Text.colorGreen("+25%") + " chance to hit for Knockback";
@@ -16,7 +17,7 @@
 
 this.perk_shield_expert <- this.inherit("scripts/skills/skill", {
 	m = {
-		TurnsLeft = 6,
+		TurnsLeft = 4,
 		Skills = [
 			"actives.legend_fortify_skill",
 			"actives.shieldwall"
@@ -50,7 +51,7 @@ this.perk_shield_expert <- this.inherit("scripts/skills/skill", {
 
 	function onCombatStarted()
 	{
-		this.m.TurnsLeft = 6;
+		this.m.TurnsLeft = 4;
 	}
 
 	function onCombatFinished()
@@ -89,7 +90,8 @@ this.perk_shield_expert <- this.inherit("scripts/skills/skill", {
 					break;
 				}
 			}
-			this.m.TurnsLeft--;
+
+			if (actor.getTile().hasZoneOfControlOtherThan(actor.getAlliedFactions())) this.m.TurnsLeft--;
 		}
 
 	}

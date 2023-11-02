@@ -1,3 +1,4 @@
+//100-1000 range
 ::Z.Economy.Contracts <- {
 
     //Disabled
@@ -66,8 +67,9 @@
     "contract.hunting_webknechts" : 90,
     "contract.roaming_beasts" : 100,
     "contract.roaming_beasts_desert" : 100,
+    "contract.hunting_serpents" : 250,
 
-    "contract.hunting_serpents" : 110,
+
     "contract.hunting_unholds" : 150,
 
     "contract.hunting_alps" : 120,

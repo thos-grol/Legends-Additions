@@ -39,8 +39,9 @@ this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 			this.m.Immunity = false;
 			return;
 		}
-		this.m.Active = false;
 
+		local actor = this.getContainer().getActor();
+		this.m.Active = false;
 		this.Sound.play("sounds/general/parry.wav", 200.0, actor.getPos());
 
 		//negate the damage
@@ -48,7 +49,6 @@ this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 		_properties.DamageReceivedArmorMult *= 0;
 
 		//perform a riposte if possible
-		local actor = this.getContainer().getActor();
 		this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " parried the strike");
 
 		if (_attacker != null

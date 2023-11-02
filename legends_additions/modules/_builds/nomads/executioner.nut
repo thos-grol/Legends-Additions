@@ -1,7 +1,6 @@
-//Bandit Thug
+//TODO: executioner
 //Lvl 6 Peasant template - Avg Daytaler stats
-
-::Const.Tactical.Actor.BanditThug <- {
+::Const.Tactical.Actor.NomadCutthroat <- {
 	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 55,
@@ -21,7 +20,7 @@
 	FatigueRecoveryRate = 15
 };
 
-::B.Info[::Const.EntityType.BanditThug] <- {
+::B.Info[::Const.EntityType.NomadCutthroat] <- {
     Level = 6,
     Pattern = [
         ["T", 1],
@@ -44,43 +43,25 @@
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/woodcutters_axe",
+			"scripts/items/weapons/oriental/saif",
 		],
 		[
-			"scripts/items/weapons/goedendag",
+			"scripts/items/weapons/oriental/nomad_mace",
 		],
 		[
-			"scripts/items/weapons/pitchfork",
-		],
-		[
-			"scripts/items/weapons/hatchet",
-		],
-		[
-			"scripts/items/weapons/bludgeon",
-		],
-		[
-			"scripts/items/weapons/pickaxe",
-		],
-		[
-			"scripts/items/weapons/reinforced_wooden_flail",
-		],
-		[
-			"scripts/items/weapons/legend_militia_glaive",
-		],
-		[
-			"scripts/items/weapons/legend_ranged_wooden_flail",
+			"scripts/items/weapons/militia_spear",
 		]
 	],
 	Builds = {},
 	BuildsChance = 15
 };
 
-::B.Info[::Const.EntityType.BanditThug].Builds["1H Net"] <- {
-	Name = "1H Net",
+::B.Info[::Const.EntityType.BanditRaider].Builds["1H Shield"] <- {
+	Name = "1H Shield",
 	Pattern = [
-        ["T", 1],
-        ["D", 2],
-        ["scripts/skills/perks/perk_legend_net_repair"],
+        ["scripts/skills/perks/perk_rotation"],
+        ["T", 3],
+        ["scripts/skills/perks/perk_shield_bash"],
         ["W", 4],
         ["T", 5],
     ],
@@ -91,17 +72,17 @@
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/hatchet",
+			"scripts/items/weapons/oriental/saif",
+			"scripts/items/shields/oriental/southern_light_shield"
 		],
 		[
-			"scripts/items/weapons/bludgeon",
+			"scripts/items/weapons/oriental/nomad_mace",
+			"scripts/items/shields/oriental/southern_light_shield"
 		],
 		[
-			"scripts/items/weapons/reinforced_wooden_flail",
+			"scripts/items/weapons/militia_spear",
+			"scripts/items/shields/oriental/southern_light_shield"
 		],
-		[
-			"scripts/items/weapons/legend_militia_glaive",
-		]
-	],
+	]
 };
 
