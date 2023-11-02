@@ -96,7 +96,7 @@
 			"scripts/items/weapons/scimitar"
 		],
 		[
-			"scripts/items/weapons/three_headed_flail",
+			"scripts/items/weapons/flail",
 			"scripts/items/shields/oriental/metal_round_shield"
 		],
 	]

@@ -24,5 +24,3 @@
         actor.setSpriteOffset("insects_15", this.createVec(10, 0));
 	}
 });
-
-//FEATURE_1: Schrats with fly protection?

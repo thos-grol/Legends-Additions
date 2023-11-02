@@ -71,7 +71,7 @@ this.ai_follow_up <- this.inherit("scripts/ai/tactical/behavior", {
 			{
 				this.logInfo("Can kill " + meleeTarget.getName() + " hence no Follow Up");
 			}
-			
+
 			return ::Const.AI.Behavior.Score.Zero;
 		}
 
@@ -108,9 +108,9 @@ this.ai_follow_up <- this.inherit("scripts/ai/tactical/behavior", {
 					continue;
 				}
 
-				local allyTile = ally.getTile();				
+				local allyTile = ally.getTile();
 				local allyAttack = ally.getSkills().getAttackOfOpportunity();
-				
+
 				if (allyAttack.isInRange(targetTile, allyTile) && allyAttack.onVerifyTarget(allyTile, targetTile))
 				{
 					surroundingAllies++;
@@ -144,7 +144,7 @@ this.ai_follow_up <- this.inherit("scripts/ai/tactical/behavior", {
 			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		return ::Const.AI.Behavior.Score.PTRFollowUp * score;
+		return ::Const.AI.Behavior.Score.FollowUp * score;
 	}
 
 	function onExecute( _entity )

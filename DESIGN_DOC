@@ -1,7 +1,5 @@
-//TODO: ai do not use riposte if have sword mastery
-
 //FEATURE_0: convert orcs to abstract
-//TOFEATURE_0DO: convert goblins to abstract
+//FEATURE_0: convert goblins to abstract
 
 //FEATURE_0: finish spider, alp
 	//FEATURE_0: spiders, remove roaming spiders, they are stationary monsters
@@ -15,6 +13,8 @@
 
 //FEATURE_0: add more builds based on playthrough test
 //FEATURE_0: revise armor for troops
+
+//FEATURE_0: witcher mod for inspirations
 
 //////////////////////////////////////////////
 

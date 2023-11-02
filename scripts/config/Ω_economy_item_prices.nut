@@ -135,7 +135,7 @@
 	"tent.gather_tent" : 300,
 	"tent.healer_tent" : 300,
 	"tent.repair_tent" : 300,
-	"tent.craft_tent" : 300, //FEATURE_0: disable + disable crafting in party
+	"tent.craft_tent" : 300,
 
 	"tent.training_tent" : 500,
 	"tent.enchant_tent" : 1000,
@@ -220,7 +220,7 @@
 	"misc.goblin_rank_insignia" : 0, //FEATURE_0: Remove
 	"misc.webbed_valuables" : 0, //FEATURE_0: Remove
 	"misc.deformed_valuables" : 0, //FEATURE_0: Remove
-	"misc.legend_bear_fur" : 0, //FEATURE_0: Remove and remove bears
+	"misc.legend_bear_fur" : 0,
 	"misc.lindwurm_hoard" : 0, //FEATURE_0: Remove
 	"misc.jeweled_crown" : 0, //FEATURE_0: Remove
 	"misc.glittering_rock" : 0, //FEATURE_0: Remove
@@ -545,8 +545,8 @@
 	"weapon.reinforced_wooden_flail" : 9,     			//( 20,  45) | AP: 0.30 | AE: 0.80
 	"weapon.flail" : 48,                      			//( 25,  55) | AP: 0.30 | AE: 1.00
 	"weapon.named_flail" : 72,                			//( 25,  55) | AP: 0.30 | AE: 1.00
-	"weapon.three_headed_flail" : 100,         			//( 30,  75) | AP: 0.30 | AE: 1.00
-	"weapon.named_three_headed_flail" : 150,   			//( 30,  75) | AP: 0.30 | AE: 1.00
+	"weapon.three_headed_flail" : 0,         			//( 30,  75) | AP: 0.30 | AE: 1.00
+	"weapon.named_three_headed_flail" : 0,   			//( 30,  75) | AP: 0.30 | AE: 1.00
 
 	//2H
 	"weapon.legend_ranged_wooden_flail" : 18,   		//( 20,  50) | AP: 0.30 | AE: 0.50

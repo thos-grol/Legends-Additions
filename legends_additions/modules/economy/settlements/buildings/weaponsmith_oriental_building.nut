@@ -155,7 +155,7 @@
 				{
 					R = 80,
 					P = 1.0,
-					S = "weapons/three_headed_flail"
+					S = "weapons/flail"
 				},
 				{
 					R = 95,

@@ -30,7 +30,7 @@ this.anatomist <- this.inherit("scripts/entity/tactical/enemies/bandit_raider", 
 			if (this.Math.rand(1, 100) <= 50)  this.m.Items.equip(::new("scripts/items/helmets/undertaker_hat"));
 			else this.m.Items.equip(::new("scripts/items/helmets/physician_mask"));
 		}
-		
+
 		if (roll <= 5.0 * this.getScaledDifficultyMult()) this.makeMiniboss();
 	}
 
@@ -43,11 +43,6 @@ this.anatomist <- this.inherit("scripts/entity/tactical/enemies/bandit_raider", 
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
 	{
-
-		// if (this.Math.rand(1.0, 100.0) <= 5.0)
-		// {
-		// 	//FEATURE_6: Anatomist research notes + add to possible books
-		// }
 		this.human.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 

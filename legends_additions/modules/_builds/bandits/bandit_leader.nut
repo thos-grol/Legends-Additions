@@ -102,14 +102,14 @@
 	],
 };
 
-::B.Info[::Const.EntityType.BanditLeader].Builds["Longsword Instinct"] <- {
+::B.Info[::Const.EntityType.BanditLeader].Builds["Longsword"] <- {
 	Name = "Longsword Instinct",
 	Pattern = [
-        ["scripts/skills/perks/perk_lone_wolf"], //1
+        ["scripts/skills/perks/perk_legend_recuperation"], //1
         ["D", 2], //2
-        ["scripts/skills/perks/perk_underdog"], //3
+        ["scripts/skills/perks/perk_steadfast"], //3
         ["scripts/skills/perks/perk_mastery_swordc"], //4
-        ["scripts/skills/perks/perk_survival_instinct"], //5
+        ["scripts/skills/perks/perk_hold_out"], //5
         ["D", 6],
         ["scripts/skills/perks/perk_nine_lives"], //7
         ["scripts/skills/perks/perk_reach_advantage"], //8
@@ -192,13 +192,32 @@
 	],
 };
 
-//TODO: 2h flail build
-
-//TODO: axe duelist - vicious, calm
-//TODO: cleaver duelist - bleeding, calm, steadfast
-// if (this.m.Items.getItemAtSlot(this.Const.ItemSlot.Mainhand) == null)
-// {
-// 	local weapons = [
-// 		"weapons/fighting_axe",
-// 		"weapons/military_cleaver"
-// 	];
+::B.Info[::Const.EntityType.BanditLeader].Builds["2H Flail"] <- {
+	Name = "2H Flail",
+	Pattern = [
+        ["scripts/skills/perks/perk_head_hunter"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_fearsome"], //3
+        ["scripts/skills/perks/perk_mastery_flailc"], //4
+        ["scripts/skills/perks/perk_mastery_hammerc"], //5
+        ["D", 6],
+        ["scripts/skills/perks/perk_fortified_mind"], //7
+        ["scripts/skills/perks/perk_berserk"], //8
+        ["scripts/skills/perks/perk_stance_prisoner"], //9
+    ],
+	LevelUps = [
+		["Resolve", 9, 1, 3],
+		["Melee Skill", 9, 2, 3],
+		["Melee Defense", 9, 2, 3],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/two_handed_flail",
+		],
+	],
+	NamedLoadout = [
+		[
+			"weapons/named/named_two_handed_flail",
+		]
+	],
+};

@@ -92,6 +92,19 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 				this.m.Items.equip(::new(item));
 			}
 
+			local weapon = this.getMainhandItem();
+			::logInfo(weapon.m.ID);
+			this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
+
+			try {
+				if (weapon.isWeaponType(::Const.Items.WeaponType.Crossbow))
+					this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
+				else if (weapon.isWeaponType(::Const.Items.WeaponType.Bow))
+					this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+				else if (weapon.isWeaponType(::Const.Items.WeaponType.Firearm))
+					this.m.Items.equip(this.new("scripts/items/ammo/powder_bag"));
+			} catch (exception){}
+
 			//build add perks
 			foreach( pattern in this.m.Build.Pattern)
 			{

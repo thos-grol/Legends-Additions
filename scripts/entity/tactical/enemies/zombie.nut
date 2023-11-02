@@ -639,23 +639,14 @@ this.zombie <- this.inherit("scripts/entity/tactical/abstract_", {
 		b.IsAffectedByNight = false;
 		b.IsAffectedByInjuries = false;
 		b.IsImmuneToBleeding = true;
-
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 90)
-		{
-			b.DamageTotalMult += 0.1;
-		}
+		b.DamageTotalMult *= 2.0;
 
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
-
-		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-		{
-			this.m.Hitpoints = b.Hitpoints * 1.5;
-		}
-
 		this.m.CurrentProperties = clone b;
 		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
 		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+
 		local app = this.getItems().getAppearance();
 		app.Body = "bust_naked_body_0" + this.Math.rand(0, 2);
 		app.Corpse = app.Body + "_dead";

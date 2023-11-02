@@ -72,7 +72,7 @@
 		]
 	],
 	Builds = {},
-	BuildsChance = 15
+	BuildsChance = 30
 };
 
 ::B.Info[::Const.EntityType.BanditThug].Builds["1H Net"] <- {

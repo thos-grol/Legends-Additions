@@ -51,9 +51,6 @@
         	"scripts/items/weapons/pike"
         ],
         [
-        	"scripts/items/weapons/warbrand"
-        ],
-        [
         	"scripts/items/weapons/longaxe"
         ],
         [
@@ -61,12 +58,6 @@
         ],
         [
         	"scripts/items/weapons/two_handed_mace"
-        ],
-        [
-       		"scripts/items/weapons/longsword"
-        ],
-        [
-        	"scripts/items/weapons/legend_longsword"
         ],
         [
         	"scripts/items/weapons/legend_two_handed_club"
@@ -125,13 +116,16 @@
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/hand_axe"
+			"scripts/items/weapons/fighting_axe"
 		],
 		[
 			"scripts/items/weapons/boar_spear"
 		],
 		[
 			"scripts/items/weapons/morning_star"
+		],
+		[
+			"scripts/items/weapons/military_cleaver"
 		],
 	],
 };
@@ -164,4 +158,28 @@
 			"scripts/items/weapons/morning_star"
 		],
 	],
+};
+
+::B.Info[::Const.EntityType.BanditVeteran].Builds["Longsword"] <- {
+	Name = "Longsword",
+	Pattern = [
+        ["scripts/skills/perks/perk_legend_recuperation"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_steadfast"], //3
+        ["scripts/skills/perks/perk_mastery_swordc"], //4
+        ["scripts/skills/perks/perk_hold_out"], //5
+        ["D", 6],
+        ["scripts/skills/perks/perk_nine_lives"], //7
+        ["scripts/skills/perks/perk_reach_advantage"], //8
+    ],
+	LevelUps = [
+		["Health", 8, 3, 3],
+		["Melee Skill", 8, 2, 3],
+		["Melee Defense", 8, 2, 3],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/legend_longsword",
+		],
+	]
 };
