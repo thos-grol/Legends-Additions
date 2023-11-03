@@ -1,4 +1,3 @@
-//TODO: barbarian_chosen
 this.barbarian_chosen <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
@@ -49,32 +48,6 @@ this.barbarian_chosen <- this.inherit("scripts/entity/tactical/abstract_human", 
 		this.m.Skills.update();
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_wildmen_01");
-		this.m.Skills.add(this.new("scripts/skills/actives/barbarian_fury_skill"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_underdog"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_adrenalin"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_anticipation"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_battle_forged"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_berserk"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_devastating_strikes"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_crippling_strikes"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_coup_de_grace"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_hold_out"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_recover"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_brawny"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
-
-		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-		{
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_overwhelm"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_relentless"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_alert"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_balance"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_onslaught"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_backstabber"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_mastery_fist"));
-			this.m.Skills.add(this.new("scripts/skills/traits/fearless_trait"));
-		}
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
@@ -86,17 +59,8 @@ this.barbarian_chosen <- this.inherit("scripts/entity/tactical/abstract_human", 
 		this.human.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 
-	function assignRandomEquipment()
+	function pickOutfit()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Mainhand))
-		{
-			local weapons = [
-				"weapons/barbarians/rusty_warblade",
-				"weapons/barbarians/heavy_rusty_axe"
-			];
-			this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
-		}
-
 		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Body) && this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head))
 		{
 			local armor = [
@@ -199,15 +163,8 @@ this.barbarian_chosen <- this.inherit("scripts/entity/tactical/abstract_human", 
 
 	function makeMiniboss()
 	{
-		if (!this.actor.makeMiniboss())
-		{
-			return false;
-		}
-
+		if (!this.actor.makeMiniboss()) return false;
 		this.getSprite("miniboss").setBrush("bust_miniboss");
-		local weapons = this.Const.Items.NamedBarbarianWeapons;
-		this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_fearsome"));
 		return true;
 	}
 

@@ -1,4 +1,4 @@
-gt.Const.Tactical.Actor.FrenziedDirewolf <- {
+::Const.Tactical.Actor.FrenziedDirewolf <- {
 	XP = 250,
 	ActionPoints = 12,
 	Hitpoints = 200,
@@ -64,10 +64,13 @@ this.direwolf_high <- this.inherit("scripts/entity/tactical/enemies/direwolf", {
 		{
 			this.m.Skills.getSkillByID("racial.werewolf").spawnIcon("status_effect_107", this.getTile());
 
-			if (this.Math.rand(1, 100) <= 50) //TODO: direwolf sound
-			{
-				this.playSound(this.Const.Sound.ActorEvent.Other1, 0.75, this.Math.rand(90, 100) * 0.01);
-			}
+			local s = [
+				"sounds/enemies/wolf_bite_01.wav",
+				"sounds/enemies/wolf_bite_02.wav",
+				"sounds/enemies/wolf_bite_03.wav",
+				"sounds/enemies/wolf_bite_04.wav"
+			];
+			this.Sound.play(::MSU.Array.rand(s), 100.0, this.getPos());
 
 			if (this.Math.rand(1, 100) <= 33)
 			{

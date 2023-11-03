@@ -1,0 +1,20 @@
+gt.Const.Tactical.Actor.OrcYoung <- {
+	XP = 250,
+	ActionPoints = 9,
+	Hitpoints = 200,
+	Bravery = 65,
+	Stamina = 150,
+	MeleeSkill = 60,
+	RangedSkill = 50,
+	MeleeDefense = -5,
+	RangedDefense = -5,
+	Initiative = 110,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	Armor = [
+		0,
+		0
+	],
+	FatigueRecoveryRate = 25,
+	DamageTotalMult = 1.15
+};

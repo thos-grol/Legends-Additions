@@ -70,7 +70,7 @@ gt.Const.World.Spawn.Barbarians <- {
 					MaxGuardsWeight = 50,
 					Guards = [
 						{
-							Type = this.Const.World.Spawn.Troops.FrenziedDirewolf,
+							Type = this.Const.World.Spawn.Troops.DirewolfHIGH,
 							Cost = 50,
 							function Weight( scale )
 							{

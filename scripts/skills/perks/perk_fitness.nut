@@ -2,6 +2,7 @@
 ::Const.Strings.PerkDescription.Fitness <- "Greater fitness, heavier armor..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("– 20%") + " Fatigue from Mainhand, Offhand, Head and Body Gear"
++ "\n" + ::MSU.Text.colorGreen("– 50%") + " effect of Fatigue on Initiative"
 + "\n\n" + ::MSU.Text.colorRed("Stacks with Brawny");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Fitness].Name = ::Const.Strings.PerkName.Fitness;
@@ -30,17 +31,11 @@ this.perk_fitness <- ::inherit("scripts/skills/skill", {
 		local fat = actor.getItems().getStaminaModifier([::Const.ItemSlot.Body, ::Const.ItemSlot.Head]);
 
 		local mainhand = actor.getMainhandItem();
-		if (mainhand != null)
-		{
-			fat += mainhand.getStaminaModifier();
-		}
-
+		if (mainhand != null) fat += mainhand.getStaminaModifier();
 		local offhand = actor.getOffhandItem();
-		if (offhand != null)
-		{
-			fat += offhand.getStaminaModifier();
-		}
+		if (offhand != null) fat += offhand.getStaminaModifier();
 
 		_properties.Stamina -= fat * this.m.FatPenReduction * 0.01;
+		_properties.FatigueToInitiativeRate *= 0.5;
 	}
 });

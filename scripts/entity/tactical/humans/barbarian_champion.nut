@@ -1,5 +1,3 @@
-//TODO: barbarian_champion
-
 this.barbarian_champion <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
@@ -50,60 +48,10 @@ this.barbarian_champion <- this.inherit("scripts/entity/tactical/abstract_human"
 		this.m.Skills.update();
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_wildmen_01");
-		this.m.Skills.add(this.new("scripts/skills/actives/barbarian_fury_skill"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_underdog"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_adrenalin"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_anticipation"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_battle_forged"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_berserk"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_crippling_strikes"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_coup_de_grace"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_hold_out"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_recover"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_brawny"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_onslaught"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
-
-		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-		{
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_overwhelm"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_relentless"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_alert"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_balance"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_backstabber"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_mastery_fist"));
-			this.m.Skills.add(this.new("scripts/skills/traits/fearless_trait"));
-		}
 	}
 
-	function assignRandomEquipment()
+	function pickOutfit()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Mainhand))
-		{
-			local weapons = [
-				"weapons/barbarians/skull_hammer",
-				"weapons/barbarians/two_handed_spiked_mace",
-				"weapons/barbarians/rusty_warblade",
-				"weapons/barbarians/heavy_rusty_axe"
-			];
-			this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
-		}
-
-		if (this.getIdealRange() == 1 && this.Math.rand(1, 100) <= 50)
-		{
-			local weapons = [
-				"weapons/throwing_axe",
-				"weapons/javelin"
-			];
-
-			if (this.Const.DLC.Unhold)
-			{
-				weapons.push("weapons/throwing_spear");
-			}
-
-			this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
-		}
-
 		local armor = [
 			[
 				33,
@@ -143,6 +91,23 @@ this.barbarian_champion <- this.inherit("scripts/entity/tactical/abstract_human"
 		}
 	}
 
+	function pickNamed()
+	{
+		local r = this.Math.rand(1, 3);
+		if (r == 1) this.m.IsMinibossWeapon <- true;
+		else if (r == 2)
+		{
+			local weightName = this.Const.World.Common.convNameToList(this.Const.Items.NamedBarbarianArmors);
+			this.m.Items.equip(this.Const.World.Common.pickArmor(weightName));
+		}
+		else
+		{
+			local weightName = this.Const.World.Common.convNameToList(this.Const.Items.NamedBarbarianHelmets);
+			this.m.Items.equip(this.Const.World.Common.pickHelmet(weightName));
+		}
+
+	}
+
 	function makeMiniboss()
 	{
 		if (!this.actor.makeMiniboss())
@@ -151,27 +116,6 @@ this.barbarian_champion <- this.inherit("scripts/entity/tactical/abstract_human"
 		}
 
 		this.getSprite("miniboss").setBrush("bust_miniboss");
-		local weapons = this.Const.Items.NamedBarbarianWeapons;
-		local armor = this.Const.Items.NamedBarbarianArmors;
-		local helmets = this.Const.Items.NamedBarbarianHelmets;
-		local r = this.Math.rand(1, 3);
-
-		if (r == 1)
-		{
-			this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
-		}
-		else if (r == 2)
-		{
-			local weightName = this.Const.World.Common.convNameToList(armor);
-			this.m.Items.equip(this.Const.World.Common.pickArmor(weightName));
-		}
-		else
-		{
-			local weightName = this.Const.World.Common.convNameToList(helmets);
-			this.m.Items.equip(this.Const.World.Common.pickHelmet(weightName));
-		}
-
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_fearsome"));
 		return true;
 	}
 

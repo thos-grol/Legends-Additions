@@ -21,22 +21,14 @@
 	FatigueRecoveryRate = 15
 };
 
-"scripts/items/weapons/barbarians/axehammer" //1h hammer
-"scripts/items/weapons/barbarians/crude_axe" //1h axe
-"scripts/items/weapons/barbarians/blunt_cleaver" //1h cleaver
-"scripts/items/weapons/barbarians/skull_hammer" //2h hammer
-"scripts/items/weapons/barbarians/two_handed_spiked_mace" //2h hammer
-
-"scripts/items/shields/wooden_shield_old" //
-
 ::B.Info[::Const.EntityType.BarbarianMarauder] <- {
     Level = 8,
 	Builds = {},
 	BuildsChance = 100
 };
 
-::B.Info[::Const.EntityType.BanditLeader].Builds["2H Flail"] <- {
-	Name = "2H Flail",
+::B.Info[::Const.EntityType.BarbarianMarauder].Builds["Duelist"] <- {
+	Name = "Duelist",
 	Pattern = [
         ["scripts/skills/perks/perk_legend_alert"],
         ["D", 2],
@@ -53,12 +45,71 @@
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/two_handed_flail",
+			"scripts/items/weapons/barbarians/axehammer",
+		],
+		[
+			"scripts/items/weapons/barbarians/crude_axe",
+		],
+		[
+			"scripts/items/weapons/barbarians/blunt_cleaver",
 		],
 	],
-	NamedLoadout = [
+};
+
+::B.Info[::Const.EntityType.BarbarianMarauder].Builds["Shield"] <- {
+	Name = "Shield",
+	Pattern = [
+		["scripts/skills/perks/perk_rotation"],
+        ["T", 1],
+        ["scripts/skills/perks/perk_shield_bash"],
+        ["W", 4],
+        ["scripts/skills/perks/perk_adrenalin"],
+        ["D", 6],
+        ["scripts/skills/perks/perk_shield_expert"],
+    ],
+	LevelUps = [
+		["Health", 7, 0, 2],
+		["Melee Skill", 7, 0, 2],
+		["Melee Defense", 7, 0, 2],
+	],
+	Loadout = [
 		[
-			"scripts/items/weapons/named/named_two_handed_flail",
-		]
+			"scripts/items/weapons/barbarians/axehammer",
+			"scripts/items/shields/wooden_shield_old"
+		],
+		[
+			"scripts/items/weapons/barbarians/crude_axe",
+			"scripts/items/shields/wooden_shield_old"
+		],
+		[
+			"scripts/items/weapons/barbarians/blunt_cleaver",
+			"scripts/items/shields/wooden_shield_old"
+		],
+	],
+};
+
+::B.Info[::Const.EntityType.BarbarianMarauder].Builds["Bludgeon"] <- {
+	Name = "Bludgeon",
+	Pattern = [
+        ["scripts/skills/perks/perk_legend_alert"],
+        ["D", 2],
+        ["scripts/skills/perks/perk_adrenalin"],
+        ["W", 3],
+        ["W", 4],
+        ["D", 6],
+        ["scripts/skills/perks/perk_strange_strikes"],
+    ],
+	LevelUps = [
+		["Initiative", 7, 0, 2],
+		["Melee Skill", 7, 0, 2],
+		["Melee Defense", 7, 0, 2],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/barbarians/skull_hammer",
+		],
+		[
+			"scripts/items/weapons/barbarians/two_handed_spiked_mace",
+		],
 	],
 };

@@ -1,6 +1,3 @@
-//FEATURE_0: convert barbarians to abstract
-
-//FEATURE_0: convert orcs to abstract
 //FEATURE_0: convert goblins to abstract
 
 //FEATURE_0: finish spider, alp
@@ -417,6 +414,8 @@ Undead cannot be charmed
 ::setSpawn("ghost_knight", ::Const.Faction.PlayerAnimals)
 ::setSpawn("bandit_leader", ::Const.Faction.PlayerAnimals)
 ::setSpawn("nomad_leader", ::Const.Faction.PlayerAnimals)
+
+::setSpawn("barbarian_madman", ::Const.Faction.PlayerAnimals)
 
 ::setSpawn("bandit_raider")
 
