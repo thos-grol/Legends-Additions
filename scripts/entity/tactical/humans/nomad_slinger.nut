@@ -1,5 +1,3 @@
-//TODO: nomad_slinger
-
 this.nomad_slinger <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
@@ -43,57 +41,22 @@ this.nomad_slinger <- this.inherit("scripts/entity/tactical/abstract_human", {
 			dirt.Visible = true;
 			dirt.Alpha = this.Math.rand(150, 255);
 		}
-
-		this.m.Skills.add(this.new("scripts/skills/actives/throw_dirt_skill"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_rotation"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_recover"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
-
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 30)
-		{
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_head_hunter"));
-		}
 	}
 
 	function onOtherActorDeath( _killer, _victim, _skill )
 	{
-		if (_victim.getType() == this.Const.EntityType.Slave && _victim.isAlliedWith(this))
-		{
-			return;
-		}
-
+		if (_victim.getType() == this.Const.EntityType.Slave && _victim.isAlliedWith(this)) return;
 		this.actor.onOtherActorDeath(_killer, _victim, _skill);
 	}
 
 	function onOtherActorFleeing( _actor )
 	{
-		if (_actor.getType() == this.Const.EntityType.Slave && _actor.isAlliedWith(this))
-		{
-			return;
-		}
-
+		if (_actor.getType() == this.Const.EntityType.Slave && _actor.isAlliedWith(this)) return;
 		this.actor.onOtherActorFleeing(_actor);
 	}
 
-	function assignRandomEquipment()
+	function pickOutfit()
 	{
-		local weapons = [
-			[
-				"weapons/oriental/nomad_sling"
-			]
-		];
-		local n = this.Math.rand(0, weapons.len() - 1);
-
-		foreach( w in weapons[n] )
-		{
-			this.m.Items.equip(this.new("scripts/items/" + w));
-		}
-
-		weapons = [
-			"weapons/knife",
-			"weapons/wooden_stick"
-		];
-		this.m.Items.addToBag(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 		this.m.Items.equip(this.Const.World.Common.pickArmor([
 			[
 				3,
@@ -127,6 +90,16 @@ this.nomad_slinger <- this.inherit("scripts/entity/tactical/abstract_human", {
 			]
 		];
 		this.m.Items.equip(this.Const.World.Common.pickHelmet(helmet));
+	}
+
+	function assignRandomEquipment()
+	{
+		this.abstract_human.assignRandomEquipment();
+		local weapons = [
+			"weapons/knife",
+			"weapons/wooden_stick"
+		];
+		this.m.Items.addToBag(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 	}
 
 });

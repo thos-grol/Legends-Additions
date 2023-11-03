@@ -1,8 +1,8 @@
-//TODO: desert_devil
 this.desert_devil <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
+		this.m.Name = "Blade Dancer";
 		this.m.Type = this.Const.EntityType.DesertDevil;
 		this.m.BloodType = this.Const.BloodType.Red;
 		this.m.XP = this.Const.Tactical.Actor.DesertDevil.XP;
@@ -22,32 +22,11 @@ this.desert_devil <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
 		b.setValues(this.Const.Tactical.Actor.DesertDevil);
-		b.IsSpecializedInSwords = true;
-		b.IsSpecializedInPolearms = true;
-		b.IsSpecializedInSpears = true;
-		b.IsSpecializedInCleavers = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_nomads");
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_anticipation"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_fast_adaption"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_battle_flow"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_nimble"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_duelist"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_underdog"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_steel_brow"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_head_hunter"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_crippling_strikes"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_dodge"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_berserk"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_overwhelm"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
-		this.m.Skills.add(this.new("scripts/skills/actives/throw_dirt_skill"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_adrenalin"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_footwork"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_recover"));
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
@@ -66,25 +45,8 @@ this.desert_devil <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.setDirty(true);
 	}
 
-	function assignRandomEquipment()
+	function pickOutfit()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Mainhand))
-		{
-			local weapons = [
-				"weapons/shamshir"
-			];
-
-			if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Offhand))
-			{
-				weapons.extend([
-					"weapons/oriental/swordlance",
-					"weapons/oriental/swordlance"
-				]);
-			}
-
-			this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
-		}
-
 		this.m.Items.equip(this.Const.World.Common.pickArmor([
 			[
 				1,
@@ -112,25 +74,11 @@ this.desert_devil <- this.inherit("scripts/entity/tactical/abstract_human", {
 		}
 	}
 
-	function makeMiniboss()
+	function pickNamed()
 	{
-		if (!this.actor.makeMiniboss())
-		{
-			return false;
-		}
-
-		this.getSprite("miniboss").setBrush("bust_miniboss");
-		local weapons = [
-			"weapons/named/named_shamshir",
-			"weapons/named/named_swordlance",
-			"weapons/named/named_swordlance"
-		];
-
-		if (this.Math.rand(1, 100) <= 75)
-		{
-			this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
-		}
-		else
+		//decide what item will be named
+		local r = this.Math.rand(1, 3);
+		if (r == 1)
 		{
 			this.m.Items.equip(this.Const.World.Common.pickArmor([
 				[
@@ -139,9 +87,13 @@ this.desert_devil <- this.inherit("scripts/entity/tactical/abstract_human", {
 				]
 			]));
 		}
+		else this.m.IsMinibossWeapon <- true;
+	}
 
-		this.m.BaseProperties.DamageDirectMult *= 1.25;
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_relentless"));
+	function makeMiniboss()
+	{
+		if (!this.actor.makeMiniboss()) return false;
+		this.getSprite("miniboss").setBrush("bust_miniboss");
 		return true;
 	}
 

@@ -147,19 +147,19 @@
 	"spawns.cart_01" : 260,
 	"spawns.cart_02" : 400,
 
-//LOOT //FEATURE_0: LOOT sort by tiers and price
-	"misc.signet_ring" : 960, //FEATURE_0: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
+//LOOT
+	"misc.signet_ring" : 960, //FEATURE_8: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
 	"misc.ancient_scroll" : 400,
 	"misc.legend_scroll" : 400,
-	"misc.ornate_tome" : 800, //FEATURE_0: Magic rework, contains knowledge, decipherable, generate more tome images, price based on book tiers
-	"misc.white_pearls" : 300, //FEATURE_0: 15 units, rework into item with ammount, trade goods, found in port cities/loot
+	"misc.ornate_tome" : 800, //FEATURE_8: Magic rework, contains knowledge, decipherable, generate more tome images, price based on book tiers
+	"misc.white_pearls" : 300, //FEATURE_8: 15 units, rework into item with ammount, trade goods, found in port cities/loot
 
-	//Monster drops //FEATURE_0: Loot prices and removal
-	"misc.growth_pearls" : 100, //FEATURE_0: 5 units, rework into item with ammount
-	"misc.soul_splinter" : 1200, //FEATURE_0: black soul gem, rare alp drop. used for necromancy
-	"misc.ancient_amber" : 800, //FEATURE_0: rare scrat drop. contains life energy
-	"misc.adrenaline_gland" : 100,
-	"misc.spider_silk" : 100,
+	//Monster drops
+	"misc.growth_pearls" : 0, //FEATURE_8: 5 units, rework into item with ammount
+	"misc.soul_splinter" : 0, //FEATURE_8: rework, black soul gem, used for necromancy
+	"misc.ancient_amber" : 0, //FEATURE_8: rare scrat drop. contains life energy
+	"misc.adrenaline_gland" : 0,
+	"misc.spider_silk" : 0,
 
 	"misc.ghoul_horn" : 0,
 	"misc.ghoul_teeth" : 0,
@@ -200,30 +200,30 @@
 	"misc.legend_banshee_essence" : 0,
 	"misc.legend_demon_hound_bones" : 0,
 
-	//FEATURE_0: Remove certain monster drops
+
 	"misc.snake_oil" : 0,
-	"misc.rainbow_scale" : 0, //FEATURE_0: Remove item and snakes for now
-	"misc.glistening_scales" : 0, //FEATURE_0: Remove
-	"misc.serpent_skin" : 350, //FEATURE_0: Remove
-	"misc.sabertooth" : 0, //FEATURE_0: Remove
-	"misc.golden_chalice" : 0, //FEATURE_0: Remove
-	"misc.ancient_gold_coins" : 0, //FIFEATURE_0XME: Remove
-	"misc.jade_broche" : 0, //FEATURE_0: Remove
-	"misc.silverware" : 0, //FEATURE_0: Remove
-	"misc.silver_bowl" : 0, //FEATURE_0: Remove
-	"misc.valuable_furs" : 0, //FEATURE_0: Remove and replace with "misc.furs" : 100
-	"misc.bone_figurines" : 0, //FEATURE_0: Remove
-	"misc.bead_necklace" : 0, //FEATURE_0: Remove
-	"misc.looted_valuables" : 0, //FEATURE_0: Remove
-	"misc.goblin_carved_ivory_iconographs" : 0, //FEATURE_0: Remove
-	"misc.goblin_minted_coins" : 0, //FEATURE_0: Remove
-	"misc.goblin_rank_insignia" : 0, //FEATURE_0: Remove
-	"misc.webbed_valuables" : 0, //FEATURE_0: Remove
-	"misc.deformed_valuables" : 0, //FEATURE_0: Remove
+	"misc.rainbow_scale" : 100,
+	"misc.glistening_scales" : 0,
+	"misc.serpent_skin" : 50,
+	"misc.sabertooth" : 0,
+	"misc.golden_chalice" : 0,
+	"misc.ancient_gold_coins" : 0,
+	"misc.jade_broche" : 0,
+	"misc.silverware" : 0, 
+	"misc.silver_bowl" : 0, 
+	"misc.valuable_furs" : 0,
+	"misc.bone_figurines" : 0, 
+	"misc.bead_necklace" : 0, 
+	"misc.looted_valuables" : 0, 
+	"misc.goblin_carved_ivory_iconographs" : 0, 
+	"misc.goblin_minted_coins" : 0, 
+	"misc.goblin_rank_insignia" : 0, 
+	"misc.webbed_valuables" : 0, 
+	"misc.deformed_valuables" : 0, 
 	"misc.legend_bear_fur" : 0,
-	"misc.lindwurm_hoard" : 0, //FEATURE_0: Remove
-	"misc.jeweled_crown" : 0, //FEATURE_0: Remove
-	"misc.glittering_rock" : 0, //FEATURE_0: Remove
+	"misc.lindwurm_hoard" : 0,
+	"misc.jeweled_crown" : 0,
+	"misc.glittering_rock" : 0,
 	"misc.hyena_fur" : 0,
 	"misc.acidic_saliva" : 0,
 
@@ -239,19 +239,19 @@
 	"misc.paint_white_green_yellow" : 0,
 
 	"misc.mysterious_herbs" : 0,
-	"misc.legend_mistletoe" : 30,
-	"misc.legend_wolfsbane" : 50,
+	"misc.legend_mistletoe" : 0,
+	"misc.legend_wolfsbane" : 0,
 
 
-//SPECIAL //FEATURE_0: Special prices
+//SPECIAL //FEATURE_8: Special prices
 	"misc.legendary_sword_blade" : 0,
 	"misc.legendary_sword_grip" : 0,
 	"misc.black_book" : 0,
 	"misc.broken_ritual_armor" : 0,
 	"misc.trade_jug" : 0,
-	"misc.golden_goose" : 0, //FEATURE_0: Remove the golden goose for now
+	"misc.golden_goose" : 0,
 
-//RUNE_SIGILS //FEATURE_0: Rune prices
+//RUNE_SIGILS //FEATURE_9: Rune prices and rework
 	"token.legend_vala_inscription" : 0,
 	"legend_helmet_upgrade.legend_rune_bravery" : 0,
 	"legend_helmet_upgrade.legend_rune_clarity" : 0,
@@ -306,19 +306,20 @@
 	"accessory.legend_pack_large" : 0,
 	"accessory.legend_catapult" : 0,
 
-	//GEAR
+	//GEAR //FEATURE_9: some accessories are now unlocked from killing heroes. some accessories have random stats
 	"accessory.sergeant_badge" : 0,
-	"accessory.ghoul_trophy" : 0, //FEATURE_0 Rework
-	"accessory.alp_trophy" : 0, //FEATURE_0 Rework
-	"accessory.goblin_trophy" : 0, //FEATURE_0 Rework
-	"accessory.orc_trophy" : 0, //FEATURE_0 Rework
-	"accessory.undead_trophy" : 0, //FEATURE_0 Rework
-	"accessory.hexen_trophy" : 0, //FEATURE_0 Rework
-	"accessory.legend_demon_banshee_trophy" : 0, //FEATURE_0 Rework
-	"accessory.legend_demonalp_trophy" : 0, //FEATURE_0 Rework
-	"accessory.legend_hexen_leader_trophy" : 0, //FEATURE_0 Rework
-	"accessory.cursed_crystal_skull" : 0, //FEATURE_0 Rework
-	"accessory.slayer_necklace" : 0, //FEATURE_0 Rework
+	"accessory.ghoul_trophy" : 0,
+	"accessory.alp_trophy" : 0,
+	"accessory.goblin_trophy" : 0,
+	"accessory.orc_trophy" : 0,
+	"accessory.undead_trophy" : 0,
+	"accessory.hexen_trophy" : 0,
+	"accessory.legend_demon_banshee_trophy" : 0,
+	"accessory.legend_demonalp_trophy" : 0,
+	"accessory.legend_hexen_leader_trophy" : 0,
+	"accessory.slayer_necklace" : 0,
+	"accessory.cursed_crystal_skull" : 0, //FEATURE_9 Rework method of acquirement AND item
+	
 
 	//PET
 	"accessory.falcon" : 100,

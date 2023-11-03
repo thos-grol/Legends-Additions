@@ -1,8 +1,6 @@
-//FEATURE_0: rework, doctor retinue.
 this.ailing_recovers_event <- this.inherit("scripts/events/event", {
 	m = {
-		Ailing = null,
-		Healer = null
+		Ailing = null
 	},
 	function create()
 	{
@@ -11,7 +9,7 @@ this.ailing_recovers_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 75.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/event_05.png[/img]{%ailing% is walking around camp with hands out and fingers stretched as though balancing across a rope. Nodding and turns around, foot placed before foot, marching back across.%SPEECH_ON%For the first time in a long time I actually feel quite alright. Thanks, %healer%!%SPEECH_OFF%It seems %healer% knew of a couple means to rid what ailed %ailing%.}",
+			Text = "[img]gfx/ui/events/event_05.png[/img]{%ailing% is walking around camp with hands out and fingers stretched as though balancing across a rope. Nodding and turns around, foot placed before foot, marching back across.%SPEECH_ON%For the first time in a long time I actually feel quite alright. Thanks, Anatomist!%SPEECH_OFF%It seems the anatomist knew of a couple means to rid what ailed %ailing%.}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -28,7 +26,6 @@ this.ailing_recovers_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Ailing.getImagePath());
-				this.Characters.push(_event.m.Healer.getImagePath());
 				_event.m.Ailing.improveMood(1.5, "Feels the best he did in a long time");
 
 				if (_event.m.Ailing.getMoodState() >= ::Const.MoodState.Neutral)
@@ -53,45 +50,24 @@ this.ailing_recovers_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!::Const.DLC.Unhold)
-		{
-			return;
-		}
+		if (!::Const.DLC.Unhold) return;
+		if (!this.World.Retinue.hasFollower("follower.surgeon")) return;
 
 		local brothers = this.World.getPlayerRoster().getAll();
 
-		if (brothers.len() < 2)
-		{
-			return;
-		}
+		if (brothers.len() < 2) return;
 
 		local candidates_ailing = [];
-		local candidates_healer = [];
 
 		foreach( bro in brothers )
 		{
-			if (bro.getLevel() < 4)
-			{
-				continue;
-			}
-
-			if (bro.getSkills().hasSkill("trait.ailing"))
-			{
-				candidates_ailing.push(bro);
-			}
-			else if (bro.getBackground().getID() == "background.monk" || bro.getBackground().getID() == "background.beast_slayer" || bro.getBackground().getID() == "background.legend_nun" || bro.getBackground().getID() == "background.legend_herbalist" || bro.getBackground().getID() == "background.legend_witch" || bro.getBackground().getID() == "background.legend_witch_commander")
-			{
-				candidates_healer.push(bro);
-			}
+			if (bro.getLevel() < 6) continue;
+			if (bro.getSkills().hasSkill("trait.ailing")) candidates_ailing.push(bro);
 		}
 
-		if (candidates_ailing.len() == 0 || candidates_healer.len() == 0)
-		{
-			return;
-		}
+		if (candidates_ailing.len() == 0) return;
 
 		this.m.Ailing = candidates_ailing[this.Math.rand(0, candidates_ailing.len() - 1)];
-		this.m.Healer = candidates_healer[this.Math.rand(0, candidates_healer.len() - 1)];
 		this.m.Score = 5;
 	}
 
@@ -105,16 +81,11 @@ this.ailing_recovers_event <- this.inherit("scripts/events/event", {
 			"ailing",
 			this.m.Ailing.getName()
 		]);
-		_vars.push([
-			"healer",
-			this.m.Healer.getName()
-		]);
 	}
 
 	function onClear()
 	{
 		this.m.Ailing = null;
-		this.m.Healer = null;
 	}
 
 });

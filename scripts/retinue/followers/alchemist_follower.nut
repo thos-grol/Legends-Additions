@@ -16,13 +16,7 @@ this.alchemist_follower <- this.inherit("scripts/retinue/follower", {
 
 	function isValid()
 	{
-		return ::Const.DLC.Unhold;
-	}
-
-	function onNewDay()
-	{
-		//FEATURE_0: for items in stash and bro inventories:
-			//refill items
+		return true;
 	}
 
 });

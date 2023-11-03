@@ -58,6 +58,8 @@ this.perk_mastery_bow <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		if (!actor.isPlacedOnMap() || !this.isEnabled() || !::Tactical.TurnSequenceBar.isActiveEntity(actor)) return;
 
+		
+		if (!actor.isPlayerControlled()) return;
 		if (actor.m.IsMoving)
 		{
 			local tile = actor.getTile();

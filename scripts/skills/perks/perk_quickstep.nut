@@ -41,7 +41,7 @@ this.perk_quickstep <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		if (actor.isPlayerControlled()) return;
 		local agent = actor.getAIAgent();
-		if (agent.findBehavior(::Const.AI.Behavior.ID.Adrenaline) == null)
+		if (agent.findBehavior(::Const.AI.Behavior.ID.Disengage) == null)
 		{
 			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_disengage"));
 			agent.finalizeBehaviors();

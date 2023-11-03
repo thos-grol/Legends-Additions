@@ -1,15 +1,14 @@
-//TODO: executioner
-//Lvl 6 Peasant template - Avg Daytaler stats
-::Const.Tactical.Actor.NomadCutthroat <- {
-	XP = 100,
+//Lvl 10 Raider template
+::Const.Tactical.Actor.Executioner <- {
+	XP = 250,
 	ActionPoints = 9,
 	Hitpoints = 55,
-	Bravery = 35,
-	Stamina = 95,
-	MeleeSkill = 56,
+	Bravery = 47,
+	Stamina = 96,
+	MeleeSkill = 65,
 	RangedSkill = 40,
-	MeleeDefense = 3,
-	RangedDefense = 3,
+	MeleeDefense = 10,
+	RangedDefense = 10,
 	Initiative = 105,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
@@ -20,69 +19,69 @@
 	FatigueRecoveryRate = 15
 };
 
-::B.Info[::Const.EntityType.NomadCutthroat] <- {
-    Level = 6,
-    Pattern = [
-        ["T", 1],
-        ["D", 2],
-        ["W", 3],
-        ["W", 4],
-        ["T", 5],
-    ],
-	LevelUps = [
-		["Health", 5, 0, 2],
-		["Melee Skill", 5, 0, 2],
-		["Melee Defense", 5, 0, 2],
-	],
-    Trait = [],
-    Outfit = [
-		[
-			1,
-			"bandit_thug_outfit_00"
-		]
-	],
-	Loadout = [
-		[
-			"scripts/items/weapons/oriental/saif",
-		],
-		[
-			"scripts/items/weapons/oriental/nomad_mace",
-		],
-		[
-			"scripts/items/weapons/militia_spear",
-		]
-	],
+::B.Info[::Const.EntityType.Executioner] <- {
+    Level = 10,
 	Builds = {},
-	BuildsChance = 15
+	BuildsChance = 100
 };
 
-::B.Info[::Const.EntityType.BanditRaider].Builds["1H Shield"] <- {
-	Name = "1H Shield",
+::B.Info[::Const.EntityType.Executioner].Builds["Seismic Decap"] <- {
+	Name = "Seismic Decap",
 	Pattern = [
-        ["scripts/skills/perks/perk_rotation"],
-        ["T", 3],
-        ["scripts/skills/perks/perk_shield_bash"],
-        ["W", 4],
-        ["T", 5],
+        ["scripts/skills/perks/perk_colossus"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_adrenalin"], //3
+        ["scripts/skills/perks/perk_mastery_hammerc"], //4
+        ["scripts/skills/perks/perk_sundering_strikes"], //5
+        ["D", 6],
+        ["scripts/skills/perks/perk_dismemberment"], //7
+        ["scripts/skills/perks/perk_rattle"], //8
+        ["scripts/skills/perks/perk_stance_seismic_slam"], //9
     ],
 	LevelUps = [
-		["Health", 5, 0, 2],
-		["Melee Skill", 5, 0, 2],
-		["Melee Defense", 5, 0, 2],
+		["Initiative", 9, 3, 3],
+		["Melee Skill", 9, 3, 3],
+		["Melee Defense", 9, 3, 3],
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/oriental/saif",
-			"scripts/items/shields/oriental/southern_light_shield"
+			"scripts/items/weapons/oriental/two_handed_scimitar",
 		],
+	],
+	NamedLoadout = [
 		[
-			"scripts/items/weapons/oriental/nomad_mace",
-			"scripts/items/shields/oriental/southern_light_shield"
+			"scripts/items/weapons/named/named_two_handed_scimitar",
 		],
+	],
+};
+
+::B.Info[::Const.EntityType.Executioner].Builds["Bardiche Damage"] <- {
+	Name = "Bardiche Damage",
+	Pattern = [
+		["scripts/skills/perks/perk_colossus"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_sundering_strikes"], //3
+        ["scripts/skills/perks/perk_mastery_axec"], //4
+        ["scripts/skills/perks/perk_death_dealer"], //5
+        ["D", 6],
+        ["scripts/skills/perks/perk_dismemberment"], //7
+        ["scripts/skills/perks/perk_berserk"], //8
+        ["scripts/skills/perks/perk_stance_executioner"], //9
+    ],
+	LevelUps = [
+		["Initiative", 9, 3, 3],
+		["Melee Skill", 9, 3, 3],
+		["Melee Defense", 9, 3, 3],
+	],
+	Loadout = [
 		[
-			"scripts/items/weapons/militia_spear",
-			"scripts/items/shields/oriental/southern_light_shield"
+			"scripts/items/weapons/bardiche",
 		],
-	]
+	],
+	NamedLoadout = [
+		[
+			"scripts/items/weapons/named/named_bardiche",
+		],
+	],
 };
 

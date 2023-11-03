@@ -160,16 +160,12 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 					{
 						loot = this.new("scripts/items/misc/serpent_skin_item");
 					}
-					else
-					{
-						loot = this.new("scripts/items/misc/glistening_scales_item");
-					}
-
+					
 					loot.drop(_tile);
 					i = ++i;
 				}
 
-				if (this.Math.rand(1, 100) <= 15)
+				if (this.Math.rand(1, 100) <= 5)
 				{
 					local loot = this.new("scripts/items/loot/rainbow_scale_item");
 					loot.drop(_tile);

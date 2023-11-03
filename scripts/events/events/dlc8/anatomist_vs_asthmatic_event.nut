@@ -217,7 +217,7 @@ this.anatomist_vs_asthmatic_event <- this.inherit("scripts/events/event", {
 	function onUpdateScore()
 	{
 		if (!::Const.DLC.Paladins) return;
-		if (!this.World.Retinue.hasFollower("follower.drill_sergeant")) return;
+		if (!this.World.Retinue.hasFollower("follower.surgeon")) return;
 
 		local brothers = this.World.getPlayerRoster().getAll();
 		local asthmaticCandidates = [];

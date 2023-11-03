@@ -1,15 +1,14 @@
-//TODO: desert_devil
-//Lvl 6 Peasant template - Avg Daytaler stats
-::Const.Tactical.Actor.NomadCutthroat <- {
-	XP = 100,
+//Lvl 10 Raider template
+::Const.Tactical.Actor.DesertDevil <- {
+	XP = 250,
 	ActionPoints = 9,
 	Hitpoints = 55,
-	Bravery = 35,
-	Stamina = 95,
-	MeleeSkill = 56,
+	Bravery = 47,
+	Stamina = 96,
+	MeleeSkill = 65,
 	RangedSkill = 40,
-	MeleeDefense = 3,
-	RangedDefense = 3,
+	MeleeDefense = 10,
+	RangedDefense = 10,
 	Initiative = 105,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
@@ -20,69 +19,70 @@
 	FatigueRecoveryRate = 15
 };
 
-::B.Info[::Const.EntityType.NomadCutthroat] <- {
-    Level = 6,
-    Pattern = [
-        ["T", 1],
-        ["D", 2],
-        ["W", 3],
-        ["W", 4],
-        ["T", 5],
-    ],
-	LevelUps = [
-		["Health", 5, 0, 2],
-		["Melee Skill", 5, 0, 2],
-		["Melee Defense", 5, 0, 2],
-	],
-    Trait = [],
-    Outfit = [
-		[
-			1,
-			"bandit_thug_outfit_00"
-		]
-	],
-	Loadout = [
-		[
-			"scripts/items/weapons/oriental/saif",
-		],
-		[
-			"scripts/items/weapons/oriental/nomad_mace",
-		],
-		[
-			"scripts/items/weapons/militia_spear",
-		]
-	],
+::B.Info[::Const.EntityType.DesertDevil] <- {
+    Level = 10,
 	Builds = {},
-	BuildsChance = 15
+	BuildsChance = 100
 };
 
-::B.Info[::Const.EntityType.BanditRaider].Builds["1H Shield"] <- {
-	Name = "1H Shield",
+//1H sword
+::B.Info[::Const.EntityType.DesertDevil].Builds["Shamshir"] <- {
+	Name = "Shamshir",
 	Pattern = [
-        ["scripts/skills/perks/perk_rotation"],
-        ["T", 3],
-        ["scripts/skills/perks/perk_shield_bash"],
-        ["W", 4],
-        ["T", 5],
+        ["scripts/skills/perks/perk_legend_alert"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_steadfast"], //3
+        ["scripts/skills/perks/perk_mastery_swordc"], //4
+        ["scripts/skills/perks/perk_legend_recuperation"], //5
+        ["D", 6],
+        ["scripts/skills/perks/perk_mastery_axec"], //7
+        ["scripts/skills/perks/perk_duelist"], //8
+        ["scripts/skills/perks/perk_stance_the_strongest"], //9
     ],
 	LevelUps = [
-		["Health", 5, 0, 2],
-		["Melee Skill", 5, 0, 2],
-		["Melee Defense", 5, 0, 2],
+		["Initiative", 9, 3, 3],
+		["Melee Skill", 9, 3, 3],
+		["Melee Defense", 9, 3, 3],
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/oriental/saif",
-			"scripts/items/shields/oriental/southern_light_shield"
+			"scripts/items/weapons/shamshir",
 		],
+	],
+	NamedLoadout = [
 		[
-			"scripts/items/weapons/oriental/nomad_mace",
-			"scripts/items/shields/oriental/southern_light_shield"
+			"scripts/items/weapons/named/named_shamshir",
 		],
+	],
+};
+
+::B.Info[::Const.EntityType.DesertDevil].Builds["Swordlance"] <- {
+	Name = "Swordlance",
+	Pattern = [
+		["scripts/skills/perks/perk_legend_alert"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_steadfast"], //3
+        ["scripts/skills/perks/perk_mastery_polearmc"], //4
+        ["scripts/skills/perks/perk_mastery_axec"], //5
+        ["D", 6],
+        ["scripts/skills/perks/perk_quickstep"], //7
+        ["scripts/skills/perks/perk_reach_advantage"], //8
+        ["scripts/skills/perks/perk_stance_executioner"], //9
+    ],
+	LevelUps = [
+		["Initiative", 9, 3, 3],
+		["Melee Skill", 9, 3, 3],
+		["Melee Defense", 9, 3, 3],
+	],
+	Loadout = [
 		[
-			"scripts/items/weapons/militia_spear",
-			"scripts/items/shields/oriental/southern_light_shield"
+			"scripts/items/weapons/oriental/swordlance",
 		],
-	]
+	],
+	NamedLoadout = [
+		[
+			"scripts/items/weapons/named/named_swordlance",
+		],
+	],
 };
 

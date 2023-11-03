@@ -1,3 +1,5 @@
+//FEATURE_0: convert barbarians to abstract
+
 //FEATURE_0: convert orcs to abstract
 //FEATURE_0: convert goblins to abstract
 
@@ -10,11 +12,16 @@
 	//FEATURE_0: anatomist
     //FEATURE_0: negotiator
 
-
-//FEATURE_0: add more builds based on playthrough test
-//FEATURE_0: revise armor for troops
-
 //FEATURE_0: witcher mod for inspirations
+
+
+//FEATURE_8: new origins - aspiring apprentice
+//FEATURE_8: new origins - lone wolf
+//FEATURE_8: new origins - peasant militia
+//FEATURE_8: new origins - nomad tribe
+//FEATURE_8: new origins - cultists
+//FEATURE_8: new origins - aspiring necromancer
+
 
 //////////////////////////////////////////////
 
@@ -102,14 +109,10 @@
 
 Economy Overhaul
 
-//FEATURE_1: ambitions rework
-    //FEATURE_0: Slay a monster -> unlock anatomist retinue
-
 //FEATURE_9: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
 
 
 //FEATURE_0: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
-//FEATURE_0: Serpent -> Knock (Poison opens wounds), Edge. Medusa's Gaze
 //FEATURE_0: Lindwurm -> Dragon -> Dream, Edge (Poison)
 //FEATURE_0: Schrat -> Heart, Lantern
 
@@ -152,33 +155,8 @@ DOC:
     //Arcane missile
 
 
-//FEATURE_0: create new monsters to replace old ones and ensure compat. Make monster spawns much rarer.
-    //Direwolf
-        //The more attacks it recieves, the higher it's fury...
 
-
-    //Webknecht
-    //Direwolf
-    //Necrosavant
-    //Schrat
-        //Atributes: Heart, Lantern
-        //Weakness: Fire
-        //Abilities:
-            //Passive:
-                //Crown of flies: Attacking enemies have a chance to be inflicted with flies.
-                //Uproot: wood attack striking 3 tiles long. Rooting them.
-                //Uproot (Circle): wood attack striking everything around it, knocking them back, rooting them.
-                //Barkskin: Recovers a shield every few turns. Resistance to arrows and bolts. Weak to fire.
-
-    //Lindwurm
-
-//FEATURE_1: remove training from main tent and camp menu
-//FEATURE_1: cart can only be upgraded once, experiment with stash size
-
-
-
-
-//FEATURE_8: Faction Overhaul
+//Faction Overhaul
     //every settlement spawns guards, guards vary in strength
     //update action
         faction action <- factions have a chance to build strength during update
@@ -438,7 +416,15 @@ Undead cannot be charmed
 ::setSpawn("legend_peasant_blacksmith", ::Const.Faction.PlayerAnimals)
 ::setSpawn("ghost_knight", ::Const.Faction.PlayerAnimals)
 ::setSpawn("bandit_leader", ::Const.Faction.PlayerAnimals)
-::setSpawn("bandit_leader", ::Const.Faction.PlayerAnimals)
+::setSpawn("nomad_leader", ::Const.Faction.PlayerAnimals)
+
+::setSpawn("bandit_raider")
+
+::setSpawn("desert_stalker", ::Const.Faction.PlayerAnimals)
+::setSpawn("desert_devil", ::Const.Faction.PlayerAnimals)
+::setSpawn("bandit_veteran", ::Const.Faction.PlayerAnimals)
+::setSpawn("executioner", ::Const.Faction.PlayerAnimals)
+::setSpawn("desert_devil")
 ::setSpawn("bandit_leader")
 ::setSpawn("spider", ::Const.Faction.Enemy)
 
@@ -453,21 +439,6 @@ Undead cannot be charmed
 ::addItem("two_handed_wooden_flail")
 
 ::addItem("orc_young_potion_item")
-::addItem("orc_warlord_potion_item")
-::addItem("daze_bomb_item")
-::addItem("fighting_axe")
-::addItem("shamshir")
-::addItem("scimitar")
-::addItem("legend_helmet_sack")
-::addItem("legend_helmet_cloth_scarf")
-::addItem("hunting_bow")
-::addItem("legend_staff_gnarled")
-
-::addItem("named_handgonne")
-::addItem("war_bow")
-::addItem("heater_shield")
-::addItem("strange_eye_item")
-::addItem()
 
 
 bbrusher pack legends_additions.brush C:\Files\Projects\bbros\brush\legends_additions --gfxPath C:\Files\Projects\bbros\brush

@@ -4,6 +4,7 @@ this.nomad_outlaw <- this.inherit("scripts/entity/tactical/abstract_human", {
 	},
 	function create()
 	{
+		this.m.Name = "Outlaw";
 		this.m.Type = this.Const.EntityType.NomadOutlaw;
 		this.m.BloodType = this.Const.BloodType.Red;
 		this.m.XP = this.Const.Tactical.Actor.NomadOutlaw.XP;

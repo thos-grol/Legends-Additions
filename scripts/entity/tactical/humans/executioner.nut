@@ -1,8 +1,8 @@
-//TODO: executioner
 this.executioner <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
+		this.m.Name = "Executioner";
 		this.m.Type = this.Const.EntityType.Executioner;
 		this.m.BloodType = this.Const.BloodType.Red;
 		this.m.XP = this.Const.Tactical.Actor.Executioner.XP;
@@ -38,51 +38,10 @@ this.executioner <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.m.CurrentProperties = clone b;
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_nomads");
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_brawny"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_fast_adaption"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_crippling_strikes"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_coup_de_grace"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_devastating_strikes"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_battle_forged"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_battle_flow"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_berserk"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_hold_out"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_steel_brow"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_underdog"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_relentless"));
-		this.m.Skills.add(this.new("scripts/skills/actives/throw_dirt_skill"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_recover"));
 	}
 
-	function assignRandomEquipment()
+	function pickOutfit()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Mainhand))
-		{
-			local weapons = [
-				"weapons/oriental/two_handed_scimitar",
-				"weapons/oriental/two_handed_scimitar",
-				"weapons/two_handed_hammer"
-			];
-
-			if (this.Const.DLC.Unhold)
-			{
-				weapons.extend([
-					"weapons/two_handed_flanged_mace",
-					"weapons/two_handed_flail"
-				]);
-			}
-
-			if (this.Const.DLC.Wildmen)
-			{
-				weapons.extend([
-					"weapons/bardiche"
-				]);
-			}
-
-			this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
-		}
-
 		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Body))
 		{
 			this.m.Items.equip(this.Const.World.Common.pickArmor([
@@ -121,48 +80,22 @@ this.executioner <- this.inherit("scripts/entity/tactical/abstract_human", {
 		}
 	}
 
-	function makeMiniboss()
+	function pickNamed()
 	{
-		if (!this.actor.makeMiniboss())
-		{
-			return false;
-		}
-
-		this.getSprite("miniboss").setBrush("bust_miniboss");
-		local weapons = [
-			"weapons/named/named_two_handed_hammer",
-			"weapons/named/named_two_handed_scimitar",
-			"weapons/named/named_two_handed_scimitar"
-		];
-
-		if (this.Const.DLC.Unhold)
-		{
-			weapons.extend([
-				"weapons/named/named_two_handed_mace",
-				"weapons/named/named_two_handed_flail"
-			]);
-		}
-
-		if (this.Const.DLC.Wildmen)
-		{
-			weapons.extend([
-				"weapons/named/named_bardiche"
-			]);
-		}
-
-		local armor = clone this.Const.Items.NamedSouthernArmors;
-		local r = this.Math.rand(1, 2);
-
+		//decide what item will be named
+		local r = this.Math.rand(1, 3);
 		if (r == 1)
 		{
-			this.m.Items.equip(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
-		}
-		else
-		{
+			local armor = clone this.Const.Items.NamedSouthernArmors;
 			this.m.Items.equip(this.Const.World.Common.pickArmor(this.Const.World.Common.convNameToList(armor)));
 		}
+		else this.m.IsMinibossWeapon <- true;
+	}
 
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_reach_advantage"));
+	function makeMiniboss()
+	{
+		if (!this.actor.makeMiniboss()) return false;
+		this.getSprite("miniboss").setBrush("bust_miniboss");
 		return true;
 	}
 

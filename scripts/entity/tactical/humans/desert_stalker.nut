@@ -1,8 +1,8 @@
-//TODO: desert_stalker
 this.desert_stalker <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
+		this.m.Name = "Stalker";
 		this.m.Type = this.Const.EntityType.DesertStalker;
 		this.m.BloodType = this.Const.BloodType.Red;
 		this.m.XP = this.Const.Tactical.Actor.DesertStalker.XP;
@@ -31,30 +31,11 @@ this.desert_stalker <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.m.CurrentProperties = clone b;
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_nomads");
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_crippling_strikes"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_coup_de_grace"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_anticipation"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_bullseye"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_fast_adaption"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_battle_flow"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_steel_brow"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_quick_hands"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_head_hunter"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_nimble"));
-		this.m.Skills.add(this.new("scripts/skills/actives/throw_dirt_skill"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_rotation"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_footwork"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_recover"));
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
 	{
-		if (!this.Tactical.State.isScenarioMode() && _killer != null && _killer.isPlayerControlled() && _skill != null && _skill.isRanged())
-		{
-			this.updateAchievement("Bullseye", 1, 1);
-		}
-
+		if (!this.Tactical.State.isScenarioMode() && _killer != null && _killer.isPlayerControlled() && _skill != null && _skill.isRanged()) this.updateAchievement("Bullseye", 1, 1);
 		this.human.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 
@@ -64,20 +45,8 @@ this.desert_stalker <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.setDirty(true);
 	}
 
-	function assignRandomEquipment()
+	function pickOutfit()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Mainhand))
-		{
-			this.m.Items.equip(this.new("scripts/items/weapons/war_bow"));
-			this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
-		}
-
-		local weapons = [
-			"weapons/dagger",
-			"weapons/oriental/nomad_mace",
-			"weapons/oriental/qatal_dagger"
-		];
-		this.m.Items.addToBag(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 		this.m.Items.equip(this.Const.World.Common.pickArmor([
 			[
 				1,
@@ -97,30 +66,17 @@ this.desert_stalker <- this.inherit("scripts/entity/tactical/abstract_human", {
 		}
 	}
 
-	function makeMiniboss()
+	function assignRandomEquipment()
 	{
-		this.actor.makeMiniboss();
-		this.getSprite("miniboss").setBrush("bust_miniboss");
-		local weapons = [
-			[
-				"weapons/named/named_warbow",
-				"ammo/quiver_of_arrows"
-			]
-		];
-		local armor = [
-			"armor/named/black_leather_armor"
-		];
+		this.abstract_human.assignRandomEquipment();
+		this.m.Items.addToBag(::new("scripts/items/weapons/oriental/nomad_mace"));
+	}
 
-		if (this.Math.rand(1, 100) <= 70)
-		{
-			local r = this.Math.rand(0, weapons.len() - 1);
-
-			foreach( w in weapons[r] )
-			{
-				this.m.Items.equip(this.new("scripts/items/" + w));
-			}
-		}
-		else
+	function pickNamed()
+	{
+		//decide what item will be named
+		local r = this.Math.rand(1, 3);
+		if (r == 1)
 		{
 			this.m.Items.equip(this.Const.World.Common.pickArmor([
 				[
@@ -129,8 +85,13 @@ this.desert_stalker <- this.inherit("scripts/entity/tactical/abstract_human", {
 				]
 			]));
 		}
+		else this.m.IsMinibossWeapon <- true;
+	}
 
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_relentless"));
+	function makeMiniboss()
+	{
+		this.actor.makeMiniboss();
+		this.getSprite("miniboss").setBrush("bust_miniboss");
 	}
 
 });

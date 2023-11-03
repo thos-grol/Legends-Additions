@@ -2,7 +2,7 @@ this.nomad_cutthroat <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Name = "Cutthroat";
+		this.m.Name = "Nomad";
 		this.m.Type = this.Const.EntityType.NomadCutthroat;
 		this.m.BloodType = this.Const.BloodType.Red;
 		this.m.XP = this.Const.Tactical.Actor.NomadCutthroat.XP;

@@ -139,14 +139,15 @@
 		local total_weight = getTotalWeight();
         if (total_weight <= 20) // Freedom of Movement
         {
+            if (_attacker == null) return;
+            if (_skill == null) return;
 
-            if (_attacker == null
-				|| _attacker != null
-				&& _attacker.getID() == this.getContainer().getActor().getID()
-				|| _skill == null
-				|| !_skill.isAttack()
-				|| !_skill.isUsingHitchance()) return;
+			if (!_skill.isAttack() || _skill.isRanged() || !_skill.isUsingHitchance()) return;
+			if (_attacker.getID() == this.getContainer().getActor().getID()) return;
 
+			local slam = _attacker.getSkills().getSkillByID("perk.stance.seismic_slam");
+			if (slam != null) return;
+			
             local ourCurrentInitiative = this.getContainer().getActor().getInitiative();
             local enemyCurrentInitiative = _attacker.getInitiative();
             local bonus = 1;
@@ -257,7 +258,7 @@
 			id = 6,
 			type = "text",
 			icon = "ui/icons/health.png",
-			text = ::MSU.Text.colorGreen("– x%") + " damage taken proportional to the initiative difference between the attacker and this unit. (Max 80% for a 100 difference)."
+			text = ::MSU.Text.colorGreen("– x%") + " damage taken proportional to the initiative difference between the attacker and this unit for melee attacks. (Max 80% for a 100 difference)."
 		});
 		return _tooltip;
 	}

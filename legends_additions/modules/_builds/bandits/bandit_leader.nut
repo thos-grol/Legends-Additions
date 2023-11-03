@@ -34,7 +34,7 @@
 	Name = "Commander",
 	Pattern = [
         ["scripts/skills/perks/perk_lead_by_example"], //1
-        ["D", 2], //2
+        ["scripts/skills/perks/perk_fortified_mind"], //3
         ["scripts/skills/perks/perk_rotation"], //3
         ["scripts/skills/perks/perk_mastery_swordc"], //4
         ["scripts/skills/perks/perk_shield_expert"], //5
@@ -97,7 +97,7 @@
 	],
 	NamedLoadout = [
 		[
-			"weapons/named/named_greataxe",
+			"scripts/items/weapons/named/named_greataxe",
 		],
 	],
 };
@@ -127,7 +127,7 @@
 	],
 	NamedLoadout = [
 		[
-			"weapons/named/legend_named_longsword",
+			"scripts/items/weapons/named/legend_named_longsword",
 		],
 	],
 };
@@ -157,7 +157,7 @@
 	],
 	NamedLoadout = [
 		[
-			"weapons/named/legend_named_swordstaff",
+			"scripts/items/weapons/named/legend_named_swordstaff",
 		]
 	],
 };
@@ -187,7 +187,7 @@
 	],
 	NamedLoadout = [
 		[
-			"weapons/named/named_two_handed_hammer",
+			"scripts/items/weapons/named/named_two_handed_hammer",
 		]
 	],
 };
@@ -217,7 +217,7 @@
 	],
 	NamedLoadout = [
 		[
-			"weapons/named/named_two_handed_flail",
+			"scripts/items/weapons/named/named_two_handed_flail",
 		]
 	],
 };

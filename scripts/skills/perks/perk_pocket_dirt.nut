@@ -30,7 +30,7 @@ this.perk_pocket_dirt <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		if (actor.isPlayerControlled()) return;
 		local agent = actor.getAIAgent();
-		if (agent.findBehavior(::Const.AI.Behavior.ID.Adrenaline) == null)
+		if (agent.findBehavior(::Const.AI.Behavior.ID.Distract) == null)
 		{
 			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_distract"));
 			agent.finalizeBehaviors();

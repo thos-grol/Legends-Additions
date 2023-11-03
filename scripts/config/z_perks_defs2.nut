@@ -403,7 +403,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_pattern_recognition",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/pattern_recognition.png", //TODO: pattern recog art
+        Icon = "ui/perks/pattern_recognition.png",
         IconDisabled = "ui/perks/pattern_recognition_bw.png",
         Const = "PatternRecognition"
     },

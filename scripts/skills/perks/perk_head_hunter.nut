@@ -1,5 +1,7 @@
 ::Const.Strings.PerkName.HeadHunter = "Head Hunter";
 ::Const.Strings.PerkDescription.HeadHunter = "Aim to kill..."
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n " + ::MSU.Text.colorGreen("+10%") + " Headshot chance"
 + "\n\n"+::MSU.Text.color(::Z.Log.Color.Blue, "On headshot:")
 + "\n"+::MSU.Text.colorGreen("This unit's next attack will hit the head");
 
@@ -33,10 +35,9 @@ this.perk_head_hunter <- this.inherit("scripts/skills/skill", {
 	{
 		this.m.IsHidden = this.m.Stacks == 0;
 
-		if (this.m.Stacks != 0)
-		{
-			_properties.HitChance[::Const.BodyPart.Head] = 100.0;
-		}
+		if (this.m.Stacks != 0) _properties.HitChance[::Const.BodyPart.Head] = 100.0;
+		else _properties.HitChance[::Const.BodyPart.Head] += 10;
+
 	}
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )

@@ -168,19 +168,19 @@ this.legend_sling_heavy_stone_skill <- this.inherit("scripts/skills/skill", {
 		local user = this.getContainer().getActor();
 
 		_targetEntity.getSkills().add(this.new("scripts/skills/effects/staggered_effect"));
-		if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
+		if (!user.isHiddenToPlayer() && targetTile.IsVisibleForPlayer)
 				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + " is staggered");
 
 		if (user.getSkills().getSkillByID("perk.stance.david") != null && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
 		{
 			target.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));
-			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
+			if (!user.isHiddenToPlayer() && targetTile.IsVisibleForPlayer)
 				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + " is stunned for 1 turn");
 		}
 		else if (!_targetEntity.getCurrentProperties().IsImmuneToDaze)
 		{
 			_targetEntity.getSkills().add(this.new("scripts/skills/effects/dazed_effect"));
-			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
+			if (!user.isHiddenToPlayer() && targetTile.IsVisibleForPlayer)
 				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + " is dazed");
 		}
 	}

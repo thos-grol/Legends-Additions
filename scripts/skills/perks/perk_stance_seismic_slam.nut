@@ -5,6 +5,7 @@
 + "\n"+::MSU.Text.colorRed("– 25%") + " Initiative"
 + "\n"+::MSU.Text.colorRed("+3") + " Attack AP Cost"
 + "\nDouble the amount of rattle stacks inflicted"
++ "\nAttacks ignore Freedom of Movement and are unparriable"
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "If Attack AP Cost > 5:")
 + "\n"+::MSU.Text.colorGreen("+25%") + " damage"
 + "\nAttack will stagger and seal the enemy"

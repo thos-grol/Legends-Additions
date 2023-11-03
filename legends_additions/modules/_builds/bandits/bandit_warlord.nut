@@ -58,16 +58,16 @@
 	],
 	NamedLoadout = [
 		[
-			"weapons/named/named_greatsword",
+			"scripts/items/weapons/named/named_greatsword",
 		],
 		[
-			"weapons/named/named_greataxe",
+			"scripts/items/weapons/named/named_greataxe",
 		],
 		[
-			"weapons/named/legend_named_longsword",
+			"scripts/items/weapons/named/legend_named_longsword",
 		],
 		[
-			"weapons/named/named_two_handed_hammer",
+			"scripts/items/weapons/named/named_two_handed_hammer",
 		],
 	],
 	Builds = {},
@@ -79,14 +79,14 @@
 // if (this.m.Items.getItemAtSlot(this.Const.ItemSlot.Mainhand) == null)
 // {
 // 	local weapons = [
-// 		"weapons/noble_sword",
-// 		"weapons/fighting_axe",
-// 		"weapons/warhammer",
-// 		"weapons/legend_glaive",
-// 		"weapons/fighting_spear",
-// 		"weapons/winged_mace",
-// 		"weapons/arming_sword",
-// 		"weapons/military_cleaver"
+// 		"scripts/items/weapons/noble_sword",
+// 		"scripts/items/weapons/fighting_axe",
+// 		"scripts/items/weapons/warhammer",
+// 		"scripts/items/weapons/legend_glaive",
+// 		"scripts/items/weapons/fighting_spear",
+// 		"scripts/items/weapons/winged_mace",
+// 		"scripts/items/weapons/arming_sword",
+// 		"scripts/items/weapons/military_cleaver"
 // 	];
 // 	// "shields/heater_shield",
 // 	// "shields/kite_shield"

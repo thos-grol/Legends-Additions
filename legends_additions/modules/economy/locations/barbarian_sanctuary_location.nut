@@ -41,7 +41,6 @@
 			"loot/silverware_item",
 			"loot/silver_bowl_item",
 			"loot/bone_figurines_item",
-			"loot/valuable_furs_item",
 			"loot/bead_necklace_item",
 			"loot/looted_valuables_item"
 		];

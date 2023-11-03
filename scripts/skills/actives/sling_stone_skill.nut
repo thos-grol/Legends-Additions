@@ -167,13 +167,13 @@ this.sling_stone_skill <- this.inherit("scripts/skills/skill", {
 		if (user.getSkills().getSkillByID("perk.stance.david") != null && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
 		{
 			target.getSkills().add(this.new("scripts/skills/effects/stunned_effect"));
-			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
+			if (!user.isHiddenToPlayer() && targetTile.IsVisibleForPlayer)
 				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + " is stunned for 1 turn");
 		}
 		else if (!_targetEntity.getCurrentProperties().IsImmuneToDaze)
 		{
 			_targetEntity.getSkills().add(this.new("scripts/skills/effects/dazed_effect"));
-			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
+			if (!user.isHiddenToPlayer() && targetTile.IsVisibleForPlayer)
 				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + " is dazed");
 		}
 	}

@@ -34,6 +34,9 @@ this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
+		local slam = _attacker.getSkills().getSkillByID("perk.stance.seismic_slam");
+		if (slam != null) return;
+		
 		if (!this.m.Active)
 		{
 			this.m.Immunity = false;
