@@ -117,10 +117,10 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		}
 
 		//TREE_WEAPON
-		pickWeapon();
-		local weapon = this.getMainhandItem();
-		::logInfo(weapon.m.ID);
-		this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
+		try {
+			local weapon = this.getMainhandItem();
+			this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
+		} catch (exception){}
 
 		try {
 			if (weapon.isWeaponType(::Const.Items.WeaponType.Crossbow))

@@ -24,15 +24,6 @@ this.executioner <- this.inherit("scripts/entity/tactical/abstract_human", {
 		local b = this.m.BaseProperties;
 		b.setValues(this.Const.Tactical.Actor.Executioner);
 		b.TargetAttractionMult = 1.0;
-		b.IsSpecializedInSwords = true;
-		b.IsSpecializedInAxes = true;
-		b.IsSpecializedInMaces = true;
-		b.IsSpecializedInFlails = true;
-		b.IsSpecializedInPolearms = true;
-		b.IsSpecializedInThrowing = true;
-		b.IsSpecializedInHammers = true;
-		b.IsSpecializedInSpears = true;
-		b.IsSpecializedInCleavers = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;

@@ -5,7 +5,7 @@ this.abstract_ <- this.inherit("scripts/entity/tactical/actor", {
 		TREE_TRAIT2 = null,
 		TREE_WEAPON = null,
 		PATTERN_OVERWRITE = null,
-		build = null
+		Build = null
 	},
 	function onInit()
 	{
@@ -15,6 +15,7 @@ this.abstract_ <- this.inherit("scripts/entity/tactical/actor", {
 	function create()
 	{
 		this.actor.create();
+		this.m.XP = ::B.Info[this.m.Type].Level * 35;
 	}
 
 	function pickOutfit()
@@ -25,26 +26,28 @@ this.abstract_ <- this.inherit("scripts/entity/tactical/actor", {
 		}
 	}
 
+	function pickNamed()
+	{
+		//decide what item will be named
+		local r = this.Math.rand(1, 4);
+		if (r == 1) //helmet
+		{
+			local named = this.Const.Items.NamedHelmets;
+			local weightName = this.Const.World.Common.convNameToList(named);
+			this.m.Items.equip(this.Const.World.Common.pickHelmet(weightName));
+		}
+		else if (r == 2) //armor
+		{
+			local named = this.Const.Items.NamedArmors;
+			local weightName = this.Const.World.Common.convNameToList(named);
+			this.m.Items.equip(this.Const.World.Common.pickArmor(weightName));
+		}
+		else this.m.IsMinibossWeapon <- true;
+	}
+
 	function assignRandomEquipment()
 	{
-		if (this.m.IsMiniboss) //if is champion
-		{
-			//decide what item will be named
-			local r = this.Math.rand(1, 4);
-			if (r == 1) //helmet
-			{
-				local named = this.Const.Items.NamedHelmets;
-				local weightName = this.Const.World.Common.convNameToList(named);
-				this.m.Items.equip(this.Const.World.Common.pickHelmet(weightName));
-			}
-			else if (r == 2) //armor
-			{
-				local named = this.Const.Items.NamedArmors;
-				local weightName = this.Const.World.Common.convNameToList(named);
-				this.m.Items.equip(this.Const.World.Common.pickArmor(weightName));
-			}
-			else this.m.IsMinibossWeapon <- true;
-		}
+		if (this.m.IsMiniboss) pickNamed(); //if is champion
 
 		//Assign outfit and get the defense tree
 		pickOutfit();
@@ -55,31 +58,6 @@ this.abstract_ <- this.inherit("scripts/entity/tactical/actor", {
 		if (weight_armor <= 20) this.m.TREE_DEFENSE = ::Const.Perks.LightArmorTree.Tree;
         else if (weight_armor <= 40) this.m.TREE_DEFENSE = ::Const.Perks.MediumArmorTree.Tree;
         else this.m.TREE_DEFENSE = ::Const.Perks.HeavyArmorTree.Tree;
-
-		if ("Builds" in ::B.Info[this.m.Type]
-			&& "BuildsChance" in ::B.Info[this.m.Type]
-			&& ::Math.rand(1,100) <= ::B.Info[this.m.Type].BuildsChance)
-		{
-			this.m.Build = ::MSU.Tables.rand(::B.Info[this.m.Type].Builds).Name;
-
-			//build add weapon
-			local loadout = ("IsMinibossWeapon" in this.m && this.m.IsMinibossWeapon) ? ::MSU.Array.rand(::B.Info[this.m.Type].Builds[this.m.Build].NamedLoadout) : ::MSU.Array.rand(::B.Info[this.m.Type].Builds[this.m.Build].Loadout);
-			foreach(item in loadout)
-			{
-				this.m.Items.equip(::new(item));
-			}
-
-			//build add perks
-			foreach( pattern in ::B.Info[this.m.Type].Builds[this.m.Build].Pattern )
-			{
-				decode_add(pattern);
-				i++;
-			}
-
-			//build add levelups
-			pickLevelups(::B.Info[this.m.Type].Builds[this.m.Build].LevelUps);
-			return;
-		}
 
 		//TREE_TRAITS
 		local roll = [
@@ -98,13 +76,52 @@ this.abstract_ <- this.inherit("scripts/entity/tactical/actor", {
 		::MSU.Array.removeByValue(roll, this.m.TREE_TRAIT1);
 		this.m.TREE_TRAIT2 = ::MSU.Array.rand(roll);
 
+		if ("Builds" in ::B.Info[this.m.Type]
+			&& "BuildsChance" in ::B.Info[this.m.Type]
+			&& ::Math.rand(1,100) <= ::B.Info[this.m.Type].BuildsChance)
+		{
+
+			this.m.Build = ::MSU.Table.randValue(::B.Info[this.m.Type].Builds);
+
+			::MSU.Log.printData( this.m.Build, 2);
+
+			//build add weapon
+			local loadout = ("IsMinibossWeapon" in this.m && this.m.IsMinibossWeapon) ? ::MSU.Array.rand(this.m.Build.NamedLoadout) : ::MSU.Array.rand(this.m.Build.Loadout);
+			foreach(item in loadout)
+			{
+				this.m.Items.equip(::new(item));
+			}
+
+			try {
+				local weapon = this.getMainhandItem();
+				this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
+			} catch (exception){}
+
+			try {
+				if (weapon.isWeaponType(::Const.Items.WeaponType.Crossbow))
+					this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
+				else if (weapon.isWeaponType(::Const.Items.WeaponType.Bow))
+					this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+				else if (weapon.isWeaponType(::Const.Items.WeaponType.Firearm))
+					this.m.Items.equip(this.new("scripts/items/ammo/powder_bag"));
+			} catch (exception){}
+
+			//build add perks
+			foreach( pattern in this.m.Build.Pattern)
+			{
+				decode_add(pattern);
+			}
+
+			//build add levelups
+			pickLevelups(this.m.Build.LevelUps);
+			return;
+		}
+
 		//TREE_WEAPON
-		try {
-			pickWeapon();
-			local weapon = this.getMainhandItem();
-			::logInfo(weapon.m.ID);
-			this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
-		} catch (exception){}
+		pickWeapon();
+		local weapon = this.getMainhandItem();
+		::logInfo(weapon.m.ID);
+		this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
 
 		try {
 			if (weapon.isWeaponType(::Const.Items.WeaponType.Crossbow))
@@ -133,12 +150,15 @@ this.abstract_ <- this.inherit("scripts/entity/tactical/actor", {
 	function decode_add(_array)
 	{
 		local perk = null;
+
+		if (_array.len() == 1)
+		{
+			this.getSkills().add(::new(_array[0]));
+			return;
+		}
+
 		switch(_array[0])
 		{
-			case "Z":
-			this.getSkills().add(::new(_array[1]));
-			return; //return bc no need to find perk
-
 			case "T":
 				local b = ::Math.rand(1,100) <= 50;
 				perk = b ? this.m.TREE_TRAIT1[_array[1] - 1][0] : this.m.TREE_TRAIT2[_array[1] - 1][0];
@@ -214,4 +234,5 @@ this.abstract_ <- this.inherit("scripts/entity/tactical/actor", {
 	}
 
 });
+
 

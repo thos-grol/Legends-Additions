@@ -145,9 +145,9 @@
 			if (!_skill.isAttack() || _skill.isRanged() || !_skill.isUsingHitchance()) return;
 			if (_attacker.getID() == this.getContainer().getActor().getID()) return;
 
-			local slam = _attacker.getSkills().getSkillByID("perk.stance.seismic_slam");
-			if (slam != null) return;
-			
+			if ( _attacker.getSkills().getSkillByID("perk.stance.seismic_slam") != null) return;
+			if ( _attacker.getSkills().getSkillByID("perk.strange_strikes") != null) return;
+
             local ourCurrentInitiative = this.getContainer().getActor().getInitiative();
             local enemyCurrentInitiative = _attacker.getInitiative();
             local bonus = 1;
