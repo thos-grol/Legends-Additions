@@ -5,21 +5,39 @@
     "contract.obtain_item" : 50,
     "contract.big_game_hunt" : 260,
 
-    //Easy
-    "contract.discover_location" : 20,
+    //Unique
+    "contract.arena" : 50,
+
+    //F
+    "contract.discover_location" : 50,
     "contract.deliver_item" : 50,
     "contract.deliver_money" : 50,
     "contract.restore_location" : 50,
     "contract.return_item" : 50,
 
-    //Medium
-    "contract.arena" : 50,
-    "contract.escort_caravan" : 50,
+    //E
+    "contract.slave_uprising" : 100,
 
-    "contract.slave_uprising" : 90,
-    "contract.drive_away_bandits" : 110,
-    "contract.drive_away_barbarians" : 120,
-    "contract.drive_away_nomads" : 120,
+    //D
+    "contract.escort_caravan" : 50, //pay is multiplied by distance
+    
+    //C
+    "contract.drive_away_bandits" : 200, //TODO: pay is based on size of camp, make contract unscaling
+    "contract.drive_away_barbarians" : 200, //TODO: pay is based on size of camp, make contract unscaling
+    "contract.drive_away_nomads" : 200, //TODO: pay is based on size of camp, make contract unscaling
+    "contract.hunting_webknechts" : 200,
+
+    //B
+    "contract.legend_barbarian_prisoner" : 250,
+
+    //A
+
+    //S
+    "contract.legend_bandit_army_contract" : 400,
+
+    //SS
+
+    //Medium
 
     "contract.investigate_cemetery" : 110,
 
@@ -29,9 +47,9 @@
     "contract.patrol" : 100,
 
     //Hard
-    "contract.legend_barbarian_prisoner" : 0,
+    
     "contract.escort_envoy" : 50,
-    "contract.legend_bandit_army_contract" : 100,
+    
 
     "contract.marauding_greenskins" : 160,
     "contract.raid_caravan" : 160,
@@ -64,7 +82,7 @@
 
 
     //Nightmare
-    "contract.hunting_webknechts" : 90,
+    
     "contract.roaming_beasts" : 100,
     "contract.roaming_beasts_desert" : 100,
     "contract.hunting_serpents" : 250,

@@ -1,4 +1,4 @@
-this.zombie <- this.inherit("scripts/entity/tactical/abstract_", {
+this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 	m = {
 		InjuryType = 1,
 		Surcoat = null,
@@ -15,7 +15,7 @@ this.zombie <- this.inherit("scripts/entity/tactical/abstract_", {
 		this.m.BloodType = this.Const.BloodType.Dark;
 		this.m.MoraleState = this.Const.MoraleState.Ignore;
 		this.m.XP = this.Const.Tactical.Actor.Zombie.XP;
-		this.abstract_.create();
+		this.actor.create();
 		this.m.XP *= 4;
 		this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
 			"sounds/enemies/zombie_hurt_01.wav",
@@ -70,6 +70,398 @@ this.zombie <- this.inherit("scripts/entity/tactical/abstract_", {
 			this.m.AIAgent.setActor(this);
 		}
 	}
+
+	function onInit()
+	{
+		this.actor.onInit();
+		local b = this.m.BaseProperties;
+		b.setValues(this.Const.Tactical.Actor.Zombie);
+		b.IsAffectedByNight = false;
+		b.IsAffectedByInjuries = false;
+		b.IsImmuneToBleeding = true;
+		b.DamageTotalMult *= 2.0;
+
+		this.m.ActionPoints = b.ActionPoints;
+		this.m.Hitpoints = b.Hitpoints;
+		this.m.CurrentProperties = clone b;
+		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+
+		local app = this.getItems().getAppearance();
+		app.Body = "bust_naked_body_0" + this.Math.rand(0, 2);
+		app.Corpse = app.Body + "_dead";
+		this.m.InjuryType = this.Math.rand(1, 4);
+		local hairColor = this.Const.HairColors.Zombie[this.Math.rand(0, this.Const.HairColors.Zombie.len() - 1)];
+		this.addSprite("background");
+		this.addSprite("socket").setBrush("bust_base_undead");
+		this.addSprite("quiver").setHorizontalFlipping(true);
+		local body = this.addSprite("body");
+		body.setHorizontalFlipping(true);
+		body.setBrush(this.Const.Items.Default.PlayerNakedBody);
+		body.Saturation = 0.5;
+		body.varySaturation(0.2);
+		body.Color = this.createColor("#c1ddaa");
+		body.varyColor(0.05, 0.05, 0.05);
+		local tattoo_body = this.addSprite("tattoo_body");
+		tattoo_body.setHorizontalFlipping(true);
+		tattoo_body.Saturation = 0.9;
+		tattoo_body.setBrightness(0.75);
+		local body_injury = this.addSprite("body_injury");
+		body_injury.Visible = true;
+		body_injury.setBrightness(0.75);
+		body_injury.setBrush("zombify_body_01");
+		this.addSprite("armor").setHorizontalFlipping(true);
+		this.addSprite("armor_layer_chain").setHorizontalFlipping(true);
+		this.addSprite("armor_layer_plate").setHorizontalFlipping(true);
+		this.addSprite("armor_layer_tabbard").setHorizontalFlipping(true);
+		this.addSprite("armor_layer_cloak").setHorizontalFlipping(true);
+		this.addSprite("armor_upgrade_back").setHorizontalFlipping(true);
+		this.addSprite("surcoat");
+		this.addSprite("armor_upgrade_front");
+		local body_blood_always = this.addSprite("body_blood_always");
+		body_blood_always.setBrush("bust_body_bloodied_01");
+		this.addSprite("shaft");
+		local head = this.addSprite("head");
+		head.setHorizontalFlipping(true);
+		head.setBrush(this.Const.Faces.AllHuman[this.Math.rand(0, this.Const.Faces.AllHuman.len() - 1)]);
+		head.Saturation = body.Saturation;
+		head.Color = body.Color;
+		local tattoo_head = this.addSprite("tattoo_head");
+		tattoo_head.setHorizontalFlipping(true);
+		tattoo_head.Saturation = 0.9;
+		tattoo_head.setBrightness(0.75);
+		local beard = this.addSprite("beard");
+		beard.setHorizontalFlipping(true);
+		beard.varyColor(0.02, 0.02, 0.02);
+
+		if (this.Math.rand(1, 100) <= 50)
+		{
+			if (this.m.InjuryType == 4)
+			{
+				beard.setBrush("beard_" + hairColor + "_" + this.Const.Beards.ZombieExtended[this.Math.rand(0, this.Const.Beards.ZombieExtended.len() - 1)]);
+				beard.setBrightness(0.9);
+			}
+			else
+			{
+				beard.setBrush("beard_" + hairColor + "_" + this.Const.Beards.Zombie[this.Math.rand(0, this.Const.Beards.Zombie.len() - 1)]);
+			}
+		}
+
+		local injury = this.addSprite("injury");
+		injury.setHorizontalFlipping(true);
+		injury.setBrush("zombify_0" + this.m.InjuryType);
+		injury.setBrightness(0.75);
+		local hair = this.addSprite("hair");
+		hair.setHorizontalFlipping(true);
+		hair.Color = beard.Color;
+
+		if (this.Math.rand(0, this.Const.Hair.Zombie.len()) != this.Const.Hair.Zombie.len())
+		{
+			hair.setBrush("hair_" + hairColor + "_" + this.Const.Hair.Zombie[this.Math.rand(0, this.Const.Hair.Zombie.len() - 1)]);
+		}
+
+		foreach( a in this.Const.CharacterSprites.Helmets )
+		{
+			this.addSprite(a).setHorizontalFlipping(true);
+		}
+
+		local beard_top = this.addSprite("beard_top");
+		beard_top.setHorizontalFlipping(true);
+
+		if (beard.HasBrush && this.doesBrushExist(beard.getBrush().Name + "_top"))
+		{
+			beard_top.setBrush(beard.getBrush().Name + "_top");
+			beard_top.Color = beard.Color;
+		}
+
+		local body_blood = this.addSprite("body_blood");
+		body_blood.setBrush("bust_body_bloodied_02");
+		body_blood.setHorizontalFlipping(true);
+		body_blood.Visible = this.Math.rand(1, 100) <= 33;
+		local body_dirt = this.addSprite("dirt");
+		body_dirt.setBrush("bust_body_dirt_02");
+		body_dirt.setHorizontalFlipping(true);
+		body_dirt.Visible = this.Math.rand(1, 100) <= 50;
+		local rage = this.addSprite("status_rage");
+		rage.setHorizontalFlipping(true);
+		rage.setBrush("mind_control");
+		rage.Visible = false;
+		this.addDefaultStatusSprites();
+		this.getSprite("arms_icon").setBrightness(0.85);
+		this.getSprite("status_rooted").Scale = 0.55;
+		this.m.Skills.add(this.new("scripts/skills/special/double_grip"));
+		this.m.Skills.add(this.new("scripts/skills/actives/zombie_bite"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_poison_immunity"));
+	}
+
+	function pickOutfit()
+	{
+		local aList = [
+			[
+				1,
+				"leather_tunic"
+			],
+			[
+				1,
+				"linen_tunic"
+			],
+			[
+				1,
+				"linen_tunic"
+			],
+			[
+				1,
+				"sackcloth"
+			],
+			[
+				1,
+				"tattered_sackcloth"
+			],
+			[
+				1,
+				"leather_wraps"
+			],
+			[
+				1,
+				"apron"
+			],
+			[
+				1,
+				"butcher_apron"
+			],
+			[
+				1,
+				"monk_robe"
+			]
+		];
+		local armor = this.Const.World.Common.pickArmor(aList);
+
+		if (this.Math.rand(1, 100) <= 50)
+		{
+			armor.setArmor(this.Math.round(armor.getArmorMax() / 2 - 1));
+		}
+
+		this.m.Items.equip(armor);
+
+		if (this.Math.rand(1, 100) <= 33)
+		{
+			local item = this.Const.World.Common.pickHelmet([
+				[
+					1,
+					"aketon_cap"
+				],
+				[
+					1,
+					"full_aketon_cap"
+				],
+				[
+					1,
+					"kettle_hat"
+				],
+				[
+					1,
+					"padded_kettle_hat"
+				],
+				[
+					1,
+					"full_leather_cap"
+				]
+			]);
+
+			if (item != null)
+			{
+				if (this.Math.rand(1, 100) <= 50)
+				{
+					item.setArmor(item.getArmorMax() / 2 - 1);
+				}
+			}
+
+			this.m.Items.equip(item);
+		}
+	}
+
+	function pickNamed()
+	{
+		//decide what item will be named
+		local r = this.Math.rand(1, 4);
+		if (r == 1) //helmet
+		{
+			local named = this.Const.Items.NamedHelmets;
+			local weightName = this.Const.World.Common.convNameToList(named);
+			this.m.Items.equip(this.Const.World.Common.pickHelmet(weightName));
+		}
+		else if (r == 2) //armor
+		{
+			local named = this.Const.Items.NamedArmors;
+			local weightName = this.Const.World.Common.convNameToList(named);
+			this.m.Items.equip(this.Const.World.Common.pickArmor(weightName));
+		}
+		else this.m.IsMinibossWeapon <- true;
+	}
+
+	function assignRandomEquipment()
+	{
+		if (this.m.IsMiniboss) pickNamed(); //if is champion
+
+		//Assign outfit and get the defense tree
+		pickOutfit();
+		local weight_armor = this.getItems().getStaminaModifier([
+            ::Const.ItemSlot.Body,
+            ::Const.ItemSlot.Head
+        ]) * -1;
+		if (weight_armor <= 20) this.m.TREE_DEFENSE = ::Const.Perks.LightArmorTree.Tree;
+        else if (weight_armor <= 40) this.m.TREE_DEFENSE = ::Const.Perks.MediumArmorTree.Tree;
+        else this.m.TREE_DEFENSE = ::Const.Perks.HeavyArmorTree.Tree;
+
+		//TREE_TRAITS
+		local roll = [
+			::Const.Perks.AgileTree.Tree,
+			::Const.Perks.IndestructibleTree.Tree,
+			::Const.Perks.ViciousTree.Tree,
+			::Const.Perks.DeviousTree.Tree,
+			::Const.Perks.CalmTree.Tree,
+			::Const.Perks.FastTree.Tree,
+			::Const.Perks.LargeTree.Tree,
+			::Const.Perks.SturdyTree.Tree,
+			::Const.Perks.FitTree.Tree
+		]
+
+		this.m.TREE_TRAIT1 = ::MSU.Array.rand(roll);
+		::MSU.Array.removeByValue(roll, this.m.TREE_TRAIT1);
+		this.m.TREE_TRAIT2 = ::MSU.Array.rand(roll);
+
+		if ("Builds" in ::B.Info[this.m.Type]
+			&& "BuildsChance" in ::B.Info[this.m.Type]
+			&& ::Math.rand(1,100) <= ::B.Info[this.m.Type].BuildsChance)
+		{
+
+			this.m.Build = ::MSU.Table.randValue(::B.Info[this.m.Type].Builds);
+			::MSU.Log.printData( this.m.Build, 2);
+
+			//build add perks
+			foreach( pattern in this.m.Build.Pattern)
+			{
+				decode_add(pattern);
+			}
+
+			//build add levelups
+			pickLevelups(this.m.Build.LevelUps);
+			return;
+		}
+
+		local loadout = ("IsMinibossWeapon" in this.m && this.m.IsMinibossWeapon) ? ::MSU.Array.rand(::B.Info[this.m.Type].NamedLoadout) : ::MSU.Array.rand(::B.Info[this.m.Type].Loadout);
+		foreach(item in loadout)
+		{
+			this.m.Items.equip(::new(item));
+		}
+
+		//TREE_WEAPON
+		local weapon = this.getMainhandItem();
+		::logInfo(weapon.m.ID);
+		this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
+
+		try {
+			if (weapon.isWeaponType(::Const.Items.WeaponType.Crossbow))
+				this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
+			else if (weapon.isWeaponType(::Const.Items.WeaponType.Bow))
+				this.m.Items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+			else if (weapon.isWeaponType(::Const.Items.WeaponType.Firearm))
+				this.m.Items.equip(this.new("scripts/items/ammo/powder_bag"));
+		} catch (exception){}
+
+		//Add perks according to specified pattern
+		local i = 1;
+		foreach( pattern in ::B.Info[this.m.Type].Pattern )
+		{
+			if (this.m.PATTERN_OVERWRITE != null && i in this.m.PATTERN_OVERWRITE)
+				decode_add(this.m.PATTERN_OVERWRITE[i]);
+			else decode_add(pattern);
+			i++;
+		}
+
+		//add level ups
+		pickLevelups(::B.Info[this.m.Type].LevelUps);
+
+	}
+
+	function decode_add(_array)
+	{
+		local perk = null;
+
+		if (_array.len() == 1)
+		{
+			this.getSkills().add(::new(_array[0]));
+			return;
+		}
+
+		switch(_array[0])
+		{
+			case "T":
+				local b = ::Math.rand(1,100) <= 50;
+				perk = b ? this.m.TREE_TRAIT1[_array[1] - 1][0] : this.m.TREE_TRAIT2[_array[1] - 1][0];
+
+				if (this.getSkills().hasSkill(::Const.Perks.PerkDefObjects[perk].ID))
+				{
+					b = !b;
+					perk = b ? this.m.TREE_TRAIT1[_array[1] - 1][0] : this.m.TREE_TRAIT2[_array[1] - 1][0];
+				}
+
+			break;
+
+			case "D":
+			perk = this.m.TREE_DEFENSE[_array[1] - 1][0];
+			break;
+
+			case "W":
+			perk = this.m.TREE_WEAPON[_array[1] - 1][0];
+			break;
+		}
+
+		this.getSkills().add(::new(::Const.Perks.PerkDefObjects[perk].Script));
+	}
+
+	function pickLevelups(_source)
+	{
+		foreach( stat in _source)
+		{
+			switch(stat[0])
+			{
+				case "Health":
+				::B.Lib.level_health(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Fatigue":
+				::B.Lib.level_fatigue(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Resolve":
+				::B.Lib.level_resolve(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Initiative":
+				::B.Lib.level_initiative(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Melee Skill":
+				::B.Lib.level_melee_skill(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Ranged Skill":
+				::B.Lib.level_ranged_skill(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Melee Defense":
+				::B.Lib.level_melee_defense(this, stat[1], stat[2], stat[3]);
+				break;
+
+				case "Ranged Defense":
+				::B.Lib.level_ranged_defense(this, stat[1], stat[2], stat[3]);
+				break;
+			}
+		}
+	}
+
+	///////////////////////////////////////////////////////////
 
 	function playSound( _type, _volume, _pitch = 1.0 )
 	{
@@ -628,215 +1020,6 @@ this.zombie <- this.inherit("scripts/entity/tactical/abstract_", {
 			}
 
 			this.getSprite(a).setHorizontalFlipping(flip);
-		}
-	}
-
-	function onInit()
-	{
-		this.abstract_.onInit();
-		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Zombie);
-		b.IsAffectedByNight = false;
-		b.IsAffectedByInjuries = false;
-		b.IsImmuneToBleeding = true;
-		b.DamageTotalMult *= 2.0;
-
-		this.m.ActionPoints = b.ActionPoints;
-		this.m.Hitpoints = b.Hitpoints;
-		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
-
-		local app = this.getItems().getAppearance();
-		app.Body = "bust_naked_body_0" + this.Math.rand(0, 2);
-		app.Corpse = app.Body + "_dead";
-		this.m.InjuryType = this.Math.rand(1, 4);
-		local hairColor = this.Const.HairColors.Zombie[this.Math.rand(0, this.Const.HairColors.Zombie.len() - 1)];
-		this.addSprite("background");
-		this.addSprite("socket").setBrush("bust_base_undead");
-		this.addSprite("quiver").setHorizontalFlipping(true);
-		local body = this.addSprite("body");
-		body.setHorizontalFlipping(true);
-		body.setBrush(this.Const.Items.Default.PlayerNakedBody);
-		body.Saturation = 0.5;
-		body.varySaturation(0.2);
-		body.Color = this.createColor("#c1ddaa");
-		body.varyColor(0.05, 0.05, 0.05);
-		local tattoo_body = this.addSprite("tattoo_body");
-		tattoo_body.setHorizontalFlipping(true);
-		tattoo_body.Saturation = 0.9;
-		tattoo_body.setBrightness(0.75);
-		local body_injury = this.addSprite("body_injury");
-		body_injury.Visible = true;
-		body_injury.setBrightness(0.75);
-		body_injury.setBrush("zombify_body_01");
-		this.addSprite("armor").setHorizontalFlipping(true);
-		this.addSprite("armor_layer_chain").setHorizontalFlipping(true);
-		this.addSprite("armor_layer_plate").setHorizontalFlipping(true);
-		this.addSprite("armor_layer_tabbard").setHorizontalFlipping(true);
-		this.addSprite("armor_layer_cloak").setHorizontalFlipping(true);
-		this.addSprite("armor_upgrade_back").setHorizontalFlipping(true);
-		this.addSprite("surcoat");
-		this.addSprite("armor_upgrade_front");
-		local body_blood_always = this.addSprite("body_blood_always");
-		body_blood_always.setBrush("bust_body_bloodied_01");
-		this.addSprite("shaft");
-		local head = this.addSprite("head");
-		head.setHorizontalFlipping(true);
-		head.setBrush(this.Const.Faces.AllHuman[this.Math.rand(0, this.Const.Faces.AllHuman.len() - 1)]);
-		head.Saturation = body.Saturation;
-		head.Color = body.Color;
-		local tattoo_head = this.addSprite("tattoo_head");
-		tattoo_head.setHorizontalFlipping(true);
-		tattoo_head.Saturation = 0.9;
-		tattoo_head.setBrightness(0.75);
-		local beard = this.addSprite("beard");
-		beard.setHorizontalFlipping(true);
-		beard.varyColor(0.02, 0.02, 0.02);
-
-		if (this.Math.rand(1, 100) <= 50)
-		{
-			if (this.m.InjuryType == 4)
-			{
-				beard.setBrush("beard_" + hairColor + "_" + this.Const.Beards.ZombieExtended[this.Math.rand(0, this.Const.Beards.ZombieExtended.len() - 1)]);
-				beard.setBrightness(0.9);
-			}
-			else
-			{
-				beard.setBrush("beard_" + hairColor + "_" + this.Const.Beards.Zombie[this.Math.rand(0, this.Const.Beards.Zombie.len() - 1)]);
-			}
-		}
-
-		local injury = this.addSprite("injury");
-		injury.setHorizontalFlipping(true);
-		injury.setBrush("zombify_0" + this.m.InjuryType);
-		injury.setBrightness(0.75);
-		local hair = this.addSprite("hair");
-		hair.setHorizontalFlipping(true);
-		hair.Color = beard.Color;
-
-		if (this.Math.rand(0, this.Const.Hair.Zombie.len()) != this.Const.Hair.Zombie.len())
-		{
-			hair.setBrush("hair_" + hairColor + "_" + this.Const.Hair.Zombie[this.Math.rand(0, this.Const.Hair.Zombie.len() - 1)]);
-		}
-
-		foreach( a in this.Const.CharacterSprites.Helmets )
-		{
-			this.addSprite(a).setHorizontalFlipping(true);
-		}
-
-		local beard_top = this.addSprite("beard_top");
-		beard_top.setHorizontalFlipping(true);
-
-		if (beard.HasBrush && this.doesBrushExist(beard.getBrush().Name + "_top"))
-		{
-			beard_top.setBrush(beard.getBrush().Name + "_top");
-			beard_top.Color = beard.Color;
-		}
-
-		local body_blood = this.addSprite("body_blood");
-		body_blood.setBrush("bust_body_bloodied_02");
-		body_blood.setHorizontalFlipping(true);
-		body_blood.Visible = this.Math.rand(1, 100) <= 33;
-		local body_dirt = this.addSprite("dirt");
-		body_dirt.setBrush("bust_body_dirt_02");
-		body_dirt.setHorizontalFlipping(true);
-		body_dirt.Visible = this.Math.rand(1, 100) <= 50;
-		local rage = this.addSprite("status_rage");
-		rage.setHorizontalFlipping(true);
-		rage.setBrush("mind_control");
-		rage.Visible = false;
-		this.addDefaultStatusSprites();
-		this.getSprite("arms_icon").setBrightness(0.85);
-		this.getSprite("status_rooted").Scale = 0.55;
-		this.m.Skills.add(this.new("scripts/skills/special/double_grip"));
-		this.m.Skills.add(this.new("scripts/skills/actives/zombie_bite"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_poison_immunity"));
-	}
-
-	function pickOutfit()
-	{
-		local aList = [
-			[
-				1,
-				"leather_tunic"
-			],
-			[
-				1,
-				"linen_tunic"
-			],
-			[
-				1,
-				"linen_tunic"
-			],
-			[
-				1,
-				"sackcloth"
-			],
-			[
-				1,
-				"tattered_sackcloth"
-			],
-			[
-				1,
-				"leather_wraps"
-			],
-			[
-				1,
-				"apron"
-			],
-			[
-				1,
-				"butcher_apron"
-			],
-			[
-				1,
-				"monk_robe"
-			]
-		];
-		local armor = this.Const.World.Common.pickArmor(aList);
-
-		if (this.Math.rand(1, 100) <= 50)
-		{
-			armor.setArmor(this.Math.round(armor.getArmorMax() / 2 - 1));
-		}
-
-		this.m.Items.equip(armor);
-
-		if (this.Math.rand(1, 100) <= 33)
-		{
-			local item = this.Const.World.Common.pickHelmet([
-				[
-					1,
-					"aketon_cap"
-				],
-				[
-					1,
-					"full_aketon_cap"
-				],
-				[
-					1,
-					"kettle_hat"
-				],
-				[
-					1,
-					"padded_kettle_hat"
-				],
-				[
-					1,
-					"full_leather_cap"
-				]
-			]);
-
-			if (item != null)
-			{
-				if (this.Math.rand(1, 100) <= 50)
-				{
-					item.setArmor(item.getArmorMax() / 2 - 1);
-				}
-			}
-
-			this.m.Items.equip(item);
 		}
 	}
 

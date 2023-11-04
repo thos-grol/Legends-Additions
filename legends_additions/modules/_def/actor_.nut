@@ -158,7 +158,7 @@
 			{
 				overflowDamage = overflowDamage - this.m.BaseProperties.Armor[_hitInfo.BodyPart] * this.m.BaseProperties.ArmorMult[_hitInfo.BodyPart];
 				this.m.BaseProperties.Armor[_hitInfo.BodyPart] = this.Math.max(0, this.m.BaseProperties.Armor[_hitInfo.BodyPart] * this.m.BaseProperties.ArmorMult[_hitInfo.BodyPart] - _hitInfo.DamageArmor);
-				this.Tactical.EventLog.logEx(::Const.UI.getColorizedEntityName(this) + "\'s armor is hit for [b]" + this.Math.floor(_hitInfo.DamageArmor) + "[/b] damage");
+				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(this) + "[Natural Armor] is hit for [b]" + this.Math.floor(_hitInfo.DamageArmor) + "[/b] damage");
 			}
 
 			if (overflowDamage > 0)

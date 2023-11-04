@@ -1,16 +1,3 @@
-//TODO: goblin_fighter
-// "weapons/greenskins/goblin_falchion",
-// "weapons/greenskins/goblin_spear",
-// "weapons/legend_chain",
-// "weapons/greenskins/goblin_notched_blade"
-
-// "weapons/greenskins/goblin_pike"
-"weapons/named/named_goblin_falchion",
-"weapons/named/named_goblin_pike",
-"weapons/named/named_goblin_spear"
-
-//nets
-
 this.goblin_fighter <- this.inherit("scripts/entity/tactical/goblin", {
 	m = {
 		IsLow = false

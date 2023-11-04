@@ -1,8 +1,3 @@
-//TODO: goblin_ambusher
-"scripts/items/weapons/greenskins/goblin_heavy_bow"
-"scripts/items/weapons/greenskins/goblin_bow"
-"weapons/named/named_goblin_heavy_bow"
-
 this.goblin_ambusher <- this.inherit("scripts/entity/tactical/goblin", {
 	m = {
 		IsLow = false
@@ -38,7 +33,7 @@ this.goblin_ambusher <- this.inherit("scripts/entity/tactical/goblin", {
 
 	function assignRandomEquipment()
 	{
-		this.abstract_.assignRandomEquipment();
+		this.goblin.assignRandomEquipment();
 		this.m.Items.addToBag(this.new("scripts/items/weapons/greenskins/goblin_notched_blade"));
 		if (this.Math.rand(1, 100) <= 10) this.m.Items.addToBag(this.new("scripts/items/accessory/poison_item"));
 	}

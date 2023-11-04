@@ -116,11 +116,16 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 			return;
 		}
 
+		local loadout = ("IsMinibossWeapon" in this.m && this.m.IsMinibossWeapon) ? ::MSU.Array.rand(::B.Info[this.m.Type].NamedLoadout) : ::MSU.Array.rand(::B.Info[this.m.Type].Loadout);
+		foreach(item in loadout)
+		{
+			this.m.Items.equip(::new(item));
+		}
+
 		//TREE_WEAPON
-		try {
-			local weapon = this.getMainhandItem();
-			this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
-		} catch (exception){}
+		local weapon = this.getMainhandItem();
+		::logInfo(weapon.m.ID);
+		this.m.TREE_WEAPON = ::Z.Perks.getWeaponPerkTree(weapon)[0].Tree;
 
 		try {
 			if (weapon.isWeaponType(::Const.Items.WeaponType.Crossbow))
@@ -180,15 +185,6 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 		}
 
 		this.getSkills().add(::new(::Const.Perks.PerkDefObjects[perk].Script));
-	}
-
-	function pickWeapon()
-	{
-		local loadout = ("IsMinibossWeapon" in this.m && this.m.IsMinibossWeapon) ? ::MSU.Array.rand(::B.Info[this.m.Type].NamedLoadout) : ::MSU.Array.rand(::B.Info[this.m.Type].Loadout);
-		foreach(item in loadout)
-		{
-			this.m.Items.equip(::new(item));
-		}
 	}
 
 	function pickLevelups(_source)

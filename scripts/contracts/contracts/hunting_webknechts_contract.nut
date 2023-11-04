@@ -118,7 +118,7 @@ this.hunting_webknechts_contract <- this.inherit("scripts/contracts/contract", {
 
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, numWoods >= 12 ? 6 : 3, 9, disallowedTerrain);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Webknechts", false, this.Const.World.Spawn.Spiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Nest", false, this.Const.World.Spawn.Spiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.setDescription("A swarm of webknechts skittering about.");
 				party.setFootprintType(this.Const.World.FootprintsType.Spiders);
 				party.setAttackableByAI(false);
@@ -138,17 +138,12 @@ this.hunting_webknechts_contract <- this.inherit("scripts/contracts/contract", {
 
 				this.Contract.m.Target = this.WeakTableRef(party);
 				party.getSprite("banner").setBrush("banner_beasts_01");
+
 				local c = party.getController();
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
-				local roam = this.new("scripts/ai/world/orders/roam_order");
-				roam.setNoTerrainAvailable();
-				roam.setTerrain(this.Const.World.TerrainType.Forest, true);
-				roam.setTerrain(this.Const.World.TerrainType.LeaveForest, true);
-				roam.setTerrain(this.Const.World.TerrainType.AutumnForest, true);
-				roam.setMinRange(1);
-				roam.setMaxRange(1);
-				c.addOrder(roam);
+				local wait = this.new("scripts/ai/world/orders/wait_order");
+				wait.setTime(18000.0);
+				c.addOrder(wait);
+
 				this.Contract.m.Home.setLastSpawnTimeToNow();
 				this.Contract.setScreen("Overview");
 				this.World.Contracts.setActiveContract(this.Contract);

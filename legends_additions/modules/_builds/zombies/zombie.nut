@@ -39,14 +39,19 @@
 
 ::B.Info[::Const.EntityType.Zombie] <- {
     Level = 6,
-    Pattern = [
+	Builds = {},
+	BuildsChance = 100
+};
+
+::B.Info[::Const.EntityType.BanditThug].Builds["Default"] <- {
+	Name = "Default",
+	Pattern = [
         ["T", 1],
+		["T", 1],
         ["D", 2],
         ["T", 3],
-        ["T", 5],
-        ["T", 5],
+        ["T", 3],
     ],
 	LevelUps = [],
-    Trait = [],
 	Loadout = [],
 };

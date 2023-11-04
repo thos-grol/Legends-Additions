@@ -225,7 +225,7 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 			if (!target.getSkills().hasSkill("effects.staggered"))
 			{
 				target.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
-				if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer) this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(target) + " has been staggered");
+				if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(target) + " has been staggered");
 			}
 				
 

@@ -1,4 +1,4 @@
-gt.Const.Tactical.Actor.OrcYoung <- {
+::Const.Tactical.Actor.OrcYoung <- {
 	XP = 250,
 	ActionPoints = 9,
 	Hitpoints = 200,

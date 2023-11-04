@@ -1,5 +1,3 @@
-//TODO: goblin_leader
-"scripts/items/weapons/greenskins/goblin_crossbow"
 this.goblin_leader <- this.inherit("scripts/entity/tactical/goblin", {
 	m = {},
 	function create()
@@ -39,7 +37,7 @@ this.goblin_leader <- this.inherit("scripts/entity/tactical/goblin", {
 
 	function assignRandomEquipment()
 	{
-		this.abstract_.assignRandomEquipment();
+		this.goblin.assignRandomEquipment();
 		this.m.Items.addToBag(this.new("scripts/items/weapons/greenskins/goblin_falchion"));
 	}
 

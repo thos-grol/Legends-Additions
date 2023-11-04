@@ -1,6 +1,3 @@
-//TODO: goblin_shaman
-"scripts/items/weapons/greenskins/goblin_staff"
-
 this.goblin_shaman <- this.inherit("scripts/entity/tactical/goblin", {
 	m = {},
 	function create()

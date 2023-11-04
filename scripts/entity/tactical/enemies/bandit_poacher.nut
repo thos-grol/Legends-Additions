@@ -57,7 +57,7 @@ this.bandit_poacher <- this.inherit("scripts/entity/tactical/abstract_human", {
 	function assignRandomEquipment()
 	{
 		this.abstract_human.assignRandomEquipment();
-		this.m.Items.addToBag(this.new("scripts/items/weapons/knife"));
+		this.m.Items.addToBag(::new("scripts/items/weapons/knife"));
 	}
 
 });

@@ -176,6 +176,7 @@ gt.Const.World.Spawn.UnholdBog <- {
 		}
 	]
 };
+
 gt.Const.World.Spawn.Spiders <- {
 	Name = "Spiders",
 	IsDynamic = true,

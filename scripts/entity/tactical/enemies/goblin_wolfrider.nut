@@ -1,4 +1,3 @@
-//TODO: goblin_wolfrider
 this.goblin_wolfrider <- this.inherit("scripts/entity/tactical/goblin", {
 	m = {
 		Variant = 1,
@@ -119,7 +118,45 @@ this.goblin_wolfrider <- this.inherit("scripts/entity/tactical/goblin", {
 		wolf_bite.setRestrained(true);
 		wolf_bite.m.ActionPointCost = 0;
 		this.m.Skills.add(wolf_bite);
+
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_underdog"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_lone_wolf"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_fortified_mind"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_survival_instinct"));
+
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_head_hunter"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_fearsome"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_berserk"));
 	}
+
+	function pickOutfit()
+	{
+		local item = this.Const.World.Common.pickArmor([
+			[
+				3,
+				"greenskins/goblin_medium_armor"
+			],
+			[
+				1,
+				"greenskins/goblin_heavy_armor"
+			]
+		]);
+		this.m.Items.equip(item);
+		local item = this.Const.World.Common.pickHelmet([
+			[
+				75,
+				"greenskins/goblin_light_helmet"
+			],
+			[
+				25,
+				"greenskins/goblin_heavy_helmet"
+			]
+		]);
+		if (item != null) this.m.Items.equip(item);
+	}
+
+	//helpers
 
 	function onAfterInit()
 	{
@@ -304,48 +341,6 @@ this.goblin_wolfrider <- this.inherit("scripts/entity/tactical/goblin", {
 
 		this.actor.playSound(_type, _volume, _pitch);
 		this.m.SoundVolume[this.Const.Sound.ActorEvent.Death] = 1.0;
-	}
-
-	function assignRandomEquipment()
-	{
-		local r;
-		r = this.Math.rand(1, 2);
-
-		if (r == 1)
-		{
-			this.m.Items.equip(this.new("scripts/items/weapons/greenskins/goblin_spear"));
-		}
-		else if (r == 2)
-		{
-			this.m.Items.equip(this.new("scripts/items/weapons/greenskins/goblin_falchion"));
-		}
-
-		local item = this.Const.World.Common.pickArmor([
-			[
-				3,
-				"greenskins/goblin_medium_armor"
-			],
-			[
-				1,
-				"greenskins/goblin_heavy_armor"
-			]
-		]);
-		this.m.Items.equip(item);
-		local item = this.Const.World.Common.pickHelmet([
-			[
-				75,
-				"greenskins/goblin_light_helmet"
-			],
-			[
-				25,
-				"greenskins/goblin_heavy_helmet"
-			]
-		]);
-
-		if (item != null)
-		{
-			this.m.Items.equip(item);
-		}
 	}
 
 });
