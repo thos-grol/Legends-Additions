@@ -401,8 +401,8 @@ Undead cannot be charmed
 -----
 
 ::setSpawn("scripts/entity/tactical/enemies/bandit_leader", ::Const.Faction.Enemy)
-::setSpawn("nomad_leader", ::Const.Faction.PlayerAnimals)
-::setSpawn("zombie", ::Const.Faction.PlayerAnimals)
+::setSpawn("orc_warlord", ::Const.Faction.PlayerAnimals)
+::setSpawn("legend_orc_behemoth")
 
 ::setSpawn("nomad_outlaw", ::Const.Faction.PlayerAnimals)
 ::setSpawn("bandit_raider", ::Const.Faction.PlayerAnimals)

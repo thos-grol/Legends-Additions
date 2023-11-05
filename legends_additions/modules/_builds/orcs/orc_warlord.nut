@@ -38,7 +38,7 @@
         ["D", 6],
         ["scripts/skills/perks/perk_nine_lives"], //7
         ["scripts/skills/perks/perk_berserk"], //8
-        ["scripts/skills/perks/seismic_slam"], //9
+        ["scripts/skills/perks/perk_stance_seismic_slam"], //9
         ["scripts/skills/perks/perk_vengeance"], //9
     ],
 	LevelUps = [
@@ -111,7 +111,7 @@
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/orc_flail_2h",
+			"scripts/items/weapons/greenskins/orc_flail_2h",
 		],
 	],
 	NamedLoadout = [

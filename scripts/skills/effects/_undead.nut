@@ -35,7 +35,7 @@ this._undead <- this.inherit("scripts/skills/skill", {
 		if (_skill.getDamageType().contains(::Const.Damage.DamageType.Blunt))
 		{
 			local deepImpact = _attacker.getSkills().getSkillByID("perk.rattle");
-			if (deepImpact != null && deepImpact.isEnabled())
+			if (deepImpact != null)
 			{
 				this.m.ReceiveInjuries = true;
 				return;
