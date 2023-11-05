@@ -32,78 +32,78 @@ local perkDefObjects = [
 ::Const.Strings.PerkName.MatrixNegativeEnergy <- "Matrix: Negative Energy";
 ::Const.Strings.PerkDescription.MatrixNegativeEnergy <- "Basic Magic Matrix. \nEngrave a magic matrix upon the soul to allow the casting of negative energy spells. \nYou can only take 1 basic matrix perk.\nNegative Energy: 1\nSpiritualism: 1";
 
-::Const.Strings.PerkName.MatrixGehenna <- "Matrix: Gehenna";
-::Const.Strings.PerkDescription.MatrixGehenna <- "Advanced Magic Matrix. \nInspired by visions of a flaming hell, a genius necromancer created a magic matrix that allows the caster to cast negative energy and fire spells. \nCan repermutate and refund 'Matrix: Negative Energy'. Counts basic matrix perk.\nNegative Energy: 1\nSpiritualism: 1\nFire: 1";
+// ::Const.Strings.PerkName.MatrixGehenna <- "Matrix: Gehenna";
+// ::Const.Strings.PerkDescription.MatrixGehenna <- "Advanced Magic Matrix. \nInspired by visions of a flaming hell, a genius necromancer created a magic matrix that allows the caster to cast negative energy and fire spells. \nCan repermutate and refund 'Matrix: Negative Energy'. Counts basic matrix perk.\nNegative Energy: 1\nSpiritualism: 1\nFire: 1";
 
 ::Const.Strings.PerkName.MeditiationBasic <- "Meditation Technique: Basic";
 ::Const.Strings.PerkDescription.MeditiationBasic <- ". \nNegative Energy: 1";
 
 ::Const.Strings.PerkName.MeditiationUnderworldThoughts <- "Meditation Technique: Underworld Thoughts";
-::Const.Strings.PerkDescription.MeditiationUnderworldThoughts <- "Decrease the mana cost of Reanimate and Haunt by 1.";
+::Const.Strings.PerkDescription.MeditiationUnderworldThoughts <- "Decrease the mana cost of Reanimate and Haunt by 1. Buffs reanimate and haunt. Becomes more powerful, the lower your hp is. ";
+
+::Const.Strings.PerkName.MeditiationUnderworldThoughts <- "Meditation Technique: Lament";
+::Const.Strings.PerkDescription.MeditiationUnderworldThoughts <- "Becomes stronger the more your trusted comrades die. Buffs anguish";
+
+::Const.Strings.PerkName.MeditiationUnderworldThoughts <- "Meditation Technique: Astral Explorer";
+::Const.Strings.PerkDescription.MeditiationUnderworldThoughts <- "Becomes more powerful, the lower your hp is. Buffs negative energy hand";
+
+//Soul shock!
+
+
+
+//////////
+
 
 ::Const.Strings.PerkName.NegativeEnergyHand <- "Negative Energy Hand";
 ::Const.Strings.PerkDescription.NegativeEnergyHand <- "Condense negative energy in your hand and touch, tearing at the soul of your victim for 25-35 damage ignoring armor and draining them.\nDrain: duration, 3 turns base. -40% fatigue recovery, and -X% max health, X = duration\nNegative Energy: 1\nSpiritualism: 1";
 
-::Const.Strings.PerkName.PartialAstralProjection <- "Partial Astral Projection";
-::Const.Strings.PerkDescription.PartialAstralProjection <- "Further mastery of spiritualism and negative energy allows the user to throw out their spirit hand 3 tiles. Negative energy hand now uses the highest attack (melee or ranged) skill for it's hit calculation. \n+5 min and max Negative Energy Hand damage.";
-
-::Const.Strings.PerkName.RayofEnfeeblement <- "Ray of Enfeeblement";
-::Const.Strings.PerkDescription.RayofEnfeeblement <- ". \nNegative Energy: 1";
-
+    ::Const.Strings.PerkName.PartialAstralProjection <- "Partial Astral Projection";
+    ::Const.Strings.PerkDescription.PartialAstralProjection <- "Further mastery of spiritualism and negative energy allows the user to throw out their spirit hand 3 tiles. Negative energy hand now uses the highest attack (melee or ranged) skill for it's hit calculation. \n+5 min and max Negative Energy Hand damage.";
 
 ::Const.Strings.PerkName.Reanimate <- "Reanimate";
 ::Const.Strings.PerkDescription.Reanimate <- "Reanimates the dead as one of your servants. Those reanimated have their health doubled. \nNegative Energy: 1\nSpiritualism: 1";
-
-::Const.Strings.PerkName.ControlUndead <- "Control Undead";
-::Const.Strings.PerkDescription.ControlUndead <- "Charm an undead. \nSpiritualism: 1";
 
 ::Const.Strings.PerkName.CorpseRot <- "Corpse Rot";
 ::Const.Strings.PerkDescription.CorpseRot <- "Charm an undead. \nSpiritualism: 1";
 
 ::Const.Strings.PerkName.CorpseExplosion <- "Corpse Explosion";
 ::Const.Strings.PerkDescription.CorpseExplosion <- "Target an undead (except necrosavant), and create an explosion based on the target's health. Chance: 0 if same faction, depends on will and magic skill if not.\nNegative Energy: 1\nFire: 1";
-//LegendViolentDecomposition
+
+
+
+Reanimate
 
 ::Const.Strings.PerkName.Anguish <- "Anguish";
 ::Const.Strings.PerkDescription.Anguish <- "Curse target with spiritual anguish where they bear part of the wounds they inflict.";
 
-    ::Const.Strings.PerkName.SpreadingAnguish <- "Spreading Anguish";
+    ::Const.Strings.PerkName.SpreadingAnguish <- "Research: Spreading Anguish";
     ::Const.Strings.PerkDescription.SpreadingAnguish <- "Increase the duration of Anguish by 1. At the beginning of the turn, anguish has a chance to spread to all of the victim's allied neighbors. Anguish also spreads on the victim's death.";
 
-    ::Const.Strings.PerkName.TormentSoul <- "Torment Soul";
+    ::Const.Strings.PerkName.TormentSoul <- "Research: Torment Soul";
     ::Const.Strings.PerkDescription.TormentSoul <- "Increases the damage conversion of anguish, but increases the cost. If a character with anguish dies, they have a chance of rising as a Geist.";
+
 
 ::Const.Strings.PerkName.Haunt <- "Haunt";
 ::Const.Strings.PerkDescription.Haunt <- "Summons x Geists, depending on skill 1 to 6 monsters.";
-//Cooldown is duration of haunt.
-//HEROES - X the Ghost Thief
-//Specializes in using negative energy hand
-    //Unique perk that causes negative energy hand to have a chance to disarm the opponent's weapon
 
-//Rogue's footwork - leap backwards and become invisble
+
+//Cooldown is duration of haunt.
+
+//TODO: Tome of Spiritualism Base item and item
+    // learnable perks, push in order
+    // learn in order
+    // if cannot learn anymore, tell message
+    //notify learned
+    //hook do nothing camp screen
+
 
 // Necromancy
 //     Book of Negative Energy
 //     Book of Unlife
 //     Lich's Tome
 
-//Tome of Spiritualism Spells
-    // FEATURE_8: Black Lead Potion item & Recipe
-    // Matrix: Negative Energy
-    // Meditation Technique: Underworld Thoughts, taking this will refund any other meditation techniques
-        //FEATURE_8: Interchangable meditation techniques
-    // Negative Energy Hand
-        // 	partial astral projection
-    //Reanimate
-    //Anguish
-    //Haunt
-        // 	2 perks
-//FEATURE_8: Tome of Spiritualism Base item and item
-    // learnable perks, push in order
-    // learn in order
-    // if cannot learn anymore, tell message
-    //notify learned
-    //hook do nothing camp screen
+
+
 
 //Necromancer
     //Tome of Spiritualism

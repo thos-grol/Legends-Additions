@@ -7,7 +7,7 @@ this.trader_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Name = "Secure Chests";
 		this.m.Description = "While not common, some companies have special goods stashed away to tell on the road to travellers. These goods are always kept in the most fortified chests the company has to offer, to prevent prying fingers from outside and inside the camp.";
 		this.m.Image = "ui/campfire/legend_trader_01";
-		this.m.Cost = 3500;
+		this.m.Cost = 500;
 		this.m.Effects = [
 			"Increases the amount of trade goods for sale by 1 for each location that produces them, like salt near salt mines, allowing you to trade at higher volumes"
 		];

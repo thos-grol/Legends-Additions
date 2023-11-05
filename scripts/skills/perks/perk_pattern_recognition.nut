@@ -9,7 +9,7 @@
 + "\n"+ ::MSU.Text.colorRed("Every subsequent stack adds 1 Melee Skill and Melee Defense");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PatternRecognition].Name = ::Const.Strings.PerkName.PatternRecognition;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PatternRecognition].Tooltip = ::Const.Strings.PerkDescription.PatternRecognition; //FEATURE_8: integrate perk into magic system
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PatternRecognition].Tooltip = ::Const.Strings.PerkDescription.PatternRecognition; //TODO: integrate perk into magic system
 
 this.perk_pattern_recognition <- this.inherit("scripts/skills/skill", {
 	m = {

@@ -26,6 +26,11 @@ this.cartographer_follower <- this.inherit("scripts/retinue/follower", {
 		]);
 	}
 
+	function isVisible()
+	{
+		return false;
+	}
+
 	function onLocationDiscovered( _location )
 	{
 		local settlements = this.World.EntityManager.getSettlements();

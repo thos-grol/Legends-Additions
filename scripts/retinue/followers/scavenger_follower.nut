@@ -7,7 +7,7 @@ this.scavenger_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Name = "The Scavenger";
 		this.m.Description = "An urchin you took pity on, the Scavenger pulls his weight by collecting bits and pieces from every battlefield.";
 		this.m.Image = "ui/campfire/scavenger_01";
-		this.m.Cost = 50;
+		this.m.Cost = 5;
 		this.m.Effects = [
 			"Recovers a part of all ammo you use during battle",
 			"Recovers tools and supplies from every armor destroyed by you during battle"

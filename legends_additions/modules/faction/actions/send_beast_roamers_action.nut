@@ -1,5 +1,5 @@
 //Reworked beasts
-//FIXME: add newly created single/multiple beast parties.
+//FIXME: PLACEHOLDER add newly created single/multiple beast parties.
 ::mods_hookExactClass("factions/actions/send_beast_roamers_action", function(o) {
 	o.onUpdate = function( _faction )
 	{

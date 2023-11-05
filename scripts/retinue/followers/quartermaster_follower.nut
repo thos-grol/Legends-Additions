@@ -37,5 +37,10 @@ this.quartermaster_follower <- this.inherit("scripts/retinue/follower", {
 		}
 	}
 
+	function isVisible()
+	{
+		return false;
+	}
+
 });
 

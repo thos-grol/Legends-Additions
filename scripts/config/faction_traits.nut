@@ -88,7 +88,7 @@ gt.Const.FactionTrait <- {
 			"scripts/factions/contracts/return_item_action",
 			"scripts/factions/contracts/defend_settlement_bandits_action",
 			"scripts/factions/contracts/defend_settlement_greenskins_action",
-			//"scripts/factions/contracts/obtain_item_action", //FEATURE_5: Rework with dungeons
+			//"scripts/factions/contracts/obtain_item_action", //FEATURE_9: Rework with dungeons
 			"scripts/factions/contracts/restore_location_action",
 			"scripts/factions/contracts/discover_location_action",
 			"scripts/factions/contracts/hunting_webknechts_action",

@@ -26,31 +26,16 @@
 ::mods_hookExactClass("entity/world/camp/buildings/healer_building", function(o) {o.isHidden <- function(){return true;}});
 ::mods_hookExactClass("entity/world/camp/buildings/repair_building", function(o) {o.isHidden <- function(){return true;}});
 
-//FEATURE_1: overhaul healing
-//FEATURE_1: overhaul repair
-//FEATURE_1: put info in overhaul
+
+//FIXME: DOCUMENT camping overhaul
 //disabled camping system
-//not sure how to balance it with new economy plus camping sorta conflicts with retinue. Many of the camp functions have thus been added to retinue.
+	//bc not sure how to balance it with new economy plus camping sorta conflicts with retinue. Many of the camp functions have thus been added to retinue.
 //repair and healing speed has been looked at
 //healing & healing injuries slower without doctor. certain background can speed up healing
 //certain background can speed up repair. blacksmith will speed up repair.
 
-//FEATURE_1: scavenger hunt! - you can upgrade retinue members by acquiring certain items
-//FEATURE_1: materials in inventory - blacksmith can craft weapons, put retinue as toggle. Craft metals/materials into molds - blackmsmith will process and roll items
-
-//scripts\config\global.nut
-// HealMult = [
-//     1.0,
-//     0.66,
-//     0.33,
-//     0.1
-// ],
-// RepairMult = [
-//     1.0,
-//     0.66,
-//     0.33,
-//     0.1
-// ],
+//FEATURE_9: scavenger hunt! - you can upgrade retinue members by acquiring certain items
+//FEATURE_9: materials in inventory - blacksmith can craft weapons, put retinue as toggle. Craft metals/materials into molds - blackmsmith will process and roll items
 
 // {
 //     Food = 100,
@@ -59,4 +44,6 @@
 //     ArmorParts = 50
 // }
 
-//FEATURE_1: change the efficacy of armor parts
+//changed the efficacy of armor parts and how repairing works. armor parts now provide twice the value to repair armor
+//Repair system
+//items equipped are repaired. can also mark items to repair in inventory with alt-right click

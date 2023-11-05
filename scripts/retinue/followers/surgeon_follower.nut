@@ -7,10 +7,13 @@ this.surgeon_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Name = "Anatomist";
 		this.m.Description = "The Anatomist is an expert in the study of flesh and bloodlines. From the corpses of monsters, he derive sequences that convey a part of the monster's power to a human.";
 		this.m.Image = "ui/campfire/surgeon_01";
-		this.m.Cost = 1750;
+		this.m.Cost = 1000;
 		this.m.Effects = [
-			"Has a 5% chance to extract an extraordinary sequence as a potion when slaying a monster",
-			"Unlocks anatomist events"
+			"Unlocks anatomist events",
+			"5% chance to extract the divine source from monsters as an extraordinary sequence",
+			"+303% heal speed (Base 33%, so about 100%)",
+			"Every man without a permanent injury is guaranteed to survive an otherwise fatal blow",
+			"Every injury takes one less day to heal",
 		];
 		this.addRequirement("Slay a monster", function ()
 		{
@@ -32,6 +35,11 @@ this.surgeon_follower <- this.inherit("scripts/retinue/follower", {
 		if ("IsSurvivalGuaranteed" in this.World.Assets.m)
 		{
 			this.World.Assets.m.IsSurvivalGuaranteed = true;
+		}
+
+		if ("HitpointsPerHourMult" in this.World.Assets.m)
+		{
+			this.World.Assets.m.HitpointsPerHourMult *= 3.0303;
 		}
 	}
 

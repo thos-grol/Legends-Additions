@@ -1,15 +1,55 @@
-//TODO: finish ghosts
-//TODO: finish zombies
-//TODO: finish necros
-//TODO: finish necrosavant
+//////////
+// How to progress?
+//TODO: Potion -> reconfigured into mage potion -> grants mage class
+//book -> matrix, meditation, spells
+//to increase power
+    //gain more occult knowledge (decipher more occult books, when perk is added to tree, also increment flag)
+    //absorb more aspected materials (flag stores aspects absorbed)
 
-//TODO: retinue rework
-	//TODO: anatomist
-    //TODO: negotiator
 
-//FIXME: witcher mod for inspirations
+//Tome of Anguish
+    // Matrix: Negative Energy
+    // Meditation Technique: Anguish
+    // reanimate
+    // anguish
 
-//FIXME: document contract overhaul
+
+//Tome of Spiritualism Spells
+    // Matrix: Negative Energy
+    // Meditation Technique: Underworld Thoughts, taking this will refund any other meditation techniques
+        //TODO: Interchangable meditation techniques
+    // reanimate
+    // Negative Energy Hand
+        // 	partial astral projection
+    //Haunt
+        // 	2 perks
+
+
+
+
+//figure out persistent tile effects for entities?
+//skill that checks on move??
+
+//FEATURE_0: FEATURE ghosts
+
+//FEATURE_0: FEATURE necromancers
+//FEATURE_0: FEATURE zombies, see underneath
+    //zombies do not pick up item upon being resurrected
+    //fallen hero -> frost effect
+
+//FEATURE_0: FEATURE Necrosavant -> Grail, Knock
+    //Modes:
+        //Scummy - tp away close to party, summon weakest bro to it
+        //Guerilla - tp and strike, tp and strike
+        //Vampire - Casts blood magic, charms enemies
+    //All attacks cause bleed, and heal damage caused from attacks including bleed.
+
+
+//FIXME: SCAVENGE witcher mod for inspirations
+//TODO: get ciri teleport
+//TODO: get aard
+
+//FIXME: DOCUMENT contract overhaul
     camp contracts never overwrite camp loot and spawns now
     bros recieved from contracts are generally higher quality (better stars)
 
@@ -114,17 +154,9 @@ Economy Overhaul
 //FEATURE_8: Lindwurm -> Dragon -> Dream, Edge (Poison)
 //FEATURE_8: Schrat -> Heart, Lantern
 
-//TODO: Necrosavant -> Grail, Knock
-    //Modes:
-        //Scummy - tp away close to party, summon weakest bro to it
-        //Guerilla - tp and strike, tp and strike
-        //Vampire - Casts blood magic, charms enemies
-    //All attacks cause bleed, and heal damage caused from attacks including bleed.
+
 
 //Z
-
-DOC:
-    Bros will now generate with only one main weapon tree, and two trait trees. Backgrounds now really do matter. BUT it's not impossible to learn new weapons skills.
 
 //New potion system
 
@@ -444,8 +476,7 @@ Undead cannot be charmed
 bbrusher pack legends_additions.brush C:\Files\Projects\bbros\brush\legends_additions --gfxPath C:\Files\Projects\bbros\brush
 
 
-////CHANGELOG
-//Economy Rework - Countering inflation.
+////FIXME: DOCUMENT Economy Rework - Countering inflation.
 A problem in the game was that eventually you would reach the point where money was worthless while you have hundreds of thousands of crowns. The economy rework tries to fix this through many ways to make you feel the struggles of managing a mercenary company (poverty).
 
 # Scale

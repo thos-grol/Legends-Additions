@@ -2,8 +2,8 @@ this.haunt <- this.inherit("scripts/skills/magic_skill", {
 	m = {},
 	function create()
 	{
-		//FEATURE_8: Haunt skill
-		//FEATURE_8: Haunt perk
+		//TODO: Haunt skill
+		//TODO: Haunt perk
 		this.magic_skill.create();
 		this.m.ID = "actives.haunt";
 		this.m.Name = "Haunt";
@@ -84,7 +84,7 @@ this.haunt <- this.inherit("scripts/skills/magic_skill", {
 			if (a.getSkills().hasSkill("perk.torment_soul")) effect.m.TormentSoul = true;
 		}
 		effect.m.TurnsLeft = this.m.Duration;
-		//FEATURE_8: Haunt fx
+		//TODO: Haunt fx
 		//Make blue temporary fire fx on spawn
 
 		return true;

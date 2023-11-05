@@ -7,10 +7,10 @@ this.alchemist_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Name = "Alchemist";
 		this.m.Description = "An Alchemist is knowledgeable in crafting all kinds of mysterious contraptions and concoctions from exotic ingredients.";
 		this.m.Image = "ui/campfire/alchemist_01";
-		this.m.Cost = 1250;
+		this.m.Cost = 1000;
 		this.m.Effects = [
-			"About every 2 weeks, he will craft you potion items... for a price (event)",
-			"Refills alchemy items at the end of the day and potion items at the end of the week (every 7 days)."
+			"Refills equipped alchemy items after paying wages.",
+			"Unlocks potion crafting recipes. Check the crafting tent for details (WIP)",
 		];
 	}
 

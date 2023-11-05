@@ -27,12 +27,9 @@ this.negotiator_follower <- this.inherit("scripts/retinue/follower", {
 		});
 	}
 
-	function onUpdate()
+	function isVisible()
 	{
-	}
-
-	function onNewDay()
-	{
+		return false;
 	}
 
 });

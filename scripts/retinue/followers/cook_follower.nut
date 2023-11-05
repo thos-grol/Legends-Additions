@@ -18,6 +18,11 @@ this.cook_follower <- this.inherit("scripts/retinue/follower", {
 		]);
 	}
 
+	function isVisible()
+	{
+		return false;
+	}
+
 	function onUpdate()
 	{
 		if ("FoodAdditionalDays" in this.World.Assets.m)
