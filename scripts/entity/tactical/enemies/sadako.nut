@@ -1,4 +1,4 @@
-this.hexe <- this.inherit("scripts/entity/tactical/actor", {
+this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 	m = {
 	},
 	function create()
@@ -245,9 +245,6 @@ this.hexe <- this.inherit("scripts/entity/tactical/actor", {
 		this.actor.onFactionChanged();
 		local flip = this.isAlliedWithPlayer();
 		this.getSprite("body").setHorizontalFlipping(flip);
-		this.getSprite("head").setHorizontalFlipping(flip);
-		this.getSprite("injury").setHorizontalFlipping(flip);
-		this.getSprite("hair").setHorizontalFlipping(flip);
 	}
 
 	function onInit()
@@ -265,29 +262,12 @@ this.hexe <- this.inherit("scripts/entity/tactical/actor", {
 		this.addSprite("socket").setBrush("bust_base_beasts");
 
 		local body = this.addSprite("body");
-		body.setBrush("sadako_body");
+		body.setBrush("sadako");
 		body.varySaturation(0.1);
 		body.varyColor(0.05, 0.05, 0.05);
-		local charm_armor = this.addSprite("charm_armor");
-		charm_armor.setBrush("sadako_dress");
-		charm_armor.Visible = true;
-
-		local head = this.addSprite("head");
-		head.setBrush("sadako_head");
-		head.Color = body.Color;
-		head.Saturation = body.Saturation;
+		local offset = this.createVec(-5, 35);
+		this.setSpriteOffset("body", offset);
 		
-		
-		local injury = this.addSprite("injury");
-		injury.setBrush("bust_hexen_01_injured");
-		injury.Visible = false;
-
-		local hair = this.addSprite("hair");
-		hair.setBrush("sadako_hair");
-		hair.Visible = true;
-		this.getSprite("hair").Scale = 1.3;
-		local offset = this.createVec(0, -20);
-		this.setSpriteOffset("hair", offset);
 
 
 		this.addDefaultStatusSprites();
