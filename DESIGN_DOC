@@ -30,14 +30,14 @@
 //figure out persistent tile effects for entities?
 //skill that checks on move??
 
-//FEATURE_0: FEATURE ghosts
+//FEATURE_1: FEATURE ghosts
 
-//FEATURE_0: FEATURE necromancers
-//FEATURE_0: FEATURE zombies, see underneath
+//FEATURE_1: FEATURE necromancers
+//FEATURE_1: FEATURE zombies, see underneath
     //zombies do not pick up item upon being resurrected
     //fallen hero -> frost effect
 
-//FEATURE_0: FEATURE Necrosavant -> Grail, Knock
+//FEATURE_1: FEATURE Necrosavant -> Grail, Knock
     //Modes:
         //Scummy - tp away close to party, summon weakest bro to it
         //Guerilla - tp and strike, tp and strike
@@ -46,8 +46,8 @@
 
 
 //FIXME: SCAVENGE witcher mod for inspirations
-//TODO: get ciri teleport
-//TODO: get aard
+//FIXME: SCAVENGE get ciri teleport
+//FIXME: SCAVENGE get aard
 
 //FIXME: DOCUMENT contract overhaul
     camp contracts never overwrite camp loot and spawns now
@@ -436,7 +436,8 @@ Undead cannot be charmed
 ::setSpawn("orc_warlord", ::Const.Faction.PlayerAnimals)
 ::setSpawn("legend_orc_behemoth")
 
-::setSpawn("nomad_outlaw", ::Const.Faction.PlayerAnimals)
+::setSpawn("hexe", ::Const.Faction.PlayerAnimals)
+::setSpawn("hexe")
 ::setSpawn("bandit_raider", ::Const.Faction.PlayerAnimals)
 ::setSpawn("swordmaster", ::Const.Faction.PlayerAnimals)
 ::setSpawn("swordmaster", ::Const.Faction.PlayerAnimals)

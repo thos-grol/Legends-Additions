@@ -815,7 +815,7 @@
 	"legend_armor.body.legend_tunic_noble" : 176,                        		//DUR: 40.00 | STA: -2.00
 	"legend_armor.named_tabard" : 176,                        					//DUR: 10.00 | STA:  0.00
 	"legend_armor.body.legend_tunic_noble_named" : 264,                 		//DUR: 40.00 | STA: -2.00
-	"legend_armor.body.legend_robes_magic" : 146,                        		//DUR: 40.00 | STA: -1.00 //fancy looking //TODO: magic rework
+	"legend_armor.body.legend_robes_magic" : 146,                        		//DUR: 40.00 | STA: -1.00 //fancy looking //TODO: make wizards wear magic robes, give robes a property (mana gathering)
 
 		//I
 		"legend_armor.body.legend_southern_padded_chest" : 36,              		//DUR: 45.00 | STA: -4.00

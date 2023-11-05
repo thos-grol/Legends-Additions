@@ -39,7 +39,7 @@ this.necromancer <- this.inherit("scripts/entity/tactical/human", {
 		// this.m.Skills.add(this.new("scripts/skills/actives/raise_undead"));
 		// this.m.Skills.add(this.new("scripts/skills/actives/possess_undead_skill"));
 
-		//TODO: add magic spells based on school
+		//FEATURE_1: FEATURE necromancers - add magic spells based on school
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
@@ -49,7 +49,7 @@ this.necromancer <- this.inherit("scripts/entity/tactical/human", {
 			this.updateAchievement("ManInBlack", 1, 1);
 		}
 
-		//TODO: chance to drop magic tome based on school
+		///FEATURE_1: FEATURE necromancers - chance to drop magic tome based on school
 		this.human.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 
