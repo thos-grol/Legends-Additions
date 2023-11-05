@@ -35,7 +35,6 @@
 		["Melee Skill", 5, 0, 2],
 		["Melee Defense", 5, 0, 2],
 	],
-    Trait = [],
     Outfit = [
 		[
 			1,
@@ -43,6 +42,35 @@
 		]
 	],
 	Loadout = [
+		[
+			"scripts/items/weapons/woodcutters_axe",
+		],
+		[
+			"scripts/items/weapons/goedendag",
+		],
+		[
+			"scripts/items/weapons/pitchfork",
+		],
+		[
+			"scripts/items/weapons/hatchet",
+		],
+		[
+			"scripts/items/weapons/bludgeon",
+		],
+		[
+			"scripts/items/weapons/pickaxe",
+		],
+		[
+			"scripts/items/weapons/reinforced_wooden_flail",
+		],
+		[
+			"scripts/items/weapons/legend_militia_glaive",
+		],
+		[
+			"scripts/items/weapons/legend_ranged_wooden_flail",
+		]
+	],
+	NamedLoadout = [
 		[
 			"scripts/items/weapons/woodcutters_axe",
 		],
@@ -90,6 +118,20 @@
 		["Melee Defense", 5, 0, 2],
 	],
 	Loadout = [
+		[
+			"scripts/items/weapons/hatchet",
+		],
+		[
+			"scripts/items/weapons/bludgeon",
+		],
+		[
+			"scripts/items/weapons/reinforced_wooden_flail",
+		],
+		[
+			"scripts/items/weapons/legend_militia_glaive",
+		]
+	],
+	NamedLoadout = [
 		[
 			"scripts/items/weapons/hatchet",
 		],

@@ -31,11 +31,11 @@
 	Pattern = [
         ["scripts/skills/perks/perk_legend_alert"], //1
         ["D", 2], //2
-        ["scripts/skills/perks/perk_steadfast"], //3
+        ["scripts/skills/perks/perk_legend_recuperation"], //3
         ["scripts/skills/perks/perk_mastery_swordc"], //4
-        ["scripts/skills/perks/perk_legend_recuperation"], //5
+        ["scripts/skills/perks/perk_steadfast"], //5
         ["D", 6],
-        ["scripts/skills/perks/perk_mastery_axec"], //7
+        ["scripts/skills/perks/perk_legend_lacerate"], //7
         ["scripts/skills/perks/perk_duelist"], //8
         ["scripts/skills/perks/perk_stance_the_strongest"], //9
     ],

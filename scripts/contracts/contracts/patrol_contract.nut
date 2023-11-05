@@ -583,6 +583,18 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
 				}
 
+				this.Contract.m.Dude.m.Talents = [];
+				local talents = this.Contract.m.Dude.getTalents();
+				talents.resize(::Const.Attributes.COUNT, 0);
+
+				talents[::Const.Attributes.MeleeSkill] = ::Math.rand(1, 3);
+				talents[::Const.Attributes.MeleeDefense] = ::Math.rand(1, 3);
+				if (::Math.rand(1, 100) <= 50) talents[::Const.Attributes.Hitpoints] = ::Math.rand(1, 3);
+				else talents[::Const.Attributes.Initiative] = ::Math.rand(1, 3);
+
+				this.Contract.m.Dude.m.Attributes = [];
+				this.Contract.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
+
 				this.Characters.push(this.Contract.m.Dude.getImagePath());
 			}
 
@@ -712,6 +724,18 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
 				}
+
+				this.Contract.m.Dude.m.Talents = [];
+				local talents = this.Contract.m.Dude.getTalents();
+				talents.resize(::Const.Attributes.COUNT, 0);
+
+				talents[::Const.Attributes.MeleeSkill] = ::Math.rand(1, 3);
+				talents[::Const.Attributes.MeleeDefense] = ::Math.rand(1, 3);
+				if (::Math.rand(1, 100) <= 50) talents[::Const.Attributes.Hitpoints] = ::Math.rand(1, 3);
+				else talents[::Const.Attributes.Initiative] = ::Math.rand(1, 3);
+
+				this.Contract.m.Dude.m.Attributes = [];
+				this.Contract.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 
 				this.Characters.push(this.Contract.m.Dude.getImagePath());
 			}

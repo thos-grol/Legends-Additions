@@ -142,7 +142,7 @@
         ["scripts/skills/perks/perk_steadfast"], //5
         ["D", 6],
         ["scripts/skills/perks/perk_mastery_swordc"], //7
-        ["scripts/skills/perks/perk_battle_flow"], //8
+        ["scripts/skills/perks/perk_legend_lacerate"], //8
         ["scripts/skills/perks/perk_stance_breakthrough"], //9
     ],
 	LevelUps = [
@@ -197,11 +197,11 @@
 	Pattern = [
         ["scripts/skills/perks/perk_head_hunter"], //1
         ["D", 2], //2
-        ["scripts/skills/perks/perk_fearsome"], //3
+        ["scripts/skills/perks/perk_strange_strikes"], //3
         ["scripts/skills/perks/perk_mastery_flailc"], //4
-        ["scripts/skills/perks/perk_mastery_hammerc"], //5
+        ["scripts/skills/perks/perk_strange_strikes"], //5
         ["D", 6],
-        ["scripts/skills/perks/perk_fortified_mind"], //7
+        ["scripts/skills/perks/perk_rattle"], //7
         ["scripts/skills/perks/perk_berserk"], //8
         ["scripts/skills/perks/perk_stance_prisoner"], //9
     ],

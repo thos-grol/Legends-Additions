@@ -7,7 +7,14 @@ this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 		ResurrectWithScript = "scripts/entity/tactical/enemies/zombie",
 		IsResurrectingOnFatality = false,
 		IsCreatingAgent = true,
-		IsHeadless = false
+		IsHeadless = false,
+
+		TREE_DEFENSE = null,
+		TREE_TRAIT1 = null,
+		TREE_TRAIT2 = null,
+		TREE_WEAPON = null,
+		PATTERN_OVERWRITE = null,
+		Build = null
 	},
 	function create()
 	{

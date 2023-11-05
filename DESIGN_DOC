@@ -1,14 +1,17 @@
-//FEATURE_0: convert orcs to abstract
+//TODO: finish ghosts
+//TODO: finish zombies
+//TODO: finish necros
+//TODO: finish necrosavant
 
-//FEATURE_0: finish alp
-//FEATURE_0: finish undead - ghosts, zombies, necros, necrosavant
+//TODO: retinue rework
+	//TODO: anatomist
+    //TODO: negotiator
 
-//FEATURE_0: retinue rework
-	//FEATURE_0: anatomist
-    //FEATURE_0: negotiator
+//FIXME: witcher mod for inspirations
 
-//FEATURE_0: witcher mod for inspirations
-
+//FIXME: document contract overhaul
+    camp contracts never overwrite camp loot and spawns now
+    bros recieved from contracts are generally higher quality (better stars)
 
 //FEATURE_8: new origins - aspiring apprentice
 //FEATURE_8: new origins - lone wolf
@@ -107,11 +110,11 @@ Economy Overhaul
 //FEATURE_9: event chain that leads to hireable swordmaster retinue. Lets you train gifted sword weilders into swordmasters. From hired apprentice. Apprentice must be alive and well. Otherwise, master will be sad and you won't get swordmaster this run.
 
 
-//FEATURE_0: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
-//FEATURE_0: Lindwurm -> Dragon -> Dream, Edge (Poison)
-//FEATURE_0: Schrat -> Heart, Lantern
+//FEATURE_8: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
+//FEATURE_8: Lindwurm -> Dragon -> Dream, Edge (Poison)
+//FEATURE_8: Schrat -> Heart, Lantern
 
-//FEATURE_0: Necrosavant -> Grail, Knock
+//TODO: Necrosavant -> Grail, Knock
     //Modes:
         //Scummy - tp away close to party, summon weakest bro to it
         //Guerilla - tp and strike, tp and strike
@@ -201,9 +204,6 @@ DOC:
     //Dungeon exploration
     //Opening up the wilderness
     //Arena
-    //FEATURE_3: start making the world poorer, troop equipment nerf
-    //FEATURE_3: most mobs besides top tier mobs will be using at most chain armor
-    //FEATURE_3: you'll find old hedge knights with good armor in noble armies, new hedge knights will now have weaker armor. Buff battleforged?
 
 //FEATURE_8: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
 
@@ -402,6 +402,7 @@ Undead cannot be charmed
 
 ::setSpawn("scripts/entity/tactical/enemies/bandit_leader", ::Const.Faction.Enemy)
 ::setSpawn("nomad_leader", ::Const.Faction.PlayerAnimals)
+::setSpawn("zombie", ::Const.Faction.PlayerAnimals)
 
 ::setSpawn("nomad_outlaw", ::Const.Faction.PlayerAnimals)
 ::setSpawn("bandit_raider", ::Const.Faction.PlayerAnimals)
@@ -417,14 +418,14 @@ Undead cannot be charmed
 
 ::setSpawn("bandit_raider")
 
-::setSpawn("desert_stalker", ::Const.Faction.PlayerAnimals)
+::setSpawn("orc_young", ::Const.Faction.PlayerAnimals)
 ::setSpawn("desert_devil", ::Const.Faction.PlayerAnimals)
 ::setSpawn("bandit_veteran", ::Const.Faction.PlayerAnimals)
 ::setSpawn("executioner", ::Const.Faction.PlayerAnimals)
 ::setSpawn("goblin_wolfrider", ::Const.Faction.PlayerAnimals)
 ::setSpawn("spider", ::Const.Faction.PlayerAnimals)
 ::setSpawn("desert_devil")
-::setSpawn("bandit_leader")
+::setSpawn("bandit_raider")
 ::setSpawn("spider", ::Const.Faction.Enemy)
 
 

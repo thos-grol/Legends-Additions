@@ -258,7 +258,7 @@
 			id = 6,
 			type = "text",
 			icon = "ui/icons/health.png",
-			text = ::MSU.Text.colorGreen("– x%") + " damage taken proportional to the initiative difference between the attacker and this unit for melee attacks. (Max 80% for a 100 difference)."
+			text = "Freedom of Movement: " + ::MSU.Text.colorGreen("– x%") + " damage taken proportional to the initiative difference between the attacker and this unit for melee attacks. (Max 80% for a 100 difference)."
 		});
 		return _tooltip;
 	}
@@ -420,7 +420,7 @@
             id = 6,
             type = "text",
             icon = "ui/icons/health.png",
-            text = ::MSU.Text.colorGreen("– " + bonus + "%") + " damage taken. " + ::MSU.Text.colorGreen("+5%") + " upon dodging. " + ::MSU.Text.colorGreen("– 10%") + " when hit. " + ::MSU.Text.colorRed("(50% Max)")
+            text = "Medium Armor Protection: " + ::MSU.Text.colorGreen("– " + bonus + "%") + " damage taken. " + ::MSU.Text.colorGreen("+5%") + " upon dodging. " + ::MSU.Text.colorGreen("– 10%") + " when hit. " + ::MSU.Text.colorRed("(50% Max)")
         });
 
 		return _tooltip;

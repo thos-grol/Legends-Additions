@@ -25,7 +25,7 @@ this._undead <- this.inherit("scripts/skills/skill", {
 		if (_skill.getDamageType().contains(::Const.Damage.DamageType.Cutting))
 		{
 			local dismemberment = _attacker.getSkills().getSkillByID("perk.dismemberment");
-			if (dismemberment != null && dismemberment.isEnabled())
+			if (dismemberment != null)
 			{
 				this.m.ReceiveInjuries = true;
 				return;

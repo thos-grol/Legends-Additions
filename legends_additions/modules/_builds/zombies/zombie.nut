@@ -9,7 +9,7 @@
 	RangedSkill = 5,
 	MeleeDefense = -5,
 	RangedDefense = -5,
-	Initiative = 150,
+	Initiative = 110,
 	FatigueEffectMult = 0.0,
 	MoraleEffectMult = 0.0,
 	Armor = [
@@ -28,7 +28,7 @@
 	RangedSkill = 5,
 	MeleeDefense = -5,
 	RangedDefense = -5,
-	Initiative = 150,
+	Initiative = 110,
 	FatigueEffectMult = 0.0,
 	MoraleEffectMult = 0.0,
 	Armor = [
@@ -43,7 +43,7 @@
 	BuildsChance = 100
 };
 
-::B.Info[::Const.EntityType.BanditThug].Builds["Default"] <- {
+::B.Info[::Const.EntityType.Zombie].Builds["Default"] <- {
 	Name = "Default",
 	Pattern = [
         ["T", 1],

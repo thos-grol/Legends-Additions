@@ -18,18 +18,24 @@
 	]
 };
 
+
 ::B.Info[::Const.EntityType.ZombieYeoman] <- {
     Level = 8,
-    Pattern = [
+	Builds = {},
+	BuildsChance = 100
+};
+
+::B.Info[::Const.EntityType.ZombieYeoman].Builds["Default"] <- {
+	Name = "Default",
+	Pattern = [
         ["T", 1],
 		["T", 1],
         ["D", 2],
         ["T", 3],
-		["T", 3],
-        ["T", 5],
-        ["T", 5],
+        ["T", 3],
+        ["D", 6],
+		["T", 5],
     ],
 	LevelUps = [],
-    Trait = [],
 	Loadout = [],
 };

@@ -6,6 +6,7 @@
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("50%") + " chance to resist stagger"
++ "\nUsing orc weapons no longer imposes additional fatigue costs"
 
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Stagger: (Removed on turn start)")
 + "\n"+::MSU.Text.colorRed("– 50% Initiative")
@@ -48,5 +49,10 @@ this.perk_death_dealer <- ::inherit("scripts/skills/skill", {
 		{
 			skill.m.FatigueCostMult *= 0.75;
 		}
+	}
+
+	function onUpdate( _properties )
+	{
+		_properties.IsProficientWithHeavyWeapons = true;
 	}
 });

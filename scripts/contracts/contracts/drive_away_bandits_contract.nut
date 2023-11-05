@@ -40,7 +40,22 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Destination = this.WeakTableRef(banditcamp);
 		this.m.Flags.set("DestinationName", banditcamp.getName());
 		this.m.Flags.set("RobberBaronName", this.generateName());
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+
+		local pay_amount = 0;
+		switch(banditcamp.m.TypeID)
+		{
+			case "location.bandit_hideout": //70
+				pay_amount = 70;
+				break;
+			case "location.bandit_ruins": //150
+				pay_amount = 150;
+				break;
+			case "location.bandit_camp": //180
+				pay_amount = 180;
+				break;
+		}
+
+		this.m.Payment.Pool = pay_amount * this.getReputationToPaymentMult();
 
 		if (this.Math.rand(1, 100) <= 33)
 		{
@@ -78,28 +93,25 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				this.Contract.m.Destination.clearTroops();
-				this.Contract.m.Destination.setLastSpawnTimeToNow();
+				
+				// this.Contract.m.Destination.clearTroops();
+				// this.Contract.m.Destination.setLastSpawnTimeToNow();
 
-				if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
-				{
-					this.Contract.m.Destination.getLoot().clear();
-				}
+				// if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
+				// {
+				// 	this.Contract.m.Destination.getLoot().clear();
+				// }
 
-				this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditDefenders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditDefenders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				// this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				// this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 
-				if (this.World.Assets.getBusinessReputation() >= 500 && this.Contract.getDifficultyMult() >= 0.95 && this.Math.rand(1, 100) <= 20)
+				if (this.Math.rand(1, 100) <= 20)
 				{
 					this.Flags.set("IsRobberBaronPresent", true);
-
-					if (this.World.Assets.getBusinessReputation() > 600 && this.Math.rand(1, 100) <= 50)
-					{
-						this.Flags.set("IsBountyHunterPresent", true);
-					}
+					if (this.Math.rand(1, 100) <= 50) this.Flags.set("IsBountyHunterPresent", true);
 				}
 
 				this.Contract.setScreen("Overview");
@@ -490,6 +502,18 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
 				}
+
+				this.Contract.m.Dude.m.Talents = [];
+				local talents = this.Contract.m.Dude.getTalents();
+				talents.resize(::Const.Attributes.COUNT, 0);
+
+				talents[::Const.Attributes.MeleeSkill] = ::Math.rand(1, 3);
+				talents[::Const.Attributes.MeleeDefense] = ::Math.rand(1, 3);
+				if (::Math.rand(1, 100) <= 50) talents[::Const.Attributes.Hitpoints] = ::Math.rand(1, 3);
+				else talents[::Const.Attributes.Initiative] = ::Math.rand(1, 3);
+
+				this.Contract.m.Dude.m.Attributes = [];
+				this.Contract.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 
 				this.Characters.push(this.Contract.m.Dude.getImagePath());
 			}

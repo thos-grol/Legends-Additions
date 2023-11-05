@@ -22,9 +22,9 @@
     "contract.escort_caravan" : 50, //pay is multiplied by distance
     
     //C
-    "contract.drive_away_bandits" : 200, //TODO: pay is based on size of camp, make contract unscaling
-    "contract.drive_away_barbarians" : 200, //TODO: pay is based on size of camp, make contract unscaling
-    "contract.drive_away_nomads" : 200, //TODO: pay is based on size of camp, make contract unscaling
+    "contract.drive_away_bandits" : 0, //pay is based on size of camp
+    "contract.drive_away_barbarians" : 200, //pay is based on size of camp
+    "contract.drive_away_nomads" : 200, //pay is based on size of camp
     "contract.hunting_webknechts" : 200,
 
     //B
@@ -38,15 +38,13 @@
     //SS
 
     //Medium
-
-    "contract.investigate_cemetery" : 110,
-
     "contract.raze_attached_location" : 120,
     "contract.defend_settlement_bandits" : 140,
 
     "contract.patrol" : 100,
 
     //Hard
+    "contract.investigate_cemetery" : 200,
     
     "contract.escort_envoy" : 50,
     

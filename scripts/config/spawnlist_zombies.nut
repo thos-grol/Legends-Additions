@@ -110,20 +110,6 @@ gt.Const.World.Spawn.ZombiesAndGhouls <- {
 					Cost = 4 * 40
 				}
 			]
-		},
-		{
-			Weight = 20,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.GhoulLOW,
-					Cost = 4 * 9
-				},
-				{
-					Type = this.Const.World.Spawn.Troops.Ghoul,
-					MinR = 200,
-					Cost = 4 * 19
-				}
-			]
 		}
 	]
 };
@@ -163,20 +149,6 @@ gt.Const.World.Spawn.ZombiesOrZombiesAndGhouls <- {
 					Type = this.Const.World.Spawn.Troops.ZombieKnight,
 					MinR = 400,
 					Cost = 4 * 40
-				}
-			]
-		},
-		{
-			Weight = 20,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.GhoulLOW,
-					Cost = 4 * 9
-				},
-				{
-					Type = this.Const.World.Spawn.Troops.Ghoul,
-					MinR = 200,
-					Cost = 4 * 19
 				}
 			]
 		}

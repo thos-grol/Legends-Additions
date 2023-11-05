@@ -1,6 +1,29 @@
 ::mods_hookExactClass("entity/tactical/player", function (o){
     
-    o.setStartValuesEx = function( _backgrounds, _addTraits = true, _gender = -1, _addEquipment = true )
+    o.onInit = function()
+	{
+		this.human.onInit();
+		this.m.Skills.add(this.new("scripts/skills/special/stats_collector"));
+		this.m.Skills.add(this.new("scripts/skills/special/weapon_breaking_warning"));
+		this.m.Skills.add(this.new("scripts/skills/special/no_ammo_warning"));
+		this.m.Skills.add(this.new("scripts/skills/effects/battle_standard_effect"));
+		this.m.Skills.add(this.new("scripts/skills/actives/break_ally_free_skill"));
+		this.m.Skills.add(this.new("scripts/skills/effects/realm_of_nightmares_effect"));
+		this.m.Skills.add(this.new("scripts/skills/special/legend_horserider_skill"));
+		this.m.Skills.add(this.new("scripts/skills/effects/legend_veteran_levels_effect"));
+
+		if (this.Const.DLC.Unhold)
+		{
+			this.m.Skills.add(this.new("scripts/skills/actives/wake_ally_skill"));
+		}
+
+		this.setFaction(this.Const.Faction.Player);
+		this.m.Items.setUnlockedBagSlots(2);
+		this.m.Skills.add(this.new("scripts/skills/special/bag_fatigue"));
+		this.setDiscovered(true);
+	}
+
+	o.setStartValuesEx = function( _backgrounds, _addTraits = true, _gender = -1, _addEquipment = true )
 	{
 		if (this.isSomethingToSee() && this.World.getTime().Days >= 7) _backgrounds = ::Const.CharacterPiracyBackgrounds;
 	

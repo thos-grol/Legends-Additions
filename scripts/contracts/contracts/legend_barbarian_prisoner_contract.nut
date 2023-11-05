@@ -540,26 +540,6 @@ this.legend_barbarian_prisoner_contract <- this.inherit("scripts/contracts/contr
 						Text = "You better be worth it.",
 						function getResult()
 						{
-							local bros = this.World.getPlayerRoster().getAll();
-							local candidates = [];
-
-							foreach( bro in bros )
-							{
-								if (bro.getBackground().getID() == "background.legend_berserker" || bro.getBackground().getID() == "background.legend_berserker_commander")
-								{
-									candidates.push(bro);
-								}
-							}
-
-							if (candidates.len() == 0)
-							{
-								this.Flags.set("BerkFree", true);
-							}
-							else
-							{
-								this.Flags.set("BerkFree", false);
-							}
-
 							return "Hired";
 						}
 
@@ -595,38 +575,12 @@ this.legend_barbarian_prisoner_contract <- this.inherit("scripts/contracts/contr
 				local roster = this.World.getTemporaryRoster();
 				this.Contract.m.Dude = roster.create("scripts/entity/tactical/player");
 
-				if (this.Flags.get("BerkFree"))
-				{
-					local r = this.Math.rand(1, 100);
-
-					if (r <= 30)
-					{
-						this.Contract.m.Dude.setStartValuesEx([
-							"legend_berserker_background"
-						]);
-						this.Contract.m.Dude.setTitle("the Beast");
-						this.Contract.m.Dude.getBackground().m.RawDescription = "%name% was \'saved\' by you from execution. You decided that this killing machine is a worthy acquisition, ignoring the fact it is also the most wanted criminal in the north.";
-						this.Contract.m.Dude.getBackground().buildDescription(true);
-					}
-					else
-					{
-						this.Contract.m.Dude.setStartValuesEx([
-							"barbarian_background"
-						]);
-						this.Contract.m.Dude.setTitle("the Barbarian");
-						this.Contract.m.Dude.getBackground().m.RawDescription = "%name% was \'saved\' by you from a death sentence. Recruiting this savage barbarian has put you in bad terms with the nobles of the north.";
-						this.Contract.m.Dude.getBackground().buildDescription(true);
-					}
-				}
-				else
-				{
-					this.Contract.m.Dude.setStartValuesEx([
-						"barbarian_background"
-					]);
-					this.Contract.m.Dude.setTitle("the Barbarian");
-					this.Contract.m.Dude.getBackground().m.RawDescription = "%name% was \'saved\' by you from a death sentence. Recruiting this savage barbarian has put you in bad terms with the nobles of the north.";
-					this.Contract.m.Dude.getBackground().buildDescription(true);
-				}
+				this.Contract.m.Dude.setStartValuesEx([
+					"legend_berserker_background"
+				]);
+				this.Contract.m.Dude.setTitle("the Beast");
+				this.Contract.m.Dude.getBackground().m.RawDescription = "%name% was \'saved\' by you from execution. You decided that this killing machine is a worthy acquisition, ignoring the fact it is also the most wanted criminal in the north.";
+				this.Contract.m.Dude.getBackground().buildDescription(true);
 
 				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
 				{
@@ -642,6 +596,18 @@ this.legend_barbarian_prisoner_contract <- this.inherit("scripts/contracts/contr
 				{
 					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
 				}
+
+				this.Contract.m.Dude.m.Talents = [];
+				local talents = this.Contract.m.Dude.getTalents();
+				talents.resize(::Const.Attributes.COUNT, 0);
+
+				talents[::Const.Attributes.MeleeSkill] = 3;
+				talents[::Const.Attributes.MeleeDefense] = 3;
+				if (::Math.rand(1, 100) <= 50) talents[::Const.Attributes.Hitpoints] = 3;
+				else talents[::Const.Attributes.Initiative] = 3;
+
+				this.Contract.m.Dude.m.Attributes = [];
+				this.Contract.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 
 				this.Characters.push(this.Contract.m.Dude.getImagePath());
 			}

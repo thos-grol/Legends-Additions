@@ -11,6 +11,10 @@
     "weapon.short_bow" : 0,
     "weapon.pitchfork" : 0,
 
+    "legend_armor.body.legend_gambeson" : 0,                           		//DUR: 65.00 | STA: -8.00
+	"legend_armor.body.legend_gambeson_plain" : 0,                     		//DUR: 65.00 | STA: -8.00
+	"legend_armor.body.legend_southern_gambeson" : 0,                  		//DUR: 65.00 | STA: -8.00
+	"legend_armor.body.legend_southern_split_gambeson" : 0,            		//DUR: 65.00 | STA: -8.00
 
     "weapon.legend_blowgun" : 0,               			//( 10,  25) | AP: 0.10 | AE: 0.20
 	"weapon.light_crossbow" : 0,              			//( 30,  50) | AP: 0.50 | AE: 0.60

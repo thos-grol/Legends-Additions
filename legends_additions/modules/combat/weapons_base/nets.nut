@@ -77,6 +77,16 @@
 
 });
 
+::mods_hookExactClass("items/tools/throwing_net", function (o)
+{
+	local create = o.create;
+	o.create <- function()
+	{
+		create();
+		this.m.IsDroppedAsLoot = false;
+	}
+});
+
 //======================================================================================================================
 ::Const.Strings.PerkName.LegendNetCasting = "Net Arsenal"
 ::Const.Strings.PerkDescription.LegendNetCasting = "A well equipped mercenary is a prepared mercenary..."

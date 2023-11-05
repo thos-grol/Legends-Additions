@@ -27,14 +27,9 @@ this.perk_dismemberment <- this.inherit("scripts/skills/skill", {
 		this.m.IsHidden = false;
 	}
 
-	function isEnabled()
-	{
-		return true;
-	}
-
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
-		if (_skill.isAttack() && this.isEnabled())
+		if (_skill.isAttack())
 		{
 			_properties.ThresholdToInflictInjuryMult *= 1.0 - (this.m.PercentageOfMaximumDamage * 0.01 * _properties.getDamageRegularMax() * 0.01);
 		}

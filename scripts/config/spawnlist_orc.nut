@@ -159,12 +159,6 @@ gt.Const.World.Spawn.OrcRaiders <- {
 					Type = this.Const.World.Spawn.Troops.OrcWarlord,
 					MinR = 400,
 					Cost = 50
-				},
-				{
-					Type = this.Const.World.Spawn.Troops.LegendOrcElite,
-					MinR = 400,
-					Cost = 100,
-					Roll = true
 				}
 			]
 		},
@@ -240,12 +234,6 @@ gt.Const.World.Spawn.OrcDefenders <- {
 					Type = this.Const.World.Spawn.Troops.OrcWarlord,
 					MinR = 400,
 					Cost = 50
-				},
-				{
-					Type = this.Const.World.Spawn.Troops.LegendOrcElite,
-					MinR = 800,
-					Cost = 60,
-					Roll = true
 				}
 			]
 		},
@@ -314,12 +302,6 @@ gt.Const.World.Spawn.OrcBoss <- {
 					Type = this.Const.World.Spawn.Troops.OrcWarlord,
 					MinR = 400,
 					Cost = 50
-				},
-				{
-					Type = this.Const.World.Spawn.Troops.LegendOrcElite,
-					MinR = 800,
-					Cost = 100,
-					Roll = true
 				}
 			]
 		},

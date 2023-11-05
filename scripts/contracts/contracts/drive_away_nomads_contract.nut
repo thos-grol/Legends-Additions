@@ -23,6 +23,24 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 		local banditcamp = this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).getNearestSettlement(this.m.Home.getTile());
 		this.m.Destination = this.WeakTableRef(banditcamp);
 		this.m.Flags.set("DestinationName", banditcamp.getName());
+
+		local pay_amount = 0;
+		switch(banditcamp.m.TypeID)
+		{
+			case "location.nomad_tents": //75
+				pay_amount = 300;
+				break;
+			case "location.nomad_ruins": //150
+				pay_amount = 150;
+				break;
+			case "location.nomad_hidden_camp": //180
+				pay_amount = 180;
+				break;
+			case "location.nomad_tent_city": //300
+				pay_amount = 300;
+				break;
+		}
+
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
 
 		if (this.Math.rand(1, 100) <= 33)
@@ -53,57 +71,41 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				this.Contract.m.Destination.clearTroops();
-				this.Contract.m.Destination.setLastSpawnTimeToNow();
+				// this.Contract.m.Destination.clearTroops();
+				// this.Contract.m.Destination.setLastSpawnTimeToNow();
 
-				if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
-				{
-					this.Contract.m.Destination.getLoot().clear();
-				}
+				// if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
+				// {
+				// 	this.Contract.m.Destination.getLoot().clear();
+				// }
 
-				this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NomadDefenders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NomadDefenders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				// this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				// this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
-				this.Contract.m.Destination.resetDefenderSpawnDay();
+				// this.Contract.m.Destination.resetDefenderSpawnDay();
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 				local r = this.Math.rand(1, 100);
 
-				if (r <= 10)
+				if (r <= 25)
 				{
-					if (this.Contract.getDifficultyMult() >= 0.95 && this.World.Assets.getBusinessReputation() > 700)
-					{
-						this.Flags.set("IsSandGolems", true);
-					}
-				}
-				else if (r <= 25)
-				{
-					if (this.Contract.getDifficultyMult() >= 0.95 && this.World.Assets.getBusinessReputation() > 300)
-					{
-						this.Flags.set("IsTreasure", true);
-						this.Contract.m.Destination.clearTroops();
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NomadDefenders, 150 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-					}
+					this.Flags.set("IsTreasure", true);
+					this.Contract.m.Destination.clearTroops();
+					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NomadDefenders, 150 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				}
 				else if (r <= 35)
 				{
-					if (this.World.Assets.getBusinessReputation() > 800)
-					{
-						this.Flags.set("IsAssassins", true);
-					}
+					this.Flags.set("IsAssassins", true);
 				}
 				else if (r <= 45)
 				{
-					if (this.World.getTime().Days >= 3)
-					{
-						this.Flags.set("IsNecromancer", true);
-						this.Contract.m.Destination.clearTroops();
-						local zombies = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies);
-						this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
-						this.Contract.m.Destination.setFaction(zombies.getID());
-						zombies.addSettlement(this.Contract.m.Destination.get(), false);
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NecromancerSouthern, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-					}
+					this.Flags.set("IsNecromancer", true);
+					this.Contract.m.Destination.clearTroops();
+					local zombies = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies);
+					this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
+					this.Contract.m.Destination.setFaction(zombies.getID());
+					zombies.addSettlement(this.Contract.m.Destination.get(), false);
+					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NecromancerSouthern, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				}
 				else if (r <= 50)
 				{

@@ -177,7 +177,7 @@
 
     o.getSellPriceMult = function()
     {
-        local p = this.getPriceMult() * this.World.Assets.getSellPriceMult();
+        local p = this.getPriceMult() * this.World.Assets.getSellPriceMult() * 0.2;
 		local r = this.World.FactionManager.getFaction(this.m.Factions[0]).getPlayerRelation();
 
 		if (r < 50) p = p - (50.0 - r) * 0.006;

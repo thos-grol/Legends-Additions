@@ -118,11 +118,6 @@ gt.Const.World.Spawn.GreenskinHorde <- {
 				{
 					Type = this.Const.World.Spawn.Troops.OrcWarlord,
 					Cost = 50
-				},
-				{
-					Type = this.Const.World.Spawn.Troops.LegendOrcElite,
-					MinR = 0.75 * 1115,
-					Cost = 60
 				}
 			]
 		},

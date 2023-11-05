@@ -10,7 +10,7 @@ this.dismantled_effect <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "effects.dismantled";
 		this.m.Name = "Dismantled Armor";
 		this.m.Description = "This character\'s armor is falling apart, causing increased damage to go through armor for the remainder of the combat.";
-		this.m.Icon = "skills/deep_impact.png";
+		this.m.Icon = "ui/perks/deep_impact.png";
 		this.m.IconMini = "dismantled_mini";
 		this.m.Overlay = "dismantled";
 		this.m.Type = ::Const.SkillType.StatusEffect;
