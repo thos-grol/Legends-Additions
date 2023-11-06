@@ -34,8 +34,10 @@
 	addNCSetting(config, ::MSU.Class.SettingsDivider("ConfigDivider2"));
 	local tooltip = ::Legends.Mod.ModSettings.addPage("Tooltips / UI");
 	tooltip.addTitle("TooltipCombat", "Tooltips - Combat");
+
 	tooltip.addElement(::MSU.Class.BooleanSetting("EnhancedTooltips", true, "Enhanced Enemy Tooltips", "Enemy tooltips in tactical battles will show more information, like perks and statuses"));
 	::Legends.Mod.ModSettings.getSetting("EnhancedTooltips").lock("Locked.");
+	
 	tooltip.addDivider("TooltipDivider1");
 	tooltip.addTitle("TooltipInventory", "Tooltips - Inventory");
 	tooltip.addElement(::MSU.Class.BooleanSetting("ShowArmorPerFatigueValue", true, "Show Armor/Fatigue Efficiency", "Show the Armor value gained per unit of Fatigue cost of an Armor/Helmet Piece/Layer in the Tooltip when the player mouses over an individual Armor/Helmet Piece/Layer.\n\nUseful for people who like to buy their groceries based on price per unit weight"));
@@ -63,11 +65,14 @@
 	], "Contract Category Icon Alignment", "Adjust the position of the Contract Category icon at the bottom of Contracts in the Settlement screen"));
 	local misc = ::Legends.Mod.ModSettings.addPage("Misc");
 	local myEnumTooltip = "Define how Blueprints are shown: \'All Ingredients Available\' is the Vanilla behavior; \'One Ingredient Available\' shows recipes when one ingredient is fully satisfied; \'Always\' shows all recipes at all time";
-	misc.addElement(::MSU.Class.EnumSetting("ShowBlueprintsWhen", "All Ingredients Available", [
+	
+	misc.addElement(::MSU.Class.EnumSetting("ShowBlueprintsWhen", "One Ingredient Available", [
 		"All Ingredients Available",
 		"One Ingredient Available",
 		"Always"
 	], "Show Blueprints when", myEnumTooltip));
+	::Legends.Mod.ModSettings.getSetting("ShowBlueprintsWhen").lock("Locked.");
+
 	misc.addElement(::MSU.Class.BooleanSetting("AutoRepairLayer", false, "Autorepair Layer", "Any Body or Helmet Layer that you strip from a piece of armor is automatically marked as \'to be repaired\'."));
 	misc.addElement(::MSU.Class.BooleanSetting("ClickPresetToSwitch", false, "Faster Camping Preset Switch", "Clicking on the camping preset slot immediately applies the preset"));
 	local logging = ::Legends.Mod.ModSettings.addPage("Logging");

@@ -1,4 +1,16 @@
-//FEAURE_5: bright trait tiers. rework remove bonus
+//TODO: bright trait tiers
+	//1 - 1%	Average
+	//2 - 3%	Above Average
+	//3 - 5%	Gifted
+	//4 - 10%	Genius
+//TODO: bright tree searches bag for tome
+
+//TODO: increment on pay day, will check only first book
+//TODO: decode perks progress. upon completion add it to the perk tree. x% chance to encrypt multiplied by intelligence
+//TODO: if meditation method is different, replace it (first decoding is meditation)
+//TODO: book decoding progress trait, only visible when book in inventory
+//TODO: potion crafting - add flag after player has successfully decoded a part of a book
+
 this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {},
 	function create()

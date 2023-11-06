@@ -1,3 +1,5 @@
+//TODO: capacity grows by consuming aspected materials
+//TODO: capacity is refilled by ticking per hour
 this.mana_pool_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {
 		Mana_Max = 1,

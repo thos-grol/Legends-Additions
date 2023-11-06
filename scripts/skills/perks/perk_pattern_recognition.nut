@@ -1,15 +1,17 @@
 ::Const.Strings.PerkName.PatternRecognition <- "Pattern Recognition";
 ::Const.Strings.PerkDescription.PatternRecognition <- "Abstract patterns from a stream of data..."
++ "\n"+ ::MSU.Text.colorRed("Necessary to survive consuming a mage sequence");
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On attack or attacked:")
 + "\n"+ ::MSU.Text.colorRed("+1 stack against that opponent")
 + "\n" + ::MSU.Text.colorGreen("+1") + " Melee Skill and Melee Defense at 1 stack"
 + "\n" + ::MSU.Text.colorGreen("+3") + " Melee Skill and Melee Defense at 2 stacks"
 + "\n" + ::MSU.Text.colorGreen("+6") + " Melee Skill and Melee Defense at 3 stacks"
 + "\n" + ::MSU.Text.colorGreen("+10") + " Melee Skill and Melee Defense at 4 stacks"
-+ "\n"+ ::MSU.Text.colorRed("Every subsequent stack adds 1 Melee Skill and Melee Defense");
++ "\n"+ ::MSU.Text.colorRed("Every subsequent stack adds 1 Melee Skill and Melee Defense")
+
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PatternRecognition].Name = ::Const.Strings.PerkName.PatternRecognition;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PatternRecognition].Tooltip = ::Const.Strings.PerkDescription.PatternRecognition; //TODO: integrate perk into magic system
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PatternRecognition].Tooltip = ::Const.Strings.PerkDescription.PatternRecognition;
 
 this.perk_pattern_recognition <- this.inherit("scripts/skills/skill", {
 	m = {

@@ -42,7 +42,7 @@
 };
 
 
-::Z.Perks.add <- function (_actor, _perk, _perk_row)
+::Z.Perks.add <- function (_actor, _perk, _perk_row=1, _add_skill=true)
 {
     //if has skill, remove and refund
     if (_actor.getSkills().hasSkill(::Const.Perks.PerkDefObjects[_perk].ID))
@@ -55,7 +55,7 @@
 
     //add non-refundable version of perk to tree and add the perk to skills
     _actor.getBackground().addPerk(_perk, _perk_row, false);
-    _actor.getSkills().add(::new(::Const.Perks.PerkDefObjects[_perk].Script));
+    if (_add_skill) _actor.getSkills().add(::new(::Const.Perks.PerkDefObjects[_perk].Script));
 }
 
 ::Z.Perks.remove <- function (_actor, _perk)

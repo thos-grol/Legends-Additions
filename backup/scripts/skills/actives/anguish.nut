@@ -95,9 +95,9 @@ this.anguish <- this.inherit("scripts/skills/magic_skill", {
 			if (a.getSkills().hasSkill("perk.torment_soul")) effect.m.TormentSoul = true;
 		}
 		effect.m.TurnsLeft = this.m.Duration;
-		//TODO: Anguish fx
-		//Use blue horrify fx?
 
+		local effect = this.Tactical.spawnSpriteEffect("anguish", this.createColor("#ffffff"), _targetTile, 0, 40, 1.0, 0.25, 0, 400, 300);
+		
 		return true;
 	}
 

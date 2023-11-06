@@ -28,3 +28,7 @@
 ::Const.Combat.OpportunistUsedTiles <- [];
 
 /////////////////
+
+// ::Const.Music.MenuTracks = [
+//     "music/title.wav"
+// ];

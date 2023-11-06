@@ -1,4 +1,4 @@
-this.magic_skill <- this.inherit("scripts/skills/skill", {
+this._magic_active <- this.inherit("scripts/skills/skill", {
 	m = {
 		ManaCost = 1,
 		Cooldown_Max = 0,
@@ -28,11 +28,6 @@ this.magic_skill <- this.inherit("scripts/skills/skill", {
 		if (this.m.Cooldown > 0) this.m.Cooldown--;
 	}
 
-	function onUse( _user, _targetTile )
-	{
-		return this.attackEntity(_user, _targetTile.getEntity());
-	}
-
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
 		if (_skill == this)
@@ -40,12 +35,6 @@ this.magic_skill <- this.inherit("scripts/skills/skill", {
 			local mana_pool = a.getSkills().getSkillByID("trait.mana_pool");
 			mana_pool.remove_mana(this.m.ManaCost);
 			this.m.Cooldown = this.m.Cooldown_Max;
-
-			// _properties.DamageRegularMin = _properties.getInitiativeMinDamage();
-			// _properties.DamageRegularMax = _properties.getInitiativeMaxDamage();
-			_properties.RangedSkill += this.m.AdditionalAccuracy;
-			_properties.MeleeSkill += this.m.AdditionalAccuracy;
-			_properties.HitChanceAdditionalWithEachTile += this.m.AdditionalHitChance;
 		}
 	}
 

@@ -27,6 +27,7 @@
 
 
 
+
 //figure out persistent tile effects for entities?
 //skill that checks on move??
 
@@ -467,7 +468,7 @@ Undead cannot be charmed
 ::addItem("legend_robes_wizard")
 ::addItem("apotheosis_potion_item")
 ::addItem("goblin_overseer_potion_item")
-::addItem("nachzehrer_potion_item")
+::addItem("direwolf_potion_item")
 ::addItem("fallen_hero_potion_item")
 ::addItem("two_handed_wooden_flail")
 

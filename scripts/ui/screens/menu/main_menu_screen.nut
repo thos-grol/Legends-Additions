@@ -122,7 +122,7 @@ this.main_menu_screen <- {
 		this.m.OptionsMenuModule.connectUI(this.m.JSHandle);
 		this.m.CreditsModule.connectUI(this.m.JSHandle);
 		this.m.JSHandle.asyncCall("setVersion", [
-			this.GameInfo.getVersionNumber() + " " + this.GameInfo.getVersionName() + "Legends Additions " + ::LA.Version,
+			this.GameInfo.getVersionNumber() + " " + this.GameInfo.getVersionName() + "Legends Dark Age " + ::LA.Version,
 			"Legends Mod " + ::Legends.Version + " " + ::Legends.BuildName,
 		]);
 		local dlc = [];

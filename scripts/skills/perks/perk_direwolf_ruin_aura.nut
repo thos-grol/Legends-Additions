@@ -1,9 +1,10 @@
-::Const.Strings.PerkName.DirewolfRuinAura <- "Ruin Aura";
-::Const.Strings.PerkDescription.DirewolfRuinAura <- "Unstoppable rage..."
+::Const.Strings.PerkName.DirewolfRuinAura <- "Ruin Knight";
+::Const.Strings.PerkDescription.DirewolfRuinAura <- ::MSU.Text.color(::Z.Log.Color.Purple, "Class")
++ "\nBring tragedy and ruin to those around you... The remnant power of the God of Ruin"
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
-+ "\n• When reduced to 50% hp, triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
-+ "\n• Become immune to stuns and displacement for 2 turns."
-+ "\n• Gain increased damage, initiative, and defenses for 2 turns.";
++ "\nF Class Vitality: " + ::MSU.Text.colorGreen("+50") + " Hitpoints"
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Turn start, 20% chance:")
++ "\n• Inflict an injury on all units within 2 tiles";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DirewolfRuinAura].Name = ::Const.Strings.PerkName.DirewolfRuinAura;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DirewolfRuinAura].Tooltip = ::Const.Strings.PerkDescription.DirewolfRuinAura;
@@ -21,7 +22,12 @@ this.perk_direwolf_ruin_aura <- this.inherit("scripts/skills/skill", {
 		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
-		this.m.IsHidden = false;
+		this.m.IsHidden = true;
+	}
+
+	function onUpdate( _properties )
+	{
+		_properties.Hitpoints += 50;
 	}
 
 	function getTooltip()
@@ -82,7 +88,8 @@ this.perk_direwolf_ruin_aura <- this.inherit("scripts/skills/skill", {
 
 		foreach( t in targets )
 		{
-			if (!t.IsOccupiedByActor || !t.getEntity().isAttackable()) continue;
+			if (!t.IsOccupiedByActor) continue;
+			if (!t.getEntity().isAttackable()) continue;
 
 			for( local i = 0; i < ::Const.Tactical.RuinAuraParticles.len(); i = ++i )
 			{
@@ -90,47 +97,44 @@ this.perk_direwolf_ruin_aura <- this.inherit("scripts/skills/skill", {
 			}
 
 			local target = t.getEntity();
-			if (target.isAlive())
+			if (!target.isAlive()) continue;
+			if (!target.m.CurrentProperties.IsAffectedByInjuries) continue;
+			if (!target.m.IsAbleToDie) continue;
+			
+			local potentialInjuries = [];
+			foreach( inj in ::Const.Injury.All)
 			{
-				if (target.m.CurrentProperties.IsAffectedByInjuries && target.m.IsAbleToDie)
+				if (!target.m.Skills.hasSkill(inj.ID) && target.m.ExcludedInjuries.find(inj.ID) == null)
 				{
-					local potentialInjuries = [];
-
-					foreach( inj in ::Const.Injury.All)
-					{
-						if (!target.m.Skills.hasSkill(inj.ID) && target.m.ExcludedInjuries.find(inj.ID) == null)
-						{
-							potentialInjuries.push(inj.Script);
-						}
-					}
-
-					local appliedInjury = false;
-					while (potentialInjuries.len() != 0)
-					{
-						local r = ::Math.rand(0, potentialInjuries.len() - 1);
-						local injury = ::new("scripts/skills/" + potentialInjuries[r]);
-
-						if (injury.isValid(target))
-						{
-							target.m.Skills.add(injury);
-
-							if (!target.isHiddenToPlayer())
-								::Z.Log.suffer_injury(target, injury.getNameOnly());
-
-
-							appliedInjury = true;
-
-							if (target.m.Sound[::Const.Sound.ActorEvent.DamageReceived].len() > 0)
-							{
-								local volume = 1.0;
-								target.playSound(::Const.Sound.ActorEvent.DamageReceived, ::Const.Sound.Volume.Actor * target.m.SoundVolume[::Const.Sound.ActorEvent.DamageReceived] * target.m.SoundVolumeOverall * volume, target.m.SoundPitch);
-							}
-
-							break;
-						}
-						else potentialInjuries.remove(r);
-					}
+					potentialInjuries.push(inj.Script);
 				}
+			}
+
+			local appliedInjury = false;
+			while (potentialInjuries.len() != 0)
+			{
+				local r = ::Math.rand(0, potentialInjuries.len() - 1);
+				local injury = ::new("scripts/skills/" + potentialInjuries[r]);
+
+				if (injury.isValid(target))
+				{
+					target.m.Skills.add(injury);
+
+					if (!target.isHiddenToPlayer())
+						::Z.Log.suffer_injury(target, injury.getNameOnly());
+
+
+					appliedInjury = true;
+
+					if (target.m.Sound[::Const.Sound.ActorEvent.DamageReceived].len() > 0)
+					{
+						local volume = 1.0;
+						target.playSound(::Const.Sound.ActorEvent.DamageReceived, ::Const.Sound.Volume.Actor * target.m.SoundVolume[::Const.Sound.ActorEvent.DamageReceived] * target.m.SoundVolumeOverall * volume, target.m.SoundPitch);
+					}
+
+					break;
+				}
+				else potentialInjuries.remove(r);
 			}
 		}
 		this.Sound.play("sounds/monster/direwolf_ruin_end.wav", 300.0, user.getPos());
