@@ -1,29 +1,25 @@
 //////////
 // How to progress?
 //TODO: Potion -> reconfigured into mage potion -> grants mage class
-//book -> matrix, meditation, spells
+//book -> meditation, spells
 //to increase power
     //gain more occult knowledge (decipher more occult books, when perk is added to tree, also increment flag)
     //absorb more aspected materials (flag stores aspects absorbed)
 
+//Tome of Decay
+    // Meditation Technique: Underworld Thoughts
+    // Reanimate
+    // Corpse Explosion (Long Cooldown: 10 turns)
 
 //Tome of Anguish
-    // Matrix: Negative Energy
-    // Meditation Technique: Anguish
-    // reanimate
+    // Meditation Technique: Anguish (Buffs the power of anguish, small chance for nearby corpses around to reanimate)
     // anguish
 
-
-//Tome of Spiritualism Spells
-    // Matrix: Negative Energy
-    // Meditation Technique: Underworld Thoughts, taking this will refund any other meditation techniques
-        //TODO: Interchangable meditation techniques
-    // reanimate
+//Tome of Spiritualism
+    // Meditation Technique: Astral Wanderer ()
+    //Haunt
     // Negative Energy Hand
         // 	partial astral projection
-    //Haunt
-        // 	2 perks
-
 
 
 

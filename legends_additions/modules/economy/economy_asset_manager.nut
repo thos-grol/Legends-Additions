@@ -1,3 +1,7 @@
+::Const.World.Assets.NewCampaignEquipment = [
+	// "scripts/items/accessory/bandage_item"
+],
+
 ::mods_hookExactClass("states/world/asset_manager", function(o)
 {
     // local create = o.create;
@@ -417,5 +421,51 @@
 		// 	}
 		this.m.Food = 0.0;
 	}
+
+	/////////////
+
+	o.setCampaignSettings = function( _settings )
+	{
+		this.m.CampaignID = this.Math.max(0, this.Math.rand());
+		this.m.Name = this.removeFromBeginningOfText("The ", this.removeFromBeginningOfText("the ", _settings.Name));
+		this.m.Banner = _settings.Banner;
+		this.m.BannerID = _settings.Banner.slice(_settings.Banner.find("_") + 1).tointeger();
+		this.m.CombatDifficulty = _settings.Difficulty;
+		this.m.EconomicDifficulty = _settings.EconomicDifficulty;
+		this.m.IsIronman = _settings.Ironman;
+		this.m.IsPermanentDestruction = _settings.PermanentDestruction;
+		this.m.Origin = _settings.StartingScenario;
+		this.m.BusinessReputation = 0;
+		this.m.SeedString = _settings.Seed;
+		this.World.FactionManager.getGreaterEvil().Type = _settings.GreaterEvil;
+		this.m.Stash.resize(this.Const.LegendMod.MaxResources[_settings.EconomicDifficulty].Stash);
+		this.m.Money = this.Const.LegendMod.StartResources[_settings.BudgetDifficulty].Money;
+		this.m.Ammo = this.Const.LegendMod.StartResources[_settings.BudgetDifficulty].Ammo;
+		this.m.ArmorParts = this.Const.LegendMod.StartResources[_settings.BudgetDifficulty].ArmorParts;
+		this.m.Medicine = this.Const.LegendMod.StartResources[_settings.BudgetDifficulty].Medicine;
+		this.m.Stash.clear();
+		this.m.Origin.onSpawnAssets();
+		local bros = this.World.getPlayerRoster().getAll();
+
+		foreach( bro in bros )
+		{
+			bro.getBackground().buildDescription(true);
+			bro.m.XP = this.Const.LevelXP[bro.m.Level - 1];
+			bro.m.Attributes = [];
+			bro.fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
+			bro.getSkills().update();
+		}
+
+		this.updateFormation();
+
+		foreach( item in this.Const.World.Assets.NewCampaignEquipment )
+		{
+			this.m.Stash.add(this.new(item));
+		}
+
+		this.updateFood();
+		this.m.LastRosterSize = this.World.getPlayerRoster().getSize();
+	}
+
 
 });
