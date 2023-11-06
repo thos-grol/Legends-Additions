@@ -2,7 +2,6 @@
 ::mods_hookExactClass("scenarios/world/legend_random_3_scenario", function(o) { o.isValid = function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legend_random_party_scenario", function(o) { o.isValid = function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legend_random_solo_scenario", function(o) { o.isValid = function(){ return false; }});
-::mods_hookExactClass("scenarios/world/legends_berserker_scenario", function(o) { o.isValid = function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_crusader_scenario", function(o) { o.isValid = function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_druid_scenario", function(o) { o.isValid = function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_inquisition_scenario", function(o) { o.isValid = function(){ return false; }});
@@ -26,12 +25,14 @@
 ::mods_hookExactClass("scenarios/world/tutorial_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_sisterhood_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_seer_scenario", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("scenarios/world/raiders_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/sato_escaped_slaves_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("scenarios/world/rangers_scenario", function(o) { o.isValid <- function(){ return false; }});
 
 ::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/cultists_scenario", function(o) { o.isValid <- function(){ return false; }});
 
 //FEATURE_5 rework and reenable cultists scenario
-::mods_hookExactClass("scenarios/world/cultists_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/lone_wolf_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/gladiators_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/legends_scaling_beggar_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/beast_hunters_scenario", function(o) { o.isValid <- function(){ return false; }});
