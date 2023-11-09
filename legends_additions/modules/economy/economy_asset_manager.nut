@@ -62,10 +62,7 @@
 				bro.getSkills().onNewDay();
 				bro.updateInjuryVisuals();
 
-				if (this.World.Assets.getOrigin().getID() == "scenario.legends_troupe")
-				{
-					this.addMoney(10);
-				}
+				if (this.World.Assets.getOrigin().getID() == "scenario.legends_troupe") this.addMoney(10);
 
 				if (bro.getDailyCost() > 0 && this.m.Money < bro.getDailyCost())
 				{
@@ -81,11 +78,15 @@
 					}
 				}
 
+				if
+
+
+
 				this.m.Money -= bro.getDailyCost();
 				mood = mood + bro.getMoodState();
 			}
 
-			if (this.World.Retinue.hasFollower("follower.drill_sergeant"))
+			if (this.World.Retinue.hasFollower("follower.alchemist"))
 			{
 				local alchemy_ammo = [];
 				local alchemy_tools = [];

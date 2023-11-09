@@ -1,5 +1,5 @@
 ::mods_hookExactClass("entity/tactical/player", function (o){
-    
+
     o.onInit = function()
 	{
 		this.human.onInit();
@@ -26,15 +26,15 @@
 	o.setStartValuesEx = function( _backgrounds, _addTraits = true, _gender = -1, _addEquipment = true )
 	{
 		if (this.isSomethingToSee() && this.World.getTime().Days >= 7) _backgrounds = ::Const.CharacterPiracyBackgrounds;
-	
+
 		local background = ::new("scripts/skills/backgrounds/" + _backgrounds[this.Math.rand(0, _backgrounds.len() - 1)]);
-		if (::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled") 
+		if (::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled")
             background.setGender(_gender);
 		this.m.Skills.add(background);
 		background.buildDescription();
-		if (background.isBackgroundType(::Const.BackgroundType.Female)) 
+		if (background.isBackgroundType(::Const.BackgroundType.Female))
             this.setGender(1);
-		
+
 
 		//Add traits before trees, so traits can determine trait trees.
         local maxTraits = 0;
@@ -75,7 +75,7 @@
         // this.m.Skills.add(::new("scripts/skills/traits/teamplayer_trait"));
 
 		local attributes = background.buildPerkTree();
-		
+
 		if (this.getFlags().has("PlayerZombie")) this.m.StarWeights = background.buildAttributes("zombie", attributes);
 		else if (this.getFlags().has("PlayerSkeleton")) this.m.StarWeights = background.buildAttributes("skeleton", attributes);
 		else this.m.StarWeights = background.buildAttributes(null, attributes);
@@ -108,7 +108,7 @@
 	{
 		this.m.Talents.resize(::Const.Attributes.COUNT, 0);
 		if (this.getBackground() != null && this.getBackground().isBackgroundType(::Const.BackgroundType.Untalented) && !_force) return;
-		
+
 
 		local attributes = [];
 		local weights = [];
@@ -212,9 +212,43 @@
 			if (!::Z.Perks.verifyStance(actor, _id)) return false; //has required mastery
 			if (this.getFlags().has("Stance")) return false; //has a stance already
 		}
-		
+
 
 		if (this.m.PerkPointsSpent >= perk.Unlocks) return true;
 		return false;
+	}
+
+	o.updateLevel = function()
+	{
+		while (this.m.Level < this.Const.LevelXP.len() && this.m.XP >= this.Const.LevelXP[this.m.Level])
+		{
+			++this.m.Level;
+			++this.m.LevelUps;
+
+			if (this.m.Level <= this.Const.XP.MaxLevelWithPerkpoints)
+			{
+				++this.m.PerkPoints;
+			}
+
+			if (this.m.Level == 10 && this.m.Skills.hasSkill("perk.student"))
+			{
+				++this.m.PerkPoints;
+			}
+
+			if (("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin() != null)
+			{
+				this.World.Assets.getOrigin().onUpdateLevel(this);
+			}
+
+			if (this.m.Level == 10)
+			{
+				this.updateAchievement("OldAndWise", 1, 1);
+			}
+
+			if (this.m.Level == 10 && this.m.Skills.hasSkill("trait.player"))
+			{
+				this.updateAchievement("TooStubbornToDie", 1, 1);
+			}
+		}
 	}
 });

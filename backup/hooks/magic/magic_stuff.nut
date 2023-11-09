@@ -89,13 +89,6 @@ Reanimate
 
 //Cooldown is duration of haunt.
 
-//TODO: Tome of Spiritualism Base item and item
-    // learnable perks, push in order
-    // learn in order
-    // if cannot learn anymore, tell message
-    //notify learned
-    //hook do nothing camp screen
-
 
 // Necromancy
 //     Book of Negative Energy

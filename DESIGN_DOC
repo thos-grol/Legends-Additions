@@ -1,6 +1,83 @@
 //////////
+
+Undead study
+
+human.nut
+    local corpse = clone this.Const.Corpse;
+    corpse.Type = "scripts/entity/tactical/enemies/zombie_player";
+    corpse.Faction = this.getFaction();
+    corpse.CorpseName = this.getName();
+    corpse.Tile = _tile;
+    corpse.Value = 8.0;
+    corpse.Hitpoints = 1.0;
+    corpse.IsResurrectable = isResurrectable;
+    corpse.IsConsumable = _fatalityType != this.Const.FatalityType.Unconscious;
+    corpse.Armor = this.m.BaseProperties.Armor;
+    corpse.Name = "Wiederganger " + this.getName();
+    corpse.Items = _fatalityType != this.Const.FatalityType.Unconscious ? this.getItems() : null;
+    corpse.Color = sprite_head.Color;
+    corpse.Saturation = sprite_head.Saturation;
+    corpse.Custom = custom;
+    corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+    corpse.isHuman = 1;
+    _tile.Properties.set("Corpse", corpse);
+    this.Tactical.Entities.addCorpse(_tile);
+
+player.nut
+    if (_tile != null)
+    {
+        this.human.onDeath(_killer, _skill, _tile, _fatalityType);
+        local corpse = _tile.Properties.get("Corpse");
+        corpse.IsPlayer = true;
+        corpse.Value = 10.0;
+    }
+
+goblin.nut
+    local corpse = clone this.Const.Corpse;
+    corpse.CorpseName = "A " + this.getName();
+    corpse.Tile = _tile;
+    corpse.IsResurrectable = false;
+    corpse.IsConsumable = true;
+    corpse.Items = this.getItems();
+    corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+    _tile.Properties.set("Corpse", corpse);
+    this.Tactical.Entities.addCorpse(_tile);
+
+orc_young.nut
+    local corpse = clone this.Const.Corpse;
+    corpse.CorpseName = "A Young Orc";
+    corpse.Tile = _tile;
+    corpse.IsResurrectable = false;
+    corpse.IsConsumable = true;
+    corpse.Items = this.getItems();
+    corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+    _tile.Properties.set("Corpse", corpse);
+    this.Tactical.Entities.addCorpse(_tile);
+
+orc_young.nut
+    local corpse = clone this.Const.Corpse;
+    corpse.CorpseName = "An Orc Warlord";
+    corpse.Tile = _tile;
+    corpse.IsResurrectable = false;
+    corpse.IsConsumable = true;
+    corpse.Items = this.getItems();
+    corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+    _tile.Properties.set("Corpse", corpse);
+    this.Tactical.Entities.addCorpse(_tile);
+
+//observation: seems like there is a graphical corpse and a logical corpse.
+//to implement resurrection of other races, simply just make a script to resurrect ig??
+
+//TODO: create flesh abomination spell,
+    //stores script to resurrect
+    //store perks in array (from corpse)
+    //store base stats in array as well (from corpse)
+
+
+===========================================
+
 // How to progress?
-//TODO: Potion -> reconfigured into mage potion -> grants mage class
+//FEATURE_0: POTION - Potion -> reconfigured into mage potion -> grants mage class - create mage potion
 //book -> meditation, spells
 //to increase power
     //gain more occult knowledge (decipher more occult books, when perk is added to tree, also increment flag)
@@ -27,14 +104,14 @@
 //figure out persistent tile effects for entities?
 //skill that checks on move??
 
-//FEATURE_1: FEATURE ghosts
+//FEATURE_2: FEATURE ghosts
 
-//FEATURE_1: FEATURE necromancers
-//FEATURE_1: FEATURE zombies, see underneath
+//FEATURE_2: FEATURE necromancers
+//FEATURE_2: FEATURE zombies, see underneath
     //zombies do not pick up item upon being resurrected
     //fallen hero -> frost effect
 
-//FEATURE_1: FEATURE Necrosavant -> Grail, Knock
+//FEATURE_2: FEATURE Necrosavant -> Grail, Knock
     //Modes:
         //Scummy - tp away close to party, summon weakest bro to it
         //Guerilla - tp and strike, tp and strike

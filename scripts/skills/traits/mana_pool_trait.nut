@@ -1,10 +1,5 @@
-//TODO: capacity grows by consuming aspected materials
-//TODO: capacity is refilled by ticking per hour
 this.mana_pool_trait <- this.inherit("scripts/skills/traits/character_trait", {
-	m = {
-		Mana_Max = 1,
-		Mana = 1
-	},
+	m = {},
 	function create()
 	{
 		this.character_trait.create();
@@ -20,7 +15,9 @@ this.mana_pool_trait <- this.inherit("scripts/skills/traits/character_trait", {
 
 	function getTooltip()
 	{
-		return [
+		local actor = this.getContainer().getActor();
+
+		local ret = [
 			{
 				id = 1,
 				type = "title",
@@ -31,46 +28,53 @@ this.mana_pool_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				type = "description",
 				text = this.getDescription()
 			},
+			//FEATURE_1: show current matrix
+			//FEATURE_1: info that mana is refilled on new day
 			{
 				id = 7,
 				type = "progressbar",
 				icon = "ui/icons/sturdiness.png",
-				value = this.m.Mana,
-				valueMax = this.m.Mana_Max,
-				text = "" + this.m.Mana + " / " + this.m.Mana_Max + "",
+				value = actor.getFlags().getAsInt("mana"),
+				valueMax = actor.getFlags().getAsInt("mana_max"),
+				text = "" + actor.getFlags().getAsInt("mana") + " / " + actor.getFlags().getAsInt("mana_max") + "",
 				style = "armor-body-slim"
 			}
 		];
+
+		return ret;
 	}
 
-	function onUpdate( _properties )
+	function onAdded()
 	{
+		local actor = this.getContainer().getActor();
+		if (!actor.getFlags().has("mana")) actor.getFlags().set("mana", 1);
+		if (!actor.getFlags().has("mana_max")) actor.getFlags().set("mana_max", 1);
 	}
 
-	function can_pay( _amount )
+	function is_payable( _amount )
 	{
-		return (this.m.Mana - _amount) >= 0;
+		local actor = this.getContainer().getActor();
+		return (actor.getFlags().getAsInt("mana") - _amount) >= 0;
 	}
 
-	function add_mana( _amount )
+	function modify( _amount )
 	{
-		this.m.Mana = this.Math.min(this.m.Mana_Max, this.m.Mana + _amount);
-	}
-
-	function remove_mana( _amount )
-	{
-		this.m.Mana = this.Math.max(0, this.m.Mana - _amount);
-	}
-
-	function grow_mana( _amount )
-	{
-		this.m.Mana_Max += _amount;
-		this.m.Mana += _amount;
+		local actor = this.getContainer().getActor();
+		actor.getFlags().set("mana", ::Math.min(actor.getFlags().getAsInt("mana") + _amount, actor.getFlags().getAsInt("mana_max")));
 	}
 
 	function onNewDay()
 	{
-		this.m.Mana = this.m.Mana_Max;
+		//refill mana
+		actor.getFlags().set("mana", actor.getFlags().getAsInt("mana_max"));
+
+		//FEATURE_0: TRAIT check bag slots for valid aspected items to consume, upgrade
+	}
+
+	function upgrade( _amount )
+	{
+		actor.getFlags().set("mana_max", actor.getFlags().getAsInt("mana") + _amount);
+		actor.getFlags().set("mana", actor.getFlags().getAsInt("mana") + _amount);
 	}
 });
 

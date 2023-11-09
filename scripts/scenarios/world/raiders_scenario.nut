@@ -1,4 +1,3 @@
-//TODO: remove extra items, properly level raiders, remove monk, edit scenario event
 this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 	m = {},
 	function create()
@@ -37,21 +36,18 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[0].improveMood(1.0, "Had a successful raid");
 		bros[0].setPlaceInFormation(3);
 		bros[0].setVeteranPerks(2);
-		bros[0].m.PerkPoints = 2;
-		bros[0].m.LevelUps = 2;
-		bros[0].m.Level = 3;
+		bros[0].m.PerkPoints = 7;
+		bros[0].m.LevelUps = 7;
+		bros[0].m.Level = 8;
 		bros[0].m.Talents = [];
 		local talents = bros[0].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
 		talents[this.Const.Attributes.MeleeSkill] = 2;
 		talents[this.Const.Attributes.Hitpoints] = 2;
-		talents[this.Const.Attributes.Fatigue] = 1;
+		talents[this.Const.Attributes.MeleeDefense] = 2;
 		local items = bros[0].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
-		local warhound = this.new("scripts/items/accessory/warhound_item");
-		warhound.m.Name = "Fenrir the Warhound";
-		items.equip(warhound);
 		local armor = this.new("scripts/items/legend_armor/cloth/legend_sackcloth");
 		local plate = this.new("scripts/items/legend_armor/plate/legend_reinforced_animal_hide_armor");
 		armor.setUpgrade(plate);
@@ -69,15 +65,15 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[1].improveMood(1.0, "Had a successful raid");
 		bros[1].setPlaceInFormation(4);
 		bros[1].setVeteranPerks(2);
-		bros[1].m.PerkPoints = 2;
-		bros[1].m.LevelUps = 2;
-		bros[1].m.Level = 3;
+		bros[1].m.PerkPoints = 7;
+		bros[1].m.LevelUps = 7;
+		bros[1].m.Level = 8;
 		bros[1].m.Talents = [];
 		local talents = bros[1].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
 		talents[this.Const.Attributes.MeleeSkill] = 2;
 		talents[this.Const.Attributes.Hitpoints] = 1;
-		talents[this.Const.Attributes.Fatigue] = 2;
+		talents[this.Const.Attributes.MeleeDefense] = 2;
 		local items = bros[1].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
@@ -98,13 +94,13 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[2].improveMood(1.0, "Had a successful raid");
 		bros[2].setPlaceInFormation(5);
 		bros[2].setVeteranPerks(2);
-		bros[2].m.PerkPoints = 2;
-		bros[2].m.LevelUps = 2;
-		bros[2].m.Level = 3;
+		bros[2].m.PerkPoints = 5;
+		bros[2].m.LevelUps = 5;
+		bros[2].m.Level = 6;
 		bros[2].m.Talents = [];
 		local talents = bros[2].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.MeleeSkill] = 1;
+		talents[this.Const.Attributes.MeleeSkill] = 3;
 		talents[this.Const.Attributes.MeleeDefense] = 2;
 		talents[this.Const.Attributes.Hitpoints] = 2;
 		local items = bros[2].getItems();
@@ -120,6 +116,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 				"barbarians/leather_helmet"
 			]
 		]));
+
 		bros[3].setStartValuesEx([
 			"monk_background"
 		]);
@@ -128,16 +125,21 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[3].setPlaceInFormation(13);
 		bros[3].setVeteranPerks(2);
 		bros[3].m.Talents = [];
+
 		local talents = bros[3].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
 		talents[this.Const.Attributes.Bravery] = 3;
+		talents[this.Const.Attributes.MeleeDefense] = 2;
+		bros[3].getSkills().add(this.new("scripts/skills/traits/bright_trait"));
+		bros[3].getBackground().addPerkGroup(::Const.Perks.IntelligentTree.Tree);
+
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Assets.addMoralReputation(-30.0);
-		this.World.Assets.getStash().add(this.new("scripts/items/supplies/goat_cheese_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/supplies/smoked_ham_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/loot/silverware_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/loot/silver_bowl_item"));
-		this.World.Assets.m.Money = this.World.Assets.m.Money / 2;
+
+		this.World.Assets.getStash().add(this.new("scripts/items/trade/furs_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/trade/furs_item"));
+
+		this.World.Assets.m.Money = 100;
 		this.World.Assets.m.Ammo = this.World.Assets.m.Ammo / 2;
 	}
 

@@ -407,6 +407,39 @@ local perks = [
         IconDisabled = "ui/perks/pattern_recognition_bw.png",
         Const = "PatternRecognition"
     },
+
+    // Magic
+
+    {
+        ID = "perk.meditation.underworld_thoughts",
+        Script = "scripts/skills/perks/perk_meditation_underworld_thoughts",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/meditation_underworld_thoughts.png", //TODO: ART meditation_underworld_thoughts
+        IconDisabled = "ui/perks/meditation_underworld_thoughts_bw.png",
+        Const = "MeditationUnderworldThoughts"
+    },
+
+    {
+        ID = "perk.spell.reanimate",
+        Script = "scripts/skills/perks/perk_spell_reanimate",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/spell_reanimate.png", //TODO: ART spell_reanimate
+        IconDisabled = "ui/perks/spell_reanimate_bw.png",
+        Const = "SpellReanimate"
+    },
+
+    {
+        ID = "perk.spell.corpse_explosion",
+        Script = "scripts/skills/perks/perk_spell_corpse_explosion",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/spell_corpse_explosion.png", //TODO: ART spell_corpse_explosion
+        IconDisabled = "ui/perks/spell_corpse_explosion_bw.png",
+        Const = "SpellCorpseExplosion"
+    },
+
     // {
 	// 	ID = "perk.eldritch_blast",
 	//     Script = "scripts/skills/perks/cultist_eldritch_blast",

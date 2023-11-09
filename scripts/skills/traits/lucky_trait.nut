@@ -19,6 +19,65 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		];
 	}
 
+	function onUpdate( _properties )
+	{
+		_properties.RerollDefenseChance += getRerollChance();
+	}
+
+	function onAdded()
+	{
+		local actor = this.getContainer().getActor();
+		if (actor.getFlags().has("Lucky")) return;
+
+		local tier = 1; //Lucky
+		local roll = this.Math.rand(1, 100);
+		if (roll <= 1) tier = 4; //Heaven Defying Fortune
+		else if (roll <= 5) tier = 3; //Chosen
+		else if (roll <= 20) tier = 2; //Fortunate
+		actor.getFlags().set("Lucky", roll);
+	}
+
+	function upgrade()
+	{
+		local actor = this.getContainer().getActor();
+		actor.getFlags().set("Lucky", ::Math.min(4, actor.getFlags().getAsInt("Lucky") + 1));
+	}
+
+	function getRerollChance()
+	{
+		local actor = this.getContainer().getActor();
+		switch(actor.getFlags().getAsInt("Lucky"))
+		{
+			case 1:
+				return 10;
+			case 2:
+				return 30;
+			case 3:
+				return 50;
+			case 4:
+				return 90;
+		}
+	}
+
+	function getName()
+	{
+		local actor = this.getContainer().getActor();
+		if (!actor.getFlags().has("Lucky")) return "Minor Luck";
+		switch(actor.getFlags().getAsInt("Lucky"))
+		{
+			case 1:
+				return "Minor Luck"
+			case 2:
+				return "Major Luck"
+			case 3:
+				return "Chosen"
+			case 4:
+				return "Fortune Rivalling Heaven"
+		}
+	}
+
+	////// Tooltips
+
 	function getTooltip()
 	{
 		local tooltip = [
@@ -35,55 +94,6 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		];
 		getLuckTooltip(tooltip);
 		return tooltip;
-	}
-
-	function onUpdate( _properties )
-	{
-		_properties.RerollDefenseChance += 10;
-	}
-
-	function onAdded()
-	{
-		local actor = this.getContainer().getActor();
-		if (actor.getFlags().has("Lucky")) return;
-
-		local tier = 1;
-		local roll = this.Math.rand(1, 100);
-		if (roll <= 1) tier = 9; //Heaven Defying Fortune
-		if (roll <= 5) tier = 5; //Plane's Chosen
-		if (roll <= 20) tier = 3; //Fortunate
-		else tier = 1; //Lucky
-		
-		actor.getFlags().set("Lucky", tier);
-	}
-
-	function boostLuck()
-	{
-		if (tier == 1) tier = 3;
-		else if (tier == 3) tier = 5;
-		else if (tier == 5) tier = 9;
-	}
-
-	function getRerollChance()
-	{
-		return 10 * this.getContainer().getActor().getFlags().getAsInt("Lucky");
-	}
-
-	function getName()
-	{
-		local actor = this.getContainer().getActor();
-		if (!actor.getFlags().has("Lucky")) return "Minor Luck";
-		switch(actor.getFlags().getAsInt("Lucky"))
-		{
-			case 1:
-				return "Minor Luck"
-			case 3:
-				return "Major Luck"
-			case 5:
-				return "Chosen"
-			case 9:
-				return "Fortune Rivalling Heaven"
-		}
 	}
 
 	function getLuckTooltip( _tooltip )
@@ -111,11 +121,11 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		{
 			case 1:
 				return "Things seem to go well once in a while for this character."
-			case 3:
+			case 2:
 				return "Things seem to go well a lot for this character."
-			case 5:
+			case 3:
 				return "This character is the chosen one. Their luck represents the trend of the world."
-			case 9:
+			case 4:
 				return "This character's luck defies the balance of heaven. Their enemies might choke to death on air before hitting them."
 		}
 	}

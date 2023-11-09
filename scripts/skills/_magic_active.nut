@@ -3,24 +3,31 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 		ManaCost = 1,
 		Cooldown_Max = 0,
 		Cooldown = 0,
-		Duration = 0,
-		AdditionalAccuracy = 0,
-		AdditionalHitChance = 0
 	},
 	function create()
 	{
 	}
 
-	function getTooltip()
+	function getTooltip() //TODO: examine, add mana info
 	{
-		return this.getDefaultTooltip();
-	}
-
-	function onUpdate( _properties )
-	{
-		// _properties.DamageInitiativeMin = this.m.DamageInitiativeMin;
-		// _properties.DamageInitiativeMax = this.m.DamageInitiativeMax;
-		// _properties.DamageInitiativeCutoff = this.m.DamageInitiativeCutoff;
+		local p = this.getContainer().getActor().getCurrentProperties();
+		return [
+			{
+				id = 1,
+				type = "title",
+				text = this.getName()
+			},
+			{
+				id = 2,
+				type = "description",
+				text = this.getDescription()
+			},
+			{
+				id = 3,
+				type = "text",
+				text = this.getCostString()
+			}
+		];
 	}
 
 	function onTurnStart()
@@ -28,14 +35,18 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 		if (this.m.Cooldown > 0) this.m.Cooldown--;
 	}
 
-	function onAnySkillUsed( _skill, _targetEntity, _properties )
+	function onUse( _user, _targetTile )
 	{
-		if (_skill == this)
-		{
-			local mana_pool = a.getSkills().getSkillByID("trait.mana_pool");
-			mana_pool.remove_mana(this.m.ManaCost);
-			this.m.Cooldown = this.m.Cooldown_Max;
-		}
+		local mana_pool = a.getSkills().getSkillByID("trait.mana_pool");
+		mana_pool.modify(this.m.ManaCost * -1);
+		this.m.Cooldown = this.m.Cooldown_Max;
+		cast(_user, _targetTile);
+
+		return true;
+	}
+
+	function cast( _user, _targetTile )
+	{
 	}
 
 	function isUsable()
@@ -47,7 +58,7 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 		if (!a.getSkills().hasSkill("trait.mana_pool")) return false;
 
 		local mana_pool = a.getSkills().getSkillByID("trait.mana_pool");
-		return mana_pool.can_pay(this.m.ManaCost);
+		return mana_pool.is_payable(this.m.ManaCost);
 	}
 
 });

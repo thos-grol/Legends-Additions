@@ -92,13 +92,13 @@ gt.Const.Perks.FaithClassTree <- {
 		[],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendPrayerOfFaith
+			// gt.Const.Perks.PerkDefs.LegendPrayerOfFaith
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendPrayerOfLife
+			// gt.Const.Perks.PerkDefs.LegendPrayerOfLife
 		],
 		[
-			gt.Const.Perks.PerkDefs.LegendHolyFlame
+			// gt.Const.Perks.PerkDefs.LegendHolyFlame
 		]
 	]
 };
@@ -255,15 +255,15 @@ gt.Const.Perks.HammerClassTree <- {
 	],
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistHammerSkill
+			// gt.Const.Perks.PerkDefs.LegendSpecialistHammerSkill
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistHammerDamage
+			// gt.Const.Perks.PerkDefs.LegendSpecialistHammerDamage
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.SunderingStrikes
+			// gt.Const.Perks.PerkDefs.SunderingStrikes
 		],
 		[],
 		[]
@@ -277,11 +277,11 @@ gt.Const.Perks.MilitiaClassTree <- {
 	],
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistMilitiaSkill
+			// gt.Const.Perks.PerkDefs.LegendSpecialistMilitiaSkill
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistMilitiaDamage
+			// gt.Const.Perks.PerkDefs.LegendSpecialistMilitiaDamage
 		],
 		[],
 		[],
@@ -297,15 +297,15 @@ gt.Const.Perks.PickaxeClassTree <- {
 	],
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistPickaxeSkill
+			// gt.Const.Perks.PerkDefs.LegendSpecialistPickaxeSkill
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistPickaxeDamage
+			// gt.Const.Perks.PerkDefs.LegendSpecialistPickaxeDamage
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.SunderingStrikes
+			// gt.Const.Perks.PerkDefs.SunderingStrikes
 		],
 		[],
 		[]
@@ -319,11 +319,11 @@ gt.Const.Perks.PitchforkClassTree <- {
 	],
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistPitchforkSkill
+			// gt.Const.Perks.PerkDefs.LegendSpecialistPitchforkSkill
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistPitchforkDamage
+			// gt.Const.Perks.PerkDefs.LegendSpecialistPitchforkDamage
 		],
 		[],
 		[],
@@ -339,11 +339,11 @@ gt.Const.Perks.ShortbowClassTree <- {
 	],
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistShortbowSkill
+			// gt.Const.Perks.PerkDefs.LegendSpecialistShortbowSkill
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistShortbowDamage
+			// gt.Const.Perks.PerkDefs.LegendSpecialistShortbowDamage
 		],
 		[],
 		[],
@@ -359,11 +359,11 @@ gt.Const.Perks.ShovelClassTree <- {
 	],
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistShovelSkill
+			// gt.Const.Perks.PerkDefs.LegendSpecialistShovelSkill
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistShovelDamage
+			// gt.Const.Perks.PerkDefs.LegendSpecialistShovelDamage
 		],
 		[],
 		[],
@@ -379,15 +379,15 @@ gt.Const.Perks.WoodaxeClassTree <- {
 	],
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistWoodaxeSkill
+			// gt.Const.Perks.PerkDefs.LegendSpecialistWoodaxeSkill
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistWoodaxeDamage
+			// gt.Const.Perks.PerkDefs.LegendSpecialistWoodaxeDamage
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.LegendWoodworking
+			// gt.Const.Perks.PerkDefs.LegendWoodworking
 		],
 		[],
 		[]

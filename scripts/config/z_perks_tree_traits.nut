@@ -595,12 +595,12 @@ gt.Const.Perks.IntelligentTree <- {
 		],
 		[],
 		[
-			//TODO: PERK Arcane Insight
+			//FEATURE_0: PERK Arcane Insight
 			//Upgrades a bro's bright trait
 		],
 		[],
 		[
-			//TODO: PERK Magician
+			//FEATURE_0: PERK Magician
 			//There is still so much to learn...
 			//Gain 5 perk points
 		]

@@ -901,7 +901,7 @@ this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 
 		this.actor.onResurrected(_info);
 		this.m.IsResurrected = true;
-		this.pickupMeleeWeaponAndShield(this.getTile());
+		//this.pickupMeleeWeaponAndShield(this.getTile());
 		this.getSkills().update();
 		this.m.XP /= 4;
 		local tile = this.getTile();

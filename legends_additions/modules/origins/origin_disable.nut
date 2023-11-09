@@ -27,14 +27,14 @@
 ::mods_hookExactClass("scenarios/world/legends_seer_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/sato_escaped_slaves_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("scenarios/world/rangers_scenario", function(o) { o.isValid <- function(){ return false; }});
 
 ::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/cultists_scenario", function(o) { o.isValid <- function(){ return false; }});
-
 //FEATURE_5 rework and reenable cultists scenario
+
 ::mods_hookExactClass("scenarios/world/lone_wolf_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/gladiators_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_scaling_beggar_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/beast_hunters_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_free_company_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/legends_nomad_scenario", function(o) { o.isValid <- function(){ return false; }});

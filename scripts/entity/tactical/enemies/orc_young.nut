@@ -182,7 +182,7 @@ this.orc_young <- this.inherit("scripts/entity/tactical/abstract_actor", {
 		if (item != null) this.m.Items.equip(item);
 	}
 
-	
+
 	///////////////////////////////////////////////////////////////////////////////////
 	//helper
 
@@ -312,6 +312,7 @@ this.orc_young <- this.inherit("scripts/entity/tactical/abstract_actor", {
 			corpse.IsConsumable = true;
 			corpse.Items = this.getItems();
 			corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+
 			_tile.Properties.set("Corpse", corpse);
 			this.Tactical.Entities.addCorpse(_tile);
 		}

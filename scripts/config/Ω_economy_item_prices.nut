@@ -209,17 +209,17 @@
 	"misc.golden_chalice" : 0,
 	"misc.ancient_gold_coins" : 0,
 	"misc.jade_broche" : 0,
-	"misc.silverware" : 0, 
-	"misc.silver_bowl" : 0, 
+	"misc.silverware" : 0,
+	"misc.silver_bowl" : 0,
 	"misc.valuable_furs" : 0,
-	"misc.bone_figurines" : 0, 
-	"misc.bead_necklace" : 0, 
-	"misc.looted_valuables" : 0, 
-	"misc.goblin_carved_ivory_iconographs" : 0, 
-	"misc.goblin_minted_coins" : 0, 
-	"misc.goblin_rank_insignia" : 0, 
-	"misc.webbed_valuables" : 0, 
-	"misc.deformed_valuables" : 0, 
+	"misc.bone_figurines" : 0,
+	"misc.bead_necklace" : 0,
+	"misc.looted_valuables" : 0,
+	"misc.goblin_carved_ivory_iconographs" : 0,
+	"misc.goblin_minted_coins" : 0,
+	"misc.goblin_rank_insignia" : 0,
+	"misc.webbed_valuables" : 0,
+	"misc.deformed_valuables" : 0,
 	"misc.legend_bear_fur" : 0,
 	"misc.lindwurm_hoard" : 0,
 	"misc.jeweled_crown" : 0,
@@ -319,7 +319,7 @@
 	"accessory.legend_hexen_leader_trophy" : 0,
 	"accessory.slayer_necklace" : 0,
 	"accessory.cursed_crystal_skull" : 0, //FEATURE_9 Rework method of acquirement AND item
-	
+
 
 	//PET
 	"accessory.falcon" : 100,
@@ -815,7 +815,7 @@
 	"legend_armor.body.legend_tunic_noble" : 176,                        		//DUR: 40.00 | STA: -2.00
 	"legend_armor.named_tabard" : 176,                        					//DUR: 10.00 | STA:  0.00
 	"legend_armor.body.legend_tunic_noble_named" : 264,                 		//DUR: 40.00 | STA: -2.00
-	"legend_armor.body.legend_robes_magic" : 146,                        		//DUR: 40.00 | STA: -1.00 //fancy looking //TODO: make wizards wear magic robes, give robes a property (mana gathering)
+	"legend_armor.body.legend_robes_magic" : 146,                        		//DUR: 40.00 | STA: -1.00 //fancy looking //FEATURE_1: make wizards wear magic robes, give robes a property (mana gathering)
 
 		//I
 		"legend_armor.body.legend_southern_padded_chest" : 36,              		//DUR: 45.00 | STA: -4.00

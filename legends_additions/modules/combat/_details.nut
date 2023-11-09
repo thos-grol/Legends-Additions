@@ -29,6 +29,12 @@
 		local actor = this.getContainer().getActor();
 		local p = actor.getCurrentProperties();
 
+		if (actor.getLevel() == 10) tooltip.push({
+			id = 10,
+			type = "text",
+			icon = "ui/icons/warning.png",
+			text = "0% XP gain at Level 10. Find a way to break fate and change destiny!"
+		});
 
 		getTooltip_Proficiency(tooltip);
 
@@ -130,8 +136,12 @@
 	// Logic
 	// =============================================================================================
 
-	o.onUpdate = function( _properties )
+	function onUpdate( _properties )
 	{
+
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != this.Const.Faction.Player) return;
+		if (this.getContainer().getActor().getLevel() >= 10) _properties.XPGainMult *= 0;
 	}
 
     o.onBeforeDamageReceived <- function( _attacker, _skill, _hitInfo, _properties )
