@@ -1,4 +1,3 @@
-//TODO: PERK reanimate
 ::Const.Strings.PerkName.SpellReanimate <- "Reanimate";
 ::Const.Strings.PerkDescription.SpellReanimate <- "Undead rise!..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Reanimate\' (4 AP, 20 Fat, 1 Mana):")
@@ -22,7 +21,11 @@ this.perk_hold_out <- this.inherit("scripts/skills/skill", {
 		this.m.IsHidden = false;
 	}
 
-
+	function onAdded()
+	{
+		if (!this.m.Container.hasSkill("actives.spell.reanimate"))
+			this.m.Container.add(::new("scripts/skills/actives/spell_reanimate"));
+	}
 
 });
 

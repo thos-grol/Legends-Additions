@@ -1,7 +1,7 @@
-//FEATURE_0: TOME create tome data structure
+//TODO: test
 this.tome <- this.inherit("scripts/items/item", {
 	m = {
-        Tome = ""
+        Tome = ::MSU.Table.randValue(::B.Info.Tomes).ID
     },
 	function create()
 	{
@@ -13,14 +13,12 @@ this.tome <- this.inherit("scripts/items/item", {
 		this.m.SlotType = this.Const.ItemSlot.None;
 		this.m.ItemType = this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.Loot;
 		this.m.IsDroppedAsLoot = true;
-		this.m.Value = 595;
+		this.m.Value = 1000;
 	}
-
-    //FEATURE_0: TOME function getData()
 
     function getData()
     {
-
+		return ::B.Info.Tomes[this.m.Tome];
     }
 
     function set_tome(_str) //called on enemy drops
@@ -32,12 +30,16 @@ this.tome <- this.inherit("scripts/items/item", {
 
 	function getName()
     {
-        return //FEATURE_0 TOME get Name:
+        return ::B.Info.Tomes[this.m.Tome].Name:
+    }
+
+	function getDescription()
+    {
+        return ::B.Info.Tomes[this.m.Tome].Description:
     }
 
     function getTooltip()
 	{
-		//FEATURE_0: TOME getTooltip
         local result = [
 			{
 				id = 1,
@@ -47,7 +49,7 @@ this.tome <- this.inherit("scripts/items/item", {
 			{
 				id = 2,
 				type = "description",
-				text = this.getDescription()
+				text = "The gods are dead, the dharma has ended. Perhaps our last hope is blasphemy - absorb the weirdness and remnants of the gods as a pathway to ascension." + "\n\n" +this.getDescription()
 			}
 		];
 		result.push({
@@ -63,7 +65,17 @@ this.tome <- this.inherit("scripts/items/item", {
 		this.Sound.play("sounds/combat/armor_leather_impact_03.wav", this.Const.Sound.Volume.Inventory);
 	}
 
-    //FEATURE_0: TOME serialize type
+	function onSerialize( _out )
+	{
+		this.item.onSerialize(_out);
+		_out.writeString(this.m.Tome);
+	}
+
+	function onDeserialize( _in )
+	{
+		this.item.onDeserialize(_in);
+		this.m.Tome = _in.readString();
+	}
 
 });
 

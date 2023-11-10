@@ -1,9 +1,10 @@
-this.direwolf_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomist_potion_item", {
+//FEATURE_0: item description
+this.mage_winter_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomist_potion_item", {
 	m = {},
 	function create()
 	{
 		this.anatomist_potion_item.create();
-		this.m.ID = "misc.potion.direwolf";
+		this.m.ID = "misc.potion.mage.winter";
 		this.m.Name = "Potion of Blade Dancing";
 		this.m.Description = "This humoural concoction, borne from research into the dreaded direwolf, will turn even the clumsiest oaf into a lithe dancer of a warrior, able to gracefully move with the tides of battle long after lesser men succumb to fatigue! Mild akathisia after consuming is normal and expected.";
 		this.m.IconLarge = "";
@@ -24,6 +25,7 @@ this.direwolf_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomis
 
 	function mutate(_actor)
 	{
+		//FEATURE_0: add death if no pattern recognition perk
 		::Z.Perks.add(_actor, ::Const.Perks.PerkDefs.DirewolfRuinAura, 0);
 	}
 

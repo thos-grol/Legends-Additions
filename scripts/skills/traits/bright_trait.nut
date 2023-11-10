@@ -73,8 +73,10 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		}
 		if (tome_data == null) return;
 
-		::B.Info[tome_data]
+		foreach(project in tome_data.Projects)
+		{
 
+		}
 		//get current project
 		//tick progress
 	}

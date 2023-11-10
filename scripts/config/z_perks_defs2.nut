@@ -228,6 +228,20 @@ local perks = [
     },
 
 ///////////////////////////////////////////////////////////////////////////
+// Class
+///////////////////////////////////////////////////////////////////////////
+
+    {
+        ID = "perk.class.ruin_knight",
+        Script = "scripts/skills/perks/perk_class_ruin_knight",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/perk_29.png",
+        IconDisabled = "ui/perks/perk_29_sw.png",
+        Const = "DirewolfRuinAura"
+    },
+
+///////////////////////////////////////////////////////////////////////////
 // Monster
 ///////////////////////////////////////////////////////////////////////////
 
@@ -249,15 +263,7 @@ local perks = [
         IconDisabled = "ui/perks/perk_29_sw.png",
         Const = "DirewolfBerserkMode"
     },
-	{
-        ID = "perk.direwolf_ruin_aura",
-        Script = "scripts/skills/perks/perk_direwolf_ruin_aura",
-        Name = "",
-        Tooltip = "",
-        Icon = "ui/perks/perk_29.png",
-        IconDisabled = "ui/perks/perk_29_sw.png",
-        Const = "DirewolfRuinAura"
-    },
+
 
 ///////////////////////////////////////////////////////////////////////////
 // Perk Rework

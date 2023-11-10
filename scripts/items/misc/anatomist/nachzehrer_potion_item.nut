@@ -1,9 +1,10 @@
+//TODO: create potion recipe using direwolf potion to make winter mage
 this.nachzehrer_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomist_potion_item", {
 	m = {},
 	function create()
 	{
 		this.anatomist_potion_item.create();
-		this.m.ID = "misc.nachzehrer_potion";
+		this.m.ID = "misc.potion.nachzehrer";
 		this.m.Name = "Potion of Flesh Knitting";
 		this.m.Description = "If one divorces the horror of the act from its utility, there are few phenomena more marvelous in nature than the Nachzehrer\'s ability to recover by eating the flesh of the dead. No longer! Now man himself may take on such qualities, and without committing crimes of conscience, to boot!";
 		this.m.IconLarge = "";
