@@ -21,7 +21,7 @@
 	}
 	function onHover()
 	{
-		::Sound.play("sounds/ui/hover.wav", 0.8);
+		::Sound.play("sounds/ui/hover.wav", 0.5);
 	}
 	function registerMenuButtons()
 	{
