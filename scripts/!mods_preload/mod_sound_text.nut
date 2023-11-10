@@ -17,11 +17,11 @@
 	}
 	function onButtonClicked()
 	{
-		::Sound.play("sounds/ui/click.wav", 1.0);
+		::Sound.play("sounds/ui/click.wav", 1.5);
 	}
 	function onHover()
 	{
-		::Sound.play("sounds/ui/hover.wav", 1.0);
+		::Sound.play("sounds/ui/hover.wav", 0.8);
 	}
 	function registerMenuButtons()
 	{
