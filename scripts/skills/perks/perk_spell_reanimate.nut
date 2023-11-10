@@ -6,7 +6,7 @@
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpellReanimate].Name = ::Const.Strings.PerkName.SpellReanimate;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpellReanimate].Tooltip = ::Const.Strings.PerkDescription.SpellReanimate;
 
-this.perk_hold_out <- this.inherit("scripts/skills/skill", {
+this.perk_spell_reanimate <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{

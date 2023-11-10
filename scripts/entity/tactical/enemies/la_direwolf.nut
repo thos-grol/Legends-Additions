@@ -83,7 +83,7 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_direwolf_berserk_mode"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_second_wind"));
-		this.m.Skills.add(::new("scripts/skills/perks/perk_direwolf_ruin_aura"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_class_ruin_knight"));
 
 		//this.m.Skills.add(::new("scripts/skills/racial/werewolf_racial"));
 		this.m.Skills.add(::new("scripts/skills/actives/direwolf_bite"));

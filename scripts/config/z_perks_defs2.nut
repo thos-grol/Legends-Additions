@@ -238,7 +238,7 @@ local perks = [
         Tooltip = "",
         Icon = "ui/perks/perk_29.png",
         IconDisabled = "ui/perks/perk_29_sw.png",
-        Const = "DirewolfRuinAura"
+        Const = "RuinKnight"
     },
 
 ///////////////////////////////////////////////////////////////////////////
@@ -435,7 +435,15 @@ local perks = [
         IconDisabled = "ui/perks/spell_reanimate_bw.png",
         Const = "SpellReanimate"
     },
-
+    {
+        ID = "perk.spell.flesh_servant",
+        Script = "scripts/skills/perks/perk_spell_flesh_servant",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/spell_flesh_servant.png", //TODO: ART spell_flesh_servant
+        IconDisabled = "ui/perks/spell_flesh_servant_bw.png",
+        Const = "SpellFleshServant"
+    },
     {
         ID = "perk.spell.corpse_explosion",
         Script = "scripts/skills/perks/perk_spell_corpse_explosion",

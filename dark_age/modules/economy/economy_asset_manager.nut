@@ -78,10 +78,6 @@
 					}
 				}
 
-				if
-
-
-
 				this.m.Money -= bro.getDailyCost();
 				mood = mood + bro.getMoodState();
 			}
