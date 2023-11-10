@@ -28,7 +28,7 @@
 // 	::include(file);
 // }
 
-foreach (file in ::IO.enumerateFiles("legends_additions/modules"))
+foreach (file in ::IO.enumerateFiles("dark_age/modules"))
 {
 	::include(file);
 }
