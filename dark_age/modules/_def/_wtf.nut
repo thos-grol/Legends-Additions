@@ -1,4 +1,3 @@
-//FIXME: remove/update this if things break
 ::mods_hookExactClass("entity/world/settlement", function(o) {
 	o.updateRoster = function( _force = false )
 	{
