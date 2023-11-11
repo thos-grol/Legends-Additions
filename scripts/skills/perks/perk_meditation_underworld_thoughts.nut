@@ -1,5 +1,5 @@
 //TODO PERK underworld thoughts
-::Const.Strings.PerkName.MeditationUnderworldThoughts <- "Underwold Thoughts";
+::Const.Strings.PerkName.MeditationUnderworldThoughts <- "Underworld Thoughts";
 ::Const.Strings.PerkDescription.MeditationUnderworldThoughts <- ::MSU.Text.color(::Z.Log.Color.Purple, "Meditation")
 + "\nJourney through the underworld..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Improves summoned undead:")

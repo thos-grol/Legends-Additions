@@ -82,7 +82,38 @@
 		if (this.getContainer().hasSkill("perk.legend_small_target")) getTooltip_SmallTarget(tooltip);
 		if (this.getContainer().hasSkill("effects.dodge")) getTooltip_Dodge(tooltip);
 
+		tooltip = getTooltip_old(tooltip);
+
 		return tooltip;
+	}
+
+	o.getTooltip_old <- function(ret)
+	{
+		local changes = this.getContainer().getActor().getMoodChanges();
+
+		foreach( change in changes )
+		{
+			if (change.Positive)
+			{
+				ret.push({
+					id = 11,
+					type = "hint",
+					icon = "ui/tooltips/positive.png",
+					text = "" + change.Text + ""
+				});
+			}
+			else
+			{
+				ret.push({
+					id = 11,
+					type = "hint",
+					icon = "ui/tooltips/negative.png",
+					text = "" + change.Text + ""
+				});
+			}
+		}
+
+		return ret;
 	}
 
 	// =============================================================================================
@@ -136,13 +167,7 @@
 	// Logic
 	// =============================================================================================
 
-	function onUpdate( _properties )
-	{
-
-		local actor = this.getContainer().getActor();
-		if (actor.getFaction() != this.Const.Faction.Player) return;
-		if (this.getContainer().getActor().getLevel() >= 10) _properties.XPGainMult *= 0;
-	}
+	
 
     o.onBeforeDamageReceived <- function( _attacker, _skill, _hitInfo, _properties )
 	{
@@ -598,6 +623,49 @@
                     actor.setMoraleState(::Const.MoraleState.Confident);
                 break;
         }
+	}
+
+	o.onUpdate = function( _properties )
+	{
+
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != this.Const.Faction.Player) return;
+		if (this.getContainer().getActor().getLevel() >= 10) _properties.XPGainMult *= 0;
+
+		local mood = this.getContainer().getActor().getMoodState();
+		local p = this.Math.round(this.getContainer().getActor().getMood() / (this.Const.MoodState.len() - 0.05) * 100.0);
+		this.m.Name = this.Const.MoodStateName[mood] + " (" + p + "%)";
+
+		switch(mood)
+		{
+		case this.Const.MoodState.Neutral:
+			this.m.Icon = "skills/status_effect_64.png";
+			break;
+
+		case this.Const.MoodState.Concerned:
+			this.m.Icon = "skills/status_effect_46.png";
+			break;
+
+		case this.Const.MoodState.Disgruntled:
+			this.m.Icon = "skills/status_effect_45.png";
+			break;
+
+		case this.Const.MoodState.Angry:
+			this.m.Icon = "skills/status_effect_44.png";
+			break;
+
+		case this.Const.MoodState.InGoodSpirit:
+			this.m.Icon = "skills/status_effect_47.png";
+			break;
+
+		case this.Const.MoodState.Eager:
+			this.m.Icon = "skills/status_effect_48.png";
+			break;
+
+		case this.Const.MoodState.Euphoric:
+			this.m.Icon = "skills/status_effect_49.png";
+			break;
+		}
 	}
 
 

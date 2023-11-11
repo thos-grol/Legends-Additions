@@ -32,9 +32,6 @@ this.mage_winter_potion_item <- this.inherit("scripts/items/misc/anatomist/anato
 			text = "\nEnables the casting of Winter aspect magic"
 		});
 
-		+ "\nVitality Conversion: " + ::MSU.Text.colorGreen("-25") + " Hitpoints"
-		+ "\n" + ::MSU.Text.colorGreen("1") + " Mana & Mana pool"
-		+ "\nEnables the casting of Winter aspect magic";
 		return result;
 	}
 

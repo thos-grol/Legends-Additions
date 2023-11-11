@@ -1,0 +1,146 @@
+/*
+ *  @Project:		Battle Brothers
+ *	@Company:		Overhype Studios
+ *
+ *	@Copyright:		(c) Overhype Studios | 2013 - 2020
+ * 
+ *  @Author:		Overhype Studios
+ *  @Date:			01.10.2017
+ *  @Description:	Main Menu Module CSS
+ */
+
+
+.main-menu-module
+{
+	top: 0;
+	bottom: 0;
+	width: 24.4rem;
+	height: 59.5rem;
+	position: absolute;
+	margin: auto;
+	z-index: 1;
+
+	background-image: url("coui://gfx/ui/skin/main_menu_banner.png");
+	background-size: 24.5rem 59.5rem;
+
+	pointer-events: auto;
+}
+
+.main-menu-module.is-right
+{
+	right: 10.0rem;
+}
+
+.main-menu-module.is-center
+{
+	left: 0;
+	right: 0;
+}
+
+.main-menu-module.is-world-map
+{
+	/*height: 49.0rem;*/
+}
+
+.main-menu-module.is-tactical-map
+{
+	/*height: 41.0rem;*/
+}
+
+.main-menu-module .is-map-seed
+{
+	width: 23.0rem;
+	text-align: center;
+	color: red;
+}
+
+.main-menu-module > .header
+{
+	width: 100%;
+	height: 28.0rem;
+	position: relative;
+	float: left;
+}
+
+.main-menu-module > .header img
+{
+	top: -5.5rem;
+	left: -7.5rem;
+	right: 0;
+	width: 40.0rem;
+	height: 35.0rem;
+	position: absolute;
+	margin: auto;
+	z-index: 1;
+}
+
+.main-menu-module > .container
+{
+	z-index: 3;
+	left: 0.2rem;
+	top: -2.5rem; /*-1.0rem*/
+	width: 100%;
+	position: relative;
+	float: left;
+}
+
+.main-menu-module > .container .row
+{
+	margin-bottom: -0.5rem;
+	width: 100%;
+	height: 4.6rem;
+	position: relative;
+	float: left;
+}
+
+.main-menu-module > .container .divider
+{
+	width: 100%;
+	height: 2.0rem;
+	position: relative;
+	float: left;
+}
+
+.main-menu-module > .container .row .l-center
+{
+	top: 0;
+	left: 0.7rem;
+	right: 0;
+	bottom: 0;
+	/*width: 90%;*/
+	width: 23.0rem;
+	height: 4.6rem;
+	position: absolute;
+	margin: auto;
+
+	line-height: 3.0rem;
+}
+
+/* Enter Name Dialog Container */
+.retire-dialog
+{
+	width: 44.9rem;
+	height: 20.3rem;
+
+	background-image: url("coui://gfx/ui/skin/save_game_name_background.png");
+	background-size: 44.9rem 20.3rem;
+	background-repeat: no-repeat;
+}
+
+.main-menu-module .ui-control.popup-dialog .retire-campaign-container
+{
+	width: 44.9rem;
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
+	position: relative;
+	float: left;
+}
+
+.main-menu-module .ui-control.popup-dialog .retire-campaign-container .row
+{
+	width: 100%;
+	height: 7.0rem;
+	position: relative;
+	margin: auto;
+	float: left;
+}

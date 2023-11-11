@@ -22,18 +22,15 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("trait.decoding"))
-			this.m.Container.add(::new("scripts/skills/traits/_decode"));
-
 		local actor = this.getContainer().getActor();
 		if (actor.getFlags().has("Intelligent")) return;
 
 		local tier = 1;
 		local roll = this.Math.rand(1, 100);
-		if (roll <= 1) tier = 4; //Genius
-		else if (roll <= 5) tier = 3; //Gifted
-		else if (roll <= 20) tier = 2; //Above Average
-		actor.getFlags().set("Intelligent", roll);
+		if (roll <= 10) tier = 4; //Genius
+		else if (roll <= 30) tier = 3; //Gifted
+		else if (roll <= 70) tier = 2; //Above Average
+		actor.getFlags().set("Intelligent", tier);
 	}
 
 	function upgrade()
@@ -173,7 +170,7 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 
 	function getTooltip()
 	{
-		return [
+		local ret = [
 			{
 				id = 1,
 				type = "title",
@@ -189,8 +186,7 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				type = "text",
 				icon = "ui/icons/special.png",
 				text = "Gives the intelligent perk tree. It is impossible to obtain otherwise"
-			}
-			,
+			},
 			{
 				id = 10,
 				type = "text",
@@ -198,7 +194,87 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				text = "Has a " + getBonus() + "% chance to decipher magical knowledge each day. A tome must be in this unit's bag slot for this to trigger"
 			}
 		];
+
+		ret = getTooltip_project(ret);
+
+		return ret;
 	}
+
+	function getTooltip_project(ret)
+	{
+		local data = get_data();
+		if (data == null) return ret;
+
+		ret.push({
+			id = 3,
+			type = "text",
+			icon = "ui/tooltips/warning.png",
+			text = ::MSU.Text.colorRed("Decoding " + data.Name)
+		});
+
+
+		foreach(project in data.Projects)
+		{
+			ret.push({
+				id = 3,
+				type = "text",
+				icon = ::Const.Perks.PerkDefObjects[project.Reward].Icon,
+				text = project.Name
+			});
+		}
+
+		local current_project = get_current_project();
+		local actor = this.getContainer().getActor();
+
+		if (current_project.Complete) //when all projects are completed
+		{
+			//remove the current meditation
+			if (actor.getFlags().get("current_meditation") == current_project.Project.Reward)
+				ret.push({
+					id = 3,
+					type = "text",
+					icon = "ui/tooltips/warning.png",
+					text = "Already has this meditation, nothing will occur"
+				});
+			ret.push({
+				id = 3,
+				type = "text",
+				icon = ::Const.Perks.PerkDefObjects[current_project.Project.Reward].Icon,
+				text = "Replacing meditation perk with: " + current_project.Project.Name
+			});
+
+		}
+		else
+		{
+			if (current_project.Project.Type == "Meditation")
+			{
+				//if you have a meditation already, can only learn it after book is completed
+				if (actor.getFlags().has("current_meditation"))
+					ret.push({
+						id = 3,
+						type = "text",
+						icon = ::Const.Perks.PerkDefObjects[current_project.Project.Reward].Icon,
+						text = "Researching " + current_project.Project.Name + ", but will not swap meditation. Keep the tome in bag after finishing all projects to do this!"
+					});
+				else ret.push({
+					id = 3,
+					type = "text",
+					icon = ::Const.Perks.PerkDefObjects[current_project.Project.Reward].Icon,
+					text = "Current Project: " + current_project.Project.Name
+				});
+			}
+			else ret.push({
+				id = 3,
+				type = "text",
+				icon = ::Const.Perks.PerkDefObjects[current_project.Project.Reward].Icon,
+				text = "Current Project: " + current_project.Project.Name
+			});
+		}
+
+		return ret;
+	}
+
+	
 
 });
 

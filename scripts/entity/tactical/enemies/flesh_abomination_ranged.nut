@@ -1,4 +1,4 @@
-this.flesh_abomination_ranged <- this.inherit("scripts/entity/tactical/flesh_abomination", {
+this.flesh_abomination_ranged <- this.inherit("scripts/entity/tactical/enemies/flesh_abomination", {
 	m = {},
 	function create()
 	{
@@ -25,7 +25,7 @@ this.flesh_abomination_ranged <- this.inherit("scripts/entity/tactical/flesh_abo
 
 		this.addSprite("socket").setBrush("bust_base_beasts");
 		local body = this.addSprite("body");
-		body.setBrush("flesh_abomination_ranged"");
+		body.setBrush("flesh_abomination_ranged");
 		body.varySaturation(0.2);
 		body.varyColor(0.06, 0.06, 0.06);
 		local injury = this.addSprite("injury");

@@ -78,7 +78,7 @@ this.flesh_abomination <- this.inherit("scripts/entity/tactical/actor", {
 
 		this.addSprite("socket").setBrush("bust_base_beasts");
 		local body = this.addSprite("body");
-		body.setBrush("flesh_abomination_melee"");
+		body.setBrush("flesh_abomination_melee");
 		body.varySaturation(0.2);
 		body.varyColor(0.06, 0.06, 0.06);
 		local injury = this.addSprite("injury");

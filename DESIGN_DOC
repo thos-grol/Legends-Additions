@@ -451,6 +451,7 @@ Undead cannot be charmed
 ::setSpawn("spider", ::Const.Faction.Enemy)
 
 
+::addItem("tome")
 ::addItem("bone_figurines")
 
 ::addItem("legend_robes_wizard")

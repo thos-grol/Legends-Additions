@@ -34,7 +34,7 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		if (roll <= 1) tier = 4; //Heaven Defying Fortune
 		else if (roll <= 5) tier = 3; //Chosen
 		else if (roll <= 20) tier = 2; //Fortunate
-		actor.getFlags().set("Lucky", roll);
+		actor.getFlags().set("Lucky", tier);
 	}
 
 	function upgrade()

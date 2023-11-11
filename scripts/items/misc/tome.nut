@@ -10,10 +10,14 @@ this.tome <- this.inherit("scripts/items/item", {
 		this.m.Name = "Tome";
 		this.m.Description = "A well preserved tome";
 		this.m.Icon = "loot/inventory_loot_08.png";
-		this.m.SlotType = this.Const.ItemSlot.None;
-		this.m.ItemType = this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.Loot;
+
 		this.m.IsDroppedAsLoot = true;
 		this.m.Value = 1000;
+
+		this.m.SlotType = this.Const.ItemSlot.Accessory;
+		this.m.ItemType = this.Const.Items.ItemType.Accessory;
+
+		this.m.IsAllowedInBag = true;
 	}
 
     function getData()
@@ -30,12 +34,12 @@ this.tome <- this.inherit("scripts/items/item", {
 
 	function getName()
     {
-        return ::B.Info.Tomes[this.m.Tome].Name:
+        return ::B.Info.Tomes[this.m.Tome].Name;
     }
 
 	function getDescription()
     {
-        return ::B.Info.Tomes[this.m.Tome].Description:
+        return ::B.Info.Tomes[this.m.Tome].Description;
     }
 
     function getTooltip()

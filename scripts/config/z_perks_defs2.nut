@@ -241,6 +241,16 @@ local perks = [
         Const = "RuinKnight"
     },
 
+    {
+        ID = "perk.class.winter_mage",
+        Script = "scripts/skills/perks/perk_class_winter_mage",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/perk_29.png",
+        IconDisabled = "ui/perks/perk_29_sw.png",
+        Const = "WinterMage"
+    },
+
 ///////////////////////////////////////////////////////////////////////////
 // Monster
 ///////////////////////////////////////////////////////////////////////////
