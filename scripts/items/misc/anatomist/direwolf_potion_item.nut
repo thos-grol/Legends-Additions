@@ -24,7 +24,7 @@ this.direwolf_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomis
 
 	function mutate(_actor)
 	{
-		::Z.Perks.add(_actor, ::Const.Perks.PerkDefs.DirewolfRuinAura, 0);
+		::Z.Perks.add(_actor, ::Const.Perks.PerkDefs.RuinKnight, 0);
 	}
 
 });

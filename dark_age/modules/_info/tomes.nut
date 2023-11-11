@@ -6,22 +6,18 @@
     ID = "tome_flesh",
     Projects = [
         {
-            Name = "Potion - Winter",
-            BonusDifficulty = 0,
-            Type = "Potion",
-            Reward = "Winter",
-        },
-        {
             Name = "Underworld Thoughts",
             BonusDifficulty = 0,
             Type = "Meditation",
             Reward = ::Const.Perks.PerkDefs.MeditationUnderworldThoughts,
+            Row = 1,
         },
         {
             Name = "Reanimate",
             BonusDifficulty = 0,
             Type = "Perk",
             Reward = ::Const.Perks.PerkDefs.SpellReanimate,
+            Row = 2,
         },
         // {
         //     Name = "Research - Flesh Mastery",
@@ -34,6 +30,7 @@
             BonusDifficulty = 0,
             Type = "Perk",
             Reward = ::Const.Perks.PerkDefs.SpellFleshServant,
+            Row = 4,
         }
     ],
 };

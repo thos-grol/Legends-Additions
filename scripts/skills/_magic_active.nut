@@ -3,15 +3,15 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 		ManaCost = 1,
 		Cooldown_Max = 0,
 		Cooldown = 0,
+		Aspect = "neutral"
 	},
 	function create()
 	{
 	}
 
-	function getTooltip() //TODO: examine, add mana info
+	function getTooltip()
 	{
-		local p = this.getContainer().getActor().getCurrentProperties();
-		return [
+		local ret = [
 			{
 				id = 1,
 				type = "title",
@@ -26,8 +26,38 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 				id = 3,
 				type = "text",
 				text = this.getCostString()
+			},
+			{
+				id = 4,
+				type = "text",
+				text = "Costs " + ::MSU.Text.color(::Z.Log.Color.Purple, this.m.ManaCost) + " mana"
 			}
 		];
+
+		local a = this.m.Container.getActor();
+		if (!a.getFlags().has(this.m.Aspect))
+		{
+			ret.push({
+				id = 8,
+				type = "text",
+				icon = "ui/icons/warning.png",
+				text = ::MSU.Text.colorRed("Incompatible aspect!")
+			});
+		}
+
+		if (!a.getSkills().hasSkill("trait.mana_pool")) return ret;
+		local mana_pool = a.getSkills().getSkillByID("trait.mana_pool");
+		if (!mana_pool.is_payable(this.m.ManaCost))
+		{
+			ret.push({
+				id = 8,
+				type = "text",
+				icon = "ui/icons/warning.png",
+				text = ::MSU.Text.colorRed("Insufficient mana!")
+			});
+		}
+
+		return ret;
 	}
 
 	function onTurnStart()
@@ -56,6 +86,7 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 		local a = this.m.Container.getActor();
 		if (!this.m.IsUsable || !a.getCurrentProperties().IsAbleToUseSkills) return false;
 		if (!a.getSkills().hasSkill("trait.mana_pool")) return false;
+		if (!a.getFlags().has(this.m.Aspect)) return false;
 
 		local mana_pool = a.getSkills().getSkillByID("trait.mana_pool");
 		return mana_pool.is_payable(this.m.ManaCost);

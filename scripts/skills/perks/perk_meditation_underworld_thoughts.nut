@@ -23,5 +23,11 @@ this.perk_meditation_underworld_thoughts <- this.inherit("scripts/skills/skill",
 		this.m.IsHidden = false;
 	}
 
+	function onAdded()
+	{
+		this.World.Statistics.getFlags().set("potion_winter", true);
+	}
+
+
 });
 

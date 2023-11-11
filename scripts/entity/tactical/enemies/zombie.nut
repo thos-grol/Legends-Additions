@@ -1,15 +1,3 @@
-//TODO: get better zombie sounds
-// examine orc and goblin environmental sounds
-// function playSound( _type, _volume, _pitch = 1.0 )
-// {
-// 	if (_type == this.Const.Sound.ActorEvent.Move && this.Math.rand(1, 100) <= 33)
-// 	{
-// 		return;
-// 	}
-
-// 	this.actor.playSound(_type, _volume, _pitch);
-// }
-
 this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 	m = {
 		InjuryType = 1,

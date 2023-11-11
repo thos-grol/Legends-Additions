@@ -1,4 +1,3 @@
-//TODO: create potion recipe using direwolf potion to make winter mage
 this.nachzehrer_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomist_potion_item", {
 	m = {},
 	function create()

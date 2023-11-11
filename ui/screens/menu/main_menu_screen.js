@@ -86,7 +86,9 @@ MainMenuScreen.prototype.onModuleOnDisconnectionCalled = function (_module)
 	}
 };
 
-
+//TODO: use element inspector to find main menu div
+//TODO: write code to set opacity to 0 on div creation
+//TODO: write java script code to fade in on event
 MainMenuScreen.prototype.createDIV = function (_parentDiv)
 {
 	// create: container
@@ -401,7 +403,7 @@ MainMenuScreen.prototype.setMOTD = function (_data)
 	});
 
 	this.mMOTD.html(parsedDescriptionText.html);
-	
+
 };
 
 MainMenuScreen.prototype.setLMOTD = function (_data)

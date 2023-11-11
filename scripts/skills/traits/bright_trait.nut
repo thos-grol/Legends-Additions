@@ -22,6 +22,9 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 
 	function onAdded()
 	{
+		if (!this.m.Container.hasSkill("trait.decoding"))
+			this.m.Container.add(::new("scripts/skills/traits/_decode"));
+
 		local actor = this.getContainer().getActor();
 		if (actor.getFlags().has("Intelligent")) return;
 
@@ -56,10 +59,15 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	}
 
 	// Tick
-
-	//FEATURE_0: BRIGHT create tome data structure before proceeding
-
 	function onNewDay() //decipher
+	{
+		if (get_data() == null) return;
+		tick();
+	}
+
+	//Helper fns
+
+	function get_data()
 	{
 		local actor = this.getContainer().getActor();
 		local items = actor.getItems().getAllItems();
@@ -71,78 +79,76 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 			tome_data = i.getData();
 			break;
 		}
-		if (tome_data == null) return;
-
-		foreach(project in tome_data.Projects)
-		{
-
-		}
-		//get current project
-		//tick progress
+		return tome_data;
 	}
-
-	//Helper fns
-
-	function progress_current_project()
-	{
-		local ret = get_current_project();
-
-		if (ret.Complete)
-		{
-
-		}
-		else
-		{
-
-		}
-
-		//FEATURE_0: BRIGHT progress_current_project
-		check for tome_id flag existence: tome_id + "_progress"
-		//get's the current perk to learn,
-		//if there is no more projects then
-			//set project to replace meditation perk if it is different
-			//else
-	}
-
 
 	function get_current_project()
 	{
-		//FEATURE_0:  BRIGHT get_current_meditation_perk
 		local ret = {
 			Project = null,
 			Complete = false
 		};
-		local project_flag = null;
-		for projects in map[tome_id]
+
+		local tome_data = get_data();
+		if (tome_data == null) return;
+
+		local actor = this.getContainer().getActor();
+		foreach(project in tome_data.Projects)
 		{
-			if (actor.hasflag(projects.flag)) continue;
-			ret.push(projects.flag);
+			if (actor.getFlags().has(project.Name)) continue;
+			ret.Project = project;
 			break;
 		}
 
-		if (ret.Project == null)
+		if (ret.Project == null) //Get meditation perk
 		{
-			ret.Project = //meditation_flag;
-			ret.Complete = true;
+			foreach(project in tome_data.Projects)
+			{
+				ret.Project = project;
+				ret.Complete = true;
+				break;
+			}
 		}
 
 		return ret
 	}
 
-	function reward_current_project()
+	function tick()
 	{
-		//FEATURE_0:  BRIGHT progress_current_project
-		if (meditationproject)
-		{
-			if (no meditation perk)
-				add_meditation_perk()
-			else if (full completion && different meditation perk)
-			{
-				swap it out
-			}
-			return;
-		}
+		local ret = get_current_project();
+		local actor = this.getContainer().getActor();
 
+		if (ret.Complete) //when all projects are completed
+		{
+			//remove the current meditation
+			if (actor.getFlags().get("current_meditation") == ret.Project.Reward) return; //if it's the same meditation, why change it?
+
+			if (actor.getSkills().hasSkill(::Const.Perks.PerkDefObjects[actor.getFlags().get("current_meditation")].ID))
+				actor.getSkills().removeByID(::Const.Perks.PerkDefObjects[actor.getFlags().get("current_meditation")].ID);
+
+			if (actor.getBackground().hasPerk(actor.getFlags().get("current_meditation")))
+				actor.getBackground().removePerk(actor.getFlags().get("current_meditation"));
+
+			::Z.Perks.add(actor, ret.Project.Reward, 0); //add the meditation in the book
+			actor.getFlags().set("current_meditation", ret.Project.Reward); //add id for future removal
+		}
+		else
+		{
+			if (::Math.rand(1, 100) <= ::Math.max(getBonus() - ret.Project.BonusDifficulty, 1))
+			{
+				actor.getFlags().set(ret.Project.Name, true); //Mark the project as completed
+
+				if (ret.Project.Type == "Meditation")
+				{
+					//if you have a meditation already, can only learn it after book is completed
+					if (actor.getFlags().has("current_meditation")) return;
+					::Z.Perks.add(actor, ret.Project.Reward, ret.Project.Row); //add the meditation perk bought
+					actor.getFlags().set("current_meditation", ret.Project.Reward); //add id for future removal
+					return;
+				}
+				::Z.Perks.add(actor, ret.Project.Reward, ret.Project.Row, false); //add the perk unbought
+			}
+		}
 	}
 
 	////UI

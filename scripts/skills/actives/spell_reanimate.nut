@@ -1,4 +1,3 @@
-//TODO: ACTIVE spell_reanimate
 this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 	m = {},
 	function create()
@@ -25,6 +24,7 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 		this.m.IsAttack = false;
 		this.m.IsIgnoredAsAOO = true;
 
+		this.m.Aspect = "winter";
 		this.m.ManaCost = 2;
 		this.m.Cooldown_Max = 1;
 		this.m.Cooldown = 1;
@@ -66,7 +66,8 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 	function canResurrectOnTile( _tile, _force = false )
 	{
 		return _tile.IsCorpseSpawned
-			&& (_tile.Properties.get("Corpse").IsResurrectable || _force);
+			&& ( _tile.Properties.get("Corpse").IsResurrectable || _force
+				|| !("FleshNotAllowed" in _tile.Properties.get("Corpse")) );
 	}
 
 	function spawn_particles( _user, _targetTile )

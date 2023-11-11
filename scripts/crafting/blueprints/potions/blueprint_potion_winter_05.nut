@@ -1,5 +1,4 @@
-//FEATURE_0: add more recipes
-this.blueprint_potion_winter_01 <- this.inherit("scripts/crafting/blueprint", {
+this.blueprint_potion_winter_05 <- this.inherit("scripts/crafting/blueprint", {
 	m = {},
 	function create()
 	{
@@ -9,7 +8,7 @@ this.blueprint_potion_winter_01 <- this.inherit("scripts/crafting/blueprint", {
 		this.m.Cost = 200;
 		local ingredients = [
 			{
-				Script = "scripts/items/misc/anatomist/direwolf_potion_item",
+				Script = "scripts/items/misc/anatomist/nachzehrer_potion_item",
 				Num = 1
 			},
 			//FEATURE_0: add other drops to the recipe

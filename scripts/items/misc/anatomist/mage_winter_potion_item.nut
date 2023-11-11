@@ -1,12 +1,11 @@
-//FEATURE_0: item description
 this.mage_winter_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomist_potion_item", {
 	m = {},
 	function create()
 	{
 		this.anatomist_potion_item.create();
 		this.m.ID = "misc.potion.mage.winter";
-		this.m.Name = "Potion of Blade Dancing";
-		this.m.Description = "This humoural concoction, borne from research into the dreaded direwolf, will turn even the clumsiest oaf into a lithe dancer of a warrior, able to gracefully move with the tides of battle long after lesser men succumb to fatigue! Mild akathisia after consuming is normal and expected.";
+		this.m.Name = "Sequence: Winter Mage";
+		this.m.Description = "The path of blasphemy, using the remnants of the gods.\n\nWinter is the principle of silence, of endings, and of those things that are not quite dead";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/potion_26.png";
 		this.m.Value = 0;
@@ -17,16 +16,38 @@ this.mage_winter_potion_item <- this.inherit("scripts/items/misc/anatomist/anato
 		result.push({
 			id = 11,
 			type = "text",
-			icon = "ui/icons/days_wounded.png",
-			text = "Reduces the time it takes to heal from any injury by one day, down to a mininum of one day"
+			icon = "ui/icons/health.png",
+			text = ::MSU.Text.colorRed("-25") + " Hitpoints. Converts actuality into spirituality"
 		});
+		result.push({
+			id = 11,
+			type = "text",
+			icon = "ui/icons/special.png",
+			text = ::MSU.Text.colorGreen("1") + " Mana & Mana pool"
+		});
+		result.push({
+			id = 11,
+			type = "text",
+			icon = "ui/icons/days_wounded.png",
+			text = "\nEnables the casting of Winter aspect magic"
+		});
+
+		+ "\nVitality Conversion: " + ::MSU.Text.colorGreen("-25") + " Hitpoints"
+		+ "\n" + ::MSU.Text.colorGreen("1") + " Mana & Mana pool"
+		+ "\nEnables the casting of Winter aspect magic";
 		return result;
 	}
 
 	function mutate(_actor)
 	{
-		//FEATURE_0: add death if no pattern recognition perk
-		::Z.Perks.add(_actor, ::Const.Perks.PerkDefs.DirewolfRuinAura, 0);
+		if (!_actor.getSkills().hasSkill("perk.pattern_recognition"))
+		{
+			_actor.getItems().transferToStash(this.World.Assets.getStash());
+			_actor.getSkills().onDeath(::Const.FatalityType.None);
+			this.World.Statistics.addFallen(_actor, "Did not have the processing power to build a magic matrix");
+			this.World.getPlayerRoster().remove(_actor);
+		}
+		::Z.Perks.add(_actor, ::Const.Perks.PerkDefs.WinterMage, 0);
 	}
 
 });

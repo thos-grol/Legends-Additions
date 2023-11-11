@@ -1,23 +1,23 @@
-//TODO: PERK winter mage
-::Const.Strings.PerkName.DirewolfRuinAura <- "Ruin Knight";
-::Const.Strings.PerkDescription.DirewolfRuinAura <- ::MSU.Text.color(::Z.Log.Color.Purple, "Class")
-+ "\nBring tragedy and ruin to those around you... The remnant power of the God of Ruin"
+::Const.Strings.PerkName.WinterMage <- "Winter Mage";
+::Const.Strings.PerkDescription.WinterMage <- ::MSU.Text.color(::Z.Log.Color.Purple, "Class")
++ "\nWinter is the principle of silence, of endings, and of those things that are not quite dead"
++ "\nAn ingenious formula that converts actuality into spirituality"
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
-+ "\nF Class Vitality: " + ::MSU.Text.colorGreen("+50") + " Hitpoints"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Turn start, 20% chance:")
-+ "\n• Inflict an injury on all units within 2 tiles";
++ "\nVitality Conversion: " + ::MSU.Text.colorRed("-25") + " Hitpoints"
++ "\n" + ::MSU.Text.colorGreen("1") + " Mana & Mana pool"
++ "\nEnables the casting of Winter aspect magic";
 
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DirewolfRuinAura].Name = ::Const.Strings.PerkName.DirewolfRuinAura;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DirewolfRuinAura].Tooltip = ::Const.Strings.PerkDescription.DirewolfRuinAura;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.WinterMage].Name = ::Const.Strings.PerkName.WinterMage;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.WinterMage].Tooltip = ::Const.Strings.PerkDescription.WinterMage;
 
 this.perk_class_winter_mage <- this.inherit("scripts/skills/skill", {
 	m = {
 	},
 	function create()
 	{
-		this.m.ID = "perk.direwolf_ruin_aura";
-		this.m.Name = ::Const.Strings.PerkName.DirewolfRuinAura;
-		this.m.Description = ::Const.Strings.PerkDescription.DirewolfRuinAura;
+		this.m.ID = "perk.class.winter_mage";
+		this.m.Name = ::Const.Strings.PerkName.WinterMage;
+		this.m.Description = ::Const.Strings.PerkDescription.WinterMage;
 		this.m.Icon = "ui/perks/perk_29.png";
 		this.m.Type = ::Const.SkillType.Perk;
 		this.m.Order = ::Const.SkillOrder.Perk;
@@ -31,18 +31,16 @@ this.perk_class_winter_mage <- this.inherit("scripts/skills/skill", {
 		_properties.Hitpoints -= 25;
 	}
 
-	function getTooltip()
+	function onAdded()
 	{
-		local tooltip = this.skill.getTooltip();
+		local actor = this.getContainer().getActor();
+		actor.getFlags().set("neutral", true);
+		actor.getFlags().set("winter", true);
 
-		tooltip.push({
-			id = 6,
-			type = "text",
-			icon = "ui/icons/special.png",
-			text = "Only receive [color=" + ::Const.UI.Color.PositiveValue + "] 0%[/color] of any damage to hitpoints for " + this.m.Charges + " attacks. Bone plating takes precedence over this effect."
-		});
+		if (!this.m.Container.hasSkill("trait.mana_pool"))
+			this.m.Container.add(::new("scripts/skills/traits/mana_pool_trait"));
 
-		return tooltip;
+
 	}
 
 });

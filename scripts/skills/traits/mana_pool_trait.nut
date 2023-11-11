@@ -28,7 +28,6 @@ this.mana_pool_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				type = "description",
 				text = this.getDescription()
 			},
-			//FEATURE_1: show current matrix
 			//FEATURE_1: info that mana is refilled on new day
 			{
 				id = 7,
