@@ -1,4 +1,3 @@
-//TODO: test
 this.tome <- this.inherit("scripts/items/item", {
 	m = {
         Tome = ::MSU.Table.randValue(::B.Info.Tomes).ID
@@ -61,7 +60,26 @@ this.tome <- this.inherit("scripts/items/item", {
 			type = "text",
 			text = this.getValueString()
 		});
+		result = getTooltip_project(result);
 		return result;
+	}
+
+	function getTooltip_project(ret)
+	{
+		local data = getData();
+		if (data == null) return ret;
+
+		foreach(project in data.Projects)
+		{
+			ret.push({
+				id = 3,
+				type = "text",
+				icon = ::Const.Perks.PerkDefObjects[project.Reward].Icon,
+				text = project.Name
+			});
+		}
+
+		return ret;
 	}
 
 	function playInventorySound( _eventType )

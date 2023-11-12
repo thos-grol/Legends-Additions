@@ -1,4 +1,4 @@
-//TODO: PERK corpse explosion
+//FEATURE_0: PERK corpse explosion
 
 ::Const.Strings.PerkName.SpellCorpseExplosion <- "Resilient";
 ::Const.Strings.PerkDescription.SpellCorpseExplosion <- "Blink and you miss me..."

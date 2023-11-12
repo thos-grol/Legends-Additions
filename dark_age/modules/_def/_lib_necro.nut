@@ -3,6 +3,8 @@
 {
     local corpse = _tile.Properties.get("Corpse");
 
+    corpse.Tile = _tile;
+
     corpse.Skills <- [];
     corpse.BaseProperties <- {};
     // corpse.FleshNotAllowed <- true; //this marker determines if raising flesh is disallowed
@@ -32,7 +34,7 @@
 {
 	o.onResurrected = function( _info )
 	{
-		this.setFaction(_info.Faction);
+        this.setFaction(_info.Faction);
 
         if (_info.IsResurrectable)
 		{
@@ -56,10 +58,8 @@
 		}
         else
         {
-            if (_info.Name.len() != 0)
-            {
-                this.m.Name = "Flesh Abomination (" + _info.Name + ")";
-            }
+            if (_info.Name.len() != 0) this.m.Name = "Flesh Abomination (" + _info.Name + ")";
+            else if (_info.CorpseName.len() != 0) this.m.Name = "Flesh Abomination (" + _info.CorpseName + ")";
 
             if (_info.Description.len() != 0)
             {
@@ -69,20 +69,23 @@
 
         if ("Skills" in _info)
         {
-            foreach(skill in corpse.Skills)
+            foreach(skill in _info.Skills)
             {
-                getSkills().add(skill)
+                if (!getSkills().hasSkill(skill.m.ID)) getSkills().add(skill)
             }
         }
 
+        //TODO: add sounds for abomination
+        //TODO: add sounds for zombies
+
         if ("BaseProperties" in _info)
         {
-            this.m.BaseProperties.Bravery = corpse.BaseProperties["Bravery"];
-            this.m.BaseProperties.Initiative = corpse.BaseProperties["Initiative"];
-            this.m.BaseProperties.MeleeSkill = corpse.BaseProperties["MeleeSkill"];
-            this.m.BaseProperties.RangedSkill = corpse.BaseProperties["RangedSkill"];
-            this.m.BaseProperties.MeleeDefense = corpse.BaseProperties["MeleeDefense"];
-            this.m.BaseProperties.RangedDefense = corpse.BaseProperties["RangedDefense"];
+            this.m.BaseProperties.Bravery = _info.BaseProperties["Bravery"];
+            this.m.BaseProperties.Initiative = _info.BaseProperties["Initiative"];
+            this.m.BaseProperties.MeleeSkill = _info.BaseProperties["MeleeSkill"];
+            this.m.BaseProperties.RangedSkill = _info.BaseProperties["RangedSkill"];
+            this.m.BaseProperties.MeleeDefense = _info.BaseProperties["MeleeDefense"];
+            this.m.BaseProperties.RangedDefense = _info.BaseProperties["RangedDefense"];
         }
 
         this.m.Skills.update();

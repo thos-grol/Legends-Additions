@@ -1,4 +1,4 @@
-//TODO PERK underworld thoughts
+//FEATURE_0 PERK underworld thoughts
 ::Const.Strings.PerkName.MeditationUnderworldThoughts <- "Underworld Thoughts";
 ::Const.Strings.PerkDescription.MeditationUnderworldThoughts <- ::MSU.Text.color(::Z.Log.Color.Purple, "Meditation")
 + "\nJourney through the underworld..."

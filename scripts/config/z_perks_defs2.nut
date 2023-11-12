@@ -246,8 +246,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_class_winter_mage",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/perk_29.png",
-        IconDisabled = "ui/perks/perk_29_sw.png",
+        Icon = "ui/perks/class_winter_mage.png",
+        IconDisabled = "ui/perks/class_winter_mage_bw.png",
         Const = "WinterMage"
     },
 
@@ -431,7 +431,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_meditation_underworld_thoughts",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/meditation_underworld_thoughts.png", //TODO: ART meditation_underworld_thoughts
+        Icon = "ui/perks/meditation_underworld_thoughts.png",
         IconDisabled = "ui/perks/meditation_underworld_thoughts_bw.png",
         Const = "MeditationUnderworldThoughts"
     },
@@ -441,7 +441,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_spell_reanimate",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/spell_reanimate.png", //TODO: ART spell_reanimate
+        Icon = "ui/perks/spell_reanimate.png",
         IconDisabled = "ui/perks/spell_reanimate_bw.png",
         Const = "SpellReanimate"
     },
@@ -450,7 +450,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_spell_flesh_servant",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/spell_flesh_servant.png", //TODO: ART spell_flesh_servant
+        Icon = "ui/perks/spell_flesh_servant.png",
         IconDisabled = "ui/perks/spell_flesh_servant_bw.png",
         Const = "SpellFleshServant"
     },
@@ -459,7 +459,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_spell_corpse_explosion",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/spell_corpse_explosion.png", //TODO: ART spell_corpse_explosion
+        Icon = "ui/perks/spell_corpse_explosion.png", //FEATURE_0: ART spell_corpse_explosion
         IconDisabled = "ui/perks/spell_corpse_explosion_bw.png",
         Const = "SpellCorpseExplosion"
     },

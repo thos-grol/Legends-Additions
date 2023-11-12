@@ -324,22 +324,14 @@
 	}
 
 	while(!("kill" in o)) o = o[o.SuperName];
-	o.kill <- function ( _killer = null, _skill = null, _fatalityType = ::Const.FatalityType.None, _silent = false )
+	//copied from legends actor hook
+	o.kill <- function ( _killer = null, _skill = null, _fatalityType = this.Const.FatalityType.None, _silent = false )
 	{
-		if (!this.isAlive())
-		{
-			return;
-		}
-
-		if (_killer != null && !_killer.isAlive())
-		{
-			_killer = null;
-		}
-
+		if (!this.isAlive()) return;
+		if (_killer != null && !_killer.isAlive()) _killer = null;
 		if (this.m.IsMiniboss && !this.Tactical.State.isScenarioMode() && _killer != null && _killer.isPlayerControlled())
 		{
 			this.updateAchievement("GiveMeThat", 1, 1);
-
 			if (!this.Tactical.State.isScenarioMode() && this.World.Retinue.hasFollower("follower.bounty_hunter"))
 			{
 				this.World.Retinue.getFollower("follower.bounty_hunter").onChampionKilled(this);
@@ -369,6 +361,7 @@
 		local tile = this.findTileToSpawnCorpse(_killer);
 		this.m.Skills.onDeath(_fatalityType);
 		this.onDeath(_killer, _skill, tile, _fatalityType);
+		::Z.Lib.imprint_corpse(this, tile);
 
 		if (!this.Tactical.State.isFleeing() && _killer != null)
 		{

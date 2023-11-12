@@ -67,7 +67,7 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
-		local mana_pool = a.getSkills().getSkillByID("trait.mana_pool");
+		local mana_pool = _user.getSkills().getSkillByID("trait.mana_pool");
 		mana_pool.modify(this.m.ManaCost * -1);
 		this.m.Cooldown = this.m.Cooldown_Max;
 		cast(_user, _targetTile);

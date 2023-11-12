@@ -1,13 +1,15 @@
 this.flesh_abomination <- this.inherit("scripts/entity/tactical/actor", {
-	m = {},
+	m = {
+	},
 	function create()
 	{
 		this.m.Type = this.Const.EntityType.Zombie;
 		this.m.BloodType = this.Const.BloodType.Dark;
 		this.m.MoraleState = this.Const.MoraleState.Ignore;
-		this.m.XP = this.Const.Tactical.Actor.Zombie.XP;
+		this.m.XP = this.Const.Tactical.Actor.Zombie.XP * 4;
+		this.m.ConfidentMoraleBrush = "icon_confident_orcs";
+		this.m.DecapitateSplatterOffset = this.createVec(-8, -26);
 		this.actor.create();
-		this.m.XP *= 4;
 		this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
 			"sounds/enemies/zombie_hurt_01.wav",
 			"sounds/enemies/zombie_hurt_02.wav",
@@ -59,6 +61,27 @@ this.flesh_abomination <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.AIAgent.setActor(this);
 	}
 
+	function playIdleSound()
+	{
+		local r = this.Math.rand(1, 30);
+
+		if (r <= 5)
+		{
+			this.playSound(this.Const.Sound.ActorEvent.Idle, this.Const.Sound.Volume.Actor * this.Const.Sound.Volume.ActorIdle * this.m.SoundVolume[this.Const.Sound.ActorEvent.Idle] * this.m.SoundVolumeOverall * (this.Math.rand(60, 100) * 0.01) * (this.isHiddenToPlayer ? 0.33 : 1.0), this.m.SoundPitch * (this.Math.rand(85, 115) * 0.01));
+		}
+		else
+		{
+			this.playSound(this.Const.Sound.ActorEvent.Other1, this.Const.Sound.Volume.Actor * this.Const.Sound.Volume.ActorIdle * this.m.SoundVolume[this.Const.Sound.ActorEvent.Other1] * this.m.SoundVolumeOverall * (this.Math.rand(60, 100) * 0.01) * (this.isHiddenToPlayer ? 0.33 : 1.0), this.m.SoundPitch * (this.Math.rand(85, 115) * 0.01));
+		}
+	}
+
+	function onFactionChanged()
+	{
+		this.actor.onFactionChanged();
+		local flip = this.isAlliedWithPlayer();
+		this.getSprite("body").setHorizontalFlipping(flip);
+	}
+
 	function onInit()
 	{
 		this.actor.onInit();
@@ -67,30 +90,33 @@ this.flesh_abomination <- this.inherit("scripts/entity/tactical/actor", {
 		b.IsAffectedByNight = false;
 		b.IsAffectedByInjuries = false;
 		b.IsImmuneToBleeding = true;
+		b.IsImmuneToDisarm = true;
 		b.DamageTotalMult *= 2.0;
 
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.InjuryType = 1;
 		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
 		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
-
 		this.addSprite("socket").setBrush("bust_base_beasts");
+
 		local body = this.addSprite("body");
 		body.setBrush("flesh_abomination_melee");
 		body.varySaturation(0.2);
 		body.varyColor(0.06, 0.06, 0.06);
-		local injury = this.addSprite("injury");
-		injury.setBrush("bust_alp_01_injured");
-		injury.Scale = 0.8;
-		injury.Visible = false;
+
 		this.addDefaultStatusSprites();
 		this.getSprite("status_rooted").Scale = 0.55;
 		this.setSpriteOffset("status_rooted", this.createVec(0, 10));
 
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_poison_immunity"));
-		this.m.Skills.add(this.new("scripts/skills/actives/zombie_bite"));
+		this.m.Skills.add(this.new("scripts/skills/actives/zombie_bite_abomination"));
+		
+	}
+
+	function onUpdateInjuryLayer()
+	{
+		return;
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
@@ -228,7 +254,5 @@ this.flesh_abomination <- this.inherit("scripts/entity/tactical/actor", {
 		}
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
-
-
 
 });

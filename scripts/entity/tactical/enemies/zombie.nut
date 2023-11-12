@@ -196,7 +196,6 @@ this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 		this.addDefaultStatusSprites();
 		this.getSprite("arms_icon").setBrightness(0.85);
 		this.getSprite("status_rooted").Scale = 0.55;
-		this.m.Skills.add(this.new("scripts/skills/special/double_grip"));
 		this.m.Skills.add(this.new("scripts/skills/actives/zombie_bite"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_poison_immunity"));
 	}

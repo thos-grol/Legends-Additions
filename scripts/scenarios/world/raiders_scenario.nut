@@ -133,6 +133,12 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[3].getSkills().add(this.new("scripts/skills/traits/bright_trait"));
 		bros[3].getBackground().addPerkGroup(::Const.Perks.IntelligentTree.Tree);
 
+		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.WinterMage, 0);
+		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellReanimate, 0);
+		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellFleshServant, 0);
+
+		
+
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Assets.addMoralReputation(-30.0);
 

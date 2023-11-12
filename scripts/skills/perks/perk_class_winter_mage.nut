@@ -23,7 +23,7 @@ this.perk_class_winter_mage <- this.inherit("scripts/skills/skill", {
 		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
-		this.m.IsHidden = true;
+		this.m.IsHidden = false;
 	}
 
 	function onUpdate( _properties )

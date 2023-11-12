@@ -30,7 +30,7 @@ this.flesh_abomination_agent <- this.inherit("scripts/ai/tactical/agent", {
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_engage_melee"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_break_free"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_defend_knock_back"));
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_default"));
+		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_flesh"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_swing"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_split"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_thresh"));

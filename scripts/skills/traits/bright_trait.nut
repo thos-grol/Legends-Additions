@@ -131,8 +131,7 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		}
 		else
 		{
-			// if (::Math.rand(1, 100) <= ::Math.max(getBonus() - ret.Project.BonusDifficulty, 1))
-			if (true) //TODO: test code uncomment original after done
+			if (::Math.rand(1, 100) <= ::Math.max(getBonus() - ret.Project.BonusDifficulty, 1))
 			{
 				actor.getFlags().set(ret.Project.Name, true); //Mark the project as completed
 

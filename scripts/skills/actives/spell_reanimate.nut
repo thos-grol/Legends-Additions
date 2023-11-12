@@ -1,3 +1,6 @@
+//TODO: make reanimate more dramatic
+	//add black flare to caster
+	//add delay and add whispers
 this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 	m = {},
 	function create()
@@ -25,7 +28,7 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 		this.m.IsIgnoredAsAOO = true;
 
 		this.m.Aspect = "winter";
-		this.m.ManaCost = 2;
+		this.m.ManaCost = 0;
 		this.m.Cooldown_Max = 1;
 		this.m.Cooldown = 1;
 

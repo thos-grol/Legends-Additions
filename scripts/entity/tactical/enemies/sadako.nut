@@ -8,7 +8,6 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.XP = this.Const.Tactical.Actor.Hexe.XP;
 		this.m.ConfidentMoraleBrush = "icon_confident_orcs";
 		this.m.DecapitateSplatterOffset = this.createVec(-8, -26);
-		this.m.IsUsingZoneOfControl = false;
 		this.actor.create();
 		this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
 			"sounds/enemies/dlc2/hexe_hurt_01.wav",
