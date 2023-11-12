@@ -48,22 +48,73 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 
 	function cast( _user, _targetTile )
 	{
-		spawn_particles(_user, _targetTile);
-		spawnUndead(_user, _targetTile);
+		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
+		{
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " [Raise Undead]");
+
+			//TODO: magic cast sounds
+			if (this.m.SoundOnHit.len() != 0)
+			{
+				this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill * 1.2, _user.getPos());
+			}
+		}
+
+		//TODO: test
+
+		for( local i = 1; i <= 5; i++ )
+		{
+			this.Time.scheduleEvent(this.TimeUnit.Virtual, 200 * i, this.spawn_particles.bindenv(this), {
+				Skill = this,
+				User = _user,
+				TargetTile = _user.getTile()
+			});
+		}
+
+		this.Time.scheduleEvent(this.TimeUnit.Virtual, 1200, this.spawn_particles.bindenv(this), {
+			Skill = this,
+			User = _user,
+			TargetTile = _targetTile
+		});
+
+		this.Time.scheduleEvent(this.TimeUnit.Virtual, 1700, this.spawn_particles.bindenv(this), {
+			Skill = this,
+			User = _user,
+			TargetTile = _targetTile
+		});
+
+		this.Time.scheduleEvent(this.TimeUnit.Virtual, 2000, this.spawnUndead.bindenv(this), {
+			Skill = this,
+			User = _user,
+			TargetTile = _targetTile
+		});
 		return true;
 	}
 
 	//Helper
 
-	function spawnUndead( _user, _tile )
+	function spawnUndead(tag)
 	{
-		local p = _tile.Properties.get("Corpse");
-		p.Faction = _user.getFaction();
+		local p = tag.TargetTile.Properties.get("Corpse");
+		p.Faction = tag.User.getFaction();
 		if (p.Faction == this.Const.Faction.Player) p.Faction = this.Const.Faction.PlayerAnimals;
 
 		local e = this.Tactical.Entities.onResurrect(p, true);
 
-		if (e != null) e.getSprite("socket").setBrush(_user.getSprite("socket").getBrush().Name);
+		if (e != null) e.getSprite("socket").setBrush(tag.User.getSprite("socket").getBrush().Name);
+	}
+
+	function spawn_particles(tag)
+	{
+		if (!tag.TargetTile.IsVisibleForPlayer) return;
+
+		if (::Const.Tactical.RaiseUndeadParticles.len() != 0)
+		{
+			for( local i = 0; i < ::Const.Tactical.RaiseUndeadParticles.len(); i = i )
+			{
+				this.Tactical.spawnParticleEffect(true, ::Const.Tactical.RaiseUndeadParticles[i].Brushes, tag.TargetTile, ::Const.Tactical.RaiseUndeadParticles[i].Delay, ::Const.Tactical.RaiseUndeadParticles[i].Quantity, ::Const.Tactical.RaiseUndeadParticles[i].LifeTimeQuantity, ::Const.Tactical.RaiseUndeadParticles[i].SpawnRate, ::Const.Tactical.RaiseUndeadParticles[i].Stages);
+				i = ++i;
+			}
+		}
 	}
 
 	function canResurrectOnTile( _tile, _force = false )
@@ -71,30 +122,6 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 		return _tile.IsCorpseSpawned
 			&& ( _tile.Properties.get("Corpse").IsResurrectable || _force
 				|| !("FleshNotAllowed" in _tile.Properties.get("Corpse")) );
-	}
-
-	function spawn_particles( _user, _targetTile )
-	{
-		if (!_targetTile.IsVisibleForPlayer) return;
-
-		if (::Const.Tactical.RaiseUndeadParticles.len() != 0)
-		{
-			for( local i = 0; i < ::Const.Tactical.RaiseUndeadParticles.len(); i = i )
-			{
-				this.Tactical.spawnParticleEffect(true, ::Const.Tactical.RaiseUndeadParticles[i].Brushes, _targetTile, ::Const.Tactical.RaiseUndeadParticles[i].Delay, ::Const.Tactical.RaiseUndeadParticles[i].Quantity, ::Const.Tactical.RaiseUndeadParticles[i].LifeTimeQuantity, ::Const.Tactical.RaiseUndeadParticles[i].SpawnRate, ::Const.Tactical.RaiseUndeadParticles[i].Stages);
-				i = ++i;
-			}
-		}
-
-		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
-		{
-			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " uses Raise Undead");
-
-			if (this.m.SoundOnHit.len() != 0)
-			{
-				this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill * 1.2, _user.getPos());
-			}
-		}
 	}
 
 });
