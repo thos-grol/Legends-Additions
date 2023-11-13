@@ -75,9 +75,6 @@
             }
         }
 
-        //TODO: add sounds for abomination
-        //TODO: add sounds for zombies
-
         if ("BaseProperties" in _info)
         {
             this.m.BaseProperties.Bravery = _info.BaseProperties["Bravery"];

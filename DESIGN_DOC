@@ -446,7 +446,7 @@ Undead cannot be charmed
 ::setSpawn("executioner", ::Const.Faction.PlayerAnimals)
 ::setSpawn("goblin_wolfrider", ::Const.Faction.PlayerAnimals)
 ::setSpawn("spider", ::Const.Faction.PlayerAnimals)
-::setSpawn("desert_devil")
+::setSpawn("goblin_ambusher")
 ::setSpawn("spider")
 ::setSpawn("spider", ::Const.Faction.Enemy)
 

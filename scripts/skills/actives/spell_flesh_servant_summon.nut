@@ -1,11 +1,13 @@
-this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
-	m = {},
+this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", {
+	m = {
+		Used = false,
+	},
 	function create()
 	{
-		this.m.ID = "actives.spell.reanimate";
-		this.m.Name = "Reanimate";
+		this.m.ID = "actives.spell.flesh_servant_summon";
+		this.m.Name = "Summon Flesh Servant";
 		this.m.Description = "";
-		this.m.Icon = "skills/raisedead2.png";
+		this.m.Icon = "skills/raisedead2.png"; //TODO: ART flesh_servant_summon
 		this.m.IconDisabled = "skills/raisedead2_bw.png";
 		this.m.Overlay = "active_26";
 		this.m.SoundOnHit = [
@@ -32,19 +34,26 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 		this.m.ActionPointCost = 6;
 		this.m.FatigueCost = 20;
 		this.m.MinRange = 1;
-		this.m.MaxRange = 8;
+		this.m.MaxRange = 1;
 		this.m.MaxLevelDifference = 4;
 	}
 
 	function onVerifyTarget( _originTile, _targetTile )
 	{
 		return this.skill.onVerifyTarget(_originTile, _targetTile)
-			&& canResurrectOnTile(_targetTile)
 			&& _targetTile.IsEmpty;
+	}
+
+	function isUsable()
+	{
+		local actor = this.getContainer().getActor();
+		local bind = actor.getSkills().getSkillByID("actives.spell.flesh_servant_bind");
+		return this.skill.isUsable() && bind != null && bind.m.Type_ != null  && !this.m.Used;
 	}
 
 	function cast( _user, _targetTile )
 	{
+		this.m.Used = true;
 		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
 			::Z.Log.display_basic(_user, null, this.m.Name, _user.getFaction() == this.Const.Faction.Player || _user.getFaction() == this.Const.Faction.PlayerAnimals);
 
@@ -69,7 +78,7 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 			TargetTile = _targetTile
 		});
 
-		this.Time.scheduleEvent(this.TimeUnit.Virtual, 2000, this.spawnUndead.bindenv(this), {
+		this.Time.scheduleEvent(this.TimeUnit.Virtual, 2000, this.summon_undead.bindenv(this), {
 			Skill = this,
 			User = _user,
 			TargetTile = _targetTile
@@ -78,17 +87,44 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 	}
 
 	//Helper
-
-	function spawnUndead(tag)
+	function summon_undead(tag)
 	{
-		local p = tag.TargetTile.Properties.get("Corpse");
-		p.Faction = tag.User.getFaction();
-		if (p.Faction == this.Const.Faction.Player) p.Faction = this.Const.Faction.PlayerAnimals;
+		local actor = this.getContainer().getActor();
+		local bind = actor.getSkills().getSkillByID("actives.spell.flesh_servant_bind");
 
-		local e = this.Tactical.Entities.onResurrect(p, true);
+		//spawn abom type
+		::Const.Movement.AnnounceDiscoveredEntities = false;
+		local entity = this.Tactical.spawnEntity(bind.m.Type_, tag.TargetTile.Coords.X, tag.TargetTile.Coords.Y);
+		::Const.Movement.AnnounceDiscoveredEntities = true;
 
-		if (e != null) e.getSprite("socket").setBrush(tag.User.getSprite("socket").getBrush().Name);
+		//set faction to caster's
+		local faction = tag.User.getFaction();
+		if (faction == this.Const.Faction.Player) faction = this.Const.Faction.PlayerAnimals;
+		entity.setFaction(faction);
+
+		//set the name
+		entity.m.Name = bind.m.Name_;
+
+        //set skills
+		foreach(skill in bind.m.Skills)
+		{
+			if (!entity.getSkills().hasSkill(skill.m.ID)) entity.getSkills().add(skill)
+		}
+
+        //set base properties
+		entity.m.BaseProperties.Bravery = bind.m.BaseProperties["Bravery"];
+		entity.m.BaseProperties.Initiative = bind.m.BaseProperties["Initiative"];
+		entity.m.BaseProperties.MeleeSkill = bind.m.BaseProperties["MeleeSkill"];
+		entity.m.BaseProperties.RangedSkill = bind.m.BaseProperties["RangedSkill"];
+		entity.m.BaseProperties.MeleeDefense = bind.m.BaseProperties["MeleeDefense"];
+		entity.m.BaseProperties.RangedDefense = bind.m.BaseProperties["RangedDefense"];
+
+        //do skill calculations
+		entity.m.Skills.update();
+		entity.riseFromGround();
 	}
+
+	/////////////////////
 
 	function spawn_particles(tag)
 	{
@@ -104,11 +140,16 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 		}
 	}
 
-	function canResurrectOnTile( _tile, _force = false )
+	////////////////////
+
+	function onCombatStarted()
 	{
-		return _tile.IsCorpseSpawned
-			&& ( _tile.Properties.get("Corpse").IsResurrectable || _force
-				|| !("FleshNotAllowed" in _tile.Properties.get("Corpse")) );
+		this.m.Used = false;
+	}
+
+	function onCombatFinished()
+	{
+		this.m.Used = false;
 	}
 
 });

@@ -21,11 +21,13 @@ this.perk_spell_flesh_servant <- this.inherit("scripts/skills/skill", {
 		this.m.IsHidden = false;
 	}
 
-	//TODO: write code to store flesh abomination (once per battle)
-	//TODO: write code to summon flesh abomination (once per battle)
 	function onAdded()
 	{
+		if (!this.m.Container.hasSkill("actives.spell.flesh_servant_bind"))
+			this.m.Container.add(::new("scripts/skills/actives/spell_flesh_servant_bind"));
 
+		if (!this.m.Container.hasSkill("actives.spell.flesh_servant_summon"))
+			this.m.Container.add(::new("scripts/skills/actives/spell_flesh_servant_summon"));
 	}
 
 });

@@ -2,8 +2,7 @@ this.ai_attack_flesh_ranged <- this.inherit("scripts/ai/tactical/behavior", {
 	m = {
 		TargetTile = null,
 		PossibleSkills = [
-			"actives.bone_bolt",
-			"actives.shoot_stake"
+			"actives.bone_bolt"
 		],
 		SelectedSkill = null
 	},

@@ -61,7 +61,7 @@ this.nomad_outlaw <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.actor.onOtherActorFleeing(_actor);
 	}
 
-	function pickArmor()
+	function pickOutfit()
 	{
 		this.m.Items.equip(this.Const.World.Common.pickArmor([
 			[
