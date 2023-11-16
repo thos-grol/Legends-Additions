@@ -28,7 +28,7 @@ this.mana_pool_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				type = "description",
 				text = this.getDescription()
 			},
-			//FEATURE_1: info that mana is refilled on new day
+			//FEATURE_3: info that mana is refilled on new day
 			{
 				id = 7,
 				type = "progressbar",
@@ -67,7 +67,7 @@ this.mana_pool_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		//refill mana
 		actor.getFlags().set("mana", actor.getFlags().getAsInt("mana_max"));
 
-		//FEATURE_0: TRAIT check bag slots for valid aspected items to consume, upgrade
+		//FEATURE_3: TRAIT check bag slots for valid aspected items to consume, upgrade
 	}
 
 	function upgrade( _amount )

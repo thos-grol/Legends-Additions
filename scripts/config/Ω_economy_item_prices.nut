@@ -794,6 +794,7 @@
 	"legend_armor.body.legend_apron" : 36,                               		//DUR: 35.00 | STA: -4.00
 	"legend_armor.body.undertakers_apron" : 36,                               	//DUR: 35.00 | STA: -4.00
 	"legend_armor.body.legend_dark_tunic" : 36,                          		//DUR: 35.00 | STA: -4.00
+	"legend_armor.body.legend_robes_magic" : 36,                        		//DUR: 40.00 | STA: -1.00 //fancy looking //TODO: make necromancers wear magic robes
 
 	"legend_armor.body.legend_gladiator_harness" : 48,                  		//DUR: 40.00 | STA: -4.00
 	"legend_armor.body.wanderers_coat" : 48,                  					//DUR: 45.00 | STA: -4.00
@@ -815,7 +816,6 @@
 	"legend_armor.body.legend_tunic_noble" : 176,                        		//DUR: 40.00 | STA: -2.00
 	"legend_armor.named_tabard" : 176,                        					//DUR: 10.00 | STA:  0.00
 	"legend_armor.body.legend_tunic_noble_named" : 264,                 		//DUR: 40.00 | STA: -2.00
-	"legend_armor.body.legend_robes_magic" : 146,                        		//DUR: 40.00 | STA: -1.00 //fancy looking //FEATURE_1: make wizards wear magic robes, give robes a property (mana gathering)
 
 		//I
 		"legend_armor.body.legend_southern_padded_chest" : 36,              		//DUR: 45.00 | STA: -4.00

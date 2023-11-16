@@ -1,6 +1,6 @@
-this.necromancer <- this.inherit("scripts/entity/tactical/human", {
+this.necromancer <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {
-		School = "Body"
+		School = null
 	},
 	function create()
 	{
@@ -36,20 +36,22 @@ this.necromancer <- this.inherit("scripts/entity/tactical/human", {
 		this.getSprite("head").Saturation = 1.0;
 		this.getSprite("body").Saturation = 0.6;
 
-		// this.m.Skills.add(this.new("scripts/skills/actives/raise_undead"));
-		// this.m.Skills.add(this.new("scripts/skills/actives/possess_undead_skill"));
-
-		//FEATURE_2: FEATURE necromancers - add magic spells based on school
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_class_winter_mage"));
+		local mana_pool = this.m.Skills.getSkillByID("trait.mana_pool");
+		mana_pool.upgrade(21);
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
 	{
 		if (!this.Tactical.State.isScenarioMode() && _killer != null && _killer.isPlayerControlled())
-		{
 			this.updateAchievement("ManInBlack", 1, 1);
-		}
 
-		///FEATURE_2: FEATURE necromancers - chance to drop magic tome based on school
+		if (::Math.rand(1,100) <= 20)
+		{
+			local tome = this.new("scripts/items/misc/tome");
+			tome.set_tome(this.m.Build.Drop);
+			tome.drop(_tile);
+		}
 		this.human.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 

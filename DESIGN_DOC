@@ -1,32 +1,15 @@
-===========================================
-
-// How to progress?
-//Tome of Decay
-    // Meditation Technique: Underworld Thoughts
-    // Reanimate
-    // Corpse Explosion (Long Cooldown: 10 turns)
-
-//Tome of Anguish
-    // Meditation Technique: Anguish (Buffs the power of anguish, small chance for nearby corpses around to reanimate)
-    // anguish
-
-//Tome of Spiritualism
-    // Meditation Technique: Astral Wanderer ()
-    //Haunt
-    // Negative Energy Hand
-        // 	partial astral projection
-
 //figure out persistent tile effects for entities?
 //skill that checks on move??
 
-//FEATURE_2: FEATURE ghosts
+//TODO: create machine learning model for art
 
-//FEATURE_2: FEATURE necromancers
-//FEATURE_2: FEATURE zombies, see underneath
-    //zombies do not pick up item upon being resurrected
+//TODO: FEATURE ghosts
+    //Aura of fear -> scares beings around passively
+
+//TODO: FEATURE zombies, see underneath
     //fallen hero -> frost effect
 
-//FEATURE_2: FEATURE Necrosavant -> Grail, Knock
+//TODO: FEATURE Necrosavant -> Grail, Knock
     //Modes:
         //Scummy - tp away close to party, summon weakest bro to it
         //Guerilla - tp and strike, tp and strike

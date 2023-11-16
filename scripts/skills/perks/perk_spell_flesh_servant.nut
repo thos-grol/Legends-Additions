@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.SpellFleshServant <- "Flesh Servant";
-::Const.Strings.PerkDescription.SpellFleshServant <- "Undead rise!..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Flesh Servant\' (4 AP, 20 Fat, 1 Mana):")
+::Const.Strings.PerkDescription.SpellFleshServant <- "Undead rise!..." //FIXME: DESCRIPTION Flesh Servant
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Flesh Servant\' (4 AP, 20 Fat, 1 Mana):") //FIXME: DESCRIPTION Flesh Servant
 + "\n";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpellFleshServant].Name = ::Const.Strings.PerkName.SpellFleshServant;

@@ -1,11 +1,10 @@
-this.haunt <- this.inherit("scripts/skills/magic_skill", {
+this.spell_haunt <- this.inherit("scripts/skills/_magic_active", {
 	m = {},
 	function create()
 	{
-		//FEATURE_1: Haunt skill
-		//FEATURE_1: Haunt perk
+		//TODO: Haunt skill
 		this.magic_skill.create();
-		this.m.ID = "actives.haunt";
+		this.m.ID = "actives.spell.haunt";
 		this.m.Name = "Haunt";
 		this.m.Description = "Summons Geists to haunt the target.";
 		this.m.Icon = "ui/perks/haunt.png";
@@ -33,15 +32,6 @@ this.haunt <- this.inherit("scripts/skills/magic_skill", {
 		this.m.ActionPointCost = 6;
 		this.m.ManaCost = 4;
 		this.m.FatigueCost = 40;
-	}
-
-	function onUpdate()
-	{
-		local a = this.getContainer().getActor();
-		if (a.getSkills().hasSkill("perk.meditation_underworld_thoughts"))
-		{
-			this.m.ManaCost = this.Math.min(1, this.m.ManaCost - 1);
-		}
 	}
 
 	function getTooltip()
@@ -84,9 +74,7 @@ this.haunt <- this.inherit("scripts/skills/magic_skill", {
 			if (a.getSkills().hasSkill("perk.torment_soul")) effect.m.TormentSoul = true;
 		}
 		effect.m.TurnsLeft = this.m.Duration;
-		//FEATURE_1: Haunt fx
-		//Make blue temporary fire fx on spawn
-
+		//TODO: Haunt fx
 		return true;
 	}
 

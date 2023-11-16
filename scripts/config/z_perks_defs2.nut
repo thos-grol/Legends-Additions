@@ -240,6 +240,15 @@ local perks = [
         IconDisabled = "ui/perks/perk_29_sw.png",
         Const = "RuinKnight"
     },
+    {
+        ID = "perk.class.gluttony_knight",
+        Script = "scripts/skills/perks/perk_class_gluttony_knight",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/perk_29.png", //FIXME: ART gluttony knight
+        IconDisabled = "ui/perks/perk_29_sw.png",
+        Const = "GluttonyKnight"
+    },
 
     {
         ID = "perk.class.winter_mage",
@@ -255,15 +264,6 @@ local perks = [
 // Monster
 ///////////////////////////////////////////////////////////////////////////
 
-    {
-        ID = "perk.nachzerer_gluttony_barrier",
-        Script = "scripts/skills/perks/perk_nachzerer_gluttony_barrier",
-        Name = "",
-        Tooltip = "",
-        Icon = "ui/perks/perk_29.png",
-        IconDisabled = "ui/perks/perk_29_sw.png",
-        Const = "NachzererGluttonyBarrier"
-    },
 	{
         ID = "perk.direwolf_berserk_mode",
         Script = "scripts/skills/perks/perk_direwolf_berserk_mode",
@@ -423,6 +423,15 @@ local perks = [
         IconDisabled = "ui/perks/pattern_recognition_bw.png",
         Const = "PatternRecognition"
     },
+    {
+        ID = "perk.arcane_insight",
+        Script = "scripts/skills/perks/perk_arcane_insight",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/arcane_insight.png", //FIXME: ART arcane insight
+        IconDisabled = "ui/perks/arcane_insight_bw.png",
+        Const = "ArcaneInsight"
+    },
 
     // Magic
 
@@ -459,9 +468,18 @@ local perks = [
         Script = "scripts/skills/perks/perk_spell_corpse_explosion",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/spell_corpse_explosion.png", //FEATURE_0: ART spell_corpse_explosion
+        Icon = "ui/perks/spell_corpse_explosion.png", //FIXME: ART spell_corpse_explosion
         IconDisabled = "ui/perks/spell_corpse_explosion_bw.png",
         Const = "SpellCorpseExplosion"
+    },
+    {
+        ID = "perk.spell.haunt",
+        Script = "scripts/skills/perks/perk_spell_haunt",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/spell_haunt.png", //FIXME: ART spell haunt
+        IconDisabled = "ui/perks/spell_haunt_bw.png",
+        Const = "SpellHaunt"
     },
 
     // {

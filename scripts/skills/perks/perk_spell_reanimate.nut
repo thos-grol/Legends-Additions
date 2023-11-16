@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.SpellReanimate <- "Reanimate";
-::Const.Strings.PerkDescription.SpellReanimate <- "Undead rise!..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Reanimate\' (4 AP, 20 Fat, 1 Mana):")
+::Const.Strings.PerkDescription.SpellReanimate <- "Undead rise!..." //FIXME: DESCRIPTION Reanimate
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Reanimate\' (4 AP, 20 Fat, 1 Mana):") //FIXME: DESCRIPTION Reanimate
 + "\n";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpellReanimate].Name = ::Const.Strings.PerkName.SpellReanimate;

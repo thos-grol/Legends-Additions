@@ -592,15 +592,15 @@ gt.Const.Perks.IntelligentTree <- {
 		[],
 		[
 			gt.Const.Perks.PerkDefs.PatternRecognition
+
 		],
 		[],
 		[
-			//FEATURE_0: PERK Arcane Insight
-			//Upgrades a bro's bright trait
+			gt.Const.Perks.PerkDefs.ArcaneInsight
 		],
 		[],
 		[
-			//FEATURE_0: PERK Magician
+			//FEATURE_3: PERK Intelligent Destiny
 			//There is still so much to learn...
 			//Gain 5 perk points
 		]

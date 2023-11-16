@@ -36,7 +36,7 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	function upgrade()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Intelligent", ::Math.min(4, actor.getFlags().getAsInt("Intelligent") + 1));
+		actor.getFlags().set("Intelligent", ::Math.min(5, actor.getFlags().getAsInt("Intelligent") + 1));
 	}
 
 	function getBonus()
@@ -52,6 +52,8 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				return 5;
 			case 4:
 				return 10;
+			case 5:
+				return 20;
 		}
 	}
 
@@ -164,6 +166,8 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				return "Gifted"
 			case 4:
 				return "Genius"
+			case 5:
+				return "Super-Genius"
 		}
 	}
 
@@ -273,7 +277,7 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		return ret;
 	}
 
-	
+
 
 });
 

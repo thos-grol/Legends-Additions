@@ -1,13 +1,13 @@
-::Const.Strings.PerkName.NachzererGluttonyBarrier <- "Gluttony Shield";
-::Const.Strings.PerkDescription.NachzererGluttonyBarrier <- "Protection by the powers of gluttony..."
+::Const.Strings.PerkName.GluttonyKnight <- "Gluttony Shield";
+::Const.Strings.PerkDescription.GluttonyKnight <- "Protection by the powers of gluttony..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
 + "\n• At the start of battle, gain 1 charge of shielding."
 + "\n• Each charge can nullify a blow. Gain more charges through consuming enemies or corpses.";
 
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.NachzererGluttonyBarrier].Name = ::Const.Strings.PerkName.NachzererGluttonyBarrier;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.NachzererGluttonyBarrier].Tooltip = ::Const.Strings.PerkDescription.NachzererGluttonyBarrier;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.GluttonyKnight].Name = ::Const.Strings.PerkName.GluttonyKnight;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.GluttonyKnight].Tooltip = ::Const.Strings.PerkDescription.GluttonyKnight;
 
-this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
+this.perk_class_gluttony_knight <- this.inherit("scripts/skills/skill", {
 	m = {
 		Charges = 1,
 		Charges_Max = 5,
@@ -15,9 +15,9 @@ this.perk_nachzerer_gluttony_barrier <- this.inherit("scripts/skills/skill", {
 	},
 	function create()
 	{
-		this.m.ID = "perk.nachzerer_gluttony_barrier";
-		this.m.Name = ::Const.Strings.PerkName.NachzererGluttonyBarrier;
-		this.m.Description = ::Const.Strings.PerkDescription.NachzererGluttonyBarrier;
+		this.m.ID = "perk.class.gluttony_knight";
+		this.m.Name = ::Const.Strings.PerkName.GluttonyKnight;
+		this.m.Description = ::Const.Strings.PerkDescription.GluttonyKnight;
 		this.m.Icon = "ui/perks/perk_29.png";
 		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
 		this.m.Order = ::Const.SkillOrder.Perk;

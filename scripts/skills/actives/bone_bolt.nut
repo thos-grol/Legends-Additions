@@ -11,8 +11,8 @@ this.bone_bolt <- this.inherit("scripts/skills/skill", {
 		this.m.KilledString = "Shot";
 		this.m.Icon = "skills/active_17.png";
 		this.m.IconDisabled = "skills/active_17_sw.png";
-		this.m.Overlay = "active_17"; //TODO: bone bolt sounds
-		this.m.SoundOnUse = [ 
+		this.m.Overlay = "active_17"; //FIXME: SOUND bone bolt sounds
+		this.m.SoundOnUse = [
 			"sounds/combat/bolt_shot_01.wav",
 			"sounds/combat/bolt_shot_02.wav",
 			"sounds/combat/bolt_shot_03.wav"
@@ -53,7 +53,7 @@ this.bone_bolt <- this.inherit("scripts/skills/skill", {
 		this.m.MinRange = 1;
 		this.m.MaxRange = 6;
 		this.m.MaxLevelDifference = 4;
-		this.m.ProjectileType = this.Const.ProjectileType.Arrow; //TODO: custom arrow
+		this.m.ProjectileType = this.Const.ProjectileType.Arrow; //FIXME: ART custom arrow
 	}
 
 	function getTooltip()
