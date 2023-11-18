@@ -89,8 +89,7 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
 	//Helper
 	function summon_undead(tag)
 	{
-		local actor = this.getContainer().getActor();
-		local bind = actor.getSkills().getSkillByID("actives.spell.flesh_servant_bind");
+		local bind = tag.User.getSkills().getSkillByID("actives.spell.flesh_servant_bind");
 
 		//spawn abom type
 		::Const.Movement.AnnounceDiscoveredEntities = false;
@@ -121,6 +120,21 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
 
         //do skill calculations
 		entity.m.Skills.update();
+
+		local slave = ::new("scripts/skills/special/_flesh_master");
+		local master = ::new("scripts/skills/special/_flesh_slave");
+		slave.setMaster(master);
+		master.setSlave(slave);
+
+		entity.getSkills().add(slave);
+		tag.User.getSkills().add(master);
+
+		slave.activate();
+		master.activate();
+
+		local overclock = tag.User.getSkills().getSkillByID("perk.research.flesh_overclocking");
+		if (overclock != null) entity.getSkills().add(::new("scripts/skills/perks/perk_research_flesh_overclocking"));
+
 		entity.riseFromGround();
 	}
 

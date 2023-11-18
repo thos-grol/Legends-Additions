@@ -74,7 +74,7 @@ this.spell_haunt <- this.inherit("scripts/skills/_magic_active", {
 			if (a.getSkills().hasSkill("perk.torment_soul")) effect.m.TormentSoul = true;
 		}
 		effect.m.TurnsLeft = this.m.Duration;
-		//TODO: Haunt fx
+		//TODO: Haunt fx from witcher
 		return true;
 	}
 

@@ -794,7 +794,7 @@
 	"legend_armor.body.legend_apron" : 36,                               		//DUR: 35.00 | STA: -4.00
 	"legend_armor.body.undertakers_apron" : 36,                               	//DUR: 35.00 | STA: -4.00
 	"legend_armor.body.legend_dark_tunic" : 36,                          		//DUR: 35.00 | STA: -4.00
-	"legend_armor.body.legend_robes_magic" : 36,                        		//DUR: 40.00 | STA: -1.00 //fancy looking //TODO: make necromancers wear magic robes
+	"legend_armor.body.legend_robes_magic" : 36,                        		//DUR: 40.00 | STA: -1.00 //fancy looking
 
 	"legend_armor.body.legend_gladiator_harness" : 48,                  		//DUR: 40.00 | STA: -4.00
 	"legend_armor.body.wanderers_coat" : 48,                  					//DUR: 45.00 | STA: -4.00

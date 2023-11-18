@@ -82,7 +82,7 @@ this.flesh_abomination <- this.inherit("scripts/entity/tactical/actor", {
 
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_poison_immunity"));
 		this.m.Skills.add(this.new("scripts/skills/actives/zombie_bite_abomination"));
-		
+
 	}
 
 	function onUpdateInjuryLayer()

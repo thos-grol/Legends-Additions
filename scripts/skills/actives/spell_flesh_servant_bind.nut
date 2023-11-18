@@ -5,6 +5,7 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 		Type_ = null,
 		Skills = [],
 		BaseProperties = {},
+		Absorbed = 0
 	},
 	function create()
 	{
@@ -43,6 +44,24 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 
 		this.m.IsSerialized = true;
 	}
+
+	function onAdded()
+	{
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() == ::Const.Faction.Player) return; //non-player generate summons
+		if (::Math.rand(1, 100) <= 50)
+		{
+			this.m.Name_ = "Flesh Abomination (Goblin Ambusher)";
+			//TODO: PLAYTEST dump goblin ambusher
+		}
+		else
+		{
+			//TODO: webknecht dump goblin ambusher
+		}
+
+
+	}
+
 
 	function onVerifyTarget( _originTile, _targetTile )
 	{
@@ -167,15 +186,21 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 		this.skill.onSerialize(_out);
 		_out.writeString(this.m.Name_);
 		_out.writeString(this.m.Type_);
+		_out.writeI16(this.m.Absorbed);
+
 		::MSU.Utils.serialize(this.m.BaseProperties, _out);
 
 		local scripts = [];
 		foreach(skill in this.m.Skills)
 		{
-			if (skill.m.ID in ::Z.Map) 
+			if (skill.m.ID in ::Z.Map)
 				scripts.push(::Z.Map[skill.m.ID]);
 		}
 		::MSU.Utils.serialize(scripts, _out);
+
+		::MSU.Log.printData( this.m.BaseProperties ); //FIXME: TEST REMOVE printdata
+		::MSU.Log.printData( scripts );
+
 	}
 
 	function onDeserialize( _in )
@@ -183,15 +208,17 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 		this.skill.onDeserialize(_in);
 		this.m.Name_ = _in.readString();
 		this.m.Type_ = _in.readString();
+		this.m.Absorbed = _in.readI16();
+
 		this.m.BaseProperties = ::MSU.Utils.deserialize(_in);
 		local scripts = ::MSU.Utils.deserialize(_in);
 		foreach(script in scripts)
 		{
 			this.m.Skills.push(::new(script));
-		}		
+		}
 	}
 
-	
+
 
 });
 

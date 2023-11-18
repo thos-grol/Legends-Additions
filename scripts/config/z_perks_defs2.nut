@@ -435,24 +435,15 @@ local perks = [
 
     // Magic
 
+    //Tome of Flesh
     {
-        ID = "perk.meditation.underworld_thoughts",
-        Script = "scripts/skills/perks/perk_meditation_underworld_thoughts",
+        ID = "perk.meditation.pact_of_flesh",
+        Script = "scripts/skills/perks/perk_meditation_pact_of_flesh",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/meditation_underworld_thoughts.png",
-        IconDisabled = "ui/perks/meditation_underworld_thoughts_bw.png",
-        Const = "MeditationUnderworldThoughts"
-    },
-
-    {
-        ID = "perk.spell.reanimate",
-        Script = "scripts/skills/perks/perk_spell_reanimate",
-        Name = "",
-        Tooltip = "",
-        Icon = "ui/perks/spell_reanimate.png",
-        IconDisabled = "ui/perks/spell_reanimate_bw.png",
-        Const = "SpellReanimate"
+        Icon = "ui/perks/meditation_pact_of_flesh.png", //TODO: ART MeditationPactOfFlesh
+        IconDisabled = "ui/perks/meditation_pact_of_flesh_bw.png",
+        Const = "MeditationPactOfFlesh"
     },
     {
         ID = "perk.spell.flesh_servant",
@@ -463,6 +454,47 @@ local perks = [
         IconDisabled = "ui/perks/spell_flesh_servant_bw.png",
         Const = "SpellFleshServant"
     },
+    {
+        ID = "perk.spell.reanimate",
+        Script = "scripts/skills/perks/perk_spell_reanimate",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/spell_reanimate.png",
+        IconDisabled = "ui/perks/spell_reanimate_bw.png",
+        Const = "SpellReanimate"
+    },
+    {
+        ID = "perk.research.flesh_assimilation",
+        Script = "scripts/skills/perks/perk_research_flesh_assimilation",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/research_flesh_assimilation.png", //TODO: ART ResearchFleshAssimilation
+        IconDisabled = "ui/perks/research_flesh_assimilation_bw.png",
+        Const = "ResearchFleshAssimilation"
+    },
+    {
+        ID = "perk.research.flesh_overclocking",
+        Script = "scripts/skills/perks/perk_research_flesh_overclocking",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/research_flesh_overclocking.png", //TODO: ART ResearchFleshOverclocking
+        IconDisabled = "ui/perks/research_flesh_overclocking_bw.png",
+        Const = "ResearchFleshOverclocking"
+    },
+
+
+    {
+        ID = "perk.meditation.underworld_thoughts",
+        Script = "scripts/skills/perks/perk_meditation_underworld_thoughts",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/meditation_underworld_thoughts.png",
+        IconDisabled = "ui/perks/meditation_underworld_thoughts_bw.png",
+        Const = "MeditationUnderworldThoughts"
+    },
+
+
+
     {
         ID = "perk.spell.corpse_explosion",
         Script = "scripts/skills/perks/perk_spell_corpse_explosion",

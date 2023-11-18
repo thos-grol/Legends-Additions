@@ -74,9 +74,9 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 			actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + damage));
 
 			::Tactical.EventLog.log(
-				::Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " " 
-				 + "[Swallowed]" 
-				 + " » " + ::MSU.Text.color(::Z.Log.Color.BloodRed, prev) + " › " + ::MSU.Text.color(::Z.Log.Color.BloodRed, this.m.SwallowedEntity_HP) 
+				::Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " "
+				 + "[Swallowed]"
+				 + " » " + ::MSU.Text.color(::Z.Log.Color.BloodRed, prev) + " › " + ::MSU.Text.color(::Z.Log.Color.BloodRed, this.m.SwallowedEntity_HP)
 				 + " ([b]" + ::MSU.Text.color(::Z.Log.Color.BloodRed, damage) + "[/b])"
 			);
 			::Tactical.EventLog.logIn(
@@ -137,7 +137,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 			}
 
 			//add 2 stacks of hair armor
-			local nachzerer_hair_armor = this.m.Container.getSkillByID("perk.nachzerer_gluttony_barrier");
+			local nachzerer_hair_armor = this.m.Container.getSkillByID("perk.class.gluttony_knight");
 			if (nachzerer_hair_armor != null) nachzerer_hair_armor.addCharges(2);
 		}
 

@@ -77,6 +77,14 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 		return true;
 	}
 
+	function useForFree( _targetTile )
+	{
+		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
+			this.Sound.play("sounds/general/occult.wav", 4.0);
+		cast(_user, _targetTile);
+		return true;
+	}
+
 	function cast( _user, _targetTile )
 	{
 	}

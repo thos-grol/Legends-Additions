@@ -73,7 +73,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
 		//unique skills
 
-		this.m.Skills.add(::new("scripts/skills/perks/perk_nachzerer_gluttony_barrier")); // hair armor nullifies damage for x hits.
+		this.m.Skills.add(::new("scripts/skills/perks/perk_class_gluttony_knight")); // hair armor nullifies damage for x hits.
 
 		//will swallow bro, damaging them and healing the damage dealt. Has a chance to miss. If the swallowed bro dies,
 		//will heal temp injuries, and gain 2 charges of hair armor.

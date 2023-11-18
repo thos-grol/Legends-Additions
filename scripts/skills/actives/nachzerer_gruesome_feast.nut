@@ -226,7 +226,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		_user.getSkills().removeByID("effects.nachzerer_maddening_hunger");
 
 		//add 2 stacks of hair armor
-		local nachzerer_hair_armor = _user.getSkills().getSkillByID("perk.nachzerer_gluttony_barrier");
+		local nachzerer_hair_armor = _user.getSkills().getSkillByID("perk.class.gluttony_knight");
 		if (nachzerer_hair_armor != null) nachzerer_hair_armor.addCharges(2);
 	}
 });

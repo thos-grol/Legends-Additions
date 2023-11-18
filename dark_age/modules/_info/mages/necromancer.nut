@@ -4,8 +4,27 @@
 	BuildsChance = 100
 };
 
+::Const.Tactical.Actor.Necromancer <- {
+	XP = 100,
+	ActionPoints = 9,
+	Hitpoints = 55,
+	Bravery = 35,
+	Stamina = 95,
+	MeleeSkill = 56,
+	RangedSkill = 40,
+	MeleeDefense = 3,
+	RangedDefense = 3,
+	Initiative = 105,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	Armor = [
+		0,
+		0
+	],
+	FatigueRecoveryRate = 15
+};
+
 //TODO: NECROMANCER finish necromancer builds
-//TODO: NECROMANCER edit stats here
 
 ::B.Info[::Const.EntityType.Necromancer].Builds["tome_flesh"] <- {
 	Name = "Flesh Puppeteer",
@@ -15,7 +34,7 @@
         ["D", 2], //2
         ["scripts/skills/perks/pattern_recognition"], //3
         ["scripts/skills/perks/"], //4
-        ["scripts/skills/perks/"], //5 //TODO: flesh servant for npcs, generate 4 templates
+        ["scripts/skills/perks/"], //5
         ["D", 6],
         ["scripts/skills/perks/"], //7
         ["scripts/skills/perks/"], //7

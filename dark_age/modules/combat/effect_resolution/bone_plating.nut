@@ -7,8 +7,8 @@
 	{
 		local actor = this.getcontainer.getActor();
 
-        local gluttony_barrier = actor.getSkills().getSkillByID("perk.nachzerer_gluttony_barrier");
-        if (gluttony_barrier != null && gluttony_barrier.m.Charges > 0) return;
+        local gluttony_knight = actor.getSkills().getSkillByID("perk.class.gluttony_knight");
+        if (gluttony_knight != null && gluttony_knight.m.Charges > 0) return;
 		local the_strongest = actor.getSkills().getSkillByID("perk.stance.the_strongest");
         if (the_strongest != null && the_strongest.m.Active) return;
 

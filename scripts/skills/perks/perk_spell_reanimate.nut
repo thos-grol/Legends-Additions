@@ -1,7 +1,8 @@
 ::Const.Strings.PerkName.SpellReanimate <- "Reanimate";
-::Const.Strings.PerkDescription.SpellReanimate <- "Undead rise!..." //FIXME: DESCRIPTION Reanimate
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Reanimate\' (4 AP, 20 Fat, 1 Mana):") //FIXME: DESCRIPTION Reanimate
-+ "\n";
+::Const.Strings.PerkDescription.SpellReanimate <- "Undead rise!..."
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Reanimate\' (6 AP, 20 Fat, 2 Mana):")
++ "\n Reanimate an undead to fight for the caster. The undead will keep it's stats and perks in life, except for Hitpoints."
++ "\n "+::MSU.Text.colorRed("Undead are resistant to damage. If a weiderganger cannot be resurrected will create a flesh abomination instead");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpellReanimate].Name = ::Const.Strings.PerkName.SpellReanimate;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpellReanimate].Tooltip = ::Const.Strings.PerkDescription.SpellReanimate;
