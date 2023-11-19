@@ -42,7 +42,6 @@
     ],
 };
 
-//TODO: NECROMANCER finish necromancer tomes
 // ::B.Info.Tomes["tome_decay"] <- {
 //     Name = "Tome of Decay",
 //     Description = "A tome full of research on the mysteries of decay",

@@ -1,5 +1,4 @@
 //Reworked beasts
-//FIXME: PLACEHOLDER add newly created single/multiple beast parties.
 ::mods_hookExactClass("factions/actions/send_beast_roamers_action", function(o) {
 	o.onUpdate = function( _faction )
 	{
@@ -107,7 +106,7 @@
 		this.m.BeastsLow.push(beast);
 
 
-		return; //FIXME: PLACEHOLDER remove for normal function
+		return; //FIXME: PLACEHOLDER remove for normal function, add more supernatural monsters
 
 		beast = function ( _action, _nearTile = null ) //Nachzehrer
 		{

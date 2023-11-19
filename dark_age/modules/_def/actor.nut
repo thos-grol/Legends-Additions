@@ -696,3 +696,111 @@
 		this.m.Skills.update();
 	}
 });
+
+::mods_hookExactClass("entity/tactical/actor", function ( o )
+{
+	local onInit = o.onInit;
+	o.onInit = function()
+	{
+		onInit();
+		this.getSkills().add(::new("scripts/skills/special/mood_check")); //armor class
+		// this.getSkills().add(::new("scripts/skills/effects/ptr_formidable_approach_debuff_effect"));
+		this.getSkills().add(::new("scripts/skills/effects/ptr_follow_up_proccer_effect"));
+		this.getSkills().add(::new("scripts/skills/effects/_nokillstealing"));
+
+		if (::Math.rand(1,100) <= 10) this.getSkills().add(::new("scripts/skills/traits/lucky_trait"));
+
+		local flags = this.getFlags();
+		if (flags.has("undead") && !flags.has("ghost") && !flags.has("ghoul") && !flags.has("vampire"))
+		{
+			this.getSkills().add(::new("scripts/skills/effects/_undead"));
+			if (flags.has("skeleton"))
+			{
+				this.m.ExcludedInjuries.extend(
+					[
+						"injury.sprained_ankle",
+						"injury.deep_abdominal_cut",
+						"injury.cut_leg_muscles",
+						"injury.cut_achilles_tendon",
+						"injury.deep_chest_cut",
+						"injury.pierced_leg_muscles",
+						"injury.pierced_chest",
+						"injury.pierced_side",
+						"injury.pierced_arm_muscles",
+						"injury.stabbed_guts",
+						"injury.bruised_leg",
+						"injury.broken_nose",
+						"injury.severe_concussion",
+						"injury.crushed_windpipe",
+						"injury.cut_artery",
+						"injury.exposed_ribs",
+						"injury.ripped_ear",
+						"injury.split_nose",
+						"injury.pierced_cheek",
+						"injury.grazed_neck",
+						"injury.cut_throat",
+						"injury.grazed_kidney",
+						"injury.pierced_lung",
+						"injury.grazed_neck",
+						"injury.cut_throat",
+						"injury.crushed_windpipe",
+						"injury.inhaled_flames"
+					]
+				);
+			}
+			else
+			{
+				this.m.ExcludedInjuries.extend(
+					[
+						"injury.bruised_leg",
+						"injury.broken_nose",
+						"injury.severe_concussion",
+						"injury.crushed_windpipe",
+						"injury.cut_artery",
+						"injury.exposed_ribs",
+						"injury.ripped_ear",
+						"injury.split_nose",
+						"injury.pierced_cheek",
+						"injury.grazed_neck",
+						"injury.cut_throat",
+						"injury.grazed_kidney",
+						"injury.pierced_lung",
+						"injury.grazed_neck",
+						"injury.cut_throat",
+						"injury.crushed_windpipe",
+						"injury.inhaled_flames"
+					]
+				);
+			}
+		}
+	}
+
+	o.getDefense = function( _attackingEntity, _skill, _properties )
+	{
+		local malus = 0;
+		local d = 0;
+
+		if (!this.m.CurrentProperties.IsImmuneToSurrounding)
+		{
+			malus = _attackingEntity != null ? this.Math.max(0, _attackingEntity.getCurrentProperties().SurroundedBonus * _attackingEntity.getCurrentProperties().SurroundedBonusMult - this.getCurrentProperties().SurroundedDefense) * this.getSurroundedCount() : this.Math.max(0, 5 - this.getCurrentProperties().SurroundedDefense) * this.getSurroundedCount();
+		}
+
+		if (_skill.isRanged())
+		{
+			d = _properties.getRangedDefense();
+		}
+		else
+		{
+			d = _properties.getMeleeDefense();
+		}
+
+		if (!_skill.isRanged())
+		{
+			d = d - malus;
+		}
+
+		return d;
+	}
+
+
+});
