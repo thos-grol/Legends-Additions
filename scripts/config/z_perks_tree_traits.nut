@@ -599,11 +599,7 @@ gt.Const.Perks.IntelligentTree <- {
 			gt.Const.Perks.PerkDefs.ArcaneInsight
 		],
 		[],
-		[
-			//FEATURE_3: PERK Intelligent Destiny
-			//There is still so much to learn...
-			//Gain 5 perk points
-		]
+		[]
 	]
 };
 

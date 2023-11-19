@@ -121,8 +121,8 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
         //do skill calculations
 		entity.m.Skills.update();
 
-		local slave = ::new("scripts/skills/special/_flesh_master");
-		local master = ::new("scripts/skills/special/_flesh_slave");
+		local master = ::new("scripts/skills/special/_flesh_master");
+		local slave = ::new("scripts/skills/special/_flesh_slave");
 		slave.setMaster(master);
 		master.setSlave(slave);
 

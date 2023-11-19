@@ -89,6 +89,49 @@
 //     ],
 // };
 
+// ::B.Info.Tomes["tome_corruption"] <- {
+//     Name = "Tome of Corruption",
+//     Description = "A tome full of research on the mysteries of corruption",
+//     ID = "tome_corruption",
+//     Projects = [
+//         {
+//             Name = "Pact of Flesh",
+//             BonusDifficulty = 0,
+//             Type = "Meditation",
+//             Reward = ::Const.Perks.PerkDefs.MeditationPactOfFlesh,
+//             Row = 1,
+//         },
+//         {
+//             Name = "Flesh Servant",
+//             BonusDifficulty = 0,
+//             Type = "Perk",
+//             Reward = ::Const.Perks.PerkDefs.SpellFleshServant,
+//             Row = 2,
+//         },
+//         {
+//             Name = "Reanimate",
+//             BonusDifficulty = 0,
+//             Type = "Perk",
+//             Reward = ::Const.Perks.PerkDefs.SpellReanimate,
+//             Row = 2,
+//         },
+//         {
+//             Name = "Miasma Body",
+//             BonusDifficulty = 0,
+//             Type = "Perk",
+//             Reward = ::Const.Perks.PerkDefs.ResearchFleshOverclocking,
+//             Row = 4,
+//         },
+//         { //TODO: PERK
+//             Name = "Corpse Explosion",
+//             BonusDifficulty = 0,
+//             Type = "Perk",
+//             Reward = ::Const.Perks.PerkDefs.ResearchCorpseExplosion,
+//             Row = 5,
+//         },
+//     ],
+// };
+
 // ::B.Info.Tomes["tome_anguish"] <- {
 //     Name = "Tome of Anguish",
 //     ID = "tome_anguish",
@@ -137,35 +180,35 @@
 //     Name = "Tome of Spiritualism",
 //     ID = "tome_spiritualism",
 //     Projects = [
-//         { //TODO: PERK, do this after implementing ghosts
+//         { //: ERK, do this after implementing ghosts
 //             Name = "Journey to the Underworld", //Decrease the cost of Negative Energy Hand and Haunt. The caster takes no damage from ranged attacks. The caster has a 25% damage to negate an attack. Killing enemies with negative energy hand will buff all aspects of this archetype. At certain point, negative energy hand becomes negative energy barrage.
 //             BonusDifficulty = 0,
 //             Type = "Meditation",
 //             Reward = ::Const.Perks.PerkDefs.MeditationOmenOfDecay,
 //             Row = 1,
 //         },
-//         { //TODO: PERK
+//         { //: PERK
 //             Name = "Negative Energy Hand",
 //             BonusDifficulty = 0,
 //             Type = "Perk",
 //             Reward = ::Const.Perks.PerkDefs.SpellFleshServant,
 //             Row = 2,
 //         },
-//         { //TODO: PERK
+//         { //: PERK
 //             Name = "Research - Partial Astral Projection",
 //             BonusDifficulty = 0,
 //             Type = "Perk",
 //             Reward = ::Const.Perks.PerkDefs.SpellMarkofDeath, //Negative energy hand now uses the highest skill, melee or ranged. isranged = false. increases the range of negative energy hand. Will inflict decay on landing.
 //             Row = 4,
 //         },
-//         { //TODO: PERK
+//         { //: PERK
 //             Name = "Haunt",
 //             BonusDifficulty = 0,
 //             Type = "Perk",
 //             Reward = ::Const.Perks.PerkDefs.SpellMarkofDeath, //Resolve check the user to inflict fear damage. then summon a geist nearby them.
 //             Row = 5,
 //         },
-//         { //TODO: PERK
+//         { //: PERK
 //             Name = "???",
 //             BonusDifficulty = 0,
 //             Type = "Perk",
@@ -177,45 +220,3 @@
 //     ],
 // };
 
-// ::B.Info.Tomes["tome_corruption"] <- {
-//     Name = "Tome of Corruption",
-//     Description = "A tome full of research on the mysteries of corruption",
-//     ID = "tome_corruption",
-//     Projects = [
-//         {
-//             Name = "Pact of Flesh",
-//             BonusDifficulty = 0,
-//             Type = "Meditation",
-//             Reward = ::Const.Perks.PerkDefs.MeditationPactOfFlesh,
-//             Row = 1,
-//         },
-//         {
-//             Name = "Flesh Servant",
-//             BonusDifficulty = 0,
-//             Type = "Perk",
-//             Reward = ::Const.Perks.PerkDefs.SpellFleshServant,
-//             Row = 2,
-//         },
-//         {
-//             Name = "Reanimate",
-//             BonusDifficulty = 0,
-//             Type = "Perk",
-//             Reward = ::Const.Perks.PerkDefs.SpellReanimate,
-//             Row = 2,
-//         },
-//         {
-//             Name = "Miasma Body",
-//             BonusDifficulty = 0,
-//             Type = "Perk",
-//             Reward = ::Const.Perks.PerkDefs.ResearchFleshOverclocking,
-//             Row = 4,
-//         },
-//         { //TODO: PERK
-//             Name = "Corpse Explosion",
-//             BonusDifficulty = 0,
-//             Type = "Perk",
-//             Reward = ::Const.Perks.PerkDefs.ResearchCorpseExplosion,
-//             Row = 5,
-//         },
-//     ],
-// };

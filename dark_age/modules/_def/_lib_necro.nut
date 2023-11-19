@@ -1,8 +1,10 @@
 //this function imprints the living's information on the corpse for use
 ::Z.Lib.imprint_corpse <- function(_actor, _tile)
 {
+    // if (_actor.getFlags().has("abomination")) return;
+    
     local corpse = _tile.Properties.get("Corpse");
-
+    if (corpse == null) return;
     corpse.Tile = _tile;
 
     corpse.Skills <- [];

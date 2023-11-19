@@ -27,6 +27,7 @@ this.flesh_abomination <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.SoundPitch = this.Math.rand(70, 120) * 0.01;
 		this.getFlags().add("undead");
 		this.getFlags().add("zombie_minion");
+		this.getFlags().add("abomination");
 
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/flesh_abomination_agent");
 		this.m.AIAgent.setActor(this);

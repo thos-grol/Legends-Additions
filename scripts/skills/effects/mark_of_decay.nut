@@ -34,8 +34,8 @@ this.mark_of_decay <- this.inherit("scripts/skills/skill", {
 	function onTurnStart()
 	{
 		local actor = this.getContainer().getActor();
-		local amount = ::Math.round(actor.getBaseProperties().Fatigue * this.m.Percent);
-		this.applyFatigueDamage(target, amount);
+		local amount = ::Math.round(actor.getFatigueMax() * this.m.Percent);
+		this.applyFatigueDamage(actor, amount);
 		if (!actor.isHiddenToPlayer() && actor.getTile().IsVisibleForPlayer) ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + ::MSU.Text.colorRed(" fatigue has decayed by " + amount));
 	}
 

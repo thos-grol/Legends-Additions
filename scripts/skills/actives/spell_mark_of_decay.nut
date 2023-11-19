@@ -74,7 +74,7 @@ this.spell_mark_of_decay <- this.inherit("scripts/skills/_magic_active", {
 
 		target.getSkills().add(::new("scripts/skills/effects/decay_effect"));
 
-		local effect = _target.getSkills().getSkillByID("effects.mark_of_decay");
+		local effect = target.getSkills().getSkillByID("effects.mark_of_decay");
 		if (effect == null)
 		{
 			effect = ::new("scripts/skills/effects/mark_of_decay");

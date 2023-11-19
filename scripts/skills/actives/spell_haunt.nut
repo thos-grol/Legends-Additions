@@ -2,7 +2,7 @@ this.spell_haunt <- this.inherit("scripts/skills/_magic_active", {
 	m = {},
 	function create()
 	{
-		//TODO: Haunt skill
+		//: Haunt skill
 		this.magic_skill.create();
 		this.m.ID = "actives.spell.haunt";
 		this.m.Name = "Haunt";
@@ -74,7 +74,7 @@ this.spell_haunt <- this.inherit("scripts/skills/_magic_active", {
 			if (a.getSkills().hasSkill("perk.torment_soul")) effect.m.TormentSoul = true;
 		}
 		effect.m.TurnsLeft = this.m.Duration;
-		//TODO: Haunt fx from witcher
+		//: Haunt fx from witcher
 		return true;
 	}
 
