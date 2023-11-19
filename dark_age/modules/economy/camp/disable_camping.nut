@@ -26,14 +26,6 @@
 ::mods_hookExactClass("entity/world/camp/buildings/healer_building", function(o) {o.isHidden <- function(){return true;}});
 ::mods_hookExactClass("entity/world/camp/buildings/repair_building", function(o) {o.isHidden <- function(){return true;}});
 
-
-//FIXME: DOCUMENT camping overhaul
-//disabled camping system
-	//bc not sure how to balance it with new economy plus camping sorta conflicts with retinue. Many of the camp functions have thus been added to retinue.
-//repair and healing speed has been looked at
-//healing & healing injuries slower without doctor. certain background can speed up healing
-//certain background can speed up repair. blacksmith will speed up repair.
-
 //FEATURE_9: scavenger hunt! - you can upgrade retinue members by acquiring certain items
 //FEATURE_9: materials in inventory - blacksmith can craft weapons, put retinue as toggle. Craft metals/materials into molds - blackmsmith will process and roll items
 

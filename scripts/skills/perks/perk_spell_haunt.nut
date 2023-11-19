@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.SpellHaunt <- "Haunt";
-::Const.Strings.PerkDescription.SpellHaunt <- "Undead rise!..." //FIXME: DESCRIPTION Haunt
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Reanimate\' (4 AP, 20 Fat, 1 Mana):") //FIXME: DESCRIPTION Haunt
+::Const.Strings.PerkDescription.SpellHaunt <- "Undead rise!..."
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Reanimate\' (4 AP, 20 Fat, 1 Mana):")
 + "\n";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpellHaunt].Name = ::Const.Strings.PerkName.SpellHaunt;
