@@ -468,7 +468,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_research_flesh_assimilation",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/research_flesh_assimilation.png", //TODO: ART ResearchFleshAssimilation
+        Icon = "ui/perks/research_flesh_assimilation.png", //FIXME: ART ResearchFleshAssimilation
         IconDisabled = "ui/perks/research_flesh_assimilation_bw.png",
         Const = "ResearchFleshAssimilation"
     },
@@ -477,9 +477,29 @@ local perks = [
         Script = "scripts/skills/perks/perk_research_flesh_overclocking",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/research_flesh_overclocking.png", //TODO: ART ResearchFleshOverclocking
+        Icon = "ui/perks/research_flesh_overclocking.png", //FIXME: ART ResearchFleshOverclocking
         IconDisabled = "ui/perks/research_flesh_overclocking_bw.png",
         Const = "ResearchFleshOverclocking"
+    },
+
+    //Tome of Decay
+    // {
+    //     ID = "perk.meditation.omen_of_decay",
+    //     Script = "scripts/skills/perks/perk_meditation_omen_of_decay",
+    //     Name = "",
+    //     Tooltip = "",
+    //     Icon = "ui/perks/meditation_omen_of_decay.png", //FIXME: ART MeditationOmenOfDecay
+    //     IconDisabled = "ui/perks/meditation_omen_of_decay_bw.png",
+    //     Const = "MeditationOmenOfDecay"
+    // },
+    {
+        ID = "perk.spell.mark_of_decay",
+        Script = "scripts/skills/perks/perk_spell_mark_of_decay",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/spell_mark_of_decay.png", //FIXME: ART SpellMarkofDecay
+        IconDisabled = "ui/perks/spell_mark_of_decay_bw.png",
+        Const = "SpellMarkofDecay"
     },
 
 

@@ -1,4 +1,4 @@
-this.nachzerer_maddening_hunger <- this.inherit("scripts/skills/skill", {
+this.mark_of_decay <- this.inherit("scripts/skills/skill", {
 	m = {
 		Stacks = 1
 	},

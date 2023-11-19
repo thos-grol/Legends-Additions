@@ -1,7 +1,7 @@
-this.bleeding_effect <- this.inherit("scripts/skills/skill", {
+this.decay_effect <- this.inherit("scripts/skills/skill", {
 	m = {
 		TurnsLeft = 3,
-		Damage = 1,
+		Damage = 5,
 		LastRoundApplied = 0,
 		Actor = null
 	},
@@ -56,9 +56,9 @@ this.bleeding_effect <- this.inherit("scripts/skills/skill", {
 		{
 			this.m.LastRoundApplied = this.Time.getRound();
 			local actor = this.getContainer().getActor();
-			this.spawnIcon("status_effect_01", actor.getTile());
+			this.spawnIcon("status_effect_01", actor.getTile()); //FIXME: EFFECT icon fx
 			local hitInfo = clone ::Const.Tactical.HitInfo;
-			hitInfo.DamageRegular = this.m.Damage * (this.m.Container.hasSkill("effects.hyena_potion") ? 0.5 : 1.0);
+			hitInfo.DamageRegular = this.m.Damage;
 			hitInfo.DamageDirect = 1.0;
 			hitInfo.BodyPart = ::Const.BodyPart.Body;
 			hitInfo.BodyDamageMult = 1.0;
@@ -66,8 +66,6 @@ this.bleeding_effect <- this.inherit("scripts/skills/skill", {
 			actor.onDamageReceived(this.getAttacker(), this, hitInfo);
 			if (--this.m.TurnsLeft <= 0) this.removeSelf();
 		}
-
-		//TODO: EFFECT ART add decay effect fx
 	}
 
 	function onAdded()

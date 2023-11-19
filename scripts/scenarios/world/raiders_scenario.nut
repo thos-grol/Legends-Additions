@@ -136,8 +136,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.WinterMage, 0);
 		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellReanimate, 0);
 		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellFleshServant, 0);
-
-		
+		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellMarkofDecay, 0);
 
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Assets.addMoralReputation(-30.0);
