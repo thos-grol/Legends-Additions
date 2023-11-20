@@ -25,9 +25,9 @@ this.decay_effect <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "effects.decay";
 		this.m.Name = "Decaying";
 		this.m.KilledString = "Decayed to death";
-		this.m.Icon = "skills/status_effect_01.png"; //TODO: EFFECT ART
-		this.m.IconMini = "status_effect_01_mini"; //TODO: EFFECT ART mini
-		this.m.Overlay = "bleed"; //TODO: EFFECT ART overlay
+		this.m.Icon = "ui/perks/meditation_omen_of_decay.png";
+		this.m.IconMini = "decay_mini";
+		this.m.Overlay = "decay";
 		this.m.Type = ::Const.SkillType.StatusEffect | ::Const.SkillType.DamageOverTime;
 		this.m.IsActive = false;
 		this.m.IsStacking = true;

@@ -236,8 +236,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_class_ruin_knight",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/perk_29.png",
-        IconDisabled = "ui/perks/perk_29_sw.png",
+        Icon = "ui/perks/class_ruin_knight.png",
+        IconDisabled = "ui/perks/class_ruin_knight.png",
         Const = "RuinKnight"
     },
     {
@@ -245,8 +245,8 @@ local perks = [
         Script = "scripts/skills/perks/perk_class_gluttony_knight",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/perk_29.png", //FIXME: ART gluttony knight
-        IconDisabled = "ui/perks/perk_29_sw.png",
+        Icon = "ui/perks/class_gluttony_knight.png",
+        IconDisabled = "ui/perks/class_gluttony_knight.png",
         Const = "GluttonyKnight"
     },
 
@@ -256,7 +256,7 @@ local perks = [
         Name = "",
         Tooltip = "",
         Icon = "ui/perks/class_winter_mage.png",
-        IconDisabled = "ui/perks/class_winter_mage_bw.png",
+        IconDisabled = "ui/perks/class_winter_mage.png",
         Const = "WinterMage"
     },
 
@@ -428,7 +428,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_arcane_insight",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/arcane_insight.png", //FIXME: ART arcane insight
+        Icon = "ui/perks/arcane_insight.png",
         IconDisabled = "ui/perks/arcane_insight_bw.png",
         Const = "ArcaneInsight"
     },
@@ -441,7 +441,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_meditation_pact_of_flesh",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/meditation_pact_of_flesh.png", //TODO: ART MeditationPactOfFlesh
+        Icon = "ui/perks/meditation_pact_of_flesh.png",
         IconDisabled = "ui/perks/meditation_pact_of_flesh_bw.png",
         Const = "MeditationPactOfFlesh"
     },
@@ -468,7 +468,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_research_flesh_assimilation",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/research_flesh_assimilation.png", //FIXME: ART ResearchFleshAssimilation
+        Icon = "ui/perks/research_flesh_assimilation.png",
         IconDisabled = "ui/perks/research_flesh_assimilation_bw.png",
         Const = "ResearchFleshAssimilation"
     },
@@ -477,32 +477,32 @@ local perks = [
         Script = "scripts/skills/perks/perk_research_flesh_overclocking",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/research_flesh_overclocking.png", //FIXME: ART ResearchFleshOverclocking
+        Icon = "ui/perks/research_flesh_overclocking.png",
         IconDisabled = "ui/perks/research_flesh_overclocking_bw.png",
         Const = "ResearchFleshOverclocking"
     },
 
     //Tome of Decay
-    // {
-    //     ID = "perk.meditation.omen_of_decay",
-    //     Script = "scripts/skills/perks/perk_meditation_omen_of_decay",
-    //     Name = "",
-    //     Tooltip = "",
-    //     Icon = "ui/perks/meditation_omen_of_decay.png", //FIXME: ART MeditationOmenOfDecay
-    //     IconDisabled = "ui/perks/meditation_omen_of_decay_bw.png",
-    //     Const = "MeditationOmenOfDecay"
-    // },
+    {
+        ID = "perk.meditation.omen_of_decay",
+        Script = "scripts/skills/perks/perk_meditation_omen_of_decay",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/meditation_omen_of_decay.png",
+        IconDisabled = "ui/perks/meditation_omen_of_decay_bw.png",
+        Const = "MeditationOmenOfDecay"
+    },
     {
         ID = "perk.spell.mark_of_decay",
         Script = "scripts/skills/perks/perk_spell_mark_of_decay",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/spell_mark_of_decay.png", //FIXME: ART SpellMarkofDecay
+        Icon = "ui/perks/spell_mark_of_decay.png",
         IconDisabled = "ui/perks/spell_mark_of_decay_bw.png",
         Const = "SpellMarkofDecay"
     },
-
-
+    
+    
     {
         ID = "perk.meditation.underworld_thoughts",
         Script = "scripts/skills/perks/perk_meditation_underworld_thoughts",
@@ -529,7 +529,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_spell_haunt",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/spell_haunt.png", //FIXME: ART spell haunt
+        Icon = "ui/perks/spell_haunt.png",
         IconDisabled = "ui/perks/spell_haunt_bw.png",
         Const = "SpellHaunt"
     },

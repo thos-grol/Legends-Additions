@@ -77,7 +77,8 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 
 	function onTargetKilled( _targetEntity, _skill )
 	{
-		if (::Math.rand(1,100) > 10) return;
+		// if (::Math.rand(1,100) > 10) return;
+		if (::Math.rand(1,100) > 100) return; //FIXME: placeholder
 
 		local actor = this.getContainer().getActor();
 		local master = this.m.Master.getContainer().getActor();
@@ -90,40 +91,45 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 
 
 		local skills = [];
-		local success = false;
 		local skill_name = null;
 		local _targetEntity_skills = _targetEntity.m.Skills.m.Skills
 		foreach(skill in _targetEntity_skills)
 		{
 			if (!skill.isGarbage()
-				&& skill.m.ID in ::Z.Map
-				&& skill.m.ID.find("perk.") != null) skills.push(skill);
+				&& skill.m.ID in ::Z.Map) skills.push(skill.m.ID);
 		}
 
 		if (skills.len() == 0) return;
 
+		//TODO: rewrite logic into while loop
+		//TODO: zombies need better ai, do not use hand to hand
+
 		for (local i = 0 ; i < 10 ; i++) {
 			local id = ::MSU.Array.rand(skills);
 			if (actor.getSkills().getSkillByID(id) != null) continue;
+			if (!(id in ::Z.Map)) continue;
+
+			::logInfo("Assimilated " + id)
 
 			local skill = ::new(::Z.Map[id]);
 			skill_name = skill.m.Name;
 			actor.m.Skills.push(skill);
 			flesh_servant.m.Skills.push(::new(::Z.Map[id]));
-			success = true;
+			if (!actor.isHiddenToPlayer() && actor.getTile().IsVisibleForPlayer)
+			{
+				this.Sound.play("sounds/monster/abomination_hurt.wav", 300.0, actor.getPos());
+				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + "has assimilated the skill: " + skill_name);
+			}
 			flesh_servant.m.Absorbed += 1;
 			break;
 		}
 
-		if (success && !actor.isHiddenToPlayer() && actor.getTile().IsVisibleForPlayer)
-		{
-			this.Sound.play("sounds/monster/abomination_hurt.wav", 300.0, actor.getPos());
-			::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + "has assimilated the skill: " + skill_name);
-		}
+		
 	}
 
 	function applyDamage( _damage )
 	{
+		local actor = this.getContainer().getActor();
 		this.Sound.play("sounds/monster/abomination_hurt.wav", 300.0, actor.getPos());
 		local hitInfo = clone this.Const.Tactical.HitInfo;
 		hitInfo.DamageRegular = _damage;
@@ -131,7 +137,7 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 		hitInfo.BodyPart = this.Const.BodyPart.Body;
 		hitInfo.BodyDamageMult = 1.0;
 		hitInfo.FatalityChanceMult = 0.0;
-		this.getContainer().getActor().onDamageReceived(this.getContainer().getActor(), this, hitInfo);
+		actor.onDamageReceived(actor, this, hitInfo);
 	}
 
 });

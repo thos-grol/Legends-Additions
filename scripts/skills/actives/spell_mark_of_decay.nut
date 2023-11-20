@@ -5,8 +5,8 @@ this.spell_mark_of_decay <- this.inherit("scripts/skills/_magic_active", {
 		this.m.ID = "actives.spell.mark_of_decay";
 		this.m.Name = "Mark of Decay";
 		this.m.Description = "";
-		this.m.Icon = "skills/raisedead2.png";
-		this.m.IconDisabled = "skills/raisedead2_bw.png";
+		this.m.Icon = "skills/mark_of_decay.png";
+		this.m.IconDisabled = "skills/mark_of_decay_bw.png";
 		this.m.Overlay = "active_26";
 		this.m.SoundOnHit = [
 			"sounds/enemies/necromancer_01.wav",

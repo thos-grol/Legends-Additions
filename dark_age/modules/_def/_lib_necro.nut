@@ -14,7 +14,7 @@
     local skills = _actor.m.Skills.m.Skills
     foreach(skill in skills)
     {
-        if (!skill.isGarbage()) corpse.Skills.push(skill);
+        if (!skill.isGarbage() && skill.m.ID in ::Z.Map) corpse.Skills.push(skill);
     }
 
     corpse.BaseProperties["Bravery"] <- _actor.m.BaseProperties.Bravery;
@@ -23,6 +23,7 @@
     corpse.BaseProperties["RangedSkill"] <- _actor.m.BaseProperties.RangedSkill;
     corpse.BaseProperties["MeleeDefense"] <- _actor.m.BaseProperties.MeleeDefense;
     corpse.BaseProperties["RangedDefense"] <- _actor.m.BaseProperties.RangedDefense;
+    corpse.BaseProperties["Armor"] <- _actor.m.BaseProperties.Armor;
 
     if (!corpse.IsResurrectable)
     {

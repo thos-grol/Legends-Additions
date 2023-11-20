@@ -31,7 +31,7 @@ this.perk_meditation_pact_of_flesh <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		local flesh_servant = _user.getSkills().getSkillByID("actives.spell.flesh_servant_bind");
+		local flesh_servant = this.getContainer().getActor().getSkills().getSkillByID("actives.spell.flesh_servant_bind");
 		if (flesh_servant == null) return;
 		if (flesh_servant.m.Type_ == null) return;
 

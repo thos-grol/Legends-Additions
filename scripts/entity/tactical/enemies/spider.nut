@@ -108,7 +108,7 @@ this.spider <- this.inherit("scripts/entity/tactical/actor", {
 		//Roll Variant
 		local roll = ::Math.rand(1, 100);
 		if (roll < 20) this.m.Variant = "Huge";
-		if (roll < 20) this.m.Variant = "Stalker";
+		else if (roll < 40) this.m.Variant = "Stalker";
 		else this.m.Variant = "Normal";
 	}
 
@@ -358,8 +358,12 @@ this.spider <- this.inherit("scripts/entity/tactical/actor", {
 					local r = this.Math.rand(1, 100);
 					local loot;
 
-					if (r <= 60) loot = this.new("scripts/items/misc/spider_silk_item");
-					loot.drop(_tile);
+					if (r <= 60)
+					{
+						loot = ::new("scripts/items/misc/spider_silk_item");
+						loot.drop(_tile);
+					}
+					
 				}
 			}
 		}

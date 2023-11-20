@@ -52,11 +52,26 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 		if (::Math.rand(1, 100) <= 50)
 		{
 			this.m.Name_ = "Flesh Abomination (Goblin Ambusher)";
-			//TODO: PLAYTEST dump goblin ambusher
+			this.m.Type_ = "scripts/entity/tactical/enemies/flesh_abomination_ranged";
+			this.m.BaseProperties = {MeleeSkill = 60, Initiative = 140, MeleeDefense = 25, Bravery = 55, RangedSkill = 93, RangedDefense = 20};
+
+			local temp = ["scripts/skills/perks/perk_death_dealer", "scripts/skills/perks/perk_dodge", "scripts/skills/perks/perk_legend_wind_reader", "scripts/skills/perks/perk_mastery_bow", "scripts/skills/perks/perk_underdog", "scripts/skills/actives/wake_ally_skill", "scripts/skills/racial/goblin_ambusher_racial"];
+			foreach(script in temp)
+			{
+				this.m.Skills.push(::new(script));
+			}
 		}
 		else
 		{
-			//TODO: webknecht dump goblin ambusher
+			this.m.Name_ = "Flesh Abomination (Webknecht Armor)";
+			this.m.Type_ = "scripts/entity/tactical/enemies/flesh_abomination";
+			this.m.BaseProperties = {MeleeSkill = 65, Armor = [500, 500], Initiative = 100, MeleeDefense = 15, Bravery = 45, RangedSkill = 0, RangedDefense = 25};
+
+			local temp = ["scripts/skills/perks/perk_backstabber", "scripts/skills/perks/perk_battle_forged", "scripts/skills/perks/perk_overwhelm", "scripts/skills/perks/perk_pathfinder", "scripts/skills/perks/perk_survival_instinct", "scripts/skills/perks/perk_underdog", "scripts/skills/actives/spider_bite_skill", "scripts/skills/actives/web_skill", "scripts/skills/actives/sprint_skill_5", "scripts/skills/actives/footwork", "scripts/skills/actives/legend_climb"];
+			foreach(script in temp)
+			{
+				this.m.Skills.push(::new(script));
+			}
 		}
 
 
@@ -129,11 +144,12 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
             this.m.Type_ = "scripts/entity/tactical/enemies/flesh_abomination";
         else this.m.Type_ = "scripts/entity/tactical/enemies/flesh_abomination_ranged";
 
+		this.m.Skills.clear();
 		if ("Skills" in _info)
         {
             foreach(skill in _info.Skills)
             {
-                this.m.Skills.push(skill)
+                if (skill.m.ID in ::Z.Map) this.m.Skills.push(skill)
             }
         }
 
@@ -145,6 +161,7 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
             this.m.BaseProperties.RangedSkill <- _info.BaseProperties["RangedSkill"];
             this.m.BaseProperties.MeleeDefense <- _info.BaseProperties["MeleeDefense"];
             this.m.BaseProperties.RangedDefense <- _info.BaseProperties["RangedDefense"];
+            this.m.BaseProperties.Armor <- _info.BaseProperties["Armor"];
         }
 
 		this.Tactical.Entities.removeCorpse(tag.TargetTile);
@@ -198,7 +215,7 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 		}
 		::MSU.Utils.serialize(scripts, _out);
 
-		::MSU.Log.printData( this.m.BaseProperties ); //FIXME: TEST REMOVE printdata
+		::MSU.Log.printData( this.m.BaseProperties, 2); //FIXME: TEST REMOVE printdata
 		::MSU.Log.printData( scripts );
 
 	}
