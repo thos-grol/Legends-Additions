@@ -1,4 +1,6 @@
 ::B.Info.Tomes <- {};
+
+//TODO: adjust perks and ai for npc necromancer and finish testing
 ::B.Info.Tomes["tome_flesh"] <- {
     Name = "Tome of Flesh",
     Description = "A tome full of research on the mysteries of the flesh",
@@ -42,52 +44,54 @@
     ],
 };
 
-// ::B.Info.Tomes["tome_decay"] <- {
-//     Name = "Tome of Decay",
-//     Description = "A tome full of research on the mysteries of decay",
-//     ID = "tome_decay",
-//     Projects = [
-//         {
-//             Name = "Omen of Decay", //Increases the potency of decay. Enemies killed with the decay effect will strengthen this effect. //TODO: PERK
-//             BonusDifficulty = 0,
-//             Type = "Meditation",
-//             Reward = ::Const.Perks.PerkDefs.MeditationOmenOfDecay,
-//             Row = 1,
-//         },
-//         {
-//             Name = "Reanimate",
-//             BonusDifficulty = 0,
-//             Type = "Perk",
-//             Reward = ::Const.Perks.PerkDefs.SpellReanimate,
-//             Row = 2,
-//         },
-//         {
-//             Name = "Mark of Decay", //Applies decay and mark of decay, debuffing their damage and fatigue
-//             BonusDifficulty = 0, //TODO: PERK
-//             Type = "Perk",
-//             Reward = ::Const.Perks.PerkDefs.SpellMarkofDecay,
-//             Row = 3,
-//         },
-//         {
-//             Name = "Rotten Offering", //TODO: PERK
-//             BonusDifficulty = 0,
-//             Type = "Perk",
-//             Reward = ::Const.Perks.PerkDefs.ResearchRottenOffering, //mark of decay marked enemies are more likely to be targetted by enemies. If the target is killed while marked, raise them if possible on death.
-//             Row = 4,
-//         },
-//         {
-//             Name = "Miasma Body", //TODO: PERK
-//             BonusDifficulty = 0,
-//             Type = "Perk",
-//             Reward = ::Const.Perks.PerkDefs.ResearchRottenOffering, //on turn start, reanimated undead have a chance to spread miasma around them. Miasma will apply decay, strength based on caster's omen of decay. Otherwise, default is 5 damage per turn.
-//             Row = 5,
-//         },
+//TODO: adjust perks and ai for npc necromancer and finish testing
+::B.Info.Tomes["tome_decay"] <- {
+    Name = "Tome of Decay",
+    Description = "A tome full of research on the mysteries of decay",
+    ID = "tome_decay",
+    Projects = [
+        {
+            Name = "Omen of Decay",
+            BonusDifficulty = 0,
+            Type = "Meditation",
+            Reward = ::Const.Perks.PerkDefs.MeditationOmenOfDecay,
+            Row = 1,
+        },
+        {
+            Name = "Reanimate",
+            BonusDifficulty = 0,
+            Type = "Perk",
+            Reward = ::Const.Perks.PerkDefs.SpellReanimate,
+            Row = 2,
+        },
+        {
+            Name = "Mark of Decay",
+            BonusDifficulty = 0,
+            Type = "Perk",
+            Reward = ::Const.Perks.PerkDefs.SpellMarkofDecay,
+            Row = 3,
+        },
+        {
+            Name = "Rotten Offering",
+            BonusDifficulty = 0,
+            Type = "Perk",
+            Reward = ::Const.Perks.PerkDefs.ResearchRottenOffering,
+            Row = 4,
+        },
+        {
+            Name = "Miasma Body",
+            BonusDifficulty = 0,
+            Type = "Perk",
+            Reward = ::Const.Perks.PerkDefs.ResearchMiasmaBody,
+            Row = 5,
+        },
 
 
-//         //Effects debuff the target for 3 turns.
-//     ],
-// };
+        //Effects debuff the target for 3 turns.
+    ],
+};
 
+//FEATURE_0: adjust perks and ai for npc necromancer and finish testing
 // ::B.Info.Tomes["tome_corruption"] <- {
 //     Name = "Tome of Corruption",
 //     Description = "A tome full of research on the mysteries of corruption",
@@ -118,10 +122,10 @@
 //             Name = "Miasma Body",
 //             BonusDifficulty = 0,
 //             Type = "Perk",
-//             Reward = ::Const.Perks.PerkDefs.ResearchFleshOverclocking,
+//             Reward = ::Const.Perks.PerkDefs.ResearchMiasmaBody,
 //             Row = 4,
 //         },
-//         { //TODO: PERK
+//         { //FEATURE_0: PERK
 //             Name = "Corpse Explosion",
 //             BonusDifficulty = 0,
 //             Type = "Perk",
@@ -131,11 +135,12 @@
 //     ],
 // };
 
+//FEATURE_0: adjust perks and ai for npc necromancer and finish testing
 // ::B.Info.Tomes["tome_anguish"] <- {
 //     Name = "Tome of Anguish",
 //     ID = "tome_anguish",
 //     Projects = [
-//         { //TODO: PERK
+//         { //FEATURE_0: PERK
 //             Name = "Tears of Anguish", //Decrease the mana cost of anguish. The effects and research effects of anguish grows more powerful the more lives are claimed by it.
 
 //             //For all corpses with 5 tiles, has a 10+X% chance to raise them each turn.
@@ -151,21 +156,21 @@
 //             Reward = ::Const.Perks.PerkDefs.SpellFleshServant,
 //             Row = 2,
 //         },
-//         { //TODO: PERK
+//         { //FEATURE_0: PERK
 //             Name = "Anguish",
 //             BonusDifficulty = 0,
 //             Type = "Perk",
 //             Reward = ::Const.Perks.PerkDefs.SpellMarkofDeath, //"Curse target with spiritual anguish where they bear part of the wounds they inflict."; //Effects debuff the target for 3 turns.
 //             Row = 4,
 //         },
-//         { //TODO: PERK
+//         { //FEATURE_0: PERK
 //             Name = "Research - Spreading Anguish",
 //             BonusDifficulty = 0,
 //             Type = "Perk",
 //             Reward = ::Const.Perks.PerkDefs.SpellMarkofDeath, //"Increase the duration of Anguish by 1. At the beginning of the turn, anguish has a chance to spread to all of the victim's allied neighbors. Anguish also spreads on the victim's death.";
 //             Row = 5,
 //         },
-//         { //TODO: PERK
+//         { //FEATURE_0: PERK
 //             Name = "Research - Torment Soul",
 //             BonusDifficulty = 0,
 //             Type = "Perk",

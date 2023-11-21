@@ -2,7 +2,7 @@
 ::Z.Lib.imprint_corpse <- function(_actor, _tile)
 {
     // if (_actor.getFlags().has("abomination")) return;
-    
+
     local corpse = _tile.Properties.get("Corpse");
     if (corpse == null) return;
     corpse.Tile = _tile;
@@ -31,6 +31,40 @@
             corpse.Type = "scripts/entity/tactical/enemies/flesh_abomination";
         else corpse.Type = "scripts/entity/tactical/enemies/flesh_abomination_ranged";
     }
+}
+
+::Z.Lib.apply_miasma <- function(_tile, _entity)
+{
+    this.Tactical.spawnIconEffect("decay", _tile, this.Const.Tactical.Settings.SkillIconOffsetX, this.Const.Tactical.Settings.SkillIconOffsetY, this.Const.Tactical.Settings.SkillIconScale, this.Const.Tactical.Settings.SkillIconFadeInDuration, this.Const.Tactical.Settings.SkillIconStayDuration, this.Const.Tactical.Settings.SkillIconFadeOutDuration, this.Const.Tactical.Settings.SkillIconMovement);
+    local sounds = [];
+
+    if (_entity.getFlags().has("human"))
+    {
+        sounds = [
+            "sounds/humans/human_coughing_01.wav",
+            "sounds/humans/human_coughing_02.wav",
+            "sounds/humans/human_coughing_03.wav",
+            "sounds/humans/human_coughing_04.wav"
+        ];
+    }
+    else
+    {
+        sounds = [
+            "sounds/enemies/miasma_appears_01.wav",
+            "sounds/enemies/miasma_appears_02.wav",
+            "sounds/enemies/miasma_appears_03.wav"
+        ];
+    }
+
+    this.Sound.play(sounds[this.Math.rand(0, sounds.len() - 1)], this.Const.Sound.Volume.Actor, _entity.getPos());
+
+
+    local tile_effect = _tile.Properties.Effect;
+    local decay = ::new("scripts/skills/effects/decay_effect");
+    decay.setActor(tile_effect.Actor);
+    decay.setDamage((tile_effect.Damage));
+    target.getSkills().add(decay);
+
 }
 
 ::mods_hookExactClass("entity/tactical/actor", function (o)

@@ -1,6 +1,9 @@
 //figure out persistent tile effects for entities?
 //skill that checks on move??
 
+::MSU.Log.printData( this.m.BaseProperties, 2);
+::MSU.Log.printData( scripts );
+
 //FEATURE_0: create machine learning model for art
 
 //FEATURE_0: FEATURE ghosts

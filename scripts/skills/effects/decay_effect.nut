@@ -41,7 +41,6 @@ this.decay_effect <- this.inherit("scripts/skills/skill", {
 
 	function getAttacker()
 	{
-		if (!::Legends.Mod.ModSettings.getSetting("BleedKiller").getValue()) return this.getContainer().getActor();
 		if (::MSU.isNull(this.m.Actor)) return this.getContainer().getActor();
 		if (this.m.Actor.getID() != this.getContainer().getActor().getID())
 		{
@@ -56,7 +55,7 @@ this.decay_effect <- this.inherit("scripts/skills/skill", {
 		{
 			this.m.LastRoundApplied = this.Time.getRound();
 			local actor = this.getContainer().getActor();
-			this.spawnIcon("status_effect_01", actor.getTile()); //FIXME: EFFECT icon fx
+			this.spawnIcon("decay", actor.getTile());
 			local hitInfo = clone ::Const.Tactical.HitInfo;
 			hitInfo.DamageRegular = this.m.Damage;
 			hitInfo.DamageDirect = 1.0;
@@ -95,6 +94,23 @@ this.decay_effect <- this.inherit("scripts/skills/skill", {
 	function onWaitTurn()
 	{
 		this.applyDamage();
+	}
+
+	function onDeath( _fatalityType )
+	{
+		local owner = getAttacker();
+		if (owner.getSkills().getSkillByID("perk.meditation.omen_of_decay") != null)
+		{
+			if (::Math.rand(1,100) > 10) return;
+			if (!owner.getFlags().has("decay_bonus")) owner.getFlags().set("decay_bonus", 0);
+			owner.getFlags().set("decay_bonus", ::Math.min(10, owner.getFlags().getAsInt("decay_bonus") + 1));
+
+			if (!owner.isHiddenToPlayer() && owner.getTile().IsVisibleForPlayer)
+				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(owner) + "\'s [Omen of Decay] gains 1 potency");
+
+		}
+
+
 	}
 
 });

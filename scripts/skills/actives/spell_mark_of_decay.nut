@@ -72,8 +72,14 @@ this.spell_mark_of_decay <- this.inherit("scripts/skills/_magic_active", {
 	{
 		local target = tag.TargetTile.getEntity();
 
-		target.getSkills().add(::new("scripts/skills/effects/decay_effect"));
+		//Decay
+		local decay = ::new("scripts/skills/effects/decay_effect");
+		decay.setActor(tag.User);
+		if (tag.User.getSkills().getSkillByID("perk.meditation.omen_of_decay") != null)
+			decay.setDamage((tag.User.getFlags().has("decay_bonus") ? tag.User.getFlags().getAsInt("decay_bonus") + 5 : 5));
+		target.getSkills().add(decay);
 
+		//Mark of Decay
 		local effect = target.getSkills().getSkillByID("effects.mark_of_decay");
 		if (effect == null)
 		{
@@ -81,8 +87,16 @@ this.spell_mark_of_decay <- this.inherit("scripts/skills/_magic_active", {
 			target.getSkills().add(effect);
 		}
 		else effect.reset();
+		effect.setActor(tag.User);
+		if (tag.User.getSkills().getSkillByID("perk.meditation.omen_of_decay") != null)
+			effect.setBonus((tag.User.getFlags().has("decay_bonus") ? tag.User.getFlags().getAsInt("decay_bonus") : 0));
 
+		if (tag.User.getSkills().getSkillByID("perk.research.rotten_offering") != null)
+			effect.m.RottenOffering = true;
+
+		//TODO: change vfx
 		::Tactical.spawnSpriteEffect("effect_skull_03", this.createColor("#ffffff"), tag.TargetTile, 0, 40, 1.0, 0.25, 0, 400, 300);
+		//TODO: play sound fx
 	}
 
 	function spawn_particles(tag)

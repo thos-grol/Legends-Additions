@@ -78,7 +78,7 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 	function onTargetKilled( _targetEntity, _skill )
 	{
 		// if (::Math.rand(1,100) > 10) return;
-		if (::Math.rand(1,100) > 100) return; //FIXME: placeholder
+		if (::Math.rand(1,100) > 100) return; //FIXME: placeholder remove after test
 
 		local actor = this.getContainer().getActor();
 		local master = this.m.Master.getContainer().getActor();
@@ -124,7 +124,7 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 			break;
 		}
 
-		
+
 	}
 
 	function applyDamage( _damage )

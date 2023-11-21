@@ -133,8 +133,11 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
 		slave.activate();
 		master.activate();
 
-		local overclock = tag.User.getSkills().getSkillByID("perk.research.flesh_overclocking");
-		if (overclock != null) entity.getSkills().add(::new("scripts/skills/perks/perk_research_flesh_overclocking"));
+		if (tag.User.getSkills().getSkillByID("perk.research.flesh_overclocking") != null)
+			entity.getSkills().add(::new("scripts/skills/perks/perk_research_flesh_overclocking"));
+
+		if (tag.User.getSkills().getSkillByID("perk.research.miasma_body") != null)
+			entity.getSkills().add(::new("scripts/skills/special/_miasma_body"));
 
 		entity.riseFromGround();
 	}

@@ -24,27 +24,25 @@
 	FatigueRecoveryRate = 15
 };
 
-//TODO: NECROMANCER finish necromancer builds
-
 ::B.Info[::Const.EntityType.Necromancer].Builds["tome_flesh"] <- {
 	Name = "Flesh Puppeteer",
 	Drop = "tome_flesh",
 	Pattern = [
         ["scripts/skills/perks/perk_student"], //1
         ["D", 2], //2
-        ["scripts/skills/perks/pattern_recognition"], //3
-        ["scripts/skills/perks/"], //4
-        ["scripts/skills/perks/"], //5
-        ["D", 6],
-        ["scripts/skills/perks/"], //7
-        ["scripts/skills/perks/"], //7
-        ["scripts/skills/perks/perk_spell_reanimate"], //9
-		["scripts/skills/perks/perk_spell_flesh_servant"], //10 bc student
-		["scripts/skills/perks/perk_meditation_underworld_thoughts"], //11 bc meditation is free
+        ["scripts/skills/perks/perk_pattern_recognition"], //3
+        ["scripts/skills/perks/perk_spell_flesh_servant"], //4 //TODO: flesh servant AI always cast (copy release hounds ai)
+        ["scripts/skills/perks/perk_research_flesh_assimilation"], //5
+        ["D", 6], //6
+        ["scripts/skills/perks/perk_spell_reanimate"], //7 //TODO: reanimate ai using new active
+        ["scripts/skills/perks/perk_research_flesh_overclocking"], //8
+        ["T", 5], //9
+		["T", 5], //10 bc student
+		["scripts/skills/perks/perk_meditation_pact_of_flesh"], //11 bc meditation is free
     ],
 	LevelUps = [
 		["Health", 9, 3, 3],
-		["Ranged Skill", 9, 3, 3],
+		["Initiative", 9, 3, 3],
 		["Melee Defense", 9, 3, 3],
 	],
 	Loadout = [
@@ -54,3 +52,5 @@
 		[],
 	],
 };
+
+//FEATURE_1: NECROMANCER finish necromancer builds

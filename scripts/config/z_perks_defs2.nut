@@ -501,8 +501,26 @@ local perks = [
         IconDisabled = "ui/perks/spell_mark_of_decay_bw.png",
         Const = "SpellMarkofDecay"
     },
-    
-    
+    {
+        ID = "perk.research.miasma_body",
+        Script = "scripts/skills/perks/perk_research_miasma_body",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/research_miasma_body.png",
+        IconDisabled = "ui/perks/research_miasma_body_bw.png",
+        Const = "ResearchMiasmaBody"
+    },
+    {
+        ID = "perk.research.rotten_offering",
+        Script = "scripts/skills/perks/perk_research_rotten_offering",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/research_rotten_offering.png",
+        IconDisabled = "ui/perks/research_rotten_offering_bw.png",
+        Const = "ResearchRottenOffering"
+    },
+
+
     {
         ID = "perk.meditation.underworld_thoughts",
         Script = "scripts/skills/perks/perk_meditation_underworld_thoughts",

@@ -1,10 +1,11 @@
+// + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Corpse Explosion\' (9 AP, 20 Fat, 9 Mana):")
+// + "\n Explode an undead and deal X*0.33 to X damage to all units in surrounding tiles"
+// + "\n "+::MSU.Text.colorRed("The caster takes 1 to X*0.33 damage as backlash. X is that undead's hp");
 this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
-	m = {
-		Tiles = []
-	},
+	m = {},
 	function create()
 	{
-		this.m.ID = "actives.spell.reanimate";
+		this.m.ID = "actives.spell.corpse_explosion";
 		this.m.Name = "Reanimate";
 		this.m.Description = "";
 		this.m.Icon = "skills/raisedead2.png";

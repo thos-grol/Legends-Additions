@@ -214,10 +214,6 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 				scripts.push(::Z.Map[skill.m.ID]);
 		}
 		::MSU.Utils.serialize(scripts, _out);
-
-		::MSU.Log.printData( this.m.BaseProperties, 2); //FIXME: TEST REMOVE printdata
-		::MSU.Log.printData( scripts );
-
 	}
 
 	function onDeserialize( _in )
