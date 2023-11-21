@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.ResearchMiasmaBody <- "Research - Miasma Body";
 ::Const.Strings.PerkDescription.ResearchMiasmaBody <- "Reveal the power hidden in the flesh..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On Turn Start, For Undead Summons")
++ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On Round Start, For Undead Summons:")
 + "\n All tiles in ZOC have a 50% chance of spawning a miasma cloud that inflicts the decay effect";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.ResearchMiasmaBody].Name = ::Const.Strings.PerkName.ResearchMiasmaBody;

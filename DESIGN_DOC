@@ -433,9 +433,9 @@ Undead cannot be charmed
 
 
 ::addItem("tome")
-::addItem("bone_figurines")
+::addItem("mage_winter_potion_item")
 
-::addItem("legend_robes_wizard")
+::addItem("legend_robes_magic")
 ::addItem("apotheosis_potion_item")
 ::addItem("goblin_overseer_potion_item")
 ::addItem("direwolf_potion_item")

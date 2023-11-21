@@ -83,7 +83,7 @@ this.mark_of_decay <- this.inherit("scripts/skills/skill", {
 			bonus = owner.getFlags().getAsInt("decay_bonus");
 
 		local chance = 10 + 2 * bonus;
-		// if (::Math.rand(1, 100) > chance) return; //FIXME: Placeholder remove after testing (rotten offering)
+		if (::Math.rand(1, 100) > chance) return;
 
 		local actor = this.getContainer().getActor();
 		reanimate.m.Tiles.push(actor.getTile());

@@ -40,7 +40,7 @@ this._miasma_body <- this.inherit("scripts/skills/skill", {
 		this.m.IsRemovedAfterBattle = true;
 	}
 
-	function onTurnStart()
+	function onNewRound()
 	{
 		local actor = this.getContainer().getActor();
 
@@ -53,9 +53,10 @@ this._miasma_body <- this.inherit("scripts/skills/skill", {
 			Type = "miasma",
 			Tooltip = "Miasma lingers here, harmful to any living being",
 			IsPositive = false,
-			IsAppliedAtRoundStart = true,
-			IsAppliedAtTurnEnd = false,
-			IsAppliedOnMovement = false,
+			IsAppliedAtRoundStart = false,
+			IsAppliedAtTurnEnd = true,
+			IsAppliedOnMovement = true,
+			IsAppliedOnEnter = true,
 			Timeout = this.Time.getRound() + 3,
 			IsByPlayer = actor.getFaction() == this.Const.Faction.PlayerAnimals,
 			Actor = getAttacker(),
@@ -70,7 +71,7 @@ this._miasma_body <- this.inherit("scripts/skills/skill", {
 
 		foreach (tile in ::Z.getNeighbors(actor.getTile()))
 		{
-			// if (::Math.rand(1,100) > 50) continue; //FIXME: PLACEHOLDER uncomment after test
+			if (::Math.rand(1,100) > 50) continue;
 
 			if (tile.Properties.Effect != null && tile.Properties.Effect.Type == "miasma") tile.Properties.Effect.Timeout = this.Time.getRound() + 2;
 			else

@@ -1,7 +1,8 @@
 //this function imprints the living's information on the corpse for use
 ::Z.Lib.imprint_corpse <- function(_actor, _tile)
 {
-    // if (_actor.getFlags().has("abomination")) return;
+    if (_actor.getFlags().has("abomination")) return;
+    if (_actor.getFlags().has("spirit")) return;
 
     local corpse = _tile.Properties.get("Corpse");
     if (corpse == null) return;
@@ -63,8 +64,7 @@
     local decay = ::new("scripts/skills/effects/decay_effect");
     decay.setActor(tile_effect.Actor);
     decay.setDamage((tile_effect.Damage));
-    target.getSkills().add(decay);
-
+    _tile.getEntity().getSkills().add(decay);
 }
 
 ::mods_hookExactClass("entity/tactical/actor", function (o)

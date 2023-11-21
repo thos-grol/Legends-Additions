@@ -45,5 +45,16 @@ this.perk_legend_twirl <- this.inherit("scripts/skills/skill", {
 		this.m.IsHidden = false;
 	}
 
+	function onAdded()
+	{
+		if (!this.m.Container.hasSkill("actives.rotation")) 
+			this.m.Container.add(this.new("scripts/skills/actives/rotation"));
+	}
+
+	function onRemoved()
+	{
+		if (!this.m.Container.hasSkill("perk.rotation")) this.m.Container.removeByID("actives.rotation");
+	}
+
 });
 

@@ -58,18 +58,18 @@
             Row = 1,
         },
         {
-            Name = "Reanimate",
-            BonusDifficulty = 0,
-            Type = "Perk",
-            Reward = ::Const.Perks.PerkDefs.SpellReanimate,
-            Row = 2,
-        },
-        {
             Name = "Mark of Decay",
             BonusDifficulty = 0,
             Type = "Perk",
             Reward = ::Const.Perks.PerkDefs.SpellMarkofDecay,
             Row = 3,
+        },
+        {
+            Name = "Reanimate",
+            BonusDifficulty = 0,
+            Type = "Perk",
+            Reward = ::Const.Perks.PerkDefs.SpellReanimate,
+            Row = 2,
         },
         {
             Name = "Rotten Offering",

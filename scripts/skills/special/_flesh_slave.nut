@@ -75,10 +75,10 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
+	//flesh assimilation
 	function onTargetKilled( _targetEntity, _skill )
 	{
-		// if (::Math.rand(1,100) > 10) return;
-		if (::Math.rand(1,100) > 100) return; //FIXME: placeholder remove after test
+		if (::Math.rand(1,100) > 10) return;
 
 		local actor = this.getContainer().getActor();
 		local master = this.m.Master.getContainer().getActor();
@@ -113,7 +113,7 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 
 			local skill = ::new(::Z.Map[id]);
 			skill_name = skill.m.Name;
-			actor.m.Skills.push(skill);
+			actor.m.Skills.add(skill);
 			flesh_servant.m.Skills.push(::new(::Z.Map[id]));
 			if (!actor.isHiddenToPlayer() && actor.getTile().IsVisibleForPlayer)
 			{

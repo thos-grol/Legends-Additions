@@ -47,7 +47,7 @@ this.perk_mastery_sword <- this.inherit("scripts/skills/skill", {
 
 	function onRemoved()
 	{
-		this.getContainer().removeByID("actives.en_garde_toggle");
+		this.getContainer().removeByID("special.en_garde_toggle");
 	}
 
 });

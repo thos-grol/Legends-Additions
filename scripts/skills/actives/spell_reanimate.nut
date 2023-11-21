@@ -127,7 +127,7 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 		{
 			this.Time.scheduleEvent(this.TimeUnit.Virtual, i++ * 100, this.spawnUndead.bindenv(this), {
 				Skill = this,
-				User = _user,
+				User = this.getContainer().getActor(),
 				TargetTile = tile
 			});
 		}

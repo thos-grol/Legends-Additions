@@ -6,7 +6,7 @@ this.en_garde_toggle <- ::inherit("scripts/skills/skill", {
 	},
 	function create()
 	{
-		this.m.ID = "actives.en_garde_toggle";
+		this.m.ID = "special.en_garde_toggle";
 		this.m.Name = "Toggle Riposte";
 		this.m.Description = "Toggle automatic riposte"
 		this.m.Icon = "skills/riposte_toggle.png";

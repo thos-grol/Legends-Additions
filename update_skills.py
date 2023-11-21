@@ -23,6 +23,7 @@ def filter_id(id):
     if 'hand_to_hand' in id: return None
     if 'wake_ally' in id: return None
     if 'crack_the_whip' in id: return None
+    if 'special.' in id: return None
     return id
 
 map = {}
