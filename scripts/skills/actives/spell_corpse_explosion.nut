@@ -1,14 +1,11 @@
-// + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Corpse Explosion\' (9 AP, 20 Fat, 9 Mana):")
-// + "\n Explode an undead and deal X*0.33 to X damage to all units in surrounding tiles"
-// + "\n "+::MSU.Text.colorRed("The caster takes 1 to X*0.33 damage as backlash. X is that undead's hp");
-this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
+this.spell_corpse_explosion <- this.inherit("scripts/skills/_magic_active", {
 	m = {},
 	function create()
 	{
 		this.m.ID = "actives.spell.corpse_explosion";
-		this.m.Name = "Reanimate";
+		this.m.Name = "Corpse Explosion";
 		this.m.Description = "";
-		this.m.Icon = "skills/raisedead2.png";
+		this.m.Icon = "skills/raisedead2.png"; //FEATURE_0: HOME ART corpse explosion active
 		this.m.IconDisabled = "skills/raisedead2_bw.png";
 		this.m.Overlay = "active_26";
 		this.m.SoundOnHit = [
@@ -41,9 +38,13 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 
 	function onVerifyTarget( _originTile, _targetTile )
 	{
-		return this.skill.onVerifyTarget(_originTile, _targetTile)
-			&& canResurrectOnTile(_targetTile)
-			&& _targetTile.IsEmpty;
+		local actor = this.getContainer().getActor();
+		local entity = _targetTile.getEntity();
+		if (entity == null) return false;
+		if (!actor.isAlliedWith(_entity)) return false;
+		if (!actor.getFlags().has("undead")) return false;
+		if (actor.getFlags().has("noncorporeal")) return false;
+		return this.skill.onVerifyTarget(_originTile, _targetTile);
 	}
 
 	function cast( _user, _targetTile )
@@ -72,7 +73,7 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 			TargetTile = _targetTile
 		});
 
-		this.Time.scheduleEvent(this.TimeUnit.Virtual, 2000, this.spawnUndead.bindenv(this), {
+		this.Time.scheduleEvent(this.TimeUnit.Virtual, 2000, this.explode.bindenv(this), {
 			Skill = this,
 			User = _user,
 			TargetTile = _targetTile
@@ -82,20 +83,58 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 
 	//Helper
 
-	function spawnUndead(tag)
+	function explode(tag)
 	{
-		local p = tag.TargetTile.Properties.get("Corpse");
-		if (p == null) return;
+		local entity = tag.TargetTile.getEntity();
+		local max = entity.getHitpoints();
+		local min = ::Math.round(max * 0.33);
 
-		p.Faction = tag.User.getFaction();
-		if (p.Faction == this.Const.Faction.Player) p.Faction = this.Const.Faction.PlayerAnimals;
+		this.Tactical.getCamera().quake(this.createVec(0, -1.0), 6.0, 0.16, 0.35);
 
-		local e = this.Tactical.Entities.onResurrect(p, true);
-		if (e != null) e.getSprite("socket").setBrush(tag.User.getSprite("socket").getBrush().Name);
+		for( local i = 0; i < this.Const.Tactical.MortarImpactParticles.len(); i = ++i )
+		{
+			local effect = this.Const.Tactical.MortarImpactParticles[i];
+			this.Tactical.spawnParticleEffect(false, effect.Brushes, tag.TargetTile, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(0, 0));
+		}
 
-		if (tag.User.getSkills().getSkillByID("perk.research.miasma_body") != null)
-			e.getSkills().add(::new("scripts/skills/special/_miasma_body"));
+		local tiles_ = getAffectedTiles(tag.TargetTile);
+		foreach( t in tiles_ )
+		{
+			if (t.IsOccupiedByActor)
+			{
+				local target = t.getEntity();
 
+				if (target.getMoraleState() != this.Const.MoraleState.Ignore)
+				{
+					target.checkMorale(-1, 0);
+					target.getSkills().add(this.new("scripts/skills/effects/shellshocked_effect"));
+				}
+
+				local hitInfo = clone this.Const.Tactical.HitInfo;
+				hitInfo.DamageRegular = this.Math.rand(min, max);
+				hitInfo.DamageArmor = hitInfo.DamageRegular * 0.7;
+				hitInfo.DamageDirect = 0.2;
+				hitInfo.BodyPart = 0;
+				hitInfo.FatalityChanceMult = 0.0;
+				hitInfo.Injuries = this.Const.Injury.BurningAndPiercingBody;
+				target.onDamageReceived(tag.User, this, hitInfo);
+			}
+
+			if (t.Type != this.Const.Tactical.TerrainType.ShallowWater && t.Type != this.Const.Tactical.TerrainType.DeepWater)
+			{
+				t.clear(this.Const.Tactical.DetailFlag.Scorchmark);
+				t.spawnDetail("impact_decal", this.Const.Tactical.DetailFlag.Scorchmark, false, true);
+			}
+		}
+
+		local max_backlash = ::Math.round(max * 0.25);
+		local hitInfo = clone this.Const.Tactical.HitInfo;
+		hitInfo.DamageRegular = this.Math.rand(1, max_backlash);
+		hitInfo.DamageDirect = 1.0;
+		hitInfo.BodyPart = 0;
+		hitInfo.FatalityChanceMult = 0.0;
+		hitInfo.Injuries = this.Const.Injury.BurningAndPiercingBody;
+		tag.User.onDamageReceived(tag.User, this, hitInfo);
 	}
 
 	function spawn_particles(tag)
@@ -112,28 +151,27 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 		}
 	}
 
-	function canResurrectOnTile( _tile, _force = false )
+	function getAffectedTiles( _targetTile )
 	{
-		return _tile.IsCorpseSpawned
-			&& ( _tile.Properties.get("Corpse").IsResurrectable || _force
-				|| !("FleshNotAllowed" in _tile.Properties.get("Corpse")) );
+		local ret = [];
+		this.Tactical.queryTilesInRange(_targetTile, 1, 1, false, [], this.onQueryTilesHit, ret);
+		return ret;
 	}
 
-	function onRoundEnd()
+	function onQueryTilesHit( _tile, _ret )
 	{
-		if (this.m.Tiles.len() <= 0) return;
+		_ret.push(_tile);
+	}
 
-		local i = 1;
-		foreach(tile in this.m.Tiles)
+	function loadAI()
+	{
+		local actor = this.getContainer().getActor();
+		local agent = actor.getAIAgent();
+		if (agent.findBehavior(::Const.AI.Behavior.ID.SpellCorpseExplosion) == null)
 		{
-			this.Time.scheduleEvent(this.TimeUnit.Virtual, i++ * 100, this.spawnUndead.bindenv(this), {
-				Skill = this,
-				User = _user,
-				TargetTile = tile
-			});
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_spell_corpse_explosion"));
+			agent.finalizeBehaviors();
 		}
-
-		this.m.Tiles.clear();
 	}
 
 });

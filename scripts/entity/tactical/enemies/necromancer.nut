@@ -38,7 +38,7 @@ this.necromancer <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_class_winter_mage"));
 		local mana_pool = this.m.Skills.getSkillByID("trait.mana_pool");
-		mana_pool.upgrade(21);
+		mana_pool.upgrade(40);
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )

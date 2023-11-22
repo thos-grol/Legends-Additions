@@ -170,5 +170,16 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
 		this.m.Used = false;
 	}
 
+	function loadAI()
+	{
+		local actor = this.getContainer().getActor();
+		local agent = actor.getAIAgent();
+		if (agent.findBehavior(::Const.AI.Behavior.ID.SpellFleshServant) == null)
+		{
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_spell_flesh_servant"));
+			agent.finalizeBehaviors();
+		}
+	}
+
 });
 

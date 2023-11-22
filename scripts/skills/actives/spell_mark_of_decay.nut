@@ -113,5 +113,16 @@ this.spell_mark_of_decay <- this.inherit("scripts/skills/_magic_active", {
 		}
 	}
 
+	function loadAI()
+	{
+		local actor = this.getContainer().getActor();
+		local agent = actor.getAIAgent();
+		if (agent.findBehavior(::Const.AI.Behavior.ID.SpellMarkOfDecay) == null)
+		{
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_spell_mark_of_decay"));
+			agent.finalizeBehaviors();
+		}
+	}
+
 });
 

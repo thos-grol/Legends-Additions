@@ -13,7 +13,7 @@
             Row = 1,
         },
         {
-            Name = "Flesh Servant", //TODO: AI Flesh servant
+            Name = "Flesh Servant",
             BonusDifficulty = 0,
             Type = "Perk",
             Reward = ::Const.Perks.PerkDefs.SpellFleshServant,
@@ -27,7 +27,7 @@
             Row = 3,
         },
         {
-            Name = "Reanimate", //TODO: AI Reanimate
+            Name = "Reanimate",
             BonusDifficulty = 0,
             Type = "Perk",
             Reward = ::Const.Perks.PerkDefs.SpellReanimate,
@@ -49,14 +49,14 @@
     ID = "tome_decay",
     Projects = [
         {
-            Name = "Omen of Decay", //TODO: NPC preset Omen of Decay
+            Name = "Omen of Decay",
             BonusDifficulty = 0,
             Type = "Meditation",
             Reward = ::Const.Perks.PerkDefs.MeditationOmenOfDecay,
             Row = 1,
         },
         {
-            Name = "Mark of Decay", //TODO: AI Mark of Decay
+            Name = "Mark of Decay",
             BonusDifficulty = 0,
             Type = "Perk",
             Reward = ::Const.Perks.PerkDefs.SpellMarkofDecay,
@@ -122,11 +122,11 @@
             Reward = ::Const.Perks.PerkDefs.ResearchMiasmaBody,
             Row = 4,
         },
-        { //TODO: PERK, SPELL Corpse Explosion
-            Name = "Corpse Explosion", //TODO: AI corpse explosion
+        {
+            Name = "Corpse Explosion",
             BonusDifficulty = 0,
             Type = "Perk",
-            Reward = ::Const.Perks.PerkDefs.ResearchCorpseExplosion,
+            Reward = ::Const.Perks.PerkDefs.SpellCorpseExplosion,
             Row = 5,
         },
     ],

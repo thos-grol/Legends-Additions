@@ -135,5 +135,18 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 		this.m.Tiles.clear();
 	}
 
+	function loadAI()
+	{
+		local actor = this.getContainer().getActor();
+		local agent = actor.getAIAgent();
+		if (agent.findBehavior(::Const.AI.Behavior.ID.SpellReanimate) == null)
+		{
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_spell_reanimate"));
+			agent.finalizeBehaviors();
+		}
+	}
+
+
+
 });
 

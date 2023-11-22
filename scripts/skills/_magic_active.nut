@@ -109,5 +109,16 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 		return mana_pool.is_payable(this.m.ManaCost);
 	}
 
+	function onAdded()
+	{
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() == this.Const.Faction.Player) return;
+		loadAI();
+	}
+
+	function loadAI()
+	{
+	}
+
 });
 
