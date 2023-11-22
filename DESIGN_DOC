@@ -430,7 +430,7 @@ Undead cannot be charmed
 
 ::setSpawn("bandit_raider")
 
-::setSpawn("orc_young", ::Const.Faction.PlayerAnimals)
+::setSpawn("necromancer", ::Const.Faction.PlayerAnimals)
 ::setSpawn("desert_devil", ::Const.Faction.PlayerAnimals)
 ::setSpawn("bandit_veteran", ::Const.Faction.PlayerAnimals)
 ::setSpawn("executioner", ::Const.Faction.PlayerAnimals)

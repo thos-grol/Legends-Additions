@@ -1,10 +1,10 @@
 this._nokillstealing <- this.inherit("scripts/skills/skill", {
 	m = {
-		Factions = {}
+		Factions = {},
 	},
 	function create()
 	{
-		this.m.ID = "effects._nokillstealing";
+		this.m.ID = "special._nokillstealing";
 		this.m.Name = "";
 		this.m.Description = "";
 		this.m.Type = ::Const.SkillType.StatusEffect;
@@ -27,9 +27,26 @@ this._nokillstealing <- this.inherit("scripts/skills/skill", {
 		local isPlayer = faction == ::Const.Faction.Player || faction == ::Const.Faction.PlayerAnimals;
 		if (isPlayer) faction = ::Const.Faction.Player;
 
-		if (!(_attacker.getFaction() in this.m.Factions)) this.m.Factions[_attacker.getFaction()] <- 0;
-		this.m.Factions[_attacker.getFaction()] = this.m.Factions[_attacker.getFaction()] + _damageHitpoints + _damageArmor;
+		if (!(faction in this.m.Factions)) this.m.Factions[faction] <- 0;
+		this.m.Factions[faction] = this.m.Factions[faction] + _damageHitpoints + _damageArmor;
 
+	}
+
+	function isDroppingLoot()
+	{
+		local faction_max = null;
+        local max = 0;
+
+		::MSU.Log.printData( this.m.Factions, 3);
+
+		foreach (key, value in this.m.Factions) 
+        {
+            if (faction_max != null &&value <= max) continue;
+			faction_max = key;
+           	max = value;
+        }
+
+		return faction_max == ::Const.Faction.Player;
 	}
 
 });

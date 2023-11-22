@@ -35,6 +35,7 @@ this.perk_student <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
+		if (this.getContainer().getActor() != ::Const.Faction.Player) return;
 		if (!this.m.IsApplied)
 		{
 			this.m.IsApplied = true;

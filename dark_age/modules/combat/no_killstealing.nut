@@ -2,26 +2,13 @@
 {
     function dropAll( _tile, _killer, _flip = false )
 	{
-		local no_killstealing = this.m.Actor.getSkills().getSkillByID("effects._nokillstealing");
+		local no_killstealing = this.m.Actor.getSkills().getSkillByID("special._nokillstealing");
         local isPlayer = this.m.Actor.getFaction() == this.Const.Faction.Player || this.isKindOf(this.m.Actor.get(), "player");
         local IsDroppingLoot = true;
 		local emergency = false;
 
-        if (no_killstealing != null)
-        {
-            local faction_max = 0;
-            local faction_max_amount = 0;
-
-			foreach(faction in no_killstealing.m.Factions)
-            {
-                if (no_killstealing.m.Factions[faction] <= faction_max_amount) continue;
-				faction_max = faction;
-                faction_max_amount = no_killstealing.m.Factions[faction];
-            }
-
-            //no killstealing
-			if (faction_max == ::Const.Faction.Player) IsDroppingLoot = true;
-        }
+        //no killstealing
+		if (no_killstealing != null) IsDroppingLoot = no_killstealing.isDroppingLoot();
 
 		//no looting allies
 		if (_killer != null && _killer.isPlayerControlled() && !isPlayer && _killer.isAlliedWith(this.m.Actor)) IsDroppingLoot = false;

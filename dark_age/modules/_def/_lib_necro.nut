@@ -135,21 +135,10 @@
 
 ::Z.Lib.drop_loot <- function(_actor, tile)
 {
-    local no_killstealing = _actor.getSkills().getSkillByID("effects._nokillstealing");
+    local no_killstealing = _actor.getSkills().getSkillByID("special._nokillstealing");
     if (no_killstealing != null)
     {
-        local faction_max = 0;
-        local faction_max_amount = 0;
-
-        foreach(faction in no_killstealing.m.Factions)
-        {
-            if (no_killstealing.m.Factions[faction] <= faction_max_amount) continue;
-            faction_max = faction;
-            faction_max_amount = no_killstealing.m.Factions[faction];
-        }
-
-        //no killstealing
-        if (faction_max == ::Const.Faction.Player) _actor.drop_loot(tile);
+        if (no_killstealing.isDroppingLoot()) _actor.drop_loot(tile);
     }
     else _actor.drop_loot(tile);
 }

@@ -29,7 +29,7 @@ this.spell_corpse_explosion <- this.inherit("scripts/skills/_magic_active", {
 		this.m.Cooldown_Max = 1;
 		this.m.Cooldown = 1;
 
-		this.m.ActionPointCost = 6;
+		this.m.ActionPointCost = 0;
 		this.m.FatigueCost = 20;
 		this.m.MinRange = 1;
 		this.m.MaxRange = 8;
@@ -41,9 +41,9 @@ this.spell_corpse_explosion <- this.inherit("scripts/skills/_magic_active", {
 		local actor = this.getContainer().getActor();
 		local entity = _targetTile.getEntity();
 		if (entity == null) return false;
-		if (!actor.isAlliedWith(_entity)) return false;
-		if (!actor.getFlags().has("undead")) return false;
-		if (actor.getFlags().has("noncorporeal")) return false;
+		if (!actor.isAlliedWith(entity)) return false;
+		if (!entity.getFlags().has("undead")) return false;
+		if (entity.getFlags().has("noncorporeal")) return false;
 		return this.skill.onVerifyTarget(_originTile, _targetTile);
 	}
 
@@ -87,7 +87,10 @@ this.spell_corpse_explosion <- this.inherit("scripts/skills/_magic_active", {
 	{
 		local entity = tag.TargetTile.getEntity();
 		local max = entity.getHitpoints();
-		local min = ::Math.round(max * 0.33);
+		local min = ::Math.round(max * 0.5);
+		local max_backlash = ::Math.round(max * 0.25);
+
+		entity.kill(tag.User, this, ::Const.FatalityType.Suicide);
 
 		this.Tactical.getCamera().quake(this.createVec(0, -1.0), 6.0, 0.16, 0.35);
 
@@ -127,7 +130,7 @@ this.spell_corpse_explosion <- this.inherit("scripts/skills/_magic_active", {
 			}
 		}
 
-		local max_backlash = ::Math.round(max * 0.25);
+		
 		local hitInfo = clone this.Const.Tactical.HitInfo;
 		hitInfo.DamageRegular = this.Math.rand(1, max_backlash);
 		hitInfo.DamageDirect = 1.0;

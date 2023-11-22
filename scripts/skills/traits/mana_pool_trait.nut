@@ -72,6 +72,7 @@ this.mana_pool_trait <- this.inherit("scripts/skills/traits/character_trait", {
 
 	function upgrade( _amount )
 	{
+		local actor = this.getContainer().getActor();
 		actor.getFlags().set("mana_max", actor.getFlags().getAsInt("mana") + _amount);
 		actor.getFlags().set("mana", actor.getFlags().getAsInt("mana") + _amount);
 	}
