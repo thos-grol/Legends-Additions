@@ -1,6 +1,6 @@
 //Zombie
 
-gt.Const.Tactical.Actor.ZombieKnight <- {
+::Const.Tactical.Actor.ZombieKnight <- {
 	XP = 1000,
 	ActionPoints = 9,
 	Hitpoints = 250,

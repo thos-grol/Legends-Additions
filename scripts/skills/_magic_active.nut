@@ -9,7 +9,6 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 	{
 	}
 
-	//TODO: figure out why spell tooltips aren't working
 	//TODO: bind servant tooltip show's servant name, stats, and skill
 	function getTooltip()
 	{

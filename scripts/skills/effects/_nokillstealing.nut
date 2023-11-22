@@ -37,8 +37,6 @@ this._nokillstealing <- this.inherit("scripts/skills/skill", {
 		local faction_max = null;
         local max = 0;
 
-		::MSU.Log.printData( this.m.Factions, 3);
-
 		foreach (key, value in this.m.Factions) 
         {
             if (faction_max != null &&value <= max) continue;

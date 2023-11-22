@@ -143,7 +143,7 @@
 
 ::Const.FactionTrait.Actions[18] = [
     "scripts/factions/contracts/drive_away_nomads_action",
-    // "scripts/factions/contracts/roaming_beasts_desert_action", //FEATURE_5: rework difficulty
+    // "scripts/factions/contracts/roaming_beasts_desert_action",
     "scripts/factions/contracts/slave_uprising_action",
     "scripts/factions/contracts/item_delivery_action",
     "scripts/factions/contracts/escort_caravan_action",

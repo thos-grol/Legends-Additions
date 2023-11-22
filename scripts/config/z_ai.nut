@@ -10,8 +10,8 @@
 
 ::Const.AI.Behavior.ID.SpellFleshServant <- ::Const.AI.Behavior.ID.COUNT++;
 ::Const.AI.Behavior.Name.push("Spell Summon Flesh Servant");
-::Const.AI.Behavior.Order.SpellFleshServant <- 3;
-::Const.AI.Behavior.Score.SpellFleshServant <- 99999999;
+::Const.AI.Behavior.Order.SpellFleshServant <- ::Const.AI.Behavior.Order.RaiseUndead;
+::Const.AI.Behavior.Score.SpellFleshServant <- ::Const.AI.Behavior.Score.RaiseUndead + 100;
 
 ::Const.AI.Behavior.ID.SpellMarkOfDecay <- ::Const.AI.Behavior.ID.COUNT++;
 ::Const.AI.Behavior.Name.push("Spell Mark of Decay");

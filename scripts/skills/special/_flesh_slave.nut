@@ -106,8 +106,6 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 			if (actor.getSkills().getSkillByID(id) != null) continue;
 			if (!(id in ::Z.Map)) continue;
 
-			::logInfo("Assimilated " + id);
-
 			local skill = ::new(::Z.Map[id]);
 			skill_name = skill.m.Name;
 			actor.m.Skills.add(skill);

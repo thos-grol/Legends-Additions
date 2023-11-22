@@ -1,4 +1,3 @@
-//TODO: debug why this isn't working
 this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 	m = {
 		Used = false,

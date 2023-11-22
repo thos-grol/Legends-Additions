@@ -40,7 +40,7 @@ this.ai_spell_flesh_servant <- this.inherit("scripts/ai/tactical/behavior", {
 		if (result.Num == 0) return this.Const.AI.Behavior.Score.Zero;
 		this.m.Tile_ = ::MSU.Array.rand(result.Tiles);
 
-		return 99999999999999999999999;
+		return this.Const.AI.Behavior.Score.RaiseUndead * 3;
 	}
 
 	function onExecute( _entity )
