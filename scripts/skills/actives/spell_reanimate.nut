@@ -93,7 +93,12 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 		if (e != null) e.getSprite("socket").setBrush(tag.User.getSprite("socket").getBrush().Name);
 
 		if (tag.User.getSkills().getSkillByID("perk.research.miasma_body") != null)
-			e.getSkills().add(::new("scripts/skills/special/_miasma_body"));
+		{
+			local miasma = ::new("scripts/skills/special/_miasma_body");
+			miasma.setActor(tag.User);
+			e.getSkills().add(miasma);
+		}
+
 
 	}
 

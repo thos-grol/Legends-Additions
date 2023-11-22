@@ -53,4 +53,4 @@
 	],
 };
 
-//FEATURE_1: NECROMANCER finish necromancer builds
+//TODO: NECROMANCER finish AND TEST necromancer builds

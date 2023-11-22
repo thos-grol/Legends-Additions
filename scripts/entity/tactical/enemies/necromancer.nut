@@ -58,7 +58,7 @@ this.necromancer <- this.inherit("scripts/entity/tactical/abstract_human", {
 			tome.drop(_tile);
 		}
 
-		//FEATURE_3: implement soul shards item, soul shards(s)
+		//FEATURE_1: implement soul shards item, soul shards(s)
 
 	}
 

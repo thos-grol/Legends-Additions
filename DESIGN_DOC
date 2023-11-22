@@ -4,16 +4,25 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
+//FEATURE_1: rework skeletons
+//FEATURE_1: rework skeleton priest
+
+
+//FEATURE_5: loot overhaul -> camps and enemies
+//FEATURE_5: loot overhaul -> why buy gear from shops if you can steal??
+    //shops will now sell high tier gear only
+        //normal armor and weapons will now roll values 80% to 100%
+        //shops will have the garunteed max roll of that item - premium gear
+
 //FEATURE_0: create machine learning model for art
 
 //FEATURE_1: FEATURE ghosts
     //change art from blue to gray
     //Aura of fear -> scares beings around passively
 
-//FEATURE_1: FEATURE zombies, see underneath
-    //fallen hero -> frost effect
+    //different kinds of ghosts. ghost army
 
-//FEATURE_3: FEATURE Necrosavant -> Grail, Knock
+//FEATURE_1: FEATURE Necrosavant -> Grail, Knock
     //Modes:
         //Scummy - tp away close to party, summon weakest bro to it
         //Guerilla - tp and strike, tp and strike

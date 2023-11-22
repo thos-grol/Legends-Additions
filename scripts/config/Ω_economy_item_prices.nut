@@ -151,7 +151,7 @@
 	"misc.signet_ring" : 960, //FEATURE_8: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
 	"misc.ancient_scroll" : 400,
 	"misc.legend_scroll" : 400,
-	"misc.ornate_tome" : 800, //FEATURE_8: Magic rework, contains knowledge, decipherable, generate more tome images, price based on book tiers
+	"misc.ornate_tome" : 800,
 	"misc.white_pearls" : 300, //FEATURE_8: 15 units, rework into item with ammount, trade goods, found in port cities/loot
 
 	//Monster drops
