@@ -1,4 +1,3 @@
-//TODO: test zombie knight
 this.zombie_knight <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 	m = {},
 	function create()

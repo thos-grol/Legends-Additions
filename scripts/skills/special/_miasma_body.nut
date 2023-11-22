@@ -55,7 +55,7 @@ this._miasma_body <- this.inherit("scripts/skills/skill", {
 			IsPositive = false,
 			IsAppliedAtRoundStart = false,
 			IsAppliedAtTurnEnd = true,
-			IsAppliedOnMovement = true,
+			IsAppliedOnMovement = false,
 			IsAppliedOnEnter = true,
 			Timeout = this.Time.getRound() + 3,
 			IsByPlayer = actor.getFaction() == this.Const.Faction.PlayerAnimals,
@@ -71,7 +71,7 @@ this._miasma_body <- this.inherit("scripts/skills/skill", {
 
 		foreach (tile in ::Z.getNeighbors(actor.getTile()))
 		{
-			if (::Math.rand(1,100) > 50) continue;
+			if (::Math.rand(1,100) > 20) continue;
 
 			if (tile.Properties.Effect != null && tile.Properties.Effect.Type == "miasma") tile.Properties.Effect.Timeout = this.Time.getRound() + 2;
 			else

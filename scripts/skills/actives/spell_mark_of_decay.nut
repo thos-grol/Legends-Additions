@@ -73,11 +73,15 @@ this.spell_mark_of_decay <- this.inherit("scripts/skills/_magic_active", {
 		local target = tag.TargetTile.getEntity();
 
 		//Decay
-		local decay = ::new("scripts/skills/effects/decay_effect");
-		decay.setActor(tag.User);
-		if (tag.User.getSkills().getSkillByID("perk.meditation.omen_of_decay") != null)
-			decay.setDamage((tag.User.getFlags().has("decay_bonus") ? tag.User.getFlags().getAsInt("decay_bonus") + 5 : 5));
-		target.getSkills().add(decay);
+		if (target.getSkills().getSkillByID("perk.meditation.omen_of_decay") == null)
+		{
+			local decay = ::new("scripts/skills/effects/decay_effect");
+			decay.setActor(tag.User);
+			if (tag.User.getSkills().getSkillByID("perk.meditation.omen_of_decay") != null)
+				decay.setDamage((tag.User.getFlags().has("decay_bonus") ? tag.User.getFlags().getAsInt("decay_bonus") + 5 : 5));
+			target.getSkills().add(decay);
+		}
+		
 
 		//Mark of Decay
 		local effect = target.getSkills().getSkillByID("effects.mark_of_decay");

@@ -2,6 +2,7 @@
 ::Const.Strings.PerkDescription.MeditationOmenOfDecay <- ::MSU.Text.color(::Z.Log.Color.Purple, "Meditation")
 + "\nAll that is will decay and return to dust..."
 + "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\nBecome immune to decay"
 + "\n"+::MSU.Text.colorGreen("+X") + " decay damage (affects Miasma Body)"
 + "\n"+::MSU.Text.colorGreen("+2X") + " fatigue damage from Mark of Decay"
 + "\n"+::MSU.Text.colorGreen("+2X%") + " chance of rotten offering reanimating a corpse"
@@ -38,7 +39,7 @@ this.perk_meditation_omen_of_decay <- this.inherit("scripts/skills/skill", {
 		if (!actor.getFlags().has("undead")) return;
 		local miasma = ::new("scripts/skills/special/_miasma_body");
 		miasma.setActor(actor);
-		e.getSkills().add(miasma);
+		actor.getSkills().add(miasma);
 	}
 
 

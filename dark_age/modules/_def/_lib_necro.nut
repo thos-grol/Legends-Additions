@@ -65,10 +65,14 @@
 
 
     local tile_effect = _tile.Properties.Effect;
-    local decay = ::new("scripts/skills/effects/decay_effect");
-    decay.setActor(tile_effect.Actor);
-    decay.setDamage((tile_effect.Damage));
-    _tile.getEntity().getSkills().add(decay);
+
+    if (_tile.getEntity().getSkills().getSkillByID("perk.meditation.omen_of_decay") == null)
+    {
+        local decay = ::new("scripts/skills/effects/decay_effect");
+        decay.setActor(tile_effect.Actor);
+        decay.setDamage((tile_effect.Damage));
+        _tile.getEntity().getSkills().add(decay);
+    }
 }
 
 ::mods_hookExactClass("entity/tactical/actor", function (o)
