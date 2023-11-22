@@ -362,6 +362,7 @@
 		this.m.Skills.onDeath(_fatalityType);
 		this.onDeath(_killer, _skill, tile, _fatalityType);
 		::Z.Lib.imprint_corpse(this, tile);
+		::Z.Lib.drop_loot(this, tile);
 
 		if (!this.Tactical.State.isFleeing() && _killer != null)
 		{

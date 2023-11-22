@@ -14,7 +14,8 @@
 
 			foreach(faction in no_killstealing.m.Factions)
             {
-                faction_max = faction;
+                if (no_killstealing.m.Factions[faction] <= faction_max_amount) continue;
+				faction_max = faction;
                 faction_max_amount = no_killstealing.m.Factions[faction];
             }
 

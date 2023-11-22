@@ -45,14 +45,21 @@ this.necromancer <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		if (!this.Tactical.State.isScenarioMode() && _killer != null && _killer.isPlayerControlled())
 			this.updateAchievement("ManInBlack", 1, 1);
+		this.human.onDeath(_killer, _skill, _tile, _fatalityType);
+	}
 
+	function drop_loot(_tile)
+	{
+		//TODO: test
 		if (::Math.rand(1,100) <= 20)
 		{
 			local tome = this.new("scripts/items/misc/tome");
 			tome.set_tome(this.m.Build.Drop);
 			tome.drop(_tile);
 		}
-		this.human.onDeath(_killer, _skill, _tile, _fatalityType);
+
+		//FEATURE_3: implement soul shards item, soul shards(s)
+
 	}
 
 	function pickOutfit()
