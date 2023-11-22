@@ -2266,7 +2266,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "FEATURE_0"
+					text = "FEATURE_1"
 				}
 			];
 
@@ -2280,7 +2280,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "FEATURE_0"
+					text = "FEATURE_1"
 				}
 			];
 

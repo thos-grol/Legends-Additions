@@ -86,7 +86,6 @@ this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 		b.IsAffectedByNight = false;
 		b.IsAffectedByInjuries = false;
 		b.IsImmuneToBleeding = true;
-		b.DamageTotalMult *= 2.0;
 
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;

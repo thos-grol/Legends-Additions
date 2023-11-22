@@ -538,7 +538,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_spell_corpse_explosion",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/spell_corpse_explosion.png", //FIXME: ART spell_corpse_explosion
+        Icon = "ui/perks/spell_corpse_explosion.png", //FEATURE_0: HOME ART spell_corpse_explosion
         IconDisabled = "ui/perks/spell_corpse_explosion_bw.png",
         Const = "SpellCorpseExplosion"
     },

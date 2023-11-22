@@ -15,7 +15,11 @@
     local skills = _actor.m.Skills.m.Skills
     foreach(skill in skills)
     {
-        if (!skill.isGarbage() && skill.m.ID in ::Z.Map) corpse.Skills.push(skill);
+        if (skill.isGarbage()) continue;
+        if (skill.isType(::Const.SkillType.DamageOverTime)) continue;
+        if (skill.isType(::Const.SkillType.StatusEffect)) continue;
+        if (!(skill.m.ID in ::Z.Map)) continue;
+        corpse.Skills.push(skill);
     }
 
     corpse.BaseProperties["Bravery"] <- _actor.m.BaseProperties.Bravery;

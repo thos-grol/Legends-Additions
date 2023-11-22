@@ -101,15 +101,12 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 
 		if (skills.len() == 0) return;
 
-		//TODO: rewrite logic into while loop
-		//TODO: zombies need better ai, do not use hand to hand
-
-		for (local i = 0 ; i < 10 ; i++) {
+		for (local i = 0 ; i < 20 ; i++) {
 			local id = ::MSU.Array.rand(skills);
 			if (actor.getSkills().getSkillByID(id) != null) continue;
 			if (!(id in ::Z.Map)) continue;
 
-			::logInfo("Assimilated " + id)
+			::logInfo("Assimilated " + id);
 
 			local skill = ::new(::Z.Map[id]);
 			skill_name = skill.m.Name;

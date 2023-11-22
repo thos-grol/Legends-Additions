@@ -4,7 +4,7 @@ this.zombie_bite <- this.inherit("scripts/skills/skill", {
 	{
 		this.m.ID = "actives.zombie_bite";
 		this.m.Name = "Wiederganger Bite";
-		this.m.Description = "A vicious bite with a 15% increased chance to hit the head. Infects on legendary difficulty. Will revive humanoid enemies as allied Wiedergangers if dealt as a killing blow.";
+		this.m.Description = "A vicious bite with a 15% increased chance to hit the head";
 		this.m.KilledString = "Bitten";
 		this.m.Icon = "skills/active_24.png";
 		this.m.IconDisabled = "skills/active_24_bw.png";

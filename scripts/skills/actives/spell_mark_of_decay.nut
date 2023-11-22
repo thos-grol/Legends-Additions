@@ -94,9 +94,9 @@ this.spell_mark_of_decay <- this.inherit("scripts/skills/_magic_active", {
 		if (tag.User.getSkills().getSkillByID("perk.research.rotten_offering") != null)
 			effect.m.RottenOffering = true;
 
-		//TODO: change vfx
+		//FEATURE_0: HOME change vfx
 		::Tactical.spawnSpriteEffect("effect_skull_03", this.createColor("#ffffff"), tag.TargetTile, 0, 40, 1.0, 0.25, 0, 400, 300);
-		//TODO: play sound fx
+		//FEATURE_0: HOME play sound fx
 	}
 
 	function spawn_particles(tag)

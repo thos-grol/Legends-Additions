@@ -34,8 +34,8 @@ this.perk_legend_lacerate <- this.inherit("scripts/skills/skill", {
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
 		if (!_targetEntity.isAlive() || _targetEntity.isDying()) return false;
-		
-		if (!_skill.getDamageType().contains(::Const.Damage.DamageType.Cutting) 
+
+		if (!_skill.getDamageType().contains(::Const.Damage.DamageType.Cutting)
 			&& !_skill.getDamageType().contains(::Const.Damage.DamageType.Piercing)) return false;
 		if (_targetEntity.getCurrentProperties().IsImmuneToBleeding) return false;
 		if (_damageInflictedHitpoints < ::Const.Combat.MinDamageToApplyBleeding) return false;

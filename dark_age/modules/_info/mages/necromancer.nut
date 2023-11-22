@@ -31,10 +31,10 @@
         ["scripts/skills/perks/perk_student"], //1
         ["D", 2], //2
         ["scripts/skills/perks/perk_pattern_recognition"], //3
-        ["scripts/skills/perks/perk_spell_flesh_servant"], //4 //TODO: flesh servant AI always cast (copy release hounds ai)
+        ["scripts/skills/perks/perk_spell_flesh_servant"], //4
         ["scripts/skills/perks/perk_research_flesh_assimilation"], //5
         ["D", 6], //6
-        ["scripts/skills/perks/perk_spell_reanimate"], //7 //TODO: reanimate ai using new active
+        ["scripts/skills/perks/perk_spell_reanimate"], //7
         ["scripts/skills/perks/perk_research_flesh_overclocking"], //8
         ["T", 5], //9
 		["T", 5], //10 bc student

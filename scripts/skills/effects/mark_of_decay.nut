@@ -39,7 +39,7 @@ this.mark_of_decay <- this.inherit("scripts/skills/skill", {
 	function setBonus( _d )
 	{
 		this.m.Bonus = (_d * 2.0) / 100.0;
-		::logInfo(this.m.Bonus); //FIXME: PLACEHOLDER remove after test
+		::logInfo("setting bonus: +" + this.m.Bonus); //TODO: PLACEHOLDER remove after test, test mark of decay bonus after potency
 	}
 
 	function getDescription()
