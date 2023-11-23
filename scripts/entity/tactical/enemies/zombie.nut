@@ -793,6 +793,15 @@ this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 
+	function drop_loot(_tile)
+	{
+		if (::Math.rand(1,100) <= 5 )
+		{
+			local s = this.new("scripts/items/misc/magic/soul_splinter");
+			s.drop(_tile);
+		}
+	}
+
 	function onBeforeCombatResult()
 	{
 		if (this.getFaction() == this.Const.Faction.PlayerAnimals)

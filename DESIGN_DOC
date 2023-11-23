@@ -442,7 +442,7 @@ Undead cannot be charmed
 ::addItem("mage_winter_potion_item")
 
 ::addItem("legend_robes_magic")
-::addItem("apotheosis_potion_item")
+::addItem("soul_splinter")
 ::addItem("goblin_overseer_potion_item")
 ::addItem("direwolf_potion_item")
 ::addItem("fallen_hero_potion_item")

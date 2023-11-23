@@ -48,12 +48,21 @@ this.necromancer <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function drop_loot(_tile)
 	{
-		if (::Math.rand(1,100) > 20 ) return;
-		local tome = this.new("scripts/items/misc/tome");
-		tome.set_tome(this.m.Build.Drop);
-		tome.drop(_tile);
+		if (::Math.rand(1,100) <= 20 )
+		{
+			local tome = this.new("scripts/items/misc/tome");
+			tome.set_tome(this.m.Build.Drop);
+			tome.drop(_tile);
+		}
 
-		//TODO: implement soul shards item, soul shards(s)
+		for(local i = 0; i < 3; i++ )
+		{
+			if (::Math.rand(1,100) <= 20 )
+			{
+				local s = this.new("scripts/items/misc/magic/soul_splinter");
+				s.drop(_tile);
+			}
+		}
 
 	}
 

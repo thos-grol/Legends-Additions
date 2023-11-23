@@ -136,9 +136,20 @@ this.zombie_knight <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 		}
 	}
 
+	function drop_loot(_tile)
+	{
+		for(local i = 0; i < 3; i++ )
+		{
+			if (::Math.rand(1,100) <= 20 )
+			{
+				local s = this.new("scripts/items/misc/magic/soul_splinter");
+				s.drop(_tile);
+			}
+		}
+	}
+
 	function pickNamed()
 	{
-		//TODO: Fallen hero drops?
 	}
 
 	function makeMiniboss()
@@ -146,6 +157,8 @@ this.zombie_knight <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 		if (!this.actor.makeMiniboss()) return false;
 		this.getSprite("miniboss").setBrush("bust_miniboss");
 		return true;
+
+		//FEATURE_5: fallen hero champion?
 	}
 
 });

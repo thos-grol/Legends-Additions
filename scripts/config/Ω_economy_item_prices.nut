@@ -156,7 +156,6 @@
 
 	//Monster drops
 	"misc.growth_pearls" : 0, //FEATURE_8: 5 units, rework into item with ammount
-	"misc.soul_splinter" : 0, //FEATURE_8: rework, black soul gem, used for necromancy
 	"misc.ancient_amber" : 0, //FEATURE_8: rare scrat drop. contains life energy
 	"misc.adrenaline_gland" : 0,
 	"misc.spider_silk" : 0,
