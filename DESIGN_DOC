@@ -4,21 +4,21 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
-//FEATURE_1: rework skeletons
-//FEATURE_1: rework skeleton priest
+//TODO: rework skeletons
+//TODO: rework skeleton priest
 
 
 //FEATURE_5: loot overhaul -> camps and enemies
 
 //FEATURE_0: create machine learning model for art
 
-//FEATURE_1: FEATURE ghosts
+//TODO: FEATURE ghosts
     //change art from blue to gray
     //Aura of fear -> scares beings around passively
 
     //different kinds of ghosts. ghost army
 
-//FEATURE_1: FEATURE Necrosavant -> Grail, Knock
+//TODO: FEATURE Necrosavant -> Grail, Knock
     //Modes:
         //Scummy - tp away close to party, summon weakest bro to it
         //Guerilla - tp and strike, tp and strike

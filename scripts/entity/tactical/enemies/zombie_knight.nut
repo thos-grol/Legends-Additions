@@ -138,7 +138,7 @@ this.zombie_knight <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 
 	function pickNamed()
 	{
-		//FEATURE_3: Fallen hero drops?
+		//TODO: Fallen hero drops?
 	}
 
 	function makeMiniboss()

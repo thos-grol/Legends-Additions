@@ -1,4 +1,4 @@
-//FEATURE_4: FEATURE alp
+//FEATURE_1: FEATURE alp
 // Alp, Dream demon
 // - Dream shield - pink mist. Use necro’s shield rune code. 100 HP. The shield recovers 10 hp per turn after not being hit for a turn. Has a attack reroll chance of 33%.
 // - Dream Physique - After being hit, has a 33% chance to teleport. This chance increases by 33% after every failure. When teleporting, leave behind a ring of chaotic fog that applies random status effects, positive and negative to any characters that are in the fog. When an opponent misses an attack, blow a cloud of chaotic fog at them.

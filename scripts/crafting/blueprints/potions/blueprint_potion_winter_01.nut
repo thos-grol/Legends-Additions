@@ -1,4 +1,4 @@
-//FEATURE_4: add more recipes
+//FEATURE_1: add more recipes
 this.blueprint_potion_winter_01 <- this.inherit("scripts/crafting/blueprint", {
 	m = {},
 	function create()
@@ -12,7 +12,7 @@ this.blueprint_potion_winter_01 <- this.inherit("scripts/crafting/blueprint", {
 				Script = "scripts/items/misc/anatomist/direwolf_potion_item",
 				Num = 1
 			},
-			//FEATURE_4: add other drops to the recipe
+			//FEATURE_1: add other drops to the recipe
 		];
 		this.init(ingredients);
 	}
