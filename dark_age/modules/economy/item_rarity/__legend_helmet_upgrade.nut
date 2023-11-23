@@ -3,7 +3,7 @@
     o.m.rolled <- false;
     o.m.Rarity <- "Rare";
 
-    o.m.onAddedToStash <- function( _stashID )
+    o.onAddedToStash <- function( _stashID )
 	{
 		this.m.rolled = true;
 	}

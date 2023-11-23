@@ -3,7 +3,7 @@
     o.m.rolled <- false;
     o.m.Rarity <- "Rare";
 
-    o.m.onAddedToStash <- function( _stashID )
+    o.onAddedToStash <- function( _stashID )
 	{
 		this.m.rolled = true;
 	}
@@ -39,7 +39,7 @@
 
 		roll = ::Math.round(::Math.rand(0, 50) / 10.0);
         diff += roll * 4;
-        this.m.FatigueOnSkillUse = this.m.FatigueOnSkillUse - roll;
+        this.m.FatigueOnSkillUse = this.m.FatigueOnSkillUse + roll;
 
 		local pct = diff / 100.0;
         if (pct <= 0.1) this.m.Rarity = "Rare";

@@ -446,7 +446,7 @@ Undead cannot be charmed
 ::addItem("goblin_overseer_potion_item")
 ::addItem("direwolf_potion_item")
 ::addItem("fallen_hero_potion_item")
-::addItem("two_handed_wooden_flail")
+::addItem("crude_axe")
 
 ::addItem("orc_young_potion_item")
 
