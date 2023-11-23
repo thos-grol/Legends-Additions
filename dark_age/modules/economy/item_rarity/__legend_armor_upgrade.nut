@@ -3,7 +3,7 @@
     o.m.rolled <- false;
     o.m.Rarity <- "Rare";
 
-    o.m.onAddedToStash <- function( _stashID )
+    o.onAddedToStash <- function( _stashID )
 	{
 		this.m.rolled = true;
 	}
@@ -11,7 +11,8 @@
     //roll fns
     o.roll_values <- function()
 	{
-        if (this.m.rolled) return;
+        if (!this.Tactical.isActive()) this.m.rolled = true;
+		if (this.m.rolled) return;
 		this.m.rolled = true;
 
         local roll = 0;

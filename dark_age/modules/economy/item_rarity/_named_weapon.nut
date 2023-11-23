@@ -1,7 +1,7 @@
 ::mods_hookExactClass("items/weapons/named/named_weapon", function (o)
 {
     o.m.rolled <- true;
-    o.m.rarity <- "Legendary";
+    o.m.Rarity <- "Legendary";
     o.onSerialize = function( _out )
     {
         _out.writeString(this.m.Name);
