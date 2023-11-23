@@ -9,9 +9,6 @@
 
 
 //FEATURE_5: loot overhaul -> camps and enemies
-//FIXME: document loot overhaul -> why buy gear from shops if you can steal??
-    //shops will now sell high tier gear only
-        //normal armor and weapons will now roll values 80% to 100%
 
 //FEATURE_0: create machine learning model for art
 

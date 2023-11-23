@@ -101,7 +101,7 @@ this.decay_effect <- this.inherit("scripts/skills/skill", {
 		local owner = getAttacker();
 		if (owner.getSkills().getSkillByID("perk.meditation.omen_of_decay") != null)
 		{
-			// if (::Math.rand(1,100) > 10) return; //TODO: test decay increasing potency and then uncomment line
+			if (::Math.rand(1,100) > 10) return;
 			if (!owner.getFlags().has("decay_bonus")) owner.getFlags().set("decay_bonus", 0);
 			owner.getFlags().set("decay_bonus", ::Math.min(10, owner.getFlags().getAsInt("decay_bonus") + 1));
 
