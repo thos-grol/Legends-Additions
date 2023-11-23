@@ -85,6 +85,7 @@
 		{
             this.getItems().clear();
             _info.Items.transferTo(this.getItems());
+            //TODO: drop mainhand, offhand, and bag slots on the ground
 
             if (_info.Name.len() != 0)
             {

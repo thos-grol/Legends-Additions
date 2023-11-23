@@ -4,158 +4,262 @@ this.ai_spell_mark_of_decay <- this.inherit("scripts/ai/tactical/behavior", {
 		PossibleSkills = [
 			"actives.spell.mark_of_decay"
 		],
-		Skill = null
+		SelectedSkill = null
 	},
 	function create()
 	{
 		this.m.ID = this.Const.AI.Behavior.ID.SpellMarkOfDecay;
 		this.m.Order = this.Const.AI.Behavior.Order.SpellMarkOfDecay;
-		this.m.IsThreaded = false;
 		this.behavior.create();
 	}
 
 	function onEvaluate( _entity )
 	{
-		this.m.Skill = null;
 		this.m.TargetTile = null;
+		this.m.SelectedSkill = null;
 		local score = this.getProperties().BehaviorMult[this.m.ID];
 
 		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP) return this.Const.AI.Behavior.Score.Zero;
 		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
-		if (!this.getAgent().hasKnownOpponent()) return this.Const.AI.Behavior.Score.Zero;
+		if (!this.getAgent().hasVisibleOpponent()) return this.Const.AI.Behavior.Score.Zero;
 
-		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
-		if (this.m.Skill == null) return this.Const.AI.Behavior.Score.Zero;
-		if (!this.m.Skill.isUsable()) return this.Const.AI.Behavior.Score.Zero;
+		this.m.SelectedSkill = this.selectSkill(this.m.PossibleSkills);
+		if (this.m.SelectedSkill == null) return this.Const.AI.Behavior.Score.Zero;
+		if (!this.m.SelectedSkill.isUsable()) return this.Const.AI.Behavior.Score.Zero;
 
-		local opponents = this.getAgent().getKnownOpponents();
-		local target = this.findBestTarget(_entity, opponents);
+		local skills = [this.m.SelectedSkill];
+		local targets = this.getAgent().getKnownOpponents();
+		score = score * this.selectBestTargetAndSkill(_entity, targets, skills);
 
-		if (target.Target == null) return this.Const.AI.Behavior.Score.Zero;
+		if (this.m.TargetTile == null) return this.Const.AI.Behavior.Score.Zero;
+		score = score * this.getFatigueScoreMult(this.m.SelectedSkill);
 
-		this.m.TargetTile = target.Target.getTile();
-		return this.Const.AI.Behavior.Score.SwarmOfInsects * score + target.Score;
+		return this.Const.AI.Behavior.Score.Attack * score;
+	}
+
+	function onBeforeExecute( _entity )
+	{
 	}
 
 	function onExecute( _entity )
 	{
 		if (this.m.IsFirstExecuted)
 		{
-			this.getAgent().adjustCameraToTarget(this.m.TargetTile);
-			this.m.IsFirstExecuted = false;
-
-			if (this.m.TargetTile.IsVisibleForPlayer && _entity.isHiddenToPlayer())
+			if (this.m.TargetTile.getEntity().isPlayerControlled() && _entity.isHiddenToPlayer())
 			{
 				_entity.setDiscovered(true);
 				_entity.getTile().addVisibilityForFaction(this.Const.Faction.Player);
 			}
 
+			this.getAgent().adjustCameraToTarget(this.m.TargetTile, this.m.SelectedSkill.getDelay());
+			this.m.IsFirstExecuted = false;
 			return false;
 		}
 
-		this.m.Skill.use(this.m.TargetTile);
-
-		if (!_entity.isHiddenToPlayer())
+		if (this.m.TargetTile != null && this.m.TargetTile.IsOccupiedByActor)
 		{
-			this.getAgent().declareAction();
+			if (this.Const.AI.VerboseMode)
+			{
+				this.logInfo("* " + _entity.getName() + ": Using " + this.m.SelectedSkill.getName() + " against " + this.m.TargetTile.getEntity().getName() + "!");
+			}
+
+			this.m.SelectedSkill.use(this.m.TargetTile);
+
+			if (_entity.isAlive() && (!_entity.isHiddenToPlayer() || this.m.TargetTile.IsVisibleForPlayer))
+			{
+				this.getAgent().declareAction();
+				this.getAgent().declareEvaluationDelay(this.m.SelectedSkill.getDelay() + 750);
+			}
+
+			this.m.TargetTile = null;
+			this.m.SelectedSkill = null;
 		}
 
-		this.m.Skill = null;
-		this.m.TargetTile = null;
 		return true;
 	}
 
-	function findBestTarget( _entity, _targets )
+	function selectBestTargetAndSkill( _entity, _targets, _skills )
 	{
-		local myTile = _entity.getTile();
-		local knownAllies = this.getAgent().getKnownAllies();
-		local bestScore = 30.0;
+		local bestSkills;
 		local bestTarget;
+		local bestScore = -9000.0;
+		local bestOpponentsAdjacent = 0;
+		local myTile = _entity.getTile();
 
-		foreach( opponent in _targets )
+		foreach( target in _targets )
 		{
-			local target = opponent.Actor;
-			local opponentTile = opponent.Actor.getTile();
-
-			if (!this.m.Skill.isUsableOn(opponentTile))
+			if (target.Actor.isNull())
 			{
 				continue;
 			}
 
-			local score = 1.0;
-			local distanceToTarget = myTile.getDistanceTo(opponentTile);
+			local targetTile = target.Actor.getTile();
 
-			if (!target.getCurrentProperties().IsRooted && !target.isArmedWithRangedWeapon() && this.queryActorTurnsNearTarget(target, myTile, _entity).Turns <= 1.0)
+			if (!targetTile.IsVisibleForEntity)
 			{
 				continue;
 			}
 
-			if (target.getMoraleState() == this.Const.MoraleState.Fleeing)
+			local skills = [];
+
+			foreach( s in _skills )
 			{
-				continue;
-			}
-
-			score = score + target.getCurrentProperties().getMeleeDefense();
-			score = score + target.getCurrentProperties().getRangedDefense();
-			score = score + target.getCurrentProperties().getMeleeSkill();
-			score = score + target.getCurrentProperties().getRangedSkill();
-
-			if (target.isArmedWithRangedWeapon() && distanceToTarget <= target.getIdealRange())
-			{
-				score = score + this.Const.AI.Behavior.InsectSwarmDangerOfRangedTarget;
-			}
-
-			score = score - myTile.getDistanceTo(opponentTile) * this.Const.AI.Behavior.InsectSwarmDistanceMult;
-			local minDist = distanceToTarget;
-
-			foreach( ally in knownAllies )
-			{
-				local d = ally.getTile().getDistanceTo(opponentTile);
-				score = score + this.Math.max(0, 7 - d) * this.Const.AI.Behavior.InsectSwarmAllyDistanceMult;
-
-				if (d < minDist)
+				if (s.isInRange(targetTile) && s.onVerifyTarget(_entity.getTile(), targetTile))
 				{
-					d = minDist;
+					skills.push({
+						Skill = s,
+						Score = 0.0
+					});
 				}
 			}
 
-			if (this.getStrategy().getStats().RangedAlliedVSEnemies <= 1.0 && !target.isArmedWithRangedWeapon() && minDist > 4)
+			if (skills.len() == 0)
 			{
 				continue;
 			}
 
-			if (target.getSkills().hasSkill("effects.insect_swarm"))
+			local alliesAdjacent = 0;
+			local opponentsAdjacent = 0;
+			local score = 0.0;
+
+			foreach( s in skills )
 			{
-				for( ; target.getCurrentProperties().NegativeStatusEffectDuration < 0;  )
+				local tilesAffected = s.Skill.getAffectedTiles(targetTile);
+
+				foreach( t in tilesAffected )
 				{
+					if (!t.IsOccupiedByActor)
+					{
+						continue;
+					}
+
+					if (_entity.isAlliedWith(t.getEntity()))
+					{
+						if (this.getProperties().TargetPriorityHittingAlliesMult < 1.0)
+						{
+							s.Score -= 1.0 / 6.0 * 4.0 * (1.0 - this.getProperties().TargetPriorityHittingAlliesMult) * t.getEntity().getCurrentProperties().TargetAttractionMult;
+						}
+					}
+					else
+					{
+						s.Score += this.queryTargetValue(_entity, t.getEntity(), s.Skill);
+					}
 				}
-
-				score = score * this.Const.AI.Behavior.InsectSwarmAlreadyAppliedMult;
 			}
 
-			if (opponentTile.hasZoneOfOccupationOtherThan(target.getAlliedFactions()))
+			local blockedTiles = this.Const.Tactical.Common.getBlockedTiles(myTile, targetTile, _entity.getFaction());
+
+			foreach( tile in blockedTiles )
 			{
-				score = score * this.Const.AI.Behavior.InsectSwarmEngagedMult;
+				if (!tile.IsOccupiedByActor || tile.getEntity().isAlliedWith(_entity))
+				{
+					score = score * this.Const.AI.Behavior.AttackLineOfFireBlockedMult;
+					break;
+				}
 			}
 
-			score = score * target.getCurrentProperties().TargetAttractionMult;
-
-			if (_entity.getAttackers().find(target.getID()) != null)
+			if (myTile.getDistanceTo(targetTile) > 2)
 			{
-				score = score * this.Const.AI.Behavior.InsectSwarmAttackingMeMult;
+				for( local i = 0; i < this.Const.Direction.COUNT; i = ++i )
+				{
+					if (!targetTile.hasNextTile(i))
+					{
+					}
+					else
+					{
+						local tile = targetTile.getNextTile(i);
+
+						if (tile.IsEmpty)
+						{
+						}
+						else if (tile.IsOccupiedByActor)
+						{
+							if (tile.getEntity().isAlliedWith(_entity))
+							{
+								if (this.getProperties().TargetPriorityHittingAlliesMult < 1.0)
+								{
+									score = score - 1.0 / 6.0 * 4.0 * (1.0 - this.getProperties().TargetPriorityHittingAlliesMult) * tile.getEntity().getCurrentProperties().TargetAttractionMult;
+								}
+
+								alliesAdjacent = ++alliesAdjacent;
+							}
+							else
+							{
+								score = score + 1.0 / 6.0 * this.queryTargetValue(_entity, tile.getEntity(), null) * this.Const.AI.Behavior.AttackRangedHitBystandersMult;
+								opponentsAdjacent = ++opponentsAdjacent;
+							}
+						}
+					}
+				}
 			}
 
-			if (score > bestScore)
+			if (targetTile.getZoneOfControlCount(_entity.getFaction()) < this.Const.AI.Behavior.RangedEngageIgnoreDangerMinZones)
 			{
-				bestScore = score;
+				score = score * (1.0 + (1.0 - this.Math.minf(1.0, this.queryActorTurnsNearTarget(target.Actor, myTile, _entity).Turns)) * this.Const.AI.Behavior.AttackDangerMult);
+			}
+
+			if (score > bestScore && (this.getProperties().TargetPriorityHittingAlliesMult >= 1.0 || alliesAdjacent <= this.Const.AI.Behavior.AttackRangedMaxAlliesAdjacent))
+			{
 				bestTarget = target;
+				bestScore = score;
+				bestSkills = skills;
+				bestOpponentsAdjacent = opponentsAdjacent;
 			}
 		}
 
-		return {
-			Target = bestTarget,
-			Score = bestScore * 0.1
-		};
+		if (bestTarget != null)
+		{
+			this.m.TargetTile = bestTarget.Actor.getTile();
+			local chance = 0;
+			local highestScore = 0;
+
+			for( local i = 0; i < bestSkills.len(); i = ++i )
+			{
+				if (bestSkills[i].Score > highestScore)
+				{
+					highestScore = this.Math.floor(this.Math.pow(bestSkills[i].Score * 100, this.Const.AI.Behavior.AttackRangedChancePOW));
+				}
+			}
+
+			for( local i = 0; i < bestSkills.len(); i = ++i )
+			{
+				local score = this.Math.floor(this.Math.pow(bestSkills[i].Score * 100, this.Const.AI.Behavior.AttackRangedChancePOW));
+
+				if (score < highestScore * this.Const.AI.Behavior.AttackRangedScoreCutoff)
+				{
+				}
+				else
+				{
+					chance = chance + score;
+				}
+			}
+
+			if (chance != 0)
+			{
+				local pick = this.Math.rand(1, chance);
+
+				for( local i = 0; i < bestSkills.len(); i = ++i )
+				{
+					local score = this.Math.floor(this.Math.pow(bestSkills[i].Score * 100, this.Const.AI.Behavior.AttackRangedChancePOW));
+
+					if (score < highestScore * this.Const.AI.Behavior.AttackRangedScoreCutoff)
+					{
+					}
+					else
+					{
+						if (pick <= score)
+						{
+							this.m.SelectedSkill = bestSkills[i].Skill;
+							return this.Math.maxf(0.1, bestSkills[i].Score + this.Math.maxf(0.0, bestScore));
+						}
+
+						pick = pick - score;
+					}
+				}
+			}
+		}
+
+		return 0.0;
 	}
 
 });

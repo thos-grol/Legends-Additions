@@ -117,7 +117,10 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
 		entity.m.BaseProperties.RangedSkill = bind.m.BaseProperties["RangedSkill"];
 		entity.m.BaseProperties.MeleeDefense = bind.m.BaseProperties["MeleeDefense"];
 		entity.m.BaseProperties.RangedDefense = bind.m.BaseProperties["RangedDefense"];
-		entity.m.BaseProperties.Armor = bind.m.BaseProperties["Armor"];
+		try {
+			entity.m.BaseProperties.Armor = bind.m.BaseProperties["Armor"];
+		} catch(exception){}
+		
 
         //do skill calculations
 		entity.m.Skills.update();
