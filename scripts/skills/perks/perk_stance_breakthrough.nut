@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.StanceBreakthrough <- "Breakthrough";
-::Const.Strings.PerkDescription.StanceBreakthrough <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
+::Const.Strings.PerkDescription.StanceBreakthrough <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Turn End, Spear Equipped:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Turn End, Spear Equipped:")
 + "\n Perform " + ::MSU.Text.colorGreen("X") + " free attacks"
 + "\n " + ::MSU.Text.colorRed("X is the number of enemy_tiles in ZOC");
 

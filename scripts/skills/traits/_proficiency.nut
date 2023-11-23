@@ -34,7 +34,7 @@ this._proficiency <- this.inherit("scripts/skills/traits/character_trait", {
 			id = 6,
 			type = "text",
 			icon = "ui/icons/melee_skill.png",
-			text = this.m.str + " Proficiency: " + ::MSU.Text.color(::Z.Log.Color.BloodRed, amount + " / " + this.m.ProficiencyMax)
+			text = this.m.str + " Proficiency: " + ::MSU.Text.color(::Z.Color.BloodRed, amount + " / " + this.m.ProficiencyMax)
 		});
 		return _tooltip;
 	}
@@ -55,7 +55,7 @@ this._proficiency <- this.inherit("scripts/skills/traits/character_trait", {
 			actor.getFlags().set(getFlagStore(),
 				::Math.min(this.m.ProficiencyMax, actor.getFlags().getAsInt(getFlagStore()) + 1));
 
-			::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " has gained 1 " + this.m.str + " proficiency"));
+			::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + ::MSU.Text.color(::Z.Color.BloodRed, " has gained 1 " + this.m.str + " proficiency"));
 		}
 
 		if (actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax)

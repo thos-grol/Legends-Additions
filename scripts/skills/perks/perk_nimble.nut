@@ -1,5 +1,5 @@
 ::Const.Strings.PerkDescription.Nimble = "Nimbly dodge strikes, turning them into glancing blows..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("– 40%") + " hitpoint damage taken"
 + "\n"+::MSU.Text.colorRed("Drops with armor weight over 15")
 + "\n"+::MSU.Text.colorRed("Calculations ignore Brawny")

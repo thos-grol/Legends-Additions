@@ -3,13 +3,13 @@
 ::Z.Log.display_basic <- function(_user, _targetEntity, _skill_name, is_good)
 {
     return ::Const.UI.getColorizedEntityName(_user) + " "
-    + ( ::MSU.Text.color((is_good ? ::Z.Log.Color.NiceGreen : ::Z.Log.Color.BloodRed), "[" + _skill_name + "]") )
+    + ( ::MSU.Text.color((is_good ? ::Z.Color.NiceGreen : ::Z.Color.BloodRed), "[" + _skill_name + "]") )
     + (_targetEntity != null ? " " + ::Const.UI.getColorizedEntityName(_targetEntity): "");
 }
 
 ::Z.Log.display_result <- function(_result_string, is_good)
 {
-    return ::MSU.Text.color((is_good ? ::Z.Log.Color.NiceGreen : ::Z.Log.Color.BloodRed), " " + "[" + _result_string + "]" + " ");
+    return ::MSU.Text.color((is_good ? ::Z.Color.NiceGreen : ::Z.Color.BloodRed), " " + "[" + _result_string + "]" + " ");
 }
 
 ::Z.Log.display_chance <- function(rolled, toHit)
@@ -56,8 +56,8 @@
     ::Tactical.EventLog.logIn(
         ::Const.UI.getColorizedEntityName(_targetEntity) + " "
         + "[" + _target + "]"
-        + " » " + ::MSU.Text.color(::Z.Log.Color.BloodRed, _prev) + " › " + ::MSU.Text.color(::Z.Log.Color.BloodRed, _cur)
-        + " ([b]" + ::MSU.Text.color(::Z.Log.Color.BloodRed, _damage) + "[/b])"
+        + " » " + ::MSU.Text.color(::Z.Color.BloodRed, _prev) + " › " + ::MSU.Text.color(::Z.Color.BloodRed, _cur)
+        + " ([b]" + ::MSU.Text.color(::Z.Color.BloodRed, _damage) + "[/b])"
     );
     ::Z.Log.HasActed = true;
 };
@@ -67,22 +67,22 @@
     ::Tactical.EventLog.logIn(
        ::Const.UI.getColorizedEntityName(_targetEntity) + " "
         + "[" + ::MSU.String.capitalizeFirst( _target ) + "]"
-        + " » " + ::MSU.Text.color(::Z.Log.Color.BloodRed, _prev) + " › " + ::MSU.Text.color(::Z.Log.Color.BloodRed, _cur)
-        + " ([b]" + ::MSU.Text.color(::Z.Log.Color.BloodRed, _damage) + "[/b])");
+        + " » " + ::MSU.Text.color(::Z.Color.BloodRed, _prev) + " › " + ::MSU.Text.color(::Z.Color.BloodRed, _cur)
+        + " ([b]" + ::MSU.Text.color(::Z.Color.BloodRed, _damage) + "[/b])");
     ::Z.Log.HasActed = true;
 };
 
 ::Z.Log.kill <- function(_targetEntity)
 {
     ::Tactical.EventLog.logIn(
-        ::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " KILLED")
+        ::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.color(::Z.Color.BloodRed, " KILLED")
     );
 };
 
 ::Z.Log.status <- function(_targetEntity, _string)
 {
     ::Tactical.EventLog.logIn(
-        ::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " is " + _string)
+        ::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.color(::Z.Color.BloodRed, " is " + _string)
     );
 };
 
@@ -91,7 +91,7 @@
 
 ::Z.Log.suffer_injury <- function(_targetEntity, _injury)
 {
-    ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " suffers " + ::MSU.Text.color(::Z.Log.Color.BloodRed,  _injury ) );
+    ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " suffers " + ::MSU.Text.color(::Z.Color.BloodRed,  _injury ) );
 };
 
 ::Z.Log.hair_armor <- function()

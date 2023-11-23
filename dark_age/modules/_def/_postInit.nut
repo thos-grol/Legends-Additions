@@ -16,10 +16,10 @@
 					foreach(perk in row)
 					{
 						if (::Const.Perks.PerkDefObjects[perk].Name in PERKS)
-							::Const.Perks.PerkDefObjects[perk].Tooltip += ::MSU.Text.color(::Z.Log.Color.Blue, ", " + tree.Name);
+							::Const.Perks.PerkDefObjects[perk].Tooltip += ::MSU.Text.color(::Z.Color.Blue, ", " + tree.Name);
 						else
 						{
-							::Const.Perks.PerkDefObjects[perk].Tooltip += ::MSU.Text.color(::Z.Log.Color.Blue, "\n\n" + tree.Name);
+							::Const.Perks.PerkDefObjects[perk].Tooltip += ::MSU.Text.color(::Z.Color.Blue, "\n\n" + tree.Name);
 							PERKS[::Const.Perks.PerkDefObjects[perk].Name] <- null;
 						}
 					}

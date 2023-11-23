@@ -1,14 +1,14 @@
 ::Const.Strings.PerkName.DeathDealer <- "Death Dealer";
 ::Const.Strings.PerkDescription.DeathDealer <- "There\'s bears, nachzehrers, and you. All beings of vicious slaughter..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "For AOE attacks:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "For AOE attacks:")
 + "\n"+::MSU.Text.colorGreen("+10%") + " damage"
 + "\n"+::MSU.Text.colorGreen("– 25%") + " Fatigue cost"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("50%") + " chance to resist stagger"
 + "\nUsing orc weapons no longer imposes additional fatigue costs"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Stagger: (Removed on turn start)")
++ "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Stagger: (Removed on turn start)")
 + "\n"+::MSU.Text.colorRed("– 50% Initiative")
 + "\n"+::MSU.Text.colorRed("– 25 Melee Defense")
 + "\n"+::MSU.Text.colorRed("– 25 Ranged Defense")

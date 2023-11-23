@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.ResearchFleshAssimilation <- "Research - Flesh Assimilation";
 ::Const.Strings.PerkDescription.ResearchFleshAssimilation <- "The flesh is eternal..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\nThis unit's flesh servant has a 10% chance to assimilate a perk from a killed enemy"
 + "\n"+::MSU.Text.colorRed("Can only assimilate up to 10 perks");
 

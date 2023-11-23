@@ -1,13 +1,13 @@
 ::Const.Strings.PerkName.Rattle <- "Rattle";
 ::Const.Strings.PerkDescription.Rattle <- "Rattle their bones..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Attack hit:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Attack hit:")
 + "\nRattle the target"
 + "\n "+::MSU.Text.colorRed("Must inflict at least 5 Hitpoint damage to trigger. 2H weapons inflict an additional stack of rattled")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Blunt attacks:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Blunt attacks:")
 + "\nCan apply injuries to the undead"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Rattle: (Duration: 1)")
++ "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Rattle: (Duration: 1)")
 + "\n "+::MSU.Text.colorRed("– 10% Damage Dealt");
 
 

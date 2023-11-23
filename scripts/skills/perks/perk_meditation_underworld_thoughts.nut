@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.MeditationUnderworldThoughts <- "Underworld Thoughts";
-::Const.Strings.PerkDescription.MeditationUnderworldThoughts <- ::MSU.Text.color(::Z.Log.Color.Purple, "Meditation")
+::Const.Strings.PerkDescription.MeditationUnderworldThoughts <- ::MSU.Text.color(::Z.Color.Purple, "Meditation")
 + "\nJourney through the underworld..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Improves summoned undead:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Improves summoned undead:")
 + "\n"+::MSU.Text.colorGreen("+33%") + " chance to survive being struck down (Base: 33%)";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.MeditationUnderworldThoughts].Name = ::Const.Strings.PerkName.MeditationUnderworldThoughts;

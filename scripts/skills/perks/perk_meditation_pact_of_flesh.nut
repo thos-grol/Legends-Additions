@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.MeditationPactOfFlesh <- "Pact of Flesh";
-::Const.Strings.PerkDescription.MeditationPactOfFlesh <- ::MSU.Text.color(::Z.Log.Color.Purple, "Meditation")
+::Const.Strings.PerkDescription.MeditationPactOfFlesh <- ::MSU.Text.color(::Z.Color.Purple, "Meditation")
 + "\nYou saw a world full of perfect red lines, unquestionable beauty..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("+X") + " to all stats"
 + "\n"+::MSU.Text.colorRed("X is 20% of this unit's flesh servant's base stats")
 + "\n"+::MSU.Text.colorGreen("100%") + " of damage dealt to this unit is transferred to this unit's flesh servant";

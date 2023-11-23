@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.StrangeStrikes <- "Strange Strikes";
 ::Const.Strings.PerkDescription.StrangeStrikes <- "Confuse the enemy with strange, unpredicatble strikes..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("+10") + " Melee Skill"
 + "\n"+::MSU.Text.colorRed("Attacks ignore Freedom of Movement and are unparriable")
 + "\n"+::MSU.Text.colorRed("Attacks ignore Riposte");

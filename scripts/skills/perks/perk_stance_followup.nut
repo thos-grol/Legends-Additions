@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.StanceFollowup <- "Follow Up";
-::Const.Strings.PerkDescription.StanceFollowup <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
+::Const.Strings.PerkDescription.StanceFollowup <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Turn End")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Turn End")
 + "\n Follow up for free";
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceFollowup].Name = ::Const.Strings.PerkName.StanceFollowup;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceFollowup].Tooltip = ::Const.Strings.PerkDescription.StanceFollowup;

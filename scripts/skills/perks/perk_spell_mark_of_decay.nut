@@ -1,13 +1,13 @@
 ::Const.Strings.PerkName.SpellMarkofDecay <- "Mark of Decay";
 ::Const.Strings.PerkDescription.SpellMarkofDecay <- "All will decay until there is silence and cold..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Mark of Decay\' (6 AP, 20 Fat, 2 Mana):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Mark of Decay\' (6 AP, 20 Fat, 2 Mana):")
 + "\n" + "Inflict "+::MSU.Text.colorGreen("Mark of Decay")
 + "\n" + "Inflict "+::MSU.Text.colorGreen("1")+" Decay"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Mark of Decay: (Duration: 3)")
-+ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "On turn start, inflict 25% of the unit's max fatigue as fatigue damage")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Decay: (Duration: 3, Stackable)")
-+ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "On wait or turn end, inflict 5 damage");
++ "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Mark of Decay: (Duration: 3)")
++ "\n " + ::MSU.Text.color(::Z.Color.BloodRed, "On turn start, inflict 25% of the unit's max fatigue as fatigue damage")
++ "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Decay: (Duration: 3, Stackable)")
++ "\n " + ::MSU.Text.color(::Z.Color.BloodRed, "On wait or turn end, inflict 5 damage");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpellMarkofDecay].Name = ::Const.Strings.PerkName.SpellMarkofDecay;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpellMarkofDecay].Tooltip = ::Const.Strings.PerkDescription.SpellMarkofDecay;

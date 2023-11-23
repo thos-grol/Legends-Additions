@@ -1,8 +1,8 @@
 ::Const.Strings.PerkName.Hybridization <- "Hybridization";
 ::Const.Strings.PerkDescription.Hybridization <- "Become proficient in both ranged and melee weapons..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Melee weapon equipped:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Melee weapon equipped:")
 + "\n"+::MSU.Text.colorGreen("+15% of Ranged Skill") + " as Melee Skill"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Ranged weapon equipped:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Ranged weapon equipped:")
 + "\n"+::MSU.Text.colorGreen("+15% of Melee Skill") + " as Ranged Skill";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Hybridization].Name = ::Const.Strings.PerkName.Hybridization;

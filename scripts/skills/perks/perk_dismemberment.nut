@@ -1,9 +1,9 @@
 ::Const.Strings.PerkName.Dismemberment <- "Dismemberment";
 ::Const.Strings.PerkDescription.Dismemberment <- "Learn to butcher flesh..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Attacks inflict:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Attacks inflict:")
 + "\n"+::MSU.Text.colorGreen("– X%") + " injury resistance"
 + "\n"+::MSU.Text.colorRed("X is 35% of maximum damage")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Cutting attacks:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Cutting attacks:")
 + "\nCan apply injuries to the undead";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Dismemberment].Name = ::Const.Strings.PerkName.Dismemberment;

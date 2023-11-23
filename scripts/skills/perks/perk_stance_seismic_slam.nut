@@ -1,25 +1,25 @@
 ::Const.Strings.PerkName.StanceSeismicSlam <- "Seismic Slam";
-::Const.Strings.PerkDescription.StanceSeismicSlam <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
+::Const.Strings.PerkDescription.StanceSeismicSlam <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
 + "\nEarthshaking..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorRed("– 25%") + " Initiative"
 + "\n"+::MSU.Text.colorRed("+3") + " Attack AP Cost up to 9"
 + "\nDouble the amount of rattle stacks inflicted"
 + "\nAttacks ignore Freedom of Movement and are unparriable"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "If Attack AP Cost > 5:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "If Attack AP Cost > 5:")
 + "\n"+::MSU.Text.colorGreen("+25%") + " damage"
 + "\nAttack will stagger and seal the enemy"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Stagger: (Removed on turn start)")
++ "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Stagger: (Removed on turn start)")
 + "\n"+::MSU.Text.colorRed("– 50% Initiative")
 + "\n"+::MSU.Text.colorRed("– 25 Melee Defense")
 + "\n"+::MSU.Text.colorRed("– 25 Ranged Defense")
 + "\n"+::MSU.Text.colorRed("+Cancels Shieldwall, Spearwall, Return Favor, and Riposte")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Seal: (Duration: 1)")
++ "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Seal: (Duration: 1)")
 + "\n"+::MSU.Text.colorRed("– 4 AP")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Rattle: (Duration: 1)")
++ "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Rattle: (Duration: 1)")
 + "\n "+::MSU.Text.colorRed("– 10% Damage Dealt");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceSeismicSlam].Name = ::Const.Strings.PerkName.StanceSeismicSlam;

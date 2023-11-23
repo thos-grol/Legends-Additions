@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.SpecBow = "Ranged Proficiency";
-::Const.Strings.PerkDescription.SpecBow = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
+::Const.Strings.PerkDescription.SpecBow = ::MSU.Text.color(::Z.Color.Purple, "Proficiency")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("1") + " Vision"
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Ranged)"
 + "\n " + ::MSU.Text.colorGreen("– 3") + " AP cost for reloading"

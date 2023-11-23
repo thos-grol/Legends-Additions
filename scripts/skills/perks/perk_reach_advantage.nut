@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.ReachAdvantage = "Reach Advantage";
 ::Const.Strings.PerkDescription.ReachAdvantage = "Abuse the superior reach of your weapon..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "2H Weapon Attack Hit:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "2H Weapon Attack Hit:")
 + "\n"+ ::MSU.Text.colorRed("+1 stack up to 5")
 + "\n" + ::MSU.Text.colorGreen("+7") + " Melee Defense per stack"
 + "\n" + ::MSU.Text.colorRed("Expires on turn start");

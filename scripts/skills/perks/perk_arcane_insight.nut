@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.ArcaneInsight <- "Arcane Insight";
 ::Const.Strings.PerkDescription.ArcaneInsight <- "Further inquiry into the arcane is the polishing of the mind..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("+1") + " Bright Trait tier"
 + "\n " + ::MSU.Text.colorRed("Non-refundable");
 

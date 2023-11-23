@@ -157,7 +157,7 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 				target.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
 				::Tactical.EventLog.logIn(
 					::Const.UI.getColorizedEntityName(target)
-					+ (roll <= chance ? ::MSU.Text.color(::Z.Log.Color.BloodRed, " is staggered" ) : ::MSU.Text.color(::Z.Log.Color.NiceGreen, " keeps their footing"))
+					+ (roll <= chance ? ::MSU.Text.color(::Z.Color.BloodRed, " is staggered" ) : ::MSU.Text.color(::Z.Color.NiceGreen, " keeps their footing"))
 					+ ::Z.Log.display_chance(roll, chance)
 				);
 			}

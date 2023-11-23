@@ -1,16 +1,16 @@
 ::Const.Strings.PerkName.SpecHammer = "Bludgeon Proficiency";
-::Const.Strings.PerkDescription.SpecHammer = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
+::Const.Strings.PerkDescription.SpecHammer = ::MSU.Text.color(::Z.Color.Purple, "Proficiency")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Bludgeons - Maces and Hammers)"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Headshot")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Headshot")
 + "\n Apply daze for 1 turn"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Bludgeon attacks inflict:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Bludgeon attacks inflict:")
 + "\n"+::MSU.Text.colorGreen("+5%") + " armor piercing (10% for 2H)"
 + "\n"+::MSU.Text.colorRed("Debuff remains until the end of battle. Caps at 30%")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Daze: (Duration: 2)")
++ "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Daze: (Duration: 2)")
 + "\n "+::MSU.Text.colorRed("– 50% Fatigue")
 + "\n "+::MSU.Text.colorRed("– 50% Initiative");
 

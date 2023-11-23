@@ -1,13 +1,13 @@
 ::Const.Strings.PerkName.SpecSword = "Sword Proficiency";
-::Const.Strings.PerkDescription.SpecSword = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
+::Const.Strings.PerkDescription.SpecSword = ::MSU.Text.color(::Z.Color.Purple, "Proficiency")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Swords)"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Ending turn, with sword equipped:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Ending turn, with sword equipped:")
 + "\nRiposte"
 + "\n "+::MSU.Text.colorRed("Invalid with less than 15 Fatigue remaining. If the sword cannot riposte, perform a cqc attack with a 50% chance of dazing")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Daze: (Duration: 2)")
++ "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Daze: (Duration: 2)")
 + "\n "+::MSU.Text.colorRed("– 50% Fatigue")
 + "\n "+::MSU.Text.colorRed("– 50% Initiative");
 

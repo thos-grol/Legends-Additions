@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.StanceAsura <- "Asura";
-::Const.Strings.PerkDescription.StanceAsura <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
+::Const.Strings.PerkDescription.StanceAsura <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Fully unarmed:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Fully unarmed:")
 + "\n Hand to Hand: " + ::MSU.Text.colorGreen("+3") + " CQC strikes"
 + "\n Kick: " + ::MSU.Text.colorGreen("+1") + " kick";
 

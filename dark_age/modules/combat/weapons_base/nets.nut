@@ -1,10 +1,10 @@
 ::Const.Strings.PerkName.LegendNetRepair = "Net Specialization";
 ::Const.Strings.PerkDescription.LegendNetRepair = "Many years and storms weathered with a net in hand..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "[u]Passive:[/u]")
 + "\n"+::MSU.Text.colorGreen("+1") + " Nets"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Offhand Empty:")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Turn End, Battle End:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Offhand Empty:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Turn End, Battle End:")
 + "\n"+::MSU.Text.colorGreen("Equip a net");
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendNetRepair].Name = ::Const.Strings.PerkName.LegendNetRepair;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendNetRepair].Tooltip = ::Const.Strings.PerkDescription.LegendNetRepair;
@@ -90,7 +90,7 @@
 //======================================================================================================================
 ::Const.Strings.PerkName.LegendNetCasting = "Net Arsenal"
 ::Const.Strings.PerkDescription.LegendNetCasting = "A well equipped mercenary is a prepared mercenary..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "[u]Passive:[/u]")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "[u]Passive:[/u]")
 + "\n"+::MSU.Text.colorGreen("+1") + " Net"
 + "\n"+::MSU.Text.colorGreen("+20%") + " Net debuff effectiveness";
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendNetCasting].Name = ::Const.Strings.PerkName.LegendNetCasting;

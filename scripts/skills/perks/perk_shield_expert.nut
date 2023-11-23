@@ -1,15 +1,15 @@
 ::Const.Strings.PerkName.ShieldExpert = "Shield Expert";
 ::Const.Strings.PerkDescription.ShieldExpert = "Become proficient in shields"
-+"\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++"\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Shields)"
 + "\n"+::MSU.Text.colorGreen("– 10%") + " damage taken while using a shield"
 + "\n " + ::MSU.Text.colorGreen("– 50%") + " shield damage recieved to a minimum of 1"
 
-+"\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On turn end:")
++"\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On turn end:")
 + "\nThis unit shieldwalls or fortifies if it hasn't already. Has 4 charges."
 + "\n " + ::MSU.Text.colorRed("Charges only decrement with enemy in ZOC.")
 
-+"\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Modifies Knock Back:")
++"\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Modifies Knock Back:")
 + "\n " + ::MSU.Text.colorGreen("+25%") + " chance to hit for Knockback";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.ShieldExpert].Name = ::Const.Strings.PerkName.ShieldExpert;

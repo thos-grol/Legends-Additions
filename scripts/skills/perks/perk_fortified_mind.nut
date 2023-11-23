@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.FortifiedMind = "Inner Faith";
 ::Const.Strings.PerkDescription.FortifiedMind = "Faith can move mountains..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("+25%") + " Resolve"
 + "\nRemoves "+::MSU.Text.colorRed("Superstitious, Dastard, Insecure, and Craven") + " from this unit";
 

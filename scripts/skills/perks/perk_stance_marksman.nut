@@ -1,10 +1,10 @@
 ::Const.Strings.PerkName.StanceMarksman <- "Marksman";
-::Const.Strings.PerkDescription.StanceMarksman <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
+::Const.Strings.PerkDescription.StanceMarksman <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Attack hit, +X% chance to trigger")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Attack hit, +X% chance to trigger")
 + "\n " + ::MSU.Text.colorGreen("+50") + " armor piercing"
 + "\n " + ::MSU.Text.colorGreen("+100%") + " headshot damage"
-+ "\n " + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Valid only for Bow, Crossbows, and Firearms. X is 1/4 of ranged skill");
++ "\n " + ::MSU.Text.color(::Z.Color.BloodRed, "Valid only for Bow, Crossbows, and Firearms. X is 1/4 of ranged skill");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceMarksman].Name = ::Const.Strings.PerkName.StanceMarksman;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceMarksman].Tooltip = ::Const.Strings.PerkDescription.StanceMarksman;

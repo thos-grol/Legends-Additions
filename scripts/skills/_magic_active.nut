@@ -36,7 +36,7 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 			{
 				id = 4,
 				type = "text",
-				text = "Costs " + ::MSU.Text.color(::Z.Log.Color.Purple, this.m.ManaCost) + " mana"
+				text = "Costs " + ::MSU.Text.color(::Z.Color.Purple, this.m.ManaCost) + " mana"
 			}
 		];
 

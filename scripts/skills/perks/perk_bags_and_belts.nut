@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.BagsAndBelts = "Bags And Belts";
 ::Const.Strings.PerkDescription.BagsAndBelts = "Never enough slots..."
-+ "\n\n"+::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n"+::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("+2") + " Bag slots";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.BagsAndBelts].Name = ::Const.Strings.PerkName.BagsAndBelts;

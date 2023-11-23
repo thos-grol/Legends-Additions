@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.PokePoke <- "Poke Poke";
 ::Const.Strings.PerkDescription.PokePoke <- "Poke poke poke poke..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Thrust, Glaive Slash, Prong:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Thrust, Glaive Slash, Prong:")
 + "\n " + ::MSU.Text.colorGreen("– 1") + " AP cost";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PokePoke].Name = ::Const.Strings.PerkName.PokePoke;

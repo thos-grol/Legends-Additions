@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.SpellCorpseExplosion <- "Corpse Explosion";
 ::Const.Strings.PerkDescription.SpellCorpseExplosion <- "A forbidden spell dangerous to both the caster and their enemies..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Corpse Explosion\' (9 AP, 20 Fat, 9 Mana):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Corpse Explosion\' (9 AP, 20 Fat, 9 Mana):")
 + "\n Explode an undead and deal X*0.33 to X damage to all units in surrounding tiles"
 + "\n "+::MSU.Text.colorRed("The caster takes 1 to X*0.33 damage as backlash. X is that undead's hp");
 

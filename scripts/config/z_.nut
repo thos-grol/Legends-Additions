@@ -12,17 +12,26 @@
 
 ///////////////
 
-::Z.Log.Color <- {};
-::Z.Log.Color.BloodRed <- "#900C3F";
-::Z.Log.Color.NiceGreen <- "#229954";
-::Z.Log.Color.Blue <- "#21618C";
-::Z.Log.Color.LightBlue <- "#3498DB";
-::Z.Log.Color.Orange <- "#BA4A00";
-::Z.Log.Color.Purple <- "#8E44AD";
-::Z.Log.Color.Teal <- "#1ABC9C";
-::Z.Log.Color.Gold <- "#F1C40F";
-::Z.Log.Color.Pink <- "#dfabcd";
+::Z.Color <- {};
+::Z.Color.BloodRed <- "#900C3F";
+::Z.Color.NiceGreen <- "#229954";
+::Z.Color.Blue <- "#21618C";
+::Z.Color.LightBlue <- "#3498DB";
+::Z.Color.Orange <- "#BA4A00";
+::Z.Color.Purple <- "#8E44AD";
+::Z.Color.Teal <- "#1ABC9C";
+::Z.Color.Gold <- "#F1C40F";
+::Z.Color.Pink <- "#dfabcd";
 ::Z.Log.HasActed <- false;
+
+//Item Rarity
+
+::Z.Color.Common <- "#900C3F";
+::Z.Color.Uncommon <- "#1eff00";
+::Z.Color.Rare <- "#0070dd";
+::Z.Color.Legendary <- "#ff8000";
+::Z.Color.Mythic <- "#243f63";
+
 
 /////////////////
 

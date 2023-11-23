@@ -1,8 +1,8 @@
 ::Const.Strings.PerkName.BattleFlow = "Battle Flow";
 ::Const.Strings.PerkDescription.BattleFlow = "Glide through battle, like a leaf in the storm..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "When killing, once per turn:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "When killing, once per turn:")
 + "\n" + ::MSU.Text.colorGreen("– 10% of Max Fatigue before armor penalties") + " from current fatigue"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "When hitting an attack:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "When hitting an attack:")
 + "\n"+ ::MSU.Text.colorRed("+1 stack up to 10")
 + "\n" + ::MSU.Text.colorGreen("+2 Melee and Ranged Skill") + " per stack"
 + "\n" + ::MSU.Text.colorGreen("+1") + " AP at 3 stacks"

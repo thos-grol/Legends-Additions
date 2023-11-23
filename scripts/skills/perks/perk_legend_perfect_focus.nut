@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.PerfectFocus = "Perfect Focus";
-::Const.Strings.PerkDescription.PerfectFocus = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
+::Const.Strings.PerkDescription.PerfectFocus = ::MSU.Text.color(::Z.Color.Purple, "Destiny")
 + "\n" + "Eternity within a moment..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("+10") + " Battle Flow stacks on combat start"
 + "\nThis character's attack rolls are (1, 95) instead of (1, 100)"
 + "\nThis character's defense rolls are (6, 100) instead of (1, 100)";

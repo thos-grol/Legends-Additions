@@ -1,12 +1,12 @@
 ::Const.Strings.PerkName.LegendEscapeArtist = "Escape Artist";
-::Const.Strings.PerkDescription.LegendEscapeArtist = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
+::Const.Strings.PerkDescription.LegendEscapeArtist = ::MSU.Text.color(::Z.Color.Purple, "Destiny")
 + "\n" + "Escape from anything, perhaps even death..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("– 1") + " AP cost for movement skills"
 + "\n"+::MSU.Text.colorGreen("– 25%") + " Fatigue cost for movement skills"
 + "\n"+::MSU.Text.colorGreen("+75") + " Melee Defense when moving"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On turn start:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On turn start:")
 + "\n"+::MSU.Text.colorGreen("Perform a break free action using Melee Skill with a -25 penalty");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Name = ::Const.Strings.PerkName.LegendEscapeArtist;

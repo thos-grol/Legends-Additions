@@ -1,8 +1,8 @@
 ::Const.Strings.PerkName.StanceDavid <- "David";
-::Const.Strings.PerkDescription.StanceDavid <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
+::Const.Strings.PerkDescription.StanceDavid <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
 
 + "\n " + ::MSU.Text.colorGreen("+33%") + " bonus multiplier for slings"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Sling Headshots:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Sling Headshots:")
 + "\n Will stun if possible";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceDavid].Name = ::Const.Strings.PerkName.StanceDavid;

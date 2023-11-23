@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.LeadByExample <- "Lead By Example";
 ::Const.Strings.PerkDescription.LeadByExample <- "Inspire those around you..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "For commanded units:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "For commanded units:")
 + "\n"+::MSU.Text.colorGreen("+5% of this unit\'s ") + "Melee Skill"
 + "\n"+::MSU.Text.colorGreen("+5% of this unit\'s ") + "Ranged Skill"
 + "\n"+::MSU.Text.colorGreen("+5% of this unit\'s ") + "Melee Defense"

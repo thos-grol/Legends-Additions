@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.LegendPeaceful = "Clarity";
 ::Const.Strings.PerkDescription.LegendPeaceful = "Take a glimpse of the landscape and draw it from memory..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("+10") + " Melee or Ranged skill, whichever is highest at base"
 + "\n"+::MSU.Text.colorGreen("+1") + " Vision"
 + "\n"+::MSU.Text.colorGreen("+5") + " Melee Defense"

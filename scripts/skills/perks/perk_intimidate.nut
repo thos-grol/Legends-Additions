@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.Intimidate <- "Intimidate";
 ::Const.Strings.PerkDescription.Intimidate <- "Intimidate your foes with aggressive attacks..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Attack:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Attack:")
 + "\n"+ ::MSU.Text.colorRed("+1 stack")
 + "\n" + ::MSU.Text.colorRed("– X") + " Resolve per stack"
 + "\n" + ::MSU.Text.colorRed("X is 10% of Melee Skill. Expires on turn start");

@@ -1,8 +1,8 @@
 ::Const.Strings.PerkName.HeadHunter = "Head Hunter";
 ::Const.Strings.PerkDescription.HeadHunter = "Aim to kill..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("+10%") + " Headshot chance"
-+ "\n\n"+::MSU.Text.color(::Z.Log.Color.Blue, "On headshot:")
++ "\n\n"+::MSU.Text.color(::Z.Color.Blue, "On headshot:")
 + "\n"+::MSU.Text.colorGreen("This unit's next attack will hit the head");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.HeadHunter].Name = ::Const.Strings.PerkName.HeadHunter;

@@ -1,7 +1,5 @@
 this.necromancer <- this.inherit("scripts/entity/tactical/abstract_human", {
-	m = {
-		School = null
-	},
+	m = {},
 	function create()
 	{
 		this.m.Name = "Necromancer (Apprentice)"
@@ -50,6 +48,7 @@ this.necromancer <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function drop_loot(_tile)
 	{
+		if (::Math.rand(1,100) > 20 ) return;
 		local tome = this.new("scripts/items/misc/tome");
 		tome.set_tome(this.m.Build.Drop);
 		tome.drop(_tile);

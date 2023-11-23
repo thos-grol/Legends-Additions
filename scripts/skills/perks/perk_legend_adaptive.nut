@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.LegendAdaptive <- "Adaptive";
 ::Const.Strings.PerkDescription.LegendAdaptive <- "Inspire those around you..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("+1") + " perk point"
 + "\n"+::MSU.Text.colorRed("Gain a weapon tree based on the equipped weapon");
 

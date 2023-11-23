@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.StancePrisoner <- "Prisoner";
-::Const.Strings.PerkDescription.StancePrisoner <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
+::Const.Strings.PerkDescription.StancePrisoner <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Incoming Attack Miss:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Incoming Attack Miss:")
 + "\n" + ::MSU.Text.colorGreen("+X%") + " chance to disarm the attacker"
 + "\n " + ::MSU.Text.colorRed("X is the attacker\'s miss chance");
 

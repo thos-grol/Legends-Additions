@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.Agile <- "Agile";
 ::Const.Strings.PerkDescription.Agile <- "Twist and dodge like a slippery snake"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("+10") + " Melee Defense"
 + "\n"+::MSU.Text.colorGreen("+10") + " Ranged Defense"
 + "\n"+::MSU.Text.colorRed("Invalid if a shield is equipped");

@@ -1,11 +1,11 @@
 ::Const.Strings.PerkName.Quickstep <- "Quickstep";
 ::Const.Strings.PerkDescription.Quickstep <- "Strike and move with grace..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\nGrants Footwork if the unit does not have it"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On attack hit:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On attack hit:")
 + "\nFootwork has a 25% chance to cost 0 AP and Fatigue"
 + "\n"+ ::MSU.Text.colorRed("Becomes 75% if the unit has the footwork perk")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Footwork\' (3 AP, 20 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Footwork\' (3 AP, 20 Fat):")
 + "\nLeave a zone of control without incurring any free attacks";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Quickstep].Name = ::Const.Strings.PerkName.Quickstep;

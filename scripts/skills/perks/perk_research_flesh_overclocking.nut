@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.ResearchFleshOverclocking <- "Research - Flesh Overclocking";
 ::Const.Strings.PerkDescription.ResearchFleshOverclocking <- "Reveal the power hidden in the flesh..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Summoned undead and this unit:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Summoned undead and this unit:")
 + "\n " + ::MSU.Text.colorGreen("– 20%") + " damage taken"
 + "\n " + ::MSU.Text.colorGreen("+20%") + " damage dealt"
 + "\n " + ::MSU.Text.colorGreen("+20%") + " initiative";

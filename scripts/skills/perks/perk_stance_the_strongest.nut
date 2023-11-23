@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.StanceTheStrongest <- "The Strongest";
-::Const.Strings.PerkDescription.StanceTheStrongest <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
+::Const.Strings.PerkDescription.StanceTheStrongest <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
 + "\nThe strongest are undeterred no matter what they face"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Upon taking damage:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Upon taking damage:")
 + "\nParry the attack and strike back"
 + "\n"+::MSU.Text.colorRed("Triggers only once per turn. Retaliation only works at 1 tile range");
 

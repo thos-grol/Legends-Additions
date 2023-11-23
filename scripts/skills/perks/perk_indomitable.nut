@@ -1,13 +1,13 @@
 ::Const.Strings.PerkName.Indomitable = "Indomitable";
-::Const.Strings.PerkDescription.Indomitable = ::MSU.Text.color(::Z.Log.Color.Purple, "Destiny")
+::Const.Strings.PerkDescription.Indomitable = ::MSU.Text.color(::Z.Color.Purple, "Destiny")
 + "\n" + "Indomitable, like the mountain..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Indomitable\' (5 AP, 25 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Indomitable\' (5 AP, 25 Fat):")
 + "\n " + ::MSU.Text.colorGreen("– 50%") + " damage taken"
 + "\n" + ::MSU.Text.colorGreen("+Cull Immunity")
 + "\n" + ::MSU.Text.colorGreen("+Stun Immunity")
 + "\n" + ::MSU.Text.colorGreen("+Displacement Immunity")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Upon reaching 50% Hitpoints:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Upon reaching 50% Hitpoints:")
 + "\n" + ::MSU.Text.colorGreen("Become Indomitable")
 + "\n" + ::MSU.Text.colorRed("Effect lasts until the end of battle");
 

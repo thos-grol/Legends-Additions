@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.Duelist = "Duelist";
 ::Const.Strings.PerkDescription.Duelist = "Become one with your weapon..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Offhand empty or has throwable item:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Offhand empty or has throwable item:")
 + "\n" + ::MSU.Text.colorGreen("+25%") + " armor ignore"
 + "\n\n" + ::MSU.Text.colorRed("Bucklers and parrying daggers gain half of this bonus");
 

@@ -76,8 +76,8 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 			::Tactical.EventLog.log(
 				::Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " "
 				 + "[Swallowed]"
-				 + " » " + ::MSU.Text.color(::Z.Log.Color.BloodRed, prev) + " › " + ::MSU.Text.color(::Z.Log.Color.BloodRed, this.m.SwallowedEntity_HP)
-				 + " ([b]" + ::MSU.Text.color(::Z.Log.Color.BloodRed, damage) + "[/b])"
+				 + " » " + ::MSU.Text.color(::Z.Color.BloodRed, prev) + " › " + ::MSU.Text.color(::Z.Color.BloodRed, this.m.SwallowedEntity_HP)
+				 + " ([b]" + ::MSU.Text.color(::Z.Color.BloodRed, damage) + "[/b])"
 			);
 			::Tactical.EventLog.logIn(
 				::Const.UI.getColorizedEntityName(actor) + " heals " + damage + " hitpoints.\n\n"

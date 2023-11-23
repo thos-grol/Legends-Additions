@@ -1,12 +1,12 @@
 ::Const.Strings.PerkName.LegendTwirl <- "Twirl";
 ::Const.Strings.PerkDescription.LegendTwirl <- "Gracefully redirect the enemy... and land them in danger!"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Rotation\' (3 AP, 25 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Rotation\' (3 AP, 25 Fat):")
 + "\nSwitch places with an allied unit"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+"Rotation now targets enemies and has a 20% chance to stagger them"
 + "\n"+::MSU.Text.colorRed("The chance to stagger becomes 40% if this unit has the Rotation perk")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Stagger: (Removed on turn start)")
++ "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Stagger: (Removed on turn start)")
 + "\n"+::MSU.Text.colorRed("– 50% Initiative")
 + "\n"+::MSU.Text.colorRed("– 25 Melee Defense")
 + "\n"+::MSU.Text.colorRed("– 25 Ranged Defense")
@@ -21,7 +21,7 @@
 
 ::Const.Strings.PerkName.Rotation = "Rotation";
 ::Const.Strings.PerkDescription.Rotation = "Rotate!"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Rotation\' (3 AP, 25 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Rotation\' (3 AP, 25 Fat):")
 + "\nSwitch places with an allied unit"
 + "\n"+::MSU.Text.colorRed("Invalid if either character is stunned, rooted or otherwise disabled");
 

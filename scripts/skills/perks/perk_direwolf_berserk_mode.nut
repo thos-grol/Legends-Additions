@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.DirewolfBerserkMode <- "Berserk Mode";
 ::Const.Strings.PerkDescription.DirewolfBerserkMode <- "Unstoppable rage..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "When reduced to 50% hp:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "When reduced to 50% hp:")
 + "\n• Triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
 + "\n• Become immune to stuns and displacement for 2 turns."
 + "\n• Gain increased damage, initiative, and defenses for 2 turns.";
@@ -117,7 +117,7 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 		this.Sound.play("sounds/winter/blizzard_buildup.wav", 200.0, actor.getPos());
 
 		::Tactical.EventLog.log(
-			"\n" + ::Const.UI.getColorizedEntityName(actor) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " has gone berserk.") + "\n"
+			"\n" + ::Const.UI.getColorizedEntityName(actor) + ::MSU.Text.color(::Z.Color.BloodRed, " has gone berserk.") + "\n"
 		);
 
 		local tag = {
@@ -201,7 +201,7 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 
 				if (!user.isHiddenToPlayer() && target.getTile().IsVisibleForPlayer)
 				::Tactical.EventLog.logIn(
-					::Const.UI.getColorizedEntityName(target) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " is stunned (3 turns).")
+					::Const.UI.getColorizedEntityName(target) + ::MSU.Text.color(::Z.Color.BloodRed, " is stunned (3 turns).")
 				);
 			}
 		}

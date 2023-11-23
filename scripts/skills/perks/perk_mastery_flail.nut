@@ -1,11 +1,11 @@
 ::Const.Strings.PerkName.SpecFlail = "Flail Proficiency";
-::Const.Strings.PerkDescription.SpecFlail = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
+::Const.Strings.PerkDescription.SpecFlail = ::MSU.Text.color(::Z.Color.Purple, "Proficiency")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Flail)"
 + "\nThresh gains"+::MSU.Text.colorGreen("+5%")+ " chance to hit"
 + "\nLash and Hail ignore shield defense bonuses"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "On attacking with Flail:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On attacking with Flail:")
 + "\n " + ::MSU.Text.colorGreen("25%") + " to do an extra free attack";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecFlail].Name = ::Const.Strings.PerkName.SpecFlail;

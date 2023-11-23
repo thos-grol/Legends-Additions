@@ -1,10 +1,10 @@
 ::Const.Strings.PerkName.TrialByFire <- "Trial By Fire";
 ::Const.Strings.PerkDescription.TrialByFire <- "Soldiers are forged by battle..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Upon Victory, for units below LV5:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Upon Victory, for units below LV5:")
 + "\n" + ::MSU.Text.colorGreen("+1") + " Level"
 + "\n" + ::MSU.Text.colorRed("The effect is cancelled if the commander dies")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Rally the Troops\' (5 AP, 25 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Rally the Troops\' (5 AP, 25 Fat):")
 + "\nRally fleeing allies, and raise morale of all nearby allies to a steady level"
 + "\n"+::MSU.Text.colorRed("Higher resolve increases the chance to succeed")
 

@@ -1,14 +1,14 @@
 ::Const.Strings.PerkName.LegendSpecFists = "Unarmed Proficiency";
-::Const.Strings.PerkDescription.LegendSpecFists = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
+::Const.Strings.PerkDescription.LegendSpecFists = ::MSU.Text.color(::Z.Color.Purple, "Proficiency")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Unarmed)"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Unarmed strikes:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Unarmed strikes:")
 + "\n"+::MSU.Text.colorGreen("+X%") + " unarmed damage"
 + "\n"+::MSU.Text.colorGreen("+X%") + " unarmed stagger chance"
 + "\n"+::MSU.Text.colorRed("X = 2*sqrt(total armor weight)")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.BloodRed, "Stagger: (Removed on turn start)")
++ "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Stagger: (Removed on turn start)")
 + "\n"+::MSU.Text.colorRed("– 50% Initiative")
 + "\n"+::MSU.Text.colorRed("– 25 Melee Defense")
 + "\n"+::MSU.Text.colorRed("– 25 Ranged Defense")

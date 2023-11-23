@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.StanceExecutioner <- "Executioner";
-::Const.Strings.PerkDescription.StanceExecutioner <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
+::Const.Strings.PerkDescription.StanceExecutioner <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("+50%") + " Headshot chance"
 + "\n "+::MSU.Text.colorRed("Cull") + " now triggers at "+::MSU.Text.colorRed("44%");
 

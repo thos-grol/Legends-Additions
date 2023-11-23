@@ -1,13 +1,13 @@
 ::Const.Strings.PerkDescription.Pathfinder = "Navigating all sorts of difficult terrain..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("– 1") + " movement AP cost (minimum of 2 per tile)"
 + "\n"+::MSU.Text.colorGreen("– 50%") + " movement Fatigue cost"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Sprint\' (5 AP, 25 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Sprint\' (5 AP, 25 Fat):")
 + "\nSprint 4 tiles in a straight line"
 + "\n"+::MSU.Text.colorRed("Does not work across rough terrain or through enemy zones of control")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Climb\' (3 AP, 20 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Climb\' (3 AP, 20 Fat):")
 + "\nClimb up or down levels. Does not trigger attacks of opportunity";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Pathfinder].Tooltip = ::Const.Strings.PerkDescription.Pathfinder;

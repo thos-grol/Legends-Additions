@@ -1,9 +1,9 @@
 ::Const.Strings.PerkName.SpellFleshServant <- "Flesh Servant";
 ::Const.Strings.PerkDescription.SpellFleshServant <- "Bind flesh to server!..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Bind Flesh Servant\' (6 AP, 20 Fat, 2 Mana):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Bind Flesh Servant\' (6 AP, 20 Fat, 2 Mana):")
 + "\nBinds any valid corpse as a flesh servant to be summoned. The servant keeps the dead's perks and stats."
 + "\n "+::MSU.Text.colorRed("Usable once per battle")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Summon Flesh Servant\' (6 AP, 20 Fat, 2 Mana):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Summon Flesh Servant\' (6 AP, 20 Fat, 2 Mana):")
 + "\nSummons the bound flesh servant"
 + "\n "+::MSU.Text.colorRed("Usable once per battle")
 + "\n";

@@ -1,12 +1,12 @@
 ::Const.Strings.PerkName.RuinKnight <- "Ruin Knight";
-::Const.Strings.PerkDescription.RuinKnight <- ::MSU.Text.color(::Z.Log.Color.Purple, "Class")
+::Const.Strings.PerkDescription.RuinKnight <- ::MSU.Text.color(::Z.Color.Purple, "Class")
 + "\nBring tragedy and ruin to those around you... The remnant power of the God of Ruin"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\nF Class Vitality: " + ::MSU.Text.colorGreen("+50") + " Hitpoints"
 + "\nF Class Vitality: " + ::MSU.Text.colorGreen("+10") + " Melee Skill"
 + "\nF Class Vitality: " + ::MSU.Text.colorGreen("+10") + " Melee Defense"
 + "\nF Class Vitality: " + ::MSU.Text.colorGreen("+10") + " Ranged Defense"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Turn start, 20% chance:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Turn start, 20% chance:")
 + "\n• Inflict an injury on all units within 2 tiles";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.RuinKnight].Name = ::Const.Strings.PerkName.RuinKnight;
@@ -44,7 +44,7 @@ this.perk_class_ruin_knight <- this.inherit("scripts/skills/skill", {
 		this.Sound.play("sounds/monster/direwolf_ruin.wav", 300.0, actor.getPos());
 
 		::Tactical.EventLog.log(
-			"\n" + ::Const.UI.getColorizedEntityName(actor) + ::MSU.Text.color(::Z.Log.Color.BloodRed, "'s aura of ruin flares.")
+			"\n" + ::Const.UI.getColorizedEntityName(actor) + ::MSU.Text.color(::Z.Color.BloodRed, "'s aura of ruin flares.")
 		);
 
 		local tag = {

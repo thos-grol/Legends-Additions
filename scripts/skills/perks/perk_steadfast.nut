@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.Steadfast = "Endurance";
 ::Const.Strings.PerkDescription.Steadfast = "Endure and in enduring, become strong..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("– 90%") + " Fatigue from being attacked"
 + "\n" + ::MSU.Text.colorGreen("– 50%") + " effect of Fatigue on Initiative"
 

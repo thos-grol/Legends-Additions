@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.StanceWrath <- "Wrath";
-::Const.Strings.PerkDescription.StanceWrath <- ::MSU.Text.color(::Z.Log.Color.Purple, "Stance")
+::Const.Strings.PerkDescription.StanceWrath <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
 + "\nSacrifice defense to gain the ultimate offense"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("+25%") + " damage"
 + "\n"+::MSU.Text.colorRed("– 25%") + " Melee Defense"
 + "\n"+::MSU.Text.colorRed("– 25%") + " Fatigue cost for AOE attacks"

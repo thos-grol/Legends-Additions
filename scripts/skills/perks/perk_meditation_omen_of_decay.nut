@@ -1,13 +1,13 @@
 ::Const.Strings.PerkName.MeditationOmenOfDecay <- "Omen of Decay";
-::Const.Strings.PerkDescription.MeditationOmenOfDecay <- ::MSU.Text.color(::Z.Log.Color.Purple, "Meditation")
+::Const.Strings.PerkDescription.MeditationOmenOfDecay <- ::MSU.Text.color(::Z.Color.Purple, "Meditation")
 + "\nAll that is will decay and return to dust..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\nBecome immune to decay"
 + "\n"+::MSU.Text.colorGreen("+X") + " decay damage (affects Miasma Body)"
 + "\n"+::MSU.Text.colorGreen("+2X") + " fatigue damage from Mark of Decay"
 + "\n"+::MSU.Text.colorGreen("+2X%") + " chance of rotten offering reanimating a corpse"
 + "\n"+::MSU.Text.colorRed("X is the potency of omen of decay")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Unit dies having decay effect, 10%:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Unit dies having decay effect, 10%:")
 + "\n"+::MSU.Text.colorGreen("+1") + " potency (Max: 10)"
 ;
 

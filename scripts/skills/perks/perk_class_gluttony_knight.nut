@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.GluttonyKnight <- "Gluttony Shield";
 ::Const.Strings.PerkDescription.GluttonyKnight <- "Protection by the powers of gluttony..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n• At the start of battle, gain 1 charge of shielding."
 + "\n• Each charge can nullify a blow. Gain more charges through consuming enemies or corpses.";
 

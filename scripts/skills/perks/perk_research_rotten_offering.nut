@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.ResearchRottenOffering <- "Research - Rotten Offering";
 ::Const.Strings.PerkDescription.ResearchRottenOffering <- "Offer decaying flesh as the sacrement..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Mark of Decay:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Mark of Decay:")
 + "\n"+ ::MSU.Text.colorGreen("+ 200%") + " target attraction to the marked unit"
 + "\nUnits killed with Mark of Decay have a 10% chance to be reanimated on round end";
 

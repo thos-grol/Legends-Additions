@@ -1,8 +1,8 @@
 ::Const.Strings.PerkName.WinterMage <- "Winter Mage";
-::Const.Strings.PerkDescription.WinterMage <- ::MSU.Text.color(::Z.Log.Color.Purple, "Class")
+::Const.Strings.PerkDescription.WinterMage <- ::MSU.Text.color(::Z.Color.Purple, "Class")
 + "\nWinter is the principle of silence, of endings, and of those things that are not quite dead"
 + "\nAn ingenious formula that converts actuality into spirituality"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\nVitality Conversion: " + ::MSU.Text.colorRed("-25") + " Hitpoints"
 + "\n" + ::MSU.Text.colorGreen("1") + " Mana & Mana pool"
 + "\nEnables the casting of Winter aspect magic";

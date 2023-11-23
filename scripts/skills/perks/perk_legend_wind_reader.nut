@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.LegendWindReader = "Wind Reader";
 ::Const.Strings.PerkDescription.LegendWindReader = "Read the wind, calculate trajectories..."
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("+10") + " Ranged Skill"
 + "\n"+::MSU.Text.colorGreen("+20") + " Ranged Defense";
 

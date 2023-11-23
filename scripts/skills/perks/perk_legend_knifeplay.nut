@@ -1,10 +1,10 @@
 ::Const.Strings.PerkName.LegendKnifeplay = "Knifeplay";
 ::Const.Strings.PerkDescription.LegendKnifeplay = "Become proficient in daggers"
-+"\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++"\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Daggers)"
 + "\n " + ::MSU.Text.colorGreen("– 1") + " AP cost for Stab, Puncture and Deathblow"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Throw Knife\' (4 AP, 10 Fat, 3 Charges):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Throw Knife\' (4 AP, 10 Fat, 3 Charges):")
 + "\nThrow a knife at the enemy, using the dagger's properties and the user's perks to calculate damage. Can be used in melee range"
 + "\nA dagger must be equipped or in the bag. Hybridization is applied in calculations";
 

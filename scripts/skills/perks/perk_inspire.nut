@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.Inspire <- "Command";
 ::Const.Strings.PerkDescription.Inspire <- "Command a soldier to strike..."
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "\'Command\' (7 AP, 30 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Command\' (7 AP, 30 Fat):")
 + "\nTarget unit gains " + ::MSU.Text.colorGreen("4 AP")
 + "\n\n" + ::MSU.Text.colorRed("There can only be one commander in the party. Will refund this perk if any other unit has it.");
 

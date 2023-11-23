@@ -1,12 +1,12 @@
 ::Const.Strings.PerkName.SpecAxe = "Axe Proficiency";
-::Const.Strings.PerkDescription.SpecAxe = ::MSU.Text.color(::Z.Log.Color.Purple, "Proficiency")
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
+::Const.Strings.PerkDescription.SpecAxe = ::MSU.Text.color(::Z.Color.Purple, "Proficiency")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Axes)"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "With axe equipped:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "With axe equipped:")
 + "\n Headshots will "+::MSU.Text.colorRed("Cull")+", executing targets with less than "+::MSU.Text.colorRed("33%")+" Hitpoints after recieving the hit"
 
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Split Shield")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Split Shield")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue"
 + "\n " + ::MSU.Text.colorGreen("+50%") + " shield damage";
 
@@ -48,7 +48,7 @@ this.perk_mastery_axe <- this.inherit("scripts/skills/skill", {
 		if (_targetEntity.getHitpoints() / (_targetEntity.getHitpointsMax() * 1.0) < threshold)
 		{
 			if (!actor.isHiddenToPlayer() && _targetEntity.getTile().IsVisibleForPlayer)
-				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.color(::Z.Log.Color.BloodRed, " has been culled"));
+				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + ::MSU.Text.color(::Z.Color.BloodRed, " has been culled"));
 
 			_targetEntity.kill(actor, _skill, ::Const.FatalityType.Decapitated);
 		}

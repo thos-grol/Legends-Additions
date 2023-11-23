@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.Underdog = "Underdog";
 ::Const.Strings.PerkDescription.Underdog = "Dog or Wolf?"
-+ "\n\n" + ::MSU.Text.color(::Z.Log.Color.Blue, "Passive:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("+5") + " Surrounded Defense";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Underdog].Name = ::Const.Strings.PerkName.Underdog;
