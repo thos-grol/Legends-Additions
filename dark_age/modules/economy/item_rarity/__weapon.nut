@@ -1,41 +1,49 @@
 ::mods_hookExactClass("items/weapons/weapon", function (o)
 {
     o.m.rolled <- false;
-    o.m.rarity <- "Common"
+    o.m.Rarity <- "Rare";
 
-    o.m.onAddedToStash = function( _stashID )
+    o.m.onAddedToStash <- function( _stashID )
 	{
 		this.m.rolled = true;
-		this.m.rarity <- "Rare"
 	}
 
     o.roll_values <- function()
 	{
-        if (this.m.rolled) return;
+		if (this.m.rolled) return;
+		this.m.rolled = true;
+
         local roll = 0;
         local diff = 0;
 
 		if (this.m.ConditionMax > 1)
 		{
+
 			roll = ::Math.rand(80, 100);
             diff += 100 - roll;
             this.m.Condition = ::Math.round(this.m.Condition * roll * 0.01) * 1.0;
 			this.m.ConditionMax = this.m.Condition;
 		}
 
-        roll = ::Math.rand(100, 120);
-        diff += roll - 100;
+        roll = ::Math.rand(100, 140);
+        diff += (roll - 100) / 2;
         this.m.StaminaModifier = ::Math.round(this.m.StaminaModifier * roll * 0.01);
 
         roll = ::Math.rand(80, 100);
         diff += 100 - roll;
         this.m.RegularDamage = ::Math.round(this.m.RegularDamage * roll  * 0.01);
+
+		roll = ::Math.rand(80, 100);
+        diff += 100 - roll;
         this.m.RegularDamageMax = ::Math.round(this.m.RegularDamageMax * roll * 0.01);
 
+		roll = ::Math.round(::Math.rand(0, 50) / 10.0);
+        diff += roll * 4;
+        this.m.FatigueOnSkillUse = this.m.FatigueOnSkillUse - roll;
 
-
-        if (diff == 0) this.m.Rarity = "Rare";
-        else if (diff <= 30)
+		local pct = diff / 100.0;
+        if (pct <= 0.1) this.m.Rarity = "Rare";
+        else if (pct <= 0.4)
 		{
 			this.m.Rarity = "Uncommon";
 			this.m.Value = ::Math.round(0.8 * this.m.Value);
@@ -47,7 +55,8 @@
 		}
 	}
 
-	o.getName = function()
+	//helper
+	o.getName <- function()
 	{
 		return ::MSU.Text.color(getRarityColor(), this.m.Name);
 	}
@@ -286,8 +295,6 @@
 
 
 
-
-
     //Serialization
 
     o.onSerialize = function( _out )
@@ -299,6 +306,7 @@
         _out.writeI8(this.m.StaminaModifier);
         _out.writeU16(this.m.RegularDamage);
         _out.writeU16(this.m.RegularDamageMax);
+		_out.writeI16(this.m.FatigueOnSkillUse);
         _out.writeF32(0);
 
         //Vanilla
@@ -315,6 +323,7 @@
         this.m.StaminaModifier = _in.readI8();
         this.m.RegularDamage = _in.readU16();
         this.m.RegularDamageMax = _in.readU16();
+		this.m.FatigueOnSkillUse = _in.readI16();
         _in.readF32();
 
         //Vanilla

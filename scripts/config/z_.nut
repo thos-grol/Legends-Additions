@@ -26,10 +26,10 @@
 
 //Item Rarity
 
-::Z.Color.Common <- "#900C3F";
-::Z.Color.Uncommon <- "#1eff00";
-::Z.Color.Rare <- "#0070dd";
-::Z.Color.Legendary <- "#ff8000";
+::Z.Color.Common <- "#666666";
+::Z.Color.Uncommon <- "#246f45";
+::Z.Color.Rare <- "#26619C";
+::Z.Color.Legendary <- "#be471a";
 ::Z.Color.Mythic <- "#243f63";
 
 
