@@ -45,8 +45,8 @@ this.mana_pool_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		if (!actor.getFlags().has("mana")) actor.getFlags().set("mana", 1);
-		if (!actor.getFlags().has("mana_max")) actor.getFlags().set("mana_max", 1);
+		if (!actor.getFlags().has("mana")) actor.getFlags().set("mana", 2);
+		if (!actor.getFlags().has("mana_max")) actor.getFlags().set("mana_max", 2);
 	}
 
 	function is_payable( _amount )

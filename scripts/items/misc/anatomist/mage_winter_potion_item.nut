@@ -17,13 +17,13 @@ this.mage_winter_potion_item <- this.inherit("scripts/items/misc/anatomist/anato
 			id = 11,
 			type = "text",
 			icon = "ui/icons/health.png",
-			text = ::MSU.Text.colorRed("-25") + " Hitpoints. Converts actuality into spirituality"
+			text = ::MSU.Text.colorRed("-25") + " Hitpoints (Vitality Conversion)"
 		});
 		result.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = ::MSU.Text.colorGreen("1") + " Mana & Mana pool"
+			text = ::MSU.Text.colorGreen("1") + " Mana pool"
 		});
 		result.push({
 			id = 11,
