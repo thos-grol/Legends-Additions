@@ -11,7 +11,8 @@
     //roll fns
     o.roll_values <- function()
 	{
-        if (this.m.rolled) return;
+        if (!this.Tactical.isActive()) this.m.rolled = true;
+		if (this.m.rolled) return;
 		this.m.rolled = true;
 
         local roll = 0;
