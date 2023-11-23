@@ -11,7 +11,7 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 	{
 		this.m.ID = "actives.spell.flesh_servant_bind";
 		this.m.Name = "Bind Flesh Servant";
-		this.m.Description = "";
+		this.m.Description = "Bind a corpse to be your most loyal servant and keep them by your side...";
 		this.m.Icon = "skills/raisedead2.png"; //FEATURE_0: ART HOME flesh_servant_bind
 		this.m.IconDisabled = "skills/raisedead2_bw.png";
 		this.m.Overlay = "active_26";
@@ -197,6 +197,108 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 	{
 		this.m.Used = false;
 	}
+
+	//Tooltips
+	function custom_tooltip(ret)
+	{
+		ret.push({
+			id = 3,
+			type = "text",
+			icon = "ui/tooltips/blank.png",
+			text = this.m.Name_
+		});
+
+		local t = this.m.Type_ == "scripts/entity/tactical/enemies/flesh_abomination" ? "Melee" : "Ranged";
+		ret.push({
+			id = 3,
+			type = "text",
+			icon = "ui/tooltips/blank.png",
+			text = "Type: " + t
+		});
+
+		//stats
+		ret.push({
+			id = 3,
+			type = "text",
+			icon = "ui/tooltips/warning.png",
+			text = ::MSU.Text.colorRed("Stats: ")
+		});
+		tooltip.push({
+			id = 101,
+			type = "hint",
+			icon = "ui/icons/bravery.png",
+			text = "" + this.m.BaseProperties.Bravery
+		});
+		tooltip.push({
+			id = 102,
+			type = "hint",
+			icon = "ui/icons/initiative.png",
+			text = "" + this.m.BaseProperties.Initiative
+		});
+		tooltip.push({
+			id = 103,
+			type = "hint",
+			icon = "ui/icons/melee_skill.png",
+			text = "" + this.m.BaseProperties.MeleeSkill
+		});
+		tooltip.push({
+			id = 104,
+			type = "hint",
+			icon = "ui/icons/ranged_skill.png",
+			text = "" + this.m.BaseProperties.RangedSkill
+		});
+		tooltip.push({
+			id = 105,
+			type = "hint",
+			icon = "ui/icons/melee_defense.png",
+			text = "" + this.m.BaseProperties.MeleeDefense
+		});
+		tooltip.push({
+			id = 106,
+			type = "hint",
+			icon = "ui/icons/ranged_defense.png",
+			text = "" + this.m.BaseProperties.RangedDefense
+		});
+		try {
+			tooltip.push({
+				id = 106,
+				type = "hint",
+				icon = "ui/icons/armor_head.png",
+				text = "" + this.m.BaseProperties.Armor[0]
+			});
+
+			tooltip.push({
+				id = 106,
+				type = "hint",
+				icon = "ui/icons/armor_body.png",
+				text = "" + this.m.BaseProperties.Armor[1]
+			});
+		}catch(exception){}
+
+		//skills
+
+		ret.push({
+			id = 3,
+			type = "text",
+			icon = "ui/tooltips/warning.png",
+			text = ::MSU.Text.colorRed("Skills: ")
+		});
+
+		foreach(skill in this.m.Skills)
+		{
+			ret.push({
+				id = 3,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = skill.m.Name
+			});
+		}
+		return ret;
+	}
+
+
+
+	////////////////////////
 
 	function onSerialize( _out )
 	{

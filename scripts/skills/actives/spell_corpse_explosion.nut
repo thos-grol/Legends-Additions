@@ -4,7 +4,7 @@ this.spell_corpse_explosion <- this.inherit("scripts/skills/_magic_active", {
 	{
 		this.m.ID = "actives.spell.corpse_explosion";
 		this.m.Name = "Corpse Explosion";
-		this.m.Description = "";
+		this.m.Description = "A forbidden spell, be wary of it's backlash";
 		this.m.Icon = "skills/raisedead2.png"; //FEATURE_0: HOME ART corpse explosion active
 		this.m.IconDisabled = "skills/raisedead2_bw.png";
 		this.m.Overlay = "active_26";
@@ -130,7 +130,7 @@ this.spell_corpse_explosion <- this.inherit("scripts/skills/_magic_active", {
 			}
 		}
 
-		
+
 		local hitInfo = clone this.Const.Tactical.HitInfo;
 		hitInfo.DamageRegular = this.Math.rand(1, max_backlash);
 		hitInfo.DamageDirect = 1.0;

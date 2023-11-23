@@ -6,7 +6,7 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 	{
 		this.m.ID = "actives.spell.reanimate";
 		this.m.Name = "Reanimate";
-		this.m.Description = "";
+		this.m.Description = "Call the dead to fight for you...";
 		this.m.Icon = "skills/raisedead2.png";
 		this.m.IconDisabled = "skills/raisedead2_bw.png";
 		this.m.Overlay = "active_26";

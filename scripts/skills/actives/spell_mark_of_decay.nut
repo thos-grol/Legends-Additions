@@ -4,7 +4,7 @@ this.spell_mark_of_decay <- this.inherit("scripts/skills/_magic_active", {
 	{
 		this.m.ID = "actives.spell.mark_of_decay";
 		this.m.Name = "Mark of Decay";
-		this.m.Description = "";
+		this.m.Description = "Mark your enemies for death to take them...";
 		this.m.Icon = "skills/mark_of_decay.png";
 		this.m.IconDisabled = "skills/mark_of_decay_bw.png";
 		this.m.Overlay = "active_26";
@@ -81,7 +81,7 @@ this.spell_mark_of_decay <- this.inherit("scripts/skills/_magic_active", {
 				decay.setDamage((tag.User.getFlags().has("decay_bonus") ? tag.User.getFlags().getAsInt("decay_bonus") + 5 : 5));
 			target.getSkills().add(decay);
 		}
-		
+
 
 		//Mark of Decay
 		local effect = target.getSkills().getSkillByID("effects.mark_of_decay");

@@ -6,7 +6,7 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
 	{
 		this.m.ID = "actives.spell.flesh_servant_summon";
 		this.m.Name = "Summon Flesh Servant";
-		this.m.Description = "";
+		this.m.Description = "Summon your loyal servant...";
 		this.m.Icon = "skills/raisedead2.png"; //FEATURE_0: HOME ART flesh_servant_summon
 		this.m.IconDisabled = "skills/raisedead2_bw.png";
 		this.m.Overlay = "active_26";

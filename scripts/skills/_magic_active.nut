@@ -9,7 +9,6 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 	{
 	}
 
-	//TODO: bind servant tooltip show's servant name, stats, and skill
 	function getTooltip()
 	{
 		local ret = [
@@ -40,6 +39,8 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 			}
 		];
 
+		ret = custom_tooltip(ret);
+
 		local a = this.m.Container.getActor();
 		if (!a.getFlags().has(this.m.Aspect))
 		{
@@ -63,6 +64,11 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 			});
 		}
 
+		return ret;
+	}
+
+	function custom_tooltip(ret)
+	{
 		return ret;
 	}
 
