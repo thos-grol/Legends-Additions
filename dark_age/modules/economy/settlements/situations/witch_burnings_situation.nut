@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/witch_burnings_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/witch_burnings_situation", function(o) {
 	o.onRemoved = function( _settlement )
 	{
 		_settlement.resetShop();

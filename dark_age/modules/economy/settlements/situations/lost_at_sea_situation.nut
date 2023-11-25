@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/lost_at_sea_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/lost_at_sea_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.FoodRarityMult *= 0.5;

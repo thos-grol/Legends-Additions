@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/refugees_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/refugees_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.RarityMult *= 0.9;

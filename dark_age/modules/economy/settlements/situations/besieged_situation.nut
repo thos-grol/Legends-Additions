@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/besieged_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/besieged_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.SellPriceMult *= 1.0;

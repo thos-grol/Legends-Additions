@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/safe_roads_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/safe_roads_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.PriceMult *= 1.1;

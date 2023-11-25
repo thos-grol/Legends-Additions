@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/rich_veins_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/rich_veins_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.SellPriceMult *= 1.1;

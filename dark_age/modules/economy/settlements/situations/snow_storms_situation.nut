@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/snow_storms_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/snow_storms_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.BuyPriceMult *= 1.2;

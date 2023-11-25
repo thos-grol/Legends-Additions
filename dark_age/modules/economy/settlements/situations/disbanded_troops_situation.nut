@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/disbanded_troops_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/disbanded_troops_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.PriceMult *= 0.9;

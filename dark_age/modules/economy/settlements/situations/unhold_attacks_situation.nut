@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/unhold_attacks_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/unhold_attacks_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.BuyPriceMult *= 1.1;

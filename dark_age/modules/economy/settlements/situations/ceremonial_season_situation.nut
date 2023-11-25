@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/ceremonial_season_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/ceremonial_season_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.IncensePriceMult *= 1.5;

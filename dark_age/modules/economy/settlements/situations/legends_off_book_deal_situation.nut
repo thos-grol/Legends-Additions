@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/legends_off_book_deal_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/legends_off_book_deal_situation", function(o) {
 	o.setStacks = function( _stacks )
 	{
 		this.m.Stacks = _stacks;

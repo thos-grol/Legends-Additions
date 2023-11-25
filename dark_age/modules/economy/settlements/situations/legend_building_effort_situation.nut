@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/legend_building_effort_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/legend_building_effort_situation", function(o) {
 	o.getDescription = function()
 	{
 		if (this.m.Target != "")

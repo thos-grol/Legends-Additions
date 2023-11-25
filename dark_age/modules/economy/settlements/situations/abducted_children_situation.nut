@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/abducted_children_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/abducted_children_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.BuyPriceMult *= 1.25;

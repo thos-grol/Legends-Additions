@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/rallied_militia_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/rallied_militia_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.RecruitsMult *= 1.3;

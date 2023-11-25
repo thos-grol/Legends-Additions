@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/preparing_feast_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/preparing_feast_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.FoodRarityMult *= 0.25;

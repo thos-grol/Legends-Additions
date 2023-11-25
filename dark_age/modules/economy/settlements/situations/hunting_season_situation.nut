@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/hunting_season_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/hunting_season_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.FoodRarityMult *= 2.0;

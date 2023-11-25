@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/seasonal_fair_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/seasonal_fair_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.PriceMult *= 1.25;

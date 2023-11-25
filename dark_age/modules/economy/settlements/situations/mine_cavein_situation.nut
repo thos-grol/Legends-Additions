@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/mine_cavein_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/mine_cavein_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.RecruitsMult *= 1.25;

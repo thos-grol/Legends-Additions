@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/well_supplied_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/well_supplied_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.PriceMult *= 0.9;

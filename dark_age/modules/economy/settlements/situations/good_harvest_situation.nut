@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/good_harvest_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/good_harvest_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.FoodRarityMult *= 2.0;

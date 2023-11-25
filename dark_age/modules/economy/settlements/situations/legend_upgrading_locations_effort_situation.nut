@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/legend_upgrading_locations_effort_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/legend_upgrading_locations_effort_situation", function(o) {
 	o.getDescription = function()
 	{
 		return "In an effort to expand and upgrade the settlement, building materials are in high demand and low supply.";

@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/terrifying_nightmares_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/terrifying_nightmares_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.RecruitsMult *= 0.8;

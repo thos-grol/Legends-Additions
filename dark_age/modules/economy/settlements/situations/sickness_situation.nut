@@ -1,4 +1,4 @@
-::mods_hookExactClass("entity/world/attached_location/sickness_situation", function(o) {
+::mods_hookExactClass("entity/world/settlements/situations/sickness_situation", function(o) {
 	o.onUpdate = function( _modifiers )
 	{
 		_modifiers.FoodPriceMult *= 2.0;
