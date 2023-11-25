@@ -14,16 +14,6 @@
 // 	- tie that currency to another currency ie. resources that are used in multiple ways
 // 	- overhauled crafting system so players don't sell their items but use them elsewhere/break them down
 
-//FEATURE_6: guild headquarters features:
-	//bros in headquarters will charge extra salary accounting for food
-	//item storage
-	//bro storage
-	//smithy
-	//fletcher
-	//caravan - sell your produced goods, buy goods. caravan will sell whatever goods have same id put into the item box
-	//training - teachers and students, teachers poplate teaching list, can teach students things, bros put here will study
-	//gatherer - send bros to places to gather materials, has upgrades etc.
-
 
 // 12 Pence (d) = 1 Shilling (s)
 // 20 Shilling = 1 pound £

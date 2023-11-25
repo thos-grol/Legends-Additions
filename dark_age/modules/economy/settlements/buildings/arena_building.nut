@@ -1,13 +1,10 @@
 ::mods_hookExactClass("entity/world/settlements/buildings/arena_building", function(o) {
-	o.refreshCooldown = function()
+
+	o.onClicked = function( _townScreen )
 	{
-		this.m.CooldownUntil = this.World.getTime().Days + 1;
+		return;
 	}
 
-	o.isClosed = function()
-	{
-		return this.World.getTime().Days < this.m.CooldownUntil;
-	}
 
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{

@@ -111,20 +111,11 @@ this.footwork <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-	// function onAfterUpdate( _properties )
-	// {
-	// 	// if (this.getContainer().getActor().getSkills().hasSkill("perk.legend_backflip"))
-	// 	// {
-	// 	// 	this.m.MaxRange = 2;
-	// 	// } //TODO: interesting
-
-	// 	// this.m.FatigueCostMult = _properties.IsFleetfooted ? 0.5 : 1.0;
-
-	// 	// if (this.getContainer().getActor().getSkills().hasSkill("effects.goblin_grunt_potion"))
-	// 	// {
-	// 	// 	this.m.ActionPointCost = 2;
-	// 	// }
-	// }
+	function onAfterUpdate( _properties )
+	{
+		local actor = this.getContainer().getActor();
+		if (actor.getFlags().has("backflip")) this.m.MaxRange += 1;
+	}
 
 	function onVerifyTarget( _originTile, _targetTile )
 	{

@@ -31,27 +31,6 @@ gt.Const.World.Spawn.Cultists <- {
 	]
 };
 
-//TODO: CaravanHand
-//TODO: LegendCaravanPolearm
-//TODO: CaravanGuard
-//TODO: Peasant
-//TODO: PeasantArmed
-//TODO: BountyHunter
-//TODO: BountyHunterRanged
-//TODO: MercenaryLOW
-//TODO: Mercenary
-//TODO: MercenaryRanged
-//TODO: MasterArcher
-//TODO: HedgeKnight
-//TODO: Swordmaster
-//TODO: Swordmaster
-//TODO: Swordmaster
-//TODO: Swordmaster
-//TODO: Militia
-//TODO: MilitiaVeteran
-//TODO: MilitiaRanged
-//TODO: MilitiaCaptain
-
 gt.Const.World.Spawn.Peasants <- {
 	Name = "Peasants",
 	IsDynamic = true,

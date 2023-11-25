@@ -94,9 +94,9 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[2].improveMood(1.0, "Had a successful raid");
 		bros[2].setPlaceInFormation(5);
 		bros[2].setVeteranPerks(2);
-		bros[2].m.PerkPoints = 5;
-		bros[2].m.LevelUps = 5;
-		bros[2].m.Level = 6;
+		bros[1].m.PerkPoints = 7;
+		bros[1].m.LevelUps = 7;
+		bros[1].m.Level = 8;
 		bros[2].m.Talents = [];
 		local talents = bros[2].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
@@ -124,6 +124,9 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[3].improveMood(2.0, "Thinks he managed to convince you to give up raiding and pillaging");
 		bros[3].setPlaceInFormation(13);
 		bros[3].setVeteranPerks(2);
+		bros[2].m.PerkPoints = 2;
+		bros[2].m.LevelUps = 2;
+		bros[2].m.Level = 3;
 		bros[3].m.Talents = [];
 
 		local talents = bros[3].getTalents();

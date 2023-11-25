@@ -26,6 +26,18 @@
 		};
 	}
 
+	o.getTooltip <- function ()
+	{
+		local ret = this.character_background.getTooltip();
+		ret.push({
+			id = 12,
+			type = "text",
+			icon = "ui/icons/special.png",
+			text = "+1 range to footwork"
+		});
+		return ret;
+	}
+
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
@@ -57,6 +69,9 @@
 				""
 			]
 		]));
+
+		local actor = this.getContainer().getActor();
+		actor.getFlags().set("backflip", true);
 	}
 
 });
