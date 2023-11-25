@@ -710,7 +710,9 @@ gt.Const.Perks.TrainedTree <- {
 			gt.Const.Perks.PerkDefs.LegendAdaptive
 		],
 		[
-			gt.Const.Perks.PerkDefs.BagsAndBelts
+			gt.Const.Perks.PerkDefs.BagsAndBelts,
+			gt.Const.Perks.PerkDefs.LegendFieldTriage,
+			gt.Const.Perks.PerkDefs.LegendSpecBandage,
 		],
 		[
 			gt.Const.Perks.PerkDefs.Hybridization

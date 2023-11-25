@@ -34,28 +34,13 @@ gt.Const.Perks.BardClassTree <- {
 		"entertaining"
 	],
 	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendCheerOn,
-			gt.Const.Perks.PerkDefs.LegendSpecialistLuteSkill
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendDaze
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistLuteDamage
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendEntice
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendPush
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendDrumsOfWar
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendDrumsOfLife
-		]
+		[],
+		[],
+		[],
+		[],
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.HealerClassTree <- {
@@ -65,19 +50,13 @@ gt.Const.Perks.HealerClassTree <- {
 		"healing"
 	],
 	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendMedIngredients
-		],
 		[],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecBandage
-		],
 		[],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendFieldTriage
-		]
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.FaithClassTree <- {
@@ -132,23 +111,13 @@ gt.Const.Perks.ChefClassTree <- {
 		"cooking"
 	],
 	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendMealPreperation
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendCampCook
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendAlcoholBrewing
-		],
 		[],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendQuartermaster
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendFieldTreats
-		]
+		[],
+		[],
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.RepairClassTree <- {
@@ -159,18 +128,12 @@ gt.Const.Perks.RepairClassTree <- {
 	],
 	Tree = [
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendToolsDrawers
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendToolsSpares
-		],
 		[],
 		[],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendFieldRepairs
-		]
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.BarterClassTree <- {
@@ -182,21 +145,11 @@ gt.Const.Perks.BarterClassTree <- {
 	Tree = [
 		[],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendBarterConvincing
-		],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendBarterTrustworthy
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendDangerPay,
-			gt.Const.Perks.PerkDefs.LegendPaymaster
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendOffBookDeal,
-			gt.Const.Perks.PerkDefs.LegendBarterGreed
-		]
+		[],
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.KnifeClassTree <- {
@@ -206,19 +159,15 @@ gt.Const.Perks.KnifeClassTree <- {
 		"knives"
 	],
 	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistKnifeSkill
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistKnifeDamage
-		],
 		[],
 		[],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendAssassinate
-		]
+		],
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.ButcherClassTree <- {
@@ -228,23 +177,13 @@ gt.Const.Perks.ButcherClassTree <- {
 		"butchery"
 	],
 	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistButcherSkill
-		],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistButcherDamage
-		],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendPrepareBleed
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendPrepareGraze
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendSlaughter
-		]
+		[],
+		[],
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.HammerClassTree <- {
@@ -254,17 +193,11 @@ gt.Const.Perks.HammerClassTree <- {
 		"hammers"
 	],
 	Tree = [
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistHammerSkill
-		],
 		[],
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistHammerDamage
-		],
 		[],
-		[
-			// gt.Const.Perks.PerkDefs.SunderingStrikes
-		],
+		[],
+		[],
+		[],
 		[],
 		[]
 	]
@@ -276,13 +209,9 @@ gt.Const.Perks.MilitiaClassTree <- {
 		"militia"
 	],
 	Tree = [
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistMilitiaSkill
-		],
 		[],
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistMilitiaDamage
-		],
+		[],
+		[],
 		[],
 		[],
 		[],
@@ -296,17 +225,11 @@ gt.Const.Perks.PickaxeClassTree <- {
 		"pickaxes"
 	],
 	Tree = [
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistPickaxeSkill
-		],
 		[],
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistPickaxeDamage
-		],
 		[],
-		[
-			// gt.Const.Perks.PerkDefs.SunderingStrikes
-		],
+		[],
+		[],
+		[],
 		[],
 		[]
 	]
@@ -318,13 +241,9 @@ gt.Const.Perks.PitchforkClassTree <- {
 		"pitchforks"
 	],
 	Tree = [
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistPitchforkSkill
-		],
 		[],
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistPitchforkDamage
-		],
+		[],
+		[],
 		[],
 		[],
 		[],
@@ -338,13 +257,9 @@ gt.Const.Perks.ShortbowClassTree <- {
 		"shortbows"
 	],
 	Tree = [
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistShortbowSkill
-		],
 		[],
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistShortbowDamage
-		],
+		[],
+		[],
 		[],
 		[],
 		[],
@@ -358,13 +273,9 @@ gt.Const.Perks.ShovelClassTree <- {
 		"shovels"
 	],
 	Tree = [
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistShovelSkill
-		],
 		[],
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistShovelDamage
-		],
+		[],
+		[],
 		[],
 		[],
 		[],
@@ -378,17 +289,11 @@ gt.Const.Perks.WoodaxeClassTree <- {
 		"axes"
 	],
 	Tree = [
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistWoodaxeSkill
-		],
 		[],
-		[
-			// gt.Const.Perks.PerkDefs.LegendSpecialistWoodaxeDamage
-		],
 		[],
-		[
-			// gt.Const.Perks.PerkDefs.LegendWoodworking
-		],
+		[],
+		[],
+		[],
 		[],
 		[]
 	]
@@ -400,23 +305,13 @@ gt.Const.Perks.SickleClassTree <- {
 		"sickles"
 	],
 	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistSickleSkill
-		],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistSickleDamage
-		],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendGatherer
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendHerbcraft
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendPotionBrewer
-		]
+		[],
+		[],
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.NinetailsClassTree <- {
@@ -426,25 +321,17 @@ gt.Const.Perks.NinetailsClassTree <- {
 		"ninetails"
 	],
 	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistNinetailsSkill
-		],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendSpecCultHood
 		],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistNinetailsDamage
-		],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendPrepareGraze
-		],
+		[],
+		[],
 		[
 			gt.Const.Perks.PerkDefs.LegendSpecCultArmor
 		],
-		[
-			gt.Const.Perks.PerkDefs.LegendLacerate
-		]
+		[]
 	]
 };
 gt.Const.Perks.JugglerClassTree <- {
@@ -472,21 +359,11 @@ gt.Const.Perks.HoundmasterClassTree <- {
 	Tree = [
 		[],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendDogWhisperer
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendDogBreeder
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendDogHandling
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendPackleader
-		],
-		[
-			gt.Const.Perks.PerkDefs.LegendDogMaster
-		]
+		[],
+		[],
+		[],
+		[],
+		[]
 	]
 };
 gt.Const.Perks.ScytheClassTree <- {
@@ -496,13 +373,9 @@ gt.Const.Perks.ScytheClassTree <- {
 		"scythes"
 	],
 	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistScytheSkill
-		],
 		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendSpecialistScytheDamage
-		],
+		[],
+		[],
 		[],
 		[],
 		[],

@@ -4,7 +4,6 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
-
 //TODO: rework skeletons
 //TODO: rework skeleton priest
 
