@@ -374,12 +374,17 @@
 		"HiringCost" : 36,
 		"DailyCost" : 18
 	},
-
-	//CHAMPION
 	"background.legend_shieldmaiden" : {
 		"HiringCost" : 48,
-		"DailyCost" : 24
+		"DailyCost" : 18
 	},
+	"background.gladiator" : {
+		"HiringCost" : 48,
+		"DailyCost" : 18
+	},
+
+	//CHAMPION
+	
 	"background.beast_slayer" : {
 		"HiringCost" : 48,
 		"DailyCost" : 24
@@ -397,10 +402,6 @@
 		"DailyCost" : 24
 	},
 	"background.legend_crusader" : {
-		"HiringCost" : 48,
-		"DailyCost" : 24
-	},
-	"background.gladiator" : {
 		"HiringCost" : 48,
 		"DailyCost" : 24
 	},

@@ -50,7 +50,7 @@ this.natural_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "This character gains proficiency faster (+5 chance)"
+				text = "This character gains proficiency faster (+10 chance)"
 			}
 		];
 	}

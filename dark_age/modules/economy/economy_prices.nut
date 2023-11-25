@@ -28,7 +28,33 @@
 
 		foreach(i in items)
 		{
-			actor.m.HiringCost += this.Math.ceil(i.getValue() * 0.75);
+			local item_cost = this.Math.ceil(i.getValue() * 0.75);
+			if (i.m.ID in ::Z.Economy.NoSell) item_cost = 0;
+			actor.m.HiringCost += item_cost;
+		}
+	}
+
+	o.onUpdate = function( _properties )
+	{
+		if (this.m.DailyCost == 0 || this.getContainer().hasSkill("trait.player"))
+		{
+			_properties.DailyWage = 0;
+		}
+		else
+		{
+			local actor = this.getContainer().getActor();
+			if (this.isBackgroundType(this.Const.BackgroundType.ConvertedCultist)) this.m.DailyCost = 4;
+
+			local injuryMult = 1.0;
+			if (actor.getHitpointsPct() <= 0.75 || actor.getSkills().query(::Const.SkillType.TemporaryInjury, false, true).len() > 0) injuryMult = 0.25;
+			_properties.DailyWage += this.Math.round(this.m.DailyCost * this.m.DailyCostMult * injuryMult);
+
+			
+		}
+
+		if (("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin() != null && this.World.Assets.getOrigin().getID() == "scenario.manhunters" && this.getID() != "background.slave")
+		{
+			_properties.XPGainMult *= 0.9;
 		}
 	}
 
@@ -80,6 +106,9 @@
 		}
 
 		if (this.m.ID in ::Z.Economy.NoSell) return 0;
+		try {
+			if (this.m.Rarity != "Rare" && this.m.Rarity != "Legendary" && this.m.Rarity && "Mythic") return 0;
+		} catch(exception){}
 
 		if (("State" in this.World) && this.World.State != null && this.World.State.getCurrentTown() != null)
 		{
@@ -259,3 +288,4 @@
 	_party.getFlags().set("CaravanInvestment", finance.Investment);
 	this.logWarning("Exporting " + _party.getStashInventory().getItems().len() + " items (" + result.Value + " crowns), focusinng on trading \'" + result.Decision + "\', investing " + finance.Investment + " resources," + " from " + _settlement.getName() + " via a caravan bound for " + _destination.getName() + " town");
 }
+

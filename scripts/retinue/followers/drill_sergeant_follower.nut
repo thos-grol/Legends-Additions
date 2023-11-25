@@ -12,17 +12,17 @@ this.drill_sergeant_follower <- this.inherit("scripts/retinue/follower", {
 			"Every new day, brothers without the trained perk tree will have a 5% chance to gain it",
 			"Unlocks the training drill event where non-combat backgrounds below level 11 can improve their stats 2 times"
 		];
-		this.addRequirement("Won 10 battles", function ()
-		{
-			return ::World.Statistics.getFlags().getAsInt("BattlesWon") >= 50;
-		}, true, function ( _r )
-		{
-			_r.Count <- 50;
-			_r.UpdateText <- function ()
-			{
-				this.Text = "Won at least " + ::Math.min(this.Count, ::World.Statistics.getFlags().getAsInt("BattlesWon")) + "/" + this.Count + " battles";
-			};
-		});
+		// this.addRequirement("Won 10 battles", function ()
+		// {
+		// 	return ::World.Statistics.getFlags().getAsInt("BattlesWon") >= 50;
+		// }, true, function ( _r )
+		// {
+		// 	_r.Count <- 50;
+		// 	_r.UpdateText <- function ()
+		// 	{
+		// 		this.Text = "Won at least " + ::Math.min(this.Count, ::World.Statistics.getFlags().getAsInt("BattlesWon")) + "/" + this.Count + " battles";
+		// 	};
+		// });
 	}
 
 	function onNewDay()

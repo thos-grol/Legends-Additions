@@ -1,5 +1,6 @@
 //Disable general events
 ::mods_hookExactClass("events/events/no_food_event", function (o){ o.onUpdateScore = function() { return; }});
+::mods_hookExactClass("events/events/no_food_variety_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/adopt_wardog_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/butcher_vs_wardog_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/butcher_wardogs_event", function (o){ o.onUpdateScore = function() { return; }});

@@ -4,6 +4,8 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
+//TODO: script to generate and hook situations, remove backgrounds like peddler
+
 //TODO: rework skeletons
 //TODO: rework skeleton priest
 

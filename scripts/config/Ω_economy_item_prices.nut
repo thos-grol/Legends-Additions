@@ -54,12 +54,12 @@
 ::Const.World.Assets.BaseSellPrice = 0.62;
 ::Z.Economy.Items <- {
 //SUPPLIES
-	"supplies.ammo_small" : 30,
-	"supplies.ammo" : 60,
-	"supplies.armor_parts_small" : 60,
-	"supplies.medicine_small" : 60,
-	"supplies.armor_parts" : 120,
-	"supplies.medicine" : 120,
+	"supplies.ammo_small" : 7,
+	"supplies.ammo" : 15,
+	"supplies.armor_parts_small" : 15,
+	"supplies.medicine_small" : 15,
+	"supplies.armor_parts" : 30,
+	"supplies.medicine" : 30,
 
 	//FOOD
 	"supplies.ground_grains" : 5, 		//unit of 15 servings
@@ -148,7 +148,7 @@
 	"spawns.cart_02" : 400,
 
 //LOOT
-	"misc.signet_ring" : 960, //FEATURE_8: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
+	"misc.signet_ring" : 720, //FEATURE_8: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
 	"misc.ancient_scroll" : 400,
 	"misc.legend_scroll" : 400,
 	"misc.ornate_tome" : 800,
@@ -413,7 +413,7 @@
 	"weapon.orc_axe" : 0,                    			//( 35,  65) | AP: 0.30 | AE: 1.30
 
 	//1H
-	"weapon.hatchet" : 12,                     			//( 25,  40) | AP: 0.30 | AE: 1.10
+	"weapon.hatchet" : 0,                     			//( 25,  40) | AP: 0.30 | AE: 1.10
 	"weapon.crude_axe" : 0,                   			//( 30,  40) | AP: 0.30 | AE: 1.20
 	"weapon.hand_axe" : 72,                   			//( 30,  45) | AP: 0.30 | AE: 1.20
 	"weapon.fighting_axe" : 150,               			//( 35,  55) | AP: 0.30 | AE: 1.30
@@ -487,17 +487,14 @@
 	"weapon.legend_wooden_spear" : 0,          			//( 15,  25) | AP: 0.25 | AE: 0.45
 
 	//1H
-	"weapon.militia_spear" : 52,               			//( 25,  30) | AP: 0.25 | AE: 0.90
+	"weapon.militia_spear" : 26,               			//( 25,  30) | AP: 0.25 | AE: 0.90
+	"weapon.legend_militia_glaive" : 26,       			//( 30,  40) | AP: 0.25 | AE: 0.90
 	"weapon.ancient_spear" : 26,               			//( 20,  35) | AP: 0.25 | AE: 1.00
-
-	"weapon.boar_spear" : 66,                  			//( 30,  35) | AP: 0.25 | AE: 0.95
+	"weapon.boar_spear" : 39,                  			//( 30,  35) | AP: 0.25 | AE: 0.95
 	"weapon.firelance" : 86,                   			//( 30,  35) | AP: 0.25 | AE: 1.10
-
-	"weapon.fighting_spear" : 150,             			//( 35,  40) | AP: 0.25 | AE: 1.00
+	"weapon.fighting_spear" : 86,             			//( 35,  40) | AP: 0.25 | AE: 1.00
 	"weapon.named_spear" : 225,                			//( 35,  40) | AP: 0.25 | AE: 1.00
-
-	"weapon.legend_militia_glaive" : 65,       			//( 30,  40) | AP: 0.25 | AE: 0.90
-	"weapon.goblin_spear" : 55,                			//( 30,  40) | AP: 0.25 | AE: 0.70
+	"weapon.goblin_spear" : 26,                			//( 30,  40) | AP: 0.25 | AE: 0.70
 	"weapon.named_goblin_spear" : 130,         			//( 30,  40) | AP: 0.25 | AE: 0.70
 
 	"weapon.legend_glaive" : 120,              			//( 40,  45) | AP: 0.25 | AE: 0.95
@@ -514,6 +511,7 @@
 	"weapon.pitchfork" : 6,                   			//( 30,  50) | AP: 0.30 | AE: 0.75
 	"weapon.broken_bladed_pike" : 24,          			//( 35,  55) | AP: 0.30 | AE: 0.80
 	"weapon.hooked_blade" : 24,                			//( 40,  70) | AP: 0.30 | AE: 1.10
+	"weapon.warfork" : 24,                     			//( 40,  60) | AP: 0.25 | AE: 1.00
 
 	"weapon.goblin_pike" : 130,                 		//( 50,  70) | AP: 0.25 | AE: 0.90
 	"weapon.named_goblin_pike" : 195,          			//( 50,  70) | AP: 0.25 | AE: 0.90
@@ -530,7 +528,6 @@
 	"weapon.legend_halberd" : 160,             			//( 60,  80) | AP: 0.30 | AE: 1.50
 	"weapon.legend_named_halberd" : 240,       			//( 60,  80) | AP: 0.30 | AE: 1.50
 
-	"weapon.warfork" : 64,                     			//( 40,  60) | AP: 0.25 | AE: 1.00
 	"weapon.spetum" : 140,                      		//( 55,  75) | AP: 0.25 | AE: 1.00
 	"weapon.named_spetum" : 210,               			//( 55,  75) | AP: 0.25 | AE: 1.00
 	"weapon.legend_swordstaff" : 160,          			//( 50,  70) | AP: 0.25 | AE: 1.00
@@ -558,7 +555,7 @@
 	"weapon.two_handed_flail" : 140,           			//( 45,  90) | AP: 0.30 | AE: 1.15
 	"weapon.named_two_handed_flail" : 210,     			//( 45,  90) | AP: 0.30 | AE: 1.15
 
-	"weapon.legend_chain" : 20,                			//( 15,  45) | AP: 0.20 | AE: 0.30
+	"weapon.legend_chain" : 0,                			//( 15,  45) | AP: 0.20 | AE: 0.30
 	"weapon.orc_flail_2h" : 50,               			//( 50, 100) | AP: 0.30 | AE: 1.25
 	"weapon.named_orc_flail_2h" : 75,         			//( 50, 100) | AP: 0.30 | AE: 1.25
 

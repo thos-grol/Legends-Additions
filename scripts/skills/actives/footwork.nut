@@ -75,7 +75,6 @@ this.footwork <- this.inherit("scripts/skills/skill", {
 	function isUsable()
 	{
 		if (this.skill.isUsable()
-			&& this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions())
 			&& !this.getContainer().getActor().getCurrentProperties().IsRooted)
 		{
 			local myTile = this.getContainer().getActor().getTile();
@@ -112,20 +111,20 @@ this.footwork <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-	function onAfterUpdate( _properties )
-	{
-		if (this.getContainer().getActor().getSkills().hasSkill("perk.legend_backflip"))
-		{
-			this.m.MaxRange = 2;
-		}
+	// function onAfterUpdate( _properties )
+	// {
+	// 	// if (this.getContainer().getActor().getSkills().hasSkill("perk.legend_backflip"))
+	// 	// {
+	// 	// 	this.m.MaxRange = 2;
+	// 	// } //TODO: interesting
 
-		this.m.FatigueCostMult = _properties.IsFleetfooted ? 0.5 : 1.0;
+	// 	// this.m.FatigueCostMult = _properties.IsFleetfooted ? 0.5 : 1.0;
 
-		if (this.getContainer().getActor().getSkills().hasSkill("effects.goblin_grunt_potion"))
-		{
-			this.m.ActionPointCost = 2;
-		}
-	}
+	// 	// if (this.getContainer().getActor().getSkills().hasSkill("effects.goblin_grunt_potion"))
+	// 	// {
+	// 	// 	this.m.ActionPointCost = 2;
+	// 	// }
+	// }
 
 	function onVerifyTarget( _originTile, _targetTile )
 	{

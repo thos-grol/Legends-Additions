@@ -11,7 +11,27 @@
 				R = 20,
 				P = 1.0,
 				S = "helmets/hood"
-			}
+			},
+			{
+				R = 0,
+				P = 1.0,
+				S = "supplies/armor_parts_item"
+			},
+			{
+				R = 0,
+				P = 1.0,
+				S = "supplies/armor_parts_item"
+			},
+			{
+				R = 0,
+				P = 1.0,
+				S = "supplies/medicine_item"
+			},
+			{
+				R = 50,
+				P = 1.0,
+				S = "supplies/medicine_item"
+			},
 		];
 
 		if (this.m.Settlement.getSize() >= 3)

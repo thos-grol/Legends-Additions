@@ -32,7 +32,7 @@
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Gains axe proficiency faster (+5 chance)"
+			text = "Gains axe proficiency faster (+10 chance)"
 		});
 		return ret;
 	}

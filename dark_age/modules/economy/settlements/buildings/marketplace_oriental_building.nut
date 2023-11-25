@@ -71,16 +71,6 @@
 				R = 0,
 				P = 1.0,
 				S = "supplies/armor_parts_item"
-			},
-			{
-				R = 10,
-				P = 1.0,
-				S = "supplies/armor_parts_item"
-			},
-			{
-				R = 50,
-				P = 1.0,
-				S = "supplies/armor_parts_item"
 			}
 		];
 

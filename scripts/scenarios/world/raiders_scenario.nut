@@ -133,15 +133,15 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[3].getSkills().add(this.new("scripts/skills/traits/bright_trait"));
 		bros[3].getBackground().addPerkGroup(::Const.Perks.IntelligentTree.Tree);
 
-		//FIXME: PLACEHOLDER remove test perks
+		// //FIXME: PLACEHOLDER remove test perks
 
-		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.WinterMage, 0);
-		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.MeditationOmenOfDecay, 0);
-		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellReanimate, 0);
-		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellMarkofDecay, 0);
-		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.ResearchRottenOffering, 0);
-		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.ResearchMiasmaBody, 0);
-		::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellCorpseExplosion, 0);
+		// ::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.WinterMage, 0);
+		// ::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.MeditationOmenOfDecay, 0);
+		// ::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellReanimate, 0);
+		// ::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellMarkofDecay, 0);
+		// ::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.ResearchRottenOffering, 0);
+		// ::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.ResearchMiasmaBody, 0);
+		// ::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellCorpseExplosion, 0);
 
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Assets.addMoralReputation(-30.0);
@@ -270,7 +270,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 			return 0;
 		});
 
-		for( local i = 0; i < 2; i = i )
+		for( local i = 0; i < 1; i = i )
 		{
 			houses[i].Faction.addPlayerRelation(-200.0, "You are considered outlaws and barbarians");
 			i = ++i;

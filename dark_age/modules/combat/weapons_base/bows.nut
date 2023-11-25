@@ -13,9 +13,9 @@
 		this.m.RegularDamageMax = 40;
 		this.m.ArmorDamageMult = 0.55;
 		this.m.DirectDamageMult = 0.35;
-        this.m.Draw3 <- 70;
-        this.m.Draw4 <- 60;
-        this.m.Draw5 <- 50;
+        this.m.Draw3 <- 60;
+        this.m.Draw4 <- 50;
+        this.m.Draw5 <- 40;
     }
 
     o.onEquip = function()
@@ -41,9 +41,9 @@
 		this.m.ArmorDamageMult = 0.5;
 		this.m.DirectDamageMult = 0.35;
 		this.m.AdditionalAccuracy = -15;
-        this.m.Draw3 <- 75;
-        this.m.Draw4 <- 65;
-        this.m.Draw5 <- 55;
+        this.m.Draw3 <- 70;
+        this.m.Draw4 <- 60;
+        this.m.Draw5 <- 50;
     }
 
     o.onEquip = function()
@@ -68,9 +68,9 @@
 		this.m.RegularDamageMax = 50;
 		this.m.ArmorDamageMult = 0.5;
 		this.m.DirectDamageMult = 0.35;
-        this.m.Draw3 <- 75;
-        this.m.Draw4 <- 65;
-        this.m.Draw5 <- 55;
+        this.m.Draw3 <- 65;
+        this.m.Draw4 <- 55;
+        this.m.Draw5 <- 45;
     }
 
     o.onEquip = function()
@@ -178,9 +178,9 @@
 		this.m.ArmorDamageMult = 0.55;
 		this.m.DirectDamageMult = 0.35;
 
-        this.m.Draw3 <- 120;
-        this.m.Draw4 <- 100;
-        this.m.Draw5 <- 80;
+        this.m.Draw3 <- 90;
+        this.m.Draw4 <- 75;
+        this.m.Draw5 <- 60;
     }
 
     o.onEquip = function()
@@ -206,9 +206,9 @@
 		this.m.ArmorDamageMult = 0.6;
 		this.m.DirectDamageMult = 0.35;
 
-        this.m.Draw3 <- 130;
-        this.m.Draw4 <- 110;
-        this.m.Draw5 <- 80;
+        this.m.Draw3 <- 95;
+        this.m.Draw4 <- 80;
+        this.m.Draw5 <- 65;
     }
 
     o.onEquip = function()
@@ -235,9 +235,9 @@
 		this.m.DirectDamageMult = 0.35;
 		this.randomizeValues();
 
-        this.m.Draw3 <- 130;
-        this.m.Draw4 <- 110;
-        this.m.Draw5 <- 80;
+        this.m.Draw3 <- 95;
+        this.m.Draw4 <- 80;
+        this.m.Draw5 <- 65;
     }
 
     o.onEquip = function()

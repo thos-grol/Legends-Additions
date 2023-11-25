@@ -196,11 +196,11 @@
 
 			if (!isHit)
 			{
-				::Z.Log.skill(_user, null, r, toHit, "REROLL (" + roll_2 + " vs " + _targetEntity.getCurrentProperties().RerollDefenseChance + ")][DODGE");
+				::Z.Log.skill(_user, null, getName(), r, toHit, "REROLL (" + roll_2 + " vs " + _targetEntity.getCurrentProperties().RerollDefenseChance + ")][DODGE");
 			}
 			else
 			{
-				::Z.Log.skill(_user, null, r, toHit, "REROLL (" + roll_2 + " vs " + _targetEntity.getCurrentProperties().RerollDefenseChance + ")][FAIL", false);
+				::Z.Log.skill(_user, null, getName(), r, toHit, "REROLL (" + roll_2 + " vs " + _targetEntity.getCurrentProperties().RerollDefenseChance + ")][FAIL", false);
 			}
 		}
 
