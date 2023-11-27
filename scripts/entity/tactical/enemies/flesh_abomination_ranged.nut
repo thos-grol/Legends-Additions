@@ -17,7 +17,6 @@ this.flesh_abomination_ranged <- this.inherit("scripts/entity/tactical/enemies/f
 		b.IsAffectedByInjuries = false;
 		b.IsImmuneToBleeding = true;
 		b.IsImmuneToDisarm = true;
-		b.DamageTotalMult *= 2.0;
 
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;

@@ -36,26 +36,25 @@
 
 	o.onUpdate = function( _properties )
 	{
-		if (this.m.DailyCost == 0 || this.getContainer().hasSkill("trait.player"))
-		{
-			_properties.DailyWage = 0;
-		}
-		else
-		{
-			local actor = this.getContainer().getActor();
-			if (this.isBackgroundType(this.Const.BackgroundType.ConvertedCultist)) this.m.DailyCost = 4;
+		local actor = this.getContainer().getActor();
+		if (this.isBackgroundType(this.Const.BackgroundType.ConvertedCultist)) this.m.DailyCost = 4;
+		if (this.getID() == "background.legend_vala") this.m.DailyCost = 16;
+		if (this.getID() == "background.slave") this.m.DailyCost = 0;
+		if (this.getContainer().hasSkill("trait.player")) this.m.DailyCost = 0;
 
-			local injuryMult = 1.0;
-			if (actor.getHitpointsPct() <= 0.75 || actor.getSkills().query(::Const.SkillType.TemporaryInjury, false, true).len() > 0) injuryMult = 0.25;
-			_properties.DailyWage += this.Math.round(this.m.DailyCost * this.m.DailyCostMult * injuryMult);
+		local injuryMult = 1.0;
+		local armorPct = 1.0;
 
-			
-		}
-
-		if (("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin() != null && this.World.Assets.getOrigin().getID() == "scenario.manhunters" && this.getID() != "background.slave")
+		try
 		{
-			_properties.XPGainMult *= 0.9;
+			armorPct = (actor.getArmor(::Const.BodyPart.Head) + actor.getArmor(::Const.BodyPart.Body)) / (actor.getArmorMax(::Const.BodyPart.Head) + actor.getArmorMax(::Const.BodyPart.Body) * 1.0);
 		}
+		catch(exception){}
+		
+		if (actor.getHitpointsPct() <= 0.75 || armorPct < 0.75 || actor.getSkills().query(::Const.SkillType.TemporaryInjury, false, true).len() > 0) injuryMult = 0.25;
+		
+
+		_properties.DailyWage += this.Math.round(this.m.DailyCost * this.m.DailyCostMult * injuryMult);
 	}
 
 	// //Wage hike upon reaching level 11

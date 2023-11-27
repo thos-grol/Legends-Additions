@@ -75,7 +75,7 @@
 		]
 	],
 	Builds = {},
-	BuildsChance = 15
+	BuildsChance = 10
 };
 
 ::B.Info[::Const.EntityType.CaravanHand].Builds["1H Net"] <- {

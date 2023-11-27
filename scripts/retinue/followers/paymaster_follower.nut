@@ -19,7 +19,7 @@ this.paymaster_follower <- this.inherit("scripts/retinue/follower", {
 	{
 		if ("DailyWageMult" in this.World.Assets.m)
 		{
-			this.World.Assets.m.DailyWageMult *= 0.20;
+			this.World.Assets.m.DailyWageMult *= 0.80;
 		}
 	}
 

@@ -27,6 +27,7 @@ this.perk_meditation_omen_of_decay <- this.inherit("scripts/skills/skill", {
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
+		this.m.NoRefund <- true;
 	}
 
 	function onAdded()

@@ -8,6 +8,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "With spear equipped:")
 + "\n " + ::MSU.Text.colorGreen("+1") + " free attack (Thrust or Prong), but does -25% Damage"
 + "\n\n"+::MSU.Text.colorGreen("+5") + " melee defense against an opponent per hit (up to +20)"
++ "\nWhen double gripped, the spear can attack at 2 tile range with maluses on melee attack"
 + "\n"+::MSU.Text.colorRed("Invalid if a shield is equipped. When taking damage, the bonus against the source is lost")
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Spearwall:")

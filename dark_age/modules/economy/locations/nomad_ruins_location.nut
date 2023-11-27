@@ -29,7 +29,7 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropMoney(this.Math.rand(100, 300), _lootTable);
+		this.dropMoney(this.Math.rand(50, 125), _lootTable);
 		this.dropArmorParts(this.Math.rand(5, 25), _lootTable);
 		this.dropAmmo(this.Math.rand(0, 40), _lootTable);
 		this.dropMedicine(this.Math.rand(0, 3), _lootTable);

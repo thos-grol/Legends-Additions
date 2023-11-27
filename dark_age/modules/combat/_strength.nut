@@ -22,58 +22,12 @@
 		}
 
 		local broScale = 1.0;
-
-		if (this.World.Assets.getOrigin().getID() == "scenario.militia")
-		{
-			broScale = 0.66;
-		}
-
-		if (this.World.Assets.getOrigin().getID() == "scenario.lone_wolf")
-		{
-			broScale = 1.66;
-		}
-
-		local zombieSummonLevel = 0;
-		local skeletonSummonLevel = 0;
 		local count = 0;
 
 		foreach( i, bro in roster )
 		{
-			if (i >= 25)
-			{
-				break;
-			}
-
-			if (bro.getSkills().hasSkill("perk.legend_pacifist"))
-			{
-				continue;
-			}
-
-			if (bro.getSkills().hasSkill("perk.legend_spawn_zombie_high"))
-			{
-				zombieSummonLevel = 7;
-			}
-			else if (bro.getSkills().hasSkill("perk.legend_spawn_zombie_med"))
-			{
-				zombieSummonLevel = 5;
-			}
-			else if (bro.getSkills().hasSkill("perk.legend_spawn_zombie_low"))
-			{
-				zombieSummonLevel = 2;
-			}
-
-			if (bro.getSkills().hasSkill("perk.legend_spawn_skeleton_high"))
-			{
-				skeletonSummonLevel = 7;
-			}
-			else if (bro.getSkills().hasSkill("perk.legend_spawn_skeleton_med"))
-			{
-				skeletonSummonLevel = 5;
-			}
-			else if (bro.getSkills().hasSkill("perk.legend_spawn_skeleton_low"))
-			{
-				skeletonSummonLevel = 2;
-			}
+			if (i >= 25) break;
+			if (bro.getSkills().hasSkill("perk.legend_pacifist")) continue;
 
 			local brolevel = bro.getLevel();
 
@@ -94,39 +48,49 @@
 			// 	this.m.Strength += (count + (brolevel + this.pow(brolevel, 1.2))) * broScale;
 			// }
 
-            this.m.Strength += (10 + (brolevel / 2 + (brolevel - 1)) * 2) * broScale;
+            local s_ = (10 + (brolevel / 2 + (brolevel - 1)) * 2) * broScale;
+			if (brolevel <= 5) s_ = 10;
 
-			local mainhand = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
-			local offhand = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-			local body = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
-			local head = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
-			local mainhandvalue = 0;
-			local offhandvalue = 0;
-			local bodyvalue = 0;
-			local headvalue = 0;
-
-			if (mainhand != null)
+			local armorPct = 1.0;
+			try
 			{
-				mainhandvalue = mainhandvalue + mainhand.getSellPrice() / 1000;
+				armorPct = (bro.getArmor(::Const.BodyPart.Head) + bro.getArmor(::Const.BodyPart.Body)) / (bro.getArmorMax(::Const.BodyPart.Head) + bro.getArmorMax(::Const.BodyPart.Body) * 1.0);
 			}
+			catch(exception){}
+			if (armorPct < 0.75 || bro.getSkills().query(::Const.SkillType.TemporaryInjury, false, true).len() > 0) s_ = ::Math.round(s_ * 0.25);
+			this.m.Strength += s_;
 
-			if (offhand != null)
-			{
-				offhandvalue = offhandvalue + offhand.getSellPrice() / 1000;
-			}
+			// local mainhand = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+			// local offhand = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+			// local body = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
+			// local head = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+			// local mainhandvalue = 0;
+			// local offhandvalue = 0;
+			// local bodyvalue = 0;
+			// local headvalue = 0;
 
-			if (body != null)
-			{
-				bodyvalue = bodyvalue + body.getSellPrice() / 1000;
-			}
+			// if (mainhand != null)
+			// {
+			// 	mainhandvalue = mainhandvalue + mainhand.getSellPrice() / 1000;
+			// }
 
-			if (head != null)
-			{
-				headvalue = headvalue + head.getSellPrice() / 1000;
-			}
+			// if (offhand != null)
+			// {
+			// 	offhandvalue = offhandvalue + offhand.getSellPrice() / 1000;
+			// }
 
-			local gearvalue = mainhandvalue + offhandvalue + bodyvalue + headvalue;
-			this.m.Strength += gearvalue;
+			// if (body != null)
+			// {
+			// 	bodyvalue = bodyvalue + body.getSellPrice() / 1000;
+			// }
+
+			// if (head != null)
+			// {
+			// 	headvalue = headvalue + head.getSellPrice() / 1000;
+			// }
+
+			// local gearvalue = mainhandvalue + offhandvalue + bodyvalue + headvalue;
+			// this.m.Strength += gearvalue;
 			count++;
 		}
 	}

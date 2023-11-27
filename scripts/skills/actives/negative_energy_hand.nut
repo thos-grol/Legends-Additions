@@ -1,19 +1,14 @@
-//Lantern
-//Firefly Strike
-//Fantasy Bro's code
-this.winter_negative_energy_hand <- this.inherit("scripts/skills/skill", {
+this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 	m = {
-		AdditionalAccuracy = 0,
-		AdditionalHitChance = 0
+		AdditionalAccuracy = 30,
+		AdditionalHitChance = 0,
+		Cooldown_Max = 2,
+		Cooldown = 2,
 	},
-	function onItemSet()
-	{
-		this.m.MaxRange = this.m.Item.getRangeMax();
-	}
 
 	function create()
 	{
-		this.m.ID = "actives.winter_negative_energy_hand";
+		this.m.ID = "actives.negative_energy_hand";
 		this.m.Name = "Negative Energy Hand";
 		this.m.Description = "Unleash powerful negative energy at the target";
 		this.m.Icon = "skills/active_42.png";
@@ -41,7 +36,7 @@ this.winter_negative_energy_hand <- this.inherit("scripts/skills/skill", {
 		this.m.IsShowingProjectile = false;
 		this.m.IsDoingForwardMove = false;
 		this.m.DirectDamageMult = 0.4;
-		this.m.ActionPointCost = 1;
+		this.m.ActionPointCost = 6;
 		this.m.FatigueCost = 0;
 		this.m.MinRange = 2;
 		this.m.MaxRange = 6;
@@ -49,7 +44,7 @@ this.winter_negative_energy_hand <- this.inherit("scripts/skills/skill", {
 		this.m.InjuriesOnBody = ::Const.Injury.BurningBody;
 		this.m.InjuriesOnHead = ::Const.Injury.BurningHead;
 		this.m.ProjectileType = ::Const.ProjectileType.GhostHand;
-		this.m.ProjectileTimeScale = 1.0;
+		this.m.ProjectileTimeScale = 2.5;
 	}
 
 	function getTooltip()
@@ -65,7 +60,7 @@ this.winter_negative_energy_hand <- this.inherit("scripts/skills/skill", {
 			id = 5,
 			type = "text",
 			icon = "ui/icons/hitchance.png",
-			text = "Has " + (15 + this.m.AdditionalAccuracy) + "% chance to hit, and " + (-2 + this.m.AdditionalHitChance) + "% per tile of distance"
+			text = "Has " + (this.m.AdditionalAccuracy) + "% chance to hit, and " + (-2 + this.m.AdditionalHitChance) + "% per tile of distance"
 		});
 		ret.push({
 			id = 6,
@@ -87,7 +82,9 @@ this.winter_negative_energy_hand <- this.inherit("scripts/skills/skill", {
 
 	function isUsable()
 	{
-		return !this.Tactical.isActive() || !this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions());
+		if (!this.Tactical.isActive() || !this.skill.isUsable()) return false;
+		if (this.m.Cooldown > 0) return false;
+		return true;
 	}
 
 	function onBeforeTargetHit( _skill, _targetEntity, _hitInfo )
@@ -99,8 +96,12 @@ this.winter_negative_energy_hand <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
+	
+
 	function onUse( _user, _targetTile )
 	{
+		this.m.Cooldown = this.m.Cooldown_Max;
+
 		local flip = !this.m.IsProjectileRotated && _targetTile.Pos.X > _user.getPos().X;
 		local myTile = _user.getTile();
 		local dir = _targetTile.getDirectionTo(myTile);
@@ -140,7 +141,7 @@ this.winter_negative_energy_hand <- this.inherit("scripts/skills/skill", {
 		xxtile.push(myTile);
 		for( local i = 0; i < xxtile.len(); i = ++i )
 		{
-			this.Time.scheduleEvent(this.TimeUnit.Virtual, 0 + (i * 80), function ( _skill )
+			this.Time.scheduleEvent(this.TimeUnit.Virtual, (i * 200), function ( _skill )
 			{
 				xxtileE = xxtile.remove(this.Math.rand(0, xxtile.len() - 1));
 				if (_user.getTile().getDistanceTo(_targetTile) >= ::Const.Combat.SpawnProjectileMinDist)
@@ -168,9 +169,14 @@ this.winter_negative_energy_hand <- this.inherit("scripts/skills/skill", {
 	{
 		if (_skill == this)
 		{
-			_properties.RangedSkill += 15 + this.m.AdditionalAccuracy;
+			_properties.RangedSkill += this.m.AdditionalAccuracy;
 			_properties.HitChanceAdditionalWithEachTile -= 2 + this.m.AdditionalHitChance;
 		}
+	}
+
+	function onTurnStart()
+	{
+		if (this.m.Cooldown > 0) this.m.Cooldown--;
 	}
 
 });

@@ -147,3 +147,13 @@
 	}
 	return ret;
 }
+
+::Z.hasVala <- function()
+{
+	local brothers = this.World.getPlayerRoster().getAll();
+    foreach( bro in brothers )
+    {
+        if (bro.getBackground().getID() == "background.legend_vala") return true;
+    }
+    return false;
+}

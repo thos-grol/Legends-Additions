@@ -29,7 +29,7 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropMoney(this.Math.rand(100, 400), _lootTable);
+		this.dropMoney(this.Math.rand(50, 125), _lootTable);
 		this.dropFood(this.Math.rand(0, 1), [
 			"wine_item",
 			"bread_item"

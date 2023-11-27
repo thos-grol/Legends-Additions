@@ -44,7 +44,7 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropMoney(this.Math.rand(0, 500), _lootTable);
+		this.dropMoney(this.Math.rand(200, 500), _lootTable);
 		this.dropTreasure(this.Math.rand(3, 4), [
 			"loot/silverware_item",
 			"loot/silver_bowl_item",

@@ -54,7 +54,7 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 				LifeTimeQuantity = 12,
 				SpawnRate = 100,
 				Brushes = [
-					"bust_ghost_01"
+					"bust_ghost_02"
 				],
 				Stages = [
 					{
@@ -121,19 +121,16 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 		this.setRenderCallbackEnabled(true);
 		local b = this.m.BaseProperties;
 		b.setValues(this.Const.Tactical.Actor.Ghost);
-		b.IsImmuneToBleeding = true;
 		b.IsImmuneToRoot = true;
 		b.IsImmuneToDisarm = true;
 		b.IsImmuneToFire = true;
 		b.IsIgnoringArmorOnAttack = true;
+		b.IsAffectedByRain = false;
 		b.IsAffectedByNight = false;
 		b.IsAffectedByInjuries = false;
-		b.IsAffectedByRain = false;
-
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 140)
-		{
-			b.MeleeDefense += 5;
-		}
+		b.IsImmuneToBleeding = true;
+		b.IsImmuneToPoison = true;
+		b.IsImmuneToStun = true;
 
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
@@ -141,45 +138,39 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.ActionPointCosts = this.Const.SameMovementAPCost;
 		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
 		this.m.MaxTraversibleLevels = 3;
-		this.m.Items.getAppearance().Body = "bust_ghost_01";
+		this.m.Items.getAppearance().Body = "bust_ghost_02";
 		this.addSprite("socket").setBrush("bust_base_undead");
 		this.addSprite("fog").setBrush("bust_ghost_fog_02");
 		local body = this.addSprite("body");
-		body.setBrush("bust_ghost_01");
+		body.setBrush("bust_ghost_02");
 		body.varySaturation(0.25);
 		body.varyColor(0.2, 0.2, 0.2);
 		local head = this.addSprite("head");
-		head.setBrush("bust_ghost_01");
+		head.setBrush("bust_ghost_02");
 		head.varySaturation(0.25);
 		head.varyColor(0.2, 0.2, 0.2);
 		local blur_1 = this.addSprite("blur_1");
-		blur_1.setBrush("bust_ghost_01");
+		blur_1.setBrush("bust_ghost_02");
 		blur_1.varySaturation(0.25);
 		blur_1.varyColor(0.2, 0.2, 0.2);
 		local blur_2 = this.addSprite("blur_2");
-		blur_2.setBrush("bust_ghost_01");
+		blur_2.setBrush("bust_ghost_02");
 		blur_2.varySaturation(0.25);
 		blur_2.varyColor(0.2, 0.2, 0.2);
 		this.addDefaultStatusSprites();
 		this.getSprite("status_rooted").Scale = 0.55;
 		this.setSpriteOffset("status_rooted", this.createVec(-5, -5));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_fearsome"));
 		this.m.Skills.add(this.new("scripts/skills/racial/ghost_racial"));
-		this.m.Skills.add(this.new("scripts/skills/actives/ghastly_touch"));
-		this.m.Skills.add(this.new("scripts/skills/actives/horrific_scream"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_stalwart"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_composure"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_poison_immunity"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_levitation"));
 
-		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-		{
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_fearsome"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_footwork"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_rotation"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_anticipation"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_dodge"));
-			this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_levitation"));
-		}
+		this.m.Skills.add(this.new("scripts/skills/actives/horrific_scream"));
+		this.m.Skills.add(this.new("scripts/skills/actives/negative_energy_hand"));
+
+		this.getFlags().add("ghost");
+		
+
+		//Teleport ai harass
 	}
 
 	function onRender()
@@ -247,11 +238,7 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 		}
 
 		this.getSprite("miniboss").setBrush("bust_miniboss");
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_underdog"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_nine_lives"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_fast_adaption"));
-		this.m.ActionPoints = 12;
-		this.m.BaseProperties.ActionPoints = 12;
 		this.m.Skills.update();
 		return true;
 	}

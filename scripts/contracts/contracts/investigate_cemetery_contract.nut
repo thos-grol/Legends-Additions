@@ -289,7 +289,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
-			Text = "[img]gfx/ui/events/event_20.png[/img]{%employer% walks nervously up and down while stopping now and then to address you.%SPEECH_ON%The folks are in turmoil! Graves in the cemetery have been found opened and raided... Given the nature of this request, you can expect to be paid well.%SPEECH_OFF%",
+			Text = "[img]gfx/ui/events/event_20.png[/img]{%employer% walks fearfully up and down while stopping now and then to address you.%SPEECH_ON%Graves in the cemetery have been found opened and raided... Given the nature of this request, you can expect to be paid well...%SPEECH_OFF%",
 			Image = "",
 			List = [],
 			ShowEmployer = true,

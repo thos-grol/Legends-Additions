@@ -6,13 +6,50 @@
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 
-		if ("Weapon" in this.m.PerkTreeDynamic)
-		{
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.ThrowingTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.BowTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.StaffTree );
-			::MSU.Array.removeByValue( this.m.PerkTreeDynamic.Weapon, ::Const.Perks.SwordTree );
-		}
+		this.m.CustomPerkTree = [
+			[
+				this.Const.Perks.PerkDefs.Student,
+				this.Const.Perks.PerkDefs.Colossus,
+				this.Const.Perks.PerkDefs.Underdog,
+				this.Const.Perks.PerkDefs.LoneWolf,
+
+				this.Const.Perks.PerkDefs.LegendValaPremonition,
+			],
+			[
+				this.Const.Perks.PerkDefs.Dodge,
+			],
+			[
+				this.Const.Perks.PerkDefs.PatternRecognition,
+				this.Const.Perks.PerkDefs.HoldOut,
+				this.Const.Perks.PerkDefs.FortifiedMind,
+
+				this.Const.Perks.PerkDefs.LegendValaChantFury,
+				this.Const.Perks.PerkDefs.LegendValaTranceMalevolent,
+				
+			],
+			[
+				this.Const.Perks.PerkDefs.LegendValaChantMastery,
+				this.Const.Perks.PerkDefs.LegendValaTranceMastery,
+			],
+			[
+				this.Const.Perks.PerkDefs.ArcaneInsight,
+				this.Const.Perks.PerkDefs.NineLives,
+				this.Const.Perks.PerkDefs.SurvivalInstinct,
+			],
+			[
+				this.Const.Perks.PerkDefs.Nimble,
+				this.Const.Perks.PerkDefs.LegendValaWarden,			
+			],
+			[
+				this.Const.Perks.PerkDefs.Indomitable,
+				this.Const.Perks.PerkDefs.LegendMindOverBody,
+				this.Const.Perks.PerkDefs.LegendValaSpiritualBond,
+			],
+			[],
+			[],
+			[],
+			[]
+		];
 	}
 
 	o.onAddEquipment = function()
@@ -33,6 +70,8 @@
 				"legend_vala_dress"
 			]
 		]));
+
+		this.getContainer().getActor().getSkills().add(this.new("scripts/skills/traits/bright_trait"));
 	}
 
 });

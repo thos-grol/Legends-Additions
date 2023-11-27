@@ -22,6 +22,7 @@ this.perk_meditation_pact_of_flesh <- this.inherit("scripts/skills/skill", {
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
+		this.m.NoRefund <- true;
 	}
 
 	function onAdded()

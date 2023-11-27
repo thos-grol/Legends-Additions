@@ -2,7 +2,7 @@ this.inspire_skill <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{
-		this.m.ID = "actives.inspire";
+		this.m.ID = "special.inspire";
 		this.m.Name = "Command";
 		this.m.Description = "Command a unit to strike, granting them additional Action Points. Targets can only be inspired once per turn.";
 		this.m.Icon = "skills/inspire.png";
@@ -21,7 +21,7 @@ this.inspire_skill <- this.inherit("scripts/skills/skill", {
 		this.m.IsAttack = false;
 		this.m.IsIgnoredAsAOO = true;
 		this.m.ActionPointCost = 7;
-		this.m.FatigueCost = 30;
+		this.m.FatigueCost = 15;
 		this.m.MinRange = 1;
 		this.m.MaxRange = 4;
 	}

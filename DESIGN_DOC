@@ -4,20 +4,24 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
+//TODO: paths to enter the way:
+    //great feats ie. small chance when slaying a monster
+    //potential elixir - sold in black market for 1000 gold
+    //having the intelligence reach genius - event
+    //cultist sacrifice
+
 //TODO: noble units
 //TODO: rework skeleton units
 //TODO: rework skeleton priest //drops miasma tome
+
+//TODO: examine camp loot
 
 
 //FEATURE_5: loot overhaul -> camps and enemies
 
 //FEATURE_0: create machine learning model for art
 
-//TODO: FEATURE ghosts
-    //change art from blue to gray
-    //Aura of fear -> scares beings around passively
 
-    //different kinds of ghosts. ghost army
 
 //TODO: FEATURE Necrosavant -> Grail, Knock
     //Modes:
@@ -426,7 +430,7 @@ Undead cannot be charmed
 
 ::setSpawn("bandit_raider")
 
-::setSpawn("necromancer", ::Const.Faction.PlayerAnimals)
+::setSpawn("ghost", ::Const.Faction.PlayerAnimals)
 ::setSpawn("desert_devil", ::Const.Faction.PlayerAnimals)
 ::setSpawn("bandit_veteran", ::Const.Faction.PlayerAnimals)
 ::setSpawn("zombie_knight", ::Const.Faction.PlayerAnimals)

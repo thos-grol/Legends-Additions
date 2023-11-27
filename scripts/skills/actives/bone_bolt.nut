@@ -1,6 +1,6 @@
 this.bone_bolt <- this.inherit("scripts/skills/skill", {
 	m = {
-		AdditionalAccuracy = 15,
+		AdditionalAccuracy = 0,
 		AdditionalHitChance = -3
 	},
 	function create()
@@ -88,8 +88,8 @@ this.bone_bolt <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		_properties.DamageRegularMin += 50;
-		_properties.DamageRegularMax += 70;
+		_properties.DamageRegularMin += 40;
+		_properties.DamageRegularMax += 60;
 		_properties.DamageArmorMult *= 0.75;
 	}
 

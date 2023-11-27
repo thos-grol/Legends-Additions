@@ -53,7 +53,7 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 		{
 			this.m.Name_ = "Flesh Abomination (Goblin Ambusher)";
 			this.m.Type_ = "scripts/entity/tactical/enemies/flesh_abomination_ranged";
-			this.m.BaseProperties = {MeleeSkill = 60, Initiative = 140, MeleeDefense = 25, Bravery = 55, RangedSkill = 93, RangedDefense = 20};
+			this.m.BaseProperties = {MeleeSkill = 60, Initiative = 140, MeleeDefense = 25, Bravery = 55, RangedSkill = 83, RangedDefense = 20};
 
 			local temp = ["scripts/skills/perks/perk_death_dealer", "scripts/skills/perks/perk_dodge", "scripts/skills/perks/perk_legend_wind_reader", "scripts/skills/perks/perk_mastery_bow", "scripts/skills/perks/perk_underdog", "scripts/skills/actives/wake_ally_skill", "scripts/skills/racial/goblin_ambusher_racial"];
 			foreach(script in temp)

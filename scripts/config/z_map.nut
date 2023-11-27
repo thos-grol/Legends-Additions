@@ -66,7 +66,7 @@
 	"actives.impale" : "scripts/skills/actives/impale",
 	"actives.indomitable" : "scripts/skills/actives/indomitable",
 	"actives.insects" : "scripts/skills/actives/insects_skill",
-	"actives.inspire" : "scripts/skills/actives/inspire_skill",
+	"special.inspire" : "scripts/skills/actives/inspire_skill",
 	"actives.knock_back" : "scripts/skills/actives/knock_back",
 	"actives.knock_out" : "scripts/skills/actives/knock_out",
 	"actives.knock_over" : "scripts/skills/actives/knock_over_skill",

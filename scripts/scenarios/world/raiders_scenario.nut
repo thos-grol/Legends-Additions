@@ -4,7 +4,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 	{
 		this.m.ID = "scenario.raiders";
 		this.m.Name = "Northern Raiders";
-		this.m.Description = "[p=c][img]gfx/ui/events/event_135.png[/img][/p][p]For all your adult life you have been raiding and pillaging in these lands. But with the local peasantry poor as mice, you may want to finally expand into the profitable field of mercenary work - that is, if your potential employers are willing to forgive your past transgressions.\n[color=#bcad8c]Warband:[/color] Start with three experienced barbarians, and increased chance of finding [color=#c90000]bloodthirsty brutes, barbarians, killers and assassins[/color].\n[color=#bcad8c]Pillagers:[/color] You have a higher chance to get any items from slain enemies as loot.\n[color=#bcad8c]Outlaws:[/color] Start with [color=#c90000]perks for hunting civilians[/color], bad relations to most human factions, only other outlaws are keen to work for you.[/p]";
+		this.m.Description = "[p=c][img]gfx/ui/events/event_135.png[/img][/p][p]For all your adult life you have been raiding and pillaging in these lands. But with the local peasantry poor as mice, you may want to finally expand into the profitable field of mercenary work - that is, if your potential employers are willing to forgive your past transgressions.\n[color=#bcad8c]Warband:[/color] Start with three experienced barbarians, and increased chance of finding [color=#c90000]bloodthirsty brutes, barbarians, killers and assassins[/color].\n[color=#bcad8c]Pillagers:[/color] You have a higher chance to get any items from slain enemies as loot[/p]";
 		this.m.Difficulty = 2;
 		this.m.Order = 180;
 		this.m.StartingBusinessReputation = -50;
@@ -43,7 +43,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		local talents = bros[0].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
 		talents[this.Const.Attributes.MeleeSkill] = 2;
-		talents[this.Const.Attributes.Hitpoints] = 2;
+		talents[this.Const.Attributes.Initiative] = 3;
 		talents[this.Const.Attributes.MeleeDefense] = 2;
 		local items = bros[0].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
@@ -71,8 +71,8 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[1].m.Talents = [];
 		local talents = bros[1].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.MeleeSkill] = 2;
-		talents[this.Const.Attributes.Hitpoints] = 1;
+		talents[this.Const.Attributes.MeleeSkill] = 3;
+		talents[this.Const.Attributes.Initiative] = 1;
 		talents[this.Const.Attributes.MeleeDefense] = 2;
 		local items = bros[1].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
@@ -94,15 +94,15 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[2].improveMood(1.0, "Had a successful raid");
 		bros[2].setPlaceInFormation(5);
 		bros[2].setVeteranPerks(2);
-		bros[1].m.PerkPoints = 7;
-		bros[1].m.LevelUps = 7;
-		bros[1].m.Level = 8;
+		bros[2].m.PerkPoints = 7;
+		bros[2].m.LevelUps = 7;
+		bros[2].m.Level = 8;
 		bros[2].m.Talents = [];
 		local talents = bros[2].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
 		talents[this.Const.Attributes.MeleeSkill] = 3;
-		talents[this.Const.Attributes.MeleeDefense] = 2;
-		talents[this.Const.Attributes.Hitpoints] = 2;
+		talents[this.Const.Attributes.MeleeDefense] = 3;
+		talents[this.Const.Attributes.Initiative] = 3;
 		local items = bros[2].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
@@ -124,16 +124,19 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[3].improveMood(2.0, "Thinks he managed to convince you to give up raiding and pillaging");
 		bros[3].setPlaceInFormation(13);
 		bros[3].setVeteranPerks(2);
-		bros[2].m.PerkPoints = 2;
-		bros[2].m.LevelUps = 2;
-		bros[2].m.Level = 3;
+		bros[3].m.PerkPoints = 2;
+		bros[3].m.LevelUps = 2;
+		bros[3].m.Level = 3;
 		bros[3].m.Talents = [];
 
 		local talents = bros[3].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.Bravery] = 3;
-		talents[this.Const.Attributes.MeleeDefense] = 2;
-		bros[3].getSkills().add(this.new("scripts/skills/traits/bright_trait"));
+		talents[::Const.Attributes.RangedSkill] = 3;
+		talents[::Const.Attributes.Hitpoints] = 2;
+		talents[::Const.Attributes.Initiative] = 2;
+		local bright = ::new("scripts/skills/traits/bright_trait");
+		bros[3].getSkills().add(bright);
+		bright.upgrade();
 		bros[3].getBackground().addPerkGroup(::Const.Perks.IntelligentTree.Tree);
 
 		// //FIXME: PLACEHOLDER remove test perks
@@ -281,7 +284,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		}
 
 		houses[1].Faction.addPlayerRelation(18.0);
-		this.World.State.m.Player = this.World.spawnEntity("scripts/entity/world/player_party", randomVillageTile.Coords.X, randomVillageTile.Coords.Y);
+		this.World.State.m.Player = this.World.spawnEntity("scripts/entity/world/player_party", randomVillageTile.Coords.X, randomVillageTile.Coords.Y /2);
 		this.World.Assets.updateLook(5);
 		this.World.getCamera().setPos(this.World.State.m.Player.getPos());
 		this.Time.scheduleEvent(this.TimeUnit.Real, 1000, function ( _tag )

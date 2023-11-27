@@ -196,7 +196,7 @@
 	"misc.serpent_skin" : 50,
 	"misc.sabertooth" : 0,
 	"misc.golden_chalice" : 0,
-	"misc.ancient_gold_coins" : 0,
+	"misc.ancient_gold_coins" : 200,
 	"misc.jade_broche" : 0,
 	"misc.silverware" : 0,
 	"misc.silver_bowl" : 0,
@@ -240,14 +240,14 @@
 	"misc.trade_jug" : 0,
 	"misc.golden_goose" : 0,
 
-//RUNE_SIGILS //FEATURE_9: Rune prices and rework
-	"token.legend_vala_inscription" : 0,
-	"legend_helmet_upgrade.legend_rune_bravery" : 0,
-	"legend_helmet_upgrade.legend_rune_clarity" : 0,
-	"legend_helmet_upgrade.legend_rune_luck" : 0,
-	"legend_armor_upgrade.legend_rune_endurance" : 0,
-	"legend_armor_upgrade.legend_rune_resilience" : 0,
-	"legend_armor_upgrade.legend_rune_safety" : 0,
+//RUNE_SIGILS
+	"token.legend_vala_inscription" : 200,
+	"legend_helmet_upgrade.legend_rune_bravery" : 200,
+	"legend_helmet_upgrade.legend_rune_clarity" : 200,
+	"legend_helmet_upgrade.legend_rune_luck" : 200,
+	"legend_armor_upgrade.legend_rune_endurance" : 200,
+	"legend_armor_upgrade.legend_rune_resilience" : 200,
+	"legend_armor_upgrade.legend_rune_safety" : 200,
 
 //TOOLS
 	"tool.legend_broken_throwing_net" : 0,
@@ -1160,7 +1160,7 @@
 	"armor.head.legend_helmet_wallace_sallet_visor" : 150,               		//DUR: 20.00 | STA: -1.00
 	"armor.head.legend_helmet_faceplate_long" : 180,                     		//DUR: 35.00 | STA: -3.00
 	"armor.head.legend_helmet_ancient_crown" : 200,                      		//DUR: 20.00 | STA: -2.00
-	"armor.head.legend_helmet_orc_horn_mask" : 200,                      		//DUR: 60.00 | STA: -8.00
+	"armor.head.legend_helmet_orc_horn_mask" : 0,                      		//DUR: 60.00 | STA: -8.00
 	"armor.head.legend_helmet_fencer_hat" : 225,                         		//DUR: 15.00 | STA: 0.00
 	"armor.head.legend_helmet_unhold_head_chain" : 240,                  		//DUR: 45.00 | STA: -7.00
 	"armor.head.legend_helmet_chain_attachment" : 250,                   		//DUR: 25.00 | STA: -1.00

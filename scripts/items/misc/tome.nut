@@ -11,7 +11,7 @@ this.tome <- this.inherit("scripts/items/item", {
 		this.m.Icon = "loot/inventory_loot_08.png";
 
 		this.m.IsDroppedAsLoot = true;
-		this.m.Value = 2000;
+		this.m.Value = 1000;
 
 		this.m.SlotType = this.Const.ItemSlot.Accessory;
 		this.m.ItemType = this.Const.Items.ItemType.Accessory;

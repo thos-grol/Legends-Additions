@@ -1,11 +1,11 @@
-this.mercenary_ranged <- this.inherit("scripts/entity/tactical/abstract_abstract_human", {
+this.mercenary_ranged <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
 		this.m.Type = this.Const.EntityType.MercenaryRanged;
 		this.m.BloodType = this.Const.BloodType.Red;
 		this.m.XP = this.Const.Tactical.Actor.MercenaryRanged.XP;
-		this.abstract_abstract_human.create();
+		this.abstract_human.create();
 		this.m.Faces = this.Const.Faces.AllMale;
 		this.m.Hairs = this.Const.Hair.AllMale;
 		this.m.HairColors = this.Const.HairColors.All;
@@ -22,7 +22,7 @@ this.mercenary_ranged <- this.inherit("scripts/entity/tactical/abstract_abstract
 
 	function onInit()
 	{
-		this.abstract_abstract_human.onInit();
+		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
 		b.setValues(this.Const.Tactical.Actor.MercenaryRanged);
 		b.TargetAttractionMult = 2.0;

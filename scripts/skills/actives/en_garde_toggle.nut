@@ -46,11 +46,7 @@ this.en_garde_toggle <- ::inherit("scripts/skills/skill", {
 	function isEnabled()
 	{
 		local weapon = this.getContainer().getActor().getMainhandItem();
-		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Sword))
-		{
-			return false;
-		}
-
+		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Sword)) return false;
 		return true;
 	}
 
@@ -86,26 +82,25 @@ this.en_garde_toggle <- ::inherit("scripts/skills/skill", {
 
 	function onTurnEnd()
 	{
-		if (this.m.IsSpent || !this.m.IsOn)
-		{
-			return;
-		}
+		local i = 1;
+		if (this.m.IsSpent || !this.m.IsOn) return;
 
 		local actor = this.getContainer().getActor();
-		if (!actor.isPlacedOnMap() || !actor.hasZoneOfControl() || ::Tactical.State.isAutoRetreat())
-		{
-			return;
-		}
+		if (!actor.isPlacedOnMap() || !actor.hasZoneOfControl() || ::Tactical.State.isAutoRetreat()) return;
+		::logInfo("Reached " + i++);
 
 		local skill = this.pickSkill();
 		if (skill != null)
 		{
+			::logInfo("Reached " + i++);
 			if (skill.getID() == "actives.riposte")
 			{
+				::logInfo("Reached " + i++);
 				skill.useForFree(actor.getTile());
 			}
 			else
 			{
+				::logInfo("Reached " + i++);
 				this.getContainer().add(skill);
 				if (actor.getTile().IsVisibleForPlayer)
 				{

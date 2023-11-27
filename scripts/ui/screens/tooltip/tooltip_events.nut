@@ -1273,6 +1273,16 @@ this.tooltip_events <- {
 					L[2] = L[2] + " [color=" + ::Const.UI.Color.PositiveValue + "]" + bm + "%[/color] Barter";
 				}
 
+				local armorPct = 1.0;
+				try
+				{
+					armorPct = (bro.getArmor(::Const.BodyPart.Head) + bro.getArmor(::Const.BodyPart.Body)) / (bro.getArmorMax(::Const.BodyPart.Head) + bro.getArmorMax(::Const.BodyPart.Body) * 1.0);
+				}
+				catch(exception){}
+				if (bro.getHitpointsPct() <= 0.75 || armorPct < 0.75 || bro.getSkills().query(::Const.SkillType.TemporaryInjury, false, true).len() > 0)
+				{
+					L[2] = L[2] + " [color=" + ::Const.UI.Color.NegativeValue + "] - Recovering[/color]";
+				}
 				brolist.push(L);
 			}
 

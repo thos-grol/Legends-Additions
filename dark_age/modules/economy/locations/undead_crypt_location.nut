@@ -63,7 +63,7 @@
 			treasure.push("legend_armor/armor_upgrades/legend_double_mail_upgrade");
 		}
 
-		this.dropMoney(this.Math.rand(100, 400), _lootTable);
+		this.dropMoney(this.Math.rand(50, 300), _lootTable);
 		this.dropTreasure(this.Math.rand(1, 2), treasure, _lootTable);
 	}
 

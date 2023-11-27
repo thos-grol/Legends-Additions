@@ -120,7 +120,7 @@
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/nomad_mace",
+			"scripts/items/weapons/oriental/nomad_mace",
 			"scripts/items/shields/oriental/metal_round_shield"
 		],
 		[

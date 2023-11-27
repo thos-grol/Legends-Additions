@@ -5,7 +5,7 @@
 	Bravery = 55,
 	Stamina = 100,
 	MeleeSkill = 60,
-	RangedSkill = 75,
+	RangedSkill = 65,
 	MeleeDefense = 10,
 	RangedDefense = 20,
 	Initiative = 140,

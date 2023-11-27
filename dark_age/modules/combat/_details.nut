@@ -182,6 +182,7 @@
 
 			if ( _attacker.getSkills().getSkillByID("perk.stance.seismic_slam") != null) return;
 			if ( _attacker.getSkills().getSkillByID("perk.strange_strikes") != null) return;
+			if ( _attacker.getSkills().getSkillByID("actives.horrific_scream") != null) return;
 
             local ourCurrentInitiative = this.getContainer().getActor().getInitiative();
             local enemyCurrentInitiative = _attacker.getInitiative();

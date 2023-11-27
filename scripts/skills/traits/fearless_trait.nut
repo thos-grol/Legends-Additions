@@ -45,14 +45,14 @@ this.fearless_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Resolve"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+15[/color] Resolve"
 			}
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		_properties.Bravery += 10;
+		_properties.Bravery += 15;
 	}
 
 	function onAdded()

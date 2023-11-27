@@ -45,11 +45,11 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		switch(actor.getFlags().getAsInt("Intelligent"))
 		{
 			case 1:
-				return 1;
-			case 2:
 				return 3;
-			case 3:
+			case 2:
 				return 5;
+			case 3:
+				return 7;
 			case 4:
 				return 10;
 			case 5:
@@ -60,6 +60,8 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	// Tick
 	function onNewDay() //decipher
 	{
+		if (::Math.rand(1, 100) <= 5 && getBonus() >= 10 && actor.m.Level == 10) actor.updateLevel_limit_break();
+
 		if (get_data() == null) return;
 		tick();
 	}
@@ -197,6 +199,14 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				text = "Has a " + getBonus() + "% chance to decipher magical knowledge each day. A tome must be in this unit's bag slot for this to trigger"
 			}
 		];
+
+		if (getBonus() >= 10)
+			ret.push({
+				id = 3,
+				type = "text",
+				icon = "ui/tooltips/warning.png",
+				text = "Has a 5% chance to break the limit each day"
+			});
 
 		ret = getTooltip_project(ret);
 

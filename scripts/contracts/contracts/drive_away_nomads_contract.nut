@@ -28,13 +28,13 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 		switch(banditcamp.m.TypeID)
 		{
 			case "location.nomad_tents": //75
-				pay_amount = 300;
+				pay_amount = 180;
 				break;
 			case "location.nomad_ruins": //150
 				pay_amount = 150;
 				break;
 			case "location.nomad_hidden_camp": //180
-				pay_amount = 180;
+				pay_amount = 70;
 				break;
 			case "location.nomad_tent_city": //300
 				pay_amount = 300;

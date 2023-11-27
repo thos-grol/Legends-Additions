@@ -4,9 +4,9 @@
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "For commanded units:")
 + "\n"+::MSU.Text.colorGreen("+5% of this unit\'s ") + "Melee Skill"
 + "\n"+::MSU.Text.colorGreen("+5% of this unit\'s ") + "Ranged Skill"
-+ "\n"+::MSU.Text.colorGreen("+5% of this unit\'s ") + "Melee Defense"
-+ "\n"+::MSU.Text.colorGreen("+5% of this unit\'s ") + "Ranged Defense"
-+ "\n"+::MSU.Text.colorGreen("+5% of this unit\'s ") + "Resolve"
++ "\n"+::MSU.Text.colorGreen("+10% of this unit\'s ") + "Melee Defense"
++ "\n"+::MSU.Text.colorGreen("+10% of this unit\'s ") + "Ranged Defense"
++ "\n"+::MSU.Text.colorGreen("+10% of this unit\'s ") + "Resolve"
 + "\n" + ::MSU.Text.colorRed("The effect is cancelled if the commander dies")
 + "\n\n" + ::MSU.Text.colorRed("There can only be one commander in the party. Will refund this perk if any other unit has it.");
 
@@ -58,9 +58,9 @@ this.perk_lead_by_example <- this.inherit("scripts/skills/skill", {
 			local effect = ::new("scripts/skills/effects/lead_by_example_effect");
 			effect.m.MeleeSkill = ::Math.round(actor.getCurrentProperties().getMeleeSkill()  * 0.05);
 			effect.m.RangedSkill = ::Math.round(actor.getCurrentProperties().getRangedSkill()  * 0.05);
-			effect.m.MeleeDefense = ::Math.round(actor.getCurrentProperties().getMeleeDefense()  * 0.05);
-			effect.m.RangedDefense = ::Math.round(actor.getCurrentProperties().getRangedDefense()  * 0.05);
-			effect.m.Bravery = ::Math.round(actor.getCurrentProperties().getBravery()  * 0.05);
+			effect.m.MeleeDefense = ::Math.round(actor.getCurrentProperties().getMeleeDefense()  * 0.1);
+			effect.m.RangedDefense = ::Math.round(actor.getCurrentProperties().getRangedDefense()  * 0.1);
+			effect.m.Bravery = ::Math.round(actor.getCurrentProperties().getBravery()  * 0.1);
 			ally.getSkills().add(effect);
 		}
 	}

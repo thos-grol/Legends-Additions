@@ -65,8 +65,8 @@
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/oriental/claw_club",
-			"scripts/items/shields/oriental/wooden_shield_old"
+			"scripts/items/weapons/barbarians/claw_club",
+			"scripts/items/shields/wooden_shield_old"
 		],
 	]
 };

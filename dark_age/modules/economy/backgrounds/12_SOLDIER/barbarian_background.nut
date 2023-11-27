@@ -10,7 +10,7 @@
 		this.m.PerkTreeDynamic = {
 			Weapon = [
 				::Const.Perks.AxeTree,
-				::Const.Perks.CleaverTree,
+				::Const.Perks.HammerTree,
 				::Const.Perks.ShieldTree,
 			],
 			Defense = [
@@ -18,7 +18,7 @@
 				::Const.Perks.LightArmorTree
 			],
 			Traits = [
-				::Const.Perks.ViciousTree,
+				::Const.Perks.FastTree,
 				::Const.Perks.TrainedTree
 			],
 			Enemy = [],
@@ -76,6 +76,45 @@
 				"barbarians/leather_helmet"
 			]
 		]));
+	}
+
+	o.onChangeAttributes = function()
+	{
+		local c = {
+			Hitpoints = [
+				10,
+				5
+			],
+			Bravery = [
+				15,
+				20
+			],
+			Stamina = [
+				10,
+				5
+			],
+			MeleeSkill = [
+				10,
+				5
+			],
+			RangedSkill = [
+				0,
+				0
+			],
+			MeleeDefense = [
+				0,
+				0
+			],
+			RangedDefense = [
+				0,
+				0
+			],
+			Initiative = [
+				5,
+				10
+			]
+		};
+		return c;
 	}
 
 });

@@ -26,7 +26,7 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW);
 
 		if (this.Math.rand(1, 100) <= 33)
 		{
@@ -79,17 +79,10 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 				local r = this.Math.rand(1, 100);
 
-				if (r <= 15)
-				{
-					if (this.Contract.getDifficultyMult() >= 0.95)
-					{
-						this.Flags.set("IsNecromancer", true);
-					}
-				}
-				else if (r <= 30)
+				if (r <= 30)
 				{
 					this.Flags.set("IsCounterOffer", true);
-					this.Flags.set("Bribe", this.Contract.beautifyNumber(this.Contract.m.Payment.getOnCompletion() * this.Math.rand(100, 300) * 0.01));
+					this.Flags.set("Bribe", this.Contract.beautifyNumber(this.Contract.m.Payment.getOnCompletion() * this.Math.rand(150, 250) * 0.01));
 				}
 				else
 				{

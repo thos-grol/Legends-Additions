@@ -22,6 +22,7 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	function onUpdate( _properties )
 	{
 		_properties.RerollDefenseChance += getRerollChance();
+		_properties.Bravery += 10;
 	}
 
 	function onAdded()
@@ -110,6 +111,14 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 			icon = "ui/icons/special.png",
 			text = "Has a " + ::MSU.Text.colorGreen( getRerollChance() ) + "% chance to have any attacker require two successful attack rolls in order to hit"
 		});
+
+		_tooltip.push({
+			id = 10,
+			type = "text",
+			icon = "ui/icons/bravery.png",
+			text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Resolve"
+		});
+
 		return _tooltip;
 	}
 

@@ -2,8 +2,7 @@
 ::Const.Strings.PerkDescription.ResearchFleshOverclocking <- "Reveal the power hidden in the flesh..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Summoned undead and this unit:")
 + "\n " + ::MSU.Text.colorGreen("– 20%") + " damage taken"
-+ "\n " + ::MSU.Text.colorGreen("+20%") + " damage dealt"
-+ "\n " + ::MSU.Text.colorGreen("+20%") + " initiative";
++ "\n " + ::MSU.Text.colorGreen("+10%") + " initiative";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.ResearchFleshOverclocking].Name = ::Const.Strings.PerkName.ResearchFleshOverclocking;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.ResearchFleshOverclocking].Tooltip = ::Const.Strings.PerkDescription.ResearchFleshOverclocking;
@@ -26,7 +25,6 @@ this.perk_research_flesh_overclocking <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		_properties.DamageReceivedTotalMult *= 0.8;
-		_properties.DamageTotalMult *= 1.2;
-		_properties.InitiativeMult *= 1.2;
+		_properties.InitiativeMult *= 1.1;
 	}
 });

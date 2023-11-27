@@ -13,6 +13,7 @@ this.perk_meditation_underworld_thoughts <- this.inherit("scripts/skills/magic_p
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
 		this.m.School = ::Const.Magic.Type.NegativeEnergy;
+		this.m.NoRefund <- true;
 	}
 
 	function onAddedSuccessful()

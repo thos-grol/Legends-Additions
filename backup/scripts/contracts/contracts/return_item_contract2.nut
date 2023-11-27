@@ -29,7 +29,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		//STAGE 1: Roll Item
 
 		//determine the possible items to roll in the contract and if there are mercenaries
-		local roll_tier = this.Math.rand(1, 10);
+		local roll_tier = this.Math.rand(1, 100);
 		local roll_enemies = this.Math.rand(1, 100);
 
 		local item_pool = [];
@@ -147,7 +147,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		this.m.Flags.set("LOOT_ID", item_ID);
 
 		local value = this.m.Flags.get("IsLockbox") ? 1000 : this.m.Loot.getValue();
-		this.m.Payment.Pool = value * 0.6 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), ::Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = value * 0.6 * this.getReputationToPaymentMult();
 		if (this.m.Payment.Pool < 300.0) this.m.Payment.Pool = 300.0;
 		if (this.Math.rand(1, 100) <= 33)
 		{

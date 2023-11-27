@@ -89,6 +89,8 @@ this.discover_location_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Flags.set("Region", this.World.State.getTileRegion(this.m.Location.getTile()).Name);
 		this.m.Flags.set("Location", this.m.Location.getName());
 		this.m.DifficultyMult = this.Math.rand(70, 85) * 0.01;
+
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentLightMult();
 		
 
 		if (this.Math.rand(1, 100) <= 33)
@@ -101,7 +103,7 @@ this.discover_location_contract <- this.inherit("scripts/contracts/contract", {
 			this.m.Payment.Completion = 1.0;
 		}
 
-		this.m.Flags.set("Bribe", this.beautifyNumber(this.m.Payment.Pool * (this.Math.rand(110, 150) * 0.01)));
+		this.m.Flags.set("Bribe", this.beautifyNumber(this.m.Payment.Pool * (this.Math.rand(150, 250) * 0.01)));
 		this.m.Flags.set("HintBribe", this.beautifyNumber(this.m.Payment.Pool * 0.1));
 	}
 

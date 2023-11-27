@@ -2,10 +2,18 @@
 ::Z.Lib.imprint_corpse <- function(_actor, _tile)
 {
     if (_actor.getFlags().has("abomination")) return;
-    if (_actor.getFlags().has("spirit")) return;
+    if (_actor.getFlags().has("ghost")) return;
 
-    local corpse = _tile.Properties.get("Corpse");
+    local corpse = null;
+
+    try
+    {
+        corpse = _tile.Properties.get("Corpse");
+    } catch(exception) {}
+
+    
     if (corpse == null) return;
+
     corpse.Tile = _tile;
 
     corpse.Skills <- [];

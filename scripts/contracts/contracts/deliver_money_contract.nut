@@ -66,21 +66,9 @@ this.deliver_money_contract <- this.inherit("scripts/contracts/contract", {
 				continue;
 			}
 
-			if (this.World.getTime().Days <= 10)
-			{
-				local distance = this.getDistanceOnRoads(this.m.Home.getTile(), s.getTile());
-				local days = this.getDaysRequiredToTravel(distance, this.Const.World.MovementSettings.Speed, false);
-
-				if (this.World.getTime().Days <= 5 && days >= 2)
-				{
-					continue;
-				}
-
-				if (this.World.getTime().Days <= 10 && days >= 3)
-				{
-					continue;
-				}
-			}
+			local distance = this.getDistanceOnRoads(this.m.Home.getTile(), s.getTile());
+			local days = this.getDaysRequiredToTravel(distance, this.Const.World.MovementSettings.Speed, false);
+			if (days >= 2) continue;
 
 			candidates.push(s);
 		}
@@ -95,16 +83,9 @@ this.deliver_money_contract <- this.inherit("scripts/contracts/contract", {
 		local distance = this.getDistanceOnRoads(this.m.Home.getTile(), this.m.Destination.getTile());
 		local days = this.getDaysRequiredToTravel(distance, this.Const.World.MovementSettings.Speed, false);
 		local modrate = this.World.State.getPlayer().getBarterMult();
+		this.m.DifficultyMult = this.Math.rand(75, 105) * 0.01;
 
-		if (days >= 2 || distance >= 40)
-		{
-			this.m.DifficultyMult = this.Math.rand(95, 105) * 0.01;
-		}
-		else
-		{
-			this.m.DifficultyMult = this.Math.rand(70, 85) * 0.01;
-		}
-
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentLightMult() * days;
 
 
 		if (this.Math.rand(1, 100) <= 33)

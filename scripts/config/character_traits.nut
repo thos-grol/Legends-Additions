@@ -116,14 +116,14 @@ gt.Const.CharacterTraits <- [
 		"trait.greedy",
 		"scripts/skills/traits/greedy_trait"
 	],
-	[
-		"trait.gluttonous",
-		"scripts/skills/traits/gluttonous_trait"
-	],
-	[
-		"trait.spartan",
-		"scripts/skills/traits/spartan_trait"
-	],
+	// [
+	// 	"trait.gluttonous",
+	// 	"scripts/skills/traits/gluttonous_trait"
+	// ],
+	// [
+	// 	"trait.spartan",
+	// 	"scripts/skills/traits/spartan_trait"
+	// ],
 	[
 		"trait.athletic",
 		"scripts/skills/traits/athletic_trait"
@@ -160,10 +160,10 @@ gt.Const.CharacterTraits <- [
 		"trait.survivor",
 		"scripts/skills/traits/survivor_trait"
 	],
-	[
-		"trait.impatient",
-		"scripts/skills/traits/impatient_trait"
-	],
+	// [
+	// 	"trait.impatient",
+	// 	"scripts/skills/traits/impatient_trait"
+	// ],
 	[
 		"trait.swift",
 		"scripts/skills/traits/swift_trait"

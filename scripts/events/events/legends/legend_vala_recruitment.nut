@@ -1,7 +1,6 @@
 this.legend_vala_recruitment <- this.inherit("scripts/events/event", {
 	m = {
 		Vala = null,
-		Town = null
 	},
 	function create()
 	{
@@ -42,23 +41,17 @@ this.legend_vala_recruitment <- this.inherit("scripts/events/event", {
 			{
 				local roster = this.World.getTemporaryRoster();
 				_event.m.Vala = roster.create("scripts/entity/tactical/player");
-
-				if (this.World.Assets.getOrigin().getID() == "scenario.legend_risen_legion")
-				{
-					_event.m.Vala.getFlags().add("PlayerSkeleton");
-					_event.m.Vala.getFlags().add("undead");
-					_event.m.Vala.getFlags().add("skeleton");
-				}
-
 				_event.m.Vala.setStartValuesEx([
 					"legend_vala_background"
 				]);
-
-				if (this.World.Assets.getOrigin().getID() == "scenario.legend_risen_legion")
-				{
-					_event.m.Vala.getSkills().add(::new("scripts/skills/racial/skeleton_racial"));
-					_event.m.Vala.getSkills().add(::new("scripts/skills/traits/legend_fleshless_trait"));
-				}
+				_event.m.Vala.m.Talents = [];
+				local talents = _event.m.Vala.getTalents();
+				talents.resize(::Const.Attributes.COUNT, 0);
+				talents[::Const.Attributes.Hitpoints] = 3;
+				talents[::Const.Attributes.Bravery] = 3;
+				talents[::Const.Attributes.Initiative] = 3;
+				_event.m.Vala.m.Attributes = [];
+				_event.m.Vala.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 
 				this.Characters.push(_event.m.Vala.getImagePath());
 			}
@@ -73,35 +66,8 @@ this.legend_vala_recruitment <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (this.World.Assets.getOrigin().getID() == "scenario.legend_risen_legion")
-		{
-			return;
-		}
-
-		local towns = this.World.EntityManager.getSettlements();
-		local nearTown = false;
-		local town;
 		local playerTile = this.World.State.getPlayer().getTile();
-
-		foreach( t in towns )
-		{
-			if (t.getTile().getDistanceTo(playerTile) <= 7 && !t.isIsolatedFromRoads())
-			{
-				nearTown = true;
-				town = t;
-				break;
-			}
-		}
-
-		if (!nearTown)
-		{
-			return;
-		}
-
-		if (playerTile.SquareCoords.Y < this.World.getMapSize().Y * 0.7)
-		{
-			return;
-		}
+		if (playerTile.SquareCoords.Y < this.World.getMapSize().Y * 0.7) return;
 
 		local brothers = this.World.getPlayerRoster().getAll();
 		local totalbrothers = 0;
@@ -123,13 +89,9 @@ this.legend_vala_recruitment <- this.inherit("scripts/events/event", {
 			brotherlevels = brotherlevels + bro.getLevel();
 		}
 
-		if (totalbrothers < 1 || brotherlevels < 30)
-		{
-			return;
-		}
+		if (brotherlevels < 30) return;
 
-		this.m.Town = town;
-		this.m.Score = 20.0 + brotherlevels / totalbrothers * 10.0 / ::Const.LevelXP.len();
+		this.m.Score = 65535;
 	}
 
 	function onPrepare()
@@ -143,7 +105,6 @@ this.legend_vala_recruitment <- this.inherit("scripts/events/event", {
 	function onClear()
 	{
 		this.m.Vala = null;
-		this.m.Town = null;
 	}
 
 });

@@ -2,7 +2,8 @@ this.ai_attack_flesh_ranged <- this.inherit("scripts/ai/tactical/behavior", {
 	m = {
 		TargetTile = null,
 		PossibleSkills = [
-			"actives.bone_bolt"
+			"actives.bone_bolt",
+			"actives.negative_energy_hand",
 		],
 		SelectedSkill = null
 	},
@@ -66,7 +67,7 @@ this.ai_attack_flesh_ranged <- this.inherit("scripts/ai/tactical/behavior", {
 			score = score * this.Const.AI.Behavior.AttackAfterSwitchWeaponMult;
 		}
 
-		return this.Const.AI.Behavior.Score.Attack * score;
+		return this.Const.AI.Behavior.Score.Attack * score * 100;
 	}
 
 	function onBeforeExecute( _entity )

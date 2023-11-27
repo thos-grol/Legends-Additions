@@ -1,16 +1,16 @@
 ::Const.Strings.PerkName.Hybridization <- "Hybridization";
 ::Const.Strings.PerkDescription.Hybridization <- "Become proficient in both ranged and melee weapons..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Melee weapon equipped:")
-+ "\n"+::MSU.Text.colorGreen("+15% of Ranged Skill") + " as Melee Skill"
++ "\n"+::MSU.Text.colorGreen("+20% of Ranged Skill") + " as Melee Skill"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Ranged weapon equipped:")
-+ "\n"+::MSU.Text.colorGreen("+15% of Melee Skill") + " as Ranged Skill";
++ "\n"+::MSU.Text.colorGreen("+20% of Melee Skill") + " as Ranged Skill";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Hybridization].Name = ::Const.Strings.PerkName.Hybridization;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Hybridization].Tooltip = ::Const.Strings.PerkDescription.Hybridization;
 
 this.perk_hybridization <- this.inherit("scripts/skills/skill", {
 	m = {
-		Bonus = 0.15
+		Bonus = 0.20
 	},
 	function create()
 	{

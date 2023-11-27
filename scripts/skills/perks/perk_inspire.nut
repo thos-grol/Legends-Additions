@@ -26,7 +26,7 @@ this.perk_inspire <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		if (!this.m.Container.hasSkill("actives.inspire")) 
+		if (!this.m.Container.hasSkill("special.inspire")) 
 			this.m.Container.add(::new("scripts/skills/actives/inspire_skill"));
 
 		local actor = this.getContainer().getActor();
@@ -46,7 +46,7 @@ this.perk_inspire <- this.inherit("scripts/skills/skill", {
 
 	function onRemoved()
 	{
-		this.m.Container.removeByID("actives.inspire");
+		this.m.Container.removeByID("special.inspire");
 	}
 
 });

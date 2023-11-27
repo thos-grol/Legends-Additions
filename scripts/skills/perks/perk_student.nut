@@ -23,6 +23,7 @@ this.perk_student <- this.inherit("scripts/skills/skill", {
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
+		this.m.NoRefund <- true;
 	}
 
 	function onUpdate( _properties )

@@ -8,25 +8,37 @@
 			// 	P = 1.0,
 			// 	S = "loot/gemstones_item"
 			// },
-			// {
-			// 	R = 99,
-			// 	P = 15.0,
-			// 	S = "misc/legend_ancient_scroll_item"
-			// },
-			// {
-			// 	R = 99,
-			// 	P = 15.0,
-			// 	S = "misc/legend_ancient_scroll_item"
-			// },
-			// {
-			// 	R = 15,
-			// 	P = 3.0,
-			// 	S = "misc/miracle_drug_item"
-			// },
+			{
+				R = 99,
+				P = 15.0,
+				S = "misc/legend_ancient_scroll_item"
+			},
+			{
+				R = 99,
+				P = 15.0,
+				S = "misc/legend_ancient_scroll_item"
+			},
+			
 			{
 				R = 0,
 				P = 1.0,
 				S = "misc/happy_powder_item"
+			},
+			{
+				R = 0,
+				P = 1.0,
+				S = "misc/happy_powder_item"
+			},
+			{
+				R = 0,
+				P = 1.0,
+				S = "misc/potion_of_oblivion_item"
+			},
+
+			{
+				R = 60,
+				P = 1.0,
+				S = "misc/tome"
 			},
 
 
