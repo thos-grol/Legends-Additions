@@ -27,7 +27,7 @@
 
             this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " regenerated " + healthAdded + " hitpoints");
         }
-        
+
     }
 });
 
@@ -39,7 +39,7 @@
         if (actor.getSkills().getSkillByID("effects.spider_poison") != null) return;
         if (actor.getSkills().getSkillByID("effects.legend_redback_spider_poison") != null) return;
         if (actor.getSkills().getSkillByID("effects.legend_RSW_poison_effect") != null) return;
-        
+
         local totalBodyArmor = actor.getArmorMax(::Const.BodyPart.Body);
         local totalHeadArmor = actor.getArmorMax(::Const.BodyPart.Head);
         local currentBodyArmor = actor.getArmor(::Const.BodyPart.Body);
@@ -71,7 +71,7 @@
             this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " regenerated " + addedBodyArmor + " points of body armor");
             this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " regenerated " + addedHeadArmor + " points of head armor");
         }
-        
+
     }
 });
 

@@ -29,32 +29,18 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropMoney(this.Math.rand(300, 700), _lootTable);
+		this.dropMoney(this.Math.rand(250, 400), _lootTable);
 		this.dropArmorParts(this.Math.rand(25, 50), _lootTable);
 		this.dropAmmo(this.Math.rand(0, 50), _lootTable);
 		this.dropMedicine(this.Math.rand(5, 15), _lootTable);
 		local treasure = [
 			"trade/furs_item",
 			"trade/furs_item",
-			"trade/amber_shards_item",
-			"trade/amber_shards_item",
-			"loot/silverware_item",
-			"loot/silver_bowl_item",
-			"loot/bone_figurines_item",
-			"loot/bead_necklace_item",
-			"loot/looted_valuables_item"
+			"loot/signet_ring_item"
+
 		];
-		this.dropFood(this.Math.rand(4, 8), [
-			"bread_item",
-			"beer_item",
-			"dried_fruits_item",
-			"ground_grains_item",
-			"roots_and_berries_item",
-			"mead_item",
-			
-			
-		], _lootTable);
 		this.dropTreasure(this.Math.rand(2, 3), treasure, _lootTable);
+		//FEATURE_9: drop intersting loot in camps?
 	}
 
 	o.onInit = function()

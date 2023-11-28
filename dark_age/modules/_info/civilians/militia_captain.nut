@@ -1,4 +1,3 @@
-//Level 10 Raider template
 //raider template, 9 perks
 //has weapon mastery and stance
 ::Const.Tactical.Actor.MilitiaCaptain <- {

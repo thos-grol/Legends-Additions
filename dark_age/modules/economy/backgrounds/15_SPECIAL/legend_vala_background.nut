@@ -17,19 +17,21 @@
 			],
 			[
 				this.Const.Perks.PerkDefs.Dodge,
+				this.Const.Perks.PerkDefs.LegendValaWarden,
+
 			],
 			[
 				this.Const.Perks.PerkDefs.PatternRecognition,
 				this.Const.Perks.PerkDefs.HoldOut,
 				this.Const.Perks.PerkDefs.FortifiedMind,
-
-				this.Const.Perks.PerkDefs.LegendValaChantFury,
-				this.Const.Perks.PerkDefs.LegendValaTranceMalevolent,
-				
+				this.Const.Perks.PerkDefs.LegendAmbidextrous,
 			],
 			[
-				this.Const.Perks.PerkDefs.LegendValaChantMastery,
-				this.Const.Perks.PerkDefs.LegendValaTranceMastery,
+				this.Const.Perks.PerkDefs.LegendValaChantFury,
+				this.Const.Perks.PerkDefs.LegendValaTranceMalevolent,
+				this.Const.Perks.PerkDefs.LegendSpecFists,
+				this.Const.Perks.PerkDefs.LegendKnifeplay,
+
 			],
 			[
 				this.Const.Perks.PerkDefs.ArcaneInsight,
@@ -38,12 +40,13 @@
 			],
 			[
 				this.Const.Perks.PerkDefs.Nimble,
-				this.Const.Perks.PerkDefs.LegendValaWarden,			
 			],
 			[
 				this.Const.Perks.PerkDefs.Indomitable,
 				this.Const.Perks.PerkDefs.LegendMindOverBody,
-				this.Const.Perks.PerkDefs.LegendValaSpiritualBond,
+				this.Const.Perks.PerkDefs.LegendValaChantMastery,
+				this.Const.Perks.PerkDefs.LegendValaTranceMastery,
+				this.Const.Perks.PerkDefs.StanceAsura,
 			],
 			[],
 			[],
@@ -54,11 +57,12 @@
 
 	o.onAddEquipment = function()
 	{
-		local talents = this.getContainer().getActor().getTalents();
+        local actor = this.getContainer().getActor();
+		local talents = actor.getTalents();
 		talents.resize(::Const.Attributes.COUNT, 0);
 		talents[::Const.Attributes.Bravery] = this.Math.rand(2, 3);
-		this.getContainer().getActor().fillTalentValues(2, true);
-		local items = this.getContainer().getActor().getItems();
+		actor.fillTalentValues(2, true);
+		local items = actor.getItems();
 		items.equip(::new("scripts/items/weapons/legend_staff_vala"));
 		items.equip(::Const.World.Common.pickArmor([
 			[
@@ -71,7 +75,10 @@
 			]
 		]));
 
-		this.getContainer().getActor().getSkills().add(this.new("scripts/skills/traits/bright_trait"));
+		local bright = ::new("scripts/skills/traits/bright_trait");
+		actor.getSkills().add(bright);
+		bright.upgrade();
+		bright.upgrade();
 	}
 
 });

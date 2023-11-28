@@ -40,14 +40,13 @@
 	{
 		this.location.onDropLootForPlayer(_lootTable);
 		this.dropMoney(this.Math.rand(50, 125), _lootTable);
-		this.dropArmorParts(this.Math.rand(5, 25), _lootTable);
+		this.dropArmorParts(this.Math.rand(5, 10), _lootTable);
 		this.dropAmmo(this.Math.rand(0, 40), _lootTable);
 		this.dropMedicine(this.Math.rand(0, 3), _lootTable);
 		local treasure = [
-			"loot/signet_ring_item",
-			"trade/amber_shards_item",
-			"trade/cloth_rolls_item",
-			"trade/salt_item"
+			"loot/bead_necklace_item",
+			"loot/bead_necklace_item",
+			"loot/signet_ring_item"
 		];
 
 		if (::Const.DLC.Unhold)
@@ -65,15 +64,11 @@
 			treasure.push("legend_armor/armor_upgrades/legend_joint_cover_upgrade");
 			treasure.push("legend_armor/armor_upgrades/legend_heraldic_plates_upgrade");
 			treasure.push("legend_armor/armor_upgrades/legend_double_mail_upgrade");
+
+			treasure.push("misc/legend_ancient_scroll_item");
+			treasure.push("misc/tome");
 		}
 
-		this.dropFood(this.Math.rand(1, 3), [
-			"bread_item",
-			"beer_item",
-			"dried_fruits_item",
-			"ground_grains_item",
-			"roots_and_berries_item",
-		], _lootTable);
 		this.dropTreasure(1, treasure, _lootTable);
 	}
 

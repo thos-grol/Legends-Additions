@@ -53,17 +53,12 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropArmorParts(this.Math.rand(25, 50), _lootTable);
-		this.dropMedicine(this.Math.rand(0, 6), _lootTable);
-		this.dropFood(this.Math.rand(4, 8), [
-			"strange_meat_item"
-		], _lootTable);
 		this.dropTreasure(this.Math.rand(3, 4), [
 			"trade/furs_item",
-			"trade/furs_item",
-			"trade/uncut_gems_item",
-			"trade/dies_item",
-			"loot/white_pearls_item"
+			"trade/copper_ingots_item",
+			"trade/iron_ingots_item",
+			"trade/tin_ingots_item",
+			"trade/gold_ingots_item"
 		], _lootTable);
 		_lootTable.push(::Const.World.Common.pickHelmet([
 			[

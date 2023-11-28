@@ -89,7 +89,7 @@ gt.Const.World.Spawn.NomadRaiders <- {
 		},
 		{
 			Weight = 6,
-			MinR = 140,
+			MinR = 250,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.NomadLeader,
@@ -100,7 +100,7 @@ gt.Const.World.Spawn.NomadRaiders <- {
 		},
 		{
 			Weight = 1,
-			MinR = 160,
+			MinR = 365,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.Executioner,
@@ -111,7 +111,7 @@ gt.Const.World.Spawn.NomadRaiders <- {
 		},
 		{
 			Weight = 1,
-			MinR = 310,
+			MinR = 420,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.DesertDevil,
@@ -163,7 +163,7 @@ gt.Const.World.Spawn.NomadDefenders <- {
 		},
 		{
 			Weight = 5,
-			MinR = 140,
+			MinR = 250,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.NomadLeader,

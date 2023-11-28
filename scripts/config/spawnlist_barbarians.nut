@@ -51,15 +51,6 @@ gt.Const.World.Spawn.Barbarians <- {
 		},
 		{
 			Weight = 10,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.Warhound,
-					Cost = 10
-				}
-			]
-		},
-		{
-			Weight = 10,
 			MinR = 650,
 			Types = [
 				{
@@ -101,15 +92,6 @@ gt.Const.World.Spawn.BarbarianHunters <- {
 				{
 					Type = this.Const.World.Spawn.Troops.BarbarianThrall,
 					Cost = 12
-				}
-			]
-		},
-		{
-			Weight = 34,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.Warhound,
-					Cost = 10
 				}
 			]
 		}

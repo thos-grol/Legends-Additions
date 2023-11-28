@@ -29,16 +29,10 @@
 		this.dropMoney(this.Math.rand(0, 100), _lootTable);
 		this.dropArmorParts(this.Math.rand(0, 5), _lootTable);
 		this.dropAmmo(this.Math.rand(0, 20), _lootTable);
-		this.dropFood(this.Math.rand(1, 2), [
-			"strange_meat_item",
-			"roots_and_berries_item",
-			
-		], _lootTable);
 		this.dropTreasure(1, [
-			"loot/signet_ring_item",
-			"trade/amber_shards_item",
-			"trade/cloth_rolls_item",
-			"trade/salt_item",
+			"loot/goblin_minted_coins_item",
+			"loot/goblin_minted_coins_item",
+			"loot/furs_item"
 		], _lootTable);
 	}
 

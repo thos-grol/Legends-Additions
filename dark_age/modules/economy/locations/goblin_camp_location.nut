@@ -29,19 +29,10 @@
 		this.dropArmorParts(this.Math.rand(0, 10), _lootTable);
 		this.dropAmmo(this.Math.rand(0, 40), _lootTable);
 		this.dropMedicine(this.Math.rand(0, 2), _lootTable);
-		this.dropFood(this.Math.rand(1, 3), [
-			"strange_meat_item",
-			"roots_and_berries_item"
-		], _lootTable);
 		this.dropTreasure(this.Math.rand(1, 2), [
-			"trade/salt_item",
-			"trade/amber_shards_item",
-			"loot/silverware_item",
-			"loot/silver_bowl_item",
-			"loot/silver_bowl_item",
-			"loot/signet_ring_item",
 			"loot/goblin_minted_coins_item",
-			"loot/goblin_rank_insignia_item"
+			"loot/goblin_minted_coins_item",
+			"loot/signet_ring_item"
 		], _lootTable);
 	}
 

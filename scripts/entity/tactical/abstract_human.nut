@@ -85,12 +85,15 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 
 			::MSU.Log.printData( this.m.Build, 2);
 
-			//build add weapon
-			local loadout = ("IsMinibossWeapon" in this.m && this.m.IsMinibossWeapon) ? ::MSU.Array.rand(this.m.Build.NamedLoadout) : ::MSU.Array.rand(this.m.Build.Loadout);
-			foreach(item in loadout)
+			try
 			{
-				this.m.Items.equip(::new(item));
-			}
+				//build add weapon
+				local loadout = ("IsMinibossWeapon" in this.m && this.m.IsMinibossWeapon) ? ::MSU.Array.rand(this.m.Build.NamedLoadout) : ::MSU.Array.rand(this.m.Build.Loadout);
+				foreach(item in loadout)
+				{
+					this.m.Items.equip(::new(item));
+				}
+			} catch(exception){}
 
 			local weapon = this.getMainhandItem();
 			if (weapon != null && "m" in weapon)
@@ -120,11 +123,14 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 			return;
 		}
 
-		local loadout = ("IsMinibossWeapon" in this.m && this.m.IsMinibossWeapon) ? ::MSU.Array.rand(::B.Info[this.m.Type].NamedLoadout) : ::MSU.Array.rand(::B.Info[this.m.Type].Loadout);
-		foreach(item in loadout)
+		try
 		{
-			this.m.Items.equip(::new(item));
-		}
+			local loadout = ("IsMinibossWeapon" in this.m && this.m.IsMinibossWeapon) ? ::MSU.Array.rand(::B.Info[this.m.Type].NamedLoadout) : ::MSU.Array.rand(::B.Info[this.m.Type].Loadout);
+			foreach(item in loadout)
+			{
+				this.m.Items.equip(::new(item));
+			}
+		} catch(exception){}
 
 		//TREE_WEAPON
 		local weapon = this.getMainhandItem();

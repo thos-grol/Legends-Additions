@@ -4,13 +4,6 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
-//TODO: paths to enter the way:
-    //great feats ie. small chance when slaying a monster
-    //potential elixir - sold in black market for 1000 gold
-    //having the intelligence reach genius - event
-    //cultist sacrifice
-
-//TODO: noble units
 //TODO: rework skeleton units
 //TODO: rework skeleton priest //drops miasma tome
 

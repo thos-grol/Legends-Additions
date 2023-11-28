@@ -52,6 +52,7 @@
 			"loot/ornate_tome_item",
 			"misc/legend_ancient_scroll_item"
 		], _lootTable);
+		//TODO: undead locations loot
 	}
 
 	o.onInit = function()

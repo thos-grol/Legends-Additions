@@ -1,3 +1,13 @@
+::Const.Strings.PerkName.LegendValaWarden <- "Warden";
+::Const.Strings.PerkDescription.LegendValaWarden <- ::MSU.Text.color(::Z.Color.Purple, "Class")
++ "\nOther me..."
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On Battle Start:")
++ "\nSummon a ghost protector"
++ "\n" + ::MSU.Text.colorRed("The protector\'s strength scales with this unit's resolve");
+
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendValaWarden].Name = ::Const.Strings.PerkName.LegendValaWarden;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendValaWarden].Tooltip = ::Const.Strings.PerkDescription.LegendValaWarden;
+
 this.legend_vala_warden <- this.inherit("scripts/skills/skill", {
 	m = {
 		WardenSummonSpent = false,
@@ -160,7 +170,7 @@ this.legend_vala_warden <- this.inherit("scripts/skills/skill", {
 					LifeTimeQuantity = 12,
 					SpawnRate = 100,
 					Brushes = [
-						"bust_ghost_01"
+						"bust_ghost_02"
 					],
 					Stages = [
 						{

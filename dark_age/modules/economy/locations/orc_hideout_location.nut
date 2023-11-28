@@ -28,15 +28,10 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropMoney(this.Math.rand(0, 100), _lootTable);
-		this.dropArmorParts(this.Math.rand(0, 15), _lootTable);
-		this.dropFood(this.Math.rand(2, 3), [
-			"strange_meat_item"
-		], _lootTable);
 		this.dropTreasure(1, [
-			"loot/signet_ring_item",
-			"trade/amber_shards_item",
-			"trade/salt_item"
+			"loot/bead_necklace_item",
+			"loot/bead_necklace_item",
+			"loot/signet_ring_item"
 		], _lootTable);
 	}
 
