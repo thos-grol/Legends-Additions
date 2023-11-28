@@ -833,27 +833,8 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 			}
 		}
 
-		if (this.World.FactionManager.getFaction(this.m.Faction).getSettlements().len() < 3)
-		{
-			return false;
-		}
-
-		foreach( bro in this.World.getPlayerRoster().getAll() )
-		{
-			if (!bro.getSkills().hasSkill(this.m.Perk))
-			{
-				continue;
-			}
-
-			local stats = this.Const.LegendMod.GetFavoriteEnemyStats(bro, this.m.ValidTypes);
-
-			if (stats.Strength >= this.m.MinStrength)
-			{
-				return true;
-			}
-		}
-
-		return false;
+		if (this.World.FactionManager.getFaction(this.m.Faction).getSettlements().len() < 3) return false;
+		return true;
 	}
 
 	function onSerialize( _out )

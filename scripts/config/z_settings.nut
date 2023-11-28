@@ -13,3 +13,31 @@
 ];
 
 ::Const.World.Assets.ArmorPartsPerArmor /= 2.0;
+
+::Const.Contracts.CategoryLimits <- {
+	Economy = [
+		1,
+		1,
+		1
+	],
+	Battle = [
+		2,
+		2,
+		2
+	],
+	Hunt = [
+		1,
+		1,
+		1
+	],
+	Legendary = [
+		1,
+		1,
+		1
+	],
+	Wildcard = [
+		1,
+		2,
+		3
+	]
+};
