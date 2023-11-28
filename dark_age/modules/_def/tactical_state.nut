@@ -144,6 +144,17 @@
 								bro.m.Level += 1;
 								bro.m.XP += ::Const.LevelXP[bro.m.Level - 1];
 							}
+
+							if (bro.getSkills().hasSkill("actives.legend_gruesome_feast"))
+							{
+								local skills = bro.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
+								foreach( s in skills )
+								{
+									if (s.getOrder() == ::Const.SkillOrder.PermanentInjury) continue;
+									s.removeSelf();
+								}
+								bro.setHitpoints(bro.getHitpointsMax());
+							}
 						}
 					}
 					else if (!this.m.StrategicProperties.IsUsingSetPlayers)

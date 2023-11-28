@@ -2,7 +2,7 @@ this._proficiency <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {
 		str = "Axe",
 		BaseChance = 10,
-		ProficiencyMax = 100
+		ProficiencyMax = 50
 	},
 	function create()
 	{

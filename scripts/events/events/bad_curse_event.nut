@@ -303,7 +303,7 @@ this.bad_curse_event <- this.inherit("scripts/events/event", {
 		]);
 		_vars.push([
 			"payment",
-			"400"
+			"40"
 		]);
 	}
 

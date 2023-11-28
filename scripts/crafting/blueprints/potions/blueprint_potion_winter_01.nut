@@ -12,7 +12,10 @@ this.blueprint_potion_winter_01 <- this.inherit("scripts/crafting/blueprint", {
 				Script = "scripts/items/misc/anatomist/direwolf_potion_item",
 				Num = 1
 			},
-			//FEATURE_1: add other drops to the recipe
+			{
+				Script = "scripts/items/misc/magic/soul_splinter",
+				Num = 3
+			},
 		];
 		this.init(ingredients);
 	}

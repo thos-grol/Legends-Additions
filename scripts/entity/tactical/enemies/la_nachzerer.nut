@@ -253,45 +253,28 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 			corpse.IsHeadAttached = _fatalityType != ::Const.FatalityType.Decapitated;
 			_tile.Properties.set("Corpse", corpse);
 			this.Tactical.Entities.addCorpse(_tile);
-
-			if ((_killer == null || _killer.getFaction() == ::Const.Faction.Player || _killer.getFaction() == ::Const.Faction.PlayerAnimals) && this.Math.rand(1, 100) <= 50)
-			{
-				local n = 1 + (!this.Tactical.State.isScenarioMode() && this.Math.rand(1, 100) <= this.World.Assets.getExtraLootChance() ? 1 : 0);
-
-				for( local i = 0; i < n; i = i )
-				{
-					if (::Const.DLC.Unhold)
-					{
-						local r = this.Math.rand(1, 100);
-						local loot;
-
-						if (r <= 35)
-						{
-							loot = ::new("scripts/items/misc/ghoul_teeth_item");
-						}
-						else if (r <= 70)
-						{
-							loot = ::new("scripts/items/misc/ghoul_horn_item");
-						}
-						else
-						{
-							loot = ::new("scripts/items/misc/ghoul_brain_item");
-						}
-
-						loot.drop(_tile);
-					}
-					else
-					{
-						local loot = ::new("scripts/items/misc/ghoul_teeth_item");
-						loot.drop(_tile);
-					}
-
-					i = ++i;
-				}
-			}
 		}
 
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
+	}
+
+	function drop_loot(_tile)
+	{
+		if (this.World.Retinue.hasFollower("follower.surgeon") && ::Math.rand(1,100) <= 33)
+		{
+			local tome = this.new("scripts/items/misc/anatomist/nachzehrer_potion_item");
+			tome.drop(_tile);
+		}
+
+		// for(local i = 0; i < 3; i++ )
+		// {
+		// 	if (::Math.rand(1,100) <= 20 )
+		// 	{
+		// 		local s = this.new("scripts/items/misc/magic/soul_splinter");
+		// 		s.drop(_tile);
+		// 	}
+		// }
+
 	}
 
 	function onAfterDeath( _tile )

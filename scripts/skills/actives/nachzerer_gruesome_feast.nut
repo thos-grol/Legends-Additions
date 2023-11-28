@@ -5,8 +5,8 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "actives.nachzerer_gruesome_feast";
-		this.m.Name = "Darkflight";
-		this.m.Description = "Disapparate from your current location and reappear on the other side of the battlefield";
+		this.m.Name = "Gruesome Feat - Leap";
+		this.m.Description = "Leap to a corpse and consume it";
 		this.m.Icon = "skills/darkflight.png";
 		this.m.IconDisabled = "skills/darkflight_bw.png";
 		this.m.Overlay = "active_28";
@@ -27,7 +27,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 		this.m.IsAttack = false;
 		this.m.IsIgnoredAsAOO = true;
 		this.m.ActionPointCost = 4;
-		this.m.FatigueCost = 0;
+		this.m.FatigueCost = 25;
 		this.m.MinRange = 0;
 		this.m.MaxRange = 6;
 		this.m.MaxLevelDifference = 4;
