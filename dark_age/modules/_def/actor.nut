@@ -804,48 +804,48 @@
 	}
 
 	o.resetPerks <- function ()
+	{
+		local perks = 0;
+		local skills = this.getSkills();
+
+		foreach( skill in skills.m.Skills )
 		{
-			local perks = 0;
-			local skills = this.getSkills();
+			if (skill.isGarbage()) continue;
+			if (!skill.isType(this.Const.SkillType.Perk)) continue;
+			if (skill.isType(this.Const.SkillType.Racial)) continue;
+			if ("NoRefund" in skill.m) continue;
 
-			foreach( skill in skills.m.Skills )
+			perks = perks + 1;
+		}
+
+		perks = perks + this.m.PerkPoints;
+		local nonRefundable = [];
+
+		foreach( row in this.getBackground().m.PerkTree )
+		{
+			foreach( perk in row )
 			{
-				if (skill.isGarbage()) continue;
-				if (!skill.isType(this.Const.SkillType.Perk)) continue;
-				if (skill.isType(this.Const.SkillType.Racial)) continue;
-				if ("NoRefund" in skill.m) continue;
-
-				perks = perks + 1;
-			}
-
-			perks = perks + this.m.PerkPoints;
-			local nonRefundable = [];
-
-			foreach( row in this.getBackground().m.PerkTree )
-			{
-				foreach( perk in row )
+				if (!perk.IsRefundable)
 				{
-					if (!perk.IsRefundable)
-					{
-						this.logInfo(perk.ID + " is non refundable");
-						nonRefundable.push(perk.ID);
-					}
+					this.logInfo(perk.ID + " is non refundable");
+					nonRefundable.push(perk.ID);
 				}
 			}
+		}
 
-			this.m.PerkPoints = 0;
-			this.m.PerkPointsSpent = 0;
-			local skillsToRemove = this.getSkills().getSkillsByFunction(function ( _skill )
-			{
-				return _skill.isType(this.Const.SkillType.Perk) && nonRefundable.find(_skill.getID()) == null && !("NoRefund" in _skill.m);
-			});
-			foreach( s in skillsToRemove )
-			{
-				this.getSkills().removeByID(s.getID());
-			}
-			perks = perks - nonRefundable.len();
-			this.m.PerkPoints = perks;
-		};
+		this.m.PerkPoints = 0;
+		this.m.PerkPointsSpent = 0;
+		local skillsToRemove = this.getSkills().getSkillsByFunction(function ( _skill )
+		{
+			return _skill.isType(this.Const.SkillType.Perk) && nonRefundable.find(_skill.getID()) == null && !("NoRefund" in _skill.m);
+		});
+		foreach( s in skillsToRemove )
+		{
+			this.getSkills().removeByID(s.getID());
+		}
+		perks = perks - nonRefundable.len();
+		this.m.PerkPoints = perks;
+	};
 
 
 });

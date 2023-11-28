@@ -53,7 +53,7 @@ this.potion_of_oblivion_item <- this.inherit("scripts/items/item", {
 			});
 		}
 
-		ret.push({
+		result.push({
 			id = 3,
 			type = "text",
 			icon = "ui/tooltips/warning.png",

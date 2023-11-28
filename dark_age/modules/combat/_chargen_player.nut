@@ -251,4 +251,17 @@
 			}
 		}
 	}
+
+	o.updateLevel_limit_break <- function()
+	{
+		if (this.m.Level >= 11) return;
+		++this.m.Level;
+		++this.m.LevelUps;
+		++this.m.PerkPoints;
+
+		if (("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin() != null)
+		{
+			this.World.Assets.getOrigin().onUpdateLevel(this);
+		}
+	}
 });

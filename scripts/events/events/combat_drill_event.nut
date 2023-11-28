@@ -49,7 +49,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.Characters.push(_event.m.Teacher.getImagePath());
+				
 			}
 
 		});
@@ -71,8 +71,6 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.Characters.push(_event.m.Teacher.getImagePath());
-				_event.m.Teacher.improveMood(0.5, "Has drilled the new recruits");
 			}
 
 		});
@@ -94,15 +92,15 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.Characters.push(_event.m.Teacher.getImagePath());
+				
 				local brothers = this.World.getPlayerRoster().getAll();
 
 				foreach( bro in brothers )
 				{
-					if (bro.getLevel() >= 7) continue;
+					if (bro.getLevel() >= 11) continue;
 					if (bro.getFlags().has("event_combat_drill_2")) continue;
-					local meleeSkill = this.Math.rand(0, 2);
-					local meleeDefense = meleeSkill == 0 ? this.Math.rand(0, 2) : 0;
+					local meleeSkill = this.Math.rand(1, 2);
+					local meleeDefense = meleeSkill == 0 ? this.Math.rand(1, 2) : 0;
 					bro.getBaseProperties().MeleeSkill += meleeSkill;
 					bro.getBaseProperties().MeleeDefense += meleeDefense;
 					bro.getSkills().update();
@@ -175,8 +173,6 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.Characters.push(_event.m.Teacher.getImagePath());
-				_event.m.Teacher.improveMood(0.5, "Has drilled the new recruits");
 			}
 
 		});
@@ -198,15 +194,15 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.Characters.push(_event.m.Teacher.getImagePath());
+				
 				local brothers = this.World.getPlayerRoster().getAll();
 
 				foreach( bro in brothers )
 				{
-					if (bro.getLevel() >= 7) continue;
+					if (bro.getLevel() >= 11) continue;
 					if (bro.getFlags().has("event_combat_drill_2")) continue;
 
-					local rangedSkill = this.Math.rand(0, 2);
+					local rangedSkill = this.Math.rand(1, 2);
 					bro.getBaseProperties().RangedSkill += rangedSkill;
 					bro.getSkills().update();
 
@@ -258,8 +254,6 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.Characters.push(_event.m.Teacher.getImagePath());
-				_event.m.Teacher.improveMood(0.5, "Has drilled the new recruits");
 			}
 
 		});
@@ -281,16 +275,16 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.Characters.push(_event.m.Teacher.getImagePath());
+				
 				local brothers = this.World.getPlayerRoster().getAll();
 
 				foreach( bro in brothers )
 				{
-					if (bro.getLevel() >= 7) continue;
+					if (bro.getLevel() >= 11) continue;
 					if (bro.getFlags().has("event_combat_drill_2")) continue;
 
-					local stamina = this.Math.rand(0, 3);
-					local initiative = stamina == 0 ? this.Math.rand(0, 3) : 0;
+					local stamina = this.Math.rand(1, 3);
+					local initiative = stamina == 0 ? this.Math.rand(1, 3) : 0;
 					bro.getBaseProperties().Stamina += stamina;
 					bro.getBaseProperties().Initiative += initiative;
 					bro.getSkills().update();
@@ -339,18 +333,18 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!this.World.Retinue.hasFollower("follower.drill_sergeant") && !this.World.Retinue.hasFollower("follower.swordmaster")) return;
+		if (!this.World.Retinue.hasFollower("follower.drill_sergeant")) return;
 		local brothers = this.World.getPlayerRoster().getAll();
 		local numRecruits = 0;
 		foreach( bro in brothers )
 		{
-			if (bro.getLevel() < 11
+			if (bro.getLevel() < 12
 				&& !bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat)
 				&& !bro.getFlags().has("event_combat_drill_2")) numRecruits = ++numRecruits;
 		}
 
 		if (numRecruits < 1) return;
-		this.m.Score = 10 + numRecruits * 3;
+		this.m.Score = 10 + numRecruits * 100;
 	}
 
 	function onPrepare()

@@ -1,6 +1,6 @@
 ::Const.Strings.PerkName.ShieldBash = "Tank";
 ::Const.Strings.PerkDescription.ShieldBash = "Learn how to fight with a shield and protect your teamates..."
-+ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Taunt\' (4 AP, 15 Fat):")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Taunt\' (0 AP, 0 Fat):")
 + "\nTaunt an enemy to make them much more likely to attack this unit"
 
 +"\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Modifies Knock Back:")
