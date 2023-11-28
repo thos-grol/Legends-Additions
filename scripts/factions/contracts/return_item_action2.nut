@@ -12,7 +12,7 @@ this.return_item_action2 <- this.inherit("scripts/factions/faction_action", {
 
 	function onUpdate( _faction )
 	{
-		if (!_faction.isReadyForContract(this.Const.Contracts.ContractCategoryMap.return_item_contract)) return;
+		if (!_faction.isReadyForContract(this.Const.Contracts.ContractCategoryMap.return_item_contract2)) return;
 		if (_faction.getSettlements()[0].isIsolatedFromRoads()) return;
 
 		if (this.Math.rand(1, 100) > 9) return;

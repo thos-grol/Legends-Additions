@@ -708,22 +708,7 @@ this.legend_barbarian_prisoner_contract <- this.inherit("scripts/contracts/contr
 			return false;
 		}
 
-		foreach( bro in this.World.getPlayerRoster().getAll() )
-		{
-			if (!bro.getSkills().hasSkill(this.m.Perk))
-			{
-				continue;
-			}
-
-			local stats = this.Const.LegendMod.GetFavoriteEnemyStats(bro, this.m.ValidTypes);
-
-			if (stats.Strength >= this.m.MinStrength)
-			{
-				return true;
-			}
-
-			return false;
-		}
+		return true;
 	}
 
 	function onIsTileUsed( _tile )
