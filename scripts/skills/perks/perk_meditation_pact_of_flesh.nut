@@ -35,6 +35,7 @@ this.perk_meditation_pact_of_flesh <- this.inherit("scripts/skills/skill", {
 		local flesh_servant = this.getContainer().getActor().getSkills().getSkillByID("actives.spell.flesh_servant_bind");
 		if (flesh_servant == null) return;
 		if (flesh_servant.m.Type_ == null) return;
+		if (flesh_servant.m.Skills.len() == 0) return;
 
 		_properties.Bravery += ::Math.round( flesh_servant.m.BaseProperties["Bravery"] * 0.2);
 		_properties.Initiative += ::Math.round( flesh_servant.m.BaseProperties["Initiative"] * 0.2);

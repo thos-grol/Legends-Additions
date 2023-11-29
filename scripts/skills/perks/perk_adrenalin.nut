@@ -3,7 +3,7 @@
 + "\nThe user becomes first in the next round's turn order"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "When attacked:")
-+ "\n"+::MSU.Text.colorRed("+1 stack up to 5")
++ "\n"+::MSU.Text.colorRed("+1 stack up to 6")
 + "\n"+::MSU.Text.colorRed("stacks expire on turn end")
 + "\n" + ::MSU.Text.colorGreen("+5") + " Initiative per stack"
 + "\n" + ::MSU.Text.colorGreen("– 5%") + " Fatigue cost per stack";
@@ -14,7 +14,7 @@ this.perk_adrenalin <- this.inherit("scripts/skills/skill", {
 	m = {
 		Stacks = 0,
 		BonusPerStack = 5,
-		MaxStacks = 5
+		MaxStacks = 6
 	},
 	function create()
 	{

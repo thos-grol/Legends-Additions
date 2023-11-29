@@ -135,7 +135,7 @@
 			"trait.proficiency_Flail",
 			"trait.proficiency_Spear",
 			"trait.proficiency_Polearm",
-			"trait.proficiency_Unarmed",
+			"trait.proficiency_Fist",
 			"trait.proficiency_Ranged",
 		];
 

@@ -10,7 +10,7 @@ this.ptr_follow_up_effect <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "effects.ptr_follow_up";
 		this.m.Name = "Follow Up";
 		this.m.Description = "Every time an enemy gets hit in this character\'s attack range by an ally, %they% will perform a free non-lethal attack against that enemy with reduced damage.";
-		this.m.Icon = "ui/perks/follow_up.png";
+		this.m.Icon = "ui/perks/breakthrough.png";
 		this.m.IconMini = "ptr_follow_up_effect_mini";
 		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.Order = ::Const.SkillOrder.Last;

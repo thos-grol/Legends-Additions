@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.LegendKnifeplay = "Knifeplay";
 ::Const.Strings.PerkDescription.LegendKnifeplay = "Become proficient in daggers"
 +"\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Daggers)"
++ "\n " + ::MSU.Text.colorGreen("– 33%") + " skill fatigue (Daggers)"
 + "\n " + ::MSU.Text.colorGreen("– 1") + " AP cost for Stab, Puncture and Deathblow"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Throw Knife\' (4 AP, 10 Fat, 3 Charges):")

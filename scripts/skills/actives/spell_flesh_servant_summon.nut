@@ -27,7 +27,7 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
 		this.m.IsIgnoredAsAOO = true;
 
 		this.m.Aspect = "winter";
-		this.m.ManaCost = 0;
+		this.m.ManaCost = 4;
 		this.m.Cooldown_Max = 1;
 		this.m.Cooldown = 1;
 
@@ -48,9 +48,9 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
 	{
 		local actor = this.getContainer().getActor();
 		local bind = actor.getSkills().getSkillByID("actives.spell.flesh_servant_bind");
-		return this.skill.isUsable() && bind != null && bind.m.Type_ != null  && !this.m.Used;
+		return this.skill.isUsable() && this._magic_active.isUsable() && bind != null && bind.m.Type_ != null  && !this.m.Used;
 	}
-
+	
 	function cast( _user, _targetTile )
 	{
 		this.m.Used = true;

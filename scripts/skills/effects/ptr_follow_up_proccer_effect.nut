@@ -7,7 +7,7 @@ this.ptr_follow_up_proccer_effect <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "effects.ptr_follow_up_proccer";
 		this.m.Name = "";
 		this.m.Description = "";
-		this.m.Icon = "ui/perks/ptr_follow_up.png";
+		this.m.Icon = "ui/perks/breakthrough.png";
 		//this.m.IconMini = "perk_01_mini";
 		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;

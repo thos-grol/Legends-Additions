@@ -27,7 +27,7 @@ this.spell_mark_of_decay <- this.inherit("scripts/skills/_magic_active", {
 		this.m.IsUsingHitchance = false;
 
 		this.m.Aspect = "winter";
-		this.m.ManaCost = 0;
+		this.m.ManaCost = 4;
 		this.m.Cooldown_Max = 1;
 		this.m.Cooldown = 1;
 

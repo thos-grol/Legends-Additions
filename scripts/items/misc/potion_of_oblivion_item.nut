@@ -83,5 +83,7 @@ this.potion_of_oblivion_item <- this.inherit("scripts/items/item", {
 		return true;
 	}
 
+	//TODO: serialize whether the potion will break limit or not
+
 });
 

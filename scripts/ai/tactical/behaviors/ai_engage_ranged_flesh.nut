@@ -470,20 +470,24 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 			local takingCover = false;
 			local tooClose = false;
 
-			foreach( target in this.m.ValidTargets )
+			try 
 			{
-				local d = t.Tile.getDistanceTo(target.Tile);
+				foreach( target in this.m.ValidTargets )
+				{
+					local d = t.Tile.getDistanceTo(target.Tile);
 
-				if (d <= 1)
-				{
-					tooClose = true;
-					  // [608]  OP_JMP            0     26    0    0
+					if (d <= 1)
+					{
+						tooClose = true;
+						// [608]  OP_JMP            0     26    0    0
+					}
+					else if (d <= target.Actor.getIdealRange() && !target.Actor.getCurrentProperties().IsStunned && target.Actor.isArmedWithMeleeWeapon())
+					{
+						score = score + this.Const.AI.Behavior.RangedEngageInRangeOfPolearmBonus;
+					}
 				}
-				else if (d <= target.Actor.getIdealRange() && !target.Actor.getCurrentProperties().IsStunned && target.Actor.isArmedWithMeleeWeapon())
-				{
-					score = score + this.Const.AI.Behavior.RangedEngageInRangeOfPolearmBonus;
-				}
-			}
+
+			} catch(exception) {}
 
 			if (tooClose)
 			{

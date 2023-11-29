@@ -87,20 +87,16 @@ this.en_garde_toggle <- ::inherit("scripts/skills/skill", {
 
 		local actor = this.getContainer().getActor();
 		if (!actor.isPlacedOnMap() || !actor.hasZoneOfControl() || ::Tactical.State.isAutoRetreat()) return;
-		::logInfo("Reached " + i++);
 
 		local skill = this.pickSkill();
 		if (skill != null)
 		{
-			::logInfo("Reached " + i++);
 			if (skill.getID() == "actives.riposte")
 			{
-				::logInfo("Reached " + i++);
 				skill.useForFree(actor.getTile());
 			}
 			else
 			{
-				::logInfo("Reached " + i++);
 				this.getContainer().add(skill);
 				if (actor.getTile().IsVisibleForPlayer)
 				{
