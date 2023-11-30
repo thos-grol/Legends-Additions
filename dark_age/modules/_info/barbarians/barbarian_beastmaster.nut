@@ -31,6 +31,7 @@
         ["W", 4],
         ["D", 6],
         ["scripts/skills/perks/perk_duelist"],
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Initiative", 7, 0, 2],

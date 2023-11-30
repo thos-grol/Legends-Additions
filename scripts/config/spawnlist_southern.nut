@@ -161,15 +161,6 @@ gt.Const.World.Spawn.CaravanSouthern <- {
 				}
 			]
 		},
-		{
-			Weight = 10,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.Slave,
-					Cost = 7
-				}
-			]
-		}
 	]
 };
 gt.Const.World.Spawn.Slaves <- {

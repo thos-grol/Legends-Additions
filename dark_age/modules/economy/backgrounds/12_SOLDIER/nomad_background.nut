@@ -78,5 +78,17 @@
 		items.equip(helm);
 	}
 
+	o.onAdded = function()
+	{
+		this.character_background.onAdded();
+	}
+
+});
+
+::mods_hookExactClass("skills/backgrounds/nomad_ranged_background", function(o) {
+	o.onAdded = function()
+	{
+		this.character_background.onAdded();
+	}
 });
 

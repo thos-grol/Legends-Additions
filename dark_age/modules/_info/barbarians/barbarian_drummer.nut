@@ -30,6 +30,7 @@
         ["scripts/skills/perks/perk_nine_lives"],
         ["D", 6],
         ["scripts/skills/perks/perk_legend_drums_of_war"],
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Initiative", 7, 0, 2],

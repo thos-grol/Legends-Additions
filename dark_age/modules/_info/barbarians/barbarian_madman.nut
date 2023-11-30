@@ -38,6 +38,7 @@
         ["scripts/skills/perks/perk_dismemberment"], //8
         ["scripts/skills/perks/perk_stance_gourmet"], //9
 		["scripts/skills/perks/perk_fresh_and_furious"], //10
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Initiative", 10, 3, 3],

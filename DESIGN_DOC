@@ -4,9 +4,6 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
-//TODO: rework southern nobles
-
-//TODO: buff direwolf and nachzherer
 //TODO: rework skeleton units
 //TODO: rework skeleton priest //drops miasma tome
 

@@ -29,6 +29,7 @@
         ["scripts/skills/perks/perk_adrenalin"],
         ["W", 4],
         ["T", 5],
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Initiative", 4, 0, 2],
@@ -39,10 +40,10 @@
     Trait = [],
 	Loadout = [
 		[
-			"scripts/items/weapons/barbarians/antler_cleaver",
+			"scripts/items/weapons/barbarians/blunt_cleaver",
 		],
 		[
-			"scripts/items/weapons/barbarians/claw_club",
+			"scripts/items/weapons/barbarians/crude_axe",
 		],
 	],
 	Builds = {},
@@ -65,7 +66,7 @@
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/barbarians/claw_club",
+			"scripts/items/weapons/barbarians/crude_axe",
 			"scripts/items/shields/wooden_shield_old"
 		],
 	]

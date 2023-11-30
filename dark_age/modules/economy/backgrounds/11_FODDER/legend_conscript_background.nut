@@ -28,7 +28,7 @@
 			Magic = []
 		};
 	}
-	
+
 	o.onAddEquipment = function()
 	{
 		local items = this.getContainer().getActor().getItems();
@@ -80,5 +80,18 @@
 		items.equip(helm);
 	}
 
+	o.onAdded = function()
+	{
+		this.character_background.onAdded();
+	}
+
+});
+
+
+::mods_hookExactClass("skills/backgrounds/legend_conscript_ranged_background", function(o) {
+	o.onAdded = function()
+	{
+		this.character_background.onAdded();
+	}
 });
 

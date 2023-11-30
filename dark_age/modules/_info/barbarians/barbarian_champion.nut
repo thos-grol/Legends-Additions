@@ -37,6 +37,7 @@
         ["scripts/skills/perks/perk_fitness"], //7
         ["scripts/skills/perks/perk_steadfast"], //8
         ["scripts/skills/perks/perk_stance_seismic_slam"], //9
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Initiative", 9, 3, 3],

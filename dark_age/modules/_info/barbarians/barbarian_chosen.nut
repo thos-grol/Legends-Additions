@@ -69,6 +69,7 @@
         ["scripts/skills/perks/perk_legend_lacerate"], //8
         ["scripts/skills/perks/perk_stance_gourmet"], //9
 		["scripts/skills/perks/perk_fresh_and_furious"], //9
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Health", 5, 3, 3],
