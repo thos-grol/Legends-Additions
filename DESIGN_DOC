@@ -4,6 +4,7 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
+//TODO: rework souther nobles
 //TODO: rework skeleton units
 //TODO: rework skeleton priest //drops miasma tome
 

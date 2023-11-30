@@ -139,7 +139,7 @@
 
 //LOOT
 	"misc.signet_ring" : 720, //FEATURE_8: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
-	"misc.ancient_scroll" : 400,
+	"misc.ancient_scroll" : 500,
 	"misc.legend_scroll" : 400,
 	"misc.ornate_tome" : 800,
 	"misc.white_pearls" : 300, //FEATURE_8: 15 units, rework into item with ammount, trade goods, found in port cities/loot
