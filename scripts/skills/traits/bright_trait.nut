@@ -60,8 +60,8 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	// Tick
 	function onNewDay() //decipher
 	{
-		if (::Math.rand(1, 100) <= 5 && getBonus() >= 10 && actor.m.Level == 10) actor.updateLevel_limit_break();
-
+		local actor = this.getContainer().getActor();
+		if (getBonus() >= 10 && actor.m.Level == 10 && ::Math.rand(1, 100) <= 10) actor.updateLevel_limit_break();
 		if (get_data() == null) return;
 		tick();
 	}
@@ -205,7 +205,7 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 3,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "Has a 5% chance to break the limit each day"
+				text = "Has a 10% chance to break the limit each day"
 			});
 
 		ret = getTooltip_project(ret);

@@ -106,7 +106,6 @@
 		this.m.BeastsLow.push(beast);
 
 
-		return; //FIXME: PLACEHOLDER remove for normal function, add more supernatural monsters
 
 		beast = function ( _action, _nearTile = null ) //Nachzehrer
 		{
@@ -149,6 +148,9 @@
 		};
 		this.m.Options.push(beast);
 		this.m.BeastsLow.push(beast);
+
+		return; //FIXME: PLACEHOLDER remove for normal function, add more supernatural monsters
+
 
 		if (::Const.DLC.Desert)
 		{

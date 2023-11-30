@@ -20,7 +20,6 @@ this.perk_legend_adaptive <- this.inherit("scripts/skills/skill", {
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
-		this.m.NoRefund <- true;
 	}
 
 	function onAdded()

@@ -319,6 +319,25 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
+
+	function drop_loot(_tile)
+	{
+		if (this.World.Retinue.hasFollower("follower.surgeon") && ::Math.rand(1,100) <= 33)
+		{
+			local tome = this.new("scripts/items/misc/anatomist/direwolf_potion_item");
+			tome.drop(_tile);
+		}
+
+		// for(local i = 0; i < 3; i++ )
+		// {
+		// 	if (::Math.rand(1,100) <= 20 )
+		// 	{
+		// 		local s = this.new("scripts/items/misc/magic/soul_splinter");
+		// 		s.drop(_tile);
+		// 	}
+		// }
+
+	}
 });
 
 

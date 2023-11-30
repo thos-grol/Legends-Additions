@@ -89,11 +89,14 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 
 	function onBeforeTargetHit( _skill, _targetEntity, _hitInfo )
 	{
-		if (_skill == this && _targetEntity.isAlive() && !_targetEntity.isDying())
+		try
 		{
-			this.Tactical.spawnSpriteEffect("sparkleflare_1", this.createColor("#ccf1ff"), _targetEntity.getTile(), 0, 40, 1.5, 1.5, -10, 400, 300);
-			this.Tactical.spawnSpriteEffect("sparkleflare_2", this.createColor("#ccf1ff"), _targetEntity.getTile(), 0, 40, 1, 0.5, 10, 150, 350);
-		}
+			if (_skill == this && _targetEntity.isAlive() && !_targetEntity.isDying())
+			{
+				this.Tactical.spawnSpriteEffect("sparkleflare_1", this.createColor("#ccf1ff"), _targetEntity.getTile(), 0, 40, 1.5, 1.5, -10, 400, 300);
+				this.Tactical.spawnSpriteEffect("sparkleflare_2", this.createColor("#ccf1ff"), _targetEntity.getTile(), 0, 40, 1, 0.5, 10, 150, 350);
+			}
+		} catch(exception){}
 	}
 
 	
@@ -151,17 +154,17 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 					this.Tactical.spawnProjectileEffect(::Const.ProjectileSprite[this.m.ProjectileType], xxtileE, _targetTile, 1.0 , this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
 				}
 			}.bindenv(this), this);
-		}
 
-		this.Time.scheduleEvent(this.TimeUnit.Virtual, 700, function ( _skill )
-		{
-			if ( _targetTile.getEntity().isAlive())
+			this.Time.scheduleEvent(this.TimeUnit.Virtual, i * 300, function ( _skill )
 			{
-				_skill.attackEntity(_user, _targetTile.getEntity(), false);
-			}
-			_skill.m.IsDoingAttackMove = true;
-			_skill.getContainer().setBusy(false);
-		}.bindenv(this), this);
+				if ( _targetTile.getEntity().isAlive())
+				{
+					_skill.attackEntity(_user, _targetTile.getEntity(), false);
+				}
+				_skill.m.IsDoingAttackMove = true;
+				_skill.getContainer().setBusy(false);
+			}.bindenv(this), this);
+		}
 		return true;
 	}
 
@@ -171,6 +174,9 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 		{
 			_properties.RangedSkill += this.m.AdditionalAccuracy;
 			_properties.HitChanceAdditionalWithEachTile -= 2 + this.m.AdditionalHitChance;
+			_properties.DamageRegularMin = 5;
+			_properties.DamageRegularMax = 15;
+			_properties.IsIgnoringArmorOnAttack = true;
 		}
 	}
 

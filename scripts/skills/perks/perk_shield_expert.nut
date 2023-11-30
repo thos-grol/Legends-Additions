@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.ShieldExpert = "Shield Expert";
 ::Const.Strings.PerkDescription.ShieldExpert = "Become proficient in shields"
 +"\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Shields)"
++ "\n " + ::MSU.Text.colorGreen("– 33%") + " skill fatigue (Shields)"
 + "\n"+::MSU.Text.colorGreen("– 10%") + " damage taken while using a shield"
 + "\n " + ::MSU.Text.colorGreen("– 50%") + " shield damage recieved to a minimum of 1"
 

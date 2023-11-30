@@ -52,7 +52,7 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 		ret.push({
 			id = 9,
 			type = "text",
-			icon = "ui/tooltips/special.png",
+			icon = "ui/icons/special.png",
 			text = "Can be used once per turn"
 		});
 
@@ -73,13 +73,13 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 			ret.push({
 				id = 9,
 				type = "text",
-				icon = "ui/tooltips/special.png",
+				icon = "ui/icons/special.png",
 				text = "Can target enemies"
 			});
 			ret.push({
 				id = 9,
 				type = "text",
-				icon = "ui/tooltips/special.png",
+				icon = "ui/icons/special.png",
 				text = "Has a [color=" + ::Const.UI.Color.NegativeValue + "]"+chance + "%" +"[/color] chance to Stagger enemies"
 			});
 			

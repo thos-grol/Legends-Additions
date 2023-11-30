@@ -3,7 +3,8 @@
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("250%") + " EXP gain"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Upon reaching Level 10:")
-+ "\n"+::MSU.Text.colorGreen("+1") + " perk point";
++ "\n"+::MSU.Text.colorGreen("+1") + " perk point"
++ "\n\n" + ::MSU.Text.colorRed("Is not refundable");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Student].Name = ::Const.Strings.PerkName.Student;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Student].Tooltip = ::Const.Strings.PerkDescription.Student;

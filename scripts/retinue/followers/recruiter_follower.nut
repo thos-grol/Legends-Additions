@@ -4,7 +4,7 @@ this.recruiter_follower <- this.inherit("scripts/retinue/follower", {
 	{
 		this.follower.create();
 		this.m.ID = "follower.recruiter";
-		this.m.Name = "Pre-filled Contracts";
+		this.m.Name = "Recruiter";
 		this.m.Description = "The recruiter will help the company scour for talents.";
 		this.m.Image = "ui/campfire/recruiter_01";
 		this.m.Cost = 150;

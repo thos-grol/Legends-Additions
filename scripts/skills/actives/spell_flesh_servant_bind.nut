@@ -32,7 +32,7 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 		this.m.IsIgnoredAsAOO = true;
 
 		this.m.Aspect = "winter";
-		this.m.ManaCost = 0;
+		this.m.ManaCost = 2;
 		this.m.Cooldown_Max = 1;
 		this.m.Cooldown = 1;
 
@@ -87,7 +87,7 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 
 	function isUsable()
 	{
-		return this.skill.isUsable() && !this.m.Used;
+		return this.skill.isUsable() && this._magic_active.isUsable() && !this.m.Used;
 	}
 
 	function cast( _user, _targetTile )
@@ -223,51 +223,51 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 			icon = "ui/tooltips/warning.png",
 			text = ::MSU.Text.colorRed("Stats: ")
 		});
-		tooltip.push({
+		ret.push({
 			id = 101,
 			type = "hint",
 			icon = "ui/icons/bravery.png",
 			text = "" + this.m.BaseProperties.Bravery
 		});
-		tooltip.push({
+		ret.push({
 			id = 102,
 			type = "hint",
 			icon = "ui/icons/initiative.png",
 			text = "" + this.m.BaseProperties.Initiative
 		});
-		tooltip.push({
+		ret.push({
 			id = 103,
 			type = "hint",
 			icon = "ui/icons/melee_skill.png",
 			text = "" + this.m.BaseProperties.MeleeSkill
 		});
-		tooltip.push({
+		ret.push({
 			id = 104,
 			type = "hint",
 			icon = "ui/icons/ranged_skill.png",
 			text = "" + this.m.BaseProperties.RangedSkill
 		});
-		tooltip.push({
+		ret.push({
 			id = 105,
 			type = "hint",
 			icon = "ui/icons/melee_defense.png",
 			text = "" + this.m.BaseProperties.MeleeDefense
 		});
-		tooltip.push({
+		ret.push({
 			id = 106,
 			type = "hint",
 			icon = "ui/icons/ranged_defense.png",
 			text = "" + this.m.BaseProperties.RangedDefense
 		});
 		try {
-			tooltip.push({
+			ret.push({
 				id = 106,
 				type = "hint",
 				icon = "ui/icons/armor_head.png",
 				text = "" + this.m.BaseProperties.Armor[0]
 			});
 
-			tooltip.push({
+			ret.push({
 				id = 106,
 				type = "hint",
 				icon = "ui/icons/armor_body.png",

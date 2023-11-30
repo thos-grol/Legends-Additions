@@ -11,6 +11,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		this.m.Name = "Return Item";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 		local orig = this.getDifficultyMult();
+		this.m.Category = this.Const.Contracts.Categories.Economy;
 
 		if (this.getDifficultyMult() >= 1.45 && this.getDifficultyMult() <= 1.65)
 		{

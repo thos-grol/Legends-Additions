@@ -3,7 +3,7 @@
 {
 	o.getTryoutCost = function()
 	{
-		return this.Math.max(0, this.Math.ceil(this.m.CurrentProperties.DailyWage));
+		return 0;
 	}
 
 	o.getDailyCost = function()
@@ -277,7 +277,7 @@
 ::Const.World.Common.WorldEconomy.setupTrade = function ( _party, _settlement, _destination, _fixedBudget = -1, _minBudget = -1, _maxBudget = -1 )
 {
 	local budget = _fixedBudget != -1 ? _fixedBudget : this.calculateTradingBudget(_settlement, _minBudget, _maxBudget);
-	budget = ::Math.round(budget / 10);
+	budget = ::Math.round(budget / 2);
 	local result = this.makeTradingDecision(_settlement, budget);
 	local finance = this.getExpectedFinancialReport(_settlement);
 	_settlement.addResources(-finance.Investment);
