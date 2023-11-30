@@ -15,19 +15,6 @@ this.surgeon_follower <- this.inherit("scripts/retinue/follower", {
 			"Every man without a permanent injury is guaranteed to survive an otherwise fatal blow",
 			"Every injury takes one less day to heal",
 		];
-		this.addRequirement("Slay a monster", function ()
-		{
-			if (!::World.Statistics.getFlags().has("MonstersSlain")) return false;
-			return ::World.Statistics.getFlags().getAsInt("MonstersSlain") >= 1;
-		}, true, function ( _r )
-		{
-			_r.Count <- 1;
-			_r.UpdateText <- function ()
-			{
-				local monsters_slain = (!::World.Statistics.getFlags().has("MonstersSlain") ? 0 : ::World.Statistics.getFlags().getAsInt("MonstersSlain"));
-				this.Text = "Slay " + ::Math.min(this.Count, monsters_slain) + "/" + this.Count + " monsters";
-			};
-		});
 	}
 
 	function onUpdate()

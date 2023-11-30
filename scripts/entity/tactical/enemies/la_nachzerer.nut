@@ -1,10 +1,10 @@
 ::Const.Tactical.Actor.Ghoul <- {
 	XP = 5000,
 	ActionPoints = 12,
-	Hitpoints = 800,
+	Hitpoints = 1000,
 	Bravery = 10,
 	Stamina = 666,
-	MeleeSkill = 75,
+	MeleeSkill = 115,
 	RangedSkill = 0,
 	MeleeDefense = 50,
 	RangedDefense = 50,
