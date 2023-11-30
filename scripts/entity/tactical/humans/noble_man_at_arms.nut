@@ -1,10 +1,3 @@
-//TODO: noble_man_at_arms - veteran
-this.m.Items.equip(this.new("scripts/items/weapons/warhammer"));
-this.m.Items.equip(this.new("scripts/items/weapons/noble_sword"));
-this.m.Items.equip(this.new("scripts/items/weapons/morning_star"));
-this.m.Items.equip(this.new("scripts/items/weapons/flail"));
-this.m.Items.equip(this.new("scripts/items/weapons/military_cleaver"));
-
 this.noble_man_at_arms <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()

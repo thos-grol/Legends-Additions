@@ -1,6 +1,3 @@
-this.m.Items.equip(this.new("scripts/items/weapons/greatsword"));
-//TODO: noble_greatsword - master
-
 this.noble_greatsword <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()

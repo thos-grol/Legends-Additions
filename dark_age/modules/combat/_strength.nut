@@ -48,9 +48,8 @@
 			// 	this.m.Strength += (count + (brolevel + this.pow(brolevel, 1.2))) * broScale;
 			// }
 
-            local s_ = (10 + (brolevel / 2 + (brolevel - 1)) * 2) * broScale;
-			if (brolevel <= 5) s_ = 10;
-
+            local s_ = (count + (brolevel + this.pow(brolevel, 1.2))) * broScale;
+			if (brolevel <= 5) s_ = 1;
 			local armorPct = 1.0;
 			try
 			{

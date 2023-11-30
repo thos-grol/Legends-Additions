@@ -1,7 +1,4 @@
 //raider
-//TODO: legend_noble_slinger
-this.m.Items.equip(this.new("scripts/items/weapons/legend_slingstaff"));
-
 this.legend_noble_slinger <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()

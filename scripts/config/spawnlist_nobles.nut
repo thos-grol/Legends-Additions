@@ -19,13 +19,7 @@ gt.Const.World.Spawn.Noble <- {
 	Body = "figure_noble_01",
 	MinR = 75,
 	MaxR = 555,
-	Fixed = [
-		{
-			Weight = 100,
-			Type = this.Const.World.Spawn.Troops.StandardBearer,
-			Cost = 20
-		}
-	],
+	Fixed = [],
 	Troops = [
 		{
 			Weight = 45,

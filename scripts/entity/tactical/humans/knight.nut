@@ -1,18 +1,3 @@
-//master
-local weapons = [
-	"weapons/named/named_axe",
-	"weapons/named/named_mace",
-	"weapons/named/named_sword"
-];
-"weapons/fighting_axe",
-"weapons/noble_sword",
-"weapons/winged_mace",
-//named shields
-// this.Const.Items.NamedShields;
-
-//TODO: knight
-local shields = clone this.Const.Items.NamedShields;
-
 this.knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
@@ -187,7 +172,12 @@ this.knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 			local h = this.Const.World.Common.pickArmor(this.Const.World.Common.convNameToList(armor));
 			this.m.Items.equip(h);
 		}
-		else this.m.IsMinibossWeapon <- true;
+		else
+		{
+			this.m.IsMinibossWeapon <- true;
+			local shields = clone this.Const.Items.NamedShields;
+			this.m.Items.equip(this.new("scripts/items/" + shields[this.Math.rand(0, shields.len() - 1)]));
+		}
 
 		this.m.Items.equip(this.Const.World.Common.pickHelmet([
 			[

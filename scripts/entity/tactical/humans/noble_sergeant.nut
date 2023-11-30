@@ -1,15 +1,3 @@
-//TODO: noble_sergeant - master
-"weapons/warhammer",
-"weapons/fighting_axe",
-"weapons/arming_sword",
-"weapons/winged_mace",
-"weapons/hand_axe",
-"weapons/military_cleaver",
-"weapons/legend_battle_glaive",
-"weapons/legend_swordstaff",
-"weapons/legend_infantry_axe",
-"weapons/legend_military_goedendag"
-
 this.noble_sergeant <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()

@@ -26,7 +26,7 @@ gt.Const.World.Spawn.BanditRoamers <- {
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRabble,
-					MaxR = 130,
+					MaxR = 100,
 					Cost = 7
 				},
 				{
@@ -41,11 +41,11 @@ gt.Const.World.Spawn.BanditRoamers <- {
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRaider,
-					MinR = 320,
+					MinR = 250,
 					Cost = 18
 				},
 				{
-					MinR = 480,
+					MinR = 400,
 					Type = this.Const.World.Spawn.Troops.BanditVeteran,
 					Cost = 30
 				}
@@ -56,7 +56,7 @@ gt.Const.World.Spawn.BanditRoamers <- {
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRabblePoacher,
-					MaxR = 130,
+					MaxR = 100,
 					Cost = 8
 				},
 				{
@@ -88,7 +88,7 @@ gt.Const.World.Spawn.BanditScouts <- {
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRabble,
-					MaxR = 130,
+					MaxR = 100,
 					Cost = 7
 				},
 				{
@@ -118,7 +118,7 @@ gt.Const.World.Spawn.BanditScouts <- {
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRabblePoacher,
-					MaxR = 130,
+					MaxR = 100,
 					Cost = 8
 				},
 				{
@@ -156,7 +156,7 @@ gt.Const.World.Spawn.BanditRaiders <- {
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRabble,
-					MaxR = 130,
+					MaxR = 100,
 					Cost = 7
 				},
 				{

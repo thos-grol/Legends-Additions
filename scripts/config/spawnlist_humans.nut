@@ -116,7 +116,7 @@ gt.Const.World.Spawn.Mercenaries <- {
 			Weight = 75,
 			Types = [
 				{
-					MaxR = 400,
+					MaxR = 250,
 					Type = this.Const.World.Spawn.Troops.MercenaryLOW,
 					Cost = 18
 				},
@@ -134,6 +134,7 @@ gt.Const.World.Spawn.Mercenaries <- {
 					Cost = 25
 				},
 				{
+					MinR = 250,
 					Type = this.Const.World.Spawn.Troops.MasterArcher,
 					Cost = 40
 				}
@@ -143,10 +144,12 @@ gt.Const.World.Spawn.Mercenaries <- {
 			Weight = 5,
 			Types = [
 				{
+					MinR = 250,
 					Type = this.Const.World.Spawn.Troops.HedgeKnight,
 					Cost = 40
 				},
 				{
+					MinR = 250,
 					Type = this.Const.World.Spawn.Troops.Swordmaster,
 					Cost = 40
 				}

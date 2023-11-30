@@ -1,6 +1,3 @@
-//TODO: noble_arbalester
-this.m.Items.equip(this.new("scripts/items/weapons/heavy_crossbow"));
-
 this.noble_arbalester <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()

@@ -1,14 +1,14 @@
-::Const.Tactical.Actor.BanditMarksman <- {
+::Const.Tactical.Actor.LegendSlinger <- {
 	XP = 250,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 47,
-	Stamina = 96,
-	MeleeSkill = 65,
-	RangedSkill = 40,
+	Hitpoints = 60,
+	Bravery = 60,
+	Stamina = 120,
+	MeleeSkill = 60,
+	RangedSkill = 60,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 105,
+	Initiative = 115,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -18,7 +18,7 @@
 	FatigueRecoveryRate = 15
 };
 
-::B.Info[::Const.EntityType.BanditMarksman] <- {
+::B.Info[::Const.EntityType.LegendSlinger] <- {
     Level = 9,
 	Pattern = [
         ["T", 1],
@@ -38,13 +38,7 @@
     Trait = [],
 	Loadout = [
 		[
-			"scripts/items/weapons/hunting_bow",
-		],
-		[
-			"scripts/items/weapons/light_crossbow",
-		],
-		[
-			"scripts/items/weapons/crossbow",
+			"scripts/items/weapons/legend_slingstaff",
 		],
 	]
 };
