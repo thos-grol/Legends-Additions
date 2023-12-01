@@ -29,6 +29,9 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		b.setValues(::Const.Tactical.Actor.Ghoul);
 		b.IsAffectedByNight = false;
 		b.IsImmuneToDisarm = true;
+		b.IsImmuneToBleeding = true;
+		b.IsImmuneToPoison = true;
+		b.IsImmuneToStun = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
