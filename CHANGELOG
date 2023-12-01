@@ -10,3 +10,4 @@
 - reimplemented 2 basic cultist perks and injuries
 - decreased temple healing costs
 - decreased caravan and exploration contract pay to 30 base
+- named items are now more expensive: (X/1.5 + 100) * 2. x is the original price
