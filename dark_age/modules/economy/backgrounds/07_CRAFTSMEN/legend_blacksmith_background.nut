@@ -11,12 +11,14 @@
 			Weapon = [
 				::Const.Perks.HammerTree
 			],
-			Defense = [],
+			Defense = [
+				::Const.Perks.HeavyArmorTree,
+				::Const.Perks.LightArmorTree
+			],
 			Traits = [],
 			Enemy = [],
 			Class = [
-				::Const.Perks.HammerClassTree,
-				::Const.Perks.RepairClassTree
+				::Const.Perks.FistsClassTree
 			],
 			Magic = []
 		};

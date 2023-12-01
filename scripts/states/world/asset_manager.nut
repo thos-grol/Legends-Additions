@@ -996,7 +996,9 @@ this.asset_manager <- {
 					}
 					else
 					{
-						bro.setHitpoints(this.Math.minf(bro.getHitpointsMax(), bro.getHitpoints() + ::Const.World.Assets.HitpointsPerHour * ::Const.Difficulty.HealMult[this.World.Assets.getEconomicDifficulty()] * this.m.HitpointsPerHourMult));
+						local amount = bro.getHitpoints() + ::Const.World.Assets.HitpointsPerHour * ::Const.Difficulty.HealMult[this.World.Assets.getEconomicDifficulty()] * this.m.HitpointsPerHourMult;
+						if (bro.getSkills().hasSkill("perk.legend_recuperation")) amount *= 1.25;
+						bro.setHitpoints(this.Math.minf(bro.getHitpointsMax(), amount));
 					}
 				}
 			}

@@ -1,0 +1,10 @@
+1.01
+- Improved healing and repair rates to 50%
+- fixed some minor description issues (threw pocket sand effect was used as marker to make bro immune to pocket sand, now hidden)
+- improved lone wolf origin and improved bros recieved from lone wolf events
+    - lw now has garunteed fit tree (synergizes with heavy armor) and better stars and starts at level 8
+- impoved rangers origin
+    - rangers now get calm and vicious trees added on top of their normal trees
+- disabled ratcatcher food event
+- disabled lw depressing lady event
+- reimplemented 2 basic cultist perks and injuries

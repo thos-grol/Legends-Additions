@@ -117,11 +117,9 @@
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/chest/tabards/legend_tabard_noble_blueprint", function(o) { o.isValid <- function(){ return false; }});
 
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_demonalp_helmet_layered_blueprint", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_leather_hood_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_mountain_helmet_layered_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_redback_helmet_layered_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_restored_ancient_helm", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_sack_hood_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_skin_helmet_layered_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_stollwurm_helmet_layered_blueprint", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("crafting/blueprints/mod_legend/armor/helmet/legend_warlock_hood_blueprint", function(o) { o.isValid <- function(){ return false; }});

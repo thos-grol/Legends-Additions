@@ -9,7 +9,8 @@
 + "\n"+::MSU.Text.colorRed("X is the potency of omen of decay")
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Unit dies having decay effect, 10%:")
 + "\n"+::MSU.Text.colorGreen("+1") + " potency (Max: 10)"
-;
++ "\n\n"+::MSU.Text.colorRed("Unlocks winter potion recipe, but an alchemist and anatomist is needed");
+
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.MeditationOmenOfDecay].Name = ::Const.Strings.PerkName.MeditationOmenOfDecay;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.MeditationOmenOfDecay].Tooltip = ::Const.Strings.PerkDescription.MeditationOmenOfDecay;

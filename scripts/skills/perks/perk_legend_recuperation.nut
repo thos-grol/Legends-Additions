@@ -2,6 +2,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("+2") + " Hitpoint recovery"
 + "\n" + ::MSU.Text.colorGreen("+2") + " Fatigue recovery"
++ "\n" + ::MSU.Text.colorGreen("+25%") + "Hitpoint recovery on world map"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Recover\' (X AP):")
 + "\n" + ::MSU.Text.colorGreen("– 5.5% * X") + " Fatigue accumulated"
 + "\n"+::MSU.Text.colorRed("Cannot be used if another skill has been used");
