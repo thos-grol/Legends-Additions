@@ -36,13 +36,13 @@ this.ghost_agent <- this.inherit("scripts/ai/tactical/agent", {
 
 	function onAddBehaviors()
 	{
+		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_engage_melee"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_default"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_terror"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_disengage"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_darkflight"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_defend_rotation"));
 
-		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_engage_ranged_flesh"));
 		this.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_flesh_ranged"));
 	}
 

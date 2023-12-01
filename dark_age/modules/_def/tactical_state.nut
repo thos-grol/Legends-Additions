@@ -109,8 +109,11 @@
 
 				foreach( bro in playerRoster )
 				{
-					if (bro.getSkills().hasSkill("perk.trial_by_fire") && bro.isPlacedOnMap()) trial_by_fire = true;
-					break;
+					if (bro.getSkills().hasSkill("perk.trial_by_fire"))
+					{
+						trial_by_fire = true;
+						break;
+					}
 				}
 
 				foreach( bro in playerRoster )
