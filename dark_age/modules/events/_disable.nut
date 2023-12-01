@@ -1,5 +1,7 @@
 //Disable general events
 ::mods_hookExactClass("events/events/no_food_event", function (o){ o.onUpdateScore = function() { return; }});
+::mods_hookExactClass("events/events/ratcatcher_catches_food_event", function (o){ o.onUpdateScore = function() { return; }});
+::mods_hookExactClass("events/events/ratcatcher_crafts_net_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/no_food_variety_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/adopt_wardog_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/butcher_vs_wardog_event", function (o){ o.onUpdateScore = function() { return; }});
@@ -138,6 +140,7 @@
 ::mods_hookExactClass("events/events/legends/legends_minstrel_and_juggler_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/legends/legends_minstrel_and_troubador_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/legends/legends_troubador_and_juggler_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/legends/dlc4/lone_wolf_origin_depressing_lady_event", function(o) { o.onUpdateScore = function(){ return; }});
 
 
 //legend_cannibal_recruitment //rework cannibal to be more interesting.

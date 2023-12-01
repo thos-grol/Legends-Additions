@@ -11,7 +11,7 @@ this.surgeon_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Effects = [
 			"Unlocks anatomist events",
 			"5% chance to extract the divine source from monsters as an extraordinary sequence",
-			"+303% heal speed (Base 33%, so about 100%)",
+			"+200% heal speed (Base 50%, so about 100%)",
 			"Every man without a permanent injury is guaranteed to survive an otherwise fatal blow",
 			"Every injury takes one less day to heal",
 		];
@@ -26,7 +26,7 @@ this.surgeon_follower <- this.inherit("scripts/retinue/follower", {
 
 		if ("HitpointsPerHourMult" in this.World.Assets.m)
 		{
-			this.World.Assets.m.HitpointsPerHourMult *= 3.0303;
+			this.World.Assets.m.HitpointsPerHourMult *= 2.0;
 		}
 	}
 

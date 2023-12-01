@@ -10,14 +10,16 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				::Const.Perks.SwordTree,
+				this.Const.Perks.PolearmTree,
+				this.Const.Perks.AxeTree,
+				this.Const.Perks.HammerTree,
+				this.Const.Perks.BowTree,
 				::Const.Perks.ShieldTree,
-				::Const.Perks.PolearmTree,
-				::Const.Perks.BowTree
 			],
 			Defense = [],
 			Traits = [
 				::Const.Perks.TrainedTree,
+				::Const.Perks.FitTree,
 			],
 			Enemy = [],
 			Class = [

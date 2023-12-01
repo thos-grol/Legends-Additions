@@ -69,7 +69,7 @@ this.perk_legend_adaptive <- this.inherit("scripts/skills/skill", {
 					}
 				];
 		} catch(exception) {}
-		
+
 		return ret;
 	}
 

@@ -4,7 +4,8 @@
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("+X") + " to all stats"
 + "\n"+::MSU.Text.colorRed("X is 20% of this unit's flesh servant's base stats")
-+ "\n"+::MSU.Text.colorGreen("100%") + " of damage dealt to this unit is transferred to this unit's flesh servant";
++ "\n"+::MSU.Text.colorGreen("100%") + " of damage dealt to this unit is transferred to this unit's flesh servant"
++ "\n\n"+::MSU.Text.colorRed("Unlocks winter potion recipe, but an alchemist and anatomist is needed");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.MeditationPactOfFlesh].Name = ::Const.Strings.PerkName.MeditationPactOfFlesh;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.MeditationPactOfFlesh].Tooltip = ::Const.Strings.PerkDescription.MeditationPactOfFlesh;

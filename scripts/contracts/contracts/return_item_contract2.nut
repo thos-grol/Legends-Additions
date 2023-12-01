@@ -10,7 +10,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		this.m.Type = "contract.return_item";
 		this.m.Name = "Return Item";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
-		this.m.DifficultyMult = this.Math.rand(255, 350) * 0.01;
+		this.m.DifficultyMult = this.Math.rand(255, 400) * 0.01;
 	}
 
 	function onImportIntro()
@@ -145,7 +145,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				this.Flags.set("StartDay", this.World.getTime().Days);
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 
-				if (!this.Flags.get("IsNecromancer") && !this.Flags.get("IsAnatomist") && !this.Flags.get("IsCultist") && this.Math.rand(1, 100) <= 30)
+				if (!this.Flags.get("IsNecromancer") && !this.Flags.get("IsCultist") && this.Math.rand(1, 100) <= 30)
 				{
 					this.Flags.set("IsCounterOffer", true);
 					this.Flags.set("Bribe", this.Contract.beautifyNumber(this.Contract.m.Payment.getOnCompletion() * this.Math.rand(200, 300) * 0.01));

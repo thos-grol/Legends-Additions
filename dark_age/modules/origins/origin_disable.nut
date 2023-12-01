@@ -29,11 +29,13 @@
 ::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
 
 ::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("scenarios/world/cultists_scenario", function(o) { o.isValid <- function(){ return false; }});
+// ::mods_hookExactClass("scenarios/world/cultists_scenario", function(o) { o.isValid <- function(){ return false; }});
 //FEATURE_5 rework and reenable cultists scenario
+//TODO: test cultist perks and then uncomment
 
 ::mods_hookExactClass("scenarios/world/gladiators_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_scaling_beggar_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/beast_hunters_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_free_company_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_nomad_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/legends_berserker_scenario", function(o) { o.isValid <- function(){ return false; }});

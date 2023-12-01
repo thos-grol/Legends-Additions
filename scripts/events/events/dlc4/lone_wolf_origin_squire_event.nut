@@ -1,4 +1,3 @@
-//FEATURE_8: rework with Lonewolf origin
 this.lone_wolf_origin_squire_event <- this.inherit("scripts/events/event", {
 	m = {
 		Dude = null,
@@ -68,6 +67,18 @@ this.lone_wolf_origin_squire_event <- this.inherit("scripts/events/event", {
 						"linen_tunic"
 					]
 				]));
+				_event.m.Dude.m.PerkPoints = 2;
+				_event.m.Dude.m.LevelUps = 2;
+				_event.m.Dude.m.Level = 3;
+				_event.m.Dude.m.XP = ::Const.LevelXP[_event.m.Dude.m.Level - 1];
+				_event.m.Dude.m.Talents = [];
+				local talents = _event.m.Dude.getTalents();
+				talents.resize(::Const.Attributes.COUNT, 0);
+				talents[::Const.Attributes.MeleeSkill] = 3;
+				talents[::Const.Attributes.MeleeDefense] = 3;
+				talents[this.Const.Attributes.Fatigue] = 3;
+				_event.m.Dude.m.Attributes = [];
+				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 				_event.m.Dude.setTitle("the Squire");
 				this.Characters.push(_event.m.Dude.getImagePath());
 			}
@@ -206,20 +217,9 @@ this.lone_wolf_origin_squire_event <- this.inherit("scripts/events/event", {
 
 	function onUpdateScore()
 	{
-		if (!::Const.DLC.Wildmen)
-		{
-			return;
-		}
-
-		if (this.World.Assets.getOrigin().getID() != "scenario.lone_wolf")
-		{
-			return;
-		}
-
-		if (this.World.getPlayerRoster().getSize() > 1)
-		{
-			return;
-		}
+		if (!::Const.DLC.Wildmen) return;
+		if (this.World.Assets.getOrigin().getID() != "scenario.lone_wolf") return;
+		if (this.World.getTime().Days < 13) return;
 
 		local towns = this.World.EntityManager.getSettlements();
 		local nearTown = false;
@@ -242,7 +242,7 @@ this.lone_wolf_origin_squire_event <- this.inherit("scripts/events/event", {
 		}
 
 		this.m.Town = town;
-		this.m.Score = 75;
+		this.m.Score = 99999;
 	}
 
 	function onPrepare()

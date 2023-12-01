@@ -9,7 +9,7 @@ this.blacksmith_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Image = "ui/campfire/blacksmith_01";
 		this.m.Cost = 500;
 		this.m.Effects = [
-			"+303% repair speed (Base 33%, so about 100%)",
+			"+200% repair speed (Base 50%, so about 100%)",
 			"Saves all gear even if they are broken or lost in battle",
 			"Unlocks weapon crafting recipes. Check the crafting tent for details (WIP)",
 		];
@@ -21,7 +21,7 @@ this.blacksmith_follower <- this.inherit("scripts/retinue/follower", {
 
 		if ("RepairSpeedMult" in this.World.Assets.m)
 		{
-			this.World.Assets.m.RepairSpeedMult *= 3.0303;
+			this.World.Assets.m.RepairSpeedMult *= 2.0;
 		}
 
 		if ("IsBlacksmithed" in this.World.Assets.m)

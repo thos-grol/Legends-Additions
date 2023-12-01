@@ -2,7 +2,8 @@
 ::Const.Strings.PerkDescription.MeditationUnderworldThoughts <- ::MSU.Text.color(::Z.Color.Purple, "Meditation")
 + "\nJourney through the underworld..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Improves summoned undead:")
-+ "\n"+::MSU.Text.colorGreen("+33%") + " chance to survive being struck down (Base: 33%)";
++ "\n"+::MSU.Text.colorGreen("+33%") + " chance to survive being struck down (Base: 33%)"
++ "\n\n"+::MSU.Text.colorRed("Unlocks winter potion recipe, but an alchemist and anatomist is needed");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.MeditationUnderworldThoughts].Name = ::Const.Strings.PerkName.MeditationUnderworldThoughts;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.MeditationUnderworldThoughts].Tooltip = ::Const.Strings.PerkDescription.MeditationUnderworldThoughts;

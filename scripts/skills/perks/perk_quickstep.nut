@@ -6,7 +6,7 @@
 + "\nFootwork has a 25% chance to cost 0 AP and Fatigue"
 + "\n"+ ::MSU.Text.colorRed("Becomes 75% if the unit has the footwork perk")
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Footwork\' (3 AP, 20 Fat):")
-+ "\nLeave a zone of control without incurring any free attacks";
++ "\nMove without incurring any free attacks";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Quickstep].Name = ::Const.Strings.PerkName.Quickstep;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Quickstep].Tooltip = ::Const.Strings.PerkDescription.Quickstep;

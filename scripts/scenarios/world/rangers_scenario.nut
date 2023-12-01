@@ -48,11 +48,13 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		talents = bros[0].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
 		talents[this.Const.Attributes.RangedSkill] = 3;
-		talents[this.Const.Attributes.MeleeDefense] = 2;
+		talents[this.Const.Attributes.MeleeDefense] = 3;
 		talents[this.Const.Attributes.Initiative] = 3;
-		bros[0].m.PerkPoints = 5;
-		bros[0].m.LevelUps = 5;
-		bros[0].m.Level = 6;
+		bros[0].m.PerkPoints = 7;
+		bros[0].m.LevelUps = 7;
+		bros[0].m.Level = 8;
+		bros[0].getBackground().addPerkGroup(CalmTree.Tree);
+		bros[0].getBackground().addPerkGroup(ViciousTree.Tree);
 
 		bros[1].setStartValuesEx([
 			"poacher_background"
@@ -62,7 +64,7 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[1].m.Talents = [];
 		talents = bros[1].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.RangedSkill] = 2;
+		talents[this.Const.Attributes.RangedSkill] = 3;
 		talents[this.Const.Attributes.MeleeDefense] = 2;
 		talents[this.Const.Attributes.Hitpoints] = 3;
 		local items = bros[1].getItems();
@@ -70,9 +72,11 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Ammo));
 		items.equip(this.new("scripts/items/weapons/short_bow"));
 		items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
-		bros[1].m.PerkPoints = 5;
-		bros[1].m.LevelUps = 5;
-		bros[1].m.Level = 6;
+		bros[1].m.PerkPoints = 7;
+		bros[1].m.LevelUps = 7;
+		bros[1].m.Level = 8;
+		bros[1].getBackground().addPerkGroup(CalmTree.Tree);
+		bros[1].getBackground().addPerkGroup(ViciousTree.Tree);
 
 		bros[2].setStartValuesEx([
 			"poacher_background"
@@ -82,17 +86,19 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[2].m.Talents = [];
 		talents = bros[2].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.RangedSkill] = 2;
+		talents[this.Const.Attributes.RangedSkill] = 3;
 		talents[this.Const.Attributes.MeleeDefense] = 2;
-		talents[this.Const.Attributes.Bravery] = 3;
+		talents[this.Const.Attributes.Hitpoints] = 3;
 		local items = bros[2].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Mainhand));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Ammo));
 		items.equip(this.new("scripts/items/weapons/legend_slingstaff"));
 
-		bros[2].m.PerkPoints = 5;
-		bros[2].m.LevelUps = 5;
-		bros[2].m.Level = 6;
+		bros[2].m.PerkPoints = 7;
+		bros[2].m.LevelUps = 7;
+		bros[2].m.Level = 8;
+		bros[2].getBackground().addPerkGroup(CalmTree.Tree);
+		bros[2].getBackground().addPerkGroup(ViciousTree.Tree);
 
 		this.World.Assets.m.Money = 25;
 

@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/legend_lonewolf_background", function(o) {
+::mods_hookExactClass("skills/backgrounds/legend_companion_melee_background", function(o) {
 	local create = o.create;
 	o.create = function()
 	{
@@ -6,26 +6,20 @@
 		this.m.DailyCost = ::Z.Backgrounds.Wages[this.m.ID].DailyCost;
 		this.m.HiringCost = ::Z.Backgrounds.Wages[this.m.ID].HiringCost;
 
-		this.m.PerkTreeDynamicMins.Traits = 4;
+		this.m.PerkTreeDynamicMins.Traits = 3;
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.PolearmTree,
-				this.Const.Perks.AxeTree,
 				this.Const.Perks.HammerTree,
-				this.Const.Perks.BowTree,
-				::Const.Perks.ShieldTree,
+				this.Const.Perks.AxeTree,
 			],
 			Defense = [
+				::Const.Perks.LightArmorTree,
 				this.Const.Perks.HeavyArmorTree
 			],
 			Traits = [
 				this.Const.Perks.TrainedTree,
-				this.Const.Perks.FitTree,
-				this.Const.Perks.IndestructibleTree,
 			],
-			Enemy = [
-				::Const.Perks.SwordmastersTree
-			],
+			Enemy = [],
 			Class = [
 				::Const.Perks.FistsClassTree
 			],
