@@ -1,17 +1,11 @@
 //figure out persistent tile effects for entities?
 //skill that checks on move??
-//TODO: thrown pocket sand fix description
 
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
-//TODO: remove ratcatcher event food
-//TODO: increase healing rate
-//TODO: buff recuperation out of battle
-
 //TODO: test origins
 //TODO: test crafting
-//TODO: test cultist perks
 
 //TODO: rework skeleton units
 //TODO: rework skeleton priest //drops miasma tome

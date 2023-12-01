@@ -2,7 +2,7 @@
 // ::Const.Strings.PerkDescription.LegendSpecCultHood = "With face obscured by a cultist hood, gain " + ::MSU.Text.colorGreen( 15 ) + "% of your base resolve as a bonus to melee and ranged defense. Also works with cultist leather hood, leather helmet, sack, decayed sack helm, warlock hood or mask of davkul.\n Also unlocks a crafting recipe to make cultist hoods and sacks.";
 
 ::Const.Strings.PerkDescription.LegendSpecCultHood = "In Pain we find the truth of ourselves. We have no identity beyond servitude, our glory is agony."+
-"\n\n[color=" + ::Const.UI.Color.Passive + "]Passive:[/color]" +
+"\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:") +
 "\n• With face obscured by a cultist hood, gain " + ::MSU.Text.colorGreen( 15 ) + "% of your base resolve as a bonus to melee and ranged defense." +
 "\n• Unwillingness to avoid pain decreases the effectiveness of the Dodge to 5% of initiative." +
 "\n• Each permenant injury increases this bonus by  " + ::MSU.Text.colorGreen( "5%" ) +
@@ -12,7 +12,6 @@
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendSpecCultHood].Name = ::Const.Strings.PerkName.LegendSpecCultHood;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendSpecCultHood].Tooltip = ::Const.Strings.PerkDescription.LegendSpecCultHood;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendSpecCultHood].Icon = "ui/perks/dedication_circle2.png";
 
 ::mods_hookExactClass("skills/perks/perk_legend_specialist_cult_hood", function (o)
 {
@@ -21,7 +20,7 @@
 		this.m.ID = "perk.legend_specialist_cult_hood";
 		this.m.Name = ::Const.Strings.PerkName.LegendSpecCultHood;
 		this.m.Description = ::Const.Strings.PerkDescription.LegendSpecCultHood;
-		this.m.Icon = "ui/perks/dedication_circle2.png";
+		this.m.Icon = "ui/perks/dedication_circle.png";
 		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
 		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;

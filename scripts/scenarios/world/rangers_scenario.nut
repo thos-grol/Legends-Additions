@@ -53,8 +53,8 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[0].m.PerkPoints = 7;
 		bros[0].m.LevelUps = 7;
 		bros[0].m.Level = 8;
-		bros[0].getBackground().addPerkGroup(CalmTree.Tree);
-		bros[0].getBackground().addPerkGroup(ViciousTree.Tree);
+		bros[0].getBackground().addPerkGroup(::Const.Perks.CalmTree.Tree);
+		bros[0].getBackground().addPerkGroup(::Const.Perks.ViciousTree.Tree);
 
 		bros[1].setStartValuesEx([
 			"poacher_background"
@@ -75,8 +75,8 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[1].m.PerkPoints = 7;
 		bros[1].m.LevelUps = 7;
 		bros[1].m.Level = 8;
-		bros[1].getBackground().addPerkGroup(CalmTree.Tree);
-		bros[1].getBackground().addPerkGroup(ViciousTree.Tree);
+		bros[1].getBackground().addPerkGroup(::Const.Perks.CalmTree.Tree);
+		bros[1].getBackground().addPerkGroup(::Const.Perks.ViciousTree.Tree);
 
 		bros[2].setStartValuesEx([
 			"poacher_background"
@@ -97,8 +97,8 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[2].m.PerkPoints = 7;
 		bros[2].m.LevelUps = 7;
 		bros[2].m.Level = 8;
-		bros[2].getBackground().addPerkGroup(CalmTree.Tree);
-		bros[2].getBackground().addPerkGroup(ViciousTree.Tree);
+		bros[2].getBackground().addPerkGroup(::Const.Perks.CalmTree.Tree);
+		bros[2].getBackground().addPerkGroup(::Const.Perks.ViciousTree.Tree);
 
 		this.World.Assets.m.Money = 25;
 

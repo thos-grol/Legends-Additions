@@ -49,7 +49,7 @@
 			"scripts/items/shields/wooden_shield"
 		],
 		[
-			"scripts/items/weapons/ancient_spear",
+			"scripts/items/weapons/ancient/ancient_spear",
 			"scripts/items/shields/wooden_shield"
 		],
 	]
