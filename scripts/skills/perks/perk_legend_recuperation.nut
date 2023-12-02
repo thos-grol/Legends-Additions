@@ -56,22 +56,7 @@ this.perk_legend_recuperation <- this.inherit("scripts/skills/skill", {
 		this.m.Container.removeByID("actives.recover");
 	}
 
-	//credit enduriel
-	function onCombatFinished()
-    {
-        if (::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyDestroyed
-            && ::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyRetreated)
-            return;
-        foreach (bro in ::World.getPlayerRoster().getAll())
-        {
-            if (!bro.isPlacedOnMap() | bro.getLevel() > 5)
-                continue;
-
-            // otherwise give him enough XP to level up
-            bro.addXP(::Const.LevelXP[bro.getLevel()] - bro.getXP()) // not sure about this line but smtng like that
-            bro.updateLevel();
-        }
-    }
+	
 
 });
 

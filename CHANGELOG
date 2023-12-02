@@ -7,6 +7,8 @@ perks
 
 weapons
 - qatal and named qatal daggers are now swords/dagger weapons
+    - stab 4 AP -> 3 AP, sword mastery now gives fat reduction
+    - deathblow 4 AP -> 3 AP, sword mastery now gives fat reduction
 - 2h scimitar and named variant is now cleaver/sword
 - 2h saif is now cleaver/sword
 
@@ -21,6 +23,7 @@ enemies
 contracts
 - made return item contract easier
 - made other contracts harder
+- tried to fix necros spawning in alone in desert contract, tell me if fixed
 
 1.01
 - Improved healing and repair rates to 50%
