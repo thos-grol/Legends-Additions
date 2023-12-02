@@ -1,19 +1,26 @@
 1.02
-enemies
-- unnerfed zombies
-- cutting a zombie's head off will prevent it from automatically reanimating. it can still be raised as a flesh abomination
 
-contracts
-- made return item contract easier
-- made other contracts harder
+perks
+- tried to fix trial by fire, tell me if it works
+- rattle now has a 50% cap
+- bosses are overwhelm immune
+
+weapons
+- qatal and named qatal daggers are now swords/dagger weapons
+- 2h scimitar and named variant is now cleaver/sword
+- 2h saif is now cleaver/sword
 
 party
 - injured bro scaling from 25% -> 50% of strength
 
-perks
-- rattle now has a 50% cap
-- tried to fix trial by fire, tell me if it works
-- bosses are overwhelm immune
+enemies
+- unnerfed zombies, they are fast now
+- cutting a zombie's head off will prevent it from automatically reanimating. it can still be raised as a flesh abomination
+- nachzherer is now immune to bleeding, poison, and stun :)
+
+contracts
+- made return item contract easier
+- made other contracts harder
 
 1.01
 - Improved healing and repair rates to 50%

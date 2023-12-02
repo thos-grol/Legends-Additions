@@ -13,10 +13,6 @@
     "contract.discover_location" : 40,
     "contract.deliver_money" : 40,
     "contract.restore_location" : 50,
-    "contract.deliver_item" : 60,
-    "contract.discover_location" : 30,
-    "contract.deliver_money" : 60,
-    "contract.restore_location" : 60,
     "contract.return_item" : 60,
 
     //E
