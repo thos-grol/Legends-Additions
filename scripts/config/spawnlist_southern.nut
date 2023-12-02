@@ -34,15 +34,6 @@ gt.Const.World.Spawn.Southern <- {
 			]
 		},
 		{
-			Weight = 15,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.ConscriptPolearm,
-					Cost = 20
-				}
-			]
-		},
-		{
 			Weight = 5,
 			Types = [
 				{
@@ -122,15 +113,6 @@ gt.Const.World.Spawn.CaravanSouthern <- {
 				{
 					Type = this.Const.World.Spawn.Troops.Conscript,
 					Cost = 20
-				}
-			]
-		},
-		{
-			Weight = 25,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.ConscriptPolearm,
-					Cost = 28
 				}
 			]
 		},

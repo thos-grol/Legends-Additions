@@ -4,12 +4,14 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
-//TODO: test origins
 //TODO: test crafting
-//TODO: test cultist perks
-
+//TODO: sounds so loud
+//TODO: fix daze bomb skill still being able to use at 0 ammo
+//TODO: why isnt trial by fire working?
 //TODO: rework skeleton units
 //TODO: rework skeleton priest //drops miasma tome
+
+
 
 
 //FEATURE_5: loot overhaul -> camps and enemies

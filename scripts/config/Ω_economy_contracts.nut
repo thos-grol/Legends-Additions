@@ -13,13 +13,17 @@
     "contract.discover_location" : 40,
     "contract.deliver_money" : 40,
     "contract.restore_location" : 50,
+    "contract.deliver_item" : 60,
+    "contract.discover_location" : 30,
+    "contract.deliver_money" : 60,
+    "contract.restore_location" : 60,
     "contract.return_item" : 60,
 
     //E
     "contract.slave_uprising" : 100,
 
     //D
-    "contract.escort_caravan" : 70, //pay is multiplied by distance
+    "contract.escort_caravan" : 50, //pay is multiplied by distance
 
     //C
     "contract.drive_away_bandits" : 0, //pay is based on size of camp

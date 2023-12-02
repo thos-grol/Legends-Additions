@@ -140,7 +140,7 @@
 ::mods_hookExactClass("events/events/legends/legends_minstrel_and_juggler_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/legends/legends_minstrel_and_troubador_event", function(o) { o.onUpdateScore = function(){ return; }});
 ::mods_hookExactClass("events/events/legends/legends_troubador_and_juggler_event", function(o) { o.onUpdateScore = function(){ return; }});
-::mods_hookExactClass("events/events/legends/dlc4/lone_wolf_origin_depressing_lady_event", function(o) { o.onUpdateScore = function(){ return; }});
+::mods_hookExactClass("events/events/dlc4/lone_wolf_origin_depressing_lady_event", function(o) { o.onUpdateScore = function(){ return; }});
 
 
 //legend_cannibal_recruitment //rework cannibal to be more interesting.

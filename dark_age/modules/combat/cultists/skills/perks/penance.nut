@@ -2,7 +2,7 @@
 // ::Const.Strings.PerkDescription.LegendSpecCultHood = "With face obscured by a cultist hood, gain " + ::MSU.Text.colorGreen( 15 ) + "% of your base resolve as a bonus to melee and ranged defense. Also works with cultist leather hood, leather helmet, sack, decayed sack helm, warlock hood or mask of davkul.\n Also unlocks a crafting recipe to make cultist hoods and sacks.";
 
 ::Const.Strings.PerkDescription.LegendSpecCultArmor = "One has wounds but cannot be wounded..."+
-"\n\n[color=" + ::Const.UI.Color.Passive + "]Passive:[/color]" +
+"\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:") +
 "\n• Morale is no longer affected by allies dying or by taking damage." +
 "\n• Garuntees that this character will survive if struck down with no fatalities until they have more than 4 permanent injuries." +
 "\n• Reduce the effects that permenant injuries has on this character or transform the injury in some eldritch way.";
@@ -17,7 +17,7 @@
 		this.m.ID = "perk.legend_specialist_cult_armor";
 		this.m.Name = ::Const.Strings.PerkName.LegendSpecCultArmor;
 		this.m.Description = "Reduce the effects that permenant injuries has on this character or transform the injury in some eldritch way. This character is no longer affected by allies dying or losing hitpoints.";
-		this.m.Icon = "ui/perks/penance_circle2.png";
+		this.m.Icon = "ui/perks/penance_circle.png";
 		this.m.Type = ::Const.SkillType.Perk;
 		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
