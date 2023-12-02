@@ -98,14 +98,14 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 
 		if (days >= 2 || distance >= 40)
 		{
-			this.m.DifficultyMult = this.Math.rand(95, 105) * 0.01;
+			this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
 		}
 		else
 		{
-			this.m.DifficultyMult = this.Math.rand(70, 85) * 0.01;
+			this.m.DifficultyMult = this.Math.rand(100, 115) * 0.01;
 		}
 
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentLightMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentLightMult() * days;
 
 		if (this.Math.rand(1, 100) <= 33)
 		{

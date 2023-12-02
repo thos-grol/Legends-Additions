@@ -11,14 +11,7 @@ this.barbarian_king_contract <- this.inherit("scripts/contracts/contract", {
 		this.contract.create();
 		local r = this.Math.rand(1, 100);
 
-		if (r <= 70)
-		{
-			this.m.DifficultyMult = this.Math.rand(90, 105) * 0.01;
-		}
-		else
-		{
-			this.m.DifficultyMult = this.Math.rand(115, 135) * 0.01;
-		}
+		this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
 
 		this.m.Type = "contract.barbarian_king";
 		this.m.Name = "The Barbarian King";

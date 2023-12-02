@@ -9,10 +9,10 @@
     "contract.arena" : 50,
 
     //F
-    "contract.deliver_item" : 60,
-    "contract.discover_location" : 60,
-    "contract.deliver_money" : 60,
-    "contract.restore_location" : 60,
+    "contract.deliver_item" : 40,
+    "contract.discover_location" : 40,
+    "contract.deliver_money" : 40,
+    "contract.restore_location" : 50,
     "contract.return_item" : 60,
 
     //E
@@ -20,7 +20,7 @@
 
     //D
     "contract.escort_caravan" : 70, //pay is multiplied by distance
-    
+
     //C
     "contract.drive_away_bandits" : 0, //pay is based on size of camp
     "contract.drive_away_barbarians" : 200, //pay is based on size of camp
@@ -45,9 +45,9 @@
 
     //Hard
     "contract.investigate_cemetery" : 200,
-    
+
     "contract.escort_envoy" : 50,
-    
+
 
     "contract.marauding_greenskins" : 160,
     "contract.raid_caravan" : 160,
@@ -80,7 +80,7 @@
 
 
     //Nightmare
-    
+
     "contract.roaming_beasts" : 100,
     "contract.roaming_beasts_desert" : 100,
     "contract.hunting_serpents" : 250,

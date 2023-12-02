@@ -10,7 +10,7 @@
 	RangedSkill = 0,
 	MeleeDefense = 40,
 	RangedDefense = 0,
-	Initiative = 60,
+	Initiative = 160,
 	FatigueEffectMult = 0.0,
 	MoraleEffectMult = 0.0,
 	Armor = [

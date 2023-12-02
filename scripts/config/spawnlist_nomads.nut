@@ -27,7 +27,7 @@ gt.Const.World.Spawn.NomadRoamers <- {
 				{
 					Type = this.Const.World.Spawn.Troops.NomadCutthroat,
 					MinR = 200,
-					Cost = 14
+					Cost = 8
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.NomadOutlaw,
@@ -63,7 +63,7 @@ gt.Const.World.Spawn.NomadRaiders <- {
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.NomadCutthroat,
-					Cost = 15
+					Cost = 8
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.NomadOutlaw,
@@ -138,7 +138,7 @@ gt.Const.World.Spawn.NomadDefenders <- {
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.NomadCutthroat,
-					Cost = 13
+					Cost = 8
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.NomadOutlaw,

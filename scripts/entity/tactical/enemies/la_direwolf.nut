@@ -70,6 +70,7 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 		////////////////////////////////////////////////////////////////////////
 
 		this.getFlags().add("la_direwolf");
+		this.getFlags().add("immunity_overwhelm");
 		this.m.Skills.add(::new("scripts/skills/perks/perk_underdog"));
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));

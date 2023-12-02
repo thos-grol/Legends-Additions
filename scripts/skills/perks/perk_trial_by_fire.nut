@@ -71,6 +71,23 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
 		_properties.TargetAttractionMult *= 1.33;
 	}
 
+	//credit enduriel
+	function onCombatFinished()
+    {
+        if (::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyDestroyed
+            && ::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyRetreated)
+            return;
+        foreach (bro in ::World.getPlayerRoster().getAll())
+        {
+            if (!bro.isPlacedOnMap() | bro.getLevel() > 5)
+                continue;
+
+            // otherwise give him enough XP to level up
+            bro.addXP(::Const.LevelXP[bro.getLevel()] - bro.getXP()) // not sure about this line but smtng like that
+            bro.updateLevel();
+        }
+    }
+
 
 
 });

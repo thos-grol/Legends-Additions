@@ -93,7 +93,7 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				
+
 				// this.Contract.m.Destination.clearTroops();
 				// this.Contract.m.Destination.setLastSpawnTimeToNow();
 

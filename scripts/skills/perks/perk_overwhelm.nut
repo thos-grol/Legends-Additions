@@ -50,7 +50,8 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 
 			this.m.SkillCount = ::Const.SkillCounter;
 			this.m.LastTargetID = _targetEntity.getID();
-			_targetEntity.getSkills().add(::new("scripts/skills/effects/overwhelmed_effect"));
+			if (!_targetEntity.getFlags().has("immunity_overwhelm"))
+				_targetEntity.getSkills().add(::new("scripts/skills/effects/overwhelmed_effect"));
 		}
 	}
 
@@ -76,7 +77,8 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 			this.m.SkillCount = ::Const.SkillCounter;
 			this.m.LastTargetID = _targetEntity.getID();
 			this.m.SkillCount = ::Const.SkillCounter;
-			_targetEntity.getSkills().add(::new("scripts/skills/effects/overwhelmed_effect"));
+			if (!_targetEntity.getFlags().has("immunity_overwhelm"))
+				_targetEntity.getSkills().add(::new("scripts/skills/effects/overwhelmed_effect"));
 		}
 	}
 

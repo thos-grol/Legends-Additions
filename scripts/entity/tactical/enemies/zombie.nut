@@ -88,6 +88,7 @@ this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 		b.IsImmuneToBleeding = true;
 		b.IsImmuneToPoison = true;
 		b.IsImmuneToStun = true;
+		b.DamageTotalMult *= 1.25;
 
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
@@ -770,8 +771,9 @@ this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 			corpse.Custom = custom;
 			corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated && !this.m.IsHeadless;
 
-			if (isResurrectable)
+			if (isResurrectable && corpse.IsHeadAttached)
 			{
+				corpse <- IsZombie = true;
 				if (!this.m.IsResurrected && this.Math.rand(1, 100) <= this.m.ResurrectionChance)
 				{
 					corpse.IsConsumable = false;

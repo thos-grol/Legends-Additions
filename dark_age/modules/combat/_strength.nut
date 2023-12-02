@@ -56,7 +56,7 @@
 				armorPct = (bro.getArmor(::Const.BodyPart.Head) + bro.getArmor(::Const.BodyPart.Body)) / (bro.getArmorMax(::Const.BodyPart.Head) + bro.getArmorMax(::Const.BodyPart.Body) * 1.0);
 			}
 			catch(exception){}
-			if (armorPct < 0.75 || bro.getSkills().query(::Const.SkillType.TemporaryInjury, false, true).len() > 0) s_ = ::Math.round(s_ * 0.25);
+			if (armorPct < 0.75 || bro.getSkills().query(::Const.SkillType.TemporaryInjury, false, true).len() > 0) s_ = ::Math.round(s_ * 0.5);
 			this.m.Strength += s_;
 
 			// local mainhand = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);

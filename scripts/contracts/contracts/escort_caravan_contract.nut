@@ -146,15 +146,15 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 
 		if (days >= 5)
 		{
-			this.m.DifficultyMult = this.Math.rand(115, 135) * 0.01;
+			this.m.DifficultyMult = this.Math.rand(115, 175) * 0.01;
 		}
 		else if (days >= 2)
 		{
-			this.m.DifficultyMult = this.Math.rand(95, 105) * 0.01;
+			this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
 		}
 		else
 		{
-			this.m.DifficultyMult = this.Math.rand(70, 85) * 0.01;
+			this.m.DifficultyMult = this.Math.rand(100, 125) * 0.01;
 		}
 
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult() * days;

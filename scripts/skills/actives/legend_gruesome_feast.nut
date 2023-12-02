@@ -167,5 +167,23 @@ this.legend_gruesome_feast <- this.inherit("scripts/skills/skill", {
 	// 	}
 	// }
 
+	//credit enduriel
+	function onCombatFinished()
+    {
+        if (::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyDestroyed
+            && ::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyRetreated)
+            return;
+        foreach (bro in ::World.getPlayerRoster().getAll())
+        {
+            local skills = bro.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
+			foreach( s in skills )
+			{
+				if (s.getOrder() == ::Const.SkillOrder.PermanentInjury) continue;
+				s.removeSelf();
+			}
+			bro.setHitpoints(bro.getHitpointsMax());
+		}
+    }
+
 });
 

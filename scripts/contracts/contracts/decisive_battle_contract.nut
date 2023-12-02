@@ -10,15 +10,8 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		this.contract.create();
 		local r = this.Math.rand(1, 100);
+		this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
 
-		if (r <= 70)
-		{
-			this.m.DifficultyMult = this.Math.rand(95, 105) * 0.01;
-		}
-		else
-		{
-			this.m.DifficultyMult = this.Math.rand(115, 135) * 0.01;
-		}
 
 		this.m.Type = "contract.decisive_battle";
 		this.m.Name = "The Battle";

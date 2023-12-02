@@ -20,31 +20,35 @@ this.rattled_effect <- this.inherit("scripts/skills/skill", {
 	{
 		return this.m.Stacks > 1 ? this.m.Name + " (x" + this.m.Stacks + ")" : this.m.Name;
 	}
-	
+
 	function getTooltip()
 	{
 		local tooltip = this.skill.getTooltip();
-		
+
 		tooltip.push({
 			id = 10,
 			type = "text",
 			icon = "ui/icons/damage_dealt.png",
 			text = "[color=" + ::Const.UI.Color.NegativeValue + "]-" + (this.m.Stacks * this.m.DamageReductionPercentage) + "%[/color] Damage inflicted"
 		});
-		
+
 		return tooltip;
 	}
 
 	function onRefresh()
 	{
-		this.m.Stacks++;
+	}
+
+	function add_stacks(_stacks)
+	{
+		this.m.Stacks = ::Math.min(this.m.Stacks + _stacks, 5);
 	}
 
 	function onUpdate( _properties )
 	{
 		_properties.DamageTotalMult *= 1.0 - (this.m.Stacks * this.m.DamageReductionPercentage * 0.01);
 	}
-	
+
 	function onTurnEnd()
 	{
 		this.removeSelf();

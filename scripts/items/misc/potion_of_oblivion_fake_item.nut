@@ -1,9 +1,9 @@
-this.potion_of_oblivion_item <- this.inherit("scripts/items/item", {
+this.potion_of_oblivion_fake_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
 		this.item.create();
-		this.m.ID = "misc.potion_of_oblivion";
+		this.m.ID = "misc.potion_of_oblivion_fake";
 		this.m.Name = "Potion of Oblivion";
 		this.m.Description = "To forget is also maybe to enter the way...";
 		this.m.Icon = "consumables/potion_08.png";
@@ -77,13 +77,10 @@ this.potion_of_oblivion_item <- this.inherit("scripts/items/item", {
 	{
 		this.Sound.play("sounds/combat/drink_03.wav", this.Const.Sound.Volume.Inventory);
 		_actor.resetPerks();
-		_actor.updateLevel_limit_break();
 		this.Const.Tactical.Common.checkDrugEffect(_actor);
 		this.updateAchievement("MemoryLoss", 1, 1);
 		return true;
 	}
-
-	//TODO: serialize whether the potion will break limit or not
 
 });
 

@@ -14,7 +14,7 @@
 			Traits = [],
 			Enemy = [],
 			Class = [
-				::Const.Perks.FistsClassTree	
+				::Const.Perks.FistsClassTree
 			],
 			Magic = [
 				::Const.Perks.PhilosophyMagicTree

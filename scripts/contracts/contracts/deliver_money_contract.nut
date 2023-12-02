@@ -7,7 +7,7 @@ this.deliver_money_contract <- this.inherit("scripts/contracts/contract", {
 	function create()
 	{
 		this.contract.create();
-		this.m.DifficultyMult = this.Math.rand(90, 110) * 0.01;
+		this.m.DifficultyMult = this.Math.rand(100, 110) * 0.01;
 		this.m.Type = "contract.deliver_money";
 		this.m.Name = "Coin Delivery";
 		this.m.Description = "The money changers in a nearby town are running short. Local lords want an armed party to transfer the coinage but are wary of unscrupulous folk who may spend it on themselves";
@@ -83,7 +83,7 @@ this.deliver_money_contract <- this.inherit("scripts/contracts/contract", {
 		local distance = this.getDistanceOnRoads(this.m.Home.getTile(), this.m.Destination.getTile());
 		local days = this.getDaysRequiredToTravel(distance, this.Const.World.MovementSettings.Speed, false);
 		local modrate = this.World.State.getPlayer().getBarterMult();
-		this.m.DifficultyMult = this.Math.rand(75, 105) * 0.01;
+		this.m.DifficultyMult = this.Math.rand(100, 105) * 0.01;
 
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentLightMult() * days;
 

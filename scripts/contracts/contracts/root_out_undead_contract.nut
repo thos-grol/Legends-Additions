@@ -11,15 +11,7 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 		this.contract.create();
 		local r = this.Math.rand(1, 100);
 
-		if (r <= 70)
-		{
-			this.m.DifficultyMult = this.Math.rand(95, 105) * 0.01;
-		}
-		else
-		{
-			this.m.DifficultyMult = this.Math.rand(115, 135) * 0.01;
-		}
-
+		this.m.DifficultyMult = this.Math.rand(115, 175) * 0.01;
 		this.m.Type = "contract.root_out_undead";
 		this.m.Name = "Root Out The Undead";
 		this.m.Description = "As the undead war rages on, scout reports have identified key undead strongholds that need to be destroied. Head out and raze 3 key locations.";

@@ -105,7 +105,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 					this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
 					this.Contract.m.Destination.setFaction(zombies.getID());
 					zombies.addSettlement(this.Contract.m.Destination.get(), false);
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NecromancerSouthern, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NecromancerSouthern, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()* 1.5);
 				}
 				else if (r <= 50)
 				{

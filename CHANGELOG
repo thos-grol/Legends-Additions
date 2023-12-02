@@ -1,3 +1,20 @@
+1.02
+enemies
+- unnerfed zombies
+- cutting a zombie's head off will prevent it from automatically reanimating. it can still be raised as a flesh abomination
+
+contracts
+- made return item contract easier
+- made other contracts harder
+
+party
+- injured bro scaling from 25% -> 50% of strength
+
+perks
+- rattle now has a 50% cap
+- tried to fix trial by fire, tell me if it works
+- bosses are overwhelm immune
+
 1.01
 - Improved healing and repair rates to 50%
 - fixed some minor description issues (threw pocket sand effect was used as marker to make bro immune to pocket sand, now hidden)

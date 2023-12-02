@@ -160,7 +160,7 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 					{
 						loot = this.new("scripts/items/misc/serpent_skin_item");
 					}
-					
+
 					loot.drop(_tile);
 					i = ++i;
 				}

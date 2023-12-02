@@ -26,6 +26,16 @@
 			{
 				R = 60,
 				P = 2.0,
+				S = "misc/potion_of_oblivion_fake_item"
+			},
+			{
+				R = 60,
+				P = 2.0,
+				S = "misc/potion_of_oblivion_fake_item"
+			},
+			{
+				R = 60,
+				P = 2.0,
 				S = "misc/tome"
 			},
 

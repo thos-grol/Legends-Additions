@@ -12,6 +12,8 @@ this.zombie_knight <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 		this.m.ResurrectionValue = 5.0;
 		this.m.ResurrectionChance = 90;
 		this.m.ResurrectWithScript = "scripts/entity/tactical/enemies/zombie_knight";
+		this.getFlags().add("undead");
+		this.getFlags().add("zombie_minion");
 	}
 
 	function onDamageReceived( _attacker, _skill, _hitInfo )

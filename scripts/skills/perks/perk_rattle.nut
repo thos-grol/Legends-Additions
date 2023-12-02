@@ -48,7 +48,7 @@ this.perk_rattle <- this.inherit("scripts/skills/skill", {
 		if (this.m.Container.hasSkill("perk.stance.seismic_slam")) stacks *= 2;
 
 		local rattled = !this.m.Container.hasSkill("effects.rattled") ? ::new("scripts/skills/effects/rattled_effect") : this.m.Container.getSkillByID("effects.rattled");
-		rattled.m.Stacks += stacks;
+		rattled.add_stacks(stacks);
 		if (!this.m.Container.hasSkill("effects.rattled")) _targetEntity.getSkills().add(rattled);
 	}
 });

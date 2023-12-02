@@ -11,15 +11,15 @@
         corpse = _tile.Properties.get("Corpse");
     } catch(exception) {}
 
-    
+
     if (corpse == null) return;
 
     corpse.Tile = _tile;
 
     corpse.Skills <- [];
     corpse.BaseProperties <- {};
-    // corpse.FleshNotAllowed <- true; //this marker determines if raising flesh is disallowed
 
+    if (_actor.getFlags().has("zombie_minion")) corpse.FleshNotAllowed <- true;
     local skills = _actor.m.Skills.m.Skills
     foreach(skill in skills)
     {
@@ -31,8 +31,10 @@
     }
 
     corpse.BaseProperties["Bravery"] <- _actor.m.BaseProperties.Bravery;
-    corpse.BaseProperties["Initiative"] <- _actor.m.BaseProperties.Initiative;
-    corpse.BaseProperties["MeleeSkill"] <- _actor.m.BaseProperties.MeleeSkill;
+    if (_actor.m.BaseProperties.Initiative < 160) corpse.BaseProperties["Initiative"] <- 160;
+    else corpse.BaseProperties["Initiative"] <- _actor.m.BaseProperties.Initiative;
+    if (_actor.m.BaseProperties.MeleeSkill < 75) corpse.BaseProperties["MeleeSkill"] <- 75;
+    else corpse.BaseProperties["MeleeSkill"] <- _actor.m.BaseProperties.MeleeSkill;
     corpse.BaseProperties["RangedSkill"] <- _actor.m.BaseProperties.RangedSkill;
     corpse.BaseProperties["MeleeDefense"] <- _actor.m.BaseProperties.MeleeDefense;
     corpse.BaseProperties["RangedDefense"] <- _actor.m.BaseProperties.RangedDefense;
@@ -89,7 +91,10 @@
 	{
         this.setFaction(_info.Faction);
 
-        if (_info.IsResurrectable)
+        local zombie = false;
+        try{ zombie = _info.IsZombie} catch(exception){}
+
+        if (_info.IsResurrectable || zombie)
 		{
             this.getItems().clear();
             _info.Items.transferTo(this.getItems());

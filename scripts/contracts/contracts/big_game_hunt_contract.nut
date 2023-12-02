@@ -24,12 +24,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		local r = this.Math.rand(1, 100);
 
-		if (r <= 40)
-		{
-			this.m.Size = 0;
-			this.m.DifficultyMult = 0.75;
-		}
-		else if (r <= 75 || this.World.getTime().Days <= 30)
+		if (r <= 75 )
 		{
 			this.m.Size = 1;
 			this.m.DifficultyMult = 1.0;
