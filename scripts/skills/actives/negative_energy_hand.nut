@@ -155,14 +155,19 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 				}
 			}.bindenv(this), this);
 
+			
+
 			this.Time.scheduleEvent(this.TimeUnit.Virtual, i * 300, function ( _skill )
 			{
-				if ( _targetTile.getEntity().isAlive())
-				{
-					_skill.attackEntity(_user, _targetTile.getEntity(), false);
-				}
-				_skill.m.IsDoingAttackMove = true;
-				_skill.getContainer().setBusy(false);
+				try {
+					if ( _targetTile.getEntity().isAlive())
+					{
+						_skill.attackEntity(_user, _targetTile.getEntity(), false);
+					}
+					_skill.m.IsDoingAttackMove = true;
+					_skill.getContainer().setBusy(false);
+				}catch(exceptioon){}
+				
 			}.bindenv(this), this);
 		}
 		return true;

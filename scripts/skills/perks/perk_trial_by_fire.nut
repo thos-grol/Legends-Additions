@@ -14,7 +14,9 @@
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.TrialByFire].Tooltip = ::Const.Strings.PerkDescription.TrialByFire;
 
 this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
-	m = {},
+	m = {
+		Used = false
+	},
 	function create()
 	{
 		this.m.ID = "perk.trial_by_fire";
@@ -71,10 +73,17 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
 		_properties.TargetAttractionMult *= 1.33;
 	}
 
+	function onCombatStarted()
+	{
+		this.m.Used = false;
+	}
+
 	//credit enduriel
 	function onCombatFinished()
     {
-        local actor = this.getContainer().getActor();
+		if (this.m.Used) return;
+		this.m.Used = true;
+		local actor = this.getContainer().getActor();
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 
 		if (::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyDestroyed
@@ -86,8 +95,9 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
             if (!bro.isPlacedOnMap() || bro.getLevel() > 5)
                 continue;
 
-			bro.addXP(::Const.LevelXP[bro.getLevel()] - bro.getXP(), false);
+			bro.m.XP = this.Const.LevelXP[bro.m.Level];
 			bro.updateLevel();
+			
         }
     }
 

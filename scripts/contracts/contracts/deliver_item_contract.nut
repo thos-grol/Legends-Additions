@@ -105,7 +105,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 			this.m.DifficultyMult = this.Math.rand(100, 115) * 0.01;
 		}
 
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentLightMult() * days;
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * days;
 
 		if (this.Math.rand(1, 100) <= 33)
 		{

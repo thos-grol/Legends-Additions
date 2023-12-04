@@ -32,7 +32,7 @@
 		this.dropTreasure(1, [
 			"loot/goblin_minted_coins_item",
 			"loot/goblin_minted_coins_item",
-			"loot/furs_item"
+			"trade/furs_item"
 		], _lootTable);
 	}
 

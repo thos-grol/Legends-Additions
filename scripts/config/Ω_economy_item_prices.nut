@@ -277,7 +277,6 @@
 	"accessory.lionheart_potion" : 300, //FEATURE_9: rework, refillable with alchemist retinue
 	"accessory.night_vision_elixir" : 350, //FEATURE_9: rework, refillable with alchemist retinue
 	"accessory.recovery_potion" : 350, //FEATURE_9: rework, refillable with alchemist retinue
-	"misc.potion_of_oblivion" : 350, //FEATURE_9: rework, refillable with alchemist retinue
 	//FEATURE_9: Toxicity system
 
 	//Contraband

@@ -264,4 +264,74 @@
 			this.World.Assets.getOrigin().onUpdateLevel(this);
 		}
 	}
+
+	o.updateLevel = function()
+	{
+		while (this.m.Level < this.Const.LevelXP.len() && this.m.XP >= this.Const.LevelXP[this.m.Level] && this.m.Level < 11)
+		{
+			++this.m.Level;
+			++this.m.LevelUps;
+
+			if (this.m.Level <= this.Const.XP.MaxLevelWithPerkpoints)
+			{
+				++this.m.PerkPoints;
+			}
+
+			if (this.m.Level == 11 && this.m.Skills.hasSkill("perk.student"))
+			{
+				++this.m.PerkPoints;
+			}
+
+			if (("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin() != null)
+			{
+				this.World.Assets.getOrigin().onUpdateLevel(this);
+			}
+
+			if (this.m.Level == 11)
+			{
+				this.updateAchievement("OldAndWise", 1, 1);
+			}
+
+			if (this.m.Level == 11 && this.m.Skills.hasSkill("trait.player"))
+			{
+				this.updateAchievement("TooStubbornToDie", 1, 1);
+			}
+		}
+	}
+
+	o.getStashModifier = function() //pasting function here, doing the same with other functions fixed problems for some reason so trying it here??? also adding try catch just in case
+	{
+		try
+		{
+			local broStash = this.getBackground().getModifiers().Stash;
+			local item = this.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+
+			if (item != null)
+			{
+				broStash = broStash + item.getStashModifier();
+			}
+
+			local skills = [
+				"perk.legend_skillful_stacking",
+				"perk.legend_efficient_packing"
+			];
+
+			foreach( s in skills )
+			{
+				local skill = this.getSkills().getSkillByID(s);
+
+				if (skill != null)
+				{
+					broStash = broStash + skill.getModifier();
+				}
+			}
+
+			return broStash;
+		}catch(exception)
+		{
+			return ::Const.LegendMod.ResourceModifiers.Ammo[4];
+		}
+		
+		
+	}
 });

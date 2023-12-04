@@ -1,14 +1,14 @@
 ::Const.Strings.PerkDescription.BattleForged = "Trade hit for hit with heavy armor..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("– X%") + " armor damage taken"
-+ "\n"+::MSU.Text.colorRed("X being 7% of current armor points")
++ "\n"+::MSU.Text.colorRed("X being 10% of current armor points")
 + "\n\n"+::MSU.Text.colorRed("Does not affect damage from mental attacks or status effects, but can help to avoid receiving them");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.BattleForged].Tooltip = ::Const.Strings.PerkDescription.BattleForged;
 
 this.perk_battle_forged <- this.inherit("scripts/skills/skill", {
 	m = {
-		ArmorPercentageAsReduction = 7
+		ArmorPercentageAsReduction = 10
 	},
 	function create()
 	{

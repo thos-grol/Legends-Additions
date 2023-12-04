@@ -190,7 +190,7 @@
 			"loot/goblin_minted_coins_item",
 			"loot/signet_ring_item"
 		];
-		treasure.push("misc/legend_ancient_scroll_item");
+		treasure.push("misc/scroll");
 		treasure.push("misc/tome");
 		treasure.push("misc/potion_of_oblivion_item");
 		this.dropTreasure(this.Math.rand(2, 3), treasure, _lootTable);

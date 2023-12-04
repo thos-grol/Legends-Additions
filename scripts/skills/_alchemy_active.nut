@@ -15,7 +15,7 @@ this._alchemy_active <- this.inherit("scripts/skills/skill", {
 	function isUsable()
 	{
 		return this.Tactical.isActive()
-			|| this.skill.isUsable()
+			&& this.skill.isUsable()
 			&& this.m.Item.getAmmo() > 0;
 	}
 

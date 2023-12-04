@@ -1,5 +1,7 @@
 this.potion_of_oblivion_fake_item <- this.inherit("scripts/items/item", {
-	m = {},
+	m = {
+		Rarity = "Mythic"
+	},
 	function create()
 	{
 		this.item.create();
@@ -12,7 +14,7 @@ this.potion_of_oblivion_fake_item <- this.inherit("scripts/items/item", {
 		this.m.IsDroppedAsLoot = true;
 		this.m.IsAllowedInBag = false;
 		this.m.IsUsable = true;
-		this.m.Value = 1000;
+		this.m.Value = 500;
 	}
 
 	function getTooltip()
@@ -22,6 +24,11 @@ this.potion_of_oblivion_fake_item <- this.inherit("scripts/items/item", {
 				id = 1,
 				type = "title",
 				text = this.getName()
+			},
+			{
+				id = 2,
+				type = "text",
+				text = this.getRarity()
 			},
 			{
 				id = 2,
@@ -80,6 +87,34 @@ this.potion_of_oblivion_fake_item <- this.inherit("scripts/items/item", {
 		this.Const.Tactical.Common.checkDrugEffect(_actor);
 		this.updateAchievement("MemoryLoss", 1, 1);
 		return true;
+	}
+
+	function getName()
+	{
+		return ::MSU.Text.color(getRarityColor(), this.m.Name);
+	}
+
+	function getRarity()
+	{
+		return ::MSU.Text.color(getRarityColor(), this.m.Rarity) + "\n";
+	}
+
+	function getRarityColor()
+	{
+		switch(this.m.Rarity)
+		{
+			case "Common":
+				return ::Z.Color.Common;
+			case "Uncommon":
+				return ::Z.Color.Uncommon;
+			case "Rare":
+				return ::Z.Color.Rare;
+			case "Legendary":
+				return ::Z.Color.Legendary;
+			case "Mythic":
+				return ::Z.Color.Mythic;
+		}
+		return ::Z.Color.Common;
 	}
 
 });

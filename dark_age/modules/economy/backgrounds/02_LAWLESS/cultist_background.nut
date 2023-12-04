@@ -11,9 +11,7 @@
 				::Const.Perks.CleaverTree
 			],
 			Defense = [],
-			Traits = [
-				::Const.Perks.MartyrTree
-			],
+			Traits = [],
 			Enemy = [],
 			Class = [
 				::Const.Perks.FistsClassTree,

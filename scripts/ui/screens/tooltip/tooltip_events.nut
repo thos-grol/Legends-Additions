@@ -4486,7 +4486,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary participate in a sparring fight with experienced opponents and various fighting styles. The bruises collected and lessons learned will result in [color=" + ::Const.UI.Color.PositiveValue + "]+50%[/color] Experience Gain for the next battle."
+					text = "Have your mercenary participate in a sparring fight with experienced opponents and various fighting styles. The bruises collected and lessons learned will result in [color=" + ::Const.UI.Color.PositiveValue + "]0-5[/color]  proficiency points gained"
 				}
 			];
 
@@ -4500,7 +4500,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary learn valuable lessons and insights from a true veteran of the trade. The knowledge imparted will result in [color=" + ::Const.UI.Color.PositiveValue + "]+35%[/color] Experience Gain for the duration of three battles."
+					text = "Have your mercenary learn valuable lessons and insights from a true veteran of the trade. The knowledge imparted will result in [color=" + ::Const.UI.Color.PositiveValue + "]2-7[/color] proficiency points gained"
 				}
 			];
 
@@ -4514,7 +4514,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary undergo a rigorous training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with [color=" + ::Const.UI.Color.PositiveValue + "]+20%[/color] Experience Gain for the duration of five battles."
+					text = "Have your mercenary undergo a rigorous training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with [color=" + ::Const.UI.Color.PositiveValue + "]5-12[/color] proficiency points gained"
 				}
 			];
 

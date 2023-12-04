@@ -10,32 +10,32 @@
 			// },
 			{
 				R = 60,
-				P = 1.5,
-				S = "misc/legend_ancient_scroll_item"
-			},
-			{
-				R = 60,
-				P = 1.5,
-				S = "misc/legend_ancient_scroll_item"
+				P = 2.0,
+				S = "misc/scroll"
 			},
 			{
 				R = 60,
 				P = 2.0,
+				S = "misc/scroll"
+			},
+			{
+				R = 60,
+				P = 1.0,
 				S = "misc/potion_of_oblivion_item"
 			},
 			{
 				R = 60,
-				P = 2.0,
+				P = 1.0,
 				S = "misc/potion_of_oblivion_fake_item"
 			},
 			{
 				R = 60,
-				P = 2.0,
+				P = 1.0,
 				S = "misc/potion_of_oblivion_fake_item"
 			},
 			{
 				R = 60,
-				P = 2.0,
+				P = 1.0,
 				S = "misc/tome"
 			},
 

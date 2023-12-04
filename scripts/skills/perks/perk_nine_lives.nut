@@ -49,7 +49,7 @@ this.perk_nine_lives <- this.inherit("scripts/skills/skill", {
 	{
 		if (_f && !this.m.IsSpent)
 		{
-			this.m.IsHidden = true;
+			this.m.IsHidden = false;
 
 			if (this.m.MinHP != 11 || this.m.MaxHP != 15)
 			{

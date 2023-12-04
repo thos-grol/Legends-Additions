@@ -100,6 +100,7 @@ this.militia_guest_ranged <- this.inherit("scripts/entity/tactical/player", {
 	function assignRandomEquipment()
 	{
 		//Assign outfit and get the defense tree
+		this.m.Type = this.Const.EntityType.MilitiaRanged;
 		pickOutfit();
 		local weight_armor = this.getItems().getStaminaModifier([
             ::Const.ItemSlot.Body,

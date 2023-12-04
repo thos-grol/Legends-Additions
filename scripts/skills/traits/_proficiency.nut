@@ -62,6 +62,21 @@ this._proficiency <- this.inherit("scripts/skills/traits/character_trait", {
 			reward();
 	}
 
+	function add_proficiency_amount(_amount)
+	{
+		local actor = this.getContainer().getActor();
+		if (actor.getFlags().has(getFlagStore()) && actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax) return;
+
+		if (!actor.getFlags().has(getFlagStore()))
+				actor.getFlags().set(getFlagStore(), 0);
+
+		actor.getFlags().set(getFlagStore(),
+			::Math.min(this.m.ProficiencyMax, actor.getFlags().getAsInt(getFlagStore()) + _amount));
+
+		if (actor.getFlags().getAsInt(getFlagStore()) == this.m.ProficiencyMax)
+			reward();
+	}
+
 	function reward()
 	{
 		local actor = this.getContainer().getActor();

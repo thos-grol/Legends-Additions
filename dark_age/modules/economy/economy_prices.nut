@@ -81,10 +81,16 @@
 		create();
 		if (this.m.ID in ::Z.Economy.Items)
             this.m.Value = ::Z.Economy.Items[this.m.ID];
+		post_create();
+		
+	}
+
+	o.post_create <- function()
+	{
 	}
 
 	//Overwriting legend's mod buyback
-	o.getSellPrice <- function ()
+	o.getSellPrice <- function()
 	{
 		local originalTime;
 		local sellPrice;

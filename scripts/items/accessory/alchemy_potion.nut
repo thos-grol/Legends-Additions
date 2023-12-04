@@ -16,7 +16,7 @@ this.alchemy_potion <- this.inherit("scripts/items/accessory/accessory", {
 
 	function get_refill_cost()
 	{
-		return (item.getAmmoMax() - item.getAmmo()) * ::Math.round((this.m.Value / item.getAmmoMax()));
+		return (item.getAmmoMax() - item.getAmmo()) * ::Math.round((this.m.Value / item.getAmmoMax())) / 2;
 	}
 
 	function getAmmo()

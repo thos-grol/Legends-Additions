@@ -33,7 +33,7 @@
 		local treasure = [
 			"loot/bead_necklace_item",
 			"loot/bead_necklace_item",
-			"loot/furs_item"
+			"trade/furs_item"
 		];
 		this.dropTreasure(1, treasure, _lootTable);
 	}
