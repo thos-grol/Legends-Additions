@@ -50,9 +50,9 @@
 			armorPct = (actor.getArmor(::Const.BodyPart.Head) + actor.getArmor(::Const.BodyPart.Body)) / (actor.getArmorMax(::Const.BodyPart.Head) + actor.getArmorMax(::Const.BodyPart.Body) * 1.0);
 		}
 		catch(exception){}
-		
+
 		if (actor.getHitpointsPct() <= 0.75 || armorPct < 0.75 || actor.getSkills().query(::Const.SkillType.TemporaryInjury, false, true).len() > 0) injuryMult = 0.25;
-		
+
 
 		_properties.DailyWage += this.Math.round(this.m.DailyCost * this.m.DailyCostMult * injuryMult);
 	}
@@ -82,7 +82,7 @@
 		if (this.m.ID in ::Z.Economy.Items)
             this.m.Value = ::Z.Economy.Items[this.m.ID];
 		post_create();
-		
+
 	}
 
 	o.post_create <- function()
@@ -112,13 +112,15 @@
 
 		if (this.m.ID in ::Z.Economy.NoSell) return 0;
 		try {
-			if (this.m.Rarity != "Rare" && this.m.Rarity != "Legendary" && this.m.Rarity && "Mythic") return 0;
+			if (this.m.Rarity != "Uncommon" && this.m.Rarity != "Rare" && this.m.Rarity != "Legendary" && this.m.Rarity != "Mythic") return 0;
 		} catch(exception){}
 
 		if (("State" in this.World) && this.World.State != null && this.World.State.getCurrentTown() != null)
 		{
 			local mult = this.getSellPriceMult() * ::Const.World.Assets.BaseSellPrice * this.World.State.getCurrentTown().getSellPriceMult();
-			local mult_old = mult;
+			try {
+				if (this.m.Rarity == "Uncommon") mult *= 0.5;
+			} catch(exception){}
 			mult = this.Math.minf(this.Math.maxf(mult, 0.5), 1.25); //sell price can't be lower than 50% or higher than 125%
 
 			// ::logInfo(this.m.ID);

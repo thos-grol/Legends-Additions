@@ -8,6 +8,7 @@ experimental
 - made it so camp contract skulls will reflect the size of the camp
 - reenabled cultist conversion. conditions are brain damage OR dumb OR non-bright lowborn
 - reenabled dumb trait
+- reenabled seductive trait with 5% barter multiplier
 
 bugs
 - fixed incorrect path for firelance
@@ -24,6 +25,7 @@ enemies
 
 economy
 - can no longer sell MOST shields for money
+- can sell uncommon items now for 50% the price of the rare version
 
 backgrounds
 - fixed ranger tree showing up on master archer

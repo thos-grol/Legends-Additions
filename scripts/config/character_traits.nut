@@ -45,6 +45,10 @@ gt.Const.CharacterTraits <- [
 		"scripts/skills/traits/bright_trait"
 	],
 	[
+		"trait.seductive",
+		"scripts/skills/traits/seductive_trait"
+	],
+	[
 		"trait.drunkard",
 		"scripts/skills/traits/drunkard_trait"
 	],
