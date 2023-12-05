@@ -26,12 +26,12 @@ gt.Const.World.Spawn.OrcRoamers <- {
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 1.0 * 360,
-					Cost = 13
+					Cost = 16
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
-					Cost = 16
+					Cost = 24
 				}
 			]
 		},
@@ -75,12 +75,12 @@ gt.Const.World.Spawn.OrcScouts <- {
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 1.0 * 176,
-					Cost = 13
+					Cost = 16
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
-					Cost = 16
+					Cost = 24
 				}
 			]
 		},
@@ -117,12 +117,12 @@ gt.Const.World.Spawn.OrcRaiders <- {
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 0.75 * 822,
-					Cost = 13
+					Cost = 16
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
-					Cost = 16
+					Cost = 24
 				}
 			]
 		},
@@ -148,7 +148,7 @@ gt.Const.World.Spawn.OrcRaiders <- {
 				{
 					Type = this.Const.World.Spawn.Troops.OrcBerserker,
 					MinR = 200,
-					Cost = 25
+					Cost = 40
 				}
 			]
 		},
@@ -158,7 +158,7 @@ gt.Const.World.Spawn.OrcRaiders <- {
 				{
 					Type = this.Const.World.Spawn.Troops.OrcWarlord,
 					MinR = 400,
-					Cost = 50
+					Cost = 60
 				}
 			]
 		},
@@ -191,12 +191,12 @@ gt.Const.World.Spawn.OrcDefenders <- {
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 0.75 * 822,
-					Cost = 13
+					Cost = 16
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
-					Cost = 16
+					Cost = 24
 				}
 			]
 		},
@@ -272,7 +272,7 @@ gt.Const.World.Spawn.OrcBoss <- {
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoung,
-					Cost = 16
+					Cost = 24
 				}
 			]
 		},
@@ -333,12 +333,12 @@ gt.Const.World.Spawn.YoungOrcsOnly <- {
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
-					Cost = 13
+					Cost = 16
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
-					Cost = 16
+					Cost = 24
 				}
 			]
 		}
@@ -360,12 +360,12 @@ gt.Const.World.Spawn.YoungOrcsAndBerserkers <- {
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 1.0 * 288,
-					Cost = 13
+					Cost = 16
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
-					Cost = 16
+					Cost = 24
 				}
 			]
 		},
@@ -409,12 +409,12 @@ gt.Const.World.Spawn.BerserkersOnly <- {
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 1.0 * 288,
-					Cost = 13
+					Cost = 16
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
-					Cost = 16
+					Cost = 24
 				}
 			]
 		},

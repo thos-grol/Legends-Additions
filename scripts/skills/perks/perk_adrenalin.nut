@@ -6,7 +6,7 @@
 + "\n"+::MSU.Text.colorRed("+1 stack up to 6")
 + "\n"+::MSU.Text.colorRed("stacks expire on turn end")
 + "\n" + ::MSU.Text.colorGreen("+5") + " Initiative per stack"
-+ "\n" + ::MSU.Text.colorGreen("– 5%") + " Fatigue cost per stack";
++ "\n" + ::MSU.Text.colorGreen("+3") + " Fat Recovery per stack";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Adrenaline].Tooltip = ::Const.Strings.PerkDescription.Adrenaline;
 
@@ -51,8 +51,7 @@ this.perk_adrenalin <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		_properties.TargetAttractionMult *= 1.1;
-
+		_properties.FatigueRecoveryRate += this.m.Stacks * 3;
 		if (this.m.Stacks > 0)
 		{
 			local bonus = this.getBonus();
@@ -60,16 +59,16 @@ this.perk_adrenalin <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-	function onAfterUpdate( _properties )
-	{
-		if (this.m.Stacks > 0)
-		{
-			foreach (skill in this.getContainer().getAllSkillsOfType(::Const.SkillType.Active))
-			{
-				skill.m.FatigueCostMult *= 1.0 - this.getBonus() * 0.01;
-			}
-		}
-	}
+	// function onAfterUpdate( _properties )
+	// {
+	// 	if (this.m.Stacks > 0)
+	// 	{
+	// 		foreach (skill in this.getContainer().getAllSkillsOfType(::Const.SkillType.Active))
+	// 		{
+	// 			skill.m.FatigueCostMult *= 1.0 - this.getBonus() * 0.01;
+	// 		}
+	// 	}
+	// }
 
 	function onMissed( _attacker, _skill )
 	{

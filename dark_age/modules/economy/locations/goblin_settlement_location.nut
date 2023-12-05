@@ -42,7 +42,7 @@
 			"loot/signet_ring_item",
 			"loot/goblin_minted_coins_item",
 			"loot/signet_ring_item",
-			"misc/legend_ancient_scroll_item",
+			"misc/scroll",
 			"misc/tome",
 			"misc/potion_of_oblivion_item",
 		], _lootTable);

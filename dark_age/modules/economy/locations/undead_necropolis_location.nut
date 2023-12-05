@@ -66,7 +66,7 @@
 			"loot/jeweled_crown_item",
 			"loot/ancient_gold_coins_item",
 			"loot/ornate_tome_item",
-			"misc/legend_ancient_scroll_item"
+			"misc/scroll"
 		], _lootTable);
 	}
 

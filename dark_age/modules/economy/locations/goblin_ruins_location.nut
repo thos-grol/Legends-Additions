@@ -49,7 +49,7 @@
 		treasure.extend(treasure);
 		treasure.extend(treasure);
 
-		treasure.push("misc/legend_ancient_scroll_item");
+		treasure.push("misc/scroll");
 		treasure.push("misc/tome");
 		this.dropTreasure(this.Math.rand(1, 2), treasure, _lootTable);
 	}

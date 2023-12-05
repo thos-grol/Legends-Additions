@@ -1,12 +1,56 @@
+CHANGELOG
+1.07
+
+contracts
+- made defend settlement a bit easier
+
+feature
+- revamped training hall! now you can train and buy proficiency!
+
+
+1.06
+bug fixes
+- weird stash modifier bug (dunno what's wrong but added try catch and default case to mitigate it)
+- furs had the wrong item path in camp loot so it wasn't dropped. fixed
+- negative energy hand erroring out checking for alive entity
+
+perks
+- dodge now works with goblin shields and buckler
+
+
+1.05
+economy
+- potion of oblivion cost 1000 -> 500, now mythic rarity
+- implemented scroll of destiny which grants a bro a trait tree, now mythic rarity
+
+1.04
+perks
+- buffed adrenaline, changed fat reduction to fat recovery
+
+economy
+- reduced black market prices to intended
+
+1.03
+bug swatting
+- fixed infinite alchemy throwables
+- fixed trial by fire weird vanilla interaction
+
+economy
+- made refilling alchemy cost 50% less
+
+enemies
+- nerfed orc spawns. I want them to be strong, so they should swarm less. orcs cost 25% - 50% more so you'll see less orcs
+
 1.02
 
 perks
-- tried to fix trial by fire, tell me if it works
 - rattle now has a 50% cap
 - bosses are overwhelm immune
 
 weapons
 - qatal and named qatal daggers are now swords/dagger weapons
+    - stab 4 AP -> 3 AP, sword mastery now gives fat reduction
+    - deathblow 4 AP -> 3 AP, sword mastery now gives fat reduction
 - 2h scimitar and named variant is now cleaver/sword
 - 2h saif is now cleaver/sword
 
@@ -21,6 +65,7 @@ enemies
 contracts
 - made return item contract easier
 - made other contracts harder
+- tried to fix necros spawning in alone in desert contract, tell me if fixed
 
 1.01
 - Improved healing and repair rates to 50%

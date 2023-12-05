@@ -285,23 +285,25 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 	function getDangerFromActor( _actor, _target, _entity )
 	{
-		local d = this.queryActorTurnsNearTarget(_actor, _target, _entity);
+		try {
+			local d = this.queryActorTurnsNearTarget(_actor, _target, _entity);
 
-		if (d.Turns <= this.Const.AI.Behavior.RangedEngageKeepMinTurnsAway && d.InZonesOfControl < 2)
-		{
-			if (d.InZonesOfOccupation != 0 || _actor.getCurrentProperties().IsRooted)
+			if (d.Turns <= this.Const.AI.Behavior.RangedEngageKeepMinTurnsAway && d.InZonesOfControl < 2)
 			{
-				return 1.0;
+				if (d.InZonesOfOccupation != 0 || _actor.getCurrentProperties().IsRooted)
+				{
+					return 1.0;
+				}
+				else
+				{
+					return (1.0 - d.Turns) * 6.0;
+				}
 			}
 			else
 			{
-				return (1.0 - d.Turns) * 6.0;
+				return 0.0;
 			}
-		}
-		else
-		{
-			return 0.0;
-		}
+		} catch(exception) { return 0.0; }
 	}
 
 	function selectBestTargetTile( _entity, _maxRange, _considerLineOfFire, _visibleTileNeeded )

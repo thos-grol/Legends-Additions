@@ -85,7 +85,7 @@ this.deliver_money_contract <- this.inherit("scripts/contracts/contract", {
 		local modrate = this.World.State.getPlayer().getBarterMult();
 		this.m.DifficultyMult = this.Math.rand(100, 105) * 0.01;
 
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentLightMult() * days;
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * days;
 
 
 		if (this.Math.rand(1, 100) <= 33)

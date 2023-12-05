@@ -45,7 +45,11 @@ this.dodge_effect <- this.inherit("scripts/skills/skill", {
 	function isEnabled()
 	{
 		local offhand = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
-		if (offhand != null && offhand.isItemType(::Const.Items.ItemType.Shield)) return false;
+		if (offhand != null 
+			&& offhand.isItemType(::Const.Items.ItemType.Shield) 
+			&& !(offhand.m.ID == "shield.buckler" 
+				|| offhand.m.ID == "shield.goblin_heavy_shield" 
+				|| offhand.m.ID == "shield.goblin_light_shield")) return false;
 		return true;
 	}
 

@@ -773,7 +773,7 @@ this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 
 			if (isResurrectable && corpse.IsHeadAttached)
 			{
-				corpse <- IsZombie = true;
+				corpse.IsZombie <- true;
 				if (!this.m.IsResurrected && this.Math.rand(1, 100) <= this.m.ResurrectionChance)
 				{
 					corpse.IsConsumable = false;

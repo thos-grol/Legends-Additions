@@ -14,7 +14,9 @@
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.TrialByFire].Tooltip = ::Const.Strings.PerkDescription.TrialByFire;
 
 this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
-	m = {},
+	m = {
+		Used = false
+	},
 	function create()
 	{
 		this.m.ID = "perk.trial_by_fire";
@@ -71,20 +73,31 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
 		_properties.TargetAttractionMult *= 1.33;
 	}
 
+	function onCombatStarted()
+	{
+		this.m.Used = false;
+	}
+
 	//credit enduriel
 	function onCombatFinished()
     {
-        if (::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyDestroyed
+		if (this.m.Used) return;
+		this.m.Used = true;
+		local actor = this.getContainer().getActor();
+		if (actor.getFaction() != ::Const.Faction.Player) return;
+
+		if (::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyDestroyed
             && ::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyRetreated)
             return;
-        foreach (bro in ::World.getPlayerRoster().getAll())
+        
+		foreach (bro in ::World.getPlayerRoster().getAll())
         {
-            if (!bro.isPlacedOnMap() | bro.getLevel() > 5)
+            if (!bro.isPlacedOnMap() || bro.getLevel() > 5)
                 continue;
 
-            // otherwise give him enough XP to level up
-            bro.addXP(::Const.LevelXP[bro.getLevel()] - bro.getXP()) // not sure about this line but smtng like that
-            bro.updateLevel();
+			bro.m.XP = this.Const.LevelXP[bro.m.Level];
+			bro.updateLevel();
+			
         }
     }
 

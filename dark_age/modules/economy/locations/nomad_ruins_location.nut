@@ -55,7 +55,7 @@
 			treasure.push("legend_armor/armor_upgrades/legend_heraldic_plates_upgrade");
 			treasure.push("legend_armor/armor_upgrades/legend_double_mail_upgrade");
 
-			treasure.push("misc/legend_ancient_scroll_item");
+			treasure.push("misc/scroll");
 			treasure.push("misc/tome");
 		}
 		this.dropTreasure(this.Math.rand(1, 2), treasure, _lootTable);

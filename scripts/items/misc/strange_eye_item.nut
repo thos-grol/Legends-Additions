@@ -9,7 +9,7 @@ this.strange_eye_item <- this.inherit("scripts/items/item", {
 		this.m.SlotType = ::Const.ItemSlot.Bag;
 		this.m.ItemType = ::Const.Items.ItemType.Misc;
 		this.m.IsDroppedAsLoot = true;
-		this.m.Value = 4000;
+		this.m.Value = 1000;
 	}
 
 	function playInventorySound( _eventType )

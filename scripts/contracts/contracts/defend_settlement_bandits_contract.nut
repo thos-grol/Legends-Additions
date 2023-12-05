@@ -13,6 +13,7 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 5.0;
 		this.m.MakeAllSpawnsResetOrdersOnContractEnd = false;
 		this.m.MakeAllSpawnsAttackableByAIOnceDiscovered = true;
+		this.m.DifficultyMult = ::Math.rand(135, 175) * 0.01;
 	}
 
 	function onImportIntro()
@@ -123,11 +124,11 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 
 					if (this.Flags.get("IsUndead"))
 					{
-						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Zombies, this.Math.rand(80, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Zombies, this.Math.rand(100, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * 1.5);
 					}
 					else
 					{
-						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Bandits, this.Math.rand(80, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Bandits, this.Math.rand(100, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * 1.5);
 					}
 
 					party.setAttackableByAI(false);

@@ -29,8 +29,8 @@
 ::Z.Color.Common <- "#666666";
 ::Z.Color.Uncommon <- "#246f45";
 ::Z.Color.Rare <- "#26619C";
-::Z.Color.Legendary <- "#be471a";
-::Z.Color.Mythic <- "#243f63";
+::Z.Color.Legendary <- "#ab3f17";
+::Z.Color.Mythic <- "#38639b";
 
 
 /////////////////

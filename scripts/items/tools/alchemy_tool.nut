@@ -16,7 +16,7 @@ this.alchemy_tool <- this.inherit("scripts/items/weapons/weapon", {
 
 	function get_refill_cost()
 	{
-		return (item.getAmmoMax() - item.getAmmo()) * ::Math.round((this.m.Value / item.getAmmoMax()));
+		return (item.getAmmoMax() - item.getAmmo()) * ::Math.round((this.m.Value / item.getAmmoMax())) / 2;
 	}
 
 	function getAmmo()
@@ -47,6 +47,11 @@ this.alchemy_tool <- this.inherit("scripts/items/weapons/weapon", {
 	function consumeAmmo()
 	{
 		--this.m.Ammo;
+	}
+
+	function is_usable()
+	{
+		return this.m.Ammo > 0;
 	}
 
 	function onSerialize( _out )

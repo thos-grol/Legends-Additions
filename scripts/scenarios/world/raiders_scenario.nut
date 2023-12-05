@@ -136,7 +136,6 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		talents[::Const.Attributes.Initiative] = 2;
 		local bright = ::new("scripts/skills/traits/bright_trait");
 		bros[3].getSkills().add(bright);
-		bright.upgrade();
 		bros[3].getBackground().addPerkGroup(::Const.Perks.IntelligentTree.Tree);
 
 		// //FIXME: PLACEHOLDER remove test perks
@@ -148,6 +147,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		// ::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.ResearchRottenOffering, 0);
 		// ::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.ResearchMiasmaBody, 0);
 		// ::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.SpellCorpseExplosion, 0);
+		// ::Z.Perks.add(bros[3], ::Const.Perks.PerkDefs.TrialByFire, 0);
 
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Assets.addMoralReputation(-30.0);
