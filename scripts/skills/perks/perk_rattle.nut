@@ -8,7 +8,7 @@
 + "\nCan apply injuries to the undead"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Rattle: (Duration: 1)")
-+ "\n "+::MSU.Text.colorRed("– 10% Damage Dealt");
++ "\n "+::MSU.Text.colorRed("– 10% Damage Dealt, caps at 50%");
 
 
 

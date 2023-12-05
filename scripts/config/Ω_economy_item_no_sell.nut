@@ -11,7 +11,7 @@
     "weapon.wooden_flail" : 0,
 
     "weapon.short_bow" : 0,
-    "weapon.legend_sling" : 0, 
+    "weapon.legend_sling" : 0,
     "weapon.knife" : 0,
 
     "weapon.woodcutters_axe" : 0,
@@ -27,6 +27,7 @@
     "weapon.hooked_blade" : 0,
     "weapon.two_handed_wooden_hammer" : 0,
     "weapon.legend_two_handed_club" : 0,
+    "weapon.goblin_notched_blade" : 0,
 
     "weapon.saif" : 0,
     "weapon.two_handed_saif" : 0,

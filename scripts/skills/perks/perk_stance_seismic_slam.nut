@@ -20,7 +20,7 @@
 + "\n"+::MSU.Text.colorRed("– 4 AP")
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Rattle: (Duration: 1)")
-+ "\n "+::MSU.Text.colorRed("– 10% Damage Dealt");
++ "\n "+::MSU.Text.colorRed("– 10% Damage Dealt, caps at 50%");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceSeismicSlam].Name = ::Const.Strings.PerkName.StanceSeismicSlam;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StanceSeismicSlam].Tooltip = ::Const.Strings.PerkDescription.StanceSeismicSlam;
@@ -70,13 +70,13 @@ this.perk_stance_seismic_slam <- this.inherit("scripts/skills/skill", {
 				_targetEntity.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
 				if (!_targetEntity.isHiddenToPlayer()) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " has been staggered");
 			}
-				
+
 			if (!_targetEntity.getSkills().hasSkill("effects.seal"))
 			{
 				_targetEntity.getSkills().add(::new("scripts/skills/effects/seal_effect"));
 				if (!_targetEntity.isHiddenToPlayer()) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + "\'s movements have been sealed");
 			}
-				
+
 		}
 	}
 
