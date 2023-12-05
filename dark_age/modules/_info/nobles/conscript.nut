@@ -67,7 +67,7 @@
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/firelance",
+			"scripts/items/weapons/oriental/firelance",
 			"scripts/items/shields/oriental/southern_light_shield"
 		]
 	]

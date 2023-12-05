@@ -129,7 +129,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 				local party;
 				local tile;
 				local tile = this.Contract.m.Destination.getTile();
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Raiding party", false, this.Const.World.Spawn.BanditRoamers, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Raiding party", false, this.Const.World.Spawn.BanditRaiders, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.getSprite("banner").setBrush(this.Contract.m.Destination.getBanner());
 				party.setAttackableByAI(false);
 				this.Contract.m.Target = this.WeakTableRef(party);

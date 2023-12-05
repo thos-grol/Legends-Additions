@@ -4,13 +4,12 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
+//TODO: new origins - cultists
+
 //TODO: test crafting
 //TODO: sounds so loud
-//TODO: fix daze bomb skill still being able to use at 0 ammo
-//TODO: why isnt trial by fire working?
 //TODO: rework skeleton units
 //TODO: rework skeleton priest //drops miasma tome
-//TODO: fix infinite pots
 
 
 
@@ -34,11 +33,7 @@
 //FIXME: SCAVENGE get ciri teleport
 //FIXME: SCAVENGE get aard
 
-//FEATURE_8: new origins - aspiring apprentice
-//FEATURE_8: new origins - lone wolf
-//FEATURE_8: new origins - peasant militia
-//FEATURE_8: new origins - cultists
-//FEATURE_8: new origins - aspiring necromancer
+
 
 
 //////////////////////////////////////////////

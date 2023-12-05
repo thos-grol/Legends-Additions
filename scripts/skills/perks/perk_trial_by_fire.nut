@@ -8,6 +8,9 @@
 + "\nRally fleeing allies, and raise morale of all nearby allies to a steady level"
 + "\n"+::MSU.Text.colorRed("Higher resolve increases the chance to succeed")
 
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Mark Target\' (6 AP, 30 Fat):")
++ "\nCall out a target to focus, reducing their ranged defense by 20 for 3 turns"
+
 + "\n\n" + ::MSU.Text.colorRed("There can only be one commander in the party. Will refund this perk if any other unit has it.");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.TrialByFire].Name = ::Const.Strings.PerkName.TrialByFire;
@@ -35,6 +38,8 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 
 		if (!this.m.Container.hasSkill("actives.rally_the_troops")) this.m.Container.add(::new("scripts/skills/actives/rally_the_troops"));
+
+		if (!this.m.Container.hasSkill("actives.legend_mark_target")) this.m.Container.add(this.new("scripts/skills/actives/legend_mark_target"));
 
 		if (actor.getFaction() != ::Const.Faction.Player)
 		{
@@ -66,6 +71,7 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
 	function onRemoved()
 	{
 		this.m.Container.removeByID("actives.rally_the_troops");
+		this.m.Container.removeByID("actives.legend_mark_target");
 	}
 
 	function onUpdate( _properties )
@@ -89,7 +95,7 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
 		if (::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyDestroyed
             && ::Tactical.Entities.getCombatResult() != ::Const.Tactical.CombatResult.EnemyRetreated)
             return;
-        
+
 		foreach (bro in ::World.getPlayerRoster().getAll())
         {
             if (!bro.isPlacedOnMap() || bro.getLevel() > 5)
@@ -97,7 +103,7 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
 
 			bro.m.XP = this.Const.LevelXP[bro.m.Level];
 			bro.updateLevel();
-			
+
         }
     }
 

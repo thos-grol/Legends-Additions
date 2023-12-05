@@ -4,7 +4,7 @@
 	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 55,
-	Bravery = 35,
+	Bravery = 45,
 	Stamina = 95,
 	MeleeSkill = 56,
 	RangedSkill = 40,

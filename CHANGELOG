@@ -1,4 +1,38 @@
 CHANGELOG
+1.08
+
+experimental
+- tweaking zombie/necro spawn rates
+- bandit army contract used weaker bandit roamers spawn instead of bandit raiders - fixed that
+- made thugs and rabble disappear for higher power bandit spawns
+- made it so camp contract skulls will reflect the size of the camp
+- reenabled cultist conversion. conditions are brain damage OR dumb OR non-bright lowborn
+- reenabled dumb trait
+
+bugs
+- fixed incorrect path for firelance
+- fixed faction banner causing freeze for knight
+
+enemies
+- enemies with low resolve: +10 resolve
+- return item contracts will no longer spawn unit tiers above veteran
+- improved bandit leader builds + back to basics
+- made bandit warlord builds - before they just had randomized builds
+- added chopper build to bandit raider
+- added chopper build to bandit veteran
+- added chopper build to barbarian marauder
+
+economy
+- can no longer sell MOST shields for money
+
+backgrounds
+- fixed ranger tree showing up on master archer
+- master archer has garunteed stars
+
+perks
+- trial by fire, now also gives mark target active
+
+
 1.07
 
 contracts

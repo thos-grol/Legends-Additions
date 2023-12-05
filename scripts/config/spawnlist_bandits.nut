@@ -153,6 +153,7 @@ gt.Const.World.Spawn.BanditRaiders <- {
 	Troops = [
 		{
 			Weight = 54,
+			MaxR = 320,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRabble,
@@ -169,13 +170,19 @@ gt.Const.World.Spawn.BanditRaiders <- {
 					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
 					Cost = 16
 				},
+			]
+		},
+		{
+			Weight = 54,
+			MinR = 320,
+			Types = [
 				{
 					MinR = 320,
 					Type = this.Const.World.Spawn.Troops.BanditRaider,
 					Cost = 20
 				},
 				{
-					MinR = 600,
+					MinR = 420,
 					Type = this.Const.World.Spawn.Troops.BanditVeteran,
 					Cost = 30
 				}
@@ -183,6 +190,7 @@ gt.Const.World.Spawn.BanditRaiders <- {
 		},
 		{
 			Weight = 20,
+			MaxR = 320,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRabblePoacher,
@@ -193,13 +201,18 @@ gt.Const.World.Spawn.BanditRaiders <- {
 					Type = this.Const.World.Spawn.Troops.BanditMarksmanLOW,
 					Cost = 11
 				},
+			]
+		},
+		{
+			Weight = 20,
+			MinR = 320,
+			Types = [
 				{
-					MinR = 400,
 					Type = this.Const.World.Spawn.Troops.BanditMarksman,
 					Cost = 18
 				},
 				{
-					MinR = 600,
+					MinR = 500,
 					Type = this.Const.World.Spawn.Troops.MasterArcher,
 					Cost = 40,
 					Roll = true

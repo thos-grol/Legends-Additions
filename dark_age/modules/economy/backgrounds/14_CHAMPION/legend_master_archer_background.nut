@@ -30,8 +30,9 @@
 		local talents = this.getContainer().getActor().getTalents();
 		talents.resize(::Const.Attributes.COUNT, 0);
 		talents[::Const.Attributes.RangedSkill] = 3;
-		talents[::Const.Attributes.Fatigue] = 3;
-		this.getContainer().getActor().fillTalentValues(2, true);
+		talents[::Const.Attributes.Hitpoints] = 3;
+		talents[::Const.Attributes.MeleeDefense] = 3;
+
 		local items = this.getContainer().getActor().getItems();
 		local r;
 		items.equip(::new("scripts/items/weapons/war_bow"));

@@ -48,30 +48,6 @@ this.legend_bandit_warlord <- this.inherit("scripts/entity/tactical/abstract_hum
 		this.getSprite("shield_icon").setBrightness(0.6);
 	}
 
-	// shields.extend([
-	// 	"shields/named/named_bandit_kite_shield",
-	// 	"shields/named/named_bandit_heater_shield"
-	// ]);
-
-	// "weapons/noble_sword",
-	// "weapons/fighting_axe",
-	// "weapons/warhammer",
-	// "weapons/boar_spear",
-	// "weapons/legend_glaive",
-	// "weapons/winged_mace",
-	// "weapons/arming_sword",
-	// "weapons/military_cleaver"
-	// "weapons/greatsword",
-	// "weapons/greataxe",
-	// "weapons/legend_swordstaff",
-	// "weapons/legend_longsword",
-	// "weapons/warbrand",
-	// "weapons/legend_estoc"
-
-	// "shields/wooden_shield",
-	// "shields/heater_shield",
-	// "shields/kite_shield"
-
 	function pickOutfit()
 	{
 		if (this.m.Items.getItemAtSlot(this.Const.ItemSlot.Body) == null)

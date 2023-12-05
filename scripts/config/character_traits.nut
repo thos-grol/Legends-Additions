@@ -37,6 +37,10 @@ gt.Const.CharacterTraits <- [
 		"scripts/skills/traits/fat_trait"
 	],
 	[
+		"trait.dumb",
+		"scripts/skills/traits/dumb_trait"
+	],
+	[
 		"trait.bright",
 		"scripts/skills/traits/bright_trait"
 	],

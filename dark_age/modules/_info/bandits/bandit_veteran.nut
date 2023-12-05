@@ -6,7 +6,7 @@
 	XP = 250,
 	ActionPoints = 9,
 	Hitpoints = 55,
-	Bravery = 47,
+	Bravery = 57,
 	Stamina = 96,
 	MeleeSkill = 65,
 	RangedSkill = 40,
@@ -116,9 +116,6 @@
 	],
 	Loadout = [
 		[
-			"scripts/items/weapons/fighting_axe"
-		],
-		[
 			"scripts/items/weapons/boar_spear"
 		],
 		[
@@ -180,6 +177,30 @@
 	Loadout = [
 		[
 			"scripts/items/weapons/legend_longsword",
+		],
+	]
+};
+
+::B.Info[::Const.EntityType.BanditVeteran].Builds["Chopper"] <- {
+	Name = "Chopper",
+	Pattern = [
+		["scripts/skills/perks/perk_legend_alert"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_adrenalin"], //3
+        ["W", 4],
+        ["scripts/skills/perks/perk_head_hunter"], //7
+        ["D", 6],
+        ["scripts/skills/perks/perk_strange_strikes"],
+		["scripts/skills/perks/perk_duelist"], //8
+    ],
+	LevelUps = [
+		["Initiative", 8, 3, 3],
+		["Melee Skill", 8, 3, 3],
+		["Melee Defense", 8, 3, 3],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/fighting_axe"
 		],
 	]
 };

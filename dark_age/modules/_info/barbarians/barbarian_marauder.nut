@@ -67,6 +67,7 @@
         ["scripts/skills/perks/perk_adrenalin"],
         ["D", 6],
         ["scripts/skills/perks/perk_shield_expert"],
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Health", 7, 0, 2],
@@ -99,6 +100,7 @@
         ["W", 4],
         ["D", 6],
         ["scripts/skills/perks/perk_strange_strikes"],
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Initiative", 7, 0, 2],
@@ -113,4 +115,28 @@
 			"scripts/items/weapons/barbarians/two_handed_spiked_mace",
 		],
 	],
+};
+
+::B.Info[::Const.EntityType.BarbarianMarauder].Builds["Chopper"] <- {
+	Name = "1H Net",
+	Pattern = [
+		["scripts/skills/perks/perk_legend_alert"], //1
+        ["D", 2], //2
+        ["scripts/skills/perks/perk_adrenalin"], //3
+        ["W", 4],
+        ["scripts/skills/perks/perk_head_hunter"], //7
+        ["D", 6],
+        ["scripts/skills/perks/perk_strange_strikes"],
+		["scripts/skills/perks/perk_survival_instinct"], //8
+    ],
+	LevelUps = [
+		["Initiative", 7, 3, 3],
+		["Melee Skill", 7, 3, 3],
+		["Melee Defense", 7, 3, 3],
+	],
+	Loadout = [
+		[
+			"scripts/items/weapons/barbarians/crude_axe",
+		],
+	]
 };

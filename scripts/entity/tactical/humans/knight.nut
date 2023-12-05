@@ -152,6 +152,15 @@ this.knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Offhand))
 		{
 			local shield = this.new("scripts/items/shields/faction_heater_shield");
+			local banner = 4;
+			if (("State" in this.Tactical) && this.Tactical.State != null && !this.Tactical.State.isScenarioMode())
+			{
+				banner = this.World.FactionManager.getFaction(this.getFaction()).getBanner();
+			}
+			else
+			{
+				banner = this.getFaction();
+			}
 			shield.setFaction(banner);
 			this.m.Items.equip(shield);
 		}

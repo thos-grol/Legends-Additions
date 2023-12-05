@@ -28,19 +28,22 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 		this.m.Flags.set("ChampionName", this.Const.Strings.BarbarianNames[this.Math.rand(0, this.Const.Strings.BarbarianNames.len() - 1)] + " " + this.Const.Strings.BarbarianTitles[this.Math.rand(0, this.Const.Strings.BarbarianTitles.len() - 1)]);
 		this.m.Flags.set("ChampionBrotherName", "");
 		this.m.Flags.set("ChampionBrother", 0);
-		
+
 
 		local pay_amount = 0;
 		switch(banditcamp.m.TypeID)
 		{
 			case "location.barbarian_camp": //70
 				pay_amount = 75;
+				this.m.DifficultyMult = 0.8;
 				break;
 			case "location.barbarian_sanctuary": //180
 				pay_amount = 180;
+				this.m.DifficultyMult = 1.0;
 				break;
 			case "location.barbarian_shelter": //325
 				pay_amount = 325;
+				this.m.DifficultyMult = 2.0;
 				break;
 		}
 

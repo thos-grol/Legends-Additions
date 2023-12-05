@@ -74,6 +74,7 @@
         ["scripts/skills/perks/perk_steadfast"], //7
         ["scripts/skills/perks/perk_dismemberment"], //8
         ["scripts/skills/perks/perk_stance_gourmet"], //9
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Initiative", 9, 3, 3],
@@ -104,6 +105,7 @@
         ["scripts/skills/perks/perk_steadfast"], //7
         ["scripts/skills/perks/perk_dismemberment"], //8
         ["scripts/skills/perks/perk_stance_executioner"], //9
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Initiative", 9, 3, 3],

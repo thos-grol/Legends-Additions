@@ -38,6 +38,7 @@
         ["scripts/skills/perks/perk_legend_lacerate"], //8
         ["scripts/skills/perks/perk_stance_gourmet"], //9
 		["scripts/skills/perks/perk_legend_muscularity"], //9
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Health", 10, 3, 3],
@@ -102,6 +103,7 @@
         ["scripts/skills/perks/perk_legend_lacerate"], //8
         ["scripts/skills/perks/perk_stance_seismic_slam"], //9
 		["scripts/skills/perks/perk_indomitable"], //9
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Health", 10, 3, 3],
@@ -132,6 +134,7 @@
         ["scripts/skills/perks/perk_nine_lives"], //7
         ["scripts/skills/perks/perk_dismemberment"], //8
         ["scripts/skills/perks/perk_vengeance"], //9
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Health", 10, 3, 3],
@@ -162,6 +165,7 @@
         ["scripts/skills/perks/perk_death_dealer"], //7
         ["scripts/skills/perks/perk_dismemberment"], //8
         ["scripts/skills/perks/perk_vengeance"], //9
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Health", 10, 3, 3],
@@ -192,6 +196,7 @@
         ["scripts/skills/perks/perk_nine_lives"], //7
         ["scripts/skills/perks/perk_dismemberment"], //8
         ["scripts/skills/perks/perk_fresh_and_furious"], //9
+		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Health", 5, 3, 3],

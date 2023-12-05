@@ -34,10 +34,7 @@
     "weapon.nomad_mace" : 0,
     "weapon.militia_spear" : 0,
     "weapon.nomad_sling" : 0,
-    "shield.southern_light_shield" : 0,
-    "shield.wooden_shield" : 0,
-    "shield.wooden_shield_old" : 0,
-    "shield.faction_wooden_shield" : 0,
+
 
     "legend_armor.body.legend_gambeson" : 0,                           		//DUR: 65.00 | STA: -8.00
 	"legend_armor.body.legend_gambeson_plain" : 0,                     		//DUR: 65.00 | STA: -8.00
@@ -54,4 +51,20 @@
 	"weapon.named_crossbow" : 0,             			//( 50,  70) | AP: 0.50 | AE: 0.75
 	"weapon.handgonne" : 0,                  			//( 35,  75) | AP: 0.25 | AE: 0.90
 	"weapon.named_handgonne" : 0,            			//( 35,  75) | AP: 0.25 | AE: 0.90
+
+	"shield.buckler" : 0,
+	"shield.faction_heater_shield" : 0,
+	"shield.faction_kite_shield" : 0,
+
+    "shield.southern_light_shield" : 0,
+    "shield.wooden_shield" : 0,
+    "shield.wooden_shield_old" : 0,
+    "shield.faction_wooden_shield" : 0,
+
+	"shield.heater_shield" : 0,
+	"shield.kite_shield" : 0,
+	"shield.legend_faction_tower_shield" : 0,
+	"shield.legend_tower_shield" : 0,
+	"shield.worn_heater_shield" : 0,
+	"shield.worn_kite_shield" : 0,
 };
