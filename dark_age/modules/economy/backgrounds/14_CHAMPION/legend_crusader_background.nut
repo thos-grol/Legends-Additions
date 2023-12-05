@@ -18,7 +18,6 @@
 			Traits = [
 				::Const.Perks.TrainedTree
 				::Const.Perks.IndestructibleTree,
-				::Const.Perks.MartyrTree
 			],
 			Enemy = [],
 			Class = [
