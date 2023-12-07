@@ -92,7 +92,7 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 					this.Const.World.TerrainType.Mountains
 				]);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, this.Const.World.Spawn.BanditRoamers, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, this.Const.World.Spawn.BanditRoamers, 80 * this.Contract.getDifficultyMult());
 				party.setDescription("A group of thieves and bandits.");
 				party.setFootprintType(this.Const.World.FootprintsType.Brigands);
 				party.setAttackableByAI(false);

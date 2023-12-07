@@ -24,7 +24,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Destination = this.WeakTableRef(banditcamp);
 		this.m.Flags.set("DestinationName", banditcamp.getName());
 
-		local pay_amount = 0;
+		local pay_amount = 70;
 		switch(banditcamp.m.TypeID)
 		{
 			case "location.nomad_tents": //75
@@ -45,7 +45,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 				break;
 		}
 
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = pay_amount;
 
 		if (this.Math.rand(1, 100) <= 33)
 		{

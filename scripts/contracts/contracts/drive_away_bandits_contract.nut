@@ -58,7 +58,7 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 				break;
 		}
 
-		this.m.Payment.Pool = pay_amount * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = pay_amount;
 
 		if (this.Math.rand(1, 100) <= 33)
 		{

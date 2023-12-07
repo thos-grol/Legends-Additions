@@ -29,9 +29,13 @@ gt.Const.World.Spawn.BanditRoamers <- {
 					MaxR = 100,
 					Cost = 7
 				},
+			]
+		},
+		{
+			Weight = 50,
+			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.BanditThug,
-					MinR = 110,
 					Cost = 8
 				},
 			]
@@ -44,13 +48,18 @@ gt.Const.World.Spawn.BanditRoamers <- {
 					MaxR = 100,
 					Cost = 8
 				},
+			]
+		},
+		{
+			Weight = 10,
+			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.BanditMarksmanLOW,
 					Cost = 12
 				},
 				{
 					Type = this.Const.World.Spawn.Troops.BanditMarksman,
-					MinR = 400,
+					MinR = 250,
 					Cost = 18
 				}
 			]
@@ -72,13 +81,7 @@ gt.Const.World.Spawn.BanditScouts <- {
 			Weight = 60,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.BanditRabble,
-					MaxR = 100,
-					Cost = 7
-				},
-				{
 					Type = this.Const.World.Spawn.Troops.BanditThug,
-					MinR = 110,
 					Cost = 8
 				},
 				{
@@ -101,11 +104,6 @@ gt.Const.World.Spawn.BanditScouts <- {
 		{
 			Weight = 10,
 			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.BanditRabblePoacher,
-					MaxR = 100,
-					Cost = 8
-				},
 				{
 					Type = this.Const.World.Spawn.Troops.BanditMarksmanLOW,
 					Cost = 8

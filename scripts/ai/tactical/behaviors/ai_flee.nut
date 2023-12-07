@@ -135,7 +135,9 @@ this.ai_flee <- this.inherit("scripts/ai/tactical/behavior", {
 			}
 		}catch(exception){}
 
-		this.getAgent().setFinished(true);
+		try {
+			this.getAgent().setFinished(true);
+		}catch(exception){}
 		return true;
 	}
 

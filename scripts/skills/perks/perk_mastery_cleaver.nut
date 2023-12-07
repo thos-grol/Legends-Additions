@@ -40,7 +40,9 @@ this.perk_mastery_cleaver <- this.inherit("scripts/skills/skill", {
 		if (!_targetEntity.isAlive() || _targetEntity.isDying()) return false;
 
 		local item = this.getContainer().getActor().getMainhandItem();
-		if (!item.isWeaponType(::Const.Items.WeaponType.Cleaver)) return false;
+		try {
+			if (!item.isWeaponType(::Const.Items.WeaponType.Cleaver)) return false;
+		}catch(exception) return false;
 
 		if (_targetEntity.getCurrentProperties().IsImmuneToBleeding) return false;
 		if (_damageInflictedHitpoints < ::Const.Combat.MinDamageToApplyBleeding) return false;
