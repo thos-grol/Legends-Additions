@@ -11,6 +11,9 @@ this.hunting_webknechts_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Name = "Hunting Webknechts";
 		this.m.Description = "Local sightings indicate Webknechts in the nearby woods. Hunt them down.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
+		this.m.DifficultyMult = ::Math.rand(150, 200) * 0.01;
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
+
 	}
 
 	function onImportIntro()
@@ -430,10 +433,10 @@ this.hunting_webknechts_contract <- this.inherit("scripts/contracts/contract", {
 				local talents = this.Contract.m.Dude.getTalents();
 				talents.resize(::Const.Attributes.COUNT, 0);
 
-				talents[::Const.Attributes.MeleeSkill] = ::Math.rand(1, 3);
-				talents[::Const.Attributes.MeleeDefense] = ::Math.rand(1, 3);
-				if (::Math.rand(1, 100) <= 50) talents[::Const.Attributes.Hitpoints] = ::Math.rand(1, 3);
-				else talents[::Const.Attributes.Initiative] = ::Math.rand(1, 3);
+				talents[::Const.Attributes.MeleeSkill] = ::Math.rand(2, 3);
+				talents[::Const.Attributes.MeleeDefense] = ::Math.rand(2, 3);
+				if (::Math.rand(1, 100) <= 50) talents[::Const.Attributes.Hitpoints] = ::Math.rand(2, 3);
+				else talents[::Const.Attributes.Resolve] = ::Math.rand(2, 3);
 
 				this.Contract.m.Dude.m.Attributes = [];
 				this.Contract.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);

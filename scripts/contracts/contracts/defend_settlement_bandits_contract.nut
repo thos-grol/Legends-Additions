@@ -14,6 +14,10 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 		this.m.MakeAllSpawnsResetOrdersOnContractEnd = false;
 		this.m.MakeAllSpawnsAttackableByAIOnceDiscovered = true;
 		this.m.DifficultyMult = ::Math.rand(135, 175) * 0.01;
+
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
+
+
 	}
 
 	function onImportIntro()
@@ -61,49 +65,21 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
+
+
 				local nearestBandits = this.Contract.getNearestLocationTo(this.Contract.m.Home, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getSettlements());
 				local nearestZombies = this.Contract.getNearestLocationTo(this.Contract.m.Home, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).getSettlements());
 
-				if (nearestZombies.getTile().getDistanceTo(this.Contract.m.Home.getTile()) <= 20 && nearestBandits.getTile().getDistanceTo(this.Contract.m.Home.getTile()) > 20)
+				this.Flags.set("IsMilitia", true);
+
+
+				local r = this.Math.rand(1, 100);
+				if ((r <= 15 || (this.World.FactionManager.isUndeadScourge() && r <= 75)) && nearestZombies.getTile().getDistanceTo(this.Contract.m.Home.getTile()) <= 20)
 				{
 					this.Flags.set("IsUndead", true);
 				}
-				else
-				{
-					local r = this.Math.rand(1, 100);
 
-					if (r <= 20)
-					{
-						this.Flags.set("IsKidnapping", true);
-					}
-					else if (r <= 40)
-					{
-						if (this.Contract.getDifficultyMult() >= 0.95)
-						{
-							this.Flags.set("IsMilitia", true);
-						}
-					}
-					else if (r <= 50 || this.World.FactionManager.isUndeadScourge() && r <= 70)
-					{
-						if (nearestZombies.getTile().getDistanceTo(this.Contract.m.Home.getTile()) <= 20)
-						{
-							this.Flags.set("IsUndead", true);
-						}
-					}
-				}
-
-				local number = 1;
-
-				if (this.Contract.getDifficultyMult() >= 0.95)
-				{
-					number = number + this.Math.rand(0, 1);
-				}
-
-				if (this.Contract.getDifficultyMult() >= 1.1)
-				{
-					number = number + 1;
-				}
-
+				local number = ::Math.rand(1,2);
 				local locations = this.Contract.m.Home.getAttachedLocations();
 				local targets = [];
 
@@ -124,11 +100,11 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 
 					if (this.Flags.get("IsUndead"))
 					{
-						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Zombies, this.Math.rand(100, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * 1.5);
+						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Zombies, this.Math.rand(100, 110) * this.Contract.getDifficultyMult() * 1.5);
 					}
 					else
 					{
-						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Bandits, this.Math.rand(100, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * 1.5);
+						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Bandits, this.Math.rand(100, 110) * this.Contract.getDifficultyMult() * 1.5);
 					}
 
 					party.setAttackableByAI(false);

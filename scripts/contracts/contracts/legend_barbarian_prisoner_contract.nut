@@ -19,6 +19,10 @@ this.legend_barbarian_prisoner_contract <- this.inherit("scripts/contracts/contr
 		this.m.Description = "A valuable barbarian prisoner needs transport. Get his caravan to the destination safely and defend against barbarian rescue.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 120.0;
 		this.m.MakeAllSpawnsAttackableByAIOnceDiscovered = true;
+
+		this.m.DifficultyMult = ::Math.rand(150, 200) * 0.01;
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
+
 	}
 
 	function getBanner()

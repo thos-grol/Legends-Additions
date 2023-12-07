@@ -19,23 +19,23 @@
     "contract.slave_uprising" : 60,
 
     //D
-    "contract.escort_caravan" : 80, //pay is multiplied by distance
+    "contract.escort_caravan" : 100, //pay is multiplied by distance
     "contract.return_item2" : 200,
 
 
     //C
-    "contract.drive_away_bandits" : 0, //pay is based on size of camp
-    "contract.drive_away_barbarians" : 200, //pay is based on size of camp
-    "contract.drive_away_nomads" : 200, //pay is based on size of camp
-    "contract.hunting_webknechts" : 200,
+    "contract.defend_settlement_greenskins" : 300,
+    "contract.hunting_webknechts" : 300,
+    "contract.legend_barbarian_prisoner" : 300,
+    "contract.legend_bandit_army_contract" : 400,
+
+
 
     //B
-    "contract.legend_barbarian_prisoner" : 250,
 
     //A
 
     //S
-    "contract.legend_bandit_army_contract" : 400,
 
     //SS
 
@@ -46,7 +46,6 @@
     "contract.patrol" : 100,
 
     //Hard
-    "contract.investigate_cemetery" : 200,
 
     "contract.escort_envoy" : 50,
 
@@ -54,7 +53,6 @@
     "contract.marauding_greenskins" : 160,
     "contract.raid_caravan" : 160,
 
-    "contract.defend_settlement_greenskins" : 180,
     "contract.destroy_goblin_camp" : 180,
     "contract.destroy_orc_camp" : 180,
 

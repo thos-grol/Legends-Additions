@@ -17,6 +17,8 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 		this.m.Description = "Locals report a disturbance at a nearby cemetery. Investigate and secure the cemetery.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 		this.m.DifficultyMult = this.Math.rand(115, 145) * 0.01;
+
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 	}
 
 	function onImportIntro()
@@ -48,7 +50,20 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 		}
 
 		this.m.Flags.set("DestinationName", this.m.Destination.getName());
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+
+		local pay_amount = 200;
+		switch(this.m.Destination.m.TypeID)
+		{
+			case "location.undead_graveyard": //70
+				pay_amount = 200;
+				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
+				break;
+			case "location.undead_crypt": //150
+				pay_amount = 300;
+				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
+				break;
+		}
+		this.m.Payment.Pool = pay_amount * this.getReputationToPaymentMult();
 
 		if (this.Math.rand(1, 100) <= 33)
 		{
@@ -88,43 +103,45 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
-				this.Contract.m.Destination.clearTroops();
-				this.Contract.m.Destination.setLastSpawnTimeToNow();
+				// this.Contract.m.Destination.clearTroops();
+				// this.Contract.m.Destination.setLastSpawnTimeToNow();
 
-				if (this.Contract.getDifficultyMult() < 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
-				{
-					this.Contract.m.Destination.getLoot().clear();
-				}
+				// if (this.Contract.getDifficultyMult() < 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
+				// {
+				// 	this.Contract.m.Destination.getLoot().clear();
+				// }
 
-				this.Contract.m.Destination.setLootScaleBasedOnResources(100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 60 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				// this.Contract.m.Destination.setLootScaleBasedOnResources(100 * this.Contract.getDifficultyMult());
+				// this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 60 * this.Contract.getDifficultyMult()));
 				local r = this.Math.rand(1, 100);
 
-				if (r <= 10 && this.World.Assets.getBusinessReputation() > 500)
-				{
-					this.Flags.set("IsMysteriousMap", true);
-					this.logInfo("map");
-					local bandits = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits);
-					this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
-					this.Contract.m.Destination.setFaction(bandits.getID());
-					bandits.addSettlement(this.Contract.m.Destination.get(), false);
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditRoamers, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				}
-				else if (r <= 40)
+				// if (r <= 10 && this.World.Assets.getBusinessReputation() > 500)
+				// {
+				// 	this.Flags.set("IsMysteriousMap", true);
+				// 	this.logInfo("map");
+				// 	local bandits = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits);
+				// 	this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
+				// 	this.Contract.m.Destination.setFaction(bandits.getID());
+				// 	bandits.addSettlement(this.Contract.m.Destination.get(), false);
+				// 	this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditRoamers, 100 * this.Contract.getDifficultyMult());
+				// }
+				// else if (r <= 40)
+				if (r <= 25)
 				{
 					this.Flags.set("IsGraverobbers", true);
 					this.logInfo("graverobbers");
 					local bandits = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits);
+					this.Contract.m.Destination.clearTroops();
+					this.Contract.m.Destination.setLastSpawnTimeToNow();
+
 					this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
 					this.Contract.m.Destination.setFaction(bandits.getID());
 					bandits.addSettlement(this.Contract.m.Destination.get(), false);
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditRoamers, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditRoamers, 100 * this.Contract.getDifficultyMult());
 				}
 				else
 				{
-					this.logInfo("undead");
 					this.Flags.set("IsUndead", true);
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.Zombies, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				}
 
 				this.Contract.setScreen("Overview");
@@ -147,7 +164,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 			{
 				if (this.Contract.m.Destination == null || this.Contract.m.Destination.isNull())
 				{
-					if (this.Flags.get("IsUndead") && this.World.Assets.getBusinessReputation() > 500 && this.Math.rand(1, 100) <= 25 * this.Contract.m.DifficultyMult)
+					if (this.Flags.get("IsUndead") && this.Math.rand(1, 100) <= 25)
 					{
 						this.Flags.set("IsNecromancer", true);
 						this.Contract.setScreen("Necromancer0");
@@ -479,8 +496,8 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 						this.Contract.m.Destination.setName(this.Flags.get("DestinationName"));
 						this.Contract.m.Destination.setDiscovered(true);
 						this.Contract.m.Destination.clearTroops();
-						this.Contract.m.Destination.setLootScaleBasedOnResources(115 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.Necromancer, 115 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.m.Destination.setLootScaleBasedOnResources(115 * this.Contract.getDifficultyMult());
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.Necromancer, 115 * this.Contract.getDifficultyMult());
 
 						if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
 						{

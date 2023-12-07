@@ -9,10 +9,14 @@ this.defend_settlement_greenskins_contract <- this.inherit("scripts/contracts/co
 		this.contract.create();
 		this.m.Type = "contract.defend_settlement_greenskins";
 		this.m.Name = "Defend Settlement";
-		this.m.Description = "Greenskin Raiders are aplenty and scouts report them coming for another raid, set up camp at the town and prevent their raid.";
+		this.m.Description = "Orc Raiders are aplenty and scouts report them coming for another raid, set up camp at the town and prevent their raid.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 5.0;
 		this.m.MakeAllSpawnsResetOrdersOnContractEnd = false;
 		this.m.MakeAllSpawnsAttackableByAIOnceDiscovered = true;
+		this.m.DifficultyMult = ::Math.rand(150, 200) * 0.01;
+
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
+
 	}
 
 	function onImportIntro()
@@ -64,31 +68,10 @@ this.defend_settlement_greenskins_contract <- this.inherit("scripts/contracts/co
 				local nearestOrcs = this.Contract.getNearestLocationTo(this.Contract.m.Home, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getSettlements());
 				local nearestGoblins = this.Contract.getNearestLocationTo(this.Contract.m.Home, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).getSettlements());
 
-				if (nearestOrcs.getTile().getDistanceTo(this.Contract.m.Home.getTile()) + this.Math.rand(0, 6) <= nearestGoblins.getTile().getDistanceTo(this.Contract.m.Home.getTile()) + this.Math.rand(0, 6))
-				{
-					this.Flags.set("IsOrcs", true);
-				}
-				else
-				{
-					this.Flags.set("IsGoblins", true);
-				}
+				this.Flags.set("IsMilitia", true);
+				this.Flags.set("IsOrcs", true);
 
-				if (this.Math.rand(1, 100) <= 25 && this.Contract.getDifficultyMult() >= 0.95)
-				{
-					this.Flags.set("IsMilitia", true);
-				}
-
-				local number = 1;
-
-				if (this.Contract.getDifficultyMult() >= 0.95)
-				{
-					number = number + this.Math.rand(0, 1);
-				}
-
-				if (this.Contract.getDifficultyMult() >= 1.1)
-				{
-					number = number + 1;
-				}
+				local number = ::Math.rand(1,2);
 
 				local locations = this.Contract.m.Home.getAttachedLocations();
 				local targets = [];
@@ -110,11 +93,11 @@ this.defend_settlement_greenskins_contract <- this.inherit("scripts/contracts/co
 
 					if (this.Flags.get("IsGoblins"))
 					{
-						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Goblins, this.Math.rand(80, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Goblins, this.Math.rand(80, 110) * this.Contract.getDifficultyMult());
 					}
 					else
 					{
-						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Orcs, this.Math.rand(80, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Orcs, this.Math.rand(80, 110) * this.Contract.getDifficultyMult());
 					}
 
 					party.setAttackableByAI(false);

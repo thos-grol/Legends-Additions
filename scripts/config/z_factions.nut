@@ -58,12 +58,12 @@
     "scripts/factions/contracts/return_item_action2",
     "scripts/factions/contracts/drive_away_bandits_action",
     "scripts/factions/contracts/drive_away_barbarians_action",
-    "scripts/factions/contracts/investigate_cemetery_action", //TODO: tweak difficulty, 75% to be undead, 25% chance to be E tier bandits
+    "scripts/factions/contracts/investigate_cemetery_action",
 
     "scripts/factions/contracts/defend_settlement_bandits_action",
-    "scripts/factions/contracts/defend_settlement_greenskins_action",
 
     //C
+    "scripts/factions/contracts/defend_settlement_greenskins_action",
     "scripts/factions/contracts/hunting_webknechts_action",
     "scripts/factions/contracts/legend_barbarian_prisoner_action",
     "scripts/factions/contracts/legend_bandit_army_action",

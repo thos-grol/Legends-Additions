@@ -72,6 +72,79 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 		{
 			return this.m.Description;
 		};
+
+		o.spawnEnemyPartyAtBase = function( _factionType, _resources )
+		{
+			local myTile = this.World.State.getPlayer().getTile();
+			local enemyBase = this.World.FactionManager.getFactionOfType(_factionType).getNearestSettlement(myTile);
+			local party;
+
+			if (_factionType == this.Const.FactionType.Bandits)
+			{
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(enemyBase.getTile(), "Brigands", false, this.Const.World.Spawn.BanditRaiders, _resources);
+				party.setDescription("A rough and tough band of brigands out to hunt for food.");
+				party.setFootprintType(this.Const.World.FootprintsType.Brigands);
+				party.getLoot().Money = this.Math.rand(0, 50);
+				party.getLoot().ArmorParts = this.Math.rand(0, 10);
+				party.getLoot().Medicine = this.Math.rand(0, 2);
+				party.getLoot().Ammo = this.Math.rand(0, 10);
+				local r = this.Math.rand(1, 6);
+
+				if (r == 1)
+				{
+					party.addToInventory("supplies/bread_item");
+				}
+				else if (r == 2)
+				{
+					party.addToInventory("supplies/roots_and_berries_item");
+				}
+				else if (r == 3)
+				{
+					party.addToInventory("supplies/dried_fruits_item");
+				}
+				else if (r == 4)
+				{
+					party.addToInventory("supplies/ground_grains_item");
+				}
+				else if (r == 5)
+				{
+					party.addToInventory("supplies/pickled_mushrooms_item");
+				}
+			}
+			else if (_factionType == this.Const.FactionType.Goblins)
+			{
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).spawnEntity(enemyBase.getTile(), "Goblin Raiders", false, this.Const.World.Spawn.GoblinRaiders, _resources);
+				party.setDescription("A band of mischievous goblins, small but cunning and not to be underestimated.");
+				party.setFootprintType(this.Const.World.FootprintsType.Goblins);
+				party.getLoot().ArmorParts = this.Math.rand(0, 10);
+				party.getLoot().Medicine = this.Math.rand(0, 2);
+				party.getLoot().Ammo = this.Math.rand(0, 15);
+			}
+			else if (_factionType == this.Const.FactionType.Orcs)
+			{
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).spawnEntity(enemyBase.getTile(), "Orc Marauders", false, this.Const.World.Spawn.OrcRaiders, _resources);
+				party.setDescription("A band of menacing orcs, greenskinned and towering any man.");
+				party.setFootprintType(this.Const.World.FootprintsType.Orcs);
+				party.addToInventory("supplies/strange_meat_item");
+			}
+			else if (_factionType == this.Const.FactionType.Undead)
+			{
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).spawnEntity(enemyBase.getTile(), "Undead", false, this.Const.World.Spawn.UndeadArmy, _resources);
+				party.setDescription("A legion of walking dead, back to claim from the living what was once theirs.");
+				party.setFootprintType(this.Const.World.FootprintsType.Undead);
+			}
+			else if (_factionType == this.Const.FactionType.Zombies)
+			{
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).spawnEntity(enemyBase.getTile(), "Undead", false, this.Const.World.Spawn.Necromancer, _resources);
+				party.setDescription("Something seems wrong.");
+				party.setFootprintType(this.Const.World.FootprintsType.Undead);
+			}
+
+			party.getSprite("banner").setBrush(enemyBase.getBanner());
+			this.m.UnitsSpawned.push(party.getID());
+			return party;
+		}
+
 		local onDeserialize = o.onDeserialize;
 		o.onDeserialize = function ( _in )
 		{
@@ -230,7 +303,7 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 
 			_entity.updateStrength();
 		};
-		o.getUIMiddleOverlay = function () //TODO: update difficulty graphics
+		o.getUIMiddleOverlay = function ()
 		{
 			if (("ShowDifficulty" in this.m.ActiveScreen) && this.m.ActiveScreen.ShowDifficulty)
 			{
@@ -238,49 +311,49 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 				{
 					case "F":
 						return {
-							Image = "ui/images/difficulty_easy.png",
+							Image = "ui/images/difficulty_F.png",
 							IsProcedural = false
 						};
 
 					case "E":
 						return {
-							Image = "ui/images/difficulty_medium.png",
+							Image = "ui/images/difficulty_E.png",
 							IsProcedural = false
 						};
 
 					case "D":
 						return {
-							Image = "ui/images/difficulty_hard.png",
+							Image = "ui/images/difficulty_D.png",
 							IsProcedural = false
 						};
 
 					case "C":
 						return {
-							Image = "ui/images/difficulty_legend.png",
+							Image = "ui/images/difficulty_C.png",
 							IsProcedural = false
 						};
 
 					case "B":
 						return {
-							Image = "ui/images/difficulty_legend.png",
+							Image = "ui/images/difficulty_B.png",
 							IsProcedural = false
 						};
 
 					case "A":
 						return {
-							Image = "ui/images/difficulty_legend.png",
+							Image = "ui/images/difficulty_A.png",
 							IsProcedural = false
 						};
 
 					case "S":
 						return {
-							Image = "ui/images/difficulty_legend.png",
+							Image = "ui/images/difficulty_S.png",
 							IsProcedural = false
 						};
 				}
 
 				return {
-					Image = "ui/images/difficulty_legend.png",
+					Image = "ui/images/difficulty_C.png",
 					IsProcedural = false
 				};
 			}
@@ -289,34 +362,34 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 				return null;
 			}
 		};
-		o.getUIDifficultySmall = function () //TODO: update difficulty graphics
+		o.getUIDifficultySmall = function ()
 		{
 			switch(this.getDifficulty())
 			{
 				case "F":
-					return "ui/icons/difficulty_easy";
+					return "ui/icons/difficulty_F";
 
 				case "E":
-					return "ui/icons/difficulty_medium";
+					return "ui/icons/difficulty_E";
 
 				case "D":
-					return "ui/icons/difficulty_hard";
+					return "ui/icons/difficulty_D";
 
 				case "C":
-					return "ui/icons/difficulty_legend";
+					return "ui/icons/difficulty_C";
 
 				case "B":
-					return "ui/icons/difficulty_legend";
+					return "ui/icons/difficulty_B";
 
 				case "A":
-					return "ui/icons/difficulty_legend";
+					return "ui/icons/difficulty_A";
 
 				case "S":
-					return "ui/icons/difficulty_legend";
+					return "ui/icons/difficulty_S";
 
 			}
 
-			return "ui/icons/difficulty_legend";
+			return "ui/icons/difficulty_C";
 		};
 		o.getDifficulty <- function ()
 		{
