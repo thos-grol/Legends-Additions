@@ -77,7 +77,7 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Flags.set("NemesisName", nemesisNames[n]);
 		this.m.Flags.set("NemesisNameC", nemesisNamesC[n]);
 		this.m.Flags.set("NemesisNameS", nemesisNamesS[n]);
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 		local r = this.Math.rand(1, 2);
 
 		if (r == 1)

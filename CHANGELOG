@@ -18,6 +18,7 @@ contracts
 - reorganized all contracts under new difficulty system
     - all contracts now have difficulty tiers and pay based on that tier
     - all contracts strength are now hardcapped to their tier
+    
 1.08
 
 experimental

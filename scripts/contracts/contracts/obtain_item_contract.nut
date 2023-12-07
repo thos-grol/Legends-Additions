@@ -43,7 +43,7 @@ this.obtain_item_contract <- this.inherit("scripts/contracts/contract", {
 			"Fetish of Fertility"
 		];
 		this.m.Flags.set("ItemName", items[this.Math.rand(0, items.len() - 1)]);
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 33)
 		{

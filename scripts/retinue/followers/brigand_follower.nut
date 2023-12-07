@@ -12,17 +12,6 @@ this.brigand_follower <- this.inherit("scripts/retinue/follower", {
 			"See the movements of all caravans on the map",
 			"See up to 3 of the most valuable items on a caravan"
 		];
-		this.addRequirement("Raided at least 3 caravans", function ()
-		{
-			return ::World.Statistics.getFlags().getAsInt("CaravansRaided") >= 3;
-		}, true, function ( _r )
-		{
-			_r.Count <- 3;
-			_r.UpdateText <- function ()
-			{
-				this.Text = "Raided " + ::Math.min(this.Count, ::World.Statistics.getFlags().getAsInt("CaravansRaided")) + "/" + this.Count + " caravans";
-			};
-		});
 	}
 
 	function onUpdate()

@@ -29,7 +29,7 @@ this.legend_hunting_greenwood_schrats_contract <- this.inherit("scripts/contract
 
 	function start()
 	{
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 10)
 		{

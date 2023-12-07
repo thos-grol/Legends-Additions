@@ -38,7 +38,7 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 
 		this.m.Flags.set("ObjectiveName", this.m.Origin.getName());
 		this.m.Name = "Defend " + this.m.Origin.getName();
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 33)
 		{

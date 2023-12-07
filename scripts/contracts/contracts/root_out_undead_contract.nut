@@ -46,7 +46,7 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 
 		this.m.Flags.set("Objective1Name", this.m.Objective1.getName());
 		this.m.Flags.set("Objective2Name", this.m.Objective2.getName());
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 		local r = this.Math.rand(1, 2);
 
 		if (r == 1)

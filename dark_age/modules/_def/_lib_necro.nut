@@ -9,12 +9,15 @@
     try
     {
         corpse = _tile.Properties.get("Corpse");
-    } catch(exception) {}
+    } catch(exception) { return;}
 
 
     if (corpse == null) return;
 
-    corpse.Tile = _tile;
+    try
+    {
+        corpse.Tile = _tile;
+    } catch(exception) { return;}
 
     corpse.Skills <- [];
     corpse.BaseProperties <- {};

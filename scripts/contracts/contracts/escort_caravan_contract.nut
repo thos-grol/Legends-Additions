@@ -147,7 +147,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 		local days = this.getDaysRequiredToTravel(distance, this.Const.World.MovementSettings.Speed * 0.6, true);
 		local modrate = 10 * this.World.State.getPlayer().getBarterMult();
 
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult() * days;
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * days;
 		local r = this.Math.rand(1, 3);
 
 		if (r == 1)
@@ -1163,11 +1163,11 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 
 		if (faction.hasTrait(this.Const.FactionTrait.OrientalCityState))
 		{
-			party = faction.spawnEntity(this.m.Home.getTile(), "Trading Caravan", false, this.Const.World.Spawn.CaravanSouthernEscort, this.m.Home.getResources() * this.Math.rand(10, 25) * 0.01);
+			party = faction.spawnEntity(this.m.Home.getTile(), "Trading Caravan", false, this.Const.World.Spawn.CaravanSouthernEscort, this.m.Home.getResources() * 0.5);
 		}
 		else
 		{
-			party = faction.spawnEntity(this.m.Home.getTile(), "Trading Caravan", false, this.Const.World.Spawn.CaravanEscort, this.m.Home.getResources() * 0.4);
+			party = faction.spawnEntity(this.m.Home.getTile(), "Trading Caravan", false, this.Const.World.Spawn.CaravanEscort, this.m.Home.getResources() * 0.5);
 		}
 
 		party.getSprite("banner").Visible = false;
