@@ -34,14 +34,12 @@ this.ghost_racial <- this.inherit("scripts/skills/skill", {
 		_properties.DamageReceivedRegularMult *= 0;
 		_properties.DamageReceivedArmorMult *= 0;
 
-		if (!actor.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)
+		if (!actor.isHiddenToPlayer() || actor.getTile().IsVisibleForPlayer)
 		{
 			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " becomes incorporeal and nullies the damage dealt");
 		}
 
-		// Play feast sounds Bloodbath
 		this.Sound.play("sounds/enemies/ghost_death_01.wav", 1.0, actor.getPos(), this.Math.rand(95, 105) * 0.01);
-		spawnEffect();
 
 		local effect = {
 			Delay = 0,

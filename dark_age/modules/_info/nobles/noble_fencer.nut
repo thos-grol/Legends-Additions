@@ -1,5 +1,5 @@
 //Lvl 10 Merc template
-::Const.Tactical.Actor.Swordmaster <- {
+::Const.Tactical.Actor.LegendFencer <- {
 	XP = 250,
 	ActionPoints = 9,
 	Hitpoints = 60,
@@ -19,14 +19,14 @@
 	FatigueRecoveryRate = 15
 };
 
-::B.Info[::Const.EntityType.Swordmaster] <- {
+::B.Info[::Const.EntityType.LegendFencer] <- {
     Level = 10,
 	Builds = {},
 	BuildsChance = 100
 };
 
 //1H sword
-::B.Info[::Const.EntityType.Swordmaster].Builds["Sword"] <- {
+::B.Info[::Const.EntityType.LegendFencer].Builds["Sword"] <- {
 	Name = "Sword",
 	Pattern = [
         ["scripts/skills/perks/perk_legend_alert"], //1
@@ -56,7 +56,7 @@
 	],
 };
 
-::B.Info[::Const.EntityType.Swordmaster].Builds["Estoc"] <- {
+::B.Info[::Const.EntityType.LegendFencer].Builds["Estoc"] <- {
 	Name = "Estoc",
 	Pattern = [
 		["scripts/skills/perks/perk_legend_alert"], //1

@@ -4,6 +4,8 @@ CHANGELOG
 bugs
 - fixed bug with adaptive
 - tried to fix bug where zombies auto-reanimated as flesh abominations. they can still be raised that way by necros
+- fixed bug with ghost racial
+- ai flee sometimes caused crash, put try catch so enemies wont flee if a crash would have happened
 
 enemies
 - negative energy hand now ignores armor instead of damaging it
@@ -16,7 +18,6 @@ contracts
 - reorganized all contracts under new difficulty system
     - all contracts now have difficulty tiers and pay based on that tier
     - all contracts strength are now hardcapped to their tier
-
 1.08
 
 experimental
