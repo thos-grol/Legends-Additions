@@ -13,7 +13,7 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 		local orig = this.getDifficultyMult();
 		this.m.DifficultyMult = ::Math.rand(140, 200) * 0.01;
 
-		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "E");
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "F");
 	}
 
 	function onImportIntro()
@@ -23,7 +23,7 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW);
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 33)
 		{

@@ -29,7 +29,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 
 	function start()
 	{
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 10)
 		{

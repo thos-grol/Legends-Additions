@@ -23,7 +23,7 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 		local camp = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getNearestSettlement(this.m.Origin.getTile());
 		this.m.Destination = this.WeakTableRef(camp);
 		this.m.Flags.set("DestinationName", this.m.Destination.getName());
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 		local r = this.Math.rand(1, 3);
 
 		if (r == 1)

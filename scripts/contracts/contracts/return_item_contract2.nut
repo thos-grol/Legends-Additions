@@ -112,7 +112,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		this.m.Flags.set("LOOT_NAME", this.m.Loot.m.Name);
 		this.m.Flags.set("LOOT_ID", item_ID);
 
-		this.m.Payment.Pool = 200 * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = 200;
 		if (this.Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;

@@ -89,7 +89,7 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 			this.m.Flags.set("MerchantID", best.getFactionOfType(this.Const.FactionType.Settlement).getRandomCharacter().getID());
 		}
 
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 33)
 		{

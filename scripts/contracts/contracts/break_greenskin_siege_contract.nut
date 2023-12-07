@@ -34,7 +34,7 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 		this.m.Flags.set("OrcBase", nearest_orcs.getID());
 		local nearest_goblins = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).getNearestSettlement(this.m.Origin.getTile());
 		this.m.Flags.set("GoblinBase", nearest_goblins.getID());
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 33)
 		{

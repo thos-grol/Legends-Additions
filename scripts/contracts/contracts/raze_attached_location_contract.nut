@@ -36,7 +36,7 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 
 	function start()
 	{
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 33)
 		{

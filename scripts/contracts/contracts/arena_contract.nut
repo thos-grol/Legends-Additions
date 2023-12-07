@@ -205,7 +205,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 			}
 		}
 
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 		this.m.Payment.Completion = 1.0;
 	}
 

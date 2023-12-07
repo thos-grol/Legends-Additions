@@ -11,7 +11,7 @@ this.hunting_webknechts_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Name = "Hunting Webknechts";
 		this.m.Description = "Local sightings indicate Webknechts in the nearby woods. Hunt them down.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
-		this.m.DifficultyMult = ::Math.rand(150, 200) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(150, 250) * 0.01;
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
 
 	}
@@ -23,7 +23,7 @@ this.hunting_webknechts_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 33)
 		{
@@ -121,7 +121,7 @@ this.hunting_webknechts_contract <- this.inherit("scripts/contracts/contract", {
 
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, numWoods >= 12 ? 6 : 3, 9, disallowedTerrain);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Nest", false, this.Const.World.Spawn.Spiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Nest", false, this.Const.World.Spawn.Spiders, 110 * this.Contract.getDifficultyMult() * 2.0);
 				party.setDescription("A swarm of webknechts skittering about.");
 				party.setFootprintType(this.Const.World.FootprintsType.Spiders);
 				party.setAttackableByAI(false);

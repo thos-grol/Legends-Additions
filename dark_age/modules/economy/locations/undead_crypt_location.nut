@@ -26,7 +26,7 @@
 			this.setDefenderSpawnList(::Const.World.Spawn.Necromancer);
 		}
 
-		this.m.Resources = 180;
+		this.m.Resources = 360;
 	}
 
 	o.onSpawned = function()

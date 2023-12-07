@@ -49,7 +49,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Flags.set("FeudingHouseName", nobleHouses[0].getName());
 		this.m.Flags.set("RivalHouseID", nobleHouses[1].getID());
 		this.m.Flags.set("RivalHouseName", nobleHouses[1].getName());
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 		local r = this.Math.rand(1, 2);
 
 		if (r == 1)

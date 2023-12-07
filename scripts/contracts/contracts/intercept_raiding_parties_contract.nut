@@ -59,7 +59,7 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 			return 0;
 		});
 		this.m.Destination = this.WeakTableRef(towns[this.Math.rand(0, this.Math.min(1, towns.len() - 1))]);
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 		local r = this.Math.rand(1, 2);
 
 		if (r == 1)

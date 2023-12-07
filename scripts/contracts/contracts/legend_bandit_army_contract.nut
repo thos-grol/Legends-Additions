@@ -80,8 +80,8 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 		banditcamp.getFlags().set("isContractLocation", true);
 		this.m.Destination = this.WeakTableRef(banditcamp);
 		this.m.Flags.set("DestinationName", banditcamp.getName());
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
-		this.m.BribeMoney = this.Math.round(400 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult());
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
+		this.m.BribeMoney = this.Math.round(400 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW));
 
 		if (this.Math.rand(1, 100) <= 90)
 		{

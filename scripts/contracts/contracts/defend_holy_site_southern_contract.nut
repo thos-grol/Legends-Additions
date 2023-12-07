@@ -56,7 +56,7 @@ this.defend_holy_site_southern_contract <- this.inherit("scripts/contracts/contr
 
 		this.m.Destination = this.WeakTableRef(target);
 		this.m.Destination.setVisited(true);
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 		local r = this.Math.rand(1, 2);
 
 		if (r == 1)

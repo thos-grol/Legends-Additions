@@ -74,12 +74,12 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 
 	function getResourcesForParty( _settlement, _faction )
 	{
-		if (_settlement == null) return this.Math.rand(100, 200) * this.getReputationToDifficultyLightMult();
+		if (_settlement == null) return this.Math.rand(100, 200);
 		if (_faction.hasTrait(this.Const.FactionTrait.OrientalCityState))
 		{
-			return (this.Math.rand(90, 137) + this.Math.round(0.12 * ::Math.max(1, _settlement.getResources()))) * this.getReputationToDifficultyLightMult();
+			return (this.Math.rand(90, 137) + this.Math.round(0.12 * ::Math.max(1, _settlement.getResources()))) ;
 		}
-		return (this.Math.rand(60, 110) + this.Math.round(0.1 * ::Math.max(1, _settlement.getResources()))) * this.getReputationToDifficultyLightMult();
+		return (this.Math.rand(60, 110) + this.Math.round(0.1 * ::Math.max(1, _settlement.getResources()))) ;
 	}
 
 	function onExecute( _faction )

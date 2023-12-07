@@ -1,15 +1,15 @@
 //remove camping influence, but also nerf heal and repair
 ::Const.Difficulty.HealMult = [
-    0.5,
-    0.5,
-    0.5,
-    0.5,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
 ];
 ::Const.Difficulty.RepairMult = [
-    0.5,
-    0.5,
-    0.5,
-    0.5,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
 ];
 
 ::Const.Contracts.CategoryLimits <- {

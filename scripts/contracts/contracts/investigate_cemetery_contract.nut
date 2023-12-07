@@ -63,7 +63,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
 				break;
 		}
-		this.m.Payment.Pool = pay_amount * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = pay_amount;
 
 		if (this.Math.rand(1, 100) <= 33)
 		{

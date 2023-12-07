@@ -113,7 +113,7 @@ this.legend_barbarian_prisoner_contract <- this.inherit("scripts/contracts/contr
 		local days = this.getDaysRequiredToTravel(distance, this.Const.World.MovementSettings.Speed * 0.6, true);
 		local modrate = this.World.State.getPlayer().getBarterMult();
 		this.m.DifficultyMult = this.Math.rand(145, 175) * 0.01;
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 		this.m.Payment.Completion = 0.75;
 		this.m.Payment.Advance = 0.25;
 		this.m.Flags.set("Distance", distance);

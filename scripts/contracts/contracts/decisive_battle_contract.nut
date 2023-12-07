@@ -59,7 +59,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 		}
 
 		this.m.Flags.set("CommanderName", this.Const.Strings.KnightNames[this.Math.rand(0, this.Const.Strings.KnightNames.len() - 1)]);
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult();
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 		local r = this.Math.rand(1, 2);
 
 		if (r == 1)

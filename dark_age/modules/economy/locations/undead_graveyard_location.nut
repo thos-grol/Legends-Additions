@@ -20,22 +20,14 @@
 
 		if (r == 1)
 		{
-			this.setDefenderSpawnList(::Const.World.Spawn.ZombiesOrZombiesAndGhosts);
+			this.setDefenderSpawnList(::Const.World.Spawn.ZombiesAndGhosts);
 		}
-		else if (r == 2)
+		else
 		{
-			this.setDefenderSpawnList(::Const.World.Spawn.ZombiesOrZombiesAndGhouls);
-		}
-		else if (r == 3)
-		{
-			this.setDefenderSpawnList(::Const.World.Spawn.Ghouls);
-		}
-		else if (r == 4)
-		{
-			this.setDefenderSpawnList(::Const.World.Spawn.Ghosts);
+			this.setDefenderSpawnList(::Const.World.Spawn.Zombies);
 		}
 
-		this.m.Resources = 130;
+		this.m.Resources = 260;
 	}
 
 	o.onSpawned = function()
@@ -49,8 +41,8 @@
 		this.location.onDropLootForPlayer(_lootTable);
 		this.dropMoney(this.Math.rand(1, 200), _lootTable);
 		this.dropTreasure(this.Math.rand(0, 1), [
-			"loot/silver_bowl_item",
-			"loot/signet_ring_item",
+			"loot/bead_necklace_item",
+			"loot/bead_necklace_item",
 			"loot/signet_ring_item"
 		], _lootTable);
 	}

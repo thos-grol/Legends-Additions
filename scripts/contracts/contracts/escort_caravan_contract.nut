@@ -147,7 +147,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 		local days = this.getDaysRequiredToTravel(distance, this.Const.World.MovementSettings.Speed * 0.6, true);
 		local modrate = 10 * this.World.State.getPlayer().getBarterMult();
 
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult() * days;
+		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * days;
 		local r = this.Math.rand(1, 3);
 
 		if (r == 1)
@@ -1163,11 +1163,11 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 
 		if (faction.hasTrait(this.Const.FactionTrait.OrientalCityState))
 		{
-			party = faction.spawnEntity(this.m.Home.getTile(), "Trading Caravan", false, this.Const.World.Spawn.CaravanSouthernEscort, this.m.Home.getResources() * this.Math.rand(10, 25) * 0.01);
+			party = faction.spawnEntity(this.m.Home.getTile(), "Trading Caravan", false, this.Const.World.Spawn.CaravanSouthernEscort, this.m.Home.getResources() * 0.5);
 		}
 		else
 		{
-			party = faction.spawnEntity(this.m.Home.getTile(), "Trading Caravan", false, this.Const.World.Spawn.CaravanEscort, this.m.Home.getResources() * 0.4);
+			party = faction.spawnEntity(this.m.Home.getTile(), "Trading Caravan", false, this.Const.World.Spawn.CaravanEscort, this.m.Home.getResources() * 0.5);
 		}
 
 		party.getSprite("banner").Visible = false;
@@ -1248,7 +1248,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 
 			if (bandits_dist <= goblins_dist && bandits_dist <= orcs_dist && bandits_dist <= barbarians_dist && bandits_dist <= nomads_dist)
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Brigands", false, this.Const.World.Spawn.BanditRaiders, this.Math.rand(80, 100) * this.getDifficultyMult() * this.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Brigands", false, this.Const.World.Spawn.BanditRaiders, this.Math.rand(80, 100) * this.getDifficultyMult() * 2.0);
 				party.setDescription("A rough and tough band of brigands preying on the weak.");
 				party.setFootprintType(this.Const.World.FootprintsType.Brigands);
 				party.getLoot().Money = this.Math.rand(50, 100);
@@ -1259,7 +1259,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 			}
 			else if (goblins_dist <= bandits_dist && goblins_dist <= orcs_dist && goblins_dist <= barbarians_dist && goblins_dist <= nomads_dist)
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).spawnEntity(tile, "Goblin Raiders", false, this.Const.World.Spawn.GoblinRaiders, this.Math.rand(80, 100) * this.getDifficultyMult() * this.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).spawnEntity(tile, "Goblin Raiders", false, this.Const.World.Spawn.GoblinRaiders, this.Math.rand(80, 100) * this.getDifficultyMult() * 2.0);
 				party.setDescription("A band of mischievous goblins, small but cunning and not to be underestimated.");
 				party.setFootprintType(this.Const.World.FootprintsType.Goblins);
 				party.getLoot().ArmorParts = this.Math.rand(0, 10);
@@ -1269,7 +1269,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 			}
 			else if (barbarians_dist <= goblins_dist && barbarians_dist <= bandits_dist && barbarians_dist <= orcs_dist && barbarians_dist <= nomads_dist)
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Barbarians).spawnEntity(tile, "Barbarians", false, this.Const.World.Spawn.Barbarians, this.Math.rand(80, 100) * this.getDifficultyMult() * this.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Barbarians).spawnEntity(tile, "Barbarians", false, this.Const.World.Spawn.Barbarians, this.Math.rand(80, 100) * this.getDifficultyMult() * 2.0);
 				party.setDescription("A warband of barbarian tribals.");
 				party.setFootprintType(this.Const.World.FootprintsType.Barbarians);
 				party.getLoot().Money = this.Math.rand(0, 50);
@@ -1291,7 +1291,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 			}
 			else if (nomads_dist <= barbarians_dist && nomads_dist <= goblins_dist && nomads_dist <= bandits_dist && nomads_dist <= orcs_dist)
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).spawnEntity(tile, "Nomads", false, this.Const.World.Spawn.NomadRaiders, this.Math.rand(80, 100) * this.getDifficultyMult() * this.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).spawnEntity(tile, "Nomads", false, this.Const.World.Spawn.NomadRaiders, this.Math.rand(80, 100) * this.getDifficultyMult() * 2.0);
 				party.setDescription("A band of desert raiders preying on anyone trying to cross the seas of sand.");
 				party.setFootprintType(this.Const.World.FootprintsType.Nomads);
 				party.getLoot().Money = this.Math.rand(50, 200);
@@ -1302,7 +1302,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 			}
 			else
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).spawnEntity(tile, "Orc Marauders", false, this.Const.World.Spawn.OrcRaiders, this.Math.rand(80, 100) * this.getDifficultyMult() * this.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).spawnEntity(tile, "Orc Marauders", false, this.Const.World.Spawn.OrcRaiders, this.Math.rand(80, 100) * this.getDifficultyMult() * 2.0);
 				party.setDescription("A band of menacing orcs, greenskinned and towering any man.");
 				party.setFootprintType(this.Const.World.FootprintsType.Orcs);
 				party.getLoot().ArmorParts = this.Math.rand(0, 25);

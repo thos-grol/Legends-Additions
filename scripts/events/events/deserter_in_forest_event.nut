@@ -9,7 +9,7 @@ this.deserter_in_forest_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 200.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/event_25.png[/img]While trundling through the forest, birds suddenly scatter into the sky, shaking the trees and branches with the very frightful urgency of their leaving. Not a moment later does a figure come barreling through a bush, looking more flash flood than flesh and blood. The frightened human seizes up, this dirty earthen golem, and begs you for a place to hide.%SPEECH_ON%Look, I\'ll be perfectly honest. I\'m a deserter. That\'s that. I didn\'t, I mean, alright I don\'t really have a defense. But look, what are you? Mercenaries? Great! Hide me and I\'ll fight for you to the end of time!%SPEECH_OFF%Halfway through the pleading spiel, you hear dogs barking in the distance. The deserter instinctively hides away into an arboreal cubby, quickly covering over with dirt. The dirt pile nods as if to say you\'ve already come to an agreement.\n\n Bounty hunters come through the tree line, their dogs already sniffing around. Their lieutenant looks around.%SPEECH_ON%Don\'t even try to fool me, sellsword. I know that deserter came this way. Two hundred crowns for the head. Where is the wretch?%SPEECH_OFF%",
+			Text = "[img]gfx/ui/events/event_25.png[/img]While trundling through the forest, birds suddenly scatter into the sky, shaking the trees and branches with the very frightful urgency of their leaving. Not a moment later does a figure come barreling through a bush, looking more flash flood than flesh and blood. The frightened human seizes up, this dirty earthen golem, and begs you for a place to hide.%SPEECH_ON%Look, I\'ll be perfectly honest. I\'m a deserter. That\'s that. I didn\'t, I mean, alright I don\'t really have a defense. But look, what are you? Mercenaries? Great! Hide me and I\'ll fight for you to the end of time!%SPEECH_OFF%Halfway through the pleading spiel, you hear dogs barking in the distance. The deserter instinctively hides away into an arboreal cubby, quickly covering over with dirt. The dirt pile nods as if to say you\'ve already come to an agreement.\n\n Bounty hunters come through the tree line, their dogs already sniffing around. Their lieutenant looks around.%SPEECH_ON%Don\'t even try to fool me, sellsword. I know that deserter came this way. Twenty crowns for the head. Where is the wretch?%SPEECH_OFF%",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -127,7 +127,7 @@ this.deserter_in_forest_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				this.World.Assets.addMoney(15);
+				this.World.Assets.addMoney(20);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",

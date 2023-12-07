@@ -294,6 +294,28 @@
 
 	},
 	{
+		Weight = 0,
+		Name = "Foods",
+		PreferNum = 5,
+		PreferMax = 20,
+		function IsValid( _item, _shopID )
+		{
+			return _item.isItemType(this.Const.Items.ItemType.Food);
+		}
+
+	},
+	{
+		Weight = 0,
+		Name = "Supplies",
+		PreferNum = 3,
+		PreferMax = 10,
+		function IsValid( _item, _shopID )
+		{
+			return _item.isItemType(this.Const.Items.ItemType.Supply);
+		}
+
+	},
+	{
 		Weight = 1,
 		Name = "Weapons",
 		PreferNum = 2,
@@ -332,7 +354,7 @@
 		PreferMax = 10,
 		function IsValid( _item, _shopID )
 		{
-			return _shopID == "building.alchemist";
+			return _shopID == "building.alchemist" || _shopID == "building.kennel";
 		}
 
 	},
@@ -364,149 +386,6 @@
 	this.logWarning("Exporting " + _party.getStashInventory().getItems().len() + " items (" + result.Value + " crowns), focusinng on trading \'" + result.Decision + "\', investing " + finance.Investment + " resources," + " from " + _settlement.getName() + " via a caravan bound for " + _destination.getName() + " town");
 }
 
-::Const.World.Common.WorldEconomy.makeTradingDecision = function( _settlement, _budget )
-{
-	local decisions = this.compileTradingDecision(_settlement, _budget);
-
-	if (decisions.Potential.len() == 0)
-	{
-		return this.fillWithBreads(_settlement, _budget);
-	}
-
-	local name = this.getWeightContainer(decisions.Potential).roll();
-	local result;
-
-	if (name == "FreshlyProduced")
-	{
-		result = this.gatherProduce(_settlement, _budget);
-	}
-	else
-	{
-		result = this.gatherItems(_settlement, this.DecisionID[name], decisions.ItemList, _budget);
-	}
-
-	result.Items.sort(function ( _item1, _item2 )
-	{
-		if (_item1.getValue() > _item2.getValue())
-		{
-			return -1;
-		}
-		else if (_item1.getValue() < _item2.getValue())
-		{
-			return 1;
-		}
-		else
-		{
-			return 0;
-		}
-	});
-	result.Decision <- name;
-	return result;
-}
-
-::Const.World.Common.WorldEconomy.compileTradingDecision = function( _settlement, _budget )
-{
-	local result = {};
-	result.Potential <- [];
-	result.ItemList <- [];
-
-	local acceptableBudget = ::Math.round(_budget * (1.0 + this.OverBudgetPct));
-	local tooExpensiveLimit = ::Math.round(_budget * this.ExpensiveLimitMult);
-
-	for( local i = 0; i < this.DecisionID.COUNT; i = ++i )
-	{
-		result.ItemList.push({
-			Items = [],
-			Average = 0,
-			Total = 0
-		});
-	}
-
-	foreach( building in _settlement.getBuildings() )
-	{
-		local stash = building.getStash();
-		local shopID = building.getID();
-
-		if (stash == null)
-		{
-			continue;
-		}
-
-		foreach( _item in stash.getItems() )
-		{
-			if (_item == null)
-			{
-				continue;
-			}
-
-			foreach( d in this.Decisions )
-			{
-				if (!d.IsValid(_item, shopID))
-				{
-					continue;
-				}
-
-				local v = _item.getValue();
-
-				if (v >= tooExpensiveLimit)
-				{
-					continue;
-				}
-
-				result.ItemList[this.DecisionID[d.Name]].Total += v;
-				result.ItemList[this.DecisionID[d.Name]].Items.push({
-					Item = _item,
-					Stash = stash
-				});
-			}
-		}
-	}
-
-	foreach( i, list in result.ItemList )
-	{
-		local num = list.Items.len();
-
-		if (num == 0)
-		{
-			continue;
-		}
-
-		list.Average = ::Math.floor(list.Total / num);
-		local a = ::Math.floor(acceptableBudget / list.Average);
-
-		if (a <= 0)
-		{
-			continue;
-		}
-
-		if (a < this.Decisions[i].PreferNum)
-		{
-			for( ; this.Decisions[i].PreferNum - 2 <= 0;  )
-			{
-			}
-
-			for( ; ::Math.rand(a, this.Decisions[i].PreferNum) > this.Decisions[i].PreferNum + ::Math.floor((a - this.Decisions[i].PreferNum) / 2);  )
-			{
-			}
-		}
-
-		result.Potential.push([
-			this.Decisions[i].Weight,
-			this.Decisions[i].Name
-		]);
-	}
-
-	if (_settlement.getProduce().len() > 0)
-	{
-		result.Potential.push([
-			1,
-			"FreshlyProduced"
-		]);
-	}
-
-	return result;
-}
-
 ::Const.World.Common.WorldEconomy.fillWithBreads = function( _settlement, _budget, _target = null, _isFull = false )
 {
 	local max = 15;
@@ -524,8 +403,7 @@
 		max = max - _target.Items.len();
 	}
 
-	local amount = ::Math.rand(2, 6);
-
+	local amount = ::Math.rand(1, 4);
 	for( local i = 0; i < amount; i = ++i )
 	{
 		_target.Items.push(::new("scripts/items/trade/iron_ingots_item"));
