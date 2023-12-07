@@ -814,6 +814,7 @@
 			if (!skill.isType(this.Const.SkillType.Perk)) continue;
 			if (skill.isType(this.Const.SkillType.Racial)) continue;
 			if ("NoRefund" in skill.m) continue;
+			if ("NoRefundPerk" in skill.m) continue;
 
 			perks = perks + 1;
 		}

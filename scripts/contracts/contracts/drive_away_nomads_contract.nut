@@ -29,19 +29,19 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 		{
 			case "location.nomad_tents": //75
 				pay_amount = 180;
-				this.m.DifficultyMult = 1.0;
+				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
 				break;
 			case "location.nomad_ruins": //150
 				pay_amount = 150;
-				this.m.DifficultyMult = 1.0;
+				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
 				break;
 			case "location.nomad_hidden_camp": //180
 				pay_amount = 70;
-				this.m.DifficultyMult = 0.8;
+				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 				break;
 			case "location.nomad_tent_city": //300
 				pay_amount = 300;
-				this.m.DifficultyMult = 2.0;
+				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "B");
 				break;
 		}
 
@@ -91,11 +91,15 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 				local r = this.Math.rand(1, 100);
 
-				if (r <= 25)
+				if (r <= 15)
 				{
-					this.Flags.set("IsTreasure", true);
-					this.Contract.m.Destination.clearTroops();
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NomadDefenders, 150 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					switch(this.m.Destination.m.TypeID)
+					{
+						case "location.nomad_tents": //75
+						case "location.nomad_ruins": //150
+							this.Flags.set("IsTreasure", true);
+							break;
+					}
 				}
 				else if (r <= 35)
 				{
@@ -103,13 +107,19 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 				}
 				else if (r <= 45)
 				{
-					this.Flags.set("IsNecromancer", true);
-					this.Contract.m.Destination.clearTroops();
-					local zombies = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies);
-					this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
-					this.Contract.m.Destination.setFaction(zombies.getID());
-					zombies.addSettlement(this.Contract.m.Destination.get(), false);
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NecromancerSouthern, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()* 1.5);
+					switch(this.m.Destination.m.TypeID)
+					{
+						case "location.nomad_tents": //75
+						case "location.nomad_hidden_camp": //150
+							this.Flags.set("IsNecromancer", true);
+							this.Contract.m.Destination.clearTroops();
+							local zombies = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies);
+							this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
+							this.Contract.m.Destination.setFaction(zombies.getID());
+							zombies.addSettlement(this.Contract.m.Destination.get(), false);
+							this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NecromancerSouthern, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * 2.0);
+							break;
+					}
 				}
 				else if (r <= 50)
 				{
@@ -332,7 +342,8 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						this.Flags.set("IsTreasure", false);
 						this.Contract.m.Destination.clearTroops();
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NomadDefenders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						//TODO: test appropriate strength
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NomadDefenders, 110 * 1.25);
 						this.Contract.getActiveState().onDestinationAttacked(this.Contract.m.Destination);
 						return 0;
 					}
@@ -367,21 +378,9 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 
 					switch(r)
 					{
-					case 1:
-						item = this.new("scripts/items/loot/ancient_gold_coins_item");
-						break;
-
-					case 2:
-						item = this.new("scripts/items/loot/silverware_item");
-						break;
-
-					case 3:
-						item = this.new("scripts/items/loot/jade_broche_item");
-						break;
-
-					case 4:
-						item = this.new("scripts/items/loot/white_pearls_item");
-						break;
+						case 1:
+							item = this.new("scripts/items/loot/signet_ring_item");
+							break;
 					}
 
 					this.World.Assets.getStash().add(item);

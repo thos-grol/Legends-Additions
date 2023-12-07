@@ -12,6 +12,8 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 		local orig = this.getDifficultyMult();
 		this.m.DifficultyMult = ::Math.rand(140, 200) * 0.01;
+
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "E");
 	}
 
 	function onImportIntro()

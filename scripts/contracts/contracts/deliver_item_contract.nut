@@ -12,6 +12,8 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Name = "Armed Courier";
 		this.m.Description = "There is valuable cargo that local lords want transported so they are hiring mercenaries to transport it";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
+
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "F");
 	}
 
 	function onImportIntro()
@@ -150,31 +152,21 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 				local r = this.Math.rand(1, 100);
 
-				if (r <= 10)
+				if (r <= 5)
 				{
-					if (this.Contract.getDifficultyMult() >= 0.95 && this.World.Assets.getBusinessReputation() > 750 && (!this.World.Ambitions.hasActiveAmbition() || this.World.Ambitions.getActiveAmbition().getID() != "ambition.defeat_mercenaries"))
+					this.Flags.set("IsEvilArtifact", true);
+					if (!this.World.Flags.get("IsCursedCrystalSkull") && this.Math.rand(1, 100) <= 50)
 					{
-						this.Flags.set("IsMercenaries", true);
+						this.Flags.set("IsCursedCrystalSkull", true);
 					}
 				}
 				else if (r <= 15)
 				{
-					if (this.World.Assets.getBusinessReputation() > 700)
-					{
-						this.Flags.set("IsEvilArtifact", true);
-
-						if (!this.World.Flags.get("IsCursedCrystalSkull") && this.Math.rand(1, 100) <= 50)
-						{
-							this.Flags.set("IsCursedCrystalSkull", true);
-						}
-					}
+					this.Flags.set("IsMercenaries", true);
 				}
-				else if (r <= 20)
+				else if (r <= 35)
 				{
-					if (this.World.Assets.getBusinessReputation() > 500)
-					{
-						this.Flags.set("IsThieves", true);
-					}
+					this.Flags.set("IsThieves", true);
 				}
 
 				this.Contract.setScreen("Overview");
@@ -268,7 +260,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Location.setResources(0);
 						this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).addSettlement(this.Contract.m.Location.get(), false);
 						this.Contract.m.Location.onSpawned();
-						this.Contract.addUnitsToEntity(this.Contract.m.Location, this.Const.World.Spawn.BanditDefenders, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(this.Contract.m.Location, this.Const.World.Spawn.BanditRoamers, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						this.Const.World.Common.addFootprintsFromTo(this.World.State.getPlayer().getTile(), tile, this.Const.GenericFootprints, this.Const.World.FootprintsType.Brigands, 0.75);
 						this.Flags.set("IsStolenByThieves", true);
 						this.Contract.setScreen("Thieves1");
@@ -436,7 +428,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = this.Const.Music.NobleTracks;
 						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Mercenaries, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.MercenariesLow, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

@@ -35,7 +35,7 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 		this.m.IsIgnoredAsAOO = true;
 		this.m.IsShowingProjectile = false;
 		this.m.IsDoingForwardMove = false;
-		this.m.DirectDamageMult = 0.4;
+		this.m.DirectDamageMult = 1.0;
 		this.m.ActionPointCost = 6;
 		this.m.FatigueCost = 0;
 		this.m.MinRange = 2;
@@ -99,7 +99,7 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 		} catch(exception){}
 	}
 
-	
+
 
 	function onUse( _user, _targetTile )
 	{
@@ -155,7 +155,7 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 				}
 			}.bindenv(this), this);
 
-			
+
 
 			this.Time.scheduleEvent(this.TimeUnit.Virtual, i * 300, function ( _skill )
 			{
@@ -167,7 +167,7 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 					_skill.m.IsDoingAttackMove = true;
 					_skill.getContainer().setBusy(false);
 				}catch(exceptioon){}
-				
+
 			}.bindenv(this), this);
 		}
 		return true;
@@ -182,6 +182,7 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 			_properties.DamageRegularMin = 5;
 			_properties.DamageRegularMax = 15;
 			_properties.IsIgnoringArmorOnAttack = true;
+			_properties.DamageArmorMult *= 0.0;
 		}
 	}
 

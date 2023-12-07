@@ -1,4 +1,3 @@
-::Const.Contracts.ContractCategoryMap.return_item_contract2 <- ::Const.Contracts.Categories.Economy;
 this.return_item_action2 <- this.inherit("scripts/factions/faction_action", {
 	m = {},
 	function create()

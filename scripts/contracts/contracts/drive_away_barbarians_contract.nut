@@ -35,15 +35,15 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 		{
 			case "location.barbarian_camp": //70
 				pay_amount = 75;
-				this.m.DifficultyMult = 0.8;
+				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 				break;
 			case "location.barbarian_sanctuary": //180
 				pay_amount = 180;
-				this.m.DifficultyMult = 1.0;
+				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
 				break;
 			case "location.barbarian_shelter": //325
 				pay_amount = 325;
-				this.m.DifficultyMult = 2.0;
+				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "B");
 				break;
 		}
 
@@ -99,6 +99,7 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 				local r = this.Math.rand(1, 100);
+				//TODO: determine events
 
 				if (r <= 20)
 				{

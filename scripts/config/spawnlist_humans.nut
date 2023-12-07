@@ -157,6 +157,38 @@ gt.Const.World.Spawn.Mercenaries <- {
 		}
 	]
 };
+
+gt.Const.World.Spawn.MercenariesLow <- {
+	Name = "Second-Rate Mercenaries",
+	IsDynamic = true,
+	MovementSpeedMult = 1.0,
+	VisibilityMult = 1.0,
+	VisionMult = 1.0,
+	Body = "figure_bandit_03",
+	MaxR = 690,
+	MinR = 97,
+	Troops = [
+		{
+			Weight = 75,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.MercenaryLOW,
+					Cost = 25
+				}
+			]
+		},
+		{
+			Weight = 15,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.MercenaryRanged,
+					Cost = 25
+				}
+			]
+		}
+	]
+};
+
 gt.Const.World.Spawn.Militia <- {
 	Name = "Militia",
 	IsDynamic = true,

@@ -5,13 +5,21 @@
 ::MSU.Log.printData( scripts );
 
 //TODO: new origins - cultists
+//TODO: vampire overhaul and infected contracts
+    //TODO: FEATURE Necrosavant -> Grail, Knock | necrosavant -> dead apostle
+    //Modes:
+        //Scummy - tp away close to party, summon weakest bro to it
+        //Guerilla - tp and strike, tp and strike
+        //Vampire - Casts blood magic, charms enemies
+    //All attacks cause bleed, and heal damage caused from attacks including bleed.
+    //Hexe
 
 //TODO: test crafting
 //TODO: sounds so loud
 //TODO: rework skeleton units
 //TODO: rework skeleton priest //drops miasma tome
 
-
+//TODO: change barbarian ai
 
 
 //FEATURE_5: loot overhaul -> camps and enemies
@@ -20,13 +28,7 @@
 
 
 
-//TODO: FEATURE Necrosavant -> Grail, Knock
-    //Modes:
-        //Scummy - tp away close to party, summon weakest bro to it
-        //Guerilla - tp and strike, tp and strike
-        //Vampire - Casts blood magic, charms enemies
-    //All attacks cause bleed, and heal damage caused from attacks including bleed.
-    //Hexe
+
 
 
 //FIXME: SCAVENGE witcher mod for inspirations
@@ -119,8 +121,6 @@
 
 	//Daze
 	//Stun
-
-Economy Overhaul
 
 //FEATURE_8: Redback Spider -> Lantern (Fate, Wisdom) - Glassfinger toxin
 //FEATURE_8: Lindwurm -> Dragon -> Dream, Edge (Poison)

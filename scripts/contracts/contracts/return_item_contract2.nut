@@ -7,10 +7,12 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 	function create()
 	{
 		this.contract.create();
-		this.m.Type = "contract.return_item";
+		this.m.Type = "contract.return_item2";
 		this.m.Name = "Return Item";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 		this.m.DifficultyMult = this.Math.rand(255, 400) * 0.01;
+
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 	}
 
 	function onImportIntro()

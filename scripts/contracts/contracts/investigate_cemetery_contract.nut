@@ -108,7 +108,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
 					this.Contract.m.Destination.setFaction(bandits.getID());
 					bandits.addSettlement(this.Contract.m.Destination.get(), false);
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditRaiders, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditRoamers, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				}
 				else if (r <= 40)
 				{
@@ -118,7 +118,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
 					this.Contract.m.Destination.setFaction(bandits.getID());
 					bandits.addSettlement(this.Contract.m.Destination.get(), false);
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditRaiders, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditRoamers, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				}
 				else
 				{

@@ -17,6 +17,9 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Name = "Rebuilding Effort";
 		this.m.Description = "Local lords have a spare work party and want to restore the nearby ruins. Clear the location out and escort the work party to the site.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
+		this.m.DifficultyMult = ::Math.rand(140, 200) * 0.01;
+
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "E");
 	}
 
 	function onImportIntro()
@@ -66,17 +69,13 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 				local r = this.Math.rand(1, 100);
 
-				if (r <= 15)
+				if (r <= 10)
 				{
 					this.Flags.set("IsEmpty", true);
 				}
-				else if (r <= 30)
+				else if (r <= 25)
 				{
 					this.Flags.set("IsRefugees", true);
-				}
-				else if (r <= 60)
-				{
-					this.Flags.set("IsSpiders", true);
 				}
 				else
 				{
@@ -357,7 +356,7 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 						p.LocationTemplate.Template[0] = "tactical.human_camp";
 						p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.None;
 						p.LocationTemplate.CutDownTrees = true;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.BanditScouts, 90 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.BanditRoamers, 90 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

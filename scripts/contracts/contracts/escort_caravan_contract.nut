@@ -14,6 +14,9 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Description = "Caravans can always use more guards and the local leader of a caravan is still asking around for more guards.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 		this.m.MakeAllSpawnsAttackableByAIOnceDiscovered = true;
+		this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
+
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 	}
 
 	function onImportIntro()
@@ -144,19 +147,6 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 		local days = this.getDaysRequiredToTravel(distance, this.Const.World.MovementSettings.Speed * 0.6, true);
 		local modrate = 10 * this.World.State.getPlayer().getBarterMult();
 
-		if (days >= 5)
-		{
-			this.m.DifficultyMult = this.Math.rand(115, 175) * 0.01;
-		}
-		else if (days >= 2)
-		{
-			this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
-		}
-		else
-		{
-			this.m.DifficultyMult = this.Math.rand(100, 125) * 0.01;
-		}
-
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * this.getReputationToPaymentMult() * days;
 		local r = this.Math.rand(1, 3);
 
@@ -259,7 +249,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 						this.Flags.set("IsPrisoner", true);
 					}
 				}
-				else if (this.Contract.getDifficultyMult() < 0.95 || this.World.Assets.getBusinessReputation() <= 500 || this.Contract.getDifficultyMult() <= 1.1 && this.Math.rand(1, 100) <= 20)
+				else if (this.Math.rand(1, 100) <= 50)
 				{
 					this.Flags.set("IsEnoughCombat", true);
 				}
@@ -877,7 +867,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.World.FactionManager.getFaction(this.Contract.m.NobleHouseID).addPlayerRelation(this.Const.World.Assets.RelationFavor, "Freed an imprisoned member of the house");
-						this.World.Assets.addMoney(3000);
+						this.World.Assets.addMoney(1000);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -889,7 +879,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You are rewarded with [color=" + this.Const.UI.Color.PositiveValue + "]3000[/color] Crowns"
+					text = "You are rewarded with [color=" + this.Const.UI.Color.PositiveValue + "]1000[/color] Crowns"
 				});
 				this.List.push({
 					id = 10,
@@ -1264,30 +1254,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				party.getLoot().Money = this.Math.rand(50, 100);
 				party.getLoot().ArmorParts = this.Math.rand(0, 10);
 				party.getLoot().Medicine = this.Math.rand(0, 2);
-				party.getLoot().Ammo = this.Math.rand(0, 20);
-				local r = this.Math.rand(1, 6);
-
-				if (r == 1)
-				{
-					party.addToInventory("supplies/bread_item");
-				}
-				else if (r == 2)
-				{
-					party.addToInventory("supplies/roots_and_berries_item");
-				}
-				else if (r == 3)
-				{
-					party.addToInventory("supplies/dried_fruits_item");
-				}
-				else if (r == 4)
-				{
-					party.addToInventory("supplies/ground_grains_item");
-				}
-				else if (r == 5)
-				{
-					party.addToInventory("supplies/pickled_mushrooms_item");
-				}
-
+				party.getLoot().Ammo = this.Math.rand(0, 10);
 				origin = nearest_bandits;
 			}
 			else if (goblins_dist <= bandits_dist && goblins_dist <= orcs_dist && goblins_dist <= barbarians_dist && goblins_dist <= nomads_dist)
@@ -1297,22 +1264,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				party.setFootprintType(this.Const.World.FootprintsType.Goblins);
 				party.getLoot().ArmorParts = this.Math.rand(0, 10);
 				party.getLoot().Medicine = this.Math.rand(0, 2);
-				party.getLoot().Ammo = this.Math.rand(0, 30);
-				local r = this.Math.rand(1, 4);
-
-				if (r == 1)
-				{
-					party.addToInventory("supplies/strange_meat_item");
-				}
-				else if (r == 2)
-				{
-					party.addToInventory("supplies/roots_and_berries_item");
-				}
-				else if (r == 3)
-				{
-					party.addToInventory("supplies/pickled_mushrooms_item");
-				}
-
+				party.getLoot().Ammo = this.Math.rand(0, 15);
 				origin = nearest_goblins;
 			}
 			else if (barbarians_dist <= goblins_dist && barbarians_dist <= bandits_dist && barbarians_dist <= orcs_dist && barbarians_dist <= nomads_dist)
@@ -1323,36 +1275,17 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				party.getLoot().Money = this.Math.rand(0, 50);
 				party.getLoot().ArmorParts = this.Math.rand(0, 10);
 				party.getLoot().Medicine = this.Math.rand(0, 5);
-				party.getLoot().Ammo = this.Math.rand(0, 30);
+				party.getLoot().Ammo = this.Math.rand(0, 10);
 
-				if (this.Math.rand(1, 100) <= 50)
-				{
-					party.addToInventory("loot/bone_figurines_item");
-				}
+				// if (this.Math.rand(1, 100) <= 50)
+				// {
+				// 	party.addToInventory("loot/bone_figurines_item");
+				// }
 
-				if (this.Math.rand(1, 100) <= 50)
-				{
-					party.addToInventory("loot/bead_necklace_item");
-				}
-
-				local r = this.Math.rand(2, 5);
-
-				if (r == 2)
-				{
-					party.addToInventory("supplies/roots_and_berries_item");
-				}
-				else if (r == 3)
-				{
-					party.addToInventory("supplies/dried_fruits_item");
-				}
-				else if (r == 4)
-				{
-					party.addToInventory("supplies/ground_grains_item");
-				}
-				else if (r == 5)
-				{
-					party.addToInventory("supplies/pickled_mushrooms_item");
-				}
+				// if (this.Math.rand(1, 100) <= 50)
+				// {
+				// 	party.addToInventory("loot/bead_necklace_item");
+				// }
 
 				origin = nearest_barbarians;
 			}
@@ -1364,26 +1297,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				party.getLoot().Money = this.Math.rand(50, 200);
 				party.getLoot().ArmorParts = this.Math.rand(0, 10);
 				party.getLoot().Medicine = this.Math.rand(0, 2);
-				party.getLoot().Ammo = this.Math.rand(0, 20);
-				local r = this.Math.rand(1, 4);
-
-				if (r == 1)
-				{
-					party.addToInventory("supplies/bread_item");
-				}
-				else if (r == 2)
-				{
-					party.addToInventory("supplies/dates_item");
-				}
-				else if (r == 3)
-				{
-					party.addToInventory("supplies/rice_item");
-				}
-				else if (r == 4)
-				{
-					party.addToInventory("supplies/dried_lamb_item");
-				}
-
+				party.getLoot().Ammo = this.Math.rand(0, 10);
 				origin = nearest_nomads;
 			}
 			else
@@ -1392,8 +1306,6 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				party.setDescription("A band of menacing orcs, greenskinned and towering any man.");
 				party.setFootprintType(this.Const.World.FootprintsType.Orcs);
 				party.getLoot().ArmorParts = this.Math.rand(0, 25);
-				party.getLoot().Ammo = this.Math.rand(0, 10);
-				party.addToInventory("supplies/strange_meat_item");
 				origin = nearest_orcs;
 			}
 

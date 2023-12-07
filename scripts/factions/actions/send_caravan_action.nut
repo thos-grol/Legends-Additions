@@ -69,26 +69,27 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 
 	function getReputationToDifficultyLightMult()
 	{
-		return this.faction_action.getReputationToDifficultyLightMult() * (this.World.FactionManager.isCivilWar() ? 1.1 : 1.0);
+		return 2.0 * (this.World.FactionManager.isCivilWar() ? 1.1 : 1.0); //TODO: test caravan strength
 	}
 
 	function getResourcesForParty( _settlement, _faction )
 	{
-		if (_settlement == null)
-		{
-			return this.Math.rand(100, 200) * this.getReputationToDifficultyLightMult();
-		}
-
+		if (_settlement == null) return this.Math.rand(100, 200) * this.getReputationToDifficultyLightMult();
 		if (_faction.hasTrait(this.Const.FactionTrait.OrientalCityState))
 		{
 			return (this.Math.rand(90, 137) + this.Math.round(0.12 * ::Math.max(1, _settlement.getResources()))) * this.getReputationToDifficultyLightMult();
 		}
-
 		return (this.Math.rand(60, 110) + this.Math.round(0.1 * ::Math.max(1, _settlement.getResources()))) * this.getReputationToDifficultyLightMult();
 	}
 
 	function onExecute( _faction )
 	{
+		//TODO: vary caravan defender spawns ie. some mercs, some elites sometimes
+			//roll protection:
+			//None
+			//Novice Mercs
+			//Mercs
+			//Elite - for supply caravans (supply caravans carry one named item)
 		local party = _faction.spawnEntity(this.m.Start.getTile(), "Trading Caravan", false, this.pickSpawnList(this.m.Start, _faction), this.getResourcesForParty(this.m.Start, _faction));
 		party.getSprite("banner").Visible = false;
 		party.getSprite("base").Visible = false;
@@ -154,31 +155,14 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 
 		if (this.Math.rand(1, 2) <= 1)
 		{
-			_party.getLoot().Ammo = this.Math.rand(0, 25);
+			_party.getLoot().Ammo = this.Math.rand(0, 10);
 		}
 
-		_party.getLoot().Money = this.Math.rand(0, 50);
+		_party.getLoot().Money = this.Math.rand(25, 75);
 	}
 
 	function addToPartyInventory( _party )
 	{
-		switch(::Math.rand(1, 4))
-		{
-		case 1:
-			_party.addToInventory("supplies/bread_item");
-			break;
-
-		case 2:
-			_party.addToInventory("supplies/roots_and_berries_item");
-			break;
-
-		case 3:
-			_party.addToInventory("supplies/dried_fruits_item");
-			break;
-
-		default:
-			_party.addToInventory("supplies/ground_grains_item");
-		}
 	}
 
 	function afterSpawnCaravan( _party )

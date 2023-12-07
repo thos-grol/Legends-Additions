@@ -1,4 +1,22 @@
 CHANGELOG
+1.09
+
+bugs
+- fixed bug with adaptive
+- tried to fix bug where zombies auto-reanimated as flesh abominations. they can still be raised that way by necros
+
+enemies
+- negative energy hand now ignores armor instead of damaging it
+- tried to stop normal zombies from resurrecting as flesh abominations
+- banditraiders spawn now only contains raiders+ - in line with idea of unscaling world
+
+contracts
+- disabled deliver money because it was redundant with deliver item
+- disabled find location contract
+- reorganized all contracts under new difficulty system
+    - all contracts now have difficulty tiers and pay based on that tier
+    - all contracts strength are now hardcapped to their tier
+
 1.08
 
 experimental

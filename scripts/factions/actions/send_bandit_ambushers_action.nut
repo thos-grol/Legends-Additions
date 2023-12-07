@@ -127,29 +127,7 @@ this.send_bandit_ambushers_action <- this.inherit("scripts/factions/faction_acti
 		party.getLoot().Money = this.Math.rand(0, 50);
 		party.getLoot().ArmorParts = this.Math.rand(0, 10);
 		party.getLoot().Medicine = this.Math.rand(0, 2);
-		party.getLoot().Ammo = this.Math.rand(0, 20);
-		local r = this.Math.rand(1, 6);
-
-		if (r == 1)
-		{
-			party.addToInventory("supplies/bread_item");
-		}
-		else if (r == 2)
-		{
-			party.addToInventory("supplies/roots_and_berries_item");
-		}
-		else if (r == 3)
-		{
-			party.addToInventory("supplies/dried_fruits_item");
-		}
-		else if (r == 4)
-		{
-			party.addToInventory("supplies/ground_grains_item");
-		}
-		else if (r == 5)
-		{
-			party.addToInventory("supplies/pickled_mushrooms_item");
-		}
+		party.getLoot().Ammo = this.Math.rand(0, 10);
 
 		local c = party.getController();
 		local ambush = this.new("scripts/ai/world/orders/ambush_order");
