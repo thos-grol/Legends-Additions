@@ -11,7 +11,7 @@ this.surgeon_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Effects = [
 			"Unlocks anatomist events",
 			"5% chance to extract the divine source from monsters as an extraordinary sequence",
-			"+200% heal speed (Base 50%, so about 100%)",
+			"+200% heal speed (Base 75%, so about 150%)",
 			"Every man without a permanent injury is guaranteed to survive an otherwise fatal blow",
 			"Every injury takes one less day to heal",
 		];

@@ -1,6 +1,14 @@
 CHANGELOG
 1.09
 
+experimental
+- disabled deliver money because it was redundant with deliver item
+- disabled find location contract
+- reorganized all contracts under new difficulty system
+    - all contracts now have difficulty tiers and pay based on that tier
+    - all contracts strength are now hardcapped to their tier - if there are discrepencies notify me about risk vs reward
+- changed caravan compositions. made caravans more lucrative
+
 bugs
 - fixed bug with adaptive
 - tried to fix bug where zombies auto-reanimated as flesh abominations. they can still be raised that way by necros
@@ -12,13 +20,6 @@ enemies
 - tried to stop normal zombies from resurrecting as flesh abominations
 - banditraiders spawn now only contains raiders+ - in line with idea of unscaling world
 
-contracts
-- disabled deliver money because it was redundant with deliver item
-- disabled find location contract
-- reorganized all contracts under new difficulty system
-    - all contracts now have difficulty tiers and pay based on that tier
-    - all contracts strength are now hardcapped to their tier
-    
 1.08
 
 experimental
