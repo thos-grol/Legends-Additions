@@ -1,4 +1,9 @@
 CHANGELOG
+1.09
+bugs
+- fixed bug with ghost racial
+- ai flee sometimes caused crash, put try catch so enemies wont flee if a crash would have happened
+
 1.08
 
 experimental

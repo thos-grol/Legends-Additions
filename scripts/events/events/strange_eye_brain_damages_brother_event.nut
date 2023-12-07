@@ -33,7 +33,6 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 					Threshold = 0.25,
 					Script = "injury_permanent/brain_damage_injury"
 				}]);
-				::LA.addPerk(_event.m.Addict, ::Const.Perks.PerkDefs.EyesOnTheInside, 3);
 				
 				this.List.push({
 					id = 10,

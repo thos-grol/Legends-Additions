@@ -42,15 +42,6 @@
         [
         	"scripts/items/weapons/legend_halberd"
         ],
-        [
-        	"scripts/items/weapons/legend_military_voulge"
-        ],
-        [
-        	"scripts/items/weapons/fighting_axe"
-        ],
-        [
-        	"scripts/items/weapons/morning_star"
-        ]
 	],
 	Builds = {},
 	BuildsChance = 0
