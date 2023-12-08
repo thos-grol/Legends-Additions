@@ -4,17 +4,6 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
-//TODO: enemy overhaul - cultists
-    //cultist rabble
-        //44% chance to have pain ritual
-    //cultist priest
-        //eyes on the inside
-    //cultist knight
-        //compassion ritual
-    //cultist chosen
-        //compassion ritual
-        //eldritch blast
-
 //TODO: vampire overhaul and infected contracts
     //TODO: FEATURE Necrosavant -> Grail, Knock | necrosavant -> dead apostle
     //Modes:

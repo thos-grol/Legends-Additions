@@ -7,7 +7,7 @@
 	Bravery = 60,
 	Stamina = 96,
 	MeleeSkill = 65,
-	RangedSkill = 40,
+	RangedSkill = 60,
 	MeleeDefense = 10,
 	RangedDefense = 10,
 	Initiative = 105,
@@ -25,7 +25,7 @@
     Pattern = [
         ["scripts/skills/perks/perk_legend_recuperation"],
         ["scripts/skills/perks/perk_legend_specialist_cult_hood"],
-        ["W", 3],
+        ["scripts/skills/perks/perk_legend_wind_reader"],
         ["W", 4],
         ["D", 6],
         ["scripts/skills/perks/perk_legend_peaceful"], //4 - 1
@@ -35,7 +35,7 @@
     ],
 	LevelUps = [
 		["Resolve", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
+		["Ranged Skill", 9, 3, 3],
 		["Melee Defense", 9, 3, 3],
 	],
     Trait = [],

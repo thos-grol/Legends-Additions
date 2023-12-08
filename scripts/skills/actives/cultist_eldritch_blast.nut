@@ -391,6 +391,12 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_cultist_eldritch_blast"));
 			agent.finalizeBehaviors();
 		}
+
+		if (agent.findBehavior(::Const.AI.Behavior.ID.EngageRanged) == null)
+		{
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_engage_ranged"));
+			agent.finalizeBehaviors();
+		}
 	}
 });
 

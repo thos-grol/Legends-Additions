@@ -150,6 +150,14 @@
 
 	}
 
+    local addDefaultStatusSprites = o.addDefaultStatusSprites;
+	o.addDefaultStatusSprites = function()
+	{
+		addDefaultStatusSprites();
+		local compassion = this.addSprite("status_compassion");
+		compassion.Visible = false;
+	}
+
     o.drop_loot <- function(_tile){}
 });
 
