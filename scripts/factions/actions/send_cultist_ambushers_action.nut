@@ -1,9 +1,11 @@
-this.send_bandit_roamers_action <- this.inherit("scripts/factions/faction_action", {
-	m = {},
+this.send_cultist_ambushers_action <- this.inherit("scripts/factions/faction_action", {
+	m = {
+		timeBetweenSpawnsPerSettlement = 150
+	},
 	function create()
 	{
-		this.m.ID = "send_bandit_roamers_action";
-		this.m.Cooldown = 45.0;
+		this.m.ID = "send_cultist_ambushers_action";
+		this.m.Cooldown = 30.0;
 		this.m.IsSettlementsRequired = true;
 		this.faction_action.create();
 	}
@@ -12,26 +14,26 @@ this.send_bandit_roamers_action <- this.inherit("scripts/factions/faction_action
 	{
 		local settlements = _faction.getSettlements();
 
-		if (settlements.len() <= 6)
+		if (settlements.len() < 7)
 		{
 			return;
 		}
 
 		if (this.World.FactionManager.isCivilWar())
 		{
-			if (_faction.getUnits().len() >= 6)
+			if (_faction.getUnits().len() >= 4)
 			{
 				return;
 			}
 		}
 		else if (this.World.FactionManager.isGreaterEvil())
 		{
-			if (_faction.getUnits().len() >= 3)
+			if (_faction.getUnits().len() >= 2)
 			{
 				return;
 			}
 		}
-		else if (_faction.getUnits().len() >= 5)
+		else if (_faction.getUnits().len() >= 3)
 		{
 			return;
 		}
@@ -40,7 +42,12 @@ this.send_bandit_roamers_action <- this.inherit("scripts/factions/faction_action
 
 		foreach( s in _faction.getSettlements() )
 		{
-			if (s.getLastSpawnTime() + 300.0 > this.Time.getVirtualTimeF())
+			if (s.getResources() == 0)
+			{
+				continue;
+			}
+
+			if (s.getLastSpawnTime() + this.m.timeBetweenSpawnsPerSettlement > this.Time.getVirtualTimeF())
 			{
 				continue;
 			}
@@ -54,7 +61,7 @@ this.send_bandit_roamers_action <- this.inherit("scripts/factions/faction_action
 			return;
 		}
 
-		this.m.Score = 5;
+		this.m.Score = 10;
 	}
 
 	function onClear()
@@ -67,7 +74,12 @@ this.send_bandit_roamers_action <- this.inherit("scripts/factions/faction_action
 
 		foreach( s in _faction.getSettlements() )
 		{
-			if (s.getLastSpawnTime() + 300.0 > this.Time.getVirtualTimeF() || s.getFlags().get("isContractLocation"))
+			if (s.getResources() == 0)
+			{
+				continue;
+			}
+
+			if (s.getLastSpawnTime() + this.m.timeBetweenSpawnsPerSettlement > this.Time.getVirtualTimeF() || s.getFlags().get("isContractLocation"))
 			{
 				continue;
 			}
@@ -87,36 +99,41 @@ this.send_bandit_roamers_action <- this.inherit("scripts/factions/faction_action
 
 		local settlement = this.pickWeightedRandom(settlements);
 		settlement.setLastSpawnTimeToNow();
-		local rand = this.Math.rand(60, 110);
+		local mult = this.World.FactionManager.isCivilWar() ? 1.1 : 1.0;
+
+		if (this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
+		{
+			if (this.World.FactionManager.isCivilWar())
+			{
+			}
+			else
+			{
+				local mult = 1.0;
+			}
+		}
+
 		local distanceToNextSettlement = this.getDistanceToSettlements(settlement.getTile());
 
 		if (::Legends.Mod.ModSettings.getSetting("DistanceScaling").getValue() && distanceToNextSettlement > 14)
 		{
-			rand = rand * (distanceToNextSettlement / 14.0);
+			mult = mult * (distanceToNextSettlement / 14);
 		}
 
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Brigand Hunters", false, this.Const.World.Spawn.BanditRoamers, this.Math.min(settlement.getResources(), rand));
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Cultists", false, this.Const.World.Spawn.CultistRaiders, this.Math.rand(75, 120) * mult);
 		party.getSprite("banner").setBrush(settlement.getBanner());
-		party.setDescription("A rough and tough band of brigands out to hunt for food.");
+		party.setDescription("A flock of cultists preying on the everyone.");
 		party.setFootprintType(this.Const.World.FootprintsType.Brigands);
 		party.getFlags().set("IsRandomlySpawned", true);
 		party.getLoot().Money = this.Math.rand(0, 50);
 		party.getLoot().ArmorParts = this.Math.rand(0, 5);
-		party.getLoot().Medicine = this.Math.rand(0, 3);
-		party.getLoot().Ammo = this.Math.rand(10, 15);
+		party.getLoot().Medicine = this.Math.rand(0, 2);
 
 		local c = party.getController();
-		local roam = this.new("scripts/ai/world/orders/roam_order");
-		roam.setAllTerrainAvailable();
-		roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-		roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
-		roam.setPivot(settlement);
-		roam.setAvoidHeat(true);
-		roam.setTime(this.World.getTime().SecondsPerDay * 2);
+		local ambush = this.new("scripts/ai/world/orders/ambush_order");
 		local move = this.new("scripts/ai/world/orders/move_order");
 		move.setDestination(settlement.getTile());
 		local despawn = this.new("scripts/ai/world/orders/despawn_order");
-		c.addOrder(roam);
+		c.addOrder(ambush);
 		c.addOrder(move);
 		c.addOrder(despawn);
 		return true;

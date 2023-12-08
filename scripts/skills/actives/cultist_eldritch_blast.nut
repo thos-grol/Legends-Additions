@@ -1,6 +1,6 @@
 this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 	m = {
-		BlastCount = 2,
+		BlastCount = 3,
 		IsPull = false
 	},
 	function create()
@@ -109,7 +109,7 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
 		if (_skill == this)
-		{			
+		{
 			local buff = this.getContainer().getActor().getFlags().has("AgonizingBlast") ? this.getAgonizingBlast() : 0;
 			_properties.DamageRegularMin = 20 + buff;
 			_properties.DamageRegularMax = 45 + buff;
@@ -160,7 +160,7 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 				this.Time.scheduleEvent(this.TimeUnit.Virtual, this.m.Delay + delay, this.onPerformAttack, tag);
 				delay += 750;
 			}
-			
+
 
 			if (!_user.isPlayerControlled() && _targetTile.getEntity().isPlayerControlled())
 			{
@@ -187,7 +187,7 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 		this.Sound.play("sounds/cultist/eldritch_blast.wav", 200, _tag.User.getPos());
 		this.Sound.play("sounds/cultist/eldritch_blast.wav", 200, _tag.User.getPos());
 		this.Sound.play("sounds/cultist/eldritch_blast.wav", 200, _tag.User.getPos());
-		
+
 		// this.Tactical.getCamera().quake(this.createVec(0, -1.0), 6.0, 0.16, 0.35);
 		for( local i = 0; i < ::Const.Tactical.BlastParticles.len(); i = ++i )
 		{
@@ -215,7 +215,7 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 			this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, actor.getPos(), this.Math.rand(95, 105) * 0.01);
 			this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, actor.getPos(), this.Math.rand(95, 105) * 0.01);
 
-			
+
 			if (!actor.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)
 			{
 				this.getContainer().setBusy(true);
@@ -227,18 +227,18 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 
 				::logInfo("Performing counter blast.");
 				this.Time.scheduleEvent(this.TimeUnit.Virtual, this.m.Delay, this.onPerformAttack, tag);
-				
+
 				if (!actor.isPlayerControlled() && _attacker.isPlayerControlled())
 					actor.getTile().addVisibilityForFaction(::Const.Faction.Player);
 			}
 			else this.attackEntity(actor, _attacker);
 		}
-		
+
 	}
 
 	function isValidCounterAttack(weapon)
 	{
-		return weapon.isWeaponType(::Const.Items.WeaponType.Polearm) 
+		return weapon.isWeaponType(::Const.Items.WeaponType.Polearm)
 		|| weapon.isWeaponType(::Const.Items.WeaponType.Dagger)
 		|| weapon.isWeaponType(::Const.Items.WeaponType.Spear)
 		|| weapon.isWeaponType(::Const.Items.WeaponType.Axe)
@@ -274,10 +274,10 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 		local user = this.getContainer().getActor();
 
 		if (_targetEntity.getCurrentProperties().IsImmuneToKnockBackAndGrab || _targetEntity.getCurrentProperties().IsRooted) return false;
-		
+
 		local knockToTile = this.findTileToKnockBackTo(user.getTile(), targetTile);
 		if (knockToTile == null) return;
-		
+
 
 		if (!user.isHiddenToPlayer() && (targetTile.IsVisibleForPlayer || knockToTile.IsVisibleForPlayer))
 		{

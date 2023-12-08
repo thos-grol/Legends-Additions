@@ -21,6 +21,11 @@ gt.Const.World.Spawn.Unit <- {
 	Script = "",
 	Name = ""
 };
+
+gt.Const.EntityType.CultistPriest <- 200;
+gt.Const.EntityType.CultistKnight <- 201;
+gt.Const.EntityType.CultistChosen <- 202;
+
 gt.Const.World.Spawn.Troops <- {
 	Necromancer = {
 		ID = this.Const.EntityType.Necromancer,
@@ -701,6 +706,30 @@ gt.Const.World.Spawn.Troops <- {
 		Cost = 15,
 		Row = -1,
 		Script = "scripts/entity/tactical/humans/cultist"
+	},
+	CultistPriest = {
+		ID = this.Const.EntityType.CultistPriest,
+		Variant = 0,
+		Strength = 30,
+		Cost = 15,
+		Row = -1,
+		Script = "scripts/entity/tactical/humans/cultist_priest"
+	},
+	CultistKnight = {
+		ID = this.Const.EntityType.CultistKnight,
+		Variant = 0,
+		Strength = 45,
+		Cost = 15,
+		Row = -1,
+		Script = "scripts/entity/tactical/humans/cultist_knight"
+	},
+	CultistChosen = {
+		ID = this.Const.EntityType.CultistChosen,
+		Variant = 0,
+		Strength = 60,
+		Cost = 15,
+		Row = -1,
+		Script = "scripts/entity/tactical/humans/cultist_chosen"
 	},
 	CultistAmbush = {
 		ID = this.Const.EntityType.Cultist,

@@ -3,8 +3,8 @@ this.cultist_eyes_on_the_inside <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.eyes_on_the_inside";
-		this.m.Name = ::Const.Strings.PerkName.EyesOnTheInside;
-		this.m.Description = ::Const.Strings.PerkDescription.EyesOnTheInside;
+		this.m.Name = "Eyes on the Inside";
+		this.m.Description = "";
 		this.m.Icon = "ui/perks/eyes_on_the_inside.png";
 		this.m.Type = ::Const.SkillType.Perk;
 		this.m.Order = ::Const.SkillOrder.Perk;
@@ -61,15 +61,15 @@ this.cultist_eyes_on_the_inside <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		
 
-		if (this.Math.rand(1,100) <= 50) 
+
+		if (this.Math.rand(1,100) <= 50)
 			this.Sound.play("sounds/cultist/eyes_on_the_inside_01.wav", 200.0, _tag.User.getPos(), this.Math.rand(95, 105) * 0.01);
 		else
 			this.Sound.play("sounds/cultist/eyes_on_the_inside_02.wav", 200.0, _tag.User.getPos(), this.Math.rand(95, 105) * 0.01);
 		this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(target) + " has been gazed at by " + ::Const.UI.getColorizedEntityName(_tag.User));
 
-		
+
 	}
 
 	function onUpdate( _properties )

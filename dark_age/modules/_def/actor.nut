@@ -709,7 +709,7 @@
 		this.getSkills().add(::new("scripts/skills/effects/ptr_follow_up_proccer_effect"));
 		this.getSkills().add(::new("scripts/skills/effects/_nokillstealing"));
 
-		if (::Math.rand(1,100) <= 10) this.getSkills().add(::new("scripts/skills/traits/lucky_trait"));
+		if (::Math.rand(1,100) <= 20) this.getSkills().add(::new("scripts/skills/traits/lucky_trait"));
 
 		local flags = this.getFlags();
 		if (flags.has("undead") && !flags.has("ghost") && !flags.has("ghoul") && !flags.has("vampire"))

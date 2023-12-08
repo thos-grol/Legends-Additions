@@ -254,3 +254,146 @@ gt.Const.World.Spawn.PeasantsSouthern <- {
 	]
 };
 
+gt.Const.World.Spawn.CultistPatrol <- {
+	Name = "Cultist Patrol",
+	IsDynamic = true,
+	MovementSpeedMult = 0.9,
+	VisibilityMult = 1.0,
+	VisionMult = 1.0,
+	Body = "figure_civilian_03",
+	MaxR = 326,
+	MinR = 60,
+	Troops = [
+		{
+			Weight = 70,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Cultist,
+					Cost = 15
+				}
+			]
+		}
+	]
+};
+
+gt.Const.World.Spawn.CultistRaiders <- {
+	Name = "Cultist Raiders",
+	IsDynamic = true,
+	MovementSpeedMult = 0.9,
+	VisibilityMult = 1.0,
+	VisionMult = 1.0,
+	Body = "figure_civilian_03",
+	MaxR = 326,
+	MinR = 60,
+	Troops = [
+		{
+			Weight = 70,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Cultist,
+					Cost = 15
+				}
+			]
+		},
+		{
+			Weight = 10,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.CultistPriest,
+					Cost = 30
+				}
+			]
+		},
+		{
+			Weight = 5,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.CultistKnight,
+					Cost = 60
+				}
+			]
+		}
+	]
+};
+
+gt.Const.World.Spawn.CultistDefenders <- {
+	Name = "CultistDefenders",
+	IsDynamic = true,
+	MovementSpeedMult = 1.0,
+	VisibilityMult = 1.0,
+	VisionMult = 1.0,
+	Body = "figure_bandit_01",
+	Fixed = [
+		{
+			MinCount = 1,
+			MaxCount = 1,
+			Weight = 30,
+			Type = this.Const.World.Spawn.Troops.CultistChosen,
+			Cost = 0
+		}
+	],
+	MinR = 45,
+	MaxR = 600,
+	Troops = [
+		{
+			Weight = 70,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Cultist,
+					Cost = 15
+				}
+			]
+		},
+		{
+			Weight = 10,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.CultistPriest,
+					Cost = 30
+				}
+			]
+		},
+		{
+			Weight = 5,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.CultistKnight,
+					Cost = 60
+				}
+			]
+		}
+	]
+};
+
+
+gt.Const.World.Spawn.CultistDefenderss <- {
+	Name = "CultistDefenderss",
+	IsDynamic = true,
+	MovementSpeedMult = 1.0,
+	VisibilityMult = 1.0,
+	VisionMult = 1.0,
+	Body = "figure_bandit_01",
+	Fixed = [],
+	MinR = 45,
+	MaxR = 600,
+	Troops = [
+		{
+			Weight = 70,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Cultist,
+					Cost = 15
+				}
+			]
+		},
+		{
+			Weight = 10,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.CultistPriest,
+					Cost = 30
+				}
+			]
+		}
+	]
+};

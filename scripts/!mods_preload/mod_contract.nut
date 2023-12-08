@@ -88,28 +88,6 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 				party.getLoot().ArmorParts = this.Math.rand(0, 10);
 				party.getLoot().Medicine = this.Math.rand(0, 2);
 				party.getLoot().Ammo = this.Math.rand(0, 10);
-				local r = this.Math.rand(1, 6);
-
-				if (r == 1)
-				{
-					party.addToInventory("supplies/bread_item");
-				}
-				else if (r == 2)
-				{
-					party.addToInventory("supplies/roots_and_berries_item");
-				}
-				else if (r == 3)
-				{
-					party.addToInventory("supplies/dried_fruits_item");
-				}
-				else if (r == 4)
-				{
-					party.addToInventory("supplies/ground_grains_item");
-				}
-				else if (r == 5)
-				{
-					party.addToInventory("supplies/pickled_mushrooms_item");
-				}
 			}
 			else if (_factionType == this.Const.FactionType.Goblins)
 			{

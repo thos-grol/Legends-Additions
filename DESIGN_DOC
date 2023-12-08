@@ -4,7 +4,17 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
-//TODO: new origins - cultists
+//TODO: enemy overhaul - cultists
+    //cultist rabble
+        //44% chance to have pain ritual
+    //cultist priest
+        //eyes on the inside
+    //cultist knight
+        //compassion ritual
+    //cultist chosen
+        //compassion ritual
+        //eldritch blast
+
 //TODO: vampire overhaul and infected contracts
     //TODO: FEATURE Necrosavant -> Grail, Knock | necrosavant -> dead apostle
     //Modes:
@@ -20,8 +30,6 @@
 
 //TODO: rework skeleton units
 //TODO: rework skeleton priest //drops miasma tome
-
-//FEATURE_5: loot overhaul -> camps and enemies
 
 //FEATURE_0: create machine learning model for art
 
@@ -125,8 +133,6 @@
 
 //Z
 
-//New potion system
-
 //Fantasy Bros Skills worth looking into
     //Pyromancer
         2 skills are good
@@ -204,18 +210,6 @@
     //Opening up the wilderness
     //Arena
 
-//FEATURE_8: elite bro joins for high hiring cost event <- young swordmaster event <- when reknown is high enough
-
-
-FEATURE_8: Origins to Revamp:
-    - Beast Slayers
-    - Scaling Beggar
-    - Old Swordmaster
-    - Davkul Cultists
-    - Gladiators
-    - Lone Wolf
-    - Peasant Militia
-
 Book Items
     Put book in bag slot. While camping, bro can learn book.
 
@@ -224,9 +218,6 @@ Alchemist/Potion Master Rework
     Potions in bag slots. Potions become ranged ammo. Potion master perk lets you switch ammo to throw them.
     Perk, chance to not consume ammo when throwing potion.
 Anatomist can be potion master
-
-Overhaul Cultists
-    - Permenant Injuries. For every permenant injury, give a unique buff.
 
 BOSS
 Hexe Leader with Lindwurm Pet
@@ -237,31 +228,7 @@ Items
     Storm star : A magic morning star that could release a version of chain lightning when it hit.
     Lefeber's Enchanter : A rod that imbued items with the ability to store spells.
 
-Magic
-    Mana stat
-    Resolve = Will
-    Ranged Attack = Aim
-    Inteligence Trait
-        Smart Trait - Above average intelligence
-        Bright Trait - Highly Intelligent
-        Genius Trait - Super Intelligent
-
-    magic modifiers:
-        learn time <- higher intelligence has a bigger chance to learn spells
-
-        magic matrix <- determines what school of spells you can cast and learn
-        cast speed <- higher intelligence can decrease cast time
-
-        mana <- the pool you cast spells from
-
-        will <- used in checks/conflicts. can determine success rate of spell
-            summoning ghosts/binding them to your will
-
-        the more perks you take in the school, the more knowledge you have. knowledge = power.
-            power die + spell roll die = effect damage
-
 Schools:
-    Origin - The tides of magic have waned. This world is undergoing the end of the dharma... where fantasy is wasting away. The only miracles left are the remnants of the gods, inner or outer... The mainstream power of this world is blasphemy... using the remains of the gods to achieve power.
 
     Winter - Silence and death. The dead. The end.
     Heart - Unrelenting optimism. The beating of the heart keeps the world running. Preservation. Continuation. Thunder.
@@ -335,64 +302,6 @@ Schools:
 
 ---
 
-Potions
-
-All potions increase life stat and then a secondary stat.
-
-Ghoul
-    - Tier 1 HP (15, 30)
-    - Tier 3 Initiative (20, 40)
-
-Direwolf
-    - Tier 3 AP (2, 4)
-    - Fatigue (15, 30)
-    - Fatigue Regeneration (5, 10)
-
-
-Alp
-    - Tier 2 Resolve (15, 30)
-
-Orc
-    - Tier 2 Hp (15, 30)
-    - Tier 2 Fat (20, 40)
-
-Unhold
-    - Tier 3 Hp (20, 40)
-
-Wurm
-    - Tier 3 Hp (20, 40)
-
-
-schrat
-
-serpent
-
-vampire
-
-
-
-
-Poison (No Stat)
- - Spider
-
-Goblin potion doesnt increase life - have it do something else.
-
----
-
-book_item
-    fields:
-        traits
-        spells, contained
-
-Magic Matrix - Engrave a magic matrix allowing you to learn spells of a certain school
-Meditation -
-
-Necronomicon
-
-camp:
-    no action = learn from spellbook
-
-Champion variants of heroes
 
 Undead cannot be charmed
 

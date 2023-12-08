@@ -23,7 +23,7 @@ this.drained_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character has been drained by negative energy and has: " 
+		return "This character has been drained by negative energy and has: "
 		+ "\n[color=" + ::Const.UI.Color.NegativeValue + "] -30% [/color]Fatigue recovery for [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s)."
 		+ "\n[color=" + ::Const.UI.Color.NegativeValue + "] -" + (this.m.TurnsLeft * 10) + "% [/color]Max Health for [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s).";
 	}

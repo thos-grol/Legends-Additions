@@ -143,7 +143,7 @@ this.cultist_compassion_ritual <- this.inherit("scripts/skills/skill", {
             if (s.isType(::Const.SkillType.PermanentInjury)) count += 1;
         }
 		return count * 4;
-        
+
 	}
 
 	function isUsable()
@@ -177,7 +177,7 @@ this.cultist_compassion_ritual <- this.inherit("scripts/skills/skill", {
 		local agent = actor.getAIAgent();
 		if (agent.findBehavior(::Const.AI.Behavior.ID.CompassionRitual) == null)
 		{
-			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_cultist_compassion_ritual"));
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_compassion_ritual"));
 			agent.finalizeBehaviors();
 		}
 	}

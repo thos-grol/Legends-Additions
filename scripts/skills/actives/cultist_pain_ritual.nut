@@ -20,8 +20,8 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 		this.m.IsTargeted = true;
 		this.m.IsStacking = false;
 		this.m.IsAttack = false;
-		this.m.ActionPointCost = 5;
-		this.m.FatigueCost = 35;
+		this.m.ActionPointCost = 6;
+		this.m.FatigueCost = 15;
 		this.m.MinRange = 1;
 		this.m.MaxRange = 4;
 		this.m.MaxLevelDifference = 6;
@@ -55,7 +55,7 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 		if (!this.Tactical.isActive() || !this.skill.isUsable()) return false;
 		local weapon = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
 		if (weapon == null) return false;
-		if (weapon.isWeaponType(::Const.Items.WeaponType.Polearm) 
+		if (weapon.isWeaponType(::Const.Items.WeaponType.Polearm)
 			|| weapon.isWeaponType(::Const.Items.WeaponType.Dagger)
 			|| weapon.isWeaponType(::Const.Items.WeaponType.Spear)
 			|| weapon.isWeaponType(::Const.Items.WeaponType.Axe)
@@ -76,7 +76,7 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 		local target = _targetTile.getEntity();
 		local actor = this.getContainer().getActor();
 		local hitInfo = this.getHitInfo(target);
-		
+
 		this.Sound.play("sounds/cultist/disembowl.wav", 200.0, _user.getPos(), this.Math.rand(95, 105) * 0.01);
 		actor.onDamageReceived(actor, this, hitInfo);
 		target.onDamageReceived(actor, this, hitInfo);
@@ -100,12 +100,12 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 					potentialInjuries.push(inj.Script);
 				}
 			}
-	
+
 			while (potentialInjuries.len() != 0)
 			{
 				local r = this.Math.rand(0, potentialInjuries.len() - 1);
 				local injury = ::new("scripts/skills/" + potentialInjuries[r]);
-	
+
 				if (injury.isValid(target))
 				{
 					target.m.Skills.add(injury);
@@ -150,7 +150,7 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 	function getInjuryType()
 	{
 		local weapon = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
-		if (weapon.isWeaponType(::Const.Items.WeaponType.Polearm) 
+		if (weapon.isWeaponType(::Const.Items.WeaponType.Polearm)
 			|| weapon.isWeaponType(::Const.Items.WeaponType.Dagger)
 			|| weapon.isWeaponType(::Const.Items.WeaponType.Spear)
 		) return [::Const.Injury.PiercingBody, ::Const.Injury.PiercingHead];
@@ -172,9 +172,14 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 		local agent = actor.getAIAgent();
 		if (agent.findBehavior(::Const.AI.Behavior.ID.PainRitual) == null)
 		{
-			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_cultist_pain_ritual"));
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_pain_ritual"));
 			agent.finalizeBehaviors();
 		}
+	}
+
+	function onUpdate( _properties )
+	{
+		_properties.HitpointsMult *= 1.25;
 	}
 
 });

@@ -1,8 +1,8 @@
-this.send_bandit_roamers_action <- this.inherit("scripts/factions/faction_action", {
+this.send_cultist_roamers_action <- this.inherit("scripts/factions/faction_action", {
 	m = {},
 	function create()
 	{
-		this.m.ID = "send_bandit_roamers_action";
+		this.m.ID = "send_cultist_roamers_action";
 		this.m.Cooldown = 45.0;
 		this.m.IsSettlementsRequired = true;
 		this.faction_action.create();
@@ -19,19 +19,19 @@ this.send_bandit_roamers_action <- this.inherit("scripts/factions/faction_action
 
 		if (this.World.FactionManager.isCivilWar())
 		{
-			if (_faction.getUnits().len() >= 6)
+			if (_faction.getUnits().len() >= 3)
 			{
 				return;
 			}
 		}
 		else if (this.World.FactionManager.isGreaterEvil())
 		{
-			if (_faction.getUnits().len() >= 3)
+			if (_faction.getUnits().len() >= 1)
 			{
 				return;
 			}
 		}
-		else if (_faction.getUnits().len() >= 5)
+		else if (_faction.getUnits().len() >= 2)
 		{
 			return;
 		}
@@ -95,16 +95,14 @@ this.send_bandit_roamers_action <- this.inherit("scripts/factions/faction_action
 			rand = rand * (distanceToNextSettlement / 14.0);
 		}
 
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Brigand Hunters", false, this.Const.World.Spawn.BanditRoamers, this.Math.min(settlement.getResources(), rand));
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Cultists", false, this.Const.World.Spawn.CultistPatrol, this.Math.min(settlement.getResources(), rand));
 		party.getSprite("banner").setBrush(settlement.getBanner());
-		party.setDescription("A rough and tough band of brigands out to hunt for food.");
+		party.setDescription("A flock of cultists out to hunt");
 		party.setFootprintType(this.Const.World.FootprintsType.Brigands);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
+		party.getLoot().Money = this.Math.rand(0, 25);
 		party.getLoot().ArmorParts = this.Math.rand(0, 5);
 		party.getLoot().Medicine = this.Math.rand(0, 3);
-		party.getLoot().Ammo = this.Math.rand(10, 15);
-
 		local c = party.getController();
 		local roam = this.new("scripts/ai/world/orders/roam_order");
 		roam.setAllTerrainAvailable();

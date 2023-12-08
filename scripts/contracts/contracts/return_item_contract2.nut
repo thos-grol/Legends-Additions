@@ -55,9 +55,17 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 			case "strange_tome":
 				if (roll_enemies <= 75) this.m.Flags.set("IsNecromancer", true);
 				break;
-			// case "scripts/items/misc/strange_eye_item": //TODO: implement cultist skills and units? look at taro's mod
-			// 	this.m.Flags.set("IsCultist", true);
-			// 	break;
+			case "scripts/items/misc/strange_eye_item":
+				this.m.Flags.set("IsCultist", true);
+				flag_set = true;
+				break;
+			case "lockbox":
+				if (::Math.rand(1,100) <= 25)
+				{
+					this.m.Flags.set("IsCultist", true);
+					flag_set = true;
+				}
+			break;
 		}
 		if (!flag_set) this.m.Flags.set("IsMercenary", true);
 
@@ -165,7 +173,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				}
 				else if (this.Flags.get("IsCultist"))
 				{
-					party_type = ::Const.World.Spawn.Cultists;
+					party_type = ::Const.World.Spawn.CultistRaiders;
 				}
 				else party_type = ::Const.World.Spawn.Mercenaries;
 

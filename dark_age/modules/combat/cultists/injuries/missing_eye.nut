@@ -26,7 +26,7 @@
 	{
 		local has = this.has_penance();
 		_properties.RangedSkillMult *= has ? 0.9 : 0.5;
-		_properties.Vision -= has ? 1 : 2;
+		_properties.Vision -= has ? -1 : 2;
 	}
 
 	o.onApplyAppearance = function()

@@ -39,7 +39,7 @@
 		}
 		return ret;
 	}
-	
+
 	o.onUpdate = function( _properties )
 	{
 		local has = this.has_penance();
