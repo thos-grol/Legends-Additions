@@ -41,13 +41,12 @@ this.perk_rattle <- this.inherit("scripts/skills/skill", {
 		if (!_skill.isAttack()) return;
 
 		local actor = this.getContainer().getActor();
-
 		local stacks = 1;
 		local weapon = actor.getMainhandItem();
 		if (weapon != null && weapon.isItemType(::Const.Items.ItemType.TwoHanded)) stacks += 1;
 		if (this.m.Container.hasSkill("perk.stance.seismic_slam")) stacks *= 2;
 
-		local rattled = !this.m.Container.hasSkill("effects.rattled") ? ::new("scripts/skills/effects/rattled_effect") : this.m.Container.getSkillByID("effects.rattled");
+		local rattled = !_targetEntity.getSkills().hasSkill("effects.rattled") ? ::new("scripts/skills/effects/rattled_effect") : _targetEntity.getSkills().getSkillByID("effects.rattled");
 		rattled.add_stacks(stacks);
 		if (!this.m.Container.hasSkill("effects.rattled")) _targetEntity.getSkills().add(rattled);
 	}

@@ -3,8 +3,6 @@
 //raider template, 9 perks
 //has weapon mastery and stance
 
-//TODO: AI for mark target
-
 ::Const.Tactical.Actor.BanditLeader <- {
 	XP = 250,
 	ActionPoints = 9,
