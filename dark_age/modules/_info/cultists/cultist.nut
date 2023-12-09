@@ -6,7 +6,7 @@
 	Hitpoints = 60,
 	Bravery = 60,
 	Stamina = 96,
-	MeleeSkill = 65,
+	MeleeSkill = 45,
 	RangedSkill = 40,
 	MeleeDefense = 10,
 	RangedDefense = 10,
@@ -36,6 +36,12 @@
 		["Resolve", 8, 3, 3],
 		["Melee Skill", 8, 0, 3],
 		["Melee Defense", 8, 0, 3],
+	],
+	Outfit = [
+		[
+			1,
+			"bandit_thug_outfit_00"
+		]
 	],
     Trait = [],
 	Loadout = [

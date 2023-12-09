@@ -22,10 +22,6 @@ gt.Const.World.Spawn.Unit <- {
 	Name = ""
 };
 
-gt.Const.EntityType.CultistPriest <- 200;
-gt.Const.EntityType.CultistKnight <- 201;
-gt.Const.EntityType.CultistChosen <- 202;
-
 gt.Const.World.Spawn.Troops <- {
 	Necromancer = {
 		ID = this.Const.EntityType.Necromancer,
@@ -706,30 +702,6 @@ gt.Const.World.Spawn.Troops <- {
 		Cost = 15,
 		Row = -1,
 		Script = "scripts/entity/tactical/humans/cultist"
-	},
-	CultistPriest = {
-		ID = this.Const.EntityType.CultistPriest,
-		Variant = 0,
-		Strength = 30,
-		Cost = 15,
-		Row = -1,
-		Script = "scripts/entity/tactical/humans/cultist_priest"
-	},
-	CultistKnight = {
-		ID = this.Const.EntityType.CultistKnight,
-		Variant = 0,
-		Strength = 45,
-		Cost = 15,
-		Row = -1,
-		Script = "scripts/entity/tactical/humans/cultist_knight"
-	},
-	CultistChosen = {
-		ID = this.Const.EntityType.CultistChosen,
-		Variant = 0,
-		Strength = 60,
-		Cost = 15,
-		Row = -1,
-		Script = "scripts/entity/tactical/humans/cultist_chosen"
 	},
 	CultistAmbush = {
 		ID = this.Const.EntityType.Cultist,
@@ -2045,6 +2017,56 @@ function calculateCosts( _p )
 this.calculateCosts(this.Const.World.Spawn.CaravanEscort);
 this.calculateCosts(this.Const.World.Spawn.CaravanSouthernEscort);
 local spawnMap = {};
+
+//new
+
+local function addEntityType(_id, _name, _namePlural, _icon)
+{
+	if (!("EntityTypeMax" in ::Const))
+	{
+		local max = 0;
+		foreach(key, value in ::Const.EntityType)
+		{
+			if (typeof value == "integer" && value > max) max = value; 
+		}
+		::Const.EntityTypeMax <- max;
+	}
+	::Const.EntityType[_id] <- ++::Const.EntityTypeMax;
+	::Const.Strings.EntityName.push(_name);
+	::Const.Strings.EntityNamePlural.push(_namePlural);
+	::Const.EntityIcon.push(_icon);
+}
+
+addEntityType("CultistPriest", "Priest of Davkul", "Priests of Davkul", "cultist_orientation");
+addEntityType("CultistKnight", "Knight of Davkul", "Knights of Davkul", "cultist_orientation");
+addEntityType("CultistChosen", "Chosen of Davkul", "Chosen of Davkul", "cultist_orientation");
+
+::Const.World.Spawn.Troops.CultistPriest <- {
+	ID = this.Const.EntityType.CultistPriest,
+	Variant = 0,
+	Strength = 30,
+	Cost = 15,
+	Row = 3,
+	Script = "scripts/entity/tactical/humans/cultist_priest"
+};
+
+::Const.World.Spawn.Troops.CultistKnight <- {
+	ID = this.Const.EntityType.CultistKnight,
+	Variant = 0,
+	Strength = 45,
+	Cost = 15,
+	Row = -1,
+	Script = "scripts/entity/tactical/humans/cultist_knight"
+};
+
+::Const.World.Spawn.Troops.CultistChosen <- {
+	ID = this.Const.EntityType.CultistChosen,
+	Variant = 0,
+	Strength = 60,
+	Cost = 15,
+	Row = -1,
+	Script = "scripts/entity/tactical/humans/cultist_chosen"
+};
 
 foreach( t in gt.Const.World.Spawn.Troops )
 {

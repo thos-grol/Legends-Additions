@@ -1191,6 +1191,21 @@ this.asset_manager <- {
 				}
 			}
 		}
+
+		//insert cultists - solution from davkul rising
+		if (this.World.FactionManager.getFactionOfType(this.Const.FactionType.Cultists) == null)
+		{
+			local cultist_faction = this.new("scripts/factions/cultist_faction")
+			local faction_manager = this.World.FactionManager;
+			cultist_faction.setID(faction_manager.m.Factions.len());
+			cultist_faction.setName("Cultist");
+			cultist_faction.setDiscovered(true);
+			cultist_faction.addTrait(this.Const.CultistTraits);
+			faction_manager.m.Factions.push(cultist_faction);
+			// this.World.Flags.set("spawnedCultists", true)
+			// cultist_faction.m.Flags.set("RitualSitesBeat", 0)
+			// this.printDebug("cultist faction created", modName)
+		}
 	}
 
 	function updateAverageMoodState()

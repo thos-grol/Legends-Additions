@@ -76,14 +76,20 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 		local target = _targetTile.getEntity();
 		local actor = this.getContainer().getActor();
 		local hitInfo = this.getHitInfo(target);
-
 		this.Sound.play("sounds/cultist/disembowl.wav", 200.0, _user.getPos(), this.Math.rand(95, 105) * 0.01);
-		actor.onDamageReceived(actor, this, hitInfo);
-		target.onDamageReceived(actor, this, hitInfo);
+
+		::Z.Log.skill(_user, target, this.m.Name, 0, 0, "", true, false);
 
 		local injury_id = addInjury(actor, hitInfo );
+		local injury = ::new(injury_id);
 		if (injury_id != null && target.m.CurrentProperties.IsAffectedByInjuries && target.m.IsAbleToDie)
-			target.m.Skills.add(::new(injury_id));
+			target.m.Skills.add(injury);
+
+		::Z.Log.suffer_injury(_user, injury.m.Name);
+		::Z.Log.suffer_injury(target, injury.m.Name);
+
+		actor.onDamageReceived(actor, this, hitInfo);
+		target.onDamageReceived(actor, this, hitInfo);
 
 		return true;
 	}
@@ -175,11 +181,6 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_pain_ritual"));
 			agent.finalizeBehaviors();
 		}
-	}
-
-	function onUpdate( _properties )
-	{
-		_properties.HitpointsMult *= 1.25;
 	}
 
 });

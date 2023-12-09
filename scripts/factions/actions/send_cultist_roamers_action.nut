@@ -12,11 +12,6 @@ this.send_cultist_roamers_action <- this.inherit("scripts/factions/faction_actio
 	{
 		local settlements = _faction.getSettlements();
 
-		if (settlements.len() <= 6)
-		{
-			return;
-		}
-
 		if (this.World.FactionManager.isCivilWar())
 		{
 			if (_faction.getUnits().len() >= 3)

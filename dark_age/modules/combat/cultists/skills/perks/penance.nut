@@ -8,7 +8,6 @@
 "\n• Reduce the effects that permenant injuries has on this character or transform the injury in some eldritch way.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendSpecCultArmor].Tooltip = ::Const.Strings.PerkDescription.LegendSpecCultArmor;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendSpecCultArmor].Icon = "ui/perks/penance_circle2.png";
 
 ::mods_hookExactClass("skills/perks/perk_legend_specialist_cult_armor", function (o)
 {

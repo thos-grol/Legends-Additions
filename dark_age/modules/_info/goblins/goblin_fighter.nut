@@ -34,12 +34,6 @@
 		["Melee Defense", 5, 0, 2],
 	],
     Trait = [],
-    Outfit = [
-		[
-			1,
-			"bandit_thug_outfit_00"
-		]
-	],
 	Loadout = [
 		[
 			"scripts/items/weapons/greenskins/goblin_falchion",

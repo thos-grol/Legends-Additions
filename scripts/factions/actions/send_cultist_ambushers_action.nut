@@ -14,11 +14,6 @@ this.send_cultist_ambushers_action <- this.inherit("scripts/factions/faction_act
 	{
 		local settlements = _faction.getSettlements();
 
-		if (settlements.len() < 7)
-		{
-			return;
-		}
-
 		if (this.World.FactionManager.isCivilWar())
 		{
 			if (_faction.getUnits().len() >= 4)

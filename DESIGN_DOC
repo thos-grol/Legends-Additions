@@ -322,6 +322,7 @@ Undead cannot be charmed
 ::setSpawn("zombie_knight", ::Const.Faction.PlayerAnimals)
 ::setSpawn("zombie_knight", ::Const.Faction.PlayerAnimals)
 ::setSpawn("goblin_wolfrider", ::Const.Faction.PlayerAnimals)
+::setSpawn("cultist_priest", ::Const.Faction.PlayerAnimals)
 ::setSpawn("spider", ::Const.Faction.PlayerAnimals)
 ::setSpawn("necromancer")
 ::setSpawn("zombie_knight")

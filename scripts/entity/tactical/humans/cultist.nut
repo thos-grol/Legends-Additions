@@ -55,41 +55,27 @@ this.cultist <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.m.Skills.add(this.new("scripts/skills/injury_permanent/brain_damage_injury"));
 	}
 
-	function pickOutfit()
+	function post_init()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
-			[
-				3,
-				"cultist_leather_armor"
-			],
-			[
-				3,
-				"tattered_sackcloth"
-			],
-			[
-				2,
-				"barbarians/animal_hide_armor"
-			],
-			[
-				1,
-				"barbarians/hide_and_bone_armor"
-			]
-		]));
-		local item = this.Const.World.Common.pickHelmet([
-			[
-				2,
-				"cultist_hood"
-			],
-			[
-				1,
-				"cultist_leather_hood"
-			]
-		]);
-
-		if (item != null)
+		if (::Math.rand(1, 100) <= 25)
 		{
-			this.m.Items.equip(item);
+			local body = this.m.Items.getItemAtSlot(this.Const.ItemSlot.Body);
+			if (body != null)
+				body.setUpgrade(::new("scripts/items/legend_armor/plate/legend_armor_cult_armor"));
 		}
+
+		local head = this.m.Items.getItemAtSlot(this.Const.ItemSlot.Head);
+		if (head != null)
+			head.setUpgrade(::new("scripts/items/legend_helmets/vanity/legend_helmet_sack"));
+		else
+		{
+			local helmet = ::new("scripts/items/legend_helmets/hood/legend_helmet_leather_hood");
+			this.m.Items.equip(helmet);
+		}
+
+
+
+	
 	}
 
 });

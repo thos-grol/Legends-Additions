@@ -66,12 +66,8 @@ this.ai_pain_ritual <- this.inherit("scripts/ai/tactical/behavior", {
 			score = score * ::Const.AI.Behavior.AttackAfterSwitchWeaponMult;
 		}
 
-		if (this.Math.rand(1,100) > 33)
-		{
-			return ::Const.AI.Behavior.Score.Zero;
-		}
-
-		return ::Const.AI.Behavior.Score.Attack * score * 2;
+		if (this.Math.rand(1,100) > 33) return ::Const.AI.Behavior.Score.Zero;
+		return 65535;
 	}
 
 	function onBeforeExecute( _entity )
