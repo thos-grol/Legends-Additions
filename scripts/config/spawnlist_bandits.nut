@@ -27,7 +27,7 @@ gt.Const.World.Spawn.BanditRoamers <- {
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRabble,
 					MaxR = 100,
-					Cost = 7
+					Cost = 8
 				},
 			]
 		},
@@ -46,7 +46,7 @@ gt.Const.World.Spawn.BanditRoamers <- {
 				{
 					Type = this.Const.World.Spawn.Troops.BanditRabblePoacher,
 					MaxR = 100,
-					Cost = 8
+					Cost = 12
 				},
 			]
 		},

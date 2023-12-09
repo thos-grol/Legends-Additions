@@ -127,10 +127,13 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 
 	//Helper
 
-	function canBind( _tile )
+	function canResurrectOnTile( _tile, _force = false )
 	{
-		return _tile.IsCorpseSpawned
-			&& ( _tile.Properties.get("Corpse").IsResurrectable	|| !("FleshNotAllowed" in _tile.Properties.get("Corpse")) );
+		if (!_tile.IsCorpseSpawned) return false;
+		if (_force) return true;
+		if (_tile.Properties.get("Corpse").IsResurrectable || !("FleshNotAllowed" in _tile.Properties.get("Corpse")) ) return true;
+
+		return false;
 	}
 
 	function bind_undead(tag)

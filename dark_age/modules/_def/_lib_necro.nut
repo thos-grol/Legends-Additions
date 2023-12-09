@@ -21,7 +21,14 @@
 
     corpse.Skills <- [];
     corpse.BaseProperties <- {};
-    if (_actor.getFlags().has("zombie_minion")) corpse.FleshNotAllowed <- true;
+
+    local zombie = false;
+    try{ zombie = _info.IsZombie} catch(exception){}
+    local isHeadAttached = true;
+    try{ isHeadAttached = corpse.IsHeadAttached} catch(exception){}
+
+    
+
 
     local skills = _actor.m.Skills.m.Skills
     foreach(skill in skills)
@@ -43,7 +50,9 @@
     corpse.BaseProperties["RangedDefense"] <- _actor.m.BaseProperties.RangedDefense;
     corpse.BaseProperties["Armor"] <- _actor.m.BaseProperties.Armor;
 
-    if (!corpse.IsResurrectable && !_actor.getFlags().has("zombie_minion"))
+    if (zombie && isHeadAttached && corpse.IsResurrectable) return;
+
+    if (!corpse.IsResurrectable)
     {
         if (corpse.BaseProperties["MeleeSkill"] >= corpse.BaseProperties["RangedSkill"])
             corpse.Type = "scripts/entity/tactical/enemies/flesh_abomination";

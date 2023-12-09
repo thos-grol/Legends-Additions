@@ -11,7 +11,6 @@ this.barbarian_king_contract <- this.inherit("scripts/contracts/contract", {
 		this.contract.create();
 		local r = this.Math.rand(1, 100);
 
-		this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
 
 		this.m.Type = "contract.barbarian_king";
 		this.m.Name = "The Barbarian King";
@@ -27,6 +26,7 @@ this.barbarian_king_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
+		this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 33)

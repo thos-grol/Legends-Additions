@@ -118,9 +118,11 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 
 	function canResurrectOnTile( _tile, _force = false )
 	{
-		return _tile.IsCorpseSpawned
-			&& ( _tile.Properties.get("Corpse").IsResurrectable || _force
-				|| !("FleshNotAllowed" in _tile.Properties.get("Corpse")) );
+		if (!_tile.IsCorpseSpawned) return false;
+		if (_force) return true;
+		if (_tile.Properties.get("Corpse").IsResurrectable || !("FleshNotAllowed" in _tile.Properties.get("Corpse")) ) return true;
+
+		return false;
 	}
 
 	function onRoundEnd()

@@ -10,8 +10,6 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 		this.m.Type = "contract.return_item2";
 		this.m.Name = "Return Item";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
-		this.m.DifficultyMult = this.Math.rand(255, 400) * 0.01;
-
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 	}
 
@@ -22,6 +20,8 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
+		this.m.DifficultyMult = this.Math.rand(255, 400) * 0.01;
+		
 		//STAGE 1: Roll Item
 
 		//determine the possible items to roll in the contract and if there are mercenaries

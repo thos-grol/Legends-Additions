@@ -11,7 +11,6 @@ this.hunting_webknechts_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Name = "Hunting Webknechts";
 		this.m.Description = "Local sightings indicate Webknechts in the nearby woods. Hunt them down.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
-		this.m.DifficultyMult = ::Math.rand(150, 250) * 0.01;
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
 
 	}
@@ -23,6 +22,7 @@ this.hunting_webknechts_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
+		this.m.DifficultyMult = ::Math.rand(150, 250) * 0.01;
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 33)

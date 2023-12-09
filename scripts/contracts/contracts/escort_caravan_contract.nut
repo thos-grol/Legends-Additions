@@ -14,7 +14,6 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Description = "Caravans can always use more guards and the local leader of a caravan is still asking around for more guards.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 		this.m.MakeAllSpawnsAttackableByAIOnceDiscovered = true;
-		this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
 
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 	}
@@ -26,6 +25,8 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
+		this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
+		
 		local nobleHouses = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
 
 		foreach( i, h in nobleHouses )

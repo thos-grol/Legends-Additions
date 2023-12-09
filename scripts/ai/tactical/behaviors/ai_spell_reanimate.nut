@@ -27,15 +27,21 @@ this.ai_spell_reanimate <- this.inherit("scripts/ai/tactical/behavior", {
 		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP) return this.Const.AI.Behavior.Score.Zero;
 		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
 
+		::logInfo("reanimate reached 1");
 		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
 		if (this.m.Skill == null) return this.Const.AI.Behavior.Score.Zero;
 		if (!this.m.Skill.isUsable()) return this.Const.AI.Behavior.Score.Zero;
+		::logInfo("reanimate reached 2");
+
 
 		scoreMult = scoreMult * this.getFatigueScoreMult(this.m.Skill);
 		local myTile = _entity.getTile();
 		local potentialDanger = this.getPotentialDanger(true);
 		local currentDanger = 0.0;
 		yield null;
+
+		::logInfo("reanimate reached 3");
+
 
 		foreach( t in potentialDanger )
 		{
@@ -51,6 +57,9 @@ this.ai_spell_reanimate <- this.inherit("scripts/ai/tactical/behavior", {
 		{
 			return this.Const.AI.Behavior.Score.Zero;
 		}
+
+		::logInfo("reanimate reached 4");
+
 
 		local potentialCorpses = [];
 		local alliedFactions = _entity.getAlliedFactions();
@@ -132,10 +141,16 @@ this.ai_spell_reanimate <- this.inherit("scripts/ai/tactical/behavior", {
 			});
 		}
 
+		::logInfo("reanimate reached 5");
+
+
 		if (potentialCorpses.len() == 0)
 		{
 			return this.Const.AI.Behavior.Score.Zero;
 		}
+
+		::logInfo("reanimate reached 6");
+
 
 		potentialCorpses.sort(this.onSortByScore);
 		local navigator = this.Tactical.getNavigator();
@@ -301,6 +316,9 @@ this.ai_spell_reanimate <- this.inherit("scripts/ai/tactical/behavior", {
 			}
 		}
 
+		::logInfo("reanimate reached 7");
+
+
 		if (bestTarget == null)
 		{
 			return this.Const.AI.Behavior.Score.Zero;
@@ -314,24 +332,35 @@ this.ai_spell_reanimate <- this.inherit("scripts/ai/tactical/behavior", {
 			return this.Const.AI.Behavior.Score.Zero;
 		}
 
+		::logInfo("reanimate reached 8");
+
+
 		scoreMult = scoreMult * (1.0 + bestTarget.Properties.get("Corpse").Value / 25.0);
 		scoreMult = scoreMult * this.Math.maxf(0.0, 1.0 - currentDanger / this.Const.AI.Behavior.RaiseUndeadMaxDanger);
+		::logInfo("reanimate reached 9");
+
 		return this.Const.AI.Behavior.Score.RaiseUndead * scoreMult;
 	}
 
 	function onBeforeExecute( _entity )
 	{
+		::logInfo("reanimate reached 10");
+		
 		if (this.m.IsTravelling)
 		{
 			this.getAgent().getOrders().IsEngaging = true;
 			this.getAgent().getOrders().IsDefending = false;
 			this.getAgent().getIntentions().IsDefendingPosition = false;
 			this.getAgent().getIntentions().IsEngaging = true;
+		::logInfo("reanimate reached 11");
+
 		}
 	}
 
 	function onExecute( _entity )
 	{
+		::logInfo("reanimate reached 12");
+		
 		if (this.m.IsFirstExecuted)
 		{
 			if (this.m.IsTravelling)
@@ -389,6 +418,8 @@ this.ai_spell_reanimate <- this.inherit("scripts/ai/tactical/behavior", {
 		}
 		else
 		{
+			::logInfo("reanimate reached 13");
+			
 			if (this.Const.AI.VerboseMode)
 			{
 				this.logInfo("* " + _entity.getName() + ": Using Reanimate!");
@@ -401,6 +432,8 @@ this.ai_spell_reanimate <- this.inherit("scripts/ai/tactical/behavior", {
 					this.getAgent().declareAction();
 					this.getAgent().declareEvaluationDelay();
 				}
+				::logInfo("reanimate reached 14");
+
 
 				this.commandRecentlyRaised(_entity, this.m.TargetTile);
 			}
@@ -476,9 +509,11 @@ this.ai_spell_reanimate <- this.inherit("scripts/ai/tactical/behavior", {
 
 	function canResurrectOnTile( _tile, _force = false )
 	{
-		return _tile.IsCorpseSpawned
-			&& ( _tile.Properties.get("Corpse").IsResurrectable || _force
-				|| !("FleshNotAllowed" in _tile.Properties.get("Corpse")) );
+		if (!_tile.IsCorpseSpawned) return false;
+		if (_force) return true;
+		if (_tile.Properties.get("Corpse").IsResurrectable || !("FleshNotAllowed" in _tile.Properties.get("Corpse")) ) return true;
+
+		return false;
 	}
 
 });
