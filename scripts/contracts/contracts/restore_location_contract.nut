@@ -17,7 +17,8 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Name = "Rebuilding Effort";
 		this.m.Description = "Local lords have a spare work party and want to restore the nearby ruins. Clear the location out and escort the work party to the site.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
-		this.m.DifficultyMult = ::Math.rand(140, 200) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(135, 150) * 0.01;
+
 
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "E");
 	}
