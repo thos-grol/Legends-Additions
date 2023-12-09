@@ -254,6 +254,7 @@ gt.Const.World.Spawn.PeasantsSouthern <- {
 	]
 };
 
+
 gt.Const.World.Spawn.CultistPatrol <- {
 	Name = "Cultist Patrol",
 	IsDynamic = true,

@@ -8,7 +8,6 @@
 "\n• Reduce the effects that permenant injuries has on this character or transform the injury in some eldritch way.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendSpecCultArmor].Tooltip = ::Const.Strings.PerkDescription.LegendSpecCultArmor;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendSpecCultArmor].Icon = "ui/perks/penance_circle2.png";
 
 ::mods_hookExactClass("skills/perks/perk_legend_specialist_cult_armor", function (o)
 {
@@ -17,7 +16,7 @@
 		this.m.ID = "perk.legend_specialist_cult_armor";
 		this.m.Name = ::Const.Strings.PerkName.LegendSpecCultArmor;
 		this.m.Description = "Reduce the effects that permenant injuries has on this character or transform the injury in some eldritch way. This character is no longer affected by allies dying or losing hitpoints.";
-		this.m.Icon = "ui/perks/penance_circle2.png";
+		this.m.Icon = "ui/perks/penance_circle.png";
 		this.m.Type = ::Const.SkillType.Perk;
 		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;

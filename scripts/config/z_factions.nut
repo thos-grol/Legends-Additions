@@ -187,3 +187,20 @@
     "scripts/factions/actions/send_nomad_roamers_action",
     "scripts/factions/actions/defend_nomad_action"
 ];
+
+
+//cultists - solution from davkul rising
+::Const.FactionType.Cultists <- ::Const.FactionType.COUNT;
+::Const.FactionType.COUNT++
+::Const.Faction.Cultists <- ::Const.Faction.COUNT;
+::Const.Faction.COUNT++
+::Const.FactionBase.push("bust_base_beasts")
+// ::Const.FactionTrait.Actions[this.Const.FactionTrait.Settlement].push("scripts/factions/actions/drive_away_cultists_action");
+// ::Const.FactionTrait.Actions[this.Const.FactionTrait.NobleHouse].push("scripts/factions/actions/free_cultist_prisoner_action");
+
+::Const.CultistTraits <- 
+[
+	"scripts/factions/actions/build_cultist_camp_action", 
+	"scripts/factions/actions/send_cultist_ambushers_action", 
+	"scripts/factions/actions/send_cultist_roamers_action", 
+];

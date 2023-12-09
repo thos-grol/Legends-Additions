@@ -10,7 +10,7 @@ this.cultist_priest <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.m.Hairs = this.Const.Hair.AllMale;
 		this.m.HairColors = this.Const.HairColors.All;
 		this.m.Beards = this.Const.Beards.All;
-		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_melee_agent");
+		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_ranged_agent");
 		this.m.AIAgent.setActor(this);
 
 		if (this.Math.rand(1, 100) <= 10)
@@ -68,34 +68,26 @@ this.cultist_priest <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function pickOutfit()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
-			[
-				3,
-				"cultist_leather_armor"
-			],
-			[
-				2,
-				"barbarians/animal_hide_armor"
-			],
+		local outfits = [
 			[
 				1,
-				"barbarians/hide_and_bone_armor"
+				"brown_monk_outfit_00"
 			]
-		]));
-		local item = this.Const.World.Common.pickHelmet([
-			[
-				2,
-				"cultist_hood"
-			],
-			[
-				1,
-				"cultist_leather_hood"
-			]
-		]);
+		];
 
-		if (item != null)
+		foreach( item in this.Const.World.Common.pickOutfit(outfits) )
 		{
 			this.m.Items.equip(item);
+		}
+
+		local head = this.m.Items.getItemAtSlot(this.Const.ItemSlot.Head);
+		if (head != null)
+			head.setUpgrade(::new("scripts/items/legend_helmets/vanity/legend_helmet_sack"));
+		else
+		{
+			local helmet = ::new("scripts/items/legend_helmets/hood/legend_helmet_leather_hood");
+			this.m.Items.equip(helmet);
+			helmet.setUpgrade(::new("scripts/items/legend_helmets/vanity/legend_helmet_sack"));
 		}
 	}
 

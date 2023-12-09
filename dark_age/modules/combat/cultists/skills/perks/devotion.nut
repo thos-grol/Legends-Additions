@@ -117,44 +117,44 @@
 
 });
 
-::mods_hookExactClass("skills/effects/dodge_effect", function (o)
-{
-	o.getTooltip = function()
-	{
-		local actor = this.getContainer().getActor();
-		local initiative = this.Math.floor(actor.getInitiative() * (actor.getSkills().hasSkill("perk.legend_specialist_cult_hood") ? 0.05 : 0.15));
-		return [
-			{
-				id = 1,
-				type = "title",
-				text = this.getName()
-			},
-			{
-				id = 2,
-				type = "description",
-				text = this.getDescription()
-			},
-			{
-				id = 10,
-				type = "text",
-				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Melee Defense"
-			},
-			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Ranged Defense"
-			}
-		];
-	}
+// ::mods_hookExactClass("skills/effects/dodge_effect", function (o)
+// {
+// 	o.getTooltip = function()
+// 	{
+// 		local actor = this.getContainer().getActor();
+// 		local initiative = this.Math.floor(actor.getInitiative() * (actor.getSkills().hasSkill("perk.legend_specialist_cult_hood") ? 0.05 : 0.15));
+// 		return [
+// 			{
+// 				id = 1,
+// 				type = "title",
+// 				text = this.getName()
+// 			},
+// 			{
+// 				id = 2,
+// 				type = "description",
+// 				text = this.getDescription()
+// 			},
+// 			{
+// 				id = 10,
+// 				type = "text",
+// 				icon = "ui/icons/melee_defense.png",
+// 				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Melee Defense"
+// 			},
+// 			{
+// 				id = 11,
+// 				type = "text",
+// 				icon = "ui/icons/ranged_defense.png",
+// 				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Ranged Defense"
+// 			}
+// 		];
+// 	}
 
-	o.onAfterUpdate = function( _properties )
-	{
-		local actor = this.getContainer().getActor();
-		local initiative = this.Math.floor(actor.getInitiative() * (actor.getSkills().hasSkill("perk.legend_specialist_cult_hood") ? 0.05 : 0.15));
-		_properties.MeleeDefense += this.Math.max(0, initiative);
-		_properties.RangedDefense += this.Math.max(0, initiative);
-	}
+// 	o.onAfterUpdate = function( _properties )
+// 	{
+// 		local actor = this.getContainer().getActor();
+// 		local initiative = this.Math.floor(actor.getInitiative() * (actor.getSkills().hasSkill("perk.legend_specialist_cult_hood") ? 0.05 : 0.15));
+// 		_properties.MeleeDefense += this.Math.max(0, initiative);
+// 		_properties.RangedDefense += this.Math.max(0, initiative);
+// 	}
 
-});
+// });

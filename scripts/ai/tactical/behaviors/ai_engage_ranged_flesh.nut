@@ -20,6 +20,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 		PossibleSkills = [
 			"actives.bone_bolt",
 			"actives.negative_energy_hand",
+			"actives.eldritch_blast"
 		]
 	},
 	function isUsedThisTurn()

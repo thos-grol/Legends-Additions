@@ -1,6 +1,6 @@
 this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 	m = {
-		BlastCount = 3,
+		BlastCount = 2,
 		IsPull = false
 	},
 	function create()
@@ -158,7 +158,7 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 			for (local i = 0; i < getBlastCount(); i++)
 			{
 				this.Time.scheduleEvent(this.TimeUnit.Virtual, this.m.Delay + delay, this.onPerformAttack, tag);
-				delay += 750;
+				delay += 1500;
 			}
 
 
@@ -388,7 +388,7 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 		local agent = actor.getAIAgent();
 		if (agent.findBehavior(::Const.AI.Behavior.ID.EldritchBlast) == null)
 		{
-			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_cultist_eldritch_blast"));
+			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_eldritch_blast"));
 			agent.finalizeBehaviors();
 		}
 
@@ -399,13 +399,6 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 		}
 	}
 });
-
-::Const.ProjectileType.ELDRITCHBLAST <- ::Const.ProjectileType.COUNT;
-::Const.ProjectileType.COUNT = ::Const.ProjectileType.COUNT + 1;
-
-local decals = [];
-::Const.ProjectileDecals.push(decals);
-::Const.ProjectileSprite.push("projectile_blast");
 
 ::Const.Tactical.BlastParticles <- [
 	{
@@ -420,8 +413,8 @@ local decals = [];
 		],
 		Stages = [
 			{
-				LifeTimeMin = 0.1,
-				LifeTimeMax = 0.2,
+				LifeTimeMin = 0.05,
+				LifeTimeMax = 0.1,
 				ColorMin = this.createColor("eb64f0ff"),
 				ColorMax = this.createColor("eb64f0ff"),
 				ScaleMin = 0.5,
@@ -438,8 +431,8 @@ local decals = [];
 				ForceMax = this.createVec(0, 90)
 			},
 			{
-				LifeTimeMin = 0.1,
-				LifeTimeMax = 0.2,
+				LifeTimeMin = 0.05,
+				LifeTimeMax = 0.1,
 				ColorMin = this.createColor("eb64f0ff"),
 				ColorMax = this.createColor("eb64f0ff"),
 				ScaleMin = 0.75,
@@ -454,8 +447,8 @@ local decals = [];
 				ForceMax = this.createVec(0, 90)
 			},
 			{
-				LifeTimeMin = 0.1,
-				LifeTimeMax = 0.2,
+				LifeTimeMin = 0.05,
+				LifeTimeMax = 0.1,
 				ColorMin = this.createColor("52fc9cf0"),
 				ColorMax = this.createColor("52fce0f0"),
 				ScaleMin = 1.0,
@@ -468,8 +461,8 @@ local decals = [];
 				ForceMax = this.createVec(0, 90)
 			},
 			{
-				LifeTimeMin = 0.1,
-				LifeTimeMax = 0.2,
+				LifeTimeMin = 0.05,
+				LifeTimeMax = 0.1,
 				ColorMin = this.createColor("eb64f0ff"),
 				ColorMax = this.createColor("eb64f0ff"),
 				ScaleMin = 1.15,
@@ -495,8 +488,8 @@ local decals = [];
 		],
 		Stages = [
 			{
-				LifeTimeMin = 0.1,
-				LifeTimeMax = 0.2,
+				LifeTimeMin = 0.05,
+				LifeTimeMax = 0.1,
 				ColorMin = this.createColor("32fafa00"),
 				ColorMax = this.createColor("ffffff00"),
 				ScaleMin = 0.25,
@@ -513,8 +506,8 @@ local decals = [];
 				ForceMax = this.createVec(0, 90)
 			},
 			{
-				LifeTimeMin = 0.2,
-				LifeTimeMax = 0.3,
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 1.5,
 				ColorMin = this.createColor("32fafaff"),
 				ColorMax = this.createColor("ffffffff"),
 				ScaleMin = 0.25,
@@ -529,8 +522,8 @@ local decals = [];
 				ForceMax = this.createVec(0, 90)
 			},
 			{
-				LifeTimeMin = 0.2,
-				LifeTimeMax = 0.3,
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 1.5,
 				ColorMin = this.createColor("39fa32f0"),
 				ColorMax = this.createColor("fffffff0"),
 				ScaleMin = 0.25,
@@ -543,8 +536,8 @@ local decals = [];
 				ForceMax = this.createVec(0, 90)
 			},
 			{
-				LifeTimeMin = 0.3,
-				LifeTimeMax = 0.5,
+				LifeTimeMin = 0.15,
+				LifeTimeMax = 0.25,
 				ColorMin = this.createColor("00d88200"),
 				ColorMax = this.createColor("00d88200"),
 				ScaleMin = 0.5,
@@ -568,8 +561,8 @@ local decals = [];
 		],
 		Stages = [
 			{
-				LifeTimeMin = 0.1,
-				LifeTimeMax = 0.2,
+				LifeTimeMin = 0.05,
+				LifeTimeMax = 0.1,
 				ColorMin = this.createColor("ffffff00"),
 				ColorMax = this.createColor("ffffff00"),
 				ScaleMin = 0.25,
@@ -586,8 +579,8 @@ local decals = [];
 				ForceMax = this.createVec(0, 10)
 			},
 			{
-				LifeTimeMin = 0.1,
-				LifeTimeMax = 0.2,
+				LifeTimeMin = 0.05,
+				LifeTimeMax = 0.1,
 				ColorMin = this.createColor("ffffff30"),
 				ColorMax = this.createColor("ffffff30"),
 				ScaleMin = 0.25,
@@ -602,8 +595,8 @@ local decals = [];
 				ForceMax = this.createVec(0, 10)
 			},
 			{
-				LifeTimeMin = 0.1,
-				LifeTimeMax = 0.2,
+				LifeTimeMin = 0.05,
+				LifeTimeMax = 0.1,
 				ColorMin = this.createColor("00d8d800"),
 				ColorMax = this.createColor("00d8d800"),
 				ScaleMin = 0.5,
