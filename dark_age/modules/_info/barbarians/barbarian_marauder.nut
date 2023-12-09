@@ -7,7 +7,7 @@
 	Hitpoints = 65,
 	Bravery = 60,
 	Stamina = 110,
-	MeleeSkill = 65,
+	MeleeSkill = 60,
 	RangedSkill = 55,
 	MeleeDefense = 20,
 	RangedDefense = 20,
@@ -130,9 +130,9 @@
 		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
-		["Initiative", 7, 3, 3],
-		["Melee Skill", 7, 3, 3],
-		["Melee Defense", 7, 3, 3],
+		["Initiative", 7, 0, 2],
+		["Melee Skill", 7, 0, 2],
+		["Melee Defense", 7, 0, 2],
 	],
 	Loadout = [
 		[
