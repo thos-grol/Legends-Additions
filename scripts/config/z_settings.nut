@@ -1,4 +1,6 @@
 //remove camping influence, but also nerf heal and repair
+
+::Const.AI.ParallelizationMode = false;
 ::Const.Difficulty.HealMult = [
     0.75,
     0.75,

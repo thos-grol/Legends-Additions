@@ -26,7 +26,6 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Name = "Brigand Army (Legendary)";
 		this.m.Description = "Rumours of a brigand army have disturbed locals and their lords. Investigate and take out their supposed army.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
-		this.m.DifficultyMult = this.Math.rand(175, 195) * 0.01;
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
 	}
 
@@ -52,6 +51,8 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
+		this.m.DifficultyMult = this.Math.rand(175, 195) * 0.01;
+		
 		if (this.m.Home == null)
 		{
 			this.setHome(this.World.State.getCurrentTown());

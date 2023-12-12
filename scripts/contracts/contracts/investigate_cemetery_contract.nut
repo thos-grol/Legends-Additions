@@ -16,7 +16,6 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 		this.m.Name = "Secure Cemetery";
 		this.m.Description = "Locals report a disturbance at a nearby cemetery. Investigate and secure the cemetery.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
-		this.m.DifficultyMult = this.Math.rand(115, 145) * 0.01;
 
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 	}
@@ -28,6 +27,8 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 
 	function start()
 	{
+		this.m.DifficultyMult = this.Math.rand(115, 145) * 0.01;
+		
 		if (this.m.Destination == null || this.m.Destination.isNull())
 		{
 			local myTile = this.World.State.getPlayer().getTile();

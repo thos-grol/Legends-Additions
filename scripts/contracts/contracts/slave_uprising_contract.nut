@@ -13,7 +13,6 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 	function create()
 	{
 		this.contract.create();
-		this.m.DifficultyMult = this.Math.rand(100, 150) * 0.01;
 		this.m.Type = "contract.slave_uprising";
 		this.m.Name = "Slave Uprising";
 		this.m.Description = "The Viziers are restless as an indebted uprising is afoot at a nearby location. Find the rebels and deal with them.";
@@ -27,6 +26,7 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
+		this.m.DifficultyMult = this.Math.rand(100, 150) * 0.01;
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 33)

@@ -11,9 +11,8 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Description = "Brigands have stolen a local artifact and the city is in an outrage. Follow their tracks, leave no survivors, and return the city\'s relic.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 		local orig = this.getDifficultyMult();
-		this.m.DifficultyMult = ::Math.rand(135, 150) * 0.01;
 
-		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "F");
+		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "E");
 	}
 
 	function onImportIntro()
@@ -23,6 +22,7 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
+		this.m.DifficultyMult = ::Math.rand(90, 100) * 0.01;
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
 		if (this.Math.rand(1, 100) <= 33)
