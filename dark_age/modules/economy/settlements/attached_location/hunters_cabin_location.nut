@@ -37,16 +37,11 @@
 	{
 		if (_id == "building.marketplace")
 		{
-			_list.push({
-				R = 0,
-				P = 1.0,
-				S = "supplies/legend_fresh_meat_item"
-			});
-			_list.push({
-				R = 80,
-				P = 1.0,
-				S = "tents/tent_hunter"
-			});
+			// _list.push({
+			// 	R = 0,
+			// 	P = 1.0,
+			// 	S = "supplies/legend_fresh_meat_item"
+			// });
 		}
 	}
 

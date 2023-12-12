@@ -58,11 +58,6 @@
 				S = "weapons/scimitar"
 			});
 			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "tents/tent_scout"
-			});
-			_list.push({
 				R = 60,
 				P = 1.0,
 				S = "weapons/oriental/light_southern_mace"

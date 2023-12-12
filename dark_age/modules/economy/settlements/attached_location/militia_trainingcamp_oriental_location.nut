@@ -65,11 +65,6 @@
 				P = 1.0,
 				S = "supplies/ammo_small_item"
 			});
-			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "tents/tent_fletcher"
-			});
 		}
 		else if (_id == "building.specialized_trader")
 		{

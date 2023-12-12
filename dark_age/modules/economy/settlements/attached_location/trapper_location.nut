@@ -28,11 +28,6 @@
 				P = 1.0,
 				S = "trade/furs_item"
 			});
-			_list.push({
-				R = 80,
-				P = 1.0,
-				S = "tents/tent_hunter"
-			});
 			break;
 
 		default:

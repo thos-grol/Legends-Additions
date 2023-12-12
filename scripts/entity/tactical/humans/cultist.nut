@@ -50,8 +50,8 @@ this.cultist <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_orcs");
 		this.m.Skills.add(this.new("scripts/skills/traits/deathwish_trait"));
-		if (::Math.rand(1,100) <= 44) this.m.Skills.add(this.new("scripts/skills/actives/cultist_pain_ritual"));
-		this.m.Skills.add(this.new("scripts/skills/injury_permanent/missing_eye_injury"));
+		if (::Math.rand(1,100) <= 25) this.m.Skills.add(this.new("scripts/skills/actives/cultist_pain_ritual"));
+		if (::Math.rand(1,100) <= 50) this.m.Skills.add(this.new("scripts/skills/injury_permanent/missing_eye_injury"));
 		this.m.Skills.add(this.new("scripts/skills/injury_permanent/brain_damage_injury"));
 	}
 
@@ -75,7 +75,7 @@ this.cultist <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 
 
-	
+
 	}
 
 });

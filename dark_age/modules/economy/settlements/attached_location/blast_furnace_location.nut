@@ -13,11 +13,7 @@
 		switch(_id)
 		{
 			case "building.marketplace":
-				_list.push({
-					R = 90,
-					P = 1.0,
-					S = "tents/tent_scrap"
-				});
+
 				_list.push({
 					R = 25,
 					P = 1.0,

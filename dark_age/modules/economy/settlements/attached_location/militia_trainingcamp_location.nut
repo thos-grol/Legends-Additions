@@ -61,11 +61,6 @@
 				S = "shields/wooden_shield"
 			});
 			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "tents/tent_scout"
-			});
-			_list.push({
 				R = 65,
 				P = 1.0,
 				S = "shields/legend_tower_shield"

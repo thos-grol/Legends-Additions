@@ -43,11 +43,6 @@
 				S = "weapons/shortsword"
 			},
 			{
-				R = 80,
-				P = 1.0,
-				S = "tents/tent_repair"
-			},
-			{
 				R = 45,
 				P = 1.0,
 				S = "weapons/pike"

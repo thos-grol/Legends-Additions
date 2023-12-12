@@ -21,21 +21,20 @@
 };
 
 ::B.Info[::Const.EntityType.Cultist] <- {
-    Level = 9,
+    Level = 8,
     Pattern = [
         ["scripts/skills/perks/perk_legend_recuperation"],
         ["scripts/skills/perks/perk_legend_specialist_cult_hood"],
         ["W", 3],
         ["W", 4],
-        ["scripts/skills/perks/perk_strange_strikes"], //7
         ["D", 6],
         ["scripts/skills/perks/perk_legend_specialist_cult_armor"],
         ["scripts/skills/perks/perk_duelist"], //7
     ],
 	LevelUps = [
-		["Resolve", 8, 3, 3],
-		["Melee Skill", 8, 0, 3],
-		["Melee Defense", 8, 0, 3],
+		["Resolve", 7, 3, 3],
+		["Melee Skill", 7, 0, 3],
+		["Melee Defense", 7, 0, 3],
 	],
 	Outfit = [
 		[
@@ -47,6 +46,12 @@
 	Loadout = [
 		[
 			"scripts/items/weapons/ancient/khopesh",
+		],
+		[
+			"scripts/items/weapons/legend_chain",
+		],
+		[
+			"scripts/items/weapons/greenskins/orc_flail_2h",
 		],
 	],
 	Builds = {},
@@ -62,16 +67,15 @@
         ["scripts/skills/perks/perk_legend_specialist_cult_hood"],
         ["scripts/skills/perks/perk_legend_net_repair"],
         ["W", 4],
-        ["scripts/skills/perks/perk_strange_strikes"], //7
         ["D", 6],
         ["scripts/skills/perks/perk_legend_specialist_cult_armor"],
         ["scripts/skills/perks/perk_legend_net_casting"],
 
     ],
 	LevelUps = [
-		["Resolve", 8, 3, 3],
-		["Melee Skill", 8, 0, 3],
-		["Melee Defense", 8, 0, 3],
+		["Resolve", 7, 3, 3],
+		["Melee Skill", 7, 0, 3],
+		["Melee Defense", 7, 0, 3],
 	],
 	Loadout = [
 		[
