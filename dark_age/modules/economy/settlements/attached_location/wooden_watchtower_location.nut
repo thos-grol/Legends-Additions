@@ -56,11 +56,6 @@
 				P = 1.0,
 				S = "shields/legend_tower_shield"
 			});
-			_list.push({
-				R = 80,
-				P = 1.0,
-				S = "tents/tent_scout"
-			});
 			break;
 
 		default:

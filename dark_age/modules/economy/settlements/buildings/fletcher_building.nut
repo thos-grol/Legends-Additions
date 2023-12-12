@@ -33,11 +33,6 @@
 				S = "weapons/legend_slingstaff"
 			},
 			{
-				R = 80,
-				P = 1.0,
-				S = "tents/tent_fletcher"
-			},
-			{
 				R = 0,
 				P = 1.0,
 				S = "ammo/quiver_of_arrows"

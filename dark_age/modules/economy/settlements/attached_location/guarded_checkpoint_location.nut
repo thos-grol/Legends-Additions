@@ -79,11 +79,6 @@
 				S = "weapons/military_cleaver"
 			});
 			_list.push({
-				R = 80,
-				P = 1.0,
-				S = "tents/tent_scout"
-			});
-			_list.push({
 				R = 70,
 				P = 1.0,
 				S = "weapons/boar_spear"

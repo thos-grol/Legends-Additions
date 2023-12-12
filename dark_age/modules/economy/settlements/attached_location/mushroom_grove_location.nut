@@ -34,11 +34,6 @@
 				S = "weapons/legend_sickle"
 			});
 			_list.push({
-				R = 90,
-				P = 0.9,
-				S = "tents/tent_gather"
-			});
-			_list.push({
 				R = 20,
 				P = 0.9,
 				S = "supplies/medicine_item"

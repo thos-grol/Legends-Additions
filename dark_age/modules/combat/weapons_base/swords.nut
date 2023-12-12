@@ -44,10 +44,8 @@
 });
 
 ::mods_hookExactClass("items/weapons/oriental/qatal_dagger", function (o){
-    local create = o.create;
-	o.create = function()
+	o.post_create <- function()
 	{
-		create();
 		this.m.WeaponType = this.Const.Items.WeaponType.Sword | this.Const.Items.WeaponType.Dagger;
 	}
 });

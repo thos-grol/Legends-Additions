@@ -87,12 +87,6 @@
 				S = "weapons/legend_slingstaff"
 			});
 			_list.push({
-				R = 90,
-				P = 1.0,
-				S = "tents/tent_scout"
-			});
-
-			_list.push({
 				R = 45,
 				P = 1.0,
 				S = "legend_armor/tabard/legend_common_tabard"
