@@ -4,8 +4,8 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
-//TODO: vampire overhaul and infected contracts
-    //TODO: FEATURE Necrosavant -> Grail, Knock | necrosavant -> dead apostle
+//FEATURE_1: vampire overhaul and infected contracts
+    //FEATURE_1: FEATURE Necrosavant -> Grail, Knock | necrosavant -> dead apostle
     //Modes:
         //Scummy - tp away close to party, summon weakest bro to it
         //Guerilla - tp and strike, tp and strike
@@ -13,7 +13,7 @@
     //All attacks cause bleed, and heal damage caused from attacks including bleed.
     //Hexe
 
-//TODO: sounds so loud
+//TODO: fix sounds so loud
 
 
 //TODO: rework skeleton units
@@ -108,12 +108,16 @@ Boss: The Fool
      - unequipping will die
 
 
-
-
+---
 
 Event Deck:
     Fool
 
+
+bloodthirsty units
+    gain +20% stats
+    gain lacerate
+    gain bloodbath - buff bloodbath to increase initiative and damage
 
 Encounter deck:
     Feral Wolf
@@ -124,14 +128,26 @@ Encounter deck:
 
 Boss: The Gatekeeper
 
+spawn legendary location on start
+suppression quests otherwise, the castle will conduct raids, and more bloodthirsty will spawn
+
 The Castle of Night
+    Treasure: blood magic book
+        - convert health to mana
+        - bats teleport
+        - blood needles - fires needles of blood that infect the target and causes bleed
+            - blood harvest - all bleeding units within 3 tiles will take 5 damage. Will heal the caster 2 for each enemy damaged this way
+        - blood explosion - detonate the infected blood, causing damage for each infection stack. if the enemy dies, inflict blood needle to all units in 2 tile radius
+
 
 Encounter deck:
-    Bloodthirsty Servant
-    Bloodthirsty Guard
-    Blood Noble
+    Bloodthirsty Servant (has necrosavant powers) stage I
+    Bloodthirsty Guard (has necrosavant powers) stage II
+    Blood Noble (has necrosavant powers) stage III
 
-Final Boss: Dead Apostle
+Final Boss: Dead Apostle (true necrosavant) stage IV
+    Dead apostle potion
+
 
 '
 

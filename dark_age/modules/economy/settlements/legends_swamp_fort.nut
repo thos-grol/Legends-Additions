@@ -113,34 +113,34 @@
 		this.m.DraftLists = [
 			[
 				"cultist_background",
-				
+
 				"daytaler_background",
 				"hunter_background",
 				"militia_background",
 				"militia_background",
 				"ratcatcher_background",
 				"ratcatcher_background",
-				
-				
+
+
 				"bastard_background",
 				"deserter_background",
 				"retired_soldier_background",
 				"cultist_background",
-				
+
 				"hunter_background",
 				"militia_background",
 				"militia_background",
 				"ratcatcher_background",
 				"ratcatcher_background",
-				
-				
+
+
 				"bastard_background",
 				"deserter_background",
 				"retired_soldier_background"
 			],
 			[
 				"apprentice_background",
-				
+
 				"beggar_background",
 				"butcher_background",
 				"cultist_background",
@@ -149,12 +149,12 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				
-				
+
+
 				"ratcatcher_background",
-				
-				
-				
+
+
+
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
@@ -162,7 +162,7 @@
 				"raider_background",
 				"retired_soldier_background",
 				"apprentice_background",
-				
+
 				"butcher_background",
 				"cultist_background",
 				"gravedigger_background",
@@ -170,12 +170,12 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				
-				
+
+
 				"ratcatcher_background",
-				
-				
-				
+
+
+
 				"bastard_background",
 				"deserter_background",
 				"raider_background",
@@ -183,7 +183,7 @@
 			],
 			[
 				"apprentice_background",
-				
+
 				"beggar_background",
 				"butcher_background",
 				"cultist_background",
@@ -192,12 +192,12 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				
-				
+
+
 				"ratcatcher_background",
-				
-				
-				
+
+
+
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
@@ -205,7 +205,7 @@
 				"raider_background",
 				"retired_soldier_background",
 				"apprentice_background",
-				
+
 				"butcher_background",
 				"cultist_background",
 				"gravedigger_background",
@@ -213,12 +213,12 @@
 				"messenger_background",
 				"militia_background",
 				"militia_background",
-				
-				
+
+
 				"ratcatcher_background",
-				
-				
-				
+
+
+
 				"bastard_background",
 				"deserter_background",
 				"raider_background",
@@ -227,34 +227,34 @@
 		];
 		this.m.FemaleDraftLists = [
 			[
-				
-				
+
+
 			],
 			[
-				
-				
+
+
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background"
 			],
 			[
-				
-				
+
+
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background"
 			]
 		];
 		this.m.StablesLists = [
 			[
-				
-				
+
+
 			],
 			[
-				
-				
+
+
 			],
 			[
-				
-				
+
+
 			]
 		];
 
@@ -277,11 +277,11 @@
 		local r = this.Math.rand(1, 2);
 		if (r == 1)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 		}
 		else if (r == 2)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 50)
@@ -357,21 +357,17 @@
 	{
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
 
-		local r = this.Math.rand(1, 3);
-		if (r == 1 || ::Const.World.Buildings.Kennels == 0)
+		local r = this.Math.rand(2, 3);
+		if (r == 2)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/kennel_building"));
-		}
-		else if (r == 2)
-		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 		}
 		else if (r == 3)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 40)
@@ -460,26 +456,17 @@
 	{
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
 
-		if (::Const.World.Buildings.Kennels == 0)
+		local r = this.Math.rand(2, 3);
+		if (r == 2)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/kennel_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 		}
-		else
+		else if (r == 3)
 		{
-			local r = this.Math.rand(2, 3);
-
-
-			if (r == 2)
-			{
-				this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
-			}
-			else if (r == 3)
-			{
-				this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
-			}
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 40)

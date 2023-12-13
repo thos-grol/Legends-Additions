@@ -97,7 +97,7 @@
 				"gambler_background",
 				"daytaler_background",
 				"daytaler_background",
-				
+
 				"refugee_background",
 				//"tailor_background",
 				"thief_background",
@@ -107,7 +107,7 @@
 				"brawler_background",
 				"caravan_hand_background",
 				"gambler_background",
-				
+
 				"refugee_background",
 				"vagabond_background",
 				"poacher_background"
@@ -115,7 +115,7 @@
 			[
 				"apprentice_background",
 				"beggar_background",
-				
+
 				"caravan_hand_background",
 				"caravan_hand_background",
 				"gambler_background",
@@ -125,8 +125,8 @@
 				"hunter_background",
 				"mason_background",
 				"militia_background",
-				
-				
+
+
 				"ratcatcher_background",
 				"refugee_background",
 				"refugee_background",
@@ -145,7 +145,7 @@
 				"hunter_background",
 				"mason_background",
 				"militia_background",
-				
+
 				"ratcatcher_background",
 				"refugee_background",
 				"refugee_background",
@@ -167,11 +167,11 @@
 				"militia_background",
 				"militia_background",
 				"militia_background",
-				
-				
-				
-				
-				
+
+
+
+
+
 				"ratcatcher_background",
 				"refugee_background",
 				"refugee_background",
@@ -183,37 +183,37 @@
 				"raider_background",
 				"retired_soldier_background",
 				"sellsword_background",
-				
+
 				"cripple_background",
 				"eunuch_background",
-				
+
 			]
 		];
 		this.m.FemaleDraftLists = [
 			[
-				
-				
-				
-				
-				
+
+
+
+
+
 			],
 			[
-				
-				
-				
-				
-				
-				
-				
-				
+
+
+
+
+
+
+
+
 				"female_adventurous_noble_background"
 			],
 			[
-				
-				
-				
-				
-				
+
+
+
+
+
 				"female_adventurous_noble_background",
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background"
@@ -243,17 +243,22 @@
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
 
+		if (this.m.Size >= 2 && this.Math.rand(1, 100) <= 50)
+		{
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/blackmarket_building"));
+		}
+
 		if (this.Math.rand(1, 100) <= 25)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 		}
 		else if (this.Math.rand(1, 100) <= 25)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
 		}
 		else if (this.Math.rand(1, 100) <= 25)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 50)
@@ -320,16 +325,16 @@
 	{
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 		local r = this.Math.rand(1, 2);
 
 		if (r == 1 || ::Const.World.Buildings.Fletchers == 0)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
 		}
 		else if (r == 2)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 70)
@@ -409,20 +414,20 @@
 	{
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 
 		if (this.Math.rand(1, 100) <= 50)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/training_hall_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/training_hall_building"));
 		}
 		else if (this.Math.rand(1, 100) <= 50)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 		}
 		else
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 60)

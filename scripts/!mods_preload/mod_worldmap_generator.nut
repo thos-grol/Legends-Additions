@@ -292,7 +292,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 		{
 			local settlements = this.World.EntityManager.getSettlements();
 
-			if (::Const.World.Buildings.Blackmarket < 2)
+			if (::Const.World.Buildings.Blackmarket < 4)
 			{
 				local candidates = [];
 
