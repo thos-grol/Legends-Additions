@@ -166,21 +166,23 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 
 				local party_type;
 				local difficulty_modifier = 1.0;
-				party.setDescription("A group of thieves.");
+				local desc = "A group of thieves";
 
 				if (this.Flags.get("IsMercenary"))
 				{
 					party_type = ::Const.World.Spawn.MercenariesLow;
-					party.setDescription("Second-rate mercenaries");
+					desc = "Second-rate mercenaries";
 				}
 				else if (this.Flags.get("IsCultist"))
 				{
 					party_type = ::Const.World.Spawn.CultistPatrol;
-					party.setDescription("A flock of cultists");
+					desc = "A flock of cultists";
 				}
 				else party_type = ::Const.World.Spawn.Mercenaries;
 
 				local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, party_type, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * difficulty_modifier);
+				party.setDescription(desc);
+
 
 
 				party.setFootprintType(::Const.World.FootprintsType.Brigands);

@@ -196,7 +196,7 @@ gt.Const.World.Spawn.MercenariesLow <- {
 			]
 		},
 		{
-			Weight = 5,
+			Weight = 3,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.HedgeKnight,
