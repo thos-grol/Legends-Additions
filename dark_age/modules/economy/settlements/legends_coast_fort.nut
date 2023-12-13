@@ -272,16 +272,16 @@
 	{
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/port_building"), 3);
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/port_building"), 3);
 
 		local r = this.Math.rand(1, 2);
 		if (r == 1)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 		}
 		else if (r == 2)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
 		}
 
 		this.buildAttachedLocation(1, "scripts/entity/world/attached_location/harbor_location", [
@@ -318,25 +318,25 @@
 	{
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/port_building"), 3);
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/port_building"), 3);
 
 		if (this.Math.rand(1, 100) <= 50)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 		}
 		else
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
 		}
 
 		local r = this.Math.rand(1, 2);
 		if (r == 1)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 		}
 		else if (r == 2)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 70)
@@ -428,8 +428,8 @@
 	{
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/port_building"), 3);
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/training_hall_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/port_building"), 3);
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/training_hall_building"));
 
 		if (::Legends.Mod.ModSettings.getSetting("StackCitadels").getValue())
 		{
@@ -440,8 +440,8 @@
 				::Const.World.TerrainType.Hills,
 				::Const.World.TerrainType.Tundra
 			];
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 			this.buildAttachedLocation(1, "scripts/entity/world/attached_location/stone_watchtower_location", ALL, [], 5, true);
 			this.buildAttachedLocation(1, "scripts/entity/world/attached_location/fortified_outpost_location", ALL, [], 1, true);
 			this.buildAttachedLocation(1, "scripts/entity/world/attached_location/ore_smelters_location", ALL, [], 0, false, true, true);
@@ -462,15 +462,15 @@
 			return;
 		}
 
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 
 		if (this.Math.rand(1, 100) <= 50)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 		}
 		else
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 60)

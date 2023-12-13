@@ -120,7 +120,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				
+
 				"thief_background",
 				"poacher_background",
 				"apprentice_background",
@@ -132,7 +132,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				
+
 				"poacher_background"
 			],
 			[
@@ -151,7 +151,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				
+
 				"ratcatcher_background",
 				"servant_background",
 				"shepherd_background",
@@ -171,7 +171,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				
+
 				"ratcatcher_background",
 				"shepherd_background",
 				"vagabond_background"
@@ -192,7 +192,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				
+
 				"ratcatcher_background",
 				"servant_background",
 				"shepherd_background",
@@ -212,7 +212,7 @@
 				"miner_background",
 				"miner_background",
 				"miner_background",
-				
+
 				"ratcatcher_background",
 				"shepherd_background",
 				"vagabond_background"
@@ -220,19 +220,19 @@
 		];
 		this.m.FemaleDraftLists = [
 			[
-				
-				
-				
+
+
+
 			],
 			[
-				
-				
-				
+
+
+
 			],
 			[
-				
-				
-				
+
+
+
 			]
 		];
 		this.m.StablesLists = [
@@ -255,9 +255,14 @@
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
 
+		if (this.m.Size >= 2 && this.Math.rand(1, 100) <= 50)
+		{
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/blackmarket_building"));
+		}
+
 		if (this.Math.rand(1, 100) <= 50)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 50)
@@ -320,20 +325,20 @@
 	{
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 		local r = this.Math.rand(1, 3);
 
 		if (r <= 1)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 		}
 		else if (r <= 2)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 		}
 		else if (r == 3)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 50)
@@ -439,20 +444,20 @@
 	{
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 		local r = this.Math.rand(1, 3);
 
 		if (r <= 1)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 		}
 		else if (r <= 2)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 		}
 		else if (r == 3)
 		{
-			this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
+			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_building"));
 		}
 
 		if (this.Math.rand(1, 100) <= 50)

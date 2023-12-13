@@ -30,7 +30,7 @@
 			"eunuch_southern_background",
 			"slave_background",
 			"slave_background",
-			
+
 			"slave_southern_background",
 			"slave_southern_background",
 			"slave_southern_background",
@@ -172,7 +172,7 @@
 
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_oriental_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_oriental_building"), 2);
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/alchemist_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/alchemist_building"));
 		local w = 0;
 		local a = 0;
 
@@ -180,29 +180,29 @@
 		{
 			if (::Const.World.Buildings.Arenas == 0)
 			{
-				this.addBuilding(::new("scripts/entity/world/settlements/buildings/arena_building"));
+				if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/arena_building"));
 			}
 			else if (::Const.World.Buildings.WeaponsmithsOriental == 0)
 			{
-				this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_oriental_building"));
+				if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_oriental_building"));
 				w = ++w;
 				w = w;
 			}
 			else if (::Const.World.Buildings.ArmorsmithsOriental == 0)
 			{
-				this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_oriental_building"));
+				if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_oriental_building"));
 				a = ++a;
 				a = a;
 			}
 			else if (w == 0 && (a != 0 || this.Math.rand(1, 100) <= 50))
 			{
-				this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_oriental_building"));
+				if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/weaponsmith_oriental_building"));
 				w = ++w;
 				w = w;
 			}
 			else
 			{
-				this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_oriental_building"));
+				if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_oriental_building"));
 				a = ++a;
 				a = a;
 			}
@@ -210,7 +210,7 @@
 			i = ++i;
 		}
 
-		this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_oriental_building"));
+		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_oriental_building"));
 
 		if (this.Math.rand(1, 100) <= 60)
 		{
