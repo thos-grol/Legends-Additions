@@ -3,11 +3,11 @@ this.unhold_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomist_
 	function create()
 	{
 		this.anatomist_potion_item.create();
-		this.m.ID = "misc.potion.nachzehrer";
+		this.m.ID = "misc.potion.unhold";
 		this.m.Name = "Knight of Continuance";
 		this.m.Description = "";
 		this.m.IconLarge = "";
-		this.m.Icon = "consumables/potion_36.png";
+		this.m.Icon = "consumables/potion_32.png";
 		this.m.Value = 0;
 	}
 
