@@ -119,7 +119,7 @@ this.send_bandit_ambushers_action <- this.inherit("scripts/factions/faction_acti
 			mult = mult * (distanceToNextSettlement / 14);
 		}
 
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Brigands", false, this.Const.World.Spawn.BanditRaiders, this.Math.rand(75, 120) * this.getScaledDifficultyMult() * mult);
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Brigands", false, this.Const.World.Spawn.BanditRaiders, this.Math.rand(125, 200) * 1.0 * mult);
 		party.getSprite("banner").setBrush(settlement.getBanner());
 		party.setDescription("A rough and tough band of brigands preying on the weak.");
 		party.setFootprintType(this.Const.World.FootprintsType.Brigands);

@@ -4,8 +4,8 @@
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
 
-//FEATURE_1: vampire overhaul and infected contracts
-    //FEATURE_1: FEATURE Necrosavant -> Grail, Knock | necrosavant -> dead apostle
+//FEATURE_2: vampire overhaul and infected contracts
+    //FEATURE_2: FEATURE Necrosavant -> Grail, Knock | necrosavant -> dead apostle
     //Modes:
         //Scummy - tp away close to party, summon weakest bro to it
         //Guerilla - tp and strike, tp and strike

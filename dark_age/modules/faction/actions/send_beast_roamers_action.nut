@@ -153,10 +153,10 @@
 
 		beast = function ( _action, _nearTile = null ) //Unhold
 		{
-			if (this.World.getTime().Days < 10 && _nearTile == null)
-			{
-				return false;
-			}
+			// if (this.World.getTime().Days < 10 && _nearTile == null)
+			// {
+			// 	return false;
+			// }
 
 			local disallowedTerrain = [];
 

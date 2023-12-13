@@ -75,15 +75,6 @@
 			});
 		}
 
-		if (this.m.Settlement.getSize() >= 2 && !this.m.Settlement.hasAttachedLocation("attached_location.hunters_cabin"))
-		{
-			list.push({
-				R = 50,
-				P = 1.0,
-				S = "supplies/legend_fresh_meat_item"
-			});
-		}
-
 		if (this.m.Settlement.getSize() >= 3 && !this.m.Settlement.hasAttachedLocation("attached_location.goat_herd"))
 		{
 			list.push({

@@ -2,7 +2,8 @@ this.cultist_chosen <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.CultistKnight;
+		this.m.Type = this.Const.EntityType.CultistChosen;
+		this.m.Name = "Chosen of Davkul";
 		this.m.BloodType = this.Const.BloodType.Red;
 		this.m.XP = this.Const.Tactical.Actor.Cultist.XP;
 		this.abstract_human.create();
@@ -43,7 +44,7 @@ this.cultist_chosen <- this.inherit("scripts/entity/tactical/abstract_human", {
 		}
 
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.CultistKnight);
+		b.setValues(this.Const.Tactical.Actor.CultistChosen);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -69,25 +70,6 @@ this.cultist_chosen <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function pickOutfit()
 	{
-		local r;
-		local banner = 4;
-
-		if (("State" in this.Tactical) && this.Tactical.State != null && !this.Tactical.State.isScenarioMode())
-		{
-			banner = this.World.FactionManager.getFaction(this.getFaction()).getBanner();
-		}
-		else
-		{
-			banner = this.getFaction();
-		}
-
-		this.m.Surcoat = banner;
-
-		if (this.Math.rand(1, 100) <= 90)
-		{
-			this.getSprite("surcoat").setBrush("surcoat_" + (banner < 10 ? "0" + banner : banner));
-		}
-
 		this.m.Items.equip(this.Const.World.Common.pickArmor([
 			[
 				1,
@@ -153,11 +135,6 @@ this.cultist_chosen <- this.inherit("scripts/entity/tactical/abstract_human", {
 				"legend_enclave_vanilla_great_bascinet_03"
 			],
 			[
-				15,
-				"faction_helm",
-				banner
-			],
-			[
 				5,
 				"legend_frogmouth_helm"
 			],
@@ -166,7 +143,9 @@ this.cultist_chosen <- this.inherit("scripts/entity/tactical/abstract_human", {
 				"legend_frogmouth_helm_crested"
 			]
 		]));
-		helmet.setUpgrade(::new("scripts/items/legend_helmets/top/legend_helmet_cult_hood"));
+		local head = this.m.Items.getItemAtSlot(this.Const.ItemSlot.Head);
+		if (head != null)
+			head.setUpgrade(::new("scripts/items/legend_helmets/vanity/legend_helmet_sack"));
 	}
 
 });

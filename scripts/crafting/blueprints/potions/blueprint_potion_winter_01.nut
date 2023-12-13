@@ -1,4 +1,4 @@
-//FEATURE_1: add more recipes
+//FEATURE_3: add more recipes
 this.blueprint_potion_winter_01 <- this.inherit("scripts/crafting/blueprint", {
 	m = {},
 	function create()

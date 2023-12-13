@@ -698,7 +698,7 @@ gt.Const.World.Spawn.Troops <- {
 	Cultist = {
 		ID = this.Const.EntityType.Cultist,
 		Variant = 0,
-		Strength = 15,
+		Strength = 30,
 		Cost = 15,
 		Row = -1,
 		Script = "scripts/entity/tactical/humans/cultist"
@@ -706,7 +706,7 @@ gt.Const.World.Spawn.Troops <- {
 	CultistAmbush = {
 		ID = this.Const.EntityType.Cultist,
 		Variant = 0,
-		Strength = 15,
+		Strength = 30,
 		Cost = 15,
 		Row = -2,
 		Script = "scripts/entity/tactical/humans/cultist"
@@ -2044,7 +2044,7 @@ addEntityType("CultistChosen", "Chosen of Davkul", "Chosen of Davkul", "cultist_
 ::Const.World.Spawn.Troops.CultistPriest <- {
 	ID = this.Const.EntityType.CultistPriest,
 	Variant = 0,
-	Strength = 30,
+	Strength = 60,
 	Cost = 15,
 	Row = 3,
 	Script = "scripts/entity/tactical/humans/cultist_priest"
@@ -2053,7 +2053,7 @@ addEntityType("CultistChosen", "Chosen of Davkul", "Chosen of Davkul", "cultist_
 ::Const.World.Spawn.Troops.CultistKnight <- {
 	ID = this.Const.EntityType.CultistKnight,
 	Variant = 0,
-	Strength = 45,
+	Strength = 90,
 	Cost = 15,
 	Row = -1,
 	Script = "scripts/entity/tactical/humans/cultist_knight"
@@ -2062,7 +2062,7 @@ addEntityType("CultistChosen", "Chosen of Davkul", "Chosen of Davkul", "cultist_
 ::Const.World.Spawn.Troops.CultistChosen <- {
 	ID = this.Const.EntityType.CultistChosen,
 	Variant = 0,
-	Strength = 60,
+	Strength = 120,
 	Cost = 15,
 	Row = -1,
 	Script = "scripts/entity/tactical/humans/cultist_chosen"
