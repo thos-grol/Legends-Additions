@@ -167,7 +167,7 @@
 	// Logic
 	// =============================================================================================
 
-	
+
 
     o.onBeforeDamageReceived <- function( _attacker, _skill, _hitInfo, _properties )
 	{
@@ -181,6 +181,7 @@
 			if (_attacker.getID() == this.getContainer().getActor().getID()) return;
 
 			if ( _attacker.getSkills().getSkillByID("perk.stance.seismic_slam") != null) return;
+			if ( _attacker.getSkills().getSkillByID("perk.class.continuance_knight") != null) return;
 			if ( _attacker.getSkills().getSkillByID("perk.strange_strikes") != null) return;
 			if ( _attacker.getSkills().getSkillByID("actives.horrific_scream") != null) return;
 
@@ -301,6 +302,7 @@
 
 	o.getTooltip_Nimble <- function( _tooltip )
 	{
+		//TODO: check if nimble description is fixed
 		local fat = 0;
 		local body = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Body);
 		local head = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Head);
@@ -308,9 +310,10 @@
 		if (head != null) fat = fat + head.getStaminaModifier();
 		fat = this.Math.min(0, fat + 15);
 		local ret = this.Math.minf(1.0, 1.0 - 0.6 + this.Math.pow(this.Math.abs(fat), 1.23) * 0.01);
+		ret = 1.0 - ret;
 		local fm = this.Math.floor(ret * 100);
 
-		if (fm < 100)
+		if (fm > 0)
 		{
 			_tooltip.push({
 				id = 6,

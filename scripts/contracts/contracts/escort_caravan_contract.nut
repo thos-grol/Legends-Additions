@@ -25,8 +25,8 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
-		
+		this.m.DifficultyMult = this.Math.rand(150, 200) * 0.01;
+
 		local nobleHouses = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
 
 		foreach( i, h in nobleHouses )
@@ -396,7 +396,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 
 			function onCombatVictory( _combatID )
 			{
-				this.Flags.set("IsEnoughCombat", true);
+				if (::Math.rand(1,100) <= 44) this.Flags.set("IsEnoughCombat", true);
 
 				if (_combatID == "StolenGoods")
 				{

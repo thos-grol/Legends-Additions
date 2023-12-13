@@ -48,7 +48,7 @@ this.necromancer <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function drop_loot(_tile)
 	{
-		if (::Math.rand(1,100) <= 33 )
+		if (::Math.rand(1,100) <= 25 )
 		{
 			local tome = this.new("scripts/items/misc/tome");
 			tome.set_tome(this.m.Build.Drop);

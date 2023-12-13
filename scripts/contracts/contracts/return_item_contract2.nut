@@ -20,8 +20,8 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		this.m.DifficultyMult = this.Math.rand(255, 400) * 0.01;
-		
+		this.m.DifficultyMult = this.Math.rand(150, 300) * 0.01;
+
 		//STAGE 1: Roll Item
 
 		//determine the possible items to roll in the contract and if there are mercenaries
@@ -166,20 +166,23 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 
 				local party_type;
 				local difficulty_modifier = 1.0;
+				party.setDescription("A group of thieves.");
+
 				if (this.Flags.get("IsMercenary"))
 				{
-					party_type = ::Const.World.Spawn.Mercenaries;
-					difficulty_modifier = 0.75;
+					party_type = ::Const.World.Spawn.MercenariesLow;
+					party.setDescription("Second-rate mercenaries");
 				}
 				else if (this.Flags.get("IsCultist"))
 				{
-					party_type = ::Const.World.Spawn.CultistRaiders;
+					party_type = ::Const.World.Spawn.CultistPatrol;
+					party.setDescription("A flock of cultists");
 				}
 				else party_type = ::Const.World.Spawn.Mercenaries;
 
 				local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, party_type, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * difficulty_modifier);
 
-				party.setDescription("A group of thieves.");
+
 				party.setFootprintType(::Const.World.FootprintsType.Brigands);
 				party.setAttackableByAI(false);
 				party.getController().getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);

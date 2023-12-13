@@ -1,11 +1,7 @@
-//TODO: scp item - cursed crystal skull
-//negative:
-	//will torment the holder and morale check them each turn
-	//upon being unequiped from the holder, do a morale check. if the holder fails, they will die. else inflict the afraid status on them
-	//-20 hp
-//positive: will issue a ghost screech at an enemy, if the holder has broken morale, the screech will attack the holder
 this.cursed_crystal_skull <- this.inherit("scripts/items/accessory/accessory", {
-	m = {},
+	m = {
+		Rarity = "Mythic",
+	},
 	function create()
 	{
 		this.accessory.create();
@@ -21,72 +17,62 @@ this.cursed_crystal_skull <- this.inherit("scripts/items/accessory/accessory", {
 		this.m.Value = 250;
 	}
 
-	function getTooltip()
+	function getTooltip_unique(_tooltip)
 	{
-		local result = [
-			{
-				id = 1,
-				type = "title",
-				text = this.getName()
-			},
-			{
-				id = 2,
-				type = "description",
-				text = this.getDescription()
-			}
-		];
-		result.push({
-			id = 66,
-			type = "text",
-			text = this.getValueString()
-		});
-
-		if (this.getIconLarge() != null)
-		{
-			result.push({
-				id = 3,
-				type = "image",
-				image = this.getIconLarge(),
-				isLarge = true
-			});
-		}
-		else
-		{
-			result.push({
-				id = 3,
-				type = "image",
-				image = this.getIcon()
-			});
-		}
-
-		result.push({
+		_tooltip.push({
 			id = 15,
 			type = "text",
 			icon = "ui/icons/special.png",
 			text = "Reduces the Resolve of any opponent engaged in melee by [color=" + this.Const.UI.Color.NegativeValue + "]-10[/color]"
 		});
-		result.push({
+		_tooltip.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/special.png",
 			text = "User can never have [color=" + this.Const.UI.Color.NegativeValue + "]confident[/color] morale"
 		});
-		return result;
+
+		return _tooltip;
 	}
 
 	function onUpdateProperties( _properties )
 	{
-		this.accessory.onUpdateProperties(_properties);
-		_properties.Threat += 10;
-		local actor = this.getContainer().getActor();
-		actor.setMaxMoraleState(this.Const.MoraleState.Steady);
+		// this.accessory.onUpdateProperties(_properties);
+		// _properties.Threat += 10;
+		// local actor = this.getContainer().getActor();
+		// actor.setMaxMoraleState(this.Const.MoraleState.Steady);
 
-		if (actor.getMoraleState() > this.Const.MoraleState.Steady)
-		{
-			actor.setMoraleState(this.Const.MoraleState.Steady);
-			actor.setDirty(true);
-		}
+		// if (actor.getMoraleState() > this.Const.MoraleState.Steady)
+		// {
+		// 	actor.setMoraleState(this.Const.MoraleState.Steady);
+		// 	actor.setDirty(true);
+		// }
 	}
+
+	function onPutIntoBag()
+	{
+		onEquip();
+	}
+
+	function onEquip()
+	{
+		this.accessory.onEquip();
+		// local unleash = this.new("scripts/skills/actives/unleash_wardog");
+		// this.addSkill(unleash);
+
+		//TODO: //negative:
+			//will torment the holder and morale check them each turn. if they fail the check inflict the screech damage on them as well
+			//cannot be unequipped unless if weilder is dead. else inflict the afraid status on them
+			//drains the lifeforce of the weilder -20 hp
+			//positive: will issue a ghost screech at an enemy, if the holder has broken morale, the screech will attack the holder
+
+		//After it is equipped, and this item is not found in that brother's inventory, they will die on battle start
+			//serialized skill
+
+
+	}
+
+	//TODO: prevent item from being removed from character
 
 });
 

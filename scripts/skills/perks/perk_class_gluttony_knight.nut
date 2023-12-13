@@ -1,8 +1,12 @@
-::Const.Strings.PerkName.GluttonyKnight <- "Gluttony Shield";
-::Const.Strings.PerkDescription.GluttonyKnight <- "Protection by the powers of gluttony..."
+::Const.Strings.PerkName.GluttonyKnight <- "Knight of Gluttony";
+::Const.Strings.PerkDescription.GluttonyKnight <- ::MSU.Text.color(::Z.Color.Purple, "Class")
++ "\nConsume, ravage, red... The remnant power of the Shub-Niggurath, the Mother Tree of Desire..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
++ "\nE Class Melee: " + ::MSU.Text.colorGreen("+20") + " Melee Skill"
++ "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Melee Defense"
++ "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Ranged Defense"
 + "\n• At the start of battle, gain 1 charge of shielding."
-+ "\n• Each charge can nullify a blow. Gain more charges through consuming enemies or corpses.";
++ "\n• Each charge can nullify an attack. Gain more charges through consuming enemies or corpses.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.GluttonyKnight].Name = ::Const.Strings.PerkName.GluttonyKnight;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.GluttonyKnight].Tooltip = ::Const.Strings.PerkDescription.GluttonyKnight;
@@ -133,6 +137,10 @@ this.perk_class_gluttony_knight <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
+		_properties.MeleeSkill += 20;
+		_properties.MeleeDefense += 10;
+		_properties.RangedDefense += 10;
+
 		if (this.m.Immunity)
 		{
 			_properties.IsImmuneToStun = true;

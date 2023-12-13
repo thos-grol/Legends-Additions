@@ -149,6 +149,112 @@
 		this.m.Options.push(beast);
 		this.m.BeastsLow.push(beast);
 
+
+
+		beast = function ( _action, _nearTile = null ) //Unhold
+		{
+			if (this.World.getTime().Days < 10 && _nearTile == null)
+			{
+				return false;
+			}
+
+			local disallowedTerrain = [];
+
+			for( local i = 0; i < ::Const.World.TerrainType.COUNT; i = i )
+			{
+				if (i == ::Const.World.TerrainType.Tundra || i == ::Const.World.TerrainType.Hills || i == ::Const.World.TerrainType.Mountains)
+				{
+				}
+				else
+				{
+					disallowedTerrain.push(i);
+				}
+
+				i = ++i;
+			}
+
+			local tile = _action.getTileToSpawnLocation(10, disallowedTerrain, 10 - (_nearTile == null ? 0 : 2), 100, 1000, 3, 0, _nearTile, 0.0, 0.9);
+
+			if (tile == null)
+			{
+				return false;
+			}
+
+			if (_action.getDistanceToNextAlly(tile) <= distanceToNextAlly / (_nearTile == null ? 1 : 2))
+			{
+				return false;
+			}
+
+			local UNHOLD = {
+				ID = ::Const.EntityType.Unhold,
+				Variant = 0,
+				Strength = 400,
+				Cost = 30,
+				Row = 0,
+				Script = "scripts/entity/tactical/enemies/la_unhold"
+			};
+
+			local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
+			local party = ::Const.World.Common.la_spawnEntity_single(_action.getFaction(), tile, "Unhold", false, UNHOLD, ::Const.World.Spawn.Unhold);
+
+			party.getSprite("banner").setBrush("banner_beasts_01");
+			party.setDescription("A lumbering giant");
+			party.setFootprintType(::Const.World.FootprintsType.Unholds);
+			party.setSlowerAtNight(true);
+			party.setUsingGlobalVision(false);
+			party.setLooting(false);
+			party.getFlags().set("IsUnholds", true);
+			local roam = ::new("scripts/ai/world/orders/roam_order");
+			roam.setNoTerrainAvailable();
+			roam.setTerrain(::Const.World.TerrainType.Forest, true);
+			roam.setTerrain(::Const.World.TerrainType.Hills, true);
+			roam.setTerrain(::Const.World.TerrainType.Tundra, true);
+			roam.setTerrain(::Const.World.TerrainType.Mountains, true);
+			local r = this.Math.rand(1, 20);
+
+			if (r == 1)
+			{
+				roam.setTerrain(::Const.World.TerrainType.Plains, true);
+			}
+			else if (r == 2)
+			{
+				roam.setTerrain(::Const.World.TerrainType.Badlands, true);
+			}
+			else if (r == 3)
+			{
+				roam.setTerrain(::Const.World.TerrainType.SnowyForest, true);
+			}
+			else if (r == 4)
+			{
+				roam.setTerrain(::Const.World.TerrainType.AutumnForest, true);
+			}
+			else if (r == 5)
+			{
+				roam.setTerrain(::Const.World.TerrainType.Farmland, true);
+			}
+			else if (r == 6)
+			{
+				roam.setTerrain(::Const.World.TerrainType.Steppe, true);
+			}
+			else if (r == 7)
+			{
+				roam.setTerrain(::Const.World.TerrainType.SwampForest, true);
+			}
+			else if (r == 8)
+			{
+				roam.setTerrain(::Const.World.TerrainType.LeaveForest, true);
+			}
+			else if (r == 9)
+			{
+				roam.setTerrain(::Const.World.TerrainType.Snow, true);
+			}
+
+			party.getController().addOrder(roam);
+			return true;
+		};
+		this.m.Options.push(beast);
+		this.m.BeastsLow.push(beast);
+
 		return; //FIXME: PLACEHOLDER remove for normal function, add more supernatural monsters
 
 
@@ -376,99 +482,8 @@
 			};
 			this.m.Options.push(beast);
 			this.m.BeastsLow.push(beast);
-			beast = function ( _action, _nearTile = null ) //Unhold
-			{
-				if (this.World.getTime().Days < 10 && _nearTile == null)
-				{
-					return false;
-				}
 
-				local disallowedTerrain = [];
 
-				for( local i = 0; i < ::Const.World.TerrainType.COUNT; i = i )
-				{
-					if (i == ::Const.World.TerrainType.Tundra || i == ::Const.World.TerrainType.Hills || i == ::Const.World.TerrainType.Mountains)
-					{
-					}
-					else
-					{
-						disallowedTerrain.push(i);
-					}
-
-					i = ++i;
-				}
-
-				local tile = _action.getTileToSpawnLocation(10, disallowedTerrain, 10 - (_nearTile == null ? 0 : 2), 100, 1000, 3, 0, _nearTile, 0.0, 0.9);
-
-				if (tile == null)
-				{
-					return false;
-				}
-
-				if (_action.getDistanceToNextAlly(tile) <= distanceToNextAlly / (_nearTile == null ? 1 : 2))
-				{
-					return false;
-				}
-
-				local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-				local party = _action.getFaction().spawnEntity(tile, "Unhold", false, ::Const.World.Spawn.Unhold, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
-				party.getSprite("banner").setBrush("banner_beasts_01");
-				party.setDescription("One or more lumbering giants.");
-				party.setFootprintType(::Const.World.FootprintsType.Unholds);
-				party.setSlowerAtNight(true);
-				party.setUsingGlobalVision(false);
-				party.setLooting(false);
-				party.getFlags().set("IsUnholds", true);
-				local roam = ::new("scripts/ai/world/orders/roam_order");
-				roam.setNoTerrainAvailable();
-				roam.setTerrain(::Const.World.TerrainType.Forest, true);
-				roam.setTerrain(::Const.World.TerrainType.Hills, true);
-				roam.setTerrain(::Const.World.TerrainType.Tundra, true);
-				roam.setTerrain(::Const.World.TerrainType.Mountains, true);
-				local r = this.Math.rand(1, 20);
-
-				if (r == 1)
-				{
-					roam.setTerrain(::Const.World.TerrainType.Plains, true);
-				}
-				else if (r == 2)
-				{
-					roam.setTerrain(::Const.World.TerrainType.Badlands, true);
-				}
-				else if (r == 3)
-				{
-					roam.setTerrain(::Const.World.TerrainType.SnowyForest, true);
-				}
-				else if (r == 4)
-				{
-					roam.setTerrain(::Const.World.TerrainType.AutumnForest, true);
-				}
-				else if (r == 5)
-				{
-					roam.setTerrain(::Const.World.TerrainType.Farmland, true);
-				}
-				else if (r == 6)
-				{
-					roam.setTerrain(::Const.World.TerrainType.Steppe, true);
-				}
-				else if (r == 7)
-				{
-					roam.setTerrain(::Const.World.TerrainType.SwampForest, true);
-				}
-				else if (r == 8)
-				{
-					roam.setTerrain(::Const.World.TerrainType.LeaveForest, true);
-				}
-				else if (r == 9)
-				{
-					roam.setTerrain(::Const.World.TerrainType.Snow, true);
-				}
-
-				party.getController().addOrder(roam);
-				return true;
-			};
-			this.m.Options.push(beast);
-			this.m.BeastsMedium.push(beast);
 			beast = function ( _action, _nearTile = null ) //Unhold Frost
 			{
 				if (this.World.getTime().Days < 10 && _nearTile == null)

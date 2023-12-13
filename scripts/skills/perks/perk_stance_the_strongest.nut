@@ -37,9 +37,9 @@ this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 		local slam = _attacker.getSkills().getSkillByID("perk.stance.seismic_slam");
 		if (slam != null) return;
 
-		slam = _attacker.getSkills().getSkillByID("perk.strange_strikes");
+		slam = _attacker.getSkills().getSkillByID("perk.class.continuance_knight");
 		if (slam != null) return;
-		
+
 		if (!this.m.Active)
 		{
 			this.m.Immunity = false;

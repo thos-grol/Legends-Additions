@@ -4,7 +4,7 @@ this.mage_winter_potion_item <- this.inherit("scripts/items/misc/anatomist/anato
 	{
 		this.anatomist_potion_item.create();
 		this.m.ID = "misc.potion.mage.winter";
-		this.m.Name = "Sequence: Winter Mage";
+		this.m.Name = "Mage of Winter";
 		this.m.Description = "The path of blasphemy, using the remnants of the gods.\n\nWinter is the principle of silence, of endings, and of those things that are not quite dead";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/potion_26.png";

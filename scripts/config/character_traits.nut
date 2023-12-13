@@ -124,10 +124,10 @@ gt.Const.CharacterTraits <- [
 		"trait.greedy",
 		"scripts/skills/traits/greedy_trait"
 	],
-	// [
-	// 	"trait.gluttonous",
-	// 	"scripts/skills/traits/gluttonous_trait"
-	// ],
+	[
+		"trait.gluttonous",
+		"scripts/skills/traits/gluttonous_trait"
+	],
 	// [
 	// 	"trait.spartan",
 	// 	"scripts/skills/traits/spartan_trait"

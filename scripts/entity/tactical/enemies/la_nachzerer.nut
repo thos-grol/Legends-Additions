@@ -263,7 +263,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
 	function drop_loot(_tile)
 	{
-		if (this.World.Retinue.hasFollower("follower.surgeon") && ::Math.rand(1,100) <= 33)
+		if (this.World.Retinue.hasFollower("follower.surgeon") && ::Math.rand(1,100) <= 25)
 		{
 			local tome = this.new("scripts/items/misc/anatomist/nachzehrer_potion_item");
 			tome.drop(_tile);

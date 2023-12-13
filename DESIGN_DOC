@@ -13,7 +13,6 @@
     //All attacks cause bleed, and heal damage caused from attacks including bleed.
     //Hexe
 
-//TODO: test crafting
 //TODO: sounds so loud
 
 
@@ -27,7 +26,114 @@
 //FIXME: SCAVENGE get ciri teleport
 //FIXME: SCAVENGE get aard
 
+//////////////////////////////////////////////
 
+Theoretical Framework for Dungeon
+
+- Dungons consists of stages
+    - each stage has a deck of encounters - random events or fights
+        - boss discovered (enables option to fight boss in screen)
+        - X amount of treasure cards - 10%, treasure deck
+        - encounter deck - 80%
+        - event deck - 10%
+
+        example screen:
+        Area description
+        Treasures found X/X
+
+        Choices
+            - Explore (Will draw from deck after rolling for which deck)
+            - Challenge Boss (Hidden until unlocked)
+            - Go Deeper (Hidden until boss defeated)
+            - Leave
+
+Spawn 1 castle of night per playthrough
+
+First Dungeon:
+
+Castle of Night
+This area is shrouded by eteranl night. In front of you looms a tangle of trees, a dense dark wood no doubt the scene where many have lost their lives. In the distance looms a majestic castle....'
+
+The Woods
+There seems to be some strange magic in these woods. Though you can see the castle in the distance, the distance in the woods does not shrink.
+
+Treasure Deck:
+
+3 Named Items
+
+1 Artefact
+- Rueful Axe, found in the forest
+    A cursed axe with a cursed story
+    drawn by hatred - enemies will be massively drawn to kill this character
+
+        the price is paid in blood - select a random brother in your party. if you take that axe, that brother will die
+        otherwise you lose the chance to take the axe forever
+
+- Chain of Anguish
+    Chain that inflicts anguish on those it strikes, decreasing their ap and has a high armor piercing
+    Negative side effect is that the bearer has a chance of taking part of the damage they inflict (luck can influence this chace) and that each strike has a chance of creating a ghost to seek revenge from the weilder
+
+
+- Sword of Decay
+
+- Cursed Handgonne, used by the gatekeeper
+    - every third shot fired will definitely hit the shooter
+    - unequipping the weapon will die
+
+Boss: The Fool
+- black jester helm - drop as loot, false. ending event will reward the hat
+    - nihil - transform greed, hate, despair, and wrath traits into more powerful versions
+        "Did you make me, or did I make you?"
+        - greed (greedy)
+            Happiness became obsession, obsession became greed...
+            - every time an enemy is hit, roll (can be influenced by luck)
+                - if this character is higher, recover 5-10 HP
+                - else lose 5-10 HP
+        - hate (any hate trait)
+            love turned into hatred...
+            - upon missing an attack, become staggered
+            - upon missing 3 attacks, reduce the AP cost of attacks by 1 (max 2)
+        - despair (deathwish)
+            when vows turned awry and the heart became hollow, all that was left was despair...
+            - every time this character is hit, gain 10% damage reduction (up to 50%)
+            - on turn start if this character was hit, X% chance to lose 5 AP. X is the % damage reduction
+        - wrath (bloodthirsty)
+            - betrayal was the seed of wrath...
+            - gain x% damage
+            - on turn start, attack a random character. if there are no allied characters within attack range of this character, there will be a rising chance to attack themselves
+
+        if all 4 traits are found on this character, the traits lose their negative effects.
+        all characters around this character are afflicted with nihil
+
+     - unequipping will die
+
+
+
+
+
+Event Deck:
+    Fool
+
+
+Encounter deck:
+    Feral Wolf
+    Bloodthirsty Wolf
+    Bloodthirsty Peasant
+    Bloodthirsty Thug
+    Bloodthirsty Raider
+
+Boss: The Gatekeeper
+
+The Castle of Night
+
+Encounter deck:
+    Bloodthirsty Servant
+    Bloodthirsty Guard
+    Blood Noble
+
+Final Boss: Dead Apostle
+
+'
 
 
 //////////////////////////////////////////////

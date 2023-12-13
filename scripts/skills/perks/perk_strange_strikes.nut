@@ -2,8 +2,7 @@
 ::Const.Strings.PerkDescription.StrangeStrikes <- "Confuse the enemy with strange, unpredicatble strikes..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("+10") + " Melee Skill"
-+ "\n"+::MSU.Text.colorRed("Attacks ignore Freedom of Movement and are unparriable")
-+ "\n"+::MSU.Text.colorRed("Attacks ignore Riposte");
++ "\n"+::MSU.Text.colorRed("Attacks ignore Freedom of Movement");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StrangeStrikes].Name = ::Const.Strings.PerkName.StrangeStrikes;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StrangeStrikes].Tooltip = ::Const.Strings.PerkDescription.StrangeStrikes;
@@ -28,11 +27,11 @@ this.perk_strange_strikes <- this.inherit("scripts/skills/skill", {
 		_properties.MeleeSkill += 10;
 	}
 
-	function onAnySkillExecuted( _skill, _targetTile, _targetEntity, _forFree )
-	{
-		if (!_skill.isAttack()) return;
-		_skill.m.IsIgnoringRiposte = true;
-	}
+	// function onAnySkillExecuted( _skill, _targetTile, _targetEntity, _forFree )
+	// {
+	// 	if (!_skill.isAttack()) return;
+	// 	_skill.m.IsIgnoringRiposte = true;
+	// }
 
 	function onAfterUpdate(_properties)
 	{

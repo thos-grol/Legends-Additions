@@ -75,6 +75,7 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lacerate"));
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_fast_adaption"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_overwhelm"));
@@ -323,7 +324,7 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 	function drop_loot(_tile)
 	{
-		if (this.World.Retinue.hasFollower("follower.surgeon") && ::Math.rand(1,100) <= 33)
+		if (this.World.Retinue.hasFollower("follower.surgeon") && ::Math.rand(1,100) <= 25)
 		{
 			local tome = this.new("scripts/items/misc/anatomist/direwolf_potion_item");
 			tome.drop(_tile);

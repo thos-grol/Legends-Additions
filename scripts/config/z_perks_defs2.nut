@@ -249,6 +249,15 @@ local perks = [
         IconDisabled = "ui/perks/class_gluttony_knight.png",
         Const = "GluttonyKnight"
     },
+    {
+        ID = "perk.class.continuance_knight",
+        Script = "scripts/skills/perks/perk_class_continuance_knight",
+        Name = "",
+        Tooltip = "",
+        Icon = "ui/perks/class_continuance_knight.png", //TODO: HOME ART
+        IconDisabled = "ui/perks/class_continuance_knight.png",
+        Const = "ContinuanceKnight"
+    },
 
     {
         ID = "perk.class.winter_mage",

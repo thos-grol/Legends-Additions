@@ -1,4 +1,20 @@
 CHANGELOG
+1.12
+
+economy
+- made armor customization free
+
+contract rebalance
+- return item (mercs) spawns revised to be weaker
+- caravan contracts are harder now
+
+perks
+- nerfed strange strikes: removed riposte and parry ignore
+
+enemies
+- unholds now roam the world, added unhold potion
+- necro, tried fixing necro reanimate bug
+
 1.11
 
 enemies

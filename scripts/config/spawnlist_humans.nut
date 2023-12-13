@@ -169,7 +169,7 @@ gt.Const.World.Spawn.MercenariesLow <- {
 	MinR = 97,
 	Troops = [
 		{
-			Weight = 75,
+			Weight = 60,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.MercenaryLOW,
@@ -178,11 +178,29 @@ gt.Const.World.Spawn.MercenariesLow <- {
 			]
 		},
 		{
-			Weight = 15,
+			Weight = 30,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Mercenary,
+					Cost = 25
+				}
+			]
+		},
+		{
+			Weight = 10,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.MercenaryRanged,
 					Cost = 25
+				}
+			]
+		},
+		{
+			Weight = 5,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.HedgeKnight,
+					Cost = 40
 				}
 			]
 		}
