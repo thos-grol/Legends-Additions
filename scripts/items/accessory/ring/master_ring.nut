@@ -7,9 +7,6 @@ this.master_ring <- this.inherit("scripts/items/accessory/cursed_accessory", {
 		this.m.Name = "Master\'s Ring";
 		this.m.Description = "If luck cannot pay the price, life will";
 		this.m.Icon = "loot/inventory_loot_09.png";
-		this.m.SlotType = this.Const.ItemSlot.None;
-		this.m.ItemType = this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.Loot;
-		this.m.IsDroppedAsLoot = true;
 		this.m.InventorySound = "sounds/combat/armor_leather_impact_03.wav";
 		this.m.Value = 1500;
 		this.m.CursePoints = 1;
@@ -28,31 +25,31 @@ this.master_ring <- this.inherit("scripts/items/accessory/cursed_accessory", {
 
 	function getToolTip_unique(_tooltip)
 	{
-		result.push({
+		_tooltip.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/regular_damage.png",
 			text = ::MSU.Text.colorGreen("+15") + " Damage"
 		});
-		result.push({
+		_tooltip.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/regular_damage.png",
 			text = ::MSU.Text.colorGreen("+15%") + " Armor Penetration"
 		});
-		result.push({
+		_tooltip.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/chance_to_hit_head.png",
 			text = ::MSU.Text.colorRed("+50%") + " Target Attraction"
 		});
-		result.push({
+		_tooltip.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/warning.png",
 			text = ::MSU.Text.colorRed("The above effects only work when the user is over 90% hp")
 		});
-		result.push({
+		_tooltip.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/chance_to_hit_head.png",

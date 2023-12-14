@@ -16,7 +16,7 @@ this._nokillstealing <- this.inherit("scripts/skills/skill", {
 	function onDamageReceived( _attacker, _damageHitpoints, _damageArmor )
 	{
 		local actor = this.getContainer().getActor();
-		if (_attacker.getID() == actor.getID()) //if self inflicted damage, pin the blame on the player
+		if (_attacker == null || _attacker.getID() == actor.getID()) //if self inflicted damage, pin the blame on the player
 		{
 			if (!(::Const.Faction.Player in this.m.Factions)) this.m.Factions[::Const.Faction.Player] <- 0;
 			this.m.Factions[::Const.Faction.Player] = this.m.Factions[::Const.Faction.Player] + _damageHitpoints + _damageArmor;

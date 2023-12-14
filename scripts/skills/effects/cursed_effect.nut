@@ -29,6 +29,11 @@ this.cursed_effect <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
+	function getName()
+	{
+		return this.m.Name + " " + getCursePoints();
+	}
+
 	function getCursePoints()
 	{
 		local curse = 0;
@@ -36,8 +41,10 @@ this.cursed_effect <- this.inherit("scripts/skills/skill", {
 		local items = actor.getItems().getAllItems();
 		foreach(i in items)
 		{
-			if (!("CursePoints" in i.m)) continue;
-			curse += i.m.CursePoints;
+			try
+			{
+				curse += i.m.CursePoints;
+			}catch(exception){}
 		}
 		return curse;
 	}
