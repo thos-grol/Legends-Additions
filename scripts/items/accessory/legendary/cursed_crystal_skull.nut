@@ -71,8 +71,5 @@ this.cursed_crystal_skull <- this.inherit("scripts/items/accessory/accessory", {
 
 
 	}
-
-	//TODO: prevent item from being removed from character
-
 });
 

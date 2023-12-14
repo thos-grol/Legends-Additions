@@ -11,7 +11,10 @@
 		if (!("State" in this.World)) return 0;
 
 		local wageMult = this.m.CurrentProperties.DailyWageMult * (this.World.State != null ? this.World.Assets.m.DailyWageMult : 1.0) - (this.World.State != null ? this.World.State.getPlayer().getWageModifier() : 0.0);
-		return this.Math.max(0, this.m.CurrentProperties.DailyWage * wageMult) + 2; //2 is Food cost
+		local wage = this.Math.max(0, this.m.CurrentProperties.DailyWage * wageMult) + 2; //2 is Food cost
+		if (this.getSkills().getSkillByID("trait.gluttonous") != null) wage += 2;
+
+		return wage;
 	}
 });
 

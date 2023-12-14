@@ -8,7 +8,7 @@ this.mage_winter_potion_item <- this.inherit("scripts/items/misc/anatomist/anato
 		this.m.Description = "The path of blasphemy, using the remnants of the gods.\n\nWinter is the principle of silence, of endings, and of those things that are not quite dead";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/potion_26.png";
-		this.m.Value = 0;
+		this.m.Value = 2000;
 	}
 
 	function get_tooltip(result)

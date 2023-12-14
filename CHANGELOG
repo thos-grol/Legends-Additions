@@ -1,4 +1,19 @@
 CHANGELOG
+1.13
+
+feature
+- added curse system
+
+economy
+- added potions to black market
+- added rings to black market
+- fixed chain attachment price
+
+traits
+- gluttony trait now makes bro cost 2 more per day
+
+
+
 1.12
 
 economy

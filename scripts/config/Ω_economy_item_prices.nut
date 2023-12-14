@@ -1168,7 +1168,9 @@
 	"armor.head.legend_helmet_orc_horn_mask" : 0,                      		//DUR: 60.00 | STA: -8.00
 	"armor.head.legend_helmet_fencer_hat" : 225,                         		//DUR: 15.00 | STA: 0.00
 	"armor.head.legend_helmet_unhold_head_chain" : 240,                  		//DUR: 45.00 | STA: -7.00
-	"armor.head.legend_helmet_chain_attachment" : 250,                   		//DUR: 25.00 | STA: -1.00
+
+	"armor.head.legend_helmet_chain_attachment" : 46,                   		//DUR: 25.00 | STA: -1.00
+
 	"armor.head.legend_helmet_enclave_armet_visor" : 300,                		//DUR: 35.00 | STA: -2.00
 	"armor.head.legend_helmet_faceplate_curved" : 300,                   		//DUR: 35.00 | STA: -2.00
 	"armor.head.legend_helmet_faceplate_flat" : 300,                     		//DUR: 35.00 | STA: -2.00
@@ -1176,7 +1178,7 @@
 	"armor.head.legend_helmet_faceplate_sharp" : 300,                    		//DUR: 35.00 | STA: -2.00
 	"armor.head.legend_helmet_leather_hood_barb" : 300,                  		//DUR: 45.00 | STA: -4.00
 	"armor.head.legend_helmet_enclave_great_jaw" : 350,                  		//DUR: 50.00 | STA: -5.00
-	"armor.head.legend_helmet_orc_metal_mask" : 400,                     		//DUR: 75.00 | STA: -11.00
+	"armor.head.legend_helmet_orc_metal_mask" : 0,                     			//DUR: 75.00 | STA: -11.00
 	"armor.head.legend_helmet_mummy_mask" : 450,                         		//DUR: 40.00 | STA: -3.00
 	"armor.head.legend_helmet_enclave_venitian_bascinet_visor" : 500,    		//DUR: 45.00 | STA: -3.00
 	"armor.head.legend_helmet_faceplate_snub_nose" : 500,                		//DUR: 45.00 | STA: -3.00

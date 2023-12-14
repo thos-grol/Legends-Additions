@@ -8,7 +8,7 @@ this.direwolf_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomis
 		this.m.Description = "This humoural concoction, borne from research into the dreaded direwolf, will turn even the clumsiest oaf into a lithe dancer of a warrior, able to gracefully move with the tides of battle long after lesser men succumb to fatigue! Mild akathisia after consuming is normal and expected.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/potion_26.png";
-		this.m.Value = 0;
+		this.m.Value = 1000;
 	}
 
 	function get_tooltip(result)

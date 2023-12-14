@@ -1,3 +1,12 @@
+//cursed item with bound by life must roll serialization id
+//curse - bound by life -> effect that kills unit on combat start if they are missing the item
+	//addserialized stacking effect (bound by death) - if player is missing item id on combat start, kill them
+
+//curse trait, cursed trait
+
+//effect has cursed points. onadded if cursedtrait dne add it.
+	//cursedtrait onupdate - checks amount of curse points. if curse points not enough, -10 max hp for each curse point over. if max hp not enough, kill character
+
 this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {},
 	function create()
@@ -47,8 +56,12 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	function getRerollChance()
 	{
 		local actor = this.getContainer().getActor();
-		switch(actor.getFlags().getAsInt("Lucky"))
+		local luck_tier = getAdjustedLuckTier(actor.getFlags().getAsInt("Lucky"));
+
+		switch(luck_tier)
 		{
+			case 0:
+				return 0;
 			case 1:
 				return 10;
 			case 2:
@@ -58,6 +71,69 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 			case 4:
 				return 90;
 		}
+	}
+
+	function getAdjustedLuckTier(luck_tier)
+	{
+		local curse = getCursePoints();
+
+		if (luck_tier == 4)
+		{
+			local luck = 8 - curse;
+			if (luck <= 0) luck_tier--;
+			curse = ::Math.max(0, curse - 8);
+			if (curse == 0) return luck_tier;
+		}
+
+		if (luck_tier == 3)
+		{
+			local luck = 4 - curse;
+			if (luck <= 0) luck_tier--;
+			curse = ::Math.max(0, curse - 4);
+			if (curse == 0) return luck_tier;
+		}
+
+		if (luck_tier == 2)
+		{
+			local luck = 2 - curse;
+			if (luck <= 0) luck_tier--;
+			curse = ::Math.max(0, curse - 2);
+			if (curse == 0) return luck_tier;
+		}
+
+		if (luck_tier == 1)
+		{
+			local luck = 1 - curse;
+			if (luck <= 0) luck_tier--;
+			curse = ::Math.max(0, curse - 1);
+			if (curse == 0) return luck_tier;
+		}
+
+		return luck_tier;
+	}
+
+	function getLuckyPoints()
+	{
+		local actor = this.getContainer().getActor();
+		switch(actor.getFlags().getAsInt("Lucky"))
+		{
+			case 1:
+				return 1;
+			case 2:
+				return 3;
+			case 3:
+				return 7;
+			case 4:
+				return 15;
+		}
+	}
+
+	function getCursePoints()
+	{
+		local actor = this.getContainer().getActor();
+		local curse = actor.getSkills().getSkillByID("effects.cursed");
+		if (curse == null) return 0;
+		return curse.getCursePoints();
 	}
 
 	function getName()
@@ -81,11 +157,15 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 
 	function getTooltip()
 	{
+		local name = this.getName();
+		local curse = getCursePoints();
+		if (curse > 0) name += " (Suppressed)"
+
 		local tooltip = [
 			{
 				id = 1,
 				type = "title",
-				text = this.getName()
+				text = name
 			},
 			{
 				id = 2,
@@ -94,6 +174,15 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 			}
 		];
 		getLuckTooltip(tooltip);
+
+		_tooltip.push({
+			id = 10,
+			type = "text",
+			icon = "ui/icons/warning.png",
+			text = getCursePoints() + "/" + getLuckyPoints() + " Curses"
+		});
+
+
 		return tooltip;
 	}
 

@@ -8,7 +8,7 @@ this.nachzehrer_potion_item <- this.inherit("scripts/items/misc/anatomist/anatom
 		this.m.Description = "";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/potion_36.png";
-		this.m.Value = 0;
+		this.m.Value = 1000;
 	}
 
 	function get_tooltip(result)

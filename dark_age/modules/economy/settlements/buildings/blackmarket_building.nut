@@ -40,6 +40,56 @@
 			},
 
 			{
+				R = 80,
+				P = 2.0,
+				S = "misc/anatomist/mage_winter_potion_item"
+			},
+			{
+				R = 80,
+				P = 2.0,
+				S = "misc/anatomist/nachzehrer_potion_item"
+			},
+			{
+				R = 80,
+				P = 2.0,
+				S = "misc/anatomist/direwolf_potion_item"
+			},
+
+			{
+				R = 80,
+				P = 2.0,
+				S = "accessory/ring/cloranthy_ring"
+			},
+			{
+				R = 80,
+				P = 2.0,
+				S = "accessory/ring/master_ring"
+			},
+			{
+				R = 80,
+				P = 2.0,
+				S = "accessory/ring/executioner_ring"
+			},
+			{
+				R = 80,
+				P = 2.0,
+				S = "accessory/ring/slyph_ring"
+			},
+
+
+
+
+			{
+				R = 0,
+				P = 1.0,
+				S = "misc/happy_powder_item"
+			},
+			{
+				R = 0,
+				P = 1.0,
+				S = "misc/happy_powder_item"
+			},
+			{
 				R = 0,
 				P = 1.0,
 				S = "misc/happy_powder_item"

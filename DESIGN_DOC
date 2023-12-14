@@ -1,19 +1,5 @@
 //figure out persistent tile effects for entities? - see malovolent spirits vala skill
 
-//TODO: make cursed ring item 
-    - first take the price (first luck, and then if not, health) ie. 1 luck tier or 10 HP.
-    - then grant bonus:
-        > Cloranthy ring: +10 fatigue regen
-        > Hunter's Ring: increases ranged skill and melee skill by 10
-        > Strength Ring: +15% damage
-        > Leo Ring: +25% damage for thrust attacks
-        > Wind Ring: +25 Initiative
-        > Executioner's First Ring: +25% Headshot chance
-        > Executioner's Second Ring: Recover 15 HP when hitting a headshot
-        > Master's Ring: Boosts damage by 25% as long as HP is over 90%. increases target attraction
-        > Obscuring Ring: -66% target attraction
-
-
 //TODO: Ring of Vitality (extremely valuable)
     - quadruples the amount of food the user eats
     - +20 HP
@@ -39,10 +25,6 @@
         +40% damage reduction
 
 //TODO: fix nimble description
-        
-
-
-//TODO: gluttony trait now increases food cost +2
 
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
@@ -108,13 +90,9 @@ Treasure Deck:
 - Rueful Axe, found in the forest
         select a random brother in your party >= level 10. force equip the axe on that brother
     A cursed axe with a cursed story
+        drawn by hatred - enemies will be massively drawn to kill the owner
 
-        bound by life - if the owner of this item starts combat without it, kill the owner
-            
-        drawn by hatred - enemies will be massively drawn to kill the owner    
-        
-        fated death - ignores luck rerolling, a missed attack will give + 10% hit chance
-        otherwise you lose the chance to take the axe forever. conversly, remove all luck from the holder. if the holder has no luck, -30 hp.
+
 
 - resurrection stone
     - grants the user a free reanimate skill that has a chance to be used each turn
@@ -122,7 +100,7 @@ Treasure Deck:
     - decreases the holder's hp by 30 or removes all their luck when binding
     - has a 5% base chance to raise a hostile undead. the stone remembers, and each usage will increase the chance
     bound by life - if the owner of this item starts combat without it, kill the owner
-    
+
 - invisibility cloak
     - gives the user the ability to turn invisible
     - massively increases target attraction when not invisible

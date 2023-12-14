@@ -191,17 +191,27 @@
 		local roll_2 = this.Math.rand(1, 100);
 		if (isHit && roll_2 <= _targetEntity.getCurrentProperties().RerollDefenseChance)
 		{
-			r = this.Math.rand(1, 100);
-			isHit = r <= toHit;
-
-			if (!isHit)
+			if (!_user.getFlags().has("IgnoreLuck"))
 			{
-				::Z.Log.skill(_user, null, getName(), r, toHit, "REROLL (" + roll_2 + " vs " + _targetEntity.getCurrentProperties().RerollDefenseChance + ")][DODGE");
+				r = this.Math.rand(1, 100);
+				isHit = r <= toHit;
+
+				if (!isHit)
+				{
+					::Z.Log.skill(_user, null, getName(), r, toHit, "REROLL (" + roll_2 + " vs " + _targetEntity.getCurrentProperties().RerollDefenseChance + ")][DODGE");
+				}
+				else
+				{
+					::Z.Log.skill(_user, null, getName(), r, toHit, "REROLL (" + roll_2 + " vs " + _targetEntity.getCurrentProperties().RerollDefenseChance + ")][FAIL", false);
+				}
 			}
 			else
 			{
-				::Z.Log.skill(_user, null, getName(), r, toHit, "REROLL (" + roll_2 + " vs " + _targetEntity.getCurrentProperties().RerollDefenseChance + ")][FAIL", false);
+				::Tactical.EventLog.log(
+					::Const.UI.getColorizedEntityName(_user) + ::MSU.Text.colorRed(" IS IGNORING LUCK")
+				);
 			}
+
 		}
 
 		if (isHit)
