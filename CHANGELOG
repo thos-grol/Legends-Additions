@@ -1,5 +1,14 @@
 CHANGELOG
 1.14
+
+traits
+- teamplayer now grants 20 resolve
+
+bugs
+- fixed interaction with damage immunity the pact of flesh
+- fixed few minor bugs with the strongest and nokillstealing
+
+1.14
 bugs
 - fixed necro reanimate bug
 - fixed bug with student not giving perk

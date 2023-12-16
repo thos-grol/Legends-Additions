@@ -60,7 +60,7 @@
 ::mods_hookExactClass("items/weapons/oriental/two_handed_scimitar", function (o){
     o.post_create <- function()
 	{
-		this.m.WeaponType = this.Const.Items.WeaponType.Sword | this.Const.Items.WeaponType.Dagger;
+		this.m.WeaponType = this.Const.Items.WeaponType.Sword | this.Const.Items.WeaponType.Cleaver;
 	}
 });
 

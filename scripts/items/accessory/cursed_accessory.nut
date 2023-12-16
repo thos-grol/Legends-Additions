@@ -1,4 +1,4 @@
-this.cursed_accessory <- this.inherit("scripts/items/accessory", {
+this.cursed_accessory <- this.inherit("scripts/items/accessory/accessory", {
 	m = {
 		CursePoints = 2
 	},

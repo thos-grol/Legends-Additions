@@ -48,6 +48,12 @@ this._flesh_master <- this.inherit("scripts/skills/skill", {
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
 		local actor = this.getContainer().getActor();
+
+		local gluttony_knight = actor.getSkills().getSkillByID("perk.class.gluttony_knight");
+        if (gluttony_knight != null && gluttony_knight.m.Charges > 0) return;
+		local the_strongest = actor.getSkills().getSkillByID("perk.stance.the_strongest");
+        if (the_strongest != null && the_strongest.m.Active) return;
+
 		local pact = actor.getSkills().getSkillByID("perk.meditation.pact_of_flesh");
 		if (pact == null) return;
 
@@ -58,6 +64,12 @@ this._flesh_master <- this.inherit("scripts/skills/skill", {
 	function onDamageReceived( _attacker, _damageHitpoints, _damageArmor )
 	{
 		local actor = this.getContainer().getActor();
+
+		local gluttony_knight = actor.getSkills().getSkillByID("perk.class.gluttony_knight");
+        if (gluttony_knight != null && gluttony_knight.m.Charges > 0) return;
+		local the_strongest = actor.getSkills().getSkillByID("perk.stance.the_strongest");
+        if (the_strongest != null && the_strongest.m.Active) return;
+
 		local pact = actor.getSkills().getSkillByID("perk.meditation.pact_of_flesh");
 		if (pact == null) return;
 

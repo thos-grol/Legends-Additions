@@ -37,6 +37,12 @@ this.teamplayer_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				type = "text",
 				icon = "ui/icons/special.png",
 				text = "Gives the commander perk tree. It is impossible to obtain otherwise"
+			},
+			{
+				id = 10,
+				type = "text",
+				icon = "ui/icons/bravery.png",
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+20[/color] Resolve"
 			}
 		];
 	}
@@ -45,6 +51,11 @@ this.teamplayer_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	{
 		local actor = this.getContainer().getActor();
 		actor.getFlags().set("Commander", true);
+	}
+
+	function onUpdate( _properties )
+	{
+		_properties.Bravery += 20;
 	}
 
 });

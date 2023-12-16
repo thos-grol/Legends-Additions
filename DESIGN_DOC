@@ -491,6 +491,8 @@ Undead cannot be charmed
 ::addItem("crude_axe")
 
 ::addItem("orc_young_potion_item")
+::addItem("cloranthy_ring")
+::addItem("slyph_ring")
 
 
 bbrusher pack legends_additions.brush C:\Files\Projects\bbros\brush\legends_additions --gfxPath C:\Files\Projects\bbros\brush

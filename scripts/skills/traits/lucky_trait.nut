@@ -175,7 +175,7 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		];
 		getLuckTooltip(tooltip);
 
-		_tooltip.push({
+		tooltip.push({
 			id = 10,
 			type = "text",
 			icon = "ui/icons/warning.png",

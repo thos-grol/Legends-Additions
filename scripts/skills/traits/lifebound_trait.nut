@@ -18,7 +18,7 @@ this.lifebound_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		this.m.IsHidden = false;
 		this.m.IsSerialized = true;
 	}
-w
+
 	function onCombatStarted()
 	{
 		local actor = this.getContainer().getActor();
