@@ -1,12 +1,4 @@
 CHANGELOG
-1.14
-
-traits
-- teamplayer now grants 20 resolve
-
-bugs
-- fixed interaction with damage immunity the pact of flesh
-- fixed few minor bugs with the strongest and nokillstealing
 
 1.14
 bugs
@@ -18,6 +10,8 @@ bugs
 - fixed bug with luck, where bros would randomly gain it unintended
 - fixed Nimble description in stats screen maybe
 - training drill now rolls melee defense
+- fixed interaction with damage immunity the pact of flesh
+- fixed few minor bugs with the strongest and nokillstealing
 
 backgrounds
 - barbarian
@@ -44,6 +38,9 @@ contracts
 
 artefacts
 - the cursed crystal skull item has been created
+
+traits
+- teamplayer now grants 20 resolve, so commander is better
 
 1.13
 
