@@ -249,6 +249,8 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 
 		//Assign outfit and get the defense tree
 		pickOutfit();
+		if (::Math.rand(1,100) <= 20) this.getSkills().add(::new("scripts/skills/traits/lucky_trait"));
+
 		local weight_armor = this.getItems().getStaminaModifier([
             ::Const.ItemSlot.Body,
             ::Const.ItemSlot.Head

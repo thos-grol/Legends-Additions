@@ -1,30 +1,32 @@
 //figure out persistent tile effects for entities? - see malovolent spirits vala skill
 
-//TODO: Ring of Vitality (extremely valuable)
+//skeletons are a higher form of undead, after all the flesh has been rotted away,
+//FEATURE_9: rework skeleton units
+    //ghost aura - passive that gives decrease armor damage and increase armor pen
+    //superlight - since the flesh has rotted away, the speed has increased
+    //steel bones - the bones are as durable as steel
+
+//FEATURE_9: rework skeleton priest //drops miasma tome
+
+
+//FEATURE_9: Ring of Vitality (extremely valuable)
     - quadruples the amount of food the user eats
     - +20 HP
 
-//TODO: Evil Eye Ring  (extremely valuable)
-    - unequip = death
-    - -40 HP
-    - killing an enemy will heal 33 HP
-    - grants eyes on the inside
-
-//TODO: Ring of Sacrifice (extremely valuable)
+//FEATURE_9: Ring of Sacrifice (extremely valuable)
         //An extremely cursed ring... just that the user does not need to pay the price because hundreds of sacrifices have
         - upon death, this ring will destroy itself and then heal the user to 50% HP.
         - permenantly degrades the luck of the user
 
 
 
-//TODO: Ring of Favor (A ring not from this world. Its beautiful construction is free of curses)
+//FEATURE_9: Ring of Favor (A ring not from this world. Its beautiful construction is free of curses)
         Boosts HP and Fatigue
 
-//TODO: Ring of Torpor:
+//FEATURE_9: Ring of Torpor:
         -15 Fat Regen
         +40% damage reduction
 
-//TODO: fix nimble description
 
 ::MSU.Log.printData( this.m.BaseProperties, 2);
 ::MSU.Log.printData( scripts );
@@ -38,11 +40,9 @@
     //All attacks cause bleed, and heal damage caused from attacks including bleed.
     //Hexe
 
-//TODO: fix sounds so loud
 
 
-//TODO: rework skeleton units
-//TODO: rework skeleton priest //drops miasma tome
+
 
 //FEATURE_0: create machine learning model for art
 
@@ -85,14 +85,6 @@ There seems to be some strange magic in these woods. Though you can see the cast
 Treasure Deck:
 
 3 Named Items
-
-1 Artefact
-- Rueful Axe, found in the forest
-        select a random brother in your party >= level 10. force equip the axe on that brother
-    A cursed axe with a cursed story
-        drawn by hatred - enemies will be massively drawn to kill the owner
-
-
 
 - resurrection stone
     - grants the user a free reanimate skill that has a chance to be used each turn

@@ -33,29 +33,15 @@
 
 	o.onAddEquipment = function()
 	{
+		local talents = this.getContainer().getActor().getTalents();
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.MeleeSkill] = 3;
+		talents[::Const.Attributes.MeleeDefense] = 3;
+		talents[::Const.Attributes.Initiative] = 3;
+
 		local items = this.getContainer().getActor().getItems();
-		local r;
-		r = this.Math.rand(0, 1);
+		items.equip(::new("scripts/items/weapons/oriental/qatal_dagger"));
 
-		if (r == 0)
-		{
-			items.equip(::new("scripts/items/weapons/oriental/qatal_dagger"));
-		}
-		else if (r == 1)
-		{
-			items.equip(::new("scripts/items/weapons/dagger"));
-		}
-
-		r = this.Math.rand(0, 1);
-
-		if (r == 0)
-		{
-			items.equip(::new("scripts/items/tools/smoke_bomb_item"));
-		}
-		else if (r == 1)
-		{
-			items.equip(::new("scripts/items/tools/daze_bomb_item"));
-		}
 
 		items.equip(::Const.World.Common.pickArmor([
 			[
@@ -73,6 +59,45 @@
 				"oriental/assassin_head_wrap"
 			]
 		]));
+	}
+
+	o.onChangeAttributes = function()
+	{
+		local c = {
+			Hitpoints = [
+				15,
+				20
+			],
+			Bravery = [
+				20,
+				25
+			],
+			Stamina = [
+				-5,
+				-5
+			],
+			MeleeSkill = [
+				12,
+				10
+			],
+			RangedSkill = [
+				0,
+				0
+			],
+			MeleeDefense = [
+				5,
+				8
+			],
+			RangedDefense = [
+				0,
+				0
+			],
+			Initiative = [
+				20,
+				15
+			]
+		};
+		return c;
 	}
 
 });

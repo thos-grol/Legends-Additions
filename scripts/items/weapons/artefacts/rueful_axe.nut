@@ -37,12 +37,13 @@ this.rueful_axe <- this.inherit("scripts/items/weapons/weapon", {
 		this.m.RegularDamageMax = 66;
 		this.m.ArmorDamageMult = 1.44;
 		this.m.DirectDamageMult = 0.44;
-
-		rollUUID();
 	}
 
 	function onEquip()
 	{
+		rollUUID();
+
+		local actor = this.getContainer().getActor();
 		this.weapon.onEquip();
 		this.addSkill(this.new("scripts/skills/actives/chop"));
 		local skillToAdd = this.new("scripts/skills/actives/split_shield");
@@ -59,7 +60,6 @@ this.rueful_axe <- this.inherit("scripts/items/weapons/weapon", {
 
 		local has_lifebound = false;
 
-		local actor = this.getContainer().getActor();
 		foreach (skill in actor.getSkills().getSkillsByFunction((@(_skill) "UUID" in _skill.m ).bindenv(this)))
 		{
 			if (skill.m.UUID != this.m.UUID) continue;

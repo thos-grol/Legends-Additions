@@ -23,7 +23,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 	function start()
 	{
 		this.m.DifficultyMult = this.Math.rand(70, 105) * 0.01;
-		
+
 		if (this.m.Home == null)
 		{
 			this.setHome(this.World.State.getCurrentTown());
@@ -156,16 +156,13 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 				if (r <= 5)
 				{
 					this.Flags.set("IsEvilArtifact", true);
-					if (!this.World.Flags.get("IsCursedCrystalSkull") && this.Math.rand(1, 100) <= 50)
-					{
-						this.Flags.set("IsCursedCrystalSkull", true);
-					}
+					if (!this.World.Flags.get("IsCursedCrystalSkull")) this.Flags.set("IsCursedCrystalSkull", true);
 				}
-				else if (r <= 15)
+				else if (r <= 20)
 				{
 					this.Flags.set("IsMercenaries", true);
 				}
-				else if (r <= 35)
+				else if (r <= 30)
 				{
 					this.Flags.set("IsThieves", true);
 				}
@@ -627,9 +624,12 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 							p.Loot = [
 								"scripts/items/accessory/legendary/cursed_crystal_skull"
 							];
-						}
 
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.UndeadArmy, 120 * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID());
+							this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Zombies, 400, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID());
+						}
+						else this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Zombies, 120 * this.m.DifficultyMult, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID());
+
+						//TODO: test cursed crystal skull fight
 						this.World.Contracts.startScriptedCombat(p, false, false, false);
 						return 0;
 					}

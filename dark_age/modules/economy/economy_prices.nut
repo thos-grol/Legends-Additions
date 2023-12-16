@@ -374,11 +374,11 @@
 	}
 ];
 
-//Caravan Budgets //TODO: experiment with caravan drops
+//Caravan Budgets
 ::Const.World.Common.WorldEconomy.setupTrade = function ( _party, _settlement, _destination, _fixedBudget = -1, _minBudget = -1, _maxBudget = -1 )
 {
 	local budget = _fixedBudget != -1 ? _fixedBudget : this.calculateTradingBudget(_settlement, _minBudget, _maxBudget);
-	budget = ::Math.round(budget);
+	if (_party.getFlags().has("Modifier")) budget = ::Math.round(_party.getFlags().getAsInt("Modifier") * 0.01 * budget);
 	local result = this.makeTradingDecision(_settlement, budget);
 	local finance = this.getExpectedFinancialReport(_settlement);
 	_settlement.addResources(-finance.Investment);
@@ -406,7 +406,7 @@
 		max = max - _target.Items.len();
 	}
 
-	local amount = ::Math.rand(1, 4);
+	local amount = ::Math.rand(1, 2);
 	for( local i = 0; i < amount; i = ++i )
 	{
 		_target.Items.push(::new("scripts/items/trade/iron_ingots_item"));
@@ -414,4 +414,37 @@
 	}
 
 	return _target;
+}
+
+::Const.World.Common.WorldEconomy.makeTradingDecision = function( _settlement, _budget )
+{
+	local decisions = this.compileTradingDecision(_settlement, _budget);
+
+	if (decisions.Potential.len() == 0)
+	{
+		return this.fillWithBreads(_settlement, _budget);
+	}
+
+	local name = this.getWeightContainer(decisions.Potential).roll();
+	local result;
+
+	result = this.gatherItems(_settlement, this.DecisionID[name], decisions.ItemList, _budget);
+
+	result.Items.sort(function ( _item1, _item2 )
+	{
+		if (_item1.getValue() > _item2.getValue())
+		{
+			return -1;
+		}
+		else if (_item1.getValue() < _item2.getValue())
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	});
+	result.Decision <- name;
+	return result;
 }

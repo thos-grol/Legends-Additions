@@ -1700,6 +1700,7 @@ gt.Const.World.Spawn.Troops <- {
 		Script = "scripts/entity/tactical/humans/noble_man_at_arms"
 	}
 };
+
 gt.Const.World.Spawn.Caravan <- {
 	Name = "Caravan",
 	IsDynamic = true,
@@ -1748,6 +1749,74 @@ gt.Const.World.Spawn.Caravan <- {
 		}
 	]
 };
+
+gt.Const.World.Spawn.CaravanMedium <- {
+	Name = "Caravan",
+	IsDynamic = true,
+	MovementSpeedMult = 0.5,
+	VisibilityMult = 1.0,
+	VisionMult = 0.25,
+	Body = "cart_02",
+	MaxR = 225,
+	MinR = 30,
+	Fixed = [
+		{
+			MinCount = 1,
+			MaxCount = 3,
+			Weight = 30,
+			Type = this.Const.World.Spawn.Troops.CaravanDonkey,
+			Cost = 0
+		}
+	],
+	Troops = [
+		{
+			Weight = 25,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.CaravanHand,
+					Cost = 10
+				},
+			]
+		},
+		{
+			Weight = 25,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Mercenary,
+					Cost = 25
+				}
+			]
+		},
+		{
+			Weight = 15,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.LegendCaravanPolearm,
+					Cost = 12
+				}
+			]
+		},
+		{
+			Weight = 5,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.MasterArcher,
+					Cost = 40
+				}
+			]
+		},
+		{
+			Weight = 50,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.CaravanGuard,
+					Cost = 12
+				}
+			]
+		}
+	]
+};
+
 gt.Const.World.Spawn.CaravanEscort <- [
 	{
 		Cost = 0,
@@ -2027,7 +2096,7 @@ local function addEntityType(_id, _name, _namePlural, _icon)
 		local max = 0;
 		foreach(key, value in ::Const.EntityType)
 		{
-			if (typeof value == "integer" && value > max) max = value; 
+			if (typeof value == "integer" && value > max) max = value;
 		}
 		::Const.EntityTypeMax <- max;
 	}

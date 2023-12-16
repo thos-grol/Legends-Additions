@@ -50,6 +50,7 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		talents[this.Const.Attributes.RangedSkill] = 3;
 		talents[this.Const.Attributes.MeleeDefense] = 3;
 		talents[this.Const.Attributes.Initiative] = 3;
+		bros[0].getFlags().set("Lucky", 3);
 		bros[0].m.PerkPoints = 7;
 		bros[0].m.LevelUps = 7;
 		bros[0].m.Level = 8;
@@ -67,6 +68,7 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		talents[this.Const.Attributes.RangedSkill] = 3;
 		talents[this.Const.Attributes.MeleeDefense] = 2;
 		talents[this.Const.Attributes.Hitpoints] = 3;
+		bros[1].getFlags().set("Lucky", 3);
 		local items = bros[1].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Mainhand));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Ammo));
@@ -89,6 +91,7 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		talents[this.Const.Attributes.RangedSkill] = 3;
 		talents[this.Const.Attributes.MeleeDefense] = 2;
 		talents[this.Const.Attributes.Hitpoints] = 3;
+		bros[2].getFlags().set("Lucky", 3);
 		local items = bros[2].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Mainhand));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Ammo));

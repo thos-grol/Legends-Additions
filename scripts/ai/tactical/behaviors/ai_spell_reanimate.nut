@@ -27,13 +27,14 @@ this.ai_spell_reanimate <- this.inherit("scripts/ai/tactical/behavior", {
 		if (!this.m.Skill.isUsable()) return this.Const.AI.Behavior.Score.Zero;
 
 		local result = {
+			Skill = this.m.Skill,
 			Tiles = [],
 			Num = 0
 		};
 		local onQueryTilesHit = function( _tile, result )
 		{
 			if (_tile.getEntity() != null) return;
-			if (!this.m.Skill.onVerifyTarget( _originTile, _tile)) return;
+			if (!result.Skill.onVerifyTarget( _originTile, _tile)) return;
 			result.Tiles.push(_tile);
 			result.Num += 1;
 		};

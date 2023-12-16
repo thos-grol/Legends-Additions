@@ -9,7 +9,7 @@ this.blacksmith_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Image = "ui/campfire/blacksmith_01";
 		this.m.Cost = 500;
 		this.m.Effects = [
-			"+200% repair speed (Base 75%, so about 150%)",
+			"+200% repair speed (Base 60%, so about 120%)",
 			"Saves all gear even if they are broken or lost in battle",
 			"Unlocks weapon crafting recipes. Check the crafting tent for details (WIP)",
 		];

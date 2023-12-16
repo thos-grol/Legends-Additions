@@ -82,12 +82,12 @@
 	{
 		local c = {
 			Hitpoints = [
-				10,
-				5
-			],
-			Bravery = [
 				15,
 				20
+			],
+			Bravery = [
+				20,
+				25
 			],
 			Stamina = [
 				10,

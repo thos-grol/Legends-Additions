@@ -112,7 +112,7 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 			flesh_servant.m.Skills.push(::new(::Z.Map[id]));
 			if (!actor.isHiddenToPlayer() && actor.getTile().IsVisibleForPlayer)
 			{
-				this.Sound.play("sounds/monster/abomination_hurt.wav", 300.0, actor.getPos());
+				this.Sound.play("sounds/monster/abomination_hurt.wav", 1.0, actor.getPos());
 				::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + "has assimilated the skill: " + skill_name);
 			}
 			flesh_servant.m.Absorbed += 1;
@@ -125,7 +125,7 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 	function applyDamage( _damage )
 	{
 		local actor = this.getContainer().getActor();
-		this.Sound.play("sounds/monster/abomination_hurt.wav", 300.0, actor.getPos());
+		this.Sound.play("sounds/monster/abomination_hurt.wav", 1.0, actor.getPos());
 		local hitInfo = clone this.Const.Tactical.HitInfo;
 		hitInfo.DamageRegular = _damage;
 		hitInfo.DamageDirect = 1.0;

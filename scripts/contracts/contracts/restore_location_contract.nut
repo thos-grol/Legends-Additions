@@ -356,7 +356,7 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 						p.LocationTemplate.Template[0] = "tactical.human_camp";
 						p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.None;
 						p.LocationTemplate.CutDownTrees = true;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.BanditRoamers, 90 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.BanditRoamers, 90 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

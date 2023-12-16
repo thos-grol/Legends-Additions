@@ -1,5 +1,7 @@
-this.cursed_crystal_skull <- this.inherit("scripts/items/accessory/accessory", {
+this.cursed_crystal_skull <- this.inherit("scripts/items/accessory/cursed_accessory", {
 	m = {
+		UUID = 0,
+		Rolled_UUID = false,
 		Rarity = "Mythic",
 	},
 	function create()
@@ -14,62 +16,108 @@ this.cursed_crystal_skull <- this.inherit("scripts/items/accessory/accessory", {
 		this.m.IconLarge = "";
 		this.m.Icon = "accessory/ancient_skull.png";
 		this.m.Sprite = "";
-		this.m.Value = 250;
+		this.m.Value = 2000;
+		this.m.CursePoints = 3;
 	}
 
-	function getTooltip_unique(_tooltip)
+	//func
+
+	function onUpdateProperties( _properties )
+	{
+		this.accessory.onUpdateProperties(_properties);
+		local actor = this.getContainer().getActor();
+		actor.setMaxMoraleState(this.Const.MoraleState.Steady);
+
+		if (actor.getMoraleState() > this.Const.MoraleState.Steady)
+		{
+			actor.setMoraleState(this.Const.MoraleState.Steady);
+			actor.setDirty(true);
+		}
+	}
+
+	function onEquip_unique()
+	{
+		rollUUID();
+		local actor = this.getContainer().getActor();
+
+		if (actor.getSkills().getSkillByID("effect.cursed") == null)
+			actor.getSkills().add(::new("scripts/skills/effects/cursed_effect"));
+
+		if (actor.getSkills().getSkillByID("effect._curse_crystal_skull") == null)
+			actor.getSkills().add(::new("scripts/skills/effects/_curse_crystal_skull"));
+
+		//lifebound
+		local has_lifebound = false;
+		foreach (skill in actor.getSkills().getSkillsByFunction((@(_skill) "UUID" in _skill.m ).bindenv(this)))
+		{
+			if (skill.m.UUID != this.m.UUID) continue;
+			has_lifebound = true;
+			break;
+		}
+
+		if (!has_lifebound)
+		{
+			local lifebound = ::new("scripts/skills/traits/lifebound_trait");
+			lifebound.setUUID(this.m.UUID);
+			this.addSkill(lifebound);
+		}
+	}
+
+	function onUnequip_unique()
+	{
+	}
+
+	function getToolTip_unique(_tooltip)
 	{
 		_tooltip.push({
 			id = 15,
 			type = "text",
-			icon = "ui/icons/special.png",
-			text = "Reduces the Resolve of any opponent engaged in melee by [color=" + this.Const.UI.Color.NegativeValue + "]-10[/color]"
+			icon = "ui/icons/chance_to_hit_head.png",
+			text = "On turn start, let out a horrific scream at either the holder or an enemy. The target is determined by testing the holder's resolve"
 		});
 		_tooltip.push({
 			id = 11,
 			type = "text",
-			icon = "ui/icons/special.png",
-			text = "User can never have [color=" + this.Const.UI.Color.NegativeValue + "]confident[/color] morale"
+			icon = "ui/icons/chance_to_hit_head.png",
+			text = "Lifebound - if the holder starts combat without this item in their inventory, they will die"
 		});
-
+		_tooltip.push({
+			id = 11,
+			type = "text",
+			icon = "ui/icons/chance_to_hit_head.png",
+			text = "The holder can never have [color=" + this.Const.UI.Color.NegativeValue + "]confident[/color] morale"
+		});
+		result.push({
+			id = 11,
+			type = "text",
+			icon = "ui/icons/chance_to_hit_head.png",
+			text = ::MSU.Text.colorRed("Curse 3")
+		});
 		return _tooltip;
 	}
 
-	function onUpdateProperties( _properties )
-	{
-		// this.accessory.onUpdateProperties(_properties);
-		// _properties.Threat += 10;
-		// local actor = this.getContainer().getActor();
-		// actor.setMaxMoraleState(this.Const.MoraleState.Steady);
 
-		// if (actor.getMoraleState() > this.Const.MoraleState.Steady)
-		// {
-		// 	actor.setMoraleState(this.Const.MoraleState.Steady);
-		// 	actor.setDirty(true);
-		// }
+
+	//serialize
+
+	function rollUUID()
+	{
+		if (this.m.Rolled_UUID) return;
+		this.m.UUID = ::Math.rand(0, 65534);
 	}
 
-	function onPutIntoBag()
+	function onSerialize( _out )
 	{
-		onEquip();
+		this.cursed_accessory.onSerialize(_out);
+		_out.writeU16(this.m.UUID);
+		_out.writeBool(this.m.Rolled_UUID);
 	}
 
-	function onEquip()
+	function onDeserialize( _in )
 	{
-		this.accessory.onEquip();
-		// local unleash = this.new("scripts/skills/actives/unleash_wardog");
-		// this.addSkill(unleash);
-
-		//TODO: //negative:
-			//will torment the holder and morale check them each turn. if they fail the check inflict the screech damage on them as well
-			//cannot be unequipped unless if weilder is dead. else inflict the afraid status on them
-			//drains the lifeforce of the weilder -20 hp
-			//positive: will issue a ghost screech at an enemy, if the holder has broken morale, the screech will attack the holder
-
-		//After it is equipped, and this item is not found in that brother's inventory, they will die on battle start
-			//serialized skill
-
-
+		this.cursed_accessory.onDeserialize(_in);
+		this.m.UUID = _in.readU16();
+		this.m.Rolled_UUID = _in.readBool();
 	}
 });
 

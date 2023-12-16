@@ -2,16 +2,16 @@
 
 ::Const.AI.ParallelizationMode = false;
 ::Const.Difficulty.HealMult = [
-    0.75,
-    0.75,
-    0.75,
-    0.75,
+    0.60,
+    0.60,
+    0.60,
+    0.60,
 ];
 ::Const.Difficulty.RepairMult = [
-    0.75,
-    0.75,
-    0.75,
-    0.75,
+    0.60,
+    0.60,
+    0.60,
+    0.60,
 ];
 
 ::Const.Contracts.CategoryLimits <- {

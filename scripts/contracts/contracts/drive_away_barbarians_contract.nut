@@ -34,15 +34,15 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 		switch(banditcamp.m.TypeID)
 		{
 			case "location.barbarian_camp": //70
-				pay_amount = 75;
+				pay_amount = 70;
 				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 				break;
 			case "location.barbarian_sanctuary": //180
-				pay_amount = 180;
+				pay_amount = 140;
 				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
 				break;
 			case "location.barbarian_shelter": //325
-				pay_amount = 325;
+				pay_amount = 280;
 				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "B");
 				break;
 		}

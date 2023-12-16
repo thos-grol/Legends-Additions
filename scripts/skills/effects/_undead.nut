@@ -4,7 +4,7 @@ this._undead <- this.inherit("scripts/skills/skill", {
 	},
 	function create()
 	{
-		this.m.ID = "effects._undead";
+		this.m.ID = "effect._undead";
 		this.m.Name = "";
 		this.m.Description = "";
 		this.m.Type = ::Const.SkillType.StatusEffect;

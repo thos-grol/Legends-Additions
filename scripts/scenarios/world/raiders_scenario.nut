@@ -45,6 +45,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		talents[this.Const.Attributes.MeleeSkill] = 2;
 		talents[this.Const.Attributes.Initiative] = 3;
 		talents[this.Const.Attributes.MeleeDefense] = 2;
+		bros[0].getFlags().set("Lucky", 3);
 		local items = bros[0].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
@@ -74,6 +75,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		talents[this.Const.Attributes.MeleeSkill] = 3;
 		talents[this.Const.Attributes.Initiative] = 1;
 		talents[this.Const.Attributes.MeleeDefense] = 2;
+		bros[1].getFlags().set("Lucky", 3);
 		local items = bros[1].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
@@ -103,6 +105,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		talents[this.Const.Attributes.MeleeSkill] = 3;
 		talents[this.Const.Attributes.MeleeDefense] = 3;
 		talents[this.Const.Attributes.Initiative] = 3;
+		bros[2].getFlags().set("Lucky", 3);
 		local items = bros[2].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
@@ -135,6 +138,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		talents[::Const.Attributes.Hitpoints] = 2;
 		talents[::Const.Attributes.Initiative] = 2;
 		local bright = ::new("scripts/skills/traits/bright_trait");
+		bros[3].getFlags().set("Lucky", 3);
 		bros[3].getSkills().add(bright);
 		bros[3].getBackground().addPerkGroup(::Const.Perks.IntelligentTree.Tree);
 
@@ -316,9 +320,10 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 	function onUpdateHiringRoster( _roster, _settlement )
 	{
 		this.addBroToRoster(_roster, "thief_background", 4);
-		this.addBroToRoster(_roster, "barbarian_background", 5);
-		this.addBroToRoster(_roster, "assassin_background", 7);
 		this.addBroToRoster(_roster, "killer_on_the_run_background", 4);
+
+		this.addBroToRoster(_roster, "barbarian_background", 10);
+		this.addBroToRoster(_roster, "assassin_background", 10);
 	}
 
 	function onGenerateBro( bro )

@@ -21,7 +21,7 @@
 			Enemy = [],
 			Class = [
 				::Const.Perks.FistsClassTree,
-				
+
 			],
 			Magic = [
 				::Const.Perks.AssassinMagicTree
@@ -34,9 +34,10 @@
 	{
 		local talents = this.getContainer().getActor().getTalents();
 		talents.resize(::Const.Attributes.COUNT, 0);
-		talents[::Const.Attributes.MeleeSkill] = 2;
-		talents[::Const.Attributes.Initiative] = 2;
-		this.getContainer().getActor().fillTalentValues(2, true);
+		talents[::Const.Attributes.MeleeSkill] = 3;
+		talents[::Const.Attributes.MeleeDefense] = 3;
+		talents[::Const.Attributes.Initiative] = 3;
+
 		local items = this.getContainer().getActor().getItems();
 		items.equip(::new("scripts/items/weapons/rondel_dagger"));
 		items.equip(::Const.World.Common.pickArmor([
@@ -51,6 +52,45 @@
 				"hood"
 			]
 		]));
+	}
+
+	o.onChangeAttributes = function()
+	{
+		local c = {
+			Hitpoints = [
+				15,
+				20
+			],
+			Bravery = [
+				20,
+				25
+			],
+			Stamina = [
+				-5,
+				-5
+			],
+			MeleeSkill = [
+				12,
+				10
+			],
+			RangedSkill = [
+				0,
+				0
+			],
+			MeleeDefense = [
+				5,
+				8
+			],
+			RangedDefense = [
+				0,
+				0
+			],
+			Initiative = [
+				20,
+				15
+			]
+		};
+		return c;
 	}
 
 });

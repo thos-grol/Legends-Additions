@@ -1,4 +1,41 @@
 CHANGELOG
+1.14
+bugs
+- fixed necro reanimate bug
+- fixed bug with student not giving perk
+- fixed flesh abombination hit and attack too loud
+- fixed barbarian beastmaster thorned whip file path wrong
+- changed dead lumberjack event description direwolf -> huge wolf to match lore
+- fixed bug with luck, where bros would randomly gain it unintended
+- fixed Nimble description in stats screen maybe
+- training drill now rolls melee defense
+
+backgrounds
+- barbarian
+    - buffed hp and resolve so they dont suck
+- assassin
+    - buffed hp and resolve so they dont suck
+    - fixed bugged stars
+    - moved background pay up a tier to 20
+
+
+enemies
+- caravan guards are way more aggressive now...
+- caravans have a chance to spawn with harder enemies and vary more wildly in their budget (50 to 200%)
+- supply caravans are not easy anymore
+- noble polearm units have strange strikes
+- fixed merc companies carrying super large amounts of gold and unintended loot
+
+balance
+- -15% repair and heal rate
+
+contracts
+- deliver item contract rebalanced, and crystal skull artefact has been tweaked
+- pay has been tweaked
+
+artefacts
+- the cursed crystal skull item has been created
+
 1.13
 
 feature

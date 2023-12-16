@@ -9,18 +9,18 @@
     "contract.arena" : 50,
 
     //F
-    "contract.deliver_item" : 40,
+    "contract.deliver_item" : 30,
     // "contract.discover_location" : 40,
     // "contract.deliver_money" : 40,
 
     //E
-    "contract.return_item" : 60,
-    "contract.restore_location" : 60,
-    "contract.slave_uprising" : 60,
+    "contract.return_item" : 50,
+    "contract.restore_location" : 50,
+    "contract.slave_uprising" : 50,
 
     //D
-    "contract.escort_caravan" : 100, //pay is multiplied by distance
-    "contract.return_item2" : 200,
+    "contract.escort_caravan" : 90, //pay is multiplied by distance
+    "contract.return_item2" : 180,
 
 
     //C

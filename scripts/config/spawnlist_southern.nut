@@ -145,6 +145,62 @@ gt.Const.World.Spawn.CaravanSouthern <- {
 		},
 	]
 };
+gt.Const.World.Spawn.CaravanSouthernMedium <- {
+	Name = "CaravanSouthern",
+	IsDynamic = true,
+	MovementSpeedMult = 1.0,
+	VisibilityMult = 1.0,
+	VisionMult = 1.0,
+	Body = "cart_03",
+	MaxR = 560,
+	Fixed = [
+		{
+			MinCount = 1,
+			MaxCount = 3,
+			Weight = 30,
+			Type = this.Const.World.Spawn.Troops.SouthernDonkey,
+			Cost = 0
+		}
+	],
+	Troops = [
+		{
+			Weight = 62,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Conscript,
+					Cost = 15
+				}
+			]
+		},
+		{
+			Weight = 1,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Mercenary,
+					Cost = 25
+				}
+			]
+		},
+		{
+			Weight = 1,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.MasterArcher,
+					Cost = 40
+				}
+			]
+		},
+		{
+			Weight = 1,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Officer,
+					Cost = 30
+				}
+			]
+		},
+	]
+};
 gt.Const.World.Spawn.Slaves <- {
 	Name = "Slaves",
 	IsDynamic = true,

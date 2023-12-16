@@ -50,6 +50,7 @@ this.lone_wolf_scenario <- this.inherit("scripts/scenarios/world/starting_scenar
 		talents[this.Const.Attributes.Fatigue] = 3;
 		talents[this.Const.Attributes.MeleeSkill] = 3;
 		talents[this.Const.Attributes.RangedSkill] = 3;
+		bros[0].getFlags().set("Lucky", 3);
 		bros[0].fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Assets.m.Money = this.World.Assets.m.Money / 3 - (this.World.Assets.getEconomicDifficulty() == 0 ? 0 : 100);

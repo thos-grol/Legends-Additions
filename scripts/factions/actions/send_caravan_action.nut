@@ -69,7 +69,7 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 
 	function getReputationToDifficultyLightMult()
 	{
-		return 2.0 * (this.World.FactionManager.isCivilWar() ? 1.1 : 1.0); //TODO: test caravan strength
+		return 2.0 * (this.World.FactionManager.isCivilWar() ? 1.1 : 1.0);
 	}
 
 	function getResourcesForParty( _settlement, _faction )
@@ -84,13 +84,8 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 
 	function onExecute( _faction )
 	{
-		//TODO: vary caravan defender spawns ie. some mercs, some elites sometimes
-			//roll protection:
-			//None
-			//Novice Mercs
-			//Mercs
-			//Elite - for supply caravans (supply caravans carry one named item)
-		local party = _faction.spawnEntity(this.m.Start.getTile(), "Trading Caravan", false, this.pickSpawnList(this.m.Start, _faction), this.getResourcesForParty(this.m.Start, _faction));
+		local modifier = ::Math.rand(50, 200);
+		local party = _faction.spawnEntity(this.m.Start.getTile(), "Trading Caravan", false, this.pickSpawnList(this.m.Start, _faction, modifier), this.getResourcesForParty(this.m.Start, _faction));
 		party.getSprite("banner").Visible = false;
 		party.getSprite("base").Visible = false;
 		party.setMirrored(true);
@@ -98,6 +93,7 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 		party.setFootprintType(this.Const.World.FootprintsType.Caravan);
 		party.getFlags().set("IsCaravan", true);
 		party.getFlags().set("IsRandomlySpawned", true);
+		party.getFlags().set("Modifier", modifier);
 
 		if (this.World.Assets.m.IsBrigand && this.m.Start.getTile().getDistanceTo(this.World.State.getPlayer().getTile()) <= 70)
 		{
@@ -131,11 +127,19 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 		this.afterSpawnCaravan(party);
 	}
 
-	function pickSpawnList( _settlement, _faction )
+	function pickSpawnList( _settlement, _faction, _modifier )
 	{
 		if (_faction.hasTrait(this.Const.FactionTrait.OrientalCityState))
 		{
+			if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.CaravanSouthernMedium;
+			if (_modifier >= 150) return this.Const.World.Spawn.CaravanSouthernMedium;
 			return this.Const.World.Spawn.CaravanSouthern;
+		}
+		else
+		{
+			if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.CaravanMedium;
+			if (_modifier >= 150) return this.Const.World.Spawn.CaravanSouthernMedium;
+			return this.Const.World.Spawn.Caravan;
 		}
 
 		return this.Const.World.Spawn.Caravan;

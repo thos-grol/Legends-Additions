@@ -358,18 +358,6 @@
 	},
 
 	//ELITE
-	"background.assassin" : {
-		"HiringCost" : 36,
-		"DailyCost" : 16
-	},
-	"background.assassin_southern" : {
-		"HiringCost" : 36,
-		"DailyCost" : 16
-	},
-	"background.legend_assassin" : {
-		"HiringCost" : 36,
-		"DailyCost" : 16
-	},
 	"background.legend_berserker" : {
 		"HiringCost" : 36,
 		"DailyCost" : 16
@@ -384,7 +372,19 @@
 	},
 
 	//CHAMPION
-	
+	"background.assassin" : {
+		"HiringCost" : 36,
+		"DailyCost" : 20
+	},
+	"background.assassin_southern" : {
+		"HiringCost" : 36,
+		"DailyCost" : 20
+	},
+	"background.legend_assassin" : {
+		"HiringCost" : 36,
+		"DailyCost" : 20
+	},
+
 	"background.beast_slayer" : {
 		"HiringCost" : 48,
 		"DailyCost" : 20

@@ -49,7 +49,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				
+
 			}
 
 		});
@@ -92,7 +92,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				
+
 				local brothers = this.World.getPlayerRoster().getAll();
 
 				foreach( bro in brothers )
@@ -100,7 +100,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 					if (bro.getLevel() >= 11) continue;
 					if (bro.getFlags().has("event_combat_drill_2")) continue;
 					local meleeSkill = this.Math.rand(1, 2);
-					local meleeDefense = meleeSkill == 0 ? this.Math.rand(1, 2) : 0;
+					local meleeDefense = this.Math.rand(1, 2);
 					bro.getBaseProperties().MeleeSkill += meleeSkill;
 					bro.getBaseProperties().MeleeDefense += meleeDefense;
 					bro.getSkills().update();
@@ -194,7 +194,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				
+
 				local brothers = this.World.getPlayerRoster().getAll();
 
 				foreach( bro in brothers )
@@ -275,7 +275,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				
+
 				local brothers = this.World.getPlayerRoster().getAll();
 
 				foreach( bro in brothers )

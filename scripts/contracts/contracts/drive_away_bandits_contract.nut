@@ -49,11 +49,11 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 				break;
 			case "location.bandit_ruins": //150
-				pay_amount = 150;
+				pay_amount = 140;
 				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
 				break;
 			case "location.bandit_camp": //180
-				pay_amount = 180;
+				pay_amount = 210;
 				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
 				break;
 		}

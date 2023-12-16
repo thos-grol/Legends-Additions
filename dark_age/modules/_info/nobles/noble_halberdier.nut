@@ -26,6 +26,7 @@
 		["T", 1], //1
         ["D", 2], //2
         ["W", 3], //3
+		["scripts/skills/perks/perk_strange_strikes"], //4 - 1
         ["W", 4], //4
         ["T", 3], //5
         ["D", 6], //6

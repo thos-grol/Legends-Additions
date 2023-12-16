@@ -41,7 +41,7 @@
     Trait = [],
 	Loadout = [
 		[
-			"scripts/items/barbarians/thorned_whip",
+			"scripts/items/weapons/barbarians/thorned_whip",
 		]
 	],
 	Builds = {},

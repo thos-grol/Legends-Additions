@@ -51,6 +51,7 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 
 		//Assign outfit and get the defense tree
 		pickOutfit();
+		if (::Math.rand(1,100) <= 20) this.getSkills().add(::new("scripts/skills/traits/lucky_trait"));
 		local weight_armor = this.getItems().getStaminaModifier([
             ::Const.ItemSlot.Body,
             ::Const.ItemSlot.Head
@@ -120,6 +121,7 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 			//build add levelups
 			pickLevelups(this.m.Build.LevelUps);
 			post_init();
+
 			return;
 		}
 
