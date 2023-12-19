@@ -165,7 +165,6 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_levitation"));
 
 		this.m.Skills.add(this.new("scripts/skills/actives/horrific_scream"));
-		this.m.Skills.add(this.new("scripts/skills/actives/negative_energy_hand"));
 
 		this.getFlags().add("ghost");
 		

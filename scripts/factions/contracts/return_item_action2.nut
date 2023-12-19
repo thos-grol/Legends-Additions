@@ -14,7 +14,7 @@ this.return_item_action2 <- this.inherit("scripts/factions/faction_action", {
 		if (!_faction.isReadyForContract(this.Const.Contracts.Categories.Economy)) return;
 		if (_faction.getSettlements()[0].isIsolatedFromRoads()) return;
 
-		if (this.Math.rand(1, 100) > 5) return;
+		if (this.Math.rand(1, 100) > 10) return;
 		this.m.Score = 1;
 	}
 

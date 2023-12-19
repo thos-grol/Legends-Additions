@@ -129,8 +129,8 @@ this.send_supplies_action <- this.inherit("scripts/factions/faction_action", {
 
 	function pickSpawnList( _settlement, _faction, _modifier )
 	{
-		if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.MixedNobleCaravan;
 		if (_modifier >= 150) return this.Const.World.Spawn.NobleCaravan;
+		if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.MixedNobleCaravan;
 		return this.Const.World.Spawn.MixedNobleCaravan;
 	}
 

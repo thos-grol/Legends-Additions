@@ -30,7 +30,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 
 		local bros = roster.getAll();
 		bros[0].setStartValuesEx([
-			"barbarian_background"
+			"barbarian_scenario_background"
 		]);
 		bros[0].getBackground().m.RawDescription = "A sturdy warrior, %name% has been through many campaigns of raiding and pillaging. Although a man of few words, the raider is an absolutely vicious specimen in battle. Even for a raider, what he does to defeated villagers irks many. It is likely he came with you to satiate his more sadistic lusts.";
 		bros[0].improveMood(1.0, "Had a successful raid");
@@ -42,9 +42,9 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[0].m.Talents = [];
 		local talents = bros[0].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.MeleeSkill] = 2;
+		talents[this.Const.Attributes.MeleeSkill] = 3;
 		talents[this.Const.Attributes.Initiative] = 3;
-		talents[this.Const.Attributes.MeleeDefense] = 2;
+		talents[this.Const.Attributes.MeleeDefense] = 3;
 		bros[0].getFlags().set("Lucky", 3);
 		local items = bros[0].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
@@ -60,7 +60,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 			]
 		]));
 		bros[1].setStartValuesEx([
-			"barbarian_background"
+			"barbarian_scenario_background"
 		]);
 		bros[1].getBackground().m.RawDescription = "%name% was a boy when taken from a southern village and raised amongst the barbarians of the wastes. While he learned the language and culture, he never fit in and was a constant victim of cruel jokes and games. You are not sure if he has followed you to return home or to get away from his northern \'family\'.";
 		bros[1].improveMood(1.0, "Had a successful raid");
@@ -73,8 +73,8 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		local talents = bros[1].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
 		talents[this.Const.Attributes.MeleeSkill] = 3;
-		talents[this.Const.Attributes.Initiative] = 1;
-		talents[this.Const.Attributes.MeleeDefense] = 2;
+		talents[this.Const.Attributes.Initiative] = 3;
+		talents[this.Const.Attributes.MeleeDefense] = 3;
 		bros[1].getFlags().set("Lucky", 3);
 		local items = bros[1].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
@@ -90,7 +90,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 			]
 		]));
 		bros[2].setStartValuesEx([
-			"barbarian_background"
+			"barbarian_scenario_background"
 		]);
 		bros[2].getBackground().m.RawDescription = "Barbarian raiders often take from lands foreign to them. Most see their raids as a matter of material and women, but occasionally they will enslave formidable boys with great potential. %name%, a northerner, was such a child and he was raised to be a raider himself. Half his life was with his primitive clan, and the other half with those who took him. This has made him as hardy and brutish a warrior as one can get.";
 		bros[2].improveMood(1.0, "Had a successful raid");
@@ -135,12 +135,13 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		local talents = bros[3].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
 		talents[::Const.Attributes.RangedSkill] = 3;
-		talents[::Const.Attributes.Hitpoints] = 2;
-		talents[::Const.Attributes.Initiative] = 2;
+		talents[::Const.Attributes.Hitpoints] = 3;
+		talents[::Const.Attributes.Initiative] = 3;
 		local bright = ::new("scripts/skills/traits/bright_trait");
 		bros[3].getFlags().set("Lucky", 3);
 		bros[3].getSkills().add(bright);
 		bros[3].getBackground().addPerkGroup(::Const.Perks.IntelligentTree.Tree);
+		bros[3].getBackground().addPerkGroup(::Const.Perks.LargeTree.Tree);
 
 		// //FIXME: PLACEHOLDER remove test perks
 

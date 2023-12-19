@@ -131,14 +131,14 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 	{
 		if (_faction.hasTrait(this.Const.FactionTrait.OrientalCityState))
 		{
-			if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.CaravanSouthernMedium;
 			if (_modifier >= 150) return this.Const.World.Spawn.CaravanSouthernMedium;
+			if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.CaravanSouthernMedium;
 			return this.Const.World.Spawn.CaravanSouthern;
 		}
 		else
 		{
-			if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.CaravanMedium;
 			if (_modifier >= 150) return this.Const.World.Spawn.CaravanSouthernMedium;
+			if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.CaravanMedium;
 			return this.Const.World.Spawn.Caravan;
 		}
 

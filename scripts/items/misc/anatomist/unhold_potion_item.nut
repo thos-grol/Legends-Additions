@@ -22,7 +22,7 @@ this.unhold_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomist_
 		return result;
 	}
 
-	function mutate()
+	function mutate(_actor)
 	{
 		::Z.Perks.add(_actor, ::Const.Perks.PerkDefs.ContinuanceKnight, 0);
 	}

@@ -20,7 +20,6 @@
 
     //D
     "contract.escort_caravan" : 90, //pay is multiplied by distance
-    "contract.return_item2" : 180,
 
 
     //C

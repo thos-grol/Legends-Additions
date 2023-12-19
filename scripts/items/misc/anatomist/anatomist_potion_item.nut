@@ -49,7 +49,7 @@ this.anatomist_potion_item <- this.inherit("scripts/items/item", {
         return true;
 	}
 
-	function mutate()
+	function mutate(_actor)
 	{
 	}
 

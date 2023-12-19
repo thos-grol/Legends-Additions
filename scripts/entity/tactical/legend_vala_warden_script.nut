@@ -102,6 +102,7 @@ this.legend_vala_warden_script <- this.inherit("scripts/entity/tactical/actor", 
 		b.IsImmuneToBleeding = true;
 		b.IsImmuneToPoison = true;
 		b.IsImmuneToStun = true;
+		b.IsImmuneToDaze = true;
 		b.MoraleCheckBraveryMult[this.Const.MoraleCheckType.MentalAttack] *= 10000.0;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
@@ -137,7 +138,6 @@ this.legend_vala_warden_script <- this.inherit("scripts/entity/tactical/actor", 
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_legend_levitation"));
 
 		this.m.Skills.add(this.new("scripts/skills/actives/horrific_scream"));
-		this.m.Skills.add(this.new("scripts/skills/actives/negative_energy_hand"));
 		this.m.Skills.add(this.new("scripts/skills/traits/loyal_trait"));
 
 		this.getFlags().add("ghost");

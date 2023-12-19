@@ -51,6 +51,7 @@ gt.Const.World.Spawn.Zombies <- {
 		}
 	]
 };
+
 gt.Const.World.Spawn.ZombiesLight <- {
 	Name = "ZombiesLight",
 	IsDynamic = true,
@@ -591,6 +592,47 @@ gt.Const.World.Spawn.NecromancerSouthern <- {
 				}
 			]
 		}
+	]
+};
+
+gt.Const.World.Spawn.ZombiesCrystalSkull <- {
+	Name = "ZombiesCrystalSkull",
+	IsDynamic = true,
+	MovementSpeedMult = 0.8,
+	VisibilityMult = 1.0,
+	VisionMult = 0.8,
+	Body = "figure_zombie_01",
+	MaxR = 521,
+	MinR = 35,
+	Fixed = [
+		{
+			MinCount = 1,
+			MaxCount = 1,
+			Weight = 30,
+			Type = this.Const.World.Spawn.Troops.ZombieKnight,
+			Cost = 40
+		}
+	],
+	Troops = [
+		{
+			Weight = 25,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Zombie,
+					Cost = 20
+				}
+			]
+		},
+		{
+			Weight = 65,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.ZombieYeoman,
+					MinR = 200,
+					Cost = 30
+				}
+			]
+		},
 	]
 };
 

@@ -28,7 +28,7 @@ this.nachzehrer_potion_item <- this.inherit("scripts/items/misc/anatomist/anatom
 		return result;
 	}
 
-	function mutate()
+	function mutate(_actor)
 	{
 		::Z.Perks.add(_actor, ::Const.Perks.PerkDefs.GluttonyKnight, 0);
 		::Z.Perks.add(_actor, ::Const.Perks.PerkDefs.LegendGruesomeFeast, 0);

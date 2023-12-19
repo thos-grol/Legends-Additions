@@ -225,12 +225,7 @@ this.intensive_training_trait <- this.inherit("scripts/skills/traits/character_t
 
 	function isHidden()
 	{
-		if (this.getStatsIncreased() == 0)
-		{
-			return true;
-		}
-
-		return false;
+		return true;
 	}
 
 	function onSerialize( _out )

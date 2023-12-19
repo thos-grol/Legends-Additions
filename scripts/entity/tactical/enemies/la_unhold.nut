@@ -1,6 +1,6 @@
 ::Const.Tactical.Actor.Unhold <- {
 	XP = 2000,
-	ActionPoints = 10,
+	ActionPoints = 14,
 	Hitpoints = 750,
 	Bravery = 130,
 	Stamina = 400,
@@ -309,6 +309,7 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_battering_ram"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_stalwart"));
+		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
 
 		this.m.Skills.add(this.new("scripts/skills/actives/sweep_skill"));
 		this.m.Skills.add(this.new("scripts/skills/actives/sweep_zoc_skill"));

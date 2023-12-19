@@ -93,7 +93,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 
 				if (r <= 15)
 				{
-					switch(this.m.Destination.m.TypeID)
+					switch(this.Contract.m.Destination.m.TypeID)
 					{
 						case "location.nomad_tents": //75
 						case "location.nomad_ruins": //150
@@ -107,7 +107,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 				}
 				else if (r <= 45)
 				{
-					switch(this.m.Destination.m.TypeID)
+					switch(this.Contract.m.Destination.m.TypeID)
 					{
 						case "location.nomad_tents": //75
 						case "location.nomad_hidden_camp": //150

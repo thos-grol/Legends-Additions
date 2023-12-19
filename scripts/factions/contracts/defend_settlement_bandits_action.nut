@@ -14,7 +14,7 @@ this.defend_settlement_bandits_action <- this.inherit("scripts/factions/faction_
 		if (!_faction.isReadyForContract(this.Const.Contracts.ContractCategoryMap.defend_settlement_bandits_contract)) return;
 		if (_faction.getSettlements()[0].isIsolated()) return;
 		if (this.World.Assets.getBusinessReputation() < 250) return;
-		if (this.Math.rand(1, 100) > 33) return;
+		if (this.Math.rand(1, 100) > 15) return;
 
 		local locations = _faction.getSettlements()[0].getAttachedLocations();
 		local targets = 0;

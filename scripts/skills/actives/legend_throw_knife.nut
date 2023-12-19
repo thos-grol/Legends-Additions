@@ -1,7 +1,7 @@
 this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 	m = {
-		AdditionalAccuracy = 5,
-		AdditionalHitChance = -10,
+		AdditionalAccuracy = 75,
+		AdditionalHitChance = -5,
 		Charges = 3
 	},
 	function create()

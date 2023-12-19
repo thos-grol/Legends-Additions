@@ -1,5 +1,23 @@
 CHANGELOG
 
+//TODO: change spawns for nomads caravan, too much spawning - decrease amount, increase quality
+1.15
+bugs
+- fixed legacy code breaking anatomist potions
+
+enemies
+- carvan guards are definitely more aggressive now
+- ghosts
+    - removed negative energy hand, because AI will crash with it unfixable 
+    - horrific scream now has 6 range to compensate, + 10 damage
+    - immune to daze
+
+contracts
+- after day 50, deliver item contracts get harder, reward a little more money and have a greater chance of rewarding the cursed crystal skull
+
+perks
+- knifeplay - throwing knife has a +75% chance to hit, -5 every tile to encourage taking this perk
+
 1.14
 bugs
 - fixed necro reanimate bug

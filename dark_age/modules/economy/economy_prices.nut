@@ -420,31 +420,126 @@
 {
 	local decisions = this.compileTradingDecision(_settlement, _budget);
 
-	if (decisions.Potential.len() == 0)
-	{
-		return this.fillWithBreads(_settlement, _budget);
-	}
+		if (decisions.Potential.len() == 0) return this.fillWithBreads(_settlement, _budget);
+		
+		local name = this.getWeightContainer(decisions.Potential).roll();
+		local result = this.gatherItems(_settlement, this.DecisionID[name], decisions.ItemList, _budget);
 
-	local name = this.getWeightContainer(decisions.Potential).roll();
-	local result;
-
-	result = this.gatherItems(_settlement, this.DecisionID[name], decisions.ItemList, _budget);
-
-	result.Items.sort(function ( _item1, _item2 )
-	{
-		if (_item1.getValue() > _item2.getValue())
+		result.Items.sort(function ( _item1, _item2 )
 		{
-			return -1;
-		}
-		else if (_item1.getValue() < _item2.getValue())
-		{
-			return 1;
-		}
-		else
-		{
-			return 0;
-		}
-	});
-	result.Decision <- name;
-	return result;
+			if (_item1.getValue() > _item2.getValue())
+			{
+				return -1;
+			}
+			else if (_item1.getValue() < _item2.getValue())
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		});
+		result.Decision <- name;
+		return result;
 }
+
+::Const.World.Common.WorldEconomy.compileTradingDecision = function( _settlement, _budget )
+	{
+		local result = {};
+		result.Potential <- [];
+		result.ItemList <- [];
+
+		if (::Math.rand(1, 100) == 1)
+		{
+			return result;
+		}
+
+		local acceptableBudget = ::Math.round(_budget * (1.0 + this.OverBudgetPct));
+		local tooExpensiveLimit = ::Math.round(_budget * this.ExpensiveLimitMult);
+
+		for( local i = 0; i < this.DecisionID.COUNT; i = ++i )
+		{
+			result.ItemList.push({
+				Items = [],
+				Average = 0,
+				Total = 0
+			});
+		}
+
+		foreach( building in _settlement.getBuildings() )
+		{
+			local stash = building.getStash();
+			local shopID = building.getID();
+
+			if (stash == null)
+			{
+				continue;
+			}
+
+			foreach( _item in stash.getItems() )
+			{
+				if (_item == null)
+				{
+					continue;
+				}
+
+				foreach( d in this.Decisions )
+				{
+					if (!d.IsValid(_item, shopID))
+					{
+						continue;
+					}
+
+					local v = _item.getValue();
+
+					if (v >= tooExpensiveLimit)
+					{
+						continue;
+					}
+
+					result.ItemList[this.DecisionID[d.Name]].Total += v;
+					result.ItemList[this.DecisionID[d.Name]].Items.push({
+						Item = _item,
+						Stash = stash
+					});
+				}
+			}
+		}
+
+		foreach( i, list in result.ItemList )
+		{
+			local num = list.Items.len();
+
+			if (num == 0)
+			{
+				continue;
+			}
+
+			list.Average = ::Math.floor(list.Total / num);
+			local a = ::Math.floor(acceptableBudget / list.Average);
+
+			if (a <= 0)
+			{
+				continue;
+			}
+
+			if (a < this.Decisions[i].PreferNum)
+			{
+				for( ; this.Decisions[i].PreferNum - 2 <= 0;  )
+				{
+				}
+
+				for( ; ::Math.rand(a, this.Decisions[i].PreferNum) > this.Decisions[i].PreferNum + ::Math.floor((a - this.Decisions[i].PreferNum) / 2);  )
+				{
+				}
+			}
+
+			result.Potential.push([
+				this.Decisions[i].Weight,
+				this.Decisions[i].Name
+			]);
+		}
+
+		return result;
+	}

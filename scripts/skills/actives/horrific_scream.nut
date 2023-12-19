@@ -22,7 +22,7 @@ this.horrific_scream <- this.inherit("scripts/skills/skill", {
 		this.m.ActionPointCost = 6;
 		this.m.FatigueCost = 0;
 		this.m.MinRange = 1;
-		this.m.MaxRange = 3;
+		this.m.MaxRange = 6;
 		this.m.MaxLevelDifference = 4;
 	}
 
@@ -39,7 +39,7 @@ this.horrific_scream <- this.inherit("scripts/skills/skill", {
 		_targetTile.getEntity().checkMorale(-1, 0, this.Const.MoraleCheckType.MentalAttack);
 
 		local hitInfo = clone this.Const.Tactical.HitInfo;
-			hitInfo.DamageRegular = ::Math.rand(15, 45);
+			hitInfo.DamageRegular = ::Math.rand(25, 55);
 			hitInfo.DamageDirect = 1.0;
 			hitInfo.BodyPart = this.Const.BodyPart.Body;
 			hitInfo.BodyDamageMult = 1.0;

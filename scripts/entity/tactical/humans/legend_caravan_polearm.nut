@@ -9,7 +9,7 @@ this.legend_caravan_polearm <- this.inherit("scripts/entity/tactical/abstract_hu
 		this.m.Hairs = this.Const.Hair.AllMale;
 		this.m.HairColors = this.Const.HairColors.All;
 		this.m.Beards = this.Const.Beards.All;
-		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_melee_agent");
+		this.m.AIAgent = this.new("scripts/ai/tactical/agents/military_melee_agent");
 		this.m.AIAgent.setActor(this);
 	}
 

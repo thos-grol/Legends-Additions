@@ -13,6 +13,10 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "F");
+		if (this.World.getTime().Days > 50)
+		{
+			this.m.Flags.set("Rating", "E");
+		}
 	}
 
 	function onImportIntro()
@@ -110,6 +114,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * days;
 
+		if (this.World.getTime().Days > 50) this.m.Payment.Pool += 20;
 		if (this.Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
@@ -153,19 +158,38 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 				local r = this.Math.rand(1, 100);
 
-				if (r <= 5)
+				if (this.World.getTime().Days > 50)
 				{
-					this.Flags.set("IsEvilArtifact", true);
-					if (!this.World.Flags.get("IsCursedCrystalSkull")) this.Flags.set("IsCursedCrystalSkull", true);
+					
+					if (!this.World.Flags.get("IsCursedCrystalSkull")) 
+					{
+						this.Flags.set("IsEvilArtifact", true);
+						this.Flags.set("IsCursedCrystalSkull", true);
+
+					}
+					else if (r <= 25) this.Flags.set("IsEvilArtifact", true);
+					else if (r <= 50)
+					{
+						this.Flags.set("IsMercenaries", true);
+					}
 				}
-				else if (r <= 20)
+				else
 				{
-					this.Flags.set("IsMercenaries", true);
+					if (r <= 5)
+					{
+						this.Flags.set("IsEvilArtifact", true);
+						if (!this.World.Flags.get("IsCursedCrystalSkull")) this.Flags.set("IsCursedCrystalSkull", true);
+					}
+					else if (r <= 20)
+					{
+						this.Flags.set("IsMercenaries", true);
+					}
+					else if (r <= 30)
+					{
+						this.Flags.set("IsThieves", true);
+					}
 				}
-				else if (r <= 30)
-				{
-					this.Flags.set("IsThieves", true);
-				}
+				
 
 				this.Contract.setScreen("Overview");
 				this.World.Contracts.setActiveContract(this.Contract);
@@ -625,11 +649,10 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 								"scripts/items/accessory/legendary/cursed_crystal_skull"
 							];
 
-							this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Zombies, 400, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID());
+							this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Zombies, 300, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID());
 						}
 						else this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Zombies, 120 * this.m.DifficultyMult, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID());
 
-						//TODO: test cursed crystal skull fight
 						this.World.Contracts.startScriptedCombat(p, false, false, false);
 						return 0;
 					}
