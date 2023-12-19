@@ -254,7 +254,7 @@ local perks = [
         Script = "scripts/skills/perks/perk_class_continuance_knight",
         Name = "",
         Tooltip = "",
-        Icon = "ui/perks/class_continuance_knight.png", //TODO: HOME ART
+        Icon = "ui/perks/class_continuance_knight.png", //FEATURE_0: HOME ART
         IconDisabled = "ui/perks/class_continuance_knight.png",
         Const = "ContinuanceKnight"
     },

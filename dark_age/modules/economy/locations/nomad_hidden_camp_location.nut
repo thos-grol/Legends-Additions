@@ -15,7 +15,7 @@
 		this.m.CombatLocation.AdditionalRadius = 2;
 		this.m.IsShowingBanner = true;
 		this.m.IsDespawningDefenders = false;
-		this.setDefenderSpawnList(::Const.World.Spawn.NomadDefenders);
+		this.setDefenderSpawnList(::Const.World.Spawn.NomadDefendersMedium);
 		this.m.Resources = 180;
 		this.m.VisibilityMult = 0.8;
 		this.m.NamedShieldsList = ::Const.Items.NamedSouthernShields;

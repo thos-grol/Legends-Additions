@@ -15,7 +15,7 @@
 		this.m.CombatLocation.CutDownTrees = false;
 		this.m.IsShowingDefenders = false;
 		this.m.IsShowingBanner = false;
-		this.setDefenderSpawnList(::Const.World.Spawn.NomadDefenders);
+		this.setDefenderSpawnList(::Const.World.Spawn.NomadDefendersMedium);
 		this.m.Resources = 150;
 		this.m.NamedShieldsList = ::Const.Items.NamedSouthernShields;
 	}

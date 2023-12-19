@@ -14,7 +14,7 @@
 		this.m.CombatLocation.CutDownTrees = false;
 		this.m.CombatLocation.AdditionalRadius = 5;
 		this.m.IsDespawningDefenders = false;
-		this.setDefenderSpawnList(::Const.World.Spawn.NomadDefenders);
+		this.setDefenderSpawnList(::Const.World.Spawn.NomadDefendersMedium);
 		this.m.Resources = 300;
 		this.m.NamedShieldsList = ::Const.Items.NamedSouthernShields;
 	}

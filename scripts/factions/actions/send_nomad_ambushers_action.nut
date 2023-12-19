@@ -89,27 +89,9 @@ this.send_nomad_ambushers_action <- this.inherit("scripts/factions/faction_actio
 		party.setFootprintType(this.Const.World.FootprintsType.Nomads);
 		party.getFlags().set("IsRandomlySpawned", true);
 		party.getLoot().Money = this.Math.rand(0, 50);
-		party.getLoot().ArmorParts = this.Math.rand(0, 10);
-		party.getLoot().Medicine = this.Math.rand(0, 2);
-		party.getLoot().Ammo = this.Math.rand(0, 20);
-		local r = this.Math.rand(1, 4);
-
-		if (r == 1)
-		{
-			party.addToInventory("supplies/bread_item");
-		}
-		else if (r == 2)
-		{
-			party.addToInventory("supplies/dates_item");
-		}
-		else if (r == 3)
-		{
-			party.addToInventory("supplies/rice_item");
-		}
-		else if (r == 4)
-		{
-			party.addToInventory("supplies/dried_lamb_item");
-		}
+		party.getLoot().ArmorParts = this.Math.rand(0, 5);
+		party.getLoot().Medicine = this.Math.rand(0, 5);
+		party.getLoot().Ammo = this.Math.rand(0, 10);
 
 		local c = party.getController();
 		local ambush = this.new("scripts/ai/world/orders/ambush_order");
