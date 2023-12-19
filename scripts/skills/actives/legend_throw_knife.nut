@@ -109,6 +109,14 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 				break;
 			}
 
+			_properties.RangedSkill += this.m.AdditionalAccuracy;
+			_properties.HitChanceAdditionalWithEachTile += this.m.AdditionalHitChance;
+
+			if (_properties.IsSharpshooter)
+			{
+				_properties.DamageDirectMult += 0.05;
+			}
+
 			if (this.m.Container.hasSkill("perk.hybridization"))
 			{
 				local weapon = actor.getMainhandItem();
