@@ -44,7 +44,6 @@
 			"nomad_background",
 			"nomad_ranged_background",
 			"juggler_southern_background",
-			"assassin_southern_background"
 		];
 
 		// if (::Const.DLC.Unhold)

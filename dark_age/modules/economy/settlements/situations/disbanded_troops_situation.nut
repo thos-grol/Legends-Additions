@@ -50,15 +50,10 @@
 		_draftList.push("legend_noble_shield");
 		_draftList.push("legend_noble_shield");
 		_draftList.push("legend_master_archer_background");
-		_draftList.push("legend_master_archer_background");
-		_draftList.push("legend_master_archer_background");
 
-		if (_gender)
-		{
-			_draftList.push("legend_shieldmaiden_background");
-			_draftList.push("legend_shieldmaiden_background");
-			_draftList.push("legend_shieldmaiden_background");
-		}
+		_draftList.push("legend_shieldmaiden_background");
+		_draftList.push("legend_shieldmaiden_background");
+		_draftList.push("legend_shieldmaiden_background");
 
 		if (this.World.Assets.getOrigin().getID() == "scenario.militia")
 		{

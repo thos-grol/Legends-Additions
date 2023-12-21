@@ -320,11 +320,11 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 
 	function onUpdateHiringRoster( _roster, _settlement )
 	{
-		this.addBroToRoster(_roster, "thief_background", 4);
-		this.addBroToRoster(_roster, "killer_on_the_run_background", 4);
+		this.addBroToRoster(_roster, "thief_background", 5);
+		this.addBroToRoster(_roster, "killer_on_the_run_background", 5);
 
 		this.addBroToRoster(_roster, "barbarian_background", 10);
-		this.addBroToRoster(_roster, "assassin_background", 10);
+		this.addBroToRoster(_roster, "assassin_background", 20);
 	}
 
 	function onGenerateBro( bro )

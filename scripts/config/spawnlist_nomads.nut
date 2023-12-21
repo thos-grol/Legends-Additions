@@ -207,7 +207,6 @@ gt.Const.World.Spawn.NomadRaidersCaravan <- {
 	VisionMult = 1.0,
 	Body = "figure_nomad_01",
 	Fixed = [],
-	MinR = 63,
 	MaxR = 600,
 	Troops = [
 		{
@@ -271,7 +270,6 @@ gt.Const.World.Spawn.NomadDefendersMedium <- {
 	VisionMult = 1.0,
 	Body = "figure_nomad_01",
 	Fixed = [],
-	MinR = 63,
 	MaxR = 600,
 	Troops = [
 		{

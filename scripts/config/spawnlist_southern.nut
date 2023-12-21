@@ -220,8 +220,7 @@ gt.Const.World.Spawn.CaravanMedium <- {
 	VisibilityMult = 1.0,
 	VisionMult = 0.25,
 	Body = "cart_02",
-	MaxR = 225,
-	MinR = 30,
+	MaxR = 560,
 	Fixed = [
 		{
 			MinCount = 1,

@@ -41,8 +41,6 @@
 		}
 
 		_draftList.push("legend_master_archer_background");
-		_draftList.push("legend_master_archer_background");
-		_draftList.push("legend_master_archer_background");
 	}
 
 });
