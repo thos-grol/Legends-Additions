@@ -23,7 +23,7 @@
 
 		if (::Const.DLC.Unhold)
 		{
-			r = this.Math.rand(0, 2);
+			r = ::Math.rand(0, 2);
 
 			if (r == 0)
 			{
@@ -40,7 +40,7 @@
 		}
 		else
 		{
-			r = this.Math.rand(0, 1);
+			r = ::Math.rand(0, 1);
 
 			if (r == 0)
 			{

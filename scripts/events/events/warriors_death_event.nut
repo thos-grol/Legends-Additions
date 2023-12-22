@@ -86,7 +86,7 @@ this.warriors_death_event <- this.inherit("scripts/events/event", {
 						chance = 10;
 					}
 
-					if (this.Math.rand(1, 100) > r)
+					if (::Math.rand(1, 100) > r)
 					{
 						continue;
 					}
@@ -130,7 +130,7 @@ this.warriors_death_event <- this.inherit("scripts/events/event", {
 				{
 					local chance = 50;
 
-					if (this.Math.rand(1, 100) > r)
+					if (::Math.rand(1, 100) > r)
 					{
 						continue;
 					}
@@ -181,7 +181,7 @@ this.warriors_death_event <- this.inherit("scripts/events/event", {
 				{
 					local chance = 75;
 
-					if (this.Math.rand(1, 100) > this.r)
+					if (::Math.rand(1, 100) > this.r)
 					{
 						continue;
 					}
@@ -272,7 +272,7 @@ this.warriors_death_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_gravedigger.len() != 0)
 		{
-			this.m.Gravedigger = candidates_gravedigger[this.Math.rand(0, candidates_gravedigger.len() - 1)];
+			this.m.Gravedigger = candidates_gravedigger[::Math.rand(0, candidates_gravedigger.len() - 1)];
 		}
 
 		this.m.Score = 500;

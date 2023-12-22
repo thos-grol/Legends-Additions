@@ -19,7 +19,7 @@ this.greenskins_investigation_event <- this.inherit("scripts/events/event", {
 					Text = "We shall search the pantry.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B1";
 						}
@@ -34,7 +34,7 @@ this.greenskins_investigation_event <- this.inherit("scripts/events/event", {
 					Text = "We shall search the halls.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "E1";
 						}
@@ -49,7 +49,7 @@ this.greenskins_investigation_event <- this.inherit("scripts/events/event", {
 					Text = "We shall search the armory.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "H1";
 						}

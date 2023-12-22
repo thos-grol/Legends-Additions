@@ -20,7 +20,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		local nobles = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+		local nobles = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 		local enemies = [];
 
 		foreach( n in nobles )
@@ -31,7 +31,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 			}
 		}
 
-		this.m.Flags.set("EnemyID", enemies[this.Math.rand(0, enemies.len() - 1)].getID());
+		this.m.Flags.set("EnemyID", enemies[::Math.rand(0, enemies.len() - 1)].getID());
 		local locations = this.World.EntityManager.getLocations();
 		local candidates = [];
 
@@ -48,7 +48,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 
 		foreach( c in candidates )
 		{
-			local d = this.m.Home.getTile().getDistanceTo(c.getTile()) + this.Math.rand(0, 5);
+			local d = this.m.Home.getTile().getDistanceTo(c.getTile()) + ::Math.rand(0, 5);
 
 			if (d < closest_dist)
 			{
@@ -59,7 +59,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 
 		this.m.Destination = this.WeakTableRef(closest);
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -93,7 +93,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 20)
 				{
@@ -112,7 +112,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 					this.Flags.set("IsUltimatum", true);
 				}
 
-				local nobles = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+				local nobles = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 
 				foreach( n in nobles )
 				{
@@ -181,7 +181,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 				if (this.Flags.get("Wave") > this.Flags.get("WavesDefeated") && (this.Contract.m.Target == null || this.Contract.m.Target.isNull() || !this.Contract.m.Target.isAlive()))
 				{
 					this.Flags.increment("WavesDefeated", 1);
-					this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + this.Math.rand(3, 6));
+					this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + ::Math.rand(3, 6));
 
 					if (this.Flags.get("WavesDefeated") == 1)
 					{
@@ -244,14 +244,14 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 								{
 									local tile = this.World.getTileSquare(x, y);
 
-									if (tile.Type == this.Const.World.TerrainType.Ocean)
+									if (tile.Type == ::Const.World.TerrainType.Ocean)
 									{
 									}
 									else
 									{
-										local s = this.Math.rand(0, 3);
+										local s = ::Math.rand(0, 3);
 
-										if (tile.Type == this.Const.World.TerrainType.Mountains)
+										if (tile.Type == ::Const.World.TerrainType.Mountains)
 										{
 											s = s - 10;
 										}
@@ -287,14 +287,14 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 
 							return 0;
 						});
-						local party = enemyNobleHouse.spawnEntity(tiles[0].Tile, candidates[this.Math.rand(0, candidates.len() - 1)].getName() + " Company", true, this.Const.World.Spawn.Noble, (this.Math.rand(100, 120) + this.Flags.get("Wave") * 10 + (this.Flags.get("IsAlliedReinforcements") ? 50 : 0)) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						local party = enemyNobleHouse.spawnEntity(tiles[0].Tile, candidates[::Math.rand(0, candidates.len() - 1)].getName() + " Company", true, ::Const.World.Spawn.Noble, (::Math.rand(100, 120) + this.Flags.get("Wave") * 10 + (this.Flags.get("IsAlliedReinforcements") ? 50 : 0)) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + enemyNobleHouse.getBannerString());
 						party.setDescription("Professional soldiers in service to local lords.");
-						party.getLoot().Money = this.Math.rand(50, 200);
-						party.getLoot().ArmorParts = this.Math.rand(0, 25);
-						party.getLoot().Medicine = this.Math.rand(0, 3);
-						party.getLoot().Ammo = this.Math.rand(0, 30);
-						local r = this.Math.rand(1, 4);
+						party.getLoot().Money = ::Math.rand(50, 200);
+						party.getLoot().ArmorParts = ::Math.rand(0, 25);
+						party.getLoot().Medicine = ::Math.rand(0, 3);
+						party.getLoot().Ammo = ::Math.rand(0, 30);
+						local r = ::Math.rand(1, 4);
 
 						if (r == 1)
 						{
@@ -355,23 +355,23 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 					p.CombatID = "HoldChokepoint";
-					p.Music = this.Const.Music.NobleTracks;
+					p.Music = ::Const.Music.NobleTracks;
 
 					if (this.Contract.isPlayerAt(this.Contract.m.Destination))
 					{
 						_isPlayerInitiated = false;
 						p.MapSeed = this.Flags.getAsInt("MapSeed");
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.LineForward;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.LineBack;
-						p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
-						p.LocationTemplate.OwnedByFaction = this.Const.Faction.Player;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.LineForward;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.LineBack;
+						p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
+						p.LocationTemplate.OwnedByFaction = ::Const.Faction.Player;
 						p.LocationTemplate.Template[0] = "tactical.southern_ruins";
-						p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.Walls;
+						p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.Walls;
 						p.LocationTemplate.ShiftX = -4;
 
 						if (this.Flags.get("IsAlliedReinforcements"))
 						{
-							this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Southern, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
 							p.AllyBanners.push(this.World.FactionManager.getFaction(this.Contract.getFaction()).getPartyBanner());
 						}
 					}
@@ -421,8 +421,8 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -466,7 +466,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Everyone, get ready!",
 					function getResult()
 					{
-						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + this.Math.rand(5, 8));
+						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + ::Math.rand(5, 8));
 						this.Contract.setState("Running_Defend");
 						return 0;
 					}
@@ -597,8 +597,8 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "This is not worth losing the company over...",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to hold a fortification against northern invaders");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to hold a fortification against northern invaders");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -701,7 +701,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 						local f = this.World.FactionManager.getFaction(this.Contract.getFaction());
 						f.addPlayerRelation(-f.getPlayerRelation(), "Changed sides in the war");
 						f.getFlags().set("Betrayed", true);
-						local nobles = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+						local nobles = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 
 						foreach( n in nobles )
 						{
@@ -709,7 +709,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 							n.makeSettlementsFriendlyToPlayer();
 						}
 
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractBetrayal);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractBetrayal);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -733,7 +733,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.Flags.set("IsUltimatum", false);
-						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + this.Math.rand(3, 6));
+						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + ::Math.rand(3, 6));
 						return 0;
 					}
 
@@ -781,14 +781,14 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Held a fort against northerners");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Held a fort against northerners");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isHolyWar())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -801,7 +801,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -819,14 +819,14 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Held a fort against northerners");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Held a fort against northerners");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isHolyWar())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -839,7 +839,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -864,14 +864,14 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					local tile = this.World.getTileSquare(x, y);
 
-					if (tile.Type == this.Const.World.TerrainType.Ocean)
+					if (tile.Type == ::Const.World.TerrainType.Ocean)
 					{
 					}
 					else
 					{
-						local s = this.Math.rand(0, 3);
+						local s = ::Math.rand(0, 3);
 
-						if (tile.Type == this.Const.World.TerrainType.Mountains)
+						if (tile.Type == ::Const.World.TerrainType.Mountains)
 						{
 							s = s - 10;
 						}
@@ -915,14 +915,14 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 
 			return 0;
 		});
-		local party = cityState.spawnEntity(tiles[0].Tile, "Regiment of " + cityState.getNameOnly(), true, this.Const.World.Spawn.Southern, this.Math.rand(100, 150) * this.getDifficultyMult() * this.getScaledDifficultyMult());
+		local party = cityState.spawnEntity(tiles[0].Tile, "Regiment of " + cityState.getNameOnly(), true, ::Const.World.Spawn.Southern, ::Math.rand(100, 150) * this.getDifficultyMult() * this.getScaledDifficultyMult());
 		party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + cityState.getBannerString());
 		party.setDescription("Conscripted soldiers loyal to their city state.");
-		party.getLoot().Money = this.Math.rand(100, 300);
-		party.getLoot().ArmorParts = this.Math.rand(10, 35);
-		party.getLoot().Medicine = this.Math.rand(5, 15);
-		party.getLoot().Ammo = this.Math.rand(10, 40);
-		local r = this.Math.rand(1, 4);
+		party.getLoot().Money = ::Math.rand(100, 300);
+		party.getLoot().ArmorParts = ::Math.rand(10, 35);
+		party.getLoot().Medicine = ::Math.rand(5, 15);
+		party.getLoot().Ammo = ::Math.rand(10, 40);
+		local r = ::Math.rand(1, 4);
 
 		if (r <= 2)
 		{
@@ -944,7 +944,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 			"trade/spices_item"
 		];
 
-		for( local i = 0; i < this.Math.round(r / 2); i++ )
+		for( local i = 0; i < ::Math.round(r / 2); i++ )
 		{
 			party.addToInventory(arr[r - 1]);
 		}
@@ -964,7 +964,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Destination == null || this.m.Destination.isNull() ? "" : this.Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())]
+			this.m.Destination == null || this.m.Destination.isNull() ? "" : ::Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())]
 		]);
 	}
 

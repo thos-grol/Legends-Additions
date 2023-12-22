@@ -195,8 +195,8 @@
 ::Const.Faction.Cultists <- ::Const.Faction.COUNT;
 ::Const.Faction.COUNT++
 ::Const.FactionBase.push("bust_base_beasts")
-// ::Const.FactionTrait.Actions[this.Const.FactionTrait.Settlement].push("scripts/factions/actions/drive_away_cultists_action");
-// ::Const.FactionTrait.Actions[this.Const.FactionTrait.NobleHouse].push("scripts/factions/actions/free_cultist_prisoner_action");
+// ::Const.FactionTrait.Actions[::Const.FactionTrait.Settlement].push("scripts/factions/actions/drive_away_cultists_action");
+// ::Const.FactionTrait.Actions[::Const.FactionTrait.NobleHouse].push("scripts/factions/actions/free_cultist_prisoner_action");
 
 ::Const.CultistTraits <- 
 [

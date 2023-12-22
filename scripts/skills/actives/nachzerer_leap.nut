@@ -64,7 +64,7 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 
 	function onTurnStart()
 	{
-		this.m.Cooldown = this.Math.max(0, this.m.Cooldown - 1);
+		this.m.Cooldown = ::Math.max(0, this.m.Cooldown - 1);
 	}
 
 	function isUsable()
@@ -125,7 +125,7 @@ this.nachzerer_leap <- this.inherit("scripts/skills/skill", {
 			}
 
 			if (_entity.getTile().IsVisibleForPlayer && _tag.Skill.m.SoundOnHit.len() > 0)
-				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _entity.getPos());
+				this.Sound.play(_tag.Skill.m.SoundOnHit[::Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _entity.getPos());
 		}
 		::logInfo("Leap 3");
 	}

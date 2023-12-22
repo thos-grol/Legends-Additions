@@ -8,8 +8,8 @@ this.ai_defend_riposte <- this.inherit("scripts/ai/tactical/behavior", {
 	},
 	function create()
 	{
-		this.m.ID = this.Const.AI.Behavior.ID.Riposte;
-		this.m.Order = this.Const.AI.Behavior.Order.Riposte;
+		this.m.ID = ::Const.AI.Behavior.ID.Riposte;
+		this.m.Order = ::Const.AI.Behavior.Order.Riposte;
 		this.behavior.create();
 	}
 
@@ -18,25 +18,25 @@ this.ai_defend_riposte <- this.inherit("scripts/ai/tactical/behavior", {
 		this.m.Skill = null;
 		local score = this.getProperties().BehaviorMult[this.m.ID];
 
-		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP) return this.Const.AI.Behavior.Score.Zero;
-		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
-		if (!this.getAgent().hasKnownOpponent()) return this.Const.AI.Behavior.Score.Zero;
+		if (_entity.getActionPoints() < ::Const.Movement.AutoEndTurnBelowAP) return ::Const.AI.Behavior.Score.Zero;
+		if (_entity.getMoraleState() == ::Const.MoraleState.Fleeing) return ::Const.AI.Behavior.Score.Zero;
+		if (!this.getAgent().hasKnownOpponent()) return ::Const.AI.Behavior.Score.Zero;
 
 
 		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
 
-		if (this.m.Skill == null) return this.Const.AI.Behavior.Score.Zero;
+		if (this.m.Skill == null) return ::Const.AI.Behavior.Score.Zero;
 
 
 		score = score * this.getFatigueScoreMult(this.m.Skill);
 
-		if (_entity.getSkills().hasSkill("effects.adrenaline")) return this.Const.AI.Behavior.Score.Zero;
-		if (_entity.getSkills().hasSkill("perk.mastery.sword")) return this.Const.AI.Behavior.Score.Zero;
-		if (_entity.getSkills().hasSkill("perk.mastery.swordc")) return this.Const.AI.Behavior.Score.Zero;
+		if (_entity.getSkills().hasSkill("effects.adrenaline")) return ::Const.AI.Behavior.Score.Zero;
+		if (_entity.getSkills().hasSkill("perk.mastery.sword")) return ::Const.AI.Behavior.Score.Zero;
+		if (_entity.getSkills().hasSkill("perk.mastery.swordc")) return ::Const.AI.Behavior.Score.Zero;
 
 
 		local dotDamage = 0;
-		local effects = _entity.getSkills().getAllSkillsOfType(this.Const.SkillType.DamageOverTime);
+		local effects = _entity.getSkills().getAllSkillsOfType(::Const.SkillType.DamageOverTime);
 
 		foreach( dot in effects )
 		{
@@ -45,23 +45,23 @@ this.ai_defend_riposte <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (dotDamage >= _entity.getHitpoints())
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (_entity.getAttackedCount() > 0)
 		{
-			score = score * this.Math.pow(this.Const.AI.Behavior.RiposteOverwhelmMult, _entity.getAttackedCount());
+			score = score * ::Math.pow(::Const.AI.Behavior.RiposteOverwhelmMult, _entity.getAttackedCount());
 		}
 		else
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		local targets = this.queryTargetsInMeleeRange();
 
 		if (targets.len() == 0)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		local isInMelee = targets.len() != 0;
@@ -72,7 +72,7 @@ this.ai_defend_riposte <- this.inherit("scripts/ai/tactical/behavior", {
 
 		foreach( t in targets )
 		{
-			if (t.isNonCombatant() || t.isArmedWithRangedWeapon() || t.getMoraleState() == this.Const.MoraleState.Fleeing || t.getCurrentProperties().IsStunned || t.isFatigued() || !t.getCurrentProperties().IsAbleToUseWeaponSkills)
+			if (t.isNonCombatant() || t.isArmedWithRangedWeapon() || t.getMoraleState() == ::Const.MoraleState.Fleeing || t.getCurrentProperties().IsStunned || t.isFatigued() || !t.getCurrentProperties().IsAbleToUseWeaponSkills)
 			{
 				continue;
 			}
@@ -102,39 +102,39 @@ this.ai_defend_riposte <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (meleeOpponents < 2)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (count > 0)
 		{
-			score = score * this.Math.pow(this.Const.AI.Behavior.RiposteOpponentsInMeleeMult, count);
+			score = score * ::Math.pow(::Const.AI.Behavior.RiposteOpponentsInMeleeMult, count);
 		}
 		else if (count < 0)
 		{
-			score = score * this.Math.pow(this.Const.AI.Behavior.RiposteManyOtherTargetsMult, this.Math.abs(-count));
+			score = score * ::Math.pow(::Const.AI.Behavior.RiposteManyOtherTargetsMult, ::Math.abs(-count));
 		}
 
 		if (isBadPosition)
 		{
-			score = score * this.Const.AI.Behavior.RiposteInBadPositionMult;
+			score = score * ::Const.AI.Behavior.RiposteInBadPositionMult;
 		}
 
 		if (_entity.getSkills().hasSkill("effects.shieldwall"))
 		{
-			score = score * this.Const.AI.Behavior.RiposteWithShieldwallMult;
+			score = score * ::Const.AI.Behavior.RiposteWithShieldwallMult;
 		}
 
 		if (this.getAgent().getIntentions().IsDefendingPosition)
 		{
-			score = score * this.Const.AI.Behavior.RiposteDefendPositionMult;
+			score = score * ::Const.AI.Behavior.RiposteDefendPositionMult;
 		}
 
-		return this.Const.AI.Behavior.Score.Riposte * this.getProperties().OverallDefensivenessMult * score;
+		return ::Const.AI.Behavior.Score.Riposte * this.getProperties().OverallDefensivenessMult * score;
 	}
 
 	function onExecute( _entity )
 	{
-		if (this.Const.AI.VerboseMode)
+		if (::Const.AI.VerboseMode)
 		{
 			this.logInfo("* " + _entity.getName() + ": Using Riposte!");
 		}

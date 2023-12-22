@@ -24,7 +24,7 @@ gt.Const.World.Spawn.Zombies <- {
 			Weight = 25,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Zombie,
+					Type = ::Const.World.Spawn.Troops.Zombie,
 					Cost = 20
 				}
 			]
@@ -33,7 +33,7 @@ gt.Const.World.Spawn.Zombies <- {
 			Weight = 65,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieYeoman,
+					Type = ::Const.World.Spawn.Troops.ZombieYeoman,
 					MinR = 200,
 					Cost = 30
 				}
@@ -43,7 +43,7 @@ gt.Const.World.Spawn.Zombies <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieKnight,
+					Type = ::Const.World.Spawn.Troops.ZombieKnight,
 					MinR = 400,
 					Cost = 40
 				}
@@ -66,7 +66,7 @@ gt.Const.World.Spawn.ZombiesLight <- {
 			Weight = 100,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Zombie,
+					Type = ::Const.World.Spawn.Troops.Zombie,
 					Cost = 20
 				}
 			]
@@ -87,7 +87,7 @@ gt.Const.World.Spawn.ZombiesAndGhouls <- {
 			Weight = 15,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Zombie,
+					Type = ::Const.World.Spawn.Troops.Zombie,
 					Cost = 20
 				}
 			]
@@ -96,7 +96,7 @@ gt.Const.World.Spawn.ZombiesAndGhouls <- {
 			Weight = 60,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieYeoman,
+					Type = ::Const.World.Spawn.Troops.ZombieYeoman,
 					MinR = 200,
 					Cost = 30
 				}
@@ -106,7 +106,7 @@ gt.Const.World.Spawn.ZombiesAndGhouls <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieKnight,
+					Type = ::Const.World.Spawn.Troops.ZombieKnight,
 					MinR = 400,
 					Cost = 40
 				}
@@ -128,7 +128,7 @@ gt.Const.World.Spawn.ZombiesOrZombiesAndGhouls <- {
 			Weight = 15,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Zombie,
+					Type = ::Const.World.Spawn.Troops.Zombie,
 					Cost = 20
 				}
 			]
@@ -137,7 +137,7 @@ gt.Const.World.Spawn.ZombiesOrZombiesAndGhouls <- {
 			Weight = 60,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieYeoman,
+					Type = ::Const.World.Spawn.Troops.ZombieYeoman,
 					MinR = 200,
 					Cost = 30
 				}
@@ -147,7 +147,7 @@ gt.Const.World.Spawn.ZombiesOrZombiesAndGhouls <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieKnight,
+					Type = ::Const.World.Spawn.Troops.ZombieKnight,
 					MinR = 400,
 					Cost = 40
 				}
@@ -169,7 +169,7 @@ gt.Const.World.Spawn.ZombiesAndGhosts <- {
 			Weight = 15,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Zombie,
+					Type = ::Const.World.Spawn.Troops.Zombie,
 					Cost = 20
 				}
 			]
@@ -178,7 +178,7 @@ gt.Const.World.Spawn.ZombiesAndGhosts <- {
 			Weight = 60,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieYeoman,
+					Type = ::Const.World.Spawn.Troops.ZombieYeoman,
 					MinR = 200,
 					Cost = 30
 				}
@@ -188,7 +188,7 @@ gt.Const.World.Spawn.ZombiesAndGhosts <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieKnight,
+					Type = ::Const.World.Spawn.Troops.ZombieKnight,
 					MinR = 400,
 					Cost = 30
 				}
@@ -198,7 +198,7 @@ gt.Const.World.Spawn.ZombiesAndGhosts <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Ghost,
+					Type = ::Const.World.Spawn.Troops.Ghost,
 					Cost = 30
 				}
 			]
@@ -207,7 +207,7 @@ gt.Const.World.Spawn.ZombiesAndGhosts <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendDemonHound,
+					Type = ::Const.World.Spawn.Troops.LegendDemonHound,
 					MinR = 400,
 					Cost = 40
 				}
@@ -218,7 +218,7 @@ gt.Const.World.Spawn.ZombiesAndGhosts <- {
 			MinR = 800,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendBanshee,
+					Type = ::Const.World.Spawn.Troops.LegendBanshee,
 					Cost = 70
 				}
 			]
@@ -239,7 +239,7 @@ gt.Const.World.Spawn.ZombiesOrZombiesAndGhosts <- {
 			Weight = 15,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Zombie,
+					Type = ::Const.World.Spawn.Troops.Zombie,
 					Cost = 20
 				}
 			]
@@ -248,7 +248,7 @@ gt.Const.World.Spawn.ZombiesOrZombiesAndGhosts <- {
 			Weight = 60,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieYeoman,
+					Type = ::Const.World.Spawn.Troops.ZombieYeoman,
 					MinR = 200,
 					Cost = 30
 				}
@@ -258,7 +258,7 @@ gt.Const.World.Spawn.ZombiesOrZombiesAndGhosts <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieKnight,
+					Type = ::Const.World.Spawn.Troops.ZombieKnight,
 					MinR = 400,
 					Cost = 40
 				}
@@ -268,7 +268,7 @@ gt.Const.World.Spawn.ZombiesOrZombiesAndGhosts <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Ghost,
+					Type = ::Const.World.Spawn.Troops.Ghost,
 					Cost = 30
 				}
 			]
@@ -277,7 +277,7 @@ gt.Const.World.Spawn.ZombiesOrZombiesAndGhosts <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendDemonHound,
+					Type = ::Const.World.Spawn.Troops.LegendDemonHound,
 					MinR = 400,
 					Cost = 40
 				}
@@ -288,7 +288,7 @@ gt.Const.World.Spawn.ZombiesOrZombiesAndGhosts <- {
 			MinR = 800,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendBanshee,
+					Type = ::Const.World.Spawn.Troops.LegendBanshee,
 					Cost = 70
 				}
 			]
@@ -309,7 +309,7 @@ gt.Const.World.Spawn.Ghosts <- {
 			Weight = 80,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Ghost,
+					Type = ::Const.World.Spawn.Troops.Ghost,
 					Cost = 30
 				}
 			]
@@ -318,7 +318,7 @@ gt.Const.World.Spawn.Ghosts <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendDemonHound,
+					Type = ::Const.World.Spawn.Troops.LegendDemonHound,
 					MinR = 400,
 					Cost = 40
 				}
@@ -329,7 +329,7 @@ gt.Const.World.Spawn.Ghosts <- {
 			MinR = 800,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendBanshee,
+					Type = ::Const.World.Spawn.Troops.LegendBanshee,
 					Cost = 70
 				}
 			]
@@ -347,7 +347,7 @@ gt.Const.World.Spawn.Necromancer <- {
 	MinR = 102,
 	Fixed = [
 		{
-			Type = this.Const.World.Spawn.Troops.Necromancer,
+			Type = ::Const.World.Spawn.Troops.Necromancer,
 			Cost = 30,
 			MinGuards = 1,
 			MaxGuards = 2,
@@ -355,24 +355,24 @@ gt.Const.World.Spawn.Necromancer <- {
 			Weight = 0,
 			Guards = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieYeomanBodyguard,
+					Type = ::Const.World.Spawn.Troops.ZombieYeomanBodyguard,
 					MinR = 200,
 					Cost = 5,
 					function Weight( scale )
 					{
 						local c = 100 - scale * 100;
-						return this.Math.max(0, c);
+						return ::Math.max(0, c);
 					}
 
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieKnightBodyguard,
+					Type = ::Const.World.Spawn.Troops.ZombieKnightBodyguard,
 					MinR = 400,
 					Cost = 10,
 					function Weight( scale )
 					{
 						local c = 100 - (1.0 - scale) * 100;
-						return this.Math.min(100, c);
+						return ::Math.min(100, c);
 					}
 
 				}
@@ -384,7 +384,7 @@ gt.Const.World.Spawn.Necromancer <- {
 			Weight = 20,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Zombie,
+					Type = ::Const.World.Spawn.Troops.Zombie,
 					Cost = 20
 				}
 			]
@@ -393,7 +393,7 @@ gt.Const.World.Spawn.Necromancer <- {
 			Weight = 65,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieYeoman,
+					Type = ::Const.World.Spawn.Troops.ZombieYeoman,
 					MinR = 200,
 					Cost = 30
 				}
@@ -403,7 +403,7 @@ gt.Const.World.Spawn.Necromancer <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieKnight,
+					Type = ::Const.World.Spawn.Troops.ZombieKnight,
 					MinR = 400,
 					Cost = 30
 				}
@@ -413,7 +413,7 @@ gt.Const.World.Spawn.Necromancer <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Necromancer,
+					Type = ::Const.World.Spawn.Troops.Necromancer,
 					Cost = 30,
 					Roll = true,
 					MinGuards = 1,
@@ -421,22 +421,22 @@ gt.Const.World.Spawn.Necromancer <- {
 					MaxGuardsWeight = 50,
 					Guards = [
 						{
-							Type = this.Const.World.Spawn.Troops.ZombieYeomanBodyguard,
+							Type = ::Const.World.Spawn.Troops.ZombieYeomanBodyguard,
 							Cost = 12,
 							function Weight( scale )
 							{
 								local c = 100 - scale * 100;
-								return this.Math.max(0, c);
+								return ::Math.max(0, c);
 							}
 
 						},
 						{
-							Type = this.Const.World.Spawn.Troops.ZombieKnightBodyguard,
+							Type = ::Const.World.Spawn.Troops.ZombieKnightBodyguard,
 							Cost = 25,
 							function Weight( scale )
 							{
 								local c = 100 - (1.0 - scale) * 100;
-								return this.Math.min(100, c);
+								return ::Math.min(100, c);
 							}
 
 						}
@@ -448,7 +448,7 @@ gt.Const.World.Spawn.Necromancer <- {
 			Weight = 4,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Ghost,
+					Type = ::Const.World.Spawn.Troops.Ghost,
 					Cost = 30
 				}
 			]
@@ -457,7 +457,7 @@ gt.Const.World.Spawn.Necromancer <- {
 			Weight = 4,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendDemonHound,
+					Type = ::Const.World.Spawn.Troops.LegendDemonHound,
 					MinR = 400,
 					Cost = 40
 				}
@@ -468,7 +468,7 @@ gt.Const.World.Spawn.Necromancer <- {
 			MinR = 800,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendBanshee,
+					Type = ::Const.World.Spawn.Troops.LegendBanshee,
 					Cost = 70
 				}
 			]
@@ -486,7 +486,7 @@ gt.Const.World.Spawn.NecromancerSouthern <- {
 	MinR = 102,
 	Fixed = [
 		{
-			Type = this.Const.World.Spawn.Troops.Necromancer,
+			Type = ::Const.World.Spawn.Troops.Necromancer,
 			Cost = 30,
 			MinGuards = 1,
 			MaxGuards = 2,
@@ -494,24 +494,24 @@ gt.Const.World.Spawn.NecromancerSouthern <- {
 			Weight = 0,
 			Guards = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieNomadBodyguard,
+					Type = ::Const.World.Spawn.Troops.ZombieNomadBodyguard,
 					MinR = 200,
 					Cost = 6,
 					function Weight( scale )
 					{
 						local c = 100 - scale * 100;
-						return this.Math.max(0, c);
+						return ::Math.max(0, c);
 					}
 
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieKnightBodyguard,
+					Type = ::Const.World.Spawn.Troops.ZombieKnightBodyguard,
 					MinR = 400,
 					Cost = 24,
 					function Weight( scale )
 					{
 						local c = 100 - (1.0 - scale) * 100;
-						return this.Math.min(100, c);
+						return ::Math.min(100, c);
 					}
 
 				}
@@ -523,7 +523,7 @@ gt.Const.World.Spawn.NecromancerSouthern <- {
 			Weight = 30,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieNomad,
+					Type = ::Const.World.Spawn.Troops.ZombieNomad,
 					Cost = 10
 				}
 			]
@@ -532,7 +532,7 @@ gt.Const.World.Spawn.NecromancerSouthern <- {
 			Weight = 45,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieYeoman,
+					Type = ::Const.World.Spawn.Troops.ZombieYeoman,
 					Cost = 10
 				}
 			]
@@ -541,7 +541,7 @@ gt.Const.World.Spawn.NecromancerSouthern <- {
 			Weight = 14,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieNomadBodyguard,
+					Type = ::Const.World.Spawn.Troops.ZombieNomadBodyguard,
 					MinR = 250,
 					Cost = 30
 				}
@@ -551,7 +551,7 @@ gt.Const.World.Spawn.NecromancerSouthern <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieKnight,
+					Type = ::Const.World.Spawn.Troops.ZombieKnight,
 					MinR = 400,
 					Cost = 30
 				}
@@ -561,7 +561,7 @@ gt.Const.World.Spawn.NecromancerSouthern <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Necromancer,
+					Type = ::Const.World.Spawn.Troops.Necromancer,
 					Cost = 30,
 					Roll = true,
 					MinGuards = 1,
@@ -569,22 +569,22 @@ gt.Const.World.Spawn.NecromancerSouthern <- {
 					MaxGuardsWeight = 50,
 					Guards = [
 						{
-							Type = this.Const.World.Spawn.Troops.ZombieNomadBodyguard,
+							Type = ::Const.World.Spawn.Troops.ZombieNomadBodyguard,
 							Cost = 6,
 							function Weight( scale )
 							{
 								local c = 100 - scale * 100;
-								return this.Math.max(0, c);
+								return ::Math.max(0, c);
 							}
 
 						},
 						{
-							Type = this.Const.World.Spawn.Troops.ZombieKnightBodyguard,
+							Type = ::Const.World.Spawn.Troops.ZombieKnightBodyguard,
 							Cost = 24,
 							function Weight( scale )
 							{
 								local c = 100 - (1.0 - scale) * 100;
-								return this.Math.min(100, c);
+								return ::Math.min(100, c);
 							}
 
 						}
@@ -609,7 +609,7 @@ gt.Const.World.Spawn.ZombiesCrystalSkull <- {
 			MinCount = 1,
 			MaxCount = 1,
 			Weight = 30,
-			Type = this.Const.World.Spawn.Troops.ZombieKnight,
+			Type = ::Const.World.Spawn.Troops.ZombieKnight,
 			Cost = 40
 		}
 	],
@@ -618,7 +618,7 @@ gt.Const.World.Spawn.ZombiesCrystalSkull <- {
 			Weight = 25,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Zombie,
+					Type = ::Const.World.Spawn.Troops.Zombie,
 					Cost = 20
 				}
 			]
@@ -627,7 +627,7 @@ gt.Const.World.Spawn.ZombiesCrystalSkull <- {
 			Weight = 65,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.ZombieYeoman,
+					Type = ::Const.World.Spawn.Troops.ZombieYeoman,
 					MinR = 200,
 					Cost = 30
 				}

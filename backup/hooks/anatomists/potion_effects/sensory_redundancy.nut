@@ -54,7 +54,7 @@
     o.onAdded = function()
 	{
 		local actor = this.getContainer().getActor();
-        if (actor.getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 50 : false)
+        if (actor.getCurrentProperties().IsResistantToPhysicalStatuses ? ::Math.rand(1, 100) <= 50 : false)
 		{
 			if (!actor.isHiddenToPlayer())
 			{
@@ -86,7 +86,7 @@
     o.onAdded = function()
 	{
 		local actor = this.getContainer().getActor();
-        if (actor.getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 50 : false)
+        if (actor.getCurrentProperties().IsResistantToPhysicalStatuses ? ::Math.rand(1, 100) <= 50 : false)
 		{
 			if (!actor.isHiddenToPlayer())
 			{
@@ -95,7 +95,7 @@
 
 			this.removeSelf();
 		}
-        else if (!actor.getCurrentProperties().IsImmuneToDaze) this.m.TurnsLeft = this.Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+        else if (!actor.getCurrentProperties().IsImmuneToDaze) this.m.TurnsLeft = ::Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
 		else this.m.IsGarbage = true;
 	}
 
@@ -106,7 +106,7 @@
     o.onAdded = function()
 	{
 		local actor = this.getContainer().getActor();
-        if (actor.getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 50 : false)
+        if (actor.getCurrentProperties().IsResistantToPhysicalStatuses ? ::Math.rand(1, 100) <= 50 : false)
 		{
 			if (!actor.isHiddenToPlayer())
 			{
@@ -137,7 +137,7 @@
     o.onAdded = function()
 	{
 		local actor = this.getContainer().getActor();
-        this.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+        this.m.TurnsLeft = ::Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 	}
 
 });
@@ -147,7 +147,7 @@
     o.onAdded = function()
 	{
 		local actor = this.getContainer().getActor();
-        if (actor.getSkills().hasSkill("trait.sure_footing") ? this.Math.rand(1, 100) <= 50 : false)
+        if (actor.getSkills().hasSkill("trait.sure_footing") ? ::Math.rand(1, 100) <= 50 : false)
         {
             if (!actor.isHiddenToPlayer())
 			{
@@ -159,7 +159,7 @@
         }
         else
         {
-            this.m.TurnsLeft = this.Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+            this.m.TurnsLeft = ::Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
 		    this.Tactical.TurnSequenceBar.pushEntityBack(actor.getID());
         }
 
@@ -204,7 +204,7 @@
     o.onAdded = function()
 	{
 		local actor = this.getContainer().getActor();
-        this.m.TurnsLeft = this.Math.max(2, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+        this.m.TurnsLeft = ::Math.max(2, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
 	}
 
 });

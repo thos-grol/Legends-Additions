@@ -156,7 +156,7 @@
 				id = 4,
 				type = "text",
 				icon = "ui/icons/regular_damage.png",
-				text = "Damage of [color=" + this.Const.UI.Color.DamageValue + "]" + this.m.RegularDamage + "[/color] - [color=" + this.Const.UI.Color.DamageValue + "]" + this.m.RegularDamageMax + "[/color]"
+				text = "Damage of [color=" + ::Const.UI.Color.DamageValue + "]" + this.m.RegularDamage + "[/color] - [color=" + ::Const.UI.Color.DamageValue + "]" + this.m.RegularDamageMax + "[/color]"
 			});
 		}
 
@@ -166,7 +166,7 @@
 				id = 64,
 				type = "text",
 				icon = "ui/icons/direct_damage.png",
-				text = "[color=" + this.Const.UI.Color.DamageValue + "]" + this.Math.floor((this.m.DirectDamageMult + this.m.DirectDamageAdd) * 100) + "%[/color] of damage ignores armor"
+				text = "[color=" + ::Const.UI.Color.DamageValue + "]" + ::Math.floor((this.m.DirectDamageMult + this.m.DirectDamageAdd) * 100) + "%[/color] of damage ignores armor"
 			});
 		}
 
@@ -176,7 +176,7 @@
 				id = 5,
 				type = "text",
 				icon = "ui/icons/armor_damage.png",
-				text = "[color=" + this.Const.UI.Color.DamageValue + "]" + this.Math.floor(this.m.ArmorDamageMult * 100) + "%[/color] effective against armor"
+				text = "[color=" + ::Const.UI.Color.DamageValue + "]" + ::Math.floor(this.m.ArmorDamageMult * 100) + "%[/color] effective against armor"
 			});
 		}
 
@@ -186,7 +186,7 @@
 				id = 6,
 				type = "text",
 				icon = "ui/icons/shield_damage.png",
-				text = "Shield damage of [color=" + this.Const.UI.Color.DamageValue + "]" + this.m.ShieldDamage + "[/color]"
+				text = "Shield damage of [color=" + ::Const.UI.Color.DamageValue + "]" + this.m.ShieldDamage + "[/color]"
 			});
 		}
 
@@ -196,7 +196,7 @@
 				id = 9,
 				type = "text",
 				icon = "ui/icons/chance_to_hit_head.png",
-				text = "Chance to hit head [color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.ChanceToHitHead + "%[/color]"
+				text = "Chance to hit head [color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.ChanceToHitHead + "%[/color]"
 			});
 		}
 
@@ -206,7 +206,7 @@
 				id = 10,
 				type = "text",
 				icon = "ui/icons/hitchance.png",
-				text = "Has an additional [color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.AdditionalAccuracy + "%[/color] chance to hit"
+				text = "Has an additional [color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.AdditionalAccuracy + "%[/color] chance to hit"
 			});
 		}
 		else if (this.m.AdditionalAccuracy < 0)
@@ -215,7 +215,7 @@
 				id = 10,
 				type = "text",
 				icon = "ui/icons/hitchance.png",
-				text = "Has an additional [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.AdditionalAccuracy + "%[/color] chance to hit"
+				text = "Has an additional [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.AdditionalAccuracy + "%[/color] chance to hit"
 			});
 		}
 
@@ -225,7 +225,7 @@
 				id = 7,
 				type = "text",
 				icon = "ui/icons/vision.png",
-				text = "Range of [color=" + this.Const.UI.Color.PositiveValue + "]" + this.getRangeMax() + "[/color] tiles"
+				text = "Range of [color=" + ::Const.UI.Color.PositiveValue + "]" + this.getRangeMax() + "[/color] tiles"
 			});
 		}
 
@@ -235,7 +235,7 @@
 				id = 8,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "Weight: [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.StaminaModifier + "[/color]"
+				text = "Weight: [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.StaminaModifier + "[/color]"
 			});
 		}
 
@@ -245,7 +245,7 @@
 				id = 8,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "Weapon skills build up [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.FatigueOnSkillUse + "[/color] more fatigue"
+				text = "Weapon skills build up [color=" + ::Const.UI.Color.NegativeValue + "]" + this.m.FatigueOnSkillUse + "[/color] more fatigue"
 			});
 		}
 		else if (this.m.FatigueOnSkillUse < 0)
@@ -254,7 +254,7 @@
 				id = 8,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "Weapon skills build up [color=" + this.Const.UI.Color.PositiveValue + "]" + this.m.FatigueOnSkillUse + "[/color] less fatigue"
+				text = "Weapon skills build up [color=" + ::Const.UI.Color.PositiveValue + "]" + this.m.FatigueOnSkillUse + "[/color] less fatigue"
 			});
 		}
 
@@ -266,7 +266,7 @@
 					id = 10,
 					type = "text",
 					icon = "ui/icons/ammo.png",
-					text = "Contains ammo for [color=" + this.Const.UI.Color.PositiveValue + "]" + this.m.Ammo + "[/color] uses"
+					text = "Contains ammo for [color=" + ::Const.UI.Color.PositiveValue + "]" + this.m.Ammo + "[/color] uses"
 				});
 			}
 			else
@@ -275,7 +275,7 @@
 					id = 10,
 					type = "text",
 					icon = "ui/tooltips/warning.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]Is empty and useless[/color]"
+					text = "[color=" + ::Const.UI.Color.NegativeValue + "]Is empty and useless[/color]"
 				});
 			}
 		}

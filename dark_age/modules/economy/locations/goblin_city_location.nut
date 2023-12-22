@@ -40,7 +40,7 @@
 
 		if (this.World.getTime().Days >= dateToSkip)
 		{
-			local bonus = this.Math.min(1, this.Math.floor(this.World.getTime().Days - dateToSkip));
+			local bonus = ::Math.min(1, ::Math.floor(this.World.getTime().Days - dateToSkip));
 			this.m.Resources += bonus;
 		}
 	}
@@ -142,13 +142,13 @@
 
 		if (this.World.getTime().Days >= dateToSkip)
 		{
-			local bonus = this.Math.min(1, this.Math.floor((this.World.getTime().Days - dateToSkip) / 20));
+			local bonus = ::Math.min(1, ::Math.floor((this.World.getTime().Days - dateToSkip) / 20));
 			toSpawn = toSpawn + bonus;
 		}
 
 		for( local added = 0; this.m.Troops.len() < toSpawn;  )
 		{
-			local r = this.Math.rand(1, 3);
+			local r = ::Math.rand(1, 3);
 
 			if (r == 1)
 			{
@@ -182,9 +182,9 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropArmorParts(this.Math.rand(0, 20), _lootTable);
-		this.dropAmmo(this.Math.rand(25, 100), _lootTable);
-		this.dropMedicine(this.Math.rand(0, 10), _lootTable);
+		this.dropArmorParts(::Math.rand(0, 20), _lootTable);
+		this.dropAmmo(::Math.rand(25, 100), _lootTable);
+		this.dropMedicine(::Math.rand(0, 10), _lootTable);
 
 		local treasure = [
 			"loot/goblin_minted_coins_item",
@@ -193,7 +193,7 @@
 		treasure.push("misc/scroll");
 		treasure.push("misc/tome");
 		treasure.push("misc/potion_of_oblivion_item");
-		this.dropTreasure(this.Math.rand(2, 3), treasure, _lootTable);
+		this.dropTreasure(::Math.rand(2, 3), treasure, _lootTable);
 
 		_lootTable.push(::Const.World.Common.pickHelmet([
 			[

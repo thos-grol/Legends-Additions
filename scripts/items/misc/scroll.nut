@@ -9,8 +9,8 @@ this.scroll <- this.inherit("scripts/items/item", {
 		this.m.Name = "Scroll of Destiny";
 		this.m.Description = "Repermutate destiny... Grants the user the trait tree depicted on the scroll";
 		this.m.Icon = "trade/scroll.png";
-		this.m.SlotType = this.Const.ItemSlot.None;
-		this.m.ItemType = this.Const.Items.ItemType.Usable;
+		this.m.SlotType = ::Const.ItemSlot.None;
+		this.m.ItemType = ::Const.Items.ItemType.Usable;
 		this.m.IsDroppedAsLoot = true;
 		this.m.IsAllowedInBag = false;
 		this.m.IsUsable = true;
@@ -95,7 +95,7 @@ this.scroll <- this.inherit("scripts/items/item", {
 
 	function playInventorySound( _eventType )
 	{
-		this.Sound.play("sounds/scribble.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/scribble.wav", ::Const.Sound.Volume.Inventory);
 	}
 
 	function onUse( _actor, _item = null )
@@ -109,7 +109,7 @@ this.scroll <- this.inherit("scripts/items/item", {
 
 		if (effect != null) effect.m.Smart = true;
 		else _actor.getSkills().add(this.new("scripts/skills/effects/legend_scroll_effect"));
-		this.Sound.play("sounds/scribble.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/scribble.wav", ::Const.Sound.Volume.Inventory);
 		return true;
 	}
 

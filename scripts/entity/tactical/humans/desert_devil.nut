@@ -3,15 +3,15 @@ this.desert_devil <- this.inherit("scripts/entity/tactical/abstract_human", {
 	function create()
 	{
 		this.m.Name = "Blade Dancer";
-		this.m.Type = this.Const.EntityType.DesertDevil;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.DesertDevil.XP;
+		this.m.Type = ::Const.EntityType.DesertDevil;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.DesertDevil.XP;
 		this.abstract_human.create();
-		this.m.Bodies = this.Const.Bodies.SouthernMale;
-		this.m.Faces = this.Const.Faces.SouthernMale;
-		this.m.Hairs = this.Const.Hair.SouthernMale;
-		this.m.HairColors = this.Const.HairColors.Southern;
-		this.m.Beards = this.Const.Beards.Southern;
+		this.m.Bodies = ::Const.Bodies.SouthernMale;
+		this.m.Faces = ::Const.Faces.SouthernMale;
+		this.m.Hairs = ::Const.Hair.SouthernMale;
+		this.m.HairColors = ::Const.HairColors.Southern;
+		this.m.Beards = ::Const.Beards.Southern;
 		this.m.Ethnicity = 1;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bounty_hunter_melee_agent");
 		this.m.AIAgent.setActor(this);
@@ -21,7 +21,7 @@ this.desert_devil <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.DesertDevil);
+		b.setValues(::Const.Tactical.Actor.DesertDevil);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -47,7 +47,7 @@ this.desert_devil <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function pickOutfit()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"oriental/assassin_robe"
@@ -58,9 +58,9 @@ this.desert_devil <- this.inherit("scripts/entity/tactical/abstract_human", {
 			]
 		]));
 
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head))
 		{
-			local helm = this.Const.World.Common.pickHelmet([
+			local helm = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"oriental/blade_dancer_head_wrap"
@@ -77,10 +77,10 @@ this.desert_devil <- this.inherit("scripts/entity/tactical/abstract_human", {
 	function pickNamed()
 	{
 		//decide what item will be named
-		local r = this.Math.rand(1, 3);
+		local r = ::Math.rand(1, 3);
 		if (r == 1)
 		{
-			this.m.Items.equip(this.Const.World.Common.pickArmor([
+			this.m.Items.equip(::Const.World.Common.pickArmor([
 				[
 					1,
 					"named/black_leather_armor"

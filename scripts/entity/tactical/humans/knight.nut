@@ -2,30 +2,30 @@ this.knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Knight;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Knight.XP;
+		this.m.Type = ::Const.EntityType.Knight;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.Knight.XP;
 		this.m.Name = this.generateName();
 		this.m.IsGeneratingKillName = false;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.SmartMale;
-		this.m.Hairs = this.Const.Hair.CommonMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.Tidy;
+		this.m.Faces = ::Const.Faces.SmartMale;
+		this.m.Hairs = ::Const.Hair.CommonMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.Tidy;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/military_melee_agent");
 		this.m.AIAgent.setActor(this);
 	}
 
 	function generateName()
 	{
-		return this.Const.Strings.KnightNames[this.Math.rand(0, this.Const.Strings.KnightNames.len() - 1)];
+		return ::Const.Strings.KnightNames[::Math.rand(0, ::Const.Strings.KnightNames.len() - 1)];
 	}
 
 	function onInit()
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Knight);
+		b.setValues(::Const.Tactical.Actor.Knight);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -59,12 +59,12 @@ this.knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 		this.m.Surcoat = banner;
 
-		if (this.Math.rand(1, 100) <= 90)
+		if (::Math.rand(1, 100) <= 90)
 		{
 			this.getSprite("surcoat").setBrush("surcoat_" + (banner < 10 ? "0" + banner : banner));
 		}
 
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"coat_of_plates"
@@ -75,9 +75,9 @@ this.knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 			]
 		]));
 
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head))
 		{
-			this.m.Items.equip(this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::Const.World.Common.pickHelmet([
 				[
 					30,
 					"full_helm"
@@ -149,7 +149,7 @@ this.knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function post_init()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Offhand))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Offhand))
 		{
 			local shield = this.new("scripts/items/shields/faction_heater_shield");
 			local banner = 4;
@@ -169,7 +169,7 @@ this.knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 	function pickNamed()
 	{
 		//decide what item will be named
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 		if (r == 1) //armor
 		{
 			local armor = [
@@ -178,17 +178,17 @@ this.knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 				"armor/named/green_coat_of_plates_armor",
 				"armor/named/heraldic_mail_armor"
 			];
-			local h = this.Const.World.Common.pickArmor(this.Const.World.Common.convNameToList(armor));
+			local h = ::Const.World.Common.pickArmor(::Const.World.Common.convNameToList(armor));
 			this.m.Items.equip(h);
 		}
 		else
 		{
 			this.m.IsMinibossWeapon <- true;
-			local shields = clone this.Const.Items.NamedShields;
-			this.m.Items.equip(this.new("scripts/items/" + shields[this.Math.rand(0, shields.len() - 1)]));
+			local shields = clone ::Const.Items.NamedShields;
+			this.m.Items.equip(this.new("scripts/items/" + shields[::Math.rand(0, shields.len() - 1)]));
 		}
 
-		this.m.Items.equip(this.Const.World.Common.pickHelmet([
+		this.m.Items.equip(::Const.World.Common.pickHelmet([
 			[
 				3,
 				"named/legend_frogmouth_helm_crested_painted"

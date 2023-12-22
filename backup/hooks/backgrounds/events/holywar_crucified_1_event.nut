@@ -114,7 +114,7 @@
 
 				foreach( bro in brothers )
 				{
-					if (bro.getEthnicity() == 0 && this.Math.rand(1, 100) <= 66)
+					if (bro.getEthnicity() == 0 && ::Math.rand(1, 100) <= 66)
 					{
 						bro.worsenMood(1.0, "Disliked that you prevented rightful punishment for betraying the old gods");
 
@@ -153,7 +153,7 @@
 
 				foreach( bro in brothers )
 				{
-					if (bro.getEthnicity() == 0 && this.Math.rand(1, 100) <= 50)
+					if (bro.getEthnicity() == 0 && ::Math.rand(1, 100) <= 50)
 					{
 						bro.improveMood(0.25, "Gained confidence in your leadership");
 

@@ -29,7 +29,7 @@ this.refugee_vs_raider_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Refugee.getImagePath());
 				this.Characters.push(_event.m.Raider.getImagePath());
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					local injury1 = _event.m.Refugee.addInjury(::Const.Injury.Brawl);
 					this.List.push({
@@ -55,7 +55,7 @@ this.refugee_vs_raider_event <- this.inherit("scripts/events/event", {
 					text = _event.m.Refugee.getName() + ::Const.MoodStateEvent[_event.m.Refugee.getMoodState()]
 				});
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					local injury2 = _event.m.Raider.addInjury(::Const.Injury.Brawl);
 					this.List.push({
@@ -118,8 +118,8 @@ this.refugee_vs_raider_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Refugee = refugee_candidates[this.Math.rand(0, refugee_candidates.len() - 1)];
-		this.m.Raider = raider_candidates[this.Math.rand(0, raider_candidates.len() - 1)];
+		this.m.Refugee = refugee_candidates[::Math.rand(0, refugee_candidates.len() - 1)];
+		this.m.Raider = raider_candidates[::Math.rand(0, raider_candidates.len() - 1)];
 		this.m.Score = (refugee_candidates.len() + raider_candidates.len()) * 3;
 	}
 

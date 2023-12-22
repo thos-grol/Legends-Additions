@@ -34,7 +34,7 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 			{
 				local tile = myTile.getNextTile(i);
 
-				if (!tile.IsEmpty && tile.IsOccupiedByActor && this.Math.abs(myTile.Level - tile.Level) <= 1)
+				if (!tile.IsEmpty && tile.IsOccupiedByActor && ::Math.abs(myTile.Level - tile.Level) <= 1)
 				{
 					local entity = tile.getEntity();
 
@@ -46,7 +46,7 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		return this.Math.min(::Const.Combat.ShieldWallMaxAllies, num) * 5;
+		return ::Math.min(::Const.Combat.ShieldWallMaxAllies, num) * 5;
 	}
 
 	function getTooltip()
@@ -71,13 +71,13 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.Math.floor(item.getMeleeDefense() * mult + bonus + proficiencyBonus) + "[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + ::Math.floor(item.getMeleeDefense() * mult + bonus + proficiencyBonus) + "[/color] Melee Defense"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.Math.floor(item.getRangedDefense() * mult + bonus + proficiencyBonus) + "[/color] Ranged Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + ::Math.floor(item.getRangedDefense() * mult + bonus + proficiencyBonus) + "[/color] Ranged Defense"
 			}
 		];
 	}

@@ -6,7 +6,7 @@ this.getroottable().Const.LegendMod.hookTacticalEntityManager <- function ()
 		{
 			if (this.World.State.getCombatSeed() != 0)
 			{
-				this.Math.seedRandom(this.World.State.getCombatSeed());
+				::Math.seedRandom(this.World.State.getCombatSeed());
 			}
 
 			this.Time.setRound(0);
@@ -484,7 +484,7 @@ this.getroottable().Const.LegendMod.hookTacticalEntityManager <- function ()
 				player.onCombatStart();
 			}
 
-			this.Math.seedRandom(this.Time.getRealTime());
+			::Math.seedRandom(this.Time.getRealTime());
 		};
 		o.placePlayersInFormation = function ( _players, _offsetX = 0, _offsetY = 0 )
 		{
@@ -563,7 +563,7 @@ this.getroottable().Const.LegendMod.hookTacticalEntityManager <- function ()
 				if (!_tile.hasNextTile(i))
 				{
 				}
-				else if (_tile.getNextTile(i).IsEmpty && this.Math.abs(_tile.Level - _tile.getNextTile(i).Level) <= 1)
+				else if (_tile.getNextTile(i).IsEmpty && ::Math.abs(_tile.Level - _tile.getNextTile(i).Level) <= 1)
 				{
 					isCompletelyIsolated = false;
 					break;

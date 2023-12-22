@@ -10,7 +10,7 @@ this.cursed_crystal_skull <- this.inherit("scripts/items/accessory/cursed_access
 		this.m.ID = "accessory.cursed_crystal_skull";
 		this.m.Name = "Cursed Crystal Skull";
 		this.m.Description = "An eerie skull carved from a single large crystal. No scratch or other mark can be seen on its surface. Just being near it kills the fire of determination in almost any man, breaks hope and lets sprout doubts.";
-		this.m.SlotType = this.Const.ItemSlot.Accessory;
+		this.m.SlotType = ::Const.ItemSlot.Accessory;
 		this.m.IsDroppedAsLoot = true;
 		this.m.ShowOnCharacter = true;
 		this.m.IconLarge = "";
@@ -26,11 +26,11 @@ this.cursed_crystal_skull <- this.inherit("scripts/items/accessory/cursed_access
 	{
 		this.accessory.onUpdateProperties(_properties);
 		local actor = this.getContainer().getActor();
-		actor.setMaxMoraleState(this.Const.MoraleState.Steady);
+		actor.setMaxMoraleState(::Const.MoraleState.Steady);
 
-		if (actor.getMoraleState() > this.Const.MoraleState.Steady)
+		if (actor.getMoraleState() > ::Const.MoraleState.Steady)
 		{
-			actor.setMoraleState(this.Const.MoraleState.Steady);
+			actor.setMoraleState(::Const.MoraleState.Steady);
 			actor.setDirty(true);
 		}
 	}
@@ -85,7 +85,7 @@ this.cursed_crystal_skull <- this.inherit("scripts/items/accessory/cursed_access
 			id = 11,
 			type = "text",
 			icon = "ui/icons/chance_to_hit_head.png",
-			text = "The holder can never have [color=" + this.Const.UI.Color.NegativeValue + "]confident[/color] morale"
+			text = "The holder can never have [color=" + ::Const.UI.Color.NegativeValue + "]confident[/color] morale"
 		});
 		result.push({
 			id = 11,

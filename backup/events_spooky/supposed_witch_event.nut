@@ -20,7 +20,7 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 					Text = "Let\'s free her.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 80)
+						if (::Math.rand(1, 100) <= 80)
 						{
 							return "Good";
 						}
@@ -142,9 +142,9 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 25)
+					if (::Math.rand(1, 100) <= 25)
 					{
-						if (this.Math.rand(1, 100) <= 66)
+						if (::Math.rand(1, 100) <= 66)
 						{
 							local injury = bro.addInjury(::Const.Injury.Brawl);
 							this.List.push({
@@ -164,7 +164,7 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 						}
 					}
 
-					if (this.Math.rand(1, 100) <= 25 && bro.getBackground().getID() != "background.witchhunter")
+					if (::Math.rand(1, 100) <= 25 && bro.getBackground().getID() != "background.witchhunter")
 					{
 						bro.improveMood(1.0, "You saved a woman from being burned at the stake");
 
@@ -208,7 +208,7 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 25 || bro.getBackground().getID() == "background.witchhunter" || bro.getBackground().getID() == "background.monk" || bro.getBackground().getID() == "background.legend_nun" || bro.getSkills().hasSkill("trait.superstitious") || bro.getSkills().hasSkill("trait.mad"))
+					if (::Math.rand(1, 100) <= 25 || bro.getBackground().getID() == "background.witchhunter" || bro.getBackground().getID() == "background.monk" || bro.getBackground().getID() == "background.legend_nun" || bro.getSkills().hasSkill("trait.superstitious") || bro.getSkills().hasSkill("trait.mad"))
 					{
 						bro.worsenMood(1.0, "You set free an evil spirit");
 
@@ -274,7 +274,7 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getID() != _event.m.Witchhunter.getID() && (this.Math.rand(1, 100) <= 25 || bro.getBackground().getID() == "background.witchhunter" || bro.getBackground().getID() == "background.monk" || bro.getBackground().getID() == "background.legend_nun" || bro.getSkills().hasSkill("trait.superstitious")))
+					if (bro.getID() != _event.m.Witchhunter.getID() && (::Math.rand(1, 100) <= 25 || bro.getBackground().getID() == "background.witchhunter" || bro.getBackground().getID() == "background.monk" || bro.getBackground().getID() == "background.legend_nun" || bro.getSkills().hasSkill("trait.superstitious")))
 					{
 						bro.improveMood(1.0, "Saw an evil spirit meet its end");
 
@@ -310,7 +310,7 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Monk.getImagePath());
-				local resolve = this.Math.rand(2, 4);
+				local resolve = ::Math.rand(2, 4);
 				_event.m.Monk.getBaseProperties().Bravery += resolve;
 				_event.m.Monk.getSkills().update();
 				_event.m.Monk.improveMood(2.0, "Had a witch burned");
@@ -475,17 +475,17 @@ this.supposed_witch_event <- this.inherit("scripts/events/event", {
 
 		if (candidate_witchhunter.len() != 0)
 		{
-			this.m.Witchhunter = candidate_witchhunter[this.Math.rand(0, candidate_witchhunter.len() - 1)];
+			this.m.Witchhunter = candidate_witchhunter[::Math.rand(0, candidate_witchhunter.len() - 1)];
 		}
 
 		if (candidate_monk.len() != 0)
 		{
-			this.m.Monk = candidate_monk[this.Math.rand(0, candidate_monk.len() - 1)];
+			this.m.Monk = candidate_monk[::Math.rand(0, candidate_monk.len() - 1)];
 		}
 
 		if (candidate_cultist.len() != 0)
 		{
-			this.m.Cultist = candidate_cultist[this.Math.rand(0, candidate_cultist.len() - 1)];
+			this.m.Cultist = candidate_cultist[::Math.rand(0, candidate_cultist.len() - 1)];
 		}
 
 		this.m.Score = 5;

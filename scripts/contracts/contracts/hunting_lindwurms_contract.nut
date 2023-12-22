@@ -11,7 +11,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Name = "Hunting Lindwurms";
 		this.m.Description = "Scouts report Lindwurms getting too close to the town. Hunt the beasts down before they take a toll on the town.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
-		this.m.DifficultyMult = this.Math.rand(95, 135) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(95, 135) * 0.01;
 	}
 
 	function onImportIntro()
@@ -23,7 +23,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -33,7 +33,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 			this.m.Payment.Completion = 1.0;
 		}
 
-		this.m.Flags.set("Bribe", this.Math.rand(300, 600));
+		this.m.Flags.set("Bribe", ::Math.rand(300, 600));
 		this.m.Flags.set("MerchantsDead", 0);
 		this.contract.start();
 	}
@@ -48,7 +48,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 					"Hunt down the Lindwurms around " + this.Contract.m.Home.getName()
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -61,7 +61,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 10)
 				{
@@ -79,29 +79,29 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 				this.Flags.set("StartTime", this.Time.getVirtualTimeF());
 				local playerTile = this.World.State.getPlayer().getTile();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 6, 12, [
-					this.Const.World.TerrainType.Mountains
+					::Const.World.TerrainType.Mountains
 				]);
 				local nearTile = this.Contract.getTileToSpawnLocation(playerTile, 4, 7);
-				local party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Lindwurm", false, this.Const.World.Spawn.Lindwurm, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Lindwurm", false, ::Const.World.Spawn.Lindwurm, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("A Lindwurm - a wingless bipedal dragon resembling a giant snake.");
-				party.setFootprintType(this.Const.World.FootprintsType.Lindwurms);
+				party.setFootprintType(::Const.World.FootprintsType.Lindwurms);
 				party.setAttackableByAI(false);
 				party.setFootprintSizeOverride(0.75);
-				this.Const.World.Common.addFootprintsFromTo(nearTile, party.getTile(), this.Const.BeastFootprints, this.Const.World.FootprintsType.Lindwurms, 0.75);
+				::Const.World.Common.addFootprintsFromTo(nearTile, party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Lindwurms, 0.75);
 				this.Contract.m.Target = this.WeakTableRef(party);
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				local c = party.getController();
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 				local roam = this.new("scripts/ai/world/orders/roam_order");
 				roam.setPivot(this.Contract.m.Home);
 				roam.setMinRange(2);
 				roam.setMaxRange(8);
 				roam.setAllTerrainAvailable();
-				roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-				roam.setTerrain(this.Const.World.TerrainType.Shore, false);
-				roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+				roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+				roam.setTerrain(::Const.World.TerrainType.Shore, false);
+				roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 				c.addOrder(roam);
 				this.Contract.m.Home.setLastSpawnTimeToNow();
 				this.Contract.setScreen("Overview");
@@ -143,7 +143,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 					this.World.Contracts.showActiveContract();
 					this.Contract.setState("Return");
 				}
-				else if (!this.Flags.get("IsBanterShown") && this.Contract.m.Target.isHiddenToPlayer() && this.Math.rand(1, 1000) <= 1 && this.Flags.get("StartTime") + 15.0 <= this.Time.getVirtualTimeF())
+				else if (!this.Flags.get("IsBanterShown") && this.Contract.m.Target.isHiddenToPlayer() && ::Math.rand(1, 1000) <= 1 && this.Flags.get("StartTime") + 15.0 <= this.Time.getVirtualTimeF())
 				{
 					this.Flags.set("IsBanterShown", true);
 					this.Contract.setScreen("Banter");
@@ -187,7 +187,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 					return;
 				}
 
-				if (_actor.getType() == this.Const.EntityType.CaravanDonkey || _actor.getType() == this.Const.EntityType.CaravanHand)
+				if (_actor.getType() == ::Const.EntityType.CaravanDonkey || _actor.getType() == ::Const.EntityType.CaravanHand)
 				{
 					this.Flags.increment("MerchantsDead");
 				}
@@ -208,7 +208,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				if (this.Contract.isPlayerAt(this.Contract.m.Home))
 				{
-					if (this.Flags.get("BribeAccepted") && this.Math.rand(1, 100) <= 40)
+					if (this.Flags.get("BribeAccepted") && ::Math.rand(1, 100) <= 40)
 					{
 						this.Contract.setScreen("Failure");
 					}
@@ -226,8 +226,8 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -363,7 +363,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + bribe + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + bribe + "[/color] Crowns"
 				});
 			}
 
@@ -382,10 +382,10 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "Lindwurms";
-						p.Music = this.Const.Music.BeastsTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Edge;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Random;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Ghouls, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID());
+						p.Music = ::Const.Music.BeastsTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Edge;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Random;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Ghouls, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -411,47 +411,47 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "Lindwurms";
-						p.Music = this.Const.Music.BeastsTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Edge;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Random;
+						p.Music = ::Const.Music.BeastsTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Edge;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Random;
 						p.Entities.push({
-							ID = this.Const.EntityType.CaravanDonkey,
+							ID = ::Const.EntityType.CaravanDonkey,
 							Variant = 0,
 							Row = -1,
 							Script = "scripts/entity/tactical/objective/donkey",
-							Faction = this.Const.Faction.PlayerAnimals,
+							Faction = ::Const.Faction.PlayerAnimals,
 							Callback = null
 						});
 						p.Entities.push({
-							ID = this.Const.EntityType.CaravanDonkey,
+							ID = ::Const.EntityType.CaravanDonkey,
 							Variant = 0,
 							Row = -1,
 							Script = "scripts/entity/tactical/objective/donkey",
-							Faction = this.Const.Faction.PlayerAnimals,
+							Faction = ::Const.Faction.PlayerAnimals,
 							Callback = null
 						});
 						p.Entities.push({
-							ID = this.Const.EntityType.CaravanHand,
+							ID = ::Const.EntityType.CaravanHand,
 							Variant = 0,
 							Row = -1,
 							Script = "scripts/entity/tactical/humans/caravan_hand",
-							Faction = this.Const.Faction.PlayerAnimals,
+							Faction = ::Const.Faction.PlayerAnimals,
 							Callback = null
 						});
 						p.Entities.push({
-							ID = this.Const.EntityType.CaravanHand,
+							ID = ::Const.EntityType.CaravanHand,
 							Variant = 0,
 							Row = -1,
 							Script = "scripts/entity/tactical/humans/caravan_hand",
-							Faction = this.Const.Faction.PlayerAnimals,
+							Faction = ::Const.Faction.PlayerAnimals,
 							Callback = null
 						});
 						p.Entities.push({
-							ID = this.Const.EntityType.CaravanHand,
+							ID = ::Const.EntityType.CaravanHand,
 							Variant = 0,
 							Row = -1,
 							Script = "scripts/entity/tactical/humans/caravan_hand",
-							Faction = this.Const.Faction.PlayerAnimals,
+							Faction = ::Const.Faction.PlayerAnimals,
 							Callback = null
 						});
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
@@ -487,12 +487,12 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.Contract.setState("Return");
-						local bases = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getSettlements();
+						local bases = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getSettlements();
 						local candidates_location = [];
 
 						foreach( b in bases )
 						{
-							if (!b.getLoot().isEmpty() && !b.isLocationType(this.Const.World.LocationType.Unique) && !b.getFlags().get("IsEventLocation"))
+							if (!b.getLoot().isEmpty() && !b.isLocationType(::Const.World.LocationType.Unique) && !b.getFlags().get("IsEventLocation"))
 							{
 								candidates_location.push(b);
 							}
@@ -503,7 +503,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 							return 0;
 						}
 
-						local location = candidates_location[this.Math.rand(0, candidates_location.len() - 1)];
+						local location = candidates_location[::Math.rand(0, candidates_location.len() - 1)];
 						this.World.uncoverFogOfWar(location.getTile().Pos, 700.0);
 						location.getFlags().set("IsEventLocation", true);
 						location.setDiscovered(true);
@@ -571,9 +571,9 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of lindwurms");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of lindwurms");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -585,7 +585,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -603,8 +603,8 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Not entirely surprising.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail * 2);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail * 2, "Tried to swindle the town out of money");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail * 2);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail * 2, "Tried to swindle the town out of money");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -622,7 +622,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Target == null || this.m.Target.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
+			this.m.Target == null || this.m.Target.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
 		]);
 	}
 
@@ -643,8 +643,8 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 				this.m.Target.setAttackableByAI(true);
 				this.m.Target.getSprite("selection").Visible = false;
 				this.m.Target.setOnCombatWithPlayerCallback(null);
-				this.m.Target.getController().getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(true);
-				this.m.Target.getController().getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(true);
+				this.m.Target.getController().getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(true);
+				this.m.Target.getController().getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(true);
 			}
 
 			this.m.Home.getSprite("selection").Visible = false;

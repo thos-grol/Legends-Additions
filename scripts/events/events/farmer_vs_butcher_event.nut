@@ -29,7 +29,7 @@ this.farmer_vs_butcher_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Butcher.getImagePath());
 				this.Characters.push(_event.m.Farmer.getImagePath());
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					local injury1 = _event.m.Butcher.addInjury(::Const.Injury.Brawl);
 					this.List.push({
@@ -55,7 +55,7 @@ this.farmer_vs_butcher_event <- this.inherit("scripts/events/event", {
 					text = _event.m.Butcher.getName() + ::Const.MoodStateEvent[_event.m.Butcher.getMoodState()]
 				});
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					local injury2 = _event.m.Farmer.addInjury(::Const.Injury.Brawl);
 					this.List.push({
@@ -125,8 +125,8 @@ this.farmer_vs_butcher_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Butcher = butcher_candidates[this.Math.rand(0, butcher_candidates.len() - 1)];
-		this.m.Farmer = farmer_candidates[this.Math.rand(0, farmer_candidates.len() - 1)];
+		this.m.Butcher = butcher_candidates[::Math.rand(0, butcher_candidates.len() - 1)];
+		this.m.Farmer = farmer_candidates[::Math.rand(0, farmer_candidates.len() - 1)];
 		this.m.Score = (butcher_candidates.len() + farmer_candidates.len()) * 3;
 	}
 

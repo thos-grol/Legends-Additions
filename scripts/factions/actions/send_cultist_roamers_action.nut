@@ -82,7 +82,7 @@ this.send_cultist_roamers_action <- this.inherit("scripts/factions/faction_actio
 
 		local settlement = this.pickWeightedRandom(settlements);
 		settlement.setLastSpawnTimeToNow();
-		local rand = this.Math.rand(60, 110);
+		local rand = ::Math.rand(60, 110);
 		local distanceToNextSettlement = this.getDistanceToSettlements(settlement.getTile());
 
 		if (::Legends.Mod.ModSettings.getSetting("DistanceScaling").getValue() && distanceToNextSettlement > 14)
@@ -90,19 +90,19 @@ this.send_cultist_roamers_action <- this.inherit("scripts/factions/faction_actio
 			rand = rand * (distanceToNextSettlement / 14.0);
 		}
 
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Cultists", false, this.Const.World.Spawn.CultistPatrol, this.Math.min(settlement.getResources(), rand));
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Cultists", false, ::Const.World.Spawn.CultistPatrol, ::Math.min(settlement.getResources(), rand));
 		party.getSprite("banner").setBrush(settlement.getBanner());
 		party.setDescription("A flock of cultists out to hunt");
-		party.setFootprintType(this.Const.World.FootprintsType.Brigands);
+		party.setFootprintType(::Const.World.FootprintsType.Brigands);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 25);
-		party.getLoot().ArmorParts = this.Math.rand(0, 5);
-		party.getLoot().Medicine = this.Math.rand(0, 3);
+		party.getLoot().Money = ::Math.rand(0, 25);
+		party.getLoot().ArmorParts = ::Math.rand(0, 5);
+		party.getLoot().Medicine = ::Math.rand(0, 3);
 		local c = party.getController();
 		local roam = this.new("scripts/ai/world/orders/roam_order");
 		roam.setAllTerrainAvailable();
-		roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-		roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+		roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+		roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 		roam.setPivot(settlement);
 		roam.setAvoidHeat(true);
 		roam.setTime(this.World.getTime().SecondsPerDay * 2);

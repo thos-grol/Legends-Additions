@@ -37,7 +37,7 @@ this.perk_berserk <- this.inherit("scripts/skills/skill", {
 		if (!this.m.IsSpent && this.Tactical.TurnSequenceBar.getActiveEntity() != null && this.Tactical.TurnSequenceBar.getActiveEntity().getID() == actor.getID())
 		{
 			this.m.IsSpent = true;
-			actor.setActionPoints(this.Math.min(actor.getActionPointsMax(), actor.getActionPoints() + 4));
+			actor.setActionPoints(::Math.min(actor.getActionPointsMax(), actor.getActionPoints() + 4));
 			actor.setDirty(true);
 			this.spawnIcon("perk_35", this.m.Container.getActor().getTile());
 		}

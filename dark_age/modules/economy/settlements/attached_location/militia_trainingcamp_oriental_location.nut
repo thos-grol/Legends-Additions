@@ -15,12 +15,12 @@
 
 		_list.push("nomad_background");
 
-		if (this.Math.rand(0, 4) == 1)
+		if (::Math.rand(0, 4) == 1)
 		{
 			_list.push("legend_conscript_background");
 		}
 
-		if (this.Math.rand(0, 4) == 1)
+		if (::Math.rand(0, 4) == 1)
 		{
 			_list.push("legend_conscript_ranged_background");
 		}

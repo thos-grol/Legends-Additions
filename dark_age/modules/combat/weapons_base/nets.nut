@@ -111,8 +111,8 @@
     o.onUse = function( _user, _targetTile )
 	{
 		local targetEntity = _targetTile.getEntity();
-		local roll = this.Math.rand(1, 100);
-		local chance = this.Math.min(100, targetEntity.getCurrentProperties().getRangedDefense());
+		local roll = ::Math.rand(1, 100);
+		local chance = ::Math.min(100, targetEntity.getCurrentProperties().getRangedDefense());
 		local dodgeCheck = targetEntity.getSkills().hasSkill("perk.legend_escape_artist") &&  roll <= chance;
 
 		local net_item = _user.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
@@ -127,7 +127,7 @@
 
         if (targetEntity.getCurrentProperties().IsImmuneToRoot || dodgeCheck)
         {
-			if (this.m.SoundOnMiss.len() != 0) this.Sound.play(this.m.SoundOnMiss[this.Math.rand(0, this.m.SoundOnMiss.len() - 1)], ::Const.Sound.Volume.Skill, targetEntity.getPos());
+			if (this.m.SoundOnMiss.len() != 0) this.Sound.play(this.m.SoundOnMiss[::Math.rand(0, this.m.SoundOnMiss.len() - 1)], ::Const.Sound.Volume.Skill, targetEntity.getPos());
 
             if (targetEntity.getSkills().hasSkill("perk.legend_escape_artist"))
 			{
@@ -141,7 +141,7 @@
 		}
         else
 		{
-			if (this.m.SoundOnHit.len() != 0) this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, targetEntity.getPos());
+			if (this.m.SoundOnHit.len() != 0) this.Sound.play(this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, targetEntity.getPos());
 
 			if (targetEntity.getSkills().hasSkill("perk.legend_escape_artist"))
 			{
@@ -189,8 +189,8 @@
 		this.m.Cooldown = 3;
 		local targetEntity = _targetTile.getEntity();
 
-		local roll = this.Math.rand(1, 100);
-		local chance = this.Math.min(100, _user.getCurrentProperties().getMeleeDefense() - 10);
+		local roll = ::Math.rand(1, 100);
+		local chance = ::Math.min(100, _user.getCurrentProperties().getMeleeDefense() - 10);
 
 		local dodgeCheck = targetEntity.getSkills().hasSkill("perk.legend_escape_artist") &&  roll <= chance;
 
@@ -198,7 +198,7 @@
 		{
 			if (this.m.SoundOnMiss.len() != 0)
 			{
-				this.Sound.play(this.m.SoundOnMiss[this.Math.rand(0, this.m.SoundOnMiss.len() - 1)], ::Const.Sound.Volume.Skill, targetEntity.getPos());
+				this.Sound.play(this.m.SoundOnMiss[::Math.rand(0, this.m.SoundOnMiss.len() - 1)], ::Const.Sound.Volume.Skill, targetEntity.getPos());
 			}
 
 			if (targetEntity.getSkills().hasSkill("perk.legend_escape_artist"))
@@ -212,7 +212,7 @@
 		{
 			if (this.m.SoundOnHit.len() != 0)
 			{
-				this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, targetEntity.getPos());
+				this.Sound.play(this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, targetEntity.getPos());
 			}
 
 			targetEntity.getSkills().add(::new("scripts/skills/effects/web_effect"));
@@ -246,7 +246,7 @@
 //======================================================================================================================
 
 ::mods_hookExactClass("skills/actives/root_skill", function(o) {
-	o.m.Cooldown <- this.Math.rand(1, 3);
+	o.m.Cooldown <- ::Math.rand(1, 3);
 
 	o.isUsable = function()
 	{
@@ -255,7 +255,7 @@
 
 	o.onTurnStart <- function()
 	{
-		this.m.Cooldown = this.Math.max(0, this.m.Cooldown - 1);
+		this.m.Cooldown = ::Math.max(0, this.m.Cooldown - 1);
 	}
 
 	o.onUse = function( _user, _targetTile )
@@ -298,8 +298,8 @@
 		foreach( target in targets )
 		{
 
-			local roll = this.Math.rand(1, 100);
-			local chance = this.Math.min(100, _user.getCurrentProperties().getMeleeDefense() - 10);
+			local roll = ::Math.rand(1, 100);
+			local chance = ::Math.min(100, _user.getCurrentProperties().getMeleeDefense() - 10);
 			local dodgeCheck = target.getSkills().hasSkill("perk.legend_escape_artist") &&  roll <= chance;
 
 			if (!dodgeCheck)
@@ -330,7 +330,7 @@
 
 		if (targets.len() > 0 && this.m.SoundOnHit.len() != 0)
 		{
-			this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, this.targetEntity.getPos());
+			this.Sound.play(this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, this.targetEntity.getPos());
 		}
 
 		this.m.Cooldown = 3;

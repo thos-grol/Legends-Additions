@@ -11,10 +11,10 @@ this.return_item_action2 <- this.inherit("scripts/factions/faction_action", {
 
 	function onUpdate( _faction )
 	{
-		if (!_faction.isReadyForContract(this.Const.Contracts.Categories.Economy)) return;
+		if (!_faction.isReadyForContract(::Const.Contracts.Categories.Economy)) return;
 		if (_faction.getSettlements()[0].isIsolatedFromRoads()) return;
 
-		if (this.Math.rand(1, 100) > 10) return;
+		if (::Math.rand(1, 100) > 10) return;
 		this.m.Score = 1;
 	}
 

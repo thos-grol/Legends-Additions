@@ -17,11 +17,11 @@
 		{
 			local blockedTiles = ::Const.Tactical.Common.getBlockedTiles(userTile, _targetEntity.getTile(), _user.getFaction());
 
-			if (blockedTiles.len() != 0 && this.Math.rand(1, 100) <= this.Math.ceil(::Const.Combat.RangedAttackBlockedChance * properties.RangedAttackBlockedChanceMult * 100))
+			if (blockedTiles.len() != 0 && ::Math.rand(1, 100) <= ::Math.ceil(::Const.Combat.RangedAttackBlockedChance * properties.RangedAttackBlockedChanceMult * 100))
 			{
 				_allowDiversion = false;
 				astray = true;
-				_targetEntity = blockedTiles[this.Math.rand(0, blockedTiles.len() - 1)].getEntity();
+				_targetEntity = blockedTiles[::Math.rand(0, blockedTiles.len() - 1)].getEntity();
 			}
 		}
 
@@ -87,7 +87,7 @@
 		}
 
 		toHit = toHit * properties.TotalAttackToHitMult;
-		toHit = toHit + this.Math.max(0, 100 - toHit) * (1.0 - defenderProperties.TotalDefenseToHitMult);
+		toHit = toHit + ::Math.max(0, 100 - toHit) * (1.0 - defenderProperties.TotalDefenseToHitMult);
 
 		if (this.m.IsRanged && !_allowDiversion && this.m.IsShowingProjectile)
 		{
@@ -97,7 +97,7 @@
 
 		if (defense > -100 && skill > -100)
 		{
-			toHit = this.Math.max(5, this.Math.min(95, toHit));
+			toHit = ::Math.max(5, ::Math.min(95, toHit));
 		}
 
 		_targetEntity.onAttacked(_user);
@@ -132,17 +132,17 @@
 		}
 
 		//perfectionist hitchance
-        local r = this.Math.rand(_targetEntity.getSkills().hasSkill("perk.legend_perfect_focus") ? 6 : 1, _user.getSkills().hasSkill("perk.legend_perfect_focus") ? 95 : 100);
+        local r = ::Math.rand(_targetEntity.getSkills().hasSkill("perk.legend_perfect_focus") ? 6 : 1, _user.getSkills().hasSkill("perk.legend_perfect_focus") ? 95 : 100);
 
 		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == 0)
 		{
 			if (_user.isPlayerControlled())
 			{
-				r = this.Math.max(1, r - 5);
+				r = ::Math.max(1, r - 5);
 			}
 			else if (_targetEntity.isPlayerControlled())
 			{
-				r = this.Math.min(100, r + 5);
+				r = ::Math.min(100, r + 5);
 			}
 		}
 
@@ -188,12 +188,12 @@
 			}
 		}
 
-		local roll_2 = this.Math.rand(1, 100);
+		local roll_2 = ::Math.rand(1, 100);
 		if (isHit && roll_2 <= _targetEntity.getCurrentProperties().RerollDefenseChance)
 		{
 			if (!_user.getFlags().has("IgnoreLuck"))
 			{
-				r = this.Math.rand(1, 100);
+				r = ::Math.rand(1, 100);
 				isHit = r <= toHit;
 
 				if (!isHit)
@@ -235,7 +235,7 @@
 				if (this.m.SoundOnHit.len() != 0)
 				{
 					this.Time.scheduleEvent(this.TimeUnit.Virtual, time + this.m.SoundOnHitDelay, this.onPlayHitSound.bindenv(this), {
-						Sound = this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)],
+						Sound = this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)],
 						Pos = _targetEntity.getPos()
 					});
 				}
@@ -244,12 +244,12 @@
 			{
 				if (this.m.SoundOnHit.len() != 0)
 				{
-					this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, _targetEntity.getPos());
+					this.Sound.play(this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, _targetEntity.getPos());
 				}
 
 				if (this.Tactical.State.getStrategicProperties() != null && this.Tactical.State.getStrategicProperties().IsArenaMode && toHit <= 15)
 				{
-					this.Sound.play(::Const.Sound.ArenaShock[this.Math.rand(0, ::Const.Sound.ArenaShock.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
+					this.Sound.play(::Const.Sound.ArenaShock[::Math.rand(0, ::Const.Sound.ArenaShock.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 				}
 
 				this.onScheduledTargetHit(info);
@@ -264,7 +264,7 @@
 			this.m.Container.onTargetMissed(this, _targetEntity);
 			local prohibitDiversion = false;
 
-			if (_allowDiversion && this.m.IsRanged && !_user.isPlayerControlled() && this.Math.rand(1, 100) <= 25 && distanceToTarget > 2)
+			if (_allowDiversion && this.m.IsRanged && !_user.isPlayerControlled() && ::Math.rand(1, 100) <= 25 && distanceToTarget > 2)
 			{
 				local targetTile = _targetEntity.getTile();
 
@@ -326,7 +326,7 @@
 			{
 				if (this.m.SoundOnMiss.len() != 0)
 				{
-					this.Sound.play(this.m.SoundOnMiss[this.Math.rand(0, this.m.SoundOnMiss.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, _targetEntity.getPos());
+					this.Sound.play(this.m.SoundOnMiss[::Math.rand(0, this.m.SoundOnMiss.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, _targetEntity.getPos());
 				}
 
 				if (this.m.IsShowingProjectile && this.m.ProjectileType != 0)
@@ -344,11 +344,11 @@
 				{
 					if (toHit >= 90 || _targetEntity.getHitpointsPct() <= 0.1)
 					{
-						this.Sound.play(::Const.Sound.ArenaMiss[this.Math.rand(0, ::Const.Sound.ArenaBigMiss.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
+						this.Sound.play(::Const.Sound.ArenaMiss[::Math.rand(0, ::Const.Sound.ArenaBigMiss.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 					}
-					else if (this.Math.rand(1, 100) <= 20)
+					else if (::Math.rand(1, 100) <= 20)
 					{
-						this.Sound.play(::Const.Sound.ArenaMiss[this.Math.rand(0, ::Const.Sound.ArenaMiss.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
+						this.Sound.play(::Const.Sound.ArenaMiss[::Math.rand(0, ::Const.Sound.ArenaMiss.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 					}
 				}
 			}
@@ -366,7 +366,7 @@
 
 		if (_info.Skill.m.SoundOnHitShield.len() != 0)
 		{
-			this.Sound.play(_info.Skill.m.SoundOnHitShield[this.Math.rand(0, _info.Skill.m.SoundOnHitShield.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, user.getPos());
+			this.Sound.play(_info.Skill.m.SoundOnHitShield[::Math.rand(0, _info.Skill.m.SoundOnHitShield.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, user.getPos());
 		}
 
 		shield.applyShieldDamage(::Const.Combat.BasicShieldDamage, _info.Skill.m.SoundOnHitShield.len() == 0);
@@ -399,7 +399,7 @@
 
 	// 	if (_info.Skill.m.SoundOnHitShield.len() != 0)
 	// 	{
-	// 		this.Sound.play(_info.Skill.m.SoundOnHitShield[this.Math.rand(0, _info.Skill.m.SoundOnHitShield.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, user.getPos());
+	// 		this.Sound.play(_info.Skill.m.SoundOnHitShield[::Math.rand(0, _info.Skill.m.SoundOnHitShield.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, user.getPos());
 	// 	}
 
 	// 	shield.applyShieldDamage(::Const.Combat.BasicShieldDamage, _info.Skill.m.SoundOnHitShield.len() == 0);
@@ -475,7 +475,7 @@
 		}
 
 		toHit = toHit * properties.TotalAttackToHitMult;
-		toHit = toHit + this.Math.max(0, 100 - toHit) * (1.0 - defenderProperties.TotalDefenseToHitMult);
+		toHit = toHit + ::Math.max(0, 100 - toHit) * (1.0 - defenderProperties.TotalDefenseToHitMult);
 		local userTile = user.getTile();
 
 		if (allowDiversion && this.m.IsRanged && userTile.getDistanceTo(_targetEntity.getTile()) > 1)
@@ -485,11 +485,11 @@
 			if (blockedTiles.len() != 0)
 			{
 				local blockChance = ::Const.Combat.RangedAttackBlockedChance * properties.RangedAttackBlockedChanceMult;
-				toHit = this.Math.floor(toHit * (1.0 - blockChance));
+				toHit = ::Math.floor(toHit * (1.0 - blockChance));
 			}
 		}
 
-		return this.Math.max(5, this.Math.min(95, toHit));
+		return ::Math.max(5, ::Math.min(95, toHit));
 	}
 
 	o.modGetHitFactors = function( ret, _targetTile )
@@ -597,7 +597,7 @@
 				return;
 			}
 
-			local malus = this.Math.max(0, attackingEntity.getCurrentProperties().SurroundedBonus - targetEntity.getCurrentProperties().SurroundedDefense) * targetEntity.getSurroundedCount();
+			local malus = ::Math.max(0, attackingEntity.getCurrentProperties().SurroundedBonus - targetEntity.getCurrentProperties().SurroundedDefense) * targetEntity.getSurroundedCount();
 
 			if (malus)
 			{
@@ -648,7 +648,7 @@
 		{
 			local shield = targetEntity.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 			local shieldBonus = (thisSkill.m.IsRanged ? shield.getRangedDefense() : shield.getMeleeDefense());
-			return this.Math.floor(shieldBonus);
+			return ::Math.floor(shieldBonus);
 		};
 		modifier["Armed with shield"] <- function ( row, description )
 		{
@@ -677,7 +677,7 @@
 			modifier["Line of fire blocked"] <- function ( row, description )
 			{
 				local blockChance = ::Const.Combat.RangedAttackBlockedChance * propertiesWithSkill.RangedAttackBlockedChanceMult;
-				blockChance = this.Math.ceil(blockChance * 100);
+				blockChance = ::Math.ceil(blockChance * 100);
 				row.text = description + "\n(" + red("-" + blockChance + "%") + " Total hit chance)";
 			};
 			  // [082]  OP_CLOSE          0     18    0    0
@@ -749,7 +749,7 @@
 			local propertiesAfter = propertiesBefore.getClone();
 			racialSkill.onBeforeDamageReceived(attackingEntity, thisSkill, hitInfo, propertiesAfter);
 			local diff = propertiesBefore.DamageReceivedRegularMult - propertiesAfter.DamageReceivedRegularMult;
-			return this.Math.ceil(diff * 100);
+			return ::Math.ceil(diff * 100);
 		};
 		local flagResistanceExists = false;
 		modifier["Resistance against ranged weapons"] <- function ( row, description )
@@ -880,7 +880,7 @@
 				diff = diff * -1;
 			}
 
-			diff = this.Math.floor(diff * 100);
+			diff = ::Math.floor(diff * 100);
 			ret.push({
 				icon = icon,
 				text = desc + " " + "\n(" + colorize(sign + diff + "%") + " Lunge damage)"

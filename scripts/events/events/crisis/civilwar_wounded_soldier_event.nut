@@ -28,7 +28,7 @@ this.civilwar_wounded_soldier_event <- this.inherit("scripts/events/event", {
 					{
 						this.World.Assets.addMoralReputation(-1);
 
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}
@@ -101,7 +101,7 @@ this.civilwar_wounded_soldier_event <- this.inherit("scripts/events/event", {
 		local item;
 		local banner = this.m.NobleHouse.getBanner();
 		local r;
-		r = this.Math.rand(1, 4);
+		r = ::Math.rand(1, 4);
 
 		if (r == 1)
 		{
@@ -126,7 +126,7 @@ this.civilwar_wounded_soldier_event <- this.inherit("scripts/events/event", {
 			icon = "ui/items/" + item.getIcon(),
 			text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 		});
-		r = this.Math.rand(1, 4);
+		r = ::Math.rand(1, 4);
 
 		if (r == 1)
 		{
@@ -208,7 +208,7 @@ this.civilwar_wounded_soldier_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.NobleHouse = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.NobleHouse = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = 10;
 	}
 

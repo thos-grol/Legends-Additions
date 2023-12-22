@@ -20,8 +20,8 @@ this.throw_smoke_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			"sounds/combat/dlc6/smoke_bomb_03.wav"
 		];
 		this.m.SoundOnHitDelay = 0;
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.Delay = 0;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
@@ -39,7 +39,7 @@ this.throw_smoke_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 		this.m.MinRange = 0;
 		this.m.MaxRange = 3;
 		this.m.MaxLevelDifference = 3;
-		this.m.ProjectileType = this.Const.ProjectileType.Bomb2;
+		this.m.ProjectileType = ::Const.ProjectileType.Bomb2;
 		this.m.ProjectileTimeScale = 1.5;
 		this.m.IsProjectileRotated = false;
 	}
@@ -51,13 +51,13 @@ this.throw_smoke_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			id = 5,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Covers [color=" + this.Const.UI.Color.DamageValue + "]7[/color] tiles in smoke for one round, allowing anyone inside to move freely and ignore zones of control"
+			text = "Covers [color=" + ::Const.UI.Color.DamageValue + "]7[/color] tiles in smoke for one round, allowing anyone inside to move freely and ignore zones of control"
 		});
 		ret.push({
 			id = 5,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Increases Ranged Defense by [color=" + this.Const.UI.Color.PositiveValue + "]+100%[/color], but lowers Ranged Skill by [color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] for anyone inside"
+			text = "Increases Ranged Defense by [color=" + ::Const.UI.Color.PositiveValue + "]+100%[/color], but lowers Ranged Skill by [color=" + ::Const.UI.Color.NegativeValue + "]-50%[/color] for anyone inside"
 		});
 		ret.push({
 			id = 6,
@@ -102,13 +102,13 @@ this.throw_smoke_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 
 		foreach( t in affectedTiles )
 		{
-			this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, t, t.Pos.X, t.Pos.Y);
+			this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, t, t.Pos.X, t.Pos.Y);
 		}
 	}
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInThrowing ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInThrowing ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onUse( _user, _targetTile )
@@ -117,9 +117,9 @@ this.throw_smoke_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 		{
 			local flip = !this.m.IsProjectileRotated && _targetTile.Pos.X > _user.getPos().X;
 
-			if (_user.getTile().getDistanceTo(_targetTile) >= this.Const.Combat.SpawnProjectileMinDist)
+			if (_user.getTile().getDistanceTo(_targetTile) >= ::Const.Combat.SpawnProjectileMinDist)
 			{
-				this.Tactical.spawnProjectileEffect(this.Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), _targetTile, 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
+				this.Tactical.spawnProjectileEffect(::Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), _targetTile, 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
 			}
 		}
 
@@ -148,7 +148,7 @@ this.throw_smoke_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			}
 		}
 
-		this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], 1.0, _data.TargetTile.Pos);
+		this.Sound.play(this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)], 1.0, _data.TargetTile.Pos);
 		local p = {
 			Type = "smoke",
 			Tooltip = "Dense smoke covers the area, allowing anyone inside to move freely and ignore zones of control, and granting protection from ranged attacks",
@@ -159,7 +159,7 @@ this.throw_smoke_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			IsAppliedOnEnter = true,
 			IsByPlayer = _data.User.isPlayerControlled(),
 			Timeout = this.Time.getRound() + 1,
-			Callback = this.Const.Tactical.Common.onApplySmoke,
+			Callback = ::Const.Tactical.Common.onApplySmoke,
 			function Applicable( _a )
 			{
 				return true;
@@ -183,16 +183,16 @@ this.throw_smoke_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 				tile.Properties.Effect = clone p;
 				local particles = [];
 
-				for( local i = 0; i < this.Const.Tactical.SmokeParticles.len(); i = ++i )
+				for( local i = 0; i < ::Const.Tactical.SmokeParticles.len(); i = ++i )
 				{
-					particles.push(this.Tactical.spawnParticleEffect(true, this.Const.Tactical.SmokeParticles[i].Brushes, tile, this.Const.Tactical.SmokeParticles[i].Delay, this.Const.Tactical.SmokeParticles[i].Quantity, this.Const.Tactical.SmokeParticles[i].LifeTimeQuantity, this.Const.Tactical.SmokeParticles[i].SpawnRate, this.Const.Tactical.SmokeParticles[i].Stages));
+					particles.push(this.Tactical.spawnParticleEffect(true, ::Const.Tactical.SmokeParticles[i].Brushes, tile, ::Const.Tactical.SmokeParticles[i].Delay, ::Const.Tactical.SmokeParticles[i].Quantity, ::Const.Tactical.SmokeParticles[i].LifeTimeQuantity, ::Const.Tactical.SmokeParticles[i].SpawnRate, ::Const.Tactical.SmokeParticles[i].Stages));
 				}
 
 				this.Tactical.Entities.addTileEffect(tile, tile.Properties.Effect, particles);
 
 				if (tile.IsOccupiedByActor)
 				{
-					this.Const.Tactical.Common.onApplySmoke(tile, tile.getEntity());
+					::Const.Tactical.Common.onApplySmoke(tile, tile.getEntity());
 				}
 			}
 		}

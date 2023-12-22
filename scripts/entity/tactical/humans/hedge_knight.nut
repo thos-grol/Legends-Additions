@@ -2,14 +2,14 @@ this.hedge_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.HedgeKnight;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.HedgeKnight.XP;
+		this.m.Type = ::Const.EntityType.HedgeKnight;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.HedgeKnight.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.CommonMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.All;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.CommonMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.All;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bounty_hunter_melee_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -18,7 +18,7 @@ this.hedge_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.HedgeKnight);
+		b.setValues(::Const.Tactical.Actor.HedgeKnight);
 		b.TargetAttractionMult = 1.0;
 		b.IsSpecializedInSwords = true;
 		b.IsSpecializedInAxes = true;
@@ -38,7 +38,7 @@ this.hedge_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function pickOutfit()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Body) && this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Body) && this.m.Items.hasEmptySlot(::Const.ItemSlot.Head))
 		{
 			local armor = [
 				[
@@ -131,7 +131,7 @@ this.hedge_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 				]
 			];
 
-			foreach( item in this.Const.World.Common.pickOutfit(outfits, armor, helmet) )
+			foreach( item in ::Const.World.Common.pickOutfit(outfits, armor, helmet) )
 			{
 				this.m.Items.equip(item);
 			}
@@ -139,7 +139,7 @@ this.hedge_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 			return;
 		}
 
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Body))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Body))
 		{
 			local armor = [
 				[
@@ -159,10 +159,10 @@ this.hedge_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 					"brown_hedgeknight_armor"
 				]
 			];
-			this.m.Items.equip(this.Const.World.Common.pickArmor(armor));
+			this.m.Items.equip(::Const.World.Common.pickArmor(armor));
 		}
 
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head))
 		{
 			local helmet = [
 				[
@@ -234,17 +234,17 @@ this.hedge_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 					"legend_enclave_vanilla_kettle_sallet_02"
 				]
 			];
-			this.m.Items.equip(this.Const.World.Common.pickHelmet(helmet));
+			this.m.Items.equip(::Const.World.Common.pickHelmet(helmet));
 		}
 	}
 
 	function pickNamed()
 	{
 		//decide what item will be named
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 		if (r == 1) //armor
 		{
-			this.m.Items.equip(this.Const.World.Common.pickArmor([
+			this.m.Items.equip(::Const.World.Common.pickArmor([
 				[
 					1,
 					"named/brown_coat_of_plates_armor"

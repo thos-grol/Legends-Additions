@@ -263,16 +263,16 @@ this.bad_curse_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Cursed = candidates_cursed[this.Math.rand(0, candidates_cursed.len() - 1)];
+		this.m.Cursed = candidates_cursed[::Math.rand(0, candidates_cursed.len() - 1)];
 
 		if (candidates_monk.len() != 0)
 		{
-			this.m.Monk = candidates_monk[this.Math.rand(0, candidates_monk.len() - 1)];
+			this.m.Monk = candidates_monk[::Math.rand(0, candidates_monk.len() - 1)];
 		}
 
 		if (candidates_sorcerer.len() != 0)
 		{
-			this.m.Sorcerer = candidates_sorcerer[this.Math.rand(0, candidates_sorcerer.len() - 1)];
+			this.m.Sorcerer = candidates_sorcerer[::Math.rand(0, candidates_sorcerer.len() - 1)];
 		}
 
 		this.m.Town = town;

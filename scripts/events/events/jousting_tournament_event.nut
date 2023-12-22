@@ -81,7 +81,7 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 					Text = "Exciting!",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 30 + 5 * _event.m.Jouster.getLevel())
+						if (::Math.rand(1, 100) <= 30 + 5 * _event.m.Jouster.getLevel())
 						{
 							return "Win";
 						}
@@ -448,13 +448,13 @@ this.jousting_tournament_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Jouster = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Jouster = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = candidates.len() * 25;
 	}
 
 	function onPrepare()
 	{
-		this.m.Opponent = ::Const.Strings.KnightNames[this.Math.rand(0, ::Const.Strings.KnightNames.len() - 1)];
+		this.m.Opponent = ::Const.Strings.KnightNames[::Math.rand(0, ::Const.Strings.KnightNames.len() - 1)];
 	}
 
 	function onPrepareVariables( _vars )

@@ -20,7 +20,7 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 					Text = "Let\'s see how he does it.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 50 ? "C" : "D";
+						return ::Math.rand(1, 100) <= 50 ? "C" : "D";
 					}
 
 				},
@@ -67,7 +67,7 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local money = this.Math.rand(1, 40);
+				local money = ::Math.rand(1, 40);
 				this.World.Assets.addMoney(money);
 				this.List = [
 					{
@@ -101,7 +101,7 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 75)
+					if (::Math.rand(1, 100) <= 75)
 					{
 						bro.improveMood(0.5, "Was entertained by a fire juggler");
 
@@ -136,7 +136,7 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local money = this.Math.rand(1, 40);
+				local money = ::Math.rand(1, 40);
 				this.World.Assets.addMoney(money);
 				this.List = [
 					{
@@ -252,7 +252,7 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Juggler.getImagePath());
 				this.Characters.push(_event.m.Dude.getImagePath());
-				local meleeSkill = this.Math.rand(1, 3);
+				local meleeSkill = ::Math.rand(1, 3);
 				_event.m.Juggler.getBaseProperties().MeleeSkill += meleeSkill;
 				_event.m.Juggler.getSkills().update();
 				_event.m.Juggler.improveMood(1.0, "Put on a great display of fire juggling");
@@ -295,7 +295,7 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Juggler.getImagePath());
 				this.Characters.push(_event.m.Dude.getImagePath());
-				local meleeSkill = this.Math.rand(1, 3);
+				local meleeSkill = ::Math.rand(1, 3);
 				_event.m.Juggler.getBaseProperties().MeleeSkill += meleeSkill;
 				_event.m.Juggler.getSkills().update();
 				_event.m.Juggler.improveMood(1.0, "Put on a great display of fire juggling");
@@ -365,7 +365,7 @@ this.fire_juggler_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_juggler.len() != 0)
 		{
-			this.m.Juggler = candidates_juggler[this.Math.rand(0, candidates_juggler.len() - 1)];
+			this.m.Juggler = candidates_juggler[::Math.rand(0, candidates_juggler.len() - 1)];
 		}
 
 		this.m.Score = 15;

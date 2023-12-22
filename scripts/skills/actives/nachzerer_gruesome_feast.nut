@@ -64,7 +64,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 
 	function onTurnStart()
 	{
-		this.m.Cooldown = this.Math.max(0, this.m.Cooldown - 1);
+		this.m.Cooldown = ::Math.max(0, this.m.Cooldown - 1);
 	}
 
 	function isUsable()
@@ -126,7 +126,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 			this.Time.scheduleEvent(this.TimeUnit.Virtual, 800, _tag.OnFadeIn, _tag);
 
 			if (_entity.getTile().IsVisibleForPlayer && _tag.Skill.m.SoundOnHit.len() > 0)
-				this.Sound.play(_tag.Skill.m.SoundOnHit[this.Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _entity.getPos());
+				this.Sound.play(_tag.Skill.m.SoundOnHit[::Math.rand(0, _tag.Skill.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _entity.getPos());
 		}
 		else _tag.OnFadeIn(_tag);
 	}
@@ -165,9 +165,9 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 			{
 				if (!_targetTile.hasNextTile(i)) continue;
 				local tile = _targetTile.getNextTile(i);
-				for( local n = this.Math.rand(0, 2); n != 0; n = n )
+				for( local n = ::Math.rand(0, 2); n != 0; n = n )
 				{
-					local decal = ::Const.BloodDecals[::Const.BloodType.Red][this.Math.rand(0, ::Const.BloodDecals[::Const.BloodType.Red].len() - 1)];
+					local decal = ::Const.BloodDecals[::Const.BloodType.Red][::Math.rand(0, ::Const.BloodDecals[::Const.BloodType.Red].len() - 1)];
 					tile.spawnDetail(decal);
 					n = --n;
 				}
@@ -175,7 +175,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 
 			for( local n = 2; n != 0; n = --n )
 			{
-				local decal = ::Const.BloodDecals[::Const.BloodType.Red][this.Math.rand(0, ::Const.BloodDecals[::Const.BloodType.Red].len() - 1)];
+				local decal = ::Const.BloodDecals[::Const.BloodType.Red][::Math.rand(0, ::Const.BloodDecals[::Const.BloodType.Red].len() - 1)];
 				_targetTile.spawnDetail(decal);
 			}
 		}
@@ -186,7 +186,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/gruesome_feast_02.wav",
 			"sounds/enemies/gruesome_feast_03.wav"
 		];
-		this.Sound.play(::MSU.Array.rand(feast_sounds), 200.0, _user.getPos(), this.Math.rand(95, 105) * 0.01);
+		this.Sound.play(::MSU.Array.rand(feast_sounds), 200.0, _user.getPos(), ::Math.rand(95, 105) * 0.01);
 
 		// start onFeasted
 		if (!_user.isHiddenToPlayer()) this.Time.scheduleEvent(this.TimeUnit.Virtual, 500, _tag.OnFeasted, _tag);
@@ -213,7 +213,7 @@ this.nachzerer_gruesome_feast <- this.inherit("scripts/skills/skill", {
 			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " feasts on a corpse.");
 
 		//heal self and temp injuries
-		_user.setHitpoints(this.Math.min(_user.getHitpoints() + 100, _user.getHitpointsMax()));
+		_user.setHitpoints(::Math.min(_user.getHitpoints() + 100, _user.getHitpointsMax()));
 		local skills = _user.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
 		foreach( s in skills )
         {

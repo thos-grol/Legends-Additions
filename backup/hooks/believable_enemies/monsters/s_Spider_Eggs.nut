@@ -14,7 +14,7 @@
 			if (_tile.hasNextTile(i))
 			{
                 local nextTile = _tile.getNextTile(i);
-				if (!nextTile.IsEmpty || this.Math.abs(nextTile.Level - _tile.Level) > 1)
+				if (!nextTile.IsEmpty || ::Math.abs(nextTile.Level - _tile.Level) > 1)
 				{
 				}
 				else
@@ -29,7 +29,7 @@
 		if (tile != null)
 		{
 			local spawn = this.Tactical.spawnEntity("scripts/entity/tactical/enemies/spider", tile.Coords);
-			spawn.setSize(this.Math.rand(60, 75) * 0.01);
+			spawn.setSize(::Math.rand(60, 75) * 0.01);
             spawn.m.Skills.removeByID("actives.web");
 			spawn.setFaction(this.getFaction());
 			spawn.m.XP = spawn.m.XP / 2;

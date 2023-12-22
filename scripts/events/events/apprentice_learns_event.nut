@@ -28,8 +28,8 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Apprentice.getImagePath());
 				this.Characters.push(_event.m.Teacher.getImagePath());
-				local meleeSkill = this.Math.rand(2, 4);
-				local meleeDefense = this.Math.rand(2, 4);
+				local meleeSkill = ::Math.rand(2, 4);
+				local meleeDefense = ::Math.rand(2, 4);
 				_event.m.Apprentice.getBaseProperties().MeleeSkill += meleeSkill;
 				_event.m.Apprentice.getBaseProperties().MeleeDefense += meleeDefense;
 				_event.m.Apprentice.getSkills().update();
@@ -80,8 +80,8 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Apprentice.getImagePath());
 				this.Characters.push(_event.m.Teacher.getImagePath());
-				local meleeSkill = this.Math.rand(2, 4);
-				local resolve = this.Math.rand(2, 5);
+				local meleeSkill = ::Math.rand(2, 4);
+				local resolve = ::Math.rand(2, 5);
 				_event.m.Apprentice.getBaseProperties().MeleeSkill += meleeSkill;
 				_event.m.Apprentice.getBaseProperties().Bravery += resolve;
 				_event.m.Apprentice.getSkills().update();
@@ -132,9 +132,9 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Apprentice.getImagePath());
 				this.Characters.push(_event.m.Teacher.getImagePath());
-				local meleeSkill = this.Math.rand(2, 4);
-				local initiative = this.Math.rand(4, 6);
-				local stamina = this.Math.rand(2, 4);
+				local meleeSkill = ::Math.rand(2, 4);
+				local initiative = ::Math.rand(4, 6);
+				local stamina = ::Math.rand(2, 4);
 				_event.m.Apprentice.getBaseProperties().MeleeSkill += meleeSkill;
 				_event.m.Apprentice.getBaseProperties().Initiative += initiative;
 				_event.m.Apprentice.getBaseProperties().Stamina += stamina;
@@ -191,9 +191,9 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Apprentice.getImagePath());
 				this.Characters.push(_event.m.Teacher.getImagePath());
-				local meleeSkill = this.Math.rand(2, 4);
-				local hitpoints = this.Math.rand(3, 5);
-				local stamina = this.Math.rand(3, 5);
+				local meleeSkill = ::Math.rand(2, 4);
+				local hitpoints = ::Math.rand(3, 5);
+				local stamina = ::Math.rand(3, 5);
 				_event.m.Apprentice.getBaseProperties().MeleeSkill += meleeSkill;
 				_event.m.Apprentice.getBaseProperties().Hitpoints += hitpoints;
 				_event.m.Apprentice.getBaseProperties().Stamina += stamina;
@@ -272,8 +272,8 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 
 		if (teacher_candidates.len() < 1) return;
 
-		this.m.Apprentice = apprentice_candidates[this.Math.rand(0, apprentice_candidates.len() - 1)];
-		this.m.Teacher = teacher_candidates[this.Math.rand(0, teacher_candidates.len() - 1)];
+		this.m.Apprentice = apprentice_candidates[::Math.rand(0, apprentice_candidates.len() - 1)];
+		this.m.Teacher = teacher_candidates[::Math.rand(0, teacher_candidates.len() - 1)];
 		this.m.Score = (apprentice_candidates.len() + teacher_candidates.len()) * 3;
 	}
 

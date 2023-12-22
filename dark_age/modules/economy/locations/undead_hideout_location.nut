@@ -15,7 +15,7 @@
 		this.m.CombatLocation.ForceLineBattle = true;
 		this.m.IsDespawningDefenders = false;
 		this.m.IsShowingBanner = false;
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -39,9 +39,9 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropMoney(this.Math.rand(0, 50), _lootTable);
-		this.dropArmorParts(this.Math.rand(0, 5), _lootTable);
-		this.dropAmmo(this.Math.rand(0, 5), _lootTable);
+		this.dropMoney(::Math.rand(0, 50), _lootTable);
+		this.dropArmorParts(::Math.rand(0, 5), _lootTable);
+		this.dropAmmo(::Math.rand(0, 5), _lootTable);
 		this.dropTreasure(1, [
 			"loot/bead_necklace_item",
 			"loot/bead_necklace_item",

@@ -58,7 +58,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 					{
 						this.World.Assets.addMoralReputation(-3);
 
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}
@@ -163,7 +163,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 
 				for( local i = 0; i < 2; i = i )
 				{
-					local idx = this.Math.rand(0, food.len() - 1);
+					local idx = ::Math.rand(0, food.len() - 1);
 					local item = food[idx];
 					this.List.push({
 						id = 10,
@@ -205,7 +205,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 				});
 				this.Characters.push(_event.m.RefugeeDude.getImagePath());
 				local food = this.World.Assets.getFoodItems();
-				local item = food[this.Math.rand(0, food.len() - 1)];
+				local item = food[::Math.rand(0, food.len() - 1)];
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
@@ -213,7 +213,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 				});
 				this.World.Assets.getStash().remove(item);
 				this.World.Assets.updateFood();
-				local r = this.Math.rand(1, 2);
+				local r = ::Math.rand(1, 2);
 				local sword;
 
 				if (r == 1)
@@ -238,7 +238,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 
 	function addLoot( _list )
 	{
-		local r = this.Math.rand(1, 3);
+		local r = ::Math.rand(1, 3);
 		local food;
 
 		if (r == 1)
@@ -264,7 +264,7 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 
 		for( local i = 0; i < 2; i = i )
 		{
-			r = this.Math.rand(1, 10);
+			r = ::Math.rand(1, 10);
 			local item;
 
 			if (r == 1)
@@ -384,12 +384,12 @@ this.civilwar_refugees_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.AggroDude = candidates_aggro[this.Math.rand(0, candidates_aggro.len() - 1)];
-		this.m.InjuredDude = candidates_other[this.Math.rand(0, candidates_other.len() - 1)];
+		this.m.AggroDude = candidates_aggro[::Math.rand(0, candidates_aggro.len() - 1)];
+		this.m.InjuredDude = candidates_other[::Math.rand(0, candidates_other.len() - 1)];
 
 		if (candidates_refugees.len() != 0)
 		{
-			this.m.RefugeeDude = candidates_refugees[this.Math.rand(0, candidates_refugees.len() - 1)];
+			this.m.RefugeeDude = candidates_refugees[::Math.rand(0, candidates_refugees.len() - 1)];
 		}
 
 		this.m.Score = 10;

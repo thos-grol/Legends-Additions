@@ -6,15 +6,15 @@
 		this.m.PerkTreeDynamicMins.Traits = 3;
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.HammerTree,
-				this.Const.Perks.AxeTree,
+				::Const.Perks.HammerTree,
+				::Const.Perks.AxeTree,
 			],
 			Defense = [
 				::Const.Perks.LightArmorTree,
-				this.Const.Perks.HeavyArmorTree
+				::Const.Perks.HeavyArmorTree
 			],
 			Traits = [
-				this.Const.Perks.TrainedTree,
+				::Const.Perks.TrainedTree,
 			],
 			Enemy = [],
 			Class = [

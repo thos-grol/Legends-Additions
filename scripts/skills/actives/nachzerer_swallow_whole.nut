@@ -8,7 +8,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 	function onTurnStart()
 	{
 		if (this.m.SwallowedEntity != null) return;
-		this.m.Cooldown = this.Math.max(0, this.m.Cooldown - 1);
+		this.m.Cooldown = ::Math.max(0, this.m.Cooldown - 1);
 	}
 
 	function isUsable()
@@ -64,14 +64,14 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 	{
 		if (this.m.SwallowedEntity == null) return;
 
-		local damage = this.Math.rand(10, 20);
+		local damage = ::Math.rand(10, 20);
 		local prev = this.m.SwallowedEntity_HP;
-		this.m.SwallowedEntity_HP = this.Math.max(0, this.m.SwallowedEntity_HP - damage);
+		this.m.SwallowedEntity_HP = ::Math.max(0, this.m.SwallowedEntity_HP - damage);
 		local actor = this.getContainer().getActor();
 
 		if (this.m.SwallowedEntity_HP > 0)
 		{
-			actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + damage));
+			actor.setHitpoints(::Math.min(actor.getHitpointsMax(), actor.getHitpoints() + damage));
 
 			::Tactical.EventLog.log(
 				::Const.UI.getColorizedEntityName(this.m.SwallowedEntity) + " "
@@ -141,15 +141,15 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 			if (nachzerer_hair_armor != null) nachzerer_hair_armor.addCharges(2);
 		}
 
-		actor.setHitpoints(this.Math.min(actor.getHitpoints() + damage, actor.getHitpointsMax()));
+		actor.setHitpoints(::Math.min(actor.getHitpoints() + damage, actor.getHitpointsMax()));
 	}
 
 	function onUse( _user, _targetTile )
 	{
 		this.m.Cooldown = 2;
 		local target = _targetTile.getEntity();
-		local roll = this.Math.rand(1, 100);
-		local chance = this.Math.min(100, _user.getCurrentProperties().getMeleeSkill() - target.getCurrentProperties().getMeleeDefense() + 30);
+		local roll = ::Math.rand(1, 100);
+		local chance = ::Math.min(100, _user.getCurrentProperties().getMeleeSkill() - target.getCurrentProperties().getMeleeDefense() + 30);
 		local dodgeCheck = roll <= chance;
 		if (!dodgeCheck)
 		{
@@ -194,7 +194,7 @@ this.nachzerer_swallow_whole <- this.inherit("scripts/skills/skill", {
 		_user.getSkills().removeByID("effects.nachzerer_maddening_hunger");
 
 		if (this.m.SoundOnHit.len() != 0)
-			this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
+			this.Sound.play(this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
 
 		return true;
 	}

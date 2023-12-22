@@ -84,33 +84,33 @@ this.send_peasants_action <- this.inherit("scripts/factions/faction_action", {
 	{
 		local party;
 
-		if (_faction.getType() == this.Const.FactionType.OrientalCityState)
+		if (_faction.getType() == ::Const.FactionType.OrientalCityState)
 		{
-			party = _faction.spawnEntity(this.m.Start.getTile(), "Citizens", false, this.Const.World.Spawn.PeasantsSouthern, this.Math.rand(30, 60));
+			party = _faction.spawnEntity(this.m.Start.getTile(), "Citizens", false, ::Const.World.Spawn.PeasantsSouthern, ::Math.rand(30, 60));
 			party.getSprite("body").setBrush("figure_civilian_06");
 			party.setDescription("Farmers, craftsmen, pilgrims or other citizens of the great city states on their way between settlements.");
 		}
 		else
 		{
-			party = _faction.spawnEntity(this.m.Start.getTile(), "Peasants", false, this.Const.World.Spawn.Peasants, this.Math.rand(30, 60));
-			party.getSprite("body").setBrush("figure_civilian_0" + this.Math.rand(1, 5));
+			party = _faction.spawnEntity(this.m.Start.getTile(), "Peasants", false, ::Const.World.Spawn.Peasants, ::Math.rand(30, 60));
+			party.getSprite("body").setBrush("figure_civilian_0" + ::Math.rand(1, 5));
 			party.setDescription("Farmers, craftsmen, pilgrims or other peasants on their way between settlements.");
 		}
 
-		party.setFootprintType(this.Const.World.FootprintsType.Peasants);
+		party.setFootprintType(::Const.World.FootprintsType.Peasants);
 		party.getSprite("banner").Visible = false;
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
+		party.getLoot().Money = ::Math.rand(0, 50);
 
 		if (::Legends.Mod.ModSettings.getSetting("WorldEconomy").getValue())
 		{
-			local resources = this.Math.max(1, this.Math.round(0.01 * this.m.Start.getResources()));
+			local resources = ::Math.max(1, ::Math.round(0.01 * this.m.Start.getResources()));
 			this.m.Start.setResources(this.m.Start.getResources() - resources);
 			party.setResources(resources);
 		}
 
 		local c = party.getController();
-		c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 		local move = this.new("scripts/ai/world/orders/move_order");
 		move.setDestination(this.m.Dest.getTile());
 		move.setRoadsOnly(true);

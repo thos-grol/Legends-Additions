@@ -12,7 +12,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 		MinStrength = 10,
 		BribeMoney = 1000,
 		Perk = "perk.legend_favoured_enemy_bandit",
-		ValidTypes = this.Const.LegendMod.FavoriteBandit
+		ValidTypes = ::Const.LegendMod.FavoriteBandit
 	},
 	function getBanner()
 	{
@@ -34,14 +34,14 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 		local vars = [
 			[
 				"randomname",
-				this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]
+				::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]
 			],
 			[
 				"randomtown",
-				this.Const.World.LocationNames.VillageWestern[this.Math.rand(0, this.Const.World.LocationNames.VillageWestern.len() - 1)]
+				::Const.World.LocationNames.VillageWestern[::Math.rand(0, ::Const.World.LocationNames.VillageWestern.len() - 1)]
 			]
 		];
-		return this.buildTextFromTemplate(this.Const.Strings.BanditLeaderNames[this.Math.rand(0, this.Const.Strings.BanditLeaderNames.len() - 1)], vars);
+		return this.buildTextFromTemplate(::Const.Strings.BanditLeaderNames[::Math.rand(0, ::Const.Strings.BanditLeaderNames.len() - 1)], vars);
 	}
 
 	function onImportIntro()
@@ -51,7 +51,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		this.m.DifficultyMult = this.Math.rand(175, 195) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(175, 195) * 0.01;
 		
 		if (this.m.Home == null)
 		{
@@ -77,14 +77,14 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 
 		this.m.Location1 = this.WeakTableRef(this.getNearestLocationTo(this.m.Home, settlements, true));
 		this.m.Location2 = this.WeakTableRef(this.getNearestLocationTo(this.m.Location1, settlements, true));
-		local banditcamp = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getNearestSettlement(this.m.Home.getTile());
+		local banditcamp = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getNearestSettlement(this.m.Home.getTile());
 		banditcamp.getFlags().set("isContractLocation", true);
 		this.m.Destination = this.WeakTableRef(banditcamp);
 		this.m.Flags.set("DestinationName", banditcamp.getName());
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		this.m.BribeMoney = this.Math.round(400 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW));
+		this.m.BribeMoney = ::Math.round(400 * this.getPaymentMult() * ::Math.pow(this.getDifficultyMult(), ::Const.World.Assets.ContractRewardPOW));
 
-		if (this.Math.rand(1, 100) <= 90)
+		if (::Math.rand(1, 100) <= 90)
 		{
 			this.m.Payment.Completion = 0.9;
 			this.m.Payment.Advance = 0.1;
@@ -107,7 +107,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 					"Investigate this supposed \'army\' of brigands"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -122,16 +122,16 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 				this.Contract.m.Destination.clearTroops();
 				this.Contract.m.Destination.getLoot().clear();
-				this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditArmy, 150 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditArmy, 150 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				this.Contract.m.Destination.setLootScaleBasedOnResources(200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
 				this.Contract.setScreen("Overview");
 				this.World.Contracts.setActiveContract(this.Contract);
 				this.Flags.set("BribeEventDone", false);
 				local party;
 				local tile;
 				local tile = this.Contract.m.Destination.getTile();
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Raiding party", false, this.Const.World.Spawn.BanditRaiders, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Raiding party", false, ::Const.World.Spawn.BanditRaiders, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.getSprite("banner").setBrush(this.Contract.m.Destination.getBanner());
 				party.setAttackableByAI(false);
 				this.Contract.m.Target = this.WeakTableRef(party);
@@ -139,13 +139,13 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 				local intercept = this.new("scripts/ai/world/orders/intercept_order");
 				intercept.setTarget(this.World.State.getPlayer());
 				c.addOrder(intercept);
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(true);
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(true);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(true);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(true);
 				party.setDescription("A group of brigands, more coordinated than usual.");
-				party.getLoot().Money = this.Math.rand(150, 300);
-				party.getLoot().ArmorParts = this.Math.rand(0, 20);
-				party.getLoot().Medicine = this.Math.rand(0, 10);
-				party.getLoot().Ammo = this.Math.rand(0, 30);
+				party.getLoot().Money = ::Math.rand(150, 300);
+				party.getLoot().ArmorParts = ::Math.rand(0, 20);
+				party.getLoot().Medicine = ::Math.rand(0, 10);
+				party.getLoot().Ammo = ::Math.rand(0, 30);
 			}
 
 		});
@@ -338,7 +338,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 					}
 					else
 					{
-						this.Contract.m.Briber = candidates[this.Math.rand(0, candidates.len() - 1)];
+						this.Contract.m.Briber = candidates[::Math.rand(0, candidates.len() - 1)];
 						this.Contract.setScreen("Bribe");
 						this.World.Contracts.showActiveContract();
 					}
@@ -376,8 +376,8 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -441,7 +441,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "I would rather we not waste the crowns.",
 					function getResult()
 					{
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditArmy, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditArmy, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						this.World.Contracts.showCombatDialog();
 						this.Flags.set("BribeEventDone", true);
 						return 0;
@@ -452,7 +452,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Perhaps %shouter% knows how to bargain with these people...",
 					function getResult()
 					{
-						if (this.Math.rand(1, 100) <= 80)
+						if (::Math.rand(1, 100) <= 80)
 						{
 							return "BribeSuccess";
 						}
@@ -485,7 +485,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 						this.Flags.set("BribeEventDone", true);
 						local playerTile = this.World.State.getPlayer().getTile();
 						local party;
-						party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Settlement).spawnEntity(playerTile, "Bribed Raiders", false, this.Const.World.Spawn.BanditArmy, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Settlement).spawnEntity(playerTile, "Bribed Raiders", false, ::Const.World.Spawn.BanditArmy, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						party.setDescription("Those who like gold above all");
 						this.World.Contracts.showCombatDialog();
 						return 0;
@@ -500,7 +500,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + this.Contract.m.BribeMoney + "[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + this.Contract.m.BribeMoney + "[/color] Crowns"
 				});
 			}
 
@@ -518,7 +518,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.Flags.set("BribeEventDone", true);
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditArmy, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditArmy, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						this.World.Contracts.showCombatDialog();
 						return 0;
 					}
@@ -531,15 +531,15 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 				local injury1;
 				local injury2;
 
-				if (this.Math.rand(1, 100) <= 90)
+				if (::Math.rand(1, 100) <= 90)
 				{
-					injury1 = this.Contract.m.Briber.addInjury(this.Const.Injury.BluntBody);
-					injury2 = this.Contract.m.Briber.addInjury(this.Const.Injury.BluntBody);
+					injury1 = this.Contract.m.Briber.addInjury(::Const.Injury.BluntBody);
+					injury2 = this.Contract.m.Briber.addInjury(::Const.Injury.BluntBody);
 				}
 				else
 				{
-					injury1 = this.Contract.m.Briber.addInjury(this.Const.Injury.BluntBody);
-					injury2 = this.Contract.m.Briber.addInjury(this.Const.Injury.BluntHead);
+					injury1 = this.Contract.m.Briber.addInjury(::Const.Injury.BluntBody);
+					injury2 = this.Contract.m.Briber.addInjury(::Const.Injury.BluntHead);
 				}
 
 				this.List.push({
@@ -549,12 +549,12 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 				});
 				this.Contract.m.Briber.worsenMood(1.0, "Failed to negotiatie with bandits");
 
-				if (this.Contract.m.Briber.getMoodState() <= this.Const.MoodState.Neutral)
+				if (this.Contract.m.Briber.getMoodState() <= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[this.Contract.m.Briber.getMoodState()],
-						text = this.Contract.m.Briber.getName() + this.Const.MoodStateEvent[this.Contract.m.Briber.getMoodState()]
+						icon = ::Const.MoodStateIcon[this.Contract.m.Briber.getMoodState()],
+						text = this.Contract.m.Briber.getName() + ::Const.MoodStateEvent[this.Contract.m.Briber.getMoodState()]
 					});
 				}
 			}
@@ -597,7 +597,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
-				if (this.Math.rand(1, 100) <= 30)
+				if (::Math.rand(1, 100) <= 30)
 				{
 					this.Contract.addSituation(this.new("scripts/entity/world/settlements/situations/high_spirits_situation"), 2, this.Contract.m.Location1, this.List);
 				}
@@ -624,7 +624,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					this.Contract.addSituation(this.new("scripts/entity/world/settlements/situations/high_spirits_situation"), 2, this.Contract.m.Location2, this.List);
 				}
@@ -651,7 +651,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
-				if (this.Math.rand(1, 100) <= 60)
+				if (::Math.rand(1, 100) <= 60)
 				{
 					this.Contract.addSituation(this.new("scripts/entity/world/settlements/situations/mustering_troops_situation"), 2, this.Contract.m.Home, this.List);
 				}
@@ -700,9 +700,9 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Destroyed a brigand encampment");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Destroyed a brigand encampment");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -715,17 +715,17 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 				this.Contract.m.Home.removeSituationByID("situation.mustering_troops");
 
-				if (this.Math.rand(1, 100) <= 80)
+				if (::Math.rand(1, 100) <= 80)
 				{
 					this.Contract.addSituation(this.new("scripts/entity/world/settlements/situations/disbanded_troops_situation"), 2, this.Contract.m.Home, this.List);
 				}
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					this.Contract.addSituation(this.new("scripts/entity/world/settlements/situations/well_supplied_situation"), 2, this.Contract.m.Home, this.List);
 				}
@@ -762,7 +762,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Destination == null || this.m.Destination.isNull() || !this.m.Destination.isAlive() ? "" : this.Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())]
+			this.m.Destination == null || this.m.Destination.isNull() || !this.m.Destination.isAlive() ? "" : ::Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())]
 		]);
 	}
 

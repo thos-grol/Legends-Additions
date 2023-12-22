@@ -72,7 +72,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Lucky = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Lucky = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = 5;
 	}
 
@@ -83,7 +83,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 	function onPrepare()
 	{
 		local item;
-		local r = this.Math.rand(1, 19);
+		local r = ::Math.rand(1, 19);
 
 		if (r == 1)
 		{
@@ -204,7 +204,7 @@ this.lucky_finds_something_event <- this.inherit("scripts/events/event", {
 
 		if (item.getConditionMax() > 1)
 		{
-			item.setCondition(this.Math.max(1, item.getConditionMax() * this.Math.rand(10, 40) * 0.01));
+			item.setCondition(::Math.max(1, item.getConditionMax() * ::Math.rand(10, 40) * 0.01));
 		}
 
 		this.m.FoundItem = item;

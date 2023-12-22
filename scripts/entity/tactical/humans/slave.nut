@@ -2,31 +2,31 @@ this.slave <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Slave;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Slave.XP;
+		this.m.Type = ::Const.EntityType.Slave;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.Slave.XP;
 		this.abstract_human.create();
 
-		if (this.Math.rand(1, 100) <= 90)
+		if (::Math.rand(1, 100) <= 90)
 		{
-			this.m.Bodies = this.Const.Bodies.SouthernSlave;
-			this.m.Faces = this.Const.Faces.SouthernMale;
-			this.m.Hairs = this.Const.Hair.SouthernMale;
-			this.m.HairColors = this.Const.HairColors.Southern;
-			this.m.Beards = this.Const.Beards.SouthernUntidy;
+			this.m.Bodies = ::Const.Bodies.SouthernSlave;
+			this.m.Faces = ::Const.Faces.SouthernMale;
+			this.m.Hairs = ::Const.Hair.SouthernMale;
+			this.m.HairColors = ::Const.HairColors.Southern;
+			this.m.Beards = ::Const.Beards.SouthernUntidy;
 			this.m.BeardChance = 90;
 			this.m.Ethnicity = 1;
 		}
 		else
 		{
-			this.m.Bodies = this.Const.Bodies.NorthernSlave;
-			this.m.Faces = this.Const.Faces.AllMale;
-			this.m.Hairs = this.Const.Hair.WildMale;
-			this.m.HairColors = this.Const.HairColors.All;
-			this.m.Beards = this.Const.Beards.Untidy;
+			this.m.Bodies = ::Const.Bodies.NorthernSlave;
+			this.m.Faces = ::Const.Faces.AllMale;
+			this.m.Hairs = ::Const.Hair.WildMale;
+			this.m.HairColors = ::Const.HairColors.All;
+			this.m.Beards = ::Const.Beards.Untidy;
 		}
 
-		this.m.Body = this.Math.rand(0, this.m.Bodies.len() - 1);
+		this.m.Body = ::Math.rand(0, this.m.Bodies.len() - 1);
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/military_melee_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -35,7 +35,7 @@ this.slave <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Slave);
+		b.setValues(::Const.Tactical.Actor.Slave);
 		b.TargetAttractionMult = 0.5;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
@@ -43,7 +43,7 @@ this.slave <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_southern");
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
 			local tattoo_head = this.actor.getSprite("tattoo_head");
 			tattoo_head.setBrush("bust_head_darkeyes_01");
@@ -56,13 +56,13 @@ this.slave <- this.inherit("scripts/entity/tactical/abstract_human", {
 			tattoo_head.Visible = true;
 		}
 
-		if (this.Math.rand(1, 100) <= 75)
+		if (::Math.rand(1, 100) <= 75)
 		{
 			local dirt = this.getSprite("dirt");
 			dirt.Visible = true;
 		}
 
-		if (this.Math.rand(1, 100) <= 75)
+		if (::Math.rand(1, 100) <= 75)
 		{
 			local tattoo_body = this.actor.getSprite("tattoo_body");
 			local body = this.actor.getSprite("body");
@@ -85,9 +85,9 @@ this.slave <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function pickOutfit()
 	{
-		if (this.Math.rand(1, 100) <= 66)
+		if (::Math.rand(1, 100) <= 66)
 		{
-			this.m.Items.equip(this.Const.World.Common.pickArmor([
+			this.m.Items.equip(::Const.World.Common.pickArmor([
 				[
 					2,
 					"sackcloth"
@@ -113,7 +113,7 @@ this.slave <- this.inherit("scripts/entity/tactical/abstract_human", {
 				""
 			]
 		];
-		this.m.Items.equip(this.Const.World.Common.pickHelmet(helmet));
+		this.m.Items.equip(::Const.World.Common.pickHelmet(helmet));
 	}
 
 });

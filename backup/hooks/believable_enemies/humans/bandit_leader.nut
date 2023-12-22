@@ -32,8 +32,8 @@
 
 	o.getBuildNumber <- function()
 	{
-		this.m.build_num = this.Math.rand(1, 100) <= 35 ? this.Math.rand(1, 2) : this.Math.rand(3, 7);
-		if (this.m.build_num > 2 && this.Math.rand(1, 100) <= 75) this.m.is_shield = true;
+		this.m.build_num = ::Math.rand(1, 100) <= 35 ? ::Math.rand(1, 2) : ::Math.rand(3, 7);
+		if (this.m.build_num > 2 && ::Math.rand(1, 100) <= 75) this.m.is_shield = true;
 		if (this.m.build_num == 7) this.m.is_throwing = true;
 	}
 
@@ -47,7 +47,7 @@
 		this.m.IsGeneratingKillName = false;
 		this.getSprite("miniboss").setBrush("bust_miniboss");
 
-		this.m.named_item_type = this.Math.rand(this.m.is_throwing ? 0 : 1, this.m.is_shield ? 3 : 2);
+		this.m.named_item_type = ::Math.rand(this.m.is_throwing ? 0 : 1, this.m.is_shield ? 3 : 2);
 		switch(this.m.named_item_type)
 		{
 			case 0: //throwing weapons
@@ -60,7 +60,7 @@
 			case 1: //weapon - logic is handled when adding equipment in builds
 				break;
 			case 2: //armor
-				if (this.Math.rand(0,1) == 0)
+				if (::Math.rand(0,1) == 0)
 				{
 					local named = ::Const.Items.NamedArmors;
 					local weightName = ::Const.World.Common.convNameToList(named);
@@ -106,7 +106,7 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
 		this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
 		this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
-		if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+		if(::Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
 		else this.m.no_man_of_steel = true;
 
 		if (!this.m.is_miniboss) this.getBuildNumber(); //if build isnt already rolled, roll it
@@ -165,7 +165,7 @@
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
-		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+		// if(::Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
 
 		//5-6 perks remaining:
 		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_polearm")); //4
@@ -174,15 +174,15 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_king_of_all_weapons")); //7
 		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity")); //6
 
-		this.level_health(5, this.Math.rand(1, 3) );
-		this.level_fatigue(5, this.Math.rand(1, 3) );
-		this.level_melee_skill(7, this.Math.rand(1, 3) );
-		this.level_melee_defense(10, this.Math.rand(2, 3) );
-		this.level_initiative(3, this.Math.rand(1, 3) );
+		this.level_health(5, ::Math.rand(1, 3) );
+		this.level_fatigue(5, ::Math.rand(1, 3) );
+		this.level_melee_skill(7, ::Math.rand(1, 3) );
+		this.level_melee_defense(10, ::Math.rand(2, 3) );
+		this.level_initiative(3, ::Math.rand(1, 3) );
 
-		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25)
+		if (o.m.is_miniboss || ::Math.rand(1, 100) <= 25)
 		{
-			if (this.Math.rand(1, 2) == 1) this.add_potion("orc", false);
+			if (::Math.rand(1, 2) == 1) this.add_potion("orc", false);
 			else this.add_potion("spider", false);
 		}
 	}
@@ -200,7 +200,7 @@
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
-		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+		// if(::Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
 
 		//5-6 perks remaining:
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_fluid_weapon")); //3
@@ -209,12 +209,12 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_en_garde")); //7
 		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_bloody_harvest")); //7
 
-		this.level_health(3, this.Math.rand(1, 3) );
+		this.level_health(3, ::Math.rand(1, 3) );
 		this.level_resolve(10, 3 );
-		this.level_melee_skill(7, this.Math.rand(1, 3) );
-		this.level_melee_defense(10, this.Math.rand(1, 3) );
+		this.level_melee_skill(7, ::Math.rand(1, 3) );
+		this.level_melee_defense(10, ::Math.rand(1, 3) );
 
-		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("direwolf", false);
+		if (o.m.is_miniboss || ::Math.rand(1, 100) <= 25) this.add_potion("direwolf", false);
 	}
 
 	o.build_1haxe <- function() //3
@@ -230,7 +230,7 @@
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
-		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+		// if(::Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
 
 		//5-6 perks remaining:
 		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_axe")); //4
@@ -242,13 +242,13 @@
 		}
 		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_duelist")); //7
 
-		this.level_health(5, this.Math.rand(1, 3) );
-		this.level_fatigue(5, this.Math.rand(1, 3) );
-		this.level_melee_skill(7, this.Math.rand(1, 3) );
-		this.level_melee_defense(10, this.Math.rand(2, 3) );
-		this.level_initiative(3, this.Math.rand(1, 3) );
+		this.level_health(5, ::Math.rand(1, 3) );
+		this.level_fatigue(5, ::Math.rand(1, 3) );
+		this.level_melee_skill(7, ::Math.rand(1, 3) );
+		this.level_melee_defense(10, ::Math.rand(2, 3) );
+		this.level_initiative(3, ::Math.rand(1, 3) );
 
-		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+		if (o.m.is_miniboss || ::Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
 	}
 
 	o.build_1hcleaver <- function() //4
@@ -264,7 +264,7 @@
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
-		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+		// if(::Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
 
 		//5-6 perks remaining:
 		//duelist
@@ -277,13 +277,13 @@
 		}
 		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_duelist")); //7
 
-		this.level_health(5, this.Math.rand(1, 3) );
-		this.level_fatigue(5, this.Math.rand(1, 3) );
-		this.level_melee_skill(7, this.Math.rand(1, 3) );
-		this.level_melee_defense(10, this.Math.rand(2, 3) );
-		this.level_initiative(3, this.Math.rand(1, 3) );
+		this.level_health(5, ::Math.rand(1, 3) );
+		this.level_fatigue(5, ::Math.rand(1, 3) );
+		this.level_melee_skill(7, ::Math.rand(1, 3) );
+		this.level_melee_defense(10, ::Math.rand(2, 3) );
+		this.level_initiative(3, ::Math.rand(1, 3) );
 
-		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+		if (o.m.is_miniboss || ::Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
 	}
 
 	o.build_1hhammer <- function() //5
@@ -299,7 +299,7 @@
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
-		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+		// if(::Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
 
 		//5-6 perks remaining:
 		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_hammer")); //4
@@ -311,13 +311,13 @@
 		}
 		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_double_strike")); //7
 
-		this.level_health(5, this.Math.rand(1, 3) );
-		this.level_fatigue(5, this.Math.rand(1, 3) );
-		this.level_melee_skill(7, this.Math.rand(1, 3) );
-		this.level_melee_defense(10, this.Math.rand(2, 3) );
-		this.level_initiative(3, this.Math.rand(1, 3) );
+		this.level_health(5, ::Math.rand(1, 3) );
+		this.level_fatigue(5, ::Math.rand(1, 3) );
+		this.level_melee_skill(7, ::Math.rand(1, 3) );
+		this.level_melee_defense(10, ::Math.rand(2, 3) );
+		this.level_initiative(3, ::Math.rand(1, 3) );
 
-		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+		if (o.m.is_miniboss || ::Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
 	}
 
 	o.build_1hmace <- function() //6
@@ -333,7 +333,7 @@
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
-		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+		// if(::Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
 
 		//5-6 perks remaining:
 		this.m.Skills.add(::new("scripts/skills/perks/perk_mastery_mace")); //4
@@ -345,13 +345,13 @@
 		}
 		if (this.m.no_man_of_steel) this.m.Skills.add(::new("scripts/skills/perks/perk_duelist")); //7
 
-		this.level_health(2, this.Math.rand(1, 3) );
-		this.level_fatigue(2, this.Math.rand(1, 3) );
-		this.level_melee_skill(7, this.Math.rand(1, 3) );
-		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_health(2, ::Math.rand(1, 3) );
+		this.level_fatigue(2, ::Math.rand(1, 3) );
+		this.level_melee_skill(7, ::Math.rand(1, 3) );
+		this.level_melee_defense(10, ::Math.rand(2, 3) );
 		this.level_initiative(9, 3 );
 
-		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
+		if (o.m.is_miniboss || ::Math.rand(1, 100) <= 25) this.add_potion("ghoul", false);
 	}
 
 	o.build_thrower <- function() //7
@@ -375,7 +375,7 @@
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_steadfast")); //3 -> 4
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5
 		// this.m.Skills.add(::new("scripts/skills/perks/perk_battle_forged")); //6
-		// if(this.Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
+		// if(::Math.rand(1, 100) <= 25) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_man_of_steel")); //25% 7
 
 		//5-6 perks remaining:
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity")); //6
@@ -397,11 +397,11 @@
 		}
 
 		this.level_health(10, 3 );
-		this.level_fatigue(3, this.Math.rand(1, 3) );
-		this.level_ranged_skill(7, this.Math.rand(1, 3) );
-		this.level_melee_defense(10, this.Math.rand(2, 3) );
+		this.level_fatigue(3, ::Math.rand(1, 3) );
+		this.level_ranged_skill(7, ::Math.rand(1, 3) );
+		this.level_melee_defense(10, ::Math.rand(2, 3) );
 
-		if (o.m.is_miniboss || this.Math.rand(1, 100) <= 25) this.add_potion("orc", false);
+		if (o.m.is_miniboss || ::Math.rand(1, 100) <= 25) this.add_potion("orc", false);
 
 		local agent = actor.getAIAgent();
 		agent.m.Properties.BehaviorMult[::Const.AI.Behavior.ID.EngageMelee] = 0.5;
@@ -421,7 +421,7 @@
 		this.getSprite("socket").setBrush("bust_base_bandits");
 		local dirt = this.getSprite("dirt");
 		dirt.Visible = true;
-		dirt.Alpha = this.Math.rand(150, 255);
+		dirt.Alpha = ::Math.rand(150, 255);
 		this.setArmorSaturation(0.85);
 		this.getSprite("shield_icon").setBrightness(0.85);
 

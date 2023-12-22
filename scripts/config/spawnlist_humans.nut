@@ -23,7 +23,7 @@ gt.Const.World.Spawn.Cultists <- {
 			Weight = 100,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.CultistAmbush,
+					Type = ::Const.World.Spawn.Troops.CultistAmbush,
 					Cost = 15
 				}
 			]
@@ -45,7 +45,7 @@ gt.Const.World.Spawn.Peasants <- {
 			Weight = 85,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Peasant,
+					Type = ::Const.World.Spawn.Troops.Peasant,
 					Cost = 5
 				}
 			]
@@ -65,7 +65,7 @@ gt.Const.World.Spawn.PeasantsArmed <- {
 			Weight = 30,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.PeasantArmed,
+					Type = ::Const.World.Spawn.Troops.PeasantArmed,
 					Cost = 10
 				}
 			]
@@ -86,7 +86,7 @@ gt.Const.World.Spawn.BountyHunters <- {
 			Weight = 70,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.BountyHunter,
+					Type = ::Const.World.Spawn.Troops.BountyHunter,
 					Cost = 25
 				}
 			]
@@ -95,7 +95,7 @@ gt.Const.World.Spawn.BountyHunters <- {
 			Weight = 20,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.BountyHunterRanged,
+					Type = ::Const.World.Spawn.Troops.BountyHunterRanged,
 					Cost = 20
 				}
 			]
@@ -117,11 +117,11 @@ gt.Const.World.Spawn.Mercenaries <- {
 			Types = [
 				{
 					MaxR = 250,
-					Type = this.Const.World.Spawn.Troops.MercenaryLOW,
+					Type = ::Const.World.Spawn.Troops.MercenaryLOW,
 					Cost = 18
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.Mercenary,
+					Type = ::Const.World.Spawn.Troops.Mercenary,
 					Cost = 25
 				}
 			]
@@ -130,12 +130,12 @@ gt.Const.World.Spawn.Mercenaries <- {
 			Weight = 15,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.MercenaryRanged,
+					Type = ::Const.World.Spawn.Troops.MercenaryRanged,
 					Cost = 25
 				},
 				{
 					MinR = 250,
-					Type = this.Const.World.Spawn.Troops.MasterArcher,
+					Type = ::Const.World.Spawn.Troops.MasterArcher,
 					Cost = 40
 				}
 			]
@@ -145,12 +145,12 @@ gt.Const.World.Spawn.Mercenaries <- {
 			Types = [
 				{
 					MinR = 250,
-					Type = this.Const.World.Spawn.Troops.HedgeKnight,
+					Type = ::Const.World.Spawn.Troops.HedgeKnight,
 					Cost = 40
 				},
 				{
 					MinR = 250,
-					Type = this.Const.World.Spawn.Troops.Swordmaster,
+					Type = ::Const.World.Spawn.Troops.Swordmaster,
 					Cost = 40
 				}
 			]
@@ -172,7 +172,7 @@ gt.Const.World.Spawn.MercenariesLow <- {
 			Weight = 60,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.MercenaryLOW,
+					Type = ::Const.World.Spawn.Troops.MercenaryLOW,
 					Cost = 25
 				}
 			]
@@ -181,7 +181,7 @@ gt.Const.World.Spawn.MercenariesLow <- {
 			Weight = 30,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Mercenary,
+					Type = ::Const.World.Spawn.Troops.Mercenary,
 					Cost = 25
 				}
 			]
@@ -190,7 +190,7 @@ gt.Const.World.Spawn.MercenariesLow <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.MercenaryRanged,
+					Type = ::Const.World.Spawn.Troops.MercenaryRanged,
 					Cost = 25
 				}
 			]
@@ -199,7 +199,7 @@ gt.Const.World.Spawn.MercenariesLow <- {
 			Weight = 3,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.HedgeKnight,
+					Type = ::Const.World.Spawn.Troops.HedgeKnight,
 					Cost = 40
 				}
 			]
@@ -221,11 +221,11 @@ gt.Const.World.Spawn.Militia <- {
 			Weight = 70,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Militia,
+					Type = ::Const.World.Spawn.Troops.Militia,
 					Cost = 10
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.MilitiaVeteran,
+					Type = ::Const.World.Spawn.Troops.MilitiaVeteran,
 					Cost = 12
 				}
 			]
@@ -234,7 +234,7 @@ gt.Const.World.Spawn.Militia <- {
 			Weight = 20,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.MilitiaRanged,
+					Type = ::Const.World.Spawn.Troops.MilitiaRanged,
 					Cost = 10
 				}
 			]
@@ -243,7 +243,7 @@ gt.Const.World.Spawn.Militia <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.MilitiaCaptain,
+					Type = ::Const.World.Spawn.Troops.MilitiaCaptain,
 					Cost = 20,
 					Roll = true
 				}
@@ -264,7 +264,7 @@ gt.Const.World.Spawn.PeasantsSouthern <- {
 			Weight = 100,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.SouthernPeasant,
+					Type = ::Const.World.Spawn.Troops.SouthernPeasant,
 					Cost = 10
 				}
 			]
@@ -288,7 +288,7 @@ gt.Const.World.Spawn.CultistPatrol <- {
 			Weight = 70,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Cultist,
+					Type = ::Const.World.Spawn.Troops.Cultist,
 					Cost = 15
 				}
 			]
@@ -310,7 +310,7 @@ gt.Const.World.Spawn.CultistRaiders <- {
 			Weight = 70,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Cultist,
+					Type = ::Const.World.Spawn.Troops.Cultist,
 					Cost = 15
 				}
 			]
@@ -319,7 +319,7 @@ gt.Const.World.Spawn.CultistRaiders <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.CultistPriest,
+					Type = ::Const.World.Spawn.Troops.CultistPriest,
 					Cost = 30
 				}
 			]
@@ -328,7 +328,7 @@ gt.Const.World.Spawn.CultistRaiders <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.CultistKnight,
+					Type = ::Const.World.Spawn.Troops.CultistKnight,
 					Cost = 60
 				}
 			]
@@ -348,7 +348,7 @@ gt.Const.World.Spawn.CultistDefenders <- {
 			MinCount = 1,
 			MaxCount = 1,
 			Weight = 30,
-			Type = this.Const.World.Spawn.Troops.CultistChosen,
+			Type = ::Const.World.Spawn.Troops.CultistChosen,
 			Cost = 0
 		}
 	],
@@ -359,7 +359,7 @@ gt.Const.World.Spawn.CultistDefenders <- {
 			Weight = 70,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Cultist,
+					Type = ::Const.World.Spawn.Troops.Cultist,
 					Cost = 15
 				}
 			]
@@ -368,7 +368,7 @@ gt.Const.World.Spawn.CultistDefenders <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.CultistPriest,
+					Type = ::Const.World.Spawn.Troops.CultistPriest,
 					Cost = 30
 				}
 			]
@@ -377,7 +377,7 @@ gt.Const.World.Spawn.CultistDefenders <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.CultistKnight,
+					Type = ::Const.World.Spawn.Troops.CultistKnight,
 					Cost = 60
 				}
 			]
@@ -401,7 +401,7 @@ gt.Const.World.Spawn.CultistDefenderss <- {
 			Weight = 70,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Cultist,
+					Type = ::Const.World.Spawn.Troops.Cultist,
 					Cost = 15
 				}
 			]
@@ -410,7 +410,7 @@ gt.Const.World.Spawn.CultistDefenderss <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.CultistPriest,
+					Type = ::Const.World.Spawn.Troops.CultistPriest,
 					Cost = 30
 				}
 			]
@@ -434,7 +434,7 @@ gt.Const.World.Spawn.CaravanSouthernMedium <- {
 			MinCount = 1,
 			MaxCount = 3,
 			Weight = 30,
-			Type = this.Const.World.Spawn.Troops.SouthernDonkey,
+			Type = ::Const.World.Spawn.Troops.SouthernDonkey,
 			Cost = 0
 		}
 	],
@@ -443,7 +443,7 @@ gt.Const.World.Spawn.CaravanSouthernMedium <- {
 			Weight = 62,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Conscript,
+					Type = ::Const.World.Spawn.Troops.Conscript,
 					Cost = 20
 				}
 			]
@@ -452,7 +452,7 @@ gt.Const.World.Spawn.CaravanSouthernMedium <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Mercenary,
+					Type = ::Const.World.Spawn.Troops.Mercenary,
 					Cost = 30
 				}
 			]
@@ -461,7 +461,7 @@ gt.Const.World.Spawn.CaravanSouthernMedium <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.MasterArcher,
+					Type = ::Const.World.Spawn.Troops.MasterArcher,
 					Cost = 40
 				}
 			]
@@ -470,7 +470,7 @@ gt.Const.World.Spawn.CaravanSouthernMedium <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Officer,
+					Type = ::Const.World.Spawn.Troops.Officer,
 					Cost = 35
 				}
 			]
@@ -493,7 +493,7 @@ gt.Const.World.Spawn.CaravanMedium <- {
 			MinCount = 1,
 			MaxCount = 3,
 			Weight = 30,
-			Type = this.Const.World.Spawn.Troops.CaravanDonkey,
+			Type = ::Const.World.Spawn.Troops.CaravanDonkey,
 			Cost = 0
 		}
 	],
@@ -502,7 +502,7 @@ gt.Const.World.Spawn.CaravanMedium <- {
 			Weight = 62,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Mercenary,
+					Type = ::Const.World.Spawn.Troops.Mercenary,
 					Cost = 20
 				}
 			]
@@ -511,7 +511,7 @@ gt.Const.World.Spawn.CaravanMedium <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.MasterArcher,
+					Type = ::Const.World.Spawn.Troops.MasterArcher,
 					Cost = 30
 				}
 			]
@@ -520,7 +520,7 @@ gt.Const.World.Spawn.CaravanMedium <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.HedgeKnight,
+					Type = ::Const.World.Spawn.Troops.HedgeKnight,
 					Cost = 35
 				}
 			]

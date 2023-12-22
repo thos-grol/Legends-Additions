@@ -135,14 +135,14 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 
 	function getAgonizingBlast()
 	{
-		return this.Math.round(this.getContainer().getActor().getCurrentProperties().getBravery() / 10.0);
+		return ::Math.round(this.getContainer().getActor().getCurrentProperties().getBravery() / 10.0);
 	}
 
     function onUse( _user, _targetTile )
 	{
-		this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, _user.getPos(), this.Math.rand(95, 105) * 0.01);
-		this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, _user.getPos(), this.Math.rand(95, 105) * 0.01);
-		this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, _user.getPos(), this.Math.rand(95, 105) * 0.01);
+		this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, _user.getPos(), ::Math.rand(95, 105) * 0.01);
+		this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, _user.getPos(), ::Math.rand(95, 105) * 0.01);
+		this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, _user.getPos(), ::Math.rand(95, 105) * 0.01);
 
 		if (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)
 		{
@@ -211,9 +211,9 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 		{
 			local _targetTile = _attacker.getTile();
 
-			this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, actor.getPos(), this.Math.rand(95, 105) * 0.01);
-			this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, actor.getPos(), this.Math.rand(95, 105) * 0.01);
-			this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, actor.getPos(), this.Math.rand(95, 105) * 0.01);
+			this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, actor.getPos(), ::Math.rand(95, 105) * 0.01);
+			this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, actor.getPos(), ::Math.rand(95, 105) * 0.01);
+			this.Sound.play("sounds/cultist/eldritch_charge.wav", 200.0, actor.getPos(), ::Math.rand(95, 105) * 0.01);
 
 
 			if (!actor.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)
@@ -257,9 +257,9 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 		{
 			local actor = this.getContainer().getActor();
 			_targetEntity.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
-			if (this.Math.rand(1,100) <= 44)
+			if (::Math.rand(1,100) <= 44)
 				this.doKnockback( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor );
-			if (actor.getSkills().hasSkill("injury.missing_finger") && this.Math.rand(1,100) <= 44)
+			if (actor.getSkills().hasSkill("injury.missing_finger") && ::Math.rand(1,100) <= 44)
 			{
 				local drained = _targetEntity.getSkills().getSkillByID("effects.drained_effect");
 				if (drained == null) _targetEntity.getSkills().add(::new("scripts/skills/effects/drained_effect"));
@@ -290,7 +290,7 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 		skills.removeByID("effects.riposte");
 
 		_targetEntity.setCurrentMovementType(::Const.Tactical.MovementType.Involuntary);
-		local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
+		local damage = ::Math.max(0, ::Math.abs(knockToTile.Level - targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
 		if (damage == 0)
 		{
 			this.Tactical.getNavigator().teleport(_targetEntity, knockToTile, null, null, true);

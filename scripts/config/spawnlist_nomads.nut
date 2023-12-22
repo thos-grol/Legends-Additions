@@ -25,12 +25,12 @@ gt.Const.World.Spawn.NomadRoamers <- {
 			Weight = 90,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadCutthroat,
+					Type = ::Const.World.Spawn.Troops.NomadCutthroat,
 					MinR = 200,
 					Cost = 12
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.NomadOutlaw,
+					Type = ::Const.World.Spawn.Troops.NomadOutlaw,
 					MinR = 400,
 					Cost = 20
 				}
@@ -40,7 +40,7 @@ gt.Const.World.Spawn.NomadRoamers <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadSlinger,
+					Type = ::Const.World.Spawn.Troops.NomadSlinger,
 					Cost = 12
 				}
 			]
@@ -62,11 +62,11 @@ gt.Const.World.Spawn.NomadRaiders <- {
 			Weight = 90,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadCutthroat,
+					Type = ::Const.World.Spawn.Troops.NomadCutthroat,
 					Cost = 12
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.NomadOutlaw,
+					Type = ::Const.World.Spawn.Troops.NomadOutlaw,
 					MinR = 100,
 					Cost = 20
 				}
@@ -76,11 +76,11 @@ gt.Const.World.Spawn.NomadRaiders <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadSlinger,
+					Type = ::Const.World.Spawn.Troops.NomadSlinger,
 					Cost = 15
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.DesertStalker,
+					Type = ::Const.World.Spawn.Troops.DesertStalker,
 					MinR = 420,
 					Cost = 65,
 					Roll = true
@@ -92,7 +92,7 @@ gt.Const.World.Spawn.NomadRaiders <- {
 			MinR = 250,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadLeader,
+					Type = ::Const.World.Spawn.Troops.NomadLeader,
 					Cost = 60,
 					Roll = true
 				}
@@ -103,7 +103,7 @@ gt.Const.World.Spawn.NomadRaiders <- {
 			MinR = 365,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Executioner,
+					Type = ::Const.World.Spawn.Troops.Executioner,
 					Cost = 65,
 					Roll = true
 				}
@@ -114,7 +114,7 @@ gt.Const.World.Spawn.NomadRaiders <- {
 			MinR = 420,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.DesertDevil,
+					Type = ::Const.World.Spawn.Troops.DesertDevil,
 					Cost = 65,
 					Roll = true
 				}
@@ -137,11 +137,11 @@ gt.Const.World.Spawn.NomadDefenders <- {
 			Weight = 60,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadCutthroat,
+					Type = ::Const.World.Spawn.Troops.NomadCutthroat,
 					Cost = 12
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.NomadOutlaw,
+					Type = ::Const.World.Spawn.Troops.NomadOutlaw,
 					Cost = 18
 				}
 			]
@@ -150,11 +150,11 @@ gt.Const.World.Spawn.NomadDefenders <- {
 			Weight = 21,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadSlinger,
+					Type = ::Const.World.Spawn.Troops.NomadSlinger,
 					Cost = 12
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.DesertStalker,
+					Type = ::Const.World.Spawn.Troops.DesertStalker,
 					MinR = 420,
 					Cost = 45,
 					Roll = true
@@ -166,7 +166,7 @@ gt.Const.World.Spawn.NomadDefenders <- {
 			MinR = 250,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadLeader,
+					Type = ::Const.World.Spawn.Troops.NomadLeader,
 					Cost = 40,
 					Roll = true
 				}
@@ -177,7 +177,7 @@ gt.Const.World.Spawn.NomadDefenders <- {
 			MinR = 365,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Executioner,
+					Type = ::Const.World.Spawn.Troops.Executioner,
 					Cost = 55,
 					Roll = true
 				}
@@ -188,7 +188,7 @@ gt.Const.World.Spawn.NomadDefenders <- {
 			MinR = 420,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.DesertDevil,
+					Type = ::Const.World.Spawn.Troops.DesertDevil,
 					Cost = 50,
 					Roll = true
 				}
@@ -213,7 +213,7 @@ gt.Const.World.Spawn.NomadRaidersCaravan <- {
 			Weight = 90,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadOutlaw,
+					Type = ::Const.World.Spawn.Troops.NomadOutlaw,
 					MinR = 100,
 					Cost = 20
 				}
@@ -223,7 +223,7 @@ gt.Const.World.Spawn.NomadRaidersCaravan <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.DesertStalker,
+					Type = ::Const.World.Spawn.Troops.DesertStalker,
 					Cost = 65,
 					Roll = true
 				}
@@ -233,7 +233,7 @@ gt.Const.World.Spawn.NomadRaidersCaravan <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadLeader,
+					Type = ::Const.World.Spawn.Troops.NomadLeader,
 					Cost = 60,
 					Roll = true
 				}
@@ -243,7 +243,7 @@ gt.Const.World.Spawn.NomadRaidersCaravan <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Executioner,
+					Type = ::Const.World.Spawn.Troops.Executioner,
 					Cost = 65,
 					Roll = true
 				}
@@ -253,7 +253,7 @@ gt.Const.World.Spawn.NomadRaidersCaravan <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.DesertDevil,
+					Type = ::Const.World.Spawn.Troops.DesertDevil,
 					Cost = 65,
 					Roll = true
 				}
@@ -276,7 +276,7 @@ gt.Const.World.Spawn.NomadDefendersMedium <- {
 			Weight = 60,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadOutlaw,
+					Type = ::Const.World.Spawn.Troops.NomadOutlaw,
 					Cost = 18
 				}
 			]
@@ -285,7 +285,7 @@ gt.Const.World.Spawn.NomadDefendersMedium <- {
 			Weight = 21,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadSlinger,
+					Type = ::Const.World.Spawn.Troops.NomadSlinger,
 					Cost = 12
 				}
 			]
@@ -294,7 +294,7 @@ gt.Const.World.Spawn.NomadDefendersMedium <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NomadLeader,
+					Type = ::Const.World.Spawn.Troops.NomadLeader,
 					Cost = 40,
 					Roll = true
 				}
@@ -304,7 +304,7 @@ gt.Const.World.Spawn.NomadDefendersMedium <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Executioner,
+					Type = ::Const.World.Spawn.Troops.Executioner,
 					Cost = 55,
 					Roll = true
 				}
@@ -314,7 +314,7 @@ gt.Const.World.Spawn.NomadDefendersMedium <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.DesertDevil,
+					Type = ::Const.World.Spawn.Troops.DesertDevil,
 					Cost = 50,
 					Roll = true
 				}
@@ -324,7 +324,7 @@ gt.Const.World.Spawn.NomadDefendersMedium <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.DesertStalker,
+					Type = ::Const.World.Spawn.Troops.DesertStalker,
 					Cost = 55,
 					Roll = true
 				}

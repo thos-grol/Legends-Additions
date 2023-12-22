@@ -18,7 +18,7 @@ this.civilwar_trapped_soldiers_event <- this.inherit("scripts/events/event", {
 					Text = "We need to put a stop to this.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}
@@ -33,7 +33,7 @@ this.civilwar_trapped_soldiers_event <- this.inherit("scripts/events/event", {
 					Text = "This isn\'t our fight.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "D";
 						}
@@ -119,11 +119,11 @@ this.civilwar_trapped_soldiers_event <- this.inherit("scripts/events/event", {
 					}
 				}
 
-				local numInjured = this.Math.min(candidates.len(), this.Math.rand(1, 3));
+				local numInjured = ::Math.min(candidates.len(), ::Math.rand(1, 3));
 
 				for( local i = 0; i < numInjured; i = i )
 				{
-					local idx = this.Math.rand(0, candidates.len() - 1);
+					local idx = ::Math.rand(0, candidates.len() - 1);
 					local bro = candidates[idx];
 					candidates.remove(idx);
 					local injury = bro.addInjury(::Const.Injury.Brawl);

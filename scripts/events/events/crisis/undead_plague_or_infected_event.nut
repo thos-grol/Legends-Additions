@@ -16,7 +16,7 @@ this.undead_plague_or_infected_event <- this.inherit("scripts/events/event", {
 					Text = "We can spare a bit of food.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "C";
 						}
@@ -70,7 +70,7 @@ this.undead_plague_or_infected_event <- this.inherit("scripts/events/event", {
 						properties.Music = ::Const.Music.CivilianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.PeasantsArmed, this.Math.rand(50, 100), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.PeasantsArmed, ::Math.rand(50, 100), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -110,7 +110,7 @@ this.undead_plague_or_infected_event <- this.inherit("scripts/events/event", {
 
 				for( local i = 0; i < 2; i = i )
 				{
-					local idx = this.Math.rand(0, food.len() - 1);
+					local idx = ::Math.rand(0, food.len() - 1);
 					local item = food[idx];
 					this.List.push({
 						id = 10,
@@ -146,8 +146,8 @@ this.undead_plague_or_infected_event <- this.inherit("scripts/events/event", {
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
 						properties.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Center;
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Peasants, this.Math.rand(10, 30), ::Const.Faction.PlayerAnimals);
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.ZombiesLight, this.Math.rand(60, 90), this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Peasants, ::Math.rand(10, 30), ::Const.Faction.PlayerAnimals);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.ZombiesLight, ::Math.rand(60, 90), this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}

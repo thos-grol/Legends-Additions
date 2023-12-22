@@ -63,7 +63,7 @@ this.graverobber_finds_item_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Graverobber.getImagePath());
-				local r = this.Math.rand(1, 8);
+				local r = ::Math.rand(1, 8);
 				local item;
 
 				if (r == 1)
@@ -128,7 +128,7 @@ this.graverobber_finds_item_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Historian.getImagePath());
 				local item;
-				local i = this.Math.rand(1, 8);
+				local i = ::Math.rand(1, 8);
 
 				if (i == 1)
 				{
@@ -204,11 +204,11 @@ this.graverobber_finds_item_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Graverobber = candidates_graverobber[this.Math.rand(0, candidates_graverobber.len() - 1)];
+		this.m.Graverobber = candidates_graverobber[::Math.rand(0, candidates_graverobber.len() - 1)];
 
 		if (candidates_historian.len() != 0)
 		{
-			this.m.Historian = candidates_historian[this.Math.rand(0, candidates_historian.len() - 1)];
+			this.m.Historian = candidates_historian[::Math.rand(0, candidates_historian.len() - 1)];
 		}
 
 		this.m.Score = 5;
@@ -216,7 +216,7 @@ this.graverobber_finds_item_event <- this.inherit("scripts/events/event", {
 
 	function onPrepare()
 	{
-		this.m.NobleName = ::Const.Strings.KnightNames[this.Math.rand(0, ::Const.Strings.KnightNames.len() - 1)];
+		this.m.NobleName = ::Const.Strings.KnightNames[::Math.rand(0, ::Const.Strings.KnightNames.len() - 1)];
 		this.m.UniqueItemName = this.m.NobleName + "\'s Shield";
 	}
 

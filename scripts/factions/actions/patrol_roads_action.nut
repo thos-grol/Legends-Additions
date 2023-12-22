@@ -51,23 +51,23 @@ this.patrol_roads_action <- this.inherit("scripts/factions/faction_action", {
 
 		for( local i = 0; i != 3; i = i )
 		{
-			local idx = this.Math.rand(0, this.m.Settlements.len() - 1);
+			local idx = ::Math.rand(0, this.m.Settlements.len() - 1);
 			local wp = this.m.Settlements[idx];
 			this.m.Settlements.remove(idx);
 			waypoints.push(wp);
 			i = ++i;
 		}
 
-		local party = this.getFaction().spawnEntity(waypoints[0].getTile(), waypoints[0].getName() + " Company", true, this.Const.World.Spawn.Noble, this.Math.rand(120, 250) * this.getReputationToDifficultyLightMult());
+		local party = this.getFaction().spawnEntity(waypoints[0].getTile(), waypoints[0].getName() + " Company", true, ::Const.World.Spawn.Noble, ::Math.rand(120, 250) * this.getReputationToDifficultyLightMult());
 		party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + _faction.getBannerString());
 		party.setDescription("Professional soldiers in service to local lords.");
-		party.setFootprintType(this.Const.World.FootprintsType.Nobles);
+		party.setFootprintType(::Const.World.FootprintsType.Nobles);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
-		party.getLoot().ArmorParts = this.Math.rand(0, 25);
-		party.getLoot().Medicine = this.Math.rand(0, 3);
-		party.getLoot().Ammo = this.Math.rand(0, 30);
-		local r = this.Math.rand(1, 4);
+		party.getLoot().Money = ::Math.rand(0, 50);
+		party.getLoot().ArmorParts = ::Math.rand(0, 25);
+		party.getLoot().Medicine = ::Math.rand(0, 3);
+		party.getLoot().Ammo = ::Math.rand(0, 30);
+		local r = ::Math.rand(1, 4);
 
 		if (r == 1)
 		{
@@ -91,13 +91,13 @@ this.patrol_roads_action <- this.inherit("scripts/factions/faction_action", {
 		move1.setRoadsOnly(true);
 		move1.setDestination(waypoints[1].getTile());
 		local wait1 = this.new("scripts/ai/world/orders/wait_order");
-		local r = this.Math.rand(5, 40);
+		local r = ::Math.rand(5, 40);
 		wait1.setTime(r);
 		local move2 = this.new("scripts/ai/world/orders/move_order");
 		move2.setRoadsOnly(true);
 		move2.setDestination(waypoints[2].getTile());
 		local wait2 = this.new("scripts/ai/world/orders/wait_order");
-		local r = this.Math.rand(5, 40);
+		local r = ::Math.rand(5, 40);
 		wait2.setTime(r);
 		local move3 = this.new("scripts/ai/world/orders/move_order");
 		move3.setRoadsOnly(true);

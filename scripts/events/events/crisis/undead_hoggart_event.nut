@@ -361,10 +361,10 @@ this.undead_hoggart_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_witchhunter.len() != 0)
 		{
-			this.m.Witchhunter = candidates_witchhunter[this.Math.rand(0, candidates_witchhunter.len() - 1)];
+			this.m.Witchhunter = candidates_witchhunter[::Math.rand(0, candidates_witchhunter.len() - 1)];
 		}
 
-		this.m.Other = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Other = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = 10;
 	}
 

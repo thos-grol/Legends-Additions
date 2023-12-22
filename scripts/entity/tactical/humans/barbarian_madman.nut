@@ -2,23 +2,23 @@ this.barbarian_madman <- this.inherit("scripts/entity/tactical/abstract_human", 
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.BarbarianMadman;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.MoraleState = this.Const.MoraleState.Ignore;
-		this.m.XP = this.Const.Tactical.Actor.BarbarianMadman.XP;
+		this.m.Type = ::Const.EntityType.BarbarianMadman;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.MoraleState = ::Const.MoraleState.Ignore;
+		this.m.XP = ::Const.Tactical.Actor.BarbarianMadman.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.WildMale;
-		this.m.Hairs = this.Const.Hair.WildMale;
-		this.m.HairColors = this.Const.HairColors.Old;
-		this.m.Beards = this.Const.Beards.WildExtended;
-		this.m.Sound[this.Const.Sound.ActorEvent.NoDamageReceived] = [];
-		this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
+		this.m.Faces = ::Const.Faces.WildMale;
+		this.m.Hairs = ::Const.Hair.WildMale;
+		this.m.HairColors = ::Const.HairColors.Old;
+		this.m.Beards = ::Const.Beards.WildExtended;
+		this.m.Sound[::Const.Sound.ActorEvent.NoDamageReceived] = [];
+		this.m.Sound[::Const.Sound.ActorEvent.DamageReceived] = [
 			"sounds/enemies/dlc4/madman_hurt_01.wav",
 			"sounds/enemies/dlc4/madman_hurt_02.wav",
 			"sounds/enemies/dlc4/madman_hurt_03.wav",
 			"sounds/enemies/dlc4/madman_hurt_04.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Death] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Death] = [
 			"sounds/enemies/dlc4/madman_death_01.wav"
 		];
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/barbarian_melee_agent");
@@ -35,23 +35,23 @@ this.barbarian_madman <- this.inherit("scripts/entity/tactical/abstract_human", 
 			6
 		];
 
-		if (this.Math.rand(1, 100) <= 66)
+		if (::Math.rand(1, 100) <= 66)
 		{
 			local tattoo_body = this.actor.getSprite("tattoo_body");
 			local body = this.actor.getSprite("body");
-			tattoo_body.setBrush("tattoo_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_" + body.getBrush().Name);
+			tattoo_body.setBrush("tattoo_0" + tattoos[::Math.rand(0, tattoos.len() - 1)] + "_" + body.getBrush().Name);
 			tattoo_body.Visible = true;
 		}
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
 			local tattoo_head = this.actor.getSprite("tattoo_head");
-			tattoo_head.setBrush("tattoo_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_head");
+			tattoo_head.setBrush("tattoo_0" + tattoos[::Math.rand(0, tattoos.len() - 1)] + "_head");
 			tattoo_head.Visible = true;
 		}
 
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BarbarianMadman);
+		b.setValues(::Const.Tactical.Actor.BarbarianMadman);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -137,9 +137,9 @@ this.barbarian_madman <- this.inherit("scripts/entity/tactical/abstract_human", 
 
 	function pickOutfit()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Body))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Body))
 		{
-			this.m.Items.equip(this.Const.World.Common.pickArmor([
+			this.m.Items.equip(::Const.World.Common.pickArmor([
 				[
 					1,
 					"barbarians/barbarian_ritual_armor"
@@ -147,9 +147,9 @@ this.barbarian_madman <- this.inherit("scripts/entity/tactical/abstract_human", 
 			]));
 		}
 
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head))
 		{
-			this.m.Items.equip(this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::Const.World.Common.pickHelmet([
 				[
 					1,
 					"barbarians/barbarian_ritual_helmet"

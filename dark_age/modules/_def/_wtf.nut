@@ -10,10 +10,10 @@
 
 		if (this.m.RosterSeed != 0)
 		{
-			this.Math.seedRandom(this.m.RosterSeed);
+			::Math.seedRandom(this.m.RosterSeed);
 		}
 
-		this.m.RosterSeed = this.Math.floor(this.Time.getRealTime() + this.Math.rand());
+		this.m.RosterSeed = ::Math.floor(this.Time.getRealTime() + ::Math.rand());
 		this.m.LastRosterUpdate = this.Time.getVirtualTimeF();
 		local roster = this.World.getRoster(this.getID());
 		local allbros = roster.getAll();
@@ -33,7 +33,7 @@
 			i = ++i;
 		}
 
-		local iterations = this.Math.max(1, daysPassed / 2);
+		local iterations = ::Math.max(1, daysPassed / 2);
 		local activeLocations = 0;
 
 		foreach( loc in this.m.AttachedLocations )
@@ -70,9 +70,9 @@
 		{
 			for( local i = 0; i < iterations; i = i )
 			{
-				for( local maxRecruits = this.Math.rand(this.Math.max(0, rosterMax / 2 - 1), rosterMax - 1); current.len() > maxRecruits;  )
+				for( local maxRecruits = ::Math.rand(::Math.max(0, rosterMax / 2 - 1), rosterMax - 1); current.len() > maxRecruits;  )
 				{
-					local n = this.Math.rand(0, current.len() - 1);
+					local n = ::Math.rand(0, current.len() - 1);
 					roster.remove(current[n]);
 					current.remove(n);
 				}
@@ -93,7 +93,7 @@
 			current = [];
 		}
 
-		local maxRecruits = this.Math.rand(rosterMin, rosterMax);
+		local maxRecruits = ::Math.rand(rosterMin, rosterMax);
 		local draftList;
 		draftList = this.getDraftList();
 

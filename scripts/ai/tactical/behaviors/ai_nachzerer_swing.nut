@@ -93,7 +93,7 @@ this.ai_nachzerer_swing <- this.inherit("scripts/ai/tactical/behavior", {
 			if (ourTile.hasNextTile(dir_left))
 			{
 				local tile = ourTile.getNextTile(dir_left);
-				if (this.Math.abs(tile.Level - ourTile.Level) <= 1 && tile.IsOccupiedByActor)
+				if (::Math.abs(tile.Level - ourTile.Level) <= 1 && tile.IsOccupiedByActor)
 				{
 					if (tile.getEntity().isAlliedWith(_entity))
 					{
@@ -110,7 +110,7 @@ this.ai_nachzerer_swing <- this.inherit("scripts/ai/tactical/behavior", {
 			if (ourTile.hasNextTile(dir_farleft))
 			{
 				local tile = ourTile.getNextTile(dir_farleft);
-				if (this.Math.abs(tile.Level - ourTile.Level) <= 1 && tile.IsOccupiedByActor)
+				if (::Math.abs(tile.Level - ourTile.Level) <= 1 && tile.IsOccupiedByActor)
 				{
 					if (tile.getEntity().isAlliedWith(_entity))
 					{
@@ -133,7 +133,7 @@ this.ai_nachzerer_swing <- this.inherit("scripts/ai/tactical/behavior", {
 			
 		}
 
-		local score = this.Math.maxf(0.0, bestCombinedValue / 2.0);
+		local score = ::Math.maxf(0.0, bestCombinedValue / 2.0);
 		return {
 			Target = bestTarget,
 			Score = score

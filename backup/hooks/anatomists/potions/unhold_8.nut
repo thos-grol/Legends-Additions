@@ -29,9 +29,9 @@
         //3 Resilient - Increases the upper limit of gene change for those who know how to use it
         ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.HoldOut, 2);
 
-        this.Sound.play("sounds/enemies/unhold_death_0" + this.Math.rand(1, 6) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/unhold_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/unhold_hurt_0" + this.Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/unhold_death_0" + ::Math.rand(1, 6) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/unhold_flee_0" + ::Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/unhold_hurt_0" + ::Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
 
         return this.anatomist_potion_item.onUse(_actor, _item);
     }

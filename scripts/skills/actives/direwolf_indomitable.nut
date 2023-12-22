@@ -68,7 +68,7 @@ this.direwolf_indomitable <- this.inherit("scripts/skills/skill", {
 
 	function onTurnStart()
 	{
-		this.m.Cooldown = this.Math.max(0, this.m.Cooldown - 1);
+		this.m.Cooldown = ::Math.max(0, this.m.Cooldown - 1);
 	}
 
 	function isUsable()

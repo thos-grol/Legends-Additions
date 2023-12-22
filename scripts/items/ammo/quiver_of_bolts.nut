@@ -7,9 +7,9 @@ this.quiver_of_bolts <- this.inherit("scripts/items/ammo/ammo", {
 		this.m.Description = "A quiver of bolts, required to use crossbows. Is automatically refilled after each battle if you have enough ammunition.";
 		this.m.Icon = "ammo/quiver_02.png";
 		this.m.IconEmpty = "ammo/quiver_02_empty.png";
-		this.m.SlotType = this.Const.ItemSlot.Ammo;
-		this.m.ItemType = this.Const.Items.ItemType.Ammo;
-		this.m.AmmoType = this.Const.Items.AmmoType.Bolts;
+		this.m.SlotType = ::Const.ItemSlot.Ammo;
+		this.m.ItemType = ::Const.Items.ItemType.Ammo;
+		this.m.AmmoType = ::Const.Items.AmmoType.Bolts;
 		this.m.ShowOnCharacter = true;
 		this.m.ShowQuiver = true;
 		this.m.Sprite = "bust_quiver_01";
@@ -64,7 +64,7 @@ this.quiver_of_bolts <- this.inherit("scripts/items/ammo/ammo", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/ammo.png",
-				text = "Contains [color=" + this.Const.UI.Color.PositiveValue + "]" + this.m.Ammo + "[/color] bolts"
+				text = "Contains [color=" + ::Const.UI.Color.PositiveValue + "]" + this.m.Ammo + "[/color] bolts"
 			});
 		}
 		else
@@ -73,7 +73,7 @@ this.quiver_of_bolts <- this.inherit("scripts/items/ammo/ammo", {
 				id = 6,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Is empty and useless[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Is empty and useless[/color]"
 			});
 		}
 

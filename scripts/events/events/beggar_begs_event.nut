@@ -136,12 +136,12 @@ this.beggar_begs_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Beggar = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Beggar = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = candidates.len() * 5;
 
 		do
 		{
-			local bro = brothers[this.Math.rand(0, brothers.len() - 1)];
+			local bro = brothers[::Math.rand(0, brothers.len() - 1)];
 
 			if (bro.getID() != this.m.Beggar.getID())
 			{

@@ -77,7 +77,7 @@
 				"full_leather_cap"
 			]
 		]));
-		local rng = this.Math.rand(0, ::Const.Injury.Permanent.len() - 1);
+		local rng = ::Math.rand(0, ::Const.Injury.Permanent.len() - 1);
 		this.m.Container.add(::new("scripts/skills/" + ::Const.Injury.Permanent[rng].Script));
 	}
 

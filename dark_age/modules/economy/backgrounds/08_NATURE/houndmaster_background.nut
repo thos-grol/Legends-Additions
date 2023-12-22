@@ -20,7 +20,7 @@
 		local items = this.getContainer().getActor().getItems();
 		local r;
 
-		if (this.Math.rand(1, 100) >= 50)
+		if (::Math.rand(1, 100) >= 50)
 		{
 			items.equip(::new("scripts/items/tools/throwing_net"));
 		}

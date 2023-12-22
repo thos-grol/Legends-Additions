@@ -88,7 +88,7 @@ this.footwork <- this.inherit("scripts/skills/skill", {
 				{
 					local nextTile = myTile.getNextTile(i);
 
-					if (!nextTile.IsOccupiedByActor || this.Math.abs(nextTile.Level - myTile.Level) > 1)
+					if (!nextTile.IsOccupiedByActor || ::Math.abs(nextTile.Level - myTile.Level) > 1)
 					{
 					}
 					else

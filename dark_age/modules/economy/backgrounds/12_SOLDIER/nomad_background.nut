@@ -28,7 +28,7 @@
 	{
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(2, 4);
+		r = ::Math.rand(2, 4);
 
 		if (r == 2)
 		{

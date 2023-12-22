@@ -7,13 +7,13 @@ this.spider_eggs <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.IsActingEachTurn = false;
 		this.m.IsNonCombatant = true;
 		this.m.IsShakingOnHit = false;
-		this.m.Type = this.Const.EntityType.SpiderEggs;
-		this.m.BloodType = this.Const.BloodType.None;
-		this.m.MoraleState = this.Const.MoraleState.Ignore;
-		this.m.XP = this.Const.Tactical.Actor.SpiderEggs.XP;
+		this.m.Type = ::Const.EntityType.SpiderEggs;
+		this.m.BloodType = ::Const.BloodType.None;
+		this.m.MoraleState = ::Const.MoraleState.Ignore;
+		this.m.XP = ::Const.Tactical.Actor.SpiderEggs.XP;
 		this.m.BloodSplatterOffset = this.createVec(0, 0);
 		this.actor.create();
-		this.m.Sound[this.Const.Sound.ActorEvent.Death] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Death] = [
 			"sounds/enemies/dlc2/giant_spider_egg_spawn_01.wav",
 			"sounds/enemies/dlc2/giant_spider_egg_spawn_02.wav",
 			"sounds/enemies/dlc2/giant_spider_egg_spawn_03.wav",
@@ -30,11 +30,11 @@ this.spider_eggs <- this.inherit("scripts/entity/tactical/actor", {
 			this.updateAchievement("ScrambledEggs", 1, 1);
 		}
 
-		local flip = this.Math.rand(0, 100) < 50;
+		local flip = ::Math.rand(0, 100) < 50;
 
 		if (_tile != null)
 		{
-			_tile.spawnDetail("nest_01_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+			_tile.spawnDetail("nest_01_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 			this.spawnTerrainDropdownEffect(_tile);
 		}
 
@@ -43,7 +43,7 @@ this.spider_eggs <- this.inherit("scripts/entity/tactical/actor", {
 
 	function onDamageReceived( _attacker, _skill, _hitInfo )
 	{
-		_hitInfo.BodyPart = this.Const.BodyPart.Body;
+		_hitInfo.BodyPart = ::Const.BodyPart.Body;
 		return this.actor.onDamageReceived(_attacker, _skill, _hitInfo);
 	}
 
@@ -51,7 +51,7 @@ this.spider_eggs <- this.inherit("scripts/entity/tactical/actor", {
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.SpiderEggs);
+		b.setValues(::Const.Tactical.Actor.SpiderEggs);
 		b.IsImmuneToKnockBackAndGrab = true;
 		b.IsImmuneToStun = true;
 		b.IsImmuneToRoot = true;
@@ -65,9 +65,9 @@ this.spider_eggs <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
-		local flip = this.Math.rand(0, 1) == 1;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
+		local flip = ::Math.rand(0, 1) == 1;
 		local body = this.addSprite("body");
 		body.setBrush("nest_01");
 		body.setHorizontalFlipping(flip);
@@ -84,7 +84,7 @@ this.spider_eggs <- this.inherit("scripts/entity/tactical/actor", {
 
 	function registerSpawnEvent()
 	{
-		this.Time.scheduleEvent(this.TimeUnit.Rounds, this.Math.rand(1, 2), this.onSpawn.bindenv(this), this.getTile());
+		this.Time.scheduleEvent(this.TimeUnit.Rounds, ::Math.rand(1, 2), this.onSpawn.bindenv(this), this.getTile());
 	}
 
 	function onSpawn( _tile )
@@ -94,7 +94,7 @@ this.spider_eggs <- this.inherit("scripts/entity/tactical/actor", {
 			return;
 		}
 
-		if (!_tile.IsOccupiedByActor || _tile.getEntity().getType() != this.Const.EntityType.SpiderEggs)
+		if (!_tile.IsOccupiedByActor || _tile.getEntity().getType() != ::Const.EntityType.SpiderEggs)
 		{
 			return;
 		}
@@ -115,7 +115,7 @@ this.spider_eggs <- this.inherit("scripts/entity/tactical/actor", {
 			{
 				local nextTile = _tile.getNextTile(i);
 
-				if (!nextTile.IsEmpty || this.Math.abs(nextTile.Level - _tile.Level) > 1)
+				if (!nextTile.IsEmpty || ::Math.abs(nextTile.Level - _tile.Level) > 1)
 				{
 				}
 				else
@@ -134,7 +134,7 @@ this.spider_eggs <- this.inherit("scripts/entity/tactical/actor", {
 
 			foreach( a in allies )
 			{
-				if (a.getType() == this.Const.EntityType.Hexe)
+				if (a.getType() == ::Const.EntityType.Hexe)
 				{
 					spawn.getSkills().add(this.new("scripts/skills/effects/fake_charmed_effect"));
 					break;

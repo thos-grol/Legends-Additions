@@ -56,24 +56,24 @@ this.send_refugees_action <- this.inherit("scripts/factions/faction_action", {
 
 	function onExecute( _faction )
 	{
-		local party = _faction.spawnEntity(this.m.Start.getTile(), "Refugees", false, this.Const.World.Spawn.Peasants, this.Math.rand(30, 60));
+		local party = _faction.spawnEntity(this.m.Start.getTile(), "Refugees", false, ::Const.World.Spawn.Peasants, ::Math.rand(30, 60));
 		party.getSprite("banner").Visible = false;
-		party.getSprite("body").setBrush("figure_civilian_0" + this.Math.rand(1, 2));
+		party.getSprite("body").setBrush("figure_civilian_0" + ::Math.rand(1, 2));
 		party.setDescription("Refugees fleeing the horrors of war - beaten down, tired and desperate.");
-		party.setFootprintType(this.Const.World.FootprintsType.Refugees);
+		party.setFootprintType(::Const.World.FootprintsType.Refugees);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
+		party.getLoot().Money = ::Math.rand(0, 50);
 		party.setOrigin(this.World.State.getCurrentTown());
 
 		if (::Legends.Mod.ModSettings.getSetting("WorldEconomy").getValue())
 		{
-			local resources = this.Math.max(1, this.Math.round(0.01 * this.m.Start.getResources()));
+			local resources = ::Math.max(1, ::Math.round(0.01 * this.m.Start.getResources()));
 			this.m.Start.setResources(this.m.Start.getResources() - resources);
 			party.setResources(resources);
 		}
 
 		local c = party.getController();
-		c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 		local move = this.new("scripts/ai/world/orders/move_order");
 		move.setDestination(this.m.Dest.getTile());
 		move.setRoadsOnly(true);

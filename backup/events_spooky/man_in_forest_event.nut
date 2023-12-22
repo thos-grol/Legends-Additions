@@ -16,7 +16,7 @@ this.man_in_forest_event <- this.inherit("scripts/events/event", {
 					Text = "Follow him, quick!",
 					function getResult( _event )
 					{
-						local r = this.Math.rand(1, 100);
+						local r = ::Math.rand(1, 100);
 
 						if (r <= 45)
 						{
@@ -63,7 +63,7 @@ this.man_in_forest_event <- this.inherit("scripts/events/event", {
 						properties.Music = ::Const.Music.BanditTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.BanditDefenders, this.Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.BanditDefenders, ::Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -91,7 +91,7 @@ this.man_in_forest_event <- this.inherit("scripts/events/event", {
 						properties.Music = ::Const.Music.BeastsTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Direwolves, this.Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Direwolves, ::Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}

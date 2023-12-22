@@ -95,7 +95,7 @@ this.cursed_accessory <- this.inherit("scripts/items/accessory/accessory", {
 			text = this.getValueString()
 		});
 
-		if (this.m.SlotType == this.Const.ItemSlot.Accessory)
+		if (this.m.SlotType == ::Const.ItemSlot.Accessory)
 		{
 			result.push({
 				id = 64,

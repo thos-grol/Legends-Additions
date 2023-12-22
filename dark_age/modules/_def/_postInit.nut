@@ -32,7 +32,7 @@
     o.onInit = function()
 	{
         this.m.ScenarioManager <- this.new("scripts/scenarios/scenario_manager");
-		this.Const.ScenarioManager <- this.m.ScenarioManager;
+		::Const.ScenarioManager <- this.m.ScenarioManager;
 		this.m.MenuStack <- this.new("scripts/ui/global/menu_stack");
 		this.m.MenuStack.setEnviroment(this);
 		this.m.MainMenuScreen <- this.new("scripts/ui/screens/menu/main_menu_screen");

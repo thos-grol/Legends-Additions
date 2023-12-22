@@ -22,9 +22,9 @@
         _actor.getBackground().addPerk(::Const.Perks.PerkDefs.Student, 0, false);
         _actor.getSkills().add(::new("scripts/skills/perks/perk_student"));
 
-        this.Sound.play("sounds/enemies/dlc2/schrat_shield_damage_0" + this.Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/dlc2/schrat_hurt_shield_down_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/dlc2/schrat_death_0" + this.Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc2/schrat_shield_damage_0" + ::Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc2/schrat_hurt_shield_down_0" + ::Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc2/schrat_death_0" + ::Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
         return this.anatomist_potion_item.onUse(_actor, _item);
     }
 

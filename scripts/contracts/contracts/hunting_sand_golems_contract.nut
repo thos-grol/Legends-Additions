@@ -22,7 +22,7 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 	{
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -50,7 +50,7 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 10 && this.Contract.getDifficultyMult() >= 1.15)
 				{
@@ -60,9 +60,9 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 				this.Flags.set("StartTime", this.Time.getVirtualTimeF());
 				local disallowedTerrain = [];
 
-				for( local i = 0; i < this.Const.World.TerrainType.COUNT; i = i )
+				for( local i = 0; i < ::Const.World.TerrainType.COUNT; i = i )
 				{
-					if (i == this.Const.World.TerrainType.Desert)
+					if (i == ::Const.World.TerrainType.Desert)
 					{
 					}
 					else
@@ -77,9 +77,9 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 				local mapSize = this.World.getMapSize();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 8, 12, disallowedTerrain);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Ifrits", false, this.Const.World.Spawn.SandGolems, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Ifrits", false, ::Const.World.Spawn.SandGolems, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.setDescription("Creatures of living stone shaped by the blistering heat and fire of the burning sun of the south.");
-				party.setFootprintType(this.Const.World.FootprintsType.SandGolems);
+				party.setFootprintType(::Const.World.FootprintsType.SandGolems);
 				party.setAttackableByAI(false);
 				party.setFootprintSizeOverride(0.75);
 
@@ -89,7 +89,7 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 
 					if (nearTile != null)
 					{
-						this.Const.World.Common.addFootprintsFromTo(nearTile, party.getTile(), this.Const.BeastFootprints, this.Const.World.FootprintsType.SandGolems, 0.75);
+						::Const.World.Common.addFootprintsFromTo(nearTile, party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.SandGolems, 0.75);
 					}
 
 					i = ++i;
@@ -98,13 +98,13 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 				this.Contract.m.Target = this.WeakTableRef(party);
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				local c = party.getController();
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 				local roam = this.new("scripts/ai/world/orders/roam_order");
 				roam.setPivot(this.Contract.m.Home);
 				roam.setMinRange(8);
 				roam.setMaxRange(12);
 				roam.setNoTerrainAvailable();
-				roam.setTerrain(this.Const.World.TerrainType.Desert, true);
+				roam.setTerrain(::Const.World.TerrainType.Desert, true);
 				c.addOrder(roam);
 				this.Contract.m.Home.setLastSpawnTimeToNow();
 				this.Contract.setScreen("Overview");
@@ -131,11 +131,11 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 					this.World.Contracts.showActiveContract();
 					this.Contract.setState("Return");
 				}
-				else if (!this.Flags.get("IsBanterShown") && this.Contract.m.Target.isHiddenToPlayer() && this.Math.rand(1, 1000) <= 1 && this.Flags.get("StartTime") + 10.0 <= this.Time.getVirtualTimeF())
+				else if (!this.Flags.get("IsBanterShown") && this.Contract.m.Target.isHiddenToPlayer() && ::Math.rand(1, 1000) <= 1 && this.Flags.get("StartTime") + 10.0 <= this.Time.getVirtualTimeF())
 				{
 					local tileType = this.World.State.getPlayer().getTile().Type;
 
-					if (tileType == this.Const.World.TerrainType.Desert)
+					if (tileType == ::Const.World.TerrainType.Desert)
 					{
 						this.Flags.set("IsBanterShown", true);
 						this.Contract.setScreen("Banter");
@@ -157,8 +157,8 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 					else
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-						properties.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						properties.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Circle;
+						properties.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						properties.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
 						this.World.Contracts.startScriptedCombat(properties, false, true, true);
 					}
 				}
@@ -199,8 +199,8 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -316,9 +316,9 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Rid the city of Ifrits");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Rid the city of Ifrits");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -330,7 +330,7 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -342,7 +342,7 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 	{
 		_vars.push([
 			"direction",
-			this.m.Target == null || this.m.Target.isNull() ? "" : this.Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Target.getTile())]
+			this.m.Target == null || this.m.Target.isNull() ? "" : ::Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Target.getTile())]
 		]);
 	}
 

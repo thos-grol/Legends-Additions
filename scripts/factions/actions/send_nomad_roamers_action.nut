@@ -73,16 +73,16 @@ this.send_nomad_roamers_action <- this.inherit("scripts/factions/faction_action"
 
 		local settlement = this.pickWeightedRandom(settlements);
 		settlement.setLastSpawnTimeToNow();
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Nomads", false, this.Const.World.Spawn.NomadRoamers, this.Math.min(settlement.getResources(), this.Math.rand(60, 110)));
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Nomads", false, ::Const.World.Spawn.NomadRoamers, ::Math.min(settlement.getResources(), ::Math.rand(60, 110)));
 		party.getSprite("banner").setBrush(settlement.getBanner());
 		party.setDescription("A band of nomads scouting the area.");
-		party.setFootprintType(this.Const.World.FootprintsType.Nomads);
+		party.setFootprintType(::Const.World.FootprintsType.Nomads);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
-		party.getLoot().ArmorParts = this.Math.rand(0, 5);
-		party.getLoot().Medicine = this.Math.rand(0, 3);
-		party.getLoot().Ammo = this.Math.rand(10, 30);
-		local numFood = this.Math.rand(1, 2);
+		party.getLoot().Money = ::Math.rand(0, 50);
+		party.getLoot().ArmorParts = ::Math.rand(0, 5);
+		party.getLoot().Medicine = ::Math.rand(0, 3);
+		party.getLoot().Ammo = ::Math.rand(10, 30);
+		local numFood = ::Math.rand(1, 2);
 
 		for( local i = 0; i != numFood; i = ++i )
 		{
@@ -92,8 +92,8 @@ this.send_nomad_roamers_action <- this.inherit("scripts/factions/faction_action"
 		local c = party.getController();
 		local roam = this.new("scripts/ai/world/orders/roam_order");
 		roam.setAllTerrainAvailable();
-		roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-		roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+		roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+		roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 		roam.setPivot(settlement);
 		roam.setAvoidHeat(true);
 		roam.setTime(this.World.getTime().SecondsPerDay * 2);

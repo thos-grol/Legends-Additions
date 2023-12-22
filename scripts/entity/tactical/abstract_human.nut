@@ -20,7 +20,7 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 
 	function pickOutfit()
 	{
-		foreach( item in this.Const.World.Common.pickOutfit(::B.Info[this.m.Type].Outfit) )
+		foreach( item in ::Const.World.Common.pickOutfit(::B.Info[this.m.Type].Outfit) )
 		{
 			this.m.Items.equip(item);
 		}
@@ -29,18 +29,18 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 	function pickNamed()
 	{
 		//decide what item will be named
-		local r = this.Math.rand(1, 4);
+		local r = ::Math.rand(1, 4);
 		if (r == 1) //helmet
 		{
-			local named = this.Const.Items.NamedHelmets;
-			local weightName = this.Const.World.Common.convNameToList(named);
-			this.m.Items.equip(this.Const.World.Common.pickHelmet(weightName));
+			local named = ::Const.Items.NamedHelmets;
+			local weightName = ::Const.World.Common.convNameToList(named);
+			this.m.Items.equip(::Const.World.Common.pickHelmet(weightName));
 		}
 		else if (r == 2) //armor
 		{
-			local named = this.Const.Items.NamedArmors;
-			local weightName = this.Const.World.Common.convNameToList(named);
-			this.m.Items.equip(this.Const.World.Common.pickArmor(weightName));
+			local named = ::Const.Items.NamedArmors;
+			local weightName = ::Const.World.Common.convNameToList(named);
+			this.m.Items.equip(::Const.World.Common.pickArmor(weightName));
 		}
 		else this.m.IsMinibossWeapon <- true;
 	}

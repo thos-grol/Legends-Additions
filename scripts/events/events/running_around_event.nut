@@ -27,7 +27,7 @@ this.running_around_event <- this.inherit("scripts/events/event", {
 			{
 				local bro = _event.m.Dude;
 				this.Characters.push(bro.getImagePath());
-				local stamina = this.Math.rand(1, 1);
+				local stamina = ::Math.rand(1, 1);
 				bro.getBaseProperties().Stamina += stamina;
 				bro.getSkills().update();
 				this.List.push({
@@ -53,7 +53,7 @@ this.running_around_event <- this.inherit("scripts/events/event", {
 		}
 
 		local brothers = this.World.getPlayerRoster().getAll();
-		this.m.Dude = brothers[this.Math.rand(0, brothers.len() - 1)];
+		this.m.Dude = brothers[::Math.rand(0, brothers.len() - 1)];
 		this.m.Score = 5;
 	}
 

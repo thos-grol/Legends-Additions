@@ -110,19 +110,19 @@
         local hasMastery = this.getContainer().getActor().getFlags().has("vampire_8");
         local lifesteal_percent = hasMastery ? 0.50 : 0.25;
 
-        local hitpointsHealed = this.Math.round(_damageInflictedHitpoints * lifesteal_percent);
+        local hitpointsHealed = ::Math.round(_damageInflictedHitpoints * lifesteal_percent);
 
         if (!actor.isHiddenToPlayer())
         {
             if (this.m.SoundOnUse.len() != 0)
             {
-                this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect, actor.getPos());
+                this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect, actor.getPos());
             }
 
-            this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " heals for " + this.Math.min(actor.getHitpointsMax() - actor.getHitpoints(), hitpointsHealed) + " points");
+            this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " heals for " + ::Math.min(actor.getHitpointsMax() - actor.getHitpoints(), hitpointsHealed) + " points");
         }
 
-        actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + hitpointsHealed));
+        actor.setHitpoints(::Math.min(actor.getHitpointsMax(), actor.getHitpoints() + hitpointsHealed));
         actor.onUpdateInjuryLayer();
     }
 });
@@ -163,7 +163,7 @@
 
         if (this.World.Flags.get("PTR_SwordmasterScenario_OldAgeEvent_1"))
         {
-            return this.Math.min(30, this.Math.max(1, (this.World.getTime().Days - this.m.OldAgeStartDays) / 10));
+            return ::Math.min(30, ::Math.max(1, (this.World.getTime().Days - this.m.OldAgeStartDays) / 10));
         }
 
         return 0;

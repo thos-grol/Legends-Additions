@@ -35,7 +35,7 @@
 		this.getContainer().getActor().fillTalentValues(2, true);
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(0, 4);
+		r = ::Math.rand(0, 4);
 
 		if (r <= 2)
 		{
@@ -51,7 +51,7 @@
 		}
 
 		local shield;
-		r = this.Math.rand(0, 4);
+		r = ::Math.rand(0, 4);
 
 		if (r <= 2)
 		{

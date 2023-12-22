@@ -16,7 +16,7 @@ this.bandit_raider_low <- this.inherit("scripts/entity/tactical/enemies/bandit_r
 
 	function pickOutfit()
 	{
-		local item = this.Const.World.Common.pickArmor([
+		local item = ::Const.World.Common.pickArmor([
 			[
 				10,
 				"bandit_armor_light"
@@ -44,9 +44,9 @@ this.bandit_raider_low <- this.inherit("scripts/entity/tactical/enemies/bandit_r
 		]);
 		this.m.Items.equip(item);
 
-		if (this.Math.rand(1, 100) <= 75)
+		if (::Math.rand(1, 100) <= 75)
 		{
-			local item = this.Const.World.Common.pickHelmet([
+			local item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"nasal_helmet"

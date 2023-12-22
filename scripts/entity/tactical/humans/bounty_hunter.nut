@@ -18,7 +18,7 @@ this.bounty_hunter <- this.inherit("scripts/entity/tactical/humans/mercenary", {
 
 	function pickOutfit()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"ragged_surcoat"
@@ -45,7 +45,7 @@ this.bounty_hunter <- this.inherit("scripts/entity/tactical/humans/mercenary", {
 			]
 		]));
 
-		if (this.Math.rand(1, 100) <= 90)
+		if (::Math.rand(1, 100) <= 90)
 		{
 			local helm = [
 				[
@@ -89,7 +89,7 @@ this.bounty_hunter <- this.inherit("scripts/entity/tactical/humans/mercenary", {
 				1,
 				"theamson_barbute_helmet"
 			]);
-			local item = this.Const.World.Common.pickHelmet(helm);
+			local item = ::Const.World.Common.pickHelmet(helm);
 
 			if (item != null)
 			{

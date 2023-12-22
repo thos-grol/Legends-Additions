@@ -94,7 +94,7 @@ this.strike_down_skill <- this.inherit("scripts/skills/skill", {
 
 		if (success && target.isAlive())
 		{
-			if ((_user.getCurrentProperties().IsSpecializedInHammers || this.Math.rand(1, 100) <= this.m.StunChance) && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
+			if ((_user.getCurrentProperties().IsSpecializedInHammers || ::Math.rand(1, 100) <= this.m.StunChance) && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
 			{
 				local stun = this.new("scripts/skills/effects/stunned_effect");
 				target.getSkills().add(stun);

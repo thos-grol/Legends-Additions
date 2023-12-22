@@ -4,7 +4,7 @@
     o.onInit = function()
     {
         onInit();
-        local roll = this.Math.rand(1.0, 100.0);
+        local roll = ::Math.rand(1.0, 100.0);
         if (roll <= 15.0)
         {
             if (roll <= 5.0) this.add_potion("ghoul", true);

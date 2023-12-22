@@ -36,7 +36,7 @@ this.perk_battle_forged <- this.inherit("scripts/skills/skill", {
 	function getReductionPercentage()
 	{
 		local armor = this.getContainer().getActor().getArmor(::Const.BodyPart.Head) + this.getContainer().getActor().getArmor(::Const.BodyPart.Body);
-		return this.Math.floor(armor * this.m.ArmorPercentageAsReduction * 0.01);
+		return ::Math.floor(armor * this.m.ArmorPercentageAsReduction * 0.01);
 	}
 
 	function getTooltip()

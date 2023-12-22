@@ -146,7 +146,7 @@
 
 		foreach( i in ::Const.Items.NamedMeleeWeapons )
 		{
-			if (this.Math.rand(1, 100) <= 25)
+			if (::Math.rand(1, 100) <= 25)
 			{
 				list.push({
 					R = 60,
@@ -158,7 +158,7 @@
 
 		foreach( i in ::Const.Items.NamedRangedWeapons )
 		{
-			if (this.Math.rand(1, 100) <= 25)
+			if (::Math.rand(1, 100) <= 25)
 			{
 				list.push({
 					R = 60,

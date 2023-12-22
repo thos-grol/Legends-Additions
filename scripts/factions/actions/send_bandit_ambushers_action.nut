@@ -101,7 +101,7 @@ this.send_bandit_ambushers_action <- this.inherit("scripts/factions/faction_acti
 		settlement.setLastSpawnTimeToNow();
 		local mult = this.World.FactionManager.isCivilWar() ? 1.1 : 1.0;
 
-		if (this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
+		if (this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Legendary)
 		{
 			if (this.World.FactionManager.isCivilWar())
 			{
@@ -119,15 +119,15 @@ this.send_bandit_ambushers_action <- this.inherit("scripts/factions/faction_acti
 			mult = mult * (distanceToNextSettlement / 14);
 		}
 
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Brigands", false, this.Const.World.Spawn.BanditRaiders, this.Math.rand(125, 200) * 1.0 * mult);
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Brigands", false, ::Const.World.Spawn.BanditRaiders, ::Math.rand(125, 200) * 1.0 * mult);
 		party.getSprite("banner").setBrush(settlement.getBanner());
 		party.setDescription("A rough and tough band of brigands preying on the weak.");
-		party.setFootprintType(this.Const.World.FootprintsType.Brigands);
+		party.setFootprintType(::Const.World.FootprintsType.Brigands);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
-		party.getLoot().ArmorParts = this.Math.rand(0, 10);
-		party.getLoot().Medicine = this.Math.rand(0, 2);
-		party.getLoot().Ammo = this.Math.rand(0, 10);
+		party.getLoot().Money = ::Math.rand(0, 50);
+		party.getLoot().ArmorParts = ::Math.rand(0, 10);
+		party.getLoot().Medicine = ::Math.rand(0, 2);
+		party.getLoot().Ammo = ::Math.rand(0, 10);
 
 		local c = party.getController();
 		local ambush = this.new("scripts/ai/world/orders/ambush_order");

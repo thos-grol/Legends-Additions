@@ -97,7 +97,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 				local item;
 				local banner = _event.m.NobleHouse.getBanner();
 				local r;
-				r = this.Math.rand(1, 4);
+				r = ::Math.rand(1, 4);
 
 				if (r == 1)
 				{
@@ -122,7 +122,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
-				r = this.Math.rand(1, 4);
+				r = ::Math.rand(1, 4);
 
 				if (r == 1)
 				{
@@ -178,7 +178,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
 				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationFavor, "Saved some of their men");
 				_event.m.Town.getFactionOfType(::Const.FactionType.Settlement).addPlayerRelation(::Const.World.Assets.RelationOffense, "Killed some of their men");
-				local money = this.Math.rand(50, 80);
+				local money = ::Math.rand(50, 80);
 				this.World.Assets.addMoney(money);
 				this.List.push({
 					id = 10,
@@ -186,7 +186,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 				local item;
-				local r = this.Math.rand(1, 5);
+				local r = ::Math.rand(1, 5);
 
 				if (r == 1)
 				{
@@ -275,7 +275,7 @@ this.civilwar_ambush_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.NobleHouse = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.NobleHouse = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Town = bestTown;
 		this.m.Score = 10;
 	}

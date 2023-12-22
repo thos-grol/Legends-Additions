@@ -28,9 +28,9 @@ this.cripple_pep_talk_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Cripple.getImagePath());
 				this.Characters.push(_event.m.Veteran.getImagePath());
-				local resolve = this.Math.rand(1, 3);
-				local fatigue = this.Math.rand(1, 3);
-				local initiative = this.Math.rand(1, 3);
+				local resolve = ::Math.rand(1, 3);
+				local fatigue = ::Math.rand(1, 3);
+				local initiative = ::Math.rand(1, 3);
 				_event.m.Cripple.getBaseProperties().Bravery += resolve;
 				_event.m.Cripple.getBaseProperties().Stamina += fatigue;
 				_event.m.Cripple.getBaseProperties().Initiative += initiative;
@@ -93,8 +93,8 @@ this.cripple_pep_talk_event <- this.inherit("scripts/events/event", {
 
 		if (veteran_candidates.len() == 0) return;
 
-		this.m.Cripple = cripple_candidates[this.Math.rand(0, cripple_candidates.len() - 1)];
-		this.m.Veteran = veteran_candidates[this.Math.rand(0, veteran_candidates.len() - 1)];
+		this.m.Cripple = cripple_candidates[::Math.rand(0, cripple_candidates.len() - 1)];
+		this.m.Veteran = veteran_candidates[::Math.rand(0, veteran_candidates.len() - 1)];
 		this.m.Score = cripple_candidates.len() * 5;
 	}
 

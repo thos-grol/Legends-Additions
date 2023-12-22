@@ -17,7 +17,7 @@ this.civilwar_hungry_hamlet_event <- this.inherit("scripts/events/event", {
 					function getResult( _event )
 					{
 						this.World.Assets.addMoralReputation(3);
-						local r = this.Math.rand(1, 3);
+						local r = ::Math.rand(1, 3);
 
 						if (r == 1)
 						{
@@ -117,7 +117,7 @@ this.civilwar_hungry_hamlet_event <- this.inherit("scripts/events/event", {
 					Text = "This is our food and we decide what we do with it!",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "E";
 						}
@@ -212,7 +212,7 @@ this.civilwar_hungry_hamlet_event <- this.inherit("scripts/events/event", {
 					text = "The company gained renown"
 				});
 				local brothers = this.World.getPlayerRoster().getAll();
-				local bro = brothers[this.Math.rand(0, brothers.len() - 1)];
+				local bro = brothers[::Math.rand(0, brothers.len() - 1)];
 				local injury = bro.addInjury(::Const.Injury.Accident1);
 				this.List.push({
 					id = 10,
@@ -263,7 +263,7 @@ this.civilwar_hungry_hamlet_event <- this.inherit("scripts/events/event", {
 
 		for( local i = 0; i < 2; i = i )
 		{
-			local idx = this.Math.rand(0, food.len() - 1);
+			local idx = ::Math.rand(0, food.len() - 1);
 			local item = food[idx];
 			_list.push({
 				id = 10,

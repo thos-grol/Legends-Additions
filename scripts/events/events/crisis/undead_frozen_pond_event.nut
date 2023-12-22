@@ -19,7 +19,7 @@ this.undead_frozen_pond_event <- this.inherit("scripts/events/event", {
 					Text = "Any volunteers?",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "Good";
 						}
@@ -232,10 +232,10 @@ this.undead_frozen_pond_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_lightweight.len() > 0)
 		{
-			this.m.Lightweight = candidates_lightweight[this.Math.rand(0, candidates_lightweight.len() - 1)];
+			this.m.Lightweight = candidates_lightweight[::Math.rand(0, candidates_lightweight.len() - 1)];
 		}
 
-		this.m.Other = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Other = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = 20;
 	}
 

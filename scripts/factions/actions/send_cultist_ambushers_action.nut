@@ -96,7 +96,7 @@ this.send_cultist_ambushers_action <- this.inherit("scripts/factions/faction_act
 		settlement.setLastSpawnTimeToNow();
 		local mult = this.World.FactionManager.isCivilWar() ? 1.1 : 1.0;
 
-		if (this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
+		if (this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Legendary)
 		{
 			if (this.World.FactionManager.isCivilWar())
 			{
@@ -114,14 +114,14 @@ this.send_cultist_ambushers_action <- this.inherit("scripts/factions/faction_act
 			mult = mult * (distanceToNextSettlement / 14);
 		}
 
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Cultists", false, this.Const.World.Spawn.CultistRaiders, this.Math.rand(75, 120) * mult);
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Cultists", false, ::Const.World.Spawn.CultistRaiders, ::Math.rand(75, 120) * mult);
 		party.getSprite("banner").setBrush(settlement.getBanner());
 		party.setDescription("A flock of cultists preying on the everyone.");
-		party.setFootprintType(this.Const.World.FootprintsType.Brigands);
+		party.setFootprintType(::Const.World.FootprintsType.Brigands);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
-		party.getLoot().ArmorParts = this.Math.rand(0, 5);
-		party.getLoot().Medicine = this.Math.rand(0, 2);
+		party.getLoot().Money = ::Math.rand(0, 50);
+		party.getLoot().ArmorParts = ::Math.rand(0, 5);
+		party.getLoot().Medicine = ::Math.rand(0, 2);
 
 		local c = party.getController();
 		local ambush = this.new("scripts/ai/world/orders/ambush_order");

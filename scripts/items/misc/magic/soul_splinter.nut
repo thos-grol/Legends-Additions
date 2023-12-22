@@ -7,13 +7,13 @@ this.soul_splinter <- this.inherit("scripts/items/item", {
 		this.m.Name = "Soul Splinter";
 		this.m.Description = "Fragments of the soul, it looks like the stars are shimmering deep within these stones. An aura of winter is discernable";
 		this.m.Icon = "loot/southern_06.png";
-		this.m.SlotType = this.Const.ItemSlot.None;
-		this.m.ItemType = this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.Loot;
+		this.m.SlotType = ::Const.ItemSlot.None;
+		this.m.ItemType = ::Const.Items.ItemType.Misc | ::Const.Items.ItemType.Loot;
 		this.m.IsDroppedAsLoot = true;
 		this.m.Value = 100;
 
-		this.m.SlotType = this.Const.ItemSlot.Accessory;
-		this.m.ItemType = this.Const.Items.ItemType.Accessory;
+		this.m.SlotType = ::Const.ItemSlot.Accessory;
+		this.m.ItemType = ::Const.Items.ItemType.Accessory;
 		this.m.IsAllowedInBag = true;
 
 		this.m.Consumable <- true;
@@ -58,11 +58,11 @@ this.soul_splinter <- this.inherit("scripts/items/item", {
 
 		if (("State" in this.World) && this.World.State != null && this.World.State.getCurrentTown() != null)
 		{
-			return this.Math.max(this.getSellPrice(), this.Math.ceil(this.getValue() * 1.5 * this.World.State.getCurrentTown().getBuyPriceMult() * this.World.State.getCurrentTown().getBeastPartsPriceMult()));
+			return ::Math.max(this.getSellPrice(), ::Math.ceil(this.getValue() * 1.5 * this.World.State.getCurrentTown().getBuyPriceMult() * this.World.State.getCurrentTown().getBeastPartsPriceMult()));
 		}
 		else
 		{
-			return this.Math.ceil(this.getValue());
+			return ::Math.ceil(this.getValue());
 		}
 	}
 
@@ -75,17 +75,17 @@ this.soul_splinter <- this.inherit("scripts/items/item", {
 
 		if (("State" in this.World) && this.World.State != null && this.World.State.getCurrentTown() != null)
 		{
-			return this.Math.floor(this.getValue() * this.Const.World.Assets.BaseLootSellPrice * this.World.State.getCurrentTown().getSellPriceMult() * this.World.State.getCurrentTown().getBeastPartsPriceMult() * this.Const.Difficulty.SellPriceMult[this.World.Assets.getEconomicDifficulty()]);
+			return ::Math.floor(this.getValue() * ::Const.World.Assets.BaseLootSellPrice * this.World.State.getCurrentTown().getSellPriceMult() * this.World.State.getCurrentTown().getBeastPartsPriceMult() * ::Const.Difficulty.SellPriceMult[this.World.Assets.getEconomicDifficulty()]);
 		}
 		else
 		{
-			return this.Math.floor(this.getValue());
+			return ::Math.floor(this.getValue());
 		}
 	}
 
 	function playInventorySound( _eventType )
 	{
-		this.Sound.play("sounds/combat/armor_leather_impact_03.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/combat/armor_leather_impact_03.wav", ::Const.Sound.Volume.Inventory);
 	}
 
 });

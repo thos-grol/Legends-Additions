@@ -32,7 +32,7 @@ this.seductive_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/asset_money.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] barter skill"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5%[/color] barter skill"
 			}
 		];
 	}

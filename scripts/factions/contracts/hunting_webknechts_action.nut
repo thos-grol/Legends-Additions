@@ -11,8 +11,8 @@ this.hunting_webknechts_action <- this.inherit("scripts/factions/faction_action"
 
 	function onUpdate( _faction )
 	{
-		if (!_faction.isReadyForContract(this.Const.Contracts.ContractCategoryMap.hunting_webknechts_contract)) return;
-		if (this.Math.rand(1, 100) > 30) return;
+		if (!_faction.isReadyForContract(::Const.Contracts.ContractCategoryMap.hunting_webknechts_contract)) return;
+		if (::Math.rand(1, 100) > 30) return;
 
 		if (_faction.getSettlements()[0].isIsolated() || _faction.getSettlements()[0].getSize() > 2)
 		{

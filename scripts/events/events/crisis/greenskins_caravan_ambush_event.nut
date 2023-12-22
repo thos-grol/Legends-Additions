@@ -55,7 +55,7 @@ this.greenskins_caravan_ambush_event <- this.inherit("scripts/events/event", {
 						properties.CombatID = "Event";
 						properties.Music = ::Const.Music.GoblinsTracks;
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.GoblinRaiders, this.Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.GoblinRaiders, ::Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						_event.registerToShowAfterCombat("AftermathB", null);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
@@ -124,8 +124,8 @@ this.greenskins_caravan_ambush_event <- this.inherit("scripts/events/event", {
 						properties.Entities = [];
 						properties.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Edge;
 						properties.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Random;
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.GoblinRaiders, this.Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Peasants, this.Math.rand(40, 50) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.PlayerAnimals);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.GoblinRaiders, ::Math.rand(90, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Peasants, ::Math.rand(40, 50) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.PlayerAnimals);
 						_event.registerToShowAfterCombat("AftermathC", null);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
@@ -200,7 +200,7 @@ this.greenskins_caravan_ambush_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 25)
+					if (::Math.rand(1, 100) <= 25)
 					{
 						bro.worsenMood(1.0, "Disappointed that you avoided battle and let peasants die");
 

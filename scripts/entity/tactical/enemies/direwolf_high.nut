@@ -42,15 +42,15 @@ this.direwolf_high <- this.inherit("scripts/entity/tactical/enemies/direwolf", {
 	{
 		this.direwolf.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.FrenziedDirewolf);
+		b.setValues(::Const.Tactical.Actor.FrenziedDirewolf);
 		b.IsAffectedByNight = false;
 		b.IsImmuneToDisarm = true;
 		b.DamageTotalMult = 1.25;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		local head_frenzy = this.getSprite("head_frenzy");
 		head_frenzy.setBrush(this.getSprite("head").getBrush().Name + "_frenzy");
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_overwhelm"));
@@ -72,11 +72,11 @@ this.direwolf_high <- this.inherit("scripts/entity/tactical/enemies/direwolf", {
 			];
 			this.Sound.play(::MSU.Array.rand(s), 100.0, this.getPos());
 
-			if (this.Math.rand(1, 100) <= 33)
+			if (::Math.rand(1, 100) <= 33)
 			{
 				this.updateAchievement("FriendOrFoe", 1, 1);
 				this.m.HasTurned = true;
-				this.setFaction(this.Tactical.State.isScenarioMode() ? this.Const.Faction.Beasts : this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).getID());
+				this.setFaction(this.Tactical.State.isScenarioMode() ? ::Const.Faction.Beasts : this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
 				this.getSprite("socket").setBrush("bust_base_beasts");
 			}
 		}

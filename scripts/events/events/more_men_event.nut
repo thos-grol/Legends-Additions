@@ -22,7 +22,7 @@ this.more_men_event <- this.inherit("scripts/events/event", {
 						}
 						else
 						{
-							return this.Math.rand(1, 100) <= 50 ? "E" : "F";
+							return ::Math.rand(1, 100) <= 50 ? "E" : "F";
 						}
 
 						return "E";
@@ -94,9 +94,9 @@ this.more_men_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
-						bro.worsenMood(this.Math.rand(1, 3), "Lost confidence in your leadership");
+						bro.worsenMood(::Math.rand(1, 3), "Lost confidence in your leadership");
 
 						if (bro.getMoodState() < ::Const.MoodState.Neutral)
 						{
@@ -133,7 +133,7 @@ this.more_men_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					bro.worsenMood(this.Math.rand(1, 6), "Was lied to and lost confidence in your leadership");
+					bro.worsenMood(::Math.rand(1, 6), "Was lied to and lost confidence in your leadership");
 					this.List.push({
 						id = 10,
 						icon = ::Const.MoodStateIcon[bro.getMoodState()],
@@ -194,7 +194,7 @@ this.more_men_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 20)
+					if (::Math.rand(1, 100) <= 20)
 					{
 						bro.worsenMood(1, "Lost confidence in your leadership");
 
@@ -272,7 +272,7 @@ this.more_men_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 20)
+					if (::Math.rand(1, 100) <= 20)
 					{
 						bro.improveMood(1.0, "Gained confidence in your leadership");
 

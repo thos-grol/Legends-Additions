@@ -20,8 +20,8 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 			"sounds/enemies/necromancer_02.wav",
 			"sounds/enemies/necromancer_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -94,7 +94,7 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
 	{
 		this.m.Used = true;
 		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
-			::Z.Log.display_basic(_user, null, this.m.Name, _user.getFaction() == this.Const.Faction.Player || _user.getFaction() == this.Const.Faction.PlayerAnimals);
+			::Z.Log.display_basic(_user, null, this.m.Name, _user.getFaction() == ::Const.Faction.Player || _user.getFaction() == ::Const.Faction.PlayerAnimals);
 
 		for( local i = 1; i <= 5; i++ )
 		{
@@ -168,7 +168,7 @@ this.spell_flesh_servant_bind <- this.inherit("scripts/skills/_magic_active", {
         }
 
 		this.Tactical.Entities.removeCorpse(tag.TargetTile);
-		tag.TargetTile.clear(this.Const.Tactical.DetailFlag.Corpse);
+		tag.TargetTile.clear(::Const.Tactical.DetailFlag.Corpse);
 		tag.TargetTile.Properties.remove("Corpse");
 		tag.TargetTile.Properties.remove("IsSpawningFlies");
 	}

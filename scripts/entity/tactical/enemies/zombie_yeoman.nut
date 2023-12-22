@@ -3,10 +3,10 @@ this.zombie_yeoman <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 	function create()
 	{
 		this.zombie.create();
-		this.m.Type = this.Const.EntityType.ZombieYeoman;
-		this.m.BloodType = this.Const.BloodType.Dark;
-		this.m.MoraleState = this.Const.MoraleState.Ignore;
-		this.m.XP = this.Const.Tactical.Actor.ZombieYeoman.XP;
+		this.m.Type = ::Const.EntityType.ZombieYeoman;
+		this.m.BloodType = ::Const.BloodType.Dark;
+		this.m.MoraleState = ::Const.MoraleState.Ignore;
+		this.m.XP = ::Const.Tactical.Actor.ZombieYeoman.XP;
 		this.m.ResurrectionValue = 3.0;
 		this.m.ResurrectWithScript = "scripts/entity/tactical/enemies/zombie_yeoman";
 	}
@@ -15,7 +15,7 @@ this.zombie_yeoman <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 	{
 		this.zombie.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.ZombieYeoman);
+		b.setValues(::Const.Tactical.Actor.ZombieYeoman);
 		b.IsAffectedByNight = false;
 		b.IsAffectedByInjuries = false;
 		b.IsImmuneToBleeding = true;
@@ -60,18 +60,18 @@ this.zombie_yeoman <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 				"basic_mail_shirt"
 			]
 		];
-		local armor = this.Const.World.Common.pickArmor(aList);
+		local armor = ::Const.World.Common.pickArmor(aList);
 
-		if (this.Math.rand(1, 100) <= 66)
+		if (::Math.rand(1, 100) <= 66)
 		{
-			armor.setArmor(this.Math.round(armor.getArmorMax() / 2 - 1));
+			armor.setArmor(::Math.round(armor.getArmorMax() / 2 - 1));
 		}
 
 		this.m.Items.equip(armor);
 
-		if (this.Math.rand(1, 100) <= 75)
+		if (::Math.rand(1, 100) <= 75)
 		{
-			local item = this.Const.World.Common.pickHelmet([
+			local item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"aketon_cap"
@@ -104,9 +104,9 @@ this.zombie_yeoman <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 
 			if (item != null)
 			{
-				if (this.Math.rand(1, 100) <= 66)
+				if (::Math.rand(1, 100) <= 66)
 				{
-					item.setArmor(this.Math.round(item.getArmorMax() / 2 - 1));
+					item.setArmor(::Math.round(item.getArmorMax() / 2 - 1));
 				}
 
 				this.m.Items.equip(item);

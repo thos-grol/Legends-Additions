@@ -2,15 +2,15 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.OrcBerserker;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.OrcBerserker.XP;
+		this.m.Type = ::Const.EntityType.OrcBerserker;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.OrcBerserker.XP;
 		this.m.BloodSplatterOffset = this.createVec(0, 0);
 		this.m.DecapitateSplatterOffset = this.createVec(20, -20);
 		this.m.DecapitateBloodAmount = 1.25;
 		this.m.ConfidentMoraleBrush = "icon_confident_orcs";
 		this.abstract_actor.create();
-		this.m.Sound[this.Const.Sound.ActorEvent.Death] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Death] = [
 			"sounds/enemies/orc_death_01.wav",
 			"sounds/enemies/orc_death_02.wav",
 			"sounds/enemies/orc_death_03.wav",
@@ -20,12 +20,12 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 			"sounds/enemies/orc_death_07.wav",
 			"sounds/enemies/orc_death_08.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Flee] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Flee] = [
 			"sounds/enemies/orc_flee_01.wav",
 			"sounds/enemies/orc_flee_02.wav",
 			"sounds/enemies/orc_flee_03.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
+		this.m.Sound[::Const.Sound.ActorEvent.DamageReceived] = [
 			"sounds/enemies/orc_hurt_01.wav",
 			"sounds/enemies/orc_hurt_02.wav",
 			"sounds/enemies/orc_hurt_03.wav",
@@ -34,7 +34,7 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 			"sounds/enemies/orc_hurt_06.wav",
 			"sounds/enemies/orc_hurt_07.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Idle] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Idle] = [
 			"sounds/enemies/orc_idle_01.wav",
 			"sounds/enemies/orc_idle_02.wav",
 			"sounds/enemies/orc_idle_03.wav",
@@ -68,14 +68,14 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 			"sounds/enemies/orc_fatigue_02.wav",
 			"sounds/enemies/orc_fatigue_03.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Move] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Move] = [
 			"sounds/enemies/orc_fatigue_01.wav",
 			"sounds/enemies/orc_fatigue_02.wav",
 			"sounds/enemies/orc_fatigue_03.wav"
 		];
 		this.m.SoundPitch = 0.95;
-		this.m.SoundVolume[this.Const.Sound.ActorEvent.Idle] = 1.25;
-		this.m.SoundVolume[this.Const.Sound.ActorEvent.Move] = 0.75;
+		this.m.SoundVolume[::Const.Sound.ActorEvent.Idle] = 1.25;
+		this.m.SoundVolume[::Const.Sound.ActorEvent.Move] = 0.75;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/orc_berserker_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -97,12 +97,12 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 	{
 		this.abstract_actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.OrcBerserker);
+		b.setValues(::Const.Tactical.Actor.OrcBerserker);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.m.Items.getAppearance().Body = "bust_orc_02_body";
 		this.addSprite("socket").setBrush("bust_base_orcs");
 		local body = this.addSprite("body");
@@ -111,9 +111,9 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 		body.varyColor(0.08, 0.08, 0.08);
 		local tattoo_body = this.addSprite("tattoo_body");
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
-			tattoo_body.setBrush("bust_orc_02_body_paint_0" + this.Math.rand(1, 3));
+			tattoo_body.setBrush("bust_orc_02_body_paint_0" + ::Math.rand(1, 3));
 		}
 
 		local injury_body = this.addSprite("injury_body");
@@ -121,21 +121,21 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 		injury_body.setBrush("bust_orc_02_body_injured");
 		this.addSprite("armor");
 		local head = this.addSprite("head");
-		head.setBrush("bust_orc_02_head_0" + this.Math.rand(1, 3));
+		head.setBrush("bust_orc_02_head_0" + ::Math.rand(1, 3));
 		head.Saturation = body.Saturation;
 		head.Color = body.Color;
 		local tattoo_head = this.addSprite("tattoo_head");
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
-			tattoo_head.setBrush("bust_orc_02_head_paint_0" + this.Math.rand(1, 3));
+			tattoo_head.setBrush("bust_orc_02_head_paint_0" + ::Math.rand(1, 3));
 		}
 
 		local injury = this.addSprite("injury");
 		injury.Visible = false;
 		injury.setBrush("bust_orc_02_head_injured");
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			this.addSprite(a);
 		}
@@ -143,7 +143,7 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 		local v = 3;
 		local v2 = -5;
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			if (!this.hasSprite(a))
 			{
@@ -175,7 +175,7 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 
 	function pickOutfit()
 	{
-		local item = this.Const.World.Common.pickArmor([
+		local item = ::Const.World.Common.pickArmor([
 			[
 				1,
 				"greenskins/orc_berserker_light_armor"
@@ -190,7 +190,7 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 			]
 		]);
 		this.m.Items.equip(item);
-		local item = this.Const.World.Common.pickHelmet([
+		local item = ::Const.World.Common.pickHelmet([
 			[
 				2,
 				""
@@ -211,7 +211,7 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 
 	function playSound( _type, _volume, _pitch = 1.0 )
 	{
-		if (_type == this.Const.Sound.ActorEvent.Move && this.Math.rand(1, 100) <= 50)
+		if (_type == ::Const.Sound.ActorEvent.Move && ::Math.rand(1, 100) <= 50)
 		{
 			return;
 		}
@@ -226,7 +226,7 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 			this.updateAchievement("HowToBerserk", 1, 1);
 		}
 
-		local flip = this.Math.rand(1, 100) < 50;
+		local flip = ::Math.rand(1, 100) < 50;
 
 		if (_tile != null)
 		{
@@ -238,7 +238,7 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 			local sprite_head = this.getSprite("head");
 			local tattoo_head = this.getSprite("tattoo_head");
 			local tattoo_body = this.getSprite("tattoo_body");
-			decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+			decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 			decal.Color = sprite_body.Color;
 			decal.Saturation = sprite_body.Saturation;
 			decal.Scale = 0.9;
@@ -246,7 +246,7 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 
 			if (tattoo_body.HasBrush)
 			{
-				decal = _tile.spawnDetail(tattoo_body.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(tattoo_body.getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Color = tattoo_body.Color;
 				decal.Saturation = tattoo_body.Saturation;
 				decal.Scale = 0.9;
@@ -255,16 +255,16 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 
 			if (this.getItems().getAppearance().CorpseArmor != "")
 			{
-				decal = _tile.spawnDetail(appearance.CorpseArmor, this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(appearance.CorpseArmor, ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.9;
 				decal.setBrightness(0.9);
 			}
 
-			if (_fatalityType != this.Const.FatalityType.Decapitated)
+			if (_fatalityType != ::Const.FatalityType.Decapitated)
 			{
 				if (!appearance.HideCorpseHead)
 				{
-					decal = _tile.spawnDetail(sprite_head.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail(sprite_head.getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 					decal.Color = sprite_head.Color;
 					decal.Saturation = sprite_head.Saturation;
 					decal.Scale = 0.9;
@@ -272,7 +272,7 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 
 					if (tattoo_head.HasBrush)
 					{
-						decal = _tile.spawnDetail(tattoo_head.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+						decal = _tile.spawnDetail(tattoo_head.getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 						decal.Color = tattoo_head.Color;
 						decal.Saturation = tattoo_head.Saturation;
 						decal.Scale = 0.9;
@@ -282,12 +282,12 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 
 				if (appearance.HelmetCorpse != "")
 				{
-					decal = _tile.spawnDetail(appearance.HelmetCorpse, this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail(appearance.HelmetCorpse, ::Const.Tactical.DetailFlag.Corpse, flip);
 					decal.Scale = 0.9;
 					decal.setBrightness(0.9);
 				}
 			}
-			else if (_fatalityType == this.Const.FatalityType.Decapitated)
+			else if (_fatalityType == ::Const.FatalityType.Decapitated)
 			{
 				local layers = [];
 
@@ -338,59 +338,59 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 				}
 			}
 
-			if (_fatalityType == this.Const.FatalityType.Disemboweled)
+			if (_fatalityType == ::Const.FatalityType.Disemboweled)
 			{
 				if (appearance.CorpseArmor != "")
 				{
-					decal = _tile.spawnDetail(appearance.CorpseArmor + "_guts", this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail(appearance.CorpseArmor + "_guts", ::Const.Tactical.DetailFlag.Corpse, flip);
 				}
 				else
 				{
-					decal = _tile.spawnDetail("bust_orc_02_body_dead_guts", this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail("bust_orc_02_body_dead_guts", ::Const.Tactical.DetailFlag.Corpse, flip);
 				}
 
 				decal.Scale = 0.9;
 			}
-			else if (_skill && _skill.getProjectileType() == this.Const.ProjectileType.Arrow)
+			else if (_skill && _skill.getProjectileType() == ::Const.ProjectileType.Arrow)
 			{
 				if (appearance.CorpseArmor != "")
 				{
-					decal = _tile.spawnDetail(appearance.CorpseArmor + "_arrows", this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail(appearance.CorpseArmor + "_arrows", ::Const.Tactical.DetailFlag.Corpse, flip);
 				}
 				else
 				{
-					decal = _tile.spawnDetail("bust_orc_02_body_dead_arrows", this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail("bust_orc_02_body_dead_arrows", ::Const.Tactical.DetailFlag.Corpse, flip);
 				}
 
 				decal.Scale = 0.9;
 			}
-			else if (_skill && _skill.getProjectileType() == this.Const.ProjectileType.Javelin)
+			else if (_skill && _skill.getProjectileType() == ::Const.ProjectileType.Javelin)
 			{
 				if (appearance.CorpseArmor != "")
 				{
-					decal = _tile.spawnDetail(appearance.CorpseArmor + "_javelin", this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail(appearance.CorpseArmor + "_javelin", ::Const.Tactical.DetailFlag.Corpse, flip);
 				}
 				else
 				{
-					decal = _tile.spawnDetail("bust_orc_02_body_dead_javelin", this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail("bust_orc_02_body_dead_javelin", ::Const.Tactical.DetailFlag.Corpse, flip);
 				}
 
 				decal.Scale = 0.9;
 			}
 
 			this.spawnTerrainDropdownEffect(_tile);
-			local corpse = clone this.Const.Corpse;
+			local corpse = clone ::Const.Corpse;
 			corpse.CorpseName = "An Orc Berserker";
 			corpse.Tile = _tile;
 			corpse.IsResurrectable = false;
 			corpse.IsConsumable = true;
 			corpse.Items = this.getItems();
-			corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+			corpse.IsHeadAttached = _fatalityType != ::Const.FatalityType.Decapitated;
 			_tile.Properties.set("Corpse", corpse);
 			this.Tactical.Entities.addCorpse(_tile);
 		}
 
-		// if (_tile != null && this.Math.rand(1, 100) <= 10)
+		// if (_tile != null && ::Math.rand(1, 100) <= 10)
 		// {
 		// 	local loot = this.new("scripts/items/accessory/berserker_mushrooms_item");
 		// 	loot.drop(_tile);
@@ -405,7 +405,7 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/abstract_actor", {
 		this.actor.onFactionChanged();
 		local flip = this.isAlliedWithPlayer();
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			if (!this.hasSprite(a))
 			{

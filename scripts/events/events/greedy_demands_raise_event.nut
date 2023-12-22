@@ -95,7 +95,7 @@ this.greedy_demands_raise_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Greedy.getImagePath());
-				_event.m.Greedy.worsenMood(this.Math.rand(2, 3), "Was denied a pay raise");
+				_event.m.Greedy.worsenMood(::Math.rand(2, 3), "Was denied a pay raise");
 
 				if (_event.m.Greedy.getMoodState() < ::Const.MoodState.Neutral)
 				{
@@ -172,7 +172,7 @@ this.greedy_demands_raise_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Greedy = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Greedy = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = candidates.len() * 5;
 	}
 

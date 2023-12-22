@@ -9,8 +9,8 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 	},
 	function create()
 	{
-		this.m.ID = this.Const.AI.Behavior.ID.SpellCorpseExplosion;
-		this.m.Order = this.Const.AI.Behavior.Order.SpellCorpseExplosion;
+		this.m.ID = ::Const.AI.Behavior.ID.SpellCorpseExplosion;
+		this.m.Order = ::Const.AI.Behavior.Order.SpellCorpseExplosion;
 		this.m.IsThreaded = true;
 		this.behavior.create();
 	}
@@ -24,15 +24,15 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 		local time = this.Time.getExactTime();
 		local scoreMult = this.getProperties().BehaviorMult[this.m.ID];
 
-		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP) return this.Const.AI.Behavior.Score.Zero;
-		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing) return this.Const.AI.Behavior.Score.Zero;
-		if (_entity.getTile().hasZoneOfControlOtherThan(_entity.getAlliedFactions())) return this.Const.AI.Behavior.Score.Zero;
-		if (_entity.getHitpointsPct() <= 0.5) return this.Const.AI.Behavior.Score.Zero;
+		if (_entity.getActionPoints() < ::Const.Movement.AutoEndTurnBelowAP) return ::Const.AI.Behavior.Score.Zero;
+		if (_entity.getMoraleState() == ::Const.MoraleState.Fleeing) return ::Const.AI.Behavior.Score.Zero;
+		if (_entity.getTile().hasZoneOfControlOtherThan(_entity.getAlliedFactions())) return ::Const.AI.Behavior.Score.Zero;
+		if (_entity.getHitpointsPct() <= 0.5) return ::Const.AI.Behavior.Score.Zero;
 
 
 		this.m.Skill = this.selectSkill(this.m.PossibleSkills);
-		if (this.m.Skill == null) return this.Const.AI.Behavior.Score.Zero;
-		if (!this.m.Skill.isUsable()) return this.Const.AI.Behavior.Score.Zero;
+		if (this.m.Skill == null) return ::Const.AI.Behavior.Score.Zero;
+		if (!this.m.Skill.isUsable()) return ::Const.AI.Behavior.Score.Zero;
 
 		scoreMult = scoreMult * this.getFatigueScoreMult(this.m.Skill);
 		local myTile = _entity.getTile();
@@ -77,20 +77,20 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 				continue;
 			}
 
-			score = score + zoc * this.Const.AI.Behavior.PossessUndeadZOCMult;
-			local mag = this.queryOpponentMagnitude(tile, this.Const.AI.Behavior.PossessUndeadMagnitudeMaxRange);
-			score = score + mag.Opponents * (1.0 - mag.AverageDistanceScore) * this.Math.maxf(0.5, 1.0 - mag.AverageEngaged) * this.Const.AI.Behavior.PossessUndeadOpponentValue;
-			score = score * (0.25 + 0.75 * this.Math.maxf(0.33, a.getHitpointsPct()));
+			score = score + zoc * ::Const.AI.Behavior.PossessUndeadZOCMult;
+			local mag = this.queryOpponentMagnitude(tile, ::Const.AI.Behavior.PossessUndeadMagnitudeMaxRange);
+			score = score + mag.Opponents * (1.0 - mag.AverageDistanceScore) * ::Math.maxf(0.5, 1.0 - mag.AverageEngaged) * ::Const.AI.Behavior.PossessUndeadOpponentValue;
+			score = score * (0.25 + 0.75 * ::Math.maxf(0.33, a.getHitpointsPct()));
 			score = score * (0.5 + 0.5 * a.getXPValue() * 0.01);
 
 			if (!a.isArmedWithMeleeWeapon())
 			{
-				score = score * this.Const.AI.Behavior.PossessUndeadNoWeaponMult;
+				score = score * ::Const.AI.Behavior.PossessUndeadNoWeaponMult;
 			}
 
 			if (currentDanger != 0 && distToMe <= 2)
 			{
-				score = score * this.Const.AI.Behavior.PossessUndeadHelpMeMult;
+				score = score * ::Const.AI.Behavior.PossessUndeadHelpMeMult;
 			}
 			else if (zoc == 0 && a.getCurrentProperties().IsRooted)
 			{
@@ -99,12 +99,12 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 
 			if (this.m.Skill.isInRange(tile))
 			{
-				score = score * this.Const.AI.Behavior.PossessUndeadInRangeMult;
+				score = score * ::Const.AI.Behavior.PossessUndeadInRangeMult;
 			}
 
 			if (!a.isTurnDone())
 			{
-				score = score * this.Const.AI.Behavior.PossessUndeadStillToActMult;
+				score = score * ::Const.AI.Behavior.PossessUndeadStillToActMult;
 			}
 
 			potentialTargets.push({
@@ -116,7 +116,7 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (potentialTargets.len() == 0)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		potentialTargets.sort(this.onSortByScore);
@@ -134,7 +134,7 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 		{
 			n = ++n;
 
-			if (n > this.Const.AI.Behavior.PossessUndeadMaxAttempts && bestTarget != null)
+			if (n > ::Const.AI.Behavior.PossessUndeadMaxAttempts && bestTarget != null)
 			{
 				break;
 			}
@@ -158,7 +158,7 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 				settings.ActionPointCostPerLevel = _entity.getLevelActionPointCost();
 				settings.FatigueCostPerLevel = _entity.getLevelFatigueCost();
 				settings.AllowZoneOfControlPassing = false;
-				settings.ZoneOfControlCost = this.Const.AI.Behavior.ZoneOfControlAPPenalty;
+				settings.ZoneOfControlCost = ::Const.AI.Behavior.ZoneOfControlAPPenalty;
 				settings.AlliedFactions = _entity.getAlliedFactions();
 				settings.Faction = _entity.getFaction();
 
@@ -178,7 +178,7 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 
 					if (movementCosts.End.IsBadTerrain)
 					{
-						score = score - this.Const.AI.Behavior.PossessUndeadMoveToBadTerrainPenalty * this.getProperties().EngageOnBadTerrainPenaltyMult;
+						score = score - ::Const.AI.Behavior.PossessUndeadMoveToBadTerrainPenalty * this.getProperties().EngageOnBadTerrainPenaltyMult;
 					}
 
 					if (this.getProperties().EngageOnBadTerrainPenaltyMult != 0.0)
@@ -200,12 +200,12 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 						}
 
 						local d = this.queryActorTurnsNearTarget(opponent, t.Tile, _entity);
-						danger = danger + this.Math.maxf(0.0, 1.0 - d.Turns);
+						danger = danger + ::Math.maxf(0.0, 1.0 - d.Turns);
 
 						if (!movementCosts.IsComplete)
 						{
 							local id = this.queryActorTurnsNearTarget(opponent, movementCosts.End, _entity);
-							danger_intermediate = danger_intermediate + this.Math.maxf(0.0, 1.0 - id.Turns);
+							danger_intermediate = danger_intermediate + ::Math.maxf(0.0, 1.0 - id.Turns);
 							d = d.Turns > id.Turns ? id : d;
 						}
 
@@ -213,21 +213,21 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 						{
 							if (d.InZonesOfControl != 0 || opponent.getCurrentProperties().IsStunned || opponent.getCurrentProperties().IsRooted)
 							{
-								score = score - this.Const.AI.Behavior.PossessUndeadLowDangerPenalty;
+								score = score - ::Const.AI.Behavior.PossessUndeadLowDangerPenalty;
 							}
 							else
 							{
-								score = score - this.Const.AI.Behavior.PossessUndeadHighDangerPenalty;
+								score = score - ::Const.AI.Behavior.PossessUndeadHighDangerPenalty;
 							}
 						}
 
-						if (danger >= this.Const.AI.Behavior.PossessUndeadMaxDanger || danger_intermediate >= this.Const.AI.Behavior.PossessUndeadMaxDanger)
+						if (danger >= ::Const.AI.Behavior.PossessUndeadMaxDanger || danger_intermediate >= ::Const.AI.Behavior.PossessUndeadMaxDanger)
 						{
 							break;
 						}
 					}
 
-					if (danger >= this.Const.AI.Behavior.PossessUndeadMaxDanger || danger_intermediate >= this.Const.AI.Behavior.PossessUndeadMaxDanger)
+					if (danger >= ::Const.AI.Behavior.PossessUndeadMaxDanger || danger_intermediate >= ::Const.AI.Behavior.PossessUndeadMaxDanger)
 					{
 						continue;
 					}
@@ -241,7 +241,7 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 			}
 			else
 			{
-				for( ; currentDanger >= this.Const.AI.Behavior.PossessUndeadMaxDanger;  )
+				for( ; currentDanger >= ::Const.AI.Behavior.PossessUndeadMaxDanger;  )
 				{
 				}
 
@@ -264,7 +264,7 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (bestTarget == null)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		this.m.TargetTile = bestTarget;
@@ -272,10 +272,10 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (this.m.IsTravelling && bestIntermediateTile != null && bestIntermediateTile.ID == myTile.ID)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		return this.Const.AI.Behavior.Score.PossessUndead * scoreMult;
+		return ::Const.AI.Behavior.Score.PossessUndead * scoreMult;
 	}
 
 	function onBeforeExecute( _entity )
@@ -303,12 +303,12 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 				settings.ActionPointCostPerLevel = _entity.getLevelActionPointCost();
 				settings.FatigueCostPerLevel = _entity.getLevelFatigueCost();
 				settings.AllowZoneOfControlPassing = false;
-				settings.ZoneOfControlCost = this.Const.AI.Behavior.ZoneOfControlAPPenalty;
+				settings.ZoneOfControlCost = ::Const.AI.Behavior.ZoneOfControlAPPenalty;
 				settings.AlliedFactions = _entity.getAlliedFactions();
 				settings.Faction = _entity.getFaction();
 				navigator.findPath(_entity.getTile(), this.m.TargetTile, settings, this.m.Skill.getMaxRange());
 
-				if (this.Const.AI.PathfindingDebugMode)
+				if (::Const.AI.PathfindingDebugMode)
 				{
 					navigator.buildVisualisation(_entity, settings, _entity.getActionPoints(), _entity.getFatigueMax() - _entity.getFatigue());
 				}
@@ -316,7 +316,7 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 				local movement = navigator.getCostForPath(_entity, settings, _entity.getActionPoints(), _entity.getFatigueMax() - _entity.getFatigue());
 				this.getAgent().adjustCameraToDestination(movement.End);
 
-				if (this.Const.AI.VerboseMode)
+				if (::Const.AI.VerboseMode)
 				{
 					this.logInfo("* " + _entity.getName() + ": Moving into range to use Possess Undead");
 				}
@@ -329,7 +329,7 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 				if (this.m.TargetTile.IsVisibleForPlayer && _entity.isHiddenToPlayer())
 				{
 					_entity.setDiscovered(true);
-					_entity.getTile().addVisibilityForFaction(this.Const.Faction.Player);
+					_entity.getTile().addVisibilityForFaction(::Const.Faction.Player);
 				}
 
 				this.getAgent().adjustCameraToTarget(this.m.TargetTile);
@@ -348,7 +348,7 @@ this.ai_spell_corpse_explosion <- this.inherit("scripts/ai/tactical/behavior", {
 		}
 		else
 		{
-			if (this.Const.AI.VerboseMode)
+			if (::Const.AI.VerboseMode)
 			{
 				this.logInfo("* " + _entity.getName() + ": Using Possess Undead!");
 			}

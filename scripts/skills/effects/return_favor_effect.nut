@@ -44,7 +44,7 @@ this.return_favor_effect <- this.inherit("scripts/skills/skill", {
 			local attack = this.getContainer().getSkillByID("actives.hand_to_hand");
 			if (attack != null) attack.useForFree(_attacker.getTile());
 
-			if (this.Math.rand(1, 100) <= 50 && !_attacker.getCurrentProperties().IsImmuneToStun && !_attacker.getSkills().hasSkill("effects.stunned"))
+			if (::Math.rand(1, 100) <= 50 && !_attacker.getCurrentProperties().IsImmuneToStun && !_attacker.getSkills().hasSkill("effects.stunned"))
 			{
 				local d = _attacker.getTile().getDistanceTo(user.getTile());
 				local item = user.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);

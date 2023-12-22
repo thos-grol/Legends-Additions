@@ -5,7 +5,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 		IsPlayerAttacking = true,
 		MinStrength = 10,
 		Perk = "perk.legend_favoured_enemy_hexen",
-		ValidTypes = this.Const.LegendMod.FavoriteHexe
+		ValidTypes = ::Const.LegendMod.FavoriteHexe
 	},
 	function create()
 	{
@@ -14,7 +14,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 		this.m.Name = "A Cavort with the Coven (Legendary)";
 		this.m.Description = "The local lord is in a panic because a supposed legendary Hexe has resurfaced and is coming for their son. Protect the son at all cost and slay the hexe leader.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 30.0;
-		this.m.DifficultyMult = this.Math.rand(145, 175) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(145, 175) * 0.01;
 	}
 
 	function getBanner()
@@ -31,7 +31,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 	{
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 10)
+		if (::Math.rand(1, 100) <= 10)
 		{
 			this.m.Payment.Completion = 0.9;
 			this.m.Payment.Advance = 0.1;
@@ -41,7 +41,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 			this.m.Payment.Completion = 1.0;
 		}
 
-		this.m.Flags.set("ProtecteeName", this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]);
+		this.m.Flags.set("ProtecteeName", ::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]);
 		this.contract.start();
 	}
 
@@ -55,7 +55,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 					"Stay around %townname% and protect %employer%\'s playboy son"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -68,7 +68,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 20)
 				{
@@ -88,7 +88,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 				}
 
 				this.Flags.set("StartTime", this.Time.getVirtualTimeF());
-				this.Flags.set("Delay", this.Math.rand(10, 30) * 1.0);
+				this.Flags.set("Delay", ::Math.rand(10, 30) * 1.0);
 				local envoy = this.World.getGuestRoster().create("scripts/entity/tactical/humans/firstborn");
 				envoy.setName(this.Flags.get("ProtecteeName"));
 				envoy.setTitle("");
@@ -150,7 +150,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 						}
 						else
 						{
-							this.Contract.m.Dude = candidates[this.Math.rand(0, candidates.len() - 1)];
+							this.Contract.m.Dude = candidates[::Math.rand(0, candidates.len() - 1)];
 							this.Contract.setScreen("Curse");
 						}
 					}
@@ -184,7 +184,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 
 					this.World.Contracts.showActiveContract();
 				}
-				else if (!this.Flags.get("IsBanterShown") && this.Math.rand(1, 1000) <= 1 && this.Flags.get("StartTime") + 6.0 <= this.Time.getVirtualTimeF())
+				else if (!this.Flags.get("IsBanterShown") && ::Math.rand(1, 1000) <= 1 && this.Flags.get("StartTime") + 6.0 <= this.Time.getVirtualTimeF())
 				{
 					this.Flags.set("IsBanterShown", true);
 					this.Contract.setScreen("Banter");
@@ -231,8 +231,8 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -296,10 +296,10 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "Hexen";
 						p.Entities = [];
-						p.Music = this.Const.Music.CivilianTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.LegendHexeLeader, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).getID());
+						p.Music = ::Const.Music.CivilianTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.LegendHexeLeader, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -321,10 +321,10 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "Hexen";
 						p.Entities = [];
-						p.Music = this.Const.Music.CivilianTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.LegendHexeLeader, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).getID());
+						p.Music = ::Const.Music.CivilianTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.LegendHexeLeader, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -359,8 +359,8 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 					Text = "To arms!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractBetrayal);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail * 2, "Betrayed " + this.Contract.getEmployer().getName() + " and struck a deal with witches");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractBetrayal);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail * 2, "Betrayed " + this.Contract.getEmployer().getName() + " and struck a deal with witches");
 						this.World.Contracts.finishActiveContract(true);
 						return;
 					}
@@ -390,8 +390,8 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 					Text = "To arms!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractBetrayal);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail * 2, "Betrayed " + this.Contract.getEmployer().getName() + " and struck a deal with witches");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractBetrayal);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail * 2, "Betrayed " + this.Contract.getEmployer().getName() + " and struck a deal with witches");
 						this.World.Contracts.finishActiveContract(true);
 						return;
 					}
@@ -424,10 +424,10 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "Hexen";
 						p.Entities = [];
-						p.Music = this.Const.Music.BeastsTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.LegendHexeLeader, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).getID());
+						p.Music = ::Const.Music.BeastsTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.LegendHexeLeader, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -464,12 +464,12 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 				});
 				this.Contract.m.Dude.worsenMood(1.5, "Was cursed by a witch");
 
-				if (this.Contract.m.Dude.getMoodState() <= this.Const.MoodState.Neutral)
+				if (this.Contract.m.Dude.getMoodState() <= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[this.Contract.m.Dude.getMoodState()],
-						text = this.Contract.m.Dude.getName() + this.Const.MoodStateEvent[this.Contract.m.Dude.getMoodState()]
+						icon = ::Const.MoodStateIcon[this.Contract.m.Dude.getMoodState()],
+						text = this.Contract.m.Dude.getName() + ::Const.MoodStateEvent[this.Contract.m.Dude.getMoodState()]
 					});
 				}
 			}
@@ -503,8 +503,8 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 					Text = "Shite, shite, shite!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to protect " + this.Contract.getEmployer().getName() + "\'s firstborn son");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to protect " + this.Contract.getEmployer().getName() + "\'s firstborn son");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -523,8 +523,8 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 					Text = "Oh, damn.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to protect " + this.Contract.getEmployer().getName() + "\'s firstborn son");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to protect " + this.Contract.getEmployer().getName() + "\'s firstborn son");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -545,9 +545,9 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 					Text = "All worked out in the end.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Protected " + this.Contract.getEmployer().getName() + "\'s the town");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Protected " + this.Contract.getEmployer().getName() + "\'s the town");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -559,7 +559,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -575,7 +575,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 		]);
 		_vars.push([
 			"direction",
-			this.m.Target == null || this.m.Target.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
+			this.m.Target == null || this.m.Target.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
 		]);
 		_vars.push([
 			"protectee",
@@ -620,7 +620,7 @@ this.legend_hunting_coven_leader_contract <- this.inherit("scripts/contracts/con
 				continue;
 			}
 
-			local stats = this.Const.LegendMod.GetFavoriteEnemyStats(bro, this.m.ValidTypes);
+			local stats = ::Const.LegendMod.GetFavoriteEnemyStats(bro, this.m.ValidTypes);
 
 			if (stats.Strength >= this.m.MinStrength)
 			{

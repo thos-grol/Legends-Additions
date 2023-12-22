@@ -22,15 +22,15 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Unhold;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Unhold.XP;
+		this.m.Type = ::Const.EntityType.Unhold;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.Unhold.XP;
 		this.m.BloodSplatterOffset = this.createVec(0, 0);
 		this.m.DecapitateSplatterOffset = this.createVec(40, -20);
 		this.m.DecapitateBloodAmount = 3.0;
 		this.m.ConfidentMoraleBrush = "icon_confident_orcs";
 		this.actor.create();
-		this.m.Sound[this.Const.Sound.ActorEvent.Death] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Death] = [
 			"sounds/enemies/unhold_death_01.wav",
 			"sounds/enemies/unhold_death_02.wav",
 			"sounds/enemies/unhold_death_03.wav",
@@ -38,19 +38,19 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/unhold_death_05.wav",
 			"sounds/enemies/unhold_death_06.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Flee] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Flee] = [
 			"sounds/enemies/unhold_flee_01.wav",
 			"sounds/enemies/unhold_flee_02.wav",
 			"sounds/enemies/unhold_flee_03.wav",
 			"sounds/enemies/unhold_flee_04.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
+		this.m.Sound[::Const.Sound.ActorEvent.DamageReceived] = [
 			"sounds/enemies/unhold_hurt_01.wav",
 			"sounds/enemies/unhold_hurt_02.wav",
 			"sounds/enemies/unhold_hurt_03.wav",
 			"sounds/enemies/unhold_hurt_04.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Idle] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Idle] = [
 			"sounds/enemies/unhold_idle_01.wav",
 			"sounds/enemies/unhold_idle_02.wav",
 			"sounds/enemies/unhold_idle_03.wav",
@@ -59,13 +59,13 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/unhold_idle_06.wav",
 			"sounds/enemies/unhold_idle_07.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Other1] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Other1] = [
 			"sounds/enemies/unhold_confused_01.wav",
 			"sounds/enemies/unhold_confused_02.wav",
 			"sounds/enemies/unhold_confused_03.wav",
 			"sounds/enemies/unhold_confused_04.wav"
 		];
-		this.m.SoundPitch = this.Math.rand(9, 11) * 0.1;
+		this.m.SoundPitch = ::Math.rand(9, 11) * 0.1;
 		this.m.SoundVolumeOverall = 1.25;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/unhold_agent");
 		this.m.AIAgent.setActor(this);
@@ -73,7 +73,7 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 
 	function playSound( _type, _volume, _pitch = 1.0 )
 	{
-		if (_type == this.Const.Sound.ActorEvent.Move && this.Math.rand(1, 100) <= 50)
+		if (_type == ::Const.Sound.ActorEvent.Move && ::Math.rand(1, 100) <= 50)
 		{
 			return;
 		}
@@ -83,7 +83,7 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
 	{
-		local flip = this.Math.rand(1, 100) < 50;
+		local flip = ::Math.rand(1, 100) < 50;
 
 		if (_tile != null)
 		{
@@ -93,7 +93,7 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 			local appearance = this.getItems().getAppearance();
 			local sprite_body = this.getSprite("body");
 			local sprite_head = this.getSprite("head");
-			decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+			decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 			decal.Color = sprite_body.Color;
 			decal.Saturation = sprite_body.Saturation;
 			decal.Scale = 0.9;
@@ -101,16 +101,16 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 
 			if (appearance.CorpseArmor != "")
 			{
-				decal = _tile.spawnDetail(appearance.CorpseArmor, this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(appearance.CorpseArmor, ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.9;
 				decal.setBrightness(0.9);
 			}
 
-			if (_fatalityType != this.Const.FatalityType.Decapitated)
+			if (_fatalityType != ::Const.FatalityType.Decapitated)
 			{
 				if (!appearance.HideCorpseHead)
 				{
-					decal = _tile.spawnDetail(sprite_head.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail(sprite_head.getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 					decal.Color = sprite_head.Color;
 					decal.Saturation = sprite_head.Saturation;
 					decal.Scale = 0.9;
@@ -119,12 +119,12 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 
 				if (appearance.HelmetCorpse.len() != 0)
 				{
-					decal = _tile.spawnDetail(appearance.HelmetCorpse, this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail(appearance.HelmetCorpse, ::Const.Tactical.DetailFlag.Corpse, flip);
 					decal.Scale = 0.9;
 					decal.setBrightness(0.9);
 				}
 			}
-			else if (_fatalityType == this.Const.FatalityType.Decapitated)
+			else if (_fatalityType == ::Const.FatalityType.Decapitated)
 			{
 				local layers = [];
 
@@ -160,41 +160,41 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 				}
 			}
 
-			if (_fatalityType == this.Const.FatalityType.Disemboweled)
+			if (_fatalityType == ::Const.FatalityType.Disemboweled)
 			{
-				decal = _tile.spawnDetail("bust_unhold_guts", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail("bust_unhold_guts", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.9;
 			}
-			else if (_skill && _skill.getProjectileType() == this.Const.ProjectileType.Arrow)
+			else if (_skill && _skill.getProjectileType() == ::Const.ProjectileType.Arrow)
 			{
-				decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead_arrows", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead_arrows", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.9;
 			}
-			else if (_skill && _skill.getProjectileType() == this.Const.ProjectileType.Javelin)
+			else if (_skill && _skill.getProjectileType() == ::Const.ProjectileType.Javelin)
 			{
-				decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead_javelin", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead_javelin", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.9;
 			}
 
 			this.spawnTerrainDropdownEffect(_tile);
-			local corpse = clone this.Const.Corpse;
+			local corpse = clone ::Const.Corpse;
 			corpse.CorpseName = "An Unhold";
 			corpse.Tile = _tile;
 			corpse.IsResurrectable = false;
 			corpse.IsConsumable = true;
 			corpse.Items = this.getItems();
-			corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+			corpse.IsHeadAttached = _fatalityType != ::Const.FatalityType.Decapitated;
 			_tile.Properties.set("Corpse", corpse);
 			this.Tactical.Entities.addCorpse(_tile);
 		}
 
-		// if (_killer == null || _killer.getFaction() == this.Const.Faction.Player || _killer.getFaction() == this.Const.Faction.PlayerAnimals)
+		// if (_killer == null || _killer.getFaction() == ::Const.Faction.Player || _killer.getFaction() == ::Const.Faction.PlayerAnimals)
 		// {
-		// 	local n = 1 + (!this.Tactical.State.isScenarioMode() && this.Math.rand(1, 100) <= this.World.Assets.getExtraLootChance() ? 1 : 0);
+		// 	local n = 1 + (!this.Tactical.State.isScenarioMode() && ::Math.rand(1, 100) <= this.World.Assets.getExtraLootChance() ? 1 : 0);
 
 		// 	for( local i = 0; i < n; i = i )
 		// 	{
-		// 		local r = this.Math.rand(1, 100);
+		// 		local r = ::Math.rand(1, 100);
 		// 		local loot;
 
 		// 		if (r <= 40)
@@ -238,7 +238,7 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Unhold);
+		b.setValues(::Const.Tactical.Actor.Unhold);
 		b.IsImmuneToDisarm = true;
 		b.IsImmuneToRotation = true;
 		b.IsImmuneToStun = true;
@@ -246,13 +246,13 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.m.Items.getAppearance().Body = "bust_unhold_body_02";
 		this.addSprite("socket").setBrush("bust_base_beasts");
 		local body = this.addSprite("body");
 
-		if (this.Math.rand(1, 100) < 50)
+		if (::Math.rand(1, 100) < 50)
 		{
 			body.setBrush("bust_unhold_body_04");
 		}
@@ -269,7 +269,7 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 		this.addSprite("armor");
 		local head = this.addSprite("head");
 
-		if (this.Math.rand(1, 100) < 3)
+		if (::Math.rand(1, 100) < 3)
 		{
 			head.setBrush("bust_unhold_head_04");
 		}
@@ -281,7 +281,7 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 		head.Saturation = body.Saturation;
 		head.Color = body.Color;
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			this.addSprite(a);
 		}
@@ -330,7 +330,7 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 		this.getSprite("armor").setHorizontalFlipping(flip);
 		this.getSprite("head").setHorizontalFlipping(flip);
 
-		foreach( a in this.Const.CharacterSprites.Helmets )
+		foreach( a in ::Const.CharacterSprites.Helmets )
 		{
 			if (!this.hasSprite(a))
 			{

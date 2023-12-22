@@ -42,7 +42,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (this.Const.DLC.Wildmen && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 15)
+		if (::Const.DLC.Wildmen && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 15)
 		{
 			twists.push({
 				R = 2,
@@ -60,7 +60,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (this.Const.DLC.Wildmen && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 15)
+		if (::Const.DLC.Wildmen && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 15)
 		{
 			twists.push({
 				R = 2,
@@ -78,7 +78,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (this.Const.DLC.Wildmen && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 15)
+		if (::Const.DLC.Wildmen && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 15)
 		{
 			twists.push({
 				R = 2,
@@ -96,7 +96,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (this.Const.DLC.Unhold && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 6)
+		if (::Const.DLC.Unhold && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 6)
 		{
 			twists.push({
 				R = 5,
@@ -105,7 +105,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (this.Const.DLC.Lindwurm && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 10)
+		if (::Const.DLC.Lindwurm && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 10)
 		{
 			twists.push({
 				R = 5,
@@ -123,7 +123,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (this.Const.DLC.Wildmen && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 3)
+		if (::Const.DLC.Wildmen && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 3)
 		{
 			twists.push({
 				R = 15,
@@ -132,7 +132,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (this.Const.DLC.Wildmen && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 15)
+		if (::Const.DLC.Wildmen && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") >= 15)
 		{
 			twists.push({
 				R = 5,
@@ -141,7 +141,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (this.Const.DLC.Unhold && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") <= 5)
+		if (::Const.DLC.Unhold && this.World.Statistics.getFlags().getAsInt("ArenaFightsWon") <= 5)
 		{
 			twists.push({
 				R = 10,
@@ -189,7 +189,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 			maxR = maxR + t.R;
 		}
 
-		local r = this.Math.rand(1, maxR);
+		local r = ::Math.rand(1, maxR);
 
 		foreach( t in twists )
 		{
@@ -329,14 +329,14 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 
 				if (this.Flags.get("IsSwordmaster"))
 				{
-					if (baseDifficulty < this.Const.World.Spawn.Troops.Swordmaster.Cost + this.Const.World.Spawn.Troops.BanditRaider.Cost)
+					if (baseDifficulty < ::Const.World.Spawn.Troops.Swordmaster.Cost + ::Const.World.Spawn.Troops.BanditRaider.Cost)
 					{
 						this.Flags.set("Number", 0);
 						this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against one Swordmaster";
 					}
 					else
 					{
-						this.Flags.set("Number", this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.BanditRaider, baseDifficulty - this.Const.World.Spawn.Troops.Swordmaster.Cost, 2));
+						this.Flags.set("Number", this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.BanditRaider, baseDifficulty - ::Const.World.Spawn.Troops.Swordmaster.Cost, 2));
 						this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against one Swordmaster and %amount% raiders";
 					}
 
@@ -344,14 +344,14 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 				}
 				else if (this.Flags.get("IsHedgeKnight"))
 				{
-					if (baseDifficulty < this.Const.World.Spawn.Troops.HedgeKnight.Cost + this.Const.World.Spawn.Troops.BanditRaider.Cost)
+					if (baseDifficulty < ::Const.World.Spawn.Troops.HedgeKnight.Cost + ::Const.World.Spawn.Troops.BanditRaider.Cost)
 					{
 						this.Flags.set("Number", 0);
 						this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against one Hedge Knight";
 					}
 					else
 					{
-						this.Flags.set("Number", this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.BanditRaider, baseDifficulty - this.Const.World.Spawn.Troops.HedgeKnight.Cost, 2));
+						this.Flags.set("Number", this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.BanditRaider, baseDifficulty - ::Const.World.Spawn.Troops.HedgeKnight.Cost, 2));
 						this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against one Hedge Knight and %amount% raiders";
 					}
 
@@ -359,14 +359,14 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 				}
 				else if (this.Flags.get("IsDesertDevil"))
 				{
-					if (baseDifficulty < this.Const.World.Spawn.Troops.DesertDevil.Cost + this.Const.World.Spawn.Troops.NomadOutlaw.Cost)
+					if (baseDifficulty < ::Const.World.Spawn.Troops.DesertDevil.Cost + ::Const.World.Spawn.Troops.NomadOutlaw.Cost)
 					{
 						this.Flags.set("Number", 0);
 						this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against one Blade Dancer";
 					}
 					else
 					{
-						this.Flags.set("Number", this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.NomadOutlaw, baseDifficulty - this.Const.World.Spawn.Troops.DesertDevil.Cost, 2));
+						this.Flags.set("Number", this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.NomadOutlaw, baseDifficulty - ::Const.World.Spawn.Troops.DesertDevil.Cost, 2));
 						this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against one Blade Dancer and %amount% nomads";
 					}
 
@@ -374,7 +374,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 				}
 				else if (this.Flags.get("IsSandGolems"))
 				{
-					this.Flags.set("Number", this.Math.max(3, this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.SandGolem, baseDifficulty, 3)));
+					this.Flags.set("Number", ::Math.max(3, this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.SandGolem, baseDifficulty, 3)));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %amount% ifrits";
 					this.Text += "%SPEECH_ON%There\'s nothing on the page because I fear the desert\'s wrath if I dare to illuminate its most ferocious presence. You\'re fighting %number% ifrits. I do not know how they managed to get them here, I just know it was the doing of alchemists. If you ask me, I\'d rather you fight them than the ifrits.%SPEECH_OFF%";
 				}
@@ -382,15 +382,15 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					local num = 0;
 
-					if (baseDifficulty >= this.Const.World.Spawn.Troops.GhoulHIGH.Cost * 2)
+					if (baseDifficulty >= ::Const.World.Spawn.Troops.GhoulHIGH.Cost * 2)
 					{
 						num = num + 1;
-						num = num + this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Ghoul, baseDifficulty - this.Const.World.Spawn.Troops.GhoulHIGH.Cost);
+						num = num + this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Ghoul, baseDifficulty - ::Const.World.Spawn.Troops.GhoulHIGH.Cost);
 					}
 					else
 					{
-						num = num + this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.GhoulLOW, baseDifficulty * 0.5);
-						num = num + this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Ghoul, baseDifficulty * 0.5);
+						num = num + this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.GhoulLOW, baseDifficulty * 0.5);
+						num = num + this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Ghoul, baseDifficulty * 0.5);
 					}
 
 					this.Flags.set("Number", num);
@@ -399,7 +399,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 				}
 				else if (this.Flags.get("IsUnholds"))
 				{
-					this.Flags.set("Number", this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Unhold, baseDifficulty));
+					this.Flags.set("Number", this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Unhold, baseDifficulty));
 
 					if (this.Flags.get("Number") == 1)
 					{
@@ -414,43 +414,43 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 				}
 				else if (this.Flags.get("IsDesertRaiders"))
 				{
-					this.Flags.set("Number", this.Math.max(2, this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.NomadOutlaw, baseDifficulty)));
+					this.Flags.set("Number", ::Math.max(2, this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.NomadOutlaw, baseDifficulty)));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %amount% nomads";
 					this.Text += "%SPEECH_ON%Your opponents will be %number% recently retired desert bandits. And by retired, I mean taken by the Vizier\'s lawmen, of course. No bandit willingly steps foot in here, haghaghagh!%SPEECH_OFF%";
 				}
 				else if (this.Flags.get("IsGladiators"))
 				{
-					this.Flags.set("Number", this.Math.max(2, this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Gladiator, baseDifficulty)));
+					this.Flags.set("Number", ::Math.max(2, this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Gladiator, baseDifficulty)));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %amount% gladiators";
 					this.Text += "%SPEECH_ON%Well, heh, the Gilder must have a sense of humor. You\'ll be facing %number% gladiators. May your path be ever Gilded, but to be honest, I said that to the gladiators. And I\'ve been saying it to them every day. Understand? You should prepare to the best of your abilities.%SPEECH_OFF%";
 				}
 				else if (this.Flags.get("IsSpiders"))
 				{
-					this.Flags.set("Number", this.Math.max(3, this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Spider, baseDifficulty)));
+					this.Flags.set("Number", ::Math.max(3, this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Spider, baseDifficulty)));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %amount% webknechts";
 					this.Text += "%SPEECH_ON%That is not a fig tree, it\'s a spider. The alchemists, bless their learned hearts, call them webknechts which is a silly northern name, in truth they\'re spiders. Unfortunately for you a boot will not be sufficient this time around for %number% of them.%SPEECH_OFF%";
 				}
 				else if (this.Flags.get("IsSerpents"))
 				{
-					this.Flags.set("Number", this.Math.max(2, this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Serpent, baseDifficulty)));
+					this.Flags.set("Number", ::Math.max(2, this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Serpent, baseDifficulty)));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %amount% serpents";
 					this.Text += "%SPEECH_ON%What do you mean you don\'t understand? Huh, it\'s just a squiggly line? No. Look, this is its tail, and that\'s the head. It\'s a snake. You\'re fighting %number% snakes. \'Serpents\' the alchemists like to call them, but if I wanted to draw a serpent I\'d just draw an alchemist haghaghagh!%SPEECH_OFF%";
 				}
 				else if (this.Flags.get("IsHyenas"))
 				{
-					this.Flags.set("Number", this.Math.max(2, this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Hyena, baseDifficulty)));
+					this.Flags.set("Number", ::Math.max(2, this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Hyena, baseDifficulty)));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %amount% hyenas";
 					this.Text += "%SPEECH_ON%Hyenas. Heeheehee. Hyenas. %numberC% of the giggling mutts, to be exact. Good luck, and may the Gilder watch over you.%SPEECH_OFF%";
 				}
 				else if (this.Flags.get("IsFrenziedHyenas"))
 				{
-					this.Flags.set("Number", this.Math.max(2, this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.HyenaHIGH, baseDifficulty)));
+					this.Flags.set("Number", ::Math.max(2, this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.HyenaHIGH, baseDifficulty)));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %amount% frenzied hyenas";
 					this.Text += "%SPEECH_ON%Hyenas. Heeheehee. Hyenas. %numberC% of the giggling mutts, to be exact. Good luck, and may the Gilder watch over you.%SPEECH_OFF%";
 				}
 				else if (this.Flags.get("IsLindwurm"))
 				{
-					this.Flags.set("Number", this.Math.min(2, this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Lindwurm, baseDifficulty - 30)));
+					this.Flags.set("Number", ::Math.min(2, this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Lindwurm, baseDifficulty - 30)));
 
 					if (this.Flags.get("Number") == 1)
 					{
@@ -465,35 +465,35 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 				}
 				else if (this.Flags.get("IsMercenaries"))
 				{
-					this.Flags.set("Number", this.Math.max(2, this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Mercenary, baseDifficulty)));
+					this.Flags.set("Number", ::Math.max(2, this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Mercenary, baseDifficulty)));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %amount% mercenaries";
 					this.Text += "%SPEECH_ON%Crownlings like you have ventured down from the north. Up there, they call them \'sellswords.\' Hagh! What sort of attempt at poetry is that? Don\'t they know not every man even uses a sword? They ain\'t the brightest up there. That\'s why I like it in the south. The sun is bright, and thus so are we.%SPEECH_OFF%";
 				}
 				else if (this.Flags.get("IsGladiatorChampion"))
 				{
-					this.Flags.set("Champion1", this.Const.World.Common.generateName(this.Const.World.Spawn.Troops.Gladiator.NameList) + (this.Const.World.Spawn.Troops.Gladiator.TitleList != null ? " " + this.Const.World.Spawn.Troops.Gladiator.TitleList[this.Math.rand(0, this.Const.World.Spawn.Troops.Gladiator.TitleList.len() - 1)] : ""));
-					this.Flags.set("Number", this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Gladiator, baseDifficulty - this.Const.World.Spawn.Troops.Gladiator.Cost * 2, 2));
+					this.Flags.set("Champion1", ::Const.World.Common.generateName(::Const.World.Spawn.Troops.Gladiator.NameList) + (::Const.World.Spawn.Troops.Gladiator.TitleList != null ? " " + ::Const.World.Spawn.Troops.Gladiator.TitleList[::Math.rand(0, ::Const.World.Spawn.Troops.Gladiator.TitleList.len() - 1)] : ""));
+					this.Flags.set("Number", this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Gladiator, baseDifficulty - ::Const.World.Spawn.Troops.Gladiator.Cost * 2, 2));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %champion1% and %amount% gladiators";
 					this.Text += "%SPEECH_ON%Recognize this face? There\'s a reason the artists spent time on this here pamphlet and then handed them out to every set of eyes settin\' in those seats upstairs. It\'s %champion1%, one of the greatest fighters in this land. Maybe some day they\'ll make yer face look so pretty, if the Vizier could ever find someone so talented to salvage, well, whatever ye got there between the ears, hegheghegh.%SPEECH_OFF%";
 				}
 				else if (this.Flags.get("IsSwordmasterChampion"))
 				{
-					this.Flags.set("Champion1", this.Const.World.Common.generateName(this.Const.World.Spawn.Troops.Swordmaster.NameList) + (this.Const.World.Spawn.Troops.Swordmaster.TitleList != null ? " " + this.Const.World.Spawn.Troops.Swordmaster.TitleList[this.Math.rand(0, this.Const.World.Spawn.Troops.Swordmaster.TitleList.len() - 1)] : ""));
-					this.Flags.set("Number", this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Mercenary, baseDifficulty - this.Const.World.Spawn.Troops.Gladiator.Cost * 2, 2));
+					this.Flags.set("Champion1", ::Const.World.Common.generateName(::Const.World.Spawn.Troops.Swordmaster.NameList) + (::Const.World.Spawn.Troops.Swordmaster.TitleList != null ? " " + ::Const.World.Spawn.Troops.Swordmaster.TitleList[::Math.rand(0, ::Const.World.Spawn.Troops.Swordmaster.TitleList.len() - 1)] : ""));
+					this.Flags.set("Number", this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Mercenary, baseDifficulty - ::Const.World.Spawn.Troops.Gladiator.Cost * 2, 2));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %champion1% and %amount% mercenaries";
 					this.Text += "%SPEECH_ON%Recognize this face? There\'s a reason the artists spent time on this here pamphlet and then handed them out to every set of eyes settin\' in those seats upstairs. It\'s %champion1%, one of the greatest fighters in this land. Maybe some day they\'ll make yer face look so pretty, if the Vizier could ever find someone so talented to salvage, well, whatever ye got there between the ears, hegheghegh.%SPEECH_OFF%";
 				}
 				else if (this.Flags.get("IsExecutionerChampion"))
 				{
-					this.Flags.set("Champion1", this.Const.World.Common.generateName(this.Const.World.Spawn.Troops.Executioner.NameList) + (this.Const.World.Spawn.Troops.Executioner.TitleList != null ? " " + this.Const.World.Spawn.Troops.Executioner.TitleList[this.Math.rand(0, this.Const.World.Spawn.Troops.Executioner.TitleList.len() - 1)] : ""));
-					this.Flags.set("Number", this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Gladiator, baseDifficulty - this.Const.World.Spawn.Troops.Gladiator.Cost * 2, 2));
+					this.Flags.set("Champion1", ::Const.World.Common.generateName(::Const.World.Spawn.Troops.Executioner.NameList) + (::Const.World.Spawn.Troops.Executioner.TitleList != null ? " " + ::Const.World.Spawn.Troops.Executioner.TitleList[::Math.rand(0, ::Const.World.Spawn.Troops.Executioner.TitleList.len() - 1)] : ""));
+					this.Flags.set("Number", this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Gladiator, baseDifficulty - ::Const.World.Spawn.Troops.Gladiator.Cost * 2, 2));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %champion1% and %amount% gladiators";
 					this.Text += "%SPEECH_ON%Recognize this face? There\'s a reason the artists spent time on this here pamphlet and then handed them out to every set of eyes settin\' in those seats upstairs. It\'s %champion1%, one of the greatest fighters in this land. Maybe some day they\'ll make yer face look so pretty, if the Vizier could ever find someone so talented to salvage, well, whatever ye got there between the ears, hegheghegh.%SPEECH_OFF%";
 				}
 				else if (this.Flags.get("IsDesertDevilChampion"))
 				{
-					this.Flags.set("Champion1", this.Const.World.Common.generateName(this.Const.World.Spawn.Troops.DesertDevil.NameList) + (this.Const.World.Spawn.Troops.DesertDevil.TitleList != null ? " " + this.Const.World.Spawn.Troops.DesertDevil.TitleList[this.Math.rand(0, this.Const.World.Spawn.Troops.DesertDevil.TitleList.len() - 1)] : ""));
-					this.Flags.set("Number", this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.NomadOutlaw, baseDifficulty - this.Const.World.Spawn.Troops.Gladiator.Cost * 2, 2));
+					this.Flags.set("Champion1", ::Const.World.Common.generateName(::Const.World.Spawn.Troops.DesertDevil.NameList) + (::Const.World.Spawn.Troops.DesertDevil.TitleList != null ? " " + ::Const.World.Spawn.Troops.DesertDevil.TitleList[::Math.rand(0, ::Const.World.Spawn.Troops.DesertDevil.TitleList.len() - 1)] : ""));
+					this.Flags.set("Number", this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.NomadOutlaw, baseDifficulty - ::Const.World.Spawn.Troops.Gladiator.Cost * 2, 2));
 					this.Contract.m.BulletpointsObjectives[1] = "Enter the arena again to start the fight against %champion1% and %amount% nomads";
 					this.Text += "%SPEECH_ON%Recognize this face? There\'s a reason the artists spent time on this here pamphlet and then handed them out to every set of eyes settin\' in those seats upstairs. It\'s %champion1%, one of the greatest fighters in this land. Maybe some day they\'ll make yer face look so pretty, if the Vizier could ever find someone so talented to salvage, well, whatever ye got there between the ears, hegheghegh.%SPEECH_OFF%";
 				}
@@ -564,17 +564,17 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Let\'s give the crowd something to cheer for!",
 					function getResult()
 					{
-						local p = this.Const.Tactical.CombatInfo.getClone();
-						p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
+						local p = ::Const.Tactical.CombatInfo.getClone();
+						p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
 						p.CombatID = "Arena";
 						p.TerrainTemplate = "tactical.arena";
 						p.LocationTemplate.Template[0] = "tactical.arena_floor";
-						p.Music = this.Const.Music.ArenaTracks;
-						p.Ambience[0] = this.Const.SoundAmbience.ArenaBack;
-						p.Ambience[1] = this.Const.SoundAmbience.ArenaFront;
+						p.Music = ::Const.Music.ArenaTracks;
+						p.Ambience[0] = ::Const.SoundAmbience.ArenaBack;
+						p.Ambience[1] = ::Const.SoundAmbience.ArenaFront;
 						p.AmbienceMinDelay[0] = 0;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Arena;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Arena;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Arena;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Arena;
 						p.IsUsingSetPlayers = true;
 						p.IsFleeingProhibited = true;
 						p.IsLootingProhibited = true;
@@ -602,31 +602,31 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 
 						if (this.Flags.get("IsSwordmaster"))
 						{
-							this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Swordmaster);
+							this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Swordmaster);
 
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.BanditRaider);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.BanditRaider);
 								i = ++i;
 							}
 						}
 						else if (this.Flags.get("IsHedgeKnight"))
 						{
-							this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.HedgeKnight);
+							this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.HedgeKnight);
 
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.BanditRaider);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.BanditRaider);
 								i = ++i;
 							}
 						}
 						else if (this.Flags.get("IsDesertDevil"))
 						{
-							this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.DesertDevil);
+							this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.DesertDevil);
 
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.NomadOutlaw);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.NomadOutlaw);
 								i = ++i;
 							}
 						}
@@ -634,33 +634,33 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.SandGolem);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.SandGolem);
 								i = ++i;
 							}
 						}
 						else if (this.Flags.get("IsGhouls"))
 						{
-							if (baseDifficulty >= this.Const.World.Spawn.Troops.GhoulHIGH.Cost * 2)
+							if (baseDifficulty >= ::Const.World.Spawn.Troops.GhoulHIGH.Cost * 2)
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.GhoulHIGH);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.GhoulHIGH);
 
 								for( local i = 0; i < this.Flags.get("Number") - 1; i = i )
 								{
-									this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Ghoul);
+									this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Ghoul);
 									i = ++i;
 								}
 							}
 							else
 							{
-								for( local i = 0; i < this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.GhoulLOW, baseDifficulty * 0.5); i = i )
+								for( local i = 0; i < this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.GhoulLOW, baseDifficulty * 0.5); i = i )
 								{
-									this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.GhoulLOW);
+									this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.GhoulLOW);
 									i = ++i;
 								}
 
-								for( local i = 0; i < this.Contract.getAmountToSpawn(this.Const.World.Spawn.Troops.Ghoul, baseDifficulty * 0.5); i = i )
+								for( local i = 0; i < this.Contract.getAmountToSpawn(::Const.World.Spawn.Troops.Ghoul, baseDifficulty * 0.5); i = i )
 								{
-									this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Ghoul);
+									this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Ghoul);
 									i = ++i;
 								}
 							}
@@ -669,7 +669,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Unhold);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Unhold);
 								i = ++i;
 							}
 						}
@@ -677,7 +677,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.NomadOutlaw);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.NomadOutlaw);
 								i = ++i;
 							}
 						}
@@ -685,7 +685,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Gladiator);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Gladiator);
 								i = ++i;
 							}
 						}
@@ -693,7 +693,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Spider);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Spider);
 								i = ++i;
 							}
 						}
@@ -701,7 +701,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Serpent);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Serpent);
 								i = ++i;
 							}
 						}
@@ -709,7 +709,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Hyena);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Hyena);
 								i = ++i;
 							}
 						}
@@ -717,7 +717,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.HyenaHIGH);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.HyenaHIGH);
 								i = ++i;
 							}
 						}
@@ -725,7 +725,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Lindwurm);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Lindwurm);
 								i = ++i;
 							}
 						}
@@ -733,47 +733,47 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Mercenary);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Mercenary);
 								i = ++i;
 							}
 						}
 						else if (this.Flags.get("IsGladiatorChampion"))
 						{
-							this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Gladiator, true, this.Flags.get("Champion1"));
+							this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Gladiator, true, this.Flags.get("Champion1"));
 
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Gladiator);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Gladiator);
 								i = ++i;
 							}
 						}
 						else if (this.Flags.get("IsSwordmasterChampion"))
 						{
-							this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Swordmaster, true, this.Flags.get("Champion1"));
+							this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Swordmaster, true, this.Flags.get("Champion1"));
 
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Mercenary);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Mercenary);
 								i = ++i;
 							}
 						}
 						else if (this.Flags.get("IsExecutionerChampion"))
 						{
-							this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Executioner, true, this.Flags.get("Champion1"));
+							this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Executioner, true, this.Flags.get("Champion1"));
 
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.Gladiator);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.Gladiator);
 								i = ++i;
 							}
 						}
 						else if (this.Flags.get("IsDesertDevilChampion"))
 						{
-							this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.DesertDevil, true, this.Flags.get("Champion1"));
+							this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.DesertDevil, true, this.Flags.get("Champion1"));
 
 							for( local i = 0; i < this.Flags.get("Number"); i = i )
 							{
-								this.Contract.addToCombat(p.Entities, this.Const.World.Spawn.Troops.NomadOutlaw);
+								this.Contract.addToCombat(p.Entities, ::Const.World.Spawn.Troops.NomadOutlaw);
 								i = ++i;
 							}
 						}
@@ -795,7 +795,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						this.Contract.getHome().getBuilding("building.arena").refreshCooldown();
 						this.World.State.getTownScreen().getMainDialogModule().reload();
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnArenaCancel);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnArenaCancel);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -828,7 +828,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "{Victory! | Are you not entertained?! | Killed it. | A bloody spectacle.}",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
 
 						if (this.World.Statistics.getFlags().getAsInt("ArenaRegularFightsWon") > 0 && this.World.Statistics.getFlags().getAsInt("ArenaRegularFightsWon") % 5 == 0)
@@ -860,7 +860,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 
 				foreach( bro in roster )
 				{
-					local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+					local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
 
 					if (item != null && item.getID() == "accessory.arena_collar")
 					{
@@ -875,7 +875,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 							this.List.push({
 								id = 10,
 								icon = skill.getIcon(),
-								text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
+								text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
 							});
 						}
 						else if (bro.getFlags().getAsInt("ArenaFightsWon") == 5)
@@ -886,7 +886,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 							this.List.push({
 								id = 10,
 								icon = skill.getIcon(),
-								text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
+								text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
 							});
 						}
 						else if (bro.getFlags().getAsInt("ArenaFightsWon") == 12)
@@ -897,7 +897,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 							this.List.push({
 								id = 10,
 								icon = skill.getIcon(),
-								text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
+								text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
 							});
 						}
 						else if (bro.getFlags().getAsInt("ArenaFightsWon") > 25 && bro.getSkills().hasSkill("trait.arena_veteran"))
@@ -917,7 +917,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 							this.List.push({
 								id = 10,
 								icon = skill.getIcon(),
-								text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
+								text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
 							});
 						}
 						else if (bro.getFlags().getAsInt("ArenaFightsWon") == 25)
@@ -928,7 +928,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 							this.List.push({
 								id = 10,
 								icon = skill.getIcon(),
-								text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
+								text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
 							});
 						}
 						else if (bro.getFlags().getAsInt("ArenaFightsWon") == 50)
@@ -939,7 +939,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 							this.List.push({
 								id = 10,
 								icon = skill.getIcon(),
-								text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
+								text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
 							});
 						}
 
@@ -973,13 +973,13 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 					}
 					else
 					{
-						r = this.Math.rand(1, 3);
+						r = ::Math.rand(1, 3);
 					}
 
 					switch(r)
 					{
 					case 1:
-						a = this.Const.World.Common.pickArmor([
+						a = ::Const.World.Common.pickArmor([
 							[
 								1,
 								"oriental/gladiator_harness"
@@ -994,7 +994,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						break;
 
 					case 2:
-						a = this.Const.World.Common.pickArmor([
+						a = ::Const.World.Common.pickArmor([
 							[
 								1,
 								"oriental/gladiator_harness"
@@ -1045,7 +1045,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 
 						foreach( bro in roster )
 						{
-							local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+							local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
 
 							if (item != null && item.getID() == "accessory.arena_collar")
 							{
@@ -1061,7 +1061,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 						}
 
 						this.Contract.getHome().getBuilding("building.arena").refreshCooldown();
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -1082,7 +1082,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.Contract.getHome().getBuilding("building.arena").refreshCooldown();
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -1145,7 +1145,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 
 		foreach( bro in roster )
 		{
-			local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+			local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
 
 			if (item != null && item.getID() == "accessory.arena_collar")
 			{
@@ -1158,7 +1158,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 
 	function getAmountToSpawn( _type, _resources, _min = 1, _max = 24 )
 	{
-		return this.Math.min(_max, this.Math.max(_min, _resources / _type.Cost));
+		return ::Math.min(_max, ::Math.max(_min, _resources / _type.Cost));
 	}
 
 	function addToCombat( _list, _entityType, _champion = false, _name = "" )
@@ -1183,15 +1183,15 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 		local p = this.World.State.getPlayer().getStrength();
 		p = p / this.World.getPlayerRoster().getSize();
 		p = p * 12;
-		local s = this.Math.maxf(0.75, 1.0 * this.Math.pow(0.01 * p, 0.95) + this.Math.minf(0.5, (this.World.getTime().Days + this.World.Statistics.getFlags().getAsInt("ArenaFightsWon")) * 0.01));
-		local d = this.Math.minf(5.0, s);
-		return d * this.Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
+		local s = ::Math.maxf(0.75, 1.0 * ::Math.pow(0.01 * p, 0.95) + ::Math.minf(0.5, (this.World.getTime().Days + this.World.Statistics.getFlags().getAsInt("ArenaFightsWon")) * 0.01));
+		local d = ::Math.minf(5.0, s);
+		return d * ::Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
 	}
 
 	function getReputationToPaymentMult()
 	{
-		local r = this.Math.minf(4.0, this.Math.maxf(0.9, this.Math.pow(this.Math.maxf(0, 0.003 * this.World.Assets.getBusinessReputation() * 0.5 + this.getScaledDifficultyMult()), 0.35)));
-		return r * this.Const.Difficulty.PaymentMult[this.World.Assets.getEconomicDifficulty()];
+		local r = ::Math.minf(4.0, ::Math.maxf(0.9, ::Math.pow(::Math.maxf(0, 0.003 * this.World.Assets.getBusinessReputation() * 0.5 + this.getScaledDifficultyMult()), 0.35)));
+		return r * ::Const.Difficulty.PaymentMult[this.World.Assets.getEconomicDifficulty()];
 	}
 
 	function setScreenForArena()
@@ -1221,7 +1221,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 
 		foreach( bro in this.World.getPlayerRoster().getAll() )
 		{
-			local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+			local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
 
 			if (item != null && item.getID() == "accessory.arena_collar")
 			{
@@ -1245,11 +1245,11 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		_vars.push([
 			"numberC",
-			this.m.Flags.get("Number") < this.Const.Strings.AmountC.len() ? this.Const.Strings.AmountC[this.m.Flags.get("Number")] : this.Const.Strings.AmountC[this.m.Flags.get("Number")]
+			this.m.Flags.get("Number") < ::Const.Strings.AmountC.len() ? ::Const.Strings.AmountC[this.m.Flags.get("Number")] : ::Const.Strings.AmountC[this.m.Flags.get("Number")]
 		]);
 		_vars.push([
 			"number",
-			this.m.Flags.get("Number") < this.Const.Strings.Amount.len() ? this.Const.Strings.Amount[this.m.Flags.get("Number")] : this.Const.Strings.Amount[this.m.Flags.get("Number")]
+			this.m.Flags.get("Number") < ::Const.Strings.Amount.len() ? ::Const.Strings.Amount[this.m.Flags.get("Number")] : ::Const.Strings.Amount[this.m.Flags.get("Number")]
 		]);
 		_vars.push([
 			"amount",
@@ -1272,7 +1272,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 
 			foreach( bro in roster )
 			{
-				local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+				local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
 
 				if (item != null && item.getID() == "accessory.arena_collar")
 				{
@@ -1294,7 +1294,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 
 	function isValid()
 	{
-		return this.Const.DLC.Desert;
+		return ::Const.DLC.Desert;
 	}
 
 	function onSerialize( _out )

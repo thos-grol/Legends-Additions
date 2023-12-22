@@ -55,7 +55,7 @@
 			}
 			else
 			{
-				r = this.Math.rand(0, 9);
+				r = ::Math.rand(0, 9);
 
 				if (r == 1)
 				{

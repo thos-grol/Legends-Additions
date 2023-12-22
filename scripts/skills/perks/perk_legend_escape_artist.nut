@@ -82,8 +82,8 @@ this.perk_legend_escape_artist <- this.inherit("scripts/skills/skill", {
 			&& !_user.getSkills().hasSkill("effects.serpent_ensnare") ) return;
 
 		local skill = _user.getCurrentProperties().getMeleeSkill();
-		local toHit = this.Math.min(100, skill - 25);
-        local rolled = this.Math.rand(1, 100);
+		local toHit = ::Math.min(100, skill - 25);
+        local rolled = ::Math.rand(1, 100);
 
 		if (rolled <= toHit)
 		{
@@ -97,7 +97,7 @@ this.perk_legend_escape_artist <- this.inherit("scripts/skills/skill", {
 				"sounds/combat/break_free_net_02.wav",
 				"sounds/combat/break_free_net_03.wav"
 			];
-			this.Sound.play(SoundOnHitHitpoints[this.Math.rand(0, SoundOnHitHitpoints.len() - 1)], ::Const.Sound.Volume.Skill, _user.getTile().Pos);
+			this.Sound.play(SoundOnHitHitpoints[::Math.rand(0, SoundOnHitHitpoints.len() - 1)], ::Const.Sound.Volume.Skill, _user.getTile().Pos);
 
 			_user.getSprite("status_rooted").Visible = false;
 			_user.getSprite("status_rooted_back").Visible = false;
@@ -135,7 +135,7 @@ this.perk_legend_escape_artist <- this.inherit("scripts/skills/skill", {
 
 				if (candidates.len() != 0)
 				{
-					local tileToSpawnAt = candidates[this.Math.rand(0, candidates.len() - 1)];
+					local tileToSpawnAt = candidates[::Math.rand(0, candidates.len() - 1)];
 					tileToSpawnAt.spawnDetail(breakfree_decal);
 					tileToSpawnAt.Properties.add("IsItemSpawned");
 				}
@@ -156,7 +156,7 @@ this.perk_legend_escape_artist <- this.inherit("scripts/skills/skill", {
 			);
 
 			if (this.m.SoundOnMiss.len() != 0)
-			this.Sound.play(this.m.SoundOnMiss[this.Math.rand(0, this.m.SoundOnMiss.len() - 1)], ::Const.Sound.Volume.Skill, _user.getTile().Pos);
+			this.Sound.play(this.m.SoundOnMiss[::Math.rand(0, this.m.SoundOnMiss.len() - 1)], ::Const.Sound.Volume.Skill, _user.getTile().Pos);
 		}
 
 	}

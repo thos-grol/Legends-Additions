@@ -22,7 +22,7 @@
 		}
 
 		local prev_condition = this.m.Condition;
-		this.m.Condition = this.Math.max(0, this.m.Condition - totalDamage) * 1.0;
+		this.m.Condition = ::Math.max(0, this.m.Condition - totalDamage) * 1.0;
 
 		if (this.m.Condition == 0 && !this.m.IsIndestructible)
 		{

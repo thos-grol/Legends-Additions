@@ -89,7 +89,7 @@
 
 			this.m.CurrentEntities[0].onBeforeActivation();
 			this.m.TurnPosition = 0;
-			local entitiesToAdd = this.Math.min(this.m.CurrentEntities.len(), this.m.MaxVisibleEntities);
+			local entitiesToAdd = ::Math.min(this.m.CurrentEntities.len(), this.m.MaxVisibleEntities);
 
 			for( local i = 0; i < entitiesToAdd; i = ++i )
 			{
@@ -155,7 +155,7 @@
 
 		if (this.m.CurrentEntities.len() >= this.m.MaxVisibleEntities)
 		{
-			local entityToAddIndex = this.Math.min(this.m.CurrentEntities.len() - 1, this.m.MaxVisibleEntities - 1);
+			local entityToAddIndex = ::Math.min(this.m.CurrentEntities.len() - 1, this.m.MaxVisibleEntities - 1);
 			this.m.JSHandle.asyncCall("addEntity", this.convertEntityToUIData(this.m.CurrentEntities[entityToAddIndex], entityToAddIndex == this.m.CurrentEntities.len() - 1));
 		}
 	}

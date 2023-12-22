@@ -83,15 +83,15 @@ this.send_nomad_ambushers_action <- this.inherit("scripts/factions/faction_actio
 
 		local settlement = this.pickWeightedRandom(settlements);
 		settlement.setLastSpawnTimeToNow();
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Nomads", false, this.Const.World.Spawn.NomadRaiders, this.Math.rand(75, 120) * this.getReputationToDifficultyLightMult());
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Nomads", false, ::Const.World.Spawn.NomadRaiders, ::Math.rand(75, 120) * this.getReputationToDifficultyLightMult());
 		party.getSprite("banner").setBrush(settlement.getBanner());
 		party.setDescription("A band of desert raiders preying on anyone trying to cross the seas of sand.");
-		party.setFootprintType(this.Const.World.FootprintsType.Nomads);
+		party.setFootprintType(::Const.World.FootprintsType.Nomads);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
-		party.getLoot().ArmorParts = this.Math.rand(0, 5);
-		party.getLoot().Medicine = this.Math.rand(0, 5);
-		party.getLoot().Ammo = this.Math.rand(0, 10);
+		party.getLoot().Money = ::Math.rand(0, 50);
+		party.getLoot().ArmorParts = ::Math.rand(0, 5);
+		party.getLoot().Medicine = ::Math.rand(0, 5);
+		party.getLoot().Ammo = ::Math.rand(0, 10);
 
 		local c = party.getController();
 		local ambush = this.new("scripts/ai/world/orders/ambush_order");

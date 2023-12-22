@@ -90,7 +90,7 @@ this.fear_beasts_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Casualty = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Casualty = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = 50;
 	}
 

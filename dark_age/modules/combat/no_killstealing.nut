@@ -3,7 +3,7 @@
     function dropAll( _tile, _killer, _flip = false )
 	{
 		local no_killstealing = this.m.Actor.getSkills().getSkillByID("special._nokillstealing");
-        local isPlayer = this.m.Actor.getFaction() == this.Const.Faction.Player || this.isKindOf(this.m.Actor.get(), "player");
+        local isPlayer = this.m.Actor.getFaction() == ::Const.Faction.Player || this.isKindOf(this.m.Actor.get(), "player");
         local IsDroppingLoot = true;
 		local emergency = false;
 
@@ -23,7 +23,7 @@
 			else return;
 		}
 
-		for( local i = 0; i < this.Const.ItemSlot.COUNT; i = i )
+		for( local i = 0; i < ::Const.ItemSlot.COUNT; i = i )
 		{
 			for( local j = 0; j < this.m.Items[i].len(); j = j )
 			{
@@ -32,7 +32,7 @@
 				}
 				else if (this.m.Items[i][j].isChangeableInBattle(null) || emergency)
 				{
-					if (IsDroppingLoot || this.m.Items[i][j].isItemType(this.Const.Items.ItemType.Legendary))
+					if (IsDroppingLoot || this.m.Items[i][j].isItemType(::Const.Items.ItemType.Legendary))
 					{
 						this.m.Items[i][j].drop(_tile);
 					}
@@ -41,7 +41,7 @@
 						this.m.Items[i][j].m.IsDroppedAsLoot = false;
 					}
 				}
-				else if (!IsDroppingLoot && !this.m.Items[i][j].isItemType(this.Const.Items.ItemType.Legendary))
+				else if (!IsDroppingLoot && !this.m.Items[i][j].isItemType(::Const.Items.ItemType.Legendary))
 				{
 					this.m.Items[i][j].m.IsDroppedAsLoot = false;
 				}

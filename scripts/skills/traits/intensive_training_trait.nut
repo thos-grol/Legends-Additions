@@ -18,8 +18,8 @@ this.intensive_training_trait <- this.inherit("scripts/skills/traits/character_t
 		this.m.Name = "Training progress";
 		this.m.Icon = "ui/traits/IntensiveTraining.png";
 		this.m.Description = "This character can increase their abilities if you upgrade your camp training facilities.";
-		this.m.Order = this.Const.SkillOrder.Background + 1;
-		this.m.Type = this.Const.SkillType.Trait;
+		this.m.Order = ::Const.SkillOrder.Background + 1;
+		this.m.Type = ::Const.SkillType.Trait;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = true;
@@ -30,7 +30,7 @@ this.intensive_training_trait <- this.inherit("scripts/skills/traits/character_t
 	{
 		for( local i = 0; i < _skillsNum; i++ )
 		{
-			local attr = this.Math.rand(0, this.Const.Attributes.COUNT - 1);
+			local attr = ::Math.rand(0, ::Const.Attributes.COUNT - 1);
 
 			switch(attr)
 			{
@@ -191,7 +191,7 @@ this.intensive_training_trait <- this.inherit("scripts/skills/traits/character_t
 				id = 6,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + this.getStatsIncreased() + "[/color] skill points"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + this.getStatsIncreased() + "[/color] skill points"
 			});
 
 			if (this.isMaxReached())
@@ -200,13 +200,13 @@ this.intensive_training_trait <- this.inherit("scripts/skills/traits/character_t
 					id = 6,
 					type = "text",
 					icon = "ui/icons/special.png",
-					text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + 1 + "[/color] Perk point"
+					text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + 1 + "[/color] Perk point"
 				});
 				tooltip.push({
 					id = 6,
 					type = "text",
 					icon = "ui/icons/special.png",
-					text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + this.m.TraitGained + "[/color] trait"
+					text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + this.m.TraitGained + "[/color] trait"
 				});
 			}
 		}

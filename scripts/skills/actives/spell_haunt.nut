@@ -60,7 +60,7 @@ this.spell_haunt <- this.inherit("scripts/skills/_magic_active", {
 		local _target =_targetTile.getEntity();
 
 		local HIT_CHANCE = getHitchance(_target);
-		local ROLL = this.Math.rand(1, 100);
+		local ROLL = ::Math.rand(1, 100);
 
 		if (ROLL > HIT_CHANCE) return false;
 

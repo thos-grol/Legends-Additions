@@ -19,16 +19,16 @@ this.stab <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/stab_hit_02.wav",
 			"sounds/combat/stab_hit_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
 		this.m.IsStacking = false;
 		this.m.IsAttack = true;
 		this.m.IsWeaponSkill = true;
-		this.m.InjuriesOnBody = this.Const.Injury.PiercingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.PiercingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.PiercingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.PiercingHead;
 		this.m.DirectDamageMult = 0.2;
 		this.m.ActionPointCost = 4;
 		this.m.FatigueCost = 7;
@@ -46,7 +46,7 @@ this.stab <- this.inherit("scripts/skills/skill", {
 	{
 		if (_properties.IsSpecializedInSwords)
 		{
-			this.m.FatigueCostMult = this.Const.Combat.WeaponSpecFatigueMult;
+			this.m.FatigueCostMult = ::Const.Combat.WeaponSpecFatigueMult;
 		}
 		this.m.ActionPointCost = 3;
 	}

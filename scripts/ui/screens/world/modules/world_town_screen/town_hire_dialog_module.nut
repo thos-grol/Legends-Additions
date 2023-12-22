@@ -48,12 +48,12 @@ this.town_hire_dialog_module <- this.inherit("scripts/ui/screens/ui_module", {
 			local currentFood = this.World.Assets.getFood();
 			local currentBrothers = entities.len();
 			local brothersMax = this.World.Assets.getBrothersMax();
-			local hiringCost = this.Math.ceil(entry.getHiringCost() * this.World.Assets.m.HiringCostMult);
+			local hiringCost = ::Math.ceil(entry.getHiringCost() * this.World.Assets.m.HiringCostMult);
 
 			if (currentMoney < hiringCost)
 			{
 				return {
-					Result = this.Const.UI.Error.NotEnoughMoney,
+					Result = ::Const.UI.Error.NotEnoughMoney,
 					Assets = null
 				};
 			}
@@ -61,7 +61,7 @@ this.town_hire_dialog_module <- this.inherit("scripts/ui/screens/ui_module", {
 			if (currentBrothers + 1 > brothersMax)
 			{
 				return {
-					Result = this.Const.UI.Error.NotEnoughRosterSpace,
+					Result = ::Const.UI.Error.NotEnoughRosterSpace,
 					Assets = null
 				};
 			}
@@ -84,7 +84,7 @@ this.town_hire_dialog_module <- this.inherit("scripts/ui/screens/ui_module", {
 		}
 
 		return {
-			Result = this.Const.UI.Error.RosterEntryNotFound,
+			Result = ::Const.UI.Error.RosterEntryNotFound,
 			Assets = null
 		};
 	}
@@ -103,7 +103,7 @@ this.town_hire_dialog_module <- this.inherit("scripts/ui/screens/ui_module", {
 			if (currentMoney < tryoutCost)
 			{
 				return {
-					Result = this.Const.UI.Error.NotEnoughMoney,
+					Result = ::Const.UI.Error.NotEnoughMoney,
 					Assets = null
 				};
 			}
@@ -118,7 +118,7 @@ this.town_hire_dialog_module <- this.inherit("scripts/ui/screens/ui_module", {
 		}
 
 		return {
-			Result = this.Const.UI.Error.RosterEntryNotFound,
+			Result = ::Const.UI.Error.RosterEntryNotFound,
 			Assets = null
 		};
 	}
@@ -143,7 +143,7 @@ this.town_hire_dialog_module <- this.inherit("scripts/ui/screens/ui_module", {
 		}
 
 		return {
-			Result = this.Const.UI.Error.RosterEntryNotFound,
+			Result = ::Const.UI.Error.RosterEntryNotFound,
 			Assets = null
 		};
 	}

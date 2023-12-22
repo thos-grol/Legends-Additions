@@ -191,7 +191,7 @@
             if (ourCurrentInitiative > enemyCurrentInitiative)
             {
                 local diff = (ourCurrentInitiative - enemyCurrentInitiative) / 100.0;
-                local diffPoint = this.Math.minf(1, this.Math.pow(diff, 0.4)) * 0.8;
+                local diffPoint = ::Math.minf(1, ::Math.pow(diff, 0.4)) * 0.8;
                 bonus = 1 - diffPoint;
             }
 			_properties.DamageReceivedRegularMult *= bonus;
@@ -248,7 +248,7 @@
 		local total_weight = getTotalWeight();
 		if (total_weight > 20 && total_weight <= 40)
         {
-            if (_attacker != null && _skill != null && _skill.isAttack() && !_skill.isRanged()) this.m.Stacks = this.Math.min(this.m.MaxStacks, this.m.Stacks + 1);
+            if (_attacker != null && _skill != null && _skill.isAttack() && !_skill.isRanged()) this.m.Stacks = ::Math.min(this.m.MaxStacks, this.m.Stacks + 1);
         }
 
 	}
@@ -307,9 +307,9 @@
 		local head = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Head);
 		if (body != null) fat = fat + body.getStaminaModifier();
 		if (head != null) fat = fat + head.getStaminaModifier();
-		fat = this.Math.min(0, fat + 15);
-		local ret = this.Math.minf(1.0, 1.0 - 0.6 + this.Math.pow(this.Math.abs(fat), 1.23) * 0.01);
-		local fm = this.Math.floor(ret * 100);
+		fat = ::Math.min(0, fat + 15);
+		local ret = ::Math.minf(1.0, 1.0 - 0.6 + ::Math.pow(::Math.abs(fat), 1.23) * 0.01);
+		local fm = ::Math.floor(ret * 100);
 
 		if (fm > 0)
 		{
@@ -326,7 +326,7 @@
 
 	o.getTooltip_Dodge <- function( _tooltip )
 	{
-		local initiative = this.Math.max(0, this.Math.floor(this.getContainer().getActor().getInitiative() * 0.15));
+		local initiative = ::Math.max(0, ::Math.floor(this.getContainer().getActor().getInitiative() * 0.15));
 		if (initiative == 0) return _tooltip;
 		_tooltip.push({
 			id = 6,
@@ -431,8 +431,8 @@
 			}
 		}
 
-		local bonus = this.Math.max(5, 100 - stackTotal);
-		return this.Math.floor(bonus);
+		local bonus = ::Math.max(5, 100 - stackTotal);
+		return ::Math.floor(bonus);
 	}
 
 	o.SmallTarget_getBonus2 <- function()
@@ -441,8 +441,8 @@
 		local mdef = actor.getCurrentProperties().getMeleeDefense();
 		local resolve = actor.getCurrentProperties().getBravery();
 		local stack = mdef + resolve;
-		local bonus = this.Math.max(10, 100 - stack);
-		return this.Math.floor(bonus);
+		local bonus = ::Math.max(10, 100 - stack);
+		return ::Math.floor(bonus);
 	}
 
 // =============================================================================================
@@ -473,11 +473,11 @@
 
 		if (_totalArmorStaminaModifier < armorIdealMin)
 		{
-			mult = this.Math.maxf(0, 1 - 0.01 * this.Math.pow(armorIdealMin - _totalArmorStaminaModifier, steepnessFactor));
+			mult = ::Math.maxf(0, 1 - 0.01 * ::Math.pow(armorIdealMin - _totalArmorStaminaModifier, steepnessFactor));
 		}
 		else if (_totalArmorStaminaModifier > armorIdealMax)
 		{
-			mult = this.Math.maxf(0, 1 - 0.01 * this.Math.pow(_totalArmorStaminaModifier - armorIdealMax, steepnessFactor));
+			mult = ::Math.maxf(0, 1 - 0.01 * ::Math.pow(_totalArmorStaminaModifier - armorIdealMax, steepnessFactor));
 		}
 
 		return mult;
@@ -495,8 +495,8 @@
 			::Const.ItemSlot.Head
 		]));
 
-		local bonus = this.Math.maxf(0, this.Math.minf(35, 35 * armorFatMult));
-		return this.Math.floor(bonus);
+		local bonus = ::Math.maxf(0, ::Math.minf(35, 35 * armorFatMult));
+		return ::Math.floor(bonus);
 	}
 
 	o.getTooltip_Lithe <- function( _tooltip)
@@ -565,7 +565,7 @@
 	o.getTooltip_Battleforged <- function( _tooltip)
 	{
 		local armor = this.getContainer().getActor().getArmor(::Const.BodyPart.Head) + this.getContainer().getActor().getArmor(::Const.BodyPart.Body);
-		local reduction = this.Math.floor(armor * 5 * 0.01);
+		local reduction = ::Math.floor(armor * 5 * 0.01);
 
 		_tooltip.push({
 			id = 6,
@@ -611,17 +611,17 @@
                 break;
             case ::Const.MoodState.InGoodSpirit:
                 actor.setMaxMoraleState(::Const.MoraleState.Confident);
-                if (morale < ::Const.MoraleState.Confident && this.Math.rand(1, 100) <= 25 && !isDastard)
+                if (morale < ::Const.MoraleState.Confident && ::Math.rand(1, 100) <= 25 && !isDastard)
                     actor.setMoraleState(::Const.MoraleState.Confident);
                 break;
             case ::Const.MoodState.Eager:
                 actor.setMaxMoraleState(::Const.MoraleState.Confident);
-                if (morale < ::Const.MoraleState.Confident && this.Math.rand(1, 100) <= 50 && !isDastard)
+                if (morale < ::Const.MoraleState.Confident && ::Math.rand(1, 100) <= 50 && !isDastard)
                     actor.setMoraleState(::Const.MoraleState.Confident);
                 break;
             case ::Const.MoodState.Euphoric:
                 actor.setMaxMoraleState(::Const.MoraleState.Confident);
-                if (morale < ::Const.MoraleState.Confident && this.Math.rand(1, 100) <= 75 && !isDastard)
+                if (morale < ::Const.MoraleState.Confident && ::Math.rand(1, 100) <= 75 && !isDastard)
                     actor.setMoraleState(::Const.MoraleState.Confident);
                 break;
         }
@@ -631,40 +631,40 @@
 	{
 
 		local actor = this.getContainer().getActor();
-		if (actor.getFaction() != this.Const.Faction.Player) return;
+		if (actor.getFaction() != ::Const.Faction.Player) return;
 		if (this.getContainer().getActor().getLevel() >= 10) _properties.XPGainMult *= 0;
 
 		local mood = this.getContainer().getActor().getMoodState();
-		local p = this.Math.round(this.getContainer().getActor().getMood() / (this.Const.MoodState.len() - 0.05) * 100.0);
-		this.m.Name = this.Const.MoodStateName[mood] + " (" + p + "%)";
+		local p = ::Math.round(this.getContainer().getActor().getMood() / (::Const.MoodState.len() - 0.05) * 100.0);
+		this.m.Name = ::Const.MoodStateName[mood] + " (" + p + "%)";
 
 		switch(mood)
 		{
-		case this.Const.MoodState.Neutral:
+		case ::Const.MoodState.Neutral:
 			this.m.Icon = "skills/status_effect_64.png";
 			break;
 
-		case this.Const.MoodState.Concerned:
+		case ::Const.MoodState.Concerned:
 			this.m.Icon = "skills/status_effect_46.png";
 			break;
 
-		case this.Const.MoodState.Disgruntled:
+		case ::Const.MoodState.Disgruntled:
 			this.m.Icon = "skills/status_effect_45.png";
 			break;
 
-		case this.Const.MoodState.Angry:
+		case ::Const.MoodState.Angry:
 			this.m.Icon = "skills/status_effect_44.png";
 			break;
 
-		case this.Const.MoodState.InGoodSpirit:
+		case ::Const.MoodState.InGoodSpirit:
 			this.m.Icon = "skills/status_effect_47.png";
 			break;
 
-		case this.Const.MoodState.Eager:
+		case ::Const.MoodState.Eager:
 			this.m.Icon = "skills/status_effect_48.png";
 			break;
 
-		case this.Const.MoodState.Euphoric:
+		case ::Const.MoodState.Euphoric:
 			this.m.Icon = "skills/status_effect_49.png";
 			break;
 		}

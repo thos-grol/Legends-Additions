@@ -26,7 +26,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		this.m.DifficultyMult = this.Math.rand(70, 105) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(70, 105) * 0.01;
 
 		if (this.m.Home == null)
 		{
@@ -76,7 +76,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 			if (this.World.getTime().Days <= 10)
 			{
 				local distance = this.getDistanceOnRoads(this.m.Home.getTile(), s.getTile());
-				local days = this.getDaysRequiredToTravel(distance, this.Const.World.MovementSettings.Speed, false);
+				local days = this.getDaysRequiredToTravel(distance, ::Const.World.MovementSettings.Speed, false);
 
 				if (this.World.getTime().Days <= 5 && days >= 2)
 				{
@@ -98,24 +98,24 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 			return;
 		}
 
-		this.m.Destination = this.WeakTableRef(candidates[this.Math.rand(0, candidates.len() - 1)]);
+		this.m.Destination = this.WeakTableRef(candidates[::Math.rand(0, candidates.len() - 1)]);
 		local distance = this.getDistanceOnRoads(this.m.Home.getTile(), this.m.Destination.getTile());
-		local days = this.getDaysRequiredToTravel(distance, this.Const.World.MovementSettings.Speed, false);
+		local days = this.getDaysRequiredToTravel(distance, ::Const.World.MovementSettings.Speed, false);
 		local modrate = this.World.State.getPlayer().getBarterMult();
 
 		if (days >= 2 || distance >= 40)
 		{
-			this.m.DifficultyMult = this.Math.rand(100, 175) * 0.01;
+			this.m.DifficultyMult = ::Math.rand(100, 175) * 0.01;
 		}
 		else
 		{
-			this.m.DifficultyMult = this.Math.rand(100, 115) * 0.01;
+			this.m.DifficultyMult = ::Math.rand(100, 115) * 0.01;
 		}
 
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * days;
 
 		if (this.World.getTime().Days > 50) this.m.Payment.Pool += 20;
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -137,9 +137,9 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 				this.Contract.m.BulletpointsObjectives = [
 					"Deliver cargo to %recipient% in %objective% about %days% to the %direction% by road"
 				];
-				local isSouthern = this.World.FactionManager.getFaction(this.Contract.getFaction()).getType() == this.Const.FactionType.OrientalCityState;
+				local isSouthern = this.World.FactionManager.getFaction(this.Contract.getFaction()).getType() == ::Const.FactionType.OrientalCityState;
 
-				if (!isSouthern && this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (!isSouthern && ::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -156,7 +156,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (this.World.getTime().Days > 50)
 				{
@@ -248,7 +248,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 
 					if (this.Flags.get("IsMercenaries") && this.World.State.getPlayer().getTile().HasRoad)
 					{
-						if (!this.TempFlags.get("IsMercenariesDialogTriggered") && this.Contract.getDistanceToNearestSettlement() >= 6 && this.Math.rand(1, 1000) <= 1)
+						if (!this.TempFlags.get("IsMercenariesDialogTriggered") && this.Contract.getDistanceToNearestSettlement() >= 6 && ::Math.rand(1, 1000) <= 1)
 						{
 							this.Contract.setScreen("Mercenaries1");
 							this.World.Contracts.showActiveContract();
@@ -257,7 +257,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 					}
 					else if (this.Flags.get("IsEvilArtifact") && !this.Flags.get("IsEvilArtifactDone"))
 					{
-						if (!this.TempFlags.get("IsEvilArtifactDialogTriggered") && this.Contract.getDistanceToNearestSettlement() >= 6 && this.Math.rand(1, 1000) <= 1)
+						if (!this.TempFlags.get("IsEvilArtifactDialogTriggered") && this.Contract.getDistanceToNearestSettlement() >= 6 && ::Math.rand(1, 1000) <= 1)
 						{
 							this.Contract.setScreen("EvilArtifact1");
 							this.World.Contracts.showActiveContract();
@@ -270,20 +270,20 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 						this.World.Contracts.showActiveContract();
 						this.Flags.set("IsEvilArtifact", false);
 					}
-					else if (this.Flags.get("IsThieves") && !this.Flags.get("IsStolenByThieves") && this.World.State.getPlayer().getTile().Type != this.Const.World.TerrainType.Desert && (this.World.Assets.isCamping() || !this.World.getTime().IsDaytime) && this.Math.rand(1, 100) <= 3)
+					else if (this.Flags.get("IsThieves") && !this.Flags.get("IsStolenByThieves") && this.World.State.getPlayer().getTile().Type != ::Const.World.TerrainType.Desert && (this.World.Assets.isCamping() || !this.World.getTime().IsDaytime) && ::Math.rand(1, 100) <= 3)
 					{
 						local tile = this.Contract.getTileToSpawnLocation(this.World.State.getPlayer().getTile(), 5, 10, [
-							this.Const.World.TerrainType.Shore,
-							this.Const.World.TerrainType.Ocean,
-							this.Const.World.TerrainType.Mountains
+							::Const.World.TerrainType.Shore,
+							::Const.World.TerrainType.Ocean,
+							::Const.World.TerrainType.Mountains
 						], false);
 						tile.clear();
 						this.Contract.m.Location = this.WeakTableRef(this.World.spawnLocation("scripts/entity/world/locations/bandit_hideout_location", tile.Coords));
 						this.Contract.m.Location.setResources(0);
-						this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).addSettlement(this.Contract.m.Location.get(), false);
+						this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).addSettlement(this.Contract.m.Location.get(), false);
 						this.Contract.m.Location.onSpawned();
-						this.Contract.addUnitsToEntity(this.Contract.m.Location, this.Const.World.Spawn.BanditRoamers, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-						this.Const.World.Common.addFootprintsFromTo(this.World.State.getPlayer().getTile(), tile, this.Const.GenericFootprints, this.Const.World.FootprintsType.Brigands, 0.75);
+						this.Contract.addUnitsToEntity(this.Contract.m.Location, ::Const.World.Spawn.BanditRoamers, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						::Const.World.Common.addFootprintsFromTo(this.World.State.getPlayer().getTile(), tile, ::Const.GenericFootprints, ::Const.World.FootprintsType.Brigands, 0.75);
 						this.Flags.set("IsStolenByThieves", true);
 						this.Contract.setScreen("Thieves1");
 						this.World.Contracts.showActiveContract();
@@ -307,26 +307,26 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				if (_combatID == "EvilArtifact")
 				{
-					if (this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).getType() == this.Const.FactionType.OrientalCityState)
+					if (this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).getType() == ::Const.FactionType.OrientalCityState)
 					{
-						this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to deliver cargo");
+						this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to deliver cargo");
 					}
 					else
 					{
-						this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to deliver cargo");
+						this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to deliver cargo");
 					}
 
 					this.World.Contracts.removeContract(this.Contract);
 				}
 				else if (_combatID == "Mercs")
 				{
-					if (this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).getType() == this.Const.FactionType.OrientalCityState)
+					if (this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).getType() == ::Const.FactionType.OrientalCityState)
 					{
-						this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to deliver cargo");
+						this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to deliver cargo");
 					}
 					else
 					{
-						this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to deliver cargo");
+						this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to deliver cargo");
 					}
 
 					this.World.Contracts.removeContract(this.Contract);
@@ -368,8 +368,8 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -447,10 +447,10 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "Mercs";
-						p.Music = this.Const.Music.NobleTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.MercenariesLow, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
+						p.Music = ::Const.Music.NobleTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.MercenariesLow, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -480,20 +480,20 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 						this.Flags.set("IsMercenaries", false);
 						this.Flags.set("IsMercenariesDialogTriggered", true);
 
-						if (this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).getType() == this.Const.FactionType.OrientalCityState)
+						if (this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).getType() == ::Const.FactionType.OrientalCityState)
 						{
-							this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to deliver cargo");
+							this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to deliver cargo");
 						}
 						else
 						{
-							this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to deliver cargo");
+							this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to deliver cargo");
 						}
 
-						local recipientFaction = this.Contract.m.Destination.getFactionOfType(this.Const.FactionType.Settlement);
+						local recipientFaction = this.Contract.m.Destination.getFactionOfType(::Const.FactionType.Settlement);
 
 						if (recipientFaction != null)
 						{
-							recipientFaction.addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail * 0.5);
+							recipientFaction.addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail * 0.5);
 						}
 
 						this.World.Contracts.finishActiveContract(true);
@@ -522,7 +522,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Perhaps we can buy the prisoner?",
 					function getResult()
 					{
-						return this.Math.rand(1, 100) <= 50 ? "BountyHunters1" : "BountyHunters1";
+						return ::Math.rand(1, 100) <= 50 ? "BountyHunters1" : "BountyHunters1";
 					}
 
 				},
@@ -532,10 +532,10 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "Mercs";
-						p.Music = this.Const.Music.NobleTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Mercenaries, 140 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
+						p.Music = ::Const.Music.NobleTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 140 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -638,9 +638,9 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "EvilArtifact";
-						p.Music = this.Const.Music.UndeadTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Center;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Circle;
+						p.Music = ::Const.Music.UndeadTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Center;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
 
 						if (this.Flags.get("IsCursedCrystalSkull"))
 						{
@@ -649,9 +649,9 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 								"scripts/items/accessory/legendary/cursed_crystal_skull"
 							];
 
-							this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Zombies, 300, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID());
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Zombies, 300, this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
 						}
-						else this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Zombies, 120 * this.m.DifficultyMult, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID());
+						else ::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Zombies, 120 * this.m.DifficultyMult, this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
 
 						this.World.Contracts.startScriptedCombat(p, false, false, false);
 						return 0;
@@ -699,20 +699,20 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						this.Flags.set("IsEvilArtifact", false);
 
-						if (this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).getType() == this.Const.FactionType.OrientalCityState)
+						if (this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).getType() == ::Const.FactionType.OrientalCityState)
 						{
-							this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to deliver cargo");
+							this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to deliver cargo");
 						}
 						else
 						{
-							this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to deliver cargo");
+							this.World.FactionManager.getFaction(this.Contract.m.Destination.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to deliver cargo");
 						}
 
-						local recipientFaction = this.Contract.m.Destination.getFactionOfType(this.Const.FactionType.Settlement);
+						local recipientFaction = this.Contract.m.Destination.getFactionOfType(::Const.FactionType.Settlement);
 
 						if (recipientFaction != null)
 						{
-							recipientFaction.addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail * 0.5);
+							recipientFaction.addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail * 0.5);
 						}
 
 						this.World.Contracts.finishActiveContract(true);
@@ -752,7 +752,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
 						local playerRoster = this.World.getPlayerRoster().getAll();
 						local xp = this.Contract.m.Payment.getOnCompletion() * 0.25;
@@ -763,20 +763,20 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 							bro.updateLevel();
 						}
 
-						if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getType() == this.Const.FactionType.OrientalCityState)
+						if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getType() == ::Const.FactionType.OrientalCityState)
 						{
-							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Delivered some cargo");
+							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Delivered some cargo");
 						}
 						else
 						{
-							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Delivered some cargo");
+							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Delivered some cargo");
 						}
 
-						local recipientFaction = this.Contract.m.Destination.getFactionOfType(this.Const.FactionType.Settlement);
+						local recipientFaction = this.Contract.m.Destination.getFactionOfType(::Const.FactionType.Settlement);
 
 						if (recipientFaction != null)
 						{
-							recipientFaction.addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess * 0.5, "Delivered some cargo");
+							recipientFaction.addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess * 0.5, "Delivered some cargo");
 						}
 
 						this.World.Contracts.finishActiveContract();
@@ -791,7 +791,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.Home.setResources(this.Contract.m.Home.getResources() + this.Contract.m.Home.getResources() * 0.05);
 			}
@@ -810,7 +810,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
 						local playerRoster = this.World.getPlayerRoster().getAll();
 						local xp = this.Contract.m.Payment.getOnCompletion() * 0.25;
@@ -821,20 +821,20 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 							bro.updateLevel();
 						}
 
-						if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getType() == this.Const.FactionType.OrientalCityState)
+						if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getType() == ::Const.FactionType.OrientalCityState)
 						{
-							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Delivered some cargo");
+							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Delivered some cargo");
 						}
 						else
 						{
-							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Delivered some cargo");
+							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Delivered some cargo");
 						}
 
-						local recipientFaction = this.Contract.m.Destination.getFactionOfType(this.Const.FactionType.Settlement);
+						local recipientFaction = this.Contract.m.Destination.getFactionOfType(::Const.FactionType.Settlement);
 
 						if (recipientFaction != null)
 						{
-							recipientFaction.addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess * 0.5, "Delivered some cargo");
+							recipientFaction.addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess * 0.5, "Delivered some cargo");
 						}
 
 						this.World.Contracts.finishActiveContract();
@@ -845,12 +845,12 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
-				local xpGained = this.Math.round(this.Contract.m.Payment.getOnCompletion() * 0.25 * this.Const.Combat.GlobalXPMult);
+				local xpGained = ::Math.round(this.Contract.m.Payment.getOnCompletion() * 0.25 * ::Const.Combat.GlobalXPMult);
 				this.Characters.push(this.Tactical.getEntityByID(this.Contract.m.RecipientID).getImagePath());
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns and [color=" + this.Const.UI.Color.PositiveEventValue + "]" + xpGained + "[/color] Experience"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns and [color=" + ::Const.UI.Color.PositiveEventValue + "]" + xpGained + "[/color] Experience"
 				});
 				this.Contract.m.Home.setResources(this.Contract.m.Home.getResources() + this.Contract.m.Home.getResources() * 0.05);
 			}
@@ -860,7 +860,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 
 	function onPrepareVariables( _vars )
 	{
-		local days = this.getDaysRequiredToTravel(this.m.Flags.get("Distance"), this.Const.World.MovementSettings.Speed, true);
+		local days = this.getDaysRequiredToTravel(this.m.Flags.get("Distance"), ::Const.World.MovementSettings.Speed, true);
 		_vars.push([
 			"objective",
 			this.m.Destination == null || this.m.Destination.isNull() ? "" : this.m.Destination.getName()
@@ -871,11 +871,11 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"mercband",
-			this.Const.Strings.MercenaryCompanyNames[this.Math.rand(0, this.Const.Strings.MercenaryCompanyNames.len() - 1)]
+			::Const.Strings.MercenaryCompanyNames[::Math.rand(0, ::Const.Strings.MercenaryCompanyNames.len() - 1)]
 		]);
 		_vars.push([
 			"direction",
-			this.m.Destination == null || this.m.Destination.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Destination.getTile())]
+			this.m.Destination == null || this.m.Destination.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Destination.getTile())]
 		]);
 		_vars.push([
 			"days",

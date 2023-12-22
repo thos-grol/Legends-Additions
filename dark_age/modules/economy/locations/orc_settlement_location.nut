@@ -54,7 +54,7 @@
 			treasure.push("legend_armor/armor_upgrades/legend_heraldic_plates_upgrade");
 			treasure.push("legend_armor/armor_upgrades/legend_double_mail_upgrade");
 		}
-		this.dropTreasure(this.Math.rand(1, 3), treasure, _lootTable);
+		this.dropTreasure(::Math.rand(1, 3), treasure, _lootTable);
 	}
 
 	o.onInit = function()

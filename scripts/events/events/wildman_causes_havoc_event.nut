@@ -70,11 +70,11 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 						{
 							if (_event.m.Berserker != null)
 							{
-								this.m.Compensation = this.Math.round(40);
+								this.m.Compensation = ::Math.round(40);
 							}
 							else
 							{
-								this.m.Compensation = this.Math.round(30);
+								this.m.Compensation = ::Math.round(30);
 							}
 
 							return "T";
@@ -107,7 +107,7 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 					function getResult( _event )
 					{
 						this.World.Assets.addMoralReputation(-1);
-						return this.Math.rand(1, 100) <= 80 ? "E" : 0;
+						return ::Math.rand(1, 100) <= 80 ? "E" : 0;
 					}
 
 				}
@@ -201,7 +201,7 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
 				});
 				this.Characters.push(_event.m.Wildman.getImagePath());
-				_event.m.Wildman.getBaseProperties().DailyWage -= this.Math.floor(_event.m.Wildman.getDailyCost() / 4);
+				_event.m.Wildman.getBaseProperties().DailyWage -= ::Math.floor(_event.m.Wildman.getDailyCost() / 4);
 				_event.m.Wildman.getSkills().update();
 				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "One of your mercenaries caused havoc in town");
 				this.List.push({
@@ -247,7 +247,7 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + _event.m.Compensation + "[/color] Crowns"
 				});
 				this.Characters.push(_event.m.Berserker.getImagePath());
-				_event.m.Berserker.getBaseProperties().DailyWage -= this.Math.floor(_event.m.Berserker.getDailyCost() / 4);
+				_event.m.Berserker.getBaseProperties().DailyWage -= ::Math.floor(_event.m.Berserker.getDailyCost() / 4);
 				_event.m.Berserker.getSkills().update();
 				this.World.FactionManager.getFaction(_event.m.Town.getFactions()[0]).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "One of your mercenaries caused havoc in town");
 				this.List.push({
@@ -270,9 +270,9 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 75)
+					if (::Math.rand(1, 100) <= 75)
 					{
-						if (this.Math.rand(1, 100) <= 66)
+						if (::Math.rand(1, 100) <= 66)
 						{
 							local injury = bro.addInjury(::Const.Injury.Brawl);
 							this.List.push({
@@ -313,7 +313,7 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 						properties.Music = ::Const.Music.CivilianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Militia, this.Math.rand(90, 130), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Militia, ::Math.rand(90, 130), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -387,7 +387,7 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat) && this.Math.rand(1, 100) <= 33)
+					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat) && ::Math.rand(1, 100) <= 33)
 					{
 						bro.worsenMood(1.0, "The company backed down from a fight");
 					}
@@ -519,19 +519,19 @@ this.wildman_causes_havoc_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_berserkers.len() != 0)
 		{
-			this.m.Compensation = this.Math.round(50);
-			this.m.Berserker = candidates_berserkers[this.Math.rand(0, candidates_berserkers.len() - 1)];
+			this.m.Compensation = ::Math.round(50);
+			this.m.Berserker = candidates_berserkers[::Math.rand(0, candidates_berserkers.len() - 1)];
 		}
 
 		if (candidates_wildchars.len() != 0)
 		{
-			this.m.Compensation = this.Math.round(50);
-			this.m.Wildman = candidates_wildchars[this.Math.rand(0, candidates_wildchars.len() - 1)];
+			this.m.Compensation = ::Math.round(50);
+			this.m.Wildman = candidates_wildchars[::Math.rand(0, candidates_wildchars.len() - 1)];
 		}
 
 		if (thetraders.len() != 0)
 		{
-			this.m.Trader = thetraders[this.Math.rand(0, thetraders.len() - 1)];
+			this.m.Trader = thetraders[::Math.rand(0, thetraders.len() - 1)];
 		}
 
 		this.m.Score = candidates_wildchars.len() * 10 + candidates_berserkers.len() * 30;

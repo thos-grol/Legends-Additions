@@ -64,8 +64,8 @@ this.overwhelmed_effect <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		_properties.MeleeSkillMult = this.Math.maxf(0.0, _properties.MeleeSkillMult - 0.1 * this.m.Count);
-		_properties.RangedSkillMult = this.Math.maxf(0.0, _properties.RangedSkillMult - 0.1 * this.m.Count);
+		_properties.MeleeSkillMult = ::Math.maxf(0.0, _properties.MeleeSkillMult - 0.1 * this.m.Count);
+		_properties.RangedSkillMult = ::Math.maxf(0.0, _properties.RangedSkillMult - 0.1 * this.m.Count);
 	}
 
 	function onTurnEnd()

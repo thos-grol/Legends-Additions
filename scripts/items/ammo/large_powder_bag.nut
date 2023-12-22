@@ -7,9 +7,9 @@ this.large_powder_bag <- this.inherit("scripts/items/ammo/ammo", {
 		this.m.Description = "A large bag of black powder, used for arming exotic firearms. Is automatically refilled after each battle if you have enough ammunition.";
 		this.m.Icon = "ammo/powder_bag_large.png";
 		this.m.IconEmpty = "ammo/powder_bag_large_empty.png";
-		this.m.SlotType = this.Const.ItemSlot.Ammo;
-		this.m.ItemType = this.Const.Items.ItemType.Ammo;
-		this.m.AmmoType = this.Const.Items.AmmoType.Powder;
+		this.m.SlotType = ::Const.ItemSlot.Ammo;
+		this.m.ItemType = ::Const.Items.ItemType.Ammo;
+		this.m.AmmoType = ::Const.Items.AmmoType.Powder;
 		this.m.ShowOnCharacter = false;
 		this.m.ShowQuiver = false;
 		this.m.Value = 400;
@@ -75,7 +75,7 @@ this.large_powder_bag <- this.inherit("scripts/items/ammo/ammo", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/ammo.png",
-				text = "Contains powder for [color=" + this.Const.UI.Color.PositiveValue + "]" + this.m.Ammo + "[/color] uses"
+				text = "Contains powder for [color=" + ::Const.UI.Color.PositiveValue + "]" + this.m.Ammo + "[/color] uses"
 			});
 		}
 		else
@@ -84,7 +84,7 @@ this.large_powder_bag <- this.inherit("scripts/items/ammo/ammo", {
 				id = 6,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Is empty and useless[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Is empty and useless[/color]"
 			});
 		}
 

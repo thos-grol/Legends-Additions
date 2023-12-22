@@ -93,9 +93,9 @@
 
 				if (item.getConditionMax() > 1)
 				{
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
-						local condition = this.Math.rand(item.getConditionMax() * 0.4, item.getConditionMax() * 0.9);
+						local condition = ::Math.rand(item.getConditionMax() * 0.4, item.getConditionMax() * 0.9);
 						item.setCondition(condition);
 					}
 				}

@@ -2,17 +2,17 @@ this.nomad_leader <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.NomadLeader;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.NomadLeader.XP;
+		this.m.Type = ::Const.EntityType.NomadLeader;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.NomadLeader.XP;
 		this.m.Name = this.generateName();
 		this.m.IsGeneratingKillName = false;
 		this.abstract_human.create();
-		this.m.Bodies = this.Const.Bodies.SouthernMale;
-		this.m.Faces = this.Const.Faces.SouthernMale;
-		this.m.Hairs = this.Const.Hair.SouthernMale;
-		this.m.HairColors = this.Const.HairColors.Southern;
-		this.m.Beards = this.Const.Beards.SouthernUntidy;
+		this.m.Bodies = ::Const.Bodies.SouthernMale;
+		this.m.Faces = ::Const.Faces.SouthernMale;
+		this.m.Hairs = ::Const.Hair.SouthernMale;
+		this.m.HairColors = ::Const.HairColors.Southern;
+		this.m.Beards = ::Const.Beards.SouthernUntidy;
 		this.m.BeardChance = 90;
 		this.m.Ethnicity = 1;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_melee_agent");
@@ -21,14 +21,14 @@ this.nomad_leader <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function generateName()
 	{
-		return this.Const.Strings.SouthernNames[this.Math.rand(0, this.Const.Strings.SouthernNames.len() - 1)] + " " + this.Const.Strings.NomadChampionTitles[this.Math.rand(0, this.Const.Strings.NomadChampionTitles.len() - 1)];
+		return ::Const.Strings.SouthernNames[::Math.rand(0, ::Const.Strings.SouthernNames.len() - 1)] + " " + ::Const.Strings.NomadChampionTitles[::Math.rand(0, ::Const.Strings.NomadChampionTitles.len() - 1)];
 	}
 
 	function onInit()
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.NomadLeader);
+		b.setValues(::Const.Tactical.Actor.NomadLeader);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -36,25 +36,25 @@ this.nomad_leader <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.getSprite("socket").setBrush("bust_base_nomads");
 		local dirt = this.getSprite("dirt");
 		dirt.Visible = true;
-		dirt.Alpha = this.Math.rand(150, 255);
+		dirt.Alpha = ::Math.rand(150, 255);
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_captain"));
 	}
 
 	function onOtherActorDeath( _killer, _victim, _skill )
 	{
-		if (_victim.getType() == this.Const.EntityType.Slave && _victim.isAlliedWith(this)) return;
+		if (_victim.getType() == ::Const.EntityType.Slave && _victim.isAlliedWith(this)) return;
 		this.actor.onOtherActorDeath(_killer, _victim, _skill);
 	}
 
 	function onOtherActorFleeing( _actor )
 	{
-		if (_actor.getType() == this.Const.EntityType.Slave && _actor.isAlliedWith(this)) return;
+		if (_actor.getType() == ::Const.EntityType.Slave && _actor.isAlliedWith(this)) return;
 		this.actor.onOtherActorFleeing(_actor);
 	}
 
 	function pickOutfit()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Body) && this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Body) && this.m.Items.hasEmptySlot(::Const.ItemSlot.Head))
 		{
 			local armor = [
 				[
@@ -87,7 +87,7 @@ this.nomad_leader <- this.inherit("scripts/entity/tactical/abstract_human", {
 				]
 			];
 
-			foreach( item in this.Const.World.Common.pickOutfit(outfits, armor, helmet) )
+			foreach( item in ::Const.World.Common.pickOutfit(outfits, armor, helmet) )
 			{
 				this.m.Items.equip(item);
 			}
@@ -95,9 +95,9 @@ this.nomad_leader <- this.inherit("scripts/entity/tactical/abstract_human", {
 			return;
 		}
 
-		if (this.m.Items.getItemAtSlot(this.Const.ItemSlot.Body) == null)
+		if (this.m.Items.getItemAtSlot(::Const.ItemSlot.Body) == null)
 		{
-			this.m.Items.equip(this.Const.World.Common.pickArmor([
+			this.m.Items.equip(::Const.World.Common.pickArmor([
 				[
 					3,
 					"oriental/plated_nomad_mail"
@@ -121,7 +121,7 @@ this.nomad_leader <- this.inherit("scripts/entity/tactical/abstract_human", {
 			]));
 		}
 
-		if (this.m.Items.getItemAtSlot(this.Const.ItemSlot.Head) == null)
+		if (this.m.Items.getItemAtSlot(::Const.ItemSlot.Head) == null)
 		{
 			local helmet = [
 				[
@@ -149,25 +149,25 @@ this.nomad_leader <- this.inherit("scripts/entity/tactical/abstract_human", {
 				4,
 				"southern_knight_helmet"
 			]);
-			this.m.Items.equip(this.Const.World.Common.pickHelmet(helmet));
+			this.m.Items.equip(::Const.World.Common.pickHelmet(helmet));
 		}
 	}
 
 	function pickNamed()
 	{
 		//decide what item will be named
-		local r = this.Math.rand(1, 4);
+		local r = ::Math.rand(1, 4);
 		if (r == 1) //helmet
 		{
-			local named = this.Const.Items.NamedSouthernHelmets;
-			local weightName = this.Const.World.Common.convNameToList(named);
-			this.m.Items.equip(this.Const.World.Common.pickHelmet(weightName));
+			local named = ::Const.Items.NamedSouthernHelmets;
+			local weightName = ::Const.World.Common.convNameToList(named);
+			this.m.Items.equip(::Const.World.Common.pickHelmet(weightName));
 		}
 		else if (r == 2) //armor
 		{
-			local named = this.Const.Items.NamedSouthernArmors;
-			local weightName = this.Const.World.Common.convNameToList(named);
-			this.m.Items.equip(this.Const.World.Common.pickArmor(weightName));
+			local named = ::Const.Items.NamedSouthernArmors;
+			local weightName = ::Const.World.Common.convNameToList(named);
+			this.m.Items.equip(::Const.World.Common.pickArmor(weightName));
 		}
 		else this.m.IsMinibossWeapon <- true;
 	}

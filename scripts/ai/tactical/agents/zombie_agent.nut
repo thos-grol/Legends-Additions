@@ -3,7 +3,7 @@ this.zombie_agent <- this.inherit("scripts/ai/tactical/agent", {
 	function create()
 	{
 		this.agent.create();
-		this.m.ID = this.Const.AI.Agent.ID.Zombie;
+		this.m.ID = ::Const.AI.Agent.ID.Zombie;
 		this.m.Properties.TargetPriorityHitchanceMult = 0.25;
 		this.m.Properties.TargetPriorityHitpointsMult = 0.25;
 		this.m.Properties.TargetPriorityDamageMult = 0.25;
@@ -36,9 +36,9 @@ this.zombie_agent <- this.inherit("scripts/ai/tactical/agent", {
 	function onUpdate()
 	{
 		this.setEngageRangeBasedOnWeapon();
-		local item = this.m.Actor.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+		local item = this.m.Actor.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
 
-		if (item != null && item.isItemType(this.Const.Items.ItemType.Weapon) && item.isAoE())
+		if (item != null && item.isItemType(::Const.Items.ItemType.Weapon) && item.isAoE())
 		{
 			this.m.Properties.EngageTargetMultipleOpponentsMult = 0.75;
 		}

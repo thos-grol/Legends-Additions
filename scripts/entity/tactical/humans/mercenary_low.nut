@@ -17,7 +17,7 @@ this.mercenary_low <- this.inherit("scripts/entity/tactical/humans/mercenary", {
 
 	function pickOutfit()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				5,
 				"gambeson"
@@ -52,9 +52,9 @@ this.mercenary_low <- this.inherit("scripts/entity/tactical/humans/mercenary", {
 			]
 		]));
 
-		if (this.Math.rand(1, 100) <= 90)
+		if (::Math.rand(1, 100) <= 90)
 		{
-			this.m.Items.equip(this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::Const.World.Common.pickHelmet([
 				[
 					1,
 					"padded_nasal_helmet"

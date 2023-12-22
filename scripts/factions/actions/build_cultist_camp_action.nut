@@ -20,7 +20,7 @@ this.build_cultist_camp_action <- this.inherit("scripts/factions/faction_action"
 	function onExecute( _faction )
 	{
 		local camp;
-		local minY = this.Const.DLC.Desert ? 0.2 : 0.0;
+		local minY = ::Const.DLC.Desert ? 0.2 : 0.0;
 		local tile;
 		local result = findSettlementAndTile(_faction)
 		if (result == null) return;
@@ -42,18 +42,18 @@ this.build_cultist_camp_action <- this.inherit("scripts/factions/faction_action"
 		local tile;
 		local targetSettlement;
 		local avoidTerrain = [
-		this.Const.World.TerrainType.Mountains, 
-		this.Const.World.TerrainType.Swamp,	
-		this.Const.World.TerrainType.Hills,
-		this.Const.World.TerrainType.Forest,
-		this.Const.World.TerrainType.SnowyForest,
-		this.Const.World.TerrainType.LeaveForest,
-		this.Const.World.TerrainType.AutumnForest
+		::Const.World.TerrainType.Mountains, 
+		::Const.World.TerrainType.Swamp,	
+		::Const.World.TerrainType.Hills,
+		::Const.World.TerrainType.Forest,
+		::Const.World.TerrainType.SnowyForest,
+		::Const.World.TerrainType.LeaveForest,
+		::Const.World.TerrainType.AutumnForest
 		]
 		local villages = []
 		local cultistVillages = []
 		local alreadyTargetedVillages = []
-		local biggestVillageToTarget = this.Math.max(1, this.Math.floor(_faction.getLairs().len()/2)) // scales targetable villages with number of cultist locations
+		local biggestVillageToTarget = ::Math.max(1, ::Math.floor(_faction.getLairs().len()/2)) // scales targetable villages with number of cultist locations
 
 		foreach (settlement in _faction.getLairs())
 		{
@@ -86,7 +86,7 @@ this.build_cultist_camp_action <- this.inherit("scripts/factions/faction_action"
 			if (cultistVillages.len() > 0)
 			{
 				//choose closest settlement to a random cultist location
-				local cultistTile = cultistVillages[this.Math.rand(0, cultistVillages.len() -1)].getTile()
+				local cultistTile = cultistVillages[::Math.rand(0, cultistVillages.len() -1)].getTile()
 				local closestDist = 9999
 				foreach (village in villages){
 					local d = cultistTile.getDistanceTo(village.getTile());
@@ -101,9 +101,9 @@ this.build_cultist_camp_action <- this.inherit("scripts/factions/faction_action"
 			}
 			else{
 				//if no cultist location, choose random settlement
-				targetSettlement = villages[this.Math.rand(0, villages.len() -1)]				
+				targetSettlement = villages[::Math.rand(0, villages.len() -1)]				
 			}
-			tile = this.getTileToSpawnLocation(this.Const.Factions.BuildCampTries, avoidTerrain, 7, 10, 1000, 7, 7, targetSettlement.getTile());
+			tile = this.getTileToSpawnLocation(::Const.Factions.BuildCampTries, avoidTerrain, 7, 10, 1000, 7, 7, targetSettlement.getTile());
 		}
 		return {Tile = tile, Settlement = targetSettlement}
 

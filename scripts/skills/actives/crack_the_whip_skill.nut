@@ -15,8 +15,8 @@ this.crack_the_whip_skill <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/whip_02.wav",
 			"sounds/combat/whip_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.Any;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.Any;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = false;
@@ -37,7 +37,7 @@ this.crack_the_whip_skill <- this.inherit("scripts/skills/skill", {
 		local actors = this.Tactical.Entities.getInstancesOfFaction(this.getContainer().getActor().getFaction());
 		foreach( a in actors )
 		{
-			if (a.getType() == this.Const.EntityType.FrenziedDirewolf) return true;
+			if (a.getType() == ::Const.EntityType.FrenziedDirewolf) return true;
 		}
 
 		return false;
@@ -50,7 +50,7 @@ this.crack_the_whip_skill <- this.inherit("scripts/skills/skill", {
 
 		foreach( a in actors )
 		{
-			if (a.getType() != this.Const.EntityType.FrenziedDirewolf ) continue;
+			if (a.getType() != ::Const.EntityType.FrenziedDirewolf ) continue;
 			a.setWhipped(true);
 			this.spawnIcon("status_effect_106", a.getTile());
 		}

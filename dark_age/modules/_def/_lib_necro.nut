@@ -60,7 +60,7 @@
 
 ::Z.Lib.apply_miasma <- function(_tile, _entity)
 {
-    this.Tactical.spawnIconEffect("decay", _tile, this.Const.Tactical.Settings.SkillIconOffsetX, this.Const.Tactical.Settings.SkillIconOffsetY, this.Const.Tactical.Settings.SkillIconScale, this.Const.Tactical.Settings.SkillIconFadeInDuration, this.Const.Tactical.Settings.SkillIconStayDuration, this.Const.Tactical.Settings.SkillIconFadeOutDuration, this.Const.Tactical.Settings.SkillIconMovement);
+    this.Tactical.spawnIconEffect("decay", _tile, ::Const.Tactical.Settings.SkillIconOffsetX, ::Const.Tactical.Settings.SkillIconOffsetY, ::Const.Tactical.Settings.SkillIconScale, ::Const.Tactical.Settings.SkillIconFadeInDuration, ::Const.Tactical.Settings.SkillIconStayDuration, ::Const.Tactical.Settings.SkillIconFadeOutDuration, ::Const.Tactical.Settings.SkillIconMovement);
     local sounds = [];
 
     if (_entity.getFlags().has("human"))
@@ -81,7 +81,7 @@
         ];
     }
 
-    this.Sound.play(sounds[this.Math.rand(0, sounds.len() - 1)], this.Const.Sound.Volume.Actor, _entity.getPos());
+    this.Sound.play(sounds[::Math.rand(0, sounds.len() - 1)], ::Const.Sound.Volume.Actor, _entity.getPos());
 
 
     local tile_effect = _tile.Properties.Effect;
@@ -117,7 +117,7 @@
             }
 
             this.m.Hitpoints = this.getHitpointsMax() * _info.Hitpoints;
-            this.m.XP = this.Math.floor(this.m.XP * _info.Hitpoints);
+            this.m.XP = ::Math.floor(this.m.XP * _info.Hitpoints);
             this.m.BaseProperties.Armor = _info.Armor;
             this.onUpdateInjuryLayer();
 		}

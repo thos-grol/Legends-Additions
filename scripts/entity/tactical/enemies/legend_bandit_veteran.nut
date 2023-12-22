@@ -5,14 +5,14 @@ this.legend_bandit_veteran <- this.inherit("scripts/entity/tactical/abstract_hum
 	function create()
 	{
 		this.m.Name = "Raider (Veteran)";
-		this.m.Type = this.Const.EntityType.BanditVeteran;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.BanditVeteran.XP;
+		this.m.Type = ::Const.EntityType.BanditVeteran;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.BanditVeteran.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.UntidyMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.Raider;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.UntidyMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.Raider;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_melee_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -21,7 +21,7 @@ this.legend_bandit_veteran <- this.inherit("scripts/entity/tactical/abstract_hum
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BanditVeteran);
+		b.setValues(::Const.Tactical.Actor.BanditVeteran);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -29,7 +29,7 @@ this.legend_bandit_veteran <- this.inherit("scripts/entity/tactical/abstract_hum
 		this.getSprite("socket").setBrush("bust_base_bandits");
 		local dirt = this.getSprite("dirt");
 		dirt.Visible = true;
-		dirt.Alpha = this.Math.rand(150, 255);
+		dirt.Alpha = ::Math.rand(150, 255);
 		this.setArmorSaturation(0.6);
 		this.getSprite("shield_icon").setBrightness(0.85);
 	}
@@ -42,7 +42,7 @@ this.legend_bandit_veteran <- this.inherit("scripts/entity/tactical/abstract_hum
 
 	function pickOutfit()
 	{
-		local item = this.Const.World.Common.pickArmor([
+		local item = ::Const.World.Common.pickArmor([
 			[
 				1,
 				"reinforced_mail_hauberk"
@@ -66,9 +66,9 @@ this.legend_bandit_veteran <- this.inherit("scripts/entity/tactical/abstract_hum
 		]);
 		this.m.Items.equip(item);
 
-		if (this.Math.rand(1, 100) <= 85)
+		if (::Math.rand(1, 100) <= 85)
 		{
-			local item = this.Const.World.Common.pickHelmet([
+			local item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"nasal_helmet"

@@ -28,10 +28,10 @@ this.legend_barbarian_vs_shieldmaiden <- this.inherit("scripts/events/event", {
 			{
 				local victorious = false;
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					this.Text = this.Text + " %barbarian% rushes at %shieldmaiden% with a full swing of a weapon, as if trying to cut her in half, but she raises her shield to deftly deflect the blow and immedietly counters with a quick jab of her shield that stuns and knocks %barbarian% back.%SPEECH_ON%See I told you! you rush without thinking and now you are laying on the ground...%SPEECH_OFF%";
-					local MeleeDefense = this.Math.rand(2, 4);
+					local MeleeDefense = ::Math.rand(2, 4);
 					_event.m.Shieldmaiden.getBaseProperties().MeleeDefense += MeleeDefense;
 					_event.m.Shieldmaiden.getSkills().update();
 					_event.markAsLearnedS();
@@ -65,7 +65,7 @@ this.legend_barbarian_vs_shieldmaiden <- this.inherit("scripts/events/event", {
 				else
 				{
 					this.Text = this.Text + " %barbarian% rushes at %shieldmaiden% who tries to react by blocking the blow with her shield but the Barbarian easily circumvents her defence and knocks her to the ground, before stopping a strike an inch from her head.%SPEECH_ON%See I told you! Best defence is a good offence%SPEECH_OFF%";
-					local meleeSkill = this.Math.rand(2, 4);
+					local meleeSkill = ::Math.rand(2, 4);
 					_event.m.Barbarian.getBaseProperties().MeleeSkill += meleeSkill;
 					_event.m.Barbarian.getSkills().update();
 					_event.markAsLearnedB();
@@ -146,8 +146,8 @@ this.legend_barbarian_vs_shieldmaiden <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Barbarian = Barbarian_candidates[this.Math.rand(0, Barbarian_candidates.len() - 1)];
-		this.m.Shieldmaiden = Shieldmaiden_candidates[this.Math.rand(0, Shieldmaiden_candidates.len() - 1)];
+		this.m.Barbarian = Barbarian_candidates[::Math.rand(0, Barbarian_candidates.len() - 1)];
+		this.m.Shieldmaiden = Shieldmaiden_candidates[::Math.rand(0, Shieldmaiden_candidates.len() - 1)];
 		this.m.Score = (Barbarian_candidates.len() + Shieldmaiden_candidates.len()) * 3;
 	}
 

@@ -175,7 +175,7 @@
 	// 					{
 	// 						++bro.getLifetimeStats().BattlesWithoutMe;
 
-	// 						if (bro.getLifetimeStats().BattlesWithoutMe > this.Math.max(2, 6 - bro.getLevel()))
+	// 						if (bro.getLifetimeStats().BattlesWithoutMe > ::Math.max(2, 6 - bro.getLevel()))
 	// 						{
 	// 							bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
 	// 						}
@@ -229,7 +229,7 @@
 	// 				{
 	// 					++bro.getLifetimeStats().BattlesWithoutMe;
 
-	// 					if (bro.getLifetimeStats().BattlesWithoutMe > this.Math.max(2, 6 - bro.getLevel()))
+	// 					if (bro.getLifetimeStats().BattlesWithoutMe > ::Math.max(2, 6 - bro.getLevel()))
 	// 					{
 	// 						bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
 	// 					}
@@ -251,10 +251,10 @@
 
 	// 	if (this.m.StrategicProperties != null && this.m.StrategicProperties.IsArenaMode)
 	// 	{
-	// 		this.Sound.play(::Const.Sound.ArenaEnd[this.Math.rand(0, ::Const.Sound.ArenaEnd.len() - 1)], ::Const.Sound.Volume.Tactical);
+	// 		this.Sound.play(::Const.Sound.ArenaEnd[::Math.rand(0, ::Const.Sound.ArenaEnd.len() - 1)], ::Const.Sound.Volume.Tactical);
 	// 		this.Time.scheduleEvent(this.TimeUnit.Real, 4500, function ( _t )
 	// 		{
-	// 			this.Sound.play(::Const.Sound.ArenaOutro[this.Math.rand(0, ::Const.Sound.ArenaOutro.len() - 1)], ::Const.Sound.Volume.Tactical);
+	// 			this.Sound.play(::Const.Sound.ArenaOutro[::Math.rand(0, ::Const.Sound.ArenaOutro.len() - 1)], ::Const.Sound.Volume.Tactical);
 	// 		}, null);
 	// 	}
 

@@ -69,11 +69,11 @@ this.perk_legend_lithe <- this.inherit("scripts/skills/skill", {
 
 		if (_totalArmorStaminaModifier < armorIdealMin)
 		{
-			mult = this.Math.maxf(0, 1 - 0.01 * this.Math.pow(armorIdealMin - _totalArmorStaminaModifier, steepnessFactor));
+			mult = ::Math.maxf(0, 1 - 0.01 * ::Math.pow(armorIdealMin - _totalArmorStaminaModifier, steepnessFactor));
 		}
 		else if (_totalArmorStaminaModifier > armorIdealMax)
 		{
-			mult = this.Math.maxf(0, 1 - 0.01 * this.Math.pow(_totalArmorStaminaModifier - armorIdealMax, steepnessFactor));
+			mult = ::Math.maxf(0, 1 - 0.01 * ::Math.pow(_totalArmorStaminaModifier - armorIdealMax, steepnessFactor));
 		}
 
 		return mult;
@@ -94,8 +94,8 @@ this.perk_legend_lithe <- this.inherit("scripts/skills/skill", {
 			::Const.ItemSlot.Head
 		]));
 
-		local bonus = this.Math.maxf(this.m.BonusMin, this.Math.minf(this.m.BonusMax, this.m.BonusMax * armorFatMult));
-		return this.Math.floor(bonus);
+		local bonus = ::Math.maxf(this.m.BonusMin, ::Math.minf(this.m.BonusMax, this.m.BonusMax * armorFatMult));
+		return ::Math.floor(bonus);
 	}
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )

@@ -17,7 +17,7 @@ this.oracle_event <- this.inherit("scripts/events/event", {
 					Text = "Tell me my fortune, old woman.",
 					function getResult( _event )
 					{
-						local r = this.Math.rand(1, 100);
+						local r = ::Math.rand(1, 100);
 
 						if (r <= 20 && this.World.getTime().Days > 15)
 						{
@@ -38,7 +38,7 @@ this.oracle_event <- this.inherit("scripts/events/event", {
 					Text = "I\'ll tell you yours instead: You\'re about to give us all your valuables.",
 					function getResult( _event )
 					{
-						local r = this.Math.rand(1, 100);
+						local r = ::Math.rand(1, 100);
 
 						if (r <= 50)
 						{
@@ -185,7 +185,7 @@ this.oracle_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_moral_reputation.png",
 					text = "The company\'s moral reputation decreases slightly"
 				});
-				local money = this.Math.rand(75, 200);
+				local money = ::Math.rand(75, 200);
 				this.World.Assets.addMoney(money);
 				this.List.push({
 					id = 10,
@@ -223,7 +223,7 @@ this.oracle_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 33)
+					if (::Math.rand(1, 100) <= 33)
 					{
 						bro.addLightInjury();
 						this.List.push({

@@ -8,12 +8,12 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		this.m.Difficulty = 2;
 		this.m.Order = 30;
 		this.m.StartingBusinessReputation = 100;
-		this.setRosterReputationTiers(this.Const.Roster.createReputationTiers(this.m.StartingBusinessReputation));
+		this.setRosterReputationTiers(::Const.Roster.createReputationTiers(this.m.StartingBusinessReputation));
 	}
 
 	function isValid()
 	{
-		return this.Const.DLC.Wildmen;
+		return ::Const.DLC.Wildmen;
 	}
 
 	function onSpawnAssets()
@@ -29,7 +29,7 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 
 			while (names.find(bro.getNameOnly()) != null)
 			{
-				bro.setName(this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]);
+				bro.setName(::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]);
 			}
 
 			names.push(bro.getNameOnly());
@@ -46,10 +46,10 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[0].setPlaceInFormation(3);
 		bros[0].m.Talents = [];
 		talents = bros[0].getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.RangedSkill] = 3;
-		talents[this.Const.Attributes.MeleeDefense] = 3;
-		talents[this.Const.Attributes.Initiative] = 3;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.RangedSkill] = 3;
+		talents[::Const.Attributes.MeleeDefense] = 3;
+		talents[::Const.Attributes.Initiative] = 3;
 		bros[0].getFlags().set("Lucky", 3);
 		bros[0].m.PerkPoints = 7;
 		bros[0].m.LevelUps = 7;
@@ -64,14 +64,14 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[1].setPlaceInFormation(4);
 		bros[1].m.Talents = [];
 		talents = bros[1].getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.RangedSkill] = 3;
-		talents[this.Const.Attributes.MeleeDefense] = 2;
-		talents[this.Const.Attributes.Hitpoints] = 3;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.RangedSkill] = 3;
+		talents[::Const.Attributes.MeleeDefense] = 2;
+		talents[::Const.Attributes.Hitpoints] = 3;
 		bros[1].getFlags().set("Lucky", 3);
 		local items = bros[1].getItems();
-		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Mainhand));
-		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Ammo));
+		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Mainhand));
+		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Ammo));
 		items.equip(this.new("scripts/items/weapons/short_bow"));
 		items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
 		bros[1].m.PerkPoints = 7;
@@ -87,14 +87,14 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[2].setPlaceInFormation(5);
 		bros[2].m.Talents = [];
 		talents = bros[2].getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.RangedSkill] = 3;
-		talents[this.Const.Attributes.MeleeDefense] = 2;
-		talents[this.Const.Attributes.Hitpoints] = 3;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.RangedSkill] = 3;
+		talents[::Const.Attributes.MeleeDefense] = 2;
+		talents[::Const.Attributes.Hitpoints] = 3;
 		bros[2].getFlags().set("Lucky", 3);
 		local items = bros[2].getItems();
-		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Mainhand));
-		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Ammo));
+		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Mainhand));
+		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Ammo));
 		items.equip(this.new("scripts/items/weapons/legend_slingstaff"));
 
 		bros[2].m.PerkPoints = 7;
@@ -117,12 +117,12 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		local settlements = this.World.EntityManager.getSettlements();
 		local nearestVillage;
 		local navSettings = this.World.getNavigator().createSettings();
-		navSettings.ActionPointCosts = this.Const.World.TerrainTypeNavCost_Flat;
+		navSettings.ActionPointCosts = ::Const.World.TerrainTypeNavCost_Flat;
 
 		do
 		{
-			local x = this.Math.rand(5, this.Const.World.Settings.SizeX - 5);
-			local y = this.Math.rand(5, this.Const.World.Settings.SizeY - 5);
+			local x = ::Math.rand(5, ::Const.World.Settings.SizeX - 5);
+			local y = ::Math.rand(5, ::Const.World.Settings.SizeY - 5);
 
 			if (!this.World.isValidTileSquare(x, y))
 			{
@@ -134,7 +134,7 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 				if (tile.IsOccupied)
 				{
 				}
-				else if (tile.Type != this.Const.World.TerrainType.Forest && tile.Type != this.Const.World.TerrainType.SnowyForest && tile.Type != this.Const.World.TerrainType.LeaveForest && tile.Type != this.Const.World.TerrainType.AutumnForest)
+				else if (tile.Type != ::Const.World.TerrainType.Forest && tile.Type != ::Const.World.TerrainType.SnowyForest && tile.Type != ::Const.World.TerrainType.LeaveForest && tile.Type != ::Const.World.TerrainType.AutumnForest)
 				{
 				}
 				else
@@ -174,11 +174,11 @@ this.rangers_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		this.World.State.m.Player = this.World.spawnEntity("scripts/entity/world/player_party", spawnTile.Coords.X, spawnTile.Coords.Y);
 		this.World.Assets.updateLook(10);
 		this.World.getCamera().setPos(this.World.State.m.Player.getPos());
-		local f = nearestVillage.getFactionOfType(this.Const.FactionType.NobleHouse);
+		local f = nearestVillage.getFactionOfType(::Const.FactionType.NobleHouse);
 		f.addPlayerRelation(-20.0, "Heard rumors of you poaching in their woods");
 		this.Time.scheduleEvent(this.TimeUnit.Real, 1000, function ( _tag )
 		{
-			this.Music.setTrackList(this.Const.Music.IntroTracks, this.Const.Music.CrossFadeTime);
+			this.Music.setTrackList(::Const.Music.IntroTracks, ::Const.Music.CrossFadeTime);
 			this.World.Events.fire("event.rangers_scenario_intro");
 		}, null);
 	}

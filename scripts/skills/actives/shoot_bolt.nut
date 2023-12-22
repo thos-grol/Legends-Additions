@@ -143,7 +143,7 @@ this.shoot_bolt <- this.inherit("scripts/skills/skill", {
 		this.getItem().setLoaded(false);
 		local skillToAdd = this.new("scripts/skills/actives/reload_bolt");
 		skillToAdd.setItem(this.getItem());
-		skillToAdd.setFatigueCost(this.Math.max(0, skillToAdd.getFatigueCostRaw() + this.getItem().m.FatigueOnSkillUse));
+		skillToAdd.setFatigueCost(::Math.max(0, skillToAdd.getFatigueCostRaw() + this.getItem().m.FatigueOnSkillUse));
 		this.getContainer().add(skillToAdd);
 		return ret;
 	}

@@ -81,7 +81,7 @@ this.giant_tree_in_forest_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Monk = monk_candidates[this.Math.rand(0, monk_candidates.len() - 1)];
+		this.m.Monk = monk_candidates[::Math.rand(0, monk_candidates.len() - 1)];
 		this.m.Score = 10;
 	}
 

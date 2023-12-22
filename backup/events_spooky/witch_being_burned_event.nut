@@ -83,7 +83,7 @@ this.witch_being_burned_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Witchhunter = witchhunter_candidates[this.Math.rand(0, witchhunter_candidates.len() - 1)];
+		this.m.Witchhunter = witchhunter_candidates[::Math.rand(0, witchhunter_candidates.len() - 1)];
 		this.m.Score = 25;
 	}
 

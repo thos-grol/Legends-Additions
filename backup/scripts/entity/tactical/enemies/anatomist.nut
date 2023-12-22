@@ -9,7 +9,7 @@ this.anatomist <- this.inherit("scripts/entity/tactical/enemies/bandit_raider", 
 	function onInit()
 	{
 		this.bandit_raider.onInit();
-		local roll = this.Math.rand(1.0, 100.0);
+		local roll = ::Math.rand(1.0, 100.0);
 		local potions = [
 			"direwolf",
 			"ghoul",
@@ -21,13 +21,13 @@ this.anatomist <- this.inherit("scripts/entity/tactical/enemies/bandit_raider", 
 
 		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Body))
 		{
-			if (this.Math.rand(1, 100) <= 50) this.m.Items.equip(::new("scripts/items/armor/undertaker_apron"));
+			if (::Math.rand(1, 100) <= 50) this.m.Items.equip(::new("scripts/items/armor/undertaker_apron"));
 			else this.m.Items.equip(::new("scripts/items/armor/wanderers_coat"));
 		}
 
-		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head) && this.Math.rand(1, 100) <= 90)
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head) && ::Math.rand(1, 100) <= 90)
 		{
-			if (this.Math.rand(1, 100) <= 50)  this.m.Items.equip(::new("scripts/items/helmets/undertaker_hat"));
+			if (::Math.rand(1, 100) <= 50)  this.m.Items.equip(::new("scripts/items/helmets/undertaker_hat"));
 			else this.m.Items.equip(::new("scripts/items/helmets/physician_mask"));
 		}
 
@@ -36,8 +36,8 @@ this.anatomist <- this.inherit("scripts/entity/tactical/enemies/bandit_raider", 
 
 	function getScaledDifficultyMult()
 	{
-		local s = this.Math.maxf(0.5, 0.6 * this.Math.pow(0.01 * this.World.State.getPlayer().getStrength(), 0.9));
-		local d = this.Math.minf(0, s + this.Math.minf(1.0, this.World.getTime().Days * 0.01));
+		local s = ::Math.maxf(0.5, 0.6 * ::Math.pow(0.01 * this.World.State.getPlayer().getStrength(), 0.9));
+		local d = ::Math.minf(0, s + ::Math.minf(1.0, this.World.getTime().Days * 0.01));
 		return d * ::Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
 	}
 

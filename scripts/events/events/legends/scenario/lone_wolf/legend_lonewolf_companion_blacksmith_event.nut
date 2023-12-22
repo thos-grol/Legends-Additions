@@ -59,7 +59,7 @@ this.legend_lonewolf_companion_blacksmith_event <- this.inherit("scripts/events/
 			],
 			function start( _event )
 			{
-				local money = this.Math.rand(150, 500);
+				local money = ::Math.rand(150, 500);
 				this.World.Assets.addMoney(money);
 
 				if (_event.m.Looted == 1)
@@ -69,13 +69,13 @@ this.legend_lonewolf_companion_blacksmith_event <- this.inherit("scripts/events/
 					this.List.push({
 						id = 10,
 						icon = "ui/items/" + item.getIcon(),
-						text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+						text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 					});
 					this.World.Assets.addMoney(money);
 					this.List.push({
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gained [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+						text = "You gained [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 					});
 				}
 			}
@@ -128,7 +128,7 @@ this.legend_lonewolf_companion_blacksmith_event <- this.inherit("scripts/events/
 				talents[::Const.Attributes.Hitpoints] = 2;
 				_event.m.Dude.m.Attributes = [];
 				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
-				_event.m.Dude.items.unequip(this.items.getItemAtSlot(this.Const.ItemSlot.Mainhand));
+				_event.m.Dude.items.unequip(this.items.getItemAtSlot(::Const.ItemSlot.Mainhand));
 				_event.m.Dude.items.equip(this.new("scripts/items/weapons/shamshir"));
 				_event.m.Dude.getBackground().m.RawDescription = "%name% specialised in forging exotic weapons for nobility — however their fighting style and skill tells you there is more to them than initally meets the eye, even if they don\'t want to talk about it.";
 				_event.m.Dude.addLightInjury();

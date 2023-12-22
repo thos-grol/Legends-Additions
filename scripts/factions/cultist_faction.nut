@@ -3,11 +3,11 @@ this.cultist_faction <- this.inherit("scripts/factions/faction", {
 	function create()
 	{
 		this.faction.create();
-		this.m.Type = this.Const.FactionType.Cultists;
+		this.m.Type = ::Const.FactionType.Cultists;
 		this.m.Banner = 13;
 		this.m.Base = "world_base_07";
 		this.m.TacticalBase = "bust_base_bandits";
-		this.m.CombatMusic = this.Const.Music.BanditTracks;
+		this.m.CombatMusic = ::Const.Music.BanditTracks;
 		this.m.PlayerRelation = 0.0;
 		this.m.IsHidden = true;
 		this.m.IsRelationDecaying = false;

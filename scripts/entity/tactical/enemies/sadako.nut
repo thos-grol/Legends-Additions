@@ -3,13 +3,13 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 	},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Hexe;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Hexe.XP;
+		this.m.Type = ::Const.EntityType.Hexe;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.Hexe.XP;
 		this.m.ConfidentMoraleBrush = "icon_confident_orcs";
 		this.m.DecapitateSplatterOffset = this.createVec(-8, -26);
 		this.actor.create();
-		this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
+		this.m.Sound[::Const.Sound.ActorEvent.DamageReceived] = [
 			"sounds/enemies/dlc2/hexe_hurt_01.wav",
 			"sounds/enemies/dlc2/hexe_hurt_02.wav",
 			"sounds/enemies/dlc2/hexe_hurt_03.wav",
@@ -24,21 +24,21 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/dlc2/hexe_hurt_12.wav",
 			"sounds/enemies/dlc2/hexe_hurt_13.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Death] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Death] = [
 			"sounds/enemies/dlc2/hexe_death_01.wav",
 			"sounds/enemies/dlc2/hexe_death_02.wav",
 			"sounds/enemies/dlc2/hexe_death_03.wav",
 			"sounds/enemies/dlc2/hexe_death_04.wav",
 			"sounds/enemies/dlc2/hexe_death_05.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Idle] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Idle] = [
 			"sounds/enemies/dlc2/hexe_idle_01.wav",
 			"sounds/enemies/dlc2/hexe_idle_02.wav",
 			"sounds/enemies/dlc2/hexe_idle_03.wav",
 			"sounds/enemies/dlc2/hexe_idle_04.wav",
 			"sounds/enemies/dlc2/hexe_idle_05.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Other1] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Other1] = [
 			"sounds/enemies/dlc2/hexe_idle_06.wav",
 			"sounds/enemies/dlc2/hexe_idle_07.wav",
 			"sounds/enemies/dlc2/hexe_idle_08.wav",
@@ -66,7 +66,7 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/dlc2/hexe_idle_29.wav",
 			"sounds/enemies/dlc2/hexe_idle_30.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Flee] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Flee] = [
 			"sounds/enemies/dlc2/hexe_flee_01.wav",
 			"sounds/enemies/dlc2/hexe_flee_02.wav",
 			"sounds/enemies/dlc2/hexe_flee_03.wav",
@@ -76,24 +76,24 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/dlc2/hexe_flee_07.wav",
 			"sounds/enemies/dlc2/hexe_flee_08.wav"
 		];
-		this.m.SoundVolume[this.Const.Sound.ActorEvent.DamageReceived] = 1.5;
-		this.m.SoundVolume[this.Const.Sound.ActorEvent.Idle] = 5.0;
-		this.m.SoundVolume[this.Const.Sound.ActorEvent.Other1] = 2.5;
+		this.m.SoundVolume[::Const.Sound.ActorEvent.DamageReceived] = 1.5;
+		this.m.SoundVolume[::Const.Sound.ActorEvent.Idle] = 5.0;
+		this.m.SoundVolume[::Const.Sound.ActorEvent.Other1] = 2.5;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/hexe_agent");
 		this.m.AIAgent.setActor(this);
 	}
 
 	function playIdleSound()
 	{
-		local r = this.Math.rand(1, 30);
+		local r = ::Math.rand(1, 30);
 
 		if (r <= 5)
 		{
-			this.playSound(this.Const.Sound.ActorEvent.Idle, this.Const.Sound.Volume.Actor * this.Const.Sound.Volume.ActorIdle * this.m.SoundVolume[this.Const.Sound.ActorEvent.Idle] * this.m.SoundVolumeOverall * (this.Math.rand(60, 100) * 0.01) * (this.isHiddenToPlayer ? 0.33 : 1.0), this.m.SoundPitch * (this.Math.rand(85, 115) * 0.01));
+			this.playSound(::Const.Sound.ActorEvent.Idle, ::Const.Sound.Volume.Actor * ::Const.Sound.Volume.ActorIdle * this.m.SoundVolume[::Const.Sound.ActorEvent.Idle] * this.m.SoundVolumeOverall * (::Math.rand(60, 100) * 0.01) * (this.isHiddenToPlayer ? 0.33 : 1.0), this.m.SoundPitch * (::Math.rand(85, 115) * 0.01));
 		}
 		else
 		{
-			this.playSound(this.Const.Sound.ActorEvent.Other1, this.Const.Sound.Volume.Actor * this.Const.Sound.Volume.ActorIdle * this.m.SoundVolume[this.Const.Sound.ActorEvent.Other1] * this.m.SoundVolumeOverall * (this.Math.rand(60, 100) * 0.01) * (this.isHiddenToPlayer ? 0.33 : 1.0), this.m.SoundPitch * (this.Math.rand(85, 115) * 0.01));
+			this.playSound(::Const.Sound.ActorEvent.Other1, ::Const.Sound.Volume.Actor * ::Const.Sound.Volume.ActorIdle * this.m.SoundVolume[::Const.Sound.ActorEvent.Other1] * this.m.SoundVolumeOverall * (::Math.rand(60, 100) * 0.01) * (this.isHiddenToPlayer ? 0.33 : 1.0), this.m.SoundPitch * (::Math.rand(85, 115) * 0.01));
 		}
 	}
 
@@ -106,7 +106,7 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 
 		if (_tile != null)
 		{
-			local flip = this.Math.rand(0, 100) < 50;
+			local flip = ::Math.rand(0, 100) < 50;
 			local decal;
 			this.m.IsCorpseFlipped = flip;
 			local body = this.getSprite("body");
@@ -115,21 +115,21 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 			body.Alpha = 255;
 			head.Alpha = 255;
 			hair.Alpha = 255;
-			decal = _tile.spawnDetail(body.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+			decal = _tile.spawnDetail(body.getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 			decal.Color = body.Color;
 			decal.Saturation = body.Saturation;
 			decal.Scale = 0.95;
 
-			if (_fatalityType != this.Const.FatalityType.Decapitated)
+			if (_fatalityType != ::Const.FatalityType.Decapitated)
 			{
-				decal = _tile.spawnDetail(head.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(head.getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Color = head.Color;
 				decal.Saturation = head.Saturation;
 				decal.Scale = 0.95;
-				decal = _tile.spawnDetail(hair.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(hair.getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.95;
 			}
-			else if (_fatalityType == this.Const.FatalityType.Decapitated)
+			else if (_fatalityType == ::Const.FatalityType.Decapitated)
 			{
 				local layers = [
 					head.getBrush().Name + "_dead",
@@ -142,32 +142,32 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 				decap[1].Scale = 0.95;
 			}
 
-			if (_skill && _skill.getProjectileType() == this.Const.ProjectileType.Arrow)
+			if (_skill && _skill.getProjectileType() == ::Const.ProjectileType.Arrow)
 			{
-				decal = _tile.spawnDetail(body.getBrush().Name + "_dead_arrows", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(body.getBrush().Name + "_dead_arrows", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.95;
 			}
-			else if (_skill && _skill.getProjectileType() == this.Const.ProjectileType.Javelin)
+			else if (_skill && _skill.getProjectileType() == ::Const.ProjectileType.Javelin)
 			{
-				decal = _tile.spawnDetail(body.getBrush().Name + "_dead_javelin", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(body.getBrush().Name + "_dead_javelin", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.95;
 			}
 
 			this.spawnTerrainDropdownEffect(_tile);
 			this.spawnFlies(_tile);
-			local corpse = clone this.Const.Corpse;
+			local corpse = clone ::Const.Corpse;
 			corpse.CorpseName = "A Hexe";
-			corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+			corpse.IsHeadAttached = _fatalityType != ::Const.FatalityType.Decapitated;
 			_tile.Properties.set("Corpse", corpse);
 			this.Tactical.Entities.addCorpse(_tile);
 
-			if (_killer == null || _killer.getFaction() == this.Const.Faction.Player || _killer.getFaction() == this.Const.Faction.PlayerAnimals)
+			if (_killer == null || _killer.getFaction() == ::Const.Faction.Player || _killer.getFaction() == ::Const.Faction.PlayerAnimals)
 			{
-				local n = 1 + (!this.Tactical.State.isScenarioMode() && this.Math.rand(1, 100) <= this.World.Assets.getExtraLootChance() ? 1 : 0);
+				local n = 1 + (!this.Tactical.State.isScenarioMode() && ::Math.rand(1, 100) <= this.World.Assets.getExtraLootChance() ? 1 : 0);
 
 				for( local i = 0; i < n; i = i )
 				{
-					local r = this.Math.rand(1, 100);
+					local r = ::Math.rand(1, 100);
 					local loot;
 
 					if (r <= 35)
@@ -185,7 +185,7 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 
 					loot.drop(_tile);
 
-					if (this.Math.rand(1, 100) <= 20)
+					if (::Math.rand(1, 100) <= 20)
 					{
 						local food = this.new("scripts/items/supplies/black_marsh_stew_item");
 						food.randomizeAmount();
@@ -193,7 +193,7 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 						food.drop(_tile);
 					}
 
-					if (this.Math.rand(1, 100) <= 30)
+					if (::Math.rand(1, 100) <= 30)
 					{
 						local loot = this.new("scripts/items/loot/jade_broche_item");
 						loot.drop(_tile);
@@ -209,10 +209,10 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 					chance = 10;
 				}
 
-				if (this.Math.rand(1, 100) <= chance)
+				if (::Math.rand(1, 100) <= chance)
 				{
 					local rune;
-					local selected = this.Math.rand(11, 13);
+					local selected = ::Math.rand(11, 13);
 
 					switch(selected)
 					{
@@ -250,14 +250,14 @@ this.sadako <- this.inherit("scripts/entity/tactical/actor", {
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Hexe);
+		b.setValues(::Const.Tactical.Actor.Hexe);
 		b.TargetAttractionMult = 3.0;
 		b.IsImmuneToDisarm = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.addSprite("socket").setBrush("bust_base_beasts");
 
 		local body = this.addSprite("body");

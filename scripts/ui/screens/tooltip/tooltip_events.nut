@@ -190,7 +190,7 @@ this.tooltip_events <- {
 
 				if (actor.isPlacedOnMap() && actor.isPlayerControlled())
 				{
-					if (this.Math.abs(lastTileHovered.Level - actor.getTile().Level) == 1)
+					if (::Math.abs(lastTileHovered.Level - actor.getTile().Level) == 1)
 					{
 						tooltipContent.push({
 							id = 90,
@@ -746,7 +746,7 @@ this.tooltip_events <- {
 			{
 				local price = (_item.getRepairMax() - _item.getRepair()) * ::Const.World.Assets.CostToRepairPerPoint;
 				local value = _item.getRawValue() * (1.0 - _item.getRepair() / _item.getRepairMax()) * 0.2 * this.World.State.getCurrentTown().getPriceMult() * ::Const.Difficulty.SellPriceMult[this.World.Assets.getEconomicDifficulty()];
-				price = this.Math.max(price, value);
+				price = ::Math.max(price, value);
 
 				if (this.World.Assets.getMoney() >= price)
 				{
@@ -1265,7 +1265,7 @@ this.tooltip_events <- {
 					bro.getName(),
 					bro.getBackground().getNameOnly()
 				];
-				local bm = this.Math.floor(bro.getBarterModifier() * 10000.0 / greed) / 100;
+				local bm = ::Math.floor(bro.getBarterModifier() * 10000.0 / greed) / 100;
 
 				if (bm > 0)
 				{
@@ -1286,7 +1286,7 @@ this.tooltip_events <- {
 				brolist.push(L);
 			}
 
-			local time = this.Math.floor(money / this.Math.max(1, dailyMoney));
+			local time = ::Math.floor(money / ::Math.max(1, dailyMoney));
 			local ret = [];
 
 			if (dailyMoney == 0)
@@ -1521,19 +1521,19 @@ this.tooltip_events <- {
 
 		case "assets.Food":
 			local food = this.World.Assets.getFood();
-			local dailyFood = this.Math.ceil(this.World.Assets.getDailyFoodCost() * ::Const.World.TerrainFoodConsumption[this.World.State.getPlayer().getTile().Type]);
+			local dailyFood = ::Math.ceil(this.World.Assets.getDailyFoodCost() * ::Const.World.TerrainFoodConsumption[this.World.State.getPlayer().getTile().Type]);
 			local brolist = [];
 
 			foreach( bro in this.World.getPlayerRoster().getAll() )
 			{
-				local brofood = this.Math.ceil(bro.getDailyFood() * ::Const.World.TerrainFoodConsumption[this.World.State.getPlayer().getTile().Type]);
+				local brofood = ::Math.ceil(bro.getDailyFood() * ::Const.World.TerrainFoodConsumption[this.World.State.getPlayer().getTile().Type]);
 				brolist.push([
 					brofood,
 					bro.getName()
 				]);
 			}
 
-			local time = this.Math.floor(food / dailyFood);
+			local time = ::Math.floor(food / dailyFood);
 			local ret = [
 				{
 					id = 1,

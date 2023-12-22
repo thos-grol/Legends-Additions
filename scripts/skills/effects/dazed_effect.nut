@@ -51,8 +51,8 @@ this.dazed_effect <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		local statusResisted = actor.getCurrentProperties().IsResistantToAnyStatuses ? this.Math.rand(1, 100) <= 50 : false;
-		statusResisted = statusResisted || actor.getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 33 : false;
+		local statusResisted = actor.getCurrentProperties().IsResistantToAnyStatuses ? ::Math.rand(1, 100) <= 50 : false;
+		statusResisted = statusResisted || actor.getCurrentProperties().IsResistantToPhysicalStatuses ? ::Math.rand(1, 100) <= 33 : false;
 
 		if (statusResisted)
 		{
@@ -65,7 +65,7 @@ this.dazed_effect <- this.inherit("scripts/skills/skill", {
 		}
 		else if (!this.m.Container.getActor().getCurrentProperties().IsImmuneToDaze)
 		{
-			this.m.TurnsLeft = this.Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+			this.m.TurnsLeft = ::Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
 		}
 		else
 		{
@@ -75,7 +75,7 @@ this.dazed_effect <- this.inherit("scripts/skills/skill", {
 
 	function onRefresh()
 	{
-		this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+		this.m.TurnsLeft = ::Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 		this.spawnIcon("status_effect_87", this.getContainer().getActor().getTile());
 	}
 

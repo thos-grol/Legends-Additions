@@ -22,7 +22,7 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 					Text = "Form up and be ready!",
 					function getResult( _event )
 					{
-						local r = this.Math.rand(1, 100);
+						local r = ::Math.rand(1, 100);
 
 						if (r <= 65)
 						{
@@ -104,7 +104,7 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 						properties.Music = ::Const.Music.BarbarianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, this.Math.rand(75, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, ::Math.rand(75, 110) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -132,7 +132,7 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 						properties.Music = ::Const.Music.BarbarianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, this.Math.rand(110, 140) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, ::Math.rand(110, 140) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -164,7 +164,7 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Barbarian.getImagePath());
-				local bravery = this.Math.rand(2, 4);
+				local bravery = ::Math.rand(2, 4);
 				_event.m.Barbarian.getBaseProperties().Bravery += bravery;
 				_event.m.Barbarian.getSkills().update();
 				this.List.push({
@@ -215,7 +215,7 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 						properties.Music = ::Const.Music.BarbarianTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, this.Math.rand(60, 75) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, ::Math.rand(60, 75) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -225,7 +225,7 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Wildman.getImagePath());
-				local bravery = this.Math.rand(4, 6);
+				local bravery = ::Math.rand(4, 6);
 				_event.m.Wildman.getBaseProperties().Bravery += bravery;
 				_event.m.Wildman.getSkills().update();
 				this.List.push({
@@ -266,8 +266,8 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 			function start( _event )
 			{
 				this.Characters.push(_event.m.MasterArcher.getImagePath());
-				local bravery = this.Math.rand(2, 5);
-				local initiative = this.Math.rand(3, 6);
+				local bravery = ::Math.rand(2, 5);
+				local initiative = ::Math.rand(3, 6);
 				_event.m.MasterArcher.getBaseProperties().Bravery += bravery;
 				_event.m.MasterArcher.getBaseProperties().Initiative += initiative;
 				_event.m.MasterArcher.getSkills().update();
@@ -312,7 +312,7 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 						properties.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Center;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, this.Math.rand(60, 70) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, ::Math.rand(60, 70) * _event.getReputationToDifficultyLightMult(), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -328,8 +328,8 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Assassin.getImagePath());
-				local bravery = this.Math.rand(4, 7);
-				local initiative = this.Math.rand(3, 6);
+				local bravery = ::Math.rand(4, 7);
+				local initiative = ::Math.rand(3, 6);
 				_event.m.Assassin.getBaseProperties().Bravery += bravery;
 				_event.m.Assassin.getBaseProperties().Initiative += initiative;
 				_event.m.Assassin.getSkills().update();
@@ -411,22 +411,22 @@ this.legend_northmen_forest_ambush_event <- this.inherit("scripts/events/event",
 
 		if (candidates_barbarian.len() != 0)
 		{
-			this.m.Barbarian = candidates_barbarian[this.Math.rand(0, candidates_barbarian.len() - 1)];
+			this.m.Barbarian = candidates_barbarian[::Math.rand(0, candidates_barbarian.len() - 1)];
 		}
 
 		if (candidates_wildman.len() != 0)
 		{
-			this.m.Wildman = candidates_wildman[this.Math.rand(0, candidates_wildman.len() - 1)];
+			this.m.Wildman = candidates_wildman[::Math.rand(0, candidates_wildman.len() - 1)];
 		}
 
 		if (candidates_masterarcher.len() != 0)
 		{
-			this.m.MasterArcher = candidates_masterarcher[this.Math.rand(0, candidates_masterarcher.len() - 1)];
+			this.m.MasterArcher = candidates_masterarcher[::Math.rand(0, candidates_masterarcher.len() - 1)];
 		}
 
 		if (candidates_assassin.len() != 0)
 		{
-			this.m.Assassin = candidates_assassin[this.Math.rand(0, candidates_assassin.len() - 1)];
+			this.m.Assassin = candidates_assassin[::Math.rand(0, candidates_assassin.len() - 1)];
 		}
 
 		this.m.Score = 15;

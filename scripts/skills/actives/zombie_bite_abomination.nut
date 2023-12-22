@@ -15,15 +15,15 @@ this.zombie_bite_abomination <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/zombie_bite_03.wav",
 			"sounds/enemies/zombie_bite_04.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
 		this.m.IsStacking = false;
 		this.m.IsAttack = true;
-		this.m.InjuriesOnBody = this.Const.Injury.CuttingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.CuttingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.CuttingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.CuttingHead;
 		this.m.DirectDamageMult = 0.1;
 		this.m.ActionPointCost = 4;
 		this.m.FatigueCost = 10;
@@ -44,7 +44,7 @@ this.zombie_bite_abomination <- this.inherit("scripts/skills/skill", {
 
 		// if (success)
 		// {
-		// 	if (!target.getCurrentProperties().IsImmuneToPoison && ("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary && hp - target.getHitpoints() >= this.Const.Combat.PoisonEffectMinDamage)
+		// 	if (!target.getCurrentProperties().IsImmuneToPoison && ("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Legendary && hp - target.getHitpoints() >= ::Const.Combat.PoisonEffectMinDamage)
 		// 	{
 		// 		local effect = this.new("scripts/skills/effects/zombie_poison_effect");
 		// 		target.getSkills().add(effect);
@@ -59,7 +59,7 @@ this.zombie_bite_abomination <- this.inherit("scripts/skills/skill", {
 		if (_skill == this)
 		{
 			local items = this.m.Container.getActor().getItems();
-			local mhand = items.getItemAtSlot(this.Const.ItemSlot.Mainhand);
+			local mhand = items.getItemAtSlot(::Const.ItemSlot.Mainhand);
 
 			if (mhand != null)
 			{
@@ -71,7 +71,7 @@ this.zombie_bite_abomination <- this.inherit("scripts/skills/skill", {
 			_properties.DamageRegularMin += 45;
 			_properties.DamageRegularMax += 65;
 			_properties.DamageArmorMult = 0.5;
-			_properties.HitChance[this.Const.BodyPart.Head] += 15;
+			_properties.HitChance[::Const.BodyPart.Head] += 15;
 
 			if (this.canDoubleGrip())
 			{
@@ -102,19 +102,19 @@ this.zombie_bite_abomination <- this.inherit("scripts/skills/skill", {
 		if (_targetEntity.getTile().IsCorpseSpawned && _targetEntity.getTile().Properties.get("Corpse").IsResurrectable)
 		{
 			local corpse = _targetEntity.getTile().Properties.get("Corpse");
-			corpse.Faction = actor.getFaction() == this.Const.Faction.Player ? this.Const.Faction.PlayerAnimals : actor.getFaction();
+			corpse.Faction = actor.getFaction() == ::Const.Faction.Player ? ::Const.Faction.PlayerAnimals : actor.getFaction();
 			corpse.Hitpoints = 1.0;
 			corpse.Items = _targetEntity.getItems();
 			corpse.IsConsumable = false;
 			corpse.IsResurrectable = false;
-			this.Time.scheduleEvent(this.TimeUnit.Rounds, this.Math.rand(1, 1), this.Tactical.Entities.resurrect, corpse);
+			this.Time.scheduleEvent(this.TimeUnit.Rounds, ::Math.rand(1, 1), this.Tactical.Entities.resurrect, corpse);
 		}
 	}
 
 	function canDoubleGrip()
 	{
-		local main = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
-		local off = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local main = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
+		local off = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 		return main != null && off == null && main.isDoubleGrippable();
 	}
 

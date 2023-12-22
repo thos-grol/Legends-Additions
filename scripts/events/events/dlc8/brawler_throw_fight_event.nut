@@ -19,7 +19,7 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 					Text = "You need to take a fall.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 50 ? "B" : "C";
+						return ::Math.rand(1, 100) <= 50 ? "B" : "C";
 					}
 
 				},
@@ -27,7 +27,7 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 					Text = "He\'s not taking a fall.",
 					function getResult( _event )
 					{
-						local outcome = this.Math.rand(1, 100);
+						local outcome = ::Math.rand(1, 100);
 
 						if (outcome <= 39 + _event.m.Brawler.getLevel() * 10)
 						{
@@ -156,10 +156,10 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Brawler.getImagePath());
-				local resolve_boost = this.Math.rand(2, 4);
-				local initiative_boost = this.Math.rand(2, 4);
-				local melee_skill_boost = this.Math.rand(1, 3);
-				local melee_defense_boost = this.Math.rand(1, 3);
+				local resolve_boost = ::Math.rand(2, 4);
+				local initiative_boost = ::Math.rand(2, 4);
+				local melee_skill_boost = ::Math.rand(1, 3);
+				local melee_defense_boost = ::Math.rand(1, 3);
 				_event.m.Brawler.getBaseProperties().Bravery += resolve_boost;
 				_event.m.Brawler.getBaseProperties().Initiative += initiative_boost;
 				_event.m.Brawler.getBaseProperties().MeleeSkill += melee_skill_boost;
@@ -236,8 +236,8 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 					icon = injury.getIcon(),
 					text = _event.m.Brawler.getName() + " suffers " + injury.getNameOnly()
 				});
-				local initiative_boost = this.Math.rand(2, 4);
-				local melee_skill_boost = this.Math.rand(1, 3);
+				local initiative_boost = ::Math.rand(2, 4);
+				local melee_skill_boost = ::Math.rand(1, 3);
 				_event.m.Brawler.getBaseProperties().Initiative += initiative_boost;
 				_event.m.Brawler.getBaseProperties().MeleeSkill += melee_skill_boost;
 				_event.m.Brawler.getSkills().update();
@@ -386,7 +386,7 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Brawler = brawler_candidates[this.Math.rand(0, brawler_candidates.len() - 1)];
+		this.m.Brawler = brawler_candidates[::Math.rand(0, brawler_candidates.len() - 1)];
 		this.m.Town = town;
 		this.m.Score = 3 * brawler_candidates.len();
 	}

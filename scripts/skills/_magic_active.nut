@@ -117,7 +117,7 @@ this._magic_active <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		if (actor.getFaction() == this.Const.Faction.Player) return;
+		if (actor.getFaction() == ::Const.Faction.Player) return;
 		loadAI();
 	}
 

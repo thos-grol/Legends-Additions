@@ -121,19 +121,19 @@ this.town_training_dialog_module <- this.inherit("scripts/ui/screens/ui_module",
 		switch(trainingID)
 		{
 		case 0:
-			price = this.Math.round(50);
+			price = ::Math.round(50);
 			effect.add_proficiency(::Math.rand(0, 5));
 			effect.m.Icon = "skills/status_effect_75.png";
 			break;
 
 		case 1:
-			price = this.Math.round(150);
+			price = ::Math.round(150);
 			effect.add_proficiency(::Math.rand(2, 7));
 			effect.m.Icon = "skills/status_effect_76.png";
 			break;
 
 		case 2:
-			price = this.Math.round(300);
+			price = ::Math.round(300);
 			effect.add_proficiency(::Math.rand(5, 12));
 			effect.m.Icon = "skills/status_effect_77.png";
 			break;

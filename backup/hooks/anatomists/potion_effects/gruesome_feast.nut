@@ -57,7 +57,7 @@
         else this.onRemoveCorpse(_targetTile);
 
         this.spawnBloodbath(_targetTile);
-        _user.setHitpoints(this.Math.min(_user.getHitpoints() + 50, _user.getHitpointsMax()));
+        _user.setHitpoints(::Math.min(_user.getHitpoints() + 50, _user.getHitpointsMax()));
         local skills = _user.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
 
         foreach( s in skills )
@@ -183,7 +183,7 @@
 						{
 							++bro.getLifetimeStats().BattlesWithoutMe;
 
-							if (bro.getLifetimeStats().BattlesWithoutMe > this.Math.max(2, 6 - bro.getLevel()))
+							if (bro.getLifetimeStats().BattlesWithoutMe > ::Math.max(2, 6 - bro.getLevel()))
 							{
 								bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
 							}
@@ -250,7 +250,7 @@
 					{
 						++bro.getLifetimeStats().BattlesWithoutMe;
 
-						if (bro.getLifetimeStats().BattlesWithoutMe > this.Math.max(2, 6 - bro.getLevel()))
+						if (bro.getLifetimeStats().BattlesWithoutMe > ::Math.max(2, 6 - bro.getLevel()))
 						{
 							bro.worsenMood(::Const.MoodChange.BattleWithoutMe, "Felt useless in reserve");
 						}
@@ -272,10 +272,10 @@
 
 		if (this.m.StrategicProperties != null && this.m.StrategicProperties.IsArenaMode)
 		{
-			this.Sound.play(::Const.Sound.ArenaEnd[this.Math.rand(0, ::Const.Sound.ArenaEnd.len() - 1)], ::Const.Sound.Volume.Tactical);
+			this.Sound.play(::Const.Sound.ArenaEnd[::Math.rand(0, ::Const.Sound.ArenaEnd.len() - 1)], ::Const.Sound.Volume.Tactical);
 			this.Time.scheduleEvent(this.TimeUnit.Real, 4500, function ( _t )
 			{
-				this.Sound.play(::Const.Sound.ArenaOutro[this.Math.rand(0, ::Const.Sound.ArenaOutro.len() - 1)], ::Const.Sound.Volume.Tactical);
+				this.Sound.play(::Const.Sound.ArenaOutro[::Math.rand(0, ::Const.Sound.ArenaOutro.len() - 1)], ::Const.Sound.Volume.Tactical);
 			}, null);
 		}
 

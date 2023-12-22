@@ -167,7 +167,7 @@ this.greenskins_outro_event <- this.inherit("scripts/events/event", {
 		local nobles = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 		_vars.push([
 			"randomnoblehouse",
-			nobles[this.Math.rand(0, nobles.len() - 1)].getName()
+			nobles[::Math.rand(0, nobles.len() - 1)].getName()
 		]);
 	}
 

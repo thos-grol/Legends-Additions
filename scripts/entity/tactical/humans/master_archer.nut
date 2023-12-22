@@ -2,16 +2,16 @@ this.master_archer <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.MasterArcher;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.MasterArcher.XP;
+		this.m.Type = ::Const.EntityType.MasterArcher;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.MasterArcher.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.SmartMale;
-		this.m.Hairs = this.Const.Hair.TidyMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.Tidy;
+		this.m.Faces = ::Const.Faces.SmartMale;
+		this.m.Hairs = ::Const.Hair.TidyMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.Tidy;
 
-		if (this.Math.rand(1, 100) <= 10)
+		if (::Math.rand(1, 100) <= 10)
 		{
 			this.setGender(1);
 		}
@@ -24,7 +24,7 @@ this.master_archer <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.MasterArcher);
+		b.setValues(::Const.Tactical.Actor.MasterArcher);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -55,7 +55,7 @@ this.master_archer <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function pickOutfit()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Body))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Body))
 		{
 			local armor = [
 				[
@@ -83,30 +83,30 @@ this.master_archer <- this.inherit("scripts/entity/tactical/abstract_human", {
 					"basic_mail_shirt"
 				]
 			];
-			this.m.Items.equip(this.Const.World.Common.pickArmor(armor));
+			this.m.Items.equip(::Const.World.Common.pickArmor(armor));
 		}
 
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head) && this.Math.rand(1, 100) <= 50)
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head) && ::Math.rand(1, 100) <= 50)
 		{
 			local helmet = [
 				"helmets/hood",
 				"helmets/headscarf"
 			];
-			this.m.Items.equip(this.new("scripts/items/" + helmet[this.Math.rand(0, helmet.len() - 1)]));
+			this.m.Items.equip(this.new("scripts/items/" + helmet[::Math.rand(0, helmet.len() - 1)]));
 		}
 	}
 
 	function pickNamed()
 	{
 		//decide what item will be named
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 		if (r == 1) //armor
 		{
 			local armor = [
 				"armor/named/black_leather_armor",
 				"armor/named/blue_studded_mail_armor"
 			];
-			this.m.Items.equip(this.Const.World.Common.pickArmor(this.Const.World.Common.convNameToList(armor)));
+			this.m.Items.equip(::Const.World.Common.pickArmor(::Const.World.Common.convNameToList(armor)));
 		}
 		else this.m.IsMinibossWeapon <- true;
 	}

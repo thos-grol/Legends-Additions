@@ -24,9 +24,9 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 	},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Serpent;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Serpent.XP;
+		this.m.Type = ::Const.EntityType.Serpent;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.Serpent.XP;
 		this.m.BloodSplatterOffset = this.createVec(0, 5);
 		this.m.DecapitateSplatterOffset = this.createVec(15, -26);
 		this.m.DecapitateBloodAmount = 1.0;
@@ -52,19 +52,19 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 			"injury.burnt_hands"
 		];
 		this.actor.create();
-		this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
+		this.m.Sound[::Const.Sound.ActorEvent.DamageReceived] = [
 			"sounds/enemies/dlc6/snake_hurt_01.wav",
 			"sounds/enemies/dlc6/snake_hurt_02.wav",
 			"sounds/enemies/dlc6/snake_hurt_03.wav",
 			"sounds/enemies/dlc6/snake_hurt_04.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Death] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Death] = [
 			"sounds/enemies/dlc6/snake_death_01.wav",
 			"sounds/enemies/dlc6/snake_death_02.wav",
 			"sounds/enemies/dlc6/snake_death_03.wav",
 			"sounds/enemies/dlc6/snake_death_04.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Idle] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Idle] = [
 			"sounds/enemies/dlc6/snake_idle_01.wav",
 			"sounds/enemies/dlc6/snake_idle_02.wav",
 			"sounds/enemies/dlc6/snake_idle_03.wav",
@@ -79,17 +79,17 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/dlc6/snake_idle_12.wav",
 			"sounds/enemies/dlc6/snake_idle_13.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Move] = this.m.Sound[this.Const.Sound.ActorEvent.Idle];
-		this.m.SoundVolume[this.Const.Sound.ActorEvent.Move] = 0.7;
-		this.m.SoundVolume[this.Const.Sound.ActorEvent.Idle] = 2.0;
-		this.m.SoundPitch = this.Math.rand(95, 105) * 0.01;
+		this.m.Sound[::Const.Sound.ActorEvent.Move] = this.m.Sound[::Const.Sound.ActorEvent.Idle];
+		this.m.SoundVolume[::Const.Sound.ActorEvent.Move] = 0.7;
+		this.m.SoundVolume[::Const.Sound.ActorEvent.Idle] = 2.0;
+		this.m.SoundPitch = ::Math.rand(95, 105) * 0.01;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/serpent_agent");
 		this.m.AIAgent.setActor(this);
 	}
 
 	function playSound( _type, _volume, _pitch = 1.0 )
 	{
-		if (_type == this.Const.Sound.ActorEvent.Move && this.Math.rand(1, 100) <= 33)
+		if (_type == ::Const.Sound.ActorEvent.Move && ::Math.rand(1, 100) <= 33)
 		{
 			return;
 		}
@@ -107,27 +107,27 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 	{
 		if (_tile != null)
 		{
-			local flip = this.Math.rand(0, 100) < 50;
+			local flip = ::Math.rand(0, 100) < 50;
 			local decal;
 			local body_decal;
 			local head_decal;
 			this.m.IsCorpseFlipped = flip;
 			local body = this.getSprite("body");
-			decal = _tile.spawnDetail("bust_snake_body_0" + this.m.Variant + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+			decal = _tile.spawnDetail("bust_snake_body_0" + this.m.Variant + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 			decal.Color = body.Color;
 			decal.Saturation = body.Saturation;
 			decal.Scale = 0.9;
 			body_decal = decal;
 
-			if (_fatalityType != this.Const.FatalityType.Decapitated)
+			if (_fatalityType != ::Const.FatalityType.Decapitated)
 			{
-				decal = _tile.spawnDetail("bust_snake_body_0" + this.m.Variant + "_head_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail("bust_snake_body_0" + this.m.Variant + "_head_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Color = body.Color;
 				decal.Saturation = body.Saturation;
 				decal.Scale = 0.9;
 				head_decal = decal;
 			}
-			else if (_fatalityType == this.Const.FatalityType.Decapitated)
+			else if (_fatalityType == ::Const.FatalityType.Decapitated)
 			{
 				local layers = [
 					"bust_snake_body_0" + this.m.Variant + "_head_dead"
@@ -140,20 +140,20 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 
 			this.spawnTerrainDropdownEffect(_tile);
 			this.spawnFlies(_tile);
-			local corpse = clone this.Const.Corpse;
+			local corpse = clone ::Const.Corpse;
 			corpse.CorpseName = "A Serpent";
-			corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+			corpse.IsHeadAttached = _fatalityType != ::Const.FatalityType.Decapitated;
 			corpse.IsConsumable = false;
 			_tile.Properties.set("Corpse", corpse);
 			this.Tactical.Entities.addCorpse(_tile);
 
-			if ((_killer == null || _killer.getFaction() == this.Const.Faction.Player || _killer.getFaction() == this.Const.Faction.PlayerAnimals) && this.Math.rand(1, 100) <= 75)
+			if ((_killer == null || _killer.getFaction() == ::Const.Faction.Player || _killer.getFaction() == ::Const.Faction.PlayerAnimals) && ::Math.rand(1, 100) <= 75)
 			{
-				local n = 1 + (!this.Tactical.State.isScenarioMode() && this.Math.rand(1, 100) <= this.World.Assets.getExtraLootChance() ? 1 : 0);
+				local n = 1 + (!this.Tactical.State.isScenarioMode() && ::Math.rand(1, 100) <= this.World.Assets.getExtraLootChance() ? 1 : 0);
 
 				for( local i = 0; i < n; i = i )
 				{
-					local r = this.Math.rand(1, 100);
+					local r = ::Math.rand(1, 100);
 					local loot;
 
 					if (r <= 60)
@@ -165,7 +165,7 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 					i = ++i;
 				}
 
-				if (this.Math.rand(1, 100) <= 5)
+				if (::Math.rand(1, 100) <= 5)
 				{
 					local loot = this.new("scripts/items/loot/rainbow_scale_item");
 					loot.drop(_tile);
@@ -181,7 +181,7 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Serpent);
+		b.setValues(::Const.Tactical.Actor.Serpent);
 		b.IsAffectedByNight = false;
 		b.IsImmuneToDisarm = true;
 
@@ -190,24 +190,24 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.addSprite("socket").setBrush("bust_base_beasts");
 		local body = this.addSprite("body");
-		this.m.Variant = this.Math.rand(1, 2);
-		body.setBrush("bust_snake_0" + this.m.Variant + "_head_0" + this.Math.rand(1, 2));
+		this.m.Variant = ::Math.rand(1, 2);
+		body.setBrush("bust_snake_0" + this.m.Variant + "_head_0" + ::Math.rand(1, 2));
 
-		if (this.m.Variant == 2 && this.Math.rand(0, 100) < 90)
+		if (this.m.Variant == 2 && ::Math.rand(0, 100) < 90)
 		{
 			body.varySaturation(0.1);
 		}
 
-		if (this.Math.rand(0, 100) < 90)
+		if (::Math.rand(0, 100) < 90)
 		{
 			body.varyColor(0.1, 0.1, 0.1);
 		}
 
-		if (this.Math.rand(0, 100) < 90)
+		if (::Math.rand(0, 100) < 90)
 		{
 			body.varyBrightness(0.1);
 		}

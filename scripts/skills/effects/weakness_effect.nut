@@ -73,7 +73,7 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 
 		local actor = this.getContainer().getActor();
 
-		this.m.TurnsLeft = this.Math.max(1, this.m.TurnsLeft + actor.getCurrentProperties().NegativeStatusEffectDuration);
+		this.m.TurnsLeft = ::Math.max(1, this.m.TurnsLeft + actor.getCurrentProperties().NegativeStatusEffectDuration);
 		if (actor.getFlags().has("WeaknessImmune") || this.m.TurnsLeft == 0)
 		{
 			if (!actor.isHiddenToPlayer())

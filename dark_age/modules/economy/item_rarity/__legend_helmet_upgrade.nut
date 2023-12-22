@@ -148,7 +148,7 @@
 				id = 5,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "Maximum Fatigue: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getStaminaModifier()) + this.Math.abs(this.getStaminaModifier()), this.getStaminaModifier())
+				text = "Maximum Fatigue: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getStaminaModifier()) + ::Math.abs(this.getStaminaModifier()), this.getStaminaModifier())
 			});
 		}
 
@@ -158,7 +158,7 @@
 				id = 5,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = this.format("(%.1f Armor per 1 Weight)", this.getConditionMax() / (1.0 * this.Math.abs(this.getStaminaModifier())))
+				text = this.format("(%.1f Armor per 1 Weight)", this.getConditionMax() / (1.0 * ::Math.abs(this.getStaminaModifier())))
 			});
 		}
 
@@ -168,7 +168,7 @@
 				id = 6,
 				type = "text",
 				icon = "ui/icons/vision.png",
-				text = "Vision " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getVision()) + this.Math.abs(this.getVision()), this.getVision())
+				text = "Vision " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getVision()) + ::Math.abs(this.getVision()), this.getVision())
 			});
 		}
 

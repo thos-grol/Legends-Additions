@@ -33,8 +33,8 @@
 		this.location.onInit();
 		local body = this.addSprite("body");
 		body.Scale = 0.75;
-		body.setBrush("world_battlefield_0" + this.Math.rand(1, 2));
-		body.setHorizontalFlipping(this.Math.rand(0, 1) == 1);
+		body.setBrush("world_battlefield_0" + ::Math.rand(1, 2));
+		body.setHorizontalFlipping(::Math.rand(0, 1) == 1);
 		this.registerThinker();
 	}
 

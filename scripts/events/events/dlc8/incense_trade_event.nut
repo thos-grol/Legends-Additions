@@ -18,7 +18,7 @@ this.incense_trade_event <- this.inherit("scripts/events/event", {
 					Text = "Uh, alright.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 66 ? "B" : "C";
+						return ::Math.rand(1, 100) <= 66 ? "B" : "C";
 					}
 
 				},
@@ -243,7 +243,7 @@ this.incense_trade_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_dancer.len() != 0)
 		{
-			this.m.Dancer = candidates_dancer[this.Math.rand(0, candidates_dancer.len() - 1)];
+			this.m.Dancer = candidates_dancer[::Math.rand(0, candidates_dancer.len() - 1)];
 		}
 
 		this.m.Score = 5;

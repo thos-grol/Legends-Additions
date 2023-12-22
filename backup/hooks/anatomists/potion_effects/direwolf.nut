@@ -102,7 +102,7 @@
 		local actor = this.getContainer().getActor();
 		if (!actor.getFlags().has("werewolf_8")) return;
         if (!_skill.isAttack() || _skill.isRanged() || _targetEntity == null || _targetEntity.isAlliedWith(actor) || !::Tactical.TurnSequenceBar.isActiveEntity(actor)) return;
-		if (this.Math.rand(1, 100) > 15) return;
+		if (::Math.rand(1, 100) > 15) return;
 
 		this.result <- {
 			Self = actor,
@@ -117,7 +117,7 @@
 	{
 		if (target.getFaction() != tag.Self.getFaction() || !target.getFlags().has("werewolf")) return;
 		
-		target.setMoraleState(this.Math.min(::Const.MoraleState.Confident, target.getMoraleState() + 1))
+		target.setMoraleState(::Math.min(::Const.MoraleState.Confident, target.getMoraleState() + 1))
 		tag.Skill.spawnIcon("status_effect_06", target.getTile());
 
 		local effect = target.getSkills().getSkillByID("effects.killing_frenzy");
@@ -133,6 +133,6 @@
 	o.getAdditionalDamage <- function() 
 	{ 
 		local healthMissing = this.getContainer().getActor().getHitpointsMax() - this.getContainer().getActor().getHitpoints();
-		return this.Math.floor(healthMissing * 0.5);
+		return ::Math.floor(healthMissing * 0.5);
 	}
 });

@@ -27,7 +27,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 					function getResult( _event )
 					{
 						this.World.Assets.addMoralReputation(1);
-						return this.Math.rand(1, 100) <= 50 ? "B" : "C";
+						return ::Math.rand(1, 100) <= 50 ? "B" : "C";
 					}
 
 				}
@@ -77,7 +77,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 
 					if (id == "background.daytaler" || id == "background.female_daytaler" || id == "background.mason" || id == "background.lumberjack" || id == "background.miller" || id == "background.female_miller" || id == "background.farmhand" || id == "background.female_farmhand" || id == "background.gravedigger")
 					{
-						if (this.Math.rand(1, 100) <= 33)
+						if (::Math.rand(1, 100) <= 33)
 						{
 							local effect = ::new("scripts/skills/effects_world/exhausted_effect");
 							bro.getSkills().add(effect);
@@ -88,7 +88,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 							});
 						}
 
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							bro.improveMood(0.5, "Helped build a mill");
 
@@ -175,7 +175,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 
 					if (id == "background.daytaler" || id == "background.mason" || id == "background.lumberjack" || id == "background.miller" || id == "background.female_miller" || id == "background.female_farmhand" || id == "background.farmhand" || id == "background.gravedigger")
 					{
-						if (this.Math.rand(1, 100) <= 33)
+						if (::Math.rand(1, 100) <= 33)
 						{
 							local effect = ::new("scripts/skills/effects_world/exhausted_effect");
 							bro.getSkills().add(effect);
@@ -186,7 +186,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 							});
 						}
 
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							bro.improveMood(0.5, "Helped build a mill");
 
@@ -231,7 +231,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 
 					if (id == "background.daytaler" || id == "background.mason" || id == "background.lumberjack" || id == "background.miller" || id == "background.farmhand" || id == "background.female_miller" || id == "background.female_farmhand" || id == "background.gravedigger")
 					{
-						if (this.Math.rand(1, 100) <= 33)
+						if (::Math.rand(1, 100) <= 33)
 						{
 							local effect = ::new("scripts/skills/effects_world/exhausted_effect");
 							bro.getSkills().add(effect);
@@ -242,7 +242,7 @@ this.lend_men_to_build_event <- this.inherit("scripts/events/event", {
 							});
 						}
 
-						if (this.Math.rand(1, 100) <= 33)
+						if (::Math.rand(1, 100) <= 33)
 						{
 							bro.worsenMood(1.0, "Helped build a mill without getting paid");
 

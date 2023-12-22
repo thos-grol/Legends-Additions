@@ -199,9 +199,9 @@
 			id = 4,
 			type = "progressbar",
 			icon = "ui/icons/armor_body.png",
-			value = this.Math.floor(this.getArmor()),
-			valueMax = this.Math.floor(this.getArmorMax()),
-			text = "" + this.Math.floor(this.getArmor()) + " / " + this.Math.floor(this.getArmorMax()) + "",
+			value = ::Math.floor(this.getArmor()),
+			valueMax = ::Math.floor(this.getArmorMax()),
+			text = "" + ::Math.floor(this.getArmor()) + " / " + ::Math.floor(this.getArmorMax()) + "",
 			style = "armor-body-slim"
 		});
 
@@ -211,7 +211,7 @@
 				id = 5,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "Weight: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getStaminaModifier()) + this.Math.abs(this.getStaminaModifier()), this.getStaminaModifier())
+				text = "Weight: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getStaminaModifier()) + ::Math.abs(this.getStaminaModifier()), this.getStaminaModifier())
 			});
 		}
 
@@ -221,7 +221,7 @@
 				id = 5,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = this.format("(%.1f Armor per 1 Weight)", this.getArmorMax() / (1.0 * this.Math.abs(this.getStaminaModifier())))
+				text = this.format("(%.1f Armor per 1 Weight)", this.getArmorMax() / (1.0 * ::Math.abs(this.getStaminaModifier())))
 			});
 		}
 
@@ -257,7 +257,7 @@
 					id = 10,
 					type = "text",
 					icon = "ui/icons/fatigue.png",
-					text = "Weight: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.m.StaminaModifier) + this.Math.abs(this.m.StaminaModifier), this.m.StaminaModifier)
+					text = "Weight: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.m.StaminaModifier) + ::Math.abs(this.m.StaminaModifier), this.m.StaminaModifier)
 				});
 			}
 		}

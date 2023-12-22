@@ -14,7 +14,7 @@
 			return;
 		}
 		local prev_condition = this.m.Condition;
-		this.m.Condition = this.Math.max(0, this.m.Condition - totalDamage) * 1.0;
+		this.m.Condition = ::Math.max(0, this.m.Condition - totalDamage) * 1.0;
 		::Z.Log.damage_armor(this.getContainer().getActor(), this.makeName(), this.m.Condition, prev_condition, _damage);
 
 		if (this.m.Condition == 0 && !this.m.IsIndestructible && _attacker != null && _attacker.isPlayerControlled())

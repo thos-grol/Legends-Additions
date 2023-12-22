@@ -29,16 +29,16 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropMoney(this.Math.rand(25, 100), _lootTable);
-		this.dropArmorParts(this.Math.rand(0, 5), _lootTable);
-		this.dropAmmo(this.Math.rand(0, 15), _lootTable);
-		this.dropMedicine(this.Math.rand(0, 5), _lootTable);
+		this.dropMoney(::Math.rand(25, 100), _lootTable);
+		this.dropArmorParts(::Math.rand(0, 5), _lootTable);
+		this.dropAmmo(::Math.rand(0, 15), _lootTable);
+		this.dropMedicine(::Math.rand(0, 5), _lootTable);
 		local treasure = [
 			"loot/bead_necklace_item",
 			"loot/bead_necklace_item",
 			"loot/signet_ring_item"
 		];
-		this.dropTreasure(this.Math.rand(1, 2), treasure, _lootTable);
+		this.dropTreasure(::Math.rand(1, 2), treasure, _lootTable);
 	}
 
 	o.onInit = function()

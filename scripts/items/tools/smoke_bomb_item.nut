@@ -8,8 +8,8 @@ this.smoke_bomb_item <- this.inherit("scripts/items/tools/alchemy_tool", {
 		this.m.Description = "A small pot that quickly creates a dense smoke cloud when broken on the ground. Useful for covering movement.";
 		this.m.IconLarge = "tools/smoke_bomb_01.png";
 		this.m.Icon = "tools/smoke_bomb_01_70x70.png";
-		this.m.SlotType = this.Const.ItemSlot.Offhand;
-		this.m.ItemType = this.Const.Items.ItemType.Tool;
+		this.m.SlotType = ::Const.ItemSlot.Offhand;
+		this.m.ItemType = ::Const.Items.ItemType.Tool;
 		this.m.AddGenericSkill = true;
 		this.m.ShowArmamentIcon = true;
 		this.m.ArmamentIcon = "icon_smoke_bomb_01";
@@ -66,13 +66,13 @@ this.smoke_bomb_item <- this.inherit("scripts/items/tools/alchemy_tool", {
 			id = 7,
 			type = "text",
 			icon = "ui/icons/vision.png",
-			text = "Range of [color=" + this.Const.UI.Color.PositiveValue + "]" + this.m.RangeMax + "[/color] tiles"
+			text = "Range of [color=" + ::Const.UI.Color.PositiveValue + "]" + this.m.RangeMax + "[/color] tiles"
 		});
 		result.push({
 			id = 5,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Covers [color=" + this.Const.UI.Color.DamageValue + "]7[/color] tiles in smoke for one round, allowing anyone inside to move freely and ignore zones of control"
+			text = "Covers [color=" + ::Const.UI.Color.DamageValue + "]7[/color] tiles in smoke for one round, allowing anyone inside to move freely and ignore zones of control"
 		});
 		if (this.m.Ammo <= 0.0)
 		{
@@ -80,7 +80,7 @@ this.smoke_bomb_item <- this.inherit("scripts/items/tools/alchemy_tool", {
 				id = 6,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Needs to be restocked by an alchemist[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Needs to be restocked by an alchemist[/color]"
 			});
 		}
 		return result;
@@ -88,7 +88,7 @@ this.smoke_bomb_item <- this.inherit("scripts/items/tools/alchemy_tool", {
 
 	function playInventorySound( _eventType )
 	{
-		this.Sound.play("sounds/move_pot_clay_01.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/move_pot_clay_01.wav", ::Const.Sound.Volume.Inventory);
 	}
 
 	function onEquip()

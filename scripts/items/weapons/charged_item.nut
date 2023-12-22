@@ -18,9 +18,9 @@ this.charged_item <- this.inherit("scripts/items/weapons/weapon", {
 		this.m.Description = "Heavy and unwieldy throwing axes used by northern barbarians. Difficult to throw and hit with, but deadly.";
 		this.m.IconLarge = "weapons/ranged/throwing_axes_heavy_01.png";
 		this.m.Icon = "weapons/ranged/throwing_axes_heavy_01_70x70.png";
-		this.m.WeaponType = this.Const.Items.WeaponType.Throwing;
-		this.m.SlotType = this.Const.ItemSlot.Mainhand;
-		this.m.ItemType = this.Const.Items.ItemType.Weapon | this.Const.Items.ItemType.RangedWeapon | this.Const.Items.ItemType.Ammo | this.Const.Items.ItemType.Defensive | this.Const.Items.ItemType.OneHanded;
+		this.m.WeaponType = ::Const.Items.WeaponType.Throwing;
+		this.m.SlotType = ::Const.ItemSlot.Mainhand;
+		this.m.ItemType = ::Const.Items.ItemType.Weapon | ::Const.Items.ItemType.RangedWeapon | ::Const.Items.ItemType.Ammo | ::Const.Items.ItemType.Defensive | ::Const.Items.ItemType.OneHanded;
 		this.m.AddGenericSkill = true;
 		this.m.ShowArmamentIcon = true;
 		this.m.ArmamentIcon = "icon_throwing_axes_heavy_01";

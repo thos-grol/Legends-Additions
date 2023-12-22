@@ -2,14 +2,14 @@ this.legend_noble_halberdier <- this.inherit("scripts/entity/tactical/abstract_h
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.LegendHalberdier;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.LegendHalberdier.XP;
+		this.m.Type = ::Const.EntityType.LegendHalberdier;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.LegendHalberdier.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.CommonMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.Tidy;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.CommonMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.Tidy;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/military_melee_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -18,7 +18,7 @@ this.legend_noble_halberdier <- this.inherit("scripts/entity/tactical/abstract_h
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.LegendHalberdier);
+		b.setValues(::Const.Tactical.Actor.LegendHalberdier);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -42,12 +42,12 @@ this.legend_noble_halberdier <- this.inherit("scripts/entity/tactical/abstract_h
 
 		this.m.Surcoat = banner;
 
-		if (this.Math.rand(1, 100) <= 90)
+		if (::Math.rand(1, 100) <= 90)
 		{
 			this.getSprite("surcoat").setBrush("surcoat_" + (banner < 10 ? "0" + banner : banner));
 		}
 
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"seedmaster_noble_armor"
@@ -58,13 +58,13 @@ this.legend_noble_halberdier <- this.inherit("scripts/entity/tactical/abstract_h
 			]
 		]));
 
-		if (this.Math.rand(1, 100) <= 90)
+		if (::Math.rand(1, 100) <= 90)
 		{
 			local helmet;
 
 			if (banner <= 4)
 			{
-				helmet = this.Const.World.Common.pickHelmet([
+				helmet = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"flat_top_helmet"
@@ -105,7 +105,7 @@ this.legend_noble_halberdier <- this.inherit("scripts/entity/tactical/abstract_h
 			}
 			else if (banner <= 7)
 			{
-				helmet = this.Const.World.Common.pickHelmet([
+				helmet = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"flat_top_helmet"
@@ -138,7 +138,7 @@ this.legend_noble_halberdier <- this.inherit("scripts/entity/tactical/abstract_h
 			}
 			else
 			{
-				helmet = this.Const.World.Common.pickHelmet([
+				helmet = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"nasal_helmet"
@@ -190,7 +190,7 @@ this.legend_noble_halberdier <- this.inherit("scripts/entity/tactical/abstract_h
 		}
 		else
 		{
-			this.m.Items.equip(this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::Const.World.Common.pickHelmet([
 				[
 					2,
 					"aketon_cap"

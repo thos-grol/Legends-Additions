@@ -4,7 +4,7 @@ this.blueprint_potion_winter_01 <- this.inherit("scripts/crafting/blueprint", {
 	function create()
 	{
 		this.blueprint.create();
-		this.m.Type = this.Const.Items.ItemType.Usable;
+		this.m.Type = ::Const.Items.ItemType.Usable;
 		this.m.PreviewCraftable = this.new("scripts/items/misc/anatomist/mage_winter_potion_item");
 		this.m.Cost = 200;
 		local ingredients = [

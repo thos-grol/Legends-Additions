@@ -26,7 +26,7 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		if (actor.getFlags().has("Intelligent")) return;
 
 		local tier = 1;
-		local roll = this.Math.rand(1, 100);
+		local roll = ::Math.rand(1, 100);
 		if (roll <= 10) tier = 4; //Genius
 		else if (roll <= 30) tier = 3; //Gifted
 		else if (roll <= 70) tier = 2; //Above Average

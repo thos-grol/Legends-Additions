@@ -12,7 +12,7 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 	function create()
 	{
 		this.contract.create();
-		this.m.DifficultyMult = this.Math.rand(100, 115) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(100, 115) * 0.01;
 		this.m.Type = "contract.restore_location";
 		this.m.Name = "Rebuilding Effort";
 		this.m.Description = "Local lords have a spare work party and want to restore the nearby ruins. Clear the location out and escort the work party to the site.";
@@ -31,7 +31,7 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.DifficultyMult = ::Math.rand(90, 100) * 0.01;
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -54,7 +54,7 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 					"Secure the ruined %location% near %townname%"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -67,7 +67,7 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 10)
 				{
@@ -187,10 +187,10 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 
 				if (!this.World.State.isPaused())
 				{
-					this.World.setSpeedMult(this.Const.World.SpeedSettings.EscortMult);
+					this.World.setSpeedMult(::Const.World.SpeedSettings.EscortMult);
 				}
 
-				this.World.State.m.LastWorldSpeedMult = this.Const.World.SpeedSettings.EscortMult;
+				this.World.State.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.EscortMult;
 			}
 
 			function update()
@@ -280,8 +280,8 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -344,19 +344,19 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						local tile = this.World.State.getPlayer().getTile();
-						local p = this.Const.Tactical.CombatInfo.getClone();
-						p.Music = this.Const.Music.BanditTracks;
-						p.TerrainTemplate = this.Const.World.TerrainTacticalTemplate[tile.TacticalType];
+						local p = ::Const.Tactical.CombatInfo.getClone();
+						p.Music = ::Const.Music.BanditTracks;
+						p.TerrainTemplate = ::Const.World.TerrainTacticalTemplate[tile.TacticalType];
 						p.Tile = tile;
 						p.CombatID = "RestoreLocationContract";
 						p.TerrainTemplate = "tactical.plains";
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
 						p.LocationTemplate.Template[0] = "tactical.human_camp";
-						p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.None;
+						p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.None;
 						p.LocationTemplate.CutDownTrees = true;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.BanditRoamers, 90 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BanditRoamers, 90 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -376,15 +376,15 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						local tile = this.World.State.getPlayer().getTile();
-						local p = this.Const.Tactical.CombatInfo.getClone();
-						p.Music = this.Const.Music.BeastsTracks;
-						p.TerrainTemplate = this.Const.World.TerrainTacticalTemplate[tile.TacticalType];
+						local p = ::Const.Tactical.CombatInfo.getClone();
+						p.Music = ::Const.Music.BeastsTracks;
+						p.TerrainTemplate = ::Const.World.TerrainTacticalTemplate[tile.TacticalType];
 						p.Tile = tile;
 						p.CombatID = "RestoreLocationContract";
 						p.TerrainTemplate = "tactical.plains";
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Spiders, 90 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).getID());
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Spiders, 90 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -448,8 +448,8 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.World.Assets.addMoralReputation(2);
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to secure a ruined " + this.Contract.m.Location.getRealName());
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to secure a ruined " + this.Contract.m.Location.getRealName());
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -527,9 +527,9 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.Contract.m.Location.setActive(true);
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Helped rebuild a " + this.Contract.m.Location.getRealName());
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Helped rebuild a " + this.Contract.m.Location.getRealName());
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -541,7 +541,7 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -559,8 +559,8 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Darn it!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to protect a building trek");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to protect a building trek");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -581,8 +581,8 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Darn it!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to secure the " + this.Contract.m.Location.getName());
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to secure the " + this.Contract.m.Location.getName());
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -595,17 +595,17 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 	function spawnCaravan()
 	{
 		local faction = this.World.FactionManager.getFaction(this.getFaction());
-		local party = faction.spawnEntity(this.m.Home.getTile(), "Worker Caravan", false, this.Const.World.Spawn.CaravanEscort, this.m.Home.getResources() * 0.4);
+		local party = faction.spawnEntity(this.m.Home.getTile(), "Worker Caravan", false, ::Const.World.Spawn.CaravanEscort, this.m.Home.getResources() * 0.4);
 		party.getSprite("banner").Visible = false;
 		party.getSprite("base").Visible = false;
 		party.setMirrored(true);
 		party.setDescription("A caravan of workers and building materials from " + this.m.Home.getName() + ".");
-		party.setFootprintType(this.Const.World.FootprintsType.Caravan);
-		party.setMovementSpeed(this.Const.World.MovementSettings.Speed * 0.5);
+		party.setFootprintType(::Const.World.FootprintsType.Caravan);
+		party.setMovementSpeed(::Const.World.MovementSettings.Speed * 0.5);
 		party.setLeaveFootprints(false);
 		local c = party.getController();
-		c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
-		c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+		c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 		local move = this.new("scripts/ai/world/orders/move_order");
 		move.setDestination(this.m.Location.getTile());
 		move.setRoadsOnly(false);

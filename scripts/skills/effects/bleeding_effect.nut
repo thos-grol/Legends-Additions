@@ -70,7 +70,7 @@ this.bleeding_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		if (this.getContainer().getActor().getCurrentProperties().IsResistantToAnyStatuses && this.Math.rand(1, 100) <= 50)
+		if (this.getContainer().getActor().getCurrentProperties().IsResistantToAnyStatuses && ::Math.rand(1, 100) <= 50)
 		{
 			if (!this.getContainer().getActor().isHiddenToPlayer())
 			{
@@ -81,7 +81,7 @@ this.bleeding_effect <- this.inherit("scripts/skills/skill", {
 		}
 		else
 		{
-			this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+			this.m.TurnsLeft = ::Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 			if (this.getContainer().hasSkill("trait.bleeder")) ++this.m.TurnsLeft;
 			::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " is bleeding");
 		}

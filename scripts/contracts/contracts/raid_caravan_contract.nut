@@ -26,7 +26,7 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -82,7 +82,7 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 					"Return to %townname%"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -95,14 +95,14 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 				this.Flags.set("Survivors", 0);
 
 				if (r <= 10)
 				{
 					this.Flags.set("IsBribe", true);
-					this.Flags.set("Bribe1", this.Contract.beautifyNumber(this.Contract.m.Payment.Pool * (this.Math.rand(70, 150) * 0.01)));
-					this.Flags.set("Bribe2", this.Contract.beautifyNumber(this.Contract.m.Payment.Pool * (this.Math.rand(70, 150) * 0.01)));
+					this.Flags.set("Bribe1", this.Contract.beautifyNumber(this.Contract.m.Payment.Pool * (::Math.rand(70, 150) * 0.01)));
+					this.Flags.set("Bribe2", this.Contract.beautifyNumber(this.Contract.m.Payment.Pool * (::Math.rand(70, 150) * 0.01)));
 				}
 				else if (r <= 15)
 				{
@@ -130,19 +130,19 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				local enemyFaction = this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse"));
 				local best_start = this.World.getEntityByID(this.Flags.get("InterceptStart"));
 				local best_dest = this.World.getEntityByID(this.Flags.get("InterceptDest"));
-				local spawnParty = this.Const.World.Spawn.NobleCaravan;
-				local r = this.Math.rand(1, 100);
+				local spawnParty = ::Const.World.Spawn.NobleCaravan;
+				local r = ::Math.rand(1, 100);
 
 				if (r > 75)
 				{
-					spawnParty = this.Const.World.Spawn.Mercenaries;
+					spawnParty = ::Const.World.Spawn.Mercenaries;
 				}
 				else if (r > 50)
 				{
-					spawnParty = this.Const.World.Spawn.MixedNobleCaravan;
+					spawnParty = ::Const.World.Spawn.MixedNobleCaravan;
 				}
 
-				local party = enemyFaction.spawnEntity(best_start.getTile(), "Caravan", false, this.Const.World.Spawn.NobleCaravan, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = enemyFaction.spawnEntity(best_start.getTile(), "Caravan", false, ::Const.World.Spawn.NobleCaravan, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.getSprite("base").Visible = false;
 				party.getSprite("banner").setBrush(enemyFaction.getBannerSmall());
 				party.setMirrored(true);
@@ -150,17 +150,17 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				party.setImportant(true);
 				party.setDiscovered(true);
 				party.setDescription("A caravan with armed escorts transporting something worth protecting between settlements.");
-				party.setFootprintType(this.Const.World.FootprintsType.Caravan);
+				party.setFootprintType(::Const.World.FootprintsType.Caravan);
 				party.getFlags().set("IsCaravan", true);
 				party.setAttackableByAI(false);
 				party.getFlags().add("ContractCaravan");
 				this.Contract.m.Target = this.WeakTableRef(party);
 				this.Contract.m.UnitsSpawned.push(party);
-				party.getLoot().Money = this.Math.rand(50, 100);
-				party.getLoot().ArmorParts = this.Math.rand(0, 10);
-				party.getLoot().Medicine = this.Math.rand(0, 2);
-				party.getLoot().Ammo = this.Math.rand(0, 20);
-				local r = this.Math.rand(1, 6);
+				party.getLoot().Money = ::Math.rand(50, 100);
+				party.getLoot().ArmorParts = ::Math.rand(0, 10);
+				party.getLoot().Medicine = ::Math.rand(0, 2);
+				party.getLoot().Ammo = ::Math.rand(0, 20);
+				local r = ::Math.rand(1, 6);
 
 				if (r == 1)
 				{
@@ -184,8 +184,8 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				}
 
 				local c = party.getController();
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 				local move = this.new("scripts/ai/world/orders/move_order");
 				move.setDestination(best_dest.getTile());
 				move.setRoadsOnly(true);
@@ -320,7 +320,7 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.setScreen("Success1");
 						this.World.Contracts.showActiveContract();
 					}
-					else if (this.Math.rand(1, 100) > this.Flags.get("Survivors") * 15)
+					else if (::Math.rand(1, 100) > this.Flags.get("Survivors") * 15)
 					{
 						this.Contract.setScreen("Failure1");
 						this.World.Contracts.showActiveContract();
@@ -338,8 +338,8 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -425,12 +425,12 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 			function start()
 			{
 				this.World.Assets.addMoney(this.Flags.get("Bribe1"));
-				this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail * 2);
-				this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail);
+				this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail * 2);
+				this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("Bribe1") + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("Bribe1") + "[/color] Crowns"
 				});
 			}
 
@@ -455,12 +455,12 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 			function start()
 			{
 				this.World.Assets.addMoney(this.Flags.get("Bribe2"));
-				this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail * 2);
+				this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail * 2);
 				this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().set("Betrayed", true);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("Bribe2") + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("Bribe2") + "[/color] Crowns"
 				});
 			}
 
@@ -494,8 +494,8 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "To Arms!",
 					function getResult()
 					{
-						this.Const.World.Common.addTroop(this.Contract.m.Target, {
-							Type = this.Const.World.Spawn.Troops.Swordmaster
+						::Const.World.Common.addTroop(this.Contract.m.Target, {
+							Type = ::Const.World.Spawn.Troops.Swordmaster
 						}, true, this.Contract.getDifficultyMult() >= 1.1 ? 5 : 0);
 						this.Contract.getActiveState().onTargetAttacked(this.Contract.m.Target, true);
 						return 0;
@@ -518,9 +518,9 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 						local enemyFaction = this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse"));
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos(), true);
 						p.CombatID = "UndeadSurprise";
-						p.Music = this.Const.Music.UndeadTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.Music = ::Const.Music.UndeadTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.TemporaryEnemies = [
 							this.Flags.get("EnemyNobleHouse")
 						];
@@ -529,9 +529,9 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 						];
 						p.EnemyBanners = [
 							enemyFaction.getBannerSmall(),
-							this.Const.ZombieBanners[0]
+							::Const.ZombieBanners[0]
 						];
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Necromancer, 100 * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Necromancer, 100 * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, false);
 						return 0;
 					}
@@ -638,9 +638,9 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A good payday at last.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion() * 2);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail * 2, "Extorted Money");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail * 2, "Extorted Money");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -652,7 +652,7 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() * 2 + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() * 2 + "[/color] Crowns"
 				});
 			}
 
@@ -669,9 +669,9 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well earned.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Procured compromising papers");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Procured compromising papers");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -683,7 +683,7 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -701,9 +701,9 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Destroyed a caravan");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Destroyed a caravan");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -715,7 +715,7 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -733,9 +733,9 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Could have been worse...",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion() / 2);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to destroy a caravan without letting anyone escape");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to destroy a caravan without letting anyone escape");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -747,7 +747,7 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() / 2 + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() / 2 + "[/color] Crowns"
 				});
 			}
 
@@ -765,8 +765,8 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Damn this contract!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to destroy a caravan without letting anyone escape");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to destroy a caravan without letting anyone escape");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -787,8 +787,8 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Damn this contract!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to destroy a caravan");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to destroy a caravan");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -818,7 +818,7 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"swordmaster",
-			this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]
+			::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]
 		]);
 	}
 

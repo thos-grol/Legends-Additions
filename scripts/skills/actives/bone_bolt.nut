@@ -32,8 +32,8 @@ this.bone_bolt <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/bolt_shot_miss_02.wav",
 			"sounds/combat/bolt_shot_miss_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.Delay = 100;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
@@ -45,15 +45,15 @@ this.bone_bolt <- this.inherit("scripts/skills/skill", {
 		this.m.IsShowingProjectile = true;
 		this.m.IsWeaponSkill = true;
 		this.m.IsDoingForwardMove = false;
-		this.m.InjuriesOnBody = this.Const.Injury.PiercingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.PiercingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.PiercingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.PiercingHead;
 		this.m.DirectDamageMult = 0.45;
 		this.m.ActionPointCost = 4;
 		this.m.FatigueCost = 15;
 		this.m.MinRange = 1;
 		this.m.MaxRange = 6;
 		this.m.MaxLevelDifference = 4;
-		this.m.ProjectileType = this.Const.ProjectileType.Arrow; //FEATURE_0: ART custom arrow
+		this.m.ProjectileType = ::Const.ProjectileType.Arrow; //FEATURE_0: ART custom arrow
 	}
 
 	function getTooltip()

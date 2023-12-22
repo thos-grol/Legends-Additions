@@ -88,7 +88,7 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 			{
 				t.clear();
 				t.Type = 0;
-				_tag.Skill.m.SnowTiles[this.Math.rand(0, _tag.Skill.m.SnowTiles.len() - 1)].onFirstPass({
+				_tag.Skill.m.SnowTiles[::Math.rand(0, _tag.Skill.m.SnowTiles.len() - 1)].onFirstPass({
 					X = t.SquareCoords.X,
 					Y = t.SquareCoords.Y,
 					W = 1,
@@ -122,7 +122,7 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 		{
 			local forwardTile = _targetTile.getNextTile(dir);
 
-			if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
 			{
 				ret.push(forwardTile);
 			}
@@ -131,7 +131,7 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 			{
 				forwardTile = forwardTile.getNextTile(dir);
 
-				if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+				if (::Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
 				{
 					ret.push(forwardTile);
 				}
@@ -144,7 +144,7 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 		{
 			local forwardTile = _targetTile.getNextTile(left);
 
-			if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
 			{
 				ret.push(forwardTile);
 			}
@@ -153,7 +153,7 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 			{
 				forwardTile = forwardTile.getNextTile(dir);
 
-				if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+				if (::Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
 				{
 					ret.push(forwardTile);
 				}
@@ -166,7 +166,7 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 		{
 			local forwardTile = _targetTile.getNextTile(right);
 
-			if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
 			{
 				ret.push(forwardTile);
 			}
@@ -175,7 +175,7 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 			{
 				forwardTile = forwardTile.getNextTile(dir);
 
-				if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+				if (::Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
 				{
 					ret.push(forwardTile);
 				}

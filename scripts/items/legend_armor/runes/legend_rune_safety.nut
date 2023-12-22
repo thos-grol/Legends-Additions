@@ -4,7 +4,7 @@ this.legend_rune_safety <- this.inherit("scripts/items/legend_armor/legend_armor
 	{
 		this.legend_armor_upgrade.create();
 		this.m.ID = "legend_armor_upgrade.legend_rune_safety";
-		this.m.Type = this.Const.Items.ArmorUpgrades.Rune;
+		this.m.Type = ::Const.Items.ArmorUpgrades.Rune;
 		this.m.Name = "Armor Rune Sigil: Safety";
 		this.m.Description = "An inscribed rock that can be attached to a character\'s armor.";
 		this.m.ArmorDescription = "Includes An inscribed rock that grants additional safety bonuses.";
@@ -30,7 +30,7 @@ this.legend_rune_safety <- this.inherit("scripts/items/legend_armor/legend_armor
 			id = 7,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "This item has the power of the rune sigil of Safety:\n[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus1 + "%[/color] Hitpoints.\n[color=" + this.Const.UI.Color.PositiveValue + "]-" + this.m.RuneBonus2 + "%[/color] Damage received."
+			text = "This item has the power of the rune sigil of Safety:\n[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus1 + "%[/color] Hitpoints.\n[color=" + ::Const.UI.Color.PositiveValue + "]-" + this.m.RuneBonus2 + "%[/color] Damage received."
 		});
 		return result;
 	}
@@ -41,7 +41,7 @@ this.legend_rune_safety <- this.inherit("scripts/items/legend_armor/legend_armor
 			id = 7,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "This item has the power of the rune sigil of Safety:\n[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus1 + "%[/color] Hitpoints.\n[color=" + this.Const.UI.Color.PositiveValue + "]-" + this.m.RuneBonus2 + "%[/color] Damage received."
+			text = "This item has the power of the rune sigil of Safety:\n[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus1 + "%[/color] Hitpoints.\n[color=" + ::Const.UI.Color.PositiveValue + "]-" + this.m.RuneBonus2 + "%[/color] Damage received."
 		});
 	}
 
@@ -61,10 +61,10 @@ this.legend_rune_safety <- this.inherit("scripts/items/legend_armor/legend_armor
 	{
 		if (!::Z.hasVala()) return false
 		if (this.isUsed()) return false;
-		local armor = _item == null ? _actor.getItems().getItemAtSlot(this.Const.ItemSlot.Body) : _item;
+		local armor = _item == null ? _actor.getItems().getItemAtSlot(::Const.ItemSlot.Body) : _item;
 		if (armor == null) return false;
 		local success = armor.setUpgrade(this);
-		if (success) this.Sound.play("sounds/inventory/armor_upgrade_use_01.wav", this.Const.Sound.Volume.Inventory);
+		if (success) this.Sound.play("sounds/inventory/armor_upgrade_use_01.wav", ::Const.Sound.Volume.Inventory);
 		return success;
 	}
 
@@ -76,7 +76,7 @@ this.legend_rune_safety <- this.inherit("scripts/items/legend_armor/legend_armor
 		{
 			this.setToBeRepaired(true, 0);
 		}
-		this.setCurrentSlotType(this.Const.ItemSlot.None);
+		this.setCurrentSlotType(::Const.ItemSlot.None);
 	}
 
 });

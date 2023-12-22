@@ -19,7 +19,7 @@ this.civilwar_savagery_event <- this.inherit("scripts/events/event", {
 					{
 						this.World.Assets.addMoralReputation(4);
 
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}
@@ -80,7 +80,7 @@ this.civilwar_savagery_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && this.Math.rand(1, 100) <= 75)
+					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && ::Math.rand(1, 100) <= 75)
 					{
 						bro.improveMood(0.5, "Helped save some peasants");
 
@@ -132,7 +132,7 @@ this.civilwar_savagery_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && this.Math.rand(1, 100) <= 75)
+					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && ::Math.rand(1, 100) <= 75)
 					{
 						bro.improveMood(0.5, "Helped save some peasants");
 
@@ -186,7 +186,7 @@ this.civilwar_savagery_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.NobleHouse = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.NobleHouse = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = 10;
 	}
 

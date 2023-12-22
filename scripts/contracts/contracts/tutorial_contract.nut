@@ -66,13 +66,13 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.EmployerID = this.World.FactionManager.getFaction(this.m.Faction).getRandomCharacter().getID();
 		this.m.BigCity = this.WeakTableRef(best_big);
 		local tile = this.getTileToSpawnLocation(this.m.Home.getTile(), 5, 8, [
-			this.Const.World.TerrainType.Swamp,
-			this.Const.World.TerrainType.Forest,
-			this.Const.World.TerrainType.LeaveForest,
-			this.Const.World.TerrainType.SnowyForest,
-			this.Const.World.TerrainType.Shore,
-			this.Const.World.TerrainType.Ocean,
-			this.Const.World.TerrainType.Mountains
+			::Const.World.TerrainType.Swamp,
+			::Const.World.TerrainType.Forest,
+			::Const.World.TerrainType.LeaveForest,
+			::Const.World.TerrainType.SnowyForest,
+			::Const.World.TerrainType.Shore,
+			::Const.World.TerrainType.Ocean,
+			::Const.World.TerrainType.Mountains
 		]);
 		this.World.State.getPlayer().setPos(tile.Pos);
 		this.World.getCamera().jumpTo(this.World.State.getPlayer());
@@ -108,13 +108,13 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 					else
 					{
 						local tile = this.World.State.getPlayer().getTile();
-						local p = this.Const.Tactical.CombatInfo.getClone();
-						p.Music = this.Const.Music.CivilianTracks;
-						p.TerrainTemplate = this.Const.World.TerrainTacticalTemplate[tile.TacticalType];
+						local p = ::Const.Tactical.CombatInfo.getClone();
+						p.Music = ::Const.Music.CivilianTracks;
+						p.TerrainTemplate = ::Const.World.TerrainTacticalTemplate[tile.TacticalType];
 						p.Tile = tile;
 						p.CombatID = "Tutorial1";
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Custom;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Custom;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Custom;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Custom;
 						p.PlayerDeploymentCallback = this.onPlayerDeployment.bindenv(this);
 						p.EnemyDeploymentCallback = this.onAIDeployment.bindenv(this);
 						p.IsFleeingProhibited = true;
@@ -168,7 +168,7 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 					x = ++x;
 				}
 
-				this.Tactical.fillVisibility(this.Const.Faction.Player, true);
+				this.Tactical.fillVisibility(::Const.Faction.Player, true);
 				local brothers = this.World.getPlayerRoster().getAll();
 				this.Tactical.addEntityToMap(brothers[0], 13, 15 - 13 / 2);
 				brothers[0].setIsAbleToDie(false);
@@ -203,24 +203,24 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 			function onAIDeployment()
 			{
 				local e;
-				this.Const.Movement.AnnounceDiscoveredEntities = false;
+				::Const.Movement.AnnounceDiscoveredEntities = false;
 				e = this.Tactical.spawnEntity("scripts/entity/tactical/humans/bounty_hunter", 16, 16 - 16 / 2);
-				e.setFaction(this.Const.Faction.PlayerAnimals);
+				e.setFaction(::Const.Faction.PlayerAnimals);
 				e.setName("One-Eye");
 				e.getSprite("socket").setBrush("bust_base_player");
 				e.assignRandomEquipment();
 				e.getSkills().removeByID("perk.overwhelm");
 				e.getSkills().removeByID("perk.nimble");
-				e.getItems().getItemAtSlot(this.Const.ItemSlot.Body).setArmor(0);
+				e.getItems().getItemAtSlot(::Const.ItemSlot.Body).setArmor(0);
 
-				if (e.getItems().getItemAtSlot(this.Const.ItemSlot.Head) != null)
+				if (e.getItems().getItemAtSlot(::Const.ItemSlot.Head) != null)
 				{
-					e.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
+					e.getItems().getItemAtSlot(::Const.ItemSlot.Head).removeSelf();
 				}
 
-				if (e.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null)
+				if (e.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null)
 				{
-					e.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).removeSelf();
+					e.getItems().getItemAtSlot(::Const.ItemSlot.Offhand).removeSelf();
 				}
 
 				e.getBaseProperties().Hitpoints = 5;
@@ -231,12 +231,12 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 				e.getSkills().update();
 				e.setHitpoints(5);
 				e = this.Tactical.spawnEntity("scripts/entity/tactical/humans/bounty_hunter", 15, 18 - 15 / 2);
-				e.setFaction(this.Const.Faction.PlayerAnimals);
+				e.setFaction(::Const.Faction.PlayerAnimals);
 				e.setName("Captain Bernhard");
 				e.getSprite("socket").setBrush("bust_base_player");
 				e.getSkills().removeByID("perk.overwhelm");
 				e.getSkills().removeByID("perk.nimble");
-				local armor = this.Const.World.Common.pickArmor([
+				local armor = ::Const.World.Common.pickArmor([
 					[
 						1,
 						"mail_hauberk",
@@ -255,26 +255,26 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 				e.getSkills().update();
 				e.setHitpoints(5);
 				e = this.Tactical.spawnEntity("scripts/entity/tactical/enemies/bandit_thug", 18, 17 - 18 / 2);
-				e.setFaction(this.Const.Faction.Enemy);
+				e.setFaction(::Const.Faction.Enemy);
 				e.getAIAgent().getProperties().OverallDefensivenessMult = 0.0;
-				e.getAIAgent().getProperties().BehaviorMult[this.Const.AI.Behavior.ID.Retreat] = 0.0;
+				e.getAIAgent().getProperties().BehaviorMult[::Const.AI.Behavior.ID.Retreat] = 0.0;
 				e.assignRandomEquipment();
 				e.getBaseProperties().Initiative = 300;
 				e.getSkills().update();
 				e = this.Tactical.spawnEntity("scripts/entity/tactical/enemies/bandit_thug", 17, 18 - 17 / 2);
-				e.setFaction(this.Const.Faction.Enemy);
+				e.setFaction(::Const.Faction.Enemy);
 				e.getAIAgent().getProperties().OverallDefensivenessMult = 0.0;
-				e.getAIAgent().getProperties().BehaviorMult[this.Const.AI.Behavior.ID.Retreat] = 0.0;
+				e.getAIAgent().getProperties().BehaviorMult[::Const.AI.Behavior.ID.Retreat] = 0.0;
 				e.assignRandomEquipment();
 				e.getBaseProperties().Initiative = 200;
 				e.getSkills().update();
 				e = this.Tactical.spawnEntity("scripts/entity/tactical/enemies/bandit_raider_low", 19, 17 - 19 / 2);
-				e.setFaction(this.Const.Faction.Enemy);
+				e.setFaction(::Const.Faction.Enemy);
 				e.setName(this.Flags.get("BossName"));
 				e.getAIAgent().getProperties().OverallDefensivenessMult = 0.0;
 				e.getAIAgent().addBehavior(this.new("scripts/ai/tactical/behaviors/ai_retreat_always"));
 				local items = e.getItems();
-				items.equip(this.Const.World.Common.pickArmor([
+				items.equip(::Const.World.Common.pickArmor([
 					[
 						1,
 						"patched_mail_shirt"
@@ -288,8 +288,8 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 				e.getBaseProperties().Hitpoints = 300;
 				e.getSkills().update();
 				e.setHitpoints(180);
-				e.setMoraleState(this.Const.MoraleState.Wavering);
-				this.Const.Movement.AnnounceDiscoveredEntities = true;
+				e.setMoraleState(::Const.MoraleState.Wavering);
+				::Const.Movement.AnnounceDiscoveredEntities = true;
 			}
 
 		});
@@ -332,9 +332,9 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 
 				if (this.World.getPlayerRoster().getSize() < 6)
 				{
-					if (this.Math.max(1, 6 - this.World.getPlayerRoster().getSize()) > 1)
+					if (::Math.max(1, 6 - this.World.getPlayerRoster().getSize()) > 1)
 					{
-						this.Contract.m.BulletpointsObjectives.push("Recruit at least " + this.Math.max(1, 6 - this.World.getPlayerRoster().getSize()) + " more men");
+						this.Contract.m.BulletpointsObjectives.push("Recruit at least " + ::Math.max(1, 6 - this.World.getPlayerRoster().getSize()) + " more men");
 					}
 					else
 					{
@@ -395,13 +395,13 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 				if (this.Contract.isPlayerAt(this.Contract.m.Home))
 				{
 					local tile = this.Contract.getTileToSpawnLocation(this.World.State.getPlayer().getTile(), 6, 10, [
-						this.Const.World.TerrainType.Swamp,
-						this.Const.World.TerrainType.Forest,
-						this.Const.World.TerrainType.LeaveForest,
-						this.Const.World.TerrainType.SnowyForest,
-						this.Const.World.TerrainType.Shore,
-						this.Const.World.TerrainType.Ocean,
-						this.Const.World.TerrainType.Mountains
+						::Const.World.TerrainType.Swamp,
+						::Const.World.TerrainType.Forest,
+						::Const.World.TerrainType.LeaveForest,
+						::Const.World.TerrainType.SnowyForest,
+						::Const.World.TerrainType.Shore,
+						::Const.World.TerrainType.Ocean,
+						::Const.World.TerrainType.Mountains
 					], false);
 					tile.clear();
 					this.Contract.m.Location = this.WeakTableRef(this.World.spawnLocation("scripts/entity/world/locations/bandit_hideout_location", tile.Coords));
@@ -409,31 +409,31 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 					this.Contract.m.Location.setBanner("banner_deserters");
 					this.Contract.m.Location.getSprite("location_banner").Visible = false;
 					this.Contract.m.Location.setName(this.Flags.get("LocationName"));
-					this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).addSettlement(this.Contract.m.Location.get(), false);
+					this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).addSettlement(this.Contract.m.Location.get(), false);
 					this.Contract.m.Location.setDiscovered(true);
 					this.World.uncoverFogOfWar(this.Contract.m.Location.getTile().Pos, 400.0);
 					this.Contract.m.Location.clearTroops();
-					this.Const.World.Common.addTroop(this.Contract.m.Location, {
-						Type = this.Const.World.Spawn.Troops.BanditMarksmanLOW
+					::Const.World.Common.addTroop(this.Contract.m.Location, {
+						Type = ::Const.World.Spawn.Troops.BanditMarksmanLOW
 					}, false);
-					this.Const.World.Common.addTroop(this.Contract.m.Location, {
-						Type = this.Const.World.Spawn.Troops.BanditThug
+					::Const.World.Common.addTroop(this.Contract.m.Location, {
+						Type = ::Const.World.Spawn.Troops.BanditThug
 					}, false);
-					this.Const.World.Common.addTroop(this.Contract.m.Location, {
-						Type = this.Const.World.Spawn.Troops.BanditThug
+					::Const.World.Common.addTroop(this.Contract.m.Location, {
+						Type = ::Const.World.Spawn.Troops.BanditThug
 					}, false);
 
-					if (this.World.Assets.getCombatDifficulty() >= this.Const.Difficulty.Normal)
+					if (this.World.Assets.getCombatDifficulty() >= ::Const.Difficulty.Normal)
 					{
-						this.Const.World.Common.addTroop(this.Contract.m.Location, {
-							Type = this.Const.World.Spawn.Troops.BanditThug
+						::Const.World.Common.addTroop(this.Contract.m.Location, {
+							Type = ::Const.World.Spawn.Troops.BanditThug
 						}, false);
 					}
 
-					if (this.World.Assets.getCombatDifficulty() >= this.Const.Difficulty.Hard)
+					if (this.World.Assets.getCombatDifficulty() >= ::Const.Difficulty.Hard)
 					{
-						this.Const.World.Common.addTroop(this.Contract.m.Location, {
-							Type = this.Const.World.Spawn.Troops.BanditThug
+						::Const.World.Common.addTroop(this.Contract.m.Location, {
+							Type = ::Const.World.Spawn.Troops.BanditThug
 						}, false);
 					}
 
@@ -498,7 +498,7 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 			function onLocationAttacked( _dest, _isPlayerAttacking = true )
 			{
 				local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-				properties.Music = this.Const.Music.BanditTracks;
+				properties.Music = ::Const.Music.BanditTracks;
 				properties.BeforeDeploymentCallback = this.onDeployment.bindenv(this);
 				this.World.Contracts.startScriptedCombat(properties, true, true, true);
 			}
@@ -507,13 +507,13 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				this.Tactical.getTileSquare(21, 17).removeObject();
 				local e = this.Tactical.spawnEntity("scripts/entity/tactical/enemies/bandit_raider_low", 21, 17 - 21 / 2);
-				e.setFaction(this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
+				e.setFaction(this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
 				e.setName(this.Flags.get("BossName"));
 				e.m.IsGeneratingKillName = false;
-				e.getAIAgent().getProperties().BehaviorMult[this.Const.AI.Behavior.ID.Retreat] = 0.0;
+				e.getAIAgent().getProperties().BehaviorMult[::Const.AI.Behavior.ID.Retreat] = 0.0;
 				e.getFlags().add("IsFinalBoss", true);
 				local items = e.getItems();
-				items.equip(this.Const.World.Common.pickArmor([
+				items.equip(::Const.World.Common.pickArmor([
 					[
 						1,
 						"patched_mail_shirt"
@@ -641,7 +641,7 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 			function start()
 			{
 				this.World.Assets.addMoney(80);
-				this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Killed Hoggart\'s men");
+				this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Killed Hoggart\'s men");
 			}
 
 		});
@@ -813,9 +813,9 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.World.Flags.set("IsHoggartDead", true);
-						this.Music.setTrackList(this.Const.Music.WorldmapTracks, this.Const.Music.CrossFadeTime, true);
+						this.Music.setTrackList(::Const.Music.WorldmapTracks, ::Const.Music.CrossFadeTime, true);
 						this.World.Assets.addMoney(80);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Killed Hoggart for good");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Killed Hoggart for good");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -824,7 +824,7 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
-				this.Music.setTrackList(this.Const.Music.VictoryTracks, this.Const.Music.CrossFadeTime);
+				this.Music.setTrackList(::Const.Music.VictoryTracks, ::Const.Music.CrossFadeTime);
 				local brothers = this.World.getPlayerRoster().getAll();
 
 				foreach( bro in brothers )
@@ -842,7 +842,7 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]400[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]400[/color] Crowns"
 				});
 			}
 
@@ -864,62 +864,62 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 			"bust_body_24_dead",
 			"bust_body_26_dead"
 		];
-		local armorSprite = armors[this.Math.rand(0, armors.len() - 1)];
-		local flip = this.Math.rand(0, 1) == 1;
-		local decal = tile.spawnDetail(armorSprite, this.Const.Tactical.DetailFlag.Corpse, flip, false, this.Const.Combat.HumanCorpseOffset);
+		local armorSprite = armors[::Math.rand(0, armors.len() - 1)];
+		local flip = ::Math.rand(0, 1) == 1;
+		local decal = tile.spawnDetail(armorSprite, ::Const.Tactical.DetailFlag.Corpse, flip, false, ::Const.Combat.HumanCorpseOffset);
 		decal.Scale = 0.9;
 		decal.setBrightness(0.9);
-		decal = tile.spawnDetail("bust_naked_body_01_dead", this.Const.Tactical.DetailFlag.Corpse, flip, false, this.Const.Combat.HumanCorpseOffset);
+		decal = tile.spawnDetail("bust_naked_body_01_dead", ::Const.Tactical.DetailFlag.Corpse, flip, false, ::Const.Combat.HumanCorpseOffset);
 		decal.Scale = 0.9;
 		decal.setBrightness(0.9);
 
-		if (this.Math.rand(1, 100) <= 25)
+		if (::Math.rand(1, 100) <= 25)
 		{
-			decal = tile.spawnDetail("bust_body_guts_0" + this.Math.rand(1, 3), this.Const.Tactical.DetailFlag.Corpse, flip, false, this.Const.Combat.HumanCorpseOffset);
+			decal = tile.spawnDetail("bust_body_guts_0" + ::Math.rand(1, 3), ::Const.Tactical.DetailFlag.Corpse, flip, false, ::Const.Combat.HumanCorpseOffset);
 			decal.Scale = 0.9;
 		}
-		else if (this.Math.rand(1, 100) <= 25)
+		else if (::Math.rand(1, 100) <= 25)
 		{
-			decal = tile.spawnDetail("bust_head_smashed_01", this.Const.Tactical.DetailFlag.Corpse, flip, false, this.Const.Combat.HumanCorpseOffset);
+			decal = tile.spawnDetail("bust_head_smashed_01", ::Const.Tactical.DetailFlag.Corpse, flip, false, ::Const.Combat.HumanCorpseOffset);
 			decal.Scale = 0.9;
 		}
 		else
 		{
-			decal = tile.spawnDetail(armorSprite + "_arrows", this.Const.Tactical.DetailFlag.Corpse, flip, false, this.Const.Combat.HumanCorpseOffset);
+			decal = tile.spawnDetail(armorSprite + "_arrows", ::Const.Tactical.DetailFlag.Corpse, flip, false, ::Const.Combat.HumanCorpseOffset);
 			decal.Scale = 0.9;
 		}
 
-		local color = this.Const.HairColors.All[this.Math.rand(0, this.Const.HairColors.All.len() - 1)];
-		local hairSprite = "hair_" + color + "_" + this.Const.Hair.AllMale[this.Math.rand(0, this.Const.Hair.AllMale.len() - 1)];
-		local beardSprite = "beard_" + color + "_" + this.Const.Beards.All[this.Math.rand(0, this.Const.Beards.All.len() - 1)];
-		local headSprite = this.Const.Faces.AllMale[this.Math.rand(0, this.Const.Faces.AllMale.len() - 1)];
-		local decal = tile.spawnDetail(headSprite + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip, false, this.Const.Combat.HumanCorpseOffset);
+		local color = ::Const.HairColors.All[::Math.rand(0, ::Const.HairColors.All.len() - 1)];
+		local hairSprite = "hair_" + color + "_" + ::Const.Hair.AllMale[::Math.rand(0, ::Const.Hair.AllMale.len() - 1)];
+		local beardSprite = "beard_" + color + "_" + ::Const.Beards.All[::Math.rand(0, ::Const.Beards.All.len() - 1)];
+		local headSprite = ::Const.Faces.AllMale[::Math.rand(0, ::Const.Faces.AllMale.len() - 1)];
+		local decal = tile.spawnDetail(headSprite + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip, false, ::Const.Combat.HumanCorpseOffset);
 		decal.Scale = 0.9;
 		decal.setBrightness(0.9);
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
-			local decal = tile.spawnDetail(beardSprite + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip, false, this.Const.Combat.HumanCorpseOffset);
+			local decal = tile.spawnDetail(beardSprite + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip, false, ::Const.Combat.HumanCorpseOffset);
 			decal.Scale = 0.9;
 			decal.setBrightness(0.9);
 		}
 
-		if (this.Math.rand(1, 100) <= 90)
+		if (::Math.rand(1, 100) <= 90)
 		{
-			local decal = tile.spawnDetail(hairSprite + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip, false, this.Const.Combat.HumanCorpseOffset);
+			local decal = tile.spawnDetail(hairSprite + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip, false, ::Const.Combat.HumanCorpseOffset);
 			decal.Scale = 0.9;
 			decal.setBrightness(0.9);
 		}
 
-		local pools = this.Math.rand(this.Const.Combat.BloodPoolsAtDeathMin, this.Const.Combat.BloodPoolsAtDeathMax);
+		local pools = ::Math.rand(::Const.Combat.BloodPoolsAtDeathMin, ::Const.Combat.BloodPoolsAtDeathMax);
 
 		for( local i = 0; i < pools; i = i )
 		{
-			this.Tactical.spawnPoolEffect(this.Const.BloodPoolDecals[this.Const.BloodType.Red][this.Math.rand(0, this.Const.BloodPoolDecals[this.Const.BloodType.Red].len() - 1)], tile, this.Const.BloodPoolTerrainAlpha[tile.Type], 1.0, this.Const.Tactical.DetailFlag.Corpse);
+			this.Tactical.spawnPoolEffect(::Const.BloodPoolDecals[::Const.BloodType.Red][::Math.rand(0, ::Const.BloodPoolDecals[::Const.BloodType.Red].len() - 1)], tile, ::Const.BloodPoolTerrainAlpha[tile.Type], 1.0, ::Const.Tactical.DetailFlag.Corpse);
 			i = ++i;
 		}
 
-		local corpse = clone this.Const.Corpse;
+		local corpse = clone ::Const.Corpse;
 		corpse.CorpseName = "Someone";
 		tile.Properties.set("Corpse", corpse);
 	}
@@ -927,13 +927,13 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 	function spawnBlood( _x, _y )
 	{
 		local tile = this.Tactical.getTileSquare(_x, _y);
-		tile.spawnDetail(this.Const.BloodDecals[this.Const.BloodType.Red][this.Math.rand(0, this.Const.BloodDecals[this.Const.BloodType.Red].len() - 1)]);
+		tile.spawnDetail(::Const.BloodDecals[::Const.BloodType.Red][::Math.rand(0, ::Const.BloodDecals[::Const.BloodType.Red].len() - 1)]);
 	}
 
 	function spawnArrow( _x, _y )
 	{
 		local tile = this.Tactical.getTileSquare(_x, _y);
-		tile.spawnDetail(this.Const.ProjectileDecals[this.Const.ProjectileType.Arrow][this.Math.rand(0, this.Const.ProjectileDecals[this.Const.ProjectileType.Arrow].len() - 1)], 0, true);
+		tile.spawnDetail(::Const.ProjectileDecals[::Const.ProjectileType.Arrow][::Math.rand(0, ::Const.ProjectileDecals[::Const.ProjectileType.Arrow].len() - 1)], 0, true);
 	}
 
 	function onPrepareVariables( _vars )
@@ -953,15 +953,15 @@ this.tutorial_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Location != null && !this.m.Location.isNull() ? this.Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Location.getTile())] : ""
+			this.m.Location != null && !this.m.Location.isNull() ? ::Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Location.getTile())] : ""
 		]);
 		_vars.push([
 			"citydirection",
-			this.m.BigCity != null && !this.m.BigCity.isNull() ? this.Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.BigCity.getTile())] : ""
+			this.m.BigCity != null && !this.m.BigCity.isNull() ? ::Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.BigCity.getTile())] : ""
 		]);
 		_vars.push([
 			"terrain",
-			this.m.Location != null && !this.m.Location.isNull() ? this.Const.Strings.Terrain[this.m.Location.getTile().Type] : ""
+			this.m.Location != null && !this.m.Location.isNull() ? ::Const.Strings.Terrain[this.m.Location.getTile().Type] : ""
 		]);
 		_vars.push([
 			"bro1",

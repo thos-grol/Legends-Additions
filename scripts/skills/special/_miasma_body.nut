@@ -58,7 +58,7 @@ this._miasma_body <- this.inherit("scripts/skills/skill", {
 			IsAppliedOnMovement = false,
 			IsAppliedOnEnter = true,
 			Timeout = this.Time.getRound() + 3,
-			IsByPlayer = actor.getFaction() == this.Const.Faction.PlayerAnimals,
+			IsByPlayer = actor.getFaction() == ::Const.Faction.PlayerAnimals,
 			Actor = getAttacker(),
 			Damage = this.m.Damage + bonus,
 			Callback = ::Z.Lib.apply_miasma,
@@ -79,9 +79,9 @@ this._miasma_body <- this.inherit("scripts/skills/skill", {
 				tile.Properties.Effect = clone p;
 				local particles = [];
 
-				for( local i = 0; i < this.Const.Tactical.MiasmaParticles.len(); i = i )
+				for( local i = 0; i < ::Const.Tactical.MiasmaParticles.len(); i = i )
 				{
-					particles.push(this.Tactical.spawnParticleEffect(true, this.Const.Tactical.MiasmaParticles[i].Brushes, tile, this.Const.Tactical.MiasmaParticles[i].Delay, this.Const.Tactical.MiasmaParticles[i].Quantity, this.Const.Tactical.MiasmaParticles[i].LifeTimeQuantity, this.Const.Tactical.MiasmaParticles[i].SpawnRate, this.Const.Tactical.MiasmaParticles[i].Stages));
+					particles.push(this.Tactical.spawnParticleEffect(true, ::Const.Tactical.MiasmaParticles[i].Brushes, tile, ::Const.Tactical.MiasmaParticles[i].Delay, ::Const.Tactical.MiasmaParticles[i].Quantity, ::Const.Tactical.MiasmaParticles[i].LifeTimeQuantity, ::Const.Tactical.MiasmaParticles[i].SpawnRate, ::Const.Tactical.MiasmaParticles[i].Stages));
 					i = ++i;
 				}
 

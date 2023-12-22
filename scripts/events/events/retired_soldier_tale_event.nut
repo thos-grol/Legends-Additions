@@ -46,7 +46,7 @@ this.retired_soldier_tale_event <- this.inherit("scripts/events/event", {
 						continue;
 					}
 
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
 						bro.improveMood(1.0, "Felt emboldened by " + _event.m.Soldier.getName() + "\'s war stories");
 
@@ -86,7 +86,7 @@ this.retired_soldier_tale_event <- this.inherit("scripts/events/event", {
 
 		}
 
-		this.m.Soldier = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Soldier = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = candidates.len() * 5;
 	}
 

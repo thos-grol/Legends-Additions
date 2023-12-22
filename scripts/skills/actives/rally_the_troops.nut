@@ -11,8 +11,8 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 		this.m.SoundOnUse = [
 			"sounds/combat/rally_the_troops_01.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.Any;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.Any;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = false;
@@ -27,7 +27,7 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 
 	function getTooltip()
 	{
-		local bravery = this.Math.max(0, this.Math.floor(this.getContainer().getActor().getCurrentProperties().getBravery() * 0.4));
+		local bravery = ::Math.max(0, ::Math.floor(this.getContainer().getActor().getCurrentProperties().getBravery() * 0.4));
 		local ret = [
 			{
 				id = 1,
@@ -48,13 +48,13 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Triggers a morale check to rally fleeing allies within 4 tiles distance, with a bonus to Resolve of [color=" + this.Const.UI.Color.PositiveValue + "]+" + bravery + "[/color] based on this character\'s Resolve"
+				text = "Triggers a morale check to rally fleeing allies within 4 tiles distance, with a bonus to Resolve of [color=" + ::Const.UI.Color.PositiveValue + "]+" + bravery + "[/color] based on this character\'s Resolve"
 			},
 			{
 				id = 7,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Triggers a morale check to raise the morale of anyone wavering or worse within 4 tiles distance, with a bonus to Resolve of [color=" + this.Const.UI.Color.PositiveValue + "]+" + bravery + "[/color] based on this character\'s Resolve, but lowered by [color=" + this.Const.UI.Color.NegativeValue + "]-10[/color] per tile distance"
+				text = "Triggers a morale check to raise the morale of anyone wavering or worse within 4 tiles distance, with a bonus to Resolve of [color=" + ::Const.UI.Color.PositiveValue + "]+" + bravery + "[/color] based on this character\'s Resolve, but lowered by [color=" + ::Const.UI.Color.NegativeValue + "]-10[/color] per tile distance"
 			},
 			{
 				id = 7,
@@ -70,7 +70,7 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Can not rally others the same turn as being rallied himself[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Can not rally others the same turn as being rallied himself[/color]"
 			});
 		}
 
@@ -85,7 +85,7 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 	function onUse( _user, _targetTile )
 	{
 		local myTile = _user.getTile();
-		local bravery = this.Math.floor(_user.getCurrentProperties().getBravery() * 0.4);
+		local bravery = ::Math.floor(_user.getCurrentProperties().getBravery() * 0.4);
 		local actors = this.Tactical.Entities.getInstancesOfFaction(_user.getFaction());
 
 		foreach( a in actors )
@@ -109,7 +109,7 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 
 			if (a.getSkills().hasSkill("effects.charmed") || a.getSkills().hasSkill("effects.legend_intensely_charmed") || a.getSkills().hasSkill("effects.sleeping"))
 			{
-				local rand = this.Math.rand(1, 100);
+				local rand = ::Math.rand(1, 100);
 
 				if (bravery > rand)
 				{
@@ -120,7 +120,7 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 				}
 			}
 
-			if (a.getMoraleState() >= this.Const.MoraleState.Steady)
+			if (a.getMoraleState() >= ::Const.MoraleState.Steady)
 			{
 				continue;
 			}
@@ -132,15 +132,15 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 			this.logInfo("getting morale state");
 			local morale = a.getMoraleState();
 
-			if (a.getMoraleState() == this.Const.MoraleState.Fleeing)
+			if (a.getMoraleState() == ::Const.MoraleState.Fleeing)
 			{
 				this.logInfo("Turning back the fleeing");
-				a.checkMorale(this.Const.MoraleState.Wavering - this.Const.MoraleState.Fleeing, difficulty, this.Const.MoraleCheckType.Default, "status_effect_56");
+				a.checkMorale(::Const.MoraleState.Wavering - ::Const.MoraleState.Fleeing, difficulty, ::Const.MoraleCheckType.Default, "status_effect_56");
 			}
 			else
 			{
 				this.logInfo("moral check for the rest");
-				a.checkMorale(1, difficulty - distance, this.Const.MoraleCheckType.Default, "status_effect_56");
+				a.checkMorale(1, difficulty - distance, ::Const.MoraleCheckType.Default, "status_effect_56");
 			}
 
 			if (a.getSkills().hasSkill("effects.rallied"))
@@ -150,7 +150,7 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 
 			if (a.getSkills().hasSkill("effects.charmed") || a.getSkills().hasSkill("effects.legend_intensely_charmed") || a.getSkills().hasSkill("effects.sleeping"))
 			{
-				local rand = this.Math.rand(1, 100);
+				local rand = ::Math.rand(1, 100);
 
 				if (bravery > rand)
 				{
@@ -160,7 +160,7 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 				}
 			}
 
-			if (a.getMoraleState() >= this.Const.MoraleState.Steady)
+			if (a.getMoraleState() >= ::Const.MoraleState.Steady)
 			{
 				continue;
 			}
@@ -169,13 +169,13 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 			local distance = a.getTile().getDistanceTo(myTile) * 10;
 			local morale = a.getMoraleState();
 
-			if (a.getMoraleState() == this.Const.MoraleState.Fleeing)
+			if (a.getMoraleState() == ::Const.MoraleState.Fleeing)
 			{
-				a.checkMorale(this.Const.MoraleState.Wavering - this.Const.MoraleState.Fleeing, difficulty, this.Const.MoraleCheckType.Default, "status_effect_56");
+				a.checkMorale(::Const.MoraleState.Wavering - ::Const.MoraleState.Fleeing, difficulty, ::Const.MoraleCheckType.Default, "status_effect_56");
 			}
 			else
 			{
-				a.checkMorale(1, difficulty - distance, this.Const.MoraleCheckType.Default, "status_effect_56");
+				a.checkMorale(1, difficulty - distance, ::Const.MoraleCheckType.Default, "status_effect_56");
 			}
 
 			if (morale != a.getMoraleState())

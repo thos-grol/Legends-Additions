@@ -11,8 +11,8 @@ this.horrific_scream <- this.inherit("scripts/skills/skill", {
 		this.m.SoundOnUse = [
 			"sounds/enemies/horrific_scream_01.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -30,18 +30,18 @@ this.horrific_scream <- this.inherit("scripts/skills/skill", {
 	{
 		if (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)
 		{
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " [Horrific Scream] " + this.Const.UI.getColorizedEntityName(_targetTile.getEntity()));
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " [Horrific Scream] " + ::Const.UI.getColorizedEntityName(_targetTile.getEntity()));
 		}
 
-		_targetTile.getEntity().checkMorale(-1, 0, this.Const.MoraleCheckType.MentalAttack);
-		_targetTile.getEntity().checkMorale(-1, 0, this.Const.MoraleCheckType.MentalAttack);
-		_targetTile.getEntity().checkMorale(-1, 0, this.Const.MoraleCheckType.MentalAttack);
-		_targetTile.getEntity().checkMorale(-1, 0, this.Const.MoraleCheckType.MentalAttack);
+		_targetTile.getEntity().checkMorale(-1, 0, ::Const.MoraleCheckType.MentalAttack);
+		_targetTile.getEntity().checkMorale(-1, 0, ::Const.MoraleCheckType.MentalAttack);
+		_targetTile.getEntity().checkMorale(-1, 0, ::Const.MoraleCheckType.MentalAttack);
+		_targetTile.getEntity().checkMorale(-1, 0, ::Const.MoraleCheckType.MentalAttack);
 
-		local hitInfo = clone this.Const.Tactical.HitInfo;
+		local hitInfo = clone ::Const.Tactical.HitInfo;
 			hitInfo.DamageRegular = ::Math.rand(25, 55);
 			hitInfo.DamageDirect = 1.0;
-			hitInfo.BodyPart = this.Const.BodyPart.Body;
+			hitInfo.BodyPart = ::Const.BodyPart.Body;
 			hitInfo.BodyDamageMult = 1.0;
 			hitInfo.FatalityChanceMult = 0.0;
 			_targetTile.getEntity().onDamageReceived(_user, this, hitInfo);

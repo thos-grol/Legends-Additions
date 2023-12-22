@@ -74,7 +74,7 @@ this.perk_class_continuance_knight <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 		local healthMissing = actor.getHitpointsMax() - actor.getHitpoints();
-		local healthAdded = this.Math.min(healthMissing, this.Math.floor(actor.getHitpointsMax() * 0.15));
+		local healthAdded = ::Math.min(healthMissing, ::Math.floor(actor.getHitpointsMax() * 0.15));
 
 		if (healthAdded <= 0) return;
 
@@ -89,10 +89,10 @@ this.perk_class_continuance_knight <- this.inherit("scripts/skills/skill", {
 
 				if (this.m.SoundOnUse.len() != 0)
 				{
-					this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
+					this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
 				}
 
-				this.Tactical.EventLog.logIn(this.Const.UI.getColorizedEntityName(actor) + " heals for " + healthAdded + " points");
+				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(actor) + " heals for " + healthAdded + " points");
 			}
 		}
 	}

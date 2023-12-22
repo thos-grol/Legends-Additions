@@ -3,11 +3,11 @@ this.zombie_knight <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 	function create()
 	{
 		this.zombie.create();
-		this.m.Type = this.Const.EntityType.ZombieKnight;
-		this.m.BloodType = this.Const.BloodType.Dark;
-		this.m.MoraleState = this.Const.MoraleState.Ignore;
-		this.m.XP = this.Const.Tactical.Actor.ZombieKnight.XP;
-		this.m.Name = this.Const.Strings.EntityName[this.m.Type];
+		this.m.Type = ::Const.EntityType.ZombieKnight;
+		this.m.BloodType = ::Const.BloodType.Dark;
+		this.m.MoraleState = ::Const.MoraleState.Ignore;
+		this.m.XP = ::Const.Tactical.Actor.ZombieKnight.XP;
+		this.m.Name = ::Const.Strings.EntityName[this.m.Type];
 		this.m.IsResurrectingOnFatality = true;
 		this.m.ResurrectionValue = 5.0;
 		this.m.ResurrectionChance = 90;
@@ -20,7 +20,7 @@ this.zombie_knight <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 	{
 		if (this.m.IsHeadless)
 		{
-			_hitInfo.BodyPart = this.Const.BodyPart.Body;
+			_hitInfo.BodyPart = ::Const.BodyPart.Body;
 		}
 
 		return this.actor.onDamageReceived(_attacker, _skill, _hitInfo);
@@ -30,7 +30,7 @@ this.zombie_knight <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 	{
 		this.zombie.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.ZombieKnight);
+		b.setValues(::Const.Tactical.Actor.ZombieKnight);
 		b.IsAffectedByNight = false;
 		b.IsAffectedByInjuries = false;
 		b.IsImmuneToBleeding = true;
@@ -69,16 +69,16 @@ this.zombie_knight <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 				"decayed_reinforced_mail_hauberk"
 			]
 		];
-		local armor = this.Const.World.Common.pickArmor(aList);
+		local armor = ::Const.World.Common.pickArmor(aList);
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
-			armor.setArmor(this.Math.round(armor.getArmorMax() / 2 - 1));
+			armor.setArmor(::Math.round(armor.getArmorMax() / 2 - 1));
 		}
 
 		this.m.Items.equip(armor);
 
-		if (this.m.Items.getItemAtSlot(this.Const.ItemSlot.Head) == null && this.Math.rand(1, 100) <= 90)
+		if (this.m.Items.getItemAtSlot(::Const.ItemSlot.Head) == null && ::Math.rand(1, 100) <= 90)
 		{
 			local helmet = [
 				[
@@ -98,11 +98,11 @@ this.zombie_knight <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 					"decayed_great_helm"
 				]
 			];
-			local h = this.Const.World.Common.pickHelmet(helmet);
+			local h = ::Const.World.Common.pickHelmet(helmet);
 
-			if (this.Math.rand(1, 100) <= 33)
+			if (::Math.rand(1, 100) <= 33)
 			{
-				h.setArmor(this.Math.round(h.getArmorMax() / 2 - 1));
+				h.setArmor(::Math.round(h.getArmorMax() / 2 - 1));
 			}
 
 			this.m.Items.equip(h);

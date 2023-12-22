@@ -13,7 +13,7 @@ this.investigate_cemetery_action <- this.inherit("scripts/factions/faction_actio
 
 	function onUpdate( _faction )
 	{
-		if (!_faction.isReadyForContract(this.Const.Contracts.ContractCategoryMap.investigate_cemetery_contract))
+		if (!_faction.isReadyForContract(::Const.Contracts.ContractCategoryMap.investigate_cemetery_contract))
 		{
 			return;
 		}
@@ -23,14 +23,14 @@ this.investigate_cemetery_action <- this.inherit("scripts/factions/faction_actio
 			return;
 		}
 
-		if (!this.World.FactionManager.isUndeadScourge() && this.World.getTime().Days > 3 && this.Math.rand(1, 100) > 75)
+		if (!this.World.FactionManager.isUndeadScourge() && this.World.getTime().Days > 3 && ::Math.rand(1, 100) > 75)
 		{
 			return;
 		}
 
 		local myTile = _faction.getSettlements()[0].getTile();
 		this.m.Target = null;
-		local undead = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).getSettlements();
+		local undead = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getSettlements();
 
 		foreach( b in undead )
 		{

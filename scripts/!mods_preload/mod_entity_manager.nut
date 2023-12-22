@@ -48,11 +48,11 @@ this.getroottable().Const.LegendMod.hookEntityManager <- function ()
 					candidates.push(s);
 				}
 
-				local start = candidates[this.Math.rand(0, candidates.len() - 1)];
+				local start = candidates[::Math.rand(0, candidates.len() - 1)];
 				local party = this.World.spawnEntity("scripts/entity/world/party", start.getTile().Coords);
 				party.setPos(this.createVec(party.getPos().X - 50, party.getPos().Y - 50));
 				party.setDescription("A free mercenary company travelling the lands and lending their swords to the highest bidder.");
-				party.setFootprintType(this.Const.World.FootprintsType.Mercenaries);
+				party.setFootprintType(::Const.World.FootprintsType.Mercenaries);
 				party.getFlags().set("IsMercenaries", true);
 
 				if (start.getFactions().len() == 1)
@@ -61,25 +61,25 @@ this.getroottable().Const.LegendMod.hookEntityManager <- function ()
 				}
 				else
 				{
-					party.setFaction(start.getFactionOfType(this.Const.FactionType.Settlement).getID());
+					party.setFaction(start.getFactionOfType(::Const.FactionType.Settlement).getID());
 				}
 
-				local r = this.Math.min(330, 150 + this.World.getTime().Days);
-				this.Const.World.Common.assignTroops(party, this.Const.World.Spawn.Mercenaries, this.Math.rand(r * 0.8, r));
-				party.getLoot().Money = this.Math.rand(50, 200);
-				party.getLoot().ArmorParts = this.Math.rand(0, 10);
-				party.getLoot().Medicine = this.Math.rand(0, 10);
-				party.getLoot().Ammo = this.Math.rand(0, 10);
+				local r = ::Math.min(330, 150 + this.World.getTime().Days);
+				::Const.World.Common.assignTroops(party, ::Const.World.Spawn.Mercenaries, ::Math.rand(r * 0.8, r));
+				party.getLoot().Money = ::Math.rand(50, 200);
+				party.getLoot().ArmorParts = ::Math.rand(0, 10);
+				party.getLoot().Medicine = ::Math.rand(0, 10);
+				party.getLoot().Ammo = ::Math.rand(0, 10);
 
 				//FEATURE_9: chance for merc treasure??
 				//FEATURE_9: chance for heroes??
 
 				party.getSprite("base").setBrush("world_base_07");
-				party.getSprite("body").setBrush("figure_mercenary_0" + this.Math.rand(1, 2));
+				party.getSprite("body").setBrush("figure_mercenary_0" + ::Math.rand(1, 2));
 
 				while (true)
 				{
-					local name = this.Const.Strings.MercenaryCompanyNames[this.Math.rand(0, this.Const.Strings.MercenaryCompanyNames.len() - 1)];
+					local name = ::Const.Strings.MercenaryCompanyNames[::Math.rand(0, ::Const.Strings.MercenaryCompanyNames.len() - 1)];
 
 					if (name == this.World.Assets.getName())
 					{
@@ -108,7 +108,7 @@ this.getroottable().Const.LegendMod.hookEntityManager <- function ()
 
 				while (true)
 				{
-					local banner = this.Const.PlayerBanners[this.Math.rand(0, this.Const.PlayerBanners.len() - 1)];
+					local banner = ::Const.PlayerBanners[::Math.rand(0, ::Const.PlayerBanners.len() - 1)];
 
 					if (banner == this.World.Assets.getBanner())
 					{
@@ -171,17 +171,17 @@ this.getroottable().Const.LegendMod.hookEntityManager <- function ()
 						continue;
 					}
 
-					local dest = candidates[this.Math.rand(0, candidates.len() - 1)];
+					local dest = candidates[::Math.rand(0, candidates.len() - 1)];
 					local c = merc.getController();
 					local wait1 = this.new("scripts/ai/world/orders/wait_order");
-					wait1.setTime(this.Math.rand(10, 60) * 1.0);
+					wait1.setTime(::Math.rand(10, 60) * 1.0);
 					c.addOrder(wait1);
 					local move = this.new("scripts/ai/world/orders/move_order");
 					move.setDestination(dest.getTile());
 					move.setRoadsOnly(false);
 					c.addOrder(move);
 					local wait2 = this.new("scripts/ai/world/orders/wait_order");
-					wait2.setTime(this.Math.rand(10, 60) * 1.0);
+					wait2.setTime(::Math.rand(10, 60) * 1.0);
 					c.addOrder(wait2);
 					local mercenary = this.new("scripts/ai/world/orders/mercenary_order");
 					mercenary.setSettlement(dest);

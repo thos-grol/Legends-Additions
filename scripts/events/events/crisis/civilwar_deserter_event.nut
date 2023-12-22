@@ -42,7 +42,7 @@ this.civilwar_deserter_event <- this.inherit("scripts/events/event", {
 							_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head).removeSelf();
 						}
 
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}

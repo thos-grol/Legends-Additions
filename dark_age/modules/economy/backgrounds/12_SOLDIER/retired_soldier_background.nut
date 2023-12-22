@@ -35,7 +35,7 @@
 		local r;
 		items.equip(::new("scripts/items/weapons/hand_axe"));
 
-		r = this.Math.rand(0, 3);
+		r = ::Math.rand(0, 3);
 		if (r == 0)
 		{
 			items.equip(::new("scripts/items/shields/wooden_shield"));

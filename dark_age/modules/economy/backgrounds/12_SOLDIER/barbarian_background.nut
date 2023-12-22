@@ -33,7 +33,7 @@
 	{
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(2, 3);
+		r = ::Math.rand(2, 3);
 
 		if (r == 2)
 		{

@@ -28,10 +28,10 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropMoney(this.Math.rand(300, 700), _lootTable);
-		this.dropArmorParts(this.Math.rand(0, 25), _lootTable);
-		this.dropAmmo(this.Math.rand(0, 50), _lootTable);
-		this.dropMedicine(this.Math.rand(0, 10), _lootTable);
+		this.dropMoney(::Math.rand(300, 700), _lootTable);
+		this.dropArmorParts(::Math.rand(0, 25), _lootTable);
+		this.dropAmmo(::Math.rand(0, 50), _lootTable);
+		this.dropMedicine(::Math.rand(0, 10), _lootTable);
 		local treasure = [
 			"loot/signet_ring_item",
 			"tools/fire_bomb_item"
@@ -50,7 +50,7 @@
 		treasure.push("legend_armor/armor_upgrades/legend_heraldic_plates_upgrade");
 		treasure.push("legend_armor/armor_upgrades/legend_double_mail_upgrade");
 
-		this.dropTreasure(this.Math.rand(2, 3), treasure, _lootTable);
+		this.dropTreasure(::Math.rand(2, 3), treasure, _lootTable);
 	}
 
 	o.onInit = function()

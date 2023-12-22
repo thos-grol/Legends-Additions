@@ -52,23 +52,23 @@
 		if (_hitInfo.DamageDirect < 1.0)
 		{
 			armor = p.Armor[_hitInfo.BodyPart] * p.ArmorMult[_hitInfo.BodyPart];
-			armorDamage = this.Math.min(armor, _hitInfo.DamageArmor);
+			armorDamage = ::Math.min(armor, _hitInfo.DamageArmor);
 			armor = armor - armorDamage;
-			_hitInfo.DamageInflictedArmor = this.Math.max(0, armorDamage);
+			_hitInfo.DamageInflictedArmor = ::Math.max(0, armorDamage);
 		}
 
 		_hitInfo.DamageFatigue *= p.FatigueEffectMult;
-		this.m.Fatigue = this.Math.min(this.getFatigueMax(), this.Math.round(this.m.Fatigue + _hitInfo.DamageFatigue * p.FatigueReceivedPerHitMult * this.m.CurrentProperties.FatigueLossOnAnyAttackMult));
+		this.m.Fatigue = ::Math.min(this.getFatigueMax(), ::Math.round(this.m.Fatigue + _hitInfo.DamageFatigue * p.FatigueReceivedPerHitMult * this.m.CurrentProperties.FatigueLossOnAnyAttackMult));
 		local damage = 0;
-		damage = damage + this.Math.maxf(0.0, _hitInfo.DamageRegular * _hitInfo.DamageDirect * p.DamageReceivedDirectMult - armor * ::Const.Combat.ArmorDirectDamageMitigationMult);
+		damage = damage + ::Math.maxf(0.0, _hitInfo.DamageRegular * _hitInfo.DamageDirect * p.DamageReceivedDirectMult - armor * ::Const.Combat.ArmorDirectDamageMitigationMult);
 
 		if (armor <= 0 || _hitInfo.DamageDirect >= 1.0)
 		{
-			damage = damage + this.Math.max(0, _hitInfo.DamageRegular * this.Math.maxf(0.0, 1.0 - _hitInfo.DamageDirect * p.DamageReceivedDirectMult) - armorDamage);
+			damage = damage + ::Math.max(0, _hitInfo.DamageRegular * ::Math.maxf(0.0, 1.0 - _hitInfo.DamageDirect * p.DamageReceivedDirectMult) - armorDamage);
 		}
 
 		damage = damage * _hitInfo.BodyDamageMult;
-		damage = this.Math.max(0, this.Math.max(this.Math.round(damage), this.Math.min(this.Math.round(_hitInfo.DamageMinimum), this.Math.round(_hitInfo.DamageMinimum * p.DamageReceivedTotalMult))));
+		damage = ::Math.max(0, ::Math.max(::Math.round(damage), ::Math.min(::Math.round(_hitInfo.DamageMinimum), ::Math.round(_hitInfo.DamageMinimum * p.DamageReceivedTotalMult))));
 		_hitInfo.DamageInflictedHitpoints = damage;
 
 		local prev_hitpoints = this.m.Hitpoints;
@@ -81,7 +81,7 @@
 
 			if (armorHitSound.len() > 0)
 			{
-				this.Sound.play(armorHitSound[this.Math.rand(0, armorHitSound.len() - 1)], ::Const.Sound.Volume.ActorArmorHit, this.getPos());
+				this.Sound.play(armorHitSound[::Math.rand(0, armorHitSound.len() - 1)], ::Const.Sound.Volume.ActorArmorHit, this.getPos());
 			}
 
 			if (damage < ::Const.Combat.PlayPainSoundMinDamage)
@@ -98,7 +98,7 @@
 			}
 			else
 			{
-				this.m.Hitpoints = this.Math.round(this.m.Hitpoints - damage);
+				this.m.Hitpoints = ::Math.round(this.m.Hitpoints - damage);
 			}
 		}
 
@@ -120,7 +120,7 @@
 				if (nineLivesSkill != null && (!nineLivesSkill.isSpent() || nineLivesSkill.getLastFrameUsed() == this.Time.getFrame()))
 				{
 					this.getSkills().removeByType(::Const.SkillType.DamageOverTime);
-					this.m.Hitpoints = this.Math.rand(11, 15);
+					this.m.Hitpoints = ::Math.rand(11, 15);
 					nineLivesSkill.setSpent(true);
 					::Z.Log.nine_lives(this);
 				}
@@ -135,15 +135,15 @@
 
 			if (_skill != null)
 			{
-				if (_skill.getChanceDecapitate() >= 100 || _hitInfo.BodyPart == ::Const.BodyPart.Head && this.Math.rand(1, 100) <= _skill.getChanceDecapitate() * _hitInfo.FatalityChanceMult)
+				if (_skill.getChanceDecapitate() >= 100 || _hitInfo.BodyPart == ::Const.BodyPart.Head && ::Math.rand(1, 100) <= _skill.getChanceDecapitate() * _hitInfo.FatalityChanceMult)
 				{
 					fatalityType = ::Const.FatalityType.Decapitated;
 				}
-				else if (_skill.getChanceSmash() >= 100 || _hitInfo.BodyPart == ::Const.BodyPart.Head && this.Math.rand(1, 100) <= _skill.getChanceSmash() * _hitInfo.FatalityChanceMult)
+				else if (_skill.getChanceSmash() >= 100 || _hitInfo.BodyPart == ::Const.BodyPart.Head && ::Math.rand(1, 100) <= _skill.getChanceSmash() * _hitInfo.FatalityChanceMult)
 				{
 					fatalityType = ::Const.FatalityType.Smashed;
 				}
-				else if (_skill.getChanceDisembowel() >= 100 || _hitInfo.BodyPart == ::Const.BodyPart.Body && this.Math.rand(1, 100) <= _skill.getChanceDisembowel() * _hitInfo.FatalityChanceMult)
+				else if (_skill.getChanceDisembowel() >= 100 || _hitInfo.BodyPart == ::Const.BodyPart.Body && ::Math.rand(1, 100) <= _skill.getChanceDisembowel() * _hitInfo.FatalityChanceMult)
 				{
 					fatalityType = ::Const.FatalityType.Disemboweled;
 				}
@@ -157,8 +157,8 @@
 			if (this.m.BaseProperties.Armor[_hitInfo.BodyPart] != 0)
 			{
 				overflowDamage = overflowDamage - this.m.BaseProperties.Armor[_hitInfo.BodyPart] * this.m.BaseProperties.ArmorMult[_hitInfo.BodyPart];
-				this.m.BaseProperties.Armor[_hitInfo.BodyPart] = this.Math.max(0, this.m.BaseProperties.Armor[_hitInfo.BodyPart] * this.m.BaseProperties.ArmorMult[_hitInfo.BodyPart] - _hitInfo.DamageArmor);
-				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(this) + "[Natural Armor] is hit for [b]" + this.Math.floor(_hitInfo.DamageArmor) + "[/b] damage");
+				this.m.BaseProperties.Armor[_hitInfo.BodyPart] = ::Math.max(0, this.m.BaseProperties.Armor[_hitInfo.BodyPart] * this.m.BaseProperties.ArmorMult[_hitInfo.BodyPart] - _hitInfo.DamageArmor);
+				this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(this) + "[Natural Armor] is hit for [b]" + ::Math.floor(_hitInfo.DamageArmor) + "[/b] damage");
 			}
 
 			if (overflowDamage > 0)
@@ -201,7 +201,7 @@
 		{
 			if (damage >= ::Const.Combat.SpawnBloodEffectMinDamage)
 			{
-				local mult = this.Math.maxf(0.75, this.Math.minf(2.0, damage / this.getHitpointsMax() * 3.0));
+				local mult = ::Math.maxf(0.75, ::Math.minf(2.0, damage / this.getHitpointsMax() * 3.0));
 				this.spawnBloodEffect(this.getTile(), mult);
 			}
 
@@ -211,11 +211,11 @@
 
 				if (mult >= 0.75)
 				{
-					this.Sound.play(::Const.Sound.ArenaBigHit[this.Math.rand(0, ::Const.Sound.ArenaBigHit.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
+					this.Sound.play(::Const.Sound.ArenaBigHit[::Math.rand(0, ::Const.Sound.ArenaBigHit.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 				}
-				else if (mult >= 0.25 || this.Math.rand(1, 100) <= 20)
+				else if (mult >= 0.25 || ::Math.rand(1, 100) <= 20)
 				{
-					this.Sound.play(::Const.Sound.ArenaHit[this.Math.rand(0, ::Const.Sound.ArenaHit.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
+					this.Sound.play(::Const.Sound.ArenaHit[::Math.rand(0, ::Const.Sound.ArenaHit.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 				}
 			}
 
@@ -239,7 +239,7 @@
 
 				while (potentialInjuries.len() != 0)
 				{
-					local r = this.Math.rand(0, potentialInjuries.len() - 1);
+					local r = ::Math.rand(0, potentialInjuries.len() - 1);
 					local injury = ::new("scripts/skills/" + potentialInjuries[r]);
 
 					if (injury.isValid(this))
@@ -312,7 +312,7 @@
 			if ((this.m.IsFlashingOnHit || this.getCurrentProperties().IsStunned || this.getCurrentProperties().IsRooted) && !this.isHiddenToPlayer() && _attacker != null && _attacker.isAlive())
 			{
 				local layers = this.m.ShakeLayers[_hitInfo.BodyPart];
-				local recoverMult = this.Math.minf(1.5, this.Math.maxf(1.0, damage * 2.0 / this.getHitpointsMax()));
+				local recoverMult = ::Math.minf(1.5, ::Math.maxf(1.0, damage * 2.0 / this.getHitpointsMax()));
 				this.Tactical.getShaker().cancel(this);
 				this.Tactical.getShaker().shake(this, _attacker.getTile(), this.m.IsShakingOnHit ? 2 : 3, ::Const.Combat.ShakeEffectHitpointsHitColor, ::Const.Combat.ShakeEffectHitpointsHitHighlight, ::Const.Combat.ShakeEffectHitpointsHitFactor, ::Const.Combat.ShakeEffectHitpointsSaturation, layers, recoverMult);
 			}
@@ -325,7 +325,7 @@
 
 	while(!("kill" in o)) o = o[o.SuperName];
 	//copied from legends actor hook
-	o.kill <- function ( _killer = null, _skill = null, _fatalityType = this.Const.FatalityType.None, _silent = false )
+	o.kill <- function ( _killer = null, _skill = null, _fatalityType = ::Const.FatalityType.None, _silent = false )
 	{
 		if (!this.isAlive()) return;
 		if (_killer != null && !_killer.isAlive()) _killer = null;
@@ -438,7 +438,7 @@
 
 		if (tile != null)
 		{
-			this.spawnBloodPool(tile, this.Math.rand(::Const.Combat.BloodPoolsAtDeathMin, ::Const.Combat.BloodPoolsAtDeathMax));
+			this.spawnBloodPool(tile, ::Math.rand(::Const.Combat.BloodPoolsAtDeathMin, ::Const.Combat.BloodPoolsAtDeathMax));
 		}
 
 		this.m.IsTurnDone = true;
@@ -459,11 +459,11 @@
 			{
 				if (_killer == null || _killer.getID() == this.getID())
 				{
-					this.Sound.play(::Const.Sound.ArenaFlee[this.Math.rand(0, ::Const.Sound.ArenaFlee.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
+					this.Sound.play(::Const.Sound.ArenaFlee[::Math.rand(0, ::Const.Sound.ArenaFlee.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 				}
 				else
 				{
-					this.Sound.play(::Const.Sound.ArenaKill[this.Math.rand(0, ::Const.Sound.ArenaKill.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
+					this.Sound.play(::Const.Sound.ArenaKill[::Math.rand(0, ::Const.Sound.ArenaKill.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 				}
 			}
 		}
@@ -781,7 +781,7 @@
 
 		if (!this.m.CurrentProperties.IsImmuneToSurrounding)
 		{
-			malus = _attackingEntity != null ? this.Math.max(0, _attackingEntity.getCurrentProperties().SurroundedBonus * _attackingEntity.getCurrentProperties().SurroundedBonusMult - this.getCurrentProperties().SurroundedDefense) * this.getSurroundedCount() : this.Math.max(0, 5 - this.getCurrentProperties().SurroundedDefense) * this.getSurroundedCount();
+			malus = _attackingEntity != null ? ::Math.max(0, _attackingEntity.getCurrentProperties().SurroundedBonus * _attackingEntity.getCurrentProperties().SurroundedBonusMult - this.getCurrentProperties().SurroundedDefense) * this.getSurroundedCount() : ::Math.max(0, 5 - this.getCurrentProperties().SurroundedDefense) * this.getSurroundedCount();
 		}
 
 		if (_skill.isRanged())
@@ -809,8 +809,8 @@
 		foreach( skill in skills.m.Skills )
 		{
 			if (skill.isGarbage()) continue;
-			if (!skill.isType(this.Const.SkillType.Perk)) continue;
-			if (skill.isType(this.Const.SkillType.Racial)) continue;
+			if (!skill.isType(::Const.SkillType.Perk)) continue;
+			if (skill.isType(::Const.SkillType.Racial)) continue;
 			if ("NoRefund" in skill.m) continue;
 			if ("NoRefundPerk" in skill.m) continue;
 
@@ -836,7 +836,7 @@
 		this.m.PerkPointsSpent = 0;
 		local skillsToRemove = this.getSkills().getSkillsByFunction(function ( _skill )
 		{
-			return _skill.isType(this.Const.SkillType.Perk) && nonRefundable.find(_skill.getID()) == null && !("NoRefund" in _skill.m);
+			return _skill.isType(::Const.SkillType.Perk) && nonRefundable.find(_skill.getID()) == null && !("NoRefund" in _skill.m);
 		});
 		foreach( s in skillsToRemove )
 		{

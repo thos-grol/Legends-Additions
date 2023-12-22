@@ -20,7 +20,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		local banditcamp = this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).getNearestSettlement(this.m.Home.getTile());
+		local banditcamp = this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getNearestSettlement(this.m.Home.getTile());
 		this.m.Destination = this.WeakTableRef(banditcamp);
 		this.m.Flags.set("DestinationName", banditcamp.getName());
 
@@ -47,7 +47,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 
 		this.m.Payment.Pool = pay_amount;
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -83,13 +83,13 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 				// 	this.Contract.m.Destination.getLoot().clear();
 				// }
 
-				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NomadDefenders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.NomadDefenders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				// this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				// this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				// this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
 				// this.Contract.m.Destination.resetDefenderSpawnDay();
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 15)
 				{
@@ -113,11 +113,11 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 						case "location.nomad_hidden_camp": //150
 							this.Flags.set("IsNecromancer", true);
 							this.Contract.m.Destination.clearTroops();
-							local zombies = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies);
+							local zombies = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies);
 							this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
 							this.Contract.m.Destination.setFaction(zombies.getID());
 							zombies.addSettlement(this.Contract.m.Destination.get(), false);
-							this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NecromancerSouthern, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * 2.0);
+							this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.NecromancerSouthern, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * 2.0);
 							break;
 					}
 				}
@@ -177,18 +177,18 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 					else
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-						properties.Music = this.Const.Music.OrientalBanditTracks;
+						properties.Music = ::Const.Music.OrientalBanditTracks;
 						properties.EnemyBanners.push(this.Contract.m.Destination.getBanner());
-						local e = this.Math.max(1, 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() / this.Const.World.Spawn.Troops.SandGolem.Cost);
+						local e = ::Math.max(1, 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() / ::Const.World.Spawn.Troops.SandGolem.Cost);
 
 						for( local i = 0; i < e; i = i )
 						{
 							properties.Entities.push({
-								ID = this.Const.EntityType.SandGolem,
+								ID = ::Const.EntityType.SandGolem,
 								Variant = 0,
 								Row = -1,
 								Script = "scripts/entity/tactical/enemies/sand_golem",
-								Faction = this.Const.Faction.Enemy
+								Faction = ::Const.Faction.Enemy
 							});
 							i = ++i;
 						}
@@ -219,14 +219,14 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 					else
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-						properties.Music = this.Const.Music.OrientalBanditTracks;
+						properties.Music = ::Const.Music.OrientalBanditTracks;
 						properties.EnemyBanners.push(this.Contract.m.Destination.getBanner());
-						local e = this.Math.max(1, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() / this.Const.World.Spawn.Troops.Assassin.Cost);
+						local e = ::Math.max(1, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() / ::Const.World.Spawn.Troops.Assassin.Cost);
 
 						for( local i = 0; i < e; i = i )
 						{
 							properties.Entities.push({
-								ID = this.Const.EntityType.Assassin,
+								ID = ::Const.EntityType.Assassin,
 								Variant = 0,
 								Row = 2,
 								Script = "scripts/entity/tactical/humans/assassin",
@@ -269,8 +269,8 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -343,7 +343,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 						this.Flags.set("IsTreasure", false);
 						this.Contract.m.Destination.clearTroops();
 						//TODO: test appropriate strength
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.NomadDefenders, 110 * 1.25);
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.NomadDefenders, 110 * 1.25);
 						this.Contract.getActiveState().onDestinationAttacked(this.Contract.m.Destination);
 						return 0;
 					}
@@ -374,7 +374,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 				for( local i = 0; i < e; i = i )
 				{
 					local item;
-					local r = this.Math.rand(1, 4);
+					local r = ::Math.rand(1, 4);
 
 					switch(r)
 					{
@@ -461,9 +461,9 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Well, we got paid.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Destroyed a nomad encampment");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Destroyed a nomad encampment");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -475,7 +475,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -491,13 +491,13 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Destination == null || this.m.Destination.isNull() || !this.m.Destination.isAlive() ? "" : this.Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())]
+			this.m.Destination == null || this.m.Destination.isNull() || !this.m.Destination.isAlive() ? "" : ::Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())]
 		]);
 	}
 
 	function onHomeSet()
 	{
-		if (this.m.SituationID == 0 && this.World.getTime().Days > 3 && this.Math.rand(1, 100) <= 50)
+		if (this.m.SituationID == 0 && this.World.getTime().Days > 3 && ::Math.rand(1, 100) <= 50)
 		{
 			this.m.SituationID = this.m.Home.addSituation(this.new("scripts/entity/world/settlements/situations/ambushed_trade_routes_situation"));
 		}
@@ -514,7 +514,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 
 				if (this.m.Flags.get("IsNecromancer"))
 				{
-					local nomads = this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits);
+					local nomads = this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits);
 					this.World.FactionManager.getFaction(this.m.Destination.getFaction()).removeSettlement(this.m.Destination);
 					this.m.Destination.setFaction(nomads.getID());
 					nomads.addSettlement(this.m.Destination.get(), false);

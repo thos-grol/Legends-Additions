@@ -19,7 +19,7 @@ this.religious_peasants_event <- this.inherit("scripts/events/event", {
 					{
 						if (_event.m.Monk != null)
 						{
-							local r = this.Math.rand(1, 3);
+							local r = ::Math.rand(1, 3);
 
 							if (r == 1)
 							{
@@ -36,7 +36,7 @@ this.religious_peasants_event <- this.inherit("scripts/events/event", {
 						}
 						else
 						{
-							local r = this.Math.rand(1, 2);
+							local r = ::Math.rand(1, 2);
 
 							if (r == 1)
 							{
@@ -122,7 +122,7 @@ this.religious_peasants_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getSkills().hasSkill("trait.superstitious") || this.Math.rand(1, 100) <= 33)
+					if (bro.getSkills().hasSkill("trait.superstitious") || ::Math.rand(1, 100) <= 33)
 					{
 						bro.worsenMood(0.5, "Witnessed a horrible curse");
 
@@ -212,7 +212,7 @@ this.religious_peasants_event <- this.inherit("scripts/events/event", {
 
 		if (candidates.len() != 0)
 		{
-			this.m.Monk = candidates[this.Math.rand(0, candidates.len() - 1)];
+			this.m.Monk = candidates[::Math.rand(0, candidates.len() - 1)];
 		}
 
 		this.m.Score = 3;

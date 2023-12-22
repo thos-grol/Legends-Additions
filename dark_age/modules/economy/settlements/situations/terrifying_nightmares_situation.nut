@@ -20,7 +20,7 @@
 		{
 			if (this.World.Assets.getOrigin().getID() == "scenario.legends_warlock")
 			{
-				this.r = this.Math.rand(0, 9);
+				this.r = ::Math.rand(0, 9);
 
 				if (this.r == 1)
 				{

@@ -2,22 +2,22 @@ this.barbarian_beastmaster <- this.inherit("scripts/entity/tactical/abstract_hum
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.BarbarianBeastmaster;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.BarbarianBeastmaster.XP;
+		this.m.Type = ::Const.EntityType.BarbarianBeastmaster;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.BarbarianBeastmaster.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.WildMale;
-		this.m.Hairs = this.Const.Hair.WildMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.WildExtended;
+		this.m.Faces = ::Const.Faces.WildMale;
+		this.m.Hairs = ::Const.Hair.WildMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.WildExtended;
 		this.m.SoundPitch = 0.95;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/barbarian_beastmaster_agent");
 		this.m.AIAgent.setActor(this);
 
-		if (this.Math.rand(1, 100) <= 30)
+		if (::Math.rand(1, 100) <= 30)
 		{
 			this.setGender(1);
-			this.m.Faces = this.Const.Faces.WildFemale;
+			this.m.Faces = ::Const.Faces.WildFemale;
 		}
 	}
 
@@ -31,23 +31,23 @@ this.barbarian_beastmaster <- this.inherit("scripts/entity/tactical/abstract_hum
 			6
 		];
 
-		if (this.Math.rand(1, 100) <= 66)
+		if (::Math.rand(1, 100) <= 66)
 		{
 			local tattoo_body = this.actor.getSprite("tattoo_body");
 			local body = this.actor.getSprite("body");
-			tattoo_body.setBrush("tattoo_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_" + body.getBrush().Name);
+			tattoo_body.setBrush("tattoo_0" + tattoos[::Math.rand(0, tattoos.len() - 1)] + "_" + body.getBrush().Name);
 			tattoo_body.Visible = true;
 		}
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
 			local tattoo_head = this.actor.getSprite("tattoo_head");
-			tattoo_head.setBrush("tattoo_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_head");
+			tattoo_head.setBrush("tattoo_0" + tattoos[::Math.rand(0, tattoos.len() - 1)] + "_head");
 			tattoo_head.Visible = true;
 		}
 
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BarbarianBeastmaster);
+		b.setValues(::Const.Tactical.Actor.BarbarianBeastmaster);
 		b.TargetAttractionMult = 1.1;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
@@ -60,13 +60,13 @@ this.barbarian_beastmaster <- this.inherit("scripts/entity/tactical/abstract_hum
 
 	function pickOutfit()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"barbarians/hide_and_bone_armor"
 			]
 		]));
-		this.m.Items.equip(this.Const.World.Common.pickHelmet([
+		this.m.Items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"barbarians/beastmasters_headpiece"

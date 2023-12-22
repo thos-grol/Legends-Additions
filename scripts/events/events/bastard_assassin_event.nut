@@ -28,7 +28,7 @@ this.bastard_assassin_event <- this.inherit("scripts/events/event", {
 					Text = "No talking. You just die.",
 					function getResult( _event )
 					{
-						local r = this.Math.rand(1, 100);
+						local r = ::Math.rand(1, 100);
 
 						if (r <= 33)
 						{
@@ -101,7 +101,7 @@ this.bastard_assassin_event <- this.inherit("scripts/events/event", {
 					Text = "Or I\'ll just kill you.",
 					function getResult( _event )
 					{
-						local r = this.Math.rand(1, 100);
+						local r = ::Math.rand(1, 100);
 
 						if (r <= 33)
 						{
@@ -196,7 +196,7 @@ this.bastard_assassin_event <- this.inherit("scripts/events/event", {
 					Text = "I think I\'ll just kill you.",
 					function getResult( _event )
 					{
-						local r = this.Math.rand(1, 100);
+						local r = ::Math.rand(1, 100);
 
 						if (r <= 33)
 						{
@@ -375,7 +375,7 @@ this.bastard_assassin_event <- this.inherit("scripts/events/event", {
 						continue;
 					}
 
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
 						bro.improveMood(0.5, "You risked your life for the men");
 
@@ -414,8 +414,8 @@ this.bastard_assassin_event <- this.inherit("scripts/events/event", {
 
 		if (candidates.len() == 0 || candidates_other.len() == 0) return;
 
-		this.m.Bastard = candidates[this.Math.rand(0, candidates.len() - 1)];
-		this.m.Other = candidates_other[this.Math.rand(0, candidates_other.len() - 1)];
+		this.m.Bastard = candidates[::Math.rand(0, candidates.len() - 1)];
+		this.m.Other = candidates_other[::Math.rand(0, candidates_other.len() - 1)];
 		this.m.Score = candidates.len() * 5;
 	}
 

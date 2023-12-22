@@ -2,15 +2,15 @@ this.nomad_slinger <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.NomadSlinger;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.NomadSlinger.XP;
+		this.m.Type = ::Const.EntityType.NomadSlinger;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.NomadSlinger.XP;
 		this.abstract_human.create();
-		this.m.Bodies = this.Const.Bodies.SouthernMale;
-		this.m.Faces = this.Const.Faces.SouthernMale;
-		this.m.Hairs = this.Const.Hair.SouthernMale;
-		this.m.HairColors = this.Const.HairColors.Southern;
-		this.m.Beards = this.Const.Beards.SouthernUntidy;
+		this.m.Bodies = ::Const.Bodies.SouthernMale;
+		this.m.Faces = ::Const.Faces.SouthernMale;
+		this.m.Hairs = ::Const.Hair.SouthernMale;
+		this.m.HairColors = ::Const.HairColors.Southern;
+		this.m.Beards = ::Const.Beards.SouthernUntidy;
 		this.m.BeardChance = 90;
 		this.m.Ethnicity = 1;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_ranged_agent");
@@ -21,7 +21,7 @@ this.nomad_slinger <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.NomadSlinger);
+		b.setValues(::Const.Tactical.Actor.NomadSlinger);
 		b.TargetAttractionMult = 1.1;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
@@ -29,7 +29,7 @@ this.nomad_slinger <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_nomads");
 
-		if (this.Math.rand(1, 100) <= 20)
+		if (::Math.rand(1, 100) <= 20)
 		{
 			local pox = this.getSprite("tattoo_head");
 			pox.Visible = true;
@@ -39,25 +39,25 @@ this.nomad_slinger <- this.inherit("scripts/entity/tactical/abstract_human", {
 		{
 			local dirt = this.getSprite("dirt");
 			dirt.Visible = true;
-			dirt.Alpha = this.Math.rand(150, 255);
+			dirt.Alpha = ::Math.rand(150, 255);
 		}
 	}
 
 	function onOtherActorDeath( _killer, _victim, _skill )
 	{
-		if (_victim.getType() == this.Const.EntityType.Slave && _victim.isAlliedWith(this)) return;
+		if (_victim.getType() == ::Const.EntityType.Slave && _victim.isAlliedWith(this)) return;
 		this.actor.onOtherActorDeath(_killer, _victim, _skill);
 	}
 
 	function onOtherActorFleeing( _actor )
 	{
-		if (_actor.getType() == this.Const.EntityType.Slave && _actor.isAlliedWith(this)) return;
+		if (_actor.getType() == ::Const.EntityType.Slave && _actor.isAlliedWith(this)) return;
 		this.actor.onOtherActorFleeing(_actor);
 	}
 
 	function pickOutfit()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				3,
 				"oriental/nomad_robe"
@@ -89,7 +89,7 @@ this.nomad_slinger <- this.inherit("scripts/entity/tactical/abstract_human", {
 				"oriental/nomad_leather_cap"
 			]
 		];
-		this.m.Items.equip(this.Const.World.Common.pickHelmet(helmet));
+		this.m.Items.equip(::Const.World.Common.pickHelmet(helmet));
 	}
 
 	function assignRandomEquipment()
@@ -99,7 +99,7 @@ this.nomad_slinger <- this.inherit("scripts/entity/tactical/abstract_human", {
 			"weapons/knife",
 			"weapons/wooden_stick"
 		];
-		this.m.Items.addToBag(this.new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+		this.m.Items.addToBag(this.new("scripts/items/" + weapons[::Math.rand(0, weapons.len() - 1)]));
 	}
 
 });

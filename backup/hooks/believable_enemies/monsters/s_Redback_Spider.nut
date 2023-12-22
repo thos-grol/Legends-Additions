@@ -38,11 +38,11 @@
 		local legs_back = this.addSprite("legs_back");
 		legs_back.setBrush("bust_spider_redback_legs_back");
 		local body = this.addSprite("body");
-		body.setBrush("bust_spider_redback_body_0" + this.Math.rand(1, 4));
+		body.setBrush("bust_spider_redback_body_0" + ::Math.rand(1, 4));
 
-		if (this.Math.rand(0, 100) < 90) body.varySaturation(0.3);
-		if (this.Math.rand(0, 100) < 90) body.varyColor(0.1, 0.1, 0.1);
-		if (this.Math.rand(0, 100) < 90) body.varyBrightness(0.1);
+		if (::Math.rand(0, 100) < 90) body.varySaturation(0.3);
+		if (::Math.rand(0, 100) < 90) body.varyColor(0.1, 0.1, 0.1);
+		if (::Math.rand(0, 100) < 90) body.varyBrightness(0.1);
 
 		local legs_front = this.addSprite("legs_front");
 		legs_front.setBrush("bust_spider_redback_legs_front");
@@ -62,7 +62,7 @@
 		this.setSpriteOffset("status_rooted", this.createVec(7, 10));
 		this.setSpriteOffset("status_stunned", this.createVec(0, -20));
 		this.setSpriteOffset("arrow", this.createVec(0, -20));
-		this.setSize(this.Math.rand(70, 90) * 0.01);
+		this.setSize(::Math.rand(70, 90) * 0.01);
 
 		this.m.Skills.add(::new("scripts/skills/actives/legend_redback_spider_bite_skill"));
 		this.m.Skills.add(::new("scripts/skills/actives/web_skill"));

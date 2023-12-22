@@ -3,7 +3,7 @@
     function onAdded()
 	{
 		this.m.TurnsLeft = 3;
-        this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.Skill, this.getContainer().getActor().getPos());
+        this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.Skill, this.getContainer().getActor().getPos());
         local actor = this.getContainer().getActor();
         this.addSprite(1, "bust_flies_01");
         this.addSprite(2, "bust_flies_02");

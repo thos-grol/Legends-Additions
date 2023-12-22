@@ -30,8 +30,8 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 	function create()
 	{
-		this.m.ID = this.Const.AI.Behavior.ID.EngageRanged;
-		this.m.Order = this.Const.AI.Behavior.Order.EngageRanged;
+		this.m.ID = ::Const.AI.Behavior.ID.EngageRanged;
+		this.m.Order = ::Const.AI.Behavior.Order.EngageRanged;
 		this.m.IsThreaded = true;
 		this.behavior.create();
 	}
@@ -60,43 +60,43 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 		this.m.IsTakingCover = false;
 		local scoreMult = this.getProperties().BehaviorMult[this.m.ID];
 
-		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP)
+		if (_entity.getActionPoints() < ::Const.Movement.AutoEndTurnBelowAP)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (this.m.IsDoneThisTurn && _entity.getActionPoints() < _entity.getActionPointsMax())
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (_entity.getCurrentProperties().IsRooted)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		if (_entity.getMoraleState() == this.Const.MoraleState.Fleeing)
+		if (_entity.getMoraleState() == ::Const.MoraleState.Fleeing)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		local retreat = this.getAgent().getBehavior(this.Const.AI.Behavior.ID.Retreat);
+		local retreat = this.getAgent().getBehavior(::Const.AI.Behavior.ID.Retreat);
 
 		if (retreat != null && retreat.getScore() != 0)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (!this.getAgent().hasKnownOpponent())
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		local zoc = _entity.getTile().getZoneOfControlCountOtherThan(_entity.getAlliedFactions());
 
 		if (zoc > 0)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		local maxRange = 0;
@@ -119,10 +119,10 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (maxRange == 0)
 		{
-			maxRange = this.Const.AI.Behavior.RangedEngageDefaultMaxRange;
+			maxRange = ::Const.AI.Behavior.RangedEngageDefaultMaxRange;
 		}
 
-		maxRange = this.Math.min(this.Const.AI.Behavior.RangedEngageAbsoluteMaxRange, this.Math.min(maxRange, visibleTileNeeded ? _entity.getCurrentProperties().getVision() : maxRange));
+		maxRange = ::Math.min(::Const.AI.Behavior.RangedEngageAbsoluteMaxRange, ::Math.min(maxRange, visibleTileNeeded ? _entity.getCurrentProperties().getVision() : maxRange));
 		local targets = this.getAgent().getKnownOpponents();
 		local myTile = _entity.getTile();
 		local func = this.compileTargets(_entity, this.getAgent().getKnownOpponents(), maxRange);
@@ -134,14 +134,14 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (this.m.ValidTargets.len() == 0)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		this.m.IsInDangerThisRound = this.m.CurrentDanger != 0;
 
 		if (this.m.Skill != null && this.m.Skill.getMaxRange() == 99 && !this.m.IsInDangerThisRound)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		yield null;
@@ -154,32 +154,32 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (this.m.TargetTile == null || this.m.IsTargetForNextTurn || this.m.TargetTile.isSameTileAs(_entity.getTile()))
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (this.getAgent().getIntentions().IsDefendingPosition && this.m.TargetDanger > this.m.CurrentDanger)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (this.m.CurrentDanger > 1.0 && this.m.TargetDanger < this.m.CurrentDanger && this.getProperties().OverallDefensivenessMult != 0)
 		{
-			if (this.Const.AI.VerboseMode)
+			if (::Const.AI.VerboseMode)
 			{
 				this.logInfo("* " + _entity.getName() + ": It\'s important that I get some distance from my opponents...");
 			}
 
-			scoreMult = scoreMult * this.Math.maxf(this.getProperties().OverallDefensivenessMult * 0.5, this.m.CurrentDanger / this.Math.maxf(1.0, this.m.TargetDanger));
+			scoreMult = scoreMult * ::Math.maxf(this.getProperties().OverallDefensivenessMult * 0.5, this.m.CurrentDanger / ::Math.maxf(1.0, this.m.TargetDanger));
 		}
 
 		if ((this.m.IsTargetNextToUs || _entity.getActionPoints() - this.m.TargetAPCost >= 4) && this.m.TargetTile.Level > _entity.getTile().Level)
 		{
-			if (this.Const.AI.VerboseMode)
+			if (::Const.AI.VerboseMode)
 			{
 				this.logInfo("* " + _entity.getName() + ": Considering improving position since a clearly better one is right next to me...");
 			}
 
-			scoreMult = scoreMult * this.Const.AI.Behavior.RangedEngageImprovePosNearbyMult;
+			scoreMult = scoreMult * ::Const.AI.Behavior.RangedEngageImprovePosNearbyMult;
 		}
 
 		if (_entity.isAbleToWait() && (scoreMult < 0.5 || this.m.TargetDanger > this.m.CurrentDanger || this.getStrategy().isDefending && this.getStrategy().isDefendingCamp() && this.m.TargetAPCost > 9))
@@ -191,15 +191,15 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (this.m.IsTakingCover)
 		{
-			if (this.Const.AI.VerboseMode)
+			if (::Const.AI.VerboseMode)
 			{
 				this.logInfo("* " + _entity.getName() + ": Taking cover...");
 			}
 
-			scoreMult = scoreMult * this.Math.maxf(1.0, this.Const.AI.Behavior.RangedEngageTakeCoverMult * this.Math.minf(3.0, (1.0 + this.getStrategy().getStats().EnemyRangedFiring) / (1.0 + this.getStrategy().getStats().AllyRangedFiring)) * this.getProperties().OverallDefensivenessMult);
+			scoreMult = scoreMult * ::Math.maxf(1.0, ::Const.AI.Behavior.RangedEngageTakeCoverMult * ::Math.minf(3.0, (1.0 + this.getStrategy().getStats().EnemyRangedFiring) / (1.0 + this.getStrategy().getStats().AllyRangedFiring)) * this.getProperties().OverallDefensivenessMult);
 		}
 
-		return (this.Const.AI.Behavior.Score.EngageRanged + this.m.TargetScore) * scoreMult;
+		return (::Const.AI.Behavior.Score.EngageRanged + this.m.TargetScore) * scoreMult;
 	}
 
 	function onBeforeExecute( _entity )
@@ -226,7 +226,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 			{
 				if (this.Tactical.TurnSequenceBar.entityWaitTurn(_entity))
 				{
-					if (this.Const.AI.VerboseMode)
+					if (::Const.AI.VerboseMode)
 					{
 						this.logInfo("* " + _entity.getName() + ": Waiting until others have moved!");
 					}
@@ -247,12 +247,12 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 			settings.ActionPointCostPerLevel = _entity.getLevelActionPointCost();
 			settings.FatigueCostPerLevel = _entity.getLevelFatigueCost();
 			settings.AllowZoneOfControlPassing = false;
-			settings.ZoneOfControlCost = this.Const.AI.Behavior.ZoneOfControlAPPenalty;
+			settings.ZoneOfControlCost = ::Const.AI.Behavior.ZoneOfControlAPPenalty;
 			settings.AlliedFactions = _entity.getAlliedFactions();
 			settings.Faction = _entity.getFaction();
 			navigator.findPath(_entity.getTile(), this.m.TargetTile, settings, this.m.TargetDist);
 
-			if (this.Const.AI.PathfindingDebugMode)
+			if (::Const.AI.PathfindingDebugMode)
 			{
 				navigator.buildVisualisation(_entity, settings, _entity.getActionPoints(), _entity.getFatigueMax() - _entity.getFatigue());
 			}
@@ -266,7 +266,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 			this.m.Agent.adjustCameraToDestination(movement.End);
 
-			if (this.Const.AI.VerboseMode)
+			if (::Const.AI.VerboseMode)
 			{
 				this.logInfo("* " + _entity.getName() + ": Engaging into firing range over " + movement.Tiles + " tiles");
 			}
@@ -289,7 +289,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 		try {
 			local d = this.queryActorTurnsNearTarget(_actor, _target, _entity);
 
-			if (d.Turns <= this.Const.AI.Behavior.RangedEngageKeepMinTurnsAway && d.InZonesOfControl < 2)
+			if (d.Turns <= ::Const.AI.Behavior.RangedEngageKeepMinTurnsAway && d.InZonesOfControl < 2)
 			{
 				if (d.InZonesOfOccupation != 0 || _actor.getCurrentProperties().IsRooted)
 				{
@@ -314,7 +314,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 		local myTile = _entity.getTile();
 		local myFaction = _entity.getFaction();
 		local allies = this.getAgent().getKnownAllies();
-		local useCoverMult = this.Math.minf(10.0, (1.0 + this.getStrategy().getStats().EnemyRangedFiring) / (1.0 + this.getStrategy().getStats().AllyRangedFiring));
+		local useCoverMult = ::Math.minf(10.0, (1.0 + this.getStrategy().getStats().EnemyRangedFiring) / (1.0 + this.getStrategy().getStats().AllyRangedFiring));
 		local myTileScore = -9000;
 		local origin = myTile;
 		local minDistance = 9000;
@@ -340,8 +340,8 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 				y = y + target.Tile.SquareCoords.Y;
 			}
 
-			x = this.Math.round(myTile.SquareCoords.X * 0.75 + x / this.m.ValidTargets.len() * 0.25);
-			y = this.Math.round(myTile.SquareCoords.Y * 0.75 + y / this.m.ValidTargets.len() * 0.25);
+			x = ::Math.round(myTile.SquareCoords.X * 0.75 + x / this.m.ValidTargets.len() * 0.25);
+			y = ::Math.round(myTile.SquareCoords.Y * 0.75 + y / this.m.ValidTargets.len() * 0.25);
 
 			if (!this.Tactical.isValidTile(x, y))
 			{
@@ -351,7 +351,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 			origin = this.Tactical.getTileSquare(x, y);
 
-			if (origin.getDistanceTo(myTile) > this.Math.min(12, this.Math.max(this.Const.AI.Behavior.RangedEngageMinQueryRadius, _maxRange)) / 2)
+			if (origin.getDistanceTo(myTile) > ::Math.min(12, ::Math.max(::Const.AI.Behavior.RangedEngageMinQueryRadius, _maxRange)) / 2)
 			{
 				origin = myTile;
 			}
@@ -371,7 +371,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 			}
 		}
 
-		if (minDistance > this.Math.min(12, this.Math.max(this.Const.AI.Behavior.RangedEngageMinQueryRadius, _maxRange)))
+		if (minDistance > ::Math.min(12, ::Math.max(::Const.AI.Behavior.RangedEngageMinQueryRadius, _maxRange)))
 		{
 			local settings = navigator.createSettings();
 			settings.ActionPointCosts = _entity.getActionPointCosts();
@@ -380,20 +380,20 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 			settings.ActionPointCostPerLevel = _entity.getLevelActionPointCost();
 			settings.FatigueCostPerLevel = _entity.getLevelFatigueCost();
 			settings.AllowZoneOfControlPassing = false;
-			settings.ZoneOfControlCost = this.Const.AI.Behavior.ZoneOfControlAPPenalty;
+			settings.ZoneOfControlCost = ::Const.AI.Behavior.ZoneOfControlAPPenalty;
 			settings.AlliedFactions = _entity.getAlliedFactions();
 			settings.Faction = _entity.getFaction();
 			this.m.ValidTargets.sort(this.onSortByDistance);
 
 			foreach( target in this.m.ValidTargets )
 			{
-				if (navigator.findPath(myTile, target.Tile, settings, this.Math.min(12, this.Math.max(this.Const.AI.Behavior.RangedEngageMinQueryRadius, _maxRange))))
+				if (navigator.findPath(myTile, target.Tile, settings, ::Math.min(12, ::Math.max(::Const.AI.Behavior.RangedEngageMinQueryRadius, _maxRange))))
 				{
 					local movementCosts = navigator.getCostForPath(_entity, settings, _entity.getActionPoints(), _entity.getFatigueMax() - _entity.getFatigue());
 
 					if (movementCosts.Tiles != 0)
 					{
-						this.m.TargetDist = this.Math.min(12, this.Math.max(this.Const.AI.Behavior.RangedEngageMinQueryRadius, _maxRange));
+						this.m.TargetDist = ::Math.min(12, ::Math.max(::Const.AI.Behavior.RangedEngageMinQueryRadius, _maxRange));
 						this.m.TargetTile = target.Tile;
 						this.m.TargetDanger = 0;
 						this.logDebug("No good tile in range, engaging in the general direction of the enemy!");
@@ -430,7 +430,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 			MapSize = this.Tactical.getMapSize()
 		};
 		this.onQueryTargetTile(myTile, tiles);
-		this.Tactical.queryTilesInRange(origin, 1, this.Math.min(12, this.Math.max(this.Const.AI.Behavior.RangedEngageMinQueryRadius, _maxRange)), true, _entity.getAlliedFactions(), this.onQueryTargetTile, tiles);
+		this.Tactical.queryTilesInRange(origin, 1, ::Math.min(12, ::Math.max(::Const.AI.Behavior.RangedEngageMinQueryRadius, _maxRange)), true, _entity.getAlliedFactions(), this.onQueryTargetTile, tiles);
 
 		if (this.isAllottedTimeReached(time))
 		{
@@ -439,9 +439,9 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 		}
 
 		tiles.Tiles.sort(this.onSortByScore);
-		local handgonneBehavior = this.getAgent().getBehavior(this.Const.AI.Behavior.ID.AttackHandgonne);
-		local miasmaBehavior = this.getAgent().getBehavior(this.Const.AI.Behavior.ID.Miasma);
-		local horrorBehavior = this.getAgent().getBehavior(this.Const.AI.Behavior.ID.Horror);
+		local handgonneBehavior = this.getAgent().getBehavior(::Const.AI.Behavior.ID.AttackHandgonne);
+		local miasmaBehavior = this.getAgent().getBehavior(::Const.AI.Behavior.ID.Miasma);
+		local horrorBehavior = this.getAgent().getBehavior(::Const.AI.Behavior.ID.Horror);
 		local attempts = 0;
 		local candidates = [];
 
@@ -455,7 +455,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 			if (this.getStrategy().isDefending() && this.getStrategy().isDefendingCamp() && !this.m.IsInDangerThisRound && this.getStrategy().getStats().EnemyRangedFiring < this.getStrategy().getStats().AllyRangedFiring)
 			{
-				local radius = this.Const.Tactical.Settings.CampRadius + this.Tactical.State.getStrategicProperties().LocationTemplate.AdditionalRadius;
+				local radius = ::Const.Tactical.Settings.CampRadius + this.Tactical.State.getStrategicProperties().LocationTemplate.AdditionalRadius;
 
 				for( ; t.Tile.getDistanceTo(centerTile) > radius;  )
 				{
@@ -464,7 +464,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 			attempts = ++attempts;
 
-			if (attempts > this.Const.AI.Behavior.RangedEngageFilterMaxAttempts && candidates.len() != 0)
+			if (attempts > ::Const.AI.Behavior.RangedEngageFilterMaxAttempts && candidates.len() != 0)
 			{
 				break;
 			}
@@ -486,7 +486,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 					}
 					else if (d <= target.Actor.getIdealRange() && !target.Actor.getCurrentProperties().IsStunned && target.Actor.isArmedWithMeleeWeapon())
 					{
-						score = score + this.Const.AI.Behavior.RangedEngageInRangeOfPolearmBonus;
+						score = score + ::Const.AI.Behavior.RangedEngageInRangeOfPolearmBonus;
 					}
 				}
 
@@ -500,17 +500,17 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 			if (this.m.Skill != null && this.m.Skill.getID() == "actives.fire_handgonne")
 			{
 				local c = handgonneBehavior.selectBestTarget(t.Tile, _entity, this.m.Skill);
-				score = score + c * this.Const.AI.Behavior.RangedEngageTargetScoreMult;
+				score = score + c * ::Const.AI.Behavior.RangedEngageTargetScoreMult;
 			}
 			else if (this.m.Skill != null && this.m.Skill.getID() == "actives.miasma")
 			{
 				local c = miasmaBehavior.selectBestTarget(t.Tile, _entity, this.m.Skill);
-				score = score + c * this.Const.AI.Behavior.RangedEngageTargetScoreMult;
+				score = score + c * ::Const.AI.Behavior.RangedEngageTargetScoreMult;
 			}
 			else if (this.m.Skill != null && this.m.Skill.getID() == "actives.horror")
 			{
 				local c = horrorBehavior.selectBestTarget(t.Tile, _entity, this.m.Skill);
-				score = score + c * this.Const.AI.Behavior.RangedEngageTargetScoreMult;
+				score = score + c * ::Const.AI.Behavior.RangedEngageTargetScoreMult;
 			}
 			else
 			{
@@ -519,28 +519,28 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 				foreach( target in this.m.ValidTargets )
 				{
-					if ((this.m.Skill != null && this.m.Skill.onVerifyTarget(t.Tile, target.Tile)) && target.Tile.getDistanceTo(t.Tile) <= _maxRange + (_considerLineOfFire ? this.Math.max(0, t.Tile.Level - target.Tile.Level) : 0) && (!_considerLineOfFire || t.Tile.hasLineOfSightTo(target.Tile, _entity.getCurrentProperties().getVision())))
+					if ((this.m.Skill != null && this.m.Skill.onVerifyTarget(t.Tile, target.Tile)) && target.Tile.getDistanceTo(t.Tile) <= _maxRange + (_considerLineOfFire ? ::Math.max(0, t.Tile.Level - target.Tile.Level) : 0) && (!_considerLineOfFire || t.Tile.hasLineOfSightTo(target.Tile, _entity.getCurrentProperties().getVision())))
 					{
 						avgLevel = avgLevel + target.Tile.Level;
 						validTargets = ++validTargets;
 						local targetScore = target.Score;
-						local blockedTiles = this.Const.Tactical.Common.getBlockedTiles(t.Tile, target.Tile, myFaction);
+						local blockedTiles = ::Const.Tactical.Common.getBlockedTiles(t.Tile, target.Tile, myFaction);
 
 						if (blockedTiles.len() != 0)
 						{
-							targetScore = targetScore * this.Const.AI.Behavior.RangedEngageBlockedMult;
+							targetScore = targetScore * ::Const.AI.Behavior.RangedEngageBlockedMult;
 						}
 
 						foreach( tile in blockedTiles )
 						{
 							if (tile.IsOccupiedByActor && tile.getEntity().isAlliedWith(_entity))
 							{
-								targetScore = targetScore * (this.Const.AI.Behavior.RangedEngageBlockedByAllyMult * (1.0 - this.getProperties().TargetPriorityHittingAlliesMult));
+								targetScore = targetScore * (::Const.AI.Behavior.RangedEngageBlockedByAllyMult * (1.0 - this.getProperties().TargetPriorityHittingAlliesMult));
 								break;
 							}
 						}
 
-						score = score + targetScore * this.Const.AI.Behavior.RangedEngageTargetScoreMult;
+						score = score + targetScore * ::Const.AI.Behavior.RangedEngageTargetScoreMult;
 					}
 				}
 
@@ -550,7 +550,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 					if (t.Tile.Level > avgLevel)
 					{
-						score = score + (t.Tile.Level - avgLevel) * this.Const.AI.Behavior.RangedEngageLevelAdvantageMult;
+						score = score + (t.Tile.Level - avgLevel) * ::Const.AI.Behavior.RangedEngageLevelAdvantageMult;
 					}
 				}
 			}
@@ -585,14 +585,14 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 					switch(dir)
 					{
-					case this.Const.Direction8.W:
-						dirs[this.Const.Direction.NW] += 4 * mult;
-						dirs[this.Const.Direction.SW] += 4 * mult;
+					case ::Const.Direction8.W:
+						dirs[::Const.Direction.NW] += 4 * mult;
+						dirs[::Const.Direction.SW] += 4 * mult;
 						break;
 
-					case this.Const.Direction8.E:
-						dirs[this.Const.Direction.NE] += 4 * mult;
-						dirs[this.Const.Direction.SE] += 4 * mult;
+					case ::Const.Direction8.E:
+						dirs[::Const.Direction.NE] += 4 * mult;
+						dirs[::Const.Direction.SE] += 4 * mult;
 						break;
 
 					default:
@@ -631,17 +631,17 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 								{
 									local protectorMult = 1.0;
 
-									if (this.getStrategy().isDefendingCamp() && t.Tile.getDistanceTo(centerTile) == this.Const.Tactical.Settings.CampRadius + this.Tactical.State.getStrategicProperties().LocationTemplate.AdditionalRadius - 1)
+									if (this.getStrategy().isDefendingCamp() && t.Tile.getDistanceTo(centerTile) == ::Const.Tactical.Settings.CampRadius + this.Tactical.State.getStrategicProperties().LocationTemplate.AdditionalRadius - 1)
 									{
 										protectorMult = protectorMult * 1.25;
 									}
 
-									if (tile.IsOccupiedByActor && cover.isAlliedWith(_entity) && cover.getAIAgent().getProperties().BehaviorMult[this.Const.AI.Behavior.ID.Protect] >= 1.0 && cover.getAIAgent().getBehavior(this.Const.AI.Behavior.ID.Protect) != null)
+									if (tile.IsOccupiedByActor && cover.isAlliedWith(_entity) && cover.getAIAgent().getProperties().BehaviorMult[::Const.AI.Behavior.ID.Protect] >= 1.0 && cover.getAIAgent().getBehavior(::Const.AI.Behavior.ID.Protect) != null)
 									{
 										protectorMult = protectorMult * 1.25;
 									}
 
-									score = score + this.Const.AI.Behavior.RangedEngageCoverMult * (dirs[i] / (numRangedOpponentsInRange * 1.0)) * (this.getStrategy().isDefending() ? 2.0 : 1.0) * useCoverMult * protectorMult * this.getProperties().OverallDefensivenessMult;
+									score = score + ::Const.AI.Behavior.RangedEngageCoverMult * (dirs[i] / (numRangedOpponentsInRange * 1.0)) * (this.getStrategy().isDefending() ? 2.0 : 1.0) * useCoverMult * protectorMult * this.getProperties().OverallDefensivenessMult;
 									takingCover = true;
 								}
 							}
@@ -684,7 +684,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 			attempts = ++attempts;
 
-			if (attempts > this.Const.AI.Behavior.RangedEngageMaxAttempts && bestDestination != null)
+			if (attempts > ::Const.AI.Behavior.RangedEngageMaxAttempts && bestDestination != null)
 			{
 				break;
 			}
@@ -704,7 +704,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 				settings.ActionPointCostPerLevel = _entity.getLevelActionPointCost();
 				settings.FatigueCostPerLevel = _entity.getLevelFatigueCost();
 				settings.AllowZoneOfControlPassing = false;
-				settings.ZoneOfControlCost = this.Const.AI.Behavior.ZoneOfControlAPPenalty;
+				settings.ZoneOfControlCost = ::Const.AI.Behavior.ZoneOfControlAPPenalty;
 				settings.AlliedFactions = _entity.getAlliedFactions();
 				settings.Faction = _entity.getFaction();
 
@@ -716,7 +716,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 					if (!movementCosts.IsComplete && this.hasNegativeTileEffect(finalTile, _entity))
 					{
-						apCost = apCost + this.Const.AI.Behavior.RangedEngageNegativeEffecAtStop;
+						apCost = apCost + ::Const.AI.Behavior.RangedEngageNegativeEffecAtStop;
 					}
 
 					if (!movementCosts.IsComplete && movementCosts.Tiles == 0)
@@ -755,7 +755,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 					}
 				}
 
-				danger = this.Math.maxf(dangerAtTarget, dangerAtStop);
+				danger = ::Math.maxf(dangerAtTarget, dangerAtStop);
 			}
 			else
 			{
@@ -767,7 +767,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 				continue;
 			}
 
-			local score = 0 - apCost + t.TileScore - danger * this.Const.AI.Behavior.RangedEngageDangerMult;
+			local score = 0 - apCost + t.TileScore - danger * ::Const.AI.Behavior.RangedEngageDangerMult;
 
 			if (t.Tile.isSameTileAs(_entity.getTile()))
 			{
@@ -788,7 +788,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (bestDestination != null && (bestScore <= myTileScore || bestDestination.isSameTileAs(_entity.getTile())))
 		{
-			if (this.Const.AI.VerboseMode)
+			if (::Const.AI.VerboseMode)
 			{
 				this.logInfo("* " + _entity.getName() + ": In fact, I would prefer to remain where I am (new)");
 			}
@@ -831,16 +831,16 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 
 		if (_tile.IsHidingEntity)
 		{
-			score = score + this.Const.AI.Behavior.RangedEngageTileHiddenBonus * _tag.AI.getProperties().OverallHideMult;
+			score = score + ::Const.AI.Behavior.RangedEngageTileHiddenBonus * _tag.AI.getProperties().OverallHideMult;
 		}
 
 		if (!_tag.IsAlliedWithPlayer && _tag.AI.getProperties().OverallHideMult >= 1.0 && !_tile.IsVisibleForPlayer)
 		{
-			score = score + this.Const.AI.Behavior.RangedEngageTileNotVisibleBonus * _tag.AI.getProperties().OverallHideMult;
+			score = score + ::Const.AI.Behavior.RangedEngageTileNotVisibleBonus * _tag.AI.getProperties().OverallHideMult;
 		}
 
-		score = score - (_tile.Properties.Effect != null && !_tile.Properties.Effect.IsPositive && _tile.Properties.Effect.Applicable(_tag.Actor) ? this.Const.AI.Behavior.RangedEngageNegativeTileEffectBonus : 0);
-		score = score - (_tile.Properties.IsMarkedForImpact ? this.Const.AI.Behavior.RangedEngageNegativeTileEffectBonus : 0);
+		score = score - (_tile.Properties.Effect != null && !_tile.Properties.Effect.IsPositive && _tile.Properties.Effect.Applicable(_tag.Actor) ? ::Const.AI.Behavior.RangedEngageNegativeTileEffectBonus : 0);
+		score = score - (_tile.Properties.IsMarkedForImpact ? ::Const.AI.Behavior.RangedEngageNegativeTileEffectBonus : 0);
 		_tag.Tiles.push({
 			Tile = _tile,
 			Score = score
@@ -900,7 +900,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 			local targetTile = target.Actor.getTile();
 			local realDist = myTile.getDistanceTo(targetTile);
 
-			if (realDist <= this.Const.AI.Behavior.RangedEngageMaxDangerDist && target.Actor.getMoraleState() != this.Const.MoraleState.Fleeing && !this.isRangedUnit(target.Actor) && !target.Actor.isNonCombatant() && target.Actor.getHitpoints() / target.Actor.getHitpointsMax() >= this.Const.AI.Behavior.RangedEngageMinDangerHitpointsPct && targetTile.getZoneOfControlCountOtherThan(target.Actor.getAlliedFactions()) < this.Const.AI.Behavior.RangedEngageIgnoreDangerMinZones)
+			if (realDist <= ::Const.AI.Behavior.RangedEngageMaxDangerDist && target.Actor.getMoraleState() != ::Const.MoraleState.Fleeing && !this.isRangedUnit(target.Actor) && !target.Actor.isNonCombatant() && target.Actor.getHitpoints() / target.Actor.getHitpointsMax() >= ::Const.AI.Behavior.RangedEngageMinDangerHitpointsPct && targetTile.getZoneOfControlCountOtherThan(target.Actor.getAlliedFactions()) < ::Const.AI.Behavior.RangedEngageIgnoreDangerMinZones)
 			{
 				this.m.PotentialDanger.push(target.Actor);
 				local danger = this.getDangerFromActor(target.Actor, myTile, _entity);
@@ -911,7 +911,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 			local opponentsAdjacent = 0;
 			local score = this.queryTargetValue(_entity, target.Actor, null);
 
-			for( local i = 0; i < this.Const.Direction.COUNT; i = ++i )
+			for( local i = 0; i < ::Const.Direction.COUNT; i = ++i )
 			{
 				if (!targetTile.hasNextTile(i))
 				{
@@ -936,16 +936,16 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 						}
 						else
 						{
-							score = score + 1.0 / 6.0 * this.queryTargetValue(_entity, tile.getEntity(), null) * this.Const.AI.Behavior.AttackRangedHitBystandersMult;
+							score = score + 1.0 / 6.0 * this.queryTargetValue(_entity, tile.getEntity(), null) * ::Const.AI.Behavior.AttackRangedHitBystandersMult;
 							opponentsAdjacent = ++opponentsAdjacent;
 						}
 					}
 				}
 			}
 
-			if (targetTile.getZoneOfControlCount(_entity.getFaction()) < this.Const.AI.Behavior.RangedEngageIgnoreDangerMinZones)
+			if (targetTile.getZoneOfControlCount(_entity.getFaction()) < ::Const.AI.Behavior.RangedEngageIgnoreDangerMinZones)
 			{
-				score = score * (1.0 + (1.0 - this.Math.minf(1.0, this.queryActorTurnsNearTarget(target.Actor, myTile, _entity).Turns)) * this.Const.AI.Behavior.AttackDangerMult);
+				score = score * (1.0 + (1.0 - ::Math.minf(1.0, this.queryActorTurnsNearTarget(target.Actor, myTile, _entity).Turns)) * ::Const.AI.Behavior.AttackDangerMult);
 			}
 
 			this.m.ValidTargets.push({
@@ -953,7 +953,7 @@ this.ai_engage_ranged_flesh <- this.inherit("scripts/ai/tactical/behavior", {
 				Tile = targetTile,
 				Distance = realDist,
 				IsRangedUnit = this.isRangedUnit(target.Actor),
-				Score = this.Math.maxf(0.01, score),
+				Score = ::Math.maxf(0.01, score),
 				OpponentsAdjacent = opponentsAdjacent,
 				AlliesAdjacent = alliesAdjacent
 			});

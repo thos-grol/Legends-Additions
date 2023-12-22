@@ -86,7 +86,7 @@ this.send_undead_roamers_action <- this.inherit("scripts/factions/faction_action
 
 		local settlement = this.pickWeightedRandom(settlements);
 		settlement.setLastSpawnTimeToNow();
-		local rand = this.Math.rand(60, 100);
+		local rand = ::Math.rand(60, 100);
 		local distanceToNextSettlement = this.getDistanceToSettlements(settlement.getTile());
 
 		if (::Legends.Mod.ModSettings.getSetting("DistanceScaling").getValue() && distanceToNextSettlement > 14)
@@ -94,17 +94,17 @@ this.send_undead_roamers_action <- this.inherit("scripts/factions/faction_action
 			rand = rand * (distanceToNextSettlement / 14.0);
 		}
 
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Undead", false, settlement.getRoamerSpawnList(), this.Math.max(settlement.getResources() * 0.75, this.Math.rand(60, 100) * this.getReputationToDifficultyLightMult()));
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Undead", false, settlement.getRoamerSpawnList(), ::Math.max(settlement.getResources() * 0.75, ::Math.rand(60, 100) * this.getReputationToDifficultyLightMult()));
 		party.getSprite("banner").setBrush(settlement.getBanner());
 		party.setDescription("Something seems wrong.");
-		party.setFootprintType(this.Const.World.FootprintsType.Undead);
+		party.setFootprintType(::Const.World.FootprintsType.Undead);
 		party.setSlowerAtNight(false);
 		party.setUsingGlobalVision(false);
 		party.setLooting(false);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
-		party.getLoot().ArmorParts = this.Math.rand(0, 10);
-		local r = this.Math.rand(1, 3);
+		party.getLoot().Money = ::Math.rand(0, 50);
+		party.getLoot().ArmorParts = ::Math.rand(0, 10);
+		local r = ::Math.rand(1, 3);
 
 		if (r == 1)
 		{
@@ -114,8 +114,8 @@ this.send_undead_roamers_action <- this.inherit("scripts/factions/faction_action
 		local c = party.getController();
 		local roam = this.new("scripts/ai/world/orders/roam_order");
 		roam.setAllTerrainAvailable();
-		roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-		roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+		roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+		roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 		roam.setPivot(settlement);
 		roam.setAvoidHeat(true);
 		roam.setTime(this.World.getTime().SecondsPerDay * 2);

@@ -13,7 +13,7 @@
 
 			if (this.World.Assets.getOrigin().getID() == "scenario.legends_seer")
 			{
-				r = this.Math.rand(0, 5);
+				r = ::Math.rand(0, 5);
 
 				if (r == 1)
 				{
@@ -22,7 +22,7 @@
 			}
 			else
 			{
-				r = this.Math.rand(0, 9);
+				r = ::Math.rand(0, 9);
 
 				if (r == 1)
 				{

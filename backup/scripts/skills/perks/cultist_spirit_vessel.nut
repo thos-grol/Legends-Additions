@@ -53,12 +53,12 @@ this.cultist_spirit_vessel <- this.inherit("scripts/skills/skill", {
 
 	function onTurnEnd()
 	{
-		if (this.Math.rand(1, 100) <= this.m.chance) summon();
+		if (::Math.rand(1, 100) <= this.m.chance) summon();
 	}
 
 	function onDamageReceived( _attacker, _damageHitpoints, _damageArmor )
 	{
-		if (this.Math.rand(1, 100) <= this.m.chance) summon();
+		if (::Math.rand(1, 100) <= this.m.chance) summon();
 	}
 
 	function onCombatStarted()
@@ -83,8 +83,8 @@ this.cultist_spirit_vessel <- this.inherit("scripts/skills/skill", {
 			"scripts/entity/tactical/enemies/ghost"
 		];
 
-		if (actor.getFlags().has("PerfectSpiritVessel") || this.Math.rand(1, 100) <= 44) summons.push("scripts/entity/tactical/enemies/legend_demon_hound");
-		if (actor.getFlags().has("PerfectSpiritVessel") && this.Math.rand(1, 100) <= 44) summons.push("scripts/entity/tactical/enemies/legend_banshee");
+		if (actor.getFlags().has("PerfectSpiritVessel") || ::Math.rand(1, 100) <= 44) summons.push("scripts/entity/tactical/enemies/legend_demon_hound");
+		if (actor.getFlags().has("PerfectSpiritVessel") && ::Math.rand(1, 100) <= 44) summons.push("scripts/entity/tactical/enemies/legend_banshee");
 		
 		for( local i = 0; i < 6; i = i )
 		{
@@ -93,7 +93,7 @@ this.cultist_spirit_vessel <- this.inherit("scripts/skills/skill", {
 			{
 				local nextTile = myTile.getNextTile(i);
 
-				if (nextTile.IsEmpty && this.Math.abs(myTile.Level - nextTile.Level) <= 1)
+				if (nextTile.IsEmpty && ::Math.abs(myTile.Level - nextTile.Level) <= 1)
 				{
 					candidates.push(nextTile);
 				}
@@ -103,12 +103,12 @@ this.cultist_spirit_vessel <- this.inherit("scripts/skills/skill", {
 
 		if (candidates.len() != 0)
 		{
-			local spawnTile = candidates[this.Math.rand(0, candidates.len() - 1)];
+			local spawnTile = candidates[::Math.rand(0, candidates.len() - 1)];
 			local sapling = this.Tactical.spawnEntity(::MSU.Array.rand(summons), spawnTile.Coords);
 			sapling.setFaction(actor.getFaction() == ::Const.Faction.Player ? ::Const.Faction.PlayerAnimals : actor.getFaction());
 			sapling.riseFromGround();
 		}
-		this.Sound.play("sounds/cultist/spirit_vessel.wav", 200.0, actor.getPos(), this.Math.rand(95, 105) * 0.01);
+		this.Sound.play("sounds/cultist/spirit_vessel.wav", 200.0, actor.getPos(), ::Math.rand(95, 105) * 0.01);
 		this.m.chance -= 1;
 	}
 

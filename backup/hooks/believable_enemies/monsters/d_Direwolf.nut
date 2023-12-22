@@ -34,13 +34,13 @@
 		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.addSprite("socket").setBrush("bust_base_beasts");
 		local body = this.addSprite("body");
-		body.setBrush("bust_direwolf_0" + this.Math.rand(1, 3));
+		body.setBrush("bust_direwolf_0" + ::Math.rand(1, 3));
 
-		if (this.Math.rand(0, 100) < 90) body.varySaturation(0.2);
-		if (this.Math.rand(0, 100) < 90) body.varyColor(0.05, 0.05, 0.05);
+		if (::Math.rand(0, 100) < 90) body.varySaturation(0.2);
+		if (::Math.rand(0, 100) < 90) body.varyColor(0.05, 0.05, 0.05);
 
 		local head = this.addSprite("head");
-		head.setBrush("bust_direwolf_0" + this.Math.rand(1, 3) + "_head");
+		head.setBrush("bust_direwolf_0" + ::Math.rand(1, 3) + "_head");
 		head.Color = body.Color;
 		head.Saturation = body.Saturation;
 		local head_frenzy = this.addSprite("head_frenzy");
@@ -90,12 +90,12 @@
 		local body = this.addSprite("body");
 		body.setBrush("bust_direwolf_white_01_body");
 
-		if (this.Math.rand(0, 100) < 90)
+		if (::Math.rand(0, 100) < 90)
 		{
 			body.varySaturation(0.2);
 		}
 
-		if (this.Math.rand(0, 100) < 90)
+		if (::Math.rand(0, 100) < 90)
 		{
 			body.varyColor(0.05, 0.05, 0.05);
 		}
@@ -170,16 +170,16 @@
 
 			if (this.World.getTime().Days >= dateToSkip)
 			{
-				local bonus = this.Math.min(1, this.Math.floor((this.World.getTime().Days - dateToSkip) / 20.0));
+				local bonus = ::Math.min(1, ::Math.floor((this.World.getTime().Days - dateToSkip) / 20.0));
 				b.MeleeSkill += bonus;
 				b.RangedSkill += bonus;
-				b.MeleeDefense += this.Math.floor(bonus / 2);
-				b.RangedDefense += this.Math.floor(bonus / 2);
-				b.Hitpoints += this.Math.floor(bonus * 2);
-				b.Initiative += this.Math.floor(bonus / 2);
+				b.MeleeDefense += ::Math.floor(bonus / 2);
+				b.RangedDefense += ::Math.floor(bonus / 2);
+				b.Hitpoints += ::Math.floor(bonus * 2);
+				b.Initiative += ::Math.floor(bonus / 2);
 				b.Stamina += bonus;
 				b.Bravery += bonus;
-				b.FatigueRecoveryRate += this.Math.floor(bonus / 4);
+				b.FatigueRecoveryRate += ::Math.floor(bonus / 4);
 			}
 		}
 	}

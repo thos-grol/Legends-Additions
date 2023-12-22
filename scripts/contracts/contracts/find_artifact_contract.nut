@@ -21,18 +21,18 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 	function start()
 	{
 		local myTile = this.World.State.getPlayer().getTile();
-		local undead = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getSettlements();
+		local undead = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getSettlements();
 		local highestDistance = 0;
 		local best;
 
 		foreach( b in undead )
 		{
-			if (b.isLocationType(this.Const.World.LocationType.Unique))
+			if (b.isLocationType(::Const.World.LocationType.Unique))
 			{
 				continue;
 			}
 
-			local d = myTile.getDistanceTo(b.getTile()) + this.Math.rand(0, 45);
+			local d = myTile.getDistanceTo(b.getTile()) + ::Math.rand(0, 45);
 
 			if (d > highestDistance)
 			{
@@ -73,12 +73,12 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 			"Robber Baron",
 			"Rook"
 		];
-		local n = this.Math.rand(0, nemesisNames.len() - 1);
+		local n = ::Math.rand(0, nemesisNames.len() - 1);
 		this.m.Flags.set("NemesisName", nemesisNames[n]);
 		this.m.Flags.set("NemesisNameC", nemesisNamesC[n]);
 		this.m.Flags.set("NemesisNameS", nemesisNamesS[n]);
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -104,7 +104,7 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 					"Retrieve the artifact from %objective% to the %direction%"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -117,14 +117,14 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 20)
 				{
 					this.Flags.set("IsLost", true);
 				}
 
-				r = this.Math.rand(1, 100);
+				r = ::Math.rand(1, 100);
 
 				if (r <= 20)
 				{
@@ -151,11 +151,11 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 				this.Contract.m.Destination.setLootScaleBasedOnResources(130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				this.Contract.m.Destination.clearTroops();
-				this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
 
 				if (!this.Flags.get("IsLost") && !this.Flags.get("IsTooLate"))
 				{
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				}
 
 				this.Contract.setScreen("Overview");
@@ -286,9 +286,9 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 				else
 				{
 					local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-					properties.Music = this.Const.Music.NobleTracks;
+					properties.Music = ::Const.Music.NobleTracks;
 					properties.Entities.push({
-						ID = this.Const.EntityType.BanditLeader,
+						ID = ::Const.EntityType.BanditLeader,
 						Variant = 0,
 						Row = 2,
 						Script = "scripts/entity/tactical/enemies/bandit_leader",
@@ -296,7 +296,7 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 						Callback = this.onNemesisPlaced.bindenv(this)
 					});
 					properties.EnemyBanners = [
-						this.Const.PlayerBanners[this.Flags.get("NemesisBanner") - 1]
+						::Const.PlayerBanners[this.Flags.get("NemesisBanner") - 1]
 					];
 					this.World.Contracts.startScriptedCombat(properties, true, true, true);
 				}
@@ -338,8 +338,8 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -426,18 +426,18 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Destination.die();
 						this.Contract.m.Destination = null;
 						local myTile = this.World.State.getPlayer().getTile();
-						local undead = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getSettlements();
+						local undead = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getSettlements();
 						local lowestDistance = 9999;
 						local best;
 
 						foreach( b in undead )
 						{
-							if (b.isLocationType(this.Const.World.LocationType.Unique))
+							if (b.isLocationType(::Const.World.LocationType.Unique))
 							{
 								continue;
 							}
 
-							local d = myTile.getDistanceTo(b.getTile()) + this.Math.rand(0, 25);
+							local d = myTile.getDistanceTo(b.getTile()) + ::Math.rand(0, 25);
 
 							if (d < lowestDistance)
 							{
@@ -451,8 +451,8 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Destination.setDiscovered(true);
 						this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 						this.Contract.m.Destination.clearTroops();
-						this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						this.Contract.getActiveState().start();
 						this.World.Contracts.updateActiveContract();
 						this.Contract.m.Dude = null;
@@ -474,7 +474,7 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 					}
 				}
 
-				this.Contract.m.Dude = candidates[this.Math.rand(0, candidates.len() - 1)];
+				this.Contract.m.Dude = candidates[::Math.rand(0, candidates.len() - 1)];
 			}
 
 		});
@@ -492,18 +492,18 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Destination.die();
 						this.Contract.m.Destination = null;
 						local myTile = this.World.State.getPlayer().getTile();
-						local undead = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getSettlements();
+						local undead = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getSettlements();
 						local lowestDistance = 9999;
 						local best;
 
 						foreach( b in undead )
 						{
-							if (b.isLocationType(this.Const.World.LocationType.Unique))
+							if (b.isLocationType(::Const.World.LocationType.Unique))
 							{
 								continue;
 							}
 
-							local d = myTile.getDistanceTo(b.getTile()) + this.Math.rand(0, 25);
+							local d = myTile.getDistanceTo(b.getTile()) + ::Math.rand(0, 25);
 
 							if (d < lowestDistance)
 							{
@@ -517,8 +517,8 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Destination.setDiscovered(true);
 						this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 						this.Contract.m.Destination.clearTroops();
-						this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						this.Contract.m.Destination.setLootScaleBasedOnResources(130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 
 						if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
@@ -552,26 +552,26 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Destination.die();
 						this.Contract.m.Destination = null;
 						local playerTile = this.World.State.getPlayer().getTile();
-						local camp = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getNearestSettlement(playerTile);
+						local camp = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getNearestSettlement(playerTile);
 						local tile = this.Contract.getTileToSpawnLocation(playerTile, 8, 14);
-						local party = this.World.FactionManager.getFaction(camp.getFaction()).spawnEntity(tile, this.Flags.get("NemesisNameC"), false, this.Const.World.Spawn.Mercenaries, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-						party.setFootprintType(this.Const.World.FootprintsType.Mercenaries);
+						local party = this.World.FactionManager.getFaction(camp.getFaction()).spawnEntity(tile, this.Flags.get("NemesisNameC"), false, ::Const.World.Spawn.Mercenaries, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party.setFootprintType(::Const.World.FootprintsType.Mercenaries);
 						local n = 0;
 
 						do
 						{
-							n = this.Math.rand(1, this.Const.PlayerBanners.len());
+							n = ::Math.rand(1, ::Const.PlayerBanners.len());
 						}
 						while (n == this.World.Assets.getBannerID());
 
-						party.getSprite("banner").setBrush(this.Const.PlayerBanners[n - 1]);
+						party.getSprite("banner").setBrush(::Const.PlayerBanners[n - 1]);
 						this.Flags.set("NemesisBanner", n);
 						this.Contract.m.UnitsSpawned.push(party);
-						party.getLoot().Money = this.Math.rand(50, 100);
-						party.getLoot().ArmorParts = this.Math.rand(0, 10);
-						party.getLoot().Medicine = this.Math.rand(0, 2);
-						party.getLoot().Ammo = this.Math.rand(0, 20);
-						local r = this.Math.rand(1, 6);
+						party.getLoot().Money = ::Math.rand(50, 100);
+						party.getLoot().ArmorParts = ::Math.rand(0, 10);
+						party.getLoot().Medicine = ::Math.rand(0, 2);
+						party.getLoot().Ammo = ::Math.rand(0, 20);
+						local r = ::Math.rand(1, 6);
 
 						if (r == 1)
 						{
@@ -598,17 +598,17 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 						party.setAttackableByAI(false);
 						party.setFootprintSizeOverride(0.75);
 						local c = party.getController();
-						c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+						c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 						local roam = this.new("scripts/ai/world/orders/roam_order");
 						roam.setPivot(camp);
 						roam.setMinRange(5);
 						roam.setMaxRange(10);
 						roam.setAllTerrainAvailable();
-						roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-						roam.setTerrain(this.Const.World.TerrainType.Shore, false);
-						roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+						roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+						roam.setTerrain(::Const.World.TerrainType.Shore, false);
+						roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 						c.addOrder(roam);
-						this.Const.World.Common.addFootprintsFromTo(playerTile, this.Contract.m.Destination.getTile(), this.Const.GenericFootprints, this.Const.World.FootprintsType.Mercenaries, 0.75);
+						::Const.World.Common.addFootprintsFromTo(playerTile, this.Contract.m.Destination.getTile(), ::Const.GenericFootprints, ::Const.World.FootprintsType.Mercenaries, 0.75);
 						this.Contract.setState("Running_TooLate");
 						return 0;
 					}
@@ -640,7 +640,7 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "No one needs to die here. The artifact in exchange for %bribe% crowns, what say you?",
 					function getResult()
 					{
-						return this.Math.rand(1, 100) <= 50 ? "TooLateBribeRefused" : "TooLateBribeAccepted";
+						return ::Math.rand(1, 100) <= 50 ? "TooLateBribeRefused" : "TooLateBribeAccepted";
 					}
 
 				}
@@ -705,7 +705,7 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "You made the right decision.",
 					function getResult()
 					{
-						this.Contract.m.Destination.getController().getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+						this.Contract.m.Destination.getController().getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 						return "TooLate3";
 					}
 
@@ -718,7 +718,7 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + bribe + "[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + bribe + "[/color] Crowns"
 				});
 			}
 
@@ -743,8 +743,8 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 			function start()
 			{
 				local brothers = this.World.getPlayerRoster().getAll();
-				local bro = brothers[this.Math.rand(0, brothers.len() - 1)];
-				local injury = bro.addInjury(this.Const.Injury.Accident1);
+				local bro = brothers[::Math.rand(0, brothers.len() - 1)];
+				local injury = bro.addInjury(::Const.Injury.Accident1);
 				this.Contract.m.Dude = bro;
 				this.List = [
 					{
@@ -776,18 +776,18 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				this.Contract.m.Destination = null;
 				local myTile = this.World.State.getPlayer().getTile();
-				local undead = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getSettlements();
+				local undead = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getSettlements();
 				local lowestDistance = 9999;
 				local best;
 
 				foreach( b in undead )
 				{
-					if (b.isLocationType(this.Const.World.LocationType.Unique))
+					if (b.isLocationType(::Const.World.LocationType.Unique))
 					{
 						continue;
 					}
 
-					local d = myTile.getDistanceTo(b.getTile()) + this.Math.rand(0, 35);
+					local d = myTile.getDistanceTo(b.getTile()) + ::Math.rand(0, 35);
 
 					if (d < lowestDistance)
 					{
@@ -801,8 +801,8 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 				this.Contract.m.Destination.clearTroops();
-				this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
-				this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.UndeadArmy, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				this.Contract.getActiveState().start();
 				this.World.Contracts.updateActiveContract();
 			}
@@ -821,14 +821,14 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Procured an artifact important for the war effort");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Procured an artifact important for the war effort");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -841,7 +841,7 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -880,7 +880,7 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Destination == null || this.m.Destination.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Destination.getTile())]
+			this.m.Destination == null || this.m.Destination.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Destination.getTile())]
 		]);
 	}
 

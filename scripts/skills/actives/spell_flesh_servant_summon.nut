@@ -15,8 +15,8 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
 			"sounds/enemies/necromancer_02.wav",
 			"sounds/enemies/necromancer_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -55,7 +55,7 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
 	{
 		this.m.Used = true;
 		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
-			::Z.Log.display_basic(_user, null, this.m.Name, _user.getFaction() == this.Const.Faction.Player || _user.getFaction() == this.Const.Faction.PlayerAnimals);
+			::Z.Log.display_basic(_user, null, this.m.Name, _user.getFaction() == ::Const.Faction.Player || _user.getFaction() == ::Const.Faction.PlayerAnimals);
 
 		for( local i = 1; i <= 5; i++ )
 		{
@@ -98,7 +98,7 @@ this.spell_flesh_servant_summon <- this.inherit("scripts/skills/_magic_active", 
 
 		//set faction to caster's
 		local faction = tag.User.getFaction();
-		if (faction == this.Const.Faction.Player) faction = this.Const.Faction.PlayerAnimals;
+		if (faction == ::Const.Faction.Player) faction = ::Const.Faction.PlayerAnimals;
 		entity.setFaction(faction);
 
 		//set the name

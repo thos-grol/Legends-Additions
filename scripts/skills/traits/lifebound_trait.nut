@@ -11,8 +11,8 @@ this.lifebound_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		this.m.Name = "Training progress";
 		this.m.Icon = "ui/traits/IntensiveTraining.png";
 		this.m.Description = "This character can increase their abilities if you upgrade your camp training facilities.";
-		this.m.Order = this.Const.SkillOrder.Background + 1;
-		this.m.Type = this.Const.SkillType.Trait;
+		this.m.Order = ::Const.SkillOrder.Background + 1;
+		this.m.Type = ::Const.SkillType.Trait;
 		this.m.IsActive = false;
 		this.m.IsStacking = true;
 		this.m.IsHidden = false;

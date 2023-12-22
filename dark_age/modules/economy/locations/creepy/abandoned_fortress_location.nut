@@ -21,7 +21,7 @@
 		this.location.onInit();
 		local body = this.addSprite("body");
 		body.setBrush("world_fortress_ruins");
-		body.setHorizontalFlipping(this.Math.rand(0, 1) == 1);
+		body.setHorizontalFlipping(::Math.rand(0, 1) == 1);
 	}
 
 });

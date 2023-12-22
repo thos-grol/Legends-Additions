@@ -143,7 +143,7 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 			}
 
 			local chance = this.getHitchance(target);
-			local roll = this.Math.rand(1, 100);
+			local roll = ::Math.rand(1, 100);
 			if (roll > chance)
 			{
 				if (!_user.isHiddenToPlayer() && !target.isHiddenToPlayer())
@@ -154,9 +154,9 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 			}
 
 			local oldRoll = roll;
-			if (this.Math.rand(1, 100) <= target.getCurrentProperties().RerollMoraleChance)
+			if (::Math.rand(1, 100) <= target.getCurrentProperties().RerollMoraleChance)
 			{
-				roll = this.Math.rand(1, 100);
+				roll = ::Math.rand(1, 100);
 				if (roll > chance)
 				{
 					if (!_user.isHiddenToPlayer() && !target.isHiddenToPlayer())
@@ -219,8 +219,8 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 		modifier_defender_morale = target.getMoraleState() < 3 ? -0.15 : modifier_defender_morale;
 		modifier_defender_morale = target.getMoraleState() > 3 ? 0.15 : modifier_defender_morale;
 		
-		local chance_defend = this.Math.floor((target.getBravery()/(chance_attack) - 0.25 + modifier_defender_morale) * 100);
-		chance_defend = this.Math.minf(100, this.Math.maxf(0, chance_defend)); //make sure chance is within bounds
+		local chance_defend = ::Math.floor((target.getBravery()/(chance_attack) - 0.25 + modifier_defender_morale) * 100);
+		chance_defend = ::Math.minf(100, ::Math.maxf(0, chance_defend)); //make sure chance is within bounds
 		chance_defend = target.getMoraleState() == ::Const.MoraleState.Ignore ? 0 : chance_defend;
 
 		return 100 - chance_defend;
@@ -246,8 +246,8 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 		modifier_defender_morale = target.getMoraleState() < 3 ? -0.15 : modifier_defender_morale;
 		modifier_defender_morale = target.getMoraleState() > 3 ? 0.15 : modifier_defender_morale;
 		
-		local chance_defend = this.Math.floor((target.getBravery()/(chance_attack) - 0.25 + modifier_defender_morale) * 100);
-		chance_defend = this.Math.minf(100, this.Math.maxf(0, chance_defend)); //make sure chance is within bounds
+		local chance_defend = ::Math.floor((target.getBravery()/(chance_attack) - 0.25 + modifier_defender_morale) * 100);
+		chance_defend = ::Math.minf(100, ::Math.maxf(0, chance_defend)); //make sure chance is within bounds
 		chance_defend = target.getMoraleState() == ::Const.MoraleState.Ignore ? 0 : chance_defend;
 
 		if (target.isNonCombatant())
@@ -321,7 +321,7 @@ this.sleep_player <- this.inherit("scripts/skills/skill", {
 			]);
 		}
 
-		local calculated_chance = this.Math.floor(target.getBravery()/(chance_attack) * 100);
+		local calculated_chance = ::Math.floor(target.getBravery()/(chance_attack) * 100);
 		ret.extend([
 			{
 				icon = "ui/icons/special.png",

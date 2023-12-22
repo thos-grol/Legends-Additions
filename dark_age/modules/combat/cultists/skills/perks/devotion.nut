@@ -38,7 +38,7 @@
         {
             if (s.isType(::Const.SkillType.PermanentInjury)) multiplier += 0.05;
         }
-        local total = this.Math.floor(resolve * multiplier);
+        local total = ::Math.floor(resolve * multiplier);
 
 		local ret = [
 			{
@@ -98,7 +98,7 @@
                 if (s.isType(::Const.SkillType.PermanentInjury)) multiplier += 0.05;
             }
 
-            local total = this.Math.floor(resolve * multiplier);
+            local total = ::Math.floor(resolve * multiplier);
 
 			_properties.MeleeDefense += total;
 			_properties.RangedDefense += total;
@@ -122,7 +122,7 @@
 // 	o.getTooltip = function()
 // 	{
 // 		local actor = this.getContainer().getActor();
-// 		local initiative = this.Math.floor(actor.getInitiative() * (actor.getSkills().hasSkill("perk.legend_specialist_cult_hood") ? 0.05 : 0.15));
+// 		local initiative = ::Math.floor(actor.getInitiative() * (actor.getSkills().hasSkill("perk.legend_specialist_cult_hood") ? 0.05 : 0.15));
 // 		return [
 // 			{
 // 				id = 1,
@@ -152,9 +152,9 @@
 // 	o.onAfterUpdate = function( _properties )
 // 	{
 // 		local actor = this.getContainer().getActor();
-// 		local initiative = this.Math.floor(actor.getInitiative() * (actor.getSkills().hasSkill("perk.legend_specialist_cult_hood") ? 0.05 : 0.15));
-// 		_properties.MeleeDefense += this.Math.max(0, initiative);
-// 		_properties.RangedDefense += this.Math.max(0, initiative);
+// 		local initiative = ::Math.floor(actor.getInitiative() * (actor.getSkills().hasSkill("perk.legend_specialist_cult_hood") ? 0.05 : 0.15));
+// 		_properties.MeleeDefense += ::Math.max(0, initiative);
+// 		_properties.RangedDefense += ::Math.max(0, initiative);
 // 	}
 
 // });

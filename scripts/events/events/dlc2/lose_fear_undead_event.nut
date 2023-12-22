@@ -88,8 +88,8 @@ this.lose_fear_undead_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Casualty = candidates[this.Math.rand(0, candidates.len() - 1)];
-		this.m.Other = candidates_other[this.Math.rand(0, candidates_other.len() - 1)];
+		this.m.Casualty = candidates[::Math.rand(0, candidates.len() - 1)];
+		this.m.Other = candidates_other[::Math.rand(0, candidates_other.len() - 1)];
 		this.m.Score = this.m.Casualty.getLifetimeStats().Kills / 10;
 	}
 

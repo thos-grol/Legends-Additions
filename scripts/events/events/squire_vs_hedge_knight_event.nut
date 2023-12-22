@@ -29,7 +29,7 @@ this.squire_vs_hedge_knight_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Squire.getImagePath());
 				this.Characters.push(_event.m.HedgeKnight.getImagePath());
 				_event.m.Squire.getFlags().set("squire_vs_hedge_knight", true);
-				local resolve = this.Math.rand(1, 4);
+				local resolve = ::Math.rand(1, 4);
 				_event.m.Squire.getBaseProperties().Bravery += resolve;
 				_event.m.Squire.getSkills().update();
 				this.List.push({
@@ -92,8 +92,8 @@ this.squire_vs_hedge_knight_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Squire = squire_candidates[this.Math.rand(0, squire_candidates.len() - 1)];
-		this.m.HedgeKnight = hk_candidates[this.Math.rand(0, hk_candidates.len() - 1)];
+		this.m.Squire = squire_candidates[::Math.rand(0, squire_candidates.len() - 1)];
+		this.m.HedgeKnight = hk_candidates[::Math.rand(0, hk_candidates.len() - 1)];
 		this.m.Score = (squire_candidates.len() + hk_candidates.len()) * 3;
 	}
 

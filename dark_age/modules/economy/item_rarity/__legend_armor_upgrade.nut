@@ -115,7 +115,7 @@
 				id = 5,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "Weight: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getStaminaModifier()) + this.Math.abs(this.getStaminaModifier()), this.getStaminaModifier())
+				text = "Weight: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getStaminaModifier()) + ::Math.abs(this.getStaminaModifier()), this.getStaminaModifier())
 			});
 		}
 
@@ -125,7 +125,7 @@
 				id = 5,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = this.format("(%.1f Armor per 1 Weight)", this.getConditionMax() / (1.0 * this.Math.abs(this.getStaminaModifier())))
+				text = this.format("(%.1f Armor per 1 Weight)", this.getConditionMax() / (1.0 * ::Math.abs(this.getStaminaModifier())))
 			});
 		}
 

@@ -2,14 +2,14 @@ this.legend_noble_fencer <- this.inherit("scripts/entity/tactical/abstract_human
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.LegendFencer;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.LegendFencer.XP;
+		this.m.Type = ::Const.EntityType.LegendFencer;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.LegendFencer.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.CommonMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.Tidy;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.CommonMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.Tidy;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/legend_fencer_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -18,7 +18,7 @@ this.legend_noble_fencer <- this.inherit("scripts/entity/tactical/abstract_human
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.LegendFencer);
+		b.setValues(::Const.Tactical.Actor.LegendFencer);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -42,14 +42,14 @@ this.legend_noble_fencer <- this.inherit("scripts/entity/tactical/abstract_human
 
 		this.m.Surcoat = banner;
 
-		if (this.Math.rand(1, 100) <= 90)
+		if (::Math.rand(1, 100) <= 90)
 		{
 			this.getSprite("surcoat").setBrush("surcoat_" + (banner < 10 ? "0" + banner : banner));
 		}
 
-		r = this.Math.rand(0, 2);
+		r = ::Math.rand(0, 2);
 
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"seedmaster_noble_armor"
@@ -60,13 +60,13 @@ this.legend_noble_fencer <- this.inherit("scripts/entity/tactical/abstract_human
 			]
 		]));
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			local helmet;
 
 			if (banner <= 4)
 			{
-				helmet = this.Const.World.Common.pickHelmet([
+				helmet = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"kettle_hat"
@@ -87,7 +87,7 @@ this.legend_noble_fencer <- this.inherit("scripts/entity/tactical/abstract_human
 			}
 			else if (banner <= 7)
 			{
-				helmet = this.Const.World.Common.pickHelmet([
+				helmet = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"flat_top_helmet"
@@ -108,7 +108,7 @@ this.legend_noble_fencer <- this.inherit("scripts/entity/tactical/abstract_human
 			}
 			else
 			{
-				helmet = this.Const.World.Common.pickHelmet([
+				helmet = ::Const.World.Common.pickHelmet([
 					[
 						1,
 						"nasal_helmet"
@@ -140,7 +140,7 @@ this.legend_noble_fencer <- this.inherit("scripts/entity/tactical/abstract_human
 		}
 		else
 		{
-			this.m.Items.equip(this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::Const.World.Common.pickHelmet([
 				[
 					2,
 					"aketon_cap"
@@ -164,7 +164,7 @@ this.legend_noble_fencer <- this.inherit("scripts/entity/tactical/abstract_human
 	function pickNamed()
 	{
 		//decide what item will be named
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 		if (r == 1) //armor
 		{
 			local armor = [
@@ -172,7 +172,7 @@ this.legend_noble_fencer <- this.inherit("scripts/entity/tactical/abstract_human
 				"armor/named/named_noble_mail_armor",
 				"armor/named/blue_studded_mail_armor"
 			];
-			local h = this.Const.World.Common.pickArmor(this.Const.World.Common.convNameToList(armor));
+			local h = ::Const.World.Common.pickArmor(::Const.World.Common.convNameToList(armor));
 			this.m.Items.equip(h);
 		}
 		else this.m.IsMinibossWeapon <- true;

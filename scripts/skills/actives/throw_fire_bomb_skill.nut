@@ -21,8 +21,8 @@ this.throw_fire_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			"sounds/combat/dlc6/fire_pot_04.wav"
 		];
 		this.m.SoundOnHitDelay = 0;
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.Delay = 0;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
@@ -40,7 +40,7 @@ this.throw_fire_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 		this.m.MinRange = 1;
 		this.m.MaxRange = 3;
 		this.m.MaxLevelDifference = 3;
-		this.m.ProjectileType = this.Const.ProjectileType.Bomb1;
+		this.m.ProjectileType = ::Const.ProjectileType.Bomb1;
 		this.m.ProjectileTimeScale = 1.5;
 		this.m.IsProjectileRotated = false;
 	}
@@ -52,7 +52,7 @@ this.throw_fire_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			id = 6,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Set an area of [color=" + this.Const.UI.Color.DamageValue + "]7[/color] tiles ablaze with fire for 2 rounds. Water and snow can not burn."
+			text = "Set an area of [color=" + ::Const.UI.Color.DamageValue + "]7[/color] tiles ablaze with fire for 2 rounds. Water and snow can not burn."
 		});
 		ret.push({
 			id = 6,
@@ -105,13 +105,13 @@ this.throw_fire_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 
 		foreach( t in affectedTiles )
 		{
-			this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, t, t.Pos.X, t.Pos.Y);
+			this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, t, t.Pos.X, t.Pos.Y);
 		}
 	}
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInThrowing ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInThrowing ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onUse( _user, _targetTile )
@@ -121,9 +121,9 @@ this.throw_fire_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 		{
 			local flip = !this.m.IsProjectileRotated && _targetTile.Pos.X > _user.getPos().X;
 
-			if (_user.getTile().getDistanceTo(_targetTile) >= this.Const.Combat.SpawnProjectileMinDist)
+			if (_user.getTile().getDistanceTo(_targetTile) >= ::Const.Combat.SpawnProjectileMinDist)
 			{
-				this.Tactical.spawnProjectileEffect(this.Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), _targetTile, 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
+				this.Tactical.spawnProjectileEffect(::Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), _targetTile, 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
 			}
 		}
 
@@ -153,7 +153,7 @@ this.throw_fire_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			i = ++i;
 		}
 
-		this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], 1.0, _data.TargetTile.Pos);
+		this.Sound.play(this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)], 1.0, _data.TargetTile.Pos);
 		local p = {
 			Type = "fire",
 			Tooltip = "Fire rages here, melting armor and flesh alike",
@@ -164,7 +164,7 @@ this.throw_fire_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			IsAppliedOnEnter = false,
 			IsByPlayer = _data.User.isPlayerControlled(),
 			Timeout = this.Time.getRound() + 2,
-			Callback = this.Const.Tactical.Common.onApplyFire,
+			Callback = ::Const.Tactical.Common.onApplyFire,
 			function Applicable( _a )
 			{
 				return true;
@@ -174,7 +174,7 @@ this.throw_fire_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 
 		foreach( tile in targets )
 		{
-			if (tile.Subtype != this.Const.Tactical.TerrainSubtype.Snow && tile.Subtype != this.Const.Tactical.TerrainSubtype.LightSnow && tile.Type != this.Const.Tactical.TerrainType.ShallowWater && tile.Type != this.Const.Tactical.TerrainType.DeepWater)
+			if (tile.Subtype != ::Const.Tactical.TerrainSubtype.Snow && tile.Subtype != ::Const.Tactical.TerrainSubtype.LightSnow && tile.Type != ::Const.Tactical.TerrainType.ShallowWater && tile.Type != ::Const.Tactical.TerrainType.DeepWater)
 			{
 				if (tile.Properties.Effect != null && tile.Properties.Effect.Type == "fire")
 				{
@@ -190,21 +190,21 @@ this.throw_fire_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 					tile.Properties.Effect = clone p;
 					local particles = [];
 
-					for( local i = 0; i < this.Const.Tactical.FireParticles.len(); i = i )
+					for( local i = 0; i < ::Const.Tactical.FireParticles.len(); i = i )
 					{
-						particles.push(this.Tactical.spawnParticleEffect(true, this.Const.Tactical.FireParticles[i].Brushes, tile, this.Const.Tactical.FireParticles[i].Delay, this.Const.Tactical.FireParticles[i].Quantity, this.Const.Tactical.FireParticles[i].LifeTimeQuantity, this.Const.Tactical.FireParticles[i].SpawnRate, this.Const.Tactical.FireParticles[i].Stages));
+						particles.push(this.Tactical.spawnParticleEffect(true, ::Const.Tactical.FireParticles[i].Brushes, tile, ::Const.Tactical.FireParticles[i].Delay, ::Const.Tactical.FireParticles[i].Quantity, ::Const.Tactical.FireParticles[i].LifeTimeQuantity, ::Const.Tactical.FireParticles[i].SpawnRate, ::Const.Tactical.FireParticles[i].Stages));
 						i = ++i;
 					}
 
 					this.Tactical.Entities.addTileEffect(tile, tile.Properties.Effect, particles);
-					tile.clear(this.Const.Tactical.DetailFlag.Scorchmark);
-					tile.spawnDetail("impact_decal", this.Const.Tactical.DetailFlag.Scorchmark, false, true);
+					tile.clear(::Const.Tactical.DetailFlag.Scorchmark);
+					tile.spawnDetail("impact_decal", ::Const.Tactical.DetailFlag.Scorchmark, false, true);
 				}
 			}
 
 			if (tile.IsOccupiedByActor)
 			{
-				this.Const.Tactical.Common.onApplyFire(tile, tile.getEntity());
+				::Const.Tactical.Common.onApplyFire(tile, tile.getEntity());
 			}
 		}
 	}

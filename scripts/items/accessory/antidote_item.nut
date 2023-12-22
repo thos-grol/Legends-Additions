@@ -6,7 +6,7 @@ this.antidote_item <- this.inherit("scripts/items/accessory/alchemy_potion", {
 		this.m.ID = "accessory.antidote";
 		this.m.Name = "Antidote";
 		this.m.Description = "An antidote for various types of poisons. Tastes quite bitter.";
-		this.m.SlotType = this.Const.ItemSlot.Bag;
+		this.m.SlotType = ::Const.ItemSlot.Bag;
 		this.m.IsAllowedInBag = true;
 		this.m.IsDroppedAsLoot = true;
 		this.m.ShowOnCharacter = false;
@@ -24,7 +24,7 @@ this.antidote_item <- this.inherit("scripts/items/accessory/alchemy_potion", {
 
 	function playInventorySound( _eventType )
 	{
-		this.Sound.play("sounds/bottle_01.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/bottle_01.wav", ::Const.Sound.Volume.Inventory);
 	}
 
 	function onEquip()

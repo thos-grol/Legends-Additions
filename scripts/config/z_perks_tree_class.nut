@@ -420,7 +420,7 @@ gt.Const.Perks.ClassTrees <- {
 			L.push(i);
 		}
 
-		local r = this.Math.rand(0, L.len() - 1);
+		local r = ::Math.rand(0, L.len() - 1);
 		return this.Tree[L[r]];
 	}
 
@@ -437,7 +437,7 @@ gt.Const.Perks.ClassTrees <- {
 			}
 		}
 
-		local r = this.Math.rand(0, L.len() - 1);
+		local r = ::Math.rand(0, L.len() - 1);
 		return L[r];
 	}
 

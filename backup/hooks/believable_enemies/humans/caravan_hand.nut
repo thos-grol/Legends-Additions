@@ -29,18 +29,18 @@
 		//defensive perk
 		this.m.Skills.add(::new("scripts/skills/perks/perk_dodge"));
 
-		if (this.Math.rand(1, 100) <= 75) this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
+		if (::Math.rand(1, 100) <= 75) this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
 
-		local r = this.Math.rand(4, 9);
+		local r = ::Math.rand(4, 9);
 		if (r == 4)
 		{
 			this.m.Items.equip(::new("scripts/items/weapons/hatchet"));
 			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heft"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dismemberment"));
-			this.level_melee_skill(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_melee_defense(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_health(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_skill(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_defense(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_health(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
 		}
 		else if (r == 5)
 		{
@@ -48,9 +48,9 @@
 			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_push_it"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_heavy_strikes"));
-			this.level_fatigue(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_melee_skill(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_melee_defense(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_fatigue(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_skill(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_defense(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
 		}
 		else if (r == 6)
 		{
@@ -59,9 +59,9 @@
 			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pointy_end"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_through_the_gaps"));
-			this.level_fatigue(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_melee_skill(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_melee_defense(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_fatigue(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_skill(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_defense(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
 
 		}
 		else if (r == 7)
@@ -70,9 +70,9 @@
 			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_swordlike"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_deep_cuts"));
-			this.level_fatigue(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_melee_skill(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_melee_defense(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_fatigue(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_skill(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_defense(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
 		}
 		else if (r == 8)
 		{
@@ -80,9 +80,9 @@
 			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_deep_cuts"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_fluid_weapon"));
-			this.level_fatigue(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_melee_skill(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_melee_defense(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_fatigue(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_skill(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_defense(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
 		}
 		else if (r == 9)
 		{
@@ -90,9 +90,9 @@
 			
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_deep_cuts"));
 			this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_fluid_weapon"));
-			this.level_initiative(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_melee_skill(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
-			this.level_melee_defense(4, this.Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_initiative(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_skill(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
+			this.level_melee_defense(4, ::Math.rand(1, 4) > 3 ? 0 : 1 );
 		}
 
 
@@ -101,7 +101,7 @@
 			[
 				1,
 				"leather_tunic",
-				this.Math.rand(6, 7)
+				::Math.rand(6, 7)
 			],
 			[
 				1,
@@ -118,7 +118,7 @@
 		]);
 		this.m.Items.equip(item);
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			local item = ::Const.World.Common.pickHelmet([
 				[

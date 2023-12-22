@@ -42,7 +42,7 @@
 		local r;
 		items.equip(::new("scripts/items/weapons/war_bow"));
 		items.equip(::new("scripts/items/ammo/huge_quiver_of_arrows"));
-		r = this.Math.rand(0, 1);
+		r = ::Math.rand(0, 1);
 
 		if (r == 0)
 		{

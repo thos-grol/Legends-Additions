@@ -37,11 +37,11 @@
 		}
 		else if (this.m.Skills.hasSkill("trait.irrational"))
 		{
-			_difficulty = _difficulty + (this.Math.rand(0, 1) == 0 ? 10 : -10);
+			_difficulty = _difficulty + (::Math.rand(0, 1) == 0 ? 10 : -10);
 		}
 		else if (this.m.Skills.hasSkill("trait.mad"))
 		{
-			_difficulty = _difficulty + (this.Math.rand(0, 1) == 0 ? 15 : -15);
+			_difficulty = _difficulty + (::Math.rand(0, 1) == 0 ? 15 : -15);
 		}
 
 		if (_change < 0 && _type == ::Const.MoraleCheckType.MentalAttack && this.m.Skills.hasSkill("trait.superstitious")) _difficulty = _difficulty - 10;

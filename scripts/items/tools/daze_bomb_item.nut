@@ -8,8 +8,8 @@ this.daze_bomb_item <- this.inherit("scripts/items/tools/alchemy_tool", {
 		this.m.Description = "A throwable pot filled with mysterious powders that react violently on impact to create a bright flash and loud bang. Will daze anyone close by.";
 		this.m.IconLarge = "tools/daze_bomb_01.png";
 		this.m.Icon = "tools/daze_bomb_01_70x70.png";
-		this.m.SlotType = this.Const.ItemSlot.Offhand;
-		this.m.ItemType = this.Const.Items.ItemType.Tool;
+		this.m.SlotType = ::Const.ItemSlot.Offhand;
+		this.m.ItemType = ::Const.Items.ItemType.Tool;
 		this.m.AddGenericSkill = true;
 		this.m.ShowArmamentIcon = true;
 		this.m.ArmamentIcon = "icon_daze_bomb_01";
@@ -66,13 +66,13 @@ this.daze_bomb_item <- this.inherit("scripts/items/tools/alchemy_tool", {
 			id = 7,
 			type = "text",
 			icon = "ui/icons/vision.png",
-			text = "Range of [color=" + this.Const.UI.Color.PositiveValue + "]" + this.m.RangeMax + "[/color] tiles"
+			text = "Range of [color=" + ::Const.UI.Color.PositiveValue + "]" + this.m.RangeMax + "[/color] tiles"
 		});
 		result.push({
 			id = 5,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Will give up to [color=" + this.Const.UI.Color.DamageValue + "]7[/color] targets the Dazed status effect for 2 turns"
+			text = "Will give up to [color=" + ::Const.UI.Color.DamageValue + "]7[/color] targets the Dazed status effect for 2 turns"
 		});
 
 		if (this.m.Ammo <= 0.0)
@@ -81,7 +81,7 @@ this.daze_bomb_item <- this.inherit("scripts/items/tools/alchemy_tool", {
 				id = 6,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Needs to be restocked by an alchemist[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Needs to be restocked by an alchemist[/color]"
 			});
 		}
 
@@ -90,7 +90,7 @@ this.daze_bomb_item <- this.inherit("scripts/items/tools/alchemy_tool", {
 
 	function playInventorySound( _eventType )
 	{
-		this.Sound.play("sounds/move_pot_clay_01.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/move_pot_clay_01.wav", ::Const.Sound.Volume.Inventory);
 	}
 
 	function onEquip()

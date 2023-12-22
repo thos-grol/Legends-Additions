@@ -21,7 +21,7 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 	{
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -49,7 +49,7 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 40 || this.World.getTime().Days <= 15 && r <= 80)
 				{
@@ -70,24 +70,24 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 
 				if (this.Flags.get("IsHyenas"))
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Hyenas", false, this.Const.World.Spawn.Hyenas, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Hyenas", false, ::Const.World.Spawn.Hyenas, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					party.setDescription("A pack of esurient hyenas on the hunt for prey.");
-					party.setFootprintType(this.Const.World.FootprintsType.Hyenas);
-					this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), this.Const.BeastFootprints, this.Const.World.FootprintsType.Hyenas, 0.75);
+					party.setFootprintType(::Const.World.FootprintsType.Hyenas);
+					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Hyenas, 0.75);
 				}
 				else if (this.Flags.get("IsGhouls"))
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Nachzehrers", false, this.Const.World.Spawn.Ghouls, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Nachzehrers", false, ::Const.World.Spawn.Ghouls, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					party.setDescription("A flock of scavenging nachzehrers.");
-					party.setFootprintType(this.Const.World.FootprintsType.Ghouls);
-					this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), this.Const.BeastFootprints, this.Const.World.FootprintsType.Ghouls, 0.75);
+					party.setFootprintType(::Const.World.FootprintsType.Ghouls);
+					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Ghouls, 0.75);
 				}
 				else
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Serpents", false, this.Const.World.Spawn.Serpents, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Serpents", false, ::Const.World.Spawn.Serpents, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					party.setDescription("Giant serpents slithering about.");
-					party.setFootprintType(this.Const.World.FootprintsType.Serpents);
-					this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), this.Const.BeastFootprints, this.Const.World.FootprintsType.Serpents, 0.75);
+					party.setFootprintType(::Const.World.FootprintsType.Serpents);
+					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Serpents, 0.75);
 				}
 
 				party.setAttackableByAI(false);
@@ -95,15 +95,15 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 				this.Contract.m.Target = this.WeakTableRef(party);
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				local c = party.getController();
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 				local roam = this.new("scripts/ai/world/orders/roam_order");
 				roam.setPivot(this.Contract.m.Home);
 				roam.setMinRange(2);
 				roam.setMaxRange(8);
 				roam.setAllTerrainAvailable();
-				roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-				roam.setTerrain(this.Const.World.TerrainType.Shore, false);
-				roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+				roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+				roam.setTerrain(::Const.World.TerrainType.Shore, false);
+				roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 				c.addOrder(roam);
 				this.Contract.m.Home.setLastSpawnTimeToNow();
 				this.Contract.setScreen("Overview");
@@ -143,7 +143,7 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 
 					this.Contract.setState("Return");
 				}
-				else if (!this.Flags.get("IsWorkOfBeastsShown") && this.World.getTime().IsDaytime && this.Contract.m.Target.isHiddenToPlayer() && this.Math.rand(1, 9000) <= 1)
+				else if (!this.Flags.get("IsWorkOfBeastsShown") && this.World.getTime().IsDaytime && this.Contract.m.Target.isHiddenToPlayer() && ::Math.rand(1, 9000) <= 1)
 				{
 					this.Flags.set("IsWorkOfBeastsShown", true);
 					this.Contract.setScreen("WorkOfBeasts");
@@ -188,8 +188,8 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -303,9 +303,9 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Rid the area of hyenas");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Rid the area of hyenas");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -317,7 +317,7 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -334,9 +334,9 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Rid the area of nachzehrers");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Rid the area of nachzehrers");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -348,7 +348,7 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -365,9 +365,9 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Rid the area of serpents");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Rid the area of serpents");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -379,7 +379,7 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -398,7 +398,7 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 
 		foreach( bro in brothers )
 		{
-			if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.Lowborn) && !bro.getBackground().isBackgroundType(this.Const.BackgroundType.OffendedByViolence) && !bro.getSkills().hasSkill("trait.bright") && bro.getBackground().getID() != "background.hunter")
+			if (bro.getBackground().isBackgroundType(::Const.BackgroundType.Lowborn) && !bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && !bro.getSkills().hasSkill("trait.bright") && bro.getBackground().getID() != "background.hunter")
 			{
 				candidates_helpful.push(bro);
 			}
@@ -407,7 +407,7 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 			{
 				candidates_bro1.push(bro);
 
-				if (!bro.getBackground().isBackgroundType(this.Const.BackgroundType.OffendedByViolence) && bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat))
+				if (!bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat))
 				{
 					candidates_bro2.push(bro);
 				}
@@ -416,27 +416,27 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 
 		if (candidates_helpful.len() != 0)
 		{
-			helpful = candidates_helpful[this.Math.rand(0, candidates_helpful.len() - 1)];
+			helpful = candidates_helpful[::Math.rand(0, candidates_helpful.len() - 1)];
 		}
 		else
 		{
-			helpful = brothers[this.Math.rand(0, brothers.len() - 1)];
+			helpful = brothers[::Math.rand(0, brothers.len() - 1)];
 		}
 
 		if (candidates_bro1.len() != 0)
 		{
-			bro1 = candidates_bro1[this.Math.rand(0, candidates_bro1.len() - 1)];
+			bro1 = candidates_bro1[::Math.rand(0, candidates_bro1.len() - 1)];
 		}
 		else
 		{
-			bro1 = brothers[this.Math.rand(0, brothers.len() - 1)];
+			bro1 = brothers[::Math.rand(0, brothers.len() - 1)];
 		}
 
 		if (candidates_bro2.len() > 1)
 		{
 			do
 			{
-				bro2 = candidates_bro2[this.Math.rand(0, candidates_bro2.len() - 1)];
+				bro2 = candidates_bro2[::Math.rand(0, candidates_bro2.len() - 1)];
 			}
 			while (bro2.getID() == bro1.getID());
 		}
@@ -444,7 +444,7 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 		{
 			do
 			{
-				bro2 = brothers[this.Math.rand(0, brothers.len() - 1)];
+				bro2 = brothers[::Math.rand(0, brothers.len() - 1)];
 			}
 			while (bro2.getID() == bro1.getID());
 		}
@@ -467,7 +467,7 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 		]);
 		_vars.push([
 			"direction",
-			this.m.Target == null || this.m.Target.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
+			this.m.Target == null || this.m.Target.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
 		]);
 	}
 

@@ -44,7 +44,7 @@
 
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(0, 2);
+		r = ::Math.rand(0, 2);
 
 		if (r == 0)
 		{
@@ -64,7 +64,7 @@
 			[
 				1,
 				"linen_tunic",
-				this.Math.rand(6, 7)
+				::Math.rand(6, 7)
 			]
 		]));
 		items.equip(::Const.World.Common.pickHelmet([

@@ -9,9 +9,9 @@
 		_list.push("nomad_background");
 		_list.push("nomad_background");
 
-		if (this.Math.rand(0, 6) == 1) _list.push("legend_conscript_background");
-		if (this.Math.rand(0, 6) == 1) _list.push("legend_conscript_ranged_background");
-		if (this.Math.rand(0, 5) == 1) _list.push("assassin_southern_background");
+		if (::Math.rand(0, 6) == 1) _list.push("legend_conscript_background");
+		if (::Math.rand(0, 6) == 1) _list.push("legend_conscript_ranged_background");
+		if (::Math.rand(0, 5) == 1) _list.push("assassin_southern_background");
 
 	}
 

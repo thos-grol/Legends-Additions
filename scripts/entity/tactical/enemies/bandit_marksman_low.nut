@@ -10,7 +10,7 @@ this.bandit_marksman_low <- this.inherit("scripts/entity/tactical/enemies/bandit
 
 	function pickOutfit()
 	{
-		local item = this.Const.World.Common.pickArmor([
+		local item = ::Const.World.Common.pickArmor([
 			[
 				20,
 				"leather_wraps"
@@ -18,9 +18,9 @@ this.bandit_marksman_low <- this.inherit("scripts/entity/tactical/enemies/bandit
 		]);
 		this.m.Items.equip(item);
 
-		if (this.Math.rand(0, 1) == 0)
+		if (::Math.rand(0, 1) == 0)
 		{
-			local item = this.Const.World.Common.pickHelmet([
+			local item = ::Const.World.Common.pickHelmet([
 				[
 					5,
 					"headscarf"

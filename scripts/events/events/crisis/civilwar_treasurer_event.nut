@@ -82,7 +82,7 @@ this.civilwar_treasurer_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getBackground().getID() == "background.farmhand" && this.Math.rand(1, 100) <= 50)
+					if (bro.getBackground().getID() == "background.farmhand" && ::Math.rand(1, 100) <= 50)
 					{
 						bro.improveMood(0.25, "You helped a farmer in peril");
 
@@ -143,7 +143,7 @@ this.civilwar_treasurer_event <- this.inherit("scripts/events/event", {
 				this.Banner = _event.m.NobleHouse.getUIBannerSmall();
 				_event.m.NobleHouse.addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "You threatened one of their treasurers");
 				this.World.Assets.addMoralReputation(-2);
-				local maxfood = this.Math.rand(2, 3);
+				local maxfood = ::Math.rand(2, 3);
 
 				for( local i = 0; i < maxfood; i = i )
 				{

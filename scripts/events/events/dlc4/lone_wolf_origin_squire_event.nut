@@ -76,7 +76,7 @@ this.lone_wolf_origin_squire_event <- this.inherit("scripts/events/event", {
 				talents.resize(::Const.Attributes.COUNT, 0);
 				talents[::Const.Attributes.MeleeSkill] = 3;
 				talents[::Const.Attributes.MeleeDefense] = 3;
-				talents[this.Const.Attributes.Fatigue] = 3;
+				talents[::Const.Attributes.Fatigue] = 3;
 				_event.m.Dude.m.Attributes = [];
 				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 				_event.m.Dude.setTitle("the Squire");

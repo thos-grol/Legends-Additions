@@ -31,7 +31,7 @@ this.perk_colossus <- this.inherit("scripts/skills/skill", {
 
 		if (actor.getHitpoints() == actor.getHitpointsMax())
 		{
-			actor.setHitpoints(this.Math.floor(actor.getHitpoints() * 1.25));
+			actor.setHitpoints(::Math.floor(actor.getHitpoints() * 1.25));
 		}
 
 		if (!this.m.Container.hasSkill("effects.steel_brow"))

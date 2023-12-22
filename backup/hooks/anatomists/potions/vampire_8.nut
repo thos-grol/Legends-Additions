@@ -33,9 +33,9 @@
 
         _actor.getSkills().add(::new("scripts/skills/effects/webknecht_potion_effect"));
 
-        this.Sound.play("sounds/enemies/vampire_hurt_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/vampire_death_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/vampire_idle_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/vampire_hurt_0" + ::Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/vampire_death_0" + ::Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/vampire_idle_0" + ::Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
 
         return this.anatomist_potion_item.onUse(_actor, _item);
     }

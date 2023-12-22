@@ -32,13 +32,13 @@
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_bandits");
 
-		if (this.Math.rand(1, 100) <= 10)
+		if (::Math.rand(1, 100) <= 10)
 		{
 			local pox = this.getSprite("tattoo_head");
 			pox.Visible = true;
 			pox.setBrush("bust_head_pox_01");
 		}
-		else if (this.Math.rand(1, 100) <= 15)
+		else if (::Math.rand(1, 100) <= 15)
 		{
 			local pox = this.getSprite("tattoo_head");
 			pox.Visible = true;
@@ -50,7 +50,7 @@
 			dirt.Visible = true;
 		}
 
-		if (this.Math.rand(1, 100) <= 25)
+		if (::Math.rand(1, 100) <= 25)
 		{
 			this.getSprite("eye_rings").Visible = true;
 		}
@@ -67,7 +67,7 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bully"));
 
 		//Add defensive perk
-		local r = this.Math.rand(1, 6)
+		local r = ::Math.rand(1, 6)
 		if(r < 6) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_strength_in_numbers"));
 		else this.m.Skills.add(::new("scripts/skills/perks/perk_dodge"));
 	}

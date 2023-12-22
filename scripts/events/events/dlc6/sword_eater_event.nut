@@ -108,7 +108,7 @@ this.sword_eater_event <- this.inherit("scripts/events/event", {
 					}
 				];
 				local item = ::new("scripts/items/weapons/fencing_sword");
-				item.setCondition(this.Math.max(1, item.getConditionMax() * this.Math.rand(10, 40) * 0.01));
+				item.setCondition(::Math.max(1, item.getConditionMax() * ::Math.rand(10, 40) * 0.01));
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
@@ -179,7 +179,7 @@ this.sword_eater_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_wildman.len() != 0)
 		{
-			this.m.Wildman = candidates_wildman[this.Math.rand(0, candidates_wildman.len() - 1)];
+			this.m.Wildman = candidates_wildman[::Math.rand(0, candidates_wildman.len() - 1)];
 		}
 
 		this.m.Score = 15;

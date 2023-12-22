@@ -25,7 +25,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 					Text = "Uh, maybe some other time.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}
@@ -78,7 +78,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Graverobber.getImagePath());
-				local money = this.Math.rand(25, 50);
+				local money = ::Math.rand(25, 50);
 				this.World.Assets.addMoney(money);
 				this.List = [
 					{
@@ -110,7 +110,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Graverobber.getImagePath());
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					local injury2 = _event.m.Graverobber.addInjury(::Const.Injury.Brawl);
 					this.List.push({
@@ -183,7 +183,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 					Text = "We\'ll dig up the motley grave.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 66)
+						if (::Math.rand(1, 100) <= 66)
 						{
 							return "F";
 						}
@@ -198,7 +198,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 					Text = "We\'ll break past the gothic fence.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 66)
+						if (::Math.rand(1, 100) <= 66)
 						{
 							return "G";
 						}
@@ -213,7 +213,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 					Text = "We\'ll break into the mausoleum.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 66)
+						if (::Math.rand(1, 100) <= 66)
 						{
 							return "H";
 						}
@@ -284,7 +284,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Graverobber.getImagePath());
-				local money = this.Math.rand(150, 300);
+				local money = ::Math.rand(150, 300);
 				this.World.Assets.addMoney(money);
 				this.List = [
 					{
@@ -322,7 +322,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Graverobber.getImagePath());
 				local item;
-				local r = this.Math.rand(1, 3);
+				local r = ::Math.rand(1, 3);
 
 				if (r == 1)
 				{
@@ -439,7 +439,7 @@ this.graverobber_heist_event <- this.inherit("scripts/events/event", {
 		}
 
 		this.m.Town = town;
-		this.m.Graverobber = candidates_graverobber[this.Math.rand(0, candidates_graverobber.len() - 1)];
+		this.m.Graverobber = candidates_graverobber[::Math.rand(0, candidates_graverobber.len() - 1)];
 		this.m.Score = 25;
 	}
 

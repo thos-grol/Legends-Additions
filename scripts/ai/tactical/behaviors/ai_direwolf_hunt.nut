@@ -80,8 +80,8 @@ this.ai_direwolf_hunt <- this.inherit("scripts/ai/tactical/behavior", {
 
 		do
 		{
-			local x = this.Math.rand(3, mapSize.X - 3);
-			local y = this.Math.rand(3, mapSize.Y - 3);
+			local x = ::Math.rand(3, mapSize.X - 3);
+			local y = ::Math.rand(3, mapSize.Y - 3);
 
 			if (!this.Tactical.isValidTileSquare(x, y))
 			{

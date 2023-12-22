@@ -36,7 +36,7 @@
 			}
 
 			local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-			local party = _action.getFaction().spawnEntity(tile, "Direwolves", false, ::Const.World.Spawn.Direwolves, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+			local party = _action.getFaction().spawnEntity(tile, "Direwolves", false, ::Const.World.Spawn.Direwolves, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 			party.getSprite("banner").setBrush("banner_beasts_01");
 			party.setDescription("A pack of ferocious direwolves on the hunt for prey.");
 			party.setFootprintType(::Const.World.FootprintsType.Direwolves);
@@ -88,7 +88,7 @@
 				}
 
 				local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-				local party = _action.getFaction().spawnEntity(tile, "Hyenas", false, ::Const.World.Spawn.Hyenas, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+				local party = _action.getFaction().spawnEntity(tile, "Hyenas", false, ::Const.World.Spawn.Hyenas, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("A pack of esurient hyenas on the hunt for prey.");
 				party.setFootprintType(::Const.World.FootprintsType.Hyenas);
@@ -141,7 +141,7 @@
 				}
 
 				local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-				local party = _action.getFaction().spawnEntity(tile, "Serpents", false, ::Const.World.Spawn.Serpents, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+				local party = _action.getFaction().spawnEntity(tile, "Serpents", false, ::Const.World.Spawn.Serpents, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("Giant serpents slithering about.");
 				party.setFootprintType(::Const.World.FootprintsType.Serpents);
@@ -185,7 +185,7 @@
 				if (_action.getDistanceToNextAlly(tile) <= distanceToNextAlly / (_nearTile == null ? 1 : 2)) return false;
 
 				local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-				local party = _action.getFaction().spawnEntity(tile, "Webknechts", false, ::Const.World.Spawn.Spiders, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+				local party = _action.getFaction().spawnEntity(tile, "Webknechts", false, ::Const.World.Spawn.Spiders, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("A swarm of webknechts skittering about.");
 				party.setFootprintType(::Const.World.FootprintsType.Spiders);
@@ -240,7 +240,7 @@
 				}
 
 				local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-				local party = _action.getFaction().spawnEntity(tile, "Unhold", false, ::Const.World.Spawn.Unhold, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+				local party = _action.getFaction().spawnEntity(tile, "Unhold", false, ::Const.World.Spawn.Unhold, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("One or more lumbering giants.");
 				party.setFootprintType(::Const.World.FootprintsType.Unholds);
@@ -266,7 +266,7 @@
 					return false;
 				}
 
-				local isTundraAllowed = this.Math.rand(1, 100) <= 20;
+				local isTundraAllowed = ::Math.rand(1, 100) <= 20;
 				local disallowedTerrain = [];
 
 				for( local i = 0; i < ::Const.World.TerrainType.COUNT; i = i )
@@ -295,7 +295,7 @@
 				}
 
 				local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-				local party = _action.getFaction().spawnEntity(tile, "Unhold", false, ::Const.World.Spawn.UnholdFrost, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+				local party = _action.getFaction().spawnEntity(tile, "Unhold", false, ::Const.World.Spawn.UnholdFrost, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("One or more lumbering giants.");
 				party.setFootprintType(::Const.World.FootprintsType.Unholds);
@@ -354,7 +354,7 @@
 				}
 
 				local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-				local party = _action.getFaction().spawnEntity(tile, "Unhold", false, ::Const.World.Spawn.UnholdBog, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+				local party = _action.getFaction().spawnEntity(tile, "Unhold", false, ::Const.World.Spawn.UnholdBog, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("One or more lumbering giants.");
 				party.setFootprintType(::Const.World.FootprintsType.Unholds);
@@ -373,7 +373,7 @@
 			this.m.BeastsMedium.push(beast);
 			beast = function ( _action, _nearTile = null )
 			{
-				if (_nearTile == null && this.Math.rand(1, 100) <= 25)
+				if (_nearTile == null && ::Math.rand(1, 100) <= 25)
 				{
 					return false;
 				}
@@ -410,7 +410,7 @@
 					distanceToNextSettlement = distanceToNextSettlement * 2;
 				}
 
-				local party = _action.getFaction().spawnEntity(tile, "Alps", false, ::Const.World.Spawn.Alps, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+				local party = _action.getFaction().spawnEntity(tile, "Alps", false, ::Const.World.Spawn.Alps, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("Pale and haggard creatures creeping around.");
 				party.setFootprintType(::Const.World.FootprintsType.Alps);
@@ -435,7 +435,7 @@
 					return false;
 				}
 
-				if (_nearTile == null && this.Math.rand(1, 100) <= 10)
+				if (_nearTile == null && ::Math.rand(1, 100) <= 10)
 				{
 					return false;
 				}
@@ -466,7 +466,7 @@
 					distanceToNextSettlement = distanceToNextSettlement * 2;
 				}
 
-				local party = _action.getFaction().spawnEntity(tile, "Hexen", false, ::Const.World.Spawn.HexenAndMore, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+				local party = _action.getFaction().spawnEntity(tile, "Hexen", false, ::Const.World.Spawn.HexenAndMore, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("A malevolent old crone, said to lure and abduct little children to make broth and concoctions out of, strike sinister pacts with villagers, and weave curses.");
 				party.setFootprintType(::Const.World.FootprintsType.Hexen);
@@ -524,7 +524,7 @@
 					distanceToNextSettlement = distanceToNextSettlement * 2;
 				}
 
-				local party = _action.getFaction().spawnEntity(tile, "Schrats", false, ::Const.World.Spawn.Schrats, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+				local party = _action.getFaction().spawnEntity(tile, "Schrats", false, ::Const.World.Spawn.Schrats, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("A creature of bark and wood, blending between trees and shambling slowly, its roots digging through the soil.");
 				party.setFootprintType(::Const.World.FootprintsType.Schrats);
@@ -637,7 +637,7 @@
 				}
 
 				local distanceToNextSettlement = _action.getDistanceToSettlements(tile);
-				local party = _action.getFaction().spawnEntity(tile, "Ifrits", false, ::Const.World.Spawn.SandGolems, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+				local party = _action.getFaction().spawnEntity(tile, "Ifrits", false, ::Const.World.Spawn.SandGolems, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("Creatures of living stone shaped by the blistering heat and fire of the burning sun of the south.");
 				party.setFootprintType(::Const.World.FootprintsType.SandGolems);
@@ -760,7 +760,7 @@
 				distanceToNextSettlement = distanceToNextSettlement * 2;
 			}
 
-			local party = _action.getFaction().spawnEntity(tile, "Rock Unhold", false, ::Const.World.Spawn.LegendRockUnhold, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+			local party = _action.getFaction().spawnEntity(tile, "Rock Unhold", false, ::Const.World.Spawn.LegendRockUnhold, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 			party.getSprite("banner").setBrush("banner_beasts_01");
 			party.setDescription("A Rock Unhold");
 			party.setSlowerAtNight(false);
@@ -815,7 +815,7 @@
 				distanceToNextSettlement = distanceToNextSettlement * 2;
 			}
 
-			local party = _action.getFaction().spawnEntity(tile, "Skin Ghoul", false, ::Const.World.Spawn.LegendSkinGhouls, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+			local party = _action.getFaction().spawnEntity(tile, "Skin Ghoul", false, ::Const.World.Spawn.LegendSkinGhouls, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 			party.getSprite("banner").setBrush("banner_beasts_01");
 			party.setDescription("A Skin Ghoul");
 			party.setSlowerAtNight(false);
@@ -871,7 +871,7 @@
 				distanceToNextSettlement = distanceToNextSettlement * 2;
 			}
 
-			local party = _action.getFaction().spawnEntity(tile, "White Wolf", false, ::Const.World.Spawn.LegendWhiteDirewolf, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+			local party = _action.getFaction().spawnEntity(tile, "White Wolf", false, ::Const.World.Spawn.LegendWhiteDirewolf, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 			party.getSprite("banner").setBrush("banner_beasts_01");
 			party.setDescription("A White Wolf");
 			party.setSlowerAtNight(false);
@@ -927,7 +927,7 @@
 				distanceToNextSettlement = distanceToNextSettlement * 2;
 			}
 
-			local party = _action.getFaction().spawnEntity(tile, "Redback Spider", false, ::Const.World.Spawn.LegendRedbackSpider, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+			local party = _action.getFaction().spawnEntity(tile, "Redback Spider", false, ::Const.World.Spawn.LegendRedbackSpider, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 			party.getSprite("banner").setBrush("banner_beasts_01");
 			party.setDescription("A Redback Spider");
 			party.setSlowerAtNight(false);
@@ -1039,7 +1039,7 @@
 				distanceToNextSettlement = distanceToNextSettlement * 2;
 			}
 
-			local party = _action.getFaction().spawnEntity(tile, "Greenwood Schrats", false, ::Const.World.Spawn.LegendGreenwoodSchrat, this.Math.rand(80, 120) * _action.getScaledDifficultyMult() * this.Math.maxf(0.7, this.Math.minf(1.5, distanceToNextSettlement / 14.0)));
+			local party = _action.getFaction().spawnEntity(tile, "Greenwood Schrats", false, ::Const.World.Spawn.LegendGreenwoodSchrat, ::Math.rand(80, 120) * _action.getScaledDifficultyMult() * ::Math.maxf(0.7, ::Math.minf(1.5, distanceToNextSettlement / 14.0)));
 			party.getSprite("banner").setBrush("banner_beasts_01");
 			party.setDescription("A creature of bark and wood, blending between trees and shambling slowly, its roots digging through the soil.");
 			party.setSlowerAtNight(false);

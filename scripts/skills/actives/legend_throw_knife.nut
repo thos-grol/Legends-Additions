@@ -124,7 +124,7 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 
 				if (weapon != null && !weapon.isItemType(::Const.Items.ItemType.RangedWeapon))
 				{
-					local bonus = this.Math.floor(baseProperties.getRangedSkill() * 0.15);
+					local bonus = ::Math.floor(baseProperties.getRangedSkill() * 0.15);
 					_properties.MeleeSkill += bonus;
 					this.m.HitChanceBonus += bonus;
 				}

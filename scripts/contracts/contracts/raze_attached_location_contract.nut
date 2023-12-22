@@ -23,8 +23,8 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 		this.m.Name = "Raze Location";
 		this.m.Description = "As the war rages one of the lords wants you to target key locations. Travel to enemy house lands and raze their key locations.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
-		local s = this.World.EntityManager.getSettlements()[this.Math.rand(0, this.World.EntityManager.getSettlements().len() - 1)];
-		this.m.Destination = this.WeakTableRef(s.getAttachedLocations()[this.Math.rand(0, s.getAttachedLocations().len() - 1)]);
+		local s = this.World.EntityManager.getSettlements()[::Math.rand(0, this.World.EntityManager.getSettlements().len() - 1)];
+		this.m.Destination = this.WeakTableRef(s.getAttachedLocations()[::Math.rand(0, s.getAttachedLocations().len() - 1)]);
 		this.m.Flags.set("PeasantsEscaped", 0);
 		this.m.Flags.set("IsDone", false);
 	}
@@ -38,7 +38,7 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 	{
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -61,7 +61,7 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 					"Raze " + this.Flags.get("DestinationName") + " near " + this.Flags.get("SettlementName")
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -77,18 +77,18 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 
-				if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().get("Betrayed") && this.Math.rand(1, 100) <= 75)
+				if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().get("Betrayed") && ::Math.rand(1, 100) <= 75)
 				{
 					this.Flags.set("IsBetrayal", true);
 				}
 				else
 				{
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.Peasants, this.Math.rand(90, 150));
+					this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.Peasants, ::Math.rand(90, 150));
 
-					if (this.Math.rand(1, 100) <= 25)
+					if (::Math.rand(1, 100) <= 25)
 					{
 						this.Flags.set("IsMilitiaPresent", true);
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.Militia, this.Math.min(300, 80 * this.Contract.getScaledDifficultyMult()));
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.Militia, ::Math.min(300, 80 * this.Contract.getScaledDifficultyMult()));
 					}
 				}
 
@@ -104,7 +104,7 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 				if (this.Contract.m.Destination != null && !this.Contract.m.Destination.isNull())
 				{
 					this.Contract.m.Destination.getSprite("selection").Visible = true;
-					this.Contract.m.Destination.setFaction(this.Const.Faction.Enemy);
+					this.Contract.m.Destination.setFaction(::Const.Faction.Enemy);
 					this.Contract.m.Destination.setAttackable(true);
 					this.Contract.m.Destination.setOnCombatWithPlayerCallback(this.onDestinationAttacked.bindenv(this));
 				}
@@ -129,9 +129,9 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 
 			function onEntityPlaced( _entity, _tag )
 			{
-				if (_entity.getFlags().has("peasant") && this.Math.rand(1, 100) <= 75)
+				if (_entity.getFlags().has("peasant") && ::Math.rand(1, 100) <= 75)
 				{
-					_entity.setMoraleState(this.Const.MoraleState.Fleeing);
+					_entity.setMoraleState(::Const.MoraleState.Fleeing);
 					_entity.getBaseProperties().Bravery = 0;
 					_entity.getSkills().update();
 					_entity.getAIAgent().addBehavior(this.new("scripts/ai/tactical/behaviors/ai_retreat_always"));
@@ -139,7 +139,7 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 
 				if (_entity.getFlags().has("peasant") || _entity.getFlags().has("militia"))
 				{
-					_entity.setFaction(this.Const.Faction.Enemy);
+					_entity.setFaction(::Const.Faction.Enemy);
 					_entity.getSprite("socket").setBrush("bust_base_militia");
 				}
 			}
@@ -174,16 +174,16 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 				{
 					local p = this.World.State.getLocalCombatProperties(this.Contract.m.Destination.getPos());
 					p.CombatID = "RazeLocation";
-					p.TerrainTemplate = this.Const.World.TerrainTacticalTemplate[this.Contract.m.Destination.getTile().Type];
+					p.TerrainTemplate = ::Const.World.TerrainTacticalTemplate[this.Contract.m.Destination.getTile().Type];
 					p.Tile = this.World.getTile(this.World.worldToTile(this.World.State.getPlayer().getPos()));
-					p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
+					p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
 					p.LocationTemplate.Template[0] = "tactical.human_camp";
-					p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.None;
+					p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.None;
 					p.LocationTemplate.CutDownTrees = true;
 					p.LocationTemplate.AdditionalRadius = 5;
-					p.PlayerDeploymentType = this.Flags.get("IsEncircled") ? this.Const.Tactical.DeploymentType.Circle : this.Const.Tactical.DeploymentType.Edge;
-					p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Center;
-					p.Music = this.Const.Music.CivilianTracks;
+					p.PlayerDeploymentType = this.Flags.get("IsEncircled") ? ::Const.Tactical.DeploymentType.Circle : ::Const.Tactical.DeploymentType.Edge;
+					p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Center;
+					p.Music = ::Const.Music.CivilianTracks;
 					p.IsAutoAssigningBases = false;
 
 					foreach( e in p.Entities )
@@ -255,7 +255,7 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 					{
 						this.Contract.setScreen("Success1");
 					}
-					else if (this.Math.rand(1, 100) >= this.Flags.get("PeasantsEscaped") * 10)
+					else if (::Math.rand(1, 100) >= this.Flags.get("PeasantsEscaped") * 10)
 					{
 						this.Contract.setScreen("Success2");
 					}
@@ -273,8 +273,8 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -400,16 +400,16 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 					Text = "To arms!",
 					function getResult()
 					{
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractBetrayal);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractBetrayal);
 						this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().set("Betrayed", false);
-						local p = this.Const.Tactical.CombatInfo.getClone();
+						local p = ::Const.Tactical.CombatInfo.getClone();
 						p.CombatID = "Defend";
-						p.TerrainTemplate = this.Const.World.TerrainTacticalTemplate[this.Contract.m.Destination.getTile().Type];
+						p.TerrainTemplate = ::Const.World.TerrainTacticalTemplate[this.Contract.m.Destination.getTile().Type];
 						p.Tile = this.World.getTile(this.World.worldToTile(this.World.State.getPlayer().getPos()));
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.Music = this.Const.Music.NobleTracks;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 150 * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.Music = ::Const.Music.NobleTracks;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 150 * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -448,9 +448,9 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 					Text = "{Honest pay for honest work. | Crowns is crowns.}",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess);
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -462,7 +462,7 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -479,9 +479,9 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 					Text = "{Honest pay for honest work. | Crowns is crowns.}",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnVictory);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnVictory);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractPoor, "Fulfilled a contract");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractPoor, "Fulfilled a contract");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -493,7 +493,7 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -510,9 +510,9 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 					Text = "They won\'t be welcoming us in %settlementname%...",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail);
-						this.Contract.m.Destination.getSettlement().getFactionOfType(this.Const.FactionType.Settlement).addPlayerRelation(this.Const.World.Assets.RelationAttacked, "Raided " + this.Flags.get("DestinationName"));
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail);
+						this.Contract.m.Destination.getSettlement().getFactionOfType(::Const.FactionType.Settlement).addPlayerRelation(::Const.World.Assets.RelationAttacked, "Raided " + this.Flags.get("DestinationName"));
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}

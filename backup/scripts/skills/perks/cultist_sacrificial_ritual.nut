@@ -99,7 +99,7 @@ this.cultist_sacrificial_ritual <- this.inherit("scripts/skills/skill", {
 		foreach (rewardtier in ::Const.PerkInfo.SacrificialRitual.Rewards)
 		{
 			::logInfo("Doing " + rewardtier.ID);
-			roll = this.Math.rand(1, 100);
+			roll = ::Math.rand(1, 100);
 			foreach (reward in rewardtier.Rolls)
 			{
 				::logInfo("Checking " + reward.ID);

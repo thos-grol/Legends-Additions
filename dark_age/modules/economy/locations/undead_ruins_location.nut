@@ -25,7 +25,7 @@
 		this.m.CombatLocation.AdditionalRadius = 5;
 		this.m.IsShowingDefenders = false;
 		this.m.IsShowingBanner = false;
-		local r = this.Math.rand(1, 3);
+		local r = ::Math.rand(1, 3);
 
 		if (r == 1)
 		{
@@ -78,8 +78,8 @@
 			treasure.push("legend_armor/armor_upgrades/legend_double_mail_upgrade");
 		}
 
-		this.dropMoney(this.Math.rand(0, 200), _lootTable);
-		this.dropTreasure(this.Math.rand(2, 3), treasure, _lootTable);
+		this.dropMoney(::Math.rand(0, 200), _lootTable);
+		this.dropTreasure(::Math.rand(2, 3), treasure, _lootTable);
 	}
 
 	o.onInit = function()
@@ -90,7 +90,7 @@
 
 		if (isSouthern)
 		{
-			body.setBrush("world_desert_ruins_0" + this.Math.rand(1, 2));
+			body.setBrush("world_desert_ruins_0" + ::Math.rand(1, 2));
 			this.setDefenderSpawnList(::Const.World.Spawn.UndeadArmy);
 
 			if (::Const.DLC.Desert)
@@ -100,7 +100,7 @@
 		}
 		else
 		{
-			body.setBrush("world_ruins_0" + this.Math.rand(1, 3));
+			body.setBrush("world_ruins_0" + ::Math.rand(1, 3));
 		}
 	}
 

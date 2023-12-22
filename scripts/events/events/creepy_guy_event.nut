@@ -21,7 +21,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 					Text = "Alright, I\'ll go and find them.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 30 || this.World.Assets.getMoney() <= 100)
+						if (::Math.rand(1, 100) <= 30 || this.World.Assets.getMoney() <= 100)
 						{
 							return "Good";
 						}
@@ -129,7 +129,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local money = this.Math.rand(20, 40);
+				local money = ::Math.rand(20, 40);
 				this.World.Assets.addMoney(-money);
 				this.List = [
 					{
@@ -169,7 +169,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]50[/color] Crowns"
 					}
 				];
-				local initiative = this.Math.rand(2, 4);
+				local initiative = ::Math.rand(2, 4);
 				_event.m.Thief.getBaseProperties().Initiative += initiative;
 				_event.m.Thief.getSkills().update();
 				this.List.push({
@@ -226,7 +226,7 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/asset_money.png",
 					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]100[/color] Crowns"
 				});
-				local initiative = this.Math.rand(2, 4);
+				local initiative = ::Math.rand(2, 4);
 				_event.m.Minstrel.getBaseProperties().Initiative += initiative;
 				_event.m.Minstrel.getSkills().update();
 				this.List.push({
@@ -372,22 +372,22 @@ this.creepy_guy_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_thief.len() != 0)
 		{
-			this.m.Thief = candidates_thief[this.Math.rand(0, candidates_thief.len() - 1)];
+			this.m.Thief = candidates_thief[::Math.rand(0, candidates_thief.len() - 1)];
 		}
 
 		if (candidates_minstrel.len() != 0)
 		{
-			this.m.Minstrel = candidates_minstrel[this.Math.rand(0, candidates_minstrel.len() - 1)];
+			this.m.Minstrel = candidates_minstrel[::Math.rand(0, candidates_minstrel.len() - 1)];
 		}
 
 		if (candidates_butcher.len() != 0)
 		{
-			this.m.Butcher = candidates_butcher[this.Math.rand(0, candidates_butcher.len() - 1)];
+			this.m.Butcher = candidates_butcher[::Math.rand(0, candidates_butcher.len() - 1)];
 		}
 
 		if (candidates_killer.len() != 0)
 		{
-			this.m.Killer = candidates_killer[this.Math.rand(0, candidates_killer.len() - 1)];
+			this.m.Killer = candidates_killer[::Math.rand(0, candidates_killer.len() - 1)];
 		}
 
 		this.m.Town = town;

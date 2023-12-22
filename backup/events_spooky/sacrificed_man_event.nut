@@ -262,10 +262,10 @@ this.sacrificed_man_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_cultist.len() != 0)
 		{
-			this.m.Cultist = candidates_cultist[this.Math.rand(0, candidates_cultist.len() - 1)];
+			this.m.Cultist = candidates_cultist[::Math.rand(0, candidates_cultist.len() - 1)];
 		}
 
-		this.m.Other = candidates_other[this.Math.rand(0, candidates_other.len() - 1)];
+		this.m.Other = candidates_other[::Math.rand(0, candidates_other.len() - 1)];
 		this.m.Score = 3;
 	}
 

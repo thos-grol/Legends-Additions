@@ -66,7 +66,7 @@ this.civilwar_dead_knight_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Thief.getImagePath());
-				local money = this.Math.rand(30, 75);
+				local money = ::Math.rand(30, 75);
 				this.World.Assets.addMoney(money);
 				this.List.push({
 					id = 10,
@@ -126,7 +126,7 @@ this.civilwar_dead_knight_event <- this.inherit("scripts/events/event", {
 
 		if (candidates.len() != 0)
 		{
-			this.m.Thief = candidates[this.Math.rand(0, candidates.len() - 1)];
+			this.m.Thief = candidates[::Math.rand(0, candidates.len() - 1)];
 		}
 
 		this.m.Score = 10;

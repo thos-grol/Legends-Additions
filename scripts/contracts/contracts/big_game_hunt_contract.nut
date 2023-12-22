@@ -22,7 +22,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 
 	function setup()
 	{
-		local r = this.Math.rand(1, 100);
+		local r = ::Math.rand(1, 100);
 
 		if (r <= 75 )
 		{
@@ -80,7 +80,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type] * priceMult;
 		this.m.Payment.Count = 1.0;
-		this.m.Payment.MaxCount = maximumHeads[this.Math.rand(0, maximumHeads.len() - 1)];
+		this.m.Payment.MaxCount = maximumHeads[::Math.rand(0, maximumHeads.len() - 1)];
 		local settlements = this.World.FactionManager.getFaction(this.m.Faction).getSettlements();
 		local other_settlements = this.World.EntityManager.getSettlements();
 		local regions = this.World.State.getRegions();
@@ -92,7 +92,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 			local inSettlements = 0;
 			local nearSettlements = 0;
 
-			if (r.Type == this.Const.World.TerrainType.Snow || r.Type == this.Const.World.TerrainType.Mountains || r.Type == this.Const.World.TerrainType.Desert || r.Type == this.Const.World.TerrainType.Oasis)
+			if (r.Type == ::Const.World.TerrainType.Snow || r.Type == ::Const.World.TerrainType.Mountains || r.Type == ::Const.World.TerrainType.Desert || r.Type == ::Const.World.TerrainType.Oasis)
 			{
 				continue;
 			}
@@ -102,7 +102,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 				continue;
 			}
 
-			if (this.m.Size == 2 && r.Type != this.Const.World.TerrainType.Steppe && r.Type != this.Const.World.TerrainType.Forest && r.Type != this.Const.World.TerrainType.LeaveForest && r.Type != this.Const.World.TerrainType.AutumnForest)
+			if (this.m.Size == 2 && r.Type != ::Const.World.TerrainType.Steppe && r.Type != ::Const.World.TerrainType.Forest && r.Type != ::Const.World.TerrainType.LeaveForest && r.Type != ::Const.World.TerrainType.AutumnForest)
 			{
 				continue;
 			}
@@ -168,15 +168,15 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 
 		if (candidates_first.len() != 0)
 		{
-			region = candidates_first[this.Math.rand(0, candidates_first.len() - 1)];
+			region = candidates_first[::Math.rand(0, candidates_first.len() - 1)];
 		}
 		else if (candidates_second.len() != 0)
 		{
-			region = candidates_second[this.Math.rand(0, candidates_second.len() - 1)];
+			region = candidates_second[::Math.rand(0, candidates_second.len() - 1)];
 		}
 		else
 		{
-			region = settlements[this.Math.rand(0, settlements.len() - 1)].getTile().Region;
+			region = settlements[::Math.rand(0, settlements.len() - 1)].getTile().Region;
 		}
 
 		this.m.Flags.set("Region", region);
@@ -228,7 +228,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.Flags.set("StartDay", this.World.getTime().Days);
-				local action = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).getAction("send_beast_roamers_action");
+				local action = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getAction("send_beast_roamers_action");
 				local options;
 
 				if (this.Contract.m.Size == 0)
@@ -250,7 +250,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					for( local tries = 0; tries++ < 1000;  )
 					{
-						if (options[this.Math.rand(0, options.len() - 1)](action, nearTile))
+						if (options[::Math.rand(0, options.len() - 1)](action, nearTile))
 						{
 							local party = action.getFaction().getUnits()[action.getFaction().getUnits().len() - 1];
 							party.setAttackableByAI(false);
@@ -259,7 +259,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 							wait.setTime(15.0);
 							party.getController().addOrderInFront(wait);
 							local footPrintsOrigin = this.Contract.getTileToSpawnLocation(nearTile, 4, 8);
-							this.Const.World.Common.addFootprintsFromTo(footPrintsOrigin, party.getTile(), this.Const.BeastFootprints, party.getFootprintType(), party.getFootprintsSize(), 1.1);
+							::Const.World.Common.addFootprintsFromTo(footPrintsOrigin, party.getTile(), ::Const.BeastFootprints, party.getFootprintType(), party.getFootprintsSize(), 1.1);
 							break;
 						}
 					}
@@ -317,7 +317,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 
 			function onActorKilled( _actor, _killer, _combatID )
 			{
-				if (_killer != null && _killer.getFaction() != this.Const.Faction.Player && _killer.getFaction() != this.Const.Faction.PlayerAnimals)
+				if (_killer != null && _killer.getFaction() != ::Const.Faction.Player && _killer.getFaction() != ::Const.Faction.PlayerAnimals)
 				{
 					return;
 				}
@@ -329,31 +329,31 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 
 				local beasts = [
 					[
-						this.Const.EntityType.Ghoul,
-						this.Const.EntityType.LegendSkinGhoul,
-						this.Const.EntityType.Direwolf,
-						this.Const.EntityType.LegendWhiteDirewolf,
-						this.Const.EntityType.Spider,
-						this.Const.EntityType.LegendRedbackSpider,
-						this.Const.EntityType.Hyena,
-						this.Const.EntityType.Serpent
+						::Const.EntityType.Ghoul,
+						::Const.EntityType.LegendSkinGhoul,
+						::Const.EntityType.Direwolf,
+						::Const.EntityType.LegendWhiteDirewolf,
+						::Const.EntityType.Spider,
+						::Const.EntityType.LegendRedbackSpider,
+						::Const.EntityType.Hyena,
+						::Const.EntityType.Serpent
 					],
 					[
-						this.Const.EntityType.Alp,
-						this.Const.EntityType.LegendDemonAlp,
-						this.Const.EntityType.Unhold,
-						this.Const.EntityType.UnholdFrost,
-						this.Const.EntityType.UnholdBog,
-						this.Const.EntityType.LegendRockUnhold,
-						this.Const.EntityType.Hexe,
-						this.Const.EntityType.LegendHexeLeader
+						::Const.EntityType.Alp,
+						::Const.EntityType.LegendDemonAlp,
+						::Const.EntityType.Unhold,
+						::Const.EntityType.UnholdFrost,
+						::Const.EntityType.UnholdBog,
+						::Const.EntityType.LegendRockUnhold,
+						::Const.EntityType.Hexe,
+						::Const.EntityType.LegendHexeLeader
 					],
 					[
-						this.Const.EntityType.Lindwurm,
-						this.Const.EntityType.Schrat,
-						this.Const.EntityType.LegendGreenwoodSchrat,
-						this.Const.EntityType.LegendGreenwoodSchratSmall,
-						this.Const.EntityType.LegendStollwurm
+						::Const.EntityType.Lindwurm,
+						::Const.EntityType.Schrat,
+						::Const.EntityType.LegendGreenwoodSchrat,
+						::Const.EntityType.LegendGreenwoodSchratSmall,
+						::Const.EntityType.LegendStollwurm
 					]
 				];
 
@@ -380,8 +380,8 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationPerHead);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationPerHead);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "TaskSmall",
 			Title = "Negotiations",
@@ -490,10 +490,10 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
 						this.World.Assets.addMoney(this.Contract.m.Payment.getPerCount() * this.Flags.get("HeadsCollected"));
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Hunted beasts around " + this.World.State.getRegion(this.Flags.get("Region")).Name);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Hunted beasts around " + this.World.State.getRegion(this.Flags.get("Region")).Name);
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -506,7 +506,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 			}
 
@@ -523,10 +523,10 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
 						this.World.Assets.addMoney(this.Contract.m.Payment.getPerCount() * this.Flags.get("HeadsCollected"));
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Hunted beasts around " + this.World.State.getRegion(this.Flags.get("Region")).Name);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Hunted beasts around " + this.World.State.getRegion(this.Flags.get("Region")).Name);
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -539,7 +539,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 			}
 
@@ -556,10 +556,10 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
 						this.World.Assets.addMoney(this.Contract.m.Payment.getPerCount() * this.Flags.get("HeadsCollected"));
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Hunted beasts around " + this.World.State.getRegion(this.Flags.get("Region")).Name);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Hunted beasts around " + this.World.State.getRegion(this.Flags.get("Region")).Name);
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -572,7 +572,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 			}
 
@@ -583,7 +583,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		local dest = this.World.State.getRegion(this.m.Flags.get("Region")).Center;
 		local distance = this.World.State.getPlayer().getTile().getDistanceTo(dest);
-		distance = this.Const.Strings.Distance[this.Math.min(this.Const.Strings.Distance.len() - 1, distance / 30.0 * (this.Const.Strings.Distance.len() - 1))];
+		distance = ::Const.Strings.Distance[::Math.min(::Const.Strings.Distance.len() - 1, distance / 30.0 * (::Const.Strings.Distance.len() - 1))];
 		_vars.push([
 			"killcount",
 			this.m.Flags.get("HeadsCollected")
@@ -598,7 +598,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(dest)]
+			::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(dest)]
 		]);
 		_vars.push([
 			"distance",
@@ -606,7 +606,7 @@ this.big_game_hunt_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"regiontype",
-			this.Const.Strings.TerrainShort[this.World.State.getRegion(this.m.Flags.get("Region")).Type]
+			::Const.Strings.TerrainShort[this.World.State.getRegion(this.m.Flags.get("Region")).Type]
 		]);
 	}
 

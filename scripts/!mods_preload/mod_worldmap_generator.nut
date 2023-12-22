@@ -107,19 +107,19 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 				{
 					if (isLeft)
 					{
-						x = this.Math.rand(5, _rect.W * 0.6);
+						x = ::Math.rand(5, _rect.W * 0.6);
 					}
 					else
 					{
-						x = this.Math.rand(_rect.W * 0.4, _rect.W - 6);
+						x = ::Math.rand(_rect.W * 0.4, _rect.W - 6);
 					}
 				}
 				else
 				{
-					x = this.Math.rand(5, _rect.W - 6);
+					x = ::Math.rand(5, _rect.W - 6);
 				}
 
-				y = this.Math.rand(5, _rect.H * 0.95);
+				y = ::Math.rand(5, _rect.H * 0.95);
 				local tile = this.World.getTileSquare(x, y);
 
 				if (settlementTiles.find(tile.ID) != null)
@@ -166,7 +166,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 					continue;
 				}
 
-				local type = candidates[this.Math.rand(0, candidates.len() - 1)];
+				local type = candidates[::Math.rand(0, candidates.len() - 1)];
 
 				if ((terrain.Region[::Const.World.TerrainType.Ocean] >= 3 || terrain.Region[::Const.World.TerrainType.Shore] >= 3) && !("IsCoastal" in type) && !("IsFlexible" in type))
 				{
@@ -238,12 +238,12 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 			local _properties = this.World.State.m.CampaignSettings;
 			this.LoadingScreen.updateProgress("Building Settlements ...");
 			this.logInfo("Building settlements...");
-			local isLeft = this.Math.rand(0, 1);
+			local isLeft = ::Math.rand(0, 1);
 			local settlementTiles = [];
 
 			foreach( list in ::Const.World.Settlements.LegendsWorldMaster )
 			{
-				local num = this.Math.ceil(::Legends.Mod.ModSettings.getSetting("Settlements").getValue() * list.Ratio);
+				local num = ::Math.ceil(::Legends.Mod.ModSettings.getSetting("Settlements").getValue() * list.Ratio);
 				local additionalSpace = 0;
 
 				if ("AdditionalSpace" in list)
@@ -264,7 +264,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 
 				while (num > 0)
 				{
-					local r = this.Math.rand(1, 10);
+					local r = ::Math.rand(1, 10);
 					local total = 0;
 
 					foreach( s in list.Sizes )
@@ -306,7 +306,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 
 				for( local i = ::Const.World.Buildings.Blackmarket; i <= 2; i = i )
 				{
-					local r = this.Math.rand(0, candidates.len() - 1);
+					local r = ::Math.rand(0, candidates.len() - 1);
 					local s = candidates[r];
 					candidates.remove(r);
 					s.addBuilding(::new("scripts/entity/world/settlements/buildings/blackmarket_building"));
@@ -334,7 +334,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 
 				for( local i = ::Const.World.Buildings.Fletchers; i <= 2; i = i )
 				{
-					local r = this.Math.rand(0, candidates.len() - 1);
+					local r = ::Math.rand(0, candidates.len() - 1);
 					local s = candidates[r];
 					candidates.remove(r);
 					s.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
@@ -362,7 +362,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 
 			// 	for( local i = ::Const.World.Buildings.Temples; i <= 2; i = i )
 			// 	{
-			// 		local r = this.Math.rand(0, candidates.len() - 1);
+			// 		local r = ::Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
 			// 		candidates.remove(r);
 			// 		s.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
@@ -390,7 +390,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 
 			// 	for( local i = ::Const.World.Buildings.Kennels; i <= 2; i = i )
 			// 	{
-			// 		local r = this.Math.rand(0, candidates.len() - 1);
+			// 		local r = ::Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
 			// 		candidates.remove(r);
 			// 		s.addBuilding(::new("scripts/entity/world/settlements/buildings/kennel_building"));
@@ -418,7 +418,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 
 			// 	for( local i = ::Const.World.Buildings.Taxidermists; i <= 2; i = i )
 			// 	{
-			// 		local r = this.Math.rand(0, candidates.len() - 1);
+			// 		local r = ::Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
 			// 		candidates.remove(r);
 			// 		s.addBuilding(::new("scripts/entity/world/settlements/buildings/taxidermist_building"));
@@ -446,7 +446,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 
 			// 	for( local i = ::Const.World.Buildings.Stables; i <= 2; i = i )
 			// 	{
-			// 		local r = this.Math.rand(0, candidates.len() - 1);
+			// 		local r = ::Math.rand(0, candidates.len() - 1);
 			// 		local s = candidates[r];
 			// 		candidates.remove(r);
 			// 		s.addBuilding(::new("scripts/entity/world/settlements/buildings/stables_building"));
@@ -607,7 +607,7 @@ this.getroottable().Const.LegendMod.hookWorldmapGenerator <- function ()
 
 				for( local tries = 0; tries++ < 1000; tries = tries )
 				{
-					local index = this.Math.rand(0, settlements.len() - 1);
+					local index = ::Math.rand(0, settlements.len() - 1);
 					settlements[index].buildAttachedLocation(1, v.Script, ALL, [], 2, false, true, true);
 
 					if (settlements[index].hasAttachedLocation(k))

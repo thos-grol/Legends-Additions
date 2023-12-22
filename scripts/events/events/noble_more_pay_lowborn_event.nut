@@ -66,7 +66,7 @@ this.noble_more_pay_lowborn_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Noble.getImagePath());
-				_event.m.Noble.getBaseProperties().DailyWage += this.Math.max(0, _event.m.Lowborn.getDailyCost() - _event.m.Noble.getDailyCost());
+				_event.m.Noble.getBaseProperties().DailyWage += ::Math.max(0, _event.m.Lowborn.getDailyCost() - _event.m.Noble.getDailyCost());
 				_event.m.Noble.getSkills().update();
 				this.List.push({
 					id = 10,
@@ -218,7 +218,7 @@ this.noble_more_pay_lowborn_event <- this.inherit("scripts/events/event", {
 		}
 
 		this.m.Noble = lowestNoble;
-		this.m.Lowborn = lowborn_candidates[this.Math.rand(0, lowborn_candidates.len() - 1)];
+		this.m.Lowborn = lowborn_candidates[::Math.rand(0, lowborn_candidates.len() - 1)];
 		this.m.Score = 7 + (lowestNoble.getSkills().hasSkill("trait.greedy") ? 9 : 0);
 	}
 

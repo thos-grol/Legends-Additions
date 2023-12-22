@@ -116,7 +116,7 @@
 
 		foreach( i in ::Const.Items.LegendNamedSouthernArmorLayers )
 		{
-			if (this.Math.rand(1, 100) <= 33)
+			if (::Math.rand(1, 100) <= 33)
 			{
 				list.push({
 					R = 99,
@@ -128,7 +128,7 @@
 
 		foreach( i in ::Const.Items.NamedArmors )
 		{
-			if (this.Math.rand(1, 100) <= 33)
+			if (::Math.rand(1, 100) <= 33)
 			{
 				list.push({
 					R = 99,
@@ -140,7 +140,7 @@
 
 		foreach( i in ::Const.Items.NamedHelmets )
 		{
-			if (this.Math.rand(1, 100) <= 33)
+			if (::Math.rand(1, 100) <= 33)
 			{
 				list.push({
 					R = 99,

@@ -48,7 +48,7 @@
 			]
 		]));
 		local r;
-		r = this.Math.rand(1, 3);
+		r = ::Math.rand(1, 3);
 
 		if (r <= 1)
 		{

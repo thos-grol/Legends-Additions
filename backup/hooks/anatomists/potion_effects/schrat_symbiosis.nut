@@ -129,14 +129,14 @@
                 if (myTile.hasNextTile(i))
                 {
                     local nextTile = myTile.getNextTile(i);
-                    if (nextTile.IsEmpty && this.Math.abs(myTile.Level - nextTile.Level) <= 1) candidates.push(nextTile);
+                    if (nextTile.IsEmpty && ::Math.abs(myTile.Level - nextTile.Level) <= 1) candidates.push(nextTile);
                 }
                 i = ++i;
             }
 
             if (candidates.len() != 0)
             {
-                local spawnTile = candidates[this.Math.rand(0, candidates.len() - 1)];
+                local spawnTile = candidates[::Math.rand(0, candidates.len() - 1)];
                 local sapling = this.Tactical.spawnEntity("scripts/entity/tactical/enemies/legend_greenwood_schrat_small", spawnTile.Coords);
                 sapling.setFaction(actor.getFaction() == ::Const.Faction.Player ? ::Const.Faction.PlayerAnimals : actor.getFaction());
                 sapling.riseFromGround();

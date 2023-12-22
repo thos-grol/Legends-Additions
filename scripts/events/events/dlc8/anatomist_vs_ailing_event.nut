@@ -18,7 +18,7 @@ this.anatomist_vs_ailing_event <- this.inherit("scripts/events/event", {
 					Text = "Go and and heal him of his ailments.",
 					function getResult( _event )
 					{
-						local outcome = this.Math.rand(1, 100);
+						local outcome = ::Math.rand(1, 100);
 
 						if (outcome <= 33)
 						{
@@ -76,7 +76,7 @@ this.anatomist_vs_ailing_event <- this.inherit("scripts/events/event", {
 						text = _event.m.Ailing.getName() + " is no longer Ailing"
 					}
 				];
-				local healthBoost = this.Math.rand(2, 4);
+				local healthBoost = ::Math.rand(2, 4);
 				_event.m.Ailing.getBaseProperties().Hitpoints += healthBoost;
 				_event.m.Ailing.getSkills().update();
 				this.List.push({
@@ -170,7 +170,7 @@ this.anatomist_vs_ailing_event <- this.inherit("scripts/events/event", {
 
 				while (num_new_traits > 0 && new_traits.len() > 0)
 				{
-					local trait = ::new(new_traits.remove(this.Math.rand(0, new_traits.len() - 1)));
+					local trait = ::new(new_traits.remove(::Math.rand(0, new_traits.len() - 1)));
 
 					if (!_event.m.Ailing.getSkills().hasSkill(trait.getID()))
 					{
@@ -226,7 +226,7 @@ this.anatomist_vs_ailing_event <- this.inherit("scripts/events/event", {
 
 		if (ailingCandidates.len() == 0) return;
 
-		this.m.Ailing = ailingCandidates[this.Math.rand(0, ailingCandidates.len() - 1)];
+		this.m.Ailing = ailingCandidates[::Math.rand(0, ailingCandidates.len() - 1)];
 		this.m.Score = 5 * ailingCandidates.len();
 	}
 

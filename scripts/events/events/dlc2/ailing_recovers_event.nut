@@ -67,7 +67,7 @@ this.ailing_recovers_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_ailing.len() == 0) return;
 
-		this.m.Ailing = candidates_ailing[this.Math.rand(0, candidates_ailing.len() - 1)];
+		this.m.Ailing = candidates_ailing[::Math.rand(0, candidates_ailing.len() - 1)];
 		this.m.Score = 5;
 	}
 

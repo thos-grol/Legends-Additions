@@ -2,14 +2,14 @@ this.noble_footman_veteran <- this.inherit("scripts/entity/tactical/humans/noble
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.LegendNobleGuard;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.LegendNobleGuard.XP;
+		this.m.Type = ::Const.EntityType.LegendNobleGuard;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.LegendNobleGuard.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.Military;
-		this.m.HairColors = this.Const.HairColors.Old;
-		this.m.Beards = this.Const.Beards.Tidy;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.Military;
+		this.m.HairColors = ::Const.HairColors.Old;
+		this.m.Beards = ::Const.Beards.Tidy;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/military_melee_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -18,7 +18,7 @@ this.noble_footman_veteran <- this.inherit("scripts/entity/tactical/humans/noble
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.LegendNobleGuard);
+		b.setValues(::Const.Tactical.Actor.LegendNobleGuard);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -42,7 +42,7 @@ this.noble_footman_veteran <- this.inherit("scripts/entity/tactical/humans/noble
 
 		this.m.Surcoat = banner;
 
-		if (this.Math.rand(1, 100) <= 90)
+		if (::Math.rand(1, 100) <= 90)
 		{
 			this.getSprite("surcoat").setBrush("surcoat_" + (banner < 10 ? "0" + banner : banner));
 		}
@@ -50,7 +50,7 @@ this.noble_footman_veteran <- this.inherit("scripts/entity/tactical/humans/noble
 		local shield = this.new("scripts/items/shields/faction_heater_shield");
 		shield.setFaction(banner);
 		this.m.Items.equip(shield);
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"legend_noble_guard_armour"
@@ -60,7 +60,7 @@ this.noble_footman_veteran <- this.inherit("scripts/entity/tactical/humans/noble
 
 		if (banner <= 4)
 		{
-			helmet = this.Const.World.Common.pickHelmet([
+			helmet = ::Const.World.Common.pickHelmet([
 				[
 					5,
 					"rondel_helm"
@@ -85,7 +85,7 @@ this.noble_footman_veteran <- this.inherit("scripts/entity/tactical/humans/noble
 		}
 		else if (banner <= 7)
 		{
-			helmet = this.Const.World.Common.pickHelmet([
+			helmet = ::Const.World.Common.pickHelmet([
 				[
 					3,
 					"mail_coif"
@@ -110,7 +110,7 @@ this.noble_footman_veteran <- this.inherit("scripts/entity/tactical/humans/noble
 		}
 		else
 		{
-			helmet = this.Const.World.Common.pickHelmet([
+			helmet = ::Const.World.Common.pickHelmet([
 				[
 					4,
 					"nasal_helmet_with_mail"

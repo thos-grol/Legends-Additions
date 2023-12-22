@@ -4,7 +4,7 @@ this.legend_rune_resilience <- this.inherit("scripts/items/legend_armor/legend_a
 	{
 		this.legend_armor_upgrade.create();
 		this.m.ID = "legend_armor_upgrade.legend_rune_resilience";
-		this.m.Type = this.Const.Items.ArmorUpgrades.Rune;
+		this.m.Type = ::Const.Items.ArmorUpgrades.Rune;
 		this.m.Name = "Armor Rune Sigil: Resilience";
 		this.m.Description = "An inscribed rock that can be attached to a character\'s armor.";
 		this.m.ArmorDescription = "Includes An inscribed rock that grants additional resilience bonuses.";
@@ -28,7 +28,7 @@ this.legend_rune_resilience <- this.inherit("scripts/items/legend_armor/legend_a
 			id = 7,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "This item has the power of the rune sigil of Resilience:\n[color=" + this.Const.UI.Color.PositiveValue + "]Immune[/color] to stuns, knockbacks and grabs."
+			text = "This item has the power of the rune sigil of Resilience:\n[color=" + ::Const.UI.Color.PositiveValue + "]Immune[/color] to stuns, knockbacks and grabs."
 		});
 		return result;
 	}
@@ -39,7 +39,7 @@ this.legend_rune_resilience <- this.inherit("scripts/items/legend_armor/legend_a
 			id = 7,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "This item has the power of the rune sigil of Resilience:\n[color=" + this.Const.UI.Color.PositiveValue + "]Immune[/color] to stuns, knockbacks and grabs."
+			text = "This item has the power of the rune sigil of Resilience:\n[color=" + ::Const.UI.Color.PositiveValue + "]Immune[/color] to stuns, knockbacks and grabs."
 		});
 	}
 
@@ -59,10 +59,10 @@ this.legend_rune_resilience <- this.inherit("scripts/items/legend_armor/legend_a
 	{
 		if (!::Z.hasVala()) return false
 		if (this.isUsed()) return false;
-		local armor = _item == null ? _actor.getItems().getItemAtSlot(this.Const.ItemSlot.Body) : _item;
+		local armor = _item == null ? _actor.getItems().getItemAtSlot(::Const.ItemSlot.Body) : _item;
 		if (armor == null) return false;
 		local success = armor.setUpgrade(this);
-		if (success) this.Sound.play("sounds/inventory/armor_upgrade_use_01.wav", this.Const.Sound.Volume.Inventory);
+		if (success) this.Sound.play("sounds/inventory/armor_upgrade_use_01.wav", ::Const.Sound.Volume.Inventory);
 		return success;
 	}
 
@@ -74,7 +74,7 @@ this.legend_rune_resilience <- this.inherit("scripts/items/legend_armor/legend_a
 		{
 			this.setToBeRepaired(true, 0);
 		}
-		this.setCurrentSlotType(this.Const.ItemSlot.None);
+		this.setCurrentSlotType(::Const.ItemSlot.None);
 	}
 
 });

@@ -82,7 +82,7 @@ this.staggered_effect <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		// this.m.TurnsLeft = this.Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+		// this.m.TurnsLeft = ::Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
 		this.Tactical.TurnSequenceBar.pushEntityBack(actor.getID());
 		local s = actor.getSkills();
 		s.removeByID("effects.shieldwall");

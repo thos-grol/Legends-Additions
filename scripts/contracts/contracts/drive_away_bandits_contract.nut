@@ -19,14 +19,14 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 		local vars = [
 			[
 				"randomname",
-				this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]
+				::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]
 			],
 			[
 				"randomtown",
-				this.Const.World.LocationNames.VillageWestern[this.Math.rand(0, this.Const.World.LocationNames.VillageWestern.len() - 1)]
+				::Const.World.LocationNames.VillageWestern[::Math.rand(0, ::Const.World.LocationNames.VillageWestern.len() - 1)]
 			]
 		];
-		return this.buildTextFromTemplate(this.Const.Strings.BanditLeaderNames[this.Math.rand(0, this.Const.Strings.BanditLeaderNames.len() - 1)], vars);
+		return this.buildTextFromTemplate(::Const.Strings.BanditLeaderNames[::Math.rand(0, ::Const.Strings.BanditLeaderNames.len() - 1)], vars);
 	}
 
 	function onImportIntro()
@@ -36,7 +36,7 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		local banditcamp = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getNearestSettlement(this.m.Home.getTile());
+		local banditcamp = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getNearestSettlement(this.m.Home.getTile());
 		this.m.Destination = this.WeakTableRef(banditcamp);
 		this.m.Flags.set("DestinationName", banditcamp.getName());
 		this.m.Flags.set("RobberBaronName", this.generateName());
@@ -60,7 +60,7 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 
 		this.m.Payment.Pool = pay_amount;
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -83,7 +83,7 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 					"Drive off brigands at " + this.Flags.get("DestinationName") + " %direction% of %origin%"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -105,16 +105,16 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 				// 	this.Contract.m.Destination.getLoot().clear();
 				// }
 
-				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditDefenders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditDefenders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				// this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				// this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				// this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 
-				if (this.Math.rand(1, 100) <= 20)
+				if (::Math.rand(1, 100) <= 20)
 				{
 					this.Flags.set("IsRobberBaronPresent", true);
-					if (this.Math.rand(1, 100) <= 50) this.Flags.set("IsBountyHunterPresent", true);
+					if (::Math.rand(1, 100) <= 50) this.Flags.set("IsBountyHunterPresent", true);
 				}
 
 				this.Contract.setScreen("Overview");
@@ -142,12 +142,12 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.setScreen("RobberBaronDead");
 						this.World.Contracts.showActiveContract();
 					}
-					else if (this.Math.rand(1, 100) <= 10)
+					else if (::Math.rand(1, 100) <= 10)
 					{
 						this.Contract.setScreen("Survivors1");
 						this.World.Contracts.showActiveContract();
 					}
-					else if (this.Math.rand(1, 100) <= 10 && this.World.getPlayerRoster().getSize() < this.World.Assets.getBrothersMax())
+					else if (::Math.rand(1, 100) <= 10 && this.World.getPlayerRoster().getSize() < this.World.Assets.getBrothersMax())
 					{
 						this.Contract.setScreen("Volunteer1");
 						this.World.Contracts.showActiveContract();
@@ -170,9 +170,9 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 					else
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-						properties.Music = this.Const.Music.BanditTracks;
+						properties.Music = ::Const.Music.BanditTracks;
 						properties.Entities.push({
-							ID = this.Const.EntityType.BanditLeader,
+							ID = ::Const.EntityType.BanditLeader,
 							Variant = 0,
 							Row = 2,
 							Script = "scripts/entity/tactical/enemies/bandit_leader",
@@ -230,7 +230,7 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 					this.World.Contracts.showActiveContract();
 				}
 
-				if (this.Flags.get("IsRobberBaronDead") && this.Flags.get("IsBountyHunterPresent") && !this.TempFlags.get("IsBountyHunterTriggered") && this.World.Events.getLastBattleTime() + 7.0 < this.Time.getVirtualTimeF() && this.Math.rand(1, 1000) <= 2)
+				if (this.Flags.get("IsRobberBaronDead") && this.Flags.get("IsBountyHunterPresent") && !this.TempFlags.get("IsBountyHunterTriggered") && this.World.Events.getLastBattleTime() + 7.0 < this.Time.getVirtualTimeF() && ::Math.rand(1, 1000) <= 2)
 				{
 					this.Contract.setScreen("BountyHunters1");
 					this.World.Contracts.showActiveContract();
@@ -265,8 +265,8 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -347,7 +347,7 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						this.Flags.set("IsRobberBaronDead", false);
 						this.Flags.set("IsBountyHunterPresent", false);
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractPoor);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractPoor);
 						return "BountyHunters2";
 					}
 
@@ -357,16 +357,16 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.TempFlags.set("IsBountyHunterTriggered", true);
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						local tile = this.World.State.getPlayer().getTile();
-						local p = this.Const.Tactical.CombatInfo.getClone();
-						p.Music = this.Const.Music.BanditTracks;
-						p.TerrainTemplate = this.Const.World.TerrainTacticalTemplate[tile.TacticalType];
+						local p = ::Const.Tactical.CombatInfo.getClone();
+						p.Music = ::Const.Music.BanditTracks;
+						p.TerrainTemplate = ::Const.World.TerrainTacticalTemplate[tile.TacticalType];
 						p.Tile = tile;
 						p.CombatID = "BountyHunters";
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.BountyHunters, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BountyHunters, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -499,11 +499,11 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				local roster = this.World.getTemporaryRoster();
 				this.Contract.m.Dude = roster.create("scripts/entity/tactical/player");
-				this.Contract.m.Dude.setStartValuesEx(this.Const.CharacterLaborerBackgrounds);
+				this.Contract.m.Dude.setStartValuesEx(::Const.CharacterLaborerBackgrounds);
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).removeSelf();
 				}
 
 				this.Contract.m.Dude.m.Talents = [];
@@ -587,9 +587,9 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Destroyed a brigand encampment");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Destroyed a brigand encampment");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -602,7 +602,7 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -620,9 +620,9 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion() * 2);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Destroyed a brigand encampment");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Destroyed a brigand encampment");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -636,7 +636,7 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -664,7 +664,7 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Destination == null || this.m.Destination.isNull() || !this.m.Destination.isAlive() ? "" : this.Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())]
+			this.m.Destination == null || this.m.Destination.isNull() || !this.m.Destination.isAlive() ? "" : ::Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())]
 		]);
 	}
 

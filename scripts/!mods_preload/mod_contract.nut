@@ -34,35 +34,35 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 
 			if (this.World.getTime().Days < 5)
 			{
-				r = this.Math.rand(1, 30);
+				r = ::Math.rand(1, 30);
 			}
 			else if (this.World.getTime().Days < 10)
 			{
-				r = this.Math.rand(1, 75);
+				r = ::Math.rand(1, 75);
 			}
 			else
 			{
-				r = this.Math.rand(1, 100);
+				r = ::Math.rand(1, 100);
 			}
 
 			if (r <= 30)
 			{
-				this.m.DifficultyMult = this.Math.rand(70, 85) * 0.01;
+				this.m.DifficultyMult = ::Math.rand(70, 85) * 0.01;
 			}
 			else if (r <= 75)
 			{
-				this.m.DifficultyMult = this.Math.rand(95, 105) * 0.01;
+				this.m.DifficultyMult = ::Math.rand(95, 105) * 0.01;
 			}
 			else if (r <= 95)
 			{
-				this.m.DifficultyMult = this.Math.rand(115, 135) * 0.01;
+				this.m.DifficultyMult = ::Math.rand(115, 135) * 0.01;
 			}
 			else
 			{
-				this.m.DifficultyMult = this.Math.rand(145, 165) * 0.01;
+				this.m.DifficultyMult = ::Math.rand(145, 165) * 0.01;
 			}
 
-			this.m.PaymentMult = this.Math.rand(90, 110) * 0.01;
+			this.m.PaymentMult = ::Math.rand(90, 110) * 0.01;
 			this.m.Flags = this.new("scripts/tools/tag_collection");
 			this.m.TempFlags = this.new("scripts/tools/tag_collection");
 			this.createStates();
@@ -79,43 +79,43 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 			local enemyBase = this.World.FactionManager.getFactionOfType(_factionType).getNearestSettlement(myTile);
 			local party;
 
-			if (_factionType == this.Const.FactionType.Bandits)
+			if (_factionType == ::Const.FactionType.Bandits)
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(enemyBase.getTile(), "Brigands", false, this.Const.World.Spawn.BanditRaiders, _resources);
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(enemyBase.getTile(), "Brigands", false, ::Const.World.Spawn.BanditRaiders, _resources);
 				party.setDescription("A rough and tough band of brigands out to hunt for food.");
-				party.setFootprintType(this.Const.World.FootprintsType.Brigands);
-				party.getLoot().Money = this.Math.rand(0, 50);
-				party.getLoot().ArmorParts = this.Math.rand(0, 10);
-				party.getLoot().Medicine = this.Math.rand(0, 2);
-				party.getLoot().Ammo = this.Math.rand(0, 10);
+				party.setFootprintType(::Const.World.FootprintsType.Brigands);
+				party.getLoot().Money = ::Math.rand(0, 50);
+				party.getLoot().ArmorParts = ::Math.rand(0, 10);
+				party.getLoot().Medicine = ::Math.rand(0, 2);
+				party.getLoot().Ammo = ::Math.rand(0, 10);
 			}
-			else if (_factionType == this.Const.FactionType.Goblins)
+			else if (_factionType == ::Const.FactionType.Goblins)
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).spawnEntity(enemyBase.getTile(), "Goblin Raiders", false, this.Const.World.Spawn.GoblinRaiders, _resources);
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).spawnEntity(enemyBase.getTile(), "Goblin Raiders", false, ::Const.World.Spawn.GoblinRaiders, _resources);
 				party.setDescription("A band of mischievous goblins, small but cunning and not to be underestimated.");
-				party.setFootprintType(this.Const.World.FootprintsType.Goblins);
-				party.getLoot().ArmorParts = this.Math.rand(0, 10);
-				party.getLoot().Medicine = this.Math.rand(0, 2);
-				party.getLoot().Ammo = this.Math.rand(0, 15);
+				party.setFootprintType(::Const.World.FootprintsType.Goblins);
+				party.getLoot().ArmorParts = ::Math.rand(0, 10);
+				party.getLoot().Medicine = ::Math.rand(0, 2);
+				party.getLoot().Ammo = ::Math.rand(0, 15);
 			}
-			else if (_factionType == this.Const.FactionType.Orcs)
+			else if (_factionType == ::Const.FactionType.Orcs)
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).spawnEntity(enemyBase.getTile(), "Orc Marauders", false, this.Const.World.Spawn.OrcRaiders, _resources);
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).spawnEntity(enemyBase.getTile(), "Orc Marauders", false, ::Const.World.Spawn.OrcRaiders, _resources);
 				party.setDescription("A band of menacing orcs, greenskinned and towering any man.");
-				party.setFootprintType(this.Const.World.FootprintsType.Orcs);
+				party.setFootprintType(::Const.World.FootprintsType.Orcs);
 				party.addToInventory("supplies/strange_meat_item");
 			}
-			else if (_factionType == this.Const.FactionType.Undead)
+			else if (_factionType == ::Const.FactionType.Undead)
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).spawnEntity(enemyBase.getTile(), "Undead", false, this.Const.World.Spawn.UndeadArmy, _resources);
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).spawnEntity(enemyBase.getTile(), "Undead", false, ::Const.World.Spawn.UndeadArmy, _resources);
 				party.setDescription("A legion of walking dead, back to claim from the living what was once theirs.");
-				party.setFootprintType(this.Const.World.FootprintsType.Undead);
+				party.setFootprintType(::Const.World.FootprintsType.Undead);
 			}
-			else if (_factionType == this.Const.FactionType.Zombies)
+			else if (_factionType == ::Const.FactionType.Zombies)
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).spawnEntity(enemyBase.getTile(), "Undead", false, this.Const.World.Spawn.Necromancer, _resources);
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).spawnEntity(enemyBase.getTile(), "Undead", false, ::Const.World.Spawn.Necromancer, _resources);
 				party.setDescription("Something seems wrong.");
-				party.setFootprintType(this.Const.World.FootprintsType.Undead);
+				party.setFootprintType(::Const.World.FootprintsType.Undead);
 			}
 
 			party.getSprite("banner").setBrush(enemyBase.getBanner());
@@ -155,23 +155,23 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 		o.m.Payment.getOnCompletion = function ()
 		{
 			local val = getOnCompletion();
-			return this.Math.max(this.Const.Difficulty.MinPayments[this.World.Assets.getEconomicDifficulty()], val);
+			return ::Math.max(::Const.Difficulty.MinPayments[this.World.Assets.getEconomicDifficulty()], val);
 		};
 		local getPerCount = o.m.Payment.getPerCount;
 		o.m.Payment.getPerCount = function ()
 		{
 			local val = getPerCount();
-			return this.Math.max(this.Const.Difficulty.MinHeadPayments[this.World.Assets.getEconomicDifficulty()], val);
+			return ::Math.max(::Const.Difficulty.MinHeadPayments[this.World.Assets.getEconomicDifficulty()], val);
 		};
 		o.getScaledDifficultyMult = function ()
 		{
-			local s = this.Math.maxf(0.75, 0.94 * this.Math.pow(0.01 * this.World.State.getPlayer().getStrength(), 0.89));
-			local d = this.Math.minf(5.0, s);
-			return d * this.Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
+			local s = ::Math.maxf(0.75, 0.94 * ::Math.pow(0.01 * this.World.State.getPlayer().getStrength(), 0.89));
+			local d = ::Math.minf(5.0, s);
+			return d * ::Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
 		};
 		o.getPaymentMult = function ()
 		{
-			local repDiffMult = this.Math.pow(this.getScaledDifficultyMult(), 0.5);
+			local repDiffMult = ::Math.pow(this.getScaledDifficultyMult(), 0.5);
 			local broMult = this.World.State.getPlayer().getBarterMult();
 			return (this.m.PaymentMult + broMult) * (this.m.DifficultyMult * repDiffMult) * this.World.Assets.m.ContractPaymentMult;
 		};
@@ -181,7 +181,7 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 
 			if (typeof _partyList == "table")
 			{
-				p = this.Const.World.Common.buildDynamicTroopList(_partyList, _resources);
+				p = ::Const.World.Common.buildDynamicTroopList(_partyList, _resources);
 			}
 			else
 			{
@@ -211,10 +211,10 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 
 					foreach( party in _partyList )
 					{
-						if (this.Math.abs(_resources - party.Cost) <= bestCost)
+						if (::Math.abs(_resources - party.Cost) <= bestCost)
 						{
 							best = party;
-							bestCost = this.Math.abs(_resources - party.Cost);
+							bestCost = ::Math.abs(_resources - party.Cost);
 						}
 					}
 
@@ -222,7 +222,7 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 				}
 				else
 				{
-					local pick = this.Math.rand(1, total_weight);
+					local pick = ::Math.rand(1, total_weight);
 
 					foreach( party in potential )
 					{
@@ -245,7 +245,7 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 
 				if (!(key in troopMbMap))
 				{
-					troopMbMap[key] <- this.Const.LegendMod.GetFavEnemyBossChance(t.Type.ID);
+					troopMbMap[key] <- ::Const.LegendMod.GetFavEnemyBossChance(t.Type.ID);
 				}
 
 				local mb = troopMbMap[key];
@@ -269,7 +269,7 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 
 				for( local i = 0; i != t.Num; i = i )
 				{
-					this.Const.World.Common.addTroop(_entity, t, false, mb);
+					::Const.World.Common.addTroop(_entity, t, false, mb);
 					i = ++i;
 				}
 			}
@@ -410,14 +410,14 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 		o.buildText <- function ( _text )
 		{
 			local brothers = this.World.getPlayerRoster().getAll();
-			local brother1 = this.Math.rand(0, brothers.len() - 1);
-			local brother2 = this.Math.rand(0, brothers.len() - 1);
+			local brother1 = ::Math.rand(0, brothers.len() - 1);
+			local brother2 = ::Math.rand(0, brothers.len() - 1);
 
 			if (brothers.len() >= 2)
 			{
 				while (brother1 == brother2)
 				{
-					brother2 = this.Math.rand(0, brothers.len() - 1);
+					brother2 = ::Math.rand(0, brothers.len() - 1);
 				}
 			}
 
@@ -437,7 +437,7 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 
 			do
 			{
-				randomTown = villages[this.Math.rand(0, villages.len() - 1)].getNameOnly();
+				randomTown = villages[::Math.rand(0, villages.len() - 1)].getNameOnly();
 			}
 			while (randomTown == null || randomTown == this.m.Home.getNameOnly());
 
@@ -461,11 +461,11 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 				],
 				[
 					"randomname",
-					this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]
+					::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]
 				],
 				[
 					"randomnoble",
-					this.Const.Strings.KnightNames[this.Math.rand(0, this.Const.Strings.KnightNames.len() - 1)]
+					::Const.Strings.KnightNames[::Math.rand(0, ::Const.Strings.KnightNames.len() - 1)]
 				],
 				[
 					"randombrother",
@@ -526,11 +526,11 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 		o.getUICategoryIcon <- function ()
 		{
 			local c = this.getCategory();
-			return c == "" ? "" : this.Const.Contracts.ContractCategoryIconMap[c];
+			return c == "" ? "" : ::Const.Contracts.ContractCategoryIconMap[c];
 		};
 		o.getCategory <- function ()
 		{
-			if (this.getFaction() > 0 && this.World.FactionManager.getFaction(this.getFaction()).getType() == this.Const.FactionType.Settlement && (this.m.Category == "" || this.m.Category == null))
+			if (this.getFaction() > 0 && this.World.FactionManager.getFaction(this.getFaction()).getType() == ::Const.FactionType.Settlement && (this.m.Category == "" || this.m.Category == null))
 			{
 				::Legends.Mod.Debug.printWarning("Contract Overhaul: Missing Category for settlement contract: " + this.getName(), ::Const.LegendMod.Debug.Flags.ContractCategories);
 			}
@@ -542,6 +542,6 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 			this.m.Category = _c;
 		};
 	});
-	delete this.Const.LegendMod.hookContract;
+	delete ::Const.LegendMod.hookContract;
 };
 

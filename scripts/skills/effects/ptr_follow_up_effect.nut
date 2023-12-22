@@ -48,7 +48,7 @@ this.ptr_follow_up_effect <- this.inherit("scripts/skills/skill", {
 
 	function getCurrentMalus()
 	{
-		return this.Math.min(90, this.m.DamageMalus + (this.m.ProcCount * this.m.DamageMalusIncreasePerProc));
+		return ::Math.min(90, this.m.DamageMalus + (this.m.ProcCount * this.m.DamageMalusIncreasePerProc));
 	}
 
 	function canFollowUp()

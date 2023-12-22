@@ -22,7 +22,7 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -50,11 +50,11 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 10)
 				{
-					if (this.Const.DLC.Lindwurm && this.Contract.getDifficultyMult() >= 1.15 && this.World.getTime().Days >= 30)
+					if (::Const.DLC.Lindwurm && this.Contract.getDifficultyMult() >= 1.15 && this.World.getTime().Days >= 30)
 					{
 						this.Flags.set("IsLindwurm", true);
 					}
@@ -67,9 +67,9 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 				this.Flags.set("StartTime", this.Time.getVirtualTimeF());
 				local disallowedTerrain = [];
 
-				for( local i = 0; i < this.Const.World.TerrainType.COUNT; i = i )
+				for( local i = 0; i < ::Const.World.TerrainType.COUNT; i = i )
 				{
-					if (i == this.Const.World.TerrainType.Oasis)
+					if (i == ::Const.World.TerrainType.Oasis)
 					{
 					}
 					else
@@ -84,15 +84,15 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 				local mapSize = this.World.getMapSize();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 5, 14, disallowedTerrain);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Serpents", false, this.Const.World.Spawn.Serpents, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Serpents", false, ::Const.World.Spawn.Serpents, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.setDescription("Giant serpents slithering about.");
-				party.setFootprintType(this.Const.World.FootprintsType.Serpents);
+				party.setFootprintType(::Const.World.FootprintsType.Serpents);
 				party.setAttackableByAI(false);
 				this.Contract.m.Target = this.WeakTableRef(party);
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				local c = party.getController();
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 				local wait = this.new("scripts/ai/world/orders/wait_order");
 				wait.setTime(999999);
 				c.addOrder(wait);
@@ -133,7 +133,7 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 					this.World.Contracts.showActiveContract();
 					this.Contract.setState("Return");
 				}
-				else if (!this.Flags.get("IsBanterShown") && this.Contract.m.Target.isHiddenToPlayer() && this.Contract.isPlayerNear(this.Contract.m.Target, 700) && this.Math.rand(1, 100) <= 1 && this.Flags.get("StartTime") + 10.0 <= this.Time.getVirtualTimeF())
+				else if (!this.Flags.get("IsBanterShown") && this.Contract.m.Target.isHiddenToPlayer() && this.Contract.isPlayerNear(this.Contract.m.Target, 700) && ::Math.rand(1, 100) <= 1 && this.Flags.get("StartTime") + 10.0 <= this.Time.getVirtualTimeF())
 				{
 					this.Flags.set("IsBanterShown", true);
 					this.Contract.setScreen("Banter");
@@ -154,14 +154,14 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 					else
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-						properties.Music = this.Const.Music.BeastsTracks;
+						properties.Music = ::Const.Music.BeastsTracks;
 						properties.EnemyBanners.push(this.Contract.m.Target.getBanner());
 						properties.Entities.push({
-							ID = this.Const.EntityType.Lindwurm,
+							ID = ::Const.EntityType.Lindwurm,
 							Variant = 0,
 							Row = -1,
 							Script = "scripts/entity/tactical/enemies/lindwurm",
-							Faction = this.Const.Faction.Enemy
+							Faction = ::Const.Faction.Enemy
 						});
 						this.World.Contracts.startScriptedCombat(properties, true, true, true);
 					}
@@ -179,10 +179,10 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 						local f = this.Contract.m.Home.getFaction();
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "HuntingSerpentsCaravan";
-						properties.Music = this.Const.Music.BeastsTracks;
+						properties.Music = ::Const.Music.BeastsTracks;
 						properties.EnemyBanners.push(this.Contract.m.Target.getBanner());
 						properties.Entities.push({
-							ID = this.Const.EntityType.CaravanDonkey,
+							ID = ::Const.EntityType.CaravanDonkey,
 							Variant = 0,
 							Row = 3,
 							Script = "scripts/entity/tactical/objective/donkey",
@@ -192,7 +192,7 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 						for( local i = 0; i < 2; i = i )
 						{
 							properties.Entities.push({
-								ID = this.Const.EntityType.CaravanHand,
+								ID = ::Const.EntityType.CaravanHand,
 								Variant = 0,
 								Row = 3,
 								Script = "scripts/entity/tactical/humans/conscript",
@@ -212,7 +212,7 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 
 			function onActorKilled( _actor, _killer, _combatID )
 			{
-				if (_actor.getType() == this.Const.EntityType.CaravanDonkey && _combatID == "HuntingSerpentsCaravan")
+				if (_actor.getType() == ::Const.EntityType.CaravanDonkey && _combatID == "HuntingSerpentsCaravan")
 				{
 					this.Flags.set("IsCaravan", false);
 				}
@@ -243,8 +243,8 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -373,12 +373,12 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
-				local e = this.Math.rand(1, 2);
+				local e = ::Math.rand(1, 2);
 
 				for( local i = 0; i < e; i = i )
 				{
 					local item;
-					local r = this.Math.rand(1, 3);
+					local r = ::Math.rand(1, 3);
 
 					switch(r)
 					{
@@ -419,9 +419,9 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Hunted down some giant serpents");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Hunted down some giant serpents");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -433,7 +433,7 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -445,13 +445,13 @@ this.hunting_serpents_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		_vars.push([
 			"direction",
-			this.m.Target == null || this.m.Target.isNull() ? "" : this.Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Target.getTile())]
+			this.m.Target == null || this.m.Target.isNull() ? "" : ::Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Target.getTile())]
 		]);
 	}
 
 	function onHomeSet()
 	{
-		if (this.m.SituationID == 0 && this.Math.rand(1, 100) <= 50)
+		if (this.m.SituationID == 0 && ::Math.rand(1, 100) <= 50)
 		{
 			this.m.SituationID = this.m.Home.addSituation(this.new("scripts/entity/world/settlements/situations/moving_sands_situation"));
 		}

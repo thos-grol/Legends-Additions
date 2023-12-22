@@ -101,7 +101,7 @@ this.perk_trial_by_fire <- this.inherit("scripts/skills/skill", {
             if (!bro.isPlacedOnMap() || bro.getLevel() > 5)
                 continue;
 
-			bro.m.XP = this.Const.LevelXP[bro.m.Level];
+			bro.m.XP = ::Const.LevelXP[bro.m.Level];
 			bro.updateLevel();
 
         }

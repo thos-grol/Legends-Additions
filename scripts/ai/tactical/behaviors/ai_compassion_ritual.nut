@@ -227,7 +227,7 @@ this.ai_compassion_ritual <- this.inherit("scripts/ai/tactical/behavior", {
 
 			if (targetTile.getZoneOfControlCount(_entity.getFaction()) < ::Const.AI.Behavior.RangedEngageIgnoreDangerMinZones)
 			{
-				score = score * (1.0 + (1.0 - this.Math.minf(1.0, this.queryActorTurnsNearTarget(target.Actor, myTile, _entity).Turns)) * ::Const.AI.Behavior.AttackDangerMult);
+				score = score * (1.0 + (1.0 - ::Math.minf(1.0, this.queryActorTurnsNearTarget(target.Actor, myTile, _entity).Turns)) * ::Const.AI.Behavior.AttackDangerMult);
 			}
 
 			if (score > bestScore && (this.getProperties().TargetPriorityHittingAlliesMult >= 1.0 || alliesAdjacent <= ::Const.AI.Behavior.AttackRangedMaxAlliesAdjacent))
@@ -249,13 +249,13 @@ this.ai_compassion_ritual <- this.inherit("scripts/ai/tactical/behavior", {
 			{
 				if (bestSkills[i].Score > highestScore)
 				{
-					highestScore = this.Math.floor(this.Math.pow(bestSkills[i].Score * 100, ::Const.AI.Behavior.AttackRangedChancePOW));
+					highestScore = ::Math.floor(::Math.pow(bestSkills[i].Score * 100, ::Const.AI.Behavior.AttackRangedChancePOW));
 				}
 			}
 
 			for( local i = 0; i < bestSkills.len(); i = ++i )
 			{
-				local score = this.Math.floor(this.Math.pow(bestSkills[i].Score * 100, ::Const.AI.Behavior.AttackRangedChancePOW));
+				local score = ::Math.floor(::Math.pow(bestSkills[i].Score * 100, ::Const.AI.Behavior.AttackRangedChancePOW));
 
 				if (score < highestScore * ::Const.AI.Behavior.AttackRangedScoreCutoff)
 				{
@@ -268,11 +268,11 @@ this.ai_compassion_ritual <- this.inherit("scripts/ai/tactical/behavior", {
 
 			if (chance != 0)
 			{
-				local pick = this.Math.rand(1, chance);
+				local pick = ::Math.rand(1, chance);
 
 				for( local i = 0; i < bestSkills.len(); i = ++i )
 				{
-					local score = this.Math.floor(this.Math.pow(bestSkills[i].Score * 100, ::Const.AI.Behavior.AttackRangedChancePOW));
+					local score = ::Math.floor(::Math.pow(bestSkills[i].Score * 100, ::Const.AI.Behavior.AttackRangedChancePOW));
 
 					if (score < highestScore * ::Const.AI.Behavior.AttackRangedScoreCutoff)
 					{
@@ -282,7 +282,7 @@ this.ai_compassion_ritual <- this.inherit("scripts/ai/tactical/behavior", {
 						if (pick <= score)
 						{
 							this.m.SelectedSkill = bestSkills[i].Skill;
-							return this.Math.maxf(0.1, bestSkills[i].Score + this.Math.maxf(0.0, bestScore));
+							return ::Math.maxf(0.1, bestSkills[i].Score + ::Math.maxf(0.0, bestScore));
 						}
 
 						pick = pick - score;

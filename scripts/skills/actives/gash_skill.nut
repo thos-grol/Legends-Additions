@@ -95,7 +95,7 @@ this.gash_skill <- this.inherit("scripts/skills/skill", {
 			_hitInfo.InjuryThresholdMult *= 0.66;
 			if (_targetEntity.isAlive() && !_targetEntity.getCurrentProperties().IsImmuneToBleeding)
 			{
-				this.Sound.play(this.m.SoundsA[this.Math.rand(0, this.m.SoundsA.len() - 1)], ::Const.Sound.Volume.Skill, this.getContainer().getActor().getPos());
+				this.Sound.play(this.m.SoundsA[::Math.rand(0, this.m.SoundsA.len() - 1)], ::Const.Sound.Volume.Skill, this.getContainer().getActor().getPos());
 			}
 		}
 	}

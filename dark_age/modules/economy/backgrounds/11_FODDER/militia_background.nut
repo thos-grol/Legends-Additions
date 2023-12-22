@@ -37,9 +37,9 @@
 			"weapons/warfork"
 		];
 
-		items.equip(::new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+		items.equip(::new("scripts/items/" + weapons[::Math.rand(0, weapons.len() - 1)]));
 
-		if (items.getItemAtSlot(::Const.ItemSlot.Offhand) == null && this.Math.rand(1, 100) <= 50)
+		if (items.getItemAtSlot(::Const.ItemSlot.Offhand) == null && ::Math.rand(1, 100) <= 50)
 		{
 			items.equip(::new("scripts/items/shields/buckler_shield"));
 		}

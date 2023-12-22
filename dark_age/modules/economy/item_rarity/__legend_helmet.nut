@@ -50,7 +50,7 @@
 		if (_upgrade != null && this.m.Blocked[_upgrade.getType()]) return false;
 
 		local slot = _upgrade.getType();
-		if (slot == this.Const.Items.HelmetUpgrades.Vanity && this.m.Upgrades[this.Const.Items.HelmetUpgrades.Vanity] != null) slot = this.Const.Items.HelmetUpgrades.ExtraVanity;
+		if (slot == ::Const.Items.HelmetUpgrades.Vanity && this.m.Upgrades[::Const.Items.HelmetUpgrades.Vanity] != null) slot = ::Const.Items.HelmetUpgrades.ExtraVanity;
 
 		local oldIndex;
 		if (("Assets" in this.World) && this.World.Assets.getStash()) oldIndex = this.World.Assets.getStash().getItemByInstanceID(_upgrade.getInstanceID());
@@ -68,7 +68,7 @@
 
 		if (this.m.Container != null)
 		{
-			if (slot != this.Const.Items.HelmetUpgrades.ExtraVanity) _upgrade.onEquip();
+			if (slot != ::Const.Items.HelmetUpgrades.ExtraVanity) _upgrade.onEquip();
 			this.getContainer().getActor().getSkills().update();
 		}
 
@@ -186,9 +186,9 @@
 			id = 4,
 			type = "progressbar",
 			icon = "ui/icons/armor_head.png",
-			value = this.Math.floor(this.getArmor()),
-			valueMax = this.Math.floor(this.getArmorMax()),
-			text = "" + this.Math.floor(this.getArmor()) + " / " + this.Math.floor(this.getArmorMax()) + "",
+			value = ::Math.floor(this.getArmor()),
+			valueMax = ::Math.floor(this.getArmorMax()),
+			text = "" + ::Math.floor(this.getArmor()) + " / " + ::Math.floor(this.getArmorMax()) + "",
 			style = "armor-head-slim"
 		});
 
@@ -198,7 +198,7 @@
 				id = 5,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "Weight: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getStaminaModifier()) + this.Math.abs(this.getStaminaModifier()), this.getStaminaModifier())
+				text = "Weight: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getStaminaModifier()) + ::Math.abs(this.getStaminaModifier()), this.getStaminaModifier())
 			});
 		}
 
@@ -208,7 +208,7 @@
 				id = 5,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = this.format("(%.1f Armor per 1 Weight)", this.getArmorMax() / (1.0 * this.Math.abs(this.getStaminaModifier())))
+				text = this.format("(%.1f Armor per 1 Weight)", this.getArmorMax() / (1.0 * ::Math.abs(this.getStaminaModifier())))
 			});
 		}
 
@@ -218,7 +218,7 @@
 				id = 6,
 				type = "text",
 				icon = "ui/icons/vision.png",
-				text = "Combined Vision: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getVision()) + this.Math.abs(this.getVision()), this.getVision())
+				text = "Combined Vision: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.getVision()) + ::Math.abs(this.getVision()), this.getVision())
 			});
 		}
 
@@ -254,7 +254,7 @@
 					id = 10,
 					type = "text",
 					icon = "ui/icons/fatigue.png",
-					text = "Weight: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.m.StaminaModifier) + this.Math.abs(this.m.StaminaModifier), this.m.StaminaModifier)
+					text = "Weight: " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.m.StaminaModifier) + ::Math.abs(this.m.StaminaModifier), this.m.StaminaModifier)
 				});
 			}
 
@@ -264,7 +264,7 @@
 					id = 10,
 					type = "text",
 					icon = "ui/icons/vision.png",
-					text = "Vision " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.m.Vision) + this.Math.abs(this.m.Vision), this.m.Vision)
+					text = "Vision " + ::Legends.S.colorize("" + ::Legends.S.getSign(this.m.Vision) + ::Math.abs(this.m.Vision), this.m.Vision)
 				});
 			}
 		}
@@ -338,7 +338,7 @@
 	o.onDeserialize = function( _in )
 	{
 		this.helmet.onDeserialize(_in);
-		this.m.Condition = this.Math.minf(this.m.ConditionMax, _in.readF32());
+		this.m.Condition = ::Math.minf(this.m.ConditionMax, _in.readF32());
 
         //rarity system
         this.m.rolled = _in.readBool();
@@ -350,7 +350,7 @@
         //upgrades
         local count = _in.readU8();
 		this.m.Upgrades = [];
-		for( local i = 0; i < this.Const.Items.HelmetUpgrades.COUNT; i = i )
+		for( local i = 0; i < ::Const.Items.HelmetUpgrades.COUNT; i = i )
 		{
 			this.m.Upgrades.push(null);
 			i = ++i;

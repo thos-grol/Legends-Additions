@@ -23,9 +23,9 @@
         ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTRRisingStar, 1);
         
 
-        this.Sound.play("sounds/enemies/lindwurm_death_0" + this.Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/lindwurm_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/lindwurm_hurt_0" + this.Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/lindwurm_death_0" + ::Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/lindwurm_flee_0" + ::Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/lindwurm_hurt_0" + ::Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
 
         return this.anatomist_potion_item.onUse(_actor, _item);
     }

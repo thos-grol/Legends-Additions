@@ -42,7 +42,7 @@ this.perk_mastery_bow <- this.inherit("scripts/skills/skill", {
 	
 	function restoreAmmo()
 	{
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Ammo);
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Ammo);
 		if (item == null) return;
 		if (!this.getContainer().getActor().isPlayerControlled()) return;
 		local amount = ::Math.rand(1,3);

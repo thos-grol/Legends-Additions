@@ -50,7 +50,7 @@ this.legend_demon_hound_bite <- this.inherit("scripts/skills/skill", {
 		{
 			if (this.m.SoundOnUse.len() != 0)
 			{
-				this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.5, _targetEntity.getPos());
+				this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.5, _targetEntity.getPos());
 			}
 
 			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_targetEntity) + " sprit is being drained");

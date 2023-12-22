@@ -11,7 +11,7 @@
 		if (!("State" in this.World)) return 0;
 
 		local wageMult = this.m.CurrentProperties.DailyWageMult * (this.World.State != null ? this.World.Assets.m.DailyWageMult : 1.0) - (this.World.State != null ? this.World.State.getPlayer().getWageModifier() : 0.0);
-		local wage = this.Math.max(0, this.m.CurrentProperties.DailyWage * wageMult) + 2; //2 is Food cost
+		local wage = ::Math.max(0, this.m.CurrentProperties.DailyWage * wageMult) + 2; //2 is Food cost
 		if (this.getSkills().getSkillByID("trait.gluttonous") != null) wage += 2;
 
 		return wage;
@@ -31,7 +31,7 @@
 
 		foreach(i in items)
 		{
-			local item_cost = this.Math.ceil(i.getValue() * 0.75);
+			local item_cost = ::Math.ceil(i.getValue() * 0.75);
 			if (i.m.ID in ::Z.Economy.NoSell) item_cost = 0;
 			actor.m.HiringCost += item_cost;
 		}
@@ -40,7 +40,7 @@
 	o.onUpdate = function( _properties )
 	{
 		local actor = this.getContainer().getActor();
-		if (this.isBackgroundType(this.Const.BackgroundType.ConvertedCultist)) this.m.DailyCost = 4;
+		if (this.isBackgroundType(::Const.BackgroundType.ConvertedCultist)) this.m.DailyCost = 4;
 		if (this.getID() == "background.legend_vala") this.m.DailyCost = 16;
 		if (this.getID() == "background.slave") this.m.DailyCost = 0;
 		if (this.getContainer().hasSkill("trait.player")) this.m.DailyCost = 0;
@@ -57,7 +57,7 @@
 		if (actor.getHitpointsPct() <= 0.75 || armorPct < 0.75 || actor.getSkills().query(::Const.SkillType.TemporaryInjury, false, true).len() > 0) injuryMult = 0.25;
 
 
-		_properties.DailyWage += this.Math.round(this.m.DailyCost * this.m.DailyCostMult * injuryMult);
+		_properties.DailyWage += ::Math.round(this.m.DailyCost * this.m.DailyCostMult * injuryMult);
 	}
 
 	// //Wage hike upon reaching level 11
@@ -70,7 +70,7 @@
 	// 	{
 	// 		if (this.getContainer().getActor().getLevel() >= 11 && this.m.DailyCost < 12) this.m.DailyCost = 12;
 	// 		if (this.isBackgroundType(::Const.BackgroundType.ConvertedCultist)) this.m.DailyCost = 4;
-	// 		_properties.DailyWage += this.Math.round(this.m.DailyCost * this.m.DailyCostMult);
+	// 		_properties.DailyWage += ::Math.round(this.m.DailyCost * this.m.DailyCostMult);
 	// 	}
 	// }
 });
@@ -124,19 +124,19 @@
 			try {
 				if (this.m.Rarity == "Uncommon") mult *= 0.5;
 			} catch(exception){}
-			mult = this.Math.minf(this.Math.maxf(mult, 0.5), 1.25); //sell price can't be lower than 50% or higher than 125%
+			mult = ::Math.minf(::Math.maxf(mult, 0.5), 1.25); //sell price can't be lower than 50% or higher than 125%
 
 			// ::logInfo(this.m.ID);
 			// ::logInfo("item.getSellPriceMult() = " + this.getSellPriceMult());
 			// ::logInfo("::Const.World.Assets.BaseSellPrice = " + ::Const.World.Assets.BaseSellPrice);
 			// ::logInfo("settlement.getSellPriceMult() = " + this.World.State.getCurrentTown().getSellPriceMult());
 			// ::logInfo("mult = " + mult_old);
-			// ::logInfo("after this.Math.min(this.Math.max(mult, 0.5), 1.25) = " + mult);
+			// ::logInfo("after ::Math.min(::Math.max(mult, 0.5), 1.25) = " + mult);
 
-			return this.Math.floor(this.getValue() * mult);
+			return ::Math.floor(this.getValue() * mult);
 		}
 
-		return this.Math.floor(this.getValue() * ::Const.World.Assets.BaseSellPrice);
+		return ::Math.floor(this.getValue() * ::Const.World.Assets.BaseSellPrice);
 	};
 
 	o.getBuyPrice <- function ()
@@ -164,19 +164,19 @@
 		{
 			local mult = this.getBuyPriceMult() * this.getPriceMult() * this.World.State.getCurrentTown().getBuyPriceMult();
 			local mult_old = mult;
-			mult = this.Math.maxf(0.75, mult);
+			mult = ::Math.maxf(0.75, mult);
 
 			// ::logInfo(this.m.ID);
 			// ::logInfo("item.getBuyPriceMult() = " + this.getBuyPriceMult());
 			// ::logInfo("item.getPriceMult() = " + this.getPriceMult());
 			// ::logInfo("settlement.getBuyPriceMult() = " + this.World.State.getCurrentTown().getBuyPriceMult());
 			// ::logInfo("mult = " + mult_old);
-			// ::logInfo("after this.Math.max(0.75, mult) = " + mult);
+			// ::logInfo("after ::Math.max(0.75, mult) = " + mult);
 
-			return this.Math.ceil(this.getValue() *  mult); //buy price can't be lower than 75%
+			return ::Math.ceil(this.getValue() *  mult); //buy price can't be lower than 75%
 		}
 
-		return this.Math.ceil(this.getValue() * this.getPriceMult());
+		return ::Math.ceil(this.getValue() * this.getPriceMult());
 	};
 });
 
@@ -236,8 +236,8 @@
 			return;
 		}
 
-		if (this.m.ShopSeed != 0) this.Math.seedRandom(this.m.ShopSeed);
-		this.m.ShopSeed = this.Math.floor(this.Time.getRealTime() + this.Math.rand());
+		if (this.m.ShopSeed != 0) ::Math.seedRandom(this.m.ShopSeed);
+		this.m.ShopSeed = ::Math.floor(this.Time.getRealTime() + ::Math.rand());
 		this.m.LastShopUpdate = this.Time.getVirtualTimeF();
 
 		foreach( building in this.m.Buildings )
@@ -292,7 +292,7 @@
 		PreferMax = 5,
 		function IsValid( _item, _shopID )
 		{
-			return _item.isItemType(this.Const.Items.ItemType.TradeGood);
+			return _item.isItemType(::Const.Items.ItemType.TradeGood);
 		}
 
 	},
@@ -303,7 +303,7 @@
 		PreferMax = 20,
 		function IsValid( _item, _shopID )
 		{
-			return _item.isItemType(this.Const.Items.ItemType.Food);
+			return _item.isItemType(::Const.Items.ItemType.Food);
 		}
 
 	},
@@ -314,7 +314,7 @@
 		PreferMax = 10,
 		function IsValid( _item, _shopID )
 		{
-			return _item.isItemType(this.Const.Items.ItemType.Supply);
+			return _item.isItemType(::Const.Items.ItemType.Supply);
 		}
 
 	},
@@ -330,7 +330,7 @@
 				return false;
 			}
 
-			return _item.isItemType(this.Const.Items.ItemType.Ammo) || _item.isItemType(this.Const.Items.ItemType.Weapon);
+			return _item.isItemType(::Const.Items.ItemType.Ammo) || _item.isItemType(::Const.Items.ItemType.Weapon);
 		}
 
 	},
@@ -346,7 +346,7 @@
 				return false;
 			}
 
-			return _item.isItemType(this.Const.Items.ItemType.Armor) || _item.isItemType(this.Const.Items.ItemType.Helmet) || _item.isItemType(this.Const.Items.ItemType.Shield);
+			return _item.isItemType(::Const.Items.ItemType.Armor) || _item.isItemType(::Const.Items.ItemType.Helmet) || _item.isItemType(::Const.Items.ItemType.Shield);
 		}
 
 	},

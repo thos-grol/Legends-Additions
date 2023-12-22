@@ -3,7 +3,7 @@ this.necromancer_agent <- this.inherit("scripts/ai/tactical/agent", {
 	function create()
 	{
 		this.agent.create();
-		this.m.ID = this.Const.AI.Agent.ID.Necromancer;
+		this.m.ID = ::Const.AI.Agent.ID.Necromancer;
 		this.m.Properties.OverallMagnetismMult = 3.0;
 	}
 
@@ -59,11 +59,11 @@ this.necromancer_agent <- this.inherit("scripts/ai/tactical/agent", {
 
 		if (nearest >= 10)
 		{
-			this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageRanged] = 1.0;
+			this.m.Properties.BehaviorMult[::Const.AI.Behavior.ID.EngageRanged] = 1.0;
 		}
 		else
 		{
-			this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageRanged] = 0.0;
+			this.m.Properties.BehaviorMult[::Const.AI.Behavior.ID.EngageRanged] = 0.0;
 		}
 	}
 
