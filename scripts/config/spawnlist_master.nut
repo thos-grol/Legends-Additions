@@ -1721,16 +1721,25 @@ gt.Const.World.Spawn.Caravan <- {
 	],
 	Troops = [
 		{
-			Weight = 35,
+			Weight = 90,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.CaravanHand,
-					Cost = 10
-				},
+					Type = this.Const.World.Spawn.Troops.CaravanGuard,
+					Cost = 15
+				}
 			]
 		},
 		{
 			Weight = 15,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.CaravanHand,
+					Cost = 12
+				}
+			]
+		},
+		{
+			Weight = 30,
 			Types = [
 				{
 					Type = this.Const.World.Spawn.Troops.LegendCaravanPolearm,
@@ -1738,15 +1747,6 @@ gt.Const.World.Spawn.Caravan <- {
 				}
 			]
 		},
-		{
-			Weight = 50,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.CaravanGuard,
-					Cost = 12
-				}
-			]
-		}
 	]
 };
 

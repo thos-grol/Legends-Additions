@@ -25,7 +25,7 @@ this.asset_manager <- {
 		TrainingPriceMult = 1.0,
 		TryoutPriceMult = 1.0,
 		ContractPaymentMult = 1.0,
-		ArmorPartsPerArmor = 0.033,
+		ArmorPartsPerArmor = 0.015,
 		HitpointsPerHourMult = 1.0,
 		RepairSpeedMult = 1.0,
 		HiringCostMult = 1.0,

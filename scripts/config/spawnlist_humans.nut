@@ -272,6 +272,7 @@ gt.Const.World.Spawn.PeasantsSouthern <- {
 	]
 };
 
+//new
 
 gt.Const.World.Spawn.CultistPatrol <- {
 	Name = "Cultist Patrol",
@@ -414,5 +415,115 @@ gt.Const.World.Spawn.CultistDefenderss <- {
 				}
 			]
 		}
+	]
+};
+
+//new
+
+gt.Const.World.Spawn.CaravanSouthernMedium <- {
+	Name = "CaravanSouthernMedium",
+	IsDynamic = true,
+	MovementSpeedMult = 1.0,
+	VisibilityMult = 1.0,
+	VisionMult = 1.0,
+	Body = "cart_03",
+	MinR = 45,
+	MaxR = 600,
+	Fixed = [
+		{
+			MinCount = 1,
+			MaxCount = 3,
+			Weight = 30,
+			Type = this.Const.World.Spawn.Troops.SouthernDonkey,
+			Cost = 0
+		}
+	],
+	Troops = [
+		{
+			Weight = 62,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Conscript,
+					Cost = 20
+				}
+			]
+		},
+		{
+			Weight = 1,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Mercenary,
+					Cost = 30
+				}
+			]
+		},
+		{
+			Weight = 1,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.MasterArcher,
+					Cost = 40
+				}
+			]
+		},
+		{
+			Weight = 1,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Officer,
+					Cost = 35
+				}
+			]
+		},
+	]
+};
+
+
+gt.Const.World.Spawn.CaravanMedium <- {
+	Name = "CaravanMedium",
+	IsDynamic = true,
+	MovementSpeedMult = 1.0,
+	VisibilityMult = 1.0,
+	VisionMult = 1.0,
+	Body = "cart_02",
+	MinR = 45,
+	MaxR = 600,
+	Fixed = [
+		{
+			MinCount = 1,
+			MaxCount = 3,
+			Weight = 30,
+			Type = this.Const.World.Spawn.Troops.CaravanDonkey,
+			Cost = 0
+		}
+	],
+	Troops = [
+		{
+			Weight = 62,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.Mercenary,
+					Cost = 20
+				}
+			]
+		},
+		{
+			Weight = 1,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.MasterArcher,
+					Cost = 30
+				}
+			]
+		},
+		{
+			Weight = 1,
+			Types = [
+				{
+					Type = this.Const.World.Spawn.Troops.HedgeKnight,
+					Cost = 35
+				}
+			]
+		},
 	]
 };

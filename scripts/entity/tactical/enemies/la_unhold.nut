@@ -298,6 +298,7 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 
 		//unholds are born with the large perk tree
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_colossus"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_adrenalin"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_sundering_strikes"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_death_dealer"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_class_continuance_knight"));
@@ -310,6 +311,8 @@ this.la_unhold <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_battering_ram"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_stalwart"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_indomitable"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_survival_instinct"));
 
 		this.m.Skills.add(this.new("scripts/skills/actives/sweep_skill"));
 		this.m.Skills.add(this.new("scripts/skills/actives/sweep_zoc_skill"));

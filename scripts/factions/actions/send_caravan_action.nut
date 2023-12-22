@@ -131,18 +131,19 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 	{
 		if (_faction.hasTrait(this.Const.FactionTrait.OrientalCityState))
 		{
+			::logInfo("Caravan southern medium");
 			if (_modifier >= 150) return this.Const.World.Spawn.CaravanSouthernMedium;
 			if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.CaravanSouthernMedium;
+			::logInfo("Caravan southern normal");
 			return this.Const.World.Spawn.CaravanSouthern;
 		}
-		else
-		{
-			if (_modifier >= 150) return this.Const.World.Spawn.CaravanSouthernMedium;
-			if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.CaravanMedium;
-			return this.Const.World.Spawn.Caravan;
-		}
 
+		::logInfo("Caravan medium");
+		if (_modifier >= 150) return this.Const.World.Spawn.CaravanMedium;
+		if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.CaravanMedium;
+		::logInfo("Caravan normal");
 		return this.Const.World.Spawn.Caravan;
+
 	}
 
 	function addLoot( _party )

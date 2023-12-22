@@ -29,10 +29,10 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropMoney(this.Math.rand(250, 400), _lootTable);
-		this.dropArmorParts(this.Math.rand(25, 50), _lootTable);
-		this.dropAmmo(this.Math.rand(0, 50), _lootTable);
-		this.dropMedicine(this.Math.rand(5, 15), _lootTable);
+		this.dropMoney(this.Math.rand(0, 400), _lootTable);
+		this.dropArmorParts(this.Math.rand(0, 25), _lootTable);
+		this.dropAmmo(this.Math.rand(0, 25), _lootTable);
+		this.dropMedicine(this.Math.rand(0, 10), _lootTable);
 		local treasure = [
 			"trade/furs_item",
 			"trade/furs_item",

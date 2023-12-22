@@ -38,3 +38,5 @@
 ::mods_hookExactClass("scenarios/world/legends_free_company_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_nomad_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_berserker_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/rangers_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/militia_scenario", function(o) { o.isValid <- function(){ return false; }});

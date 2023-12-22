@@ -31,9 +31,9 @@
 	{
 		this.location.onDropLootForPlayer(_lootTable);
 		this.dropMoney(this.Math.rand(50, 125), _lootTable);
-		this.dropArmorParts(this.Math.rand(15, 30), _lootTable);
+		this.dropArmorParts(this.Math.rand(0, 5), _lootTable);
 		this.dropAmmo(this.Math.rand(0, 30), _lootTable);
-		this.dropMedicine(this.Math.rand(0, 5), _lootTable);
+		this.dropMedicine(this.Math.rand(0, 3), _lootTable);
 		local treasure = [
 			"loot/bead_necklace_item",
 			"loot/bead_necklace_item",

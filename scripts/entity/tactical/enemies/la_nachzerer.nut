@@ -67,6 +67,8 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		//base skills
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_indomitable"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_survival_instinct"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_berserk"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_crippling_strikes"));

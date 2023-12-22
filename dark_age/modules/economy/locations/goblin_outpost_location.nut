@@ -26,7 +26,7 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropArmorParts(this.Math.rand(5, 15), _lootTable);
+		this.dropArmorParts(this.Math.rand(0, 15), _lootTable);
 		this.dropAmmo(this.Math.rand(30, 60), _lootTable);
 		this.dropMedicine(this.Math.rand(0, 5), _lootTable);
 		local treasure = [

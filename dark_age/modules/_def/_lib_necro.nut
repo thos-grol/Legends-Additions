@@ -22,8 +22,6 @@
     corpse.Skills <- [];
     corpse.BaseProperties <- {};
 
-    local zombie = false;
-    try{ zombie = _info.IsZombie} catch(exception){}
     local isHeadAttached = true;
     try{ isHeadAttached = corpse.IsHeadAttached} catch(exception){}
 
@@ -50,7 +48,7 @@
     corpse.BaseProperties["RangedDefense"] <- _actor.m.BaseProperties.RangedDefense;
     corpse.BaseProperties["Armor"] <- _actor.m.BaseProperties.Armor;
 
-    if (zombie && isHeadAttached && corpse.IsResurrectable) return;
+    if (_actor.getFlags().has("zombie_minion") && isHeadAttached && corpse.IsResurrectable) return;
 
     if (!corpse.IsResurrectable)
     {
@@ -103,10 +101,7 @@
 	{
         this.setFaction(_info.Faction);
 
-        local zombie = false;
-        try{ zombie = _info.IsZombie} catch(exception){}
-
-        if (_info.IsResurrectable || zombie)
+        if (_info.IsResurrectable || this.getFlags().has("zombie_minion"))
 		{
             this.getItems().clear();
             _info.Items.transferTo(this.getItems());

@@ -2,10 +2,19 @@ CHANGELOG
 1.16
 bugs
 - trying to eliminate freezes
+- tried to fix zombies ressurecting naturally as abominations, that should only be possible with reanimation skill
+
+economy
+- increased the cost of some lower cost retinue
+- doubled the efficiency of armor parts
+- made armor, medicine, loot drops more scarce
 
 backgrounds
 - made assassins rarer, too common
 - made master archers rarer
+
+enemies
+- buffed nacho and unhold, they were a little weak
 
 1.15
 bugs

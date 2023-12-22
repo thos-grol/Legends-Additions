@@ -53,35 +53,6 @@ this.zombie_knight <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 		this.zombie.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 
-	function onResurrected( _info )
-	{
-		this.zombie.onResurrected(_info);
-
-		if (!_info.IsHeadAttached)
-		{
-			this.m.IsHeadless = true;
-			this.m.Name = "Headless " + this.Const.Strings.EntityName[this.m.Type];
-			this.m.Items.unequip(this.m.Items.getItemAtSlot(this.Const.ItemSlot.Head));
-			this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [];
-			this.m.Sound[this.Const.Sound.ActorEvent.Death] = [];
-			this.m.Sound[this.Const.Sound.ActorEvent.Resurrect] = [];
-			this.m.Sound[this.Const.Sound.ActorEvent.Idle] = [];
-			this.getSprite("head").setBrush("zombify_no_head");
-			this.getSprite("head").Saturation = 1.0;
-			this.getSprite("head").Color = this.createColor("#ffffff");
-			this.getSprite("injury").Visible = false;
-			this.getSprite("hair").resetBrush();
-			this.getSprite("beard").resetBrush();
-			this.getSprite("beard_top").resetBrush();
-			this.getSprite("status_rage").resetBrush();
-			this.getSprite("tattoo_head").resetBrush();
-			this.getSprite("helmet").Visible = false;
-			this.getSprite("helmet_damage").Visible = false;
-			this.getSprite("body_blood").Visible = false;
-			this.getSprite("dirt").Visible = false;
-		}
-	}
-
 	function pickOutfit()
 	{
 		local aList = [

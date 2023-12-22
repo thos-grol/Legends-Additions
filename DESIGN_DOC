@@ -1,3 +1,10 @@
+//possible causes of freezing
+- mercs
+- caravans
+- nomads
+
+
+
 //figure out persistent tile effects for entities? - see malovolent spirits vala skill
 
 //skeletons are a higher form of undead, after all the flesh has been rotted away,

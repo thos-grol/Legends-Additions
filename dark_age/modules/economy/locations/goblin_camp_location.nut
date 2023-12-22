@@ -26,9 +26,8 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropArmorParts(this.Math.rand(0, 10), _lootTable);
-		this.dropAmmo(this.Math.rand(0, 40), _lootTable);
-		this.dropMedicine(this.Math.rand(0, 2), _lootTable);
+		this.dropArmorParts(this.Math.rand(0, 5), _lootTable);
+		this.dropAmmo(this.Math.rand(0, 20), _lootTable);
 		this.dropTreasure(this.Math.rand(1, 2), [
 			"loot/goblin_minted_coins_item",
 			"loot/goblin_minted_coins_item",

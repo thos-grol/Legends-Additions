@@ -29,9 +29,9 @@
 	{
 		this.location.onDropLootForPlayer(_lootTable);
 		this.dropMoney(this.Math.rand(300, 700), _lootTable);
-		this.dropArmorParts(this.Math.rand(25, 50), _lootTable);
+		this.dropArmorParts(this.Math.rand(0, 25), _lootTable);
 		this.dropAmmo(this.Math.rand(0, 50), _lootTable);
-		this.dropMedicine(this.Math.rand(5, 15), _lootTable);
+		this.dropMedicine(this.Math.rand(0, 10), _lootTable);
 		local treasure = [
 			"loot/signet_ring_item",
 			"tools/fire_bomb_item"
