@@ -35,17 +35,17 @@
 			{
 				R = 0,
 				P = 1.0,
-				S = "supplies/medicine_item"
+				S = "supplies/medicine_small_item"
 			},
 			{
 				R = 0,
 				P = 1.0,
-				S = "supplies/medicine_item"
+				S = "supplies/medicine_small_item"
 			},
 			{
 				R = 50,
 				P = 1.0,
-				S = "supplies/medicine_item"
+				S = "supplies/medicine_small_item"
 			},
 			{
 				R = 0,
@@ -65,12 +65,12 @@
 			{
 				R = 0,
 				P = 1.0,
-				S = "supplies/armor_parts_item"
+				S = "supplies/armor_parts_small_item"
 			},
 			{
 				R = 0,
 				P = 1.0,
-				S = "supplies/armor_parts_item"
+				S = "supplies/armor_parts_small_item"
 			}
 		];
 

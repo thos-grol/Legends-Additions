@@ -34,7 +34,7 @@
 			_list.push({
 				R = 25,
 				P = 1.0,
-				S = "supplies/armor_parts_item"
+				S = "supplies/armor_parts_small_item"
 			});
 			break;
 		}

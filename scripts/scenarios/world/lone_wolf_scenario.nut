@@ -8,10 +8,9 @@ this.lone_wolf_scenario <- this.inherit("scripts/scenarios/world/starting_scenar
 		this.m.Difficulty = 4;
 		this.m.Order = 150;
 		this.m.IsFixedLook = true;
-		this.m.StartingRosterTier = ::Const.Roster.getTierForSize(1);
-		this.m.RosterTierMax = ::Const.Roster.getTierForSize(12);
-		this.m.StartingBusinessReputation = 1250;
-		this.setRosterReputationTiers(::Const.Roster.createReputationTiers(this.m.StartingBusinessReputation));
+		this.m.StartingRosterTier = ::Const.Roster.getTierForSize(27);
+		this.m.RosterTierMax = ::Const.Roster.getTierForSize(27);
+		this.m.StartingBusinessReputation = 1250;		
 	}
 
 	function isValid()

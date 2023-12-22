@@ -36,7 +36,7 @@
 			_list.push({
 				R = 20,
 				P = 0.9,
-				S = "supplies/medicine_item"
+				S = "supplies/medicine_small_item"
 			});
 
 			if (_id == "building.weaponsmith")

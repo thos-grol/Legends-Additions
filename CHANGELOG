@@ -5,7 +5,9 @@ bugs
 - tried to fix zombies ressurecting naturally as abominations, that should only be possible with reanimation skill
 
 economy
-- increased the cost of some lower cost retinue
+- removed reknown requirements on retinue, increased the cost of some lower cost retinue
+- removed reknown requirements on party size, food costs 2 -> 4. this should encourage hiring more bros instead of just cherry picking elites. if it is too broken, wages can be balanced to address this
+
 - doubled the efficiency of armor parts
 - made armor, medicine, loot drops more scarce
 
@@ -15,6 +17,10 @@ backgrounds
 
 enemies
 - buffed nacho and unhold, they were a little weak
+
+perks
+- command and rally the troops now cost 15 fat to encourage more usage
+- removed mark target from trial by fire
 
 1.15
 bugs

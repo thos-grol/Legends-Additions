@@ -35,6 +35,15 @@
     "weapon.militia_spear" : 0,
     "weapon.nomad_sling" : 0,
 
+    "legend_armor.body.legend_tunic" : 0,
+    "legend_armor.body.legend_tunic_wrap" : 0,
+    "legend_armor.body.legend_tunic_collar_thin" : 0,
+    "legend_armor.body.legend_tunic_collar_deep" : 0,
+    "legend_armor.body.legend_dark_tunic" : 0,
+    "legend_armor.body.legend_apron_butcher" : 0,
+    "legend_armor.body.legend_apron" : 0,
+    "legend_armor.body.legend_robes" : 0,
+
 
     "legend_armor.body.legend_gambeson" : 0,                           		//DUR: 65.00 | STA: -8.00
 	"legend_armor.body.legend_gambeson_plain" : 0,                     		//DUR: 65.00 | STA: -8.00

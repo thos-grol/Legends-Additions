@@ -79,18 +79,7 @@ this.retinue_manager <- {
 	{
 		local ret = [];
 		ret.resize(this.m.Slots.len());
-		local unlocked = 0;
-
-		for( local i = 0; i < this.m.Slots.len(); i = i )
-		{
-			if (this.World.Assets.getBusinessReputation() >= ::Const.BusinessReputation[::Const.FollowerSlotRequirements[i]])
-			{
-				unlocked = ++unlocked;
-				unlocked = unlocked;
-			}
-
-			i = ++i;
-		}
+		local unlocked = this.m.Slots.len();
 
 		foreach( i, p in this.m.Slots )
 		{

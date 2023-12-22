@@ -8,6 +8,9 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		this.m.Difficulty = 2;
 		this.m.Order = 180;
 		this.m.StartingBusinessReputation = -50;
+		this.m.IsFixedLook = true;
+		this.m.StartingRosterTier = ::Const.Roster.getTierForSize(27);
+		this.m.RosterTierMax = ::Const.Roster.getTierForSize(27);
 	}
 
 	function isValid()

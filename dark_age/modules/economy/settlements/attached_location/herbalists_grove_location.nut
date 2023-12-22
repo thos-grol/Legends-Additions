@@ -1,7 +1,7 @@
 ::mods_hookExactClass("entity/world/attached_location/herbalists_grove_location", function(o) {
 	o.onUpdateProduce = function( _list )
 	{
-		_list.push("supplies/medicine_item");
+		_list.push("supplies/medicine_small_item");
 		_list.push("supplies/medicine_small_item");
 	}
 
@@ -28,7 +28,7 @@
 				_list.push({
 					R = 0,
 					P = 1.0,
-					S = "supplies/medicine_item"
+					S = "supplies/medicine_small_item"
 				});
 				_list.push({
 					R = 0,
