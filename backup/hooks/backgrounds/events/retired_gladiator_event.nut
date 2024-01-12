@@ -213,7 +213,7 @@
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
 						bro.improveMood(0.5, "Had a good laugh at a retired gladiator");
 

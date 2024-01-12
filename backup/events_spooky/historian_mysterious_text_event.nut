@@ -18,7 +18,7 @@ this.historian_mysterious_text_event <- this.inherit("scripts/events/event", {
 					Text = "Just read it and tell me what it says already.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}
@@ -81,7 +81,7 @@ this.historian_mysterious_text_event <- this.inherit("scripts/events/event", {
 					Text = "Alright, go on ahead and read.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "D";
 						}
@@ -125,8 +125,8 @@ this.historian_mysterious_text_event <- this.inherit("scripts/events/event", {
 						properties.Entities = [];
 						properties.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Center;
 						properties.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Direwolves, this.Math.rand(40, 70), ::Const.Faction.Enemy);
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Ghouls, this.Math.rand(40, 70), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Direwolves, ::Math.rand(40, 70), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Ghouls, ::Math.rand(40, 70), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -162,7 +162,7 @@ this.historian_mysterious_text_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 75)
+					if (::Math.rand(1, 100) <= 75)
 					{
 						bro.improveMood(1.0, "Had a pleasurable supernatural experience");
 
@@ -224,7 +224,7 @@ this.historian_mysterious_text_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Historian = candidates_historian[this.Math.rand(0, candidates_historian.len() - 1)];
+		this.m.Historian = candidates_historian[::Math.rand(0, candidates_historian.len() - 1)];
 		this.m.Score = 5;
 	}
 

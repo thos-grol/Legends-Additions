@@ -2,14 +2,14 @@ this.noble_footman <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Footman;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Footman.XP;
+		this.m.Type = ::Const.EntityType.Footman;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.Footman.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.CommonMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.Tidy;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.CommonMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.Tidy;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/military_melee_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -18,7 +18,7 @@ this.noble_footman <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Footman);
+		b.setValues(::Const.Tactical.Actor.Footman);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -33,15 +33,15 @@ this.noble_footman <- this.inherit("scripts/entity/tactical/abstract_human", {
 		if (!this.Tactical.State.isScenarioMode()) banner = this.World.FactionManager.getFaction(this.getFaction()).getBanner();
 		else banner = this.getFaction();
 		this.m.Surcoat = banner;
-		if (this.Math.rand(1, 100) <= 90) this.getSprite("surcoat").setBrush("surcoat_" + (banner < 10 ? "0" + banner : banner));
+		if (::Math.rand(1, 100) <= 90) this.getSprite("surcoat").setBrush("surcoat_" + (banner < 10 ? "0" + banner : banner));
 
-		r = this.Math.rand(1, 2);
+		r = ::Math.rand(1, 2);
 		local shield;
 		shield = this.new("scripts/items/shields/faction_heater_shield");
 		shield.setFaction(banner);
 		this.m.Items.equip(shield);
 
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"seedmaster_noble_armor"
@@ -55,7 +55,7 @@ this.noble_footman <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 		if (banner <= 4)
 		{
-			helmet = this.Const.World.Common.pickHelmet([
+			helmet = ::Const.World.Common.pickHelmet([
 				[
 					5,
 					"kettle_hat"
@@ -92,7 +92,7 @@ this.noble_footman <- this.inherit("scripts/entity/tactical/abstract_human", {
 		}
 		else if (banner <= 7)
 		{
-			helmet = this.Const.World.Common.pickHelmet([
+			helmet = ::Const.World.Common.pickHelmet([
 				[
 					5,
 					"rondel_helm"
@@ -129,7 +129,7 @@ this.noble_footman <- this.inherit("scripts/entity/tactical/abstract_human", {
 		}
 		else
 		{
-			helmet = this.Const.World.Common.pickHelmet([
+			helmet = ::Const.World.Common.pickHelmet([
 				[
 					5,
 					"nasal_helmet"

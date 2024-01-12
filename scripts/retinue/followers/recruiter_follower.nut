@@ -7,7 +7,7 @@ this.recruiter_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Name = "Recruiter";
 		this.m.Description = "The recruiter will help the company scour for talents.";
 		this.m.Image = "ui/campfire/recruiter_01";
-		this.m.Cost = 150;
+		this.m.Cost = 300;
 		this.m.Effects = [
 			"Every settlement has 4-6 additional recruits"
 		];

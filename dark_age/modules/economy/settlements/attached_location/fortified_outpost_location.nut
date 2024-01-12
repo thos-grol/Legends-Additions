@@ -7,15 +7,12 @@
 		_list.push("deserter_background");
 		_list.push("sellsword_background");
 
-		if (this.Math.rand(0, 5) == 1)
+		if (::Math.rand(0, 5) == 1)
 		{
 			_list.push("hedge_knight_background");
 		}
 
-		if (this.Math.rand(0, 5) == 1)
-		{
-			_list.push("legend_master_archer_background");
-		}
+		if (::Math.rand(0, 5) == 1) _list.push("legend_master_archer_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )

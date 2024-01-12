@@ -21,7 +21,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -44,7 +44,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 					"Hunt down what terrorizes " + this.Contract.m.Home.getName()
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -57,7 +57,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 5 && this.World.Assets.getBusinessReputation() > 500)
 				{
@@ -78,36 +78,36 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 
 				if (this.Flags.get("IsHumans"))
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Direwolves", false, this.Const.World.Spawn.BanditsDisguisedAsDirewolves, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Direwolves", false, ::Const.World.Spawn.BanditsDisguisedAsDirewolves, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					party.setDescription("A pack of ferocious direwolves on the hunt for prey.");
-					party.setFootprintType(this.Const.World.FootprintsType.Direwolves);
-					this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), this.Const.BeastFootprints, this.Const.World.FootprintsType.Direwolves, 0.75);
+					party.setFootprintType(::Const.World.FootprintsType.Direwolves);
+					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Direwolves, 0.75);
 				}
 				else if (this.Flags.get("IsVermes"))
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Direwolves", false, this.Const.World.Spawn.BanditVermes, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Direwolves", false, ::Const.World.Spawn.BanditVermes, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					party.setDescription("A pack of ferocious direwolves on the hunt for prey.");
 				}
 				else if (this.Flags.get("IsGhouls"))
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Nachzehrers", false, this.Const.World.Spawn.Ghouls, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Nachzehrers", false, ::Const.World.Spawn.Ghouls, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					party.setDescription("A flock of scavenging nachzehrers.");
-					party.setFootprintType(this.Const.World.FootprintsType.Ghouls);
-					this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), this.Const.BeastFootprints, this.Const.World.FootprintsType.Ghouls, 0.75);
+					party.setFootprintType(::Const.World.FootprintsType.Ghouls);
+					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Ghouls, 0.75);
 				}
 				else if (this.Flags.get("IsSpiders"))
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Webknechts", false, this.Const.World.Spawn.Spiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Webknechts", false, ::Const.World.Spawn.Spiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					party.setDescription("A swarm of webknechts skittering about.");
-					party.setFootprintType(this.Const.World.FootprintsType.Spiders);
-					this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), this.Const.BeastFootprints, this.Const.World.FootprintsType.Spiders, 0.75);
+					party.setFootprintType(::Const.World.FootprintsType.Spiders);
+					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Spiders, 0.75);
 				}
 				else
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Direwolves", false, this.Const.World.Spawn.Direwolves, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Direwolves", false, ::Const.World.Spawn.Direwolves, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					party.setDescription("A pack of ferocious direwolves on the hunt for prey.");
-					party.setFootprintType(this.Const.World.FootprintsType.Direwolves);
-					this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), this.Const.BeastFootprints, this.Const.World.FootprintsType.Direwolves, 0.75);
+					party.setFootprintType(::Const.World.FootprintsType.Direwolves);
+					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Direwolves, 0.75);
 				}
 
 				party.setAttackableByAI(false);
@@ -115,15 +115,15 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 				this.Contract.m.Target = this.WeakTableRef(party);
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				local c = party.getController();
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 				local roam = this.new("scripts/ai/world/orders/roam_order");
 				roam.setPivot(this.Contract.m.Home);
 				roam.setMinRange(2);
 				roam.setMaxRange(8);
 				roam.setAllTerrainAvailable();
-				roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-				roam.setTerrain(this.Const.World.TerrainType.Shore, false);
-				roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+				roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+				roam.setTerrain(::Const.World.TerrainType.Shore, false);
+				roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 				c.addOrder(roam);
 				this.Contract.m.Home.setLastSpawnTimeToNow();
 				this.Contract.setScreen("Overview");
@@ -174,7 +174,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 
 					this.Contract.setState("Return");
 				}
-				else if (!this.Flags.get("IsWorkOfBeastsShown") && this.World.getTime().IsDaytime && this.Contract.m.Target.isHiddenToPlayer() && this.Math.rand(1, 9000) <= 1)
+				else if (!this.Flags.get("IsWorkOfBeastsShown") && this.World.getTime().IsDaytime && this.Contract.m.Target.isHiddenToPlayer() && ::Math.rand(1, 9000) <= 1)
 				{
 					this.Flags.set("IsWorkOfBeastsShown", true);
 					this.Contract.setScreen("WorkOfBeasts");
@@ -191,7 +191,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 
 					foreach( t in troops )
 					{
-						t.ID = this.Const.EntityType.BanditRaider;
+						t.ID = ::Const.EntityType.BanditRaider;
 					}
 
 					this.Contract.m.IsPlayerAttacking = _isPlayerAttacking;
@@ -249,8 +249,8 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -416,9 +416,9 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of direwolves");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of direwolves");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -430,7 +430,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -448,9 +448,9 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Beast, men... what matters is the crowns.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of brigands masquerading as direwolves");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of brigands masquerading as direwolves");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -462,7 +462,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -480,9 +480,9 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of nachzehrers");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of nachzehrers");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -494,7 +494,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -512,9 +512,9 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of webknechts");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of webknechts");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -526,7 +526,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -544,9 +544,9 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of infection");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of infection");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -558,7 +558,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -578,7 +578,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 
 		foreach( bro in brothers )
 		{
-			if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.Lowborn) && !bro.getBackground().isBackgroundType(this.Const.BackgroundType.OffendedByViolence) && !bro.getSkills().hasSkill("trait.bright") && bro.getBackground().getID() != "background.hunter")
+			if (bro.getBackground().isBackgroundType(::Const.BackgroundType.Lowborn) && !bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && !bro.getSkills().hasSkill("trait.bright") && bro.getBackground().getID() != "background.hunter")
 			{
 				candidates_helpful.push(bro);
 			}
@@ -587,7 +587,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				candidates_bro1.push(bro);
 
-				if (!bro.getBackground().isBackgroundType(this.Const.BackgroundType.OffendedByViolence) && bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat))
+				if (!bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat))
 				{
 					candidates_bro2.push(bro);
 				}
@@ -596,27 +596,27 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 
 		if (candidates_helpful.len() != 0)
 		{
-			helpful = candidates_helpful[this.Math.rand(0, candidates_helpful.len() - 1)];
+			helpful = candidates_helpful[::Math.rand(0, candidates_helpful.len() - 1)];
 		}
 		else
 		{
-			helpful = brothers[this.Math.rand(0, brothers.len() - 1)];
+			helpful = brothers[::Math.rand(0, brothers.len() - 1)];
 		}
 
 		if (candidates_bro1.len() != 0)
 		{
-			bro1 = candidates_bro1[this.Math.rand(0, candidates_bro1.len() - 1)];
+			bro1 = candidates_bro1[::Math.rand(0, candidates_bro1.len() - 1)];
 		}
 		else
 		{
-			bro1 = brothers[this.Math.rand(0, brothers.len() - 1)];
+			bro1 = brothers[::Math.rand(0, brothers.len() - 1)];
 		}
 
 		if (candidates_bro2.len() > 1)
 		{
 			do
 			{
-				bro2 = candidates_bro2[this.Math.rand(0, candidates_bro2.len() - 1)];
+				bro2 = candidates_bro2[::Math.rand(0, candidates_bro2.len() - 1)];
 			}
 			while (bro2.getID() == bro1.getID());
 		}
@@ -624,7 +624,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 		{
 			do
 			{
-				bro2 = brothers[this.Math.rand(0, brothers.len() - 1)];
+				bro2 = brothers[::Math.rand(0, brothers.len() - 1)];
 			}
 			while (bro2.getID() == bro1.getID());
 		}
@@ -647,7 +647,7 @@ this.roaming_beasts_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Target == null || this.m.Target.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
+			this.m.Target == null || this.m.Target.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
 		]);
 	}
 

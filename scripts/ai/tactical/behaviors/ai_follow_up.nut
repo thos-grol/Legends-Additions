@@ -61,7 +61,7 @@ this.ai_follow_up <- this.inherit("scripts/ai/tactical/behavior", {
 		local attackBehaviorScore = this.getProperties().BehaviorMult[::Const.AI.Behavior.ID.AttackDefault];
 		attackBehaviorScore = attackBehaviorScore * this.getFatigueScoreMult(attackSkill);
 
-		attackBehaviorScore = this.Math.max(0, ::Const.AI.Behavior.Score.Attack * bestTarget.Score * attackBehaviorScore);
+		attackBehaviorScore = ::Math.max(0, ::Const.AI.Behavior.Score.Attack * bestTarget.Score * attackBehaviorScore);
 
 		local damage = attackSkill.getExpectedDamage(meleeTarget);
 

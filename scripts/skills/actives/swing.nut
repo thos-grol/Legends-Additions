@@ -84,7 +84,7 @@ this.swing <- this.inherit("scripts/skills/skill", {
 		{
 			local nextTile = ownTile.getNextTile(nextDir);
 
-			if (nextTile.IsOccupiedByActor && nextTile.getEntity().isAttackable() && this.Math.abs(nextTile.Level - ownTile.Level) <= 1)
+			if (nextTile.IsOccupiedByActor && nextTile.getEntity().isAttackable() && ::Math.abs(nextTile.Level - ownTile.Level) <= 1)
 			{
 				ret = this.attackEntity(_user, nextTile.getEntity()) || ret;
 			}
@@ -101,7 +101,7 @@ this.swing <- this.inherit("scripts/skills/skill", {
 		{
 			local nextTile = ownTile.getNextTile(nextDir);
 
-			if (nextTile.IsOccupiedByActor && nextTile.getEntity().isAttackable() && this.Math.abs(nextTile.Level - ownTile.Level) <= 1)
+			if (nextTile.IsOccupiedByActor && nextTile.getEntity().isAttackable() && ::Math.abs(nextTile.Level - ownTile.Level) <= 1)
 			{
 				ret = this.attackEntity(_user, nextTile.getEntity()) || ret;
 			}
@@ -121,7 +121,7 @@ this.swing <- this.inherit("scripts/skills/skill", {
 		{
 			local nextTile = ownTile.getNextTile(nextDir);
 
-			if (this.Math.abs(nextTile.Level - ownTile.Level) <= 1)
+			if (::Math.abs(nextTile.Level - ownTile.Level) <= 1)
 			{
 				this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
 			}
@@ -133,7 +133,7 @@ this.swing <- this.inherit("scripts/skills/skill", {
 		{
 			local nextTile = ownTile.getNextTile(nextDir);
 
-			if (this.Math.abs(nextTile.Level - ownTile.Level) <= 1)
+			if (::Math.abs(nextTile.Level - ownTile.Level) <= 1)
 			{
 				this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
 			}

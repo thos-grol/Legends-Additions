@@ -2,14 +2,14 @@ this.noble_arbalester <- this.inherit("scripts/entity/tactical/abstract_human", 
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Arbalester;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Arbalester.XP;
+		this.m.Type = ::Const.EntityType.Arbalester;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.Arbalester.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.CommonMale;
-		this.m.HairColors = this.Const.HairColors.Young;
-		this.m.Beards = this.Const.Beards.Tidy;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.CommonMale;
+		this.m.HairColors = ::Const.HairColors.Young;
+		this.m.Beards = ::Const.Beards.Tidy;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/military_ranged_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -18,7 +18,7 @@ this.noble_arbalester <- this.inherit("scripts/entity/tactical/abstract_human", 
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Arbalester);
+		b.setValues(::Const.Tactical.Actor.Arbalester);
 		b.TargetAttractionMult = 1.1;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
@@ -43,12 +43,12 @@ this.noble_arbalester <- this.inherit("scripts/entity/tactical/abstract_human", 
 
 		this.m.Surcoat = banner;
 
-		if (this.Math.rand(1, 100) <= 80)
+		if (::Math.rand(1, 100) <= 80)
 		{
 			this.getSprite("surcoat").setBrush("surcoat_" + (banner < 10 ? "0" + banner : banner));
 		}
 		this.m.Items.addToBag(this.new("scripts/items/weapons/dagger"));
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"padded_surcoat"
@@ -58,7 +58,7 @@ this.noble_arbalester <- this.inherit("scripts/entity/tactical/abstract_human", 
 				"gambeson"
 			]
 		]));
-		local helmet = this.Const.World.Common.pickHelmet([
+		local helmet = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"mail_coif"

@@ -17,27 +17,12 @@
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		_draftList.push("juggler_background");
 		_draftList.push("juggler_background");
 		_draftList.push("juggler_background");
 		
 		
 		
-		_draftList.push("legend_master_archer_background");
-		_draftList.push("legend_master_archer_background");
-		_draftList.push("legend_master_archer_background");
 		_draftList.push("legend_master_archer_background");
 
 		if (this.World.Assets.getOrigin().getID() == "scenario.militia")
@@ -70,7 +55,7 @@
 			}
 			else
 			{
-				r = this.Math.rand(0, 9);
+				r = ::Math.rand(0, 9);
 
 				if (r == 1)
 				{

@@ -88,7 +88,7 @@ this.direwolf_blizzard <- this.inherit("scripts/skills/skill", {
 			{
 				t.clear();
 				t.Type = 0;
-				_tag.Skill.m.SnowTiles[this.Math.rand(0, _tag.Skill.m.SnowTiles.len() - 1)].onFirstPass({
+				_tag.Skill.m.SnowTiles[::Math.rand(0, _tag.Skill.m.SnowTiles.len() - 1)].onFirstPass({
 					X = t.SquareCoords.X,
 					Y = t.SquareCoords.Y,
 					W = 1,

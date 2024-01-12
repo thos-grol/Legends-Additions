@@ -57,7 +57,7 @@
 				"barbarians/leather_helmet"
 			]
 		]);
-		local r = this.Math.rand(0, 4);
+		local r = ::Math.rand(0, 4);
 
 		if (r == 0)
 		{

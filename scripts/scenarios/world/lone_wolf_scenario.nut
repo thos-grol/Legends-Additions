@@ -8,15 +8,14 @@ this.lone_wolf_scenario <- this.inherit("scripts/scenarios/world/starting_scenar
 		this.m.Difficulty = 4;
 		this.m.Order = 150;
 		this.m.IsFixedLook = true;
-		this.m.StartingRosterTier = this.Const.Roster.getTierForSize(1);
-		this.m.RosterTierMax = this.Const.Roster.getTierForSize(12);
-		this.m.StartingBusinessReputation = 1250;
-		this.setRosterReputationTiers(this.Const.Roster.createReputationTiers(this.m.StartingBusinessReputation));
+		this.m.StartingRosterTier = ::Const.Roster.getTierForSize(27);
+		this.m.RosterTierMax = ::Const.Roster.getTierForSize(27);
+		this.m.StartingBusinessReputation = 1250;		
 	}
 
 	function isValid()
 	{
-		return this.Const.DLC.Wildmen;
+		return ::Const.DLC.Wildmen;
 	}
 
 	function onSpawnAssets()
@@ -24,7 +23,7 @@ this.lone_wolf_scenario <- this.inherit("scripts/scenarios/world/starting_scenar
 		local roster = this.World.getPlayerRoster();
 		local bro = roster.create("scripts/entity/tactical/player");
 		bro.m.HireTime = this.Time.getVirtualTimeF();
-		bro.setName(this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]);
+		bro.setName(::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]);
 		local bros = roster.getAll();
 		bros[0].setStartValuesEx([
 			"legend_lonewolf_background"
@@ -45,13 +44,13 @@ this.lone_wolf_scenario <- this.inherit("scripts/scenarios/world/starting_scenar
 		bros[0].m.Talents = [];
 		bros[0].m.Attributes = [];
 		local talents = bros[0].getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.MeleeDefense] = 3;
-		talents[this.Const.Attributes.Fatigue] = 3;
-		talents[this.Const.Attributes.MeleeSkill] = 3;
-		talents[this.Const.Attributes.RangedSkill] = 3;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.MeleeDefense] = 3;
+		talents[::Const.Attributes.Fatigue] = 3;
+		talents[::Const.Attributes.MeleeSkill] = 3;
+		talents[::Const.Attributes.RangedSkill] = 3;
 		bros[0].getFlags().set("Lucky", 3);
-		bros[0].fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
+		bros[0].fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Assets.m.Money = this.World.Assets.m.Money / 3 - (this.World.Assets.getEconomicDifficulty() == 0 ? 0 : 100);
 		this.World.Assets.m.ArmorParts = this.World.Assets.m.ArmorParts / 2;
@@ -80,8 +79,8 @@ this.lone_wolf_scenario <- this.inherit("scripts/scenarios/world/starting_scenar
 
 		do
 		{
-			local x = this.Math.rand(this.Math.max(2, randomVillageTile.SquareCoords.X - 1), this.Math.min(this.Const.World.Settings.SizeX - 2, randomVillageTile.SquareCoords.X + 1));
-			local y = this.Math.rand(this.Math.max(2, randomVillageTile.SquareCoords.Y - 1), this.Math.min(this.Const.World.Settings.SizeY - 2, randomVillageTile.SquareCoords.Y + 1));
+			local x = ::Math.rand(::Math.max(2, randomVillageTile.SquareCoords.X - 1), ::Math.min(::Const.World.Settings.SizeX - 2, randomVillageTile.SquareCoords.X + 1));
+			local y = ::Math.rand(::Math.max(2, randomVillageTile.SquareCoords.Y - 1), ::Math.min(::Const.World.Settings.SizeY - 2, randomVillageTile.SquareCoords.Y + 1));
 
 			if (!this.World.isValidTileSquare(x, y))
 			{
@@ -90,7 +89,7 @@ this.lone_wolf_scenario <- this.inherit("scripts/scenarios/world/starting_scenar
 			{
 				local tile = this.World.getTileSquare(x, y);
 
-				if (tile.Type == this.Const.World.TerrainType.Ocean || tile.Type == this.Const.World.TerrainType.Shore)
+				if (tile.Type == ::Const.World.TerrainType.Ocean || tile.Type == ::Const.World.TerrainType.Shore)
 				{
 				}
 				else if (tile.getDistanceTo(randomVillageTile) == 0)
@@ -115,7 +114,7 @@ this.lone_wolf_scenario <- this.inherit("scripts/scenarios/world/starting_scenar
 		{
 			this.Music.setTrackList([
 				"music/noble_02.ogg"
-			], this.Const.Music.CrossFadeTime);
+			], ::Const.Music.CrossFadeTime);
 			this.World.Events.fire("event.lone_wolf_scenario_intro");
 		}, null);
 	}
@@ -157,7 +156,7 @@ this.lone_wolf_scenario <- this.inherit("scripts/scenarios/world/starting_scenar
 			}
 			else if (bro.getSkills().hasSkill("background.legend_donkey"))
 			{
-				bro.m.HiringCost = this.Math.floor(bro.m.HiringCost * 1.0);
+				bro.m.HiringCost = ::Math.floor(bro.m.HiringCost * 1.0);
 				bro.getBaseProperties().DailyWageMult *= 1.0;
 				bro.getSkills().update();
 			}

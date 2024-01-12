@@ -5,8 +5,8 @@ this.ai_flee <- this.inherit("scripts/ai/tactical/behavior", {
 	},
 	function create()
 	{
-		this.m.ID = this.Const.AI.Behavior.ID.Flee;
-		this.m.Order = this.Const.AI.Behavior.Order.Flee;
+		this.m.ID = ::Const.AI.Behavior.ID.Flee;
+		this.m.Order = ::Const.AI.Behavior.Order.Flee;
 		this.behavior.create();
 	}
 
@@ -14,45 +14,45 @@ this.ai_flee <- this.inherit("scripts/ai/tactical/behavior", {
 	{
 		this.m.TargetTile = null;
 
-		if (_entity.getMoraleState() != this.Const.MoraleState.Fleeing)
+		if (_entity.getMoraleState() != ::Const.MoraleState.Fleeing)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (_entity.getCurrentProperties().IsRooted)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		if (_entity.getActionPoints() < this.Const.Movement.AutoEndTurnBelowAP)
+		if (_entity.getActionPoints() < ::Const.Movement.AutoEndTurnBelowAP)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		if (this.m.AttemptsThisTurn >= this.Const.AI.Agent.MaxFleeAttemptsPerTurn)
+		if (this.m.AttemptsThisTurn >= ::Const.AI.Agent.MaxFleeAttemptsPerTurn)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		if (!_entity.isPlayerControlled() && !this.getAgent().hasKnownOpponent())
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		if (!_entity.getTile().hasZoneOfControlOtherThan(_entity.getAlliedFactions()) && this.getAgent().getBehavior(this.Const.AI.Behavior.ID.Retreat) != null && this.getAgent().getBehavior(this.Const.AI.Behavior.ID.Retreat).getScore() > 0)
+		if (!_entity.getTile().hasZoneOfControlOtherThan(_entity.getAlliedFactions()) && this.getAgent().getBehavior(::Const.AI.Behavior.ID.Retreat) != null && this.getAgent().getBehavior(::Const.AI.Behavior.ID.Retreat).getScore() > 0)
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 
 		this.m.TargetTile = this.findFleeToPosition(_entity);
 
 		if (this.m.TargetTile != null && this.m.TargetTile.IsEmpty)
 		{
-			return this.Const.AI.Behavior.Score.Flee;
+			return ::Const.AI.Behavior.Score.Flee;
 		}
 		else
 		{
-			return this.Const.AI.Behavior.Score.Zero;
+			return ::Const.AI.Behavior.Score.Zero;
 		}
 	}
 
@@ -79,22 +79,22 @@ this.ai_flee <- this.inherit("scripts/ai/tactical/behavior", {
 					local settings = navigator.createSettings();
 					settings.ActionPointCosts = _entity.getActionPointCosts();
 					settings.FatigueCosts = _entity.getFatigueCosts();
-					settings.FatigueCostFactor = this.Const.Movement.FatigueCostFactor;
+					settings.FatigueCostFactor = ::Const.Movement.FatigueCostFactor;
 					settings.ActionPointCostPerLevel = _entity.getLevelActionPointCost();
 					settings.FatigueCostPerLevel = _entity.getLevelFatigueCost();
 					settings.AllowZoneOfControlPassing = true;
-					settings.ZoneOfControlCost = this.Const.AI.Behavior.ZoneOfControlAPPenalty * 2;
+					settings.ZoneOfControlCost = ::Const.AI.Behavior.ZoneOfControlAPPenalty * 2;
 					settings.AlliedFactions = _entity.getAlliedFactions();
 					settings.Faction = _entity.getFaction();
 
-					if (this.Const.AI.VerboseMode)
+					if (::Const.AI.VerboseMode)
 					{
 						this.logInfo("* " + this.getAgent().getActor().getName() + ": Fleeing.");
 					}
 
 					navigator.findPath(_entity.getTile(), this.m.TargetTile, settings, 0);
 
-					if (this.Const.AI.PathfindingDebugMode)
+					if (::Const.AI.PathfindingDebugMode)
 					{
 						navigator.buildVisualisation(_entity, settings, _entity.getActionPoints(), _entity.getFatigueMax() - _entity.getFatigue());
 					}
@@ -104,7 +104,7 @@ this.ai_flee <- this.inherit("scripts/ai/tactical/behavior", {
 
 					if (this.Tactical.State.getStrategicProperties() != null && this.Tactical.State.getStrategicProperties().IsArenaMode)
 					{
-						this.Sound.play(this.Const.Sound.ArenaFlee[this.Math.rand(0, this.Const.Sound.ArenaFlee.len() - 1)], this.Const.Sound.Volume.Tactical * this.Const.Sound.Volume.Arena);
+						this.Sound.play(::Const.Sound.ArenaFlee[::Math.rand(0, ::Const.Sound.ArenaFlee.len() - 1)], ::Const.Sound.Volume.Tactical * ::Const.Sound.Volume.Arena);
 					}
 
 					this.m.IsFirstExecuted = false;
@@ -205,10 +205,10 @@ this.ai_flee <- this.inherit("scripts/ai/tactical/behavior", {
 		foreach( t in targets )
 		{
 			local dir = myTile.getDirectionTo(t.getTile());
-			local dir_left = dir - 1 >= 0 ? dir - 1 : this.Const.Direction.COUNT - 1;
-			local dir_farleft = dir - 2 >= 0 ? dir - 2 : this.Const.Direction.COUNT - 2;
-			local dir_right = dir + 1 < this.Const.Direction.COUNT ? dir + 1 : 0;
-			local dir_farright = dir + 2 < this.Const.Direction.COUNT ? dir + 2 : 1;
+			local dir_left = dir - 1 >= 0 ? dir - 1 : ::Const.Direction.COUNT - 1;
+			local dir_farleft = dir - 2 >= 0 ? dir - 2 : ::Const.Direction.COUNT - 2;
+			local dir_right = dir + 1 < ::Const.Direction.COUNT ? dir + 1 : 0;
+			local dir_farright = dir + 2 < ::Const.Direction.COUNT ? dir + 2 : 1;
 			dirs[dir].Score += 4;
 			dirs[dir_left].Score += 3;
 			dirs[dir_farleft].Score += 1;
@@ -221,23 +221,23 @@ this.ai_flee <- this.inherit("scripts/ai/tactical/behavior", {
 		local settings = navigator.createSettings();
 		settings.ActionPointCosts = _entity.getActionPointCosts();
 		settings.FatigueCosts = _entity.getFatigueCosts();
-		settings.FatigueCostFactor = this.Const.Movement.FatigueCostFactor;
+		settings.FatigueCostFactor = ::Const.Movement.FatigueCostFactor;
 		settings.ActionPointCostPerLevel = _entity.getLevelActionPointCost();
 		settings.FatigueCostPerLevel = _entity.getLevelFatigueCost();
 		settings.AllowZoneOfControlPassing = true;
-		settings.ZoneOfControlCost = this.Const.AI.Behavior.ZoneOfControlAPPenalty * 2;
+		settings.ZoneOfControlCost = ::Const.AI.Behavior.ZoneOfControlAPPenalty * 2;
 		settings.AlliedFactions = _entity.getAlliedFactions();
 		settings.Faction = _entity.getFaction();
 
 		foreach( d in dirs )
 		{
-			for( local i = 0; i < this.Const.AI.Behavior.FleeMaxAttemptsPerDirection; i = ++i )
+			for( local i = 0; i < ::Const.AI.Behavior.FleeMaxAttemptsPerDirection; i = ++i )
 			{
 				local x = myTile.X;
 				local y = myTile.Y;
-				local steps = this.Math.rand(5, 7);
-				x = x + this.Const.DirectionStep[d.Dir][0] * steps;
-				y = y + this.Const.DirectionStep[d.Dir][1] * steps;
+				local steps = ::Math.rand(5, 7);
+				x = x + ::Const.DirectionStep[d.Dir][0] * steps;
+				y = y + ::Const.DirectionStep[d.Dir][1] * steps;
 
 				if (!this.Tactical.isValidTile(x, y))
 				{

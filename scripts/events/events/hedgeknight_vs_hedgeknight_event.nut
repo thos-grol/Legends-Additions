@@ -90,7 +90,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					Text = "Let\'s see who is strongest in battle.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, _event.m.HedgeKnight1.getLevel() + _event.m.HedgeKnight2.getLevel()) <= _event.m.HedgeKnight1.getLevel() ? "F" : "G";
+						return ::Math.rand(1, _event.m.HedgeKnight1.getLevel() + _event.m.HedgeKnight2.getLevel()) <= _event.m.HedgeKnight1.getLevel() ? "F" : "G";
 					}
 
 				}
@@ -133,7 +133,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					Text = "Let\'s see who is strongest in battle.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, _event.m.HedgeKnight1.getLevel() + _event.m.HedgeKnight2.getLevel()) <= _event.m.HedgeKnight1.getLevel() ? "F" : "G";
+						return ::Math.rand(1, _event.m.HedgeKnight1.getLevel() + _event.m.HedgeKnight2.getLevel()) <= _event.m.HedgeKnight1.getLevel() ? "F" : "G";
 					}
 
 				}
@@ -176,7 +176,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					Text = "Let\'s see who is strongest in battle.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, _event.m.HedgeKnight1.getLevel() + _event.m.HedgeKnight2.getLevel()) <= _event.m.HedgeKnight1.getLevel() ? "F" : "G";
+						return ::Math.rand(1, _event.m.HedgeKnight1.getLevel() + _event.m.HedgeKnight2.getLevel()) <= _event.m.HedgeKnight1.getLevel() ? "F" : "G";
 					}
 
 				},
@@ -227,7 +227,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					Text = "Let\'s see who is strongest in battle.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, _event.m.HedgeKnight1.getLevel() + _event.m.HedgeKnight2.getLevel()) <= _event.m.HedgeKnight1.getLevel() ? "F" : "G";
+						return ::Math.rand(1, _event.m.HedgeKnight1.getLevel() + _event.m.HedgeKnight2.getLevel()) <= _event.m.HedgeKnight1.getLevel() ? "F" : "G";
 					}
 
 				},
@@ -300,7 +300,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					{
 						bro.worsenMood(2.0, "Angry about you bribing mercenaries to stop their fight");
 					}
-					else if (this.Math.rand(1, 100) <= 50)
+					else if (::Math.rand(1, 100) <= 50)
 					{
 						bro.worsenMood(1.0, "Concerned about you bribing mercenaries to stop their fight");
 					}
@@ -343,12 +343,12 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 						continue;
 					}
 
-					if (this.Math.rand(1, 100) <= 60)
+					if (::Math.rand(1, 100) <= 60)
 					{
 						continue;
 					}
 
-					if (this.Math.rand(1, 100) <= 75)
+					if (::Math.rand(1, 100) <= 75)
 					{
 						bro.addLightInjury();
 						this.List.push({
@@ -407,9 +407,9 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					text = _event.m.HedgeKnight1.getName() + " suffers " + injury.getNameOnly()
 				});
 
-				if (this.Math.rand(1, 2) == 1)
+				if (::Math.rand(1, 2) == 1)
 				{
-					local v = this.Math.rand(1, 2);
+					local v = ::Math.rand(1, 2);
 					_event.m.HedgeKnight1.getBaseProperties().MeleeSkill += v;
 					this.List.push({
 						id = 16,
@@ -419,7 +419,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 				}
 				else
 				{
-					local v = this.Math.rand(1, 2);
+					local v = ::Math.rand(1, 2);
 					_event.m.HedgeKnight1.getBaseProperties().MeleeDefense += v;
 					this.List.push({
 						id = 16,
@@ -474,9 +474,9 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					text = _event.m.HedgeKnight2.getName() + " suffers " + injury.getNameOnly()
 				});
 
-				if (this.Math.rand(1, 2) == 1)
+				if (::Math.rand(1, 2) == 1)
 				{
-					local v = this.Math.rand(1, 2);
+					local v = ::Math.rand(1, 2);
 					_event.m.HedgeKnight2.getBaseProperties().MeleeSkill += v;
 					this.List.push({
 						id = 16,
@@ -486,7 +486,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 				}
 				else
 				{
-					local v = this.Math.rand(1, 2);
+					local v = ::Math.rand(1, 2);
 					_event.m.HedgeKnight2.getBaseProperties().MeleeDefense += v;
 					this.List.push({
 						id = 16,
@@ -594,25 +594,25 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		local r = this.Math.rand(0, candidates.len() - 1);
+		local r = ::Math.rand(0, candidates.len() - 1);
 		this.m.HedgeKnight1 = candidates[r];
 		candidates.remove(r);
-		r = this.Math.rand(0, candidates.len() - 1);
+		r = ::Math.rand(0, candidates.len() - 1);
 		this.m.HedgeKnight2 = candidates[r];
 		candidates.remove(r);
 
 		if (candidates_other.len() > 0)
 		{
-			this.m.NonHedgeKnight = candidates_other[this.Math.rand(0, candidates_other.len() - 1)];
+			this.m.NonHedgeKnight = candidates_other[::Math.rand(0, candidates_other.len() - 1)];
 		}
 		else
 		{
-			this.m.NonHedgeKnight = candidates[this.Math.rand(0, candidates.len() - 1)];
+			this.m.NonHedgeKnight = candidates[::Math.rand(0, candidates.len() - 1)];
 		}
 
 		if (candidates_monk.len() != 0)
 		{
-			this.m.Monk = candidates_monk[this.Math.rand(0, candidates_monk.len() - 1)];
+			this.m.Monk = candidates_monk[::Math.rand(0, candidates_monk.len() - 1)];
 		}
 
 		this.m.Score = (2 + candidates.len()) * 600;

@@ -65,7 +65,7 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 						Text = "You got a drawing of the man you\'re after? Let me take a look.",
 						function getResult( _event )
 						{
-							return this.Math.rand(1, 100) <= 50 ? "D" : "E";
+							return ::Math.rand(1, 100) <= 50 ? "D" : "E";
 						}
 
 					});
@@ -136,7 +136,7 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 						properties.TemporaryEnemies = [
 							_event.m.NobleHouse.getID()
 						];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Noble, this.Math.rand(80, 100) * _event.getReputationToDifficultyLightMult(), _event.m.NobleHouse.getID());
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Noble, ::Math.rand(80, 100) * _event.getReputationToDifficultyLightMult(), _event.m.NobleHouse.getID());
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -205,7 +205,7 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 						properties.TemporaryEnemies = [
 							_event.m.NobleHouse.getID()
 						];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Noble, this.Math.rand(80, 100) * _event.getReputationToDifficultyLightMult(), _event.m.NobleHouse.getID());
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Noble, ::Math.rand(80, 100) * _event.getReputationToDifficultyLightMult(), _event.m.NobleHouse.getID());
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -342,11 +342,11 @@ this.lawmen_after_criminal_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Criminal = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Criminal = candidates[::Math.rand(0, candidates.len() - 1)];
 
 		do
 		{
-			this.m.OtherBro = brothers[this.Math.rand(0, brothers.len() - 1)];
+			this.m.OtherBro = brothers[::Math.rand(0, brothers.len() - 1)];
 		}
 		while (this.m.OtherBro == null || this.m.OtherBro.getID() == this.m.Criminal.getID());
 

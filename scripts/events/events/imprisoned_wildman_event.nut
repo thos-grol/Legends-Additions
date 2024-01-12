@@ -50,7 +50,7 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 					Text = "Alright, I\'ll send a man in.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 80 ? "C" : "D";
+						return ::Math.rand(1, 100) <= 80 ? "C" : "D";
 					}
 
 				});
@@ -102,7 +102,7 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 					Text = "Alright, I\'ll send a man in.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 80 ? "C" : "D";
+						return ::Math.rand(1, 100) <= 80 ? "C" : "D";
 					}
 
 				});
@@ -486,7 +486,7 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 					icon = "ui/icons/days_wounded.png",
 					text = _event.m.Other.getName() + " suffers light wounds"
 				});
-				local money = this.Math.rand(200, 500);
+				local money = ::Math.rand(200, 500);
 				this.World.Assets.addMoney(money);
 				this.List.push({
 					id = 10,
@@ -549,10 +549,10 @@ this.imprisoned_wildman_event <- this.inherit("scripts/events/event", {
 		}
 
 		if (candidate_other.len() == 0) return;
-		if (candidate_wildman.len() != 0) this.m.Wildman = candidate_wildman[this.Math.rand(0, candidate_wildman.len() - 1)];
-		if (candidate_monk.len() != 0) this.m.Monk = candidate_monk[this.Math.rand(0, candidate_monk.len() - 1)];
+		if (candidate_wildman.len() != 0) this.m.Wildman = candidate_wildman[::Math.rand(0, candidate_wildman.len() - 1)];
+		if (candidate_monk.len() != 0) this.m.Monk = candidate_monk[::Math.rand(0, candidate_monk.len() - 1)];
 
-		this.m.Other = candidate_other[this.Math.rand(0, candidate_other.len() - 1)];
+		this.m.Other = candidate_other[::Math.rand(0, candidate_other.len() - 1)];
 		this.m.Score = 5;
 	}
 

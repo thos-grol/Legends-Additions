@@ -40,7 +40,7 @@ this.lucky_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		if (actor.getFlags().has("Lucky")) return;
 
 		local tier = 1; //Lucky
-		local roll = this.Math.rand(1, 100);
+		local roll = ::Math.rand(1, 100);
 		if (roll <= 1) tier = 4; //Heaven Defying Fortune
 		else if (roll <= 5) tier = 3; //Chosen
 		else if (roll <= 20) tier = 2; //Fortunate

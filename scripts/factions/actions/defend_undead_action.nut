@@ -19,7 +19,7 @@ this.defend_undead_action <- this.inherit("scripts/factions/faction_action", {
 
 		local settlements = [];
 		local playerAt;
-		local beastFaction = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).getID();
+		local beastFaction = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID();
 
 		foreach( s in _faction.getSettlements() )
 		{
@@ -73,14 +73,14 @@ this.defend_undead_action <- this.inherit("scripts/factions/faction_action", {
 			return;
 		}
 
-		if (playerAt != null && this.Math.rand(1, 100) > 10)
+		if (playerAt != null && ::Math.rand(1, 100) > 10)
 		{
 			return;
 		}
 
 		if (playerAt != null || settlements.len() != 0)
 		{
-			this.m.Settlement = playerAt == null ? settlements[this.Math.rand(0, settlements.len() - 1)] : playerAt;
+			this.m.Settlement = playerAt == null ? settlements[::Math.rand(0, settlements.len() - 1)] : playerAt;
 			this.m.Score = 30;
 		}
 	}
@@ -108,13 +108,13 @@ this.defend_undead_action <- this.inherit("scripts/factions/faction_action", {
 			local party = this.getFaction().spawnEntity(spawnpoints[i], "Undead", false, this.m.Settlement.getRoamerSpawnList(), this.m.Settlement.getResources() * mult);
 			party.getSprite("banner").setBrush(this.m.Settlement.getBanner());
 			party.setDescription("Something seems wrong.");
-			party.setFootprintType(this.Const.World.FootprintsType.Undead);
+			party.setFootprintType(::Const.World.FootprintsType.Undead);
 			party.setSlowerAtNight(false);
 			party.setUsingGlobalVision(false);
 			party.setLooting(false);
 			party.getFlags().set("IsRandomlySpawned", true);
-			party.getLoot().Money = this.Math.rand(0, 50);
-			party.getLoot().ArmorParts = this.Math.rand(0, 10);
+			party.getLoot().Money = ::Math.rand(0, 50);
+			party.getLoot().ArmorParts = ::Math.rand(0, 10);
 			local c = party.getController();
 			local guard = this.new("scripts/ai/world/orders/guard_order");
 			guard.setTarget(spawnpoints[i]);

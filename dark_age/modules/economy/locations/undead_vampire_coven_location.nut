@@ -14,7 +14,7 @@
 		this.m.CombatLocation.CutDownTrees = false;
 		this.m.CombatLocation.ForceLineBattle = true;
 		this.m.CombatLocation.AdditionalRadius = 5;
-		local r = this.Math.rand(1, 3);
+		local r = ::Math.rand(1, 3);
 
 		if (r == 1)
 		{
@@ -44,11 +44,11 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropFood(this.Math.rand(1, 3), [
+		this.dropFood(::Math.rand(1, 3), [
 			"strange_meat_item",
 			"wine_item"
 		], _lootTable);
-		this.dropTreasure(this.Math.rand(2, 4), [
+		this.dropTreasure(::Math.rand(2, 4), [
 			"loot/silverware_item",
 			"loot/silver_bowl_item",
 			"loot/signet_ring_item",

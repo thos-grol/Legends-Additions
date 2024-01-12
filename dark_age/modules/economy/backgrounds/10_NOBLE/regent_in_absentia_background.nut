@@ -17,7 +17,7 @@
 // 	{
 // 		local items = this.getContainer().getActor().getItems();
 // 		local r;
-// 		r = this.Math.rand(0, 3);
+// 		r = ::Math.rand(0, 3);
 
 // 		if (r == 0)
 // 		{
@@ -36,7 +36,7 @@
 // 			items.equip(::new("scripts/items/weapons/morning_star"));
 // 		}
 
-// 		r = this.Math.rand(0, 0);
+// 		r = ::Math.rand(0, 0);
 
 // 		if (r == 0)
 // 		{

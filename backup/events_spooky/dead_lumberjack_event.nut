@@ -25,7 +25,7 @@ this.dead_lumberjack_event <- this.inherit("scripts/events/event", {
 			{
 				local item;
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					item = this.new("scripts/items/weapons/hand_axe");
 				}

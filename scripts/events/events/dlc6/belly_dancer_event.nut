@@ -85,7 +85,7 @@ this.belly_dancer_event <- this.inherit("scripts/events/event", {
 					Text = "You\'ve talent with the blade like I\'ve never seen before.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 75 ? "E" : "D";
+						return ::Math.rand(1, 100) <= 75 ? "E" : "D";
 					}
 
 				},

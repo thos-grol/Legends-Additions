@@ -46,7 +46,7 @@
 
 		foreach( i in ::Const.Items.NamedRangedWeapons )
 		{
-			if (this.Math.rand(1, 100) <= 50)
+			if (::Math.rand(1, 100) <= 50)
 			{
 				list.push({
 					R = 99,

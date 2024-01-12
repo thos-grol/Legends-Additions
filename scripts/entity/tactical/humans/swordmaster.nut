@@ -2,14 +2,14 @@ this.swordmaster <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Swordmaster;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Swordmaster.XP;
+		this.m.Type = ::Const.EntityType.Swordmaster;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.Swordmaster.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.SmartMale;
-		this.m.Hairs = this.Const.Hair.TidyMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.Tidy;
+		this.m.Faces = ::Const.Faces.SmartMale;
+		this.m.Hairs = ::Const.Hair.TidyMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.Tidy;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bounty_hunter_melee_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -18,7 +18,7 @@ this.swordmaster <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Swordmaster);
+		b.setValues(::Const.Tactical.Actor.Swordmaster);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -44,9 +44,9 @@ this.swordmaster <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function pickOutfit()
 	{
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Body))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Body))
 		{
-			this.m.Items.equip(this.Const.World.Common.pickArmor([
+			this.m.Items.equip(::Const.World.Common.pickArmor([
 				[
 					1,
 					"footman_armor"
@@ -62,9 +62,9 @@ this.swordmaster <- this.inherit("scripts/entity/tactical/abstract_human", {
 			]));
 		}
 
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head) && this.Math.rand(1, 100) <= 90)
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head) && ::Math.rand(1, 100) <= 90)
 		{
-			this.m.Items.equip(this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::Const.World.Common.pickHelmet([
 				[
 					3,
 					"nasal_helmet"
@@ -92,7 +92,7 @@ this.swordmaster <- this.inherit("scripts/entity/tactical/abstract_human", {
 	function pickNamed()
 	{
 		//decide what item will be named
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 		if (r == 1) //armor
 		{
 			local armor = [
@@ -100,13 +100,13 @@ this.swordmaster <- this.inherit("scripts/entity/tactical/abstract_human", {
 				"armor/named/blue_studded_mail_armor"
 			];
 
-			if (this.Const.DLC.Wildmen)
+			if (::Const.DLC.Wildmen)
 			{
 				armor.extend([
 					"armor/named/named_noble_mail_armor"
 				]);
 			}
-			this.m.Items.equip(this.Const.World.Common.pickArmor(this.Const.World.Common.convNameToList(armor)));
+			this.m.Items.equip(::Const.World.Common.pickArmor(::Const.World.Common.convNameToList(armor)));
 		}
 		else this.m.IsMinibossWeapon <- true;
 	}

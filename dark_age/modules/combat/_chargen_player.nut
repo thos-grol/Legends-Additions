@@ -12,12 +12,12 @@
 		this.m.Skills.add(this.new("scripts/skills/special/legend_horserider_skill"));
 		this.m.Skills.add(this.new("scripts/skills/effects/legend_veteran_levels_effect"));
 
-		if (this.Const.DLC.Unhold)
+		if (::Const.DLC.Unhold)
 		{
 			this.m.Skills.add(this.new("scripts/skills/actives/wake_ally_skill"));
 		}
 
-		this.setFaction(this.Const.Faction.Player);
+		this.setFaction(::Const.Faction.Player);
 		this.m.Items.setUnlockedBagSlots(2);
 		this.m.Skills.add(this.new("scripts/skills/special/bag_fatigue"));
 		this.setDiscovered(true);
@@ -27,7 +27,7 @@
 	{
 		if (this.isSomethingToSee() && this.World.getTime().Days >= 7) _backgrounds = ::Const.CharacterPiracyBackgrounds;
 
-		local background = ::new("scripts/skills/backgrounds/" + _backgrounds[this.Math.rand(0, _backgrounds.len() - 1)]);
+		local background = ::new("scripts/skills/backgrounds/" + _backgrounds[::Math.rand(0, _backgrounds.len() - 1)]);
 		if (::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled")
             background.setGender(_gender);
 		this.m.Skills.add(background);
@@ -155,14 +155,14 @@
 
 		for( local done = 0; done < _num; done = done )
 		{
-			local weight = this.Math.rand(1, totalWeight);
+			local weight = ::Math.rand(1, totalWeight);
 			local totalhere = 0;
 
 			for( local i = 0; i < attributes.len(); i = i )
 			{
 				if (weight > totalhere && weight <= totalhere + weights[i])
 				{
-					local r = this.Math.rand(1, 100);
+					local r = ::Math.rand(1, 100);
 					local j = attributes[i];
 
 					if (r <= 60)
@@ -220,12 +220,12 @@
 
 	o.updateLevel = function()
 	{
-		while (this.m.Level < this.Const.LevelXP.len() && this.m.XP >= this.Const.LevelXP[this.m.Level] && this.m.Level < 11)
+		while (this.m.Level < ::Const.LevelXP.len() && this.m.XP >= ::Const.LevelXP[this.m.Level] && this.m.Level < 11)
 		{
 			++this.m.Level;
 			++this.m.LevelUps;
 
-			if (this.m.Level <= this.Const.XP.MaxLevelWithPerkpoints)
+			if (this.m.Level <= ::Const.XP.MaxLevelWithPerkpoints)
 			{
 				++this.m.PerkPoints;
 			}
@@ -271,7 +271,7 @@
 		try
 		{
 			local broStash = this.getBackground().getModifiers().Stash;
-			local item = this.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+			local item = this.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
 
 			if (item != null)
 			{

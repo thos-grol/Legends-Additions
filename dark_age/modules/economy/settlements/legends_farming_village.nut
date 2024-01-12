@@ -280,34 +280,34 @@
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/crowd_building"), 5);
 		this.addBuilding(::new("scripts/entity/world/settlements/buildings/marketplace_building"), 2);
 
-		if (this.m.Size >= 2 && this.Math.rand(1, 100) <= 50)
+		if (this.m.Size >= 2 && ::Math.rand(1, 100) <= 50)
 		{
 			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/blackmarket_building"));
 		}
 
-		if (this.Math.rand(1, 100) <= 25)
+		if (::Math.rand(1, 100) <= 25)
 		{
 
 			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 		}
-		else if (this.Math.rand(1, 100) <= 25)
+		else if (::Math.rand(1, 100) <= 25)
 		{
 			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 		}
 
-		this.buildAttachedLocation(this.Math.rand(1, 2), "scripts/entity/world/attached_location/wheat_fields_location", [
+		this.buildAttachedLocation(::Math.rand(1, 2), "scripts/entity/world/attached_location/wheat_fields_location", [
 			::Const.World.TerrainType.Plains
 		], [], 2);
-		this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/orchard_location", [
+		this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/orchard_location", [
 			::Const.World.TerrainType.Plains
 		], [], 1);
-		this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/wool_spinner_location", [
+		this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/wool_spinner_location", [
 			::Const.World.TerrainType.Plains,
 			::Const.World.TerrainType.Tundra
 		], [
 			::Const.World.TerrainType.Plains
 		]);
-		this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/herbalists_grove_location", [
+		this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/herbalists_grove_location", [
 			::Const.World.TerrainType.Plains,
 			::Const.World.TerrainType.Swamp,
 			::Const.World.TerrainType.Steppe,
@@ -326,7 +326,7 @@
 		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/tavern_building"));
 		if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/temple_building"));
 
-		if (this.Math.rand(1, 100) <= 70)
+		if (::Math.rand(1, 100) <= 70)
 		{
 			this.buildAttachedLocation(1, "scripts/entity/world/attached_location/wool_spinner_location", [
 				::Const.World.TerrainType.Plains,
@@ -334,7 +334,7 @@
 			], [
 				::Const.World.TerrainType.Plains
 			]);
-			this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/brewery_location", [
+			this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/brewery_location", [
 				::Const.World.TerrainType.Plains,
 				::Const.World.TerrainType.Tundra
 			], [
@@ -343,7 +343,7 @@
 		}
 		else
 		{
-			this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/wool_spinner_location", [
+			this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/wool_spinner_location", [
 				::Const.World.TerrainType.Plains,
 				::Const.World.TerrainType.Tundra
 			], [
@@ -357,19 +357,19 @@
 			], 1);
 		}
 
-		this.buildAttachedLocation(this.Math.rand(1, 2), "scripts/entity/world/attached_location/wheat_fields_location", [
+		this.buildAttachedLocation(::Math.rand(1, 2), "scripts/entity/world/attached_location/wheat_fields_location", [
 			::Const.World.TerrainType.Plains
 		], [], 2);
-		this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/orchard_location", [
+		this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/orchard_location", [
 			::Const.World.TerrainType.Plains
 		], [], 1);
-		this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/wool_spinner_location", [
+		this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/wool_spinner_location", [
 			::Const.World.TerrainType.Plains,
 			::Const.World.TerrainType.Tundra
 		], [
 			::Const.World.TerrainType.Plains
 		]);
-		this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/wooden_watchtower_location", [
+		this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/wooden_watchtower_location", [
 			::Const.World.TerrainType.Plains,
 			::Const.World.TerrainType.Steppe,
 			::Const.World.TerrainType.Snow,
@@ -389,12 +389,12 @@
 		{
 			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/fletcher_building"));
 		}
-		else if (this.Math.rand(1, 100) <= 50)
+		else if (::Math.rand(1, 100) <= 50)
 		{
 			if (hasFreeBuildingSlot()) this.addBuilding(::new("scripts/entity/world/settlements/buildings/armorsmith_building"));
 		}
 
-		if (this.Math.rand(1, 100) <= 70)
+		if (::Math.rand(1, 100) <= 70)
 		{
 			this.buildAttachedLocation(1, "scripts/entity/world/attached_location/wool_spinner_location", [
 				::Const.World.TerrainType.Plains,
@@ -402,7 +402,7 @@
 			], [
 				::Const.World.TerrainType.Plains
 			], 1, true);
-			this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/brewery_location", [
+			this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/brewery_location", [
 				::Const.World.TerrainType.Plains,
 				::Const.World.TerrainType.Tundra
 			], [
@@ -411,7 +411,7 @@
 		}
 		else
 		{
-			this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/wool_spinner_location", [
+			this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/wool_spinner_location", [
 				::Const.World.TerrainType.Plains,
 				::Const.World.TerrainType.Tundra
 			], [
@@ -425,7 +425,7 @@
 			], 1, true);
 		}
 
-		if (this.Math.rand(1, 100) <= 70)
+		if (::Math.rand(1, 100) <= 70)
 		{
 			this.buildAttachedLocation(1, "scripts/entity/world/attached_location/wooden_watchtower_location", [
 				::Const.World.TerrainType.Plains,
@@ -434,7 +434,7 @@
 				::Const.World.TerrainType.Hills,
 				::Const.World.TerrainType.Tundra
 			], [], 4, true);
-			this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/militia_trainingcamp_location", [
+			this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/militia_trainingcamp_location", [
 				::Const.World.TerrainType.Plains,
 				::Const.World.TerrainType.Steppe,
 				::Const.World.TerrainType.Snow,
@@ -444,7 +444,7 @@
 		}
 		else
 		{
-			this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/wooden_watchtower_location", [
+			this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/wooden_watchtower_location", [
 				::Const.World.TerrainType.Plains,
 				::Const.World.TerrainType.Steppe,
 				::Const.World.TerrainType.Snow,
@@ -460,13 +460,13 @@
 			], [], 1, true);
 		}
 
-		this.buildAttachedLocation(this.Math.rand(1, 2), "scripts/entity/world/attached_location/wheat_fields_location", [
+		this.buildAttachedLocation(::Math.rand(1, 2), "scripts/entity/world/attached_location/wheat_fields_location", [
 			::Const.World.TerrainType.Plains
 		], [], 2);
-		this.buildAttachedLocation(this.Math.rand(0, 2), "scripts/entity/world/attached_location/orchard_location", [
+		this.buildAttachedLocation(::Math.rand(0, 2), "scripts/entity/world/attached_location/orchard_location", [
 			::Const.World.TerrainType.Plains
 		], [], 1);
-		this.buildAttachedLocation(this.Math.rand(0, 1), "scripts/entity/world/attached_location/herbalists_grove_location", [
+		this.buildAttachedLocation(::Math.rand(0, 1), "scripts/entity/world/attached_location/herbalists_grove_location", [
 			::Const.World.TerrainType.Plains,
 			::Const.World.TerrainType.Swamp,
 			::Const.World.TerrainType.Steppe,

@@ -27,12 +27,12 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 
 	function start()
 	{
-		this.m.DifficultyMult = this.Math.rand(115, 145) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(115, 145) * 0.01;
 		
 		if (this.m.Destination == null || this.m.Destination.isNull())
 		{
 			local myTile = this.World.State.getPlayer().getTile();
-			local undead = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).getSettlements();
+			local undead = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getSettlements();
 			local lowestDistance = 9999;
 			local best;
 
@@ -66,7 +66,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 		}
 		this.m.Payment.Pool = pay_amount;
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -89,7 +89,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					"Secure " + this.Flags.get("DestinationName")
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -113,32 +113,32 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 				// }
 
 				// this.Contract.m.Destination.setLootScaleBasedOnResources(100 * this.Contract.getDifficultyMult());
-				// this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 60 * this.Contract.getDifficultyMult()));
-				local r = this.Math.rand(1, 100);
+				// this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 60 * this.Contract.getDifficultyMult()));
+				local r = ::Math.rand(1, 100);
 
 				// if (r <= 10 && this.World.Assets.getBusinessReputation() > 500)
 				// {
 				// 	this.Flags.set("IsMysteriousMap", true);
 				// 	this.logInfo("map");
-				// 	local bandits = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits);
+				// 	local bandits = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits);
 				// 	this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
 				// 	this.Contract.m.Destination.setFaction(bandits.getID());
 				// 	bandits.addSettlement(this.Contract.m.Destination.get(), false);
-				// 	this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditRoamers, 100 * this.Contract.getDifficultyMult());
+				// 	this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditRoamers, 100 * this.Contract.getDifficultyMult());
 				// }
 				// else if (r <= 40)
 				if (r <= 25)
 				{
 					this.Flags.set("IsGraverobbers", true);
 					this.logInfo("graverobbers");
-					local bandits = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits);
+					local bandits = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits);
 					this.Contract.m.Destination.clearTroops();
 					this.Contract.m.Destination.setLastSpawnTimeToNow();
 
 					this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
 					this.Contract.m.Destination.setFaction(bandits.getID());
 					bandits.addSettlement(this.Contract.m.Destination.get(), false);
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.BanditRoamers, 100 * this.Contract.getDifficultyMult());
+					this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditRoamers, 100 * this.Contract.getDifficultyMult());
 				}
 				else
 				{
@@ -165,7 +165,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 			{
 				if (this.Contract.m.Destination == null || this.Contract.m.Destination.isNull())
 				{
-					if (this.Flags.get("IsUndead") && this.Math.rand(1, 100) <= 25)
+					if (this.Flags.get("IsUndead") && ::Math.rand(1, 100) <= 25)
 					{
 						this.Flags.set("IsNecromancer", true);
 						this.Contract.setScreen("Necromancer0");
@@ -280,7 +280,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					}
 					else if (this.Flags.get("IsMysteriousMapAccepted"))
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							this.Contract.setScreen("Failure1");
 						}
@@ -303,8 +303,8 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -413,14 +413,14 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					{
 						this.updateAchievement("NeverTrustAMercenary", 1, 1);
 						local tile = this.Contract.getTileToSpawnLocation(this.World.State.getPlayer().getTile(), 8, 18, [
-							this.Const.World.TerrainType.Shore,
-							this.Const.World.TerrainType.Ocean,
-							this.Const.World.TerrainType.Mountains
+							::Const.World.TerrainType.Shore,
+							::Const.World.TerrainType.Ocean,
+							::Const.World.TerrainType.Mountains
 						], false);
 						tile.clear();
 						this.Contract.m.TreasureLocation = this.WeakTableRef(this.World.spawnLocation("scripts/entity/world/locations/undead_ruins_location", tile.Coords));
 						this.Contract.m.TreasureLocation.onSpawned();
-						this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).addSettlement(this.Contract.m.TreasureLocation.get(), false);
+						this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).addSettlement(this.Contract.m.TreasureLocation.get(), false);
 						this.Contract.m.TreasureLocation.addToInventory("loot/silverware_item");
 						this.Contract.m.TreasureLocation.addToInventory("loot/silver_bowl_item");
 						return "MysteriousMap2";
@@ -463,7 +463,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					Text = "Time to collect our pay.",
 					function getResult()
 					{
-						this.Flags.set("DestinationName", this.World.EntityManager.getUniqueLocationName(this.Const.World.LocationNames.NecromancerLair));
+						this.Flags.set("DestinationName", this.World.EntityManager.getUniqueLocationName(::Const.World.LocationNames.NecromancerLair));
 						return 0;
 					}
 
@@ -482,23 +482,23 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					Text = "Very well, we\'ll hunt that Necromancer down.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Secured the cemetery");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Secured the cemetery");
 						local tile = this.Contract.getTileToSpawnLocation(this.World.State.getPlayer().getTile(), 8, 15, [
-							this.Const.World.TerrainType.Shore,
-							this.Const.World.TerrainType.Ocean,
-							this.Const.World.TerrainType.Mountains
+							::Const.World.TerrainType.Shore,
+							::Const.World.TerrainType.Ocean,
+							::Const.World.TerrainType.Mountains
 						], false);
 						tile.clear();
 						this.Contract.m.Destination = this.WeakTableRef(this.World.spawnLocation("scripts/entity/world/locations/undead_necromancers_lair_location", tile.Coords));
 						this.Contract.m.Destination.onSpawned();
-						this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).addSettlement(this.Contract.m.Destination.get(), false);
+						this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).addSettlement(this.Contract.m.Destination.get(), false);
 						this.Contract.m.Destination.setName(this.Flags.get("DestinationName"));
 						this.Contract.m.Destination.setDiscovered(true);
 						this.Contract.m.Destination.clearTroops();
 						this.Contract.m.Destination.setLootScaleBasedOnResources(115 * this.Contract.getDifficultyMult());
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.Necromancer, 115 * this.Contract.getDifficultyMult());
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.Necromancer, 115 * this.Contract.getDifficultyMult());
 
 						if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
 						{
@@ -517,9 +517,9 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					Text = "No, the company\'s done enough here.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Secured the cemetery");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Secured the cemetery");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -531,7 +531,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -584,14 +584,14 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Secured the cemetery");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Secured the cemetery");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCommonContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCommonContract);
 						}
 
 						return 0;
@@ -604,7 +604,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -622,9 +622,9 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Secured the cemetery");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Secured the cemetery");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -636,7 +636,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -654,14 +654,14 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractPoor, "Secured the cemetery");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractPoor, "Secured the cemetery");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCommonContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCommonContract);
 						}
 
 						return 0;
@@ -674,7 +674,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -692,9 +692,9 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					Text = "Damn this! (Decrease Morals)",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
 						this.World.Assets.addMoralReputation(-1);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationAttacked);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationAttacked);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -714,10 +714,10 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 					Text = "Hrm. (Decrease Morals)",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractPoor);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractPoor);
 						this.World.Assets.addMoralReputation(-1);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion() / 2);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -729,7 +729,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() / 2 + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() / 2 + "[/color] Crowns"
 				});
 			}
 
@@ -744,7 +744,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 		]);
 		_vars.push([
 			"treasure_direction",
-			this.m.TreasureLocation == null || this.m.TreasureLocation.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.TreasureLocation.getTile())]
+			this.m.TreasureLocation == null || this.m.TreasureLocation.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.TreasureLocation.getTile())]
 		]);
 		_vars.push([
 			"necromancer_location",
@@ -768,7 +768,7 @@ this.investigate_cemetery_contract <- this.inherit("scripts/contracts/contract",
 			{
 				this.m.Destination.getSprite("selection").Visible = false;
 				this.m.Destination.setOnCombatWithPlayerCallback(null);
-				local zombies = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies);
+				local zombies = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies);
 				this.World.FactionManager.getFaction(this.m.Destination.getFaction()).removeSettlement(this.m.Destination);
 				this.m.Destination.setFaction(zombies.getID());
 				zombies.addSettlement(this.m.Destination.get(), false);

@@ -74,16 +74,16 @@ this.move_troops_action <- this.inherit("scripts/factions/faction_action", {
 
 		for( local i = 0; i < 1; i = ++i )
 		{
-			local party = this.getFaction().spawnEntity(this.m.Start.getTile(), this.m.Start.getName() + " Company", true, this.Const.World.Spawn.Noble, this.Math.rand(100, 300) * this.getReputationToDifficultyLightMult());
+			local party = this.getFaction().spawnEntity(this.m.Start.getTile(), this.m.Start.getName() + " Company", true, ::Const.World.Spawn.Noble, ::Math.rand(100, 300) * this.getReputationToDifficultyLightMult());
 			party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + _faction.getBannerString());
 			party.setDescription("Professional soldiers in service to local lords.");
-			party.setFootprintType(this.Const.World.FootprintsType.Nobles);
+			party.setFootprintType(::Const.World.FootprintsType.Nobles);
 			party.getFlags().set("IsRandomlySpawned", true);
-			party.getLoot().Money = this.Math.rand(0, 50);
-			party.getLoot().ArmorParts = this.Math.rand(0, 25);
-			party.getLoot().Medicine = this.Math.rand(0, 5);
-			party.getLoot().Ammo = this.Math.rand(0, 30);
-			local r = this.Math.rand(1, 4);
+			party.getLoot().Money = ::Math.rand(0, 50);
+			party.getLoot().ArmorParts = ::Math.rand(0, 25);
+			party.getLoot().Medicine = ::Math.rand(0, 5);
+			party.getLoot().Ammo = ::Math.rand(0, 30);
+			local r = ::Math.rand(1, 4);
 
 			if (r == 1)
 			{

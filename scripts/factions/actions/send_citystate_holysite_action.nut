@@ -10,7 +10,7 @@ this.send_citystate_holysite_action <- this.inherit("scripts/factions/faction_ac
 
 	function onUpdate( _faction )
 	{
-		if (!(this.World.FactionManager.getGreaterEvilType() == this.Const.World.GreaterEvilType.HolyWar && this.World.FactionManager.getGreaterEvilPhase() >= this.Const.World.GreaterEvilPhase.Warning))
+		if (!(this.World.FactionManager.getGreaterEvilType() == ::Const.World.GreaterEvilType.HolyWar && this.World.FactionManager.getGreaterEvilPhase() >= ::Const.World.GreaterEvilPhase.Warning))
 		{
 			return;
 		}
@@ -129,16 +129,16 @@ this.send_citystate_holysite_action <- this.inherit("scripts/factions/faction_ac
 
 		for( local i = 0; i < num; i = i )
 		{
-			local party = _faction.spawnEntity(spawnpoints[i], "Regiment of " + _faction.getNameOnly(), true, this.Const.World.Spawn.Southern, this.Math.rand(90, 120) * this.getScaledDifficultyMult());
+			local party = _faction.spawnEntity(spawnpoints[i], "Regiment of " + _faction.getNameOnly(), true, ::Const.World.Spawn.Southern, ::Math.rand(90, 120) * this.getScaledDifficultyMult());
 			party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + _faction.getBannerString());
 			party.setDescription("Conscripted soldiers loyal to their city state.");
-			party.setFootprintType(this.Const.World.FootprintsType.CityState);
+			party.setFootprintType(::Const.World.FootprintsType.CityState);
 			party.getFlags().set("IsRandomlySpawned", true);
-			party.getLoot().Money = this.Math.rand(50, 150);
-			party.getLoot().ArmorParts = this.Math.rand(10, 35);
-			party.getLoot().Medicine = this.Math.rand(5, 15);
-			party.getLoot().Ammo = this.Math.rand(10, 40);
-			local r = this.Math.rand(1, 4);
+			party.getLoot().Money = ::Math.rand(50, 150);
+			party.getLoot().ArmorParts = ::Math.rand(10, 35);
+			party.getLoot().Medicine = ::Math.rand(5, 15);
+			party.getLoot().Ammo = ::Math.rand(10, 40);
+			local r = ::Math.rand(1, 4);
 
 			if (r <= 2)
 			{
@@ -160,7 +160,7 @@ this.send_citystate_holysite_action <- this.inherit("scripts/factions/faction_ac
 				"trade/spices_item"
 			];
 
-			for( local i = 0; i < this.Math.round(r / 2); i++ )
+			for( local i = 0; i < ::Math.round(r / 2); i++ )
 			{
 				party.addToInventory(arr[r - 1]);
 			}

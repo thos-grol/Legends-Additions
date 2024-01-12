@@ -82,11 +82,11 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 
 	function resetTime()
 	{
-		this.m.TurnsLeft = this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+		this.m.TurnsLeft = ::Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 
 		if (this.m.SoundOnUse.len() != 0)
 		{
-			this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, this.getContainer().getActor().getPos());
+			this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, this.getContainer().getActor().getPos());
 		}
 	}
 
@@ -106,7 +106,7 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 				local hitInfo = clone ::Const.Tactical.HitInfo;
 				if (actor.getFlags().has("wurm")) hitInfo.DamageRegular = 0;
 				else hitInfo.DamageRegular = (actor.getArmor(::Const.BodyPart.Head)/actor.getArmorMax(::Const.BodyPart.Head) < 0.5) ? 10.0 : 5.0;
-				hitInfo.DamageArmor = this.Math.min(actor.getArmor(::Const.BodyPart.Head), 40.0);
+				hitInfo.DamageArmor = ::Math.min(actor.getArmor(::Const.BodyPart.Head), 40.0);
 				hitInfo.DamageDirect = 0.0;
 				hitInfo.BodyPart = ::Const.BodyPart.Head;
 				hitInfo.BodyDamageMult = 1.0;
@@ -121,7 +121,7 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 				local hitInfo = clone ::Const.Tactical.HitInfo;
 				if (actor.getFlags().has("wurm")) hitInfo.DamageRegular = 0;
 				else hitInfo.DamageRegular = (actor.getArmor(::Const.BodyPart.Body)/actor.getArmorMax(::Const.BodyPart.Body) < 0.5) ? 20.0 : 10.0;
-				hitInfo.DamageArmor = this.Math.min(actor.getArmor(::Const.BodyPart.Body), 40.0);
+				hitInfo.DamageArmor = ::Math.min(actor.getArmor(::Const.BodyPart.Body), 40.0);
 				hitInfo.DamageDirect = 0.0;
 				hitInfo.BodyPart = ::Const.BodyPart.Body;
 				hitInfo.BodyDamageMult = 1.0;
@@ -135,7 +135,7 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 			{
 				if (this.m.SoundOnUse.len() != 0)
 				{
-					this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.2, actor.getPos());
+					this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.2, actor.getPos());
 				}
 
 				for( local i = 0; i < ::Const.Tactical.AcidParticles.len(); i = ++i )
@@ -157,11 +157,11 @@ this.lindwurm_acid_effect <- this.inherit("scripts/skills/skill", {
 
 		if (actor.getType() == ::Const.EntityType.Lindwurm || actor.getType() == ::Const.EntityType.LegendStollwurm) return;
 
-		this.m.TurnsLeft = this.Math.max(1, 3 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+		this.m.TurnsLeft = ::Math.max(1, 3 + actor.getCurrentProperties().NegativeStatusEffectDuration);
 
 		if (this.m.SoundOnUse.len() != 0)
 		{
-			this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
+			this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
 		}
 
 		for( local i = 0; i < ::Const.Tactical.AcidParticles.len(); i = ++i )

@@ -101,7 +101,7 @@ this.send_barbarian_ambushers_action <- this.inherit("scripts/factions/faction_a
 		settlement.setLastSpawnTimeToNow();
 		local mult = this.World.FactionManager.isCivilWar() ? 1.1 : 1.0;
 
-		if (this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
+		if (this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Legendary)
 		{
 			if (this.World.FactionManager.isCivilWar())
 			{
@@ -119,27 +119,27 @@ this.send_barbarian_ambushers_action <- this.inherit("scripts/factions/faction_a
 			mult = mult * (distanceToNextSettlement / 14);
 		}
 
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Barbarians", false, this.Const.World.Spawn.Barbarians, this.Math.rand(75, 120) * this.getReputationToDifficultyLightMult() * mult);
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Barbarians", false, ::Const.World.Spawn.Barbarians, ::Math.rand(75, 120) * this.getReputationToDifficultyLightMult() * mult);
 		party.getSprite("banner").setBrush(settlement.getBanner());
 		party.setDescription("A warband of barbarian tribals.");
-		party.setFootprintType(this.Const.World.FootprintsType.Barbarians);
+		party.setFootprintType(::Const.World.FootprintsType.Barbarians);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
-		party.getLoot().ArmorParts = this.Math.rand(0, 10);
-		party.getLoot().Medicine = this.Math.rand(0, 5);
-		party.getLoot().Ammo = this.Math.rand(0, 30);
+		party.getLoot().Money = ::Math.rand(0, 50);
+		party.getLoot().ArmorParts = ::Math.rand(0, 10);
+		party.getLoot().Medicine = ::Math.rand(0, 5);
+		party.getLoot().Ammo = ::Math.rand(0, 30);
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
 			party.addToInventory("loot/bone_figurines_item");
 		}
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
 			party.addToInventory("loot/bead_necklace_item");
 		}
 
-		local r = this.Math.rand(2, 5);
+		local r = ::Math.rand(2, 5);
 
 		if (r == 2)
 		{

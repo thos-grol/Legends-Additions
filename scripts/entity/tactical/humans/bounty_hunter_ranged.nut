@@ -18,7 +18,7 @@ this.bounty_hunter_ranged <- this.inherit("scripts/entity/tactical/humans/mercen
 
 	function pickOutfit()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"thick_tunic"
@@ -45,9 +45,9 @@ this.bounty_hunter_ranged <- this.inherit("scripts/entity/tactical/humans/mercen
 			]
 		]));
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
-			local item = this.Const.World.Common.pickHelmet([
+			local item = ::Const.World.Common.pickHelmet([
 				[
 					1,
 					"hood"

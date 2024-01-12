@@ -2,14 +2,14 @@ this.militia_captain <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.MilitiaCaptain;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.MilitiaCaptain.XP;
+		this.m.Type = ::Const.EntityType.MilitiaCaptain;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.MilitiaCaptain.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.AllMale;
-		this.m.HairColors = this.Const.HairColors.Old;
-		this.m.Beards = this.Const.Beards.All;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.AllMale;
+		this.m.HairColors = ::Const.HairColors.Old;
+		this.m.Beards = ::Const.Beards.All;
 		this.m.Flags.add("militia");
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/militia_melee_agent");
 		this.m.AIAgent.setActor(this);
@@ -19,7 +19,7 @@ this.militia_captain <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.MilitiaCaptain);
+		b.setValues(::Const.Tactical.Actor.MilitiaCaptain);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -32,7 +32,7 @@ this.militia_captain <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function pickOutfit()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"basic_mail_shirt"
@@ -46,8 +46,8 @@ this.militia_captain <- this.inherit("scripts/entity/tactical/abstract_human", {
 				"mail_shirt"
 			]
 		]));
-		local r = this.Math.rand(1, 4);
-		this.m.Items.equip(this.Const.World.Common.pickHelmet([
+		local r = ::Math.rand(1, 4);
+		this.m.Items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"nasal_helmet_with_mail"

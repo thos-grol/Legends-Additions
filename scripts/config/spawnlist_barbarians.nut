@@ -25,7 +25,7 @@ gt.Const.World.Spawn.Barbarians <- {
 			MinCount = 1,
 			MaxCount = 2,
 			Weight = 70,
-			Type = this.Const.World.Spawn.Troops.BarbarianDrummer,
+			Type = ::Const.World.Spawn.Troops.BarbarianDrummer,
 			Cost = 20
 		}
 	],
@@ -34,17 +34,17 @@ gt.Const.World.Spawn.Barbarians <- {
 			Weight = 80,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.BarbarianThrall,
+					Type = ::Const.World.Spawn.Troops.BarbarianThrall,
 					Cost = 15
 				},
 				{
 					MinR = 250,
-					Type = this.Const.World.Spawn.Troops.BarbarianMarauder,
+					Type = ::Const.World.Spawn.Troops.BarbarianMarauder,
 					Cost = 22
 				},
 				{
 					MinR = 500,
-					Type = this.Const.World.Spawn.Troops.BarbarianChampion,
+					Type = ::Const.World.Spawn.Troops.BarbarianChampion,
 					Cost = 35
 				}
 			]
@@ -54,19 +54,19 @@ gt.Const.World.Spawn.Barbarians <- {
 			MinR = 650,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.BarbarianBeastmaster,
+					Type = ::Const.World.Spawn.Troops.BarbarianBeastmaster,
 					Cost = 15,
 					MinGuards = 1,
 					MaxGuards = 2,
 					MaxGuardsWeight = 50,
 					Guards = [
 						{
-							Type = this.Const.World.Spawn.Troops.DirewolfHIGH,
+							Type = ::Const.World.Spawn.Troops.DirewolfHIGH,
 							Cost = 50,
 							function Weight( scale )
 							{
 								local c = 100 - scale * 100;
-								return this.Math.max(20, c);
+								return ::Math.max(20, c);
 							}
 						}
 					]
@@ -90,7 +90,7 @@ gt.Const.World.Spawn.BarbarianHunters <- {
 			Weight = 66,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.BarbarianThrall,
+					Type = ::Const.World.Spawn.Troops.BarbarianThrall,
 					Cost = 12
 				}
 			]
@@ -107,7 +107,7 @@ gt.Const.World.Spawn.BarbarianKing <- {
 	MaxR = 500,
 	Fixed = [
 		{
-			Type = this.Const.World.Spawn.Troops.BarbarianChosen,
+			Type = ::Const.World.Spawn.Troops.BarbarianChosen,
 			Weight = 0,
 			Cost = 50
 		}

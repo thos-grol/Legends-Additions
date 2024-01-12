@@ -31,7 +31,7 @@
 		stash.add(::new("scripts/items/supplies/cured_venison_item"));
 		stash.removeByID("supplies.ground_grains");
 		stash.removeByID("supplies.ground_grains");
-		r = this.Math.rand(0, 1);
+		r = ::Math.rand(0, 1);
 
 		if (r == 0)
 		{

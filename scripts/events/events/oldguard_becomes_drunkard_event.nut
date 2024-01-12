@@ -107,7 +107,7 @@ this.oldguard_becomes_drunkard_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Oldguard = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Oldguard = candidates[::Math.rand(0, candidates.len() - 1)];
 
 		for( local i = 0; i < fallen.len(); i = i )
 		{

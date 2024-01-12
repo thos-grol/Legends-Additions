@@ -125,18 +125,18 @@ this.send_citystate_army_action <- this.inherit("scripts/factions/faction_action
 			}
 		}
 
-		for( local i = 0; i != this.Math.min(2, spawnpoints.len()); i = i )
+		for( local i = 0; i != ::Math.min(2, spawnpoints.len()); i = i )
 		{
-			local party = _faction.spawnEntity(spawnpoints[i], "Regiment of " + _faction.getNameOnly(), true, this.Const.World.Spawn.Southern, this.Math.rand(80, 120) * this.getScaledDifficultyMult());
+			local party = _faction.spawnEntity(spawnpoints[i], "Regiment of " + _faction.getNameOnly(), true, ::Const.World.Spawn.Southern, ::Math.rand(80, 120) * this.getScaledDifficultyMult());
 			party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + _faction.getBannerString());
 			party.setDescription("Conscripted soldiers loyal to their city state.");
-			party.setFootprintType(this.Const.World.FootprintsType.CityState);
+			party.setFootprintType(::Const.World.FootprintsType.CityState);
 			party.getFlags().set("IsRandomlySpawned", true);
-			party.getLoot().Money = this.Math.rand(50, 150);
-			party.getLoot().ArmorParts = this.Math.rand(10, 35);
-			party.getLoot().Medicine = this.Math.rand(5, 15);
-			party.getLoot().Ammo = this.Math.rand(10, 40);
-			local r = this.Math.rand(1, 4);
+			party.getLoot().Money = ::Math.rand(50, 150);
+			party.getLoot().ArmorParts = ::Math.rand(10, 35);
+			party.getLoot().Medicine = ::Math.rand(5, 15);
+			party.getLoot().Ammo = ::Math.rand(10, 40);
+			local r = ::Math.rand(1, 4);
 
 			if (r <= 2)
 			{
@@ -158,13 +158,13 @@ this.send_citystate_army_action <- this.inherit("scripts/factions/faction_action
 				"trade/spices_item"
 			];
 
-			for( local i = 0; i < this.Math.round(r / 2); i++ )
+			for( local i = 0; i < ::Math.round(r / 2); i++ )
 			{
 				party.addToInventory(arr[r - 1]);
 			}
 
 			local c = party.getController();
-			local target = targets[this.Math.rand(0, targets.len() - 1)];
+			local target = targets[::Math.rand(0, targets.len() - 1)];
 			local move = this.new("scripts/ai/world/orders/move_order");
 			move.setDestination(target.getTile());
 			c.addOrder(move);

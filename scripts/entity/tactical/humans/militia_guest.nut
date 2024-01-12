@@ -14,19 +14,19 @@ this.militia_guest <- this.inherit("scripts/entity/tactical/player", {
 
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Militia;
-		this.m.BloodType = this.Const.BloodType.Red;
+		this.m.Type = ::Const.EntityType.Militia;
+		this.m.BloodType = ::Const.BloodType.Red;
 		this.m.XP = ::B.Info[this.m.Type].Level * 35;
 		this.m.IsGuest = true;
 		this.player.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.AllMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.All;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.AllMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.All;
 		this.m.AIAgent = this.new("scripts/ai/tactical/player_agent");
 		this.m.AIAgent.setActor(this);
 
-		if (this.Math.rand(1, 100) <= 10)
+		if (::Math.rand(1, 100) <= 10)
 		{
 			this.setGender(1);
 		}
@@ -36,16 +36,16 @@ this.militia_guest <- this.inherit("scripts/entity/tactical/player", {
 	{
 		this.player.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Militia);
+		b.setValues(::Const.Tactical.Actor.Militia);
 		b.TargetAttractionMult = 1.0;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.Talents.resize(this.Const.Attributes.COUNT, 0);
-		this.m.Attributes.resize(this.Const.Attributes.COUNT, [
+		this.m.Talents.resize(::Const.Attributes.COUNT, 0);
+		this.m.Attributes.resize(::Const.Attributes.COUNT, [
 			0
 		]);
-		this.m.Name = this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)];
+		this.m.Name = ::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)];
 		this.m.Title = "the Militiaman";
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_militia");
@@ -54,7 +54,7 @@ this.militia_guest <- this.inherit("scripts/entity/tactical/player", {
 
 	function pickOutfit()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"leather_tunic"
@@ -85,9 +85,9 @@ this.militia_guest <- this.inherit("scripts/entity/tactical/player", {
 			]
 		]));
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
-			this.m.Items.equip(this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::Const.World.Common.pickHelmet([
 				[
 					1,
 					"hood"
@@ -115,7 +115,7 @@ this.militia_guest <- this.inherit("scripts/entity/tactical/player", {
 
 	function assignRandomEquipment()
 	{
-		this.m.Type = this.Const.EntityType.Militia;
+		this.m.Type = ::Const.EntityType.Militia;
 		//Assign outfit and get the defense tree
 		pickOutfit();
 		local weight_armor = this.getItems().getStaminaModifier([

@@ -24,11 +24,11 @@ gt.Const.World.Spawn.GoblinRoamers <- {
 			Weight = 20,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisherLOW,
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisherLOW,
 					Cost = 15
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisher,
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisher,
 					MinR = 400,
 					Cost = 20
 				}
@@ -38,11 +38,11 @@ gt.Const.World.Spawn.GoblinRoamers <- {
 			Weight = 30,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusherLOW,
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusherLOW,
 					Cost = 20
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusher,
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusher,
 					MinR = 400,
 					Cost = 25
 				}
@@ -52,7 +52,7 @@ gt.Const.World.Spawn.GoblinRoamers <- {
 			Weight = 49,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinWolfrider,
+					Type = ::Const.World.Spawn.Troops.GoblinWolfrider,
 					MinR = 800,
 					Cost = 40
 				}
@@ -74,11 +74,11 @@ gt.Const.World.Spawn.GoblinScouts <- {
 			Weight = 30,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisherLOW,
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisherLOW,
 					Cost = 15
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisher,
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisher,
 					MinR = 400,
 					Cost = 20
 				}
@@ -88,11 +88,11 @@ gt.Const.World.Spawn.GoblinScouts <- {
 			Weight = 40,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusherLOW,
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusherLOW,
 					Cost = 20
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusher,
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusher,
 					MinR = 400,
 					Cost = 25
 				}
@@ -102,7 +102,7 @@ gt.Const.World.Spawn.GoblinScouts <- {
 			Weight = 30,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinWolfrider,
+					Type = ::Const.World.Spawn.Troops.GoblinWolfrider,
 					MinR = 800,
 					Cost = 40
 				}
@@ -124,11 +124,11 @@ gt.Const.World.Spawn.GoblinRaiders <- {
 			Weight = 45,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisherLOW,
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisherLOW,
 					Cost = 15
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisher,
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisher,
 					MinR = 400,
 					Cost = 20
 				}
@@ -138,11 +138,11 @@ gt.Const.World.Spawn.GoblinRaiders <- {
 			Weight = 25,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusherLOW,
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusherLOW,
 					Cost = 20
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusher,
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusher,
 					MinR = 400,
 					Cost = 25
 				}
@@ -152,7 +152,7 @@ gt.Const.World.Spawn.GoblinRaiders <- {
 			Weight = 25,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinWolfrider,
+					Type = ::Const.World.Spawn.Troops.GoblinWolfrider,
 					MinR = 800,
 					Cost = 40
 				}
@@ -163,7 +163,7 @@ gt.Const.World.Spawn.GoblinRaiders <- {
 			MinR = 1000,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinOverseer,
+					Type = ::Const.World.Spawn.Troops.GoblinOverseer,
 					Cost = 35
 				}
 			]
@@ -173,7 +173,7 @@ gt.Const.World.Spawn.GoblinRaiders <- {
 			MinR = 1200,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinShaman,
+					Type = ::Const.World.Spawn.Troops.GoblinShaman,
 					Cost = 35
 				}
 			]
@@ -194,11 +194,11 @@ gt.Const.World.Spawn.GoblinDefenders <- {
 			Weight = 50,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisherLOW,
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisherLOW,
 					Cost = 15
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisher,
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisher,
 					MinR = 400,
 					Cost = 20
 				}
@@ -208,11 +208,11 @@ gt.Const.World.Spawn.GoblinDefenders <- {
 			Weight = 30,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusherLOW,
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusherLOW,
 					Cost = 20
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusher,
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusher,
 					MinR = 400,
 					Cost = 25
 				}
@@ -222,7 +222,7 @@ gt.Const.World.Spawn.GoblinDefenders <- {
 			Weight = 15,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinWolfrider,
+					Type = ::Const.World.Spawn.Troops.GoblinWolfrider,
 					MinR = 800,
 					Cost = 40
 				}
@@ -233,7 +233,7 @@ gt.Const.World.Spawn.GoblinDefenders <- {
 			MinR = 1000,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinOverseer,
+					Type = ::Const.World.Spawn.Troops.GoblinOverseer,
 					Cost = 35
 				}
 			]
@@ -243,7 +243,7 @@ gt.Const.World.Spawn.GoblinDefenders <- {
 			MinR = 1200,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinShaman,
+					Type = ::Const.World.Spawn.Troops.GoblinShaman,
 					Cost = 35
 				}
 			]
@@ -261,7 +261,7 @@ gt.Const.World.Spawn.GoblinBoss <- {
 	MaxR = 585,
 	Fixed = [
 		{
-			Type = this.Const.World.Spawn.Troops.GoblinOverseer,
+			Type = ::Const.World.Spawn.Troops.GoblinOverseer,
 			Weight = 0,
 			Cost = 35
 		}
@@ -271,7 +271,7 @@ gt.Const.World.Spawn.GoblinBoss <- {
 			Weight = 55,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisher,
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisher,
 					Cost = 15
 				}
 			]
@@ -280,7 +280,7 @@ gt.Const.World.Spawn.GoblinBoss <- {
 			Weight = 30,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusher,
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusher,
 					Cost = 20
 				}
 			]
@@ -289,7 +289,7 @@ gt.Const.World.Spawn.GoblinBoss <- {
 			Weight = 8,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinWolfrider,
+					Type = ::Const.World.Spawn.Troops.GoblinWolfrider,
 					MinR = 400,
 					Cost = 40
 				}
@@ -299,7 +299,7 @@ gt.Const.World.Spawn.GoblinBoss <- {
 			Weight = 3,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinOverseer,
+					Type = ::Const.World.Spawn.Troops.GoblinOverseer,
 					Cost = 35
 				}
 			]
@@ -308,7 +308,7 @@ gt.Const.World.Spawn.GoblinBoss <- {
 			Weight = 3,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinShaman,
+					Type = ::Const.World.Spawn.Troops.GoblinShaman,
 					MinR = 600,
 					Cost = 35
 				}

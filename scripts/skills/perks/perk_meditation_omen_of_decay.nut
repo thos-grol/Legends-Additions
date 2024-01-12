@@ -35,7 +35,7 @@ this.perk_meditation_omen_of_decay <- this.inherit("scripts/skills/skill", {
 	{
 		this.World.Statistics.getFlags().set("potion_winter", true);
 		local actor = this.getContainer().getActor();
-		if (actor.getFaction() == this.Const.Faction.Player) return;
+		if (actor.getFaction() == ::Const.Faction.Player) return;
 		if (!actor.getFlags().has("decay_bonus")) actor.getFlags().set("decay_bonus", 5);
 
 		if (!actor.getFlags().has("undead")) return;

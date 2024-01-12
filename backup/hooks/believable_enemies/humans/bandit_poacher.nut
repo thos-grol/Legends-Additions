@@ -27,15 +27,15 @@
 		//tribal trait
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bully"));
 		//defensive perk
-		if(this.Math.rand(1, 6) < 6) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_strength_in_numbers"));
+		if(::Math.rand(1, 6) < 6) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_strength_in_numbers"));
 		else this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_recover")); //1
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_onslaught")); //4
-		this.level_ranged_skill(4, this.Math.rand(-6, 3) );
+		this.level_ranged_skill(4, ::Math.rand(-6, 3) );
 		this.level_melee_defense(4, 1);
-		this.level_initiative(3, this.Math.rand(-6, 3) );
-		this.level_fatigue(1, this.Math.rand(-6, 3) );
+		this.level_initiative(3, ::Math.rand(-6, 3) );
+		this.level_fatigue(1, ::Math.rand(-6, 3) );
 
 		local weapons = [
 			[
@@ -45,7 +45,7 @@
 			]
 		];
 
-		local n = this.Math.rand(0, weapons.len() - 1);
+		local n = ::Math.rand(0, weapons.len() - 1);
 		foreach( w in weapons[n] )
 		{
 			this.m.Items.equip(::new("scripts/items/" + w));
@@ -58,7 +58,7 @@
 			else this.m.Skills.add(::new("scripts/skills/perks/perk_ballistics")); //2 -> 3
 		}
 
-		if (this.Math.rand(1, 100) <= 50) this.m.Items.addToBag(::new("scripts/items/weapons/legend_shiv"));
+		if (::Math.rand(1, 100) <= 50) this.m.Items.addToBag(::new("scripts/items/weapons/legend_shiv"));
 		else this.m.Items.addToBag(::new("scripts/items/weapons/knife"));
 
 		local item = ::Const.World.Common.pickArmor([
@@ -69,7 +69,7 @@
 		]);
 		this.m.Items.equip(item);
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
 			local item = ::Const.World.Common.pickHelmet([
 				[
@@ -100,7 +100,7 @@
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_bandits");
 
-		if (this.Math.rand(1, 100) <= 20)
+		if (::Math.rand(1, 100) <= 20)
 		{
 			local pox = this.getSprite("tattoo_head");
 			pox.Visible = true;
@@ -110,7 +110,7 @@
 		{
 			local dirt = this.getSprite("dirt");
 			dirt.Visible = true;
-			dirt.Alpha = this.Math.rand(150, 255);
+			dirt.Alpha = ::Math.rand(150, 255);
 		}
 		this.setArmorSaturation(0.85);
 		this.getSprite("shield_icon").setBrightness(0.85);

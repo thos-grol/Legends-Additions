@@ -2,10 +2,10 @@ this.goblin_leader <- this.inherit("scripts/entity/tactical/goblin", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.GoblinLeader;
-		this.m.XP = this.Const.Tactical.Actor.GoblinLeader.XP;
+		this.m.Type = ::Const.EntityType.GoblinLeader;
+		this.m.XP = ::Const.Tactical.Actor.GoblinLeader.XP;
 		this.goblin.create();
-		this.m.SoundPitch = this.Math.rand(85, 95) * 0.01;
+		this.m.SoundPitch = ::Math.rand(85, 95) * 0.01;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/goblin_leader_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -14,14 +14,14 @@ this.goblin_leader <- this.inherit("scripts/entity/tactical/goblin", {
 	{
 		this.goblin.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.GoblinLeader);
+		b.setValues(::Const.Tactical.Actor.GoblinLeader);
 		b.TargetAttractionMult = 1.5;
 		b.DamageDirectMult = 1.1;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.getSprite("head").setBrush("bust_goblin_03_head_01");
 		this.addDefaultStatusSprites();
 
@@ -43,14 +43,14 @@ this.goblin_leader <- this.inherit("scripts/entity/tactical/goblin", {
 
 	function pickOutfit()
 	{
-		local item = this.Const.World.Common.pickArmor([
+		local item = ::Const.World.Common.pickArmor([
 			[
 				1,
 				"greenskins/goblin_leader_armor"
 			]
 		]);
 		this.m.Items.equip(item);
-		local item = this.Const.World.Common.pickHelmet([
+		local item = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"greenskins/goblin_leader_helmet"

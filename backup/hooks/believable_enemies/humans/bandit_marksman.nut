@@ -35,7 +35,7 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_nimble")); //6
 
 
-		switch(this.Math.rand(0, 1))
+		switch(::Math.rand(0, 1))
 		{
 			case 0:
 				local weapons = [
@@ -45,7 +45,7 @@
 				this.m.Items.equip(::new("scripts/items/" + ::MSU.Array.rand(weapons)));
 				this.m.Items.equip(::new("scripts/items/ammo/quiver_of_arrows"));
 
-				this.m.build_num = this.Math.rand(0, 1);
+				this.m.build_num = ::Math.rand(0, 1);
 
 				switch(this.m.build_num)
 				{
@@ -57,10 +57,10 @@
 						this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_eyes_up")); //5
 						// this.m.Skills.add(::new("scripts/skills/perks/perk_nimble")); //6
 						this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_hip_shooter")); //7
-						this.level_ranged_skill(7, this.Math.rand(-6, 3) );
+						this.level_ranged_skill(7, ::Math.rand(-6, 3) );
 						this.level_melee_defense(4, 1);
-						this.level_initiative(4, this.Math.rand(-6, 3) );
-						this.level_fatigue(6, this.Math.rand(-6, 3) );
+						this.level_initiative(4, ::Math.rand(-6, 3) );
+						this.level_fatigue(6, ::Math.rand(-6, 3) );
 						break;
 					case 0: //aimed shot
 						this.m.Skills.add(::new("scripts/skills/perks/perk_recover")); //1
@@ -71,10 +71,10 @@
 						this.m.Skills.removeByID("perk.nimble");
 						this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_flaming_arrows")); //6
 						this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_marksmanship")); //7
-						this.level_ranged_skill(7, this.Math.rand(-6, 3) );
+						this.level_ranged_skill(7, ::Math.rand(-6, 3) );
 						this.level_melee_defense(7, 1);
-						this.level_initiative(4, this.Math.rand(-6, 3) );
-						this.level_fatigue(3, this.Math.rand(-6, 3) );
+						this.level_initiative(4, ::Math.rand(-6, 3) );
+						this.level_fatigue(3, ::Math.rand(-6, 3) );
 						break;
 
 				}
@@ -95,10 +95,10 @@
 				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_iron_sights")); //5
 				// this.m.Skills.add(::new("scripts/skills/perks/perk_nimble")); //6
 				this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_muscle_memory")); //7
-				this.level_ranged_skill(7, this.Math.rand(-6, 3) );
+				this.level_ranged_skill(7, ::Math.rand(-6, 3) );
 				this.level_melee_defense(7, 1);
-				this.level_initiative(4, this.Math.rand(-6, 3) );
-				this.level_fatigue(3, this.Math.rand(-6, 3) );
+				this.level_initiative(4, ::Math.rand(-6, 3) );
+				this.level_fatigue(3, ::Math.rand(-6, 3) );
 				break;
 		}
 
@@ -126,7 +126,7 @@
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_bandits");
 
-		if (this.Math.rand(1, 100) <= 20)
+		if (::Math.rand(1, 100) <= 20)
 		{
 			local pox = this.getSprite("tattoo_head");
 			pox.Visible = true;
@@ -136,7 +136,7 @@
 		{
 			local dirt = this.getSprite("dirt");
 			dirt.Visible = true;
-			dirt.Alpha = this.Math.rand(150, 255);
+			dirt.Alpha = ::Math.rand(150, 255);
 		}
 
 		this.setArmorSaturation(0.85);
@@ -165,7 +165,7 @@
 		]);
 		this.m.Items.equip(item);
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
 			local item = ::Const.World.Common.pickHelmet([
 				[

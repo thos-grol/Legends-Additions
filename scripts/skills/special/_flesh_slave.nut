@@ -126,10 +126,10 @@ this._flesh_slave <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 		this.Sound.play("sounds/monster/abomination_hurt.wav", 1.0, actor.getPos());
-		local hitInfo = clone this.Const.Tactical.HitInfo;
+		local hitInfo = clone ::Const.Tactical.HitInfo;
 		hitInfo.DamageRegular = _damage;
 		hitInfo.DamageDirect = 1.0;
-		hitInfo.BodyPart = this.Const.BodyPart.Body;
+		hitInfo.BodyPart = ::Const.BodyPart.Body;
 		hitInfo.BodyDamageMult = 1.0;
 		hitInfo.FatalityChanceMult = 0.0;
 		actor.onDamageReceived(actor, this, hitInfo);

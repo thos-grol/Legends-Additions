@@ -24,7 +24,7 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 		foreach( b in brothers )
 		{
 			local background = b.getBackground();
-			local bodyarmorbase = b.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
+			local bodyarmorbase = b.getItems().getItemAtSlot(::Const.ItemSlot.Body);
 			local bodyarmor;
 			local bodyarmorfinal = {};
 
@@ -32,10 +32,10 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 			{
 				bodyarmor = {
 					Cloth = bodyarmorbase,
-					Chain = bodyarmorbase.getUpgrade(this.Const.Items.ArmorUpgrades.Chain),
-					Plate = bodyarmorbase.getUpgrade(this.Const.Items.ArmorUpgrades.Plate),
-					Tabard = bodyarmorbase.getUpgrade(this.Const.Items.ArmorUpgrades.Tabbard),
-					Cloak = bodyarmorbase.getUpgrade(this.Const.Items.ArmorUpgrades.Cloak)
+					Chain = bodyarmorbase.getUpgrade(::Const.Items.ArmorUpgrades.Chain),
+					Plate = bodyarmorbase.getUpgrade(::Const.Items.ArmorUpgrades.Plate),
+					Tabard = bodyarmorbase.getUpgrade(::Const.Items.ArmorUpgrades.Tabbard),
+					Cloak = bodyarmorbase.getUpgrade(::Const.Items.ArmorUpgrades.Cloak)
 				};
 
 				foreach( key, value in bodyarmor )
@@ -47,7 +47,7 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 							ID = value.m.ID,
 							Value = 0,
 							Variant = value.m.Variants.find(value.m.Variant) != null ? value.m.Variants.find(value.m.Variant) + 1 : 1,
-							Variants = this.Math.max(value.m.Variants.len(), 1),
+							Variants = ::Math.max(value.m.Variants.len(), 1),
 							Icon = value.m.Icon,
 							IconLarge = value == bodyarmorbase ? value.m.IconLarge : value.m.OverlayIconLarge
 						};
@@ -69,7 +69,7 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 				};
 			}
 
-			local helmetbase = b.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+			local helmetbase = b.getItems().getItemAtSlot(::Const.ItemSlot.Head);
 
 			if (helmetbase != null && helmetbase.getID() == "armor.head.fangshire")
 			{
@@ -83,10 +83,10 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 			{
 				helmet = {
 					Hood = helmetbase,
-					Helm = helmetbase.getUpgrade(this.Const.Items.HelmetUpgrades.Helm),
-					Top = helmetbase.getUpgrade(this.Const.Items.HelmetUpgrades.Top),
-					Vanity = helmetbase.getUpgrade(this.Const.Items.HelmetUpgrades.Vanity),
-					ExtraVanity = helmetbase.getUpgrade(this.Const.Items.HelmetUpgrades.ExtraVanity)
+					Helm = helmetbase.getUpgrade(::Const.Items.HelmetUpgrades.Helm),
+					Top = helmetbase.getUpgrade(::Const.Items.HelmetUpgrades.Top),
+					Vanity = helmetbase.getUpgrade(::Const.Items.HelmetUpgrades.Vanity),
+					ExtraVanity = helmetbase.getUpgrade(::Const.Items.HelmetUpgrades.ExtraVanity)
 				};
 
 				foreach( key, value in helmet )
@@ -98,7 +98,7 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 							ID = value.m.ID,
 							Value = 0,
 							Variant = value.m.Variants.find(value.m.Variant) != null ? value.m.Variants.find(value.m.Variant) + 1 : 1,
-							Variants = this.Math.max(value.m.Variants.len(), 1),
+							Variants = ::Math.max(value.m.Variants.len(), 1),
 							Icon = value.m.Icon,
 							IconLarge = value.m.IconLarge
 						};
@@ -122,15 +122,15 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 
 			local shield = {};
 
-			if (b.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null)
+			if (b.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null)
 			{
-				local shielditem = b.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+				local shielditem = b.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 				shield.Shield <- {
 					Link = this.IO.scriptFilenameByHash(shielditem.ClassNameHash),
 					ID = shielditem.m.ID,
 					Value = 0,
 					Variant = shielditem.m.Variants.find(shielditem.m.Variant) != null ? shielditem.m.Variants.find(shielditem.m.Variant) + 1 : 1,
-					Variants = this.Math.max(shielditem.m.Variants.len(), 1),
+					Variants = ::Math.max(shielditem.m.Variants.len(), 1),
 					Icon = shielditem.m.IconLarge,
 					IconLarge = shielditem.m.IconLarge
 				};
@@ -175,7 +175,7 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 
 		if (item.m.ID == "shield.faction_kite_shield" || item.m.ID == "shield.faction_heater_shield")
 		{
-			item.m.Faction = this.Math.ceil(_result.Variant / 2.0);
+			item.m.Faction = ::Math.ceil(_result.Variant / 2.0);
 			item.m.Variant = item.m.Variants[1 - _result.Variant % 2];
 		}
 		else
@@ -204,7 +204,7 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 			}
 		}
 
-		if (item.isItemType(this.Const.Items.ItemType.Shield))
+		if (item.isItemType(::Const.Items.ItemType.Shield))
 		{
 			return {
 				Icon = item.m.IconLarge,
@@ -229,17 +229,17 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 		{
 			if (b.getID() == _result.ID)
 			{
-				local bodyarmorbase = b.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
+				local bodyarmorbase = b.getItems().getItemAtSlot(::Const.ItemSlot.Body);
 				local bodyarmor;
 
 				if (bodyarmorbase != null)
 				{
 					bodyarmor = {
 						Cloth = bodyarmorbase,
-						Chain = bodyarmorbase.getUpgrade(this.Const.Items.ArmorUpgrades.Chain),
-						Plate = bodyarmorbase.getUpgrade(this.Const.Items.ArmorUpgrades.Plate),
-						Tabard = bodyarmorbase.getUpgrade(this.Const.Items.ArmorUpgrades.Tabbard),
-						Cloak = bodyarmorbase.getUpgrade(this.Const.Items.ArmorUpgrades.Cloak)
+						Chain = bodyarmorbase.getUpgrade(::Const.Items.ArmorUpgrades.Chain),
+						Plate = bodyarmorbase.getUpgrade(::Const.Items.ArmorUpgrades.Plate),
+						Tabard = bodyarmorbase.getUpgrade(::Const.Items.ArmorUpgrades.Tabbard),
+						Cloak = bodyarmorbase.getUpgrade(::Const.Items.ArmorUpgrades.Cloak)
 					};
 
 					foreach( key, value in bodyarmor )
@@ -257,17 +257,17 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 					bodyarmorbase.updateAppearance();
 				}
 
-				local helmetbase = b.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+				local helmetbase = b.getItems().getItemAtSlot(::Const.ItemSlot.Head);
 				local helmet;
 
 				if (helmetbase != null)
 				{
 					helmet = {
 						Hood = helmetbase,
-						Helm = helmetbase.getUpgrade(this.Const.Items.HelmetUpgrades.Helm),
-						Top = helmetbase.getUpgrade(this.Const.Items.HelmetUpgrades.Top),
-						Vanity = helmetbase.getUpgrade(this.Const.Items.HelmetUpgrades.Vanity),
-						ExtraVanity = helmetbase.getUpgrade(this.Const.Items.HelmetUpgrades.ExtraVanity)
+						Helm = helmetbase.getUpgrade(::Const.Items.HelmetUpgrades.Helm),
+						Top = helmetbase.getUpgrade(::Const.Items.HelmetUpgrades.Top),
+						Vanity = helmetbase.getUpgrade(::Const.Items.HelmetUpgrades.Vanity),
+						ExtraVanity = helmetbase.getUpgrade(::Const.Items.HelmetUpgrades.ExtraVanity)
 					};
 
 					foreach( key, value in helmet )
@@ -285,7 +285,7 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 					helmetbase.updateAppearance();
 				}
 
-				local shield = b.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+				local shield = b.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
 				if (shield != null)
 				{
@@ -295,7 +295,7 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 						{
 							if (shield.m.ID == "shield.faction_kite_shield" || shield.m.ID == "shield.faction_heater_shield")
 							{
-								shield.m.Faction = this.Math.ceil(_result.Shield.Shield.Variant / 2.0);
+								shield.m.Faction = ::Math.ceil(_result.Shield.Shield.Variant / 2.0);
 								shield.m.Variant = shield.m.Variants[1 - _result.Shield.Shield.Variant % 2];
 							}
 							else

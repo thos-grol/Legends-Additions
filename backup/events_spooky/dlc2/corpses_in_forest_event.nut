@@ -19,17 +19,17 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 					Text = "Maybe there\'s something useful in there.",
 					function getResult( _event )
 					{
-						if (_event.m.BeastSlayer != null && this.Math.rand(1, 100) <= 75)
+						if (_event.m.BeastSlayer != null && ::Math.rand(1, 100) <= 75)
 						{
 							return "D";
 						}
-						else if (_event.m.Killer != null && this.Math.rand(1, 100) <= 75)
+						else if (_event.m.Killer != null && ::Math.rand(1, 100) <= 75)
 						{
 							return "E";
 						}
 						else
 						{
-							return this.Math.rand(1, 100) <= 50 ? "B" : "C";
+							return ::Math.rand(1, 100) <= 50 ? "B" : "C";
 						}
 					}
 
@@ -73,7 +73,7 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
-				local money = this.Math.rand(10, 100);
+				local money = ::Math.rand(10, 100);
 				this.World.Assets.addMoney(money);
 				this.List.push({
 					id = 10,
@@ -173,7 +173,7 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Killer.getImagePath());
 				local item = this.new("scripts/items/weapons/morning_star");
-				item.setCondition(this.Math.rand(5, 30) * 1.0);
+				item.setCondition(::Math.rand(5, 30) * 1.0);
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
@@ -186,7 +186,7 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 						"basic_mail_shirt"
 					]
 				]);
-				item.setCondition(this.Math.rand(0.25 * item.getConditionMax(), 0.6 * item.getConditionMax()) * 1.0);
+				item.setCondition(::Math.rand(0.25 * item.getConditionMax(), 0.6 * item.getConditionMax()) * 1.0);
 				this.World.Assets.getStash().add(item);
 				this.List.push({
 					id = 10,
@@ -258,12 +258,12 @@ this.corpses_in_forest_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_beastslayer.len() != 0)
 		{
-			this.m.BeastSlayer = candidates_beastslayer[this.Math.rand(0, candidates_beastslayer.len() - 1)];
+			this.m.BeastSlayer = candidates_beastslayer[::Math.rand(0, candidates_beastslayer.len() - 1)];
 		}
 
 		if (candidates_killer.len() != 0)
 		{
-			this.m.Killer = candidates_killer[this.Math.rand(0, candidates_killer.len() - 1)];
+			this.m.Killer = candidates_killer[::Math.rand(0, candidates_killer.len() - 1)];
 		}
 
 		this.m.Score = 5;

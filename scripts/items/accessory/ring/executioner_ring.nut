@@ -19,11 +19,11 @@ this.executioner_ring <- this.inherit("scripts/items/accessory/cursed_accessory"
 
 	function onDamageDealt( _target, _skill, _hitInfo )
 	{
-		if (_hitInfo.BodyPart == this.Const.BodyPart.Body) return;
+		if (_hitInfo.BodyPart == ::Const.BodyPart.Body) return;
 		if (!_skill.isAttack()) return;
 
 		local actor = this.getContainer().getActor();
-		actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + 7));
+		actor.setHitpoints(::Math.min(actor.getHitpointsMax(), actor.getHitpoints() + 7));
 
 	}
 

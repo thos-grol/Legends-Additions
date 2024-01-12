@@ -163,7 +163,7 @@ this.legend_lonewolf_companion_berserker_event <- this.inherit("scripts/events/e
 
 		local currentTile = this.World.State.getPlayer().getTile();
 
-		if (currentTile.Type != this.Const.World.TerrainType.Snow && currentTile.Type != this.Const.World.TerrainType.SnowyForest)
+		if (currentTile.Type != ::Const.World.TerrainType.Snow && currentTile.Type != ::Const.World.TerrainType.SnowyForest)
 		{
 			return;
 		}

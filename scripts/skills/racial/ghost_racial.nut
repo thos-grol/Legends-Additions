@@ -6,8 +6,8 @@ this.ghost_racial <- this.inherit("scripts/skills/skill", {
 		this.m.Name = "Incorporeal";
 		this.m.Description = "";
 		this.m.Icon = "";
-		this.m.Type = this.Const.SkillType.Racial | this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.Last;
+		this.m.Type = ::Const.SkillType.Racial | ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.Last;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = true;
@@ -36,10 +36,10 @@ this.ghost_racial <- this.inherit("scripts/skills/skill", {
 
 		if (!actor.isHiddenToPlayer() || actor.getTile().IsVisibleForPlayer)
 		{
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " becomes incorporeal and nullies the damage dealt");
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " becomes incorporeal and nullies the damage dealt");
 		}
 
-		this.Sound.play("sounds/enemies/ghost_death_01.wav", 1.0, actor.getPos(), this.Math.rand(95, 105) * 0.01);
+		this.Sound.play("sounds/enemies/ghost_death_01.wav", 1.0, actor.getPos(), ::Math.rand(95, 105) * 0.01);
 
 		local effect = {
 			Delay = 0,

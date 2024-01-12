@@ -23,12 +23,12 @@ gt.Const.World.Spawn.Southern <- {
 			Weight = 50,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Slave,
+					Type = ::Const.World.Spawn.Troops.Slave,
 					MaxR = 100,
 					Cost = 7
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.Conscript,
+					Type = ::Const.World.Spawn.Troops.Conscript,
 					Cost = 18
 				}
 			]
@@ -37,7 +37,7 @@ gt.Const.World.Spawn.Southern <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Gunner,
+					Type = ::Const.World.Spawn.Troops.Gunner,
 					MinR = 250,
 					Cost = 20
 				}
@@ -47,7 +47,7 @@ gt.Const.World.Spawn.Southern <- {
 			Weight = 6,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Engineer,
+					Type = ::Const.World.Spawn.Troops.Engineer,
 					Cost = 10,
 					MinR = 250,
 					MinGuards = 1,
@@ -55,7 +55,7 @@ gt.Const.World.Spawn.Southern <- {
 					MaxGuardsWeight = 100,
 					Guards = [
 						{
-							Type = this.Const.World.Spawn.Troops.Mortar,
+							Type = ::Const.World.Spawn.Troops.Mortar,
 							Cost = 30,
 							function Weight( scale )
 							{
@@ -71,7 +71,7 @@ gt.Const.World.Spawn.Southern <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Officer,
+					Type = ::Const.World.Spawn.Troops.Officer,
 					MinR = 300,
 					Cost = 35
 				}
@@ -81,7 +81,7 @@ gt.Const.World.Spawn.Southern <- {
 			Weight = 9,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Assassin,
+					Type = ::Const.World.Spawn.Troops.Assassin,
 					MinR = 300,
 					Cost = 35
 				}
@@ -102,7 +102,7 @@ gt.Const.World.Spawn.CaravanSouthern <- {
 			MinCount = 1,
 			MaxCount = 3,
 			Weight = 30,
-			Type = this.Const.World.Spawn.Troops.SouthernDonkey,
+			Type = ::Const.World.Spawn.Troops.SouthernDonkey,
 			Cost = 0
 		}
 	],
@@ -111,7 +111,7 @@ gt.Const.World.Spawn.CaravanSouthern <- {
 			Weight = 62,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Conscript,
+					Type = ::Const.World.Spawn.Troops.Conscript,
 					Cost = 20
 				}
 			]
@@ -120,7 +120,7 @@ gt.Const.World.Spawn.CaravanSouthern <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Mercenary,
+					Type = ::Const.World.Spawn.Troops.Mercenary,
 					Cost = 30
 				}
 			]
@@ -129,7 +129,7 @@ gt.Const.World.Spawn.CaravanSouthern <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.MercenaryRanged,
+					Type = ::Const.World.Spawn.Troops.MercenaryRanged,
 					Cost = 25
 				}
 			]
@@ -138,7 +138,7 @@ gt.Const.World.Spawn.CaravanSouthern <- {
 			Weight = 1,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Officer,
+					Type = ::Const.World.Spawn.Troops.Officer,
 					Cost = 35
 				}
 			]
@@ -161,7 +161,7 @@ gt.Const.World.Spawn.Slaves <- {
 			Weight = 100,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Slave,
+					Type = ::Const.World.Spawn.Troops.Slave,
 					Cost = 7
 				}
 			]
@@ -181,7 +181,7 @@ gt.Const.World.Spawn.NorthernSlaves <- {
 			Weight = 100,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.NorthernSlave,
+					Type = ::Const.World.Spawn.Troops.NorthernSlave,
 					Cost = 7
 				}
 			]
@@ -201,120 +201,10 @@ gt.Const.World.Spawn.Assassins <- {
 			Weight = 100,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.Assassin,
+					Type = ::Const.World.Spawn.Troops.Assassin,
 					Cost = 35
 				}
 			]
 		}
-	]
-};
-
-
-
-//new
-
-gt.Const.World.Spawn.CaravanMedium <- {
-	Name = "CaravanMedium",
-	IsDynamic = true,
-	MovementSpeedMult = 0.5,
-	VisibilityMult = 1.0,
-	VisionMult = 0.25,
-	Body = "cart_02",
-	MaxR = 225,
-	MinR = 30,
-	Fixed = [
-		{
-			MinCount = 1,
-			MaxCount = 3,
-			Weight = 30,
-			Type = this.Const.World.Spawn.Troops.CaravanDonkey,
-			Cost = 0
-		}
-	],
-	Troops = [
-		{
-			Weight = 35,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.Mercenary,
-					Cost = 10
-				},
-			]
-		},
-		{
-			Weight = 1,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.MasterArcher,
-					Cost = 40
-				}
-			]
-		},
-		{
-			Weight = 50,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.CaravanGuard,
-					Cost = 12
-				}
-			]
-		}
-	]
-};
-
-gt.Const.World.Spawn.CaravanSouthernMedium <- {
-	Name = "CaravanSouthernMedium",
-	IsDynamic = true,
-	MovementSpeedMult = 1.0,
-	VisibilityMult = 1.0,
-	VisionMult = 1.0,
-	Body = "cart_03",
-	MaxR = 560,
-	Fixed = [
-		{
-			MinCount = 1,
-			MaxCount = 3,
-			Weight = 30,
-			Type = this.Const.World.Spawn.Troops.SouthernDonkey,
-			Cost = 0
-		}
-	],
-	Troops = [
-		{
-			Weight = 62,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.Conscript,
-					Cost = 20
-				}
-			]
-		},
-		{
-			Weight = 1,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.Mercenary,
-					Cost = 30
-				}
-			]
-		},
-		{
-			Weight = 1,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.MasterArcher,
-					Cost = 40
-				}
-			]
-		},
-		{
-			Weight = 1,
-			Types = [
-				{
-					Type = this.Const.World.Spawn.Troops.Officer,
-					Cost = 35
-				}
-			]
-		},
 	]
 };

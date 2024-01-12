@@ -22,8 +22,6 @@
     corpse.Skills <- [];
     corpse.BaseProperties <- {};
 
-    local zombie = false;
-    try{ zombie = _info.IsZombie} catch(exception){}
     local isHeadAttached = true;
     try{ isHeadAttached = corpse.IsHeadAttached} catch(exception){}
 
@@ -50,7 +48,7 @@
     corpse.BaseProperties["RangedDefense"] <- _actor.m.BaseProperties.RangedDefense;
     corpse.BaseProperties["Armor"] <- _actor.m.BaseProperties.Armor;
 
-    if (zombie && isHeadAttached && corpse.IsResurrectable) return;
+    if (_actor.getFlags().has("zombie_minion") && isHeadAttached && corpse.IsResurrectable) return;
 
     if (!corpse.IsResurrectable)
     {
@@ -62,7 +60,7 @@
 
 ::Z.Lib.apply_miasma <- function(_tile, _entity)
 {
-    this.Tactical.spawnIconEffect("decay", _tile, this.Const.Tactical.Settings.SkillIconOffsetX, this.Const.Tactical.Settings.SkillIconOffsetY, this.Const.Tactical.Settings.SkillIconScale, this.Const.Tactical.Settings.SkillIconFadeInDuration, this.Const.Tactical.Settings.SkillIconStayDuration, this.Const.Tactical.Settings.SkillIconFadeOutDuration, this.Const.Tactical.Settings.SkillIconMovement);
+    this.Tactical.spawnIconEffect("decay", _tile, ::Const.Tactical.Settings.SkillIconOffsetX, ::Const.Tactical.Settings.SkillIconOffsetY, ::Const.Tactical.Settings.SkillIconScale, ::Const.Tactical.Settings.SkillIconFadeInDuration, ::Const.Tactical.Settings.SkillIconStayDuration, ::Const.Tactical.Settings.SkillIconFadeOutDuration, ::Const.Tactical.Settings.SkillIconMovement);
     local sounds = [];
 
     if (_entity.getFlags().has("human"))
@@ -83,7 +81,7 @@
         ];
     }
 
-    this.Sound.play(sounds[this.Math.rand(0, sounds.len() - 1)], this.Const.Sound.Volume.Actor, _entity.getPos());
+    this.Sound.play(sounds[::Math.rand(0, sounds.len() - 1)], ::Const.Sound.Volume.Actor, _entity.getPos());
 
 
     local tile_effect = _tile.Properties.Effect;
@@ -103,10 +101,7 @@
 	{
         this.setFaction(_info.Faction);
 
-        local zombie = false;
-        try{ zombie = _info.IsZombie} catch(exception){}
-
-        if (_info.IsResurrectable || zombie)
+        if (_info.IsResurrectable || this.getFlags().has("zombie_minion"))
 		{
             this.getItems().clear();
             _info.Items.transferTo(this.getItems());
@@ -122,7 +117,7 @@
             }
 
             this.m.Hitpoints = this.getHitpointsMax() * _info.Hitpoints;
-            this.m.XP = this.Math.floor(this.m.XP * _info.Hitpoints);
+            this.m.XP = ::Math.floor(this.m.XP * _info.Hitpoints);
             this.m.BaseProperties.Armor = _info.Armor;
             this.onUpdateInjuryLayer();
 		}

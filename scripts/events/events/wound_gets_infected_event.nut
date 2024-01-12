@@ -91,11 +91,11 @@ this.wound_gets_infected_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Injured = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Injured = candidates[::Math.rand(0, candidates.len() - 1)];
 
 		do
 		{
-			this.m.Other = brothers[this.Math.rand(0, brothers.len() - 1)];
+			this.m.Other = brothers[::Math.rand(0, brothers.len() - 1)];
 		}
 		while (this.m.Other.getID() == this.m.Injured.getID());
 

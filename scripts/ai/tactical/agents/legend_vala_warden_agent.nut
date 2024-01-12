@@ -3,7 +3,7 @@ this.legend_vala_warden_agent <- this.inherit("scripts/ai/tactical/agent", {
 	function create()
 	{
 		this.agent.create();
-		this.m.ID = this.Const.AI.Agent.ID.Ghost;
+		this.m.ID = ::Const.AI.Agent.ID.Ghost;
 		this.m.Properties.TargetPriorityHitchanceMult = 0.5;
 		this.m.Properties.TargetPriorityHitpointsMult = 0.25;
 		this.m.Properties.TargetPriorityRandomMult = 0.0;
@@ -30,8 +30,8 @@ this.legend_vala_warden_agent <- this.inherit("scripts/ai/tactical/agent", {
 		this.m.Properties.EngageRangeMax = 3;
 		this.m.Properties.EngageRangeIdeal = 3;
 		this.m.Properties.PreferCarefulEngage = false;
-		this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageMelee] = 0.0;
-		this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.Defend] = 1.0;
+		this.m.Properties.BehaviorMult[::Const.AI.Behavior.ID.EngageMelee] = 0.0;
+		this.m.Properties.BehaviorMult[::Const.AI.Behavior.ID.Defend] = 1.0;
 	}
 
 	function onAddBehaviors()
@@ -52,16 +52,16 @@ this.legend_vala_warden_agent <- this.inherit("scripts/ai/tactical/agent", {
 		
 		if (!this.Tactical.State.isAutoRetreat() && !strategy.getStats().IsEngaged && this.m.Actor.getAttackedCount() <= 3 && this.Time.getRound() <= 1)
 		{
-			this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageRanged] = 0.0;
+			this.m.Properties.BehaviorMult[::Const.AI.Behavior.ID.EngageRanged] = 0.0;
 		}
 		else if (!this.Tactical.State.isAutoRetreat() && !strategy.getStats().IsEngaged && this.m.Actor.getAttackedCount() <= 3 && strategy.getStats().ShortestDistanceToEnemyNotMoved >= 3)
 		{
-			this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageRanged] = 1.0;
+			this.m.Properties.BehaviorMult[::Const.AI.Behavior.ID.EngageRanged] = 1.0;
 			this.m.Properties.EngageTileLimit = 2;
 		}
 		else
 		{
-			this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageRanged] = 1.0;
+			this.m.Properties.BehaviorMult[::Const.AI.Behavior.ID.EngageRanged] = 1.0;
 			this.m.Properties.EngageTileLimit = 0;
 		}
 
@@ -76,7 +76,7 @@ this.legend_vala_warden_agent <- this.inherit("scripts/ai/tactical/agent", {
 				continue;
 			}
 
-			if (t.Actor.getMoraleState() != this.Const.MoraleState.Fleeing && t.Actor.getTile().getDistanceTo(myTile) <= 5 && t.Actor.getCurrentProperties().MoraleCheckBraveryMult[this.Const.MoraleCheckType.MentalAttack] <= 3.0)
+			if (t.Actor.getMoraleState() != ::Const.MoraleState.Fleeing && t.Actor.getTile().getDistanceTo(myTile) <= 5 && t.Actor.getCurrentProperties().MoraleCheckBraveryMult[::Const.MoraleCheckType.MentalAttack] <= 3.0)
 			{
 				opponentNearby = true;
 				break;

@@ -13,8 +13,8 @@ this.warcry <- this.inherit("scripts/skills/skill", {
 		this.m.SoundOnUse = [
 			"sounds/enemies/warcry_01.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = false;
@@ -41,7 +41,7 @@ this.warcry <- this.inherit("scripts/skills/skill", {
 	{
 		if (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)
 		{
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " uses Warcry");
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " uses Warcry");
 		}
 
 		local tag = {
@@ -68,11 +68,11 @@ this.warcry <- this.inherit("scripts/skills/skill", {
 
 				if (a.getFaction() == _tag.User.getFaction())
 				{
-					local difficulty = 10 - this.Math.pow(a.getTile().getDistanceTo(mytile), this.Const.Morale.EnemyKilledDistancePow);
+					local difficulty = 10 - ::Math.pow(a.getTile().getDistanceTo(mytile), ::Const.Morale.EnemyKilledDistancePow);
 
-					if (a.getMoraleState() == this.Const.MoraleState.Fleeing)
+					if (a.getMoraleState() == ::Const.MoraleState.Fleeing)
 					{
-						a.checkMorale(this.Const.MoraleState.Wavering - this.Const.MoraleState.Fleeing, difficulty);
+						a.checkMorale(::Const.MoraleState.Wavering - ::Const.MoraleState.Fleeing, difficulty);
 					}
 					else
 					{
@@ -83,8 +83,8 @@ this.warcry <- this.inherit("scripts/skills/skill", {
 				}
 				else if (!a.isAlliedWith(_tag.User))
 				{
-					local difficulty = 5 + this.Math.pow(a.getTile().getDistanceTo(mytile), this.Const.Morale.AllyKilledDistancePow);
-					a.checkMorale(-1, difficulty, this.Const.MoraleCheckType.MentalAttack);
+					local difficulty = 5 + ::Math.pow(a.getTile().getDistanceTo(mytile), ::Const.Morale.AllyKilledDistancePow);
+					a.checkMorale(-1, difficulty, ::Const.MoraleCheckType.MentalAttack);
 				}
 			}
 		}

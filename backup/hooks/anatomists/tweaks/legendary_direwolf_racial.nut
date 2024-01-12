@@ -4,7 +4,7 @@
     o.onUpdate = function( _properties )
 	{
 		local healthMissing = _properties.Hitpoints - this.getContainer().getActor().getHitpoints();
-		local additionalDamage = this.Math.floor(healthMissing * 0.5);
+		local additionalDamage = ::Math.floor(healthMissing * 0.5);
 
 		if (additionalDamage > 0)
 		{

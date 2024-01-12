@@ -21,11 +21,11 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 
 	function start()
 	{
-		local banditcamp = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Barbarians).getNearestSettlement(this.m.Home.getTile());
+		local banditcamp = this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians).getNearestSettlement(this.m.Home.getTile());
 		this.m.Destination = this.WeakTableRef(banditcamp);
 		this.m.Flags.set("DestinationName", banditcamp.getName());
 		this.m.Flags.set("EnemyBanner", banditcamp.getBanner());
-		this.m.Flags.set("ChampionName", this.Const.Strings.BarbarianNames[this.Math.rand(0, this.Const.Strings.BarbarianNames.len() - 1)] + " " + this.Const.Strings.BarbarianTitles[this.Math.rand(0, this.Const.Strings.BarbarianTitles.len() - 1)]);
+		this.m.Flags.set("ChampionName", ::Const.Strings.BarbarianNames[::Math.rand(0, ::Const.Strings.BarbarianNames.len() - 1)] + " " + ::Const.Strings.BarbarianTitles[::Math.rand(0, ::Const.Strings.BarbarianTitles.len() - 1)]);
 		this.m.Flags.set("ChampionBrotherName", "");
 		this.m.Flags.set("ChampionBrother", 0);
 
@@ -49,7 +49,7 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 
 		this.m.Payment.Pool = pay_amount;
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -72,7 +72,7 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 					"Drive off barbarians at " + this.Flags.get("DestinationName") + " %direction% of %origin%"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -93,12 +93,12 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 				// 	this.Contract.m.Destination.getLoot().clear();
 				// }
 
-				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.Barbarians, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.Barbarians, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				// this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				// this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				// this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 				if (r <= 20)
 				{
 					switch(this.m.Destination.m.TypeID)
@@ -250,8 +250,8 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -353,7 +353,7 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 				});
 				local name = this.Flags.get("ChampionName");
 				local difficulty = this.Contract.getDifficultyMult();
-				local e = this.Math.min(3, roster.len());
+				local e = ::Math.min(3, roster.len());
 
 				for( local i = 0; i < e; i = i )
 				{
@@ -366,10 +366,10 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 							this.Flags.set("ChampionBrother", bro.getID());
 							local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 							properties.CombatID = "Duel";
-							properties.Music = this.Const.Music.BarbarianTracks;
+							properties.Music = ::Const.Music.BarbarianTracks;
 							properties.Entities = [];
 							properties.Entities.push({
-								ID = this.Const.EntityType.BarbarianChampion,
+								ID = ::Const.EntityType.BarbarianChampion,
 								Name = name,
 								Variant = difficulty >= 1.15 ? 1 : 0,
 								Row = 0,
@@ -393,7 +393,7 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 									for( local y = 0; y < size.Y; y = y )
 									{
 										local tile = this.Tactical.getTileSquare(x, y);
-										tile.Level = this.Math.min(1, tile.Level);
+										tile.Level = ::Math.min(1, tile.Level);
 										y = ++y;
 									}
 
@@ -449,9 +449,9 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 					Text = "We will stay true to our word and leave you in peace. (Increase morals)",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
 						this.World.Assets.addMoralReputation(5);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to destroy a barbarian encampment threatening " + this.Contract.m.Home.getName());
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to destroy a barbarian encampment threatening " + this.Contract.m.Home.getName());
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -575,14 +575,14 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 					"barbarian_background"
 				]);
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).removeSelf();
 				}
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand).removeSelf();
 				}
 
 				this.Contract.m.Dude.m.Talents = [];
@@ -613,10 +613,10 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Revenge";
-						properties.Music = this.Const.Music.BarbarianTracks;
+						properties.Music = ::Const.Music.BarbarianTracks;
 						properties.EnemyBanners.push(this.Flags.get("EnemyBanner"));
 						properties.Entities = [];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.Barbarians, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Barbarians).getID());
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians).getID());
 						this.World.Contracts.startScriptedCombat(properties, false, true, false);
 						return 0;
 					}
@@ -636,10 +636,10 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 					Text = "A hard day\'s work.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion() * 2);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "You destroyed a barbarian encampment that threatened " + this.Contract.m.Home.getName());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "You saved " + this.Contract.m.Home.getName() + " from barbarian revenge");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "You destroyed a barbarian encampment that threatened " + this.Contract.m.Home.getName());
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "You saved " + this.Contract.m.Home.getName() + " from barbarian revenge");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -652,7 +652,7 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -672,8 +672,8 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 						this.World.FactionManager.getFaction(this.Contract.getFaction()).getRoster().remove(this.Tactical.getEntityByID(this.Contract.m.EmployerID));
 						this.Contract.m.Home.addSituation(this.new("scripts/entity/world/settlements/situations/raided_situation"), 4);
 						this.Contract.m.Home.setLastSpawnTimeToNow();
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail * 2);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail * 2, "You failed to save " + this.Contract.m.Home.getName() + " from barbarians out for revenge");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail * 2);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail * 2, "You failed to save " + this.Contract.m.Home.getName() + " from barbarians out for revenge");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -694,9 +694,9 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "You destroyed a barbarian encampment that threatened " + this.Contract.m.Home.getName());
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "You destroyed a barbarian encampment that threatened " + this.Contract.m.Home.getName());
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -709,7 +709,7 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -737,7 +737,7 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 		]);
 		_vars.push([
 			"direction",
-			this.m.Destination == null || this.m.Destination.isNull() || !this.m.Destination.isAlive() ? "" : this.Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())]
+			this.m.Destination == null || this.m.Destination.isNull() || !this.m.Destination.isAlive() ? "" : ::Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())]
 		]);
 	}
 

@@ -2,14 +2,14 @@ this.barbarian_champion <- this.inherit("scripts/entity/tactical/abstract_human"
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.BarbarianChampion;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.BarbarianChampion.XP;
+		this.m.Type = ::Const.EntityType.BarbarianChampion;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.BarbarianChampion.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.WildMale;
-		this.m.Hairs = this.Const.Hair.WildMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.WildExtended;
+		this.m.Faces = ::Const.Faces.WildMale;
+		this.m.Hairs = ::Const.Hair.WildMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.WildExtended;
 		this.m.SoundPitch = 0.95;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/barbarian_melee_agent");
 		this.m.AIAgent.setActor(this);
@@ -25,23 +25,23 @@ this.barbarian_champion <- this.inherit("scripts/entity/tactical/abstract_human"
 			6
 		];
 
-		if (this.Math.rand(1, 100) <= 66)
+		if (::Math.rand(1, 100) <= 66)
 		{
 			local tattoo_body = this.actor.getSprite("tattoo_body");
 			local body = this.actor.getSprite("body");
-			tattoo_body.setBrush("tattoo_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_" + body.getBrush().Name);
+			tattoo_body.setBrush("tattoo_0" + tattoos[::Math.rand(0, tattoos.len() - 1)] + "_" + body.getBrush().Name);
 			tattoo_body.Visible = true;
 		}
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
 			local tattoo_head = this.actor.getSprite("tattoo_head");
-			tattoo_head.setBrush("tattoo_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_head");
+			tattoo_head.setBrush("tattoo_0" + tattoos[::Math.rand(0, tattoos.len() - 1)] + "_head");
 			tattoo_head.Visible = true;
 		}
 
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BarbarianChampion);
+		b.setValues(::Const.Tactical.Actor.BarbarianChampion);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -70,11 +70,11 @@ this.barbarian_champion <- this.inherit("scripts/entity/tactical/abstract_human"
 			5,
 			"barbarians/reinforced_heavy_iron_armor"
 		]);
-		this.m.Items.equip(this.Const.World.Common.pickArmor(armor));
+		this.m.Items.equip(::Const.World.Common.pickArmor(armor));
 
-		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head))
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head))
 		{
-			this.m.Items.equip(this.Const.World.Common.pickHelmet([
+			this.m.Items.equip(::Const.World.Common.pickHelmet([
 				[
 					1,
 					"barbarians/crude_faceguard_helmet"
@@ -93,17 +93,17 @@ this.barbarian_champion <- this.inherit("scripts/entity/tactical/abstract_human"
 
 	function pickNamed()
 	{
-		local r = this.Math.rand(1, 3);
+		local r = ::Math.rand(1, 3);
 		if (r == 1) this.m.IsMinibossWeapon <- true;
 		else if (r == 2)
 		{
-			local weightName = this.Const.World.Common.convNameToList(this.Const.Items.NamedBarbarianArmors);
-			this.m.Items.equip(this.Const.World.Common.pickArmor(weightName));
+			local weightName = ::Const.World.Common.convNameToList(::Const.Items.NamedBarbarianArmors);
+			this.m.Items.equip(::Const.World.Common.pickArmor(weightName));
 		}
 		else
 		{
-			local weightName = this.Const.World.Common.convNameToList(this.Const.Items.NamedBarbarianHelmets);
-			this.m.Items.equip(this.Const.World.Common.pickHelmet(weightName));
+			local weightName = ::Const.World.Common.convNameToList(::Const.Items.NamedBarbarianHelmets);
+			this.m.Items.equip(::Const.World.Common.pickHelmet(weightName));
 		}
 
 	}

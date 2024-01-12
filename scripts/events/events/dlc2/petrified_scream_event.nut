@@ -32,7 +32,7 @@ this.petrified_scream_event <- this.inherit("scripts/events/event", {
 						continue;
 					}
 
-					if (bro.getSkills().hasSkill("trait.superstitious") || bro.getSkills().hasSkill("trait.paranoid") || bro.getSkills().hasSkill("trait.dastard") || bro.getSkills().hasSkill("trait.craven") || bro.getSkills().hasSkill("trait.mad") || this.Math.rand(1, 100) <= 33)
+					if (bro.getSkills().hasSkill("trait.superstitious") || bro.getSkills().hasSkill("trait.paranoid") || bro.getSkills().hasSkill("trait.dastard") || bro.getSkills().hasSkill("trait.craven") || bro.getSkills().hasSkill("trait.mad") || ::Math.rand(1, 100) <= 33)
 					{
 						bro.worsenMood(0.75, "Concerned about carrying around a Petrified Scream artifact");
 

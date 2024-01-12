@@ -7,8 +7,8 @@ this.legend_vala_inscription_token <- this.inherit("scripts/items/item", {
 		this.m.Description = "";
 		this.m.Icon = "";
 		this.m.IconLarge = "";
-		this.m.SlotType = this.Const.ItemSlot.None;
-		this.m.ItemType = this.Const.Items.ItemType.Usable;
+		this.m.SlotType = ::Const.ItemSlot.None;
+		this.m.ItemType = ::Const.Items.ItemType.Usable;
 		this.m.IsDroppedAsLoot = true;
 		this.m.IsAllowedInBag = false;
 		this.m.IsUsable = true;
@@ -82,7 +82,7 @@ this.legend_vala_inscription_token <- this.inherit("scripts/items/item", {
 
 		if (this.m.RuneVariant >= 1 && this.m.RuneVariant <= 10)
 		{
-			target = _actor.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+			target = _actor.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
 
 			if (target == null)
 			{
@@ -91,7 +91,7 @@ this.legend_vala_inscription_token <- this.inherit("scripts/items/item", {
 		}
 		else if (this.m.RuneVariant >= 11 && this.m.RuneVariant <= 20)
 		{
-			target = _actor.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+			target = _actor.getItems().getItemAtSlot(::Const.ItemSlot.Head);
 
 			if (target == null)
 			{
@@ -100,7 +100,7 @@ this.legend_vala_inscription_token <- this.inherit("scripts/items/item", {
 		}
 		else if (this.m.RuneVariant >= 21 && this.m.RuneVariant <= 30)
 		{
-			target = _actor.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
+			target = _actor.getItems().getItemAtSlot(::Const.ItemSlot.Body);
 
 			if (target == null)
 			{
@@ -109,7 +109,7 @@ this.legend_vala_inscription_token <- this.inherit("scripts/items/item", {
 		}
 		else if (this.m.RuneVariant >= 31 && this.m.RuneVariant <= 40)
 		{
-			target = _actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+			target = _actor.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
 			if (target == null)
 			{

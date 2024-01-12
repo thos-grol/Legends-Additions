@@ -3,16 +3,16 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/abstract_human", {
 	function create()
 	{
 		this.m.Name = "Raider";
-		this.m.Type = this.Const.EntityType.BanditMarksman;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.BanditMarksman.XP;
+		this.m.Type = ::Const.EntityType.BanditMarksman;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.BanditMarksman.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.UntidyMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.Raider;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.UntidyMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.Raider;
 
-		if (this.Math.rand(1, 100) <= 10)
+		if (::Math.rand(1, 100) <= 10)
 		{
 			this.setGender(1);
 		}
@@ -25,7 +25,7 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BanditMarksman);
+		b.setValues(::Const.Tactical.Actor.BanditMarksman);
 		b.TargetAttractionMult = 1.1;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
@@ -33,7 +33,7 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_bandits");
 
-		if (this.Math.rand(1, 100) <= 20)
+		if (::Math.rand(1, 100) <= 20)
 		{
 			local pox = this.getSprite("tattoo_head");
 			pox.Visible = true;
@@ -43,7 +43,7 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/abstract_human", {
 		{
 			local dirt = this.getSprite("dirt");
 			dirt.Visible = true;
-			dirt.Alpha = this.Math.rand(150, 255);
+			dirt.Alpha = ::Math.rand(150, 255);
 		}
 
 		this.setArmorSaturation(0.85);
@@ -70,7 +70,7 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.assignRandomEquipment();
 
-		local r = this.Math.rand(1, 3);
+		local r = ::Math.rand(1, 3);
 		if (r == 1) this.m.Items.addToBag(this.new("scripts/items/weapons/dagger"));
 		else if (r == 2) this.m.Items.addToBag(this.new("scripts/items/weapons/hatchet"));
 		else this.m.Items.addToBag(this.new("scripts/items/weapons/bludgeon"));
@@ -78,7 +78,7 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function pickOutfit()
 	{
-		local item = this.Const.World.Common.pickArmor([
+		local item = ::Const.World.Common.pickArmor([
 			[
 				20,
 				"thick_tunic"
@@ -98,9 +98,9 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/abstract_human", {
 		]);
 		this.m.Items.equip(item);
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
-			local item = this.Const.World.Common.pickHelmet([
+			local item = ::Const.World.Common.pickHelmet([
 				[
 					20,
 					"hood"

@@ -79,7 +79,7 @@ this.overhead_strike <- this.inherit("scripts/skills/skill", {
 			return success;
 		}
 
-		if (success && _targetTile.IsOccupiedByActor && this.Math.rand(1, 100) <= this.m.StunChance && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
+		if (success && _targetTile.IsOccupiedByActor && ::Math.rand(1, 100) <= this.m.StunChance && !target.getCurrentProperties().IsImmuneToStun && !target.getSkills().hasSkill("effects.stunned"))
 		{
 			target.getSkills().add(::new("scripts/skills/effects/stunned_effect"));
 

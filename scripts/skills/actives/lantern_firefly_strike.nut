@@ -113,7 +113,7 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 		if (myTile.hasNextTile(dir))
 		{
 			local boltTile = myTile.getNextTile(dir);
-			if (this.Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
 			{
 				xxtile.push(boltTile);
 				xxtile.push(boltTile);
@@ -123,7 +123,7 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 		if (myTile.hasNextTile(left))
 		{
 			local boltTile = myTile.getNextTile(left);
-			if (this.Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
 			{
 				xxtile.push(boltTile);
 				xxtile.push(boltTile);
@@ -133,7 +133,7 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 		if (myTile.hasNextTile(right))
 		{
 			local boltTile = myTile.getNextTile(right);
-			if (this.Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
 			{
 				xxtile.push(boltTile);
 				xxtile.push(boltTile);
@@ -144,12 +144,12 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 		{
 			this.Time.scheduleEvent(this.TimeUnit.Virtual, 0 + (i * 80), function ( _skill )
 			{
-				xxtileE = xxtile.remove(this.Math.rand(0, xxtile.len() - 1));
+				xxtileE = xxtile.remove(::Math.rand(0, xxtile.len() - 1));
 				if (_user.getTile().getDistanceTo(_targetTile) >= ::Const.Combat.SpawnProjectileMinDist)
 				{
-					this.Sound.play("sounds/combat/strike_down_hit_0" + this.Math.rand(1, 2) + ".wav", ::Const.Sound.Volume.Skill * 1.2, this.getContainer().getActor().getPos());
+					this.Sound.play("sounds/combat/strike_down_hit_0" + ::Math.rand(1, 2) + ".wav", ::Const.Sound.Volume.Skill * 1.2, this.getContainer().getActor().getPos());
 					this.Tactical.spawnSpriteEffect("sparkleflare_1", this.createColor("#ccf1ff"), xxtileE, 0, 10, 1.2, 0.2, -10, 200, 400);
-					this.Tactical.spawnProjectileEffect(::Const.ProjectileSprite[this.m.ProjectileType], xxtileE, _targetTile, 0.7 + (this.Math.rand(0, 5) * 0.1), this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
+					this.Tactical.spawnProjectileEffect(::Const.ProjectileSprite[this.m.ProjectileType], xxtileE, _targetTile, 0.7 + (::Math.rand(0, 5) * 0.1), this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
 				}
 			}.bindenv(this), this);
 		}

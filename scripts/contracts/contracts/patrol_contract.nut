@@ -49,7 +49,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Location1 = this.WeakTableRef(this.getNearestLocationTo(this.m.Home, settlements, true));
 		this.m.Location2 = this.WeakTableRef(this.getNearestLocationTo(this.m.Location1, settlements, true));
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = this.Math.rand(1, 3);
+		local r = ::Math.rand(1, 3);
 
 		if (r == 1)
 		{
@@ -72,7 +72,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 			30,
 			35
 		];
-		this.m.Payment.MaxCount = maximumHeads[this.Math.rand(0, maximumHeads.len() - 1)];
+		this.m.Payment.MaxCount = maximumHeads[::Math.rand(0, maximumHeads.len() - 1)];
 		this.m.Flags.set("HeadsCollected", 0);
 		this.m.Flags.set("StartDay", 0);
 		this.m.Flags.set("LastUpdateDay", 0);
@@ -93,7 +93,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 				];
 				this.Contract.m.BulletpointsObjectives.push("Return within %days% days");
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -106,18 +106,18 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				this.Flags.set("EnemiesAtWaypoint1", this.Math.rand(1, 100) <= 25 * this.Math.pow(this.Contract.getDifficultyMult(), 2));
-				this.Flags.set("EnemiesAtWaypoint2", this.Math.rand(1, 100) <= 25 * this.Math.pow(this.Contract.getDifficultyMult(), 2) + (this.Flags.get("EnemiesAtWaypoint1") ? 0 : 50));
-				this.Flags.set("EnemiesAtLocation3", this.Math.rand(1, 100) <= 25 * this.Math.pow(this.Contract.getDifficultyMult(), 2) + (this.Flags.get("EnemiesAtWaypoint2") ? 0 : 100));
+				this.Flags.set("EnemiesAtWaypoint1", ::Math.rand(1, 100) <= 25 * ::Math.pow(this.Contract.getDifficultyMult(), 2));
+				this.Flags.set("EnemiesAtWaypoint2", ::Math.rand(1, 100) <= 25 * ::Math.pow(this.Contract.getDifficultyMult(), 2) + (this.Flags.get("EnemiesAtWaypoint1") ? 0 : 50));
+				this.Flags.set("EnemiesAtLocation3", ::Math.rand(1, 100) <= 25 * ::Math.pow(this.Contract.getDifficultyMult(), 2) + (this.Flags.get("EnemiesAtWaypoint2") ? 0 : 100));
 				this.Flags.set("StartDay", this.World.getTime().Days);
 
 				if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().get("Betrayed"))
 				{
-					this.Flags.set("IsBetrayal", this.Math.rand(1, 100) <= 75);
+					this.Flags.set("IsBetrayal", ::Math.rand(1, 100) <= 75);
 				}
 				else
 				{
-					local r = this.Math.rand(1, 100);
+					local r = ::Math.rand(1, 100);
 
 					if (r <= 10)
 					{
@@ -252,7 +252,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 					}
 				}
 
-				if (this.Flags.get("IsCrucifiedMan") && !this.TempFlags.get("IsCrucifiedManShown") && this.World.State.getPlayer().getTile().HasRoad && this.Contract.getDistanceToNearestSettlement() >= 6 && this.Math.rand(1, 1000) <= 1)
+				if (this.Flags.get("IsCrucifiedMan") && !this.TempFlags.get("IsCrucifiedManShown") && this.World.State.getPlayer().getTile().HasRoad && this.Contract.getDistanceToNearestSettlement() >= 6 && ::Math.rand(1, 1000) <= 1)
 				{
 					this.TempFlags.set("IsCrucifiedManShown", true);
 					this.Contract.setScreen("CrucifiedA");
@@ -262,7 +262,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					this.Flags.set("IsCrucifiedManWon", false);
 
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
 						this.Contract.setScreen("CrucifiedE_AftermathGood");
 					}
@@ -356,7 +356,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 					}
 				}
 
-				if (this.Flags.get("IsCrucifiedMan") && !this.TempFlags.get("IsCrucifiedManShown") && this.World.State.getPlayer().getTile().HasRoad && this.Contract.getDistanceToNearestSettlement() >= 6 && this.Math.rand(1, 1000) <= 1)
+				if (this.Flags.get("IsCrucifiedMan") && !this.TempFlags.get("IsCrucifiedManShown") && this.World.State.getPlayer().getTile().HasRoad && this.Contract.getDistanceToNearestSettlement() >= 6 && ::Math.rand(1, 1000) <= 1)
 				{
 					this.TempFlags.set("IsCrucifiedManShown", true);
 					this.Contract.setScreen("CrucifiedA");
@@ -366,7 +366,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					this.Flags.set("IsCrucifiedManWon", false);
 
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
 						this.Contract.setScreen("CrucifiedE_AftermathGood");
 					}
@@ -406,8 +406,8 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationPerHead);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationPerHead);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -485,7 +485,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Let\'s cut him down.",
 					function getResult()
 					{
-						if (this.Math.rand(1, 100) <= 50 && this.World.getPlayerRoster().getSize() < this.World.Assets.getBrothersMax())
+						if (::Math.rand(1, 100) <= 50 && this.World.getPlayerRoster().getSize() < this.World.Assets.getBrothersMax())
 						{
 							return "CrucifiedC";
 						}
@@ -500,7 +500,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "This is clearly a trap. Let\'s wait.",
 					function getResult()
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "CrucifiedE";
 						}
@@ -561,26 +561,26 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				local roster = this.World.getTemporaryRoster();
 				this.Contract.m.Dude = roster.create("scripts/entity/tactical/player");
-				this.Contract.m.Dude.setStartValuesEx(this.Const.CharacterVillageBackgrounds);
+				this.Contract.m.Dude.setStartValuesEx(::Const.CharacterVillageBackgrounds);
 				this.Contract.m.Dude.getBackground().m.RawDescription = "You pulled the crucified %name% down off the means to his execution just in time. He has pledged allegiance to your side until the end of his days or the last of your victories.";
 				this.Contract.m.Dude.getBackground().buildDescription(true);
 				this.Contract.m.Dude.getSkills().removeByID("trait.disloyal");
 				this.Contract.m.Dude.getSkills().add(this.new("scripts/skills/traits/loyal_trait"));
 				this.Contract.m.Dude.setHitpoints(1);
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).removeSelf();
 				}
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand).removeSelf();
 				}
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head).removeSelf();
 				}
 
 				this.Contract.m.Dude.m.Talents = [];
@@ -614,15 +614,15 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "Event";
-						properties.Music = this.Const.Music.GoblinsTracks;
+						properties.Music = ::Const.Music.GoblinsTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
 						properties.EnemyBanners = [
 							"banner_goblins_03"
 						];
-						properties.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Center;
-						properties.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Circle;
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.GreenskinHorde, this.Math.rand(90, 110), this.Const.Faction.Enemy);
+						properties.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Center;
+						properties.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.GreenskinHorde, ::Math.rand(90, 110), ::Const.Faction.Enemy);
 						this.World.Contracts.startScriptedCombat(properties, false, true, true);
 						return 0;
 					}
@@ -649,13 +649,13 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.CombatID = "CrucifiedMan";
-						properties.Music = this.Const.Music.GoblinsTracks;
+						properties.Music = ::Const.Music.GoblinsTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
 						properties.EnemyBanners = [
 							"banner_bandits_03"
 						];
-						this.Const.World.Common.addUnitsToCombat(properties.Entities, this.Const.World.Spawn.BanditRaiders, this.Math.rand(90, 110), this.Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.BanditRaiders, ::Math.rand(90, 110), ::Const.Faction.Enemy);
 						this.World.Contracts.startScriptedCombat(properties, false, true, true);
 						return 0;
 					}
@@ -703,26 +703,26 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				local roster = this.World.getTemporaryRoster();
 				this.Contract.m.Dude = roster.create("scripts/entity/tactical/player");
-				this.Contract.m.Dude.setStartValuesEx(this.Const.CharacterVillageBackgrounds);
+				this.Contract.m.Dude.setStartValuesEx(::Const.CharacterVillageBackgrounds);
 				this.Contract.m.Dude.getBackground().m.RawDescription = "You pulled the crucified %name% down off the means to his execution just in time. He has pledged allegiance to your side until the end of his days or the last of your victories.";
 				this.Contract.m.Dude.getBackground().buildDescription(true);
 				this.Contract.m.Dude.getSkills().removeByID("trait.disloyal");
 				this.Contract.m.Dude.getSkills().add(this.new("scripts/skills/traits/loyal_trait"));
 				this.Contract.m.Dude.setHitpoints(1);
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).removeSelf();
 				}
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand).removeSelf();
 				}
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head).removeSelf();
 				}
 
 				this.Contract.m.Dude.m.Talents = [];
@@ -789,16 +789,16 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.OffendedByViolence) && !bro.getBackground().isBackgroundType(this.Const.BackgroundType.Combat))
+					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && !bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat))
 					{
 						bro.worsenMood(0.5, "You let a crucified man die a slow death");
 
-						if (bro.getMoodState() < this.Const.MoodState.Neutral)
+						if (bro.getMoodState() < ::Const.MoodState.Neutral)
 						{
 							this.List.push({
 								id = 10,
-								icon = this.Const.MoodStateIcon[bro.getMoodState()],
-								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+								icon = ::Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + ::Const.MoodStateEvent[bro.getMoodState()]
 							});
 						}
 					}
@@ -827,7 +827,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
-				if (this.Math.rand(1, 100) <= 33)
+				if (::Math.rand(1, 100) <= 33)
 				{
 					this.Contract.addSituation(this.new("scripts/entity/world/settlements/situations/safe_roads_situation"), 2, this.Contract.m.Location1, this.List);
 				}
@@ -855,7 +855,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
-				if (this.Math.rand(1, 100) <= 33)
+				if (::Math.rand(1, 100) <= 33)
 				{
 					this.Contract.addSituation(this.new("scripts/entity/world/settlements/situations/safe_roads_situation"), 2, this.Contract.m.Location2, this.List);
 				}
@@ -874,10 +874,10 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Enough marching for today.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
 						this.World.Assets.addMoney(this.Contract.m.Payment.getPerCount() * this.Flags.get("HeadsCollected"));
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Patrolled the realm");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Patrolled the realm");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -890,10 +890,10 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 
-				if (this.Math.rand(1, 100) <= 33)
+				if (::Math.rand(1, 100) <= 33)
 				{
 					this.Contract.addSituation(this.new("scripts/entity/world/settlements/situations/safe_roads_situation"), 2, this.Contract.m.Home, this.List);
 				}
@@ -912,9 +912,9 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Enough marching for today.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnVictory);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnVictory);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractPoor, "Patrolled the realm");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractPoor, "Patrolled the realm");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -928,7 +928,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 					this.List.push({
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+						text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 					});
 				}
 			}
@@ -946,8 +946,8 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Damn this contract!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Wandered off while tasked to patrol");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Wandered off while tasked to patrol");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -959,7 +959,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 
 	function addKillCount( _actor, _killer )
 	{
-		if (_killer != null && _killer.getFaction() != this.Const.Faction.Player && _killer.getFaction() != this.Const.Faction.PlayerAnimals)
+		if (_killer != null && _killer.getFaction() != ::Const.Faction.Player && _killer.getFaction() != ::Const.Faction.PlayerAnimals)
 		{
 			return;
 		}
@@ -974,7 +974,7 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 			return;
 		}
 
-		if (_actor.getType() == this.Const.EntityType.GoblinWolfrider || _actor.getType() == this.Const.EntityType.KoboldWolfrider || _actor.getType() == this.Const.EntityType.Wardog || _actor.getType() == this.Const.EntityType.Warhound || _actor.getType() == this.Const.EntityType.SpiderEggs || this.isKindOf(_actor, "lindwurm_tail"))
+		if (_actor.getType() == ::Const.EntityType.GoblinWolfrider || _actor.getType() == ::Const.EntityType.KoboldWolfrider || _actor.getType() == ::Const.EntityType.Wardog || _actor.getType() == ::Const.EntityType.Warhound || _actor.getType() == ::Const.EntityType.SpiderEggs || this.isKindOf(_actor, "lindwurm_tail"))
 		{
 			return;
 		}
@@ -1005,11 +1005,11 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 				continue;
 			}
 
-			local nearest_bandits = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getNearestSettlement(tile);
-			local nearest_goblins = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).getNearestSettlement(tile);
-			local nearest_orcs = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getNearestSettlement(tile);
-			local nearest_barbarians = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Barbarians) != null ? this.World.FactionManager.getFactionOfType(this.Const.FactionType.Barbarians).getNearestSettlement(tile) : null;
-			local nearest_nomads = this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits) != null ? this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).getNearestSettlement(tile) : null;
+			local nearest_bandits = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getNearestSettlement(tile);
+			local nearest_goblins = this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).getNearestSettlement(tile);
+			local nearest_orcs = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getNearestSettlement(tile);
+			local nearest_barbarians = this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians) != null ? this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians).getNearestSettlement(tile) : null;
+			local nearest_nomads = this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits) != null ? this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getNearestSettlement(tile) : null;
 
 			if (nearest_bandits == null && nearest_goblins == null && nearest_orcs == null && nearest_barbarians == null && nearest_nomads == null)
 			{
@@ -1017,32 +1017,32 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 				return false;
 			}
 
-			local bandits_dist = nearest_bandits != null ? nearest_bandits.getTile().getDistanceTo(tile) + this.Math.rand(0, 10) : 9000;
-			local goblins_dist = nearest_goblins != null ? nearest_goblins.getTile().getDistanceTo(tile) + this.Math.rand(0, 10) : 9000;
-			local orcs_dist = nearest_orcs != null ? nearest_orcs.getTile().getDistanceTo(tile) + this.Math.rand(0, 10) : 9000;
-			local barbarians_dist = nearest_barbarians != null ? nearest_barbarians.getTile().getDistanceTo(tile) + this.Math.rand(0, 10) : 9000;
-			local nomads_dist = nearest_nomads != null ? nearest_nomads.getTile().getDistanceTo(tile) + this.Math.rand(0, 10) : 9000;
+			local bandits_dist = nearest_bandits != null ? nearest_bandits.getTile().getDistanceTo(tile) + ::Math.rand(0, 10) : 9000;
+			local goblins_dist = nearest_goblins != null ? nearest_goblins.getTile().getDistanceTo(tile) + ::Math.rand(0, 10) : 9000;
+			local orcs_dist = nearest_orcs != null ? nearest_orcs.getTile().getDistanceTo(tile) + ::Math.rand(0, 10) : 9000;
+			local barbarians_dist = nearest_barbarians != null ? nearest_barbarians.getTile().getDistanceTo(tile) + ::Math.rand(0, 10) : 9000;
+			local nomads_dist = nearest_nomads != null ? nearest_nomads.getTile().getDistanceTo(tile) + ::Math.rand(0, 10) : 9000;
 			local party;
 			local origin;
 
 			if (bandits_dist <= goblins_dist && bandits_dist <= orcs_dist && bandits_dist <= barbarians_dist && bandits_dist <= nomads_dist)
 			{
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Brigands", false, this.Const.World.Spawn.BanditRaiders, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Brigands", false, ::Const.World.Spawn.BanditRaiders, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 				}
 				else
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Brigand Hunters", false, this.Const.World.Spawn.BanditRoamers, 80 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Brigand Hunters", false, ::Const.World.Spawn.BanditRoamers, 80 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 				}
 
 				party.setDescription("A rough and tough band of brigands preying on the weak.");
-				party.setFootprintType(this.Const.World.FootprintsType.Brigands);
-				party.getLoot().Money = this.Math.rand(50, 100);
-				party.getLoot().ArmorParts = this.Math.rand(0, 10);
-				party.getLoot().Medicine = this.Math.rand(0, 2);
-				party.getLoot().Ammo = this.Math.rand(0, 20);
-				local r = this.Math.rand(1, 6);
+				party.setFootprintType(::Const.World.FootprintsType.Brigands);
+				party.getLoot().Money = ::Math.rand(50, 100);
+				party.getLoot().ArmorParts = ::Math.rand(0, 10);
+				party.getLoot().Medicine = ::Math.rand(0, 2);
+				party.getLoot().Ammo = ::Math.rand(0, 20);
+				local r = ::Math.rand(1, 6);
 
 				if (r == 1)
 				{
@@ -1069,64 +1069,64 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 			}
 			else if (goblins_dist <= bandits_dist && goblins_dist <= orcs_dist && goblins_dist <= barbarians_dist && goblins_dist <= nomads_dist)
 			{
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).spawnEntity(tile, "Goblin Raiders", false, this.Const.World.Spawn.GoblinRaiders, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).spawnEntity(tile, "Goblin Raiders", false, ::Const.World.Spawn.GoblinRaiders, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 				}
 				else
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).spawnEntity(tile, "Goblin Scouts", false, this.Const.World.Spawn.GoblinScouts, 80 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).spawnEntity(tile, "Goblin Scouts", false, ::Const.World.Spawn.GoblinScouts, 80 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 				}
 
 				party.setDescription("A band of mischievous goblins, small but cunning and not to be underestimated.");
-				party.setFootprintType(this.Const.World.FootprintsType.Goblins);
-				party.getLoot().ArmorParts = this.Math.rand(0, 10);
-				party.getLoot().Medicine = this.Math.rand(0, 2);
-				party.getLoot().Ammo = this.Math.rand(0, 30);
+				party.setFootprintType(::Const.World.FootprintsType.Goblins);
+				party.getLoot().ArmorParts = ::Math.rand(0, 10);
+				party.getLoot().Medicine = ::Math.rand(0, 2);
+				party.getLoot().Ammo = ::Math.rand(0, 30);
 
-				if (this.Math.rand(1, 100) <= 75)
+				if (::Math.rand(1, 100) <= 75)
 				{
 					local loot = [
 						"supplies/strange_meat_item",
 						"supplies/roots_and_berries_item",
 						"supplies/pickled_mushrooms_item"
 					];
-					party.addToInventory(loot[this.Math.rand(0, loot.len() - 1)]);
+					party.addToInventory(loot[::Math.rand(0, loot.len() - 1)]);
 				}
 
-				if (this.Math.rand(1, 100) <= 33)
+				if (::Math.rand(1, 100) <= 33)
 				{
 					local loot = [
 						"loot/goblin_carved_ivory_iconographs_item",
 						"loot/goblin_minted_coins_item",
 						"loot/goblin_rank_insignia_item"
 					];
-					party.addToInventory(loot[this.Math.rand(0, loot.len() - 1)]);
+					party.addToInventory(loot[::Math.rand(0, loot.len() - 1)]);
 				}
 
 				origin = nearest_goblins;
 			}
 			else if (barbarians_dist <= goblins_dist && barbarians_dist <= bandits_dist && barbarians_dist <= orcs_dist && barbarians_dist <= nomads_dist)
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Barbarians).spawnEntity(tile, "Barbarians", false, this.Const.World.Spawn.Barbarians, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians).spawnEntity(tile, "Barbarians", false, ::Const.World.Spawn.Barbarians, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 				party.setDescription("A warband of barbarian tribals.");
-				party.setFootprintType(this.Const.World.FootprintsType.Barbarians);
-				party.getLoot().Money = this.Math.rand(0, 50);
-				party.getLoot().ArmorParts = this.Math.rand(0, 10);
-				party.getLoot().Medicine = this.Math.rand(0, 5);
-				party.getLoot().Ammo = this.Math.rand(0, 30);
+				party.setFootprintType(::Const.World.FootprintsType.Barbarians);
+				party.getLoot().Money = ::Math.rand(0, 50);
+				party.getLoot().ArmorParts = ::Math.rand(0, 10);
+				party.getLoot().Medicine = ::Math.rand(0, 5);
+				party.getLoot().Ammo = ::Math.rand(0, 30);
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					party.addToInventory("loot/bone_figurines_item");
 				}
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					party.addToInventory("loot/bead_necklace_item");
 				}
 
-				local r = this.Math.rand(2, 5);
+				local r = ::Math.rand(2, 5);
 
 				if (r == 2)
 				{
@@ -1149,14 +1149,14 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 			}
 			else if (nomads_dist <= barbarians_dist && nomads_dist <= goblins_dist && nomads_dist <= bandits_dist && nomads_dist <= orcs_dist)
 			{
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).spawnEntity(tile, "Nomads", false, this.Const.World.Spawn.NomadRaidersCaravan, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).spawnEntity(tile, "Nomads", false, ::Const.World.Spawn.NomadRaidersCaravan, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 				party.setDescription("A band of desert raiders preying on anyone trying to cross the seas of sand.");
-				party.setFootprintType(this.Const.World.FootprintsType.Nomads);
-				party.getLoot().Money = this.Math.rand(50, 200);
-				party.getLoot().ArmorParts = this.Math.rand(0, 10);
-				party.getLoot().Medicine = this.Math.rand(0, 2);
-				party.getLoot().Ammo = this.Math.rand(0, 20);
-				local r = this.Math.rand(1, 4);
+				party.setFootprintType(::Const.World.FootprintsType.Nomads);
+				party.getLoot().Money = ::Math.rand(50, 200);
+				party.getLoot().ArmorParts = ::Math.rand(0, 10);
+				party.getLoot().Medicine = ::Math.rand(0, 2);
+				party.getLoot().Ammo = ::Math.rand(0, 20);
+				local r = ::Math.rand(1, 4);
 
 				if (r == 1)
 				{
@@ -1179,19 +1179,19 @@ this.patrol_contract <- this.inherit("scripts/contracts/contract", {
 			}
 			else
 			{
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).spawnEntity(tile, "Orc Marauders", false, this.Const.World.Spawn.OrcRaiders, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).spawnEntity(tile, "Orc Marauders", false, ::Const.World.Spawn.OrcRaiders, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 				}
 				else
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).spawnEntity(tile, "Orc Scouts", false, this.Const.World.Spawn.OrcScouts, 80 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).spawnEntity(tile, "Orc Scouts", false, ::Const.World.Spawn.OrcScouts, 80 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 				}
 
 				party.setDescription("A band of menacing orcs, greenskinned and towering any man.");
-				party.setFootprintType(this.Const.World.FootprintsType.Orcs);
-				party.getLoot().ArmorParts = this.Math.rand(0, 25);
-				party.getLoot().Ammo = this.Math.rand(0, 10);
+				party.setFootprintType(::Const.World.FootprintsType.Orcs);
+				party.getLoot().ArmorParts = ::Math.rand(0, 25);
+				party.getLoot().Ammo = ::Math.rand(0, 10);
 				party.addToInventory("supplies/strange_meat_item");
 				origin = nearest_orcs;
 			}

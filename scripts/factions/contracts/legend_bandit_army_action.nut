@@ -7,12 +7,12 @@ this.legend_bandit_army_action <- this.inherit("scripts/factions/faction_action"
 		this.m.IsStartingOnCooldown = false;
 		this.m.IsSettlementsRequired = true;
 		this.faction_action.create();
-		this.m.DifficultyMult = this.Math.rand(145, 175) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(145, 175) * 0.01;
 	}
 
 	function onUpdate( _faction )
 	{
-		if (_faction.getType() == this.Const.FactionType.Settlement && !_faction.isReadyForContract(this.Const.Contracts.ContractCategoryMap.legend_bandit_army_contract))
+		if (_faction.getType() == ::Const.FactionType.Settlement && !_faction.isReadyForContract(::Const.Contracts.ContractCategoryMap.legend_bandit_army_contract))
 		{
 			return;
 		}
@@ -34,7 +34,7 @@ this.legend_bandit_army_action <- this.inherit("scripts/factions/faction_action"
 
 		if (tooFar)
 		{
-			local bandits = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getSettlements();
+			local bandits = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getSettlements();
 
 			foreach( b in bandits )
 			{
@@ -72,8 +72,8 @@ this.legend_bandit_army_action <- this.inherit("scripts/factions/faction_action"
 			return;
 		}
 
-		local minResources = this.Const.World.LegendaryContract.BanditArmy * this.Const.World.ContractCost.BanditArmy + this.Const.World.ContractCost.BanditArmy;
-		local currentResources = this.getDifficultyMult() * this.getScaledDifficultyMult() * this.Const.World.ContractCost.BanditArmy;
+		local minResources = ::Const.World.LegendaryContract.BanditArmy * ::Const.World.ContractCost.BanditArmy + ::Const.World.ContractCost.BanditArmy;
+		local currentResources = this.getDifficultyMult() * this.getScaledDifficultyMult() * ::Const.World.ContractCost.BanditArmy;
 
 		if (currentResources < minResources)
 		{
@@ -81,7 +81,7 @@ this.legend_bandit_army_action <- this.inherit("scripts/factions/faction_action"
 		}
 		else
 		{
-			this.Const.World.LegendaryContract.BanditArmy += 1;
+			::Const.World.LegendaryContract.BanditArmy += 1;
 		}
 
 		this.m.Score = 5;

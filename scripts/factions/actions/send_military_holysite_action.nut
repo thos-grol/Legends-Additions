@@ -10,7 +10,7 @@ this.send_military_holysite_action <- this.inherit("scripts/factions/faction_act
 
 	function onUpdate( _faction )
 	{
-		if (!(this.World.FactionManager.getGreaterEvilType() == this.Const.World.GreaterEvilType.HolyWar && this.World.FactionManager.getGreaterEvilPhase() >= this.Const.World.GreaterEvilPhase.Warning))
+		if (!(this.World.FactionManager.getGreaterEvilType() == ::Const.World.GreaterEvilType.HolyWar && this.World.FactionManager.getGreaterEvilPhase() >= ::Const.World.GreaterEvilPhase.Warning))
 		{
 			return;
 		}
@@ -139,16 +139,16 @@ this.send_military_holysite_action <- this.inherit("scripts/factions/faction_act
 
 		for( local i = 0; i < num; i = ++i )
 		{
-			local party = this.getFaction().spawnEntity(spawnpoints[i], origin.getName() + " Company", true, this.Const.World.Spawn.Noble, this.Math.rand(90, 120) * this.getScaledDifficultyMult());
+			local party = this.getFaction().spawnEntity(spawnpoints[i], origin.getName() + " Company", true, ::Const.World.Spawn.Noble, ::Math.rand(90, 120) * this.getScaledDifficultyMult());
 			party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + _faction.getBannerString());
 			party.setDescription("Professional soldiers in service to local lords.");
-			party.setFootprintType(this.Const.World.FootprintsType.Nobles);
+			party.setFootprintType(::Const.World.FootprintsType.Nobles);
 			party.getFlags().set("IsRandomlySpawned", true);
-			party.getLoot().Money = this.Math.rand(50, 150);
-			party.getLoot().ArmorParts = this.Math.rand(0, 25);
-			party.getLoot().Medicine = this.Math.rand(0, 3);
-			party.getLoot().Ammo = this.Math.rand(0, 30);
-			local r = this.Math.rand(1, 4);
+			party.getLoot().Money = ::Math.rand(50, 150);
+			party.getLoot().ArmorParts = ::Math.rand(0, 25);
+			party.getLoot().Medicine = ::Math.rand(0, 3);
+			party.getLoot().Ammo = ::Math.rand(0, 30);
+			local r = ::Math.rand(1, 4);
 
 			if (r == 1)
 			{

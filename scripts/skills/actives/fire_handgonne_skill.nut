@@ -30,8 +30,8 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/dlc6/fire_gonne_hit_04.wav"
 		];
 		this.m.SoundOnHitDelay = 0;
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.Delay = 750;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
@@ -46,8 +46,8 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 		this.m.IsDoingForwardMove = false;
 		this.m.IsTargetingActor = false;
 		this.m.IsAOE = true;
-		this.m.InjuriesOnBody = this.Const.Injury.BurningAndPiercingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.BurningAndPiercingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.BurningAndPiercingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.BurningAndPiercingHead;
 		this.m.DirectDamageMult = 0.25;
 		this.m.ActionPointCost = 4;
 		this.m.FatigueCost = 0;
@@ -74,7 +74,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 				id = 8,
 				type = "text",
 				icon = "ui/icons/ammo.png",
-				text = "Has [color=" + this.Const.UI.Color.PositiveValue + "]" + ammo + "[/color] shots left"
+				text = "Has [color=" + ::Const.UI.Color.PositiveValue + "]" + ammo + "[/color] shots left"
 			});
 		}
 		else
@@ -83,7 +83,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 				id = 8,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Needs a non-empty powder bag equipped[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Needs a non-empty powder bag equipped[/color]"
 			});
 		}
 
@@ -93,7 +93,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Must be reloaded before firing again[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Must be reloaded before firing again[/color]"
 			});
 		}
 
@@ -103,7 +103,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 				id = 9,
 				type = "text",
 				icon = "ui/tooltips/warning.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Can not be used because this character is engaged in melee[/color]"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]Can not be used because this character is engaged in melee[/color]"
 			});
 		}
 
@@ -114,7 +114,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/tooltips/positive.png",
-				text = "Max Range [color=" + this.Const.UI.Color.PositiveValue + "]+" + s.m.BonusRange + "[/color] from " + s.getName()
+				text = "Max Range [color=" + ::Const.UI.Color.PositiveValue + "]+" + s.m.BonusRange + "[/color] from " + s.getName()
 			});
 		}
 
@@ -128,14 +128,14 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 
 	function getAmmo()
 	{
-		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Ammo);
+		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Ammo);
 
 		if (item == null)
 		{
 			return 0;
 		}
 
-		if (item.getAmmoType() == this.Const.Items.AmmoType.Powder)
+		if (item.getAmmoType() == ::Const.Items.AmmoType.Powder)
 		{
 			return item.getAmmo();
 		}
@@ -161,18 +161,18 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 			{
 				if (user.getPos().X <= target.getPos().X)
 				{
-					for( local i = 0; i < this.Const.Tactical.ShrapnelLeftParticles.len(); i = i )
+					for( local i = 0; i < ::Const.Tactical.ShrapnelLeftParticles.len(); i = i )
 					{
-						local effect = this.Const.Tactical.ShrapnelLeftParticles[i];
+						local effect = ::Const.Tactical.ShrapnelLeftParticles[i];
 						this.Tactical.spawnParticleEffect(false, effect.Brushes, t, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(0, 0));
 						i = ++i;
 					}
 				}
 				else
 				{
-					for( local i = 0; i < this.Const.Tactical.ShrapnelRightParticles.len(); i = i )
+					for( local i = 0; i < ::Const.Tactical.ShrapnelRightParticles.len(); i = i )
 					{
-						local effect = this.Const.Tactical.ShrapnelRightParticles[i];
+						local effect = ::Const.Tactical.ShrapnelRightParticles[i];
 						this.Tactical.spawnParticleEffect(false, effect.Brushes, t, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(0, 0));
 						i = ++i;
 					}
@@ -193,7 +193,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 		{
 			local forwardTile = _targetTile.getNextTile(dir);
 
-			if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
 			{
 				ret.push(forwardTile);
 			}
@@ -205,7 +205,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 		{
 			local forwardTile = _targetTile.getNextTile(left);
 
-			if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
 			{
 				ret.push(forwardTile);
 			}
@@ -214,7 +214,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 			{
 				forwardTile = forwardTile.getNextTile(dir);
 
-				if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+				if (::Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
 				{
 					ret.push(forwardTile);
 				}
@@ -227,7 +227,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 		{
 			local forwardTile = _targetTile.getNextTile(right);
 
-			if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
 			{
 				ret.push(forwardTile);
 			}
@@ -236,7 +236,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 			{
 				forwardTile = forwardTile.getNextTile(dir);
 
-				if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+				if (::Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
 				{
 					ret.push(forwardTile);
 				}
@@ -261,7 +261,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 
 		foreach( t in affectedTiles )
 		{
-			this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, t, t.Pos.X, t.Pos.Y);
+			this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, t, t.Pos.X, t.Pos.Y);
 		}
 	}
 
@@ -271,7 +271,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
-		this.Sound.play(this.m.SoundOnFire[this.Math.rand(0, this.m.SoundOnFire.len() - 1)], this.Const.Sound.Volume.Skill * this.m.SoundVolume, _user.getPos());
+		this.Sound.play(this.m.SoundOnFire[::Math.rand(0, this.m.SoundOnFire.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, _user.getPos());
 		local tag = {
 			Skill = this,
 			User = _user,
@@ -281,7 +281,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 		this.getItem().setLoaded(false);
 		local skillToAdd = this.new("scripts/skills/actives/reload_handgonne_skill");
 		skillToAdd.setItem(this.getItem());
-		skillToAdd.setFatigueCost(this.Math.max(0, skillToAdd.getFatigueCostRaw() + this.getItem().m.FatigueOnSkillUse));
+		skillToAdd.setFatigueCost(::Math.max(0, skillToAdd.getFatigueCostRaw() + this.getItem().m.FatigueOnSkillUse));
 		this.getContainer().add(skillToAdd);
 		return true;
 	}
@@ -297,18 +297,18 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 		{
 			if (user.isAlliedWithPlayer())
 			{
-				for( local i = 0; i < this.Const.Tactical.HandgonneRightParticles.len(); i = i )
+				for( local i = 0; i < ::Const.Tactical.HandgonneRightParticles.len(); i = i )
 				{
-					local effect = this.Const.Tactical.HandgonneRightParticles[i];
+					local effect = ::Const.Tactical.HandgonneRightParticles[i];
 					this.Tactical.spawnParticleEffect(false, effect.Brushes, myTile, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(0, 0));
 					i = ++i;
 				}
 			}
 			else
 			{
-				for( local i = 0; i < this.Const.Tactical.HandgonneLeftParticles.len(); i = i )
+				for( local i = 0; i < ::Const.Tactical.HandgonneLeftParticles.len(); i = i )
 				{
-					local effect = this.Const.Tactical.HandgonneLeftParticles[i];
+					local effect = ::Const.Tactical.HandgonneLeftParticles[i];
 					this.Tactical.spawnParticleEffect(false, effect.Brushes, myTile, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(0, 0));
 					i = ++i;
 				}
@@ -316,7 +316,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 		}
 
 		local affectedTiles = this.getAffectedTiles(targetTile);
-		this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], 1.0, user.getPos());
+		this.Sound.play(this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)], 1.0, user.getPos());
 		local tag = {
 			Skill = _tag.Skill,
 			User = user,

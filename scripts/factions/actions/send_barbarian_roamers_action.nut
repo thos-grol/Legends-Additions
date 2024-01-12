@@ -87,7 +87,7 @@ this.send_barbarian_roamers_action <- this.inherit("scripts/factions/faction_act
 
 		local settlement = this.pickWeightedRandom(settlements);
 		settlement.setLastSpawnTimeToNow();
-		local rand = this.Math.rand(60, 110);
+		local rand = ::Math.rand(60, 110);
 		local distanceToNextSettlement = this.getDistanceToSettlements(settlement.getTile());
 
 		if (::Legends.Mod.ModSettings.getSetting("DistanceScaling").getValue() && distanceToNextSettlement > 14)
@@ -95,35 +95,35 @@ this.send_barbarian_roamers_action <- this.inherit("scripts/factions/faction_act
 			rand = rand * (distanceToNextSettlement / 14.0);
 		}
 
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Barbarians", false, this.Const.World.Spawn.BarbarianHunters, this.Math.min(settlement.getResources(), rand));
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Barbarians", false, ::Const.World.Spawn.BarbarianHunters, ::Math.min(settlement.getResources(), rand));
 		party.getSprite("banner").setBrush(settlement.getBanner());
 		party.setDescription("A band of barbarians out to hunt game.");
-		party.setFootprintType(this.Const.World.FootprintsType.Barbarians);
+		party.setFootprintType(::Const.World.FootprintsType.Barbarians);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().ArmorParts = this.Math.rand(0, 5);
-		party.getLoot().Medicine = this.Math.rand(0, 3);
-		party.getLoot().Ammo = this.Math.rand(10, 30);
+		party.getLoot().ArmorParts = ::Math.rand(0, 5);
+		party.getLoot().Medicine = ::Math.rand(0, 3);
+		party.getLoot().Ammo = ::Math.rand(10, 30);
 
-		if (this.Math.rand(1, 100) <= 25)
+		if (::Math.rand(1, 100) <= 25)
 		{
 			party.addToInventory("loot/bone_figurines_item");
 		}
 
-		if (this.Math.rand(1, 100) <= 25)
+		if (::Math.rand(1, 100) <= 25)
 		{
 			party.addToInventory("loot/bead_necklace_item");
 		}
 
-		if (this.Math.rand(1, 100) <= 25)
+		if (::Math.rand(1, 100) <= 25)
 		{
 			party.addToInventory("loot/valuable_furs_item");
 		}
 
-		local numFood = this.Math.rand(1, 2);
+		local numFood = ::Math.rand(1, 2);
 
 		for( local i = 0; i != numFood; i = i )
 		{
-			if (this.Math.rand(1, 100) <= 50)
+			if (::Math.rand(1, 100) <= 50)
 			{
 				party.addToInventory("supplies/cured_venison_item");
 			}
@@ -138,8 +138,8 @@ this.send_barbarian_roamers_action <- this.inherit("scripts/factions/faction_act
 		local c = party.getController();
 		local roam = this.new("scripts/ai/world/orders/roam_order");
 		roam.setAllTerrainAvailable();
-		roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-		roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+		roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+		roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 		roam.setPivot(settlement);
 		roam.setAvoidHeat(true);
 		roam.setTime(this.World.getTime().SecondsPerDay * 2);

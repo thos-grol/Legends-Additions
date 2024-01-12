@@ -41,7 +41,7 @@ this.perk_battle_flow <- this.inherit("scripts/skills/skill", {
 		{
 			this.m.IsSpent = true;
 			local actor = this.getContainer().getActor();
-			actor.setFatigue(this.Math.max(0, actor.getFatigue() - actor.getBaseProperties().Stamina * actor.getBaseProperties().StaminaMult * 0.1));
+			actor.setFatigue(::Math.max(0, actor.getFatigue() - actor.getBaseProperties().Stamina * actor.getBaseProperties().StaminaMult * 0.1));
 			actor.setDirty(true);
 		}
 	}

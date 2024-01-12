@@ -47,7 +47,7 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 
 		if (this.getContainer().getActor().getCurrentProperties().IsSpecializedInAxes)
 		{
-			damage = damage + this.Math.max(1, damage / 2);
+			damage = damage + ::Math.max(1, damage / 2);
 		}
 
 		local ret = [
@@ -133,7 +133,7 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 
 			if (_user.getCurrentProperties().IsSpecializedInAxes)
 			{
-				damage = damage + this.Math.max(1, damage / 2);
+				damage = damage + ::Math.max(1, damage / 2);
 			}
 
 			if (shield.getID() == "weapon.legend_parrying_dagger")
@@ -159,7 +159,7 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 			{
 				if (this.m.SoundOnHit.len() != 0)
 				{
-					this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, target.getPos());
+					this.Sound.play(this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, target.getPos());
 				}
 
 				if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)

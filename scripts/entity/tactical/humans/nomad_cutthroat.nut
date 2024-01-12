@@ -3,15 +3,15 @@ this.nomad_cutthroat <- this.inherit("scripts/entity/tactical/abstract_human", {
 	function create()
 	{
 		this.m.Name = "Nomad";
-		this.m.Type = this.Const.EntityType.NomadCutthroat;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.NomadCutthroat.XP;
+		this.m.Type = ::Const.EntityType.NomadCutthroat;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.NomadCutthroat.XP;
 		this.abstract_human.create();
-		this.m.Bodies = this.Const.Bodies.SouthernMale;
-		this.m.Faces = this.Const.Faces.SouthernMale;
-		this.m.Hairs = this.Const.Hair.SouthernMale;
-		this.m.HairColors = this.Const.HairColors.Southern;
-		this.m.Beards = this.Const.Beards.SouthernUntidy;
+		this.m.Bodies = ::Const.Bodies.SouthernMale;
+		this.m.Faces = ::Const.Faces.SouthernMale;
+		this.m.Hairs = ::Const.Hair.SouthernMale;
+		this.m.HairColors = ::Const.HairColors.Southern;
+		this.m.Beards = ::Const.Beards.SouthernUntidy;
 		this.m.BeardChance = 90;
 		this.m.Ethnicity = 1;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_melee_agent");
@@ -22,14 +22,14 @@ this.nomad_cutthroat <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.NomadCutthroat);
+		b.setValues(::Const.Tactical.Actor.NomadCutthroat);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_nomads");
 
-		if (this.Math.rand(1, 100) <= 15)
+		if (::Math.rand(1, 100) <= 15)
 		{
 			local pox = this.getSprite("tattoo_head");
 			pox.Visible = true;
@@ -41,7 +41,7 @@ this.nomad_cutthroat <- this.inherit("scripts/entity/tactical/abstract_human", {
 			dirt.Visible = true;
 		}
 
-		if (this.Math.rand(1, 100) <= 25)
+		if (::Math.rand(1, 100) <= 25)
 		{
 			this.getSprite("eye_rings").Visible = true;
 		}
@@ -49,19 +49,19 @@ this.nomad_cutthroat <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function onOtherActorDeath( _killer, _victim, _skill )
 	{
-		if (_victim.getType() == this.Const.EntityType.Slave && _victim.isAlliedWith(this)) return;
+		if (_victim.getType() == ::Const.EntityType.Slave && _victim.isAlliedWith(this)) return;
 		this.actor.onOtherActorDeath(_killer, _victim, _skill);
 	}
 
 	function onOtherActorFleeing( _actor )
 	{
-		if (_actor.getType() == this.Const.EntityType.Slave && _actor.isAlliedWith(this)) return;
+		if (_actor.getType() == ::Const.EntityType.Slave && _actor.isAlliedWith(this)) return;
 		this.actor.onOtherActorFleeing(_actor);
 	}
 
 	function pickOutfit()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				2,
 				"oriental/nomad_robe"
@@ -105,7 +105,7 @@ this.nomad_cutthroat <- this.inherit("scripts/entity/tactical/abstract_human", {
 				"oriental/nomad_leather_cap"
 			]
 		];
-		this.m.Items.equip(this.Const.World.Common.pickHelmet(helmet));
+		this.m.Items.equip(::Const.World.Common.pickHelmet(helmet));
 	}
 
 });

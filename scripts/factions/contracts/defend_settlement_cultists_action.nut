@@ -11,10 +11,10 @@ this.defend_settlement_cultists_action <- this.inherit("scripts/factions/faction
 
 	function onUpdate( _faction )
 	{
-		if (!_faction.isReadyForContract(this.Const.Contracts.ContractCategoryMap.defend_settlement_bandits_contract)) return;
+		if (!_faction.isReadyForContract(::Const.Contracts.ContractCategoryMap.defend_settlement_bandits_contract)) return;
 		if (_faction.getSettlements()[0].isIsolated()) return;
 		if (this.World.Assets.getBusinessReputation() < 250) return;
-		if (this.Math.rand(1, 100) > 15) return;
+		if (::Math.rand(1, 100) > 15) return;
 
 		local locations = _faction.getSettlements()[0].getAttachedLocations();
 		local targets = 0;
@@ -43,7 +43,7 @@ this.defend_settlement_cultists_action <- this.inherit("scripts/factions/faction
 
 		if (tooFar)
 		{
-			local bandits = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Cultists).getSettlements();
+			local bandits = this.World.FactionManager.getFactionOfType(::Const.FactionType.Cultists).getSettlements();
 
 			foreach( b in bandits )
 			{
@@ -57,7 +57,7 @@ this.defend_settlement_cultists_action <- this.inherit("scripts/factions/faction
 
 		if (tooFar)
 		{
-			local zombies = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).getSettlements();
+			local zombies = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getSettlements();
 
 			foreach( b in zombies )
 			{

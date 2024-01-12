@@ -60,18 +60,18 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 
 		do
 		{
-			local r = this.Math.rand(0, this.Const.PlayerBanners.len() - 1);
+			local r = ::Math.rand(0, ::Const.PlayerBanners.len() - 1);
 
-			if (this.World.Assets.getBanner() != this.Const.PlayerBanners[r])
+			if (this.World.Assets.getBanner() != ::Const.PlayerBanners[r])
 			{
-				b = this.Const.PlayerBanners[r];
+				b = ::Const.PlayerBanners[r];
 				break;
 			}
 		}
 		while (b < 0);
 
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -86,10 +86,10 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 		this.m.Flags.set("DestinationName", this.m.Destination.getName());
 		this.m.Flags.set("DestinationIndex", targetIndex);
 		this.m.Flags.set("MercenaryPay", this.beautifyNumber(this.m.Payment.Pool * 0.5));
-		this.m.Flags.set("Mercenary", this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]);
-		this.m.Flags.set("MercenaryCompany", this.Const.Strings.MercenaryCompanyNames[this.Math.rand(0, this.Const.Strings.MercenaryCompanyNames.len() - 1)]);
+		this.m.Flags.set("Mercenary", ::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]);
+		this.m.Flags.set("MercenaryCompany", ::Const.Strings.MercenaryCompanyNames[::Math.rand(0, ::Const.Strings.MercenaryCompanyNames.len() - 1)]);
 		this.m.Flags.set("MercenaryBanner", b);
-		this.m.Flags.set("Commander", this.Const.Strings.SouthernNames[this.Math.rand(0, this.Const.Strings.SouthernNames.len() - 1)]);
+		this.m.Flags.set("Commander", ::Const.Strings.SouthernNames[::Math.rand(0, ::Const.Strings.SouthernNames.len() - 1)]);
 		this.m.Flags.set("EnemyID", target.getFaction());
 		this.m.Flags.set("MapSeed", this.Time.getRealTime());
 		this.m.Flags.set("OppositionSeed", this.Time.getRealTime());
@@ -112,7 +112,7 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 20)
 				{
@@ -148,7 +148,7 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 					}
 				}
 
-				local nobles = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+				local nobles = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 
 				foreach( n in nobles )
 				{
@@ -208,25 +208,25 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 				if (this.Flags.get("IsCounterAttackDefend") && this.Contract.isPlayerAt(this.Contract.m.Destination))
 				{
 					local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-					p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
-					p.LocationTemplate.OwnedByFaction = this.Const.Faction.Player;
+					p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
+					p.LocationTemplate.OwnedByFaction = ::Const.Faction.Player;
 					p.LocationTemplate.Template[0] = "tactical.southern_ruins";
-					p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.Walls;
+					p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.Walls;
 					p.LocationTemplate.ShiftX = -4;
 					p.CombatID = "ConquerHolySiteCounterAttack";
 					p.MapSeed = this.Flags.getAsInt("MapSeed");
-					p.Music = this.Const.Music.NobleTracks;
-					p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.LineForward;
-					p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.LineBack;
+					p.Music = ::Const.Music.NobleTracks;
+					p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.LineForward;
+					p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.LineBack;
 					this.World.Contracts.startScriptedCombat(p, false, true, true);
 				}
 				else
 				{
 					local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 					p.CombatID = "ConquerHolySiteCounterAttack";
-					p.Music = this.Const.Music.NobleTracks;
-					p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-					p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
+					p.Music = ::Const.Music.NobleTracks;
+					p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+					p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
 					this.World.Contracts.startScriptedCombat(p, false, true, true);
 				}
 			}
@@ -235,7 +235,7 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 			{
 				if (this.Flags.getAsInt("OppositionSeed") != 0)
 				{
-					this.Math.seedRandom(this.Flags.getAsInt("OppositionSeed"));
+					::Math.seedRandom(this.Flags.getAsInt("OppositionSeed"));
 				}
 
 				if (this.Flags.get("IsVictory") || this.Contract.m.Target != null && !this.Contract.m.Target.isNull())
@@ -253,14 +253,14 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 					else
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-						p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
+						p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
 						p.LocationTemplate.OwnedByFaction = this.Flags.get("EnemyID");
 						p.CombatID = "ConquerHolySite";
 						p.LocationTemplate.Template[0] = "tactical.southern_ruins";
-						p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.Walls;
-						p.Music = this.Const.Music.NobleTracks;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Southern, 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+						p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.Walls;
+						p.Music = ::Const.Music.NobleTracks;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
 						p.AllyBanners = [
 							this.World.Assets.getBanner(),
 							this.World.FactionManager.getFaction(this.Contract.getFaction()).getPartyBanner()
@@ -283,10 +283,10 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "ConquerHolySite";
-						p.Music = this.Const.Music.NobleTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+						p.Music = ::Const.Music.NobleTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
 						p.AllyBanners = [
 							this.World.Assets.getBanner()
 						];
@@ -307,13 +307,13 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 					else
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-						p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
+						p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
 						p.LocationTemplate.OwnedByFaction = this.Flags.get("EnemyID");
 						p.CombatID = "ConquerHolySite";
 						p.LocationTemplate.Template[0] = "tactical.southern_ruins";
-						p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.Walls;
-						p.Music = this.Const.Music.NobleTracks;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, (130 + (this.Flags.get("MercenariesAsAllies") ? 30 : 0)) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+						p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.Walls;
+						p.Music = ::Const.Music.NobleTracks;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, (130 + (this.Flags.get("MercenariesAsAllies") ? 30 : 0)) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
 						p.AllyBanners = [
 							this.World.Assets.getBanner()
 						];
@@ -323,12 +323,12 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 
 						if (this.Flags.get("MercenariesAsAllies"))
 						{
-							this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Mercenaries, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
 							p.AllyBanners.push(this.Flags.get("MercenaryBanner"));
 						}
 						else
 						{
-							this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Mercenaries, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
 							p.EnemyBanners.push(this.Flags.get("MercenaryBanner"));
 						}
 
@@ -340,16 +340,16 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 					if (this.Flags.get("IsCounterAttackDefend"))
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-						p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
-						p.LocationTemplate.OwnedByFaction = this.Const.Faction.Player;
+						p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
+						p.LocationTemplate.OwnedByFaction = ::Const.Faction.Player;
 						p.LocationTemplate.ShiftX = -2;
 						p.CombatID = "ConquerHolySiteCounterAttack";
 						p.LocationTemplate.Template[0] = "tactical.southern_ruins";
-						p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.Walls;
-						p.Music = this.Const.Music.NobleTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.LineForward;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.LineBack;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+						p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.Walls;
+						p.Music = ::Const.Music.NobleTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.LineForward;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.LineBack;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
 						p.AllyBanners = [
 							this.World.Assets.getBanner()
 						];
@@ -362,10 +362,10 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "ConquerHolySiteCounterAttack";
-						p.Music = this.Const.Music.NobleTracks;
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+						p.Music = ::Const.Music.NobleTracks;
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
 						p.AllyBanners = [
 							this.World.Assets.getBanner()
 						];
@@ -384,13 +384,13 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 				else
 				{
 					local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-					p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
+					p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
 					p.LocationTemplate.OwnedByFaction = this.Flags.get("EnemyID");
 					p.CombatID = "ConquerHolySite";
 					p.LocationTemplate.Template[0] = "tactical.southern_ruins";
-					p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.Walls;
-					p.Music = this.Const.Music.NobleTracks;
-					this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, (this.Flags.get("IsCounterAttack") ? 110 : 130) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+					p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.Walls;
+					p.Music = ::Const.Music.NobleTracks;
+					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, (this.Flags.get("IsCounterAttack") ? 110 : 130) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
 					p.AllyBanners = [
 						this.World.Assets.getBanner()
 					];
@@ -454,8 +454,8 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -619,7 +619,7 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + this.Flags.get("MercenaryPay") + "[/color] Crowns"
+					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + this.Flags.get("MercenaryPay") + "[/color] Crowns"
 				});
 			}
 
@@ -775,8 +775,8 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 					Text = "Disaster!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to conquer a holy site");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to conquer a holy site");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -801,14 +801,14 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Conquered a holy site");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Conquered a holy site");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isHolyWar())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -821,7 +821,7 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -844,14 +844,14 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 				{
 					local tile = this.World.getTileSquare(x, y);
 
-					if (tile.Type == this.Const.World.TerrainType.Ocean)
+					if (tile.Type == ::Const.World.TerrainType.Ocean)
 					{
 					}
 					else
 					{
-						local s = this.Math.rand(0, 3);
+						local s = ::Math.rand(0, 3);
 
-						if (tile.Type == this.Const.World.TerrainType.Mountains)
+						if (tile.Type == ::Const.World.TerrainType.Mountains)
 						{
 							s = s - 10;
 						}
@@ -903,14 +903,14 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 			candidates.push(s);
 		}
 
-		local party = f.spawnEntity(tiles[0].Tile, "Regiment of " + candidates[this.Math.rand(0, candidates.len() - 1)].getNameOnly(), true, this.Const.World.Spawn.Southern, 170 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+		local party = f.spawnEntity(tiles[0].Tile, "Regiment of " + candidates[::Math.rand(0, candidates.len() - 1)].getNameOnly(), true, ::Const.World.Spawn.Southern, 170 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 		party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + f.getBannerString());
 		party.setDescription("Conscripted soldiers loyal to their city state.");
-		party.getLoot().Money = this.Math.rand(100, 300);
-		party.getLoot().ArmorParts = this.Math.rand(10, 35);
-		party.getLoot().Medicine = this.Math.rand(5, 15);
-		party.getLoot().Ammo = this.Math.rand(10, 40);
-		local r = this.Math.rand(1, 4);
+		party.getLoot().Money = ::Math.rand(100, 300);
+		party.getLoot().ArmorParts = ::Math.rand(10, 35);
+		party.getLoot().Medicine = ::Math.rand(5, 15);
+		party.getLoot().Ammo = ::Math.rand(10, 40);
+		local r = ::Math.rand(1, 4);
 
 		if (r <= 2)
 		{
@@ -932,7 +932,7 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 			"trade/spices_item"
 		];
 
-		for( local i = 0; i < this.Math.round(r / 2); i++ )
+		for( local i = 0; i < ::Math.round(r / 2); i++ )
 		{
 			party.addToInventory(arr[r - 1]);
 		}
@@ -966,14 +966,14 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 				{
 					local tile = this.World.getTileSquare(x, y);
 
-					if (tile.Type == this.Const.World.TerrainType.Ocean)
+					if (tile.Type == ::Const.World.TerrainType.Ocean)
 					{
 					}
 					else
 					{
-						local s = this.Math.rand(0, 3);
+						local s = ::Math.rand(0, 3);
 
-						if (tile.Type == this.Const.World.TerrainType.Mountains)
+						if (tile.Type == ::Const.World.TerrainType.Mountains)
 						{
 							s = s - 10;
 						}
@@ -1028,16 +1028,16 @@ this.conquer_holy_site_southern_contract <- this.inherit("scripts/contracts/cont
 			}
 		}
 
-		local party = f.spawnEntity(tiles[0].Tile, candidates[this.Math.rand(0, candidates.len() - 1)].getNameOnly() + " Company", true, this.Const.World.Spawn.Noble, this.Math.rand(100, 140) * this.getDifficultyMult() * this.getScaledDifficultyMult());
+		local party = f.spawnEntity(tiles[0].Tile, candidates[::Math.rand(0, candidates.len() - 1)].getNameOnly() + " Company", true, ::Const.World.Spawn.Noble, ::Math.rand(100, 140) * this.getDifficultyMult() * this.getScaledDifficultyMult());
 		party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + f.getBannerString());
 		party.setDescription("Professional soldiers in service to local lords.");
 		party.setAttackableByAI(false);
 		party.setAlwaysAttackPlayer(true);
-		party.getLoot().Money = this.Math.rand(100, 300);
-		party.getLoot().ArmorParts = this.Math.rand(10, 35);
-		party.getLoot().Medicine = this.Math.rand(5, 15);
-		party.getLoot().Ammo = this.Math.rand(10, 40);
-		local r = this.Math.rand(1, 4);
+		party.getLoot().Money = ::Math.rand(100, 300);
+		party.getLoot().ArmorParts = ::Math.rand(10, 35);
+		party.getLoot().Medicine = ::Math.rand(5, 15);
+		party.getLoot().Ammo = ::Math.rand(10, 40);
+		local r = ::Math.rand(1, 4);
 
 		if (r == 1)
 		{

@@ -138,7 +138,7 @@
 	"spawns.cart_02" : 400,
 
 //LOOT
-	"misc.signet_ring" : 720, //FEATURE_8: Rename to Silver Sapphire Ring, change drops from the richest/treasure hordes , change to accessory/bag slot item
+	"misc.signet_ring" : 720, 
 	"misc.ancient_scroll" : 500,
 	"misc.legend_scroll" : 400,
 	"misc.ornate_tome" : 800,
@@ -306,7 +306,7 @@
 	"accessory.legend_demonalp_trophy" : 0,
 	"accessory.legend_hexen_leader_trophy" : 0,
 	"accessory.slayer_necklace" : 0,
-	"accessory.cursed_crystal_skull" : 0, //FEATURE_9 Rework method of acquirement AND item
+	"accessory.cursed_crystal_skull" : 2000,
 
 
 	//PET

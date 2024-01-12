@@ -87,7 +87,7 @@ this.send_bandit_roamers_action <- this.inherit("scripts/factions/faction_action
 
 		local settlement = this.pickWeightedRandom(settlements);
 		settlement.setLastSpawnTimeToNow();
-		local rand = this.Math.rand(60, 110);
+		local rand = ::Math.rand(60, 110);
 		local distanceToNextSettlement = this.getDistanceToSettlements(settlement.getTile());
 
 		if (::Legends.Mod.ModSettings.getSetting("DistanceScaling").getValue() && distanceToNextSettlement > 14)
@@ -95,21 +95,21 @@ this.send_bandit_roamers_action <- this.inherit("scripts/factions/faction_action
 			rand = rand * (distanceToNextSettlement / 14.0);
 		}
 
-		local party = this.getFaction().spawnEntity(settlement.getTile(), "Brigand Hunters", false, this.Const.World.Spawn.BanditRoamers, this.Math.min(settlement.getResources(), rand));
+		local party = this.getFaction().spawnEntity(settlement.getTile(), "Brigand Hunters", false, ::Const.World.Spawn.BanditRoamers, ::Math.min(settlement.getResources(), rand));
 		party.getSprite("banner").setBrush(settlement.getBanner());
 		party.setDescription("A rough and tough band of brigands out to hunt for food.");
-		party.setFootprintType(this.Const.World.FootprintsType.Brigands);
+		party.setFootprintType(::Const.World.FootprintsType.Brigands);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
-		party.getLoot().ArmorParts = this.Math.rand(0, 5);
-		party.getLoot().Medicine = this.Math.rand(0, 3);
-		party.getLoot().Ammo = this.Math.rand(10, 15);
+		party.getLoot().Money = ::Math.rand(0, 50);
+		party.getLoot().ArmorParts = ::Math.rand(0, 5);
+		party.getLoot().Medicine = ::Math.rand(0, 3);
+		party.getLoot().Ammo = ::Math.rand(10, 15);
 
 		local c = party.getController();
 		local roam = this.new("scripts/ai/world/orders/roam_order");
 		roam.setAllTerrainAvailable();
-		roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-		roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+		roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+		roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 		roam.setPivot(settlement);
 		roam.setAvoidHeat(true);
 		roam.setTime(this.World.getTime().SecondsPerDay * 2);

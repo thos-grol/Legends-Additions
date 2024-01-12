@@ -18,7 +18,7 @@ this.anatomist_vs_clubfooted_event <- this.inherit("scripts/events/event", {
 					Text = "Do it, work your trade.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 50 ? "B" : "C";
+						return ::Math.rand(1, 100) <= 50 ? "B" : "C";
 					}
 
 				},
@@ -175,7 +175,7 @@ this.anatomist_vs_clubfooted_event <- this.inherit("scripts/events/event", {
 
 		if (clubfootedCandidates.len() == 0) return;
 
-		this.m.Clubfooted = clubfootedCandidates[this.Math.rand(0, clubfootedCandidates.len() - 1)];
+		this.m.Clubfooted = clubfootedCandidates[::Math.rand(0, clubfootedCandidates.len() - 1)];
 		this.m.Score = 5 * clubfootedCandidates.len();
 	}
 

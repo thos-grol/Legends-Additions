@@ -29,7 +29,7 @@ this.perk_nimble <- this.inherit("scripts/skills/skill", {
 
 	function getTooltip()
 	{
-		local fm = this.Math.round(this.getChance() * 100);
+		local fm = ::Math.round(this.getChance() * 100);
 		local tooltip = this.skill.getTooltip();
 
 		if (fm < 100)
@@ -70,8 +70,8 @@ this.perk_nimble <- this.inherit("scripts/skills/skill", {
 			fat = fat + head.getStaminaModifier();
 		}
 
-		fat = this.Math.min(0, fat + 15);
-		local ret = this.Math.minf(1.0, 1.0 - 0.6 + this.Math.pow(this.Math.abs(fat), 1.23) * 0.01);
+		fat = ::Math.min(0, fat + 15);
+		local ret = ::Math.minf(1.0, 1.0 - 0.6 + ::Math.pow(::Math.abs(fat), 1.23) * 0.01);
 		return ret;
 	}
 

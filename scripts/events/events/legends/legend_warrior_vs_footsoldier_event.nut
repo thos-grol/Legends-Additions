@@ -28,8 +28,8 @@ this.legend_warrior_vs_footsoldier_event <- this.inherit("scripts/events/event",
 			{
 				this.Characters.push(_event.m.noble1h.getImagePath());
 				this.Characters.push(_event.m.noble2h.getImagePath());
-				local meleeSkill = this.Math.rand(3, 5);
-				local meleeDefense = this.Math.rand(3, 5);
+				local meleeSkill = ::Math.rand(3, 5);
+				local meleeDefense = ::Math.rand(3, 5);
 				_event.m.noble1h.getBaseProperties().MeleeSkill += meleeSkill;
 				_event.m.noble2h.getBaseProperties().MeleeDefense += meleeDefense;
 				_event.m.noble1h.getSkills().update();
@@ -100,8 +100,8 @@ this.legend_warrior_vs_footsoldier_event <- this.inherit("scripts/events/event",
 			return;
 		}
 
-		this.m.noble1h = noble1h_candidates[this.Math.rand(0, noble1h_candidates.len() - 1)];
-		this.m.noble2h = noble2h_candidates[this.Math.rand(0, noble2h_candidates.len() - 1)];
+		this.m.noble1h = noble1h_candidates[::Math.rand(0, noble1h_candidates.len() - 1)];
+		this.m.noble2h = noble2h_candidates[::Math.rand(0, noble2h_candidates.len() - 1)];
 		this.m.Score = (noble1h_candidates.len() + noble2h_candidates.len()) * 3;
 	}
 

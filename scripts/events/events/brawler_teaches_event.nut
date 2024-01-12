@@ -70,7 +70,7 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Brawler.getImagePath());
 				this.Characters.push(_event.m.Student.getImagePath());
-				local skill = this.Math.rand(2, 4);
+				local skill = ::Math.rand(2, 4);
 				_event.m.Student.getBaseProperties().Stamina += skill;
 				_event.m.Student.getSkills().update();
 				_event.markAsLearned();
@@ -102,7 +102,7 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Brawler.getImagePath());
 				this.Characters.push(_event.m.Student.getImagePath());
-				local skill = this.Math.rand(2, 4);
+				local skill = ::Math.rand(2, 4);
 				_event.m.Student.getBaseProperties().Hitpoints += skill;
 				_event.m.Student.getSkills().update();
 				_event.markAsLearned();
@@ -140,8 +140,8 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 			{
 				this.Characters.push(_event.m.Brawler.getImagePath());
 				this.Characters.push(_event.m.Student.getImagePath());
-				local attack = this.Math.rand(1, 2);
-				local defense = this.Math.rand(1, 2);
+				local attack = ::Math.rand(1, 2);
+				local defense = ::Math.rand(1, 2);
 				_event.m.Student.getBaseProperties().MeleeSkill += attack;
 				_event.m.Student.getBaseProperties().MeleeDefense += defense;
 				_event.m.Student.getSkills().update();
@@ -188,8 +188,8 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 		}
 
 		if (candidates_brawler.len() == 0 || candidates_student.len() == 0) return;
-		this.m.Brawler = candidates_brawler[this.Math.rand(0, candidates_brawler.len() - 1)];
-		this.m.Student = candidates_student[this.Math.rand(0, candidates_student.len() - 1)];
+		this.m.Brawler = candidates_brawler[::Math.rand(0, candidates_brawler.len() - 1)];
+		this.m.Student = candidates_student[::Math.rand(0, candidates_student.len() - 1)];
 		this.m.Score = (candidates_brawler.len() + candidates_student.len()) * 3;
 	}
 

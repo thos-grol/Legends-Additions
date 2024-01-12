@@ -27,7 +27,7 @@
 		items.equip(::new("scripts/items/weapons/light_crossbow"));
 		items.equip(::new("scripts/items/ammo/quiver_of_bolts"));
 		items.addToBag(::new("scripts/items/weapons/knife"));
-		r = this.Math.rand(0, 1);
+		r = ::Math.rand(0, 1);
 		items.equip(::Const.World.Common.pickArmor([
 			[
 				1,

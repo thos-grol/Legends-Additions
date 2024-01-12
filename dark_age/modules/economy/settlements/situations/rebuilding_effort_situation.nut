@@ -48,7 +48,7 @@
 
 		if (candidates.len() != 0)
 		{
-			local a = candidates[this.Math.rand(0, candidates.len() - 1)];
+			local a = candidates[::Math.rand(0, candidates.len() - 1)];
 			a.setActive(true);
 		}
 	}
@@ -99,7 +99,7 @@
 
 				if (this.World.Assets.getOrigin().getID() == "scenario.legends_seer")
 				{
-					r = this.Math.rand(0, 50);
+					r = ::Math.rand(0, 50);
 
 					if (r == 1)
 					{
@@ -108,7 +108,7 @@
 				}
 				else
 				{
-					r = this.Math.rand(0, 90);
+					r = ::Math.rand(0, 90);
 
 					if (r == 1)
 					{

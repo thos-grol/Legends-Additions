@@ -71,7 +71,7 @@
 				"full_aketon_cap"
 			]
 		]));
-		r = this.Math.rand(0, 3);
+		r = ::Math.rand(0, 3);
 
 		if (r <= 2)
 		{
@@ -82,7 +82,7 @@
 			items.equip(::new("scripts/items/shields/legend_tower_shield"));
 		}
 
-		r = this.Math.rand(0, 4);
+		r = ::Math.rand(0, 4);
 
 		if (r <= 2)
 		{

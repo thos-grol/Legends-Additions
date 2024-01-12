@@ -30,9 +30,9 @@
         //4 Eyes Up
         ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTREyesUp, 2);
 
-        this.Sound.play("sounds/enemies/goblin_hurt_0" + this.Math.rand(0, 3) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/goblin_death_0" + this.Math.rand(0, 3) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/goblin_idle_0" + this.Math.rand(0, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/goblin_hurt_0" + ::Math.rand(0, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/goblin_death_0" + ::Math.rand(0, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/goblin_idle_0" + ::Math.rand(0, 3) + ".wav", ::Const.Sound.Volume.Inventory);
 
         return this.anatomist_potion_item.onUse(_actor, _item);
     }

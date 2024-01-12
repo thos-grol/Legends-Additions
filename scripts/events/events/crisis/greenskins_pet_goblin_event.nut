@@ -17,7 +17,7 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 					Text = "Let\'s take a closer look.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "C";
 						}
@@ -273,7 +273,7 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 					});
 				}
 
-				local r = this.Math.rand(1, 4);
+				local r = ::Math.rand(1, 4);
 				local item;
 
 				if (r == 1)
@@ -400,7 +400,7 @@ this.greenskins_pet_goblin_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.HurtBro = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.HurtBro = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = 10;
 	}
 

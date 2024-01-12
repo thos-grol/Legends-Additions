@@ -29,7 +29,7 @@ this.graverobber_vs_gravedigger_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Graverobber.getImagePath());
 				this.Characters.push(_event.m.Gravedigger.getImagePath());
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 				}
 				else
@@ -49,7 +49,7 @@ this.graverobber_vs_gravedigger_event <- this.inherit("scripts/events/event", {
 					text = _event.m.Graverobber.getName() + ::Const.MoodStateEvent[_event.m.Graverobber.getMoodState()]
 				});
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 				}
 				else
@@ -103,8 +103,8 @@ this.graverobber_vs_gravedigger_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Graverobber = candidates_graverobber[this.Math.rand(0, candidates_graverobber.len() - 1)];
-		this.m.Gravedigger = candidates_gravedigger[this.Math.rand(0, candidates_gravedigger.len() - 1)];
+		this.m.Graverobber = candidates_graverobber[::Math.rand(0, candidates_graverobber.len() - 1)];
+		this.m.Gravedigger = candidates_gravedigger[::Math.rand(0, candidates_gravedigger.len() - 1)];
 		this.m.Score = 50;
 	}
 

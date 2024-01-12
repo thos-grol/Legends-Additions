@@ -45,8 +45,8 @@ this.send_supplies_action <- this.inherit("scripts/factions/faction_action", {
 
 		if (starts.len() != 0 && dests.len() != 0)
 		{
-			this.m.Start = starts[this.Math.rand(0, starts.len() - 1)];
-			this.m.Dest = dests[this.Math.rand(0, dests.len() - 1)];
+			this.m.Start = starts[::Math.rand(0, starts.len() - 1)];
+			this.m.Dest = dests[::Math.rand(0, dests.len() - 1)];
 
 			if (this.m.Start.isConnectedToByRoads(this.m.Dest))
 			{
@@ -74,23 +74,23 @@ this.send_supplies_action <- this.inherit("scripts/factions/faction_action", {
 
 	function getResourcesForParty( _settlement, _faction )
 	{
-		if (_settlement == null) return this.Math.rand(100, 200);
-		if (_faction.hasTrait(this.Const.FactionTrait.OrientalCityState))
+		if (_settlement == null) return ::Math.rand(100, 200);
+		if (_faction.hasTrait(::Const.FactionTrait.OrientalCityState))
 		{
-			return ::Math.round(1.5 * (this.Math.rand(90, 137) + this.Math.round(0.12 * ::Math.max(1, _settlement.getResources()))));
+			return ::Math.round(1.5 * (::Math.rand(90, 137) + ::Math.round(0.12 * ::Math.max(1, _settlement.getResources()))));
 		}
-		return ::Math.round(1.5 * (this.Math.rand(60, 110) + this.Math.round(0.1 * ::Math.max(1, _settlement.getResources()))));
+		return ::Math.round(1.5 * (::Math.rand(60, 110) + ::Math.round(0.1 * ::Math.max(1, _settlement.getResources()))));
 	}
 
 	function onExecute( _faction )
 	{
 		local modifier = ::Math.rand(50, 200);
 		local party = _faction.spawnEntity(this.m.Start.getTile(), "Supply Caravan", false, this.pickSpawnList(this.m.Start, _faction, modifier), this.getResourcesForParty(this.m.Start, _faction));
-		party.getSprite("body").setBrush(this.Const.World.Spawn.NobleCaravan.Body);
+		party.getSprite("body").setBrush(::Const.World.Spawn.NobleCaravan.Body);
 		party.getSprite("base").Visible = false;
 		party.setMirrored(true);
 		party.setDescription("A caravan with armed escorts transporting provisions, supplies and equipment between settlements.");
-		party.setFootprintType(this.Const.World.FootprintsType.Caravan);
+		party.setFootprintType(::Const.World.FootprintsType.Caravan);
 		party.getFlags().set("IsCaravan", true);
 		party.getFlags().set("IsRandomlySpawned", true);
 		party.getFlags().set("Modifier", modifier);
@@ -114,8 +114,8 @@ this.send_supplies_action <- this.inherit("scripts/factions/faction_action", {
 		}
 
 		local c = party.getController();
-		c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
-		c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+		c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 		local move = this.new("scripts/ai/world/orders/move_order");
 		move.setDestination(this.m.Dest.getTile());
 		move.setRoadsOnly(true);
@@ -129,9 +129,9 @@ this.send_supplies_action <- this.inherit("scripts/factions/faction_action", {
 
 	function pickSpawnList( _settlement, _faction, _modifier )
 	{
-		if (_modifier >= 150) return this.Const.World.Spawn.NobleCaravan;
-		if (::Math.rand(1,100) <= 50) return this.Const.World.Spawn.MixedNobleCaravan;
-		return this.Const.World.Spawn.MixedNobleCaravan;
+		if (_modifier >= 150) return ::Const.World.Spawn.NobleCaravan;
+		if (::Math.rand(1,100) <= 50) return ::Const.World.Spawn.MixedNobleCaravan;
+		return ::Const.World.Spawn.MixedNobleCaravan;
 	}
 
 	function addLoot( _party )
@@ -139,18 +139,18 @@ this.send_supplies_action <- this.inherit("scripts/factions/faction_action", {
 		switch(::Math.rand(1, 3))
 		{
 		case 1:
-			_party.getLoot().ArmorParts = this.Math.rand(0, 30);
+			_party.getLoot().ArmorParts = ::Math.rand(0, 30);
 			break;
 
 		case 2:
-			_party.getLoot().Medicine = this.Math.rand(0, 30);
+			_party.getLoot().Medicine = ::Math.rand(0, 30);
 			break;
 
 		default:
-			_party.getLoot().Ammo = this.Math.rand(0, 30);
+			_party.getLoot().Ammo = ::Math.rand(0, 30);
 		}
 
-		_party.getLoot().Money = this.Math.floor(this.Math.rand(50, 200));
+		_party.getLoot().Money = ::Math.floor(::Math.rand(50, 200));
 	}
 
 	function addToPartyInventory( _party )

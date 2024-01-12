@@ -22,12 +22,12 @@
 		_list.push("poacher_background");
 		_list.push("poacher_background");
 
-		if (this.Math.rand(0, 9) == 1)
+		if (::Math.rand(0, 9) == 1)
 		{
 			_list.push("legend_master_archer_background");
 		}
 
-		if (this.Math.rand(0, 9) == 1)
+		if (::Math.rand(0, 9) == 1)
 		{
 			_list.push("legend_ranger_background");
 		}

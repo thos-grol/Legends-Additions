@@ -52,7 +52,7 @@ this.fisherman_vs_farmer_event <- this.inherit("scripts/events/event", {
 						"the Armwrestler",
 						"Fishes"
 					];
-					_event.m.Fisherman.setTitle(titles[this.Math.rand(0, titles.len() - 1)]);
+					_event.m.Fisherman.setTitle(titles[::Math.rand(0, titles.len() - 1)]);
 					this.List.push({
 						id = 10,
 						icon = "ui/icons/special.png",
@@ -106,7 +106,7 @@ this.fisherman_vs_farmer_event <- this.inherit("scripts/events/event", {
 						"the Armwrestler",
 						"Weeds"
 					];
-					_event.m.Farmer.setTitle(titles[this.Math.rand(0, titles.len() - 1)]);
+					_event.m.Farmer.setTitle(titles[::Math.rand(0, titles.len() - 1)]);
 					this.List.push({
 						id = 10,
 						icon = "ui/icons/special.png",
@@ -162,8 +162,8 @@ this.fisherman_vs_farmer_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Fisherman = fisherman_candidates[this.Math.rand(0, fisherman_candidates.len() - 1)];
-		this.m.Farmer = farmer_candidates[this.Math.rand(0, farmer_candidates.len() - 1)];
+		this.m.Fisherman = fisherman_candidates[::Math.rand(0, fisherman_candidates.len() - 1)];
+		this.m.Farmer = farmer_candidates[::Math.rand(0, farmer_candidates.len() - 1)];
 		this.m.Score = (fisherman_candidates.len() + farmer_candidates.len()) * 3;
 	}
 
@@ -185,7 +185,7 @@ this.fisherman_vs_farmer_event <- this.inherit("scripts/events/event", {
 
 	function onDetermineStartScreen()
 	{
-		if (this.Math.rand(0, 1) == 0)
+		if (::Math.rand(0, 1) == 0)
 		{
 			return "A";
 		}

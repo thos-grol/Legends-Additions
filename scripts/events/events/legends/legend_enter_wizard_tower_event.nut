@@ -154,11 +154,11 @@ this.legend_enter_wizard_tower_event <- this.inherit("scripts/events/event", {
 
 		if (candidates.len() != 0)
 		{
-			this.m.Observer = candidates[this.Math.rand(0, candidates.len() - 1)];
+			this.m.Observer = candidates[::Math.rand(0, candidates.len() - 1)];
 		}
 		else
 		{
-			this.m.Observer = brothers[this.Math.rand(0, brothers.len() - 1)];
+			this.m.Observer = brothers[::Math.rand(0, brothers.len() - 1)];
 		}
 	}
 

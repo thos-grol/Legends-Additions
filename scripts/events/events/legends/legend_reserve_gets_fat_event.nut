@@ -67,7 +67,7 @@ this.legend_reserve_gets_fat_event <- this.inherit("scripts/events/event", {
 
 		if (candidates.len() > 0)
 		{
-			this.m.FatGuy = candidates[this.Math.rand(0, candidates.len() - 1)];
+			this.m.FatGuy = candidates[::Math.rand(0, candidates.len() - 1)];
 			this.m.Score = candidates.len() * 5;
 		}
 	}

@@ -5,7 +5,7 @@
     o.onInit = function()
     {
         onInit();
-        local roll = this.Math.rand(1.0, 100.0);
+        local roll = ::Math.rand(1.0, 100.0);
         if (roll <= 20.0)
         {
             if (roll <= 4.0) this.add_potion("ghoul", true);
@@ -42,7 +42,7 @@
             this.m.Items.unequip(this.m.Items.getItemAtSlot(::Const.ItemSlot.Mainhand));
             this.m.Items.unequip(this.m.Items.getItemAtSlot(::Const.ItemSlot.Offhand));
 
-            this.m.Items.equip(::new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+            this.m.Items.equip(::new("scripts/items/" + weapons[::Math.rand(0, weapons.len() - 1)]));
         }
     }
 });

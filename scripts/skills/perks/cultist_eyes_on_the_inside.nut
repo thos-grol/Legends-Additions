@@ -15,7 +15,7 @@ this.cultist_eyes_on_the_inside <- this.inherit("scripts/skills/skill", {
 
 	function onTurnStart()
 	{
-		if(this.Math.rand(1,100) > 44) return;
+		if(::Math.rand(1,100) > 44) return;
 		local actor = this.getContainer().getActor();
 		local tag = {
 			User = actor
@@ -63,10 +63,10 @@ this.cultist_eyes_on_the_inside <- this.inherit("scripts/skills/skill", {
 
 
 
-		if (this.Math.rand(1,100) <= 50)
-			this.Sound.play("sounds/cultist/eyes_on_the_inside_01.wav", 200.0, _tag.User.getPos(), this.Math.rand(95, 105) * 0.01);
+		if (::Math.rand(1,100) <= 50)
+			this.Sound.play("sounds/cultist/eyes_on_the_inside_01.wav", 200.0, _tag.User.getPos(), ::Math.rand(95, 105) * 0.01);
 		else
-			this.Sound.play("sounds/cultist/eyes_on_the_inside_02.wav", 200.0, _tag.User.getPos(), this.Math.rand(95, 105) * 0.01);
+			this.Sound.play("sounds/cultist/eyes_on_the_inside_02.wav", 200.0, _tag.User.getPos(), ::Math.rand(95, 105) * 0.01);
 		this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(target) + " has been gazed at by " + ::Const.UI.getColorizedEntityName(_tag.User));
 
 

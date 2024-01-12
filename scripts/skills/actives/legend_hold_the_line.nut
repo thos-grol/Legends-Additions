@@ -71,7 +71,7 @@ this.legend_hold_the_line <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
-		this.m.Charges = this.Math.max(0, this.m.Charges - 1);
+		this.m.Charges = ::Math.max(0, this.m.Charges - 1);
 		if (this.m.Charges == 0) this.m.IsHidden = true;
 
 		local myTile = _user.getTile();

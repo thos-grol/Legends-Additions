@@ -21,8 +21,8 @@ this.deathblow_skill <- this.inherit("scripts/skills/skill", {
 			"sounds/combat/dlc6/deathblow_hit_03.wav",
 			"sounds/combat/dlc6/deathblow_hit_04.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.OffensiveTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.OffensiveTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -30,8 +30,8 @@ this.deathblow_skill <- this.inherit("scripts/skills/skill", {
 		this.m.IsAttack = true;
 		this.m.IsIgnoredAsAOO = true;
 		this.m.IsWeaponSkill = true;
-		this.m.InjuriesOnBody = this.Const.Injury.PiercingBody;
-		this.m.InjuriesOnHead = this.Const.Injury.PiercingHead;
+		this.m.InjuriesOnBody = ::Const.Injury.PiercingBody;
+		this.m.InjuriesOnHead = ::Const.Injury.PiercingHead;
 		this.m.DirectDamageMult = 0.2;
 		this.m.ActionPointCost = 4;
 		this.m.FatigueCost = 10;
@@ -46,7 +46,7 @@ this.deathblow_skill <- this.inherit("scripts/skills/skill", {
 			id = 8,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Inflicts [color=" + this.Const.UI.Color.DamageValue + "]33%[/color] more damage against and ignores additional [color=" + this.Const.UI.Color.DamageValue + "]20%[/color] armor of targets that have the Dazed, Stunned or Trapped in Net status effects"
+			text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]33%[/color] more damage against and ignores additional [color=" + ::Const.UI.Color.DamageValue + "]20%[/color] armor of targets that have the Dazed, Stunned or Trapped in Net status effects"
 		});
 		return ret;
 	}
@@ -55,7 +55,7 @@ this.deathblow_skill <- this.inherit("scripts/skills/skill", {
 	{
 		if (_properties.IsSpecializedInSwords)
 		{
-			this.m.FatigueCostMult = this.Const.Combat.WeaponSpecFatigueMult;	
+			this.m.FatigueCostMult = ::Const.Combat.WeaponSpecFatigueMult;	
 		}
 		this.m.ActionPointCost = 3;
 	}

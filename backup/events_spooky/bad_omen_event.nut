@@ -73,7 +73,7 @@ this.bad_omen_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Superstitious = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Superstitious = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = candidates.len() * 10;
 
 		foreach( bro in brothers )

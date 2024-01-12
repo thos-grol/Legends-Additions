@@ -35,7 +35,7 @@
 		this.addSprite("socket").setBrush("bust_base_beasts");
 		local body = this.addSprite("body");
 
-		if (this.Math.rand(1, 100) < 5) body.setBrush("bust_unhold_body_04");
+		if (::Math.rand(1, 100) < 5) body.setBrush("bust_unhold_body_04");
 		else body.setBrush("bust_unhold_body_02");
 
 		body.varySaturation(0.1);
@@ -46,7 +46,7 @@
 		this.addSprite("armor");
 		local head = this.addSprite("head");
 
-		if (this.Math.rand(1, 100) < 3)
+		if (::Math.rand(1, 100) < 3)
 		{
 			head.setBrush("bust_unhold_head_04");
 		}
@@ -126,8 +126,8 @@
 			TargetTile = _targetTile
 		};
 
-        local roll = this.Math.rand(1, 100);
-        local hitChance = this.Math.max(5, this.Math.min(95, _user.getCurrentProperties().getMeleeSkill() - _targetTile.getEntity().getCurrentProperties().getMeleeDefense()));
+        local roll = ::Math.rand(1, 100);
+        local hitChance = ::Math.max(5, ::Math.min(95, _user.getCurrentProperties().getMeleeSkill() - _targetTile.getEntity().getCurrentProperties().getMeleeDefense()));
 
         if (roll <= hitChance)
         {
@@ -135,7 +135,7 @@
             {
                 if (this.m.SoundOnUse.len() != 0)
                 {
-                    this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
+                    this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
                 }
 
                 this.Time.scheduleEvent(this.TimeUnit.Virtual, this.m.Delay, this.onPerformAttack.bindenv(this), tag);
@@ -161,7 +161,7 @@
 
             if (this.m.SoundOnUse.len() != 0)
             {
-                this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
+                this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
             }
 
             local knockToTile = this.findTileToKnockBackTo(_user.getTile(), _targetTile);
@@ -185,11 +185,11 @@
 
             if (this.m.SoundOnHit.len() != 0)
             {
-                this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
+                this.Sound.play(this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
             }
 
             target.setCurrentMovementType(::Const.Tactical.MovementType.Involuntary);
-            local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - _targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
+            local damage = ::Math.max(0, ::Math.abs(knockToTile.Level - _targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
 
             if (damage == 0)
             {

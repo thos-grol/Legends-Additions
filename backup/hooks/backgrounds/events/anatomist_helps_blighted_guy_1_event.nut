@@ -16,7 +16,7 @@
 					Text = "In that case we\'re going to help him.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 50 ? "B" : "C";
+						return ::Math.rand(1, 100) <= 50 ? "B" : "C";
 					}
 
 				},
@@ -188,7 +188,7 @@
 					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]65[/color] Crowns"
 				});
 
-				if (this.Math.rand(1, 100) < 75)
+				if (::Math.rand(1, 100) < 75)
 				{
 					_event.m.Anatomist.worsenMood(0.75, "Was denied the study of an unusual illness");
 				}

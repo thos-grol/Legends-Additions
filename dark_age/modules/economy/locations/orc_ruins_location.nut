@@ -67,7 +67,7 @@
 
 		if (isSouthern)
 		{
-			body.setBrush("world_desert_ruins_0" + this.Math.rand(1, 2));
+			body.setBrush("world_desert_ruins_0" + ::Math.rand(1, 2));
 
 			if (::Const.DLC.Desert)
 			{
@@ -76,7 +76,7 @@
 		}
 		else
 		{
-			body.setBrush("world_ruins_0" + this.Math.rand(1, 3));
+			body.setBrush("world_ruins_0" + ::Math.rand(1, 3));
 		}
 	}
 

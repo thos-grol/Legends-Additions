@@ -37,7 +37,7 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 				continue;
 			}
 
-			if (this.World.getTileSquare(s.getTile().SquareCoords.X, s.getTile().SquareCoords.Y - 12).Type == this.Const.World.TerrainType.Ocean)
+			if (this.World.getTileSquare(s.getTile().SquareCoords.X, s.getTile().SquareCoords.Y - 12).Type == ::Const.World.TerrainType.Ocean)
 			{
 				continue;
 			}
@@ -58,9 +58,9 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 
 			return 0;
 		});
-		this.m.Destination = this.WeakTableRef(towns[this.Math.rand(0, this.Math.min(1, towns.len() - 1))]);
+		this.m.Destination = this.WeakTableRef(towns[::Math.rand(0, ::Math.min(1, towns.len() - 1))]);
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -87,7 +87,7 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 					"Don\'t let them burn any locations"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -100,7 +100,7 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 10)
 				{
@@ -111,12 +111,12 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 					this.Flags.set("IsSlavers", true);
 				}
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
 					this.Flags.set("IsThankfulVillagers", true);
 				}
 
-				local cityStates = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.OrientalCityState);
+				local cityStates = this.World.FactionManager.getFactionsOfType(::Const.FactionType.OrientalCityState);
 
 				foreach( c in cityStates )
 				{
@@ -134,11 +134,11 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 					}
 				}
 
-				local cityState = cityStates[this.Math.rand(0, cityStates.len() - 1)];
+				local cityState = cityStates[::Math.rand(0, cityStates.len() - 1)];
 
 				for( local i = 0; i < 2; i = i )
 				{
-					local r = this.Math.rand(0, locations.len() - 1);
+					local r = ::Math.rand(0, locations.len() - 1);
 					this.Contract.m.Objectives.push(locations[r].getID());
 					i = ++i;
 				}
@@ -152,34 +152,34 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 
 					if (i == 0 && this.Flags.get("IsAssassins"))
 					{
-						party = cityState.spawnEntity(tile, "Regiment of " + cityState.getNameOnly(), true, this.Const.World.Spawn.Southern, this.Math.rand(70, 90) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-						this.Contract.addUnitsToEntity(party, this.Const.World.Spawn.Assassins, this.Math.rand(30, 40) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = cityState.spawnEntity(tile, "Regiment of " + cityState.getNameOnly(), true, ::Const.World.Spawn.Southern, ::Math.rand(70, 90) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(party, ::Const.World.Spawn.Assassins, ::Math.rand(30, 40) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						party.getFlags().set("IsAssassins", true);
 					}
 					else if (i == 0 && this.Flags.get("IsSlavers"))
 					{
-						party = cityState.spawnEntity(tile, "Slavers", true, this.Const.World.Spawn.Southern, this.Math.rand(60, 80) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-						this.Contract.addUnitsToEntity(party, this.Const.World.Spawn.NorthernSlaves, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = cityState.spawnEntity(tile, "Slavers", true, ::Const.World.Spawn.Southern, ::Math.rand(60, 80) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(party, ::Const.World.Spawn.NorthernSlaves, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						party.getFlags().set("IsSlavers", true);
 					}
 					else
 					{
-						party = cityState.spawnEntity(tile, "Regiment of " + cityState.getNameOnly(), true, this.Const.World.Spawn.Southern, this.Math.rand(100, 130) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = cityState.spawnEntity(tile, "Regiment of " + cityState.getNameOnly(), true, ::Const.World.Spawn.Southern, ::Math.rand(100, 130) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + cityState.getBannerString());
 
-						if (this.Math.rand(1, 100) <= 33)
+						if (::Math.rand(1, 100) <= 33)
 						{
-							this.Contract.addUnitsToEntity(party, this.Const.World.Spawn.NorthernSlaves, this.Math.rand(10, 30));
+							this.Contract.addUnitsToEntity(party, ::Const.World.Spawn.NorthernSlaves, ::Math.rand(10, 30));
 						}
 					}
 
 					party.setDescription("Conscripted soldiers loyal to their city state.");
 					party.setAttackableByAI(false);
-					party.getLoot().Money = this.Math.rand(100, 300);
-					party.getLoot().ArmorParts = this.Math.rand(10, 35);
-					party.getLoot().Medicine = this.Math.rand(5, 15);
-					party.getLoot().Ammo = this.Math.rand(10, 40);
-					local r = this.Math.rand(1, 4);
+					party.getLoot().Money = ::Math.rand(100, 300);
+					party.getLoot().ArmorParts = ::Math.rand(10, 35);
+					party.getLoot().Medicine = ::Math.rand(5, 15);
+					party.getLoot().Ammo = ::Math.rand(10, 40);
+					local r = ::Math.rand(1, 4);
 
 					if (r <= 2)
 					{
@@ -201,14 +201,14 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 						"trade/spices_item"
 					];
 
-					for( local i = 0; i < this.Math.round(r / 2); i++ )
+					for( local i = 0; i < ::Math.round(r / 2); i++ )
 					{
 						party.addToInventory(arr[r - 1]);
 					}
 
 					local c = party.getController();
-					c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
-					c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+					c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+					c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 					local wait = this.new("scripts/ai/world/orders/wait_order");
 					wait.setTime(80.0 + i * 12.0);
 					c.addOrder(wait);
@@ -400,8 +400,8 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -510,8 +510,8 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 					Text = "We failed.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to defend " + this.Contract.m.Destination.getName() + " from southern raiders");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to defend " + this.Contract.m.Destination.getName() + " from southern raiders");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -590,7 +590,7 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 
 				for( local i = 0; i < 2; i = i )
 				{
-					local item = this.new("scripts/items/" + p[this.Math.rand(0, p.len() - 1)]);
+					local item = this.new("scripts/items/" + p[::Math.rand(0, p.len() - 1)]);
 					this.World.Assets.getStash().add(item);
 					this.List.push({
 						id = 10,
@@ -615,14 +615,14 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractPoor);
-						this.World.Assets.addMoney(this.Math.round(this.Contract.m.Payment.getOnCompletion() / 2));
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractPoor, "Defended " + this.Contract.m.Destination.getName() + " from southern raiders");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractPoor);
+						this.World.Assets.addMoney(::Math.round(this.Contract.m.Payment.getOnCompletion() / 2));
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractPoor, "Defended " + this.Contract.m.Destination.getName() + " from southern raiders");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isHolyWar())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCommonContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCommonContract);
 						}
 
 						return 0;
@@ -635,7 +635,7 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -653,14 +653,14 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Defended " + this.Contract.m.Destination.getName() + " from southern raiders");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Defended " + this.Contract.m.Destination.getName() + " from southern raiders");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isHolyWar())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -673,7 +673,7 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -737,7 +737,7 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 				continue;
 			}
 
-			if (this.World.getTileSquare(s.getTile().SquareCoords.X, s.getTile().SquareCoords.Y - 12).Type == this.Const.World.TerrainType.Ocean)
+			if (this.World.getTileSquare(s.getTile().SquareCoords.X, s.getTile().SquareCoords.Y - 12).Type == ::Const.World.TerrainType.Ocean)
 			{
 				continue;
 			}

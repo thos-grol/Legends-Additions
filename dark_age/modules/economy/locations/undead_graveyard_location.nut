@@ -16,7 +16,7 @@
 		this.m.CombatLocation.AdditionalRadius = 5;
 		this.m.IsShowingDefenders = false;
 		this.m.IsShowingBanner = false;
-		local r = this.Math.rand(1, 4);
+		local r = ::Math.rand(1, 4);
 
 		if (r == 1)
 		{
@@ -39,8 +39,8 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropMoney(this.Math.rand(1, 200), _lootTable);
-		this.dropTreasure(this.Math.rand(0, 1), [
+		this.dropMoney(::Math.rand(1, 200), _lootTable);
+		this.dropTreasure(::Math.rand(0, 1), [
 			"loot/bead_necklace_item",
 			"loot/bead_necklace_item",
 			"loot/signet_ring_item"

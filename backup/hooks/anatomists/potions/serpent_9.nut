@@ -25,9 +25,9 @@
         _actor.getBackground().addPerk(::Const.Perks.PerkDefs.PTRSurvivalInstinct, 1, false);
         _actor.getSkills().add(::new("scripts/skills/perks/perk_ptr_survival_instinct"));
 
-        this.Sound.play("sounds/enemies/dlc6/snake_death_0" + this.Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/dlc6/snake_idle_0" + this.Math.rand(1, 9) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/dlc6/snake_hurt_0" + this.Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc6/snake_death_0" + ::Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc6/snake_idle_0" + ::Math.rand(1, 9) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc6/snake_hurt_0" + ::Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
 
         return this.anatomist_potion_item.onUse(_actor, _item);
     }

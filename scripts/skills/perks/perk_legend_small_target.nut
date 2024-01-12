@@ -140,8 +140,8 @@ this.perk_legend_small_target <- this.inherit("scripts/skills/skill", {
 			}
 		}
 
-		local bonus = this.Math.max(5, 100 - stackTotal);
-		return this.Math.floor(bonus);
+		local bonus = ::Math.max(5, 100 - stackTotal);
+		return ::Math.floor(bonus);
 	}
 
 	function getBonus2()
@@ -150,8 +150,8 @@ this.perk_legend_small_target <- this.inherit("scripts/skills/skill", {
 		local mdef = actor.getCurrentProperties().getMeleeDefense();
 		local resolve = actor.getCurrentProperties().getBravery();
 		local stack = mdef + resolve;
-		local bonus = this.Math.max(10, 100 - stack);
-		return this.Math.floor(bonus);
+		local bonus = ::Math.max(10, 100 - stack);
+		return ::Math.floor(bonus);
 	}
 
 	function onUpdate( _properties )

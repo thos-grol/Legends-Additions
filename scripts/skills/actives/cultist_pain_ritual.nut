@@ -76,7 +76,7 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 		local target = _targetTile.getEntity();
 		local actor = this.getContainer().getActor();
 		local hitInfo = this.getHitInfo(target);
-		this.Sound.play("sounds/cultist/disembowl.wav", 200.0, _user.getPos(), this.Math.rand(95, 105) * 0.01);
+		this.Sound.play("sounds/cultist/disembowl.wav", 200.0, _user.getPos(), ::Math.rand(95, 105) * 0.01);
 
 		::Z.Log.skill(_user, target, this.m.Name, 0, 0, "", true, false);
 
@@ -109,7 +109,7 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 
 			while (potentialInjuries.len() != 0)
 			{
-				local r = this.Math.rand(0, potentialInjuries.len() - 1);
+				local r = ::Math.rand(0, potentialInjuries.len() - 1);
 				local injury = ::new("scripts/skills/" + potentialInjuries[r]);
 
 				if (injury.isValid(target))
@@ -136,9 +136,9 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 		local p = this.getContainer().buildPropertiesForUse(this, null);
 
 		local hitInfo = clone ::Const.Tactical.HitInfo;
-		hitInfo.DamageRegular = this.Math.rand(weapon.m.RegularDamage, weapon.m.RegularDamageMax) * p.MeleeDamageMult;
+		hitInfo.DamageRegular = ::Math.rand(weapon.m.RegularDamage, weapon.m.RegularDamageMax) * p.MeleeDamageMult;
 		hitInfo.DamageDirect = 1.0;
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
 			hitInfo.Injuries = injury_array[0]; //body
 			hitInfo.BodyPart = ::Const.BodyPart.Body;

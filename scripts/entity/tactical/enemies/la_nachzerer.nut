@@ -42,7 +42,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		body.setBrush("bust_ghoul_body_03");
 		body.varySaturation(0.25);
 		body.varyColor(0.06, 0.06, 0.06);
-		this.m.Head = this.Math.rand(1, 3);
+		this.m.Head = ::Math.rand(1, 3);
 		local head = this.addSprite("head");
 		head.setBrush("bust_ghoul_03_head_0" + this.m.Head)
 		head.Saturation = body.Saturation;
@@ -67,6 +67,8 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 		//base skills
 
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_escape_artist"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_indomitable"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_survival_instinct"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_pathfinder"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_berserk"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_crippling_strikes"));
@@ -192,7 +194,7 @@ this.la_nachzerer <- this.inherit("scripts/entity/tactical/actor", {
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
 	{
-		local flip = this.Math.rand(0, 100) < 50;
+		local flip = ::Math.rand(0, 100) < 50;
 		local isResurrectable = _fatalityType != ::Const.FatalityType.Decapitated;
 		local sprite_body = this.getSprite("body");
 		local sprite_head = this.getSprite("head");

@@ -70,9 +70,9 @@
     o.getPrice = function()
 	{
 		local time = this.getTime();
-		local maxt = this.Math.max(1, this.m.HealingTimeMax - this.Math.floor((time - this.m.TimeApplied) / this.World.getTime().SecondsPerDay));
+		local maxt = ::Math.max(1, this.m.HealingTimeMax - ::Math.floor((time - this.m.TimeApplied) / this.World.getTime().SecondsPerDay));
 		local p = maxt * 5;
-		p = this.Math.round(p * 0.1) * 10;
+		p = ::Math.round(p * 0.1) * 10;
 		return p;
 	}
 

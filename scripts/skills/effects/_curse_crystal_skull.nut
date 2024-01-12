@@ -21,7 +21,7 @@ this._curse_crystal_skull <- this.inherit("scripts/skills/skill", {
 		//5% chance to backfire minimum
 		local targetTile = actor.getTile();
 		local resolve = actor.getCurrentProperties().getBravery();
-		if (this.Math.rand(1, 100) <= this.Math.minf(95, resolve - 25))
+		if (::Math.rand(1, 100) <= ::Math.minf(95, resolve - 25))
 		{
 			local targets = getAffectedTiles(targetTile);
 			if (targets.len() == 0) return;
@@ -49,20 +49,20 @@ this._curse_crystal_skull <- this.inherit("scripts/skills/skill", {
 	{
 		if (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)
 		{
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " [Horrific Scream] " + this.Const.UI.getColorizedEntityName(_targetTile.getEntity()));
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " [Horrific Scream] " + ::Const.UI.getColorizedEntityName(_targetTile.getEntity()));
 		}
 
 		this.Sound.play("sounds/enemies/horrific_scream_01.wav", 4.0);
 
-		_targetTile.getEntity().checkMorale(-1, 0, this.Const.MoraleCheckType.MentalAttack);
-		_targetTile.getEntity().checkMorale(-1, 0, this.Const.MoraleCheckType.MentalAttack);
-		_targetTile.getEntity().checkMorale(-1, 0, this.Const.MoraleCheckType.MentalAttack);
-		_targetTile.getEntity().checkMorale(-1, 0, this.Const.MoraleCheckType.MentalAttack);
+		_targetTile.getEntity().checkMorale(-1, 0, ::Const.MoraleCheckType.MentalAttack);
+		_targetTile.getEntity().checkMorale(-1, 0, ::Const.MoraleCheckType.MentalAttack);
+		_targetTile.getEntity().checkMorale(-1, 0, ::Const.MoraleCheckType.MentalAttack);
+		_targetTile.getEntity().checkMorale(-1, 0, ::Const.MoraleCheckType.MentalAttack);
 
-		local hitInfo = clone this.Const.Tactical.HitInfo;
+		local hitInfo = clone ::Const.Tactical.HitInfo;
 			hitInfo.DamageRegular = ::Math.rand(15, 45);
 			hitInfo.DamageDirect = 1.0;
-			hitInfo.BodyPart = this.Const.BodyPart.Body;
+			hitInfo.BodyPart = ::Const.BodyPart.Body;
 			hitInfo.BodyDamageMult = 1.0;
 			hitInfo.FatalityChanceMult = 0.0;
 			_targetTile.getEntity().onDamageReceived(_user, this, hitInfo);

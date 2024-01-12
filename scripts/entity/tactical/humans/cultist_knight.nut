@@ -2,18 +2,18 @@ this.cultist_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.CultistKnight;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Cultist.XP;
+		this.m.Type = ::Const.EntityType.CultistKnight;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.Cultist.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.AllMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.All;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.AllMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.All;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_melee_agent");
 		this.m.AIAgent.setActor(this);
 
-		if (this.Math.rand(1, 100) <= 10)
+		if (::Math.rand(1, 100) <= 10)
 		{
 			this.setGender(1);
 		}
@@ -27,23 +27,23 @@ this.cultist_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 			3
 		];
 
-		if (this.Math.rand(1, 100) <= 66)
+		if (::Math.rand(1, 100) <= 66)
 		{
 			local tattoo_body = this.actor.getSprite("tattoo_body");
 			local body = this.actor.getSprite("body");
-			tattoo_body.setBrush("warpaint_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_" + body.getBrush().Name);
+			tattoo_body.setBrush("warpaint_0" + tattoos[::Math.rand(0, tattoos.len() - 1)] + "_" + body.getBrush().Name);
 			tattoo_body.Visible = true;
 		}
 
-		if (this.Math.rand(1, 100) <= 66)
+		if (::Math.rand(1, 100) <= 66)
 		{
 			local tattoo_head = this.actor.getSprite("tattoo_head");
-			tattoo_head.setBrush("warpaint_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_head");
+			tattoo_head.setBrush("warpaint_0" + tattoos[::Math.rand(0, tattoos.len() - 1)] + "_head");
 			tattoo_head.Visible = true;
 		}
 
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.CultistKnight);
+		b.setValues(::Const.Tactical.Actor.CultistKnight);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -60,7 +60,7 @@ this.cultist_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 
 	function pickOutfit()
 	{
-		this.m.Items.equip(this.Const.World.Common.pickArmor([
+		this.m.Items.equip(::Const.World.Common.pickArmor([
 			[
 				1,
 				"coat_of_plates"
@@ -71,7 +71,7 @@ this.cultist_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 			]
 		]));
 
-		local helmet = this.m.Items.equip(this.Const.World.Common.pickHelmet([
+		local helmet = this.m.Items.equip(::Const.World.Common.pickHelmet([
 			[
 				30,
 				"full_helm"
@@ -133,7 +133,7 @@ this.cultist_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 				"legend_frogmouth_helm_crested"
 			]
 		]));
-		local head = this.m.Items.getItemAtSlot(this.Const.ItemSlot.Head);
+		local head = this.m.Items.getItemAtSlot(::Const.ItemSlot.Head);
 		if (head != null)
 			head.setUpgrade(::new("scripts/items/legend_helmets/vanity/legend_helmet_sack"));
 	}

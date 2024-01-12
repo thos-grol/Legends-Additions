@@ -29,11 +29,11 @@ this.runaway_laborers_event <- this.inherit("scripts/events/event", {
 
 						if (this.World.getPlayerRoster().getSize() < this.World.Assets.getBrothersMax())
 						{
-							return this.Math.rand(1, 100) <= 70 ? "C" : "D";
+							return ::Math.rand(1, 100) <= 70 ? "C" : "D";
 						}
 						else
 						{
-							return this.Math.rand(1, 100) <= 70 ? "E" : "D";
+							return ::Math.rand(1, 100) <= 70 ? "E" : "D";
 						}
 					}
 

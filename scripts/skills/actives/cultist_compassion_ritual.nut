@@ -67,7 +67,7 @@ this.cultist_compassion_ritual <- this.inherit("scripts/skills/skill", {
 	{
 		local target = _targetTile.getEntity();
 		local actor = this.getContainer().getActor();
-		this.Sound.play("sounds/cultist/compassion_ritual.wav", 200.0, _user.getPos(), this.Math.rand(95, 105) * 0.01);
+		this.Sound.play("sounds/cultist/compassion_ritual.wav", 200.0, _user.getPos(), ::Math.rand(95, 105) * 0.01);
 		this.m.isWindow = false;
 		addInjuries(target);
 		return true;
@@ -162,7 +162,7 @@ this.cultist_compassion_ritual <- this.inherit("scripts/skills/skill", {
 
 	function onTurnStart()
 	{
-		if (this.Math.rand(1,100) <= 13 + getInjuryBonus()) this.m.isWindow = true;
+		if (::Math.rand(1,100) <= 13 + getInjuryBonus()) this.m.isWindow = true;
 	}
 
 	function onTurnEnd()

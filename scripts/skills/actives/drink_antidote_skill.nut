@@ -14,8 +14,8 @@ this.drink_antidote_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			"sounds/combat/drink_02.wav",
 			"sounds/combat/drink_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.Any;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.Any;
 		this.m.IsSerialized = false;
 		this.m.IsStacking = true;
 		this.m.IsActive = true;
@@ -65,8 +65,8 @@ this.drink_antidote_skill <- this.inherit("scripts/skills/_alchemy_active", {
 
 	function getCursorForTile( _tile )
 	{
-		if (_tile.ID == this.getContainer().getActor().getTile().ID) return this.Const.UI.Cursor.Drink;
-		return this.Const.UI.Cursor.Give;
+		if (_tile.ID == this.getContainer().getActor().getTile().ID) return ::Const.UI.Cursor.Drink;
+		return ::Const.UI.Cursor.Give;
 	}
 
 	function onVerifyTarget( _originTile, _targetTile )
@@ -76,7 +76,7 @@ this.drink_antidote_skill <- this.inherit("scripts/skills/_alchemy_active", {
 		if (!this.m.Container.getActor().isAlliedWith(target)) return false;
 
 		if (target.getID() != _originTile.getEntity().getID()) //valid if friendly with free bag space
-			return target.getItems().hasEmptySlot(this.Const.ItemSlot.Bag);
+			return target.getItems().hasEmptySlot(::Const.ItemSlot.Bag);
 		else
 		{
 			if (target.getSkills().hasSkill("effects.goblin_poison")) return true;
@@ -113,23 +113,23 @@ this.drink_antidote_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			user.getSkills().add(this.new("scripts/skills/effects/antidote_effect"));
 
 			if (!user.isHiddenToPlayer())
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(user) + " drinks Antidote");
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(user) + " drinks Antidote");
 
 			if (this.m.Item != null && !this.m.Item.isNull())
 			{
 				this.m.Item.removeSelf();
 			}
 
-			this.Const.Tactical.Common.checkDrugEffect(user);
+			::Const.Tactical.Common.checkDrugEffect(user);
 		}
 		else
 		{
 			if (!_user.isHiddenToPlayer())
 			{
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " gives Antidote to " + this.Const.UI.getColorizedEntityName(user));
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " gives Antidote to " + ::Const.UI.getColorizedEntityName(user));
 			}
 
-			this.Sound.play("sounds/bottle_01.wav", this.Const.Sound.Volume.Inventory);
+			this.Sound.play("sounds/bottle_01.wav", ::Const.Sound.Volume.Inventory);
 			local item = this.m.Item.get();
 			_user.getItems().removeFromBag(item);
 			user.getItems().addToBag(item);

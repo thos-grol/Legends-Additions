@@ -50,7 +50,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 
 	function onTurnStart()
 	{
-		this.m.Cooldown = this.Math.max(0, this.m.Cooldown - 1);
+		this.m.Cooldown = ::Math.max(0, this.m.Cooldown - 1);
 	}
 
 	function isUsable()
@@ -78,7 +78,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 			local nextTile = ownTile.getNextTile(nextDir);
 			local success = false;
 
-			if (nextTile.IsOccupiedByActor && nextTile.getEntity().isAttackable() && this.Math.abs(nextTile.Level - ownTile.Level) <= 1) success = this.attackEntity(_user, nextTile.getEntity());
+			if (nextTile.IsOccupiedByActor && nextTile.getEntity().isAttackable() && ::Math.abs(nextTile.Level - ownTile.Level) <= 1) success = this.attackEntity(_user, nextTile.getEntity());
 
 			if (!_user.isAlive() || _user.isDying()) return success;
 			if (success && nextTile.IsOccupiedByActor && nextTile.getEntity().isAlive() && !nextTile.getEntity().isDying()) this.applyEffectToTarget(_user, nextTile.getEntity(), nextTile);
@@ -91,7 +91,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 			local nextTile = ownTile.getNextTile(nextDir);
 			local success = false;
 
-			if (nextTile.IsOccupiedByActor && nextTile.getEntity().isAttackable() && this.Math.abs(nextTile.Level - ownTile.Level) <= 1) success = this.attackEntity(_user, nextTile.getEntity());
+			if (nextTile.IsOccupiedByActor && nextTile.getEntity().isAttackable() && ::Math.abs(nextTile.Level - ownTile.Level) <= 1) success = this.attackEntity(_user, nextTile.getEntity());
 			if (!_user.isAlive() || _user.isDying()) return success;
 
 
@@ -114,7 +114,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 		{
 			local nextTile = ownTile.getNextTile(nextDir);
 
-			if (this.Math.abs(nextTile.Level - ownTile.Level) <= 1)
+			if (::Math.abs(nextTile.Level - ownTile.Level) <= 1)
 			{
 				this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
 			}
@@ -126,7 +126,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 		{
 			local nextTile = ownTile.getNextTile(nextDir);
 
-			if (this.Math.abs(nextTile.Level - ownTile.Level) <= 1)
+			if (::Math.abs(nextTile.Level - ownTile.Level) <= 1)
 			{
 				this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, nextTile, nextTile.Pos.X, nextTile.Pos.Y);
 			}
@@ -197,7 +197,7 @@ this.nachzerer_claws_swipe <- this.inherit("scripts/skills/skill", {
 		skills.removeByID("effects.spearwall");
 		skills.removeByID("effects.riposte");
 		_target.setCurrentMovementType(::Const.Tactical.MovementType.Involuntary);
-		local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - _targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
+		local damage = ::Math.max(0, ::Math.abs(knockToTile.Level - _targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
 
 		if (damage == 0) this.Tactical.getNavigator().teleport(_target, knockToTile, null, null, true);
 		else

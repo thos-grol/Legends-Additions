@@ -65,7 +65,7 @@ this.perk_mastery_hammer <- this.inherit("scripts/skills/skill", {
 		{
 			local effect = ::new("scripts/skills/effects/dazed_effect");
 			_targetEntity.getSkills().add(effect);
-			effect.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+			effect.m.TurnsLeft = ::Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 			if (!actor.isHiddenToPlayer() && _targetEntity.getTile().IsVisibleForPlayer) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " has been dazed for " + effect.m.TurnsLeft + " turns");
 		}
 

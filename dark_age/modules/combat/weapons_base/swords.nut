@@ -46,34 +46,34 @@
 ::mods_hookExactClass("items/weapons/oriental/qatal_dagger", function (o){
 	o.post_create <- function()
 	{
-		this.m.WeaponType = this.Const.Items.WeaponType.Sword | this.Const.Items.WeaponType.Dagger;
+		this.m.WeaponType = ::Const.Items.WeaponType.Sword | ::Const.Items.WeaponType.Dagger;
 	}
 });
 
 ::mods_hookExactClass("items/weapons/named/named_qatal_dagger", function (o){
 	o.post_create <- function()
 	{
-		this.m.WeaponType = this.Const.Items.WeaponType.Sword | this.Const.Items.WeaponType.Dagger;
+		this.m.WeaponType = ::Const.Items.WeaponType.Sword | ::Const.Items.WeaponType.Dagger;
 	}
 });
 
 ::mods_hookExactClass("items/weapons/oriental/two_handed_scimitar", function (o){
     o.post_create <- function()
 	{
-		this.m.WeaponType = this.Const.Items.WeaponType.Sword | this.Const.Items.WeaponType.Cleaver;
+		this.m.WeaponType = ::Const.Items.WeaponType.Sword | ::Const.Items.WeaponType.Cleaver;
 	}
 });
 
 ::mods_hookExactClass("items/weapons/named/named_two_handed_scimitar", function (o){
 	o.post_create <- function()
 	{
-		this.m.WeaponType = this.Const.Items.WeaponType.Cleaver | this.Const.Items.WeaponType.Sword;
+		this.m.WeaponType = ::Const.Items.WeaponType.Cleaver | ::Const.Items.WeaponType.Sword;
 	}
 });
 
 ::mods_hookExactClass("items/weapons/oriental/two_handed_saif", function (o){
     o.post_create <- function()
 	{
-		this.m.WeaponType = this.Const.Items.WeaponType.Cleaver | this.Const.Items.WeaponType.Sword;
+		this.m.WeaponType = ::Const.Items.WeaponType.Cleaver | ::Const.Items.WeaponType.Sword;
 	}
 });

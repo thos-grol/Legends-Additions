@@ -27,7 +27,7 @@ this.legend_old_man_sells <- this.inherit("scripts/events/event", {
 					Text = "How about we just take everything you have, old man?",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 60 ? "C" : "D";
+						return ::Math.rand(1, 100) <= 60 ? "C" : "D";
 					}
 
 				},
@@ -61,7 +61,7 @@ this.legend_old_man_sells <- this.inherit("scripts/events/event", {
 			{
 				if (_event.m.Bought == 1)
 				{
-					local r = this.Math.rand(1, 5);
+					local r = ::Math.rand(1, 5);
 					local item;
 
 					if (r == 1)
@@ -119,7 +119,7 @@ this.legend_old_man_sells <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local money = this.Math.rand(982, 2336);
+				local money = ::Math.rand(982, 2336);
 				this.World.Assets.addMoney(-money);
 				this.List = [
 					{
@@ -140,7 +140,7 @@ this.legend_old_man_sells <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					for( local chance = bro.addLightInjury(); this.Math.rand(1, 100) < chance;  )
+					for( local chance = bro.addLightInjury(); ::Math.rand(1, 100) < chance;  )
 					{
 						if (chance < lowestChance)
 						{
@@ -170,7 +170,7 @@ this.legend_old_man_sells <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local money = this.Math.rand(489, 2582);
+				local money = ::Math.rand(489, 2582);
 				this.World.Assets.addMoney(money);
 				this.List = [
 					{

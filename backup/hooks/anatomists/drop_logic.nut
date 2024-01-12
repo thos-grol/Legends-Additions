@@ -11,7 +11,7 @@
 		}
 		count *= 2.0;
 
-		local ROLL = this.Math.rand(1.0, 100.0);
+		local ROLL = ::Math.rand(1.0, 100.0);
 		this.logInfo("Rolling for potion: " + ROLL + " vs " + chance * count)
 
 		if (ROLL <= chance * count)

@@ -158,7 +158,7 @@
         if (actor.getSkills().getSkillByID("effects.legend_RSW_poison_effect") != null) return;
 
         local regen_value = (actor.getFlags().has("unhold_8")) ? 20 : 10;
-        local health_added = this.Math.min(actor.getHitpointsMax() - actor.getHitpoints(), regen_value);
+        local health_added = ::Math.min(actor.getHitpointsMax() - actor.getHitpoints(), regen_value);
 
         if (health_added > 0)
         {
@@ -169,7 +169,7 @@
             {
                 this.spawnIcon("status_effect_79", actor.getTile());
 
-                if (this.m.SoundOnUse.len() != 0) this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
+                if (this.m.SoundOnUse.len() != 0) this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
 
                 this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + "\'s Hyperactive Cell Growth mutation regenerated " + health_added + " hitpoints");
             }
@@ -180,8 +180,8 @@
             local head = actor.getItems().getItemAtSlot(::Const.ItemSlot.Head);
             local body = actor.getItems().getItemAtSlot(::Const.ItemSlot.Body);
 
-            local head_added = head != null ? this.Math.min(head.getArmorMax() - head.getArmor(), 40) : 0;
-            local body_added = body != null ? this.Math.min(body.getArmorMax() - body.getArmor(), 40) : 0;
+            local head_added = head != null ? ::Math.min(head.getArmorMax() - head.getArmor(), 40) : 0;
+            local body_added = body != null ? ::Math.min(body.getArmorMax() - body.getArmor(), 40) : 0;
 
             // if (head != null) this.logInfo("Head| Max armor: " + head.getArmorMax() + " | Curr Armor: " + head.getArmor() + " | Regen: " + head_added);
             // if (head != null) this.logInfo("Body| Max armor: " + body.getArmorMax() + " | Curr Armor: " + body.getArmor() + " | Regen: " + body_added);
@@ -200,7 +200,7 @@
                 {
                     this.spawnIcon("status_effect_79", actor.getTile());
 
-                    if (this.m.SoundOnUse.len() != 0) this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
+                    if (this.m.SoundOnUse.len() != 0) this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
 
                     if (head_added > 0) this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + "\'s Hyperactive Cell Growth mutation regenerated " + head_added + " points of head armor");
 

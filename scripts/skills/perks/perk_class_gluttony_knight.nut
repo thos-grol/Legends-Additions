@@ -79,7 +79,7 @@ this.perk_class_gluttony_knight <- this.inherit("scripts/skills/skill", {
 
 	function addCharges( _amount )
 	{
-		this.m.Charges = this.Math.min(this.m.Charges_Max, this.m.Charges + _amount);
+		this.m.Charges = ::Math.min(this.m.Charges_Max, this.m.Charges + _amount);
 		if (this.m.Charges > 0)
 		{
 			local actor = this.getContainer().getActor();
@@ -118,7 +118,7 @@ this.perk_class_gluttony_knight <- this.inherit("scripts/skills/skill", {
 
 		_properties.DamageReceivedRegularMult *= 0;
 		_properties.DamageReceivedArmorMult *= 0;
-		this.m.Charges = this.Math.max(0, this.m.Charges - 1);
+		this.m.Charges = ::Math.max(0, this.m.Charges - 1);
 		::Tactical.EventLog.logIn("[" + ::MSU.Text.colorRed("Hair Armor") + "] nullified damage. ( " + this.m.Charges + "/5 charges left)");
 
 		if (this.m.Charges == 0) actor.getSprite("sprite_gluttony_shield").Visible = false;
@@ -128,7 +128,7 @@ this.perk_class_gluttony_knight <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/gruesome_feast_02.wav",
 			"sounds/enemies/gruesome_feast_03.wav"
 		];
-		this.Sound.play(::MSU.Array.rand(feast_sounds), 0.5, actor.getPos(), this.Math.rand(95, 105) * 0.01);
+		this.Sound.play(::MSU.Array.rand(feast_sounds), 0.5, actor.getPos(), ::Math.rand(95, 105) * 0.01);
 		this.Sound.play("sounds/general/shield_crack.wav", 200.0, actor.getPos());
 		spawnEffect();
 

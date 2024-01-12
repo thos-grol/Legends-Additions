@@ -160,7 +160,7 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 		this.getItem().setLoaded(false);
 		local skillToAdd = this.new("scripts/skills/actives/reload_bolt");
 		skillToAdd.setItem(this.getItem());
-		skillToAdd.setFatigueCost(this.Math.max(0, skillToAdd.getFatigueCostRaw() + this.getItem().m.FatigueOnSkillUse));
+		skillToAdd.setFatigueCost(::Math.max(0, skillToAdd.getFatigueCostRaw() + this.getItem().m.FatigueOnSkillUse));
 		this.getContainer().add(skillToAdd);
 		return ret;
 	}
@@ -225,7 +225,7 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 			skills.removeByID("effects.shieldwall");
 			skills.removeByID("effects.spearwall");
 			skills.removeByID("effects.riposte");
-			local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
+			local damage = ::Math.max(0, ::Math.abs(knockToTile.Level - targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
 
 			if (damage == 0)
 			{

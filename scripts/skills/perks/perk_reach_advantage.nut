@@ -42,7 +42,7 @@ this.perk_reach_advantage <- this.inherit("scripts/skills/skill", {
 
 		if (weapon != null && weapon.isItemType(::Const.Items.ItemType.MeleeWeapon) && weapon.isItemType(::Const.Items.ItemType.TwoHanded))
 		{
-			this.m.Stacks = this.Math.min(this.m.Stacks + 1, 5);
+			this.m.Stacks = ::Math.min(this.m.Stacks + 1, 5);
 		}
 	}
 

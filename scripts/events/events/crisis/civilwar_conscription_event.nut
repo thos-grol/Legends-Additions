@@ -20,7 +20,7 @@ this.civilwar_conscription_event <- this.inherit("scripts/events/event", {
 					{
 						this.World.Assets.addMoralReputation(-1);
 
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}
@@ -37,7 +37,7 @@ this.civilwar_conscription_event <- this.inherit("scripts/events/event", {
 					{
 						this.World.Assets.addMoralReputation(1);
 
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "D";
 						}
@@ -128,15 +128,15 @@ this.civilwar_conscription_event <- this.inherit("scripts/events/event", {
 					}
 				}
 
-				local numInjured = this.Math.min(candidates.len(), this.Math.rand(1, 3));
+				local numInjured = ::Math.min(candidates.len(), ::Math.rand(1, 3));
 
 				for( local i = 0; i < numInjured; i = i )
 				{
-					local idx = this.Math.rand(0, candidates.len() - 1);
+					local idx = ::Math.rand(0, candidates.len() - 1);
 					local bro = candidates[idx];
 					candidates.remove(idx);
 
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
 						local injury = bro.addInjury(::Const.Injury.Brawl);
 						this.List.push({
@@ -285,15 +285,15 @@ this.civilwar_conscription_event <- this.inherit("scripts/events/event", {
 					}
 				}
 
-				local numInjured = this.Math.min(candidates.len(), this.Math.rand(1, 3));
+				local numInjured = ::Math.min(candidates.len(), ::Math.rand(1, 3));
 
 				for( local i = 0; i < numInjured; i = i )
 				{
-					local idx = this.Math.rand(0, candidates.len() - 1);
+					local idx = ::Math.rand(0, candidates.len() - 1);
 					local bro = candidates[idx];
 					candidates.remove(idx);
 
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
 						local injury = bro.addInjury(::Const.Injury.Brawl);
 						this.List.push({

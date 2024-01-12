@@ -115,7 +115,7 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 		if (myTile.hasNextTile(dir))
 		{
 			local boltTile = myTile.getNextTile(dir);
-			if (this.Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
 			{
 				xxtile.push(boltTile);
 				xxtile.push(boltTile);
@@ -125,7 +125,7 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 		if (myTile.hasNextTile(left))
 		{
 			local boltTile = myTile.getNextTile(left);
-			if (this.Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
 			{
 				xxtile.push(boltTile);
 				xxtile.push(boltTile);
@@ -135,7 +135,7 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 		if (myTile.hasNextTile(right))
 		{
 			local boltTile = myTile.getNextTile(right);
-			if (this.Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
+			if (::Math.abs(boltTile.Level - myTile.Level) <= this.m.MaxLevelDifference)
 			{
 				xxtile.push(boltTile);
 				xxtile.push(boltTile);
@@ -146,7 +146,7 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 		{
 			this.Time.scheduleEvent(this.TimeUnit.Virtual, (i * 200), function ( _skill )
 			{
-				xxtileE = xxtile.remove(this.Math.rand(0, xxtile.len() - 1));
+				xxtileE = xxtile.remove(::Math.rand(0, xxtile.len() - 1));
 				if (_user.getTile().getDistanceTo(_targetTile) >= ::Const.Combat.SpawnProjectileMinDist)
 				{
 					this.Sound.play("sounds/enemies/ghastly_touch_01.wav", ::Const.Sound.Volume.Skill * 1.2, this.getContainer().getActor().getPos());

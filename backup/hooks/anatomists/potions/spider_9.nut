@@ -20,9 +20,9 @@
         //Survival Instinct 4
         ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTRSurvivalInstinct, 0);
 
-        this.Sound.play("sounds/enemies/dlc2/giant_spider_death_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/dlc2/giant_spider_flee_0" + this.Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/dlc2/giant_spider_hurt_0" + this.Math.rand(1, 7) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc2/giant_spider_death_0" + ::Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc2/giant_spider_flee_0" + ::Math.rand(1, 3) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc2/giant_spider_hurt_0" + ::Math.rand(1, 7) + ".wav", ::Const.Sound.Volume.Inventory);
 
         return this.anatomist_potion_item.onUse(_actor, _item);
     }

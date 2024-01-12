@@ -12,7 +12,7 @@ this.new_trained_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Name = "Saturated Knowledge";
 		this.m.Description = "Having had the honor of training with and learning from experienced fighters recently, this character has soaked in knowledge and now needs to apply what he learned on the battlefield in order to fully grasp it and make it his own.";
 		this.m.Icon = "skills/status_effect_62.png";
-		this.m.Type = this.m.Type | this.Const.SkillType.StatusEffect;
+		this.m.Type = this.m.Type | ::Const.SkillType.StatusEffect;
 	}
 
 	function getTooltip()

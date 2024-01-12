@@ -13,8 +13,8 @@ this.spell_corpse_explosion <- this.inherit("scripts/skills/_magic_active", {
 			"sounds/enemies/necromancer_02.wav",
 			"sounds/enemies/necromancer_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -50,7 +50,7 @@ this.spell_corpse_explosion <- this.inherit("scripts/skills/_magic_active", {
 	function cast( _user, _targetTile )
 	{
 		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
-			::Z.Log.display_basic(_user, null, this.m.Name, _user.getFaction() == this.Const.Faction.Player || _user.getFaction() == this.Const.Faction.PlayerAnimals);
+			::Z.Log.display_basic(_user, null, this.m.Name, _user.getFaction() == ::Const.Faction.Player || _user.getFaction() == ::Const.Faction.PlayerAnimals);
 
 		for( local i = 1; i <= 5; i++ )
 		{
@@ -94,9 +94,9 @@ this.spell_corpse_explosion <- this.inherit("scripts/skills/_magic_active", {
 
 		this.Tactical.getCamera().quake(this.createVec(0, -1.0), 6.0, 0.16, 0.35);
 
-		for( local i = 0; i < this.Const.Tactical.MortarImpactParticles.len(); i = ++i )
+		for( local i = 0; i < ::Const.Tactical.MortarImpactParticles.len(); i = ++i )
 		{
-			local effect = this.Const.Tactical.MortarImpactParticles[i];
+			local effect = ::Const.Tactical.MortarImpactParticles[i];
 			this.Tactical.spawnParticleEffect(false, effect.Brushes, tag.TargetTile, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(0, 0));
 		}
 
@@ -107,36 +107,36 @@ this.spell_corpse_explosion <- this.inherit("scripts/skills/_magic_active", {
 			{
 				local target = t.getEntity();
 
-				if (target.getMoraleState() != this.Const.MoraleState.Ignore)
+				if (target.getMoraleState() != ::Const.MoraleState.Ignore)
 				{
 					target.checkMorale(-1, 0);
 					target.getSkills().add(this.new("scripts/skills/effects/shellshocked_effect"));
 				}
 
-				local hitInfo = clone this.Const.Tactical.HitInfo;
-				hitInfo.DamageRegular = this.Math.rand(min, max);
+				local hitInfo = clone ::Const.Tactical.HitInfo;
+				hitInfo.DamageRegular = ::Math.rand(min, max);
 				hitInfo.DamageArmor = hitInfo.DamageRegular * 0.7;
 				hitInfo.DamageDirect = 0.2;
 				hitInfo.BodyPart = 0;
 				hitInfo.FatalityChanceMult = 0.0;
-				hitInfo.Injuries = this.Const.Injury.BurningAndPiercingBody;
+				hitInfo.Injuries = ::Const.Injury.BurningAndPiercingBody;
 				target.onDamageReceived(tag.User, this, hitInfo);
 			}
 
-			if (t.Type != this.Const.Tactical.TerrainType.ShallowWater && t.Type != this.Const.Tactical.TerrainType.DeepWater)
+			if (t.Type != ::Const.Tactical.TerrainType.ShallowWater && t.Type != ::Const.Tactical.TerrainType.DeepWater)
 			{
-				t.clear(this.Const.Tactical.DetailFlag.Scorchmark);
-				t.spawnDetail("impact_decal", this.Const.Tactical.DetailFlag.Scorchmark, false, true);
+				t.clear(::Const.Tactical.DetailFlag.Scorchmark);
+				t.spawnDetail("impact_decal", ::Const.Tactical.DetailFlag.Scorchmark, false, true);
 			}
 		}
 
 
-		local hitInfo = clone this.Const.Tactical.HitInfo;
-		hitInfo.DamageRegular = this.Math.rand(1, max_backlash);
+		local hitInfo = clone ::Const.Tactical.HitInfo;
+		hitInfo.DamageRegular = ::Math.rand(1, max_backlash);
 		hitInfo.DamageDirect = 1.0;
 		hitInfo.BodyPart = 0;
 		hitInfo.FatalityChanceMult = 0.0;
-		hitInfo.Injuries = this.Const.Injury.BurningAndPiercingBody;
+		hitInfo.Injuries = ::Const.Injury.BurningAndPiercingBody;
 		tag.User.onDamageReceived(tag.User, this, hitInfo);
 	}
 

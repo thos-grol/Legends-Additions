@@ -12,11 +12,11 @@ this.perk_legend_wind_reader <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.legend_wind_reader";
-		this.m.Name = this.Const.Strings.PerkName.LegendWindReader;
-		this.m.Description = this.Const.Strings.PerkDescription.LegendWindReader;
+		this.m.Name = ::Const.Strings.PerkName.LegendWindReader;
+		this.m.Description = ::Const.Strings.PerkDescription.LegendWindReader;
 		this.m.Icon = "ui/perks/wind_reader.png";
-		this.m.Type = this.Const.SkillType.Perk;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;

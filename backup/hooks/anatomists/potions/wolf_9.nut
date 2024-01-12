@@ -27,10 +27,10 @@
         ::LA.addPerk(_actor, ::Const.Perks.PerkDefs.PTRMenacing, 2);
 
 
-        this.Sound.play("sounds/enemies/werewolf_idle_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/werewolf_idle_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/werewolf_idle_0" + this.Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/werewolf_hurt_0" + this.Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/werewolf_idle_0" + ::Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/werewolf_idle_0" + ::Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/werewolf_idle_0" + ::Math.rand(1, 8) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/werewolf_hurt_0" + ::Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
 
         return this.anatomist_potion_item.onUse(_actor, _item);
     }

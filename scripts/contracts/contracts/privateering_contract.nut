@@ -8,15 +8,15 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 	function create()
 	{
 		this.contract.create();
-		local r = this.Math.rand(1, 100);
+		local r = ::Math.rand(1, 100);
 
 		if (r <= 70)
 		{
-			this.m.DifficultyMult = this.Math.rand(95, 105) * 0.01;
+			this.m.DifficultyMult = ::Math.rand(95, 105) * 0.01;
 		}
 		else
 		{
-			this.m.DifficultyMult = this.Math.rand(115, 135) * 0.01;
+			this.m.DifficultyMult = ::Math.rand(115, 135) * 0.01;
 		}
 
 		this.m.Type = "contract.privateering";
@@ -33,7 +33,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		local nobleHouses = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+		local nobleHouses = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 
 		foreach( i, h in nobleHouses )
 		{
@@ -50,7 +50,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Flags.set("RivalHouseID", nobleHouses[1].getID());
 		this.m.Flags.set("RivalHouseName", nobleHouses[1].getName());
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -97,7 +97,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 					"Return after 7 days"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -130,7 +130,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 						continue;
 					}
 
-					local obj = a[this.Math.rand(0, a.len() - 1)];
+					local obj = a[::Math.rand(0, a.len() - 1)];
 					this.Contract.m.Objectives.push(this.WeakTableRef(obj));
 					obj.clearTroops();
 
@@ -138,46 +138,46 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						if (obj.isMilitary())
 						{
-							this.Contract.addUnitsToEntity(obj, this.Const.World.Spawn.Noble, this.Math.rand(90, 120) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Noble, ::Math.rand(90, 120) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						}
 						else
 						{
-							local r = this.Math.rand(1, 100);
+							local r = ::Math.rand(1, 100);
 
 							if (r <= 10)
 							{
-								this.Contract.addUnitsToEntity(obj, this.Const.World.Spawn.Mercenaries, this.Math.rand(90, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+								this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Mercenaries, ::Math.rand(90, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 							}
 							else
 							{
-								this.Contract.addUnitsToEntity(obj, this.Const.World.Spawn.Noble, this.Math.rand(70, 100) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+								this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Noble, ::Math.rand(70, 100) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 							}
 						}
 					}
 					else if (obj.isMilitary())
 					{
-						this.Contract.addUnitsToEntity(obj, this.Const.World.Spawn.Militia, this.Math.rand(80, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Militia, ::Math.rand(80, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					}
 					else
 					{
-						local r = this.Math.rand(1, 100);
+						local r = ::Math.rand(1, 100);
 
 						if (r <= 15)
 						{
-							this.Contract.addUnitsToEntity(obj, this.Const.World.Spawn.Mercenaries, this.Math.rand(80, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Mercenaries, ::Math.rand(80, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						}
 						else if (r <= 30)
 						{
 							obj.getFlags().set("HasNobleProtection", true);
-							this.Contract.addUnitsToEntity(obj, this.Const.World.Spawn.Noble, this.Math.rand(80, 100) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Noble, ::Math.rand(80, 100) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						}
 						else if (r <= 70)
 						{
-							this.Contract.addUnitsToEntity(obj, this.Const.World.Spawn.Militia, this.Math.rand(70, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Militia, ::Math.rand(70, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						}
 						else
 						{
-							this.Contract.addUnitsToEntity(obj, this.Const.World.Spawn.Peasants, this.Math.rand(70, 100));
+							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Peasants, ::Math.rand(70, 100));
 						}
 					}
 
@@ -187,16 +187,16 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 					}
 				}
 
-				local origin = nonIsolatedSettlements[this.Math.rand(0, nonIsolatedSettlements.len() - 1)];
-				local party = f.spawnEntity(origin.getTile(), origin.getName() + " Company", true, this.Const.World.Spawn.Noble, 190 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local origin = nonIsolatedSettlements[::Math.rand(0, nonIsolatedSettlements.len() - 1)];
+				local party = f.spawnEntity(origin.getTile(), origin.getName() + " Company", true, ::Const.World.Spawn.Noble, 190 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + f.getBannerString());
 				party.setDescription("Professional soldiers in service to local lords.");
 				this.Contract.m.UnitsSpawned.push(party.getID());
-				party.getLoot().Money = this.Math.rand(50, 200);
-				party.getLoot().ArmorParts = this.Math.rand(0, 25);
-				party.getLoot().Medicine = this.Math.rand(0, 3);
-				party.getLoot().Ammo = this.Math.rand(0, 30);
-				local r = this.Math.rand(1, 4);
+				party.getLoot().Money = ::Math.rand(50, 200);
+				party.getLoot().ArmorParts = ::Math.rand(0, 25);
+				party.getLoot().Medicine = ::Math.rand(0, 3);
+				party.getLoot().Ammo = ::Math.rand(0, 30);
+				local r = ::Math.rand(1, 4);
 
 				if (r == 1)
 				{
@@ -219,7 +219,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 				local wait = this.new("scripts/ai/world/orders/wait_order");
 				wait.setTime(9000.0);
 				c.addOrder(wait);
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 15)
 				{
@@ -228,7 +228,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 					if (!f.getFlags().get("Betrayed"))
 					{
 						this.Flags.set("IsChangingSides", true);
-						local item = this.new("scripts/items/" + this.Const.Items.NamedWeapons[this.Math.rand(0, this.Const.Items.NamedWeapons.len() - 1)]);
+						local item = this.new("scripts/items/" + ::Const.Items.NamedWeapons[::Math.rand(0, ::Const.Items.NamedWeapons.len() - 1)]);
 						item.onAddedToStash("");
 						this.Contract.m.Item = item;
 					}
@@ -319,7 +319,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 					}
 				}
 
-				if (this.Flags.get("IsChangingSides") && this.Contract.getDistanceToNearestSettlement() >= 5 && this.World.State.getPlayer().getTile().HasRoad && this.Math.rand(1, 1000) <= 1)
+				if (this.Flags.get("IsChangingSides") && this.Contract.getDistanceToNearestSettlement() >= 5 && this.World.State.getPlayer().getTile().HasRoad && ::Math.rand(1, 1000) <= 1)
 				{
 					this.Flags.set("IsChangingSides", false);
 					this.Contract.setScreen("ChangingSides");
@@ -358,19 +358,19 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 					p.CombatID = "RazeLocation";
-					p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
+					p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
 					p.LocationTemplate.Template[0] = "tactical.human_camp";
-					p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.None;
+					p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.None;
 					p.LocationTemplate.CutDownTrees = true;
 					p.LocationTemplate.AdditionalRadius = 5;
 
 					if (_dest.isMilitary())
 					{
-						p.Music = this.Const.Music.NobleTracks;
+						p.Music = ::Const.Music.NobleTracks;
 					}
 					else
 					{
-						p.Music = this.Const.Music.CivilianTracks;
+						p.Music = ::Const.Music.CivilianTracks;
 					}
 
 					p.EnemyBanners = [];
@@ -481,8 +481,8 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -593,7 +593,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 						local a = this.World.FactionManager.getFaction(this.Flags.get("RivalHouseID"));
 						a.addPlayerRelationEx(50.0 - a.getPlayerRelation(), "Changed sides in the war");
 						a.makeSettlementsFriendlyToPlayer();
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractBetrayal);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractBetrayal);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -626,14 +626,14 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Honest pay for honest work.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Raided the enemy lands");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Raided the enemy lands");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isCivilWar())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCommonContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCommonContract);
 						}
 
 						return 0;
@@ -646,7 +646,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -664,14 +664,14 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Honest pay for honest work.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess * 2);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess * 2);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess * 2, "Raided the enemy lands");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess * 2, "Raided the enemy lands");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isCivilWar())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -684,7 +684,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -702,8 +702,8 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "To hell with you!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to raid the enemy lands");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to raid the enemy lands");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -826,7 +826,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 
 					foreach( i, e in obj.getTroops() )
 					{
-						if (e.ID == this.Const.EntityType.Footman || e.ID == this.Const.EntityType.Greatsword || e.ID == this.Const.EntityType.Billman || e.ID == this.Const.EntityType.Arbalester || e.ID == this.Const.EntityType.StandardBearer || e.ID == this.Const.EntityType.Sergeant || e.ID == this.Const.EntityType.Knight)
+						if (e.ID == ::Const.EntityType.Footman || e.ID == ::Const.EntityType.Greatsword || e.ID == ::Const.EntityType.Billman || e.ID == ::Const.EntityType.Arbalester || e.ID == ::Const.EntityType.StandardBearer || e.ID == ::Const.EntityType.Sergeant || e.ID == ::Const.EntityType.Knight)
 						{
 							garbage.push(i);
 						}

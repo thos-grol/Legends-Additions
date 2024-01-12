@@ -138,7 +138,7 @@ this.nightmare_player <- this.inherit("scripts/skills/skill", {
 		local user = _tag.User;
 		local target = targetTile.getEntity();
 		local hitInfo = clone ::Const.Tactical.HitInfo;
-		hitInfo.DamageRegular = this.Math.rand(this.getDamage(target, 15), this.getDamage(target, 35));
+		hitInfo.DamageRegular = ::Math.rand(this.getDamage(target, 15), this.getDamage(target, 35));
 		hitInfo.DamageDirect = 1.0;
 		hitInfo.BodyPart = ::Const.BodyPart.Body;
 		hitInfo.BodyDamageMult = 1.0;
@@ -155,7 +155,7 @@ this.nightmare_player <- this.inherit("scripts/skills/skill", {
 		local hasMastery = this.getContainer().getActor().getFlags().has("alp_8");
 		local masteryModifier = hasMastery ?  1.1 : 1.0;
 		local multiplier = this.m.Container.getActor().getCurrentProperties().getBravery() * masteryModifier / _actor.getCurrentProperties().getBravery()
-		return this.Math.maxf(this.Math.floor(baseDamage * multiplier), 0);
+		return ::Math.maxf(::Math.floor(baseDamage * multiplier), 0);
 	}
 
 	function getHitFactors( _targetTile )

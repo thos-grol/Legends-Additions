@@ -20,7 +20,7 @@
 	{
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(1, 3);
+		r = ::Math.rand(1, 3);
 
 		if (r == 1)
 		{
@@ -37,7 +37,7 @@
 			items.equip(::new("scripts/items/weapons/spetum"));
 		}
 
-		if (this.Math.rand(1, 100) <= 50 && items.getItemAtSlot(::Const.ItemSlot.Offhand) == null)
+		if (::Math.rand(1, 100) <= 50 && items.getItemAtSlot(::Const.ItemSlot.Offhand) == null)
 		{
 			items.equip(::new("scripts/items/tools/throwing_net"));
 		}

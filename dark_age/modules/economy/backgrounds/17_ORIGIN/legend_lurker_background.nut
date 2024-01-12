@@ -26,7 +26,7 @@
 
 		if (::Const.DLC.Wildmen)
 		{
-			r = this.Math.rand(1, 100);
+			r = ::Math.rand(1, 100);
 
 			if (r <= 50)
 			{
@@ -45,7 +45,7 @@
 		}
 		else
 		{
-			if (this.Math.rand(1, 100) <= 75)
+			if (::Math.rand(1, 100) <= 75)
 			{
 				items.equip(::new("scripts/items/weapons/short_bow"));
 			}
@@ -57,7 +57,7 @@
 			items.equip(::new("scripts/items/ammo/quiver_of_arrows"));
 		}
 
-		r = this.Math.rand(0, 4);
+		r = ::Math.rand(0, 4);
 
 		if (r == 0)
 		{

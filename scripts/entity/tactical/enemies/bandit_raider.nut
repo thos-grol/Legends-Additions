@@ -3,14 +3,14 @@ this.bandit_raider <- this.inherit("scripts/entity/tactical/abstract_human", {
 	function create()
 	{
 		this.m.Name = "Raider";
-		this.m.Type = this.Const.EntityType.BanditRaider;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.BanditRaider.XP;
+		this.m.Type = ::Const.EntityType.BanditRaider;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.BanditRaider.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.AllMale;
-		this.m.Hairs = this.Const.Hair.UntidyMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.Raider;
+		this.m.Faces = ::Const.Faces.AllMale;
+		this.m.Hairs = ::Const.Hair.UntidyMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.Raider;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/bandit_melee_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -19,7 +19,7 @@ this.bandit_raider <- this.inherit("scripts/entity/tactical/abstract_human", {
 	{
 		this.abstract_human.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BanditRaider);
+		b.setValues(::Const.Tactical.Actor.BanditRaider);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -27,7 +27,7 @@ this.bandit_raider <- this.inherit("scripts/entity/tactical/abstract_human", {
 		this.getSprite("socket").setBrush("bust_base_bandits");
 		local dirt = this.getSprite("dirt");
 		dirt.Visible = true;
-		dirt.Alpha = this.Math.rand(150, 255);
+		dirt.Alpha = ::Math.rand(150, 255);
 		this.setArmorSaturation(0.85);
 		this.getSprite("shield_icon").setBrightness(0.85);
 	}
@@ -95,7 +95,7 @@ this.bandit_raider <- this.inherit("scripts/entity/tactical/abstract_human", {
 			]
 		];
 
-		foreach( item in this.Const.World.Common.pickOutfit(outfits, armor, helmet) )
+		foreach( item in ::Const.World.Common.pickOutfit(outfits, armor, helmet) )
 		{
 			this.m.Items.equip(item);
 		}

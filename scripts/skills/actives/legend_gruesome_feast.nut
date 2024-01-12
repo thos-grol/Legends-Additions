@@ -13,8 +13,8 @@ this.legend_gruesome_feast <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/gruesome_feast_02.wav",
 			"sounds/enemies/gruesome_feast_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -75,9 +75,9 @@ this.legend_gruesome_feast <- this.inherit("scripts/skills/skill", {
 
 	function spawnBloodbath( _targetTile )
 	{
-		for( local i = 0; i != this.Const.CorpsePart.len(); i = i )
+		for( local i = 0; i != ::Const.CorpsePart.len(); i = i )
 		{
-			_targetTile.spawnDetail(this.Const.CorpsePart[i]);
+			_targetTile.spawnDetail(::Const.CorpsePart[i]);
 			i = ++i;
 		}
 
@@ -90,9 +90,9 @@ this.legend_gruesome_feast <- this.inherit("scripts/skills/skill", {
 			{
 				local tile = _targetTile.getNextTile(i);
 
-				for( local n = this.Math.rand(0, 2); n != 0; n = n )
+				for( local n = ::Math.rand(0, 2); n != 0; n = n )
 				{
-					local decal = this.Const.BloodDecals[this.Const.BloodType.Red][this.Math.rand(0, this.Const.BloodDecals[this.Const.BloodType.Red].len() - 1)];
+					local decal = ::Const.BloodDecals[::Const.BloodType.Red][::Math.rand(0, ::Const.BloodDecals[::Const.BloodType.Red].len() - 1)];
 					tile.spawnDetail(decal);
 					n = --n;
 				}
@@ -105,7 +105,7 @@ this.legend_gruesome_feast <- this.inherit("scripts/skills/skill", {
 
 		for( local n = 2; n != 0; n = n )
 		{
-			local decal = this.Const.BloodDecals[this.Const.BloodType.Red][this.Math.rand(0, this.Const.BloodDecals[this.Const.BloodType.Red].len() - 1)];
+			local decal = ::Const.BloodDecals[::Const.BloodType.Red][::Math.rand(0, ::Const.BloodDecals[::Const.BloodType.Red].len() - 1)];
 			myTile.spawnDetail(decal);
 			n = --n;
 		}
@@ -114,7 +114,7 @@ this.legend_gruesome_feast <- this.inherit("scripts/skills/skill", {
 	function onRemoveCorpse( _tag )
 	{
 		this.Tactical.Entities.removeCorpse(_tag);
-		_tag.clear(this.Const.Tactical.DetailFlag.Corpse);
+		_tag.clear(::Const.Tactical.DetailFlag.Corpse);
 		_tag.Properties.remove("Corpse");
 		_tag.Properties.remove("IsSpawningFlies");
 	}
@@ -142,7 +142,7 @@ this.legend_gruesome_feast <- this.inherit("scripts/skills/skill", {
         else this.onRemoveCorpse(_targetTile);
 
         this.spawnBloodbath(_targetTile);
-        _user.setHitpoints(this.Math.min(_user.getHitpoints() + 50, _user.getHitpointsMax()));
+        _user.setHitpoints(::Math.min(_user.getHitpoints() + 50, _user.getHitpointsMax()));
         local skills = _user.getSkills().getAllSkillsOfType(::Const.SkillType.Injury);
 
         foreach( s in skills )

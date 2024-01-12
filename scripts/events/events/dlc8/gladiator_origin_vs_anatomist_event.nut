@@ -105,7 +105,7 @@ this.gladiator_origin_vs_anatomist_event <- this.inherit("scripts/events/event",
 		}
 
 		if (gladiator_candidates.len() == 0) return;
-		this.m.Gladiator = gladiator_candidates[this.Math.rand(0, gladiator_candidates.len() - 1)];
+		this.m.Gladiator = gladiator_candidates[::Math.rand(0, gladiator_candidates.len() - 1)];
 		this.m.Score = 3 * gladiator_candidates.len();
 	}
 

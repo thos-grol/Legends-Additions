@@ -8,7 +8,7 @@
 	o.onInit = function()
 	{
 		this.bandit_raider.onInit();
-		if (this.Math.rand(1, 100) <= 45) this.add_potion("direwolf", false);
+		if (::Math.rand(1, 100) <= 45) this.add_potion("direwolf", false);
 
 	}
 
@@ -44,7 +44,7 @@
 		item.setUpgrade(::new("scripts/items/" + (!::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue() ? "legend_armor/armor_upgrades/legend_direwolf_pelt_upgrade" : "armor_upgrades/direwolf_pelt_upgrade")));
 		this.m.Items.equip(item);
 
-		if (this.Math.rand(1, 100) <= 75)
+		if (::Math.rand(1, 100) <= 75)
 		{
 			local item = ::Const.World.Common.pickHelmet([
 				[
@@ -82,9 +82,9 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_balance")); //3
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
 
-		if (this.Math.rand(1, 100) <= 25) //2h weapons
+		if (::Math.rand(1, 100) <= 25) //2h weapons
 		{
-			this.m.build_num = this.Math.rand(0, 6);
+			this.m.build_num = ::Math.rand(0, 6);
 			switch(this.m.build_num)
 			{
 				case 0: //Infantry axe - 4ap chop, split man, and smashing shields (6ap)
@@ -97,10 +97,10 @@
 					//this.m.Skills.add(::new("scripts/skills/perks/perk_dodge")); //2 -> 5
 					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
 					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_cull")); //7
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(7, this.Math.rand(-6, 3) );
-					this.level_resolve(4, this.Math.rand(-6, 3) );
-					this.level_health(3, this.Math.rand(-6, 3) );
+					this.level_melee_skill(7, ::Math.rand(-6, 3) );
+					this.level_melee_defense(7, ::Math.rand(-6, 3) );
+					this.level_resolve(4, ::Math.rand(-6, 3) );
+					this.level_health(3, ::Math.rand(-6, 3) );
 					break;
 				case 1: //long axe has 2 range attack, and split shield
 					this.m.Items.equip(::new("scripts/items/weapons/longaxe"));
@@ -114,10 +114,10 @@
 					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
 					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_cull")); //7
 
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(7, this.Math.rand(-6, 3) );
-					this.level_initiative(4, this.Math.rand(-6, 3) );
-					this.level_health(3, this.Math.rand(-6, 3) );
+					this.level_melee_skill(7, ::Math.rand(-6, 3) );
+					this.level_melee_defense(7, ::Math.rand(-6, 3) );
+					this.level_initiative(4, ::Math.rand(-6, 3) );
+					this.level_health(3, ::Math.rand(-6, 3) );
 					break;
 				case 2: //polearm - Pike
 					this.m.Items.equip(::new("scripts/items/weapons/pike"));
@@ -131,10 +131,10 @@
 					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
 					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_follow_up")); //7
 
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
+					this.level_melee_skill(7, ::Math.rand(-6, 3) );
 					this.level_melee_defense(4, 1);
-					this.level_initiative(4, this.Math.rand(-6, 3) );
-					this.level_health(6, this.Math.rand(-6, 3) );
+					this.level_initiative(4, ::Math.rand(-6, 3) );
+					this.level_health(6, ::Math.rand(-6, 3) );
 					break;
 				case 3: //polearm - Hooked Blade
 					this.m.Items.equip(::new("scripts/items/weapons/hooked_blade"));
@@ -148,10 +148,10 @@
 					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
 					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_follow_up")); //7
 
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
+					this.level_melee_skill(7, ::Math.rand(-6, 3) );
 					this.level_melee_defense(4, 1);
-					this.level_initiative(4, this.Math.rand(-6, 3) );
-					this.level_health(6, this.Math.rand(-6, 3) );
+					this.level_initiative(4, ::Math.rand(-6, 3) );
+					this.level_health(6, ::Math.rand(-6, 3) );
 					break;
 				case 4: //Flail
 					local weapons = [
@@ -170,10 +170,10 @@
 					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
 					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_flail_spinner")); //7
 
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(7, this.Math.rand(-6, 3) );
-					this.level_resolve(4, this.Math.rand(-6, 3) );
-					this.level_health(3, this.Math.rand(-6, 3) );
+					this.level_melee_skill(7, ::Math.rand(-6, 3) );
+					this.level_melee_defense(7, ::Math.rand(-6, 3) );
+					this.level_resolve(4, ::Math.rand(-6, 3) );
+					this.level_health(3, ::Math.rand(-6, 3) );
 					break;
 				case 5: //Hammer
 					this.m.Items.equip(::new("scripts/items/weapons/two_handed_wooden_hammer"));
@@ -186,10 +186,10 @@
 					//this.m.Skills.add(::new("scripts/skills/perks/perk_legend_lithe")); //6
 					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_dent_armor")); //7
 
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(7, this.Math.rand(-6, 3) );
-					this.level_resolve(4, this.Math.rand(-6, 3) );
-					this.level_health(3, this.Math.rand(-6, 3) );
+					this.level_melee_skill(7, ::Math.rand(-6, 3) );
+					this.level_melee_defense(7, ::Math.rand(-6, 3) );
+					this.level_resolve(4, ::Math.rand(-6, 3) );
+					this.level_health(3, ::Math.rand(-6, 3) );
 					break;
 				case 6: //2h Mace
 					local weapons = [
@@ -208,23 +208,23 @@
 					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bone_breaker")); //7
 
 
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(7, this.Math.rand(-6, 3) );
-					this.level_resolve(4, this.Math.rand(-6, 3) );
-					this.level_health(3, this.Math.rand(-6, 3) );
+					this.level_melee_skill(7, ::Math.rand(-6, 3) );
+					this.level_melee_defense(7, ::Math.rand(-6, 3) );
+					this.level_resolve(4, ::Math.rand(-6, 3) );
+					this.level_health(3, ::Math.rand(-6, 3) );
 
 					break;
 			}
 		}
 		else //1h weapons
 		{
-			this.m.build_num = this.Math.rand(7, 12);
+			this.m.build_num = ::Math.rand(7, 12);
 
 			if (this.m.build_num > 9)
 			{
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
-					if (this.Math.rand(1, 100) <= 75) this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
+					if (::Math.rand(1, 100) <= 75) this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
 					else this.m.Items.equip(::new("scripts/items/shields/kite_shield"));
 					this.m.is_shield = true;
 					this.m.Skills.add(::new("scripts/skills/perks/perk_shield_expert")); //3
@@ -235,7 +235,7 @@
 			{
 				case 7: //Tank
 					this.m.Items.equip(::new("scripts/items/weapons/militia_spear"));
-					if (this.Math.rand(1, 100) <= 50) this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
+					if (::Math.rand(1, 100) <= 50) this.m.Items.equip(::new("scripts/items/shields/wooden_shield"));
 					else this.m.Items.equip(::new("scripts/items/shields/legend_tower_shield"));
 
 					this.m.Skills.removeByID("perk.legend_balance");
@@ -248,10 +248,10 @@
 					this.m.Skills.add(::new("scripts/skills/perks/perk_legend_mind_over_body")); //6
 					this.m.Skills.add(::new("scripts/skills/perks/perk_last_stand")); //7
 
-					this.level_melee_defense(7, this.Math.rand(-3, 3) );
-					this.level_resolve(7, this.Math.rand(-2, 3) );
-					this.level_fatigue(3, this.Math.rand(-6, 3) );
-					this.level_health(4, this.Math.rand(-6, 3) );
+					this.level_melee_defense(7, ::Math.rand(-3, 3) );
+					this.level_resolve(7, ::Math.rand(-2, 3) );
+					this.level_fatigue(3, ::Math.rand(-6, 3) );
+					this.level_health(4, ::Math.rand(-6, 3) );
 
 					break;
 				case 8: //Spear
@@ -266,15 +266,15 @@
 					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_a_better_grip")); //? -> 6
 					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_king_of_all_weapons")); //7
 
-					this.level_melee_skill(4, this.Math.rand(-6, 3) );
-					this.level_melee_defense(7, this.Math.rand(-1, 3) );
-					this.level_resolve(4, this.Math.rand(-1, 3) );
-					this.level_health(6, this.Math.rand(-6, 3) );
+					this.level_melee_skill(4, ::Math.rand(-6, 3) );
+					this.level_melee_defense(7, ::Math.rand(-1, 3) );
+					this.level_resolve(4, ::Math.rand(-1, 3) );
+					this.level_health(6, ::Math.rand(-6, 3) );
 					break;
 
 				case 9: //Net and mace
 					this.m.Items.equip(::new("scripts/items/weapons/morning_star"));
-					if (this.Math.rand(1, 100) <= 75) this.m.Items.equip(::new("scripts/items/tools/throwing_net"));
+					if (::Math.rand(1, 100) <= 75) this.m.Items.equip(::new("scripts/items/tools/throwing_net"));
 					else this.m.Items.equip(::new("scripts/items/tools/reinforced_throwing_net"));
 
 					this.m.Skills.removeByID("perk.legend_balance");
@@ -288,14 +288,14 @@
 					this.m.Skills.add(::new("scripts/skills/perks/perk_overwhelm")); //6
 					this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bone_breaker")); //7
 
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(7, this.Math.rand(-6, 3) );
-					this.level_initiative(7, this.Math.rand(-1, 3) );
+					this.level_melee_skill(7, ::Math.rand(-6, 3) );
+					this.level_melee_defense(7, ::Math.rand(-6, 3) );
+					this.level_initiative(7, ::Math.rand(-1, 3) );
 
 					break;
 				case 10:
 				case 11: //Thrower
-					switch(this.Math.rand(1, 3))
+					switch(::Math.rand(1, 3))
 					{
 						case 1:
 							this.m.Items.addToBag(::new("scripts/items/weapons/throwing_axe"));
@@ -309,7 +309,7 @@
 					}
 					this.m.is_throwing = true;
 
-					if (this.Math.rand(1, 100) <= 75) this.m.Items.equip(::new("scripts/items/weapons/militia_spear"));
+					if (::Math.rand(1, 100) <= 75) this.m.Items.equip(::new("scripts/items/weapons/militia_spear"));
 					else this.m.Items.equip(::new("scripts/items/weapons/boar_spear"));
 
 					this.m.Skills.removeByID("perk.legend_balance");
@@ -321,10 +321,10 @@
 					if (!this.m.is_shield) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_a_better_grip")); //? -> 6
 					this.m.Skills.add(::new("scripts/skills/perks/perk_close_combat_archer")); //7
 
-					this.level_melee_skill(7, this.Math.rand(-6, 3) );
-					this.level_melee_defense(7, this.Math.rand(-6, 3) );
-					this.level_resolve(4, this.Math.rand(-6, 3) );
-					this.level_health(3, this.Math.rand(-6, 3) );
+					this.level_melee_skill(7, ::Math.rand(-6, 3) );
+					this.level_melee_defense(7, ::Math.rand(-6, 3) );
+					this.level_resolve(4, ::Math.rand(-6, 3) );
+					this.level_health(3, ::Math.rand(-6, 3) );
 					break;
 				case 12: //Handaxe
 					this.m.Items.equip(::new("scripts/items/weapons/hand_axe"));

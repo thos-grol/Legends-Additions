@@ -59,12 +59,12 @@ this.legend_lonewolf_companion_caravan_event <- this.inherit("scripts/events/eve
 			],
 			function start( _event )
 			{
-				local money = this.Math.rand(98, 455);
+				local money = ::Math.rand(98, 455);
 				this.World.Assets.addMoney(money);
 
 				if (_event.m.Looted == 1)
 				{
-					local r = this.Math.rand(1, 4);
+					local r = ::Math.rand(1, 4);
 					local item;
 
 					if (r == 1)
@@ -98,13 +98,13 @@ this.legend_lonewolf_companion_caravan_event <- this.inherit("scripts/events/eve
 					this.List.push({
 						id = 10,
 						icon = "ui/items/" + item.getIcon(),
-						text = "You gain " + this.Const.Strings.getArticle(item.getName()) + item.getName()
+						text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 					});
 					this.World.Assets.addMoney(money);
 					this.List.push({
 						id = 10,
 						icon = "ui/icons/asset_money.png",
-						text = "You gained [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+						text = "You gained [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 					});
 				}
 
@@ -112,11 +112,11 @@ this.legend_lonewolf_companion_caravan_event <- this.inherit("scripts/events/eve
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 25)
+					if (::Math.rand(1, 100) <= 25)
 					{
-						if (this.Math.rand(1, 100) <= 66)
+						if (::Math.rand(1, 100) <= 66)
 						{
-							local injury = bro.addInjury(this.Const.Injury.Brawl);
+							local injury = bro.addInjury(::Const.Injury.Brawl);
 							this.List.push({
 								id = 10,
 								icon = injury.getIcon(),
@@ -186,9 +186,9 @@ this.legend_lonewolf_companion_caravan_event <- this.inherit("scripts/events/eve
 				_event.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 				_event.m.Dude.addLightInjury();
 
-				if (_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
+				if (_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
 				{
-					_event.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
+					_event.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).removeSelf();
 				}
 
 				_event.m.Dude.getItems().equip(this.new("scripts/items/weapons/legend_wooden_spear"));
@@ -199,11 +199,11 @@ this.legend_lonewolf_companion_caravan_event <- this.inherit("scripts/events/eve
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 25)
+					if (::Math.rand(1, 100) <= 25)
 					{
-						if (this.Math.rand(1, 100) <= 66)
+						if (::Math.rand(1, 100) <= 66)
 						{
-							local injury = bro.addInjury(this.Const.Injury.Brawl);
+							local injury = bro.addInjury(::Const.Injury.Brawl);
 							this.List.push({
 								id = 10,
 								icon = injury.getIcon(),

@@ -85,8 +85,8 @@ this.shepherd_vs_ratcatcher_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Shepherd = shepherd_candidates[this.Math.rand(0, shepherd_candidates.len() - 1)];
-		this.m.Ratcatcher = ratcatcher_candidates[this.Math.rand(0, ratcatcher_candidates.len() - 1)];
+		this.m.Shepherd = shepherd_candidates[::Math.rand(0, shepherd_candidates.len() - 1)];
+		this.m.Ratcatcher = ratcatcher_candidates[::Math.rand(0, ratcatcher_candidates.len() - 1)];
 		this.m.Score = (shepherd_candidates.len() + ratcatcher_candidates.len()) * 3;
 	}
 

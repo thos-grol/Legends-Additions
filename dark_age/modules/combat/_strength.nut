@@ -31,19 +31,19 @@
 
 			local brolevel = bro.getLevel();
 
-			// if (this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Easy)
+			// if (this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Easy)
 			// {
 			// 	this.m.Strength += (3 + (brolevel / 4 + (brolevel - 1)) * 1.5) * broScale;
 			// }
-			// else if (this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Normal)
+			// else if (this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Normal)
 			// {
 			// 	this.m.Strength += (10 + (brolevel / 2 + (brolevel - 1)) * 2) * broScale;
 			// }
-			// else if (this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Hard)
+			// else if (this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Hard)
 			// {
 			// 	this.m.Strength += (6 + count / 2 + (brolevel / 2 + this.pow(brolevel, 1.2))) * broScale;
 			// }
-			// else if (this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
+			// else if (this.World.Assets.getCombatDifficulty() == ::Const.Difficulty.Legendary)
 			// {
 			// 	this.m.Strength += (count + (brolevel + this.pow(brolevel, 1.2))) * broScale;
 			// }
@@ -59,10 +59,10 @@
 			if (armorPct < 0.75 || bro.getSkills().query(::Const.SkillType.TemporaryInjury, false, true).len() > 0) s_ = ::Math.round(s_ * 0.5);
 			this.m.Strength += s_;
 
-			// local mainhand = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
-			// local offhand = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-			// local body = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
-			// local head = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+			// local mainhand = bro.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
+			// local offhand = bro.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
+			// local body = bro.getItems().getItemAtSlot(::Const.ItemSlot.Body);
+			// local head = bro.getItems().getItemAtSlot(::Const.ItemSlot.Head);
 			// local mainhandvalue = 0;
 			// local offhandvalue = 0;
 			// local bodyvalue = 0;

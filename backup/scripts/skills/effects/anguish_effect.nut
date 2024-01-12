@@ -72,7 +72,7 @@ this.anguish_effect <- this.inherit("scripts/skills/skill", {
 						if (effect != null) continue;
 						
 						local HIT_CHANCE = getHitchance(target);
-						if (this.Math.rand(1, 100) > HIT_CHANCE) continue;
+						if (::Math.rand(1, 100) > HIT_CHANCE) continue;
 
 						target.getSkills().add(::new("scripts/skills/effects/anguish_effect"));
 						effect = target.getSkills().getSkillByID("effects.anguish");

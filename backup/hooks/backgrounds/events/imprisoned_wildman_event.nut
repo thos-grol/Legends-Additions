@@ -45,7 +45,7 @@
 					Text = "Alright, I\'ll send a man in.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 80 ? "C" : "D";
+						return ::Math.rand(1, 100) <= 80 ? "C" : "D";
 					}
 
 				});
@@ -97,7 +97,7 @@
 					Text = "Alright, I\'ll send a man in.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 80 ? "C" : "D";
+						return ::Math.rand(1, 100) <= 80 ? "C" : "D";
 					}
 
 				});
@@ -476,7 +476,7 @@
 					icon = "ui/icons/days_wounded.png",
 					text = _event.m.Other.getName() + " suffers light wounds"
 				});
-				local money = this.Math.rand(200, 500);
+				local money = ::Math.rand(200, 500);
 				this.World.Assets.addMoney(money);
 				this.List.push({
 					id = 10,

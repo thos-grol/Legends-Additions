@@ -30,16 +30,16 @@ this.patrol_area_action <- this.inherit("scripts/factions/faction_action", {
 	function onExecute( _faction )
 	{
 		local settlements = _faction.getSettlements();
-		local party = _faction.spawnEntity(settlements[0].getTile(), "Regiment of " + settlements[0].getName(), true, this.Const.World.Spawn.Southern, this.Math.rand(120, 250) * this.getReputationToDifficultyLightMult());
+		local party = _faction.spawnEntity(settlements[0].getTile(), "Regiment of " + settlements[0].getName(), true, ::Const.World.Spawn.Southern, ::Math.rand(120, 250) * this.getReputationToDifficultyLightMult());
 		party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + _faction.getBannerString());
 		party.setDescription("Conscripted soldiers loyal to their city state.");
-		party.setFootprintType(this.Const.World.FootprintsType.CityState);
+		party.setFootprintType(::Const.World.FootprintsType.CityState);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getLoot().Money = this.Math.rand(0, 50);
-		party.getLoot().ArmorParts = this.Math.rand(10, 35);
-		party.getLoot().Medicine = this.Math.rand(5, 15);
-		party.getLoot().Ammo = this.Math.rand(10, 40);
-		local r = this.Math.rand(1, 4);
+		party.getLoot().Money = ::Math.rand(0, 50);
+		party.getLoot().ArmorParts = ::Math.rand(10, 35);
+		party.getLoot().Medicine = ::Math.rand(5, 15);
+		party.getLoot().Ammo = ::Math.rand(10, 40);
+		local r = ::Math.rand(1, 4);
 
 		if (r <= 2)
 		{
@@ -61,7 +61,7 @@ this.patrol_area_action <- this.inherit("scripts/factions/faction_action", {
 			"trade/spices_item"
 		];
 
-		for( local i = 0; i < this.Math.round(r / 2); i++ )
+		for( local i = 0; i < ::Math.round(r / 2); i++ )
 		{
 			party.addToInventory(arr[r - 1]);
 		}
@@ -69,9 +69,9 @@ this.patrol_area_action <- this.inherit("scripts/factions/faction_action", {
 		local c = party.getController();
 		local roam = this.new("scripts/ai/world/orders/roam_order");
 		roam.setAllTerrainAvailable();
-		roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-		roam.setTerrain(this.Const.World.TerrainType.Shore, false);
-		roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+		roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+		roam.setTerrain(::Const.World.TerrainType.Shore, false);
+		roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 		roam.setPivot(settlements[0]);
 		roam.setMinRange(1);
 		roam.setMaxRange(10);

@@ -3,9 +3,9 @@ this.zombie_player <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 	function create()
 	{
 		this.zombie.create();
-		this.m.Type = this.Const.EntityType.ZombieYeoman;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.ZombiePlayer.XP;
+		this.m.Type = ::Const.EntityType.ZombieYeoman;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.ZombiePlayer.XP;
 		this.m.ResurrectionValue = 3.0;
 		this.m.ResurrectWithScript = "scripts/entity/tactical/enemies/zombie_player";
 	}
@@ -14,7 +14,7 @@ this.zombie_player <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 	{
 		this.zombie.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.ZombiePlayer);
+		b.setValues(::Const.Tactical.Actor.ZombiePlayer);
 		b.IsAffectedByNight = false;
 		b.IsAffectedByInjuries = false;
 		b.IsImmuneToBleeding = true;

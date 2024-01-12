@@ -16,8 +16,8 @@ this.legend_vala_premonition <- this.inherit("scripts/skills/skill", {
 		this.m.Name = "Premonition";
 		this.m.Description = "";
 		this.m.Icon = "ui/perks/legend_vala_premonition.png";
-		this.m.Type = this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.VeryLast + 9;
+		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.VeryLast + 9;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -41,7 +41,7 @@ this.legend_vala_premonition <- this.inherit("scripts/skills/skill", {
 			id = 10,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + getBonus() + "%[/color] chance to have any attacker require two successful attack rolls in order to hit."
+			text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + getBonus() + "%[/color] chance to have any attacker require two successful attack rolls in order to hit."
 		});
 		return ret;
 	}

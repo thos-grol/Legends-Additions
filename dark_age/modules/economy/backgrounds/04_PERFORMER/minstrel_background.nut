@@ -22,7 +22,7 @@
 			[
 				1,
 				"linen_tunic",
-				this.Math.rand(3, 4)
+				::Math.rand(3, 4)
 			]
 		]));
 		local r;
@@ -32,7 +32,7 @@
 				"feathered_hat"
 			]
 		]));
-		local r = this.Math.rand(0, 4);
+		local r = ::Math.rand(0, 4);
 
 		if (r <= 2)
 		{

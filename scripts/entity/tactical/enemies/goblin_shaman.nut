@@ -2,10 +2,10 @@ this.goblin_shaman <- this.inherit("scripts/entity/tactical/goblin", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.GoblinShaman;
-		this.m.XP = this.Const.Tactical.Actor.GoblinShaman.XP;
+		this.m.Type = ::Const.EntityType.GoblinShaman;
+		this.m.XP = ::Const.Tactical.Actor.GoblinShaman.XP;
 		this.goblin.create();
-		this.m.SoundPitch = this.Math.rand(90, 100) * 0.01;
+		this.m.SoundPitch = ::Math.rand(90, 100) * 0.01;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/goblin_shaman_agent");
 		this.m.AIAgent.setActor(this);
 	}
@@ -14,15 +14,15 @@ this.goblin_shaman <- this.inherit("scripts/entity/tactical/goblin", {
 	{
 		this.goblin.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.GoblinShaman);
+		b.setValues(::Const.Tactical.Actor.GoblinShaman);
 		b.Vision = 8;
 		b.TargetAttractionMult = 2.0;
 		b.IsAffectedByNight = false;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.getSprite("head").setBrush("bust_goblin_02_head_01");
 		this.addDefaultStatusSprites();
 		this.m.Skills.add(this.new("scripts/skills/racial/goblin_shaman_racial"));
@@ -42,14 +42,14 @@ this.goblin_shaman <- this.inherit("scripts/entity/tactical/goblin", {
 
 	function pickOutfit()
 	{
-		local item = this.Const.World.Common.pickArmor([
+		local item = ::Const.World.Common.pickArmor([
 			[
 				1,
 				"greenskins/goblin_shaman_armor"
 			]
 		]);
 		this.m.Items.equip(item);
-		local item = this.Const.World.Common.pickHelmet([
+		local item = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"greenskins/goblin_shaman_helmet"

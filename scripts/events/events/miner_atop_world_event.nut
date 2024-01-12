@@ -77,7 +77,7 @@ this.miner_atop_world_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Miner = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Miner = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = candidates.len() * 25;
 	}
 

@@ -47,7 +47,7 @@ this.perk_mastery_flail <- this.inherit("scripts/skills/skill", {
 	{
 		local targetEntity = _targetTile.getEntity();
 		if (targetEntity == null) return;
-		if (this.m.IsSpinningFlail || this.Math.rand(1,100) > this.m.Chance) return;
+		if (this.m.IsSpinningFlail || ::Math.rand(1,100) > this.m.Chance) return;
 
 		local user = this.getContainer().getActor();
 

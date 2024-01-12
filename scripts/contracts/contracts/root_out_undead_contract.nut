@@ -9,9 +9,9 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 	function create()
 	{
 		this.contract.create();
-		local r = this.Math.rand(1, 100);
+		local r = ::Math.rand(1, 100);
 
-		this.m.DifficultyMult = this.Math.rand(115, 175) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(115, 175) * 0.01;
 		this.m.Type = "contract.root_out_undead";
 		this.m.Name = "Root Out The Undead";
 		this.m.Description = "As the undead war rages on, scout reports have identified key undead strongholds that need to be destroied. Head out and raze 3 key locations.";
@@ -30,10 +30,10 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 			this.setOrigin(this.World.State.getCurrentTown());
 		}
 
-		local nearest_undead = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getNearestSettlement(this.m.Origin.getTile());
-		local nearest_zombies = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).getNearestSettlement(this.m.Origin.getTile());
+		local nearest_undead = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getNearestSettlement(this.m.Origin.getTile());
+		local nearest_zombies = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getNearestSettlement(this.m.Origin.getTile());
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
 			this.m.Objective1 = this.WeakTableRef(nearest_undead);
 			this.m.Objective2 = this.WeakTableRef(nearest_zombies);
@@ -47,7 +47,7 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Flags.set("Objective1Name", this.m.Objective1.getName());
 		this.m.Flags.set("Objective2Name", this.m.Objective2.getName());
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -74,7 +74,7 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 					"Return to %townname%"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -111,7 +111,7 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 				}
 
 				this.World.uncoverFogOfWar(this.Contract.m.Objective2.getTile().Pos, 500.0);
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 10)
 				{
@@ -246,12 +246,12 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 						if (this.Flags.get("IsBanditsCoop"))
 						{
 							p.AllyBanners.push("banner_bandits_06");
-							this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.BanditRaiders, 90 * this.Contract.getScaledDifficultyMult(), this.Const.Faction.PlayerAnimals);
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BanditRaiders, 90 * this.Contract.getScaledDifficultyMult(), ::Const.Faction.PlayerAnimals);
 						}
 						else
 						{
 							p.EnemyBanners.push("banner_bandits_06");
-							this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.BanditRaiders, 90 * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BanditRaiders, 90 * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
 						}
 					}
 
@@ -300,8 +300,8 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -404,34 +404,34 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Objective2.die();
 						this.Contract.m.Objective2 = null;
 						local playerTile = this.World.State.getPlayer().getTile();
-						local camp = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).getNearestSettlement(playerTile);
-						local party = this.World.FactionManager.getFaction(camp.getFaction()).spawnEntity(tile, "Necromancers", false, this.Const.World.Spawn.UndeadScourge, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						local camp = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getNearestSettlement(playerTile);
+						local party = this.World.FactionManager.getFaction(camp.getFaction()).spawnEntity(tile, "Necromancers", false, ::Const.World.Spawn.UndeadScourge, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 						party.getSprite("banner").setBrush(banner);
-						party.setFootprintType(this.Const.World.FootprintsType.Undead);
+						party.setFootprintType(::Const.World.FootprintsType.Undead);
 						party.getSprite("body").setBrush("figure_necromancer_01");
 						party.setSlowerAtNight(false);
 						party.setUsingGlobalVision(false);
 						party.setLooting(false);
-						this.Const.World.Common.addTroop(party, {
-							Type = this.Const.World.Spawn.Troops.Necromancer
+						::Const.World.Common.addTroop(party, {
+							Type = ::Const.World.Spawn.Troops.Necromancer
 						}, false);
-						this.Const.World.Common.addTroop(party, {
-							Type = this.Const.World.Spawn.Troops.Necromancer
+						::Const.World.Common.addTroop(party, {
+							Type = ::Const.World.Spawn.Troops.Necromancer
 						}, true);
 						this.Contract.m.UnitsSpawned.push(party);
 						this.Contract.m.Target = this.WeakTableRef(party);
 						party.setAttackableByAI(true);
 						party.setFootprintSizeOverride(0.75);
 						local c = party.getController();
-						c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+						c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 						local roam = this.new("scripts/ai/world/orders/roam_order");
 						roam.setPivot(camp);
 						roam.setMinRange(1);
 						roam.setMaxRange(10);
 						roam.setAllTerrainAvailable();
-						roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-						roam.setTerrain(this.Const.World.TerrainType.Shore, false);
-						roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+						roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+						roam.setTerrain(::Const.World.TerrainType.Shore, false);
+						roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 						c.addOrder(roam);
 						this.Contract.getActiveState().start();
 						this.World.Contracts.updateActiveContract();
@@ -452,8 +452,8 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "No, no, no!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to destroy strongholds of the undead scourge");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to destroy strongholds of the undead scourge");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -595,14 +595,14 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Destroyed strongholds of the undead scourge");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Destroyed strongholds of the undead scourge");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -615,7 +615,7 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 

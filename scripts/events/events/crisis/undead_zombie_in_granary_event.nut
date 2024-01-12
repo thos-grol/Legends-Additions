@@ -19,7 +19,7 @@ this.undead_zombie_in_granary_event <- this.inherit("scripts/events/event", {
 					Text = "It\'s best to burn that granary down.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}
@@ -34,7 +34,7 @@ this.undead_zombie_in_granary_event <- this.inherit("scripts/events/event", {
 					Text = "One of my men will go in and handle this.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "D";
 						}
@@ -81,7 +81,7 @@ this.undead_zombie_in_granary_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && this.Math.rand(1, 100) <= 50)
+					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.OffendedByViolence) && ::Math.rand(1, 100) <= 50)
 					{
 						bro.worsenMood(0.5, "You had a boy burned by accident");
 
@@ -237,7 +237,7 @@ this.undead_zombie_in_granary_event <- this.inherit("scripts/events/event", {
 		}
 
 		this.m.Town = bestTown;
-		this.m.Dude = brothers[this.Math.rand(0, brothers.len() - 1)];
+		this.m.Dude = brothers[::Math.rand(0, brothers.len() - 1)];
 		this.m.Score = 25;
 	}
 

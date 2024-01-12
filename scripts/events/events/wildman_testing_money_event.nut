@@ -20,7 +20,7 @@ this.wildman_testing_money_event <- this.inherit("scripts/events/event", {
 					Text = "Let\'s see if %wildman% will trade it all away for something else.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}
@@ -159,8 +159,8 @@ this.wildman_testing_money_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Wildman = candidates[this.Math.rand(0, candidates.len() - 1)];
-		this.m.OtherGuy = candidates_other[this.Math.rand(0, candidates_other.len() - 1)];
+		this.m.Wildman = candidates[::Math.rand(0, candidates.len() - 1)];
+		this.m.OtherGuy = candidates_other[::Math.rand(0, candidates_other.len() - 1)];
 		this.m.Score = candidates.len() * 3;
 	}
 
@@ -192,7 +192,7 @@ this.wildman_testing_money_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Item = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Item = candidates[::Math.rand(0, candidates.len() - 1)];
 	}
 
 	function onPrepareVariables( _vars )

@@ -26,10 +26,10 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		this.m.DifficultyMult = this.Math.rand(100, 150) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(100, 150) * 0.01;
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -39,7 +39,7 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 			this.m.Payment.Completion = 1.0;
 		}
 
-		this.m.Flags.set("SpartacusName", this.Const.Strings.SouthernNames[this.Math.rand(0, this.Const.Strings.SouthernNames.len() - 1)] + " " + this.Const.Strings.SouthernNamesLast[this.Math.rand(0, this.Const.Strings.SouthernNamesLast.len() - 1)]);
+		this.m.Flags.set("SpartacusName", ::Const.Strings.SouthernNames[::Math.rand(0, ::Const.Strings.SouthernNames.len() - 1)] + " " + ::Const.Strings.SouthernNamesLast[::Math.rand(0, ::Const.Strings.SouthernNamesLast.len() - 1)]);
 		this.contract.start();
 	}
 
@@ -58,7 +58,7 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 20)
 				{
@@ -266,8 +266,8 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -312,20 +312,20 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						local tile = this.World.State.getPlayer().getTile();
-						local p = this.Const.Tactical.CombatInfo.getClone();
-						p.Music = this.Const.Music.OrientalBanditTracks;
-						p.TerrainTemplate = this.Const.World.TerrainTacticalTemplate[tile.TacticalType];
-						p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
+						local p = ::Const.Tactical.CombatInfo.getClone();
+						p.Music = ::Const.Music.OrientalBanditTracks;
+						p.TerrainTemplate = ::Const.World.TerrainTacticalTemplate[tile.TacticalType];
+						p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
 						p.LocationTemplate.Template[0] = "tactical.desert_camp";
-						p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.None;
+						p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.None;
 						p.LocationTemplate.CutDownTrees = true;
 						p.Tile = tile;
 						p.CombatID = "SlaveUprisingContract";
 						p.TerrainTemplate = "tactical.desert";
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addHostileUnitsToCombat(p.Entities, this.Const.World.Spawn.NomadRaiders, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).getID());
-						this.Const.World.Common.addHostileUnitsToCombat(p.Entities, this.Const.World.Spawn.Slaves, 55 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).getID());
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						::Const.World.Common.addHostileUnitsToCombat(p.Entities, ::Const.World.Spawn.NomadRaiders, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
+						::Const.World.Common.addHostileUnitsToCombat(p.Entities, ::Const.World.Spawn.Slaves, 55 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -372,11 +372,11 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 			function start()
 			{
 				local cityTile = this.Contract.m.Home.getTile();
-				local nearest_nomads = this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).getNearestSettlement(cityTile);
+				local nearest_nomads = this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getNearestSettlement(cityTile);
 				local tile = this.Contract.getTileToSpawnLocation(this.Contract.m.Home.getTile(), 9, 15);
-				local party = this.World.FactionManager.getFaction(nearest_nomads.getFaction()).spawnHostileEntity(tile, "Indebted", false, this.Const.World.Spawn.NomadRaiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = this.World.FactionManager.getFaction(nearest_nomads.getFaction()).spawnHostileEntity(tile, "Indebted", false, ::Const.World.Spawn.NomadRaiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.setDescription("A group of indebted that turned to banditry.");
-				party.setFootprintType(this.Const.World.FootprintsType.Nomads);
+				party.setFootprintType(::Const.World.FootprintsType.Nomads);
 				party.getSprite("banner").setBrush(nearest_nomads.getBanner());
 				party.getSprite("body").setBrush("figure_nomad_03");
 				this.Contract.m.UnitsSpawned.push(party);
@@ -386,15 +386,15 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 				party.setDiscovered(true);
 				party.setAttackableByAI(false);
 				local c = party.getController();
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 				local roam = this.new("scripts/ai/world/orders/roam_order");
 				roam.setPivot(this.Contract.m.Home);
 				roam.setMinRange(8);
 				roam.setMaxRange(12);
 				roam.setAllTerrainAvailable();
-				roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-				roam.setTerrain(this.Const.World.TerrainType.Shore, false);
-				roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+				roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+				roam.setTerrain(::Const.World.TerrainType.Shore, false);
+				roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 				c.addOrder(roam);
 			}
 
@@ -452,7 +452,7 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Enjoy your freedom while it lasts.",
 					function getResult()
 					{
-						local bases = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getSettlements();
+						local bases = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getSettlements();
 						local location;
 						local lowest_distance = 9000;
 
@@ -460,7 +460,7 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							if (!b.getLoot().isEmpty() && !b.getFlags().get("IsEventLocation"))
 							{
-								local d = b.getTile().getDistanceTo(this.Contract.m.Home.getTile()) + this.Math.rand(1, 5);
+								local d = b.getTile().getDistanceTo(this.Contract.m.Home.getTile()) + ::Math.rand(1, 5);
 
 								if (d < lowest_distance)
 								{
@@ -476,9 +476,9 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 
 							foreach( b in bases )
 							{
-								if (!b.getLoot().isEmpty() && !b.getFlags().get("IsEventLocation") && !b.isAlliedWithPlayer() && b.isLocationType(this.Const.World.LocationType.Lair))
+								if (!b.getLoot().isEmpty() && !b.getFlags().get("IsEventLocation") && !b.isAlliedWithPlayer() && b.isLocationType(::Const.World.LocationType.Lair))
 								{
-									local d = b.getTile().getDistanceTo(this.Contract.m.Home.getTile()) + this.Math.rand(1, 5);
+									local d = b.getTile().getDistanceTo(this.Contract.m.Home.getTile()) + ::Math.rand(1, 5);
 
 									if (d < lowest_distance)
 									{
@@ -493,8 +493,8 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 						location.getFlags().set("IsEventLocation", true);
 						location.setDiscovered(true);
 						this.World.getCamera().moveTo(location);
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationMajorOffense, "Sided with indebted in their uprising");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationMajorOffense, "Sided with indebted in their uprising");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -514,20 +514,20 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						local tile = this.World.State.getPlayer().getTile();
-						local p = this.Const.Tactical.CombatInfo.getClone();
-						p.Music = this.Const.Music.OrientalBanditTracks;
-						p.TerrainTemplate = this.Const.World.TerrainTacticalTemplate[tile.TacticalType];
-						p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
+						local p = ::Const.Tactical.CombatInfo.getClone();
+						p.Music = ::Const.Music.OrientalBanditTracks;
+						p.TerrainTemplate = ::Const.World.TerrainTacticalTemplate[tile.TacticalType];
+						p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
 						p.LocationTemplate.Template[0] = "tactical.desert_camp";
-						p.LocationTemplate.Fortification = this.Const.Tactical.FortificationType.None;
+						p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.None;
 						p.LocationTemplate.CutDownTrees = true;
 						p.Tile = tile;
 						p.CombatID = "SlaveUprisingContract";
 						p.TerrainTemplate = "tactical.desert";
-						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.NomadRaiders, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).getID());
-						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Slaves, 55 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).getID());
+						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.NomadRaiders, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Slaves, 55 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -574,11 +574,11 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 			function start()
 			{
 				local cityTile = this.Contract.m.Home.getTile();
-				local nearest_nomads = this.World.FactionManager.getFactionOfType(this.Const.FactionType.OrientalBandits).getNearestSettlement(cityTile);
+				local nearest_nomads = this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getNearestSettlement(cityTile);
 				local tile = this.Contract.getTileToSpawnLocation(this.Contract.m.Home.getTile(), 9, 15);
-				local party = this.World.FactionManager.getFaction(nearest_nomads.getFaction()).spawnHostileEntity(tile, "Indebted", false, this.Const.World.Spawn.Slaves, 90 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = this.World.FactionManager.getFaction(nearest_nomads.getFaction()).spawnHostileEntity(tile, "Indebted", false, ::Const.World.Spawn.Slaves, 90 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.setDescription("A group of indebted.");
-				party.setFootprintType(this.Const.World.FootprintsType.Nomads);
+				party.setFootprintType(::Const.World.FootprintsType.Nomads);
 				party.getSprite("banner").setBrush("banner_deserters");
 				this.Contract.m.UnitsSpawned.push(party);
 				this.Contract.m.Target = this.WeakTableRef(party);
@@ -610,7 +610,7 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 				local wait = this.new("scripts/ai/world/orders/wait_order");
 				wait.setTime(9000.0);
 				c.addOrder(wait);
-				this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Destination.getTile(), party.getTile(), this.Const.GenericFootprints, this.Const.World.FootprintsType.Nomads, 0.75);
+				::Const.World.Common.addFootprintsFromTo(this.Contract.m.Destination.getTile(), party.getTile(), ::Const.GenericFootprints, ::Const.World.FootprintsType.Nomads, 0.75);
 			}
 
 		});
@@ -663,9 +663,9 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.World.Assets.addMoralReputation(-2);
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Beat down an indebted uprising");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Beat down an indebted uprising");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -677,7 +677,7 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}

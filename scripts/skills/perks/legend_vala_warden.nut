@@ -19,8 +19,8 @@ this.legend_vala_warden <- this.inherit("scripts/skills/skill", {
 		this.m.Name = "Warden";
 		this.m.Description = "";
 		this.m.Icon = "ui/perks/legend_vala_warden.png";
-		this.m.Type = this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.VeryLast + 10;
+		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.VeryLast + 10;
 		this.m.IsSerialized = true;
 		this.m.IsActive = false;
 		this.m.IsTargeted = false;
@@ -53,7 +53,7 @@ this.legend_vala_warden <- this.inherit("scripts/skills/skill", {
 			local WardenRangedSkill = this.m.WardenEntity.m.CurrentProperties.RangedSkill;
 			local WardenRangedDefense = this.m.WardenEntity.m.CurrentProperties.RangedDefense;
 			local WardenInitiative = this.m.WardenEntity.m.CurrentProperties.Initiative;
-			local SpiritualBondReduction = this.Math.round(10.0 + this.getContainer().getActor().getBravery() / 4.0);
+			local SpiritualBondReduction = ::Math.round(10.0 + this.getContainer().getActor().getBravery() / 4.0);
 
 			if (SpiritualBondReduction >= 50)
 			{
@@ -127,7 +127,7 @@ this.legend_vala_warden <- this.inherit("scripts/skills/skill", {
 
 		if (EmptyTiles.len() != 0)
 		{
-			local random = this.Math.rand(0, EmptyTiles.len() - 1);
+			local random = ::Math.rand(0, EmptyTiles.len() - 1);
 			return EmptyTiles[random];
 		}
 
@@ -144,7 +144,7 @@ this.legend_vala_warden <- this.inherit("scripts/skills/skill", {
 			{
 				local entity = this.Tactical.spawnEntity("scripts/entity/tactical/legend_vala_warden_script", WardenSpawnTile.Coords.X, WardenSpawnTile.Coords.Y);
 				entity.setName(this.getContainer().getActor().m.Name + "\'s Warden");
-				entity.setFaction(this.Const.Faction.PlayerAnimals);
+				entity.setFaction(::Const.Faction.PlayerAnimals);
 				entity.setVala(this);
 				entity.setWardenStats(this.getContainer().getActor().getBravery());
 				this.m.WardenSummonSpent = true;

@@ -212,7 +212,7 @@
 
 	for( local i = 0; i <= count; i = i )
 	{
-		local r = this.Math.rand(0, 100);
+		local r = ::Math.rand(0, 100);
 
 		if (r > _mins.EnemyChance * 100.0)
 		{
@@ -237,7 +237,7 @@
 
 	for( local i = 0; i <= count; i = i )
 	{
-		local r = this.Math.rand(0, 100);
+		local r = ::Math.rand(0, 100);
 
 		if (r > _mins.ClassChance * 100.0)
 		{
@@ -262,7 +262,7 @@
 
 	for( local i = 0; i <= count; i = i )
 	{
-		local r = this.Math.rand(0, 100);
+		local r = ::Math.rand(0, 100);
 
 		if (r > _mins.MagicChance * 100.0)
 		{

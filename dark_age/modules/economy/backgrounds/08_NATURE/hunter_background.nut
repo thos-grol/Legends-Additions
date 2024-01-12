@@ -45,7 +45,7 @@
 		items.equip(::new("scripts/items/weapons/hunting_bow"));
 		items.equip(::new("scripts/items/ammo/quiver_of_arrows"));
 
-		if (this.Math.rand(0, 1) == 0)
+		if (::Math.rand(0, 1) == 0)
 		{
 			items.addToBag(::new("scripts/items/weapons/knife"));
 		}

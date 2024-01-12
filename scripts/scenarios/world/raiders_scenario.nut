@@ -8,11 +8,14 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		this.m.Difficulty = 2;
 		this.m.Order = 180;
 		this.m.StartingBusinessReputation = -50;
+		this.m.IsFixedLook = true;
+		this.m.StartingRosterTier = ::Const.Roster.getTierForSize(27);
+		this.m.RosterTierMax = ::Const.Roster.getTierForSize(27);
 	}
 
 	function isValid()
 	{
-		return this.Const.DLC.Wildmen;
+		return ::Const.DLC.Wildmen;
 	}
 
 	function onSpawnAssets()
@@ -41,19 +44,19 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[0].m.Level = 8;
 		bros[0].m.Talents = [];
 		local talents = bros[0].getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.MeleeSkill] = 3;
-		talents[this.Const.Attributes.Initiative] = 3;
-		talents[this.Const.Attributes.MeleeDefense] = 3;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.MeleeSkill] = 3;
+		talents[::Const.Attributes.Initiative] = 3;
+		talents[::Const.Attributes.MeleeDefense] = 3;
 		bros[0].getFlags().set("Lucky", 3);
 		local items = bros[0].getItems();
-		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
-		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
+		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Body));
+		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Head));
 		local armor = this.new("scripts/items/legend_armor/cloth/legend_sackcloth");
 		local plate = this.new("scripts/items/legend_armor/plate/legend_reinforced_animal_hide_armor");
 		armor.setUpgrade(plate);
 		items.equip(armor);
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"barbarians/bear_headpiece"
@@ -71,19 +74,19 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[1].m.Level = 8;
 		bros[1].m.Talents = [];
 		local talents = bros[1].getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.MeleeSkill] = 3;
-		talents[this.Const.Attributes.Initiative] = 3;
-		talents[this.Const.Attributes.MeleeDefense] = 3;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.MeleeSkill] = 3;
+		talents[::Const.Attributes.Initiative] = 3;
+		talents[::Const.Attributes.MeleeDefense] = 3;
 		bros[1].getFlags().set("Lucky", 3);
 		local items = bros[1].getItems();
-		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
-		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
+		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Body));
+		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Head));
 		local armor = this.new("scripts/items/legend_armor/cloth/legend_sackcloth");
 		local plate = this.new("scripts/items/legend_armor/plate/legend_scrap_metal_armor");
 		armor.setUpgrade(plate);
 		items.equip(armor);
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"barbarians/leather_headband"
@@ -101,19 +104,19 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[2].m.Level = 8;
 		bros[2].m.Talents = [];
 		local talents = bros[2].getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
-		talents[this.Const.Attributes.MeleeSkill] = 3;
-		talents[this.Const.Attributes.MeleeDefense] = 3;
-		talents[this.Const.Attributes.Initiative] = 3;
+		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.MeleeSkill] = 3;
+		talents[::Const.Attributes.MeleeDefense] = 3;
+		talents[::Const.Attributes.Initiative] = 3;
 		bros[2].getFlags().set("Lucky", 3);
 		local items = bros[2].getItems();
-		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
-		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
+		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Body));
+		items.unequip(items.getItemAtSlot(::Const.ItemSlot.Head));
 		local armor = this.new("scripts/items/legend_armor/cloth/legend_sackcloth_patched");
 		local plate = this.new("scripts/items/legend_armor/plate/legend_hide_and_bone_armor");
 		armor.setUpgrade(plate);
 		items.equip(armor);
-		items.equip(this.Const.World.Common.pickHelmet([
+		items.equip(::Const.World.Common.pickHelmet([
 			[
 				1,
 				"barbarians/leather_helmet"
@@ -133,7 +136,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[3].m.Talents = [];
 
 		local talents = bros[3].getTalents();
-		talents.resize(this.Const.Attributes.COUNT, 0);
+		talents.resize(::Const.Attributes.COUNT, 0);
 		talents[::Const.Attributes.RangedSkill] = 3;
 		talents[::Const.Attributes.Hitpoints] = 3;
 		talents[::Const.Attributes.Initiative] = 3;
@@ -186,12 +189,12 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		randomVillage.setLastSpawnTimeToNow();
 		local randomVillageTile = randomVillage.getTile();
 		local navSettings = this.World.getNavigator().createSettings();
-		navSettings.ActionPointCosts = this.Const.World.TerrainTypeNavCost_Flat;
+		navSettings.ActionPointCosts = ::Const.World.TerrainTypeNavCost_Flat;
 
 		do
 		{
-			local x = this.Math.rand(this.Math.max(2, randomVillageTile.SquareCoords.X - 2), this.Math.min(this.Const.World.Settings.SizeX - 2, randomVillageTile.SquareCoords.X + 2));
-			local y = this.Math.rand(this.Math.max(2, randomVillageTile.SquareCoords.Y - 2), this.Math.min(this.Const.World.Settings.SizeY - 2, randomVillageTile.SquareCoords.Y + 2));
+			local x = ::Math.rand(::Math.max(2, randomVillageTile.SquareCoords.X - 2), ::Math.min(::Const.World.Settings.SizeX - 2, randomVillageTile.SquareCoords.X + 2));
+			local y = ::Math.rand(::Math.max(2, randomVillageTile.SquareCoords.Y - 2), ::Math.min(::Const.World.Settings.SizeY - 2, randomVillageTile.SquareCoords.Y + 2));
 
 			if (!this.World.isValidTileSquare(x, y))
 			{
@@ -200,7 +203,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 			{
 				local tile = this.World.getTileSquare(x, y);
 
-				if (tile.Type == this.Const.World.TerrainType.Ocean || tile.Type == this.Const.World.TerrainType.Shore || tile.IsOccupied)
+				if (tile.Type == ::Const.World.TerrainType.Ocean || tile.Type == ::Const.World.TerrainType.Shore || tile.IsOccupied)
 				{
 				}
 				else if (tile.getDistanceTo(randomVillageTile) <= 1)
@@ -242,7 +245,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		local s = this.new("scripts/entity/world/settlements/situations/raided_situation");
 		s.setValidForDays(5);
 		randomVillage.addSituation(s);
-		local nobles = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+		local nobles = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 		local houses = [];
 
 		foreach( n in nobles )
@@ -296,19 +299,19 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		{
 			this.Music.setTrackList([
 				"music/barbarians_02.ogg"
-			], this.Const.Music.CrossFadeTime);
+			], ::Const.Music.CrossFadeTime);
 			this.World.Events.fire("event.raiders_scenario_intro");
 		}, null);
 	}
 
 	function isDroppedAsLoot( _item )
 	{
-		return this.Math.rand(1, 100) <= 15;
+		return ::Math.rand(1, 100) <= 15;
 	}
 
 	function onHiredByScenario( bro )
 	{
-		if (!bro.getBackground().isBackgroundType(this.Const.BackgroundType.Outlaw))
+		if (!bro.getBackground().isBackgroundType(::Const.BackgroundType.Outlaw))
 		{
 			bro.worsenMood(0.5, "Is uncomfortable with joining raiders");
 		}
@@ -320,30 +323,30 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 
 	function onUpdateHiringRoster( _roster, _settlement )
 	{
-		this.addBroToRoster(_roster, "thief_background", 4);
-		this.addBroToRoster(_roster, "killer_on_the_run_background", 4);
+		this.addBroToRoster(_roster, "thief_background", 5);
+		this.addBroToRoster(_roster, "killer_on_the_run_background", 5);
 
 		this.addBroToRoster(_roster, "barbarian_background", 10);
-		this.addBroToRoster(_roster, "assassin_background", 10);
+		this.addBroToRoster(_roster, "assassin_background", 20);
 	}
 
 	function onGenerateBro( bro )
 	{
-		if (!bro.getBackground().isBackgroundType(this.Const.BackgroundType.Outlaw))
+		if (!bro.getBackground().isBackgroundType(::Const.BackgroundType.Outlaw))
 		{
-			bro.m.HiringCost = this.Math.floor(bro.m.HiringCost * 1.5);
+			bro.m.HiringCost = ::Math.floor(bro.m.HiringCost * 1.5);
 			bro.getBaseProperties().DailyWageMult *= 1.5;
 			bro.getSkills().update();
 			bro.worsenMood(0.5, "Is uncomfortable with joining raiders");
 		}
 		else
 		{
-			bro.m.HiringCost = this.Math.floor(bro.m.HiringCost * 0.9);
+			bro.m.HiringCost = ::Math.floor(bro.m.HiringCost * 0.9);
 			bro.getBaseProperties().DailyWageMult *= 0.9;
 			bro.getSkills().update();
 			bro.improveMood(1.5, "Is excited at becoming a raider");
 			local r;
-			r = this.Math.rand(0, 9);
+			r = ::Math.rand(0, 9);
 
 			if (r == 0)
 			{

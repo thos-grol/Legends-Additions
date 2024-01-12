@@ -77,7 +77,7 @@ this.fainthearted_is_shellshocked_event <- this.inherit("scripts/events/event", 
 			return;
 		}
 
-		this.m.Rookie = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Rookie = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = candidates.len() * 15;
 	}
 

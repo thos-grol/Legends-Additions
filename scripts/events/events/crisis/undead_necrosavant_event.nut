@@ -21,7 +21,7 @@ this.undead_necrosavant_event <- this.inherit("scripts/events/event", {
 					{
 						if (_event.m.Witchhunter != null)
 						{
-							if (this.Math.rand(1, 100) <= 50)
+							if (::Math.rand(1, 100) <= 50)
 							{
 								return "B";
 							}
@@ -35,7 +35,7 @@ this.undead_necrosavant_event <- this.inherit("scripts/events/event", {
 						{
 							return "E";
 						}
-						else if (this.Math.rand(1, 100) <= 50)
+						else if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}
@@ -109,7 +109,7 @@ this.undead_necrosavant_event <- this.inherit("scripts/events/event", {
 						properties.Music = ::Const.Music.UndeadTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Zombies, this.Math.rand(80, 120), this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Zombies, ::Math.rand(80, 120), this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
 						properties.Entities.push({
 							ID = ::Const.EntityType.Necromancer,
 							Variant = 0,
@@ -239,7 +239,7 @@ this.undead_necrosavant_event <- this.inherit("scripts/events/event", {
 
 		if (candidates.len() != 0)
 		{
-			this.m.Witchhunter = candidates[this.Math.rand(0, candidates.len() - 1)];
+			this.m.Witchhunter = candidates[::Math.rand(0, candidates.len() - 1)];
 		}
 
 		this.m.Score = 10;

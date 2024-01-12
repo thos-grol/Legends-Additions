@@ -42,11 +42,11 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 		local scale_mult = 1.25;
 		this.addSprite("socket").setBrush("bust_base_beasts");
 		local body = this.addSprite("body");
-		body.setBrush("bust_direwolf_0" + this.Math.rand(1, 3));
+		body.setBrush("bust_direwolf_0" + ::Math.rand(1, 3));
 		body.Scale = scale_mult;
 
-		if (this.Math.rand(0, 100) < 90) body.varySaturation(0.2);
-		if (this.Math.rand(0, 100) < 90) body.varyColor(0.05, 0.05, 0.05);
+		if (::Math.rand(0, 100) < 90) body.varySaturation(0.2);
+		if (::Math.rand(0, 100) < 90) body.varyColor(0.05, 0.05, 0.05);
 
 		local head = this.addSprite("head");
 		head.setBrush("bust_direwolf_03_head");
@@ -180,16 +180,16 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 		];
 		this.m.SoundVolume[::Const.Sound.ActorEvent.Attack] = 0.8;
 		this.m.SoundVolume[::Const.Sound.ActorEvent.Move] = 0.7;
-		this.m.SoundPitch = this.Math.rand(95, 105) * 0.01;
+		this.m.SoundPitch = ::Math.rand(95, 105) * 0.01;
 		this.m.AIAgent = ::new("scripts/ai/tactical/agents/la_direwolf_agent");
 		this.m.AIAgent.setActor(this);
 	}
 
 	function playAttackSound()
 	{
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
-			this.playSound(::Const.Sound.ActorEvent.Attack, ::Const.Sound.Volume.Actor * this.m.SoundVolume[::Const.Sound.ActorEvent.Attack] * (this.Math.rand(75, 100) * 0.01), this.m.SoundPitch * 1.15);
+			this.playSound(::Const.Sound.ActorEvent.Attack, ::Const.Sound.Volume.Actor * this.m.SoundVolume[::Const.Sound.ActorEvent.Attack] * (::Math.rand(75, 100) * 0.01), this.m.SoundPitch * 1.15);
 		}
 	}
 
@@ -207,7 +207,7 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 		if (_tile != null)
 		{
-			local flip = this.Math.rand(0, 100) < 50;
+			local flip = ::Math.rand(0, 100) < 50;
 			local decal;
 			this.m.IsCorpseFlipped = flip;
 			local body = this.getSprite("body");
@@ -274,15 +274,15 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 			if (_killer == null || _killer.getFaction() == ::Const.Faction.Player || _killer.getFaction() == ::Const.Faction.PlayerAnimals)
 			{
-				local n = 1 + (!this.Tactical.State.isScenarioMode() && this.Math.rand(1, 100) <= this.World.Assets.getExtraLootChance() ? 1 : 0);
+				local n = 1 + (!this.Tactical.State.isScenarioMode() && ::Math.rand(1, 100) <= this.World.Assets.getExtraLootChance() ? 1 : 0);
 
 				for( local i = 0; i < n; i = i )
 				{
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
 						if (::Const.DLC.Unhold)
 						{
-							local r = this.Math.rand(1, 100);
+							local r = ::Math.rand(1, 100);
 							local loot;
 
 							if (r <= 70)
@@ -302,13 +302,13 @@ this.la_direwolf <- this.inherit("scripts/entity/tactical/actor", {
 							loot.drop(_tile);
 						}
 					}
-					else if (this.Math.rand(1, 100) <= 33)
+					else if (::Math.rand(1, 100) <= 33)
 					{
 						local loot = ::new("scripts/items/supplies/strange_meat_item");
 						loot.drop(_tile);
 					}
 
-					if (this.isKindOf(this, "direwolf_high") && this.Math.rand(1, 100) <= 20)
+					if (this.isKindOf(this, "direwolf_high") && ::Math.rand(1, 100) <= 20)
 					{
 						local loot = ::new("scripts/items/loot/sabertooth_item");
 						loot.drop(_tile);

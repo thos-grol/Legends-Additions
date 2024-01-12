@@ -164,14 +164,14 @@
 				this.Contract.m.BulletpointsObjectives = [
 					"Hunt down what terrorizes " + this.Contract.m.Home.getName()
 				];
-				if (this.Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance) this.Contract.setScreen("Intro");
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance) this.Contract.setScreen("Intro");
 				else this.Contract.setScreen("Task");
 			}
 
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 				local village = this.Contract.getHome().get();
 				local twists = [];
 				local r;
@@ -184,7 +184,7 @@
 						this.logInfo("VillageType is " + villageInfo.Medium);
 						foreach (flag in villageInfo.Flags) 
 						{
-							local roll = this.Math.rand(1, 100);
+							local roll = ::Math.rand(1, 100);
 							this.logInfo(flag.ID + ": Rolling " +  roll + " vs " + flag.Chance);
 							if (roll <= flag.Chance)
 							{
@@ -288,7 +288,7 @@
 
 					this.Contract.setState("Return");
 				}
-				else if (!this.Flags.get("IsWorkOfBeastsShown") && this.World.getTime().IsDaytime && this.Contract.m.Target.isHiddenToPlayer() && this.Math.rand(1, 9000) <= 1)
+				else if (!this.Flags.get("IsWorkOfBeastsShown") && this.World.getTime().IsDaytime && this.Contract.m.Target.isHiddenToPlayer() && ::Math.rand(1, 9000) <= 1)
 				{
 					this.Flags.set("IsWorkOfBeastsShown", true);
 					this.Contract.setScreen("WorkOfBeasts");

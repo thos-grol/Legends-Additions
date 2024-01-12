@@ -15,8 +15,8 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 			"sounds/enemies/necromancer_02.wav",
 			"sounds/enemies/necromancer_03.wav"
 		];
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
 		this.m.IsTargeted = true;
@@ -48,7 +48,7 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 	function cast( _user, _targetTile )
 	{
 		if (_user.isDiscovered() && (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer))
-			::Z.Log.display_basic(_user, null, this.m.Name, _user.getFaction() == this.Const.Faction.Player || _user.getFaction() == this.Const.Faction.PlayerAnimals);
+			::Z.Log.display_basic(_user, null, this.m.Name, _user.getFaction() == ::Const.Faction.Player || _user.getFaction() == ::Const.Faction.PlayerAnimals);
 
 		for( local i = 1; i <= 5; i++ )
 		{
@@ -87,7 +87,7 @@ this.spell_reanimate <- this.inherit("scripts/skills/_magic_active", {
 		if (p == null) return;
 
 		p.Faction = tag.User.getFaction();
-		if (p.Faction == this.Const.Faction.Player) p.Faction = this.Const.Faction.PlayerAnimals;
+		if (p.Faction == ::Const.Faction.Player) p.Faction = ::Const.Faction.PlayerAnimals;
 
 		local e = this.Tactical.Entities.onResurrect(p, true);
 		if (e != null) e.getSprite("socket").setBrush(tag.User.getSprite("socket").getBrush().Name);

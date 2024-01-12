@@ -2,14 +2,14 @@ this.barbarian_marauder <- this.inherit("scripts/entity/tactical/abstract_human"
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.BarbarianMarauder;
-		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.BarbarianMarauder.XP;
+		this.m.Type = ::Const.EntityType.BarbarianMarauder;
+		this.m.BloodType = ::Const.BloodType.Red;
+		this.m.XP = ::Const.Tactical.Actor.BarbarianMarauder.XP;
 		this.abstract_human.create();
-		this.m.Faces = this.Const.Faces.WildMale;
-		this.m.Hairs = this.Const.Hair.WildMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.WildExtended;
+		this.m.Faces = ::Const.Faces.WildMale;
+		this.m.Hairs = ::Const.Hair.WildMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.WildExtended;
 		this.m.SoundPitch = 0.95;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/barbarian_melee_agent");
 		this.m.AIAgent.setActor(this);
@@ -25,23 +25,23 @@ this.barbarian_marauder <- this.inherit("scripts/entity/tactical/abstract_human"
 			6
 		];
 
-		if (this.Math.rand(1, 100) <= 66)
+		if (::Math.rand(1, 100) <= 66)
 		{
 			local tattoo_body = this.actor.getSprite("tattoo_body");
 			local body = this.actor.getSprite("body");
-			tattoo_body.setBrush("tattoo_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_" + body.getBrush().Name);
+			tattoo_body.setBrush("tattoo_0" + tattoos[::Math.rand(0, tattoos.len() - 1)] + "_" + body.getBrush().Name);
 			tattoo_body.Visible = true;
 		}
 
-		if (this.Math.rand(1, 100) <= 50)
+		if (::Math.rand(1, 100) <= 50)
 		{
 			local tattoo_head = this.actor.getSprite("tattoo_head");
-			tattoo_head.setBrush("tattoo_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_head");
+			tattoo_head.setBrush("tattoo_0" + tattoos[::Math.rand(0, tattoos.len() - 1)] + "_head");
 			tattoo_head.Visible = true;
 		}
 
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BarbarianMarauder);
+		b.setValues(::Const.Tactical.Actor.BarbarianMarauder);
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
@@ -70,8 +70,8 @@ this.barbarian_marauder <- this.inherit("scripts/entity/tactical/abstract_human"
 			5,
 			"barbarians/legend_barbarian_southern_armor"
 		]);
-		this.m.Items.equip(this.Const.World.Common.pickArmor(armor));
-		local item = this.Const.World.Common.pickHelmet([
+		this.m.Items.equip(::Const.World.Common.pickArmor(armor));
+		local item = ::Const.World.Common.pickHelmet([
 			[
 				1,
 				"barbarians/leather_headband"

@@ -45,7 +45,7 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_underdog")); //5 -> 6
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_pattern_recognition")); //7
 
-		this.m.build_num = this.Math.rand(0, 3);
+		this.m.build_num = ::Math.rand(0, 3);
 		switch(this.m.build_num)
 		{
 			case 0: //Metzger
@@ -97,14 +97,14 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_sanguinary"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bloodbath"));
 
-		this.level_melee_skill(10, this.Math.rand(1, 3) );
-		this.level_melee_defense(10, this.Math.rand(1, 3) );
-		this.level_initiative(5, this.Math.rand(-3, 3) );
-		this.level_resolve(2, this.Math.rand(-3, 3) );
-		this.level_fatigue(3, this.Math.rand(-3, 3) );
+		this.level_melee_skill(10, ::Math.rand(1, 3) );
+		this.level_melee_defense(10, ::Math.rand(1, 3) );
+		this.level_initiative(5, ::Math.rand(-3, 3) );
+		this.level_resolve(2, ::Math.rand(-3, 3) );
+		this.level_fatigue(3, ::Math.rand(-3, 3) );
 
 		if (o.m.is_miniboss) this.add_potion("necrosavant", true);
-		else if (this.Math.rand(1, 100) <= 25) this.add_potion("necrosavant", false);
+		else if (::Math.rand(1, 100) <= 25) this.add_potion("necrosavant", false);
 	}
 
 	o.build_bladedancer <- function() //warbrand
@@ -128,13 +128,13 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_overwhelm")); //6
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity")); //7
 
-		this.level_melee_skill(10, this.Math.rand(1, 3) );
-		this.level_melee_defense(10, this.Math.rand(1, 3) );
+		this.level_melee_skill(10, ::Math.rand(1, 3) );
+		this.level_melee_defense(10, ::Math.rand(1, 3) );
 		this.level_initiative(7, 3 );
-		this.level_fatigue(3, this.Math.rand(-3, 3) );
+		this.level_fatigue(3, ::Math.rand(-3, 3) );
 
 		if (o.m.is_miniboss) this.add_potion("direwolf", true);
-		else if (this.Math.rand(1, 100) <= 25) this.add_potion("direwolf", false);
+		else if (::Math.rand(1, 100) <= 25) this.add_potion("direwolf", false);
 	}
 
 	o.build_reaper <- function()
@@ -162,13 +162,13 @@
 		this.m.Skills.removeByID("perk.relentless");
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bloody_harvest"));
 
-		this.level_melee_skill(10, this.Math.rand(1, 3) );
-		this.level_melee_defense(10, this.Math.rand(1, 3) );
+		this.level_melee_skill(10, ::Math.rand(1, 3) );
+		this.level_melee_defense(10, ::Math.rand(1, 3) );
 		this.level_resolve(8, 3 );
-		this.level_fatigue(2, this.Math.rand(-3, 3) );
+		this.level_fatigue(2, ::Math.rand(-3, 3) );
 
 		if (o.m.is_miniboss) this.add_potion("direwolf", true);
-		else if (this.Math.rand(1, 100) <= 25) this.add_potion("direwolf", false);
+		else if (::Math.rand(1, 100) <= 25) this.add_potion("direwolf", false);
 	}
 
 	o.build_precise <- function()
@@ -195,15 +195,15 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_clarity"));
 
 		this.level_initiative(8, 3 );
-		this.level_melee_skill(10, this.Math.rand(1, 3) );
-		this.level_melee_defense(10, this.Math.rand(1, 3) );
-		this.level_fatigue(2, this.Math.rand(-3, 3) );
+		this.level_melee_skill(10, ::Math.rand(1, 3) );
+		this.level_melee_defense(10, ::Math.rand(1, 3) );
+		this.level_fatigue(2, ::Math.rand(-3, 3) );
 
 		this.m.AIAgent = ::new("scripts/ai/tactical/agents/legend_fencer_agent");
 		this.m.AIAgent.setActor(this);
 
 		if (o.m.is_miniboss) this.add_potion("orc", true);
-		else if (this.Math.rand(1, 100) <= 25) this.add_potion("orc", false);
+		else if (::Math.rand(1, 100) <= 25) this.add_potion("orc", false);
 	}
 
     o.onInit = function()
@@ -239,7 +239,7 @@
 			]));
 		}
 
-		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head) && this.Math.rand(1, 100) <= 90)
+		if (this.m.Items.hasEmptySlot(::Const.ItemSlot.Head) && ::Math.rand(1, 100) <= 90)
 		{
 			this.m.Items.equip(::Const.World.Common.pickHelmet([
 				[

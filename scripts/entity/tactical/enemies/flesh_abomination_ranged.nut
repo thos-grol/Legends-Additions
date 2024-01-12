@@ -12,7 +12,7 @@ this.flesh_abomination_ranged <- this.inherit("scripts/entity/tactical/enemies/f
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.ZombiePlayer);
+		b.setValues(::Const.Tactical.Actor.ZombiePlayer);
 		b.IsAffectedByNight = false;
 		b.IsAffectedByInjuries = false;
 		b.IsImmuneToBleeding = true;
@@ -21,8 +21,8 @@ this.flesh_abomination_ranged <- this.inherit("scripts/entity/tactical/enemies/f
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.addSprite("socket").setBrush("bust_base_beasts");
 
 		local body = this.addSprite("body");

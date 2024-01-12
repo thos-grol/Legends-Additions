@@ -29,7 +29,7 @@
 		this.m.CombatLocation.AdditionalRadius = 5;
 		this.m.IsShowingDefenders = false;
 		this.m.IsShowingBanner = true;
-		local r = this.Math.rand(1, 3);
+		local r = ::Math.rand(1, 3);
 		this.setDefenderSpawnList(::Const.World.Spawn.UndeadScourge);
 		this.m.Resources = 350;
 		this.m.NamedWeaponsList = ::Const.Items.NamedUndeadWeapons;
@@ -44,8 +44,8 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropMoney(this.Math.rand(200, 500), _lootTable);
-		this.dropTreasure(this.Math.rand(3, 4), [
+		this.dropMoney(::Math.rand(200, 500), _lootTable);
+		this.dropTreasure(::Math.rand(3, 4), [
 			"loot/silverware_item",
 			"loot/silver_bowl_item",
 			"loot/signet_ring_item",

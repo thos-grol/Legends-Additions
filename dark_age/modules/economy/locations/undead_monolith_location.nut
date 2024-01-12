@@ -94,7 +94,7 @@
 
 		for( local added = 0; this.m.Troops.len() < 47;  )
 		{
-			local r = this.Math.rand(1, 7);
+			local r = ::Math.rand(1, 7);
 
 			if (r == 1)
 			{
@@ -152,8 +152,8 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropArmorParts(this.Math.rand(0, 60), _lootTable);
-		this.dropTreasure(this.Math.rand(3, 4), [
+		this.dropArmorParts(::Math.rand(0, 60), _lootTable);
+		this.dropTreasure(::Math.rand(3, 4), [
 			"loot/white_pearls_item",
 			"loot/jeweled_crown_item",
 			"loot/gemstones_item",

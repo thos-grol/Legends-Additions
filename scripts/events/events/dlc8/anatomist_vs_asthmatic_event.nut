@@ -18,7 +18,7 @@ this.anatomist_vs_asthmatic_event <- this.inherit("scripts/events/event", {
 					Text = "Do it, but be careful.",
 					function getResult( _event )
 					{
-						return this.Math.rand(1, 100) <= 50 ? "B" : "C";
+						return ::Math.rand(1, 100) <= 50 ? "B" : "C";
 					}
 
 				},
@@ -173,7 +173,7 @@ this.anatomist_vs_asthmatic_event <- this.inherit("scripts/events/event", {
 
 				while (num_new_traits > 0 && new_traits.len() > 0)
 				{
-					local trait = ::new(new_traits.remove(this.Math.rand(0, new_traits.len() - 1)));
+					local trait = ::new(new_traits.remove(::Math.rand(0, new_traits.len() - 1)));
 
 					if (!_event.m.Asthmatic.getSkills().hasSkill(trait.getID()))
 					{
@@ -228,7 +228,7 @@ this.anatomist_vs_asthmatic_event <- this.inherit("scripts/events/event", {
 		}
 
 		if (asthmaticCandidates.len() == 0 ) return;
-		this.m.Asthmatic = asthmaticCandidates[this.Math.rand(0, asthmaticCandidates.len() - 1)];
+		this.m.Asthmatic = asthmaticCandidates[::Math.rand(0, asthmaticCandidates.len() - 1)];
 		this.m.Score = 5 * asthmaticCandidates.len();
 	}
 

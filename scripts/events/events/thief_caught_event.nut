@@ -62,12 +62,12 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local r = this.Math.rand(1, 4);
+				local r = ::Math.rand(1, 4);
 
 				if (r == 1)
 				{
 					local food = this.World.Assets.getFoodItems();
-					food = food[this.Math.rand(0, food.len() - 1)];
+					food = food[::Math.rand(0, food.len() - 1)];
 					this.World.Assets.getStash().remove(food);
 					this.List = [
 						{
@@ -79,7 +79,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 				}
 				else if (r == 2)
 				{
-					local amount = this.Math.rand(20, 50);
+					local amount = ::Math.rand(20, 50);
 					this.World.Assets.addAmmo(-amount);
 					this.List = [
 						{
@@ -91,7 +91,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 				}
 				else if (r == 3)
 				{
-					local amount = this.Math.rand(5, 10);
+					local amount = ::Math.rand(5, 10);
 					this.World.Assets.addArmorParts(-amount);
 					this.List = [
 						{
@@ -103,7 +103,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 				}
 				else if (r == 4)
 				{
-					local amount = this.Math.rand(5, 10);
+					local amount = ::Math.rand(5, 10);
 					this.World.Assets.addMedicine(-amount);
 					this.List = [
 						{
@@ -148,7 +148,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 					Text = "Not everyone will be this lenient...",
 					function getResult( _event )
 					{
-						if (this.World.getPlayerRoster().getSize() >= this.World.Assets.getBrothersMax() || this.Math.rand(1, 100) <= 25)
+						if (this.World.getPlayerRoster().getSize() >= this.World.Assets.getBrothersMax() || ::Math.rand(1, 100) <= 25)
 						{
 							return 0;
 						}
@@ -163,8 +163,8 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				local food = this.World.Assets.getFoodItems();
-				food = food[this.Math.rand(0, food.len() - 1)];
-				food.setAmount(this.Math.maxf(0.0, food.getAmount() - 5.0));
+				food = food[::Math.rand(0, food.len() - 1)];
+				food.setAmount(::Math.maxf(0.0, food.getAmount() - 5.0));
 				this.List = [
 					{
 						id = 10,
@@ -339,12 +339,12 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				local r = this.Math.rand(1, 4);
+				local r = ::Math.rand(1, 4);
 
 				if (r == 1)
 				{
 					local food = this.World.Assets.getFoodItems();
-					food = food[this.Math.rand(0, food.len() - 1)];
+					food = food[::Math.rand(0, food.len() - 1)];
 					this.World.Assets.getStash().remove(food);
 					this.List = [
 						{
@@ -356,7 +356,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 				}
 				else if (r == 2)
 				{
-					local amount = this.Math.rand(20, 50);
+					local amount = ::Math.rand(20, 50);
 					this.World.Assets.addAmmo(-amount);
 					this.List = [
 						{
@@ -368,7 +368,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 				}
 				else if (r == 3)
 				{
-					local amount = this.Math.rand(5, 10);
+					local amount = ::Math.rand(5, 10);
 					this.World.Assets.addArmorParts(-amount);
 					this.List = [
 						{
@@ -380,7 +380,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 				}
 				else if (r == 4)
 				{
-					local amount = this.Math.rand(5, 10);
+					local amount = ::Math.rand(5, 10);
 					this.World.Assets.addMedicine(-amount);
 					this.List = [
 						{
@@ -430,7 +430,7 @@ this.thief_caught_event <- this.inherit("scripts/events/event", {
 
 	function onDetermineStartScreen()
 	{
-		if (!this.isSomethingToSee() && this.Math.rand(1, 100) <= 75)
+		if (!this.isSomethingToSee() && ::Math.rand(1, 100) <= 75)
 		{
 			return "A";
 		}

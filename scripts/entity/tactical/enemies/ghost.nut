@@ -15,24 +15,24 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 	},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Ghost;
-		this.m.BloodType = this.Const.BloodType.None;
-		this.m.MoraleState = this.Const.MoraleState.Ignore;
-		this.m.XP = this.Const.Tactical.Actor.Ghost.XP;
+		this.m.Type = ::Const.EntityType.Ghost;
+		this.m.BloodType = ::Const.BloodType.None;
+		this.m.MoraleState = ::Const.MoraleState.Ignore;
+		this.m.XP = ::Const.Tactical.Actor.Ghost.XP;
 		this.m.IsEmittingMovementSounds = false;
 		this.actor.create();
-		this.m.Sound[this.Const.Sound.ActorEvent.Death] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Death] = [
 			"sounds/enemies/ghost_death_01.wav",
 			"sounds/enemies/ghost_death_02.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Idle] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Idle] = [
 			"sounds/enemies/geist_idle_13.wav",
 			"sounds/enemies/geist_idle_14.wav",
 			"sounds/enemies/geist_idle_15.wav",
 			"sounds/enemies/geist_idle_16.wav",
 			"sounds/enemies/geist_idle_17.wav"
 		];
-		this.m.SoundPitch = this.Math.rand(90, 110) * 0.01;
+		this.m.SoundPitch = ::Math.rand(90, 110) * 0.01;
 		this.getFlags().add("undead");
 		this.getFlags().add("noncorporeal");
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/ghost_agent");
@@ -120,7 +120,7 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 		this.actor.onInit();
 		this.setRenderCallbackEnabled(true);
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Ghost);
+		b.setValues(::Const.Tactical.Actor.Ghost);
 		b.IsImmuneToRoot = true;
 		b.IsImmuneToDisarm = true;
 		b.IsImmuneToFire = true;
@@ -135,8 +135,8 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.SameMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.SameMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.m.MaxTraversibleLevels = 3;
 		this.m.Items.getAppearance().Body = "bust_ghost_02";
 		this.addSprite("socket").setBrush("bust_base_undead");
@@ -178,7 +178,7 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 
 		if (this.m.DistortTargetA == null)
 		{
-			this.m.DistortTargetA = this.createVec(this.Math.rand(0, 8) - 4, this.Math.rand(0, 8) - 4);
+			this.m.DistortTargetA = this.createVec(::Math.rand(0, 8) - 4, ::Math.rand(0, 8) - 4);
 			this.m.DistortAnimationStartTimeA = this.Time.getVirtualTimeF();
 		}
 
@@ -186,12 +186,12 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 		{
 			this.m.DistortAnimationStartTimeA = this.Time.getVirtualTimeF();
 			this.m.DistortTargetPrevA = this.m.DistortTargetA;
-			this.m.DistortTargetA = this.createVec(this.Math.rand(0, 8) - 4, this.Math.rand(0, 8) - 4);
+			this.m.DistortTargetA = this.createVec(::Math.rand(0, 8) - 4, ::Math.rand(0, 8) - 4);
 		}
 
 		if (this.m.DistortTargetB == null)
 		{
-			this.m.DistortTargetB = this.createVec(this.Math.rand(0, 8) - 4, this.Math.rand(0, 8) - 4);
+			this.m.DistortTargetB = this.createVec(::Math.rand(0, 8) - 4, ::Math.rand(0, 8) - 4);
 			this.m.DistortAnimationStartTimeB = this.Time.getVirtualTimeF();
 		}
 
@@ -199,12 +199,12 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 		{
 			this.m.DistortAnimationStartTimeB = this.Time.getVirtualTimeF();
 			this.m.DistortTargetPrevB = this.m.DistortTargetB;
-			this.m.DistortTargetB = this.createVec(this.Math.rand(0, 8) - 4, this.Math.rand(0, 8) - 4);
+			this.m.DistortTargetB = this.createVec(::Math.rand(0, 8) - 4, ::Math.rand(0, 8) - 4);
 		}
 
 		if (this.m.DistortTargetC == null)
 		{
-			this.m.DistortTargetC = this.createVec(this.Math.rand(0, 8) - 4, this.Math.rand(0, 8) - 4);
+			this.m.DistortTargetC = this.createVec(::Math.rand(0, 8) - 4, ::Math.rand(0, 8) - 4);
 			this.m.DistortAnimationStartTimeC = this.Time.getVirtualTimeF();
 		}
 
@@ -212,12 +212,12 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 		{
 			this.m.DistortAnimationStartTimeC = this.Time.getVirtualTimeF();
 			this.m.DistortTargetPrevC = this.m.DistortTargetC;
-			this.m.DistortTargetC = this.createVec(this.Math.rand(0, 8) - 4, this.Math.rand(0, 8) - 4);
+			this.m.DistortTargetC = this.createVec(::Math.rand(0, 8) - 4, ::Math.rand(0, 8) - 4);
 		}
 
 		if (this.m.DistortTargetD == null)
 		{
-			this.m.DistortTargetD = this.createVec(this.Math.rand(0, 8) - 4, this.Math.rand(0, 8) - 4);
+			this.m.DistortTargetD = this.createVec(::Math.rand(0, 8) - 4, ::Math.rand(0, 8) - 4);
 			this.m.DistortAnimationStartTimeD = this.Time.getVirtualTimeF();
 		}
 
@@ -225,7 +225,7 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 		{
 			this.m.DistortAnimationStartTimeD = this.Time.getVirtualTimeF();
 			this.m.DistortTargetPrevD = this.m.DistortTargetD;
-			this.m.DistortTargetD = this.createVec(this.Math.rand(0, 8) - 4, this.Math.rand(0, 8) - 4);
+			this.m.DistortTargetD = this.createVec(::Math.rand(0, 8) - 4, ::Math.rand(0, 8) - 4);
 		}
 	}
 

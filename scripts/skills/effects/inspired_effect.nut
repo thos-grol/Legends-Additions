@@ -30,7 +30,7 @@ this.inspired_effect <- this.inherit("scripts/skills/skill", {
 		if (!this.m.IsApplied)
 		{
 			local actor = this.getContainer().getActor();
-			actor.setActionPoints(this.Math.min(actor.getActionPointsMax(), actor.getActionPoints() + 4));
+			actor.setActionPoints(::Math.min(actor.getActionPointsMax(), actor.getActionPoints() + 4));
 			this.m.IsApplied = true;
 		}
 	}
@@ -40,7 +40,7 @@ this.inspired_effect <- this.inherit("scripts/skills/skill", {
 		if (!this.m.IsApplied)
 		{
 			local actor = this.getContainer().getActor();
-			actor.setActionPoints(this.Math.min(actor.getActionPointsMax(), actor.getActionPoints() + 4));
+			actor.setActionPoints(::Math.min(actor.getActionPointsMax(), actor.getActionPoints() + 4));
 			this.m.IsApplied = true;
 		}
 	}

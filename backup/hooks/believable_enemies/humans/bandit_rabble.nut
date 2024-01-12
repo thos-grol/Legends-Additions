@@ -7,7 +7,7 @@
 		this.level_melee_skill(2, 0);
 		this.level_melee_defense(2, 0);
 
-		local r = this.Math.rand(1, 13);
+		local r = ::Math.rand(1, 13);
 		local item;
 
 		if (r == 1)
@@ -138,7 +138,7 @@
 
 		this.m.Items.equip(item);
 
-		if (this.Math.rand(1, 100) <= 90)
+		if (::Math.rand(1, 100) <= 90)
 		{
 			local item = ::Const.World.Common.pickArmor([
 				[
@@ -168,7 +168,7 @@
 		//Add bandit tribal perk
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_bully"));
 
-		local r = this.Math.rand(1, 6)
+		local r = ::Math.rand(1, 6)
 		if(r < 6) this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_strength_in_numbers"));
 		else this.m.Skills.add(::new("scripts/skills/perks/perk_dodge"));
 	}
@@ -185,13 +185,13 @@
 		this.setAppearance();
 		this.getSprite("socket").setBrush("bust_base_bandits");
 
-		if (this.Math.rand(1, 100) <= 10)
+		if (::Math.rand(1, 100) <= 10)
 		{
 			local pox = this.getSprite("tattoo_head");
 			pox.Visible = true;
 			pox.setBrush("bust_head_pox_01");
 		}
-		else if (this.Math.rand(1, 100) <= 15)
+		else if (::Math.rand(1, 100) <= 15)
 		{
 			local pox = this.getSprite("tattoo_head");
 			pox.Visible = true;
@@ -203,7 +203,7 @@
 			dirt.Visible = true;
 		}
 
-		if (this.Math.rand(1, 100) <= 25)
+		if (::Math.rand(1, 100) <= 25)
 		{
 			this.getSprite("eye_rings").Visible = true;
 		}

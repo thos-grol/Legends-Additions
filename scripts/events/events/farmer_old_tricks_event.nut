@@ -26,7 +26,7 @@ this.farmer_old_tricks_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				this.Characters.push(_event.m.Farmer.getImagePath());
-				local meleeSkill = this.Math.rand(2, 4);
+				local meleeSkill = ::Math.rand(2, 4);
 				_event.m.Farmer.getBaseProperties().MeleeSkill += meleeSkill;
 				this.List.push({
 					id = 16,
@@ -69,7 +69,7 @@ this.farmer_old_tricks_event <- this.inherit("scripts/events/event", {
 
 		if (candidates.len() == 0) return;
 
-		this.m.Farmer = candidates[this.Math.rand(0, candidates.len() - 1)];
+		this.m.Farmer = candidates[::Math.rand(0, candidates.len() - 1)];
 		this.m.Score = candidates.len() * 3;
 	}
 

@@ -15,7 +15,7 @@
 		this.m.CombatLocation.ForceLineBattle = true;
 		this.m.CombatLocation.AdditionalRadius = 5;
 		this.m.IsShowingDefenders = false;
-		local r = this.Math.rand(1, 2);
+		local r = ::Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -63,8 +63,8 @@
 			treasure.push("legend_armor/armor_upgrades/legend_double_mail_upgrade");
 		}
 
-		this.dropMoney(this.Math.rand(50, 300), _lootTable);
-		this.dropTreasure(this.Math.rand(1, 2), treasure, _lootTable);
+		this.dropMoney(::Math.rand(50, 300), _lootTable);
+		this.dropTreasure(::Math.rand(1, 2), treasure, _lootTable);
 	}
 
 	o.onInit = function()

@@ -29,7 +29,7 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 	{
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -52,7 +52,7 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					"Defend %townname% and its outskirts from raiding parties"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -67,13 +67,13 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 
 
-				local nearestBandits = this.Contract.getNearestLocationTo(this.Contract.m.Home, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getSettlements());
-				local nearestZombies = this.Contract.getNearestLocationTo(this.Contract.m.Home, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).getSettlements());
+				local nearestBandits = this.Contract.getNearestLocationTo(this.Contract.m.Home, this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getSettlements());
+				local nearestZombies = this.Contract.getNearestLocationTo(this.Contract.m.Home, this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getSettlements());
 
 				this.Flags.set("IsMilitia", true);
 
 
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 				if ((r <= 15 || (this.World.FactionManager.isUndeadScourge() && r <= 75)) && nearestZombies.getTile().getDistanceTo(this.Contract.m.Home.getTile()) <= 20)
 				{
 					this.Flags.set("IsUndead", true);
@@ -91,7 +91,7 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					}
 				}
 
-				number = this.Math.min(number, targets.len());
+				number = ::Math.min(number, targets.len());
 				this.Flags.set("ActiveLocations", targets.len());
 
 				for( local i = 0; i != number; i = i )
@@ -100,18 +100,18 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 
 					if (this.Flags.get("IsUndead"))
 					{
-						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Zombies, this.Math.rand(100, 110) * this.Contract.getDifficultyMult() * 1.5);
+						party = this.Contract.spawnEnemyPartyAtBase(::Const.FactionType.Zombies, ::Math.rand(100, 110) * this.Contract.getDifficultyMult() * 1.5);
 					}
 					else
 					{
-						party = this.Contract.spawnEnemyPartyAtBase(this.Const.FactionType.Bandits, this.Math.rand(100, 110) * this.Contract.getDifficultyMult() * 1.5);
+						party = this.Contract.spawnEnemyPartyAtBase(::Const.FactionType.Bandits, ::Math.rand(100, 110) * this.Contract.getDifficultyMult() * 1.5);
 					}
 
 					party.setAttackableByAI(false);
 					local c = party.getController();
-					c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
-					c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-					local t = this.Math.rand(0, targets.len() - 1);
+					c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+					c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+					local t = ::Math.rand(0, targets.len() - 1);
 
 					if (i > 0)
 					{
@@ -222,8 +222,8 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					if (p != null && p.isAlive() && !p.isHiddenToPlayer() && !p.getController().hasOrders())
 					{
 						local c = p.getController();
-						c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(true);
-						c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(true);
+						c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(true);
+						c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(true);
 						this.Contract.m.Kidnapper = this.WeakTableRef(p);
 						this.Flags.set("IsKidnappingInProgress", true);
 						this.Flags.set("KidnappingTooLate", this.Time.getVirtualTimeF() + 60.0);
@@ -377,8 +377,8 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -400,7 +400,7 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					Text = "{I\'m afraid you\'re on your own. | We have more important matters to settle. | I wish you luck, but we\'ll not be part of this.}",
 					function getResult()
 					{
-						if (this.Math.rand(1, 100) <= 60)
+						if (::Math.rand(1, 100) <= 60)
 						{
 							this.World.Contracts.removeContract(this.Contract);
 							return 0;
@@ -538,10 +538,10 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					function getResult()
 					{
 						local home = this.Contract.m.Home;
-						local party = this.World.FactionManager.getFaction(this.Contract.getFaction()).spawnEntity(home.getTile(), home.getName() + " Militia", false, this.Const.World.Spawn.Militia, home.getResources() * 0.7);
+						local party = this.World.FactionManager.getFaction(this.Contract.getFaction()).spawnEntity(home.getTile(), home.getName() + " Militia", false, ::Const.World.Spawn.Militia, home.getResources() * 0.7);
 						party.getSprite("banner").setBrush(home.getBanner());
 						party.setDescription("Brave men defending their homes with their lives. Farmers, craftsmen, artisans - but not one real soldier.");
-						party.setFootprintType(this.Const.World.FootprintsType.Militia);
+						party.setFootprintType(::Const.World.FootprintsType.Militia);
 						this.Contract.m.Militia = this.WeakTableRef(party);
 						local c = party.getController();
 						local guard = this.new("scripts/ai/world/orders/guard_order");
@@ -559,10 +559,10 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					function getResult()
 					{
 						local home = this.Contract.m.Home;
-						local party = this.World.FactionManager.getFaction(this.Contract.getFaction()).spawnEntity(home.getTile(), home.getName() + " Militia", false, this.Const.World.Spawn.Militia, home.getResources() * 0.7);
+						local party = this.World.FactionManager.getFaction(this.Contract.getFaction()).spawnEntity(home.getTile(), home.getName() + " Militia", false, ::Const.World.Spawn.Militia, home.getResources() * 0.7);
 						party.getSprite("banner").setBrush(home.getBanner());
 						party.setDescription("Brave men defending their homes with their lives. Farmers, craftsmen, artisans - but not one real soldier.");
-						party.setFootprintType(this.Const.World.FootprintsType.Militia);
+						party.setFootprintType(::Const.World.FootprintsType.Militia);
 						this.Contract.m.Militia = this.WeakTableRef(party);
 						local c = party.getController();
 						local locations = home.getAttachedLocations();
@@ -577,7 +577,7 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 						}
 
 						local guard = this.new("scripts/ai/world/orders/guard_order");
-						guard.setTarget(targets[this.Math.rand(0, targets.len() - 1)].getTile());
+						guard.setTarget(targets[::Math.rand(0, targets.len() - 1)].getTile());
 						guard.setTime(300.0);
 						local despawn = this.new("scripts/ai/world/orders/despawn_order");
 						c.addOrder(guard);
@@ -645,7 +645,7 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 						{
 							local militia;
 
-							if (this.Math.rand(0, 1) == 0)
+							if (::Math.rand(0, 1) == 0)
 							{
 								militia = this.World.getGuestRoster().create("scripts/entity/tactical/humans/militia_guest");
 							}
@@ -755,14 +755,14 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					Text = "{The %companyname% will make good use of this. | Payment for a hard day\'s work.}",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Defended the town against brigands");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Defended the town against brigands");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.Flags.get("IsUndead") && this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCommonContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCommonContract);
 						}
 
 						return 0;
@@ -776,7 +776,7 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
 				});
 			}
 
@@ -793,14 +793,14 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					Text = "{That\'s just half of what we agreed to! | It is what it is...}",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion() / 2);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractPoor, "Defended the town against brigands");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractPoor, "Defended the town against brigands");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.Flags.get("IsUndead") && this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCommonContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCommonContract);
 						}
 
 						return 0;
@@ -814,7 +814,7 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
 				});
 				this.Contract.addSituation(this.new("scripts/entity/world/settlements/situations/raided_situation"), 3, this.Contract.m.Home, this.List);
 			}
@@ -832,14 +832,14 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					Text = "{That\'s just half of what we agreed to! | It is what it is...}",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion() / 2);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractPoor, "Defended the town against brigands");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractPoor, "Defended the town against brigands");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.Flags.get("IsUndead") && this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCommonContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCommonContract);
 						}
 
 						return 0;
@@ -853,7 +853,7 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
 				});
 				this.Contract.addSituation(this.new("scripts/entity/world/settlements/situations/raided_situation"), 3, this.Contract.m.Home, this.List);
 			}
@@ -871,14 +871,14 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					Text = "{That\'s just half of what we agreed to! | It is what it is...}",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion() / 2);
 						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(0);
 						this.World.Contracts.finishActiveContract();
 
 						if (this.Flags.get("IsUndead") && this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCommonContract);
+							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCommonContract);
 						}
 
 						return 0;
@@ -892,7 +892,7 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
 				});
 				this.Contract.addSituation(this.new("scripts/entity/world/settlements/situations/raided_situation"), 3, this.Contract.m.Home, this.List);
 			}
@@ -910,8 +910,8 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					Text = "{Damn this peasantfolk! | We should have asked for more payment in advance... | Damnit!}",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to defend the town against brigands");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to defend the town against brigands");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -936,8 +936,8 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 					Text = "{Damn this peasantfolk! | We should have asked for more payment in advance... | Damnit!}",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to defend the town against brigands");
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to defend the town against brigands");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -993,8 +993,8 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 
 	function onIsValid()
 	{
-		local nearestBandits = this.getNearestLocationTo(this.m.Home, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getSettlements());
-		local nearestZombies = this.getNearestLocationTo(this.m.Home, this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).getSettlements());
+		local nearestBandits = this.getNearestLocationTo(this.m.Home, this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getSettlements());
+		local nearestZombies = this.getNearestLocationTo(this.m.Home, this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getSettlements());
 
 		if ((nearestZombies == null || nearestZombies.getTile().getDistanceTo(this.m.Home.getTile()) > 20) && (nearestBandits == null || nearestBandits.getTile().getDistanceTo(this.m.Home.getTile()) > 20))
 		{

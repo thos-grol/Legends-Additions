@@ -4,7 +4,7 @@ this.legend_rune_bravery <- this.inherit("scripts/items/legend_helmets/legend_he
 	{
 		this.legend_helmet_upgrade.create();
 		this.m.ID = "legend_helmet_upgrade.legend_rune_bravery";
-		this.m.Type = this.Const.Items.HelmetUpgrades.Rune;
+		this.m.Type = ::Const.Items.HelmetUpgrades.Rune;
 		this.m.Name = "Helmet Rune Sigil: Bravery";
 		this.m.Description = "An inscribed rock that can be attached to a character\'s helmet.";
 		this.m.ArmorDescription = "Includes An inscribed rock that grants additional bravery bonuses.";
@@ -29,7 +29,7 @@ this.legend_rune_bravery <- this.inherit("scripts/items/legend_helmets/legend_he
 			id = 7,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "This item has the power of the rune sigil of Bravery:\n[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus1 + "%[/color] Resolve.\n[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus2 + "[/color] Resolve at all morale checks."
+			text = "This item has the power of the rune sigil of Bravery:\n[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus1 + "%[/color] Resolve.\n[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus2 + "[/color] Resolve at all morale checks."
 		});
 		return result;
 	}
@@ -40,7 +40,7 @@ this.legend_rune_bravery <- this.inherit("scripts/items/legend_helmets/legend_he
 			id = 7,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "This item has the power of the rune sigil of Bravery:\n[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus1 + "%[/color] Resolve.\n[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus2 + "[/color] Resolve at all morale checks."
+			text = "This item has the power of the rune sigil of Bravery:\n[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus1 + "%[/color] Resolve.\n[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.RuneBonus2 + "[/color] Resolve at all morale checks."
 		});
 	}
 
@@ -57,10 +57,10 @@ this.legend_rune_bravery <- this.inherit("scripts/items/legend_helmets/legend_he
 	{
 		if (!::Z.hasVala()) return false
 		if (this.isUsed()) return false;
-		local armor = _item == null ? _actor.getItems().getItemAtSlot(this.Const.ItemSlot.Head) : _item;
+		local armor = _item == null ? _actor.getItems().getItemAtSlot(::Const.ItemSlot.Head) : _item;
 		if (armor == null) return false;
 		local success = armor.setUpgrade(this);
-		if (success) this.Sound.play("sounds/inventory/armor_upgrade_use_01.wav", this.Const.Sound.Volume.Inventory);
+		if (success) this.Sound.play("sounds/inventory/armor_upgrade_use_01.wav", ::Const.Sound.Volume.Inventory);
 		return success;
 	}
 
@@ -72,7 +72,7 @@ this.legend_rune_bravery <- this.inherit("scripts/items/legend_helmets/legend_he
 		{
 			this.setToBeRepaired(true, 0);
 		}
-		this.setCurrentSlotType(this.Const.ItemSlot.None);
+		this.setCurrentSlotType(::Const.ItemSlot.None);
 	}
 
 });

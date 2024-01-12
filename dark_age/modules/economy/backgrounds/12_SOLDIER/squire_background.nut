@@ -10,10 +10,10 @@
 
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.PolearmTree,
-				this.Const.Perks.AxeTree,
-				this.Const.Perks.HammerTree,
-				this.Const.Perks.BowTree,
+				::Const.Perks.PolearmTree,
+				::Const.Perks.AxeTree,
+				::Const.Perks.HammerTree,
+				::Const.Perks.BowTree,
 				::Const.Perks.ShieldTree,
 			],
 			Defense = [],
@@ -33,7 +33,7 @@
 	{
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(0, 3);
+		r = ::Math.rand(0, 3);
 
 		if (r == 0)
 		{
@@ -52,7 +52,7 @@
 			items.equip(::new("scripts/items/weapons/boar_spear"));
 		}
 
-		r = this.Math.rand(0, 2);
+		r = ::Math.rand(0, 2);
 
 		if (r == 0)
 		{

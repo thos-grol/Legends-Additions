@@ -29,7 +29,7 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropTreasure(this.Math.rand(3, 4), [
+		this.dropTreasure(::Math.rand(3, 4), [
 			"loot/silverware_item",
 			"loot/silver_bowl_item",
 			"loot/signet_ring_item",
@@ -58,7 +58,7 @@
 	o.onInit = function()
 	{
 		this.location.onInit();
-		local flipped = this.Math.rand(0, 1) == 1;
+		local flipped = ::Math.rand(0, 1) == 1;
 		local body = this.addSprite("body");
 		body.setBrush("world_buried_castle");
 		local isSouthern = this.getTile().Type == ::Const.World.TerrainType.Desert || this.getTile().Type == ::Const.World.TerrainType.Steppe || this.getTile().Type == ::Const.World.TerrainType.Oasis || this.getTile().TacticalType == ::Const.World.TerrainTacticalType.DesertHills;

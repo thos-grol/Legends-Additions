@@ -24,12 +24,12 @@ gt.Const.World.Spawn.OrcRoamers <- {
 			Weight = 80,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
+					Type = ::Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 1.0 * 360,
 					Cost = 16
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoung,
+					Type = ::Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
 					Cost = 24
 				}
@@ -39,7 +39,7 @@ gt.Const.World.Spawn.OrcRoamers <- {
 			Weight = 15,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcBerserker,
+					Type = ::Const.World.Spawn.Troops.OrcBerserker,
 					MinR = 200,
 					Cost = 25
 				}
@@ -50,7 +50,7 @@ gt.Const.World.Spawn.OrcRoamers <- {
 			MinR = 0.5 * 260,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendOrcBehemoth,
+					Type = ::Const.World.Spawn.Troops.LegendOrcBehemoth,
 					MinR = 400,
 					Cost = 60,
 					Roll = true
@@ -73,12 +73,12 @@ gt.Const.World.Spawn.OrcScouts <- {
 			Weight = 65,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
+					Type = ::Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 1.0 * 176,
 					Cost = 16
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoung,
+					Type = ::Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
 					Cost = 24
 				}
@@ -88,12 +88,12 @@ gt.Const.World.Spawn.OrcScouts <- {
 			Weight = 15,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarriorLOW,
+					Type = ::Const.World.Spawn.Troops.OrcWarriorLOW,
 					MaxR = 1.0 * 176,
 					Cost = 30
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarrior,
+					Type = ::Const.World.Spawn.Troops.OrcWarrior,
 					MinR = 300,
 					Cost = 40
 				}
@@ -115,12 +115,12 @@ gt.Const.World.Spawn.OrcRaiders <- {
 			Weight = 50,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
+					Type = ::Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 0.75 * 822,
 					Cost = 16
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoung,
+					Type = ::Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
 					Cost = 24
 				}
@@ -131,12 +131,12 @@ gt.Const.World.Spawn.OrcRaiders <- {
 			MinR = 0.2 * 822,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarriorLOW,
+					Type = ::Const.World.Spawn.Troops.OrcWarriorLOW,
 					MaxR = 0.8 * 822,
 					Cost = 30
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarrior,
+					Type = ::Const.World.Spawn.Troops.OrcWarrior,
 					MinR = 400,
 					Cost = 40
 				}
@@ -146,7 +146,7 @@ gt.Const.World.Spawn.OrcRaiders <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcBerserker,
+					Type = ::Const.World.Spawn.Troops.OrcBerserker,
 					MinR = 200,
 					Cost = 40
 				}
@@ -156,7 +156,7 @@ gt.Const.World.Spawn.OrcRaiders <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarlord,
+					Type = ::Const.World.Spawn.Troops.OrcWarlord,
 					MinR = 400,
 					Cost = 60
 				}
@@ -166,7 +166,7 @@ gt.Const.World.Spawn.OrcRaiders <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendOrcBehemoth,
+					Type = ::Const.World.Spawn.Troops.LegendOrcBehemoth,
 					MinR = 0.5 * 1115,
 					Cost = 60,
 					Roll = true
@@ -189,12 +189,12 @@ gt.Const.World.Spawn.OrcDefenders <- {
 			Weight = 50,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
+					Type = ::Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 0.75 * 822,
 					Cost = 16
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoung,
+					Type = ::Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
 					Cost = 24
 				}
@@ -205,12 +205,12 @@ gt.Const.World.Spawn.OrcDefenders <- {
 			MinR = 0.2 * 822,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarriorLOW,
+					Type = ::Const.World.Spawn.Troops.OrcWarriorLOW,
 					MaxR = 0.8 * 822,
 					Cost = 30
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarrior,
+					Type = ::Const.World.Spawn.Troops.OrcWarrior,
 					MinR = 300,
 					MinR = 0.25 * 1115,
 					Cost = 40
@@ -221,7 +221,7 @@ gt.Const.World.Spawn.OrcDefenders <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcBerserker,
+					Type = ::Const.World.Spawn.Troops.OrcBerserker,
 					MinR = 200,
 					Cost = 25
 				}
@@ -231,7 +231,7 @@ gt.Const.World.Spawn.OrcDefenders <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarlord,
+					Type = ::Const.World.Spawn.Troops.OrcWarlord,
 					MinR = 400,
 					Cost = 50
 				}
@@ -241,7 +241,7 @@ gt.Const.World.Spawn.OrcDefenders <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendOrcBehemoth,
+					Type = ::Const.World.Spawn.Troops.LegendOrcBehemoth,
 					MinR = 0.5 * 1115,
 					Cost = 80,
 					Roll = true
@@ -262,7 +262,7 @@ gt.Const.World.Spawn.OrcBoss <- {
 	Fixed = [
 		{
 			Weight = 100,
-			Type = this.Const.World.Spawn.Troops.OrcWarlord,
+			Type = ::Const.World.Spawn.Troops.OrcWarlord,
 			Cost = 50
 		}
 	],
@@ -271,7 +271,7 @@ gt.Const.World.Spawn.OrcBoss <- {
 			Weight = 50,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoung,
+					Type = ::Const.World.Spawn.Troops.OrcYoung,
 					Cost = 24
 				}
 			]
@@ -280,7 +280,7 @@ gt.Const.World.Spawn.OrcBoss <- {
 			Weight = 30,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarrior,
+					Type = ::Const.World.Spawn.Troops.OrcWarrior,
 					MinR = 200,
 					Cost = 40
 				}
@@ -290,7 +290,7 @@ gt.Const.World.Spawn.OrcBoss <- {
 			Weight = 10,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcBerserker,
+					Type = ::Const.World.Spawn.Troops.OrcBerserker,
 					Cost = 25
 				}
 			]
@@ -299,7 +299,7 @@ gt.Const.World.Spawn.OrcBoss <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarlord,
+					Type = ::Const.World.Spawn.Troops.OrcWarlord,
 					MinR = 400,
 					Cost = 50
 				}
@@ -309,7 +309,7 @@ gt.Const.World.Spawn.OrcBoss <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendOrcBehemoth,
+					Type = ::Const.World.Spawn.Troops.LegendOrcBehemoth,
 					MinR = 400,
 					Cost = 80,
 					Roll = true
@@ -332,11 +332,11 @@ gt.Const.World.Spawn.YoungOrcsOnly <- {
 			Weight = 100,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
+					Type = ::Const.World.Spawn.Troops.OrcYoungLOW,
 					Cost = 16
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoung,
+					Type = ::Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
 					Cost = 24
 				}
@@ -358,12 +358,12 @@ gt.Const.World.Spawn.YoungOrcsAndBerserkers <- {
 			Weight = 70,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
+					Type = ::Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 1.0 * 288,
 					Cost = 16
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoung,
+					Type = ::Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
 					Cost = 24
 				}
@@ -373,7 +373,7 @@ gt.Const.World.Spawn.YoungOrcsAndBerserkers <- {
 			Weight = 20,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcBerserker,
+					Type = ::Const.World.Spawn.Troops.OrcBerserker,
 					MinR = 200,
 					Cost = 25
 				}
@@ -384,7 +384,7 @@ gt.Const.World.Spawn.YoungOrcsAndBerserkers <- {
 			MinR = 1.0 * 288,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendOrcBehemoth,
+					Type = ::Const.World.Spawn.Troops.LegendOrcBehemoth,
 					MinR = 300,
 					Cost = 80,
 					Roll = true
@@ -407,12 +407,12 @@ gt.Const.World.Spawn.BerserkersOnly <- {
 			Weight = 20,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
+					Type = ::Const.World.Spawn.Troops.OrcYoungLOW,
 					MaxR = 1.0 * 288,
 					Cost = 16
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoung,
+					Type = ::Const.World.Spawn.Troops.OrcYoung,
 					MinR = 200,
 					Cost = 24
 				}
@@ -422,7 +422,7 @@ gt.Const.World.Spawn.BerserkersOnly <- {
 			Weight = 70,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcBerserker,
+					Type = ::Const.World.Spawn.Troops.OrcBerserker,
 					Cost = 25
 				}
 			]
@@ -432,7 +432,7 @@ gt.Const.World.Spawn.BerserkersOnly <- {
 			MinR = 1.0 * 288,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendOrcBehemoth,
+					Type = ::Const.World.Spawn.Troops.LegendOrcBehemoth,
 					MinR = 300,
 					Cost = 80,
 					Roll = true

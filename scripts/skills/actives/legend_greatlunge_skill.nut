@@ -115,7 +115,7 @@ this.legend_greatlunge_skill <- this.inherit("scripts/skills/skill", {
 			{
 				local tile = _targetTile.getNextTile(i);
 
-				if (tile.IsEmpty && tile.getDistanceTo(myTile) == 1 && this.Math.abs(myTile.Level - tile.Level) <= 1 && this.Math.abs(_targetTile.Level - tile.Level) <= 1)
+				if (tile.IsEmpty && tile.getDistanceTo(myTile) == 1 && ::Math.abs(myTile.Level - tile.Level) <= 1 && ::Math.abs(_targetTile.Level - tile.Level) <= 1)
 				{
 					hasTile = true;
 					break;
@@ -158,7 +158,7 @@ this.legend_greatlunge_skill <- this.inherit("scripts/skills/skill", {
 			{
 				local tile = _targetTile.getNextTile(i);
 
-				if (tile.IsEmpty && tile.getDistanceTo(myTile) == 1 && this.Math.abs(myTile.Level - tile.Level) <= 1 && this.Math.abs(_targetTile.Level - tile.Level) <= 1)
+				if (tile.IsEmpty && tile.getDistanceTo(myTile) == 1 && ::Math.abs(myTile.Level - tile.Level) <= 1 && ::Math.abs(_targetTile.Level - tile.Level) <= 1)
 				{
 					destTile = tile;
 					break;
@@ -246,7 +246,7 @@ this.legend_greatlunge_skill <- this.inherit("scripts/skills/skill", {
 				{
 					local tile = myTile.getNextTile(dir);
 
-					if (tile.IsEmpty && this.Math.abs(tile.Level - myTile.Level) <= 1 && tile.getDistanceTo(actor.getTile()) > 1)
+					if (tile.IsEmpty && ::Math.abs(tile.Level - myTile.Level) <= 1 && tile.getDistanceTo(actor.getTile()) > 1)
 					{
 						_tag.TargetTile = tile;
 						this.Time.scheduleEvent(this.TimeUnit.Virtual, 50, _tag.OnRepelled, _tag);
@@ -273,7 +273,7 @@ this.legend_greatlunge_skill <- this.inherit("scripts/skills/skill", {
 		if (_skill == this)
 		{
 			local a = this.getContainer().getActor();
-			local s = this.Math.minf(2.0, 2.0 * (this.Math.max(0, a.getInitiative() + (_targetEntity != null ? this.getFatigueCost() * a.getCurrentProperties().FatigueToInitiativeRate : 0)) / 175.0));
+			local s = ::Math.minf(2.0, 2.0 * (::Math.max(0, a.getInitiative() + (_targetEntity != null ? this.getFatigueCost() * a.getCurrentProperties().FatigueToInitiativeRate : 0)) / 175.0));
 			_properties.DamageTotalMult *= s;
 
 			if (this.getContainer().getActor().getCurrentProperties().IsSpecializedInSwords)

@@ -12,13 +12,13 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.GoblinAmbusher);
+		b.setValues(::Const.Tactical.Actor.GoblinAmbusher);
 		b.IsFleetfooted = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
-		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
-		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
+		this.m.ActionPointCosts = ::Const.DefaultMovementAPCost;
+		this.m.FatigueCosts = ::Const.DefaultMovementFatigueCost;
 		this.m.Items.getAppearance().Body = "bust_goblin_01_body";
 		this.addSprite("socket").setBrush("bust_base_goblins");
 		local quiver = this.addSprite("quiver");
@@ -51,12 +51,12 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 	function create()
 	{
 		this.m.XP = ::B.Info[this.m.Type].Level * 35;
-		this.m.BloodType = this.Const.BloodType.Red;
+		this.m.BloodType = ::Const.BloodType.Red;
 		this.m.BloodSplatterOffset = this.createVec(-10, 15);
 		this.m.DecapitateSplatterOffset = this.createVec(20, -20);
 		this.m.ConfidentMoraleBrush = "icon_confident_orcs";
 		this.actor.create();
-		this.m.Sound[this.Const.Sound.ActorEvent.Death] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Death] = [
 			"sounds/enemies/goblin_death_00.wav",
 			"sounds/enemies/goblin_death_01.wav",
 			"sounds/enemies/goblin_death_02.wav",
@@ -67,7 +67,7 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/goblin_death_07.wav",
 			"sounds/enemies/goblin_death_08.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Flee] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Flee] = [
 			"sounds/enemies/goblin_flee_00.wav",
 			"sounds/enemies/goblin_flee_01.wav",
 			"sounds/enemies/goblin_flee_02.wav",
@@ -75,7 +75,7 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/goblin_flee_04.wav",
 			"sounds/enemies/goblin_flee_05.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
+		this.m.Sound[::Const.Sound.ActorEvent.DamageReceived] = [
 			"sounds/enemies/goblin_hurt_00.wav",
 			"sounds/enemies/goblin_hurt_01.wav",
 			"sounds/enemies/goblin_hurt_02.wav",
@@ -89,7 +89,7 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/goblin_hurt_10.wav",
 			"sounds/enemies/goblin_hurt_11.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Idle] = [
+		this.m.Sound[::Const.Sound.ActorEvent.Idle] = [
 			"sounds/enemies/goblin_idle_00.wav",
 			"sounds/enemies/goblin_idle_01.wav",
 			"sounds/enemies/goblin_idle_02.wav",
@@ -106,35 +106,35 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/goblin_idle_13.wav",
 			"sounds/enemies/goblin_idle_14.wav"
 		];
-		this.m.SoundVolume[this.Const.Sound.ActorEvent.Death] = 0.9;
-		this.m.SoundVolume[this.Const.Sound.ActorEvent.Flee] = 1.0;
-		this.m.SoundVolume[this.Const.Sound.ActorEvent.DamageReceived] = 0.5;
-		this.m.SoundVolume[this.Const.Sound.ActorEvent.Idle] = 1.25;
-		this.m.SoundPitch = this.Math.rand(95, 110) * 0.01;
+		this.m.SoundVolume[::Const.Sound.ActorEvent.Death] = 0.9;
+		this.m.SoundVolume[::Const.Sound.ActorEvent.Flee] = 1.0;
+		this.m.SoundVolume[::Const.Sound.ActorEvent.DamageReceived] = 0.5;
+		this.m.SoundVolume[::Const.Sound.ActorEvent.Idle] = 1.25;
+		this.m.SoundPitch = ::Math.rand(95, 110) * 0.01;
 		this.m.Flags.add("goblin");
 	}
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
 	{
-		local flip = this.Math.rand(1, 100) < 50;
+		local flip = ::Math.rand(1, 100) < 50;
 
 		if (_tile != null)
 		{
 			this.m.IsCorpseFlipped = flip;
 			local decal;
 			local skin = this.getSprite("body");
-			decal = _tile.spawnDetail("bust_goblin_body_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+			decal = _tile.spawnDetail("bust_goblin_body_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 			decal.Color = skin.Color;
 			decal.Saturation = skin.Saturation;
 			decal.setBrightness(0.9);
 			decal.Scale = 0.95;
-			_tile.spawnDetail(this.getItems().getAppearance().CorpseArmor, this.Const.Tactical.DetailFlag.Corpse, flip);
+			_tile.spawnDetail(this.getItems().getAppearance().CorpseArmor, ::Const.Tactical.DetailFlag.Corpse, flip);
 
-			if (_fatalityType != this.Const.FatalityType.Decapitated)
+			if (_fatalityType != ::Const.FatalityType.Decapitated)
 			{
 				if (!this.getItems().getAppearance().HideCorpseHead)
 				{
-					decal = _tile.spawnDetail(this.getSprite("head").getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail(this.getSprite("head").getBrush().Name + "_dead", ::Const.Tactical.DetailFlag.Corpse, flip);
 					decal.Color = skin.Color;
 					decal.Saturation = skin.Saturation;
 					decal.setBrightness(0.9);
@@ -143,12 +143,12 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 
 				if (this.getItems().getAppearance().HelmetCorpse != "")
 				{
-					decal = _tile.spawnDetail(this.getItems().getAppearance().HelmetCorpse, this.Const.Tactical.DetailFlag.Corpse, flip);
+					decal = _tile.spawnDetail(this.getItems().getAppearance().HelmetCorpse, ::Const.Tactical.DetailFlag.Corpse, flip);
 					decal.setBrightness(0.9);
 					decal.Scale = 0.95;
 				}
 			}
-			else if (_fatalityType == this.Const.FatalityType.Decapitated)
+			else if (_fatalityType == ::Const.FatalityType.Decapitated)
 			{
 				local layers = [
 					this.getSprite("head").getBrush().Name + "_dead",
@@ -166,30 +166,30 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 				}
 			}
 
-			if (_fatalityType == this.Const.FatalityType.Disemboweled)
+			if (_fatalityType == ::Const.FatalityType.Disemboweled)
 			{
-				local decal = _tile.spawnDetail("bust_goblin_body_dead_guts", this.Const.Tactical.DetailFlag.Corpse, flip);
+				local decal = _tile.spawnDetail("bust_goblin_body_dead_guts", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.95;
 			}
-			else if (_skill && _skill.getProjectileType() == this.Const.ProjectileType.Arrow)
+			else if (_skill && _skill.getProjectileType() == ::Const.ProjectileType.Arrow)
 			{
-				decal = _tile.spawnDetail(this.getItems().getAppearance().CorpseArmor + "_arrows", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(this.getItems().getAppearance().CorpseArmor + "_arrows", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.95;
 			}
-			else if (_skill && _skill.getProjectileType() == this.Const.ProjectileType.Javelin)
+			else if (_skill && _skill.getProjectileType() == ::Const.ProjectileType.Javelin)
 			{
-				decal = _tile.spawnDetail(this.getItems().getAppearance().CorpseArmor + "_javelin", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail(this.getItems().getAppearance().CorpseArmor + "_javelin", ::Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.95;
 			}
 
 			this.spawnTerrainDropdownEffect(_tile);
-			local corpse = clone this.Const.Corpse;
+			local corpse = clone ::Const.Corpse;
 			corpse.CorpseName = "A " + this.getName();
 			corpse.Tile = _tile;
 			corpse.IsResurrectable = false;
 			corpse.IsConsumable = true;
 			corpse.Items = this.getItems();
-			corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+			corpse.IsHeadAttached = _fatalityType != ::Const.FatalityType.Decapitated;
 			_tile.Properties.set("Corpse", corpse);
 			this.Tactical.Entities.addCorpse(_tile);
 		}
@@ -218,7 +218,7 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 
 	function pickOutfit()
 	{
-		foreach( item in this.Const.World.Common.pickOutfit(::B.Info[this.m.Type].Outfit) )
+		foreach( item in ::Const.World.Common.pickOutfit(::B.Info[this.m.Type].Outfit) )
 		{
 			this.m.Items.equip(item);
 		}
@@ -227,18 +227,18 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 	function pickNamed()
 	{
 		//decide what item will be named
-		local r = this.Math.rand(1, 4);
+		local r = ::Math.rand(1, 4);
 		if (r == 1) //helmet
 		{
-			local named = this.Const.Items.NamedHelmets;
-			local weightName = this.Const.World.Common.convNameToList(named);
-			this.m.Items.equip(this.Const.World.Common.pickHelmet(weightName));
+			local named = ::Const.Items.NamedHelmets;
+			local weightName = ::Const.World.Common.convNameToList(named);
+			this.m.Items.equip(::Const.World.Common.pickHelmet(weightName));
 		}
 		else if (r == 2) //armor
 		{
-			local named = this.Const.Items.NamedArmors;
-			local weightName = this.Const.World.Common.convNameToList(named);
-			this.m.Items.equip(this.Const.World.Common.pickArmor(weightName));
+			local named = ::Const.Items.NamedArmors;
+			local weightName = ::Const.World.Common.convNameToList(named);
+			this.m.Items.equip(::Const.World.Common.pickArmor(weightName));
 		}
 		else this.m.IsMinibossWeapon <- true;
 	}

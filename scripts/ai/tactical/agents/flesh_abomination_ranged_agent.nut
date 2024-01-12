@@ -3,9 +3,9 @@ this.flesh_abomination_ranged_agent <- this.inherit("scripts/ai/tactical/agent",
 	function create()
 	{
 		this.agent.create();
-		this.m.ID = this.Const.AI.Agent.ID.BanditRanged;
-		this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.Defend] = 1.0;
-		this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageMelee] = 0.0;
+		this.m.ID = ::Const.AI.Agent.ID.BanditRanged;
+		this.m.Properties.BehaviorMult[::Const.AI.Behavior.ID.Defend] = 1.0;
+		this.m.Properties.BehaviorMult[::Const.AI.Behavior.ID.EngageMelee] = 0.0;
 		this.m.Properties.IsRangedUnit = true;
 		this.m.Properties.TargetPriorityHitchanceMult = 0.6;
 		this.m.Properties.TargetPriorityHitpointsMult = 0.2;

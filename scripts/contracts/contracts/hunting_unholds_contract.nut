@@ -27,7 +27,7 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -50,7 +50,7 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 					"Hunt down the Unholds around " + this.Contract.m.Home.getName()
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -63,7 +63,7 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 40)
 				{
@@ -77,43 +77,43 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 				this.Flags.set("StartTime", this.Time.getVirtualTimeF());
 				local playerTile = this.World.State.getPlayer().getTile();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 6, 12, [
-					this.Const.World.TerrainType.Mountains
+					::Const.World.TerrainType.Mountains
 				]);
 				local nearTile = this.Contract.getTileToSpawnLocation(playerTile, 4, 8);
 				local party;
 
 				if (this.Flags.get("EnemyType") == 0)
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, this.Const.World.Spawn.UnholdBog, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, ::Const.World.Spawn.UnholdBog, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				}
 				else if (this.Flags.get("EnemyType") == 1)
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, this.Const.World.Spawn.UnholdFrost, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, ::Const.World.Spawn.UnholdFrost, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				}
 				else
 				{
-					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, this.Const.World.Spawn.Unhold, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, ::Const.World.Spawn.Unhold, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				}
 
 				party.setDescription("One or more lumbering giants.");
-				party.setFootprintType(this.Const.World.FootprintsType.Unholds);
+				party.setFootprintType(::Const.World.FootprintsType.Unholds);
 				party.setAttackableByAI(false);
 				party.setFootprintSizeOverride(0.75);
 				party.getFlags().set("IsUnholds", true);
-				this.Const.World.Common.addFootprintsFromTo(nearTile, party.getTile(), this.Const.BeastFootprints, this.Const.World.FootprintsType.Unholds, 0.75);
+				::Const.World.Common.addFootprintsFromTo(nearTile, party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Unholds, 0.75);
 				this.Contract.m.Target = this.WeakTableRef(party);
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				local c = party.getController();
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-				c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 				local roam = this.new("scripts/ai/world/orders/roam_order");
 				roam.setPivot(this.Contract.m.Home);
 				roam.setMinRange(2);
 				roam.setMaxRange(8);
 				roam.setAllTerrainAvailable();
-				roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
-				roam.setTerrain(this.Const.World.TerrainType.Shore, false);
-				roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
+				roam.setTerrain(::Const.World.TerrainType.Ocean, false);
+				roam.setTerrain(::Const.World.TerrainType.Shore, false);
+				roam.setTerrain(::Const.World.TerrainType.Mountains, false);
 				c.addOrder(roam);
 				this.Contract.m.Home.setLastSpawnTimeToNow();
 				this.Contract.setScreen("Overview");
@@ -148,7 +148,7 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 					this.World.Contracts.showActiveContract();
 					this.Contract.setState("Return");
 				}
-				else if (!this.Flags.get("IsBanterShown") && this.Contract.m.Target.isHiddenToPlayer() && this.Math.rand(1, 1000) <= 1 && this.Flags.get("StartTime") + 10.0 <= this.Time.getVirtualTimeF())
+				else if (!this.Flags.get("IsBanterShown") && this.Contract.m.Target.isHiddenToPlayer() && ::Math.rand(1, 1000) <= 1 && this.Flags.get("StartTime") + 10.0 <= this.Time.getVirtualTimeF())
 				{
 					this.Flags.set("IsBanterShown", true);
 					this.Contract.setScreen("Banter");
@@ -178,7 +178,7 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 					}
 					else
 					{
-						this.Contract.m.Dude = candidates[this.Math.rand(0, candidates.len() - 1)];
+						this.Contract.m.Dude = candidates[::Math.rand(0, candidates.len() - 1)];
 						this.Contract.setScreen("DriveThemOff");
 						this.World.Contracts.showActiveContract();
 					}
@@ -228,8 +228,8 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -318,7 +318,7 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "%shouter% knows what he\'s doing.",
 					function getResult()
 					{
-						if (this.Math.rand(1, 100) <= 35)
+						if (::Math.rand(1, 100) <= 35)
 						{
 							return "DriveThemOffSuccess";
 						}
@@ -361,12 +361,12 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 				this.Characters.push(this.Contract.m.Dude.getImagePath());
 				this.Contract.m.Dude.improveMood(3.0, "Managed to drive off unholds all by himself");
 
-				if (this.Contract.m.Dude.getMoodState() >= this.Const.MoodState.Neutral)
+				if (this.Contract.m.Dude.getMoodState() >= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[this.Contract.m.Dude.getMoodState()],
-						text = this.Contract.m.Dude.getName() + this.Const.MoodStateEvent[this.Contract.m.Dude.getMoodState()]
+						icon = ::Const.MoodStateIcon[this.Contract.m.Dude.getMoodState()],
+						text = this.Contract.m.Dude.getName() + ::Const.MoodStateEvent[this.Contract.m.Dude.getMoodState()]
 					});
 				}
 			}
@@ -395,13 +395,13 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 				this.Characters.push(this.Contract.m.Dude.getImagePath());
 				local injury;
 
-				if (this.Math.rand(1, 100) <= 50)
+				if (::Math.rand(1, 100) <= 50)
 				{
-					injury = this.Contract.m.Dude.addInjury(this.Const.Injury.BluntBody);
+					injury = this.Contract.m.Dude.addInjury(::Const.Injury.BluntBody);
 				}
 				else
 				{
-					injury = this.Contract.m.Dude.addInjury(this.Const.Injury.BluntHead);
+					injury = this.Contract.m.Dude.addInjury(::Const.Injury.BluntHead);
 				}
 
 				this.List.push({
@@ -411,12 +411,12 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 				});
 				this.Contract.m.Dude.worsenMood(1.0, "Failed to drive off unholds all by himself");
 
-				if (this.Contract.m.Dude.getMoodState() <= this.Const.MoodState.Neutral)
+				if (this.Contract.m.Dude.getMoodState() <= ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[this.Contract.m.Dude.getMoodState()],
-						text = this.Contract.m.Dude.getName() + this.Const.MoodStateEvent[this.Contract.m.Dude.getMoodState()]
+						icon = ::Const.MoodStateIcon[this.Contract.m.Dude.getMoodState()],
+						text = this.Contract.m.Dude.getName() + ::Const.MoodStateEvent[this.Contract.m.Dude.getMoodState()]
 					});
 				}
 			}
@@ -473,9 +473,9 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of unholds");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of unholds");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -487,7 +487,7 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -506,9 +506,9 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of unholds");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Rid the town of unholds");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -520,7 +520,7 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Home, this.List);
 			}
@@ -536,7 +536,7 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Target == null || this.m.Target.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
+			this.m.Target == null || this.m.Target.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
 		]);
 	}
 

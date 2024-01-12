@@ -92,7 +92,7 @@ this.round_swing <- this.inherit("scripts/skills/skill", {
 			{
 				local tile = ownTile.getNextTile(i);
 
-				if (!tile.IsEmpty && tile.getEntity().isAttackable() && this.Math.abs(tile.Level - ownTile.Level) <= 1)
+				if (!tile.IsEmpty && tile.getEntity().isAttackable() && ::Math.abs(tile.Level - ownTile.Level) <= 1)
 				{
 					if (ret && soundBackup.len() == 0)
 					{
@@ -133,7 +133,7 @@ this.round_swing <- this.inherit("scripts/skills/skill", {
 			{
 				local tile = ownTile.getNextTile(i);
 
-				if (this.Math.abs(tile.Level - ownTile.Level) <= 1)
+				if (::Math.abs(tile.Level - ownTile.Level) <= 1)
 				{
 					this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, tile, tile.Pos.X, tile.Pos.Y);
 				}

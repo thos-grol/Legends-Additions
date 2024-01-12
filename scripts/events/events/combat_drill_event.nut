@@ -99,8 +99,8 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 				{
 					if (bro.getLevel() >= 11) continue;
 					if (bro.getFlags().has("event_combat_drill_2")) continue;
-					local meleeSkill = this.Math.rand(1, 2);
-					local meleeDefense = this.Math.rand(1, 2);
+					local meleeSkill = ::Math.rand(1, 2);
+					local meleeDefense = ::Math.rand(1, 2);
 					bro.getBaseProperties().MeleeSkill += meleeSkill;
 					bro.getBaseProperties().MeleeDefense += meleeDefense;
 					bro.getSkills().update();
@@ -130,9 +130,9 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 					if (bro.getSkills().hasSkill("trait.clumsy") || bro.getSkills().hasSkill("trait.drunkard")) injuryChance = injuryChance * 2.0;
 					if (bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat)) injuryChance = injuryChance * 0.5;
 					if (bro.getSkills().hasSkill("trait.dexterous")) injuryChance = injuryChance * 0.5;
-					if (this.Math.rand(1, 100) <= injuryChance)
+					if (::Math.rand(1, 100) <= injuryChance)
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							bro.addLightInjury();
 							this.List.push({
@@ -202,7 +202,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 					if (bro.getLevel() >= 11) continue;
 					if (bro.getFlags().has("event_combat_drill_2")) continue;
 
-					local rangedSkill = this.Math.rand(1, 2);
+					local rangedSkill = ::Math.rand(1, 2);
 					bro.getBaseProperties().RangedSkill += rangedSkill;
 					bro.getSkills().update();
 
@@ -222,7 +222,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 					if (bro.getSkills().hasSkill("trait.asthmatic")) exhaustionChance = exhaustionChance * 4.0;
 					if (bro.getSkills().hasSkill("trait.athletic")) exhaustionChance = exhaustionChance * 0.0;
 					if (bro.getSkills().hasSkill("trait.iron_lungs")) exhaustionChance = exhaustionChance * 0.0;
-					if (this.Math.rand(1, 100) <= exhaustionChance)
+					if (::Math.rand(1, 100) <= exhaustionChance)
 					{
 						local effect = ::new("scripts/skills/effects_world/exhausted_effect");
 						bro.getSkills().add(effect);
@@ -283,8 +283,8 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 					if (bro.getLevel() >= 11) continue;
 					if (bro.getFlags().has("event_combat_drill_2")) continue;
 
-					local stamina = this.Math.rand(1, 3);
-					local initiative = stamina == 0 ? this.Math.rand(1, 3) : 0;
+					local stamina = ::Math.rand(1, 3);
+					local initiative = stamina == 0 ? ::Math.rand(1, 3) : 0;
 					bro.getBaseProperties().Stamina += stamina;
 					bro.getBaseProperties().Initiative += initiative;
 					bro.getSkills().update();
@@ -315,7 +315,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 					if (bro.getSkills().hasSkill("trait.asthmatic")) exhaustionChance = exhaustionChance * 2.0;
 					if (bro.getSkills().hasSkill("trait.athletic")) exhaustionChance = exhaustionChance * 0.5;
 					if (bro.getSkills().hasSkill("trait.iron_lungs")) exhaustionChance = exhaustionChance * 0.5;
-					if (this.Math.rand(1, 100) <= exhaustionChance)
+					if (::Math.rand(1, 100) <= exhaustionChance)
 					{
 						local effect = ::new("scripts/skills/effects_world/exhausted_effect");
 						bro.getSkills().add(effect);

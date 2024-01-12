@@ -23,7 +23,7 @@
 		this.getContainer().getActor().fillTalentValues(1, true);
 		local items = this.getContainer().getActor().getItems();
 		local r;
-		r = this.Math.rand(0, 8);
+		r = ::Math.rand(0, 8);
 
 		if (r == 0)
 		{

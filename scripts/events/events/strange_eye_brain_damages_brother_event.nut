@@ -81,7 +81,7 @@ this.strange_eye_brain_damages_brother_event <- this.inherit("scripts/events/eve
 
 		if (canditates_brain_damage.len() == 0) return;
 
-		this.m.Addict = canditates_brain_damage[this.Math.rand(0, canditates_brain_damage.len() - 1)];
+		this.m.Addict = canditates_brain_damage[::Math.rand(0, canditates_brain_damage.len() - 1)];
 		this.m.Item = ::new("scripts/items/misc/strange_eye_item");
 		this.m.Score = canditates_brain_damage.len() * 100;
 	}

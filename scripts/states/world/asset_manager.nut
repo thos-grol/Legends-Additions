@@ -25,7 +25,7 @@ this.asset_manager <- {
 		TrainingPriceMult = 1.0,
 		TryoutPriceMult = 1.0,
 		ContractPaymentMult = 1.0,
-		ArmorPartsPerArmor = 0.033,
+		ArmorPartsPerArmor = 0.015,
 		HitpointsPerHourMult = 1.0,
 		RepairSpeedMult = 1.0,
 		HiringCostMult = 1.0,
@@ -62,7 +62,7 @@ this.asset_manager <- {
 		SellPriceTradeMult = 1.0,
 		ExtraLootChance = 0,
 		FootprintVision = 1.0,
-		AverageMoodState = this.Const.MoodState.Neutral,
+		AverageMoodState = ::Const.MoodState.Neutral,
 		BrothersMax = 27,
 		BrothersMaxInCombat = 27,
 		BrothersScaleMax = 27,
@@ -147,17 +147,17 @@ this.asset_manager <- {
 
 	function getFood()
 	{
-		return this.Math.floor(this.m.Food);
+		return ::Math.floor(this.m.Food);
 	}
 
 	function getAmmo()
 	{
-		return this.Math.floor(this.m.Ammo);
+		return ::Math.floor(this.m.Ammo);
 	}
 
 	function getArmorParts()
 	{
-		return this.Math.floor(this.m.ArmorParts);
+		return ::Math.floor(this.m.ArmorParts);
 	}
 
 	function getArmorPartsF()
@@ -167,12 +167,12 @@ this.asset_manager <- {
 
 	function getMedicine()
 	{
-		return this.Math.floor(this.m.Medicine);
+		return ::Math.floor(this.m.Medicine);
 	}
 
 	function getMaxAmmo()
 	{
-		local ammo = this.Const.LegendMod.MaxResources[this.m.EconomicDifficulty].Ammo;
+		local ammo = ::Const.LegendMod.MaxResources[this.m.EconomicDifficulty].Ammo;
 		ammo = ammo + this.m.AmmoMaxAdditional;
 		ammo = ammo + this.World.State.getPlayer().getAmmoModifier();
 		return ammo;
@@ -180,7 +180,7 @@ this.asset_manager <- {
 
 	function getMaxArmorParts()
 	{
-		local parts = this.Const.LegendMod.MaxResources[this.m.EconomicDifficulty].ArmorParts;
+		local parts = ::Const.LegendMod.MaxResources[this.m.EconomicDifficulty].ArmorParts;
 		parts = parts + this.m.ArmorPartsMaxAdditional;
 		parts = parts + this.World.State.getPlayer().getArmorPartsModifier();
 		return parts;
@@ -188,7 +188,7 @@ this.asset_manager <- {
 
 	function getMaxMedicine()
 	{
-		local meds = this.Const.LegendMod.MaxResources[this.m.EconomicDifficulty].Medicine;
+		local meds = ::Const.LegendMod.MaxResources[this.m.EconomicDifficulty].Medicine;
 		meds = meds + this.m.MedicineMaxAdditional;
 		meds = meds + this.World.State.getPlayer().getMedsModifier();
 		return meds;
@@ -231,17 +231,17 @@ this.asset_manager <- {
 
 	function getBrothersMax()
 	{
-		return this.Const.Roster.getSizeForTier(this.World.Assets.getOrigin().getRosterTier());
+		return ::Const.Roster.getSizeForTier(this.World.Assets.getOrigin().getRosterTier());
 	}
 
 	function getBrothersMaxInCombat()
 	{
-		return this.Const.Roster.getInCombatSizeForTier(this.World.Assets.getOrigin().getRosterTierCombat());
+		return ::Const.Roster.getInCombatSizeForTier(this.World.Assets.getOrigin().getRosterTierCombat());
 	}
 
 	function getBrothersScaleMax()
 	{
-		return this.Math.min(25, this.m.BrothersScaleMax);
+		return ::Math.min(25, this.m.BrothersScaleMax);
 	}
 
 	function getBrothersScaleMin()
@@ -322,43 +322,43 @@ this.asset_manager <- {
 
 	function setAmmo( _f )
 	{
-		this.m.Ammo = this.Math.min(this.Math.max(0, _f), this.getMaxAmmo());
+		this.m.Ammo = ::Math.min(::Math.max(0, _f), this.getMaxAmmo());
 		this.refillAmmo();
 	}
 
 	function setArmorParts( _f )
 	{
-		this.m.ArmorParts = this.Math.min(this.Math.max(0, _f), this.getMaxArmorParts());
+		this.m.ArmorParts = ::Math.min(::Math.max(0, _f), this.getMaxArmorParts());
 	}
 
 	function setMedicine( _f )
 	{
-		this.m.Medicine = this.Math.min(this.Math.max(0, _f), this.getMaxMedicine());
+		this.m.Medicine = ::Math.min(::Math.max(0, _f), this.getMaxMedicine());
 	}
 
 	function addAmmo( _f )
 	{
-		this.m.Ammo = this.Math.min(this.Math.max(0, this.m.Ammo + _f), this.getMaxAmmo());
+		this.m.Ammo = ::Math.min(::Math.max(0, this.m.Ammo + _f), this.getMaxAmmo());
 	}
 
 	function addArmorParts( _f )
 	{
-		this.m.ArmorParts = this.Math.min(this.Math.max(0, this.m.ArmorParts + _f), this.getMaxArmorParts());
+		this.m.ArmorParts = ::Math.min(::Math.max(0, this.m.ArmorParts + _f), this.getMaxArmorParts());
 	}
 
 	function addArmorPartsF( _f )
 	{
-		this.m.ArmorParts = this.Math.minf(this.Math.maxf(0, this.m.ArmorParts + _f), this.getMaxArmorParts());
+		this.m.ArmorParts = ::Math.minf(::Math.maxf(0, this.m.ArmorParts + _f), this.getMaxArmorParts());
 	}
 
 	function addMedicine( _f )
 	{
-		this.m.Medicine = this.Math.min(this.Math.max(0, this.m.Medicine + _f), this.getMaxMedicine());
+		this.m.Medicine = ::Math.min(::Math.max(0, this.m.Medicine + _f), this.getMaxMedicine());
 	}
 
 	function addMoralReputation( _f )
 	{
-		this.m.MoralReputation = this.Math.minf(100.0, this.Math.max(0.0, this.m.MoralReputation + _f));
+		this.m.MoralReputation = ::Math.minf(100.0, ::Math.max(0.0, this.m.MoralReputation + _f));
 	}
 
 	function addMoney( _f )
@@ -369,7 +369,7 @@ this.asset_manager <- {
 		}
 
 		this.m.Money += _f;
-		this.Sound.play(this.Const.Sound.MoneyTransaction[this.Math.rand(0, this.Const.Sound.MoneyTransaction.len() - 1)], this.Const.Sound.Volume.Inventory);
+		this.Sound.play(::Const.Sound.MoneyTransaction[::Math.rand(0, ::Const.Sound.MoneyTransaction.len() - 1)], ::Const.Sound.Volume.Inventory);
 
 		if (_f > 0)
 		{
@@ -407,8 +407,8 @@ this.asset_manager <- {
 			}
 		}
 
-		this.m.BusinessReputation += this.Math.ceil(_f * this.m.BusinessReputationRate);
-		this.m.BusinessReputationMax = this.Math.max(this.m.BusinessReputation, this.m.BusinessReputationMax);
+		this.m.BusinessReputation += ::Math.ceil(_f * this.m.BusinessReputationRate);
+		this.m.BusinessReputationMax = ::Math.max(this.m.BusinessReputation, this.m.BusinessReputationMax);
 
 		if (this.m.BusinessReputation >= 1000)
 		{
@@ -428,7 +428,7 @@ this.asset_manager <- {
 
 	function setCampaignSettings( _settings )
 	{
-		this.m.CampaignID = this.Math.max(0, this.Math.rand());
+		this.m.CampaignID = ::Math.max(0, ::Math.rand());
 		this.m.Name = this.removeFromBeginningOfText("The ", this.removeFromBeginningOfText("the ", _settings.Name));
 		this.m.Banner = _settings.Banner;
 		this.m.BannerID = _settings.Banner.slice(_settings.Banner.find("_") + 1).tointeger();
@@ -440,11 +440,11 @@ this.asset_manager <- {
 		this.m.BusinessReputation = 0;
 		this.m.SeedString = _settings.Seed;
 		this.World.FactionManager.getGreaterEvil().Type = _settings.GreaterEvil;
-		this.m.Stash.resize(this.Const.LegendMod.MaxResources[_settings.EconomicDifficulty].Stash);
-		this.m.Money = this.Const.LegendMod.StartResources[_settings.BudgetDifficulty].Money;
-		this.m.Ammo = this.Const.LegendMod.StartResources[_settings.BudgetDifficulty].Ammo;
-		this.m.ArmorParts = this.Const.LegendMod.StartResources[_settings.BudgetDifficulty].ArmorParts;
-		this.m.Medicine = this.Const.LegendMod.StartResources[_settings.BudgetDifficulty].Medicine;
+		this.m.Stash.resize(::Const.LegendMod.MaxResources[_settings.EconomicDifficulty].Stash);
+		this.m.Money = ::Const.LegendMod.StartResources[_settings.BudgetDifficulty].Money;
+		this.m.Ammo = ::Const.LegendMod.StartResources[_settings.BudgetDifficulty].Ammo;
+		this.m.ArmorParts = ::Const.LegendMod.StartResources[_settings.BudgetDifficulty].ArmorParts;
+		this.m.Medicine = ::Const.LegendMod.StartResources[_settings.BudgetDifficulty].Medicine;
 		this.m.Stash.clear();
 		this.m.Origin.onSpawnAssets();
 		local bros = this.World.getPlayerRoster().getAll();
@@ -452,15 +452,15 @@ this.asset_manager <- {
 		foreach( bro in bros )
 		{
 			bro.getBackground().buildDescription(true);
-			bro.m.XP = this.Const.LevelXP[bro.m.Level - 1];
+			bro.m.XP = ::Const.LevelXP[bro.m.Level - 1];
 			bro.m.Attributes = [];
-			bro.fillAttributeLevelUpValues(this.Const.XP.MaxLevelWithPerkpoints - 1);
+			bro.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 			bro.getSkills().update();
 		}
 
 		this.updateFormation();
 
-		foreach( item in this.Const.World.Assets.NewCampaignEquipment )
+		foreach( item in ::Const.World.Assets.NewCampaignEquipment )
 		{
 			this.m.Stash.add(this.new(item));
 		}
@@ -471,22 +471,22 @@ this.asset_manager <- {
 
 	function getBusinessReputationAsText()
 	{
-		for( local i = 1; i != this.Const.BusinessReputation.len(); i = i )
+		for( local i = 1; i != ::Const.BusinessReputation.len(); i = i )
 		{
-			if (this.Const.BusinessReputation[i] > this.m.BusinessReputation)
+			if (::Const.BusinessReputation[i] > this.m.BusinessReputation)
 			{
-				return this.Const.Strings.BusinessReputation[i - 1];
+				return ::Const.Strings.BusinessReputation[i - 1];
 			}
 
 			i = ++i;
 		}
 
-		return this.Const.Strings.BusinessReputation[this.Const.Strings.BusinessReputation.len() - 1];
+		return ::Const.Strings.BusinessReputation[::Const.Strings.BusinessReputation.len() - 1];
 	}
 
 	function getMoralReputationAsText()
 	{
-		return this.Const.Strings.MoralReputation[this.Math.max(0, this.Math.min(this.Const.Strings.MoralReputation.len() - 1, this.m.MoralReputation / 10))];
+		return ::Const.Strings.MoralReputation[::Math.max(0, ::Math.min(::Const.Strings.MoralReputation.len() - 1, this.m.MoralReputation / 10))];
 	}
 
 	function getDailyMoneyCost()
@@ -530,9 +530,9 @@ this.asset_manager <- {
 					{
 						ret.ArmorParts += d * this.m.ArmorPartsPerArmor;
 
-						if (d / this.Const.World.Assets.ArmorPerHour > ret.Hours)
+						if (d / ::Const.World.Assets.ArmorPerHour > ret.Hours)
 						{
-							ret.Hours = d / this.Const.World.Assets.ArmorPerHour;
+							ret.Hours = d / ::Const.World.Assets.ArmorPerHour;
 						}
 					}
 				}
@@ -559,15 +559,15 @@ this.asset_manager <- {
 			{
 				ret.ArmorParts += d * this.m.ArmorPartsPerArmor;
 
-				if (d / this.Const.World.Assets.ArmorPerHour > ret.Hours)
+				if (d / ::Const.World.Assets.ArmorPerHour > ret.Hours)
 				{
-					ret.Hours = d / this.Const.World.Assets.ArmorPerHour;
+					ret.Hours = d / ::Const.World.Assets.ArmorPerHour;
 				}
 			}
 		}
 
-		ret.ArmorParts = this.Math.ceil(ret.ArmorParts);
-		ret.Hours = this.Math.ceil(ret.Hours / (this.isCamping() ? this.m.CampingMult : 1.0) / this.m.RepairSpeedMult);
+		ret.ArmorParts = ::Math.ceil(ret.ArmorParts);
+		ret.Hours = ::Math.ceil(ret.Hours / (this.isCamping() ? this.m.CampingMult : 1.0) / this.m.RepairSpeedMult);
 		return ret;
 	}
 
@@ -586,7 +586,7 @@ this.asset_manager <- {
 
 		foreach( bro in roster )
 		{
-			local injuries = bro.getSkills().query(this.Const.SkillType.TemporaryInjury);
+			local injuries = bro.getSkills().query(::Const.SkillType.TemporaryInjury);
 			local ht;
 
 			if (bro.getSkills().hasSkill("injury.sickness"))
@@ -597,8 +597,8 @@ this.asset_manager <- {
 			foreach( inj in injuries )
 			{
 				ht = inj.getHealingTime();
-				ret.MedicineMin += ht.Min * this.Const.World.Assets.MedicinePerInjuryDay;
-				ret.MedicineMax += ht.Max * this.Const.World.Assets.MedicinePerInjuryDay;
+				ret.MedicineMin += ht.Min * ::Const.World.Assets.MedicinePerInjuryDay;
+				ret.MedicineMax += ht.Max * ::Const.World.Assets.MedicinePerInjuryDay;
 
 				if (ht.Min > ret.DaysMin)
 				{
@@ -634,10 +634,10 @@ this.asset_manager <- {
 			ret.Modifier += rm;
 		}
 
-		ret.MedicineMin = this.Math.ceil(ret.MedicineMin);
-		ret.MedicineMax = this.Math.ceil(ret.MedicineMax);
-		ret.DaysMin = this.Math.ceil(ret.DaysMin);
-		ret.DaysMax = this.Math.ceil(ret.DaysMax);
+		ret.MedicineMin = ::Math.ceil(ret.MedicineMin);
+		ret.MedicineMax = ::Math.ceil(ret.MedicineMax);
+		ret.DaysMin = ::Math.ceil(ret.DaysMin);
+		ret.DaysMax = ::Math.ceil(ret.DaysMax);
 		return ret;
 	}
 
@@ -673,8 +673,8 @@ this.asset_manager <- {
 
 		if (food.len() != 0)
 		{
-			food = food[this.Math.rand(0, food.len() - 1)];
-			food.setAmount(this.Math.max(1, food.getAmount() - _num));
+			food = food[::Math.rand(0, food.len() - 1)];
+			food.setAmount(::Math.max(1, food.getAmount() - _num));
 		}
 	}
 
@@ -707,7 +707,7 @@ this.asset_manager <- {
 		this.m.TrainingPriceMult = 1.0;
 		this.m.TryoutPriceMult = 1.0;
 		this.m.ContractPaymentMult = 1.0;
-		this.m.ArmorPartsPerArmor = this.Const.World.Assets.ArmorPartsPerArmor;
+		this.m.ArmorPartsPerArmor = ::Const.World.Assets.ArmorPartsPerArmor;
 		this.m.HitpointsPerHourMult = 1.0;
 		this.m.RepairSpeedMult = 1.0;
 		this.m.HiringCostMult = 1.0;
@@ -724,7 +724,7 @@ this.asset_manager <- {
 		this.m.AmmoMaxAdditional = 0;
 		this.m.MedicineMaxAdditional = 0;
 		this.m.ArmorPartsMaxAdditional = 0;
-		this.m.TerrainTypeSpeedMult.resize(this.Const.World.TerrainFoodConsumption.len());
+		this.m.TerrainTypeSpeedMult.resize(::Const.World.TerrainFoodConsumption.len());
 
 		for( local i = 0; i < this.m.TerrainTypeSpeedMult.len(); i = i )
 		{
@@ -761,7 +761,7 @@ this.asset_manager <- {
 		local globalTable = this.getroottable();
 		globalTable.Stash <- this.WeakTableRef(this.m.Stash);
 
-		for( local i = 0; i < this.Const.LegendMod.Formations.Count; i = i )
+		for( local i = 0; i < ::Const.LegendMod.Formations.Count; i = i )
 		{
 			local name = "NULL";
 
@@ -820,7 +820,7 @@ this.asset_manager <- {
 
 		foreach( i, item in items )
 		{
-			if (item != null && item.isItemType(this.Const.Items.ItemType.Food))
+			if (item != null && item.isItemType(::Const.Items.ItemType.Food))
 			{
 				food.push(item);
 			}
@@ -839,7 +839,7 @@ this.asset_manager <- {
 		{
 			this.m.LastDayPaid = this.World.getTime().Days;
 
-			if (this.m.BusinessReputation > 0) this.m.BusinessReputation = this.Math.max(0, this.m.BusinessReputation + ::Const.World.Assets.ReputationDaily);
+			if (this.m.BusinessReputation > 0) this.m.BusinessReputation = ::Math.max(0, this.m.BusinessReputation + ::Const.World.Assets.ReputationDaily);
 
 			this.World.Retinue.onNewDay();
 
@@ -956,8 +956,8 @@ this.asset_manager <- {
 				alchemy_potions.clear();
 			}
 
-			this.Sound.play(::Const.Sound.MoneyTransaction[this.Math.rand(0, ::Const.Sound.MoneyTransaction.len() - 1)], ::Const.Sound.Volume.Inventory);
-			this.m.AverageMoodState = this.Math.round(mood / roster.len());
+			this.Sound.play(::Const.Sound.MoneyTransaction[::Math.rand(0, ::Const.Sound.MoneyTransaction.len() - 1)], ::Const.Sound.Volume.Inventory);
+			this.m.AverageMoodState = ::Math.round(mood / roster.len());
 			_worldState.updateTopbarAssets();
 
 			if (this.m.EconomicDifficulty >= 1 && this.m.CombatDifficulty >= 1)
@@ -992,13 +992,13 @@ this.asset_manager <- {
 				{
 					if (bro.getFlags().has("undead"))
 					{
-						bro.setHitpoints(this.Math.minf(bro.getHitpointsMax(), bro.getHitpoints() + ::Const.World.Assets.HitpointsPerHour / 10 * ::Const.Difficulty.HealMult[this.World.Assets.getEconomicDifficulty()] * this.m.HitpointsPerHourMult));
+						bro.setHitpoints(::Math.minf(bro.getHitpointsMax(), bro.getHitpoints() + ::Const.World.Assets.HitpointsPerHour / 10 * ::Const.Difficulty.HealMult[this.World.Assets.getEconomicDifficulty()] * this.m.HitpointsPerHourMult));
 					}
 					else
 					{
 						local amount = bro.getHitpoints() + ::Const.World.Assets.HitpointsPerHour * ::Const.Difficulty.HealMult[this.World.Assets.getEconomicDifficulty()] * this.m.HitpointsPerHourMult;
 						if (bro.getSkills().hasSkill("perk.legend_recuperation")) amount *= 1.25;
-						bro.setHitpoints(this.Math.minf(bro.getHitpointsMax(), amount));
+						bro.setHitpoints(::Math.minf(bro.getHitpointsMax(), amount));
 					}
 				}
 			}
@@ -1038,9 +1038,9 @@ this.asset_manager <- {
 				{
 					if (item.getRepair() < item.getRepairMax())
 					{
-						local d = this.Math.ceil(this.Math.minf(::Const.World.Assets.ArmorPerHour * ::Const.Difficulty.RepairMult[this.World.Assets.getEconomicDifficulty()] * this.m.RepairSpeedMult, item.getRepairMax() - item.getRepair()));
+						local d = ::Math.ceil(::Math.minf(::Const.World.Assets.ArmorPerHour * ::Const.Difficulty.RepairMult[this.World.Assets.getEconomicDifficulty()] * this.m.RepairSpeedMult, item.getRepairMax() - item.getRepair()));
 						item.onRepair(item.getRepair() + d);
-						this.m.ArmorParts = this.Math.maxf(0, this.m.ArmorParts - d * this.m.ArmorPartsPerArmor * perkMod);
+						this.m.ArmorParts = ::Math.maxf(0, this.m.ArmorParts - d * this.m.ArmorPartsPerArmor * perkMod);
 						updateBro = true;
 					}
 
@@ -1067,7 +1067,7 @@ this.asset_manager <- {
 			}
 
 			local items = this.m.Stash.getItems();
-			local stashmaxrepairpotential = this.Math.ceil(roster.len() * ::Const.Difficulty.RepairMult[this.World.Assets.getEconomicDifficulty()] * this.m.RepairSpeedMult * ::Const.World.Assets.ArmorPerHour);
+			local stashmaxrepairpotential = ::Math.ceil(roster.len() * ::Const.Difficulty.RepairMult[this.World.Assets.getEconomicDifficulty()] * this.m.RepairSpeedMult * ::Const.World.Assets.ArmorPerHour);
 
 			foreach( item in items )
 			{
@@ -1095,9 +1095,9 @@ this.asset_manager <- {
 				{
 					if (item.getRepair() < item.getRepairMax())
 					{
-						local d = this.Math.ceil(this.Math.minf(stashmaxrepairpotential, item.getRepairMax() - item.getRepair()));
+						local d = ::Math.ceil(::Math.minf(stashmaxrepairpotential, item.getRepairMax() - item.getRepair()));
 						item.onRepair(item.getRepair() + d);
-						this.m.ArmorParts = this.Math.maxf(0, this.m.ArmorParts - d * this.m.ArmorPartsPerArmor);
+						this.m.ArmorParts = ::Math.maxf(0, this.m.ArmorParts - d * this.m.ArmorPartsPerArmor);
 						stashmaxrepairpotential = stashmaxrepairpotential - d;
 					}
 
@@ -1193,14 +1193,14 @@ this.asset_manager <- {
 		}
 
 		//insert cultists - solution from davkul rising
-		if (this.World.FactionManager.getFactionOfType(this.Const.FactionType.Cultists) == null)
+		if (this.World.FactionManager.getFactionOfType(::Const.FactionType.Cultists) == null)
 		{
 			local cultist_faction = this.new("scripts/factions/cultist_faction")
 			local faction_manager = this.World.FactionManager;
 			cultist_faction.setID(faction_manager.m.Factions.len());
 			cultist_faction.setName("Cultist");
 			cultist_faction.setDiscovered(true);
-			cultist_faction.addTrait(this.Const.CultistTraits);
+			cultist_faction.addTrait(::Const.CultistTraits);
 			faction_manager.m.Factions.push(cultist_faction);
 			// this.World.Flags.set("spawnedCultists", true)
 			// cultist_faction.m.Flags.set("RitualSitesBeat", 0)
@@ -1220,7 +1220,7 @@ this.asset_manager <- {
 
 		if (roster.len() > 0)
 		{
-			this.m.AverageMoodState = this.Math.round(mood / roster.len());
+			this.m.AverageMoodState = ::Math.round(mood / roster.len());
 		}
 	}
 
@@ -1259,14 +1259,14 @@ this.asset_manager <- {
 
 			foreach( bro in roster )
 			{
-				local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+				local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
 
 				if (item != null && item.getID() == "weapon.player_banner")
 				{
 					hasStandard = true;
 				}
 
-				item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+				item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
 
 				if (item != null && item.getID() == "accessory.sergeant_badge")
 				{
@@ -1296,7 +1296,7 @@ this.asset_manager <- {
 
 				foreach( bro in roster )
 				{
-					bro.worsenMood(this.Const.MoodChange.StandardLost, "The company standard was lost");
+					bro.worsenMood(::Const.MoodChange.StandardLost, "The company standard was lost");
 				}
 			}
 
@@ -1316,7 +1316,7 @@ this.asset_manager <- {
 
 			foreach( bro in roster )
 			{
-				if (bro.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury))
+				if (bro.getSkills().hasSkillOfType(::Const.SkillType.TemporaryInjury))
 				{
 					numWithInjuries = ++numWithInjuries;
 					numWithInjuries = numWithInjuries;
@@ -1336,7 +1336,7 @@ this.asset_manager <- {
 
 			foreach( item in items )
 			{
-				if (item != null && item.isItemType(this.Const.Items.ItemType.Named))
+				if (item != null && item.isItemType(::Const.Items.ItemType.Named))
 				{
 					numNamedItems = ++numNamedItems;
 					numNamedItems = numNamedItems;
@@ -1349,33 +1349,33 @@ this.asset_manager <- {
 
 				foreach( bro in roster )
 				{
-					local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+					local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
 
-					if (item != null && item.isItemType(this.Const.Items.ItemType.Named))
+					if (item != null && item.isItemType(::Const.Items.ItemType.Named))
 					{
 						numNamedItems = ++numNamedItems;
 						numNamedItems = numNamedItems;
 					}
 
-					item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+					item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
-					if (item != null && item != "-1" && item.isItemType(this.Const.Items.ItemType.Named))
+					if (item != null && item != "-1" && item.isItemType(::Const.Items.ItemType.Named))
 					{
 						numNamedItems = ++numNamedItems;
 						numNamedItems = numNamedItems;
 					}
 
-					item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+					item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Head);
 
-					if (item != null && item.isItemType(this.Const.Items.ItemType.Named))
+					if (item != null && item.isItemType(::Const.Items.ItemType.Named))
 					{
 						numNamedItems = ++numNamedItems;
 						numNamedItems = numNamedItems;
 					}
 
-					item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
+					item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Body);
 
-					if (item != null && item.isItemType(this.Const.Items.ItemType.Named))
+					if (item != null && item.isItemType(::Const.Items.ItemType.Named))
 					{
 						numNamedItems = ++numNamedItems;
 						numNamedItems = numNamedItems;
@@ -1385,7 +1385,7 @@ this.asset_manager <- {
 					{
 						item = bro.getItems().getItemAtBagSlot(i);
 
-						if (item != null && item.isItemType(this.Const.Items.ItemType.Named))
+						if (item != null && item.isItemType(::Const.Items.ItemType.Named))
 						{
 							numNamedItems = ++numNamedItems;
 							numNamedItems = numNamedItems;
@@ -1449,7 +1449,7 @@ this.asset_manager <- {
 					chance = chance * 0.5;
 				}
 
-				if (this.Math.rand(1, 100) <= chance)
+				if (::Math.rand(1, 100) <= chance)
 				{
 					candidates.push(bro);
 				}
@@ -1458,7 +1458,7 @@ this.asset_manager <- {
 
 		if (candidates.len() != 0)
 		{
-			local bro = candidates[this.Math.rand(0, candidates.len() - 1)];
+			local bro = candidates[::Math.rand(0, candidates.len() - 1)];
 
 			if (this.World.getPlayerRoster().getSize() > 1)
 			{
@@ -1486,13 +1486,13 @@ this.asset_manager <- {
 			{
 				if ("m" in item && "is_alchemy_ammo" in item.m) continue; //alchemy ammo change
 
-				if (item.isItemType(this.Const.Items.ItemType.Ammo) && item.getAmmo() < item.getAmmoMax())
+				if (item.isItemType(::Const.Items.ItemType.Ammo) && item.getAmmo() < item.getAmmoMax())
 				{
-					local a = this.Math.min(this.m.Ammo, this.Math.ceil(item.getAmmoMax() - item.getAmmo()) * item.getAmmoCost());
+					local a = ::Math.min(this.m.Ammo, ::Math.ceil(item.getAmmoMax() - item.getAmmo()) * item.getAmmoCost());
 
 					if (this.m.Ammo >= a)
 					{
-						item.setAmmo(item.getAmmo() + this.Math.ceil(a / item.getAmmoCost()));
+						item.setAmmo(item.getAmmo() + ::Math.ceil(a / item.getAmmoCost()));
 						this.m.Ammo -= a;
 					}
 				}
@@ -1742,7 +1742,7 @@ this.asset_manager <- {
 				Slots = []
 			};
 
-			for( local i = this.Const.ItemSlot.Mainhand; i <= this.Const.ItemSlot.Ammo; i = i )
+			for( local i = ::Const.ItemSlot.Mainhand; i <= ::Const.ItemSlot.Ammo; i = i )
 			{
 				local item = bro.getItems().getItemAtSlot(i);
 
@@ -1765,7 +1765,7 @@ this.asset_manager <- {
 				{
 					store.Slots.push({
 						Item = item,
-						Slot = this.Const.ItemSlot.Bag
+						Slot = ::Const.ItemSlot.Bag
 					});
 				}
 
@@ -1793,7 +1793,7 @@ this.asset_manager <- {
 			local itemsHandled = [];
 			local overflowItems = [];
 
-			for( local i = this.Const.ItemSlot.Mainhand; i <= this.Const.ItemSlot.Ammo; i = i )
+			for( local i = ::Const.ItemSlot.Mainhand; i <= ::Const.ItemSlot.Ammo; i = i )
 			{
 				local item = bro.getItems().getItemAtSlot(i);
 
@@ -1817,7 +1817,7 @@ this.asset_manager <- {
 				{
 					currentItems.push({
 						Item = item,
-						Slot = this.Const.ItemSlot.Bag
+						Slot = ::Const.ItemSlot.Bag
 					});
 					bro.getItems().removeFromBag(item);
 				}
@@ -1843,7 +1843,7 @@ this.asset_manager <- {
 					continue;
 				}
 
-				if (item.Slot == this.Const.ItemSlot.Bag)
+				if (item.Slot == ::Const.ItemSlot.Bag)
 				{
 					if (!bro.getItems().addToBag(item.Item))
 					{
@@ -1870,7 +1870,7 @@ this.asset_manager <- {
 					continue;
 				}
 
-				if (item.Item.getCurrentSlotType() == this.Const.ItemSlot.Bag)
+				if (item.Item.getCurrentSlotType() == ::Const.ItemSlot.Bag)
 				{
 					if (!bro.getItems().addToBag(item.Item))
 					{
@@ -1925,7 +1925,7 @@ this.asset_manager <- {
 		}
 		else if (this.m.BusinessReputation >= 6000 && this.World.Statistics.getFlags().get("GreaterEvilsDefeated") >= 2)
 		{
-			this.Music.setTrackList(this.Const.Music.Retirement4Tracks, this.Const.Music.CrossFadeTime);
+			this.Music.setTrackList(::Const.Music.Retirement4Tracks, ::Const.Music.CrossFadeTime);
 			this.updateAchievement("LeavingALegacy", 1, 1);
 			data.Image = "ui/screens/retirement_04.jpg";
 			data.Text = "{Your dreams are more realistic than the life you\'ve led! Under your command, not only did the %companyname% reach enormous heights of wealth, honor, and renown, you helped defeat a multitude of evils, invasions, and wars that nearly wrecked the entire realm! | The %companyname% is a name known throughout the land. Not only has it amassed wealth, power, and renown, it has been critical in defeating a number of crises that plagued the land. Scribes and historians will speak of the company so that even thousands of years from now people shall know the %companyname%! | After retiring, a scribe came to you with an artist at his side. They drew a figure of you and wrote down your words onto a very, very long scroll. It appears, having defeated multiple crises and amassed incredible wealth, people many years from now will know the name of the %companyname%. | Leaving the %companyname% wasn\'t easy, but you knew in your heart that it was the right choice. And it couldn\'t have been made at a better time: the company was renowned throughout the land, it had helped defeat a series of crises, and, most crucial of all, had attained unheard of levels of wealth. | Behind your leadership, the %companyname% acquired great fame around the land, not to mention considerable thanks for helping end a series of crises that threatened the entire realm! Mercenaries don\'t often make it into the history books, but you\'ve no doubt that the scribes and scholars will run out of ink writing about the %companyname%!}";
@@ -1936,33 +1936,33 @@ this.asset_manager <- {
 		}
 		else if (this.World.Statistics.getFlags().get("GreaterEvilsDefeated") >= 1)
 		{
-			this.Music.setTrackList(this.Const.Music.Retirement3Tracks, this.Const.Music.CrossFadeTime);
+			this.Music.setTrackList(::Const.Music.Retirement3Tracks, ::Const.Music.CrossFadeTime);
 			this.updateAchievement("LeavingAMark", 1, 1);
 			data.Image = "ui/screens/retirement_03.jpg";
 			this.removeSuccessor(brothers);
 
-			if (this.World.FactionManager.getGreaterEvil().LastType == this.Const.World.GreaterEvilType.CivilWar)
+			if (this.World.FactionManager.getGreaterEvil().LastType == ::Const.World.GreaterEvilType.CivilWar)
 			{
 				data.Text = "{Taking over the %companyname%, you had a vision for the company and its men, a vision that ended with you sitting on a king\'s throne and the world\'s most expensive wine sloshing around a golden goblet. That part didn\'t come true, but you did manage to lead the company to great heights in the civil war amongst the nobles.\n\n Such struggles are inevitable amongst the highborn and you took great advantage of the conflict to earn the %companyname% renown and riches. Of course, the brutality of the fighting also taught you that life was short and fickle for a fighting man. Once things settled down, you realized that, to the nobility, it didn\'t matter in the least who you were and what part you played in the conflict. You were just a cog, and you would always be just a cog. Taking that moment of reflection seriously, you decided to retire, leaving the company in about as good of a state as you could. | When you took over the %companyname%, you truly believed you could lead it to greatness. Those goals were probably a bit too lofty, but you did manage to at the very least build a company of incredible renown. As the nobles inevitably slid toward war, it didn\'t surprise you in the least to see that the company\'s services were the most popular in the land. The war proved itself as brutal and horrific as any you\'d ever seen, but at least this time you walked away with more coin than you knew what to do with.\n\n Retiring with your pile of gold, you left the company in the command of the bravest mercenary still alive to take the job. The band continues its success to this day.}";
 				data.Text += this.addBrotherEnding(brothers, excludedBackgrounds, true);
 				data.Text += this.addBrotherEnding(brothers, excludedBackgrounds, true);
 				data.Text += "\n\n{It\'s very rare for a mercenary to leave the life behind with his body intact, but you managed to do just that. While being of sound body and mind are important, you most appreciate the pile of crowns you spend your nights sleeping on. Last you heard, the nobles were squabbling their way into another war and you could not care less. | With good mind and health, you continue to live out the rest of your days in moderate peace. The most awful thing to happen to you in months was when a hermit ventured out of the wilderness to steal your firewood. That\'s the sort of life you always wanted and you could not be happier having it.}";
 			}
-			else if (this.World.FactionManager.getGreaterEvil().LastType == this.Const.World.GreaterEvilType.Greenskins)
+			else if (this.World.FactionManager.getGreaterEvil().LastType == ::Const.World.GreaterEvilType.Greenskins)
 			{
 				data.Text = "{When you took over the %companyname%, you did not foresee history rising up to repeat itself in the worst way possible. \'The Battle of Many Names\' was just something you\'d heard about, but to see the impetuous behind it - a great invasion of greenskins - repeat itself in your own lifetime was quite the sight. And you were ready to meet it.\n\n Though the company is unlikely to see very many mentions in the histories of the world, you\'ve no doubt that it proved crucial in defeating the green savages. If not, then why else do you have an enormous pile of gold to speak for?\n\n And it was upon that pile of coin you decided to retire, leaving the outfit in the best hands available. | The Battle of Many Names, that\'s what the scribes called the great clash between all of mankind and the vast hordes of greenskins. You thought those stories were of a bygone age, but the horde of savages pouring over the eastern horizons proved otherwise. This time, the orcs and goblins learned to invade all across the land instead of in one place. Despite their new strategy, the world of man had a new weapon: the %companyname%.\n\n Perhaps it is just your own pride speaking, but you truly believe your company\'s admittedly greedy ventures proved crucial in turning the tides of green back. And with the greenskins defeated, you found yourself with a pile of gold to retire on, leaving the command of the company in the hands of its best and brightest.}";
 				data.Text += this.addBrotherEnding(brothers, excludedBackgrounds, true);
 				data.Text += this.addBrotherEnding(brothers, excludedBackgrounds, true);
 				data.Text += "\n\n{Some nights you wake up, sweat on your head, a berserker\'s growl fading into the stillborn memories of a dream rendered incomplete. These nightmares won\'t leave you alone, proving themselves the ultimate price for your newfound treasures. While the %companyname% is doing well, you sometimes wonder if it\'d be best that you were leading it again. In the \'peace\' of your retirement you\'ve learned that the horrors that you can grab and kill are a world\'s difference from those which lurk amongst your worst fears. | Your days are now spent tending to a garden and slaying the rabbits which venture into your newfound domain. Every so often you\'ll get wind of the %companyname%\'s doings, stories about its successes and, unfortunately, the occasional news that one of the brothers has fallen. These tales are a welcomed respite from days upon days of chasing rabbits out of your garden. You spent so much time fighting, you never realized what wars were waged between men of harvest and these goddam nibbling monsters.}";
 			}
-			else if (this.World.FactionManager.getGreaterEvil().LastType == this.Const.World.GreaterEvilType.Undead)
+			else if (this.World.FactionManager.getGreaterEvil().LastType == ::Const.World.GreaterEvilType.Undead)
 			{
 				data.Text = "{You thought you understood the cruelties of the world. When you took over the %companyname%, you believed that you could always be sure in leading the company to riches and renown. Dead men coming up out of their graves has a way of defeating this sort of naivety. But you were quick to adapt, earnestly seeking out contracts that would pay the most to deal with this bizarre and surreal threat. The undead hordes were eventually beaten back to whence they came.\n\n Crowns, honor, prestige, they had all been earned. You decided to retire, leaving the company in the trust of its best men. | When you took over the %companyname% you could not have possibly foresaw the future in which it was pivotal in defeating hordes of undead invaders. Unusual bounties on the dead proved incredibly profitable, however, and with a pile of gold made in the wake of the great evil\'s passing, you took the moment to retire. The %companyname% was left in the care of the members you trusted most.}";
 				data.Text += this.addBrotherEnding(brothers, excludedBackgrounds, true);
 				data.Text += this.addBrotherEnding(brothers, excludedBackgrounds, true);
 				data.Text += "\n\n{Nowadays, you spend a good deal of time wondering if you should add a second story to your cabin, or whether that\'s too much work. You could always pay someone else to help, but it just feels strange contracting someone else to the task. And, as far as the %companyname% is concerned, you\'ve heard that it is doing splendidly well to this day. | You spend your days flirting with the neighbor. She\'s married, but that\'s what makes it more fun. The constable came by to speak to you about your newfound proclivities. This is about the height of the drama in your life now. It isn\'t dodging orcs or putting undead souls back into the grave, but it has its own unique sense of fun. You don\'t miss the old life at all. Instead, you can happily sit back and hear of the %companyname%\'s successes.}";
 			}
-			else if (this.World.FactionManager.getGreaterEvil().LastType == this.Const.World.GreaterEvilType.HolyWar)
+			else if (this.World.FactionManager.getGreaterEvil().LastType == ::Const.World.GreaterEvilType.HolyWar)
 			{
 				data.Text = "{Commanding the %companyname%, you thought it might play the part of sellsword with a dash of brigandage. Little did you realize that the whole world would be embroiled in religious turmoil. When the north and south turned on each other with their holy furies, you captained the company to opulent ends. If the old gods\' followers asked for your sword, you brought the might and main of the northern mountains. If the Gilded asked for light, you brought the sun. | It is said that the godlier the man, the more human the god. When the religious shatterbelt between north and south exploded, all manner of religious chiselers washed across the holy transom. The sacred sort deified their own spirits, sharpening the utility of war as if it were the gods themselves which commanded it. Perhaps they did, but ultimately all you were concerned about was that the %companyname% serve itself. Gilder? Old gods? All you cared about were your own pockets and by the end of all that holy nonsense they were quite full indeed.}";
 				data.Text += this.addBrotherEnding(brothers, excludedBackgrounds, true);
@@ -1972,11 +1972,11 @@ this.asset_manager <- {
 		}
 		else if (this.m.BusinessReputation >= 1100 && this.World.Ambitions.getAmbition("ambition.make_nobles_aware").isDone())
 		{
-			this.Music.setTrackList(this.Const.Music.Retirement2Tracks, this.Const.Music.CrossFadeTime);
+			this.Music.setTrackList(::Const.Music.Retirement2Tracks, ::Const.Music.CrossFadeTime);
 			this.updateAchievement("ABitterEnd", 1, 1);
 			data.Image = "ui/screens/retirement_02.jpg";
 
-			if (this.Math.rand(1, 100) <= 25)
+			if (::Math.rand(1, 100) <= 25)
 			{
 				data.Text = "You rebuilt well the %companyname%. You worked hard to bolster its ranks with fresh bodies, and you worked even harder to make sure that the name meant something again across the land. When you finally retired, you left %highestbravery_bro% in command of the company and wished him well.\n\nUnder his leadership, the %companyname% did well enough, working wherever there was coin to be made for crossing swords.\n\nThen, several months after your leave, a feud between noble houses escalated. %highestbravery_bro% didn\'t hesistate to seize this opportunity to fill the company\'s coffers with spoils of war, but others chose to seek a different path.";
 				this.removeSuccessor(brothers);
@@ -1995,7 +1995,7 @@ this.asset_manager <- {
 		}
 		else
 		{
-			this.Music.setTrackList(this.Const.Music.Retirement1Tracks, this.Const.Music.CrossFadeTime);
+			this.Music.setTrackList(::Const.Music.Retirement1Tracks, ::Const.Music.CrossFadeTime);
 			this.updateAchievement("EarlyRetirement", 1, 1);
 			data.Image = "ui/screens/retirement_01.jpg";
 			data.Text = "{Without your leadership, the %companyname% quickly broke apart. Everyone went their own way, but what is a man supposed to do whose only real talent is fighting? | The %companyname% fell apart not long after your retirement. The new leadership chose poorly with its contracts and proved to be an even poorer commander in battle. When making money and winning battles is your business, it\'s not that surprising the company failed shortly after your departure. | With you no longer leading it, the %companyname% acquired a series of poor contracts that eventually lead to it breaking apart. | You decided to retire from fighting before it got to you like it gets to everyone else - with a sword and an embarrassingly bloodcurdling scream. One of the brothers took over, but while they were great sellswords, there\'s a world of difference between battling and leading. The %companyname% suffered a series of bad contracts and even worse battles leading to its eventual demise. | Your decision to retire did not come easy, neither for you nor the %companyname% which desperately argued for you to stay. But the time had come and so you went. One of the mercenaries took over as head of the band, but being a good fighter does not make you a great leader and the company soon dissolved. | The mercenaries tried to get you to stay, but you felt it was time to retire from fighting altogether. Last you heard, the %companyname%\'s new commander was fooled into a horrible contract. The money wasn\'t right, and the battle itself went south in a real hurry. The company completely broke apart not long after this misstep.}";
@@ -2042,11 +2042,11 @@ this.asset_manager <- {
 			return "";
 		}
 
-		local bro = candidates[this.Math.rand(0, candidates.len() - 1)];
+		local bro = candidates[::Math.rand(0, candidates.len() - 1)];
 		_brothers.remove(bro.Index);
 		_excludedBackgrounds.push(bro.Bro.getBackground().getID());
 		local villages = this.World.EntityManager.getSettlements();
-		local nobleHouses = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+		local nobleHouses = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 		local vars = [
 			[
 				"SPEECH_ON",
@@ -2062,26 +2062,26 @@ this.asset_manager <- {
 			],
 			[
 				"randomname",
-				this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]
+				::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]
 			],
 			[
 				"randomnoblehouse",
-				nobleHouses[this.Math.rand(0, nobleHouses.len() - 1)].getName()
+				nobleHouses[::Math.rand(0, nobleHouses.len() - 1)].getName()
 			],
 			[
 				"randomnoble",
-				this.Const.Strings.KnightNames[this.Math.rand(0, this.Const.Strings.KnightNames.len() - 1)]
+				::Const.Strings.KnightNames[::Math.rand(0, ::Const.Strings.KnightNames.len() - 1)]
 			],
 			[
 				"randomtown",
-				villages[this.Math.rand(0, villages.len() - 1)].getNameOnly()
+				villages[::Math.rand(0, villages.len() - 1)].getNameOnly()
 			],
 			[
 				"name",
 				bro.Bro.getNameOnly()
 			]
 		];
-		this.Const.LegendMod.extendVarsWithPronouns(vars, bro.Bro.getGender());
+		::Const.LegendMod.extendVarsWithPronouns(vars, bro.Bro.getGender());
 
 		if (_isPositive)
 		{
@@ -2114,7 +2114,7 @@ this.asset_manager <- {
 	{
 		local brothers = this.World.getPlayerRoster().getAll();
 		local villages = this.World.EntityManager.getSettlements();
-		local nobleHouses = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.NobleHouse);
+		local nobleHouses = this.World.FactionManager.getFactionsOfType(::Const.FactionType.NobleHouse);
 		local text;
 		local vars = [
 			[
@@ -2131,32 +2131,32 @@ this.asset_manager <- {
 			],
 			[
 				"randomname",
-				this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]
+				::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]
 			],
 			[
 				"randomnoblehouse",
-				nobleHouses[this.Math.rand(0, nobleHouses.len() - 1)].getName()
+				nobleHouses[::Math.rand(0, nobleHouses.len() - 1)].getName()
 			],
 			[
 				"randomnoble",
-				this.Const.Strings.KnightNames[this.Math.rand(0, this.Const.Strings.KnightNames.len() - 1)]
+				::Const.Strings.KnightNames[::Math.rand(0, ::Const.Strings.KnightNames.len() - 1)]
 			],
 			[
 				"randomtown",
-				villages[this.Math.rand(0, villages.len() - 1)].getNameOnly()
+				villages[::Math.rand(0, villages.len() - 1)].getNameOnly()
 			]
 		];
 
 		if (brothers.len() != 0)
 		{
-			local brother1 = this.Math.rand(0, brothers.len() - 1);
-			local brother2 = this.Math.rand(0, brothers.len() - 1);
+			local brother1 = ::Math.rand(0, brothers.len() - 1);
+			local brother2 = ::Math.rand(0, brothers.len() - 1);
 
 			if (brothers.len() >= 2)
 			{
 				while (brother1 == brother2)
 				{
-					brother2 = this.Math.rand(0, brothers.len() - 1);
+					brother2 = ::Math.rand(0, brothers.len() - 1);
 				}
 			}
 
@@ -2210,12 +2210,12 @@ this.asset_manager <- {
 			{
 				s = s + item.getValue() * 0.002;
 
-				if (item.isItemType(this.Const.Items.ItemType.Named))
+				if (item.isItemType(::Const.Items.ItemType.Named))
 				{
 					namedItems = ++namedItems;
 					namedItems = namedItems;
 				}
-				else if (item.isItemType(this.Const.Items.ItemType.Legendary) && item.getID() != "armor.head.fangshire")
+				else if (item.isItemType(::Const.Items.ItemType.Legendary) && item.getID() != "armor.head.fangshire")
 				{
 					legendaryItems = ++legendaryItems;
 					legendaryItems = legendaryItems;
@@ -2228,90 +2228,90 @@ this.asset_manager <- {
 		foreach( bro in roster )
 		{
 			s = s + bro.getLevel() * 4;
-			local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+			local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
 
 			if (item != null)
 			{
 				s = s + item.getValue() * 0.002;
 
-				if (item.isItemType(this.Const.Items.ItemType.Named))
+				if (item.isItemType(::Const.Items.ItemType.Named))
 				{
 					namedItems = ++namedItems;
 					namedItems = namedItems;
 				}
-				else if (item.isItemType(this.Const.Items.ItemType.Legendary))
+				else if (item.isItemType(::Const.Items.ItemType.Legendary))
 				{
 					legendaryItems = ++legendaryItems;
 					legendaryItems = legendaryItems;
 				}
 			}
 
-			item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+			item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
 			if (item != null)
 			{
 				s = s + item.getValue() * 0.002;
 
-				if (item.isItemType(this.Const.Items.ItemType.Named))
+				if (item.isItemType(::Const.Items.ItemType.Named))
 				{
 					namedItems = ++namedItems;
 					namedItems = namedItems;
 				}
-				else if (item.isItemType(this.Const.Items.ItemType.Legendary))
+				else if (item.isItemType(::Const.Items.ItemType.Legendary))
 				{
 					legendaryItems = ++legendaryItems;
 					legendaryItems = legendaryItems;
 				}
 			}
 
-			item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+			item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Head);
 
 			if (item != null)
 			{
 				s = s + item.getValue() * 0.002;
 
-				if (item.isItemType(this.Const.Items.ItemType.Named))
+				if (item.isItemType(::Const.Items.ItemType.Named))
 				{
 					namedItems = ++namedItems;
 					namedItems = namedItems;
 				}
-				else if (item.isItemType(this.Const.Items.ItemType.Legendary) && item.getID() != "armor.head.fangshire")
+				else if (item.isItemType(::Const.Items.ItemType.Legendary) && item.getID() != "armor.head.fangshire")
 				{
 					legendaryItems = ++legendaryItems;
 					legendaryItems = legendaryItems;
 				}
 			}
 
-			item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
+			item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Body);
 
 			if (item != null)
 			{
 				s = s + item.getValue() * 0.002;
 
-				if (item.isItemType(this.Const.Items.ItemType.Named))
+				if (item.isItemType(::Const.Items.ItemType.Named))
 				{
 					namedItems = ++namedItems;
 					namedItems = namedItems;
 				}
-				else if (item.isItemType(this.Const.Items.ItemType.Legendary))
+				else if (item.isItemType(::Const.Items.ItemType.Legendary))
 				{
 					legendaryItems = ++legendaryItems;
 					legendaryItems = legendaryItems;
 				}
 			}
 
-			item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+			item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
 
 			if (item != null)
 			{
 				s = s + item.getValue() * 0.002;
 
-				if (item.isItemType(this.Const.Items.ItemType.Named))
+				if (item.isItemType(::Const.Items.ItemType.Named))
 				{
 					namedItems = ++namedItems;
 					namedItems = namedItems;
 				}
-				else if (item.isItemType(this.Const.Items.ItemType.Legendary))
+				else if (item.isItemType(::Const.Items.ItemType.Legendary))
 				{
 					legendaryItems = ++legendaryItems;
 					legendaryItems = legendaryItems;
@@ -2326,12 +2326,12 @@ this.asset_manager <- {
 				{
 					s = s + item.getValue() * 0.002;
 
-					if (item.isItemType(this.Const.Items.ItemType.Named))
+					if (item.isItemType(::Const.Items.ItemType.Named))
 					{
 						namedItems = ++namedItems;
 						namedItems = namedItems;
 					}
-					else if (item.isItemType(this.Const.Items.ItemType.Legendary))
+					else if (item.isItemType(::Const.Items.ItemType.Legendary))
 					{
 						legendaryItems = ++legendaryItems;
 						legendaryItems = legendaryItems;
@@ -2348,11 +2348,11 @@ this.asset_manager <- {
 
 		if (this.World.Statistics.getFlags().has("GreaterEvilsDefeated") && this.World.Statistics.getFlags().get("GreaterEvilsDefeated") >= 1)
 		{
-			s = s * this.Math.pow(1.25, this.World.Statistics.getFlags().get("GreaterEvilsDefeated"));
+			s = s * ::Math.pow(1.25, this.World.Statistics.getFlags().get("GreaterEvilsDefeated"));
 		}
 
-		s = s / this.Math.maxf(10.0, this.World.getTime().Days);
-		return this.Math.max(0, this.Math.round(s * 10));
+		s = s / ::Math.maxf(10.0, this.World.getTime().Days);
+		return ::Math.max(0, ::Math.round(s * 10));
 	}
 
 	function getRosterDescription()
@@ -2398,7 +2398,7 @@ this.asset_manager <- {
 			ret.TerrainModifiers[10][1] += terrains[18] * 100.0;
 			ret.Brothers.push({
 				Name = bro.getName(),
-				Mood = this.Const.MoodStateIcon[bro.getMoodState()],
+				Mood = ::Const.MoodStateIcon[bro.getMoodState()],
 				Level = bro.getLevel(),
 				Background = bro.getBackground().getNameOnly()
 			});
@@ -2487,12 +2487,12 @@ this.asset_manager <- {
 		if (_in.getMetaData().getVersion() >= 46)
 		{
 			this.m.Origin = _in.readString();
-			this.m.Origin = this.Const.ScenarioManager.getScenario(this.m.Origin);
+			this.m.Origin = ::Const.ScenarioManager.getScenario(this.m.Origin);
 		}
 
 		if (this.m.Origin == null)
 		{
-			this.m.Origin = this.Const.ScenarioManager.getScenario("scenario.tutorial");
+			this.m.Origin = ::Const.ScenarioManager.getScenario("scenario.tutorial");
 		}
 
 		if (_in.getMetaData().getVersion() >= 41)
@@ -2511,9 +2511,9 @@ this.asset_manager <- {
 		}
 
 		this.m.Money = _in.readF32();
-		this.m.Ammo = this.Math.max(0, _in.readF32());
-		this.m.ArmorParts = this.Math.max(0, _in.readF32());
-		this.m.Medicine = this.Math.max(0, _in.readF32());
+		this.m.Ammo = ::Math.max(0, _in.readF32());
+		this.m.ArmorParts = ::Math.max(0, _in.readF32());
+		this.m.Medicine = ::Math.max(0, _in.readF32());
 		this.m.BusinessReputation = _in.readU32();
 		this.m.MoralReputation = _in.readF32();
 		this.m.Score = _in.readF32();
@@ -2529,7 +2529,7 @@ this.asset_manager <- {
 
 		if (_in.getMetaData().getVersion() >= 47)
 		{
-			for( local i = 0; i < this.Const.LegendMod.Formations.Count; i = i )
+			for( local i = 0; i < ::Const.LegendMod.Formations.Count; i = i )
 			{
 				this.setFormationName(i, _in.readString());
 				i = ++i;

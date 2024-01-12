@@ -15,7 +15,7 @@ this.greenskins_trapped_goblin_event <- this.inherit("scripts/events/event", {
 					Text = "Kill it.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 50)
+						if (::Math.rand(1, 100) <= 50)
 						{
 							return "B";
 						}
@@ -30,7 +30,7 @@ this.greenskins_trapped_goblin_event <- this.inherit("scripts/events/event", {
 					Text = "Leave it.",
 					function getResult( _event )
 					{
-						if (this.Math.rand(1, 100) <= 70)
+						if (::Math.rand(1, 100) <= 70)
 						{
 							return "D";
 						}
@@ -66,7 +66,7 @@ this.greenskins_trapped_goblin_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				local item;
-				local r = this.Math.rand(1, 6);
+				local r = ::Math.rand(1, 6);
 
 				if (r == 1)
 				{
@@ -119,7 +119,7 @@ this.greenskins_trapped_goblin_event <- this.inherit("scripts/events/event", {
 						properties.Music = ::Const.Music.BeastsTracks;
 						properties.IsAutoAssigningBases = false;
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Ghouls, this.Math.rand(70, 90), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Ghouls, ::Math.rand(70, 90), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}
@@ -129,7 +129,7 @@ this.greenskins_trapped_goblin_event <- this.inherit("scripts/events/event", {
 			function start( _event )
 			{
 				local item;
-				local r = this.Math.rand(1, 6);
+				local r = ::Math.rand(1, 6);
 
 				if (r == 1)
 				{
@@ -206,7 +206,7 @@ this.greenskins_trapped_goblin_event <- this.inherit("scripts/events/event", {
 						properties.EnemyBanners = [
 							"banner_goblins_03"
 						];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.GreenskinHorde, this.Math.rand(70, 90), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.GreenskinHorde, ::Math.rand(70, 90), ::Const.Faction.Enemy);
 						this.World.State.startScriptedCombat(properties, false, false, true);
 						return 0;
 					}

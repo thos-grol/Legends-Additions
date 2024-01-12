@@ -87,7 +87,7 @@ this.civilwar_intro_event <- this.inherit("scripts/events/event", {
 
 		do
 		{
-			noblehouse2 = nobles[this.Math.rand(0, nobles.len() - 1)];
+			noblehouse2 = nobles[::Math.rand(0, nobles.len() - 1)];
 		}
 		while (noblehouse2 == null || noblehouse2.getID() == this.m.NobleHouse.getID());
 

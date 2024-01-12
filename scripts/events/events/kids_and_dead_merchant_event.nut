@@ -78,7 +78,7 @@ this.kids_and_dead_merchant_event <- this.inherit("scripts/events/event", {
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
-				item = this.Math.rand(25, 50);
+				item = ::Math.rand(25, 50);
 				this.World.Assets.addMoney(item);
 				this.List.push({
 					id = 10,
@@ -89,9 +89,9 @@ this.kids_and_dead_merchant_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
-						if (this.Math.rand(1, 100) <= 66)
+						if (::Math.rand(1, 100) <= 66)
 						{
 							local injury = bro.addInjury(::Const.Injury.Brawl);
 							this.List.push({
@@ -140,7 +140,7 @@ this.kids_and_dead_merchant_event <- this.inherit("scripts/events/event", {
 					icon = "ui/items/" + item.getIcon(),
 					text = "You gain " + ::Const.Strings.getArticle(item.getName()) + item.getName()
 				});
-				item = this.Math.rand(25, 50);
+				item = ::Math.rand(25, 50);
 				this.World.Assets.addMoney(item);
 				this.List.push({
 					id = 10,
@@ -185,7 +185,7 @@ this.kids_and_dead_merchant_event <- this.inherit("scripts/events/event", {
 
 		if (candidates_hedgeknight.len() != 0)
 		{
-			this.m.HedgeKnight = candidates_hedgeknight[this.Math.rand(0, candidates_hedgeknight.len() - 1)];
+			this.m.HedgeKnight = candidates_hedgeknight[::Math.rand(0, candidates_hedgeknight.len() - 1)];
 		}
 
 		this.m.Score = 5;

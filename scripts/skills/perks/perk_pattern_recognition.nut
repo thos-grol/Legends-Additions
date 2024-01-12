@@ -20,12 +20,12 @@ this.perk_pattern_recognition <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "perk.pattern_recognition";
-		this.m.Name = this.Const.Strings.PerkName.PatternRecognition;
+		this.m.Name = ::Const.Strings.PerkName.PatternRecognition;
 		this.m.Description = "This character is quick to understand the fighting style of %their% opponents, getting better at fighting them as the combat draws on.";
 		this.m.Icon = "ui/perks/pattern_recognition.png";
 		this.m.IconMini = "pattern_recognition_mini";
-		this.m.Type = this.Const.SkillType.Perk | this.Const.SkillType.StatusEffect;
-		this.m.Order = this.Const.SkillOrder.Perk;
+		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.Perk;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
@@ -75,7 +75,7 @@ this.perk_pattern_recognition <- this.inherit("scripts/skills/skill", {
 					id = 10,
 					type = "text",
 					icon = "ui/orientation/" + opponent.getOverlayImage() + ".png",
-					text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.getBonus(opponentEntry) + "[/color] against " + opponent.getName()
+					text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.getBonus(opponentEntry) + "[/color] against " + opponent.getName()
 				}
 			);
 		}
@@ -93,7 +93,7 @@ this.perk_pattern_recognition <- this.inherit("scripts/skills/skill", {
 			{
 				_tooltip.push({
 					icon = "ui/tooltips/positive.png",
-					text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + this.getBonus(opponentEntry) + "%[/color] " + this.getName()
+					text = "[color=" + ::Const.UI.Color.PositiveValue + "]" + this.getBonus(opponentEntry) + "%[/color] " + this.getName()
 				});
 			}
 		}
@@ -108,7 +108,7 @@ this.perk_pattern_recognition <- this.inherit("scripts/skills/skill", {
 		{
 			_tooltip.push({
 				icon = "ui/tooltips/negative.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + this.getBonus(opponentEntry) + "%[/color] Pattern Recognition"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]" + this.getBonus(opponentEntry) + "%[/color] Pattern Recognition"
 			});
 		}
 	}
@@ -128,7 +128,7 @@ this.perk_pattern_recognition <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 
-		if (!actor.isPlacedOnMap() || actor.getMoraleState() == this.Const.MoraleState.Fleeing)
+		if (!actor.isPlacedOnMap() || actor.getMoraleState() == ::Const.MoraleState.Fleeing)
 		{
 			return;
 		}

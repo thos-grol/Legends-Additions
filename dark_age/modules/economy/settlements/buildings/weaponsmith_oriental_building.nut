@@ -197,7 +197,7 @@
 
 		foreach( i in ::Const.Items.NamedMeleeWeapons )
 		{
-			if (this.Math.rand(1, 100) <= 30)
+			if (::Math.rand(1, 100) <= 30)
 			{
 				list.push({
 					R = 99,

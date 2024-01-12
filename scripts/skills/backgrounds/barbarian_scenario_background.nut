@@ -4,8 +4,8 @@ this.barbarian_scenario_background <- this.inherit("scripts/skills/backgrounds/c
 	},
 	function create()
 	{
-		this.m.AlignmentMin = this.Const.LegendMod.Alignment.Dreaded;
-		this.m.AlignmentMax = this.Const.LegendMod.Alignment.NeutralMin;
+		this.m.AlignmentMin = ::Const.LegendMod.Alignment.Dreaded;
+		this.m.AlignmentMax = ::Const.LegendMod.Alignment.NeutralMin;
 		this.character_background.create();
 		this.m.ID = "background.barbarian";
 		this.m.Name = "Barbarian";
@@ -54,20 +54,20 @@ this.barbarian_scenario_background <- this.inherit("scripts/skills/backgrounds/c
 			"trait.gift_of_people",
 			"trait.seductive"
 		];
-		this.m.Titles = this.Const.Strings.BarbarianTitles;
-		this.m.Faces = this.Const.Faces.WildMale;
-		this.m.Hairs = this.Const.Hair.WildMale;
-		this.m.HairColors = this.Const.HairColors.All;
-		this.m.Beards = this.Const.Beards.WildExtended;
+		this.m.Titles = ::Const.Strings.BarbarianTitles;
+		this.m.Faces = ::Const.Faces.WildMale;
+		this.m.Hairs = ::Const.Hair.WildMale;
+		this.m.HairColors = ::Const.HairColors.All;
+		this.m.Beards = ::Const.Beards.WildExtended;
 		this.m.Ethnicity = 0;
-		this.m.AlignmentMin = this.Const.LegendMod.Alignment.Dreaded;
-		this.m.AlignmentMax = this.Const.LegendMod.Alignment.Notorious;
-		this.m.Bodies = this.Const.Bodies.Muscular;
-		this.m.Level = this.Math.rand(2, 4);
-		this.m.BackgroundType = this.Const.BackgroundType.Combat | this.Const.BackgroundType.Outlaw | this.Const.BackgroundType.Druid | this.Const.BackgroundType.ExpertHunter;
-		this.m.Modifiers.Training = this.Const.LegendMod.ResourceModifiers.Training[2];
-		this.m.Modifiers.Scout = this.Const.LegendMod.ResourceModifiers.Scout[2];
-		this.m.Modifiers.Hunting = this.Const.LegendMod.ResourceModifiers.Hunting[2];
+		this.m.AlignmentMin = ::Const.LegendMod.Alignment.Dreaded;
+		this.m.AlignmentMax = ::Const.LegendMod.Alignment.Notorious;
+		this.m.Bodies = ::Const.Bodies.Muscular;
+		this.m.Level = ::Math.rand(2, 4);
+		this.m.BackgroundType = ::Const.BackgroundType.Combat | ::Const.BackgroundType.Outlaw | ::Const.BackgroundType.Druid | ::Const.BackgroundType.ExpertHunter;
+		this.m.Modifiers.Training = ::Const.LegendMod.ResourceModifiers.Training[2];
+		this.m.Modifiers.Scout = ::Const.LegendMod.ResourceModifiers.Scout[2];
+		this.m.Modifiers.Hunting = ::Const.LegendMod.ResourceModifiers.Hunting[2];
 		this.m.Modifiers.Terrain = [
 			0.0,
 			0.0,
@@ -126,20 +126,20 @@ this.barbarian_scenario_background <- this.inherit("scripts/skills/backgrounds/c
 			return;
 		}
 
-		this.m.Faces = this.Const.Faces.AllWhiteFemale;
-		this.m.Hairs = this.Const.Hair.WildMale;
-		this.m.HairColors = this.Const.HairColors.All;
+		this.m.Faces = ::Const.Faces.AllWhiteFemale;
+		this.m.Hairs = ::Const.Hair.WildMale;
+		this.m.HairColors = ::Const.HairColors.All;
 		this.m.Beards = null;
 		this.m.BeardChance = 0;
-		this.m.Bodies = this.Const.Bodies.AllFemale;
-		this.addBackgroundType(this.Const.BackgroundType.Female);
+		this.m.Bodies = ::Const.Bodies.AllFemale;
+		this.addBackgroundType(::Const.BackgroundType.Female);
 		this.m.GoodEnding = "%name% the barbarian took all the coin she earned with the company and ventured north. With her money, she gathered a band of warriors and conquered so many tribes that, last you heard, she had been ordained \'queen of the north\'.";
 		this.m.BadEnding = "With things the way they were, %name% departed. Last you heard she was traveling north. Penniless with little to her name but an axe, and not looking anything like the natives or speaking their tongue, you figure the barbarian did not get far. Based upon what you\'ve seen happen to her ilk, she\'s either been killed already or captured as a slave.";
 	}
 
 	function onBuildDescription()
 	{
-		if (this.isBackgroundType(this.Const.BackgroundType.Female))
+		if (this.isBackgroundType(::Const.BackgroundType.Female))
 		{
 			return "{%name% survived the battle between yourself and her own tribe of warriors. She offered herself to your company or to your sword. Impressed by his bravery, you chose to take her in. A foreign brute, she hardly speaks your native tongue and she is not well liked by the rest of the company. But if anything can bond two people it is fighting beside one another, killing when it counts, and drinking the night away at the tavern.}";
 		}
@@ -159,19 +159,19 @@ this.barbarian_scenario_background <- this.inherit("scripts/skills/backgrounds/c
 			6
 		];
 
-		if (this.Math.rand(1, 100) <= 66)
+		if (::Math.rand(1, 100) <= 66)
 		{
-			this.m.Tattoo = tattoos[this.Math.rand(0, tattoos.len() - 1)];
+			this.m.Tattoo = tattoos[::Math.rand(0, tattoos.len() - 1)];
 			local tattoo_body = actor.getSprite("tattoo_body");
 			local body = actor.getSprite("body");
 			tattoo_body.setBrush("tattoo_0" + this.m.Tattoo + "_" + body.getBrush().Name);
 			tattoo_body.Visible = true;
 		}
 
-		if (this.Math.rand(1, 100) <= 66)
+		if (::Math.rand(1, 100) <= 66)
 		{
 			local tattoo_head = actor.getSprite("tattoo_head");
-			tattoo_head.setBrush("tattoo_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_head");
+			tattoo_head.setBrush("tattoo_0" + tattoos[::Math.rand(0, tattoos.len() - 1)] + "_head");
 			tattoo_head.Visible = true;
 		}
 	}

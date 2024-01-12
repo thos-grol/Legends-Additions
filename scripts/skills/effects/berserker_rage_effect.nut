@@ -18,7 +18,7 @@ this.berserker_rage_effect <- this.inherit("scripts/skills/skill", {
 			"sounds/enemies/orc_rage_05.wav",
 			"sounds/enemies/orc_rage_06.wav"
 		];
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = ::Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 	}
 
@@ -37,10 +37,10 @@ this.berserker_rage_effect <- this.inherit("scripts/skills/skill", {
 			if (this.m.SoundOnUse.len() != 0 && this.Time.getVirtualTimeF() - this.m.LastRageSoundTime > 5.0)
 			{
 				this.m.LastRageSoundTime = this.Time.getVirtualTimeF();
-				this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.RacialEffect * (this.Math.rand(75, 100) * 0.01), actor.getPos(), this.Math.rand(75, 100) * 0.01);
+				this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * (::Math.rand(75, 100) * 0.01), actor.getPos(), ::Math.rand(75, 100) * 0.01);
 			}
 
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " gains rage!");
+			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " gains rage!");
 		}
 
 		if (!this.getContainer().getActor().getFlags().has("abomination"))
@@ -50,7 +50,7 @@ this.berserker_rage_effect <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		this.m.IsHidden = this.m.RageStacks == 0;
-		_properties.DamageReceivedTotalMult *= this.Math.maxf(0.3, 1.0 - 0.02 * this.m.RageStacks);
+		_properties.DamageReceivedTotalMult *= ::Math.maxf(0.3, 1.0 - 0.02 * this.m.RageStacks);
 		_properties.Bravery += 1 * this.m.RageStacks;
 		_properties.DamageRegularMin += 1 * this.m.RageStacks;
 		_properties.DamageRegularMax += 1 * this.m.RageStacks;
@@ -59,7 +59,7 @@ this.berserker_rage_effect <- this.inherit("scripts/skills/skill", {
 
 	function onTurnStart()
 	{
-		this.m.RageStacks = this.Math.max(0, this.m.RageStacks - 2);
+		this.m.RageStacks = ::Math.max(0, this.m.RageStacks - 2);
 
 		if (!this.getContainer().getActor().getFlags().has("abomination"))
 			this.getContainer().getActor().updateRageVisuals(this.m.RageStacks);

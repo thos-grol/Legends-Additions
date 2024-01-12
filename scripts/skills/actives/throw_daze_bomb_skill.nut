@@ -21,8 +21,8 @@ this.throw_daze_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			"sounds/combat/dlc6/daze_bomb_04.wav"
 		];
 		this.m.SoundOnHitDelay = 0;
-		this.m.Type = this.Const.SkillType.Active;
-		this.m.Order = this.Const.SkillOrder.UtilityTargeted;
+		this.m.Type = ::Const.SkillType.Active;
+		this.m.Order = ::Const.SkillOrder.UtilityTargeted;
 		this.m.Delay = 0;
 		this.m.IsSerialized = false;
 		this.m.IsActive = true;
@@ -40,7 +40,7 @@ this.throw_daze_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 		this.m.MinRange = 1;
 		this.m.MaxRange = 3;
 		this.m.MaxLevelDifference = 3;
-		this.m.ProjectileType = this.Const.ProjectileType.Bomb2;
+		this.m.ProjectileType = ::Const.ProjectileType.Bomb2;
 		this.m.ProjectileTimeScale = 1.5;
 		this.m.IsProjectileRotated = false;
 	}
@@ -52,7 +52,7 @@ this.throw_daze_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			id = 6,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Give up to [color=" + this.Const.UI.Color.DamageValue + "]7[/color] targets the Dazed status effect for 2 turns"
+			text = "Give up to [color=" + ::Const.UI.Color.DamageValue + "]7[/color] targets the Dazed status effect for 2 turns"
 		});
 		return ret;
 	}
@@ -76,7 +76,7 @@ this.throw_daze_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 
 		foreach( t in affectedTiles )
 		{
-			this.Tactical.getHighlighter().addOverlayIcon(this.Const.Tactical.Settings.AreaOfEffectIcon, t, t.Pos.X, t.Pos.Y);
+			this.Tactical.getHighlighter().addOverlayIcon(::Const.Tactical.Settings.AreaOfEffectIcon, t, t.Pos.X, t.Pos.Y);
 		}
 	}
 
@@ -97,7 +97,7 @@ this.throw_daze_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 
 	function onAfterUpdate( _properties )
 	{
-		this.m.FatigueCostMult = _properties.IsSpecializedInThrowing ? this.Const.Combat.WeaponSpecFatigueMult : 1.0;
+		this.m.FatigueCostMult = _properties.IsSpecializedInThrowing ? ::Const.Combat.WeaponSpecFatigueMult : 1.0;
 	}
 
 	function onUse( _user, _targetTile )
@@ -108,9 +108,9 @@ this.throw_daze_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 		{
 			local flip = !this.m.IsProjectileRotated && _targetTile.Pos.X > _user.getPos().X;
 
-			if (_user.getTile().getDistanceTo(_targetTile) >= this.Const.Combat.SpawnProjectileMinDist)
+			if (_user.getTile().getDistanceTo(_targetTile) >= ::Const.Combat.SpawnProjectileMinDist)
 			{
-				this.Tactical.spawnProjectileEffect(this.Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), _targetTile, 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
+				this.Tactical.spawnProjectileEffect(::Const.ProjectileSprite[this.m.ProjectileType], _user.getTile(), _targetTile, 1.0, this.m.ProjectileTimeScale, this.m.IsProjectileRotated, flip);
 			}
 		}
 
@@ -139,14 +139,14 @@ this.throw_daze_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 
 		if (_data.Skill.m.SoundOnHit.len() != 0)
 		{
-			this.Sound.play(_data.Skill.m.SoundOnHit[this.Math.rand(0, _data.Skill.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, _data.TargetTile.Pos);
+			this.Sound.play(_data.Skill.m.SoundOnHit[::Math.rand(0, _data.Skill.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _data.TargetTile.Pos);
 		}
 
 		foreach( tile in targets )
 		{
-			for( local i = 0; i < this.Const.Tactical.DazeParticles.len(); i = ++i )
+			for( local i = 0; i < ::Const.Tactical.DazeParticles.len(); i = ++i )
 			{
-				this.Tactical.spawnParticleEffect(false, this.Const.Tactical.DazeParticles[i].Brushes, tile, this.Const.Tactical.DazeParticles[i].Delay, this.Const.Tactical.DazeParticles[i].Quantity, this.Const.Tactical.DazeParticles[i].LifeTimeQuantity, this.Const.Tactical.DazeParticles[i].SpawnRate, this.Const.Tactical.DazeParticles[i].Stages);
+				this.Tactical.spawnParticleEffect(false, ::Const.Tactical.DazeParticles[i].Brushes, tile, ::Const.Tactical.DazeParticles[i].Delay, ::Const.Tactical.DazeParticles[i].Quantity, ::Const.Tactical.DazeParticles[i].LifeTimeQuantity, ::Const.Tactical.DazeParticles[i].SpawnRate, ::Const.Tactical.DazeParticles[i].Stages);
 			}
 
 			if (tile.IsOccupiedByActor && !tile.getEntity().getCurrentProperties().IsImmuneToDaze)

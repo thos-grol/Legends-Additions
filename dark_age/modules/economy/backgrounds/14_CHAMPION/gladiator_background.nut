@@ -55,7 +55,7 @@
 				]);
 			}
 
-			local item = ::new("scripts/items/" + weapons[this.Math.rand(0, weapons.len() - 1)]);
+			local item = ::new("scripts/items/" + weapons[::Math.rand(0, weapons.len() - 1)]);
 			this.addPerkGroup(::Z.Perks.tree(item));
 			items.equip(item);
 		}
@@ -67,7 +67,7 @@
 				"shields/oriental/metal_round_shield"
 			];
 
-			local item = ::new("scripts/items/" + offhand[this.Math.rand(0, offhand.len() - 1)]);
+			local item = ::new("scripts/items/" + offhand[::Math.rand(0, offhand.len() - 1)]);
 			this.addPerkGroup(::Z.Perks.tree(item));
 			items.equip(item);
 		}
@@ -78,7 +78,7 @@
 				"oriental/gladiator_harness"
 			]
 		]);
-		r = this.Math.rand(1, 2);
+		r = ::Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -94,7 +94,7 @@
 			[
 				1,
 				"oriental/gladiator_helmet",
-				this.Math.rand(13, 15)
+				::Math.rand(13, 15)
 			],
 			[
 				1,

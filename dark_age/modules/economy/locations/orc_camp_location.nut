@@ -27,7 +27,7 @@
 	o.onDropLootForPlayer = function( _lootTable )
 	{
 		this.location.onDropLootForPlayer(_lootTable);
-		this.dropTreasure(this.Math.rand(0, 1), [
+		this.dropTreasure(::Math.rand(0, 1), [
 			"trade/furs_item",
 			"trade/copper_ingots_item",
 			"trade/iron_ingots_item",

@@ -25,7 +25,7 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.DifficultyMult = ::Math.rand(90, 100) * 0.01;
 		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
 
-		if (this.Math.rand(1, 100) <= 33)
+		if (::Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -45,7 +45,7 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 			"Demonic Statuette",
 			"Crystal Skull"
 		];
-		local r = this.Math.rand(0, items.len() - 1);
+		local r = ::Math.rand(0, items.len() - 1);
 		this.m.Flags.set("Item", items[r]);
 		this.contract.start();
 	}
@@ -61,7 +61,7 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 					"Return %item% to %townname%"
 				];
 
-				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
+				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -74,12 +74,12 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = this.Math.rand(1, 100);
+				local r = ::Math.rand(1, 100);
 
 				if (r <= 30)
 				{
 					this.Flags.set("IsCounterOffer", true);
-					this.Flags.set("Bribe", this.Contract.beautifyNumber(this.Contract.m.Payment.getOnCompletion() * this.Math.rand(150, 250) * 0.01));
+					this.Flags.set("Bribe", this.Contract.beautifyNumber(this.Contract.m.Payment.getOnCompletion() * ::Math.rand(150, 250) * 0.01));
 				}
 				else
 				{
@@ -89,18 +89,18 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 				this.Flags.set("StartDay", this.World.getTime().Days);
 				local playerTile = this.World.State.getPlayer().getTile();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 5, 10, [
-					this.Const.World.TerrainType.Mountains
+					::Const.World.TerrainType.Mountains
 				]);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, this.Const.World.Spawn.BanditRoamers, 80 * this.Contract.getDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, ::Const.World.Spawn.BanditRoamers, 80 * this.Contract.getDifficultyMult());
 				party.setDescription("A group of thieves and bandits.");
-				party.setFootprintType(this.Const.World.FootprintsType.Brigands);
+				party.setFootprintType(::Const.World.FootprintsType.Brigands);
 				party.setAttackableByAI(false);
-				party.getController().getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+				party.getController().getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 				party.setFootprintSizeOverride(0.75);
-				this.Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), this.Const.GenericFootprints, this.Const.World.FootprintsType.Brigands, 0.75);
+				::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.GenericFootprints, ::Const.World.FootprintsType.Brigands, 0.75);
 				this.Contract.m.Target = this.WeakTableRef(party);
-				party.getSprite("banner").setBrush("banner_bandits_0" + this.Math.rand(1, 6));
+				party.getSprite("banner").setBrush("banner_bandits_0" + ::Math.rand(1, 6));
 				local c = party.getController();
 				local wait = this.new("scripts/ai/world/orders/wait_order");
 				wait.setTime(9000.0);
@@ -199,8 +199,8 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(this.Const.Contracts.NegotiationDefault);
-		this.importScreens(this.Const.Contracts.Overview);
+		this.importScreens(::Const.Contracts.NegotiationDefault);
+		this.importScreens(::Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -262,8 +262,8 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "To Arms!",
 					function getResult()
 					{
-						this.Const.World.Common.addTroop(this.Contract.m.Target, {
-							Type = this.Const.World.Spawn.Troops.Necromancer
+						::Const.World.Common.addTroop(this.Contract.m.Target, {
+							Type = ::Const.World.Spawn.Troops.Necromancer
 						});
 						this.Contract.getActiveState().onTargetAttacked(this.Contract.m.Target, true);
 						return 0;
@@ -311,8 +311,8 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.World.Assets.addMoney(this.Flags.get("Bribe"));
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractBetrayal);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + this.Flags.get("Item"));
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractBetrayal);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + this.Flags.get("Item"));
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -324,7 +324,7 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("Bribe") + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("Bribe") + "[/color] Crowns"
 				});
 			}
 
@@ -359,9 +359,9 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Returned stolen " + this.Flags.get("Item"));
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractSuccess, "Returned stolen " + this.Flags.get("Item"));
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -373,7 +373,7 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.Home.setResources(this.Contract.m.Home.getResources() + this.Contract.m.Home.getResources() * 0.05);
 			}
@@ -392,8 +392,8 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Damn this contract!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + this.Flags.get("Item"));
+						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to return stolen " + this.Flags.get("Item"));
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -407,7 +407,7 @@ this.return_item_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		_vars.push([
 			"direction",
-			this.m.Target == null || this.m.Target.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
+			this.m.Target == null || this.m.Target.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Target.getTile())]
 		]);
 		_vars.push([
 			"item",

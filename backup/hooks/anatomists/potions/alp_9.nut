@@ -30,10 +30,10 @@
 
         _actor.getSkills().add(::new("scripts/skills/effects/honor_guard_potion_effect"));
 
-        this.Sound.play("sounds/enemies/dlc2/alp_death_0" + this.Math.rand(1, 5) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/dlc2/alp_idle_0" + this.Math.rand(1, 9) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/dlc2/alp_hurt_0" + this.Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
-        this.Sound.play("sounds/enemies/dlc2/alp_nightmare_0" + this.Math.rand(1, 6) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc2/alp_death_0" + ::Math.rand(1, 5) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc2/alp_idle_0" + ::Math.rand(1, 9) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc2/alp_hurt_0" + ::Math.rand(1, 4) + ".wav", ::Const.Sound.Volume.Inventory);
+        this.Sound.play("sounds/enemies/dlc2/alp_nightmare_0" + ::Math.rand(1, 6) + ".wav", ::Const.Sound.Volume.Inventory);
 
         return this.anatomist_potion_item.onUse(_actor, _item);
     }

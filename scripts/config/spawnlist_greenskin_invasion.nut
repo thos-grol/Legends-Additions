@@ -23,11 +23,11 @@ gt.Const.World.Spawn.GreenskinHorde <- {
 			Weight = 20,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisherLOW,
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisherLOW,
 					Cost = 10
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinSkirmisher,
+					Type = ::Const.World.Spawn.Troops.GoblinSkirmisher,
 					Cost = 15
 				}
 			]
@@ -36,15 +36,15 @@ gt.Const.World.Spawn.GreenskinHorde <- {
 			Weight = 20,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.KoboldFighter,
+					Type = ::Const.World.Spawn.Troops.KoboldFighter,
 					Cost = 10
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusherLOW,
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusherLOW,
 					Cost = 15
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinAmbusher,
+					Type = ::Const.World.Spawn.Troops.GoblinAmbusher,
 					Cost = 20
 				}
 			]
@@ -53,7 +53,7 @@ gt.Const.World.Spawn.GreenskinHorde <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinWolfrider,
+					Type = ::Const.World.Spawn.Troops.GoblinWolfrider,
 					Cost = 40
 				}
 			]
@@ -62,7 +62,7 @@ gt.Const.World.Spawn.GreenskinHorde <- {
 			Weight = 3,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinOverseer,
+					Type = ::Const.World.Spawn.Troops.GoblinOverseer,
 					Cost = 35
 				}
 			]
@@ -71,7 +71,7 @@ gt.Const.World.Spawn.GreenskinHorde <- {
 			Weight = 3,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.GoblinShaman,
+					Type = ::Const.World.Spawn.Troops.GoblinShaman,
 					Cost = 35
 				}
 			]
@@ -80,11 +80,11 @@ gt.Const.World.Spawn.GreenskinHorde <- {
 			Weight = 20,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoungLOW,
+					Type = ::Const.World.Spawn.Troops.OrcYoungLOW,
 					Cost = 13
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcYoung,
+					Type = ::Const.World.Spawn.Troops.OrcYoung,
 					Cost = 16
 				}
 			]
@@ -93,11 +93,11 @@ gt.Const.World.Spawn.GreenskinHorde <- {
 			Weight = 20,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarriorLOW,
+					Type = ::Const.World.Spawn.Troops.OrcWarriorLOW,
 					Cost = 30
 				},
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarrior,
+					Type = ::Const.World.Spawn.Troops.OrcWarrior,
 					MinR = 0.15 * 1115,
 					Cost = 40
 				}
@@ -107,7 +107,7 @@ gt.Const.World.Spawn.GreenskinHorde <- {
 			Weight = 5,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcBerserker,
+					Type = ::Const.World.Spawn.Troops.OrcBerserker,
 					Cost = 25
 				}
 			]
@@ -116,7 +116,7 @@ gt.Const.World.Spawn.GreenskinHorde <- {
 			Weight = 3,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.OrcWarlord,
+					Type = ::Const.World.Spawn.Troops.OrcWarlord,
 					Cost = 50
 				}
 			]
@@ -125,7 +125,7 @@ gt.Const.World.Spawn.GreenskinHorde <- {
 			Weight = 3,
 			Types = [
 				{
-					Type = this.Const.World.Spawn.Troops.LegendOrcBehemoth,
+					Type = ::Const.World.Spawn.Troops.LegendOrcBehemoth,
 					MinR = 0.5 * 1115,
 					Cost = 80
 				}

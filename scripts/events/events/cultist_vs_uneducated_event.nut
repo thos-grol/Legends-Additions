@@ -82,7 +82,7 @@ this.cultist_vs_uneducated_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/bravery.png",
-					text = _event.m.Cultist.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+2[/color] Resolve"
+					text = _event.m.Cultist.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+2[/color] Resolve"
 				});
 			}
 
@@ -115,12 +115,12 @@ this.cultist_vs_uneducated_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.Uneducated.getImagePath());
 				_event.m.Cultist.worsenMood(2.0, "Was denied the chance to convert " + _event.m.Uneducated.getName());
 
-				if (_event.m.Cultist.getMoodState() < this.Const.MoodState.Neutral)
+				if (_event.m.Cultist.getMoodState() < ::Const.MoodState.Neutral)
 				{
 					this.List.push({
 						id = 10,
-						icon = this.Const.MoodStateIcon[_event.m.Cultist.getMoodState()],
-						text = _event.m.Cultist.getName() + this.Const.MoodStateEvent[_event.m.Cultist.getMoodState()]
+						icon = ::Const.MoodStateIcon[_event.m.Cultist.getMoodState()],
+						text = _event.m.Cultist.getName() + ::Const.MoodStateEvent[_event.m.Cultist.getMoodState()]
 					});
 				}
 			}
@@ -139,13 +139,13 @@ this.cultist_vs_uneducated_event <- this.inherit("scripts/events/event", {
 
 		foreach( bro in brothers )
 		{
-			if (bro.getBackground().isBackgroundType(this.Const.BackgroundType.ConvertedCultist) || bro.getBackground().isBackgroundType(this.Const.BackgroundType.Cultist))
+			if (bro.getBackground().isBackgroundType(::Const.BackgroundType.ConvertedCultist) || bro.getBackground().isBackgroundType(::Const.BackgroundType.Cultist))
 			{
 				cultist_candidates.push(bro);
 			}
 			else if (bro.getSkills().hasSkill("injury.brain_damage")
 				|| bro.getSkills().hasSkill("trait.dumb")
-				|| (bro.getBackground().isBackgroundType(this.Const.BackgroundType.Lowborn) && !bro.getSkills().hasSkill("trait.bright"))
+				|| (bro.getBackground().isBackgroundType(::Const.BackgroundType.Lowborn) && !bro.getSkills().hasSkill("trait.bright"))
 			)
 			{
 				if (bro.getBackground().getID() != "background.legend_commander_berserker" && bro.getBackground().getID() != "background.legend_berserker" && bro.getBackground().getID() != "background.legend_donkey_background")
@@ -160,8 +160,8 @@ this.cultist_vs_uneducated_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Cultist = cultist_candidates[this.Math.rand(0, cultist_candidates.len() - 1)];
-		this.m.Uneducated = uneducated_candidates[this.Math.rand(0, uneducated_candidates.len() - 1)];
+		this.m.Cultist = cultist_candidates[::Math.rand(0, cultist_candidates.len() - 1)];
+		this.m.Uneducated = uneducated_candidates[::Math.rand(0, uneducated_candidates.len() - 1)];
 		this.m.Score = 65535;
 	}
 

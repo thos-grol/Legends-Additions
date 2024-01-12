@@ -88,19 +88,19 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 			local p = this.getContainer().getActor().getCurrentProperties();
 			local bodyHealth = actor.getHitpointsMax();
 			local mult = p.MeleeDamageMult;
-			local damagemin = this.Math.abs(10 * p.DamageTotalMult);
-			local damagemax = this.Math.abs(25 * p.DamageTotalMult);
+			local damagemin = ::Math.abs(10 * p.DamageTotalMult);
+			local damagemax = ::Math.abs(25 * p.DamageTotalMult);
 
 			if (this.getContainer().getActor().getSkills().hasSkill("perk.legend_muscularity"))
 			{
-				local muscularity = this.Math.floor(bodyHealth * 0.1);
+				local muscularity = ::Math.floor(bodyHealth * 0.1);
 				damagemax = damagemax + muscularity;
 			}
 
 			if (mult != 1.0)
 			{
-				damagemin = this.Math.floor(damagemin * mult);
-				damagemax = this.Math.floor(damagemax * mult);
+				damagemin = ::Math.floor(damagemin * mult);
+				damagemax = ::Math.floor(damagemax * mult);
 			}
 
 			ret.push({
@@ -113,7 +113,7 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 				id = 5,
 				type = "text",
 				icon = "ui/icons/armor_damage.png",
-				text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]" + this.Math.abs(0.5 * damagemin) + "[/color] - [color=" + ::Const.UI.Color.DamageValue + "]" + this.Math.abs(0.5 * damagemax) + "[/color] damage to armor"
+				text = "Inflicts [color=" + ::Const.UI.Color.DamageValue + "]" + ::Math.abs(0.5 * damagemin) + "[/color] - [color=" + ::Const.UI.Color.DamageValue + "]" + ::Math.abs(0.5 * damagemax) + "[/color] damage to armor"
 			});
 		}
 
@@ -187,10 +187,10 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 
 		if (this.m.SoundOnUse.len() != 0)
 		{
-			this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
+			this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
 		}
 
-		if (this.Math.rand(1, 100) > this.getHitchance(_targetTile.getEntity()))
+		if (::Math.rand(1, 100) > this.getHitchance(_targetTile.getEntity()))
 		{
 			target.onMissed(this.getContainer().getActor(), this);
 			return false;
@@ -234,12 +234,12 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 
 		if (this.m.SoundOnHit.len() != 0)
 		{
-			this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
+			this.Sound.play(this.m.SoundOnHit[::Math.rand(0, this.m.SoundOnHit.len() - 1)], ::Const.Sound.Volume.Skill, _user.getPos());
 		}
 
 		target.setCurrentMovementType(::Const.Tactical.MovementType.Involuntary);
 		local hasShieldBash = _user.getSkills().hasSkill("perk.shield_bash");
-		local damage = this.Math.max(0, this.Math.abs(knockToTile.Level - _targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
+		local damage = ::Math.max(0, ::Math.abs(knockToTile.Level - _targetTile.Level) - 1) * ::Const.Combat.FallingDamage;
 
 		if (damage == 0 && !hasShieldBash)
 		{
@@ -265,19 +265,19 @@ this.knock_back <- this.inherit("scripts/skills/skill", {
 			{
 				local p = this.getContainer().getActor().getCurrentProperties();
 				local bodyHealth = this.getContainer().getActor().getHitpointsMax();
-				local damagemin = this.Math.abs(10 * p.DamageTotalMult);
-				local damagemax = this.Math.abs(25 * p.DamageTotalMult);
+				local damagemin = ::Math.abs(10 * p.DamageTotalMult);
+				local damagemax = ::Math.abs(25 * p.DamageTotalMult);
 
 				if (this.getContainer().getActor().getSkills().hasSkill("perk.legend_muscularity"))
 				{
-					local muscularity = this.Math.floor(bodyHealth * 0.1);
+					local muscularity = ::Math.floor(bodyHealth * 0.1);
 					damagemax = damagemax + muscularity;
 				}
 
-				damage = damage + this.Math.rand(damagemin, damagemax);
+				damage = damage + ::Math.rand(damagemin, damagemax);
 				tag.HitInfoBash = clone ::Const.Tactical.HitInfo;
 				tag.HitInfoBash.DamageRegular = damage * p.DamageRegularMult;
-				tag.HitInfoBash.DamageArmor = this.Math.floor(damage * 0.5);
+				tag.HitInfoBash.DamageArmor = ::Math.floor(damage * 0.5);
 				tag.HitInfoBash.DamageFatigue = 10;
 				tag.HitInfoBash.BodyPart = ::Const.BodyPart.Body;
 				tag.HitInfoBash.BodyDamageMult = 1.0;

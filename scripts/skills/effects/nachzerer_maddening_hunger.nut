@@ -18,7 +18,7 @@ this.mark_of_decay <- this.inherit("scripts/skills/skill", {
 
 	function addStacks( _amount )
 	{
-		this.m.Stacks = this.Math.min(3, this.m.Stacks + _amount);
+		this.m.Stacks = ::Math.min(3, this.m.Stacks + _amount);
 	}
 
 	function getDescription()

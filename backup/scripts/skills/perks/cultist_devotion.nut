@@ -23,7 +23,7 @@ this.cultist_devotion <- this.inherit("scripts/skills/skill", {
         {
             if (s.isType(::Const.SkillType.PermanentInjury)) multiplier += 0.05;
         }
-        local total = this.Math.floor(resolve * multiplier);
+        local total = ::Math.floor(resolve * multiplier);
 
 		local ret = [
 			{
@@ -89,7 +89,7 @@ this.cultist_devotion <- this.inherit("scripts/skills/skill", {
                 if (s.isType(::Const.SkillType.PermanentInjury)) multiplier += 0.05;
             }
 
-            local total = this.Math.floor(resolve * multiplier);
+            local total = ::Math.floor(resolve * multiplier);
 
 			_properties.MeleeDefense += total;
 			_properties.RangedDefense += total;

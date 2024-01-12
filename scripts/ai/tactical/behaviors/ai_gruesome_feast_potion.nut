@@ -63,7 +63,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 			return ::Const.AI.Behavior.Score.Zero;
 		}
 
-		this.m.Skill = skills[this.Math.rand(0, skills.len() - 1)];
+		this.m.Skill = skills[::Math.rand(0, skills.len() - 1)];
 		local myTile = _entity.getTile();
 		local isInMelee = this.queryTargetsInMeleeRange().len() != 0;
 		local inZOC = myTile.getZoneOfControlCountOtherThan(_entity.getAlliedFactions());
@@ -125,7 +125,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 				score = score - ::Const.AI.Behavior.GruesomeFeastWaitPenalty;
 				score = score - ::Const.AI.Behavior.GruesomeFeastSpearwallPenalty * this.querySpearwallValueForTile(_entity, c);
 				local mag = this.queryOpponentMagnitude(c, ::Const.AI.Behavior.GruesomeFeastMagnitudeMaxRange);
-				score = score - mag.Opponents * (1.0 - mag.AverageDistanceScore) * this.Math.maxf(0.5, 1.0 - mag.AverageEngaged) * ::Const.AI.Behavior.GruesomeFeastOpponentValue;
+				score = score - mag.Opponents * (1.0 - mag.AverageDistanceScore) * ::Math.maxf(0.5, 1.0 - mag.AverageEngaged) * ::Const.AI.Behavior.GruesomeFeastOpponentValue;
 
 				if (isInMelee && !c.isSameTileAs(myTile))
 				{
@@ -227,12 +227,12 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 						}
 
 						local d = this.queryActorTurnsNearTarget(opponent, t.Tile, _entity);
-						danger = danger + this.Math.maxf(0.0, 1.0 - d.Turns);
+						danger = danger + ::Math.maxf(0.0, 1.0 - d.Turns);
 
 						if (!movementCosts.IsComplete)
 						{
 							local id = this.queryActorTurnsNearTarget(opponent, movementCosts.End, _entity);
-							danger_intermediate = danger_intermediate + this.Math.maxf(0.0, 1.0 - id.Turns);
+							danger_intermediate = danger_intermediate + ::Math.maxf(0.0, 1.0 - id.Turns);
 							d = d.Turns > id.Turns ? id : d;
 						}
 
@@ -277,7 +277,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 				bestCost = score;
 				bestTiles = tiles;
 				bestIntermediateTile = intermediateTile;
-				bestDanger = this.Math.maxf(danger, danger_intermediate);
+				bestDanger = ::Math.maxf(danger, danger_intermediate);
 			}
 		}
 
@@ -305,7 +305,7 @@ this.ai_gruesome_feast_potion <- this.inherit("scripts/ai/tactical/behavior", {
 		}
 
 		scoreMult = scoreMult - ::Const.AI.Behavior.GruesomeFeastDangerPenaltyMult * bestDanger;
-		return this.Math.max(0, ::Const.AI.Behavior.Score.GruesomeFeast * scoreMult);
+		return ::Math.max(0, ::Const.AI.Behavior.Score.GruesomeFeast * scoreMult);
 	}
 
 	function onBeforeExecute( _entity )

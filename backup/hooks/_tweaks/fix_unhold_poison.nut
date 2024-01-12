@@ -9,7 +9,7 @@
         if (actor.getSkills().getSkillByID("effects.legend_RSW_poison_effect") != null) return;
 
         local healthMissing = actor.getHitpointsMax() - actor.getHitpoints();
-        local healthAdded = this.Math.min(healthMissing, this.Math.floor(actor.getHitpointsMax() * 0.15));
+        local healthAdded = ::Math.min(healthMissing, ::Math.floor(actor.getHitpointsMax() * 0.15));
 
         if (healthAdded <= 0) return;
 
@@ -22,7 +22,7 @@
 
             if (this.m.SoundOnUse.len() != 0)
             {
-                this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
+                this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
             }
 
             this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " regenerated " + healthAdded + " hitpoints");
@@ -48,8 +48,8 @@
         local missingHeadArmor = totalHeadArmor - currentHeadArmor;
         local healRateBody = totalBodyArmor * 0.1;
         local healRateHead = totalHeadArmor * 0.1;
-        local addedBodyArmor = this.Math.abs(this.Math.min(missingBodyArmor, healRateBody));
-        local addedHeadArmor = this.Math.abs(this.Math.min(missingHeadArmor, healRateBody));
+        local addedBodyArmor = ::Math.abs(::Math.min(missingBodyArmor, healRateBody));
+        local addedHeadArmor = ::Math.abs(::Math.min(missingHeadArmor, healRateBody));
         local newBodyArmor = currentBodyArmor + addedBodyArmor;
         local newHeadArmor = currentHeadArmor + addedHeadArmor;
 
@@ -65,7 +65,7 @@
 
             if (this.m.SoundOnUse.len() != 0)
             {
-                this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
+                this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
             }
 
             this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " regenerated " + addedBodyArmor + " points of body armor");
@@ -84,7 +84,7 @@
         if (actor.getSkills().getSkillByID("effects.legend_redback_spider_poison") != null) return;
         if (actor.getSkills().getSkillByID("effects.legend_RSW_poison_effect") != null) return;
 		local healthMissing = actor.getHitpointsMax() - actor.getHitpoints();
-		local healthAdded = this.Math.min(healthMissing, this.Math.floor(actor.getHitpointsMax() * 0.15));
+		local healthAdded = ::Math.min(healthMissing, ::Math.floor(actor.getHitpointsMax() * 0.15));
 
 		if (healthAdded <= 0)
 		{
@@ -100,7 +100,7 @@
 
 			if (this.m.SoundOnUse.len() != 0)
 			{
-				this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
+				this.Sound.play(this.m.SoundOnUse[::Math.rand(0, this.m.SoundOnUse.len() - 1)], ::Const.Sound.Volume.RacialEffect * 1.25, actor.getPos());
 			}
 
 			this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(actor) + " heals for " + healthAdded + " points");

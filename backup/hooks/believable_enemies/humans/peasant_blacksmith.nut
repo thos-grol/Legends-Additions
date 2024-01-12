@@ -29,9 +29,9 @@
 		this.m.Skills.add(::new("scripts/skills/perks/perk_legend_specialist_hammer_damage"));
 		this.m.Skills.add(::new("scripts/skills/perks/perk_ptr_internal_hemorrhage"));
 
-		this.level_melee_skill(4, this.Math.rand(-6, 3) );
-		this.level_melee_defense(4, this.Math.rand(-6, 3) );
-		this.level_health(4, this.Math.rand(-6, 3) );
+		this.level_melee_skill(4, ::Math.rand(-6, 3) );
+		this.level_melee_defense(4, ::Math.rand(-6, 3) );
+		this.level_health(4, ::Math.rand(-6, 3) );
 
 	}
 
@@ -46,7 +46,7 @@
 		this.setAppearance();
 		local dirt = this.getSprite("dirt");
 		dirt.Visible = true;
-		dirt.Alpha = this.Math.rand(0, 255);
+		dirt.Alpha = ::Math.rand(0, 255);
 		this.getSprite("socket").setBrush("bust_base_militia");
 	}
 });

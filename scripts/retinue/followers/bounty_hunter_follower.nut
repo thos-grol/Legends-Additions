@@ -7,7 +7,7 @@ this.bounty_hunter_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Name = "Bounty Hunter";
 		this.m.Description = "This colorful Bounty Hunter has a pocket full of contracts on the most dangerous individuals. He knows how to get them from hiding and will pay handsomely for any bounty fulfilled.";
 		this.m.Image = "ui/campfire/bounty_hunter_01";
-		this.m.Cost = 100;
+		this.m.Cost = 200;
 		this.m.Effects = [
 			"Increases the chance of encountering champions by 5%",
 			"Pays between 30 - 50 crowns for every champion slain"

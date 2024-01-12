@@ -24,7 +24,7 @@
 					Text = "No talking. You just die.",
 					function getResult( _event )
 					{
-						local r = this.Math.rand(1, 100);
+						local r = ::Math.rand(1, 100);
 
 						if (r <= 33)
 						{
@@ -95,7 +95,7 @@
 					Text = "Or I\'ll just kill you.",
 					function getResult( _event )
 					{
-						local r = this.Math.rand(1, 100);
+						local r = ::Math.rand(1, 100);
 
 						if (r <= 33)
 						{
@@ -189,7 +189,7 @@
 					Text = "I think I\'ll just kill you.",
 					function getResult( _event )
 					{
-						local r = this.Math.rand(1, 100);
+						local r = ::Math.rand(1, 100);
 
 						if (r <= 33)
 						{
@@ -362,7 +362,7 @@
 						continue;
 					}
 
-					if (this.Math.rand(1, 100) <= 50)
+					if (::Math.rand(1, 100) <= 50)
 					{
 						bro.improveMood(0.5, "You risked your life for the men");
 
