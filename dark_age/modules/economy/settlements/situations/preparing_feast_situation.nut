@@ -10,10 +10,6 @@
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 		_draftList.push("butcher_background");
 		_draftList.push("butcher_background");
-		_draftList.push("servant_background");
-		_draftList.push("servant_background");
-		_draftList.push("servant_background");
-		_draftList.push("eunuch_background");
 	}
 
 });

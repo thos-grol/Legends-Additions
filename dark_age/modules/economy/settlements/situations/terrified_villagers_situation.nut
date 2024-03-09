@@ -9,10 +9,6 @@
 	o.onUpdateDraftList = function( _draftList, _gender = null )
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-		_draftList.push("gravedigger_background");
-		_draftList.push("gravedigger_background");
-		_draftList.push("gravedigger_background");
-		_draftList.push("gravedigger_background");
 		_draftList.push("graverobber_background");
 		_draftList.push("graverobber_background");
 	}

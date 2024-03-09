@@ -3,7 +3,7 @@
 + "\nBring tragedy and ruin to those around you... The remnant power of the God of Ruin"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\nF Class Vitality: " + ::MSU.Text.colorGreen("+10") + " Hitpoints"
-+ "\nF Class Melee: " + ::MSU.Text.colorGreen("+10") + " Melee Skill"
++ "\nF Class Melee: " + ::MSU.Text.colorGreen("+10") + " Skill"
 + "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Melee Defense"
 + "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Ranged Defense"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Turn start, 20% chance:")

@@ -67,7 +67,9 @@ this.town_hire_dialog_module <- this.inherit("scripts/ui/screens/ui_module", {
 			}
 
 			this.World.getPlayerRoster().add(entry);
-			this.World.getRoster(this.m.RosterID).remove(entry);
+			// this.World.getRoster(this.m.RosterID).remove(entry);
+			// changed to clear other choices once one is hired
+			this.World.getRoster(this.m.RosterID).clear();
 			entry.onHired();
 			this.World.Assets.addMoney(-hiringCost);
 			this.World.Statistics.getFlags().increment("BrosHired");

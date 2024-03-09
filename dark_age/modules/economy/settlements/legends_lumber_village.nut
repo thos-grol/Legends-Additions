@@ -135,7 +135,6 @@
 				"brawler_background",
 				"butcher_background",
 				"daytaler_background",
-				"historian_background",
 				"hunter_background",
 				"hunter_background",
 				"killer_on_the_run_background",
@@ -147,14 +146,12 @@
 				"poacher_background",
 				"poacher_background",
 				//"tailor_background",
-				"vagabond_background",
+
 				"wildman_background",
 
 				"cripple_background",
-				"eunuch_background",
 				"brawler_background",
 				"butcher_background",
-				"historian_background",
 				"hunter_background",
 				"hunter_background",
 				"killer_on_the_run_background",
@@ -165,18 +162,17 @@
 
 				"poacher_background",
 				"poacher_background",
-				"vagabond_background",
+
 				"wildman_background",
 				"wildman_background",
 
 				"cripple_background",
-				"eunuch_background"
 			],
 			[
 				"apprentice_background",
 				"beggar_background",
 				"brawler_background",
-				"cultist_background",
+				
 				"daytaler_background",
 				"hunter_background",
 				"hunter_background",
@@ -192,17 +188,16 @@
 				"poacher_background",
 				"poacher_background",
 				"poacher_background",
-				"ratcatcher_background",
+				
 				"refugee_background",
 				//"tailor_background",
 				"thief_background",
-				"vagabond_background",
+
 				"wildman_background",
 
 				"bastard_background",
 				"retired_soldier_background",
 				"cripple_background",
-				"eunuch_background",
 
 			]
 		];

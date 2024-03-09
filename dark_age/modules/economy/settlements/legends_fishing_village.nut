@@ -107,109 +107,101 @@
 				"fisherman_background",
 				"fisherman_background",
 				"fisherman_background",
-				"gravedigger_background",
+
 
 				//"tailor_background",
-				"vagabond_background",
-				"vagabond_background",
-				"fisherman_background",
-				"fisherman_background",
-				"fisherman_background",
-				"fisherman_background",
-				"fisherman_background",
-				"gravedigger_background",
 
-				"vagabond_background",
-				"vagabond_background"
+
+				"fisherman_background",
+				"fisherman_background",
+				"fisherman_background",
+				"fisherman_background",
+				"fisherman_background",
+
+
+
 			],
 			[
 				"apprentice_background",
 				"beggar_background",
 				"beggar_background",
 				"brawler_background",
-				"caravan_hand_background",
+
 				"daytaler_background",
 				"fisherman_background",
 				"fisherman_background",
 				"fisherman_background",
 				"fisherman_background",
 				"fisherman_background",
-				"gravedigger_background",
+
 				"graverobber_background",
-				"historian_background",
 				"juggler_background",
 				"killer_on_the_run_background",
-				"messenger_background",
+
 				"militia_background",
 
 
 
-				"ratcatcher_background",
+
 				"refugee_background",
-				"servant_background",
+
 				//"tailor_background",
 				"thief_background",
-				"vagabond_background",
+
 				"cripple_background",
-				"eunuch_background",
-				"sellsword_background",
+
 				"apprentice_background",
 				"brawler_background",
-				"caravan_hand_background",
+
 				"fisherman_background",
 				"fisherman_background",
 				"fisherman_background",
 				"fisherman_background",
-				"gravedigger_background",
+
 				"graverobber_background",
-				"historian_background",
 				"juggler_background",
 				"killer_on_the_run_background",
-				"messenger_background",
+
 				"militia_background",
 
 
 
-				"ratcatcher_background",
+
 				"refugee_background",
-				"vagabond_background",
+
 				"cripple_background",
-				"eunuch_background",
-				"sellsword_background"
 			],
 			[
 				"apprentice_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
-				"gambler_background",
-				"cultist_background",
+
+
+
+
 				"fisherman_background",
 				"fisherman_background",
 				"fisherman_background",
-				"gravedigger_background",
+
 				"graverobber_background",
-				"historian_background",
 				"juggler_background",
 				"killer_on_the_run_background",
-				"mason_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"militia_background",
 
 
 				"cripple_background",
-				"eunuch_background",
 
 
-				"ratcatcher_background",
+
 				"refugee_background",
-				"vagabond_background",
+
 				"bastard_background",
-				"raider_background",
-				"raider_background",
+
+
 				"retired_soldier_background",
-				"sellsword_background",
+
 
 
 			]

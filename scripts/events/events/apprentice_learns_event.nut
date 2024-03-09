@@ -40,7 +40,7 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 					{
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Skill"
 					},
 					{
 						id = 17,
@@ -92,7 +92,7 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 					{
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Skill"
 					},
 					{
 						id = 16,
@@ -146,7 +146,7 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 					{
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Skill"
 					},
 					{
 						id = 17,
@@ -205,7 +205,7 @@ this.apprentice_learns_event <- this.inherit("scripts/events/event", {
 					{
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+						text = _event.m.Apprentice.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Skill"
 					},
 					{
 						id = 17,

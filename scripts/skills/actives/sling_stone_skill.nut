@@ -150,7 +150,7 @@ this.sling_stone_skill <- this.inherit("scripts/skills/skill", {
 	{
 		if (_skill == this)
 		{
-			_properties.RangedSkill += this.m.AdditionalAccuracy;
+			_properties.MeleeSkill += this.m.AdditionalAccuracy;
 			_properties.HitChanceAdditionalWithEachTile += this.m.AdditionalHitChance;
 			_properties.DamageRegularMult *= getBonus();
 		}

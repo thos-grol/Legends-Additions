@@ -32,7 +32,6 @@ this.gladiator_origin_vs_anatomist_event <- this.inherit("scripts/events/event",
 				_event.m.Gladiator.getBaseProperties().Stamina += 5;
 				_event.m.Gladiator.getBaseProperties().Initiative += 5;
 				_event.m.Gladiator.getBaseProperties().MeleeSkill += 3;
-				_event.m.Gladiator.getBaseProperties().RangedSkill += 3;
 				_event.m.Gladiator.getBaseProperties().MeleeDefense += 3;
 				_event.m.Gladiator.getBaseProperties().RangedDefense += 3;
 				_event.m.Gladiator.getSkills().update();
@@ -59,7 +58,7 @@ this.gladiator_origin_vs_anatomist_event <- this.inherit("scripts/events/event",
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Gladiator.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+3[/color] Melee Skill"
+					text = _event.m.Gladiator.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+3[/color] Skill"
 				});
 				this.List.push({
 					id = 16,

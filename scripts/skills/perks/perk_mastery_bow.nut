@@ -4,7 +4,8 @@
 + "\n " + ::MSU.Text.colorGreen("1") + " Vision"
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Ranged)"
 + "\n " + ::MSU.Text.colorGreen("– 3") + " AP cost for reloading"
-+ "\n " + ::MSU.Text.colorRed("Can scavage 1-3 bolts or arrows from corpses");
++ "\n " + ::MSU.Text.colorRed("Can scavage 1-3 bolts or arrows from corpses")
++ "\n " + ::MSU.Text.colorRed("Changes Ranged Attack conversion to 75% or highest number");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecBow].Name = ::Const.Strings.PerkName.SpecBow;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecBow].Tooltip = ::Const.Strings.PerkDescription.SpecBow;
@@ -39,7 +40,7 @@ this.perk_mastery_bow <- this.inherit("scripts/skills/skill", {
 		return weapon != null && (weapon.isWeaponType(::Const.Items.WeaponType.Bow) || weapon.isWeaponType(::Const.Items.WeaponType.Crossbow))
 	}
 
-	
+
 	function restoreAmmo()
 	{
 		local item = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Ammo);
@@ -58,7 +59,7 @@ this.perk_mastery_bow <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		if (!actor.isPlacedOnMap() || !this.isEnabled() || !::Tactical.TurnSequenceBar.isActiveEntity(actor)) return;
 
-		
+
 		if (!actor.isPlayerControlled()) return;
 		if (actor.m.IsMoving)
 		{

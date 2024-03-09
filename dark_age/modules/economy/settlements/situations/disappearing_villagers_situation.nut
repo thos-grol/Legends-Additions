@@ -10,10 +10,7 @@
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 
-		_draftList.push("ratcatcher_background");
-		_draftList.push("ratcatcher_background");
-		_draftList.push("ratcatcher_background");
-		_draftList.push("ratcatcher_background");
+
 	}
 
 });

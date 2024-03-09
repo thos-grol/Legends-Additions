@@ -2,17 +2,7 @@
 	o.onUpdateDraftList = function( _list, _gender = null )
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-
 		if (!this.isActive()) return;
-
-		_list.push("nomad_background");
-		_list.push("nomad_background");
-		_list.push("nomad_background");
-
-		if (::Math.rand(0, 6) == 1) _list.push("legend_conscript_background");
-		if (::Math.rand(0, 6) == 1) _list.push("legend_conscript_ranged_background");
-		if (::Math.rand(0, 5) == 1) _list.push("assassin_southern_background");
-
 	}
 
 	o.onUpdateShopList = function( _id, _list )

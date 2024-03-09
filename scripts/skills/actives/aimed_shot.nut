@@ -203,7 +203,7 @@ this.aimed_shot <- this.inherit("scripts/skills/skill", {
 	{
 		if (_skill == this)
 		{
-			_properties.RangedSkill += this.m.AdditionalAccuracy;
+			_properties.MeleeSkill += this.m.AdditionalAccuracy;
 			_properties.HitChanceAdditionalWithEachTile += this.m.AdditionalHitChance;
 			_properties.DamageRegularMult *= 1.1;
 

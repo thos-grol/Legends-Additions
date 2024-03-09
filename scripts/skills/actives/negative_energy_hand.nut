@@ -177,7 +177,7 @@ this.negative_energy_hand <- this.inherit("scripts/skills/skill", {
 	{
 		if (_skill == this)
 		{
-			_properties.RangedSkill += this.m.AdditionalAccuracy;
+			_properties.MeleeSkill += this.m.AdditionalAccuracy;
 			_properties.HitChanceAdditionalWithEachTile -= 2 + this.m.AdditionalHitChance;
 			_properties.DamageRegularMin = 5;
 			_properties.DamageRegularMax = 15;

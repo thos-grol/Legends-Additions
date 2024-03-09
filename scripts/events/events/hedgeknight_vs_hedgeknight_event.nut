@@ -414,7 +414,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.HedgeKnight1.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Melee Skill"
+						text = _event.m.HedgeKnight1.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Skill"
 					});
 				}
 				else
@@ -481,7 +481,7 @@ this.hedgeknight_vs_hedgeknight_event <- this.inherit("scripts/events/event", {
 					this.List.push({
 						id = 16,
 						icon = "ui/icons/melee_skill.png",
-						text = _event.m.HedgeKnight2.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Melee Skill"
+						text = _event.m.HedgeKnight2.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + v + "[/color] Skill"
 					});
 				}
 				else

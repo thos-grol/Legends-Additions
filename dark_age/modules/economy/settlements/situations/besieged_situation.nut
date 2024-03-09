@@ -13,7 +13,6 @@
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 		_draftList.push("cripple_background");
 		_draftList.push("cripple_background");
-		_draftList.push("gravedigger_background");
 		_draftList.push("beggar_background");
 		_draftList.push("beggar_background");
 		_draftList.push("deserter_background");

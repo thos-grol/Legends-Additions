@@ -144,7 +144,7 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 
 	function getBonus()
 	{
-		local ranged_skill = this.getContainer().getActor().getCurrentProperties().RangedSkill;
+		local ranged_skill = this.getContainer().getActor().getCurrentProperties().MeleeSkill;
 		return ::Math.round(::Math.max(100 - ranged_skill, 0) / 2.0);
 	}
 
@@ -177,7 +177,7 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		_properties.RangedSkill += this.m.AdditionalAccuracy;
+		_properties.MeleeSkill += this.m.AdditionalAccuracy;
 		_properties.HitChanceAdditionalWithEachTile += this.m.AdditionalHitChance;
 
 		if (_targetEntity.getType() == ::Const.EntityType.Vampire || _targetEntity.getType() == ::Const.EntityType.LegendVampireLord)

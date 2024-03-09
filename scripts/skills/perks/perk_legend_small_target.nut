@@ -73,7 +73,7 @@ this.perk_legend_small_target <- this.inherit("scripts/skills/skill", {
 					id = 6,
 					type = "text",
 					icon = "ui/tooltips/warning.png",
-					text = "This character\'s [color=" + ::Const.UI.Color.NegativeValue + "]Melee Defence and Resolve is too high[/color] to gain reroll chance."
+					text = "This character\'s [color=" + ::Const.UI.Color.NegativeValue + "]Melee Defence and Will is too high[/color] to gain reroll chance."
 				});
 			}
 		}

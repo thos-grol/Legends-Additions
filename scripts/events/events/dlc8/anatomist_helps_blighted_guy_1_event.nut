@@ -69,7 +69,7 @@ this.anatomist_helps_blighted_guy_1_event <- this.inherit("scripts/events/event"
 				local roster = this.World.getTemporaryRoster();
 				_event.m.Dude = roster.create("scripts/entity/tactical/player");
 				_event.m.Dude.setStartValuesEx([
-					"vagabond_background"
+					"daytaler_background"
 				], false);
 				_event.m.Dude.setTitle("");
 				_event.m.Dude.getFlags().set("IsSpecial", true);

@@ -13,8 +13,7 @@
 			return;
 		}
 
-		_list.push("cultist_background");
-		_list.push("cultist_background");
+		_list.push("wildman_background");
 		_list.push("wildman_background");
 		//_list.push("legend_herbalist_background");
 	}

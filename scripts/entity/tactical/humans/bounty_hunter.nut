@@ -8,7 +8,6 @@ this.bounty_hunter <- this.inherit("scripts/entity/tactical/humans/mercenary", {
 	function onInit()
 	{
 		this.mercenary.onInit();
-		this.m.BaseProperties.RangedSkill -= 10;
 		this.m.BaseProperties.MeleeSkill -= 10;
 		this.m.BaseProperties.MeleeDefense -= 10;
 		this.m.BaseProperties.RangedDefense -= 10;

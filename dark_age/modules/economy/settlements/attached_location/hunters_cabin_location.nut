@@ -21,16 +21,6 @@
 		_list.push("poacher_background");
 		_list.push("poacher_background");
 		_list.push("poacher_background");
-
-		if (::Math.rand(0, 9) == 1)
-		{
-			_list.push("legend_master_archer_background");
-		}
-
-		if (::Math.rand(0, 9) == 1)
-		{
-			_list.push("legend_ranger_background");
-		}
 	}
 
 	o.onUpdateShopList = function( _id, _list )

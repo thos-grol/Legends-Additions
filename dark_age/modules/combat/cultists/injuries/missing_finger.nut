@@ -13,13 +13,7 @@
 				id = 7,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5%[/color] Melee Skill"
-			});
-			ret.push({
-				id = 7,
-				type = "text",
-				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5%[/color] Ranged Skill"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5%[/color] Skill"
 			});
 		}
 		else
@@ -38,6 +32,5 @@
 	{
 		local has = this.has_penance();
 		_properties.MeleeSkillMult *= has ? 1.0 : 0.95;
-		_properties.RangedSkillMult *= has ? 1.0 : 0.95;
 	}
 });

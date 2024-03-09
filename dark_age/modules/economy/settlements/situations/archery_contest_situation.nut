@@ -29,9 +29,6 @@
 		_draftList.push("poacher_background");
 		_draftList.push("poacher_background");
 		_draftList.push("poacher_background");
-		_draftList.push("sellsword_background");
-		_draftList.push("sellsword_background");
-		_draftList.push("sellsword_background");
 
 		if (_gender)
 		{
@@ -40,7 +37,6 @@
 			_draftList.push("female_disowned_noble_background");
 		}
 
-		_draftList.push("legend_master_archer_background");
 	}
 
 });

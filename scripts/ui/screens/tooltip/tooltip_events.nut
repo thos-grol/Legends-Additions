@@ -2131,7 +2131,7 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Melee Skill"
+					text = "Skill"
 				},
 				{
 					id = 2,
@@ -2262,7 +2262,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "Resolve represents the willpower and bravery of characters. The higher, the less likely that characters fall to lower morale states at negative events, and the more likely that characters gain confidence from positive events. Resolve also acts as defense against certain mental attacks that inflict panic, fear or mind control. See also: Morale."
+					text = "Resolve represents the willpower and bravery of characters. The higher, the less likely that characters fall to lower morale states at negative events, and the more likely that characters gain confidence from positive events. Will also acts as defense against certain mental attacks that inflict panic, fear or mind control. See also: Morale."
 				}
 			];
 

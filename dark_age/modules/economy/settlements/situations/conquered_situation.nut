@@ -14,9 +14,6 @@
 		_draftList.push("refugee_background");
 		_draftList.push("cripple_background");
 		_draftList.push("cripple_background");
-		_draftList.push("vagabond_background");
-		_draftList.push("gravedigger_background");
-		_draftList.push("gravedigger_background");
 		_draftList.push("beggar_background");
 		_draftList.push("beggar_background");
 		_draftList.push("beggar_background");

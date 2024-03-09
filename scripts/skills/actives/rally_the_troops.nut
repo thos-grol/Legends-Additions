@@ -48,13 +48,13 @@ this.rally_the_troops <- this.inherit("scripts/skills/skill", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Triggers a morale check to rally fleeing allies within 4 tiles distance, with a bonus to Resolve of [color=" + ::Const.UI.Color.PositiveValue + "]+" + bravery + "[/color] based on this character\'s Resolve"
+				text = "Triggers a morale check to rally fleeing allies within 4 tiles distance, with a bonus to Will of [color=" + ::Const.UI.Color.PositiveValue + "]+" + bravery + "[/color] based on this character\'s Resolve"
 			},
 			{
 				id = 7,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Triggers a morale check to raise the morale of anyone wavering or worse within 4 tiles distance, with a bonus to Resolve of [color=" + ::Const.UI.Color.PositiveValue + "]+" + bravery + "[/color] based on this character\'s Resolve, but lowered by [color=" + ::Const.UI.Color.NegativeValue + "]-10[/color] per tile distance"
+				text = "Triggers a morale check to raise the morale of anyone wavering or worse within 4 tiles distance, with a bonus to Will of [color=" + ::Const.UI.Color.PositiveValue + "]+" + bravery + "[/color] based on this character\'s Resolve, but lowered by [color=" + ::Const.UI.Color.NegativeValue + "]-10[/color] per tile distance"
 			},
 			{
 				id = 7,

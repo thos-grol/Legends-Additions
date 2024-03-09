@@ -1,3 +1,4 @@
+//TODO: improve later
 this.combat_drill_event <- this.inherit("scripts/events/event", {
 	m = {
 		Teacher = null
@@ -15,18 +16,10 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 			Characters = [],
 			Options = [
 				{
-					Text = "Very well, see if you can teach them to fight one against one.",
+					Text = "Very well, see if you can teach them to fight",
 					function getResult( _event )
 					{
 						return "B1";
-					}
-
-				},
-				{
-					Text = "Very well, see that they can put bow and arrow to use.",
-					function getResult( _event )
-					{
-						return "C1";
 					}
 
 				},
@@ -113,7 +106,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 						this.List.push({
 							id = 16,
 							icon = "ui/icons/melee_skill.png",
-							text = bro.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+							text = bro.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Skill"
 						});
 					}
 
@@ -150,87 +143,6 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 								text = bro.getName() + " suffers " + injury.getNameOnly()
 							});
 						}
-					}
-				}
-			}
-
-		});
-		this.m.Screens.push({
-			ID = "C1",
-			Text = "[img]gfx/ui/events/event_05.png[/img] The %oldguard% musters the men together and begins handing them training bows.%SPEECH_ON%Now these ain\'t made for killing unless ye got an axe to grind with a newborn babe, which I\'m sure of y\'all do, but for now we\'ll just use them to practice.\n\nHere\'s how this contraption works. Oh, ye already know? Yer not a bunch of fools? Well go ahead, then, show me what ye sharpshooters got.%SPEECH_OFF%",
-			Image = "",
-			List = [],
-			Characters = [],
-			Options = [
-				{
-					Text = "Let\'s see if you lot can hit anything.",
-					function getResult( _event )
-					{
-						return "C2";
-					}
-
-				}
-			],
-			function start( _event )
-			{
-			}
-
-		});
-		this.m.Screens.push({
-			ID = "C2",
-			Text = "[img]gfx/ui/events/event_10.png[/img]The mercenaries take practiced shots downrange, the arrows peppering all around their targets, a scant few lucky ones going where they should. The %oldguard% spends the rest of the day exhaustingly having the mercenaries shoot and shoot and shoot until luck is squeezed out of the equation altogether.",
-			Image = "",
-			List = [],
-			Characters = [],
-			Options = [
-				{
-					Text = "Well done.",
-					function getResult( _event )
-					{
-						return 0;
-					}
-
-				}
-			],
-			function start( _event )
-			{
-
-				local brothers = this.World.getPlayerRoster().getAll();
-
-				foreach( bro in brothers )
-				{
-					if (bro.getLevel() >= 11) continue;
-					if (bro.getFlags().has("event_combat_drill_2")) continue;
-
-					local rangedSkill = ::Math.rand(1, 2);
-					bro.getBaseProperties().RangedSkill += rangedSkill;
-					bro.getSkills().update();
-
-					if (bro.getFlags().has("event_combat_drill_1")) bro.getFlags().add("event_combat_drill_2");
-					else bro.getFlags().add("event_combat_drill_1");
-
-					if (rangedSkill > 0)
-					{
-						this.List.push({
-							id = 16,
-							icon = "ui/icons/ranged_skill.png",
-							text = bro.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + rangedSkill + "[/color] Ranged Skill"
-						});
-					}
-
-					local exhaustionChance = 33;
-					if (bro.getSkills().hasSkill("trait.asthmatic")) exhaustionChance = exhaustionChance * 4.0;
-					if (bro.getSkills().hasSkill("trait.athletic")) exhaustionChance = exhaustionChance * 0.0;
-					if (bro.getSkills().hasSkill("trait.iron_lungs")) exhaustionChance = exhaustionChance * 0.0;
-					if (::Math.rand(1, 100) <= exhaustionChance)
-					{
-						local effect = ::new("scripts/skills/effects_world/exhausted_effect");
-						bro.getSkills().add(effect);
-						this.List.push({
-							id = 10,
-							icon = effect.getIcon(),
-							text = bro.getName() + " is exhausted"
-						});
 					}
 				}
 			}

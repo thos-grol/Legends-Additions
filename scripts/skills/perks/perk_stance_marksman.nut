@@ -41,7 +41,7 @@ this.perk_stance_marksman <- this.inherit("scripts/skills/skill", {
 	function onBeforeTargetHit( _caller, _targetEntity, _hitInfo )
 	{
 		if (!isEnabled()) return;
-		local chance = ::Math.round(this.getContainer().getActor().getCurrentProperties().RangedSkill / 4);
+		local chance = ::Math.round(this.getContainer().getActor().getCurrentProperties().MeleeSkill / 4);
 		local roll = ::Math.rand(1, 100);
 		if (roll > chance) return;
 

@@ -72,14 +72,7 @@ this.perk_battle_flow <- this.inherit("scripts/skills/skill", {
 			id = 10,
 			type = "text",
 			icon = "ui/icons/hitchance.png",
-			text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.getSkillBonus() + "[/color] Melee Skill"
-		});
-
-		tooltip.push({
-			id = 10,
-			type = "text",
-			icon = "ui/icons/hitchance.png",
-			text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.getSkillBonus() + "[/color] Ranged Skill"
+			text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.getSkillBonus() + "[/color] Skill"
 		});
 
 		local APBonus = this.getAPBonus();
@@ -148,7 +141,6 @@ this.perk_battle_flow <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		_properties.MeleeSkill += this.getSkillBonus();
-		_properties.RangedSkill += this.getSkillBonus();
 		_properties.ActionPoints += this.getAPBonus();
 	}
 

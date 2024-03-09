@@ -43,13 +43,7 @@ this.pragmatic_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5%[/color] Melee Skill"
-			},
-			{
-				id = 10,
-				type = "text",
-				icon = "ui/icons/ranged_skill.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5%[/color] Ranged Skill"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5%[/color] Skill"
 			},
 			{
 				id = 11,
@@ -64,7 +58,6 @@ this.pragmatic_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	{
 		_properties.HitChance[::Const.BodyPart.Head] -= 10;
 		_properties.MeleeSkillMult *= 1.05;
-		_properties.RangedSkillMult *= 1.05;
 	}
 
 });

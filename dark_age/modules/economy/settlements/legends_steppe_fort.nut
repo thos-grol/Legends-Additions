@@ -95,18 +95,18 @@
 		];
 		this.m.FemaleDraftLists = [
 			[
-				
+
 			],
 			[
-				
-				
+
+
 				"female_adventurous_noble_background"
 			],
 			[
-				
 
-				
-				
+
+
+
 				"female_adventurous_noble_background",
 				"female_adventurous_noble_background",
 				"female_adventurous_noble_background"
@@ -114,28 +114,28 @@
 		];
 		this.m.DraftLists = [
 			[
-				"caravan_hand_background",
-				"caravan_hand_background",
+
+
 
 				"daytaler_background",
-				"mason_background",
+
 				"militia_background",
 				"militia_background",
-				"shepherd_background",
-				"vagabond_background",
+
+
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
 				"retired_soldier_background",
 				"retired_soldier_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
 
-				"mason_background",
+
+
+
 				"militia_background",
 				"militia_background",
-				"shepherd_background",
-				"vagabond_background",
+
+
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
@@ -147,72 +147,70 @@
 
 				"beggar_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
+
+
 				"hunter_background",
-				"mason_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"militia_background",
 				"militia_background",
-				"ratcatcher_background",
+				
 				"refugee_background",
-				"servant_background",
-				"vagabond_background",
+
+
 
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
-				"raider_background",
+
 				"retired_soldier_background",
 				"retired_soldier_background",
-				"sellsword_background",
+
 				"apprentice_background",
 
 				"brawler_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
+
+
 				"hunter_background",
-				"mason_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"militia_background",
 				"militia_background",
-				"ratcatcher_background",
+				
 				"refugee_background",
-				"vagabond_background",
+
 
 				"bastard_background",
 				"deserter_background",
-				"raider_background",
 				"retired_soldier_background",
 				"retired_soldier_background",
-				"sellsword_background"
 			],
 			[
 				"apprentice_background",
 				"beggar_background",
 
 				"brawler_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
-				"gambler_background",
-				"gravedigger_background",
+
+
+
+				
+				
 				"hunter_background",
 				"hunter_background",
 				"juggler_background",
-				"mason_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"militia_background",
 				"militia_background",
 
-				"ratcatcher_background",
+				
 				"refugee_background",
-				"servant_background",
+
 				//"tailor_background",
-				"vagabond_background",
+
 
 				"adventurous_noble_background",
 				"adventurous_noble_background",
@@ -220,45 +218,43 @@
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
-				"raider_background",
-				"raider_background",
+
 				"retired_soldier_background",
 				"retired_soldier_background",
-				"sellsword_background",
-				"sellsword_background",
-				"sellsword_background",
+
+
+
 
 
 				"apprentice_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
-				"gambler_background",
-				"gravedigger_background",
+
+
+
+				
+				
 				"hunter_background",
 				"hunter_background",
 				"juggler_background",
-				"mason_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"militia_background",
 				"militia_background",
 
-				"ratcatcher_background",
+				
 				"refugee_background",
-				"vagabond_background",
+
 
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
-				"raider_background",
-				"raider_background",
+
 				"retired_soldier_background",
 				"retired_soldier_background",
-				"sellsword_background",
-				"sellsword_background",
-				"sellsword_background",
+
+
+
 			]
 		];
 		this.m.StablesLists = [

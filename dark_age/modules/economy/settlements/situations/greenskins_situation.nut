@@ -19,11 +19,6 @@
 		_draftList.push("deserter_background");
 		_draftList.push("deserter_background");
 		_draftList.push("deserter_background");
-		_draftList.push("sellsword_background");
-		_draftList.push("sellsword_background");
-		_draftList.push("sellsword_background");
-		_draftList.push("hedge_knight_background");
-		_draftList.push("hedge_knight_background");
 	}
 
 });

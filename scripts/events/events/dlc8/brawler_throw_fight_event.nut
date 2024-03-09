@@ -178,7 +178,7 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Brawler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + melee_skill_boost + "[/color] Melee Skill"
+					text = _event.m.Brawler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + melee_skill_boost + "[/color] Skill"
 				});
 				this.List.push({
 					id = 16,
@@ -249,7 +249,7 @@ this.brawler_throw_fight_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Brawler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + melee_skill_boost + "[/color] Melee Skill"
+					text = _event.m.Brawler.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + melee_skill_boost + "[/color] Skill"
 				});
 				_event.m.Brawler.improveMood(0.5, "Was allowed to fight on his own terms");
 				_event.m.Brawler.improveMood(2.0, "Handily won a fighting tournament");

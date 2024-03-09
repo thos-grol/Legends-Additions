@@ -6,7 +6,7 @@
 + "\n"+::MSU.Text.colorRed("Invalid if offhand is missing or not free")
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Kick\' (4 AP, 14 Fat):")
-+ "\nPerform a CQC attack with a malus of " + ::MSU.Text.colorRed("-25") + " melee skill. Will " + ::MSU.Text.colorRed("Stagger")
++ "\nPerform a CQC attack with a malus of " + ::MSU.Text.colorRed("-25") + " Skill. Will " + ::MSU.Text.colorRed("Stagger")
 + "\n" + ::MSU.Text.colorRed("Invalid if this unit is missing a leg")
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Stagger: (Removed on turn start)")
@@ -44,6 +44,7 @@ this.perk_legend_ambidextrous <- this.inherit("scripts/skills/skill", {
 			|| items.getItemAtSlot(::Const.ItemSlot.Offhand) != null) return;
 		if (_forFree) return;
 		if (_targetTile == null) return;
+		if (!_skill.m.IsAttack) return;
 		if (_skill.m.ID == "actives.legend_kick") return;
 
 		local attack = this.getContainer().getSkillByID("actives.hand_to_hand");

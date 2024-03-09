@@ -114,8 +114,8 @@
 				"brawler_background",
 				"daytaler_background",
 				"graverobber_background",
-				"mason_background",
-				"messenger_background",
+
+
 				"miner_background",
 				"miner_background",
 				"miner_background",
@@ -126,8 +126,8 @@
 				"apprentice_background",
 				"brawler_background",
 				"graverobber_background",
-				"mason_background",
-				"messenger_background",
+
+
 				"miner_background",
 				"miner_background",
 				"miner_background",
@@ -139,83 +139,81 @@
 				"apprentice_background",
 				"apprentice_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"gambler_background",
+				
+				
 				"daytaler_background",
 				"juggler_background",
 				"killer_on_the_run_background",
-				"mason_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"miner_background",
 				"miner_background",
 				"miner_background",
 				"miner_background",
 
-				"ratcatcher_background",
-				"servant_background",
-				"shepherd_background",
+				
+
+				
 				"thief_background",
-				"vagabond_background",
+
 				"apprentice_background",
 				"apprentice_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"gambler_background",
+				
+				
 				"juggler_background",
 				"killer_on_the_run_background",
-				"mason_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"miner_background",
 				"miner_background",
 				"miner_background",
 				"miner_background",
 
-				"ratcatcher_background",
-				"shepherd_background",
-				"vagabond_background"
+				
+				
 			],
 			[
 				"apprentice_background",
 				"apprentice_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"gambler_background",
+				
+				
 				"daytaler_background",
 				"juggler_background",
 				"killer_on_the_run_background",
-				"mason_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"miner_background",
 				"miner_background",
 				"miner_background",
 				"miner_background",
 
-				"ratcatcher_background",
-				"servant_background",
-				"shepherd_background",
+				
+
+				
 				"thief_background",
-				"vagabond_background",
+
 				"apprentice_background",
 				"apprentice_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"gambler_background",
+				
+				
 				"juggler_background",
 				"killer_on_the_run_background",
-				"mason_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"miner_background",
 				"miner_background",
 				"miner_background",
 				"miner_background",
 
-				"ratcatcher_background",
-				"shepherd_background",
-				"vagabond_background"
+				
+				
 			]
 		];
 		this.m.FemaleDraftLists = [

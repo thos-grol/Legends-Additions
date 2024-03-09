@@ -46,7 +46,7 @@ this.brute_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5[/color] Melee Skill"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5[/color] Skill"
 			}
 		];
 	}

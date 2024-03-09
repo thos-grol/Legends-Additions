@@ -94,6 +94,14 @@
     ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(_targetEntity) + " suffers " + ::MSU.Text.color(::Z.Color.BloodRed,  _injury ) );
 };
 
+::Z.Log.reflex_trigger <- function(_reflex_status)
+{
+    if (_reflex_status == 0) return;
+    ::Tactical.EventLog.logIn(
+        ::MSU.Text.color(::Z.Color.BloodRed, "REFLEX TRIGGERED - ") + (_reflex_status == 1 ? "Downgraded to bodyshot" : "Downgraded to graze (10% dmg)")
+    );
+};
+
 ::Z.Log.hair_armor <- function()
 {
     ::Tactical.EventLog.logIn("[" + ::MSU.Text.colorRed("Hair Armor") + "] nullified direct damage.");

@@ -96,11 +96,11 @@
 				"farmhand_background",
 				"farmhand_background",
 
-				"mason_background",
-				"messenger_background",
+
+				
 				"militia_background",
 				"militia_background",
-				"miller_background",
+
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
@@ -108,8 +108,8 @@
 				"retired_soldier_background",
 				"retired_soldier_background",
 
-				"mason_background",
-				"messenger_background",
+
+				
 				"militia_background",
 				"militia_background",
 				"bastard_background",
@@ -119,15 +119,15 @@
 				"retired_soldier_background"
 			],
 			[
-				"gambler_background",
+				
 
 				"farmhand_background",
-				"mason_background",
-				"messenger_background",
+
+				
 				"militia_background",
 
-				"ratcatcher_background",
-				"vagabond_background",
+				
+				
 
 				"adventurous_noble_background",
 				"bastard_background",
@@ -136,45 +136,45 @@
 				"retired_soldier_background",
 				"retired_soldier_background",
 				"disowned_noble_background",
-				"sellsword_background",
+				
 
 
 				"cripple_background",
-				"gambler_background",
+				
 
-				"mason_background",
-				"messenger_background",
+
+				
 				"militia_background",
-				"ratcatcher_background",
-				"vagabond_background",
+				
+				
 
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
 				"retired_soldier_background",
 				"retired_soldier_background",
-				"sellsword_background",
+				
 
 
 				"cripple_background"
 			],
 			[
 				"apprentice_background",
-				"gambler_background",
+				
 				"farmhand_background",
 				"farmhand_background",
-				"mason_background",
-				"messenger_background",
+
+				
 				"militia_background",
 				"militia_background",
-				"miller_background",
-				"miller_background",
 
 
-				"ratcatcher_background",
+
+
+				
 				"refugee_background",
 				//"tailor_background",
-				"vagabond_background",
+				
 
 				"adventurous_noble_background",
 				"bastard_background",
@@ -185,21 +185,21 @@
 				"disowned_noble_background",
 				"disowned_noble_background",
 				"retired_soldier_background",
-				"sellsword_background",
+				
 
 
 
 				"apprentice_background",
-				"gambler_background",
-				"mason_background",
-				"messenger_background",
+				
+
+				
 				"militia_background",
 				"militia_background",
 
 
-				"ratcatcher_background",
+				
 				"refugee_background",
-				"vagabond_background",
+				
 
 				"bastard_background",
 				"bastard_background",
@@ -207,7 +207,7 @@
 				"deserter_background",
 				"deserter_background",
 				"retired_soldier_background",
-				"sellsword_background",
+				
 
 
 			]

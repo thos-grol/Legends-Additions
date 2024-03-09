@@ -2,7 +2,7 @@
 ::Const.Strings.PerkDescription.GluttonyKnight <- ::MSU.Text.color(::Z.Color.Purple, "Class")
 + "\nConsume, ravage, red... The remnant power of the Shub-Niggurath, the Mother Tree of Desire..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\nE Class Melee: " + ::MSU.Text.colorGreen("+20") + " Melee Skill"
++ "\nE Class Melee: " + ::MSU.Text.colorGreen("+20") + " Skill"
 + "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Melee Defense"
 + "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Ranged Defense"
 + "\n• At the start of battle, gain 1 charge of shielding."

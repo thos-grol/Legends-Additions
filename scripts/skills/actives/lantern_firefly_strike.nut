@@ -170,7 +170,7 @@ this.lantern_firefly_strike <- this.inherit("scripts/skills/skill", {
 	{
 		if (_skill == this)
 		{
-			_properties.RangedSkill += 15 + this.m.AdditionalAccuracy;
+			_properties.MeleeSkill += 15 + this.m.AdditionalAccuracy;
 			_properties.HitChanceAdditionalWithEachTile -= 2 + this.m.AdditionalHitChance;
 		}
 	}

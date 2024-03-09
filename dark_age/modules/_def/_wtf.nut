@@ -2,19 +2,13 @@
 	o.updateRoster = function( _force = false )
 	{
 		local daysPassed = (this.Time.getVirtualTimeF() - this.m.LastRosterUpdate) / this.World.getTime().SecondsPerDay;
-
-		if (!_force && this.m.LastRosterUpdate != 0 && daysPassed < 2)
-		{
-			return;
-		}
-
-		if (this.m.RosterSeed != 0)
-		{
-			::Math.seedRandom(this.m.RosterSeed);
-		}
-
+		if (!_force && this.m.LastRosterUpdate != 0 && daysPassed < 2) return;
+		if (this.m.RosterSeed != 0) ::Math.seedRandom(this.m.RosterSeed);
 		this.m.RosterSeed = ::Math.floor(this.Time.getRealTime() + ::Math.rand());
 		this.m.LastRosterUpdate = this.Time.getVirtualTimeF();
+
+		if (::Math.rand(1,100) <= 50) return; //50% chance to not get any roster
+
 		local roster = this.World.getRoster(this.getID());
 		local allbros = roster.getAll();
 		local current = [];
@@ -46,14 +40,8 @@
 			}
 		}
 
-		local minRosterSizes = [
-			0,
-			3,
-			6,
-			9
-		];
-		local rosterMin = minRosterSizes[this.m.Size] + (this.isSouthern() ? 2 : 0);
-		local rosterMax = minRosterSizes[this.m.Size] + activeLocations + (this.isSouthern() ? 1 : 0);
+		local rosterMin = 3;
+		local rosterMax = 3;
 
 		if (this.World.FactionManager.getFaction(this.m.Factions[0]).getPlayerRelation() < 50)
 		{

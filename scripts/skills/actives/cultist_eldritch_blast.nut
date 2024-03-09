@@ -113,7 +113,7 @@ this.cultist_eldritch_blast <- this.inherit("scripts/skills/skill", {
 			local buff = this.getContainer().getActor().getFlags().has("AgonizingBlast") ? this.getAgonizingBlast() : 0;
 			_properties.DamageRegularMin = 20 + buff;
 			_properties.DamageRegularMax = 45 + buff;
-			_properties.RangedSkill += 20;
+			_properties.MeleeSkill += 20;
 			_properties.HitChanceAdditionalWithEachTile += -5;
 			_properties.DamageArmorMult = 0.8;
 		}

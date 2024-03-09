@@ -237,7 +237,7 @@ this.winter_blizzard <- this.inherit("scripts/skills/skill", {
 			_properties.DamageRegularMin = 40;
 			_properties.DamageRegularMax = xactor.getLevel() * 2 + 80;
 			_properties.DamageArmorMult = 1.0;
-			_properties.RangedSkill += 5;
+			_properties.MeleeSkill += 5;
 			_properties.RangedAttackBlockedChanceMult *= 0;
 			if (xthis.m.Container.hasSkill("perk.duelist"))
 			{
