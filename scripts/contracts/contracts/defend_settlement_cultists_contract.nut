@@ -13,7 +13,7 @@ this.defend_settlement_cultists_contract <- this.inherit("scripts/contracts/cont
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 5.0;
 		this.m.MakeAllSpawnsResetOrdersOnContractEnd = false;
 		this.m.MakeAllSpawnsAttackableByAIOnceDiscovered = true;
-		this.m.DifficultyMult = ::Math.rand(135, 175) * 0.01;
+		this.m.DifficultyMult = ::Math.rand(100, 140) * 0.01;
 
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 

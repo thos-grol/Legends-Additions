@@ -82,7 +82,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 					::Const.World.TerrainType.Mountains
 				]);
 				local nearTile = this.Contract.getTileToSpawnLocation(playerTile, 4, 7);
-				local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Lindwurm", false, ::Const.World.Spawn.Lindwurm, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Lindwurm", false, ::Const.World.Spawn.Lindwurm, 100 * this.Contract.getDifficultyMult());
 				party.getSprite("banner").setBrush("banner_beasts_01");
 				party.setDescription("A Lindwurm - a wingless bipedal dragon resembling a giant snake.");
 				party.setFootprintType(::Const.World.FootprintsType.Lindwurms);
@@ -385,7 +385,7 @@ this.hunting_lindwurms_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = ::Const.Music.BeastsTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Edge;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Random;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Ghouls, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Ghouls, 100 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

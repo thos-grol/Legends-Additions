@@ -30,7 +30,7 @@
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Gains hammer proficiency faster (+10 chance)"
+			text = "Gains bludgeon proficiency faster (+10 chance)"
 		});
 		return ret;
 	}

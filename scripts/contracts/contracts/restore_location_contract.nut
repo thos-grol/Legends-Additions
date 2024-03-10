@@ -384,7 +384,7 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 						p.TerrainTemplate = "tactical.plains";
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Spiders, 90 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Spiders, 90 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

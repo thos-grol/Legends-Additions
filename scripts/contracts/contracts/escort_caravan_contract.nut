@@ -655,7 +655,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 							}
 						}
 
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.m.NobleHouseID);
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 120 * this.Contract.getDifficultyMult(), this.Contract.m.NobleHouseID);
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -924,7 +924,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = ::Const.Music.UndeadTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Center;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Vampires, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Vampires, 80 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getID());
 						this.World.Contracts.startScriptedCombat(p, false, false, false);
 						return 0;
 					}
@@ -1159,6 +1159,11 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 
 	function spawnCaravan()
 	{
+		local modifier = ::Math.rand(50, 200);
+		local tier = ::Math.rand(1,2);
+		if (modifier > 75) tier++;
+		if (modifier > 150) tier++;
+
 		local faction = this.World.FactionManager.getFaction(this.getFaction());
 		local party;
 
@@ -1177,24 +1182,24 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 		party.setDescription("A trading caravan from " + this.m.Home.getName() + " that is transporting all manner of goods between settlements.");
 		party.setMovementSpeed(::Const.World.MovementSettings.Speed * 0.6);
 		party.setLeaveFootprints(false);
+		party.getFlags().set("tier", tier);
+		party.getFlags().set("IsCaravan", true);
 
-		if (::Legends.Mod.ModSettings.getSetting("WorldEconomy").getValue())
-		{
-			::Const.World.Common.WorldEconomy.setupTrade(party, this.m.Home, this.m.Destination);
-		}
-		else if (this.m.Home.getProduce().len() != 0)
-		{
-			local produce = 3;
-			local L = this.m.Home.getProduce();
 
-			for( local j = 0; j < produce; j = j )
-			{
-				party.addToInventory(::MSU.Array.rand(L));
-				j = ++j;
-			}
+		if (this.World.Assets.m.IsBrigand && this.m.Home.getTile().getDistanceTo(this.World.State.getPlayer().getTile()) <= 70)
+		{
+			party.setVisibleInFogOfWar(true);
+			party.setImportant(true);
+			party.setDiscovered(true);
 		}
 
-		party.getLoot().Money = ::Math.rand(0, 100);
+		::Const.World.Common.WorldEconomy.setupTrade(party, this.m.Home, this.m.Destination);
+
+		if (::Math.rand(1, 2) <= 1) party.getLoot().ArmorParts = ::Math.rand(0, 5);
+		if (::Math.rand(1, 2) <= 1) party.getLoot().Medicine = ::Math.rand(0, 3);
+		if (::Math.rand(1, 2) <= 1) party.getLoot().Ammo = ::Math.rand(0, 10);
+		party.getLoot().Money = ::Math.rand(25, 75);
+
 		local c = party.getController();
 		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 		c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);

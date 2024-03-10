@@ -71,7 +71,7 @@ this.hunting_mummies_contract <- this.inherit("scripts/contracts/contract", {
 				local mapSize = this.World.getMapSize();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 8, 12, disallowedTerrain);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).spawnEntity(tile, "Embalmed", false, ::Const.World.Spawn.MummiesPatrol, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).spawnEntity(tile, "Embalmed", false, ::Const.World.Spawn.MummiesPatrol, 110 * this.Contract.getDifficultyMult());
 				party.setDescription("Glints of gold and heavy steps serve as a warning to all.");
 				party.setFootprintType(::Const.World.FootprintsType.Undead);
 				party.setAttackableByAI(false);

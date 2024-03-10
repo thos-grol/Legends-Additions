@@ -87,7 +87,7 @@ this.cursed_crystal_skull <- this.inherit("scripts/items/accessory/cursed_access
 			icon = "ui/icons/chance_to_hit_head.png",
 			text = "The holder can never have [color=" + ::Const.UI.Color.NegativeValue + "]confident[/color] morale"
 		});
-		result.push({
+		_tooltip.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/chance_to_hit_head.png",

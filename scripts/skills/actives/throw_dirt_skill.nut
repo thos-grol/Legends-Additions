@@ -31,6 +31,11 @@ this.throw_dirt_skill <- this.inherit("scripts/skills/skill", {
 		this.m.MaxLevelDifference = 1;
 	}
 
+	function onTargetKilled( _targetEntity, _skill )
+	{
+		this.m.Charges = 1;
+	}
+
 	function isUsable()
 	{
 		if (this.m.Charges <= 0) return false;

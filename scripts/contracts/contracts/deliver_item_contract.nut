@@ -282,7 +282,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Location.setResources(0);
 						this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).addSettlement(this.Contract.m.Location.get(), false);
 						this.Contract.m.Location.onSpawned();
-						this.Contract.addUnitsToEntity(this.Contract.m.Location, ::Const.World.Spawn.BanditRoamers, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(this.Contract.m.Location, ::Const.World.Spawn.BanditRoamers, 80 * this.Contract.getDifficultyMult());
 						::Const.World.Common.addFootprintsFromTo(this.World.State.getPlayer().getTile(), tile, ::Const.GenericFootprints, ::Const.World.FootprintsType.Brigands, 0.75);
 						this.Flags.set("IsStolenByThieves", true);
 						this.Contract.setScreen("Thieves1");
@@ -450,7 +450,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = ::Const.Music.NobleTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.MercenariesLow, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.MercenariesLow, 120 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -535,7 +535,7 @@ this.deliver_item_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = ::Const.Music.NobleTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 140 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 140 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

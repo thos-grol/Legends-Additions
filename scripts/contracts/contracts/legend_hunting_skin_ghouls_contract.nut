@@ -72,7 +72,7 @@ this.legend_hunting_skin_ghouls_contract <- this.inherit("scripts/contracts/cont
 				local playerTile = this.World.State.getPlayer().getTile();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 5, 10);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Skin Ghouls", false, ::Const.World.Spawn.LegendSkinGhouls, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Skin Ghouls", false, ::Const.World.Spawn.LegendSkinGhouls, 200 * this.Contract.getDifficultyMult());
 				party.setDescription("A horde of terrorizing skin ghouls.");
 				party.setAttackableByAI(false);
 				party.setFootprintSizeOverride(0.75);

@@ -29,19 +29,19 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 		{
 			case "location.nomad_tents":
 				pay_amount = 70;
-				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
+				this.m.Flags.set("Rating", "D");
 				break;
 			case "location.nomad_ruins":
 				pay_amount = 140;
-				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
+				this.m.Flags.set("Rating", "C");
 				break;
 			case "location.nomad_hidden_camp":
 				pay_amount = 140;
-				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
+				this.m.Flags.set("Rating", "C");
 				break;
 			case "location.nomad_tent_city":
 				pay_amount = 280;
-				if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "B");
+				this.m.Flags.set("Rating", "B");
 				break;
 		}
 
@@ -83,9 +83,9 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 				// 	this.Contract.m.Destination.getLoot().clear();
 				// }
 
-				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.NomadDefenders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				// this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				// this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.NomadDefenders, 110 * this.Contract.getDifficultyMult());
+				// this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult());
+				// this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
 				// this.Contract.m.Destination.resetDefenderSpawnDay();
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
@@ -117,7 +117,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 							this.World.FactionManager.getFaction(this.Contract.m.Destination.getFaction()).removeSettlement(this.Contract.m.Destination);
 							this.Contract.m.Destination.setFaction(zombies.getID());
 							zombies.addSettlement(this.Contract.m.Destination.get(), false);
-							this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.NecromancerSouthern, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * 2.0);
+							this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.NecromancerSouthern, 110 * this.Contract.getDifficultyMult() * 2.0);
 							break;
 					}
 				}
@@ -179,7 +179,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.Music = ::Const.Music.OrientalBanditTracks;
 						properties.EnemyBanners.push(this.Contract.m.Destination.getBanner());
-						local e = ::Math.max(1, 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() / ::Const.World.Spawn.Troops.SandGolem.Cost);
+						local e = ::Math.max(1, 70 * this.Contract.getDifficultyMult() / ::Const.World.Spawn.Troops.SandGolem.Cost);
 
 						for( local i = 0; i < e; i = i )
 						{
@@ -221,7 +221,7 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 						local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						properties.Music = ::Const.Music.OrientalBanditTracks;
 						properties.EnemyBanners.push(this.Contract.m.Destination.getBanner());
-						local e = ::Math.max(1, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() / ::Const.World.Spawn.Troops.Assassin.Cost);
+						local e = ::Math.max(1, 30 * this.Contract.getDifficultyMult() / ::Const.World.Spawn.Troops.Assassin.Cost);
 
 						for( local i = 0; i < e; i = i )
 						{

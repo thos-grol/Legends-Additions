@@ -382,7 +382,7 @@ this.free_greenskin_prisoners_contract <- this.inherit("scripts/contracts/contra
 						if (this.Flags.get("IsEnemyParty"))
 						{
 							local tile = this.Contract.getTileToSpawnLocation(playerTile, 10, 15);
-							local party = this.World.FactionManager.getFaction(camp.getFaction()).spawnEntity(tile, "Greenskin Horde", false, ::Const.World.Spawn.GreenskinHorde, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+							local party = this.World.FactionManager.getFaction(camp.getFaction()).spawnEntity(tile, "Greenskin Horde", false, ::Const.World.Spawn.GreenskinHorde, 120 * this.Contract.getDifficultyMult());
 							party.getSprite("banner").setBrush(camp.getBanner());
 							party.setDescription("A horde of greenskins marching to war.");
 							party.setFootprintType(::Const.World.FootprintsType.Orcs);
@@ -420,15 +420,15 @@ this.free_greenskin_prisoners_contract <- this.inherit("scripts/contracts/contra
 							}
 							else
 							{
-								this.Contract.m.Destination.setLootScaleBasedOnResources(120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+								this.Contract.m.Destination.setLootScaleBasedOnResources(120 * this.Contract.getDifficultyMult());
 
 								if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
 								{
 									this.Contract.m.Destination.getLoot().clear();
 								}
 
-								camp.setResources(::Math.min(camp.getResources(), 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
-								this.Contract.addUnitsToEntity(camp, ::Const.World.Spawn.GreenskinHorde, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+								camp.setResources(::Math.min(camp.getResources(), 80 * this.Contract.getDifficultyMult()));
+								this.Contract.addUnitsToEntity(camp, ::Const.World.Spawn.GreenskinHorde, 120 * this.Contract.getDifficultyMult());
 							}
 						}
 
@@ -492,7 +492,7 @@ this.free_greenskin_prisoners_contract <- this.inherit("scripts/contracts/contra
 
 						p.EnemyBanners.push(camp.getBanner());
 						p.Entities = [];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.GreenskinHorde, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.GreenskinHorde, 100 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -717,7 +717,7 @@ this.free_greenskin_prisoners_contract <- this.inherit("scripts/contracts/contra
 						local nearest_goblins = this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).getNearestSettlement(tile);
 						p.EnemyBanners.push(nearest_goblins.getBanner());
 						p.Entities = [];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.GoblinRaiders, 125 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.GoblinRaiders, 125 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

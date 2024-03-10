@@ -149,13 +149,13 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
-				this.Contract.m.Destination.setLootScaleBasedOnResources(130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.m.Destination.setLootScaleBasedOnResources(130 * this.Contract.getDifficultyMult());
 				this.Contract.m.Destination.clearTroops();
-				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult()));
 
 				if (!this.Flags.get("IsLost") && !this.Flags.get("IsTooLate"))
 				{
-					this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult());
 				}
 
 				this.Contract.setScreen("Overview");
@@ -451,8 +451,8 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Destination.setDiscovered(true);
 						this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 						this.Contract.m.Destination.clearTroops();
-						this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult()));
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult());
 						this.Contract.getActiveState().start();
 						this.World.Contracts.updateActiveContract();
 						this.Contract.m.Dude = null;
@@ -517,9 +517,9 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Destination.setDiscovered(true);
 						this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 						this.Contract.m.Destination.clearTroops();
-						this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-						this.Contract.m.Destination.setLootScaleBasedOnResources(130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 130 * this.Contract.getDifficultyMult()));
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 130 * this.Contract.getDifficultyMult());
+						this.Contract.m.Destination.setLootScaleBasedOnResources(130 * this.Contract.getDifficultyMult());
 
 						if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
 						{
@@ -554,7 +554,7 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 						local playerTile = this.World.State.getPlayer().getTile();
 						local camp = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getNearestSettlement(playerTile);
 						local tile = this.Contract.getTileToSpawnLocation(playerTile, 8, 14);
-						local party = this.World.FactionManager.getFaction(camp.getFaction()).spawnEntity(tile, this.Flags.get("NemesisNameC"), false, ::Const.World.Spawn.Mercenaries, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						local party = this.World.FactionManager.getFaction(camp.getFaction()).spawnEntity(tile, this.Flags.get("NemesisNameC"), false, ::Const.World.Spawn.Mercenaries, 120 * this.Contract.getDifficultyMult());
 						party.setFootprintType(::Const.World.FootprintsType.Mercenaries);
 						local n = 0;
 
@@ -801,8 +801,8 @@ this.find_artifact_contract <- this.inherit("scripts/contracts/contract", {
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 				this.Contract.m.Destination.clearTroops();
-				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
-				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 120 * this.Contract.getDifficultyMult()));
+				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 120 * this.Contract.getDifficultyMult());
 				this.Contract.getActiveState().start();
 				this.World.Contracts.updateActiveContract();
 			}

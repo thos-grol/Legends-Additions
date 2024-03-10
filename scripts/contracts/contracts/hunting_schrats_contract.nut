@@ -119,7 +119,7 @@ this.hunting_schrats_contract <- this.inherit("scripts/contracts/contract", {
 
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, numWoods >= 12 ? 6 : 3, 11, disallowedTerrain);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Schrats", false, ::Const.World.Spawn.Schrats, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Schrats", false, ::Const.World.Spawn.Schrats, 100 * this.Contract.getDifficultyMult());
 				party.setDescription("A creature of bark and wood, blending between trees and shambling slowly, its roots digging through the soil.");
 				party.setFootprintType(::Const.World.FootprintsType.Schrats);
 				party.setAttackableByAI(false);
@@ -317,7 +317,7 @@ this.hunting_schrats_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Charge!",
 					function getResult()
 					{
-						this.Contract.addUnitsToEntity(this.Contract.m.Target, ::Const.World.Spawn.Direwolves, 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(this.Contract.m.Target, ::Const.World.Spawn.Direwolves, 70 * this.Contract.getDifficultyMult());
 						this.Contract.getActiveState().onTargetAttacked(this.Contract.m.Target, this.Contract.m.IsPlayerAttacking);
 						return 0;
 					}

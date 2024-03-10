@@ -863,7 +863,6 @@
 	"trait.huge" : "scripts/skills/traits/huge_trait",
 	"trait.impatient" : "scripts/skills/traits/impatient_trait",
 	"trait.insecure" : "scripts/skills/traits/insecure_trait",
-	"trait.intensive_training_trait" : "scripts/skills/traits/intensive_training_trait",
 	"trait.iron_jaw" : "scripts/skills/traits/iron_jaw_trait",
 	"trait.iron_lungs" : "scripts/skills/traits/iron_lungs_trait",
 	"trait.irrational" : "scripts/skills/traits/irrational_trait",

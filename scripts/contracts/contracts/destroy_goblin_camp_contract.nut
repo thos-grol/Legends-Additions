@@ -68,9 +68,9 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 					this.Contract.m.Destination.getLoot().clear();
 				}
 
-				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.GoblinRaiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.GoblinRaiders, 110 * this.Contract.getDifficultyMult());
+				this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult());
+				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 100 * this.Contract.getDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 
@@ -151,7 +151,7 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 						p.Music = ::Const.Music.GoblinsTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Center;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.GoblinRaiders, 50 * this.Contract.getScaledDifficultyMult(), this.Contract.m.Destination.getFaction());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.GoblinRaiders, 50, this.Contract.m.Destination.getFaction());
 						this.World.Contracts.startScriptedCombat(p, false, false, false);
 					}
 				}
@@ -275,7 +275,7 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 						p.Music = ::Const.Music.NobleTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 140 * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 140, this.Contract.getFaction());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

@@ -671,7 +671,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 						allyStrength = allyStrength - 20;
 					}
 
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, allyStrength * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
+					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, allyStrength * this.Contract.getDifficultyMult(), this.Contract.getFaction());
 					p.Entities.push({
 						ID = ::Const.EntityType.Knight,
 						Variant = 0,
@@ -692,8 +692,8 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 						enemyStrength = enemyStrength + 25;
 					}
 
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, enemyStrength * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyNobleHouse"));
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 60 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyNobleHouse"));
+					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, enemyStrength * this.Contract.getDifficultyMult(), this.Flags.get("EnemyNobleHouse"));
+					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 60 * this.Contract.getDifficultyMult(), this.Flags.get("EnemyNobleHouse"));
 					p.Entities.push({
 						ID = ::Const.EntityType.Knight,
 						Variant = ::Const.DLC.Wildmen && this.Contract.getDifficultyMult() >= 1.15 ? 1 : 0,
@@ -848,7 +848,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				local playerTile = this.Contract.m.Warcamp.getTile();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 5, 8);
-				local party = this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse")).spawnEntity(tile, "Scouts", false, ::Const.World.Spawn.Noble, 60 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse")).spawnEntity(tile, "Scouts", false, ::Const.World.Spawn.Noble, 60 * this.Contract.getDifficultyMult());
 				party.getSprite("banner").setBrush(this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse")).getBannerSmall());
 				party.setDescription("Professional soldiers in service to local lords.");
 				party.setFootprintType(::Const.World.FootprintsType.Nobles);
@@ -1036,8 +1036,8 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 							::Const.PlayerBanners[n - 1],
 							"banner_noble_11"
 						];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), ::Const.Faction.Enemy);
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.PeasantsArmed, 40 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 100 * this.Contract.getDifficultyMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.PeasantsArmed, 40 * this.Contract.getDifficultyMult(), ::Const.Faction.Enemy);
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -1147,7 +1147,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 						p.EnemyBanners = [
 							"banner_noble_11"
 						];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Peasants, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Peasants, 80 * this.Contract.getDifficultyMult(), ::Const.Faction.Enemy);
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -1230,7 +1230,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				local startTile = this.World.getEntityByID(this.Flags.get("InterceptSuppliesStart")).getTile();
 				local destTile = this.World.getEntityByID(this.Flags.get("InterceptSuppliesDest")).getTile();
 				local enemyFaction = this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse"));
-				local party = enemyFaction.spawnEntity(startTile, "Supply Caravan", false, ::Const.World.Spawn.NobleCaravan, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = enemyFaction.spawnEntity(startTile, "Supply Caravan", false, ::Const.World.Spawn.NobleCaravan, 110 * this.Contract.getDifficultyMult());
 				party.getSprite("base").Visible = false;
 				party.getSprite("banner").setBrush(this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse")).getBannerSmall());
 				party.setMirrored(true);
@@ -1372,7 +1372,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					::Const.World.TerrainType.Shore,
 					::Const.World.TerrainType.Mountains
 				]);
-				local party = this.World.FactionManager.getFaction(this.Contract.getFaction()).spawnEntity(tile, "Deserters", false, ::Const.World.Spawn.Noble, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = this.World.FactionManager.getFaction(this.Contract.getFaction()).spawnEntity(tile, "Deserters", false, ::Const.World.Spawn.Noble, 80 * this.Contract.getDifficultyMult());
 				party.getSprite("banner").setBrush("banner_deserters");
 				party.setFootprintType(::Const.World.FootprintsType.Nobles);
 				party.setAttackableByAI(false);

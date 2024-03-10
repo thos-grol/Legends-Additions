@@ -8,12 +8,12 @@
 	ActionPoints = 9,
 	Hitpoints = 60,
 	Bravery = 60,
-	Stamina = 96,
+	Stamina = 120,
 	MeleeSkill = 65,
 	RangedSkill = 40,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 105,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -30,49 +30,6 @@
 };
 
 ///////
-
-::B.Info[::Const.EntityType.BanditLeader].Builds["Commander"] <- {
-	Name = "Commander",
-	Pattern = [
-		["scripts/skills/perks/perk_lead_by_example"], //1
-        ["scripts/skills/perks/perk_underdog"], //1, //2
-        ["scripts/skills/perks/perk_trial_by_fire"], //3
-        ["scripts/skills/perks/perk_mastery_swordc"], //4
-        ["scripts/skills/perks/perk_legend_back_to_basics"], //4 - 0
-        ["scripts/skills/perks/perk_legend_recuperation"], //4 - 1
-        ["scripts/skills/perks/perk_shield_expert"], //4 - 2
-		["scripts/skills/perks/perk_legend_wind_reader"], //5
-        ["D", 6],
-        ["scripts/skills/perks/perk_survival_instinct"], //8
-        ["scripts/skills/perks/perk_stance_the_strongest"], //9
-    ],
-	LevelUps = [
-		["Health", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
-		["Ranged Defense", 9, 3, 3],
-	],
-	Loadout = [
-		[
-			"scripts/items/weapons/oriental/qatal_dagger",
-			"scripts/items/shields/kite_shield",
-		],
-		[
-			"scripts/items/weapons/oriental/qatal_dagger",
-			"scripts/items/shields/heater_shield",
-		],
-	],
-	NamedLoadout = [
-		[
-			"scripts/items/weapons/named/named_qatal_dagger",
-			"scripts/items/shields/named/named_bandit_kite_shield"
-		],
-		[
-			"scripts/items/weapons/named/named_qatal_dagger",
-			"scripts/items/shields/named/named_bandit_heater_shield"
-		],
-	],
-};
-::B.Info[::Const.EntityType.BanditLeader].Builds["Commander2"] <- ::B.Info[::Const.EntityType.BanditLeader].Builds["Commander"];
 
 ::B.Info[::Const.EntityType.BanditLeader].Builds["Greataxe"] <- {
 	Name = "Greataxe",

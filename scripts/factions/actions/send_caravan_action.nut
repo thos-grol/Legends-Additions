@@ -6,36 +6,22 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 	function create()
 	{
 		this.m.ID = "send_caravan_action";
-		this.m.Cooldown = 100.0;
+		this.m.Cooldown = 300.0;
 		this.m.IsSettlementsRequired = true;
 		this.faction_action.create();
 	}
 
 	function onUpdate( _faction )
 	{
-		if (!this.World.getTime().IsDaytime)
-		{
-			return;
-		}
-
-		if (_faction.isEnemyNearby())
-		{
-			return;
-		}
-
-		if (_faction.getUnits().len() >= 1)
-		{
-			return;
-		}
+		if (!this.World.getTime().IsDaytime) return;
+		if (_faction.isEnemyNearby()) return;
+		if (_faction.getUnits().len() >= 1) return;
 
 		local mySettlements = _faction.getSettlements();
 		local allSettlements = this.World.EntityManager.getSettlements();
 		local destinations;
 
-		if (!this.World.FactionManager.isGreaterEvil())
-		{
-			destinations = allSettlements;
-		}
+		if (!this.World.FactionManager.isGreaterEvil()) destinations = allSettlements;
 		else
 		{
 			destinations = [];
@@ -51,11 +37,7 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 
 		local settlements = this.getRandomConnectedSettlements(2, mySettlements, destinations, true);
 
-		if (settlements.len() < 2)
-		{
-			return;
-		}
-
+		if (settlements.len() < 2) return;
 		this.m.Start = settlements[0];
 		this.m.Dest = settlements[1];
 		this.m.Score = 5;
@@ -72,20 +54,24 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 		return 2.0 * (this.World.FactionManager.isCivilWar() ? 1.1 : 1.0);
 	}
 
-	function getResourcesForParty( _settlement, _faction )
+	function getResourcesForParty( _settlement, _faction, _modifier )
 	{
 		if (_settlement == null) return ::Math.rand(100, 200);
 		if (_faction.hasTrait(::Const.FactionTrait.OrientalCityState))
 		{
-			return (::Math.rand(90, 137) + ::Math.round(0.12 * ::Math.max(1, _settlement.getResources()))) ;
+			return ::Math.round( _modifier * 0.01 * 1.5 * (::Math.rand(90, 137) + ::Math.round(0.12 * ::Math.max(1, _settlement.getResources()))));
 		}
-		return (::Math.rand(60, 110) + ::Math.round(0.1 * ::Math.max(1, _settlement.getResources()))) ;
+		return ::Math.round( _modifier * 0.01 * 1.5 * (::Math.rand(60, 110) + ::Math.round(0.12 * ::Math.max(1, _settlement.getResources()))));
 	}
 
 	function onExecute( _faction )
 	{
 		local modifier = ::Math.rand(50, 200);
-		local party = _faction.spawnEntity(this.m.Start.getTile(), "Trading Caravan", false, this.pickSpawnList(this.m.Start, _faction, modifier), this.getResourcesForParty(this.m.Start, _faction));
+		local tier = ::Math.rand(1,2);
+		if (modifier > 75) tier++;
+		if (modifier > 150) tier++;
+		local party = _faction.spawnEntity(this.m.Start.getTile(), "Trading Caravan", false, this.pickSpawnList(this.m.Start, _faction, modifier), this.getResourcesForParty(this.m.Start, _faction, modifier));
+
 		party.getSprite("banner").Visible = false;
 		party.getSprite("base").Visible = false;
 		party.setMirrored(true);
@@ -93,7 +79,7 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 		party.setFootprintType(::Const.World.FootprintsType.Caravan);
 		party.getFlags().set("IsCaravan", true);
 		party.getFlags().set("IsRandomlySpawned", true);
-		party.getFlags().set("Modifier", modifier);
+		party.getFlags().set("tier", tier);
 
 		if (this.World.Assets.m.IsBrigand && this.m.Start.getTile().getDistanceTo(this.World.State.getPlayer().getTile()) <= 70)
 		{
@@ -103,16 +89,7 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 		}
 
 		this.addLoot(party);
-
-		if (::Legends.Mod.ModSettings.getSetting("WorldEconomy").getValue())
-		{
-			::Const.World.Common.WorldEconomy.setupTrade(party, this.m.Start, this.m.Dest);
-		}
-		else
-		{
-			this.addToPartyInventory(party);
-		}
-
+		::Const.World.Common.WorldEconomy.setupTrade(party, this.m.Start, this.m.Dest);
 		local c = party.getController();
 		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 		c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
@@ -131,34 +108,25 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 	{
 		if (_faction.hasTrait(::Const.FactionTrait.OrientalCityState))
 		{
-			if (_modifier >= 150) return ::Const.World.Spawn.CaravanSouthernMedium;
-			if (::Math.rand(1,100) <= 50) return ::Const.World.Spawn.CaravanSouthernMedium;
-			return ::Const.World.Spawn.CaravanSouthern;
+			if (_modifier <= 75) return ::Const.World.Spawn.CaravanSouthern;
+			if (_modifier <= 150) return ::Const.World.Spawn.CaravanSouthernMedium;
+			return ::Const.World.Spawn.CaravanSouthernHard;
+			//TODO: possible hero merc companies escorting caravan
 		}
 
-		if (_modifier >= 150) return ::Const.World.Spawn.CaravanMedium;
-		if (::Math.rand(1,100) <= 50) return ::Const.World.Spawn.CaravanMedium;
-		return ::Const.World.Spawn.Caravan;
+		if (_modifier <= 75) return ::Const.World.Spawn.Caravan;
+		if (_modifier <= 150) return ::Const.World.Spawn.CaravanMedium;
+		return ::Const.World.Spawn.CaravanHard;
+
+			//TODO: possible hero merc companies escorting caravan
 
 	}
 
 	function addLoot( _party )
 	{
-		if (::Math.rand(1, 2) <= 1)
-		{
-			_party.getLoot().ArmorParts = ::Math.rand(0, 10);
-		}
-
-		if (::Math.rand(1, 2) <= 1)
-		{
-			_party.getLoot().Medicine = ::Math.rand(0, 10);
-		}
-
-		if (::Math.rand(1, 2) <= 1)
-		{
-			_party.getLoot().Ammo = ::Math.rand(0, 10);
-		}
-
+		if (::Math.rand(1, 2) <= 1) _party.getLoot().ArmorParts = ::Math.rand(0, 5);
+		if (::Math.rand(1, 2) <= 1) _party.getLoot().Medicine = ::Math.rand(0, 3);
+		if (::Math.rand(1, 2) <= 1) _party.getLoot().Ammo = ::Math.rand(0, 10);
 		_party.getLoot().Money = ::Math.rand(25, 75);
 	}
 

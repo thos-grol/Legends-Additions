@@ -4,7 +4,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 	{
 		this.m.ID = "scenario.raiders";
 		this.m.Name = "Northern Raiders";
-		this.m.Description = "[p=c][img]gfx/ui/events/event_135.png[/img][/p][p]For all your adult life you have been raiding and pillaging in these lands. But with the local peasantry poor as mice, you may want to finally expand into the profitable field of mercenary work - that is, if your potential employers are willing to forgive your past transgressions.\n[color=#bcad8c]Warband:[/color] Start with three experienced barbarians, and increased chance of finding [color=#c90000]bloodthirsty brutes, barbarians, killers and assassins[/color].\n[color=#bcad8c]Pillagers:[/color] You have a higher chance to get any items from slain enemies as loot[/p]";
+		this.m.Description = "[p=c][img]gfx/ui/events/event_135.png[/img][/p][p]For all your adult life you have been raiding and pillaging in these lands. But with the local peasantry poor as mice, you may want to finally expand into the profitable field of mercenary work - that is, if your potential employers are willing to forgive your past transgressions.\n[color=#bcad8c]Raiders:[/color] Start with three experienced barbarians, and increased chance of finding [color=#c90000]bloodthirsty brutes, barbarians, killers and assassins[/color]. \n[color=#bcad8c]Pillagers:[/color] You have a higher chance to get any items from slain enemies as loot. [color=#c90000]start with the Brigand retinue[/color][/p]";
 		this.m.Difficulty = 2;
 		this.m.Order = 180;
 		this.m.StartingBusinessReputation = -50;
@@ -292,7 +292,7 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		}
 
 		houses[1].Faction.addPlayerRelation(18.0);
-		this.World.State.m.Player = this.World.spawnEntity("scripts/entity/world/player_party", randomVillageTile.Coords.X, randomVillageTile.Coords.Y /2);
+		this.World.State.m.Player = this.World.spawnEntity("scripts/entity/world/player_party", randomVillageTile.Coords.X, randomVillageTile.Coords.Y / 4);
 		this.World.Assets.updateLook(5);
 		this.World.getCamera().setPos(this.World.State.m.Player.getPos());
 		this.Time.scheduleEvent(this.TimeUnit.Real, 1000, function ( _tag )
@@ -302,6 +302,30 @@ this.raiders_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 			], ::Const.Music.CrossFadeTime);
 			this.World.Events.fire("event.raiders_scenario_intro");
 		}, null);
+
+		this.World.Retinue.setFollower(0, this.World.Retinue.getFollower("follower.brigand"));
+
+		// function setFollower( _slot, _follower )
+		// {
+		// 	this.m.Slots[_slot] = _follower;
+
+		// 	if (this.m.OwnedFollowerIDs.find(_follower.getID()) == null)
+		// 	{
+		// 		this.m.OwnedFollowerIDs.push(_follower.getID());
+		// 	}
+
+		// 	_follower.setOwned();
+		// 	this.update();
+
+		// 	if (this.getNumberOfCurrentFollowers() == this.m.Slots.len())
+		// 	{
+		// 		this.updateAchievement("FullHouse", 1, 1);
+		// 	}
+		// 	else
+		// 	{
+		// 		this.updateAchievement("CampfireCompany", 1, 1);
+		// 	}
+		// }
 	}
 
 	function isDroppedAsLoot( _item )

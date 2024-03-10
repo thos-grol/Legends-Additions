@@ -147,7 +147,7 @@ this.defend_holy_site_southern_contract <- this.inherit("scripts/contracts/contr
 						}
 					}
 
-					local party = f.spawnEntity(this.Contract.m.Destination.getTile(), candidates[::Math.rand(0, candidates.len() - 1)].getNameOnly() + " Company", true, ::Const.World.Spawn.Noble, ::Math.rand(100, 150) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					local party = f.spawnEntity(this.Contract.m.Destination.getTile(), candidates[::Math.rand(0, candidates.len() - 1)].getNameOnly() + " Company", true, ::Const.World.Spawn.Noble, ::Math.rand(100, 150) * this.Contract.getDifficultyMult());
 					party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + f.getBannerString());
 					party.setDescription("Professional soldiers in service to local lords.");
 					party.getLoot().Money = ::Math.rand(100, 300);
@@ -304,7 +304,7 @@ this.defend_holy_site_southern_contract <- this.inherit("scripts/contracts/contr
 					p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 					p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
 					p.Entities = [];
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 130 * this.Contract.getDifficultyMult(), this.Flags.get("EnemyID"));
 					p.EnemyBanners = [
 						this.World.FactionManager.getFaction(this.Flags.get("EnemyID")).getPartyBanner()
 					];
@@ -325,7 +325,7 @@ this.defend_holy_site_southern_contract <- this.inherit("scripts/contracts/contr
 					p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 					p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
 					p.Entities = [];
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, (this.Flags.get("IsEnemyReinforcements") ? 130 : 100) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, (this.Flags.get("IsEnemyReinforcements") ? 130 : 100) * this.Contract.getDifficultyMult(), this.Flags.get("EnemyID"));
 					p.EnemyBanners = [
 						this.World.FactionManager.getFaction(this.Flags.get("EnemyID")).getPartyBanner()
 					];
@@ -360,7 +360,7 @@ this.defend_holy_site_southern_contract <- this.inherit("scripts/contracts/contr
 
 						if (this.Flags.get("IsAlliedReinforcements"))
 						{
-							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 50 * this.Contract.getDifficultyMult(), this.Contract.getFaction());
 							p.AllyBanners.push(this.World.FactionManager.getFaction(this.Contract.getFaction()).getPartyBanner());
 						}
 

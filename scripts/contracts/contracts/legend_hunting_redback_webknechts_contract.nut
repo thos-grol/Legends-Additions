@@ -131,7 +131,7 @@ this.legend_hunting_redback_webknechts_contract <- this.inherit("scripts/contrac
 
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, numWoods >= 12 ? 6 : 3, 9, disallowedTerrain);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Redback Webknechts", false, ::Const.World.Spawn.LegendRedbackSpider, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Redback Webknechts", false, ::Const.World.Spawn.LegendRedbackSpider, 200 * this.Contract.getDifficultyMult());
 				party.setDescription("A swarm of redback webknechts skittering about.");
 				party.setAttackableByAI(false);
 				party.setFootprintSizeOverride(0.75);

@@ -142,7 +142,7 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 					spawnParty = ::Const.World.Spawn.MixedNobleCaravan;
 				}
 
-				local party = enemyFaction.spawnEntity(best_start.getTile(), "Caravan", false, ::Const.World.Spawn.NobleCaravan, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = enemyFaction.spawnEntity(best_start.getTile(), "Caravan", false, ::Const.World.Spawn.NobleCaravan, 100 * this.Contract.getDifficultyMult());
 				party.getSprite("base").Visible = false;
 				party.getSprite("banner").setBrush(enemyFaction.getBannerSmall());
 				party.setMirrored(true);
@@ -531,7 +531,7 @@ this.raid_caravan_contract <- this.inherit("scripts/contracts/contract", {
 							enemyFaction.getBannerSmall(),
 							::Const.ZombieBanners[0]
 						];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Necromancer, 100 * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Necromancer, 100, this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, false);
 						return 0;
 					}

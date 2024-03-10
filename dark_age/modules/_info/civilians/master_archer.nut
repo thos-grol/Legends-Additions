@@ -28,50 +28,23 @@
 ::B.Info[::Const.EntityType.MasterArcher].Builds["Warbow Balanced"] <- {
 	Name = "Warbow Balanced",
 	Pattern = [
-        ["scripts/skills/perks/perk_colossus"], //1
+		["scripts/skills/perks/perk_colossus"], //1
         ["D", 2], //2
         ["scripts/skills/perks/perk_legend_wind_reader"], //3
         ["scripts/skills/perks/perk_mastery_rangedc"], //4
+        ["scripts/skills/perks/perk_legend_back_to_basics"], //0
         ["scripts/skills/perks/perk_legend_recuperation"], //5
-        ["D", 6],
-        ["scripts/skills/perks/perk_legend_peaceful"], //7
-        ["scripts/skills/perks/perk_battle_flow"], //8
-        ["scripts/skills/perks/perk_stance_marksman"], //9
+        ["scripts/skills/perks/perk_legend_peaceful"], //6
+		["scripts/skills/perks/perk_hybridization"], //7
+		["D", 6],
+        ["scripts/skills/perks/perk_sundering_strikes"], //9
+        ["scripts/skills/perks/perk_stance_marksman"], //10
+        ["scripts/skills/perks/perk_legend_muscularity"], //11
     ],
 	LevelUps = [
-		["Health", 9, 3, 3],
-		["Ranged Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
-	],
-	Loadout = [
-		[
-			"scripts/items/weapons/war_bow",
-		],
-	],
-	NamedLoadout = [
-		[
-			"scripts/items/weapons/named/named_warbow",
-		],
-	],
-};
-
-::B.Info[::Const.EntityType.MasterArcher].Builds["Warbow Headshot"] <- {
-	Name = "Warbow Full HP",
-	Pattern = [
-        ["scripts/skills/perks/perk_colossus"], //1
-        ["D", 2], //2
-        ["scripts/skills/perks/perk_legend_wind_reader"], //3
-        ["scripts/skills/perks/perk_mastery_rangedc"], //4
-        ["scripts/skills/perks/perk_hold_out"], //5
-        ["D", 6],
-        ["scripts/skills/perks/perk_head_hunter"], //7
-        ["scripts/skills/perks/perk_fearsome"], //8
-        ["scripts/skills/perks/perk_stance_marksman"], //9
-    ],
-	LevelUps = [
-		["Health", 9, 3, 3],
-		["Ranged Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Health", 10, 3, 3],
+		["Ranged Skill", 10, 3, 3],
+		["Initiative", 10, 3, 3],
 	],
 	Loadout = [
 		[

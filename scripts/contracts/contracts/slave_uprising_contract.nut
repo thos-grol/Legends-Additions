@@ -324,8 +324,8 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 						p.TerrainTemplate = "tactical.desert";
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addHostileUnitsToCombat(p.Entities, ::Const.World.Spawn.NomadRaiders, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
-						::Const.World.Common.addHostileUnitsToCombat(p.Entities, ::Const.World.Spawn.Slaves, 55 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
+						::Const.World.Common.addHostileUnitsToCombat(p.Entities, ::Const.World.Spawn.NomadRaiders, 30 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
+						::Const.World.Common.addHostileUnitsToCombat(p.Entities, ::Const.World.Spawn.Slaves, 55 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -374,7 +374,7 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 				local cityTile = this.Contract.m.Home.getTile();
 				local nearest_nomads = this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getNearestSettlement(cityTile);
 				local tile = this.Contract.getTileToSpawnLocation(this.Contract.m.Home.getTile(), 9, 15);
-				local party = this.World.FactionManager.getFaction(nearest_nomads.getFaction()).spawnHostileEntity(tile, "Indebted", false, ::Const.World.Spawn.NomadRaiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = this.World.FactionManager.getFaction(nearest_nomads.getFaction()).spawnHostileEntity(tile, "Indebted", false, ::Const.World.Spawn.NomadRaiders, 110 * this.Contract.getDifficultyMult());
 				party.setDescription("A group of indebted that turned to banditry.");
 				party.setFootprintType(::Const.World.FootprintsType.Nomads);
 				party.getSprite("banner").setBrush(nearest_nomads.getBanner());
@@ -526,8 +526,8 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 						p.TerrainTemplate = "tactical.desert";
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.NomadRaiders, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Slaves, 55 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.NomadRaiders, 30 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Slaves, 55 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -576,7 +576,7 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 				local cityTile = this.Contract.m.Home.getTile();
 				local nearest_nomads = this.World.FactionManager.getFactionOfType(::Const.FactionType.OrientalBandits).getNearestSettlement(cityTile);
 				local tile = this.Contract.getTileToSpawnLocation(this.Contract.m.Home.getTile(), 9, 15);
-				local party = this.World.FactionManager.getFaction(nearest_nomads.getFaction()).spawnHostileEntity(tile, "Indebted", false, ::Const.World.Spawn.Slaves, 90 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = this.World.FactionManager.getFaction(nearest_nomads.getFaction()).spawnHostileEntity(tile, "Indebted", false, ::Const.World.Spawn.Slaves, 90 * this.Contract.getDifficultyMult());
 				party.setDescription("A group of indebted.");
 				party.setFootprintType(::Const.World.FootprintsType.Nomads);
 				party.getSprite("banner").setBrush("banner_deserters");

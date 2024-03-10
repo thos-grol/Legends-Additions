@@ -83,11 +83,7 @@ this.legend_voulge_cleave <- this.inherit("scripts/skills/skill", {
 		local hp = target.getHitpoints();
 		local success = this.attackEntity(_user, _targetTile.getEntity());
 
-		if (!_user.isAlive() || _user.isDying())
-		{
-			return;
-		}
-
+		if (!_user.isAlive() || _user.isDying()) return;
 		if (success)
 		{
 			if (!target.isAlive() || target.isDying())

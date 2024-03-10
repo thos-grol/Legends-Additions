@@ -87,10 +87,10 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				this.Contract.m.Objective1.setLootScaleBasedOnResources(120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Objective1.setResources(120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.m.Objective1.setLootScaleBasedOnResources(120 * this.Contract.getDifficultyMult());
+				this.Contract.m.Objective1.setResources(120 * this.Contract.getDifficultyMult());
 				this.Contract.m.Objective1.clearTroops();
-				this.Contract.addUnitsToEntity(this.Contract.m.Objective1, this.Contract.m.Objective1.getDefenderSpawnList(), 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.addUnitsToEntity(this.Contract.m.Objective1, this.Contract.m.Objective1.getDefenderSpawnList(), 120 * this.Contract.getDifficultyMult());
 				this.Contract.m.Objective1.setDiscovered(true);
 
 				if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Objective1.getFlags().get("IsEventLocation"))
@@ -99,10 +99,10 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 				}
 
 				this.World.uncoverFogOfWar(this.Contract.m.Objective1.getTile().Pos, 500.0);
-				this.Contract.m.Objective2.setLootScaleBasedOnResources(120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Objective2.setResources(120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.m.Objective2.setLootScaleBasedOnResources(120 * this.Contract.getDifficultyMult());
+				this.Contract.m.Objective2.setResources(120 * this.Contract.getDifficultyMult());
 				this.Contract.m.Objective2.clearTroops();
-				this.Contract.addUnitsToEntity(this.Contract.m.Objective2, this.Contract.m.Objective2.getDefenderSpawnList(), 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.addUnitsToEntity(this.Contract.m.Objective2, this.Contract.m.Objective2.getDefenderSpawnList(), 120 * this.Contract.getDifficultyMult());
 				this.Contract.m.Objective2.setDiscovered(true);
 
 				if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Objective2.getFlags().get("IsEventLocation"))
@@ -246,12 +246,12 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 						if (this.Flags.get("IsBanditsCoop"))
 						{
 							p.AllyBanners.push("banner_bandits_06");
-							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BanditRaiders, 90 * this.Contract.getScaledDifficultyMult(), ::Const.Faction.PlayerAnimals);
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BanditRaiders, 90, ::Const.Faction.PlayerAnimals);
 						}
 						else
 						{
 							p.EnemyBanners.push("banner_bandits_06");
-							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BanditRaiders, 90 * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BanditRaiders, 90, this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
 						}
 					}
 
@@ -405,7 +405,7 @@ this.root_out_undead_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Objective2 = null;
 						local playerTile = this.World.State.getPlayer().getTile();
 						local camp = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getNearestSettlement(playerTile);
-						local party = this.World.FactionManager.getFaction(camp.getFaction()).spawnEntity(tile, "Necromancers", false, ::Const.World.Spawn.UndeadScourge, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						local party = this.World.FactionManager.getFaction(camp.getFaction()).spawnEntity(tile, "Necromancers", false, ::Const.World.Spawn.UndeadScourge, 100 * this.Contract.getDifficultyMult());
 						party.getSprite("banner").setBrush(banner);
 						party.setFootprintType(::Const.World.FootprintsType.Undead);
 						party.getSprite("body").setBrush("figure_necromancer_01");

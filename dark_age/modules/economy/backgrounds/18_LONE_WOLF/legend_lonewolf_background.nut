@@ -30,4 +30,43 @@
 		};
 	}
 
+	o.onChangeAttributes = function()
+	{
+		local c = {
+			Hitpoints = [
+				20,
+				20
+			],
+			Bravery = [
+				25,
+				25
+			],
+			Stamina = [
+				20,
+				20
+			],
+			MeleeSkill = [
+				14,
+				14
+			],
+			RangedSkill = [
+				16,
+				16
+			],
+			MeleeDefense = [
+				10,
+				10
+			],
+			RangedDefense = [
+				10,
+				10
+			],
+			Initiative = [
+				15,
+				15
+			]
+		};
+		return c;
+	}
+
 });

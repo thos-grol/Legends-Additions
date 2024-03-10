@@ -70,21 +70,21 @@ this.roaming_beasts_desert_contract <- this.inherit("scripts/contracts/contract"
 
 				if (this.Flags.get("IsHyenas"))
 				{
-					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Hyenas", false, ::Const.World.Spawn.Hyenas, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Hyenas", false, ::Const.World.Spawn.Hyenas, 110 * this.Contract.getDifficultyMult());
 					party.setDescription("A pack of esurient hyenas on the hunt for prey.");
 					party.setFootprintType(::Const.World.FootprintsType.Hyenas);
 					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Hyenas, 0.75);
 				}
 				else if (this.Flags.get("IsGhouls"))
 				{
-					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Nachzehrers", false, ::Const.World.Spawn.Ghouls, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Nachzehrers", false, ::Const.World.Spawn.Ghouls, 110 * this.Contract.getDifficultyMult());
 					party.setDescription("A flock of scavenging nachzehrers.");
 					party.setFootprintType(::Const.World.FootprintsType.Ghouls);
 					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Ghouls, 0.75);
 				}
 				else
 				{
-					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Serpents", false, ::Const.World.Spawn.Serpents, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Serpents", false, ::Const.World.Spawn.Serpents, 110 * this.Contract.getDifficultyMult());
 					party.setDescription("Giant serpents slithering about.");
 					party.setFootprintType(::Const.World.FootprintsType.Serpents);
 					::Const.World.Common.addFootprintsFromTo(this.Contract.m.Home.getTile(), party.getTile(), ::Const.BeastFootprints, ::Const.World.FootprintsType.Serpents, 0.75);

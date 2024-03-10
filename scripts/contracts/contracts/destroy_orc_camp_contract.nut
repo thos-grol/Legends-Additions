@@ -81,9 +81,9 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 					this.Contract.m.Destination.getLoot().clear();
 				}
 
-				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.OrcRaiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setLootScaleBasedOnResources(115 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.OrcRaiders, 110 * this.Contract.getDifficultyMult());
+				this.Contract.m.Destination.setLootScaleBasedOnResources(115 * this.Contract.getDifficultyMult());
+				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 100 * this.Contract.getDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 				this.Flags.set("HeadsCollected", 0);
@@ -175,7 +175,7 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
 						p.IsAutoAssigningBases = false;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.OrcRaiders, 150 * this.Contract.getScaledDifficultyMult(), ::Const.Faction.Enemy);
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.OrcRaiders, 150, ::Const.Faction.Enemy);
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 					}
 				}
@@ -313,7 +313,7 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = ::Const.Music.NobleTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 140 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 140 * this.Contract.getDifficultyMult(), this.Contract.getFaction());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

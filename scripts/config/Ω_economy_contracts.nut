@@ -16,10 +16,11 @@
     //E
     "contract.return_item" : 50,
     "contract.restore_location" : 50,
-    "contract.slave_uprising" : 50,
 
     //D
     "contract.escort_caravan" : 90, //pay is multiplied by distance
+    "contract.slave_uprising" : 100,
+
 
 
     //C

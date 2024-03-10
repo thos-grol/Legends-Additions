@@ -38,7 +38,9 @@
     "scripts/factions/actions/rebuild_location_action",
     "scripts/factions/actions/legend_build_location_action",
     "scripts/factions/actions/legend_upgrade_settlement_action",
-    "scripts/factions/actions/send_supplies_action",
+    // "scripts/factions/actions/send_supplies_action",
+    "scripts/factions/actions/send_caravan_action",
+
     "scripts/factions/actions/add_random_situation_action",
     "scripts/factions/actions/send_military_army_action",
     "scripts/factions/contracts/legend_barbarian_prisoner_action",
@@ -81,15 +83,13 @@
     // "scripts/factions/contracts/hunting_unholds_action",
     // "scripts/factions/contracts/legend_hunting_coven_leader_action",
 
-
-
     //S
     // "scripts/factions/contracts/hunting_lindwurms_action",
 
 
     //housekeeping
     "scripts/factions/actions/send_caravan_action",
-    "scripts/factions/actions/send_peasants_action",
+    // "scripts/factions/actions/send_peasants_action",
     "scripts/factions/actions/defend_militia_action",
     "scripts/factions/actions/send_ship_action",
     "scripts/factions/actions/receive_ship_action",

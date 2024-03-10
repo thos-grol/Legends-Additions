@@ -2,7 +2,10 @@
 ::Const.Strings.PerkDescription.LegendAdaptive <- "Inspire those around you..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("+1") + " perk point"
-+ "\n"+::MSU.Text.colorRed("Gain a weapon tree based on the equipped weapon");
++ "\n"+::MSU.Text.colorRed("Pick Order:")
++ "\n"+::MSU.Text.colorRed("Gain a shield tree based on the equipped shield")
++ "\n"+::MSU.Text.colorRed("Gain a weapon tree based on the equipped weapon")
++ "\n"+::MSU.Text.colorRed("Gain an armor tree based on the weight class");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAdaptive].Name = ::Const.Strings.PerkName.LegendAdaptive;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAdaptive].Tooltip = ::Const.Strings.PerkDescription.LegendAdaptive;
@@ -81,6 +84,23 @@ this.perk_legend_adaptive <- this.inherit("scripts/skills/skill", {
 		local newTree;
 		local actor = this.getContainer().getActor();
 
+		if (actor.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null)
+		{
+			item = actor.getMainhandItem();
+
+			if (item.isItemType(this.Const.Items.ItemType.Shield))
+			{
+				newTree = this.Const.Perks.ShieldTree;
+			}
+
+			newTree = this.getOnlyNonExistingTrees(newTree);
+
+			if (newTree != null && newTree.len() > 0)
+			{
+				return newTree;
+			}
+		}
+
 		if (actor.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
 		{
 			item = actor.getMainhandItem();
@@ -97,6 +117,20 @@ this.perk_legend_adaptive <- this.inherit("scripts/skills/skill", {
 				return newTree;
 			}
 		}
+
+		
+
+		local weight = this.getContainer().getActor().getItems().getStaminaModifier([
+            ::Const.ItemSlot.Body,
+            ::Const.ItemSlot.Head
+        ]) * -1;
+		local armorTree;
+		if (weight <= 20) armorTree = this.Const.Perks.LightArmorTree;
+        else if (weight <= 40) armorTree = this.Const.Perks.MediumArmorTree;
+        else armorTree = this.Const.Perks.HeavyArmorTree;
+		armorTree = this.getOnlyNonExistingTrees(armorTree);
+		if (armorTree != null && armorTree.len() > 0) return armorTree;
+		
 
 		return newTree;
 	}

@@ -7,8 +7,8 @@ this.lifebound_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	},
 	function create()
 	{
-		this.m.ID = "trait.intensive_training_trait";
-		this.m.Name = "Training progress";
+		this.m.ID = "trait.lifebound_trait";
+		this.m.Name = "Lifebound";
 		this.m.Icon = "ui/traits/IntensiveTraining.png";
 		this.m.Description = "This character can increase their abilities if you upgrade your camp training facilities.";
 		this.m.Order = ::Const.SkillOrder.Background + 1;

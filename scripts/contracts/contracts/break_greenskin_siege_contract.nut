@@ -103,7 +103,7 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 				}
 
 				local faction = this.World.FactionManager.getFaction(this.Contract.getFaction());
-				local party = faction.spawnEntity(this.Contract.getHome().getTile(), this.Contract.getHome().getName() + " Company", true, ::Const.World.Spawn.Noble, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = faction.spawnEntity(this.Contract.getHome().getTile(), this.Contract.getHome().getName() + " Company", true, ::Const.World.Spawn.Noble, 110 * this.Contract.getDifficultyMult());
 				party.getSprite("banner").setBrush(faction.getBannerSmall());
 				party.setDescription("Professional soldiers in service to local lords.");
 				this.Contract.m.Troops = this.WeakTableRef(party);

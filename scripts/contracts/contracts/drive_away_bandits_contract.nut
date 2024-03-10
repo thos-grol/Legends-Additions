@@ -105,9 +105,9 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 				// 	this.Contract.m.Destination.getLoot().clear();
 				// }
 
-				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditDefenders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				// this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				// this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditDefenders, 110 * this.Contract.getDifficultyMult());
+				// this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult());
+				// this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 
@@ -366,7 +366,7 @@ this.drive_away_bandits_contract <- this.inherit("scripts/contracts/contract", {
 						p.CombatID = "BountyHunters";
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BountyHunters, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BountyHunters, 130 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

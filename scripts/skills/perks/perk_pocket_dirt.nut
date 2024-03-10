@@ -2,7 +2,7 @@
 ::Const.Strings.PerkDescription.PocketDirt <- "The dirtiest of tricks, for the most devious of men..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Throw Dirt\' (3 AP, 5 Fat, 1 Charge):")
 + "\nThrow dirt into the enemy's eyes and stuns them"
-+ "\n"+::MSU.Text.colorRed("Invalid if the enemy has suffered from this trick before or has this perk");
++ "\n"+::MSU.Text.colorRed("Invalid if the enemy has suffered from this trick before or has this perk. Gains a charge on kill, max 1");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PocketDirt].Name = ::Const.Strings.PerkName.PocketDirt;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PocketDirt].Tooltip = ::Const.Strings.PerkDescription.PocketDirt;

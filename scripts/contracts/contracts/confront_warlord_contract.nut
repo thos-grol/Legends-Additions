@@ -337,7 +337,7 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 				local playerTile = this.World.State.getPlayer().getTile();
 				local nearest_orcs = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getNearestSettlement(playerTile);
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 9, 15);
-				local party = this.World.FactionManager.getFaction(nearest_orcs.getFaction()).spawnEntity(tile, "Greenskin Horde", false, ::Const.World.Spawn.GreenskinHorde, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = this.World.FactionManager.getFaction(nearest_orcs.getFaction()).spawnEntity(tile, "Greenskin Horde", false, ::Const.World.Spawn.GreenskinHorde, 130 * this.Contract.getDifficultyMult());
 				party.getSprite("banner").setBrush(nearest_orcs.getBanner());
 				party.getSprite("body").setBrush("figure_orc_05");
 				party.setDescription("A horde of greenskins led by a fearsome orc warlord.");
@@ -434,7 +434,7 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = ::Const.Music.OrcsTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BerserkersOnly, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BerserkersOnly, 80 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

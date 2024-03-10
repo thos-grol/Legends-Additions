@@ -80,11 +80,19 @@
 		else if (this.getFlags().has("PlayerSkeleton")) this.m.StarWeights = background.buildAttributes("skeleton", attributes);
 		else this.m.StarWeights = background.buildAttributes(null, attributes);
 
+		local b = getBaseProperties();
+		this.getFlags().set("trainable_hitpoints", ::Math.max(0, 60 - b.Hitpoints));
+		this.getFlags().set("trainable_resolve", ::Math.max(0, 60 - b.Bravery));
+		this.getFlags().set("trainable_fatigue", ::Math.max(0, 120 - b.Stamina));
+		this.getFlags().set("trainable_initiative", ::Math.max(0, 120 - b.Initiative));
+		
+		this.getFlags().set("trainable_meleeskill", ::Math.max(0, 60 - b.MeleeSkill));
+		this.getFlags().set("trainable_meleedefense", ::Math.max(0, 10 - b.MeleeDefense));
+
+		this.getFlags().set("trainable_rangedskill", ::Math.max(0, 60 - b.RangedSkill));
+		this.getFlags().set("trainable_rangeddefense", ::Math.max(0, 10 - b.RangedDefense));
+
 		background.buildDescription();
-
-		local inTraining = ::new("scripts/skills/traits/intensive_training_trait");
-		if (!this.getSkills().hasSkill("trait.intensive_training_trait")) this.m.Skills.add(inTraining);
-
 
 		if (_addEquipment) background.addEquipment();
 

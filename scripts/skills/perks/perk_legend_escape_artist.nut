@@ -3,7 +3,7 @@
 + "\n" + "Escape from anything, perhaps even death..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("– 1") + " AP cost for movement skills"
-+ "\n"+::MSU.Text.colorGreen("– 25%") + " Fatigue cost for movement skills"
++ "\n"+::MSU.Text.colorGreen("– 100%") + " Fatigue cost for movement skills"
 + "\n"+::MSU.Text.colorGreen("+75") + " Melee Defense when moving"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On turn start:")
@@ -67,7 +67,7 @@ this.perk_legend_escape_artist <- this.inherit("scripts/skills/skill", {
 		foreach( s in skills )
 		{
 			s.m.ActionPointCost -= 1;
-			s.m.FatigueCostMult *= 0.75;
+			s.m.FatigueCostMult *= 0.0;
 		}
 	}
 

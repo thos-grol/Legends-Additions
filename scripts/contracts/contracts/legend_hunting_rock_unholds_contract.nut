@@ -90,7 +90,7 @@ this.legend_hunting_rock_unholds_contract <- this.inherit("scripts/contracts/con
 				]);
 				local nearTile = this.Contract.getTileToSpawnLocation(playerTile, 4, 8);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, ::Const.World.Spawn.LegendRockUnhold, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, ::Const.World.Spawn.LegendRockUnhold, 200 * this.Contract.getDifficultyMult());
 				party.setDescription("One or more lumbering giants.");
 				party.setAttackableByAI(false);
 				party.setFootprintSizeOverride(0.85);

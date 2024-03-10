@@ -1,5 +1,7 @@
 this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
-	m = {},
+	m = {
+		EffectAdded = false
+	},
 	function create()
 	{
 		this.m.ID = "actives.pain_ritual";
@@ -23,7 +25,7 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 		this.m.ActionPointCost = 6;
 		this.m.FatigueCost = 15;
 		this.m.MinRange = 1;
-		this.m.MaxRange = 4;
+		this.m.MaxRange = 3;
 		this.m.MaxLevelDifference = 6;
 		this.m.IsVisibleTileNeeded = true;
 	}
@@ -181,6 +183,43 @@ this.cultist_pain_ritual <- this.inherit("scripts/skills/skill", {
 			agent.addBehavior(::new("scripts/ai/tactical/behaviors/ai_pain_ritual"));
 			agent.finalizeBehaviors();
 		}
+	}
+
+	function addSprite( _n, _brush, _insert = false )
+	{
+		local actor = this.getContainer().getActor();
+		local sprite;
+
+		if (!_insert)
+		{
+			sprite = actor.addSprite("spirits_" + (_n < 10 ? "0" + _n : _n));
+		}
+		else
+		{
+			sprite = actor.insertSprite("spirits_" + (_n < 10 ? "0" + _n : _n));
+		}
+
+		sprite.setBrush(_brush);
+		sprite.Rotation = this.Math.rand(0, 359);
+		actor.setSpriteRenderToTexture("spirits_" + (_n < 10 ? "0" + _n : _n), false);
+	}
+
+	function onTurnStart()
+	{
+		if (this.m.EffectAdded) return;
+
+		this.m.EffectAdded = true;
+
+		this.addSprite(1, "pain_aura");
+		this.addSprite(2, "pain_aura", true);
+	}
+
+	function onCombatFinished()
+	{
+		this.m.EffectAdded = false;
+		local actor = this.getContainer().getActor();
+		actor.removeSprite("spirits_01");
+		actor.removeSprite("spirits_02");
 	}
 
 });

@@ -1,5 +1,6 @@
 //Disable general events
 ::mods_hookExactClass("events/events/no_food_event", function (o){ o.onUpdateScore = function() { return; }});
+::mods_hookExactClass("events/events/traveler_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/ratcatcher_catches_food_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/ratcatcher_crafts_net_event", function (o){ o.onUpdateScore = function() { return; }});
 ::mods_hookExactClass("events/events/no_food_variety_event", function (o){ o.onUpdateScore = function() { return; }});

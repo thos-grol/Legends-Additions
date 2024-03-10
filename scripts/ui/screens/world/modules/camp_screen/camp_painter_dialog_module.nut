@@ -45,7 +45,7 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 						bodyarmorfinal[key] <- {
 							Link = this.IO.scriptFilenameByHash(value.ClassNameHash),
 							ID = value.m.ID,
-							Value = 0,
+							Value = ::Math.max(50, value.m.Value * 0.025),
 							Variant = value.m.Variants.find(value.m.Variant) != null ? value.m.Variants.find(value.m.Variant) + 1 : 1,
 							Variants = ::Math.max(value.m.Variants.len(), 1),
 							Icon = value.m.Icon,
@@ -96,7 +96,7 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 						helmetfinal[key] <- {
 							Link = this.IO.scriptFilenameByHash(value.ClassNameHash),
 							ID = value.m.ID,
-							Value = 0,
+							Value = ::Math.max(50, value.m.Value * 0.025),
 							Variant = value.m.Variants.find(value.m.Variant) != null ? value.m.Variants.find(value.m.Variant) + 1 : 1,
 							Variants = ::Math.max(value.m.Variants.len(), 1),
 							Icon = value.m.Icon,
@@ -128,7 +128,7 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 				shield.Shield <- {
 					Link = this.IO.scriptFilenameByHash(shielditem.ClassNameHash),
 					ID = shielditem.m.ID,
-					Value = 0,
+					Value = ::Math.max(50, shielditem.m.Value * 0.025),
 					Variant = shielditem.m.Variants.find(shielditem.m.Variant) != null ? shielditem.m.Variants.find(shielditem.m.Variant) + 1 : 1,
 					Variants = ::Math.max(shielditem.m.Variants.len(), 1),
 					Icon = shielditem.m.IconLarge,
@@ -309,7 +309,6 @@ this.camp_painter_dialog_module <- this.inherit("scripts/ui/screens/ui_module", 
 					}
 				}
 
-				this.World.Assets.addMoney(-_result.Cost);
 				result = this.queryRosterInformation();
 				break;
 			}

@@ -3,6 +3,7 @@
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Cutting or Piercing attacks:")
 + "\n" + "Inflict "+::MSU.Text.colorGreen("1")+" Bleed (50% chance)"
++ "\n " + ::MSU.Text.color(::Z.Color.BloodRed, "Also works for the berserk chain")
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Bleed: (Duration: 2, Stackable)")
 + "\n " + ::MSU.Text.color(::Z.Color.BloodRed, "On wait or turn end, inflict 5 damage");

@@ -8,8 +8,7 @@
 + "\n"+ ::MSU.Text.colorGreen("+20%") + " armor penetration"
 + "\n"+ ::MSU.Text.colorRed("Invalid if this unit started their turn next to the target")
 + "\n\n"+ ::MSU.Text.colorGreen("+25%") + " ranged damage"
-+ "\n"+ ::MSU.Text.colorGreen("+20%") + " armor penetration"
-+ "\n"+ ::MSU.Text.colorRed("Invalid if this target has been hit before");
++ "\n"+ ::MSU.Text.colorGreen("+20%") + " armor penetration";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Name = ::Const.Strings.PerkName.LegendBlendIn;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendBlendIn].Tooltip = ::Const.Strings.PerkDescription.LegendBlendIn;
@@ -19,7 +18,6 @@
 this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 	m = {
 		Enemies = [],
-		EnemiesHitWithRanged = []
 	},
 	function create()
 	{
@@ -71,11 +69,8 @@ this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 		}
 		else
 		{
-			if (this.m.EnemiesHitWithRanged.find(_targetEntity.getID()) == null)
-			{
-				_properties.DamageDirectAdd += 0.2;
-				_properties.DamageTotalMult *= 1.25;
-			}
+			_properties.DamageDirectAdd += 0.2;
+			_properties.DamageTotalMult *= 1.25;
 		}
 	}
 
@@ -93,12 +88,7 @@ this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 				this.m.Enemies.push(_targetEntity.getID());
 			}
 		}
-		else if (this.m.EnemiesHitWithRanged.find(_targetEntity.getID()) == null)
-		{
-			success = true;
-			this.m.EnemiesHitWithRanged.push(_targetEntity.getID());
-		}
-
+		else success = true;
 		if (success) ::Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " performed a Sneak Attack");
 	}
 
@@ -108,7 +98,7 @@ this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 		if (targetEntity == null) return;
 
 		if ((!_skill.isRanged() && this.m.Enemies.find(targetEntity.getID()) == null) ||
-			(_skill.isRanged() && this.m.EnemiesHitWithRanged.find(targetEntity.getID()) == null))
+			(_skill.isRanged()))
 		{
 			_tooltip.push({
 				icon = "ui/tooltips/positive.png",
@@ -126,7 +116,6 @@ this.perk_legend_blend_in <- this.inherit("scripts/skills/skill", {
 	{
 		this.skill.onCombatFinished();
 		this.m.Enemies.clear();
-		this.m.EnemiesHitWithRanged.clear();
 	}
 
 });

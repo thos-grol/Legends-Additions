@@ -93,9 +93,9 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 				// 	this.Contract.m.Destination.getLoot().clear();
 				// }
 
-				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.Barbarians, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				// this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				// this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				// this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.Barbarians, 110 * this.Contract.getDifficultyMult());
+				// this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult());
+				// this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 70 * this.Contract.getDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 				local r = ::Math.rand(1, 100);
@@ -616,7 +616,7 @@ this.drive_away_barbarians_contract <- this.inherit("scripts/contracts/contract"
 						properties.Music = ::Const.Music.BarbarianTracks;
 						properties.EnemyBanners.push(this.Flags.get("EnemyBanner"));
 						properties.Entities = [];
-						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians).getID());
+						::Const.World.Common.addUnitsToCombat(properties.Entities, ::Const.World.Spawn.Barbarians, 110 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians).getID());
 						this.World.Contracts.startScriptedCombat(properties, false, true, false);
 						return 0;
 					}

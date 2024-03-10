@@ -265,8 +265,8 @@ this.conquer_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 						p.LocationTemplate.Template[0] = "tactical.southern_ruins";
 						p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.Walls;
 						p.Music = ::Const.Music.OrientalCityStateTracks;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 70 * this.Contract.getDifficultyMult(), this.Contract.getFaction());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 200 * this.Contract.getDifficultyMult(), this.Flags.get("EnemyID"));
 						p.AllyBanners = [
 							this.World.Assets.getBanner(),
 							this.World.FactionManager.getFaction(this.Contract.getFaction()).getPartyBanner()
@@ -292,7 +292,7 @@ this.conquer_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = ::Const.Music.OrientalCityStateTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 130 * this.Contract.getDifficultyMult(), this.Flags.get("EnemyID"));
 						p.AllyBanners = [
 							this.World.Assets.getBanner()
 						];
@@ -320,7 +320,7 @@ this.conquer_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 						p.LocationTemplate.Template[0] = "tactical.southern_ruins";
 						p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.Walls;
 						p.Music = ::Const.Music.OrientalCityStateTracks;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, (130 + (this.Flags.get("MercenariesAsAllies") ? 30 : 0)) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, (130 + (this.Flags.get("MercenariesAsAllies") ? 30 : 0)) * this.Contract.getDifficultyMult(), this.Flags.get("EnemyID"));
 						p.AllyBanners = [
 							this.World.Assets.getBanner()
 						];
@@ -330,12 +330,12 @@ this.conquer_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 
 						if (this.Flags.get("MercenariesAsAllies"))
 						{
-							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 50 * this.Contract.getDifficultyMult(), this.Contract.getFaction());
 							p.AllyBanners.push(this.Flags.get("MercenaryBanner"));
 						}
 						else
 						{
-							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 50 * this.Contract.getDifficultyMult(), this.Flags.get("EnemyID"));
 							p.EnemyBanners.push(this.Flags.get("MercenaryBanner"));
 						}
 
@@ -357,7 +357,7 @@ this.conquer_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = ::Const.Music.OrientalCityStateTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.LineForward;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.LineBack;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 130 * this.Contract.getDifficultyMult(), this.Flags.get("EnemyID"));
 						p.AllyBanners = [
 							this.World.Assets.getBanner()
 						];
@@ -373,7 +373,7 @@ this.conquer_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = ::Const.Music.OrientalCityStateTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 130 * this.Contract.getDifficultyMult(), this.Flags.get("EnemyID"));
 						p.AllyBanners = [
 							this.World.Assets.getBanner()
 						];
@@ -399,7 +399,7 @@ this.conquer_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					p.LocationTemplate.Template[0] = "tactical.southern_ruins";
 					p.LocationTemplate.Fortification = ::Const.Tactical.FortificationType.Walls;
 					p.Music = ::Const.Music.OrientalCityStateTracks;
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, (this.Flags.get("IsCounterAttack") ? 110 : 130) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
+					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, (this.Flags.get("IsCounterAttack") ? 110 : 130) * this.Contract.getDifficultyMult(), this.Flags.get("EnemyID"));
 					p.AllyBanners = [
 						this.World.Assets.getBanner()
 					];

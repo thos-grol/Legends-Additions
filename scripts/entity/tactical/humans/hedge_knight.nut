@@ -262,6 +262,20 @@ this.hedge_knight <- this.inherit("scripts/entity/tactical/abstract_human", {
 		else this.m.IsMinibossWeapon <- true;
 	}
 
+	function post_init()
+	{
+		if (this.m.Build.Name == "Fist God")
+		{
+			local weapon = _user.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand);
+			if (weapon.m.Container != null)
+			{
+				weapon.m.IsDroppedAsLoot = false;
+				weapon.m.Container.unequip(weapon);
+			}
+		
+		}
+	}
+
 	function makeMiniboss()
 	{
 		if (!this.actor.makeMiniboss()) return false;

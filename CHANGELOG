@@ -1,7 +1,70 @@
 CHANGELOG
+
+1.17
+
+weapons
+- orc chain can now strike at 2 tiles
+- voulges are now polearm cleavers to match their attacking mode...
+
+perks
+- wrath - buffed wrath so it is competitive with the strongest
+- adaptive can now give shield and armor trees
+- recover now works with en gard toggle
+- hybridization works with unarmed
+
+
+camp
+- painting tent works now
+
+contracts
+- removed scaling, will balance later with feedback
+- adjusted defend settlement raiding parties to always have 1 bandit leader only
+
+enemies
+- cultist
+    - pain ritual nerfed
+        - range: 4 -> 3
+        - users now raidiate a black aura
+    - decreased the chance of net builds
+
+- hedge knight: has improved builds. they weren't as terrifying as they should be
+- master archer: has improved builds. they weren't as terrifying as they should be
+
+1.16 qol
+
+economy
+- made black market caravans rarer
+
+weapons
+- warfork: now spear/polearm
+- swordstaff (named and normal): now sword/spear/polearm, gains riposte. thrust becomes 2 tile range
+
+perks
+- recover spends AP on end turn
+- destiny: escape artist: now removes fatigue cost from movement skills
+- destiny: blend in: removed only using once for ranged attacks
+- throw sand: now gains a charge on kill
+
+contracts
+- defend settlement contracts: nerfed difficulty
+
+origins
+- free brigand retinue for northern raiders
+- lone wolf 
+    - favored enemy swordmaster does not refund
+    - garunteed chosen
+    - improved choices for weapons and armor
+
 1.16
+features
+- new additions to the training hall. A way out for weaker bros...
+    - After rolling stats, bros will save the difference from the decent baseline ie. 60 hp, 60 fat, 120 res etc...
+        ie. if bro rolls 40 HP, he can train up to 20 HP.
+    - for 150 gold, you can train min(amount to train, 10) for non melee/ranged attributes and min(amount to train, 5) for melee/ranged
+- new caravan loot/enemy system - caravans now follow higher risk/reward. the more valuable the cargo, the more highly protected.
+
 bugs
-- trying to eliminate freezes
+- fixed caravan freezes by making new caravan generation system
 - tried to fix zombies ressurecting naturally as abominations, that should only be possible with reanimation skill
 
 economy
@@ -9,6 +72,8 @@ economy
 - removed reknown requirements on party size, food costs 2 -> 4. this should encourage hiring more bros instead of just cherry picking elites. if it is too broken, wages can be balanced to address this
 - doubled the efficiency of armor parts
 - made armor, medicine, loot drops more scarce
+- disabled supply caravans for now
+- disabled peasants for now. too weak to survive in this world, hard for peasants to move around
 
 backgrounds
 - made assassins rarer, too common

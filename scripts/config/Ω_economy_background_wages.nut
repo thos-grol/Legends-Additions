@@ -330,7 +330,11 @@
 	//SOLDIER
 	"background.squire" : {
 		"HiringCost" : 24,
-		"DailyCost" : 12
+		"DailyCost" : 8
+	},
+	"background.retired_soldier" : {
+		"HiringCost" : 24,
+		"DailyCost" : 8
 	},
 	"background.barbarian" : {
 		"HiringCost" : 24,
@@ -341,10 +345,6 @@
 		"DailyCost" : 12
 	},
 	"background.raider" : {
-		"HiringCost" : 24,
-		"DailyCost" : 12
-	},
-	"background.retired_soldier" : {
 		"HiringCost" : 24,
 		"DailyCost" : 12
 	},

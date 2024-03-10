@@ -1,9 +1,8 @@
 ::Const.Strings.PerkName.StanceWrath <- "Wrath";
 ::Const.Strings.PerkDescription.StanceWrath <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
-+ "\nSacrifice defense to gain the ultimate offense"
++ "\nSacrifice defense (the strongest) to gain the ultimate offense"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n"+::MSU.Text.colorGreen("+25%") + " damage"
-+ "\n"+::MSU.Text.colorRed("– 25%") + " Melee Defense"
++ "\n"+::MSU.Text.colorGreen("+33%") + " damage"
 + "\n"+::MSU.Text.colorRed("– 25%") + " Fatigue cost for AOE attacks"
 + "\n"+::MSU.Text.colorGreen("– 2") + " AP cost for AOE attacks";
 
@@ -47,8 +46,8 @@ this.perk_stance_wrath <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		_properties.DamageTotalMult *= 1.25;
-		_properties.MeleeDefenseMult *= 0.75;
+		_properties.DamageTotalMult *= 1.33;
+		// _properties.MeleeDefenseMult *= 0.75;
 	}
 
 	function onAfterUpdate(_properties)

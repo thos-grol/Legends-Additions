@@ -436,11 +436,18 @@ gt.Const.World.Spawn.CaravanSouthernMedium <- {
 			Weight = 30,
 			Type = ::Const.World.Spawn.Troops.SouthernDonkey,
 			Cost = 0
+		},
+		{
+			MinCount = 1,
+			MaxCount = 1,
+			Weight = 30,
+			Type = ::Const.World.Spawn.Troops.Officer,
+			Cost = 0
 		}
 	],
 	Troops = [
 		{
-			Weight = 62,
+			Weight = 60,
 			Types = [
 				{
 					Type = ::Const.World.Spawn.Troops.Conscript,
@@ -449,32 +456,90 @@ gt.Const.World.Spawn.CaravanSouthernMedium <- {
 			]
 		},
 		{
-			Weight = 1,
+			Weight = 5,
 			Types = [
 				{
-					Type = ::Const.World.Spawn.Troops.Mercenary,
-					Cost = 30
+					Type = ::Const.World.Spawn.Troops.DesertStalker,
+					Cost = 20
 				}
 			]
 		},
 		{
-			Weight = 1,
+			Weight = 5,
 			Types = [
 				{
-					Type = ::Const.World.Spawn.Troops.MasterArcher,
-					Cost = 40
-				}
-			]
-		},
-		{
-			Weight = 1,
-			Types = [
-				{
-					Type = ::Const.World.Spawn.Troops.Officer,
+					Type = ::Const.World.Spawn.Troops.DesertDevil,
 					Cost = 35
 				}
 			]
 		},
+	]
+};
+
+gt.Const.World.Spawn.CaravanSouthernHard <- {
+	Name = "CaravanSouthernHard",
+	IsDynamic = true,
+	MovementSpeedMult = 1.0,
+	VisibilityMult = 1.0,
+	VisionMult = 1.0,
+	Body = "cart_03",
+	MinR = 45,
+	MaxR = 600,
+	Fixed = [
+		{
+			MinCount = 1,
+			MaxCount = 3,
+			Weight = 30,
+			Type = ::Const.World.Spawn.Troops.SouthernDonkey,
+			Cost = 0
+		},
+		{
+			MinCount = 1,
+			MaxCount = 1,
+			Weight = 30,
+			Type = ::Const.World.Spawn.Troops.Officer,
+			Cost = 0
+		}
+	],
+	Troops = [
+		{
+			Weight = 60,
+			Types = [
+				{
+					Type = ::Const.World.Spawn.Troops.Conscript,
+					Cost = 20
+				}
+			]
+		},
+		{
+			Weight = 10,
+			Types = [
+				{
+					Type = ::Const.World.Spawn.Troops.DesertStalker,
+					Cost = 20,
+					Roll = true
+				}
+			]
+		},
+		{
+			Weight = 15,
+			Types = [
+				{
+					Type = ::Const.World.Spawn.Troops.DesertDevil,
+					Cost = 20,
+					Roll = true
+				}
+			]
+		},
+		{
+			Weight = 15,
+			Types = [
+				{
+					Type = ::Const.World.Spawn.Troops.Assassin,
+					Cost = 20
+				}
+			]
+		}
 	]
 };
 
@@ -499,7 +564,7 @@ gt.Const.World.Spawn.CaravanMedium <- {
 	],
 	Troops = [
 		{
-			Weight = 62,
+			Weight = 60,
 			Types = [
 				{
 					Type = ::Const.World.Spawn.Troops.Mercenary,
@@ -508,7 +573,7 @@ gt.Const.World.Spawn.CaravanMedium <- {
 			]
 		},
 		{
-			Weight = 1,
+			Weight = 5,
 			Types = [
 				{
 					Type = ::Const.World.Spawn.Troops.MasterArcher,
@@ -517,11 +582,62 @@ gt.Const.World.Spawn.CaravanMedium <- {
 			]
 		},
 		{
-			Weight = 1,
+			Weight = 5,
 			Types = [
 				{
 					Type = ::Const.World.Spawn.Troops.HedgeKnight,
 					Cost = 35
+				}
+			]
+		},
+	]
+};
+
+gt.Const.World.Spawn.CaravanHard <- {
+	Name = "CaravanHard",
+	IsDynamic = true,
+	MovementSpeedMult = 1.0,
+	VisibilityMult = 1.0,
+	VisionMult = 1.0,
+	Body = "cart_02",
+	MinR = 45,
+	MaxR = 600,
+	Fixed = [
+		{
+			MinCount = 1,
+			MaxCount = 3,
+			Weight = 30,
+			Type = ::Const.World.Spawn.Troops.CaravanDonkey,
+			Cost = 0
+		}
+	],
+	Troops = [
+		{
+			Weight = 50,
+			Types = [
+				{
+					Type = ::Const.World.Spawn.Troops.Mercenary,
+					Cost = 20
+				}
+			]
+		},
+		{
+			Weight = 15,
+			Types = [
+				{
+					Type = ::Const.World.Spawn.Troops.MasterArcher,
+					Cost = 20,
+					Roll = true
+				}
+			]
+		},
+		{
+			Weight = 15,
+			Types = [
+				{
+					Type = ::Const.World.Spawn.Troops.HedgeKnight,
+					Cost = 20,
+					Roll = true
 				}
 			]
 		},

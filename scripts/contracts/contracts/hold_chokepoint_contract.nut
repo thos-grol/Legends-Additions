@@ -287,7 +287,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 
 							return 0;
 						});
-						local party = enemyNobleHouse.spawnEntity(tiles[0].Tile, candidates[::Math.rand(0, candidates.len() - 1)].getName() + " Company", true, ::Const.World.Spawn.Noble, (::Math.rand(100, 120) + this.Flags.get("Wave") * 10 + (this.Flags.get("IsAlliedReinforcements") ? 50 : 0)) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						local party = enemyNobleHouse.spawnEntity(tiles[0].Tile, candidates[::Math.rand(0, candidates.len() - 1)].getName() + " Company", true, ::Const.World.Spawn.Noble, (::Math.rand(100, 120) + this.Flags.get("Wave") * 10 + (this.Flags.get("IsAlliedReinforcements") ? 50 : 0)) * this.Contract.getDifficultyMult());
 						party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + enemyNobleHouse.getBannerString());
 						party.setDescription("Professional soldiers in service to local lords.");
 						party.getLoot().Money = ::Math.rand(50, 200);
@@ -371,7 +371,7 @@ this.hold_chokepoint_contract <- this.inherit("scripts/contracts/contract", {
 
 						if (this.Flags.get("IsAlliedReinforcements"))
 						{
-							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
+							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 50 * this.Contract.getDifficultyMult(), this.Contract.getFaction());
 							p.AllyBanners.push(this.World.FactionManager.getFaction(this.Contract.getFaction()).getPartyBanner());
 						}
 					}

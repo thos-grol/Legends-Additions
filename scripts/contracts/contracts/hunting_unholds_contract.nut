@@ -84,15 +84,15 @@ this.hunting_unholds_contract <- this.inherit("scripts/contracts/contract", {
 
 				if (this.Flags.get("EnemyType") == 0)
 				{
-					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, ::Const.World.Spawn.UnholdBog, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, ::Const.World.Spawn.UnholdBog, 100 * this.Contract.getDifficultyMult());
 				}
 				else if (this.Flags.get("EnemyType") == 1)
 				{
-					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, ::Const.World.Spawn.UnholdFrost, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, ::Const.World.Spawn.UnholdFrost, 100 * this.Contract.getDifficultyMult());
 				}
 				else
 				{
-					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, ::Const.World.Spawn.Unhold, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "Unholds", false, ::Const.World.Spawn.Unhold, 100 * this.Contract.getDifficultyMult());
 				}
 
 				party.setDescription("One or more lumbering giants.");

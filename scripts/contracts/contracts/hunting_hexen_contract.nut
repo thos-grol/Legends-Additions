@@ -321,7 +321,7 @@ this.hunting_hexen_contract <- this.inherit("scripts/contracts/contract", {
 							}
 
 						});
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Spiders, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Spiders, 50 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -346,7 +346,7 @@ this.hunting_hexen_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = ::Const.Music.CivilianTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.HexenAndNoSpiders, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.HexenAndNoSpiders, 100 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -449,7 +449,7 @@ this.hunting_hexen_contract <- this.inherit("scripts/contracts/contract", {
 						p.Music = ::Const.Music.BeastsTracks;
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.HexenAndNoSpiders, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.HexenAndNoSpiders, 100 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

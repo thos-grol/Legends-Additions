@@ -4518,6 +4518,118 @@ this.tooltip_events <- {
 				}
 			];
 
+		case "world-town-screen.training-dialog-module.Train4":
+			return [
+				{
+					id = 1,
+					type = "title",
+					text = "Strength Training"
+				},
+				{
+					id = 2,
+					type = "description",
+					text = "Have your mercenary undergo a strength training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 hitpoints gained (up to 60 base)"
+				}
+			];
+
+		case "world-town-screen.training-dialog-module.Train5":
+			return [
+				{
+					id = 1,
+					type = "title",
+					text = "Courage Training"
+				},
+				{
+					id = 2,
+					type = "description",
+					text = "Have your mercenary undergo a test of courage to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 resolve gained (up to 60 base)"
+				}
+			];
+
+		case "world-town-screen.training-dialog-module.Train6":
+			return [
+				{
+					id = 1,
+					type = "title",
+					text = "Endurance Training"
+				},
+				{
+					id = 2,
+					type = "description",
+					text = "Have your mercenary undergo an endurance training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 fatigue gained (up to 120 base)"
+				}
+			];
+
+		case "world-town-screen.training-dialog-module.Train7":
+			return [
+				{
+					id = 1,
+					type = "title",
+					text = "Speed Training"
+				},
+				{
+					id = 2,
+					type = "description",
+					text = "Have your mercenary undergo an speed training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 initiative gained (up to 120 base)"
+				}
+			];
+
+		case "world-town-screen.training-dialog-module.Train8":
+			return [
+				{
+					id = 1,
+					type = "title",
+					text = "CQC Training"
+				},
+				{
+					id = 2,
+					type = "description",
+					text = "Have your mercenary undergo an close quarters combat training to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 melee skill gained (up to 60 base)"
+				}
+			];
+
+		case "world-town-screen.training-dialog-module.Train9":
+			return [
+				{
+					id = 1,
+					type = "title",
+					text = "Reflex Training"
+				},
+				{
+					id = 2,
+					type = "description",
+					text = "Have your mercenary undergo a reflex training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 melee defense gained (up to 10 base)"
+				}
+			];
+
+		case "world-town-screen.training-dialog-module.Train10":
+			return [
+				{
+					id = 1,
+					type = "title",
+					text = "Shooting Training"
+				},
+				{
+					id = 2,
+					type = "description",
+					text = "Have your mercenary undergo shooting training to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 ranged skill gained (up to 60 base)"
+				}
+			];
+
+		case "world-town-screen.training-dialog-module.Train11":
+			return [
+				{
+					id = 1,
+					type = "title",
+					text = "Dodge Training"
+				},
+				{
+					id = 2,
+					type = "description",
+					text = "Have your mercenary undergo a projectile dodge training to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 ranged defense gained (up to 10 base)"
+				}
+			];
+
 		case "world-game-finish-screen.dialog-module.QuitButton":
 			return [
 				{

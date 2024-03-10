@@ -1,10 +1,9 @@
 this.new_trained_effect <- this.inherit("scripts/skills/skill", {
 	m = {
-		XPGainMult = 1.0,
-		Duration = 0,
-		Battles = 0,
-		IsCountingBattle = false,
-		Proficiency = 0
+		Proficiency = 0,
+		Applied = false,
+		Mode = "None",
+		Stat = ""
 	},
 	function create()
 	{
@@ -45,24 +44,54 @@ this.new_trained_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		local actor = this.getContainer().getActor();
-		local skill;
-		local proficiencies = [
-			"trait.proficiency_Axe",
-			"trait.proficiency_Cleaver",
-			"trait.proficiency_Sword",
-			"trait.proficiency_Mace",
-			"trait.proficiency_Hammer",
-			"trait.proficiency_Flail",
-			"trait.proficiency_Spear",
-			"trait.proficiency_Polearm",
-			"trait.proficiency_Fist",
-			"trait.proficiency_Ranged",
-		];
-		foreach (proficiency in proficiencies)
+		if (this.m.Applied) return;
+		this.m.Applied = true;
+
+		if (this.m.Mode == "Proficiency")
 		{
-			skill = actor.getSkills().getSkillByID(proficiency);
-			if (skill != null) skill.add_proficiency_amount(this.m.Proficiency);
+			local actor = this.getContainer().getActor();
+			local skill;
+			local proficiencies = [
+				"trait.proficiency_Axe",
+				"trait.proficiency_Cleaver",
+				"trait.proficiency_Sword",
+				"trait.proficiency_Mace",
+				"trait.proficiency_Hammer",
+				"trait.proficiency_Flail",
+				"trait.proficiency_Spear",
+				"trait.proficiency_Polearm",
+				"trait.proficiency_Fist",
+				"trait.proficiency_Ranged",
+			];
+			foreach (proficiency in proficiencies)
+			{
+				skill = actor.getSkills().getSkillByID(proficiency);
+				if (skill != null) skill.add_proficiency_amount(this.m.Proficiency);
+			}
+		}
+		else if (this.m.Mode == "Stat")
+		{
+			local actor = this.getContainer().getActor();
+
+			if (this.m.Stat == "trainable_hitpoints")
+				actor.getBaseProperties().Hitpoints += ::Math.min(10, actor.getFlags().getAsInt(this.m.Stat));
+			else if (this.m.Stat == "trainable_resolve") 
+				actor.getBaseProperties().Bravery += ::Math.min(10, actor.getFlags().getAsInt(this.m.Stat));
+			else if (this.m.Stat == "trainable_fatigue") 
+				actor.getBaseProperties().Stamina += ::Math.min(10, actor.getFlags().getAsInt(this.m.Stat));
+			else if (this.m.Stat == "trainable_initiative") 
+				actor.getBaseProperties().Initiative += ::Math.min(10, actor.getFlags().getAsInt(this.m.Stat));
+			else if (this.m.Stat == "trainable_meleeskill") 
+				actor.getBaseProperties().MeleeSkill += ::Math.min(10, actor.getFlags().getAsInt(this.m.Stat));
+			else if (this.m.Stat == "trainable_meleedefense") 
+				actor.getBaseProperties().MeleeDefense += ::Math.min(10, actor.getFlags().getAsInt(this.m.Stat));
+			else if (this.m.Stat == "trainable_rangedskill") 
+				actor.getBaseProperties().RangedSkill += ::Math.min(10, actor.getFlags().getAsInt(this.m.Stat));
+			else if (this.m.Stat == "trainable_rangeddefense") 
+				actor.getBaseProperties().RangedDefense += ::Math.min(10, actor.getFlags().getAsInt(this.m.Stat));
+
+			actor.getFlags().set(this.m.Stat, ::Math.max(0, actor.getFlags().getAsInt(this.m.Stat) - 10))
+			actor.getSkills().update();
 		}
 	}
 
@@ -74,19 +103,17 @@ this.new_trained_effect <- this.inherit("scripts/skills/skill", {
 	function onSerialize( _out )
 	{
 		this.skill.onSerialize(_out);
-		_out.writeU16(this.m.Duration);
-		_out.writeU16(this.m.Battles);
-		_out.writeF32(this.m.XPGainMult);
 		_out.writeString(this.m.Icon);
+		_out.writeBool(this.m.Applied);
 	}
 
 	function onDeserialize( _in )
 	{
 		this.skill.onDeserialize(_in);
-		this.m.Duration = _in.readU16();
-		this.m.Battles = _in.readU16();
-		this.m.XPGainMult = _in.readF32();
 		this.m.Icon = _in.readString();
+		this.m.Applied = _in.readBool();
+
+
 	}
 
 });

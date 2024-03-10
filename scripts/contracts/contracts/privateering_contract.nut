@@ -138,7 +138,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						if (obj.isMilitary())
 						{
-							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Noble, ::Math.rand(90, 120) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Noble, ::Math.rand(90, 120) * this.Contract.getDifficultyMult());
 						}
 						else
 						{
@@ -146,17 +146,17 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 
 							if (r <= 10)
 							{
-								this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Mercenaries, ::Math.rand(90, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+								this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Mercenaries, ::Math.rand(90, 110) * this.Contract.getDifficultyMult());
 							}
 							else
 							{
-								this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Noble, ::Math.rand(70, 100) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+								this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Noble, ::Math.rand(70, 100) * this.Contract.getDifficultyMult());
 							}
 						}
 					}
 					else if (obj.isMilitary())
 					{
-						this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Militia, ::Math.rand(80, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Militia, ::Math.rand(80, 110) * this.Contract.getDifficultyMult());
 					}
 					else
 					{
@@ -164,16 +164,16 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 
 						if (r <= 15)
 						{
-							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Mercenaries, ::Math.rand(80, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Mercenaries, ::Math.rand(80, 110) * this.Contract.getDifficultyMult());
 						}
 						else if (r <= 30)
 						{
 							obj.getFlags().set("HasNobleProtection", true);
-							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Noble, ::Math.rand(80, 100) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Noble, ::Math.rand(80, 100) * this.Contract.getDifficultyMult());
 						}
 						else if (r <= 70)
 						{
-							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Militia, ::Math.rand(70, 110) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+							this.Contract.addUnitsToEntity(obj, ::Const.World.Spawn.Militia, ::Math.rand(70, 110) * this.Contract.getDifficultyMult());
 						}
 						else
 						{
@@ -188,7 +188,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 				}
 
 				local origin = nonIsolatedSettlements[::Math.rand(0, nonIsolatedSettlements.len() - 1)];
-				local party = f.spawnEntity(origin.getTile(), origin.getName() + " Company", true, ::Const.World.Spawn.Noble, 190 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = f.spawnEntity(origin.getTile(), origin.getName() + " Company", true, ::Const.World.Spawn.Noble, 190 * this.Contract.getDifficultyMult());
 				party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + f.getBannerString());
 				party.setDescription("Professional soldiers in service to local lords.");
 				this.Contract.m.UnitsSpawned.push(party.getID());

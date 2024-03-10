@@ -494,3 +494,47 @@ gt.Const.World.Spawn.BanditVermes <- {
 	]
 };
 
+gt.Const.World.Spawn.BanditRaidersTown <- {
+	Name = "BanditRaidersTown",
+	IsDynamic = true,
+	MovementSpeedMult = 1.0,
+	VisibilityMult = 1.0,
+	VisionMult = 1.0,
+	Body = "figure_bandit_01",
+	Fixed = [
+		{
+			MinCount = 1,
+			MaxCount = 1,
+			Weight = 30,
+			Type = ::Const.World.Spawn.Troops.BanditLeader,
+			Cost = 0
+		}
+	],
+	MinR = 63,
+	MaxR = 600,
+	Troops = [
+		{
+			Weight = 60,
+			Types = [
+				{
+					Type = ::Const.World.Spawn.Troops.BanditRaider,
+					Cost = 20
+				},
+				{
+					Type = ::Const.World.Spawn.Troops.BanditVeteran,
+					Cost = 30
+				}
+			]
+		},
+		{
+			Weight = 20,
+			Types = [
+				{
+					Type = ::Const.World.Spawn.Troops.BanditMarksman,
+					Cost = 18
+				}
+			]
+		}
+	]
+};
+

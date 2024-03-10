@@ -120,6 +120,7 @@ this.abstract_actor <- this.inherit("scripts/entity/tactical/actor", {
 
 			//build add levelups
 			pickLevelups(this.m.Build.LevelUps);
+			post_init();
 			return;
 		}
 
@@ -155,7 +156,12 @@ this.abstract_actor <- this.inherit("scripts/entity/tactical/actor", {
 
 		//add level ups
 		pickLevelups(::B.Info[this.m.Type].LevelUps);
+		post_init();
 
+	}
+
+	function post_init()
+	{
 	}
 
 	function decode_add(_array)

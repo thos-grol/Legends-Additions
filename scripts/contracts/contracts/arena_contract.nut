@@ -325,7 +325,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 					baseDifficulty = baseDifficulty + 10;
 				}
 
-				baseDifficulty = baseDifficulty * this.Contract.getScaledDifficultyMult();
+				baseDifficulty = baseDifficulty;
 
 				if (this.Flags.get("IsSwordmaster"))
 				{
@@ -598,7 +598,7 @@ this.arena_contract <- this.inherit("scripts/contracts/contract", {
 							baseDifficulty = baseDifficulty + 10;
 						}
 
-						baseDifficulty = baseDifficulty * this.Contract.getScaledDifficultyMult();
+						baseDifficulty = baseDifficulty;
 
 						if (this.Flags.get("IsSwordmaster"))
 						{

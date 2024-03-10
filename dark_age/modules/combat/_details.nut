@@ -82,6 +82,96 @@
 		if (this.getContainer().hasSkill("perk.legend_small_target")) getTooltip_SmallTarget(tooltip);
 		if (this.getContainer().hasSkill("effects.dodge")) getTooltip_Dodge(tooltip);
 
+		local hp = actor.getFlags().getAsInt("trainable_hitpoints");
+		local res = actor.getFlags().getAsInt("trainable_resolve");
+		local fat = actor.getFlags().getAsInt("trainable_fatigue");
+		local ini = actor.getFlags().getAsInt("trainable_initiative");
+		local mskill = actor.getFlags().getAsInt("trainable_meleeskill");
+		local mdef = actor.getFlags().getAsInt("trainable_meleedefense");
+		local rskill = actor.getFlags().getAsInt("trainable_rangedskill");
+		local rdef = actor.getFlags().getAsInt("trainable_rangeddefense");
+		
+		if (hp > 0 
+			|| res > 0
+			|| fat > 0
+			|| ini > 0
+			|| mskill > 0
+			|| mdef > 0
+			|| rskill > 0
+			|| rdef > 0
+		)
+		{
+			tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "========================"
+			});
+	
+			tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/warning.png",
+				text = "Trainable stats"
+			});
+	
+			if (hp > 0) tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/health.png",
+				text = "" + hp
+			});
+	
+			if (res > 0) tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/bravery.png",
+				text = "" + res
+			});
+	
+			if (fat > 0) tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/fatigue.png",
+				text = "" + fat
+			});
+	
+			if (ini > 0) tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/initiative.png",
+				text = "" + ini
+			});
+	
+			if (mskill > 0) tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/melee_skill.png",
+				text = "" + mskill
+			});
+	
+			if (mdef > 0) tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/melee_defense.png",
+				text = "" + mdef
+			});
+	
+			if (rskill > 0) tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/ranged_skill.png",
+				text = "" + rskill
+			});
+	
+			if (rdef > 0) tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/ranged_defense.png",
+				text = "" + rdef
+			});
+		}
+
 		tooltip = getTooltip_old(tooltip);
 
 		return tooltip;

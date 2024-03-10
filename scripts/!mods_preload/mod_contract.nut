@@ -81,7 +81,7 @@ this.getroottable().Const.LegendMod.hookContract <- function ()
 
 			if (_factionType == ::Const.FactionType.Bandits)
 			{
-				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(enemyBase.getTile(), "Brigands", false, ::Const.World.Spawn.BanditRaiders, _resources);
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(enemyBase.getTile(), "Brigands", false, ::Const.World.Spawn.BanditRaidersTown, _resources);
 				party.setDescription("A rough and tough band of brigands out to hunt for food.");
 				party.setFootprintType(::Const.World.FootprintsType.Brigands);
 				party.getLoot().Money = ::Math.rand(0, 50);

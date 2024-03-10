@@ -122,16 +122,16 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 				this.Contract.m.Destination.clearTroops();
 				this.Contract.m.Destination.getLoot().clear();
-				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditArmy, 150 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setLootScaleBasedOnResources(200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
+				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditArmy, 150 * this.Contract.getDifficultyMult());
+				this.Contract.m.Destination.setLootScaleBasedOnResources(200 * this.Contract.getDifficultyMult());
+				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 200 * this.Contract.getDifficultyMult()));
 				this.Contract.setScreen("Overview");
 				this.World.Contracts.setActiveContract(this.Contract);
 				this.Flags.set("BribeEventDone", false);
 				local party;
 				local tile;
 				local tile = this.Contract.m.Destination.getTile();
-				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Raiding party", false, ::Const.World.Spawn.BanditRaiders, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Raiding party", false, ::Const.World.Spawn.BanditRaidersTown, 80 * this.Contract.getDifficultyMult());
 				party.getSprite("banner").setBrush(this.Contract.m.Destination.getBanner());
 				party.setAttackableByAI(false);
 				this.Contract.m.Target = this.WeakTableRef(party);
@@ -441,7 +441,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "I would rather we not waste the crowns.",
 					function getResult()
 					{
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditArmy, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditArmy, 50 * this.Contract.getDifficultyMult());
 						this.World.Contracts.showCombatDialog();
 						this.Flags.set("BribeEventDone", true);
 						return 0;
@@ -485,7 +485,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 						this.Flags.set("BribeEventDone", true);
 						local playerTile = this.World.State.getPlayer().getTile();
 						local party;
-						party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Settlement).spawnEntity(playerTile, "Bribed Raiders", false, ::Const.World.Spawn.BanditArmy, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Settlement).spawnEntity(playerTile, "Bribed Raiders", false, ::Const.World.Spawn.BanditArmy, 50 * this.Contract.getDifficultyMult());
 						party.setDescription("Those who like gold above all");
 						this.World.Contracts.showCombatDialog();
 						return 0;
@@ -518,7 +518,7 @@ this.legend_bandit_army_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.Flags.set("BribeEventDone", true);
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditArmy, 30 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.BanditArmy, 30 * this.Contract.getDifficultyMult());
 						this.World.Contracts.showCombatDialog();
 						return 0;
 					}

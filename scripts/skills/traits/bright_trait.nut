@@ -61,7 +61,11 @@ this.bright_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	function onNewDay() //decipher
 	{
 		local actor = this.getContainer().getActor();
-		if (getBonus() >= 10 && actor.m.Level == 10 && ::Math.rand(1, 100) <= 10) actor.updateLevel_limit_break();
+		if (getBonus() >= 10 && actor.m.Level == 10 && ::Math.rand(1, 100) <= 10)
+		{
+			actor.updateLevel_limit_break();
+			actor.resetPerks();
+		}
 		if (get_data() == null) return;
 		tick();
 	}

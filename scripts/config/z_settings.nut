@@ -1,5 +1,5 @@
 //remove camping influence, but also nerf heal and repair
-
+::Const.World.Assets.ArmorPartsPerArmor = 0.015;
 ::Const.AI.ParallelizationMode = false;
 ::Const.Difficulty.HealMult = [
     0.60,

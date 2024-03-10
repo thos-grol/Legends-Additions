@@ -27,9 +27,14 @@ this.perk_hybridization <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		local weapon = this.getContainer().getActor().getMainhandItem();
-		if (weapon == null) return;
 		local baseProperties = this.getContainer().getActor().getBaseProperties();
+		local weapon = this.getContainer().getActor().getMainhandItem();
+		if (weapon == null) 
+		{
+			_properties.MeleeSkill += ::Math.floor(baseProperties.getRangedSkill() * this.m.Bonus);
+			return;
+		}
+		
 		if (weapon.isItemType(::Const.Items.ItemType.RangedWeapon)) _properties.RangedSkill += ::Math.floor(baseProperties.getMeleeSkill() * this.m.Bonus);
 		else _properties.MeleeSkill += ::Math.floor(baseProperties.getRangedSkill() * this.m.Bonus);
 

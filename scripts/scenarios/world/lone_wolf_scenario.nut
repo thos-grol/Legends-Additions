@@ -45,11 +45,12 @@ this.lone_wolf_scenario <- this.inherit("scripts/scenarios/world/starting_scenar
 		bros[0].m.Attributes = [];
 		local talents = bros[0].getTalents();
 		talents.resize(::Const.Attributes.COUNT, 0);
+		talents[::Const.Attributes.Hitpoints] = 3;
+		talents[::Const.Attributes.Bravery] = 3;
 		talents[::Const.Attributes.MeleeDefense] = 3;
-		talents[::Const.Attributes.Fatigue] = 3;
 		talents[::Const.Attributes.MeleeSkill] = 3;
-		talents[::Const.Attributes.RangedSkill] = 3;
 		bros[0].getFlags().set("Lucky", 3);
+		bros[0].getSkills().add(::new("scripts/skills/traits/lucky_trait"));
 		bros[0].fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Assets.m.Money = this.World.Assets.m.Money / 3 - (this.World.Assets.getEconomicDifficulty() == 0 ? 0 : 100);

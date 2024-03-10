@@ -88,7 +88,7 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 					if (::Math.rand(1, 100) <= 25)
 					{
 						this.Flags.set("IsMilitiaPresent", true);
-						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.Militia, ::Math.min(300, 80 * this.Contract.getScaledDifficultyMult()));
+						this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.Militia, ::Math.min(300, 80));
 					}
 				}
 
@@ -409,7 +409,7 @@ this.raze_attached_location_contract <- this.inherit("scripts/contracts/contract
 						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
 						p.Music = ::Const.Music.NobleTracks;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 150 * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
+						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 150, this.Contract.getFaction());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}

@@ -91,7 +91,7 @@ this.legend_hunting_white_direwolf_contract <- this.inherit("scripts/contracts/c
 				]);
 				local nearTile = this.Contract.getTileToSpawnLocation(playerTile, 4, 8);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "White Wolf Pack", false, ::Const.World.Spawn.LegendWhiteDirewolf, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Beasts).spawnEntity(tile, "White Wolf Pack", false, ::Const.World.Spawn.LegendWhiteDirewolf, 200 * this.Contract.getDifficultyMult());
 				party.setDescription("The wolf pack of the legendary White Wolf.");
 				party.setAttackableByAI(false);
 				party.setFootprintSizeOverride(0.75);
@@ -378,7 +378,7 @@ this.legend_hunting_white_direwolf_contract <- this.inherit("scripts/contracts/c
 					Text = "",
 					function getResult()
 					{
-						this.Contract.addUnitsToEntity(this.Contract.m.Target, ::Const.World.Spawn.LegendWhiteDirewolf, 70 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						this.Contract.addUnitsToEntity(this.Contract.m.Target, ::Const.World.Spawn.LegendWhiteDirewolf, 70 * this.Contract.getDifficultyMult());
 						this.Contract.getActiveState().onTargetAttacked(this.Contract.m.Target, false);
 						return 0;
 					}

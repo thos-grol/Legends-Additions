@@ -1,13 +1,20 @@
-::mods_hookExactClass("items/weapons/greenskins/orc_flail_2h", function (o){
+::mods_hookExactClass("items/weapons/legend_voulge", function (o){
     o.post_create <- function()
 	{
-		this.m.WeaponType = ::Const.Items.WeaponType.Flail | ::Const.Items.WeaponType.Cleaver;
+		this.m.WeaponType = ::Const.Items.WeaponType.Polearm | ::Const.Items.WeaponType.Cleaver;
 	}
 });
 
-::mods_hookExactClass("items/weapons/named/named_orc_flail_2h", function (o){
+::mods_hookExactClass("items/weapons/legend_military_voulge", function (o){
     o.post_create <- function()
 	{
-		this.m.WeaponType = ::Const.Items.WeaponType.Flail | ::Const.Items.WeaponType.Cleaver;
+		this.m.WeaponType = ::Const.Items.WeaponType.Polearm | ::Const.Items.WeaponType.Cleaver;
+	}
+});
+
+::mods_hookExactClass("items/weapons/named/legend_named_voulge", function (o){
+    o.post_create <- function()
+	{
+		this.m.WeaponType = ::Const.Items.WeaponType.Polearm | ::Const.Items.WeaponType.Cleaver;
 	}
 });

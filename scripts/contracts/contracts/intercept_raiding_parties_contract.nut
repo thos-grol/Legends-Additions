@@ -152,19 +152,19 @@ this.intercept_raiding_parties_contract <- this.inherit("scripts/contracts/contr
 
 					if (i == 0 && this.Flags.get("IsAssassins"))
 					{
-						party = cityState.spawnEntity(tile, "Regiment of " + cityState.getNameOnly(), true, ::Const.World.Spawn.Southern, ::Math.rand(70, 90) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-						this.Contract.addUnitsToEntity(party, ::Const.World.Spawn.Assassins, ::Math.rand(30, 40) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = cityState.spawnEntity(tile, "Regiment of " + cityState.getNameOnly(), true, ::Const.World.Spawn.Southern, ::Math.rand(70, 90) * this.Contract.getDifficultyMult());
+						this.Contract.addUnitsToEntity(party, ::Const.World.Spawn.Assassins, ::Math.rand(30, 40) * this.Contract.getDifficultyMult());
 						party.getFlags().set("IsAssassins", true);
 					}
 					else if (i == 0 && this.Flags.get("IsSlavers"))
 					{
-						party = cityState.spawnEntity(tile, "Slavers", true, ::Const.World.Spawn.Southern, ::Math.rand(60, 80) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-						this.Contract.addUnitsToEntity(party, ::Const.World.Spawn.NorthernSlaves, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = cityState.spawnEntity(tile, "Slavers", true, ::Const.World.Spawn.Southern, ::Math.rand(60, 80) * this.Contract.getDifficultyMult());
+						this.Contract.addUnitsToEntity(party, ::Const.World.Spawn.NorthernSlaves, 50 * this.Contract.getDifficultyMult());
 						party.getFlags().set("IsSlavers", true);
 					}
 					else
 					{
-						party = cityState.spawnEntity(tile, "Regiment of " + cityState.getNameOnly(), true, ::Const.World.Spawn.Southern, ::Math.rand(100, 130) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+						party = cityState.spawnEntity(tile, "Regiment of " + cityState.getNameOnly(), true, ::Const.World.Spawn.Southern, ::Math.rand(100, 130) * this.Contract.getDifficultyMult());
 						party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + cityState.getBannerString());
 
 						if (::Math.rand(1, 100) <= 33)

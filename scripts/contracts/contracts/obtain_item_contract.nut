@@ -82,8 +82,8 @@ this.obtain_item_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 				this.Contract.m.Destination.clearTroops();
-				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
-				this.Contract.m.Destination.setLootScaleBasedOnResources(100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.UndeadArmy, 100 * this.Contract.getDifficultyMult());
+				this.Contract.m.Destination.setLootScaleBasedOnResources(100 * this.Contract.getDifficultyMult());
 
 				if (this.Contract.getDifficultyMult() <= 1.15 && !this.Contract.m.Destination.getFlags().get("IsEventLocation"))
 				{

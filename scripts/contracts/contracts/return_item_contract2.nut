@@ -180,7 +180,7 @@ this.return_item_contract2 <- this.inherit("scripts/contracts/contract", {
 				}
 				else party_type = ::Const.World.Spawn.Mercenaries;
 
-				local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, party_type, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult() * difficulty_modifier);
+				local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).spawnEntity(tile, "Thieves", false, party_type, 80 * this.Contract.getDifficultyMult() * difficulty_modifier);
 				party.setDescription(desc);
 
 

@@ -68,7 +68,7 @@ this.barbarian_king_contract <- this.inherit("scripts/contracts/contract", {
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 				local f = this.World.FactionManager.getFactionOfType(::Const.FactionType.Barbarians);
 				local nearest_base = f.getNearestSettlement(this.World.State.getPlayer().getTile());
-				local party = f.spawnEntity(nearest_base.getTile(), "Barbarian King", false, ::Const.World.Spawn.Barbarians, 125 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = f.spawnEntity(nearest_base.getTile(), "Barbarian King", false, ::Const.World.Spawn.Barbarians, 125 * this.Contract.getDifficultyMult());
 				party.setDescription("A mighty warhost of barbarian tribes, united by a self-proclaimed barbarian king.");
 				party.getSprite("body").setBrush("figure_wildman_04");
 				party.setVisibilityMult(2.0);
@@ -496,7 +496,7 @@ this.barbarian_king_contract <- this.inherit("scripts/contracts/contract", {
 				local playerTile = this.World.State.getPlayer().getTile();
 				local nearest_undead = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getNearestSettlement(playerTile);
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 9, 15);
-				local party = this.World.FactionManager.getFaction(nearest_undead.getFaction()).spawnEntity(tile, "The Untoward", false, ::Const.World.Spawn.UndeadArmy, 260 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				local party = this.World.FactionManager.getFaction(nearest_undead.getFaction()).spawnEntity(tile, "The Untoward", false, ::Const.World.Spawn.UndeadArmy, 260 * this.Contract.getDifficultyMult());
 				party.getSprite("banner").setBrush(nearest_undead.getBanner());
 				party.setDescription("A legion of walking dead, back to claim from the living what was once theirs.");
 				party.setSlowerAtNight(false);

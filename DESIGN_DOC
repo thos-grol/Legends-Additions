@@ -1,20 +1,54 @@
-//possible causes of freezing
-- mercs
-- caravans
-- nomads
+
 
 //test all spawns using cultist camps
-
-
-
-
 //figure out persistent tile effects for entities? - see malovolent spirits vala skill
+
+//DO STORY MODE THROUGH AMBITIONS
+//ADD ROGUELIKE MODE WITH PERSISTENCE
+//Achievements will increase the strength of your character
+
+//new recruit system balance the game about picking one out of 3
+
+//questlines to get hero characters
+//quests
+
+---
+//create rating system and assign units threat rating
+//balance and equalize strength of player units and enemies
+
+//determine stat tiers
+matk
+
+should rdef and def be linked to one?
+rdef is 50% of mdef. perk to increase it to 75%
+
+strength stat
+
+---
+Template default stats: Rabble
+
+Hitpoints = 50, <- Rename Hitpoints to Vitality
+Bravery = 50, <- Rename Resolve to Will
+Stamina = 100, <- Fatigue to Endurance
+
+MeleeSkill = 50, <- melee skill lumped into ranged skill. Rename to Skill. Ranged attacks use 25% of skill.
+Ranged backgrounds have trait that makes it to 75%. Ranged proficiency trait also does this.
+
+RangedSkill = 10, <- Rename to Defense. Ranged defense is 50% of defense by default. A perk allows you to make this 100%.
+
+MeleeDefense = 3, 
+RangedDefense = 3,
+
+Initiative = 100, <- Rename to Agility
+
+---
 
 //skeletons are a higher form of undead, after all the flesh has been rotted away,
 //FEATURE_9: rework skeleton units
     //ghost aura - passive that gives decrease armor damage and increase armor pen
     //superlight - since the flesh has rotted away, the speed has increased
     //steel bones - the bones are as durable as steel
+
 
 //FEATURE_9: rework skeleton priest //drops miasma tome
 
