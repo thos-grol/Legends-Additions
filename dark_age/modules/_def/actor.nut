@@ -6,20 +6,9 @@
 	while(!("onDamageReceived" in o)) o = o[o.SuperName];
 	o.onDamageReceived = function( _attacker, _skill, _hitInfo )
 	{
-		if (!this.isAlive() || !this.isPlacedOnMap())
-		{
-			return 0;
-		}
-
-		if (_hitInfo.DamageRegular == 0 && _hitInfo.DamageArmor == 0)
-		{
-			return 0;
-		}
-
-		if (typeof _attacker == "instance")
-		{
-			_attacker = _attacker.get();
-		}
+		if (!this.isAlive() || !this.isPlacedOnMap()) return 0;
+		if (_hitInfo.DamageRegular == 0 && _hitInfo.DamageArmor == 0) return 0;
+		if (typeof _attacker == "instance") _attacker = _attacker.get();
 
 		if (_attacker != null && _attacker.isAlive() && _attacker.isPlayerControlled() && !this.isPlayerControlled())
 		{
@@ -28,19 +17,42 @@
 			this.getTile().addVisibilityForCurrentEntity();
 		}
 
-		if (this.m.Skills.hasSkill("perk.steel_brow"))
-		{
-			_hitInfo.BodyDamageMult = 1.0;
-		}
+
+
+		// if (this.m.Skills.hasSkill("perk.steel_brow"))
+		// {
+		// 	_hitInfo.BodyDamageMult = 1.0;
+		// }
+
+
 
 		local p = this.m.Skills.buildPropertiesForBeingHit(_attacker, _skill, _hitInfo);
+		local reflex_status = 0; //reflex is ranged defense in code
+
+		if (::Math.rand(1, 100) <= p.getRangedDefense())
+		{
+			if (_hitInfo.BodyPart == ::Const.BodyPart.Head)
+			{
+				//if it's a headshot, downgrade it to a bodyshot
+				hitInfo.BodyPart = ::Const.BodyPart.Body;
+				reflex_status = 1;
+
+			}
+			else
+			{
+				//if it's a bodyshot, downgrade it to a graze 10% dmg
+				_hitInfo.DamageRegular *= 0.1;
+				reflex_status = 2;
+			}
+			p = this.m.Skills.buildPropertiesForBeingHit(_attacker, _skill, _hitInfo);
+		}
+
+
 		this.m.Items.onBeforeDamageReceived(_attacker, _skill, _hitInfo, p);
 		local dmgMult = p.DamageReceivedTotalMult;
 
 		if (_skill != null)
-		{
 			dmgMult = dmgMult * (_skill.isRanged() ? p.DamageReceivedRangedMult : p.DamageReceivedMeleeMult);
-		}
 
 		_hitInfo.DamageRegular -= p.DamageRegularReduction;
 		_hitInfo.DamageArmor -= p.DamageArmorReduction;
@@ -259,6 +271,7 @@
 						if (this.isPlayerControlled() || !this.isHiddenToPlayer())
 						{
 							::Z.Log.damage_body(this, ::Const.Strings.BodyPartName[_hitInfo.BodyPart], this.m.Hitpoints, prev_hitpoints, damage);
+							::Z.Log.reflex_trigger(reflex_status);
 							::Z.Log.suffer_injury(this, injury.getNameOnly());
 						}
 
@@ -276,12 +289,14 @@
 					if (damage > 0 && !this.isHiddenToPlayer())
 					{
 						::Z.Log.damage_body(this, ::Const.Strings.BodyPartName[_hitInfo.BodyPart], this.m.Hitpoints, prev_hitpoints, damage);
+						::Z.Log.reflex_trigger(reflex_status);
 					}
 				}
 			}
 			else if (damage > 0 && !this.isHiddenToPlayer())
 			{
 				::Z.Log.damage_body(this, ::Const.Strings.BodyPartName[_hitInfo.BodyPart], this.m.Hitpoints, prev_hitpoints, damage);
+				::Z.Log.reflex_trigger(reflex_status);
 			}
 
 			if (this.m.MoraleState != ::Const.MoraleState.Ignore && damage >= ::Const.Morale.OnHitMinDamage && this.getCurrentProperties().IsAffectedByLosingHitpoints)
@@ -801,7 +816,7 @@
 		return d;
 	}
 
-	o.resetPerks <- function ()
+	o.resetPerks <- function()
 	{
 		local perks = 0;
 		local skills = this.getSkills();
@@ -845,6 +860,139 @@
 		perks = perks - nonRefundable.len();
 		this.m.PerkPoints = perks;
 	};
+
+	o.hasRangedWeapon = function( _trueRangedOnly = false )
+	{
+		local items = [];
+		local mainhand = this.m.Items.getItemAtSlot(this.Const.ItemSlot.Mainhand);
+
+		if (mainhand != null)
+		{
+			items.push(mainhand);
+		}
+
+		local bags = this.m.Items.getAllItemsAtSlot(this.Const.ItemSlot.Bag);
+
+		if (bags.len() != 0)
+		{
+			items.extend(bags);
+		}
+
+		if (items.len() == 0)
+		{
+			return false;
+		}
+
+		foreach( it in items )
+		{
+			if (it.isItemType(this.Const.Items.ItemType.RangedWeapon) && (!_trueRangedOnly || this.Math.min(it.getRangeMax(), this.m.CurrentProperties.getVision()) >= 6 && ::B.Lib.get_ranged_details(this).is_ranged_focus ))
+			{
+				if (it.getAmmoMax() == 0 && it.getAmmoID() == "")
+				{
+					return true;
+				}
+				else if (it.getAmmoMax() == 0)
+				{
+					local ammo = this.m.Items.getItemAtSlot(this.Const.ItemSlot.Ammo);
+
+					if (ammo != null && ammo.getID() == it.getAmmoID() && ammo.getAmmo() > 0)
+					{
+						return true;
+					}
+
+					foreach( ammo in bags )
+					{
+						if (ammo != null && ammo.getID() == it.getAmmoID() && ammo.getAmmo() > 0)
+						{
+							return true;
+						}
+					}
+				}
+				else if (it.getAmmo() > 0)
+				{
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	o.getRangedWeaponInfo = function()
+	{
+		local items = [];
+		local result = {
+			HasRangedWeapon = false,
+			IsTrueRangedWeapon = false,
+			Range = 0,
+			RangeWithLevel = 0
+		};
+		local mainhand = this.m.Items.getItemAtSlot(this.Const.ItemSlot.Mainhand);
+
+		if (mainhand != null)
+		{
+			items.push(mainhand);
+		}
+
+		local bags = this.m.Items.getAllItemsAtSlot(this.Const.ItemSlot.Bag);
+
+		if (bags.len() != 0)
+		{
+			items.extend(bags);
+		}
+
+		if (items.len() == 0)
+		{
+			return result;
+		}
+
+		foreach( it in items )
+		{
+			if (it.isItemType(this.Const.Items.ItemType.RangedWeapon))
+			{
+				local isViable = false;
+
+				if (it.getAmmoMax() == 0 && it.getAmmoID() == "")
+				{
+					isViable = true;
+				}
+				else if (it.getAmmo() > 0)
+				{
+					isViable = true;
+				}
+				else if (it.getAmmoMax() == 0)
+				{
+					local ammo = this.m.Items.getItemAtSlot(this.Const.ItemSlot.Ammo);
+
+					if (ammo != null && ammo.getID() == it.getAmmoID() && ammo.getAmmo() > 0)
+					{
+						isViable = true;
+					}
+
+					foreach( ammo in bags )
+					{
+						if (ammo != null && ammo.getID() == it.getAmmoID() && ammo.getAmmo() > 0)
+						{
+							isViable = true;
+						}
+					}
+				}
+
+				if (isViable)
+				{
+					result.HasRangedWeapon = true;
+					local range = this.Math.min(it.getRangeEffective() + it.getAdditionalRange(this), this.m.CurrentProperties.getVision());
+
+					if (range >= 6 && ::B.Lib.get_ranged_details(this).is_ranged_focus) result.IsTrueRangedWeapon = true;
+
+					result.Range = this.Math.max(result.Range, range);
+					result.RangeWithLevel = this.Math.max(result.RangeWithLevel, range + this.Math.min(it.getRangeMaxBonus(), this.getTile().Level));
+				}
+			}
+		}
+
+		return result;
+	}
 
 
 });

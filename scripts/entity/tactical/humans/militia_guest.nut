@@ -292,7 +292,7 @@ this.militia_guest <- this.inherit("scripts/entity/tactical/player", {
 				break;
 
 				case "Ranged Skill":
-				::B.Lib.level_ranged_skill(this, stat[1], stat[2], stat[3]);
+				::B.Lib.level_strength(this, stat[1], stat[2], stat[3]);
 				break;
 
 				case "Melee Defense":

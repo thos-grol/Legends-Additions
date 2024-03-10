@@ -7,16 +7,6 @@
 	o.onUpdateDraftList = function( _draftList, _gender = null )
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-		_draftList.push("sellsword_background");
-		_draftList.push("sellsword_background");
-		_draftList.push("sellsword_background");
-		_draftList.push("sellsword_background");
-		_draftList.push("sellsword_background");
-		_draftList.push("sellsword_background");
-		_draftList.push("hedge_knight_background");
-		_draftList.push("hedge_knight_background");
-		_draftList.push("swordmaster_background");
-		_draftList.push("legend_master_archer_background");
 		_draftList.push("retired_soldier_background");
 		_draftList.push("retired_soldier_background");
 		_draftList.push("retired_soldier_background");
@@ -38,7 +28,6 @@
 			_draftList.push("adventurous_noble_background");
 			_draftList.push("female_adventurous_noble_background");
 			_draftList.push("female_adventurous_noble_background");
-			_draftList.push("hedge_knight_background");
 		}
 	}
 

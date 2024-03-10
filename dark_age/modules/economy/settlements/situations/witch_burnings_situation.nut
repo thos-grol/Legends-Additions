@@ -14,42 +14,7 @@
 	o.onUpdateDraftList = function( _draftList, _gender = null )
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-		//_draftList.push("witchhunter_background");
-
-		if (_gender)
-		{
-			_draftList.push("legend_nun_background");
-		}
-
-		if (this.LegendsMod.Configs().LegendMagicEnabled())
-		{
-			_draftList.push("legend_witch_background");
-			_draftList.push("legend_spiritualist_background");
-			_draftList.push("legend_diviner_background");
-			_draftList.push("legend_entrancer_background");
-		}
+		_draftList.push("historian_background");
 	}
 
 });

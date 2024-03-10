@@ -77,7 +77,7 @@ this.legend_barbarian_vs_shieldmaiden <- this.inherit("scripts/events/event", {
 						{
 							id = 16,
 							icon = "ui/icons/melee_skill.png",
-							text = _event.m.Barbarian.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+							text = _event.m.Barbarian.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Skill"
 						},
 						{
 							id = 10,

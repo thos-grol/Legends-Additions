@@ -145,7 +145,6 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 	{
 		local user = _tag.User;
 		local targets = _tag.Targets;
-		local attackSkill = user.getCurrentProperties().getRangedSkill();
 
 		foreach( t in targets )
 		{
@@ -250,7 +249,7 @@ this.fire_handgonne_skill <- this.inherit("scripts/skills/skill", {
 	{
 		if (_skill == this)
 		{
-			_properties.RangedSkill += this.m.AdditionalAccuracy;
+			_properties.MeleeSkill += this.m.AdditionalAccuracy;
 			_properties.HitChanceAdditionalWithEachTile += this.m.AdditionalHitChance;
 		}
 	}

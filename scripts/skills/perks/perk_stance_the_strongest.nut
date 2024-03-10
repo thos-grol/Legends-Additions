@@ -46,6 +46,7 @@ this.perk_stance_the_strongest <- this.inherit("scripts/skills/skill", {
 			this.m.Immunity = false;
 			return;
 		}
+		if (!_skill.m.IsAttack) return;
 
 		local actor = this.getContainer().getActor();
 		this.m.Active = false;

@@ -18,11 +18,9 @@
 		_list.push("farmhand_background");
 		_list.push("farmhand_background");
 		_list.push("farmhand_background");
-		_list.push("shepherd_background");
-		_list.push("shepherd_background");
-		_list.push("shepherd_background");
 
-		
+
+
 	}
 
 	o.onUpdateShopList = function( _id, _list )

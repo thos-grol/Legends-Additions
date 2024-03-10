@@ -8,9 +8,7 @@
 	{
 		if (!this.isActive()) return;
 		_list.push("apprentice_background");
-		_list.push("caravan_hand_background");
 		//_list.push("tailor_background");
-		_list.push("shepherd_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )
@@ -22,7 +20,7 @@
 					R = 0,
 					P = 1.0,
 					S = "trade/cloth_rolls_item"
-				});	
+				});
 				_list.push({
 					R = 10,
 					P = 1.0,

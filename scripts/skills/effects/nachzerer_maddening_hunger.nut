@@ -43,7 +43,7 @@ this.mark_of_decay <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Melee Skill"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Skill"
 			},
 			{
 				id = 7,

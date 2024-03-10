@@ -46,7 +46,7 @@ this.anatomist_helps_blighted_guy_2_event <- this.inherit("scripts/events/event"
 				_event.m.MilitiaCaptain.getBaseProperties().MeleeDefense += 4;
 				_event.m.MilitiaCaptain.getBaseProperties().RangedDefense += 4;
 				_event.m.MilitiaCaptain.getBaseProperties().MeleeSkill += 8;
-				_event.m.MilitiaCaptain.getBaseProperties().RangedSkill += 7;
+				// _event.m.MilitiaCaptain.getBaseProperties().RangedSkill += 7;
 				_event.m.MilitiaCaptain.getBaseProperties().Stamina += 3;
 				_event.m.MilitiaCaptain.getBaseProperties().Initiative += 6;
 				_event.m.MilitiaCaptain.getBaseProperties().Bravery += 12;
@@ -65,7 +65,7 @@ this.anatomist_helps_blighted_guy_2_event <- this.inherit("scripts/events/event"
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+8[/color] Melee Skill"
+					text = _event.m.MilitiaCaptain.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+8[/color] Skill"
 				});
 				this.List.push({
 					id = 16,

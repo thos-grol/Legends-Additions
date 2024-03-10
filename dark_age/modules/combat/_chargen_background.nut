@@ -1,4 +1,4 @@
-::mods_hookExactClass("skills/backgrounds/character_background", function (o){ 
+::mods_hookExactClass("skills/backgrounds/character_background", function (o){
     o.m.PerkTreeDynamicMins = {
         Weapon = 0,
         Defense = 2,
@@ -84,6 +84,282 @@
 		text = text + this.getPerkTreeGroupDescription(_tree.Class, "Is skilled in");
 		return text;
 	}
+
+	o.buildAttributes = function( _tag = null, _attrs = null )
+	{
+		local a = [];
+
+		if (_tag == "zombie")
+		{
+			a = {
+				Hitpoints = [
+					65,
+					75
+				],
+				Bravery = [
+					30,
+					40
+				],
+				Stamina = [
+					90,
+					100
+				],
+				MeleeSkill = [
+					42,
+					52
+				],
+				RangedSkill = [
+					27,
+					37
+				],
+				MeleeDefense = [
+					0,
+					0
+				],
+				RangedDefense = [
+					0,
+					0
+				],
+				Initiative = [
+					85,
+					95
+				]
+			};
+		}
+		else if (_tag == "skeleton")
+		{
+			a = {
+				Hitpoints = [
+					50,
+					60
+				],
+				Bravery = [
+					30,
+					40
+				],
+				Stamina = [
+					90,
+					100
+				],
+				MeleeSkill = [
+					42,
+					52
+				],
+				RangedSkill = [
+					27,
+					37
+				],
+				MeleeDefense = [
+					0,
+					5
+				],
+				RangedDefense = [
+					0,
+					5
+				],
+				Initiative = [
+					90,
+					100
+				]
+			};
+		}
+		else
+		{
+			a = {
+				//Vitality
+				Hitpoints = [
+					50,
+					50
+				],
+				//Will
+				Bravery = [
+					50,
+					50
+				],
+				//Endurance
+				Stamina = [
+					100,
+					100
+				],
+				//Attack
+				MeleeSkill = [
+					50,
+					50
+				],
+				//Strength
+				RangedSkill = [
+					10,
+					10
+				],
+				//Defense
+				MeleeDefense = [
+					10,
+					10
+				],
+				//Reflex
+				RangedDefense = [
+					10,
+					10
+				],
+				//Agility
+				Initiative = [
+					100,
+					100
+				]
+			};
+		}
+
+		local c = this.onChangeAttributes();
+		a.Hitpoints[0] += c.Hitpoints[0];
+		a.Hitpoints[1] += c.Hitpoints[1];
+		a.Bravery[0] += c.Bravery[0];
+		a.Bravery[1] += c.Bravery[1];
+		a.Stamina[0] += c.Stamina[0];
+		a.Stamina[1] += c.Stamina[1];
+		a.MeleeSkill[0] += c.MeleeSkill[0];
+		a.MeleeSkill[1] += c.MeleeSkill[1];
+		a.MeleeDefense[0] += c.MeleeDefense[0];
+		a.MeleeDefense[1] += c.MeleeDefense[1];
+		a.RangedSkill[0] += c.RangedSkill[0];
+		a.RangedSkill[1] += c.RangedSkill[1];
+		a.RangedDefense[0] += c.RangedDefense[0];
+		a.RangedDefense[1] += c.RangedDefense[1];
+		a.Initiative[0] += c.Initiative[0];
+		a.Initiative[1] += c.Initiative[1];
+
+		if (_attrs != null)
+		{
+			a.Hitpoints[0] += _attrs.Hitpoints[0];
+			a.Hitpoints[1] += _attrs.Hitpoints[1];
+			a.Bravery[0] += _attrs.Bravery[0];
+			a.Bravery[1] += _attrs.Bravery[1];
+			a.Stamina[0] += _attrs.Stamina[0];
+			a.Stamina[1] += _attrs.Stamina[1];
+			a.MeleeSkill[0] += _attrs.MeleeSkill[0];
+			a.MeleeSkill[1] += _attrs.MeleeSkill[1];
+			a.MeleeDefense[0] += _attrs.MeleeDefense[0];
+			a.MeleeDefense[1] += _attrs.MeleeDefense[1];
+			a.RangedSkill[0] += _attrs.RangedSkill[0];
+			a.RangedSkill[1] += _attrs.RangedSkill[1];
+			a.RangedDefense[0] += _attrs.RangedDefense[0];
+			a.RangedDefense[1] += _attrs.RangedDefense[1];
+			a.Initiative[0] += _attrs.Initiative[0];
+			a.Initiative[1] += _attrs.Initiative[1];
+		}
+
+		local b = this.getContainer().getActor().getBaseProperties();
+		b.ActionPoints = 9;
+		local Hitpoints1 = this.Math.rand(a.Hitpoints[0], a.Hitpoints[1]);
+		local Bravery1 = this.Math.rand(a.Bravery[0], a.Bravery[1]);
+		local Stamina1 = this.Math.rand(a.Stamina[0], a.Stamina[1]);
+		local MeleeSkill1 = this.Math.rand(a.MeleeSkill[0], a.MeleeSkill[1]);
+		local RangedSkill1 = this.Math.rand(a.RangedSkill[0], a.RangedSkill[1]);
+		local MeleeDefense1 = this.Math.rand(a.MeleeDefense[0], a.MeleeDefense[1]);
+		local RangedDefense1 = this.Math.rand(a.RangedDefense[0], a.RangedDefense[1]);
+		local Initiative1 = this.Math.rand(a.Initiative[0], a.Initiative[1]);
+		local Hitpoints2 = this.Math.rand(a.Hitpoints[0], a.Hitpoints[1]);
+		local Bravery2 = this.Math.rand(a.Bravery[0], a.Bravery[1]);
+		local Stamina2 = this.Math.rand(a.Stamina[0], a.Stamina[1]);
+		local MeleeSkill2 = this.Math.rand(a.MeleeSkill[0], a.MeleeSkill[1]);
+		local RangedSkill2 = this.Math.rand(a.RangedSkill[0], a.RangedSkill[1]);
+		local MeleeDefense2 = this.Math.rand(a.MeleeDefense[0], a.MeleeDefense[1]);
+		local RangedDefense2 = this.Math.rand(a.RangedDefense[0], a.RangedDefense[1]);
+		local Initiative2 = this.Math.rand(a.Initiative[0], a.Initiative[1]);
+		local HitpointsAvg = this.Math.round((Hitpoints1 + Hitpoints2) / 2);
+		local BraveryAvg = this.Math.round((Bravery1 + Bravery2) / 2);
+		local StaminaAvg = this.Math.round((Stamina1 + Stamina2) / 2);
+		local MeleeSkillAvg = this.Math.round((MeleeSkill1 + MeleeSkill2) / 2);
+		local RangedSkillAvg = this.Math.round((RangedSkill1 + RangedSkill2) / 2);
+		local MeleeDefenseAvg = this.Math.round((MeleeDefense1 + MeleeDefense2) / 2);
+		local RangedDefenseAvg = this.Math.round((RangedDefense1 + RangedDefense2) / 2);
+		local InitiativeAvg = this.Math.round((Initiative1 + Initiative2) / 2);
+		b.Hitpoints = HitpointsAvg;
+		b.Bravery = BraveryAvg;
+		b.Stamina = StaminaAvg;
+		b.MeleeSkill = MeleeSkillAvg;
+		b.RangedSkill = RangedSkillAvg;
+		b.MeleeDefense = MeleeDefenseAvg;
+		b.RangedDefense = RangedDefenseAvg;
+		b.Initiative = InitiativeAvg;
+		this.getContainer().getActor().m.CurrentProperties = clone b;
+		this.getContainer().getActor().setHitpoints(b.Hitpoints);
+		local weighted = [];
+
+		if (a.Hitpoints[1] == a.Hitpoints[0])
+		{
+			weighted.push(50);
+		}
+		else
+		{
+			weighted.push(this.Math.floor((b.Hitpoints - a.Hitpoints[0]) * 100.0 / (a.Hitpoints[1] - a.Hitpoints[0])));
+		}
+
+		if (a.Bravery[1] == a.Bravery[0])
+		{
+			weighted.push(50);
+		}
+		else
+		{
+			weighted.push(this.Math.floor((b.Bravery - a.Bravery[0]) * 100.0 / (a.Bravery[1] - a.Bravery[0])));
+		}
+
+		if (a.Stamina[1] == a.Stamina[0])
+		{
+			weighted.push(50);
+		}
+		else
+		{
+			weighted.push(this.Math.floor((b.Stamina - a.Stamina[0]) * 100.0 / (a.Stamina[1] - a.Stamina[0])));
+		}
+
+		if (a.MeleeSkill[1] == a.MeleeSkill[0])
+		{
+			weighted.push(50);
+		}
+		else
+		{
+			weighted.push(this.Math.floor((b.MeleeSkill - a.MeleeSkill[0]) * 100.0 / (a.MeleeSkill[1] - a.MeleeSkill[0])));
+		}
+
+		if (a.RangedSkill[1] == a.RangedSkill[0])
+		{
+			weighted.push(50);
+		}
+		else
+		{
+			weighted.push(this.Math.floor((b.RangedSkill - a.RangedSkill[0]) * 100.0 / (a.RangedSkill[1] - a.RangedSkill[0])));
+		}
+
+		if (a.MeleeDefense[1] == a.MeleeDefense[0])
+		{
+			weighted.push(50);
+		}
+		else
+		{
+			weighted.push(this.Math.floor((b.MeleeDefense - a.MeleeDefense[0]) * 100.0 / (a.MeleeDefense[1] - a.MeleeDefense[0])));
+		}
+
+		if (a.RangedDefense[1] == a.RangedDefense[0])
+		{
+			weighted.push(50);
+		}
+		else
+		{
+			weighted.push(this.Math.floor((b.RangedDefense - a.RangedDefense[0]) * 100.0 / (a.RangedDefense[1] - a.RangedDefense[0])));
+		}
+
+		if (a.Initiative[1] == a.Initiative[0])
+		{
+			weighted.push(50);
+		}
+		else
+		{
+			weighted.push(this.Math.floor((b.Initiative - a.Initiative[0]) * 100.0 / (a.Initiative[1] - a.Initiative[0])));
+		}
+
+		return weighted;
+	}
+
 });
 
 

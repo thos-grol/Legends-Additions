@@ -111,67 +111,65 @@
 		this.m.DraftLists = [
 			[
 				"beggar_background",
-				"cultist_background",
-				"cultist_background",
+				
+				
 				"daytaler_background",
 				"daytaler_background",
 
 				"poacher_background",
 				"poacher_background",
-				"ratcatcher_background",
-				"ratcatcher_background",
-				"vagabond_background",
+				
+				
+
 				"wildman_background",
 
-				"cultist_background",
-				"cultist_background",
+				
+				
 
 				"poacher_background",
 				"poacher_background",
-				"ratcatcher_background",
-				"ratcatcher_background",
-				"vagabond_background",
+				
+				
+
 				"wildman_background",
 				"wildman_background",
 			],
 			[
 				"beggar_background",
 				"beggar_background",
-				"cultist_background",
-				"cultist_background",
+				
+				
 				"daytaler_background",
 				"daytaler_background",
 
 				"graverobber_background",
-				"historian_background",
 				"killer_on_the_run_background",
 				"militia_background",
 				"militia_background",
 				"poacher_background",
 				"poacher_background",
-				"ratcatcher_background",
-				"ratcatcher_background",
+				
+				
 				"thief_background",
-				"vagabond_background",
+
 				"wildman_background",
 
 
 				"adventurous_noble_background",
 				"disowned_noble_background",
 				"cripple_background",
-				"cultist_background",
-				"cultist_background",
+				
+				
 
 				"graverobber_background",
-				"historian_background",
 				"killer_on_the_run_background",
 				"militia_background",
 				"militia_background",
 				"poacher_background",
 				"poacher_background",
-				"ratcatcher_background",
-				"ratcatcher_background",
-				"vagabond_background",
+				
+				
+
 				"wildman_background",
 				"wildman_background",
 
@@ -180,19 +178,18 @@
 			],
 			[
 				"brawler_background",
-				"caravan_hand_background",
-				"gambler_background",
-				"cultist_background",
-				"cultist_background",
+
+
+				
+				
 				"daytaler_background",
 
 
-				"gravedigger_background",
+				
 				"graverobber_background",
-				"historian_background",
 				"juggler_background",
 				"killer_on_the_run_background",
-				"messenger_background",
+
 				"militia_background",
 				"militia_background",
 				"militia_background",
@@ -200,11 +197,11 @@
 
 
 				"poacher_background",
-				"ratcatcher_background",
-				"ratcatcher_background",
-				"ratcatcher_background",
+				
+				
+				
 				"refugee_background",
-				"vagabond_background",
+
 				"wildman_background",
 				"wildman_background",
 
@@ -212,10 +209,9 @@
 				"adventurous_noble_background",
 				"bastard_background",
 				"retired_soldier_background",
-				"sellsword_background",
+
 
 				"cripple_background",
-				"eunuch_background",
 
 			]
 		];

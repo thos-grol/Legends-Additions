@@ -97,162 +97,148 @@
 				"fisherman_background",
 				"fisherman_background",
 
-				"messenger_background",
+
 				"militia_background",
 				"militia_background",
-				"ratcatcher_background",
+
 
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
-				"raider_background",
-				"raider_background",
+
 				"retired_soldier_background",
 				"fisherman_background",
 				"fisherman_background",
 
-				"messenger_background",
+
 				"militia_background",
 				"militia_background",
-				"ratcatcher_background",
+
 
 				"bastard_background",
 				"deserter_background",
-				"raider_background",
-				"raider_background",
+
 				"retired_soldier_background"
 			],
 			[
 				"apprentice_background",
-				"caravan_hand_background",
-				"gambler_background",
+
+
 				"daytaler_background",
 				"fisherman_background",
 				"fisherman_background",
 				"fisherman_background",
-				"gravedigger_background",
-				"historian_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"militia_background",
 
 
-				"ratcatcher_background",
-				"servant_background",
-				"vagabond_background",
+
+
+
 
 				"adventurous_noble_background",
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
-				"raider_background",
-				"raider_background",
+
 				"retired_soldier_background",
-				"sellsword_background",
+
 				"apprentice_background",
-				"caravan_hand_background",
-				"gambler_background",
+
+
 				"fisherman_background",
 				"fisherman_background",
 				"fisherman_background",
-				"gravedigger_background",
-				"historian_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"militia_background",
 
 
-				"ratcatcher_background",
-				"vagabond_background",
+
+
 
 				"bastard_background",
 				"deserter_background",
-				"raider_background",
-				"raider_background",
+
 				"retired_soldier_background",
-				"sellsword_background",
+
 			],
 			[
 				"apprentice_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
-				"gambler_background",
+
+
+
 				"daytaler_background",
 				"fisherman_background",
 				"fisherman_background",
-				"gravedigger_background",
-				"historian_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"militia_background",
 
-				"ratcatcher_background",
+
 				"refugee_background",
-				"servant_background",
-				"vagabond_background",
+
+
 
 				"adventurous_noble_background",
 				"adventurous_noble_background",
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
-				"raider_background",
-				"raider_background",
-				"raider_background",
+
 				"retired_soldier_background",
 				"retired_soldier_background",
-				"sellsword_background",
-				
+
+
 				"cripple_background",
-				"eunuch_background",
 				"apprentice_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
-				"gambler_background",
+
+
+
 				"fisherman_background",
 				"fisherman_background",
-				"gravedigger_background",
-				"historian_background",
-				"messenger_background",
+
+
 				"militia_background",
 				"militia_background",
 
-				"ratcatcher_background",
+
 				"refugee_background",
-				"vagabond_background",
+
 
 				"bastard_background",
 				"deserter_background",
 				"deserter_background",
-				"raider_background",
-				"raider_background",
-				"raider_background",
+
 				"retired_soldier_background",
 				"retired_soldier_background",
-				"sellsword_background",
-				
+
+
 
 				"cripple_background",
-				"eunuch_background"
 			]
 		];
 		this.m.FemaleDraftLists = [
 			[
-				
-				
+
+
 				"female_adventurous_noble_background"
 			],
 			[
-				
-				
+
+
 				"female_adventurous_noble_background",
 				"female_adventurous_noble_background"
 			],
 			[
-				
-				
+
+
 				"female_adventurous_noble_background",
 				"female_adventurous_noble_background"
 			]

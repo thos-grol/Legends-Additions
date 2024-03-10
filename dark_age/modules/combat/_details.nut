@@ -14,7 +14,7 @@
 		this.m.IsActive = false;
 		this.m.IsHidden = false;
 		this.m.IsSerialized = false;
-		this.m.IsStacking = true;
+		this.m.IsStacking = false;
 	}
 
     o.getDescription <- function()
@@ -719,8 +719,8 @@
 
 	o.onUpdate = function( _properties )
 	{
-
 		local actor = this.getContainer().getActor();
+
 		if (actor.getFaction() != ::Const.Faction.Player) return;
 		if (this.getContainer().getActor().getLevel() >= 10) _properties.XPGainMult *= 0;
 
@@ -730,34 +730,46 @@
 
 		switch(mood)
 		{
-		case ::Const.MoodState.Neutral:
-			this.m.Icon = "skills/status_effect_64.png";
-			break;
+			case ::Const.MoodState.Neutral:
+				this.m.Icon = "skills/status_effect_64.png";
+				break;
 
-		case ::Const.MoodState.Concerned:
-			this.m.Icon = "skills/status_effect_46.png";
-			break;
+			case ::Const.MoodState.Concerned:
+				this.m.Icon = "skills/status_effect_46.png";
+				break;
 
-		case ::Const.MoodState.Disgruntled:
-			this.m.Icon = "skills/status_effect_45.png";
-			break;
+			case ::Const.MoodState.Disgruntled:
+				this.m.Icon = "skills/status_effect_45.png";
+				break;
 
-		case ::Const.MoodState.Angry:
-			this.m.Icon = "skills/status_effect_44.png";
-			break;
+			case ::Const.MoodState.Angry:
+				this.m.Icon = "skills/status_effect_44.png";
+				break;
 
-		case ::Const.MoodState.InGoodSpirit:
-			this.m.Icon = "skills/status_effect_47.png";
-			break;
+			case ::Const.MoodState.InGoodSpirit:
+				this.m.Icon = "skills/status_effect_47.png";
+				break;
 
-		case ::Const.MoodState.Eager:
-			this.m.Icon = "skills/status_effect_48.png";
-			break;
+			case ::Const.MoodState.Eager:
+				this.m.Icon = "skills/status_effect_48.png";
+				break;
 
-		case ::Const.MoodState.Euphoric:
-			this.m.Icon = "skills/status_effect_49.png";
-			break;
+			case ::Const.MoodState.Euphoric:
+				this.m.Icon = "skills/status_effect_49.png";
+				break;
 		}
+	}
+
+	o.onAnySkillUsed <- function ( _skill, _targetEntity, _properties )
+	{
+		if (_targetEntity == null) return;
+		if (!_skill.m.IsWeaponSkill
+			&& _skill.m.ID != "actives.hand_to_hand"
+		) return;
+
+		local actor = this.getContainer().getActor();
+		_properties.DamageRegularMult *= 1.0 + _properties.RangedSkill / 100.0;
+		_properties.DamageArmorMult *= 1.0 + _properties.RangedSkill / 100.0;
 	}
 
 

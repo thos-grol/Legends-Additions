@@ -43,7 +43,7 @@ this.legend_warrior_vs_footsoldier_event <- this.inherit("scripts/events/event",
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.noble1h.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Melee Skill"
+					text = _event.m.noble1h.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + meleeSkill + "[/color] Skill"
 				});
 				_event.m.noble2h.improveMood(1.0, "Bonded with " + _event.m.noble1h.getName());
 				this.List.push({

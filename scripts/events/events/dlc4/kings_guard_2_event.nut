@@ -66,7 +66,7 @@ this.kings_guard_2_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Dude.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+12[/color] Melee Skill"
+					text = _event.m.Dude.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+12[/color] Skill"
 				});
 				this.List.push({
 					id = 16,

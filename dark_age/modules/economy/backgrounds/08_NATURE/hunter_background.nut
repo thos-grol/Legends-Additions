@@ -31,7 +31,7 @@
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Gains bow proficiency faster (+10 chance)"
+			text = "Gains ranged proficiency faster (+10 chance)"
 		});
 		return ret;
 	}
@@ -70,6 +70,47 @@
 				"hood"
 			]
 		]));
+
+		this.m.Container.add(::new("scripts/skills/traits/_ranged_focus"));
+	}
+
+	o.onChangeAttributes <- function()
+	{
+		local c = {
+			Hitpoints = [
+				0,
+				0
+			],
+			Bravery = [
+				0,
+				0
+			],
+			Stamina = [
+				0,
+				0
+			],
+			MeleeSkill = [
+				0,
+				0
+			],
+			RangedSkill = [
+				0,
+				0
+			],
+			MeleeDefense = [
+				0,
+				0
+			],
+			RangedDefense = [
+				0,
+				0
+			],
+			Initiative = [
+				0,
+				0
+			]
+		};
+		return c;
 	}
 
 });

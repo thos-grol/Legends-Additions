@@ -65,6 +65,117 @@ features
 
 bugs
 - fixed caravan freezes by making new caravan generation system
+2.0 - Major Update
+
+//TODO: Updated to legends 18.2.X
+//TODO: rename stats and change stat descriptions
+//TODO: test ranged skill modification
+
+stat changes
+- All stats are planned to have more uses in the future - reaching certain thresholds will transform/improve the character and their skills
+
+- merged Melee Skill and Ranged Skill into Attack. All units have 100% of skill into melee attacks and 50% into ranged attacks by default. This frees up a stat slot to display
+    - Ranged focus backgrounds will have the "Ranged Focus Trait" that reverses this. Ranged Proficiency will change the conversion to 75% or the highest number.
+    - changed skills, effects, and injuries to reflect this
+
+- TODO: merged Melee Defense and Ranged Defense into one skill. Warriors are probably better at dodging melee strikes than arrows. Ranged Defense will be 75% of Melee Defense
+- implemented strength stat - every point is 1% of increased damage.
+- implemented reflex stat - every point is 1% chance to downgrade a critical hit (head hit) to a body hit or a body hit to a graze (10% damage)
+
+TODO: change stat display
+
+- standardized background strengths and weakened enemy strengths to reflect this: stat rolling has been removed from backgrounds and trait trees. This should make the game feel better even with your shit peasant recruits. Now stat rng depends only the traits a character recieves. The background has uses unrolled stats as a baseline. EVERYTHING in the game will now be balanced around the daytaler's stats. This should be more logical and organized:
+
+    Hitpoints -> Vitality - Concerning the strength of life of the character. Base 50.
+    Fatigue -> Endurance - Concerning the character's ability to endure in battle. Base 100.
+    Resolve -> Will - Concerining the character's strength of will, can be used in magic checks. Affects morale changes. Base 50.
+    Initiative -> Agility - Concerning the character's speed.
+
+    Attack - Character's ability to attack. Base 50
+    Defense - Character's ability to defend. Base 10.
+    Strength (new stat) - Concerning the damage the character can do. Each point adds 1% damage to relevant attacks. Base 10.
+    Reflex - Concerning the character's ability to react. Each point has a 1% chance to downgrade a critical hit (headshot) to a bodyshot. And a hit to a graze. (10% of damage).
+
+Enemies
+- All humans and monsters have been rebalanced to the above standards as a guideline. Note that monsters will be way beyond human strength
+
+
+backgrounds
+
+- TODO: redo each background
+- TODO: review traits
+
+- TODO: Modified backgrounds so that they will have a theme, and generally if they have a great benefit, there will be a tradeoffs:
+    - daytaler: no downsides, but no upsides
+    - refugee: just a daytaler with different events and traits
+    - slave: just a daytaler with no wages and different traits
+    - apprentice: daytaler with different traits
+
+    - brawler: Fist Affinity
+    - butcher: Cleaver Affinity
+    - farmhand: Polearm Affinity
+    - lumberjack: Axe Affinity
+    - miner: Bludgeon Affinity
+
+    - beggar: -10 Vitality, -20 Endurance. Cheaper pay
+    - cripple: +20 Will. Permanent injury.
+
+    - thief: -10 Vitality. +5 Reflex, +20 Agility
+    - Graverobber: Spooky Events.
+    - Killer on the run: +10 Atk, +10 Reflex
+    - poacher: +20 Endurance. ranged focus.
+
+    rarer backgrounds
+
+    - fisherman: Net Skill Tree. More expensive. (has a chance to be found in harbors)
+    - hunter: ranged focus. +10 atk. ranged affinity
+    - wildman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
+    - wildwoman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
+
+    - bastard:
+    - disowned_noble:
+    - historian: -10 Vitality, -20 Fatigue, -10 Reflex. Always Bright. No athletic traits
+
+    - adventurous noble:
+    - militia:
+    - retired soldier:
+
+
+- changed recruiting rules to be more of a event draw format to synergize:
+    - you will only pick from 3 at base (recruiter will change this to 4)
+    - some towns will not have any recruits by chance
+    - hiring a recruit will dismiss the other choices
+    - removed high tier backgrounds from recruiting
+    - removed redundant backgrounds ie. miller
+
+weapon changes
+- TODO: merged spear and polearm weapon classes together. and rebalanced their logic.
+    - Pure Polearms can attack at 3 tile range while spear can attack at 2 tile range.
+    - Moved polearm hybrids to their main class ie. they will be axe/polearm for example. These hybrids will attack at 2 tile range.
+
+- Increase all ranged weapon maximum range by 1
+
+
+
+//TODO:bug fixes
+- fixed Ambidextrous Perk having infinite attacks with Taunt
+- fixed crack the whip crash with barb direwolfs
+- you can't parry magic anymore
+
+2) Weakness (applied by cleavers) have the wrong formula for damage reduction, it practically reduces damage to 0
+4) Death dealer does not reduce fat costs of aoe skills, most likely the same is true for Wrath (haven't actually tried the latter yet). This is because skills reset their fat cost after these perks change it and they do not consider these perks at all
+6) Librarian drop is seemingly unchanged from base legends, this might result in the player getting items which were supposed to be removed
+1) Crossbows claim an armor ignore percent of 75%, while in reality shoot bolt and shoot heavy bolt only has 45% and 50% ignore respectively (being a sharpshooter, whatever that means, stealthily adds another 5%)
+
+2) Polearm mastery (proficiency) does not reduce the ap cost of most polearm skills, as far as I can tell only the skills of pure polearms (so not spetums which are spear/polearm) and for some reason the primary attack of the longaxe
+
+3) Crafting possibly not working (see Mage of Winter potion)
+
+
+
+1.16
+bugs
+- trying to eliminate freezes
 - tried to fix zombies ressurecting naturally as abominations, that should only be possible with reanimation skill
 
 economy

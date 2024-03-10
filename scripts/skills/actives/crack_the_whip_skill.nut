@@ -33,7 +33,7 @@ this.crack_the_whip_skill <- this.inherit("scripts/skills/skill", {
 	{
 		if (this.m.IsUsed) return false;
 		if (!this.skill.isUsable() || this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions())) return false;
-		
+
 		local actors = this.Tactical.Entities.getInstancesOfFaction(this.getContainer().getActor().getFaction());
 		foreach( a in actors )
 		{
@@ -50,7 +50,7 @@ this.crack_the_whip_skill <- this.inherit("scripts/skills/skill", {
 
 		foreach( a in actors )
 		{
-			if (a.getType() != ::Const.EntityType.FrenziedDirewolf ) continue;
+			if (a.getType() != ::Const.EntityType.Direwolf ) continue;
 			a.setWhipped(true);
 			this.spawnIcon("status_effect_106", a.getTile());
 		}

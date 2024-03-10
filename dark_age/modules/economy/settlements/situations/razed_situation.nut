@@ -18,7 +18,6 @@
 		_draftList.push("cripple_background");
 		_draftList.push("cripple_background");
 		_draftList.push("graverobber_background");
-		_draftList.push("raider_background");
 
 		if (this.World.Assets.getOrigin().getID() == "scenario.legends_necro")
 		{

@@ -109,7 +109,7 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 				break;
 			}
 
-			_properties.RangedSkill += this.m.AdditionalAccuracy;
+			_properties.MeleeSkill += this.m.AdditionalAccuracy;
 			_properties.HitChanceAdditionalWithEachTile += this.m.AdditionalHitChance;
 
 			if (_properties.IsSharpshooter)
@@ -124,16 +124,16 @@ this.legend_throw_knife <- this.inherit("scripts/skills/skill", {
 
 				if (weapon != null && !weapon.isItemType(::Const.Items.ItemType.RangedWeapon))
 				{
-					local bonus = ::Math.floor(baseProperties.getRangedSkill() * 0.15);
+					local bonus = ::Math.floor(baseProperties.getMeleeSkill() * 0.15);
 					_properties.MeleeSkill += bonus;
 					this.m.HitChanceBonus += bonus;
 				}
 			}
 
-			
+
 		}
 
-		
+
 
 	}
 

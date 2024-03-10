@@ -112,16 +112,16 @@
 			[
 
 				"brawler_background",
-				"cultist_background",
-				"mason_background",
-				"militia_background",
-				"militia_background",
-				"vagabond_background",
 				
+				
+				"militia_background",
+				"militia_background",
+				
+
 
 				"deserter_background",
 				"deserter_background",
-				"raider_background",
+
 				"retired_soldier_background",
 				"retired_soldier_background"
 			],
@@ -130,69 +130,66 @@
 
 				"brawler_background",
 				"brawler_background",
-				"cultist_background",
-				"gravedigger_background",
-				"mason_background",
-				"messenger_background",
+				
+				
+				
+				
 				"militia_background",
 				"miner_background",
 
-				"ratcatcher_background",
+				
 				"refugee_background",
-				"vagabond_background",
-				"vagabond_background",
 				
 				
 
+
+
 				"deserter_background",
-				"raider_background",
 				"retired_soldier_background"
 			],
 			[
 				"apprentice_background",
 				"brawler_background",
-				"gravedigger_background",
+				
 				"graverobber_background",
-				"mason_background",
-				"messenger_background",
+				
+				
 				"militia_background",
 				"militia_background",
 				"militia_background",
-				"ratcatcher_background",
+				
 				"refugee_background",
-				"vagabond_background",
-				"vagabond_background",
 				
 				
+
+
 
 
 				"deserter_background",
 				"deserter_background",
 
-				"raider_background",
-				"raider_background",
-				"raider_background",
+
 				"retired_soldier_background",
 				"retired_soldier_background",
-				"sellsword_background",
+				
 
 				"cripple_background"
 			]
 		];
 		this.m.FemaleDraftLists = [
 			[
-				
+
 			],
 			[
-				
-				
+
+
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background"
 			],
 			[
-				
-				
-				
+
+
+
 				"female_adventurous_noble_background",
 				"female_disowned_noble_background",
 				"female_disowned_noble_background",

@@ -4,7 +4,7 @@ this.bandit_marksman_low <- this.inherit("scripts/entity/tactical/enemies/bandit
 	{
 		this.bandit_marksman.onInit();
 		this.m.BaseProperties.Initiative -= 10;
-		this.m.BaseProperties.RangedSkill -= 10;
+		this.m.BaseProperties.MeleeSkill -= 10;
 		this.m.Skills.update();
 	}
 

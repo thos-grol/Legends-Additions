@@ -12,8 +12,6 @@
 		_draftList.push("farmhand_background");
 		_draftList.push("farmhand_background");
 		_draftList.push("farmhand_background");
-		_draftList.push("miller_background");
-		_draftList.push("miller_background");
 	}
 
 });

@@ -11,29 +11,6 @@
 	{
 		_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() != "Disabled";
 
-		if (this.World.Assets.getOrigin().getID() == "scenario.legends_necro")
-		{
-			_draftList.push("legend_puppet_background");
-			_draftList.push("legend_puppet_background");
-			_draftList.push("legend_puppet_background");
-			_draftList.push("legend_puppet_background");
-			_draftList.push("legend_puppet_background");
-		}
-
-		if (this.World.Assets.getOrigin().getID() == "scenario.militia")
-		{
-			_draftList.push("legend_man_at_arms_background");
-			_draftList.push("legend_man_at_arms_background");
-			_draftList.push("legend_man_at_arms_background");
-			_draftList.push("legend_man_at_arms_background");
-		}
-
-		
-		
-		
-		
-		_draftList.push("sellsword_background");
-		_draftList.push("sellsword_background");
 	}
 
 });

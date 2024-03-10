@@ -13,13 +13,7 @@
 			id = 7,
 			type = "text",
 			icon = "ui/icons/melee_skill.png",
-			text = ::MSU.Text.colorRed( has ? "-10%" : "-20%") + " Melee Skill"
-		});
-		ret.push({
-			id = 7,
-			type = "text",
-			icon = "ui/icons/ranged_skill.png",
-			text = ::MSU.Text.colorRed( has ? "-10%" : "-20%") + " Ranged Skill"
+			text = ::MSU.Text.colorRed( has ? "-10%" : "-20%") + " Skill"
 		});
 		ret.push({
 			id = 7,
@@ -34,7 +28,6 @@
 	{
 		local has = this.has_penance();
 		_properties.MeleeSkillMult *= has ? 0.9 : 0.8;
-		_properties.RangedSkillMult *= has ? 0.9 : 0.8;
 		_properties.MeleeDefenseMult *= has ? 0.9 : 0.7;
 		_properties.IsContentWithBeingInReserve = true;
 	}

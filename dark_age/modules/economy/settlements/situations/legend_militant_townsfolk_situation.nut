@@ -114,15 +114,9 @@
 		_draftList.push("farmhand_background");
 		_draftList.push("farmhand_background");
 		_draftList.push("farmhand_background");
-		_draftList.push("miller_background");
-		_draftList.push("miller_background");
-		_draftList.push("miller_background");
 		_draftList.push("butcher_background");
 		_draftList.push("butcher_background");
 		_draftList.push("butcher_background");
-		_draftList.push("shepherd_background");
-		_draftList.push("shepherd_background");
-		_draftList.push("shepherd_background");
 		_draftList.push("apprentice_background");
 		_draftList.push("apprentice_background");
 	}

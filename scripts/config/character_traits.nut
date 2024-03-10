@@ -237,10 +237,6 @@ gt.Const.CharacterTraits <- [
 		"scripts/skills/traits/lucky_trait"
 	],
 	[
-		"trait.steady_hands",
-		"scripts/skills/traits/steady_hands_trait"
-	],
-	[
 		"trait.slack",
 		"scripts/skills/traits/slack_trait"
 	],

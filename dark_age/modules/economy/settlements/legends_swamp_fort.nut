@@ -112,26 +112,26 @@
 		];
 		this.m.DraftLists = [
 			[
-				"cultist_background",
+				
 
 				"daytaler_background",
 				"hunter_background",
 				"militia_background",
 				"militia_background",
-				"ratcatcher_background",
-				"ratcatcher_background",
+				
+				
 
 
 				"bastard_background",
 				"deserter_background",
 				"retired_soldier_background",
-				"cultist_background",
+				
 
 				"hunter_background",
 				"militia_background",
 				"militia_background",
-				"ratcatcher_background",
-				"ratcatcher_background",
+				
+				
 
 
 				"bastard_background",
@@ -143,15 +143,15 @@
 
 				"beggar_background",
 				"butcher_background",
-				"cultist_background",
-				"gravedigger_background",
+				
+				
 				"hunter_background",
-				"messenger_background",
+				
 				"militia_background",
 				"militia_background",
 
 
-				"ratcatcher_background",
+				
 
 
 
@@ -159,26 +159,26 @@
 				"bastard_background",
 				"deserter_background",
 				"disowned_noble_background",
-				"raider_background",
+
 				"retired_soldier_background",
 				"apprentice_background",
 
 				"butcher_background",
-				"cultist_background",
-				"gravedigger_background",
+				
+				
 				"hunter_background",
-				"messenger_background",
+				
 				"militia_background",
 				"militia_background",
 
 
-				"ratcatcher_background",
+				
 
 
 
 				"bastard_background",
 				"deserter_background",
-				"raider_background",
+
 				"retired_soldier_background"
 			],
 			[
@@ -186,15 +186,15 @@
 
 				"beggar_background",
 				"butcher_background",
-				"cultist_background",
-				"gravedigger_background",
+				
+				
 				"hunter_background",
-				"messenger_background",
+				
 				"militia_background",
 				"militia_background",
 
 
-				"ratcatcher_background",
+				
 
 
 
@@ -202,26 +202,24 @@
 				"bastard_background",
 				"deserter_background",
 				"disowned_noble_background",
-				"raider_background",
 				"retired_soldier_background",
 				"apprentice_background",
 
 				"butcher_background",
-				"cultist_background",
-				"gravedigger_background",
+				
+				
 				"hunter_background",
-				"messenger_background",
+				
 				"militia_background",
 				"militia_background",
 
 
-				"ratcatcher_background",
+				
 
 
 
 				"bastard_background",
 				"deserter_background",
-				"raider_background",
 				"retired_soldier_background"
 			]
 		];

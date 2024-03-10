@@ -11,7 +11,7 @@
 			id = 7,
 			type = "text",
 			icon = "ui/icons/ranged_skill.png",
-			text = ::MSU.Text.colorRed( has ? "-10%" : "-50%") + " Ranged Skill"
+			text = ::MSU.Text.colorRed( has ? "90%" : "50%") + " Ranged Hit Chance"
 		});
 		ret.push({
 			id = 7,
@@ -25,7 +25,6 @@
 	o.onUpdate = function( _properties )
 	{
 		local has = this.has_penance();
-		_properties.RangedSkillMult *= has ? 0.9 : 0.5;
 		_properties.Vision -= has ? -1 : 2;
 	}
 

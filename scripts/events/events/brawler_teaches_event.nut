@@ -149,7 +149,7 @@ this.brawler_teaches_event <- this.inherit("scripts/events/event", {
 				this.List.push({
 					id = 16,
 					icon = "ui/icons/melee_skill.png",
-					text = _event.m.Student.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + attack + "[/color] Melee Skill"
+					text = _event.m.Student.getName() + " gains [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + attack + "[/color] Skill"
 				});
 				this.List.push({
 					id = 16,

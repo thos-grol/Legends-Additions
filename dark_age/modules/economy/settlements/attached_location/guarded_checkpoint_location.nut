@@ -10,7 +10,6 @@
 
 		_list.push("militia_background");
 		_list.push("deserter_background");
-		_list.push("sellsword_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )

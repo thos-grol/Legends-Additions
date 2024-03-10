@@ -1,7 +1,6 @@
 this.lead_by_example_effect <- this.inherit("scripts/skills/skill", {
 	m = {
 		MeleeSkill = 0,
-		RangedSkill = 0,
 		MeleeDefense = 0,
 		RangedDefense = 0,
 		Bravery = 0
@@ -39,12 +38,6 @@ this.lead_by_example_effect <- this.inherit("scripts/skills/skill", {
 				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.MeleeSkill + "[/color] Melee Attack"
 			},
 			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/ranged_skill.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.RangedSkill + "[/color] Ranged Attack"
-			},
-			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
@@ -68,7 +61,6 @@ this.lead_by_example_effect <- this.inherit("scripts/skills/skill", {
 	function onAfterUpdate( _properties )
 	{
 		_properties.MeleeSkill += this.m.MeleeSkill;
-		_properties.RangedSkill += this.m.RangedSkill;
 		_properties.MeleeDefense += this.m.MeleeDefense;
 		_properties.RangedDefense += this.m.RangedDefense;
 		_properties.Bravery += this.m.Bravery;

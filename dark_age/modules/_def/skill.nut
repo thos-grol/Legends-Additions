@@ -41,11 +41,16 @@
 		}
 
 		local defenderProperties = _targetEntity.getSkills().buildPropertiesForDefense(_user, this);
-		local defense = _targetEntity.getDefense(_user, this, defenderProperties);
+		local defense = _targetEntity.getDefense(_user, this, defenderProperties); //TODO: fix defense
 		local levelDifference = _targetEntity.getTile().Level - _user.getTile().Level;
 		local distanceToTarget = _user.getTile().getDistanceTo(_targetEntity.getTile());
 		local toHit = 0;
-		local skill = this.m.IsRanged ? properties.RangedSkill * properties.RangedSkillMult : properties.MeleeSkill * properties.MeleeSkillMult;
+
+
+		local ranged_details = ::B.Lib.get_ranged_details(this);
+		local skill = properties.MeleeSkill * properties.MeleeSkillMult;
+		skill *= this.m.IsRanged ? ranged_details.ranged_mult : ranged_details.melee_mult;
+
 		toHit = toHit + skill;
 		toHit = toHit - defense;
 
@@ -54,14 +59,8 @@
 			toHit = toHit + (distanceToTarget - this.m.MinRange) * properties.HitChanceAdditionalWithEachTile * properties.HitChanceWithEachTileMult;
 		}
 
-		if (levelDifference < 0)
-		{
-			toHit = toHit + ::Const.Combat.LevelDifferenceToHitBonus;
-		}
-		else
-		{
-			toHit = toHit + ::Const.Combat.LevelDifferenceToHitMalus * levelDifference;
-		}
+		if (levelDifference < 0) toHit = toHit + ::Const.Combat.LevelDifferenceToHitBonus;
+		else toHit = toHit + ::Const.Combat.LevelDifferenceToHitMalus * levelDifference;
 
 		local shieldBonus = 0;
 		local shield = _targetEntity.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
@@ -391,35 +390,6 @@
 
 ::mods_hookExactClass("skills/skill", function (o)
 {
-	// o.onShieldHit = function( _info )
-	// {
-	// 	local shield = _info.Shield;
-	// 	local user = _info.User;
-	// 	local targetEntity = _info.TargetEntity;
-
-	// 	if (_info.Skill.m.SoundOnHitShield.len() != 0)
-	// 	{
-	// 		this.Sound.play(_info.Skill.m.SoundOnHitShield[::Math.rand(0, _info.Skill.m.SoundOnHitShield.len() - 1)], ::Const.Sound.Volume.Skill * this.m.SoundVolume, user.getPos());
-	// 	}
-
-	// 	shield.applyShieldDamage(::Const.Combat.BasicShieldDamage, _info.Skill.m.SoundOnHitShield.len() == 0);
-
-	// 	if (shield.getCondition() == 0)
-	// 	{
-	// 		if (!user.isHiddenToPlayer()) this.Tactical.EventLog.logIn(::Const.UI.getColorizedEntityName(targetEntity) + "\'s shield has destroyed ");
-	// 	}
-	// 	else
-	// 	{
-	// 		if (!this.Tactical.getNavigator().isTravelling(targetEntity))
-	// 		{
-	// 			this.Tactical.getShaker().shake(targetEntity, user.getTile(), 2, ::Const.Combat.ShakeEffectSplitShieldColor, ::Const.Combat.ShakeEffectSplitShieldHighlight, ::Const.Combat.ShakeEffectSplitShieldFactor, 1.0, [
-	// 				"shield_icon"
-	// 			], 1.0);
-	// 		}
-	// 	}
-
-	// 	_info.TargetEntity.getItems().onShieldHit(_info.User, this);
-	// }
 
 	o.getHitchance = function( _targetEntity )
 	{
@@ -438,7 +408,11 @@
 
 		local allowDiversion = this.m.IsRanged && this.m.MaxRangeBonus > 1;
 		local defenderProperties = _targetEntity.getSkills().buildPropertiesForDefense(user, this);
-		local skill = this.m.IsRanged ? properties.RangedSkill * properties.RangedSkillMult : properties.MeleeSkill * properties.MeleeSkillMult;
+
+		local ranged_details = ::B.Lib.get_ranged_details(this);
+		local skill = properties.MeleeSkill * properties.MeleeSkillMult;
+		skill *= this.m.IsRanged ? ranged_details.ranged_mult : ranged_details.melee_mult;
+
 		local defense = _targetEntity.getDefense(user, this, defenderProperties);
 		local levelDifference = _targetEntity.getTile().Level - user.getTile().Level;
 		local distanceToTarget = user.getTile().getDistanceTo(_targetEntity.getTile());
@@ -808,7 +782,7 @@
 
 		if (!thisSkill.m.HitChanceBonus && isRangedRelevant())
 		{
-			local diff = getDifferenceInProperty("RangedSkill", targetEntity);
+			local diff = getDifferenceInProperty("MeleeSkill", targetEntity);
 
 			if (diff != null)
 			{

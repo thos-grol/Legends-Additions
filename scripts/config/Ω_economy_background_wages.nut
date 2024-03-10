@@ -71,7 +71,7 @@
 		"DailyCost" : 2
 	},
 	"background.slave" : {
-		"HiringCost" : 95,
+		"HiringCost" : 200,
 		"DailyCost" : 0
 	},
 	"background.ratcatcher" : {

@@ -93,75 +93,72 @@
 				"apprentice_background",
 				"beggar_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"gambler_background",
+
+
 				"daytaler_background",
 				"daytaler_background",
 
 				"refugee_background",
 				//"tailor_background",
 				"thief_background",
-				"vagabond_background",
+
 				"poacher_background",
 				"apprentice_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"gambler_background",
+
+
 
 				"refugee_background",
-				"vagabond_background",
+
 				"poacher_background"
 			],
 			[
 				"apprentice_background",
 				"beggar_background",
 
-				"caravan_hand_background",
-				"caravan_hand_background",
-				"gambler_background",
+
+
+
 				"daytaler_background",
 				"daytaler_background",
-				"historian_background",
 				"hunter_background",
-				"mason_background",
+
 				"militia_background",
 
 
-				"ratcatcher_background",
+				
 				"refugee_background",
 				"refugee_background",
-				"servant_background",
+
 				//"tailor_background",
 				"thief_background",
-				"vagabond_background",
+
 				"adventurous_noble_background",
 				"cripple_background",
 				"poacher_background",
 				"apprentice_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
-				"gambler_background",
-				"historian_background",
+
+
+
 				"hunter_background",
-				"mason_background",
+
 				"militia_background",
 
-				"ratcatcher_background",
+				
 				"refugee_background",
 				"refugee_background",
-				"vagabond_background",
+
 				"cripple_background",
 				"poacher_background"
 			],
 			[
 				"apprentice_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
-				"caravan_hand_background",
-				"gambler_background",
-				"gravedigger_background",
+
+
+
+
+				
 				"graverobber_background",
-				"historian_background",
 				"hunter_background",
 				"juggler_background",
 				"militia_background",
@@ -172,20 +169,19 @@
 
 
 
-				"ratcatcher_background",
+				
 				"refugee_background",
 				"refugee_background",
-				"servant_background",
-				"shepherd_background",
+
+
 				"thief_background",
-				"vagabond_background",
+
 				"bastard_background",
-				"raider_background",
+
 				"retired_soldier_background",
-				"sellsword_background",
+
 
 				"cripple_background",
-				"eunuch_background",
 
 			]
 		];

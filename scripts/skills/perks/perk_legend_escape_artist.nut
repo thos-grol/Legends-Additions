@@ -7,7 +7,7 @@
 + "\n"+::MSU.Text.colorGreen("+75") + " Melee Defense when moving"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On turn start:")
-+ "\n"+::MSU.Text.colorGreen("Perform a break free action using Melee Skill with a -25 penalty");
++ "\n"+::MSU.Text.colorGreen("Perform a break free action using Attack with a -25 penalty");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Name = ::Const.Strings.PerkName.LegendEscapeArtist;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendEscapeArtist].Tooltip = ::Const.Strings.PerkDescription.LegendEscapeArtist;

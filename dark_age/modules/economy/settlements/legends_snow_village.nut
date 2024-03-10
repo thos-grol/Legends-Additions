@@ -119,26 +119,26 @@
 				"beggar_background",
 				"brawler_background",
 				"brawler_background",
-				"cultist_background",
+				
 				"daytaler_background",
 				"lumberjack_background",
-				"mason_background",
+				
 				"miner_background",
 
 				"poacher_background",
 				"thief_background",
-				"vagabond_background",
+				
 				"wildman_background",
 				"wildman_background",
 				"brawler_background",
 				"brawler_background",
-				"cultist_background",
+				
 				"lumberjack_background",
-				"mason_background",
+				
 				"miner_background",
 
 				"poacher_background",
-				"vagabond_background",
+				
 				"wildman_background",
 				"wildman_background"
 			],
@@ -146,11 +146,11 @@
 				"apprentice_background",
 				"brawler_background",
 				"brawler_background",
-				"cultist_background",
+				
 				"daytaler_background",
 				"daytaler_background",
-				"gravedigger_background",
-				"gravedigger_background",
+				
+				
 				"graverobber_background",
 				"hunter_background",
 				"killer_on_the_run_background",
@@ -162,16 +162,16 @@
 				"poacher_background",
 				"poacher_background",
 				"thief_background",
-				"vagabond_background",
+				
 				"wildman_background",
 				"disowned_noble_background",
 				"cripple_background",
 				"apprentice_background",
 				"brawler_background",
 				"brawler_background",
-				"cultist_background",
-				"gravedigger_background",
-				"gravedigger_background",
+				
+				
+				
 				"graverobber_background",
 				"hunter_background",
 				"killer_on_the_run_background",
@@ -182,7 +182,7 @@
 				"poacher_background",
 				"poacher_background",
 				"poacher_background",
-				"vagabond_background",
+				
 				"wildman_background",
 				"wildman_background",
 				"cripple_background"
@@ -192,14 +192,14 @@
 				"brawler_background",
 				"brawler_background",
 				"brawler_background",
-				"caravan_hand_background",
-				"gambler_background",
-				"cultist_background",
-				"gravedigger_background",
+				
+				
+				
+				
 				"graverobber_background",
 				"killer_on_the_run_background",
-				"mason_background",
-				"messenger_background",
+				
+				
 				"militia_background",
 				"militia_background",
 				"militia_background",
@@ -208,17 +208,13 @@
 				"poacher_background",
 				"poacher_background",
 				"poacher_background",
-				"ratcatcher_background",
-				"vagabond_background",
+				
+				
 				"wildman_background",
 				"wildman_background",
 
 				"bastard_background",
-				"raider_background",
-				"raider_background",
-				"sellsword_background",
-
-
+				
 			]
 		];
 		this.m.FemaleDraftLists = [

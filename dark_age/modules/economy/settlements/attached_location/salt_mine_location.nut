@@ -15,7 +15,6 @@
 
 		_list.push("miner_background");
 		_list.push("miner_background");
-		_list.push("caravan_hand_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )

@@ -7,12 +7,6 @@
 		{
 			return;
 		}
-
-		_list.push("daytaler_southern_background");
-		_list.push("shepherd_southern_background");
-		_list.push("shepherd_southern_background");
-		_list.push("shepherd_southern_background");
-		_list.push("shepherd_southern_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )

@@ -9,17 +9,17 @@ this.recruiter_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Image = "ui/campfire/recruiter_01";
 		this.m.Cost = 300;
 		this.m.Effects = [
-			"Every settlement has 4-6 additional recruits"
+			"Every settlement has 1 additional recruits"
 		];
 	}
 
 	function onUpdate()
 	{
-		if ("RosterSizeAdditionalMin" in this.World.Assets.m) 
-			this.World.Assets.m.RosterSizeAdditionalMin += 4;
+		if ("RosterSizeAdditionalMin" in this.World.Assets.m)
+			this.World.Assets.m.RosterSizeAdditionalMin += 1;
 
 		if ("RosterSizeAdditionalMax" in this.World.Assets.m)
-			this.World.Assets.m.RosterSizeAdditionalMax += 6;
+			this.World.Assets.m.RosterSizeAdditionalMax += 1;
 	}
 
 });

@@ -8,7 +8,6 @@
 	{
 		if (!this.isActive()) return;
 		_list.push("brawler_background");
-		_list.push("gambler_background");
 	}
 
 	o.onUpdateShopList = function( _id, _list )

@@ -125,72 +125,71 @@
 				"farmhand_background",
 				"farmhand_background",
 				"farmhand_background",
-				"miller_background",
-				"miller_background",
-				"ratcatcher_background",
+
+
+				
 				//"tailor_background",
-				"vagabond_background",
+
 				"poacher_background",
-				"ratcatcher_background",
-				"vagabond_background",
+				
+
 				"poacher_background"
 			],
 			[
 				"apprentice_background",
 				"beggar_background",
 				"butcher_background",
-				"gambler_background",
+
 				"daytaler_background",
 				"daytaler_background",
 				"farmhand_background",
 				"farmhand_background",
 				"farmhand_background",
 				"juggler_background",
-				"messenger_background",
-				"militia_background",
-				"militia_background",
-				"miller_background",
-				"miller_background",
 
-				"ratcatcher_background",
+				"militia_background",
+				"militia_background",
+
+
+
+				
 				"refugee_background",
-				"servant_background",
+
 				//"tailor_background",
-				"vagabond_background",
+
 				"retired_soldier_background",
 				"apprentice_background",
 				"butcher_background",
-				"gambler_background",
+
 				"juggler_background",
-				"messenger_background",
+
 				"militia_background",
 				"militia_background",
 
-				"ratcatcher_background",
+				
 				"refugee_background",
-				"vagabond_background",
+
 				"retired_soldier_background"
 			],
 			[
 
 				"apprentice_background",
-				"caravan_hand_background",
-				"gambler_background",
-				"historian_background",
+
+
 				"juggler_background",
 				"militia_background",
 				"militia_background",
 
 
 
-				"ratcatcher_background",
+				
 				"refugee_background",
-				"shepherd_background",
-				"vagabond_background",
+
+
 				"bastard_background",
-				"raider_background",
+
 				"retired_soldier_background",
-				"sellsword_background",
+
 
 
 

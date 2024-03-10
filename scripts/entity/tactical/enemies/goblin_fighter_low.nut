@@ -10,7 +10,6 @@ this.goblin_fighter_low <- this.inherit("scripts/entity/tactical/enemies/goblin_
 	{
 		this.goblin_fighter.onInit();
 		this.m.BaseProperties.MeleeSkill -= 5;
-		this.m.BaseProperties.RangedSkill -= 5;
 		this.m.BaseProperties.RangedDefense -= 5;
 		this.m.BaseProperties.MeleeDefense -= 5;
 		this.m.BaseProperties.DamageDirectMult = 1.0;

@@ -9,47 +9,35 @@
 		]);
 		this.m.FemaleDraftList = [];
 		this.m.DraftList = [
-			"beggar_southern_background",
-			"beggar_southern_background",
+			"daytaler_southern_background",
+			"daytaler_southern_background",
+			"daytaler_southern_background",
+			"daytaler_southern_background",
+			"daytaler_southern_background",
+			"daytaler_southern_background",
+			"daytaler_southern_background",
+			"daytaler_southern_background",
+
 			"butcher_southern_background",
-			"caravan_hand_southern_background",
-			"caravan_hand_southern_background",
-			"caravan_hand_southern_background",
-			"gambler_southern_background",
-			"daytaler_southern_background",
-			"daytaler_southern_background",
-			"historian_southern_background",
-			"servant_southern_background",
-			"shepherd_southern_background",
-			"shepherd_southern_background",
-			//"tailor_southern_background",
+			"butcher_southern_background",
+
 			"thief_southern_background",
-			"disowned_noble_background",
-			"sellsword_background",
+			"thief_southern_background",
+
+			"beggar_southern_background",
+			"beggar_southern_background",
 			"cripple_southern_background",
-			"eunuch_southern_background",
-			"slave_background",
-			"slave_background",
+			"cripple_southern_background",
 
+			"slave_background",
+			"slave_background",
 			"slave_southern_background",
 			"slave_southern_background",
-			"slave_southern_background",
-			"slave_southern_background",
-			"slave_southern_background",
-			"slave_southern_background",
-			"slave_southern_background",
-			"slave_southern_background",
-			"slave_southern_background",
-			"nomad_background",
-			"nomad_background",
-			"nomad_ranged_background",
+
 			"juggler_southern_background",
+			"historian_southern_background",
+			"disowned_noble_background",
 		];
-
-		// if (::Const.DLC.Unhold)
-		// {
-		// 	this.m.DraftList.push("beast_hunter_background");
-		// }
 
 		this.m.UIDescription = "A large and rich city state that thrives on trade at the edge of the desert";
 		this.m.Description = "A large and rich city state that thrives on trade at the edge of the desert.";

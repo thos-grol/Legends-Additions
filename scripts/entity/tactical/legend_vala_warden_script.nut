@@ -351,7 +351,7 @@ this.legend_vala_warden_script <- this.inherit("scripts/entity/tactical/actor", 
 		}
 	}
 
-	
+
 
 });
 

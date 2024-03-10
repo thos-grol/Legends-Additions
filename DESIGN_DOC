@@ -1,3 +1,22 @@
+what is missing from BB?
+a sense of the world reacting to the player
+-> overhaul Factions
+    -> lock number of faction generations and settlements
+    -> each noble faction will be different, have different strengths & core technology
+    -> more faction interactions ie. skirmishes or competition over resource points
+        -> generate resource points on game start, they can be fought over by factions to determine faction strength
+    -> faction strength calculation by resources & heroes
+    -> faction heroes system
+
+-> overhaul faction rewards and punishments
+    ie. fix event battles, make them loop like in contract
+        solution: event scheduler and resolver over current event system
+        scheduler will garuntee that a certain event will fire given conditions in order of priority
+
+---
+
+//TODO: Undead cannot be charmed
+
 
 
 //test all spawns using cultist camps
@@ -481,14 +500,6 @@ Schools:
             Negative Energy Fireball -
             Drain Life - Draws health from the target to caster
                 ::Const.Perks.PerkDefs.LegendSiphon
-
-
-
----
-
-
-Undead cannot be charmed
-
 
 -----
 
