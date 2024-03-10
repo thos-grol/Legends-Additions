@@ -15,9 +15,6 @@ a sense of the world reacting to the player
 
 ---
 
-//TODO: Undead cannot be charmed
-
-
 
 //test all spawns using cultist camps
 //figure out persistent tile effects for entities? - see malovolent spirits vala skill
@@ -111,7 +108,6 @@ Initiative = 100, <- Rename to Agility
 
 
 //FIXME: SCAVENGE witcher mod for inspirations
-//FIXME: SCAVENGE get ciri teleport
 //FIXME: SCAVENGE get aard
 
 //////////////////////////////////////////////

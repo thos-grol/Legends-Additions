@@ -28,7 +28,7 @@ this._ranged_focus <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 12,
 				type = "text",
 				icon = "ui/icons/morale.png",
-				text = ::MSU.Text.colorGreen("100%") + " of Attack is used in ranged attacks and " + ::MSU.Text.colorGreen("50%") " for melee attacks"
+				text = ::MSU.Text.colorGreen("100%") + " of Attack is used in ranged attacks and " + ::MSU.Text.colorGreen("50%") + " for melee attacks"
 			}
 		];
 	}

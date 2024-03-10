@@ -47,7 +47,7 @@
 		local toHit = 0;
 
 
-		local ranged_details = ::B.Lib.get_ranged_details(this);
+		local ranged_details = ::B.Lib.get_ranged_details(_user);
 		local skill = properties.MeleeSkill * properties.MeleeSkillMult;
 		skill *= this.m.IsRanged ? ranged_details.ranged_mult : ranged_details.melee_mult;
 
@@ -409,7 +409,7 @@
 		local allowDiversion = this.m.IsRanged && this.m.MaxRangeBonus > 1;
 		local defenderProperties = _targetEntity.getSkills().buildPropertiesForDefense(user, this);
 
-		local ranged_details = ::B.Lib.get_ranged_details(this);
+		local ranged_details = ::B.Lib.get_ranged_details(user);
 		local skill = properties.MeleeSkill * properties.MeleeSkillMult;
 		skill *= this.m.IsRanged ? ranged_details.ranged_mult : ranged_details.melee_mult;
 

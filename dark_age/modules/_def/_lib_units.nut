@@ -4,6 +4,7 @@
     local result = {
         melee_mult = 1.0,
         ranged_mult = 0.5,
+        is_ranged_focus = false,
     };
 
     //ranged_focus unit has base 50% melee mult and 100% ranged mult
@@ -30,7 +31,7 @@
     local _properties = _actor.getCurrentProperties();
     if (_properties.IsAffectedByInjuries)
     {
-        if (::B.Lib.is_injury_applied("injury.grazed_eye_socket"))
+        if (::B.Lib.is_injury_applied(_actor, _properties, "injury.grazed_eye_socket"))
             result.ranged_mult *= 0.5;
     }
 

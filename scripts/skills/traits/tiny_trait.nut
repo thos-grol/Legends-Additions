@@ -39,13 +39,7 @@ this.tiny_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5[/color] Melee Defense"
-			},
-			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5[/color] Ranged Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Defense"
 			},
 			{
 				id = 12,
@@ -59,8 +53,7 @@ this.tiny_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	function onUpdate( _properties )
 	{
 		_properties.MeleeDamageMult *= 0.85;
-		_properties.MeleeDefense += 5;
-		_properties.RangedDefense += 5;
+		_properties.MeleeDefense += 10;
 	}
 
 	function onAdded()

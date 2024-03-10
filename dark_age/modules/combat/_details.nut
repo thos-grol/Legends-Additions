@@ -326,13 +326,6 @@
 // Medium Armor
 // =============================================================================================
 
-    o.onAfterUpdate <- function( _properties )
-	{
-		local actor = this.getContainer().getActor();
-		if (!actor.isPlacedOnMap()) this.m.Stacks = 5; //Start off with 25% dr
-
-	}
-
 	o.onMissed <- function( _attacker, _skill )
 	{
 		local total_weight = getTotalWeight();
@@ -717,6 +710,15 @@
         }
 	}
 
+	o.onAfterUpdate <- function( _properties )
+	{
+		local actor = this.getContainer().getActor();
+		if (!actor.isPlacedOnMap()) this.m.Stacks = 5; //Start off with 25% dr for medium armor passive
+
+		_properties.MeleeDamageMult *= 1.0 + _properties.RangedSkill / 100.0;
+		_properties.RangedDamageMult *= 1.0 + _properties.RangedSkill / 100.0;
+	}
+
 	o.onUpdate = function( _properties )
 	{
 		local actor = this.getContainer().getActor();
@@ -759,18 +761,4 @@
 				break;
 		}
 	}
-
-	o.onAnySkillUsed <- function ( _skill, _targetEntity, _properties )
-	{
-		if (_targetEntity == null) return;
-		if (!_skill.m.IsWeaponSkill
-			&& _skill.m.ID != "actives.hand_to_hand"
-		) return;
-
-		local actor = this.getContainer().getActor();
-		_properties.DamageRegularMult *= 1.0 + _properties.RangedSkill / 100.0;
-		_properties.DamageArmorMult *= 1.0 + _properties.RangedSkill / 100.0;
-	}
-
-
 });

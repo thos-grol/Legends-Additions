@@ -1,75 +1,10 @@
 CHANGELOG
 
-1.17
-
-weapons
-- orc chain can now strike at 2 tiles
-- voulges are now polearm cleavers to match their attacking mode...
-
-perks
-- wrath - buffed wrath so it is competitive with the strongest
-- adaptive can now give shield and armor trees
-- recover now works with en gard toggle
-- hybridization works with unarmed
-
-
-camp
-- painting tent works now
-
-contracts
-- removed scaling, will balance later with feedback
-- adjusted defend settlement raiding parties to always have 1 bandit leader only
-
-enemies
-- cultist
-    - pain ritual nerfed
-        - range: 4 -> 3
-        - users now raidiate a black aura
-    - decreased the chance of net builds
-
-- hedge knight: has improved builds. they weren't as terrifying as they should be
-- master archer: has improved builds. they weren't as terrifying as they should be
-
-1.16 qol
-
-economy
-- made black market caravans rarer
-
-weapons
-- warfork: now spear/polearm
-- swordstaff (named and normal): now sword/spear/polearm, gains riposte. thrust becomes 2 tile range
-
-perks
-- recover spends AP on end turn
-- destiny: escape artist: now removes fatigue cost from movement skills
-- destiny: blend in: removed only using once for ranged attacks
-- throw sand: now gains a charge on kill
-
-contracts
-- defend settlement contracts: nerfed difficulty
-
-origins
-- free brigand retinue for northern raiders
-- lone wolf 
-    - favored enemy swordmaster does not refund
-    - garunteed chosen
-    - improved choices for weapons and armor
-
-1.16
-features
-- new additions to the training hall. A way out for weaker bros...
-    - After rolling stats, bros will save the difference from the decent baseline ie. 60 hp, 60 fat, 120 res etc...
-        ie. if bro rolls 40 HP, he can train up to 20 HP.
-    - for 150 gold, you can train min(amount to train, 10) for non melee/ranged attributes and min(amount to train, 5) for melee/ranged
-- new caravan loot/enemy system - caravans now follow higher risk/reward. the more valuable the cargo, the more highly protected.
-
-bugs
-- fixed caravan freezes by making new caravan generation system
 2.0 - Major Update
 
 //TODO: Updated to legends 18.2.X
-//TODO: rename stats and change stat descriptions
-//TODO: test ranged skill modification
+
+
 
 stat changes
 - All stats are planned to have more uses in the future - reaching certain thresholds will transform/improve the character and their skills
@@ -82,7 +17,17 @@ stat changes
 - implemented strength stat - every point is 1% of increased damage.
 - implemented reflex stat - every point is 1% chance to downgrade a critical hit (head hit) to a body hit or a body hit to a graze (10% damage)
 
+
+//TODO: changed star distribution to remove matk and mdef
+
+//TODO: rename stats and change stat descriptions
 TODO: change stat display
+//TODO: fix hitcalc for ranged
+//TODO: made own version of clever recruiter, no need to use it, feature was integral to recruiting so it was integrated to not leave dependency outside
+    - stat display has been changed
+//TODO: fix enemy stats
+//TODO: choose new origin
+
 
 - standardized background strengths and weakened enemy strengths to reflect this: stat rolling has been removed from backgrounds and trait trees. This should make the game feel better even with your shit peasant recruits. Now stat rng depends only the traits a character recieves. The background has uses unrolled stats as a baseline. EVERYTHING in the game will now be balanced around the daytaler's stats. This should be more logical and organized:
 
@@ -95,6 +40,10 @@ TODO: change stat display
     Defense - Character's ability to defend. Base 10.
     Strength (new stat) - Concerning the damage the character can do. Each point adds 1% damage to relevant attacks. Base 10.
     Reflex - Concerning the character's ability to react. Each point has a 1% chance to downgrade a critical hit (headshot) to a bodyshot. And a hit to a graze. (10% of damage).
+
+- Removed leveling up melee skill and melee def for player and enemy. It was always arms race between you and enemy to level these up - ie. it was autopick. Now you can vary your stat levelups among the 6 other stats. 
+    As for methods to improve attack and defenses it would be training, events, future class promotions, and perks
+
 
 Enemies
 - All humans and monsters have been rebalanced to the above standards as a guideline. Note that monsters will be way beyond human strength
@@ -162,6 +111,8 @@ weapon changes
 - fixed crack the whip crash with barb direwolfs
 - you can't parry magic anymore
 
+
+
 2) Weakness (applied by cleavers) have the wrong formula for damage reduction, it practically reduces damage to 0
 4) Death dealer does not reduce fat costs of aoe skills, most likely the same is true for Wrath (haven't actually tried the latter yet). This is because skills reset their fat cost after these perks change it and they do not consider these perks at all
 6) Librarian drop is seemingly unchanged from base legends, this might result in the player getting items which were supposed to be removed
@@ -171,7 +122,71 @@ weapon changes
 
 3) Crafting possibly not working (see Mage of Winter potion)
 
+1.17
 
+weapons
+- orc chain can now strike at 2 tiles
+- voulges are now polearm cleavers to match their attacking mode...
+
+perks
+- wrath - buffed wrath so it is competitive with the strongest
+- adaptive can now give shield and armor trees
+- recover now works with en gard toggle
+- hybridization works with unarmed
+
+
+camp
+- painting tent works now
+
+contracts
+- removed scaling, will balance later with feedback
+- adjusted defend settlement raiding parties to always have 1 bandit leader only
+
+enemies
+- cultist
+    - pain ritual nerfed
+        - range: 4 -> 3
+        - users now raidiate a black aura
+    - decreased the chance of net builds
+
+- hedge knight: has improved builds. they weren't as terrifying as they should be
+- master archer: has improved builds. they weren't as terrifying as they should be
+
+1.16 qol
+
+economy
+- made black market caravans rarer
+
+weapons
+- warfork: now spear/polearm
+- swordstaff (named and normal): now sword/spear/polearm, gains riposte. thrust becomes 2 tile range
+
+perks
+- recover spends AP on end turn
+- destiny: escape artist: now removes fatigue cost from movement skills
+- destiny: blend in: removed only using once for ranged attacks
+- throw sand: now gains a charge on kill
+
+contracts
+- defend settlement contracts: nerfed difficulty
+
+origins
+- free brigand retinue for northern raiders
+- lone wolf 
+    - favored enemy swordmaster does not refund
+    - garunteed chosen
+    - improved choices for weapons and armor
+
+1.16
+features
+- new additions to the training hall. A way out for weaker bros...
+    - After rolling stats, bros will save the difference from the decent baseline ie. 60 hp, 60 fat, 120 res etc...
+        ie. if bro rolls 40 HP, he can train up to 20 HP.
+    - for 150 gold, you can train min(amount to train, 10) for non melee/ranged attributes and min(amount to train, 5) for melee/ranged
+- new caravan loot/enemy system - caravans now follow higher risk/reward. the more valuable the cargo, the more highly protected.
+
+bugs
+- fixed caravan freezes by making new caravan generation system
 
 1.16
 bugs
