@@ -3,6 +3,10 @@ CHANGELOG
 2.0 - Major Update
 Updated to legends 18.2.X
 
+origins
+- Removed all origins except for Escaped Slaves which will be reworked (I'm not going to balance all the origins)
+- This is preparation for roguelike mode if MSU persistence is released
+
 stat changes
 - All stats are planned to have more uses in the future - reaching certain thresholds will transform/improve the character and their skills
 
@@ -23,7 +27,7 @@ merged Melee Defense and Ranged Defense into one skill. Warriors are probably be
 - changed graphics and arrangement of stats
     //renamed stats and change stat descriptions
 
-//TODO: removed all other origins, and working on the first one to balance: Young Blood
+
 
 - standardized background strengths and weakened enemy strengths to reflect this: stat rolling has been removed from backgrounds and trait trees. This should make the game feel better even with your shit peasant recruits. Now stat rng depends only the traits a character recieves. The background has uses unrolled stats as a baseline. EVERYTHING in the game will now be balanced around the daytaler's stats. This should be more logical and organized:
 

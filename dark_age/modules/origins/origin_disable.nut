@@ -25,7 +25,7 @@
 ::mods_hookExactClass("scenarios/world/tutorial_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_sisterhood_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/legends_seer_scenario", function(o) { o.isValid <- function(){ return false; }});
-::mods_hookExactClass("scenarios/world/sato_escaped_slaves_scenario", function(o) { o.isValid <- function(){ return false; }});
+
 ::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
 
 ::mods_hookExactClass("scenarios/world/anatomists_scenario", function(o) { o.isValid <- function(){ return false; }});
@@ -40,3 +40,6 @@
 ::mods_hookExactClass("scenarios/world/legends_berserker_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/rangers_scenario", function(o) { o.isValid <- function(){ return false; }});
 ::mods_hookExactClass("scenarios/world/militia_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/lone_wolf_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/raiders_scenario", function(o) { o.isValid <- function(){ return false; }});
+::mods_hookExactClass("scenarios/world/legends_solo_necro_scenario", function(o) { o.isValid <- function(){ return false; }});
