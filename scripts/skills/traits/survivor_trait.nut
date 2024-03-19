@@ -37,14 +37,14 @@ this.survivor_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Has a [color=" + ::Const.UI.Color.PositiveValue + "]90%[/color] chance to survive if struck down and not killed by a fatality"
+				text = "Has a [color=" + ::Const.UI.Color.PositiveValue + "]+90%[/color] chance to survive if struck down and not killed by a fatality"
 			}
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		_properties.SurviveWithInjuryChanceMult *= 2.72;
+		_properties.SurviveWithInjuryChanceMult *= 1.90;
 	}
 
 	function onAdded()

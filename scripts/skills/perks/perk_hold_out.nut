@@ -1,8 +1,8 @@
 ::Const.Strings.PerkName.HoldOut <- "Resilient";
-::Const.Strings.PerkDescription.HoldOut <- "Blink and you miss me..."
+::Const.Strings.PerkDescription.HoldOut <- "Resist what ails the common man..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("– 1 duration for negative status effects")
-+ "\n"+::MSU.Text.colorGreen("+8") + " Vitality"
++ "\n"+::MSU.Text.colorGreen("+10") + " Vitality"
 + "\n"+::MSU.Text.colorGreen("+33%") + " chance to survive being struck down (Base: 33%)";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.HoldOut].Name = ::Const.Strings.PerkName.HoldOut;
@@ -26,8 +26,8 @@ this.perk_hold_out <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		_properties.NegativeStatusEffectDuration += -1;
-		_properties.Hitpoints += 8;
-		_properties.SurviveWithInjuryChanceMult *= 2.0;
+		_properties.Hitpoints += 10;
+		_properties.SurviveWithInjuryChanceMult *= 1.33;
 	}
 
 });

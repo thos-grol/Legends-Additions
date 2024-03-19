@@ -14,7 +14,7 @@ this.indomitable_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character has gathered all their physical strength and willpower to become indomitable until their next turn.";
+		return "This character is indomitable";
 	}
 
 	function getTooltip()

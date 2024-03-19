@@ -109,10 +109,9 @@ perk rework 2.0
 
 - Sturdy: Main Stat Vitality
     - Colossus
-    - TODO: Hold Out - You have X% chance to resist most physical effects. X being Vitality / 5. Combat debuffs like Staggered do not count.
+    - Resilience
     - Nine Lives
-    - TODO: Indomitable - rework based on Vit
-
+    - Indomitable - is now granted at battle start
 - Fit: Main Stat Endurance
     - TODO: Recuperation - If Endurance > 140, fat rec becomes 5. Lock Vit regen behind 100 Vitality.
     - Steadfast

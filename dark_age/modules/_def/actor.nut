@@ -42,6 +42,7 @@
 			{
 				//if it's a bodyshot, downgrade it to a graze 10% dmg
 				_hitInfo.DamageRegular *= 0.1;
+				_hitInfo.DamageArmor *= 0.1;
 				reflex_status = 2;
 			}
 			p = this.m.Skills.buildPropertiesForBeingHit(_attacker, _skill, _hitInfo);
