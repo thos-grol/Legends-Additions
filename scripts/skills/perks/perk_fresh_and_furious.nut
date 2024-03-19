@@ -1,9 +1,9 @@
-::Const.Strings.PerkName.FreshAndFurious <- "Fresh";
+::Const.Strings.PerkName.FreshAndFurious <- "Fresh and Furious";
 ::Const.Strings.PerkDescription.FreshAndFurious <- ::MSU.Text.color(::Z.Color.Purple, "Destiny")
 + "\nBoundless energy, unstoppable determination..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On first skill use this turn:")
-+ "\n"+::MSU.Text.colorGreen("– 50%") + " AP cost"
-+ "\n"+::MSU.Text.colorRed("Invalid if Fatigue is over 40% max");
++ "\n"+::MSU.Text.colorGreen("– 100%") + " AP cost"
++ "\n"+::MSU.Text.colorRed("Invalid if Fatigue is over 50% max");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.FreshAndFurious].Name = ::Const.Strings.PerkName.FreshAndFurious;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.FreshAndFurious].Tooltip = ::Const.Strings.PerkDescription.FreshAndFurious;
@@ -56,7 +56,7 @@ this.perk_fresh_and_furious <- ::inherit("scripts/skills/skill", {
 
 	function isEnabled()
 	{
-		return this.getContainer().getActor().getFatigue() < 0.4 * this.getContainer().getActor().getFatigueMax();
+		return this.getContainer().getActor().getFatigue() <= 0.5 * this.getContainer().getActor().getFatigueMax();
 	}
 
 	function onAfterUpdate( _properties )
@@ -67,7 +67,8 @@ this.perk_fresh_and_furious <- ::inherit("scripts/skills/skill", {
 			{
 				// ::Math.round to round up the subtraction because we want to emulate the behavior of _properties.IsSkillUseHalfCost
 				// whereby it rounds down the cost (due to integer division) after halving it.
-				skill.m.ActionPointCost -= ::Math.max(0, ::Math.min(skill.m.ActionPointCost - 1, ::Math.round(skill.m.ActionPointCost / 2.0)));
+				// skill.m.ActionPointCost = ::Math.max(0, ::Math.min(skill.m.ActionPointCost - 1, ::Math.round(skill.m.ActionPointCost / 2.0)));
+				skill.m.ActionPointCost = 0;
 			}
 		}
 	}

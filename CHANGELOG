@@ -113,10 +113,10 @@ perk rework 2.0
     - Nine Lives
     - Indomitable - is now granted at battle start
 - Fit: Main Stat Endurance
-    - TODO: Recuperation - If Endurance > 140, fat rec becomes 5. Lock Vit regen behind 100 Vitality.
+    - Recuperation - If Endurance > 140, fat rec becomes 5. Lock Vit regen behind 100 Vitality.
     - Steadfast
     - Fitness
-    - TODO: Fresh and Furious - First attack of turn is 0 AP and 0 Fat Cost as long as Fat < 50%.
+    - Fresh and Furious - First attack of turn is 0 AP and 0 Fat Cost as long as Fat < 50%.
 
 - Agile: Main stat Agility
     - Removed Fast tree and merged into agile tree

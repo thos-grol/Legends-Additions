@@ -26,10 +26,8 @@ this.perk_sundering_strikes <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		local actor = this.getContainer().getActor();
-		local strength = actor.m.CurrentProperties.getRangedSkill();
-		_properties.DamageArmorMult *= 1.0 + strength / 100.0;
-		_properties.ThresholdToInflictInjuryMult *= ::Math.minf(1.0, ::Math.maxf(0.01, 1.0 - strength / 100.0));
+		_properties.DamageArmorMult *= 1.0 + _properties.RangedSkill / 100.0;
+		_properties.ThresholdToInflictInjuryMult *= ::Math.minf(1.0, ::Math.maxf(0.01, 1.0 - _properties.RangedSkill / 100.0));
 	}
 
 });

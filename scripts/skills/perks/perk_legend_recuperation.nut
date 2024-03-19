@@ -1,8 +1,14 @@
 ::Const.Strings.PerkDescription.LegendRecuperation = "Recover health and fatigue..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n" + ::MSU.Text.colorGreen("+2") + " Hitpoint recovery"
 + "\n" + ::MSU.Text.colorGreen("+2") + " Fatigue recovery"
 + "\n" + ::MSU.Text.colorGreen("+25%") + "Hitpoint recovery on world map"
+
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Endurance >= 140:")
++ "\n" + ::MSU.Text.colorGreen("+3") + " Fatigue recovery"
+
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Vitality >= 100:")
++ "\n" + ::MSU.Text.colorGreen("+2") + " Hitpoint recovery"
+
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Recover\' (X AP):")
 + "\n" + ::MSU.Text.colorGreen("– 5.5% * X") + " Fatigue accumulated"
 + "\n"+::MSU.Text.colorRed("Cannot be used if another skill has been used");
@@ -28,7 +34,15 @@ this.perk_legend_recuperation <- this.inherit("scripts/skills/skill", {
 	function onTurnStart()
 	{
 		local actor = this.getContainer().getActor();
-		actor.setHitpoints(::Math.min(actor.getHitpointsMax(), actor.getHitpoints() + 2));
+
+		if (actor.getHitpointsMax() >= 100)
+			actor.setHitpoints(::Math.min(actor.getHitpointsMax(), actor.getHitpoints() + 2));
+	}
+
+	function onAfterUpdate( _properties )
+	{
+		if (_properties.Stamina >= 140) 
+			_properties.FatigueRecoveryRate += 3;
 	}
 
 	function onUpdate( _properties )
