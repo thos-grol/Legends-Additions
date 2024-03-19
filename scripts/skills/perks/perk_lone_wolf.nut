@@ -2,10 +2,9 @@
 ::Const.Strings.PerkDescription.LoneWolf = "Dog or Wolf?"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "With no ally within 2 tiles:")
-+ "\n"+::MSU.Text.colorGreen("+15%") + " Skill"
-+ "\n"+::MSU.Text.colorGreen("+15%") + " Melee Defense"
-+ "\n"+::MSU.Text.colorGreen("+15%") + " Ranged Defense"
-+ "\n"+::MSU.Text.colorGreen("+15%") + " Resolve";
++ "\n"+::MSU.Text.colorGreen("+15%") + " Attack"
++ "\n"+::MSU.Text.colorGreen("+15%") + " Defense"
++ "\n"+::MSU.Text.colorGreen("+15%") + " Will";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].Name = ::Const.Strings.PerkName.LoneWolf;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].Tooltip = ::Const.Strings.PerkDescription.LoneWolf;
@@ -48,7 +47,6 @@ this.perk_lone_wolf <- this.inherit("scripts/skills/skill", {
 		{
 			_properties.MeleeSkillMult *= 1.15;
 			_properties.MeleeDefenseMult *= 1.15;
-			_properties.RangedDefenseMult *= 1.15;
 			_properties.BraveryMult *= 1.15;
 		}
 	}

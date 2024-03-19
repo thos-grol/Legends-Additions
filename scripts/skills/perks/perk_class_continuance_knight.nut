@@ -2,11 +2,11 @@
 ::Const.Strings.PerkDescription.ContinuanceKnight <- ::MSU.Text.color(::Z.Color.Purple, "Class")
 + "\nWho can hear this and remain sleeping? The living? The dead? The earth and the sky?... The heart relentless beats preserving the world's skin..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\nB Class Vitality: " + ::MSU.Text.colorGreen("+50") + " Hitpoints"
-+ "\nE Class Endurance: " + ::MSU.Text.colorGreen("+10") + " Fatigue"
++ "\nB Class Vitality: " + ::MSU.Text.colorGreen("+50") + " Vitality"
++ "\nE Class Endurance: " + ::MSU.Text.colorGreen("+10") + " Endurance"
 + "\n• Grants the effect of Seismic Slam without any requirements or downsides"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Turn start")
-+ "\n• Heal for 15% of Max Hitpoints";
++ "\n• Heal for 15% of Max HP";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.ContinuanceKnight].Name = ::Const.Strings.PerkName.ContinuanceKnight;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.ContinuanceKnight].Tooltip = ::Const.Strings.PerkDescription.ContinuanceKnight;

@@ -129,41 +129,15 @@ this.rotation <- this.inherit("scripts/skills/skill", {
 
 		local target = _targetTile.getEntity();
 
-		if (!target.isAlliedWith(this.getContainer().getActor()))
-		{
-			if (target.getCurrentProperties().IsImmuneToKnockBackAndGrab || !this.getContainer().getActor().getSkills().hasSkill("perk.legend_twirl"))
-			{
-				return false;
-			}
-		}
-
+		if (!target.isAlliedWith(this.getContainer().getActor())) return false;
 		return this.skill.onVerifyTarget(_originTile, _targetTile) && !target.getCurrentProperties().IsStunned && !target.getCurrentProperties().IsRooted && target.getCurrentProperties().IsMovable && !target.getCurrentProperties().IsImmuneToRotation;
 	}
 
 	function onUse( _user, _targetTile )
 	{
 		this.m.Charges = 0;
-
 		local target = _targetTile.getEntity();
 		this.Tactical.getNavigator().switchEntities(_user, target, null, null, 1.0);
-		local skills = this.getContainer().getActor().getSkills();
-		if (skills.hasSkill("perk.legend_twirl"))
-		{
-			local roll = ::Math.rand(1,100);
-			local chance = skills.hasSkill("perk.legend_rotation") ? 40 : 20;
-
-			if (roll <= chance && !target.getSkills().hasSkill("effects.staggered"))
-			{
-				target.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
-				::Tactical.EventLog.logIn(
-					::Const.UI.getColorizedEntityName(target)
-					+ (roll <= chance ? ::MSU.Text.color(::Z.Color.BloodRed, " is staggered" ) : ::MSU.Text.color(::Z.Color.NiceGreen, " keeps their footing"))
-					+ ::Z.Log.display_chance(roll, chance)
-				);
-			}
-
-
-		}
 		return true;
 	}
 

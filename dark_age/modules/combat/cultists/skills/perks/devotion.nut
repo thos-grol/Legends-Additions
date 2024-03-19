@@ -3,8 +3,8 @@
 
 ::Const.Strings.PerkDescription.LegendSpecCultHood = "In Pain we find the truth of ourselves. We have no identity beyond servitude, our glory is agony."+
 "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:") +
-"\n• With face obscured by a cultist hood, gain " + ::MSU.Text.colorGreen( 15 ) + "% of your base resolve as a bonus to melee and ranged defense." +
-"\n• Unwillingness to avoid pain decreases the effectiveness of the Dodge to 5% of initiative." +
+"\n• With face obscured by a cultist hood, gain " + ::MSU.Text.colorGreen( 15 ) + "% of your base resolve as a bonus to Defense" +
+"\n• Unwillingness to avoid pain decreases the effectiveness of the Dodge to 5% of Agility." +
 "\n• Each permenant injury increases this bonus by  " + ::MSU.Text.colorGreen( "5%" ) +
 "\n• Also works with cultist leather hood, leather helmet, sack, decayed sack helm, warlock hood or mask of davkul." +
 "\n• Will refund dodge." +
@@ -61,14 +61,8 @@
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "+" + ::MSU.Text.colorGreen( total ) + " Melee Defense"
+				text = "+" + ::MSU.Text.colorGreen( total ) + " Defense"
 			},
-			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/ranged_defense.png",
-				text = "+" + ::MSU.Text.colorGreen( total ) + " Ranged Defense"
-			}
 		];
 
 		if (actor.getSkills().hasSkill("perk.perk_legend_specialist_cult_armor"))
@@ -101,7 +95,6 @@
             local total = ::Math.floor(resolve * multiplier);
 
 			_properties.MeleeDefense += total;
-			_properties.RangedDefense += total;
 		}
 	}
 
@@ -116,45 +109,3 @@
 	}
 
 });
-
-// ::mods_hookExactClass("skills/effects/dodge_effect", function (o)
-// {
-// 	o.getTooltip = function()
-// 	{
-// 		local actor = this.getContainer().getActor();
-// 		local initiative = ::Math.floor(actor.getInitiative() * (actor.getSkills().hasSkill("perk.legend_specialist_cult_hood") ? 0.05 : 0.15));
-// 		return [
-// 			{
-// 				id = 1,
-// 				type = "title",
-// 				text = this.getName()
-// 			},
-// 			{
-// 				id = 2,
-// 				type = "description",
-// 				text = this.getDescription()
-// 			},
-// 			{
-// 				id = 10,
-// 				type = "text",
-// 				icon = "ui/icons/melee_defense.png",
-// 				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Melee Defense"
-// 			},
-// 			{
-// 				id = 11,
-// 				type = "text",
-// 				icon = "ui/icons/ranged_defense.png",
-// 				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Ranged Defense"
-// 			}
-// 		];
-// 	}
-
-// 	o.onAfterUpdate = function( _properties )
-// 	{
-// 		local actor = this.getContainer().getActor();
-// 		local initiative = ::Math.floor(actor.getInitiative() * (actor.getSkills().hasSkill("perk.legend_specialist_cult_hood") ? 0.05 : 0.15));
-// 		_properties.MeleeDefense += ::Math.max(0, initiative);
-// 		_properties.RangedDefense += ::Math.max(0, initiative);
-// 	}
-
-// });

@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.StrangeStrikes <- "Strange Strikes";
 ::Const.Strings.PerkDescription.StrangeStrikes <- "Confuse the enemy with strange, unpredicatble strikes..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n " + ::MSU.Text.colorGreen("+10") + " Skill"
++ "\n " + ::MSU.Text.colorGreen("+10") + " Attack"
 + "\n"+::MSU.Text.colorRed("Attacks ignore Freedom of Movement");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.StrangeStrikes].Name = ::Const.Strings.PerkName.StrangeStrikes;

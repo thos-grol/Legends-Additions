@@ -2,10 +2,9 @@
 ::Const.Strings.PerkDescription.RuinKnight <- ::MSU.Text.color(::Z.Color.Purple, "Class")
 + "\nBring tragedy and ruin to those around you... The remnant power of the God of Ruin"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\nF Class Vitality: " + ::MSU.Text.colorGreen("+10") + " Hitpoints"
-+ "\nF Class Melee: " + ::MSU.Text.colorGreen("+10") + " Skill"
-+ "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Melee Defense"
-+ "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Ranged Defense"
++ "\nF Class Vitality: " + ::MSU.Text.colorGreen("+10") + " Vitality"
++ "\nF Class Melee: " + ::MSU.Text.colorGreen("+10") + " Attack"
++ "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Defense"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Turn start, 20% chance:")
 + "\n• Inflict an injury on all units within 2 tiles";
 
@@ -33,7 +32,6 @@ this.perk_class_ruin_knight <- this.inherit("scripts/skills/skill", {
 		_properties.Hitpoints += 50;
 		_properties.MeleeSkill += 10;
 		_properties.MeleeDefense += 10;
-		_properties.RangedDefense += 10;
 	}
 
 	function onTurnStart()

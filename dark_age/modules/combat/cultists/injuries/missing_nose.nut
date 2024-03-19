@@ -11,7 +11,7 @@
 			id = 11,
 			type = "text",
 			icon = "ui/icons/fatigue.png",
-			text = ::MSU.Text.colorRed( has ? "-5%" : "-10%") + " Max Fatigue"
+			text = ::MSU.Text.colorRed( has ? "-5%" : "-10%") + " Endurance"
 		});
 		return ret;
 	}

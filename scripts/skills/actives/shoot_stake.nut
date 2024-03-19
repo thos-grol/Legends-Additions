@@ -70,7 +70,7 @@ this.shoot_stake <- this.inherit("scripts/skills/skill", {
 			id = 8,
 			type = "text",
 			icon = "ui/icons/ammo.png",
-			text = "+" + getBonus() + " Ranged Skill. Effect diminshes the closer this unit has to 100 ranged skill"
+			text = "+" + getBonus() + " Ranged Attack. Effect diminshes the closer this unit has to 100 ranged skill"
 		});
 
 		if (ammo > 0)

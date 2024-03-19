@@ -136,7 +136,7 @@ this.pound_berserk_chain <- this.inherit("scripts/skills/skill", {
 			id = 8,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Ignores the bonus to Melee Defense granted by shields"
+			text = "Ignores the bonus to Defense granted by shields"
 		});
 
 		local dmg = 5;

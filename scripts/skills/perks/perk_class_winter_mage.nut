@@ -3,7 +3,7 @@
 + "\nWinter is the principle of silence, of endings, and of those things that are not quite dead"
 + "\nAn ingenious formula that converts actuality into spirituality"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n" + ::MSU.Text.colorRed("-25") + " Hitpoints (Vitality Conversion)"
++ "\n" + ::MSU.Text.colorRed("-25") + " Vitality (Mana Conversion)"
 + "\n" + ::MSU.Text.colorGreen("1") + " Mana pool"
 + "\nEnables the casting of Winter aspect magic";
 

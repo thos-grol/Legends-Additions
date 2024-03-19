@@ -112,7 +112,7 @@
 	{
 		local targetEntity = _targetTile.getEntity();
 		local roll = ::Math.rand(1, 100);
-		local chance = ::Math.min(100, targetEntity.getCurrentProperties().getRangedDefense());
+		local chance = ::Math.min(100, ::Math.round(targetEntity.getCurrentProperties().getMeleeDefense() * 0.75));
 		local dodgeCheck = targetEntity.getSkills().hasSkill("perk.legend_escape_artist") &&  roll <= chance;
 
 		local net_item = _user.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
@@ -131,7 +131,7 @@
 
             if (targetEntity.getSkills().hasSkill("perk.legend_escape_artist"))
 			{
-				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " fails to net " + ::Const.UI.getColorizedEntityName(targetEntity) + ". Using Ranged Defense with -10 modifier, rolled " + roll + " vs " + chance + ", the net falls to the ground");
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " fails to net " + ::Const.UI.getColorizedEntityName(targetEntity) + ". Using Defense with -10 modifier, rolled " + roll + " vs " + chance + ", the net falls to the ground");
 			}
 			else
 			{
@@ -145,7 +145,7 @@
 
 			if (targetEntity.getSkills().hasSkill("perk.legend_escape_artist"))
 			{
-				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " throws a net and hits " + ::Const.UI.getColorizedEntityName(targetEntity) + ". Using Ranged Defense with -10 modifier, rolled " + roll + " vs " + chance);
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " throws a net and hits " + ::Const.UI.getColorizedEntityName(targetEntity) + ". Using Defense with -10 modifier, rolled " + roll + " vs " + chance);
 
 			}
 			else
@@ -203,7 +203,7 @@
 
 			if (targetEntity.getSkills().hasSkill("perk.legend_escape_artist"))
 			{
-				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " fails to web " + ::Const.UI.getColorizedEntityName(targetEntity) + ". Using Melee Defense with -10 modifier, rolled " + roll + " vs " + chance);
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " fails to web " + ::Const.UI.getColorizedEntityName(targetEntity) + ". Using Defense with -10 modifier, rolled " + roll + " vs " + chance);
 			}
 
 			return false;
@@ -230,7 +230,7 @@
 
 			if (targetEntity.getSkills().hasSkill("perk.legend_escape_artist"))
 			{
-				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " webs " + ::Const.UI.getColorizedEntityName(targetEntity) + ". Using Melee Defense with -10 modifier, rolled " + roll + " vs " + chance);
+				this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " webs " + ::Const.UI.getColorizedEntityName(targetEntity) + ". Using Defense with -10 modifier, rolled " + roll + " vs " + chance);
 
 			}
 			else
@@ -316,14 +316,14 @@
 
 				if (target.getSkills().hasSkill("perk.legend_escape_artist"))
 				{
-					this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " roots " + ::Const.UI.getColorizedEntityName(target) + ". Using Melee Defense with -10 modifier, rolled " + roll + " vs " + chance);
+					this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " roots " + ::Const.UI.getColorizedEntityName(target) + ". Using Defense with -10 modifier, rolled " + roll + " vs " + chance);
 				}
 			}
 			else
 			{
 				if (target.getSkills().hasSkill("perk.legend_escape_artist"))
 				{
-					this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " fails to root " + ::Const.UI.getColorizedEntityName(target) + ". Using Melee Defense with -10 modifier, rolled " + roll + " vs " + chance);
+					this.Tactical.EventLog.log(::Const.UI.getColorizedEntityName(_user) + " fails to root " + ::Const.UI.getColorizedEntityName(target) + ". Using Defense with -10 modifier, rolled " + roll + " vs " + chance);
 				}
 			}
 		}

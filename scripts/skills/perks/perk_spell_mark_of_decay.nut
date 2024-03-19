@@ -5,7 +5,7 @@
 + "\n" + "Inflict "+::MSU.Text.colorGreen("1")+" Decay"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Mark of Decay: (Duration: 3)")
-+ "\n " + ::MSU.Text.color(::Z.Color.BloodRed, "On turn start, inflict 25% of the unit's max fatigue as fatigue damage")
++ "\n " + ::MSU.Text.color(::Z.Color.BloodRed, "On turn start, inflict 25% of the unit's Endurance as fatigue damage")
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Decay: (Duration: 3, Stackable)")
 + "\n " + ::MSU.Text.color(::Z.Color.BloodRed, "On wait or turn end, inflict 5 damage");
 

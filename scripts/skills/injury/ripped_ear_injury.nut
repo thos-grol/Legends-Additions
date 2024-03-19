@@ -31,7 +31,7 @@ this.ripped_ear_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] Initiative"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] Agility"
 			}
 		];
 		this.addTooltipHint(ret);

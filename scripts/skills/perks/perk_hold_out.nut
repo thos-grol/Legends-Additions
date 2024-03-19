@@ -2,7 +2,7 @@
 ::Const.Strings.PerkDescription.HoldOut <- "Blink and you miss me..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("– 1 duration for negative status effects")
-+ "\n"+::MSU.Text.colorGreen("+8") + " Hitpoints"
++ "\n"+::MSU.Text.colorGreen("+8") + " Vitality"
 + "\n"+::MSU.Text.colorGreen("+33%") + " chance to survive being struck down (Base: 33%)";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.HoldOut].Name = ::Const.Strings.PerkName.HoldOut;

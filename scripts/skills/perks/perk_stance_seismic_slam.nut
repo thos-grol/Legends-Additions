@@ -2,18 +2,16 @@
 ::Const.Strings.PerkDescription.StanceSeismicSlam <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
 + "\nEarthshaking..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n"+::MSU.Text.colorRed("– 25%") + " Initiative"
++ "\n"+::MSU.Text.colorRed("– 25%") + " Agility"
 + "\n"+::MSU.Text.colorRed("+3") + " Attack AP Cost up to 9"
 + "\nDouble the amount of rattle stacks inflicted"
 + "\nAttacks ignore Freedom of Movement and are unparriable"
-+ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "If Attack AP Cost > 5:")
 + "\n"+::MSU.Text.colorGreen("+25%") + " damage"
 + "\nAttack will stagger and seal the enemy"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Stagger: (Removed on turn start)")
-+ "\n"+::MSU.Text.colorRed("– 50% Initiative")
-+ "\n"+::MSU.Text.colorRed("– 25 Melee Defense")
-+ "\n"+::MSU.Text.colorRed("– 25 Ranged Defense")
++ "\n"+::MSU.Text.colorRed("– 50% Agility")
++ "\n"+::MSU.Text.colorRed("– 25 Defense")
 + "\n"+::MSU.Text.colorRed("+Cancels Shieldwall, Spearwall, Return Favor, and Riposte")
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Seal: (Duration: 1)")
@@ -55,7 +53,7 @@ this.perk_stance_seismic_slam <- this.inherit("scripts/skills/skill", {
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
-		if (_skill.m.IsAttack && _skill.m.ActionPointCost > 5)
+		if (_skill.m.IsAttack)
 		{
 			_properties.DamageTotalMult *= 1.25;
 		}
@@ -63,7 +61,7 @@ this.perk_stance_seismic_slam <- this.inherit("scripts/skills/skill", {
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
-		if (_targetEntity.isAlive() && !_targetEntity.isDying() && _skill.m.IsAttack && _skill.m.ActionPointCost > 5)
+		if (_targetEntity.isAlive() && !_targetEntity.isDying() && _skill.m.IsAttack)
 		{
 			if (!_targetEntity.getSkills().hasSkill("effects.staggered"))
 			{

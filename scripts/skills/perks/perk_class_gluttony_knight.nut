@@ -2,9 +2,8 @@
 ::Const.Strings.PerkDescription.GluttonyKnight <- ::MSU.Text.color(::Z.Color.Purple, "Class")
 + "\nConsume, ravage, red... The remnant power of the Shub-Niggurath, the Mother Tree of Desire..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\nE Class Melee: " + ::MSU.Text.colorGreen("+20") + " Skill"
-+ "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Melee Defense"
-+ "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Ranged Defense"
++ "\nE Class Melee: " + ::MSU.Text.colorGreen("+20") + " Attack"
++ "\nF Class Defense: " + ::MSU.Text.colorGreen("+10") + " Defense"
 + "\n• At the start of battle, gain 1 charge of shielding."
 + "\n• Each charge can nullify an attack. Gain more charges through consuming enemies or corpses.";
 
@@ -139,7 +138,6 @@ this.perk_class_gluttony_knight <- this.inherit("scripts/skills/skill", {
 	{
 		_properties.MeleeSkill += 20;
 		_properties.MeleeDefense += 10;
-		_properties.RangedDefense += 10;
 
 		if (this.m.Immunity)
 		{

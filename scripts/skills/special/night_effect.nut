@@ -39,12 +39,6 @@ this.night_effect <- this.inherit("scripts/skills/skill", {
 			icon = "ui/icons/ranged_skill.png",
 			text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Ranged Hit Chance"
 		});
-		ret.push({
-			id = 13,
-			type = "text",
-			icon = "ui/icons/ranged_defense.png",
-			text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Ranged Defense"
-		});
 		return ret;
 	}
 
@@ -55,13 +49,11 @@ this.night_effect <- this.inherit("scripts/skills/skill", {
 		if (_properties.IsAffectedByNight && !this.getContainer().hasSkill("trait.night_owl"))
 		{
 			_properties.Vision -= 2;
-			_properties.RangedDefense *= 0.7;
 		}
 
 		if (_properties.IsAffectedByNight && this.getContainer().hasSkill("trait.night_owl"))
 		{
 			_properties.Vision -= 1;
-			_properties.RangedDefense *= 0.85;
 		}
 	}
 

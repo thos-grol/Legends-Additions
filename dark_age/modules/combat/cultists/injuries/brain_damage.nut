@@ -13,12 +13,6 @@
 		ret.push({
 			id = 7,
 			type = "text",
-			icon = "ui/icons/bravery.png",
-			text = "[color=" + ::Const.UI.Color.PositiveValue + "]+15%[/color] Resolve"
-		});
-		ret.push({
-			id = 7,
-			type = "text",
 			icon = "ui/icons/xp_received.png",
 			text = ::MSU.Text.colorRed( has ? "-10%" : "-25%") + " Experience Gain"
 		});
@@ -26,7 +20,13 @@
 			id = 7,
 			type = "text",
 			icon = "ui/icons/initiative.png",
-			text = ::MSU.Text.colorRed( has ? "-10%" : "-25%") + " Initiative"
+			text = ::MSU.Text.colorRed( has ? "-10%" : "-25%") + " Reflex"
+		});
+		ret.push({
+			id = 7,
+			type = "text",
+			icon = "ui/icons/bravery.png",
+			text = "[color=" + ::Const.UI.Color.PositiveValue + "]+15%[/color] Will"
 		});
 		if (has)
 		{
@@ -43,9 +43,9 @@
 	o.onUpdate = function( _properties )
 	{
 		local has = this.has_penance();
-		_properties.BraveryMult *= 1.15;
 		_properties.XPGainMult *= has ? 0.9 : 0.75;
-		_properties.InitiativeMult *= has ? 0.8 : 0.75;
+		_properties.RangedDefenseMult *= has ? 0.8 : 0.75;
+		_properties.BraveryMult *= 1.15;
 	}
 
 	o.onApplyAppearance = function()

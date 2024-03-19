@@ -4,7 +4,7 @@
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue (Axes)"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "With axe equipped:")
-+ "\n Headshots will "+::MSU.Text.colorRed("Cull")+", executing targets with less than "+::MSU.Text.colorRed("33%")+" Hitpoints after recieving the hit"
++ "\n Headshots will "+::MSU.Text.colorRed("Cull")+", executing targets with less than "+::MSU.Text.colorRed("33%")+" Vitality after recieving the hit"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Split Shield")
 + "\n " + ::MSU.Text.colorGreen("– 25%") + " skill fatigue"

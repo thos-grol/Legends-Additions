@@ -37,13 +37,13 @@ this.dazed_effect <- this.inherit("scripts/skills/skill", {
 				id = 12,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-50%[/color] Max Fatigue"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-50%[/color] Endurance"
 			},
 			{
 				id = 12,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-50%[/color] Initiative"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-50%[/color] Agility"
 			}
 		];
 	}

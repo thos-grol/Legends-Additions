@@ -32,9 +32,9 @@ this.legend_glaive_slash <- this.inherit("scripts/skills/skill", {
 		this.m.HitChanceBonus = 10;
 		this.m.DirectDamageMult = 0.25;
 		this.m.ActionPointCost = 4;
-		this.m.FatigueCost = 10;
+		this.m.FatigueCost = 20;
 		this.m.MinRange = 1;
-		this.m.MaxRange = 1;
+		this.m.MaxRange = 2;
 		this.m.ChanceDecapitate = 50;
 		this.m.ChanceDisembowel = 33;
 		this.m.ChanceSmash = 0;

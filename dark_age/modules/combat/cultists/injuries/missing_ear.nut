@@ -11,7 +11,7 @@
 			id = 7,
 			type = "text",
 			icon = "ui/icons/initiative.png",
-			text = ::MSU.Text.colorRed( has ? "-5%" : "-10%") + " Initiative"
+			text = ::MSU.Text.colorRed( has ? "-5%" : "-10%") + " Agility"
 		});
 		return ret;
 	}

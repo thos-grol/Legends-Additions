@@ -3,11 +3,11 @@
 + "\n"+ ::MSU.Text.colorRed("Necessary to survive consuming a mage sequence")
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On attack or attacked:")
 + "\n"+ ::MSU.Text.colorRed("+1 stack against that opponent")
-+ "\n" + ::MSU.Text.colorGreen("+1") + " Attack and Melee Defense at 1 stack"
-+ "\n" + ::MSU.Text.colorGreen("+3") + " Attack and Melee Defense at 2 stacks"
-+ "\n" + ::MSU.Text.colorGreen("+6") + " Attack and Melee Defense at 3 stacks"
-+ "\n" + ::MSU.Text.colorGreen("+10") + " Attack and Melee Defense at 4 stacks"
-+ "\n"+ ::MSU.Text.colorRed("Every subsequent stack adds 1 Attack and Melee Defense");
++ "\n" + ::MSU.Text.colorGreen("+1") + " Attack and Defense at 1 stack"
++ "\n" + ::MSU.Text.colorGreen("+3") + " Attack and Defense at 2 stacks"
++ "\n" + ::MSU.Text.colorGreen("+6") + " Attack and Defense at 3 stacks"
++ "\n" + ::MSU.Text.colorGreen("+10") + " Attack and Defense at 4 stacks"
++ "\n"+ ::MSU.Text.colorRed("Every subsequent stack adds 1 Attack and Defense");
 
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.PatternRecognition].Name = ::Const.Strings.PerkName.PatternRecognition;
@@ -58,7 +58,7 @@ this.perk_pattern_recognition <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/plus.png",
-				text = "Increased Attack and Melee Defense"
+				text = "Increased Attack and Defense"
 			}
 		);
 

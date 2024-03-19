@@ -35,25 +35,19 @@ this.lead_by_example_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.MeleeSkill + "[/color] Melee Attack"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.MeleeSkill + "[/color] Attack"
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.MeleeDefense + "[/color] Melee Defense"
-			},
-			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.RangedDefense + "[/color] Ranged Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.MeleeDefense + "[/color] Defense"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.Bravery + "[/color] Resolve"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.Bravery + "[/color] Will"
 			}
 		];
 	}
@@ -62,7 +56,6 @@ this.lead_by_example_effect <- this.inherit("scripts/skills/skill", {
 	{
 		_properties.MeleeSkill += this.m.MeleeSkill;
 		_properties.MeleeDefense += this.m.MeleeDefense;
-		_properties.RangedDefense += this.m.RangedDefense;
 		_properties.Bravery += this.m.Bravery;
 	}
 

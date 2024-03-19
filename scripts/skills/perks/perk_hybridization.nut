@@ -1,9 +1,9 @@
 ::Const.Strings.PerkName.Hybridization <- "Hybridization";
 ::Const.Strings.PerkDescription.Hybridization <- "Become proficient in both ranged and melee weapons..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Melee weapon equipped:")
-+ "\n"+::MSU.Text.colorGreen("+20% of Ranged Skill") + " as Skill"
++ "\n"+::MSU.Text.colorGreen("+20% of Ranged Attack") + " as Attack"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Ranged weapon equipped:")
-+ "\n"+::MSU.Text.colorGreen("+20% of Skill") + " as Ranged Skill";
++ "\n"+::MSU.Text.colorGreen("+20% of Attack") + " as Ranged Attack";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Hybridization].Name = ::Const.Strings.PerkName.Hybridization;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Hybridization].Tooltip = ::Const.Strings.PerkDescription.Hybridization;

@@ -37,7 +37,7 @@ this.crushed_windpipe_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Max Fatigue"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Endurance"
 			}
 		];
 		this.addTooltipHint(ret);

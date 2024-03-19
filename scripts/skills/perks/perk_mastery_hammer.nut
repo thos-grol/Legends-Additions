@@ -12,7 +12,7 @@
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Daze: (Duration: 2)")
 + "\n "+::MSU.Text.colorRed("– 50% Fatigue")
-+ "\n "+::MSU.Text.colorRed("– 50% Initiative");
++ "\n "+::MSU.Text.colorRed("– 50% Agility");
 
 
 

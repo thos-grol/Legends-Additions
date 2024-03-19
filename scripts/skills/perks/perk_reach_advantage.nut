@@ -2,7 +2,7 @@
 ::Const.Strings.PerkDescription.ReachAdvantage = "Abuse the superior reach of your weapon..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "2H Weapon Attack Hit:")
 + "\n"+ ::MSU.Text.colorRed("+1 stack up to 5")
-+ "\n" + ::MSU.Text.colorGreen("+7") + " Melee Defense per stack"
++ "\n" + ::MSU.Text.colorGreen("+7") + " Defense per stack"
 + "\n" + ::MSU.Text.colorRed("Expires on turn start");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.ReachAdvantage].Name = ::Const.Strings.PerkName.ReachAdvantage;
@@ -28,7 +28,7 @@ this.perk_reach_advantage <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character is using the superior reach of their melee weapon to keep opponents at bay, increasing Melee Defense by [color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.Stacks * 5 + "[/color] until their next turn.";
+		return "This character is using the superior reach of their melee weapon to keep opponents at bay, increasing Defense by [color=" + ::Const.UI.Color.PositiveValue + "]+" + this.m.Stacks * 5 + "[/color] until their next turn.";
 	}
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )

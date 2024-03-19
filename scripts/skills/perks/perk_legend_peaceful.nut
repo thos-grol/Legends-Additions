@@ -1,10 +1,9 @@
 ::Const.Strings.PerkName.LegendPeaceful = "Clarity";
 ::Const.Strings.PerkDescription.LegendPeaceful = "Take a glimpse of the landscape and draw it from memory..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n"+::MSU.Text.colorGreen("+10") + " Skill"
++ "\n"+::MSU.Text.colorGreen("+10") + " Attack"
 + "\n"+::MSU.Text.colorGreen("+1") + " Vision"
-+ "\n"+::MSU.Text.colorGreen("+5") + " Melee Defense"
-+ "\n"+::MSU.Text.colorGreen("+5") + " Ranged Defense";
++ "\n"+::MSU.Text.colorGreen("+5") + " Defense";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendPeaceful].Name = ::Const.Strings.PerkName.LegendPeaceful;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendPeaceful].Tooltip = ::Const.Strings.PerkDescription.LegendPeaceful;
@@ -31,7 +30,6 @@ this.perk_legend_peaceful <- this.inherit("scripts/skills/skill", {
 		_properties.MeleeSkill += 10;
 		_properties.Vision += 1;
 		_properties.MeleeDefense += 5;
-		_properties.RangedDefense += 5;
 	}
 
 });

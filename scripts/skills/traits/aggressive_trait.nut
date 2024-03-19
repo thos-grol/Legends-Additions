@@ -1,3 +1,4 @@
+//TODO: rethink
 this.aggressive_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {},
 	function create()
@@ -46,14 +47,14 @@ this.aggressive_trait <- this.inherit("scripts/skills/traits/character_trait", {
 			{
 				id = 10,
 				type = "text",
-				icon = "ui/icons/regular_damage.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+15%[/color] Melee Damage"
+				icon = "ui/icons/strength.png",
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+15[/color] Strength"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5[/color] Defense from each surrounding enemy"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-3[/color] Defense from each surrounding enemy"
 			},
 			{
 				id = 12,
@@ -66,8 +67,8 @@ this.aggressive_trait <- this.inherit("scripts/skills/traits/character_trait", {
 
 	function onUpdate( _properties )
 	{
-		_properties.MeleeDamageMult *= 1.15;
-		_properties.SurroundedDefense -= 5;
+		_properties.RangedSkill += 15;
+		_properties.SurroundedDefense -= 3;
 	}
 
 	function onCombatStarted()

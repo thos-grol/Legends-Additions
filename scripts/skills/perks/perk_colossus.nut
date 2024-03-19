@@ -1,11 +1,10 @@
 ::Const.Strings.PerkName.Colossus = "Colossus";
 ::Const.Strings.PerkDescription.Colossus = "This character looms over their enemies..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n" + ::MSU.Text.colorGreen("+25%") + " Hitpoints"
++ "\n" + ::MSU.Text.colorGreen("+25%") + " Vitality"
 + "\n" + ::MSU.Text.colorGreen("+Cull Immunity")
 + "\n" + ::MSU.Text.colorGreen("+Hits to the head no longer cause critical damage")
-+ "\n" + ::MSU.Text.colorGreen("+Most attacks that would stun, now dazes")
-+ "\n\n" + ::MSU.Text.colorRed("More hitpoints and lower damage taken reduce the chances of becoming injured");
++ "\n" + ::MSU.Text.colorGreen("+Most attacks that would stun, now dazes");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Colossus].Name = ::Const.Strings.PerkName.Colossus;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Colossus].Tooltip = ::Const.Strings.PerkDescription.Colossus;

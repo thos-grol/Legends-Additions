@@ -40,7 +40,7 @@ this.cut_artery_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "This character will continue to lose [color=" + this.Const.UI.Color.NegativeValue + "]3[/color] hitpoints each turn in combat"
+				text = "This character will continue to lose [color=" + this.Const.UI.Color.NegativeValue + "]3[/color] HP each turn in combat"
 			});
 		}
 		else
@@ -49,7 +49,7 @@ this.cut_artery_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-35%[/color] Hitpoints"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-35%[/color] Vitality"
 			});
 		}
 

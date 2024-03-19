@@ -47,6 +47,9 @@
             result.ranged_mult *= 0.9;
     }
 
+    if (_actor.getSkills().hasSkill("effects.smoke"))
+            result.ranged_mult *= 0.5;
+
     return result;
 }
 

@@ -1,15 +1,12 @@
 ::Const.Strings.PerkName.LegendTwirl <- "Twirl";
-::Const.Strings.PerkDescription.LegendTwirl <- "Gracefully redirect the enemy... and land them in danger!"
-+ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Rotation\' (3 AP, 25 Fat):")
-+ "\nSwitch places with an allied unit"
-+ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n"+"Rotation now targets enemies and has a 20% chance to stagger them"
-+ "\n"+::MSU.Text.colorRed("The chance to stagger becomes 40% if this unit has the Rotation perk")
+::Const.Strings.PerkDescription.LegendTwirl <- "Twirl with grace through battle"
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On enemy attack miss:")
++ "\n"+"If this character and enemy are eligible for rotation, swap positions and stagger the enemy. Gain 100 Defence until turn start"
++ "\n"+::MSU.Text.colorRed("Cooldown: 2 turns. Killing an enemy will reset the cooldown")
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Stagger: (Removed on turn start)")
-+ "\n"+::MSU.Text.colorRed("– 50% Initiative")
-+ "\n"+::MSU.Text.colorRed("– 25 Melee Defense")
-+ "\n"+::MSU.Text.colorRed("– 25 Ranged Defense")
++ "\n"+::MSU.Text.colorRed("– 50% Agility")
++ "\n"+::MSU.Text.colorRed("– 25 Defense")
 + "\n"+::MSU.Text.colorRed("+Cancels Shieldwall, Spearwall, Return Favor, and Riposte");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendTwirl].Name = ::Const.Strings.PerkName.LegendTwirl;
@@ -31,7 +28,11 @@
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Rotation].Tooltip = ::Const.Strings.PerkDescription.Rotation;
 
 this.perk_legend_twirl <- this.inherit("scripts/skills/skill", {
-	m = {},
+	m = {
+		Cooldown = 0,
+		CooldownMax = 2,
+		Active = false
+	},
 	function create()
 	{
 		this.m.ID = "perk.legend_twirl";
@@ -45,15 +46,34 @@ this.perk_legend_twirl <- this.inherit("scripts/skills/skill", {
 		this.m.IsHidden = false;
 	}
 
-	function onAdded()
+	function activate()
 	{
-		if (!this.m.Container.hasSkill("actives.rotation")) 
-			this.m.Container.add(this.new("scripts/skills/actives/rotation"));
+		this.m.Cooldown = this.m.CooldownMax;
+		this.m.Active = true;
 	}
 
-	function onRemoved()
+	function can_be_used()
 	{
-		if (!this.m.Container.hasSkill("perk.rotation")) this.m.Container.removeByID("actives.rotation");
+		return this.m.Cooldown == 0;
+	}
+
+	function onTargetKilled( _targetEntity, _skill )
+	{
+		this.m.Cooldown = 0;
+	}
+
+	function onTurnStart()
+	{
+		this.m.Active = false;
+		if (this.m.Cooldown > 0) this.m.Cooldown--;
+	}
+
+	function onUpdate( _properties )
+	{
+		if (this.m.Active)
+		{
+			_properties.MeleeDefense += 100;
+		}
 	}
 
 });

@@ -50,7 +50,7 @@ this.weasel_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+25[/color] Melee Defense while retreating"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+25[/color] Defense while retreating"
 			}
 		];
 	}

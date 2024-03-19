@@ -48,7 +48,7 @@ this.grazed_neck_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] Hitpoints"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] Vitality"
 			});
 		}
 

@@ -31,14 +31,8 @@ this.dodge_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Defense"
 			},
-			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + initiative + "[/color] Ranged Defense"
-			}
 		];
 	}
 
@@ -58,7 +52,6 @@ this.dodge_effect <- this.inherit("scripts/skills/skill", {
 		if (!isEnabled()) return;
 		local initiative = ::Math.floor(this.getContainer().getActor().getInitiative() * 0.15);
 		_properties.MeleeDefense += ::Math.max(0, initiative);
-		_properties.RangedDefense += ::Math.max(0, initiative);
 	}
 
 });

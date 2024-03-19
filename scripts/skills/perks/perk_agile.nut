@@ -1,9 +1,8 @@
-::Const.Strings.PerkName.Agile <- "Agile";
-::Const.Strings.PerkDescription.Agile <- "Twist and dodge like a slippery snake"
+::Const.Strings.PerkName.Agile <- "Might";
+::Const.Strings.PerkDescription.Agile <- "Crush your enemies with your might"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n"+::MSU.Text.colorGreen("+10") + " Melee Defense"
-+ "\n"+::MSU.Text.colorGreen("+10") + " Ranged Defense"
-+ "\n"+::MSU.Text.colorRed("Invalid if a shield is equipped");
++ "\n" + ::MSU.Text.colorGreen("+25%") + " Strength"
++ "\n" + ::MSU.Text.colorGreen("+Exempt from orc weapon penalty");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Agile].Name = ::Const.Strings.PerkName.Agile;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Agile].Tooltip = ::Const.Strings.PerkDescription.Agile;
@@ -23,18 +22,30 @@ this.perk_agile <- this.inherit("scripts/skills/skill", {
 		this.m.IsHidden = false;
 	}
 
-	function isEnabled()
+	function onAdded()
 	{
-		local offhand = this.getContainer().getActor().getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
-		if (offhand != null && offhand.isItemType(::Const.Items.ItemType.Shield)) return false;
-		return true;
+		this.getContainer().getActor().getCurrentProperties().IsProficientWithHeavyWeapons = true;
+		local equippedItem = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+
+		if (equippedItem != null)
+		{
+			this.getContainer().getActor().getItems().unequip(equippedItem);
+			this.getContainer().getActor().getItems().equip(equippedItem);
+		}
+
+		equippedItem = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+
+		if (equippedItem != null)
+		{
+			this.getContainer().getActor().getItems().unequip(equippedItem);
+			this.getContainer().getActor().getItems().equip(equippedItem);
+		}
 	}
 
 	function onUpdate( _properties )
 	{
-		if (!isEnabled()) return;
-		_properties.MeleeDefense += 10;
-		_properties.RangedDefense += 10;
+		_properties.IsProficientWithHeavyWeapons = true;
+		_properties.RangedSkillMult *= 1.25;
 
 	}
 

@@ -37,20 +37,20 @@ this.quick_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Initiative"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+20[/color] Agility"
 			}
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		_properties.Initiative += 10;
+		_properties.Initiative += 20;
 	}
 
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Fast", true);
+		actor.getFlags().set("Agile", true);
 	}
 
 });

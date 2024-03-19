@@ -10,13 +10,13 @@
 			id = 7,
 			type = "text",
 			icon = "ui/icons/bravery.png",
-			text = ::MSU.Text.colorRed( has ? "+20%" : "-40%") + " Resolve"
+			text = ::MSU.Text.colorRed( has ? "+20%" : "-40%") + " Will"
 		});
 		ret.push({
 			id = 7,
 			type = "text",
 			icon = "ui/icons/initiative.png",
-			text = ::MSU.Text.colorRed( has ? "+15%" : "-30%") + " Initiative"
+			text = ::MSU.Text.colorRed( has ? "+15%" : "-30%") + " Agility"
 		});
 		return ret;
 	}

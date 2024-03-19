@@ -3,7 +3,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "When reduced to 50% hp:")
 + "\n• Triggers an aoe magic blizzard that damages and stun hit units for 2 turns."
 + "\n• Become immune to stuns and displacement for 2 turns."
-+ "\n• Gain increased damage, initiative, and defenses for 2 turns.";
++ "\n• Gain increased damage, Agility, and defenses for 2 turns.";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DirewolfBerserkMode].Name = ::Const.Strings.PerkName.DirewolfBerserkMode;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DirewolfBerserkMode].Tooltip = ::Const.Strings.PerkDescription.DirewolfBerserkMode;
@@ -86,7 +86,6 @@ this.perk_direwolf_berserk_mode <- this.inherit("scripts/skills/skill", {
 			_properties.Initiative += 100;
 			_properties.MeleeSkill += 15;
             _properties.MeleeDefense += 15;
-            _properties.RangedDefense += 15;
 		}
 	}
 

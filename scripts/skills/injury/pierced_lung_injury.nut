@@ -33,7 +33,7 @@ this.pierced_lung_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-60%[/color] Max Fatigue"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-60%[/color] Endurance"
 			}
 		];
 		this.addTooltipHint(ret);

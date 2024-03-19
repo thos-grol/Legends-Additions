@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.StanceBreakthrough <- "Breakthrough";
 ::Const.Strings.PerkDescription.StanceBreakthrough <- ::MSU.Text.color(::Z.Color.Purple, "Stance")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Turn End, Spear Equipped:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Turn End, Polearm Equipped:")
 + "\n Perform " + ::MSU.Text.colorGreen("X") + " free attacks"
 + "\n " + ::MSU.Text.colorRed("X is the number of enemy_tiles in ZOC");
 
@@ -34,7 +34,7 @@ this.perk_stance_breakthrough <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		if (!actor.getCurrentProperties().IsAbleToUseWeaponSkills) return false; //isDisarmed
 		local weapon = actor.getMainhandItem();
-		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Spear)) return false;
+		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Polearm)) return false;
 		return true;
 	}
 

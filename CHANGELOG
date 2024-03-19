@@ -4,30 +4,27 @@ CHANGELOG
 
 //TODO: Updated to legends 18.2.X
 
-
-
 stat changes
 - All stats are planned to have more uses in the future - reaching certain thresholds will transform/improve the character and their skills
 
 - merged Melee Skill and Ranged Skill into Attack. All units have 100% of skill into melee attacks and 50% into ranged attacks by default. This frees up a stat slot to display
     - Ranged focus backgrounds will have the "Ranged Focus Trait" that reverses this. Ranged Proficiency will change the conversion to 75% or the highest number.
-    - changed skills, effects, and injuries to reflect this
+    - fixed effects using ranged attack
+    - fixed skills using ranged attack
+    - fixed injuries using ranged attack
 
-- TODO: merged Melee Defense and Ranged Defense into one skill. Warriors are probably better at dodging melee strikes than arrows. Ranged Defense will be 75% of Melee Defense
+merged Melee Defense and Ranged Defense into one skill. Warriors are probably better at dodging melee strikes than arrows. Ranged Defense will be 75% of Melee Defense
+    - remove ranged defense stat from shields
+    - fixed effects using ranged defense
+    - fixed perks and skills using ranged defense
+    - fixed injuries using ranged defense
 - implemented strength stat - every point is 1% of increased damage.
 - implemented reflex stat - every point is 1% chance to downgrade a critical hit (head hit) to a body hit or a body hit to a graze (10% damage)
 
+- changed graphics and arrangement of stats
+    //renamed stats and change stat descriptions
 
-//TODO: changed star distribution to remove matk and mdef
-
-//TODO: rename stats and change stat descriptions
-TODO: change stat display
-//TODO: fix hitcalc for ranged
-//TODO: made own version of clever recruiter, no need to use it, feature was integral to recruiting so it was integrated to not leave dependency outside
-    - stat display has been changed
-//TODO: fix enemy stats
-//TODO: choose new origin
-
+//TODO: removed all other origins, and working on the first one to balance: Young Blood
 
 - standardized background strengths and weakened enemy strengths to reflect this: stat rolling has been removed from backgrounds and trait trees. This should make the game feel better even with your shit peasant recruits. Now stat rng depends only the traits a character recieves. The background has uses unrolled stats as a baseline. EVERYTHING in the game will now be balanced around the daytaler's stats. This should be more logical and organized:
 
@@ -44,15 +41,11 @@ TODO: change stat display
 - Removed leveling up melee skill and melee def for player and enemy. It was always arms race between you and enemy to level these up - ie. it was autopick. Now you can vary your stat levelups among the 6 other stats. 
     As for methods to improve attack and defenses it would be training, events, future class promotions, and perks
 
-
 Enemies
-- All humans and monsters have been rebalanced to the above standards as a guideline. Note that monsters will be way beyond human strength
+- TODO: All humans and monsters have been rebalanced to the above standards as a guideline. Note that monsters will be way beyond human strength. reworked 50-100+ enemies to reflect new stats
 
 
-backgrounds
-
-- TODO: redo each background
-- TODO: review traits
+backgrounds 2.0
 
 - TODO: Modified backgrounds so that they will have a theme, and generally if they have a great benefit, there will be a tradeoffs:
     - daytaler: no downsides, but no upsides
@@ -66,28 +59,27 @@ backgrounds
     - lumberjack: Axe Affinity
     - miner: Bludgeon Affinity
 
-    - beggar: -10 Vitality, -20 Endurance. Cheaper pay
-    - cripple: +20 Will. Permanent injury.
+    - beggar: -10 Vitality, -20 Endurance. Cheaper pay. No Vit or Fat traits or talents.
+    - cripple: +10 Will. Permanent injury. No Vit or Fat traits or talents.
 
-    - thief: -10 Vitality. +5 Reflex, +20 Agility
+    - thief: -10 Vitality. +10 Reflex, +20 Agility. Free quick hands. No Vit traits or talents.
     - Graverobber: Spooky Events.
-    - Killer on the run: +10 Atk, +10 Reflex
-    - poacher: +20 Endurance. ranged focus.
+    - Killer on the run: +10 Atk, +10 Reflex. Free quick hands
+    - poacher: ranged focus. free pathfinder
 
     rarer backgrounds
-
     - fisherman: Net Skill Tree. More expensive. (has a chance to be found in harbors)
-    - hunter: ranged focus. +10 atk. ranged affinity
+    - hunter: ranged focus. ranged affinity. free patfinder
     - wildman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
     - wildwoman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
 
-    - bastard:
-    - disowned_noble:
-    - historian: -10 Vitality, -20 Fatigue, -10 Reflex. Always Bright. No athletic traits
+    - bastard: just a daytaler with different events and traits
+    - disowned_noble: just a daytaler with different events and traits
+    - historian: -10 Vitality, -20 Fatigue, -10 Reflex. Always Bright. No Vit, Fat, Reflex traits or talent.
 
-    - adventurous noble:
-    - militia:
-    - retired soldier:
+    - adventurous noble: +10 Vitality, +10 Attack, +10 Defense, trained tree
+    - militia: trained tree
+    - retired soldier: -10 Vitality, -20 Fatigue, +10 Attack, +10 Defense, trained tree. No Vit or Fat traits or talents.
 
 
 - changed recruiting rules to be more of a event draw format to synergize:
@@ -98,28 +90,85 @@ backgrounds
     - removed redundant backgrounds ie. miller
 
 weapon changes
-- TODO: merged spear and polearm weapon classes together. and rebalanced their logic.
-    - Pure Polearms can attack at 3 tile range while spear can attack at 2 tile range.
-    - Moved polearm hybrids to their main class ie. they will be axe/polearm for example. These hybrids will attack at 2 tile range.
+- merged spear and polearm weapon trees together and rebalanced their logic
+    - Breakthrough works with polearms
+    - Fused Spear and Polearm Mastery
 
-- Increase all ranged weapon maximum range by 1
+    - Pikes can attack at 3 tile range while ohter polearms can attack at 2 tile range
+    - moved Spear weapons to Polearm Category
+    - Recategorized Polearm Weapons to their appropriate hybrids
+
+perk rework 2.0
+- seismic slam no longer needs 5 AP+ to trigger some effects
+- talents now depend on trait trees a character has, there are no matk and mdef stars
+    - traits will determine trait trees a character will recieve
+    - all traits have been reviewed and rebalanced. the idea is to err on the side of overbuffing and nerf later
+
+- Sturdy: Main Stat Vitality
+    - Colossus
+    - TODO: Hold Out - You have X% chance to resist most physical effects. X being Vitality / 5. Combat debuffs like Staggered do not count.
+    - Nine Lives
+    - TODO: Indomitable - rework based on Vit
+
+- Fit: Main Stat Endurance
+    - TODO: Recuperation - If Endurance > 140, fat rec becomes 5. Lock Vit regen behind 100 Vitality.
+    - Steadfast
+    - Fitness
+    - TODO: Fresh and Furious - First attack of turn is 0 AP and 0 Fat Cost as long as Fat < 50%.
+
+- Agile: Main stat Agility
+    - Removed Fast tree and merged into agile tree
+    - Removed Pathfinder. It appears on some backgrounds and in the training tree.
+    - Removed Quickhands. It appears on some backgrounds.
+    - Removed Escape Artist. It appears on Monsters
+    - Twirl - reworked - if an enemy misses an attack on you, switch places with them and stagger them. Gain 100 Defense until turn start. Cooldown 2 turns. Killing will reset the cd.
+    - Overwhelm -> Tempest - reworked. On Enemy Attack: If this unit's Agility is higher than the enemy and under 50% Fatigued, strike them. Does not work with weapons over X weight. X is calculated based on Strength
+        On Attack: If Agility is higher than the opponent, apply a stack of overwhelm on them
+
+- Large -> Strong: Main Stat Strength
+    - Agile -> Might: Increase Strength by 25%. Exempt from orc weapon penalty
+    - Sundering Strikes: Increase injury and armor damage based on strength
+    - Death Dealer - If character has 3X Weapon weight in strength and if AP cost for a weapon skill >= 6, -2 AP cost. Has a 50% chance to resist stagger
+    - Muscularity - +25% Strength. buffed version of brawny (50% reduction) 
+
+- Tenacious: Main Stat Will
+    - TODO: Fortified Mind - moved to tier 1
+    - TODO: Lone Wolf -> Mind Over Body - buffed for lower will. if will over 90, ignore fresh injuries
+    - TODO: Survival Instinct - if will over 75, improve bonuses
+    - TODO: Mind Over Body -> Fighting Spirit - A power that is equal, that anyone can achieve regardless of their circumstances. Once Will reaches 100. Will do pure damage based on Will. Will reduce damage based on will. Will morale check enemies in radius based on Will.
+
+- Calm: Main Stat Reflex
+    - Recuperation
+    - TODO: Peaceful - Reflex +25%. If reflex > 50, 
+    - TODO: Battle Flow - Increase Atk and Def. You have reflex % to not lose a stack when hit
+    - TODO: Perfect Focus - Reflex +25% on top of other effects
+
+- Devious: Sneaky
+    - TODO: Underdog - Now is Battleheart
+    - TODO: Removed Footwork, merged into Rotation in trained tree. Renamed perk to Evasion
+    - TODO: Pocket Dirt, rest charge on kill
+    - Blend In
+
+-Vicious
+    - HeadHunter
+    - TODO: Fearsome - Change to attack stat
+    - Berserk
+    - Vengeance
 
 
-
-//TODO:bug fixes
+Bug Fixes
 - fixed Ambidextrous Perk having infinite attacks with Taunt
 - fixed crack the whip crash with barb direwolfs
 - you can't parry magic anymore
 
+TODO:bug fixes
 
 
 2) Weakness (applied by cleavers) have the wrong formula for damage reduction, it practically reduces damage to 0
 4) Death dealer does not reduce fat costs of aoe skills, most likely the same is true for Wrath (haven't actually tried the latter yet). This is because skills reset their fat cost after these perks change it and they do not consider these perks at all
 6) Librarian drop is seemingly unchanged from base legends, this might result in the player getting items which were supposed to be removed
 1) Crossbows claim an armor ignore percent of 75%, while in reality shoot bolt and shoot heavy bolt only has 45% and 50% ignore respectively (being a sharpshooter, whatever that means, stealthily adds another 5%)
-
 2) Polearm mastery (proficiency) does not reduce the ap cost of most polearm skills, as far as I can tell only the skills of pure polearms (so not spetums which are spear/polearm) and for some reason the primary attack of the longaxe
-
 3) Crafting possibly not working (see Mage of Winter potion)
 
 1.17

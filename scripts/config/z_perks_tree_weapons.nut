@@ -312,65 +312,6 @@ gt.Const.Perks.FlailTree <- {
 	]
 };
 
-gt.Const.Perks.SpearTree <- {
-	ID = "Spear",
-	Name = "Spear",
-	Descriptions = [
-		"spears"
-	],
-	Attributes = {
-		Hitpoints = [
-			0,
-			0
-		],
-		Bravery = [
-			0,
-			0
-		],
-		Stamina = [
-			0,
-			0
-		],
-		MeleeSkill = [
-			0,
-			0
-		],
-		RangedSkill = [
-			0,
-			0
-		],
-		MeleeDefense = [
-			0,
-			0
-		],
-		RangedDefense = [
-			0,
-			0
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Intimidate
-		],
-		[
-			gt.Const.Perks.PerkDefs.SpecSpear
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Duelist
-		],
-		[
-			gt.Const.Perks.PerkDefs.StanceBreakthrough
-		]
-	]
-};
-
 gt.Const.Perks.PolearmTree <- {
 	ID = "Polearm",
 	Name = "Polearm",
@@ -425,7 +366,7 @@ gt.Const.Perks.PolearmTree <- {
 			gt.Const.Perks.PerkDefs.ReachAdvantage
 		],
 		[
-			gt.Const.Perks.PerkDefs.StanceFollowup
+			gt.Const.Perks.PerkDefs.StanceBreakthrough
 		]
 	]
 };
@@ -554,6 +495,57 @@ gt.Const.Perks.BowTree <- {
 /////////////////////////////////////////////////////////////////////////////////////////////
 // Disabled
 /////////////////////////////////////////////////////////////////////////////////////////////
+gt.Const.Perks.SpearTree <- {
+	ID = "Spear",
+	Name = "Spear",
+	Descriptions = [
+		"spears"
+	],
+	Attributes = {
+		Hitpoints = [
+			0,
+			0
+		],
+		Bravery = [
+			0,
+			0
+		],
+		Stamina = [
+			0,
+			0
+		],
+		MeleeSkill = [
+			0,
+			0
+		],
+		RangedSkill = [
+			0,
+			0
+		],
+		MeleeDefense = [
+			0,
+			0
+		],
+		RangedDefense = [
+			0,
+			0
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[],
+		[],
+		[],
+		[],
+		[],
+		[],
+		[]
+	]
+};
+
 gt.Const.Perks.MaceTree <- {
 	ID = "Mace",
 	Name = "Mace",

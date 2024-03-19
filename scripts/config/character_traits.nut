@@ -45,10 +45,6 @@ gt.Const.CharacterTraits <- [
 		"scripts/skills/traits/bright_trait"
 	],
 	[
-		"trait.seductive",
-		"scripts/skills/traits/seductive_trait"
-	],
-	[
 		"trait.drunkard",
 		"scripts/skills/traits/drunkard_trait"
 	],
@@ -67,10 +63,6 @@ gt.Const.CharacterTraits <- [
 	[
 		"trait.determined",
 		"scripts/skills/traits/determined_trait"
-	],
-	[
-		"trait.dastard",
-		"scripts/skills/traits/dastard_trait"
 	],
 	[
 		"trait.deathwish",
@@ -241,10 +233,6 @@ gt.Const.CharacterTraits <- [
 		"scripts/skills/traits/slack_trait"
 	],
 	[
-		"trait.frail",
-		"scripts/skills/traits/frail_trait"
-	],
-	[
 		"trait.natural",
 		"scripts/skills/traits/natural_trait"
 	],
@@ -252,33 +240,9 @@ gt.Const.CharacterTraits <- [
 		"trait.pragmatic",
 		"scripts/skills/traits/pragmatic_trait"
 	],
-	// [
-	// 	"trait.light",
-	// 	"scripts/skills/traits/light_trait"
-	// ],
-	// [
-	// 	"trait.heavy",
-	// 	"scripts/skills/traits/heavy_trait"
-	// ],
-	// [
-	// 	"trait.ambitious",
-	// 	"scripts/skills/traits/ambitious_trait"
-	// ],
 	[
 		"trait.aggressive",
 		"scripts/skills/traits/aggressive_trait"
 	],
-	// [
-	// 	"trait.gift_of_people",
-	// 	"scripts/skills/traits/gift_of_people_trait"
-	// ],
-	[
-		"trait.double_tongued",
-		"scripts/skills/traits/double_tongued_trait"
-	],
-	[
-		"trait.sureshot",
-		"scripts/skills/traits/sureshot_trait"
-	]
 ];
 

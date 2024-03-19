@@ -1,9 +1,12 @@
-::Const.Strings.PerkName.Overwhelm = "Overwhelm";
+::Const.Strings.PerkName.Overwhelm = "Tempest";
 ::Const.Strings.PerkDescription.Overwhelm = ::MSU.Text.color(::Z.Color.Purple, "Destiny")
-+ "\nOverwhelm them with a flurry of strikes. Follow up to create devestating attacks."
-+ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On attack hit or miss:")
-+ "\nInflict 1 stack of " + ::MSU.Text.colorRed("Overwhelm") + ": " + ::MSU.Text.colorGreen("– 10%") + " melee and ranged attack per stack for a turn)."
-+ "\n" + ::MSU.Text.colorGreen("+20%") + " increased damage for the next attack on landing an attack.";
++ "\nBecome a tempest of destruction on the battlefield"
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On enemy attack:")
++ "\nIf this character is under 50% Fatigued and their Agility is higher than the enemy, do a melee attack"
++ "\n" + ::MSU.Text.colorRed("Does not work with weapons over X weight. X is 25% of Strength")
+
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On attack:")
++ "\nInflict 1 stack of " + ::MSU.Text.colorRed("Overwhelm") + ": " + ::MSU.Text.colorGreen("– 10%") + " melee and ranged attack per stack for a turn).";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Overwhelm].Name = ::Const.Strings.PerkName.Overwhelm;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Overwhelm].Tooltip = ::Const.Strings.PerkDescription.Overwhelm;
@@ -28,14 +31,22 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 		this.m.IsHidden = false;
 	}
 
+	function can_be_used(_target)
+	{
+		if (_target == null) return false;
+		local actor = this.getContainer().getActor();
+		if (actor.getInitiative() <= _target.getInitiative()) return false;
+		if (actor.getFatigue() >= 0.5 * actor.getFatigueMax()) return false;
+
+		local weapon = actor.getMainhandItem();
+		if (weapon == null || weapon.m.StaminaModifier * -1.0 > actor.m.CurrentProperties.getRangedSkill() * 0.25) return false;
+
+		return true;
+	}
+
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
 		local actor = this.getContainer().getActor();
-
-		if (!_targetEntity.isAlliedWith(actor) && !this.m.Container.hasSkill("effect.double_strike"))
-		{
-			this.m.Container.add(::new("scripts/skills/effects/double_strike_effect"));
-		}
 
 		if (this.Tactical.TurnSequenceBar.getActiveEntity() == null || this.Tactical.TurnSequenceBar.getActiveEntity().getID() != this.getContainer().getActor().getID()) return;
 
@@ -101,7 +112,6 @@ this.perk_overwhelm <- this.inherit("scripts/skills/skill", {
 		actor.getFlags().set("Destiny", true);
 	}
 
-
-
+	
 });
 

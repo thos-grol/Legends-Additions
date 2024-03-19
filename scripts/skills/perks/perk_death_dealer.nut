@@ -1,17 +1,13 @@
 ::Const.Strings.PerkName.DeathDealer <- "Death Dealer";
 ::Const.Strings.PerkDescription.DeathDealer <- "There\'s bears, nachzehrers, and you. All beings of vicious slaughter..."
-+ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "For AOE attacks:")
-+ "\n"+::MSU.Text.colorGreen("+10%") + " damage"
-+ "\n"+::MSU.Text.colorGreen("– 25%") + " Fatigue cost"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("50%") + " chance to resist stagger"
-+ "\nUsing orc weapons no longer imposes additional fatigue costs"
++ "\n If Strength is " + ::MSU.Text.colorGreen("3X") + " the weight of a melee weapon, -2 AP cost for all skills on that weapon >= 6"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Stagger: (Removed on turn start)")
-+ "\n"+::MSU.Text.colorRed("– 50% Initiative")
-+ "\n"+::MSU.Text.colorRed("– 25 Melee Defense")
-+ "\n"+::MSU.Text.colorRed("– 25 Ranged Defense")
++ "\n"+::MSU.Text.colorRed("– 50% Agility")
++ "\n"+::MSU.Text.colorRed("– 25 Defense")
 + "\n"+::MSU.Text.colorRed("+Cancels Shieldwall, Spearwall, Return Favor, and Riposte");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.DeathDealer].Name = ::Const.Strings.PerkName.DeathDealer;
@@ -32,27 +28,37 @@ this.perk_death_dealer <- ::inherit("scripts/skills/skill", {
 		this.m.IsHidden = false;
 	}
 
-	function onAnySkillUsed( _skill, _targetEntity, _properties )
+	function onAfterUpdate(_properties)
 	{
-		if (_skill.isAttack() && _skill.isAOE() && !_skill.isRanged())
+		if (!this.getContainer().getActor().isPlacedOnMap()) return;
+
+		local actor = this.getContainer().getActor();
+		local weapon = actor.getMainhandItem();
+		if (weapon == null || weapon.m.StaminaModifier * -3.0 >= actor.m.CurrentProperties.getRangedSkill() * 1.0) return;
+
+		local skills = this.getContainer().getSkillsByFunction((@(_skill) _skill.m.IsWeaponSkill && _skill.m.ActionPointCost >= 6).bindenv(this));
+		if (skills.len() == 0) return;
+		foreach (s in skills)
 		{
-			_properties.DamageTotalMult *= 1.1;
+			if (s != null)
+			{
+				s.m.ActionPointCost -= 2;
+			}
 		}
 	}
 
-	function onAfterUpdate( _properties )
+	function onAffordablePreview( _skill, _movementTile )
 	{
-		foreach( skill in this.getContainer().getSkillsByFunction(function ( _skill )
+		local actor = this.getContainer().getActor();
+		local weapon = actor.getMainhandItem();
+		if (weapon == null || weapon.m.StaminaModifier * -3.0 >= actor.m.CurrentProperties.getRangedSkill() * 1.0) return;
+
+		if (_skill == null) return;
+		foreach (skill in this.getContainer().getSkillsByFunction((@(_skill) _skill.m.IsWeaponSkill && _skill.m.ActionPointCost >= 6).bindenv(this)))
 		{
-			return _skill.isAttack() && _skill.isAOE() && !_skill.isRanged();
-		}.bindenv(this)) )
-		{
-			skill.m.FatigueCostMult *= 0.75;
+			this.modifyPreviewField(skill, "ActionPointCost", skill.m.ActionPointCost - 2, false);
 		}
 	}
 
-	function onUpdate( _properties )
-	{
-		_properties.IsProficientWithHeavyWeapons = true;
-	}
+	
 });

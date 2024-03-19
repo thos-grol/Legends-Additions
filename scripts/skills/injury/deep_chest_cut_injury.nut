@@ -33,19 +33,19 @@ this.deep_chest_cut_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-35%[/color] Hitpoints"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-35%[/color] Vitality"
 			},
 			{
 				id = 7,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-35%[/color] Max Fatigue"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-35%[/color] Endurance"
 			},
 			{
 				id = 6,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-35%[/color] Skill"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-35%[/color] Attack"
 			},
 		];
 		this.addTooltipHint(ret);

@@ -58,7 +58,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = ::Const.Items.WeaponType.Spear | ::Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Polearm | ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -175,7 +175,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = ::Const.Items.WeaponType.Spear | ::Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Polearm | ::Const.Items.WeaponType.Hammer;
     }
 });
 
@@ -184,7 +184,7 @@
     o.create = function()
     {
         create();
-        this.m.WeaponType = ::Const.Items.WeaponType.Spear | ::Const.Items.WeaponType.Hammer;
+        this.m.WeaponType = ::Const.Items.WeaponType.Polearm | ::Const.Items.WeaponType.Hammer;
     }
 });
 

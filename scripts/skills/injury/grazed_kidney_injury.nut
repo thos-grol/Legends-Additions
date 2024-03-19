@@ -33,7 +33,7 @@ this.grazed_kidney_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-60%[/color] Hitpoints"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-60%[/color] Vitality"
 			}
 		];
 		this.addTooltipHint(ret);

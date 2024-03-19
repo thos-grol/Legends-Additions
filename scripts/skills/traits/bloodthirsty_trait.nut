@@ -45,14 +45,14 @@ this.bloodthirsty_trait <- this.inherit("scripts/skills/traits/character_trait",
 				id = 10,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = ::MSU.Text.colorGreen("+25%") + " Fatality chance."
+				text = ::MSU.Text.colorGreen("+50%") + " Fatality chance."
 			}
 		];
 	}
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
-		_properties.FatalityChanceMult *= 1.25;
+		_properties.FatalityChanceMult *= 1.50;
 	}
 
 	function onAdded()

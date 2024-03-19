@@ -33,28 +33,21 @@ this.drunkard_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/regular_damage.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] Damage"
-			},
-			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/bravery.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Resolve"
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+20%[/color] Damage"
 			},
 			{
 				id = 12,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-5[/color] Skill"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10[/color] Attack"
 			},
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		_properties.DamageTotalMult *= 1.1;
-		_properties.Bravery += 5;
-		_properties.MeleeSkill += -5;
+		_properties.DamageTotalMult *= 1.2;
+		_properties.MeleeSkill += -10;
 	}
 
 });

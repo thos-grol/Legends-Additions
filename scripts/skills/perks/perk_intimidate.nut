@@ -3,7 +3,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Attack:")
 + "\n"+ ::MSU.Text.colorRed("+1 stack")
 + "\n" + ::MSU.Text.colorRed("– X") + " Will per stack"
-+ "\n" + ::MSU.Text.colorRed("X is 10% of Skill. Expires on turn start");
++ "\n" + ::MSU.Text.colorRed("X is 10% of Attack. Expires on turn start");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Intimidate].Name = ::Const.Strings.PerkName.Intimidate;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Intimidate].Tooltip = ::Const.Strings.PerkDescription.Intimidate;

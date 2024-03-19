@@ -40,15 +40,15 @@ this.strong_trait <- this.inherit("scripts/skills/traits/character_trait", {
 			{
 				id = 10,
 				type = "text",
-				icon = "ui/icons/fatigue.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Max Fatigue"
+				icon = "ui/icons/strength.png",
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Strength"
 			}
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		_properties.Stamina += 10;
+		_properties.RangedSkill += 10;
 	}
 
 	function onAdded()

@@ -31,7 +31,7 @@ this.burnt_hands_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Skill"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Attack"
 			},
 		];
 		this.addTooltipHint(ret);

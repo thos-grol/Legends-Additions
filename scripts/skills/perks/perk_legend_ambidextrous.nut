@@ -6,13 +6,12 @@
 + "\n"+::MSU.Text.colorRed("Invalid if offhand is missing or not free")
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Kick\' (4 AP, 14 Fat):")
-+ "\nPerform a CQC attack with a malus of " + ::MSU.Text.colorRed("-25") + " Skill. Will " + ::MSU.Text.colorRed("Stagger")
++ "\nPerform a CQC attack with a malus of " + ::MSU.Text.colorRed("-25") + " Attack. Will " + ::MSU.Text.colorRed("Stagger")
 + "\n" + ::MSU.Text.colorRed("Invalid if this unit is missing a leg")
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Stagger: (Removed on turn start)")
-+ "\n"+::MSU.Text.colorRed("– 50% Initiative")
-+ "\n"+::MSU.Text.colorRed("– 25 Melee Defense")
-+ "\n"+::MSU.Text.colorRed("– 25 Ranged Defense")
++ "\n"+::MSU.Text.colorRed("– 50% Agility")
++ "\n"+::MSU.Text.colorRed("– 25 Defense")
 + "\n"+::MSU.Text.colorRed("+Cancels Shieldwall, Spearwall, Return Favor, and Riposte");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAmbidextrous].Name = ::Const.Strings.PerkName.LegendAmbidextrous;

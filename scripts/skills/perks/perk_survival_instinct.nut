@@ -2,11 +2,11 @@
 ::Const.Strings.PerkDescription.SurvivalInstinct <- "The resolve and instinct to survive..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On incoming attack miss:")
 + "\n"+::MSU.Text.colorRed("+1 stack, up to 5")
-+ "\n"+::MSU.Text.colorGreen("+2") + " Melee and Ranged Defense per stack"
++ "\n"+::MSU.Text.colorGreen("+2") + " Defense per stack"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On incoming attack hit:")
 + "\n"+::MSU.Text.colorRed("+1 stack, up to 2")
-+ "\n"+::MSU.Text.colorGreen("+5") + " Melee and Ranged Defense per stack"
++ "\n"+::MSU.Text.colorGreen("+5") + " Defense per stack"
 
 + "\n\n"+::MSU.Text.colorGreen("On turn start, all stacks are lost except for the on hit stacks");
 
@@ -71,7 +71,7 @@ this.perk_survival_instinct <- ::inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Defense"
 			},
 			{
 				id = 10,
@@ -109,7 +109,6 @@ this.perk_survival_instinct <- ::inherit("scripts/skills/skill", {
 	{
 		local bonus = this.getBonus();
 		_properties.MeleeDefense += bonus;
-		_properties.RangedDefense += bonus;
 	}
 
 	function onTurnStart()

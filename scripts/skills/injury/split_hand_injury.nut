@@ -32,7 +32,7 @@ this.split_hand_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Skill"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Attack"
 			},
 		];
 		this.addTooltipHint(ret);

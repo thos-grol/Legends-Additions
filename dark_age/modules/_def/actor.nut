@@ -799,20 +799,7 @@
 			malus = _attackingEntity != null ? ::Math.max(0, _attackingEntity.getCurrentProperties().SurroundedBonus * _attackingEntity.getCurrentProperties().SurroundedBonusMult - this.getCurrentProperties().SurroundedDefense) * this.getSurroundedCount() : ::Math.max(0, 5 - this.getCurrentProperties().SurroundedDefense) * this.getSurroundedCount();
 		}
 
-		if (_skill.isRanged())
-		{
-			d = _properties.getRangedDefense();
-		}
-		else
-		{
-			d = _properties.getMeleeDefense();
-		}
-
-		if (!_skill.isRanged())
-		{
-			d = d - malus;
-		}
-
+		d = _skill.isRanged() ? _properties.getMeleeDefense() * 0.75 : _properties.getMeleeDefense() - malus;
 		return d;
 	}
 
@@ -993,6 +980,135 @@
 
 		return result;
 	}
+
+	o.onMissed = function( _attacker, _skill, _dontShake = false )
+	{
+		if (!_dontShake && !this.isHiddenToPlayer() && this.m.IsShakingOnHit && (!_skill.isRanged() || _attacker.getTile().getDistanceTo(this.getTile()) == 1) && !this.Tactical.getNavigator().isTravelling(this))
+		{
+			this.Tactical.getShaker().shake(this, _attacker.getTile(), 4);
+		}
+
+		local twirl = getSkills().getSkillByID("perk.legend_twirl");
+		if (twirl != null 
+			&& twirl.can_be_used()
+			&& !this.m.CurrentProperties.IsRooted
+			&& !this.m.CurrentProperties.IsStunned
+			&& !_attacker.isAlliedWith(this)
+			&& !_attacker.getCurrentProperties().IsRooted
+			&& !_attacker.getCurrentProperties().IsStunned
+			&& !_attacker.getCurrentProperties().IsImmuneToRotation
+			&& _attacker.getCurrentProperties().IsMovable
+		)
+		{
+			twirl.activate();
+			this.Tactical.getNavigator().switchEntities(this, _attacker, null, null, 1.0);
+			if (!_attacker.getSkills().hasSkill("effects.staggered"))
+			{
+				_attacker.getSkills().add(::new("scripts/skills/effects/staggered_effect"));
+				::Tactical.EventLog.logIn(
+					::Const.UI.getColorizedEntityName(_attacker)
+					+ (::MSU.Text.color(::Z.Color.BloodRed, " is staggered" ))
+				);
+			}
+		}
+
+		if (this.m.CurrentProperties.IsRiposting && _attacker != null && !_attacker.isAlliedWith(this) && _attacker.getTile().getDistanceTo(this.getTile()) == 1 && this.Tactical.TurnSequenceBar.getActiveEntity() != null && this.Tactical.TurnSequenceBar.getActiveEntity().getID() == _attacker.getID() && _skill != null && !_skill.isIgnoringRiposte())
+		{
+			local skill = this.m.Skills.getAttackOfOpportunity();
+
+			if (skill != null)
+			{
+				local info = {
+					User = this,
+					Skill = skill,
+					TargetTile = _attacker.getTile()
+				};
+				this.Time.scheduleEvent(this.TimeUnit.Virtual, this.Const.Combat.RiposteDelay, this.onRiposte.bindenv(this), info);
+			}
+		}
+
+		if (_skill != null && !_skill.isRanged())
+		{
+			this.m.Fatigue = this.Math.min(this.getFatigueMax(), this.Math.round(this.m.Fatigue + this.Const.Combat.FatigueLossOnBeingMissed * this.m.CurrentProperties.FatigueEffectMult * this.m.CurrentProperties.FatigueLossOnAnyAttackMult));
+		}
+
+		this.m.Skills.onMissed(_attacker, _skill);
+	}
+
+	o.onAttacked = function( _attacker )
+	{
+		if (!this.m.CurrentProperties.IsImmuneToOverwhelm && _attacker.getTile().getDistanceTo(this.getTile()) <= 1 && this.m.OverwhelmCount.find(_attacker.getID()) == null)
+		{
+			this.m.OverwhelmCount.push(_attacker.getID());
+		}
+
+		if (this.m.AttackedCount.find(_attacker.getID()) == null)
+		{
+			this.m.AttackedCount.push(_attacker.getID());
+		}
+
+		if (this.isPlayerControlled())
+		{
+			_attacker.setDiscovered(true);
+			_attacker.getTile().addVisibilityForFaction(this.Const.Faction.Player);
+		}
+		else
+		{
+			_attacker.getTile().addVisibilityForFaction(this.getFaction());
+			this.onActorSighted(_attacker);
+			local actors = this.Tactical.Entities.getInstancesOfFaction(this.getFaction());
+
+			foreach( a in actors )
+			{
+				if (a.getID() != this.getID() && a.isAlive() && a.isAlliedWith(this))
+				{
+					a.onActorSighted(_attacker);
+				}
+			}
+
+			if (_attacker.isPlayerControlled())
+			{
+				this.setDiscovered(true);
+				this.getTile().addVisibilityForFaction(this.Const.Faction.Player);
+			}
+		}
+
+		local tempest = getSkills().getSkillByID("perk.overwhelm");
+
+		if (tempest != null
+			&& tempest.can_be_used(_attacker)
+		)
+		{
+			local skill = this.m.Skills.getAttackOfOpportunity();
+			if (_skill != null 
+				&& _attacker != null 
+				&& !_attacker.isAlliedWith(this) 
+				&& _attacker.getTile().getDistanceTo(this.getTile()) <= _skill.m.MaxRange
+				&& this.Tactical.TurnSequenceBar.getActiveEntity() != null 
+				&& this.Tactical.TurnSequenceBar.getActiveEntity().getID() == _attacker.getID()
+			)
+			{
+				local info = {
+					User = this,
+					Skill = skill,
+					TargetTile = _attacker.getTile()
+				};
+				this.Time.scheduleEvent(this.TimeUnit.Virtual, this.Const.Combat.RiposteDelay, this.onRiposte.bindenv(this), info);
+			}
+		}
+	}
+
+	// o.getStrength <- function()
+	// {
+	// 	::logInfo(this.m.CurrentProperties.RangedSkill);
+	// 	::logInfo(this.m.CurrentProperties.RangedSkillMult);
+	// 	return this.Math.round(this.m.CurrentProperties.RangedSkill * (this.m.CurrentProperties.RangedSkillMult >= 0 ? this.m.CurrentProperties.RangedSkillMult : 1.0 / this.m.CurrentProperties.RangedSkillMult));
+	// }
+
+	// o.getReflex <- function()
+	// {
+	// 	return this.Math.round(this.m.CurrentProperties.RangedDefense * (this.m.CurrentProperties.RangedDefenseMult >= 0 ? this.m.CurrentProperties.RangedDefenseMult : 1.0 / this.m.CurrentProperties.RangedDefenseMult));
+	// }
 
 
 });

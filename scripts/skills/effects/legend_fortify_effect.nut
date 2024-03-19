@@ -32,14 +32,8 @@ this.legend_fortify_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + item.getMeleeDefense() + "[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + item.getMeleeDefense() + "[/color] Defense"
 			},
-			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + item.getRangedDefense() + "[/color] Ranged Defense"
-			}
 		];
 	}
 
@@ -49,10 +43,7 @@ this.legend_fortify_effect <- this.inherit("scripts/skills/skill", {
 
 		if (item.isItemType(::Const.Items.ItemType.Shield) && item.getCondition() > 0)
 		{
-			local mult = 1.0;
-
 			_properties.MeleeDefense += item.getMeleeDefense();
-			_properties.RangedDefense += item.getRangedDefense();
 		}
 	}
 

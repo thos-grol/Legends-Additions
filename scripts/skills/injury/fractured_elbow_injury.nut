@@ -31,7 +31,7 @@ this.fractured_elbow_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Melee Defense"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Defense"
 			}
 		];
 		this.addTooltipHint(ret);

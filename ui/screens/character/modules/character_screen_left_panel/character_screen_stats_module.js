@@ -113,7 +113,7 @@ var CharacterScreenStatsModule = function(_parent, _dataSource)
 			Talent: null
 		},
 		RangeSkill: {
-            IconPath: Path.GFX + Asset.ICON_RANGE_SKILL,
+            IconPath: Path.GFX + 'ui/icons/strength.png',
             StyleName: ProgressbarStyleIdentifier.RangeSkill,
             TooltipId: TooltipIdentifier.CharacterStats.RangeSkill,
             Row: null,
@@ -121,7 +121,7 @@ var CharacterScreenStatsModule = function(_parent, _dataSource)
             Talent: null
         },
 		RangeDefense: {
-			IconPath: Path.GFX + Asset.ICON_RANGE_DEFENCE,
+			IconPath: Path.GFX + 'ui/icons/reflex.png',
 			StyleName: ProgressbarStyleIdentifier.RangeDefense,
 			TooltipId: TooltipIdentifier.CharacterStats.RangeDefense,
 			Row: null,

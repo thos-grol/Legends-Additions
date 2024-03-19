@@ -2,10 +2,10 @@
 ::Const.Strings.PerkDescription.Steadfast = "Endure and in enduring, become strong..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n" + ::MSU.Text.colorGreen("– 90%") + " Fatigue from being attacked"
-+ "\n" + ::MSU.Text.colorGreen("– 50%") + " effect of Fatigue on Initiative"
++ "\n" + ::MSU.Text.colorGreen("– 50%") + " effect of Fatigue on Agility"
 
 + "\n" + ::MSU.Text.colorRed("Invalid for attacks that specifically target fatigue")
-+ "\n\n" + ::MSU.Text.colorGreen("\'Wait\' will no longer give an Initiative penalty");
++ "\n\n" + ::MSU.Text.colorGreen("\'Wait\' will no longer give an Agility penalty");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Steadfast].Name = ::Const.Strings.PerkName.Steadfast;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Steadfast].Tooltip = ::Const.Strings.PerkDescription.Steadfast;

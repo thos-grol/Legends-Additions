@@ -26,7 +26,7 @@ this._spear_advantage <- this.inherit("scripts/skills/skill", {
 			id = 10,
 			type = "text",
 			icon = "ui/icons/plus.png",
-			text = "Increased Melee Defense"
+			text = "Increased Defense"
 		});
 
 		foreach (id, stacks in this.m.Opponents)

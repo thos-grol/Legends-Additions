@@ -114,7 +114,7 @@ var CharacterScreenLeftPanelHeaderModule = function(_parent, _dataSource)
 
 		RangeSkill: //STRENGTH
 		{
-            IconPath: Path.GFX + Asset.ICON_RANGE_SKILL,
+            IconPath: Path.GFX + 'ui/icons/strength.png',
             StyleName: ProgressbarStyleIdentifier.RangeSkill,
             TooltipId: TooltipIdentifier.CharacterStats.RangeSkill,
             ProgressbarValueIdentifier: ProgressbarValueIdentifier.RangeSkill,
@@ -127,7 +127,7 @@ var CharacterScreenLeftPanelHeaderModule = function(_parent, _dataSource)
         },
 		RangeDefense: //REFLEX
 		{
-            IconPath: Path.GFX + Asset.ICON_RANGE_DEFENCE,
+            IconPath: Path.GFX + 'ui/icons/reflex.png',
             StyleName: ProgressbarStyleIdentifier.RangeDefense,
             TooltipId: TooltipIdentifier.CharacterStats.RangeDefense,
             ProgressbarValueIdentifier: ProgressbarValueIdentifier.RangeDefense,

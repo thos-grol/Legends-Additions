@@ -71,14 +71,8 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + ::Math.floor(item.getMeleeDefense() * mult + bonus + proficiencyBonus) + "[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + ::Math.floor(item.getMeleeDefense() * mult + bonus + proficiencyBonus) + "[/color] Defense"
 			},
-			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + ::Math.floor(item.getRangedDefense() * mult + bonus + proficiencyBonus) + "[/color] Ranged Defense"
-			}
 		];
 	}
 
@@ -101,7 +95,6 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 			local mult = 1.0;
 			local proficiencyBonus = 0;
 			_properties.MeleeDefense += item.getMeleeDefense();
-			_properties.RangedDefense += item.getRangedDefense();
 		}
 	}
 
@@ -124,7 +117,6 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 	{
 		local bonus = this.getBonus();
 		_properties.MeleeDefense += bonus;
-		_properties.RangedDefense += bonus;
 	}
 
 });

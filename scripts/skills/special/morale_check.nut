@@ -32,13 +32,13 @@ this.morale_check <- this.inherit("scripts/skills/skill", {
 					id = 11,
 					type = "text",
 					icon = "ui/icons/melee_skill.png",
-					text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] Skill"
+					text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] Attack"
 				},
 				{
 					id = 12,
 					type = "text",
 					icon = "ui/icons/melee_defense.png",
-					text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] Melee Defense"
+					text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] Defense"
 				},
 				{
 					id = 14,
@@ -65,19 +65,19 @@ this.morale_check <- this.inherit("scripts/skills/skill", {
 					id = 11,
 					type = "text",
 					icon = "ui/icons/bravery.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] Resolve"
+					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] Will"
 				},
 				{
 					id = 12,
 					type = "text",
 					icon = "ui/icons/melee_skill.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] Skill"
+					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] Attack"
 				},
 				{
 					id = 14,
 					type = "text",
 					icon = "ui/icons/melee_defense.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] Melee Defense"
+					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] Defense"
 				},
 				{
 					id = 15,
@@ -104,19 +104,19 @@ this.morale_check <- this.inherit("scripts/skills/skill", {
 					id = 11,
 					type = "text",
 					icon = "ui/icons/bravery.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] Resolve"
+					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] Will"
 				},
 				{
 					id = 11,
 					type = "text",
 					icon = "ui/icons/melee_skill.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] Skill"
+					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] Attack"
 				},
 				{
 					id = 14,
 					type = "text",
 					icon = "ui/icons/melee_defense.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] Melee Defense"
+					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] Defense"
 				},
 				{
 					id = 15,
@@ -143,25 +143,19 @@ this.morale_check <- this.inherit("scripts/skills/skill", {
 					id = 11,
 					type = "text",
 					icon = "ui/icons/bravery.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Resolve"
+					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Will"
 				},
 				{
 					id = 11,
 					type = "text",
 					icon = "ui/icons/melee_skill.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Skill"
+					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Attack"
 				},
 				{
 					id = 14,
 					type = "text",
 					icon = "ui/icons/melee_defense.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Melee Defense"
-				},
-				{
-					id = 15,
-					type = "text",
-					icon = "ui/icons/ranged_defense.png",
-					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Ranged Defense"
+					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Defense"
 				},
 				{
 					id = 16,
@@ -186,7 +180,6 @@ this.morale_check <- this.inherit("scripts/skills/skill", {
 				this.m.IconMini = "status_effect_14_mini";
 				_properties.MeleeSkillMult *= 1.1;
 				_properties.MeleeDefenseMult *= 1.1;
-				_properties.RangedDefenseMult *= 1.1;
 				break;
 
 			case this.Const.MoraleState.Wavering:
@@ -195,7 +188,6 @@ this.morale_check <- this.inherit("scripts/skills/skill", {
 				_properties.BraveryMult *= 0.9;
 				_properties.MeleeSkillMult *= 0.9;
 				_properties.MeleeDefenseMult *= 0.9;
-				_properties.RangedDefenseMult *= 0.9;
 				break;
 
 			case this.Const.MoraleState.Breaking:
@@ -204,7 +196,6 @@ this.morale_check <- this.inherit("scripts/skills/skill", {
 				_properties.BraveryMult *= 0.8;
 				_properties.MeleeSkillMult *= 0.8;
 				_properties.MeleeDefenseMult *= 0.8;
-				_properties.RangedDefenseMult *= 0.8;
 				break;
 
 			case this.Const.MoraleState.Fleeing:
@@ -213,7 +204,6 @@ this.morale_check <- this.inherit("scripts/skills/skill", {
 				_properties.BraveryMult *= 0.7;
 				_properties.MeleeSkillMult *= 0.7;
 				_properties.MeleeDefenseMult *= 0.7;
-				_properties.RangedDefenseMult *= 0.7;
 				_properties.InitiativeForTurnOrderAdditional -= 1000;
 				break;
 

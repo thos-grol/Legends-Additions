@@ -60,7 +60,7 @@ this._king_of_all_weapons <- this.inherit("scripts/skills/skill", {
 		}
 
 		local weapon = this.getContainer().getActor().getMainhandItem();
-		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Spear) || this.getContainer().getSkillsByFunction((@(_skill) this.m.Skills.find(_skill.getID()) != null).bindenv(this)).len() == 0)
+		if (weapon == null || !weapon.isWeaponType(::Const.Items.WeaponType.Polearm) || this.getContainer().getSkillsByFunction((@(_skill) this.m.Skills.find(_skill.getID()) != null).bindenv(this)).len() == 0)
 		{
 			return false;
 		}

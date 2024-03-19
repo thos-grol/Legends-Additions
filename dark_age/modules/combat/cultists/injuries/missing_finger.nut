@@ -13,7 +13,7 @@
 				id = 7,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5%[/color] Skill"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5%[/color] Attack"
 			});
 		}
 		else

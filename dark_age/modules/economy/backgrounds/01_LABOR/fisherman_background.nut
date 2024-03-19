@@ -32,7 +32,7 @@
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Gains spear proficiency faster (+10 chance)"
+			text = "Gains polearm proficiency faster (+10 chance)"
 		});
 		return ret;
 	}
@@ -40,7 +40,7 @@
 	o.onAddEquipment = function()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("ProficiencyBonusSpear", true);
+		actor.getFlags().set("ProficiencyBonusPolearm", true);
 
 		local items = this.getContainer().getActor().getItems();
 		local r;

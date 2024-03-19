@@ -2047,12 +2047,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Hitpoints"
+					text = "Vitality"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Hitpoints represent the damage a character can take before dying. Once these reach zero, the character is considered dead. The higher the maximum hitpoints, the less likely it is a character will suffer debilitating injuries when hit."
+					text = "Base 50. 1 Tier = 10 Points\n\nVitality represents the life of the character. It can offset curses if the user has inssufficient Fate. Higher vitality reduces the chances of injury"
 				}
 			];
 
@@ -2061,12 +2061,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Morale"
+					text = "Will"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Morale is one of five states and represents the mental condition of combatants and their effectiveness in battle. At the lowest state, fleeing, a character will be outside your control - although they may eventually rally again. Morale changes as the battle unfolds, with characters that have high resolve less likely to fall to low morale states. Many of your opponents are affected by morale as well.\n\nMorale checks trigger on these occasions:\n- Killing an enemy\n- Seeing an enemy be killed\n- Seeing an ally be killed\n- Seeing an ally flee\n- Being hit for 15 or more damage to hitpoints\n- Being engaged by more than one opponent\n- Using certain skills, like \'Rally\'"
+					text = "Base 50. 1 Tier = 10 Points\n\nWill represents the mental condition of combatants and their effectiveness in battle\n\nHigher Will influences resistance to morale checks which trigger on these occasions:\n- Killing an enemy\n- Seeing an enemy be killed\n- Seeing an ally be killed\n- Seeing an ally flee\n- Being hit for 15 or more damage to hitpoints\n- Being engaged by more than one opponent\n- Using certain skills, like \'Rally\'"
 				}
 			];
 
@@ -2089,12 +2089,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Maximum Fatigue"
+					text = "Endurance"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Maximum Fatigue is the amount of fatigue a character can accumulate before being unable to take any more actions and having to recuperate. It is reduced by wearing heavy equipment, especially armor."
+					text = "Base 100. 1 Tier = 20 Points\n\nEach point of Endurance increases the amount of fatigue a character can accumulate before being unable to take any more actions. Wearing equipment reduces Endurance"
 				}
 			];
 
@@ -2131,12 +2131,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Skill"
+					text = "Attack"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Determines the base probability of hitting a target with a melee attack, such as with swords and spears. Can be increased as the character gains experience."
+					text = "Base 50. 1 Tier = 10 Points\n\nEach point of attack increases the chances of hitting an attack"
 				}
 			];
 
@@ -2145,12 +2145,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Ranged Skill"
+					text = "Strength"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Determines the base probability of hitting a target with a ranged attack, such as with bows and crossbows. Can be increased as the character gains experience."
+					text = "Base 10. 1 Tier = 10 Points\n\nEach point of Strength increases damage by 1%"
 				}
 			];
 
@@ -2159,12 +2159,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Melee Defense"
+					text = "Defense"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "A higher melee defense reduces the probability of being hit with a melee attack, such as the thrust of a spear. It can be increased as the character gains experience and by equipping a good shield."
+					text = "Base 10. 1 Tier = 10 Points\n\nEach point of Defense decreases the chances of being hit by an attack"
 				}
 			];
 
@@ -2173,12 +2173,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Ranged Defense"
+					text = "Reflex"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "A higher ranged defense reduces the probability of being hit with a ranged attack, such as an arrow shot from afar. It can be increased as the character gains experience and by equipping a good shield."
+					text = "Base 10. 1 Tier = 10 Points\n\nEach point of reflex is the chance to downgrade critical hits (headshots) into body shots or body shots into grazes (10% damage)"
 				}
 			];
 
@@ -2243,12 +2243,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Initiative"
+					text = "Agility"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "The higher this value, the earlier the position in the turn order. Initiative is reduced by the current fatigue, as well as any penalty to maximum fatigue (such as from heavy armor). In general, someone in light armor will act before someone in heavy armor, and someone fresh will act before someone fatigued."
+					text = "Base 100. 1 Tier = 20 Points\n\nEach point of Agility determines who goes first. Agility is reduced by Fatigue and Armor"
 				}
 			];
 
@@ -2257,12 +2257,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Resolve"
+					text = "Will"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Resolve represents the willpower and bravery of characters. The higher, the less likely that characters fall to lower morale states at negative events, and the more likely that characters gain confidence from positive events. Will also acts as defense against certain mental attacks that inflict panic, fear or mind control. See also: Morale."
+					text = "Base 50. 1 Tier = 10 Points\n\nResolve represents the willpower and bravery of characters. The higher, the less likely that characters fall to lower morale states at negative events, and the more likely that characters gain confidence from positive events. Will also acts as defense against certain mental attacks that inflict panic, fear or mind control. See also: Morale."
 				}
 			];
 

@@ -42,12 +42,6 @@ this.night_owl_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				icon = "ui/icons/ranged_skill.png",
 				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+15%[/color] Ranged Hit Chance during Night time"
 			},
-			{
-				id = 10,
-				type = "text",
-				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+15%[/color] Ranged Defense during Night time"
-			}
 		];
 	}
 

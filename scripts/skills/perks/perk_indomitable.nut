@@ -7,7 +7,7 @@
 + "\n" + ::MSU.Text.colorGreen("+Stun Immunity")
 + "\n" + ::MSU.Text.colorGreen("+Displacement Immunity")
 
-+ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Upon reaching 50% Hitpoints:")
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Upon reaching 50% Vitality:")
 + "\n" + ::MSU.Text.colorGreen("Become Indomitable")
 + "\n" + ::MSU.Text.colorRed("Effect lasts until the end of battle");
 

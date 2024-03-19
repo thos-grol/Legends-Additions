@@ -57,7 +57,7 @@ this.throw_smoke_bomb_skill <- this.inherit("scripts/skills/_alchemy_active", {
 			id = 5,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Increases Ranged Defense by [color=" + ::Const.UI.Color.PositiveValue + "]+100%[/color], but lowers Ranged Skill by [color=" + ::Const.UI.Color.NegativeValue + "]-50%[/color] for anyone inside"
+			text = "Increases Ranged Defense by [color=" + ::Const.UI.Color.PositiveValue + "]+100%[/color], but lowers Ranged Attack by [color=" + ::Const.UI.Color.NegativeValue + "]-50%[/color] for anyone inside"
 		});
 		ret.push({
 			id = 6,

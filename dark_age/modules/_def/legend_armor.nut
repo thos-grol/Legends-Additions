@@ -22,4 +22,22 @@
 		this.updateAppearance();
 	}
 
+	o.onUpdateProperties = function( _properties )
+	{
+		if (this.getContainer() == null) return;
+		if (this.getContainer().getActor() == null) return;
+
+		local staminaMult = 1.0;
+
+		if (this.getContainer().getActor().getSkills().hasSkill("perk.brawny")) staminaMult *= 0.7;
+		if (this.getContainer().getActor().getSkills().hasSkill("perk.legend_muscularity")) staminaMult *= 0.5;
+
+		_properties.Armor[this.Const.BodyPart.Body] += this.getArmor();
+		_properties.ArmorMax[this.Const.BodyPart.Body] += this.getArmorMax();
+		_properties.Stamina += this.Math.ceil(this.getStaminaModifier() * staminaMult);
+		this.doOnFunction("onUpdateProperties", [
+			_properties
+		]);
+	}
+
 });

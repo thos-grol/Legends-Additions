@@ -6,8 +6,11 @@
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n " + ::MSU.Text.colorGreen("– 1") + " AP cost (Polearm skills)"
++ "\n " + ::MSU.Text.colorGreen("+1") + " free attack (Thrust or Prong), but does -25% Damage"
 + "\nRemoves the penalty for attacking adjacent targets"
-+ "\nKnock Out, Knock Over and Strike Down have a " + ::MSU.Text.colorGreen("100%") + " chance to stun the target";
++ "\nKnock Out, Knock Over and Strike Down have a " + ::MSU.Text.colorGreen("100%") + " chance to stun the target"
++ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Spearwall:")
++ "\nIs no longer cancelled once an enemy overcomes it";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecPolearm].Name = ::Const.Strings.PerkName.SpecPolearm;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.SpecPolearm].Tooltip = ::Const.Strings.PerkDescription.SpecPolearm;
@@ -30,11 +33,15 @@ this.perk_mastery_polearm <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		_properties.IsSpecializedInPolearms = true;
+		_properties.IsSpecializedInSpears = true;
 	}
 
 	function onAdded()
 	{
 		if (!this.m.Container.hasSkill("actives.follow_up")) this.m.Container.add(::new("scripts/skills/actives/follow_up"));
+
+		if (!this.m.Container.hasSkill("perk.ptr_king_of_all_weapons"))
+			this.m.Container.add(::new("scripts/skills/effects/_king_of_all_weapons"));
 		
 		local actor = this.getContainer().getActor();
 		if (actor.getFaction() != ::Const.Faction.Player) return;
@@ -46,6 +53,7 @@ this.perk_mastery_polearm <- this.inherit("scripts/skills/skill", {
 	function onRemoved()
 	{
 		this.m.Container.removeByID("actives.follow_up");
+		this.m.Container.removeByID("perk.ptr_king_of_all_weapons");
 	}
 
 });

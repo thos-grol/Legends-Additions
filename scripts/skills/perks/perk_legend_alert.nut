@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.LegendAlert = "Fast";
 ::Const.Strings.PerkDescription.LegendAlert = "Fast, like the wind..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n" + ::MSU.Text.colorGreen("+20%") + " Initiative";
++ "\n" + ::MSU.Text.colorGreen("+20%") + " Agility";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAlert].Name = ::Const.Strings.PerkName.LegendAlert;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendAlert].Tooltip = ::Const.Strings.PerkDescription.LegendAlert;

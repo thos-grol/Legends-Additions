@@ -9,9 +9,8 @@
 + "\n"+::MSU.Text.colorRed("X = 2*sqrt(total armor weight)")
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.BloodRed, "Stagger: (Removed on turn start)")
-+ "\n"+::MSU.Text.colorRed("– 50% Initiative")
-+ "\n"+::MSU.Text.colorRed("– 25 Melee Defense")
-+ "\n"+::MSU.Text.colorRed("– 25 Ranged Defense")
++ "\n"+::MSU.Text.colorRed("– 50% Agility")
++ "\n"+::MSU.Text.colorRed("– 25 Defense")
 + "\n"+::MSU.Text.colorRed("+Cancels Shieldwall, Spearwall, Return Favor, and Riposte");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendSpecFists].Name = ::Const.Strings.PerkName.LegendSpecFists;

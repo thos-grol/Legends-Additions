@@ -38,6 +38,12 @@ this.determined_trait <- this.inherit("scripts/skills/traits/character_trait", {
 			{
 				id = 10,
 				type = "text",
+				icon = "ui/icons/bravery.png",
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] Will"
+			},
+			{
+				id = 10,
+				type = "text",
 				icon = "ui/icons/morale.png",
 				text = "Will start combat at confident morale if permitted by mood"
 			}
@@ -52,6 +58,11 @@ this.determined_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		{
 			actor.setMoraleState(::Const.MoraleState.Confident);
 		}
+	}
+
+	function onUpdate( _properties )
+	{
+		_properties.Bravery += 10;
 	}
 
 	function onAdded()

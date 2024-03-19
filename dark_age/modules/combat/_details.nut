@@ -78,8 +78,6 @@
 		if (this.getContainer().hasSkill("perk.nimble")) getTooltip_Nimble(tooltip);
 		if (this.getContainer().hasSkill("perk.legend_lithe")) getTooltip_Lithe(tooltip);
 		if (this.getContainer().hasSkill("perk.battle_forged")) getTooltip_Battleforged(tooltip);
-
-		if (this.getContainer().hasSkill("perk.legend_small_target")) getTooltip_SmallTarget(tooltip);
 		if (this.getContainer().hasSkill("effects.dodge")) getTooltip_Dodge(tooltip);
 
 		local hp = actor.getFlags().getAsInt("trainable_hitpoints");
@@ -418,114 +416,6 @@
 			text = "Dodge: " + ::MSU.Text.colorGreen("+" + initiative) + " Melee and Ranged Defense"
 		});
 		return _tooltip;
-	}
-
-	o.getTooltip_SmallTarget <- function( _tooltip )
-	{
-		local bonus = SmallTarget_getBonus();
-
-		if (bonus > 0)
-		{
-			_tooltip.push({
-				id = 6,
-				type = "text",
-				icon = "ui/icons/melee_defense.png",
-				text = "Small Target: [color=" + ::Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Melee Defense"
-			});
-			_tooltip.push({
-				id = 6,
-				type = "text",
-				icon = "ui/icons/ranged_defense.png",
-				text = "Small Target: [color=" + ::Const.UI.Color.PositiveValue + "]+" + bonus + "[/color] Ranged Defense"
-			});
-		}
-
-		local bonus2 = SmallTarget_getBonus2();
-
-		if (bonus2 > 0)
-		{
-			_tooltip.push({
-				id = 6,
-				type = "text",
-				icon = "ui/icons/special.png",
-				text = "Small Target: [color=" + ::Const.UI.Color.PositiveValue + "]+" + bonus2 + "%[/color] chance for enemies to be forced to reroll their attack"
-			});
-		}
-
-		return _tooltip;
-	}
-
-	o.SmallTarget_getBonus <- function ()
-	{
-		local stackTotal = 0;
-		local actor = this.getContainer().getActor();
-		local health = 0;
-		health = actor.getBaseProperties().Hitpoints;
-		local bodyItem = actor.getItems().getItemAtSlot(::Const.ItemSlot.Body);
-		local bodyArmor = 0;
-		local headItem = actor.getItems().getItemAtSlot(::Const.ItemSlot.Head);
-		local headArmor = 0;
-
-		if (bodyItem != null)
-		{
-			bodyArmor = actor.getArmor(::Const.BodyPart.Body);
-		}
-
-		if (headItem != null)
-		{
-			headArmor = actor.getArmor(::Const.BodyPart.Head);
-		}
-
-		local stackTotal = health + headArmor + bodyArmor;
-
-		if (bodyItem != null)
-		{
-			local tabard = bodyItem.getUpgrade(::Const.Items.ArmorUpgrades.Tabbard);
-			local cloak = bodyItem.getUpgrade(::Const.Items.ArmorUpgrades.Cloak);
-
-			if (tabard != null)
-			{
-				local tabardArmor = tabard.getRepair();
-				stackTotal = stackTotal - tabardArmor;
-			}
-
-			if (cloak != null)
-			{
-				local cloakArmor = cloak.getRepair();
-				stackTotal = stackTotal - cloakArmor;
-			}
-		}
-
-		if (headItem != null)
-		{
-			local vanity = headItem.getUpgrade(::Const.Items.HelmetUpgrades.Vanity);
-			local extra = headItem.getUpgrade(::Const.Items.HelmetUpgrades.ExtraVanity);
-
-			if (vanity != null)
-			{
-				local vanityArmor = vanity.getRepair();
-				stackTotal = stackTotal - vanityArmor;
-			}
-
-			if (extra != null)
-			{
-				local extraArmor = extra.getRepair();
-				stackTotal = stackTotal - extraArmor;
-			}
-		}
-
-		local bonus = ::Math.max(5, 100 - stackTotal);
-		return ::Math.floor(bonus);
-	}
-
-	o.SmallTarget_getBonus2 <- function()
-	{
-		local actor = this.getContainer().getActor();
-		local mdef = actor.getCurrentProperties().getMeleeDefense();
-		local resolve = actor.getCurrentProperties().getBravery();
-		local stack = mdef + resolve;
-		local bonus = ::Math.max(10, 100 - stack);
-		return ::Math.floor(bonus);
 	}
 
 // =============================================================================================

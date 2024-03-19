@@ -37,7 +37,7 @@ this.sprained_ankle_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] Initiative"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] Agility"
 			}
 		];
 		this.addTooltipHint(ret);

@@ -42,7 +42,7 @@ this.teamplayer_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+20[/color] Resolve"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+20[/color] Will"
 			}
 		];
 	}

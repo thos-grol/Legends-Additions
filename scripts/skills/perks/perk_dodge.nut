@@ -1,7 +1,7 @@
 ::Const.Strings.PerkDescription.Dodge = "Too fast..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n" + ::MSU.Text.colorGreen("+X") + " as Melee and Ranged Defense."
-+ "\n"+::MSU.Text.colorRed("X is 15% of current Iniative. Invalid if a shield is equipped - exceptions (buckler and goblin shields)");
++ "\n" + ::MSU.Text.colorGreen("+X") + " Defense."
++ "\n"+::MSU.Text.colorRed("X is 15% of current Agility. Invalid if a shield is equipped - exceptions (buckler and goblin shields)");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Dodge].Tooltip = ::Const.Strings.PerkDescription.Dodge;
 

@@ -10,7 +10,7 @@
 			id = 7,
 			type = "text",
 			icon = "ui/icons/health.png",
-			text = ::MSU.Text.colorRed( has ? "-10%" : "-30%") + " Hitpoints"
+			text = ::MSU.Text.colorRed( has ? "-10%" : "-30%") + " Vitality"
 		});
 		return ret;
 	}

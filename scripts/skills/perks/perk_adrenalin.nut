@@ -5,7 +5,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "When attacked:")
 + "\n"+::MSU.Text.colorRed("+1 stack up to 6")
 + "\n"+::MSU.Text.colorRed("stacks expire on turn end")
-+ "\n" + ::MSU.Text.colorGreen("+5") + " Initiative per stack"
++ "\n" + ::MSU.Text.colorGreen("+5") + " Agility per stack"
 + "\n" + ::MSU.Text.colorGreen("+3") + " Fat Recovery per stack";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Adrenaline].Tooltip = ::Const.Strings.PerkDescription.Adrenaline;

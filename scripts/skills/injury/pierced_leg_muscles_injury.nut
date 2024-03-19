@@ -32,13 +32,13 @@ this.pierced_leg_muscles_injury <- this.inherit("scripts/skills/injury/injury", 
 				id = 7,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Melee Defense"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Defense"
 			},
 			{
 				id = 7,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Initiative"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Agility"
 			}
 		];
 		this.addTooltipHint(ret);

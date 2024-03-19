@@ -31,19 +31,13 @@ this.deep_face_cut_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Skill"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Attack"
 			},
 			{
 				id = 7,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Melee Defense"
-			},
-			{
-				id = 7,
-				type = "text",
-				icon = "ui/icons/ranged_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Ranged Defense"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Defense"
 			},
 			{
 				id = 7,
@@ -67,7 +61,6 @@ this.deep_face_cut_injury <- this.inherit("scripts/skills/injury/injury", {
 
 		_properties.MeleeSkillMult *= 0.75;
 		_properties.MeleeDefenseMult *= 0.75;
-		_properties.RangedDefenseMult *= 0.75;
 		_properties.Vision -= 2;
 	}
 

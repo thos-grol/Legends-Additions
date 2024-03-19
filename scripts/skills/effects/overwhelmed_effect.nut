@@ -45,7 +45,7 @@ this.overwhelmed_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-" + this.m.Count * 10 + "%[/color] Skill"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-" + this.m.Count * 10 + "%[/color] Attack"
 			},
 		];
 	}

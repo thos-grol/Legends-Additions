@@ -32,49 +32,49 @@ this.sickness_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Hitpoints"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Vitality"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Max Fatigue"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Endurance"
 			},
 			{
 				id = 12,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Initiative"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Agility"
 			},
 			{
 				id = 13,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Resolve"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Will"
 			},
 			{
 				id = 14,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Skill"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Attack"
 			},
-			// {
-			// 	id = 15,
-			// 	type = "text",
-			// 	icon = "ui/icons/ranged_skill.png",
-			// 	text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Ranged Skill"
-			// },
+			{
+				id = 15,
+				type = "text",
+				icon = "ui/icons/strength.png",
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Strength"
+			},
 			{
 				id = 16,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Melee Defense"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Defense"
 			},
 			{
 				id = 17,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Ranged Defense"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Reflex"
 			},
 			{
 				id = 17,
@@ -171,7 +171,7 @@ this.sickness_injury <- this.inherit("scripts/skills/injury/injury", {
 		_properties.InitiativeMult *= 0.75;
 		_properties.StaminaMult *= 0.75;
 		_properties.MeleeSkill *= 0.75;
-		// _properties.RangedSkill *= 0.75;
+		_properties.RangedSkill *= 0.75;
 		_properties.MeleeDefense *= 0.75;
 		_properties.RangedDefense *= 0.75;
 		_properties.Vision += -2;

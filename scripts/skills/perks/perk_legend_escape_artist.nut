@@ -4,7 +4,7 @@
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
 + "\n"+::MSU.Text.colorGreen("– 1") + " AP cost for movement skills"
 + "\n"+::MSU.Text.colorGreen("– 100%") + " Fatigue cost for movement skills"
-+ "\n"+::MSU.Text.colorGreen("+75") + " Melee Defense when moving"
++ "\n"+::MSU.Text.colorGreen("+75") + " Defense when moving"
 
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "On turn start:")
 + "\n"+::MSU.Text.colorGreen("Perform a break free action using Attack with a -25 penalty");

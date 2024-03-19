@@ -67,20 +67,12 @@
 
 		if (shield != null && shield.isItemType(::Const.Items.ItemType.Shield))
 		{
-			shieldBonus = (this.m.IsRanged ? shield.getRangedDefense() : shield.getMeleeDefense());
+			shieldBonus = (this.m.IsRanged ? ::Math.round(shield.getMeleeDefense() * 0.75) : shield.getMeleeDefense());
 
-			if (!this.m.IsShieldRelevant)
-			{
-				toHit = toHit + shieldBonus;
-			}
-
+			if (!this.m.IsShieldRelevant) toHit = toHit + shieldBonus;
 			if (_targetEntity.getSkills().hasSkill("effects.shieldwall"))
 			{
-				if (!this.m.IsShieldwallRelevant)
-				{
-					toHit = toHit + shieldBonus;
-				}
-
+				if (!this.m.IsShieldwallRelevant) toHit = toHit + shieldBonus;
 				shieldBonus = shieldBonus * 2;
 			}
 		}
@@ -393,19 +385,12 @@
 
 	o.getHitchance = function( _targetEntity )
 	{
-		if (!_targetEntity.isAttackable() && !_targetEntity.isRock() && !_targetEntity.isTree() && !_targetEntity.isBush() && !_targetEntity.isSupplies())
-		{
-			return 0;
-		}
-
+		if (!_targetEntity.isAttackable() && !_targetEntity.isRock() && !_targetEntity.isTree() && !_targetEntity.isBush() && !_targetEntity.isSupplies()) return 0;
+		
 		local user = this.m.Container.getActor();
 		local properties = this.factoringOffhand(this.m.Container.buildPropertiesForUse(this, _targetEntity));
-
-		if (!this.isUsingHitchance())
-		{
-			return 100;
-		}
-
+		if (!this.isUsingHitchance()) return 100;
+		
 		local allowDiversion = this.m.IsRanged && this.m.MaxRangeBonus > 1;
 		local defenderProperties = _targetEntity.getSkills().buildPropertiesForDefense(user, this);
 
@@ -418,27 +403,17 @@
 		local distanceToTarget = user.getTile().getDistanceTo(_targetEntity.getTile());
 		local toHit = skill - defense;
 
-		if (this.m.IsRanged)
-		{
-			toHit = toHit + (distanceToTarget - this.m.MinRange) * properties.HitChanceAdditionalWithEachTile * properties.HitChanceWithEachTileMult;
-		}
-
-		if (levelDifference < 0)
-		{
-			toHit = toHit + ::Const.Combat.LevelDifferenceToHitBonus;
-		}
-		else
-		{
-			toHit = toHit + ::Const.Combat.LevelDifferenceToHitMalus * levelDifference;
-		}
-
+		if (this.m.IsRanged) toHit = toHit + (distanceToTarget - this.m.MinRange) * properties.HitChanceAdditionalWithEachTile * properties.HitChanceWithEachTileMult;
+		if (levelDifference < 0) toHit = toHit + ::Const.Combat.LevelDifferenceToHitBonus;
+		else toHit = toHit + ::Const.Combat.LevelDifferenceToHitMalus * levelDifference;
+		
 		if (!this.m.IsShieldRelevant)
 		{
 			local shield = _targetEntity.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
 
 			if (shield != null && shield.isItemType(::Const.Items.ItemType.Shield))
 			{
-				local shieldBonus = (this.m.IsRanged ? shield.getRangedDefense() : shield.getMeleeDefense());
+				local shieldBonus = (this.m.IsRanged ? ::Math.round(shield.getMeleeDefense() * 0.75) : shield.getMeleeDefense());
 				toHit = toHit + shieldBonus;
 
 				if (!this.m.IsShieldwallRelevant && _targetEntity.getSkills().hasSkill("effects.shieldwall"))
@@ -450,8 +425,8 @@
 
 		toHit = toHit * properties.TotalAttackToHitMult;
 		toHit = toHit + ::Math.max(0, 100 - toHit) * (1.0 - defenderProperties.TotalDefenseToHitMult);
+		
 		local userTile = user.getTile();
-
 		if (allowDiversion && this.m.IsRanged && userTile.getDistanceTo(_targetEntity.getTile()) > 1)
 		{
 			local blockedTiles = ::Const.Tactical.Common.getBlockedTiles(userTile, _targetEntity.getTile(), user.getFaction(), true);
@@ -468,37 +443,22 @@
 
 	o.modGetHitFactors = function( ret, _targetTile )
 	{
-		if (!ret)
-		{
-			return ret;
-		}
-
+		if (!ret) return ret;
+		
 		local retCount = ret.len();
 		local green = function ( text )
 		{
-			if (!text)
-			{
-				return "";
-			}
-
+			if (!text) return "";
 			return "[color=" + ::Const.UI.Color.PositiveValue + "]" + text + "[/color]";
 		};
 		local red = function ( text )
 		{
-			if (!text)
-			{
-				return "";
-			}
-
+			if (!text) return "";
 			return "[color=" + ::Const.UI.Color.NegativeValue + "]" + text + "[/color]";
 		};
 		local isIn = function ( pattern, text )
 		{
-			if (!pattern || !text)
-			{
-				return false;
-			}
-
+			if (!pattern || !text) return false;
 			return this.regexp(pattern).search(text);
 		};
 		local user = this.m.Container.getActor();
@@ -506,11 +466,7 @@
 		local targetEntity = _targetTile.IsOccupiedByActor ? _targetTile.getEntity() : null;
 		local getBadTerrainFactor = function ( attributeIcon )
 		{
-			if (!attributeIcon)
-			{
-				return false;
-			}
-
+			if (!attributeIcon) return false;
 			local badTerrains = [
 				"terrain.swamp"
 			];
@@ -518,14 +474,9 @@
 			for( local i = 0; i < badTerrains.len(); i++ )
 			{
 				local terrainEffect = targetEntity.getSkills().getSkillByID(badTerrains[i]);
-
-				if (!(terrainEffect && "getTooltip" in terrainEffect))
-				{
-				}
-				else
+				if (terrainEffect && "getTooltip" in terrainEffect)
 				{
 					local tooltip = terrainEffect.getTooltip();
-
 					foreach( i, r in tooltip )
 					{
 						if (("type" in r) && r.type == "text" && ("icon" in r) && "text" in r)
@@ -538,7 +489,6 @@
 					}
 				}
 			}
-
 			return null;
 		};
 		local attackingEntity = user;
@@ -548,13 +498,8 @@
 		local skillHitChanceBonus = this.m.HitChanceBonus;
 		modifier[skillName] <- function ( row, description )
 		{
-			if (!("icon" in row))
-			{
-				return;
-			}
-
+			if (!("icon" in row)) return;
 			local icon = row.icon;
-
 			if (icon == "ui/tooltips/positive.png")
 			{
 				row.text = green("" + skillHitChanceBonus + "%") + " " + description;
@@ -566,17 +511,9 @@
 		};
 		modifier.Surrounded <- function ( row, description )
 		{
-			if (targetEntity.m.CurrentProperties.IsImmuneToSurrounding)
-			{
-				return;
-			}
-
+			if (targetEntity.m.CurrentProperties.IsImmuneToSurrounding) return;
 			local malus = ::Math.max(0, attackingEntity.getCurrentProperties().SurroundedBonus - targetEntity.getCurrentProperties().SurroundedDefense) * targetEntity.getSurroundedCount();
-
-			if (malus)
-			{
-				row.text = green(malus + "%") + " " + description;
-			}
+			if (malus) row.text = green(malus + "%") + " " + description;
 		};
 		modifier["Height advantage"] <- function ( row, description )
 		{
@@ -621,7 +558,7 @@
 		local getShieldBonus = function ()
 		{
 			local shield = targetEntity.getItems().getItemAtSlot(::Const.ItemSlot.Offhand);
-			local shieldBonus = (thisSkill.m.IsRanged ? shield.getRangedDefense() : shield.getMeleeDefense());
+			local shieldBonus = (this.m.IsRanged ? ::Math.round(shield.getMeleeDefense() * 0.75) : shield.getMeleeDefense());
 			return ::Math.floor(shieldBonus);
 		};
 		modifier["Armed with shield"] <- function ( row, description )
@@ -659,27 +596,23 @@
 
 		modifier.Nighttime <- function ( row, description )
 		{
-			local night = user.getSkills().getSkillByID("special.night");
-			local attributeIcon = "ranged_skill";
+			// local night = user.getSkills().getSkillByID("special.night");
+			// local attributeIcon = "ranged_skill";
 
-			if (!(night && "getTooltip" in night))
-			{
-				return;
-			}
-
-			local tooltip = night.getTooltip();
-
-			foreach( _, r in tooltip )
-			{
-				if (("type" in r) && r.type == "text" && ("icon" in r) && "text" in r)
-				{
-					if (isIn(attributeIcon, r.icon))
-					{
-						row.text = description + "\n(" + r.text + ")";
-						return;
-					}
-				}
-			}
+			// if (!(night && "getTooltip" in night)) return;
+			// local tooltip = night.getTooltip();
+			// foreach( _, r in tooltip )
+			// {
+			// 	if (("type" in r) && r.type == "text" && ("icon" in r) && "text" in r)
+			// 	{
+			// 		if (isIn(attributeIcon, r.icon))
+			// 		{
+			// 			row.text = description + "\n(" + r.text + ")";
+			// 			return;
+			// 		}
+			// 	}
+			// }
+			return;
 		};
 		local getDamageResistance = function ()
 		{
@@ -769,12 +702,8 @@
 		local getDifferenceInProperty = function ( _property, _targetEntity )
 		{
 			local props = user.getCurrentProperties();
-
-			if (!(_property in props))
-			{
-				return null;
-			}
-
+			if (!(_property in props)) return null;
+			
 			local propsWithSkill = props.getClone();
 			thisSkill.onAnySkillUsed(thisSkill, _targetEntity, propsWithSkill);
 			return propsWithSkill[_property] - props[_property];

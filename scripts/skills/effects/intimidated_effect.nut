@@ -18,7 +18,7 @@ this.intimidated_effect <- this.inherit("scripts/skills/skill", {
 
 	function getName()
 	{
-		return this.m.Name + " (– "+ this.m.ResolveMalus +" Resolve)";
+		return this.m.Name + " (– "+ this.m.ResolveMalus +" Will)";
 	}
 
 	function getTooltip()
@@ -38,7 +38,7 @@ this.intimidated_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-" + this.m.ResolveMalus + "[/color] Resolve"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-" + this.m.ResolveMalus + "[/color] Will"
 			}
 		];
 	}

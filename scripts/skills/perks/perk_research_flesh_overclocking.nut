@@ -2,7 +2,7 @@
 ::Const.Strings.PerkDescription.ResearchFleshOverclocking <- "Reveal the power hidden in the flesh..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Summoned undead and this unit:")
 + "\n " + ::MSU.Text.colorGreen("– 20%") + " damage taken"
-+ "\n " + ::MSU.Text.colorGreen("+10%") + " initiative";
++ "\n " + ::MSU.Text.colorGreen("+10%") + " Agility";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.ResearchFleshOverclocking].Name = ::Const.Strings.PerkName.ResearchFleshOverclocking;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.ResearchFleshOverclocking].Tooltip = ::Const.Strings.PerkDescription.ResearchFleshOverclocking;

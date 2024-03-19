@@ -6,7 +6,7 @@ this.brute_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		this.m.ID = "trait.brute";
 		this.m.Name = "Brute";
 		this.m.Icon = "ui/traits/trait_icon_01.png";
-		this.m.Description = "Not one for delicate attacks, this character will use full force for additional damage when striking an opponent\'s head in melee at the expense of some accuracy.";
+		this.m.Description = "Not one for delicate attacks...";
 		this.m.Titles = [
 			"the Bull",
 			"the Ox",
@@ -37,37 +37,30 @@ this.brute_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				text = this.getDescription()
 			},
 			{
-				id = 10,
+				id = 11,
 				type = "text",
-				icon = "ui/icons/chance_to_hit_head.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+15%[/color] Damage on a hit to the head"
+				icon = "ui/icons/melee_skill.png",
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-10[/color] Attack"
 			},
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5[/color] Skill"
+				icon = "ui/icons/strength.png",
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+20[/color] Strength"
 			}
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		_properties.MeleeSkill += -5;
-	}
-
-	function onAnySkillUsed( _skill, _targetEntity, _properties )
-	{
-		if (_skill.isAttack() && !_skill.isRanged())
-		{
-			_properties.DamageAgainstMult[::Const.BodyPart.Head] += 0.15;
-		}
+		_properties.MeleeSkill += -10;
+		_properties.RangedSkill += 20;
 	}
 
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Vicious", true);
+		actor.getFlags().set("Large", true);
 	}
 
 });

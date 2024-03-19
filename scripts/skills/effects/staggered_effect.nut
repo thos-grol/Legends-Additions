@@ -37,13 +37,13 @@ this.staggered_effect <- this.inherit("scripts/skills/skill", {
 				id = 12,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-50%[/color] Initiative"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-50%[/color] Agility"
 			},
 			{
 				id = 12,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-25[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-25[/color] Defense"
 			}
 		];
 	}
@@ -52,7 +52,6 @@ this.staggered_effect <- this.inherit("scripts/skills/skill", {
 	{
 		_properties.InitiativeMult *= 0.5;
 		_properties.MeleeDefense -= 25;
-		_properties.RangedDefense -= 25;
 	}
 
 	function onTurnStart()

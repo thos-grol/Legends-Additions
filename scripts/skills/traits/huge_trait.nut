@@ -38,38 +38,24 @@ this.huge_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				text = this.getDescription()
 			},
 			{
-				id = 12,
+				id = 11,
 				type = "text",
-				icon = "ui/icons/regular_damage.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5%[/color] Melee Damage"
-			},
-			{
-				id = 12,
-				type = "text",
-				icon = "ui/icons/regular_damage.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+5%[/color] Ranged Damage"
+				icon = "ui/icons/strength.png",
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+20[/color] Strength"
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5[/color] Melee Defense"
+				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-10[/color] Defense"
 			},
-			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + ::Const.UI.Color.NegativeValue + "]-5[/color] Ranged Defense"
-			}
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		_properties.MeleeDamageMult *= 1.05;
-		_properties.RangedDamageMult *= 1.05;
-		_properties.MeleeDefense -= 5;
-		_properties.RangedDefense -= 5;
+		_properties.MeleeDefense += -10;
+		_properties.RangedSkill += 20;
 	}
 
 	function onAdded()

@@ -13,13 +13,7 @@
 			id = 7,
 			type = "text",
 			icon = "ui/icons/melee_defense.png",
-			text = ::MSU.Text.colorRed( has ? "-10%" : "-40%") + " Melee Defense"
-		});
-		ret.push({
-			id = 7,
-			type = "text",
-			icon = "ui/icons/ranged_defense.png",
-			text = ::MSU.Text.colorRed( has ? "-10%" : "-40%") + " Ranged Defense"
+			text = ::MSU.Text.colorRed( has ? "-10%" : "-40%") + " Defense"
 		});
 		ret.push({
 			id = 7,
@@ -34,7 +28,6 @@
 	{
 		local has = this.has_penance();
 		_properties.MeleeDefenseMult *= has ? 0.9 : 0.6;
-		_properties.RangedDefenseMult *= has ? 0.9 : 0.6;
 		_properties.InitiativeMult *= has ? 0.8 : 0.6;
 		_properties.IsContentWithBeingInReserve = true;
 	}

@@ -4,7 +4,7 @@ this.boss_fearless_trait <- this.inherit("scripts/skills/traits/character_trait"
 	{
 		this.character_trait.create();
 		this.m.ID = "trait.boss_fearless";
-		this.m.Name = "Boss Resolve";
+		this.m.Name = "Boss Will";
 		this.m.Icon = "ui/traits/trait_icon_30.png";
 		this.m.Description = "This character is not afraid... until they get low.";
 		this.m.Titles = [

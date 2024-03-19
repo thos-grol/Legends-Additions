@@ -1,9 +1,9 @@
 ::Const.Strings.PerkName.LegendMuscularity = "Muscularity";
 ::Const.Strings.PerkDescription.LegendMuscularity = ::MSU.Text.color(::Z.Color.Purple, "Destiny")
-+ "\n"+"Put one's full weight into every blow..."
++ "\n"+"Extreme Strength..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n"+::MSU.Text.colorGreen("+25% of current Hitpoints") + " to Minimum and Maximum damage"
-+ "\n"+::MSU.Text.colorRed("+100%") + " target attraction, due to being huge";
++ "\n" + ::MSU.Text.colorGreen("+25%") + " Strength"
++ "\n"+::MSU.Text.colorGreen("– 50%") + " Endurance and Agility penalty from armor";
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Name = ::Const.Strings.PerkName.LegendMuscularity;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendMuscularity].Tooltip = ::Const.Strings.PerkDescription.LegendMuscularity;
@@ -34,10 +34,7 @@ this.perk_legend_muscularity <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		local bodyHealth = this.getContainer().getActor().getHitpoints();
-		_properties.DamageRegularMin += ::Math.min(50, ::Math.floor(bodyHealth * 0.25));
-		_properties.DamageRegularMax += ::Math.min(50, ::Math.floor(bodyHealth * 0.25));
-		_properties.TargetAttractionMult *= 2.0;
+		_properties.RangedSkillMult *= 1.25;
 	}
 
 });

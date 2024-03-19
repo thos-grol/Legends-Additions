@@ -18,7 +18,6 @@ this.teamwork_effect <- this.inherit("scripts/skills/skill", {
 		if (_skill.isAttack() && _targetEntity != null && _targetEntity.getID() != this.getContainer().getActor().getID() && _targetEntity.getFaction() == this.getContainer().getActor().getFaction())
 		{
 			_properties.MeleeSkillMult *= 0.25;
-			_properties.RangedSkillMult *= 0.25;
 		}
 	}
 

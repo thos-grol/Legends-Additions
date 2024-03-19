@@ -40,7 +40,7 @@ this.perk_legend_lithe <- this.inherit("scripts/skills/skill", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Only receive [color=" + ::Const.UI.Color.PositiveValue + "]" + (100 - bonus) + "%[/color] of any damage to Hitpoints and Armor from attacks"
+				text = "Only receive [color=" + ::Const.UI.Color.PositiveValue + "]" + (100 - bonus) + "%[/color] of any damage to Vitality and Armor from attacks"
 			});
 			return tooltip;
 		}

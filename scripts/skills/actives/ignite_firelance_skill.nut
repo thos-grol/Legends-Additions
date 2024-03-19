@@ -43,9 +43,9 @@ this.ignite_firelance_skill <- this.inherit("scripts/skills/skill", {
 		this.m.HitChanceBonus = 40;
 		this.m.DirectDamageMult = 0.15;
 		this.m.ActionPointCost = 4;
-		this.m.FatigueCost = 5;
+		this.m.FatigueCost = 0;
 		this.m.MinRange = 1;
-		this.m.MaxRange = 1;
+		this.m.MaxRange = 2;
 		this.m.MaxRangeBonus = 0;
 		this.m.MaxLevelDifference = 4;
 	}

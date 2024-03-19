@@ -32,26 +32,26 @@ this.severe_concussion_injury <- this.inherit("scripts/skills/injury/injury", {
 				id = 6,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Skill"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Attack"
 			},
 
 			{
 				id = 6,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Melee Defense"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Defense"
 			},
 			{
 				id = 7,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Ranged Defense"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Reflex"
 			},
 			{
 				id = 7,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Initiative"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] Agility"
 			},
 			{
 				id = 7,

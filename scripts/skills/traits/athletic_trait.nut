@@ -33,15 +33,22 @@ this.athletic_trait <- this.inherit("scripts/skills/traits/character_trait", {
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/special.png",
+				icon = "ui/icons/fatigue.png",
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+20[/color] Endurance"
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/fatigue.png",
 				text = "Builds up [color=" + ::Const.UI.Color.PositiveValue + "]2[/color] less Fatigue for each tile travelled"
-			}
+			},
 		];
 	}
 
 	function onUpdate( _properties )
 	{
 		_properties.MovementFatigueCostAdditional -= 2;
+		_properties.Stamina += 20;
 	}
 
 	function onAdded()

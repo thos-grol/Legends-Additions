@@ -9,11 +9,11 @@ if (!("Perks" in gt.Const))
 // Trees
 ///////////////////////////////////////////////////////////////////////////
 
-gt.Const.Perks.FastTree <- {
-	ID = "FastTree",
-	Name = "Fast",
+gt.Const.Perks.AgileTree <- {
+	ID = "AgileTree",
+	Name = "Agile",
 	Descriptions = [
-		"is fast"
+		"is agile"
 	],
 	Attributes = {
 		Hitpoints = [
@@ -59,7 +59,7 @@ gt.Const.Perks.FastTree <- {
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.QuickHands
+			gt.Const.Perks.PerkDefs.LegendTwirl
 		],
 		[],
 		[
@@ -68,70 +68,11 @@ gt.Const.Perks.FastTree <- {
 	]
 };
 
-gt.Const.Perks.AgileTree <- {
-	ID = "AgileTree",
-	Name = "Agile",
-	Descriptions = [
-		"is agile"
-	],
-	Attributes = {
-		Hitpoints = [
-			0,
-			0
-		],
-		Bravery = [
-			0,
-			0
-		],
-		Stamina = [
-			0,
-			0
-		],
-		MeleeSkill = [
-			0,
-			0
-		],
-		RangedSkill = [
-			0,
-			0
-		],
-		MeleeDefense = [
-			0,
-			0
-		],
-		RangedDefense = [
-			0,
-			0
-		],
-		Initiative = [
-			0,
-			0
-		]
-	},
-	Tree = [
-		[
-			gt.Const.Perks.PerkDefs.Pathfinder
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.Agile
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendTwirl
-		],
-		[],
-		[
-			gt.Const.Perks.PerkDefs.LegendEscapeArtist
-		]
-	]
-};
-
 gt.Const.Perks.LargeTree <- {
 	ID = "LargeTree",
-	Name = "Large",
+	Name = "Strong",
 	Descriptions = [
-		"is large"
+		"is strong"
 	],
 	Attributes = {
 		Hitpoints = [
@@ -169,7 +110,7 @@ gt.Const.Perks.LargeTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.Colossus
+			gt.Const.Perks.PerkDefs.Agile //Might
 		],
 		[],
 		[
@@ -704,7 +645,8 @@ gt.Const.Perks.TrainedTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.Rotation
+			gt.Const.Perks.PerkDefs.Rotation,
+			gt.Const.Perks.PerkDefs.Pathfinder
 		],
 		[
 			gt.Const.Perks.PerkDefs.LegendAdaptive
@@ -826,6 +768,61 @@ gt.Const.Perks.MartyrTree <- { //Unused
 	]
 };
 
+gt.Const.Perks.FastTree <- { //Unused
+	ID = "FastTree",
+	Name = "Fast",
+	Descriptions = [
+		"is fast"
+	],
+	Attributes = {
+		Hitpoints = [
+			0,
+			0
+		],
+		Bravery = [
+			0,
+			0
+		],
+		Stamina = [
+			0,
+			0
+		],
+		MeleeSkill = [
+			0,
+			0
+		],
+		RangedSkill = [
+			0,
+			0
+		],
+		MeleeDefense = [
+			0,
+			0
+		],
+		RangedDefense = [
+			0,
+			0
+		],
+		Initiative = [
+			0,
+			0
+		]
+	},
+	Tree = [
+		[
+		],
+		[],
+		[
+		],
+		[],
+		[
+		],
+		[],
+		[
+		]
+	]
+};
+
 ///////////////////////////////////////////////////////////////////////////
 // Done
 ///////////////////////////////////////////////////////////////////////////
@@ -855,8 +852,8 @@ gt.Const.Perks.TraitsTrees <- {
 		if (_flags.has("Large") && _exclude.find("LargeTree") == null) return gt.Const.Perks.LargeTree;
 		if (_flags.has("Vicious") && _exclude.find("ViciousTree") == null) return gt.Const.Perks.ViciousTree;
 		if (_flags.has("Devious") && _exclude.find("DeviousTree") == null) return gt.Const.Perks.DeviousTree;
-		if (_flags.has("Fast") && _exclude.find("FastTree") == null) return gt.Const.Perks.FastTree;
 		if (_flags.has("Sturdy") && _exclude.find("SturdyTree") == null) return gt.Const.Perks.SturdyTree;
+		if (_flags.has("Agile") && _exclude.find("AgileTree") == null) return gt.Const.Perks.AgileTree;
 		if (_flags.has("Tenacious") && _exclude.find("IndestructibleTree") == null) return gt.Const.Perks.IndestructibleTree;
 		if (_flags.has("Fit") && _exclude.find("FitTree") == null) return gt.Const.Perks.FitTree;
 
@@ -866,6 +863,7 @@ gt.Const.Perks.TraitsTrees <- {
 		{
 			if (t.ID == "OrganisedTree") continue; //unused
 			if (t.ID == "MartyrTree") continue; //unused
+			if (t.ID == "FastTree") continue; //unused
 			if (t.ID == "LargeTree" && _flags.has("Tiny")) continue; //Tiny cannot be large. Duh
 			if (t.ID == "TrainedTree") continue; //background unlocks it
 			if (t.ID == "IntelligentTree") continue; //needs bright trait to unlock

@@ -13,13 +13,13 @@
 			id = 7,
 			type = "text",
 			icon = "ui/icons/melee_skill.png",
-			text = ::MSU.Text.colorRed( has ? "-10%" : "-20%") + " Skill"
+			text = ::MSU.Text.colorRed( has ? "-10%" : "-20%") + " Attack"
 		});
 		ret.push({
 			id = 7,
 			type = "text",
 			icon = "ui/icons/melee_defense.png",
-			text = ::MSU.Text.colorRed( has ? "-10%" : "-30%") + " Melee Defense"
+			text = ::MSU.Text.colorRed( has ? "-10%" : "-30%") + " Defense"
 		});
 		return ret;
 	}

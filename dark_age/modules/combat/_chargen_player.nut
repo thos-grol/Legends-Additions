@@ -117,90 +117,46 @@
 		this.m.Talents.resize(::Const.Attributes.COUNT, 0);
 		if (this.getBackground() != null && this.getBackground().isBackgroundType(::Const.BackgroundType.Untalented) && !_force) return;
 
+		local max = 3;
+		local num = 0;
 
-		local attributes = [];
-		local weights = [];
-		local totalWeight = 0;
-
-		if (this.getFlags().has("Intelligent"))
-		{
-			this.getTalents()[::Const.Attributes.MeleeDefense] = ::Math.rand(2,3);
-			_num -= 1;
-		}
-
-		if (this.getFlags().has("Commander"))
+		if (num < max && (this.getFlags().has("Commander") || this.getFlags().has("Tenacious")))
 		{
 			this.getTalents()[::Const.Attributes.Bravery] = ::Math.rand(2,3);
-			_num -= 1;
+			num++;
 		}
 
-		for( local i = 0; i < this.m.StarWeights.len(); i = i )
+		if (num < max && this.getFlags().has("Calm"))
 		{
-			if (this.m.Talents[i] != 0)
-			{
-			}
-			else if (this.getBackground() != null && this.getBackground().getExcludedTalents().find(i) != null)
-			{
-			}
-			else
-			{
-				if (this.getFlags().has("PlayerZombie") && (i == ::Const.Attributes.Bravery || i == ::Const.Attributes.Fatigue || i == ::Const.Attributes.Initiative))
-				{
-					continue;
-				}
-				else if (this.getFlags().has("PlayerSkeleton") && (i == ::Const.Attributes.Bravery || i == ::Const.Attributes.Fatigue || i == ::Const.Attributes.Hitpoints))
-				{
-					continue;
-				}
-
-				attributes.push(i);
-				weights.push(this.m.StarWeights[i]);
-				totalWeight = totalWeight + this.m.StarWeights[i];
-			}
-
-			i = ++i;
+			this.getTalents()[::Const.Attributes.RangedDefense] = ::Math.rand(1,3);
+			num++;
 		}
 
-		for( local done = 0; done < _num; done = done )
+		if (num < max && this.getFlags().has("Fit"))
 		{
-			local weight = ::Math.rand(1, totalWeight);
-			local totalhere = 0;
-
-			for( local i = 0; i < attributes.len(); i = i )
-			{
-				if (weight > totalhere && weight <= totalhere + weights[i])
-				{
-					local r = ::Math.rand(1, 100);
-					local j = attributes[i];
-
-					if (r <= 60)
-					{
-						this.m.Talents[j] = 1;
-					}
-					else if (r <= 90)
-					{
-						this.m.Talents[j] = 2;
-					}
-					else
-					{
-						this.m.Talents[j] = 3;
-					}
-
-					attributes.remove(i);
-					totalWeight = totalWeight - weights[i];
-					weights.remove(i);
-					break;
-				}
-				else
-				{
-					totalhere = totalhere + weights[i];
-				}
-
-				i = ++i;
-			}
-
-			done = ++done;
+			this.getTalents()[::Const.Attributes.Stamina] = ::Math.rand(1,3);
+			num++;
 		}
+
+		if (num < max && this.getFlags().has("Large"))
+		{
+			this.getTalents()[::Const.Attributes.RangedSkill] = ::Math.rand(1,3);
+			num++;
+		}
+		
+		if (num < max && this.getFlags().has("Sturdy"))
+		{
+			this.getTalents()[::Const.Attributes.Hitpoints] = ::Math.rand(1,3);
+			num++;
+		}
+
+		if (num < max && this.getFlags().has("Agile"))
+		{
+			this.getTalents()[::Const.Attributes.Initiative] = ::Math.rand(1,3);
+			num++;
+		}
+
+		
 	}
 
 	o.isPerkUnlockable = function( _id )
@@ -308,5 +264,52 @@
 		}
 
 
+	}
+
+	o.checkMorale = function( _change, _difficulty, _type = this.Const.MoraleCheckType.Default, _showIconBeforeMoraleIcon = "", _noNewLine = false )
+	{
+		if (_change > 0 && this.m.MoraleState == this.Const.MoraleState.Steady && this.m.Skills.hasSkill("trait.insecure"))
+		{
+			return false;
+		}
+
+		if (_change > 0 && this.m.MoraleState == this.Const.MoraleState.Steady && ("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin().getID() == "scenario.anatomists")
+		{
+			return false;
+		}
+
+		if (_change < 0 && this.m.MoraleState == this.Const.MoraleState.Breaking && this.m.Skills.hasSkill("effects.ancient_priest_potion"))
+		{
+			return false;
+		}
+
+		if (_change < 0 && this.m.MoraleState == this.Const.MoraleState.Breaking && this.m.Skills.hasSkill("trait.oath_of_valor"))
+		{
+			return false;
+		}
+
+		if (_change > 0 && this.m.Skills.hasSkill("trait.optimist"))
+		{
+			_difficulty = _difficulty + 5;
+		}
+		else if (_change < 0 && this.m.Skills.hasSkill("trait.pessimist"))
+		{
+			_difficulty = _difficulty - 5;
+		}
+		else if (this.m.Skills.hasSkill("trait.irrational"))
+		{
+			_difficulty = _difficulty + (this.Math.rand(0, 1) == 0 ? 20 : -20);
+		}
+		else if (this.m.Skills.hasSkill("trait.mad"))
+		{
+			_difficulty = _difficulty + (this.Math.rand(0, 1) == 0 ? 40 : -40);
+		}
+
+		if (_change < 0 && _type == this.Const.MoraleCheckType.MentalAttack && this.m.Skills.hasSkill("trait.superstitious"))
+		{
+			_difficulty = _difficulty - 10;
+		}
+
+		return this.actor.checkMorale(_change, _difficulty, _type, _showIconBeforeMoraleIcon, _noNewLine);
 	}
 });
