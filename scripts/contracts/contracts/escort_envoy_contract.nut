@@ -6,8 +6,8 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 	{
 		this.contract.create();
 		this.m.Type = "contract.escort_envoy";
-		this.m.Name = "Escort Envoy";
-		this.m.Description = "An important envoy is requesting an armed guard to escort him during his mission to a distant city and back.";
+		this.m.Name = "A Diplomatic Mission";
+		this.m.Description = "They say the pen is mightier than the sword... if that were really true than this envoy would not be needing an armed escort.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 	}
 
@@ -51,11 +51,11 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 			candidates.push(s);
 		}
 
-		this.m.Destination = this.WeakTableRef(candidates[::Math.rand(0, candidates.len() - 1)]);
+		this.m.Destination = this.WeakTableRef(candidates[this.Math.rand(0, candidates.len() - 1)]);
 		local distance = this.getDistanceOnRoads(this.m.Home.getTile(), this.m.Destination.getTile());
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
+		this.m.Payment.Pool = this.Math.max(250, distance * 7.0 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult());
 
-		if (::Math.rand(1, 100) <= 33)
+		if (this.Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -69,10 +69,10 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 			"the Envoy",
 			"the Emissary"
 		];
-		this.m.Flags.set("EnvoyName", ::Const.Strings.CharacterNames[::Math.rand(0, ::Const.Strings.CharacterNames.len() - 1)]);
-		this.m.Flags.set("EnvoyTitle", titles[::Math.rand(0, titles.len() - 1)]);
+		this.m.Flags.set("EnvoyName", this.Const.Strings.CharacterNames[this.Math.rand(0, this.Const.Strings.CharacterNames.len() - 1)]);
+		this.m.Flags.set("EnvoyTitle", titles[this.Math.rand(0, titles.len() - 1)]);
 		this.m.Flags.set("DestinationName", this.m.Destination.getName());
-		this.m.Flags.set("Bribe", this.beautifyNumber(this.m.Payment.Pool * ::Math.rand(75, 150) * 0.01));
+		this.m.Flags.set("Bribe", this.beautifyNumber(this.m.Payment.Pool * this.Math.rand(75, 150) * 0.01));
 		this.m.Flags.set("EnemyName", this.m.Destination.getOwner().getName());
 		this.contract.start();
 	}
@@ -87,7 +87,7 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 					"Escort %envoy% %envoy_title% to " + this.Contract.m.Destination.getName() + " in the %direction%"
 				];
 
-				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
+				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -100,7 +100,7 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = ::Math.rand(1, 100);
+				local r = this.Math.rand(1, 100);
 
 				if (r <= 10)
 				{
@@ -147,7 +147,7 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.setScreen("ShadyCharacter1");
 						this.World.Contracts.showActiveContract();
 					}
-					else if (this.World.State.getPlayer().getTile().HasRoad && ::Math.rand(1, 1000) <= 1)
+					else if (this.World.State.getPlayer().getTile().HasRoad && this.Math.rand(1, 1000) <= 1)
 					{
 						local enemiesNearby = false;
 						local parties = this.World.getAllEntitiesAtPos(this.World.State.getPlayer().getPos(), 400.0);
@@ -241,8 +241,8 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(::Const.Contracts.NegotiationDefault);
-		this.importScreens(::Const.Contracts.Overview);
+		this.importScreens(this.Const.Contracts.NegotiationDefault);
+		this.importScreens(this.Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -296,7 +296,7 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 			function start()
 			{
 				this.Characters.push(this.World.getGuestRoster().get(0).getImagePath());
-				this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + ::Math.rand(20, 60) * 1.0);
+				this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + this.Math.rand(20, 60) * 1.0);
 				this.Contract.setState("Waiting");
 			}
 
@@ -397,8 +397,8 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().set("Betrayed", true);
 						this.World.Assets.addMoney(this.Flags.get("Bribe"));
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractBetrayal);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to protect an envoy");
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractBetrayal);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to protect an envoy");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -412,7 +412,7 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("Bribe") + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("Bribe") + "[/color] Crowns"
 				});
 			}
 
@@ -434,10 +434,10 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 						p.CombatID = "Mercs";
 						p.Entities = [];
 						p.Parties = [];
-						p.Music = ::Const.Music.NobleTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 120 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Bandits).getID());
+						p.Music = this.Const.Music.NobleTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Mercenaries, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -463,9 +463,9 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well earned.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Safely escorted an envoy");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Safely escorted an envoy");
 						this.World.Contracts.finishActiveContract();
 						return 0;
 					}
@@ -477,7 +477,7 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -494,8 +494,8 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Damn this!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to protect an envoy");
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to protect an envoy");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -529,7 +529,7 @@ this.escort_envoy_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Destination != null && !this.m.Destination.isNull() ? ::Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())] : ""
+			this.m.Destination != null && !this.m.Destination.isNull() ? this.Const.Strings.Direction8[this.m.Home.getTile().getDirection8To(this.m.Destination.getTile())] : ""
 		]);
 	}
 

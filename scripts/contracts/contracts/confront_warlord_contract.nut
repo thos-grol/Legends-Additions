@@ -7,14 +7,20 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 	function create()
 	{
 		this.contract.create();
-		local r = ::Math.rand(1, 100);
+		local r = this.Math.rand(1, 100);
 
-		this.m.DifficultyMult = ::Math.rand(100, 175) * 0.01;
-
+		if (r <= 70)
+		{
+			this.m.DifficultyMult = this.Math.rand(95, 105) * 0.01;
+		}
+		else
+		{
+			this.m.DifficultyMult = this.Math.rand(115, 135) * 0.01;
+		}
 
 		this.m.Type = "contract.confront_warlord";
 		this.m.Name = "Confront Orc Warlord";
-		this.m.Description = "Spies have picked up the rise of an Orc Warlord. Lure the greenskin out of hiding and see that his head leaves his shoulders.";
+		this.m.Description = "Amid the slaughter, a fearsome greenskin Warlord has emerged. Goad him into fighting you and put an end to his carnage.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 	}
 
@@ -25,8 +31,8 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = ::Math.rand(1, 2);
+		this.m.Payment.Pool = 1800 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
+		local r = this.Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -53,7 +59,7 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 					"Kill the orc warlord"
 				];
 
-				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
+				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -68,7 +74,7 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 				this.Flags.set("MaxScore", 10 * this.Contract.getDifficultyMult());
 				this.Flags.set("LastRandomTime", 0.0);
-				local r = ::Math.rand(1, 100);
+				local r = this.Math.rand(1, 100);
 
 				if (r <= 10)
 				{
@@ -99,7 +105,7 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 					this.Contract.setScreen("MadeADent");
 					this.World.Contracts.showActiveContract();
 				}
-				else if (this.Flags.get("LastRandomTime") + 300.0 <= this.Time.getVirtualTimeF() && this.Contract.getDistanceToNearestSettlement() >= 5 && ::Math.rand(1, 1000) <= 1)
+				else if (this.Flags.get("LastRandomTime") + 300.0 <= this.Time.getVirtualTimeF() && this.Contract.getDistanceToNearestSettlement() >= 5 && this.Math.rand(1, 1000) <= 1)
 				{
 					this.Flags.set("LastRandomTime", this.Time.getVirtualTimeF());
 					this.Contract.setScreen("ClosingIn");
@@ -108,10 +114,19 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 				else if (this.Flags.get("IsBerserkersDone"))
 				{
 					this.Flags.set("IsBerserkersDone", false);
-					this.Contract.setScreen("Berserkers4");
+
+					if (this.Math.rand(1, 100) <= 50)
+					{
+						this.Contract.setScreen("Berserkers3");
+					}
+					else
+					{
+						this.Contract.setScreen("Berserkers4");
+					}
+
 					this.World.Contracts.showActiveContract();
 				}
-				else if (this.Flags.get("IsBerserkers") && !this.TempFlags.has("IsBerserkersShown") && this.Contract.getDistanceToNearestSettlement() >= 7 && ::Math.rand(1, 1000) <= 1)
+				else if (this.Flags.get("IsBerserkers") && !this.TempFlags.has("IsBerserkersShown") && this.Contract.getDistanceToNearestSettlement() >= 7 && this.Math.rand(1, 1000) <= 1)
 				{
 					this.TempFlags.set("IsBerserkersShown", true);
 					this.Contract.setScreen("Berserkers1");
@@ -123,7 +138,7 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				local f = this.World.FactionManager.getFaction(_location.getFaction());
 
-				if (f.getType() == ::Const.FactionType.Orcs || f.getType() == ::Const.FactionType.Goblins)
+				if (f.getType() == this.Const.FactionType.Orcs || f.getType() == this.Const.FactionType.Goblins)
 				{
 					this.Flags.set("Score", this.Flags.get("Score") + 4);
 					this.Flags.set("JustDefeatedGreenskins", true);
@@ -134,7 +149,7 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				local f = this.World.FactionManager.getFaction(_party.getFaction());
 
-				if (f.getType() == ::Const.FactionType.Orcs || f.getType() == ::Const.FactionType.Goblins)
+				if (f.getType() == this.Const.FactionType.Orcs || f.getType() == this.Const.FactionType.Goblins)
 				{
 					this.Flags.set("Score", this.Flags.get("Score") + 2);
 					this.Flags.set("JustDefeatedGreenskins", true);
@@ -191,7 +206,7 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 				else
 				{
 					local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-					properties.Music = ::Const.Music.OrcsTracks;
+					properties.Music = this.Const.Music.OrcsTracks;
 					properties.AfterDeploymentCallback = this.OnAfterDeployment.bindenv(this);
 					this.World.Contracts.startScriptedCombat(properties, this.Contract.m.IsPlayerAttacking, true, true);
 				}
@@ -205,9 +220,9 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					foreach( e in f )
 					{
-						if (e.getType() == ::Const.EntityType.OrcWarlord)
+						if (e.getType() == this.Const.EntityType.OrcWarlord)
 						{
-							e.getAIAgent().getProperties().BehaviorMult[::Const.AI.Behavior.ID.Retreat] = 0.0;
+							e.getAIAgent().getProperties().BehaviorMult[this.Const.AI.Behavior.ID.Retreat] = 0.0;
 							e.getFlags().add("IsFinalBoss", true);
 							break;
 						}
@@ -248,8 +263,8 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(::Const.Contracts.NegotiationDefault);
-		this.importScreens(::Const.Contracts.Overview);
+		this.importScreens(this.Const.Contracts.NegotiationDefault);
+		this.importScreens(this.Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -335,19 +350,19 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 			function start()
 			{
 				local playerTile = this.World.State.getPlayer().getTile();
-				local nearest_orcs = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getNearestSettlement(playerTile);
+				local nearest_orcs = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getNearestSettlement(playerTile);
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 9, 15);
-				local party = this.World.FactionManager.getFaction(nearest_orcs.getFaction()).spawnEntity(tile, "Greenskin Horde", false, ::Const.World.Spawn.GreenskinHorde, 130 * this.Contract.getDifficultyMult());
+				local party = this.World.FactionManager.getFaction(nearest_orcs.getFaction()).spawnEntity(tile, "Greenskin Horde", false, this.Const.World.Spawn.GreenskinHorde, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.getSprite("banner").setBrush(nearest_orcs.getBanner());
 				party.getSprite("body").setBrush("figure_orc_05");
 				party.setDescription("A horde of greenskins led by a fearsome orc warlord.");
-				party.setFootprintType(::Const.World.FootprintsType.Orcs);
+				party.setFootprintType(this.Const.World.FootprintsType.Orcs);
 				this.Contract.m.UnitsSpawned.push(party);
 				local hasWarlord = false;
 
 				foreach( t in party.getTroops() )
 				{
-					if (t.ID == ::Const.EntityType.OrcWarlord)
+					if (t.ID == this.Const.EntityType.OrcWarlord)
 					{
 						hasWarlord = true;
 						break;
@@ -356,13 +371,13 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 
 				if (!hasWarlord)
 				{
-					::Const.World.Common.addTroop(party, {
-						Type = ::Const.World.Spawn.Troops.OrcWarlord
+					this.Const.World.Common.addTroop(party, {
+						Type = this.Const.World.Spawn.Troops.OrcWarlord
 					}, false);
 				}
 
-				party.getLoot().ArmorParts = ::Math.rand(0, 35);
-				party.getLoot().Ammo = ::Math.rand(0, 10);
+				party.getLoot().ArmorParts = this.Math.rand(0, 35);
+				party.getLoot().Ammo = this.Math.rand(0, 10);
 				party.addToInventory("supplies/strange_meat_item");
 				party.addToInventory("supplies/strange_meat_item");
 				party.addToInventory("supplies/strange_meat_item");
@@ -370,7 +385,7 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 				this.Contract.m.Destination = this.WeakTableRef(party);
 				party.setAttackableByAI(false);
 				local c = party.getController();
-				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 				local intercept = this.new("scripts/ai/world/orders/intercept_order");
 				intercept.setTarget(this.World.State.getPlayer());
 				c.addOrder(intercept);
@@ -431,10 +446,10 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos(), true);
 						p.CombatID = "Berserkers";
-						p.Music = ::Const.Music.OrcsTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.BerserkersOnly, 80 * this.Contract.getDifficultyMult(), this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getID());
+						p.Music = this.Const.Music.OrcsTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.BerserkersOnly, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -470,13 +485,31 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
+				local brothers = this.World.getPlayerRoster().getAll();
+
+				foreach( bro in brothers )
+				{
+					if (bro.getBackground().getID() == "background.houndmaster" || bro.getBackground().getID() == "background.legend_muladi")
+					{
+						bro.worsenMood(1.0, "You didn\'t help wardogs being eaten by orcs");
+
+						if (bro.getMoodState() < this.Const.MoodState.Neutral)
+						{
+							this.List.push({
+								id = 10,
+								icon = this.Const.MoodStateIcon[bro.getMoodState()],
+								text = bro.getName() + this.Const.MoodStateEvent[bro.getMoodState()]
+							});
+						}
+					}
+				}
 			}
 
 		});
 		this.m.Screens.push({
 			ID = "Berserkers3",
 			Title = "After the battle...",
-			Text = "[img]gfx/ui/events/event_32.png[/img]The fight over, you take a good look around the berserkers\' encampment. Each of the cages is home to a shriveled, cornered dog. When you open one of the cages, the dog sprints out, yelping and yapping as it darts over the hills and is gone, just like that. Most of the other mutts follow suit. Two, however, remain. They follow you around as you inspect the rest of the encampment. %randombrother% notes that they\'re war dogs.%SPEECH_ON%Look at the size of \'em. Big, burly, nasty farks. Their owners must\'ve been killed by the orcs.%SPEECH_OFF%",
+			Text = "[img]gfx/ui/events/event_32.png[/img]The fight over, you take a good look around the berserkers\' encampment. Each of the cages is home to a shriveled, cornered dog. When you open one of the cages, the dog sprints out, yelping and yapping as it darts over the hills and is gone, just like that. Most of the other mutts follow suit. Two, however, remain. They follow you around as you inspect the rest of the encampment. %randombrother% notes that they\'re war dogs.%SPEECH_ON%Look at the size of \'em. Big, burly, nasty farks. Their owners must\'ve been killed by the orcs and now, well, they\'ve reason to trust us. Welcome to the company, little buddies.%SPEECH_OFF%",
 			Image = "",
 			List = [],
 			Options = [
@@ -493,6 +526,20 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 			],
 			function start()
 			{
+				local item = this.new("scripts/items/accessory/wardog_item");
+				this.World.Assets.getStash().add(item);
+				this.List.push({
+					id = 10,
+					icon = "ui/items/" + item.getIcon(),
+					text = "You gain " + item.getName()
+				});
+				item = this.new("scripts/items/accessory/wardog_item");
+				this.World.Assets.getStash().add(item);
+				this.List.push({
+					id = 10,
+					icon = "ui/items/" + item.getIcon(),
+					text = "You gain " + item.getName()
+				});
 			}
 
 		});
@@ -527,14 +574,14 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Killed a renowned orc warlord");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Killed a renowned orc warlord");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isGreenskinInvasion())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -547,7 +594,7 @@ this.confront_warlord_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 

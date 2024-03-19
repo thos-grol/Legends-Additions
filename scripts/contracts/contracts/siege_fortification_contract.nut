@@ -1,26 +1,31 @@
 this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", {
 	m = {
-		Allies = []
+		Allies = [],
+		UnformattedDescription = "Sieges often lead to violent, unpredictable outcomes. %s are seeking hardened sellswords to provide a steadying hand should things turn to ratshit."
 	},
 	function create()
 	{
 		this.contract.create();
-		local r = ::Math.rand(1, 100);
+		local r = this.Math.rand(1, 100);
 
 		if (r <= 70)
 		{
-			this.m.DifficultyMult = ::Math.rand(95, 105) * 0.01;
+			this.m.DifficultyMult = this.Math.rand(95, 105) * 0.01;
 		}
 		else
 		{
-			this.m.DifficultyMult = ::Math.rand(115, 135) * 0.01;
+			this.m.DifficultyMult = this.Math.rand(115, 135) * 0.01;
 		}
 
 		this.m.Type = "contract.siege_fortification";
 		this.m.Name = "Siege Fortification";
-		this.m.Description = "House lords are setting up a siege as the war rages on. Get down there and make sure the siege goes smoothly.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 		this.m.MakeAllSpawnsResetOrdersOnContractEnd = false;
+	}
+
+	function formatDescription()
+	{
+		this.m.Description = this.format(this.m.UnformattedDescription, ::Const.UI.getColorized(this.m.Home.getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()));
 	}
 
 	function onImportIntro()
@@ -40,10 +45,10 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 		this.m.Flags.set("RivalHouse", this.m.Origin.getOwner().getName());
 		this.m.Flags.set("WaitUntil", 0.0);
 		this.m.Name = "Siege %objective%";
-		this.m.Flags.set("CommanderName", ::Const.Strings.KnightNames[::Math.rand(0, ::Const.Strings.KnightNames.len() - 1)]);
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
+		this.m.Flags.set("CommanderName", this.Const.Strings.KnightNames[this.Math.rand(0, this.Const.Strings.KnightNames.len() - 1)]);
+		this.m.Payment.Pool = 1550 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
 
-		if (::Math.rand(1, 100) <= 33)
+		if (this.Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -67,7 +72,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 					"Help in the siege"
 				];
 
-				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
+				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -81,12 +86,12 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
 				this.Contract.m.Origin.getOwner().addPlayerRelation(-99.0, "Took sides in the war");
-				local r = ::Math.rand(1, 100);
+				local r = this.Math.rand(1, 100);
 
 				if (r <= 50)
 				{
 					this.Flags.set("IsTakingAction", true);
-					local r = ::Math.rand(1, 100);
+					local r = this.Math.rand(1, 100);
 
 					if (r <= 50)
 					{
@@ -104,7 +109,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 				else
 				{
 					this.Flags.set("IsMaintainingSiege", true);
-					r = ::Math.rand(1, 100);
+					r = this.Math.rand(1, 100);
 
 					if (r <= 25)
 					{
@@ -113,7 +118,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 					else
 					{
 						this.Flags.set("IsReliefAttack", true);
-						r = ::Math.rand(1, 100);
+						r = this.Math.rand(1, 100);
 
 						if (r <= 40)
 						{
@@ -126,7 +131,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 					}
 				}
 
-				local r = ::Math.rand(1, 100);
+				local r = this.Math.rand(1, 100);
 
 				if (r <= 10)
 				{
@@ -543,17 +548,17 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 				{
 					local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 					p.CombatID = "SecretPassage";
-					p.Music = ::Const.Music.NobleTracks;
-					p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-					p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
+					p.Music = this.Const.Music.NobleTracks;
+					p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+					p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Circle;
 					this.Contract.flattenTerrain(p);
 					p.Entities = [];
 					p.EnemyBanners = [
 						this.Contract.m.Origin.getOwner().getBannerSmall()
 					];
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 110 * this.Contract.getDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
+					this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
 					p.Entities.push({
-						ID = ::Const.EntityType.Knight,
+						ID = this.Const.EntityType.Knight,
 						Variant = 0,
 						Row = 2,
 						Script = "scripts/entity/tactical/humans/knight",
@@ -673,9 +678,9 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 				_dest.setPos(this.World.State.getPlayer().getPos());
 				local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 				p.CombatID = "ReliefAttack";
-				p.Music = ::Const.Music.NobleTracks;
-				p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-				p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+				p.Music = this.Const.Music.NobleTracks;
+				p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+				p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 				p.AllyBanners.push(this.World.FactionManager.getFaction(this.Contract.getFaction()).getBannerSmall());
 				p.EnemyBanners.push(_dest.getBanner());
 				this.Contract.flattenTerrain(p);
@@ -693,7 +698,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 
 				if (!alliesIncluded && _dest.getDistanceTo(this.Contract.m.Origin) <= 400)
 				{
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 80 * this.Contract.getDifficultyMult(), this.Contract.getFaction());
+					this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
 
 					foreach( id in this.Contract.m.UnitsSpawned )
 					{
@@ -823,8 +828,8 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 
 	function createScreens()
 	{
-		this.importScreens(::Const.Contracts.NegotiationDefault);
-		this.importScreens(::Const.Contracts.Overview);
+		this.importScreens(this.Const.Contracts.NegotiationDefault);
+		this.importScreens(this.Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -868,7 +873,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 					Text = "The %companyname% will be ready.",
 					function getResult()
 					{
-						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + ::Math.rand(15, 30));
+						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + this.Math.rand(15, 30));
 						this.Contract.setState("Running_Wait");
 						return 0;
 					}
@@ -921,16 +926,16 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 						this.World.getCamera().moveToPos(this.World.State.getPlayer().getPos());
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "AssaultTheGate";
-						p.Music = ::Const.Music.NobleTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.Music = this.Const.Music.NobleTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 						this.Contract.flattenTerrain(p);
 						p.Entities = [];
 						p.AllyBanners = [];
 						p.EnemyBanners = [
 							this.Contract.m.Origin.getOwner().getBannerSmall()
 						];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 110 * this.Contract.getDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -958,9 +963,9 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 						this.World.getCamera().moveToPos(this.World.State.getPlayer().getPos());
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "BurnTheCastle";
-						p.Music = ::Const.Music.NobleTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.Music = this.Const.Music.NobleTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 						this.Contract.flattenTerrain(p);
 						p.Entities = [];
 						p.AllyBanners = [
@@ -970,9 +975,9 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 						p.EnemyBanners = [
 							this.Contract.m.Origin.getOwner().getBannerSmall()
 						];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 80 * this.Contract.getDifficultyMult(), this.Contract.getFaction());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
 						p.Entities.push({
-							ID = ::Const.EntityType.Knight,
+							ID = this.Const.EntityType.Knight,
 							Variant = 0,
 							Row = 2,
 							Script = "scripts/entity/tactical/humans/knight",
@@ -980,9 +985,9 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 							Callback = this.Contract.onCommanderPlaced.bindenv(this.Contract),
 							Tag = this.Contract
 						});
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 200 * this.Contract.getDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
 						p.Entities.push({
-							ID = ::Const.EntityType.Knight,
+							ID = this.Const.EntityType.Knight,
 							Variant = 0,
 							Row = 2,
 							Script = "scripts/entity/tactical/humans/knight",
@@ -1025,16 +1030,16 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 						this.World.getCamera().moveToPos(this.World.State.getPlayer().getPos());
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "AssaultTheCourtyard";
-						p.Music = ::Const.Music.NobleTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.Music = this.Const.Music.NobleTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 						this.Contract.flattenTerrain(p);
 						p.Entities = [];
 						p.AllyBanners = [];
 						p.EnemyBanners = [
 							this.Contract.m.Origin.getOwner().getBannerSmall()
 						];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 120 * this.Contract.getDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 120 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -1122,7 +1127,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 						else if (this.Flags.get("IsReliefAttack"))
 						{
 							this.Flags.set("IsReliefAttackForced", true);
-							this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + ::Math.rand(15, 30));
+							this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + this.Math.rand(15, 30));
 							this.Contract.setState("Running_Wait");
 						}
 
@@ -1148,15 +1153,15 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 						this.World.getCamera().moveToPos(this.World.State.getPlayer().getPos());
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "NighttimeEncounter";
-						p.Music = ::Const.Music.NobleTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.Music = this.Const.Music.NobleTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 						this.Contract.flattenTerrain(p);
 						p.Entities = [];
 						p.EnemyBanners = [
 							this.Contract.m.Origin.getOwner().getBannerSmall()
 						];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 80 * this.Contract.getDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -1178,7 +1183,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 						this.Flags.set("IsNighttimeEncounterLost", false);
 						this.Flags.set("IsNighttimeEncounter", false);
 						this.Flags.set("IsReliefAttack", true);
-						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + ::Math.rand(15, 30));
+						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + this.Math.rand(15, 30));
 						return 0;
 					}
 
@@ -1215,8 +1220,8 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 					Text = "Damnit!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Wandered off during the siege of " + this.Flags.get("ObjectiveName"));
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Wandered off during the siege of " + this.Flags.get("ObjectiveName"));
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -1274,7 +1279,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 					{
 						this.Flags.set("IsSecretPassage", false);
 						this.Flags.set("IsReliefAttackForced", true);
-						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + ::Math.rand(15, 30));
+						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + this.Math.rand(15, 30));
 						this.Contract.setState("Running_Wait");
 						return 0;
 					}
@@ -1323,7 +1328,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 							this.Flags.set("IsDefendersSallyForthForced", true);
 						}
 
-						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + ::Math.rand(10, 20));
+						this.Flags.set("WaitUntil", this.Time.getVirtualTimeF() + this.Math.rand(10, 20));
 						this.Contract.setState("Running_Wait");
 						return 0;
 					}
@@ -1379,9 +1384,9 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 						this.World.getCamera().moveToPos(this.World.State.getPlayer().getPos());
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "DefendersSallyForth";
-						p.Music = ::Const.Music.NobleTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.Music = this.Const.Music.NobleTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 						this.Contract.flattenTerrain(p);
 						p.Entities = [];
 						p.AllyBanners = [
@@ -1391,18 +1396,18 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 						p.EnemyBanners = [
 							this.Contract.m.Origin.getOwner().getBannerSmall()
 						];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 90 * this.Contract.getDifficultyMult(), this.Contract.getFaction());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 90 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
 						p.Entities.push({
-							ID = ::Const.EntityType.Knight,
+							ID = this.Const.EntityType.Knight,
 							Variant = 0,
 							Row = 2,
 							Script = "scripts/entity/tactical/humans/knight",
 							Faction = this.Contract.getFaction(),
 							Callback = this.Contract.onCommanderPlaced.bindenv(this.Contract)
 						});
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 200 * this.Contract.getDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 200 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.m.Origin.getOwner().getID());
 						p.Entities.push({
-							ID = ::Const.EntityType.Knight,
+							ID = this.Const.EntityType.Knight,
 							Variant = 0,
 							Row = 2,
 							Script = "scripts/entity/tactical/humans/knight",
@@ -1441,8 +1446,8 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 					Text = "The siege has failed.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed in the siege of " + this.Flags.get("ObjectiveName"));
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed in the siege of " + this.Flags.get("ObjectiveName"));
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -1541,7 +1546,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 
 						if (this.World.FactionManager.isCivilWar())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
+							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnPartyDestroyed);
 						}
 
 						return 0;
@@ -1573,7 +1578,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]250[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]250[/color] Crowns"
 				});
 				this.List.push({
 					id = 10,
@@ -1596,14 +1601,14 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 					Text = "%objective% has fallen.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Took part in the siege of " + this.Flags.get("ObjectiveName"));
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Took part in the siege of " + this.Flags.get("ObjectiveName"));
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isCivilWar())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -1616,7 +1621,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -1632,8 +1637,8 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 					Text = "Damn this place!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed in the siege of " + this.Flags.get("ObjectiveName"));
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed in the siege of " + this.Flags.get("ObjectiveName"));
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -1652,8 +1657,8 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 					Text = "Right, there was this siege...",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -1670,8 +1675,8 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 
 		while (true)
 		{
-			local x = ::Math.rand(originTile.SquareCoords.X - 8, originTile.SquareCoords.X + 8);
-			local y = ::Math.rand(originTile.SquareCoords.Y - 8, originTile.SquareCoords.Y + 8);
+			local x = this.Math.rand(originTile.SquareCoords.X - 8, originTile.SquareCoords.X + 8);
+			local y = this.Math.rand(originTile.SquareCoords.Y - 8, originTile.SquareCoords.Y + 8);
 
 			if (!this.World.isValidTileSquare(x, y))
 			{
@@ -1685,7 +1690,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 				continue;
 			}
 
-			if (tile.Type == ::Const.World.TerrainType.Ocean || tile.Type == ::Const.World.TerrainType.Mountains)
+			if (tile.Type == this.Const.World.TerrainType.Ocean || tile.Type == this.Const.World.TerrainType.Mountains)
 			{
 				continue;
 			}
@@ -1694,16 +1699,16 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 		}
 
 		local enemyFaction = this.m.Origin.getOwner();
-		local party = enemyFaction.spawnEntity(tile, this.m.Origin.getOwner().getName() + " Army", true, ::Const.World.Spawn.Noble, 200 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+		local party = enemyFaction.spawnEntity(tile, this.m.Origin.getOwner().getName() + " Army", true, this.Const.World.Spawn.Noble, 200 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 		party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + enemyFaction.getBannerString());
 		party.getSprite("banner").setBrush(enemyFaction.getBannerSmall());
 		party.setDescription("Professional soldiers in service to local lords.");
-		party.setFootprintType(::Const.World.FootprintsType.Nobles);
-		party.getLoot().Money = ::Math.rand(100, 300);
-		party.getLoot().ArmorParts = ::Math.rand(10, 35);
-		party.getLoot().Medicine = ::Math.rand(5, 15);
-		party.getLoot().Ammo = ::Math.rand(10, 40);
-		local r = ::Math.rand(1, 4);
+		party.setFootprintType(this.Const.World.FootprintsType.Nobles);
+		party.getLoot().Money = this.Math.rand(100, 300);
+		party.getLoot().ArmorParts = this.Math.rand(10, 35);
+		party.getLoot().Medicine = this.Math.rand(5, 15);
+		party.getLoot().Ammo = this.Math.rand(10, 40);
+		local r = this.Math.rand(1, 4);
 
 		if (r == 1)
 		{
@@ -1725,8 +1730,8 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 		party.setAttackableByAI(false);
 		this.m.UnitsSpawned.push(party.getID());
 		local c = party.getController();
-		c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+		c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+		c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 		local move = this.new("scripts/ai/world/orders/move_order");
 		move.setDestination(originTile);
 		c.addOrder(move);
@@ -1742,8 +1747,8 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 
 		while (true)
 		{
-			local x = ::Math.rand(originTile.SquareCoords.X - 7, originTile.SquareCoords.X + 7);
-			local y = ::Math.rand(originTile.SquareCoords.Y - 7, originTile.SquareCoords.Y + 7);
+			local x = this.Math.rand(originTile.SquareCoords.X - 7, originTile.SquareCoords.X + 7);
+			local y = this.Math.rand(originTile.SquareCoords.Y - 7, originTile.SquareCoords.Y + 7);
 
 			if (!this.World.isValidTileSquare(x, y))
 			{
@@ -1766,7 +1771,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 		}
 
 		local enemyFaction = this.m.Origin.getOwner();
-		local party = enemyFaction.spawnEntity(tile, "Supply Caravan", false, ::Const.World.Spawn.NobleCaravan, ::Math.rand(100, 150));
+		local party = enemyFaction.spawnEntity(tile, "Supply Caravan", false, this.Const.World.Spawn.NobleCaravan, this.Math.rand(100, 150));
 		party.getSprite("base").Visible = false;
 		party.setMirrored(true);
 		party.setDescription("A caravan with armed escorts transporting provisions, supplies and equipment between settlements.");
@@ -1786,10 +1791,10 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 			}
 		}
 
-		party.getLoot().Money = ::Math.rand(0, 100);
+		party.getLoot().Money = this.Math.rand(0, 100);
 		local c = party.getController();
-		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
-		c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+		c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+		c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 		local move = this.new("scripts/ai/world/orders/move_order");
 		move.setDestination(originTile);
 		move.setRoadsOnly(true);
@@ -1804,7 +1809,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 
 		foreach( a in this.m.Origin.getActiveAttachedLocations() )
 		{
-			if (::Math.rand(1, 100) <= 50)
+			if (this.Math.rand(1, 100) <= 50)
 			{
 				a.spawnFireAndSmoke();
 				a.setActive(false);
@@ -1836,8 +1841,8 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 
 			while (true)
 			{
-				local x = ::Math.rand(originTile.SquareCoords.X - 1, originTile.SquareCoords.X + 1);
-				local y = ::Math.rand(originTile.SquareCoords.Y - 1, originTile.SquareCoords.Y + 1);
+				local x = this.Math.rand(originTile.SquareCoords.X - 1, originTile.SquareCoords.X + 1);
+				local y = this.Math.rand(originTile.SquareCoords.Y - 1, originTile.SquareCoords.Y + 1);
 
 				if (!this.World.isValidTileSquare(x, y))
 				{
@@ -1851,7 +1856,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 					continue;
 				}
 
-				if (tile.Type == ::Const.World.TerrainType.Ocean)
+				if (tile.Type == this.Const.World.TerrainType.Ocean)
 				{
 					continue;
 				}
@@ -1870,7 +1875,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 			}
 
 			lastTile = tile;
-			local party = f.spawnEntity(tile, castles[::Math.rand(0, castles.len() - 1)].getName() + " Company", true, ::Const.World.Spawn.Noble, castles[::Math.rand(0, castles.len() - 1)].getResources());
+			local party = f.spawnEntity(tile, castles[this.Math.rand(0, castles.len() - 1)].getName() + " Company", true, this.Const.World.Spawn.Noble, castles[this.Math.rand(0, castles.len() - 1)].getResources());
 			party.setDescription("Professional soldiers in service to local lords.");
 			party.setVisibilityMult(2.5);
 
@@ -1887,11 +1892,11 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 			party.setAttackableByAI(false);
 			this.m.UnitsSpawned.push(party.getID());
 			this.m.Allies.push(party.getID());
-			party.getLoot().Money = ::Math.rand(50, 200);
-			party.getLoot().ArmorParts = ::Math.rand(0, 25);
-			party.getLoot().Medicine = ::Math.rand(0, 5);
-			party.getLoot().Ammo = ::Math.rand(0, 30);
-			local r = ::Math.rand(1, 4);
+			party.getLoot().Money = this.Math.rand(50, 200);
+			party.getLoot().ArmorParts = this.Math.rand(0, 25);
+			party.getLoot().Medicine = this.Math.rand(0, 5);
+			party.getLoot().Ammo = this.Math.rand(0, 30);
+			local r = this.Math.rand(1, 4);
 
 			if (r == 1)
 			{
@@ -1911,8 +1916,8 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 			}
 
 			local c = party.getController();
-			c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-			c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+			c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+			c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 			local wait = this.new("scripts/ai/world/orders/wait_order");
 			wait.setTime(9000.0);
 			c.addOrder(wait);
@@ -1922,17 +1927,17 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 
 	function changeObjectiveOwner()
 	{
-		if (this.m.Origin.getFactionOfType(::Const.FactionType.Settlement) != null)
+		if (this.m.Origin.getFactionOfType(this.Const.FactionType.Settlement) != null)
 		{
-			this.m.Origin.getOwner().removeAlly(this.m.Origin.getFactionOfType(::Const.FactionType.Settlement).getID());
+			this.m.Origin.getOwner().removeAlly(this.m.Origin.getFactionOfType(this.Const.FactionType.Settlement).getID());
 		}
 
 		this.m.Origin.removeFaction(this.m.Origin.getOwner().getID());
 		this.World.FactionManager.getFaction(this.getFaction()).addSettlement(this.m.Origin.get());
 
-		if (this.m.Origin.getFactionOfType(::Const.FactionType.Settlement) != null)
+		if (this.m.Origin.getFactionOfType(this.Const.FactionType.Settlement) != null)
 		{
-			this.World.FactionManager.getFaction(this.getFaction()).addAlly(this.m.Origin.getFactionOfType(::Const.FactionType.Settlement).getID());
+			this.World.FactionManager.getFaction(this.getFaction()).addAlly(this.m.Origin.getFactionOfType(this.Const.FactionType.Settlement).getID());
 		}
 
 		if (this.m.SituationID != 0)
@@ -2001,7 +2006,7 @@ this.siege_fortification_contract <- this.inherit("scripts/contracts/contract", 
 		]);
 		_vars.push([
 			"direction",
-			this.m.Origin == null || this.m.Origin.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Origin.getTile())]
+			this.m.Origin == null || this.m.Origin.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Origin.getTile())]
 		]);
 	}
 

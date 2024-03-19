@@ -6,7 +6,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.DifficultyMult = 1.3;
 		this.m.Type = "contract.arena_tournament";
 		this.m.Name = "The Arena Tournament";
-		this.m.Description = "Fight in today\'s Arena Tournament. Emerge victorious and receive a famed item.";
+		this.m.Description = ::Math.rand(1, 2) == 1 ? "A grand tournament to the death, a celebration of slaughter. Eternal glory and prized items await." : "Blood soaks the sand, yet the crowd always screams for more. A grand tournament has been announced!";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 1.0;
 	}
 
@@ -18,20 +18,20 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 	function start()
 	{
 		local item;
-		local idx = ::Math.rand(1, 3);
+		local idx = this.Math.rand(1, 3);
 
 		if (idx == 1)
 		{
-			local items = clone ::Const.Items.NamedWeapons;
-			item = this.new("scripts/items/" + items[::Math.rand(0, items.len() - 1)]);
+			local items = clone this.Const.Items.NamedWeapons;
+			item = this.new("scripts/items/" + items[this.Math.rand(0, items.len() - 1)]);
 		}
 		else if (idx == 2)
 		{
-			item = ::Const.World.Common.pickHelmet(::Const.World.Common.convNameToList(::Const.Items.NamedHelmets));
+			item = this.Const.World.Common.pickHelmet(this.Const.World.Common.convNameToList(this.Const.Items.NamedHelmets));
 		}
 		else if (idx == 3)
 		{
-			item = ::Const.World.Common.pickArmor(::Const.World.Common.convNameToList(::Const.Items.NamedArmors));
+			item = this.Const.World.Common.pickArmor(this.Const.World.Common.convNameToList(this.Const.Items.NamedArmors));
 		}
 
 		local cnh;
@@ -45,7 +45,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 		{
 			local nameList = [];
 
-			if ((item.m.ItemType & ::Const.Items.ItemType.Named) != 0)
+			if ((item.m.ItemType & this.Const.Items.ItemType.Named) != 0)
 			{
 				nameList.push(item);
 			}
@@ -59,13 +59,13 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 				local u = item.getUpgrade(i);
 
-				if (u != null && u.isItemType(::Const.Items.ItemType.Named))
+				if (u != null && u.isItemType(this.Const.Items.ItemType.Named))
 				{
 					nameList.push(u);
 				}
 			}
 
-			local idx = ::Math.rand(0, nameList.len() - 1);
+			local idx = this.Math.rand(0, nameList.len() - 1);
 			local item = nameList[idx];
 			this.m.Flags.set("PrizeName", item.getName());
 			cnh = item.ClassNameHash;
@@ -73,19 +73,19 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 		this.m.Flags.set("PrizeScript", cnh);
 
-		if (item.isItemType(::Const.Items.ItemType.Weapon))
+		if (item.isItemType(this.Const.Items.ItemType.Weapon))
 		{
 			this.m.Flags.set("PrizeType", "weapon");
 		}
-		else if (item.isItemType(::Const.Items.ItemType.Shield))
+		else if (item.isItemType(this.Const.Items.ItemType.Shield))
 		{
 			this.m.Flags.set("PrizeType", "shield");
 		}
-		else if (item.isItemType(::Const.Items.ItemType.Armor))
+		else if (item.isItemType(this.Const.Items.ItemType.Armor))
 		{
 			this.m.Flags.set("PrizeType", "armor");
 		}
-		else if (item.isItemType(::Const.Items.ItemType.Helmet))
+		else if (item.isItemType(this.Const.Items.ItemType.Helmet))
 		{
 			this.m.Flags.set("PrizeType", "helmet");
 		}
@@ -108,11 +108,11 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Swordmaster);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Swordmaster);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Mercenary, _d - ::Const.World.Spawn.Troops.Swordmaster.Cost); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Mercenary, _d - this.Const.World.Spawn.Troops.Swordmaster.Cost); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Mercenary);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Mercenary);
 						i = ++i;
 					}
 				}
@@ -120,17 +120,17 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (_round == 3 && this.World.getTime().Days > 50 && ::Const.DLC.Wildmen)
+		if (_round == 3 && this.World.getTime().Days > 50 && this.Const.DLC.Wildmen)
 		{
 			twists.push({
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Swordmaster, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Swordmaster, true);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Mercenary, _d - ::Const.World.Spawn.Troops.Swordmaster.Cost * 2); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Mercenary, _d - this.Const.World.Spawn.Troops.Swordmaster.Cost * 2); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Mercenary);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Mercenary);
 						i = ++i;
 					}
 				}
@@ -144,11 +144,11 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.HedgeKnight);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.HedgeKnight);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Mercenary, _d - ::Const.World.Spawn.Troops.HedgeKnight.Cost); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Mercenary, _d - this.Const.World.Spawn.Troops.HedgeKnight.Cost); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Mercenary);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Mercenary);
 						i = ++i;
 					}
 				}
@@ -156,17 +156,17 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (_round == 3 && this.World.getTime().Days > 50 && ::Const.DLC.Wildmen)
+		if (_round == 3 && this.World.getTime().Days > 50 && this.Const.DLC.Wildmen)
 		{
 			twists.push({
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.HedgeKnight, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.HedgeKnight, true);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Mercenary, _d - ::Const.World.Spawn.Troops.HedgeKnight.Cost * 2); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Mercenary, _d - this.Const.World.Spawn.Troops.HedgeKnight.Cost * 2); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Mercenary);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Mercenary);
 						i = ++i;
 					}
 				}
@@ -180,12 +180,12 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.HedgeKnight);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Swordmaster);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.HedgeKnight);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Swordmaster);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.BanditRaider, _d - ::Const.World.Spawn.Troops.HedgeKnight.Cost - ::Const.World.Spawn.Troops.Swordmaster.Cost); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.BanditRaider, _d - this.Const.World.Spawn.Troops.HedgeKnight.Cost - this.Const.World.Spawn.Troops.Swordmaster.Cost); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.BanditRaider);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.BanditRaider);
 						i = ++i;
 					}
 				}
@@ -193,15 +193,15 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (_round == 3 && this.World.getTime().Days > 150 && ::Const.DLC.Wildmen)
+		if (_round == 3 && this.World.getTime().Days > 150 && this.Const.DLC.Wildmen)
 		{
 			twists.push({
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.HedgeKnight, true);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Swordmaster, true);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.MasterArcher, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.HedgeKnight, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Swordmaster, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.MasterArcher, true);
 				}
 
 			});
@@ -213,12 +213,12 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.DesertDevil);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Swordmaster);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.DesertDevil);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Swordmaster);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.NomadOutlaw, _d - ::Const.World.Spawn.Troops.DesertDevil.Cost - ::Const.World.Spawn.Troops.Swordmaster.Cost); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.NomadOutlaw, _d - this.Const.World.Spawn.Troops.DesertDevil.Cost - this.Const.World.Spawn.Troops.Swordmaster.Cost); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.NomadOutlaw);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.NomadOutlaw);
 						i = ++i;
 					}
 				}
@@ -226,18 +226,18 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (_round == 3 && this.World.getTime().Days > 150 && ::Const.DLC.Wildmen)
+		if (_round == 3 && this.World.getTime().Days > 150 && this.Const.DLC.Wildmen)
 		{
 			twists.push({
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.DesertDevil, true);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Swordmaster, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.DesertDevil, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Swordmaster, true);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.NomadOutlaw, _d - ::Const.World.Spawn.Troops.DesertDevil.Cost * 2 - ::Const.World.Spawn.Troops.Swordmaster.Cost * 2); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.NomadOutlaw, _d - this.Const.World.Spawn.Troops.DesertDevil.Cost * 2 - this.Const.World.Spawn.Troops.Swordmaster.Cost * 2); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.NomadOutlaw);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.NomadOutlaw);
 						i = ++i;
 					}
 				}
@@ -251,11 +251,11 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.DesertDevil);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.DesertDevil);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.NomadOutlaw, _d - ::Const.World.Spawn.Troops.DesertDevil.Cost); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.NomadOutlaw, _d - this.Const.World.Spawn.Troops.DesertDevil.Cost); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.NomadOutlaw);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.NomadOutlaw);
 						i = ++i;
 					}
 				}
@@ -269,11 +269,11 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Executioner);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Executioner);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Gladiator, _d - ::Const.World.Spawn.Troops.Executioner.Cost); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Gladiator, _d - this.Const.World.Spawn.Troops.Executioner.Cost); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Gladiator);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Gladiator);
 						i = ++i;
 					}
 				}
@@ -281,17 +281,17 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (_round == 3 && this.World.getTime().Days > 50 && ::Const.DLC.Wildmen)
+		if (_round == 3 && this.World.getTime().Days > 50 && this.Const.DLC.Wildmen)
 		{
 			twists.push({
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Executioner, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Executioner, true);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Gladiator, _d - ::Const.World.Spawn.Troops.Executioner.Cost * 2); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Gladiator, _d - this.Const.World.Spawn.Troops.Executioner.Cost * 2); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Gladiator);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Gladiator);
 						i = ++i;
 					}
 				}
@@ -305,12 +305,12 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.DesertDevil);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Executioner);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.DesertDevil);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Executioner);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Gladiator, _d - ::Const.World.Spawn.Troops.DesertDevil.Cost - ::Const.World.Spawn.Troops.Executioner.Cost); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Gladiator, _d - this.Const.World.Spawn.Troops.DesertDevil.Cost - this.Const.World.Spawn.Troops.Executioner.Cost); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Gladiator);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Gladiator);
 						i = ++i;
 					}
 				}
@@ -318,18 +318,18 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (_round == 3 && this.World.getTime().Days > 150 && ::Const.DLC.Wildmen)
+		if (_round == 3 && this.World.getTime().Days > 150 && this.Const.DLC.Wildmen)
 		{
 			twists.push({
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.DesertDevil, true);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Executioner, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.DesertDevil, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Executioner, true);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Gladiator, _d - ::Const.World.Spawn.Troops.DesertDevil.Cost * 2 - ::Const.World.Spawn.Troops.Executioner.Cost * 2); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Gladiator, _d - this.Const.World.Spawn.Troops.DesertDevil.Cost * 2 - this.Const.World.Spawn.Troops.Executioner.Cost * 2); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Gladiator);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Gladiator);
 						i = ++i;
 					}
 				}
@@ -343,13 +343,13 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.DesertDevil);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.DesertStalker);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Executioner);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.DesertDevil);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.DesertStalker);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Executioner);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.NomadOutlaw, _d - ::Const.World.Spawn.Troops.DesertDevil.Cost - ::Const.World.Spawn.Troops.Executioner.Cost - ::Const.World.Spawn.Troops.DesertStalker.Cost); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.NomadOutlaw, _d - this.Const.World.Spawn.Troops.DesertDevil.Cost - this.Const.World.Spawn.Troops.Executioner.Cost - this.Const.World.Spawn.Troops.DesertStalker.Cost); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.NomadOutlaw);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.NomadOutlaw);
 						i = ++i;
 					}
 				}
@@ -357,31 +357,31 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (_round == 3 && this.World.getTime().Days > 150 && ::Const.DLC.Wildmen)
+		if (_round == 3 && this.World.getTime().Days > 150 && this.Const.DLC.Wildmen)
 		{
 			twists.push({
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.DesertDevil, true);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.DesertStalker, true);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Executioner, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.DesertDevil, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.DesertStalker, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Executioner, true);
 				}
 
 			});
 		}
 
-		if (_round == 3 && this.World.getTime().Days > 50 && ::Const.DLC.Wildmen)
+		if (_round == 3 && this.World.getTime().Days > 50 && this.Const.DLC.Wildmen)
 		{
 			twists.push({
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Gladiator, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Gladiator, true);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Gladiator, _d - ::Const.World.Spawn.Troops.Gladiator.Cost * 2); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Gladiator, _d - this.Const.World.Spawn.Troops.Gladiator.Cost * 2); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Gladiator);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Gladiator);
 						i = ++i;
 					}
 				}
@@ -389,18 +389,18 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (_round == 3 && this.World.getTime().Days > 150 && ::Const.DLC.Wildmen)
+		if (_round == 3 && this.World.getTime().Days > 150 && this.Const.DLC.Wildmen)
 		{
 			twists.push({
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Gladiator, true);
-					_c.addToCombat(_e, ::Const.World.Spawn.Troops.Gladiator, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Gladiator, true);
+					_c.addToCombat(_e, this.Const.World.Spawn.Troops.Gladiator, true);
 
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Gladiator, _d - ::Const.World.Spawn.Troops.Gladiator.Cost * 4); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Gladiator, _d - this.Const.World.Spawn.Troops.Gladiator.Cost * 4); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Gladiator);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Gladiator);
 						i = ++i;
 					}
 				}
@@ -414,9 +414,9 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 10,
 				function F( _c, _d, _e )
 				{
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Mercenary, _d); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Mercenary, _d); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Mercenary);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Mercenary);
 						i = ++i;
 					}
 				}
@@ -424,15 +424,15 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (_round == 3 && ::Const.DLC.Unhold)
+		if (_round == 3 && this.Const.DLC.Unhold)
 		{
 			twists.push({
 				R = 10,
 				function F( _c, _d, _e )
 				{
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Unhold, _d); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Unhold, _d); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Unhold);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Unhold);
 						i = ++i;
 					}
 				}
@@ -440,15 +440,15 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (_round == 3 && ::Const.DLC.Lindwurm)
+		if (_round == 3 && this.Const.DLC.Lindwurm)
 		{
 			twists.push({
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					for( local i = 0; i < ::Math.min(3, _c.getAmountToSpawn(::Const.World.Spawn.Troops.Lindwurm, _d)); i = i )
+					for( local i = 0; i < this.Math.min(3, _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Lindwurm, _d)); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Lindwurm);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Lindwurm);
 						i = ++i;
 					}
 				}
@@ -462,9 +462,9 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 10,
 				function F( _c, _d, _e )
 				{
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.SandGolemMEDIUM, _d); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.SandGolemMEDIUM, _d); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.SandGolemMEDIUM);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.SandGolemMEDIUM);
 						i = ++i;
 					}
 				}
@@ -478,9 +478,9 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 10,
 				function F( _c, _d, _e )
 				{
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Gladiator, _d); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Gladiator, _d); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Gladiator);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Gladiator);
 						i = ++i;
 					}
 				}
@@ -488,15 +488,15 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 			});
 		}
 
-		if (_round == 1 && ::Const.DLC.Unhold)
+		if (_round == 1 && this.Const.DLC.Unhold)
 		{
 			twists.push({
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Spider, _d); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Spider, _d); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Spider);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Spider);
 						i = ++i;
 					}
 				}
@@ -510,9 +510,9 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 10,
 				function F( _c, _d, _e )
 				{
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.NomadOutlaw, _d); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.NomadOutlaw, _d); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.NomadOutlaw);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.NomadOutlaw);
 						i = ++i;
 					}
 				}
@@ -526,9 +526,9 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.Serpent, _d); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.Serpent, _d); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.Serpent);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.Serpent);
 						i = ++i;
 					}
 				}
@@ -542,9 +542,9 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				R = 5,
 				function F( _c, _d, _e )
 				{
-					for( local i = 0; i < _c.getAmountToSpawn(::Const.World.Spawn.Troops.HyenaHIGH, _d); i = i )
+					for( local i = 0; i < _c.getAmountToSpawn(this.Const.World.Spawn.Troops.HyenaHIGH, _d); i = i )
 					{
-						_c.addToCombat(_e, ::Const.World.Spawn.Troops.HyenaHIGH);
+						_c.addToCombat(_e, this.Const.World.Spawn.Troops.HyenaHIGH);
 						i = ++i;
 					}
 				}
@@ -568,7 +568,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				maxR = maxR + t.R;
 			}
 
-			local r = ::Math.rand(1, maxR);
+			local r = this.Math.rand(1, maxR);
 
 			foreach( i, t in twists )
 			{
@@ -589,17 +589,17 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 	function startTournamentRound()
 	{
-		local p = ::Const.Tactical.CombatInfo.getClone();
-		p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
+		local p = this.Const.Tactical.CombatInfo.getClone();
+		p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
 		p.CombatID = "Arena";
 		p.TerrainTemplate = "tactical.arena";
 		p.LocationTemplate.Template[0] = "tactical.arena_floor";
-		p.Music = ::Const.Music.ArenaTracks;
-		p.Ambience[0] = ::Const.SoundAmbience.ArenaBack;
-		p.Ambience[1] = ::Const.SoundAmbience.ArenaFront;
+		p.Music = this.Const.Music.ArenaTracks;
+		p.Ambience[0] = this.Const.SoundAmbience.ArenaBack;
+		p.Ambience[1] = this.Const.SoundAmbience.ArenaFront;
 		p.AmbienceMinDelay[0] = 0;
-		p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Arena;
-		p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Arena;
+		p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Arena;
+		p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Arena;
 		p.IsUsingSetPlayers = true;
 		p.IsFleeingProhibited = true;
 		p.IsLootingProhibited = true;
@@ -806,7 +806,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.getHome().removeSituationByID("situation.arena_tournament");
 						this.Contract.getHome().getBuilding("building.arena").refreshCooldown();
 						this.World.State.getTownScreen().getMainDialogModule().reload();
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnArenaCancel);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnArenaCancel);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -921,7 +921,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Victory!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess * 2);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess * 2);
 						this.Contract.getHome().removeSituationByID("situation.arena_tournament");
 						this.Contract.getHome().getBuilding("building.arena").refreshCooldown();
 						this.World.Contracts.finishActiveContract();
@@ -967,7 +967,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						this.Contract.getHome().removeSituationByID("situation.arena_tournament");
 						this.Contract.getHome().getBuilding("building.arena").refreshCooldown();
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -981,7 +981,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + money + "[/color] Crowns"
 				});
 			}
 
@@ -1002,7 +1002,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 						foreach( bro in roster )
 						{
-							local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
+							local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
 
 							if (item != null && item.getID() == "accessory.arena_collar")
 							{
@@ -1012,7 +1012,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 						this.Contract.getHome().removeSituationByID("situation.arena_tournament");
 						this.Contract.getHome().getBuilding("building.arena").refreshCooldown();
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -1034,7 +1034,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						this.Contract.getHome().removeSituationByID("situation.arena_tournament");
 						this.Contract.getHome().getBuilding("building.arena").refreshCooldown();
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -1069,7 +1069,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 		foreach( bro in roster )
 		{
-			local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
+			local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
 
 			if (item != null && item.getID() == "accessory.arena_collar")
 			{
@@ -1087,7 +1087,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 		foreach( bro in roster )
 		{
-			local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
+			local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
 
 			if (item != null && item.getID() == "accessory.arena_collar")
 			{
@@ -1102,7 +1102,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 					_list.push({
 						id = 10,
 						icon = skill.getIcon(),
-						text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
+						text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
 					});
 				}
 				else if (bro.getFlags().getAsInt("ArenaFightsWon") == 5)
@@ -1113,7 +1113,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 					_list.push({
 						id = 10,
 						icon = skill.getIcon(),
-						text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
+						text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
 					});
 				}
 				else if (bro.getFlags().getAsInt("ArenaFightsWon") == 12)
@@ -1124,7 +1124,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 					_list.push({
 						id = 10,
 						icon = skill.getIcon(),
-						text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
+						text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
 					});
 				}
 				else if (bro.getFlags().getAsInt("ArenaFightsWon") > 25 && bro.getSkills().hasSkill("trait.arena_veteran"))
@@ -1144,7 +1144,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 					_list.push({
 						id = 10,
 						icon = skill.getIcon(),
-						text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
+						text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
 					});
 				}
 				else if (bro.getFlags().getAsInt("ArenaFightsWon") == 25)
@@ -1155,7 +1155,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 					_list.push({
 						id = 10,
 						icon = skill.getIcon(),
-						text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
+						text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
 					});
 				}
 				else if (bro.getFlags().getAsInt("ArenaFightsWon") == 50)
@@ -1166,7 +1166,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 					_list.push({
 						id = 10,
 						icon = skill.getIcon(),
-						text = bro.getName() + " is now " + ::Const.Strings.getArticle(skill.getName()) + skill.getName()
+						text = bro.getName() + " is now " + this.Const.Strings.getArticle(skill.getName()) + skill.getName()
 					});
 				}
 
@@ -1183,7 +1183,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 	function getAmountToSpawn( _type, _resources, _min = 1, _max = 24 )
 	{
-		return ::Math.min(_max, ::Math.max(_min, _resources / _type.Cost));
+		return this.Math.min(_max, this.Math.max(_min, _resources / _type.Cost));
 	}
 
 	function addToCombat( _list, _entityType, _champion = false )
@@ -1201,7 +1201,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 		if (c.Variant != 0 && "NameList" in _entityType)
 		{
-			c.Name <- ::Const.World.Common.generateName(_entityType.NameList) + (_entityType.TitleList != null ? " " + _entityType.TitleList[::Math.rand(0, _entityType.TitleList.len() - 1)] : "");
+			c.Name <- this.Const.World.Common.generateName(_entityType.NameList) + (_entityType.TitleList != null ? " " + _entityType.TitleList[this.Math.rand(0, _entityType.TitleList.len() - 1)] : "");
 		}
 
 		_list.push(c);
@@ -1212,9 +1212,9 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 		local p = this.World.State.getPlayer().getStrength();
 		p = p / this.World.getPlayerRoster().getSize();
 		p = p * 12;
-		local s = ::Math.maxf(0.75, 1.0 * ::Math.pow(0.01 * p, 0.95) + ::Math.minf(0.5, this.World.getTime().Days * 0.005));
-		local d = ::Math.minf(5.0, s);
-		return d * ::Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
+		local s = this.Math.maxf(0.75, 1.0 * this.Math.pow(0.01 * p, 0.95) + this.Math.minf(0.5, this.World.getTime().Days * 0.005));
+		local d = this.Math.minf(5.0, s);
+		return d * this.Const.Difficulty.EnemyMult[this.World.Assets.getCombatDifficulty()];
 	}
 
 	function setScreenForArena()
@@ -1244,7 +1244,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 		foreach( bro in this.World.getPlayerRoster().getAll() )
 		{
-			local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
+			local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
 
 			if (item != null && item.getID() == "accessory.arena_collar")
 			{
@@ -1287,7 +1287,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 			foreach( bro in roster )
 			{
-				local item = bro.getItems().getItemAtSlot(::Const.ItemSlot.Accessory);
+				local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
 
 				if (item != null && item.getID() == "accessory.arena_collar")
 				{
@@ -1311,7 +1311,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 
 	function isValid()
 	{
-		return ::Const.DLC.Desert;
+		return this.Const.DLC.Desert;
 	}
 
 	function onSerialize( _out )

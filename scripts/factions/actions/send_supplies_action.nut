@@ -106,7 +106,7 @@ this.send_supplies_action <- this.inherit("scripts/factions/faction_action", {
 
 		if (::Legends.Mod.ModSettings.getSetting("WorldEconomy").getValue())
 		{
-			::Const.World.Common.WorldEconomy.setupTrade(party, this.m.Start, this.m.Dest);
+			::Const.World.Common.WorldEconomy.Trade.setupTrade(party, this.m.Start, this.m.Dest);
 		}
 		else
 		{

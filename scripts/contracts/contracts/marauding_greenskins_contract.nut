@@ -3,7 +3,8 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 		Objective = null,
 		Target = null,
 		IsPlayerAttacking = true,
-		LastRandomEventShown = 0.0
+		LastRandomEventShown = 0.0,
+		UnformattedDescription = "Greenskins are terrorizing the region around %s, burning everything in their path. The ferocity of the attacks have left many unnerved."
 	},
 	function setObjective( _h )
 	{
@@ -27,8 +28,13 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 		this.contract.create();
 		this.m.Type = "contract.marauding_greenskins";
 		this.m.Name = "Marauding Greenskins";
-		this.m.Description = "Scouts report a band of marauding greenskins in a nearby town. Hunt them down and stop their raids.";
+		this.m.Description = "";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
+	}
+
+	function formatDescription()
+	{
+		this.m.Description = this.format(this.m.UnformattedDescription, ::Const.UI.getColorized(this.m.Origin.getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()));
 	}
 
 	function onImportIntro()
@@ -44,10 +50,18 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 		}
 
 		local myTile = this.m.Origin.getTile();
-		local orcs = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getNearestSettlement(myTile);
-		local goblins = this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).getNearestSettlement(myTile);
+		local orcs = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getNearestSettlement(myTile);
+		local goblins = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).getNearestSettlement(myTile);
 
-		if (myTile.getDistanceTo(orcs.getTile()) + ::Math.rand(0, 8) < myTile.getDistanceTo(goblins.getTile()) + ::Math.rand(0, 8))
+		if (goblins == null)
+		{
+			this.m.Flags.set("IsOrcs", true);
+		}
+		else if (orcs == null)
+		{
+			this.m.Flags.set("IsOrcs", false);
+		}
+		else if (myTile.getDistanceTo(orcs.getTile()) + this.Math.rand(0, 8) < myTile.getDistanceTo(goblins.getTile()) + this.Math.rand(0, 8))
 		{
 			this.m.Flags.set("IsOrcs", true);
 		}
@@ -84,14 +98,14 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 		if (best != null)
 		{
 			local distance = this.getDistanceOnRoads(best.getTile(), this.m.Origin.getTile());
-			this.m.Flags.set("MerchantReward", ::Math.max(150, distance * 5.0 * this.getPaymentMult()));
+			this.m.Flags.set("MerchantReward", this.Math.max(150, distance * 5.0 * this.getPaymentMult()));
 			this.setObjective(best);
-			this.m.Flags.set("MerchantID", best.getFactionOfType(::Const.FactionType.Settlement).getRandomCharacter().getID());
+			this.m.Flags.set("MerchantID", best.getFactionOfType(this.Const.FactionType.Settlement).getRandomCharacter().getID());
 		}
 
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
+		this.m.Payment.Pool = 800 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
 
-		if (::Math.rand(1, 100) <= 33)
+		if (this.Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -114,7 +128,7 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 					"Kill marauding greenskins around %origin%"
 				];
 
-				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
+				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -127,7 +141,7 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = ::Math.rand(1, 100);
+				local r = this.Math.rand(1, 100);
 
 				if (r <= 5 && this.World.Assets.getBusinessReputation() >= 2250)
 				{
@@ -151,22 +165,22 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 
 				if (this.Flags.get("IsOrcs"))
 				{
-					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).spawnEntity(tile, "Orc Marauders", false, ::Const.World.Spawn.OrcRaiders, 110 * this.Contract.getDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).spawnEntity(tile, "Orc Marauders", false, this.Const.World.Spawn.OrcRaiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					party.setDescription("A band of menacing orcs, greenskinned and towering any man.");
-					party.getLoot().ArmorParts = ::Math.rand(0, 25);
-					party.getLoot().Ammo = ::Math.rand(0, 10);
+					party.getLoot().ArmorParts = this.Math.rand(0, 25);
+					party.getLoot().Ammo = this.Math.rand(0, 10);
 					party.addToInventory("supplies/strange_meat_item");
-					local enemyBase = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getNearestSettlement(this.Contract.getOrigin().getTile());
+					local enemyBase = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getNearestSettlement(this.Contract.getOrigin().getTile());
 					party.getSprite("banner").setBrush(enemyBase.getBanner());
 				}
 				else
 				{
-					party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).spawnEntity(tile, "Goblin Raiders", false, ::Const.World.Spawn.GoblinRaiders, 110 * this.Contract.getDifficultyMult());
+					party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).spawnEntity(tile, "Goblin Raiders", false, this.Const.World.Spawn.GoblinRaiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					party.setDescription("A band of mischievous goblins, small but cunning and not to be underestimated.");
-					party.getLoot().ArmorParts = ::Math.rand(0, 10);
-					party.getLoot().Medicine = ::Math.rand(0, 2);
-					party.getLoot().Ammo = ::Math.rand(0, 30);
-					local r = ::Math.rand(1, 4);
+					party.getLoot().ArmorParts = this.Math.rand(0, 10);
+					party.getLoot().Medicine = this.Math.rand(0, 2);
+					party.getLoot().Ammo = this.Math.rand(0, 30);
+					local r = this.Math.rand(1, 4);
 
 					if (r == 1)
 					{
@@ -181,7 +195,7 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 						party.addToInventory("supplies/pickled_mushrooms_item");
 					}
 
-					local enemyBase = this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).getNearestSettlement(this.Contract.getOrigin().getTile());
+					local enemyBase = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).getNearestSettlement(this.Contract.getOrigin().getTile());
 					party.getSprite("banner").setBrush(enemyBase.getBanner());
 				}
 
@@ -189,15 +203,15 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 				this.Contract.m.Target = this.WeakTableRef(party);
 				party.setAttackableByAI(false);
 				local c = party.getController();
-				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 				local roam = this.new("scripts/ai/world/orders/roam_order");
 				roam.setPivot(this.Contract.m.Origin);
 				roam.setMinRange(3);
 				roam.setMaxRange(8);
 				roam.setAllTerrainAvailable();
-				roam.setTerrain(::Const.World.TerrainType.Ocean, false);
-				roam.setTerrain(::Const.World.TerrainType.Shore, false);
-				roam.setTerrain(::Const.World.TerrainType.Mountains, false);
+				roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
+				roam.setTerrain(this.Const.World.TerrainType.Shore, false);
+				roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
 				c.addOrder(roam);
 				this.Contract.setScreen("Overview");
 				this.World.Contracts.setActiveContract(this.Contract);
@@ -241,11 +255,11 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 						this.Contract.setState("Return");
 					}
 				}
-				else if (playerTile.getDistanceTo(this.Contract.m.Target.getTile()) <= 10 && this.Contract.m.Target.isHiddenToPlayer() && this.Time.getVirtualTimeF() - this.Contract.m.LastRandomEventShown >= 30.0 && ::Math.rand(1, 1000) <= 1)
+				else if (playerTile.getDistanceTo(this.Contract.m.Target.getTile()) <= 10 && this.Contract.m.Target.isHiddenToPlayer() && this.Time.getVirtualTimeF() - this.Contract.m.LastRandomEventShown >= 30.0 && this.Math.rand(1, 1000) <= 1)
 				{
 					this.Contract.m.LastRandomEventShown = this.Time.getVirtualTimeF();
 
-					if (!this.Flags.get("IsBurnedFarmsteadShown") && playerTile.Type == ::Const.World.TerrainType.Plains || playerTile.Type == ::Const.World.TerrainType.Hills || playerTile.Type == ::Const.World.TerrainType.Tundra || playerTile.Type == ::Const.World.TerrainType.Steppe)
+					if (!this.Flags.get("IsBurnedFarmsteadShown") && playerTile.Type == this.Const.World.TerrainType.Plains || playerTile.Type == this.Const.World.TerrainType.Hills || playerTile.Type == this.Const.World.TerrainType.Tundra || playerTile.Type == this.Const.World.TerrainType.Steppe)
 					{
 						this.Flags.set("IsBurnedFarmsteadShown", true);
 						this.Contract.setScreen("BurnedFarmstead");
@@ -277,8 +291,8 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 				if (this.Flags.get("IsWarlord") && !this.Flags.get("IsAttackDialogTriggered"))
 				{
 					this.Flags.set("IsAttackDialogTriggered", true);
-					::Const.World.Common.addTroop(this.Contract.m.Target, {
-						Type = ::Const.World.Spawn.Troops.OrcWarlord
+					this.Const.World.Common.addTroop(this.Contract.m.Target, {
+						Type = this.Const.World.Spawn.Troops.OrcWarlord
 					}, false);
 					this.Contract.m.IsPlayerAttacking = _isPlayerAttacking;
 					this.Contract.setScreen("Warlord");
@@ -287,8 +301,8 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 				else if (this.Flags.get("IsShaman") && !this.Flags.get("IsAttackDialogTriggered"))
 				{
 					this.Flags.set("IsAttackDialogTriggered", true);
-					::Const.World.Common.addTroop(this.Contract.m.Target, {
-						Type = ::Const.World.Spawn.Troops.GoblinShaman
+					this.Const.World.Common.addTroop(this.Contract.m.Target, {
+						Type = this.Const.World.Spawn.Troops.GoblinShaman
 					}, false);
 					this.Contract.m.IsPlayerAttacking = _isPlayerAttacking;
 					this.Contract.setScreen("Shaman");
@@ -375,8 +389,8 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 
 	function createScreens()
 	{
-		this.importScreens(::Const.Contracts.NegotiationDefault);
-		this.importScreens(::Const.Contracts.Overview);
+		this.importScreens(this.Const.Contracts.NegotiationDefault);
+		this.importScreens(this.Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -601,14 +615,14 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 					Text = "A successful hunt.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Took care of marauding greenskins");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Took care of marauding greenskins");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isGreenskinInvasion())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCommonContract);
+							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCommonContract);
 						}
 
 						return 0;
@@ -621,7 +635,7 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Origin, this.List);
 			}
@@ -640,7 +654,7 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 					Text = "Easy crowns.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Flags.get("MerchantReward"));
 						return 0;
 					}
@@ -654,7 +668,7 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("MerchantReward") + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Flags.get("MerchantReward") + "[/color] Crowns"
 				});
 			}
 
@@ -669,7 +683,7 @@ this.marauding_greenskins_contract <- this.inherit("scripts/contracts/contract",
 		]);
 		_vars.push([
 			"objectivedirection",
-			this.m.Objective == null || this.m.Objective.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Objective.getTile())]
+			this.m.Objective == null || this.m.Objective.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Objective.getTile())]
 		]);
 		_vars.push([
 			"reward_merchant",

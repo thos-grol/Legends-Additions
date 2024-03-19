@@ -1,14 +1,20 @@
 this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", {
 	m = {
-		Destination = null
+		Destination = null,
+		UnformattedDescription = "A loathsome goblin camp has been reported near %s. Treacherous creatures who fight without honor - something often also said of sellswords."
 	},
 	function create()
 	{
 		this.contract.create();
 		this.m.Type = "contract.destroy_goblin_camp";
 		this.m.Name = "Destroy Goblin Camp";
-		this.m.Description = "Scouts report a nearby goblin camp. Destroy the camp before they send out raids to nearby towns.";
+		this.m.Description = "";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
+	}
+
+	function formatDescription()
+	{
+		this.m.Description = this.format(this.m.UnformattedDescription, ::Const.UI.getColorized(this.m.Origin.getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()));
 	}
 
 	function onImportIntro()
@@ -18,11 +24,11 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 
 	function start()
 	{
-		local camp = this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).getNearestSettlement(this.World.State.getPlayer().getTile());
+		local camp = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).getNearestSettlement(this.World.State.getPlayer().getTile());
 		this.m.Destination = this.WeakTableRef(camp);
 		this.m.Flags.set("DestinationName", this.m.Destination.getName());
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = ::Math.rand(1, 2);
+		this.m.Payment.Pool = 900 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
+		local r = this.Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -47,7 +53,7 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 					"Destroy " + this.Flags.get("DestinationName") + " %direction% of %origin%"
 				];
 
-				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
+				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -68,19 +74,19 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 					this.Contract.m.Destination.getLoot().clear();
 				}
 
-				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.GoblinRaiders, 110 * this.Contract.getDifficultyMult());
-				this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult());
-				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 100 * this.Contract.getDifficultyMult()));
+				this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.GoblinRaiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.m.Destination.setLootScaleBasedOnResources(110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 
-				if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().get("Betrayed") && ::Math.rand(1, 100) <= 75)
+				if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().get("Betrayed") && this.Math.rand(1, 100) <= 75)
 				{
 					this.Flags.set("IsBetrayal", true);
 				}
 				else
 				{
-					local r = ::Math.rand(1, 100);
+					local r = this.Math.rand(1, 100);
 
 					if (r <= 20 && this.World.Assets.getBusinessReputation() > 1000)
 					{
@@ -148,10 +154,10 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.LocationTemplate = null;
 						p.CombatID = "Ambush";
-						p.Music = ::Const.Music.GoblinsTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Center;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.GoblinRaiders, 50, this.Contract.m.Destination.getFaction());
+						p.Music = this.Const.Music.GoblinsTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Center;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Circle;
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.GoblinRaiders, 50 * this.Contract.getScaledDifficultyMult(), this.Contract.m.Destination.getFaction());
 						this.World.Contracts.startScriptedCombat(p, false, false, false);
 					}
 				}
@@ -202,8 +208,8 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 
 	function createScreens()
 	{
-		this.importScreens(::Const.Contracts.NegotiationDefault);
-		this.importScreens(::Const.Contracts.Overview);
+		this.importScreens(this.Const.Contracts.NegotiationDefault);
+		this.importScreens(this.Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -265,17 +271,17 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 					Text = "Take up arms!",
 					function getResult()
 					{
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationBetrayal);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationBetrayal);
 						this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().set("Betrayed", false);
 						local tile = this.World.State.getPlayer().getTile();
-						local p = ::Const.Tactical.CombatInfo.getClone();
-						p.TerrainTemplate = ::Const.World.TerrainTacticalTemplate[tile.TacticalType];
+						local p = this.Const.Tactical.CombatInfo.getClone();
+						p.TerrainTemplate = this.Const.World.TerrainTacticalTemplate[tile.TacticalType];
 						p.Tile = tile;
 						p.CombatID = "Betrayal";
-						p.Music = ::Const.Music.NobleTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 140, this.Contract.getFaction());
+						p.Music = this.Const.Music.NobleTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 140 * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -294,7 +300,7 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 					Text = "So much for getting paid...",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -332,14 +338,14 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Destroyed a goblin encampment");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Destroyed a goblin encampment");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isGreenskinInvasion())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCommonContract);
+							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCommonContract);
 						}
 
 						return 0;
@@ -352,7 +358,7 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Origin, this.List);
 			}
@@ -368,7 +374,7 @@ this.destroy_goblin_camp_contract <- this.inherit("scripts/contracts/contract", 
 		]);
 		_vars.push([
 			"direction",
-			this.m.Destination == null || this.m.Destination.isNull() ? "" : ::Const.Strings.Direction8[this.m.Origin.getTile().getDirection8To(this.m.Destination.getTile())]
+			this.m.Destination == null || this.m.Destination.isNull() ? "" : this.Const.Strings.Direction8[this.m.Origin.getTile().getDirection8To(this.m.Destination.getTile())]
 		]);
 	}
 

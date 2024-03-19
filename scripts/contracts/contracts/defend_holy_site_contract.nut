@@ -9,7 +9,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 		this.contract.create();
 		this.m.Type = "contract.defend_holy_site";
 		this.m.Name = "Defend Holy Site";
-		this.m.Description = "Scouts report that the southerners are gathering to take the holy site. Local lords want you to get to the holy site first and defend it from the southern menace.";
+		this.m.Description = "Southern soldiers are approaching a place sacred to the Old Gods. A sense of unease ripples through the local populace.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 	}
 
@@ -56,8 +56,8 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 
 		this.m.Destination = this.WeakTableRef(target);
 		this.m.Destination.setVisited(true);
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = ::Math.rand(1, 2);
+		this.m.Payment.Pool = 1250 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
+		local r = this.Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -69,10 +69,10 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 			this.m.Payment.Completion = 1.0;
 		}
 
-		local cityStates = this.World.FactionManager.getFactionsOfType(::Const.FactionType.OrientalCityState);
+		local cityStates = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.OrientalCityState);
 		this.m.Flags.set("DestinationName", this.m.Destination.getName());
 		this.m.Flags.set("DestinationIndex", targetIndex);
-		this.m.Flags.set("EnemyID", cityStates[::Math.rand(0, cityStates.len() - 1)].getID());
+		this.m.Flags.set("EnemyID", cityStates[this.Math.rand(0, cityStates.len() - 1)].getID());
 		this.m.Flags.set("MapSeed", this.Time.getRealTime());
 		this.contract.start();
 	}
@@ -87,7 +87,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					"Move to %holysite% and defend it against southern heathens"
 				];
 
-				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
+				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -100,14 +100,14 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = ::Math.rand(1, 100);
+				local r = this.Math.rand(1, 100);
 
 				if (r <= 25)
 				{
 					this.Flags.set("IsQuartermaster", true);
 				}
 
-				local r = ::Math.rand(1, 100);
+				local r = this.Math.rand(1, 100);
 
 				if (r <= 30)
 				{
@@ -118,7 +118,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					this.Flags.set("IsAlliedSoldiers", true);
 				}
 
-				local cityStates = this.World.FactionManager.getFactionsOfType(::Const.FactionType.OrientalCityState);
+				local cityStates = this.World.FactionManager.getFactionsOfType(this.Const.FactionType.OrientalCityState);
 
 				foreach( c in cityStates )
 				{
@@ -130,15 +130,15 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 
 				if (this.Contract.getDifficultyMult() >= 0.95)
 				{
-					local cityState = cityStates[::Math.rand(0, cityStates.len() - 1)];
-					local party = cityState.spawnEntity(this.Contract.m.Destination.getTile(), "Regiment of " + cityState.getNameOnly(), true, ::Const.World.Spawn.Southern, ::Math.rand(100, 150) * this.Contract.getDifficultyMult());
+					local cityState = cityStates[this.Math.rand(0, cityStates.len() - 1)];
+					local party = cityState.spawnEntity(this.Contract.m.Destination.getTile(), "Regiment of " + cityState.getNameOnly(), true, this.Const.World.Spawn.Southern, this.Math.rand(100, 150) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 					party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + cityState.getBannerString());
 					party.setDescription("Conscripted soldiers loyal to their city state.");
-					party.getLoot().Money = ::Math.rand(100, 300);
-					party.getLoot().ArmorParts = ::Math.rand(10, 35);
-					party.getLoot().Medicine = ::Math.rand(5, 15);
-					party.getLoot().Ammo = ::Math.rand(10, 40);
-					local r = ::Math.rand(1, 4);
+					party.getLoot().Money = this.Math.rand(100, 300);
+					party.getLoot().ArmorParts = this.Math.rand(10, 35);
+					party.getLoot().Medicine = this.Math.rand(5, 15);
+					party.getLoot().Ammo = this.Math.rand(10, 40);
+					local r = this.Math.rand(1, 4);
 
 					if (r <= 2)
 					{
@@ -160,7 +160,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 						"trade/spices_item"
 					];
 
-					for( local i = 0; i < ::Math.round(r / 2); i++ )
+					for( local i = 0; i < this.Math.round(r / 2); i++ )
 					{
 						party.addToInventory(arr[r - 1]);
 					}
@@ -168,9 +168,9 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					local c = party.getController();
 					local roam = this.new("scripts/ai/world/orders/roam_order");
 					roam.setAllTerrainAvailable();
-					roam.setTerrain(::Const.World.TerrainType.Ocean, false);
-					roam.setTerrain(::Const.World.TerrainType.Shore, false);
-					roam.setTerrain(::Const.World.TerrainType.Mountains, false);
+					roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
+					roam.setTerrain(this.Const.World.TerrainType.Shore, false);
+					roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
 					roam.setPivot(this.Contract.m.Destination);
 					roam.setMinRange(4);
 					roam.setMaxRange(8);
@@ -292,18 +292,18 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 					p.CombatID = "DefendHolySite";
-					p.Music = ::Const.Music.OrientalCityStateTracks;
-					p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-					p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+					p.Music = this.Const.Music.OrientalCityStateTracks;
+					p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+					p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 					p.Entities = [];
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, 130 * this.Contract.getDifficultyMult(), this.Flags.get("EnemyID"));
+					this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Southern, 130 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
 					p.EnemyBanners = [
 						this.World.FactionManager.getFaction(this.Flags.get("EnemyID")).getPartyBanner()
 					];
 
 					if (this.Flags.get("IsLocalsRecruited"))
 					{
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.PeasantsArmed, 10, this.Contract.getFaction());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.PeasantsArmed, 10, this.Contract.getFaction());
 						p.AllyBanners.push("banner_noble_11");
 					}
 
@@ -313,18 +313,18 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 					p.CombatID = "DefendHolySite";
-					p.Music = ::Const.Music.OrientalCityStateTracks;
-					p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-					p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+					p.Music = this.Const.Music.OrientalCityStateTracks;
+					p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+					p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 					p.Entities = [];
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Southern, (this.Flags.get("IsEnemyReinforcements") ? 130 : 100) * this.Contract.getDifficultyMult(), this.Flags.get("EnemyID"));
+					this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Southern, (this.Flags.get("IsEnemyReinforcements") ? 130 : 100) * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyID"));
 					p.EnemyBanners = [
 						this.World.FactionManager.getFaction(this.Flags.get("EnemyID")).getPartyBanner()
 					];
 
 					if (this.Flags.get("IsLocalsRecruited"))
 					{
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.PeasantsArmed, 50, this.Contract.getFaction());
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.PeasantsArmed, 50, this.Contract.getFaction());
 						p.AllyBanners.push("banner_noble_11");
 					}
 
@@ -333,33 +333,33 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 				else
 				{
 					local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-					p.LocationTemplate = clone ::Const.Tactical.LocationTemplate;
-					p.LocationTemplate.OwnedByFaction = ::Const.Faction.Player;
+					p.LocationTemplate = clone this.Const.Tactical.LocationTemplate;
+					p.LocationTemplate.OwnedByFaction = this.Const.Faction.Player;
 					p.CombatID = "DefendHolySite";
 
 					if (this.Contract.isPlayerAt(this.Contract.m.Destination))
 					{
 						p.MapSeed = this.Flags.getAsInt("MapSeed");
 						p.LocationTemplate.Template[0] = "tactical.southern_ruins";
-						p.LocationTemplate.Fortification = this.Flags.get("IsPalisadeBuilt") ? ::Const.Tactical.FortificationType.WallsAndPalisade : ::Const.Tactical.FortificationType.Walls;
+						p.LocationTemplate.Fortification = this.Flags.get("IsPalisadeBuilt") ? this.Const.Tactical.FortificationType.WallsAndPalisade : this.Const.Tactical.FortificationType.Walls;
 						p.LocationTemplate.CutDownTrees = true;
 						p.LocationTemplate.ShiftX = -2;
-						p.Music = ::Const.Music.OrientalCityStateTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.LineForward;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.LineBack;
+						p.Music = this.Const.Music.OrientalCityStateTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.LineForward;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.LineBack;
 						p.AllyBanners = [
 							this.World.Assets.getBanner()
 						];
 
 						if (this.Flags.get("IsAlliedReinforcements"))
 						{
-							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 50 * this.Contract.getDifficultyMult(), this.Contract.getFaction());
+							this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 50 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
 							p.AllyBanners.push(this.World.FactionManager.getFaction(this.Contract.getFaction()).getPartyBanner());
 						}
 
 						if (this.Flags.get("IsLocalsRecruited"))
 						{
-							::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.PeasantsArmed, 50, this.Contract.getFaction());
+							this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.PeasantsArmed, 50, this.Contract.getFaction());
 							p.AllyBanners.push("banner_noble_11");
 						}
 					}
@@ -427,8 +427,8 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(::Const.Contracts.NegotiationDefault);
-		this.importScreens(::Const.Contracts.Overview);
+		this.importScreens(this.Const.Contracts.NegotiationDefault);
+		this.importScreens(this.Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -576,7 +576,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Now we wait.",
 					function getResult()
 					{
-						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + ::Math.rand(5, 10));
+						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + this.Math.rand(5, 10));
 						return 0;
 					}
 
@@ -599,7 +599,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Now we wait.",
 					function getResult()
 					{
-						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + ::Math.rand(5, 10));
+						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + this.Math.rand(5, 10));
 						return 0;
 					}
 
@@ -609,7 +609,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				for( local i = 0; i < 2; i = i )
 				{
-					local r = ::Math.rand(1, 12);
+					local r = this.Math.rand(1, 12);
 					local item;
 
 					switch(r)
@@ -631,7 +631,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 						break;
 
 					case 5:
-						item = ::Const.World.Common.pickArmor([
+						item = this.Const.World.Common.pickArmor([
 							[
 								1,
 								"ancient/ancient_mail"
@@ -670,13 +670,13 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 								"oriental/spiked_skull_cap_with_mail"
 							]
 						];
-						item = ::Const.World.Common.pickHelmet(helmet);
+						item = this.Const.World.Common.pickHelmet(helmet);
 						break;
 					}
 
 					if (item.getConditionMax() > 1)
 					{
-						item.setCondition(::Math.max(1, item.getConditionMax() * ::Math.rand(10, 50) * 0.01));
+						item.setCondition(this.Math.max(1, item.getConditionMax() * this.Math.rand(10, 50) * 0.01));
 					}
 
 					this.World.Assets.getStash().add(item);
@@ -688,12 +688,12 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					i = ++i;
 				}
 
-				local amount = ::Math.rand(10, 30);
+				local amount = this.Math.rand(10, 30);
 				this.World.Assets.addArmorParts(amount);
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_supplies.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]+" + amount + "[/color] Tools and Supplies."
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + amount + "[/color] Tools and Supplies."
 				});
 			}
 
@@ -709,7 +709,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Now we wait.",
 					function getResult()
 					{
-						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + ::Math.rand(5, 10));
+						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + this.Math.rand(5, 10));
 						return 0;
 					}
 
@@ -751,6 +751,63 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 			List = [],
 			Options = [
 				{
+					Text = "We\'ll take the wardogs.",
+					function getResult()
+					{
+						for( local i = 0; i < 3; i = i )
+						{
+							local item = this.new("scripts/items/accessory/wardog_item");
+							this.World.Assets.getStash().add(item);
+							i = ++i;
+						}
+
+						return 0;
+					}
+
+				},
+				{
+					Text = "We\'ll take the nets.",
+					function getResult()
+					{
+						for( local i = 0; i < 4; i = i )
+						{
+							local item = this.new("scripts/items/tools/throwing_net");
+							this.World.Assets.getStash().add(item);
+							i = ++i;
+						}
+
+						return 0;
+					}
+
+				},
+				{
+					Text = "We\'ll take the throwing spears.",
+					function getResult()
+					{
+						if (this.Const.DLC.Wildmen)
+						{
+							for( local i = 0; i < 4; i = i )
+							{
+								local item = this.new("scripts/items/weapons/throwing_spear");
+								this.World.Assets.getStash().add(item);
+								i = ++i;
+							}
+						}
+						else
+						{
+							for( local i = 0; i < 4; i = i )
+							{
+								local item = this.new("scripts/items/weapons/javelin");
+								this.World.Assets.getStash().add(item);
+								i = ++i;
+							}
+						}
+
+						return 0;
+					}
+
+				},
+				{
 					Text = "We have all that we need. Save it for the others.",
 					function getResult()
 					{
@@ -777,7 +834,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "We need to seize this opportunity. Prepare the men to sally forth!",
 					function getResult()
 					{
-						return ::Math.rand(1, 100) <= 50 ? "SallyForth2" : "SallyForth4";
+						return this.Math.rand(1, 100) <= 50 ? "SallyForth2" : "SallyForth4";
 					}
 
 				},
@@ -898,7 +955,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.Flags.set("IsEnemyLuredAway", true);
-						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + ::Math.rand(5, 10));
+						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + this.Math.rand(5, 10));
 						return "AlliedSoldiers2";
 					}
 
@@ -908,7 +965,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.Flags.set("IsEnemyLuredAway", true);
-						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + ::Math.rand(5, 10));
+						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + this.Math.rand(5, 10));
 						return "AlliedSoldiers2";
 					}
 
@@ -918,7 +975,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.Flags.set("IsAlliedReinforcements", true);
-						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + ::Math.rand(5, 10));
+						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + this.Math.rand(5, 10));
 						return "AlliedSoldiers3";
 					}
 
@@ -944,7 +1001,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.Flags.set("IsAlliedSoldiers", false);
-						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + ::Math.rand(5, 10));
+						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + this.Math.rand(5, 10));
 						return 0;
 					}
 
@@ -969,7 +1026,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					function getResult()
 					{
 						this.Flags.set("IsAlliedSoldiers", false);
-						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + ::Math.rand(5, 10));
+						this.Flags.set("AttackTime", this.Time.getVirtualTimeF() + this.Math.rand(5, 10));
 						return 0;
 					}
 
@@ -1017,8 +1074,8 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Disaster!",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationCivilianContractFail, "Failed to defend a holy site");
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractFail, "Failed to defend a holy site");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -1043,14 +1100,14 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Defended a holy site");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Defended a holy site");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isHolyWar())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -1063,7 +1120,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -1086,14 +1143,14 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					local tile = this.World.getTileSquare(x, y);
 
-					if (tile.Type == ::Const.World.TerrainType.Ocean)
+					if (tile.Type == this.Const.World.TerrainType.Ocean)
 					{
 					}
 					else
 					{
-						local s = ::Math.rand(0, 3);
+						local s = this.Math.rand(0, 3);
 
-						if (tile.Type == ::Const.World.TerrainType.Mountains)
+						if (tile.Type == this.Const.World.TerrainType.Mountains)
 						{
 							s = s - 10;
 						}
@@ -1150,14 +1207,14 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 			}
 		}
 
-		local party = f.spawnEntity(tiles[0].Tile, candidates[::Math.rand(0, candidates.len() - 1)].getNameOnly() + " Company", true, ::Const.World.Spawn.Noble, ::Math.rand(100, 150) * this.getDifficultyMult() * this.getScaledDifficultyMult());
+		local party = f.spawnEntity(tiles[0].Tile, candidates[this.Math.rand(0, candidates.len() - 1)].getNameOnly() + " Company", true, this.Const.World.Spawn.Noble, this.Math.rand(100, 150) * this.getDifficultyMult() * this.getScaledDifficultyMult());
 		party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + f.getBannerString());
 		party.setDescription("Professional soldiers in service to local lords.");
-		party.getLoot().Money = ::Math.rand(50, 200);
-		party.getLoot().ArmorParts = ::Math.rand(0, 25);
-		party.getLoot().Medicine = ::Math.rand(0, 3);
-		party.getLoot().Ammo = ::Math.rand(0, 30);
-		local r = ::Math.rand(1, 4);
+		party.getLoot().Money = this.Math.rand(50, 200);
+		party.getLoot().ArmorParts = this.Math.rand(0, 25);
+		party.getLoot().Medicine = this.Math.rand(0, 3);
+		party.getLoot().Ammo = this.Math.rand(0, 30);
+		local r = this.Math.rand(1, 4);
 
 		if (r == 1)
 		{
@@ -1204,14 +1261,14 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					local tile = this.World.getTileSquare(x, y);
 
-					if (tile.Type == ::Const.World.TerrainType.Ocean)
+					if (tile.Type == this.Const.World.TerrainType.Ocean)
 					{
 					}
 					else
 					{
-						local s = ::Math.rand(0, 3);
+						local s = this.Math.rand(0, 3);
 
-						if (tile.Type == ::Const.World.TerrainType.Mountains)
+						if (tile.Type == this.Const.World.TerrainType.Mountains)
 						{
 							s = s - 10;
 						}
@@ -1255,16 +1312,16 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 			candidates.push(s);
 		}
 
-		local party = f.spawnEntity(tiles[0].Tile, "Regiment of " + candidates[::Math.rand(0, candidates.len() - 1)].getNameOnly(), true, ::Const.World.Spawn.Southern, (this.m.Flags.get("IsEnemyLuredAway") ? 130 : 160) * this.getScaledDifficultyMult());
+		local party = f.spawnEntity(tiles[0].Tile, "Regiment of " + candidates[this.Math.rand(0, candidates.len() - 1)].getNameOnly(), true, this.Const.World.Spawn.Southern, (this.m.Flags.get("IsEnemyLuredAway") ? 130 : 160) * this.getScaledDifficultyMult());
 		party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + f.getBannerString());
 		party.setDescription("Conscripted soldiers loyal to their city state.");
 		party.setAttackableByAI(false);
 		party.setAlwaysAttackPlayer(true);
-		party.getLoot().Money = ::Math.rand(100, 300);
-		party.getLoot().ArmorParts = ::Math.rand(10, 35);
-		party.getLoot().Medicine = ::Math.rand(5, 15);
-		party.getLoot().Ammo = ::Math.rand(10, 40);
-		local r = ::Math.rand(1, 4);
+		party.getLoot().Money = this.Math.rand(100, 300);
+		party.getLoot().ArmorParts = this.Math.rand(10, 35);
+		party.getLoot().Medicine = this.Math.rand(5, 15);
+		party.getLoot().Ammo = this.Math.rand(10, 40);
+		local r = this.Math.rand(1, 4);
 
 		if (r <= 2)
 		{
@@ -1286,7 +1343,7 @@ this.defend_holy_site_contract <- this.inherit("scripts/contracts/contract", {
 			"trade/spices_item"
 		];
 
-		for( local i = 0; i < ::Math.round(r / 2); i++ )
+		for( local i = 0; i < this.Math.round(r / 2); i++ )
 		{
 			party.addToInventory(arr[r - 1]);
 		}

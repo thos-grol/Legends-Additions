@@ -287,7 +287,7 @@
 });
 
 //Caravan Budgets
-::Const.World.Common.WorldEconomy.setupTrade = function ( _party, _settlement, _destination, _fixedBudget = -1, _minBudget = -1, _maxBudget = -1 )
+::Const.World.Common.WorldEconomy.Trade.setupTrade = function ( _party, _settlement, _destination, _fixedBudget = -1, _minBudget = -1, _maxBudget = -1 )
 {
 	local result = this.makeTradingDecision(_settlement, (_party.getFlags().has("tier") ? _party.getFlags().getAsInt("tier") : ::Math.rand(1,2) ));
 	_party.setOrigin(_settlement);
@@ -297,7 +297,7 @@
 	this.logWarning("Exporting " + _party.getStashInventory().getItems().len() + " items (" + result.Value + " crowns), from " + _settlement.getName() + " via a caravan bound for " + _destination.getName() + " town");
 }
 
-::Const.World.Common.WorldEconomy.makeTradingDecision = function( _settlement, _budget )
+::Const.World.Common.WorldEconomy.Trade.makeTradingDecision = function( _settlement, _budget )
 {
 	local result = this.fillWithBreads(_settlement, _budget);
 	result.Items.sort(function ( _item1, _item2 )
@@ -309,7 +309,7 @@
 	return result;
 }
 
-::Const.World.Common.WorldEconomy.fillWithBreads = function( _settlement, _budget, _target = null, _isFull = false )
+::Const.World.Common.WorldEconomy.Trade.fillWithBreads <- function( _settlement, _budget, _target = null, _isFull = false )
 {
 	local _tier = _budget;
 	if (_target == null)

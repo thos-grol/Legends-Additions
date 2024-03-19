@@ -1,4 +1,4 @@
-::Const.World.Common.WorldEconomy.AmountOfLeakedCaravanInventoryInfo = 10;
+::Const.World.Common.WorldEconomy.Trade.AmountOfLeakedCaravanInventoryInfo = 10;
 
 ::Z.Economy.CaravanTable <- {
 	"trade_goods" : {

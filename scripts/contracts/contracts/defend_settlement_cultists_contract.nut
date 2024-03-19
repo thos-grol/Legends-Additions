@@ -2,7 +2,8 @@ this.defend_settlement_cultists_contract <- this.inherit("scripts/contracts/cont
 	m = {
 		Reward = 0,
 		Kidnapper = null,
-		Militia = null
+		Militia = null,
+		UnformattedDescription = "Judging by the silent outskirts, %s has a serious cultist problem. You may just be the cure."
 	},
 	function create()
 	{
@@ -18,6 +19,11 @@ this.defend_settlement_cultists_contract <- this.inherit("scripts/contracts/cont
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
 
 
+	}
+
+	function formatDescription()
+	{
+		this.m.Description = this.format(this.m.UnformattedDescription, ::Const.UI.getColorized(this.m.Home.getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()));
 	}
 
 	function onImportIntro()

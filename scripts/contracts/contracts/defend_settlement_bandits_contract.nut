@@ -2,7 +2,8 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 	m = {
 		Reward = 0,
 		Kidnapper = null,
-		Militia = null
+		Militia = null,
+		UnformattedDescription = "Judging by the fire-gutted outskirts, %s has a serious raider problem. You may just be the cure."
 	},
 	function create()
 	{
@@ -16,8 +17,11 @@ this.defend_settlement_bandits_contract <- this.inherit("scripts/contracts/contr
 		this.m.DifficultyMult = ::Math.rand(100, 140) * 0.01;
 
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "D");
+	}
 
-
+	function formatDescription()
+	{
+		this.m.Description = this.format(this.m.UnformattedDescription, ::Const.UI.getColorized(this.m.Home.getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()));
 	}
 
 	function onImportIntro()

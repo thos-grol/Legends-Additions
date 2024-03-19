@@ -2,19 +2,33 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 	m = {
 		Troops = null,
 		IsPlayerAttacking = true,
-		IsEscortUpdated = false
+		IsEscortUpdated = false,
+		UnformattedDescription = "Greenskins are besieging %s. With local forces depleted the inhabitants face a terrible slaughter."
 	},
 	function create()
 	{
 		this.contract.create();
-		local r = ::Math.rand(1, 100);
-		this.m.DifficultyMult = ::Math.rand(100, 175) * 0.01;
+		local r = this.Math.rand(1, 100);
+
+		if (r <= 70)
+		{
+			this.m.DifficultyMult = this.Math.rand(90, 105) * 0.01;
+		}
+		else
+		{
+			this.m.DifficultyMult = this.Math.rand(115, 135) * 0.01;
+		}
 
 		this.m.Type = "contract.break_greenskin_siege";
 		this.m.Name = "Break Siege";
-		this.m.Description = "Greenskins are laying siege in the region. Local lords are desperate and are hiring mercenaries to break the siege.";
+		this.m.Description = "";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 		this.m.MakeAllSpawnsResetOrdersOnContractEnd = false;
+	}
+
+	function formatDescription()
+	{
+		this.m.Description = this.format(this.m.UnformattedDescription, ::Const.UI.getColorized(this.m.Origin.getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()));
 	}
 
 	function onImportIntro()
@@ -30,13 +44,13 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 		}
 
 		this.m.Flags.set("ObjectiveName", this.m.Origin.getName());
-		local nearest_orcs = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getNearestSettlement(this.m.Origin.getTile());
+		local nearest_orcs = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getNearestSettlement(this.m.Origin.getTile());
 		this.m.Flags.set("OrcBase", nearest_orcs.getID());
-		local nearest_goblins = this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).getNearestSettlement(this.m.Origin.getTile());
+		local nearest_goblins = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).getNearestSettlement(this.m.Origin.getTile());
 		this.m.Flags.set("GoblinBase", nearest_goblins.getID());
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
+		this.m.Payment.Pool = 1500 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
 
-		if (::Math.rand(1, 100) <= 33)
+		if (this.Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -60,7 +74,7 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 					"Break the greenskin siege"
 				];
 
-				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
+				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -103,15 +117,15 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 				}
 
 				local faction = this.World.FactionManager.getFaction(this.Contract.getFaction());
-				local party = faction.spawnEntity(this.Contract.getHome().getTile(), this.Contract.getHome().getName() + " Company", true, ::Const.World.Spawn.Noble, 110 * this.Contract.getDifficultyMult());
+				local party = faction.spawnEntity(this.Contract.getHome().getTile(), this.Contract.getHome().getName() + " Company", true, this.Const.World.Spawn.Noble, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.getSprite("banner").setBrush(faction.getBannerSmall());
 				party.setDescription("Professional soldiers in service to local lords.");
 				this.Contract.m.Troops = this.WeakTableRef(party);
-				party.getLoot().Money = ::Math.rand(50, 200);
-				party.getLoot().ArmorParts = ::Math.rand(0, 25);
-				party.getLoot().Medicine = ::Math.rand(0, 5);
-				party.getLoot().Ammo = ::Math.rand(0, 30);
-				local r = ::Math.rand(1, 4);
+				party.getLoot().Money = this.Math.rand(50, 200);
+				party.getLoot().ArmorParts = this.Math.rand(0, 25);
+				party.getLoot().Medicine = this.Math.rand(0, 5);
+				party.getLoot().Ammo = this.Math.rand(0, 30);
+				local r = this.Math.rand(1, 4);
 
 				if (r == 1)
 				{
@@ -131,8 +145,8 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 				}
 
 				local c = party.getController();
-				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-				c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 				local move = this.new("scripts/ai/world/orders/move_order");
 				move.setDestination(this.Contract.getOrigin().getTile());
 				c.addOrder(move);
@@ -157,8 +171,8 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 			{
 				if (this.Flags.get("IsContractFailed"))
 				{
-					this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
-					this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Company broke a contract");
+					this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+					this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Company broke a contract");
 					this.World.Contracts.finishActiveContract(true);
 					return;
 				}
@@ -179,10 +193,10 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 
 					if (!this.World.State.isPaused())
 					{
-						this.World.setSpeedMult(::Const.World.SpeedSettings.FastMult);
+						this.World.setSpeedMult(this.Const.World.SpeedSettings.FastMult);
 					}
 
-					this.World.State.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.FastMult;
+					this.World.State.m.LastWorldSpeedMult = this.Const.World.SpeedSettings.FastMult;
 				}
 
 				if ((this.Contract.m.Troops == null || this.Contract.m.Troops.isNull() || !this.Contract.m.Troops.isAlive()) && !this.Flags.get("IsTroopsDeadShown"))
@@ -211,7 +225,7 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 					}
 					else
 					{
-						this.Contract.m.Troops.getController().getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(true);
+						this.Contract.m.Troops.getController().getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(true);
 						this.Contract.setScreen("ArrivingAtTheSiege");
 						this.World.Contracts.showActiveContract();
 					}
@@ -284,9 +298,9 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 			{
 				this.Contract.m.IsPlayerAttacking = _isPlayerAttacking;
 				local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-				p.Music = ::Const.Music.GoblinsTracks;
-				p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Edge;
-				p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
+				p.Music = this.Const.Music.GoblinsTracks;
+				p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Edge;
+				p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Circle;
 				p.EnemyBanners = [
 					this.World.getEntityByID(this.Flags.get("GoblinBase")).getBanner()
 				];
@@ -324,8 +338,8 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 
 	function createScreens()
 	{
-		this.importScreens(::Const.Contracts.NegotiationDefault);
-		this.importScreens(::Const.Contracts.Overview);
+		this.importScreens(this.Const.Contracts.NegotiationDefault);
+		this.importScreens(this.Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -521,14 +535,14 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 					Text = "%objective% is saved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Broke siege of " + this.Flags.get("ObjectiveName"));
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Broke siege of " + this.Flags.get("ObjectiveName"));
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isGreenskinInvasion())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -541,7 +555,7 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -559,8 +573,8 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 					Text = "%objective% has fallen.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to break the siege of " + this.Flags.get("ObjectiveName"));
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to break the siege of " + this.Flags.get("ObjectiveName"));
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -585,7 +599,7 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 
 		if (this.m.DifficultyMult >= 1.15)
 		{
-			numSiegeEngines = ::Math.rand(1, 2);
+			numSiegeEngines = this.Math.rand(1, 2);
 		}
 		else
 		{
@@ -596,7 +610,7 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 
 		if (this.m.DifficultyMult >= 1.25)
 		{
-			numOtherEnemies = ::Math.rand(2, 3);
+			numOtherEnemies = this.Math.rand(2, 3);
 		}
 		else if (this.m.DifficultyMult >= 0.95)
 		{
@@ -614,8 +628,8 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 
 			while (tries++ < 500)
 			{
-				local x = ::Math.rand(originTile.SquareCoords.X - 2, originTile.SquareCoords.X + 2);
-				local y = ::Math.rand(originTile.SquareCoords.Y - 2, originTile.SquareCoords.Y + 2);
+				local x = this.Math.rand(originTile.SquareCoords.X - 2, originTile.SquareCoords.X + 2);
+				local y = this.Math.rand(originTile.SquareCoords.Y - 2, originTile.SquareCoords.Y + 2);
 
 				if (!this.World.isValidTileSquare(x, y))
 				{
@@ -629,7 +643,7 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 					continue;
 				}
 
-				if (tile.Type == ::Const.World.TerrainType.Ocean)
+				if (tile.Type == this.Const.World.TerrainType.Ocean)
 				{
 					continue;
 				}
@@ -642,22 +656,22 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 				break;
 			}
 
-			local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Goblins).spawnEntity(tile, "Siege Engines", false, ::Const.World.Spawn.GreenskinHorde, ::Math.rand(100, 120) * this.getDifficultyMult() * this.getScaledDifficultyMult());
+			local party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).spawnEntity(tile, "Siege Engines", false, this.Const.World.Spawn.GreenskinHorde, this.Math.rand(100, 120) * this.getDifficultyMult() * this.getScaledDifficultyMult());
 			this.m.UnitsSpawned.push(party.getID());
 			party.setDescription("A horde of greenskins and their siege engines.");
-			local numSiegeUnits = ::Math.rand(3, 4);
+			local numSiegeUnits = this.Math.rand(3, 4);
 
 			for( local j = 0; j < numSiegeUnits; j = j )
 			{
-				::Const.World.Common.addTroop(party, {
-					Type = ::Const.World.Spawn.Troops.GreenskinCatapult
+				this.Const.World.Common.addTroop(party, {
+					Type = this.Const.World.Spawn.Troops.GreenskinCatapult
 				}, false);
 				j = ++j;
 			}
 
 			party.updateStrength();
-			party.getLoot().ArmorParts = ::Math.rand(0, 15);
-			party.getLoot().Ammo = ::Math.rand(0, 10);
+			party.getLoot().ArmorParts = this.Math.rand(0, 15);
+			party.getLoot().Ammo = this.Math.rand(0, 10);
 			party.addToInventory("supplies/strange_meat_item");
 			party.getSprite("body").setBrush("figure_siege_01");
 			party.getSprite("banner").setBrush(goblinBase != null ? goblinBase.getBanner() : "banner_goblins_01");
@@ -666,8 +680,8 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 			party.setAttackableByAI(false);
 			party.getFlags().add("SiegeEngine");
 			local c = party.getController();
-			c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-			c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+			c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+			c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 			local wait = this.new("scripts/ai/world/orders/wait_order");
 			wait.setTime(9000.0);
 			c.addOrder(wait);
@@ -702,8 +716,8 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 
 			while (tries++ < 500)
 			{
-				local x = ::Math.rand(originTile.SquareCoords.X - 4, originTile.SquareCoords.X + 4);
-				local y = ::Math.rand(originTile.SquareCoords.Y - 4, originTile.SquareCoords.Y + 4);
+				local x = this.Math.rand(originTile.SquareCoords.X - 4, originTile.SquareCoords.X + 4);
+				local y = this.Math.rand(originTile.SquareCoords.Y - 4, originTile.SquareCoords.Y + 4);
 
 				if (!this.World.isValidTileSquare(x, y))
 				{
@@ -717,7 +731,7 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 					continue;
 				}
 
-				if (tile.Type == ::Const.World.TerrainType.Ocean)
+				if (tile.Type == this.Const.World.TerrainType.Ocean)
 				{
 					continue;
 				}
@@ -725,16 +739,16 @@ this.break_greenskin_siege_contract <- this.inherit("scripts/contracts/contract"
 				break;
 			}
 
-			local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).spawnEntity(tile, "Greenskin Horde", false, ::Const.World.Spawn.GreenskinHorde, ::Math.rand(90, 110) * this.getDifficultyMult() * this.getScaledDifficultyMult());
+			local party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).spawnEntity(tile, "Greenskin Horde", false, this.Const.World.Spawn.GreenskinHorde, this.Math.rand(90, 110) * this.getDifficultyMult() * this.getScaledDifficultyMult());
 			this.m.UnitsSpawned.push(party.getID());
 			party.setDescription("A horde of greenskins marching to war.");
-			party.getLoot().ArmorParts = ::Math.rand(0, 15);
-			party.getLoot().Ammo = ::Math.rand(0, 10);
+			party.getLoot().ArmorParts = this.Math.rand(0, 15);
+			party.getLoot().Ammo = this.Math.rand(0, 10);
 			party.addToInventory("supplies/strange_meat_item");
 			party.getSprite("banner").setBrush(orcBase != null ? orcBase.getBanner() : "banner_orcs_01");
 			local c = party.getController();
-			local raidTarget = targets[::Math.rand(0, targets.len() - 1)].getTile();
-			c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+			local raidTarget = targets[this.Math.rand(0, targets.len() - 1)].getTile();
+			c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 			local raid = this.new("scripts/ai/world/orders/raid_order");
 			raid.setTime(30.0);
 			raid.setTargetTile(raidTarget);

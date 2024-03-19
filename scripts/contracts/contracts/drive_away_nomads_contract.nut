@@ -2,7 +2,8 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 	m = {
 		Destination = null,
 		Dude = null,
-		Reward = 0
+		Reward = 0,
+		UnformattedDescription = "A nomadic camp has been preying on roads to %s. Elusive and evasive, the desert tribes have been here for centuries."
 	},
 	function create()
 	{
@@ -11,6 +12,11 @@ this.drive_away_nomads_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Name = "Drive Off Nomads";
 		this.m.Description = "Scouts report a nearby nomad camp. Destroy the camp before they send out raids to nearby towns.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
+	}
+
+	function formatDescription()
+	{
+		this.m.Description = this.format(this.m.UnformattedDescription, ::Const.UI.getColorized(this.m.Home.getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()));
 	}
 
 	function onImportIntro()

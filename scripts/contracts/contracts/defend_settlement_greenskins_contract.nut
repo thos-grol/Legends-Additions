@@ -2,7 +2,8 @@ this.defend_settlement_greenskins_contract <- this.inherit("scripts/contracts/co
 	m = {
 		Reward = 0,
 		Kidnapper = null,
-		Militia = null
+		Militia = null,
+		UnformattedDescription = "Greenskins are heading this way, murdering and destroying all that stands before them. %s seeks sellsword aid."
 	},
 	function create()
 	{
@@ -17,6 +18,11 @@ this.defend_settlement_greenskins_contract <- this.inherit("scripts/contracts/co
 
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "C");
 
+	}
+
+	function formatDescription()
+	{
+		this.m.Description = this.format(this.m.UnformattedDescription, ::Const.UI.getColorized(this.m.Home.getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()));
 	}
 
 	function onImportIntro()

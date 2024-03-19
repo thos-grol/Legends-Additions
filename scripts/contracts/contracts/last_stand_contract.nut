@@ -1,27 +1,33 @@
 this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 	m = {
-		IsPlayerAttacking = true
+		IsPlayerAttacking = true,
+		UnformattedDescription = "The dead have come for %s. Only the mad or the desperate remain there to stand against them."
 	},
 	function create()
 	{
 		this.contract.create();
-		local r = ::Math.rand(1, 100);
+		local r = this.Math.rand(1, 100);
 
 		if (r <= 70)
 		{
-			this.m.DifficultyMult = ::Math.rand(95, 105) * 0.01;
+			this.m.DifficultyMult = this.Math.rand(95, 105) * 0.01;
 		}
 		else
 		{
-			this.m.DifficultyMult = ::Math.rand(115, 135) * 0.01;
+			this.m.DifficultyMult = this.Math.rand(115, 135) * 0.01;
 		}
 
 		this.m.Type = "contract.last_stand";
-		this.m.Name = "Defend Settlement";
-		this.m.Description = "Scouts report undead hoards heading straight for a nearby city. Get over there and defend the city.";
+		this.m.Name = "Death Denied";
+		this.m.Description = "";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 		this.m.MakeAllSpawnsResetOrdersOnContractEnd = false;
 		this.m.MakeAllSpawnsAttackableByAIOnceDiscovered = true;
+	}
+
+	function formatDescription()
+	{
+		this.m.Description = this.format(this.m.UnformattedDescription, ::Const.UI.getColorized(this.m.Origin.getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()));
 	}
 
 	function onImportIntro()
@@ -38,9 +44,9 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 
 		this.m.Flags.set("ObjectiveName", this.m.Origin.getName());
 		this.m.Name = "Defend " + this.m.Origin.getName();
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
+		this.m.Payment.Pool = 1600 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
 
-		if (::Math.rand(1, 100) <= 33)
+		if (this.Math.rand(1, 100) <= 33)
 		{
 			this.m.Payment.Completion = 0.75;
 			this.m.Payment.Advance = 0.25;
@@ -64,7 +70,7 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 					"Defend against the undead"
 				];
 
-				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
+				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -77,7 +83,7 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 			function end()
 			{
 				this.World.Assets.addMoney(this.Contract.m.Payment.getInAdvance());
-				local r = ::Math.rand(1, 100);
+				local r = this.Math.rand(1, 100);
 
 				if (r <= 40)
 				{
@@ -273,7 +279,7 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				this.Contract.m.IsPlayerAttacking = _isPlayerAttacking;
 				local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
-				p.Music = ::Const.Music.UndeadTracks;
+				p.Music = this.Const.Music.UndeadTracks;
 				p.CombatID = "ContractCombat";
 
 				if (this.Contract.m.Origin != null && !this.Contract.m.Origin.isNull() && this.World.State.getPlayer().getTile().getDistanceTo(this.Contract.m.Origin.getTile()) <= 4)
@@ -282,12 +288,12 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 
 					for( local i = 0; i < this.Flags.get("Militia"); i = i )
 					{
-						local r = ::Math.rand(1, 100);
+						local r = this.Math.rand(1, 100);
 
 						if (r < 60)
 						{
 							p.Entities.push({
-								ID = ::Const.EntityType.Militia,
+								ID = this.Const.EntityType.Militia,
 								Variant = 0,
 								Row = -1,
 								Script = "scripts/entity/tactical/humans/militia",
@@ -298,7 +304,7 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 						else if (r < 85)
 						{
 							p.Entities.push({
-								ID = ::Const.EntityType.Militia,
+								ID = this.Const.EntityType.Militia,
 								Variant = 0,
 								Row = -1,
 								Script = "scripts/entity/tactical/humans/militia_veteran",
@@ -309,7 +315,7 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 						else
 						{
 							p.Entities.push({
-								ID = ::Const.EntityType.Militia,
+								ID = this.Const.EntityType.Militia,
 								Variant = 0,
 								Row = 2,
 								Script = "scripts/entity/tactical/humans/militia_ranged",
@@ -364,8 +370,8 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(::Const.Contracts.NegotiationDefault);
-		this.importScreens(::Const.Contracts.Overview);
+		this.importScreens(this.Const.Contracts.NegotiationDefault);
+		this.importScreens(this.Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -606,14 +612,14 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "%objective% is saved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Defended " + this.Flags.get("ObjectiveName") + " against undead");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Defended " + this.Flags.get("ObjectiveName") + " against undead");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isUndeadScourge())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -626,7 +632,7 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Origin, this.List);
 			}
@@ -645,8 +651,8 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "%objective% has fallen.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Failed to defend " + this.Flags.get("ObjectiveName") + " against undead");
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Failed to defend " + this.Flags.get("ObjectiveName") + " against undead");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -658,14 +664,14 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 
 	function spawnWave()
 	{
-		local undeadBase = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).getNearestSettlement(this.m.Origin.getTile());
+		local undeadBase = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getNearestSettlement(this.m.Origin.getTile());
 		local originTile = this.m.Origin.getTile();
 		local tile;
 
 		while (true)
 		{
-			local x = ::Math.rand(originTile.SquareCoords.X - 5, originTile.SquareCoords.X + 5);
-			local y = ::Math.rand(originTile.SquareCoords.Y - 5, originTile.SquareCoords.Y + 5);
+			local x = this.Math.rand(originTile.SquareCoords.X - 5, originTile.SquareCoords.X + 5);
+			local y = this.Math.rand(originTile.SquareCoords.Y - 5, originTile.SquareCoords.Y + 5);
 
 			if (!this.World.isValidTileSquare(x, y))
 			{
@@ -679,13 +685,13 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 				continue;
 			}
 
-			if (tile.Type == ::Const.World.TerrainType.Ocean)
+			if (tile.Type == this.Const.World.TerrainType.Ocean)
 			{
 				continue;
 			}
 
 			local navSettings = this.World.getNavigator().createSettings();
-			navSettings.ActionPointCosts = ::Const.World.TerrainTypeNavCost_Flat;
+			navSettings.ActionPointCosts = this.Const.World.TerrainTypeNavCost_Flat;
 			local path = this.World.getNavigator().findPath(tile, originTile, navSettings, 0);
 
 			if (!path.isEmpty())
@@ -694,19 +700,19 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 			}
 		}
 
-		local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).spawnEntity(tile, "Undead Horde", false, ::Const.World.Spawn.UndeadArmy, (80 + this.m.Flags.get("Wave") * 10) * this.getDifficultyMult() * this.getScaledDifficultyMult());
+		local party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).spawnEntity(tile, "Undead Horde", false, this.Const.World.Spawn.UndeadArmy, (80 + this.m.Flags.get("Wave") * 10) * this.getDifficultyMult() * this.getScaledDifficultyMult());
 		this.m.UnitsSpawned.push(party.getID());
-		party.getLoot().ArmorParts = ::Math.rand(0, 15);
+		party.getLoot().ArmorParts = this.Math.rand(0, 15);
 		party.getSprite("banner").setBrush(undeadBase.getBanner());
 		party.setDescription("A legion of walking dead, back to claim from the living what was once theirs.");
-		party.setFootprintType(::Const.World.FootprintsType.Undead);
+		party.setFootprintType(this.Const.World.FootprintsType.Undead);
 		party.setSlowerAtNight(false);
 		party.setUsingGlobalVision(false);
 		party.setLooting(false);
 		party.setAttackableByAI(false);
 		local c = party.getController();
-		c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+		c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+		c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 		local move = this.new("scripts/ai/world/orders/move_order");
 		move.setDestination(originTile);
 		c.addOrder(move);
@@ -723,20 +729,20 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 
 	function spawnUndeadAtTheWalls()
 	{
-		local undeadBase = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).getNearestSettlement(this.m.Origin.getTile());
-		local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Zombies).spawnEntity(this.m.Origin.getTile(), "Undead Horde", false, ::Const.World.Spawn.ZombiesOrZombiesAndGhosts, 100 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+		local undeadBase = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).getNearestSettlement(this.m.Origin.getTile());
+		local party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).spawnEntity(this.m.Origin.getTile(), "Undead Horde", false, this.Const.World.Spawn.ZombiesOrZombiesAndGhosts, 100 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 		party.setPos(this.createVec(party.getPos().X - 50, party.getPos().Y - 50));
 		this.m.UnitsSpawned.push(party.getID());
-		party.getLoot().ArmorParts = ::Math.rand(0, 15);
+		party.getLoot().ArmorParts = this.Math.rand(0, 15);
 		party.getSprite("banner").setBrush(undeadBase.getBanner());
 		party.setDescription("A legion of walking dead, back to claim from the living what was once theirs.");
-		party.setFootprintType(::Const.World.FootprintsType.Undead);
+		party.setFootprintType(this.Const.World.FootprintsType.Undead);
 		party.setSlowerAtNight(false);
 		party.setUsingGlobalVision(false);
 		party.setLooting(false);
 		local c = party.getController();
-		c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+		c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+		c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 		local wait = this.new("scripts/ai/world/orders/wait_order");
 		wait.setTime(15.0);
 		c.addOrder(wait);
@@ -755,8 +761,8 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 
 		while (true)
 		{
-			local x = ::Math.rand(originTile.SquareCoords.X - 5, originTile.SquareCoords.X + 5);
-			local y = ::Math.rand(originTile.SquareCoords.Y - 5, originTile.SquareCoords.Y + 5);
+			local x = this.Math.rand(originTile.SquareCoords.X - 5, originTile.SquareCoords.X + 5);
+			local y = this.Math.rand(originTile.SquareCoords.Y - 5, originTile.SquareCoords.Y + 5);
 
 			if (!this.World.isValidTileSquare(x, y))
 			{
@@ -770,13 +776,13 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 				continue;
 			}
 
-			if (tile.Type == ::Const.World.TerrainType.Ocean)
+			if (tile.Type == this.Const.World.TerrainType.Ocean)
 			{
 				continue;
 			}
 
 			local navSettings = this.World.getNavigator().createSettings();
-			navSettings.ActionPointCosts = ::Const.World.TerrainTypeNavCost_Flat;
+			navSettings.ActionPointCosts = this.Const.World.TerrainTypeNavCost_Flat;
 			local path = this.World.getNavigator().findPath(tile, originTile, navSettings, 0);
 
 			if (!path.isEmpty())
@@ -785,7 +791,7 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 			}
 		}
 
-		local party = this.World.FactionManager.getFactionOfType(::Const.FactionType.Undead).spawnEntity(tile, "Nachzehrers", false, ::Const.World.Spawn.Ghouls, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
+		local party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).spawnEntity(tile, "Nachzehrers", false, this.Const.World.Spawn.Ghouls, 110 * this.getDifficultyMult() * this.getScaledDifficultyMult());
 		this.m.UnitsSpawned.push(party.getID());
 		party.getSprite("banner").setBrush("banner_beasts_01");
 		party.setDescription("A flock of scavenging nachzehrers.");
@@ -794,8 +800,8 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 		party.setLooting(false);
 		party.setAttackableByAI(false);
 		local c = party.getController();
-		c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
-		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+		c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+		c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 		local move = this.new("scripts/ai/world/orders/move_order");
 		move.setDestination(originTile);
 		c.addOrder(move);
@@ -818,7 +824,7 @@ this.last_stand_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Origin == null || this.m.Origin.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Origin.getTile())]
+			this.m.Origin == null || this.m.Origin.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Origin.getTile())]
 		]);
 	}
 

@@ -89,7 +89,7 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 		}
 
 		this.addLoot(party);
-		::Const.World.Common.WorldEconomy.setupTrade(party, this.m.Start, this.m.Dest);
+		::Const.World.Common.WorldEconomy.Trade.setupTrade(party, this.m.Start, this.m.Dest);
 		local c = party.getController();
 		c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 		c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);

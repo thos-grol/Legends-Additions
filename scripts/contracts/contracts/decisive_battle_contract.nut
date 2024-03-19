@@ -9,13 +9,20 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 	function create()
 	{
 		this.contract.create();
-		local r = ::Math.rand(1, 100);
-		this.m.DifficultyMult = ::Math.rand(100, 175) * 0.01;
+		local r = this.Math.rand(1, 100);
 
+		if (r <= 70)
+		{
+			this.m.DifficultyMult = this.Math.rand(95, 105) * 0.01;
+		}
+		else
+		{
+			this.m.DifficultyMult = this.Math.rand(115, 135) * 0.01;
+		}
 
 		this.m.Type = "contract.decisive_battle";
 		this.m.Name = "The Battle";
-		this.m.Description = "The generals are moving to a warcamp and are hiring anyone who will help them resolve the feud among the noble houses.";
+		this.m.Description = "The nobles are gathering their forces for a decisive battle against a feuding rival house. That includes sellswords. On both sides.";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 	}
 
@@ -58,9 +65,9 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 			this.m.Flags.set("EnemyNobleHouse", best_settlement.getOwner().getID());
 		}
 
-		this.m.Flags.set("CommanderName", ::Const.Strings.KnightNames[::Math.rand(0, ::Const.Strings.KnightNames.len() - 1)]);
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = ::Math.rand(1, 2);
+		this.m.Flags.set("CommanderName", this.Const.Strings.KnightNames[this.Math.rand(0, this.Const.Strings.KnightNames.len() - 1)]);
+		this.m.Payment.Pool = 1600 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
+		local r = this.Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -88,7 +95,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					"Assist the army in their battle against %feudfamily%"
 				];
 
-				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
+				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -130,14 +137,14 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				}
 
 				local tile = this.Contract.getTileToSpawnLocation(this.Contract.m.WarcampTile, 1, 12, [
-					::Const.World.TerrainType.Shore,
-					::Const.World.TerrainType.Ocean,
-					::Const.World.TerrainType.Mountains,
-					::Const.World.TerrainType.Forest,
-					::Const.World.TerrainType.LeaveForest,
-					::Const.World.TerrainType.SnowyForest,
-					::Const.World.TerrainType.AutumnForest,
-					::Const.World.TerrainType.Swamp
+					this.Const.World.TerrainType.Shore,
+					this.Const.World.TerrainType.Ocean,
+					this.Const.World.TerrainType.Mountains,
+					this.Const.World.TerrainType.Forest,
+					this.Const.World.TerrainType.LeaveForest,
+					this.Const.World.TerrainType.SnowyForest,
+					this.Const.World.TerrainType.AutumnForest,
+					this.Const.World.TerrainType.Swamp
 				], false, false, true);
 				tile.clear();
 				this.Contract.m.WarcampTile = tile;
@@ -147,7 +154,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				this.Contract.m.Warcamp.setFaction(this.Contract.getFaction());
 				this.Contract.m.Warcamp.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Warcamp.getTile().Pos, 500.0);
-				local r = ::Math.rand(1, 100);
+				local r = this.Math.rand(1, 100);
 
 				if (r <= 40)
 				{
@@ -156,7 +163,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				else
 				{
 					this.Flags.set("IsRequisitionSupplies", true);
-					r = ::Math.rand(1, 100);
+					r = this.Math.rand(1, 100);
 
 					if (r <= 33)
 					{
@@ -172,7 +179,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					}
 				}
 
-				r = ::Math.rand(1, 100);
+				r = this.Math.rand(1, 100);
 
 				if (r <= 40)
 				{
@@ -332,7 +339,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				local properties = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 				properties.CombatID = "Scouts";
-				properties.Music = ::Const.Music.NobleTracks;
+				properties.Music = this.Const.Music.NobleTracks;
 				properties.EnemyBanners = [
 					this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse")).getBannerSmall()
 				];
@@ -586,7 +593,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					this.Contract.setScreen("DesertersAftermath");
 					this.World.Contracts.showActiveContract();
 				}
-				else if (this.Contract.isPlayerNear(this.Contract.m.Destination, ::Const.World.CombatSettings.CombatPlayerDistance / 2) && !this.TempFlags.get("IsDeserterApproachShown"))
+				else if (this.Contract.isPlayerNear(this.Contract.m.Destination, this.Const.World.CombatSettings.CombatPlayerDistance / 2) && !this.TempFlags.get("IsDeserterApproachShown"))
 				{
 					this.TempFlags.set("IsDeserterApproachShown", true);
 					this.Contract.setScreen("Deserters2");
@@ -634,23 +641,23 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					this.TempFlags.set("IsFinalBattleStarted", true);
 					local tile = this.Contract.getTileToSpawnLocation(this.Contract.m.Warcamp.getTile(), 3, 12, [
-						::Const.World.TerrainType.Shore,
-						::Const.World.TerrainType.Ocean,
-						::Const.World.TerrainType.Mountains,
-						::Const.World.TerrainType.Forest,
-						::Const.World.TerrainType.LeaveForest,
-						::Const.World.TerrainType.SnowyForest,
-						::Const.World.TerrainType.AutumnForest,
-						::Const.World.TerrainType.Swamp,
-						::Const.World.TerrainType.Hills
+						this.Const.World.TerrainType.Shore,
+						this.Const.World.TerrainType.Ocean,
+						this.Const.World.TerrainType.Mountains,
+						this.Const.World.TerrainType.Forest,
+						this.Const.World.TerrainType.LeaveForest,
+						this.Const.World.TerrainType.SnowyForest,
+						this.Const.World.TerrainType.AutumnForest,
+						this.Const.World.TerrainType.Swamp,
+						this.Const.World.TerrainType.Hills
 					], false);
 					this.World.State.getPlayer().setPos(tile.Pos);
 					this.World.getCamera().moveToPos(this.World.State.getPlayer().getPos());
 					local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 					p.CombatID = "FinalBattle";
-					p.Music = ::Const.Music.NobleTracks;
-					p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-					p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+					p.Music = this.Const.Music.NobleTracks;
+					p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+					p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 					p.Entities = [];
 					p.AllyBanners = [
 						this.World.Assets.getBanner(),
@@ -671,9 +678,9 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 						allyStrength = allyStrength - 20;
 					}
 
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, allyStrength * this.Contract.getDifficultyMult(), this.Contract.getFaction());
+					this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, allyStrength * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
 					p.Entities.push({
-						ID = ::Const.EntityType.Knight,
+						ID = this.Const.EntityType.Knight,
 						Variant = 0,
 						Row = 2,
 						Script = "scripts/entity/tactical/humans/knight",
@@ -692,12 +699,12 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 						enemyStrength = enemyStrength + 25;
 					}
 
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, enemyStrength * this.Contract.getDifficultyMult(), this.Flags.get("EnemyNobleHouse"));
-					::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 60 * this.Contract.getDifficultyMult(), this.Flags.get("EnemyNobleHouse"));
+					this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, enemyStrength * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyNobleHouse"));
+					this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Mercenaries, 60 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Flags.get("EnemyNobleHouse"));
 					p.Entities.push({
-						ID = ::Const.EntityType.Knight,
-						Variant = ::Const.DLC.Wildmen && this.Contract.getDifficultyMult() >= 1.15 ? 1 : 0,
-						Name = ::Const.Strings.KnightNames[::Math.rand(0, ::Const.Strings.KnightNames.len() - 1)],
+						ID = this.Const.EntityType.Knight,
+						Variant = this.Const.DLC.Wildmen && this.Contract.getDifficultyMult() >= 1.15 ? 1 : 0,
+						Name = this.Const.Strings.KnightNames[this.Math.rand(0, this.Const.Strings.KnightNames.len() - 1)],
 						Row = 2,
 						Script = "scripts/entity/tactical/humans/knight",
 						Faction = this.Flags.get("EnemyNobleHouse"),
@@ -749,8 +756,8 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(::Const.Contracts.NegotiationDefault);
-		this.importScreens(::Const.Contracts.Overview);
+		this.importScreens(this.Const.Contracts.NegotiationDefault);
+		this.importScreens(this.Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -848,16 +855,16 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				local playerTile = this.Contract.m.Warcamp.getTile();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 5, 8);
-				local party = this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse")).spawnEntity(tile, "Scouts", false, ::Const.World.Spawn.Noble, 60 * this.Contract.getDifficultyMult());
+				local party = this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse")).spawnEntity(tile, "Scouts", false, this.Const.World.Spawn.Noble, 60 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.getSprite("banner").setBrush(this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse")).getBannerSmall());
 				party.setDescription("Professional soldiers in service to local lords.");
-				party.setFootprintType(::Const.World.FootprintsType.Nobles);
+				party.setFootprintType(this.Const.World.FootprintsType.Nobles);
 				this.Contract.m.UnitsSpawned.push(party);
-				party.getLoot().Money = ::Math.rand(50, 100);
-				party.getLoot().ArmorParts = ::Math.rand(0, 10);
-				party.getLoot().Medicine = ::Math.rand(0, 2);
-				party.getLoot().Ammo = ::Math.rand(0, 20);
-				local r = ::Math.rand(1, 6);
+				party.getLoot().Money = this.Math.rand(50, 100);
+				party.getLoot().ArmorParts = this.Math.rand(0, 10);
+				party.getLoot().Medicine = this.Math.rand(0, 2);
+				party.getLoot().Ammo = this.Math.rand(0, 20);
+				local r = this.Math.rand(1, 6);
 
 				if (r == 1)
 				{
@@ -884,15 +891,15 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				party.setAttackableByAI(false);
 				party.setFootprintSizeOverride(0.75);
 				local c = party.getController();
-				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 				local roam = this.new("scripts/ai/world/orders/roam_order");
 				roam.setPivot(this.Contract.m.Warcamp);
 				roam.setMinRange(4);
 				roam.setMaxRange(9);
 				roam.setAllTerrainAvailable();
-				roam.setTerrain(::Const.World.TerrainType.Ocean, false);
-				roam.setTerrain(::Const.World.TerrainType.Shore, false);
-				roam.setTerrain(::Const.World.TerrainType.Mountains, false);
+				roam.setTerrain(this.Const.World.TerrainType.Ocean, false);
+				roam.setTerrain(this.Const.World.TerrainType.Shore, false);
+				roam.setTerrain(this.Const.World.TerrainType.Mountains, false);
 				c.addOrder(roam);
 			}
 
@@ -1020,24 +1027,24 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "Ambush";
-						p.Music = ::Const.Music.CivilianTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Center;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
+						p.Music = this.Const.Music.CivilianTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Center;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Circle;
 						local n = 0;
 
 						do
 						{
-							n = ::Math.rand(1, ::Const.PlayerBanners.len());
+							n = this.Math.rand(1, this.Const.PlayerBanners.len());
 						}
 						while (n == this.World.Assets.getBannerID());
 
 						p.Entities = [];
 						p.EnemyBanners = [
-							::Const.PlayerBanners[n - 1],
+							this.Const.PlayerBanners[n - 1],
 							"banner_noble_11"
 						];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Mercenaries, 100 * this.Contract.getDifficultyMult(), ::Const.Faction.Enemy);
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.PeasantsArmed, 40 * this.Contract.getDifficultyMult(), ::Const.Faction.Enemy);
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Mercenaries, 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Const.Faction.Enemy);
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.PeasantsArmed, 40 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Const.Faction.Enemy);
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -1140,14 +1147,14 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "TakeItByForce";
-						p.Music = ::Const.Music.CivilianTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.Music = this.Const.Music.CivilianTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 						p.Entities = [];
 						p.EnemyBanners = [
 							"banner_noble_11"
 						];
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Peasants, 80 * this.Contract.getDifficultyMult(), ::Const.Faction.Enemy);
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Peasants, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Const.Faction.Enemy);
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -1179,7 +1186,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + this.Flags.get("RequisitionCost") + "[/color] Crowns"
+					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + this.Flags.get("RequisitionCost") + "[/color] Crowns"
 				});
 			}
 
@@ -1230,7 +1237,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				local startTile = this.World.getEntityByID(this.Flags.get("InterceptSuppliesStart")).getTile();
 				local destTile = this.World.getEntityByID(this.Flags.get("InterceptSuppliesDest")).getTile();
 				local enemyFaction = this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse"));
-				local party = enemyFaction.spawnEntity(startTile, "Supply Caravan", false, ::Const.World.Spawn.NobleCaravan, 110 * this.Contract.getDifficultyMult());
+				local party = enemyFaction.spawnEntity(startTile, "Supply Caravan", false, this.Const.World.Spawn.NobleCaravan, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.getSprite("base").Visible = false;
 				party.getSprite("banner").setBrush(this.World.FactionManager.getFaction(this.Flags.get("EnemyNobleHouse")).getBannerSmall());
 				party.setMirrored(true);
@@ -1238,20 +1245,20 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				party.setImportant(true);
 				party.setDiscovered(true);
 				party.setDescription("A caravan with armed escorts transporting provisions, supplies and equipment between settlements.");
-				party.setFootprintType(::Const.World.FootprintsType.Caravan);
+				party.setFootprintType(this.Const.World.FootprintsType.Caravan);
 				party.getFlags().set("IsCaravan", true);
 				party.setAttackableByAI(false);
 				party.getFlags().add("ContractSupplies");
 				this.Contract.m.Destination = this.WeakTableRef(party);
 				this.Contract.m.UnitsSpawned.push(party);
-				party.getLoot().Money = ::Math.rand(50, 100);
-				party.getLoot().ArmorParts = ::Math.rand(0, 10);
-				party.getLoot().Medicine = ::Math.rand(0, 2);
-				party.getLoot().Ammo = ::Math.rand(0, 20);
+				party.getLoot().Money = this.Math.rand(50, 100);
+				party.getLoot().ArmorParts = this.Math.rand(0, 10);
+				party.getLoot().Medicine = this.Math.rand(0, 2);
+				party.getLoot().Ammo = this.Math.rand(0, 20);
 
 				if (::Legends.Mod.ModSettings.getSetting("WorldEconomy").getValue())
 				{
-					switch(::Math.rand(1, 6))
+					switch(this.Math.rand(1, 6))
 					{
 					case 1:
 						party.addToInventory(this.new("scripts/items/supplies/bread_item"));
@@ -1276,7 +1283,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				}
 				else
 				{
-					switch(::Math.rand(1, 6))
+					switch(this.Math.rand(1, 6))
 					{
 					case 1:
 						party.addToInventory("supplies/bread_item");
@@ -1301,8 +1308,8 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				}
 
 				local c = party.getController();
-				c.getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
-				c.getBehavior(::Const.World.AI.Behavior.ID.Flee).setEnabled(false);
+				c.getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+				c.getBehavior(this.Const.World.AI.Behavior.ID.Flee).setEnabled(false);
 				local move = this.new("scripts/ai/world/orders/move_order");
 				move.setDestination(destTile);
 				move.setRoadsOnly(true);
@@ -1369,22 +1376,22 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				local playerTile = this.World.State.getPlayer().getTile();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 5, 10, [
-					::Const.World.TerrainType.Shore,
-					::Const.World.TerrainType.Mountains
+					this.Const.World.TerrainType.Shore,
+					this.Const.World.TerrainType.Mountains
 				]);
-				local party = this.World.FactionManager.getFaction(this.Contract.getFaction()).spawnEntity(tile, "Deserters", false, ::Const.World.Spawn.Noble, 80 * this.Contract.getDifficultyMult());
+				local party = this.World.FactionManager.getFaction(this.Contract.getFaction()).spawnEntity(tile, "Deserters", false, this.Const.World.Spawn.Noble, 80 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
 				party.getSprite("banner").setBrush("banner_deserters");
-				party.setFootprintType(::Const.World.FootprintsType.Nobles);
+				party.setFootprintType(this.Const.World.FootprintsType.Nobles);
 				party.setAttackableByAI(false);
-				party.getController().getBehavior(::Const.World.AI.Behavior.ID.Attack).setEnabled(false);
+				party.getController().getBehavior(this.Const.World.AI.Behavior.ID.Attack).setEnabled(false);
 				party.setFootprintSizeOverride(0.75);
-				::Const.World.Common.addFootprintsFromTo(playerTile, party.getTile(), ::Const.GenericFootprints, ::Const.World.FootprintsType.Nobles, 0.75);
+				this.Const.World.Common.addFootprintsFromTo(playerTile, party.getTile(), this.Const.GenericFootprints, this.Const.World.FootprintsType.Nobles, 0.75);
 				this.Contract.m.Destination = this.WeakTableRef(party);
-				party.getLoot().Money = ::Math.rand(50, 100);
-				party.getLoot().ArmorParts = ::Math.rand(0, 10);
-				party.getLoot().Medicine = ::Math.rand(0, 2);
-				party.getLoot().Ammo = ::Math.rand(0, 20);
-				local r = ::Math.rand(1, 6);
+				party.getLoot().Money = this.Math.rand(50, 100);
+				party.getLoot().ArmorParts = this.Math.rand(0, 10);
+				party.getLoot().Medicine = this.Math.rand(0, 2);
+				party.getLoot().Ammo = this.Math.rand(0, 20);
+				local r = this.Math.rand(1, 6);
 
 				if (r == 1)
 				{
@@ -1425,7 +1432,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Is this who you want to be? Cowards that won\'t defend their own lands?",
 					function getResult()
 					{
-						return ::Math.rand(1, 100) <= 50 ? "DesertersAcceptMotivation" : "DesertersRefuseMotivation";
+						return this.Math.rand(1, 100) <= 50 ? "DesertersAcceptMotivation" : "DesertersRefuseMotivation";
 					}
 
 				},
@@ -1433,7 +1440,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Your choice is simple. Fight for your lord, or die here.",
 					function getResult()
 					{
-						return ::Math.rand(1, 100) <= 50 ? "DesertersAcceptThreats" : "DesertersRefuseThreats";
+						return this.Math.rand(1, 100) <= 50 ? "DesertersAcceptThreats" : "DesertersRefuseThreats";
 					}
 
 				},
@@ -1472,7 +1479,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You spend [color=" + ::Const.UI.Color.NegativeEventValue + "]" + this.Flags.get("Bribe") + "[/color] Crowns"
+					text = "You spend [color=" + this.Const.UI.Color.NegativeEventValue + "]" + this.Flags.get("Bribe") + "[/color] Crowns"
 				});
 			}
 
@@ -1521,7 +1528,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					candidates = brothers;
 				}
 
-				this.Contract.m.Dude = candidates[::Math.rand(0, candidates.len() - 1)];
+				this.Contract.m.Dude = candidates[this.Math.rand(0, candidates.len() - 1)];
 				this.Characters.push(this.Contract.m.Dude.getImagePath());
 			}
 
@@ -1581,9 +1588,9 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Dude = null;
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos(), true);
 						p.CombatID = "Deserters";
-						p.Music = ::Const.Music.CivilianTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.Music = this.Const.Music.CivilianTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 						p.TemporaryEnemies = [
 							this.Contract.getFaction()
 						];
@@ -1622,7 +1629,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					candidates = brothers;
 				}
 
-				this.Contract.m.Dude = candidates[::Math.rand(0, candidates.len() - 1)];
+				this.Contract.m.Dude = candidates[this.Math.rand(0, candidates.len() - 1)];
 				this.Characters.push(this.Contract.m.Dude.getImagePath());
 			}
 
@@ -1642,9 +1649,9 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 						this.Contract.m.Dude = null;
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos(), true);
 						p.CombatID = "Deserters";
-						p.Music = ::Const.Music.CivilianTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
+						p.Music = this.Const.Music.CivilianTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
 						p.TemporaryEnemies = [
 							this.Contract.getFaction()
 						];
@@ -1746,8 +1753,8 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Not every battle can be won...",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractFail);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractFail, "Lost an important battle");
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractFail);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractFail, "Lost an important battle");
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -1768,8 +1775,8 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local faction = this.World.FactionManager.getFaction(this.Contract.getFaction());
 						local settlements = faction.getSettlements();
-						local origin = settlements[::Math.rand(0, settlements.len() - 1)];
-						local party = faction.spawnEntity(this.World.State.getPlayer().getTile(), origin.getName() + " Company", true, ::Const.World.Spawn.Noble, 150);
+						local origin = settlements[this.Math.rand(0, settlements.len() - 1)];
+						local party = faction.spawnEntity(this.World.State.getPlayer().getTile(), origin.getName() + " Company", true, this.Const.World.Spawn.Noble, 150);
 						party.getSprite("body").setBrush(party.getSprite("body").getBrush().Name + "_" + faction.getBannerString());
 						party.setDescription("Professional soldiers in service to local lords.");
 						this.Contract.setState("Return");
@@ -1792,14 +1799,14 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Payment.getOnCompletion());
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Won an important battle");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Won an important battle");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isCivilWar())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCriticalContract);
+							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCriticalContract);
 						}
 
 						return 0;
@@ -1812,7 +1819,7 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Payment.getOnCompletion() + "[/color] Crowns"
 				});
 			}
 
@@ -1879,14 +1886,14 @@ this.decisive_battle_contract <- this.inherit("scripts/contracts/contract", {
 		{
 			_vars.push([
 				"direction",
-				this.m.WarcampTile == null ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.WarcampTile)]
+				this.m.WarcampTile == null ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.WarcampTile)]
 			]);
 		}
 		else
 		{
 			_vars.push([
 				"direction",
-				this.m.Destination == null || this.m.Destination.isNull() ? "" : ::Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Destination.getTile())]
+				this.m.Destination == null || this.m.Destination.isNull() ? "" : this.Const.Strings.Direction8[this.World.State.getPlayer().getTile().getDirection8To(this.m.Destination.getTile())]
 			]);
 		}
 	}

@@ -2,7 +2,8 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 	m = {
 		Caravan = null,
 		Location = null,
-		IsEscortUpdated = false
+		IsEscortUpdated = false,
+		UnformattedDescription = "The townsfolk of %s are looking to rebuild the %s, ideally with some heartless sellswords to deal with any trouble."
 	},
 	function setLocation( _l )
 	{
@@ -19,6 +20,11 @@ this.restore_location_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
 
 		if (!this.m.Flags.has("Rating")) this.m.Flags.set("Rating", "E");
+	}
+
+	function formatDescription()
+	{
+		this.m.Description = this.format(this.m.UnformattedDescription, ::Const.UI.getColorized(this.m.Location.getSettlement().getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()), ::Const.UI.getColorized(this.m.Location.getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()));
 	}
 
 	function onImportIntro()

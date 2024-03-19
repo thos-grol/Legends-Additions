@@ -1193,7 +1193,7 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 			party.setDiscovered(true);
 		}
 
-		::Const.World.Common.WorldEconomy.setupTrade(party, this.m.Home, this.m.Destination);
+		::Const.World.Common.WorldEconomy.Trade.setupTrade(party, this.m.Home, this.m.Destination);
 
 		if (::Math.rand(1, 2) <= 1) party.getLoot().ArmorParts = ::Math.rand(0, 5);
 		if (::Math.rand(1, 2) <= 1) party.getLoot().Medicine = ::Math.rand(0, 3);

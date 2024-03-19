@@ -2,15 +2,21 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 	m = {
 		Destination = null,
 		Dude = null,
-		Reward = 0
+		Reward = 0,
+		UnformattedDescription = "A brutal Greenskin warcamp has settled near %s, becoming the source of much death and strife in the region."
 	},
 	function create()
 	{
 		this.contract.create();
 		this.m.Type = "contract.destroy_orc_camp";
-		this.m.Name = "Destroy Orc Camp";
-		this.m.Description = "Scouts report the location of a new orc camp. Destroy the camp before they send out raids to nearby towns.";
+		this.m.Name = "Orc Warcamp";
+		this.m.Description = "";
 		this.m.TimeOut = this.Time.getVirtualTimeF() + this.World.getTime().SecondsPerDay * 7.0;
+	}
+
+	function formatDescription()
+	{
+		this.m.Description = this.format(this.m.UnformattedDescription, ::Const.UI.getColorized(this.m.Origin.getName(), ::Const.UI.Color.getHighlightLightBackgroundValue()));
 	}
 
 	function onImportIntro()
@@ -20,11 +26,11 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 
 	function start()
 	{
-		local camp = this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getNearestSettlement(this.m.Origin.getTile());
+		local camp = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getNearestSettlement(this.m.Origin.getTile());
 		this.m.Destination = this.WeakTableRef(camp);
 		this.m.Flags.set("DestinationName", this.m.Destination.getName());
-		this.m.Payment.Pool = ::Z.Economy.Contracts[this.m.Type];
-		local r = ::Math.rand(1, 3);
+		this.m.Payment.Pool = 900 * this.getPaymentMult() * this.Math.pow(this.getDifficultyMult(), this.Const.World.Assets.ContractRewardPOW) * this.getReputationToPaymentMult();
+		local r = this.Math.rand(1, 3);
 
 		if (r == 1)
 		{
@@ -46,7 +52,7 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 			25,
 			30
 		];
-		this.m.Payment.MaxCount = maximumHeads[::Math.rand(0, maximumHeads.len() - 1)];
+		this.m.Payment.MaxCount = maximumHeads[this.Math.rand(0, maximumHeads.len() - 1)];
 		this.contract.start();
 	}
 
@@ -60,7 +66,7 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 					"Destroy " + this.Flags.get("DestinationName") + " %direction% of %origin%"
 				];
 
-				if (::Math.rand(1, 100) <= ::Const.Contracts.Settings.IntroChance)
+				if (this.Math.rand(1, 100) <= this.Const.Contracts.Settings.IntroChance)
 				{
 					this.Contract.setScreen("Intro");
 				}
@@ -81,20 +87,20 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 					this.Contract.m.Destination.getLoot().clear();
 				}
 
-				this.Contract.addUnitsToEntity(this.Contract.m.Destination, ::Const.World.Spawn.OrcRaiders, 110 * this.Contract.getDifficultyMult());
-				this.Contract.m.Destination.setLootScaleBasedOnResources(115 * this.Contract.getDifficultyMult());
-				this.Contract.m.Destination.setResources(::Math.min(this.Contract.m.Destination.getResources(), 100 * this.Contract.getDifficultyMult()));
+				this.Contract.addUnitsToEntity(this.Contract.m.Destination, this.Const.World.Spawn.OrcRaiders, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.m.Destination.setLootScaleBasedOnResources(115 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				this.Contract.m.Destination.setResources(this.Math.min(this.Contract.m.Destination.getResources(), 100 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult()));
 				this.Contract.m.Destination.setDiscovered(true);
 				this.World.uncoverFogOfWar(this.Contract.m.Destination.getTile().Pos, 500.0);
 				this.Flags.set("HeadsCollected", 0);
 
-				if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().get("Betrayed") && ::Math.rand(1, 100) <= 75)
+				if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().get("Betrayed") && this.Math.rand(1, 100) <= 75)
 				{
 					this.Flags.set("IsBetrayal", true);
 				}
 				else
 				{
-					local r = ::Math.rand(1, 100);
+					local r = this.Math.rand(1, 100);
 
 					if (r <= 5)
 					{
@@ -171,11 +177,11 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 					{
 						local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 						p.CombatID = "OrcAttack";
-						p.Music = ::Const.Music.OrcsTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Circle;
+						p.Music = this.Const.Music.OrcsTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Circle;
 						p.IsAutoAssigningBases = false;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.OrcRaiders, 150, ::Const.Faction.Enemy);
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.OrcRaiders, 150 * this.Contract.getScaledDifficultyMult(), this.Const.Faction.Enemy);
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 					}
 				}
@@ -183,7 +189,7 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 				{
 					local p = this.World.State.getLocalCombatProperties(this.World.State.getPlayer().getPos());
 					p.CombatID = "OrcAttack";
-					p.Music = ::Const.Music.OrcsTracks;
+					p.Music = this.Const.Music.OrcsTracks;
 					this.World.Contracts.startScriptedCombat(p, true, true, true);
 				}
 			}
@@ -208,7 +214,7 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				if (_combatID == "OrcAttack" || this.Contract.m.Destination != null && !this.Contract.m.Destination.isNull() && this.World.State.getPlayer().getTile().getDistanceTo(this.Contract.m.Destination.getTile()) <= 1)
 				{
-					if (_actor.getFaction() == this.World.FactionManager.getFactionOfType(::Const.FactionType.Orcs).getID())
+					if (_actor.getFaction() == this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).getID())
 					{
 						this.Flags.set("HeadsCollected", this.Flags.get("HeadsCollected") + 1);
 					}
@@ -240,8 +246,8 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 
 	function createScreens()
 	{
-		this.importScreens(::Const.Contracts.NegotiationPerHead);
-		this.importScreens(::Const.Contracts.Overview);
+		this.importScreens(this.Const.Contracts.NegotiationPerHead);
+		this.importScreens(this.Const.Contracts.Overview);
 		this.m.Screens.push({
 			ID = "Task",
 			Title = "Negotiations",
@@ -303,17 +309,17 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Take up arms!",
 					function getResult()
 					{
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationBetrayal);
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationBetrayal);
 						this.World.FactionManager.getFaction(this.Contract.getFaction()).getFlags().set("Betrayed", false);
 						local tile = this.World.State.getPlayer().getTile();
-						local p = ::Const.Tactical.CombatInfo.getClone();
-						p.TerrainTemplate = ::Const.World.TerrainTacticalTemplate[tile.TacticalType];
+						local p = this.Const.Tactical.CombatInfo.getClone();
+						p.TerrainTemplate = this.Const.World.TerrainTacticalTemplate[tile.TacticalType];
 						p.Tile = tile;
 						p.CombatID = "Betrayal";
-						p.Music = ::Const.Music.NobleTracks;
-						p.PlayerDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						p.EnemyDeploymentType = ::Const.Tactical.DeploymentType.Line;
-						::Const.World.Common.addUnitsToCombat(p.Entities, ::Const.World.Spawn.Noble, 140 * this.Contract.getDifficultyMult(), this.Contract.getFaction());
+						p.Music = this.Const.Music.NobleTracks;
+						p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Line;
+						this.Const.World.Common.addUnitsToCombat(p.Entities, this.Const.World.Spawn.Noble, 140 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getFaction());
 						this.World.Contracts.startScriptedCombat(p, false, true, true);
 						return 0;
 					}
@@ -332,7 +338,7 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "So much for getting paid...",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Contracts.finishActiveContract(true);
 						return 0;
 					}
@@ -392,44 +398,32 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 			{
 				local roster = this.World.getTemporaryRoster();
 				this.Contract.m.Dude = roster.create("scripts/entity/tactical/player");
-				this.Contract.m.Dude.setStartValuesEx(::Const.CharacterVeteranBackgrounds);
+				this.Contract.m.Dude.setStartValuesEx(this.Const.CharacterVeteranBackgrounds);
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Mainhand).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).removeSelf();
 				}
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Offhand).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand).removeSelf();
 				}
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Head).removeSelf();
+					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Head).removeSelf();
 				}
 
-				if (this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Body) != null)
+				if (this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Body) != null)
 				{
-					this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Body).setArmor(this.Contract.m.Dude.getItems().getItemAtSlot(::Const.ItemSlot.Body).getArmor() * 0.33);
+					this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Body).setArmor(this.Contract.m.Dude.getItems().getItemAtSlot(this.Const.ItemSlot.Body).getArmor() * 0.33);
 				}
 
 				if (this.Contract.m.Dude.getTitle() == "")
 				{
 					this.Contract.m.Dude.setTitle("the Survivor");
 				}
-
-				this.Contract.m.Dude.m.Talents = [];
-				local talents = this.Contract.m.Dude.getTalents();
-				talents.resize(::Const.Attributes.COUNT, 0);
-
-				talents[::Const.Attributes.MeleeSkill] = ::Math.rand(1, 3);
-				talents[::Const.Attributes.MeleeDefense] = ::Math.rand(1, 3);
-				if (::Math.rand(1, 100) <= 50) talents[::Const.Attributes.Hitpoints] = ::Math.rand(1, 3);
-				else talents[::Const.Attributes.Initiative] = ::Math.rand(1, 3);
-
-				this.Contract.m.Dude.m.Attributes = [];
-				this.Contract.m.Dude.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 
 				this.Characters.push(this.Contract.m.Dude.getImagePath());
 			}
@@ -448,14 +442,14 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 					Text = "Crowns well deserved.",
 					function getResult()
 					{
-						this.World.Assets.addBusinessReputation(::Const.World.Assets.ReputationOnContractSuccess);
+						this.World.Assets.addBusinessReputation(this.Const.World.Assets.ReputationOnContractSuccess);
 						this.World.Assets.addMoney(this.Contract.m.Reward);
-						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(::Const.World.Assets.RelationNobleContractSuccess, "Destroyed an orc encampment");
+						this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Destroyed an orc encampment");
 						this.World.Contracts.finishActiveContract();
 
 						if (this.World.FactionManager.isGreenskinInvasion())
 						{
-							this.World.FactionManager.addGreaterEvilStrength(::Const.Factions.GreaterEvilStrengthOnCommonContract);
+							this.World.FactionManager.addGreaterEvilStrength(this.Const.Factions.GreaterEvilStrengthOnCommonContract);
 						}
 
 						return 0;
@@ -469,7 +463,7 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 				this.List.push({
 					id = 10,
 					icon = "ui/icons/asset_money.png",
-					text = "You gain [color=" + ::Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
+					text = "You gain [color=" + this.Const.UI.Color.PositiveEventValue + "]" + this.Contract.m.Reward + "[/color] Crowns"
 				});
 				this.Contract.m.SituationID = this.Contract.resolveSituation(this.Contract.m.SituationID, this.Contract.m.Origin, this.List);
 			}
@@ -485,7 +479,7 @@ this.destroy_orc_camp_contract <- this.inherit("scripts/contracts/contract", {
 		]);
 		_vars.push([
 			"direction",
-			this.m.Destination == null || this.m.Destination.isNull() ? "" : ::Const.Strings.Direction8[this.m.Origin.getTile().getDirection8To(this.m.Destination.getTile())]
+			this.m.Destination == null || this.m.Destination.isNull() ? "" : this.Const.Strings.Direction8[this.m.Origin.getTile().getDirection8To(this.m.Destination.getTile())]
 		]);
 		_vars.push([
 			"dude_name",

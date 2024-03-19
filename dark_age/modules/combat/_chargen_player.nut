@@ -134,7 +134,7 @@
 
 		if (num < max && this.getFlags().has("Fit"))
 		{
-			this.getTalents()[::Const.Attributes.Stamina] = ::Math.rand(1,3);
+			this.getTalents()[::Const.Attributes.Fatigue] = ::Math.rand(1,3);
 			num++;
 		}
 
