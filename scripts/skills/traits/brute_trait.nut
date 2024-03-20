@@ -54,7 +54,7 @@ this.brute_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	function onUpdate( _properties )
 	{
 		_properties.MeleeSkill += -10;
-		_properties.RangedSkill += 20;
+		_properties.RangedSkill += 10;
 	}
 
 	function onAdded()
