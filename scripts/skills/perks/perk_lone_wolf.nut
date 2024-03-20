@@ -1,13 +1,13 @@
-::Const.Strings.PerkName.LoneWolf = "Lone Wolf";
-::Const.Strings.PerkDescription.LoneWolf = "Dog or Wolf?"
+::Const.Strings.PerkName.LoneWolf = "Mind Over Body";
+::Const.Strings.PerkDescription.LoneWolf = "\n" + "The spirit is willing, but the flesh is weak..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Passive:")
-+ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "With no ally within 2 tiles:")
-+ "\n"+::MSU.Text.colorGreen("+15%") + " Attack"
-+ "\n"+::MSU.Text.colorGreen("+15%") + " Defense"
-+ "\n"+::MSU.Text.colorGreen("+15%") + " Will";
++ "\n" + ::MSU.Text.colorGreen("– x%") + " Skill Fatigue costs for each point of Will over 50 (40% at 100 Will)"
++ "\n" + ::MSU.Text.colorGreen("+Morale unnaffected by Hitpoint loss");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].Name = ::Const.Strings.PerkName.LoneWolf;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].Tooltip = ::Const.Strings.PerkDescription.LoneWolf;
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].Icon = "ui/perks/mind_over_body.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].IconDisabled = "ui/perks/mind_over_body_bw.png";
 
 this.perk_lone_wolf <- this.inherit("scripts/skills/skill", {
 	m = {},
@@ -16,39 +16,59 @@ this.perk_lone_wolf <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "perk.lone_wolf";
 		this.m.Name = ::Const.Strings.PerkName.LoneWolf;
 		this.m.Description = ::Const.Strings.PerkDescription.LoneWolf;
-		this.m.Icon = "ui/perks/perk_37.png";
-		this.m.Type = ::Const.SkillType.Perk;
-		this.m.Order = ::Const.SkillOrder.Perk;
+		this.m.Icon = "ui/perks/mind_over_body.png";
+		this.m.Type = ::Const.SkillType.Perk | ::Const.SkillType.StatusEffect;
+		this.m.Order = ::Const.SkillOrder.Last;
 		this.m.IsActive = false;
 		this.m.IsStacking = false;
 		this.m.IsHidden = false;
 	}
 
-	function onUpdate( _properties )
+	function getBonus()
 	{
-		if (!this.getContainer().getActor().isPlacedOnMap()) return;
+		if (this.getContainer() == null) return 0;
 
 		local actor = this.getContainer().getActor();
-		local myTile = actor.getTile();
-		local allies = this.Tactical.Entities.getInstancesOfFaction(actor.getFaction());
-		local isAlone = true;
+		if (actor == null) return 0;
+		if (actor.getCurrentProperties().getBravery() <= 50) return 0;
+		return actor.getCurrentProperties().getBravery() / 40.0;
+	}
 
-		foreach( ally in allies )
+	function getTooltip()
+	{
+		local bonus = this.getBonus();
+		local tooltip = this.skill.getTooltip();
+
+		if (bonus > 0)
 		{
-			if (ally.getID() == actor.getID() || !ally.isPlacedOnMap()) continue;
-			if (ally.getTile().getDistanceTo(myTile) <= 2)
-			{
-				isAlone = false;
-				break;
-			}
+			local reduction = ::Math.round((1 - 1 / ::Math.pow(bonus, 0.5)) * 100);
+			tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "All your fatigue costs are reduced by [color=" + ::Const.UI.Color.PositiveValue + "]" + reduction + "%[/color]."
+			});
+		}
+		else
+		{
+			tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/tooltips/warning.png",
+				text = "This character does not have enough resolve to benefit from Mind Over Body."
+			});
 		}
 
-		if (isAlone)
-		{
-			_properties.MeleeSkillMult *= 1.15;
-			_properties.MeleeDefenseMult *= 1.15;
-			_properties.BraveryMult *= 1.15;
-		}
+		return tooltip;
+	}
+
+	function onUpdate( _properties )
+	{
+		local bonus = this.getBonus();
+		if (bonus > 0)
+			_properties.FatigueEffectMult *= 1.0 / ::Math.pow(bonus, 0.5);
+
+		_properties.IsAffectedByLosingHitpoints = false;
 	}
 
 });

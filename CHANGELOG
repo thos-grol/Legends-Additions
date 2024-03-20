@@ -41,7 +41,7 @@ merged Melee Defense and Ranged Defense into one skill. Warriors are probably be
     Strength (new stat) - Concerning the damage the character can do. Each point adds 1% damage to relevant attacks. Base 10.
     Reflex - Concerning the character's ability to react. Each point has a 1% chance to downgrade a critical hit (headshot) to a bodyshot. And a hit to a graze. (10% of damage).
 
-- Removed leveling up melee skill and melee def for player and enemy. It was always arms race between you and enemy to level these up - ie. it was autopick. Now you can vary your stat levelups among the 6 other stats. 
+- Removed leveling up melee skill and melee def for player and enemy. It was always arms race between you and enemy to level these up - ie. it was autopick. Now you can vary your stat levelups among the 6 other stats.
     As for methods to improve attack and defenses it would be training, events, future class promotions, and perks
 
 Enemies
@@ -131,29 +131,30 @@ perk rework 2.0
     - Agile -> Might: Increase Strength by 25%. Exempt from orc weapon penalty
     - Sundering Strikes: Increase injury and armor damage based on strength
     - Death Dealer - If character has 3X Weapon weight in strength and if AP cost for a weapon skill >= 6, -2 AP cost. Has a 50% chance to resist stagger
-    - Muscularity - +25% Strength. buffed version of brawny (50% reduction) 
+    - Muscularity - +25% Strength. buffed version of brawny (50% reduction)
 
 - Tenacious: Main Stat Will
-    - TODO: Fortified Mind - moved to tier 1
-    - TODO: Lone Wolf -> Mind Over Body - buffed for lower will. if will over 90, ignore fresh injuries
-    - TODO: Survival Instinct - if will over 75, improve bonuses
-    - TODO: Mind Over Body -> Fighting Spirit - A power that is equal, that anyone can achieve regardless of their circumstances. Once Will reaches 100. Will do pure damage based on Will. Will reduce damage based on will. Will morale check enemies in radius based on Will.
+    - Fortified Mind
+    - Lone Wolf -> Mind Over Body - 100 Will equals about 40% reduction
+    - Survival Instinct
+    - Mind Over Body -> Fighting Spirit - A power that is equal, that anyone can achieve regardless of their circumstances. Once Will reaches 100. Will do pure damage based on Will. Will reduce damage based on will. Will morale check enemies in radius based on Will.
 
 - Calm: Main Stat Reflex
     - Recuperation
-    - TODO: Peaceful - Reflex +25%. If reflex > 50, 
-    - TODO: Battle Flow - Increase Atk and Def. You have reflex % to not lose a stack when hit
-    - TODO: Perfect Focus - Reflex +25% on top of other effects
+    - Peaceful - Reflex +25%
+    - Battle Flow - Increase Atk and Def. You have reflex % to not lose a stack when hit
+    - Perfect Focus - Reflex +25% on top of other effects
 
 - Devious: Sneaky
-    - TODO: Underdog - Now is Battleheart
-    - TODO: Removed Footwork, merged into Rotation in trained tree. Renamed perk to Evasion
-    - TODO: Pocket Dirt, rest charge on kill
+    - Underdog - Now is Battleheart
+    - Removed Footwork, merged into Rotation in trained tree. Renamed perk to Footwork
+    - Backstabber
+    - Pocket Dirt
     - Blend In
 
 -Vicious
     - HeadHunter
-    - TODO: Fearsome - Change to attack stat
+    - Fearsome - Change to attack stat
     - Berserk
     - Vengeance
 
@@ -223,7 +224,7 @@ contracts
 
 origins
 - free brigand retinue for northern raiders
-- lone wolf 
+- lone wolf
     - favored enemy swordmaster does not refund
     - garunteed chosen
     - improved choices for weapons and armor

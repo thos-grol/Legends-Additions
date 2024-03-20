@@ -16,17 +16,6 @@
 
 //////////////////
 
-::Const.Strings.PerkName.Rotation = "Rotation";
-::Const.Strings.PerkDescription.Rotation = "Rotate!"
-+ "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "\'Rotation\' (3 AP, 25 Fat):")
-+ "\nSwitch places with an allied unit"
-+ "\n"+::MSU.Text.colorRed("Invalid if either character is stunned, rooted or otherwise disabled");
-
-//////////////////
-
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Rotation].Name = ::Const.Strings.PerkName.Rotation;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.Rotation].Tooltip = ::Const.Strings.PerkDescription.Rotation;
-
 this.perk_legend_twirl <- this.inherit("scripts/skills/skill", {
 	m = {
 		Cooldown = 0,

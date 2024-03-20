@@ -169,16 +169,15 @@ gt.Const.Perks.IndestructibleTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.Underdog,
-			gt.Const.Perks.PerkDefs.LoneWolf
-		],
-		[],
-		[
 			gt.Const.Perks.PerkDefs.FortifiedMind
 		],
 		[],
 		[
 			gt.Const.Perks.PerkDefs.SurvivalInstinct
+		],
+		[],
+		[
+			gt.Const.Perks.PerkDefs.LoneWolf
 		],
 		[],
 		[
@@ -288,11 +287,11 @@ gt.Const.Perks.DeviousTree <- {
 	},
 	Tree = [
 		[
-			gt.Const.Perks.PerkDefs.Backstabber
+			gt.Const.Perks.PerkDefs.Underdog,
 		],
 		[],
 		[
-			gt.Const.Perks.PerkDefs.Footwork
+			gt.Const.Perks.PerkDefs.Backstabber
 		],
 		[],
 		[

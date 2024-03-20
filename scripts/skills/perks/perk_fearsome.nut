@@ -1,7 +1,7 @@
 ::Const.Strings.PerkName.Fearsome = "Fearsome";
 ::Const.Strings.PerkDescription.Fearsome = "Make them scatter and flee!"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "Dealing at least 1 HP damage:")
-+ "\n Morale check enemy with a penalty of "+ ::MSU.Text.colorGreen("20% this unit\'s Will")
++ "\n Morale check enemy with a penalty of "+ ::MSU.Text.colorGreen("20% this unit\'s Attack")
 + "\n" + ::MSU.Text.colorRed("Does not proc multiple times on the same target from one attack")
 + "\n\n" + ::MSU.Text.colorRed("Default morale check occurs at 15 HP damage with no penalty");
 
@@ -66,7 +66,7 @@ this.perk_fearsome <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		_properties.ThreatOnHit += ::Math.min(20, ::Math.max(0, (_properties.getBravery() - 10) * 0.2));
+		_properties.ThreatOnHit += ::Math.min(20, ::Math.max(0, (_properties.getMeleeSkill() - 10) * 0.2));
 	}
 
 	function onCombatStarted()
