@@ -57,14 +57,17 @@
 				"hood"
 			]
 		]));
+
+		::Z.Perks.add(this.getContainer().getActor(), ::Const.Perks.PerkDefs.QuickHands, 0);
+
 	}
 
 	o.onChangeAttributes <- function()
 	{
 		local c = {
 			Hitpoints = [
-				0,
-				0
+				-10,
+				-10,
 			],
 			Bravery = [
 				0,
@@ -75,20 +78,20 @@
 				0
 			],
 			MeleeSkill = [
-				0,
-				0
+				20,
+				20
 			],
 			RangedSkill = [
 				0,
 				0
 			],
 			MeleeDefense = [
-				0,
-				0
+				-10,
+				-10,
 			],
 			RangedDefense = [
-				0,
-				0
+				20,
+				20
 			],
 			Initiative = [
 				0,

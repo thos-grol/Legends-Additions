@@ -32,16 +32,13 @@
 			id = 12,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Gains polearm proficiency faster (+10 chance)"
+			text = "Has net perk tree"
 		});
 		return ret;
 	}
 
 	o.onAddEquipment = function()
 	{
-		local actor = this.getContainer().getActor();
-		actor.getFlags().set("ProficiencyBonusPolearm", true);
-
 		local items = this.getContainer().getActor().getItems();
 		local r;
 		r = ::Math.rand(0, 2);

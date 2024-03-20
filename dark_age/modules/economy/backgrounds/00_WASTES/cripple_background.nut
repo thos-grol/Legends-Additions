@@ -92,20 +92,20 @@
 	{
 		local c = {
 			Hitpoints = [
-				4,
-				8
+				0,
+				0
 			],
 			Bravery = [
-				-2,
-				-3
+				10,
+				10
 			],
 			Stamina = [
-				10,
-				15
+				0,
+				0
 			],
 			MeleeSkill = [
 				0,
-				2
+				0
 			],
 			RangedSkill = [
 				0,

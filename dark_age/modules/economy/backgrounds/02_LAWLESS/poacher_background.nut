@@ -42,12 +42,12 @@
 	o.getTooltip <- function ()
 	{
 		local ret = this.character_background.getTooltip();
-		// ret.push({
-		// 	id = 12,
-		// 	type = "text",
-		// 	icon = "ui/icons/special.png",
-		// 	text = "Gains sling proficiency faster (+10 chance)"
-		// });
+		ret.push({
+			id = 12,
+			type = "text",
+			icon = "ui/icons/special.png",
+			text = "Free Pathfinder"
+		});
 		return ret;
 	}
 
@@ -84,6 +84,8 @@
 		]));
 
 		this.m.Container.add(::new("scripts/skills/traits/_ranged_focus"));
+		::Z.Perks.add(this.getContainer().getActor(), ::Const.Perks.PerkDefs.Pathfinder, 0);
+
 	}
 
 	o.onChangeAttributes <- function()

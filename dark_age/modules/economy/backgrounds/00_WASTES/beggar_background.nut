@@ -59,5 +59,44 @@
 		items.equip(item);
 	}
 
+	o.onChangeAttributes <- function()
+	{
+		local c = {
+			Hitpoints = [
+				-10,
+				-10,
+			],
+			Bravery = [
+				0,
+				0
+			],
+			Stamina = [
+				-20,
+				-20,
+			],
+			MeleeSkill = [
+				0,
+				0
+			],
+			RangedSkill = [
+				0,
+				0
+			],
+			MeleeDefense = [
+				0,
+				0
+			],
+			RangedDefense = [
+				0,
+				0
+			],
+			Initiative = [
+				0,
+				0
+			]
+		};
+		return c;
+	}
+
 });
 

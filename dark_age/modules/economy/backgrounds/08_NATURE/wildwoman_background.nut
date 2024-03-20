@@ -22,6 +22,10 @@
 			],
 			Magic = []
 		};
+
+		this.m.IsGuaranteed = [
+			"dumb_trait"
+		];
 	}
 
 	o.onAddEquipment = function()
@@ -59,8 +63,8 @@
 	{
 		local c = {
 			Hitpoints = [
-				0,
-				0
+				20,
+				20
 			],
 			Bravery = [
 				0,
@@ -83,8 +87,8 @@
 				0
 			],
 			RangedDefense = [
-				0,
-				0
+				20,
+				20
 			],
 			Initiative = [
 				0,
@@ -92,6 +96,11 @@
 			]
 		};
 		return c;
+	}
+
+	o.onUpdate = function( _properties )
+	{
+		this.character_background.onUpdate(_properties);
 	}
 
 });

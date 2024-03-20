@@ -26,6 +26,10 @@
 			Magic = []
 		};
 
+		this.m.IsGuaranteed = [
+			"old_trait"
+		];
+
 		
 	}
 
@@ -89,6 +93,45 @@
 				"full_aketon_cap"
 			]
 		]));
+	}
+
+	o.onChangeAttributes <- function()
+	{
+		local c = {
+			Hitpoints = [
+				0,
+				0
+			],
+			Bravery = [
+				0,
+				0
+			],
+			Stamina = [
+				0,
+				0
+			],
+			MeleeSkill = [
+				20,
+				20
+			],
+			RangedSkill = [
+				0,
+				0
+			],
+			MeleeDefense = [
+				20,
+				20
+			],
+			RangedDefense = [
+				0,
+				0
+			],
+			Initiative = [
+				0,
+				0
+			]
+		};
+		return c;
 	}
 
 });

@@ -52,39 +52,40 @@ Enemies
 backgrounds 2.0
 
 - Modified backgrounds so that they will have a theme, and generally if they have a great benefit, there will be a tradeoffs:
-    - TODO: daytaler: no downsides, but no upsides
-    - TODO: refugee: just a daytaler with different events and traits
-    - TODO: slave: just a daytaler with no wages and different traits
-    - TODO: apprentice: daytaler with different traits
+    - daytaler: no downsides, but no upsides
+    - refugee: just a daytaler with different events and traits
+    - slave: just a daytaler with no wages and different traits
+    - apprentice: daytaler with different traits
 
-    - TODO: brawler: Fist Affinity
-    - TODO: butcher: Cleaver Affinity
-    - TODO: farmhand: Polearm Affinity
-    - TODO: lumberjack: Axe Affinity
-    - TODO: miner: Bludgeon Affinity
+    - brawler: Fist Affinity
+    - butcher: Cleaver Affinity
+    - farmhand: Polearm Affinity
+    - lumberjack: Axe Affinity
+    - miner: Bludgeon Affinity
 
-    - TODO: beggar: -10 Vitality, -20 Endurance. Cheaper pay. No Vit or Fat traits or talents.
-    - TODO: cripple: +10 Will. Permanent injury. No Vit or Fat traits or talents.
+    - beggar: -10 Vitality, -20 Endurance. Cheaper pay.
+    - cripple: +10 Will. Permanent injury.
 
-    - TODO: thief: -10 Vitality. +10 Reflex, +20 Agility. Free quick hands. No Vit traits or talents.
-    - TODO: Graverobber: Spooky Events.
-    - TODO: Killer on the run: +10 Atk, +10 Reflex. Free quick hands
-    - TODO: poacher: ranged focus. free pathfinder
+    - thief: -10 Vitality. +40 Agility. Free quick hands
+    - TODO: Graverobber: Spooky Events (in future)
+    - Killer on the run: -10 Def, -10 Vit +20 Atk, +20 Reflex. Free quick hands
+    - poacher: ranged focus. free pathfinder
 
     rarer backgrounds
-    - TODO: fisherman: Net Skill Tree. More expensive. (has a chance to be found in harbors)
-    - TODO: hunter: ranged focus. ranged affinity. free pathfinder
-    - TODO: wildman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
-    - TODO: wildwoman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
+    - fisherman: Net Skill Tree. More expensive. (has a chance to be found in harbors)
+    - hunter: ranged focus. ranged affinity. free pathfinder
+    - wildman: +20 Vitality, +20 Reflex. Always dumb.
+    - wildwoman: +20 Vitality, +20 Reflex. Always dumb.
 
-    - TODO: bastard: just a daytaler with different events and traits
-    - TODO: disowned_noble: just a daytaler with different events and traits
-    - TODO: historian: -10 Vitality, -20 Fatigue, -10 Reflex. Always Bright. No Vit, Fat, Reflex traits or talent.
+    - bastard: just a daytaler with different events and traits
+    - disowned_noble: just a daytaler with different events and traits
+    - historian: -10 Vitality, -20 Fatigue, -10 Reflex. Always Bright.
 
-    - TODO: adventurous noble: +10 Vitality, +10 Attack, +10 Defense, trained tree
-    - TODO: militia: trained tree
-    - TODO: retired soldier: -10 Vitality, -20 Fatigue, +10 Attack, +10 Defense, trained tree. No Vit or Fat traits or talents.
+    - adventurous noble: +20 Vitality, +20 Defense, trained tree
+    - militia: +20 Vitality, trained tree
+    - retired soldier: +20 Attack, +20 Defense, trained tree. Always Old
 
+- TODO: modified training hall so you can only gain daytaler base stat + 1 tier of stats. Above backgrounds with benefits will always be above trainable stats by 1 tier
 
 - changed recruiting rules to be more of a event draw format to synergize:
     - you will only pick from 3 at base (recruiter will change this to 4)

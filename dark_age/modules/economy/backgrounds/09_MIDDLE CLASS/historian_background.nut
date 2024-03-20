@@ -20,6 +20,10 @@
 				::Const.Perks.PhilosophyMagicTree
 			]
 		};
+
+		this.m.IsGuaranteed = [
+			"bright_trait"
+		];
 	}
 
 	o.onAddEquipment = function()
@@ -47,16 +51,16 @@
 	{
 		local c = {
 			Hitpoints = [
-				0,
-				0
+				-10,
+				-10,
 			],
 			Bravery = [
 				0,
 				0
 			],
 			Stamina = [
-				0,
-				0
+				-20,
+				-20,
 			],
 			MeleeSkill = [
 				0,
@@ -71,8 +75,8 @@
 				0
 			],
 			RangedDefense = [
-				0,
-				0
+				-10,
+				-10,
 			],
 			Initiative = [
 				0,

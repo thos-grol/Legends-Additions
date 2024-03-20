@@ -64,14 +64,16 @@
 				"headscarf"
 			]
 		]));
+
+		::Z.Perks.add(this.getContainer().getActor(), ::Const.Perks.PerkDefs.QuickHands, 0);
 	}
 
 	o.onChangeAttributes <- function()
 	{
 		local c = {
 			Hitpoints = [
-				0,
-				0
+				-10,
+				-10,
 			],
 			Bravery = [
 				0,
@@ -98,8 +100,8 @@
 				0
 			],
 			Initiative = [
-				0,
-				0
+				40,
+				40
 			]
 		};
 		return c;
