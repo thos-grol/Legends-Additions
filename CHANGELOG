@@ -2,6 +2,7 @@ CHANGELOG
 
 2.0 - Major Update
 Updated to legends 18.2.X
+- TODO: updated mod documentation
 
 origins
 - Removed all origins except for Escaped Slaves which will be reworked (I'm not going to balance all the origins)
@@ -50,39 +51,39 @@ Enemies
 
 backgrounds 2.0
 
-- TODO: Modified backgrounds so that they will have a theme, and generally if they have a great benefit, there will be a tradeoffs:
-    - daytaler: no downsides, but no upsides
-    - refugee: just a daytaler with different events and traits
-    - slave: just a daytaler with no wages and different traits
-    - apprentice: daytaler with different traits
+- Modified backgrounds so that they will have a theme, and generally if they have a great benefit, there will be a tradeoffs:
+    - TODO: daytaler: no downsides, but no upsides
+    - TODO: refugee: just a daytaler with different events and traits
+    - TODO: slave: just a daytaler with no wages and different traits
+    - TODO: apprentice: daytaler with different traits
 
-    - brawler: Fist Affinity
-    - butcher: Cleaver Affinity
-    - farmhand: Polearm Affinity
-    - lumberjack: Axe Affinity
-    - miner: Bludgeon Affinity
+    - TODO: brawler: Fist Affinity
+    - TODO: butcher: Cleaver Affinity
+    - TODO: farmhand: Polearm Affinity
+    - TODO: lumberjack: Axe Affinity
+    - TODO: miner: Bludgeon Affinity
 
-    - beggar: -10 Vitality, -20 Endurance. Cheaper pay. No Vit or Fat traits or talents.
-    - cripple: +10 Will. Permanent injury. No Vit or Fat traits or talents.
+    - TODO: beggar: -10 Vitality, -20 Endurance. Cheaper pay. No Vit or Fat traits or talents.
+    - TODO: cripple: +10 Will. Permanent injury. No Vit or Fat traits or talents.
 
-    - thief: -10 Vitality. +10 Reflex, +20 Agility. Free quick hands. No Vit traits or talents.
-    - Graverobber: Spooky Events.
-    - Killer on the run: +10 Atk, +10 Reflex. Free quick hands
-    - poacher: ranged focus. free pathfinder
+    - TODO: thief: -10 Vitality. +10 Reflex, +20 Agility. Free quick hands. No Vit traits or talents.
+    - TODO: Graverobber: Spooky Events.
+    - TODO: Killer on the run: +10 Atk, +10 Reflex. Free quick hands
+    - TODO: poacher: ranged focus. free pathfinder
 
     rarer backgrounds
-    - fisherman: Net Skill Tree. More expensive. (has a chance to be found in harbors)
-    - hunter: ranged focus. ranged affinity. free patfinder
-    - wildman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
-    - wildwoman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
+    - TODO: fisherman: Net Skill Tree. More expensive. (has a chance to be found in harbors)
+    - TODO: hunter: ranged focus. ranged affinity. free pathfinder
+    - TODO: wildman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
+    - TODO: wildwoman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
 
-    - bastard: just a daytaler with different events and traits
-    - disowned_noble: just a daytaler with different events and traits
-    - historian: -10 Vitality, -20 Fatigue, -10 Reflex. Always Bright. No Vit, Fat, Reflex traits or talent.
+    - TODO: bastard: just a daytaler with different events and traits
+    - TODO: disowned_noble: just a daytaler with different events and traits
+    - TODO: historian: -10 Vitality, -20 Fatigue, -10 Reflex. Always Bright. No Vit, Fat, Reflex traits or talent.
 
-    - adventurous noble: +10 Vitality, +10 Attack, +10 Defense, trained tree
-    - militia: trained tree
-    - retired soldier: -10 Vitality, -20 Fatigue, +10 Attack, +10 Defense, trained tree. No Vit or Fat traits or talents.
+    - TODO: adventurous noble: +10 Vitality, +10 Attack, +10 Defense, trained tree
+    - TODO: militia: trained tree
+    - TODO: retired soldier: -10 Vitality, -20 Fatigue, +10 Attack, +10 Defense, trained tree. No Vit or Fat traits or talents.
 
 
 - changed recruiting rules to be more of a event draw format to synergize:
