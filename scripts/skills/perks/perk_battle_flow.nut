@@ -1,14 +1,14 @@
 ::Const.Strings.PerkName.BattleFlow = "Battle Flow";
 ::Const.Strings.PerkDescription.BattleFlow = "Glide through battle, like a leaf in the storm..."
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "When killing, once per turn:")
-+ "\n" + ::MSU.Text.colorGreen("– 10% of Endurance before armor penalties") + " from current fatigue"
++ "\n" + ::MSU.Text.colorGreen("– 10% of Endurance before armor penalties") + " from current Fatigue"
 + "\n\n" + ::MSU.Text.color(::Z.Color.Blue, "When hitting an attack:")
 + "\n"+ ::MSU.Text.colorRed("+1 stack up to 10")
 + "\n" + ::MSU.Text.colorGreen("+2 Attack") + " per stack"
 + "\n" + ::MSU.Text.colorGreen("+1") + " AP at 3 stacks"
 + "\n" + ::MSU.Text.colorGreen("+2") + " AP at 6 stacks"
 + "\n" + ::MSU.Text.colorGreen("+3") + " AP at 10 stacks"
-+ "\n" + ::MSU.Text.colorRed("Lose 50% of stacks when hit or missing an attack");
++ "\n" + ::MSU.Text.colorRed("Lose 50% of stacks when hit or missing an attack. Each point of Reflex decreases the chances of this occuring");
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.BattleFlow].Name = ::Const.Strings.PerkName.BattleFlow;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.BattleFlow].Tooltip = ::Const.Strings.PerkDescription.BattleFlow;
@@ -111,16 +111,22 @@ this.perk_battle_flow <- this.inherit("scripts/skills/skill", {
 
 	function onTargetMissed( _skill, _targetEntity )
 	{
-		if (_skill.isAttack() && !_targetEntity.isAlliedWith(this.getContainer().getActor()))
+		local actor = this.getContainer().getActor();
+		if (_skill.isAttack() && !_targetEntity.isAlliedWith(actor))
 		{
+			if (::Math.rand(1, 100) <= ::Math.min(100, actor.getCurrentProperties().getRangedDefense()))
+				return;
 			this.m.Stacks = ::Math.floor(this.m.Stacks / 2);
 		}
 	}
 
 	function onDamageReceived( _attacker, _damageHitpoints, _damageArmor )
 	{
-		if (_attacker != null && _attacker.getID() != this.getContainer().getActor().getID())
+		local actor = this.getContainer().getActor();
+		if (_attacker != null && _attacker.getID() != actor.getID())
 		{
+			if (::Math.rand(1, 100) <= ::Math.min(100, actor.getCurrentProperties().getRangedDefense()))
+				return;
 			this.m.Stacks = ::Math.floor(this.m.Stacks / 2);
 		}
 	}

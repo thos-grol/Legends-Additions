@@ -2,6 +2,7 @@ CHANGELOG
 
 2.0 - Major Update
 Updated to legends 18.2.X
+- TODO: updated mod documentation
 
 origins
 - Removed all origins except for Escaped Slaves which will be reworked (I'm not going to balance all the origins)
@@ -41,7 +42,7 @@ merged Melee Defense and Ranged Defense into one skill. Warriors are probably be
     Strength (new stat) - Concerning the damage the character can do. Each point adds 1% damage to relevant attacks. Base 10.
     Reflex - Concerning the character's ability to react. Each point has a 1% chance to downgrade a critical hit (headshot) to a bodyshot. And a hit to a graze. (10% of damage).
 
-- Removed leveling up melee skill and melee def for player and enemy. It was always arms race between you and enemy to level these up - ie. it was autopick. Now you can vary your stat levelups among the 6 other stats. 
+- Removed leveling up melee skill and melee def for player and enemy. It was always arms race between you and enemy to level these up - ie. it was autopick. Now you can vary your stat levelups among the 6 other stats.
     As for methods to improve attack and defenses it would be training, events, future class promotions, and perks
 
 Enemies
@@ -50,39 +51,39 @@ Enemies
 
 backgrounds 2.0
 
-- TODO: Modified backgrounds so that they will have a theme, and generally if they have a great benefit, there will be a tradeoffs:
-    - daytaler: no downsides, but no upsides
-    - refugee: just a daytaler with different events and traits
-    - slave: just a daytaler with no wages and different traits
-    - apprentice: daytaler with different traits
+- Modified backgrounds so that they will have a theme, and generally if they have a great benefit, there will be a tradeoffs:
+    - TODO: daytaler: no downsides, but no upsides
+    - TODO: refugee: just a daytaler with different events and traits
+    - TODO: slave: just a daytaler with no wages and different traits
+    - TODO: apprentice: daytaler with different traits
 
-    - brawler: Fist Affinity
-    - butcher: Cleaver Affinity
-    - farmhand: Polearm Affinity
-    - lumberjack: Axe Affinity
-    - miner: Bludgeon Affinity
+    - TODO: brawler: Fist Affinity
+    - TODO: butcher: Cleaver Affinity
+    - TODO: farmhand: Polearm Affinity
+    - TODO: lumberjack: Axe Affinity
+    - TODO: miner: Bludgeon Affinity
 
-    - beggar: -10 Vitality, -20 Endurance. Cheaper pay. No Vit or Fat traits or talents.
-    - cripple: +10 Will. Permanent injury. No Vit or Fat traits or talents.
+    - TODO: beggar: -10 Vitality, -20 Endurance. Cheaper pay. No Vit or Fat traits or talents.
+    - TODO: cripple: +10 Will. Permanent injury. No Vit or Fat traits or talents.
 
-    - thief: -10 Vitality. +10 Reflex, +20 Agility. Free quick hands. No Vit traits or talents.
-    - Graverobber: Spooky Events.
-    - Killer on the run: +10 Atk, +10 Reflex. Free quick hands
-    - poacher: ranged focus. free pathfinder
+    - TODO: thief: -10 Vitality. +10 Reflex, +20 Agility. Free quick hands. No Vit traits or talents.
+    - TODO: Graverobber: Spooky Events.
+    - TODO: Killer on the run: +10 Atk, +10 Reflex. Free quick hands
+    - TODO: poacher: ranged focus. free pathfinder
 
     rarer backgrounds
-    - fisherman: Net Skill Tree. More expensive. (has a chance to be found in harbors)
-    - hunter: ranged focus. ranged affinity. free patfinder
-    - wildman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
-    - wildwoman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
+    - TODO: fisherman: Net Skill Tree. More expensive. (has a chance to be found in harbors)
+    - TODO: hunter: ranged focus. ranged affinity. free pathfinder
+    - TODO: wildman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
+    - TODO: wildwoman: +10 Vitality, +20 Endurance, +10 Reflex. Always dumb. Lacks leadership traits etc
 
-    - bastard: just a daytaler with different events and traits
-    - disowned_noble: just a daytaler with different events and traits
-    - historian: -10 Vitality, -20 Fatigue, -10 Reflex. Always Bright. No Vit, Fat, Reflex traits or talent.
+    - TODO: bastard: just a daytaler with different events and traits
+    - TODO: disowned_noble: just a daytaler with different events and traits
+    - TODO: historian: -10 Vitality, -20 Fatigue, -10 Reflex. Always Bright. No Vit, Fat, Reflex traits or talent.
 
-    - adventurous noble: +10 Vitality, +10 Attack, +10 Defense, trained tree
-    - militia: trained tree
-    - retired soldier: -10 Vitality, -20 Fatigue, +10 Attack, +10 Defense, trained tree. No Vit or Fat traits or talents.
+    - TODO: adventurous noble: +10 Vitality, +10 Attack, +10 Defense, trained tree
+    - TODO: militia: trained tree
+    - TODO: retired soldier: -10 Vitality, -20 Fatigue, +10 Attack, +10 Defense, trained tree. No Vit or Fat traits or talents.
 
 
 - changed recruiting rules to be more of a event draw format to synergize:
@@ -131,29 +132,30 @@ perk rework 2.0
     - Agile -> Might: Increase Strength by 25%. Exempt from orc weapon penalty
     - Sundering Strikes: Increase injury and armor damage based on strength
     - Death Dealer - If character has 3X Weapon weight in strength and if AP cost for a weapon skill >= 6, -2 AP cost. Has a 50% chance to resist stagger
-    - Muscularity - +25% Strength. buffed version of brawny (50% reduction) 
+    - Muscularity - +25% Strength. buffed version of brawny (50% reduction)
 
 - Tenacious: Main Stat Will
-    - TODO: Fortified Mind - moved to tier 1
-    - TODO: Lone Wolf -> Mind Over Body - buffed for lower will. if will over 90, ignore fresh injuries
-    - TODO: Survival Instinct - if will over 75, improve bonuses
-    - TODO: Mind Over Body -> Fighting Spirit - A power that is equal, that anyone can achieve regardless of their circumstances. Once Will reaches 100. Will do pure damage based on Will. Will reduce damage based on will. Will morale check enemies in radius based on Will.
+    - Fortified Mind
+    - Lone Wolf -> Mind Over Body - 100 Will equals about 40% reduction
+    - Survival Instinct
+    - Mind Over Body -> Fighting Spirit - A power that is equal, that anyone can achieve regardless of their circumstances. Once Will reaches 100. Will do pure damage based on Will. Will reduce damage based on will. Will morale check enemies in radius based on Will.
 
 - Calm: Main Stat Reflex
     - Recuperation
-    - TODO: Peaceful - Reflex +25%. If reflex > 50, 
-    - TODO: Battle Flow - Increase Atk and Def. You have reflex % to not lose a stack when hit
-    - TODO: Perfect Focus - Reflex +25% on top of other effects
+    - Peaceful - Reflex +25%
+    - Battle Flow - Increase Atk and Def. You have reflex % to not lose a stack when hit
+    - Perfect Focus - Reflex +25% on top of other effects
 
 - Devious: Sneaky
-    - TODO: Underdog - Now is Battleheart
-    - TODO: Removed Footwork, merged into Rotation in trained tree. Renamed perk to Evasion
-    - TODO: Pocket Dirt, rest charge on kill
+    - Underdog - Now is Battleheart
+    - Removed Footwork, merged into Rotation in trained tree. Renamed perk to Footwork
+    - Backstabber
+    - Pocket Dirt
     - Blend In
 
 -Vicious
     - HeadHunter
-    - TODO: Fearsome - Change to attack stat
+    - Fearsome - Change to attack stat
     - Berserk
     - Vengeance
 
@@ -162,16 +164,9 @@ Bug Fixes
 - fixed Ambidextrous Perk having infinite attacks with Taunt
 - fixed crack the whip crash with barb direwolfs
 - you can't parry magic anymore
-
-TODO:bug fixes
-
-
-2) Weakness (applied by cleavers) have the wrong formula for damage reduction, it practically reduces damage to 0
-4) Death dealer does not reduce fat costs of aoe skills, most likely the same is true for Wrath (haven't actually tried the latter yet). This is because skills reset their fat cost after these perks change it and they do not consider these perks at all
-6) Librarian drop is seemingly unchanged from base legends, this might result in the player getting items which were supposed to be removed
-1) Crossbows claim an armor ignore percent of 75%, while in reality shoot bolt and shoot heavy bolt only has 45% and 50% ignore respectively (being a sharpshooter, whatever that means, stealthily adds another 5%)
-2) Polearm mastery (proficiency) does not reduce the ap cost of most polearm skills, as far as I can tell only the skills of pure polearms (so not spetums which are spear/polearm) and for some reason the primary attack of the longaxe
-3) Crafting possibly not working (see Mage of Winter potion)
+- fixed crossbows not actually having the armor piercing claimed (turns out the item properties have to be manually added to skill on equip)
+- fixed bug in Weakness formula
+- TODO: fixed crafting issue with Mage of Winter potion
 
 1.17
 
@@ -223,7 +218,7 @@ contracts
 
 origins
 - free brigand retinue for northern raiders
-- lone wolf 
+- lone wolf
     - favored enemy swordmaster does not refund
     - garunteed chosen
     - improved choices for weapons and armor
