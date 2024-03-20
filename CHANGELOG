@@ -163,16 +163,9 @@ Bug Fixes
 - fixed Ambidextrous Perk having infinite attacks with Taunt
 - fixed crack the whip crash with barb direwolfs
 - you can't parry magic anymore
-
-TODO:bug fixes
-
-
-2) Weakness (applied by cleavers) have the wrong formula for damage reduction, it practically reduces damage to 0
-4) Death dealer does not reduce fat costs of aoe skills, most likely the same is true for Wrath (haven't actually tried the latter yet). This is because skills reset their fat cost after these perks change it and they do not consider these perks at all
-6) Librarian drop is seemingly unchanged from base legends, this might result in the player getting items which were supposed to be removed
-1) Crossbows claim an armor ignore percent of 75%, while in reality shoot bolt and shoot heavy bolt only has 45% and 50% ignore respectively (being a sharpshooter, whatever that means, stealthily adds another 5%)
-2) Polearm mastery (proficiency) does not reduce the ap cost of most polearm skills, as far as I can tell only the skills of pure polearms (so not spetums which are spear/polearm) and for some reason the primary attack of the longaxe
-3) Crafting possibly not working (see Mage of Winter potion)
+- fixed crossbows not actually having the armor piercing claimed (turns out the item properties have to be manually added to skill on equip)
+- fixed bug in Weakness formula
+- TODO: fixed crafting issue with Mage of Winter potion
 
 1.17
 

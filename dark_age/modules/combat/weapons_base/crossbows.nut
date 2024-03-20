@@ -18,7 +18,11 @@
     o.onEquip = function()
 	{
 		this.weapon.onEquip();
-		this.addSkill(this.new("scripts/skills/actives/shoot_bolt"));
+
+		local shoot = this.new("scripts/skills/actives/shoot_bolt");
+		shoot.m.DirectDamageMult = this.m.DirectDamageMult;
+		this.addSkill(shoot);
+
         if (!this.m.IsLoaded) this.addSkill(this.new("scripts/skills/actives/reload_bolt"));
 	}
 });
@@ -43,7 +47,11 @@
     o.onEquip = function()
 	{
 		this.weapon.onEquip();
-		this.addSkill(this.new("scripts/skills/actives/shoot_bolt"));
+
+		local shoot = this.new("scripts/skills/actives/shoot_bolt");
+		shoot.m.DirectDamageMult = this.m.DirectDamageMult;
+		this.addSkill(shoot);
+
         if (!this.m.IsLoaded) this.addSkill(this.new("scripts/skills/actives/reload_bolt"));
 	}
 });
@@ -69,7 +77,11 @@
     o.onEquip = function()
 	{
 		this.weapon.onEquip();
-		this.addSkill(this.new("scripts/skills/actives/shoot_bolt"));
+
+		local shoot = this.new("scripts/skills/actives/shoot_bolt");
+		shoot.m.DirectDamageMult = this.m.DirectDamageMult;
+		this.addSkill(shoot);
+
         if (!this.m.IsLoaded) this.addSkill(this.new("scripts/skills/actives/reload_bolt"));
 	}
 });
@@ -94,7 +106,11 @@
     o.onEquip = function()
 	{
 		this.weapon.onEquip();
-		this.addSkill(this.new("scripts/skills/actives/shoot_bolt"));
+
+		local shoot = this.new("scripts/skills/actives/shoot_bolt");
+		shoot.m.DirectDamageMult = this.m.DirectDamageMult;
+		this.addSkill(shoot);
+
         if (!this.m.IsLoaded) this.addSkill(this.new("scripts/skills/actives/reload_bolt"));
 	}
 });
@@ -119,7 +135,11 @@
     o.onEquip = function()
 	{
 		this.weapon.onEquip();
-		this.addSkill(this.new("scripts/skills/actives/shoot_stake"));
+
+		local shoot = this.new("scripts/skills/actives/shoot_stake");
+		shoot.m.DirectDamageMult = this.m.DirectDamageMult;
+		this.addSkill(shoot);
+
         if (!this.m.IsLoaded) this.addSkill(this.new("scripts/skills/actives/reload_bolt"));
 	}
 });

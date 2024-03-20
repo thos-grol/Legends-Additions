@@ -65,7 +65,7 @@ this.weakness_effect <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		_properties.DamageTotalMult -= 1.0 + getBonus() * 0.01;
+		_properties.DamageTotalMult *= 1.0 - getBonus() * 0.01;
 	}
 
 	function onAdded()
