@@ -4523,12 +4523,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Strength Training"
+					text = "Vitality Training"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary undergo a strength training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 hitpoints gained (up to 60 base)"
+					text = "Have your mercenary undergo a Vitality training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 hitpoints gained (up to 60 base)"
 				}
 			];
 
@@ -4537,12 +4537,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Courage Training"
+					text = "Will Training"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary undergo a test of courage to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 resolve gained (up to 60 base)"
+					text = "Have your mercenary undergo a test of Will to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 resolve gained (up to 60 base)"
 				}
 			];
 
@@ -4565,12 +4565,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Speed Training"
+					text = "Agility Training"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary undergo an speed training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 initiative gained (up to 120 base)"
+					text = "Have your mercenary undergo an agility training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 initiative gained (up to 120 base)"
 				}
 			];
 
@@ -4579,7 +4579,7 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "CQC Training"
+					text = "Attack Training"
 				},
 				{
 					id = 2,
@@ -4593,12 +4593,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Reflex Training"
+					text = "Defense Training"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary undergo a reflex training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 melee defense gained (up to 10 base)"
+					text = "Have your mercenary undergo a defense training regimen to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 melee defense gained (up to 10 base)"
 				}
 			];
 
@@ -4607,12 +4607,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Shooting Training"
+					text = "Strength Training"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary undergo shooting training to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 ranged skill gained (up to 60 base)"
+					text = "Have your mercenary undergo strength training to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 ranged skill gained (up to 60 base)"
 				}
 			];
 
@@ -4621,12 +4621,12 @@ this.tooltip_events <- {
 				{
 					id = 1,
 					type = "title",
-					text = "Dodge Training"
+					text = "Reflex Training"
 				},
 				{
 					id = 2,
 					type = "description",
-					text = "Have your mercenary undergo a projectile dodge training to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 ranged defense gained (up to 10 base)"
+					text = "Have your mercenary undergo reflex training to shape them into a skilled fighter. The blood and sweat spent today will benefit your mercenary in the long run with 10 ranged defense gained (up to 10 base)"
 				}
 			];
 

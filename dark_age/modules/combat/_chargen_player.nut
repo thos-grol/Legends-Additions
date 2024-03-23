@@ -87,10 +87,10 @@
 		this.getFlags().set("trainable_initiative", ::Math.max(0, 120 - b.Initiative));
 		
 		this.getFlags().set("trainable_meleeskill", ::Math.max(0, 60 - b.MeleeSkill));
-		this.getFlags().set("trainable_meleedefense", ::Math.max(0, 10 - b.MeleeDefense));
+		this.getFlags().set("trainable_meleedefense", ::Math.max(0, 20 - b.MeleeDefense));
 
-		this.getFlags().set("trainable_rangedskill", ::Math.max(0, 60 - b.RangedSkill));
-		this.getFlags().set("trainable_rangeddefense", ::Math.max(0, 10 - b.RangedDefense));
+		this.getFlags().set("trainable_rangedskill", ::Math.max(0, 20 - b.RangedSkill));
+		this.getFlags().set("trainable_rangeddefense", ::Math.max(0, 20 - b.RangedDefense));
 
 		background.buildDescription();
 
@@ -186,6 +186,19 @@
 	{
 		while (this.m.Level < ::Const.LevelXP.len() && this.m.XP >= ::Const.LevelXP[this.m.Level] && this.m.Level < 11)
 		{
+			//level 4 about to turn into level 5
+			if (this.m.Level == 4) 
+			{
+				local excess_XP = this.m.XP - ::Const.LevelXP[4];
+				if (excess_XP > 0) this.m.XP = ::Const.LevelXP[4] + ::Math.floor(excess_XP * 0.1);
+			}
+
+			//level 9 about to turn into level 10
+			if (this.m.Level == 9) 
+			{
+				this.m.XP = ::Const.LevelXP[9]; //set xp to level 10 min
+			}
+
 			++this.m.Level;
 			++this.m.LevelUps;
 

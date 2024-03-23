@@ -1,17 +1,17 @@
 //Bandit Thug
-//Lvl 6 Peasant template - Avg Daytaler stats
+//Lvl 5 Peasant template - Avg Daytaler stats
 
 ::Const.Tactical.Actor.BanditThug <- {
 	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 45,
-	Stamina = 95,
-	MeleeSkill = 56,
-	RangedSkill = 40,
-	MeleeDefense = 3,
-	RangedDefense = 3,
-	Initiative = 105,
+	Hitpoints = 50,
+	Bravery = 50,
+	Stamina = 100,
+	MeleeSkill = 50,
+	RangedSkill = 10,
+	MeleeDefense = 10,
+	RangedDefense = 10,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -22,18 +22,17 @@
 };
 
 ::B.Info[::Const.EntityType.BanditThug] <- {
-    Level = 6,
+    Level = 5,
     Pattern = [
         ["T", 1],
         ["D", 2],
         ["W", 3],
         ["W", 4],
-        ["T", 5],
     ],
 	LevelUps = [
-		["Health", 5, 0, 2],
-		["Melee Skill", 5, 0, 2],
-		["Melee Defense", 5, 0, 2],
+		["Health", 4, 0, 1],
+		["Fatigue", 2, 0, 1],
+		["Ranged Skill", 2, 0, 1],
 	],
     Outfit = [
 		[
@@ -98,52 +97,49 @@
 		[
 			"scripts/items/weapons/legend_ranged_wooden_flail",
 		]
-	],
-	Builds = {},
-	BuildsChance = 15
+	]
 };
 
-::B.Info[::Const.EntityType.BanditThug].Builds["1H Net"] <- {
-	Name = "1H Net",
-	Pattern = [
-        ["T", 1],
-        ["D", 2],
-        ["scripts/skills/perks/perk_legend_net_repair"],
-        ["W", 4],
-        ["T", 5],
-    ],
-	LevelUps = [
-		["Health", 5, 0, 2],
-		["Melee Skill", 5, 0, 2],
-		["Melee Defense", 5, 0, 2],
-	],
-	Loadout = [
-		[
-			"scripts/items/weapons/hatchet",
-		],
-		[
-			"scripts/items/weapons/bludgeon",
-		],
-		[
-			"scripts/items/weapons/reinforced_wooden_flail",
-		],
-		[
-			"scripts/items/weapons/legend_militia_glaive",
-		]
-	],
-	NamedLoadout = [
-		[
-			"scripts/items/weapons/hatchet",
-		],
-		[
-			"scripts/items/weapons/bludgeon",
-		],
-		[
-			"scripts/items/weapons/reinforced_wooden_flail",
-		],
-		[
-			"scripts/items/weapons/legend_militia_glaive",
-		]
-	],
-};
+// ::B.Info[::Const.EntityType.BanditThug].Builds["1H Net"] <- {
+// 	Name = "1H Net",
+// 	Pattern = [
+//         ["T", 1],
+//         ["D", 2],
+//         ["scripts/skills/perks/perk_legend_net_repair"],
+//         ["W", 4],
+//     ],
+// 	LevelUps = [
+// 		["Health", 4, 0, 1],
+// 		["Fatigue", 4, 0, 1],
+// 		["Ranged Skill", 4, 0, 1],
+// 	],
+// 	Loadout = [
+// 		[
+// 			"scripts/items/weapons/hatchet",
+// 		],
+// 		[
+// 			"scripts/items/weapons/bludgeon",
+// 		],
+// 		[
+// 			"scripts/items/weapons/reinforced_wooden_flail",
+// 		],
+// 		[
+// 			"scripts/items/weapons/legend_militia_glaive",
+// 		]
+// 	],
+// 	NamedLoadout = [
+// 		[
+// 			"scripts/items/weapons/hatchet",
+// 		],
+// 		[
+// 			"scripts/items/weapons/bludgeon",
+// 		],
+// 		[
+// 			"scripts/items/weapons/reinforced_wooden_flail",
+// 		],
+// 		[
+// 			"scripts/items/weapons/legend_militia_glaive",
+// 		]
+// 	],
+// };
 

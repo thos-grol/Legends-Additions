@@ -47,8 +47,9 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 
 	function assignRandomEquipment()
 	{
+		this.getFlags().set("Level", ::B.Info[this.m.Type].Level);
+		
 		if (this.m.IsMiniboss) pickNamed(); //if is champion
-
 		//Assign outfit and get the defense tree
 		pickOutfit();
 		if (::Math.rand(1,100) <= 20) this.getSkills().add(::new("scripts/skills/traits/lucky_trait"));
@@ -60,22 +61,8 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
         else if (weight_armor <= 40) this.m.TREE_DEFENSE = ::Const.Perks.MediumArmorTree.Tree;
         else this.m.TREE_DEFENSE = ::Const.Perks.HeavyArmorTree.Tree;
 
-		//TREE_TRAITS
-		local roll = [
-			::Const.Perks.AgileTree.Tree,
-			::Const.Perks.IndestructibleTree.Tree,
-			::Const.Perks.ViciousTree.Tree,
-			::Const.Perks.DeviousTree.Tree,
-			::Const.Perks.CalmTree.Tree,
-			::Const.Perks.FastTree.Tree,
-			::Const.Perks.LargeTree.Tree,
-			::Const.Perks.SturdyTree.Tree,
-			::Const.Perks.FitTree.Tree
-		]
-
-		this.m.TREE_TRAIT1 = ::MSU.Array.rand(roll);
-		::MSU.Array.removeByValue(roll, this.m.TREE_TRAIT1);
-		this.m.TREE_TRAIT2 = ::MSU.Array.rand(roll);
+		helper_add_traits();
+		helper_add_trait_trees();
 
 		if ("Builds" in ::B.Info[this.m.Type]
 			&& "BuildsChance" in ::B.Info[this.m.Type]
@@ -246,6 +233,72 @@ this.abstract_human <- this.inherit("scripts/entity/tactical/human", {
 			}
 		}
 	}
+
+	function helper_add_traits()
+	{
+		local count = 0;
+		local rand_trait;
+		local excluded = {};
+
+		while(true)
+		{
+			if (count == 2) break;
+
+			rand_trait = ::MSU.Table.randValue(::Const.CharacterTraits);
+			if (rand_trait[0] in ::Z.Lib.AIBlacklistedTraits) continue;
+			if (rand_trait[0] in excluded) continue;
+			
+			local instance = ::new(rand_trait[1]);
+			foreach(trait in instance.m.Excluded)
+			{
+				excluded[trait] <- 0;
+			}
+
+			this.getSkills().add(instance);
+			count++;
+		}
+	}
+
+	function helper_add_trait_trees()
+	{
+		local _exclude = {};
+		local tree = helper_get_trait_tree(_exclude);
+		_exclude[tree.ID] <- 0;
+		this.m.TREE_TRAIT1 = tree.Tree;
+
+		tree = helper_get_trait_tree(_exclude);
+		this.m.TREE_TRAIT2 = tree.Tree;
+	}
+
+	function helper_get_trait_tree(_exclude)
+	{
+		if (this.getFlags().has("Large") && !("LargeTree" in _exclude) ) return ::Const.Perks.LargeTree;
+		if (this.getFlags().has("Vicious") && !("ViciousTree" in _exclude) ) return ::Const.Perks.ViciousTree;
+		if (this.getFlags().has("Devious") && !("DeviousTree" in _exclude) ) return ::Const.Perks.DeviousTree;
+		if (this.getFlags().has("Sturdy") && !("SturdyTree" in _exclude) ) return ::Const.Perks.SturdyTree;
+		if (this.getFlags().has("Agile") && !("AgileTree" in _exclude) ) return ::Const.Perks.AgileTree;
+		if (this.getFlags().has("Tenacious") && !("IndestructibleTree" in _exclude) ) return ::Const.Perks.IndestructibleTree;
+		if (this.getFlags().has("Fit") && !("FitTree" in _exclude) ) return ::Const.Perks.FitTree;
+
+		local roll = [
+			::Const.Perks.AgileTree,
+			::Const.Perks.IndestructibleTree,
+			::Const.Perks.ViciousTree,
+			::Const.Perks.DeviousTree,
+			::Const.Perks.CalmTree,
+			::Const.Perks.LargeTree,
+			::Const.Perks.SturdyTree,
+			::Const.Perks.FitTree
+		]
+
+		for(local i = roll.len() - 1; i >= 0; i--)
+		{
+			if (roll[i].ID in _exclude) roll.remove(i);
+		}
+		return ::MSU.Array.rand(roll);
+	}
+
+	
 
 });
 

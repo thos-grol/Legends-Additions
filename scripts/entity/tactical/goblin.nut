@@ -245,6 +245,8 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 
 	function assignRandomEquipment()
 	{
+		this.getFlags().set("Level", ::B.Info[this.m.Type].Level);
+		
 		if (this.m.IsMiniboss) pickNamed(); //if is champion
 
 		//Assign outfit and get the defense tree
@@ -266,7 +268,6 @@ this.goblin <- this.inherit("scripts/entity/tactical/actor", {
 			::Const.Perks.ViciousTree.Tree,
 			::Const.Perks.DeviousTree.Tree,
 			::Const.Perks.CalmTree.Tree,
-			::Const.Perks.FastTree.Tree,
 			::Const.Perks.LargeTree.Tree,
 			::Const.Perks.SturdyTree.Tree,
 			::Const.Perks.FitTree.Tree

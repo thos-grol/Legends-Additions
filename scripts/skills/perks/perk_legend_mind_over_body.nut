@@ -60,7 +60,7 @@ this.perk_legend_mind_over_body <- this.inherit("scripts/skills/skill", {
 
 		local tag = {
 			User = actor,
-			Difficulty = -1 * ::Math.floor( (will - 100) / 2.0);
+			Difficulty = -1 * ::Math.floor( (will - 100) / 2.0)
 			//-40 difficulty means you need about 130 resolve to ignore the check
 			//-30, 120
 			//0, 80

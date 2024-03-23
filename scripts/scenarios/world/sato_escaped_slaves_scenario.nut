@@ -476,36 +476,15 @@ this.sato_escaped_slaves_scenario <- this.inherit("scripts/scenarios/world/start
 	{
 		if (bro.getBackground().getID() == "background.slave")
 		{
-			bro.getSkills().add(this.new("scripts/skills/traits/sato_brothers_in_chains_trait"));
 			bro.getSprite("miniboss").setBrush("bust_miniboss_indebted");
 			bro.improveMood(1.5, "Joined a mercenary company of freed slaves");
 			this.setRetireText(bro);
-		}
-		else if (bro.getBackground().getID() == "background.manhunter")
-		{
-			local brothers = this.World.getPlayerRoster().getAll();
-
-			foreach( bro in brothers )
-			{
-				if (bro.getBackground().getID() == "background.slave")
-				{
-					bro.worsenMood(2.0, "You hired " + bro.getNameOnly() + " the manhunter");
-				}
-			}
 		}
 	}
 
 	function onInit()
 	{
-		this.World.Assets.m.RelationDecayGoodMult += 0.15;
-		this.World.Assets.m.RelationDecayBadMult -= 0.15;
-		local sergeant = this.World.Retinue.getFollower("follower.drill_sergeant");
-		sergeant.m.Requirements = [
-			{
-				IsSatisfied = false,
-				Text = "Retired a man with a permanent injury"
-			}
-		];
+		this.World.Assets.m.RelationDecayBadMult -= 1.0;
 		this.World.Events.addSpecialEvent("event.sato_find_slave_after_battle");
 	}
 

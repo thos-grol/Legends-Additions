@@ -55,7 +55,7 @@ var GameInformation = {
 
 /*
     Helper to get the JS Callstack
-    TODO: console überschreiben und Callstack an/ab schaltbar machen!
+    console überschreiben und Callstack an/ab schaltbar machen!
  */
 var queryStackTrace = function() {
     /*

@@ -96,12 +96,12 @@ this.town_training_dialog_module <- this.inherit("scripts/ui/screens/ui_module",
 			{
 				show_bro = true;
 
-				if ("trainable_hitpoints" in attr)
+				if ("trainable_hitpoints" in attr) //TODO: swap with strength Training
 				{
 					e.Training.push({
 						id = 3,
 						icon = "ui/perks/perk_06.png",
-						name = "Strength Training",
+						name = "Vitality Training",
 						tooltip = "world-town-screen.training-dialog-module.Train4",
 						price = 100
 					});
@@ -113,7 +113,7 @@ this.town_training_dialog_module <- this.inherit("scripts/ui/screens/ui_module",
 					e.Training.push({
 						id = 4,
 						icon = "ui/perks/perk_08.png",
-						name = "Courage Training",
+						name = "Will Training",
 						tooltip = "world-town-screen.training-dialog-module.Train5",
 						price = 100
 					});
@@ -137,7 +137,7 @@ this.town_training_dialog_module <- this.inherit("scripts/ui/screens/ui_module",
 					e.Training.push({
 						id = 6,
 						icon = "ui/perks/alert_circle.png",
-						name = "Speed Training",
+						name = "Agility Training",
 						tooltip = "world-town-screen.training-dialog-module.Train7",
 						price = 100
 					});
@@ -149,7 +149,7 @@ this.town_training_dialog_module <- this.inherit("scripts/ui/screens/ui_module",
 					e.Training.push({
 						id = 7,
 						icon = "ui/perks/CQC.png",
-						name = "CQC Training",
+						name = "Attack Training",
 						tooltip = "world-town-screen.training-dialog-module.Train8",
 						price = 100
 					});
@@ -161,7 +161,7 @@ this.town_training_dialog_module <- this.inherit("scripts/ui/screens/ui_module",
 					e.Training.push({
 						id = 8,
 						icon = "ui/perks/perk_05.png",
-						name = "Reflex Training",
+						name = "Defense Training",
 						tooltip = "world-town-screen.training-dialog-module.Train9",
 						price = 100
 					});
@@ -172,8 +172,8 @@ this.town_training_dialog_module <- this.inherit("scripts/ui/screens/ui_module",
 				{
 					e.Training.push({
 						id = 9,
-						icon = "ui/perks/perk_17.png",
-						name = "Shooting Training",
+						icon = "ui/perks/perk_06.png",
+						name = "Strength Training",
 						tooltip = "world-town-screen.training-dialog-module.Train10",
 						price = 100
 					});
@@ -184,7 +184,7 @@ this.town_training_dialog_module <- this.inherit("scripts/ui/screens/ui_module",
 					e.Training.push({
 						id = 10,
 						icon = "ui/perks/wind_reader.png",
-						name = "Dodge Training",
+						name = "Reflex Training",
 						tooltip = "world-town-screen.training-dialog-module.Train11",
 						price = 100
 					});

@@ -1,5 +1,5 @@
 //Bandit Rabble
-//Lvl 4 Peasant template - Avg Daytaler stats
+//Lvl 3
 ::Const.Tactical.Actor.BanditRabble <- {
 	XP = 100,
 	ActionPoints = 9,
@@ -7,9 +7,9 @@
 	Bravery = 50,
 	Stamina = 100,
 	MeleeSkill = 50,
-	RangedSkill = 0,
+	RangedSkill = 10,
 	MeleeDefense = 10,
-	RangedDefense = 0,
+	RangedDefense = 10,
 	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
@@ -21,16 +21,14 @@
 };
 
 ::B.Info[::Const.EntityType.BanditRabble] <- {
-    Level = 4,
+    Level = 3,
     Pattern = [
         ["T", 1],
         ["D", 2],
-        ["T", 3],
     ],
 	LevelUps = [
-		["Health", 3, 0, 1],
-		["Melee Skill", 3, 0, 1],
-		["Melee Defense", 3, 0, 1],
+		["Health", 2, 0, 1],
+		["Ranged Skill", 2, 0, 1],
 	],
     Trait = [],
     Outfit = [

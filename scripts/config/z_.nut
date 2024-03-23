@@ -69,3 +69,10 @@
     "trainable_rangeddefense",
 ];
 
+/////////////////
+
+
+::Z.Lib.AIBlacklistedTraits <- {
+    "trait.bright" : 0,
+};
+

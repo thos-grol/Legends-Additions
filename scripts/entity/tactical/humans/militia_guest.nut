@@ -116,6 +116,8 @@ this.militia_guest <- this.inherit("scripts/entity/tactical/player", {
 	function assignRandomEquipment()
 	{
 		this.m.Type = ::Const.EntityType.Militia;
+		this.getFlags().set("Level", ::B.Info[this.m.Type].Level);
+		
 		//Assign outfit and get the defense tree
 		pickOutfit();
 		local weight_armor = this.getItems().getStaminaModifier([
@@ -133,7 +135,6 @@ this.militia_guest <- this.inherit("scripts/entity/tactical/player", {
 			::Const.Perks.ViciousTree.Tree,
 			::Const.Perks.DeviousTree.Tree,
 			::Const.Perks.CalmTree.Tree,
-			::Const.Perks.FastTree.Tree,
 			::Const.Perks.LargeTree.Tree,
 			::Const.Perks.SturdyTree.Tree,
 			::Const.Perks.FitTree.Tree

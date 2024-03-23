@@ -111,14 +111,14 @@ this.send_caravan_action <- this.inherit("scripts/factions/faction_action", {
 			if (_modifier <= 75) return ::Const.World.Spawn.CaravanSouthern;
 			if (_modifier <= 150) return ::Const.World.Spawn.CaravanSouthernMedium;
 			return ::Const.World.Spawn.CaravanSouthernHard;
-			//TODO: possible hero merc companies escorting caravan
+			//FEATURE_9: possible hero merc companies escorting caravan
 		}
 
 		if (_modifier <= 75) return ::Const.World.Spawn.Caravan;
 		if (_modifier <= 150) return ::Const.World.Spawn.CaravanMedium;
 		return ::Const.World.Spawn.CaravanHard;
 
-			//TODO: possible hero merc companies escorting caravan
+			//FEATURE_9: possible hero merc companies escorting caravan
 
 	}
 

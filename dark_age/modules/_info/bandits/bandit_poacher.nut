@@ -1,16 +1,16 @@
-//Bandit Rabble
-//Lvl 6 Peasant template - Avg Daytaler stats
+//Thug
+//Lvl 5
 ::Const.Tactical.Actor.BanditPoacher <- {
 	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 45,
-	Stamina = 95,
-	MeleeSkill = 56,
-	RangedSkill = 40,
-	MeleeDefense = 3,
-	RangedDefense = 3,
-	Initiative = 105,
+	Hitpoints = 50,
+	Bravery = 50,
+	Stamina = 100,
+	MeleeSkill = 50,
+	RangedSkill = 10,
+	MeleeDefense = 10,
+	RangedDefense = 10,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -21,18 +21,17 @@
 };
 
 ::B.Info[::Const.EntityType.BanditPoacher] <- {
-    Level = 6,
+    Level = 5,
     Pattern = [
         ["T", 1],
         ["D", 2],
         ["W", 3],
         ["W", 4],
-        ["T", 5],
     ],
 	LevelUps = [
-		["Health", 5, 0, 1],
-		["Ranged Skill", 5, 0, 1],
-		["Melee Defense", 5, 0, 1],
+		["Health", 4, 0, 1],
+		["Fatigue", 4, 0, 1],
+		["Ranged Skill", 4, 0, 1],
 	],
     Trait = [],
     Outfit = [

@@ -1,5 +1,5 @@
 ::mods_hookExactClass("entity/world/settlement", function(o) {
-	o.updateRoster = function( _force = false )
+	o.updateRoster <- function( _force = false )
 	{
 		local daysPassed = (this.Time.getVirtualTimeF() - this.m.LastRosterUpdate) / this.World.getTime().SecondsPerDay;
 		if (!_force && this.m.LastRosterUpdate != 0 && daysPassed < 2) return;
@@ -7,7 +7,7 @@
 		this.m.RosterSeed = ::Math.floor(this.Time.getRealTime() + ::Math.rand());
 		this.m.LastRosterUpdate = this.Time.getVirtualTimeF();
 
-		if (::Math.rand(1,100) <= 50) return; //50% chance to not get any roster
+		if (::Math.rand(1,100) <= 33) return; //33% chance to not get any roster
 
 		local roster = this.World.getRoster(this.getID());
 		local allbros = roster.getAll();
@@ -49,8 +49,6 @@
 			rosterMax = rosterMax * (this.World.FactionManager.getFaction(this.m.Factions[0]).getPlayerRelation() / 50.0);
 		}
 
-		rosterMin = rosterMin * this.m.Modifiers.RecruitsMult;
-		rosterMax = rosterMax * this.m.Modifiers.RecruitsMult;
 		rosterMin = rosterMin + this.World.Assets.m.RosterSizeAdditionalMin;
 		rosterMax = rosterMax + this.World.Assets.m.RosterSizeAdditionalMax;
 
@@ -114,6 +112,6 @@
 		}
 
 		this.updateStables(_force);
-		this.World.Assets.getOrigin().onUpdateHiringRoster(roster, this);
+		this.World.Assets.getOrigin().onUpdateHiringRoster(roster);
 	}
 });

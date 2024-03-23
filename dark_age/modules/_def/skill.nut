@@ -41,7 +41,7 @@
 		}
 
 		local defenderProperties = _targetEntity.getSkills().buildPropertiesForDefense(_user, this);
-		local defense = _targetEntity.getDefense(_user, this, defenderProperties); //TODO: fix defense
+		local defense = _targetEntity.getDefense(_user, this, defenderProperties);
 		local levelDifference = _targetEntity.getTile().Level - _user.getTile().Level;
 		local distanceToTarget = _user.getTile().getDistanceTo(_targetEntity.getTile());
 		local toHit = 0;

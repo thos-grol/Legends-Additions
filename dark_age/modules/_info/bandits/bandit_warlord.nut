@@ -4,16 +4,16 @@
 
 //Bandit Warlord Builds
 ::Const.Tactical.Actor.BanditWarlord <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 70,
-	Bravery = 80,
-	Stamina = 96,
-	MeleeSkill = 65,
-	RangedSkill = 40,
-	MeleeDefense = 15,
-	RangedDefense = 15,
-	Initiative = 105,
+	Hitpoints = 50,
+	Bravery = 50,
+	Stamina = 100,
+	MeleeSkill = 50,
+	RangedSkill = 10,
+	MeleeDefense = 10,
+	RangedDefense = 10,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [

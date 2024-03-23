@@ -29,11 +29,52 @@
 		local actor = this.getContainer().getActor();
 		local p = actor.getCurrentProperties();
 
-		if (actor.getLevel() == 10) tooltip.push({
+		local level = actor.getLevel();
+
+		if (level >= 11) 
+		{
+			tooltip.push({
+				id = 10,
+				type = "text",
+				icon = "ui/icons/melee_skill.png",
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + 20 + "[/color] Attack"
+			});
+			tooltip.push({
+				id = 10,
+				type = "text",
+				icon = "ui/icons/melee_defense.png",
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + 40 + "[/color] Defense"
+			});
+		}
+		else if (level >= 6)
+		{
+			tooltip.push({
+				id = 10,
+				type = "text",
+				icon = "ui/icons/melee_skill.png",
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + 10 + "[/color] Attack"
+			});
+			tooltip.push({
+				id = 10,
+				type = "text",
+				icon = "ui/icons/melee_defense.png",
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+" + 20 + "[/color] Defense"
+			});
+		}
+
+
+
+		if (level == 5) tooltip.push({
 			id = 10,
 			type = "text",
 			icon = "ui/icons/warning.png",
-			text = "0% XP gain at Level 10. Find a way to break fate and change destiny!"
+			text = "-90% XP gain at Level 5. Bottleneck"
+		});
+		else if (level == 10) tooltip.push({
+			id = 10,
+			type = "text",
+			icon = "ui/icons/warning.png",
+			text = "0% XP gain at Level 10. Bottleneck Find a way to break fate and change destiny!"
 		});
 
 		getTooltip_Proficiency(tooltip);
@@ -120,13 +161,6 @@
 				text = "" + hp
 			});
 	
-			if (res > 0) tooltip.push({
-				id = 6,
-				type = "text",
-				icon = "ui/icons/bravery.png",
-				text = "" + res
-			});
-	
 			if (fat > 0) tooltip.push({
 				id = 6,
 				type = "text",
@@ -139,6 +173,13 @@
 				type = "text",
 				icon = "ui/icons/initiative.png",
 				text = "" + ini
+			});
+
+			if (res > 0) tooltip.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/bravery.png",
+				text = "" + res
 			});
 	
 			if (mskill > 0) tooltip.push({
@@ -158,14 +199,14 @@
 			if (rskill > 0) tooltip.push({
 				id = 6,
 				type = "text",
-				icon = "ui/icons/ranged_skill.png",
+				icon = "ui/icons/strength.png",
 				text = "" + rskill
 			});
 	
 			if (rdef > 0) tooltip.push({
 				id = 6,
 				type = "text",
-				icon = "ui/icons/ranged_defense.png",
+				icon = "ui/icons/reflex.png",
 				text = "" + rdef
 			});
 		}
@@ -613,8 +654,41 @@
 	{
 		local actor = this.getContainer().getActor();
 
-		if (actor.getFaction() != ::Const.Faction.Player) return;
-		if (this.getContainer().getActor().getLevel() >= 10) _properties.XPGainMult *= 0;
+		if (actor.getFaction() != ::Const.Faction.Player)
+		{
+			if (!actor.getFlags().has("Level")) return;
+
+			local level = actor.getFlags().getAsInt("Level");
+			if (level >= 6)
+			{
+				_properties.MeleeSkill += 10;
+				_properties.MeleeDefense += 20;
+			}
+			if (level >= 11)
+			{
+				_properties.MeleeSkill += 10;
+				_properties.MeleeDefense += 20;
+			}
+			return;
+		}
+
+		local level = this.getContainer().getActor().getLevel();
+		if (level == 5) _properties.XPGainMult *= 0.1;
+		else if (level >= 10) _properties.XPGainMult *= 0;
+
+		if (level >= 6)
+		{
+			_properties.MeleeSkill += 10;
+			_properties.MeleeDefense += 20;
+		}
+
+		if (level >= 11)
+		{
+			_properties.MeleeSkill += 10;
+			_properties.MeleeDefense += 20;
+		}
+		
+
 
 		local mood = this.getContainer().getActor().getMoodState();
 		local p = ::Math.round(this.getContainer().getActor().getMood() / (::Const.MoodState.len() - 0.05) * 100.0);

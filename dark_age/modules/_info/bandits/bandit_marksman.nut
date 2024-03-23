@@ -1,14 +1,14 @@
 ::Const.Tactical.Actor.BanditMarksman <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 57,
-	Stamina = 96,
-	MeleeSkill = 65,
-	RangedSkill = 40,
+	Hitpoints = 50,
+	Bravery = 50,
+	Stamina = 100,
+	MeleeSkill = 50,
+	RangedSkill = 10,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 105,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -19,7 +19,7 @@
 };
 
 ::B.Info[::Const.EntityType.BanditMarksman] <- {
-    Level = 9,
+    Level = 7,
 	Pattern = [
         ["T", 1],
         ["D", 2],
@@ -27,13 +27,11 @@
         ["W", 4],
         ["T", 5],
         ["D", 6],
-        ["T", 3],
-		["scripts/skills/perks/perk_hybridization"],
     ],
 	LevelUps = [
-		["Health", 8, 0, 2],
-		["Ranged Skill", 8, 0, 2],
-		["Melee Defense", 8, 0, 2],
+		["Health", 6, 0, 2],
+		["Fatigue", 6, 0, 2],
+		["Ranged Skill", 6, 0, 2],
 	],
     Trait = [],
 	Loadout = [
