@@ -42,8 +42,7 @@
     ],
 	LevelUps = [
 		["Initiative", 10, 3, 3],
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Ranged Defense", 10, 3, 3],
 	],
 	Loadout = [
 		[

@@ -1,5 +1,5 @@
-//Level 8 Raider template
-//barbarian template, 7 perks
+//Barbarian Marauder
+//Level 7, 6 perks
 
 ::Const.Tactical.Actor.BarbarianMarauder <- {
 	XP = 250,
@@ -22,7 +22,7 @@
 };
 
 ::B.Info[::Const.EntityType.BarbarianMarauder] <- {
-    Level = 8,
+    Level = 7,
 	Builds = {},
 	BuildsChance = 100
 };
@@ -33,16 +33,14 @@
         ["scripts/skills/perks/perk_legend_alert"],
         ["D", 2],
         ["scripts/skills/perks/perk_adrenalin"],
-        ["W", 3],
         ["W", 4],
         ["D", 6],
         ["scripts/skills/perks/perk_duelist"],
-		["scripts/skills/perks/perk_survival_instinct"], //8
+		
     ],
 	LevelUps = [
-		["Initiative", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Initiative", 6, 0, 2],
+		["Ranged Defense", 6, 0, 2],
 	],
 	Loadout = [
 		[
@@ -63,16 +61,14 @@
 		["scripts/skills/perks/perk_rotation"],
         ["T", 1],
         ["scripts/skills/perks/perk_shield_bash"],
-        ["W", 4],
-        ["scripts/skills/perks/perk_adrenalin"],
+		["scripts/skills/perks/perk_shield_expert"],
+        ["scripts/skills/perks/perk_survival_instinct"], //8
         ["D", 6],
-        ["scripts/skills/perks/perk_shield_expert"],
-		["scripts/skills/perks/perk_survival_instinct"], //8
+		
     ],
 	LevelUps = [
-		["Health", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Health", 6, 0, 2],
+		["Ranged Defense", 6, 0, 2],
 	],
 	Loadout = [
 		[
@@ -96,16 +92,13 @@
         ["scripts/skills/perks/perk_legend_alert"],
         ["D", 2],
         ["scripts/skills/perks/perk_adrenalin"],
-        ["W", 3],
+        ["scripts/skills/perks/perk_strange_strikes"],
         ["W", 4],
         ["D", 6],
-        ["scripts/skills/perks/perk_strange_strikes"],
-		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
-		["Initiative", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Initiative", 6, 0, 2],
+		["Ranged Defense", 6, 0, 2],
 	],
 	Loadout = [
 		[
@@ -124,15 +117,13 @@
         ["D", 2], //2
         ["scripts/skills/perks/perk_adrenalin"], //3
         ["W", 4],
-        ["scripts/skills/perks/perk_head_hunter"], //7
         ["D", 6],
         ["scripts/skills/perks/perk_strange_strikes"],
-		["scripts/skills/perks/perk_survival_instinct"], //8
+		
     ],
 	LevelUps = [
-		["Initiative", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Initiative", 6, 0, 2],
+		["Ranged Defense", 6, 0, 2],
 	],
 	Loadout = [
 		[

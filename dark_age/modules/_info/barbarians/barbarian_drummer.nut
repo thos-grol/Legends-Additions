@@ -1,16 +1,16 @@
-//Level 8 Raider template
-//barbarian template, 7 perks
+//Drummer
+//Level 5, 4 perks
 ::Const.Tactical.Actor.BarbarianDrummer <- {
-	XP = 250,
+	XP = 200,
 	ActionPoints = 9,
-	Hitpoints = 65,
-	Bravery = 60,
-	Stamina = 110,
-	MeleeSkill = 60,
-	RangedSkill = 55,
-	MeleeDefense = 20,
-	RangedDefense = 20,
-	Initiative = 110,
+	Hitpoints = 120,
+	Bravery = 50,
+	Stamina = 120,
+	MeleeSkill = 50,
+	RangedSkill = 10,
+	MeleeDefense = 10,
+	RangedDefense = 10,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -21,21 +21,16 @@
 };
 
 ::B.Info[::Const.EntityType.BarbarianDrummer] <- {
-    Level = 8,
+    Level = 5,
     Pattern = [
-        ["scripts/skills/perks/perk_legend_alert"],
+        ["scripts/skills/perks/perk_legend_alert"], //1
         ["D", 2],
-        ["scripts/skills/perks/perk_hold_out"],
-        ["scripts/skills/perks/perk_colossus"],
-        ["scripts/skills/perks/perk_nine_lives"],
-        ["D", 6],
-        ["scripts/skills/perks/perk_legend_drums_of_war"],
-		["scripts/skills/perks/perk_survival_instinct"], //8
+        ["scripts/skills/perks/perk_hold_out"], //3
+        ["scripts/skills/perks/perk_legend_drums_of_war"], //4
     ],
 	LevelUps = [
-		["Initiative", 7, 0, 2],
-		["Health", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Initiative", 4, 0, 2],
+		["Ranged Defense", 4, 0, 2],
 	],
     Trait = [],
 	Loadout = [

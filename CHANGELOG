@@ -46,7 +46,8 @@ merged Melee Defense and Ranged Defense into one skill. Warriors are probably be
 Enemies
 - All humans and monsters have been rebalanced to the above standards as a guideline. Note that monsters will be way beyond human strength. reworked 50-100+ enemies to reflect new stats
     - enemies gain traits and trait trees like players
-    - TODO: bandits
+    - bandits
+    - barbarians
     - TODO: nomads
     - TODO: nobles
     - TODO: civilians
@@ -56,7 +57,7 @@ Enemies
     - TODO: monsters
 
 Events
-- TODO: buffed training drill event to upgrade 1 tier of stats
+- buffed training drill event to upgrade 1 tier of stats
 
 
 backgrounds 2.0
@@ -99,8 +100,6 @@ backgrounds 2.0
 - modified training hall so you can only gain daytaler base stat + 1 tier of stats. Above backgrounds with benefits will always be above trainable stats by 1 tier. Also made it reflect new stats
 
 - shelved class ideas. For now, any units >= level 6 will get +10 atk, +20 Def. any units >= level 11 will get +10 atk, +20 Def. level 5 and 10 are bottlenecks with level 5 having 10% exp gain, and level 10 having 0% exp gain.
-
-- TODO: escaped slaves scenario - Mercs will attack you with 100% after 15 days. First part of story will be a premade merc company nemesis.
 
 - changed recruiting rules to be more of a event draw format to synergize:
     - you will only pick from 3 at base (recruiter will change this to 4)

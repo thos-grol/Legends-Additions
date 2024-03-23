@@ -40,9 +40,8 @@
 		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
-		["Initiative", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Skill", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
 	],
 	Loadout = [
 		[
@@ -78,8 +77,7 @@
     ],
 	LevelUps = [
 		["Initiative", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
 	],
 	Loadout = [
 		[
@@ -109,8 +107,7 @@
     ],
 	LevelUps = [
 		["Initiative", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
 	],
 	Loadout = [
 		[

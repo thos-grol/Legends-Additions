@@ -3,7 +3,7 @@
 ::Const.Tactical.Actor.BanditRabble <- {
 	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 50,
+	Hitpoints = 100,
 	Bravery = 50,
 	Stamina = 100,
 	MeleeSkill = 50,
@@ -28,7 +28,7 @@
     ],
 	LevelUps = [
 		["Health", 2, 0, 1],
-		["Ranged Skill", 2, 0, 1],
+		["Fatigue", 2, 0, 1],
 	],
     Trait = [],
     Outfit = [

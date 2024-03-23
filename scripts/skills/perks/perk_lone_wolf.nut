@@ -6,8 +6,8 @@
 
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].Name = ::Const.Strings.PerkName.LoneWolf;
 ::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].Tooltip = ::Const.Strings.PerkDescription.LoneWolf;
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].Icon = "ui/perks/mind_over_body.png";
-::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].IconDisabled = "ui/perks/mind_over_body_bw.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].Icon = "ui/perks/relax_circle.png";
+::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LoneWolf].IconDisabled = "ui/perks/relax_circle_bw.png";
 
 this.perk_lone_wolf <- this.inherit("scripts/skills/skill", {
 	m = {},

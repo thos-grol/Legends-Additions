@@ -1,4 +1,3 @@
-//TODO: rethink
 this.aggressive_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {},
 	function create()

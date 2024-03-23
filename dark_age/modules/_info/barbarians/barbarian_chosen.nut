@@ -42,8 +42,7 @@
     ],
 	LevelUps = [
 		["Health", 10, 3, 3],
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Ranged Skill", 10, 3, 3],
 	],
 	Loadout = [
 		[
@@ -73,10 +72,8 @@
 		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
-		["Health", 5, 3, 3],
-		["Fatigue", 5, 3, 3],
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Health", 10, 3, 3],
+		["Ranged Skill", 10, 3, 3],
 	],
 	Loadout = [
 		[
@@ -107,8 +104,7 @@
     ],
 	LevelUps = [
 		["Health", 10, 3, 3],
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Ranged Skill", 10, 3, 3],
 	],
 	Loadout = [
 		[
@@ -138,8 +134,7 @@
     ],
 	LevelUps = [
 		["Health", 10, 3, 3],
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Ranged Skill", 10, 3, 3],
 	],
 	Loadout = [
 		[
@@ -169,8 +164,7 @@
     ],
 	LevelUps = [
 		["Health", 10, 3, 3],
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Ranged Skill", 10, 3, 3],
 	],
 	Loadout = [
 		[
@@ -199,10 +193,8 @@
 		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
-		["Health", 5, 3, 3],
-		["Fatigue", 5, 3, 3],
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Health", 10, 3, 3],
+		["Ranged Skill", 10, 3, 3],
 	],
 	Loadout = [
 		[

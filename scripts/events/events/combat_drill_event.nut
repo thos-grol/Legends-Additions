@@ -1,4 +1,3 @@
-//TODO: improve later
 this.combat_drill_event <- this.inherit("scripts/events/event", {
 	m = {
 		Teacher = null
@@ -90,16 +89,13 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getLevel() >= 11) continue;
-					if (bro.getFlags().has("event_combat_drill_2")) continue;
-					local meleeSkill = ::Math.rand(1, 2);
-					local meleeDefense = ::Math.rand(1, 2);
+					if (bro.getFlags().has("event_combat_drill_1")) continue;
+					local meleeSkill = bro.getFlags().getAsInt("trainable_meleeskill");
+					local meleeDefense = bro.getFlags().getAsInt("trainable_meleedefense");
 					bro.getBaseProperties().MeleeSkill += meleeSkill;
 					bro.getBaseProperties().MeleeDefense += meleeDefense;
 					bro.getSkills().update();
-
-					if (bro.getFlags().has("event_combat_drill_1")) bro.getFlags().add("event_combat_drill_2");
-					else bro.getFlags().add("event_combat_drill_1");
+					bro.getFlags().add("event_combat_drill_1");
 
 					if (meleeSkill > 0)
 					{
@@ -192,17 +188,14 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (bro.getLevel() >= 11) continue;
-					if (bro.getFlags().has("event_combat_drill_2")) continue;
+					if (bro.getFlags().has("event_combat_drill_1")) continue;
 
-					local stamina = ::Math.rand(1, 3);
-					local initiative = stamina == 0 ? ::Math.rand(1, 3) : 0;
+					local stamina = bro.getFlags().getAsInt("trainable_fatigue");
+					local initiative = bro.getFlags().getAsInt("trainable_initiative");
 					bro.getBaseProperties().Stamina += stamina;
 					bro.getBaseProperties().Initiative += initiative;
 					bro.getSkills().update();
-
-					if (bro.getFlags().has("event_combat_drill_1")) bro.getFlags().add("event_combat_drill_2");
-					else bro.getFlags().add("event_combat_drill_1");
+					bro.getFlags().add("event_combat_drill_1");
 
 					if (stamina > 0)
 					{
@@ -250,9 +243,7 @@ this.combat_drill_event <- this.inherit("scripts/events/event", {
 		local numRecruits = 0;
 		foreach( bro in brothers )
 		{
-			if (bro.getLevel() < 12
-				&& !bro.getBackground().isBackgroundType(::Const.BackgroundType.Combat)
-				&& !bro.getFlags().has("event_combat_drill_2")) numRecruits = ++numRecruits;
+			if (!bro.getFlags().has("event_combat_drill_1")) numRecruits = ++numRecruits;
 		}
 
 		if (numRecruits < 1) return;

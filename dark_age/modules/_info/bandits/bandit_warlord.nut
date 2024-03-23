@@ -1,19 +1,19 @@
-//Level 11 Raider template
-//raider template, 10 perks
+//Bandit Warlord
+//Level 11, 10 perks
 //has weapon mastery, stance, and destiny
 
 //Bandit Warlord Builds
 ::Const.Tactical.Actor.BanditWarlord <- {
-	XP = 100,
+	XP = 1600,
 	ActionPoints = 9,
-	Hitpoints = 50,
-	Bravery = 50,
-	Stamina = 100,
-	MeleeSkill = 50,
-	RangedSkill = 10,
-	MeleeDefense = 10,
-	RangedDefense = 10,
-	Initiative = 100,
+	Hitpoints = 120,
+	Bravery = 60,
+	Stamina = 120,
+	MeleeSkill = 60,
+	RangedSkill = 20,
+	MeleeDefense = 20,
+	RangedDefense = 20,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -48,8 +48,8 @@
     ],
 	LevelUps = [
 		["Health", 11, 3, 3],
-		["Melee Defense", 11, 3, 3],
 		["Ranged Defense", 11, 3, 3],
+		["Fatigue", 11, 3, 3],
 	],
 	Loadout = [
 		[
@@ -92,8 +92,8 @@
     ],
 	LevelUps = [
 		["Health", 11, 3, 3],
-		["Melee Skill", 11, 3, 3],
-		["Melee Defense", 11, 3, 3],
+		["Ranged Defense", 11, 3, 3],
+		["Fatigue", 11, 3, 3],
 	],
 	Loadout = [
 		[

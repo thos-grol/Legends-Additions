@@ -1,6 +1,5 @@
-//Level 8 Raider template
-//barbarian template, 7 perks
-
+//Barbarian Beastmaster
+//Level 7, 6 perks
 ::Const.Tactical.Actor.BarbarianBeastmaster <- {
 	XP = 250,
 	ActionPoints = 9,
@@ -22,21 +21,18 @@
 };
 
 ::B.Info[::Const.EntityType.BarbarianBeastmaster] <- {
-    Level = 8,
+    Level = 7,
     Pattern = [
         ["scripts/skills/perks/perk_legend_alert"],
         ["D", 2],
         ["scripts/skills/perks/perk_adrenalin"],
-        ["W", 3],
+		["scripts/skills/perks/perk_survival_instinct"], //8
         ["W", 4],
         ["D", 6],
-        ["scripts/skills/perks/perk_duelist"],
-		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
-		["Initiative", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Initiative", 6, 0, 2],
+		["Ranged Defense", 6, 0, 2],
 	],
     Trait = [],
 	Loadout = [

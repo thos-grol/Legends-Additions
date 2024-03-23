@@ -2,9 +2,9 @@
 //Lvl 5 Peasant template - Avg Daytaler stats
 
 ::Const.Tactical.Actor.BanditThug <- {
-	XP = 100,
+	XP = 200,
 	ActionPoints = 9,
-	Hitpoints = 50,
+	Hitpoints = 100,
 	Bravery = 50,
 	Stamina = 100,
 	MeleeSkill = 50,
@@ -31,8 +31,7 @@
     ],
 	LevelUps = [
 		["Health", 4, 0, 1],
-		["Fatigue", 2, 0, 1],
-		["Ranged Skill", 2, 0, 1],
+		["Fatigue", 4, 0, 1],
 	],
     Outfit = [
 		[

@@ -1,7 +1,9 @@
+//Bandit Raider
+//Level 7, 6 perks
 ::Const.Tactical.Actor.BanditMarksman <- {
-	XP = 100,
+	XP = 400,
 	ActionPoints = 9,
-	Hitpoints = 50,
+	Hitpoints = 100,
 	Bravery = 50,
 	Stamina = 100,
 	MeleeSkill = 50,
@@ -29,9 +31,9 @@
         ["D", 6],
     ],
 	LevelUps = [
-		["Health", 6, 0, 2],
-		["Fatigue", 6, 0, 2],
 		["Ranged Skill", 6, 0, 2],
+		["Health", 3, 0, 2],
+		["Fatigue", 3, 0, 2],
 	],
     Trait = [],
 	Loadout = [

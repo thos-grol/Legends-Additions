@@ -1,13 +1,12 @@
-//Bandit Leader
-//Level 9 Raider template
-//raider template, 8 perks
-//has weapon mastery and stance
+//Bandit Veteran
+//Level 8 Raider template
+//raider template, 7 perks
 ::Const.Tactical.Actor.BanditVeteran <- {
-	XP = 100,
+	XP = 800,
 	ActionPoints = 9,
-	Hitpoints = 50,
+	Hitpoints = 120,
 	Bravery = 50,
-	Stamina = 100,
+	Stamina = 120,
 	MeleeSkill = 50,
 	RangedSkill = 10,
 	MeleeDefense = 10,
@@ -23,7 +22,7 @@
 };
 
 ::B.Info[::Const.EntityType.BanditVeteran] <- {
-    Level = 9,
+    Level = 8,
     Pattern = [
         ["T", 1], //1
         ["D", 2], //2
@@ -32,12 +31,11 @@
         ["T", 3], //5
         ["D", 6], //6
         ["T", 5], //7
-        ["T", 5], //8
     ],
 	LevelUps = [
-		["Health", 8, 1, 3],
-		["Melee Skill", 8, 1, 3],
-		["Melee Defense", 8, 1, 3],
+		["Health", 7, 0, 2],
+		["Ranged Skill", 4, 0, 2],
+		["Fatigue", 3, 0, 2],
 	],
     Trait = [],
 	Loadout = [
@@ -78,12 +76,11 @@
         ["scripts/skills/perks/perk_shield_expert"],
         ["D", 6], //6
         ["T", 3], //7
-        ["T", 5], //8
     ],
 	LevelUps = [
-		["Health", 8, 1, 3],
-		["Melee Skill", 8, 1, 3],
-		["Melee Defense", 8, 1, 3],
+		["Ranged Defense", 7, 0, 2],
+		["Health", 4, 0, 2],
+		["Fatigue", 3, 0, 2],
 	],
 	Loadout = [
 		[
@@ -106,13 +103,11 @@
         ["W", 4], //4
         ["T", 1], //5
         ["D", 6], //6
-        ["T", 3], //7
-        ["scripts/skills/perks/perk_duelist"], //8
+        ["scripts/skills/perks/perk_duelist"], //7
     ],
 	LevelUps = [
-		["Health", 8, 1, 3],
-		["Melee Skill", 8, 2, 3],
-		["Melee Defense", 8, 2, 3],
+		["Initiative", 7, 0, 2],
+		["Ranged Defense", 7, 0, 2],
 	],
 	Loadout = [
 		[
@@ -136,13 +131,12 @@
         ["W", 4], //4
         ["scripts/skills/perks/perk_legend_net_casting"],
         ["D", 6], //6
-        ["T", 3], //7
         ["T", 5], //8
     ],
 	LevelUps = [
-		["Health", 8, 1, 3],
-		["Melee Skill", 8, 1, 3],
-		["Melee Defense", 8, 1, 3],
+		["Health", 7, 0, 2],
+		["Ranged Skill", 4, 0, 2],
+		["Fatigue", 3, 0, 2],
 	],
 	Loadout = [
 		[
@@ -166,13 +160,11 @@
         ["scripts/skills/perks/perk_mastery_swordc"], //4
         ["scripts/skills/perks/perk_hold_out"], //5
         ["D", 6],
-        ["scripts/skills/perks/perk_nine_lives"], //7
-        ["scripts/skills/perks/perk_reach_advantage"], //8
+        ["scripts/skills/perks/perk_reach_advantage"], //7
     ],
 	LevelUps = [
-		["Health", 8, 3, 3],
-		["Melee Skill", 8, 2, 3],
-		["Melee Defense", 8, 2, 3],
+		["Initiative", 7, 0, 2],
+		["Ranged Defense", 7, 0, 2],
 	],
 	Loadout = [
 		[
@@ -188,15 +180,13 @@
         ["D", 2], //2
         ["scripts/skills/perks/perk_adrenalin"], //3
         ["W", 4],
-        ["scripts/skills/perks/perk_head_hunter"], //7
         ["D", 6],
         ["scripts/skills/perks/perk_strange_strikes"],
-		["scripts/skills/perks/perk_duelist"], //8
+		["scripts/skills/perks/perk_duelist"], //7
     ],
 	LevelUps = [
-		["Initiative", 8, 3, 3],
-		["Melee Skill", 8, 3, 3],
-		["Melee Defense", 8, 3, 3],
+		["Initiative", 7, 0, 2],
+		["Ranged Defense", 7, 0, 2],
 	],
 	Loadout = [
 		[

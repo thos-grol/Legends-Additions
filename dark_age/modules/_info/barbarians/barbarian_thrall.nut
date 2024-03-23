@@ -1,17 +1,17 @@
-//Level 6 Barbarian template
-//raider template, 5 perks
+//Thrall
+//Level 5, 4 perks
 
 ::Const.Tactical.Actor.BarbarianThrall <- {
-	XP = 250,
+	XP = 200,
 	ActionPoints = 9,
-	Hitpoints = 65,
-	Bravery = 60,
-	Stamina = 110,
-	MeleeSkill = 56,
-	RangedSkill = 40,
-	MeleeDefense = 20,
-	RangedDefense = 20,
-	Initiative = 110,
+	Hitpoints = 120,
+	Bravery = 50,
+	Stamina = 120,
+	MeleeSkill = 50,
+	RangedSkill = 10,
+	MeleeDefense = 10,
+	RangedDefense = 10,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -22,20 +22,16 @@
 };
 
 ::B.Info[::Const.EntityType.BarbarianThrall] <- {
-    Level = 6,
+    Level = 5,
     Pattern = [
         ["scripts/skills/perks/perk_legend_alert"],
         ["D", 2],
         ["scripts/skills/perks/perk_adrenalin"],
-        ["W", 4],
-        ["T", 5],
 		["scripts/skills/perks/perk_survival_instinct"], //8
     ],
 	LevelUps = [
 		["Initiative", 4, 0, 2],
-		["Health", 3, 0, 2],
-		["Melee Skill", 4, 0, 2],
-		["Melee Defense", 4, 0, 2],
+		["Ranged Defense", 4, 0, 2],
 	],
     Trait = [],
 	Loadout = [
@@ -56,13 +52,11 @@
         ["scripts/skills/perks/perk_legend_alert"],
         ["scripts/skills/perks/perk_rotation"],
         ["scripts/skills/perks/perk_adrenalin"],
-        ["W", 4],
         ["T", 5],
     ],
 	LevelUps = [
-		["Health", 5, 0, 2],
-		["Melee Skill", 5, 0, 2],
-		["Melee Defense", 5, 0, 2],
+		["Initiative", 4, 0, 2],
+		["Ranged Defense", 4, 0, 2],
 	],
 	Loadout = [
 		[

@@ -3,16 +3,16 @@
 //has weapon mastery and stance
 
 ::Const.Tactical.Actor.BanditLeader <- {
-	XP = 100,
+	XP = 800,
 	ActionPoints = 9,
-	Hitpoints = 50,
-	Bravery = 50,
-	Stamina = 100,
-	MeleeSkill = 50,
-	RangedSkill = 10,
-	MeleeDefense = 10,
-	RangedDefense = 10,
-	Initiative = 100,
+	Hitpoints = 120,
+	Bravery = 60,
+	Stamina = 120,
+	MeleeSkill = 60,
+	RangedSkill = 20,
+	MeleeDefense = 20,
+	RangedDefense = 20,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -46,9 +46,9 @@
         ["scripts/skills/perks/perk_stance_executioner"], //9
     ],
 	LevelUps = [
-		["Health", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Defense", 9, 1, 3],
+		["Fatigue", 5, 1, 3],
+		["Health", 4, 1, 3],
 	],
 	Loadout = [
 		[
@@ -79,8 +79,9 @@
     ],
 	LevelUps = [
 		["Initiative", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
+		["Fatigue", 5, 1, 3],
+		["Health", 4, 1, 3],
 	],
 	Loadout = [
 		[
@@ -111,8 +112,9 @@
     ],
 	LevelUps = [
 		["Initiative", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
+		["Fatigue", 5, 1, 3],
+		["Health", 4, 1, 3],
 	],
 	Loadout = [
 		[
@@ -143,8 +145,8 @@
     ],
 	LevelUps = [
 		["Health", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Skill", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
 	],
 	Loadout = [
 		[
@@ -175,8 +177,9 @@
     ],
 	LevelUps = [
 		["Initiative", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
+		["Fatigue", 5, 1, 3],
+		["Health", 4, 1, 3],
 	],
 	Loadout = [
 		[
