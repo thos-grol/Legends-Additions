@@ -138,8 +138,10 @@ this.ai_switchto_ranged <- this.inherit("scripts/ai/tactical/behavior", {
 		targets = this.queryTargetsInMeleeRange(this.Math.min(this.m.WeaponToEquip.getRangeMin(), _entity.getCurrentProperties().Vision), this.Math.min(this.m.WeaponToEquip.getRangeMax(), _entity.getCurrentProperties().Vision));
 		scoreMult = scoreMult * this.Math.pow(this.Const.AI.Behavior.SwitchToEnemyInRangeMult, targets.len());
 
-		if (this.isRangedUnit(_entity))
-			scoreMult = scoreMult * (1.0 - (50 - _entity.getCurrentProperties().getMeleeSkill()) * 0.01);
+		if (_entity.getCurrentProperties().getRangedSkill() < 50)
+		{
+			scoreMult = scoreMult * (1.0 - (50 - _entity.getCurrentProperties().getRangedSkill()) * 0.01);
+		}
 
 		local declaredTargetTile = this.getAgent().getIntentions().TargetTile;
 

@@ -141,7 +141,16 @@ this.ai_charm <- this.inherit("scripts/ai/tactical/behavior", {
 			}
 
 			score = score + target.getLevel() * this.Const.AI.Behavior.CharmLevelMult;
-			score = score + target.getCurrentProperties().getMeleeSkill() * this.Const.AI.Behavior.CharmSkillMult;
+
+			if (isRangedOpponent)
+			{
+				score = score + target.getCurrentProperties().getRangedSkill() * this.Const.AI.Behavior.CharmSkillMult;
+			}
+			else
+			{
+				score = score + target.getCurrentProperties().getMeleeSkill() * this.Const.AI.Behavior.CharmSkillMult;
+			}
+
 			score = score + target.getCurrentProperties().getMeleeDefense() * this.Const.AI.Behavior.CharmDefenseSkillMult;
 			score = score - distanceToTarget * this.Const.AI.Behavior.CharmDistanceMult;
 			local targets = 0;

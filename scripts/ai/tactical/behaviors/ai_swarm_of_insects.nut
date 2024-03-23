@@ -119,7 +119,9 @@ this.ai_swarm_of_insects <- this.inherit("scripts/ai/tactical/behavior", {
 			}
 
 			score = score + target.getCurrentProperties().getMeleeDefense();
+			score = score + target.getCurrentProperties().getRangedDefense();
 			score = score + target.getCurrentProperties().getMeleeSkill();
+			score = score + target.getCurrentProperties().getRangedSkill();
 
 			if (target.isArmedWithRangedWeapon() && distanceToTarget <= target.getIdealRange())
 			{

@@ -118,7 +118,9 @@ this.ai_wither <- this.inherit("scripts/ai/tactical/behavior", {
 
 			local score = 0.0;
 			score = score + target.getCurrentProperties().getMeleeDefense();
+			score = score + target.getCurrentProperties().getRangedDefense();
 			score = score + target.getCurrentProperties().getMeleeSkill();
+			score = score + target.getCurrentProperties().getRangedSkill();
 
 			foreach( ally in knownAllies )
 			{

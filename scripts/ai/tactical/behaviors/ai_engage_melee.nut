@@ -417,10 +417,10 @@ this.ai_engage_melee <- this.inherit("scripts/ai/tactical/behavior", {
 
 					foreach( ally in targets )
 					{
-						if (ally.getMoraleState() == this.Const.MoraleState.Fleeing
-							|| this.isRangedUnit(ally)
-							|| ally.getTile().hasZoneOfControlOtherThan(ally.getAlliedFactions())
-						) continue;
+						if (ally.getMoraleState() == this.Const.MoraleState.Fleeing || ally.getCurrentProperties().RangedSkill > ally.getCurrentProperties().MeleeSkill || ally.getTile().hasZoneOfControlOtherThan(ally.getAlliedFactions()))
+						{
+							continue;
+						}
 
 						if (ally.getTile().getDistanceTo(targetTile) < myDistanceToTarget)
 						{
@@ -435,9 +435,7 @@ this.ai_engage_melee <- this.inherit("scripts/ai/tactical/behavior", {
 
 					foreach( ally in targets )
 					{
-						if (ally.getMoraleState() == this.Const.MoraleState.Fleeing
-						|| this.isRangedUnit(ally)
-						|| ally.getTile().hasZoneOfControlOtherThan(ally.getAlliedFactions()))
+						if (ally.getMoraleState() == this.Const.MoraleState.Fleeing || ally.getCurrentProperties().RangedSkill > ally.getCurrentProperties().MeleeSkill || ally.getTile().hasZoneOfControlOtherThan(ally.getAlliedFactions()))
 						{
 							continue;
 						}
