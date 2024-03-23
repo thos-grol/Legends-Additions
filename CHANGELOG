@@ -183,6 +183,7 @@ Bug Fixes
 - fixed crossbows not actually having the armor piercing claimed (turns out the item properties have to be manually added to skill on equip)
 - fixed bug in Weakness formula
 - TODO: fixed crafting issue with Mage of Winter potion
+- TODO: fixed AI bug during development where the game would freeze on unit turn start
 
 1.17
 
