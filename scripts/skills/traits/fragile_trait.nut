@@ -35,14 +35,14 @@ this.fragile_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10[/color] Vitality"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-20[/color] Vitality"
 			}
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		_properties.Hitpoints += -10;
+		_properties.Hitpoints += -20;
 	}
 
 });

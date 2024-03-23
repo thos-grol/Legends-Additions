@@ -96,7 +96,7 @@ this.town_training_dialog_module <- this.inherit("scripts/ui/screens/ui_module",
 			{
 				show_bro = true;
 
-				if ("trainable_hitpoints" in attr) //TODO: swap with strength Training
+				if ("trainable_hitpoints" in attr)
 				{
 					e.Training.push({
 						id = 3,

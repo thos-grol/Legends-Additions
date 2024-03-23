@@ -81,7 +81,7 @@
 		else this.m.StarWeights = background.buildAttributes(null, attributes);
 
 		local b = getBaseProperties();
-		this.getFlags().set("trainable_hitpoints", ::Math.max(0, 60 - b.Hitpoints));
+		this.getFlags().set("trainable_hitpoints", ::Math.max(0, 120 - b.Hitpoints));
 		this.getFlags().set("trainable_resolve", ::Math.max(0, 60 - b.Bravery));
 		this.getFlags().set("trainable_fatigue", ::Math.max(0, 120 - b.Stamina));
 		this.getFlags().set("trainable_initiative", ::Math.max(0, 120 - b.Initiative));
@@ -110,6 +110,60 @@
 			this.fillTalentValues(3);
 			this.fillAttributeLevelUpValues(::Const.XP.MaxLevelWithPerkpoints - 1);
 		}
+	}
+
+	o.getAttributeLevelUpValues = function()
+	{
+		local b = this.getBaseProperties();
+
+		if (this.m.Attributes.len() == 0)
+		{
+			this.m.Attributes.resize(this.Const.Attributes.COUNT);
+
+			for( local i = 0; i != this.Const.Attributes.COUNT; i = i )
+			{
+				this.m.Attributes[i] = [];
+				i = ++i;
+			}
+		}
+
+		for( local i = 0; i != this.Const.Attributes.COUNT; i = i )
+		{
+			if (this.m.Attributes[i].len() == 0)
+			{
+				this.m.Attributes[i].push(1);
+			}
+
+			i = ++i;
+		}
+
+		local ret = {
+			hitpoints = b.Hitpoints,
+			hitpointsMax = 300,
+			hitpointsIncrease = this.m.Attributes[this.Const.Attributes.Hitpoints][0],
+			bravery = b.Bravery,
+			braveryMax = 300,
+			braveryIncrease = this.m.Attributes[this.Const.Attributes.Bravery][0],
+			fatigue = b.Stamina,
+			fatigueMax = 300,
+			fatigueIncrease = this.m.Attributes[this.Const.Attributes.Fatigue][0],
+			initiative = b.Initiative,
+			initiativeMax = 300,
+			initiativeIncrease = this.m.Attributes[this.Const.Attributes.Initiative][0],
+			meleeSkill = b.MeleeSkill,
+			meleeSkillMax = 120,
+			meleeSkillIncrease = this.m.Attributes[this.Const.Attributes.MeleeSkill][0],
+			rangeSkill = b.RangedSkill,
+			rangeSkillMax = 300,
+			rangeSkillIncrease = this.m.Attributes[this.Const.Attributes.RangedSkill][0],
+			meleeDefense = b.MeleeDefense,
+			meleeDefenseMax = 100,
+			meleeDefenseIncrease = this.m.Attributes[this.Const.Attributes.MeleeDefense][0],
+			rangeDefense = b.RangedDefense,
+			rangeDefenseMax = 300,
+			rangeDefenseIncrease = this.m.Attributes[this.Const.Attributes.RangedDefense][0]
+		};
+		return ret;
 	}
 
 	o.fillTalentValues = function( _num, _force = false )

@@ -2052,7 +2052,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "Base 50. 1 Tier = 10 Points\n\nVitality represents the life of the character. It can offset curses if the user has inssufficient Fate. Higher vitality reduces the chances of injury"
+					text = "Base 100. 1 Tier = 20 Points\n\nVitality represents the life of the character. It can offset curses if the user has inssufficient Fate. Higher vitality reduces the chances of injury"
 				}
 			];
 

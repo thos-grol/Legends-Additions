@@ -81,8 +81,8 @@ backgrounds 2.0
 
     rarer backgrounds
     - fisherman: Net Skill Tree. More expensive. (has a chance to be found in harbors)
-    - wildman: +20 Vitality, +20 Reflex. Always dumb.
-    - wildwoman: +20 Vitality, +20 Reflex. Always dumb.
+    - wildman: +40 Vitality, +20 Reflex. Always dumb.
+    - wildwoman: +40 Vitality, +20 Reflex. Always dumb.
 
     - bastard: just a daytaler with different events and traits
     - disowned_noble: just a daytaler with different events and traits
@@ -92,8 +92,8 @@ backgrounds 2.0
     - militia: +20 Vitality, trained tree
 
     - retired soldier: trained tree. Always Old.
-    - thief: -10 Vitality. +40 Agility. Free quick hands
-    - Killer on the run: -10 Def, -10 Vit +20 Atk, +20 Reflex. Free quick hands
+    - thief: -20 Vitality. +40 Agility. Free quick hands
+    - Killer on the run: -10 Def, -20 Vit +20 Atk, +20 Reflex. Free quick hands
     - hunter: ranged focus. ranged affinity. free pathfinder. Ranger Class
 
 - modified training hall so you can only gain daytaler base stat + 1 tier of stats. Above backgrounds with benefits will always be above trainable stats by 1 tier. Also made it reflect new stats

@@ -63,8 +63,8 @@
 	{
 		local c = {
 			Hitpoints = [
-				20,
-				20
+				40,
+				40
 			],
 			Bravery = [
 				0,

@@ -168,8 +168,8 @@
 			a = {
 				//Vitality
 				Hitpoints = [
-					50,
-					50
+					100,
+					100
 				],
 				//Will
 				Bravery = [

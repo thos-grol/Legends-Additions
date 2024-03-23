@@ -54,3 +54,38 @@
 	::Const.Perks.SturdyTree.ID,
 	::Const.Perks.FitTree.ID,
 ];
+
+::Const.AttributesLevelUp <- [
+	{
+		Min = 2,
+		Max = 4
+	},
+	{
+		Min = 2,
+		Max = 4
+	},
+	{
+		Min = 2,
+		Max = 4
+	},
+	{
+		Min = 2,
+		Max = 4
+	},
+	{
+		Min = 1,
+		Max = 3
+	},
+	{
+		Min = 2,
+		Max = 4
+	},
+	{
+		Min = 1,
+		Max = 3
+	},
+	{
+		Min = 2,
+		Max = 4
+	}
+];

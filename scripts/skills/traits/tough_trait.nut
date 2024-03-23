@@ -40,14 +40,14 @@ this.tough_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+10[/color] Vitality"
+				text = "[color=" + ::Const.UI.Color.PositiveValue + "]+20[/color] Vitality"
 			}
 		];
 	}
 
 	function onUpdate( _properties )
 	{
-		_properties.Hitpoints += 10;
+		_properties.Hitpoints += 20;
 	}
 
 	function onAdded()
