@@ -1,13 +1,13 @@
 ::Const.Tactical.Actor.GoblinLeader <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 40,
-	Bravery = 55,
+	Hitpoints = 100,
+	Bravery = 70,
 	Stamina = 100,
 	MeleeSkill = 60,
-	RangedSkill = 65,
-	MeleeDefense = 10,
-	RangedDefense = 20,
+	RangedSkill = 0,
+	MeleeDefense = 20,
+	RangedDefense = 30,
 	Initiative = 140,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
@@ -38,9 +38,8 @@
         ["scripts/skills/perks/perk_stance_marksman"], //9
     ],
 	LevelUps = [
-		["Health", 9, 3, 3],
-		["Ranged Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Initiative", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
 	],
 	Loadout = [
 		[

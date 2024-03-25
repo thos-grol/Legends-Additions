@@ -2,7 +2,7 @@
 //Level 8 Raider template
 //raider template, 7 perks
 ::Const.Tactical.Actor.BanditVeteran <- {
-	XP = 800,
+	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 120,
 	Bravery = 50,

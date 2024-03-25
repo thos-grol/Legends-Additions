@@ -1,16 +1,16 @@
 //raider template, 9 perks
 //has weapon mastery and stance
 ::Const.Tactical.Actor.MilitiaCaptain <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 57,
-	Stamina = 96,
-	MeleeSkill = 65,
-	RangedSkill = 40,
-	MeleeDefense = 10,
-	RangedDefense = 10,
-	Initiative = 105,
+	Hitpoints = 120,
+	Bravery = 60,
+	Stamina = 120,
+	MeleeSkill = 60,
+	RangedSkill = 20,
+	MeleeDefense = 20,
+	RangedDefense = 20,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -44,8 +44,7 @@
 	LevelUps = [
 		["Resolve", 7, 3, 3],
 		["Health", 2, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
 	],
 	Loadout = [
 		[

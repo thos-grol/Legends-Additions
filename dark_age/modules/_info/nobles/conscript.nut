@@ -1,14 +1,14 @@
 ::Const.Tactical.Actor.Conscript <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 60,
+	Hitpoints = 120,
 	Bravery = 60,
 	Stamina = 120,
 	MeleeSkill = 60,
-	RangedSkill = 60,
-	MeleeDefense = 10,
-	RangedDefense = 10,
-	Initiative = 115,
+	RangedSkill = 20,
+	MeleeDefense = 20,
+	RangedDefense = 20,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -19,22 +19,19 @@
 };
 
 ::B.Info[::Const.EntityType.Conscript] <- {
-    Level = 9,
+    Level = 7,
     Pattern = [
         ["scripts/skills/perks/perk_legend_alert"], //1
         ["D", 2], //2
         ["W", 3],
         ["W", 4],
         ["scripts/skills/perks/perk_legend_back_to_basics"], //4 - 0
-        ["scripts/skills/perks/perk_steadfast"], //4 - 1
         ["scripts/skills/perks/perk_adrenalin"], //4 - 2
         ["D", 6],
-		["scripts/skills/perks/perk_duelist"], //5
     ],
 	LevelUps = [
-		["Initiative", 8, 3, 3],
-		["Melee Skill", 8, 2, 3],
-		["Melee Defense", 8, 2, 3],
+		["Initiative", 6, 3, 3],
+		["Ranged Defense", 6, 2, 3],
 	],
     Trait = [],
 	Loadout = [
@@ -56,14 +53,11 @@
         ["W", 4],
         ["scripts/skills/perks/perk_legend_back_to_basics"], //4 - 0
         ["scripts/skills/perks/perk_nine_lives"], //4 - 1
-        ["scripts/skills/perks/perk_shield_expert"], //4 - 2
-		["scripts/skills/perks/perk_survival_instinct"], //5
         ["D", 6],
     ],
 	LevelUps = [
-		["Health", 8, 2, 3],
-		["Melee Skill", 8, 2, 3],
-		["Melee Defense", 8, 3, 3],
+		["Health", 6, 2, 3],
+		["Ranged Defense", 6, 3, 3],
 	],
 	Loadout = [
 		[
@@ -81,15 +75,12 @@
         ["W", 3],
         ["W", 4],
         ["scripts/skills/perks/perk_legend_back_to_basics"], //4 - 0
-        ["scripts/skills/perks/perk_agile"], //4 - 1
-        ["scripts/skills/perks/perk_adrenalin"], //4 - 2
-        ["D", 6],
 		["scripts/skills/perks/perk_legend_twirl"], //5
+        ["D", 6],
     ],
 	LevelUps = [
-		["Initiative", 8, 3, 3],
-		["Melee Skill", 8, 2, 3],
-		["Melee Defense", 8, 2, 3],
+		["Initiative", 6, 3, 3],
+		["Ranged Defense", 6, 2, 3],
 	],
 	Loadout = [
 		[

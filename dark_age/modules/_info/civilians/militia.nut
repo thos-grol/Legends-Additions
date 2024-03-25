@@ -1,15 +1,15 @@
-//Lvl 6 Peasant template - Avg Daytaler stats
+//Lvl 5 Peasant template - Avg Daytaler stats
 ::Const.Tactical.Actor.Militia <- {
 	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 45,
-	Stamina = 95,
-	MeleeSkill = 56,
-	RangedSkill = 40,
-	MeleeDefense = 3,
-	RangedDefense = 3,
-	Initiative = 105,
+	Hitpoints = 120,
+	Bravery = 50,
+	Stamina = 120,
+	MeleeSkill = 50,
+	RangedSkill = 10,
+	MeleeDefense = 10,
+	RangedDefense = 10,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -20,7 +20,7 @@
 };
 
 ::B.Info[::Const.EntityType.Militia] <- {
-    Level = 6,
+    Level = 5,
 	Builds = {},
 	BuildsChance = 100
 };
@@ -29,15 +29,13 @@
 	Name = "1H Shield",
 	Pattern = [
         ["scripts/skills/perks/perk_rotation"],
-        ["T", 1],
         ["scripts/skills/perks/perk_shield_bash"],
         ["W", 4],
         ["scripts/skills/perks/perk_shield_expert"],
     ],
 	LevelUps = [
-		["Health", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Health", 4, 0, 2],
+		["Ranged Defense", 4, 0, 2],
 	],
 	Loadout = [
 		[

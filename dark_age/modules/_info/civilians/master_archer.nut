@@ -1,15 +1,15 @@
 //Raider Template
 ::Const.Tactical.Actor.MasterArcher <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 60,
+	Hitpoints = 120,
 	Bravery = 60,
 	Stamina = 120,
 	MeleeSkill = 60,
-	RangedSkill = 60,
-	MeleeDefense = 10,
-	RangedDefense = 10,
-	Initiative = 115,
+	RangedSkill = 20,
+	MeleeDefense = 20,
+	RangedDefense = 20,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -35,7 +35,7 @@
         ["scripts/skills/perks/perk_legend_back_to_basics"], //0
         ["scripts/skills/perks/perk_legend_recuperation"], //5
         ["scripts/skills/perks/perk_legend_peaceful"], //6
-		["scripts/skills/perks/perk_hybridization"], //7
+		["scripts/skills/perks/perk_legend_wind_reader"], //7
 		["D", 6],
         ["scripts/skills/perks/perk_sundering_strikes"], //9
         ["scripts/skills/perks/perk_stance_marksman"], //10

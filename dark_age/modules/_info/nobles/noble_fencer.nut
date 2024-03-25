@@ -1,15 +1,15 @@
 //Lvl 10 Merc template
 ::Const.Tactical.Actor.LegendFencer <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 60,
+	Hitpoints = 120,
 	Bravery = 60,
 	Stamina = 120,
 	MeleeSkill = 60,
-	RangedSkill = 60,
-	MeleeDefense = 10,
-	RangedDefense = 10,
-	Initiative = 115,
+	RangedSkill = 20,
+	MeleeDefense = 20,
+	RangedDefense = 20,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -41,8 +41,7 @@
     ],
 	LevelUps = [
 		["Initiative", 9, 1, 3],
-		["Melee Skill", 9, 1, 3],
-		["Melee Defense", 9, 1, 3],
+		["Ranged Defense", 9, 1, 3],
 	],
 	Loadout = [
 		[
@@ -71,8 +70,7 @@
     ],
 	LevelUps = [
 		["Initiative", 9, 1, 3],
-		["Melee Skill", 9, 1, 3],
-		["Melee Defense", 9, 1, 3],
+		["Ranged Defense", 9, 1, 3],
 	],
 	Loadout = [
 		[

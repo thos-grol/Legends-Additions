@@ -2,16 +2,16 @@
 //Level 7, 6 perks
 
 ::Const.Tactical.Actor.BarbarianMarauder <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 65,
-	Bravery = 60,
-	Stamina = 110,
-	MeleeSkill = 60,
-	RangedSkill = 55,
-	MeleeDefense = 20,
-	RangedDefense = 20,
-	Initiative = 110,
+	Hitpoints = 120,
+	Bravery = 50,
+	Stamina = 120,
+	MeleeSkill = 50,
+	RangedSkill = 10,
+	MeleeDefense = 10,
+	RangedDefense = 10,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [

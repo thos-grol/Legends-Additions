@@ -1,14 +1,14 @@
 ::Const.Tactical.Actor.OrcBerserker <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 200,
-	Bravery = 65,
+	Bravery = 60,
 	Stamina = 150,
-	MeleeSkill = 55,
-	RangedSkill = 50,
-	MeleeDefense = -5,
-	RangedDefense = -5,
-	Initiative = 110,
+	MeleeSkill = 50,
+	RangedSkill = 30,
+	MeleeDefense = -10,
+	RangedDefense = 0,
+	Initiative = 80,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -32,8 +32,7 @@
     ],
 	LevelUps = [
 		["Initiative", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Ranged Skill", 7, 0, 2],
 	],
     Trait = [],
 	Loadout = [

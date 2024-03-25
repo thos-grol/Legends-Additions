@@ -48,10 +48,12 @@ Enemies
     - enemies gain traits and trait trees like players
     - bandits
     - barbarians
-    - TODO: nomads
-    - TODO: nobles
-    - TODO: civilians
-    - TODO: goblins
+    - civilians
+    - cultists
+    - goblins
+    - mages
+    - nobles
+    - nomads
     - TODO: orcs
     - TODO: zombies
     - TODO: monsters

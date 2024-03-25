@@ -1,4 +1,4 @@
-//Lvl 4 Peasant template - Avg Daytaler stats
+//Lvl 3 Peasant template - Avg Daytaler stats
 ::Const.Tactical.Actor.Peasant <- {
 	XP = 100,
 	ActionPoints = 9,
@@ -20,16 +20,14 @@
 };
 
 ::B.Info[::Const.EntityType.Peasant] <- {
-    Level = 4,
+    Level = 3,
     Pattern = [
         ["T", 1],
         ["D", 2],
-        ["T", 3],
     ],
 	LevelUps = [
-		["Health", 3, 0, 1],
-		["Melee Skill", 3, 0, 1],
-		["Melee Defense", 3, 0, 1],
+		["Health", 2, 0, 1],
+		["Fatigue", 2, 0, 1],
 	],
     Trait = [],
     Outfit = [

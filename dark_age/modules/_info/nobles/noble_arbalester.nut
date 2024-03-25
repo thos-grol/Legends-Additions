@@ -1,14 +1,14 @@
 ::Const.Tactical.Actor.Arbalester <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 60,
-	Bravery = 60,
+	Hitpoints = 120,
+	Bravery = 50,
 	Stamina = 120,
-	MeleeSkill = 60,
-	RangedSkill = 45,
+	MeleeSkill = 50,
+	RangedSkill = 10,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 115,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -19,21 +19,16 @@
 };
 
 ::B.Info[::Const.EntityType.Arbalester] <- {
-    Level = 9,
+    Level = 5,
 	Pattern = [
         ["T", 1],
         ["D", 2],
         ["W", 3],
         ["W", 4],
-        ["T", 5],
-        ["D", 6],
-        ["T", 3],
-		["scripts/skills/perks/perk_hybridization"],
     ],
 	LevelUps = [
-		["Health", 8, 0, 2],
-		["Ranged Skill", 8, 0, 2],
-		["Melee Defense", 8, 0, 2],
+		["Health", 4, 0, 2],
+		["Fatigue", 4, 0, 2],
 	],
     Trait = [],
 	Loadout = [

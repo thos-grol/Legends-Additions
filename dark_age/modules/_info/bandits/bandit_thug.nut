@@ -2,7 +2,7 @@
 //Lvl 5 Peasant template - Avg Daytaler stats
 
 ::Const.Tactical.Actor.BanditThug <- {
-	XP = 200,
+	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 100,
 	Bravery = 50,

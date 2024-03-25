@@ -1,16 +1,14 @@
-//merc template, 8 perks
-//has weapon mastery and stance
 ::Const.Tactical.Actor.LegendNobleGuard <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 60,
+	Hitpoints = 120,
 	Bravery = 60,
 	Stamina = 120,
 	MeleeSkill = 60,
-	RangedSkill = 60,
-	MeleeDefense = 10,
-	RangedDefense = 10,
-	Initiative = 115,
+	RangedSkill = 20,
+	MeleeDefense = 20,
+	RangedDefense = 20,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -21,7 +19,7 @@
 };
 
 ::B.Info[::Const.EntityType.LegendNobleGuard] <- {
-    Level = 9,
+    Level = 7,
     Pattern = [
         ["scripts/skills/perks/perk_rotation"],
         ["T", 1],
@@ -29,13 +27,10 @@
         ["W", 4],
         ["W", 3],
         ["D", 6],
-        ["scripts/skills/perks/perk_shield_expert"],
-        ["T", 5], //8
     ],
 	LevelUps = [
-		["Health", 8, 2, 3],
-		["Melee Skill", 8, 2, 3],
-		["Melee Defense", 8, 2, 3],
+		["Health", 6, 2, 3],
+		["Fatigue", 6, 2, 3],
 	],
     Trait = [],
 	Loadout = [

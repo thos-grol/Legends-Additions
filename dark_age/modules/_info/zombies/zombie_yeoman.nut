@@ -1,15 +1,15 @@
 //Zombie
 ::Const.Tactical.Actor.ZombieYeoman <- {
-	XP = 500,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 250,
+	Hitpoints = 500,
 	Bravery = 100,
 	Stamina = 100,
-	MeleeSkill = 75,
-	RangedSkill = 5,
-	MeleeDefense = -5,
-	RangedDefense = -5,
-	Initiative = 90,
+	MeleeSkill = 60,
+	RangedSkill = 30,
+	MeleeDefense = -10,
+	RangedDefense = 0,
+	Initiative = 160,
 	FatigueEffectMult = 0.0,
 	MoraleEffectMult = 0.0,
 	Armor = [
@@ -20,7 +20,7 @@
 
 
 ::B.Info[::Const.EntityType.ZombieYeoman] <- {
-    Level = 8,
+    Level = 7,
 	Builds = {},
 	BuildsChance = 100
 };
@@ -34,7 +34,6 @@
         ["T", 3],
         ["T", 3],
         ["D", 6],
-		["T", 5],
     ],
 	LevelUps = [],
 	Loadout = [],

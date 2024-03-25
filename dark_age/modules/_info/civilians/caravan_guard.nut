@@ -1,16 +1,16 @@
-//Lvl 6 Raider template - Avg Daytaler stats
+//Lvl 7 Raider template
 
 ::Const.Tactical.Actor.CaravanGuard <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 57,
-	Stamina = 96,
-	MeleeSkill = 65,
-	RangedSkill = 40,
+	Hitpoints = 120,
+	Bravery = 50,
+	Stamina = 120,
+	MeleeSkill = 50,
+	RangedSkill = 10,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 105,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -21,7 +21,7 @@
 };
 
 ::B.Info[::Const.EntityType.CaravanGuard] <- {
-    Level = 6,
+    Level = 7,
     Pattern = [
         ["T", 1],
         ["D", 2],
@@ -29,12 +29,10 @@
         ["W", 4],
         ["T", 5],
         ["D", 6],
-        ["T", 3],
     ],
 	LevelUps = [
-		["Health", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Health", 6, 0, 1],
+		["Fatigue", 6, 0, 1],
 	],
     Outfit = [
 		[
@@ -81,14 +79,12 @@
         ["T", 1],
         ["scripts/skills/perks/perk_shield_bash"],
         ["W", 4],
-        ["T", 5],
         ["D", 6],
         ["scripts/skills/perks/perk_shield_expert"],
     ],
 	LevelUps = [
-		["Health", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Health", 6, 0, 2],
+		["Ranged Defense", 6, 0, 2],
 	],
 	Loadout = [
 		[
@@ -117,14 +113,12 @@
         ["D", 2],
         ["scripts/skills/perks/perk_legend_net_repair"],
         ["W", 4],
-        ["T", 5],
         ["D", 6],
         ["scripts/skills/perks/perk_legend_net_casting"],
     ],
 	LevelUps = [
-		["Health", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Health", 6, 0, 1],
+		["Fatigue", 6, 0, 1],
 	],
 	Loadout = [
 		[

@@ -1,16 +1,16 @@
 //merc template, 9 perks
 //has weapon mastery and stance
 ::Const.Tactical.Actor.LegendManAtArms <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 60,
-	Bravery = 60,
+	Hitpoints = 120,
+	Bravery = 50,
 	Stamina = 120,
-	MeleeSkill = 60,
-	RangedSkill = 60,
+	MeleeSkill = 50,
+	RangedSkill = 10,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 115,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -35,8 +35,7 @@
     ],
 	LevelUps = [
 		["Health", 9, 2, 3],
-		["Melee Skill", 9, 2, 3],
-		["Melee Defense", 9, 2, 3],
+		["Ranged Defense", 9, 2, 3],
 	],
     Trait = [],
 	Loadout = [

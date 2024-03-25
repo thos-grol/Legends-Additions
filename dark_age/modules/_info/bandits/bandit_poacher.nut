@@ -1,7 +1,7 @@
 //Thug
 //Lvl 5
 ::Const.Tactical.Actor.BanditPoacher <- {
-	XP = 200,
+	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 100,
 	Bravery = 50,

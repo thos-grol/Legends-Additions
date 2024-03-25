@@ -7,14 +7,14 @@
 ::Const.Tactical.Actor.Necromancer <- {
 	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 45,
-	Stamina = 95,
-	MeleeSkill = 56,
-	RangedSkill = 40,
-	MeleeDefense = 3,
-	RangedDefense = 3,
-	Initiative = 105,
+	Hitpoints = 100,
+	Bravery = 50,
+	Stamina = 100,
+	MeleeSkill = 50,
+	RangedSkill = 10,
+	MeleeDefense = 10,
+	RangedDefense = 10,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -43,7 +43,6 @@
 	LevelUps = [
 		["Health", 9, 0, 3],
 		["Initiative", 9, 0, 3],
-		["Melee Defense", 9, 0, 3],
 	],
 	Loadout = [
 		[],
@@ -72,7 +71,6 @@
 	LevelUps = [
 		["Health", 9, 0, 3],
 		["Initiative", 9, 0, 3],
-		["Melee Defense", 9, 0, 3],
 	],
 	Loadout = [
 		[],
@@ -100,9 +98,8 @@
 		["scripts/skills/perks/perk_spell_reanimate"], //9 (Back to basics)
     ],
 	LevelUps = [
-		["Melee Attack", 9, 2, 3],
+		["Ranged Defense", 9, 2, 3],
 		["Initiative", 9, 2, 3],
-		["Melee Defense", 9, 2, 3],
 	],
 	Loadout = [
 		[
@@ -134,9 +131,8 @@
 // 		["scripts/skills/perks/perk_meditation_pact_of_flesh"], //11 bc meditation is free
 //     ],
 // 	LevelUps = [
-// 		["Health", 9, 0, 3],
-// 		["Initiative", 9, 0, 3],
-// 		["Melee Defense", 9, 0, 3],
+// 		["Ranged Defense", 9, 2, 3],
+// 		["Initiative", 9, 2, 3],
 // 	],
 // 	Loadout = [
 // 		[],

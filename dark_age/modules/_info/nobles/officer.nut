@@ -1,14 +1,14 @@
 ::Const.Tactical.Actor.Officer <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 57,
-	Stamina = 96,
-	MeleeSkill = 65,
-	RangedSkill = 40,
+	Hitpoints = 120,
+	Bravery = 50,
+	Stamina = 120,
+	MeleeSkill = 50,
+	RangedSkill = 10,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 105,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -33,8 +33,7 @@
     ],
 	LevelUps = [
 		["Health", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Resolve", 9, 3, 3],
 	],
     Trait = [],
 	Loadout = [

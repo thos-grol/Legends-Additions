@@ -1,14 +1,14 @@
 ::Const.Tactical.Actor.Footman <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 57,
-	Stamina = 96,
-	MeleeSkill = 65,
-	RangedSkill = 40,
+	Hitpoints = 120,
+	Bravery = 50,
+	Stamina = 120,
+	MeleeSkill = 50,
+	RangedSkill = 10,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 105,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -19,7 +19,7 @@
 };
 
 ::B.Info[::Const.EntityType.Footman] <- {
-    Level = 8,
+    Level = 4,
     Pattern = [
         ["scripts/skills/perks/perk_rotation"],
         ["T", 1],

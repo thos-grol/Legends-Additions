@@ -1,14 +1,14 @@
 ::Const.Tactical.Actor.Gunner <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 60,
-	Bravery = 60,
+	Hitpoints = 120,
+	Bravery = 50,
 	Stamina = 120,
-	MeleeSkill = 60,
-	RangedSkill = 45,
+	MeleeSkill = 50,
+	RangedSkill = 10,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 115,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -32,9 +32,8 @@
 		["scripts/skills/perks/perk_mastery_hammer"], //5
     ],
 	LevelUps = [
-		["Resolve", 8, 3, 3],
-		["Ranged Skill", 8, 3, 3],
-		["Melee Defense", 8, 2, 3],
+		["Health", 8, 3, 3],
+		["Ranged Defense", 8, 2, 3],
 	],
     Trait = [],
 	Loadout = [

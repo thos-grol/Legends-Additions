@@ -25,7 +25,7 @@ this.perk_legend_wind_reader <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		_properties.MeleeSkill += 5;
-		_properties.RangedDefense += 10;
+		_properties.MeleeDefense += 10;
 	}
 
 });

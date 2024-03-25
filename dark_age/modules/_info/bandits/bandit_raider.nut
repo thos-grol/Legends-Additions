@@ -1,7 +1,7 @@
 //Bandit Raider
 //Level 7, 6 perks
 ::Const.Tactical.Actor.BanditRaider <- {
-	XP = 400,
+	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 100,
 	Bravery = 50,

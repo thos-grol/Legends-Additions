@@ -1,15 +1,15 @@
 //Lvl 11 Raider template
 ::Const.Tactical.Actor.BarbarianMadman <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 150,
+	Hitpoints = 120,
 	Bravery = 60,
-	Stamina = 110,
+	Stamina = 120,
 	MeleeSkill = 60,
-	RangedSkill = 55,
+	RangedSkill = 20,
 	MeleeDefense = 20,
 	RangedDefense = 20,
-	Initiative = 110,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [

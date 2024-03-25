@@ -3,7 +3,7 @@
 //has weapon mastery and stance
 
 ::Const.Tactical.Actor.BanditLeader <- {
-	XP = 800,
+	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 120,
 	Bravery = 60,
@@ -35,7 +35,7 @@
 	Pattern = [
 		["scripts/skills/perks/perk_underdog"], //1
         ["D", 2], //2
-        ["scripts/skills/perks/perk_agile"], //3
+        ["scripts/skills/perks/perk_adrenalin"], //3
         ["scripts/skills/perks/perk_mastery_axec"], //4
         ["scripts/skills/perks/perk_legend_back_to_basics"], //4 - 0
         ["scripts/skills/perks/perk_strange_strikes"], //4 - 1
@@ -133,7 +133,7 @@
 	Pattern = [
 		["scripts/skills/perks/perk_pathfinder"], //1
         ["D", 2], //2
-        ["scripts/skills/perks/perk_agile"], //3
+        ["scripts/skills/perks/perk_adrenalin"], //3
         ["scripts/skills/perks/perk_mastery_hammerc"], //4
         ["scripts/skills/perks/perk_legend_back_to_basics"], //4 - 0
         ["scripts/skills/perks/perk_legend_peaceful"], //4 - 1

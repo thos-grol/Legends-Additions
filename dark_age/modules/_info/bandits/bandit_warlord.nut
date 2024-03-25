@@ -4,7 +4,7 @@
 
 //Bandit Warlord Builds
 ::Const.Tactical.Actor.BanditWarlord <- {
-	XP = 1600,
+	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 120,
 	Bravery = 60,

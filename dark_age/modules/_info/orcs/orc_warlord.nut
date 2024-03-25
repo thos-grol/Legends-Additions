@@ -1,14 +1,14 @@
 ::Const.Tactical.Actor.OrcWarlord <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 200,
-	Bravery = 65,
+	Bravery = 60,
 	Stamina = 150,
-	MeleeSkill = 55,
-	RangedSkill = 50,
-	MeleeDefense = -5,
-	RangedDefense = -5,
-	Initiative = 110,
+	MeleeSkill = 60,
+	RangedSkill = 30,
+	MeleeDefense = -10,
+	RangedDefense = 0,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -97,7 +97,7 @@
         ["D", 2], //2
         ["scripts/skills/perks/perk_strange_strikes"], //3
         ["scripts/skills/perks/perk_mastery_flailc"], //4
-        ["scripts/skills/perks/perk_agile"], //5
+        ["scripts/skills/perks/perk_adrenalin"], //5
         ["D", 6],
         ["scripts/skills/perks/perk_underdog"], //7
         ["scripts/skills/perks/perk_survival_instinct"], //8

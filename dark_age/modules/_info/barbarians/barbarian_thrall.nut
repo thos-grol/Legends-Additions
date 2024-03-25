@@ -2,7 +2,7 @@
 //Level 5, 4 perks
 
 ::Const.Tactical.Actor.BarbarianThrall <- {
-	XP = 200,
+	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 120,
 	Bravery = 50,

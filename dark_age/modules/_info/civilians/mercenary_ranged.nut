@@ -1,15 +1,15 @@
 //Lvl 8 Merc template - Avg Daytaler stats
 ::Const.Tactical.Actor.MercenaryRanged <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 60,
-	Bravery = 60,
+	Hitpoints = 120,
+	Bravery = 50,
 	Stamina = 120,
-	MeleeSkill = 60,
-	RangedSkill = 45,
+	MeleeSkill = 50,
+	RangedSkill = 10,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 115,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -28,7 +28,7 @@
         ["W", 4],
         ["T", 5],
         ["D", 6],
-		["scripts/skills/perks/perk_hybridization"],
+		["scripts/skills/perks/perk_legend_wind_reader"],
     ],
 	LevelUps = [
 		["Health", 8, 0, 2],

@@ -1,15 +1,15 @@
 
 ::Const.Tactical.Actor.GoblinFighter <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 40,
-	Bravery = 55,
+	Hitpoints = 80,
+	Bravery = 50,
 	Stamina = 100,
-	MeleeSkill = 60,
-	RangedSkill = 65,
+	MeleeSkill = 50,
+	RangedSkill = 0,
 	MeleeDefense = 10,
-	RangedDefense = 20,
-	Initiative = 140,
+	RangedDefense = 10,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -20,18 +20,16 @@
 };
 
 ::B.Info[::Const.EntityType.GoblinFighter] <- {
-    Level = 6,
+    Level = 5,
     Pattern = [
         ["T", 1],
         ["D", 2],
         ["W", 3],
         ["W", 4],
-        ["T", 5],
     ],
 	LevelUps = [
-		["Health", 5, 0, 2],
-		["Melee Skill", 5, 0, 2],
-		["Melee Defense", 5, 0, 2],
+		["Initiative", 4, 0, 2],
+		["Ranged Defense", 4, 0, 2],
 	],
     Trait = [],
 	Loadout = [
@@ -70,12 +68,10 @@
         ["D", 2],
         ["scripts/skills/perks/perk_legend_net_repair"],
         ["W", 4],
-        ["T", 5],
     ],
 	LevelUps = [
-		["Health", 5, 0, 2],
-		["Melee Skill", 5, 0, 2],
-		["Melee Defense", 5, 0, 2],
+		["Initiative", 5, 0, 2],
+		["Ranged Defense", 5, 0, 2],
 	],
 	Loadout = [
 		[

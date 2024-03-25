@@ -1,17 +1,17 @@
 //Nomad Outlaw
-//Level 8 Raider template
-//raider template, 7 perks
+//Level 7 Raider template
+//raider template, 6 perks
 ::Const.Tactical.Actor.NomadOutlaw <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 57,
-	Stamina = 96,
-	MeleeSkill = 65,
-	RangedSkill = 40,
+	Hitpoints = 100,
+	Bravery = 50,
+	Stamina = 100,
+	MeleeSkill = 50,
+	RangedSkill = 10,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 105,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -22,7 +22,7 @@
 };
 
 ::B.Info[::Const.EntityType.NomadOutlaw] <- {
-    Level = 8,
+    Level = 7,
     Pattern = [
         ["T", 1],
         ["D", 2],
@@ -30,12 +30,10 @@
         ["W", 4],
         ["T", 5],
         ["D", 6],
-        ["T", 3],
     ],
 	LevelUps = [
-		["Health", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Health", 6, 0, 2],
+		["Fatigue", 6, 0, 2],
 	],
     Trait = [],
 	Loadout = [
@@ -61,12 +59,10 @@
         ["scripts/skills/perks/perk_mastery_polearm"],
         ["scripts/skills/perks/perk_mastery_mace"],
         ["scripts/skills/perks/perk_rattle"],
-        ["scripts/skills/perks/perk_fearsome"],
     ],
 	LevelUps = [
-		["Resolve", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Health", 6, 0, 2],
+		["Fatigue", 6, 0, 2],
 	],
 	Loadout = [
 		[
@@ -80,16 +76,14 @@
 	Pattern = [
         ["scripts/skills/perks/perk_legend_alert"],
         ["D", 2],
-        ["W", 3],
         ["W", 4],
-        ["scripts/skills/perks/perk_agile"],
+        ["scripts/skills/perks/perk_adrenalin"],
         ["D", 6],
         ["scripts/skills/perks/perk_duelist"],
     ],
 	LevelUps = [
-		["Health", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Health", 6, 0, 2],
+		["Initiative", 6, 0, 2],
 	],
 	Loadout = [
 		[
@@ -109,14 +103,12 @@
         ["T", 1],
         ["scripts/skills/perks/perk_shield_bash"],
         ["W", 4],
-        ["T", 5],
         ["D", 6],
         ["scripts/skills/perks/perk_shield_expert"],
     ],
 	LevelUps = [
-		["Health", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Health", 6, 0, 2],
+		["Fatigue", 6, 0, 2],
 	],
 	Loadout = [
 		[

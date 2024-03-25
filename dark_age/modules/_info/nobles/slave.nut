@@ -1,14 +1,14 @@
 ::Const.Tactical.Actor.Slave <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 57,
-	Stamina = 96,
-	MeleeSkill = 65,
-	RangedSkill = 40,
+	Hitpoints = 100,
+	Bravery = 50,
+	Stamina = 100,
+	MeleeSkill = 50,
+	RangedSkill = 10,
 	MeleeDefense = 10,
 	RangedDefense = 10,
-	Initiative = 105,
+	Initiative = 100,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -19,20 +19,16 @@
 };
 
 ::B.Info[::Const.EntityType.Slave] <- {
-    Level = 8,
+    Level = 5,
     Pattern = [
         ["T", 1],
         ["D", 2],
         ["W", 3],
         ["W", 4],
-        ["T", 5],
-        ["D", 6],
-        ["T", 3],
     ],
 	LevelUps = [
-		["Health", 7, 0, 2],
-		["Melee Skill", 7, 0, 2],
-		["Melee Defense", 7, 0, 2],
+		["Health", 4, 0, 2],
+		["Fatigue", 4, 0, 2],
 	],
     Trait = [],
 	Loadout = [

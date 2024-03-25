@@ -1,14 +1,14 @@
 ::Const.Tactical.Actor.CultistChosen <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 60,
+	Hitpoints = 120,
 	Bravery = 60,
-	Stamina = 96,
-	MeleeSkill = 65,
-	RangedSkill = 40,
-	MeleeDefense = 10,
-	RangedDefense = 10,
-	Initiative = 105,
+	Stamina = 120,
+	MeleeSkill = 60,
+	RangedSkill = 20,
+	MeleeDefense = 20,
+	RangedDefense = 20,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -36,8 +36,7 @@
     ],
 	LevelUps = [
 		["Resolve", 10, 3, 3],
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Health", 10, 3, 3],
 	],
     Trait = [],
 	Loadout = [

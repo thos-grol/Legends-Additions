@@ -1,14 +1,13 @@
-//Lvl 10 Raider template
 ::Const.Tactical.Actor.HedgeKnight <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 70,
-	Bravery = 70,
+	Hitpoints = 120,
+	Bravery = 60,
 	Stamina = 120,
-	MeleeSkill = 70,
-	RangedSkill = 60,
-	MeleeDefense = 15,
-	RangedDefense = 15,
+	MeleeSkill = 60,
+	RangedSkill = 20,
+	MeleeDefense = 20,
+	RangedDefense = 20,
 	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
@@ -35,15 +34,14 @@
         ["scripts/skills/perks/perk_legend_back_to_basics"], //0
         ["scripts/skills/perks/perk_mastery_hammerc"], //5
         ["scripts/skills/perks/perk_battle_flow"], //6
-		["scripts/skills/perks/perk_hybridization"], //7
+		["scripts/skills/perks/perk_legend_wind_reader"], //7
 		["scripts/skills/perks/perk_survival_instinct"], //8
         ["scripts/skills/perks/perk_steadfast"], //9
         ["scripts/skills/perks/perk_stance_seismic_slam"], //10
         ["scripts/skills/perks/perk_legend_perfect_focus"], //11
     ],
 	LevelUps = [
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Health", 10, 3, 3],
 		["Ranged Defense", 10, 3, 3],
 	],
 	Loadout = [
@@ -68,7 +66,7 @@
         ["scripts/skills/perks/perk_legend_back_to_basics"], //0
         ["scripts/skills/perks/perk_sundering_strikes"], //5
         ["scripts/skills/perks/perk_strange_strikes"], //6
-		["scripts/skills/perks/perk_hybridization"], //7
+		["scripts/skills/perks/perk_legend_wind_reader"], //7
 		["scripts/skills/perks/perk_survival_instinct"], //8
         ["scripts/skills/perks/perk_mastery_hammer"], //9
         ["scripts/skills/perks/perk_stance_asura"], //10
@@ -76,8 +74,7 @@
     ],
 	LevelUps = [
 		["Health", 10, 3, 3],
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Ranged Defense", 10, 3, 3],
 	],
 	Loadout = [
 		[
@@ -101,15 +98,14 @@
         ["scripts/skills/perks/perk_legend_back_to_basics"], //0
         ["scripts/skills/perks/perk_sundering_strikes"], //5
         ["scripts/skills/perks/perk_strange_strikes"], //6
-		["scripts/skills/perks/perk_hybridization"], //7
+		["scripts/skills/perks/perk_legend_wind_reader"], //7
 		["scripts/skills/perks/perk_survival_instinct"], //8
         ["scripts/skills/perks/perk_steadfast"], //9
         ["scripts/skills/perks/perk_stance_the_strongest"], //10
         ["scripts/skills/perks/perk_fresh_and_furious"], //11
     ],
 	LevelUps = [
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Health", 10, 3, 3],
 		["Ranged Defense", 10, 3, 3],
 	],
 	Loadout = [
@@ -141,8 +137,7 @@
         ["scripts/skills/perks/perk_vengeance"], //11
     ],
 	LevelUps = [
-		["Melee Skill", 10, 3, 3],
-		["Melee Defense", 10, 3, 3],
+		["Health", 10, 3, 3],
 		["Ranged Defense", 10, 3, 3],
 	],
 	Loadout = [

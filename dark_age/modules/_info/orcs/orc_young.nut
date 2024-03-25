@@ -1,16 +1,14 @@
-//Bandit Thug
-//Lvl 6 Peasant template - Avg Daytaler stats
 ::Const.Tactical.Actor.OrcYoung <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
 	Hitpoints = 200,
-	Bravery = 65,
+	Bravery = 60,
 	Stamina = 150,
-	MeleeSkill = 55,
-	RangedSkill = 50,
-	MeleeDefense = -5,
-	RangedDefense = -5,
-	Initiative = 110,
+	MeleeSkill = 50,
+	RangedSkill = 30,
+	MeleeDefense = -10,
+	RangedDefense = 0,
+	Initiative = 80,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -22,18 +20,16 @@
 };
 
 ::B.Info[::Const.EntityType.OrcYoung] <- {
-    Level = 6,
+    Level = 5,
     Pattern = [
         ["T", 1],
         ["D", 2],
         ["W", 3],
         ["W", 4],
-        ["T", 5],
     ],
 	LevelUps = [
-		["Initiative", 5, 0, 2],
-		["Melee Skill", 5, 0, 2],
-		["Melee Defense", 5, 0, 2],
+		["Health", 5, 0, 2],
+		["Ranged Skill", 5, 0, 2],
 	],
     Trait = [],
 	Loadout = [

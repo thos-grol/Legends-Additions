@@ -1,14 +1,14 @@
 //Zombie
 
 ::Const.Tactical.Actor.ZombieKnight <- {
-	XP = 1000,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 250,
-	Bravery = 110,
+	Hitpoints = 500,
+	Bravery = 100,
 	Stamina = 100,
-	MeleeSkill = 100,
-	RangedSkill = 0,
-	MeleeDefense = 40,
+	MeleeSkill = 60,
+	RangedSkill = 30,
+	MeleeDefense = -10,
 	RangedDefense = 0,
 	Initiative = 160,
 	FatigueEffectMult = 0.0,

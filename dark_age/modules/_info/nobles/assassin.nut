@@ -1,15 +1,15 @@
 //Lvl 11 Merc template
 ::Const.Tactical.Actor.Assassin <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 60,
+	Hitpoints = 120,
 	Bravery = 60,
 	Stamina = 120,
 	MeleeSkill = 60,
-	RangedSkill = 60,
-	MeleeDefense = 10,
-	RangedDefense = 10,
-	Initiative = 115,
+	RangedSkill = 20,
+	MeleeDefense = 20,
+	RangedDefense = 20,
+	Initiative = 140,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -34,7 +34,7 @@
         ["scripts/skills/perks/perk_legend_recuperation"], //3
         ["scripts/skills/perks/perk_mastery_swordc"], //4
 		["scripts/skills/perks/perk_legend_back_to_basics"], //3 - 0
-        ["scripts/skills/perks/perk_legend_lacerate"], //3 - 1
+        ["scripts/skills/perks/perk_legend_twirl"], //3 - 1
         ["scripts/skills/perks/perk_steadfast"], //4
         ["D", 6],
         ["scripts/skills/perks/perk_duelist"], //8
@@ -43,8 +43,7 @@
     ],
 	LevelUps = [
 		["Initiative", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
 	],
 	Loadout = [
 		[
@@ -66,7 +65,7 @@
         ["scripts/skills/perks/perk_backstabber"], //3
         ["scripts/skills/perks/perk_mastery_swordc"], //4
 		["scripts/skills/perks/perk_legend_back_to_basics"], //3 - 0
-        ["scripts/skills/perks/perk_legend_lacerate"], //3 - 1
+        ["scripts/skills/perks/perk_legend_twirl"], //3 - 1
         ["scripts/skills/perks/perk_pocket_dirt"], //4
         ["D", 6],
         ["scripts/skills/perks/perk_duelist"], //8
@@ -75,8 +74,7 @@
     ],
 	LevelUps = [
 		["Initiative", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
 	],
 	Loadout = [
 		[
@@ -98,7 +96,7 @@
         ["scripts/skills/perks/perk_legend_peaceful"], //3
         ["scripts/skills/perks/perk_mastery_swordc"], //4
 		["scripts/skills/perks/perk_legend_back_to_basics"], //3 - 0
-        ["scripts/skills/perks/perk_legend_recuperation"], //3 - 1
+        ["scripts/skills/perks/perk_legend_twirl"], //3 - 1
         ["scripts/skills/perks/perk_battle_flow"], //4
         ["D", 6],
         ["scripts/skills/perks/perk_duelist"], //8
@@ -107,8 +105,7 @@
     ],
 	LevelUps = [
 		["Initiative", 9, 3, 3],
-		["Melee Skill", 9, 3, 3],
-		["Melee Defense", 9, 3, 3],
+		["Ranged Defense", 9, 3, 3],
 	],
 	Loadout = [
 		[

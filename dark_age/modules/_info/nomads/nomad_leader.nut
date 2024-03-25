@@ -1,16 +1,16 @@
 //Lvl 10 Raider Template
 //Has stance, 9 perks
 ::Const.Tactical.Actor.NomadLeader <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 55,
-	Bravery = 57,
-	Stamina = 96,
-	MeleeSkill = 65,
-	RangedSkill = 40,
-	MeleeDefense = 10,
-	RangedDefense = 10,
-	Initiative = 105,
+	Hitpoints = 120,
+	Bravery = 60,
+	Stamina = 120,
+	MeleeSkill = 60,
+	RangedSkill = 20,
+	MeleeDefense = 20,
+	RangedDefense = 20,
+	Initiative = 120,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -42,8 +42,7 @@
 	LevelUps = [
 		["Resolve", 7, 2, 3],
 		["Health", 2, 2, 3],
-		["Melee Skill", 9, 2, 3],
-		["Melee Defense", 9, 2, 3],
+		["Ranged Defense", 9, 2, 3],
 	],
 	Loadout = [
 		[
@@ -74,8 +73,7 @@
     ],
 	LevelUps = [
 		["Initiative", 9, 2, 3],
-		["Melee Skill", 9, 2, 3],
-		["Melee Defense", 9, 2, 3],
+		["Ranged Defense", 9, 2, 3],
 	],
 	Loadout = [
 		[
@@ -104,8 +102,7 @@
     ],
 	LevelUps = [
 		["Health", 9, 3, 3],
-		["Melee Skill", 9, 2, 3],
-		["Melee Defense", 9, 2, 3],
+		["Ranged Skill", 9, 2, 3],
 	],
 	Loadout = [
 		[

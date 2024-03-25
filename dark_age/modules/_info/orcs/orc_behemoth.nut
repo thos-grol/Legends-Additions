@@ -1,14 +1,14 @@
 ::Const.Tactical.Actor.LegendOrcBehemoth <- {
-	XP = 250,
+	XP = 100,
 	ActionPoints = 9,
-	Hitpoints = 800,
-	Bravery = 65,
+	Hitpoints = 600,
+	Bravery = 100,
 	Stamina = 150,
-	MeleeSkill = 55,
-	RangedSkill = 50,
-	MeleeDefense = -5,
-	RangedDefense = -5,
-	Initiative = 110,
+	MeleeSkill = 50,
+	RangedSkill = 40,
+	MeleeDefense = -10,
+	RangedDefense = 0,
+	Initiative = 80,
 	FatigueEffectMult = 1.0,
 	MoraleEffectMult = 1.0,
 	Armor = [
@@ -20,7 +20,7 @@
 };
 
 ::B.Info[::Const.EntityType.LegendOrcBehemoth] <- {
-    Level = 20,
+    Level = 10,
     Pattern = [
         ["T", 1], //1
         ["D", 2], //2
@@ -33,9 +33,8 @@
 		["W", 7], //9
     ],
 	LevelUps = [
-		["Initiative", 8, 1, 3],
-		["Melee Skill", 8, 1, 3],
-		["Melee Defense", 8, 1, 3],
+		["Ranged Skill", 8, 1, 3],
+		["Health", 8, 1, 3],
 	],
     Trait = [],
 	Loadout = [
